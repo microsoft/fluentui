@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButtonBase_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton.types';
 import { stringifyDataAttribute } from '../../../utils';
@@ -16,7 +16,7 @@ export const useToolbarButton = (
 ): ToolbarButtonState => {
   'use no memo';
 
-  const state: ToolbarButtonState = useToolbarButton_unstable(props, ref);
+  const state: ToolbarButtonState = useToolbarButtonBase_unstable(props, ref);
 
   // Set data attributes for vertical, disabled, disabledFocusable, and iconOnly states to simplify styling.
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);

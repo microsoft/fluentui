@@ -142,20 +142,19 @@ import { TextareaBaseState } from '@fluentui/react-textarea';
 import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
 import type { ToggleButtonBaseProps } from '@fluentui/react-button';
 import type { ToggleButtonBaseState } from '@fluentui/react-button';
+import type { ToolbarBaseProps } from '@fluentui/react-toolbar';
 import { ToolbarBaseState } from '@fluentui/react-toolbar';
-import type { ToolbarButtonProps as ToolbarButtonProps_2 } from '@fluentui/react-toolbar';
-import type { ToolbarButtonState as ToolbarButtonState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarButtonBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarButtonBaseState } from '@fluentui/react-toolbar';
 import { ToolbarContextValue } from '@fluentui/react-toolbar';
 import { ToolbarContextValues as ToolbarContextValues_2 } from '@fluentui/react-toolbar';
-import type { ToolbarDividerProps as ToolbarDividerProps_2 } from '@fluentui/react-toolbar';
-import type { ToolbarDividerState as ToolbarDividerState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarDividerBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarDividerBaseState } from '@fluentui/react-toolbar';
 import type { ToolbarGroupProps as ToolbarGroupProps_2 } from '@fluentui/react-toolbar';
 import { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-toolbar';
-import type { ToolbarProps as ToolbarProps_2 } from '@fluentui/react-toolbar';
 import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluentui/react-toolbar';
 import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-toolbar';
 import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
-import type { ToolbarState as ToolbarState_2 } from '@fluentui/react-toolbar';
 import type { ToolbarToggleButtonBaseProps } from '@fluentui/react-toolbar';
 import type { ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
 import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
@@ -913,10 +912,10 @@ export const Toolbar: ForwardRefComponent<ToolbarProps>;
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
 // @public (undocumented)
-export type ToolbarButtonProps = ToolbarButtonProps_2;
+export type ToolbarButtonProps = ToolbarButtonBaseProps;
 
 // @public (undocumented)
-export type ToolbarButtonState = ToolbarButtonState_2 & {
+export type ToolbarButtonState = ToolbarButtonBaseState & {
     root: {
         'data-vertical'?: string;
         'data-disabled'?: string;
@@ -932,10 +931,10 @@ export type ToolbarContextValues = ToolbarContextValues_2;
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 // @public (undocumented)
-export type ToolbarDividerProps = ToolbarDividerProps_2;
+export type ToolbarDividerProps = ToolbarDividerBaseProps;
 
 // @public (undocumented)
-export type ToolbarDividerState = ToolbarDividerState_2 & {
+export type ToolbarDividerState = ToolbarDividerBaseState & {
     root: {
         'data-vertical'?: string;
     };
@@ -955,7 +954,7 @@ export type ToolbarGroupState = ToolbarGroupState_2 & {
 };
 
 // @public (undocumented)
-export type ToolbarProps = ToolbarProps_2;
+export type ToolbarProps = ToolbarBaseProps;
 
 // @public
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
@@ -975,10 +974,10 @@ export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
 export type ToolbarSlots = ToolbarSlots_2;
 
 // @public (undocumented)
-export type ToolbarState = ToolbarState_2 & {
+export type ToolbarState = ToolbarBaseState & {
     root: {
         'data-vertical'?: string;
-        'data-size'?: string;
+        focusgroup?: string;
     };
 };
 

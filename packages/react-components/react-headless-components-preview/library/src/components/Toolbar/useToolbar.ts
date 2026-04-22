@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import {
-  useToolbar_unstable,
+  useToolbarBase_unstable,
   useToolbarContext_unstable,
   useToolbarContextValues_unstable,
 } from '@fluentui/react-toolbar';
@@ -17,11 +17,10 @@ import { stringifyDataAttribute } from '../../utils';
 export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
   'use no memo';
 
-  const state: ToolbarState = useToolbar_unstable(props, ref);
+  const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
-  // Set data attributes for vertical and size states to simplify styling of these states.
+  state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'}`;
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
-  state.root['data-size'] = state.size;
 
   return state;
 };

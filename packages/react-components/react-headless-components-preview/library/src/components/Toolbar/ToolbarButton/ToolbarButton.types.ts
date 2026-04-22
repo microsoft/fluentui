@@ -1,7 +1,4 @@
-import type {
-  ToolbarButtonProps as ToolbarButtonBaseProps,
-  ToolbarButtonState as ToolbarButtonBaseState,
-} from '@fluentui/react-toolbar';
+import type { ToolbarButtonBaseProps, ToolbarButtonBaseState } from '@fluentui/react-toolbar';
 
 export type ToolbarButtonProps = ToolbarButtonBaseProps;
 

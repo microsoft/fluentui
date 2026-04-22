@@ -1,7 +1,4 @@
-import type {
-  ToolbarDividerProps as ToolbarDividerBaseProps,
-  ToolbarDividerState as ToolbarDividerBaseState,
-} from '@fluentui/react-toolbar';
+import type { ToolbarDividerBaseProps, ToolbarDividerBaseState } from '@fluentui/react-toolbar';
 
 export type ToolbarDividerProps = ToolbarDividerBaseProps;
 
