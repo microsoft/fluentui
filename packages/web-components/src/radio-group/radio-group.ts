@@ -1,7 +1,6 @@
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Radio } from '../radio/radio.js';
 import { ArrayItemCollection } from '../utils/focusgroup.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseRadioGroup } from './radio-group.base.js';
 
 /**
@@ -19,20 +18,6 @@ export class RadioGroup extends BaseRadioGroup {
 
   private fgItems!: ArrayItemCollection<Radio>;
 
-  connectedCallback() {
-    super.connectedCallback();
-
-    waitForConnectedDescendants(this, () => {
-      this.fg = new FocusGroup(this, this.fgItems, {
-        definition: {
-          behavior: 'radiogroup',
-          axis: undefined,
-          wrap: true,
-        },
-      });
-    });
-  }
-
   disconnectedCallback() {
     this.fg?.disconnect();
     super.disconnectedCallback();
@@ -45,6 +30,16 @@ export class RadioGroup extends BaseRadioGroup {
       () => this.enabledRadios ?? [],
       () => this.enabledRadios?.find(r => r.checked) ?? null,
     );
-    this.fg?.update();
+    if (!this.fg) {
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'radiogroup',
+          axis: undefined,
+          wrap: true,
+        },
+      });
+    } else {
+      this.fg.update();
+    }
   }
 }

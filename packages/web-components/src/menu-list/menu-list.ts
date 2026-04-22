@@ -1,7 +1,6 @@
 import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { MenuItem } from '../menu-item/menu-item.js';
 import { ArrayItemCollection } from '../utils/focusgroup.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseMenuList } from './menu-list.base.js';
 
 /**
@@ -15,23 +14,9 @@ import { BaseMenuList } from './menu-list.base.js';
  * @public
  */
 export class MenuList extends BaseMenuList {
-  private fg!: FocusGroup;
+  private fg?: FocusGroup;
 
-  private fgItems!: ArrayItemCollection<MenuItem>;
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    waitForConnectedDescendants(this, () => {
-      this.fg = new FocusGroup(this, this.fgItems, {
-        definition: {
-          behavior: 'menu',
-          axis: 'block',
-          wrap: true,
-        },
-      });
-    });
-  }
+  private fgItems?: ArrayItemCollection<MenuItem>;
 
   disconnectedCallback() {
     this.fg?.disconnect();
@@ -42,6 +27,16 @@ export class MenuList extends BaseMenuList {
     super.setItems();
 
     this.fgItems ??= new ArrayItemCollection<MenuItem>(() => this.menuItems ?? []);
-    this.fg?.update();
+    if (!this.fg) {
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'menu',
+          axis: 'block',
+          wrap: true,
+        },
+      });
+    } else {
+      this.fg.update();
+    }
   }
 }

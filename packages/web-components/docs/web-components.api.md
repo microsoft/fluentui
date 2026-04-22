@@ -887,10 +887,13 @@ export class BaseSpinner extends FASTElement {
 
 // @public
 export class BaseTablist extends FASTElement {
+    constructor();
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
+    // @internal (undocumented)
+    connectedCallback(): void;
     disabled: boolean;
     // @internal (undocumented)
     protected disabledChanged(prev: boolean, next: boolean): void;
@@ -3370,8 +3373,6 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 // @public
 export class MenuList extends BaseMenuList {
     // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
     disconnectedCallback(): void;
     // (undocumented)
     setItems(): void;
@@ -3521,8 +3522,6 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends BaseRadioGroup {
-    // (undocumented)
-    connectedCallback(): void;
     // (undocumented)
     disconnectedCallback(): void;
     // (undocumented)
@@ -4015,8 +4014,6 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 export class Tablist extends BaseTablist {
     appearance?: TablistAppearance;
     // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
     disconnectedCallback(): void;
     size?: TablistSize;
     // (undocumented)
@@ -4416,8 +4413,6 @@ export class Tree extends BaseTree {
     protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
-    // (undocumented)
-    connectedCallback(): void;
     // (undocumented)
     disconnectedCallback(): void;
     // @internal (undocumented)

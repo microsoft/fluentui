@@ -3,7 +3,6 @@ import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { TreeItem } from '../tree-item/tree-item.js';
 import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import { ArrayItemCollection } from '../utils/focusgroup.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseTree } from './tree.base.js';
 
 /**
@@ -41,6 +40,10 @@ export class Tree extends BaseTree {
     this.updateSizeAndAppearance();
   }
 
+  private fg?: FocusGroup;
+
+  private fgItems?: ArrayItemCollection<TreeItem>;
+
   /**
    * child tree items supered change event
    * @internal
@@ -54,17 +57,7 @@ export class Tree extends BaseTree {
       () => this.descendantTreeItems as TreeItem[],
       () => (this.currentSelected as TreeItem | null) ?? null,
     );
-    this.fg?.update();
-  }
-
-  private fg!: FocusGroup;
-
-  private fgItems!: ArrayItemCollection<TreeItem>;
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    waitForConnectedDescendants(this, () => {
+    if (!this.fg) {
       this.fg = new FocusGroup(this, this.fgItems, {
         definition: {
           behavior: 'menu',
@@ -72,7 +65,9 @@ export class Tree extends BaseTree {
           memory: false,
         },
       });
-    });
+    } else {
+      this.fg.update();
+    }
   }
 
   disconnectedCallback() {
