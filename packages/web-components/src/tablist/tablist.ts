@@ -1,8 +1,7 @@
 import { attr } from '@microsoft/fast-element';
-import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Tab } from '../tab/tab.js';
-import { isTab } from '../tab/tab.options.js';
-import { ItemCollection } from '../utils/focusgroup.js';
+import { ArrayItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseTablist } from './tablist.base.js';
 import { TablistAppearance, type TablistSize } from './tablist.options.js';
@@ -32,7 +31,7 @@ export class Tablist extends BaseTablist {
 
   private fg!: FocusGroup;
 
-  private fgItems!: FocusGroupItemCollection;
+  private fgItems!: ArrayItemCollection<Tab>;
 
   connectedCallback() {
     super.connectedCallback();
@@ -57,7 +56,10 @@ export class Tablist extends BaseTablist {
   override tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
     super.tabsChanged(prev, next);
 
-    this.fgItems ??= new ItemCollection(this, el => isTab(el) && !el.disabled);
+    this.fgItems ??= new ArrayItemCollection<Tab>(
+      () => this.tabs?.filter(t => !t.disabled) ?? [],
+      () => this.activetab ?? null,
+    );
     this.fg?.update();
   }
 }

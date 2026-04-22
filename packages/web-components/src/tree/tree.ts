@@ -1,8 +1,8 @@
 import { attr } from '@microsoft/fast-element';
-import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { TreeItem } from '../tree-item/tree-item.js';
-import { isTreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
-import { ItemCollection } from '../utils/focusgroup.js';
+import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
+import { ArrayItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseTree } from './tree.base.js';
 
@@ -50,15 +50,16 @@ export class Tree extends BaseTree {
 
     this.updateSizeAndAppearance();
 
-    this.fgItems ??= new ItemCollection(this, el => {
-      return isTreeItem(el) && !el.getAttribute('focusgroup')?.includes('none');
-    });
+    this.fgItems ??= new ArrayItemCollection<TreeItem>(
+      () => this.descendantTreeItems as TreeItem[],
+      () => (this.currentSelected as TreeItem | null) ?? null,
+    );
     this.fg?.update();
   }
 
   private fg!: FocusGroup;
 
-  private fgItems!: FocusGroupItemCollection;
+  private fgItems!: ArrayItemCollection<TreeItem>;
 
   connectedCallback() {
     super.connectedCallback();

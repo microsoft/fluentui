@@ -161,4 +161,27 @@ export class BaseTree extends FASTElement {
   public handleDefaultSlotChange() {
     this.childTreeItems = this.defaultSlot.assignedElements().filter(el => isTreeItem(el));
   }
+
+  /**
+   * All descendant tree items in DOM order, recursively flattened from
+   * {@link childTreeItems}. Items opted out of focusgroup navigation via
+   * `focusgroup="none"` are excluded.
+   */
+  protected get descendantTreeItems(): BaseTreeItem[] {
+    const result: BaseTreeItem[] = [];
+    const visit = (items: BaseTreeItem[] | undefined) => {
+      if (!items) {
+        return;
+      }
+      for (const item of items) {
+        if (item.getAttribute('focusgroup')?.includes('none')) {
+          continue;
+        }
+        result.push(item);
+        visit(item.childTreeItems);
+      }
+    };
+    visit(this.childTreeItems);
+    return result;
+  }
 }

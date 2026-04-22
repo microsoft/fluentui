@@ -1,60 +1,47 @@
 import type { FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
 
-export class ItemCollection implements FocusGroupItemCollection {
-  private owner!: HTMLElement;
-  private walker!: TreeWalker;
-  private filter!: (node: Element) => boolean;
+/**
+ * A {@link FocusGroupItemCollection} backed by a host-supplied array of items in DOM order.
+ *
+ * Stateless: every call reads from `getItems()` so the host is the single source of truth.
+ * Suitable for components whose items are flat slotted children (tablist, radio-group, menu-list)
+ * or any component that maintains its own ordered list of focusable descendants.
+ */
+export class ArrayItemCollection<T extends HTMLElement> implements FocusGroupItemCollection {
+  constructor(private getItems: () => readonly T[], private getStart?: () => T | null) {}
 
   get start(): HTMLElement | null {
-    for (const { element } of this.items()) {
-      if (element.hasAttribute('focusgroupstart')) {
-        return element;
-      }
-    }
-    return null;
+    return this.getStart?.() ?? null;
   }
 
-  constructor(owner: HTMLElement, filter: (node: Element) => boolean) {
-    this.owner = owner;
-    this.filter = filter;
-    this.walker = document.createTreeWalker(this.owner, NodeFilter.SHOW_ELEMENT, node =>
-      filter(node as Element) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
-    );
+  first(): HTMLElement | null {
+    return this.getItems()[0] ?? null;
   }
 
-  first() {
-    this.walker.currentNode = this.owner;
-    return (this.walker.nextNode() as HTMLElement) ?? null;
+  last(): HTMLElement | null {
+    const items = this.getItems();
+    return items[items.length - 1] ?? null;
   }
 
-  last() {
-    this.walker.currentNode = this.owner;
-    let last = null;
-    while (this.walker.nextNode()) {
-      last = this.walker.currentNode as HTMLElement;
-    }
-    return last;
+  next(current: HTMLElement): HTMLElement | null {
+    const items = this.getItems();
+    const i = items.indexOf(current as T);
+    return i === -1 ? null : items[i + 1] ?? null;
   }
 
-  next(current: HTMLElement) {
-    this.walker.currentNode = current;
-    return this.walker.nextNode() as HTMLElement | null;
+  previous(current: HTMLElement): HTMLElement | null {
+    const items = this.getItems();
+    const i = items.indexOf(current as T);
+    return i <= 0 ? null : items[i - 1] ?? null;
   }
 
-  previous(current: HTMLElement) {
-    this.walker.currentNode = current;
-    return this.walker.previousNode() as HTMLElement | null;
-  }
-
-  *items() {
-    if (this.first()) {
-      do {
-        yield { element: this.walker.currentNode as HTMLElement };
-      } while (this.walker.nextNode());
+  *items(): Iterable<{ element: HTMLElement }> {
+    for (const element of this.getItems()) {
+      yield { element };
     }
   }
 
   contains(element: HTMLElement): boolean {
-    return this.filter(element);
+    return (this.getItems() as readonly HTMLElement[]).includes(element);
   }
 }

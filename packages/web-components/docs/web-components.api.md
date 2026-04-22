@@ -1090,6 +1090,7 @@ export class BaseTree extends FASTElement {
     defaultSlot: HTMLSlotElement;
     // @internal
     defaultSlotChanged(): void;
+    protected get descendantTreeItems(): BaseTreeItem[];
     // @internal
     elementInternals: ElementInternals;
     // @internal (undocumented)

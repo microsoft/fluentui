@@ -1,7 +1,6 @@
-import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { Radio } from '../radio/radio.js';
-import { isRadio } from '../radio/radio.options.js';
-import { ItemCollection } from '../utils/focusgroup.js';
+import { ArrayItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseRadioGroup } from './radio-group.base.js';
 
@@ -18,7 +17,7 @@ import { BaseRadioGroup } from './radio-group.base.js';
 export class RadioGroup extends BaseRadioGroup {
   private fg!: FocusGroup;
 
-  private fgItems!: FocusGroupItemCollection;
+  private fgItems!: ArrayItemCollection<Radio>;
 
   connectedCallback() {
     super.connectedCallback();
@@ -42,7 +41,10 @@ export class RadioGroup extends BaseRadioGroup {
   public radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void {
     super.radiosChanged(prev, next);
 
-    this.fgItems ??= new ItemCollection(this, el => isRadio(el));
+    this.fgItems ??= new ArrayItemCollection<Radio>(
+      () => this.enabledRadios ?? [],
+      () => this.enabledRadios?.find(r => r.checked) ?? null,
+    );
     this.fg?.update();
   }
 }

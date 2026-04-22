@@ -1,6 +1,6 @@
-import { FocusGroup, type FocusGroupItemCollection } from '@microsoft/focusgroup-polyfill/shadowless';
-import { isMenuItem } from '../menu-item/menu-item.options.js';
-import { ItemCollection } from '../utils/focusgroup.js';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
+import type { MenuItem } from '../menu-item/menu-item.js';
+import { ArrayItemCollection } from '../utils/focusgroup.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { BaseMenuList } from './menu-list.base.js';
 
@@ -17,7 +17,7 @@ import { BaseMenuList } from './menu-list.base.js';
 export class MenuList extends BaseMenuList {
   private fg!: FocusGroup;
 
-  private fgItems!: FocusGroupItemCollection;
+  private fgItems!: ArrayItemCollection<MenuItem>;
 
   connectedCallback() {
     super.connectedCallback();
@@ -41,7 +41,7 @@ export class MenuList extends BaseMenuList {
   override setItems(): void {
     super.setItems();
 
-    this.fgItems ??= new ItemCollection(this, el => isMenuItem(el) && !!this.menuItems?.includes(el));
+    this.fgItems ??= new ArrayItemCollection<MenuItem>(() => this.menuItems ?? []);
     this.fg?.update();
   }
 }
