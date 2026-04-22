@@ -986,9 +986,7 @@ export type ToolbarState = ToolbarState_2 & {
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
 // @public (undocumented)
-export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps & {
-    vertical?: boolean;
-};
+export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps;
 
 // @public (undocumented)
 export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {

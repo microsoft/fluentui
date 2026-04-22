@@ -1,11 +1,6 @@
 import type { ToolbarToggleButtonBaseProps, ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
 
-export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps & {
-  /**
-   * Whether the toolbar toggle button is in a vertically oriented toolbar.
-   */
-  vertical?: boolean;
-};
+export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps;
 
 export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {
   root: {
