@@ -126,7 +126,7 @@ export type { LinkSlots, LinkProps, LinkState } from './Link';
 export { ProgressBar, renderProgressBar, useProgressBar } from './ProgressBar';
 export type { ProgressBarSlots, ProgressBarProps, ProgressBarState } from './ProgressBar';
 
-export { Provider, renderProvider, useProvider } from './Provider';
+export { Provider, renderProvider, useProvider, useProviderContext } from './Provider';
 export type { ProviderProps, ProviderState } from './Provider';
 
 export { Radio, renderRadio, useRadio, RadioGroup, renderRadioGroup, useRadioGroup } from './RadioGroup';
