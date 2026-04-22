@@ -378,6 +378,9 @@ export const useTeachingPopoverCarouselPageCountStyles_unstable: (state: Teachin
 // @public
 export const useTeachingPopoverCarouselStyles_unstable: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselState;
 
+// @public (undocumented)
+export const useTeachingPopoverContextValues_unstable: (state: TeachingPopoverState) => TeachingPopoverContextValues;
+
 // @public
 export const useTeachingPopoverFooter_unstable: (props: TeachingPopoverFooterProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverFooterState;
 
