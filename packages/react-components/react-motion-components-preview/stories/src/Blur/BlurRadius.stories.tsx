@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Card, CardFooter, CardHeader, makeStyles, tokens, Button, Text } from '@fluentui/react-components';
+import { Card, CardFooter, CardHeader, makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
