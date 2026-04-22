@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add ScaleParams to the motion slot type",
+  "packageName": "@fluentui/react-dialog",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
