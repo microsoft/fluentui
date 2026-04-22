@@ -18,24 +18,16 @@ import type {
   PresenceMotionSlotProps,
   Slot,
 } from '@fluentui/react-components';
+import { Fade, type FadeParams } from '../../../../react-motion-components-preview/library/src/index';
 import * as React from 'react';
 
 import description from './PresenceMotionSlotCustomize.stories.md';
 
-const FadeMotion = createPresenceComponent({
-  enter: {
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationNormal,
-  },
-  exit: {
-    keyframes: [{ opacity: 1 }, { opacity: 0 }],
-    duration: motionTokens.durationNormal,
-  },
-});
-
+// A params-typed fade slot: consumers can pass `{ duration, easing, outOpacity, ... }`
+// directly on `surfaceMotion`.
 type InfoPanelSlots = {
   root: NonNullable<Slot<'div'>>;
-  surfaceMotion?: Slot<PresenceMotionSlotProps>;
+  surfaceMotion?: Slot<PresenceMotionSlotProps<FadeParams>>;
 };
 
 type InfoPanelProps = ComponentProps<InfoPanelSlots> & {
@@ -53,11 +45,11 @@ const useInfoPanel = (props: InfoPanelProps): InfoPanelState => {
     open,
     components: {
       root: 'div',
-      surfaceMotion: FadeMotion,
+      surfaceMotion: Fade,
     },
     root: rootProps as InfoPanelState['root'],
     surfaceMotion: presenceMotionSlot(surfaceMotion, {
-      elementType: FadeMotion,
+      elementType: Fade,
       defaultProps: {
         visible: open,
         unmountOnExit: true,
@@ -86,8 +78,7 @@ const InfoPanel: React.FC<InfoPanelProps> = props => {
   return renderInfoPanel(state);
 };
 
-// --- Custom motion for the consumer to substitute ---
-
+// A completely different motion for the render-fn card to swap in
 const SlideMotion = createPresenceComponent({
   enter: {
     keyframes: [
@@ -112,7 +103,7 @@ const SlideMotion = createPresenceComponent({
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gridTemplate: `"card card card" "controls controls controls" / 1fr 1fr 1fr`,
     gap: '20px 10px',
   },
   card: {
@@ -120,13 +111,12 @@ const useClasses = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'end',
-    gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
     padding: '10px',
-    minHeight: '120px',
+    minHeight: '140px',
   },
   controls: {
     display: 'flex',
@@ -142,7 +132,15 @@ const useClasses = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
     borderRadius: tokens.borderRadiusMedium,
-    padding: '20px',
+    padding: '16px',
+    fontSize: tokens.fontSizeBase200,
+    textAlign: 'center',
+  },
+  label: {
+    color: tokens.colorNeutralForeground3,
+    fontSize: tokens.fontSizeBase200,
+    textAlign: 'center',
+    marginTop: '8px',
   },
 });
 
@@ -153,15 +151,39 @@ export const PresenceMotionSlotCustomize = (): JSXElement => {
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        {/* Override the default fade animation with a slide animation using a render function */}
+        <InfoPanel open={open}>
+          <div className={classes.panel}>Default fade</div>
+        </InfoPanel>
+        <span className={classes.label}>Default</span>
+      </div>
+
+      <div className={classes.card}>
+        {/* Tune the default fade by passing params directly on the slot */}
+        <InfoPanel open={open} surfaceMotion={{ duration: 1000, outOpacity: 0.2 }}>
+          <div className={classes.panel}>Slow fade with residual opacity</div>
+        </InfoPanel>
+        <span className={classes.label}>
+          Direct params
+          <br />
+          <code>{'{ duration: 1000, outOpacity: 0.2 }'}</code>
+        </span>
+      </div>
+
+      <div className={classes.card}>
+        {/* Replace the default fade with a different motion via render function */}
         <InfoPanel
           open={open}
           surfaceMotion={{
             children: (_, props) => <SlideMotion {...props}>{props.children}</SlideMotion>,
           }}
         >
-          <div className={classes.panel}>This panel uses a custom slide animation instead of the default fade.</div>
+          <div className={classes.panel}>Slide from above</div>
         </InfoPanel>
+        <span className={classes.label}>
+          Render function
+          <br />
+          (swap in slide)
+        </span>
       </div>
 
       <div className={classes.controls}>

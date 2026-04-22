@@ -1,16 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import {
-  assertSlots,
-  createPresenceComponent,
-  Field,
-  makeStyles,
-  motionTokens,
-  presenceMotionSlot,
-  Switch,
-  tokens,
-} from '@fluentui/react-components';
+import { assertSlots, Field, makeStyles, presenceMotionSlot, Switch, tokens } from '@fluentui/react-components';
 import type {
   ComponentProps,
   ComponentState,
@@ -18,24 +9,14 @@ import type {
   PresenceMotionSlotProps,
   Slot,
 } from '@fluentui/react-components';
+import { Fade, type FadeParams } from '../../../../react-motion-components-preview/library/src/index';
 import * as React from 'react';
 
 import description from './PresenceMotionSlotDisable.stories.md';
 
-const FadeMotion = createPresenceComponent({
-  enter: {
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationNormal,
-  },
-  exit: {
-    keyframes: [{ opacity: 1 }, { opacity: 0 }],
-    duration: motionTokens.durationNormal,
-  },
-});
-
 type InfoPanelSlots = {
   root: NonNullable<Slot<'div'>>;
-  surfaceMotion?: Slot<PresenceMotionSlotProps>;
+  surfaceMotion?: Slot<PresenceMotionSlotProps<FadeParams>>;
 };
 
 type InfoPanelProps = ComponentProps<InfoPanelSlots> & {
@@ -53,11 +34,11 @@ const useInfoPanel = (props: InfoPanelProps): InfoPanelState => {
     open,
     components: {
       root: 'div',
-      surfaceMotion: FadeMotion,
+      surfaceMotion: Fade,
     },
     root: rootProps as InfoPanelState['root'],
     surfaceMotion: presenceMotionSlot(surfaceMotion, {
-      elementType: FadeMotion,
+      elementType: Fade,
       defaultProps: {
         visible: open,
         unmountOnExit: true,

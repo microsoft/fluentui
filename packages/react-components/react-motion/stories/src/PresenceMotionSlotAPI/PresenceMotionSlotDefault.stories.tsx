@@ -1,16 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import {
-  assertSlots,
-  createPresenceComponent,
-  Field,
-  makeStyles,
-  motionTokens,
-  presenceMotionSlot,
-  Switch,
-  tokens,
-} from '@fluentui/react-components';
+import { assertSlots, Field, makeStyles, presenceMotionSlot, Switch, tokens } from '@fluentui/react-components';
 import type {
   ComponentProps,
   ComponentState,
@@ -18,26 +9,20 @@ import type {
   PresenceMotionSlotProps,
   Slot,
 } from '@fluentui/react-components';
+import { Fade, type FadeParams } from '../../../../react-motion-components-preview/library/src/index';
 import * as React from 'react';
 
 import description from './PresenceMotionSlotDefault.stories.md';
 
-// 1. Define the default presence motion component
-const FadeMotion = createPresenceComponent({
-  enter: {
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationNormal,
-  },
-  exit: {
-    keyframes: [{ opacity: 1 }, { opacity: 0 }],
-    duration: motionTokens.durationNormal,
-  },
-});
+// 1. Pick a presence motion. Here we reuse `Fade` from react-motion-components-preview,
+//    which is built with createPresenceComponent and accepts FadeParams (duration,
+//    easing, outOpacity, inOpacity, ...).
 
-// 2. Define the component's slot types
+// 2. Define the component's slot types. Declaring the slot with `FadeParams`
+//    surfaces those params as direct props on `surfaceMotion`.
 type InfoPanelSlots = {
   root: NonNullable<Slot<'div'>>;
-  surfaceMotion?: Slot<PresenceMotionSlotProps>;
+  surfaceMotion?: Slot<PresenceMotionSlotProps<FadeParams>>;
 };
 
 type InfoPanelProps = ComponentProps<InfoPanelSlots> & {
@@ -56,11 +41,11 @@ const useInfoPanel = (props: InfoPanelProps): InfoPanelState => {
     open,
     components: {
       root: 'div',
-      surfaceMotion: FadeMotion,
+      surfaceMotion: Fade,
     },
     root: rootProps as InfoPanelState['root'],
     surfaceMotion: presenceMotionSlot(surfaceMotion, {
-      elementType: FadeMotion,
+      elementType: Fade,
       defaultProps: {
         visible: open,
         unmountOnExit: true,

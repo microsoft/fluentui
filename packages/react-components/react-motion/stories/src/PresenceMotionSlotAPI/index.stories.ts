@@ -4,8 +4,8 @@ import PresenceMotionSlotDescription from './PresenceMotionSlotDescription.md';
 import { PresenceMotionSlotDefault } from './PresenceMotionSlotDefault.stories';
 
 export { PresenceMotionSlotDefault as Default } from './PresenceMotionSlotDefault.stories';
-export { PresenceMotionSlotDisable as Disable } from './PresenceMotionSlotDisable.stories';
 export { PresenceMotionSlotCustomize as Customize } from './PresenceMotionSlotCustomize.stories';
+export { PresenceMotionSlotDisable as Disable } from './PresenceMotionSlotDisable.stories';
 
 export default {
   title: 'Motion/APIs/presenceMotionSlot',
