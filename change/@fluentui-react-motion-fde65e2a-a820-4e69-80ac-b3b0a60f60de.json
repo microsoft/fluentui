@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose motion params as direct props on motion slot types",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

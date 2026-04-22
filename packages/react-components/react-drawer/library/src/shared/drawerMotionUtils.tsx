@@ -32,5 +32,5 @@ export function mergePresenceSlots<
         </Component>
       );
     },
-  };
+  } as PresenceMotionSlotProps<BaseMotionParams>;
 }

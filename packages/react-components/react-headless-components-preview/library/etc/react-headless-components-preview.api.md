@@ -44,6 +44,7 @@ import type { CheckboxBaseProps } from '@fluentui/react-checkbox';
 import { CheckboxBaseState } from '@fluentui/react-checkbox';
 import type { CheckboxSlots as CheckboxSlots_2 } from '@fluentui/react-checkbox';
 import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
@@ -52,6 +53,8 @@ import type { FieldBaseProps } from '@fluentui/react-field';
 import { FieldBaseState } from '@fluentui/react-field';
 import { FieldContextValues } from '@fluentui/react-field';
 import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
+import type { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderProps } from '@fluentui/react-provider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputBaseProps } from '@fluentui/react-input';
 import { InputBaseState } from '@fluentui/react-input';
@@ -116,6 +119,7 @@ import type { SkeletonSlots as SkeletonSlots_2 } from '@fluentui/react-skeleton'
 import type { SliderBaseProps } from '@fluentui/react-slider';
 import { SliderBaseState } from '@fluentui/react-slider';
 import type { SliderSlots as SliderSlots_2 } from '@fluentui/react-slider';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SpinButtonBaseProps } from '@fluentui/react-spinbutton';
 import { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 import type { SpinButtonSlots as SpinButtonSlots_2 } from '@fluentui/react-spinbutton';
@@ -139,6 +143,7 @@ import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea'
 import type { ToggleButtonBaseProps } from '@fluentui/react-button';
 import type { ToggleButtonBaseState } from '@fluentui/react-button';
 import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
+import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -470,6 +475,15 @@ export type ProgressBarSlots = ProgressBarSlots_2;
 export type ProgressBarState = ProgressBarBaseState;
 
 // @public
+export const Provider: React_2.ForwardRefExoticComponent<Omit<ProviderSlots, "root"> & React_2.FragmentProps & Pick<FluentProviderProps, "dir" | "targetDocument"> & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export type ProviderProps = ComponentProps<ProviderSlots> & Pick<FluentProviderProps, 'dir' | 'targetDocument'>;
+
+// @public
+export type ProviderState = ComponentState<ProviderSlots> & Pick<FluentProviderProps, 'dir' | 'targetDocument'>;
+
+// @public
 export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots_2>, "input">, "onChange" | "size"> & {
     value?: string;
     labelPosition?: "after" | "below";
@@ -610,6 +624,9 @@ export const renderMessageBarTitle: (state: MessageBarTitleState_2) => JSXElemen
 
 // @public
 export const renderProgressBar: (state: ProgressBarState) => JSXElement;
+
+// @public
+export const renderProvider: (state: ProviderState, contextValues: FluentProviderContextValues) => JSXElement;
 
 // @public
 export const renderRadio: (state: RadioBaseState) => JSXElement;
@@ -941,6 +958,11 @@ export const useMessageBarTitle: (props: MessageBarTitleProps, ref: React_2.Ref<
 
 // @public
 export const useProgressBar: (props: ProgressBarProps, ref: React_2.Ref<HTMLDivElement>) => ProgressBarState;
+
+// @public (undocumented)
+export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement>) => ProviderState;
+
+export { useProviderContext }
 
 // @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
