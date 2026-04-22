@@ -1,6 +1,15 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import { findLastIndex } from '@microsoft/fast-web-utilities';
-import { Radio } from '../radio/radio.js';
+import {
+  findLastIndex,
+  keyArrowDown,
+  keyArrowLeft,
+  keyArrowRight,
+  keyArrowUp,
+  keyEnd,
+  keyHome,
+  keySpace,
+} from '@microsoft/fast-web-utilities';
+import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
@@ -11,6 +20,8 @@ import { RadioGroupOrientation } from './radio-group.options.js';
  * @public
  */
 export class BaseRadioGroup extends FASTElement {
+  private isNavigating = false;
+
   /**
    * The index of the checked radio, scoped to the enabled radios.
    *
@@ -436,7 +447,7 @@ export class BaseRadioGroup extends FASTElement {
    * @internal
    */
   public focusinHandler(e: FocusEvent): boolean | void {
-    if (!this.disabled) {
+    if (!this.disabled && (this.isNavigating || this.value)) {
       // Uncheck the checked disabled radio, if any.
       this.radios?.forEach(radio => {
         if (radio.disabled && radio.checked) {
@@ -448,6 +459,8 @@ export class BaseRadioGroup extends FASTElement {
       if (index > -1) {
         this.checkRadio(index, true);
       }
+
+      this.isNavigating = false;
     }
 
     return true;
@@ -461,7 +474,15 @@ export class BaseRadioGroup extends FASTElement {
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     switch (e.key) {
-      case ' ':
+      case keyArrowUp:
+      case keyArrowDown:
+      case keyArrowLeft:
+      case keyArrowRight:
+      case keyHome:
+      case keyEnd:
+        this.isNavigating = true;
+        break;
+      case keySpace:
         this.checkRadio();
         break;
     }
