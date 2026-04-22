@@ -1,6 +1,7 @@
 import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
+import { TreeItem } from './tree-item.js';
 
 export class BaseTreeItem extends FASTElement {
   /**
@@ -57,7 +58,11 @@ export class BaseTreeItem extends FASTElement {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
       // Update focusgroup attributes after subtree show/hide rendering is done.
       requestAnimationFrame(() => {
-        for (const item of this.childTreeItems ?? []) {
+        const walker = document.createTreeWalker(this, NodeFilter.SHOW_ELEMENT, node =>
+          isTreeItem(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
+        );
+        while (walker.nextNode()) {
+          const item = walker.currentNode as TreeItem;
           if (next) {
             item.removeAttribute('focusgroup');
           } else {
