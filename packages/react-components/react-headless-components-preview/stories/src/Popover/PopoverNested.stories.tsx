@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview';
+import type { JSXElement } from '@fluentui/react-components';
 
 const classes = {
   rootTrigger:
@@ -16,7 +17,7 @@ const classes = {
   row: 'flex flex-wrap items-center gap-2',
 };
 
-const SecondNestedPopover = (): React.ReactNode => (
+const SecondNestedPopover = (): JSXElement => (
   <Popover trapFocus>
     <PopoverTrigger>
       <button className={classes.deepTrigger}>Second nested trigger</button>
@@ -29,7 +30,7 @@ const SecondNestedPopover = (): React.ReactNode => (
   </Popover>
 );
 
-const FirstNestedPopover = (): React.ReactNode => (
+const FirstNestedPopover = (): JSXElement => (
   <Popover trapFocus>
     <PopoverTrigger>
       <button className={classes.nestedTrigger}>First nested trigger</button>
