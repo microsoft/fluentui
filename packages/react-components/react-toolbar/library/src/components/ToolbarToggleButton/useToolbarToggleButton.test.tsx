@@ -41,7 +41,7 @@ describe('useToolbarToggleButton_unstable', () => {
     const { result } = renderHook(() => useToolbarToggleButton_unstable(propsMock, ref));
 
     expect(result.current).toMatchObject({
-      appearance: 'secondary',
+      appearance: 'subtle',
       checked: false,
       name: 'text',
       size: 'medium',
@@ -59,7 +59,7 @@ describe('useToolbarToggleButton_unstable', () => {
     );
 
     expect(result.current).toMatchObject({
-      appearance: 'secondary',
+      appearance: 'primary',
       checked: true,
       name: 'text',
       size: 'small',

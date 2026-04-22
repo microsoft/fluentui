@@ -1,4 +1,5 @@
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot, ExtractSlotProps } from '@fluentui/react-utilities';
 
@@ -40,7 +41,7 @@ export type DialogSurfaceSlots = {
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    *
    */
-  backdropMotion: Slot<PresenceMotionSlotProps>;
+  backdropMotion: Slot<PresenceMotionSlotProps<FadeParams>>;
 };
 
 /**
