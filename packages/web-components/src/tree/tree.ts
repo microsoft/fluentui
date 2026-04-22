@@ -54,7 +54,7 @@ export class Tree extends BaseTree {
     this.updateSizeAndAppearance();
 
     this.fgItems ??= new ArrayItemCollection<TreeItem>(
-      () => this.descendantTreeItems as TreeItem[],
+      () => this.descendantTreeItems.filter(i => !i.hidden) as TreeItem[],
       () => (this.currentSelected as TreeItem | null) ?? null,
     );
     if (!this.fg) {

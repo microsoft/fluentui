@@ -27,7 +27,7 @@ export class RadioGroup extends BaseRadioGroup {
     super.radiosChanged(prev, next);
 
     this.fgItems ??= new ArrayItemCollection<Radio>(
-      () => this.enabledRadios ?? [],
+      () => this.enabledRadios?.filter(r => !r.hidden) ?? [],
       () => this.enabledRadios?.find(r => r.checked) ?? null,
     );
     if (!this.fg) {

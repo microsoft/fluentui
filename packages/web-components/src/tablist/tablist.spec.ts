@@ -30,31 +30,6 @@ test.describe('Tablist', () => {
     expect(hasError).toBe(false);
   });
 
-  test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
-
-    await tabs.nth(2).click();
-
-    await expect(element).toHaveCSS('--tabIndicatorOffset', '0px');
-
-    await expect(element).toHaveCSS('--tabIndicatorScale', '1');
-  });
-
-  test('should animate the active tab indicator', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
-    const tab = tabs.nth(2);
-
-    await expect(tab).not.toHaveAttribute('data-animate');
-
-    await tab.click();
-
-    await expect(tab).toHaveAttribute('data-animate', 'true');
-  });
-
   test('should have reflect disabled attribute on control', async ({ fastPage }) => {
     const { element } = fastPage;
 

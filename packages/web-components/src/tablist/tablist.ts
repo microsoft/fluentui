@@ -41,7 +41,7 @@ export class Tablist extends BaseTablist {
     super.tabsChanged(prev, next);
 
     this.fgItems ??= new ArrayItemCollection<Tab>(
-      () => this.tabs?.filter(t => !t.disabled) ?? [],
+      () => this.tabs?.filter(t => !t.disabled && !t.hidden) ?? [],
       () => this.activetab ?? null,
     );
     if (!this.fg) {
