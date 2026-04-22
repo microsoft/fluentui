@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add cypress e2e tests for TeachingPopover",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
