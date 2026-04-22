@@ -15,8 +15,6 @@ const useClasses = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // width: '200px',
-    // height: '100px',
     padding: tokens.spacingVerticalXL,
   },
   controls: {
