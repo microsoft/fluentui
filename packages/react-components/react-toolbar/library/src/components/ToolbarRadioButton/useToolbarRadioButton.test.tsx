@@ -41,7 +41,7 @@ describe('useToolbarRadioButton_unstable', () => {
     const { result } = renderHook(() => useToolbarRadioButton_unstable(propsMock, ref));
 
     expect(result.current).toMatchObject({
-      appearance: 'secondary',
+      appearance: 'subtle',
       checked: false,
       name: 'test-radio',
       value: 'test-value',
