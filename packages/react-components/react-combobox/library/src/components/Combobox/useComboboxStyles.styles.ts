@@ -219,11 +219,25 @@ const useIconStyles = makeStyles({
     cursor: 'pointer',
     display: 'block',
     fontSize: tokens.fontSizeBase500,
+    // position: relative provides the containing block for the ::after clickable-area extension below.
+    position: 'relative',
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
     '& svg': {
       display: 'block',
+    },
+
+    // Extend the clickable area to cover the root's right paddingRight "dead zone".
+    // Without this, clicking between the icon and the right border does not trigger the icon's handler.
+    // The negative `right` is overridden per size variant below to match the root's paddingRight.
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
     },
   },
   hidden: {
@@ -243,14 +257,23 @@ const useIconStyles = makeStyles({
   small: {
     fontSize: iconSizes.small,
     marginLeft: tokens.spacingHorizontalXXS,
+    '::after': {
+      right: `calc(-1 * ${tokens.spacingHorizontalSNudge})`,
+    },
   },
   medium: {
     fontSize: iconSizes.medium,
     marginLeft: tokens.spacingHorizontalXXS,
+    '::after': {
+      right: `calc(-1 * ${tokens.spacingHorizontalMNudge})`,
+    },
   },
   large: {
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
+    '::after': {
+      right: `calc(-1 * ${tokens.spacingHorizontalM})`,
+    },
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,

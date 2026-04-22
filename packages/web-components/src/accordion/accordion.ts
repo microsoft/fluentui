@@ -43,7 +43,7 @@ export class Accordion extends FASTElement {
     }
 
     // Clean up single expand mode behavior
-    (expandedItem as BaseAccordionItem)?.expandbutton.removeAttribute('aria-disabled');
+    (expandedItem as BaseAccordionItem)?.expandbutton?.removeAttribute('aria-disabled');
   }
 
   /**
@@ -61,10 +61,14 @@ export class Accordion extends FASTElement {
    * @internal
    */
   public slottedAccordionItemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
-    if (this.$fastController.isConnected) {
-      this.setItems();
-    }
+    this.setItems();
   }
+
+  /**
+   * Guard flag to prevent re-entrant calls to setSingleExpandMode.
+   * @internal
+   */
+  private _isAdjusting: boolean = false;
 
   /**
    * Watch for changes to the slotted accordion items `disabled` and `expanded` attributes
@@ -76,8 +80,10 @@ export class Accordion extends FASTElement {
     } else if (propertyName === 'expanded') {
       // we only need to manage single expanded instances
       // such as scenarios where a child is programatically expanded
-      if (source.expanded && this.isSingleExpandMode()) {
+      if (source.expanded && this.isSingleExpandMode() && !this._isAdjusting) {
+        this._isAdjusting = true;
         this.setSingleExpandMode(source);
+        this._isAdjusting = false;
       }
     }
   }
@@ -146,27 +152,25 @@ export class Accordion extends FASTElement {
    * @returns {void}
    */
   private setSingleExpandMode(expandedItem: Element): void {
-    requestAnimationFrame(() => {
-      if (this.accordionItems.length === 0) {
-        return;
-      }
-      const currentItems = Array.from(this.accordionItems);
-      this.activeItemIndex = currentItems.indexOf(expandedItem);
+    if (this.accordionItems.length === 0) {
+      return;
+    }
+    const currentItems = Array.from(this.accordionItems);
+    this.activeItemIndex = currentItems.indexOf(expandedItem);
 
-      currentItems.forEach((item: Element, index: number) => {
-        if (isAccordionItem(item)) {
-          if (this.activeItemIndex === index) {
-            item.expanded = true;
-            item.expandbutton.setAttribute('aria-disabled', 'true');
-          } else {
-            item.expanded = false;
+    currentItems.forEach((item: Element, index: number) => {
+      if (isAccordionItem(item)) {
+        if (this.activeItemIndex === index) {
+          item.expanded = true;
+          item.expandbutton?.setAttribute('aria-disabled', 'true');
+        } else {
+          item.expanded = false;
 
-            if (!item.hasAttribute('disabled')) {
-              item.expandbutton.removeAttribute('aria-disabled');
-            }
+          if (!item.hasAttribute('disabled')) {
+            item.expandbutton?.removeAttribute('aria-disabled');
           }
         }
-      });
+      }
     });
   }
 
@@ -206,9 +210,7 @@ export class Accordion extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    requestAnimationFrame(() => {
-      this.expandmode = this.expandmode || AccordionExpandMode.multi;
-      this.setItems();
-    });
+    this.expandmode = this.expandmode || AccordionExpandMode.multi;
+    this.setItems();
   }
 }

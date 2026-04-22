@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: update type for drawerMotion slot",
+  "packageName": "@fluentui/react-drawer",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

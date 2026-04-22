@@ -3243,11 +3243,14 @@ export class Menu extends FASTElement {
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
     primaryAction: HTMLSlotElement;
+    // @deprecated
     setComponent(): void;
-    slottedMenuList: MenuList[];
+    slottedMenuList: HTMLElement[];
     // @internal
-    slottedMenuListChanged(prev: MenuList[] | undefined, next: MenuList[] | undefined): void;
+    slottedMenuListChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
     slottedTriggers: HTMLElement[];
+    // @internal
+    slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
     split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;

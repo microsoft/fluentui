@@ -215,9 +215,11 @@ export class BaseTablist extends FASTElement {
   }
 
   private getTabIds(): Array<string> {
-    return this.tabs.map((tab: HTMLElement) => {
-      return tab.getAttribute('id') ?? `tab-${uniqueId()}`;
-    });
+    return (
+      this.tabs?.map((tab: HTMLElement) => {
+        return tab.getAttribute('id') ?? `tab-${uniqueId()}`;
+      }) ?? []
+    );
   }
 
   private setComponent(): void {
@@ -335,9 +337,13 @@ export class BaseTablist extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    waitForConnectedDescendants(this, () => {
-      this.tabIds = this.getTabIds();
-      this.setTabs();
-    });
+    waitForConnectedDescendants(
+      this,
+      () => {
+        this.tabIds = this.getTabIds();
+        this.setTabs();
+      },
+      { shallow: true },
+    );
   }
 }
