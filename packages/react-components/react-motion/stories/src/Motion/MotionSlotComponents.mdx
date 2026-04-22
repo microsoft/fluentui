@@ -4,15 +4,18 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 ### Components with motion slots
 
-| Component                                                                | Slots                             |
-| ------------------------------------------------------------------------ | --------------------------------- |
-| [AccordionPanel](?path=/docs/components-accordion--docs)                 | `collapseMotion`                  |
-| [Dialog](?path=/docs/components-dialog--docs)                            | `surfaceMotion`                   |
-| [DialogSurface](?path=/docs/components-dialog--docs#backdrop-appearance) | `backdropMotion`                  |
-| [InlineDrawer](?path=/docs/components-drawer--docs#inline)               | `surfaceMotion`                   |
-| [OverlayDrawer](?path=/docs/components-drawer--docs#overlay)             | `backdropMotion`, `surfaceMotion` |
-| [Menu](?path=/docs/components-menu-menu--docs)                           | `surfaceMotion`                   |
-| [NavCategoryItem](?path=/docs/components-nav--docs)                      | `expandIconMotion`                |
-| [NavSubItemGroup](?path=/docs/components-nav--docs)                      | `collapseMotion`                  |
-| [Popover](?path=/docs/components-popover--docs)                          | `surfaceMotion`                   |
-| [Tree](?path=/docs/components-tree--docs)                                | `collapseMotion`                  |
+The Fluent v9 components below expose one or more motion slots. The **Example** column links to a motion-specific story in that component's own package.
+
+| Component                                                                | Slots                             | Example                                                                                                                                |
+| ------------------------------------------------------------------------ | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| [AccordionPanel](?path=/docs/components-accordion--docs)                 | `collapseMotion`                  | [MotionCustom](?path=/story/components-accordion--motion-custom)                                                                       |
+| [Dialog](?path=/docs/components-dialog--docs)                            | `surfaceMotion`                   | [MotionCustom](?path=/story/components-dialog--motion-custom)                                                                          |
+| [DialogSurface](?path=/docs/components-dialog--docs#backdrop-appearance) | `backdropMotion`                  | [BackdropAppearance](?path=/story/components-dialog--backdrop-appearance)                                                              |
+| [InlineDrawer](?path=/docs/components-drawer--docs#inline)               | `surfaceMotion`                   | [MotionCustom](?path=/story/components-drawer--motion-custom)                                                                          |
+| [OverlayDrawer](?path=/docs/components-drawer--docs#overlay)             | `backdropMotion`, `surfaceMotion` | [MotionCustom](?path=/story/components-drawer--motion-custom), [MotionDisabled](?path=/story/components-drawer--motion-disabled)       |
+| [Menu](?path=/docs/components-menu-menu--docs)                           | `surfaceMotion`                   | [MotionCustom](?path=/story/components-menu-menu--motion-custom), [MotionDisabled](?path=/story/components-menu-menu--motion-disabled) |
+| [NavCategoryItem](?path=/docs/components-nav--docs)                      | `expandIconMotion`                | [CustomMotion](?path=/story/components-nav--custom-motion)                                                                             |
+| [NavSubItemGroup](?path=/docs/components-nav--docs)                      | `collapseMotion`                  | [CustomMotion](?path=/story/components-nav--custom-motion)                                                                             |
+| [Popover](?path=/docs/components-popover--docs)                          | `surfaceMotion`                   | [MotionCustom](?path=/story/components-popover--motion-custom), [MotionDisabled](?path=/story/components-popover--motion-disabled)     |
+| [ProgressBar](?path=/docs/components-progressbar--docs)                  | `indeterminateMotion`             | [MotionCustom](?path=/story/components-progressbar--motion-custom)                                                                     |
+| [Tree](?path=/docs/components-tree--docs)                                | `collapseMotion`                  | [MotionCustom](?path=/story/components-tree--motion-custom)                                                                            |
