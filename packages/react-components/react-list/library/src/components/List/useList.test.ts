@@ -80,4 +80,17 @@ describe('useList_unstable', () => {
     expect(result.current.components.root).toBe('ol');
     expect(result.current.root.role).toBe('list');
   });
+  it('respects explicit as prop even in composite navigation mode', () => {
+    const { result } = renderHook(() => useList_unstable({ as: 'ol', navigationMode: 'composite' }, ref));
+
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    expect(result.current.components.root).toBe('ol');
+  });
+
+  it('determines default root component based on composite navigation mode', () => {
+    const { result } = renderHook(() => useList_unstable({ navigationMode: 'composite' }, ref));
+
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    expect(result.current.components.root).toBe('div');
+  });
 });

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "test: add baseline hook tests for useList and useListItem",
+  "comment": "fix: fix useList and useListItem as prop handling",
   "packageName": "@fluentui/react-list",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
