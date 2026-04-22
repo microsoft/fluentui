@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-headless-components-preview';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-headless-components-preview/card';
 
 const classes = {
   card:

@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-headless-components-preview';
+import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-headless-components-preview/card';
 
 import descriptionMd from './CardDescription.md';
 

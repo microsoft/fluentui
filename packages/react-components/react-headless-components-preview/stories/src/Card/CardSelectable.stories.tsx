@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { CardOnSelectionChangeEvent } from '@fluentui/react-headless-components-preview';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-headless-components-preview';
+import type { CardOnSelectionChangeEvent } from '@fluentui/react-headless-components-preview/card';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-headless-components-preview/card';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 
 const classes = {
@@ -29,7 +29,7 @@ const classes = {
   status: 'text-xs text-gray-500',
 };
 
-const CardContent = ({ title }: { title: string }): React.ReactNode => (
+const CardContent = ({ title }: { title: string }): React.ReactElement => (
   <>
     <CardPreview className={classes.preview}>
       <img

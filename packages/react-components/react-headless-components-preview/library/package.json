@@ -91,6 +91,12 @@
       "import": "./lib/button.js",
       "require": "./lib-commonjs/button.js"
     },
+    "./card": {
+      "types": "./dist/card.d.ts",
+      "node": "./lib-commonjs/card.js",
+      "import": "./lib/card.js",
+      "require": "./lib-commonjs/card.js"
+    },
     "./checkbox": {
       "types": "./dist/checkbox.d.ts",
       "node": "./lib-commonjs/checkbox.js",
