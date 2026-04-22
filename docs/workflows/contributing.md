@@ -25,6 +25,16 @@ yarn nx affected -t test                  # Test affected projects
 yarn create-component                     # Interactive generator
 ```
 
+### First-time Storybook setup
+
+After `yarn install`, per-component Storybooks that pull stories through the shared `@fluentui/react-components` barrel (most v9 components) will fail to compile with `Module not found: @fluentui/react-alert`, `@fluentui/react-infobutton`, or `@fluentui/react-virtualizer`. These three packages are workspace-linked from local sources — their built output isn't present on a fresh clone. Build them once before starting any component Storybook:
+
+```bash
+yarn nx run-many -t build -p react-alert,react-infobutton,react-virtualizer
+```
+
+The build only needs to be re-run if you modify one of those three packages. Normal rebuilds of any other component pick up these prebuilt deps automatically.
+
 ## PR Checklist
 
 1. **Change file** — Required for any published package change:

@@ -41,30 +41,43 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
 
    `--skip-nx-cache` matters: the `storybook` target is (unusually) declared with `cache: true`, and a prior run can replay cached output and exit without actually starting a server.
 
-3. **Find the storybook port.** Two quirks to know:
+3. **Find the storybook port.** Three quirks to know:
 
    - Storybook picks a **random high port** on first boot (e.g. `49360`), not the Storybook default `6006`. Don't assume.
    - The nx wrapper process often exits 0 after delegating to storybook, leaving the actual server running as a child. So the nx PID isn't the storybook PID.
+   - The storybook child opens **two** listening sockets: one for HTTP content, one for the webpack HMR event-stream. They are not ordered — either one can be numerically lower. Picking by port number is unreliable; pick by `Content-Type`.
 
-   Reliable detection — find the `yarn storybook dev` child and read its listening socket:
+   Reliable detection — target the storybook node child (not the yarn wrapper), then probe each listening socket until one returns `text/html`:
 
    ```bash
-   # Wait up to 90s for the storybook child to start listening
-   for i in $(seq 1 90); do
-     SB_CHILD=$(pgrep -f "storybook dev" | head -1)
+   # Wait up to 180s for the storybook child to bind an HTTP port.
+   # Pattern matches the node child specifically, not `yarn storybook dev` (the wrapper has no sockets).
+   for i in $(seq 1 180); do
+     SB_CHILD=$(pgrep -f "node.*\.bin/storybook dev" | head -1)
      if [ -n "$SB_CHILD" ]; then
-       SB_PORT=$(lsof -a -p "$SB_CHILD" -i -P -sTCP:LISTEN 2>/dev/null \
-         | awk 'NR>1 {print $9}' | sed 's/.*://' | sort -n | head -1)
+       for port in $(lsof -a -p "$SB_CHILD" -i -P -sTCP:LISTEN 2>/dev/null | awk 'NR>1 {print $9}' | sed 's/.*://'); do
+         CT=$(curl -sI --max-time 2 "http://localhost:$port/" 2>/dev/null | grep -i '^content-type:' | grep -i 'text/html')
+         if [ -n "$CT" ]; then SB_PORT=$port; break; fi
+       done
        if [ -n "$SB_PORT" ]; then break; fi
      fi
      sleep 1
    done
    echo "Storybook child PID=$SB_CHILD on port $SB_PORT"
-   # Sanity check:
-   curl -s -o /dev/null -w "HTTP %{http_code}\n" "http://localhost:$SB_PORT"
    ```
 
-   If no port turns up in 90s, something is wrong — **do not** fall back to the workspace-wide Storybook; instead, read the nx output log and debug the per-component boot.
+   Then wait for Storybook to finish compiling stories — the HTTP port answers before `index.json` is populated:
+
+   ```bash
+   for i in $(seq 1 60); do
+     N=$(curl -s --max-time 2 "http://localhost:$SB_PORT/index.json" 2>/dev/null \
+       | python3 -c "import json,sys; print(len(json.load(sys.stdin).get('entries', {})))" 2>/dev/null || echo 0)
+     if [ "$N" -gt 0 ]; then break; fi
+     sleep 2
+   done
+   ```
+
+   If no port turns up, or `index.json` never populates — **do not** fall back to the workspace-wide Storybook; read the nx output log and debug the per-component boot. The most common real failure is missing build artifacts for unstable re-export deps (see troubleshooting below).
 
 4. **Open the page with playwright-cli:**
 
@@ -113,8 +126,14 @@ cd packages/react-components/react-<component>/stories && yarn storybook dev --p
 **The build stops mid-compilation and nx "completes" with exit 0.**
 That's the nx cache replaying a prior partial run. Always pass `--skip-nx-cache`.
 
-**The build fails with `Module not found: @fluentui/react-alert` or similar `unstable` packages.**
-You're accidentally starting the workspace-wide Storybook (often via `yarn storybook` at the repo root or `yarn nx run public-docsite-v9:storybook`). Stop and use the per-component stories target instead.
+**The build fails with `Module not found: @fluentui/react-alert`, `@fluentui/react-infobutton`, or `@fluentui/react-virtualizer`.**
+These three packages are listed as deps of `@fluentui/react-components` and are linked into `node_modules` from local workspace sources (`packages/react-components/deprecated/react-alert/`, `deprecated/react-infobutton/`, `react-virtualizer/`). Their `lib-commonjs/` output only exists after they're built. On a fresh clone this build hasn't run yet, so the linked entry points at files that don't exist. Fix:
+
+```bash
+yarn nx run-many -t build -p react-alert,react-infobutton,react-virtualizer
+```
+
+Then restart the storybook target. This is a real infrastructure wart — it affects **any** per-component Storybook that pulls stories from the shared `@fluentui/react-components` barrel, not just combobox. (If you see the error elsewhere in this repo — e.g. the workspace-wide Storybook — the same fix applies plus the "don't use workspace-wide" rule above still stands.)
 
 **The story loads but keeps reloading (`[HMR] Cannot find update (Full reload needed)`).**
 Same root cause — you're on the workspace-wide Storybook, which has HMR issues when preview packages rebuild. Kill it and use the per-component one.
