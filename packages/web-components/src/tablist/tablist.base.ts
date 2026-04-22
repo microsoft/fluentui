@@ -193,4 +193,26 @@ export class BaseTablist extends FASTElement {
 
     this.change();
   }
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'tablist';
+    this.elementInternals.ariaOrientation = this.orientation ?? TablistOrientation.horizontal;
+  }
+
+  /**
+   * @internal
+   */
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    waitForConnectedDescendants(
+      this,
+      () => {
+        this.setTabs();
+      },
+      { shallow: true },
+    );
+  }
 }
