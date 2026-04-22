@@ -14,19 +14,26 @@ import * as React from 'react';
 
 import description from './MotionSlotDisable.stories.md';
 
-const PulseMotion = createMotionComponent({
-  keyframes: [
-    { opacity: 1, transform: 'scale(1)' },
-    { opacity: 0.6, transform: 'scale(0.95)' },
-    { opacity: 1, transform: 'scale(1)' },
-  ],
-  duration: motionTokens.durationUltraSlow,
-  iterations: Infinity,
-});
+type PulseParams = {
+  duration?: number;
+  iterations?: number;
+};
+
+const PulseMotion = createMotionComponent<PulseParams>(
+  ({ duration = motionTokens.durationUltraSlow, iterations = Infinity }) => ({
+    keyframes: [
+      { opacity: 1, transform: 'scale(1)' },
+      { opacity: 0.6, transform: 'scale(0.95)' },
+      { opacity: 1, transform: 'scale(1)' },
+    ],
+    duration,
+    iterations,
+  }),
+);
 
 type PulseIndicatorSlots = {
   root: NonNullable<Slot<'div'>>;
-  pulseMotion?: Slot<MotionSlotProps>;
+  pulseMotion?: Slot<MotionSlotProps<PulseParams>>;
 };
 
 type PulseIndicatorProps = ComponentProps<PulseIndicatorSlots>;

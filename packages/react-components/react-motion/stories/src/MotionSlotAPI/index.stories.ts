@@ -4,8 +4,8 @@ import MotionSlotDescription from './MotionSlotDescription.md';
 import { MotionSlotDefault } from './MotionSlotDefault.stories';
 
 export { MotionSlotDefault as Default } from './MotionSlotDefault.stories';
-export { MotionSlotDisable as Disable } from './MotionSlotDisable.stories';
 export { MotionSlotCustomize as Customize } from './MotionSlotCustomize.stories';
+export { MotionSlotDisable as Disable } from './MotionSlotDisable.stories';
 
 export default {
   title: 'Motion/APIs/motionSlot',

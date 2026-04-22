@@ -14,27 +14,38 @@ import * as React from 'react';
 
 import description from './MotionSlotDefault.stories.md';
 
-// 1. Create a default motion component — a looping pulse animation
-const PulseMotion = createMotionComponent({
-  keyframes: [
-    { opacity: 1, transform: 'scale(1)' },
-    { opacity: 0.6, transform: 'scale(0.95)' },
-    { opacity: 1, transform: 'scale(1)' },
-  ],
-  duration: motionTokens.durationUltraSlow,
-  iterations: Infinity,
-});
+// 1. Describe the motion's tunable parameters
+type PulseParams = {
+  /** One pulse cycle duration (ms). Defaults to `motionTokens.durationUltraSlow` (500 ms). */
+  duration?: number;
+  /** Number of pulse cycles. Defaults to `Infinity` for a continuous loop. */
+  iterations?: number;
+};
 
-// 2. Define the component's slot types
+// 2. Create a default motion component — a looping pulse animation driven by those params
+const PulseMotion = createMotionComponent<PulseParams>(
+  ({ duration = motionTokens.durationUltraSlow, iterations = Infinity }) => ({
+    keyframes: [
+      { opacity: 1, transform: 'scale(1)' },
+      { opacity: 0.6, transform: 'scale(0.95)' },
+      { opacity: 1, transform: 'scale(1)' },
+    ],
+    duration,
+    iterations,
+  }),
+);
+
+// 3. Define the component's slot types — declaring PulseParams on the slot
+// surfaces `duration` and `iterations` as direct props on `pulseMotion`.
 type PulseIndicatorSlots = {
   root: NonNullable<Slot<'div'>>;
-  pulseMotion?: Slot<MotionSlotProps>;
+  pulseMotion?: Slot<MotionSlotProps<PulseParams>>;
 };
 
 type PulseIndicatorProps = ComponentProps<PulseIndicatorSlots>;
 type PulseIndicatorState = ComponentState<PulseIndicatorSlots>;
 
-// 3. Build component state with motionSlot()
+// 4. Build component state with motionSlot()
 const usePulseIndicator = (props: PulseIndicatorProps): PulseIndicatorState => {
   const { pulseMotion: pulseMotionProp, ...rootProps } = props;
 
@@ -51,7 +62,7 @@ const usePulseIndicator = (props: PulseIndicatorProps): PulseIndicatorState => {
   };
 };
 
-// 4. Render the component using the slot
+// 5. Render the component using the slot
 const renderPulseIndicator = (state: PulseIndicatorState): JSXElement => {
   assertSlots<PulseIndicatorSlots>(state);
 
