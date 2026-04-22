@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { PresenceComponentProps } from '@fluentui/react-components';
-import { Collapse, CollapseParams } from '@fluentui/react-motion-components-preview';
+import { Collapse, type CollapseParams } from '@fluentui/react-motion-components-preview';
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
