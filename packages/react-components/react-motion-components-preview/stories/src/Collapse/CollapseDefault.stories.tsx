@@ -1,17 +1,17 @@
 import { Card, CardHeader, Field, makeStyles, tokens, Switch, Text } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
-import type { JSXElement, PresenceComponentProps } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    gap: '20px 10px',
+    gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
   },
   card: {
     gridArea: 'card',
-    padding: '20px',
+    padding: tokens.spacingVerticalXL,
   },
   cardContent: {
     maxHeight: '300px',
@@ -25,7 +25,7 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,
@@ -40,9 +40,9 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: PresenceComponentProps): JSXElement => {
+export const Default = (): JSXElement => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(true);
 
   return (
     <div className={classes.container}>

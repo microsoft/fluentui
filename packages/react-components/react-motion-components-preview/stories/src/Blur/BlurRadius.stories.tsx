@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Card, CardFooter, CardHeader, makeStyles, Button, Text } from '@fluentui/react-components';
+import { Card, CardFooter, CardHeader, makeStyles, tokens, Button, Text } from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
@@ -8,8 +8,8 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '40px',
-    padding: '10px',
+    gap: tokens.spacingVerticalXXXL,
+    padding: tokens.spacingVerticalMNudge,
   },
   card: {
     display: 'flex',
@@ -17,12 +17,12 @@ const useClasses = makeStyles({
     alignItems: 'center',
     // width: '200px',
     // height: '100px',
-    padding: '20px',
+    padding: tokens.spacingVerticalXL,
   },
   controls: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '20px',
+    marginTop: tokens.spacingVerticalXL,
   },
 });
 
