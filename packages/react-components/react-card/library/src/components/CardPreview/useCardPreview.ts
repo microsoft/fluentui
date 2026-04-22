@@ -35,6 +35,8 @@ export const useCardPreviewBase_unstable = (
   props: CardPreviewBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardPreviewBaseState => {
+  'use no memo';
+
   const { logo } = props;
 
   const {
@@ -75,6 +77,7 @@ export const useCardPreviewBase_unstable = (
     },
 
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('div', {
         ref: previewRef,
         ...props,

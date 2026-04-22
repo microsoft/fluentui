@@ -54,6 +54,8 @@ export function useSafeZoneArea({
   targetRef: RefObjectFunction<HTMLElement>;
   elementToRender: JSXElement | null;
 } {
+  ('use no memo');
+
   const [stateStore] = React.useState(createSafeZoneAreaStateStore);
 
   const safeZoneAreaRef = React.useRef<SafeZoneAreaImperativeHandle>(null);
@@ -65,6 +67,7 @@ export function useSafeZoneArea({
 
   const mouseCoordinatesRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const containerListenerRef = React.useMemo(() => {
     if (disabled) {
       return () => {
@@ -89,6 +92,7 @@ export function useSafeZoneArea({
     };
   }, [clearSafeZoneCloseTimeout, disabled, stateStore]);
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const targetListenerRef = React.useMemo(() => {
     if (disabled) {
       return () => {

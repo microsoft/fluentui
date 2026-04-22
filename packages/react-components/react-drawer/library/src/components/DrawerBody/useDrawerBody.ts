@@ -48,6 +48,8 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
  * @param ref - reference to root HTMLElement of DrawerBody
  */
 export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HTMLElement>): DrawerBodyState => {
+  'use no memo';
+
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 
@@ -100,6 +102,7 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
       getIntrinsicElementProps<DrawerBodyProps>('div', {
         ref: mergedRef,
         ...props,
+        // eslint-disable-next-line react-hooks/refs
         onScroll: mergeCallbacks(props.onScroll, onScroll),
       }),
       { elementType: 'div' },

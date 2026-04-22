@@ -57,6 +57,8 @@ const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemVal
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
+  'use no memo';
+
   const {
     onNavItemSelect,
     onNavCategoryItemToggle,
@@ -100,13 +102,19 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   const currentSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
   const previousSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
 
+  // eslint-disable-next-line react-hooks/refs
   if (currentSelectedValue.current !== selectedValue) {
+    // eslint-disable-next-line react-hooks/refs
     previousSelectedValue.current = currentSelectedValue.current;
+    // eslint-disable-next-line react-hooks/refs
     currentSelectedValue.current = selectedValue;
   }
 
+  // eslint-disable-next-line react-hooks/refs
   if (currentSelectedCategoryValue.current !== selectedCategoryValue) {
+    // eslint-disable-next-line react-hooks/refs
     previousSelectedCategoryValue.current = currentSelectedCategoryValue.current;
+    // eslint-disable-next-line react-hooks/refs
     currentSelectedCategoryValue.current = selectedCategoryValue;
   }
 

@@ -7,6 +7,8 @@ import type { OptionCollectionState, OptionValue } from './OptionCollection.type
  * A hook for managing a collection of child Options
  */
 export const useOptionCollection = (): OptionCollectionState => {
+  'use no memo';
+
   const optionsById = React.useRef(new Map<string, OptionValue>());
 
   const collectionAPI = React.useMemo(() => {
@@ -52,6 +54,7 @@ export const useOptionCollection = (): OptionCollectionState => {
 
   return {
     ...collectionAPI,
+    // eslint-disable-next-line react-hooks/refs
     options: Array.from(optionsById.current.values()),
     registerOption,
   };

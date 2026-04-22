@@ -40,6 +40,7 @@ export const useTeachingPopoverCarouselFooterStyles_unstable = (
   const styles = useStyles();
   const { layout } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverCarouselFooterClassNames.root,
     styles.root,
@@ -48,9 +49,11 @@ export const useTeachingPopoverCarouselFooterStyles_unstable = (
   );
 
   if (state.previous) {
+    // eslint-disable-next-line react-hooks/immutability
     state.previous.className = mergeClasses(teachingPopoverCarouselFooterClassNames.previous, state.previous.className);
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.next.className = mergeClasses(teachingPopoverCarouselFooterClassNames.next, state.next.className);
 
   return state;

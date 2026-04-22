@@ -353,6 +353,8 @@ const CalendarYearHeader: React.FunctionComponent<CalendarYearHeaderProps> = pro
 CalendarYearHeader.displayName = 'CalendarYearHeader';
 
 function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps) {
+  'use no memo';
+
   const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
   const fromYear = Math.floor(rangeYear / 10) * 10;
 
@@ -360,8 +362,10 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps)
   React.useRef(() => {
     previousFromYearRef.current = fromYear;
   });
+  // eslint-disable-next-line react-hooks/refs
   const previousFromYear = previousFromYearRef.current;
 
+  // eslint-disable-next-line react-hooks/refs
   if (!previousFromYear || previousFromYear === fromYear) {
     return undefined;
   } else if (previousFromYear > fromYear) {
@@ -372,6 +376,8 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps)
 }
 
 function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: CalendarYearProps) {
+  'use no memo';
+
   const rangeYear = React.useMemo(() => {
     return selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10;
   }, [navigatedYear, selectedYear]);
@@ -391,6 +397,7 @@ function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: Cale
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFromYear(rangeYear);
   }, [rangeYear]);
 

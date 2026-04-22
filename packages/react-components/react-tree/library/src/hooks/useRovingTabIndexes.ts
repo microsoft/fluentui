@@ -19,6 +19,8 @@ const findTreeItemRoot = (element: HTMLElement) => {
  * @internal
  */
 export function useRovingTabIndex(): {
+  'use no memo';
+
   rove: (nextElement: HTMLElement, focusOptions?: FocusOptions) => void;
   initialize: (walker: HTMLElementWalker) => void;
   forceUpdate: () => void;
@@ -33,6 +35,7 @@ export function useRovingTabIndex(): {
       if (walkerRef.current.root !== treeitemRoot) {
         return;
       }
+      // eslint-disable-next-line react-hooks/immutability, react-hooks/preserve-manual-memoization
       rove(element);
     }
   });
@@ -55,6 +58,7 @@ export function useRovingTabIndex(): {
       nextElement.tabIndex = -1;
     }
   }, []);
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const rove = React.useCallback((nextElement: HTMLElement, focusOptions?: FocusOptions) => {
     if (!currentElementRef.current) {
       return;

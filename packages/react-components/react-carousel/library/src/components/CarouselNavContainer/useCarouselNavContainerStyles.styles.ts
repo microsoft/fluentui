@@ -101,6 +101,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   const isWide = layout === 'inline-wide' || layout === 'overlay-wide';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselNavContainerClassNames.root,
     styles.root,
@@ -111,6 +112,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   );
 
   if (state.next) {
+    // eslint-disable-next-line react-hooks/immutability
     state.next.className = mergeClasses(
       carouselNavContainerClassNames.next,
       styles.next,
@@ -121,6 +123,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
     );
   }
   if (state.prev) {
+    // eslint-disable-next-line react-hooks/immutability
     state.prev.className = mergeClasses(
       carouselNavContainerClassNames.prev,
       styles.prev,
@@ -132,6 +135,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   }
 
   if (state.autoplay) {
+    // eslint-disable-next-line react-hooks/immutability
     state.autoplay.className = mergeClasses(
       carouselNavContainerClassNames.autoplay,
       styles.autoplay,

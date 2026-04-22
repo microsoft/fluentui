@@ -258,8 +258,10 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   const rootStyles = useRootStyles();
   const selectStyles = useSelectStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(selectClassNames.root, rootStyles.base, state.root.className);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.select.className = mergeClasses(
     selectClassNames.select,
     selectStyles.base,
@@ -274,6 +276,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       selectClassNames.icon,
       iconStyles.icon,

@@ -21,6 +21,8 @@ export const useMenuSplitGroup_unstable = (
   props: MenuSplitGroupProps,
   ref: React.Ref<HTMLElement>,
 ): MenuSplitGroupState => {
+  'use no memo';
+
   const innerRef = React.useRef<HTMLDivElement>(undefined);
   const { dir, targetDocument } = useFluent();
 
@@ -60,6 +62,7 @@ export const useMenuSplitGroup_unstable = (
     },
     setMultiline,
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('div', {
         role: 'group',
         // FIXME:

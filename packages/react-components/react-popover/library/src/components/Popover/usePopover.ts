@@ -256,6 +256,7 @@ function useOpenState(
     defaultState: state.defaultOpen,
     initialState: false,
   });
+  // eslint-disable-next-line react-hooks/immutability
   state.open = open !== undefined ? open : state.open;
   const setContextTarget = state.setContextTarget;
 
@@ -297,6 +298,7 @@ function usePopoverRefs(
 
   // no reason to render arrow when covering the target
   if (positioningOptions.coverTarget) {
+    // eslint-disable-next-line react-hooks/immutability
     state.withArrow = false;
   }
 

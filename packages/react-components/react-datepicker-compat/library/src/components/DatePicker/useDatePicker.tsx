@@ -70,6 +70,8 @@ function usePopupVisibility(props: DatePickerProps) {
 }
 
 function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
+  'use no memo';
+
   const [selectedDate, setSelectedDateState] = useControllableState<Date | null | undefined>({
     initialState: null,
     state: value,
@@ -83,6 +85,7 @@ function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFormattedDate(value && formatDate ? formatDate(value) : '');
   }, [formatDate, value]);
 
@@ -323,6 +326,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       if (!preventFocusOpeningPicker.current) {
         showDatePickerPopup();
       }
+      // eslint-disable-next-line react-hooks/immutability
       preventFocusOpeningPicker.current = false;
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
@@ -456,6 +460,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar.current.focus();
     }
   }, [disableAutoFocus, open, props.disabled]);
+  // eslint-disable-next-line react-hooks/refs
   const calendarShorthand = slot.always(props.calendar, {
     defaultProps: {
       allFocusable,

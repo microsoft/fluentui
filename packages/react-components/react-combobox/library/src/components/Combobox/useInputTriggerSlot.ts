@@ -112,7 +112,9 @@ export function useInputTriggerSlot(
     activeDescendantController,
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onBlur = mergeCallbacks(trigger.onBlur, onBlur);
 
   // NVDA and JAWS have bugs that suppress reading the input value text when aria-activedescendant is set
@@ -167,9 +169,11 @@ export function useInputTriggerSlot(
     defaultOnKeyDown?.(event);
   });
 
+  // eslint-disable-next-line react-hooks/immutability
   trigger.onKeyDown = onKeyDown;
 
   if (hideActiveDescendant) {
+    // eslint-disable-next-line react-hooks/immutability
     trigger['aria-activedescendant'] = undefined;
   }
 

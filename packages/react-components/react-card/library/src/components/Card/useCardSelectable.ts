@@ -102,6 +102,7 @@ export const useCardSelectable = (
       selectableCheckboxProps['aria-label'] = referenceLabel;
     }
 
+    // eslint-disable-next-line react-hooks/refs
     return slot.optional(checkbox, {
       defaultProps: {
         ref: checkboxRef,
@@ -122,6 +123,7 @@ export const useCardSelectable = (
       return;
     }
 
+    // eslint-disable-next-line react-hooks/refs
     return slot.optional(floatingAction, {
       defaultProps: {
         ref: checkboxRef,
@@ -136,7 +138,9 @@ export const useCardSelectable = (
     }
 
     return {
+      // eslint-disable-next-line react-hooks/refs
       onClick: mergeCallbacks(onClick, onChangeHandler),
+      // eslint-disable-next-line react-hooks/refs
       onKeyDown: mergeCallbacks(onKeyDown, onKeyDownHandler),
     };
   }, [selectable, onChangeHandler, onClick, onKeyDown, onKeyDownHandler]);

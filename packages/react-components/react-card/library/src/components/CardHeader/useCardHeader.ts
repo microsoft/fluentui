@@ -68,6 +68,8 @@ export const useCardHeaderBase_unstable = (
   props: CardHeaderBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardHeaderBaseState => {
+  'use no memo';
+
   const { image, header, description, action } = props;
 
   const {
@@ -78,10 +80,12 @@ export const useCardHeaderBase_unstable = (
   const hasChildId = React.useRef(false);
   const generatedId = useId('fui-CardHeader__header', referenceId);
 
+  // eslint-disable-next-line react-hooks/refs
   const headerSlot = slot.optional(header, {
     renderByDefault: true,
     defaultProps: {
       ref: headerRef,
+      // eslint-disable-next-line react-hooks/refs
       id: !hasChildId.current ? referenceId : undefined,
     },
     elementType: 'div',

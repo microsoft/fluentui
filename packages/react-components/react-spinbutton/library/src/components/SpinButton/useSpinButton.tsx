@@ -52,6 +52,8 @@ export const useSpinButtonBase_unstable = (
   props: SpinButtonBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): SpinButtonBaseState => {
+  ('use no memo');
+
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -154,7 +156,6 @@ export const useSpinButtonBase_unstable = (
     if (inputRef.current) {
       // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
       // is not in sync with the user-entered native input value, and some screen readers end up reading the wrong value.
-      // eslint-disable-next-line react-compiler/react-compiler
       inputRef.current.ariaValueNow = newValue;
     }
   };
@@ -264,11 +265,15 @@ export const useSpinButtonBase_unstable = (
     valueToDisplay = textValue;
   } else if (value === null || currentValue === null) {
     valueToDisplay = displayValue ?? '';
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.value = null;
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.atBound = 'none';
   } else {
     const roundedValue = precisionRound(currentValue, precision);
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.value = roundedValue;
+    // eslint-disable-next-line react-hooks/refs
     internalState.current.atBound = getBound(roundedValue, min, max);
     if (isControlled) {
       valueToDisplay = displayValue ?? String(roundedValue);
@@ -279,6 +284,7 @@ export const useSpinButtonBase_unstable = (
 
   const state: SpinButtonBaseState = {
     spinState: keyboardSpinState,
+    // eslint-disable-next-line react-hooks/refs
     atBound: internalState.current.atBound,
 
     components: {
@@ -306,7 +312,9 @@ export const useSpinButtonBase_unstable = (
         disabled:
           nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'max' ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'both',
         'aria-label': 'Increment value',
         type: 'button',
@@ -319,7 +327,9 @@ export const useSpinButtonBase_unstable = (
         disabled:
           nativeProps.primary.readOnly ||
           nativeProps.primary.disabled ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'min' ||
+          // eslint-disable-next-line react-hooks/refs
           internalState.current.atBound === 'both',
         'aria-label': 'Decrement value',
         type: 'button',
@@ -328,26 +338,44 @@ export const useSpinButtonBase_unstable = (
     }),
   };
 
+  // eslint-disable-next-line react-hooks/refs
   state.input.value = valueToDisplay;
+  // eslint-disable-next-line react-hooks/refs
   state.input.ref = useMergedRefs(inputRef, ref);
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuemin'] = min;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuemax'] = max;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuenow'] = internalState.current.value ?? undefined;
+  // eslint-disable-next-line react-hooks/refs
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onInput = mergeCallbacks(state.input.onInput, handleInputChange);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onBlur = mergeCallbacks(state.input.onBlur, handleBlur);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onKeyDown = mergeCallbacks(state.input.onKeyDown, handleKeyDown);
+  // eslint-disable-next-line react-hooks/refs
   state.input.onKeyUp = mergeCallbacks(state.input.onKeyUp, handleKeyUp);
 
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseDown = mergeCallbacks(handleIncrementMouseDown, state.incrementButton.onMouseDown);
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseUp = mergeCallbacks(state.incrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  // eslint-disable-next-line react-hooks/refs
   state.incrementButton.onMouseLeave = mergeCallbacks(state.incrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseDown = mergeCallbacks(handleDecrementMouseDown, state.decrementButton.onMouseDown);
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseUp = mergeCallbacks(state.decrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  // eslint-disable-next-line react-hooks/refs
   state.decrementButton.onMouseLeave = mergeCallbacks(state.decrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
+  // eslint-disable-next-line react-hooks/refs
   return state;
 };
 

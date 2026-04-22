@@ -18,6 +18,8 @@ export const useCarouselViewport_unstable = (
   props: CarouselViewportProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselViewportState => {
+  'use no memo';
+
   const hasFocus = React.useRef(false);
   const hasMouse = React.useRef(false);
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);
@@ -53,9 +55,13 @@ export const useCarouselViewport_unstable = (
     }
   }, [enableAutoplay]);
 
+  // eslint-disable-next-line react-hooks/refs
   const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  // eslint-disable-next-line react-hooks/refs
   const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);
+  // eslint-disable-next-line react-hooks/refs
   const onMouseEnter = mergeCallbacks(props.onMouseEnter, handleMouseEnter);
+  // eslint-disable-next-line react-hooks/refs
   const onMouseLeave = mergeCallbacks(props.onMouseLeave, handleMouseLeave);
 
   return {

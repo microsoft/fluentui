@@ -52,6 +52,7 @@ export const useDrawerFooterStyles_unstable = (state: DrawerFooterState): Drawer
   const styles = useStyles();
   const rootStyles = useDrawerFooterStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     drawerFooterClassNames.root,
     styles,

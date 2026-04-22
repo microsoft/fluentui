@@ -15,6 +15,8 @@ export const DEFAULT_STRINGS = {
 };
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
+  'use no memo';
+
   const { dir } = useFluent();
   const { shape: contextShape, size: contextSize } = useAvatarContext();
   const {
@@ -36,6 +38,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       : propColor;
 
   if (state.initials) {
+    // eslint-disable-next-line react-hooks/immutability
     state.initials = slot.optional(props.initials, {
       renderByDefault: true,
       defaultProps: {
@@ -65,11 +68,14 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   if (!userProvidedAriaLabel && !userProvidedAriaLabelledby) {
     if (props.name) {
       if (badge) {
+        // eslint-disable-next-line react-hooks/immutability
         state.root['aria-labelledby'] = state.root.id + ' ' + badge.id;
       }
     } else if (state.initials) {
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
+      // eslint-disable-next-line react-hooks/immutability
       state.root['aria-labelledby'] = state.initials.id + (badge ? ' ' + badge.id : '');
+      // eslint-disable-next-line react-hooks/immutability
       delete state.root['aria-label'];
     }
     // Add the active state to the aria label
@@ -78,6 +84,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       if (state.root['aria-labelledby']) {
         // If using aria-labelledby, render a hidden span and append it to the labelledby
         const activeId = state.root.id + '__active';
+        // eslint-disable-next-line react-hooks/immutability
         state.root['aria-labelledby'] += ' ' + activeId;
         activeAriaLabelElement = (
           <span hidden id={activeId}>
@@ -86,6 +93,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
         );
       } else if (state.root['aria-label']) {
         // Otherwise, just append it to the aria-label
+        // eslint-disable-next-line react-hooks/immutability
         state.root['aria-label'] += ' ' + activeText;
       }
     }

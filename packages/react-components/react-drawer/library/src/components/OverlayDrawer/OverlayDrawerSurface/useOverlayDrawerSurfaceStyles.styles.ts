@@ -37,6 +37,7 @@ export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState
   const mountedAndClosed = !unmountOnClose && !open;
 
   if (backdrop) {
+    // eslint-disable-next-line react-hooks/immutability
     backdrop.className = mergeClasses(
       backdropResetStyles,
       treatBackdropAsNested && backdropStyles.nested,

@@ -68,6 +68,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   const rootBaseStyles = useRootBaseStyles();
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
@@ -77,10 +78,12 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   );
 
   if (state.header) {
+    // eslint-disable-next-line react-hooks/immutability
     state.header.className = mergeClasses(state.truncateHeader && styles.truncate, state.header?.className);
   }
 
   if (state.contentWrapper) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentWrapper.className = mergeClasses(
       styles.contentWrapper,
       state.truncateContent && styles.truncate,

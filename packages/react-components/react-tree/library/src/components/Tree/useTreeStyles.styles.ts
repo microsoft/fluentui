@@ -28,6 +28,7 @@ export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   const styles = useStyles();
   const isSubTree = state.level > 1;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     treeClassNames.root,
     baseStyles,

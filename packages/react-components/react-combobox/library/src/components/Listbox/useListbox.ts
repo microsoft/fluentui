@@ -40,7 +40,7 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  'use no memo';
+  ('use no memo');
 
   const { multiselect, disableAutoFocus = false } = props;
   const optionCollection = useOptionCollection();
@@ -63,6 +63,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     ? contextGetOptionsMatchingValue
     : optionCollection.getOptionsMatchingValue;
 
+  // eslint-disable-next-line react-hooks/immutability
   const listenerRef = React.useMemo(() => {
     let element: HTMLDivElement | null = null;
 
@@ -78,6 +79,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         return;
       }
 
+      // eslint-disable-next-line react-hooks/immutability
       element = el;
       element.addEventListener('activedescendantchange', listener);
     };

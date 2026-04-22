@@ -60,6 +60,8 @@ export const useSearchBoxBase_unstable = (
   props: SearchBoxBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): SearchBoxBaseState => {
+  'use no memo';
+
   const { disabled = false, root, contentBefore, dismiss, contentAfter, value, defaultValue, ...inputProps } = props;
 
   const searchBoxRootRef = React.useRef<HTMLDivElement>(null);
@@ -108,6 +110,7 @@ export const useSearchBoxBase_unstable = (
           ...rootProps,
           ref: useMergedRefs(rootProps?.ref, searchBoxRootRef),
           onFocus: mergeCallbacks(rootProps?.onFocus, onFocus),
+          // eslint-disable-next-line react-hooks/refs
           onBlur: mergeCallbacks(rootProps?.onBlur, onBlur),
         },
         {

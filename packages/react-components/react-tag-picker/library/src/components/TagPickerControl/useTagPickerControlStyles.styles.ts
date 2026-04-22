@@ -238,6 +238,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   const iconStyles = useIconStyles();
   const asideStyles = useAsideStyles();
   const secondaryActionStyles = useSecondaryActionStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerControlClassNames.root,
     styles.root,
@@ -251,6 +252,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   );
 
   if (state.aside) {
+    // eslint-disable-next-line react-hooks/immutability
     state.aside.className = mergeClasses(
       tagPickerControlClassNames.aside,
       asideStyles.root,
@@ -260,6 +262,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   }
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       tagPickerControlClassNames.expandIcon,
       iconStyles.icon,
@@ -270,6 +273,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   }
 
   if (state.secondaryAction) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryAction.className = mergeClasses(
       tagPickerControlClassNames.secondaryAction,
       secondaryActionStyles.root,

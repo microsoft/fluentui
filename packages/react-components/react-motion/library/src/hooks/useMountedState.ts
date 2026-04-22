@@ -11,6 +11,8 @@ export function useMountedState(
   visible: boolean = false,
   unmountOnExit: boolean = false,
 ): [boolean, (value: boolean) => void] {
+  'use no memo';
+
   const mountedRef = React.useRef<boolean>(unmountOnExit ? visible : true);
   const forceUpdate = useForceUpdate();
 
@@ -30,5 +32,6 @@ export function useMountedState(
     }
   });
 
+  // eslint-disable-next-line react-hooks/refs
   return [visible || mountedRef.current, setMounted];
 }

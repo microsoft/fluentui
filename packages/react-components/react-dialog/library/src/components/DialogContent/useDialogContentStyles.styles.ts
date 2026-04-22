@@ -37,6 +37,7 @@ export const useDialogContentStyles_unstable = (state: DialogContentState): Dial
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dialogContentClassNames.root, styles, state.root.className);
   return state;
 };

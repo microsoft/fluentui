@@ -58,6 +58,7 @@ export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTit
   const styles = useStyles();
   const { appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverTitleClassNames.root,
     styles.root,
@@ -66,6 +67,7 @@ export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTit
   );
 
   if (state.dismissButton) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismissButton.className = mergeClasses(
       teachingPopoverTitleClassNames.dismissButton,
       styles.dismissButton,

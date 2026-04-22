@@ -5,6 +5,8 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { isHTMLElement } from '@fluentui/react-utilities';
 
 export function useMessageBarReflow(enabled: boolean = false): {
+  'use no memo';
+
   ref: React.RefCallback<HTMLElement>;
   reflowing: boolean;
 } {
@@ -92,5 +94,6 @@ export function useMessageBarReflow(enabled: boolean = false): {
     };
   }, []);
 
+  // eslint-disable-next-line react-hooks/refs
   return { ref, reflowing: reflowingRef.current };
 }

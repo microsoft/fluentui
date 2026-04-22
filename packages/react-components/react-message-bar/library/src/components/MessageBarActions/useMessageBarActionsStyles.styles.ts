@@ -48,6 +48,7 @@ export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsStat
   const rootBaseStyles = useRootBaseStyles();
   const containerActionBaseStyles = useContainerActionBaseStyles();
   const multilineStyles = useMultilineStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     messageBarActionsClassNames.root,
     rootBaseStyles,
@@ -57,6 +58,7 @@ export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsStat
   );
 
   if (state.containerAction) {
+    // eslint-disable-next-line react-hooks/immutability
     state.containerAction.className = mergeClasses(
       messageBarActionsClassNames.containerAction,
       containerActionBaseStyles,

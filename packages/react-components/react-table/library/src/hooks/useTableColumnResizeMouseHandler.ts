@@ -10,6 +10,8 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   getOnMouseDown: (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => void;
   dragging: boolean;
 } {
+  'use no memo';
+
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);
@@ -45,6 +47,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const onDragEnd = React.useCallback(
     (event: NativeTouchOrMouseEvent) => {
       if (isMouseEvent(event)) {
+        // eslint-disable-next-line react-hooks/immutability
         targetDocument?.removeEventListener('mouseup', onDragEnd);
         targetDocument?.removeEventListener('mousemove', onDrag);
       }

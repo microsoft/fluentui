@@ -91,6 +91,8 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
 };
 
 function useStableDataGridContextValue() {
+  'use no memo';
+
   const ref = React.useRef(dataGridContextDefaultValue);
 
   // Heads up!
@@ -105,5 +107,6 @@ function useStableDataGridContextValue() {
     return null;
   });
 
+  // eslint-disable-next-line react-hooks/refs
   return ref.current!;
 }

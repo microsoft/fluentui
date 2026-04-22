@@ -24,6 +24,7 @@ export const useAccordionPanelStyles_unstable = (state: AccordionPanelState): Ac
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(accordionPanelClassNames.root, styles.root, state.root.className);
 
   return state;

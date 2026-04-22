@@ -340,6 +340,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const inputStyles = useInputElementStyles();
   const contentStyles = useContentStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     inputClassNames.root,
     useRootClassName(),
@@ -356,6 +357,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     inputClassNames.input,
     useInputClassName(),
@@ -368,6 +370,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
 
   const contentClasses = [useContentClassName(), disabled && contentStyles.disabled, contentStyles[size]];
   if (state.contentBefore) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentBefore.className = mergeClasses(
       inputClassNames.contentBefore,
       ...contentClasses,
@@ -375,6 +378,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     );
   }
   if (state.contentAfter) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentAfter.className = mergeClasses(
       inputClassNames.contentAfter,
       ...contentClasses,

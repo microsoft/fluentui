@@ -22,14 +22,18 @@ import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarY
 const MONTHS_PER_ROW = 4;
 
 function useAnimateBackwards({ navigatedDate }: { navigatedDate: CalendarMonthProps['navigatedDate'] }) {
+  'use no memo';
+
   const currentYear = navigatedDate.getFullYear();
 
   const previousYearRef = React.useRef<number | undefined>(undefined);
   React.useEffect(() => {
     previousYearRef.current = currentYear;
   });
+  // eslint-disable-next-line react-hooks/refs
   const previousYear = previousYearRef.current;
 
+  // eslint-disable-next-line react-hooks/refs
   if (previousYear === undefined || previousYear === currentYear) {
     return undefined;
   } else {

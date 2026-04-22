@@ -45,6 +45,8 @@ export const useToolbarRadioButtonBase_unstable = (
   props: ToolbarRadioButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarRadioButtonBaseState => {
+  'use no memo';
+
   const handleRadio = useToolbarContext_unstable(ctx => ctx.handleRadio);
   const checked = useToolbarContext_unstable(ctx => !!ctx.checkedValues[props.name]?.includes(props.value));
 
@@ -65,7 +67,9 @@ export const useToolbarRadioButtonBase_unstable = (
       onClickOriginal?.(e);
     },
   );
+  // eslint-disable-next-line react-hooks/immutability
   state.root['aria-pressed'] = undefined;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.onClick = handleOnClick;
 
   return state;
