@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import type { PresenceComponentProps } from '@fluentui/react-components';
-import { Scale, type ScaleParams } from '@fluentui/react-motion-components-preview';
+import { Slide, type SlideParams } from '@fluentui/react-motion-components-preview';
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
@@ -11,10 +11,10 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultScale = (props: PresenceComponentProps & ScaleParams): JSXElement => {
+export const DefaultSlide = (props: PresenceComponentProps & SlideParams): JSXElement => {
   return (
-    <Scale {...props}>
+    <Slide {...props}>
       <LoremIpsum />
-    </Scale>
+    </Slide>
   );
 };
