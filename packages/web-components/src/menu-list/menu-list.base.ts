@@ -171,7 +171,7 @@ export class BaseMenuList extends FASTElement {
   /**
    * check if the item is a menu item
    */
-  protected isMenuItemElement = (el: Element): el is MenuItem => {
+  protected isMenuItemElement(el: Element): el is MenuItem {
     return isMenuItem(el) || (isHTMLElement(el) && !!el.role && el.role in BaseMenuList.focusableElementRoles);
-  };
+  }
 }

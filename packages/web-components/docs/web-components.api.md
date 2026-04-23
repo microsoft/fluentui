@@ -742,7 +742,7 @@ export class BaseMenuList extends FASTElement {
     elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
-    protected isMenuItemElement: (el: Element) => el is MenuItem;
+    protected isMenuItemElement(el: Element): el is MenuItem;
     // @internal (undocumented)
     readonly isNestedMenu: () => boolean;
     // @internal (undocumented)

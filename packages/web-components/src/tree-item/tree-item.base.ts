@@ -1,7 +1,6 @@
-import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
-import { TreeItem } from './tree-item.js';
 
 export class BaseTreeItem extends FASTElement {
   /**
@@ -62,7 +61,7 @@ export class BaseTreeItem extends FASTElement {
           isTreeItem(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
         );
         while (walker.nextNode()) {
-          const item = walker.currentNode as TreeItem;
+          const item = walker.currentNode as BaseTreeItem;
           if (next) {
             item.removeAttribute('focusgroup');
           } else {

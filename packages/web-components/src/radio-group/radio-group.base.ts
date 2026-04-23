@@ -1,6 +1,5 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import {
-  findLastIndex,
   keyArrowDown,
   keyArrowLeft,
   keyArrowRight,
@@ -164,7 +163,7 @@ export class BaseRadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+    const checkedIndex = this.enabledRadios.findLastIndex(x => x.initialChecked);
 
     next.forEach((radio, index) => {
       radio.ariaPosInSet = `${index + 1}`;
@@ -187,15 +186,8 @@ export class BaseRadioGroup extends FASTElement {
     if (
       !this.value ||
       // This logic covers the case when the RadioGroup doesn't have a `value`
-      // attribute, but does have a checked child Radio. Without this condition,
-      // the checked Radio's value will be assigned to `this.value`, and
-      // `checkedIndex` will be the checked Radio's index, but `this.checkedIndex`
-      // will remain `undefined`, which would cause the RadioGroup to add
-      // `tabindex=-1` to the checked Radio, and effectively makes the whole
-      // RadioGroup unfocusable.
       (this.value && typeof this.checkedIndex !== 'number' && checkedIndex >= 0)
     ) {
-      // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
       this.checkedIndex = checkedIndex;
     }
 
