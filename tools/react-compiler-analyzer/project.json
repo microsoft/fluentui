@@ -1,0 +1,19 @@
+{
+  "name": "react-compiler-analyzer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/react-compiler-analyzer/src",
+  "projectType": "library",
+  "tags": ["platform:node", "tools"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/react-compiler-analyzer",
+        "main": "tools/react-compiler-analyzer/src/index.ts",
+        "tsConfig": "tools/react-compiler-analyzer/tsconfig.lib.json",
+        "assets": ["tools/react-compiler-analyzer/*.md"]
+      }
+    }
+  }
+}

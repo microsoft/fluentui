@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-compiler-analyzer",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "bin": {
+    "react-compiler-analyzer": "./bin/react-compiler-analyzer.js"
+  },
+  "dependencies": {
+    "@swc/helpers": "~0.5.1",
+    "yargs": "^17.7.2",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5"
+  },
+  "peerDependencies": {
+    "babel-plugin-react-compiler": "^1.0.0"
+  }
+}
