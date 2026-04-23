@@ -2,6 +2,35 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.26.14",
+      "version": "9.26.14",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fc37669010c08b57352656569c789974ff61b990",
+            "comment": "fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:44 GMT",
       "tag": "@fluentui/react-tabster_v9.26.13",
       "version": "9.26.13",

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:00 GMT",
+      "tag": "@fluentui/react-utilities_v9.26.3",
+      "version": "9.26.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4adb3ad77d16b40a79f12e3a3afd78cb09bf9c6a",
+            "comment": "fix: add focusgroupstart property to baseElementProperties"
+          }
+        ],
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:44 GMT",
       "tag": "@fluentui/react-utilities_v9.26.2",
       "version": "9.26.2",
