@@ -111,6 +111,61 @@ export type { ButtonSlots, ButtonProps, ButtonState } from './Button';
 export { Checkbox, renderCheckbox, useCheckbox } from './Checkbox';
 export type { CheckboxSlots, CheckboxProps, CheckboxState } from './Checkbox';
 
+export {
+  Dialog,
+  DialogSurface,
+  DialogTrigger,
+  DialogTitle,
+  DialogHeader,
+  DialogBody,
+  DialogActions,
+  renderDialog_unstable,
+  renderDialogSurface_unstable,
+  renderDialogTitle_unstable,
+  renderDialogHeader_unstable,
+  renderDialogBody_unstable,
+  renderDialogActions_unstable,
+  useDialog_unstable,
+  useDialogContextValues_unstable,
+  useDialogSurface_unstable,
+  useDialogTrigger_unstable,
+  useDialogTitle_unstable,
+  useDialogHeader_unstable,
+  useDialogBody_unstable,
+  useDialogActions_unstable,
+  useDialogContext,
+  useDialogSurfaceContext,
+} from './Dialog';
+export type {
+  DialogContextValue,
+  DialogContextValues,
+  DialogModalType,
+  DialogOpenChangeData,
+  DialogOpenChangeEvent,
+  DialogOpenChangeEventHandler,
+  DialogProps,
+  DialogState,
+  DialogSurfaceContextValue,
+  DialogSurfaceProps,
+  DialogSurfaceSlots,
+  DialogSurfaceState,
+  DialogTriggerAction,
+  DialogTriggerProps,
+  DialogTriggerState,
+  DialogTitleProps,
+  DialogTitleSlots,
+  DialogTitleState,
+  DialogHeaderProps,
+  DialogHeaderSlots,
+  DialogHeaderState,
+  DialogBodyProps,
+  DialogBodySlots,
+  DialogBodyState,
+  DialogActionsProps,
+  DialogActionsSlots,
+  DialogActionsState,
+} from './Dialog';
+
 export { Divider, renderDivider, useDivider } from './Divider';
 export type { DividerSlots, DividerProps, DividerState } from './Divider';
 
