@@ -265,10 +265,45 @@ function buildWorkspaceProjectConfiguration(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
+    const reactCompilerAnalyzerTarget = buildReactCompilerAnalyzerTarget(projectRoot, options, context, config);
+    if (reactCompilerAnalyzerTarget) {
+      targets['react-compiler-analyzer'] = reactCompilerAnalyzerTarget;
+    }
+
     return { targets };
   }
 
   return { targets };
+}
+
+function buildReactCompilerAnalyzerTarget(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): TargetConfiguration | null {
+  if (!config.packageJSON.peerDependencies?.['react']) {
+    return null;
+  }
+
+  return {
+    command: `${config.pmc.exec} react-compiler-analyzer ./src`,
+    options: { cwd: projectRoot },
+    cache: true,
+    inputs: ['default', { externalDependencies: ['babel-plugin-react-compiler'] }],
+    metadata: {
+      technologies: ['react-compiler'],
+      description: "Analyze redundant 'use no memo' directives",
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer --help`,
+        example: {
+          options: {
+            fix: true,
+          },
+        },
+      },
+    },
+  };
 }
 
 function resolveExportSubpathsOption(config: TaskBuilderConfig): {

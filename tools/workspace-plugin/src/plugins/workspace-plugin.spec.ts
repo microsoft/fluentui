@@ -906,6 +906,74 @@ describe(`workspace-plugin`, () => {
         }
       `);
     });
+
+    it('should add react-compiler-analyzer target only if react is in peerDependencies', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj/library',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          peerDependencies: { react: '>=16' },
+        } satisfies Partial<PackageJson>),
+      });
+      const results = await createNodesFunction(['proj/library/project.json'], options, context);
+      const targets = getTargets(results, 'proj/library');
+
+      expect(targets?.['react-compiler-analyzer']).toMatchInlineSnapshot(`
+        Object {
+          "cache": true,
+          "command": "yarn react-compiler-analyzer ./src",
+          "inputs": Array [
+            "default",
+            Object {
+              "externalDependencies": Array [
+                "babel-plugin-react-compiler",
+              ],
+            },
+          ],
+          "metadata": Object {
+            "description": "Analyze redundant 'use no memo' directives",
+            "help": Object {
+              "command": "yarn react-compiler-analyzer --help",
+              "example": Object {
+                "options": Object {
+                  "fix": true,
+                },
+              },
+            },
+            "technologies": Array [
+              "react-compiler",
+            ],
+          },
+          "options": Object {
+            "cwd": "proj/library",
+          },
+        }
+      `);
+    });
+
+    it('should not add react-compiler-analyzer target if react is not in peerDependencies', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj/library',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      });
+      const results = await createNodesFunction(['proj/library/project.json'], options, context);
+      const targets = getTargets(results, 'proj/library');
+
+      expect(targets?.['react-compiler-analyzer']).toBeUndefined();
+    });
   });
 });
 
