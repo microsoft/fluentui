@@ -17,7 +17,7 @@ describe('Toolbar', () => {
       </Toolbar>,
     );
 
-    expect(getByRole('toolbar')).toHaveAttribute('focusgroup', 'toolbar inline');
+    expect(getByRole('toolbar')).toHaveAttribute('focusgroup', 'toolbar inline wrap');
     expect(getByRole('toolbar')).not.toHaveAttribute('data-vertical');
 
     expect(getAllByRole('button')).toHaveLength(2);
@@ -36,7 +36,7 @@ describe('Toolbar', () => {
       </Toolbar>,
     );
 
-    expect(getByRole('toolbar')).toHaveAttribute('focusgroup', 'toolbar block');
+    expect(getByRole('toolbar')).toHaveAttribute('focusgroup', 'toolbar block wrap');
     expect(getByRole('toolbar')).toHaveAttribute('data-vertical');
 
     const button1 = getByRole('button', { name: 'Bold' });
