@@ -44,6 +44,7 @@ import type { CheckboxBaseProps } from '@fluentui/react-checkbox';
 import { CheckboxBaseState } from '@fluentui/react-checkbox';
 import type { CheckboxSlots as CheckboxSlots_2 } from '@fluentui/react-checkbox';
 import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
@@ -52,6 +53,8 @@ import type { FieldBaseProps } from '@fluentui/react-field';
 import { FieldBaseState } from '@fluentui/react-field';
 import { FieldContextValues } from '@fluentui/react-field';
 import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
+import type { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderProps } from '@fluentui/react-provider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputBaseProps } from '@fluentui/react-input';
 import { InputBaseState } from '@fluentui/react-input';
@@ -60,6 +63,23 @@ import { JSXElement } from '@fluentui/react-utilities';
 import type { LinkBaseProps } from '@fluentui/react-link';
 import { LinkBaseState } from '@fluentui/react-link';
 import type { LinkSlots as LinkSlots_2 } from '@fluentui/react-link';
+import { MessageBarActionsContextValues as MessageBarActionsContextValues_2 } from '@fluentui/react-message-bar';
+import type { MessageBarActionsProps as MessageBarActionsProps_2 } from '@fluentui/react-message-bar';
+import type { MessageBarActionsSlots as MessageBarActionsSlots_2 } from '@fluentui/react-message-bar';
+import { MessageBarActionsState as MessageBarActionsState_2 } from '@fluentui/react-message-bar';
+import type { MessageBarBaseProps } from '@fluentui/react-message-bar';
+import { MessageBarBaseState } from '@fluentui/react-message-bar';
+import { MessageBarBodyContextValues as MessageBarBodyContextValues_2 } from '@fluentui/react-message-bar';
+import type { MessageBarBodyProps as MessageBarBodyProps_2 } from '@fluentui/react-message-bar';
+import type { MessageBarBodySlots as MessageBarBodySlots_2 } from '@fluentui/react-message-bar';
+import { MessageBarBodyState as MessageBarBodyState_2 } from '@fluentui/react-message-bar';
+import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarContextValues as MessageBarContextValues_2 } from '@fluentui/react-message-bar';
+import type { MessageBarIntent } from '@fluentui/react-message-bar';
+import type { MessageBarSlots as MessageBarSlots_2 } from '@fluentui/react-message-bar';
+import type { MessageBarTitleProps as MessageBarTitleProps_2 } from '@fluentui/react-message-bar';
+import type { MessageBarTitleSlots as MessageBarTitleSlots_2 } from '@fluentui/react-message-bar';
+import { MessageBarTitleState as MessageBarTitleState_2 } from '@fluentui/react-message-bar';
 import type { ProgressBarBaseProps } from '@fluentui/react-progress';
 import type { ProgressBarBaseState } from '@fluentui/react-progress';
 import type { ProgressBarSlots as ProgressBarSlots_2 } from '@fluentui/react-progress';
@@ -99,6 +119,7 @@ import type { SkeletonSlots as SkeletonSlots_2 } from '@fluentui/react-skeleton'
 import type { SliderBaseProps } from '@fluentui/react-slider';
 import { SliderBaseState } from '@fluentui/react-slider';
 import type { SliderSlots as SliderSlots_2 } from '@fluentui/react-slider';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SpinButtonBaseProps } from '@fluentui/react-spinbutton';
 import { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 import type { SpinButtonSlots as SpinButtonSlots_2 } from '@fluentui/react-spinbutton';
@@ -121,6 +142,23 @@ import { TextareaBaseState } from '@fluentui/react-textarea';
 import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
 import type { ToggleButtonBaseProps } from '@fluentui/react-button';
 import type { ToggleButtonBaseState } from '@fluentui/react-button';
+import type { ToolbarBaseProps } from '@fluentui/react-toolbar';
+import { ToolbarBaseState } from '@fluentui/react-toolbar';
+import type { ToolbarButtonBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarButtonBaseState } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues as ToolbarContextValues_2 } from '@fluentui/react-toolbar';
+import type { ToolbarDividerBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarDividerBaseState } from '@fluentui/react-toolbar';
+import type { ToolbarGroupProps as ToolbarGroupProps_2 } from '@fluentui/react-toolbar';
+import { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluentui/react-toolbar';
+import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
+import type { ToolbarToggleButtonBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
+import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
+import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
@@ -371,6 +409,75 @@ export type LinkState = LinkBaseState & {
 };
 
 // @public
+export const MessageBar: ForwardRefComponent<MessageBarProps>;
+
+// @public
+export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
+
+// @public (undocumented)
+export type MessageBarActionsContextValues = MessageBarActionsContextValues_2;
+
+// @public (undocumented)
+export type MessageBarActionsProps = MessageBarActionsProps_2;
+
+// @public (undocumented)
+export type MessageBarActionsSlots = MessageBarActionsSlots_2;
+
+// @public (undocumented)
+export type MessageBarActionsState = MessageBarActionsState_2 & {
+    root: {
+        'data-layout'?: string;
+        'data-has-actions'?: string;
+    };
+};
+
+// @public
+export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
+
+// @public (undocumented)
+export type MessageBarBodyContextValues = MessageBarBodyContextValues_2;
+
+// @public (undocumented)
+export type MessageBarBodyProps = MessageBarBodyProps_2;
+
+// @public (undocumented)
+export type MessageBarBodySlots = MessageBarBodySlots_2;
+
+// @public (undocumented)
+export type MessageBarBodyState = MessageBarBodyState_2;
+
+// @public (undocumented)
+export type MessageBarContextValues = MessageBarContextValues_2;
+
+export { MessageBarIntent }
+
+// @public (undocumented)
+export type MessageBarProps = MessageBarBaseProps;
+
+// @public (undocumented)
+export type MessageBarSlots = MessageBarSlots_2;
+
+// @public (undocumented)
+export type MessageBarState = MessageBarBaseState & {
+    root: {
+        'data-layout'?: string;
+        'data-intent'?: string;
+    };
+};
+
+// @public
+export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
+
+// @public (undocumented)
+export type MessageBarTitleProps = MessageBarTitleProps_2;
+
+// @public (undocumented)
+export type MessageBarTitleSlots = MessageBarTitleSlots_2;
+
+// @public (undocumented)
+export type MessageBarTitleState = MessageBarTitleState_2;
+
+// @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
 // @public
@@ -381,6 +488,15 @@ export type ProgressBarSlots = ProgressBarSlots_2;
 
 // @public
 export type ProgressBarState = ProgressBarBaseState;
+
+// @public
+export const Provider: React_2.ForwardRefExoticComponent<Omit<ProviderSlots, "root"> & React_2.FragmentProps & Pick<FluentProviderProps, "dir" | "targetDocument"> & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export type ProviderProps = ComponentProps<ProviderSlots> & Pick<FluentProviderProps, 'dir' | 'targetDocument'>;
+
+// @public
+export type ProviderState = ComponentState<ProviderSlots> & Pick<FluentProviderProps, 'dir' | 'targetDocument'>;
 
 // @public
 export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots_2>, "input">, "onChange" | "size"> & {
@@ -510,7 +626,22 @@ export const renderInput: (state: InputBaseState) => JSXElement;
 export const renderLink: (state: LinkBaseState) => JSXElement;
 
 // @public
+export const renderMessageBar: (state: MessageBarBaseState, contexts: MessageBarContextValues_2) => JSXElement;
+
+// @public
+export const renderMessageBarActions: (state: MessageBarActionsState_2, contexts: MessageBarActionsContextValues_2) => JSXElement;
+
+// @public
+export const renderMessageBarBody: (state: MessageBarBodyState_2, contextValues: MessageBarBodyContextValues_2) => JSXElement;
+
+// @public
+export const renderMessageBarTitle: (state: MessageBarTitleState_2) => JSXElement;
+
+// @public
 export const renderProgressBar: (state: ProgressBarState) => JSXElement;
+
+// @public
+export const renderProvider: (state: ProviderState, contextValues: FluentProviderContextValues) => JSXElement;
 
 // @public
 export const renderRadio: (state: RadioBaseState) => JSXElement;
@@ -562,6 +693,24 @@ export const renderTextarea: (state: TextareaBaseState) => JSXElement;
 
 // @public
 export const renderToggleButton: (state: ButtonBaseState) => JSXElement;
+
+// @public
+export const renderToolbar: (state: ToolbarBaseState, contextValues: ToolbarContextValues_2) => JSXElement;
+
+// @public
+export const renderToolbarButton: (state: ButtonBaseState) => JSXElement;
+
+// @public
+export const renderToolbarDivider: (state: DividerBaseState) => JSXElement;
+
+// @public
+export const renderToolbarGroup: (state: ToolbarGroupState_2) => JSXElement;
+
+// @public
+export const renderToolbarRadioGroup: (state: ToolbarGroupState_2) => JSXElement;
+
+// @public
+export const renderToolbarToggleButton: (state: ButtonBaseState) => JSXElement;
 
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
@@ -757,6 +906,98 @@ export type ToggleButtonState = ToggleButtonBaseState & {
 };
 
 // @public
+export const Toolbar: ForwardRefComponent<ToolbarProps>;
+
+// @public
+export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
+
+// @public (undocumented)
+export type ToolbarButtonProps = ToolbarButtonBaseProps;
+
+// @public (undocumented)
+export type ToolbarButtonState = ToolbarButtonBaseState & {
+    root: {
+        'data-vertical'?: string;
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+    };
+};
+
+// @public (undocumented)
+export type ToolbarContextValues = ToolbarContextValues_2;
+
+// @public
+export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
+
+// @public (undocumented)
+export type ToolbarDividerProps = ToolbarDividerBaseProps;
+
+// @public (undocumented)
+export type ToolbarDividerState = ToolbarDividerBaseState & {
+    root: {
+        'data-vertical'?: string;
+    };
+};
+
+// @public
+export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public (undocumented)
+export type ToolbarGroupProps = ToolbarGroupProps_2;
+
+// @public (undocumented)
+export type ToolbarGroupState = ToolbarGroupState_2 & {
+    root: {
+        'data-vertical'?: string;
+    };
+};
+
+// @public (undocumented)
+export type ToolbarProps = ToolbarBaseProps;
+
+// @public
+export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public (undocumented)
+export type ToolbarRadioGroupProps = ToolbarRadioGroupProps_2;
+
+// @public (undocumented)
+export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
+    vertical?: boolean;
+    root: {
+        'data-vertical'?: string;
+    };
+};
+
+// @public (undocumented)
+export type ToolbarSlots = ToolbarSlots_2;
+
+// @public (undocumented)
+export type ToolbarState = ToolbarBaseState & {
+    root: {
+        'data-vertical'?: string;
+        focusgroup?: string;
+    };
+};
+
+// @public
+export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
+
+// @public (undocumented)
+export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps;
+
+// @public (undocumented)
+export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-checked'?: string;
+    };
+};
+
+// @public
 export const useAccordion: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
 
 // @public
@@ -817,7 +1058,36 @@ export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) =
 export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>) => LinkState;
 
 // @public
+export const useMessageBar: (props: MessageBarProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarState;
+
+// @public
+export const useMessageBarActions: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarActionsState;
+
+// @public
+export const useMessageBarActionsContextValues: () => MessageBarActionsContextValues;
+
+// @public
+export const useMessageBarBody: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
+
+// @public
+export const useMessageBarBodyContextValues: typeof useMessageBarBodyContextValues_unstable;
+
+// @public
+export const useMessageBarContext: () => MessageBarContextValue;
+
+// @public
+export const useMessageBarContextValues: (state: MessageBarState) => MessageBarContextValues;
+
+// @public
+export const useMessageBarTitle: (props: MessageBarTitleProps, ref: React_2.Ref<HTMLElement>) => MessageBarTitleState;
+
+// @public
 export const useProgressBar: (props: ProgressBarProps, ref: React_2.Ref<HTMLDivElement>) => ProgressBarState;
+
+// @public (undocumented)
+export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement>) => ProviderState;
+
+export { useProviderContext }
 
 // @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
@@ -869,6 +1139,30 @@ export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaEl
 
 // @public
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToggleButtonState;
+
+// @public
+export const useToolbar: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;
+
+// @public
+export const useToolbarButton: (props: ToolbarButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarButtonState;
+
+// @public
+export const useToolbarContext: <T>(selector: ContextSelector<ToolbarContextValue, T>) => T;
+
+// @public
+export const useToolbarContextValues: (state: ToolbarState) => ToolbarContextValues;
+
+// @public
+export const useToolbarDivider: (props: ToolbarDividerProps, ref: React_2.Ref<HTMLElement>) => ToolbarDividerState;
+
+// @public
+export const useToolbarGroup: (props: ToolbarGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarGroupState;
+
+// @public
+export const useToolbarRadioGroup: (props: ToolbarRadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarRadioGroupState;
+
+// @public
+export const useToolbarToggleButton: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

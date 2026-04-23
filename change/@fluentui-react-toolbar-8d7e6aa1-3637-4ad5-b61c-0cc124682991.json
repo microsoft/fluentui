@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use subtle appearance for radio button by default",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

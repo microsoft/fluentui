@@ -32,8 +32,10 @@
     "@fluentui/react-input": "^9.8.0",
     "@fluentui/react-label": "^9.3.15",
     "@fluentui/react-link": "^9.8.0",
+    "@fluentui/react-message-bar": "^9.6.23",
     "@fluentui/react-persona": "^9.7.1",
     "@fluentui/react-progress": "^9.4.17",
+    "@fluentui/react-provider": "^9.22.15",
     "@fluentui/react-radio": "^9.6.0",
     "@fluentui/react-rating": "^9.4.0",
     "@fluentui/react-search": "^9.4.0",
@@ -47,6 +49,7 @@
     "@fluentui/react-tabs": "^9.11.2",
     "@fluentui/react-tags": "^9.7.19",
     "@fluentui/react-textarea": "^9.7.0",
+    "@fluentui/react-toolbar": "^9.7.7",
     "@fluentui/react-utilities": "^9.26.2",
     "@swc/helpers": "^0.5.1"
   },

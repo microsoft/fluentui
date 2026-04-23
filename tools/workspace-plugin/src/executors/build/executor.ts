@@ -8,6 +8,7 @@ import { NormalizedOptions, normalizeOptions, processAsyncQueue, runInParallel, 
 
 import { measureEnd, measureStart } from '../../utils';
 import generateApiExecutor from '../generate-api/executor';
+import { type GenerateApiExecutorSchema } from '../generate-api/schema';
 
 import { type BuildExecutorSchema } from './schema';
 
@@ -22,7 +23,14 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
     () =>
       runInParallel(
         () => runBuild(options, context),
-        () => (options.generateApi ? generateApiExecutor({}, context).then(res => res.success) : Promise.resolve(true)),
+        () => {
+          if (!options.generateApi) {
+            return Promise.resolve(true);
+          }
+          const generateApiSchema: GenerateApiExecutorSchema =
+            typeof options.generateApi === 'object' ? options.generateApi : {};
+          return generateApiExecutor(generateApiSchema, context).then(res => res.success);
+        },
       ),
     () => copyAssets(assetFiles),
   );
