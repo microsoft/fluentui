@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: memoize context values in use*ContextValues hooks",
+  "packageName": "@fluentui/react-tree",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
