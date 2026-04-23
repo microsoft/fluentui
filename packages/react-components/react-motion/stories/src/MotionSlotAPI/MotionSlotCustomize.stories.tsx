@@ -7,6 +7,7 @@ import {
   makeStyles,
   motionSlot,
   motionTokens,
+  slot,
   tokens,
 } from '@fluentui/react-components';
 import type { ComponentProps, ComponentState, JSXElement, MotionSlotProps, Slot } from '@fluentui/react-components';
@@ -48,7 +49,7 @@ const usePulseIndicator = (props: PulseIndicatorProps): PulseIndicatorState => {
       root: 'div',
       pulseMotion: PulseMotion,
     },
-    root: rootProps as PulseIndicatorState['root'],
+    root: slot.always(rootProps, { elementType: 'div' }),
     pulseMotion: motionSlot(pulseMotionProp, {
       elementType: PulseMotion,
       defaultProps: {},

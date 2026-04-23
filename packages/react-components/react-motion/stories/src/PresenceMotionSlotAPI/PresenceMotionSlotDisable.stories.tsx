@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { assertSlots, Field, makeStyles, presenceMotionSlot, Switch, tokens } from '@fluentui/react-components';
+import { assertSlots, Field, makeStyles, presenceMotionSlot, slot, Switch, tokens } from '@fluentui/react-components';
 import type {
   ComponentProps,
   ComponentState,
@@ -36,7 +36,7 @@ const useInfoPanel = (props: InfoPanelProps): InfoPanelState => {
       root: 'div',
       surfaceMotion: Fade,
     },
-    root: rootProps as InfoPanelState['root'],
+    root: slot.always(rootProps, { elementType: 'div' }),
     surfaceMotion: presenceMotionSlot(surfaceMotion, {
       elementType: Fade,
       defaultProps: {
