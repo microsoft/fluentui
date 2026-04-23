@@ -99,11 +99,6 @@ describe('useContextSelector', () => {
     expect(onUpdate).toHaveBeenCalledTimes(2);
   });
 
-  // Regression test for the eager-bailout issue with `useState().
-  //
-  // With the previous `[value, selected]` + `setState(prev => prev)` bailout, React's eager path silently stopped
-  // working after the first listener-driven render committed. That resulted in extra component-function calls
-  // on subsequent context updates, even when the selected slice didn't change.
   it('memoized consumers re-render only when their selected slice changes', () => {
     const MemoizedTestComponent = React.memo(TestComponent);
 
