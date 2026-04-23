@@ -60,6 +60,15 @@ const Provider: React.FC<{ children?: React.ReactNode }> = props => {
 // the legacy `useState`-bailout hook, `item-1`'s render count grows from 3 to 4
 // on click 3.
 describe('useContextSelector — eager-bailout regression', () => {
+  beforeEach(() => {
+    // Cypress reuses the component iframe window across retries within the
+    // same spec, so state stored on `window` accumulates. Reset before each
+    // test so render-count assertions are absolute, not cumulative.
+    cy.window({ log: false }).then((win: Window) => {
+      (win as WindowWithRenderCounts).__useContextSelectorRenderCounts__ = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    });
+  });
+
   it('memoized consumers whose selected slice did not change must not execute their render function', () => {
     mount(
       <Provider>
