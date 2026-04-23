@@ -4,6 +4,10 @@ import {
   RULE_NAME as consistentCallbackTypeName,
   rule as consistentCallbackType,
 } from './rules/consistent-callback-type';
+import {
+  RULE_NAME as noUnjustifiedUseNoMemoName,
+  rule as noUnjustifiedUseNoMemo,
+} from './rules/no-unjustified-use-no-memo';
 
 /**
  * Import your custom workspace rules at the top of this file.
@@ -34,5 +38,6 @@ module.exports = {
     [consistentCallbackTypeName]: consistentCallbackType,
     [noRestrictedGlobalsName]: noRestrictedGlobals,
     [noMissingJsxPragmaName]: noMissingJsxPragma,
+    [noUnjustifiedUseNoMemoName]: noUnjustifiedUseNoMemo,
   },
 };
