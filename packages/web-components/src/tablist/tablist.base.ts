@@ -131,7 +131,6 @@ export class BaseTablist extends FASTElement {
 
       const isSelected = this.activeid === tab.id;
       tab.setAttribute('aria-selected', isSelected.toString());
-      tab.toggleAttribute('focusgroupstart', isSelected);
 
       // Only set the data-hasIndent attribute if the tab has a start slot and the orientation is vertical
       tab.toggleAttribute('data-hasIndent', hasStartSlot && this.orientation === TablistOrientation.vertical);
@@ -176,7 +175,6 @@ export class BaseTablist extends FASTElement {
 
     if (prevTab) {
       prevTab.setAttribute('aria-selected', 'false');
-      prevTab.toggleAttribute('focusgroupstart', false);
       const prevPanel = this.tabPanelMap.get(prevTab);
       if (prevPanel) {
         prevPanel.hidden = true;
@@ -184,7 +182,6 @@ export class BaseTablist extends FASTElement {
     }
 
     nextTab.setAttribute('aria-selected', 'true');
-    nextTab.toggleAttribute('focusgroupstart', true);
     const nextPanel = this.tabPanelMap.get(nextTab);
     if (nextPanel) {
       nextPanel.hidden = false;

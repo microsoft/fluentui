@@ -117,7 +117,6 @@ export class BaseMenuList extends FASTElement {
 
     this.menuItems?.forEach((item: HTMLElement) => {
       item.dataset.indent = `${indent}`;
-      item.tabIndex = item.hasAttribute('disabled') ? -1 : 0;
     });
   }
 
