@@ -152,7 +152,6 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
       // Dismiss the tooltip when the document becomes hidden (e.g. tab backgrounded,
       // app switched on mobile). The original trigger (hover/tap/focus) is no longer
       // active in this case, so persisting the tooltip is a stale UI state.
-      // See https://github.com/microsoft/fluentui/issues/35301
       const onDocumentVisibilityChange = () => {
         if (targetDocument?.visibilityState === 'hidden') {
           thisTooltip.hide();
