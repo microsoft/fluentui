@@ -11,7 +11,6 @@ import {
 } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
 import { stringifyDataAttribute } from '../../../utils';
-import { useFocusScope } from '../../../hooks';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
@@ -24,7 +23,6 @@ import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.typ
  * - Calls `close()` when the dialog should close
  *
  * Focus management is fully delegated to the browser:
- * - Tab / Shift+Tab wrap within the dialog boundary via `useFocusScope` (loop mode).
  * - On open, the browser's native dialog focusing steps move focus to the first
  *   focusable descendant (or the dialog itself if none).
  * - On close, the browser restores focus to the element that was focused before
@@ -61,19 +59,6 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   if (open && !shouldRender) {
     setShouldRender(true);
   }
-
-  // Tab looping — useFocusScope provides the Tab / Shift+Tab wrap handler.
-  // Focus trapping is not needed here since native showModal() handles it for modal/alert,
-  // and non-modal dialogs are intentionally not trapped.
-  //
-  // For modal/alert dialogs, showModal() stores the previously-focused element and restores
-  // it when dialog.close() is called. Suppress useFocusScope's own unmount restore to avoid
-  // a double focus-restore race. Non-modal dialogs use show() which does not restore focus,
-  // so the hook's restore is needed there.
-  const { containerProps: focusScopeProps } = useFocusScope({
-    loop: true,
-    onUnmountAutoFocus: modalType !== 'non-modal' ? e => e.preventDefault() : undefined,
-  });
 
   // Main effect: open/close the native dialog and suppress native Escape.
   //
@@ -128,14 +113,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     };
   }, [open, modalType, targetDocument, unmountOnClose]);
 
-  // Handle keyboard events:
-  // - Tab / Shift+Tab: delegated to useFocusScope for wrap-around looping.
-  // - Escape: triggers requestOpenChange so React state stays in control.
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDialogElement>) => {
-    // Tab looping — run first so it can call event.preventDefault() on Tab before
-    // the consumer's onKeyDown handler inspects the event.
-    focusScopeProps.onKeyDown(event as React.KeyboardEvent<HTMLElement>);
-
     props.onKeyDown?.(event);
     if (event.key === 'Escape' && !event.isDefaultPrevented()) {
       requestOpenChange({ type: 'escapeKeyDown', open: false, event });
@@ -177,9 +155,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         // Point to DialogTitle id for accessible name
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleId || undefined,
         ...props,
-        // tabIndex=-1 makes the dialog programmatically focusable as a fallback when no
-        // tabbable child accepts focus (e.g. an empty dialog or one with only disabled elements).
-        tabIndex: focusScopeProps.tabIndex,
+        tabIndex: -1,
         ref: mergedRef,
         onKeyDown: handleKeyDown,
         onClick: handleClick,

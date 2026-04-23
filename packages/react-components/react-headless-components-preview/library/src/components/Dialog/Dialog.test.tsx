@@ -22,6 +22,9 @@ describe('Dialog', () => {
       'consistent-callback-args',
       'make-styles-overrides-win',
     ],
+    requiredProps: {
+      children: <DialogSurface>Dialog content</DialogSurface>,
+    },
   });
 
   it('renders a default state', () => {
