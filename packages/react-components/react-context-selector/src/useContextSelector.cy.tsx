@@ -30,7 +30,11 @@ const Item: React.FC<{ index: number }> = props => {
   // A commit-timed effect (`useEffect`) cannot observe discarded renders.
   readRenderCounts()[props.index] += 1;
 
-  return <div data-testid={`item-${props.index}`} data-active={String(active)} />;
+  return (
+    <div data-testid={`item-${props.index}`} data-active={String(active)}>
+      item {props.index}
+    </div>
+  );
 };
 
 const MemoItem = React.memo(Item);
@@ -38,9 +42,9 @@ const MemoItem = React.memo(Item);
 const Provider: React.FC<{ children?: React.ReactNode }> = props => {
   const [index, setIndex] = React.useState(0);
   return (
-    <div data-testid="provider" onClick={() => setIndex(prev => prev + 1)}>
+    <button type="button" data-testid="provider" onClick={() => setIndex(prev => prev + 1)}>
       <TestContext.Provider value={{ index }}>{props.children}</TestContext.Provider>
-    </div>
+    </button>
   );
 };
 
@@ -80,24 +84,18 @@ describe('useContextSelector — eager-bailout regression', () => {
     );
 
     // Mount: each item's function body ran once.
-    cy.window()
-      .its('__useContextSelectorRenderCounts__')
-      .should('deep.equal', { 1: 1, 2: 1, 3: 1, 4: 1 });
+    cy.window().its('__useContextSelectorRenderCounts__').should('deep.equal', { 1: 1, 2: 1, 3: 1, 4: 1 });
 
     // Click 1: 0 → 1. Only item 1 flips (false → true).
     cy.get('[data-testid=provider]').click();
     cy.get('[data-testid=item-1]').should('have.attr', 'data-active', 'true');
-    cy.window()
-      .its('__useContextSelectorRenderCounts__')
-      .should('deep.equal', { 1: 2, 2: 1, 3: 1, 4: 1 });
+    cy.window().its('__useContextSelectorRenderCounts__').should('deep.equal', { 1: 2, 2: 1, 3: 1, 4: 1 });
 
     // Click 2: 1 → 2. Item 1 flips (true → false), item 2 flips (false → true).
     cy.get('[data-testid=provider]').click();
     cy.get('[data-testid=item-1]').should('have.attr', 'data-active', 'false');
     cy.get('[data-testid=item-2]').should('have.attr', 'data-active', 'true');
-    cy.window()
-      .its('__useContextSelectorRenderCounts__')
-      .should('deep.equal', { 1: 3, 2: 2, 3: 1, 4: 1 });
+    cy.window().its('__useContextSelectorRenderCounts__').should('deep.equal', { 1: 3, 2: 2, 3: 1, 4: 1 });
 
     // Click 3: 2 → 3. Item 2 flips (true → false), item 3 flips (false → true).
     // Item 1's alternate fiber retains lanes from click 2. Under the legacy
@@ -107,8 +105,6 @@ describe('useContextSelector — eager-bailout regression', () => {
     cy.get('[data-testid=provider]').click();
     cy.get('[data-testid=item-2]').should('have.attr', 'data-active', 'false');
     cy.get('[data-testid=item-3]').should('have.attr', 'data-active', 'true');
-    cy.window()
-      .its('__useContextSelectorRenderCounts__')
-      .should('deep.equal', { 1: 3, 2: 3, 3: 2, 4: 1 });
+    cy.window().its('__useContextSelectorRenderCounts__').should('deep.equal', { 1: 3, 2: 3, 3: 2, 4: 1 });
   });
 });
