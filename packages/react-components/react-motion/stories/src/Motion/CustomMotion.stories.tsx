@@ -404,6 +404,7 @@ export const CustomMotion = (): JSXElement => {
   );
 };
 
+CustomMotion.storyName = 'Custom motion';
 CustomMotion.parameters = {
   docs: {
     description: {

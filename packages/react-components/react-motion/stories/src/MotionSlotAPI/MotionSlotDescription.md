@@ -1,4 +1,6 @@
-`motionSlot()` integrates a motion component (created with `createMotionComponent()`) into Fluent UI's slot system. It allows component consumers to disable or customize one-way animations on a component via props.
+This page is for **component authors** integrating a motion component into Fluent UI's slot system. If you're a consumer configuring an existing motion slot on a component, see [Using motion slots](https://react.fluentui.dev/?path=/docs/motion-using-motion-slots--docs) instead.
+
+`motionSlot()` wraps a motion component (created with `createMotionComponent()`) so that consumers can disable or customize one-way animations via props.
 
 Use `motionSlot()` for animations that play automatically without enter/exit visibility semantics — for example, looping animations like loading indicators, pulsing badges, or indeterminate progress bars. For animations that need to respond to a `visible` state, use [presenceMotionSlot()](https://react.fluentui.dev/?path=/docs/motion-apis-presencemotionslot--docs) instead.
 

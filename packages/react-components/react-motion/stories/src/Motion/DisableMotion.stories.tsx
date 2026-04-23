@@ -195,6 +195,7 @@ export const DisableMotion = (): JSXElement => {
   );
 };
 
+DisableMotion.storyName = 'Disable motion';
 DisableMotion.parameters = {
   docs: {
     description: {

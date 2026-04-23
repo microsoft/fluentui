@@ -272,6 +272,7 @@ export const DirectParams = (): JSXElement => {
   );
 };
 
+DirectParams.storyName = 'Direct params';
 DirectParams.parameters = {
   docs: {
     description: {

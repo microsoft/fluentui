@@ -1,4 +1,6 @@
-`presenceMotionSlot()` integrates a presence motion component (created with `createPresenceComponent()`) into Fluent UI's slot system. It allows component consumers to disable or customize enter/exit animations on a component via props.
+This page is for **component authors** integrating a presence motion component into Fluent UI's slot system. If you're a consumer configuring an existing motion slot on a component, see [Using motion slots](https://react.fluentui.dev/?path=/docs/motion-using-motion-slots--docs) instead.
+
+`presenceMotionSlot()` wraps a presence motion component (created with `createPresenceComponent()`) so that consumers can disable or customize enter/exit animations via props.
 
 This is the API used by components like Dialog, Drawer, Popover, Menu, Accordion, Nav, and Tree to expose their animations as configurable slots. It manages `visible`, `appear`, and `unmountOnExit` state automatically.
 
