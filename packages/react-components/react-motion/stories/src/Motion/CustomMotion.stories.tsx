@@ -3,7 +3,6 @@ import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   createPresenceComponent,
-  createPresenceComponentVariant,
   Dialog,
   DialogActions,
   DialogBody,
@@ -22,7 +21,6 @@ import {
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 import description from './CustomMotion.stories.md';
-import { Scale } from '../../../../react-motion-components-preview/library/src/index';
 
 // --- Custom motions for Dialog ---
 
@@ -77,8 +75,6 @@ const RadialBackdropMotion = createPresenceComponent(() => {
 
 // ENTER EASINGS
 
-const curveGlideRelaxedBack30pct = `linear(0, .04109 3%, .1128 8%, .2304 16%, .3799 26%, .5616 38%, .7758 52%, .899 60%, .9142 61%, .9284 62%, .9414 63%, .9533 64%, .9642 65%, .9829 67%, .9978 69%, 1.009 71%, 1.018 73%, 1.024 75%, 1.027 77%, 1.028 79%, 1.028 81%, 1.025 84%, 1.018 88%, 1.007 93%, 1.003 96%, 1 99%, 1)`;
-
 const curveGlideEvenMoreRelaxedBack5pct = `linear(0, .04695 2%, .1207 5%, .2464 10%, .3998 16%, .5288 21%, .5777 23%, .6234 25%, .6659 27%, .7055 29%, .7421 31%, .7759 33%, .807 35%, .8355 37%, .8615 39%, .8852 41%, .9065 43%, .9257 45%, .9428 47%, .9579 49%, .9712 51%, .9827 53%, .9926 55%, 1.001 57%, 1.008 59%, 1.016 62%, 1.021 65%, 1.024 68%, 1.025 71%, 1.023 75%, 1.019 80%, 1.007 90%, 1.002 95%, 1 99%, 1)`;
 
 // EXIT EASINGS
@@ -93,63 +89,13 @@ const CustomSlideMotion = createPresenceComponent(() => {
       // Slide in from the left
       keyframes: [{ translate: '-100% 0' }, { translate: '0 0' }],
       duration: motionTokens.durationUltraSlow * 2,
-      // easing: curveGlideRelaxedBack30pct,
-      // easing: curveGlideRelaxedBack10pct,
-      // easing: curveGlideMoreRelaxedBack10pct,
       easing: curveGlideEvenMoreRelaxedBack5pct,
     },
     exit: {
       // Slide out to the left
       keyframes: [{ translate: '0 0' }, { translate: '-100% 0' }],
       duration: motionTokens.durationUltraSlow * 5,
-      // easing: curveQuadraticToSoftClose,
-      // easing: curvePower1_5ToSoftClose3,
       easing: curvePower1p4ToSoftClose,
-      // easing: curvePower1_5ToSoftClose2,
-      // easing: curveLinearToSoftClose,
-      // easing: curveBackToSoftClose1,
-    },
-  };
-});
-
-const SoftCloseDrawerMotion = createPresenceComponent(() => {
-  return {
-    enter: {
-      // Slide in from the left
-      keyframes: [{ translate: '-100% 0' }, { translate: '0 0' }],
-      duration: motionTokens.durationUltraSlow * 3,
-      easing: curveGlideRelaxedBack30pct,
-    },
-    exit: {
-      // Slide out to the left with a soft close
-      keyframes: [
-        { translate: '0 0', easing: 'ease-in' },
-        { translate: '-80% 0', easing: 'ease-out', offset: 0.3 },
-        { translate: '-100% 0', offset: 1 },
-      ],
-      duration: motionTokens.durationUltraSlow * 6,
-      // easing: curveOutIn,
-    },
-  };
-});
-
-const SoftCloseDrawerMotion2 = createPresenceComponent(() => {
-  return {
-    enter: {
-      // Slide in from the left
-      keyframes: [{ translate: '-100% 0' }, { translate: '0 0' }],
-      duration: motionTokens.durationUltraSlow * 2,
-      easing: curveGlideRelaxedBack30pct,
-    },
-    exit: {
-      // Slide out to the left with a soft close
-      keyframes: [
-        { translate: '0 0' },
-        // { translate: '-70% 0', easing: 'linear', offset: 0.3 },
-        { translate: '-100% 0' },
-      ],
-      duration: motionTokens.durationUltraSlow * 3,
-      easing: 'linear(0, 30% .7, 1)',
     },
   };
 });
@@ -201,20 +147,7 @@ const useStyles = makeStyles({
   },
 });
 
-// http://localhost:3000/#head_type=swim&tail_type=spring&join=.377&head_strokes=2&head_effort=27&head_gamma=4.6&bounces=3&decay=90&duration=2000&show_heatmap=true&show_grid=false
-const curveSwimSpring = `linear(0, .006229 1%, .02395 2%, .05184 3%, .08874 4%, .1336 5%, .1803 6%, .2218 7%, .2584 8%, .2909 9%, .3196 10%, .345 11%, .3675 12%, .3874 13%, .4051 14%, .4207 15%, .4345 16%, .4467 17%, .4576 18%, .4673 19%, .4838 20%, .5106 21%, .5466 22%, .5906 23%, .6924 25%, .7372 26%, .7769 27%, .812 28%, .8431 29%, .8706 30%, .8949 31%, .9165 32%, .9356 33%, .9525 34%, .9674 35%, .9807 36%, .9924 37%, 1.003 38%, 1.012 39%, 1.02 40%, 1.027 41%, 1.032 42%, 1.036 43%, 1.038 44%, 1.04 45%, 1.04 46%, 1.038 48%, 1.032 50%, 1.021 53%, 1.005 57%, .9984 59%, .9932 61%, .9896 63%, .9877 65%, .9876 68%, .99 71%, .9987 78%, 1.002 82%, 1.004 86%, 1.003 91%, 1)`;
-
-// http://localhost:3000/#head_type=swim&tail_type=power-back&join=.703&head_strokes=3&head_effort=24&head_gamma=7.5&tail_overshoot=100&tail_exponent=3&duration=2000&show_heatmap=true
 const curveSwimSpring2 = `linear(0, .003149 1%, .01215 2%, .02643 3%, .04544 4%, .06871 5%, .09533 6%, .1204 7%, .1429 8%, .1632 9%, .1814 10%, .1977 11%, .2124 12%, .2257 13%, .2375 14%, .2482 15%, .2664 17%, .2811 19%, .293 21%, .3078 24%, .3181 25%, .3336 26%, .3536 27%, .3778 28%, .4342 30%, .4598 31%, .4827 32%, .5034 33%, .5219 34%, .5386 35%, .5536 36%, .5671 37%, .5792 38%, .5901 39%, .6086 41%, .6236 43%, .6358 45%, .6456 47%, .6537 48%, .6672 49%, .6855 50%, .7081 51%, .7346 52%, .7638 53%, .7908 54%, .8151 55%, .8369 56%, .8565 57%, .8741 58%, .8899 59%, .9041 60%, .9169 61%, .9284 62%, .9387 63%, .9563 65%, .9706 67%, .9821 69%, .9914 71%, .9987 73%, 1.004 75%, 1.008 77%, 1.011 80%, 1.012 83%, 1.01 87%, 1.002 95%, 1 99%, 1)`;
-
-const CustomDialogMotion = createPresenceComponentVariant(Scale, {
-  outScale: 0.1,
-  duration: motionTokens.durationUltraSlow * 8,
-  // easing: motionTokens.curveDecelerateMid,
-  easing: curveSwimSpring,
-  // exitDuration: motionTokens.durationGentle,
-  exitEasing: motionTokens.curveAccelerateMin,
-});
 
 // --- Dialog examples ---
 
