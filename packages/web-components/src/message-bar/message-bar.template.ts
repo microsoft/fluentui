@@ -10,10 +10,10 @@ import type { MessageBar } from './message-bar.js';
 export function messageBarTemplate<T extends MessageBar>(): ElementViewTemplate<T> {
   return html<T>`
     <slot name="icon"></slot>
-    <div class="content">
+    <div class="content" part="content">
       <slot></slot>
     </div>
-    <div class="actions">
+    <div class="actions" part="actions">
       <slot name="actions"></slot>
     </div>
     <slot name="dismiss"></slot>
