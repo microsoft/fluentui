@@ -158,7 +158,7 @@ Score interpretation:
 
 ## Phase 5: Produce Output
 
-Use this exact format:
+Use this exact format (also used verbatim as the PR-comment body in Phase 6 — don't duplicate work):
 
 ```
 ## PR Review: #<number> — <title>
@@ -202,6 +202,41 @@ APPROVE / REQUEST_CHANGES / COMMENT
 
 <brief rationale>
 ```
+
+## Phase 6: Post the review back to the PR
+
+After presenting the output in the chat, post the same text as a comment on the PR so the review is visible to maintainers and to Copilot (when the PR author is `copilot-swe-agent`, the comment becomes actionable feedback).
+
+Save the output from Phase 5 to a temp file so the markdown isn't mangled by shell quoting, then:
+
+```bash
+gh pr comment $ARGUMENTS --repo microsoft/fluentui --body-file /tmp/pr-review-$ARGUMENTS.md
+```
+
+Append a single trailer line to the body so the post is identifiable:
+
+```
+---
+*Posted via the `/review-pr` skill.*
+```
+
+The posted comment should be **identical** to what you rendered in chat — don't paraphrase or summarize. The chat output and the PR comment must match so the user can trust that what they saw is what the maintainers see.
+
+**Pre-checks before posting:**
+
+1. Confirm the active `gh` account has write access to the PR's repo (EMU accounts read fine but silently fail on writes):
+   ```bash
+   gh api graphql -f query='{ viewer { login } repository(owner:"microsoft", name:"fluentui") { viewerPermission } }'
+   ```
+   If `viewerPermission` is `NONE`, stop and ask the user to `gh auth switch --user <non-emu-account>`.
+2. Don't post on PRs from your own branches unless explicitly asked — self-review comments are noise.
+3. If `REQUEST_CHANGES` is the recommendation, still post the comment but note to the user that only a formal review (`gh pr review --request-changes`) actually blocks merge; a comment is advisory.
+
+**When to skip posting:**
+
+- The user explicitly asks for a review without posting ("review but don't post").
+- The PR has an existing comment from this skill within the last day on the same head SHA — avoid duplicate noise. Look for the `*Posted via the \`/review-pr\` skill.\*` trailer.
+- Draft PRs where the user is clearly still iterating (state=OPEN, isDraft=true, recent force-push) — offer to post but don't do it by default.
 
 ## Notes
 
