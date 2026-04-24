@@ -101,6 +101,7 @@ state.root.className = mergeClasses(
 | `visual-test`   | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli |
 | `review-pr`     | `/review-pr #123`    | Review a PR with confidence scoring and category checks    |
 | `triage-issues` | `/triage-issues`     | Walk the Needs-Triage queue and recommend labels/assignee  |
+| `triage-board`  | `/triage-board`      | Route untriaged items on the Fluent Unified project board  |
 
 ## Package Layout
 
