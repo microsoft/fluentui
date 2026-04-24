@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DonutChart expands infinitely in vertical direction inside ResponsiveContainer",
+  "packageName": "@fluentui/react-charts",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
