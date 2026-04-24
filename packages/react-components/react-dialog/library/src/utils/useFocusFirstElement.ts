@@ -21,7 +21,9 @@ export function useFocusFirstElement(
     if (!open) {
       return;
     }
-    const element = dialogRef.current && findFirstFocusable(dialogRef.current);
+    const autoFocusElement =
+      dialogRef.current && (dialogRef.current.querySelector<HTMLElement>('[autofocus]') ?? undefined);
+    const element = autoFocusElement || (dialogRef.current && findFirstFocusable(dialogRef.current));
     if (element) {
       element.focus();
     } else {
