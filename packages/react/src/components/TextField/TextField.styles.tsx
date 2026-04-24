@@ -200,6 +200,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         flexDirection: 'row',
         alignItems: 'stretch',
         position: 'relative',
+        overflow: 'hidden',
       },
       multiline && {
         minHeight: '60px',
