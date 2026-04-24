@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed max-width for message-bar content",
+  "packageName": "@fluentui/web-components",
+  "email": "support@marvinkleinmusic.de",
+  "dependentChangeType": "patch"
+}

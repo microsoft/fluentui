@@ -74,7 +74,6 @@ export const styles: ElementStyles = css`
 
   .content {
     grid-area: body;
-    max-width: 520px;
     padding-block: ${spacingVerticalMNudge};
     padding-inline: 0;
   }
