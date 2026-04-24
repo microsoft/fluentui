@@ -8,7 +8,8 @@ import type { ITheme, Theme } from '@fluentui/theme';
  * Get theme from CustomizerContext or Customizations singleton.
  */
 function useCompatTheme(): ITheme | undefined {
-  return useCustomizationSettings(['theme']).theme;
+  const customizationSettings = useCustomizationSettings(['theme', 'scopedSettings']);
+  return { ...customizationSettings.theme, components: customizationSettings.scopedSettings };
 }
 
 /**
