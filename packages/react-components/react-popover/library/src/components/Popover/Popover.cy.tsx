@@ -515,6 +515,45 @@ describe('Popover', () => {
         cy.get('#outside').focus();
         cy.get(popoverContentSelector).should('be.visible');
       });
+
+      it('should not close when closeOnFocusOutside is false', () => {
+        mount(
+          <>
+            <button id="outside">Outside</button>
+            <Popover trapFocus {...({ closeOnFocusOutside: false } as any)}>
+              <PopoverTrigger disableButtonEnhancement>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface>
+                <button>Inside</button>
+              </PopoverSurface>
+            </Popover>
+          </>,
+        );
+
+        cy.get(popoverTriggerSelector).click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+      });
+
+      it('should not close when focus moves to the trigger', () => {
+        mount(
+          <Popover trapFocus>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface>
+              <button>Inside</button>
+            </PopoverSurface>
+          </Popover>,
+        );
+
+        cy.get(popoverTriggerSelector).click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        cy.get(popoverTriggerSelector).focus();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+      });
     });
   });
 

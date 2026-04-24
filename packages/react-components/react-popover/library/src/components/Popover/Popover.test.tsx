@@ -148,5 +148,71 @@ describe('Popover', () => {
       document.body.removeChild(outsideButton);
       document.body.removeChild(popoverContent);
     });
+
+    it('should not close when closeOnFocusOutside is false', () => {
+      const onOpenChange = jest.fn();
+      const outsideButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(outsideButton);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            closeOnFocusOutside: false,
+            onOpenChange,
+            children: <div />,
+          } as any),
+        { initialProps: { open: true } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      act(() => {
+        outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(outsideButton);
+      document.body.removeChild(popoverContent);
+    });
+
+    it('should not close when focus moves to the trigger element', () => {
+      const onOpenChange = jest.fn();
+      const triggerButton = document.createElement('button');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(triggerButton);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            onOpenChange,
+            children: <div />,
+          }),
+        { initialProps: { open: true } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+        (result.current.triggerRef as React.RefObject<HTMLElement | null>).current = triggerButton;
+      });
+
+      act(() => {
+        triggerButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(triggerButton);
+      document.body.removeChild(popoverContent);
+    });
   });
 });
