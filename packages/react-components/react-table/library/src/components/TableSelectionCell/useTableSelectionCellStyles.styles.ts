@@ -64,6 +64,7 @@ const useStyles = makeStyles({
 
   hidden: {
     opacity: 0,
+    pointerEvents: 'none',
   },
 });
 
