@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

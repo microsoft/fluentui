@@ -15,6 +15,9 @@
     "@fluentui/react-utilities": "^9.26.2",
     "@swc/helpers": "^0.5.1"
   },
+  "devDependencies": {
+    "@fluentui/scripts-cypress": "*"
+  },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
     "@types/react-dom": ">=16.9.0 <20.0.0",

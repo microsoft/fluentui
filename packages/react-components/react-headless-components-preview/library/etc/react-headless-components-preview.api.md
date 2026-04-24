@@ -49,6 +49,7 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { FieldBaseProps } from '@fluentui/react-field';
 import { FieldBaseState } from '@fluentui/react-field';
 import { FieldContextValues } from '@fluentui/react-field';
@@ -157,6 +158,7 @@ import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluent
 import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
 import type { ToolbarToggleButtonBaseProps } from '@fluentui/react-toolbar';
 import type { ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
@@ -341,6 +343,168 @@ export type CheckboxState = CheckboxBaseState & {
         'data-disabled'?: string;
         'data-checked'?: string;
     };
+};
+
+// @public
+export const Dialog: React_2.FC<DialogProps>;
+
+// @public
+export const DialogActions: ForwardRefComponent<DialogActionsProps>;
+
+// @public (undocumented)
+export type DialogActionsProps = ComponentProps<DialogActionsSlots>;
+
+// @public (undocumented)
+export type DialogActionsSlots = {
+    root: Slot<'div'>;
+};
+
+// @public (undocumented)
+export type DialogActionsState = ComponentState<DialogActionsSlots>;
+
+// @public
+export const DialogBody: ForwardRefComponent<DialogBodyProps>;
+
+// @public (undocumented)
+export type DialogBodyProps = ComponentProps<DialogBodySlots>;
+
+// @public (undocumented)
+export type DialogBodySlots = {
+    root: Slot<'div'>;
+};
+
+// @public (undocumented)
+export type DialogBodyState = ComponentState<DialogBodySlots>;
+
+// @public (undocumented)
+export type DialogContextValue = {
+    open: boolean;
+    modalType: DialogModalType;
+    dialogTitleId: string;
+    isNestedDialog: boolean;
+    inertTrapFocus: boolean;
+    unmountOnClose: boolean;
+    requestOpenChange: (data: DialogOpenChangeData) => void;
+};
+
+// @public (undocumented)
+export type DialogContextValues = {
+    dialog: DialogContextValue;
+    dialogSurface: DialogSurfaceContextValue;
+};
+
+// @public
+export const DialogHeader: ForwardRefComponent<DialogHeaderProps>;
+
+// @public (undocumented)
+export type DialogHeaderProps = ComponentProps<DialogHeaderSlots>;
+
+// @public (undocumented)
+export type DialogHeaderSlots = {
+    root: Slot<'header'>;
+};
+
+// @public (undocumented)
+export type DialogHeaderState = ComponentState<DialogHeaderSlots>;
+
+// @public (undocumented)
+export type DialogModalType = 'modal' | 'non-modal' | 'alert';
+
+// @public (undocumented)
+export type DialogOpenChangeData = {
+    type: 'escapeKeyDown';
+    open: boolean;
+    event: React_2.KeyboardEvent<HTMLDialogElement>;
+} | {
+    type: 'backdropClick';
+    open: boolean;
+    event: React_2.MouseEvent<HTMLDialogElement>;
+} | {
+    type: 'triggerClick';
+    open: boolean;
+    event: React_2.MouseEvent;
+};
+
+// @public (undocumented)
+export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
+
+// @public
+export type DialogOpenChangeEventHandler = EventHandler<DialogOpenChangeData>;
+
+// @public (undocumented)
+export type DialogProps = {
+    modalType?: DialogModalType;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: EventHandler<DialogOpenChangeData>;
+    children: [JSXElement, JSXElement] | JSXElement;
+    inertTrapFocus?: boolean;
+    unmountOnClose?: boolean;
+};
+
+// @public (undocumented)
+export type DialogState = {
+    open: boolean;
+    modalType: DialogModalType;
+    dialogTitleId: string;
+    isNestedDialog: boolean;
+    inertTrapFocus: boolean;
+    unmountOnClose: boolean;
+    trigger: React_2.ReactNode;
+    content: React_2.ReactNode;
+    requestOpenChange: (data: DialogOpenChangeData) => void;
+};
+
+// @public
+export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
+
+// @public (undocumented)
+export type DialogSurfaceContextValue = boolean;
+
+// @public
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+
+// @public (undocumented)
+export type DialogSurfaceSlots = {
+    root: Slot<'dialog'>;
+};
+
+// @public
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
+    open: boolean;
+    unmountOnClose: boolean;
+    modalType: DialogModalType;
+    shouldRender: boolean;
+};
+
+// @public
+export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
+
+// @public (undocumented)
+export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
+
+// @public (undocumented)
+export type DialogTitleSlots = {
+    root: Slot<'h2'>;
+};
+
+// @public (undocumented)
+export type DialogTitleState = ComponentState<DialogTitleSlots>;
+
+// @public
+export const DialogTrigger: React_2.FC<DialogTriggerProps>;
+
+// @public (undocumented)
+export type DialogTriggerAction = 'open' | 'close';
+
+// @public (undocumented)
+export type DialogTriggerProps = TriggerProps & {
+    action?: DialogTriggerAction;
+};
+
+// @public (undocumented)
+export type DialogTriggerState = {
+    children: React_2.ReactElement | null;
 };
 
 // @public
@@ -612,6 +776,24 @@ export const renderButton: (state: ButtonBaseState) => JSXElement;
 
 // @public
 export const renderCheckbox: (state: CheckboxBaseState) => JSXElement;
+
+// @public
+export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSXElement;
+
+// @public (undocumented)
+export const renderDialogActions_unstable: (state: DialogActionsState) => JSXElement;
+
+// @public (undocumented)
+export const renderDialogBody_unstable: (state: DialogBodyState) => JSXElement;
+
+// @public (undocumented)
+export const renderDialogHeader_unstable: (state: DialogHeaderState) => JSXElement;
+
+// @public
+export const renderDialogSurface_unstable: (state: DialogSurfaceState) => JSXElement | null;
+
+// @public (undocumented)
+export const renderDialogTitle_unstable: (state: DialogTitleState) => JSXElement;
 
 // @public
 export const renderDivider: (state: DividerBaseState) => JSXElement;
@@ -1044,6 +1226,36 @@ export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement 
 
 // @public
 export const useCheckbox: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+
+// @public
+export const useDialog_unstable: (props: DialogProps) => DialogState;
+
+// @public
+export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLDivElement>) => DialogActionsState;
+
+// @public
+export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLDivElement>) => DialogBodyState;
+
+// @public (undocumented)
+export const useDialogContext: () => DialogContextValue;
+
+// @public (undocumented)
+export const useDialogContextValues_unstable: (state: DialogState) => DialogContextValues;
+
+// @public
+export const useDialogHeader_unstable: (props: DialogHeaderProps, ref: React_2.Ref<HTMLElement>) => DialogHeaderState;
+
+// @public
+export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => DialogSurfaceState;
+
+// @public (undocumented)
+export const useDialogSurfaceContext: () => DialogSurfaceContextValue;
+
+// @public
+export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLHeadingElement>) => DialogTitleState;
+
+// @public
+export const useDialogTrigger_unstable: (props: DialogTriggerProps) => DialogTriggerState;
 
 // @public
 export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;
