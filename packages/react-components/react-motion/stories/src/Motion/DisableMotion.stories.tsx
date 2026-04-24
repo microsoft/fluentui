@@ -43,12 +43,31 @@ export const DisableMotion = (): JSXElement => {
       </Dialog>
       <Dialog surfaceMotion={null}>
         <DialogTrigger disableButtonEnhancement>
-          <Button>Surface motion and backdrop disabled</Button>
+          <Button>All motion disabled</Button>
         </DialogTrigger>
-        <DialogSurface backdrop={null}>
+        <DialogSurface backdropMotion={null}>
           <DialogBody>
-            <DialogTitle>Dialog has no animation and backdrop</DialogTitle>
-            <DialogContent>Backdrop (dimmed background of dialog) can also be disabled.</DialogContent>
+            <DialogTitle>All motion disabled</DialogTitle>
+            <DialogContent>
+              Dialog has no surface scale animation and no backdrop fade animation (backdrop is still rendered).
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+      <Dialog>
+        <DialogTrigger disableButtonEnhancement>
+          <Button>Backdrop motion disabled</Button>
+        </DialogTrigger>
+        <DialogSurface backdropMotion={null}>
+          <DialogBody>
+            <DialogTitle>Backdrop motion disabled</DialogTitle>
+            <DialogContent>Dialog has no backdrop fade animation (surface scale animation still works).</DialogContent>
             <DialogActions>
               <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
@@ -64,6 +83,11 @@ export const DisableMotion = (): JSXElement => {
 
 DisableMotion.parameters = {
   docs: {
-    description: { story: 'In order to disable motion you can pass `null` to appropriate slot.' },
+    description: {
+      story:
+        'In order to disable motion you can pass `null` to the appropriate slot. ' +
+        'Use `surfaceMotion` prop on `Dialog` to disable the surface scale animation. ' +
+        'Use `backdropMotion` prop on `DialogSurface` to disable the backdrop fade animation.',
+    },
   },
 };
