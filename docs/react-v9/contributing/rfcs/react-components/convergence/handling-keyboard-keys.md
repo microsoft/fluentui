@@ -57,7 +57,7 @@ A list of support for `key` [can be found in MDN](https://developer.mozilla.org/
 
 ### Compatibility with e.keyCode
 
-In order to comfortably use both `key` and `keyCode` during a transition phase and also in the future if we ever find out one might be preferrable to another, we should implement the new package to be compatible with both. This can be done with a `key` and `keycode` naming convention.
+In order to comfortably use both `key` and `keyCode` during a transition phase and also in the future if we ever find out one might be preferable to another, we should implement the new package to be compatible with both. This can be done with a `key` and `keycode` naming convention.
 
 ```typescript
 import { ArrowDownKey, ArrowDownKeyCode } from '@fluentui/react-keyboard-key';

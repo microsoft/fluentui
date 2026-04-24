@@ -454,7 +454,7 @@ And it seems to be a problem? 🤔 Well, it _seems_ that tearing is by design he
 
 > Example: https://stackblitz.com/edit/vitejs-vite-3gsvqu
 >
-> Example also contains additional scenarios for `useTranstion()` and `useDeferredValue()` hooks. The goal is to check if tearing is an issue with these hooks.
+> Example also contains additional scenarios for `useTransition()` and `useDeferredValue()` hooks. The goal is to check if tearing is an issue with these hooks.
 >
 > **Note**: POC is based on `useSyncExternalStore()` shim, but `useSyncExternalStore()` could be also used directly.
 

@@ -30,7 +30,7 @@ Give yourself enough time to review. The general wisdom is that it will take 1-2
 
 - Violations of coding standards not enforced by lint rules or prettier. (Note: consider if automate systems can be updated to catch things automatically to reduce this list.)
 
-- Event handling methods inside of classes which don't use lambda syntax to preserve the `this` reference. If lamdas are not used, then the code _might_ work, until later someone references `this` and finds an unexpected result.
+- Event handling methods inside of classes which don't use lambda syntax to preserve the `this` reference. If lambdas are not used, then the code _might_ work, until later someone references `this` and finds an unexpected result.
 
 - Avoid using boolean params in method definitions. Boolean params usually mean a conditional `if` statement will be used which means the caller probably knows too much about the implementation of the method it's calling. It also makes it hard to change the method later. Make 2 methods that do different things instead.
 

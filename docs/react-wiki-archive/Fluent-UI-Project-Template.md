@@ -21,9 +21,9 @@ _The solution is what makes this Project "Shaped". Without a specific solution d
 ### Risks (Rabbit holes)
 
 _From: [Rabbit hole guidance](https://basecamp.com/shapeup/1.5-chapter-06#ingredient-4-rabbit-holes)_
-_Another key aspect of shaping is de-risking. This involves identifying potential issues and complications in the solution. These may be non-obvious cases where the solution doesn't work. These could be constraints from other parts of the system (dependencies or dependent code). This aspect of shaping is what typically requires the most experience and understanding of the domain. This is likely somethign we will all collectively get better at with practice._
+_Another key aspect of shaping is de-risking. This involves identifying potential issues and complications in the solution. These may be non-obvious cases where the solution doesn't work. These could be constraints from other parts of the system (dependencies or dependent code). This aspect of shaping is what typically requires the most experience and understanding of the domain. This is likely something we will all collectively get better at with practice._
 
 ### Out of scope (No-gos)
 
 _From: [No-gos guidance](https://basecamp.com/shapeup/1.5-chapter-06#ingredient-5-no-gos)_
-_A key way to deal with complicated risks or issues with the solution, is to decide a particular funcionatliy is out of scope. If reducing the scope to remove a risk or issue does not prevent us from fulfilling the original problem, then it is fine. Reducing scope may require reaching out to the original customer that had the problem we are solving, or working with a representive of the customer on our team._
+_A key way to deal with complicated risks or issues with the solution, is to decide a particular functionality is out of scope. If reducing the scope to remove a risk or issue does not prevent us from fulfilling the original problem, then it is fine. Reducing scope may require reaching out to the original customer that had the problem we are solving, or working with a representative of the customer on our team._

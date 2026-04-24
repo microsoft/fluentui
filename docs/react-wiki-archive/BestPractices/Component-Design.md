@@ -445,7 +445,7 @@ ms-Component-area--flags
 
 ## Every component must be RTL friendly.
 
-Be conscious of RTL support. In scss, do not hardcode left/right alignemnts and instead use the RTL macros:
+Be conscious of RTL support. In scss, do not hardcode left/right alignments and instead use the RTL macros:
 
 ```scss
 .ms-Foo {
