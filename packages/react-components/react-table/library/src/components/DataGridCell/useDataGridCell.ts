@@ -27,6 +27,10 @@ export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Re
     return ctx.columnSizing_unstable.getTableCellProps;
   });
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+  const style = {
+    ...(resizableColumns ? getTableCellProps(columnId).style : {}),
+    ...(props.style || {}),
+  };
   return useTableCell_unstable(
     {
       as: 'div',
@@ -35,6 +39,7 @@ export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Re
       tabIndex: tabbable ? 0 : undefined,
       ...(resizableColumns ? getTableCellProps(columnId) : {}),
       ...props,
+      style,
     },
     ref,
   );
