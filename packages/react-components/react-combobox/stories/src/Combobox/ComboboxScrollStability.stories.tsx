@@ -30,13 +30,18 @@ export const ScrollStability = (props: Partial<ComboboxProps>): JSXElement => {
   const styles = useStyles();
   const [hoveredOption, setHoveredOption] = React.useState<string | null>(null);
 
+  const onMouseEnter = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const value = (e.currentTarget as HTMLElement).dataset.value ?? null;
+    setHoveredOption(value);
+  }, []);
+
   return (
     <div className={styles.root}>
       <label id={comboId}>Scroll-stable Combobox (50 options)</label>
       <span>Hovered: {hoveredOption ?? 'none'}</span>
       <Combobox aria-labelledby={comboId} placeholder="Select an option" {...props}>
         {options.map(option => (
-          <Option key={option} onMouseEnter={() => setHoveredOption(option)}>
+          <Option key={option} data-value={option} onMouseEnter={onMouseEnter}>
             {option}
           </Option>
         ))}
