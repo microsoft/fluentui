@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
@@ -29,7 +30,7 @@ describe('useFocusFirstElement', () => {
     });
 
     // Attach the ref to the container
-    (result.current as React.MutableRefObject<HTMLElement | null>).current = container;
+    (result.current as React.RefObject<HTMLElement | null>).current = container;
 
     act(() => {
       rerender({ open: true });
@@ -60,7 +61,7 @@ describe('useFocusFirstElement', () => {
     });
 
     // Attach the ref to the container
-    (result.current as React.MutableRefObject<HTMLElement | null>).current = container;
+    (result.current as React.RefObject<HTMLElement | null>).current = container;
 
     act(() => {
       rerender({ open: true });
