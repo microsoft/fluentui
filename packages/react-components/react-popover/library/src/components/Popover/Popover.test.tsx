@@ -3,6 +3,7 @@ import { Popover } from './Popover';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { usePopover_unstable } from './usePopover';
 import { isConformant } from '../../testing/isConformant';
+import type { PopoverProps } from './Popover.types';
 
 describe('Popover', () => {
   isConformant({
@@ -164,7 +165,7 @@ describe('Popover', () => {
             closeOnFocusOutside: false,
             onOpenChange,
             children: <div />,
-          } as any),
+          } as unknown as PopoverProps),
         { initialProps: { open: true } },
       );
 

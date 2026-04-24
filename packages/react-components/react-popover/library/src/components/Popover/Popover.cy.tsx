@@ -520,7 +520,7 @@ describe('Popover', () => {
         mount(
           <>
             <button id="outside">Outside</button>
-            <Popover trapFocus {...({ closeOnFocusOutside: false } as any)}>
+            <Popover trapFocus {...({ closeOnFocusOutside: false } as unknown as PopoverProps)}>
               <PopoverTrigger disableButtonEnhancement>
                 <button>Popover trigger</button>
               </PopoverTrigger>
