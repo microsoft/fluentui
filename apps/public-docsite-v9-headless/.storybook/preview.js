@@ -1,4 +1,9 @@
+import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
+
 import * as rootPreview from '../../../.storybook/preview';
+import { tailwindSandboxTemplate } from './tailwind-sandbox-template';
+
+polyfillBodyAndObserve();
 
 /** @type {typeof rootPreview.decorators} */
 export const decorators = [...rootPreview.decorators];
@@ -14,6 +19,10 @@ export const parameters = {
       method: 'alphabetical',
       order: ['Introduction', 'Headless Components'],
     },
+  },
+  exportToSandbox: {
+    ...rootPreview.parameters.exportToSandbox,
+    ...tailwindSandboxTemplate,
   },
 };
 

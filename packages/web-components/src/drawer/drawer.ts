@@ -171,7 +171,6 @@ export class Drawer extends FASTElement {
    * Handles click events on the drawer.
    */
   public clickHandler(event: Event): boolean {
-    event.preventDefault();
     if (this.dialog.open && event.target === this.dialog) {
       this.hide();
     }

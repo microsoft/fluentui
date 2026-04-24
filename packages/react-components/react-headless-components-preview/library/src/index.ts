@@ -30,6 +30,43 @@ export type {
   AccordionPanelState,
 } from './Accordion';
 
+export {
+  MessageBar,
+  renderMessageBar,
+  useMessageBar,
+  useMessageBarContext,
+  useMessageBarContextValues,
+  MessageBarActions,
+  renderMessageBarActions,
+  useMessageBarActions,
+  useMessageBarActionsContextValues,
+  MessageBarBody,
+  renderMessageBarBody,
+  useMessageBarBody,
+  useMessageBarBodyContextValues,
+  MessageBarTitle,
+  renderMessageBarTitle,
+  useMessageBarTitle,
+} from './MessageBar';
+export type {
+  MessageBarSlots,
+  MessageBarProps,
+  MessageBarState,
+  MessageBarContextValues,
+  MessageBarIntent,
+  MessageBarActionsSlots,
+  MessageBarActionsProps,
+  MessageBarActionsState,
+  MessageBarActionsContextValues,
+  MessageBarBodySlots,
+  MessageBarBodyProps,
+  MessageBarBodyState,
+  MessageBarBodyContextValues,
+  MessageBarTitleSlots,
+  MessageBarTitleProps,
+  MessageBarTitleState,
+} from './MessageBar';
+
 export { Avatar, renderAvatar, useAvatar } from './Avatar';
 export type { AvatarProps, AvatarState } from './Avatar';
 
@@ -74,6 +111,61 @@ export type { ButtonSlots, ButtonProps, ButtonState } from './Button';
 export { Checkbox, renderCheckbox, useCheckbox } from './Checkbox';
 export type { CheckboxSlots, CheckboxProps, CheckboxState } from './Checkbox';
 
+export {
+  Dialog,
+  DialogSurface,
+  DialogTrigger,
+  DialogTitle,
+  DialogHeader,
+  DialogBody,
+  DialogActions,
+  renderDialog_unstable,
+  renderDialogSurface_unstable,
+  renderDialogTitle_unstable,
+  renderDialogHeader_unstable,
+  renderDialogBody_unstable,
+  renderDialogActions_unstable,
+  useDialog_unstable,
+  useDialogContextValues_unstable,
+  useDialogSurface_unstable,
+  useDialogTrigger_unstable,
+  useDialogTitle_unstable,
+  useDialogHeader_unstable,
+  useDialogBody_unstable,
+  useDialogActions_unstable,
+  useDialogContext,
+  useDialogSurfaceContext,
+} from './Dialog';
+export type {
+  DialogContextValue,
+  DialogContextValues,
+  DialogModalType,
+  DialogOpenChangeData,
+  DialogOpenChangeEvent,
+  DialogOpenChangeEventHandler,
+  DialogProps,
+  DialogState,
+  DialogSurfaceContextValue,
+  DialogSurfaceProps,
+  DialogSurfaceSlots,
+  DialogSurfaceState,
+  DialogTriggerAction,
+  DialogTriggerProps,
+  DialogTriggerState,
+  DialogTitleProps,
+  DialogTitleSlots,
+  DialogTitleState,
+  DialogHeaderProps,
+  DialogHeaderSlots,
+  DialogHeaderState,
+  DialogBodyProps,
+  DialogBodySlots,
+  DialogBodyState,
+  DialogActionsProps,
+  DialogActionsSlots,
+  DialogActionsState,
+} from './Dialog';
+
 export { Divider, renderDivider, useDivider } from './Divider';
 export type { DividerSlots, DividerProps, DividerState } from './Divider';
 
@@ -88,6 +180,9 @@ export type { LinkSlots, LinkProps, LinkState } from './Link';
 
 export { ProgressBar, renderProgressBar, useProgressBar } from './ProgressBar';
 export type { ProgressBarSlots, ProgressBarProps, ProgressBarState } from './ProgressBar';
+
+export { Provider, renderProvider, useProvider, useProviderContext } from './Provider';
+export type { ProviderProps, ProviderState } from './Provider';
 
 export { Radio, renderRadio, useRadio, RadioGroup, renderRadioGroup, useRadioGroup } from './RadioGroup';
 export type {
@@ -148,3 +243,42 @@ export type { TextareaSlots, TextareaProps, TextareaState } from './Textarea';
 
 export { ToggleButton, renderToggleButton, useToggleButton } from './ToggleButton';
 export type { ToggleButtonSlots, ToggleButtonProps, ToggleButtonState } from './ToggleButton';
+
+export {
+  Toolbar,
+  renderToolbar,
+  useToolbar,
+  useToolbarContext,
+  useToolbarContextValues,
+  ToolbarButton,
+  renderToolbarButton,
+  useToolbarButton,
+  ToolbarDivider,
+  renderToolbarDivider,
+  useToolbarDivider,
+  ToolbarGroup,
+  renderToolbarGroup,
+  useToolbarGroup,
+  ToolbarRadioGroup,
+  renderToolbarRadioGroup,
+  useToolbarRadioGroup,
+  ToolbarToggleButton,
+  renderToolbarToggleButton,
+  useToolbarToggleButton,
+} from './Toolbar';
+export type {
+  ToolbarSlots,
+  ToolbarProps,
+  ToolbarState,
+  ToolbarContextValues,
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarGroupProps,
+  ToolbarGroupState,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+} from './Toolbar';
