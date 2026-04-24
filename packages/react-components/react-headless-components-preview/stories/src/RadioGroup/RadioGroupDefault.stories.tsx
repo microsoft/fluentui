@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RadioGroup, Radio } from '@fluentui/react-headless-components-preview';
+import { RadioGroup, Radio } from '@fluentui/react-headless-components-preview/radio-group';
 
 const radioClass =
   'flex items-center gap-2.5 cursor-pointer p-1 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2';

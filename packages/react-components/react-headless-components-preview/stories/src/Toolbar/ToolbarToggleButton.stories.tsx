@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, ToolbarGroup, ToolbarToggleButton } from '@fluentui/react-headless-components-preview';
+import { Toolbar, ToolbarGroup, ToolbarToggleButton } from '@fluentui/react-headless-components-preview/toolbar';
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 
 const classes = {

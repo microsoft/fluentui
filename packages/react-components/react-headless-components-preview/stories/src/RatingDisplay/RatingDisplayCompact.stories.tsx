@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RatingDisplay } from '@fluentui/react-headless-components-preview';
+import { RatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { StarFilled, StarHalfFilled } from '@fluentui/react-icons';
 
 const RatingIcon = () => (

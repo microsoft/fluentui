@@ -3,7 +3,7 @@ import {
   MessageBarActions,
   MessageBarBody,
   MessageBarTitle,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/message-bar';
 
 import descriptionMd from './MessageBarDescription.md';
 

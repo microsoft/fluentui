@@ -6,7 +6,7 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/dialog';
 
 /**
  * By default, `DialogSurface` is unmounted from the DOM when the dialog closes

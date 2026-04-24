@@ -5,8 +5,8 @@ import {
   DialogActions,
   DialogSurface,
   DialogTitle,
-} from '@fluentui/react-headless-components-preview';
-import type { DialogOpenChangeData } from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/dialog';
+import type { DialogOpenChangeData } from '@fluentui/react-headless-components-preview/dialog';
 
 /**
  * `DialogTrigger` is optional. When the open state is managed entirely by the

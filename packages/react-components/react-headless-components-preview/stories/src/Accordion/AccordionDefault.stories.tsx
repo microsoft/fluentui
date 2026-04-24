@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-headless-components-preview';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+} from '@fluentui/react-headless-components-preview/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
 const items = [

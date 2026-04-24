@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from '@fluentui/react-headless-components-preview';
+import { SearchBox } from '@fluentui/react-headless-components-preview/search-box';
 import { SearchRegular } from '@fluentui/react-icons';
 
 export const Default = (): React.ReactNode => (
