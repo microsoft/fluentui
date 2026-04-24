@@ -2602,6 +2602,8 @@ export const transformPlotlyJsonToHeatmapProps = (
     ? (colorscale as Array<[number, string]>).map(arr => arr[1])
     : defaultRange;
 
+  const annotations = getChartAnnotationsFromLayout(input.data, input.layout, isMultiPlot);
+
   return {
     data: [heatmapData],
     domainValuesForColorScale,
@@ -2617,6 +2619,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
     ...getAxisTickProps(input.data, input.layout),
+    ...(annotations ? { annotations } : {}),
   };
 };
 
