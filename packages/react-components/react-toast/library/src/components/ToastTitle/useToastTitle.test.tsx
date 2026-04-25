@@ -35,6 +35,7 @@ describe('useToastTitle_unstable', () => {
     it('returns components shape { root: div, media: div, action: div }', () => {
       const ref = React.createRef<HTMLElement>();
       const { result } = renderHook(() => useToastTitle_unstable({}, ref), { wrapper: makeWrapper() });
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       expect(result.current.components).toEqual({ root: 'div', media: 'div', action: 'div' });
     });
 

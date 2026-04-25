@@ -21,6 +21,7 @@ describe('useToast_unstable', () => {
   it('returns components shape { root: div }', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useToast_unstable({}, ref), { wrapper: makeWrapper() });
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(result.current.components).toEqual({ root: 'div' });
   });
 
