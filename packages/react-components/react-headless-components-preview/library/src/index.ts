@@ -191,3 +191,6 @@ export type { ToggleButtonSlots, ToggleButtonProps, ToggleButtonState } from './
 
 export { List, renderList, useList, useListContextValues } from './List';
 export type { ListSlots, ListProps, ListState, ListContextValues } from './List';
+
+export { ListItem, renderListItem, useListItem } from './List';
+export type { ListItemSlots, ListItemProps, ListItemState, ListItemValue, ListItemActionEventData } from './List';
