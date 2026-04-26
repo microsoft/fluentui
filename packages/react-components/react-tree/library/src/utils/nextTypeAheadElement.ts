@@ -1,4 +1,4 @@
-import { HTMLElementWalker } from './createHTMLElementWalker';
+import type { HTMLElementWalker } from './createHTMLElementWalker';
 
 export function nextTypeAheadElement(treeWalker: HTMLElementWalker, key: string): HTMLElement | null {
   const keyToLowerCase = key.toLowerCase();

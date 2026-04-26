@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { PresenceDirection, presenceMotionSlot } from '@fluentui/react-motion';
+import type { PresenceDirection } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 

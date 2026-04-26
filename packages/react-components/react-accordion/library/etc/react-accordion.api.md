@@ -5,9 +5,10 @@
 ```ts
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { CollapseParams } from '@fluentui/react-motion-components-preview';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -156,7 +157,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 // @public (undocumented)
 export type AccordionPanelSlots = {
     root: NonNullable<Slot<'div'>>;
-    collapseMotion?: Slot<PresenceMotionSlotProps>;
+    collapseMotion?: Slot<PresenceMotionSlotProps<CollapseParams>>;
 };
 
 // @public (undocumented)

@@ -1,13 +1,13 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import type {
   ToolbarDividerBaseProps,
   ToolbarDividerBaseState,
   ToolbarDividerProps,
   ToolbarDividerState,
 } from './ToolbarDivider.types';
-import { useDivider_unstable } from '@fluentui/react-divider';
+import { useDividerBase_unstable } from '@fluentui/react-divider';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 
 /**
@@ -25,8 +25,10 @@ export const useToolbarDivider_unstable = (
 ): ToolbarDividerState => {
   const state = useToolbarDividerBase_unstable(props, ref);
   return {
-    ...state,
+    alignContent: 'center',
     appearance: 'default',
+    inset: false,
+    ...state,
   };
 };
 
@@ -43,5 +45,5 @@ export const useToolbarDividerBase_unstable = (
   ref: React.Ref<HTMLElement>,
 ): ToolbarDividerBaseState => {
   const vertical = useToolbarContext_unstable(ctx => ctx.vertical);
-  return useDivider_unstable({ vertical: !vertical, ...props }, ref);
+  return useDividerBase_unstable({ vertical: !vertical, ...props }, ref);
 };

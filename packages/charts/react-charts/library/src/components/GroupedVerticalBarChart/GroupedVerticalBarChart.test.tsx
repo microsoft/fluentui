@@ -1,7 +1,7 @@
 import { screen, fireEvent, render, act } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { GroupedVerticalBarChartData } from '../../index';
+import type { GroupedVerticalBarChartData } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
 
@@ -605,27 +605,27 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
   afterEach(sharedAfterEach);
 
   it('renders GroupedVerticalBarChart correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -640,12 +640,12 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
         value: mockGetComputedTextLength,
       },
     );
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -655,31 +655,31 @@ describe('GroupedVerticalBarChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
     const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom.length).toBe(0);
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -754,13 +754,13 @@ describe('Render empty chart aria label div when chart is empty', () => {
   afterEach(sharedAfterEach);
 
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
+    const wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

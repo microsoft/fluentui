@@ -1,17 +1,7 @@
 import * as React from 'react';
 import StaggerStaggerInDescription from './StaggerStaggerIn.stories.md';
-import {
-  Avatar,
-  Button,
-  Card,
-  CardHeader,
-  PresenceBadgeStatus,
-  Text,
-  makeStyles,
-  motionTokens,
-  tokens,
-  JSXElement,
-} from '@fluentui/react-components';
+import type { PresenceBadgeStatus, JSXElement } from '@fluentui/react-components';
+import { Avatar, Button, Card, CardHeader, Text, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
 import { Stagger, CollapseRelaxed } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 

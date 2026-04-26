@@ -1,8 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useButtonContext } from '../../contexts/ButtonContext';
-import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { slot } from '@fluentui/react-utilities';
 import type { ButtonBaseProps, ButtonBaseState, ButtonProps, ButtonState } from './Button.types';
 

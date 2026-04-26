@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ChartTableProps } from './ChartTable.types';
+import type { ChartTableProps } from './ChartTable.types';
 import { useChartTableStyles } from './useChartTableStyles.styles';
 import { tokens } from '@fluentui/react-theme';
 import * as d3 from 'd3-color';

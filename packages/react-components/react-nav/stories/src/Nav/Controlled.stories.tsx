@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, NavItemValue, OnNavItemSelectData } from '@fluentui/react-components';
 import {
   AppItem,
   Hamburger,
@@ -10,11 +10,9 @@ import {
   NavDrawerBody,
   NavDrawerHeader,
   NavItem,
-  NavItemValue,
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-  OnNavItemSelectData,
 } from '@fluentui/react-components';
 import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {

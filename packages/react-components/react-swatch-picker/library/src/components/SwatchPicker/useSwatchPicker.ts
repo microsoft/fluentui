@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';

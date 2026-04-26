@@ -13,7 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PresenceDirection } from '@fluentui/react-motion';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';

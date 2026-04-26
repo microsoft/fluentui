@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { NavSectionHeader } from './NavSectionHeader';
-import { NavSectionHeaderProps } from './NavSectionHeader.types';
+import type { NavSectionHeaderProps } from './NavSectionHeader.types';
 
 describe('NavSectionHeader', () => {
   isConformant({

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, DrawerProps } from '@fluentui/react-components';
 import {
   OverlayDrawer,
   DrawerBody,
   DrawerHeader,
   DrawerHeaderTitle,
-  DrawerProps,
   Button,
   Label,
   RadioGroup,

@@ -1,7 +1,7 @@
 'use client';
 
 import { tokens } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 

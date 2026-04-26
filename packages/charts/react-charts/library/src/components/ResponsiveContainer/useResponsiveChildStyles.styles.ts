@@ -1,8 +1,8 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { ResponsiveChildStyles } from './ResponsiveContainer.types';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { ResponsiveChildStyles } from './ResponsiveContainer.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const responsiveChildClassNames: SlotClassNames<ResponsiveChildStyles> = {
   root: 'fui-charts-resp-child__root',

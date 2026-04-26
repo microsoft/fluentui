@@ -3,21 +3,19 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
+import type { ScaleLinear as D3ScaleLinear, ScaleBand } from 'd3-scale';
 import {
   scaleLinear as d3ScaleLinear,
-  ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
-  ScaleBand,
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   ChildProps,
   VerticalStackedBarDataPoint,
   Margins,
@@ -27,13 +25,12 @@ import {
   LineDataInVerticalStackedBarChart,
   ModifiedCartesianChartProps,
   Legend,
-  ChartPopover,
-  Legends,
   DataPoint,
 } from '../../index';
+import { CartesianChart, ChartPopover, Legends } from '../../index';
+import type { IAxisData, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
@@ -50,7 +47,6 @@ import {
   findVSBCNumericMinMaxOfY,
   YAxisType,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
@@ -1344,16 +1340,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _dataset = _createDataSetLayer();
     const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
-      color: color,
+      color,
       legend: calloutLegend,
       XValue: xCalloutValue!,
       YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
-      YValueHover: YValueHover,
-      hoverXValue: hoverXValue,
+      YValueHover,
+      hoverXValue,
       ...props.calloutProps,
       ...getAccessibleDataObject(callOutAccessibilityData),
-      clickPosition: clickPosition,
-      isPopoverOpen: isPopoverOpen,
+      clickPosition,
+      isPopoverOpen,
       isCalloutForStack: shouldFocusWholeStack,
       isCartesian: true,
       customCallout: {

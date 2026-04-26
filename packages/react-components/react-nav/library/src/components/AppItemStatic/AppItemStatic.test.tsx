@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { AppItemStatic } from './AppItemStatic';
 import { appItemStaticClassNames } from './useAppItemStaticStyles.styles';
-import { AppItemStaticProps } from './AppItemStatic.types';
+import type { AppItemStaticProps } from './AppItemStatic.types';
 
 describe('AppItemStatic', () => {
   isConformant({

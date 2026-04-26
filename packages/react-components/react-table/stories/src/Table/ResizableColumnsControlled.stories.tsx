@@ -1,7 +1,11 @@
-import type { JSXElement } from '@fluentui/react-components';
-import {
+import type {
+  JSXElement,
   TableColumnDefinition,
   TableColumnId,
+  TableColumnSizingOptions,
+  PresenceBadgeStatus,
+} from '@fluentui/react-components';
+import {
   Table,
   TableBody,
   TableCell,
@@ -14,8 +18,6 @@ import {
   useTableColumnSizing_unstable,
   useTableFeatures,
   useTableSort,
-  TableColumnSizingOptions,
-  PresenceBadgeStatus,
   Avatar,
   Button,
   Input,

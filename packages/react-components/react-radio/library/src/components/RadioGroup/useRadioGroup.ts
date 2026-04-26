@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getIntrinsicElementProps, isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
-import { RadioGroupBaseProps, RadioGroupBaseState, RadioGroupProps, RadioGroupState } from './RadioGroup.types';
+import type { RadioGroupBaseProps, RadioGroupBaseState, RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
  * Create the state required to render RadioGroup.

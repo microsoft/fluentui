@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import { ToastContainer } from './ToastContainer';
 import { isConformant } from '../../testing/isConformant';
-import { ToastContainerProps } from './ToastContainer.types';
+import type { ToastContainerProps } from './ToastContainer.types';
 import { toastContainerClassNames } from './useToastContainerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { type PresenceComponentProps } from '@fluentui/react-motion';

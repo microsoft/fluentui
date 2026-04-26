@@ -2,7 +2,8 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { SwatchPicker } from '..';
 import { SwatchPickerRow, ColorSwatch } from '..';
-import { renderSwatchPickerGrid, SwatchProps } from './renderUtils';
+import type { SwatchProps } from './renderUtils';
+import { renderSwatchPickerGrid } from './renderUtils';
 
 const colors: SwatchProps[] = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },

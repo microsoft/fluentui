@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { MessageBarContextValues, MessageBarState } from './MessageBar.types';
+import type { MessageBarContextValues, MessageBarState } from './MessageBar.types';
 
 export function useMessageBarContextValue_unstable(state: MessageBarState): MessageBarContextValues {
   const { layout, actionsRef, bodyRef, titleId } = state;

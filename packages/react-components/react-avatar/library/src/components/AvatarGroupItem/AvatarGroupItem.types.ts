@@ -1,4 +1,4 @@
-import { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
+import type { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
 import type { Avatar, AvatarSize } from '../../Avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 

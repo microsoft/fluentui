@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update types for render function",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

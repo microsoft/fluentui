@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import type { NavDrawerFooterProps, NavDrawerFooterState } from './NavDrawerFooter.types';
 

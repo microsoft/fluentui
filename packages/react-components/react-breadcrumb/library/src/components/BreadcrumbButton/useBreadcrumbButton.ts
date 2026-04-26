@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import type { ARIAButtonProps } from '@fluentui/react-aria';
 import { useButtonBase_unstable } from '@fluentui/react-button';
 import type { ButtonBaseProps } from '@fluentui/react-button';

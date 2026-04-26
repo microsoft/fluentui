@@ -2,7 +2,8 @@
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
+import type { HorizontalBarChartProps, HorizontalBarChartStyles } from './index';
+import { HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { HighContrastSelector } from '../../utilities/index';
 

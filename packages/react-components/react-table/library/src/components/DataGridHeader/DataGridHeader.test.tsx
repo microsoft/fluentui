@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DataGridHeader } from './DataGridHeader';
 import { isConformant } from '../../testing/isConformant';
-import { DataGridHeaderProps } from './DataGridHeader.types';
+import type { DataGridHeaderProps } from './DataGridHeader.types';
 
 describe('DataGridHeader', () => {
   isConformant<DataGridHeaderProps>({

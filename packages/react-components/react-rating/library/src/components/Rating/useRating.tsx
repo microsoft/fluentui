@@ -28,16 +28,17 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     size = 'extra-large',
     iconFilled = StarFilled,
     iconOutline = StarRegular,
+    max = 5,
     ...baseProps
   } = props;
-  const state = useRatingBase_unstable(
-    {
-      iconFilled,
-      iconOutline,
-      ...baseProps,
-    },
-    ref,
-  );
+  const state = useRatingBase_unstable({ iconFilled, iconOutline, ...baseProps }, ref);
+
+  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
+  const rootChildren = React.useMemo(() => {
+    return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
+  }, [max]);
+
+  state.root.children ??= rootChildren;
 
   return {
     ...state,
@@ -56,15 +57,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
  */
 export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HTMLDivElement>): RatingBaseState => {
   const generatedName = useId('rating-');
-  const {
-    iconFilled = 'span',
-    iconOutline = 'span',
-    max = 5,
-    name = generatedName,
-    onChange,
-    step = 1,
-    itemLabel,
-  } = props;
+  const { iconFilled = 'span', iconOutline = 'span', name = generatedName, onChange, step = 1, itemLabel } = props;
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -76,12 +69,6 @@ export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HT
     isHTMLElement(target, { constructorName: 'HTMLInputElement' }) && target.type === 'radio' && target.name === name;
 
   const [hoveredValue, setHoveredValue] = React.useState<number | undefined>(undefined);
-
-  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
-  const rootChildren = React.useMemo(() => {
-    return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
-  }, [max]);
-
   const state: RatingBaseState = {
     iconFilled,
     iconOutline,
@@ -98,7 +85,6 @@ export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HT
         'div',
         {
           ref,
-          children: rootChildren,
           role: 'radiogroup',
           ...props,
         },

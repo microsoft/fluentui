@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { DrawerScrollState } from '../shared/DrawerBase.types';
+import type { DrawerScrollState } from '../shared/DrawerBase.types';
 
 export type DrawerContextValue = {
   scrollState: DrawerScrollState;

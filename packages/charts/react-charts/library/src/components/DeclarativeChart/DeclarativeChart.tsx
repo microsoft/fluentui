@@ -13,7 +13,8 @@ import {
 import type { GridProperties } from './PlotlySchemaAdapter';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme, webLightTheme } from '@fluentui/tokens';
+import type { Theme } from '@fluentui/tokens';
+import { webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
 
 import {
@@ -54,7 +55,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { Chart, ImageExportOptions } from '../../types/index';
+import type { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
@@ -62,8 +63,9 @@ import { PolarChart } from '../PolarChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
-import { LegendsProps, Legends, LegendContainer } from '../Legends/index';
-import { JSXElement } from '@fluentui/react-utilities/src/index';
+import type { LegendsProps, LegendContainer } from '../Legends/index';
+import { Legends } from '../Legends/index';
+import type { JSXElement } from '@fluentui/react-utilities/src/index';
 import { resolveCSSVariables, useRtl } from '../../utilities/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
@@ -417,7 +419,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   function createLegends(legendProps: LegendsProps): JSXElement {
-    // eslint-disable-next-line react/jsx-no-bind
     return (
       <Legends
         {...legendProps}

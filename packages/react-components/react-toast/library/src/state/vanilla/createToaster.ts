@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { createPriorityQueue } from '@fluentui/react-utilities';
-import { Toast, ToasterOptions, ToastId, ToastImperativeRef, ToastOptions, UpdateToastEventDetail } from '../types';
+import type {
+  Toast,
+  ToasterOptions,
+  ToastId,
+  ToastImperativeRef,
+  ToastOptions,
+  UpdateToastEventDetail,
+} from '../types';
 
 function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
   // This cast is required, as Object.entries will return string as key which is not indexable

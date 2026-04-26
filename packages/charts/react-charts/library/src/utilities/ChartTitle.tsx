@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { SVGTooltipText, SVGTooltipTextProps } from './SVGTooltipText';
-import { CHART_TITLE_PADDING, getChartTitleInlineStyles, TitleStyles } from './Common.styles';
+import type { SVGTooltipTextProps } from './SVGTooltipText';
+import { SVGTooltipText } from './SVGTooltipText';
+import type { TitleStyles } from './Common.styles';
+import { CHART_TITLE_PADDING, getChartTitleInlineStyles } from './Common.styles';
 import { wrapContent } from './utilities';
 
 const AXIS_TITLE_PADDING = 8;

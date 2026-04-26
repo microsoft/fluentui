@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ToastTrigger } from './ToastTrigger';
 import { isConformant } from '../../testing/isConformant';
-import { ToastTriggerProps } from './ToastTrigger.types';
+import type { ToastTriggerProps } from './ToastTrigger.types';
 
 describe('ToastTrigger', () => {
   isConformant<ToastTriggerProps>({

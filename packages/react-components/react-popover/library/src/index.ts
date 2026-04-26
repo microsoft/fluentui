@@ -1,5 +1,12 @@
-export { Popover, renderPopover_unstable, usePopover_unstable } from './Popover';
-export type { OnOpenChangeData, OpenPopoverEvents, PopoverProps, PopoverSize, PopoverState } from './Popover';
+export { Popover, renderPopover_unstable, usePopover_unstable, usePopoverContextValues_unstable } from './Popover';
+export type {
+  OnOpenChangeData,
+  OpenPopoverEvents,
+  PopoverContextValues,
+  PopoverProps,
+  PopoverSize,
+  PopoverState,
+} from './Popover';
 export {
   PopoverSurface,
   arrowHeights,

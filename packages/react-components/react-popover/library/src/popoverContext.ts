@@ -7,7 +7,7 @@ import type { PopoverState } from './components/Popover/index';
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue | undefined>(
   undefined,
 ) as Context<PopoverContextValue>;
-const popoverContextDefaultValue: PopoverContextValue = {
+export const popoverContextDefaultValue: PopoverContextValue = {
   open: false,
   setOpen: () => null,
   toggleOpen: () => null,

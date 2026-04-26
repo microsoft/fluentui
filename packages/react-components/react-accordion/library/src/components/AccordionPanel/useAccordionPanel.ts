@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { presenceMotionSlot } from '@fluentui/react-motion';
@@ -70,6 +70,10 @@ export const useAccordionPanelBase_unstable = (
       {
         ref: ref as React.Ref<HTMLDivElement>,
         ...props,
+        // Prevent keyboard focus from entering the panel while it is closed/collapsing.
+        // tabIndex: -1 prevents the panel itself from being focused, and inert prevents
+        // all focusable descendants from being reachable via keyboard navigation.
+        ...(open ? {} : { tabIndex: -1, inert: true }),
       },
       { elementType: 'div' },
     ),

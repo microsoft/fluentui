@@ -3,9 +3,9 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { Pie } from './Pie/index';
-import { DonutChartProps } from './DonutChart.types';
+import type { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
-import { ChartDataPoint } from '../../DonutChart';
+import type { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   areArraysEqual,
@@ -15,7 +15,8 @@ import {
   ChartTitle,
   CHART_TITLE_PADDING,
 } from '../../utilities/index';
-import { Legend, Legends } from '../../index';
+import type { Legend } from '../../index';
+import { Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -38,7 +39,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       false,
     );
     const _uniqText: string = useId('_Pie_');
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+
     let _calloutAnchorPoint: ChartDataPoint | null;
     let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);
@@ -130,7 +131,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           centerLegends
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
-          // eslint-disable-next-line react/jsx-no-bind
           onChange={_onLegendSelectionChange}
           legendRef={_legendsRef}
         />

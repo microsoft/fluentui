@@ -7,7 +7,7 @@ import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
-import { OptionValue } from './OptionCollection.types';
+import type { OptionValue } from './OptionCollection.types';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,

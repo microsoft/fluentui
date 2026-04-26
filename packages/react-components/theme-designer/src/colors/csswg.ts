@@ -2,7 +2,7 @@
 // The following is a combination of several files retrieved from CSSWG’s
 // CSS Color 4 module. It was modified to support TypeScript types adapted for
 // the Fluent Blocks `colors` package and formatted to meet its style criteria.
-import { Vec2, Vec3, Vec4 } from './types';
+import type { Vec2, Vec3, Vec4 } from './types';
 
 // [willshown]: Adjusted to export a TypeScript module. Retrieved on 24 May 2021
 // from https://drafts.csswg.org/css-color-4/multiply-matrices.js

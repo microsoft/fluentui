@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add mising base hook export",
+  "packageName": "@fluentui/react-rating",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
-import { MenuGridGroupProps, MenuGridGroupState } from './MenuGridGroup.types';
+import type { MenuGridGroupProps, MenuGridGroupState } from './MenuGridGroup.types';
 
 /**
  * Given user props, returns state and render function for a MenuGridGroup.
