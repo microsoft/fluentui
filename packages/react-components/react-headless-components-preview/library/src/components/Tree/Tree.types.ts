@@ -1,0 +1,15 @@
+export type {
+  TreeSlots,
+  TreeProps,
+  TreeState,
+  TreeContextValues,
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
+  TreeNavigationData_unstable,
+  TreeNavigationEvent_unstable,
+  TreeNavigationDataParam,
+  TreeNavigationMode,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+  TreeSelectionValue,
+} from '@fluentui/react-tree';
