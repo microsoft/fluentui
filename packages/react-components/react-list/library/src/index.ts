@@ -1,6 +1,13 @@
-export { List, listClassNames, renderList_unstable, useListStyles_unstable, useList_unstable } from './List';
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useList_unstable,
+  useListContextValues_unstable,
+  useListStyles_unstable,
+} from './List';
 
-export type { ListProps, ListSlots, ListState } from './List';
+export type { ListContextValues, ListProps, ListSlots, ListState } from './List';
 export {
   ListItem,
   listItemClassNames,
