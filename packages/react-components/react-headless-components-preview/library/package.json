@@ -32,6 +32,7 @@
     "@fluentui/react-input": "^9.8.0",
     "@fluentui/react-label": "^9.3.15",
     "@fluentui/react-link": "^9.8.0",
+    "@fluentui/react-list": "^9.6.13",
     "@fluentui/react-message-bar": "^9.6.23",
     "@fluentui/react-persona": "^9.7.1",
     "@fluentui/react-portal": "^9.8.11",
