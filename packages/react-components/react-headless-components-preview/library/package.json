@@ -50,6 +50,7 @@
     "@fluentui/react-tabs": "^9.11.2",
     "@fluentui/react-tags": "^9.7.19",
     "@fluentui/react-textarea": "^9.7.0",
+    "@fluentui/react-tree": "^9.15.16",
     "@fluentui/react-toolbar": "^9.7.7",
     "@fluentui/react-utilities": "^9.26.2",
     "@swc/helpers": "^0.5.1"
