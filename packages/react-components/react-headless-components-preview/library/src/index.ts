@@ -352,3 +352,24 @@ export type {
   TableResizeHandleProps,
   TableResizeHandleState,
 } from './Table';
+
+export { DataGrid, renderDataGrid, useDataGrid, useDataGridContextValues } from './DataGrid';
+export type { DataGridSlots, DataGridProps, DataGridState, DataGridContextValues, DataGridFocusMode } from './DataGrid';
+
+export { DataGridBody, renderDataGridBody, useDataGridBody } from './DataGrid';
+export type { DataGridBodySlots, DataGridBodyProps, DataGridBodyState, RowRenderFunction } from './DataGrid';
+
+export { DataGridHeader, renderDataGridHeader, useDataGridHeader } from './DataGrid';
+export type { DataGridHeaderSlots, DataGridHeaderProps, DataGridHeaderState } from './DataGrid';
+
+export { DataGridHeaderCell, renderDataGridHeaderCell, useDataGridHeaderCell } from './DataGrid';
+export type { DataGridHeaderCellSlots, DataGridHeaderCellProps, DataGridHeaderCellState } from './DataGrid';
+
+export { DataGridRow, renderDataGridRow, useDataGridRow } from './DataGrid';
+export type { DataGridRowSlots, DataGridRowProps, DataGridRowState, CellRenderFunction } from './DataGrid';
+
+export { DataGridCell, renderDataGridCell, useDataGridCell } from './DataGrid';
+export type { DataGridCellSlots, DataGridCellProps, DataGridCellState, DataGridCellFocusMode } from './DataGrid';
+
+export { DataGridSelectionCell, renderDataGridSelectionCell, useDataGridSelectionCell } from './DataGrid';
+export type { DataGridSelectionCellSlots, DataGridSelectionCellProps, DataGridSelectionCellState } from './DataGrid';
