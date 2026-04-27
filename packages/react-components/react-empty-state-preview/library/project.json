@@ -1,0 +1,8 @@
+{
+  "name": "react-empty-state-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-empty-state-preview/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": []
+}
