@@ -67,19 +67,24 @@ extends:
                 displayName: yarn
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run react-headless-components-preview:build --nxBail
+                  echo "Following packages will be published (if they contain changes):"
+                  yarn nx show projects -p 'tag:react-headless,!tag:npm:private' --exclude 'apps/**'
+                displayName: Show packages
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p 'tag:react-headless,!tag:npm:private,!tag:type:stories' --exclude 'apps/**' --nxBail
                 displayName: build
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run react-headless-components-preview:test --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p 'tag:react-headless,!tag:npm:private,!tag:type:stories' --exclude 'apps/**' --nxBail
                 displayName: test
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run react-headless-components-preview:lint --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p 'tag:react-headless,!tag:npm:private,!tag:type:stories' --exclude 'apps/**' --nxBail
                 displayName: lint
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-headless.config.js --message 'release: applying package updates - react-headless-components-preview'
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-headless.config.js --message 'release: applying package updates - react-headless'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
