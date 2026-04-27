@@ -14,7 +14,15 @@ export type LinkProps = ComponentProps<LinkSlots> & {
    * If not specified, the link appears with its default styling.
    * @default 'default'
    */
-  appearance?: 'default' | 'subtle';
+  appearance?: 'default' | 'subtle' | 'inverted';
+
+  /**
+   * Whether the link should be bold.
+   * If set true, the link will be rendered with font weight 600 (tokens.fontWeightSemibold).
+   *
+   * @default false
+   */
+  bold?: boolean;
 
   /**
    * Whether the link is disabled.
@@ -43,7 +51,7 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 export type LinkBaseProps = DistributiveOmit<LinkProps, 'appearance'>;
 
 export type LinkState = ComponentState<LinkSlots> &
-  Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
+  Required<Pick<LinkProps, 'appearance' | 'bold' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
     backgroundAppearance?: BackgroundAppearanceContextValue;
   };
 
