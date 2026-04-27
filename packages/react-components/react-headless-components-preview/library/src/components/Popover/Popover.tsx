@@ -13,7 +13,7 @@ import { renderPopover } from './renderPopover';
  * CSS anchor positioning for placement.
  */
 export const Popover = (props: PopoverProps): JSXElement => {
-  const state = usePopover(props, null);
+  const state = usePopover(props);
   const contextValues = usePopoverContextValues(state);
 
   return renderPopover(state, contextValues);

@@ -82,8 +82,6 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
-  // In `auto` mode the browser owns light dismiss (click-outside, scroll, Escape)
-  // and emits `toggle` events we mirror back into React state.
   const isAutoMode = popoverType === 'auto' && !inline;
 
   useOnClickOutside({
@@ -139,10 +137,13 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
     if (!isAutoMode) {
       return;
     }
+
     const surface = contentRef.current;
+
     if (!surface) {
       return;
     }
+
     surface.addEventListener('toggle', onSurfaceToggle);
     return () => surface.removeEventListener('toggle', onSurfaceToggle);
   }, [isAutoMode, onSurfaceToggle]);
@@ -194,25 +195,9 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
   };
 }
 
-/**
- * Returns the state for a Popover component.
- *
- * Renders the surface with `popover="manual"`, leaving dismiss behaviour
- * (click-outside, scroll, Escape) under React's control.
- */
-export const usePopover = (props: PopoverProps, _ref: React.Ref<HTMLElement>): PopoverState =>
-  useInternalPopover(props, 'manual');
+export const usePopover = (props: PopoverProps): PopoverState => useInternalPopover(props, 'manual');
 
-/**
- * Returns the state for a PopoverAuto component.
- *
- * Renders the surface with `popover="auto"`, deferring light-dismiss
- * (Escape, click-outside, popover-stack peer dismissal) to the browser.
- * Browser `toggle` events are mirrored back into React state and
- * `onOpenChange`. The library's own dismiss hooks are disabled.
- */
-export const usePopoverAuto = (props: PopoverProps, _ref: React.Ref<HTMLElement>): PopoverState =>
-  useInternalPopover(props, 'auto');
+export const usePopoverAuto = (props: PopoverProps): PopoverState => useInternalPopover(props, 'auto');
 
 export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
   const {

@@ -17,7 +17,7 @@ import { renderPopover } from './renderPopover';
  * popover dismisses any peers — both delegated to the browser's stack.
  */
 export const PopoverAuto = (props: PopoverProps): JSXElement => {
-  const state = usePopoverAuto(props, null);
+  const state = usePopoverAuto(props);
   const contextValues = usePopoverContextValues(state);
 
   return renderPopover(state, contextValues);

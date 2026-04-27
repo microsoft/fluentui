@@ -129,11 +129,11 @@ export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;
 // @public
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSXElement | null;
 
-// @public
-export const usePopover: (props: PopoverProps, _ref: React_2.Ref<HTMLElement>) => PopoverState;
+// @public (undocumented)
+export const usePopover: (props: PopoverProps) => PopoverState;
 
-// @public
-export const usePopoverAuto: (props: PopoverProps, _ref: React_2.Ref<HTMLElement>) => PopoverState;
+// @public (undocumented)
+export const usePopoverAuto: (props: PopoverProps) => PopoverState;
 
 // @public
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
