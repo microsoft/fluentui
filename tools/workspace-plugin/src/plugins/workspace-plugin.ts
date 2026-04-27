@@ -287,7 +287,7 @@ function buildReactCompilerAnalyzerTarget(
   }
 
   return {
-    command: `${config.pmc.exec} react-compiler-analyzer ./src`,
+    command: `${config.pmc.exec} react-compiler-analyzer directives ./src`,
     options: { cwd: projectRoot },
     cache: true,
     inputs: ['default', { externalDependencies: ['babel-plugin-react-compiler'] }],

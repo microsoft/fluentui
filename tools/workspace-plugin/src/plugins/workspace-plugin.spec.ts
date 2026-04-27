@@ -926,7 +926,7 @@ describe(`workspace-plugin`, () => {
       expect(targets?.['react-compiler-analyzer']).toMatchInlineSnapshot(`
         Object {
           "cache": true,
-          "command": "yarn react-compiler-analyzer ./src",
+          "command": "yarn react-compiler-analyzer directives ./src",
           "inputs": Array [
             "default",
             Object {
