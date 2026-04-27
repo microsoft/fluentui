@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-headless-components-preview/library/src",
-  "tags": ["platform:web", "vNext", "react-headless"],
+  "tags": ["platform:web", "react-headless"],
   "implicitDependencies": [],
   "targets": {
     "generate-api": {

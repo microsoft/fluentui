@@ -100,6 +100,9 @@ describe(`beachball configs`, () => {
 
     // Ensure that vNext config does not include "tools" packages
     expect(vNextConfig.scope.some(scope => toolsConfig.scope.includes(scope))).toBe(false);
+
+    // Ensure that vNext config does not include "react-headless" packages
+    expect(vNextConfig.scope.some(scope => headlessConfig.scope.includes(scope))).toBe(false);
   });
 
   it(`should generate web-components release config`, () => {
