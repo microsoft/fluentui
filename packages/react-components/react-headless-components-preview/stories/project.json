@@ -3,6 +3,6 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-headless-components-preview/stories/src",
-  "tags": ["platform:web", "type:stories", "react-headless"],
+  "tags": ["vNext", "platform:web", "type:stories", "react-headless"],
   "implicitDependencies": []
 }
