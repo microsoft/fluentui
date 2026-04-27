@@ -4,5 +4,12 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-headless-components-preview/library/src",
   "tags": ["platform:web", "vNext"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    }
+  }
 }

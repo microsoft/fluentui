@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Textarea } from '@fluentui/react-headless-components-preview';
+import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 const wrapperClass =
   'flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2';

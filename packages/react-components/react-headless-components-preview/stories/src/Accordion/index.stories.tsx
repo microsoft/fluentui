@@ -1,4 +1,9 @@
-import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-headless-components-preview';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+} from '@fluentui/react-headless-components-preview/accordion';
 
 import descriptionMd from './AccordionDescription.md';
 

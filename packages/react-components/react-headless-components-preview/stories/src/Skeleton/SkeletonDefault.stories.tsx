@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview';
+import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
 export const Default = (): React.ReactNode => (
   <Skeleton className="flex flex-col gap-3 w-full max-w-sm rounded-lg border bg-white border-gray-200 p-4">

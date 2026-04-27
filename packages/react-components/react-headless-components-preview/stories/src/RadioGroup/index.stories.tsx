@@ -1,4 +1,4 @@
-import { RadioGroup, Radio } from '@fluentui/react-headless-components-preview';
+import { RadioGroup, Radio } from '@fluentui/react-headless-components-preview/radio-group';
 
 import descriptionMd from './RadioGroupDescription.md';
 
