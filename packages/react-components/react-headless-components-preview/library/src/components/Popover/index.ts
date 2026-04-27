@@ -1,7 +1,9 @@
 export { Popover } from './Popover';
 export { PopoverAuto } from './PopoverAuto';
 export { renderPopover } from './renderPopover';
-export { usePopover, usePopoverAuto, usePopoverContextValues } from './usePopover';
+export { usePopover } from './usePopover';
+export { usePopoverAuto } from './usePopoverAuto';
+export { usePopoverContextValues } from './usePopoverBase';
 export { usePopoverContext } from './popoverContext';
 export type {
   PopoverProps,

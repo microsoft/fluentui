@@ -2,15 +2,12 @@
 
 import type { PopoverProps } from './Popover.types';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { usePopover, usePopoverContextValues } from './usePopover';
+import { usePopover } from './usePopover';
+import { usePopoverContextValues } from './usePopoverBase';
 import { renderPopover } from './renderPopover';
 
 /**
  * Headless Popover component.
- *
- * Provides unstyled popover behavior with native browser APIs.
- * Uses HTML popover attribute for top-layer rendering and
- * CSS anchor positioning for placement.
  */
 export const Popover = (props: PopoverProps): JSXElement => {
   const state = usePopover(props);

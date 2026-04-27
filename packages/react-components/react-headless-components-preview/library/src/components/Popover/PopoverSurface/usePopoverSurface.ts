@@ -11,6 +11,7 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
  */
 export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTMLDivElement>): PopoverSurfaceState => {
   const contentRef = usePopoverContext(context => context.contentRef);
+  const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const setOpen = usePopoverContext(context => context.setOpen);
   const arrowRef = usePopoverContext(context => context.arrowRef);
@@ -21,9 +22,6 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const popoverType = usePopoverContext(context => context.popoverType);
   const positioningCtx = usePopoverContext(context => context.positioning);
 
-  // In `auto` mode the browser handles Escape dismiss natively (and emits a
-  // `toggle` event we already mirror in usePopover). Adding our own Escape
-  // handler would race with the browser and the popover-stack semantics.
   const browserHandlesDismiss = popoverType === 'auto' && !inline;
 
   const state: PopoverSurfaceState = {
@@ -66,12 +64,13 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   });
 
   state.root.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!browserHandlesDismiss && e.key === 'Escape') {
+    if (!browserHandlesDismiss && e.key === 'Escape' && !e.isDefaultPrevented()) {
       const target = e.target as HTMLElement;
       const surface = contentRef.current;
       if (surface && target.closest('[data-popover-surface]') === surface) {
         e.preventDefault();
         setOpen(e, false);
+        triggerRef.current?.focus();
       }
     }
 

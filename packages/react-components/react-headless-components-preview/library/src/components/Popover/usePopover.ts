@@ -1,95 +1,28 @@
 'use client';
 
 import * as React from 'react';
-import {
-  useControllableState,
-  useEventCallback,
-  useOnClickOutside,
-  useOnScrollOutside,
-  elementContains,
-  useTimeout,
-} from '@fluentui/react-utilities';
+import { useOnClickOutside, useOnScrollOutside, elementContains } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents, PopoverType } from './Popover.types';
+import type { PopoverProps, PopoverState } from './Popover.types';
+import { usePopoverBase, ensureNativePopoverShown } from './usePopoverBase';
 
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
+export { usePopoverContextValues } from './usePopoverBase';
 
-type ToggleEventLike = Event & { newState?: 'open' | 'closed' };
+/**
+ * Returns the state for a Popover component.
+ */
+export const usePopover = (props: PopoverProps): PopoverState => {
+  const base = usePopoverBase(props);
+  const { open, setOpen, triggerRef, contentRef, inline, openOnContext, closeOnScroll, closeOnIframeFocus } = base;
 
-function useInternalPopover(props: PopoverProps, popoverType: PopoverType): PopoverState {
-  const {
-    openOnHover = false,
-    openOnContext = false,
-    mouseLeaveDelay = 500,
-    withArrow = false,
-    disableAutoFocus = false,
-    closeOnScroll = false,
-    closeOnIframeFocus = true,
-    inline = false,
-    mountNode,
-  } = props;
-
-  const [open, setOpenState] = useControllableState({
-    state: props.open,
-    defaultState: props.defaultOpen,
-    initialState: false,
-  });
-
-  const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
   const { targetDocument } = useFluent();
-
-  const onOpenChange = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
-    props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
-  });
-
-  const [setOpenTimeout, clearOpenTimeout] = useTimeout();
-
-  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
-    clearOpenTimeout();
-
-    if (shouldOpen && e.type === 'contextmenu') {
-      const mouseEvent = e as React.MouseEvent<HTMLElement>;
-      setContextTarget({ x: mouseEvent.clientX, y: mouseEvent.clientY });
-    }
-
-    if (!shouldOpen) {
-      setContextTarget(undefined);
-    }
-
-    if (e.type === 'mouseleave') {
-      setOpenTimeout(() => {
-        setOpenState(shouldOpen);
-        onOpenChange(e, shouldOpen);
-      }, mouseLeaveDelay);
-    } else {
-      setOpenState(shouldOpen);
-      onOpenChange(e, shouldOpen);
-    }
-  });
-
-  const toggleOpen = React.useCallback(
-    (e: OpenPopoverEvents) => {
-      setOpen(e, !open);
-    },
-    [setOpen, open],
-  );
-
-  const triggerRef = React.useRef<HTMLElement>(null);
-  const contentRef = React.useRef<HTMLElement>(null);
-  const arrowRef = React.useRef<HTMLDivElement>(null);
-
-  const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
-
-  const isAutoMode = popoverType === 'auto' && !inline;
 
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [triggerRef, contentRef],
-    disabled: !open || isAutoMode,
+    disabled: !open,
     disabledFocusOnIframe: !closeOnIframeFocus,
   });
 
@@ -98,27 +31,9 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [triggerRef, contentRef],
-    disabled: !open || !(openOnContext || closeOnScroll) || isAutoMode,
+    disabled: !open || !(openOnContext || closeOnScroll),
   });
 
-  // Mirror the browser-driven toggle events into React state when in auto mode.
-  // Covers Escape, click-outside, and the popover-stack dismissal that happens
-  // when an unrelated `popover="auto"` opens. Skip the no-op transition the
-  // browser fires for our own `showPopover()` call (newState='open' while
-  // React already has `open=true`).
-  const onSurfaceToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEventLike;
-    const nextOpen = toggle.newState === 'open';
-    if (nextOpen === open) {
-      return;
-    }
-    setOpenState(nextOpen);
-    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
-  });
-
-  // The surface is unmounted while closed (`state.open ? popoverSurface : null`),
-  // so this effect must re-run when `open` flips so we attach `showPopover()`
-  // and the `toggle` listener to the freshly-mounted surface element.
   React.useEffect(() => {
     const surface = contentRef.current;
 
@@ -126,114 +41,8 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
       return;
     }
 
-    if (typeof surface.showPopover !== 'function') {
-      return;
-    }
+    ensureNativePopoverShown(surface, 'manual');
+  }, [open, inline, contentRef]);
 
-    if (!surface.hasAttribute('popover') || surface.getAttribute('popover') !== popoverType) {
-      surface.setAttribute('popover', popoverType);
-    }
-
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
-      surface.showPopover();
-    }
-
-    if (popoverType !== 'auto') {
-      return;
-    }
-
-    surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, inline, popoverType, onSurfaceToggle]);
-
-  const children = React.Children.toArray(props.children) as React.ReactElement[];
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (children.length === 0) {
-      // eslint-disable-next-line no-console
-      console.warn('Popover must contain at least one child');
-    }
-
-    if (children.length > 2) {
-      // eslint-disable-next-line no-console
-      console.warn('Popover must contain at most two children');
-    }
-  }
-
-  let popoverTrigger: React.ReactElement | undefined;
-  let popoverSurface: React.ReactElement | undefined;
-
-  if (children.length === 2) {
-    popoverTrigger = children[0];
-    popoverSurface = children[1];
-  } else if (children.length === 1) {
-    popoverSurface = children[0];
-  }
-
-  return {
-    open,
-    setOpen,
-    toggleOpen,
-    triggerRef,
-    contentRef,
-    arrowRef,
-    popoverTrigger,
-    popoverSurface,
-    openOnHover,
-    openOnContext,
-    withArrow,
-    disableAutoFocus,
-    inline,
-    mountNode,
-    onOpenChange: props.onOpenChange,
-    contextTarget,
-    setContextTarget,
-    positioning,
-    popoverType,
-  };
-}
-
-export const usePopover = (props: PopoverProps): PopoverState => useInternalPopover(props, 'manual');
-
-export const usePopoverAuto = (props: PopoverProps): PopoverState => useInternalPopover(props, 'auto');
-
-export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
-  const {
-    open,
-    setOpen,
-    toggleOpen,
-    triggerRef,
-    contentRef,
-    arrowRef,
-    openOnHover,
-    openOnContext,
-    disableAutoFocus,
-    withArrow,
-    inline,
-    mountNode,
-    positioning,
-    popoverType,
-  } = state;
-
-  return {
-    popover: {
-      open,
-      setOpen,
-      toggleOpen,
-      triggerRef,
-      contentRef,
-      arrowRef,
-      openOnHover,
-      openOnContext,
-      disableAutoFocus,
-      withArrow,
-      inline,
-      mountNode,
-      popoverType,
-      positioning: {
-        targetRef: positioning.targetRef,
-        containerRef: positioning.containerRef,
-      },
-    },
-  };
+  return { ...base, popoverType: 'manual' };
 };
