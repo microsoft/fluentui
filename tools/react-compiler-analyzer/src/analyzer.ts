@@ -4,62 +4,14 @@ import { extname } from 'node:path';
 import { transformAsync } from '@babel/core';
 
 import type { DirectiveAnalysis, DirectiveLocation, FileEntry, AnalyzerOptions } from './types';
+import { extractDetailReason } from './compiler-utils';
+import type { CompilerEvent } from './compiler-utils';
 
 // Regex matching the ESLint rule's justification pattern
 const JUSTIFIED_RE = /^\s*justified:/;
 
 // Match 'use no memo' as either a plain expression statement or parenthesized
 const USE_NO_MEMO_RE = /^\s*(?:\(?'use no memo'\)?;?\s*)(\/\/.*)?$/;
-
-interface CompilerEvent {
-  kind: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError' | string;
-  fnLoc: { start: { line: number; column: number }; end: { line: number; column: number } } | null;
-  fnName?: string | null;
-  reason?: string;
-  detail?: unknown;
-  data?: string;
-}
-
-/**
- * Extract a human-readable reason string from a CompileError detail object.
- * The `detail` can be a CompilerErrorDetail or CompilerDiagnostic from the
- * React Compiler — both carry a `.reason` and optional `.description`.
- * Falls back to `String(detail)` and then to `Error.toString()`.
- */
-interface CompilerDetailLike {
-  reason?: string;
-  description?: string;
-  loc?: {
-    start?: { line?: number; column?: number };
-  };
-}
-
-function extractDetailReason(detail: unknown): string {
-  if (detail === null || detail === undefined) {
-    return '';
-  }
-  // CompilerErrorDetail / CompilerDiagnostic expose .reason + .description
-  if (typeof detail === 'object') {
-    const compilerDetail = detail as CompilerDetailLike;
-    const parts: string[] = [];
-
-    if (typeof compilerDetail.reason === 'string') {
-      parts.push(compilerDetail.reason);
-    }
-    if (typeof compilerDetail.description === 'string') {
-      parts.push(compilerDetail.description);
-    }
-    // Some details nest a loc with line/column info
-    if (compilerDetail.loc && typeof compilerDetail.loc === 'object' && compilerDetail.loc.start) {
-      const start = compilerDetail.loc.start;
-      parts.push(`(${start.line ?? '?'}:${start.column ?? '?'})`);
-    }
-    if (parts.length > 0) {
-      return parts.join(' ');
-    }
-  }
-  return String(detail);
-}
 
 /**
  * Parse source text to find all 'use no memo' directive locations.
