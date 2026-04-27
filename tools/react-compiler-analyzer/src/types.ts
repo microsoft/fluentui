@@ -1,3 +1,20 @@
+// ── Shared types ──
+
+export interface FileEntry {
+  filePath: string;
+  packageName: string;
+}
+
+export interface BaseArgs {
+  path: string;
+  verbose: boolean;
+  fullReasons: boolean;
+  concurrency: number;
+  exclude: string[];
+}
+
+// ── Directive analysis types ──
+
 export type DirectiveStatus = 'redundant' | 'active' | 'skipped';
 
 export interface DirectiveLocation {
@@ -21,11 +38,6 @@ export interface DirectiveAnalysis {
   reason?: string;
 }
 
-export interface FileEntry {
-  filePath: string;
-  packageName: string;
-}
-
 export interface AnalyzerOptions {
   concurrency: number;
   verbose: boolean;
@@ -37,11 +49,48 @@ export interface FixResult {
   directivesJustified: number;
 }
 
-export interface Args {
-  path: string;
+export interface DirectiveArgs extends BaseArgs {
   fix: boolean;
-  verbose: boolean;
-  fullReasons: boolean;
-  concurrency: number;
-  exclude: string[];
 }
+
+// ── Coverage analysis types ──
+
+export type CompilationMode = 'infer' | 'annotation' | 'all';
+
+export type FunctionStatus = 'compiled' | 'skipped' | 'error';
+
+export interface MemoStats {
+  memoSlots: number;
+  memoBlocks: number;
+  memoValues: number;
+  prunedMemoBlocks: number;
+  prunedMemoValues: number;
+}
+
+export interface FunctionAnalysis {
+  filePath: string;
+  packageName: string;
+  line: number;
+  column: number;
+  functionName: string | null;
+  status: FunctionStatus;
+  compilerEvent: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError';
+  reason?: string;
+  memoStats?: MemoStats;
+}
+
+export interface CoverageAnalyzerOptions {
+  concurrency: number;
+  verbose: boolean;
+  compilationMode: CompilationMode;
+}
+
+export interface CoverageArgs extends BaseArgs {
+  compilationMode: CompilationMode;
+}
+
+// ── CLI parsed result ──
+
+export type ParsedCommand =
+  | { command: 'directives'; args: DirectiveArgs }
+  | { command: 'coverage'; args: CoverageArgs };
