@@ -1,22 +1,16 @@
 require('./register').register();
 
-const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
-
 const { config: sharedConfig } = require('./shared.config');
+const { getConfig } = require('./utils');
 
-function getHeadlessPaths() {
-  const allProjects = getAllPackageInfo();
-  return Object.values(allProjects)
-    .filter(project => project.projectConfig.tags?.includes('react-headless') && !project.packageJson.private)
-    .map(project => project.packagePath);
-}
+const { scope } = getConfig({ version: 'headless' });
 
 /**
  * @type {typeof sharedConfig}
  */
 const config = {
   ...sharedConfig,
-  scope: getHeadlessPaths(),
+  scope,
 };
 
 module.exports = config;
