@@ -67,19 +67,6 @@ describe('PopoverTrigger', () => {
     expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'true');
   });
 
-  it('applies aria-haspopup="dialog" when trapFocus', () => {
-    const { getByText } = render(
-      <Popover trapFocus>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Content</PopoverSurface>
-      </Popover>,
-    );
-
-    expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'dialog');
-  });
-
   it('applies data-open when popover is open', () => {
     const { getByText } = render(
       <Popover defaultOpen>

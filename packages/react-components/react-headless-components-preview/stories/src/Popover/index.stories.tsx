@@ -11,7 +11,6 @@ export { OpenOnContext } from './PopoverOpenOnContext.stories';
 export { CustomTrigger } from './PopoverCustomTrigger.stories';
 export { WithoutTrigger } from './PopoverWithoutTrigger.stories';
 export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
-export { TrapFocus } from './PopoverTrapFocus.stories';
 export { Nested } from './PopoverNested.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 export { Inline } from './PopoverInline.stories';

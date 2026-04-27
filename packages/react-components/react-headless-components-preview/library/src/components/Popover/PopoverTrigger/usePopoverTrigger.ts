@@ -29,7 +29,6 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
   const positioningCtx = usePopoverContext(context => context.positioning);
 
   const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
@@ -68,7 +67,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
 
   const triggerChildProps = {
     'aria-expanded': `${open}` as 'true' | 'false',
-    'aria-haspopup': (trapFocus ? 'dialog' : 'true') as 'dialog' | 'true',
+    'aria-haspopup': 'true' as const,
     'data-open': stringifyDataAttribute(open),
     ...child?.props,
     onMouseEnter: useEventCallback(

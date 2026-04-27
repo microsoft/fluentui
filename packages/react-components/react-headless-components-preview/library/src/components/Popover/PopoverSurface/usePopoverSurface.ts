@@ -3,7 +3,6 @@
 import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../popoverContext';
-import { useFocusScope } from '../../../hooks';
 import { stringifyDataAttribute } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
@@ -16,31 +15,10 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const setOpen = usePopoverContext(context => context.setOpen);
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const withArrow = usePopoverContext(context => context.withArrow);
-  const trapFocus = usePopoverContext(context => context.trapFocus);
-  const disableAutoFocus = usePopoverContext(context => context.disableAutoFocus);
   const inline = usePopoverContext(context => context.inline);
   const open = usePopoverContext(context => context.open);
   const mountNode = usePopoverContext(context => context.mountNode);
   const positioningCtx = usePopoverContext(context => context.positioning);
-  const tabIndex = typeof props.tabIndex === 'number' ? props.tabIndex : undefined;
-
-  const onMountAutoFocus = useEventCallback((event: Event) => {
-    if (disableAutoFocus) {
-      event.preventDefault();
-      return;
-    }
-
-    if (tabIndex !== undefined) {
-      event.preventDefault();
-      contentRef.current?.focus({ preventScroll: true });
-    }
-  });
-
-  const focusScope = useFocusScope({
-    trapped: trapFocus,
-    loop: trapFocus,
-    onMountAutoFocus,
-  });
 
   const state: PopoverSurfaceState = {
     inline,
@@ -50,15 +28,8 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     components: { root: 'div' },
     root: slot.always(
       {
-        ref: useMergedRefs(
-          ref,
-          contentRef,
-          positioningCtx.containerRef,
-          focusScope.containerRef,
-        ) as React.Ref<HTMLDivElement>,
-        role: trapFocus ? 'dialog' : 'group',
-        'aria-modal': trapFocus ? true : undefined,
-        tabIndex: focusScope.containerProps.tabIndex,
+        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDivElement>,
+        role: 'group',
         ...props,
         'data-popover-surface': '',
         'data-open': stringifyDataAttribute(open),
@@ -88,11 +59,7 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
     onMouseLeaveOriginal?.(e);
   });
 
-  const focusScopeKeyDown = focusScope.containerProps.onKeyDown;
-
   state.root.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    focusScopeKeyDown(e);
-
     if (e.key === 'Escape') {
       const target = e.target as HTMLElement;
       const surface = contentRef.current;

@@ -150,21 +150,7 @@ describe('Popover', () => {
     expect(getByText('Trigger')).toHaveAttribute('data-open');
   });
 
-  it('sets role="dialog" and aria-modal on surface when trapFocus', () => {
-    const { getByRole } = render(
-      <Popover defaultOpen trapFocus>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Surface</PopoverSurface>
-      </Popover>,
-    );
-
-    const surface = getByRole('dialog');
-    expect(surface).toHaveAttribute('aria-modal', 'true');
-  });
-
-  it('sets role="group" on surface when no trapFocus', () => {
+  it('sets role="group" on surface', () => {
     const { getByRole } = render(
       <Popover defaultOpen>
         <PopoverTrigger>

@@ -79,12 +79,6 @@ export type PopoverProps = {
   withArrow?: boolean;
 
   /**
-   * Enable focus trap.
-   * @default false
-   */
-  trapFocus?: boolean;
-
-  /**
    * By default Popover focuses the first focusable element in `PopoverSurface` on open.
    * Set this to prevent that behavior.
    *
@@ -125,7 +119,7 @@ export type PopoverProps = {
 export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
   Pick<
     PopoverProps,
-    'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'disableAutoFocus' | 'mountNode'
+    'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow' | 'disableAutoFocus' | 'mountNode'
   > & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -188,7 +182,6 @@ export type PopoverContextValue = Pick<
   | 'arrowRef'
   | 'openOnHover'
   | 'openOnContext'
-  | 'trapFocus'
   | 'disableAutoFocus'
   | 'withArrow'
   | 'inline'

@@ -17,7 +17,6 @@ const popoverContextDefaultValue: PopoverContextValue = {
   arrowRef: { current: null },
   openOnContext: false,
   openOnHover: false,
-  trapFocus: false,
   disableAutoFocus: false,
   withArrow: false,
   inline: false,

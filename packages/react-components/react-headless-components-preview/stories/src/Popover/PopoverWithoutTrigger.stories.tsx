@@ -17,12 +17,7 @@ export const WithoutTrigger = (): React.ReactNode => {
       <button ref={buttonRef} className={classes.trigger} onClick={() => setOpen(value => !value)}>
         Toggle popover
       </button>
-      <Popover
-        open={open}
-        onOpenChange={(_e, data) => setOpen(data.open)}
-        trapFocus
-        positioning={{ target: buttonRef }}
-      >
+      <Popover open={open} onOpenChange={(_e, data) => setOpen(data.open)} positioning={{ target: buttonRef }}>
         <PopoverSurface className={classes.surface}>
           <h3 className="text-sm font-semibold text-gray-900 m-0">Popover content</h3>
           <p className="text-sm text-gray-600">

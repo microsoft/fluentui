@@ -1,4 +1,6 @@
 export { usePositioning } from './usePositioning';
+export { getPlacementString, resolvePositioningShorthand } from './utils';
+export { POSITIONS, ALIGNMENTS } from './constants';
 export type {
   Position,
   Alignment,
@@ -7,5 +9,4 @@ export type {
   PositioningImperativeRef,
   PositioningShorthand,
   PositioningShorthandValue,
-} from './usePositioning';
-export { POSITIONS, ALIGNMENTS, getPlacementString, resolvePositioningShorthand } from './usePositioning';
+} from './types';

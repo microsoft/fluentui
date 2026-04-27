@@ -1,1 +1,0 @@
-`autoSize` sets inline `max-width` and `max-height` styles on the surface derived from `overflowBoundary`. As the content grows the surface clips to the boundary and scrolls instead of bursting outside.

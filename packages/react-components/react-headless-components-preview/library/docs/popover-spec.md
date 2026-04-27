@@ -252,7 +252,7 @@ The package relies on three native browser APIs:
 
 - **CSS Anchor Positioning** (Chromium 125+) — `anchor-name`, `position-anchor`, `position-area`, `anchor-size()`, `position-try-fallbacks`.
 - **HTML Popover API** (Chromium 114+) — `popover="manual"` + `showPopover()` for top-layer elevation. Feature-detected (`typeof el.showPopover === 'function'`); SSR-safe; `inline={true}` opts out entirely.
-- **ResizeObserver** — used sparingly by `usePlacementObserver` (for live `data-placement`) and `useAutoSizeBoundary` (for boundary-aware `max-*`).
+- **ResizeObserver** — used sparingly by `usePlacementObserver` (for live `data-placement`)
 
 Firefox and Safari are implementing CSS Anchor Positioning; most features work but flip behaviour is still WIP. `inline={true}` works in every engine.
 

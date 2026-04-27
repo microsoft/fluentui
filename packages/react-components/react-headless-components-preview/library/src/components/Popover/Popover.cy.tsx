@@ -12,7 +12,6 @@ const mount = (element: JSXElement) => {
 
 const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
-const popoverDialogContentSelector = '[role="dialog"]';
 
 describe('Popover', () => {
   ['uncontrolled', 'controlled'].forEach(scenario => {
@@ -118,19 +117,6 @@ describe('Popover', () => {
       cy.get(popoverTriggerSelector).should('have.attr', 'aria-haspopup', 'true');
     });
 
-    it('should set aria-haspopup="dialog" with trapFocus', () => {
-      mount(
-        <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
-            <button>Trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface>Content</PopoverSurface>
-        </Popover>,
-      );
-
-      cy.get(popoverTriggerSelector).should('have.attr', 'aria-haspopup', 'dialog');
-    });
-
     it('should set role="group" on surface by default', () => {
       mount(
         <Popover>
@@ -143,20 +129,6 @@ describe('Popover', () => {
 
       cy.get(popoverTriggerSelector).click();
       cy.get(popoverContentSelector).should('exist');
-    });
-
-    it('should set role="dialog" and aria-modal with trapFocus', () => {
-      mount(
-        <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
-            <button>Trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface>Content</PopoverSurface>
-        </Popover>,
-      );
-
-      cy.get(popoverTriggerSelector).click();
-      cy.get(popoverDialogContentSelector).should('have.attr', 'aria-modal', 'true');
     });
   });
 
@@ -294,7 +266,7 @@ describe('Popover', () => {
   describe('Nested', () => {
     const PopoverL1 = () => {
       return (
-        <Popover trapFocus>
+        <Popover>
           <PopoverTrigger disableButtonEnhancement>
             <button>First nested trigger</button>
           </PopoverTrigger>
@@ -309,7 +281,7 @@ describe('Popover', () => {
 
     const PopoverL2 = () => {
       return (
-        <Popover trapFocus>
+        <Popover>
           <PopoverTrigger disableButtonEnhancement>
             <button>Second nested trigger</button>
           </PopoverTrigger>
@@ -322,7 +294,7 @@ describe('Popover', () => {
 
     const Example = () => {
       return (
-        <Popover trapFocus>
+        <Popover>
           <PopoverTrigger disableButtonEnhancement>
             <button>Root trigger</button>
           </PopoverTrigger>
@@ -360,11 +332,11 @@ describe('Popover', () => {
     });
 
     it('should dismiss all nested popovers on outside click', () => {
-      cy.get('body').click('bottomRight').get(popoverDialogContentSelector).should('not.exist');
+      cy.get('body').click('bottomRight').get(popoverContentSelector).should('not.exist');
     });
 
     it('should not dismiss when clicking on nested content', () => {
-      cy.contains('Second nested button').click().get(popoverDialogContentSelector).should('have.length', 3);
+      cy.contains('Second nested button').click().get(popoverContentSelector).should('have.length', 3);
     });
 
     it('should dismiss child popovers when clicking on parents', () => {
@@ -374,11 +346,11 @@ describe('Popover', () => {
       // spatial layout.
       cy.contains('First nested button')
         .click({ force: true })
-        .get(popoverDialogContentSelector)
+        .get(popoverContentSelector)
         .should('have.length', 2)
         .contains('Root button')
         .click({ force: true })
-        .get(popoverDialogContentSelector)
+        .get(popoverContentSelector)
         .should('have.length', 1);
     });
 
@@ -392,22 +364,22 @@ describe('Popover', () => {
       cy.get(secondNestedTriggerSelector)
         .eq(1)
         .click({ force: true })
-        .get(popoverDialogContentSelector)
+        .get(popoverContentSelector)
         .should('have.length', 3)
         .get(secondNestedTriggerSelector)
         .eq(0)
         .click({ force: true })
-        .get(popoverDialogContentSelector)
+        .get(popoverContentSelector)
         .should('have.length', 3);
     });
 
     it('should dismiss each popover in the stack with Escape keydown', () => {
       cy.focused().realPress('Escape');
-      cy.get(popoverDialogContentSelector).should('have.length', 2);
+      cy.get(popoverContentSelector).should('have.length', 2);
       cy.focused().realPress('Escape');
-      cy.get(popoverDialogContentSelector).should('have.length', 1);
+      cy.get(popoverContentSelector).should('have.length', 1);
       cy.focused().realPress('Escape');
-      cy.get(popoverDialogContentSelector).should('not.exist');
+      cy.get(popoverContentSelector).should('not.exist');
     });
   });
 
@@ -492,51 +464,6 @@ describe('Popover', () => {
 
       cy.get(popoverTriggerSelector).click();
       cy.get(popoverContentSelector).should('not.have.attr', 'popover');
-    });
-  });
-
-  describe('focus trap', () => {
-    it('Tab should cycle within the surface', () => {
-      mount(
-        <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
-            <button>Popover trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface>
-            <button>One</button>
-            <button>Two</button>
-          </PopoverSurface>
-        </Popover>,
-      );
-
-      cy.get(popoverTriggerSelector).focus().realPress('Enter');
-
-      cy.contains('One').should('have.focus').realPress('Tab');
-      cy.contains('Two').should('have.focus').realPress('Tab');
-      cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
-      cy.contains('Two').should('have.focus');
-    });
-
-    it('should focus on PopoverSurface when its tabIndex is a number', () => {
-      mount(
-        <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
-            <button>Popover trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface tabIndex={-1} id="popover-surface">
-            <button>One</button>
-            <button>Two</button>
-          </PopoverSurface>
-        </Popover>,
-      );
-
-      cy.get(popoverTriggerSelector).focus().realPress('Enter');
-
-      cy.get('#popover-surface').should('have.focus').realPress('Tab');
-      cy.contains('One').should('have.focus').realPress('Tab');
-      cy.contains('Two').should('have.focus').realPress('Tab');
-      cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
-      cy.contains('Two').should('have.focus');
     });
   });
 

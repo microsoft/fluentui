@@ -18,7 +18,7 @@ const classes = {
 };
 
 const SecondNestedPopover = (): JSXElement => (
-  <Popover trapFocus>
+  <Popover>
     <PopoverTrigger>
       <button className={classes.deepTrigger}>Second nested trigger</button>
     </PopoverTrigger>
@@ -31,7 +31,7 @@ const SecondNestedPopover = (): JSXElement => (
 );
 
 const FirstNestedPopover = (): JSXElement => (
-  <Popover trapFocus>
+  <Popover>
     <PopoverTrigger>
       <button className={classes.nestedTrigger}>First nested trigger</button>
     </PopoverTrigger>
@@ -47,7 +47,7 @@ const FirstNestedPopover = (): JSXElement => (
 );
 
 export const Nested = (): React.ReactNode => (
-  <Popover trapFocus>
+  <Popover>
     <PopoverTrigger>
       <button className={classes.rootTrigger}>Root trigger</button>
     </PopoverTrigger>

@@ -54,32 +54,6 @@ describe('PopoverSurface', () => {
     expect(getByRole('group')).toBeInTheDocument();
   });
 
-  it('has role="dialog" when trapFocus is enabled', () => {
-    const { getByRole } = render(
-      <Popover defaultOpen trapFocus>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Content</PopoverSurface>
-      </Popover>,
-    );
-
-    expect(getByRole('dialog')).toBeInTheDocument();
-  });
-
-  it('has aria-modal="true" when trapFocus is enabled', () => {
-    const { getByRole } = render(
-      <Popover defaultOpen trapFocus>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Content</PopoverSurface>
-      </Popover>,
-    );
-
-    expect(getByRole('dialog')).toHaveAttribute('aria-modal', 'true');
-  });
-
   it('has data-open attribute when open', () => {
     const { getByRole } = render(
       <Popover defaultOpen>
