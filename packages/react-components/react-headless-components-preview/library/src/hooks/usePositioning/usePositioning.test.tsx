@@ -40,7 +40,7 @@ describe('usePositioning', () => {
     result.current.containerRef(node);
 
     expect(node.style.getPropertyValue('position-anchor')).toMatch(/^--popover-anchor-/);
-    expect(node.style.getPropertyValue('position-area')).toBe('block-end span-inline-end');
+    expect(node).toHaveStyle({ positionArea: 'block-end span-inline-end' });
   });
 
   it('containerRef writes position: absolute by default and clears the UA inset/margin defaults', () => {
@@ -48,9 +48,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.position).toBe('absolute');
-    expect(node.style.inset).toBe('auto');
-    expect(node.style.margin).toBe('0px');
+    expect(node).toHaveStyle({ position: 'absolute', inset: 'auto', margin: '0px' });
   });
 
   it('containerRef honors strategy: "fixed"', () => {
@@ -58,7 +56,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.position).toBe('fixed');
+    expect(node).toHaveStyle({ position: 'fixed' });
   });
 
   it('containerRef writes data-placement matching (position, align)', () => {
@@ -66,7 +64,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.getAttribute('data-placement')).toBe('below-start');
+    expect(node).toHaveAttribute('data-placement', 'below-start');
   });
 
   it('containerRef sets position-try-fallbacks to the three-try flip chain by default', () => {
@@ -74,9 +72,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.getPropertyValue('position-try-fallbacks')).toBe(
-      'flip-block, flip-inline, flip-block flip-inline',
-    );
+    expect(node).toHaveStyle({ positionTryFallbacks: 'flip-block, flip-inline, flip-block flip-inline' });
   });
 
   it('containerRef uses custom fallbackPositions verbatim when provided', () => {
@@ -84,7 +80,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.getPropertyValue('position-try-fallbacks')).toBe('block-end span-inline-end, inline-end');
+    expect(node).toHaveStyle({ positionTryFallbacks: 'block-end span-inline-end, inline-end' });
   });
 
   it('containerRef removes position-try-fallbacks when pinned', () => {
@@ -101,9 +97,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.getPropertyValue('position-area')).toBe('center');
-    expect(node.style.getPropertyValue('align-self')).toBe('end');
-    expect(node.style.getPropertyValue('justify-self')).toBe('start');
+    expect(node).toHaveStyle({ positionArea: 'center', alignSelf: 'end', justifySelf: 'start' });
   });
 
   it('containerRef writes place-self: anchor-center for center alignment (crbug 438334710 workaround)', () => {
@@ -111,7 +105,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.getPropertyValue('place-self')).toBe('anchor-center');
+    expect(node).toHaveStyle({ placeSelf: 'anchor-center' });
   });
 
   it('containerRef does not write place-self for non-center alignments', () => {
@@ -127,11 +121,9 @@ describe('usePositioning', () => {
   it('containerRef writes matchTargetSize width via anchor-size()', () => {
     const result = mountHook({ matchTargetSize: 'width' });
     const node = document.createElement('div');
-    const spy = jest.spyOn(node.style, 'setProperty');
     result.current.containerRef(node);
 
-    expect(spy).toHaveBeenCalledWith('width', 'anchor-size(width)');
-    spy.mockRestore();
+    expect(node).toHaveStyle({ width: 'anchor-size(width)' });
   });
 
   it('containerRef applies offset as logical margins', () => {
@@ -139,8 +131,7 @@ describe('usePositioning', () => {
     const node = document.createElement('div');
     result.current.containerRef(node);
 
-    expect(node.style.marginBlockStart).toBe('8px');
-    expect(node.style.marginInlineStart).toBe('4px');
+    expect(node).toHaveStyle({ marginBlockStart: '8px', marginInlineStart: '4px' });
   });
 });
 
