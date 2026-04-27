@@ -4,7 +4,7 @@
 
 Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface can elevate into the browser's **top layer** via the native HTML Popover API, or render inline in DOM order when `inline={true}`. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
 
-Popover manages dismissal (click-outside, scroll-outside, Escape, iframe blur), opt-in focus trapping, opt-in hover/context interaction, and keeps `data-placement` in sync with the browser's post-flip decision so consumer CSS can style flipped placements.
+Popover manages dismissal (click-outside, scroll-outside, Escape, iframe blur), opt-in hover/context interaction, and keeps `data-placement` in sync with the browser's post-flip decision so consumer CSS can style flipped placements. Focus trapping is deferred to a later iteration — the surface is currently a non-modal `role="group"`.
 
 ## Composition
 
@@ -34,8 +34,7 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 | `openOnContext`      | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
 | `closeOnScroll`      | `boolean`                                                   | `false`     | Close when the user scrolls anywhere outside the trigger + surface.                                                          |
 | `closeOnIframeFocus` | `boolean`                                                   | `true`      | Close when focus moves into an external iframe. Internal iframes (inside the surface) don't dismiss.                         |
-| `trapFocus`          | `boolean`                                                   | `false`     | Trap Tab/Shift+Tab inside the surface while open. Also switches the surface's ARIA role to `dialog` + `aria-modal="true"`.   |
-| `disableAutoFocus`   | `boolean`                                                   | `false`     | Don't move focus into the surface on open.                                                                                   |
+| `disableAutoFocus`   | `boolean`                                                   | `false`     | Reserved for the upcoming focus-management iteration. Currently inert — the surface no longer auto-focuses on open.          |
 | `withArrow`          | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
 | `inline`             | `boolean`                                                   | `false`     | Render the surface in DOM order (no top-layer elevation, no `popover="manual"`).                                             |
 | `mountNode`          | `HTMLElement \| null`                                       | `null`      | Optional portal target for the surface. When omitted, the surface renders in place (top layer if not `inline`).              |
@@ -50,22 +49,21 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 ### `PopoverSurface`
 
-| Prop       | Type        | Default | Description                                                                                          |
-| ---------- | ----------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| `tabIndex` | `number`    | —       | When set, focus is placed on the surface itself on open (instead of the first focusable descendant). |
-| `children` | `ReactNode` | —       | Surface content.                                                                                     |
+| Prop       | Type        | Default | Description                                                                                                          |
+| ---------- | ----------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| `tabIndex` | `number`    | —       | Forwarded to the rendered `<div>` so the surface can be focusable when the consumer needs it (e.g. `tabIndex={-1}`). |
+| `children` | `ReactNode` | —       | Surface content.                                                                                                     |
 
 ## States
 
-| State              | Trigger                                                                                         | Behaviour                                                                                                                                                                                                                           | ARIA                                                                                                                     |
-| ------------------ | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **Closed**         | Initial, or after dismissal                                                                     | Surface unmounted. Trigger has `aria-expanded="false"`, no `data-open`.                                                                                                                                                             | `aria-expanded="false"` on trigger.                                                                                      |
-| **Open**           | `open={true}` / click / keyboard activation / hover / right-click (depending on props)          | Surface mounted. In non-`inline` mode it's promoted into the top layer via `showPopover()` (feature-detected). `data-placement` reflects the requested placement; `usePlacementObserver` overwrites it with the resolved placement. | `aria-expanded="true"`, `data-open` on trigger; `role="group"` (or `"dialog"` when `trapFocus`), `data-open` on surface. |
-| **Focused (trap)** | `trapFocus={true}` + surface mounted                                                            | Focus moves into the surface (first focusable, or the surface itself if `tabIndex` is numeric, or nothing when `disableAutoFocus`). Tab/Shift+Tab wrap inside the surface. On close, focus restores to the trigger.                 | `role="dialog"`, `aria-modal="true"`, `aria-haspopup="dialog"` on trigger.                                               |
-| **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                             | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                                        | Same as Open.                                                                                                            |
-| **Context-pinned** | `openOnContext` + right-click                                                                   | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                                                      | Same as Open.                                                                                                            |
-| **Dismissing**     | Click-outside / Escape inside surface / scroll-outside (if `closeOnScroll`) / iframe-focus move | `onOpenChange(e, { open: false, type })` fires with the originating DOM event. Consumer decides to close by updating state or letting uncontrolled state flip.                                                                      | `aria-expanded` returns to `"false"` on trigger.                                                                         |
-| **Nested**         | Popover rendered inside another Popover's surface                                               | Each instance manages its own Escape / click-outside. Escape filters via `e.target.closest('[data-popover-surface]') === ownSurface` — no `stopPropagation`, no cross-popover coupling.                                             | Each surface keeps its own `role` / `aria-modal`.                                                                        |
+| State              | Trigger                                                                                         | Behaviour                                                                                                                                                                                                                           | ARIA                                                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **Closed**         | Initial, or after dismissal                                                                     | Surface unmounted. Trigger has `aria-expanded="false"`, no `data-open`.                                                                                                                                                             | `aria-expanded="false"` on trigger.                                                     |
+| **Open**           | `open={true}` / click / keyboard activation / hover / right-click (depending on props)          | Surface mounted. In non-`inline` mode it's promoted into the top layer via `showPopover()` (feature-detected). `data-placement` reflects the requested placement; `usePlacementObserver` overwrites it with the resolved placement. | `aria-expanded="true"`, `data-open` on trigger; `role="group"`, `data-open` on surface. |
+| **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                             | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                                        | Same as Open.                                                                           |
+| **Context-pinned** | `openOnContext` + right-click                                                                   | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                                                      | Same as Open.                                                                           |
+| **Dismissing**     | Click-outside / Escape inside surface / scroll-outside (if `closeOnScroll`) / iframe-focus move | `onOpenChange(e, { open: false, type })` fires with the originating DOM event. Consumer decides to close by updating state or letting uncontrolled state flip.                                                                      | `aria-expanded` returns to `"false"` on trigger.                                        |
+| **Nested**         | Popover rendered inside another Popover's surface                                               | Each instance manages its own Escape / click-outside. Escape filters via `e.target.closest('[data-popover-surface]') === ownSurface` — no `stopPropagation`, no cross-popover coupling.                                             | Each surface keeps its own `role="group"`.                                              |
 
 ## Keyboard Navigation
 
@@ -81,8 +79,8 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 | Key               | Action                                                                                                                                              |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Tab**           | Move focus to next focusable descendant. With `trapFocus={true}`, wraps at the last focusable back to the first.                                    |
-| **Shift + Tab**   | Move focus to previous. Wraps at first back to last when `trapFocus={true}`.                                                                        |
+| **Tab**           | Default browser tab order. The surface does **not** trap focus in this iteration; Tab can move focus out of the surface.                            |
+| **Shift + Tab**   | Default browser reverse tab order.                                                                                                                  |
 | **Escape**        | Dismiss the current popover. Filtered to the nearest enclosing surface, so Escape in a nested popover only closes that popover — not its ancestors. |
 | **Enter / Space** | Default button activation inside the surface.                                                                                                       |
 
@@ -102,25 +100,23 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 // Trigger
 <button
   aria-expanded={open ? 'true' : 'false'}
-  aria-haspopup={trapFocus ? 'dialog' : 'true'}
+  aria-haspopup="true"
   data-open={open || undefined}
   // click / keydown / context / hover handlers merged onto the cloned child
 />
 
 // Surface (inline mode)
 <div
-  role={trapFocus ? 'dialog' : 'group'}
-  aria-modal={trapFocus ? true : undefined}
+  role="group"
   data-popover-surface=""
   data-placement="below-start"   // requested placement; live-updated by observer
   data-open="true"
-  tabIndex={trapFocus ? -1 : undefined}
 />
 
 // Surface (top layer mode — non-inline, default)
 <div
   popover="manual"
-  role="group" /* or "dialog" */
+  role="group"
   data-popover-surface=""
   data-placement="below-start"
   data-open="true"
@@ -129,26 +125,20 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 
 ### Role selection
 
-- **`role="group"`** (default) — non-modal popover with no focus trap. Fine for menus, cards, informational overlays.
-- **`role="dialog"`** — set automatically when `trapFocus={true}`. Makes the surface a modal dialog with `aria-modal="true"` and `aria-haspopup="dialog"` on the trigger.
-
-The package does not implement `role="alertdialog"`; consumers needing an alert pattern should use the `Dialog` headless component instead.
+The surface always renders as **`role="group"`** in this iteration — a non-modal anchored container suitable for menus, cards, and informational overlays. Modal `role="dialog"` (with `aria-modal="true"`, `aria-haspopup="dialog"` on the trigger, and a focus trap) is planned for a follow-up iteration that re-introduces a focus-management hook. Consumers needing modal semantics today should reach for the `Dialog` headless component instead.
 
 ### Focus management
 
-Focus is governed by the shared `useFocusScope` hook (same hook Dialog uses):
+This iteration ships **no built-in focus management**:
 
-- **Initial focus on open** —
-  - `disableAutoFocus={true}` → no focus moves.
-  - Surface has a numeric `tabIndex` → focus the surface itself (`preventScroll: true`).
-  - Otherwise → focus the first focusable descendant. If there isn't one and `trapFocus={true}`, the surface's own `tabIndex={-1}` catches focus.
-- **Focus trap** — when `trapFocus={true}`, Tab/Shift+Tab wrap inside the surface; outside elements cannot receive focus.
-- **Restore focus on close** — focus returns to whatever element was focused immediately before the surface mounted (usually the trigger).
+- **No auto-focus on open.** The browser handles focus naturally. Top-layer popovers (`popover="manual"`) leave focus on the trigger; consumers can call `.focus()` on the surface or a descendant if needed.
+- **No focus trap.** Tab / Shift+Tab follow the document's normal tab order. With a top-layer surface, focus may move to elements behind the surface — that's expected for a non-modal popover.
+- **No focus restore.** When the surface unmounts, focus stays wherever the dismissal interaction left it (typically the trigger after click / Escape; arbitrary after click-outside).
+- **`disableAutoFocus`** is preserved on `PopoverProps` for API stability but is currently inert. It will become meaningful again together with the upcoming focus hook.
 
 ### Labeling
 
-- For `role="dialog"` popovers, the consumer is responsible for providing an accessible name — typically via `aria-labelledby` pointing to a heading inside the surface, or `aria-label`.
-- For `role="group"` popovers, labels are optional but recommended when the surface's role in the interface isn't obvious from nearby context.
+- Labels on a `role="group"` surface are optional but recommended when the surface's purpose isn't obvious from nearby context — e.g., `aria-label` or `aria-labelledby` pointing to a heading inside the surface.
 - The trigger's accessible name remains the child element's own name (the component does nothing that would clobber it).
 
 ### Live regions
@@ -161,18 +151,51 @@ Placement is handled entirely by the `usePositioning` hook, which writes native 
 
 ### Options (all optional)
 
-| Option              | Type                                                  | Default      | Effect                                                                                                                                                                               |
+<<<<<<< HEAD
+| Option | Type | Default | Effect |
 | ------------------- | ----------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `position`          | `'above' \| 'below' \| 'before' \| 'after'`           | `'above'`    | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized.                                                                           |
-| `align`             | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'`   | `'center'`   | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases).                                                                                                                |
-| `offset`            | `number \| { mainAxis?: number; crossAxis?: number }` | `0`          | Logical-margin offset from the anchor.                                                                                                                                               |
-| `fallbackPositions` | `PositioningShorthandValue[]`                         | `[]`         | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`.                                                                      |
-| `coverTarget`       | `boolean`                                             | `false`      | Overlap the anchor instead of sitting beside it.                                                                                                                                     |
-| `pinned`            | `boolean`                                             | `false`      | Disable fallback flipping; surface stays at the requested placement even if it overflows.                                                                                            |
-| `matchTargetSize`   | `'width'`                                             | —            | Sets the surface's `width` to `anchor-size(width)`.                                                                                                                                  |
-| `strategy`          | `'fixed' \| 'absolute'`                               | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
-| `target`            | `HTMLElement \| RefObject`                            | —            | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger.                                                                                    |
-| `positioningRef`    | `Ref<PositioningImperativeRef>`                       | —            | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates.                                                                    |
+| `position` | `'above' \| 'below' \| 'before' \| 'after'` | `'above'` | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized. |
+| `align` | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'` | `'center'` | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases). |
+| `offset` | `number \| { mainAxis?: number; crossAxis?: number }` | `0` | Logical-margin offset from the anchor. |
+| `fallbackPositions` | `PositioningShorthandValue[]` | `[]` | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`. |
+| `coverTarget` | `boolean` | `false` | Overlap the anchor instead of sitting beside it. |
+| `pinned` | `boolean` | `false` | Disable fallback flipping; surface stays at the requested placement even if it overflows. |
+| `matchTargetSize` | `'width'` | — | Sets the surface's `width` to `anchor-size(width)`. |
+| `strategy` | `'fixed' \| 'absolute'` | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
+| `target` | `HTMLElement \| RefObject` | — | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger. |
+| `positioningRef` | `Ref<PositioningImperativeRef>` | — | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates. |
+||||||| parent of 4f1eba10dc (docs(react-headless-components-preview): align Popover spec with iteration-1 strip-down)
+| Option | Type | Default | Effect |
+| ------------------------- | ----------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `position` | `'above' \| 'below' \| 'before' \| 'after'` | `'above'` | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized. |
+| `align` | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'` | `'center'` | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases). |
+| `offset` | `number \| { mainAxis?: number; crossAxis?: number }` | `0` | Logical-margin offset from the anchor. |
+| `fallbackPositions` | `PositioningShorthandValue[]` | `[]` | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`. |
+| `coverTarget` | `boolean` | `false` | Overlap the anchor instead of sitting beside it. |
+| `pinned` | `boolean` | `false` | Disable fallback flipping; surface stays at the requested placement even if it overflows. |
+| `matchTargetSize` | `'width'` | — | Sets the surface's `width` to `anchor-size(width)`. |
+| `strategy` | `'fixed' \| 'absolute'` | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
+| `target` | `HTMLElement \| RefObject` | — | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger. |
+| `positioningRef` | `Ref<PositioningImperativeRef>` | — | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates. |
+| `autoSize` | `boolean \| 'width' \| 'height'` | `false` | Cap the surface dimensions against `overflowBoundary`. Requires `overflowBoundary` — pure-CSS autoSize isn't possible due to spec-level restrictions on `anchor()` in `max-*`. |
+| `overflowBoundary` | `HTMLElement \| RefObject` | — | Element the surface must stay inside. Drives a JS-measured `transform: translate3d()` **cross-axis shift** whenever the primary placement would exceed the boundary. Accepts a DOM element or a React ref to one. When paired with `autoSize`, the same rect is used to compute `max-*` caps. `overflowBoundaryPadding` adds breathing room on top of the shift. |
+| `overflowBoundaryPadding` | `number \| { top, end, bottom, start }` | — | Breathing room kept between the surface and the `overflowBoundary` rect. Implemented as a JS-measured `transform: translate3d()` **cross-axis shift** on the surface (only — main-axis overflow is native flip's job, matching v9 / Floating UI's `shift()` middleware). Does not affect the surface's size. Accepts a uniform number or a logical-side object (RTL-aware). Has no effect when `overflowBoundary` is unset or when `coverTarget` is on. |
+=======
+| Option | Type | Default | Effect |
+| ------------------- | ----------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `position` | `'above' \| 'below' \| 'before' \| 'after'` | `'above'` | Which side of the anchor the surface sits on. Physical `top` / `bottom` / `left` / `right` are normalized. |
+| `align` | `'start' \| 'center' \| 'end' \| 'top' \| 'bottom'` | `'center'` | Cross-axis alignment. `top` → `start`, `bottom` → `end` (v9 aliases). |
+| `offset` | `number \| { mainAxis?: number; crossAxis?: number }` | `0` | Logical-margin offset from the anchor. |
+| `fallbackPositions` | `PositioningShorthandValue[]` | `[]` | Custom fallback chain. Each entry is converted to a `<position-area>` value inline in `position-try-fallbacks`. |
+| `coverTarget` | `boolean` | `false` | Overlap the anchor instead of sitting beside it. |
+| `pinned` | `boolean` | `false` | Disable fallback flipping; surface stays at the requested placement even if it overflows. |
+| `matchTargetSize` | `'width'` | — | Sets the surface's `width` to `anchor-size(width)`. |
+| `strategy` | `'fixed' \| 'absolute'` | `'absolute'` | CSS `position` property value on the surface. Matches v9's default. Use `'fixed'` when the surface needs to escape transformed / `contain: layout` ancestors for anchoring purposes. |
+| `target` | `HTMLElement \| RefObject` | — | Custom anchor element. When set, `anchor-name` is written on this element instead of the trigger. |
+| `positioningRef` | `Ref<PositioningImperativeRef>` | — | `{ setTarget(el): void; updatePosition(): void }`. `updatePosition` is a no-op — native positioning self-updates. |
+| `overflowBoundary` | `HTMLElement \| RefObject` | — | Element the surface must stay inside. Implemented as a JS-measured **clamp**: `useBoundaryClamp` writes logical `max-inline-size` / `max-block-size` on the surface so its far edge cannot extend past the boundary's opposite edge. The surface's start edge stays where CSS anchor positioning placed it; only the far edge is clamped, so content reflows inside the clamped box rather than the surface sliding. |
+
+> > > > > > > 4f1eba10dc (docs(react-headless-components-preview): align Popover spec with iteration-1 strip-down)
 
 ### Rendering
 

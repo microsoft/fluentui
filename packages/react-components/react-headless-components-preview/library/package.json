@@ -142,6 +142,18 @@
       "import": "./lib/message-bar.js",
       "require": "./lib-commonjs/message-bar.js"
     },
+    "./popover": {
+      "types": "./dist/popover.d.ts",
+      "node": "./lib-commonjs/popover.js",
+      "import": "./lib/popover.js",
+      "require": "./lib-commonjs/popover.js"
+    },
+    "./positioning": {
+      "types": "./dist/positioning.d.ts",
+      "node": "./lib-commonjs/positioning.js",
+      "import": "./lib/positioning.js",
+      "require": "./lib-commonjs/positioning.js"
+    },
     "./progress-bar": {
       "types": "./dist/progress-bar.d.ts",
       "node": "./lib-commonjs/progress-bar.js",

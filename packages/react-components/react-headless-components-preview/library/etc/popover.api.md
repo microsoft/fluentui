@@ -14,9 +14,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
-
 // @public
 export type OnOpenChangeData = EventData<string, React_2.SyntheticEvent | Event> & {
     open: boolean;
@@ -32,7 +29,7 @@ export const Popover: {
 };
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'trapFocus' | 'disableAutoFocus' | 'withArrow' | 'inline' | 'mountNode'> & {
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'disableAutoFocus' | 'withArrow' | 'inline' | 'mountNode'> & {
     positioning: {
         targetRef: React_2.RefCallback<HTMLElement>;
         containerRef: React_2.RefCallback<HTMLElement>;
@@ -50,7 +47,6 @@ export type PopoverProps = {
     mouseLeaveDelay?: number;
     positioning?: PositioningShorthand;
     withArrow?: boolean;
-    trapFocus?: boolean;
     disableAutoFocus?: boolean;
     closeOnScroll?: boolean;
     closeOnIframeFocus?: boolean;
@@ -59,7 +55,7 @@ export type PopoverProps = {
 };
 
 // @public
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'disableAutoFocus' | 'mountNode'> & {
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow' | 'disableAutoFocus' | 'mountNode'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.RefObject<HTMLElement | null>;
@@ -111,44 +107,6 @@ export type PopoverTriggerProps = {
 export type PopoverTriggerState = {
     children: React_2.ReactElement | null;
 };
-
-// @public (undocumented)
-export type Position = 'above' | 'below' | 'before' | 'after';
-
-// @public
-export type PositioningImperativeRef = {
-    setTarget: (target: HTMLElement | null) => void;
-    updatePosition: () => void;
-};
-
-// @public (undocumented)
-export type PositioningProps = {
-    position?: Position;
-    align?: Alignment;
-    offset?: number | {
-        mainAxis?: number;
-        crossAxis?: number;
-    };
-    fallbackPositions?: PositioningShorthandValue[];
-    coverTarget?: boolean;
-    target?: HTMLElement | React_2.RefObject<HTMLElement | null> | null;
-    strategy?: 'absolute' | 'fixed';
-    matchTargetSize?: 'width';
-    pinned?: boolean;
-    positioningRef?: React_2.Ref<PositioningImperativeRef>;
-};
-
-// @public (undocumented)
-export type PositioningReturn = {
-    targetRef: React_2.RefCallback<HTMLElement>;
-    containerRef: React_2.RefCallback<HTMLElement>;
-};
-
-// @public (undocumented)
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
-
-// @public (undocumented)
-export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-start' | 'before-end' | 'after' | 'after-start' | 'after-end';
 
 // @public
 export const renderPopover: (state: PopoverState, contextValues: {

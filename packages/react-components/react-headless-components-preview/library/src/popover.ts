@@ -23,13 +23,3 @@ export type {
   PopoverSurfaceProps,
   PopoverSurfaceState,
 } from './components/Popover';
-
-export type {
-  PositioningProps,
-  PositioningReturn,
-  PositioningImperativeRef,
-  PositioningShorthandValue,
-  PositioningShorthand,
-  Position,
-  Alignment,
-} from './hooks/usePositioning';
