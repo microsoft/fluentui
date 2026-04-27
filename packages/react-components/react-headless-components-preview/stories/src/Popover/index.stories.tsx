@@ -1,4 +1,9 @@
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import {
+  Popover,
+  PopoverAuto,
+  PopoverTrigger,
+  PopoverSurface,
+} from '@fluentui/react-headless-components-preview/popover';
 
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
@@ -18,7 +23,7 @@ export { Inline } from './PopoverInline.stories';
 export default {
   title: 'Headless Components/Popover',
   component: Popover,
-  subcomponents: { PopoverTrigger, PopoverSurface },
+  subcomponents: { PopoverAuto, PopoverTrigger, PopoverSurface },
   parameters: {
     docs: {
       description: {

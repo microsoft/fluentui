@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverAuto, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import type { JSXElement } from '@fluentui/react-components';
 
 const classes = {
@@ -18,7 +18,7 @@ const classes = {
 };
 
 const SecondNestedPopover = (): JSXElement => (
-  <Popover>
+  <PopoverAuto>
     <PopoverTrigger>
       <button className={classes.deepTrigger}>Second nested trigger</button>
     </PopoverTrigger>
@@ -27,11 +27,11 @@ const SecondNestedPopover = (): JSXElement => (
       <div className={classes.body}>This is some popover content.</div>
       <button className={classes.actionButton}>Second nested button</button>
     </PopoverSurface>
-  </Popover>
+  </PopoverAuto>
 );
 
 const FirstNestedPopover = (): JSXElement => (
-  <Popover>
+  <PopoverAuto>
     <PopoverTrigger>
       <button className={classes.nestedTrigger}>First nested trigger</button>
     </PopoverTrigger>
@@ -43,11 +43,11 @@ const FirstNestedPopover = (): JSXElement => (
         <SecondNestedPopover />
       </div>
     </PopoverSurface>
-  </Popover>
+  </PopoverAuto>
 );
 
 export const Nested = (): React.ReactNode => (
-  <Popover>
+  <PopoverAuto>
     <PopoverTrigger>
       <button className={classes.rootTrigger}>Root trigger</button>
     </PopoverTrigger>
@@ -59,5 +59,5 @@ export const Nested = (): React.ReactNode => (
         <FirstNestedPopover />
       </div>
     </PopoverSurface>
-  </Popover>
+  </PopoverAuto>
 );

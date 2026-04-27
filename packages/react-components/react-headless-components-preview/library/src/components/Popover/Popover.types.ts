@@ -114,6 +114,13 @@ export type PopoverProps = {
 };
 
 /**
+ * Native HTML Popover API mode for the surface.
+ * - `'manual'` — React drives all dismissal (click-outside, scroll-outside, Escape).
+ * - `'auto'` — browser drives light dismiss; React mirrors the surface's `toggle` event into state.
+ */
+export type PopoverType = 'manual' | 'auto';
+
+/**
  * Popover State
  */
 export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
@@ -131,6 +138,7 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
     contextTarget: { x: number; y: number } | undefined;
     setContextTarget: (target: { x: number; y: number } | undefined) => void;
     positioning: PositioningReturn;
+    popoverType: PopoverType;
   };
 
 /**
@@ -186,6 +194,7 @@ export type PopoverContextValue = Pick<
   | 'withArrow'
   | 'inline'
   | 'mountNode'
+  | 'popoverType'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;

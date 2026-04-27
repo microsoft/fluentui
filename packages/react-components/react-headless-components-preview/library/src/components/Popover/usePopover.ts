@@ -11,15 +11,14 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents, PopoverType } from './Popover.types';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
 
-/**
- * Returns the state for a Popover component, given its props and ref.
- */
-export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): PopoverState => {
+type ToggleEventLike = Event & { newState?: 'open' | 'closed' };
+
+function useInternalPopover(props: PopoverProps, popoverType: PopoverType): PopoverState {
   const {
     openOnHover = false,
     openOnContext = false,
@@ -83,12 +82,16 @@ export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): Po
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
+  // In `auto` mode the browser owns light dismiss (click-outside, scroll, Escape)
+  // and emits `toggle` events we mirror back into React state.
+  const isAutoMode = popoverType === 'auto' && !inline;
+
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [triggerRef, contentRef],
-    disabled: !open,
+    disabled: !open || isAutoMode,
     disabledFocusOnIframe: !closeOnIframeFocus,
   });
 
@@ -97,7 +100,7 @@ export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): Po
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [triggerRef, contentRef],
-    disabled: !open || !(openOnContext || closeOnScroll),
+    disabled: !open || !(openOnContext || closeOnScroll) || isAutoMode,
   });
 
   React.useEffect(() => {
@@ -111,8 +114,8 @@ export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): Po
       return;
     }
 
-    if (!surface.hasAttribute('popover')) {
-      surface.setAttribute('popover', 'manual');
+    if (!surface.hasAttribute('popover') || surface.getAttribute('popover') !== popoverType) {
+      surface.setAttribute('popover', popoverType);
     }
 
     if (SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open')) {
@@ -120,7 +123,29 @@ export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): Po
     }
 
     surface.showPopover();
-  }, [open, inline]);
+  }, [open, inline, popoverType]);
+
+  // Mirror the browser-driven toggle events into React state when in auto mode.
+  // Covers Escape, click-outside, and the popover-stack dismissal that happens
+  // when an unrelated `popover="auto"` opens.
+  const onSurfaceToggle = useEventCallback((event: Event) => {
+    const toggle = event as ToggleEventLike;
+    const nextOpen = toggle.newState === 'open';
+    setOpenState(nextOpen);
+    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
+  });
+
+  React.useEffect(() => {
+    if (!isAutoMode) {
+      return;
+    }
+    const surface = contentRef.current;
+    if (!surface) {
+      return;
+    }
+    surface.addEventListener('toggle', onSurfaceToggle);
+    return () => surface.removeEventListener('toggle', onSurfaceToggle);
+  }, [isAutoMode, onSurfaceToggle]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -165,8 +190,29 @@ export const usePopover = (props: PopoverProps, ref: React.Ref<HTMLElement>): Po
     contextTarget,
     setContextTarget,
     positioning,
+    popoverType,
   };
-};
+}
+
+/**
+ * Returns the state for a Popover component.
+ *
+ * Renders the surface with `popover="manual"`, leaving dismiss behaviour
+ * (click-outside, scroll, Escape) under React's control.
+ */
+export const usePopover = (props: PopoverProps, _ref: React.Ref<HTMLElement>): PopoverState =>
+  useInternalPopover(props, 'manual');
+
+/**
+ * Returns the state for a PopoverAuto component.
+ *
+ * Renders the surface with `popover="auto"`, deferring light-dismiss
+ * (Escape, click-outside, popover-stack peer dismissal) to the browser.
+ * Browser `toggle` events are mirrored back into React state and
+ * `onOpenChange`. The library's own dismiss hooks are disabled.
+ */
+export const usePopoverAuto = (props: PopoverProps, _ref: React.Ref<HTMLElement>): PopoverState =>
+  useInternalPopover(props, 'auto');
 
 export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
   const {
@@ -183,6 +229,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     inline,
     mountNode,
     positioning,
+    popoverType,
   } = state;
 
   return {
@@ -199,6 +246,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       withArrow,
       inline,
       mountNode,
+      popoverType,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,

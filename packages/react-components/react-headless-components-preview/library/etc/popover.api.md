@@ -29,7 +29,13 @@ export const Popover: {
 };
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'disableAutoFocus' | 'withArrow' | 'inline' | 'mountNode'> & {
+export const PopoverAuto: {
+    (props: PopoverProps): JSXElement;
+    displayName: string;
+};
+
+// @public
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'disableAutoFocus' | 'withArrow' | 'inline' | 'mountNode' | 'popoverType'> & {
     positioning: {
         targetRef: React_2.RefCallback<HTMLElement>;
         containerRef: React_2.RefCallback<HTMLElement>;
@@ -72,6 +78,7 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> & Pic
         y: number;
     } | undefined) => void;
     positioning: PositioningReturn;
+    popoverType: PopoverType;
 };
 
 // @public
@@ -109,6 +116,9 @@ export type PopoverTriggerState = {
 };
 
 // @public
+export type PopoverType = 'manual' | 'auto';
+
+// @public
 export const renderPopover: (state: PopoverState, contextValues: {
     popover: PopoverContextValue;
 }) => React_2.ReactElement;
@@ -120,7 +130,10 @@ export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSXElement | null;
 
 // @public
-export const usePopover: (props: PopoverProps, ref: React_2.Ref<HTMLElement>) => PopoverState;
+export const usePopover: (props: PopoverProps, _ref: React_2.Ref<HTMLElement>) => PopoverState;
+
+// @public
+export const usePopoverAuto: (props: PopoverProps, _ref: React_2.Ref<HTMLElement>) => PopoverState;
 
 // @public
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
