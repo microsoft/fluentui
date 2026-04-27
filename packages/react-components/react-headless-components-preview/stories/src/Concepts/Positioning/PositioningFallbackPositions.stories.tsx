@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import { demoBoxClass, demoBoxStyle, flipDemoSurfaceCss } from './demoBox';
 
 const classes = {

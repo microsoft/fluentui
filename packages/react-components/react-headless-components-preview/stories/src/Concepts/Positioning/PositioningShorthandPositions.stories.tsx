@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview';
-import type { PositioningProps } from '@fluentui/react-headless-components-preview';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
+import type { PositioningProps } from '@fluentui/react-headless-components-preview/positioning';
 
 const classes = {
   outer: 'w-full overflow-auto',

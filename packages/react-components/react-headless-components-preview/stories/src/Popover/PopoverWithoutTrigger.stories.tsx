@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverSurface } from '@fluentui/react-headless-components-preview';
+import { Popover, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 
 const classes = {
   container: 'flex flex-col items-start gap-4 p-4',

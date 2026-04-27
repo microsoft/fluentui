@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PositioningProps } from '@fluentui/react-headless-components-preview';
+import type { PositioningProps } from '@fluentui/react-headless-components-preview/positioning';
 
 /**
  * Helper component used by Storybook to auto-generate the positioning props args table.

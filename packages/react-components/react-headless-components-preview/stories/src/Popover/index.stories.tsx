@@ -1,4 +1,4 @@
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
