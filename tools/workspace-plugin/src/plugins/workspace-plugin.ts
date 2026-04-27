@@ -205,6 +205,8 @@ function buildWorkspaceProjectConfiguration(
 
     const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
 
+    const isReactProject = Boolean(config.packageJSON.peerDependencies?.['react']);
+
     targets.build = {
       cache: true,
       executor: '@fluentui/workspace-plugin:build',
@@ -218,6 +220,7 @@ function buildWorkspaceProjectConfiguration(
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
         ...(userEnabledExportSubpaths ? { generateApi: { exportSubpaths: userExportSubpaths } } : null),
+        ...(isReactProject ? { reactCompiler: true } : {}),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
