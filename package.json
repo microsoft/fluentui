@@ -271,6 +271,7 @@
     "raw-loader": "4.0.2",
     "react": "19.2.0",
     "react-app-polyfill": "2.0.0",
+    "react-compiler-webpack": "1.0.0",
     "react-dom": "19.2.0",
     "react-frame-component": "4.1.1",
     "react-is": "19.2.0",
