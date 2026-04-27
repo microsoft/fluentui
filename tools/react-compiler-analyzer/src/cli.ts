@@ -4,15 +4,27 @@ import { basename, dirname, join, resolve } from 'node:path';
 
 import { parseArgs } from './args';
 import { analyzeFiles } from './analyzer';
+import { analyzeFilesForCoverage } from './coverage-analyzer';
 import { printReport, printSummary } from './reporter';
+import { printCoverageReport, printCoverageSummary } from './coverage-reporter';
 import { applyFixes } from './fixer';
 import type { FileEntry } from './types';
 
 const USE_NO_MEMO_RE = /['(]use no memo[')]/;
 
 export async function cli(): Promise<void> {
-  const args = parseArgs(process.argv.slice(2));
+  const parsed = parseArgs(process.argv.slice(2));
 
+  if (parsed.command === 'directives') {
+    await runDirectives(parsed.args);
+  } else {
+    await runCoverage(parsed.args);
+  }
+}
+
+// ── Directives command ──
+
+async function runDirectives(args: import('./types').DirectiveArgs): Promise<void> {
   console.log('━━ React Compiler No-Memo Analyzer ━━\n');
 
   const scanDir = args.path;
@@ -21,8 +33,7 @@ export async function cli(): Promise<void> {
   console.log(`## Scanning: ${scanDir}`);
   console.log(`   Package: ${packageName}\n`);
 
-  // Discover files with 'use no memo' directives
-  const files = await discoverFiles(scanDir, packageName, args.exclude, args.verbose);
+  const files = await discoverDirectiveFiles(scanDir, packageName, args.exclude, args.verbose);
 
   if (files.length === 0) {
     console.log("No files with 'use no memo' directives found.");
@@ -31,18 +42,15 @@ export async function cli(): Promise<void> {
 
   console.log(`Files with 'use no memo': ${files.length}\n`);
 
-  // Run analysis
   const results = await analyzeFiles(files, {
     concurrency: args.concurrency,
     verbose: args.verbose,
   });
 
-  // Report
   const workspaceRoot = process.cwd();
   printReport(results, workspaceRoot, args.fullReasons);
   printSummary(results);
 
-  // Auto-fix
   if (args.fix) {
     const fixable = results.filter(r => r.status === 'redundant' || r.status === 'active');
     if (fixable.length > 0) {
@@ -61,10 +69,45 @@ export async function cli(): Promise<void> {
     }
   }
 
-  // Exit code
   const hasRedundant = results.some(r => r.status === 'redundant');
   process.exit(hasRedundant && !args.fix ? 1 : 0);
 }
+
+// ── Coverage command ──
+
+async function runCoverage(args: import('./types').CoverageArgs): Promise<void> {
+  console.log('━━ React Compiler Coverage Analyzer ━━\n');
+
+  const scanDir = args.path;
+  const packageName = await findPackageName(scanDir);
+
+  console.log(`## Scanning: ${scanDir}`);
+  console.log(`   Package: ${packageName}`);
+  console.log(`   Mode: ${args.compilationMode}\n`);
+
+  const files = await discoverAllFiles(scanDir, packageName, args.exclude, args.verbose);
+
+  if (files.length === 0) {
+    console.log('No TypeScript files found.');
+    process.exit(0);
+  }
+
+  console.log(`Files to analyze: ${files.length}\n`);
+
+  const results = await analyzeFilesForCoverage(files, {
+    concurrency: args.concurrency,
+    verbose: args.verbose,
+    compilationMode: args.compilationMode,
+  });
+
+  const workspaceRoot = process.cwd();
+  printCoverageReport(results, workspaceRoot, args.verbose, args.fullReasons);
+  printCoverageSummary(results);
+
+  process.exit(0);
+}
+
+// ── Shared utilities ──
 
 /**
  * Walk up from `startDir` to find the nearest package.json and return its `name` field.
@@ -96,7 +139,7 @@ async function findPackageName(startDir: string): Promise<string> {
 /**
  * Discover files containing 'use no memo' in the given directory.
  */
-async function discoverFiles(
+async function discoverDirectiveFiles(
   scanDir: string,
   packageName: string,
   exclude: string[],
@@ -121,4 +164,25 @@ async function discoverFiles(
   }
 
   return files;
+}
+
+/**
+ * Discover all TypeScript files in the given directory (for coverage analysis).
+ */
+async function discoverAllFiles(
+  scanDir: string,
+  packageName: string,
+  exclude: string[],
+  verbose: boolean,
+): Promise<FileEntry[]> {
+  const tsFiles = globSync('**/*.{ts,tsx}', {
+    cwd: scanDir,
+    exclude,
+  }).map(relative => join(scanDir, relative));
+
+  if (verbose) {
+    console.log(`  Found ${tsFiles.length} TypeScript files in ${scanDir}`);
+  }
+
+  return tsFiles.map(filePath => ({ filePath, packageName }));
 }
