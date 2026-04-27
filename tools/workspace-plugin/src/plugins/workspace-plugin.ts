@@ -229,7 +229,9 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/package.json',
         '{projectRoot}/.swcrc',
         ...targets['generate-api'].inputs!,
-        { externalDependencies: ['@swc/core', '@microsoft/api-extractor', 'typescript'] },
+        {
+          externalDependencies: ['@swc/core', '@microsoft/api-extractor', 'typescript', 'babel-plugin-react-compiler'],
+        },
       ],
       outputs: [
         `{projectRoot}/lib`,

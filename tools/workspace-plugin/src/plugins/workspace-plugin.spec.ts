@@ -558,6 +558,7 @@ describe(`workspace-plugin`, () => {
                             "@swc/core",
                             "@microsoft/api-extractor",
                             "typescript",
+                            "babel-plugin-react-compiler",
                           ],
                         },
                       ],
