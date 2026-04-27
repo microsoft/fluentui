@@ -132,6 +132,57 @@ Check 3 lines above each match for a guard (`canUseDOM`, `typeof window !== 'und
 | `// @ts-ignore` without explanation           | WARNING  |
 | `any` type in new code                        | INFO     |
 
+### I. Documentation coverage
+
+A code change frequently lands a new prop, component, behavior, or migration step that consumers need to learn about. This check asks two questions, in order:
+
+1. **Should this PR have updated docs?** — based on what the diff actually touches.
+2. **If yes, did it?**
+
+Bug fixes by themselves usually don't need docs — the existing behavior already matches the existing docs by definition; the bug _was_ the divergence. Internal refactors, build/CI changes, and test-only PRs don't either. The interesting cases are below.
+
+**When docs ARE expected** (compare the diff against these paths):
+
+| Source change                                                                                                         | Expected doc surface                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| New prop on a public component (added in `*.types.ts`)                                                                | A Storybook story or MDX entry under `packages/react-components/react-<name>/stories/` that exercises the prop |
+| New public export added to a `library/src/index.ts` barrel                                                            | A story or MDX entry covering it (or a justified note in the PR body)                                          |
+| New component package (new directory under `packages/react-components/react-*`)                                       | Stories package, `library/docs/Spec.md`, and an entry on the docsite (`apps/public-docsite-v9`)                |
+| Behavior change to a public API's defaults (e.g. a new conditional in `use*_unstable` that changes observable output) | Mention in `library/docs/MIGRATION.md` or a "BREAKING CHANGE / behavior change" section in the PR body         |
+| Removal or deprecation of a public export                                                                             | `library/docs/MIGRATION.md` entry and/or a `@deprecated` JSDoc on the symbol                                   |
+| New design token, classname constant, or CSS custom property                                                          | A line in the relevant docs (often the component's stories MDX) explaining how to use/override it              |
+| New skill, agent feature, or hook in `.agents/skills/` or `.claude/`                                                  | Update `AGENTS.md` (the registry table) and any cross-referenced doc                                           |
+| Workflow / contributor-facing tooling change                                                                          | Update `docs/workflows/contributing.md` or the relevant `docs/workflows/*.md`                                  |
+
+**When docs are NOT expected** (default to PASS):
+
+- Pure bug fix that restores documented behavior
+- Internal refactor with no exported-symbol or behavior change
+- Build / CI / tooling changes that don't affect contributors
+- Test-only PRs
+- Style-only PRs (typo, formatting) on internal code
+
+**Severity:**
+
+| Situation                                                                     | Severity |
+| ----------------------------------------------------------------------------- | -------- |
+| Public export removed or behavior-changed without `MIGRATION.md` entry        | BLOCKER  |
+| New public component / new public hook with no story or MDX                   | WARNING  |
+| New public prop with no story exercising it                                   | WARNING  |
+| New design token / className constant with no usage example                   | WARNING  |
+| Behavior change to public defaults with no PR-body callout                    | WARNING  |
+| New skill or workflow change without updating `AGENTS.md` / `docs/workflows/` | WARNING  |
+| PR description explicitly defers docs to a follow-up (link cited)             | INFO     |
+| Docs change exists but feels minimal — could be more thorough                 | INFO     |
+
+**How to actually run this check** (the model should walk the diff, not guess):
+
+1. Look at the changed-files list. Group into "code surfaces" (`library/src/**`, `index.ts` barrels, `*.types.ts`) and "doc surfaces" (`stories/**`, `library/docs/**`, `apps/public-docsite-v9/**`, `docs/**`, `*.md`, `AGENTS.md`).
+2. If the PR is purely doc-surface, this check is trivially PASS.
+3. If the PR is purely code-surface AND the code change doesn't fall into the "expected docs" rows above, PASS.
+4. Otherwise, pick the strictest matching row from the severity table and report it. **Always cite the specific file or symbol** in the finding so the author can act on it.
+5. Read the PR body before reporting — authors often pre-empt this with "docs follow-up tracked in #NNNN" or "no docs needed because X." That moves the finding from WARNING to INFO if the deferral is explicit and reasonable.
+
 ## Phase 4: Calculate Confidence Score
 
 ```
@@ -190,6 +241,7 @@ Start directly with the score. Skip a header title, author, type, packages-affec
 | API surface | PASS/WARN | ... |
 | Accessibility | PASS/WARN | ... |
 | Security/Quality | PASS/WARN | ... |
+| Docs coverage | PASS/WARN/FAIL | ... |
 
 ### Recommendation
 
