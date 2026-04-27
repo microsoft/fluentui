@@ -7,4 +7,10 @@ export type {
   PositioningShorthand,
   PositioningShorthandValue,
 } from './hooks/usePositioning';
-export { usePositioning, POSITIONS, ALIGNMENTS, getPlacementString, resolvePositioningShorthand } from './hooks/usePositioning';
+export {
+  usePositioning,
+  POSITIONS,
+  ALIGNMENTS,
+  getPlacementString,
+  resolvePositioningShorthand,
+} from './hooks/usePositioning';
