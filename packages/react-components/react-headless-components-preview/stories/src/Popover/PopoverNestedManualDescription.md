@@ -19,24 +19,12 @@ top-layer painter for the surface, not a state authority.
 
 ## How this differs from `Nested` (auto mode)
 
-| Aspect                | `Popover` (manual)                                   | `PopoverAuto` (auto)                                         |
-| --------------------- | ---------------------------------------------------- | ------------------------------------------------------------ |
-| Source of truth       | React state                                          | React state mirrored from browser `toggle` events            |
-| Light dismiss         | `useOnClickOutside`, `useOnScrollOutside`, React Esc | Browser-driven (Escape, click-outside, popover stack)        |
-| Esc filter            | `closest('[data-popover-surface]') === self`         | Browser closes only the topmost popover in its stack         |
-| Stack ancestry        | DOM nesting + React click/Escape filters             | DOM nesting (or `popovertarget` linkage) per HTML spec       |
-| Multiple open peers   | ✅ Allowed — any number of unrelated popovers open   | ❌ Browser dismisses non-ancestor popovers when a peer opens |
-| `popover` attribute   | `popover="manual"`                                   | `popover="auto"`                                             |
-| Hover / context modes | Fully supported (`openOnHover`, `openOnContext`)     | Open paths still React-driven; close paths defer to browser  |
-| Focus restoration     | None built in                                        | Browser restores focus to the invoker on dismiss             |
-| Predictability        | Behaviour is whatever React handlers say             | Behaviour follows the HTML Popover spec across all browsers  |
+`PopoverAuto` defers dismiss to the browser via `popover="auto"`, so Escape,
+click-outside, and the popover-stack peer-dismissal happen at HTML-spec
+timing and focus is restored to the invoker for free. The trade-off is
+that the browser only allows one root chain open at a time — opening an
+unrelated peer dismisses the existing root.
 
-**When to pick which:**
-
-- Reach for `PopoverAuto` when the popover is a single, modal-ish surface and
-  you want the browser's dismiss timing, focus restoration, and stack
-  semantics for free.
-- Reach for `Popover` when you need multiple unrelated popovers open at once,
-  hover/context-driven open with custom dismiss timing
-  (`mouseLeaveDelay`, `closeOnScroll`), or precise control over which event
-  closes which surface.
+Use `PopoverAuto` when you want native, single-root behaviour. Use
+`Popover` when you need multiple unrelated popovers open simultaneously
+or hover/context-driven open with custom dismiss timing.

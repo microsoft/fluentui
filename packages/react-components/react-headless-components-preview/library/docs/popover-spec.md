@@ -133,7 +133,7 @@ This iteration ships **no built-in focus management**:
 
 - **No auto-focus on open.** The browser handles focus naturally. Top-layer popovers (`popover="manual"`) leave focus on the trigger; consumers can call `.focus()` on the surface or a descendant if needed.
 - **No focus trap.** Tab / Shift+Tab follow the document's normal tab order. With a top-layer surface, focus may move to elements behind the surface — that's expected for a non-modal popover.
-- **No focus restore.** When the surface unmounts, focus stays wherever the dismissal interaction left it (typically the trigger after click / Escape; arbitrary after click-outside).
+- **Focus restore on Escape only.** When Escape is pressed inside the surface, focus moves back to the trigger (native `popover="manual"` does not restore focus, so the surface's Escape handler does it explicitly). All other dismissal paths (click-outside, scroll-outside, programmatic close) leave focus wherever the interaction left it.
 - **`disableAutoFocus`** is preserved on `PopoverProps` for API stability but is currently inert. It will become meaningful again together with the upcoming focus hook.
 
 ### Labeling
