@@ -158,16 +158,11 @@ Score interpretation:
 
 ## Phase 5: Produce Output
 
-Use this exact format (also used verbatim as the PR-comment body in Phase 6 — don't duplicate work):
+Use this exact format (also used verbatim as the PR-comment body in Phase 6 — don't duplicate work).
+
+Start directly with the score. Skip a header title, author, type, packages-affected, and CI-status preamble — when this is posted as a PR comment, all of that is already visible in the GitHub UI immediately above the comment, so repeating it just pushes the actually-useful content (score + findings) below the fold. The classification work from Phase 2 still happens; it just isn't echoed back at the reader.
 
 ```
-## PR Review: #<number> — <title>
-
-**Author:** <author>
-**Type:** <detected PR type>
-**Packages affected:** <list>
-**CI Status:** <passing/failing/pending>
-
 ### Confidence Score: <score>/100
 
 <one-sentence summary>
