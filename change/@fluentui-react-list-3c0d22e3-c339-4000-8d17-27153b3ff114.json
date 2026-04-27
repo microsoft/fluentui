@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: fix after broken release",
+  "packageName": "@fluentui/react-list",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

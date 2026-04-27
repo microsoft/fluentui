@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:14 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.15.4",
+      "version": "0.15.4",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:42 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.15.2",
       "version": "0.15.2",
