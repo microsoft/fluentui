@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

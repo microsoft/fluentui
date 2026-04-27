@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: initial release",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
