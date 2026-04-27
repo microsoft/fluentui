@@ -17,6 +17,7 @@ export { CustomTrigger } from './PopoverCustomTrigger.stories';
 export { WithoutTrigger } from './PopoverWithoutTrigger.stories';
 export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
 export { Nested } from './PopoverNested.stories';
+export { NestedManual } from './PopoverNestedManual.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 export { Inline } from './PopoverInline.stories';
 

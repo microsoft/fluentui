@@ -101,6 +101,24 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
     disabled: !open || !(openOnContext || closeOnScroll) || isAutoMode,
   });
 
+  // Mirror the browser-driven toggle events into React state when in auto mode.
+  // Covers Escape, click-outside, and the popover-stack dismissal that happens
+  // when an unrelated `popover="auto"` opens. Skip the no-op transition the
+  // browser fires for our own `showPopover()` call (newState='open' while
+  // React already has `open=true`).
+  const onSurfaceToggle = useEventCallback((event: Event) => {
+    const toggle = event as ToggleEventLike;
+    const nextOpen = toggle.newState === 'open';
+    if (nextOpen === open) {
+      return;
+    }
+    setOpenState(nextOpen);
+    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
+  });
+
+  // The surface is unmounted while closed (`state.open ? popoverSurface : null`),
+  // so this effect must re-run when `open` flips so we attach `showPopover()`
+  // and the `toggle` listener to the freshly-mounted surface element.
   React.useEffect(() => {
     const surface = contentRef.current;
 
@@ -116,37 +134,17 @@ function useInternalPopover(props: PopoverProps, popoverType: PopoverType): Popo
       surface.setAttribute('popover', popoverType);
     }
 
-    if (SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open')) {
-      return;
+    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
+      surface.showPopover();
     }
 
-    surface.showPopover();
-  }, [open, inline, popoverType]);
-
-  // Mirror the browser-driven toggle events into React state when in auto mode.
-  // Covers Escape, click-outside, and the popover-stack dismissal that happens
-  // when an unrelated `popover="auto"` opens.
-  const onSurfaceToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEventLike;
-    const nextOpen = toggle.newState === 'open';
-    setOpenState(nextOpen);
-    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
-  });
-
-  React.useEffect(() => {
-    if (!isAutoMode) {
-      return;
-    }
-
-    const surface = contentRef.current;
-
-    if (!surface) {
+    if (popoverType !== 'auto') {
       return;
     }
 
     surface.addEventListener('toggle', onSurfaceToggle);
     return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [isAutoMode, onSurfaceToggle]);
+  }, [open, inline, popoverType, onSurfaceToggle]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
