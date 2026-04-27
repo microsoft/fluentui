@@ -134,14 +134,14 @@ Check 3 lines above each match for a guard (`canUseDOM`, `typeof window !== 'und
 
 ### I. Documentation coverage
 
-A code change frequently lands a new prop, component, behavior, or migration step that consumers need to learn about. This check asks two questions, in order:
+A code change frequently lands something that **someone downstream** needs to learn about. The "someone" splits into two audiences with very different reading habits, so this check actually walks two passes:
 
-1. **Should this PR have updated docs?** — based on what the diff actually touches.
-2. **If yes, did it?**
+- **Pass 1 — user-facing docs.** Component consumers (storybook stories, migration guides, docsite, MDX, change-file comments).
+- **Pass 2 — harness / agent-facing docs.** Future agent sessions reading the skills, `AGENTS.md`, `docs/workflows/*`, and `docs/architecture/*`. When a PR changes a build target, a script, a CI step, a label taxonomy, a project-board field, or an assumption that a skill makes, the skill or harness doc has to be updated **in the same PR** — otherwise every fresh `/triage-issues`, `/visual-test`, `/review-pr`, etc. invocation pays the discovery cost over again.
 
-Bug fixes by themselves usually don't need docs — the existing behavior already matches the existing docs by definition; the bug _was_ the divergence. Internal refactors, build/CI changes, and test-only PRs don't either. The interesting cases are below.
+Both passes ask the same two questions: should this PR have updated docs, and if so, did it? Bug fixes that restore documented behavior, internal refactors, and test-only PRs default to PASS in both passes — the interesting cases are below.
 
-**When docs ARE expected** (compare the diff against these paths):
+#### Pass 1 — user-facing docs
 
 | Source change                                                                                                         | Expected doc surface                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -151,37 +151,60 @@ Bug fixes by themselves usually don't need docs — the existing behavior alread
 | Behavior change to a public API's defaults (e.g. a new conditional in `use*_unstable` that changes observable output) | Mention in `library/docs/MIGRATION.md` or a "BREAKING CHANGE / behavior change" section in the PR body         |
 | Removal or deprecation of a public export                                                                             | `library/docs/MIGRATION.md` entry and/or a `@deprecated` JSDoc on the symbol                                   |
 | New design token, classname constant, or CSS custom property                                                          | A line in the relevant docs (often the component's stories MDX) explaining how to use/override it              |
-| New skill, agent feature, or hook in `.agents/skills/` or `.claude/`                                                  | Update `AGENTS.md` (the registry table) and any cross-referenced doc                                           |
-| Workflow / contributor-facing tooling change                                                                          | Update `docs/workflows/contributing.md` or the relevant `docs/workflows/*.md`                                  |
 
-**When docs are NOT expected** (default to PASS):
+#### Pass 2 — harness engineering / agent-facing docs
+
+This pass exists because skills are part of the contract, not just convenience. When the skills are stale, the agents are wrong — quietly. Symptoms: a `/visual-test` invocation that points at a nonexistent project name, a `/triage-issues` flow that recommends a label the repo no longer has, a `/triage-board` skill that misses a new view filter the maintainers added.
+
+Walk the diff for any of these and check whether the matching agent-facing doc was updated:
+
+| Source change                                                                                       | Expected harness update                                                                                                                                                                                |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| New / renamed nx target (`project.json`, `nx.json`, generators)                                     | Any skill that invokes that target — `visual-test`, `lint-check`, `package-info`, `v9-component`. The skill literally types the target name; it's not auto-discovered.                                 |
+| New / renamed top-level `package.json` script                                                       | Same. Plus `docs/workflows/contributing.md` if it's contributor-facing.                                                                                                                                |
+| New label, label rename, or label taxonomy change in the repo (`gh api repos/.../labels`)           | `triage-issues/references/triage-labels.md` — the skill uses an allow-list and `gh issue edit` rejects unknown labels.                                                                                 |
+| New / changed project-board field, view filter, or option ID                                        | `triage-board/references/team-mapping.md` (option IDs) and the view-filter mirror in `triage-board/SKILL.md`.                                                                                          |
+| New convention contributors are expected to follow (file layout, naming, "always do X")             | `AGENTS.md` / `CLAUDE.md` (they're symlinked) — the rules section is the agent's first read.                                                                                                           |
+| New layered dependency rule, package-tier reshuffle, or CODEOWNERS rewrite                          | `docs/architecture/layers.md`, `docs/team-routing.md`, plus `triage-board/references/team-mapping.md` if a CODEOWNERS handle gained or lost a confident mapping.                                       |
+| New first-time-setup requirement (e.g. a workspace package whose `lib-commonjs/` must be pre-built) | `docs/workflows/contributing.md` "First-time setup" section AND the troubleshooting block of any skill that hits the failure mode (`visual-test` already does this for the unstable-deps case).        |
+| New skill, agent hook, or `.claude/`-level configuration                                            | `AGENTS.md` skills table + the `.claude/skills/<name>/SKILL.md` bridge file.                                                                                                                           |
+| Removal or move of a path that any skill greps for or hard-codes                                    | The skill that referenced it. Search the skills (`grep -rn "<old-path>" .agents/skills/`) before merging.                                                                                              |
+| Authentication / token-scope / permission changes that affect `gh` calls                            | The skill's preflight section. Concrete past examples: the EMU vs non-EMU active-account gotcha and the `read:project` vs `project` scope distinction now baked into `triage-board`'s preflight.       |
+| New external-tool name or behavior change (e.g. assignee identity for an automated agent)           | The relevant skill. Concrete past example: assigning to `Copilot` literally fails with "Bot does not have access" — only `copilot-swe-agent` works. That belongs in any skill that assigns to Copilot. |
+
+#### When docs are NOT expected (default to PASS)
 
 - Pure bug fix that restores documented behavior
 - Internal refactor with no exported-symbol or behavior change
-- Build / CI / tooling changes that don't affect contributors
+- Build / CI changes that have no contributor-facing or skill-facing impact
 - Test-only PRs
 - Style-only PRs (typo, formatting) on internal code
 
-**Severity:**
+#### Severity
 
-| Situation                                                                     | Severity |
-| ----------------------------------------------------------------------------- | -------- |
-| Public export removed or behavior-changed without `MIGRATION.md` entry        | BLOCKER  |
-| New public component / new public hook with no story or MDX                   | WARNING  |
-| New public prop with no story exercising it                                   | WARNING  |
-| New design token / className constant with no usage example                   | WARNING  |
-| Behavior change to public defaults with no PR-body callout                    | WARNING  |
-| New skill or workflow change without updating `AGENTS.md` / `docs/workflows/` | WARNING  |
-| PR description explicitly defers docs to a follow-up (link cited)             | INFO     |
-| Docs change exists but feels minimal — could be more thorough                 | INFO     |
+| Situation                                                                                                               | Severity |
+| ----------------------------------------------------------------------------------------------------------------------- | -------- |
+| Public export removed or behavior-changed without `MIGRATION.md` entry                                                  | BLOCKER  |
+| Skill references a renamed or removed path / target / label that this PR changes (skill will literally fail next run)   | BLOCKER  |
+| New public component / new public hook with no story or MDX                                                             | WARNING  |
+| New public prop with no story exercising it                                                                             | WARNING  |
+| New design token / className constant with no usage example                                                             | WARNING  |
+| Behavior change to public defaults with no PR-body callout                                                              | WARNING  |
+| New label / project field / nx target / convention without the matching skill or `AGENTS.md` / `docs/workflows/` update | WARNING  |
+| New first-time-setup requirement without `contributing.md` mention                                                      | WARNING  |
+| PR description explicitly defers docs to a follow-up (link cited)                                                       | INFO     |
+| Docs / harness change exists but feels minimal — could be more thorough                                                 | INFO     |
 
-**How to actually run this check** (the model should walk the diff, not guess):
+#### How to actually run this check
 
-1. Look at the changed-files list. Group into "code surfaces" (`library/src/**`, `index.ts` barrels, `*.types.ts`) and "doc surfaces" (`stories/**`, `library/docs/**`, `apps/public-docsite-v9/**`, `docs/**`, `*.md`, `AGENTS.md`).
-2. If the PR is purely doc-surface, this check is trivially PASS.
-3. If the PR is purely code-surface AND the code change doesn't fall into the "expected docs" rows above, PASS.
-4. Otherwise, pick the strictest matching row from the severity table and report it. **Always cite the specific file or symbol** in the finding so the author can act on it.
-5. Read the PR body before reporting — authors often pre-empt this with "docs follow-up tracked in #NNNN" or "no docs needed because X." That moves the finding from WARNING to INFO if the deferral is explicit and reasonable.
+The model should walk the diff, not guess.
+
+1. **Group changed files into surfaces.** Code surfaces (`library/src/**`, `index.ts` barrels, `*.types.ts`); user-doc surfaces (`stories/**`, `library/docs/**`, `apps/public-docsite-v9/**`); harness surfaces (`.agents/skills/**`, `.claude/**`, `AGENTS.md`, `CLAUDE.md`, `docs/workflows/**`, `docs/architecture/**`, `docs/team-routing.md`, `project.json`, `nx.json`, root `package.json` scripts, `.github/CODEOWNERS`, `.github/labeler.yml`).
+2. **If the PR is purely a doc/harness surface**, the check is PASS — it's documentation already.
+3. **For each row in the user-facing table that matches a code change in the diff**, verify the corresponding doc surface was also touched. If not, raise the matching severity.
+4. **For each row in the harness-engineering table that matches**, verify the corresponding skill or harness doc was also touched. Be specific: name the skill that needs updating, not just "a skill."
+5. **Cross-search**: when a PR renames a path, target, or label, run `grep -rn "<old-name>" .agents/skills/ docs/ AGENTS.md` to find references that will break. Anything that turns up is a BLOCKER unless this PR also updates it.
+6. **Read the PR body** before reporting. Authors often pre-empt with "docs follow-up tracked in #NNNN" or "harness skills updated in commit X" — those move findings from WARNING to INFO when the deferral is explicit and reasonable.
 
 ## Phase 4: Calculate Confidence Score
 
