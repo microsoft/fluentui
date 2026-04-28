@@ -1,0 +1,44 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--text);
+}
+
+.item {
+  position: relative;
+  display: inline-flex;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.input:focus-visible ~ svg {
+  filter: drop-shadow(0 0 0 var(--accent)) drop-shadow(0 0 3px var(--brand));
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  color: inherit;
+}
+
+.rating-module__row--J7o\+R {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.value {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}

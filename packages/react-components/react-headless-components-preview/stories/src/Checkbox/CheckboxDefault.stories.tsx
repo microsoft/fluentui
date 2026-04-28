@@ -2,15 +2,41 @@ import * as React from 'react';
 import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckmarkRegular } from '@fluentui/react-icons';
 
+import styles from '../../../../../../bebop/components/checkbox.module.css';
+import storySource from './CheckboxDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
-  <Checkbox
-    label="Default Checkbox"
-    className="flex items-center gap-2 relative"
-    indicator={{
-      className:
-        'border border-black rounded size-5 flex items-center justify-center peer-checked:bg-black transition-colors text-transparent peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-black peer-focus-visible:ring-offset-2',
-      children: <CheckmarkRegular className="size-4" />,
-    }}
-    input={{ className: 'absolute size-5 opacity-0 peer z-1' }}
-  />
+  <div className={styles.list}>
+    <Checkbox
+      label={{ children: 'Send me updates', className: styles.label }}
+      className={styles.row}
+      input={{ className: styles.input }}
+      indicator={{
+        className: styles.indicator,
+        children: <CheckmarkRegular className={styles.iconCheck} aria-hidden />,
+      }}
+    />
+    <Checkbox
+      defaultChecked
+      label={{ children: 'Subscribe to newsletter', className: styles.label }}
+      className={styles.row}
+      input={{ className: styles.input }}
+      indicator={{
+        className: styles.indicator,
+        children: <CheckmarkRegular className={styles.iconCheck} aria-hidden />,
+      }}
+    />
+    <Checkbox
+      disabled
+      label={{ children: 'Disabled option', className: styles.label }}
+      className={styles.row}
+      input={{ className: styles.input }}
+      indicator={{
+        className: styles.indicator,
+        children: <CheckmarkRegular className={styles.iconCheck} aria-hidden />,
+      }}
+    />
+  </div>
 );
+
+Default.parameters = withStorySource(storySource);

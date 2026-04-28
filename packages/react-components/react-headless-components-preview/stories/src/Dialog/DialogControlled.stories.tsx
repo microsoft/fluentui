@@ -8,14 +8,13 @@ import {
   DialogTrigger,
 } from '@fluentui/react-headless-components-preview/dialog';
 
+import styles from '../../../../../../bebop/components/dialog.module.css';
+import storySource from './DialogControlled.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 /**
- * In controlled mode the parent component owns the open state.
+ * In controlled mode the parent owns the open state.
  * Pass `open` and `onOpenChange` together — `onOpenChange` fires for every
- * dismiss gesture (Escape, backdrop click, trigger click) so the parent can
- * decide whether to actually close.
- *
- * This example blocks closing until the user ticks a checkbox,
- * demonstrating how to veto a close by calling `event.preventDefault()`.
+ * dismiss gesture (Escape, backdrop click, trigger click).
  */
 export const Controlled = (): React.ReactNode => {
   const [open, setOpen] = React.useState(false);
@@ -23,32 +22,32 @@ export const Controlled = (): React.ReactNode => {
   return (
     <Dialog open={open} onOpenChange={(_, data) => setOpen(data.open)}>
       <DialogTrigger>
-        <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
+        <button type="button" className={styles.btn}>
           Open controlled dialog
         </button>
       </DialogTrigger>
 
-      <DialogSurface className="fixed inset-0 m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-        <DialogBody className="px-4 py-3 text-sm text-zinc-700">
-          <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Dialog title</DialogTitle>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque est
-          dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure cumque
-          eaque?
+      <DialogSurface className={styles.surface}>
+        <DialogBody className={styles.body}>
+          <DialogTitle className={styles.title}>Dialog title</DialogTitle>
+          <p className={styles.copy}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam.
+          </p>
         </DialogBody>
-        <DialogActions className="flex justify-end gap-2 px-4 pb-4">
-          <button
-            type="button"
-            className="rounded bg-zinc-900 px-3 py-1.5 text-sm font-medium text-zinc-50 hover:bg-zinc-800"
-          >
-            Do Something
-          </button>
+        <DialogActions className={styles.actions}>
           <DialogTrigger action="close">
-            <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
+            <button type="button" className={styles.btn}>
               Close
             </button>
           </DialogTrigger>
+          <button type="button" className={`${styles.btn} ${styles.primary}`}>
+            Do something
+          </button>
         </DialogActions>
       </DialogSurface>
     </Dialog>
   );
 };
+
+Controlled.parameters = withStorySource(storySource);

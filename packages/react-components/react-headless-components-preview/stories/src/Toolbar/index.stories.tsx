@@ -8,6 +8,8 @@ import {
 } from '@fluentui/react-headless-components-preview/toolbar';
 
 import descriptionMd from './ToolbarDescription.md';
+import toolbarCss from '../../../../../../bebop/components/toolbar.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './ToolbarDefault.stories';
 export { Vertical } from './ToolbarVertical.stories';
@@ -23,5 +25,7 @@ export default {
         component: descriptionMd,
       },
     },
+
+    ...withCssModuleSource({ name: 'toolbar.module.css', source: toolbarCss }),
   },
 };

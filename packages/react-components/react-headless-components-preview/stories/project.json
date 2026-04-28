@@ -4,5 +4,10 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-headless-components-preview/stories/src",
   "tags": ["vNext", "platform:web", "type:stories", "react-headless"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "build-storybook": {
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/bebop/**"]
+    }
+  }
 }

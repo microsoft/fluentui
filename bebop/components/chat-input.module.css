@@ -1,0 +1,130 @@
+/* Bebop chat-input — borderless field on a soft surface,
+   with a hairline bottom rule and inline icon buttons.
+
+   Layout: [+] [text  · placeholder text]    [mic] [waveform | send]
+*/
+
+.chat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 8px 8px;
+  background: var(--bg-soft);
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  transition: background var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.chat:has(:focus-visible) {
+  background: var(--bg-elev);
+  border-color: var(--text);
+}
+
+.chatLeading,
+.chatTrailing {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.chatField {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 8px 8px;
+  font-size: 14px;
+  color: var(--text);
+  min-width: 0;
+}
+
+.chatField::placeholder {
+  color: var(--text-soft);
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.iconBtn:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.iconBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.iconBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.iconBtn[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.send {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.send:hover {
+  background: var(--accent-strong);
+  color: var(--accent-contrast);
+}
+
+.send svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.25;
+}
+
+.send[disabled] {
+  background: var(--surface-muted);
+  color: var(--text-faint);
+}
+
+/* Underline variant — borderless, thin bottom rule (matches the larger
+   Bebop chat input shown in the canvas screenshot). */
+
+.chatUnderline {
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 4px;
+}
+
+.chatUnderline:has(:focus-visible) {
+  background: transparent;
+  border-bottom-color: var(--text);
+  border-color: transparent;
+  border-bottom: 1px solid var(--text);
+}
+
+.chatUnderline .chatField {
+  font-size: 16px;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  width: 100%;
+
+  max-width: 560px;
+}

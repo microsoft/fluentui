@@ -2,13 +2,22 @@ import * as React from 'react';
 import { SearchBox } from '@fluentui/react-headless-components-preview/search-box';
 import { SearchRegular } from '@fluentui/react-icons';
 
+// SearchBox reuses the input CSS module per the story authoring guide.
+import styles from '../../../../../../bebop/components/input.module.css';
+import storySource from './SearchBoxDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
-  <SearchBox
-    placeholder="Search..."
-    className="flex w-full max-w-sm items-center rounded-md border border-gray-300 bg-white has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2"
-    contentBefore={<SearchRegular className="ml-3 h-4 w-4 shrink-0 text-gray-400" />}
-    input={{
-      className: 'flex-1 px-3 py-2 text-sm text-gray-900 outline-none placeholder:text-gray-400 bg-transparent',
-    }}
-  />
+  <div className={styles.demo}>
+    <SearchBox
+      placeholder="Search…"
+      className={styles.wrap}
+      contentBefore={{
+        className: styles.affix,
+        children: <SearchRegular className={styles.affixIcon} aria-hidden />,
+      }}
+      input={{ className: styles.input }}
+    />
+  </div>
 );
+
+Default.parameters = withStorySource(storySource);

@@ -1,37 +1,52 @@
 import { create } from 'storybook/theming';
 
 /**
- * Theming and branding the storybook to fluent. Taken from https://storybook.js.org/docs/react/configure/theming
+ * Custom Storybook chrome for the headless components docsite.
+ *
+ * Values mirror the light-mode tokens in `bebop/tokens.css`. The Storybook
+ * theme builds at compile time and cannot read CSS custom properties, so the
+ * palette is inlined here. Update this file alongside `bebop/tokens.css` if
+ * the design tokens shift.
  */
 const theme = create({
   base: 'light',
 
-  // Storybook-specific color palette
-  colorPrimary: 'rgba(255, 255, 255, .4)',
-  colorSecondary: '#0078d4',
+  // Storybook color palette
+  colorPrimary: '#9b1f5a', // matches --accent
+  colorSecondary: '#9b1f5a',
 
-  // UI
-  appBg: '#ffffff',
-  appContentBg: '#ffffff',
-  appBorderColor: '#e0e0e0', // use msft gray
-  appBorderRadius: 4,
+  // UI surfaces
+  appBg: '#f7f7f8', // --bg-soft
+  appContentBg: '#ffffff', // --bg
+  appPreviewBg: '#ffffff',
+  appBorderColor: '#e4e4e7', // --border
+  appBorderRadius: 12, // --radius-lg
 
   // Fonts
-  fontBase:
-    '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
-  fontCode: 'monospace',
+  fontBase: '"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif',
+  fontCode: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
 
-  // Text colors
-  textColor: '#11100f',
-  textInverseColor: '#0078d4', // use msft primary blue default
+  // Text
+  textColor: '#0a0a0a', // --text
+  textInverseColor: '#ffffff', // --text-on-accent
+  textMutedColor: '#52525b', // --text-muted
 
-  // Toolbar default and active colors
-  barSelectedColor: '#0078d4', // use msft primary blue default
+  // Toolbar
+  barTextColor: '#52525b',
+  barHoverColor: '#9b1f5a',
+  barSelectedColor: '#9b1f5a',
+  barBg: '#ffffff',
 
-  // Form colors
-  inputBorderRadius: 4,
+  // Form controls
+  buttonBg: '#ffffff',
+  buttonBorder: '#e4e4e7',
+  booleanBg: '#f2f2f4', // --surface-muted
+  booleanSelectedBg: '#9b1f5a',
+  inputBg: '#ffffff',
+  inputBorder: '#e4e4e7',
+  inputTextColor: '#0a0a0a',
+  inputBorderRadius: 8, // --radius-md
 
-  // Use the fluent branding for the upper left image
   brandTitle: 'Fluent UI Headless Components',
   brandUrl:
     'https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-headless-components-preview',

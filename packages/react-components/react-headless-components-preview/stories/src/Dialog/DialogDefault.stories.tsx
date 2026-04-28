@@ -8,31 +8,31 @@ import {
   DialogTrigger,
 } from '@fluentui/react-headless-components-preview/dialog';
 
+import styles from '../../../../../../bebop/components/dialog.module.css';
+import storySource from './DialogDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <Dialog>
     <DialogTrigger>
-      <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
+      <button type="button" className={styles.btn}>
         Open dialog
       </button>
     </DialogTrigger>
 
-    <DialogSurface className="fixed inset-0 m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg backdrop:bg-black/50">
-      <DialogBody className="p-4 text-sm text-zinc-700">
-        <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Confirm action</DialogTitle>
-        <p className="m-0">Are you sure you want to proceed? This action cannot be undone.</p>
+    <DialogSurface className={styles.surface}>
+      <DialogBody className={styles.body}>
+        <DialogTitle className={styles.title}>Confirm action</DialogTitle>
+        <p className={styles.copy}>Are you sure you want to proceed? This action cannot be undone.</p>
       </DialogBody>
 
-      <DialogActions className="flex justify-end gap-2 px-4 pb-4">
+      <DialogActions className={styles.actions}>
         <DialogTrigger action="close">
-          <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
+          <button type="button" className={styles.btn}>
             Cancel
           </button>
         </DialogTrigger>
         <DialogTrigger action="close">
-          <button
-            type="button"
-            className="rounded bg-zinc-900 px-3 py-1.5 text-sm font-medium text-zinc-50 hover:bg-zinc-800"
-          >
+          <button type="button" className={`${styles.btn} ${styles.primary}`}>
             Confirm
           </button>
         </DialogTrigger>
@@ -40,3 +40,5 @@ export const Default = (): React.ReactNode => (
     </DialogSurface>
   </Dialog>
 );
+
+Default.parameters = withStorySource(storySource);

@@ -7,29 +7,42 @@ import {
 } from '@fluentui/react-headless-components-preview/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
+import styles from '../../../../../../bebop/components/accordion.module.css';
+import storySource from './AccordionDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 const items = [
-  { value: 'item-1', header: 'Accordion Header 1', panel: 'Accordion Panel 1' },
-  { value: 'item-2', header: 'Accordion Header 2', panel: 'Accordion Panel 2' },
-  { value: 'item-3', header: 'Accordion Header 3', panel: 'Accordion Panel 3' },
+  {
+    value: 'overview',
+    header: 'Overview',
+    panel: 'A short summary of what this section is about. The design system favours generous radii and quiet borders.',
+  },
+  {
+    value: 'details',
+    header: 'Details',
+    panel: 'Deeper details rendered inside the panel. The reveal animation is driven by data-open.',
+  },
+  {
+    value: 'extras',
+    header: 'Extras',
+    panel: 'Supporting content. The expand icon rotates 90° when the item opens.',
+  },
 ];
 
 export const Default = (): React.ReactNode => (
-  <Accordion className="flex w-full max-w-96 flex-col justify-center text-gray-900">
+  <Accordion className={`${styles.accordion} ${styles.demo}`}>
     {items.map(item => (
-      <AccordionItem className="group border-b border-gray-200 last:border-b-0" key={item.value} value={item.value}>
+      <AccordionItem className={styles.item} key={item.value} value={item.value}>
         <AccordionHeader
-          button={{
-            className:
-              'border-none relative flex w-full items-baseline gap-3 py-2 px-3 text-left font-semibold hover:bg-gray-50 focus:outline-none focus-visible:z-1 focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2',
-          }}
-          expandIcon={<ChevronRightRegular className="group-data-[open]:rotate-90 transition-transform" />}
+          className={styles.header}
+          button={{ className: styles.headerBtn }}
+          expandIcon={<ChevronRightRegular className={styles.expandIcon} aria-hidden />}
         >
-          {item.header}
+          <span className={styles.label}>{item.header}</span>
         </AccordionHeader>
-        <AccordionPanel className="group-data-[open]:h-max overflow-hidden text-base text-gray-600 transition-[height] ease-out h-0">
-          <div className="p-3">{item.panel}</div>
-        </AccordionPanel>
+        <AccordionPanel className={styles.panel}>{item.panel}</AccordionPanel>
       </AccordionItem>
     ))}
   </Accordion>
 );
+
+Default.parameters = withStorySource(storySource);

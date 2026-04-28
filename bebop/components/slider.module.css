@@ -1,0 +1,87 @@
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.slider-module__rail--Y\+av4 {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+
+.slider-module__rail--Y\+av4::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: var(--fui-Slider--progress, 0%);
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width var(--duration-fast) var(--ease-standard);
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  left: var(--fui-Slider--progress, 0%);
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-elev);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow-2);
+  transition: transform 80ms var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+
+.input:focus-visible ~ .thumb,
+.input:focus-visible + .thumb {
+  box-shadow: 0 0 0 4px var(--surface-muted), var(--shadow-2);
+}
+
+.input:active ~ .thumb {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--text);
+  min-width: 38px;
+  text-align: right;
+  font-size: 13px;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 360px;
+}

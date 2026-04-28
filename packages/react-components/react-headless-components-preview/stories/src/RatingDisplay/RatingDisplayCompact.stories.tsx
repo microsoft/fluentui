@@ -1,21 +1,26 @@
 import * as React from 'react';
 import { RatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
-import { StarFilled, StarHalfFilled } from '@fluentui/react-icons';
+import { StarFilled, StarHalfFilled, StarRegular } from '@fluentui/react-icons';
 
-const RatingIcon = () => (
+import styles from '../../../../../../bebop/components/rating-display.module.css';
+import storySource from './RatingDisplayCompact.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
+const RatingIcon = (): React.ReactNode => (
   <>
-    <StarFilled className="absolute flex size-4 [[data-appearance=filled-half]_&]:invisible [[data-appearance=outline]_&]:text-gray-300 " />
-    <StarHalfFilled className="absolute flex size-4 [[data-appearance=filled-half]_&]:visible invisible" />
+    <StarFilled className={`${styles.icon} ${styles.iconFilled}`} />
+    <StarHalfFilled className={`${styles.icon} ${styles.iconHalf}`} />
+    <StarRegular className={`${styles.icon} ${styles.iconOutline}`} />
   </>
 );
 
-export const Compact = (): React.ReactNode => {
-  return (
-    <RatingDisplay
-      className="flex items-center gap-1 [&>[data-appearance]]:size-4 [&>[data-appearance]]:relative"
-      compact
-      value={3}
-      icon={RatingIcon}
-    />
-  );
-};
+export const Compact = (): React.ReactNode => (
+  <RatingDisplay
+    className={styles.display}
+    compact
+    value={3}
+    icon={RatingIcon}
+    valueText={{ className: styles.value }}
+  />
+);
+
+Compact.parameters = withStorySource(storySource);

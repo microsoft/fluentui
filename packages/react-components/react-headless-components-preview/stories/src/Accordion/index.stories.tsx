@@ -6,6 +6,8 @@ import {
 } from '@fluentui/react-headless-components-preview/accordion';
 
 import descriptionMd from './AccordionDescription.md';
+import accordionCss from '../../../../../../bebop/components/accordion.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
@@ -20,5 +22,7 @@ export default {
         component: descriptionMd,
       },
     },
+
+    ...withCssModuleSource({ name: 'accordion.module.css', source: accordionCss }),
   },
 };

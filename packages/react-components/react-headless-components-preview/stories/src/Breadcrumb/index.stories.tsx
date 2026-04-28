@@ -6,6 +6,8 @@ import {
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
 import descriptionMd from './BreadcrumbDescription.md';
+import breadcrumbCss from '../../../../../../bebop/components/breadcrumb.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './BreadcrumbDefault.stories';
 
@@ -19,5 +21,7 @@ export default {
         component: descriptionMd,
       },
     },
+
+    ...withCssModuleSource({ name: 'breadcrumb.module.css', source: breadcrumbCss }),
   },
 };

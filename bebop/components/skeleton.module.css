@@ -1,0 +1,64 @@
+.card\+ {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.bar {
+  height: 12px;
+  border-radius: var(--radius-xs);
+  background: linear-gradient(90deg, var(--surface-muted) 0%, var(--surface-sunken) 50%, var(--surface-muted) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+.circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.line40 {
+  width: 40%;
+}
+
+.line60 {
+  width: 60%;
+}
+
+.line100 {
+  width: 100%;
+}
+
+.thumb {
+  height: 140px;
+  border-radius: var(--radius-lg);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 400px;
+}
+
+.demoFlex {
+  flex: 1;
+
+  gap: 8px;
+}

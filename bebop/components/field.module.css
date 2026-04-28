@@ -1,0 +1,54 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.field-module__hint--jh\+Qf {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.message {
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.messageError {
+  color: var(--brand);
+}
+
+.messageWarning {
+  color: var(--warning);
+}
+
+.field-module__messageSuccess--H\+7ls {
+  color: var(--success);
+}
+
+.messageInfo {
+  color: var(--info);
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  width: 100%;
+
+  max-width: 360px;
+}

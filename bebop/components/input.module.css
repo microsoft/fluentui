@@ -1,0 +1,85 @@
+/* Bebop input wrapper — clean rounded, light border */
+.wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.wrap:hover {
+  border-color: var(--border-strong);
+}
+
+.wrap:has(:focus-visible),
+.wrap:focus-within {
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px var(--surface-muted);
+}
+
+.wrap[data-disabled],
+.wrapDisabled {
+  background: var(--surface-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.wrapError {
+  border-color: var(--brand);
+}
+
+.wrapError:has(:focus-visible) {
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-size: 13.5px;
+  color: var(--text);
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--text-faint);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.input-module__affix--y\+IXS {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  color: var(--text-soft);
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+.affixIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  width: 100%;
+
+  max-width: 360px;
+}
