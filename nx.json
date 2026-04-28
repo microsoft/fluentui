@@ -141,7 +141,12 @@
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
       "options": {
         "testSSR": {
-          "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
+          "exclude": [
+            "react-theme-stories",
+            "react-migration-v8-v9-stories",
+            "react-migration-v0-v9-stories",
+            "react-headless-components-preview-stories"
+          ]
         },
         "verifyPackaging": {
           "include": ["react-text", "react-components"]

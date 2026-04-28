@@ -5,7 +5,7 @@ import { StarFilled, StarHalfFilled, StarRegular } from '@fluentui/react-icons';
 import styles from './rating-display.module.css';
 import storySource from './RatingDisplayDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
-const RatingIcon = (): React.ReactNode => (
+const RatingIcon: React.FC = () => (
   <>
     <StarFilled className={`${styles.icon} ${styles.iconFilled}`} />
     <StarHalfFilled className={`${styles.icon} ${styles.iconHalf}`} />

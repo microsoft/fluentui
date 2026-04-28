@@ -221,7 +221,7 @@ export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) 
   const [activeTabId, setActiveTabId] = React.useState<string>('story-tsx');
 
   const tsxCode: string = typeof sourceProps.code === 'string' ? sourceProps.code : '';
-  const tsxLanguage: string = typeof sourceProps.language === 'string' ? sourceProps.language : 'tsx';
+  const tsxLanguage = 'tsx' as const;
   const allCssModules: CssModule[] =
     (story.parameters?.theme as HeadlessSourceParameters | undefined)?.cssModules ?? [];
 
@@ -242,10 +242,10 @@ export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) 
     return null;
   }
 
-  type Tab = { id: string; label: string; code: string; language: string };
+  type Tab = { id: string; label: string; code: string; language: 'tsx' | 'css' };
   const tabs: Tab[] = [
     { id: 'story-tsx', label: 'Story.tsx', code: tsxCode, language: tsxLanguage },
-    ...cssModules.map((m, i) => ({ id: `css-${i}`, label: m.name, code: m.source.trim(), language: 'css' })),
+    ...cssModules.map((m, i) => ({ id: `css-${i}`, label: m.name, code: m.source.trim(), language: 'css' as const })),
   ];
   const activeTab = tabs.find(t => t.id === activeTabId) ?? tabs[0];
 
