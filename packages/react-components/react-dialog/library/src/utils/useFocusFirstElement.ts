@@ -7,7 +7,9 @@ import type { DialogSurfaceElement } from '../DialogSurface';
 import type { DialogModalType } from '../Dialog';
 
 /**
- * Focus first element on content when dialog is opened,
+ * Focus first element on content when dialog is opened.
+ * Respects elements with `autoFocus` (React lowers `autoFocus={true}` to the DOM `autofocus` attribute),
+ * falling back to the first focusable element via tabster when none is present.
  */
 export function useFocusFirstElement(
   open: boolean,
