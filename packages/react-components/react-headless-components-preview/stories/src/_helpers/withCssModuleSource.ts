@@ -31,7 +31,7 @@
 // Loaded via the `?raw` resourceQuery rule configured in `.storybook/main.js`.
 // Bundling tokens.css inline lets the Stackblitz scaffold include them without
 // requiring story authors to wire imports manually.
-import tokensCss from '../../../../../../apps/public-docsite-v9-headless/theme/tokens.css?raw';
+import tokensCss from '../../theme/tokens.css?raw';
 
 import type { CssModule, HeadlessSourceParameters } from './HeadlessSourcePanel';
 

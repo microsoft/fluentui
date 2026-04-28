@@ -12,7 +12,12 @@
           "target": "build"
         }
       ],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{projectRoot}/theme/**"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/stories/theme/**"
+      ]
     },
     "build-storybook:docsite": {
       "dependsOn": [
@@ -21,7 +26,12 @@
           "target": "build"
         }
       ],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{projectRoot}/theme/**"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/packages/react-components/react-headless-components-preview/stories/theme/**"
+      ]
     }
   }
 }
