@@ -24,11 +24,13 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
-    overflow: 'clip',
   },
   card: {
     gridArea: 'card',
     padding: tokens.spacingHorizontalMNudge,
+  },
+  cardHeaderText: {
+    margin: 0,
   },
   controls: {
     display: 'flex',
@@ -205,7 +207,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
         <Card className={classes.card}>
           <CardHeader
             header={
-              <Text as="h3" style={{ margin: 0 }} weight="semibold">
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
                 Lorem Ipsum
               </Text>
             }
