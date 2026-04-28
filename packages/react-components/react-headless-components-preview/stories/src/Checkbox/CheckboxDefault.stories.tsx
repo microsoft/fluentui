@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckmarkRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/checkbox.module.css';
+import styles from '../../../../../../theme/components/checkbox.module.css';
 import storySource from './CheckboxDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

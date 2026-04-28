@@ -2,10 +2,10 @@
 
 Storybook stories for [`@fluentui/react-headless-components-preview`](../library).
 
-These stories double as the visual reference for the "Bebop" design language: the
+These stories double as the visual reference for the "Design system" design language: the
 headless components stay unstyled in `library/`, all visual concerns live in CSS
-Modules under `bebop/` at the repo root, and the stories pull both together.
-`bebop/tokens.css` is imported once in `.storybook/preview.js` and defines
+Modules under `theme/` at the repo root, and the stories pull both together.
+`theme/tokens.css` is imported once in `.storybook/preview.js` and defines
 `:root` (light) and `[data-theme="dark"]` (dark) CSS variables for every story.
 
 ## Usage
@@ -35,8 +35,8 @@ For each new component:
 
 1. Create the headless component under `library/src/components/<Name>/` (out of
    scope for this guide).
-2. Add a CSS Module at `bebop/components/<name>.module.css` driven entirely by
-   `var(--…)` from `bebop/tokens.css`. **Do not hardcode colors, sizes, or
+2. Add a CSS Module at `theme/components/<name>.module.css` driven entirely by
+   `var(--…)` from `theme/tokens.css`. **Do not hardcode colors, sizes, or
    typography.**
 3. Add a stories folder at `stories/src/<Name>/` containing:
    - `<Name>Description.md` — short MDX-friendly markdown component description.
@@ -52,7 +52,7 @@ the CSS Module, and stories pull both together.
 ```tsx
 import * as React from 'react';
 import { MyComponent } from '@fluentui/react-headless-components-preview/my-component';
-import styles from '../../../../../../bebop/components/my-component.module.css';
+import styles from '../../../../../../theme/components/my-component.module.css';
 
 export const Default = (): React.ReactNode => <MyComponent className={styles.root} />;
 ```
@@ -63,9 +63,9 @@ Notes:
   `stories/src/<Name>/<File>.tsx`. The webpack rule that handles `*.module.css`
   is registered both in the docsite (`apps/public-docsite-v9-headless/.storybook/main.js`)
   and in this package's per-package storybook
-  (`stories/.storybook/main.js`). If you add the file outside `bebop/` make sure
+  (`stories/.storybook/main.js`). If you add the file outside `theme/` make sure
   the rule's `include` list covers it.
-- No inline styles, no Tailwind, no Griffel. Tokens come from `bebop/tokens.css`.
+- No inline styles, no Tailwind, no Griffel. Tokens come from `theme/tokens.css`.
 - Every CSS value must resolve through a `var(--…)` token — search the diff
   for raw `#` and `rgb(` to confirm.
 
@@ -79,7 +79,7 @@ helper at `stories/src/_helpers/withCssModuleSource.ts` does the stitching:
 import { MyComponent } from '@fluentui/react-headless-components-preview/my-component';
 
 import descriptionMd from './MyComponentDescription.md';
-import myComponentCss from '../../../../../../bebop/components/my-component.module.css?raw';
+import myComponentCss from '../../../../../../theme/components/my-component.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './MyComponentDefault.stories';
@@ -129,7 +129,7 @@ declarations live at `typings/static-assets/index.d.ts`.
 | Type      | `--font-sans` (Segoe UI), `--font-mono`, `--font-display`                              |
 | Motion    | `--ease-standard`, `--ease-emphasized`, `--duration-fast/medium/slow`                  |
 
-Read the file directly when in doubt: `bebop/tokens.css`.
+Read the file directly when in doubt: `theme/tokens.css`.
 
 ### 5 · Visual language conventions
 
@@ -192,8 +192,8 @@ These are the things that took time to discover. Keep them in mind:
 
 | Path                                                 | Purpose                                                             |
 | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| `bebop/tokens.css`                                   | CSS custom properties, light + dark. Imported once in `preview.js`. |
-| `bebop/components/<name>.module.css`                 | Per-component scoped styles.                                        |
+| `theme/tokens.css`                                   | CSS custom properties, light + dark. Imported once in `preview.js`. |
+| `theme/components/<name>.module.css`                 | Per-component scoped styles.                                        |
 | `stories/src/<Name>/<Name>Default.stories.tsx`       | Default story body using CSS Module classes.                        |
 | `stories/src/<Name>/<Name>Description.md`            | Component description shown in the Docs panel.                      |
 | `stories/src/<Name>/index.stories.tsx`               | Meta + `parameters.docs.source.transform` wiring.                   |

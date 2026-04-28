@@ -6,7 +6,7 @@ import {
 } from '@fluentui/react-headless-components-preview/accordion';
 
 import descriptionMd from './AccordionDescription.md';
-import accordionCss from '../../../../../../bebop/components/accordion.module.css?raw';
+import accordionCss from '../../../../../../theme/components/accordion.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './AccordionDefault.stories';

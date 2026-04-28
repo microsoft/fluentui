@@ -1,11 +1,11 @@
 /**
- * `BebopDocsPage` — replaces Storybook's autodocs page so we can render a
+ * `HeadlessDocsPage` — replaces Storybook's autodocs page so we can render a
  * **tabbed** "Show code" panel under each story (TSX + each CSS Module the
  * story uses). The deployed Fluent docs page (`FluentDocsPage`) hard-wires
  * `<Primary>` / `<Stories>` blocks whose Source can't be made multi-language,
  * so we re-implement the same layout (Title / Subtitle / Description /
  * primary canvas + source / ArgTypes / Stories heading / each story canvas +
- * source) and swap the source block for our own `<BebopSource>`. The order
+ * source) and swap the source block for our own `<HeadlessSourcePanel>`. The order
  * mirrors `packages/react-components/react-storybook-addon/src/docs/FluentDocsPage.tsx`
  * so the page matches what's deployed at storybooks.fluentui.dev/headless.
  *
@@ -24,7 +24,7 @@ import {
   Title,
 } from '@storybook/addon-docs/blocks';
 
-import { BebopSource } from './BebopSource';
+import { HeadlessSourcePanel } from './HeadlessSourcePanel';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyStory = Record<string, any>;
@@ -53,7 +53,19 @@ const nameToHash = (name: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 
-export const BebopDocsPage: React.FC = () => {
+const disclaimerStyle: React.CSSProperties = {
+  margin: '20px 0 0',
+  padding: '12px 16px',
+  border: '1px solid #e1dfdd',
+  borderLeft: '3px solid #9b1f5a',
+  borderRadius: 6,
+  background: '#fdf6f9',
+  color: '#3c3c3c',
+  fontSize: 13,
+  lineHeight: 1.5,
+};
+
+export const HeadlessDocsPage: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const docsContext = React.useContext(DocsContext) as any;
   let stories: AnyStory[] = docsContext.componentStories();
@@ -76,19 +88,23 @@ export const BebopDocsPage: React.FC = () => {
   const remainingStories = stories.slice(1);
 
   return (
-    <div className="sb-unstyled bebop-docs-page">
+    <div className="sb-unstyled headless-docs-page">
       {/*
         The `@fluentui/react-storybook-addon-export-to-sandbox` decorator looks
         for `.docblock-code-toggle` inside `.docs-story` of each story to anchor
         its "Open in Stackblitz" button. We keep Canvas's default sourceState
         ('hidden') so the native "Show code" toggle is rendered there too —
         the Stackblitz button sits next to it inside the canvas footer (see
-        `BebopSource` for how its clicks drive our tabbed panel).
+        `HeadlessSourcePanel` for how its clicks drive our tabbed panel).
       */}
-      <style>{bebopDocsPageCss}</style>
+      <style>{headlessDocsPageCss}</style>
       <Title />
       <Subtitle />
       <Description />
+      <aside style={disclaimerStyle} role="note">
+        <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is a
+        demonstration theme — feel free to swap it out with your own design system.
+      </aside>
 
       {primaryStory && (
         <>
@@ -98,7 +114,7 @@ export const BebopDocsPage: React.FC = () => {
           </HeaderMdx>
           <Anchor storyId={primaryStory.id}>
             <Canvas of={primaryStory.moduleExport} />
-            <BebopSource of={primaryStory.moduleExport} />
+            <HeadlessSourcePanel of={primaryStory.moduleExport} />
           </Anchor>
         </>
       )}
@@ -116,7 +132,7 @@ export const BebopDocsPage: React.FC = () => {
               </HeaderMdx>
               <Description of={story.moduleExport} />
               <Canvas of={story.moduleExport} />
-              <BebopSource of={story.moduleExport} />
+              <HeadlessSourcePanel of={story.moduleExport} />
             </Anchor>
           ))}
         </>
@@ -128,18 +144,18 @@ export const BebopDocsPage: React.FC = () => {
 // We let Storybook's native "Show code" toggle render inside the Canvas
 // footer (alongside the "Open in Stackblitz" button injected by
 // `@fluentui/react-storybook-addon-export-to-sandbox`). We hide only the
-// expanded source pane it would normally reveal — `<BebopSource>` listens to
+// expanded source pane it would normally reveal — `<HeadlessSourcePanel>` listens to
 // the native toggle's clicks and renders our tabbed panel **into the same
-// canvas card** via a portal target (`.bebop-source-portal`).
+// canvas card** via a portal target (`.headless-source-portal`).
 //
 // Storybook 9 sets a fixed `height` and `overflow: hidden` on `.sbdocs-preview`
 // so its border tightly hugs the rendered story; when our panel is expanded
 // inside the same card we need to release both so the code panel can flow.
-const bebopDocsPageCss = `
-.bebop-docs-page .sbdocs-preview > *:not(.docs-story):not(.bebop-source-portal) {
+const headlessDocsPageCss = `
+.headless-docs-page .sbdocs-preview > *:not(.docs-story):not(.headless-source-portal) {
   display: none !important;
 }
-.bebop-docs-page .sbdocs-preview:has(> .bebop-source-portal:not(:empty)) {
+.headless-docs-page .sbdocs-preview:has(> .headless-source-portal:not(:empty)) {
   height: auto !important;
 }
 `;

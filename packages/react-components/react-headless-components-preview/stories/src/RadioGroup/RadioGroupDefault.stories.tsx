@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RadioGroup, Radio } from '@fluentui/react-headless-components-preview/radio-group';
 
-import styles from '../../../../../../bebop/components/radio-group.module.css';
+import styles from '../../../../../../theme/components/radio-group.module.css';
 import storySource from './RadioGroupDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 const plans = [

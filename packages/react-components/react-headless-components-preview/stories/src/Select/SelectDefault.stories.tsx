@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Select } from '@fluentui/react-headless-components-preview/select';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 
-import fieldStyles from '../../../../../../bebop/components/field.module.css';
-import styles from '../../../../../../bebop/components/select.module.css';
+import fieldStyles from '../../../../../../theme/components/field.module.css';
+import styles from '../../../../../../theme/components/select.module.css';
 import storySource from './SelectDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

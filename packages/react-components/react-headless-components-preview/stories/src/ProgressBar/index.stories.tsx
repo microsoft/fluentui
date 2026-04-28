@@ -1,7 +1,7 @@
 import { ProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 
 import descriptionMd from './ProgressBarDescription.md';
-import progressBarCss from '../../../../../../bebop/components/progress-bar.module.css?raw';
+import progressBarCss from '../../../../../../theme/components/progress-bar.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './ProgressBarDefault.stories';

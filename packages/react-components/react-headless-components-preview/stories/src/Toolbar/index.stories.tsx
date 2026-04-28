@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-headless-components-preview/toolbar';
 
 import descriptionMd from './ToolbarDescription.md';
-import toolbarCss from '../../../../../../bebop/components/toolbar.module.css?raw';
+import toolbarCss from '../../../../../../theme/components/toolbar.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './ToolbarDefault.stories';

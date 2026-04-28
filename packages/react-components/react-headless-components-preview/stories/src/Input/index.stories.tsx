@@ -1,8 +1,8 @@
 import { Input } from '@fluentui/react-headless-components-preview/input';
 
 import descriptionMd from './InputDescription.md';
-import inputCss from '../../../../../../bebop/components/input.module.css?raw';
-import chatInputCss from '../../../../../../bebop/components/chat-input.module.css?raw';
+import inputCss from '../../../../../../theme/components/input.module.css?raw';
+import chatInputCss from '../../../../../../theme/components/chat-input.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './InputDefault.stories';

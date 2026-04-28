@@ -3,7 +3,7 @@ const path = require('path');
 const rootMain = require('../../../../../.storybook/main');
 
 const repoRoot = path.resolve(__dirname, '../../../../..');
-const tokensDir = path.resolve(repoRoot, 'bebop');
+const tokensDir = path.resolve(repoRoot, 'theme');
 const headlessStoriesDir = path.resolve(__dirname, '..');
 
 /**

@@ -3,9 +3,9 @@ import { create } from 'storybook/theming';
 /**
  * Custom Storybook chrome for the headless components docsite.
  *
- * Values mirror the light-mode tokens in `bebop/tokens.css`. The Storybook
+ * Values mirror the light-mode tokens in `theme/tokens.css`. The Storybook
  * theme builds at compile time and cannot read CSS custom properties, so the
- * palette is inlined here. Update this file alongside `bebop/tokens.css` if
+ * palette is inlined here. Update this file alongside `theme/tokens.css` if
  * the design tokens shift.
  */
 const theme = create({

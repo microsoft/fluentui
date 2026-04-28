@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Input } from '@fluentui/react-headless-components-preview/input';
 import { SearchRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/input.module.css';
+import styles from '../../../../../../theme/components/input.module.css';
 import storySource from './InputBasic.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Basic = (): React.ReactNode => (

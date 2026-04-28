@@ -9,8 +9,8 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 import { Input } from '@fluentui/react-headless-components-preview/input';
 
-import styles from '../../../../../../bebop/components/dialog.module.css';
-import inputStyles from '../../../../../../bebop/components/input.module.css';
+import styles from '../../../../../../theme/components/dialog.module.css';
+import inputStyles from '../../../../../../theme/components/input.module.css';
 import storySource from './DialogNonModal.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 /**

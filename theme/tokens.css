@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------
- * Bebop design tokens
+ * Design tokens
  *
- * Mapped from FOUNDATIONS pages of the Bebop web components Figma file:
+ * Mapped from FOUNDATIONS pages of the design Figma file:
  *  - color algorithm/primitives/generics
  *  - elevation
  *  - gap & padding generics
@@ -29,7 +29,7 @@
   --text-faint: #a1a1aa;
   --text-on-accent: #ffffff;
 
-  /* accent — primary action is rich Bebop magenta on white (Figma --prmt-color-red-45) */
+  /* accent — primary action is rich the brand magenta on white (Figma --prmt-color-red-45) */
   --accent: #9b1f5a;
   --accent-strong: #7a1a4a;
   --accent-soft: #fff1f3;
