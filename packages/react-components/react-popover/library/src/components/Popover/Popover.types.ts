@@ -236,6 +236,7 @@ export type OnOpenChangeData = { open: boolean };
 export type OpenPopoverEvents =
   | MouseEvent
   | TouchEvent
+  | FocusEvent
   | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.MouseEvent<HTMLElement>;
