@@ -18,6 +18,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.71.4 ]------------------------------- -->
+## [v0.71.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.71.4) (28-04-2026)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.71.3..@fluentui/react-northstar_v0.71.4)
+
+### Fixes
+- Backport `useContextSelector` https://github.com/microsoft/fluentui/pull/36069
+
 <!--------------------------------[ v0.71.3 ]------------------------------- -->
 ## [v0.71.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.71.3) (25-02-2026)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.71.2..@fluentui/react-northstar_v0.71.3)
