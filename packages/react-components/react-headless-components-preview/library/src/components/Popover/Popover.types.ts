@@ -1,12 +1,5 @@
 import type * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentState,
-  EventData,
-  EventHandler,
-  Slot,
-  JSXElement,
-} from '@fluentui/react-utilities';
+import type { EventData, EventHandler, JSXElement } from '@fluentui/react-utilities';
 import type { PositioningShorthand, PositioningReturn } from '../../hooks/usePositioning';
 
 /**
@@ -79,14 +72,6 @@ export type PopoverProps = {
   withArrow?: boolean;
 
   /**
-   * Reserved for the upcoming focus-management iteration. Currently inert —
-   * the surface no longer auto-focuses on open.
-   *
-   * @default false
-   */
-  disableAutoFocus?: boolean;
-
-  /**
    * Render inline instead of using native popover top-layer.
    * @default false
    */
@@ -105,10 +90,7 @@ export type PopoverProps = {
  * Popover State
  */
 export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
-  Pick<
-    PopoverProps,
-    'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow' | 'disableAutoFocus' | 'mountNode'
-  > & {
+  Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow' | 'mountNode'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React.RefObject<HTMLElement | null>;
@@ -119,43 +101,8 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
     contextTarget: { x: number; y: number } | undefined;
     setContextTarget: (target: { x: number; y: number } | undefined) => void;
     positioning: PositioningReturn;
+    surfaceId: string;
   };
-
-/**
- * PopoverTrigger Props
- */
-export type PopoverTriggerProps = {
-  children: React.ReactElement;
-  /**
-   * Disable ARIA button enhancement on the trigger.
-   * @default false
-   */
-  disableButtonEnhancement?: boolean;
-};
-
-/**
- * PopoverTrigger State
- */
-export type PopoverTriggerState = {
-  children: React.ReactElement | null;
-};
-
-/**
- * PopoverSurface Slots
- */
-export type PopoverSurfaceSlots = {
-  root: Slot<'div'>;
-};
-
-export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
-
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
-  inline: boolean;
-  withArrow: boolean | undefined;
-  arrowRef: React.RefObject<HTMLDivElement | null>;
-  mountNode: HTMLElement | null | undefined;
-  'data-open': string;
-};
 
 /**
  * Context shared between Popover and its children.
@@ -170,10 +117,10 @@ export type PopoverContextValue = Pick<
   | 'arrowRef'
   | 'openOnHover'
   | 'openOnContext'
-  | 'disableAutoFocus'
   | 'withArrow'
   | 'inline'
   | 'mountNode'
+  | 'surfaceId'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;

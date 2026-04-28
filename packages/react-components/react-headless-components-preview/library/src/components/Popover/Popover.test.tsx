@@ -177,10 +177,6 @@ describe('Popover', () => {
   });
 
   it('mirrors a browser-driven `toggle` event into React state and closes the surface', () => {
-    // Light dismiss (Escape, click-outside, popover-stack peer dismissal) is
-    // handled by the browser in `popover="auto"` mode and reaches React via
-    // the surface's `toggle` event. JSDOM doesn't simulate the popover dismiss
-    // algorithm, so we dispatch the event manually to verify the listener.
     const { getByRole, queryByText } = render(
       <Popover defaultOpen>
         <PopoverTrigger>

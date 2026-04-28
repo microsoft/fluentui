@@ -94,9 +94,6 @@ describe('PopoverSurface', () => {
   });
 
   it('mirrors a browser-driven `toggle` event into onOpenChange', () => {
-    // Browser owns light dismiss in `popover="auto"` mode and signals it via
-    // `toggle`. JSDOM doesn't simulate the dismiss algorithm, so we dispatch
-    // the event manually to verify our listener.
     const onOpenChange = jest.fn();
 
     const { getByRole } = render(
@@ -127,7 +124,6 @@ describe('PopoverSurface', () => {
     );
 
     const surface = getByRole('group');
-    // Arrow is the first child div before content
     expect(surface.firstElementChild?.tagName).toBe('DIV');
   });
 

@@ -1,14 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { useControllableState, useEventCallback, useTimeout } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
 
-type ToggleEventLike = Event & { newState?: 'open' | 'closed' };
+type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
 /**
  * Returns the state for a Popover component.
@@ -19,8 +19,6 @@ type ToggleEventLike = Event & { newState?: 'open' | 'closed' };
  * `onOpenChange`, so controlled consumers stay in sync with what the
  * browser does.
  *
- * Open paths (click, hover, context-menu, programmatic `open`) still flow
- * through React. Close paths defer to the browser.
  */
 export const usePopover = (props: PopoverProps): PopoverState => {
   const {
@@ -28,7 +26,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnContext = false,
     mouseLeaveDelay = 500,
     withArrow = false,
-    disableAutoFocus = false,
     inline = false,
     mountNode,
   } = props;
@@ -81,23 +78,22 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const contentRef = React.useRef<HTMLElement>(null);
   const arrowRef = React.useRef<HTMLDivElement>(null);
 
+  const surfaceId = useId('fui-popover-surface-');
+
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
-  // Skip the no-op transition the browser fires for our own `showPopover()`
-  // call (newState='open' while React already has `open=true`).
   const onSurfaceToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEventLike;
+    const toggle = event as ToggleEvent;
     const nextOpen = toggle.newState === 'open';
+
     if (nextOpen === open) {
       return;
     }
+
     setOpenState(nextOpen);
     props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
   });
 
-  // The surface is unmounted while closed (`state.open ? popoverSurface : null`),
-  // so this effect must re-run when `open` flips to attach `showPopover()`
-  // and the `toggle` listener to the freshly-mounted surface element.
   React.useEffect(() => {
     const surface = contentRef.current;
 
@@ -157,13 +153,13 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnHover,
     openOnContext,
     withArrow,
-    disableAutoFocus,
     inline,
     mountNode,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
     positioning,
+    surfaceId,
   };
 };
 
@@ -177,11 +173,11 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     arrowRef,
     openOnHover,
     openOnContext,
-    disableAutoFocus,
     withArrow,
     inline,
     mountNode,
     positioning,
+    surfaceId,
   } = state;
 
   return {
@@ -194,7 +190,6 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       arrowRef,
       openOnHover,
       openOnContext,
-      disableAutoFocus,
       withArrow,
       inline,
       mountNode,
@@ -202,6 +197,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,
       },
+      surfaceId,
     },
   };
 };

@@ -10,6 +10,7 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { usePopoverContext } from '../popoverContext';
 import { stringifyDataAttribute } from '../../../utils';
@@ -30,12 +31,22 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
   const positioningCtx = usePopoverContext(context => context.positioning);
+  const surfaceId = usePopoverContext(context => context.surfaceId);
+
+  const { targetDocument } = useFluent();
 
   const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnContext) {
-      e.preventDefault();
-      setOpen(e, true);
+    if (!openOnContext || !targetDocument) {
+      return;
     }
+
+    e.preventDefault();
+    const nativeEvent = e.nativeEvent;
+    // Defer to trailing `pointerup` so popover="auto" light-dismiss doesn't treat it as outside-click.
+    targetDocument.addEventListener('pointerup', () => setOpen(nativeEvent, true), {
+      once: true,
+      capture: true,
+    });
   };
 
   const onClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -68,6 +79,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const triggerChildProps = {
     'aria-expanded': `${open}` as 'true' | 'false',
     'aria-haspopup': 'true' as const,
+    'aria-details': open ? surfaceId : undefined,
     'data-open': stringifyDataAttribute(open),
     ...child?.props,
     onMouseEnter: useEventCallback(

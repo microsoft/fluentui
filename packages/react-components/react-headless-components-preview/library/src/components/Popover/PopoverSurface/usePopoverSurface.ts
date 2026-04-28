@@ -24,6 +24,7 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const open = usePopoverContext(context => context.open);
   const mountNode = usePopoverContext(context => context.mountNode);
   const positioningCtx = usePopoverContext(context => context.positioning);
+  const surfaceId = usePopoverContext(context => context.surfaceId);
 
   const state: PopoverSurfaceState = {
     inline,
@@ -35,6 +36,7 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDivElement>,
         role: 'group',
+        id: surfaceId,
         ...props,
         'data-popover-surface': '',
         'data-open': stringifyDataAttribute(open),

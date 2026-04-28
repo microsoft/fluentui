@@ -17,7 +17,6 @@ const popoverContextDefaultValue: PopoverContextValue = {
   arrowRef: { current: null },
   openOnContext: false,
   openOnHover: false,
-  disableAutoFocus: false,
   withArrow: false,
   inline: false,
   mountNode: null,
@@ -25,6 +24,7 @@ const popoverContextDefaultValue: PopoverContextValue = {
     targetRef: () => undefined,
     containerRef: () => undefined,
   },
+  surfaceId: '',
 };
 
 export const PopoverProvider = PopoverContext.Provider;

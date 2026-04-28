@@ -24,19 +24,18 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 ### `Popover`
 
-| Prop               | Type                                                        | Default     | Description                                                                                                                  |
-| ------------------ | ----------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `open`             | `boolean`                                                   | `undefined` | Controlled: whether the surface is visible. Omit for uncontrolled.                                                           |
-| `defaultOpen`      | `boolean`                                                   | `false`     | Uncontrolled: initial visibility.                                                                                            |
-| `onOpenChange`     | `(e, data: { open: boolean; type: string; event }) => void` | —           | Fires whenever the surface wants to open or close. Always paired with the originating event and its `type` (click/key/etc.). |
-| `openOnHover`      | `boolean`                                                   | `false`     | Open on `mouseenter` of the trigger; close on `mouseleave` (with delay).                                                     |
-| `mouseLeaveDelay`  | `number` (ms)                                               | `500`       | Delay before closing when hover leaves, giving the user time to move into the surface.                                       |
-| `openOnContext`    | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
-| `disableAutoFocus` | `boolean`                                                   | `false`     | Reserved for the upcoming focus-management iteration. Currently inert — the surface no longer auto-focuses on open.          |
-| `withArrow`        | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
-| `inline`           | `boolean`                                                   | `false`     | Render the surface in DOM order (no top-layer elevation, no `popover` attribute, no browser light dismiss).                  |
-| `mountNode`        | `HTMLElement \| null`                                       | `null`      | Optional portal target for the surface. When omitted, the surface renders in place (top layer if not `inline`).              |
-| `positioning`      | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
+| Prop              | Type                                                        | Default     | Description                                                                                                                  |
+| ----------------- | ----------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `open`            | `boolean`                                                   | `undefined` | Controlled: whether the surface is visible. Omit for uncontrolled.                                                           |
+| `defaultOpen`     | `boolean`                                                   | `false`     | Uncontrolled: initial visibility.                                                                                            |
+| `onOpenChange`    | `(e, data: { open: boolean; type: string; event }) => void` | —           | Fires whenever the surface wants to open or close. Always paired with the originating event and its `type` (click/key/etc.). |
+| `openOnHover`     | `boolean`                                                   | `false`     | Open on `mouseenter` of the trigger; close on `mouseleave` (with delay).                                                     |
+| `mouseLeaveDelay` | `number` (ms)                                               | `500`       | Delay before closing when hover leaves, giving the user time to move into the surface.                                       |
+| `openOnContext`   | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
+| `withArrow`       | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
+| `inline`          | `boolean`                                                   | `false`     | Render the surface in DOM order (no top-layer elevation, no `popover` attribute, no browser light dismiss).                  |
+| `mountNode`       | `HTMLElement \| null`                                       | `null`      | Optional portal target for the surface. When omitted, the surface renders in place (top layer if not `inline`).              |
+| `positioning`     | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
 
 ### `PopoverTrigger`
 
@@ -99,12 +98,14 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 <button
   aria-expanded={open ? 'true' : 'false'}
   aria-haspopup="true"
+  aria-details={open ? surfaceId : undefined}
   data-open={open || undefined}
   // click / keydown / context / hover handlers merged onto the cloned child
 />
 
 // Surface (inline mode)
 <div
+  id={surfaceId}
   role="group"
   data-popover-surface=""
   data-placement="below-start"   // requested placement; live-updated by observer
@@ -113,6 +114,7 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 
 // Surface (top layer mode — non-inline, default)
 <div
+  id={surfaceId}
   popover="auto"
   role="group"
   data-popover-surface=""
@@ -120,6 +122,23 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
   data-open="true"
 />
 ```
+
+### Trigger ↔ surface ARIA wiring
+
+The HTML Popover spec sets up an **implicit `aria-details` / `aria-expanded` relationship** between an invoker (a button with the `popovertarget` attribute) and its popover. Headless Popover does **not** use `popovertarget` because:
+
+- `popovertarget` is ignored on non-button elements (`<a>`, custom `<div>` triggers, etc.) per the HTML spec, so it cannot serve as the universal wiring path.
+- Hover-to-open, context-menu-open, programmatic open, and trigger-less open all require an imperative `showPopover()` call, so the browser's invoker-driven open path is unused for those flows anyway.
+- Maintaining two parallel open paths (browser-driven via `popovertarget`, React-driven via `showPopover()`) within a single component would force per-trigger branching and produce inconsistent ARIA across instances.
+
+Instead, the relationship is wired **explicitly** and uniformly:
+
+- `usePopover` generates a stable id via `useId('fui-popover-surface-')` and stores it on context as `surfaceId`.
+- `usePopoverSurface` writes `id={surfaceId}` on the surface root **before** spreading `props`, so consumer-supplied `id` still wins (consumers who override `id` opt out of the implicit wiring).
+- `usePopoverTrigger` writes `aria-details={surfaceId}` on the cloned trigger **only while `open` is true**, since the surface only mounts while open (`renderPopover.tsx`). When closed, `aria-details` is omitted to avoid pointing at a non-existent element.
+- `aria-expanded` is set on every render to reflect `open` (already in place), and `aria-haspopup="true"` is always on.
+
+This matches the behavioural guarantees consumers would get from `popovertarget` (for the ARIA-relationship piece).
 
 ### Role selection
 
@@ -129,10 +148,59 @@ The surface always renders as **`role="group"`** in this iteration — a non-mod
 
 This iteration ships **no built-in focus management**:
 
-- **No auto-focus on open.** The browser handles focus naturally. Consumers can call `.focus()` on the surface or a descendant if needed.
+- **No auto-focus on open.** Whatever was focused before `open` flipped to `true` remains focused. Consumers who need focus inside the surface (e.g., for menu/dialog-style flows) should call `.focus()` on the desired element themselves, typically in their `onOpenChange` handler or in an effect keyed on the popover's open state.
 - **No focus trap.** Tab / Shift+Tab follow the document's normal tab order. With a top-layer surface, focus may move to elements behind the surface — expected for a non-modal popover.
-- **Focus restore on dismiss is browser-driven.** `popover="auto"` restores focus to the invoker element when the browser dismisses the surface (Escape, click-outside). Hover-leave and programmatic closes leave focus wherever the interaction left it.
-- **`disableAutoFocus`** is preserved on `PopoverProps` for API stability but is currently inert. It will become meaningful again together with the upcoming focus hook.
+
+### Auto-focus on open — not currently supported
+
+The previously-reserved `disableAutoFocus` prop has been **removed** from `PopoverProps`. The component does not move focus on open, so an opt-out flag is unnecessary. A future iteration will introduce a focus-management hook covering both auto-focus on open and focus trap; an opt-in/opt-out prop (likely with a different name reflecting the broader semantics) will arrive together with that hook.
+
+### Focus restore on dismiss — native only
+
+The component does **not** supplement the browser's focus restore. What `popover="auto"` provides is what the consumer gets. Per the HTML Popover spec, the `hide popover` algorithm restores focus to a stored `previously focused element` — but that field is set only for the **first popover in the auto stack** (the spec text states: _"This ensures that focus is returned to the previously-focused element only for the first popover in a stack."_), and only when focus is currently inside the dismissing surface, and only when the popover is dismissed via the spec's hide algorithm (Escape close-watcher, click-outside light-dismiss, peer-auto dismissal, an explicit `hidePopover()` call).
+
+Empirically verified in Chromium (Cypress default). Other engines may differ; the behaviour described below is what the spec mandates and what the test suite exercises.
+
+#### What works
+
+| Scenario                                                                              | Mechanism                               |
+| ------------------------------------------------------------------------------------- | --------------------------------------- |
+| Single (non-nested) popover with focus inside the surface, dismissed by Escape        | Spec's `hide popover` restore           |
+| Single (non-nested) popover with focus inside the surface, dismissed by click-outside | Spec's `hide popover` restore           |
+| Single (non-nested) popover dismissed by opening an unrelated `popover="auto"` peer   | Spec's peer-dismissal hide-with-restore |
+
+In each of these the spec sets `previously focused element` at open time to whatever `document.activeElement` was when `showPopover()` ran, and restores to it on dismiss when focus is currently inside the dismissing surface. For click/keyboard opens on a focusable trigger that is the trigger itself; for hover/context/programmatic opens it is whatever happened to be focused at that moment.
+
+#### What is not currently supported
+
+Each entry below is a known gap. Where a regression placeholder exists in `Popover.cy.tsx`, it is `it.skip`'d; otherwise the gap is documented here without a tracking test. The component intentionally does not work around these limitations in this iteration; consumers needing focus restore for these flows should manage it themselves (see [Consumer guidance](#consumer-guidance-for-unsupported-scenarios) below).
+
+| Gap                                                        | Why                                                                                                                                                                                                                                                                                          | Tracked by                                            |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Nested popovers (any depth, Esc / click-outside)           | The HTML Popover spec only stores `previously focused element` for the topmost popover in the auto stack. For nested popovers `previously focused element` is null and the spec's `hide popover` algorithm performs no focus restore. Focus inside a nested surface at dismiss time is lost. | _(no Cypress test — no formal contract to verify)_    |
+| Programmatic close (controlled `open` flip to `false`)     | React unmounts the surface; the spec's `hide popover` algorithm never runs.                                                                                                                                                                                                                  | `programmatic close: should restore focus to trigger` |
+| Hover-leave close (`openOnHover` `mouseLeaveDelay` expiry) | React unmounts the surface; the spec's `hide popover` algorithm never runs.                                                                                                                                                                                                                  | `hover-leave close: should restore focus to trigger`  |
+| Hover-open + Esc dismiss                                   | Spec's snapshot at open is the pre-hover focus, not the trigger (mouse-hover doesn't move focus). Restore lands on the wrong element when it fires.                                                                                                                                          | `hover-open + Esc: should restore focus to trigger`   |
+| Context-menu open (`openOnContext`) + Esc dismiss          | `contextmenu` doesn't move focus; spec's snapshot is whatever was focused before the right-click, not the trigger.                                                                                                                                                                           | `context-open + Esc: should restore focus to trigger` |
+| Inline mode (`inline={true}`)                              | Inline popovers don't enter the top layer and don't go through the spec's open/close machinery — no restore at all.                                                                                                                                                                          | `inline: should restore focus to trigger on close`    |
+
+#### Consumer guidance for unsupported scenarios
+
+Track focus before opening and restore in `onOpenChange` when `data.open === false`:
+
+```tsx
+const triggerRef = React.useRef<HTMLButtonElement>(null);
+<Popover
+  onOpenChange={(_, data) => {
+    if (!data.open) triggerRef.current?.focus();
+  }}
+>
+  <PopoverTrigger>
+    <button ref={triggerRef}>Trigger</button>
+  </PopoverTrigger>
+  <PopoverSurface>…</PopoverSurface>
+</Popover>;
+```
 
 ### Labeling
 
@@ -179,15 +247,28 @@ The surface is rendered with `popover="auto"`, so the **browser owns light dismi
 
 ### Open paths (React-driven)
 
-| Source                   | Mechanism                                                                                                                  |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Click trigger            | `PopoverTrigger`'s cloned `onClick` calls `toggleOpen` → `setOpen(true)`.                                                  |
-| Keyboard (Enter / Space) | `useARIAButtonProps` synthesizes a click for non-`<button>` triggers; native buttons activate normally.                    |
-| Hover                    | `openOnHover={true}` → `mouseenter` on trigger or surface calls `setOpen(true)`. Closing waits `mouseLeaveDelay` ms.       |
-| Context menu             | `openOnContext={true}` → `contextmenu` on trigger calls `setOpen(true)` and stores the cursor `{x, y}` as `contextTarget`. |
-| Programmatic             | Consumer sets `open={true}` or uses `defaultOpen` / `positioningRef.setTarget`.                                            |
+| Source                   | Mechanism                                                                                                                                                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Click trigger            | `PopoverTrigger`'s cloned `onClick` calls `toggleOpen` → `setOpen(true)`.                                                                                                                                                                           |
+| Keyboard (Enter / Space) | `useARIAButtonProps` synthesizes a click for non-`<button>` triggers; native buttons activate normally.                                                                                                                                             |
+| Hover                    | `openOnHover={true}` → `mouseenter` on trigger or surface calls `setOpen(true)`. Closing waits `mouseLeaveDelay` ms.                                                                                                                                |
+| Context menu             | `openOnContext={true}` → `contextmenu` on trigger waits for the trailing right-click events to drain (see [Context-menu open deferral](#context-menu-open-deferral)), then calls `setOpen(true)` and stores the cursor `{x, y}` as `contextTarget`. |
+| Programmatic             | Consumer sets `open={true}` or uses `defaultOpen` / `positioningRef.setTarget`.                                                                                                                                                                     |
 
 When `open` flips to `true`, `usePopover` calls `surface.showPopover()` and the surface enters the top layer with `popover="auto"`.
+
+#### Context-menu open deferral
+
+`openOnContext` cannot call `setOpen(true)` synchronously from the `contextmenu` handler. The right-click sequence (`pointerdown` → `contextmenu` → `pointerup` → `auxclick`, plus on some platforms a synthetic `click`) is not finished when `contextmenu` fires. Because the surface is rendered with `popover="auto"` and is opened **imperatively** via `showPopover()` — i.e. without an invoker association (no `popovertarget` attribute on the trigger) — any of the trailing pointer/click events that arrive after `showPopover()` are walked by the browser's light-dismiss algorithm, found not to target the popover or its (non-existent) invoker, and treated as outside-clicks. The browser then fires `toggle({ newState: 'closed' })` and the surface snaps shut immediately after opening.
+
+To avoid this, `PopoverTrigger`'s `onContextMenu` handler:
+
+1. Calls `e.preventDefault()` to suppress the native menu.
+2. Registers two one-shot capture-phase listeners on `targetDocument`: `auxclick` and `pointerup`. (`pointerup` is the fallback path for engines that don't dispatch `auxclick` after a preventDefaulted `contextmenu`.)
+3. Whichever listener fires first removes the other, then `requestAnimationFrame`s a call to `setOpen(nativeEvent, true)` so the open is committed only after the right-click sequence has fully drained and after one paint frame.
+4. If `targetDocument` / its `defaultView` is unavailable (SSR, detached DOM), falls back to a synchronous `setOpen(e, true)`.
+
+A simpler single-`requestAnimationFrame` defer is **insufficient**: the trailing pointer/click events can land in the same task as the React commit + effect, so `showPopover()` ends up running before the sequence finishes. A future iteration that adopts `popovertarget` invoker association on the trigger would let us drop this deferral entirely, since the browser would then recognize the trigger's events as belonging to the popover.
 
 ### Dismiss paths (browser-driven, then mirrored)
 
