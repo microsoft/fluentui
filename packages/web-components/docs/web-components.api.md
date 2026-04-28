@@ -437,7 +437,6 @@ export class BaseAccordionItem extends FASTElement {
     expandbutton: HTMLElement;
     expanded: boolean;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
 }
 
 // @public

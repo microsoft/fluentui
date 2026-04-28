@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,39 +18,39 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-accordion": "^9.10.0",
-    "@fluentui/react-avatar": "^9.10.4",
-    "@fluentui/react-badge": "^9.5.1",
-    "@fluentui/react-button": "^9.9.0",
-    "@fluentui/react-breadcrumb": "^9.4.0",
-    "@fluentui/react-checkbox": "^9.5.17",
-    "@fluentui/react-dialog": "^9.17.3",
-    "@fluentui/react-divider": "^9.7.0",
-    "@fluentui/react-field": "^9.4.16",
-    "@fluentui/react-image": "^9.4.0",
-    "@fluentui/react-input": "^9.8.0",
-    "@fluentui/react-label": "^9.3.15",
-    "@fluentui/react-link": "^9.8.0",
-    "@fluentui/react-message-bar": "^9.6.23",
-    "@fluentui/react-persona": "^9.7.1",
-    "@fluentui/react-portal": "^9.8.11",
-    "@fluentui/react-progress": "^9.4.17",
-    "@fluentui/react-provider": "^9.22.15",
-    "@fluentui/react-radio": "^9.6.0",
-    "@fluentui/react-rating": "^9.4.0",
-    "@fluentui/react-search": "^9.4.0",
-    "@fluentui/react-select": "^9.4.16",
+    "@fluentui/react-accordion": "^9.11.0",
+    "@fluentui/react-avatar": "^9.11.1",
+    "@fluentui/react-badge": "^9.5.2",
+    "@fluentui/react-button": "^9.9.1",
+    "@fluentui/react-breadcrumb": "^9.4.1",
+    "@fluentui/react-checkbox": "^9.6.1",
+    "@fluentui/react-dialog": "^9.18.0",
+    "@fluentui/react-divider": "^9.7.1",
+    "@fluentui/react-field": "^9.5.1",
+    "@fluentui/react-image": "^9.4.1",
+    "@fluentui/react-input": "^9.8.2",
+    "@fluentui/react-label": "^9.4.1",
+    "@fluentui/react-link": "^9.8.1",
+    "@fluentui/react-message-bar": "^9.7.0",
+    "@fluentui/react-persona": "^9.7.3",
+    "@fluentui/react-portal": "^9.8.12",
+    "@fluentui/react-progress": "^9.5.1",
+    "@fluentui/react-provider": "^9.22.16",
+    "@fluentui/react-radio": "^9.6.2",
+    "@fluentui/react-rating": "^9.4.1",
+    "@fluentui/react-search": "^9.4.2",
+    "@fluentui/react-select": "^9.5.1",
     "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-skeleton": "^9.7.0",
-    "@fluentui/react-slider": "^9.6.0",
-    "@fluentui/react-spinbutton": "^9.6.0",
-    "@fluentui/react-spinner": "^9.8.0",
-    "@fluentui/react-switch": "^9.7.0",
-    "@fluentui/react-tabs": "^9.11.2",
-    "@fluentui/react-tags": "^9.7.19",
-    "@fluentui/react-textarea": "^9.7.0",
-    "@fluentui/react-toolbar": "^9.7.7",
-    "@fluentui/react-utilities": "^9.26.2",
+    "@fluentui/react-skeleton": "^9.7.2",
+    "@fluentui/react-slider": "^9.6.2",
+    "@fluentui/react-spinbutton": "^9.6.2",
+    "@fluentui/react-spinner": "^9.8.2",
+    "@fluentui/react-switch": "^9.7.2",
+    "@fluentui/react-tabs": "^9.12.1",
+    "@fluentui/react-tags": "^9.8.1",
+    "@fluentui/react-textarea": "^9.7.2",
+    "@fluentui/react-toolbar": "^9.8.0",
+    "@fluentui/react-utilities": "^9.26.3",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
@@ -61,11 +60,173 @@
     "react-dom": ">=16.14.0 <20.0.0"
   },
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+    "./accordion": {
+      "types": "./dist/accordion.d.ts",
+      "node": "./lib-commonjs/accordion.js",
+      "import": "./lib/accordion.js",
+      "require": "./lib-commonjs/accordion.js"
+    },
+    "./avatar": {
+      "types": "./dist/avatar.d.ts",
+      "node": "./lib-commonjs/avatar.js",
+      "import": "./lib/avatar.js",
+      "require": "./lib-commonjs/avatar.js"
+    },
+    "./badge": {
+      "types": "./dist/badge.d.ts",
+      "node": "./lib-commonjs/badge.js",
+      "import": "./lib/badge.js",
+      "require": "./lib-commonjs/badge.js"
+    },
+    "./breadcrumb": {
+      "types": "./dist/breadcrumb.d.ts",
+      "node": "./lib-commonjs/breadcrumb.js",
+      "import": "./lib/breadcrumb.js",
+      "require": "./lib-commonjs/breadcrumb.js"
+    },
+    "./button": {
+      "types": "./dist/button.d.ts",
+      "node": "./lib-commonjs/button.js",
+      "import": "./lib/button.js",
+      "require": "./lib-commonjs/button.js"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox.d.ts",
+      "node": "./lib-commonjs/checkbox.js",
+      "import": "./lib/checkbox.js",
+      "require": "./lib-commonjs/checkbox.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog.d.ts",
+      "node": "./lib-commonjs/dialog.js",
+      "import": "./lib/dialog.js",
+      "require": "./lib-commonjs/dialog.js"
+    },
+    "./divider": {
+      "types": "./dist/divider.d.ts",
+      "node": "./lib-commonjs/divider.js",
+      "import": "./lib/divider.js",
+      "require": "./lib-commonjs/divider.js"
+    },
+    "./field": {
+      "types": "./dist/field.d.ts",
+      "node": "./lib-commonjs/field.js",
+      "import": "./lib/field.js",
+      "require": "./lib-commonjs/field.js"
+    },
+    "./input": {
+      "types": "./dist/input.d.ts",
+      "node": "./lib-commonjs/input.js",
+      "import": "./lib/input.js",
+      "require": "./lib-commonjs/input.js"
+    },
+    "./link": {
+      "types": "./dist/link.d.ts",
+      "node": "./lib-commonjs/link.js",
+      "import": "./lib/link.js",
+      "require": "./lib-commonjs/link.js"
+    },
+    "./message-bar": {
+      "types": "./dist/message-bar.d.ts",
+      "node": "./lib-commonjs/message-bar.js",
+      "import": "./lib/message-bar.js",
+      "require": "./lib-commonjs/message-bar.js"
+    },
+    "./progress-bar": {
+      "types": "./dist/progress-bar.d.ts",
+      "node": "./lib-commonjs/progress-bar.js",
+      "import": "./lib/progress-bar.js",
+      "require": "./lib-commonjs/progress-bar.js"
+    },
+    "./provider": {
+      "types": "./dist/provider.d.ts",
+      "node": "./lib-commonjs/provider.js",
+      "import": "./lib/provider.js",
+      "require": "./lib-commonjs/provider.js"
+    },
+    "./radio-group": {
+      "types": "./dist/radio-group.d.ts",
+      "node": "./lib-commonjs/radio-group.js",
+      "import": "./lib/radio-group.js",
+      "require": "./lib-commonjs/radio-group.js"
+    },
+    "./rating": {
+      "types": "./dist/rating.d.ts",
+      "node": "./lib-commonjs/rating.js",
+      "import": "./lib/rating.js",
+      "require": "./lib-commonjs/rating.js"
+    },
+    "./rating-display": {
+      "types": "./dist/rating-display.d.ts",
+      "node": "./lib-commonjs/rating-display.js",
+      "import": "./lib/rating-display.js",
+      "require": "./lib-commonjs/rating-display.js"
+    },
+    "./search-box": {
+      "types": "./dist/search-box.d.ts",
+      "node": "./lib-commonjs/search-box.js",
+      "import": "./lib/search-box.js",
+      "require": "./lib-commonjs/search-box.js"
+    },
+    "./select": {
+      "types": "./dist/select.d.ts",
+      "node": "./lib-commonjs/select.js",
+      "import": "./lib/select.js",
+      "require": "./lib-commonjs/select.js"
+    },
+    "./skeleton": {
+      "types": "./dist/skeleton.d.ts",
+      "node": "./lib-commonjs/skeleton.js",
+      "import": "./lib/skeleton.js",
+      "require": "./lib-commonjs/skeleton.js"
+    },
+    "./slider": {
+      "types": "./dist/slider.d.ts",
+      "node": "./lib-commonjs/slider.js",
+      "import": "./lib/slider.js",
+      "require": "./lib-commonjs/slider.js"
+    },
+    "./spin-button": {
+      "types": "./dist/spin-button.d.ts",
+      "node": "./lib-commonjs/spin-button.js",
+      "import": "./lib/spin-button.js",
+      "require": "./lib-commonjs/spin-button.js"
+    },
+    "./spinner": {
+      "types": "./dist/spinner.d.ts",
+      "node": "./lib-commonjs/spinner.js",
+      "import": "./lib/spinner.js",
+      "require": "./lib-commonjs/spinner.js"
+    },
+    "./switch": {
+      "types": "./dist/switch.d.ts",
+      "node": "./lib-commonjs/switch.js",
+      "import": "./lib/switch.js",
+      "require": "./lib-commonjs/switch.js"
+    },
+    "./tab-list": {
+      "types": "./dist/tab-list.d.ts",
+      "node": "./lib-commonjs/tab-list.js",
+      "import": "./lib/tab-list.js",
+      "require": "./lib-commonjs/tab-list.js"
+    },
+    "./textarea": {
+      "types": "./dist/textarea.d.ts",
+      "node": "./lib-commonjs/textarea.js",
+      "import": "./lib/textarea.js",
+      "require": "./lib-commonjs/textarea.js"
+    },
+    "./toggle-button": {
+      "types": "./dist/toggle-button.d.ts",
+      "node": "./lib-commonjs/toggle-button.js",
+      "import": "./lib/toggle-button.js",
+      "require": "./lib-commonjs/toggle-button.js"
+    },
+    "./toolbar": {
+      "types": "./dist/toolbar.d.ts",
+      "node": "./lib-commonjs/toolbar.js",
+      "import": "./lib/toolbar.js",
+      "require": "./lib-commonjs/toolbar.js"
     },
     "./package.json": "./package.json"
   },

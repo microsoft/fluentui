@@ -5,7 +5,7 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/dialog';
 
 import descriptionMd from './DialogDescription.md';
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { MessageBar, MessageBarTitle, MessageBarBody, Link } from '@fluentui/react-headless-components-preview';
+import { Link } from '@fluentui/react-headless-components-preview/link';
+import { MessageBar, MessageBarTitle, MessageBarBody } from '@fluentui/react-headless-components-preview/message-bar';
 
 const items = [
   {

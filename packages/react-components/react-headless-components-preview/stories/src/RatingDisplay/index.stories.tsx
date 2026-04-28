@@ -1,4 +1,4 @@
-import { RatingDisplay } from '@fluentui/react-headless-components-preview';
+import { RatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 
 import descriptionMd from './RatingDisplayDescription.md';
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { Button } from '@fluentui/react-headless-components-preview/button';
+import { Link } from '@fluentui/react-headless-components-preview/link';
 import {
-  Button,
-  Link,
   MessageBar,
   MessageBarActions,
   MessageBarBody,
   MessageBarTitle,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/message-bar';
 
 const classes = {
   messageBar:

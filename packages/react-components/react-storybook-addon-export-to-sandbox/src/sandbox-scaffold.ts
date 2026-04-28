@@ -1,5 +1,6 @@
 import dedent from 'dedent';
 
+import type { SandboxContext } from './public-types';
 import type { Data } from './sandbox-utils';
 import { serializeJson } from './utils';
 
@@ -11,7 +12,7 @@ export const scaffold = {
       throw new Error('vite is not supported on codesandbox-browser');
     }
 
-    const base = {
+    const base: Record<string, string> = {
       'index.html': Vite.getHTML(),
       'src/App.tsx': Vite.getApp(data),
       'src/index.tsx': Vite.getRootIndex(),
@@ -27,10 +28,10 @@ export const scaffold = {
     if (data.provider === 'codesandbox-cloud') {
       Object.assign(base, getCodesandboxConfig('vite'));
     }
-    return base;
+    return applyTransform(base, data);
   },
   cra: (data: Data): Record<string, string> => {
-    const base = {
+    const base: Record<string, string> = {
       'public/index.html': CRA.getHTML(),
       'src/App.tsx': CRA.getApp(data),
       'src/index.tsx': CRA.getRootIndex(),
@@ -45,9 +46,26 @@ export const scaffold = {
       Object.assign(base, getCodesandboxConfig('cra'));
     }
 
-    return base;
+    return applyTransform(base, data);
   },
 };
+
+function applyTransform(base: Record<string, string>, data: Data): Record<string, string> {
+  if (!data.transformFiles) {
+    return base;
+  }
+  const ctx: SandboxContext = {
+    provider: data.provider,
+    bundler: data.bundler,
+    storyExportToken: data.storyExportToken,
+    storyFile: data.storyFile,
+    dependencies: data.dependencies,
+    requiredDependencies: data.requiredDependencies,
+    optionalDependencies: data.optionalDependencies,
+    devDependencies: data.devDependencies,
+  };
+  return data.transformFiles(base, ctx);
+}
 
 const Vite = {
   getHTML: () => dedent`
@@ -137,6 +155,7 @@ const Vite = {
         ...commonDevDeps,
         '@vitejs/plugin-react': '^4.2.0',
         vite: '^5.0.0',
+        ...data.devDependencies,
       },
     });
   },
@@ -167,6 +186,7 @@ const CRA = {
         ...commonDevDeps,
         'react-scripts': '^5.0.0',
         '@babel/plugin-proposal-private-property-in-object': 'latest',
+        ...data.devDependencies,
       },
       scripts: {
         start: 'react-scripts start',
@@ -246,13 +266,13 @@ function getIndex() {
 }
 
 function getExample(demoData: Data) {
-  return demoData.storyFile;
+  return `${demoData.storyFile}\nexport { ${demoData.storyExportToken} as Example };\n`;
 }
 
-function getApp(data: Data) {
-  const code = dedent`
+function getApp(_data: Data) {
+  return dedent`
     import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-    import { ${data.storyExportToken} as Example } from './example';
+    import { Example } from './example';
 
     const App = () => {
         return (
@@ -264,6 +284,4 @@ function getApp(data: Data) {
 
     export default App;
   `;
-
-  return code;
 }
