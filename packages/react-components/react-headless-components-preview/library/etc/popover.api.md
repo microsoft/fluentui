@@ -132,7 +132,7 @@ export const renderPopoverTrigger: (state: PopoverTriggerState) => JSXElement | 
 // @public
 export const usePopover: (props: PopoverProps) => PopoverState;
 
-// @public
+// @public (undocumented)
 export const usePopoverAuto: (props: PopoverProps) => PopoverState;
 
 // @public
