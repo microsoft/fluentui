@@ -79,24 +79,12 @@ export type PopoverProps = {
   withArrow?: boolean;
 
   /**
-   * By default Popover focuses the first focusable element in `PopoverSurface` on open.
-   * Set this to prevent that behavior.
+   * Reserved for the upcoming focus-management iteration. Currently inert —
+   * the surface no longer auto-focuses on open.
    *
    * @default false
    */
   disableAutoFocus?: boolean;
-
-  /**
-   * Close when scrolling outside.
-   * @default false
-   */
-  closeOnScroll?: boolean;
-
-  /**
-   * Close when an iframe outside focuses.
-   * @default true
-   */
-  closeOnIframeFocus?: boolean;
 
   /**
    * Render inline instead of using native popover top-layer.
@@ -112,13 +100,6 @@ export type PopoverProps = {
    */
   mountNode?: HTMLElement | null;
 };
-
-/**
- * Native HTML Popover API mode for the surface.
- * - `'manual'` — React drives all dismissal (click-outside, scroll-outside, Escape).
- * - `'auto'` — browser drives light dismiss; React mirrors the surface's `toggle` event into state.
- */
-export type PopoverType = 'manual' | 'auto';
 
 /**
  * Popover State
@@ -138,7 +119,6 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
     contextTarget: { x: number; y: number } | undefined;
     setContextTarget: (target: { x: number; y: number } | undefined) => void;
     positioning: PositioningReturn;
-    popoverType: PopoverType;
   };
 
 /**
@@ -194,7 +174,6 @@ export type PopoverContextValue = Pick<
   | 'withArrow'
   | 'inline'
   | 'mountNode'
-  | 'popoverType'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;

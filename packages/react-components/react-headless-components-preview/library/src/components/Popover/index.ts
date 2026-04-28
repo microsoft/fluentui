@@ -1,15 +1,11 @@
 export { Popover } from './Popover';
-export { PopoverAuto } from './PopoverAuto';
 export { renderPopover } from './renderPopover';
-export { usePopover } from './usePopover';
-export { usePopoverAuto } from './usePopoverAuto';
-export { usePopoverContextValues } from './usePopoverBase';
+export { usePopover, usePopoverContextValues } from './usePopover';
 export { usePopoverContext } from './popoverContext';
 export type {
   PopoverProps,
   PopoverState,
   PopoverContextValue,
-  PopoverType,
   OpenPopoverEvents,
   OnOpenChangeData,
 } from './Popover.types';

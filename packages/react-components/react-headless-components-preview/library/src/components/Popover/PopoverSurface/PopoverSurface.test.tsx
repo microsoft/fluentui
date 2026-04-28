@@ -67,7 +67,7 @@ describe('PopoverSurface', () => {
     expect(getByRole('group')).toHaveAttribute('data-open');
   });
 
-  it('has popover="manual" attribute by default', () => {
+  it('has popover="auto" attribute by default', () => {
     const { getByRole } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
@@ -77,7 +77,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('popover', 'manual');
+    expect(getByRole('group')).toHaveAttribute('popover', 'auto');
   });
 
   it('does not have popover attribute when inline', () => {
@@ -93,7 +93,10 @@ describe('PopoverSurface', () => {
     expect(getByRole('group')).not.toHaveAttribute('popover');
   });
 
-  it('closes on Escape key within surface', () => {
+  it('mirrors a browser-driven `toggle` event into onOpenChange', () => {
+    // Browser owns light dismiss in `popover="auto"` mode and signals it via
+    // `toggle`. JSDOM doesn't simulate the dismiss algorithm, so we dispatch
+    // the event manually to verify our listener.
     const onOpenChange = jest.fn();
 
     const { getByRole } = render(
@@ -105,7 +108,11 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    fireEvent.keyDown(getByRole('group'), { key: 'Escape' });
+    const surface = getByRole('group');
+    const toggleEvent = new Event('toggle');
+    (toggleEvent as unknown as { newState: string }).newState = 'closed';
+    fireEvent(surface, toggleEvent);
+
     expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
   });
 

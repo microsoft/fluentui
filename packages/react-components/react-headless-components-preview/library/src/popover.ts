@@ -1,9 +1,7 @@
 export {
   Popover,
-  PopoverAuto,
   renderPopover,
   usePopover,
-  usePopoverAuto,
   usePopoverContext,
   usePopoverContextValues,
   PopoverTrigger,
@@ -17,7 +15,6 @@ export type {
   PopoverProps,
   PopoverState,
   PopoverContextValue,
-  PopoverType,
   OpenPopoverEvents,
   OnOpenChangeData,
   PopoverTriggerProps,

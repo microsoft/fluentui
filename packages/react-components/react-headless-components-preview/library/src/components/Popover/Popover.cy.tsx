@@ -161,7 +161,7 @@ describe('Popover', () => {
       cy.get(popoverContentSelector).should('have.attr', 'data-open');
     });
 
-    it('should set popover="manual" on surface', () => {
+    it('should set popover="auto" on surface', () => {
       mount(
         <Popover>
           <PopoverTrigger disableButtonEnhancement>
@@ -172,7 +172,7 @@ describe('Popover', () => {
       );
 
       cy.get(popoverTriggerSelector).click();
-      cy.get(popoverContentSelector).should('have.attr', 'popover', 'manual');
+      cy.get(popoverContentSelector).should('have.attr', 'popover', 'auto');
     });
   });
 
@@ -241,25 +241,6 @@ describe('Popover', () => {
         .trigger('wheel')
         .get(popoverContentSelector)
         .should('not.exist');
-    });
-  });
-
-  describe('popover with closeOnScroll', () => {
-    beforeEach(() => {
-      mount(
-        <Popover closeOnScroll>
-          <PopoverTrigger disableButtonEnhancement>
-            <button>Trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface>This is a popover</PopoverSurface>
-        </Popover>,
-      );
-      cy.get('body').click('bottomRight');
-    });
-
-    it('should dismiss on scroll outside', () => {
-      cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
-      cy.get('body').trigger('wheel').get(popoverContentSelector).should('not.exist');
     });
   });
 

@@ -1,9 +1,4 @@
-import {
-  Popover,
-  PopoverAuto,
-  PopoverTrigger,
-  PopoverSurface,
-} from '@fluentui/react-headless-components-preview/popover';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
@@ -17,14 +12,13 @@ export { CustomTrigger } from './PopoverCustomTrigger.stories';
 export { WithoutTrigger } from './PopoverWithoutTrigger.stories';
 export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
 export { Nested } from './PopoverNested.stories';
-export { NestedManual } from './PopoverNestedManual.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 export { Inline } from './PopoverInline.stories';
 
 export default {
   title: 'Headless Components/Popover',
   component: Popover,
-  subcomponents: { PopoverAuto, PopoverTrigger, PopoverSurface },
+  subcomponents: { PopoverTrigger, PopoverSurface },
   parameters: {
     docs: {
       description: {

@@ -21,7 +21,6 @@ const popoverContextDefaultValue: PopoverContextValue = {
   withArrow: false,
   inline: false,
   mountNode: null,
-  popoverType: 'manual',
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,

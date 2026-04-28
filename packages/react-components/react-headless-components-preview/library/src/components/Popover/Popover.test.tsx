@@ -176,7 +176,11 @@ describe('Popover', () => {
     expect(getByRole('group')).toHaveAttribute('data-open');
   });
 
-  it('closes on Escape key', () => {
+  it('mirrors a browser-driven `toggle` event into React state and closes the surface', () => {
+    // Light dismiss (Escape, click-outside, popover-stack peer dismissal) is
+    // handled by the browser in `popover="auto"` mode and reaches React via
+    // the surface's `toggle` event. JSDOM doesn't simulate the popover dismiss
+    // algorithm, so we dispatch the event manually to verify the listener.
     const { getByRole, queryByText } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
@@ -187,12 +191,14 @@ describe('Popover', () => {
     );
 
     const surface = getByRole('group');
-    fireEvent.keyDown(surface, { key: 'Escape' });
+    const toggleEvent = new Event('toggle');
+    (toggleEvent as unknown as { newState: string }).newState = 'closed';
+    fireEvent(surface, toggleEvent);
 
     expect(queryByText('Surface')).not.toBeInTheDocument();
   });
 
-  it('sets popover="manual" on surface by default', () => {
+  it('sets popover="auto" on surface by default', () => {
     const { getByRole } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
@@ -202,7 +208,7 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('popover', 'manual');
+    expect(getByRole('group')).toHaveAttribute('popover', 'auto');
   });
 
   it('does not set popover attribute when inline', () => {
