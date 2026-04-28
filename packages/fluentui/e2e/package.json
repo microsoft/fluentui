@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.71.2",
+  "version": "0.71.3",
   "private": true,
   "license": "MIT",
   "dependencies": {
