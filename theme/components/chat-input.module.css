@@ -1,4 +1,4 @@
-/* Bebop chat-input — borderless field on a soft surface,
+/* chat-input — borderless field on a soft surface,
    with a hairline bottom rule and inline icon buttons.
 
    Layout: [+] [text  · placeholder text]    [mic] [waveform | send]
@@ -101,7 +101,7 @@
 }
 
 /* Underline variant — borderless, thin bottom rule (matches the larger
-   Bebop chat input shown in the canvas screenshot). */
+   chat input shown in the canvas screenshot). */
 
 .chatUnderline {
   background: transparent;

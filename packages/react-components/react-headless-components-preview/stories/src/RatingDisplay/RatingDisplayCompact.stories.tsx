@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 import { StarFilled, StarHalfFilled, StarRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/rating-display.module.css';
+import styles from '../../../../../../theme/components/rating-display.module.css';
 import storySource from './RatingDisplayCompact.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 const RatingIcon = (): React.ReactNode => (

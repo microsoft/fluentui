@@ -1,7 +1,7 @@
 import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 import descriptionMd from './TextareaDescription.md';
-import textareaCss from '../../../../../../bebop/components/textarea.module.css?raw';
+import textareaCss from '../../../../../../theme/components/textarea.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './TextareaDefault.stories';

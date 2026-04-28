@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/toggle-button.module.css';
+import styles from '../../../../../../theme/components/toggle-button.module.css';
 import storySource from './ToggleButtonDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {

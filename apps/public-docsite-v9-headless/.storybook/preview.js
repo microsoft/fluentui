@@ -5,11 +5,11 @@ import * as rootPreview from '../../../.storybook/preview';
 // Design tokens (light + dark CSS custom properties on :root and
 // [data-theme="dark"]), plus a few base resets for body/html. Loaded once
 // for every story rendered in this Storybook.
-import '../../../bebop/tokens.css';
+import '../../../theme/tokens.css';
 
 // Custom docs page that renders the "Show code" panel with TSX | CSS tabs.
-// See `packages/.../stories/src/_helpers/BebopDocsPage.tsx` for rationale.
-import { BebopDocsPage } from '../../../packages/react-components/react-headless-components-preview/stories/src/_helpers/BebopDocsPage';
+// See `packages/.../stories/src/_helpers/HeadlessDocsPage.tsx` for rationale.
+import { HeadlessDocsPage } from '../../../packages/react-components/react-headless-components-preview/stories/src/_helpers/HeadlessDocsPage';
 
 polyfillBodyAndObserve();
 
@@ -21,7 +21,7 @@ export const parameters = {
   ...rootPreview.parameters,
   docs: {
     ...rootPreview.parameters.docs,
-    page: BebopDocsPage,
+    page: HeadlessDocsPage,
   },
   options: {
     storySort: {

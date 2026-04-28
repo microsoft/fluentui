@@ -7,7 +7,7 @@ import {
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/breadcrumb.module.css';
+import styles from '../../../../../../theme/components/breadcrumb.module.css';
 import storySource from './BreadcrumbDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

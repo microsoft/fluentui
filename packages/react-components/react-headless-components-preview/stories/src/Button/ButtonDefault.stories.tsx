@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-headless-components-preview/button';
 import { AddRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/button.module.css';
+import styles from '../../../../../../theme/components/button.module.css';
 import storySource from './ButtonDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 

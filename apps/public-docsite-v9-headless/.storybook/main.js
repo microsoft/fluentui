@@ -3,7 +3,7 @@ const path = require('path');
 const rootMain = require('../../../.storybook/main');
 
 const repoRoot = path.resolve(__dirname, '../../..');
-const tokensDir = path.resolve(repoRoot, 'bebop');
+const tokensDir = path.resolve(repoRoot, 'theme');
 const headlessStoriesDir = path.resolve(
   repoRoot,
   'packages/react-components/react-headless-components-preview/stories',
@@ -14,7 +14,7 @@ const headlessStoriesDir = path.resolve(
  *
  * Storybook's `@storybook/builder-webpack5` ships a default `\.css$` rule that
  * pipes any CSS through `style-loader` + plain `css-loader`. That handles
- * `bebop/tokens.css` correctly. For `*.module.css` files (the per-component
+ * `theme/tokens.css` correctly. For `*.module.css` files (the per-component
  * design-system styles) we want CSS Modules, so we narrow the default rule to
  * skip `.module.css` and add a dedicated rule that turns on `modules: true`.
  *

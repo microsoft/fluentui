@@ -1,17 +1,17 @@
 /**
  * Story meta helper — registers the CSS Module source(s) a story relies on so:
  *
- *   1. The custom docs page (`BebopDocsPage` → `BebopSource`) can surface them
+ *   1. The custom docs page (`HeadlessDocsPage` → `HeadlessSourcePanel`) can surface them
  *      as tabs in the "Show code" panel.
  *   2. The "Open in Stackblitz" button (provided by
  *      `@fluentui/react-storybook-addon-export-to-sandbox`) can bundle them —
- *      together with `bebop/tokens.css` — into the generated sandbox so the
+ *      together with `theme/tokens.css` — into the generated sandbox so the
  *      example renders with the correct theme out of the box.
  *
  * Spread the result into a story's `parameters` object:
  *
  * ```tsx
- * import buttonCss from '../../../../../../bebop/components/button.module.css?raw';
+ * import buttonCss from '../../../../../../theme/components/button.module.css?raw';
  * import { withCssModuleSource } from '../_helpers/withCssModuleSource';
  *
  * export default {
@@ -31,11 +31,11 @@
 // Loaded via the `?raw` resourceQuery rule configured in `.storybook/main.js`.
 // Bundling tokens.css inline lets the Stackblitz scaffold include them without
 // requiring story authors to wire imports manually.
-import tokensCss from '../../../../../../bebop/tokens.css?raw';
+import tokensCss from '../../../../../../theme/tokens.css?raw';
 
-import type { BebopCssModule, BebopParameters } from './BebopSource';
+import type { CssModule, HeadlessSourceParameters } from './HeadlessSourcePanel';
 
-export type { BebopCssModule } from './BebopSource';
+export type { CssModule } from './HeadlessSourcePanel';
 
 /**
  * Minimal local mirror of the `SandboxContext` shape from
@@ -59,10 +59,10 @@ interface ExportToSandboxFragment {
 }
 
 export function withCssModuleSource(
-  ...modules: BebopCssModule[]
-): { bebop: BebopParameters } & ExportToSandboxFragment {
+  ...modules: CssModule[]
+): { theme: HeadlessSourceParameters } & ExportToSandboxFragment {
   return {
-    bebop: { cssModules: modules },
+    theme: { cssModules: modules },
     exportToSandbox: {
       transformFiles: (files, ctx) => buildSandboxFiles(files, ctx, modules),
     },
@@ -71,11 +71,11 @@ export function withCssModuleSource(
 
 /**
  * The story file imports each CSS Module via a long relative path that points
- * back to `bebop/components/<name>.module.css`. In the sandbox, that path
+ * back to `theme/components/<name>.module.css`. In the sandbox, that path
  * doesn't exist — so we:
  *
  *   1. Drop a flat copy of `tokens.css` and each module under `src/styles/`.
- *   2. Rewrite every `bebop/components/<…>.module.css` import in the story
+ *   2. Rewrite every `theme/components/<…>.module.css` import in the story
  *      file to `./styles/<basename>` (or `../styles/<basename>` from `App`).
  *   3. Inject `import './styles/tokens.css'` at the top of `src/App.tsx`
  *      so the design tokens cascade onto the rendered example.
@@ -83,7 +83,7 @@ export function withCssModuleSource(
 function buildSandboxFiles(
   files: Record<string, string>,
   _ctx: SandboxContext,
-  modules: BebopCssModule[],
+  modules: CssModule[],
 ): Record<string, string> {
   const next = { ...files };
 
@@ -108,10 +108,10 @@ function buildSandboxFiles(
   }
 
   // Story file lives at `src/example.tsx`; rewrite the deeply-relative
-  // `bebop/components/<file>.module.css` import to a sibling path.
+  // `theme/components/<file>.module.css` import to a sibling path.
   if (typeof example === 'string') {
     next['src/example.tsx'] = example.replace(
-      /(['"])(?:\.\.\/)+bebop\/components\/([^'"]+\.module\.css)\1/g,
+      /(['"])(?:\.\.\/)+theme\/components\/([^'"]+\.module\.css)\1/g,
       (_match, quote, basename) => `${quote}./styles/${basename}${quote}`,
     );
   }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
 
-import styles from '../../../../../../bebop/components/avatar.module.css';
+import styles from '../../../../../../theme/components/avatar.module.css';
 import storySource from './AvatarDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

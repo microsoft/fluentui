@@ -19,7 +19,7 @@ import {
   TextUnderlineRegular,
 } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/toolbar.module.css';
+import styles from '../../../../../../theme/components/toolbar.module.css';
 import storySource from './ToolbarDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 const alignIcons = {

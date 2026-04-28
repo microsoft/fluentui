@@ -1,5 +1,5 @@
 /**
- * `BebopSource` — a docs block that renders the "Show code" panel for a
+ * `HeadlessSourcePanel` — a docs block that renders the "Show code" panel for a
  * headless story with **tabs**: one for the story TSX, one per CSS Module
  * referenced by the story's meta. Replaces Storybook's built-in single-blob
  * Source block (which can't show two languages side-by-side).
@@ -12,9 +12,9 @@
  * sitting together in the canvas footer (matching the deployed Fluent docs)
  * while still showing the multi-language tabbed panel below the canvas card.
  *
- * Wired up by `BebopDocsPage`. The story's TSX comes from
+ * Wired up by `HeadlessDocsPage`. The story's TSX comes from
  * `parameters.docs.source.originalSource` (set via `withStorySource`); the CSS
- * comes from `parameters.bebop.cssModules` (set via `withCssModuleSource`).
+ * comes from `parameters.theme.cssModules` (set via `withCssModuleSource`).
  */
 /* eslint-disable @nx/workspace-no-restricted-globals -- Storybook docs block running in the manager iframe; uses DOM APIs to bridge to the native Canvas toggle that lives outside React. */
 import * as React from 'react';
@@ -32,19 +32,19 @@ import { DocsContext, SourceContext, useOf, useSourceProps } from '@storybook/ad
 import { SyntaxHighlighter } from 'storybook/internal/components';
 
 /** A CSS Module file surfaced as a tab in the code panel. */
-export interface BebopCssModule {
+export interface CssModule {
   /** Display name shown on the tab (e.g. `button.module.css`). */
   name: string;
   /** Raw CSS source for the module (typically imported via `?raw`). */
   source: string;
 }
 
-export interface BebopParameters {
+export interface HeadlessSourceParameters {
   /** Extra CSS Module sources to surface as tabs after the story TSX tab. */
-  cssModules?: BebopCssModule[];
+  cssModules?: CssModule[];
 }
 
-interface BebopSourceProps {
+interface HeadlessSourcePanelProps {
   /** Reference to the story being rendered (`story.moduleExport`). */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   of: any;
@@ -144,7 +144,7 @@ function useNativeToggleState(storyId: string): boolean {
 /**
  * Find the canvas card (`.sbdocs-preview`) for `storyId` and append (once) a
  * portal target div as its last child. Returns the element when ready so
- * `BebopSource` can render its tabbed panel **inside** the same bordered card
+ * `HeadlessSourcePanel` can render its tabbed panel **inside** the same bordered card
  * as the story preview, rather than as a detached block below it.
  */
 function useCanvasPortalTarget(storyId: string): HTMLElement | null {
@@ -165,12 +165,12 @@ function useCanvasPortalTarget(storyId: string): HTMLElement | null {
       if (!card) {
         return false;
       }
-      // Look for an existing target so multiple mounts of `BebopSource` (in
+      // Look for an existing target so multiple mounts of `HeadlessSourcePanel` (in
       // dev / fast-refresh) reuse the same node.
-      let existing = card.querySelector<HTMLDivElement>(':scope > .bebop-source-portal');
+      let existing = card.querySelector<HTMLDivElement>(':scope > .headless-source-portal');
       if (!existing) {
         existing = document.createElement('div');
-        existing.className = 'bebop-source-portal';
+        existing.className = 'headless-source-portal';
         // Storybook's `.sbdocs-preview > div` global rules paint a near-black
         // background and drop shadow on direct children — explicitly reset
         // both so the canvas card colour shows through behind our inset,
@@ -207,7 +207,7 @@ function useCanvasPortalTarget(storyId: string): HTMLElement | null {
   return target;
 }
 
-export const BebopSource: React.FC<BebopSourceProps> = ({ of }) => {
+export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) => {
   const { story } = useOf(of || 'story', ['story']) as { story: AnyProps };
   const docsContext = React.useContext(DocsContext);
   const sourceContext = React.useContext(SourceContext);
@@ -222,13 +222,14 @@ export const BebopSource: React.FC<BebopSourceProps> = ({ of }) => {
 
   const tsxCode: string = typeof sourceProps.code === 'string' ? sourceProps.code : '';
   const tsxLanguage: string = typeof sourceProps.language === 'string' ? sourceProps.language : 'tsx';
-  const allCssModules: BebopCssModule[] = (story.parameters?.bebop as BebopParameters | undefined)?.cssModules ?? [];
+  const allCssModules: CssModule[] =
+    (story.parameters?.theme as HeadlessSourceParameters | undefined)?.cssModules ?? [];
 
   // The meta typically registers every CSS module a component touches across
   // all stories so the Stackblitz sandbox can bundle them. For the per-story
   // tab strip we only want the modules actually referenced in the displayed
   // TSX — match by basename in import strings (e.g. `./styles/dialog.module.css`
-  // after `cleanStorySource`, or `bebop/components/dialog.module.css?raw`).
+  // after `cleanStorySource`, or `theme/components/dialog.module.css?raw`).
   const referencedBasenames = new Set(Array.from(tsxCode.matchAll(/([a-z][a-z0-9-]*\.module\.css)/gi), m => m[1]));
   const cssModules = referencedBasenames.size
     ? allCssModules.filter(m => referencedBasenames.has(m.name))

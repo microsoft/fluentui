@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Toolbar, ToolbarGroup, ToolbarToggleButton } from '@fluentui/react-headless-components-preview/toolbar';
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../bebop/components/toolbar.module.css';
+import styles from '../../../../../../theme/components/toolbar.module.css';
 import storySource from './ToolbarToggleButton.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Toggle = (): React.ReactNode => (

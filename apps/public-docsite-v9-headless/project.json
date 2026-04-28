@@ -12,7 +12,7 @@
           "target": "build"
         }
       ],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/bebop/**"]
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/theme/**"]
     },
     "build-storybook:docsite": {
       "dependsOn": [
@@ -21,7 +21,7 @@
           "target": "build"
         }
       ],
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/bebop/**"]
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/theme/**"]
     }
   }
 }

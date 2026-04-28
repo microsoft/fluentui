@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from '@fluentui/react-headless-components-preview/dialog';
 
-import styles from '../../../../../../bebop/components/dialog.module.css';
+import styles from '../../../../../../theme/components/dialog.module.css';
 import storySource from './DialogDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

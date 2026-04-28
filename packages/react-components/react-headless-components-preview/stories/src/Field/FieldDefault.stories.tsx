@@ -3,8 +3,8 @@ import { Field } from '@fluentui/react-headless-components-preview/field';
 import { Input } from '@fluentui/react-headless-components-preview/input';
 import { ErrorCircleRegular } from '@fluentui/react-icons';
 
-import fieldStyles from '../../../../../../bebop/components/field.module.css';
-import inputStyles from '../../../../../../bebop/components/input.module.css';
+import fieldStyles from '../../../../../../theme/components/field.module.css';
+import inputStyles from '../../../../../../theme/components/input.module.css';
 import storySource from './FieldDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

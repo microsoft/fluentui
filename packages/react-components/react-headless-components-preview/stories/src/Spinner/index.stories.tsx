@@ -1,7 +1,7 @@
 import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 
 import descriptionMd from './SpinnerDescription.md';
-import spinnerCss from '../../../../../../bebop/components/spinner.module.css?raw';
+import spinnerCss from '../../../../../../theme/components/spinner.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './SpinnerDefault.stories';
