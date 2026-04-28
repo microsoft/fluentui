@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
+import { Context, ContextSelector, ContextValue } from './types';
 import { useIsomorphicLayoutEffect } from '../hooks/useIsomorphicLayoutEffect';
-import { useEventCallback } from '../hooks/useEventCallback';
 
 /**
  * This hook returns context selected value by selector.
@@ -14,69 +13,52 @@ export const useContextSelector = <Value, SelectedValue>(
   selector: ContextSelector<Value, SelectedValue>,
 ): SelectedValue => {
   const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
+  const { value: valueRef, listeners } = contextValue;
 
-  const {
-    value: { current: value },
-    version: { current: version },
-    listeners,
-  } = contextValue;
-  const selected = selector(value);
+  // Read valueRef during render and return selector(value) directly. This is analogous to `useSyncExternalStore`'s
+  // `getSnapshot` and is the only way to select a slice from a shared ref-based store without re-rendering every
+  // consumer on every provider update.
+  const valueAtRender = selector(valueRef.current);
+  const [, forceUpdate] = React.useReducer((x: number) => x + 1, 0);
 
-  const [state, setState] = React.useState<readonly [Value, SelectedValue]>([value, selected]);
-  const dispatch = (
-    payload:
-      | undefined // undefined from render below
-      | readonly [ContextVersion, Value], // from provider effect
-  ) => {
-    setState(prevState => {
-      if (!payload) {
-        // early bail out when is dispatched during render
-        return [value, selected] as const;
-      }
-
-      if (payload[0] <= version) {
-        if (Object.is(prevState[1], selected)) {
-          return prevState; // bail out
-        }
-
-        return [value, selected] as const;
-      }
-
-      try {
-        if (Object.is(prevState[0], payload[1])) {
-          return prevState; // do not update
-        }
-
-        const nextSelected = selector(payload[1]);
-
-        if (Object.is(prevState[1], nextSelected)) {
-          return prevState; // do not update
-        }
-
-        return [payload[1], nextSelected] as const;
-      } catch {
-        // ignored (stale props or some other reason)
-      }
-      return [...prevState] as const; // schedule update
-    });
-  };
-
-  if (!Object.is(state[1], selected)) {
-    // schedule re-render
-    // this is safe because it's self contained
-    dispatch(undefined);
-  }
-
-  const stableDispatch = useEventCallback(dispatch);
+  // Refs holding the current selector and the most-recently-returned slice. Updated in a layout effect (ordering:
+  // children first, then provider) so they are current by the time the provider's listener loop fires.
+  const selectorRef = React.useRef<ContextSelector<Value, SelectedValue>>(selector);
+  const lastValueAtRender = React.useRef<SelectedValue>(valueAtRender);
 
   useIsomorphicLayoutEffect(() => {
-    listeners.push(stableDispatch);
+    selectorRef.current = selector;
+    lastValueAtRender.current = valueAtRender;
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    const listener = (payload: Value) => {
+      // Selectors can throw on transiently-inconsistent inputs (stale props vs. newer context value). Swallow so a
+      // single consumer's throw doesn't abort the provider's `listeners.forEach`.
+      try {
+        const nextSelectedValue = selectorRef.current(payload);
+
+        if (!Object.is(lastValueAtRender.current, nextSelectedValue)) {
+          forceUpdate();
+        }
+      } catch {
+        // ignored (stale props or similar — heals on the next parent-driven render)
+      }
+    };
+
+    listeners.push(listener);
+
+    // Effect-fixup: catch updates that occurred between render and effect run (Relay's useFragmentInternal pattern).
+    listener(valueRef.current);
 
     return () => {
-      const index = listeners.indexOf(stableDispatch);
-      listeners.splice(index, 1);
-    };
-  }, [stableDispatch, listeners]);
+      const index = listeners.indexOf(listener);
 
-  return state[1] as SelectedValue;
+      if (index !== -1) {
+        listeners.splice(index, 1);
+      }
+    };
+  }, [listeners, valueRef]);
+
+  return valueAtRender;
 };
