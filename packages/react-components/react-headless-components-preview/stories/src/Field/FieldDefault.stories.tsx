@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Field, Input } from '@fluentui/react-headless-components-preview';
+import { Field } from '@fluentui/react-headless-components-preview/field';
+import { Input } from '@fluentui/react-headless-components-preview/input';
 
 const fieldClass = 'flex flex-col gap-1.5';
 const labelClass = 'text-sm font-medium text-gray-700';

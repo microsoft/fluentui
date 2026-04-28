@@ -1,4 +1,4 @@
-import { Divider } from '@fluentui/react-headless-components-preview';
+import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
 import descriptionMd from './DividerDescription.md';
 

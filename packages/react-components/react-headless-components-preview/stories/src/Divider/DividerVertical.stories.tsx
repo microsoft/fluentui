@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider } from '@fluentui/react-headless-components-preview';
+import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
 export const Vertical = (): React.ReactNode => (
   <div className="flex items-center h-4 gap-4">

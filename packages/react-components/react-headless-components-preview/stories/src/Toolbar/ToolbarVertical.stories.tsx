@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarGroup } from '@fluentui/react-headless-components-preview';
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  ToolbarGroup,
+} from '@fluentui/react-headless-components-preview/toolbar';
 import {
   CutRegular,
   CopyRegular,

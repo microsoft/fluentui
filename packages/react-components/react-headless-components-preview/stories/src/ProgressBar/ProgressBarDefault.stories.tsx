@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ProgressBar } from '@fluentui/react-headless-components-preview';
+import { ProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 
 export const Default = (): React.ReactNode => {
   return (

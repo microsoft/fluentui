@@ -1,4 +1,4 @@
-import { Switch } from '@fluentui/react-headless-components-preview';
+import { Switch } from '@fluentui/react-headless-components-preview/switch';
 
 import descriptionMd from './SwitchDescription.md';
 

@@ -4,7 +4,7 @@ import {
   BreadcrumbItem,
   BreadcrumbButton,
   BreadcrumbDivider,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/breadcrumb';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
 const linkClass =

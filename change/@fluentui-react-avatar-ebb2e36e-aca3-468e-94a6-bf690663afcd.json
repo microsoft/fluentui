@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: prevent spreading of custom props on html element",
-  "packageName": "@fluentui/react-avatar",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

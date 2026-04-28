@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-headless-components-preview';
+import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
 
 export const Default = (): React.ReactNode => (
   <div className="flex items-center gap-4 flex-wrap">

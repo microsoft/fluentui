@@ -1,4 +1,4 @@
-import { Avatar } from '@fluentui/react-headless-components-preview';
+import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
 
 import descriptionMd from './AvatarDescription.md';
 

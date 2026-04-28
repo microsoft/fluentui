@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input } from '@fluentui/react-headless-components-preview';
+import { Input } from '@fluentui/react-headless-components-preview/input';
 
 const inputWrapperClass =
   'flex w-full rounded-md border border-gray-300 bg-white px-3 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2';

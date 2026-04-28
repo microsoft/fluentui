@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '@fluentui/react-headless-components-preview';
+import { Link } from '@fluentui/react-headless-components-preview/link';
 
 const linkClass =
   'text-gray-900 underline underline-offset-4 hover:text-gray-600 hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded transition-colors data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[disabled]:no-underline';
