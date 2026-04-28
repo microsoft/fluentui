@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Input } from '@fluentui/react-headless-components-preview/input';
 import { AddRegular, MicRegular, MicPulseRegular, SendRegular } from '@fluentui/react-icons';
 
-import chatStyles from '../../../../../../theme/components/chat-input.module.css';
+import chatStyles from './chat-input.module.css';
 import storySource from './InputDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {

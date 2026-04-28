@@ -6,8 +6,8 @@ import {
 } from '@fluentui/react-headless-components-preview/message-bar';
 
 import descriptionMd from './MessageBarDescription.md';
-import messageBarCss from '../../../../../../theme/components/message-bar.module.css?raw';
-import linkCss from '../../../../../../theme/components/link.module.css?raw';
+import messageBarCss from './message-bar.module.css?raw';
+import linkCss from '../Link/link.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './MessageBarDefault.stories';

@@ -3,8 +3,8 @@ import { Link } from '@fluentui/react-headless-components-preview/link';
 import { MessageBar, MessageBarBody, MessageBarTitle } from '@fluentui/react-headless-components-preview/message-bar';
 import { CheckmarkCircleRegular, ErrorCircleRegular, InfoRegular, WarningRegular } from '@fluentui/react-icons';
 
-import linkStyles from '../../../../../../theme/components/link.module.css';
-import styles from '../../../../../../theme/components/message-bar.module.css';
+import linkStyles from '../Link/link.module.css';
+import styles from './message-bar.module.css';
 import storySource from './MessageBarIntent.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 const items = [

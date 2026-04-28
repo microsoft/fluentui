@@ -14,7 +14,7 @@ import {
   TextUnderlineRegular,
 } from '@fluentui/react-icons';
 
-import styles from '../../../../../../theme/components/toolbar.module.css';
+import styles from './toolbar.module.css';
 import storySource from './ToolbarVertical.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Vertical = (): React.ReactNode => (

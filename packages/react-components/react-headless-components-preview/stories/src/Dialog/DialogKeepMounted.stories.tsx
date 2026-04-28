@@ -9,8 +9,8 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
-import styles from '../../../../../../theme/components/dialog.module.css';
-import textareaStyles from '../../../../../../theme/components/textarea.module.css';
+import styles from './dialog.module.css';
+import textareaStyles from '../Textarea/textarea.module.css';
 import storySource from './DialogKeepMounted.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 /**

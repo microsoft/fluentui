@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch } from '@fluentui/react-headless-components-preview/switch';
 
-import styles from '../../../../../../theme/components/switch.module.css';
+import styles from './switch.module.css';
 import storySource from './SwitchDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

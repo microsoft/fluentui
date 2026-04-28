@@ -1,8 +1,8 @@
 import { Select } from '@fluentui/react-headless-components-preview/select';
 
 import descriptionMd from './SelectDescription.md';
-import selectCss from '../../../../../../theme/components/select.module.css?raw';
-import fieldCss from '../../../../../../theme/components/field.module.css?raw';
+import selectCss from './select.module.css?raw';
+import fieldCss from '../Field/field.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './SelectDefault.stories';

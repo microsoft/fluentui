@@ -1,7 +1,7 @@
 import { RadioGroup, Radio } from '@fluentui/react-headless-components-preview/radio-group';
 
 import descriptionMd from './RadioGroupDescription.md';
-import radioGroupCss from '../../../../../../theme/components/radio-group.module.css?raw';
+import radioGroupCss from './radio-group.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './RadioGroupDefault.stories';

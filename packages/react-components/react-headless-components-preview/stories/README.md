@@ -35,7 +35,7 @@ For each new component:
 
 1. Create the headless component under `library/src/components/<Name>/` (out of
    scope for this guide).
-2. Add a CSS Module at `theme/components/<name>.module.css` driven entirely by
+2. Add a CSS Module at `stories/src/<Component>/<name>.module.css` driven entirely by
    `var(--…)` from `theme/tokens.css`. **Do not hardcode colors, sizes, or
    typography.**
 3. Add a stories folder at `stories/src/<Name>/` containing:
@@ -52,7 +52,7 @@ the CSS Module, and stories pull both together.
 ```tsx
 import * as React from 'react';
 import { MyComponent } from '@fluentui/react-headless-components-preview/my-component';
-import styles from '../../../../../../theme/components/my-component.module.css';
+import styles from './my-component.module.css';
 
 export const Default = (): React.ReactNode => <MyComponent className={styles.root} />;
 ```
@@ -79,7 +79,7 @@ helper at `stories/src/_helpers/withCssModuleSource.ts` does the stitching:
 import { MyComponent } from '@fluentui/react-headless-components-preview/my-component';
 
 import descriptionMd from './MyComponentDescription.md';
-import myComponentCss from '../../../../../../theme/components/my-component.module.css?raw';
+import myComponentCss from './my-component.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './MyComponentDefault.stories';
@@ -193,7 +193,7 @@ These are the things that took time to discover. Keep them in mind:
 | Path                                                 | Purpose                                                             |
 | ---------------------------------------------------- | ------------------------------------------------------------------- |
 | `theme/tokens.css`                                   | CSS custom properties, light + dark. Imported once in `preview.js`. |
-| `theme/components/<name>.module.css`                 | Per-component scoped styles.                                        |
+| `stories/src/<Component>/<name>.module.css`          | Per-component scoped styles.                                        |
 | `stories/src/<Name>/<Name>Default.stories.tsx`       | Default story body using CSS Module classes.                        |
 | `stories/src/<Name>/<Name>Description.md`            | Component description shown in the Docs panel.                      |
 | `stories/src/<Name>/index.stories.tsx`               | Meta + `parameters.docs.source.transform` wiring.                   |

@@ -229,7 +229,7 @@ export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) 
   // all stories so the Stackblitz sandbox can bundle them. For the per-story
   // tab strip we only want the modules actually referenced in the displayed
   // TSX — match by basename in import strings (e.g. `./styles/dialog.module.css`
-  // after `cleanStorySource`, or `theme/components/dialog.module.css?raw`).
+  // after `cleanStorySource`, or `./dialog.module.css?raw`).
   const referencedBasenames = new Set(Array.from(tsxCode.matchAll(/([a-z][a-z0-9-]*\.module\.css)/gi), m => m[1]));
   const cssModules = referencedBasenames.size
     ? allCssModules.filter(m => referencedBasenames.has(m.name))

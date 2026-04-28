@@ -1,7 +1,7 @@
 import { Button } from '@fluentui/react-headless-components-preview/button';
 
 import descriptionMd from './ButtonDescription.md';
-import buttonCss from '../../../../../../theme/components/button.module.css?raw';
+import buttonCss from './button.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './ButtonDefault.stories';

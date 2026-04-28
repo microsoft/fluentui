@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TabList, Tab } from '@fluentui/react-headless-components-preview/tab-list';
 
-import styles from '../../../../../../theme/components/tab-list.module.css';
+import styles from './tab-list.module.css';
 import storySource from './TabListDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 const tabs = [

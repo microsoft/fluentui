@@ -3,7 +3,7 @@ import { SearchBox } from '@fluentui/react-headless-components-preview/search-bo
 import { SearchRegular } from '@fluentui/react-icons';
 
 // SearchBox reuses the input CSS module per the story authoring guide.
-import styles from '../../../../../../theme/components/input.module.css';
+import styles from '../Input/input.module.css';
 import storySource from './SearchBoxDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

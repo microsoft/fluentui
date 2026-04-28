@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Slider } from '@fluentui/react-headless-components-preview/slider';
 
-import styles from '../../../../../../theme/components/slider.module.css';
+import styles from './slider.module.css';
 import storySource from './SliderDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {

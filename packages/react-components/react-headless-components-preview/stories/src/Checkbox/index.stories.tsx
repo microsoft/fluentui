@@ -1,7 +1,7 @@
 import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
 
 import descriptionMd from './CheckboxDescription.md';
-import checkboxCss from '../../../../../../theme/components/checkbox.module.css?raw';
+import checkboxCss from './checkbox.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './CheckboxDefault.stories';

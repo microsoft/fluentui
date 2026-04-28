@@ -11,7 +11,7 @@
  * Spread the result into a story's `parameters` object:
  *
  * ```tsx
- * import buttonCss from '../../../../../../theme/components/button.module.css?raw';
+ * import buttonCss from '../Button/button.module.css?raw';
  * import { withCssModuleSource } from '../_helpers/withCssModuleSource';
  *
  * export default {
@@ -70,12 +70,12 @@ export function withCssModuleSource(
 }
 
 /**
- * The story file imports each CSS Module via a long relative path that points
- * back to `theme/components/<name>.module.css`. In the sandbox, that path
- * doesn't exist — so we:
+ * The story file imports each CSS Module via a colocated relative path that
+ * points to `<Component>/<name>.module.css`. In the sandbox, those folders
+ * don't exist — so we:
  *
  *   1. Drop a flat copy of `tokens.css` and each module under `src/styles/`.
- *   2. Rewrite every `theme/components/<…>.module.css` import in the story
+ *   2. Rewrite every relative `<…>/<name>.module.css` import in the story
  *      file to `./styles/<basename>` (or `../styles/<basename>` from `App`).
  *   3. Inject `import './styles/tokens.css'` at the top of `src/App.tsx`
  *      so the design tokens cascade onto the rendered example.
@@ -107,11 +107,11 @@ function buildSandboxFiles(
     next[`src/styles/${m.name}`] = m.source;
   }
 
-  // Story file lives at `src/example.tsx`; rewrite the deeply-relative
-  // `theme/components/<file>.module.css` import to a sibling path.
+  // Story file lives at `src/example.tsx`; rewrite the colocated
+  // `<...>/<file>.module.css` import to a sibling path under `./styles/`.
   if (typeof example === 'string') {
     next['src/example.tsx'] = example.replace(
-      /(['"])(?:\.\.\/)+theme\/components\/([^'"]+\.module\.css)\1/g,
+      /(['"])(?:\.{1,2}\/)+(?:[^'"\/]+\/)*([^'"\/]+\.module\.css)\1/g,
       (_match, quote, basename) => `${quote}./styles/${basename}${quote}`,
     );
   }

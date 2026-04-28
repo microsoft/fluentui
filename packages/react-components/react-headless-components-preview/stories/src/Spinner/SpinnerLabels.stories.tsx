@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerIosRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../theme/components/spinner.module.css';
+import styles from './spinner.module.css';
 import storySource from './SpinnerLabels.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Labels = (): React.ReactNode => (

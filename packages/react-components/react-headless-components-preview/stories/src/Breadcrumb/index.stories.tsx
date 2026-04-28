@@ -6,7 +6,7 @@ import {
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
 import descriptionMd from './BreadcrumbDescription.md';
-import breadcrumbCss from '../../../../../../theme/components/breadcrumb.module.css?raw';
+import breadcrumbCss from './breadcrumb.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './BreadcrumbDefault.stories';

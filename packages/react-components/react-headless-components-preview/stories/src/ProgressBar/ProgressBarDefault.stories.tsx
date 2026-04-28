@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 
-import styles from '../../../../../../theme/components/progress-bar.module.css';
+import styles from './progress-bar.module.css';
 import storySource from './ProgressBarDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

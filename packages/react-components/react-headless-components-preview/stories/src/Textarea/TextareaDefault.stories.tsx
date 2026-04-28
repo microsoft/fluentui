@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
-import styles from '../../../../../../theme/components/textarea.module.css';
+import styles from './textarea.module.css';
 import storySource from './TextareaDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

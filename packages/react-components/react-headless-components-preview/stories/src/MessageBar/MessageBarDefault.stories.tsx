@@ -8,8 +8,8 @@ import {
 } from '@fluentui/react-headless-components-preview/message-bar';
 import { DismissRegular, InfoRegular } from '@fluentui/react-icons';
 
-import linkStyles from '../../../../../../theme/components/link.module.css';
-import styles from '../../../../../../theme/components/message-bar.module.css';
+import linkStyles from '../Link/link.module.css';
+import styles from './message-bar.module.css';
 import storySource from './MessageBarDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

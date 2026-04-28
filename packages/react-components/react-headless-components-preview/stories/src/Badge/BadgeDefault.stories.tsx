@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Badge } from '@fluentui/react-headless-components-preview/badge';
 
-import styles from '../../../../../../theme/components/badge.module.css';
+import styles from './badge.module.css';
 import storySource from './BadgeDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

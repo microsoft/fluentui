@@ -1,7 +1,7 @@
 import { Link } from '@fluentui/react-headless-components-preview/link';
 
 import descriptionMd from './LinkDescription.md';
-import linkCss from '../../../../../../theme/components/link.module.css?raw';
+import linkCss from './link.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './LinkDefault.stories';

@@ -1,7 +1,7 @@
 import { Rating, RatingItem } from '@fluentui/react-headless-components-preview/rating';
 
 import descriptionMd from './RatingDescription.md';
-import ratingCss from '../../../../../../theme/components/rating.module.css?raw';
+import ratingCss from './rating.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './RatingDefault.stories';

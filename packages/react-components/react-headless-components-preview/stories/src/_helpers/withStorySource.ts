@@ -46,12 +46,12 @@ function cleanStorySource(source: string): string {
       .replace(/^import\s+\w+\s+from\s+['"]\..*?\.stories\?raw['"];\s*\r?\n/m, '')
       .replace(/^import\s*\{\s*withStorySource\s*\}\s*from\s+['"][^'"]+['"];\s*\r?\n/m, '')
       .replace(/^\w+\.parameters\s*=\s*withStorySource\([\s\S]*?\);\s*\r?\n?/m, '')
-      // Rewrite the deeply-relative `theme/components/<file>.module.css` paths
-      // to a colocated `./styles/<file>.module.css` so the snippet matches what
+      // Rewrite the deeply-relative or sibling `*.module.css` paths to a
+      // colocated `./styles/<file>.module.css` so the snippet matches what
       // the user actually gets in the Stackblitz sandbox (and is paste-ready
       // into a project that follows the same colocation convention).
       .replace(
-        /(['"])(?:\.\.\/)+theme\/components\/([^'"]+\.module\.css)\1/g,
+        /(['"])(?:\.{1,2}\/)+(?:[^'"\/]+\/)*([^'"\/]+\.module\.css)\1/g,
         (_match, quote, basename) => `${quote}./styles/${basename}${quote}`,
       )
       .replace(/\n{3,}/g, '\n\n')
@@ -85,7 +85,7 @@ export function withStorySource(storySource: string, extra: Parameters = {}): Pa
   // `Default.parameters.fullSource = '<post-babel source>';` statement at the
   // end of the compiled story file. That post-babel source has had every
   // relative import stripped — including our `import styles from
-  // '../../../../../../theme/components/<file>.module.css';` line — which
+  // colocated <Component>/<name>.module.css;` line — which
   // breaks the "Open in Stackblitz" sandbox (the example references `styles`
   // but never imports it).
   //

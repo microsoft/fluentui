@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from '@fluentui/react-headless-components-preview/dialog';
 
-import styles from '../../../../../../theme/components/dialog.module.css';
+import styles from './dialog.module.css';
 import storySource from './DialogNested.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 /**

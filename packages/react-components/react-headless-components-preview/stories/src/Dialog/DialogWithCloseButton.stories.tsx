@@ -10,8 +10,8 @@ import {
 import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckmarkRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../theme/components/dialog.module.css';
-import checkboxStyles from '../../../../../../theme/components/checkbox.module.css';
+import styles from './dialog.module.css';
+import checkboxStyles from '../Checkbox/checkbox.module.css';
 import storySource from './DialogWithCloseButton.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 /**

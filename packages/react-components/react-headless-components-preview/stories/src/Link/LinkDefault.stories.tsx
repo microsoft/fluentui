@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react-headless-components-preview/link';
 
-import styles from '../../../../../../theme/components/link.module.css';
+import styles from './link.module.css';
 import storySource from './LinkDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (

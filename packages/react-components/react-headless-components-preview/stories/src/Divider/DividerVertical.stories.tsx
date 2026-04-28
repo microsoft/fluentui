@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Divider } from '@fluentui/react-headless-components-preview/divider';
 import { CircleRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../theme/components/divider.module.css';
+import styles from './divider.module.css';
 import storySource from './DividerVertical.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Vertical = (): React.ReactNode => (

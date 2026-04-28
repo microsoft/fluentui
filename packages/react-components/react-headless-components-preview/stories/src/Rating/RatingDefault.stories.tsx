@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Rating, RatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../theme/components/rating.module.css';
+import styles from './rating.module.css';
 import storySource from './RatingDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {

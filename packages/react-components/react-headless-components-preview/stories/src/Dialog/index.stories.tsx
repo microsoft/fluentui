@@ -8,10 +8,10 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import descriptionMd from './DialogDescription.md';
-import dialogCss from '../../../../../../theme/components/dialog.module.css?raw';
-import checkboxCss from '../../../../../../theme/components/checkbox.module.css?raw';
-import textareaCss from '../../../../../../theme/components/textarea.module.css?raw';
-import inputCss from '../../../../../../theme/components/input.module.css?raw';
+import dialogCss from './dialog.module.css?raw';
+import checkboxCss from '../Checkbox/checkbox.module.css?raw';
+import textareaCss from '../Textarea/textarea.module.css?raw';
+import inputCss from '../Input/input.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './DialogDefault.stories';

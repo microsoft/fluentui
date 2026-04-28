@@ -7,7 +7,7 @@ import {
 } from '@fluentui/react-headless-components-preview/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
-import styles from '../../../../../../theme/components/accordion.module.css';
+import styles from './accordion.module.css';
 import storySource from './AccordionCollapsible.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 const items = [

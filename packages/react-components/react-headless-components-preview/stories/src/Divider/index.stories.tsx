@@ -1,7 +1,7 @@
 import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
 import descriptionMd from './DividerDescription.md';
-import dividerCss from '../../../../../../theme/components/divider.module.css?raw';
+import dividerCss from './divider.module.css?raw';
 import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './DividerDefault.stories';

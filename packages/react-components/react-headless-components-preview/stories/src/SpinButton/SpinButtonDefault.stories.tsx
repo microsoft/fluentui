@@ -2,8 +2,8 @@ import * as React from 'react';
 import { SpinButton } from '@fluentui/react-headless-components-preview/spin-button';
 import { ChevronDownRegular, ChevronUpRegular } from '@fluentui/react-icons';
 
-import fieldStyles from '../../../../../../theme/components/field.module.css';
-import styles from '../../../../../../theme/components/spin-button.module.css';
+import fieldStyles from '../Field/field.module.css';
+import styles from './spin-button.module.css';
 import storySource from './SpinButtonDefault.stories?raw';
 import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
