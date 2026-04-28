@@ -1,6 +1,9 @@
 import { Select } from '@fluentui/react-headless-components-preview/select';
 
 import descriptionMd from './SelectDescription.md';
+import selectCss from '../../../../../../bebop/components/select.module.css?raw';
+import fieldCss from '../../../../../../bebop/components/field.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './SelectDefault.stories';
 
@@ -13,5 +16,10 @@ export default {
         component: descriptionMd,
       },
     },
+
+    ...withCssModuleSource(
+      { name: 'select.module.css', source: selectCss },
+      { name: 'field.module.css', source: fieldCss },
+    ),
   },
 };

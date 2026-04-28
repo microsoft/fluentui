@@ -1,7 +1,15 @@
 import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
 
 import * as rootPreview from '../../../.storybook/preview';
-import { tailwindSandboxTemplate } from './tailwind-sandbox-template';
+
+// Design tokens (light + dark CSS custom properties on :root and
+// [data-theme="dark"]), plus a few base resets for body/html. Loaded once
+// for every story rendered in this Storybook.
+import '../../../bebop/tokens.css';
+
+// Custom docs page that renders the "Show code" panel with TSX | CSS tabs.
+// See `packages/.../stories/src/_helpers/BebopDocsPage.tsx` for rationale.
+import { BebopDocsPage } from '../../../packages/react-components/react-headless-components-preview/stories/src/_helpers/BebopDocsPage';
 
 polyfillBodyAndObserve();
 
@@ -13,16 +21,13 @@ export const parameters = {
   ...rootPreview.parameters,
   docs: {
     ...rootPreview.parameters.docs,
+    page: BebopDocsPage,
   },
   options: {
     storySort: {
       method: 'alphabetical',
       order: ['Introduction', 'Headless Components'],
     },
-  },
-  exportToSandbox: {
-    ...rootPreview.parameters.exportToSandbox,
-    ...tailwindSandboxTemplate,
   },
   reactStorybookAddon: {
     docs: {

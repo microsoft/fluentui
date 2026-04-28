@@ -1,6 +1,8 @@
 import { RatingDisplay } from '@fluentui/react-headless-components-preview/rating-display';
 
 import descriptionMd from './RatingDisplayDescription.md';
+import ratingDisplayCss from '../../../../../../bebop/components/rating-display.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './RatingDisplayDefault.stories';
 export { Compact } from './RatingDisplayCompact.stories';
@@ -14,5 +16,7 @@ export default {
         component: descriptionMd,
       },
     },
+
+    ...withCssModuleSource({ name: 'rating-display.module.css', source: ratingDisplayCss }),
   },
 };

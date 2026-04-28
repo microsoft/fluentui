@@ -31,3 +31,17 @@ declare module '*.md' {
   const src: string;
   export default src;
 }
+
+declare module '*.module.css' {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+/**
+ * Webpack `?raw` query — imports a file's source as a string.
+ * Used by stories to display CSS module source in Storybook's "Show code" panel.
+ */
+declare module '*?raw' {
+  const content: string;
+  export default content;
+}

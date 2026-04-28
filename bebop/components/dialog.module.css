@@ -1,0 +1,121 @@
+.surface {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(96vw, 480px);
+  max-height: 90vh;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  background: var(--bg-elev);
+  color: var(--text);
+  padding: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-5);
+}
+
+.surface::backdrop {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.body {
+  padding: 24px 24px 8px;
+  overflow-y: auto;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
+}
+
+.copy {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 24px 20px;
+}
+
+.alertSurface {
+  width: min(94vw, 400px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--surface-muted);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.btn:hover {
+  background: var(--surface-sunken);
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.primary:hover {
+  background: var(--accent-strong);
+}
+
+.danger {
+  background: var(--brand);
+  color: white;
+}
+
+.danger:hover {
+  background: var(--brand-strong);
+}
+
+.dialog-module__row--0\+lMS {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demoSpacer {
+  margin-bottom: 12px;
+}
+
+.demoSpacerLg {
+  margin-bottom: 16px;
+}
+
+.demoCol- {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.demoNote {
+  align-self: center;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+}

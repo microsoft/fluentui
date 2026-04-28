@@ -2,11 +2,33 @@ import * as React from 'react';
 import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerIosRegular } from '@fluentui/react-icons';
 
+import styles from '../../../../../../bebop/components/spinner.module.css';
+import storySource from './SpinnerDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
-  <Spinner
-    spinnerTail={{
-      className: 'flex animate-spin origin-center size-5 text-gray-900',
-      children: <SpinnerIosRegular className="size-full" />,
-    }}
-  />
+  <div className={styles.demoRow}>
+    <Spinner
+      className={styles.spinner}
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+    <Spinner
+      className={`${styles.spinner} ${styles.large}`}
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+    <Spinner
+      className={`${styles.spinner} ${styles.muted}`}
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+  </div>
 );
+
+Default.parameters = withStorySource(storySource);

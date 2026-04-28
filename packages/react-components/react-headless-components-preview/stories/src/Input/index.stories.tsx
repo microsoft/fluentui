@@ -1,8 +1,12 @@
 import { Input } from '@fluentui/react-headless-components-preview/input';
 
 import descriptionMd from './InputDescription.md';
+import inputCss from '../../../../../../bebop/components/input.module.css?raw';
+import chatInputCss from '../../../../../../bebop/components/chat-input.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './InputDefault.stories';
+export { Basic } from './InputBasic.stories';
 
 export default {
   title: 'Headless Components/Input',
@@ -13,5 +17,10 @@ export default {
         component: descriptionMd,
       },
     },
+
+    ...withCssModuleSource(
+      { name: 'input.module.css', source: inputCss },
+      { name: 'chat-input.module.css', source: chatInputCss },
+    ),
   },
 };

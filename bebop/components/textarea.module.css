@@ -1,0 +1,54 @@
+.wrap {
+  display: flex;
+  width: 100%;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.wrap:hover {
+  border-color: var(--border-strong);
+}
+
+.wrap:has(:focus-visible) {
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px var(--surface-muted);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  border: none;
+  outline: none;
+  background: transparent;
+  resize: vertical;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  font-family: inherit;
+}
+
+.textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.noResize {
+  resize: none;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo\+ {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+  width: 100%;
+
+  max-width: 360px;
+}

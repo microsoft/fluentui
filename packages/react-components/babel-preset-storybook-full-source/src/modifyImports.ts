@@ -53,7 +53,20 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
         const isRelativeImportToIndexBarrel = importSource.value.endsWith('./index');
 
         if (isRelativeImport && !isRelativeImportToIndexBarrel) {
-          if (process.env.NODE_ENV !== 'production') {
+          // CSS Modules, raw-loader queries, and stories' co-located
+          // source-extraction helpers (`withStorySource`,
+          // `withCssModuleSource`) are stripped from the sandbox bundle on
+          // purpose — sister utilities recover them through other channels
+          // (e.g. `parameters.exportToSandbox.transformFiles`). Skipping the
+          // warning for these well-known patterns keeps dev console output
+          // clean without changing extraction behavior.
+          const isKnownSafeRelative =
+            /\.module\.css(\?|$)/.test(importSource.value) ||
+            /\?raw$/.test(importSource.value) ||
+            /\/with(Story|CssModule)Source$/.test(importSource.value) ||
+            /\.stories(\?raw)?$/.test(importSource.value);
+
+          if (process.env.NODE_ENV !== 'production' && !isKnownSafeRelative) {
             console.warn(
               [
                 `🚨 Relative import '${importSource.value}' found in ${pluginState.filename} - removing from output - this might create invalid code.`,

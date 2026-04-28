@@ -2,34 +2,32 @@ import * as React from 'react';
 import { Rating, RatingItem } from '@fluentui/react-headless-components-preview/rating';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
+import styles from '../../../../../../bebop/components/rating.module.css';
+import storySource from './RatingDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {
   const [value, setValue] = React.useState(3);
   const max = 5;
 
   return (
-    <div className="flex flex-col gap-3">
-      <Rating
-        max={max}
-        value={value}
-        onChange={(_, data) => setValue(data.value)}
-        className="flex items-center gap-0.5 text-gray-900 cursor-pointer"
-      >
+    <div className={styles.row}>
+      <Rating max={max} value={value} onChange={(_, data) => setValue(data.value)} className={styles.rating}>
         {Array.from({ length: max }, (_, i) => (
           <RatingItem
             key={i}
             value={i + 1}
-            className="relative has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2"
-            selectedIcon={<StarFilled className="size-5" />}
-            unselectedIcon={<StarRegular className="size-5" />}
-            fullValueInput={{
-              className: 'peer absolute inset-0 opacity-0 focus:outline-none cursor-pointer',
-            }}
+            className={styles.item}
+            selectedIcon={<StarFilled className={styles.icon} />}
+            unselectedIcon={<StarRegular className={styles.icon} />}
+            fullValueInput={{ className: styles.input }}
           />
         ))}
       </Rating>
-      <p className="text-sm text-gray-600">
-        Rating: <span className="font-medium">{value}</span> out of {max}
-      </p>
+      <span className={styles.value}>
+        {value} / {max}
+      </span>
     </div>
   );
 };
+
+Default.parameters = withStorySource(storySource);

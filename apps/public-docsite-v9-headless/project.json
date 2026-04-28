@@ -11,7 +11,8 @@
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
           "target": "build"
         }
-      ]
+      ],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/bebop/**"]
     },
     "build-storybook:docsite": {
       "dependsOn": [
@@ -19,7 +20,8 @@
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
           "target": "build"
         }
-      ]
+      ],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/bebop/**"]
     }
   }
 }

@@ -1,46 +1,55 @@
 import * as React from 'react';
 import { Field } from '@fluentui/react-headless-components-preview/field';
 import { Input } from '@fluentui/react-headless-components-preview/input';
+import { ErrorCircleRegular } from '@fluentui/react-icons';
 
-const fieldClass = 'flex flex-col gap-1.5';
-const labelClass = 'text-sm font-medium text-gray-700';
-const inputWrapperClass =
-  'flex w-full rounded-md border border-gray-300 bg-white px-3 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2';
-const inputClass = 'flex-1 py-2 text-sm text-gray-900 outline-none placeholder:text-gray-400 bg-transparent';
-
+import fieldStyles from '../../../../../../bebop/components/field.module.css';
+import inputStyles from '../../../../../../bebop/components/input.module.css';
+import storySource from './FieldDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
-  <div className="flex flex-col gap-5 w-full max-w-sm">
-    <Field label={{ children: 'Email address', className: labelClass }} className={fieldClass}>
+  <div className={fieldStyles.demo}>
+    <Field label={{ children: 'Email address', className: fieldStyles.label }} className={fieldStyles.field}>
       <Input
         type="email"
         placeholder="you@example.com"
-        className={inputWrapperClass}
-        input={{ className: inputClass }}
+        className={inputStyles.wrap}
+        input={{ className: inputStyles.input }}
       />
     </Field>
 
     <Field
-      label={{ children: 'Password', className: labelClass }}
-      hint={{ children: 'Must be at least 8 characters.', className: 'text-xs text-gray-500' }}
-      className={fieldClass}
+      label={{ children: 'Password', className: fieldStyles.label }}
+      hint={{ children: 'Must be at least 8 characters.', className: fieldStyles.hint }}
+      className={fieldStyles.field}
     >
-      <Input type="password" placeholder="••••••••" className={inputWrapperClass} input={{ className: inputClass }} />
+      <Input
+        type="password"
+        placeholder="••••••••"
+        className={inputStyles.wrap}
+        input={{ className: inputStyles.input }}
+      />
     </Field>
 
     <Field
-      label={{ children: 'Username', className: labelClass }}
+      label={{ children: 'Username', className: fieldStyles.label }}
       validationState="error"
       validationMessage={{
         children: 'This username is already taken.',
-        className: 'text-xs text-red-600',
+        className: `${fieldStyles.message} ${fieldStyles.messageError}`,
       }}
-      className={fieldClass}
+      validationMessageIcon={{
+        children: <ErrorCircleRegular aria-hidden />,
+      }}
+      className={fieldStyles.field}
     >
       <Input
         defaultValue="johndoe"
-        className="flex w-full rounded-md border border-red-400 bg-white px-3 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-black has-[:focus-visible]:ring-offset-2"
-        input={{ className: inputClass }}
+        className={`${inputStyles.wrap} ${inputStyles.wrapError}`}
+        input={{ className: inputStyles.input }}
       />
     </Field>
   </div>
 );
+
+Default.parameters = withStorySource(storySource);

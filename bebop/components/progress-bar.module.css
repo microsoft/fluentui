@@ -1,0 +1,82 @@
+.bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width var(--duration-medium) var(--ease-standard);
+}
+
+.progress-bar-module__success--yG\+Ae .fill {
+  background: var(--success);
+}
+
+.warning .fill {
+  background: var(--warning);
+}
+
+.danger .fill {
+  background: var(--brand);
+}
+
+.indeterminate {
+  position: relative;
+  overflow: hidden;
+}
+
+.indeterminate .fill {
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  animation: slide 1.4s ease-in-out infinite;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.label strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(180%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  max-width: 360px;
+}

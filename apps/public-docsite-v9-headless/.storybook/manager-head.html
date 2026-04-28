@@ -5,61 +5,22 @@
 <link href="/shell.css" rel="stylesheet" />
 
 <!--
-  Override the default styles used in the Storybook svg icons for the left tree panel.
+  Headless docsite chrome overrides for the Storybook manager UI.
+
+  The sidebar selectors are brittle — they depend on Storybook's manager DOM
+  structure and may need updating on Storybook version bumps. Color values
+  mirror `bebop/tokens.css` (light mode).
 
   @see https://storybook.js.org/docs/react/configure/theming#css-escape-hatches
-
-  > 💡 NOTE:
-  >
-  > This is brittle way for providing custom non thenable styles for manager UI
-  >
-  > Those selectors might change on any storybook version bump.
  -->
 
 <style>
-  @font-face {
-    font-family: 'Segoe UI';
-    src: local('Segoe UI Light'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
-    font-weight: 100;
-  }
-
-  @font-face {
-    font-family: 'Segoe UI';
-    src: local('Segoe UI Semilight'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
-    font-weight: 200;
-  }
-
-  @font-face {
-    font-family: 'Segoe UI';
-    src: local('Segoe UI'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
-    font-weight: 400;
-  }
-
-  @font-face {
-    font-family: 'Segoe UI';
-    src: local('Segoe UI Semibold'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
-    font-weight: 600;
-  }
-
-  @font-face {
-    font-family: 'Segoe UI';
-    src: local('Segoe UI Bold'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
-      url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');
-    font-weight: 700;
+  :root {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    --hl-text: #0a0a0a;
+    --hl-text-muted: #52525b;
+    --hl-accent: #9b1f5a;
+    --hl-accent-contrast: #ffffff;
   }
 
   #storybook-preview-iframe {
@@ -75,12 +36,12 @@
 
   .sidebar-item svg,
   .sidebar-svg-icon {
-    color: #11100f !important;
+    color: var(--hl-text) !important;
   }
 
   .sidebar-item[data-selected='true'] svg,
   .sidebar-item[data-selected='true'] .sidebar-svg-icon {
-    color: #ffffff !important;
+    color: var(--hl-accent-contrast) !important;
   }
 
   /**
@@ -91,11 +52,11 @@
   .sidebar-subheading,
   button[data-action='collapse-ref'] {
     font-weight: 600 !important;
-    font-size: 16px !important;
-    letter-spacing: 0px !important;
-    line-height: 24px !important;
+    font-size: 13px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 20px !important;
     text-transform: none !important;
-    color: #11100f !important;
+    color: var(--hl-text) !important;
   }
 
   .sidebar-subheading button,
@@ -107,10 +68,30 @@
   .sidebar-item {
     align-items: center !important;
     font-weight: 400 !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     letter-spacing: -0.01em !important;
     line-height: 24px !important;
-    color: #11100f !important;
+    color: var(--hl-text) !important;
+    border-radius: 999px !important;
+  }
+
+  /*
+    Override Storybook's default hover (a saturated pink derived from
+    `colorSecondary`) with a subtle neutral surface tone. Matches the
+    `--surface-muted` token from `bebop/tokens.css`.
+  */
+  .sidebar-item:hover,
+  .sidebar-item:hover svg,
+  .sidebar-item:hover .sidebar-svg-icon {
+    background: #f2f2f4 !important;
+    color: var(--hl-text) !important;
+  }
+
+  .sidebar-item[data-selected='true']:hover,
+  .sidebar-item[data-selected='true']:hover svg,
+  .sidebar-item[data-selected='true']:hover .sidebar-svg-icon {
+    background: var(--hl-accent) !important;
+    color: var(--hl-accent-contrast) !important;
   }
 
   .sidebar-item a {
@@ -119,10 +100,11 @@
 
   .sidebar-item[data-selected='true'] {
     font-weight: 600 !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     letter-spacing: -0.01em !important;
     line-height: 24px !important;
-    color: #ffffff !important;
+    color: var(--hl-accent-contrast) !important;
+    background: var(--hl-accent) !important;
   }
 
   .sidebar-item > span:first-child,

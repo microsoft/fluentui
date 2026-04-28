@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
+import styles from '../../../../../../bebop/components/skeleton.module.css';
+import storySource from './SkeletonDefault.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
-  <Skeleton className="flex flex-col gap-3 w-full max-w-sm rounded-lg border bg-white border-gray-200 p-4">
-    <div className="flex items-center gap-3">
-      <SkeletonItem className="size-10 shrink-0 rounded-full bg-gray-200 animate-pulse" />
-      <div className="flex flex-1 flex-col gap-1.5">
-        <SkeletonItem className="h-3 w-3/5 rounded bg-gray-200 animate-pulse" />
-        <SkeletonItem className="h-3 w-2/5 rounded bg-gray-200 animate-pulse" />
+  <Skeleton className={`${styles.card} ${styles.demo}`}>
+    <div className={styles.row}>
+      <SkeletonItem className={styles.circle} />
+      <div className={`${styles.card} ${styles.demoFlex}`}>
+        <SkeletonItem className={`${styles.bar} ${styles.line60}`} />
+        <SkeletonItem className={`${styles.bar} ${styles.line40}`} />
       </div>
     </div>
-    <SkeletonItem className="h-3 w-full rounded bg-gray-200 animate-pulse" />
-    <SkeletonItem className="h-3 w-full rounded bg-gray-200 animate-pulse" />
-    <SkeletonItem className="h-3 w-4/5 rounded bg-gray-200 animate-pulse" />
+    <SkeletonItem className={styles.thumb} />
+    <SkeletonItem className={`${styles.bar} ${styles.line100}`} />
+    <SkeletonItem className={`${styles.bar} ${styles.line100}`} />
+    <SkeletonItem className={`${styles.bar} ${styles.line60}`} />
   </Skeleton>
 );
+
+Default.parameters = withStorySource(storySource);

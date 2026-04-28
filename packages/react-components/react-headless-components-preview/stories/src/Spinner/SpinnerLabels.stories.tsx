@@ -2,13 +2,29 @@ import * as React from 'react';
 import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerIosRegular } from '@fluentui/react-icons';
 
+import styles from '../../../../../../bebop/components/spinner.module.css';
+import storySource from './SpinnerLabels.stories?raw';
+import { withStorySource } from '../_helpers/withStorySource';
 export const Labels = (): React.ReactNode => (
-  <Spinner
-    className="flex items-center gap-2"
-    label="Loading..."
-    spinnerTail={{
-      className: 'flex animate-spin origin-center size-5 text-gray-900',
-      children: <SpinnerIosRegular className="size-full" />,
-    }}
-  />
+  <div className={styles.demoCol}>
+    <Spinner
+      className={styles.spinner}
+      label="Loading…"
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+    <Spinner
+      className={styles.column}
+      label="Saving changes"
+      labelPosition="below"
+      spinnerTail={{
+        className: styles.tail,
+        children: <SpinnerIosRegular />,
+      }}
+    />
+  </div>
 );
+
+Labels.parameters = withStorySource(storySource);
