@@ -83,7 +83,7 @@ import { VariantsDemo } from './VariantsDemo';
 
 <div className="warning-banner">
   <strong>⚠️ Preview Package:</strong> These components are in beta and APIs may change before stable release. Import
-  from <code>@fluentui/react-motion-components-preview</code>.
+  from <code>@fluentui/react-motion-components-preview</code>
 </div>
 
 ## Overview
@@ -100,66 +100,14 @@ The Motion Components package provides six **presence components** that handle t
 
 ### Available Components
 
-<table className="component-table">
-  <thead>
-    <tr>
-      <th>Component</th>
-      <th>Animation</th>
-      <th>Best For</th>
-      <th>GPU Optimized</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <strong>Fade</strong>
-      </td>
-      <td>Opacity transition</td>
-      <td>Tooltips, notifications, overlays, modals</td>
-      <td>✅ Yes</td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Scale</strong>
-      </td>
-      <td>Size grow/shrink</td>
-      <td>Popovers, menus, buttons, emphasis</td>
-      <td>✅ Yes</td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Collapse</strong>
-      </td>
-      <td>Height/width expansion</td>
-      <td>Accordions, expandable sections, details</td>
-      <td>⚠️ Partial (uses height)</td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Slide</strong>
-      </td>
-      <td>Directional movement</td>
-      <td>Drawers, panels, carousels, page transitions</td>
-      <td>✅ Yes</td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Blur</strong>
-      </td>
-      <td>Focus/defocus effect</td>
-      <td>Background dimming, depth, focus states</td>
-      <td>⚠️ Partial (uses filter)</td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Rotate</strong>
-      </td>
-      <td>3D rotation</td>
-      <td>Card flips, reveals, playful interactions</td>
-      <td>✅ Yes</td>
-    </tr>
-  </tbody>
-</table>
+| Component    | Animation              | Best For                                  |
+| ------------ | ---------------------- | ----------------------------------------- |
+| **Fade**     | Opacity transition     | Tooltips, notifications, overlays, modals |
+| **Scale**    | Size grow/shrink       | Popovers, menus, buttons, emphasis        |
+| **Collapse** | Height/width expansion | Accordions, expandable sections           |
+| **Slide**    | Directional movement   | Drawers, panels, carousels                |
+| **Blur**     | Focus/defocus effect   | Background dimming, depth                 |
+| **Rotate**   | 3D rotation            | Card flips, reveals, playful interactions |
 
 ### Timing Variants
 
@@ -175,16 +123,11 @@ Each component (except Blur and Rotate) comes with pre-configured timing variant
 
 ### Direction Support
 
-**Slide** supports directional movement via `outX` and `outY` props:
-
-- `outX="-20px"` — Slides in from left, out to left
-- `outX="20px"` — Slides in from right, out to right
-- `outY="-20px"` — Slides in from top, out to top
-- `outY="20px"` — Slides in from bottom, out to bottom
+**Slide** can move content in any direction — left, right, up, or down. This makes it versatile for drawers that slide in from the edge of the screen, panels that reveal from a specific side, or page transitions that move content horizontally.
 
 ### Choreography with Stagger
 
-**Stagger** coordinates multiple animations in sequence, creating a ripple effect. It's ideal for lists, grids, and any collection of items that should animate one after another.
+**Stagger** coordinates multiple animations in sequence, creating a cascading ripple effect — like items in a list appearing one after another instead of all at once. It's ideal for lists, grids, card layouts, and any group of elements that should animate in sequence.
 
 </div>
 
@@ -280,31 +223,23 @@ import {
 All components accept parameters to customize their behavior:
 
 ```tsx
-// Custom opacity range
+// Custom opacity range (e.g. fade to semi-transparent instead of invisible)
 <Fade visible={isVisible} outOpacity={0.5} inOpacity={1}>
   <Content />
 </Fade>
 
-// Custom scale values
-<Scale visible={isVisible} outScale={0.8} inScale={1}>
-  <Content />
-</Scale>
-
-// Custom slide direction and distance
+// Slide from a specific direction
 <Slide visible={isVisible} outX="100px">
   <Content />
 </Slide>
 
-// Horizontal collapse
+// Horizontal collapse (instead of default vertical)
 <Collapse visible={isVisible} orientation="horizontal">
   <Content />
 </Collapse>
-
-// Custom timing (overrides variant defaults)
-<Fade visible={isVisible} duration={300} easing="ease-out">
-  <Content />
-</Fade>
 ```
+
+See the Component Reference table below for all available parameters.
 
 ### Choreography with Stagger
 
