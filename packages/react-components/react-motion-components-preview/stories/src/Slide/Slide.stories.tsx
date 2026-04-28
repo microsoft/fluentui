@@ -1,7 +1,13 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import type { PresenceComponentProps } from '@fluentui/react-components';
+import { makeStyles, tokens, type PresenceComponentProps } from '@fluentui/react-components';
 import { Slide, type SlideParams } from '@fluentui/react-motion-components-preview';
+
+const useClasses = makeStyles({
+  wrapper: {
+    padding: tokens.spacingVerticalXL,
+  },
+});
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
@@ -12,9 +18,12 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
 ));
 
 export const DefaultSlide = (props: PresenceComponentProps & SlideParams): JSXElement => {
+  const classes = useClasses();
   return (
-    <Slide {...props}>
-      <LoremIpsum />
-    </Slide>
+    <div className={classes.wrapper}>
+      <Slide {...props}>
+        <LoremIpsum />
+      </Slide>
+    </div>
   );
 };
