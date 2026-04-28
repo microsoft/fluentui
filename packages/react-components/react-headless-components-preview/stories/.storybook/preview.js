@@ -5,7 +5,7 @@ import * as rootPreview from '../../../../../.storybook/preview';
 // Design tokens — mirrors the import in
 // apps/public-docsite-v9-headless/.storybook/preview.js so the per-package
 // storybook (built by `pr-website-deploy.yml`) renders identical stories.
-import '../../../../../theme/tokens.css';
+import '../../../../../apps/public-docsite-v9-headless/theme/tokens.css';
 
 // Custom docs page that renders the "Show code" panel with TSX | CSS tabs.
 // See `stories/src/_helpers/HeadlessDocsPage.tsx` for the rationale (Storybook's

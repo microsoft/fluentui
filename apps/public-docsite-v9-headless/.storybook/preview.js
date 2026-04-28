@@ -5,7 +5,7 @@ import * as rootPreview from '../../../.storybook/preview';
 // Design tokens (light + dark CSS custom properties on :root and
 // [data-theme="dark"]), plus a few base resets for body/html. Loaded once
 // for every story rendered in this Storybook.
-import '../../../theme/tokens.css';
+import '../theme/tokens.css';
 
 // Custom docs page that renders the "Show code" panel with TSX | CSS tabs.
 // See `packages/.../stories/src/_helpers/HeadlessDocsPage.tsx` for rationale.

@@ -7,7 +7,12 @@
   "implicitDependencies": [],
   "targets": {
     "build-storybook": {
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**", "{workspaceRoot}/theme/**"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        "{workspaceRoot}/apps/public-docsite-v9-headless/theme/**"
+      ]
     }
   }
 }
