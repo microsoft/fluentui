@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove @internal from MotionRefForwarder exports",
+  "packageName": "@fluentui/react-motion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
