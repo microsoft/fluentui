@@ -102,8 +102,8 @@ export const HeadlessDocsPage: React.FC = () => {
       <Subtitle />
       <Description />
       <aside style={disclaimerStyle} role="note">
-        <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is a
-        demonstration theme — feel free to swap it out with your own design system.
+        <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is
+        provided purely as a demonstration of one possible look.
       </aside>
 
       {primaryStory && (
