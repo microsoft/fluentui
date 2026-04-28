@@ -30,6 +30,9 @@ const useClasses = makeStyles({
   field: {
     flex: 1,
   },
+  cardHeaderText: {
+    margin: 0,
+  },
 });
 
 const LoremIpsum = () => (
@@ -56,7 +59,7 @@ export const Relaxed = (): JSXElement => {
         <Card className={classes.card}>
           <CardHeader
             header={
-              <Text as="h3" style={{ margin: 0 }} weight="semibold">
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
                 Lorem Ipsum
               </Text>
             }
