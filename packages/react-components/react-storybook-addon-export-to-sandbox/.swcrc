@@ -31,7 +31,7 @@
         }
       }
     },
-    "target": "es2019"
+    "target": "es2022"
   },
   "minify": false,
   "sourceMaps": true
