@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button, shorthands } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { OpenRegular } from '@fluentui/react-icons';
 import { Fade } from '@fluentui/react-motion-components-preview';
+import { useClasses } from './MotionIntroDemo.styles';
 
 const exampleCode = `import * as React from 'react';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
@@ -33,106 +35,6 @@ export default function Example() {
     </div>
   );
 }`;
-
-const useClasses = makeStyles({
-  wrapper: {
-    ...shorthands.borderRadius(tokens.borderRadiusLarge),
-    border: `2px solid ${tokens.colorBrandStroke1}`,
-    overflow: 'hidden',
-    marginBottom: '32px',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '16px 20px',
-    backgroundColor: tokens.colorNeutralBackground2,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
-  },
-  headerTitle: {
-    margin: '0',
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-    color: tokens.colorNeutralForeground1,
-  },
-  body: {
-    display: 'flex',
-    gap: '0',
-    '@media (max-width: 700px)': {
-      flexDirection: 'column',
-    },
-  },
-  demoPane: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '12px',
-    padding: '24px',
-    minWidth: '200px',
-    flex: '0 0 auto',
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRight: `1px solid ${tokens.colorNeutralStroke1}`,
-    '@media (max-width: 700px)': {
-      borderRight: 'none',
-      borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
-    },
-  },
-  card: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '16px 24px',
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    color: tokens.colorNeutralForeground1,
-    fontWeight: tokens.fontWeightSemibold,
-    fontSize: tokens.fontSizeBase300,
-    boxShadow: tokens.shadow4,
-  },
-  codePane: {
-    flex: '1 1 auto',
-    minWidth: '0',
-    padding: '16px 20px',
-    backgroundColor: tokens.colorNeutralBackground1,
-    overflow: 'auto',
-  },
-  code: {
-    display: 'block',
-    fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    color: tokens.colorNeutralForeground1,
-    whiteSpace: 'pre',
-    margin: '0',
-  },
-  footer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    gap: '12px',
-    padding: '12px 20px',
-    backgroundColor: tokens.colorNeutralBackground2,
-    borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
-    fontSize: tokens.fontSizeBase200,
-    color: tokens.colorNeutralForeground3,
-  },
-  prereqs: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '4px',
-    alignItems: 'center',
-  },
-  prereqCode: {
-    fontFamily: tokens.fontFamilyMonospace,
-    fontSize: tokens.fontSizeBase100,
-    backgroundColor: tokens.colorNeutralBackground4,
-    padding: '2px 6px',
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-  },
-});
 
 const stackblitzFiles: Record<string, string> = {
   '.stackblitzrc': JSON.stringify({}),
@@ -210,14 +112,14 @@ export default defineConfig({ plugins: [react()] })`,
   ),
 };
 
-function openInStackBlitz() {
-  const form = document.createElement('form');
+function openInStackBlitz(doc: Document) {
+  const form = doc.createElement('form');
   form.method = 'post';
   form.target = '_blank';
   form.action = `https://stackblitz.com/run?file=${encodeURIComponent('src/example.tsx')}`;
 
   const addField = (name: string, value: string) => {
-    const input = document.createElement('input');
+    const input = doc.createElement('input');
     input.type = 'hidden';
     input.name = name;
     input.value = value;
@@ -232,9 +134,9 @@ function openInStackBlitz() {
     addField(`project[files][${path}]`, content);
   });
 
-  document.body.appendChild(form);
+  doc.body.appendChild(form);
   form.submit();
-  document.body.removeChild(form);
+  doc.body.removeChild(form);
 }
 
 const codeSnippet = `import { Fade } from '@fluentui/react-motion-components-preview';
@@ -253,13 +155,24 @@ function MyComponent() {
 
 export const MotionIntroDemo: React.FC = () => {
   const classes = useClasses();
+  const { targetDocument } = useFluent();
   const [visible, setVisible] = React.useState(true);
+
+  const handleToggle = React.useCallback(() => {
+    setVisible(v => !v);
+  }, []);
+
+  const handleOpenStackBlitz = React.useCallback(() => {
+    if (targetDocument) {
+      openInStackBlitz(targetDocument);
+    }
+  }, [targetDocument]);
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
         <h3 className={classes.headerTitle}>Get started in 30 seconds</h3>
-        <Button appearance="subtle" icon={<OpenRegular />} size="small" onClick={openInStackBlitz}>
+        <Button appearance="subtle" icon={<OpenRegular />} size="small" onClick={handleOpenStackBlitz}>
           Try in StackBlitz
         </Button>
       </div>
@@ -268,7 +181,7 @@ export const MotionIntroDemo: React.FC = () => {
           <Fade visible={visible}>
             <div className={classes.card}>Hello, Motion! ✨</div>
           </Fade>
-          <Button appearance="primary" onClick={() => setVisible(v => !v)}>
+          <Button appearance="primary" onClick={handleToggle}>
             {visible ? 'Hide' : 'Show'}
           </Button>
         </div>

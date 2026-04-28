@@ -1,58 +1,7 @@
 import * as React from 'react';
-import { makeStyles, tokens, Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 import { createMotionComponent, createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-
-const useClasses = makeStyles({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '24px',
-    marginTop: '24px',
-    marginBottom: '24px',
-
-    '@media (max-width: 600px)': {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  panel: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '16px',
-    padding: '24px',
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground2,
-  },
-  title: {
-    margin: 0,
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-  },
-  subtitle: {
-    margin: 0,
-    fontSize: tokens.fontSizeBase200,
-    color: tokens.colorNeutralForeground3,
-    textAlign: 'center',
-  },
-  demoArea: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '80px',
-  },
-  card: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '16px 24px',
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusMedium,
-    fontWeight: tokens.fontWeightSemibold,
-    boxShadow: tokens.shadow4,
-  },
-});
+import { useClasses } from './MotionVsPresenceDemo.styles';
 
 // One-way motion: plays on mount
 const SlideIn = createMotionComponent({
@@ -83,6 +32,14 @@ export const MotionVsPresenceDemo: React.FC = () => {
   const [motionKey, setMotionKey] = React.useState(0);
   const [presenceVisible, setPresenceVisible] = React.useState(true);
 
+  const handleReplay = React.useCallback(() => {
+    setMotionKey(k => k + 1);
+  }, []);
+
+  const handleTogglePresence = React.useCallback(() => {
+    setPresenceVisible(v => !v);
+  }, []);
+
   return (
     <div className={classes.container}>
       <div className={classes.panel}>
@@ -93,7 +50,7 @@ export const MotionVsPresenceDemo: React.FC = () => {
             <div className={classes.card}>Slide In</div>
           </SlideIn>
         </div>
-        <Button onClick={() => setMotionKey(k => k + 1)}>Replay</Button>
+        <Button onClick={handleReplay}>Replay</Button>
       </div>
 
       <div className={classes.panel}>
@@ -104,7 +61,7 @@ export const MotionVsPresenceDemo: React.FC = () => {
             <div className={classes.card}>Fade</div>
           </FadePresence>
         </div>
-        <Button onClick={() => setPresenceVisible(v => !v)}>{presenceVisible ? 'Hide' : 'Show'}</Button>
+        <Button onClick={handleTogglePresence}>{presenceVisible ? 'Hide' : 'Show'}</Button>
       </div>
     </div>
   );

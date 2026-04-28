@@ -1,0 +1,103 @@
+'use client';
+
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+export const useClasses = makeStyles({
+  wrapper: {
+    borderRadius: tokens.borderRadiusLarge,
+    border: `2px solid ${tokens.colorBrandStroke1}`,
+    overflow: 'hidden',
+    marginBottom: '32px',
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '16px 20px',
+    backgroundColor: tokens.colorNeutralBackground2,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
+  },
+  headerTitle: {
+    margin: '0',
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground1,
+  },
+  body: {
+    display: 'flex',
+    gap: '0',
+    '@media (max-width: 700px)': {
+      flexDirection: 'column',
+    },
+  },
+  demoPane: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '12px',
+    padding: '24px',
+    minWidth: '200px',
+    flex: '0 0 auto',
+    backgroundColor: tokens.colorNeutralBackground1,
+    borderRight: `1px solid ${tokens.colorNeutralStroke1}`,
+    '@media (max-width: 700px)': {
+      borderRight: 'none',
+      borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
+    },
+  },
+  card: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '16px 24px',
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    color: tokens.colorNeutralForeground1,
+    fontWeight: tokens.fontWeightSemibold,
+    fontSize: tokens.fontSizeBase300,
+    boxShadow: tokens.shadow4,
+  },
+  codePane: {
+    flex: '1 1 auto',
+    minWidth: '0',
+    padding: '16px 20px',
+    backgroundColor: tokens.colorNeutralBackground1,
+    overflow: 'auto',
+  },
+  code: {
+    display: 'block',
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    color: tokens.colorNeutralForeground1,
+    whiteSpace: 'pre',
+    margin: '0',
+  },
+  footer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    gap: '12px',
+    padding: '12px 20px',
+    backgroundColor: tokens.colorNeutralBackground2,
+    borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground3,
+  },
+  prereqs: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '4px',
+    alignItems: 'center',
+  },
+  prereqCode: {
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase100,
+    backgroundColor: tokens.colorNeutralBackground4,
+    padding: '2px 6px',
+    borderRadius: tokens.borderRadiusSmall,
+  },
+});
