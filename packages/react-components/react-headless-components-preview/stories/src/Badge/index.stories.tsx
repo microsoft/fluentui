@@ -1,4 +1,4 @@
-import { Badge } from '@fluentui/react-headless-components-preview';
+import { Badge } from '@fluentui/react-headless-components-preview/badge';
 
 import descriptionMd from './BadgeDescription.md';
 

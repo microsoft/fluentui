@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Select } from '@fluentui/react-headless-components-preview';
+import { Select } from '@fluentui/react-headless-components-preview/select';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 
 export const Default = (): React.ReactNode => {

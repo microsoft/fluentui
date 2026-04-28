@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider } from '@fluentui/react-headless-components-preview';
+import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
 export const Default = (): React.ReactNode => (
   <div className="flex flex-col max-w-48 w-full gap-2 *:my-0">

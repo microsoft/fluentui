@@ -6,7 +6,7 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/dialog';
 
 /**
  * Use `DialogTrigger` with `action="close"` to wire up a close button anywhere

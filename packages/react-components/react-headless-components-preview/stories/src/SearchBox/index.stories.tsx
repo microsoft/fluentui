@@ -1,4 +1,4 @@
-import { SearchBox } from '@fluentui/react-headless-components-preview';
+import { SearchBox } from '@fluentui/react-headless-components-preview/search-box';
 
 import descriptionMd from './SearchBoxDescription.md';
 

@@ -6,7 +6,7 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/dialog';
 
 /**
  * Dialogs can be nested. The inner `Dialog` detects that it is inside a parent

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Mon, 30 Mar 2026 14:37:41 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.7.0)
+
+Thu, 23 Apr 2026 14:21:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.6.23..@fluentui/react-message-bar_v9.7.0)
+
+### Minor changes
+
+- feat(react-message-bar): add useMessageBarBase_unstable hook ([PR #35908](https://github.com/microsoft/fluentui/pull/35908) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.9.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-motion to v9.15.0 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.4 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-link to v9.8.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.6.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.6.23)
 

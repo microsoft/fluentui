@@ -2,6 +2,727 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:20:56 GMT",
+      "tag": "@fluentui/react-components_v9.73.8",
+      "version": "9.73.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4adb3ad77d16b40a79f12e3a3afd78cb09bf9c6a",
+            "comment": "fix: add focusgroupstart property to baseElementProperties"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "81852161f3ed30c461b2c8e7af30b8d0b4387fa1",
+            "comment": "fix: Combobox now expands/collapses when clicking in the right padding area (the dead zone between the chevron and the right border)"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "eb054f28154691c4c9dc27b2a79725dccdb90d47",
+            "comment": "fix: use subtle appearance for radio button by default"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "a8c2f2d833c1456244655207b23f044992dae6fb",
+            "comment": "fix: export base hook types"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "faf6311ea1b5dd72b70c4acb9356e60c8d83f6ff",
+            "comment": "fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "a771e440bcd6513b9fc9f372ceabb458a5be2f0c",
+            "comment": "fix: prevent spreading of custom props on html element"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5a2ed7e2f471cf05a06d13f88893db50cb49f51b",
+            "comment": "fix: prevent keyboard focus from entering a collapsing panel"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update Switch component to conditionally render CircleFilled in indicator"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fc37669010c08b57352656569c789974ff61b990",
+            "comment": "fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "48ff10fe4f0fe4c1ab9999a2544d6d49740728f3",
+            "comment": "refactor: remove Griffel dependency from usePortalMountNode"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: add mising base hook export"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: add missing base hook export"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "a2d20711a3f628284eafb8abb771d4948f82a2ad",
+            "comment": "fix(react-breadcrumb): wrong appearance applied by default to BreadcrumbButton"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c1144c8a16c3ef5702557825cef3a5bc5c963085",
+            "comment": "fix: isSafeUrl utility"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: add CollapseParams to the motion slot type"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c93849cf045adf92b80a2a4fa8efc615f94f9a86",
+            "comment": "feat: expose base hooks for Toolbar components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "020511b1bc6245cadd6cdda36fd194104baced0b",
+            "comment": "feat(react-message-bar): add useMessageBarBase_unstable hook"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: expose motion params as direct props on motion slot types"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ba68f3ae34eca3000c4c0432ba07fd5b95c7001d",
+            "comment": "fix(react-motion): apply MotionComponent type to presence definition"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: add ScaleParams to the motion slot type"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "fix: update type for drawerMotion slot"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: add CollapseParams to the motion slot type"
+          }
+        ],
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "20b08c0e037ff33a63055b88b68ae793ab54f1da",
+            "comment": "Add cypress e2e tests for TeachingPopover"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2026 15:52:39 GMT",
       "tag": "@fluentui/react-components_v9.73.7",
       "version": "9.73.7",

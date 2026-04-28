@@ -116,20 +116,6 @@ test.describe('Accordion item', () => {
     await expect(firstItem).toHaveJSProperty('expanded', true);
   });
 
-  test('should set internal properties to match the id when provided', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const button = element.locator('button');
-
-    await fastPage.setTemplate(/* html */ `
-      <fluent-accordion>
-        <fluent-accordion-item id="foo">Item 1</fluent-accordion-item>
-      </fluent-accordion>
-    `);
-
-    await expect(element.locator(`[role="region"]`)).toHaveAttribute('aria-labelledby', 'foo');
-    await expect(button).toHaveId('foo');
-  });
-
   for (const size of Object.values(AccordionItemSize)) {
     test(`should set the \`size\` property to "${size}" when the attribute is set to "${size}"`, async ({
       fastPage,

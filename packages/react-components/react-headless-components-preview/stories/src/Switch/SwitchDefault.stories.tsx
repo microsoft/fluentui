@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch } from '@fluentui/react-headless-components-preview';
+import { Switch } from '@fluentui/react-headless-components-preview/switch';
 
 const classes = {
   root: 'relative inline-flex cursor-pointer items-center gap-3 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',

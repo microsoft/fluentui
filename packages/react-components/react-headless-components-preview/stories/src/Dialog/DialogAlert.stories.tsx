@@ -6,7 +6,7 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/dialog';
 
 /**
  * An alert dialog uses `modalType="alert"`, which sets `role="alertdialog"` on the surface.

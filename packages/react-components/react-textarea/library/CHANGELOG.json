@@ -2,6 +2,47 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:08 GMT",
+      "tag": "@fluentui/react-textarea_v9.7.2",
+      "version": "9.7.2",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-field to v9.5.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2026 15:52:43 GMT",
       "tag": "@fluentui/react-textarea_v9.7.1",
       "version": "9.7.1",

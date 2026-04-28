@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:21 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.23",
+      "version": "1.0.0-alpha.23",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Jan 2026 17:06:30 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.23",
       "version": "1.0.0-alpha.23",
