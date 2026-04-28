@@ -19,7 +19,7 @@ import { VariantsDemo } from './VariantsDemo';
     margin: 0 0 16px 0;
     font-size: 2rem;
   }
-  .components-hero p {
+  .components-hero .hero-subtitle {
     font-size: 1.1rem;
     color: ${tokens.colorNeutralForeground2};
     max-width: 600px;
@@ -75,7 +75,10 @@ import { VariantsDemo } from './VariantsDemo';
 
 <div className="components-hero">
   <h1>Motion Components</h1>
-  <p>Pre-built presence components for common UI animation patterns. Ready to use with intelligent defaults.</p>
+  <div className="hero-subtitle">
+    Pre-built presence animations for common UI patterns — ready to use with intelligent defaults. Part of the{' '}
+    <a href="?path=/docs/motion-introduction--docs">Fluent Motion System</a>.
+  </div>
 </div>
 
 <div className="warning-banner">
