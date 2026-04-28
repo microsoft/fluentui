@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, type PresenceComponentProps } from '@fluentui/react-components';
-import { Collapse, type CollapseParams } from '@fluentui/react-motion-components-preview';
+import { Blur, type BlurParams } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   wrapper: {
@@ -17,13 +17,13 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultCollapse = (props: PresenceComponentProps & CollapseParams): JSXElement => {
+export const DefaultBlur = (props: PresenceComponentProps & BlurParams): JSXElement => {
   const classes = useClasses();
   return (
     <div className={classes.wrapper}>
-      <Collapse {...props}>
+      <Blur {...props}>
         <LoremIpsum />
-      </Collapse>
+      </Blur>
     </div>
   );
 };

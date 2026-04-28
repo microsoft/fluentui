@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, type PresenceComponentProps } from '@fluentui/react-components';
-import { Collapse, type CollapseParams } from '@fluentui/react-motion-components-preview';
+import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   wrapper: {
@@ -17,13 +17,13 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultCollapse = (props: PresenceComponentProps & CollapseParams): JSXElement => {
+export const DefaultRotate = (props: PresenceComponentProps & RotateParams): JSXElement => {
   const classes = useClasses();
   return (
     <div className={classes.wrapper}>
-      <Collapse {...props}>
+      <Rotate {...props}>
         <LoremIpsum />
-      </Collapse>
+      </Rotate>
     </div>
   );
 };
