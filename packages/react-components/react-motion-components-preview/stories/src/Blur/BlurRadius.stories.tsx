@@ -1,6 +1,18 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Card, CardFooter, CardHeader, makeStyles, tokens, Button } from '@fluentui/react-components';
+import {
+  Button,
+  Card,
+  CardFooter,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 import { Blur } from '@fluentui/react-motion-components-preview';
 import BlurRadiusDescription from './BlurRadius.stories.md';
 
@@ -13,9 +25,17 @@ const useClasses = makeStyles({
   },
   card: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     padding: tokens.spacingVerticalXL,
+    gap: tokens.spacingVerticalM,
+  },
+  cellNormal: {
+    fontWeight: tokens.fontWeightRegular,
+  },
+  cellBold: {
+    fontWeight: tokens.fontWeightBold,
   },
   controls: {
     display: 'flex',
@@ -35,7 +55,7 @@ const blurRadiusCombinations = [
 
 export const Radius = (): JSXElement => {
   const classes = useClasses();
-  const [visibleStates, setVisibleStates] = React.useState<boolean[]>(blurRadiusCombinations.map(() => true));
+  const [visibleStates, setVisibleStates] = React.useState<boolean[]>(() => blurRadiusCombinations.map(() => true));
 
   const toggleAll = () => {
     setVisibleStates(prev => prev.map(state => !state));
@@ -50,38 +70,32 @@ export const Radius = (): JSXElement => {
       <div className={classes.container}>
         {blurRadiusCombinations.map((option, index) => {
           const isVisible = visibleStates[index];
-          const outRadiusCell = <td style={{ fontWeight: isVisible ? 'normal' : 'bold' }}>{option.outRadius}</td>;
-          const inRadiusCell = <td style={{ fontWeight: isVisible ? 'bold' : 'normal' }}>{option.inRadius}</td>;
-          const cardHeader = (
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">outRadius</th>
-                  <th scope="col">inRadius</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  {outRadiusCell}
-                  {inRadiusCell}
-                </tr>
-              </tbody>
-            </table>
-          );
           return (
             <Card key={index} className={classes.card}>
-              <CardHeader header={cardHeader} />
-              <Blur
-                visible={visibleStates[index]}
-                outRadius={option.outRadius}
-                inRadius={option.inRadius}
-                animateOpacity={false}
-              >
+              <Table size="small" noNativeElements aria-label="Blur radius values">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>outRadius</TableHeaderCell>
+                    <TableHeaderCell>inRadius</TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className={isVisible ? classes.cellNormal : classes.cellBold}>
+                      {option.outRadius}
+                    </TableCell>
+                    <TableCell className={isVisible ? classes.cellBold : classes.cellNormal}>
+                      {option.inRadius}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+              <Blur visible={isVisible} outRadius={option.outRadius} inRadius={option.inRadius} animateOpacity={false}>
                 <div>Lorem ipsum dolor sit amet</div>
               </Blur>
               <CardFooter>
                 <Button appearance="primary" onClick={() => toggleSingle(index)}>
-                  {visibleStates[index] ? 'Hide' : 'Show'}
+                  {isVisible ? 'Hide' : 'Show'}
                 </Button>
               </CardFooter>
             </Card>
