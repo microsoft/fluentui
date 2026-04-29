@@ -136,13 +136,13 @@ export const MotionSlotCustomize = (): JSXElement => {
 
       <div className={classes.card}>
         {/* Tune the existing motion by passing params directly on the slot */}
-        <PulseIndicator pulseMotion={{ duration: motionTokens.durationFast }}>
+        <PulseIndicator pulseMotion={{ duration: motionTokens.durationUltraSlow * 2 }}>
           <div className={classes.indicator} />
         </PulseIndicator>
         <span className={classes.label}>
           Direct params
           <br />
-          <code>{'{ duration: 100 }'}</code>
+          <code>{'{ duration: motionTokens.durationUltraSlow * 2 }'}</code>
         </span>
       </div>
 

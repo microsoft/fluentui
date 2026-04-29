@@ -161,7 +161,6 @@ const DialogExample = () => {
         <Dialog
           surfaceMotion={{
             children: (_, props) => <SlideDialogMotion {...props}>{props.children}</SlideDialogMotion>,
-            // children: (_, props) => <CustomDialogMotion {...props}>{props.children}</CustomDialogMotion>,
           }}
         >
           <DialogTrigger disableButtonEnhancement>
@@ -228,7 +227,6 @@ const DrawerExample = () => {
       <div className={classes.drawerContainer}>
         <InlineDrawer
           surfaceMotion={{ children: (_, props) => <CustomSlideMotion {...props} /> }}
-          // surfaceMotion={{ children: (_, props) => <SoftCloseDrawerMotion {...props} /> }}
           separator
           open={isOpen}
           style={{ backgroundColor: tokens.colorNeutralBackground6, marginLeft: '-5%', paddingLeft: '5%' }}

@@ -79,7 +79,7 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'end',
+    justifyContent: 'center',
     gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,

@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '24px',
     maxWidth: '680px',
+    scrollbarGutter: 'stable',
   },
   controls: {
     display: 'flex',
@@ -49,6 +50,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '8px',
     flex: 1,
+    minWidth: 0,
   },
   section: {
     display: 'flex',
@@ -57,6 +59,9 @@ const useStyles = makeStyles({
     padding: '12px',
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    overflow: 'hidden',
+    overflowWrap: 'break-word',
+    wordBreak: 'break-word',
   },
   codeBlock: {
     fontFamily: tokens.fontFamilyMonospace,
@@ -65,6 +70,17 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     padding: '8px 12px',
     whiteSpace: 'pre',
+  },
+  accordionContainer: {
+    minWidth: 0,
+    overflow: 'hidden',
+  },
+  constrainedText: {
+    minWidth: 0,
+    display: 'block',
+    overflow: 'hidden',
+    overflowWrap: 'break-word',
+    wordBreak: 'break-word',
   },
 });
 
@@ -196,30 +212,34 @@ export const DirectParams = (): JSXElement => {
           Accordion (<code>{'collapseMotion: Slot<PresenceMotionSlotProps<CollapseParams>>'}</code>)
         </Text>
         <Text size={200}>Same pattern — different param shape (CollapseParams):</Text>
-        <Accordion collapsible>
-          <AccordionItem value="1">
-            <AccordionHeader>Panel A — tweaks via direct params</AccordionHeader>
-            <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
-              <Text>
-                Expand/collapse timing controlled by{' '}
-                <code>
-                  duration={'{'}duration{'}'}
-                </code>{' '}
-                and{' '}
-                <code>
-                  animateOpacity={'{'}animateOpacity{'}'}
-                </code>{' '}
-                on <code>collapseMotion</code>.
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem value="2">
-            <AccordionHeader>Panel B</AccordionHeader>
-            <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
-              <Text>Panel B content — shares the same motion params.</Text>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
+        <div className={classes.accordionContainer}>
+          <Accordion collapsible>
+            <AccordionItem value="1">
+              <AccordionHeader>Panel A — tweaks via direct params</AccordionHeader>
+              <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
+                <div className={classes.constrainedText}>
+                  <Text>
+                    Expand/collapse timing controlled by <wbr />
+                    <code>
+                      duration={'{'}duration{'}'}
+                    </code>{' '}
+                    and <wbr />
+                    <code>
+                      animateOpacity={'{'}animateOpacity{'}'}
+                    </code>{' '}
+                    on <code>collapseMotion</code>.
+                  </Text>
+                </div>
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem value="2">
+              <AccordionHeader>Panel B</AccordionHeader>
+              <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
+                <Text>Panel B content — shares the same motion params.</Text>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </div>
         <div className={classes.codeBlock}>
           {`<AccordionPanel
   collapseMotion={{
@@ -235,30 +255,32 @@ export const DirectParams = (): JSXElement => {
           Tree (<code>{'collapseMotion: Slot<PresenceMotionSlotProps<CollapseParams>>'}</code>)
         </Text>
         <Text size={200}>Same CollapseParams shape, applied at subtree level:</Text>
-        <Tree aria-label="Direct params demo">
-          <TreeItem itemType="branch">
-            <TreeItemLayout>Team A</TreeItemLayout>
-            <Tree collapseMotion={{ duration, animateOpacity }}>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>Alice</TreeItemLayout>
-              </TreeItem>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>Bob</TreeItemLayout>
-              </TreeItem>
-            </Tree>
-          </TreeItem>
-          <TreeItem itemType="branch">
-            <TreeItemLayout>Team B</TreeItemLayout>
-            <Tree collapseMotion={{ duration, animateOpacity }}>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>Carol</TreeItemLayout>
-              </TreeItem>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>Dan</TreeItemLayout>
-              </TreeItem>
-            </Tree>
-          </TreeItem>
-        </Tree>
+        <div className={classes.accordionContainer}>
+          <Tree aria-label="Direct params demo">
+            <TreeItem itemType="branch">
+              <TreeItemLayout>Team A</TreeItemLayout>
+              <Tree collapseMotion={{ duration, animateOpacity }}>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Alice</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Bob</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>Team B</TreeItemLayout>
+              <Tree collapseMotion={{ duration, animateOpacity }}>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Carol</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>Dan</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        </div>
         <div className={classes.codeBlock}>
           {`<Tree
   collapseMotion={{
