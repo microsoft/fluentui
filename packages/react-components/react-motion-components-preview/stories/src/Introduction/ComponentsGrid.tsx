@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
-import { Fade, Scale, Collapse, Slide, Blur, Rotate } from '@fluentui/react-motion-components-preview';
+import {
+  FadeRelaxed,
+  ScaleRelaxed,
+  CollapseRelaxed,
+  SlideRelaxed,
+  Blur,
+  Rotate,
+} from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   grid: {
@@ -35,19 +42,15 @@ const useClasses = makeStyles({
   demoBox: {
     width: '50px',
     height: '50px',
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusSmall,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: tokens.colorNeutralForeground1,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
-  },
-  button: {
-    minWidth: 'auto',
-    padding: '4px 12px',
-    fontSize: tokens.fontSizeBase200,
   },
 });
 
@@ -64,7 +67,7 @@ const ComponentCard: React.FC<ComponentCardProps> = ({ name, children }) => {
     <div className={classes.card}>
       <h4 className={classes.name}>{name}</h4>
       <div className={classes.demoArea}>{children(visible)}</div>
-      <Button className={classes.button} size="small" onClick={() => setVisible(v => !v)}>
+      <Button appearance="primary" size="small" onClick={() => setVisible(v => !v)}>
         {visible ? 'Hide' : 'Show'}
       </Button>
     </div>
@@ -78,33 +81,33 @@ export const ComponentsGrid: React.FC = () => {
     <div className={classes.grid}>
       <ComponentCard name="Fade">
         {visible => (
-          <Fade visible={visible}>
+          <FadeRelaxed visible={visible}>
             <div className={classes.demoBox}>Fade</div>
-          </Fade>
+          </FadeRelaxed>
         )}
       </ComponentCard>
 
       <ComponentCard name="Scale">
         {visible => (
-          <Scale visible={visible}>
+          <ScaleRelaxed visible={visible}>
             <div className={classes.demoBox}>Scale</div>
-          </Scale>
+          </ScaleRelaxed>
         )}
       </ComponentCard>
 
       <ComponentCard name="Collapse">
         {visible => (
-          <Collapse visible={visible}>
+          <CollapseRelaxed visible={visible}>
             <div className={classes.demoBox}>Collapse</div>
-          </Collapse>
+          </CollapseRelaxed>
         )}
       </ComponentCard>
 
       <ComponentCard name="Slide">
         {visible => (
-          <Slide visible={visible}>
+          <SlideRelaxed visible={visible}>
             <div className={classes.demoBox}>Slide</div>
-          </Slide>
+          </SlideRelaxed>
         )}
       </ComponentCard>
 
@@ -118,7 +121,7 @@ export const ComponentsGrid: React.FC = () => {
 
       <ComponentCard name="Rotate">
         {visible => (
-          <Rotate visible={visible} outAngle={-90} inAngle={0} axis="y">
+          <Rotate visible={visible} outAngle={-90} inAngle={0} axis="z">
             <div className={classes.demoBox}>Rotate</div>
           </Rotate>
         )}
