@@ -23,12 +23,15 @@ async function performTest() {
     logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
     // Install dependencies, using the minimum TS version supported for consumers
+    // @griffel/react is pinned to <1.6.0 because 1.6.x switched to a default React import
+    // which requires esModuleInterop — a flag we don't mandate for consumers.
     const dependencies = [
       '@types/react@17',
       '@types/react-dom@17',
       'react@17',
       'react-dom@17',
       `typescript@${tsVersion}`,
+      '@griffel/react@~1.5.32',
     ].join(' ');
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
