@@ -16,7 +16,6 @@ import {
   Field,
   makeStyles,
   Slider,
-  Switch,
   Text,
   tokens,
   Tree,
@@ -28,35 +27,36 @@ const useStyles = makeStyles({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '24px',
+    gap: tokens.spacingVerticalL,
+    width: '100%',
     maxWidth: '800px',
     scrollbarGutter: 'stable',
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
-    padding: '12px',
+    gap: tokens.spacingVerticalS,
+    padding: tokens.spacingVerticalM,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
   },
   row: {
     display: 'flex',
-    gap: '20px',
+    gap: tokens.spacingHorizontalL,
     alignItems: 'start',
   },
   column: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
+    gap: tokens.spacingVerticalS,
     flex: 1,
     minWidth: 0,
   },
   section: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
-    padding: '12px',
+    gap: tokens.spacingVerticalS,
+    padding: tokens.spacingVerticalM,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     overflow: 'hidden',
@@ -70,7 +70,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     borderRadius: tokens.borderRadiusMedium,
-    padding: '8px 12px',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
     whiteSpace: 'pre',
     overflow: 'auto',
   },
@@ -100,10 +100,7 @@ const useStyles = makeStyles({
 export const DirectParams = (): JSXElement => {
   const classes = useStyles();
 
-  // Shared controls driving all three sections
   const [duration, setDuration] = React.useState(600);
-  const [animateOpacity, setAnimateOpacity] = React.useState(true);
-  // Dialog-specific
   const [outScale, setOutScale] = React.useState(0.5);
 
   return (
@@ -115,11 +112,6 @@ export const DirectParams = (): JSXElement => {
         <Field label={`Dialog outScale: ${outScale.toFixed(2)}`}>
           <Slider min={0} max={1} step={0.05} value={outScale} onChange={(_, data) => setOutScale(data.value)} />
         </Field>
-        <Switch
-          label="Accordion/Tree animateOpacity"
-          checked={animateOpacity}
-          onChange={(_, data) => setAnimateOpacity(data.checked)}
-        />
       </div>
 
       <div className={classes.section}>
@@ -220,19 +212,17 @@ export const DirectParams = (): JSXElement => {
           <Accordion collapsible>
             <AccordionItem value="1">
               <AccordionHeader>Panel A — tweaks via direct params</AccordionHeader>
-              <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
+              <AccordionPanel collapseMotion={{ duration }}>
                 <div className={classes.constrainedText}>
                   <Text>
-                    Expand/collapse timing controlled by
-                    <br />
-                    <code>duration</code> and <code>animateOpacity</code>
+                    Expand/collapse timing controlled by <code>duration</code>
                   </Text>
                 </div>
               </AccordionPanel>
             </AccordionItem>
             <AccordionItem value="2">
               <AccordionHeader>Panel B</AccordionHeader>
-              <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
+              <AccordionPanel collapseMotion={{ duration }}>
                 <Text>Panel B content — shares the same motion params.</Text>
               </AccordionPanel>
             </AccordionItem>
@@ -242,7 +232,6 @@ export const DirectParams = (): JSXElement => {
           {`<AccordionPanel
   collapseMotion={{
     duration: ${duration},
-    animateOpacity: ${animateOpacity},
   }}
 >`}
         </div>
@@ -257,7 +246,7 @@ export const DirectParams = (): JSXElement => {
           <Tree aria-label="Direct params demo">
             <TreeItem itemType="branch">
               <TreeItemLayout>Team A</TreeItemLayout>
-              <Tree collapseMotion={{ duration, animateOpacity }}>
+              <Tree collapseMotion={{ duration }}>
                 <TreeItem itemType="leaf">
                   <TreeItemLayout>Alice</TreeItemLayout>
                 </TreeItem>
@@ -268,7 +257,7 @@ export const DirectParams = (): JSXElement => {
             </TreeItem>
             <TreeItem itemType="branch">
               <TreeItemLayout>Team B</TreeItemLayout>
-              <Tree collapseMotion={{ duration, animateOpacity }}>
+              <Tree collapseMotion={{ duration }}>
                 <TreeItem itemType="leaf">
                   <TreeItemLayout>Carol</TreeItemLayout>
                 </TreeItem>
@@ -283,7 +272,6 @@ export const DirectParams = (): JSXElement => {
           {`<Tree
   collapseMotion={{
     duration: ${duration},
-    animateOpacity: ${animateOpacity},
   }}
 >`}
         </div>
@@ -294,6 +282,7 @@ export const DirectParams = (): JSXElement => {
 
 DirectParams.storyName = 'Direct params';
 DirectParams.parameters = {
+  layout: 'padded',
   docs: {
     description: {
       story:
