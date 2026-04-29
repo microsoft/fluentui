@@ -160,8 +160,12 @@ This analyzer is complementary — it uses the React Compiler itself to determin
 
 ```
 src/
-├── cli.ts                — CLI entry: arg parsing → command dispatch → report
-├── args.ts               — yargs subcommand definitions and validation
+├── cli.ts                — CLI entry: yargs setup and command registration
+├── commands/
+│   ├── shared.ts         — Shared options builder, path/concurrency validation, defaults
+│   ├── directives.ts     — CommandModule for 'directives' (builder + handler)
+│   └── coverage.ts       — CommandModule for 'coverage' (builder + handler)
+├── discovery.ts          — File discovery utilities (findPackageName, glob helpers)
 ├── analyzer.ts           — Directive engine: parsing, source stripping, babel transforms, event correlation
 ├── coverage-analyzer.ts  — Coverage engine: runs compiler on all files, captures per-function events
 ├── reporter.ts           — Directive report generation (grouped by package, then by status)
