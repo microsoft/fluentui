@@ -23,14 +23,6 @@ async function performTest() {
     tempPaths = prepareTempDirs(`${testName}-`);
     logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
-    // Pin @griffel/react via resolutions so yarn can't hoist 1.6.x into nested node_modules.
-    // 1.6.x switched src/*.d.ts to a default React import which requires esModuleInterop —
-    // a flag we don't mandate for consumers. See microsoft/griffel#863.
-    const pkgJsonPath = path.join(tempPaths.testApp, 'package.json');
-    const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
-    pkgJson.resolutions = { ...pkgJson.resolutions, '@griffel/react': '1.5.32' };
-    fs.writeFileSync(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
-
     // Install dependencies, using the minimum TS version supported for consumers
     const dependencies = [
       '@types/react@17',
@@ -41,6 +33,14 @@ async function performTest() {
     ].join(' ');
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
+
+    // Pin @griffel/react via resolutions so yarn can't nest 1.6.x inside @fluentui/react-components.
+    // 1.6.x switched src/*.d.ts to a default React import which requires esModuleInterop —
+    // a flag we don't mandate for consumers. See microsoft/griffel#863.
+    const pkgJsonPath = path.join(tempPaths.testApp, 'package.json');
+    const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
+    pkgJson.resolutions = { ...pkgJson.resolutions, '@griffel/react': '1.5.32' };
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
 
     const packedPackages = await packProjectPackages(logger, '@fluentui/react-components');
     await addResolutionPathsForProjectPackages(tempPaths.testApp);
