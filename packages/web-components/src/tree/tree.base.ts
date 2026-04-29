@@ -164,8 +164,7 @@ export class BaseTree extends FASTElement {
 
   /**
    * All descendant tree items in DOM order, recursively flattened from
-   * {@link childTreeItems}. Items opted out of focusgroup navigation via
-   * `focusgroup="none"` are excluded.
+   * {@link childTreeItems}.
    */
   protected get descendantTreeItems(): BaseTreeItem[] {
     const result: BaseTreeItem[] = [];
@@ -174,9 +173,6 @@ export class BaseTree extends FASTElement {
         return;
       }
       for (const item of items) {
-        if (item.getAttribute('focusgroup')?.includes('none')) {
-          continue;
-        }
         result.push(item);
         visit(item.childTreeItems);
       }

@@ -186,11 +186,26 @@ export class BaseTreeItem extends FASTElement {
   }
 
   /**
-   * Whether the tree is nested
+   * Whether the tree item is nested
    * @internal
    */
   get isNestedItem() {
     return isTreeItem(this.parentElement);
+  }
+
+  /**
+   * Whether the tree item is nested in a collapsed tree item.
+   * @internal
+   */
+  get isHidden(): boolean {
+    let parent = this.parentElement;
+    while (isTreeItem(parent)) {
+      if (!parent.expanded) {
+        return true;
+      }
+      parent = parent.parentElement;
+    }
+    return false;
   }
 
   /** @internal */
