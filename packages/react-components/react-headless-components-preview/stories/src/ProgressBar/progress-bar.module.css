@@ -14,7 +14,7 @@
   transition: width var(--duration-medium) var(--ease-standard);
 }
 
-.progress-bar-module__success--yG\+Ae .fill {
+.success .fill {
   background: var(--success);
 }
 

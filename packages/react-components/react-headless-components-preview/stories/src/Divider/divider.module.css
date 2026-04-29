@@ -1,7 +1,7 @@
 /* Headless Divider renders <root><wrapper>{children}</wrapper></root>.
    The line itself comes from ::before / ::after on the root. */
 
-.divider-module__divider--Qmh\+f {
+.divider {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -9,8 +9,8 @@
   color: var(--text-faint);
 }
 
-.divider-module__divider--Qmh\+f::before,
-.divider-module__divider--Qmh\+f::after {
+.divider::before,
+.divider::after {
   content: '';
   flex: 1;
   height: 1px;
@@ -18,12 +18,12 @@
 }
 
 /* Start: short 8 px stub before content, full line after. */
-.divider-module__divider--Qmh\+f.start::before {
+.divider.start::before {
   flex: 0 0 8px;
 }
 
 /* End: full line before content, short 8 px stub after. */
-.divider-module__divider--Qmh\+f.end::after {
+.divider.end::after {
   flex: 0 0 8px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 /* Sentence-case content (icon + text) used inside dividers. */
-.content- {
+.content {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -57,7 +57,7 @@
   white-space: nowrap;
 }
 
-.content- svg {
+.content svg {
   width: 14px;
   height: 14px;
 }
@@ -126,7 +126,7 @@
   color: var(--text);
 }
 
-.verticalGroup- {
+.verticalGroup {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
@@ -172,7 +172,7 @@
   background: var(--border);
 }
 
-.divider-module__labelledText--L\+wxQ {
+.labelledText {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;

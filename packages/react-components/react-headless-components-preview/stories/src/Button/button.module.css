@@ -76,13 +76,13 @@
 }
 
 /* Outline — bordered transparent */
-.button-module__outline--gaC\+9 {
+.outline {
   background: transparent;
   color: var(--text);
   border-color: var(--border-strong);
 }
 
-.button-module__outline--gaC\+9:hover {
+.outline:hover {
   background: var(--surface-muted);
   border-color: var(--text);
 }

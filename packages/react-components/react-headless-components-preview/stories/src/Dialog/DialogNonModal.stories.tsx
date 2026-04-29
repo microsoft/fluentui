@@ -26,7 +26,7 @@ export const NonModal = (): React.ReactNode => (
         </button>
       </DialogTrigger>
 
-      <DialogSurface className={styles.alertSurface}>
+      <DialogSurface className={`${styles.surface} ${styles.alertSurface}`}>
         <DialogBody className={styles.body}>
           <DialogTitle className={styles.title}>Non-modal</DialogTitle>
           <p className={styles.copy}>

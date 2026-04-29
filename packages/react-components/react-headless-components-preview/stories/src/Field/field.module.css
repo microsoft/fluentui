@@ -11,7 +11,7 @@
   color: var(--text);
 }
 
-.field-module__hint--jh\+Qf {
+.hint {
   font-size: 12px;
   color: var(--text-muted);
 }
@@ -31,7 +31,7 @@
   color: var(--warning);
 }
 
-.field-module__messageSuccess--H\+7ls {
+.messageSuccess {
   color: var(--success);
 }
 

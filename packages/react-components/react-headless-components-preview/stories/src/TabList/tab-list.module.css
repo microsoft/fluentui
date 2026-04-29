@@ -1,4 +1,4 @@
-.tabs- {
+.tabs {
   display: flex;
   gap: 4px;
   padding: 4px;
@@ -6,7 +6,7 @@
   border-radius: var(--radius-pill);
 }
 
-.tab-list-module__tabsVertical--HTX\+H {
+.tabsVertical {
   flex-direction: column;
   border-radius: var(--radius-lg);
   width: 200px;
@@ -27,7 +27,7 @@
   transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
 }
 
-.tab-list-module__tabsVertical--HTX\+H .tab {
+.tabsVertical .tab {
   border-radius: var(--radius-md);
 }
 

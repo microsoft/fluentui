@@ -87,7 +87,7 @@
   background: var(--brand-strong);
 }
 
-.dialog-module__row--0\+lMS {
+.row {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -104,7 +104,7 @@
   margin-bottom: 16px;
 }
 
-.demoCol- {
+.demoCol {
   display: flex;
 
   flex-direction: column;

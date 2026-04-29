@@ -58,14 +58,14 @@
   color: var(--accent-contrast);
 }
 
-.toolbar-module__divider--lj\+su {
+.divider {
   width: 1px;
   align-self: stretch;
   margin: 4px 4px;
   background: var(--border);
 }
 
-.toolbar[data-vertical] .toolbar-module__divider--lj\+su {
+.toolbar[data-vertical] .divider {
   width: auto;
   height: 1px;
   margin: 4px 4px;

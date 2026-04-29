@@ -38,7 +38,7 @@ export const Nested = (): React.ReactNode => (
             </button>
           </DialogTrigger>
 
-          <DialogSurface className={styles.alertSurface}>
+          <DialogSurface className={`${styles.surface} ${styles.alertSurface}`}>
             <DialogBody className={styles.body}>
               <DialogTitle className={styles.title}>Inner dialog</DialogTitle>
               <p className={styles.copy}>Press Escape — only this dialog closes; the outer stays open.</p>

@@ -25,7 +25,7 @@
   height: 18px;
 }
 
-.display [data-appearance='filled'] .rating-display-module__iconHalf--\+w-kN,
+.display [data-appearance='filled'] .iconHalf,
 .display [data-appearance='filled'] .iconOutline {
   visibility: hidden;
 }
@@ -36,7 +36,7 @@
 }
 
 .display [data-appearance='outline'] .iconFilled,
-.display [data-appearance='outline'] .rating-display-module__iconHalf--\+w-kN {
+.display [data-appearance='outline'] .iconHalf {
   visibility: hidden;
 }
 

@@ -1,4 +1,4 @@
-.toggle-button-module__toggle--ob\+SX {
+.toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -16,28 +16,28 @@
     border-color var(--duration-fast) var(--ease-standard);
 }
 
-.toggle-button-module__toggle--ob\+SX:hover {
+.toggle:hover {
   background: var(--surface-muted);
   border-color: var(--border-strong);
 }
 
-.toggle-button-module__toggle--ob\+SX:focus-visible {
+.toggle:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
-.toggle-button-module__toggle--ob\+SX[data-checked] {
+.toggle[data-checked] {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--accent-contrast);
 }
 
-.toggle-button-module__toggle--ob\+SX[data-checked]:hover {
+.toggle[data-checked]:hover {
   background: var(--accent-strong);
   border-color: var(--accent-strong);
 }
 
-.toggle-button-module__toggle--ob\+SX[data-disabled] {
+.toggle[data-disabled] {
   opacity: 0.4;
   cursor: not-allowed;
 }

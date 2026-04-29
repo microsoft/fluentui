@@ -22,7 +22,7 @@
   cursor: not-allowed;
 }
 
-.slider-module__rail--Y\+av4 {
+.rail {
   position: relative;
   width: 100%;
   height: 4px;
@@ -31,7 +31,7 @@
   overflow: hidden;
 }
 
-.slider-module__rail--Y\+av4::after {
+.rail::after {
   content: '';
   position: absolute;
   inset: 0;

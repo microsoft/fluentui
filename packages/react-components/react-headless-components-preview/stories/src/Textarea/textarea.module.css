@@ -41,7 +41,7 @@
 
 /* Demo helpers (used by Storybook examples) */
 
-.demo\+ {
+.demo {
   display: flex;
 
   flex-direction: column;
