@@ -58,7 +58,7 @@ import { tokens } from '@fluentui/react-components';
   }
   .pro-con-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 16px;
     margin: 16px 0;
   }
@@ -79,13 +79,18 @@ import { tokens } from '@fluentui/react-components';
   }
   .migration-example {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 16px;
     margin: 16px 0;
   }
   .migration-example > div {
     padding: 16px;
     border-radius: 8px;
+    min-width: 0;
+  }
+  .migration-example pre {
+    overflow-x: auto;
+    white-space: pre;
   }
   .before {
     background: ${tokens.colorPaletteRedBackground1};
@@ -101,7 +106,7 @@ import { tokens } from '@fluentui/react-components';
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .migration-example, .pro-con-grid {
       grid-template-columns: 1fr;
     }
@@ -363,11 +368,19 @@ import { fadeAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
 const FadeScale = createPresenceComponent({
   enter: [
     fadeAtom({ direction: 'enter', duration: motionTokens.durationNormal }),
-    scaleAtom({ direction: 'enter', duration: motionTokens.durationNormal, outScale: 0.9 }),
+    scaleAtom({
+      direction: 'enter',
+      duration: motionTokens.durationNormal,
+      outScale: 0.9,
+    }),
   ],
   exit: [
     fadeAtom({ direction: 'exit', duration: motionTokens.durationNormal }),
-    scaleAtom({ direction: 'exit', duration: motionTokens.durationNormal, outScale: 0.9 }),
+    scaleAtom({
+      direction: 'exit',
+      duration: motionTokens.durationNormal,
+      outScale: 0.9,
+    }),
   ],
 });
 
