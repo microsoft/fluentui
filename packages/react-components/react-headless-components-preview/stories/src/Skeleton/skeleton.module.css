@@ -1,28 +1,41 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
+  padding: 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
 }
 
 .row {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
+}
+
+.demoFlex {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .bar {
   height: 12px;
   border-radius: var(--radius-xs);
-  background: linear-gradient(90deg, var(--surface-muted) 0%, var(--surface-sunken) 50%, var(--surface-muted) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.6s linear infinite;
+  background: var(--surface-muted);
+  animation: pulse 1.6s ease-in-out infinite;
 }
 
 .circle {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  background: var(--surface-muted);
+  flex-shrink: 0;
+  animation: pulse 1.6s ease-in-out infinite;
 }
 
 .line40 {
@@ -33,32 +46,26 @@
   width: 60%;
 }
 
+.line80 {
+  width: 80%;
+}
+
 .line100 {
   width: 100%;
 }
 
-.thumb {
-  height: 140px;
-  border-radius: var(--radius-lg);
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
+@keyframes pulse {
+  0%,
   100% {
-    background-position: -200% 0;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
-  max-width: 400px;
-}
-
-.demoFlex {
-  flex: 1;
-
-  gap: 8px;
+  max-width: 384px;
 }
