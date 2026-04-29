@@ -159,49 +159,6 @@ The previously-reserved `disableAutoFocus` prop has been **removed** from `Popov
 
 The component does **not** supplement the browser's focus restore. What `popover="auto"` provides is what the consumer gets. Per the HTML Popover spec, the `hide popover` algorithm restores focus to a stored `previously focused element` — but that field is set only for the **first popover in the auto stack** (the spec text states: _"This ensures that focus is returned to the previously-focused element only for the first popover in a stack."_), and only when focus is currently inside the dismissing surface, and only when the popover is dismissed via the spec's hide algorithm (Escape close-watcher, click-outside light-dismiss, peer-auto dismissal, an explicit `hidePopover()` call).
 
-Empirically verified in Chromium (Cypress default). Other engines may differ; the behaviour described below is what the spec mandates and what the test suite exercises.
-
-#### What works
-
-| Scenario                                                                              | Mechanism                               |
-| ------------------------------------------------------------------------------------- | --------------------------------------- |
-| Single (non-nested) popover with focus inside the surface, dismissed by Escape        | Spec's `hide popover` restore           |
-| Single (non-nested) popover with focus inside the surface, dismissed by click-outside | Spec's `hide popover` restore           |
-| Single (non-nested) popover dismissed by opening an unrelated `popover="auto"` peer   | Spec's peer-dismissal hide-with-restore |
-
-In each of these the spec sets `previously focused element` at open time to whatever `document.activeElement` was when `showPopover()` ran, and restores to it on dismiss when focus is currently inside the dismissing surface. For click/keyboard opens on a focusable trigger that is the trigger itself; for hover/context/programmatic opens it is whatever happened to be focused at that moment.
-
-#### What is not currently supported
-
-Each entry below is a known gap. Where a regression placeholder exists in `Popover.cy.tsx`, it is `it.skip`'d; otherwise the gap is documented here without a tracking test. The component intentionally does not work around these limitations in this iteration; consumers needing focus restore for these flows should manage it themselves (see [Consumer guidance](#consumer-guidance-for-unsupported-scenarios) below).
-
-| Gap                                                        | Why                                                                                                                                                                                                                                                                                          | Tracked by                                            |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| Nested popovers (any depth, Esc / click-outside)           | The HTML Popover spec only stores `previously focused element` for the topmost popover in the auto stack. For nested popovers `previously focused element` is null and the spec's `hide popover` algorithm performs no focus restore. Focus inside a nested surface at dismiss time is lost. | _(no Cypress test — no formal contract to verify)_    |
-| Programmatic close (controlled `open` flip to `false`)     | React unmounts the surface; the spec's `hide popover` algorithm never runs.                                                                                                                                                                                                                  | `programmatic close: should restore focus to trigger` |
-| Hover-leave close (`openOnHover` `mouseLeaveDelay` expiry) | React unmounts the surface; the spec's `hide popover` algorithm never runs.                                                                                                                                                                                                                  | `hover-leave close: should restore focus to trigger`  |
-| Hover-open + Esc dismiss                                   | Spec's snapshot at open is the pre-hover focus, not the trigger (mouse-hover doesn't move focus). Restore lands on the wrong element when it fires.                                                                                                                                          | `hover-open + Esc: should restore focus to trigger`   |
-| Context-menu open (`openOnContext`) + Esc dismiss          | `contextmenu` doesn't move focus; spec's snapshot is whatever was focused before the right-click, not the trigger.                                                                                                                                                                           | `context-open + Esc: should restore focus to trigger` |
-| Inline mode (`inline={true}`)                              | Inline popovers don't enter the top layer and don't go through the spec's open/close machinery — no restore at all.                                                                                                                                                                          | `inline: should restore focus to trigger on close`    |
-
-#### Consumer guidance for unsupported scenarios
-
-Track focus before opening and restore in `onOpenChange` when `data.open === false`:
-
-```tsx
-const triggerRef = React.useRef<HTMLButtonElement>(null);
-<Popover
-  onOpenChange={(_, data) => {
-    if (!data.open) triggerRef.current?.focus();
-  }}
->
-  <PopoverTrigger>
-    <button ref={triggerRef}>Trigger</button>
-  </PopoverTrigger>
-  <PopoverSurface>…</PopoverSurface>
-</Popover>;
-```
-
 ### Labeling
 
 - Labels on a `role="group"` surface are optional but recommended when the surface's purpose isn't obvious from nearby context — e.g., `aria-label` or `aria-labelledby` pointing to a heading inside the surface.
