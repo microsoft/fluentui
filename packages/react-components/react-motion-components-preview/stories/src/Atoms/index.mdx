@@ -18,7 +18,7 @@ import { ComposingAtomsDemo } from './ComposingAtomsDemo';
     margin: 0 0 12px 0;
     font-size: 1.8rem;
   }
-  .atoms-hero p {
+  .atoms-hero .hero-subtitle {
     font-size: 1rem;
     color: ${tokens.colorNeutralForeground2};
     max-width: 600px;
@@ -66,115 +66,45 @@ import { ComposingAtomsDemo } from './ComposingAtomsDemo';
 
 <div className="atoms-hero">
   <h1>Motion Atoms</h1>
-  <p>
-    Low-level building blocks for creating custom presence components. Atoms generate WAAPI-compatible motion objects.
-  </p>
+  <div className="hero-subtitle">
+    The smallest building blocks in the <a href="?path=/docs/motion-introduction--docs">Fluent Motion System</a>. Each
+    atom produces a single animation effect that can be composed into richer motion.
+  </div>
 </div>
 
 <div className="warning-banner">
-  <strong>⚠️ Advanced API:</strong> Motion atoms are intended for developers creating custom motion components. For most
-  use cases, use the pre-built components like <code>Fade</code>, <code>Scale</code>, etc.
+  <strong>⚠️ Advanced API:</strong> Atoms are for developers creating custom motion components. For most use cases, use
+  the pre-built <a href="?path=/docs/motion-components-preview-introduction--docs">Motion Components</a> like{' '}
+  <code>Fade</code>, <code>Scale</code>, etc.
 </div>
 
 ## What are Motion Atoms?
 
-Motion atoms are **factory functions** that generate `AtomMotion` objects—the fundamental units of animation in the Fluent Motion System. Each atom produces a single animation effect (opacity, scale, translation, etc.) that can be used directly or composed together.
+In the Fluent Motion System's <a href="?path=/docs/motion-introduction--docs#an-atomic-motion-system">atomic model</a>, **atoms** are single one-way animations — keyframes changing one property over time. They're the foundation that <a href="?path=/docs/motion-components-preview-introduction--docs">Motion Components</a> (molecules) are built from.
+
+Each atom is a factory function that returns an `AtomMotion` object — a plain description of keyframes, duration, and easing that the browser can execute directly.
 
 ```ts
-import { fadeAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
+import { fadeAtom } from '@fluentui/react-motion-components-preview';
 
-// An atom returns an AtomMotion object
 const fadeIn = fadeAtom({
   direction: 'enter',
-  duration: 200,
+  duration: 500,
   outOpacity: 0,
   inOpacity: 1,
 });
-
-// Result:
-// {
-//   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-//   duration: 200,
-//   easing: 'cubic-bezier(0,0,1,1)',
-//   delay: 0,
-//   fill: 'both',
-// }
+// Returns: { keyframes: [{ opacity: 0 }, { opacity: 1 }], duration: 500, easing: '...', ... }
 ```
 
 ## Available Atoms
 
-<table className="atom-table">
-  <thead>
-    <tr>
-      <th>Atom</th>
-      <th>Effect</th>
-      <th>CSS Property</th>
-      <th>Key Parameters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <code>fadeAtom</code>
-      </td>
-      <td>Opacity transition</td>
-      <td>
-        <code>opacity</code>
-      </td>
-      <td>
-        <code>outOpacity</code>, <code>inOpacity</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>scaleAtom</code>
-      </td>
-      <td>Size scaling</td>
-      <td>
-        <code>transform: scale()</code>
-      </td>
-      <td>
-        <code>outScale</code>, <code>inScale</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>slideAtom</code>
-      </td>
-      <td>Position translation</td>
-      <td>
-        <code>transform: translate()</code>
-      </td>
-      <td>
-        <code>outX</code>, <code>outY</code>, <code>inX</code>, <code>inY</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>rotateAtom</code>
-      </td>
-      <td>3D rotation</td>
-      <td>
-        <code>transform: rotate3d()</code>
-      </td>
-      <td>
-        <code>axis</code>, <code>outAngle</code>, <code>inAngle</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code>blurAtom</code>
-      </td>
-      <td>Blur filter</td>
-      <td>
-        <code>filter: blur()</code>
-      </td>
-      <td>
-        <code>outRadius</code>, <code>inRadius</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Atom         | Effect               | CSS Property             | Key Parameters                |
+| ------------ | -------------------- | ------------------------ | ----------------------------- |
+| `fadeAtom`   | Opacity transition   | `opacity`                | `outOpacity`, `inOpacity`     |
+| `scaleAtom`  | Size scaling         | `transform: scale()`     | `outScale`, `inScale`         |
+| `slideAtom`  | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY`  |
+| `rotateAtom` | 3D rotation          | `transform: rotate3d()`  | `axis`, `outAngle`, `inAngle` |
+| `blurAtom`   | Blur filter          | `filter: blur()`         | `outRadius`, `inRadius`       |
 
 <AtomsDemo />
 
@@ -191,163 +121,50 @@ All atoms accept these base parameters:
 | `easing`    | `string`            | `curveLinear` | CSS easing function                     |
 | `delay`     | `number`            | `0`           | Delay before animation starts           |
 
-### fadeAtom
+### Per-Atom Parameters
+
+In addition to the common parameters above, each atom has specific properties:
 
 ```ts
-import { fadeAtom } from '@fluentui/react-motion-components-preview';
+import { fadeAtom, scaleAtom, slideAtom, rotateAtom, blurAtom } from '@fluentui/react-motion-components-preview';
 
-fadeAtom({
-  direction: 'enter',
-  duration: 200,
-  outOpacity: 0, // Opacity for the out state (default: 0)
-  inOpacity: 1, // Opacity for the in state (default: 1)
-  easing: 'ease-out',
-  delay: 0,
-});
-```
+// fadeAtom — opacity transition
+fadeAtom({ direction: 'enter', duration: 500, outOpacity: 0, inOpacity: 1 });
 
-### scaleAtom
+// scaleAtom — size scaling
+scaleAtom({ direction: 'enter', duration: 500, outScale: 0.9, inScale: 1 });
 
-```ts
-import { scaleAtom } from '@fluentui/react-motion-components-preview';
+// slideAtom — position translation
+slideAtom({ direction: 'enter', duration: 500, outX: '0px', outY: '20px', inX: '0px', inY: '0px' });
 
-scaleAtom({
-  direction: 'enter',
-  duration: 200,
-  outScale: 0.9, // Scale for the out state (default: 0.9)
-  inScale: 1, // Scale for the in state (default: 1)
-  easing: 'ease-out',
-});
-```
+// rotateAtom — rotation (axis: 'x' | 'y' | 'z')
+rotateAtom({ direction: 'enter', duration: 600, axis: 'z', outAngle: -90, inAngle: 0 });
 
-### slideAtom
-
-```ts
-import { slideAtom } from '@fluentui/react-motion-components-preview';
-
-slideAtom({
-  direction: 'enter',
-  duration: 200,
-  outX: '0px', // X translate for the out state (default: '0px')
-  outY: '20px', // Y translate for the out state (default: '0px')
-  inX: '0px', // X translate for the in state (default: '0px')
-  inY: '0px', // Y translate for the in state (default: '0px')
-  easing: 'ease-out',
-});
-```
-
-### rotateAtom
-
-```ts
-import { rotateAtom } from '@fluentui/react-motion-components-preview';
-
-rotateAtom({
-  direction: 'enter',
-  duration: 300,
-  axis: 'y', // 'x' | 'y' | 'z' (default: 'z')
-  outAngle: -90, // Rotation angle for the out state in degrees (default: -90)
-  inAngle: 0, // Rotation angle for the in state in degrees (default: 0)
-  easing: 'ease-out',
-});
-```
-
-### blurAtom
-
-```ts
-import { blurAtom } from '@fluentui/react-motion-components-preview';
-
-blurAtom({
-  direction: 'enter',
-  duration: 200,
-  outRadius: '10px', // Blur radius for the out state (default: '10px')
-  inRadius: '0px', // Blur radius for the in state (default: '0px')
-  easing: 'ease-out',
-});
+// blurAtom — blur filter
+blurAtom({ direction: 'enter', duration: 500, outRadius: '10px', inRadius: '0px' });
 ```
 
 ## Creating Custom Presence Components
 
-Atoms are designed to be composed into presence components using `createPresenceComponent`:
+The real power of atoms is **composing** them. Pass an array of atoms to `createPresenceComponent` and they run in parallel — creating richer effects from simple building blocks:
 
 <ComposingAtomsDemo />
 
-```tsx
-import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-import { fadeAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
-
-// Create a custom "pop" effect combining fade and scale
-const Pop = createPresenceComponent(({ element }) => ({
-  enter: [
-    fadeAtom({
-      direction: 'enter',
-      duration: motionTokens.durationNormal,
-    }),
-    scaleAtom({
-      direction: 'enter',
-      duration: motionTokens.durationNormal,
-      outScale: 0.8,
-    }),
-  ],
-  exit: [
-    fadeAtom({
-      direction: 'exit',
-      duration: motionTokens.durationFast,
-    }),
-    scaleAtom({
-      direction: 'exit',
-      duration: motionTokens.durationFast,
-      outScale: 0.8,
-    }),
-  ],
-}));
-
-// Usage
-<Pop visible={isVisible}>
-  <div>I pop in and out!</div>
-</Pop>;
-```
-
-### Combining Multiple Atoms
-
-You can combine atoms by returning an array. The animations will run in parallel:
-
-```tsx
-const FadeSlide = createPresenceComponent({
-  enter: [
-    fadeAtom({ direction: 'enter', duration: 200 }),
-    slideAtom({ direction: 'enter', duration: 200, outY: '20px' }),
-  ],
-  exit: [fadeAtom({ direction: 'exit', duration: 150 }), slideAtom({ direction: 'exit', duration: 150, outY: '20px' })],
-});
-```
+Multiple atoms in an array animate simultaneously. Use the same duration for a cohesive feel, or intentionally vary them for more complex choreography.
 
 ### Dynamic Parameters
 
-Use the function form to access runtime parameters like element dimensions:
+Use the function form to access runtime values like element dimensions:
 
 ```tsx
 const DynamicSlide = createPresenceComponent(({ element }) => {
   const width = element.offsetWidth;
-
   return {
-    enter: slideAtom({
-      direction: 'enter',
-      duration: 200,
-      outX: `-${width}px`, // Slide by element's own width
-    }),
-    exit: slideAtom({
-      direction: 'exit',
-      duration: 200,
-      outX: `-${width}px`,
-    }),
+    enter: slideAtom({ direction: 'enter', duration: 500, outX: `-${width}px` }),
+    exit: slideAtom({ direction: 'exit', duration: 500, outX: `-${width}px` }),
   };
 });
 ```
-
-<div className="info-box">
-  <strong>💡 Tip:</strong> When composing atoms, ensure all atoms in an array use the same duration for a cohesive
-  effect, or intentionally stagger them for more complex choreography.
-</div>
 
 ## When to Use Atoms
 
@@ -360,6 +177,7 @@ const DynamicSlide = createPresenceComponent(({ element }) => {
 
 ## See Also
 
+- [Motion Components](?path=/docs/motion-components-preview-introduction--docs) — Pre-built presence animations (molecules)
 - [createPresenceComponent](?path=/docs/motion-apis-createpresencecomponent--docs) — Factory for presence components
 - [createMotionComponent](?path=/docs/motion-apis-createmotioncomponent--docs) — Factory for one-way motion
 - [Motion Tokens](?path=/docs/motion-tokens--docs) — Duration and easing values
