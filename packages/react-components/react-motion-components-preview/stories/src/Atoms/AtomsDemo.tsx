@@ -7,67 +7,94 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
-    padding: '24px',
+    gap: '0',
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     marginTop: '24px',
     marginBottom: '24px',
+    overflow: 'hidden',
   },
   controls: {
     display: 'flex',
     alignItems: 'center',
     gap: '16px',
     flexWrap: 'wrap',
+    padding: '16px 20px',
+    backgroundColor: tokens.colorNeutralBackground2,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
+  },
+  body: {
+    display: 'flex',
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+    },
   },
   demoArea: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '120px',
-    backgroundColor: tokens.colorNeutralBackground3,
-    borderRadius: tokens.borderRadiusSmall,
+    flex: '0 0 200px',
+    backgroundColor: tokens.colorNeutralBackground1,
     padding: '20px',
   },
   demoBox: {
     width: '100px',
     height: '80px',
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: tokens.colorNeutralForeground1,
     fontWeight: tokens.fontWeightSemibold,
-    boxShadow: tokens.shadow8,
   },
-  label: {
-    fontSize: tokens.fontSizeBase200,
-    color: tokens.colorNeutralForeground3,
+  codeArea: {
+    flex: '1 1 auto',
+    minWidth: '0',
+    padding: '16px 20px',
+    backgroundColor: tokens.colorNeutralBackground1,
+    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
+    overflow: 'auto',
+    '@media (max-width: 600px)': {
+      borderLeft: 'none',
+      borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
+    },
+  },
+  code: {
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase100,
+    lineHeight: tokens.lineHeightBase200,
+    color: tokens.colorNeutralForeground1,
+    whiteSpace: 'pre',
+    margin: '0',
+    display: 'block',
   },
 });
 
 type AtomType = 'fade' | 'scale' | 'slide' | 'rotate' | 'blur';
 
+const demoDuration = 600;
+
 const createAtomMotion = (type: AtomType) => {
-  const duration = motionTokens.durationNormal;
   const easing = motionTokens.curveDecelerateMid;
 
   switch (type) {
     case 'fade':
-      return createMotionComponent(fadeAtom({ direction: 'enter', duration, easing }));
+      return createMotionComponent(fadeAtom({ direction: 'enter', duration: demoDuration, easing }));
     case 'scale':
-      return createMotionComponent(scaleAtom({ direction: 'enter', duration, easing, outScale: 0.5 }));
+      return createMotionComponent(scaleAtom({ direction: 'enter', duration: demoDuration, easing, outScale: 0.5 }));
     case 'slide':
-      return createMotionComponent(slideAtom({ direction: 'enter', duration, easing, outY: '30px' }));
+      return createMotionComponent(slideAtom({ direction: 'enter', duration: demoDuration, easing, outY: '30px' }));
     case 'rotate':
       return createMotionComponent(
-        rotateAtom({ direction: 'enter', duration: 400, easing, axis: 'y', outAngle: -180 }),
+        rotateAtom({ direction: 'enter', duration: demoDuration, easing, axis: 'z', outAngle: -90 }),
       );
     case 'blur':
-      return createMotionComponent(blurAtom({ direction: 'enter', duration, easing, outRadius: '10px' }));
+      return createMotionComponent(blurAtom({ direction: 'enter', duration: demoDuration, easing, outRadius: '10px' }));
     default:
-      return createMotionComponent(fadeAtom({ direction: 'enter', duration, easing }));
+      return createMotionComponent(fadeAtom({ direction: 'enter', duration: demoDuration, easing }));
   }
 };
 
@@ -77,6 +104,40 @@ const atomLabels: Record<AtomType, string> = {
   slide: 'slideAtom',
   rotate: 'rotateAtom',
   blur: 'blurAtom',
+};
+
+const atomCodeSnippets: Record<AtomType, string> = {
+  fade: `fadeAtom({
+  direction: 'enter',
+  duration: 600,
+  outOpacity: 0,
+  inOpacity: 1,
+})`,
+  scale: `scaleAtom({
+  direction: 'enter',
+  duration: 600,
+  outScale: 0.5,
+  inScale: 1,
+})`,
+  slide: `slideAtom({
+  direction: 'enter',
+  duration: 600,
+  outY: '30px',
+  inY: '0px',
+})`,
+  rotate: `rotateAtom({
+  direction: 'enter',
+  duration: 600,
+  axis: 'z',
+  outAngle: -90,
+  inAngle: 0,
+})`,
+  blur: `blurAtom({
+  direction: 'enter',
+  duration: 600,
+  outRadius: '10px',
+  inRadius: '0px',
+})`,
 };
 
 export const AtomsDemo: React.FC = () => {
@@ -101,13 +162,19 @@ export const AtomsDemo: React.FC = () => {
           <option value="rotate">rotateAtom</option>
           <option value="blur">blurAtom</option>
         </Select>
-        <Button onClick={() => setKey(k => k + 1)}>Replay</Button>
-        <span className={classes.label}>Select an atom to see its effect</span>
+        <Button appearance="primary" onClick={() => setKey(k => k + 1)}>
+          Replay
+        </Button>
       </div>
-      <div className={classes.demoArea}>
-        <MotionComponent key={key}>
-          <div className={classes.demoBox}>{atomLabels[atomType]}</div>
-        </MotionComponent>
+      <div className={classes.body}>
+        <div className={classes.demoArea}>
+          <MotionComponent key={key}>
+            <div className={classes.demoBox}>{atomLabels[atomType]}</div>
+          </MotionComponent>
+        </div>
+        <div className={classes.codeArea}>
+          <code className={classes.code}>{atomCodeSnippets[atomType]}</code>
+        </div>
       </div>
     </div>
   );
