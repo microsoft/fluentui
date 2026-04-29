@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     gap: '24px',
-    maxWidth: '680px',
+    maxWidth: '800px',
     scrollbarGutter: 'stable',
   },
   controls: {
@@ -62,6 +62,8 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
+    width: '100%',
+    boxSizing: 'border-box',
   },
   codeBlock: {
     fontFamily: tokens.fontFamilyMonospace,
@@ -70,10 +72,12 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     padding: '8px 12px',
     whiteSpace: 'pre',
+    overflow: 'auto',
   },
   accordionContainer: {
     minWidth: 0,
     overflow: 'hidden',
+    maxWidth: '100%',
   },
   constrainedText: {
     minWidth: 0,
@@ -120,7 +124,7 @@ export const DirectParams = (): JSXElement => {
 
       <div className={classes.section}>
         <Text weight="semibold">
-          Dialog (<code>{'surfaceMotion: Slot<PresenceMotionSlotProps<ScaleParams>>'}</code>)
+          Dialog (<code>surfaceMotion</code>)
         </Text>
         <div className={classes.row}>
           <div className={classes.column}>
@@ -209,9 +213,9 @@ export const DirectParams = (): JSXElement => {
 
       <div className={classes.section}>
         <Text weight="semibold">
-          Accordion (<code>{'collapseMotion: Slot<PresenceMotionSlotProps<CollapseParams>>'}</code>)
+          Accordion (<code>collapseMotion</code>)
         </Text>
-        <Text size={200}>Same pattern — different param shape (CollapseParams):</Text>
+        <Text size={200}>Same pattern — different param shape:</Text>
         <div className={classes.accordionContainer}>
           <Accordion collapsible>
             <AccordionItem value="1">
@@ -219,15 +223,9 @@ export const DirectParams = (): JSXElement => {
               <AccordionPanel collapseMotion={{ duration, animateOpacity }}>
                 <div className={classes.constrainedText}>
                   <Text>
-                    Expand/collapse timing controlled by <wbr />
-                    <code>
-                      duration={'{'}duration{'}'}
-                    </code>{' '}
-                    and <wbr />
-                    <code>
-                      animateOpacity={'{'}animateOpacity{'}'}
-                    </code>{' '}
-                    on <code>collapseMotion</code>.
+                    Expand/collapse timing controlled by
+                    <br />
+                    <code>duration</code> and <code>animateOpacity</code>
                   </Text>
                 </div>
               </AccordionPanel>
@@ -252,9 +250,9 @@ export const DirectParams = (): JSXElement => {
 
       <div className={classes.section}>
         <Text weight="semibold">
-          Tree (<code>{'collapseMotion: Slot<PresenceMotionSlotProps<CollapseParams>>'}</code>)
+          Tree (<code>collapseMotion</code>)
         </Text>
-        <Text size={200}>Same CollapseParams shape, applied at subtree level:</Text>
+        <Text size={200}>Same pattern, applied at subtree level:</Text>
         <div className={classes.accordionContainer}>
           <Tree aria-label="Direct params demo">
             <TreeItem itemType="branch">
