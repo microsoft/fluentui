@@ -22,7 +22,7 @@ export const Default = (): React.ReactNode => {
           'fixed inset-y-0 right-0 m-0 hidden min-h-screen w-80 max-w-[calc(100vw-32px)] translate-x-full flex-col border-0 border-l border-zinc-200 bg-white p-0 shadow-xl transition-transform [&[open]]:flex [&[open]]:translate-x-0 [&[open]]:starting:-translate-x-full backdrop:bg-black/40'
         }
         open={open}
-        onOpenChange={(_, { open }) => setOpen(open)}
+        onOpenChange={(_, data) => setOpen(data.open)}
         unmountOnClose={false}
       >
         <DrawerHeader className="border-b border-zinc-200 px-4 py-3">

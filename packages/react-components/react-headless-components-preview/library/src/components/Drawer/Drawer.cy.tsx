@@ -3,17 +3,8 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../Provider';
-import {
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerHeaderNavigation,
-  DrawerHeaderTitle,
-  InlineDrawer,
-  OverlayDrawer,
-} from '.';
-import type { DrawerProps, InlineDrawerProps, OverlayDrawerProps } from '.';
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerHeaderTitle } from '.';
+import type { DrawerProps } from '.';
 
 const drawerSelector = '#drawer';
 const drawerBodySelector = '#drawer-body';
@@ -28,43 +19,28 @@ const overlayDrawerClassName =
   'fixed bottom-0 right-0 top-0 m-0 w-80 border-0 border-l border-zinc-200 bg-white p-0 shadow-xl backdrop:bg-black/40';
 const inlineDrawerClassName = 'w-80 border-r border-zinc-200 bg-white';
 
-type DrawerComponent = typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer;
-
-type DrawerComponentProps = Pick<DrawerProps, 'open' | 'position' | 'unmountOnClose'> &
-  Pick<InlineDrawerProps, 'separator'> &
-  Pick<OverlayDrawerProps, 'modalType' | 'onOpenChange'>;
-
-const getClassName = (Component: DrawerComponent) =>
-  Component === InlineDrawer ? inlineDrawerClassName : overlayDrawerClassName;
-
-const isInlineDrawerComponent = (Component: DrawerComponent) => Component === InlineDrawer;
-
-const renderDrawer = (Component: DrawerComponent, props: DrawerComponentProps = {}) => (
-  <Component
-    id="drawer"
-    className={getClassName(Component)}
-    {...(props as DrawerProps & OverlayDrawerProps & InlineDrawerProps)}
-  >
+const renderDrawer = (props: DrawerProps = {}) => (
+  <Drawer id="drawer" className={props.type === 'inline' ? inlineDrawerClassName : overlayDrawerClassName} {...props}>
     Drawer content
-  </Component>
+  </Drawer>
 );
 
-function testDrawerBaseScenarios(Component: DrawerComponent): void {
+function testDrawerBaseScenarios(props: DrawerProps): void {
   describe('basic functionality', () => {
     it('should not render any element when closed', () => {
-      mount(renderDrawer(Component));
+      mount(renderDrawer(props));
 
       cy.get(drawerSelector).should('not.exist');
     });
 
     it('should render an element when opened', () => {
-      mount(renderDrawer(Component, { open: true }));
+      mount(renderDrawer({ ...props, open: true }));
 
       cy.get(drawerSelector).should('exist');
     });
 
     it('should render children content', () => {
-      mount(renderDrawer(Component, { open: true }));
+      mount(renderDrawer({ ...props, open: true }));
 
       cy.get(drawerSelector).contains('Drawer content');
     });
@@ -75,7 +51,7 @@ function testDrawerBaseScenarios(Component: DrawerComponent): void {
 
         return (
           <>
-            {renderDrawer(Component, { open })}
+            {renderDrawer({ ...props, open })}
             <button id="button" onClick={() => setOpen(true)}>
               Open
             </button>
@@ -91,10 +67,10 @@ function testDrawerBaseScenarios(Component: DrawerComponent): void {
     });
 
     it('should remain mounted after close when unmountOnClose is false', () => {
-      mount(renderDrawer(Component, { unmountOnClose: false }));
+      mount(renderDrawer({ ...props, unmountOnClose: false }));
 
       cy.get(drawerSelector).should('exist');
-      if (isInlineDrawerComponent(Component)) {
+      if (props.type === 'inline') {
         cy.get(drawerSelector).should('have.attr', 'aria-hidden', 'true');
       } else {
         cy.get(drawerSelector).should('not.have.attr', 'open');
@@ -104,14 +80,14 @@ function testDrawerBaseScenarios(Component: DrawerComponent): void {
 
   describe('data attributes', () => {
     it('should set default drawer data attributes', () => {
-      mount(renderDrawer(Component, { open: true }));
+      mount(renderDrawer({ ...props, open: true }));
 
       cy.get(drawerSelector).should('have.attr', 'data-open');
       cy.get(drawerSelector).should('have.attr', 'data-position', 'start');
     });
 
     it('should set position data attribute', () => {
-      mount(renderDrawer(Component, { open: true, position: 'end' }));
+      mount(renderDrawer({ ...props, open: true, position: 'end' }));
 
       cy.get(drawerSelector).should('have.attr', 'data-position', 'end');
     });
@@ -123,11 +99,11 @@ function assertScrollPosition(element: HTMLElement, position: number) {
 }
 
 describe('Drawer', () => {
-  testDrawerBaseScenarios(Drawer);
+  testDrawerBaseScenarios({});
 
   describe('type prop', () => {
     it('should render OverlayDrawer by default', () => {
-      mount(renderDrawer(Drawer, { open: true }));
+      mount(renderDrawer({ open: true }));
 
       cy.get(drawerSelector).should('match', 'dialog');
       cy.get(drawerSelector).should('have.attr', 'aria-modal', 'true');
@@ -143,25 +119,25 @@ describe('Drawer', () => {
 });
 
 describe('OverlayDrawer', () => {
-  testDrawerBaseScenarios(OverlayDrawer);
+  testDrawerBaseScenarios({ type: 'overlay' });
 
   describe('modalType prop', () => {
     it('should render modal drawer by default', () => {
-      mount(renderDrawer(OverlayDrawer, { open: true }));
+      mount(renderDrawer({ type: 'overlay', open: true }));
 
       cy.get(drawerSelector).should('have.attr', 'aria-modal', 'true');
       cy.get(drawerSelector).should('have.attr', 'data-modal-type', 'modal');
     });
 
     it('should render alert drawer', () => {
-      mount(renderDrawer(OverlayDrawer, { open: true, modalType: 'alert' }));
+      mount(renderDrawer({ type: 'overlay', open: true, modalType: 'alert' }));
 
       cy.get(drawerSelector).should('have.attr', 'role', 'alertdialog');
       cy.get(drawerSelector).should('have.attr', 'data-modal-type', 'alert');
     });
 
     it('should render non-modal drawer without aria-modal', () => {
-      mount(renderDrawer(OverlayDrawer, { open: true, modalType: 'non-modal' }));
+      mount(renderDrawer({ type: 'overlay', open: true, modalType: 'non-modal' }));
 
       cy.get(drawerSelector).should('not.have.attr', 'aria-modal');
       cy.get(drawerSelector).should('have.attr', 'data-modal-type', 'non-modal');
@@ -172,7 +148,7 @@ describe('OverlayDrawer', () => {
         const [open, setOpen] = React.useState(true);
 
         return (
-          <OverlayDrawer
+          <Drawer
             id="drawer"
             className={overlayDrawerClassName}
             open={open}
@@ -180,7 +156,7 @@ describe('OverlayDrawer', () => {
             unmountOnClose
           >
             <button id="focus-target">Focusable content</button>
-          </OverlayDrawer>
+          </Drawer>
         );
       };
 
@@ -215,7 +191,7 @@ describe('DrawerBody', () => {
 
   it('updates scrollState when body is scrolled', () => {
     mount(
-      <InlineDrawer id="drawer" className="block" open>
+      <Drawer id="drawer" className="block" type="inline" open>
         <DrawerHeader id="drawer-header">Header</DrawerHeader>
         <DrawerBody id="drawer-body" style={{ display: 'block', height: '100px', overflow: 'auto' }}>
           {Array.from({ length: 30 }, (_, index) => (
@@ -223,7 +199,7 @@ describe('DrawerBody', () => {
           ))}
         </DrawerBody>
         <DrawerFooter id="drawer-footer">Footer</DrawerFooter>
-      </InlineDrawer>,
+      </Drawer>,
     );
 
     cy.get(drawerHeaderSelector).should('have.attr', 'data-scroll-state', 'top');
@@ -291,9 +267,9 @@ describe('DrawerHeaderTitle', () => {
 
   it('should label overlay drawer through headless dialog context', () => {
     mount(
-      <OverlayDrawer id="drawer" className={overlayDrawerClassName} open>
+      <Drawer id="drawer" className={overlayDrawerClassName} open type="overlay">
         <DrawerHeaderTitle id="drawer-title">Drawer title</DrawerHeaderTitle>
-      </OverlayDrawer>,
+      </Drawer>,
     );
 
     cy.get(drawerSelector).should('have.attr', 'aria-labelledby');
