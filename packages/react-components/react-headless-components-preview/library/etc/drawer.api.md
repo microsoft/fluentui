@@ -19,7 +19,7 @@ import { DrawerHeaderNavigationState as DrawerHeaderNavigationState_2 } from '@f
 import type { DrawerHeaderProps as DrawerHeaderProps_2 } from '@fluentui/react-drawer';
 import type { DrawerHeaderSlots as DrawerHeaderSlots_2 } from '@fluentui/react-drawer';
 import { DrawerHeaderState as DrawerHeaderState_2 } from '@fluentui/react-drawer';
-import { DrawerHeaderTitleProps as DrawerHeaderTitleProps_2 } from '@fluentui/react-drawer';
+import type { DrawerHeaderTitleProps as DrawerHeaderTitleProps_2 } from '@fluentui/react-drawer';
 import type { DrawerHeaderTitleSlots as DrawerHeaderTitleSlots_2 } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState as DrawerHeaderTitleState_2 } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
@@ -191,7 +191,7 @@ export const useDrawerHeader: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLEl
 export const useDrawerHeaderNavigation: (props: DrawerHeaderNavigationProps_2, ref: Ref<HTMLElement>) => DrawerHeaderNavigationState_2;
 
 // @public
-export const useDrawerHeaderTitle: (props: DrawerHeaderTitleProps_2, ref: Ref<HTMLDivElement>) => DrawerHeaderTitleState_2;
+export const useDrawerHeaderTitle: (props: DrawerHeaderTitleProps, ref: React_2.Ref<HTMLDivElement>) => DrawerHeaderTitleState;
 
 // @public
 export const useInlineDrawer: (props: InlineDrawerProps, ref: React_2.Ref<HTMLElement>) => InlineDrawerState;
