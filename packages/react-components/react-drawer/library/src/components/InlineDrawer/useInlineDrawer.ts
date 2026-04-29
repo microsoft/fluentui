@@ -45,7 +45,6 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     components: {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...baseState.components,
-      // root: 'div',
       // casting from internal type that has required properties
       // to external type that only has optional properties
       // converting to unknown first as both Function component signatures are not compatible
