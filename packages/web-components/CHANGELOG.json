@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 29 Apr 2026 19:07:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.14",
+      "version": "3.0.0-rc.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c2bf30e8260326f8e7c018853e4e86cbfae0d2d0",
+            "comment": "fix: improve SSR compatibility and component lifecycle management for Menu, Accordion, Dropdown, Tablist, and waitForConnectedDescendants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Apr 2026 04:07:27 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.13",
       "version": "3.0.0-rc.13",
