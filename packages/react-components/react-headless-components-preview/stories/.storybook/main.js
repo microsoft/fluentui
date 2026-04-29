@@ -37,6 +37,8 @@ const cssModuleRule = {
 /**
  * Mirrors `patchRules` in the docsite config — see that file's comment for
  * the full rationale (CSS Modules carve-out + `?raw` resourceQuery skip).
+ *
+ * @param {any[]} rules
  */
 function patchRules(rules) {
   for (const rule of rules) {
@@ -74,7 +76,7 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
   stories: [...rootMain.stories, '../src/**/*.mdx', '../src/**/index.stories.@(ts|tsx)'],
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
-    const localConfig = { ...rootMain.webpackFinal(config, options) };
+    const localConfig = /** @type {any} */ ({ ...rootMain.webpackFinal(config, options) });
 
     localConfig.module = localConfig.module || { rules: [] };
     const rules = patchRules([...(localConfig.module.rules || [])]);
