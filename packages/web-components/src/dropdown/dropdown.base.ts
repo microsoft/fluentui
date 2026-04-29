@@ -159,6 +159,10 @@ export class BaseDropdown extends FASTElement {
       return displayValue;
     }
 
+    if (this.multiple && this.selectedOptions.length > 1) {
+      return `${this.selectedOptions[0].text} +${this.selectedOptions.length - 1}`;
+    }
+
     return displayValue || this.placeholder;
   }
 
