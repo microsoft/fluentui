@@ -32,23 +32,23 @@ describe('AccordionPanel', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('sets inert and tabIndex -1 on root when closed to prevent keyboard focus entering the panel', () => {
+  it('sets aria-hidden and tabIndex -1 on root when closed to prevent keyboard focus entering the panel', () => {
     const ref = React.createRef<HTMLElement>();
     const wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
       <AccordionItemProvider value={mockAccordionItemContextValue({ open: false })}>{children}</AccordionItemProvider>
     );
     const { result } = renderHook(() => useAccordionPanelBase_unstable({}, ref), { wrapper });
-    expect(result.current.root.inert).toBe('');
+    expect(result.current.root['aria-hidden']).toBe(true);
     expect(result.current.root.tabIndex).toBe(-1);
   });
 
-  it('does not set inert or tabIndex -1 on root when open', () => {
+  it('does not set aria-hidden or tabIndex -1 on root when open', () => {
     const ref = React.createRef<HTMLElement>();
     const wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
       <AccordionItemProvider value={mockAccordionItemContextValue({ open: true })}>{children}</AccordionItemProvider>
     );
     const { result } = renderHook(() => useAccordionPanelBase_unstable({}, ref), { wrapper });
-    expect(result.current.root.inert).toBeUndefined();
+    expect(result.current.root['aria-hidden']).toBeUndefined();
     expect(result.current.root.tabIndex).toBeUndefined();
   });
 });
