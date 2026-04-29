@@ -27,6 +27,7 @@
     "@fluentui/react-checkbox": "^9.6.1",
     "@fluentui/react-dialog": "^9.18.0",
     "@fluentui/react-divider": "^9.7.1",
+    "@fluentui/react-drawer": "^9.11.6",
     "@fluentui/react-field": "^9.5.1",
     "@fluentui/react-image": "^9.4.1",
     "@fluentui/react-input": "^9.8.2",
@@ -114,6 +115,12 @@
       "node": "./lib-commonjs/divider.js",
       "import": "./lib/divider.js",
       "require": "./lib-commonjs/divider.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer.d.ts",
+      "node": "./lib-commonjs/drawer.js",
+      "import": "./lib/drawer.js",
+      "require": "./lib-commonjs/drawer.js"
     },
     "./field": {
       "types": "./dist/field.d.ts",
