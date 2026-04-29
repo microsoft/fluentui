@@ -55,22 +55,23 @@ const nameToHash = (name: string) =>
 
 const disclaimerStyle: React.CSSProperties = {
   margin: '20px 0 0',
-  padding: '16px 20px',
+  padding: '18px 22px',
   border: '1px solid #e1dfdd',
   borderLeft: '4px solid #9b1f5a',
   borderRadius: 6,
   background: '#fdf6f9',
   color: '#3c3c3c',
-  fontSize: 16,
+  fontSize: 19,
   lineHeight: 1.55,
 };
 
 const disclaimerNoteStyle: React.CSSProperties = {
-  marginTop: 10,
-  paddingTop: 10,
+  marginTop: 12,
+  paddingTop: 12,
   borderTop: '1px dashed #e1c2d2',
-  fontSize: 14,
-  color: '#5a5a5a',
+  fontSize: 19,
+  lineHeight: 1.55,
+  color: '#3c3c3c',
 };
 
 export const HeadlessDocsPage: React.FC = () => {
