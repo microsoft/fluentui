@@ -13,7 +13,7 @@ export {
   CardPreview,
   renderCardPreview,
   useCardPreview,
-} from './components/Card/index';
+} from './components/Card';
 export type {
   CardSlots,
   CardProps,
@@ -29,4 +29,4 @@ export type {
   CardPreviewSlots,
   CardPreviewProps,
   CardPreviewState,
-} from './components/Card/index';
+} from './components/Card';
