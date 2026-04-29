@@ -55,14 +55,22 @@ const nameToHash = (name: string) =>
 
 const disclaimerStyle: React.CSSProperties = {
   margin: '20px 0 0',
-  padding: '12px 16px',
+  padding: '16px 20px',
   border: '1px solid #e1dfdd',
-  borderLeft: '3px solid #9b1f5a',
+  borderLeft: '4px solid #9b1f5a',
   borderRadius: 6,
   background: '#fdf6f9',
   color: '#3c3c3c',
-  fontSize: 13,
-  lineHeight: 1.5,
+  fontSize: 16,
+  lineHeight: 1.55,
+};
+
+const disclaimerNoteStyle: React.CSSProperties = {
+  marginTop: 10,
+  paddingTop: 10,
+  borderTop: '1px dashed #e1c2d2',
+  fontSize: 14,
+  color: '#5a5a5a',
 };
 
 export const HeadlessDocsPage: React.FC = () => {
@@ -102,8 +110,13 @@ export const HeadlessDocsPage: React.FC = () => {
       <Subtitle />
       <Description />
       <aside style={disclaimerStyle} role="note">
-        <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is
-        provided purely as a demonstration of one possible look.
+        <div>
+          <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is
+          provided purely as a demonstration of one possible look.
+        </div>
+        <div style={disclaimerNoteStyle}>
+          <strong>Preview:</strong> these controls are in preview and their APIs are subject to change.
+        </div>
       </aside>
 
       {primaryStory && (
@@ -157,5 +170,23 @@ const headlessDocsPageCss = `
 }
 .headless-docs-page .sbdocs-preview:has(> .headless-source-portal:not(:empty)) {
   height: auto !important;
+}
+
+/*
+  Force the magenta accent for the "Show code" / "Open in Stackblitz" hover &
+  focus underlines. Storybook's ActionBar paints the underline via an inset
+  box-shadow driven by \`theme.color.secondary\`, and the
+  \`@fluentui/react-storybook-addon-export-to-sandbox\` styles hard-code a blue
+  underline on the Stackblitz button — both are overridden here so the canvas
+  action buttons match the rest of the headless docs accent.
+*/
+.headless-docs-page .sbdocs-preview .docblock-code-toggle:hover,
+.headless-docs-page .sbdocs-preview .docblock-code-toggle:focus,
+.headless-docs-page .sbdocs-preview .docblock-code-toggle.docblock-code-toggle--expanded,
+.headless-docs-page .docs-story .with-code-sandbox-button:hover,
+.headless-docs-page .docs-story .with-code-sandbox-button:focus {
+  outline: none !important;
+  box-shadow: #9b1f5a 0 -3px 0 0 inset !important;
+  color: #9b1f5a !important;
 }
 `;
