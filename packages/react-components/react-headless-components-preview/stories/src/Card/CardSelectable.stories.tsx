@@ -8,7 +8,7 @@ const classes = {
     'relative flex flex-col gap-3 w-80 p-3 bg-white rounded-lg border border-gray-200 shadow-sm cursor-pointer ' +
     'hover:bg-gray-50 transition-colors ' +
     'focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ' +
-    'data-[state=checked]:border-blue-500 data-[state=checked]:ring-2 data-[state=checked]:ring-blue-500 ' +
+    'data-[selected]:border-blue-500 data-[selected]:ring-2 data-[selected]:ring-blue-500 ' +
     'aria-disabled:opacity-50 aria-disabled:cursor-not-allowed aria-disabled:hover:bg-white',
   checkbox:
     'absolute top-3 left-3 h-4 w-4 cursor-pointer accent-blue-600 ' +
@@ -78,7 +78,6 @@ export const Selectable = (): React.ReactNode => {
     <div className="flex flex-col gap-3">
       <Card
         className={classes.card}
-        data-state={selected ? 'checked' : 'unchecked'}
         selected={selected}
         onSelectionChange={onSelectionChange}
         checkbox={{ className: classes.checkbox, 'aria-label': 'Select card' }}

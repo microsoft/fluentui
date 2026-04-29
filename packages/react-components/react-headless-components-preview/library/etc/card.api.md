@@ -74,7 +74,11 @@ export type CardProps = Omit<CardBaseProps, 'focusMode'>;
 export type CardSlots = CardSlots_2;
 
 // @public
-export type CardState = CardBaseState;
+export type CardState = CardBaseState & {
+    root: {
+        'data-selected'?: string;
+    };
+};
 
 // @public
 export const renderCard: (state: CardBaseState, cardContextValue: CardContextValue_2) => JSXElement;

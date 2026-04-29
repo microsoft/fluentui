@@ -25,7 +25,11 @@ export type CardProps = Omit<CardBaseProps, 'focusMode'>;
 /**
  * Card component state
  */
-export type CardState = CardBaseState;
+export type CardState = CardBaseState & {
+  root: {
+    'data-selected'?: string;
+  };
+};
 
 /**
  * Context value provided by Card to its sub-components.

@@ -4,6 +4,7 @@ import type * as React from 'react';
 import { useCardBase_unstable, useCardContext_unstable } from '@fluentui/react-card';
 
 import type { CardContextValue, CardProps, CardState } from './Card.types';
+import { stringifyDataAttribute } from '../../utils/stringifyDataAttribute';
 
 /**
  * Returns the state for a Card component, given its props and ref.
@@ -11,6 +12,8 @@ import type { CardContextValue, CardProps, CardState } from './Card.types';
  */
 export const useCard = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
   const state: CardState = useCardBase_unstable(props, ref);
+
+  state.root['data-selected'] = stringifyDataAttribute(state.selected);
 
   return state;
 };
