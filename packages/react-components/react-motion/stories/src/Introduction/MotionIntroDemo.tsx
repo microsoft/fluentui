@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import { Button } from '@fluentui/react-components';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
