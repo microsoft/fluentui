@@ -5,14 +5,6 @@ export interface FileEntry {
   packageName: string;
 }
 
-export interface BaseArgs {
-  path: string;
-  verbose: boolean;
-  fullReasons: boolean;
-  concurrency: number;
-  exclude: string[];
-}
-
 // ── Directive analysis types ──
 
 export type DirectiveStatus = 'redundant' | 'active' | 'skipped';
@@ -49,10 +41,6 @@ export interface FixResult {
   directivesJustified: number;
 }
 
-export interface DirectiveArgs extends BaseArgs {
-  fix: boolean;
-}
-
 // ── Coverage analysis types ──
 
 export type CompilationMode = 'infer' | 'annotation' | 'all';
@@ -84,13 +72,3 @@ export interface CoverageAnalyzerOptions {
   verbose: boolean;
   compilationMode: CompilationMode;
 }
-
-export interface CoverageArgs extends BaseArgs {
-  compilationMode: CompilationMode;
-}
-
-// ── CLI parsed result ──
-
-export type ParsedCommand =
-  | { command: 'directives'; args: DirectiveArgs }
-  | { command: 'coverage'; args: CoverageArgs };
