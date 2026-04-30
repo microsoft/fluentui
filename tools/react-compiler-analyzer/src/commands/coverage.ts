@@ -32,7 +32,7 @@ export const coverageCommand: CommandModule<{}, CoverageArgv> = {
         type: 'boolean' as const,
         describe: "Insert 'use memo' into compilable functions that use manual memoization",
         default: false,
-      }) as any,
+      }),
   handler: async argv => {
     const resolvedPath = validatePath(argv.path);
     validateConcurrency(argv.concurrency);
