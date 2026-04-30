@@ -53,6 +53,7 @@ export function manualMemoPlugin(): PluginObj {
   return {
     name: 'manual-memo-detection',
     visitor: {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(path, state) {
         const opts = state.opts as unknown as ManualMemoPluginOptions;
         const callee = path.node.callee;
