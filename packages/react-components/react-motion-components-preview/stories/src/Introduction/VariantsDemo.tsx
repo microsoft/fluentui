@@ -3,12 +3,16 @@ import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Fade, FadeSnappy, FadeRelaxed } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
+  toolbar: {
+    textAlign: 'center',
+    marginBottom: tokens.spacingVerticalL,
+  },
   container: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '16px',
-    marginTop: '24px',
-    marginBottom: '24px',
+    gap: tokens.spacingHorizontalL,
+    marginTop: tokens.spacingVerticalXXL,
+    marginBottom: tokens.spacingVerticalXXL,
 
     '@media (max-width: 600px)': {
       gridTemplateColumns: '1fr',
@@ -18,9 +22,9 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '12px',
-    padding: '20px',
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    gap: tokens.spacingVerticalM,
+    padding: tokens.spacingVerticalXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
   },
@@ -56,7 +60,7 @@ const useClasses = makeStyles({
   },
   button: {
     minWidth: 'auto',
-    padding: '4px 12px',
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalM}`,
     fontSize: tokens.fontSizeBase200,
   },
 });
@@ -75,7 +79,7 @@ export const VariantsDemo: React.FC = () => {
 
   return (
     <>
-      <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+      <div className={classes.toolbar}>
         <Button onClick={toggleAll}>Toggle All</Button>
       </div>
       <div className={classes.container}>

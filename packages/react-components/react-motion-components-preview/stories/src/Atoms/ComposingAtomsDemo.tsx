@@ -7,19 +7,19 @@ import { rotateAtom, blurAtom, scaleAtom } from '@fluentui/react-motion-componen
 
 const useClasses = makeStyles({
   wrapper: {
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     overflow: 'hidden',
-    marginTop: '24px',
-    marginBottom: '24px',
+    marginTop: tokens.spacingVerticalXXL,
+    marginBottom: tokens.spacingVerticalXXL,
   },
   header: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '12px 20px',
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalXL}`,
     backgroundColor: tokens.colorNeutralBackground2,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
   },
   title: {
     margin: 0,
@@ -38,7 +38,7 @@ const useClasses = makeStyles({
     justifyContent: 'center',
     flex: '1 1 auto',
     minHeight: '120px',
-    padding: '20px',
+    padding: tokens.spacingVerticalXL,
     backgroundColor: tokens.colorNeutralBackground1,
   },
   demoPane: {
@@ -49,13 +49,13 @@ const useClasses = makeStyles({
   buttonRow: {
     display: 'flex',
     justifyContent: 'center',
-    padding: '12px 20px 16px',
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalXL} ${tokens.spacingVerticalL}`,
     backgroundColor: tokens.colorNeutralBackground1,
   },
   demoBox: {
-    padding: '16px 24px',
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalXXL}`,
     backgroundColor: tokens.colorNeutralBackground3,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground1,
     fontSize: tokens.fontSizeBase300,
@@ -64,14 +64,14 @@ const useClasses = makeStyles({
   },
   codeArea: {
     flex: '1 1 auto',
-    minWidth: '0',
-    padding: '16px 20px',
+    minWidth: 0,
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalXL}`,
     backgroundColor: tokens.colorNeutralBackground1,
-    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     overflow: 'auto',
     '@media (max-width: 600px)': {
       borderLeft: 'none',
-      borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
+      borderTop: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     },
   },
   code: {
@@ -80,7 +80,7 @@ const useClasses = makeStyles({
     lineHeight: tokens.lineHeightBase200,
     color: tokens.colorNeutralForeground1,
     whiteSpace: 'pre',
-    margin: '0',
+    margin: 0,
     display: 'block',
   },
 });

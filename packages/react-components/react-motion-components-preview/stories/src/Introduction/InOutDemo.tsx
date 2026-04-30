@@ -6,9 +6,9 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '16px',
-    marginTop: '24px',
-    marginBottom: '24px',
+    gap: tokens.spacingHorizontalL,
+    marginTop: tokens.spacingVerticalXXL,
+    marginBottom: tokens.spacingVerticalXXL,
 
     '@media (max-width: 600px)': {
       gridTemplateColumns: '1fr',
@@ -18,9 +18,9 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '12px',
-    padding: '20px',
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    gap: tokens.spacingVerticalM,
+    padding: tokens.spacingVerticalXL,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
   },
@@ -39,8 +39,8 @@ const useClasses = makeStyles({
     fontFamily: tokens.fontFamilyMonospace,
     fontSize: tokens.fontSizeBase200,
     backgroundColor: tokens.colorNeutralBackground4,
-    padding: '2px 6px',
-    borderRadius: '4px',
+    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalSNudge}`,
+    borderRadius: tokens.borderRadiusSmall,
   },
   demoArea: {
     display: 'flex',
@@ -63,7 +63,7 @@ const useClasses = makeStyles({
   },
   button: {
     minWidth: 'auto',
-    padding: '4px 12px',
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalM}`,
     fontSize: tokens.fontSizeBase200,
   },
 });

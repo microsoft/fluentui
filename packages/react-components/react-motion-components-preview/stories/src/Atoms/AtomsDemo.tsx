@@ -7,21 +7,20 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0',
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
-    marginTop: '24px',
-    marginBottom: '24px',
+    marginTop: tokens.spacingVerticalXXL,
+    marginBottom: tokens.spacingVerticalXXL,
     overflow: 'hidden',
   },
   controls: {
     display: 'flex',
     alignItems: 'center',
-    gap: '16px',
+    gap: tokens.spacingHorizontalL,
     flexWrap: 'wrap',
-    padding: '16px 20px',
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalXL}`,
     backgroundColor: tokens.colorNeutralBackground2,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
   },
   body: {
     display: 'flex',
@@ -36,13 +35,13 @@ const useClasses = makeStyles({
     minHeight: '120px',
     flex: '0 0 200px',
     backgroundColor: tokens.colorNeutralBackground1,
-    padding: '20px',
+    padding: tokens.spacingVerticalXL,
   },
   demoBox: {
     width: '100px',
     height: '80px',
     backgroundColor: tokens.colorNeutralBackground3,
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     display: 'flex',
     alignItems: 'center',
@@ -52,14 +51,14 @@ const useClasses = makeStyles({
   },
   codeArea: {
     flex: '1 1 auto',
-    minWidth: '0',
-    padding: '16px 20px',
+    minWidth: 0,
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalXL}`,
     backgroundColor: tokens.colorNeutralBackground1,
-    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     overflow: 'auto',
     '@media (max-width: 600px)': {
       borderLeft: 'none',
-      borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
+      borderTop: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     },
   },
   code: {
@@ -68,7 +67,7 @@ const useClasses = makeStyles({
     lineHeight: tokens.lineHeightBase200,
     color: tokens.colorNeutralForeground1,
     whiteSpace: 'pre',
-    margin: '0',
+    margin: 0,
     display: 'block',
   },
 });
@@ -93,8 +92,10 @@ const createAtomMotion = (type: AtomType) => {
       );
     case 'blur':
       return createMotionComponent(blurAtom({ direction: 'enter', duration: demoDuration, easing, outRadius: '10px' }));
-    default:
-      return createMotionComponent(fadeAtom({ direction: 'enter', duration: demoDuration, easing }));
+    default: {
+      const _exhaustive: never = type;
+      throw new Error(`Unhandled atom type: ${_exhaustive}`);
+    }
   }
 };
 
