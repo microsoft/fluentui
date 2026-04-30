@@ -93,4 +93,18 @@ describe('InlineDrawer', () => {
     expect(result.queryByRole('dialog')).not.toBeInTheDocument();
     expect(result.getByText('Inline body')).toBeInTheDocument();
   });
+
+  it('does not set id="" on DrawerHeaderTitle heading when outside of Dialog context', () => {
+    const result = render(
+      <InlineDrawer open>
+        <DrawerHeader>
+          <DrawerHeaderTitle>Inline title</DrawerHeaderTitle>
+        </DrawerHeader>
+      </InlineDrawer>,
+    );
+
+    const heading = result.getByRole('heading', { name: 'Inline title' });
+
+    expect(heading).not.toHaveAttribute('id', '');
+  });
 });
