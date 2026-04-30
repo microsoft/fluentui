@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -11,9 +12,11 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { PopoverTriggerChildProps as PopoverTriggerChildProps_2 } from '@fluentui/react-popover';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
 export type OnOpenChangeData = EventData<string, React_2.SyntheticEvent | Event> & {
@@ -93,7 +96,7 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
 
 // @public
-export type PopoverTriggerProps = {
+export type PopoverTriggerProps = Omit<TriggerProps<PopoverTriggerChildProps>, 'children'> & {
     children: React_2.ReactElement;
     disableButtonEnhancement?: boolean;
 };

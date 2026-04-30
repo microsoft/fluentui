@@ -4,22 +4,3 @@
     interpolate-size: allow-keywords;
   }
 </style>
-<style>
-  /* Entrance / exit transition for native-popover surfaces used by stories */
-  [popover] {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 150ms ease-out, transform 150ms ease-out, display 150ms allow-discrete,
-      overlay 150ms allow-discrete;
-  }
-  [popover]:not(:popover-open) {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  @starting-style {
-    [popover]:popover-open {
-      opacity: 0;
-      transform: scale(0.96);
-    }
-  }
-</style>

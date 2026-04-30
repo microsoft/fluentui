@@ -14,7 +14,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { Escape } from '@fluentui/keyboard-keys';
 import { usePopoverContext } from '../popoverContext';
 import { stringifyDataAttribute } from '../../../utils';
-import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
+import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
 /**
  * Returns the state for a PopoverTrigger component.
@@ -22,7 +22,7 @@ import type { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.
  */
 export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerState => {
   const { children, disableButtonEnhancement = false } = props;
-  const child = getTriggerChild(children);
+  const child = getTriggerChild<PopoverTriggerChildProps>(children);
 
   const open = usePopoverContext(context => context.open);
   const setOpen = usePopoverContext(context => context.setOpen);
@@ -74,29 +74,17 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
     }
   };
 
-  const childProps = (child?.props ?? {}) as Record<string, unknown>;
-
   const triggerChildProps = {
     'aria-expanded': `${open}` as 'true' | 'false',
     'aria-haspopup': 'true' as const,
     'aria-details': open ? surfaceId : undefined,
     'data-open': stringifyDataAttribute(open),
     ...child?.props,
-    onMouseEnter: useEventCallback(
-      mergeCallbacks(childProps.onMouseEnter as React.MouseEventHandler<HTMLElement> | undefined, onMouseEnter),
-    ),
-    onMouseLeave: useEventCallback(
-      mergeCallbacks(childProps.onMouseLeave as React.MouseEventHandler<HTMLElement> | undefined, onMouseLeave),
-    ),
-    onContextMenu: useEventCallback(
-      mergeCallbacks(childProps.onContextMenu as React.MouseEventHandler<HTMLElement> | undefined, onContextMenu),
-    ),
-    onClick: useEventCallback(
-      mergeCallbacks(childProps.onClick as React.MouseEventHandler<HTMLElement> | undefined, onClick),
-    ),
-    onKeyDown: useEventCallback(
-      mergeCallbacks(childProps.onKeyDown as React.KeyboardEventHandler<HTMLElement> | undefined, onKeyDown),
-    ),
+    onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
+    onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
+    onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
     ref: useMergedRefs(triggerRef, positioningCtx.targetRef, getReactElementRef(child)),
   };
 

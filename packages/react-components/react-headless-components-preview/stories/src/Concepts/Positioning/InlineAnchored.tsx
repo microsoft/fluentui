@@ -1,4 +1,8 @@
+'use client';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { usePositioning, resolvePositioningShorthand } from '@fluentui/react-headless-components-preview/positioning';
 import type { PositioningShorthand } from '@fluentui/react-headless-components-preview/positioning';
 
