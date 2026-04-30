@@ -97,4 +97,20 @@ describe('manualMemoPlugin', () => {
     expect(inner).toBeDefined();
     expect(inner!.useCallback).toBe(1);
   });
+
+  it('detects React.useMemo and React.useCallback via namespace', async () => {
+    const results = await runPlugin('react-namespace-hooks.tsx');
+    // code that uses React.useCallback + React.useMemo, and React.memo at module scope (no enclosing function)
+    expect(results.size).toBe(1);
+    const entry = [...results.values()][0];
+    expect(entry.useMemo).toBe(1);
+    expect(entry.useCallback).toBe(1);
+    expect(entry.reactMemo).toBe(false);
+    expect(entry.bodyInsertionLine).toBeGreaterThan(0);
+  });
+
+  it('ignores useMemo/useCallback not imported from react', async () => {
+    const results = await runPlugin('non-react-memo.tsx');
+    expect(results.size).toBe(0);
+  });
 });
