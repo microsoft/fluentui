@@ -77,21 +77,21 @@ function printFunctionTable(
   showMemoStats: boolean,
 ): void {
   if (showMemoStats) {
-    console.log('| File | Line | Function | Memo Slots | Memo Blocks | Memo Values |');
-    console.log('|------|------|----------|------------|-------------|-------------|');
+    console.log('| Location | Function | Memo Slots | Memo Blocks | Memo Values |');
+    console.log('|----------|----------|------------|-------------|-------------|');
     for (const r of results) {
       const relPath = relative(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const stats = r.memoStats;
       console.log(
-        `| ${relPath} | ${r.line} | ${fn} | ${stats?.memoSlots ?? 0} | ${stats?.memoBlocks ?? 0} | ${
+        `| ${relPath}:${r.line} | ${fn} | ${stats?.memoSlots ?? 0} | ${stats?.memoBlocks ?? 0} | ${
           stats?.memoValues ?? 0
         } |`,
       );
     }
   } else {
-    console.log('| File | Line | Function | Compiler Event | Reason |');
-    console.log('|------|------|----------|----------------|--------|');
+    console.log('| Location | Function | Compiler Event | Reason |');
+    console.log('|----------|----------|----------------|--------|');
     for (const r of results) {
       const relPath = relative(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
@@ -100,7 +100,7 @@ function printFunctionTable(
           ? escapeTableCell(r.reason)
           : truncate(r.reason, TABLE_REASON_MAX_LEN)
         : '';
-      console.log(`| ${relPath} | ${r.line} | ${fn} | ${r.compilerEvent} | ${reason} |`);
+      console.log(`| ${relPath}:${r.line} | ${fn} | ${r.compilerEvent} | ${reason} |`);
     }
   }
   console.log('');
@@ -184,8 +184,8 @@ export function printMigrationCandidates(results: FunctionAnalysis[], workspaceR
       "These can safely use `'use memo'` and may have their manual hooks removed.\n",
   );
 
-  console.log('| File | Line | Function | useMemo | useCallback | React.memo | Memo Slots |');
-  console.log('|------|------|----------|---------|-------------|------------|------------|');
+  console.log('| Location | Function | useMemo | useCallback | React.memo | Memo Slots |');
+  console.log('|----------|----------|---------|-------------|------------|------------|');
 
   for (const r of candidates) {
     const relPath = relative(workspaceRoot, r.filePath);
@@ -193,7 +193,7 @@ export function printMigrationCandidates(results: FunctionAnalysis[], workspaceR
     const memo = r.manualMemo!;
     const slots = r.memoStats?.memoSlots ?? 0;
     console.log(
-      `| ${relPath} | ${r.line} | ${fn} | ${memo.useMemo} | ${memo.useCallback} | ${
+      `| ${relPath}:${r.line} | ${fn} | ${memo.useMemo} | ${memo.useCallback} | ${
         memo.reactMemo ? 'yes' : 'no'
       } | ${slots} |`,
     );

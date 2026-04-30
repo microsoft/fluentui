@@ -48,8 +48,8 @@ describe('printMigrationCandidates', () => {
 
     const output = logOutput.join('\n');
     expect(output).toContain('## Migration Candidates');
-    expect(output).toContain('| src/Component.tsx | 5 | MyComponent | 2 | 1 | no | 3 |');
-    expect(output).toContain('| src/Other.tsx | 10 | OtherComponent | 0 | 0 | yes | 1 |');
+    expect(output).toContain('| src/Component.tsx:5 | MyComponent | 2 | 1 | no | 3 |');
+    expect(output).toContain('| src/Other.tsx:10 | OtherComponent | 0 | 0 | yes | 1 |');
     expect(output).toContain('**2** migration candidate(s) found.');
   });
 
