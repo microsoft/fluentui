@@ -125,7 +125,7 @@ function printFunctionTable(
 /**
  * Print an overall coverage summary.
  */
-export function printCoverageSummary(results: FunctionAnalysis[]): void {
+export function printCoverageSummary(results: FunctionAnalysis[], verbose: boolean): void {
   const total = results.length;
   const compiled = results.filter(r => r.status === 'compiled').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
@@ -149,19 +149,21 @@ export function printCoverageSummary(results: FunctionAnalysis[]): void {
     console.log('> All recognized functions compile successfully.\n');
   }
 
-  console.log('### Legend\n');
-  console.log('| Term | Meaning |');
-  console.log('|------|---------|');
-  console.log(
-    '| **Memo Slots** | Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot. |',
-  );
-  console.log(
-    '| **Memo Blocks** | Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks. |',
-  );
-  console.log(
-    '| **Memo Values** | Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders. |',
-  );
-  console.log('');
+  if (verbose) {
+    console.log('### Legend\n');
+    console.log('| Term | Meaning |');
+    console.log('|------|---------|');
+    console.log(
+      '| **Memo Slots** | Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot. |',
+    );
+    console.log(
+      '| **Memo Blocks** | Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks. |',
+    );
+    console.log(
+      '| **Memo Values** | Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders. |',
+    );
+    console.log('');
+  }
 }
 
 /**
