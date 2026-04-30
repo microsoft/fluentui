@@ -110,4 +110,43 @@ export function Idempotent({ items }: { items: string[] }) {
     expect(secondContent).toBe(firstContent);
     expect(outcome2.functionsAnnotated).toBe(0);
   });
+
+  it('applies annotations to functions using React.* namespace hooks', async () => {
+    const componentFile = join(tempDir, 'src', 'Namespace.tsx');
+    writeFileSync(
+      componentFile,
+      `import * as React from 'react';
+
+export function NamespaceComponent(props: { items: string[]; multiplier: number }) {
+  const [count, setCount] = React.useState(0);
+
+  const handleClick = React.useCallback(() => {
+    setCount(prev => prev + 1);
+  }, []);
+
+  const displayCount = React.useMemo(() => count * props.multiplier, [count, props.multiplier]);
+
+  return <button onClick={handleClick}>{displayCount}</button>;
+}
+`,
+    );
+
+    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-integration-pkg' }];
+    const results = await analyzeFilesForCoverage(files, {
+      concurrency: 1,
+      verbose: false,
+      compilationMode: 'infer',
+    });
+
+    const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
+    expect(candidates.length).toBeGreaterThan(0);
+    expect(candidates[0].manualMemo!.useMemo).toBe(1);
+    expect(candidates[0].manualMemo!.useCallback).toBe(1);
+
+    const outcome = await applyAnnotations(results);
+    expect(outcome.functionsAnnotated).toBeGreaterThan(0);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).toContain("'use memo'");
+  });
 });
