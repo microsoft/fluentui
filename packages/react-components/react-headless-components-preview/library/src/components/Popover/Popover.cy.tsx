@@ -13,6 +13,33 @@ const mount = (element: JSXElement) => {
 const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
 
+/**
+ * Marks a focus-restoration scenario as a known gap of the native
+ * `popover="auto"` model.
+ *
+ * Two distinct gaps put scenarios in this bucket:
+ *
+ * 1. Programmatic close: when React state flips `open: true → false`, the
+ *    surface unmounts before any close-side effect can call `hidePopover()`,
+ *    so the spec hide algorithm never runs and no focus restoration happens.
+ *    The trailing pointer event from the close interaction (e.g. clicking a
+ *    "Close" button) leaves focus on that button.
+ *
+ * 2. Hover and contextmenu opens: the spec hide algorithm restores focus to
+ *    the element that was focused when `showPopover()` ran. Hover and
+ *    contextmenu paths never move focus to the trigger before opening, so
+ *    the snapshot points at whatever was focused before — usually `<body>` —
+ *    and restoration after close lands on the wrong element.
+ *
+ * Both gaps require a manual focus snapshot taken at intent-to-open and
+ * replayed when `open` transitions back to false. The tests below are kept
+ * as executable documentation; un-skipping them is the canary that the
+ * manual snapshot is in place.
+ */
+const itSkipUnsupportedFocusRestore = (description: string, fn: () => void): void => {
+  it.skip(description, fn);
+};
+
 describe('Popover', () => {
   ['uncontrolled', 'controlled'].forEach(scenario => {
     const UncontrolledExample = () => (
@@ -213,8 +240,7 @@ describe('Popover', () => {
   });
 
   describe('Focus restore — unsupported scenarios', () => {
-    it.skip('programmatic close: should restore focus to trigger', () => {
-      // not supported with pure native: React unmounts surface; spec hide algorithm not run
+    itSkipUnsupportedFocusRestore('programmatic close: should restore focus to trigger', () => {
       const Example = () => {
         const [open, setOpen] = React.useState(false);
         return (
@@ -239,8 +265,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
 
-    it.skip('hover-leave close: should restore focus to trigger', () => {
-      // not supported with pure native: React unmounts surface; spec hide algorithm not run
+    itSkipUnsupportedFocusRestore('hover-leave close: should restore focus to trigger', () => {
       mount(
         <Popover openOnHover mouseLeaveDelay={0}>
           <PopoverTrigger disableButtonEnhancement>
@@ -256,8 +281,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
 
-    it.skip('hover-open + Esc: should restore focus to trigger', () => {
-      // not supported with pure native: snapshot at open is the pre-hover focus, not trigger
+    itSkipUnsupportedFocusRestore('hover-open + Esc: should restore focus to trigger', () => {
       mount(
         <Popover openOnHover>
           <PopoverTrigger disableButtonEnhancement>
@@ -272,8 +296,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
 
-    it.skip('context-open + Esc: should restore focus to trigger', () => {
-      // not supported with pure native: contextmenu doesn't move focus; snapshot is wrong
+    itSkipUnsupportedFocusRestore('context-open + Esc: should restore focus to trigger', () => {
       mount(
         <Popover openOnContext>
           <PopoverTrigger disableButtonEnhancement>

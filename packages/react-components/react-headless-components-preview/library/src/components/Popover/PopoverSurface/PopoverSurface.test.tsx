@@ -87,8 +87,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    const surface = getByRole('group');
-    expect(surface.firstElementChild?.tagName).toBe('DIV');
+    expect(getByRole('group').querySelector('[data-arrow]')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
@@ -102,5 +101,22 @@ describe('PopoverSurface', () => {
     );
 
     expect(getByRole('group')).toHaveClass('my-surface');
+  });
+
+  it('keeps trigger aria-details linked to the surface even when a custom id is provided', () => {
+    const { getByText, getByRole } = render(
+      <Popover open>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface id="user-provided-id">Content</PopoverSurface>
+      </Popover>,
+    );
+
+    const surface = getByRole('group');
+    const trigger = getByText('Trigger');
+
+    expect(surface.id).not.toBe('user-provided-id');
+    expect(trigger.getAttribute('aria-details')).toBe(surface.id);
   });
 });

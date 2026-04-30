@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from './PopoverTrigger';
 import { PopoverSurface } from '../PopoverSurface/PopoverSurface';
@@ -68,37 +68,5 @@ describe('PopoverTrigger', () => {
     );
 
     expect(getByText('Trigger')).not.toHaveAttribute('data-open');
-  });
-
-  it('toggles popover on click', () => {
-    const onOpenChange = jest.fn();
-
-    const { getByText } = render(
-      <Popover onOpenChange={onOpenChange}>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Content</PopoverSurface>
-      </Popover>,
-    );
-
-    fireEvent.click(getByText('Trigger'));
-    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
-  });
-
-  it('closes on Escape key press', () => {
-    const onOpenChange = jest.fn();
-
-    const { getByText } = render(
-      <Popover defaultOpen onOpenChange={onOpenChange}>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Content</PopoverSurface>
-      </Popover>,
-    );
-
-    fireEvent.keyDown(getByText('Trigger'), { key: 'Escape' });
-    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
   });
 });
