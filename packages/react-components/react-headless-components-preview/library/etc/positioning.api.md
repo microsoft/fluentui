@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { Alignment } from '@fluentui/react-positioning';
-import type { Position } from '@fluentui/react-positioning';
-import type { PositioningImperativeRef } from '@fluentui/react-positioning';
-import type { PositioningProps } from '@fluentui/react-positioning';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { Alignment } from '@fluentui/react-positioning';
+import { Position } from '@fluentui/react-positioning';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
+import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 
