@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
 import styles from './skeleton.module.css';
-import storySource from './SkeletonDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <Skeleton className={`${styles.card} ${styles.demo}`}>
     <div className={styles.row}>
@@ -18,5 +16,3 @@ export const Default = (): React.ReactNode => (
     <SkeletonItem className={`${styles.bar} ${styles.line80}`} />
   </Skeleton>
 );
-
-Default.parameters = withStorySource(storySource);

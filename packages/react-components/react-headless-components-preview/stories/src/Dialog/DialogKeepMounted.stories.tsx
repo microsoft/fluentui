@@ -11,8 +11,6 @@ import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 import styles from './dialog.module.css';
 import textareaStyles from '../Textarea/textarea.module.css';
-import storySource from './DialogKeepMounted.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * `unmountOnClose={false}` keeps the dialog in the DOM at all times. The native
  * `<dialog>` element manages its own visibility via `show()`/`close()`, so any
@@ -53,5 +51,3 @@ export const KeepMounted = (): React.ReactNode => (
     </DialogSurface>
   </Dialog>
 );
-
-KeepMounted.parameters = withStorySource(storySource);

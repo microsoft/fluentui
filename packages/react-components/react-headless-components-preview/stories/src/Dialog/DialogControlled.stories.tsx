@@ -9,8 +9,6 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import styles from './dialog.module.css';
-import storySource from './DialogControlled.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * In controlled mode the parent owns the open state.
  * Pass `open` and `onOpenChange` together — `onOpenChange` fires for every
@@ -49,5 +47,3 @@ export const Controlled = (): React.ReactNode => {
     </Dialog>
   );
 };
-
-Controlled.parameters = withStorySource(storySource);

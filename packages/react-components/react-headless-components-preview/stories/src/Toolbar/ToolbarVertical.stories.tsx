@@ -15,8 +15,6 @@ import {
 } from '@fluentui/react-icons';
 
 import styles from './toolbar.module.css';
-import storySource from './ToolbarVertical.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Vertical = (): React.ReactNode => (
   <Toolbar className={styles.toolbar} vertical aria-label="Text formatting">
     <ToolbarButton className={styles.btn} aria-label="Cut" icon={<CutRegular />} />
@@ -32,5 +30,3 @@ export const Vertical = (): React.ReactNode => (
     </ToolbarGroup>
   </Toolbar>
 );
-
-Vertical.parameters = withStorySource(storySource);

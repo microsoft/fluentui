@@ -5,8 +5,6 @@ import { CheckmarkCircleRegular, ErrorCircleRegular, InfoRegular, WarningRegular
 
 import linkStyles from '../Link/link.module.css';
 import styles from './message-bar.module.css';
-import storySource from './MessageBarIntent.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const items = [
   {
     intent: 'info' as const,
@@ -55,7 +53,7 @@ export const Intent = (): React.ReactNode => (
   </div>
 );
 
-Intent.parameters = withStorySource(storySource, {
+Intent.parameters = {
   docs: {
     description: {
       story: [
@@ -65,4 +63,4 @@ Intent.parameters = withStorySource(storySource, {
       ].join('\n'),
     },
   },
-});
+};

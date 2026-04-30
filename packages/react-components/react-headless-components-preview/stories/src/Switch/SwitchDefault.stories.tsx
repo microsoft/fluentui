@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Switch } from '@fluentui/react-headless-components-preview/switch';
 
 import styles from './switch.module.css';
-import storySource from './SwitchDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.list}>
     <Switch
@@ -42,5 +40,3 @@ export const Default = (): React.ReactNode => (
     />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 import styles from './textarea.module.css';
-import storySource from './TextareaDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <Textarea placeholder="Write your message…" className={styles.wrap} textarea={{ className: styles.textarea }} />
@@ -20,5 +18,3 @@ export const Default = (): React.ReactNode => (
     />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

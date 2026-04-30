@@ -3,8 +3,6 @@ import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
 import { CheckmarkRegular } from '@fluentui/react-icons';
 
 import styles from './checkbox.module.css';
-import storySource from './CheckboxDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.list}>
     <Checkbox
@@ -38,5 +36,3 @@ export const Default = (): React.ReactNode => (
     />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

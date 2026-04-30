@@ -8,8 +8,6 @@ import {
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
 import styles from './accordion.module.css';
-import storySource from './AccordionCollapsible.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const items = [
   { value: 'item-1', header: 'Section one', panel: 'All items can be collapsed.' },
   { value: 'item-2', header: 'Section two', panel: 'Click an open item to close it.' },
@@ -32,5 +30,3 @@ export const Collapsible = (): React.ReactNode => (
     ))}
   </Accordion>
 );
-
-Collapsible.parameters = withStorySource(storySource);

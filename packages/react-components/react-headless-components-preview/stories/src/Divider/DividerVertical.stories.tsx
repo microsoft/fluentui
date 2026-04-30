@@ -3,8 +3,6 @@ import { Divider } from '@fluentui/react-headless-components-preview/divider';
 import { CircleRegular } from '@fluentui/react-icons';
 
 import styles from './divider.module.css';
-import storySource from './DividerVertical.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Vertical = (): React.ReactNode => (
   <div className={styles.verticalGroup}>
     <div className={styles.verticalCol}>
@@ -51,5 +49,3 @@ export const Vertical = (): React.ReactNode => (
     </div>
   </div>
 );
-
-Vertical.parameters = withStorySource(storySource);

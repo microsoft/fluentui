@@ -12,8 +12,6 @@ import { CheckmarkRegular } from '@fluentui/react-icons';
 
 import styles from './dialog.module.css';
 import checkboxStyles from '../Checkbox/checkbox.module.css';
-import storySource from './DialogWithCloseButton.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * Use `DialogTrigger` with `action="close"` to wire up a close button anywhere
  * inside the dialog. It defaults to `type="button"` and calls `onOpenChange`
@@ -67,5 +65,3 @@ export const WithCloseButton = (): React.ReactNode => (
     </DialogSurface>
   </Dialog>
 );
-
-WithCloseButton.parameters = withStorySource(storySource);

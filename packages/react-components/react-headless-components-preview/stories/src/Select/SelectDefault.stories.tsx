@@ -4,8 +4,6 @@ import { ChevronDownRegular } from '@fluentui/react-icons';
 
 import fieldStyles from '../Field/field.module.css';
 import styles from './select.module.css';
-import storySource from './SelectDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={`${fieldStyles.field} ${styles.demo}`}>
     <label className={fieldStyles.label} htmlFor="color-select">
@@ -24,5 +22,3 @@ export const Default = (): React.ReactNode => (
     </Select>
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

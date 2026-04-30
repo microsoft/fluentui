@@ -9,8 +9,6 @@ import {
 import type { DialogOpenChangeData } from '@fluentui/react-headless-components-preview/dialog';
 
 import styles from './dialog.module.css';
-import storySource from './DialogNoTrigger.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * `DialogTrigger` is optional. When the open state is managed entirely by the
  * parent (e.g. opened by a network event, a timeout, or a button outside the
@@ -55,5 +53,3 @@ export const NoTrigger = (): React.ReactNode => {
     </div>
   );
 };
-
-NoTrigger.parameters = withStorySource(storySource);

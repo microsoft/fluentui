@@ -3,8 +3,6 @@ import { Rating, RatingItem } from '@fluentui/react-headless-components-preview/
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
 import styles from './rating.module.css';
-import storySource from './RatingDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {
   const [value, setValue] = React.useState(3);
   const max = 5;
@@ -29,5 +27,3 @@ export const Default = (): React.ReactNode => {
     </div>
   );
 };
-
-Default.parameters = withStorySource(storySource);

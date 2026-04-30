@@ -11,8 +11,6 @@ import { Input } from '@fluentui/react-headless-components-preview/input';
 
 import styles from './dialog.module.css';
 import inputStyles from '../Input/input.module.css';
-import storySource from './DialogNonModal.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * A non-modal dialog does not dim the background and does not trap focus.
  * Users can still interact with the rest of the page while it is open.
@@ -52,5 +50,3 @@ export const NonModal = (): React.ReactNode => (
     />
   </div>
 );
-
-NonModal.parameters = withStorySource(storySource);

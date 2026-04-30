@@ -8,8 +8,6 @@ import {
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
 import styles from './accordion.module.css';
-import storySource from './AccordionDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const items = [
   {
     value: 'overview',
@@ -44,5 +42,3 @@ export const Default = (): React.ReactNode => (
     ))}
   </Accordion>
 );
-
-Default.parameters = withStorySource(storySource);

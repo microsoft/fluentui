@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
 import styles from './divider.module.css';
-import storySource from './DividerDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.column}>
     <p className={styles.section}>Content above</p>
@@ -23,5 +21,3 @@ export const Default = (): React.ReactNode => (
     <Divider className={styles.horizontal} />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

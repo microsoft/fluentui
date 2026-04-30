@@ -10,8 +10,6 @@ import { DismissRegular, InfoRegular } from '@fluentui/react-icons';
 
 import linkStyles from '../Link/link.module.css';
 import styles from './message-bar.module.css';
-import storySource from './MessageBarDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <MessageBar
     className={`${styles.bar} ${styles.info}`}
@@ -34,5 +32,3 @@ export const Default = (): React.ReactNode => (
     </MessageBarActions>
   </MessageBar>
 );
-
-Default.parameters = withStorySource(storySource);

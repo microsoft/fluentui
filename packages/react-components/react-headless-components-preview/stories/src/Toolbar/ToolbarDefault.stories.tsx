@@ -20,8 +20,6 @@ import {
 } from '@fluentui/react-icons';
 
 import styles from './toolbar.module.css';
-import storySource from './ToolbarDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const alignIcons = {
   left: TextAlignLeftRegular,
   center: TextAlignCenterRegular,
@@ -82,5 +80,3 @@ export const Default = (): React.ReactNode => {
     </Toolbar>
   );
 };
-
-Default.parameters = withStorySource(storySource);

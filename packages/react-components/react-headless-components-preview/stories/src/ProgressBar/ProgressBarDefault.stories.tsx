@@ -2,8 +2,6 @@ import * as React from 'react';
 import { ProgressBar } from '@fluentui/react-headless-components-preview/progress-bar';
 
 import styles from './progress-bar.module.css';
-import storySource from './ProgressBarDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <div className={styles.row}>
@@ -30,5 +28,3 @@ export const Default = (): React.ReactNode => (
     </div>
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

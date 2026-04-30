@@ -9,8 +9,6 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import styles from './dialog.module.css';
-import storySource from './DialogNested.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * Dialogs can be nested. The inner `Dialog` detects that it is inside a parent
  * `DialogContext` and sets `isNestedDialog=true` automatically. Each dialog
@@ -65,5 +63,3 @@ export const Nested = (): React.ReactNode => (
     </DialogSurface>
   </Dialog>
 );
-
-Nested.parameters = withStorySource(storySource);

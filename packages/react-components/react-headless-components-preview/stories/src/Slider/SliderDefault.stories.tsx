@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Slider } from '@fluentui/react-headless-components-preview/slider';
 
 import styles from './slider.module.css';
-import storySource from './SliderDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {
   const [value, setValue] = React.useState(42);
   return (
@@ -23,5 +21,3 @@ export const Default = (): React.ReactNode => {
     </div>
   );
 };
-
-Default.parameters = withStorySource(storySource);

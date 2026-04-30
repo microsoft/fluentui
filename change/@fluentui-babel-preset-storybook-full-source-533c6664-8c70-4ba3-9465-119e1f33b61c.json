@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: skip warnings for known-safe relative imports (*.module.css, ?raw queries, withStorySource/withCssModuleSource helpers, *.stories?raw)",
+  "comment": "chore: auto-inject parameters.docs.source.code/originalSource for stories (consumers no longer need to wire withStorySource)",
   "packageName": "@fluentui/babel-preset-storybook-full-source",
   "email": "tudor.popa@microsoft.com",
   "dependentChangeType": "none"

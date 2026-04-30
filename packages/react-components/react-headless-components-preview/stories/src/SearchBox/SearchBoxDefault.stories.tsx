@@ -4,8 +4,6 @@ import { SearchRegular } from '@fluentui/react-icons';
 
 // SearchBox reuses the input CSS module per the story authoring guide.
 import styles from '../Input/input.module.css';
-import storySource from './SearchBoxDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <SearchBox
@@ -19,5 +17,3 @@ export const Default = (): React.ReactNode => (
     />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

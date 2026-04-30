@@ -3,8 +3,6 @@ import { ToggleButton } from '@fluentui/react-headless-components-preview/toggle
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 
 import styles from './toggle-button.module.css';
-import storySource from './ToggleButtonDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => {
   const [bold, setBold] = React.useState(false);
   const [italic, setItalic] = React.useState(false);
@@ -45,5 +43,3 @@ export const Default = (): React.ReactNode => {
     </div>
   );
 };
-
-Default.parameters = withStorySource(storySource);

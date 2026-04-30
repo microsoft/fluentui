@@ -4,8 +4,6 @@ import { ChevronDownRegular, ChevronUpRegular } from '@fluentui/react-icons';
 
 import fieldStyles from '../Field/field.module.css';
 import styles from './spin-button.module.css';
-import storySource from './SpinButtonDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={`${fieldStyles.field} ${styles.demo}`}>
     <label className={fieldStyles.label} htmlFor="quantity-spinbutton">
@@ -29,5 +27,3 @@ export const Default = (): React.ReactNode => (
     />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

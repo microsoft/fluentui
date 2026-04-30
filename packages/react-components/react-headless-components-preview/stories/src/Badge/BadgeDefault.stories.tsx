@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Badge } from '@fluentui/react-headless-components-preview/badge';
 
 import styles from './badge.module.css';
-import storySource from './BadgeDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <Badge className={styles.badge}>Default</Badge>
@@ -27,5 +25,3 @@ export const Default = (): React.ReactNode => (
     <Badge className={`${styles.badge} ${styles.counter}`}>9</Badge>
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

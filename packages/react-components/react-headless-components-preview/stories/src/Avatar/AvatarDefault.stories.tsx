@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
 
 import styles from './avatar.module.css';
-import storySource from './AvatarDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <div className={styles.demoRow}>
@@ -42,5 +40,3 @@ export const Default = (): React.ReactNode => (
     </div>
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

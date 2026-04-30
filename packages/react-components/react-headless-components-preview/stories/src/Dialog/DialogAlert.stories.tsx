@@ -9,8 +9,6 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import styles from './dialog.module.css';
-import storySource from './DialogAlert.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 /**
  * An alert dialog uses `modalType="alert"`, which sets `role="alertdialog"` on the surface.
  * It is intended for critical messages that require the user to make a decision before proceeding.
@@ -50,5 +48,3 @@ export const Alert = (): React.ReactNode => (
     </DialogSurface>
   </Dialog>
 );
-
-Alert.parameters = withStorySource(storySource);

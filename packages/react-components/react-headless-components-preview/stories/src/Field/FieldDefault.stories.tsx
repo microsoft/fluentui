@@ -5,8 +5,6 @@ import { ErrorCircleRegular } from '@fluentui/react-icons';
 
 import fieldStyles from './field.module.css';
 import inputStyles from '../Input/input.module.css';
-import storySource from './FieldDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={fieldStyles.demo}>
     <Field label={{ children: 'Email address', className: fieldStyles.label }} className={fieldStyles.field}>
@@ -51,5 +49,3 @@ export const Default = (): React.ReactNode => (
     </Field>
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

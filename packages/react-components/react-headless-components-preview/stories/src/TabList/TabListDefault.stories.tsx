@@ -2,8 +2,6 @@ import * as React from 'react';
 import { TabList, Tab } from '@fluentui/react-headless-components-preview/tab-list';
 
 import styles from './tab-list.module.css';
-import storySource from './TabListDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const tabs = [
   { value: 'account', label: 'Account', content: 'Manage your account settings and preferences.' },
   {
@@ -38,5 +36,3 @@ export const Default = (): React.ReactNode => {
     </div>
   );
 };
-
-Default.parameters = withStorySource(storySource);

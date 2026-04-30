@@ -9,8 +9,6 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import styles from './dialog.module.css';
-import storySource from './DialogDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <Dialog>
     <DialogTrigger>
@@ -40,5 +38,3 @@ export const Default = (): React.ReactNode => (
     </DialogSurface>
   </Dialog>
 );
-
-Default.parameters = withStorySource(storySource);

@@ -3,8 +3,6 @@ import { RatingDisplay } from '@fluentui/react-headless-components-preview/ratin
 import { StarFilled, StarHalfFilled, StarRegular } from '@fluentui/react-icons';
 
 import styles from './rating-display.module.css';
-import storySource from './RatingDisplayCompact.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const RatingIcon: React.FC = () => (
   <>
     <StarFilled className={`${styles.icon} ${styles.iconFilled}`} />
@@ -22,5 +20,3 @@ export const Compact = (): React.ReactNode => (
     valueText={{ className: styles.value }}
   />
 );
-
-Compact.parameters = withStorySource(storySource);

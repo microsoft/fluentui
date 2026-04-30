@@ -3,8 +3,6 @@ import { RatingDisplay } from '@fluentui/react-headless-components-preview/ratin
 import { StarFilled, StarHalfFilled, StarRegular } from '@fluentui/react-icons';
 
 import styles from './rating-display.module.css';
-import storySource from './RatingDisplayDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 const RatingIcon: React.FC = () => (
   <>
     <StarFilled className={`${styles.icon} ${styles.iconFilled}`} />
@@ -23,5 +21,3 @@ export const Default = (): React.ReactNode => (
     countText={{ className: styles.count, children: '(248)' }}
   />
 );
-
-Default.parameters = withStorySource(storySource);

@@ -3,8 +3,6 @@ import { Toolbar, ToolbarGroup, ToolbarToggleButton } from '@fluentui/react-head
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 
 import styles from './toolbar.module.css';
-import storySource from './ToolbarToggleButton.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Toggle = (): React.ReactNode => (
   <Toolbar className={styles.toolbar} aria-label="Text formatting toggles">
     <ToolbarGroup className={styles.group} aria-label="Toggle states">
@@ -32,5 +30,3 @@ export const Toggle = (): React.ReactNode => (
     </ToolbarGroup>
   </Toolbar>
 );
-
-Toggle.parameters = withStorySource(storySource);

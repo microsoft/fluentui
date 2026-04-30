@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Link } from '@fluentui/react-headless-components-preview/link';
 
 import styles from './link.module.css';
-import storySource from './LinkDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <Link href="#" className={styles.link}>
@@ -27,5 +25,3 @@ export const Default = (): React.ReactNode => (
     </Link>
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

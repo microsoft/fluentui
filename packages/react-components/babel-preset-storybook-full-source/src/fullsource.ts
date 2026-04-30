@@ -2,6 +2,7 @@ import * as Babel from '@babel/core';
 import * as prettier from 'prettier';
 import * as fs from 'fs';
 
+import { cleanStorySource } from './cleanSource';
 import { modifyImportsPlugin } from './modifyImports';
 import { removeStorybookParameters } from './removeStorybookParameters';
 import { BabelPluginOptions } from './types';
@@ -48,6 +49,47 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
         t.stringLiteral(fullSource),
       ),
     );
+  };
+
+  /**
+   * Builds:
+   *
+   *   Story.parameters.docs = Object.assign({}, Story.parameters.docs, {
+   *     source: Object.assign({},
+   *       Story.parameters.docs && Story.parameters.docs.source,
+   *       { code: <SOURCE>, originalSource: <SOURCE> }),
+   *   });
+   *
+   * Set as a separate statement (rather than inlined into the parameters
+   * literal) so it composes with whatever shape the story author already
+   * declared — `parameters.docs.description.story`, custom transforms, etc.
+   */
+  const createDocsSourceAssignmentExpression = (cleanedSource: string) => {
+    const storyParametersDocs = t.memberExpression(
+      t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+      t.identifier('docs'),
+    );
+    const storyParametersDocsSource = t.memberExpression(storyParametersDocs, t.identifier('source'));
+
+    const source = t.stringLiteral(cleanedSource);
+    const newSourceProps = t.objectExpression([
+      t.objectProperty(t.identifier('code'), source),
+      t.objectProperty(t.identifier('originalSource'), source),
+    ]);
+
+    const sourceAssign = t.callExpression(t.memberExpression(t.identifier('Object'), t.identifier('assign')), [
+      t.objectExpression([]),
+      t.logicalExpression('&&', storyParametersDocs, storyParametersDocsSource),
+      newSourceProps,
+    ]);
+
+    const docsAssign = t.callExpression(t.memberExpression(t.identifier('Object'), t.identifier('assign')), [
+      t.objectExpression([]),
+      storyParametersDocs,
+      t.objectExpression([t.objectProperty(t.identifier('source'), sourceAssign)]),
+    ]);
+
+    return t.expressionStatement(t.assignmentExpression('=', storyParametersDocs, docsAssign));
   };
 
   return {
@@ -116,6 +158,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           }
 
           path.pushContainer('body', createFullSourceAssignmentExpression(code));
+          path.pushContainer('body', createDocsSourceAssignmentExpression(cleanStorySource(fileContents)));
         },
       },
     },

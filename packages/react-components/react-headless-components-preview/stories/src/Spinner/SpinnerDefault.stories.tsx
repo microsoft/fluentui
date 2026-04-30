@@ -3,8 +3,6 @@ import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerIosRegular } from '@fluentui/react-icons';
 
 import styles from './spinner.module.css';
-import storySource from './SpinnerDefault.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Default = (): React.ReactNode => (
   <div className={styles.demoRow}>
     <Spinner
@@ -30,5 +28,3 @@ export const Default = (): React.ReactNode => (
     />
   </div>
 );
-
-Default.parameters = withStorySource(storySource);

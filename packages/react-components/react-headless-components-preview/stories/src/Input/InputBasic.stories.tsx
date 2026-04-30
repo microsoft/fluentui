@@ -3,8 +3,6 @@ import { Input } from '@fluentui/react-headless-components-preview/input';
 import { SearchRegular } from '@fluentui/react-icons';
 
 import styles from './input.module.css';
-import storySource from './InputBasic.stories?raw';
-import { withStorySource } from '../_helpers/withStorySource';
 export const Basic = (): React.ReactNode => (
   <div className={`${styles.column} ${styles.demo}`}>
     <Input className={styles.wrap} input={{ className: styles.input }} placeholder="Default input" />
@@ -28,5 +26,3 @@ export const Basic = (): React.ReactNode => (
     <Input placeholder="Disabled" disabled className={styles.wrap} input={{ className: styles.input }} />
   </div>
 );
-
-Basic.parameters = withStorySource(storySource);
