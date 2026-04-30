@@ -8,7 +8,15 @@
     },
     "transform": {
       "decoratorMetadata": true,
-      "legacyDecorator": true
+      "legacyDecorator": true,
+      "optimizer": {
+        "simplify": true,
+        "globals": {
+          "envs": {
+            "NODE_ENV": "\"production\""
+          }
+        }
+      }
     },
     "keepClassNames": true,
     "externalHelpers": true,
@@ -25,6 +33,8 @@
     ".*\\.test.tsx?$",
     "./src/jest-setup.ts$",
     "./**/jest-setup.ts$",
-    ".*.js$"
+    ".*.js$",
+    "./**/__tests__/**",
+    "./**/__fixtures__/**"
   ]
 }
