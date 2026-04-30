@@ -150,10 +150,11 @@ export const AtomsDemo: React.FC = () => {
 
   const MotionComponent = React.useMemo(() => createAtomMotion(atomType), [atomType]);
 
-  const handleAtomChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleAtomChange = React.useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
     setAtomType(event.target.value as AtomType);
     setKey(k => k + 1);
-  };
+  }, []);
+  const handleReplay = React.useCallback(() => setKey(k => k + 1), []);
 
   return (
     <div className={classes.container}>
@@ -165,7 +166,7 @@ export const AtomsDemo: React.FC = () => {
           <option value="rotate">rotateAtom</option>
           <option value="blur">blurAtom</option>
         </Select>
-        <Button appearance="primary" onClick={() => setKey(k => k + 1)}>
+        <Button appearance="primary" onClick={handleReplay}>
           Replay
         </Button>
       </div>

@@ -64,12 +64,13 @@ interface ComponentCardProps {
 const ComponentCard: React.FC<ComponentCardProps> = ({ name, children }) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState(true);
+  const toggleVisible = React.useCallback(() => setVisible(v => !v), []);
 
   return (
     <div className={classes.card}>
       <h4 className={classes.name}>{name}</h4>
       <div className={classes.demoArea}>{children(visible)}</div>
-      <Button appearance="primary" size="small" onClick={() => setVisible(v => !v)}>
+      <Button appearance="primary" size="small" onClick={toggleVisible}>
         {visible ? 'Hide' : 'Show'}
       </Button>
     </div>

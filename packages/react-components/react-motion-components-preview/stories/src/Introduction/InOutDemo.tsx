@@ -76,6 +76,10 @@ export const InOutDemo: React.FC = () => {
   const [inKey, setInKey] = React.useState(0);
   const [outKey, setOutKey] = React.useState(0);
 
+  const replayIn = React.useCallback(() => setInKey(k => k + 1), []);
+  const toggleVisible = React.useCallback(() => setVisible(v => !v), []);
+  const replayOut = React.useCallback(() => setOutKey(k => k + 1), []);
+
   return (
     <div className={classes.container}>
       <div className={classes.panel}>
@@ -87,7 +91,7 @@ export const InOutDemo: React.FC = () => {
             <div className={classes.demoBox}>Enter</div>
           </Fade.In>
         </div>
-        <Button className={classes.button} size="small" onClick={() => setInKey(k => k + 1)}>
+        <Button className={classes.button} size="small" onClick={replayIn}>
           Replay
         </Button>
       </div>
@@ -101,7 +105,7 @@ export const InOutDemo: React.FC = () => {
             <div className={classes.demoBox}>Toggle</div>
           </Fade>
         </div>
-        <Button className={classes.button} size="small" onClick={() => setVisible(v => !v)}>
+        <Button className={classes.button} size="small" onClick={toggleVisible}>
           {visible ? 'Hide' : 'Show'}
         </Button>
       </div>
@@ -115,7 +119,7 @@ export const InOutDemo: React.FC = () => {
             <div className={classes.demoBox}>Exit</div>
           </Fade.Out>
         </div>
-        <Button className={classes.button} size="small" onClick={() => setOutKey(k => k + 1)}>
+        <Button className={classes.button} size="small" onClick={replayOut}>
           Replay
         </Button>
       </div>

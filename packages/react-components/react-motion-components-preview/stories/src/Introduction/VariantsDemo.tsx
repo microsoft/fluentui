@@ -73,11 +73,14 @@ export const VariantsDemo: React.FC = () => {
   const [visibleDefault, setVisibleDefault] = React.useState(true);
   const [visibleRelaxed, setVisibleRelaxed] = React.useState(true);
 
-  const toggleAll = () => {
+  const toggleAll = React.useCallback(() => {
     setVisibleSnappy(v => !v);
     setVisibleDefault(v => !v);
     setVisibleRelaxed(v => !v);
-  };
+  }, []);
+  const toggleSnappy = React.useCallback(() => setVisibleSnappy(v => !v), []);
+  const toggleDefault = React.useCallback(() => setVisibleDefault(v => !v), []);
+  const toggleRelaxed = React.useCallback(() => setVisibleRelaxed(v => !v), []);
 
   return (
     <>
@@ -93,7 +96,7 @@ export const VariantsDemo: React.FC = () => {
               <div className={classes.demoBox}>Snappy</div>
             </FadeSnappy>
           </div>
-          <Button className={classes.button} size="small" onClick={() => setVisibleSnappy(v => !v)}>
+          <Button className={classes.button} size="small" onClick={toggleSnappy}>
             {visibleSnappy ? 'Hide' : 'Show'}
           </Button>
         </div>
@@ -106,7 +109,7 @@ export const VariantsDemo: React.FC = () => {
               <div className={classes.demoBox}>Default</div>
             </Fade>
           </div>
-          <Button className={classes.button} size="small" onClick={() => setVisibleDefault(v => !v)}>
+          <Button className={classes.button} size="small" onClick={toggleDefault}>
             {visibleDefault ? 'Hide' : 'Show'}
           </Button>
         </div>
@@ -119,7 +122,7 @@ export const VariantsDemo: React.FC = () => {
               <div className={classes.demoBox}>Relaxed</div>
             </FadeRelaxed>
           </div>
-          <Button className={classes.button} size="small" onClick={() => setVisibleRelaxed(v => !v)}>
+          <Button className={classes.button} size="small" onClick={toggleRelaxed}>
             {visibleRelaxed ? 'Hide' : 'Show'}
           </Button>
         </div>
