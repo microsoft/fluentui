@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "docs(motion): add motion system docs",
   "packageName": "@fluentui/react-motion",
   "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
