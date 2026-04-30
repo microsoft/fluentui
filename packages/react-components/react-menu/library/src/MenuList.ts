@@ -1,6 +1,8 @@
 export type {
   MenuCheckedValueChangeData,
   MenuCheckedValueChangeEvent,
+  MenuListBaseProps,
+  MenuListBaseState,
   MenuListContextValues,
   MenuListProps,
   MenuListSlots,
@@ -12,6 +14,7 @@ export {
   MenuList,
   menuListClassNames,
   renderMenuList_unstable,
+  useMenuListBase_unstable,
   useMenuListContextValues_unstable,
   useMenuListStyles_unstable,
   useMenuList_unstable,
