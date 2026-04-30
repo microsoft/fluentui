@@ -59,26 +59,36 @@ export function manualMemoPlugin(): PluginObj {
 
         let hookName: 'useMemo' | 'useCallback' | 'reactMemo' | null = null;
 
-        // Direct call: useMemo(...), useCallback(...)
+        // Direct call: memo(...), useMemo(...), useCallback(...)
         if (callee.type === 'Identifier') {
-          if (callee.name === 'useMemo') {
-            hookName = 'useMemo';
-          } else if (callee.name === 'useCallback') {
-            hookName = 'useCallback';
-          } else if (callee.name === 'memo') {
-            hookName = 'reactMemo';
+          const binding = path.scope.getBinding(callee.name);
+          if (binding?.path.parent?.type === 'ImportDeclaration' && binding.path.parent.source.value === 'react') {
+            if (callee.name === 'useMemo') {
+              hookName = 'useMemo';
+            } else if (callee.name === 'useCallback') {
+              hookName = 'useCallback';
+            } else if (callee.name === 'memo') {
+              hookName = 'reactMemo';
+            }
           }
         }
 
-        // Member expression: React.memo(...)
+        // Member expression: React.memo(...), React.useMemo(...), React.useCallback(...)
         if (
           callee.type === 'MemberExpression' &&
           callee.object.type === 'Identifier' &&
-          callee.object.name === 'React' &&
-          callee.property.type === 'Identifier' &&
-          callee.property.name === 'memo'
+          callee.property.type === 'Identifier'
         ) {
-          hookName = 'reactMemo';
+          const binding = path.scope.getBinding(callee.object.name);
+          if (binding?.path.parent?.type === 'ImportDeclaration' && binding.path.parent.source.value === 'react') {
+            if (callee.property.name === 'memo') {
+              hookName = 'reactMemo';
+            } else if (callee.property.name === 'useMemo') {
+              hookName = 'useMemo';
+            } else if (callee.property.name === 'useCallback') {
+              hookName = 'useCallback';
+            }
+          }
         }
 
         if (!hookName) {
