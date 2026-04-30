@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { Tree } from '../Tree';
-import { TreeItem, TreeItemProps } from '../TreeItem';
+import type { TreeItemProps } from '../TreeItem';
+import { TreeItem } from '../TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout';
 import { TreeRootReset } from './TreeProvider';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';

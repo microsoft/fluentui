@@ -4,30 +4,31 @@
 
 ```ts
 
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { Button } from '@fluentui/react-button';
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
-import { EventData } from '@fluentui/react-utilities';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { Button } from '@fluentui/react-button';
+import type { ButtonProps } from '@fluentui/react-button';
+import type { ButtonState } from '@fluentui/react-button';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
+import { PopoverContextValues } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverState } from '@fluentui/react-popover';
-import { PopoverSurfaceSlots } from '@fluentui/react-popover';
-import { PopoverSurfaceState } from '@fluentui/react-popover';
-import { PopoverTriggerChildProps } from '@fluentui/react-popover';
-import { PopoverTriggerProps } from '@fluentui/react-popover';
-import { PopoverTriggerState } from '@fluentui/react-popover';
+import type { PopoverSurfaceSlots } from '@fluentui/react-popover';
+import type { PopoverSurfaceState } from '@fluentui/react-popover';
+import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
+import type { PopoverTriggerProps } from '@fluentui/react-popover';
+import type { PopoverTriggerState } from '@fluentui/react-popover';
 import * as React_2 from 'react';
-import { Slot } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTeachingPopover_unstable: (state: PopoverState) => JSXElement;
+export const renderTeachingPopover_unstable: (state: PopoverState, contextValues?: PopoverContextValues) => JSXElement;
 
 // @public
 export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSXElement;
@@ -376,6 +377,9 @@ export const useTeachingPopoverCarouselPageCountStyles_unstable: (state: Teachin
 
 // @public
 export const useTeachingPopoverCarouselStyles_unstable: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselState;
+
+// @public (undocumented)
+export const useTeachingPopoverContextValues_unstable: (state: TeachingPopoverState) => TeachingPopoverContextValues;
 
 // @public
 export const useTeachingPopoverFooter_unstable: (props: TeachingPopoverFooterProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverFooterState;

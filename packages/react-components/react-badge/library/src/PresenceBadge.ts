@@ -1,4 +1,10 @@
-export type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './components/PresenceBadge/index';
+export type {
+  PresenceBadgeProps,
+  PresenceBadgeState,
+  PresenceBadgeStatus,
+  PresenceBadgeBaseProps,
+  PresenceBadgeBaseState,
+} from './components/PresenceBadge/index';
 export {
   PresenceBadge,
   presenceAvailableFilled,
@@ -15,4 +21,5 @@ export {
   presenceUnknownRegular,
   usePresenceBadgeStyles_unstable,
   usePresenceBadge_unstable,
+  usePresenceBadgeBase_unstable,
 } from './components/PresenceBadge/index';

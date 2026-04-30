@@ -1,5 +1,6 @@
 import type { MotionParam, PresenceMotionFn } from '../types';
-import { PRESENCE_MOTION_DEFINITION, createPresenceComponent, PresenceComponent } from './createPresenceComponent';
+import type { PresenceComponent } from './createPresenceComponent';
+import { PRESENCE_MOTION_DEFINITION, createPresenceComponent } from './createPresenceComponent';
 
 /**
  * Create a variant function that wraps a presence function to customize it.

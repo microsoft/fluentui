@@ -1,4 +1,6 @@
 export type {
+  SkeletonBaseProps,
+  SkeletonBaseState,
   SkeletonContextValues,
   SkeletonItemSize,
   SkeletonProps,
@@ -12,4 +14,5 @@ export {
   useSkeletonContextValues,
   useSkeletonStyles_unstable,
   useSkeleton_unstable,
+  useSkeletonBase_unstable,
 } from './components/Skeleton/index';

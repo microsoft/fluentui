@@ -3,7 +3,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { CheckboxSlots, CheckboxState } from './Checkbox.types';
+import type { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {

@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { SearchBoxState, SearchBoxSlots } from './SearchBox.types';
+import type { SearchBoxBaseState, SearchBoxSlots } from './SearchBox.types';
 
 /**
  * Render the final JSX of SearchBox
  */
-export const renderSearchBox_unstable = (state: SearchBoxState): JSXElement => {
+export const renderSearchBox_unstable = (state: SearchBoxBaseState): JSXElement => {
   assertSlots<SearchBoxSlots>(state);
 
   return (

@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-utilities';
 
 import { useDrawerContext_unstable } from '../../contexts/drawerContext';
-import { DrawerScrollState } from '../../shared/DrawerBase.types';
+import type { DrawerScrollState } from '../../shared/DrawerBase.types';
 
 import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

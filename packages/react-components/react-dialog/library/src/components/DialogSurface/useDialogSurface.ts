@@ -10,7 +10,7 @@ import {
   getIntrinsicElementProps,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 import { useDialogContext_unstable, useDialogBackdropContext_unstable } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';

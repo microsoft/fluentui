@@ -20,7 +20,7 @@ const defaultOptions = {
 };
 
 const PLUGIN_PATH =
-  process.env.NODE_ENV !== 'production'
+  process.env.BABEL_PRESET_FULL_SOURCE_DEV === 'true'
     ? '@fluentui/babel-preset-storybook-full-source/__dev'
     : '@fluentui/babel-preset-storybook-full-source';
 

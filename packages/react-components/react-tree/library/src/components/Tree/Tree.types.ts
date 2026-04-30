@@ -1,11 +1,12 @@
 import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { CollapseParams } from '@fluentui/react-motion-components-preview';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
 import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
 
 type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 type SingleSelectValue = NonNullable<RadioProps['checked']>;
@@ -13,7 +14,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
-  collapseMotion?: Slot<PresenceMotionSlotProps>;
+  collapseMotion?: Slot<PresenceMotionSlotProps<CollapseParams>>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
-import { useButton_unstable } from '@fluentui/react-button';
+import type * as React from 'react';
+import { useButtonBase_unstable } from '@fluentui/react-button';
 import type {
   ToolbarButtonBaseProps,
   ToolbarButtonBaseState,
@@ -19,10 +19,11 @@ export const useToolbarButton_unstable = (
   props: ToolbarButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonState => {
-  const state = useToolbarButtonBase_unstable(props, ref);
+  const { appearance = 'subtle', ...baseProps } = props;
+  const state = useToolbarButtonBase_unstable(baseProps, ref);
 
   return {
-    appearance: 'subtle',
+    appearance,
     size: 'medium',
     shape: 'rounded',
     ...state,
@@ -42,14 +43,7 @@ export const useToolbarButtonBase_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonBaseState => {
   const { vertical = false, ...buttonProps } = props;
-  const state = useButton_unstable(
-    {
-      appearance: 'subtle',
-      ...buttonProps,
-      size: 'medium',
-    },
-    ref,
-  );
+  const state = useButtonBase_unstable(buttonProps, ref);
 
   return {
     vertical,

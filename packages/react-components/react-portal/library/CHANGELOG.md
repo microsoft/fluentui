@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Wed, 25 Feb 2026 13:32:24 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.8.12)
+
+Thu, 23 Apr 2026 14:21:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.8.11..@fluentui/react-portal_v9.8.12)
+
+### Patches
+
+- refactor: remove Griffel dependency from usePortalMountNode ([PR #35994](https://github.com/microsoft/fluentui/pull/35994) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.8.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.8.11)
 

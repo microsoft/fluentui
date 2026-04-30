@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.6.2)
+
+Thu, 23 Apr 2026 14:21:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.6.1..@fluentui/react-radio_v9.6.2)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-label to v9.4.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.6.1)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.6.0..@fluentui/react-radio_v9.6.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+- Bump @fluentui/react-label to v9.4.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.6.0)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.5.16..@fluentui/react-radio_v9.6.0)
+
+### Minor changes
+
+- feat: expose base state hooks for Radio components ([PR #35894](https://github.com/microsoft/fluentui/pull/35894) by dmytrokirpa@microsoft.com)
 
 ## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.5.16)
 

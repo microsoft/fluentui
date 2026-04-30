@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
+import type { CardFooterSlots, CardFooterBaseState } from './CardFooter.types';
 
 /**
  * Render the final JSX of CardFooter.
  */
-export const renderCardFooter_unstable = (state: CardFooterState): JSXElement => {
+export const renderCardFooter_unstable = (state: CardFooterBaseState): JSXElement => {
   assertSlots<CardFooterSlots>(state);
 
   return (

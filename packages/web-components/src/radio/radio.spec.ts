@@ -7,11 +7,13 @@ test.describe('Radio', () => {
   test('should have a role of `radio`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'radio');
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
-    await fastPage.setTemplate();
+    await fastPage.setTemplate('');
 
     let hasError = false;
 
@@ -28,6 +30,8 @@ test.describe('Radio', () => {
 
   test('should set ARIA attributes to match the state', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await test.step('ariaChecked', async () => {
       await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
@@ -57,6 +61,8 @@ test.describe('Radio', () => {
   test('should set a `tabindex` of 0 on the element', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
@@ -70,6 +76,8 @@ test.describe('Radio', () => {
 
   test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('value', 'on');
 
@@ -92,6 +100,8 @@ test.describe('Radio', () => {
   test('should initialize to the provided value attribute if set post-connection', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await element.evaluate((node: Radio) => node.setAttribute('value', 'foo'));
 
     await expect(element).toHaveJSProperty('value', 'foo');
@@ -108,6 +118,8 @@ test.describe('Radio', () => {
   test('should fire an event when spacebar is pressed', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     const wasPressed = element.evaluate(
       node => new Promise(resolve => node.addEventListener('keydown', () => resolve(true))),
     );
@@ -121,6 +133,8 @@ test.describe('Radio', () => {
 
   test('should NOT fire events when clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     const wasNotClicked = await page.evaluate(el => {
       const event = new KeyboardEvent('click', {

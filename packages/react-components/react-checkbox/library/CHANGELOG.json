@@ -2,6 +2,95 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:19 GMT",
+      "tag": "@fluentui/react-checkbox_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.5.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.4.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.26.14",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 15:52:39 GMT",
+      "tag": "@fluentui/react-checkbox_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b5fd7a7d9180fefbc2ca46789f246a571a6c72b3",
+            "comment": "feat: add base hooks for Checkbox"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.4.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Mar 2026 08:12:49 GMT",
+      "tag": "@fluentui/react-checkbox_v9.5.17",
+      "version": "9.5.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "karesansui.u@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "609f8c5062cfbd19c6d7e8c56e8d2bb17c9d4c8a",
+            "comment": "fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:22 GMT",
       "tag": "@fluentui/react-checkbox_v9.5.16",
       "version": "9.5.16",

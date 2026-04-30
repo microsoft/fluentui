@@ -12,7 +12,7 @@ import type { MenuListContextValue } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
 export const MenuGrid: ForwardRefComponent<MenuGridProps>;
@@ -45,6 +45,7 @@ export const MenuGridContextProvider: React_2.Provider<MenuGridContextValue>;
 // @public
 export type MenuGridContextValue = {
     tableRowTabsterAttribute: TabsterDOMAttribute | null;
+    setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
 };
 
 // @public (undocumented)
@@ -109,7 +110,7 @@ export const MenuGridItem: ForwardRefComponent<MenuGridItemProps>;
 export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots>;
 
 // @public (undocumented)
-export type MenuGridItemProps = ComponentProps<Partial<MenuGridItemSlots>>;
+export type MenuGridItemProps = Omit<ComponentProps<Partial<MenuGridItemSlots>>, 'content'> & Pick<Partial<MenuGridItemSlots>, 'content'>;
 
 // @public (undocumented)
 export type MenuGridItemSlots = {
@@ -125,7 +126,9 @@ export type MenuGridItemSlots = {
 export type MenuGridItemState = ComponentState<MenuGridItemSlots>;
 
 // @public (undocumented)
-export type MenuGridProps = ComponentProps<MenuGridSlots> & {};
+export type MenuGridProps = ComponentProps<MenuGridSlots> & {
+    circular?: boolean;
+};
 
 // @public
 export const MenuGridRow: ForwardRefComponent<MenuGridRowProps>;
@@ -152,6 +155,7 @@ export type MenuGridSlots = {
 // @public (undocumented)
 export type MenuGridState = ComponentState<MenuGridSlots> & {
     tableRowTabsterAttribute: TabsterDOMAttribute | null;
+    setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
 };
 
 // @public

@@ -16,6 +16,7 @@ export { createPresenceComponentVariant } from './factories/createPresenceCompon
 export { PresenceGroup } from './components/PresenceGroup';
 export { MotionRefForwarder, MotionRefForwarderReset, useMotionForwardedRef } from './components/MotionRefForwarder';
 
+export { motionSlot, type MotionSlotProps } from './slots/motionSlot';
 export { presenceMotionSlot, type PresenceMotionSlotProps } from './slots/presenceMotionSlot';
 
 export {

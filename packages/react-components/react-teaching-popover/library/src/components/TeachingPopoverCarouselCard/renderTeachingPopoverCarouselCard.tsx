@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import type { TeachingPopoverCarouselCardState } from './TeachingPopoverCarouselCard.types';
-import { TeachingPopoverCarouselCardSlots } from './TeachingPopoverCarouselCard.types';
+import type { TeachingPopoverCarouselCardSlots } from './TeachingPopoverCarouselCard.types';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 

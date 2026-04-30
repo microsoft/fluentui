@@ -1,4 +1,11 @@
-export { Field, fieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from './Field';
+export {
+  Field,
+  fieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+  useFieldBase_unstable,
+} from './Field';
 export type {
   FieldContextValue,
   FieldContextValues,
@@ -6,6 +13,8 @@ export type {
   FieldProps,
   FieldSlots,
   FieldState,
+  FieldBaseProps,
+  FieldBaseState,
 } from './Field';
 export {
   FieldContextProvider,
@@ -14,3 +23,7 @@ export {
   useFieldControlProps_unstable,
 } from './contexts/index';
 export type { FieldControlPropsOptions } from './contexts/index';
+
+// Experimental APIs - will be uncommented in the experimental release branch
+// export { useFieldBase_unstable } from './Field';
+// export type { FieldBaseProps, FieldBaseState } from './Field';

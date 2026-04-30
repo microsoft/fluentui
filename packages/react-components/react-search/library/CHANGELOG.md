@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-search
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.4.2)
+
+Thu, 23 Apr 2026 14:21:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.4.1..@fluentui/react-search_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.8.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.4.1)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.4.0..@fluentui/react-search_v9.4.1)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.8.1 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.4.0)
+
+Thu, 26 Mar 2026 08:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.3.16..@fluentui/react-search_v9.4.0)
+
+### Minor changes
+
+- feat: add base hooks for SearchBox ([PR #35825](https://github.com/microsoft/fluentui/pull/35825) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-input to v9.8.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
 
 ## [9.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.3.16)
 

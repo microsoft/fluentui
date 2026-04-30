@@ -1,10 +1,8 @@
 import { tokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
 import type { GriffelStyle } from '@griffel/react';
-import {
-  createCustomFocusIndicatorStyle,
-  CreateCustomFocusIndicatorStyleOptions,
-} from './createCustomFocusIndicatorStyle';
+import type { CreateCustomFocusIndicatorStyleOptions } from './createCustomFocusIndicatorStyle';
+import { createCustomFocusIndicatorStyle } from './createCustomFocusIndicatorStyle';
 import { defaultOptions } from './constants';
 
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;

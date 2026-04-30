@@ -1,21 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  DataVizPalette,
-  getColorFromToken,
-  HorizontalBarChartWithAxis,
-  HorizontalBarChartWithAxisDataPoint,
-} from '@fluentui/react-charts';
-import {
-  Checkbox,
-  CheckboxOnChangeData,
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-  Button,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { HorizontalBarChartWithAxisDataPoint } from '@fluentui/react-charts';
+import { DataVizPalette, getColorFromToken, HorizontalBarChartWithAxis } from '@fluentui/react-charts';
+import { Checkbox, Switch, Field, Radio, RadioGroup, Button } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {

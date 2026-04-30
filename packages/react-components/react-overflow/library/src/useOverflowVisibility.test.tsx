@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useOverflowVisibility } from './useOverflowVisibility';
-import { OverflowContext, OverflowContextValue } from './overflowContext';
+import type { OverflowContextValue } from './overflowContext';
+import { OverflowContext } from './overflowContext';
 
 describe('useOverflowVisibility', () => {
   it('should return item and group visiblity', () => {

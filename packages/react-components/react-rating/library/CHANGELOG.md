@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-rating
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.4.1)
+
+Thu, 23 Apr 2026 14:21:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.4.0..@fluentui/react-rating_v9.4.1)
+
+### Patches
+
+- fix: add mising base hook export ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.4.0)
+
+Thu, 26 Mar 2026 08:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.3.15..@fluentui/react-rating_v9.4.0)
+
+### Minor changes
+
+- feat: add base hooks for Rating ([PR #35823](https://github.com/microsoft/fluentui/pull/35823) by dmytrokirpa@microsoft.com)
 
 ## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.3.15)
 

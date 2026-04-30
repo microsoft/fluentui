@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  HorizontalBarChartWithAxis,
-  HorizontalBarChartWithAxisDataPoint,
-  AxisCategoryOrder,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { HorizontalBarChartWithAxisDataPoint, AxisCategoryOrder } from '@fluentui/react-charts';
+import { HorizontalBarChartWithAxis, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button, Dropdown, Option, Field } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */

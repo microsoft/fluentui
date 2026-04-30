@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TabValue } from '../Tab/Tab.types';
+import type { TabValue } from '../Tab/Tab.types';
 
 export type TabRegisterData = {
   /**

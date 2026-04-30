@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.8.0)
+
+Thu, 23 Apr 2026 14:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.7.7..@fluentui/react-toolbar_v9.8.0)
+
+### Minor changes
+
+- feat: expose base hooks for Toolbar components ([PR #35903](https://github.com/microsoft/fluentui/pull/35903) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.9.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-divider to v9.7.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.16 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-radio to v9.6.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+### Patches
+
+- perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- fix: use subtle appearance for radio button by default ([PR #36022](https://github.com/microsoft/fluentui/pull/36022) by dmytrokirpa@microsoft.com)
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.7)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.7.6..@fluentui/react-toolbar_v9.7.7)
+
+### Patches
+
+- Bump @fluentui/react-radio to v9.6.1 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.6)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.7.5..@fluentui/react-toolbar_v9.7.6)
+
+### Patches
+
+- Bump @fluentui/react-radio to v9.6.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.5)
+
+Thu, 26 Mar 2026 08:12:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.7.4..@fluentui/react-toolbar_v9.7.5)
+
+### Patches
+
+- fix: preserve user-defined appearance prop in useToolbarToggleButton ([PR #35893](https://github.com/microsoft/fluentui/pull/35893) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.9.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+- Bump @fluentui/react-divider to v9.7.0 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
 
 ## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.7.4)
 

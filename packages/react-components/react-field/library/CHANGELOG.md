@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Wed, 11 Mar 2026 09:22:20 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.5.1)
+
+Thu, 23 Apr 2026 14:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.5.0..@fluentui/react-field_v9.5.1)
+
+### Patches
+
+- fix: add missing base hook export ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.16 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-label to v9.4.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.5.0)
+
+Wed, 01 Apr 2026 15:52:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.4.16..@fluentui/react-field_v9.5.0)
+
+### Minor changes
+
+- feat: add base hooks for Field ([PR #35827](https://github.com/microsoft/fluentui/pull/35827) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-label to v9.4.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
 
 ## [9.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.4.16)
 

@@ -28,31 +28,41 @@ test.describe('RadioGroup', () => {
   test('should have a role of `radiogroup`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'radiogroup');
   });
 
   test('should set a default `aria-orientation` value when `orientation` is not defined', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
-  test('should set the `aria-orientation` attribute equal to the `orientation` value', async ({ fastPage }) => {
+  test('should set the `aria-orientation` attribute to `horizontal` when the `orientation` attribute is set to `horizontal`', async ({
+    fastPage,
+  }) => {
     const { element } = fastPage;
 
-    await test.step('horizontal', async () => {
-      await fastPage.setTemplate({ attributes: { orientation: 'horizontal' } });
-
-      await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
+    await fastPage.setTemplate({
+      attributes: { orientation: 'horizontal' },
     });
 
-    await test.step('vertical', async () => {
-      await element.evaluate(node => {
-        node.setAttribute('orientation', 'vertical');
-      });
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
+  });
 
-      await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
+  test('should set the `aria-orientation` attribute to `vertical` when the `orientation` attribute is set to `vertical`', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      attributes: { orientation: 'vertical' },
     });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
   test('should set the `aria-setsize` and `aria-posinset` attributes on the radios', async ({ fastPage }) => {
@@ -122,13 +132,13 @@ test.describe('RadioGroup', () => {
     const second = page.locator('button', { hasText: 'Second' });
 
     await fastPage.setTemplate(/* html */ `
-      <button>First</button>
+      <button tabindex="0">First</button>
       <fluent-radio-group disabled>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
       </fluent-radio-group>
-      <button>Second</button>
+      <button tabindex="0">Second</button>
     `);
 
     await expect(element).toHaveAttribute('disabled');
@@ -206,7 +216,7 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(0)).toHaveAttribute('tabindex', '0');
   });
 
-  test('should set tabindex of 0 to a child radio that’s initially checked', async ({ fastPage }) => {
+  test("should set tabindex of 0 to a child radio that's initially checked", async ({ fastPage }) => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');
 

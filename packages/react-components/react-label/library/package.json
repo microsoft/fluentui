@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-label",
-  "version": "9.3.15",
+  "version": "9.4.1",
   "description": "Fluent UI React Label component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,8 +14,8 @@
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-theme": "^9.2.1",
-    "@fluentui/react-utilities": "^9.26.2",
-    "@fluentui/react-jsx-runtime": "^9.4.1",
+    "@fluentui/react-utilities": "^9.26.3",
+    "@fluentui/react-jsx-runtime": "^9.4.2",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

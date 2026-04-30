@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Wed, 11 Mar 2026 09:22:22 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.5.1)
+
+Thu, 23 Apr 2026 14:21:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.5.0..@fluentui/react-progress_v9.5.1)
+
+### Patches
+
+- fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-motion to v9.15.0 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-field to v9.5.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.5.0)
+
+Wed, 01 Apr 2026 15:52:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.4.17..@fluentui/react-progress_v9.5.0)
+
+### Minor changes
+
+- feat: add base hooks for ProgressBar ([PR #35817](https://github.com/microsoft/fluentui/pull/35817) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-field to v9.5.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.4.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.4.17)
+
+Mon, 30 Mar 2026 14:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.4.16..@fluentui/react-progress_v9.4.17)
+
+### Patches
+
+- refactor: migrate ProgressBar from CSS to motion components ([PR #35883](https://github.com/microsoft/fluentui/pull/35883) by robertpenner@microsoft.com)
+- Bump @fluentui/react-motion to v9.14.0 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
 
 ## [9.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.4.16)
 

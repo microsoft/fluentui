@@ -2,13 +2,13 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { DataGridHeaderCell } from './DataGridHeaderCell';
 import { isConformant } from '../../testing/isConformant';
-import { DataGridHeaderCellProps } from './DataGridHeaderCell.types';
+import type { DataGridHeaderCellProps } from './DataGridHeaderCell.types';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { TableContextProvider } from '../../contexts/tableContext';
 import { ColumnIdContextProvider } from '../../contexts/columnIdContext';
-import { DataGridContextValue } from '../DataGrid/DataGrid.types';
-import { TableSelectionState, TableSortState } from '../../hooks/types';
+import type { DataGridContextValue } from '../DataGrid/DataGrid.types';
+import type { TableSelectionState, TableSortState } from '../../hooks/types';
 
 describe('DataGridHeaderCell', () => {
   isConformant<DataGridHeaderCellProps>({

@@ -1,5 +1,5 @@
-import { NavItemValue } from '../NavContext.types';
-import { NavDensity } from '../Nav/Nav.types';
+import type { NavItemValue } from '../NavContext.types';
+import type { NavDensity } from '../Nav/Nav.types';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 

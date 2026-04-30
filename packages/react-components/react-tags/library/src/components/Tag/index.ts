@@ -1,7 +1,7 @@
 export { Tag } from './Tag';
-export type { TagContextValues, TagProps, TagSlots, TagState } from './Tag.types';
+export type { TagBaseProps, TagBaseState, TagContextValues, TagProps, TagSlots, TagState } from './Tag.types';
 export { renderTag_unstable } from './renderTag';
-export { useTag_unstable } from './useTag';
+export { useTagBase_unstable, useTag_unstable } from './useTag';
 export {
   tagClassNames,
   useIconStyles,

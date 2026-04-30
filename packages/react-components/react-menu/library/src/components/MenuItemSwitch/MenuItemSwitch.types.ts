@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { MenuItemSlots } from '../MenuItem/MenuItem.types';
-import { MenuItemSelectableState } from '../../selectable/types';
-import { MenuItemCheckboxProps } from '../MenuItemCheckbox/MenuItemCheckbox.types';
+import type { MenuItemSlots } from '../MenuItem/MenuItem.types';
+import type { MenuItemSelectableState } from '../../selectable/types';
+import type { MenuItemCheckboxProps } from '../MenuItemCheckbox/MenuItemCheckbox.types';
 
 export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon' | 'subText'> & {
   switchIndicator?: Slot<'span'>;

@@ -6,7 +6,7 @@ import type { JSXElement } from '@fluentui/react-components';
 import description from './CollapseHorizontal.stories.md';
 
 const useClasses = makeStyles({
-  container: {},
+  container: { display: 'flex', flexDirection: 'column', gap: '10px' },
   sideContent: {
     background: 'lightgrey',
     padding: '50px',
@@ -20,14 +20,14 @@ const useClasses = makeStyles({
     width: '300px',
   },
   controls: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 3fr',
-    justifyContent: 'start',
+    display: 'flex',
+    flexDirection: 'column',
     gridArea: 'controls',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
-    padding: '10px',
+    padding: tokens.spacingVerticalMNudge,
   },
   field: {
     flex: 1,

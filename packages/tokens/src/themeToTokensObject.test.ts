@@ -1,7 +1,7 @@
 import { webLightTheme } from './themes/web/lightTheme';
 import { themeToTokensObject } from './themeToTokensObject';
 import { tokens } from './tokens';
-import { Theme } from './types';
+import type { Theme } from './types';
 
 function assertKeys(generatedTokens: Record<keyof Theme, string>, expectedTokens = tokens) {
   Object.keys(generatedTokens).forEach(token => {

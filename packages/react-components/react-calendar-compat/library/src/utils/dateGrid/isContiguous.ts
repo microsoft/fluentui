@@ -1,4 +1,4 @@
-import { DayOfWeek } from '../constants';
+import type { DayOfWeek } from '../constants';
 
 /**
  * Returns whether provided week days are contiguous.

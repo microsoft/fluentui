@@ -14,9 +14,9 @@ import { useTooltipBase_unstable } from './useTooltipBase';
 export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   'use no memo';
 
-  const { appearance = 'normal' } = props;
+  const { appearance = 'normal', ...baseProps } = props;
 
-  const state = useTooltipBase_unstable(props);
+  const state = useTooltipBase_unstable(baseProps);
 
   return {
     appearance,

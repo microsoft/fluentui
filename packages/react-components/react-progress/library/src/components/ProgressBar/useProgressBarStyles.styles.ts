@@ -5,7 +5,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const progressBarClassNames: SlotClassNames<ProgressBarSlots> = {
+export const progressBarClassNames: SlotClassNames<Omit<ProgressBarSlots, 'indeterminateMotion'>> = {
   root: 'fui-ProgressBar',
   bar: 'fui-ProgressBar__bar',
 };
@@ -17,27 +17,6 @@ const ZERO_THRESHOLD = 0.01;
 const barThicknessValues = {
   medium: '2px',
   large: '4px',
-};
-
-const indeterminateProgressBar = {
-  '0%': {
-    left: '-33%', // matches indeterminate bar width
-  },
-  '100%': {
-    left: '100%',
-  },
-};
-
-const indeterminateProgressBarReducedMotion = {
-  '0%': {
-    opacity: '.2',
-  },
-  '50%': {
-    opacity: '1',
-  },
-  '100%': {
-    opacity: '.2',
-  },
 };
 
 /**
@@ -93,15 +72,9 @@ const useBarStyles = makeStyles({
       ${tokens.colorTransparentBackground} 50%,
       ${tokens.colorNeutralBackground6} 100%
     )`,
-    animationName: indeterminateProgressBar,
-    animationDuration: '3s',
-    animationTimingFunction: 'linear',
-    animationIterationCount: 'infinite',
     '@media screen and (prefers-reduced-motion: reduce)': {
+      // Reduced motion: bar is sized here, and the opacity is pulsed by ProgressBarIndeterminateMotion
       maxWidth: '100%',
-      animationIterationCount: 'infinite',
-      animationDuration: '3s',
-      animationName: indeterminateProgressBarReducedMotion,
     },
   },
 

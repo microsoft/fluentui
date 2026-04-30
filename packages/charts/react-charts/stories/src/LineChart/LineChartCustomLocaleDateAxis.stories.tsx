@@ -1,8 +1,9 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { LineChartProps, ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
+import type { LineChartProps, ChartProps } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
-import { TimeLocaleDefinition } from 'd3-time-format';
+import type { TimeLocaleDefinition } from 'd3-time-format';
 import itITLocale from 'd3-time-format/locale/it-IT.json';
 
 export const LineChartCustomLocaleDateAxis = (props: LineChartProps): JSXElement => {

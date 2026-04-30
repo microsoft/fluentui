@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { OptionValue } from './OptionCollection.types';
+import type * as React from 'react';
+import type { OptionValue } from './OptionCollection.types';
 
 export type SelectionProps = {
   /**

@@ -142,7 +142,13 @@ If you are experiencing an issue with either a live region not existing at all o
 
 - Use React dev tools to check that the `AriaLiveAnnouncer` component exists as an ancestor of the component calling `useAnnounce` (in the React tree, not the DOM tree)
 - Check that the `announce` function is not just the default stub function (i.e. it is actually pulling the full implementation from `AriaLiveAnnouncer`; the default is a `() => undefined` stub).
-- If the expected live region does exist in the DOM but is not updating when `announce()` is called, try calling `announce('hardcoded string')` somewhere else in the same file.
+- If `document.ariaNotify` is defined in your browser, try replacing it in the console with a stub function that logs the arguments it was called with. E.g. paste the following in the console and then trigger the expected `announce()`:
+  ```js
+  document.ariaNotify = (...params) => {
+    console.log('ANNOUNCE DEBUG: ariaNotify called with', params);
+  };
+  ```
+- If `document.ariaNotify` is not defined in your browser, look for the expected live region at the end of the DOM. If it is not updating when `announce()` is called, try calling `announce('hardcoded string')` somewhere else in the same file.
 - Move on to step 4.
 
 ## Step 4: reach out to the Fluent team or another accessibility SME

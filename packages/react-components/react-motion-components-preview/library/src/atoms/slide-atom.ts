@@ -1,5 +1,6 @@
-import { AtomMotion, motionTokens } from '@fluentui/react-motion';
-import { BaseAtomParams } from '../types';
+import type { AtomMotion } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
+import type { BaseAtomParams } from '../types';
 
 interface SlideAtomParams extends BaseAtomParams {
   /** X translate for the out state (exited). Defaults to '0px'. */

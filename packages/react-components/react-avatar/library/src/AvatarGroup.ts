@@ -4,6 +4,8 @@ export type {
   AvatarGroupProps,
   AvatarGroupSlots,
   AvatarGroupState,
+  AvatarGroupBaseProps,
+  AvatarGroupBaseState,
 } from './components/AvatarGroup/index';
 export {
   AvatarGroup,
@@ -13,4 +15,5 @@ export {
   useAvatarGroupContextValues,
   useAvatarGroupStyles_unstable,
   useAvatarGroup_unstable,
+  useAvatarGroupBase_unstable,
 } from './components/AvatarGroup/index';

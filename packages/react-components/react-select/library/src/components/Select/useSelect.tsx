@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
-import type { SelectProps, SelectState } from './Select.types';
+import type { SelectBaseProps, SelectBaseState, SelectProps, SelectState } from './Select.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
@@ -22,27 +22,33 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
 
   const overrides = useOverrides();
 
-  const {
-    defaultValue,
-    value,
-    select,
-    icon,
-    root,
-    appearance = overrides.inputDefaultAppearance ?? 'outline',
+  const { appearance = overrides.inputDefaultAppearance ?? 'outline', size = 'medium', ...baseProps } = props;
 
-    onChange,
-    size = 'medium',
-  } = props;
+  const state = useSelectBase_unstable(baseProps, ref);
+
+  if (state.icon) {
+    state.icon.children ??= <ChevronDownRegular />;
+  }
+
+  return { ...state, appearance, size };
+};
+
+/**
+ * Create the base state required to render Select without design-specific props.
+ *
+ * @param props - props from this instance of Select (without appearance/size)
+ * @param ref - reference to the `<select>` element in Select
+ */
+export const useSelectBase_unstable = (props: SelectBaseProps, ref: React.Ref<HTMLSelectElement>): SelectBaseState => {
+  const { defaultValue, value, select, icon, root, onChange } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'select',
-    excludedPropNames: ['appearance', 'defaultValue', 'onChange', 'size', 'value'],
+    excludedPropNames: ['defaultValue', 'onChange', 'value'],
   });
 
-  const state: SelectState = {
-    size,
-    appearance,
+  const state: SelectBaseState = {
     components: {
       root: 'span',
       select: 'select',
@@ -59,7 +65,6 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     }),
     icon: slot.optional(icon, {
       renderByDefault: true,
-      defaultProps: { children: <ChevronDownRegular /> },
       elementType: 'span',
     }),
     root: slot.always(root, {

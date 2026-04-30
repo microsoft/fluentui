@@ -1,4 +1,4 @@
-import { DrawerBaseProps } from './DrawerBase.types';
+import type { DrawerBaseProps } from './DrawerBase.types';
 
 export function useDrawerDefaultProps(props: DrawerBaseProps): {
   size: NonNullable<DrawerBaseProps['size']>;

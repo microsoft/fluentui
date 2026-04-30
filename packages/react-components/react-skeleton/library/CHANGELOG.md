@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-skeleton
 
-This log was last generated on Wed, 11 Mar 2026 09:22:21 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.7.2)
+
+Thu, 23 Apr 2026 14:21:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.7.1..@fluentui/react-skeleton_v9.7.2)
+
+### Patches
+
+- fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-field to v9.5.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.7.1)
+
+Wed, 01 Apr 2026 15:52:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.7.0..@fluentui/react-skeleton_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.5.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.7.0)
+
+Thu, 26 Mar 2026 08:12:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.6.0..@fluentui/react-skeleton_v9.7.0)
+
+### Minor changes
+
+- feat: add base hooks for Skeleton ([PR #35809](https://github.com/microsoft/fluentui/pull/35809) by dmytrokirpa@microsoft.com)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.6.0)
+
+Tue, 17 Mar 2026 07:57:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.5.0..@fluentui/react-skeleton_v9.6.0)
+
+### Minor changes
+
+- feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale ([PR #35863](https://github.com/microsoft/fluentui/pull/35863) by copilot@github.com)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.5.0)
 

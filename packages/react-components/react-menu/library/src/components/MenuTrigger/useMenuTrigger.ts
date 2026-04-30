@@ -17,6 +17,7 @@ import * as React from 'react';
 
 import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useIsSubmenu, useOnMenuSafeZoneTimeout } from '../../utils';
 
 function noop() {
@@ -41,6 +42,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
 
   const isSubmenu = useIsSubmenu();
+  const shouldOpenOnArrowRight = useMenuListContext_unstable(ctx => ctx.shouldOpenOnArrowRight ?? true);
 
   const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
@@ -98,7 +100,10 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
     const key = event.key;
 
-    if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
+    if (
+      !openOnContext &&
+      ((isSubmenu && shouldOpenOnArrowRight && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))
+    ) {
       setOpen(event, { open: true, keyboard: true, type: 'menuTriggerKeyDown', event });
     }
 
@@ -107,7 +112,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
 
     // if menu is already open, can't rely on effects to focus
-    if (open && key === OpenArrowKey && isSubmenu) {
+    if (open && key === OpenArrowKey && isSubmenu && shouldOpenOnArrowRight) {
       focusFirst();
     }
   };

@@ -42,6 +42,30 @@ function getTextString(text: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
+  'use no memo';
+
+  const state = useOptionBase_unstable(props, ref);
+
+  // check icon
+  let CheckIcon: React.ReactNode = <CheckmarkFilled />;
+  if (state.multiselect) {
+    CheckIcon = state.selected ? <Checkmark12Filled /> : '';
+  }
+
+  if (state.checkIcon) {
+    state.checkIcon.children ??= CheckIcon;
+  }
+
+  return state;
+};
+
+/**
+ * Create the base state required to render Option.
+ *
+ * @param props - props from this instance of Option
+ * @param ref - reference to root HTMLElement of Option
+ */
+export const useOptionBase_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
   const { children, disabled, text, value } = props;
   const optionRef = React.useRef<HTMLElement>(null);
   const optionText = getTextString(text, children);
@@ -67,12 +91,6 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   });
   const selectOption = useListboxContext_unstable(ctx => ctx.selectOption);
   const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);
-
-  // check icon
-  let CheckIcon: React.ReactNode = <CheckmarkFilled />;
-  if (multiselect) {
-    CheckIcon = selected ? <Checkmark12Filled /> : '';
-  }
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) {
@@ -123,7 +141,6 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': 'true',
-        children: CheckIcon,
       },
       elementType: 'span',
     }),

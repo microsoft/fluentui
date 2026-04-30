@@ -4,7 +4,8 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { CarouselSliderState, CarouselSliderSlots } from './CarouselSlider.types';
-import { CarouselSliderContextProvider, CarouselSliderContextValues } from './CarouselSliderContext';
+import type { CarouselSliderContextValues } from './CarouselSliderContext';
+import { CarouselSliderContextProvider } from './CarouselSliderContext';
 
 /**
  * Render the final JSX of CarouselSlider

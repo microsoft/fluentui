@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ToastContainerContextValues, ToastContainerState } from './ToastContainer.types';
+import type { ToastContainerContextValues, ToastContainerState } from './ToastContainer.types';
 
 export function useToastContainerContextValues_unstable(state: ToastContainerState): ToastContainerContextValues {
   const { close, intent, titleId, bodyId } = state;

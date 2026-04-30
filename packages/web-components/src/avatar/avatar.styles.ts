@@ -118,10 +118,11 @@ const animations = {
  * @public
  */
 export const styles = css`
-  ${display('inline-flex')} :host {
+  ${display('inline-grid')} :host {
     position: relative;
-    align-items: center;
-    justify-content: center;
+    place-items: center;
+    place-content: center;
+    grid-template: 1fr / 1fr;
     flex-shrink: 0;
     width: 32px;
     height: 32px;
@@ -132,6 +133,22 @@ export const styles = css`
     color: ${colorNeutralForeground3};
     background-color: ${colorNeutralBackground6};
     contain: layout style;
+  }
+
+  .monogram,
+  .default-icon {
+    grid-area: 1 / 1 / -1 / -1;
+  }
+
+  .monogram:empty {
+    display: none;
+  }
+
+  .default-slot:is(.has-slotted, :has-slotted) ~ .default-icon,
+  .default-slot:is(.has-slotted, :has-slotted) ~ .monogram,
+  :host(:is([name]):not([name=''])) .default-icon,
+  :host(:is([initials]):not([initials=''])) .default-icon {
+    display: none;
   }
 
   .default-icon,

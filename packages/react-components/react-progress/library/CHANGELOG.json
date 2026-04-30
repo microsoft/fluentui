@@ -2,6 +2,95 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:10 GMT",
+      "tag": "@fluentui/react-progress_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-motion to v9.15.0",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.5.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 15:52:42 GMT",
+      "tag": "@fluentui/react-progress_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "b9772fe20aff3c8cfed35f6e471cdd447eacb032",
+            "comment": "feat: add base hooks for ProgressBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2026 14:37:40 GMT",
+      "tag": "@fluentui/react-progress_v9.4.17",
+      "version": "9.4.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "1e832bd4c587ea496247f7e81ac5714bcfba3830",
+            "comment": "refactor: migrate ProgressBar from CSS to motion components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-motion to v9.14.0",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 09:22:22 GMT",
       "tag": "@fluentui/react-progress_v9.4.16",
       "version": "9.4.16",

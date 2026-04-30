@@ -1,19 +1,16 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { VerticalBarChart, VerticalBarChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Button } from '@fluentui/react-components';
-import {
-  Checkbox,
+import type {
+  JSXElement,
   CheckboxOnChangeData,
   CheckboxProps,
-  Field,
-  Radio,
-  RadioGroup,
   RadioGroupOnChangeData,
-  Input,
   InputProps,
   InputOnChangeData,
 } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
+import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Button } from '@fluentui/react-components';
+import { Checkbox, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
 
 export const VerticalBarDynamic = (): JSXElement => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */

@@ -2,7 +2,7 @@
 
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { DividerSlots, DividerState } from './Divider.types';
+import type { DividerSlots, DividerState } from './Divider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const dividerClassNames: SlotClassNames<DividerSlots> = {

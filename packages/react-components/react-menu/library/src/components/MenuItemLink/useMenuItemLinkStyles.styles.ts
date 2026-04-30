@@ -4,7 +4,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles';
-import { MenuItemState } from '../MenuItem/MenuItem.types';
+import type { MenuItemState } from '../MenuItem/MenuItem.types';
 
 export const menuItemLinkClassNames: SlotClassNames<MenuItemLinkSlots> = {
   root: 'fui-MenuItemLink',

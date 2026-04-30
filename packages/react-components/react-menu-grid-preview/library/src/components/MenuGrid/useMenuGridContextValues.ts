@@ -7,11 +7,16 @@ const menuList = {
   checkedValues: {},
   hasIcons: false,
   hasCheckmarks: false,
+  shouldOpenOnArrowRight: false,
+  shouldCloseOnArrowLeft: false,
 };
 
 export function useMenuGridContextValues_unstable(state: MenuGridState): MenuGridContextValues {
-  const { tableRowTabsterAttribute } = state;
-  const menuGrid = React.useMemo(() => ({ tableRowTabsterAttribute }), [tableRowTabsterAttribute]);
+  const { tableRowTabsterAttribute, setFocusByFirstCharacter } = state;
+  const menuGrid = React.useMemo(
+    () => ({ tableRowTabsterAttribute, setFocusByFirstCharacter }),
+    [tableRowTabsterAttribute, setFocusByFirstCharacter],
+  );
 
   return { menuGrid, menuList };
 }

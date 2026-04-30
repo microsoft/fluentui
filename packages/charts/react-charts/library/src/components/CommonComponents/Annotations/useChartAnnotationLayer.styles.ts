@@ -1,10 +1,10 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { color as d3Color } from 'd3-color';
-import { ChartAnnotationArrowHead } from '../../../types/ChartAnnotation';
+import type { ChartAnnotationArrowHead } from '../../../types/ChartAnnotation';
 
 export interface ChartAnnotationLayerStyles {
   root?: string;

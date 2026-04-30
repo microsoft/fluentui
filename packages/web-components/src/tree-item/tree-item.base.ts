@@ -1,4 +1,4 @@
-import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
@@ -13,6 +13,16 @@ export class BaseTreeItem extends FASTElement {
   /** @internal */
   @observable
   public itemSlot!: HTMLSlotElement;
+
+  /**
+   * Calls the slot change handler when the `itemSlot` reference is updated
+   * by the template binding.
+   *
+   * @internal
+   */
+  public itemSlotChanged() {
+    this.handleItemSlotChange();
+  }
 
   constructor() {
     super();
@@ -55,7 +65,7 @@ export class BaseTreeItem extends FASTElement {
    * HTML Attribute: selected
    */
   @attr({ mode: 'boolean' })
-  selected: boolean = false;
+  selected!: boolean;
 
   /**
    * Handles changes to the selected attribute
@@ -122,7 +132,10 @@ export class BaseTreeItem extends FASTElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateTabindexBySelected();
+
+    Updates.enqueue(() => {
+      this.updateTabindexBySelected();
+    });
   }
 
   /**
@@ -173,9 +186,7 @@ export class BaseTreeItem extends FASTElement {
   }
 
   protected updateTabindexBySelected() {
-    if (this.$fastController.isConnected) {
-      this.tabIndex = this.selected ? 0 : -1;
-    }
+    this.tabIndex = this.selected ? 0 : -1;
   }
 
   /** @internal */

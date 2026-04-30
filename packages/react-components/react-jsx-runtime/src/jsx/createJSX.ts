@@ -1,7 +1,7 @@
 import { isSlot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 import { createCompatSlotComponent } from '../utils/createCompatSlotComponent';
-import { JSXRuntime, JSXSlotRuntime } from '../utils/types';
+import type { JSXRuntime, JSXSlotRuntime } from '../utils/types';
 import { warnIfElementTypeIsInvalid } from '../utils/warnIfElementTypeIsInvalid';
 
 export function createJSX(runtime: JSXRuntime, slotRuntime: JSXSlotRuntime) {

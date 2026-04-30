@@ -1,11 +1,10 @@
-import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
 import type { Avatar } from './avatar.js';
 
 const defaultIconTemplate = html`<svg
   width="1em"
   height="1em"
   viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
   class="default-icon"
   fill="currentcolor"
   aria-hidden="true"
@@ -21,7 +20,9 @@ const defaultIconTemplate = html`<svg
  */
 export function avatarTemplate<T extends Avatar>(): ElementViewTemplate<T> {
   return html<T>`
-    <slot ${ref('defaultSlot')}>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
+    <slot class="default-slot" ${slotted('slottedDefaults')} ${ref('defaultSlot')}></slot>
+    <span class="monogram" ${ref('monogram')}>${x => x.initials}</span>
+    ${defaultIconTemplate}
     <slot name="badge"></slot>
   `;
 }

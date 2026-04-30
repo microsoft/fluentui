@@ -4,6 +4,7 @@ export {
   renderAvatar_unstable,
   useAvatarStyles_unstable,
   useAvatar_unstable,
+  useAvatarBase_unstable,
 } from './Avatar';
 export type {
   AvatarNamedColor,
@@ -14,6 +15,8 @@ export type {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSize,
+  AvatarBaseProps,
+  AvatarBaseState,
 } from './Avatar';
 export { getInitials, partitionAvatarGroupItems } from './utils/index';
 export type { PartitionAvatarGroupItems, PartitionAvatarGroupItemsOptions } from './utils/index';
@@ -24,6 +27,7 @@ export {
   useAvatarGroupContextValues,
   useAvatarGroupStyles_unstable,
   useAvatarGroup_unstable,
+  useAvatarGroupBase_unstable,
 } from './AvatarGroup';
 export type {
   AvatarGroupProps,
@@ -31,6 +35,8 @@ export type {
   AvatarGroupState,
   AvatarGroupContextValue,
   AvatarGroupContextValues,
+  AvatarGroupBaseProps,
+  AvatarGroupBaseState,
 } from './AvatarGroup';
 export {
   AvatarGroupItem,
@@ -38,8 +44,15 @@ export {
   renderAvatarGroupItem_unstable,
   useAvatarGroupItemStyles_unstable,
   useAvatarGroupItem_unstable,
+  useAvatarGroupItemBase_unstable,
 } from './AvatarGroupItem';
-export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem';
+export type {
+  AvatarGroupItemProps,
+  AvatarGroupItemSlots,
+  AvatarGroupItemState,
+  AvatarGroupItemBaseProps,
+  AvatarGroupItemBaseState,
+} from './AvatarGroupItem';
 export {
   AvatarGroupPopover,
   avatarGroupPopoverClassNames,
@@ -47,8 +60,15 @@ export {
   useAvatarGroupPopover_unstable,
   useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverBase_unstable,
 } from './AvatarGroupPopover';
-export type { AvatarGroupPopoverProps, AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover';
+export type {
+  AvatarGroupPopoverProps,
+  AvatarGroupPopoverSlots,
+  AvatarGroupPopoverState,
+  AvatarGroupPopoverBaseProps,
+  AvatarGroupPopoverBaseState,
+} from './AvatarGroupPopover';
 export {
   AvatarContextProvider,
   AvatarGroupProvider,
@@ -56,7 +76,3 @@ export {
   useAvatarGroupContext_unstable,
 } from './contexts/index';
 export type { AvatarContextValue } from './contexts/index';
-
-// Experimental APIs, will be undocumented in experimental branch
-// export { useAvatarBase_unstable } from './Avatar';
-// export type { AvatarBaseProps, AvatarBaseState } from './Avatar';

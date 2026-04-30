@@ -1,5 +1,5 @@
 import { createTableColumn } from '../hooks/createColumn';
-import { ColumnWidthState } from '../hooks/types';
+import type { ColumnWidthState } from '../hooks/types';
 import {
   adjustColumnWidthsToFitContainer,
   columnDefinitionsToState,

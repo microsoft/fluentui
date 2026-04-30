@@ -8,16 +8,22 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSwitch_unstable: (state: SwitchState) => JSXElement;
+export const renderSwitch_unstable: (state: SwitchBaseState) => JSXElement;
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
+
+// @public
+export type SwitchBaseProps = Omit<SwitchProps, 'size'>;
+
+// @public
+export type SwitchBaseState = Omit<SwitchState, 'size'>;
 
 // @public @deprecated (undocumented)
 export const switchClassName: string;
@@ -53,6 +59,9 @@ export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProp
 
 // @public
 export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;
+
+// @public
+export const useSwitchBase_unstable: (props: SwitchBaseProps, ref?: React_2.Ref<HTMLInputElement>) => SwitchBaseState;
 
 // @public
 export const useSwitchStyles_unstable: (state: SwitchState) => SwitchState;

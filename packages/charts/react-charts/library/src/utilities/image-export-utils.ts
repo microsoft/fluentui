@@ -1,10 +1,11 @@
 'use client';
 
-import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
+import type { Selection } from 'd3-selection';
+import { create as d3Create, select as d3Select } from 'd3-selection';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { copyStyle, measureTextWithDOM } from './index';
-import { ImageExportOptions } from '../types/index';
-import { Legend, LegendContainer } from '../Legends';
+import type { ImageExportOptions } from '../types/index';
+import type { Legend, LegendContainer } from '../Legends';
 import {
   LEGEND_CONTAINER_MARGIN_TOP,
   LEGEND_CONTAINER_MARGIN_START,

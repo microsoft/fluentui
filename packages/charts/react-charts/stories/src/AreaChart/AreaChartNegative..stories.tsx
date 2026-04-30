@@ -1,15 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, RadioGroupOnChangeData } from '@fluentui/react-components';
 import { AreaChart } from '@fluentui/react-charts';
-import {
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
+import { Switch, Field, Radio, RadioGroup, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {

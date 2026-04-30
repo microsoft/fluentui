@@ -1,7 +1,5 @@
-import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { html, ref, slotted } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
-import { whitespaceFilter } from '../utils/index.js';
+import { type ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { TextInput } from './text-input.js';
 import type { TextInputOptions } from './text-input.options.js';
 
@@ -18,12 +16,7 @@ export function textInputTemplate<T extends TextInput>(options: TextInputOptions
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
       <label part="label" for="control" class="label" ${ref('controlLabel')}>
-        <slot
-          ${slotted({
-            property: 'defaultSlottedNodes',
-            filter: whitespaceFilter,
-          })}
-        ></slot>
+        <slot ${slotted('defaultSlottedNodes')}></slot>
       </label>
       <div class="root" part="root">
         ${startSlotTemplate(options)}

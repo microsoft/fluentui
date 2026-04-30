@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { AnnotationOnlyChart } from './AnnotationOnlyChart';
-import { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
-import { ChartAnnotation } from '../../types/ChartAnnotation';
+import type { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
+import type { ChartAnnotation } from '../../types/ChartAnnotation';
 
 // Mock ResizeObserver
 const mockObserve = jest.fn();
