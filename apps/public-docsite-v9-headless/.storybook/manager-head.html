@@ -5,6 +5,17 @@
 <link href="/shell.css" rel="stylesheet" />
 
 <!--
+  Segoe UI from Microsoft's static font CDN. The fallbacks in `font-family`
+  below cover users on networks blocking the CDN, but on a healthy connection
+  the docsite renders Segoe UI on every platform — not just Windows.
+ -->
+<link rel="preconnect" href="https://c.s-microsoft.com" crossorigin />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.css" />
+
+<!--
   Headless docsite chrome overrides for the Storybook manager UI.
 
   The sidebar selectors are brittle — they depend on Storybook's manager DOM
