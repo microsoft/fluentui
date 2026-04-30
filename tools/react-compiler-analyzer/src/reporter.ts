@@ -50,14 +50,14 @@ export function printReport(results: DirectiveAnalysis[], workspaceRoot: string,
 }
 
 function printTable(results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
-  console.log('| File | Line | Function | Compiler Event | Reason |');
-  console.log('|------|------|----------|----------------|--------|');
+  console.log('| Location | Function | Compiler Event | Reason |');
+  console.log('|----------|----------|----------------|--------|');
 
   for (const r of results) {
     const relPath = relative(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(unknown)';
     const reason = r.reason ? (fullReasons ? escapeTableCell(r.reason) : truncate(r.reason, TABLE_REASON_MAX_LEN)) : '';
-    console.log(`| ${relPath} | ${r.line} | ${fn} | ${r.compilerEvent} | ${reason} |`);
+    console.log(`| ${relPath}:${r.line} | ${fn} | ${r.compilerEvent} | ${reason} |`);
   }
   console.log('');
 
