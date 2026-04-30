@@ -54,10 +54,11 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
      * The tooltip's visual appearance.
      * * `normal` - Uses the theme's background and text colors.
      * * `inverted` - Higher contrast variant that uses the theme's inverted colors.
+     * * `brand` - Uses the brand colors from the theme.
      *
      * @default normal
      */
-    appearance?: 'normal' | 'inverted';
+    appearance?: 'normal' | 'inverted' | 'brand';
     /**
      * Delay before the tooltip is hidden, in milliseconds.
      *

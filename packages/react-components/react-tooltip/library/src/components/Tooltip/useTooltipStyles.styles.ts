@@ -2,7 +2,7 @@
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowStyles } from '@fluentui/react-positioning';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { arrowHeight } from './private/constants';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -20,15 +20,14 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     maxWidth: '240px',
     cursor: 'default',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
     overflowWrap: 'break-word',
-    borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorTransparentStroke}`,
-    padding: '4px 11px 6px 11px', // '5px 12px 7px 12px' minus the border width '1px'
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
+    ...typographyStyles.caption1Strong,
+    borderRadius: tokens.borderRadiusXLarge,
+    boxShadow: tokens.shadow8,
+    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalMNudge}`,
 
     // TODO need to add versions of tokens.alias.shadow.shadow8, etc. that work with filter
     filter:
@@ -43,6 +42,11 @@ const useStyles = makeStyles({
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
     color: tokens.colorNeutralForegroundStaticInverted,
+  },
+
+  brand: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
   },
 
   arrow: createArrowStyles({ arrowHeight }),
@@ -60,6 +64,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
     tooltipClassNames.content,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
+    state.appearance === 'brand' && styles.brand,
     state.visible && styles.visible,
     state.content.className,
   );
