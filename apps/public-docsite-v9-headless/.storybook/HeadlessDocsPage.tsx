@@ -9,7 +9,8 @@
  * mirrors `packages/react-components/react-storybook-addon/src/docs/FluentDocsPage.tsx`
  * so the page matches what's deployed at storybooks.fluentui.dev/headless.
  *
- * Wired in by `.storybook/preview.js` via `parameters.docs.page`.
+ * Wired in by `.storybook/preview.js` via `parameters.docs.page`. Lives in the
+ * docsite app (not the stories package) — see PR #36073 review thread.
  */
 import * as React from 'react';
 
@@ -106,7 +107,6 @@ export const HeadlessDocsPage: React.FC = () => {
         the Stackblitz button sits next to it inside the canvas footer (see
         `HeadlessSourcePanel` for how its clicks drive our tabbed panel).
       */}
-      <style>{headlessDocsPageCss}</style>
       <Title />
       <Subtitle />
       <Description />
@@ -154,40 +154,3 @@ export const HeadlessDocsPage: React.FC = () => {
     </div>
   );
 };
-
-// We let Storybook's native "Show code" toggle render inside the Canvas
-// footer (alongside the "Open in Stackblitz" button injected by
-// `@fluentui/react-storybook-addon-export-to-sandbox`). We hide only the
-// expanded source pane it would normally reveal — `<HeadlessSourcePanel>` listens to
-// the native toggle's clicks and renders our tabbed panel **into the same
-// canvas card** via a portal target (`.headless-source-portal`).
-//
-// Storybook 9 sets a fixed `height` and `overflow: hidden` on `.sbdocs-preview`
-// so its border tightly hugs the rendered story; when our panel is expanded
-// inside the same card we need to release both so the code panel can flow.
-const headlessDocsPageCss = `
-.headless-docs-page .sbdocs-preview > *:not(.docs-story):not(.headless-source-portal) {
-  display: none !important;
-}
-.headless-docs-page .sbdocs-preview:has(> .headless-source-portal:not(:empty)) {
-  height: auto !important;
-}
-
-/*
-  Force the magenta accent for the "Show code" / "Open in Stackblitz" hover &
-  focus underlines. Storybook's ActionBar paints the underline via an inset
-  box-shadow driven by \`theme.color.secondary\`, and the
-  \`@fluentui/react-storybook-addon-export-to-sandbox\` styles hard-code a blue
-  underline on the Stackblitz button — both are overridden here so the canvas
-  action buttons match the rest of the headless docs accent.
-*/
-.headless-docs-page .sbdocs-preview .docblock-code-toggle:hover,
-.headless-docs-page .sbdocs-preview .docblock-code-toggle:focus,
-.headless-docs-page .sbdocs-preview .docblock-code-toggle.docblock-code-toggle--expanded,
-.headless-docs-page .docs-story .with-code-sandbox-button:hover,
-.headless-docs-page .docs-story .with-code-sandbox-button:focus {
-  outline: none !important;
-  box-shadow: #9b1f5a 0 -3px 0 0 inset !important;
-  color: #9b1f5a !important;
-}
-`;

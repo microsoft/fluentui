@@ -7,9 +7,10 @@ import * as rootPreview from '../../../.storybook/preview';
 // for every story rendered in this Storybook.
 import '../../../packages/react-components/react-headless-components-preview/stories/theme/tokens.css';
 
-// Custom docs page that renders the "Show code" panel with TSX | CSS tabs.
-// See `packages/.../stories/src/_helpers/HeadlessDocsPage.tsx` for rationale.
-import { HeadlessDocsPage } from '../../../packages/react-components/react-headless-components-preview/stories/src/_helpers/HeadlessDocsPage';
+// Custom docs page chrome (disclaimer card, divider, headings) and the
+// docs-page wiring rules that let HeadlessSourcePanel portal into the canvas card.
+import './headless-docs-page.css';
+import { HeadlessDocsPage } from './HeadlessDocsPage';
 
 polyfillBodyAndObserve();
 

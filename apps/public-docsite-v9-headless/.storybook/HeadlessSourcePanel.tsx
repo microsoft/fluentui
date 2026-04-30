@@ -15,12 +15,14 @@
  * Wired up by `HeadlessDocsPage`. The story's TSX comes from
  * `parameters.docs.source.originalSource` (set via `withStorySource`); the CSS
  * comes from `parameters.theme.cssModules` (set via `withCssModuleSource`).
+ *
+ * Lives in the docsite app (not the stories package) — see PR #36073 review
+ * thread. Styled via Storybook's `styled` (emotion) so the panel inherits the
+ * active SB theme tokens and stays consistent with the rest of the docs chrome.
  */
 /* eslint-disable @nx/workspace-no-restricted-globals -- Storybook docs block running in the manager iframe; uses DOM APIs to bridge to the native Canvas toggle that lives outside React. */
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyProps = Record<string, any>;
 
 // Storybook's docs blocks live behind a deep import. The `useSourceProps` hook
 // resolves the Source block's effective `code`/`language` for a story (honoring
@@ -30,19 +32,16 @@ import { DocsContext, SourceContext, useOf, useSourceProps } from '@storybook/ad
 // matches the rest of the docs chrome — reusing it keeps the panel visually
 // consistent with everything else Storybook renders.
 import { SyntaxHighlighter } from 'storybook/internal/components';
+import { styled } from 'storybook/theming';
 
-/** A CSS Module file surfaced as a tab in the code panel. */
-export interface CssModule {
-  /** Display name shown on the tab (e.g. `button.module.css`). */
-  name: string;
-  /** Raw CSS source for the module (typically imported via `?raw`). */
-  source: string;
-}
+import type {
+  CssModule,
+  HeadlessSourceParameters,
+  // eslint-disable-next-line @nx/enforce-module-boundaries -- relative import: stories package authoring helpers are colocated source, not a public npm dependency
+} from '../../../packages/react-components/react-headless-components-preview/stories/src/_helpers/withCssModuleSource';
 
-export interface HeadlessSourceParameters {
-  /** Extra CSS Module sources to surface as tabs after the story TSX tab. */
-  cssModules?: CssModule[];
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyProps = Record<string, any>;
 
 interface HeadlessSourcePanelProps {
   /** Reference to the story being rendered (`story.moduleExport`). */
@@ -50,28 +49,24 @@ interface HeadlessSourcePanelProps {
   of: any;
 }
 
-const SURFACE_BG = '#ffffff';
-const SURFACE_BORDER = 'rgba(38, 85, 115, 0.15)';
-const TAB_BAR_BG = '#f6f9fc';
 const ACTIVE_TAB_FG = '#9b1f5a';
-const TAB_FG = '#666666';
 
-const containerStyle: React.CSSProperties = {
+const PanelContainer = styled.div(({ theme }) => ({
   // Blend into the canvas card: no own border/radius, just a top divider and
   // breathing room below the action bar (Show code / Open in Stackblitz).
   marginTop: 16,
-  borderTop: `1px solid ${SURFACE_BORDER}`,
-  background: SURFACE_BG,
-};
+  borderTop: `1px solid ${theme.appBorderColor}`,
+  background: theme.background.content,
+}));
 
-const tabBarStyle: React.CSSProperties = {
+const TabBar = styled.div(({ theme }) => ({
   display: 'flex',
   alignItems: 'stretch',
-  background: TAB_BAR_BG,
-  borderBottom: `1px solid ${SURFACE_BORDER}`,
-};
+  background: theme.background.app,
+  borderBottom: `1px solid ${theme.appBorderColor}`,
+}));
 
-const tabButtonStyle = (active: boolean): React.CSSProperties => ({
+const TabButton = styled.button<{ active: boolean }>(({ active, theme }) => ({
   appearance: 'none',
   border: 0,
   background: 'transparent',
@@ -79,12 +74,12 @@ const tabButtonStyle = (active: boolean): React.CSSProperties => ({
   font: 'inherit',
   fontSize: 12,
   fontWeight: active ? 700 : 500,
-  color: active ? ACTIVE_TAB_FG : TAB_FG,
+  color: active ? ACTIVE_TAB_FG : theme.color.mediumdark,
   cursor: 'pointer',
   borderBottom: `2px solid ${active ? ACTIVE_TAB_FG : 'transparent'}`,
   marginBottom: -1,
   whiteSpace: 'nowrap',
-});
+}));
 
 /**
  * Subscribe to the native "Show code" toggle that Canvas renders inside the
@@ -250,22 +245,22 @@ export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) 
   const activeTab = tabs.find(t => t.id === activeTabId) ?? tabs[0];
 
   return createPortal(
-    <div className="sb-unstyled" style={containerStyle}>
+    <PanelContainer className="sb-unstyled">
       {tabs.length > 1 && (
-        <div style={tabBarStyle} role="tablist" aria-label="Source code">
+        <TabBar role="tablist" aria-label="Source code">
           {tabs.map(tab => (
-            <button
+            <TabButton
               key={tab.id}
               type="button"
               role="tab"
               aria-selected={tab.id === activeTab.id}
-              style={tabButtonStyle(tab.id === activeTab.id)}
+              active={tab.id === activeTab.id}
               onClick={() => setActiveTabId(tab.id)}
             >
               {tab.label}
-            </button>
+            </TabButton>
           ))}
-        </div>
+        </TabBar>
       )}
       <div role="tabpanel">
         <SyntaxHighlighter
@@ -282,7 +277,7 @@ export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) 
           {activeTab.code}
         </SyntaxHighlighter>
       </div>
-    </div>,
+    </PanelContainer>,
     portalTarget,
   );
 };

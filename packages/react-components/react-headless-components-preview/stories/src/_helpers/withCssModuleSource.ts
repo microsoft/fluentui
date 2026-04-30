@@ -1,8 +1,9 @@
 /**
  * Story meta helper — registers the CSS Module source(s) a story relies on so:
  *
- *   1. The custom docs page (`HeadlessDocsPage` → `HeadlessSourcePanel`) can surface them
- *      as tabs in the "Show code" panel.
+ *   1. The docsite app's custom docs page (`HeadlessSourcePanel`, lives at
+ *      `apps/public-docsite-v9-headless/.storybook/HeadlessSourcePanel.tsx`)
+ *      can surface them as tabs in the "Show code" panel.
  *   2. The "Open in Stackblitz" button (provided by
  *      `@fluentui/react-storybook-addon-export-to-sandbox`) can bundle them —
  *      together with `theme/tokens.css` — into the generated sandbox so the
@@ -33,9 +34,18 @@
 // requiring story authors to wire imports manually.
 import tokensCss from '../../theme/tokens.css?raw';
 
-import type { CssModule, HeadlessSourceParameters } from './HeadlessSourcePanel';
+/** A CSS Module file surfaced as a tab in the docs page's "Show code" panel. */
+export interface CssModule {
+  /** Display name shown on the tab (e.g. `button.module.css`). */
+  name: string;
+  /** Raw CSS source for the module (typically imported via `?raw`). */
+  source: string;
+}
 
-export type { CssModule } from './HeadlessSourcePanel';
+/** Shape consumed by the docsite's `HeadlessSourcePanel` via `parameters.theme`. */
+export interface HeadlessSourceParameters {
+  cssModules?: CssModule[];
+}
 
 /**
  * Minimal local mirror of the `SandboxContext` shape from
