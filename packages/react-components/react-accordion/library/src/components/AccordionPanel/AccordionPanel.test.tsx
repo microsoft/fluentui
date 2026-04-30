@@ -38,7 +38,7 @@ describe('AccordionPanel', () => {
       <AccordionItemProvider value={mockAccordionItemContextValue({ open: false })}>{children}</AccordionItemProvider>
     );
     const { result } = renderHook(() => useAccordionPanelBase_unstable({}, ref), { wrapper });
-    expect(result.current.root.inert).toBe('');
+    expect(result.current.root.inert).toBe('true');
     expect(result.current.root.tabIndex).toBe(-1);
   });
 

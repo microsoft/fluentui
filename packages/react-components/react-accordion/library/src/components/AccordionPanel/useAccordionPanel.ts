@@ -73,7 +73,7 @@ export const useAccordionPanelBase_unstable = (
         // Prevent keyboard focus from entering the panel while it is closed/collapsing.
         // tabIndex: -1 prevents the panel itself from being focused, and inert prevents
         // all focusable descendants from being reachable via keyboard navigation.
-        ...((open ? {} : { tabIndex: -1, inert: '' }) as React.HTMLAttributes<HTMLDivElement>),
+        ...((open ? {} : { tabIndex: -1, inert: 'true' }) as React.HTMLAttributes<HTMLDivElement>),
       },
       { elementType: 'div' },
     ),
