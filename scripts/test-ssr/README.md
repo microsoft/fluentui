@@ -52,3 +52,12 @@ flowchart TB
 #### Debugging
 
 All assets are available in `node_modules/.cache/ssr-tests` folder. You can open `./node_modules/.cache/ssr-tests/index.html` in any browser and debug relevant issues.
+
+#### Webpack-only loaders supported during SSR
+
+`buildAssets.ts` registers two custom esbuild plugins (`src/utils/esbuild-plugin.ts`) so stories that work in webpack-driven Storybook also work in the SSR pipeline:
+
+- `?raw` queries — strips the suffix and loads the underlying file as text. Mirrors webpack's `resourceQuery: /raw/` asset/source rule, including extension-less imports like `'./Foo.stories?raw'` resolving to `./Foo.stories.tsx`.
+- `*.module.css` imports — shimmed to a `Proxy` whose getter echoes the property name (so `styles.foo === 'foo'`). Sufficient for SSR snapshots without running the full CSS-Modules transform.
+
+If a story authors needs another webpack-only loader (e.g. `?inline`, custom asset modules), extend the plugins in `src/utils/esbuild-plugin.ts` rather than excluding the package from `testSSR`.
