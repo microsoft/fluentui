@@ -1,12 +1,6 @@
-import type {
-  InlineDrawerSlots as InlineDrawerBaseSlots,
-  InlineDrawerBaseProps,
-  InlineDrawerBaseState,
-} from '@fluentui/react-drawer';
+import type { InlineDrawerBaseProps, InlineDrawerBaseState } from '@fluentui/react-drawer';
 
-export type InlineDrawerSlots = InlineDrawerBaseSlots;
-
-export type InlineDrawerProps = InlineDrawerBaseProps;
+export type { InlineDrawerSlots, InlineDrawerBaseProps as InlineDrawerProps } from '@fluentui/react-drawer';
 
 export type InlineDrawerState = InlineDrawerBaseState & {
   root: {
@@ -17,6 +11,6 @@ export type InlineDrawerState = InlineDrawerBaseState & {
     /**
      * The position of the drawer, used for styling purposes.
      */
-    'data-position'?: InlineDrawerProps['position'];
+    'data-position'?: InlineDrawerBaseProps['position'];
   };
 };

@@ -1,12 +1,6 @@
-import type {
-  DrawerHeaderProps as DrawerHeaderBaseProps,
-  DrawerHeaderSlots as DrawerHeaderBaseSlots,
-  DrawerHeaderState as DrawerHeaderBaseState,
-} from '@fluentui/react-drawer';
+import type { DrawerHeaderState as DrawerHeaderBaseState } from '@fluentui/react-drawer';
 
-export type DrawerHeaderSlots = DrawerHeaderBaseSlots;
-
-export type DrawerHeaderProps = DrawerHeaderBaseProps;
+export type { DrawerHeaderProps, DrawerHeaderSlots } from '@fluentui/react-drawer';
 
 export type DrawerHeaderState = DrawerHeaderBaseState & {
   root: {
