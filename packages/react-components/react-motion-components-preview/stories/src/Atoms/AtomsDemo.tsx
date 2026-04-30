@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { makeStyles, tokens, Button, Select } from '@fluentui/react-components';
 import { createMotionComponent, motionTokens } from '@fluentui/react-motion';

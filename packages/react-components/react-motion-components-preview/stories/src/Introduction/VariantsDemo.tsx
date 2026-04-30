@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Fade, FadeSnappy, FadeRelaxed } from '@fluentui/react-motion-components-preview';
