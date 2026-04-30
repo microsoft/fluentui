@@ -23,7 +23,7 @@ export const directivesCommand: CommandModule<{}, DirectivesArgv> = {
       type: 'boolean' as const,
       describe: "Auto-remove redundant 'use no memo' directives from source files",
       default: false,
-    }) as any,
+    }),
   handler: async argv => {
     const resolvedPath = validatePath(argv.path);
     validateConcurrency(argv.concurrency);
