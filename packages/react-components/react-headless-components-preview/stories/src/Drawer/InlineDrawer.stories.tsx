@@ -58,7 +58,7 @@ const DrawerContent = () => {
           key={item}
           aria-current={index === 0 ? 'page' : undefined}
           href="#"
-          className={`'rounded px-3 py-2 font-medium no-underline aria-[current]:bg-zinc-200 aria-[current]:text-zinc-950 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950'`}
+          className="rounded px-3 py-2 font-medium no-underline aria-[current]:bg-zinc-200 aria-[current]:text-zinc-950 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950"
         >
           {item}
         </a>

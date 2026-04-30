@@ -15,7 +15,7 @@ export const useOverlayDrawer = (props: OverlayDrawerProps, ref: React.Ref<HTMLD
   const {
     open = false,
     position = 'start',
-    unmountOnClose = false,
+    unmountOnClose = true,
     modalType = 'modal',
     onOpenChange,
     ...rootProps

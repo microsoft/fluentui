@@ -18,7 +18,7 @@ export const useDrawerHeaderTitle = (
   const state = useDrawerHeaderTitle_unstable(props, ref);
   const { dialogTitleId } = useDialogContext();
 
-  if (state.heading) {
+  if (state.heading && dialogTitleId) {
     state.heading.id = dialogTitleId;
   }
 

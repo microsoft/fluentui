@@ -5,17 +5,24 @@ import type { OverlayDrawerProps, OverlayDrawerSlots } from './OverlayDrawer';
 
 export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
 
-export type DrawerProps = ComponentProps<DrawerSlots> & {
-  /**
-   * Type of the drawer.
-   *
-   * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
-   * - 'inline' - Drawer is stacked with the content.
-   *
-   * @default overlay
-   */
-  type?: 'inline' | 'overlay';
-} & (OverlayDrawerProps | InlineDrawerProps);
+export type DrawerProps =
+  | (ComponentProps<DrawerSlots> & {
+      /**
+       * Type of the drawer.
+       *
+       * @default overlay
+       */
+      type?: 'overlay';
+    } & OverlayDrawerProps)
+  | (ComponentProps<DrawerSlots> & {
+      /**
+       * Type of the drawer.
+       *
+       * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
+       * - 'inline' - Drawer is stacked with the content.
+       */
+      type: 'inline';
+    } & InlineDrawerProps);
 
 export type DrawerState = {
   components: {

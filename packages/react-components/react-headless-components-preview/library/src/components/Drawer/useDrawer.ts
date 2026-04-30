@@ -12,10 +12,11 @@ import type { DrawerProps, DrawerState } from './Drawer.types';
 export const useDrawer = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
   'use no memo';
 
-  const elementType = (props.type === 'inline' ? InlineDrawer : OverlayDrawer) as React.FC<
+  const { type, ...restProps } = props;
+  const elementType = (type === 'inline' ? InlineDrawer : OverlayDrawer) as React.FC<
     InlineDrawerProps | OverlayDrawerProps
   >;
-  const root: InlineDrawerProps | OverlayDrawerProps = slot.always({ ref, ...props }, { elementType });
+  const root: InlineDrawerProps | OverlayDrawerProps = slot.always({ ref, ...restProps }, { elementType });
 
   return {
     components: { root: elementType },
