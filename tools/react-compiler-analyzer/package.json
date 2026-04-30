@@ -1,10 +1,17 @@
 {
   "name": "@fluentui/react-compiler-analyzer",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "type": "commonjs",
-  "main": "./src/index.js",
-  "types": "./src/index.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "bin",
+    "*.md",
+    "dist",
+    "lib",
+    "lib-commonjs"
+  ],
   "bin": {
     "react-compiler-analyzer": "./bin/react-compiler-analyzer.js"
   },
