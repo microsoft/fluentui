@@ -13,6 +13,22 @@
 }
 
 /*
+  Reset Storybook's default `.docs-story + div > div:last-child` chrome —
+  it paints a near-black background (selector specificity (0,2,2)) for the
+  legacy single-blob Source block. Our portaled HeadlessSourcePanel renders
+  its own light surface in the same DOM position, but emotion class names
+  alone can't beat that specificity. `!important` here is the simplest way
+  to win; alternatives like &&& chains or inline styles negate the value of
+  the panel's themed `styled` components.
+*/
+.headless-source-portal > div {
+  background: var(--bg-elev) !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  right: auto !important;
+}
+
+/*
   Force the magenta accent for the "Show code" / "Open in Stackblitz" hover &
   focus underlines. Storybook's ActionBar paints the underline via an inset
   box-shadow driven by `theme.color.secondary`, and the
