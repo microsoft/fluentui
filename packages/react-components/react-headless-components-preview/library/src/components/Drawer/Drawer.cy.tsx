@@ -28,7 +28,7 @@ const renderDrawer = (props: DrawerProps = {}) => (
 function testDrawerBaseScenarios(props: DrawerProps): void {
   describe('basic functionality', () => {
     it('should not render any element when closed', () => {
-      mount(renderDrawer(props));
+      mount(renderDrawer({ ...props, unmountOnClose: true }));
 
       cy.get(drawerSelector).should('not.exist');
     });
@@ -51,7 +51,7 @@ function testDrawerBaseScenarios(props: DrawerProps): void {
 
         return (
           <>
-            {renderDrawer({ ...props, open })}
+            {renderDrawer({ ...props, open, unmountOnClose: true })}
             <button id="button" onClick={() => setOpen(true)}>
               Open
             </button>
