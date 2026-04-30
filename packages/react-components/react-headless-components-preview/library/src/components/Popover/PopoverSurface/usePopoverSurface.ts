@@ -32,8 +32,8 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDivElement>,
         role: 'group',
-        id: surfaceId,
         ...props,
+        id: surfaceId,
         'data-popover-surface': '',
         'data-open': stringifyDataAttribute(open),
       },

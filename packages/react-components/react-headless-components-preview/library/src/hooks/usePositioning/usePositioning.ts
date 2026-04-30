@@ -35,7 +35,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
   const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
 
-  const anchorName = useId('--popover-anchor-');
+  const anchorName = `--${useId('popover-anchor-')}`;
   const positionArea = POSITION_AREA_MAP[position][align];
   const placement = getPlacementString(position, align);
 
@@ -55,7 +55,13 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   );
 
   useIsomorphicLayoutEffect(() => {
-    effectiveTarget?.style.setProperty('anchor-name', anchorName);
+    if (!effectiveTarget) {
+      return;
+    }
+    effectiveTarget.style.setProperty('anchor-name', anchorName);
+    return () => {
+      effectiveTarget.style.removeProperty('anchor-name');
+    };
   }, [effectiveTarget, anchorName]);
 
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {

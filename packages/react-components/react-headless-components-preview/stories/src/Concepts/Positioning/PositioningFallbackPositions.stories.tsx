@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import { demoBoxClass, demoBoxStyle, flipDemoSurfaceCss } from './demoBox';
+import { InlineAnchored } from './InlineAnchored';
 
 const classes = {
   page: 'flex flex-col gap-6 p-4',
@@ -8,7 +8,7 @@ const classes = {
   sectionNote: 'text-xs text-gray-500 max-w-xl mb-2',
   grid: 'grid grid-cols-1 sm:grid-cols-2 gap-4',
   trigger:
-    'px-3 py-1.5 rounded-md bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 data-[open]:bg-blue-700 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 cursor-pointer border-none',
+    'px-3 py-1.5 rounded-md bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 cursor-pointer border-none',
   surface: 'flip-demo bg-white rounded-md shadow-md border border-gray-200 p-3 min-w-[200px] max-w-xs text-sm',
 };
 
@@ -23,27 +23,24 @@ export const FallbackPositions = (): React.ReactNode => (
         there.
       </p>
       <div className={demoBoxClass} style={demoBoxStyle}>
-        <Popover
-          inline
-          defaultOpen
+        <InlineAnchored
           positioning={{
             position: 'above',
             align: 'center',
             fallbackPositions: ['below-start', 'after'],
           }}
-        >
-          <PopoverTrigger>
+          surfaceClassName={classes.surface}
+          trigger={
             <button
               className={classes.trigger}
               style={{ position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)' }}
             >
               trigger near top
             </button>
-          </PopoverTrigger>
-          <PopoverSurface className={classes.surface}>
-            <strong>Requested:</strong> above · fallbacks: <code>below-start</code>, <code>after</code>
-          </PopoverSurface>
-        </Popover>
+          }
+        >
+          <strong>Requested:</strong> above · fallbacks: <code>below-start</code>, <code>after</code>
+        </InlineAnchored>
       </div>
     </section>
 
@@ -55,24 +52,21 @@ export const FallbackPositions = (): React.ReactNode => (
         <strong>Actual</strong> readout should read <code>below</code>.
       </p>
       <div className={demoBoxClass} style={demoBoxStyle}>
-        <Popover
-          inline
-          defaultOpen
+        <InlineAnchored
           positioning={{
             position: 'above',
             align: 'center',
             fallbackPositions: ['before', 'below'],
           }}
-        >
-          <PopoverTrigger>
+          surfaceClassName={classes.surface}
+          trigger={
             <button className={classes.trigger} style={{ position: 'absolute', top: 12, left: 12 }}>
               top-left trigger
             </button>
-          </PopoverTrigger>
-          <PopoverSurface className={classes.surface}>
-            <strong>Requested:</strong> above · fallbacks: <code>before</code>, <code>below</code>
-          </PopoverSurface>
-        </Popover>
+          }
+        >
+          <strong>Requested:</strong> above · fallbacks: <code>before</code>, <code>below</code>
+        </InlineAnchored>
       </div>
     </section>
 
@@ -85,42 +79,40 @@ export const FallbackPositions = (): React.ReactNode => (
       </p>
       <div className={classes.grid}>
         <div className={demoBoxClass} style={demoBoxStyle}>
-          <Popover inline defaultOpen positioning={{ position: 'above', align: 'center' }}>
-            <PopoverTrigger>
+          <InlineAnchored
+            positioning={{ position: 'above', align: 'center' }}
+            surfaceClassName={classes.surface}
+            trigger={
               <button
                 className={classes.trigger}
                 style={{ position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)' }}
               >
                 default (flip)
               </button>
-            </PopoverTrigger>
-            <PopoverSurface className={classes.surface}>
-              <strong>Requested:</strong> above · no custom fallbacks
-            </PopoverSurface>
-          </Popover>
+            }
+          >
+            <strong>Requested:</strong> above · no custom fallbacks
+          </InlineAnchored>
         </div>
         <div className={demoBoxClass} style={demoBoxStyle}>
-          <Popover
-            inline
-            defaultOpen
+          <InlineAnchored
             positioning={{
               position: 'above',
               align: 'center',
               fallbackPositions: ['after', 'below'],
             }}
-          >
-            <PopoverTrigger>
+            surfaceClassName={classes.surface}
+            trigger={
               <button
                 className={classes.trigger}
                 style={{ position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)' }}
               >
                 custom ({`['after']`})
               </button>
-            </PopoverTrigger>
-            <PopoverSurface className={classes.surface}>
-              <strong>Requested:</strong> above · fallbacks: <code>after</code>, <code>below</code>
-            </PopoverSurface>
-          </Popover>
+            }
+          >
+            <strong>Requested:</strong> above · fallbacks: <code>after</code>, <code>below</code>
+          </InlineAnchored>
         </div>
       </div>
     </section>
