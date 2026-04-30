@@ -2,7 +2,7 @@ import { join } from 'path';
 
 import { analyzeFileForCoverage } from '../coverage-analyzer';
 
-const FIXTURES_DIR = join(__dirname, '__fixtures__', 'coverage');
+const FIXTURES_DIR = join(__dirname, '__fixtures__', 'coverage-analyzer');
 
 describe('analyzeFileForCoverage — manual memo integration', () => {
   it('detects manual memoization in a compilable function', async () => {
