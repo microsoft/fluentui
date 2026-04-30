@@ -20,6 +20,7 @@ export const Inline = (): React.ReactNode => {
         }
         type="inline"
         open={open}
+        unmountOnClose={false}
       >
         <DrawerHeader className="border-b border-zinc-200 px-4 py-3">
           <DrawerHeaderTitle

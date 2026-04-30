@@ -105,9 +105,11 @@ export type DrawerHeaderTitleSlots = DrawerHeaderTitleSlots_2;
 export type DrawerHeaderTitleState = DrawerHeaderTitleState_2;
 
 // @public (undocumented)
-export type DrawerProps = ComponentProps<DrawerSlots> & {
-    type?: 'inline' | 'overlay';
-} & (OverlayDrawerProps | InlineDrawerProps);
+export type DrawerProps = (ComponentProps<DrawerSlots> & {
+    type?: 'overlay';
+} & OverlayDrawerProps) | (ComponentProps<DrawerSlots> & {
+    type: 'inline';
+} & InlineDrawerProps);
 
 // @public (undocumented)
 export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
@@ -170,7 +172,7 @@ export const renderDrawerHeaderNavigation: (state: DrawerHeaderNavigationState_2
 export const renderDrawerHeaderTitle: (state: DrawerHeaderTitleState_2) => JSXElement;
 
 // @public
-export const renderInlineDrawer: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSXElement;
+export const renderInlineDrawer: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSXElement | null;
 
 // @public
 export const renderOverlayDrawer: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSXElement;
