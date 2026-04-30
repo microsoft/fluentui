@@ -2,9 +2,9 @@ import { motionTokens } from '@fluentui/react-motion';
 import { Slide } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-export const DirectionalSlide: React.FC<{
+export const DirectionalSlide: React.FunctionComponent<{
   duration?: number;
   easing?: string;
   animationDirection?: AnimationDirection;
@@ -24,7 +24,6 @@ export const DirectionalSlide: React.FC<{
   if (animationDirection === AnimationDirection.Horizontal) {
     outX = distance;
   } else {
-    // default to vertical
     outY = distance;
   }
   return (
