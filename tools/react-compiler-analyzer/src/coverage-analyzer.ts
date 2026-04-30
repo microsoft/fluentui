@@ -3,9 +3,17 @@ import { extname } from 'node:path';
 
 import { transformAsync } from '@babel/core';
 
-import type { FunctionAnalysis, FileEntry, CoverageAnalyzerOptions, CompilationMode, MemoStats } from './types';
+import type {
+  FunctionAnalysis,
+  FileEntry,
+  CoverageAnalyzerOptions,
+  CompilationMode,
+  MemoStats,
+  ManualMemoization,
+} from './types';
 import { extractDetailReason } from './compiler-utils';
 import type { CompilerEvent } from './compiler-utils';
+import { manualMemoPlugin, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
 
 /**
  * Analyze a single file to determine which functions the React Compiler would memoize.
@@ -30,6 +38,9 @@ export async function analyzeFileForCoverage(
   const ext = extname(filePath);
   const isTSX = ext === '.tsx';
 
+  // Collect manual memoization data
+  const manualMemoResults = new Map<string, ManualMemoEntry>();
+
   try {
     await transformAsync(source, {
       filename: filePath,
@@ -47,6 +58,7 @@ export async function analyzeFileForCoverage(
         ],
       ],
       plugins: [
+        [manualMemoPlugin, { results: manualMemoResults } as ManualMemoPluginOptions],
         [
           require.resolve('babel-plugin-react-compiler'),
           {
@@ -136,6 +148,20 @@ export async function analyzeFileForCoverage(
         compilerEvent: 'PipelineError',
         reason: event.data ?? '',
       });
+    }
+  }
+
+  // Merge manual memoization data into results by matching function location
+  for (const result of results) {
+    const key = `${result.line}:${result.column}`;
+    const memoEntry = manualMemoResults.get(key);
+    if (memoEntry) {
+      result.manualMemo = {
+        useMemo: memoEntry.useMemo,
+        useCallback: memoEntry.useCallback,
+        reactMemo: memoEntry.reactMemo,
+      };
+      result.bodyInsertionLine = memoEntry.bodyInsertionLine;
     }
   }
 
