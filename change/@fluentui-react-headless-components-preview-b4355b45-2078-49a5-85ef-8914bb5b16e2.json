@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: add headless Popover'",
+  "comment": "feat: add headless Popover",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
