@@ -63,7 +63,7 @@ export const coverageCommand: CommandModule<{}, CoverageArgv> = {
     const workspaceRoot = process.cwd();
     printCoverageReport(results, workspaceRoot, argv.verbose, argv['full-reasons']);
     printMigrationCandidates(results, workspaceRoot);
-    printCoverageSummary(results);
+    printCoverageSummary(results, argv.verbose);
 
     if (argv.annotate) {
       const outcome = await applyAnnotations(results);
