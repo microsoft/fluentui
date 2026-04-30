@@ -164,6 +164,43 @@ export function printCoverageSummary(results: FunctionAnalysis[]): void {
   console.log('');
 }
 
+/**
+ * Print a "Migration Candidates" section — functions that compile successfully
+ * and also use manual memoization (useMemo, useCallback, React.memo).
+ * These are candidates for adding 'use memo' and removing manual hooks.
+ */
+export function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string): void {
+  const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
+
+  if (candidates.length === 0) {
+    return;
+  }
+
+  console.log('## Migration Candidates\n');
+  console.log(
+    'Functions that compile successfully and contain manual memoization. ' +
+      "These can safely use `'use memo'` and may have their manual hooks removed.\n",
+  );
+
+  console.log('| File | Line | Function | useMemo | useCallback | React.memo | Memo Slots |');
+  console.log('|------|------|----------|---------|-------------|------------|------------|');
+
+  for (const r of candidates) {
+    const relPath = relative(workspaceRoot, r.filePath);
+    const fn = r.functionName ?? '(anonymous)';
+    const memo = r.manualMemo!;
+    const slots = r.memoStats?.memoSlots ?? 0;
+    console.log(
+      `| ${relPath} | ${r.line} | ${fn} | ${memo.useMemo} | ${memo.useCallback} | ${
+        memo.reactMemo ? 'yes' : 'no'
+      } | ${slots} |`,
+    );
+  }
+
+  console.log('');
+  console.log(`> **${candidates.length}** migration candidate(s) found.\n`);
+}
+
 function pct(count: number, total: number): string {
   if (total === 0) {
     return '0%';

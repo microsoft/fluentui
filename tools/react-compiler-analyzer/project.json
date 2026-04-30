@@ -9,10 +9,17 @@
       "executor": "@nx/js:swc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/tools/react-compiler-analyzer",
+        "outputPath": "{projectRoot}/dist",
         "main": "tools/react-compiler-analyzer/src/index.ts",
         "tsConfig": "tools/react-compiler-analyzer/tsconfig.lib.json",
         "assets": ["tools/react-compiler-analyzer/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/tools/react-compiler-analyzer"],
+      "options": {
+        "jestConfig": "tools/react-compiler-analyzer/jest.config.ts"
       }
     }
   }

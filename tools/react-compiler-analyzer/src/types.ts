@@ -55,6 +55,12 @@ export interface MemoStats {
   prunedMemoValues: number;
 }
 
+export interface ManualMemoization {
+  useMemo: number;
+  useCallback: number;
+  reactMemo: boolean;
+}
+
 export interface FunctionAnalysis {
   filePath: string;
   packageName: string;
@@ -65,10 +71,18 @@ export interface FunctionAnalysis {
   compilerEvent: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError';
   reason?: string;
   memoStats?: MemoStats;
+  manualMemo?: ManualMemoization;
+  bodyInsertionLine?: number;
+}
+
+export interface AnnotateResult {
+  filesModified: number;
+  functionsAnnotated: number;
 }
 
 export interface CoverageAnalyzerOptions {
   concurrency: number;
   verbose: boolean;
   compilationMode: CompilationMode;
+  annotate?: boolean;
 }
