@@ -12,6 +12,7 @@ export {
   MenuList,
   menuListClassNames,
   renderMenuList_unstable,
+  useMenuListBase_unstable,
   useMenuListContextValues_unstable,
   useMenuListStyles_unstable,
   useMenuList_unstable,
