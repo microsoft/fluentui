@@ -1,7 +1,8 @@
 'use client';
 
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import type { LogicalAlignment, Position } from './types';
+import type { Position } from '@fluentui/react-positioning';
+import type { LogicalAlignment } from './types';
 import { ALIGNMENTS, POSITIONS } from './constants';
 import { getPlacementString } from './utils/placement';
 

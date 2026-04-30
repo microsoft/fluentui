@@ -1,6 +1,5 @@
+import type { Position, PositioningProps } from '@fluentui/react-positioning';
 import { POSITIONS } from '../constants';
-import type { Position } from '../types';
-import type { PositioningProps } from '../types';
 
 export function applyOffset(node: HTMLElement, position: Position, mainAxis: number, crossAxis: number): void {
   if (mainAxis) {
@@ -34,13 +33,18 @@ export function applyOffset(node: HTMLElement, position: Position, mainAxis: num
   }
 }
 
-/** Normalises the `offset` prop into explicit `{ mainAxis, crossAxis }`. */
+/**
+ * Normalises the `offset` prop into explicit `{ mainAxis, crossAxis }`. The
+ * function form (`OffsetFunction`) is not supported under CSS anchor
+ * positioning — rect information is not available ahead of layout — and
+ * resolves to a zero offset.
+ */
 export function resolveOffset(offset: PositioningProps['offset']): { mainAxis: number; crossAxis: number } {
   if (typeof offset === 'number') {
     return { mainAxis: offset, crossAxis: 0 };
   }
 
-  if (offset) {
+  if (offset && typeof offset === 'object') {
     return { mainAxis: offset.mainAxis ?? 0, crossAxis: offset.crossAxis ?? 0 };
   }
 

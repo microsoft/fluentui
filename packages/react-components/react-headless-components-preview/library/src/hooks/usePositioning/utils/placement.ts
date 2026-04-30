@@ -1,31 +1,14 @@
-import type {
-  Position,
-  LogicalAlignment,
-  PositioningProps,
-  PositioningShorthand,
-  PositioningShorthandValue,
-} from '../types';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
+import type { Position, PositioningShorthandValue } from '@fluentui/react-positioning';
+import type { LogicalAlignment } from '../types';
 import { ALIGNMENTS, POSITIONS, POSITION_AREA_MAP } from '../constants';
 
-const POSITION_ALIASES: Record<string, Position> = {
-  top: POSITIONS.above,
-  bottom: POSITIONS.below,
-  left: POSITIONS.before,
-  right: POSITIONS.after,
-};
+export { resolvePositioningShorthand };
 
 const ALIGN_ALIASES: Record<string, LogicalAlignment> = {
   top: ALIGNMENTS.start,
   bottom: ALIGNMENTS.end,
 };
-
-export function normalizePosition(raw: string): Position {
-  if (raw in POSITIONS) {
-    return raw as Position;
-  }
-
-  return POSITION_ALIASES[raw] ?? POSITIONS.above;
-}
 
 export function normalizeAlign(raw: string): LogicalAlignment {
   if (raw === ALIGNMENTS.start || raw === ALIGNMENTS.center || raw === ALIGNMENTS.end) {
@@ -38,40 +21,20 @@ export function normalizeAlign(raw: string): LogicalAlignment {
 /**
  * Maps (position, align) into the human-readable placement string used for the
  * `data-placement` attribute. Center alignment renders as the bare position.
+ *
+ * For horizontal positions (`before`/`after`) the alignment is rendered using
+ * physical names (`top`/`bottom`) to match react-positioning's convention.
  */
 export function getPlacementString(position: Position, align: LogicalAlignment): string {
-  return align === ALIGNMENTS.center ? position : `${position}-${align}`;
-}
-
-/**
- * Normalizes a shorthand (string or object) into a full `PositioningProps`.
- * Strings like `'below-start'` become `{ position: 'below', align: 'start' }`;
- * objects pass through unchanged.
- *
- */
-export function resolvePositioningShorthand(value: PositioningShorthand | undefined): PositioningProps {
-  if (!value) {
-    return {};
+  if (align === ALIGNMENTS.center) {
+    return position;
   }
 
-  if (typeof value !== 'string') {
-    return {
-      ...value,
-      position: value.position !== undefined ? normalizePosition(value.position) : undefined,
-      align: value.align !== undefined ? normalizeAlign(value.align) : undefined,
-    };
+  if (position === POSITIONS.before || position === POSITIONS.after) {
+    return `${position}-${align === ALIGNMENTS.start ? 'top' : 'bottom'}`;
   }
 
-  const dash = value.indexOf('-');
-
-  if (dash === -1) {
-    return { position: normalizePosition(value) };
-  }
-
-  return {
-    position: normalizePosition(value.slice(0, dash)),
-    align: normalizeAlign(value.slice(dash + 1)),
-  };
+  return `${position}-${align}`;
 }
 
 export function shorthandToPositionArea(shorthand: PositioningShorthandValue): string {

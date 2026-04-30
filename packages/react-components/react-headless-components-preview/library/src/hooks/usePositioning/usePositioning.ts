@@ -3,11 +3,18 @@
 import * as React from 'react';
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type { PositioningImperativeRef, PositioningProps, PositioningReturn } from './types';
+import type {
+  PositioningImperativeRef,
+  PositioningProps,
+  PositioningVirtualElement,
+} from '@fluentui/react-positioning';
+import type { PositioningReturn } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
+
+export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
 
@@ -46,8 +53,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
     () => ({
-      setTarget: (el: HTMLElement | null) => {
-        setImperativeTarget(el);
+      setTarget: (el: TargetElement | null) => {
+        setImperativeTarget(resolveElementRef(el));
       },
       updatePosition: () => undefined,
     }),

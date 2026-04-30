@@ -4,10 +4,16 @@
 
 ```ts
 
+import type { Alignment } from '@fluentui/react-positioning';
+import type { Position } from '@fluentui/react-positioning';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
+import type { PositioningProps } from '@fluentui/react-positioning';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 
-// @public (undocumented)
-export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
+export { Alignment }
 
 // @public (undocumented)
 export const ALIGNMENTS: {
@@ -19,31 +25,11 @@ export const ALIGNMENTS: {
 // @public
 export function getPlacementString(position: Position, align: LogicalAlignment): string;
 
-// @public (undocumented)
-export type Position = 'above' | 'below' | 'before' | 'after';
+export { Position }
 
-// @public
-export type PositioningImperativeRef = {
-    setTarget: (target: HTMLElement | null) => void;
-    updatePosition: () => void;
-};
+export { PositioningImperativeRef }
 
-// @public (undocumented)
-export type PositioningProps = {
-    position?: Position;
-    align?: Alignment;
-    offset?: number | {
-        mainAxis?: number;
-        crossAxis?: number;
-    };
-    fallbackPositions?: PositioningShorthandValue[];
-    coverTarget?: boolean;
-    target?: HTMLElement | React_2.RefObject<HTMLElement | null> | null;
-    strategy?: 'absolute' | 'fixed';
-    matchTargetSize?: 'width';
-    pinned?: boolean;
-    positioningRef?: React_2.Ref<PositioningImperativeRef>;
-};
+export { PositioningProps }
 
 // @public (undocumented)
 export type PositioningReturn = {
@@ -51,11 +37,9 @@ export type PositioningReturn = {
     containerRef: React_2.RefCallback<HTMLElement>;
 };
 
-// @public (undocumented)
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+export { PositioningShorthand }
 
-// @public (undocumented)
-export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-start' | 'before-end' | 'after' | 'after-start' | 'after-end';
+export { PositioningShorthandValue }
 
 // @public (undocumented)
 export const POSITIONS: {
@@ -65,8 +49,7 @@ export const POSITIONS: {
     readonly after: "after";
 };
 
-// @public
-export function resolvePositioningShorthand(value: PositioningShorthand | undefined): PositioningProps;
+export { resolvePositioningShorthand }
 
 // @public (undocumented)
 export function usePositioning(options: PositioningProps): PositioningReturn;

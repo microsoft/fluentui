@@ -1,12 +1,12 @@
 export { usePositioning } from './usePositioning';
 export { getPlacementString, resolvePositioningShorthand } from './utils';
 export { POSITIONS, ALIGNMENTS } from './constants';
+export type { PositioningReturn } from './types';
 export type {
-  Position,
   Alignment,
-  PositioningProps,
-  PositioningReturn,
+  Position,
   PositioningImperativeRef,
+  PositioningProps,
   PositioningShorthand,
   PositioningShorthandValue,
-} from './types';
+} from '@fluentui/react-positioning';

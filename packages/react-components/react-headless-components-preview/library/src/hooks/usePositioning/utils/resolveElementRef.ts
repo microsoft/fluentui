@@ -1,15 +1,15 @@
-import type * as React from 'react';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 
 /**
- * Normalizes an `HTMLElement | RefObject | null | undefined` to a plain
- * element (or null). Safe across realms — checks for the `current` property
- * rather than doing `instanceof HTMLElement`.
+ * Narrows a `TargetElement` (HTMLElement or virtual) to an `HTMLElement`. CSS
+ * anchor positioning requires a real DOM node to write `anchor-name` onto, so
+ * virtual elements are not supported and resolve to `null`.
  */
 export function resolveElementRef(
-  source: HTMLElement | React.RefObject<HTMLElement | null> | null | undefined,
+  source: HTMLElement | PositioningVirtualElement | null | undefined,
 ): HTMLElement | null {
   if (!source) {
     return null;
   }
-  return 'current' in source ? source.current : source;
+  return 'nodeType' in source ? (source as HTMLElement) : null;
 }

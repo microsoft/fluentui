@@ -2,7 +2,8 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
-import type { PositioningProps, PositioningReturn } from './types';
+import type { PositioningProps } from '@fluentui/react-positioning';
+import type { PositioningReturn } from './types';
 
 function mountHook(options: PositioningProps = {}) {
   const resultRef = React.createRef<{ current: PositioningReturn }>();
@@ -144,7 +145,7 @@ describe('getPlacementString', () => {
   it('returns position-align for non-center alignments', () => {
     expect(getPlacementString('above', 'start')).toBe('above-start');
     expect(getPlacementString('below', 'end')).toBe('below-end');
-    expect(getPlacementString('before', 'start')).toBe('before-start');
-    expect(getPlacementString('after', 'end')).toBe('after-end');
+    expect(getPlacementString('before', 'start')).toBe('before-top');
+    expect(getPlacementString('after', 'end')).toBe('after-bottom');
   });
 });

@@ -1,4 +1,5 @@
-import type { LogicalAlignment, Position } from './types';
+import type { Position } from '@fluentui/react-positioning';
+import type { LogicalAlignment } from './types';
 
 export const GAP = 8;
 
