@@ -20,17 +20,13 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const setOpen = usePopoverContext(context => context.setOpen);
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const withArrow = usePopoverContext(context => context.withArrow);
-  const inline = usePopoverContext(context => context.inline);
   const open = usePopoverContext(context => context.open);
-  const mountNode = usePopoverContext(context => context.mountNode);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
 
   const state: PopoverSurfaceState = {
-    inline,
     withArrow,
     arrowRef,
-    mountNode,
     components: { root: 'div' },
     root: slot.always(
       {

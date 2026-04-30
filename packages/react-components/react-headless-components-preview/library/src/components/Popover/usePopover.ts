@@ -21,14 +21,7 @@ type ToggleEvent = Event & { newState?: 'open' | 'closed' };
  *
  */
 export const usePopover = (props: PopoverProps): PopoverState => {
-  const {
-    openOnHover = false,
-    openOnContext = false,
-    mouseLeaveDelay = 500,
-    withArrow = false,
-    inline = false,
-    mountNode,
-  } = props;
+  const { openOnHover = false, openOnContext = false, mouseLeaveDelay = 500, withArrow = false } = props;
 
   const [open, setOpenState] = useControllableState({
     state: props.open,
@@ -97,7 +90,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   React.useEffect(() => {
     const surface = contentRef.current;
 
-    if (!surface || inline || !open) {
+    if (!surface || !open) {
       return;
     }
 
@@ -115,7 +108,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
     surface.addEventListener('toggle', onSurfaceToggle);
     return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, inline, contentRef, onSurfaceToggle]);
+  }, [open, contentRef, onSurfaceToggle]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -153,8 +146,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnHover,
     openOnContext,
     withArrow,
-    inline,
-    mountNode,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
@@ -174,8 +165,6 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     openOnHover,
     openOnContext,
     withArrow,
-    inline,
-    mountNode,
     positioning,
     surfaceId,
   } = state;
@@ -191,8 +180,6 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnHover,
       openOnContext,
       withArrow,
-      inline,
-      mountNode,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,

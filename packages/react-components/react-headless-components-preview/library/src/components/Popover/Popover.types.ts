@@ -70,27 +70,13 @@ export type PopoverProps = {
    * @default false
    */
   withArrow?: boolean;
-
-  /**
-   * Render inline instead of using native popover top-layer.
-   * @default false
-   */
-  inline?: boolean;
-
-  /**
-   * DOM node where the `PopoverSurface` is rendered. When provided, the surface is
-   * portaled to that node; when omitted, the surface renders in place in the
-   * component tree. The native HTML popover top layer still handles visual
-   * elevation, so this controls DOM placement rather than stacking.
-   */
-  mountNode?: HTMLElement | null;
 };
 
 /**
  * Popover State
  */
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> &
-  Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow' | 'mountNode'> & {
+export type PopoverState = Required<Pick<PopoverProps, 'open'>> &
+  Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React.RefObject<HTMLElement | null>;
@@ -118,8 +104,6 @@ export type PopoverContextValue = Pick<
   | 'openOnHover'
   | 'openOnContext'
   | 'withArrow'
-  | 'inline'
-  | 'mountNode'
   | 'surfaceId'
 > & {
   positioning: {

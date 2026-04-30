@@ -190,34 +190,6 @@ describe('Popover', () => {
     });
   });
 
-  describe('with inline prop', () => {
-    it('should render PopoverSurface in DOM order', () => {
-      mount(
-        <>
-          <div>
-            <Popover inline>
-              <PopoverTrigger disableButtonEnhancement>
-                <button>Popover trigger</button>
-              </PopoverTrigger>
-              <PopoverSurface>This is a Popover</PopoverSurface>
-            </Popover>
-          </div>
-          <div>Outside content</div>
-        </>,
-      );
-
-      cy.get(popoverTriggerSelector)
-        .click()
-        .get(popoverContentSelector)
-        .prev()
-        .then(popoverSurfacePrev => {
-          cy.get(popoverTriggerSelector).then(popoverTrigger => {
-            expect(popoverTrigger[0]).eq(popoverSurfacePrev[0]);
-          });
-        });
-    });
-  });
-
   describe('Focus restoration', () => {
     it('should restore focus to trigger on close', () => {
       mount(
@@ -313,31 +285,6 @@ describe('Popover', () => {
       cy.get('[data-testid=trigger]').rightclick();
       cy.get('[data-testid=surface]').should('be.visible');
       cy.realPress('Escape');
-      cy.focused().should('have.attr', 'data-testid', 'trigger');
-    });
-
-    it.skip('inline: should restore focus to trigger on close', () => {
-      // not supported with pure native: inline popovers bypass top-layer / spec entirely
-      const Example = () => {
-        const [open, setOpen] = React.useState(false);
-        return (
-          <>
-            <Popover inline open={open} onOpenChange={(_, data) => setOpen(data.open)}>
-              <PopoverTrigger disableButtonEnhancement>
-                <button data-testid="trigger">Trigger</button>
-              </PopoverTrigger>
-              <PopoverSurface data-testid="surface">Content</PopoverSurface>
-            </Popover>
-            <button data-testid="close" onClick={() => setOpen(false)}>
-              Close
-            </button>
-          </>
-        );
-      };
-      mount(<Example />);
-      cy.get('[data-testid=trigger]').focus().realPress('Enter');
-      cy.get('[data-testid=surface]').should('be.visible');
-      cy.get('[data-testid=close]').click();
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
   });

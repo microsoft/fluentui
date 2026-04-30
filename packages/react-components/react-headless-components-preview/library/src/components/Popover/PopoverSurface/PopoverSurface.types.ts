@@ -11,9 +11,7 @@ export type PopoverSurfaceSlots = {
 export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
-  inline: boolean;
   withArrow: boolean | undefined;
   arrowRef: React.RefObject<HTMLDivElement | null>;
-  mountNode: HTMLElement | null | undefined;
   'data-open': string;
 };

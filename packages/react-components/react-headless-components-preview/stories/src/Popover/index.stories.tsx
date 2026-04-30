@@ -13,7 +13,6 @@ export { WithoutTrigger } from './PopoverWithoutTrigger.stories';
 export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
 export { Nested } from './PopoverNested.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
-export { Inline } from './PopoverInline.stories';
 
 export default {
   title: 'Headless Components/Popover',

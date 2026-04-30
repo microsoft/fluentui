@@ -18,8 +18,6 @@ const popoverContextDefaultValue: PopoverContextValue = {
   openOnContext: false,
   openOnHover: false,
   withArrow: false,
-  inline: false,
-  mountNode: null,
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,

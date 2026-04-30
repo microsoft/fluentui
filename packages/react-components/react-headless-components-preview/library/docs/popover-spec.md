@@ -2,7 +2,7 @@
 
 ## Overview
 
-Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface can elevate into the browser's **top layer** via the native HTML Popover API, or render inline in DOM order when `inline={true}`. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
+Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface elevates into the browser's **top layer** via the native HTML Popover API. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
 
 Popover lets the browser manage dismissal: the surface is rendered with `popover="auto"`, so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React; close paths defer to the browser. Focus trapping is deferred to a later iteration — the surface is currently a non-modal `role="group"`.
 
@@ -33,8 +33,6 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 | `mouseLeaveDelay` | `number` (ms)                                               | `500`       | Delay before closing when hover leaves, giving the user time to move into the surface.                                       |
 | `openOnContext`   | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
 | `withArrow`       | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
-| `inline`          | `boolean`                                                   | `false`     | Render the surface in DOM order (no top-layer elevation, no `popover` attribute, no browser light dismiss).                  |
-| `mountNode`       | `HTMLElement \| null`                                       | `null`      | Optional portal target for the surface. When omitted, the surface renders in place (top layer if not `inline`).              |
 | `positioning`     | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
 
 ### `PopoverTrigger`
@@ -53,14 +51,14 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 ## States
 
-| State              | Trigger                                                                                                                                    | Behaviour                                                                                                                                                                                                                           | ARIA                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **Closed**         | Initial, or after dismissal                                                                                                                | Surface unmounted. Trigger has `aria-expanded="false"`, no `data-open`.                                                                                                                                                             | `aria-expanded="false"` on trigger.                                                     |
-| **Open**           | `open={true}` / click / keyboard activation / hover / right-click (depending on props)                                                     | Surface mounted. In non-`inline` mode it's promoted into the top layer via `showPopover()` (feature-detected). `data-placement` reflects the requested placement; `usePlacementObserver` overwrites it with the resolved placement. | `aria-expanded="true"`, `data-open` on trigger; `role="group"`, `data-open` on surface. |
-| **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                                                                        | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                                        | Same as Open.                                                                           |
-| **Context-pinned** | `openOnContext` + right-click                                                                                                              | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                                                      | Same as Open.                                                                           |
-| **Dismissing**     | Browser-driven: Escape, click-outside, popover-stack peer dismissal. Plus React-driven hover-leave (`openOnHover`) and programmatic close. | `toggle` event on the surface mirrors the browser's decision into React; `onOpenChange(e, { open: false, type })` fires with the originating event.                                                                                 | `aria-expanded` returns to `"false"` on trigger.                                        |
-| **Nested**         | Popover rendered inside another Popover's surface                                                                                          | Each instance manages its own Escape / click-outside. Escape filters via `e.target.closest('[data-popover-surface]') === ownSurface` — no `stopPropagation`, no cross-popover coupling.                                             | Each surface keeps its own `role="group"`.                                              |
+| State              | Trigger                                                                                                                                    | Behaviour                                                                                                                                                                                                    | ARIA                                                                                    |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| **Closed**         | Initial, or after dismissal                                                                                                                | Surface unmounted. Trigger has `aria-expanded="false"`, no `data-open`.                                                                                                                                      | `aria-expanded="false"` on trigger.                                                     |
+| **Open**           | `open={true}` / click / keyboard activation / hover / right-click (depending on props)                                                     | Surface mounted and promoted into the top layer via `showPopover()` (feature-detected). `data-placement` reflects the requested placement; `usePlacementObserver` overwrites it with the resolved placement. | `aria-expanded="true"`, `data-open` on trigger; `role="group"`, `data-open` on surface. |
+| **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                                                                        | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                 | Same as Open.                                                                           |
+| **Context-pinned** | `openOnContext` + right-click                                                                                                              | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                               | Same as Open.                                                                           |
+| **Dismissing**     | Browser-driven: Escape, click-outside, popover-stack peer dismissal. Plus React-driven hover-leave (`openOnHover`) and programmatic close. | `toggle` event on the surface mirrors the browser's decision into React; `onOpenChange(e, { open: false, type })` fires with the originating event.                                                          | `aria-expanded` returns to `"false"` on trigger.                                        |
+| **Nested**         | Popover rendered inside another Popover's surface                                                                                          | Each instance manages its own Escape / click-outside. Escape filters via `e.target.closest('[data-popover-surface]') === ownSurface` — no `stopPropagation`, no cross-popover coupling.                      | Each surface keeps its own `role="group"`.                                              |
 
 ## Keyboard Navigation
 
@@ -103,22 +101,13 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
   // click / keydown / context / hover handlers merged onto the cloned child
 />
 
-// Surface (inline mode)
-<div
-  id={surfaceId}
-  role="group"
-  data-popover-surface=""
-  data-placement="below-start"   // requested placement; live-updated by observer
-  data-open="true"
-/>
-
-// Surface (top layer mode — non-inline, default)
+// Surface (top layer)
 <div
   id={surfaceId}
   popover="auto"
   role="group"
   data-popover-surface=""
-  data-placement="below-start"
+  data-placement="below-start"   // requested placement; live-updated by observer
   data-open="true"
 />
 ```
@@ -312,15 +301,14 @@ Positioning uses CSS _logical_ properties throughout (`block-start`, `block-end`
 The package relies on three native browser APIs:
 
 - **CSS Anchor Positioning** (Chromium 125+) — `anchor-name`, `position-anchor`, `position-area`, `anchor-size()`, `position-try-fallbacks`.
-- **HTML Popover API** (Chromium 114+) — `popover="auto"` + `showPopover()` + the `toggle` event for top-layer elevation, light dismiss, and state mirroring. Feature-detected (`typeof el.showPopover === 'function'`); SSR-safe; `inline={true}` opts out entirely.
+- **HTML Popover API** (Chromium 114+) — `popover="auto"` + `showPopover()` + the `toggle` event for top-layer elevation, light dismiss, and state mirroring. Feature-detected (`typeof el.showPopover === 'function'`); SSR-safe.
 - **ResizeObserver** — used sparingly by `usePlacementObserver` (for live `data-placement`)
 
-Firefox and Safari are implementing CSS Anchor Positioning; most features work but flip behaviour is still WIP. `inline={true}` works in every engine.
+Firefox and Safari are implementing CSS Anchor Positioning; most features work but flip behaviour is still WIP.
 
 ## Notes
 
 - **Auto mode is the only mode**: the surface always renders with `popover="auto"`, so the browser owns light dismiss and the popover-stack semantics. There is no manual-mode escape hatch — consumers that need React-driven dismiss timing or multiple unrelated popovers open at once should not use this component (or should fork the dismiss layer).
-- **Top layer vs inline**: by default the surface is promoted to the top layer via `showPopover()`, which escapes `overflow: hidden` and `z-index` stacking contexts. Set `inline={true}` for scenarios where the surface must stay within a containing block (containerized demos, `contain: layout` ancestors). Inline mode also opts out of the native `popover` attribute, so the browser's light dismiss does _not_ apply.
 - **Nested popovers**: nesting is JSX-nesting. The browser's popover-stack treats the inner trigger's DOM descendancy of the outer surface as the ancestor signal — Escape closes only the topmost popover, click-outside dismisses the chain.
 - **Hover-to-open**: `openOnHover` opens on `mouseenter` of the trigger and _stays_ open while the pointer is over the surface. Closing waits `mouseLeaveDelay` ms; this is the one close path that is React-driven (it unmounts the surface, which implicitly closes the native popover).
 - **Context popovers**: when `openOnContext={true}`, the mouse event's `clientX` / `clientY` are stored as `contextTarget` state — available to consumers via the popover context if they want to anchor the surface at the cursor position instead of on the trigger.

@@ -4,29 +4,6 @@ import { Popover } from '../Popover';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface';
 
-beforeAll(() => {
-  HTMLElement.prototype.showPopover = jest.fn();
-  HTMLElement.prototype.hidePopover = jest.fn();
-
-  global.ResizeObserver = class ResizeObserver {
-    public observe(): void {
-      /* no-op */
-    }
-    public unobserve(): void {
-      /* no-op */
-    }
-    public disconnect(): void {
-      /* no-op */
-    }
-  } as unknown as typeof globalThis.ResizeObserver;
-});
-
-afterAll(() => {
-  delete (HTMLElement.prototype as unknown as Record<string, unknown>).showPopover;
-  delete (HTMLElement.prototype as unknown as Record<string, unknown>).hidePopover;
-  delete (global as unknown as Record<string, unknown>).ResizeObserver;
-});
-
 describe('PopoverSurface', () => {
   it('renders surface content', () => {
     const { getByText } = render(
@@ -78,19 +55,6 @@ describe('PopoverSurface', () => {
     );
 
     expect(getByRole('group')).toHaveAttribute('popover', 'auto');
-  });
-
-  it('does not have popover attribute when inline', () => {
-    const { getByRole } = render(
-      <Popover defaultOpen inline>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Content</PopoverSurface>
-      </Popover>,
-    );
-
-    expect(getByRole('group')).not.toHaveAttribute('popover');
   });
 
   it('mirrors a browser-driven `toggle` event into onOpenChange', () => {

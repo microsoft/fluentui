@@ -29,7 +29,7 @@ export const Popover: {
 };
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'inline' | 'mountNode' | 'surfaceId'> & {
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId'> & {
     positioning: {
         targetRef: React_2.RefCallback<HTMLElement>;
         containerRef: React_2.RefCallback<HTMLElement>;
@@ -47,12 +47,10 @@ export type PopoverProps = {
     mouseLeaveDelay?: number;
     positioning?: PositioningShorthand;
     withArrow?: boolean;
-    inline?: boolean;
-    mountNode?: HTMLElement | null;
 };
 
 // @public
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inline'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow' | 'mountNode'> & {
+export type PopoverState = Required<Pick<PopoverProps, 'open'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.RefObject<HTMLElement | null>;
@@ -85,10 +83,8 @@ export type PopoverSurfaceSlots = {
 
 // @public (undocumented)
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
-    inline: boolean;
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
-    mountNode: HTMLElement | null | undefined;
     'data-open': string;
 };
 
@@ -111,7 +107,7 @@ export const renderPopover: (state: PopoverState, contextValues: {
     popover: PopoverContextValue;
 }) => React_2.ReactElement;
 
-// @public
+// @public (undocumented)
 export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;
 
 // @public

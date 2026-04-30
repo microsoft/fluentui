@@ -5,30 +5,6 @@ import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 
-beforeAll(() => {
-  HTMLElement.prototype.showPopover = jest.fn();
-  HTMLElement.prototype.hidePopover = jest.fn();
-
-  // JSDOM does not implement ResizeObserver
-  global.ResizeObserver = class ResizeObserver {
-    public observe(): void {
-      /* no-op */
-    }
-    public unobserve(): void {
-      /* no-op */
-    }
-    public disconnect(): void {
-      /* no-op */
-    }
-  } as unknown as typeof globalThis.ResizeObserver;
-});
-
-afterAll(() => {
-  delete (HTMLElement.prototype as unknown as Record<string, unknown>).showPopover;
-  delete (HTMLElement.prototype as unknown as Record<string, unknown>).hidePopover;
-  delete (global as unknown as Record<string, unknown>).ResizeObserver;
-});
-
 describe('Popover', () => {
   it('renders trigger and surface children', () => {
     const { getByText } = render(
@@ -205,18 +181,5 @@ describe('Popover', () => {
     );
 
     expect(getByRole('group')).toHaveAttribute('popover', 'auto');
-  });
-
-  it('does not set popover attribute when inline', () => {
-    const { getByRole } = render(
-      <Popover defaultOpen inline>
-        <PopoverTrigger>
-          <button>Trigger</button>
-        </PopoverTrigger>
-        <PopoverSurface>Surface</PopoverSurface>
-      </Popover>,
-    );
-
-    expect(getByRole('group')).not.toHaveAttribute('popover');
   });
 });
