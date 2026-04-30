@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-compiler-analyzer",
   "version": "0.0.0",
-  "private": true,
   "type": "commonjs",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
