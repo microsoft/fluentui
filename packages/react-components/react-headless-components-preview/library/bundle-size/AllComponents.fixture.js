@@ -3,6 +3,7 @@ import * as Avatar from '@fluentui/react-headless-components-preview/avatar';
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
+import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
@@ -33,6 +34,7 @@ console.log({
   Badge,
   Breadcrumb,
   Button,
+  Card,
   Checkbox,
   Dialog,
   Divider,
