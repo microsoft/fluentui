@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 01 May 2026 04:08:47 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.15",
+      "version": "3.0.0-rc.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7dfa6a36eb39d998dff0c627f83e1ac728c8020c",
+            "comment": "fix: remove unnecessary id property mappings in accordion-item"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "86cf4cbebfc9517e2373ce8077674bbcaf3ce7da",
+            "comment": "fix: remove errant preventDefault causing element interactions to be blocked inside drawer"
+          }
+        ],
+        "none": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "233e02d989fd22ba25b73affdf2012019f71f9ad",
+            "comment": " chore: fixing package bump issue to latest published version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Apr 2026 19:07:13 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.14",
       "version": "3.0.0-rc.14",
