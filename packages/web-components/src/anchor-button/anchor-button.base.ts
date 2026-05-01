@@ -171,11 +171,13 @@ export class BaseAnchor extends FASTElement {
    * @internal
    */
   public clickHandler(e: PointerEvent): boolean {
+    if (e.composedPath()[0] === this.internalProxyAnchor) {
+      e.stopImmediatePropagation();
+      return true;
+    }
+
     if (this.href) {
       const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
-      if (newTab) {
-        e.preventDefault();
-      }
       this.handleNavigation(newTab);
     }
 
@@ -203,7 +205,7 @@ export class BaseAnchor extends FASTElement {
 
   /**
    * Handles navigation based on input
-   * If the metaKey is pressed, opens the href in a new window, if false, uses the click on the proxy
+   * If a modified activation requests a new tab, opens the href in a new window.
    * @internal
    */
   private handleNavigation(newTab: boolean): void {
