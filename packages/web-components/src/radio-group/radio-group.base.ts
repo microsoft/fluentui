@@ -1,5 +1,6 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import {
+  findLastIndex,
   keyArrowDown,
   keyArrowLeft,
   keyArrowRight,
@@ -163,7 +164,7 @@ export class BaseRadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    const checkedIndex = this.enabledRadios.findLastIndex(x => x.initialChecked);
+    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
 
     next.forEach((radio, index) => {
       radio.ariaPosInSet = `${index + 1}`;
