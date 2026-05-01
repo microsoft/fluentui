@@ -15,9 +15,13 @@ export const renderInlineDrawer_unstable = (state: InlineDrawerState, contextVal
 
   return (
     <DrawerProvider value={contextValue}>
-      <state.surfaceMotion>
+      {state.surfaceMotion ? (
+        <state.surfaceMotion>
+          <state.root />
+        </state.surfaceMotion>
+      ) : (
         <state.root />
-      </state.surfaceMotion>
+      )}
     </DrawerProvider>
   );
 };

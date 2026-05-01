@@ -6,6 +6,7 @@ import * as Button from '@fluentui/react-headless-components-preview/button';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
+import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
 import * as Field from '@fluentui/react-headless-components-preview/field';
 import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Link from '@fluentui/react-headless-components-preview/link';
@@ -36,6 +37,7 @@ console.log({
   Checkbox,
   Dialog,
   Divider,
+  Drawer,
   Field,
   Input,
   Link,

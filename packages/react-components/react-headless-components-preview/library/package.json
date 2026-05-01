@@ -19,13 +19,17 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-accordion": "^9.11.0",
+    "@fluentui/react-aria": "^9.17.10",
+    "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-avatar": "^9.11.1",
     "@fluentui/react-badge": "^9.5.2",
     "@fluentui/react-button": "^9.9.1",
     "@fluentui/react-breadcrumb": "^9.4.1",
+    "@fluentui/react-card": "^9.6.1",
     "@fluentui/react-checkbox": "^9.6.1",
     "@fluentui/react-dialog": "^9.18.0",
     "@fluentui/react-divider": "^9.7.1",
+    "@fluentui/react-drawer": "^9.12.0",
     "@fluentui/react-field": "^9.5.1",
     "@fluentui/react-image": "^9.4.1",
     "@fluentui/react-input": "^9.8.2",
@@ -33,7 +37,9 @@
     "@fluentui/react-link": "^9.8.1",
     "@fluentui/react-message-bar": "^9.7.0",
     "@fluentui/react-persona": "^9.7.3",
+    "@fluentui/react-popover": "^9.14.2",
     "@fluentui/react-portal": "^9.8.12",
+    "@fluentui/react-positioning": "^9.22.1",
     "@fluentui/react-progress": "^9.5.1",
     "@fluentui/react-provider": "^9.22.16",
     "@fluentui/react-radio": "^9.6.2",
@@ -41,6 +47,7 @@
     "@fluentui/react-search": "^9.4.2",
     "@fluentui/react-select": "^9.5.1",
     "@fluentui/react-shared-contexts": "^9.26.2",
+    "@fluentui/react-context-selector": "^9.2.15",
     "@fluentui/react-skeleton": "^9.7.2",
     "@fluentui/react-slider": "^9.6.2",
     "@fluentui/react-spinbutton": "^9.6.2",
@@ -90,6 +97,12 @@
       "import": "./lib/button.js",
       "require": "./lib-commonjs/button.js"
     },
+    "./card": {
+      "types": "./dist/card.d.ts",
+      "node": "./lib-commonjs/card.js",
+      "import": "./lib/card.js",
+      "require": "./lib-commonjs/card.js"
+    },
     "./checkbox": {
       "types": "./dist/checkbox.d.ts",
       "node": "./lib-commonjs/checkbox.js",
@@ -107,6 +120,12 @@
       "node": "./lib-commonjs/divider.js",
       "import": "./lib/divider.js",
       "require": "./lib-commonjs/divider.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer.d.ts",
+      "node": "./lib-commonjs/drawer.js",
+      "import": "./lib/drawer.js",
+      "require": "./lib-commonjs/drawer.js"
     },
     "./field": {
       "types": "./dist/field.d.ts",
@@ -131,6 +150,18 @@
       "node": "./lib-commonjs/message-bar.js",
       "import": "./lib/message-bar.js",
       "require": "./lib-commonjs/message-bar.js"
+    },
+    "./popover": {
+      "types": "./dist/popover.d.ts",
+      "node": "./lib-commonjs/popover.js",
+      "import": "./lib/popover.js",
+      "require": "./lib-commonjs/popover.js"
+    },
+    "./positioning": {
+      "types": "./dist/positioning.d.ts",
+      "node": "./lib-commonjs/positioning.js",
+      "import": "./lib/positioning.js",
+      "require": "./lib-commonjs/positioning.js"
     },
     "./progress-bar": {
       "types": "./dist/progress-bar.d.ts",

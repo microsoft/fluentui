@@ -11,6 +11,8 @@ export type InlineDrawerSlots = {
   surfaceMotion?: Slot<SurfaceMotionSlotProps>;
 };
 
+export type InlineDrawerBaseSlots = Omit<InlineDrawerSlots, 'surfaceMotion'>;
+
 /**
  * InlineDrawer Props
  */
@@ -24,6 +26,8 @@ export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> &
     separator?: boolean;
   };
 
+export type InlineDrawerBaseProps = ComponentProps<InlineDrawerBaseSlots> & Omit<DrawerBaseProps, 'size'>;
+
 /**
  * State used in rendering InlineDrawer
  */
@@ -33,4 +37,8 @@ export type InlineDrawerState = Required<
     Pick<InlineDrawerProps, 'separator'> & {
       animationDirection: PresenceDirection;
     }
+>;
+
+export type InlineDrawerBaseState = Required<
+  ComponentState<InlineDrawerBaseSlots> & Omit<DrawerBaseState, 'size' | 'motion'>
 >;
