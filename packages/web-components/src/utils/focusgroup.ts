@@ -41,7 +41,7 @@ export class ArrayItemCollection<T extends HTMLElement> implements FocusGroupIte
     }
   }
 
-  contains(element: HTMLElement): boolean {
-    return (this.getItems() as readonly HTMLElement[]).includes(element);
+  contains(element: Element): boolean {
+    return (this.getItems() as readonly Element[]).includes(element);
   }
 }
