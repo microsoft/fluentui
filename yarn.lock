@@ -2699,11 +2699,6 @@
   dependencies:
     exenv-es6 "^1.1.1"
 
-"@microsoft/focusgroup-polyfill@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/focusgroup-polyfill/-/focusgroup-polyfill-1.2.1.tgz#a46f4fb52d3d510816816bb9455c5d68db9eff5e"
-  integrity sha512-A0l7SeXgulSfGcjrouxwmC2CPUberpxduyD6nwjKBEEf+Bu+JeGgsGsGkRp2IKniyZQthFAC5gYCnbg/guiidg==
-
 "@microsoft/focusgroup-polyfill@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@microsoft/focusgroup-polyfill/-/focusgroup-polyfill-1.3.0.tgz#12a4e9abac1b7736ca7c4f59c923a45713a8c274"

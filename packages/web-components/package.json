@@ -95,7 +95,7 @@
   },
   "peerDependencies": {
     "@microsoft/fast-element": "^2.0.0",
-    "@microsoft/focusgroup-polyfill": "^1.2.1"
+    "@microsoft/focusgroup-polyfill": "^1.3.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
