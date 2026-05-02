@@ -12,8 +12,9 @@ const useStyles = makeStyles({
     gap: '16px',
   },
   card: {
-    width: '400px',
-    maxWidth: '100%',
+    maxWidth: '400px',
+    minWidth: '230px',
+    width: '100%',
   },
 });
 
@@ -60,7 +61,7 @@ export const Disabled = (): JSXElement => {
     <div className={styles.container}>
       <div>
         <h3>Default Card</h3>
-        <div style={{ display: 'flex', gap: '16px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
           <Card className={styles.card}>
             <CardContentExample />
           </Card>
@@ -73,7 +74,7 @@ export const Disabled = (): JSXElement => {
 
       <div>
         <h3>Interactive Card</h3>
-        <div style={{ display: 'flex', gap: '16px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
           <Card className={styles.card} onClick={() => alert('Card clicked')}>
             <CardContentExample />
           </Card>
@@ -87,7 +88,7 @@ export const Disabled = (): JSXElement => {
       <div>
         <h3>Selectable Card</h3>
         <div style={{ display: 'flex', flexDirection: 'column', rowGap: '16px' }}>
-          <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
             <Card
               className={styles.card}
               selected={isSelected1}
@@ -100,7 +101,7 @@ export const Disabled = (): JSXElement => {
             </Card>
           </div>
 
-          <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
             <Card
               className={styles.card}
               selected={isSelected2}
@@ -118,7 +119,7 @@ export const Disabled = (): JSXElement => {
 
       <div>
         <h3>Outline Card</h3>
-        <div style={{ display: 'flex', gap: '16px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
           <Card className={styles.card} appearance="outline">
             <CardContentExample />
           </Card>
