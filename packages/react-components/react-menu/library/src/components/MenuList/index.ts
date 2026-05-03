@@ -2,8 +2,6 @@ export { MenuList } from './MenuList';
 export type {
   MenuCheckedValueChangeData,
   MenuCheckedValueChangeEvent,
-  MenuListBaseProps,
-  MenuListBaseState,
   MenuListContextValues,
   MenuListProps,
   MenuListSlots,

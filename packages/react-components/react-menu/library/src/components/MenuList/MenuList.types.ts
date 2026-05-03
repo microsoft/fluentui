@@ -71,16 +71,6 @@ export type MenuListState = ComponentState<MenuListSlots> &
     hasMenuContext?: boolean;
   };
 
-/**
- * MenuListBase Props - omits design-related props (`hasIcons`, `hasCheckmarks`).
- */
-export type MenuListBaseProps = Omit<MenuListProps, 'hasIcons' | 'hasCheckmarks'>;
-
-/**
- * MenuListBase State - omits design-related state (`hasIcons`, `hasCheckmarks`).
- */
-export type MenuListBaseState = Omit<MenuListState, 'hasIcons' | 'hasCheckmarks'>;
-
 export type MenuListContextValues = {
   menuList: MenuListContextValue;
 };

@@ -1,8 +1,6 @@
 export type {
   MenuCheckedValueChangeData,
   MenuCheckedValueChangeEvent,
-  MenuListBaseProps,
-  MenuListBaseState,
   MenuListContextValues,
   MenuListProps,
   MenuListSlots,

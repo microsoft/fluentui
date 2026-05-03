@@ -18,7 +18,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
-import type { MenuListBaseProps, MenuListBaseState, MenuListProps, MenuListState } from './MenuList.types';
+import type { MenuListProps, MenuListState } from './MenuList.types';
 import { useValidateNesting } from '../../utils/useValidateNesting';
 
 const MENU_ITEM_ROLES = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
@@ -55,7 +55,8 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
 
   React.useEffect(() => {
     const element = wrapperRef.current;
-    if (!targetDocument || !element) {
+
+    if (!hasMenuContext || !targetDocument || !element) {
       return;
     }
 
@@ -71,7 +72,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     return () => {
       targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
     };
-  }, [targetDocument]);
+  }, [hasMenuContext, targetDocument]);
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
@@ -90,32 +91,32 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   return {
     ...baseState,
     root: {
-      ...baseState.root,
       ...focusAttributes,
+      ...baseState.root,
       ref: mergedRootRef,
     },
     setFocusByFirstCharacter,
-    hasIcons: menuContext.hasIcons || false,
-    hasCheckmarks: menuContext.hasCheckmarks || false,
   };
 };
 
 /**
  * Base hook for MenuList component, produces state required to render the component.
  *
- * Tabster-free: this hook does not import from `@fluentui/react-tabster` and does
- * not couple consumers to Tabster's runtime. It drops the design-related slot
- * alignment hints (`hasIcons`, `hasCheckmarks`), the arrow-key navigation
- * data-attributes, the `TabsterMoveFocusEvent` listener that coordinates Tab
- * key handling with `useMenuPopover_unstable`, and uses a native DOM walker
- * for `setFocusByFirstCharacter`.
+ * Does not invoke any Tabster APIs internally: arrow-key navigation and the
+ * focus-aware `setFocusByFirstCharacter` are added by the wrapper
+ * `useMenuList_unstable`. The base's `setFocusByFirstCharacter` walks the DOM
+ * via `querySelectorAll` and does not filter by Tabster's focusability rules,
+ * so consumers integrating their own focus management should layer that on top.
  *
- * @internal
+ * @param props - props from this instance of MenuList
+ * @param ref - reference to root HTMLElement of MenuList
  */
-export const useMenuListBase_unstable = (props: MenuListBaseProps, ref: React.Ref<HTMLElement>): MenuListBaseState => {
+export const useMenuListBase_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const checkedValuesContext = useMenuContext_unstable(context => context.checkedValues);
   const onCheckedValueChangeContext = useMenuContext_unstable(context => context.onCheckedValueChange);
+  const hasIconsContext = useMenuContext_unstable(context => context.hasIcons);
+  const hasCheckmarksContext = useMenuContext_unstable(context => context.hasCheckmarks);
   const hasMenuContext = useHasParentContext(MenuContext);
 
   const innerRef = React.useRef<HTMLElement>(null);
@@ -176,6 +177,8 @@ export const useMenuListBase_unstable = (props: MenuListBaseProps, ref: React.Re
       { elementType: 'div' },
     ),
     checkedValues,
+    hasIcons: props.hasIcons ?? hasIconsContext ?? false,
+    hasCheckmarks: props.hasCheckmarks ?? hasCheckmarksContext ?? false,
     hasMenuContext,
     setFocusByFirstCharacter,
     selectRadio,

@@ -6,8 +6,16 @@ export type { MenuGroupContextValue } from './contexts/menuGroupContext';
 export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
 export type { MenuListContextValue } from './contexts/menuListContext';
 
-export { Menu, renderMenu_unstable, useMenuContextValues_unstable, useMenu_unstable } from './Menu';
+export {
+  Menu,
+  renderMenu_unstable,
+  useMenuBase_unstable,
+  useMenuContextValues_unstable,
+  useMenu_unstable,
+} from './Menu';
 export type {
+  MenuBaseProps,
+  MenuBaseState,
   MenuContextValues,
   MenuOpenChangeData,
   MenuOpenEvent,
@@ -47,6 +55,7 @@ export {
   MenuItem,
   menuItemClassNames,
   renderMenuItem_unstable,
+  useMenuItemBase_unstable,
   useMenuItemStyles_unstable,
   useMenuItem_unstable,
 } from './MenuItem';
@@ -55,6 +64,7 @@ export {
   MenuItemCheckbox,
   menuItemCheckboxClassNames,
   renderMenuItemCheckbox_unstable,
+  useMenuItemCheckboxBase_unstable,
   useMenuItemCheckboxStyles_unstable,
   useMenuItemCheckbox_unstable,
 } from './MenuItemCheckbox';
@@ -63,14 +73,21 @@ export {
   MenuItemRadio,
   menuItemRadioClassNames,
   renderMenuItemRadio_unstable,
+  useMenuItemRadioBase_unstable,
   useMenuItemRadioStyles_unstable,
   useMenuItemRadio_unstable,
 } from './MenuItemRadio';
-export type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio';
+export type {
+  MenuItemRadioBaseProps,
+  MenuItemRadioBaseState,
+  MenuItemRadioProps,
+  MenuItemRadioState,
+} from './MenuItemRadio';
 export {
   MenuList,
   menuListClassNames,
   renderMenuList_unstable,
+  useMenuListBase_unstable,
   useMenuListContextValues_unstable,
   useMenuListStyles_unstable,
   useMenuList_unstable,
@@ -90,6 +107,7 @@ export {
   MenuPopover,
   menuPopoverClassNames,
   renderMenuPopover_unstable,
+  useMenuPopoverBase_unstable,
   useMenuPopoverStyles_unstable,
   useMenuPopover_unstable,
 } from './MenuPopover';
@@ -112,6 +130,7 @@ export {
   MenuItemLink,
   menuItemLinkClassNames,
   renderMenuItemLink_unstable,
+  useMenuItemLinkBase_unstable,
   useMenuItemLinkStyles_unstable,
   useMenuItemLink_unstable,
 } from './MenuItemLink';
@@ -120,20 +139,11 @@ export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './
 export { MENU_ENTER_EVENT, dispatchMenuEnterEvent, useOnMenuMouseEnter } from './utils';
 export {
   MenuItemSwitch,
-  useMenuItemSwitch_unstable,
-  useMenuItemSwitchStyles_unstable,
-  renderMenuItemSwitch_unstable,
   menuItemSwitchClassNames,
+  renderMenuItemSwitch_unstable,
+  useMenuItemSwitchBase_unstable,
+  useMenuItemSwitchStyles_unstable,
+  useMenuItemSwitch_unstable,
 } from './MenuItemSwitch';
 
-export type { MenuItemSwitchProps, MenuItemSwitchState, MenuItemSwitchSlots } from './MenuItemSwitch';
-
-// Experimental: Base hooks - will be enabled in the experimental release branch
-// export { useMenuBase_unstable } from './Menu';
-// export { useMenuItemBase_unstable } from './MenuItem';
-// export { useMenuItemCheckboxBase_unstable } from './MenuItemCheckbox';
-// export { useMenuItemLinkBase_unstable } from './MenuItemLink';
-// export { useMenuItemRadioBase_unstable } from './MenuItemRadio';
-// export { useMenuItemSwitchBase_unstable } from './MenuItemSwitch';
-// export { useMenuListBase_unstable } from './MenuList';
-// export { useMenuPopoverBase_unstable } from './MenuPopover';
+export type { MenuItemSwitchProps, MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch';

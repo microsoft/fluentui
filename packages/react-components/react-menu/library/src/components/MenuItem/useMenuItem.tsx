@@ -48,8 +48,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
 /**
  * Base hook for MenuItem component, produces state required to render the component.
  * It doesn't set any design-related props specific to MenuItem such as submenu indicator icon.
- *
- * @internal
  */
 export const useMenuItemBase_unstable = (
   props: MenuItemProps,

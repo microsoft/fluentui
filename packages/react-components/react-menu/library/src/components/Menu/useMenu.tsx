@@ -57,14 +57,15 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
-  const baseState = useMenuBase_unstable(props);
+  const { surfaceMotion, ...baseProps } = props;
+  const baseState = useMenuBase_unstable(baseProps);
 
   return {
     ...baseState,
     components: {
       surfaceMotion: MenuSurfaceMotion,
     },
-    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+    surfaceMotion: presenceMotionSlot(surfaceMotion, {
       elementType: MenuSurfaceMotion,
       defaultProps: {
         visible: baseState.open,
@@ -79,7 +80,7 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
  * Base hook for Menu component, produces state required to render the component.
  * It doesn't set any design-related slots specific to Menu such as `surfaceMotion`.
  *
- * @internal
+ * @param props - props from this instance of Menu
  */
 export const useMenuBase_unstable = (
   props: MenuBaseProps & { safeZone?: boolean | { timeout?: number } },
@@ -224,7 +225,6 @@ export const useMenuBase_unstable = (
     mountNode,
     triggerRef,
     menuPopoverRef,
-    components: {},
     openOnContext,
     open,
     setOpen,
