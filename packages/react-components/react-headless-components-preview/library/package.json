@@ -52,6 +52,7 @@
     "@fluentui/react-tags": "^9.8.1",
     "@fluentui/react-textarea": "^9.7.2",
     "@fluentui/react-toolbar": "^9.8.0",
+    "@fluentui/react-toast": "^9.7.17",
     "@fluentui/react-utilities": "^9.26.3",
     "@swc/helpers": "^0.5.1"
   },
@@ -229,6 +230,12 @@
       "node": "./lib-commonjs/textarea.js",
       "import": "./lib/textarea.js",
       "require": "./lib-commonjs/textarea.js"
+    },
+    "./toast": {
+      "types": "./dist/toast.d.ts",
+      "node": "./lib-commonjs/toast.js",
+      "import": "./lib/toast.js",
+      "require": "./lib-commonjs/toast.js"
     },
     "./toggle-button": {
       "types": "./dist/toggle-button.d.ts",
