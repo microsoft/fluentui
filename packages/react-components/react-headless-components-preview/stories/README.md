@@ -4,8 +4,8 @@ Storybook stories for [`@fluentui/react-headless-components-preview`](../library
 
 These stories double as the visual reference for the "Design system" design language: the
 headless components stay unstyled in `library/`, all visual concerns live in CSS
-Modules under `theme/` at the repo root, and the stories pull both together.
-`theme/tokens.css` is imported once in `.storybook/preview.js` and defines
+Modules, and the stories pull both together.
+`.storybook/tokens.css` is imported once in `.storybook/preview.js` and defines
 `:root` (light) and `[data-theme="dark"]` (dark) CSS variables for every story.
 
 ## Usage
@@ -36,14 +36,13 @@ For each new component:
 1. Create the headless component under `library/src/components/<Name>/` (out of
    scope for this guide).
 2. Add a CSS Module at `stories/src/<Component>/<name>.module.css` driven entirely by
-   `var(--…)` from `theme/tokens.css`. **Do not hardcode colors, sizes, or
+   `var(--…)` from `.storybook/tokens.css`. **Do not hardcode colors, sizes, or
    typography.**
 3. Add a stories folder at `stories/src/<Name>/` containing:
    - `<Name>Description.md` — short MDX-friendly markdown component description.
    - `<Name>Default.stories.tsx` (and any extra variant `*.stories.tsx`).
-   - `index.stories.tsx` — meta export with `title`, `component`, and the
-     `withCssModuleSource(...)` spread that registers the CSS Module source
-     (see §3).
+   - `index.stories.tsx` — meta export with `title`, `component`, and docs
+     description (see §3).
 
 The component itself stays unstyled in `library/`. All visual concerns live in
 the CSS Module, and stories pull both together.
@@ -58,38 +57,22 @@ import styles from './my-component.module.css';
 export const Default = (): React.ReactNode => <MyComponent className={styles.root} />;
 ```
 
-Notes:
-
-- The `../../../../../../` reaches the repo root from
-  `stories/src/<Name>/<File>.tsx`. The webpack rule that handles `*.module.css`
-  is registered both in the docsite (`apps/public-docsite-v9-headless/.storybook/main.js`)
-  and in this package's per-package storybook
-  (`stories/.storybook/main.js`). If you add the file outside `theme/` make sure
-  the rule's `include` list covers it.
-- No inline styles, no Tailwind, no Griffel. Tokens come from `theme/tokens.css`.
-- Every CSS value must resolve through a `var(--…)` token — search the diff
-  for raw `#` and `rgb(` to confirm.
+- No inline styles, no Tailwind, no Griffel. Tokens come from `.storybook/tokens.css`.
+- Every CSS value must resolve through a `var(--…)` token.
 
 ### 3 · Show code wiring (`index.stories.tsx`)
 
-Two pieces feed the docsite's tabbed "Show code" panel:
+The docsite's "Show code" panel is fully automatic — no manual wiring needed:
 
-- **Story TSX** is injected automatically. `@fluentui/babel-preset-storybook-full-source`
-  reads each `*.stories.tsx` file at build time and writes
-  `Story.parameters.docs.source.code` / `originalSource` for every story
-  export. Story files don't need to import their own source via `?raw` or
-  call any helper — just author the component as usual.
-- **CSS Module source** is registered at the meta level via the
-  `withCssModuleSource` helper (`stories/src/_helpers/withCssModuleSource.ts`).
-  Spread its return into `parameters` so the docsite picks up the modules and
-  the Stackblitz sandbox bundles them under `src/styles/`:
+- **Story TSX** and **CSS Module sources** are injected at build time by
+  `@fluentui/babel-preset-storybook-full-source`. Just `import` your
+  `*.module.css` file and the plugin handles the rest.
 
 ```tsx
 import { MyComponent } from '@fluentui/react-headless-components-preview/my-component';
 
 import descriptionMd from './MyComponentDescription.md';
-import myComponentCss from './my-component.module.css?raw';
-import { withCssModuleSource } from '../_helpers/withCssModuleSource';
+import classes from './my-component.module.css';
 
 export { Default } from './MyComponentDefault.stories';
 
@@ -100,25 +83,13 @@ export default {
     docs: {
       description: { component: descriptionMd },
     },
-    ...withCssModuleSource({ name: 'my-component.module.css', source: myComponentCss }),
   },
 };
 ```
 
-If a story uses multiple modules (e.g. `Field` stories nest `Input`), pass them
-all to `withCssModuleSource` in render order:
-
-```ts
-...withCssModuleSource(
-  { name: 'field.module.css', source: fieldCss },
-  { name: 'input.module.css', source: inputCss },
-),
-```
-
-The `?raw` suffix is webpack's "asset/source" — Storybook 9's
-`@storybook/builder-webpack5` ships the rule out of the box. The ambient TS
-declaration for `*?raw` is scoped to this package via
-`stories/src/_helpers/raw.d.ts`.
+If a story uses multiple CSS modules (e.g. `Field` stories nest `Input`), just
+import them all — the Babel plugin collects every `*.module.css` import it
+finds.
 
 ### 4 · Token tiers
 
@@ -137,7 +108,7 @@ declaration for `*?raw` is scoped to this package via
 | Type      | `--font-sans` (Segoe UI), `--font-mono`, `--font-display`                              |
 | Motion    | `--ease-standard`, `--ease-emphasized`, `--duration-fast/medium/slow`                  |
 
-Read the file directly when in doubt: `theme/tokens.css`.
+Read the file directly when in doubt: `.storybook/tokens.css`.
 
 ### 5 · Visual language conventions
 
@@ -198,18 +169,16 @@ These are the things that took time to discover. Keep them in mind:
 
 ### 8 · Where things live
 
-| Path                                                                 | Purpose                                                             |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `theme/tokens.css`                                                   | CSS custom properties, light + dark. Imported once in `preview.js`. |
-| `stories/src/<Component>/<name>.module.css`                          | Per-component scoped styles.                                        |
-| `stories/src/<Name>/<Name>Default.stories.tsx`                       | Default story body using CSS Module classes.                        |
-| `stories/src/<Name>/<Name>Description.md`                            | Component description shown in the Docs panel.                      |
-| `stories/src/<Name>/index.stories.tsx`                               | Meta + `parameters.docs.source.transform` wiring.                   |
-| `stories/src/_helpers/withCssModuleSource.ts`                        | Registers CSS Module source for the docs page + Stackblitz sandbox. |
-| `stories/src/_helpers/raw.d.ts`                                      | Ambient `*?raw` declaration, scoped to this package.                |
-| `stories/.storybook/css-modules-webpack.js`                          | Source-of-truth webpack wiring for `*.module.css` + `?raw`.         |
-| `stories/.storybook/main.js`                                         | Per-package storybook (consumes the shared webpack module).         |
-| `apps/public-docsite-v9-headless/.storybook/main.js`                 | Deployed docsite config (also consumes the shared webpack module).  |
-| `apps/public-docsite-v9-headless/.storybook/HeadlessDocsPage.tsx`    | Custom docs page wired into the docsite's `parameters.docs.page`.   |
-| `apps/public-docsite-v9-headless/.storybook/HeadlessSourcePanel.tsx` | Tabbed "Show code" panel (TSX + each referenced CSS Module).        |
-| `typings/static-assets/index.d.ts`                                   | Ambient `*.module.css` declaration (workspace-wide).                |
+| Path                                                 | Purpose                                                             |
+| ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `.storybook/tokens.css`                              | CSS custom properties, light + dark. Imported once in `preview.js`. |
+| `stories/src/<Component>/<name>.module.css`          | Per-component scoped styles.                                        |
+| `stories/src/<Name>/<Name>Default.stories.tsx`       | Default story body using CSS Module classes.                        |
+| `stories/src/<Name>/<Name>Description.md`            | Component description shown in the Docs panel.                      |
+| `stories/src/<Name>/index.stories.tsx`               | Meta + component docs description.                                  |
+| `stories/.storybook/css-modules-webpack.js`          | Source-of-truth webpack wiring for `*.module.css`.                  |
+| `stories/.storybook/main.js`                         | Per-package storybook (consumes the shared webpack module).         |
+| `stories/.storybook/HeadlessDocsPage.tsx`            | Custom docs page wired into `parameters.docs.page`.                 |
+| `stories/.storybook/HeadlessSourcePanel.tsx`         | Tabbed "Show code" panel (TSX + each referenced CSS Module).        |
+| `apps/public-docsite-v9-headless/.storybook/main.js` | Deployed docsite config (re-exports from the stories storybook).    |
+| `typings/static-assets/index.d.ts`                   | Ambient `*.module.css` declaration (workspace-wide).                |

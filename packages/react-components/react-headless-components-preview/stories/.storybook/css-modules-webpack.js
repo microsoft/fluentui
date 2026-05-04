@@ -1,90 +1,54 @@
 /**
- * Shared CSS-Modules + `?raw` webpack wiring for the headless stories.
+ * Enables CSS Modules with debuggable class names in a Storybook webpack config.
  *
- * Source of truth lives here (in the stories package). The app at
- * `apps/public-docsite-v9-headless/.storybook/main.js` consumes it via require.
+ * css-loader v5+ auto-detects `*.module.css` files via `modules.auto: true` (its default).
+ * This helper finds Storybook's built-in `\.css$` rule and sets a human-readable `localIdentName`.
  *
- * Storybook's `@storybook/builder-webpack5` ships a default `\.css$` rule that
- * pipes any CSS through `style-loader` + plain `css-loader`. That handles
- * `theme/tokens.css` correctly. For `*.module.css` files (the per-component
- * design-system styles) we want CSS Modules, so we narrow the default rule to
- * skip `.module.css` and add a dedicated rule that turns on `modules: true`.
- *
- * `?raw` imports must go through Storybook's built-in `resourceQuery:/raw/`
- * asset/source rule. We mark our CSS-Modules rule (and any default rule that
- * would otherwise re-process `?raw` imports) with `resourceQuery: { not: [/raw/] }`
- * so the asset/source rule wins.
+ * @param {{ config: import('webpack').Configuration }} options
  */
-const path = require('path');
-
-const RAW_QUERY_NOT = { not: [/raw/] };
-
-/**
- * @param {{ tokensDir: string; headlessStoriesDir: string }} options
- */
-function createCssModuleRule({ tokensDir, headlessStoriesDir }) {
-  return {
-    test: /\.module\.css$/,
-    include: [tokensDir, headlessStoriesDir],
-    resourceQuery: RAW_QUERY_NOT,
-    use: [
-      'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          modules: { localIdentName: '[name]__[local]--[hash:base64:5]' },
-          importLoaders: 0,
-        },
-      },
-    ],
+function registerCssModuleRules({ config }) {
+  /**
+   * @param {string} detail
+   * @returns {never}
+   */
+  const fail = detail => {
+    throw new Error(
+      `registerCssModuleRules: ${detail}. Storybook's internal webpack config may have changed — please update this helper.`,
+    );
   };
-}
 
-/**
- * Mutates rule entries in place:
- *   1. Storybook's default `\.css$` rule gets a `\.module\.css$` exclude.
- *   2. Any rule whose test matches `.css`/`.tsx?` and has no `resourceQuery`
- *      filter is told to skip `?raw` queries — including `.stories.tsx?` shapes
- *      so the export-order-loader and the @fluentui export-to-sandbox addon
- *      don't re-process raw imports.
- *
- * @param {any[]} rules
- */
-function patchRules(rules) {
+  const rules = config.module?.rules ?? [];
+
   for (const rule of rules) {
     if (!rule || typeof rule !== 'object') continue;
-    const test = rule.test;
-    const isRegExp = test instanceof RegExp;
-    const matchesPlainCss = isRegExp && test.source === /\.css$/.source;
-    if (matchesPlainCss) {
-      const existing = rule.exclude;
-      const moduleRegex = /\.module\.css$/;
-      if (Array.isArray(existing)) {
-        rule.exclude = [...existing, moduleRegex];
-      } else if (existing) {
-        rule.exclude = [existing, moduleRegex];
-      } else {
-        rule.exclude = moduleRegex;
-      }
+    if (!(rule.test instanceof RegExp) || rule.test.source !== /\.css$/.source) continue;
+
+    const loaders = Array.isArray(rule.use) ? rule.use : [];
+    const cssLoaderEntry = loaders.find(
+      entry =>
+        typeof entry === 'object' &&
+        entry !== null &&
+        'loader' in entry &&
+        /\bcss-loader\b/.test(/** @type {string} */ (entry.loader)),
+    );
+
+    if (!cssLoaderEntry || typeof cssLoaderEntry !== 'object' || !('options' in cssLoaderEntry)) {
+      fail('found the .css$ rule but it no longer contains a css-loader entry');
     }
-    const matchesCssOrTs =
-      isRegExp &&
-      (test.test('a.css') ||
-        test.test('a.tsx') ||
-        test.test('a.ts') ||
-        test.test('a.stories.tsx') ||
-        test.test('a.stories.ts'));
-    if (matchesCssOrTs && rule.resourceQuery == null) {
-      rule.resourceQuery = RAW_QUERY_NOT;
-    }
+
+    /** @type {{ options?: string | Record<string, unknown> }} */
+    const loader = cssLoaderEntry;
+
+    loader.options = {
+      ...(typeof loader.options === 'object' ? loader.options : {}),
+      modules: { auto: true, localIdentName: '[name]__[local]--[hash:base64:5]' },
+    };
+    return;
   }
-  return rules;
+
+  fail('could not find the default .css$ webpack rule');
 }
 
-const STORIES_PACKAGE_ROOT = path.resolve(__dirname, '..');
-
 module.exports = {
-  STORIES_PACKAGE_ROOT,
-  createCssModuleRule,
-  patchRules,
+  registerCssModuleRules,
 };

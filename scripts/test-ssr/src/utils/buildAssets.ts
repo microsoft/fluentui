@@ -1,7 +1,7 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
 
-import { cssModulesShimPlugin, rawQueryPlugin, tsConfigPathsPlugin } from './esbuild-plugin';
+import { cssModulesShimPlugin, tsConfigPathsPlugin } from './esbuild-plugin';
 
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 
@@ -30,7 +30,7 @@ type BuildConfig = {
 export async function buildAssets(config: BuildConfig): Promise<void> {
   const { chromeVersion, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile, distDirectory } = config;
 
-  const plugins = [tsConfigPathsPlugin({ cwd: distDirectory }), rawQueryPlugin(), cssModulesShimPlugin()];
+  const plugins = [tsConfigPathsPlugin({ cwd: distDirectory }), cssModulesShimPlugin()];
 
   try {
     // Used for SSR rendering, see renderToHTML.js

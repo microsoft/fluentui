@@ -1,9 +1,6 @@
 import { Rating, RatingItem } from '@fluentui/react-headless-components-preview/rating';
 
 import descriptionMd from './RatingDescription.md';
-import ratingCss from './rating.module.css?raw';
-import { withCssModuleSource } from '../_helpers/withCssModuleSource';
-
 export { Default } from './RatingDefault.stories';
 
 export default {
@@ -16,7 +13,5 @@ export default {
         component: descriptionMd,
       },
     },
-
-    ...withCssModuleSource({ name: 'rating.module.css', source: ratingCss }),
   },
 };

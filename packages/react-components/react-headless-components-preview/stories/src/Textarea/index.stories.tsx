@@ -1,9 +1,6 @@
 import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 import descriptionMd from './TextareaDescription.md';
-import textareaCss from './textarea.module.css?raw';
-import { withCssModuleSource } from '../_helpers/withCssModuleSource';
-
 export { Default } from './TextareaDefault.stories';
 
 export default {
@@ -15,7 +12,5 @@ export default {
         component: descriptionMd,
       },
     },
-
-    ...withCssModuleSource({ name: 'textarea.module.css', source: textareaCss }),
   },
 };

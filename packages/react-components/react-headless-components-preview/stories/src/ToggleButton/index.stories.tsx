@@ -1,9 +1,6 @@
 import { ToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 
 import descriptionMd from './ToggleButtonDescription.md';
-import toggleButtonCss from './toggle-button.module.css?raw';
-import { withCssModuleSource } from '../_helpers/withCssModuleSource';
-
 export { Default } from './ToggleButtonDefault.stories';
 
 export default {
@@ -15,7 +12,5 @@ export default {
         component: descriptionMd,
       },
     },
-
-    ...withCssModuleSource({ name: 'toggle-button.module.css', source: toggleButtonCss }),
   },
 };

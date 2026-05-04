@@ -36,10 +36,3 @@ export const ButtonAppearance = () =>
 ButtonAppearance.parameters = {};
 ButtonAppearance.parameters.fullSource =
   'import * as React from "react";\n\nexport const ButtonAppearance = () => (\n  <>\n    <Button>Default button</Button>\n    <Button appearance="primary">Primary button</Button>\n    <Button appearance="outline">Outline button</Button>\n    <Button appearance="subtle">Subtle button</Button>\n    <Button appearance="transparent">Transparent button</Button>\n  </>\n);\n';
-ButtonAppearance.parameters.docs = Object.assign({}, ButtonAppearance.parameters.docs, {
-  source: Object.assign({}, ButtonAppearance.parameters.docs && ButtonAppearance.parameters.docs.source, {
-    code: 'import * as React from \'react\';\n\nexport const ButtonAppearance = () => (\n  <>\n    <Button>Default button</Button>\n    <Button appearance="primary">Primary button</Button>\n    <Button appearance="outline">Outline button</Button>\n    <Button appearance="subtle">Subtle button</Button>\n    <Button appearance="transparent">Transparent button</Button>\n  </>\n);\n',
-    originalSource:
-      'import * as React from \'react\';\n\nexport const ButtonAppearance = () => (\n  <>\n    <Button>Default button</Button>\n    <Button appearance="primary">Primary button</Button>\n    <Button appearance="outline">Outline button</Button>\n    <Button appearance="subtle">Subtle button</Button>\n    <Button appearance="transparent">Transparent button</Button>\n  </>\n);\n',
-  }),
-});

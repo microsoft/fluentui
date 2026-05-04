@@ -13,32 +13,35 @@
  * while still showing the multi-language tabbed panel below the canvas card.
  *
  * Wired up by `HeadlessDocsPage`. The story's TSX comes from
- * `parameters.docs.source.originalSource` (set via `withStorySource`); the CSS
- * comes from `parameters.theme.cssModules` (set via `withCssModuleSource`).
+ * `parameters.fullSource` (injected by the babel-preset-storybook-full-source
+ * plugin at build time); the CSS comes from `parameters.cssModuleSources.cssModules` (also auto-detected
+ * by the same babel plugin from `*.module.css` imports).
  *
- * Lives in the docsite app (not the stories package) — see PR #36073 review
- * thread. Styled via Storybook's `styled` (emotion) so the panel inherits the
+ * Styled via Storybook's `styled` (emotion) so the panel inherits the
  * active SB theme tokens and stays consistent with the rest of the docs chrome.
  */
 /* eslint-disable @nx/workspace-no-restricted-globals -- Storybook docs block running in the manager iframe; uses DOM APIs to bridge to the native Canvas toggle that lives outside React. */
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 
-// Storybook's docs blocks live behind a deep import. The `useSourceProps` hook
-// resolves the Source block's effective `code`/`language` for a story (honoring
-// `parameters.docs.source.transform`, `originalSource`, etc).
-import { DocsContext, SourceContext, useOf, useSourceProps } from '@storybook/addon-docs/blocks';
+// Storybook's docs blocks live behind a deep import.
+import { useOf } from '@storybook/addon-docs/blocks';
 // `SyntaxHighlighter` is part of Storybook's internal UI kit and already
 // matches the rest of the docs chrome — reusing it keeps the panel visually
 // consistent with everything else Storybook renders.
 import { SyntaxHighlighter } from 'storybook/internal/components';
 import { styled } from 'storybook/theming';
 
-import type {
-  CssModule,
-  HeadlessSourceParameters,
-  // eslint-disable-next-line @nx/enforce-module-boundaries -- relative import: stories package authoring helpers are colocated source, not a public npm dependency
-} from '../../../packages/react-components/react-headless-components-preview/stories/src/_helpers/withCssModuleSource';
+/** A CSS Module file surfaced as a tab in the "Show code" panel. */
+interface CssModule {
+  name: string;
+  source: string;
+}
+
+/** Shape consumed via `story.parameters.cssModuleSources`. */
+interface HeadlessSourceParameters {
+  cssModules?: CssModule[];
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyProps = Record<string, any>;
@@ -204,21 +207,16 @@ function useCanvasPortalTarget(storyId: string): HTMLElement | null {
 
 export const HeadlessSourcePanel: React.FC<HeadlessSourcePanelProps> = ({ of }) => {
   const { story } = useOf(of || 'story', ['story']) as { story: AnyProps };
-  const docsContext = React.useContext(DocsContext);
-  const sourceContext = React.useContext(SourceContext);
-  // `useSourceProps` returns the code that Storybook's built-in Source block
-  // would have rendered. Pulling from it (rather than reading raw `?raw`
-  // imports ourselves) keeps `withStorySource` / `originalSource` semantics
-  // intact and follows whatever transform a story sets.
-  const sourceProps = useSourceProps({ of }, docsContext, sourceContext) as AnyProps;
   const expanded = useNativeToggleState(story.id);
   const portalTarget = useCanvasPortalTarget(story.id);
   const [activeTabId, setActiveTabId] = React.useState<string>('story-tsx');
 
-  const tsxCode: string = typeof sourceProps.code === 'string' ? sourceProps.code : '';
+  // `fullSource` is injected at build time by `babel-preset-storybook-full-source`.
+  // It already contains cleaned imports (CSS module paths rewritten to `./styles/…`).
+  const tsxCode: string = typeof story.parameters?.fullSource === 'string' ? story.parameters.fullSource : '';
   const tsxLanguage = 'tsx' as const;
   const allCssModules: CssModule[] =
-    (story.parameters?.theme as HeadlessSourceParameters | undefined)?.cssModules ?? [];
+    (story.parameters?.cssModuleSources as HeadlessSourceParameters | undefined)?.cssModules ?? [];
 
   // The meta typically registers every CSS module a component touches across
   // all stories so the Stackblitz sandbox can bundle them. For the per-story

@@ -1,9 +1,6 @@
 import { Slider } from '@fluentui/react-headless-components-preview/slider';
 
 import descriptionMd from './SliderDescription.md';
-import sliderCss from './slider.module.css?raw';
-import { withCssModuleSource } from '../_helpers/withCssModuleSource';
-
 export { Default } from './SliderDefault.stories';
 
 export default {
@@ -15,7 +12,5 @@ export default {
         component: descriptionMd,
       },
     },
-
-    ...withCssModuleSource({ name: 'slider.module.css', source: sliderCss }),
   },
 };

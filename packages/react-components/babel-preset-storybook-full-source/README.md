@@ -19,7 +19,7 @@ To use this Babel preset, add it to your Babel configuration:
 - **Removes Storybook specific assignments**: Avoids issues with undefined stories and unnecessary clutter.
 - **Collects and modifies import declarations**: Ensures valid single-file code examples.
 - **Adds the `context.parameters.fullSource` property**: post-processed, single-file source for the "Open in Sandbox" flow.
-- **Adds `context.parameters.docs.source.code` / `originalSource`**: the cleaned raw file contents (with colocated `*.module.css` paths rewritten to the `./styles/<basename>` layout used by the Stackblitz sandbox), so Storybook's "Show code" panel and any custom docs page render the file the author wrote without per-story plumbing.
+- **CSS module support** (opt-in via `cssModules` option): when enabled, reads `*.module.css` files from disk and injects `context.parameters.cssModuleSources` with `{ cssModules, tokensSource }` entries for the sandbox addon and docs panel. Set `cssModules: true` to enable, or `cssModules: { tokensFilePath: '...' }` to also inject a tokens CSS file as `tokensSource`.
 
 ## Note
 

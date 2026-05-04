@@ -1,9 +1,6 @@
 import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 
 import descriptionMd from './SpinnerDescription.md';
-import spinnerCss from './spinner.module.css?raw';
-import { withCssModuleSource } from '../_helpers/withCssModuleSource';
-
 export { Default } from './SpinnerDefault.stories';
 export { Labels } from './SpinnerLabels.stories';
 
@@ -16,7 +13,5 @@ export default {
         component: descriptionMd,
       },
     },
-
-    ...withCssModuleSource({ name: 'spinner.module.css', source: spinnerCss }),
   },
 };

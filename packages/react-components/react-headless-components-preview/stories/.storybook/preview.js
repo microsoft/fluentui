@@ -2,10 +2,13 @@ import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowles
 
 import * as rootPreview from '../../../../../.storybook/preview';
 
-// Design tokens — mirrors the import in
-// apps/public-docsite-v9-headless/.storybook/preview.js so the per-package
-// storybook (built by `pr-website-deploy.yml`) renders identical stories.
-import '../theme/tokens.css';
+// Design tokens — loaded once for every story. Defines :root (light) and
+// [data-theme="dark"] CSS custom properties consumed by all *.module.css files.
+import './tokens.css';
+
+// Custom docs page chrome and the tabbed source panel for CSS modules
+import './headless-docs-page.css';
+import { HeadlessDocsPage } from './HeadlessDocsPage';
 
 polyfillBodyAndObserve();
 
@@ -15,6 +18,10 @@ export const decorators = [...rootPreview.decorators];
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {
   ...rootPreview.parameters,
+  docs: {
+    ...rootPreview.parameters.docs,
+    page: HeadlessDocsPage,
+  },
 };
 
 export const tags = ['autodocs'];

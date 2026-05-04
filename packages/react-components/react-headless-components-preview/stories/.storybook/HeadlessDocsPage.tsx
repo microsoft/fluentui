@@ -9,8 +9,6 @@
  * mirrors `packages/react-components/react-storybook-addon/src/docs/FluentDocsPage.tsx`
  * so the page matches what's deployed at storybooks.fluentui.dev/headless.
  *
- * Wired in by `.storybook/preview.js` via `parameters.docs.page`. Lives in the
- * docsite app (not the stories package) — see PR #36073 review thread.
  */
 import * as React from 'react';
 
@@ -26,9 +24,6 @@ import {
 } from '@storybook/addon-docs/blocks';
 
 import { HeadlessSourcePanel } from './HeadlessSourcePanel';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyStory = Record<string, any>;
 
 const dividerStyle: React.CSSProperties = {
   height: 1,
@@ -76,23 +71,8 @@ const disclaimerNoteStyle: React.CSSProperties = {
 };
 
 export const HeadlessDocsPage: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const docsContext = React.useContext(DocsContext) as any;
-  let stories: AnyStory[] = docsContext.componentStories();
-
-  // Mirrors the filtering rules from Storybook's built-in `<Stories>` block:
-  // honor a project-level `parameters.docs.stories.filter`, and when any
-  // story is `autodocs`-tagged, restrict to those (skipping `usesMount`
-  // stories which can't render inline).
-  const filter = docsContext.projectAnnotations?.parameters?.docs?.stories?.filter as
-    | ((s: AnyStory, ctx: AnyStory) => boolean)
-    | undefined;
-  if (filter) {
-    stories = stories.filter(story => filter(story, docsContext.getStoryContext(story)));
-  }
-  if (stories.some(story => story.tags?.includes('autodocs'))) {
-    stories = stories.filter(story => story.tags?.includes('autodocs') && !story.usesMount);
-  }
+  const docsContext = React.useContext(DocsContext);
+  const stories = docsContext.componentStories();
 
   const primaryStory = stories[0];
   const remainingStories = stories.slice(1);

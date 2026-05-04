@@ -1,29 +1,10 @@
-import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
+import * as headlessPreview from '../../../packages/react-components/react-headless-components-preview/stories/.storybook/preview';
 
-import * as rootPreview from '../../../.storybook/preview';
+export const decorators = [...headlessPreview.decorators];
 
-// Design tokens (light + dark CSS custom properties on :root and
-// [data-theme="dark"]), plus a few base resets for body/html. Loaded once
-// for every story rendered in this Storybook.
-import '../../../packages/react-components/react-headless-components-preview/stories/theme/tokens.css';
-
-// Custom docs page chrome (disclaimer card, divider, headings) and the
-// docs-page wiring rules that let HeadlessSourcePanel portal into the canvas card.
-import './headless-docs-page.css';
-import { HeadlessDocsPage } from './HeadlessDocsPage';
-
-polyfillBodyAndObserve();
-
-/** @type {typeof rootPreview.decorators} */
-export const decorators = [...rootPreview.decorators];
-
-/** @type {typeof rootPreview.parameters} */
+/** @type {typeof headlessPreview.parameters} */
 export const parameters = {
-  ...rootPreview.parameters,
-  docs: {
-    ...rootPreview.parameters.docs,
-    page: HeadlessDocsPage,
-  },
+  ...headlessPreview.parameters,
   options: {
     storySort: {
       method: 'alphabetical',

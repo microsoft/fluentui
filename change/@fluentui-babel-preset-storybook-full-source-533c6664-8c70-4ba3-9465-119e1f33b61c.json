@@ -1,7 +1,7 @@
 {
-  "type": "none",
-  "comment": "chore: auto-inject parameters.docs.source.code/originalSource for stories (consumers no longer need to wire withStorySource)",
+  "type": "patch",
+  "comment": "feat: add css-modules support as opt in via 'cssModules' config",
   "packageName": "@fluentui/babel-preset-storybook-full-source",
-  "email": "tudor.popa@microsoft.com",
-  "dependentChangeType": "none"
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
 }
