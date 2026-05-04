@@ -140,14 +140,25 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       return;
     }
 
-    if (!el.hasAttribute('popover')) {
-      el.setAttribute('popover', 'manual');
-    }
+    try {
+      if (visible) {
+        el.showPopover();
+      } else if (el.matches(':popover-open')) {
+        el.hidePopover();
+      }
+    } catch (error) {
+      el.toggleAttribute('hidden', !visible);
 
-    if (visible) {
-      el.showPopover();
-    } else if (el.matches(':popover-open')) {
-      el.hidePopover();
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.warn(
+          [
+            'Popover API is not supported in this browser, and the tooltip will not work correctly.',
+            'Please include a popover polyfill for better browser support.',
+          ].join(' '),
+          { error },
+        );
+      }
     }
   }, [contentRef, visible]);
 
