@@ -9,6 +9,13 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   position: relative;
+  /*
+    Clip children to the card's rounded shape — without this, the preview's
+    negative margins push its square top corners past the rounded card border
+    on selected/disabled variants. Border + box-shadow render outside the
+    overflow box and stay intact.
+  */
+  overflow: hidden;
 }
 
 .card:focus-visible {
