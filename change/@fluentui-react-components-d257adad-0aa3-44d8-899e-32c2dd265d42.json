@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: re-export motionSlot and presenceMotionSlot from @fluentui/react-motion",
+  "packageName": "@fluentui/react-components",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,4 +1,4 @@
-import { Link } from '@fluentui/react-headless-components-preview';
+import { Link } from '@fluentui/react-headless-components-preview/link';
 
 import descriptionMd from './LinkDescription.md';
 

@@ -6,7 +6,7 @@ import {
   ToolbarGroup,
   ToolbarRadioGroup,
   ToolbarToggleButton,
-} from '@fluentui/react-headless-components-preview';
+} from '@fluentui/react-headless-components-preview/toolbar';
 import {
   CutRegular,
   CopyRegular,

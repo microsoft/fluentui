@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-headless-components-preview';
+import { Button } from '@fluentui/react-headless-components-preview/button';
 
 const classes = {
   button:

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Badge } from '@fluentui/react-headless-components-preview';
+import { Badge } from '@fluentui/react-headless-components-preview/badge';
 
 export const Default = (): React.ReactNode => (
   <div className="flex items-center gap-3 flex-wrap">
