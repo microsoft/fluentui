@@ -84,7 +84,7 @@ export class BaseMenuList extends FASTElement {
    * @public
    */
   public focus(): void {
-    this.menuChildren?.find(item => isMenuItem(item) && !item.disabled)?.focus();
+    this.menuItems?.find(item => !item.disabled)?.focus();
   }
 
   private static elementIndent(el: HTMLElement): MenuItemColumnCount {
