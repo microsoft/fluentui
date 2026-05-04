@@ -77,6 +77,17 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     state.root.className,
   );
 
+  // For levels beyond the statically generated classes (> 10), fall back to an
+  // inline style that sets the indentation CSS variable dynamically. This avoids
+  // generating an unbounded number of atomic classes while still supporting
+  // arbitrarily deep trees. User-provided inline styles take precedence.
+  if (!isStaticallyDefinedLevel(level)) {
+    state.root.style = {
+      [treeItemLevelToken]: level,
+      ...state.root.style,
+    };
+  }
+
   return state;
 };
 
