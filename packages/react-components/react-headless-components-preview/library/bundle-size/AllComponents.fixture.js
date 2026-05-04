@@ -3,6 +3,7 @@ import * as Avatar from '@fluentui/react-headless-components-preview/avatar';
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
+import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
@@ -12,6 +13,7 @@ import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
+import * as Popover from '@fluentui/react-headless-components-preview/popover';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
 import * as RatingDisplay from '@fluentui/react-headless-components-preview/rating-display';
@@ -34,6 +36,7 @@ console.log({
   Badge,
   Breadcrumb,
   Button,
+  Card,
   Checkbox,
   Dialog,
   Divider,
@@ -43,6 +46,7 @@ console.log({
   Link,
   MessageBar,
   ProgressBar,
+  Popover,
   Provider,
   RadioGroup,
   RatingDisplay,
