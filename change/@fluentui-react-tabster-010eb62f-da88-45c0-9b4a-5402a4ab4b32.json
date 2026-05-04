@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bump tabster to ^8.8.0 and keyborg to ^2.14.1",
+  "packageName": "@fluentui/react-tabster",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
