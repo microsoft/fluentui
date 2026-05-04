@@ -2,6 +2,8 @@ import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headles
 
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
+import popoverCss from './popover.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './PopoverDefault.stories';
 export { WithArrow } from './PopoverWithArrow.stories';
@@ -24,5 +26,6 @@ export default {
         component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
+    ...withCssModuleSource({ name: 'popover.module.css', source: popoverCss }),
   },
 };

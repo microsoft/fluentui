@@ -10,6 +10,8 @@ import {
 } from '@fluentui/react-headless-components-preview/drawer';
 
 import descriptionMd from './DrawerDescription.md';
+import drawerCss from './drawer.module.css?raw';
+import { withCssModuleSource } from '../_helpers/withCssModuleSource';
 
 export { Default } from './DefaultDrawer.stories';
 export { Inline } from './InlineDrawer.stories';
@@ -32,5 +34,6 @@ export default {
         component: descriptionMd,
       },
     },
+    ...withCssModuleSource({ name: 'drawer.module.css', source: drawerCss }),
   },
 };
