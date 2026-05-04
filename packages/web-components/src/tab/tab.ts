@@ -77,7 +77,7 @@ export class Tab extends FASTElement {
     } else {
       this.removeAttribute('aria-disabled');
     }
-    this.tabIndex = disabled ? -1 : 0;
+    this.tabIndex = disabled && this.getAttribute('aria-selected') !== 'true' ? -1 : 0;
   }
 }
 

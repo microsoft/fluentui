@@ -274,6 +274,37 @@ test.describe('Tablist', () => {
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
 
+  test('should keep disabled selected tab focusable until it loses selected state', async ({ fastPage }) => {
+    const { element, page } = fastPage;
+    const tabs = element.locator('fluent-tab');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+      `,
+    });
+
+    const secondTab = tabs.nth(1);
+
+    await secondTab.focus();
+    await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+
+    await secondTab.evaluate((node: Tab) => {
+      node.disabled = true;
+    });
+
+    await secondTab.focus();
+    await page.keyboard.press('ArrowLeft');
+
+    await expect(tabs.nth(0)).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+
+    await expect(tabs.nth(2)).toBeFocused();
+  });
+
   test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {
     const { element } = fastPage;
     const tabs = element.locator('fluent-tab');
