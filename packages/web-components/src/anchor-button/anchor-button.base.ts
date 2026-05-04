@@ -228,8 +228,7 @@ export class BaseAnchor extends FASTElement {
 
   private createProxyElement(): HTMLAnchorElement {
     const proxy = this.internalProxyAnchor ?? document.createElement('a');
-    proxy.ariaHidden = 'true';
-    proxy.tabIndex = -1;
+    proxy.inert = true;
     return proxy;
   }
 }
