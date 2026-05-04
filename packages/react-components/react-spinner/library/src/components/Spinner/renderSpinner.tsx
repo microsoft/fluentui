@@ -1,7 +1,9 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
+import { mergeClasses } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { SpinnerBaseState, SpinnerSlots } from './Spinner.types';
 
@@ -10,14 +12,38 @@ import type { SpinnerBaseState, SpinnerSlots } from './Spinner.types';
  */
 export const renderSpinner_unstable = (state: SpinnerBaseState): JSXElement => {
   assertSlots<SpinnerSlots>(state);
-  const { labelPosition, shouldRenderSpinner } = state;
+  const { labelPosition, shouldRenderSpinner, tailArcClassName, tailArcRtlClassName } = state;
+  const arcClassName = mergeClasses(tailArcClassName, tailArcRtlClassName);
+
+  // Motion slots can be undefined when a user passes null to disable motion.
+  // Fall back to React.Fragment so the JSX structure stays intact without the animation.
+  const RotationMotion = state.rotationMotion ?? React.Fragment;
+  const TailMotion = state.tailMotion ?? React.Fragment;
+  const LeadArcMotion = state.leadArcMotion ?? React.Fragment;
+  const TrailArcMotion = state.trailArcMotion ?? React.Fragment;
+
   return (
     <state.root>
       {state.label && shouldRenderSpinner && (labelPosition === 'above' || labelPosition === 'before') && (
         <state.label />
       )}
       {state.spinner && shouldRenderSpinner && (
-        <state.spinner>{state.spinnerTail && <state.spinnerTail />}</state.spinner>
+        <RotationMotion>
+          <state.spinner>
+            {state.spinnerTail && (
+              <TailMotion>
+                <state.spinnerTail>
+                  <LeadArcMotion>
+                    <span className={arcClassName} />
+                  </LeadArcMotion>
+                  <TrailArcMotion>
+                    <span className={arcClassName} />
+                  </TrailArcMotion>
+                </state.spinnerTail>
+              </TailMotion>
+            )}
+          </state.spinner>
+        </RotationMotion>
       )}
       {state.label && shouldRenderSpinner && (labelPosition === 'below' || labelPosition === 'after') && (
         <state.label />

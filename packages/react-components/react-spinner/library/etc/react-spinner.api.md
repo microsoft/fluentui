@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Label } from '@fluentui/react-label';
+import type { MotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -26,7 +27,7 @@ export type SpinnerBaseProps = Omit<SpinnerProps, 'appearance' | 'size'>;
 export type SpinnerBaseState = Omit<SpinnerState, 'appearance' | 'size'>;
 
 // @public (undocumented)
-export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
+export const spinnerClassNames: SlotClassNames<Omit<SpinnerSlots, 'rotationMotion' | 'tailMotion' | 'leadArcMotion' | 'trailArcMotion'>>;
 
 // @internal (undocumented)
 export const SpinnerContextProvider: React_2.Provider<SpinnerContextValue | undefined>;
@@ -48,11 +49,17 @@ export type SpinnerSlots = {
     spinner?: Slot<'span'>;
     spinnerTail?: NonNullable<Slot<'span'>>;
     label?: Slot<typeof Label>;
+    rotationMotion?: Slot<MotionSlotProps>;
+    tailMotion?: Slot<MotionSlotProps>;
+    leadArcMotion?: Slot<MotionSlotProps>;
+    trailArcMotion?: Slot<MotionSlotProps>;
 };
 
 // @public
 export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
     shouldRenderSpinner: boolean;
+    tailArcClassName?: string;
+    tailArcRtlClassName?: string;
 };
 
 // @public
