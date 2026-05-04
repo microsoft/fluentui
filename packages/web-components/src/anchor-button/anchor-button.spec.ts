@@ -197,9 +197,7 @@ test.describe('Anchor Button', () => {
       anchorButton.setAttribute('data-click-count', '0');
     });
 
-    await element.evaluate(node => {
-      (node as HTMLElement).click();
-    });
+    await element.click();
 
     await expect(element).toHaveAttribute('data-click-count', '1');
   });

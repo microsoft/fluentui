@@ -177,7 +177,7 @@ export class BaseAnchor extends FASTElement {
     }
 
     if (this.href) {
-      const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
+      const newTab = e.ctrlKey || e.metaKey;
       this.handleNavigation(newTab);
     }
 

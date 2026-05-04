@@ -101,7 +101,7 @@ test.describe('Link', () => {
       link.setAttribute('data-click-count', '0');
     });
 
-    await element.evaluate(node => {
+    await element.evaluate((node: HTMLElement) => {
       node.click();
     });
 
