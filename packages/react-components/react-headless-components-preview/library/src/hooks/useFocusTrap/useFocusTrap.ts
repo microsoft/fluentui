@@ -58,7 +58,7 @@ export function useFocusTrap(active = true): React.RefCallback<HTMLElement | nul
       ref.current = node;
 
       setTimeout(() => {
-        if (node.getRootNode()) {
+        if (node.isConnected) {
           focusNode(node);
         } else if (process.env.NODE_ENV === 'development') {
           // eslint-disable-next-line no-console

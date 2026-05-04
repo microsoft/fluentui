@@ -13,10 +13,12 @@ function isInlineHidden(element: HTMLElement): boolean {
  * none of its ancestors up to the document body are inline-hidden.
  */
 export function isVisible(element: HTMLElement): boolean {
-  const ariaHidden =
-    element.getAttribute('aria-hidden') || element.getAttribute('hidden') || element.getAttribute('type') === 'hidden';
+  const hidden =
+    element.getAttribute('aria-hidden') === 'true' ||
+    element.hasAttribute('hidden') ||
+    element.getAttribute('type') === 'hidden';
 
-  if (ariaHidden) {
+  if (hidden) {
     return false;
   }
 
