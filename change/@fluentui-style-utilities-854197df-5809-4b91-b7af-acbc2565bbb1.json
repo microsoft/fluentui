@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated OneCDN url to latest version (adding support for new filetype icon \"shortcuts folder\")",
+  "packageName": "@fluentui/style-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
