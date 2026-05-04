@@ -24,10 +24,6 @@ export class Tab extends FASTElement {
   @attr({ mode: 'boolean' })
   public disabled!: boolean;
   protected disabledChanged(prev: boolean, next: boolean) {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-
     this.setDisabledSideEffect(next);
   }
 
