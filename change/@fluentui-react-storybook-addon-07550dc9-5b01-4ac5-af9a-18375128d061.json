@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: render a 'classname hooks' table on component docs pages when a `classNames` parameter is provided (template for Button and Accordion)",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "none"
+}

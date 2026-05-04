@@ -47,6 +47,13 @@ type FluentDocsConfig =
             slotsApi?: boolean;
             nativePropsApi?: boolean;
           };
+      /**
+       * Slot → className map exported from the component (e.g. `buttonClassNames`).
+       * When provided, the docs page renders a "Customizing component's slot styles with className hooks"
+       * section listing each slot and its public className. Set on a story meta's
+       * `parameters.reactStorybookAddon.docs.classNames`.
+       */
+      classNames?: Record<string, string>;
     };
 
 export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
