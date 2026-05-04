@@ -38,7 +38,10 @@ describe('usePositioning', () => {
   it('containerRef writes position-anchor and position-area matching the props', () => {
     const result = mountHook({ position: 'below', align: 'start' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node.style.getPropertyValue('position-anchor')).toMatch(/^--popover-anchor-/);
     expect(node).toHaveStyle({ positionArea: 'block-end span-inline-end' });
@@ -47,7 +50,10 @@ describe('usePositioning', () => {
   it('containerRef writes position: absolute by default and clears the UA inset/margin defaults', () => {
     const result = mountHook();
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ position: 'absolute', inset: 'auto', margin: '0px' });
   });
@@ -55,7 +61,10 @@ describe('usePositioning', () => {
   it('containerRef honors strategy: "fixed"', () => {
     const result = mountHook({ strategy: 'fixed' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ position: 'fixed' });
   });
@@ -63,7 +72,10 @@ describe('usePositioning', () => {
   it('containerRef writes data-placement matching (position, align)', () => {
     const result = mountHook({ position: 'below', align: 'start' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveAttribute('data-placement', 'below-start');
   });
@@ -71,7 +83,10 @@ describe('usePositioning', () => {
   it('containerRef sets position-try-fallbacks to the three-try flip chain by default', () => {
     const result = mountHook();
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ positionTryFallbacks: 'flip-block, flip-inline, flip-block flip-inline' });
   });
@@ -79,7 +94,10 @@ describe('usePositioning', () => {
   it('containerRef uses custom fallbackPositions verbatim when provided', () => {
     const result = mountHook({ fallbackPositions: ['below-start', 'after'] });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ positionTryFallbacks: 'block-end span-inline-end, inline-end' });
   });
@@ -88,7 +106,10 @@ describe('usePositioning', () => {
     const result = mountHook({ pinned: true });
     const node = document.createElement('div');
     node.style.setProperty('position-try-fallbacks', 'flip-block');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node.style.getPropertyValue('position-try-fallbacks')).toBe('');
   });
@@ -96,7 +117,10 @@ describe('usePositioning', () => {
   it('containerRef writes cover self-alignment when coverTarget is true', () => {
     const result = mountHook({ coverTarget: true, position: 'above', align: 'start' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ positionArea: 'center', alignSelf: 'end', justifySelf: 'start' });
   });
@@ -104,7 +128,10 @@ describe('usePositioning', () => {
   it('containerRef writes place-self: anchor-center for center alignment (crbug 438334710 workaround)', () => {
     const result = mountHook({ position: 'above', align: 'center' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ placeSelf: 'anchor-center' });
   });
@@ -112,7 +139,10 @@ describe('usePositioning', () => {
   it('containerRef does not write place-self for non-center alignments', () => {
     const result = mountHook({ position: 'above', align: 'start' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node.style.getPropertyValue('place-self')).toBe('');
     expect(node.style.getPropertyValue('justify-self')).toBe('');
@@ -122,7 +152,10 @@ describe('usePositioning', () => {
   it('containerRef writes matchTargetSize width via anchor-size()', () => {
     const result = mountHook({ matchTargetSize: 'width' });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ width: 'anchor-size(width)' });
   });
@@ -130,7 +163,10 @@ describe('usePositioning', () => {
   it('containerRef applies offset as logical margins', () => {
     const result = mountHook({ position: 'below', offset: { mainAxis: 8, crossAxis: 4 } });
     const node = document.createElement('div');
-    result.current.containerRef(node);
+
+    act(() => {
+      result.current.containerRef(node);
+    });
 
     expect(node).toHaveStyle({ marginBlockStart: '8px', marginInlineStart: '4px' });
   });

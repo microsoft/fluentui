@@ -98,10 +98,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       return;
     }
 
-    if (!surface.hasAttribute('popover') || surface.getAttribute('popover') !== 'auto') {
-      surface.setAttribute('popover', 'auto');
-    }
-
     if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
       surface.showPopover();
     }
