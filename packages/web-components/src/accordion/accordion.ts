@@ -92,7 +92,6 @@ export class Accordion extends FASTElement {
 
   /**
    * Find the first expanded item in the accordion
-   * @returns {void}
    */
   private findExpandedItem(): BaseAccordionItem | Element | null {
     if (!this.accordionItems || this.accordionItems?.length === 0) {
@@ -108,7 +107,6 @@ export class Accordion extends FASTElement {
   /**
    * Resets event listeners and sets the `accordionItems` property
    * then rebinds event listeners to each non-disabled item
-   * @returns {void}
    */
   private setItems = (): void => {
     waitForConnectedDescendants(this, () => {
@@ -140,7 +138,7 @@ export class Accordion extends FASTElement {
 
   /**
    * Checks if the accordion is in single expand mode
-   * @returns {boolean}
+   * @returns true if the accordion is in single expand mode.
    */
   private isSingleExpandMode(): boolean {
     return this.expandmode === AccordionExpandMode.single;
@@ -148,8 +146,7 @@ export class Accordion extends FASTElement {
 
   /**
    * Controls the behavior of the accordion in single expand mode
-   * @param expandedItem The item to expand in single expand mode
-   * @returns {void}
+   * @param expandedItem - The item to expand in single expand mode
    */
   private setSingleExpandMode(expandedItem: Element): void {
     if (this.accordionItems.length === 0) {
@@ -176,7 +173,7 @@ export class Accordion extends FASTElement {
 
   /**
    * Removes event listeners from the previous accordion items
-   * @param oldValue An array of the previous accordion items
+   * @param oldValue - An array of the previous accordion items
    */
   private removeItemListeners = (oldValue: any): void => {
     oldValue.forEach((item: HTMLElement, index: number) => {
@@ -188,7 +185,7 @@ export class Accordion extends FASTElement {
 
   /**
    * Changes the expanded state of the accordion item
-   * @param evt Click event
+   * @param evt - Click event
    * @returns
    */
   private expandedChangedHandler: EventListener = (evt: Event): void => {

@@ -37,7 +37,7 @@ export class Radio extends BaseCheckbox {
    * @internal
    * @override
    * @remarks
-   * To make a group of radio controls required, see {@link RadioGroup.required}.
+   * To make a group of radio controls required, see `RadioGroup.required`.
    */
   protected requiredChanged(): void {
     return;

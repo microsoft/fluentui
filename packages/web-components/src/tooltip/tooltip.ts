@@ -124,7 +124,7 @@ export class Tooltip extends FASTElement {
 
   /**
    * Shows the tooltip
-   * @param delay Number of milliseconds to delay showing the tooltip
+   * @param delay - Number of milliseconds to delay showing the tooltip
    * @internal
    */
   public showTooltip(delay: number = this.defaultDelay): void {
@@ -136,7 +136,7 @@ export class Tooltip extends FASTElement {
 
   /**
    * Hide the tooltip
-   * @param delay Number of milliseconds to delay hiding the tooltip
+   * @param delay - Number of milliseconds to delay hiding the tooltip
    * @internal
    */
   public hideTooltip(delay: number = this.defaultDelay): void {
