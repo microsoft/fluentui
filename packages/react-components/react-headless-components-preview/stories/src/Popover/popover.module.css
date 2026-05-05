@@ -18,7 +18,7 @@
 }
 
 .trigger:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .contextTrigger:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .actionButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 

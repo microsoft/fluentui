@@ -125,7 +125,7 @@
 }
 
 .closeButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -135,20 +135,20 @@
   height: 32px;
   padding: 0 var(--space-3);
   border: 0;
-  border-radius: var(--radius-md);
-  background: var(--text);
-  color: var(--text-on-accent);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-contrast);
   font-size: 13.5px;
   font-weight: 500;
   cursor: pointer;
 }
 
 .primaryButton:hover {
-  background: var(--text-muted);
+  background: var(--accent-strong);
 }
 
 .primaryButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -170,7 +170,7 @@
 }
 
 .secondaryButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
