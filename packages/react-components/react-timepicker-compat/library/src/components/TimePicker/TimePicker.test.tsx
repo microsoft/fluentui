@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-components';
 import { isConformant } from '../../testing/isConformant';
 import { TimePicker } from './TimePicker';
-import { TimePickerProps } from './TimePicker.types';
+import type { TimePickerProps } from './TimePicker.types';
 
 const dateAnchor = new Date('November 25, 2021 01:00:00');
 

@@ -22,6 +22,7 @@ export {
   renderRatingItem_unstable,
   useRatingItemStyles_unstable,
   useRatingItem_unstable,
+  useRatingItemBase_unstable,
 } from './RatingItem';
 export type {
   RatingItemProps,

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 import type {
@@ -236,6 +236,7 @@ export type OnOpenChangeData = { open: boolean };
 export type OpenPopoverEvents =
   | MouseEvent
   | TouchEvent
+  | FocusEvent
   | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.MouseEvent<HTMLElement>;

@@ -1,7 +1,7 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { AccordionHeader } from './AccordionHeader';
-import { AccordionHeaderProps } from './AccordionHeader.types';
+import type { AccordionHeaderProps } from './AccordionHeader.types';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Accordion } from '../Accordion/Accordion';

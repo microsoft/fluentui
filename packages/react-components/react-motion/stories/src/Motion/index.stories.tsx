@@ -4,9 +4,10 @@ import description from './MotionDescription.md';
 
 export { DisableMotion } from './DisableMotion.stories';
 export { CustomMotion } from './CustomMotion.stories';
+export { DirectParams } from './DirectParams.stories';
 
 export default {
-  title: 'Motion/Motion Slot',
+  title: 'Motion/Using motion slots',
   parameters: {
     layout: 'centered',
     docs: {

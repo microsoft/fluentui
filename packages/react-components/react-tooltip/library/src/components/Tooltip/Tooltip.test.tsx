@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
-import { render, RenderResult } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -146,5 +147,27 @@ describe('Tooltip', () => {
     const target = result.getByRole('button');
     expect(target.getAttribute('aria-description')).toBe(null);
     expect(target.getAttribute('aria-describedby')).toBe('test-describedby');
+  });
+
+  it('hides the tooltip when the document becomes hidden (e.g. tab backgrounded on mobile)', () => {
+    const onVisibleChange = jest.fn();
+    const result = render(
+      <Tooltip content="Tooltip content" relationship="label" visible onVisibleChange={onVisibleChange}>
+        <button />
+      </Tooltip>,
+    );
+
+    // Tooltip starts visible
+    expect(queryByRoleTooltip(result)).not.toBeNull();
+
+    // Simulate the tab being backgrounded / app switched on mobile
+    const visibilityStateSpy = jest.spyOn(document, 'visibilityState', 'get').mockReturnValue('hidden');
+    act(() => {
+      fireEvent(document, new Event('visibilitychange'));
+    });
+
+    expect(onVisibleChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ visible: false }));
+
+    visibilityStateSpy.mockRestore();
   });
 });

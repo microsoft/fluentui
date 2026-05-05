@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { HTMLElementWalker, createHTMLElementWalker } from '../utils/createHTMLElementWalker';
+import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { createHTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../utils/treeItemFilter';
 
 export function useHTMLElementWalkerRef(): {

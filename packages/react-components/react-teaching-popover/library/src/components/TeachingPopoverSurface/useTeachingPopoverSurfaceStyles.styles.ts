@@ -2,7 +2,7 @@
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
+import type { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
 import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
 

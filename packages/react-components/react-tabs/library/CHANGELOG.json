@@ -2,6 +2,59 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:02 GMT",
+      "tag": "@fluentui/react-tabs_v9.12.1",
+      "version": "9.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "a8c2f2d833c1456244655207b23f044992dae6fb",
+            "comment": "fix: export base hook types"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.16",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.26.14",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ],
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2026 15:52:42 GMT",
       "tag": "@fluentui/react-tabs_v9.12.0",
       "version": "9.12.0",

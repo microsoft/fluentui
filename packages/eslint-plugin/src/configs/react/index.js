@@ -51,6 +51,10 @@ module.exports = defineConfig(
           imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
         },
       ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', disallowTypeAnnotations: false },
+      ],
       'react-compiler/react-compiler': ['error'],
       ...createReactCrossVersionRules({
         crossCompatTypePackage: '@fluentui/react-utilities',

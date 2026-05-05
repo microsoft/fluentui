@@ -9,8 +9,8 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
+import type { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import {
-  ActiveDescendantChangeEvent,
   useActiveDescendant,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,

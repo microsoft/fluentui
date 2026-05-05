@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 //import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,

@@ -2,7 +2,7 @@
 
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { DialogSurfaceState } from '@fluentui/react-dialog';
+import type { DialogSurfaceState } from '@fluentui/react-dialog';
 
 /**
  * Styles for the backdrop slot

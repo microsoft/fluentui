@@ -1,16 +1,16 @@
 'use client';
 
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { TreeNavigationData_unstable } from '../Tree';
+import type { TreeNavigationData_unstable } from '../Tree';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { useRovingTabIndex } from './useRovingTabIndexes';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
-import { TreeItemValue } from '../TreeItem';
+import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import type { TreeItemValue } from '../TreeItem';
 import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
 import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
-import { TreeNavigationMode } from '../components/Tree/Tree.types';
+import type { TreeNavigationMode } from '../components/Tree/Tree.types';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { treeItemLayoutClassNames } from '../TreeItemLayout';
 

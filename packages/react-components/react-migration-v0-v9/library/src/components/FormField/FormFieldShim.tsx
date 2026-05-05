@@ -1,7 +1,7 @@
 'use client';
 
+import type { FieldProps } from '@fluentui/react-components';
 import {
-  FieldProps,
   renderField_unstable,
   useFieldContextValues_unstable,
   useFieldStyles_unstable,

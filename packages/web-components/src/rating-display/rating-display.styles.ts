@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   colorBrandBackground2,
   colorBrandForeground1,
@@ -147,8 +147,8 @@ export const styles = css`
   :host([size='large']) ::slotted([slot='count'])::before {
     margin-inline: ${spacingHorizontalSNudge};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     .display {
       --_icon-color-value: CanvasText;
       --_icon-color-empty: Canvas;
@@ -164,5 +164,5 @@ export const styles = css`
       mask: inherit;
       mask-image: var(--_mask-image-outlined);
     }
-  `),
-);
+  }
+`;

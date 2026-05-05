@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useOverflowItem } from './useOverflowItem';
-import { OverflowContext, OverflowContextValue } from './overflowContext';
+import type { OverflowContextValue } from './overflowContext';
+import { OverflowContext } from './overflowContext';
 import { renderHook } from '@testing-library/react-hooks';
 
 const mockContextValue = (options: Partial<OverflowContextValue> = {}) =>

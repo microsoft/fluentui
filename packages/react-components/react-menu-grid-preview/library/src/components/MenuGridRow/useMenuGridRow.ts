@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-utilities';
 
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
-import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
+import type { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
 import { useValidateNesting } from '../../utils/useValidateNesting';
 import { useCharacterSearch } from './useCharacterSearch';
 

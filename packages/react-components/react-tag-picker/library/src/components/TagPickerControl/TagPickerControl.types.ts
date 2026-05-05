@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
-import { TagPickerContextValue } from '../../contexts/TagPickerContext';
-import { ComboboxSlots } from '@fluentui/react-combobox';
-import * as React from 'react';
+import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
+import type { ComboboxSlots } from '@fluentui/react-combobox';
+import type * as React from 'react';
 
 export type TagPickerControlSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TagPickerControlCSSProperties }>>;

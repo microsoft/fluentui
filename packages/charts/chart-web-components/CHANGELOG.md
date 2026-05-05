@@ -1,8 +1,44 @@
 # Change Log - @fluentui/chart-web-components
 
-This log was last generated on Mon, 06 Apr 2026 22:24:43 GMT and should not be manually modified.
+This log was last generated on Fri, 01 May 2026 04:08:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.73](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.73)
+
+Fri, 01 May 2026 04:08:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.72..@fluentui/chart-web-components_v0.0.73)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.15 ([PR #36077](https://github.com/microsoft/fluentui/pull/36077) by beachball)
+
+## [0.0.72](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.72)
+
+Wed, 29 Apr 2026 19:07:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.71..@fluentui/chart-web-components_v0.0.72)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.14 ([commit](https://github.com/microsoft/fluentui/commit/1176b50b415faa35a2763cac41c572b063bcc524) by beachball)
+
+## [0.0.71](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.71)
+
+Thu, 09 Apr 2026 04:07:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.70..@fluentui/chart-web-components_v0.0.71)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.13 ([PR #35965](https://github.com/microsoft/fluentui/pull/35965) by beachball)
+
+## [0.0.70](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.70)
+
+Tue, 07 Apr 2026 20:44:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.69..@fluentui/chart-web-components_v0.0.70)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.12 ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by beachball)
 
 ## [0.0.69](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.69)
 

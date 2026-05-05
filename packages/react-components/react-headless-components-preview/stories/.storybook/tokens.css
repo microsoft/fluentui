@@ -1,0 +1,209 @@
+/* ------------------------------------------------------------------
+ * Design tokens
+ *
+ * Mapped from FOUNDATIONS pages of the design Figma file:
+ *  - color algorithm/primitives/generics
+ *  - elevation
+ *  - gap & padding generics
+ *  - stroke primitives/generics
+ *  - border radius generic
+ * ----------------------------------------------------------------*/
+:root {
+  /* surface */
+  --bg: #ffffff;
+  --bg-soft: #f7f7f8;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #fafafa;
+  --surface-muted: #f2f2f4;
+  --surface-sunken: #ededf0;
+
+  /* line */
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --border-stronger: #a1a1aa;
+
+  /* ink */
+  --text: #0a0a0a;
+  --text-muted: #52525b;
+  --text-soft: #71717a;
+  --text-faint: #a1a1aa;
+  --text-on-accent: #ffffff;
+
+  /* accent — primary action is rich the brand magenta on white (Figma --prmt-color-red-45) */
+  --accent: #9b1f5a;
+  --accent-strong: #7a1a4a;
+  --accent-soft: #fff1f3;
+  --accent-contrast: #ffffff;
+
+  /* brand — signature magenta, used sparingly for hot states */
+  --brand: #a81f6a;
+  --brand-strong: #7a1a4a;
+  --brand-soft: #fff1f3;
+
+  /* status (subtle pastels per Message Bar spec) */
+  --success: #2e7d32;
+  --success-soft: #e8f5e9;
+  --warning: #b56e00;
+  --warning-soft: #fff4dc;
+  --danger: #c62828;
+  --danger-soft: #fdecea;
+  --info: #0d47a1;
+  --info-soft: #eaf2fb;
+
+  /* elevation (light) — formula N=2E, R=elevation index */
+  --shadow-1: 0 0 0 1px rgba(0, 0, 0, 0.02), 0 2px 2px rgba(0, 0, 0, 0.03);
+  --shadow-2: 0 0 0 1px rgba(0, 0, 0, 0.02), 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-3: 0 1px 0 rgba(0, 0, 0, 0.02), 0 8px 12px rgba(0, 0, 0, 0.06);
+  --shadow-4: 0 1px 0 rgba(0, 0, 0, 0.02), 0 16px 24px rgba(0, 0, 0, 0.08);
+  --shadow-5: 0 1px 0 rgba(0, 0, 0, 0.03), 0 20px 40px rgba(0, 0, 0, 0.1);
+  --shadow-6: 0 1px 0 rgba(0, 0, 0, 0.04), 0 32px 64px rgba(0, 0, 0, 0.16);
+
+  /* legacy aliases */
+  --shadow-sm: var(--shadow-1);
+  --shadow-md: var(--shadow-3);
+  --shadow-lg: var(--shadow-5);
+
+  /* radius — atomic / composite / layout */
+  --radius-xs: 4px; /* badges, small chips */
+  --radius-sm: 6px;
+  --radius-md: 8px; /* buttons (when not pill), small inputs */
+  --radius-lg: 12px; /* composite */
+  --radius-xl: 16px;
+  --radius-2xl: 20px; /* cards, dialogs */
+  --radius-3xl: 24px;
+  --radius-pill: 999px;
+
+  /* stroke widths */
+  --stroke-thin: 1px;
+  --stroke-thick: 2px;
+  --stroke-thicker: 3px;
+
+  /* spacing — atomic, composite, layout */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* type ramp (web) — derived from "Typography primitives - web" */
+  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.02em;
+  --tracking-tight: -0.01em;
+
+  /* motion */
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-emphasized: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-fast: 120ms;
+  --duration-medium: 200ms;
+  --duration-slow: 320ms;
+}
+
+[data-theme='dark'] {
+  --bg: #09090b;
+  --bg-soft: #0e0e10;
+  --bg-elev: #131316;
+  --bg-elev-2: #18181b;
+  --surface-muted: #1f1f23;
+  --surface-sunken: #0e0e10;
+
+  --border: #26262a;
+  --border-strong: #3a3a40;
+  --border-stronger: #52525b;
+
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-soft: #71717a;
+  --text-faint: #52525b;
+  --text-on-accent: #ffffff;
+
+  --accent: #ec4899;
+  --accent-strong: #db2777;
+  --accent-soft: #3b1525;
+  --accent-contrast: #ffffff;
+
+  --brand: #f472b6;
+  --brand-strong: #ec4899;
+  --brand-soft: #3b1525;
+
+  --success: #4ade80;
+  --success-soft: #14361f;
+  --warning: #fbbf24;
+  --warning-soft: #3a2a08;
+  --danger: #f87171;
+  --danger-soft: #3a1414;
+  --info: #60a5fa;
+  --info-soft: #11243f;
+
+  /* dark elevation: opacity values double per spec */
+  --shadow-1: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-3: 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 12px rgba(0, 0, 0, 0.45);
+  --shadow-4: 0 1px 0 rgba(255, 255, 255, 0.04), 0 16px 24px rgba(0, 0, 0, 0.5);
+  --shadow-5: 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 40px rgba(0, 0, 0, 0.55);
+  --shadow-6: 0 1px 0 rgba(255, 255, 255, 0.08), 0 32px 64px rgba(0, 0, 0, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv11', 'ss01', 'ss02';
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: var(--tracking-tight);
+  transition: background-color var(--duration-medium) var(--ease-standard),
+    color var(--duration-medium) var(--ease-standard);
+}
+
+a {
+  color: inherit;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-muted);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}

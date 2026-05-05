@@ -1,4 +1,4 @@
-import { MiddlewareData } from '@floating-ui/dom';
+import type { MiddlewareData } from '@floating-ui/dom';
 
 /**
  * Writes all DOM element updates after position is computed

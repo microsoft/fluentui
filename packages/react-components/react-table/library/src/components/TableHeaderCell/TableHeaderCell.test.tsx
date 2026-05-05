@@ -2,9 +2,9 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableHeaderCell } from './TableHeaderCell';
 import { isConformant } from '../../testing/isConformant';
-import { TableHeaderCellProps } from './TableHeaderCell.types';
+import type { TableHeaderCellProps } from './TableHeaderCell.types';
 import { TableContextProvider, tableContextDefaultValue } from '../../contexts/tableContext';
-import { SortDirection } from '../Table/Table.types';
+import type { SortDirection } from '../Table/Table.types';
 
 describe('TableHeaderCell', () => {
   const tr = document.createElement('tr');

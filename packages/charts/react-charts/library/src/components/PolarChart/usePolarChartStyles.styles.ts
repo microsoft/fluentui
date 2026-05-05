@@ -1,7 +1,7 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { PolarChartStyles, PolarChartProps } from './PolarChart.types';
+import type { PolarChartStyles, PolarChartProps } from './PolarChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 

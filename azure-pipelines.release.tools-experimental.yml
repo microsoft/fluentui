@@ -1,0 +1,126 @@
+pr: none
+trigger: none
+
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: true
+
+# Customize build number to include tools experimental prefix
+# Example: tools_experimental_20201022.1
+name: 'tools_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+  - name: tags
+    value: production,externalfacing
+
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
+
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Release
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            timeoutInMinutes: 90
+            workspace:
+              clean: all
+            templateContext:
+              outputParentDirectory: $(System.DefaultWorkingDirectory)
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)
+                  artifactName: output
+            steps:
+              - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
+
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                displayName: Configure git user (used by beachball)
+
+              - task: Bash@3
+                name: validation
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    BRANCH="$(Build.SourceBranch)"
+                    if [[ ! $BRANCH =~ refs/heads/experimental/ ]]; then
+                      echo "##vso[task.logissue type=error]Branch '$BRANCH' must start with 'refs/heads/experimental/'"
+                      exit 1
+                    fi
+                    BRANCH_PATH=${BRANCH#refs/heads/}
+                    FEATURE_NAME=${BRANCH#refs/heads/experimental/}
+                    echo "##vso[task.setvariable variable=branchPath;isOutput=true]$BRANCH_PATH"
+                    echo "##vso[task.setvariable variable=featureName;isOutput=true]$FEATURE_NAME"
+                    echo "Branch path: $BRANCH_PATH"
+                    echo "Feature name: $FEATURE_NAME"
+                displayName: Validate branch and extract feature name
+
+              - script: |
+                  yarn install --frozen-lockfile
+                displayName: Install dependencies
+
+                # Deletes all existing changefiles so that only bump that happens is for experimental
+              - script: |
+                  rm -f change/*
+                displayName: 'Delete existing changefiles'
+
+                # Bumps all tools packages to x.x.x-experimental.<feature>.<date>-<hash> version
+                # x.x.x is each package's own current version
+              - script: |
+                  FEATURE_NAME=$(validation.featureName)
+                  DATE=$(date +"%Y%m%d")
+                  HASH=$(git rev-parse --short HEAD)
+                  VERSION_SUFFIX="experimental.${FEATURE_NAME}.${DATE}-${HASH}"
+
+                  echo "Version suffix: ${VERSION_SUFFIX}"
+
+                  yarn nx g @fluentui/workspace-plugin:version-bump --all --scope tools --versionSuffix "${VERSION_SUFFIX}"
+                  git add .
+                  git commit -m "bump tools experimental versions with suffix ${VERSION_SUFFIX}"
+                  yarn change --type prerelease --message "Release experimental tools ${VERSION_SUFFIX}" --dependent-change-type "prerelease"
+                displayName: 'Bump and commit experimental versions'
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
+                displayName: build
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
+                displayName: lint
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
+                displayName: test
+
+              - script: |
+                  yarn beachball publish -b origin/$(validation.branchPath) --access public -y -n $(npmToken) --no-push --tag experimental --config scripts/beachball/src/release-tools.config.js
+                  git reset --hard origin/$(validation.branchPath)
+                displayName: Publish changes and bump versions
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
+
+              - template: .devops/templates/cleanup.yml@self
+                parameters:
+                  checkForModifiedFiles: false

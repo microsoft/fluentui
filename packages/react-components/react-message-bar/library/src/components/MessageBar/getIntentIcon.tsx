@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MessageBarProps } from './MessageBar.types';
+import type { MessageBarProps } from './MessageBar.types';
 import { CheckmarkCircleFilled, InfoFilled, WarningFilled, DiamondDismissFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 

@@ -1,6 +1,6 @@
-import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart } from '../../types/index';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { LegendsProps } from '../Legends/index';
+import type { AccessibilityProps, Chart } from '../../types/index';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import type { TitleStyles } from '../../utilities/Common.styles';
 
 /**

@@ -4,22 +4,22 @@
 
 ```ts
 
-import { ButtonProps } from '@fluentui/react-components';
-import { ComponentProps } from '@fluentui/react-components';
+import type { ButtonProps } from '@fluentui/react-components';
+import type { ComponentProps } from '@fluentui/react-components';
 import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
-import { SelectionHookParams } from '@fluentui/react-utilities';
-import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionHookParams } from '@fluentui/react-utilities';
+import type { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
-import { Slot } from '@fluentui/react-components';
-import { Slot as Slot_2 } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-components';
+import type { Slot as Slot_2 } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)

@@ -1,4 +1,4 @@
-import { AnimationDirection } from '../Calendar/Calendar.types';
+import type { AnimationDirection } from '../Calendar/Calendar.types';
 
 /**
  * @internal

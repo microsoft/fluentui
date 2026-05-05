@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';

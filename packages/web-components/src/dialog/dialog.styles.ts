@@ -12,7 +12,6 @@ import {
   shadow64,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 
 /** Dialog styles
  * @public
@@ -95,12 +94,12 @@ export const styles = css`
       }
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     @layer base {
       dialog {
         border: ${strokeWidthThin} solid ${colorTransparentStroke};
       }
     }
-  `),
-);
+  }
+`;

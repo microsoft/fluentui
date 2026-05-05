@@ -2,6 +2,80 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 01 May 2026 04:08:47 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.15",
+      "version": "3.0.0-rc.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7dfa6a36eb39d998dff0c627f83e1ac728c8020c",
+            "comment": "fix: remove unnecessary id property mappings in accordion-item"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "86cf4cbebfc9517e2373ce8077674bbcaf3ce7da",
+            "comment": "fix: remove errant preventDefault causing element interactions to be blocked inside drawer"
+          }
+        ],
+        "none": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "233e02d989fd22ba25b73affdf2012019f71f9ad",
+            "comment": " chore: fixing package bump issue to latest published version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2026 19:07:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.14",
+      "version": "3.0.0-rc.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c2bf30e8260326f8e7c018853e4e86cbfae0d2d0",
+            "comment": "fix: improve SSR compatibility and component lifecycle management for Menu, Accordion, Dropdown, Tablist, and waitForConnectedDescendants"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2026 04:07:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.13",
+      "version": "3.0.0-rc.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c207e1425c9a98ded3c06adf037bca603ad1f8eb",
+            "comment": "add base classes for menu-list and radio-group"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Apr 2026 20:44:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.12",
+      "version": "3.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1668a3c1995614853faf0adabd33fcb5b6994aa0",
+            "comment": "feat: enhance Accordion component with improved item handling and lifecycle management"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Apr 2026 22:24:42 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.11",
       "version": "3.0.0-rc.11",

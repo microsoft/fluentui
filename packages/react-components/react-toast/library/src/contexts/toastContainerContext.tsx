@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ToastIntent } from '../state/types';
+import type { ToastIntent } from '../state/types';
 
 export type ToastContainerContextValue = {
   close: () => void;

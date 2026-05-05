@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
+import type { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
+import type { TableColumnDefinition, TableSelectionState, TableSortState } from '../hooks';
 import {
-  TableColumnDefinition,
   createTableColumn,
   defaultTableSelectionState,
   defaultTableSortState,
-  TableSelectionState,
-  TableSortState,
   defaultColumnSizingState,
 } from '../hooks';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 interface Item {
   first: string;

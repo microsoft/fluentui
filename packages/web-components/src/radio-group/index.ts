@@ -1,3 +1,4 @@
+export { BaseRadioGroup } from './radio-group.base.js';
 export { RadioGroup } from './radio-group.js';
 export { RadioGroupOrientation } from './radio-group.options.js';
 export { definition as RadioGroupDefinition } from './radio-group.definition.js';

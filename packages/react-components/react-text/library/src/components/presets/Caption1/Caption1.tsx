@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { createPreset } from '../createPreset';
 import type { TextPresetProps } from '../../Text/Text.types';
 import { caption1ClassNames, useCaption1Styles } from './useCaption1Styles.styles';

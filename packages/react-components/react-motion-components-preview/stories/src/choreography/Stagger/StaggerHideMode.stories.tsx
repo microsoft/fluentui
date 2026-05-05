@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StaggerHideModeDescription from './StaggerHideMode.stories.md';
-import { makeStyles, tokens, Button, Avatar, Checkbox, motionTokens, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { makeStyles, tokens, Button, Avatar, Checkbox, motionTokens } from '@fluentui/react-components';
 import { Scale, Stagger } from '@fluentui/react-motion-components-preview';
 
 const avatarData = [

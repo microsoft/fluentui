@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { Hamburger } from './Hamburger';
-import { HamburgerProps } from './Hamburger.types';
+import type { HamburgerProps } from './Hamburger.types';
 
 describe('Hamburger', () => {
   isConformant({

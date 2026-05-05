@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Types, TABSTER_ATTRIBUTE_NAME } from 'tabster';
+import type { Types } from 'tabster';
+import { TABSTER_ATTRIBUTE_NAME } from 'tabster';
 
 /**
  * Merges a collection of tabster attributes.

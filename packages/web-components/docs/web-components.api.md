@@ -11,8 +11,6 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
-import type { HostBehavior } from '@microsoft/fast-element';
-import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
@@ -22,9 +20,11 @@ import { ViewTemplate } from '@microsoft/fast-element';
 export class Accordion extends FASTElement {
     // @internal (undocumented)
     protected accordionItems: Element[];
+    // (undocumented)
+    connectedCallback(): void;
     expandmode: AccordionExpandMode;
     // (undocumented)
-    expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
+    expandmodeChanged(prev: AccordionExpandMode | undefined, next: AccordionExpandMode): void;
     // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
@@ -435,7 +435,6 @@ export class BaseAccordionItem extends FASTElement {
     expandbutton: HTMLElement;
     expanded: boolean;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
 }
 
 // @public
@@ -730,6 +729,34 @@ export class BaseField extends FASTElement {
 }
 
 // @public
+export class BaseMenuList extends FASTElement {
+    constructor();
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    focus(): void;
+    handleChange(source: any, propertyName: string): void;
+    // @internal
+    handleFocusOut: (e: FocusEvent) => void;
+    // @internal (undocumented)
+    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
+    protected isMenuItemElement: (el: Element) => el is HTMLElement;
+    // @internal (undocumented)
+    readonly isNestedMenu: () => boolean;
+    // @internal (undocumented)
+    items: HTMLElement[];
+    // (undocumented)
+    protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
+    // (undocumented)
+    protected menuItems: Element[] | undefined;
+    // (undocumented)
+    protected setItems(): void;
+}
+
+// @public
 export class BaseProgressBar extends FASTElement {
     constructor();
     // @internal
@@ -753,6 +780,67 @@ export class BaseProgressBar extends FASTElement {
     value?: number;
     // @internal
     protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export class BaseRadioGroup extends FASTElement {
+    constructor();
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number, shouldEmit?: boolean): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slottedRadios: Radio[];
+    slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
 }
 
 // @public
@@ -2428,9 +2516,6 @@ export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
 export const curveLinear = "var(--curveLinear)";
 
 // @public
-export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabel: string | null;
@@ -2891,9 +2976,6 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public
-export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
@@ -2997,9 +3079,6 @@ export const LabelWeight: {
 
 // @public
 export type LabelWeight = ValuesOf<typeof LabelWeight>;
-
-// @public
-export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
 // @public
 export const lineHeightBase100 = "var(--lineHeightBase100)";
@@ -3112,29 +3191,6 @@ export const ListboxTemplate: ElementViewTemplate<Listbox>;
 export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
 
 // @public
-export abstract class MatchMediaBehavior implements HostBehavior {
-    constructor(query: MediaQueryList);
-    connectedCallback(controller: HostController): void;
-    protected abstract constructListener(controller: HostController): MediaQueryListListener;
-    disconnectedCallback(controller: HostController): void;
-    readonly query: MediaQueryList;
-}
-
-// @public
-export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
-    constructor(query: MediaQueryList, styles: ElementStyles);
-    protected constructListener(controller: HostController): MediaQueryListListener;
-    readonly query: MediaQueryList;
-    // @internal
-    removedCallback(controller: HostController<any>): void;
-    readonly styles: ElementStyles;
-    static with(query: MediaQueryList): (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-}
-
-// @public
-export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListEvent) => void;
-
-// @public
 export class Menu extends FASTElement {
     closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
@@ -3152,11 +3208,14 @@ export class Menu extends FASTElement {
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
     primaryAction: HTMLSlotElement;
+    // @deprecated
     setComponent(): void;
-    slottedMenuList: MenuList[];
+    slottedMenuList: HTMLElement[];
     // @internal
-    slottedMenuListChanged(prev: MenuList[] | undefined, next: MenuList[] | undefined): void;
+    slottedMenuListChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
     slottedTriggers: HTMLElement[];
+    // @internal
+    slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
     split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
@@ -3280,31 +3339,7 @@ export const MenuItemStyles: ElementStyles;
 export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
-export class MenuList extends FASTElement {
-    constructor();
-    // @internal (undocumented)
-    connectedCallback(): void;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    focus(): void;
-    handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
-    protected isMenuItemElement: (el: Element) => el is HTMLElement;
-    // @internal (undocumented)
-    readonly isNestedMenu: () => boolean;
-    // @internal (undocumented)
-    items: HTMLElement[];
-    // (undocumented)
-    protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
-    // (undocumented)
-    protected menuItems: Element[] | undefined;
-    // (undocumented)
-    protected setItems(): void;
+export class MenuList extends BaseMenuList {
 }
 
 // @public (undocumented)
@@ -3450,64 +3485,7 @@ export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focu
 export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
-export class RadioGroup extends FASTElement {
-    constructor();
-    changeHandler(e: Event): boolean | void;
-    // @internal
-    protected checkedIndex: number;
-    // @internal
-    protected checkedIndexChanged(prev: number | undefined, next: number): void;
-    // @internal
-    checkRadio(index?: number, shouldEmit?: boolean): void;
-    checkValidity(): boolean;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    disabled: boolean;
-    // @internal
-    protected disabledChanged(prev?: boolean, next?: boolean): void;
-    // (undocumented)
-    disabledRadioHandler(e: CustomEvent): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    get enabledRadios(): Radio[];
-    // @internal
-    focus(): void;
-    // @internal
-    focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
-    static formAssociated: boolean;
-    // (undocumented)
-    formResetCallback(): void;
-    initialValue?: string;
-    initialValueChanged(prev: string | undefined, next: string | undefined): void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    name: string;
-    // @internal
-    protected nameChanged(prev: string | undefined, next: string | undefined): void;
-    orientation?: RadioGroupOrientation;
-    // @internal
-    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
-    radios: Radio[];
-    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
-    reportValidity(): boolean;
-    required: boolean;
-    // (undocumented)
-    requiredChanged(prev: boolean, next: boolean): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    // @internal
-    slottedRadios: Radio[];
-    slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void;
-    // @internal
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string | null;
-    set value(next: string | null);
+export class RadioGroup extends BaseRadioGroup {
 }
 
 // @public

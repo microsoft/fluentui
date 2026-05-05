@@ -178,7 +178,7 @@ export {
   roleForMenuItem,
 } from './menu-item/index.js';
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
-export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
+export { BaseMenuList, MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
 export {
   DropdownOption,
@@ -201,6 +201,7 @@ export {
   ProgressBarValidationState,
 } from './progress-bar/index.js';
 export {
+  BaseRadioGroup,
   RadioGroup,
   RadioGroupDefinition,
   RadioGroupOrientation,
@@ -330,13 +331,5 @@ export {
 export { BaseTree, Tree, TreeDefinition, TreeTemplate, TreeStyles } from './tree/index.js';
 export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
 export type { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
-export {
-  darkModeStylesheetBehavior,
-  forcedColorsStylesheetBehavior,
-  lightModeStylesheetBehavior,
-  MatchMediaBehavior,
-  MatchMediaStyleSheetBehavior,
-} from './utils/behaviors/match-media-stylesheet-behavior.js';
-export type { MediaQueryListListener } from './utils/behaviors/match-media-stylesheet-behavior.js';
 export { getDirection } from './utils/direction.js';
 export { display } from './utils/display.js';

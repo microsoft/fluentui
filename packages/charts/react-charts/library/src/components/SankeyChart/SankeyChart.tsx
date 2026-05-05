@@ -5,13 +5,16 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { sum as d3Sum } from 'd3-array';
-import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
-import { Selection as D3Selection, select, selectAll } from 'd3-selection';
+import type { SankeyGraph, SankeyLayout } from 'd3-sankey';
+import { sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
+import type { Selection as D3Selection } from 'd3-selection';
+import { select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
-import { Margins, SLink, SNode } from '../../types/DataPoint';
-import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
+import type { Margins, SLink, SNode } from '../../types/DataPoint';
+import type { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
-import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
+import type { ChartPopoverProps } from '../CommonComponents/index';
+import { ChartPopover } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
 import { useImageExport } from '../../utilities/hooks';
@@ -72,7 +75,7 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
@@ -117,7 +120,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();

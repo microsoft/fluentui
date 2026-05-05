@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { CompoundButton } from './CompoundButton';
-import { CompoundButtonProps } from './CompoundButton.types';
+import type { CompoundButtonProps } from './CompoundButton.types';
 
 describe('CompoundButton', () => {
   isConformant({

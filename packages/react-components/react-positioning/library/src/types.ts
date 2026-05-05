@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 /**
  * Physical placement of a positioned element relative to its target, as computed by Floating UI.

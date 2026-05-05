@@ -1,4 +1,4 @@
-import { GriffelStyle } from '@fluentui/react-components';
+import type { GriffelStyle } from '@fluentui/react-components';
 import { grid } from './Grid.mixins';
 
 const testMixin = (mixin: GriffelStyle | undefined, expectedStyle: GriffelStyle) => {

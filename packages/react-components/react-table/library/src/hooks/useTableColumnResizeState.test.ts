@@ -1,7 +1,8 @@
-import { RenderResult, act, renderHook } from '@testing-library/react-hooks';
+import type { RenderResult } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import { createTableColumn } from './createColumn';
 import { useTableColumnResizeState } from './useTableColumnResizeState';
-import { ColumnResizeState, TableColumnSizingOptions } from './types';
+import type { ColumnResizeState, TableColumnSizingOptions } from './types';
 
 describe('useTableColumnResizeState', () => {
   describe('default options', () => {

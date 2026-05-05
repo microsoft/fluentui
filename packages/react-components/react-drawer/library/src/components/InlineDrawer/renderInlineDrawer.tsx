@@ -2,7 +2,8 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { DrawerContextValue, DrawerProvider } from '../../contexts/drawerContext';
+import type { DrawerContextValue } from '../../contexts/drawerContext';
+import { DrawerProvider } from '../../contexts/drawerContext';
 
 import type { InlineDrawerState, InlineDrawerSlots } from './InlineDrawer.types';
 
@@ -14,9 +15,13 @@ export const renderInlineDrawer_unstable = (state: InlineDrawerState, contextVal
 
   return (
     <DrawerProvider value={contextValue}>
-      <state.surfaceMotion>
+      {state.surfaceMotion ? (
+        <state.surfaceMotion>
+          <state.root />
+        </state.surfaceMotion>
+      ) : (
         <state.root />
-      </state.surfaceMotion>
+      )}
     </DrawerProvider>
   );
 };

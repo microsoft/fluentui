@@ -1,0 +1,143 @@
+<!--
+  Override the default favicon used in the Storybook in the browser tab.
+ -->
+<link rel="shortcut icon" type="image/x-icon" href="https://react.fluentui.dev/favicon-192.ico" />
+<link href="/shell.css" rel="stylesheet" />
+
+<!--
+  Segoe UI from Microsoft's static font CDN. The fallbacks in `font-family`
+  below cover users on networks blocking the CDN, but on a healthy connection
+  the docsite renders Segoe UI on every platform — not just Windows.
+ -->
+<link rel="preconnect" href="https://c.s-microsoft.com" crossorigin />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.css" />
+<link rel="stylesheet" href="https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.css" />
+
+<!--
+  Headless docsite chrome overrides for the Storybook manager UI.
+
+  The sidebar selectors are brittle — they depend on Storybook's manager DOM
+  structure and may need updating on Storybook version bumps. Color values
+  mirror {@link ../../../packages/react-components/react-headless-components-preview/stories/.storybook/tokens.css} (light mode).
+
+  @see https://storybook.js.org/docs/react/configure/theming#css-escape-hatches
+ -->
+
+<style>
+  :root {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    --hl-text: #0a0a0a;
+    --hl-text-muted: #52525b;
+    --hl-accent: #9b1f5a;
+    --hl-accent-contrast: #ffffff;
+  }
+
+  #storybook-preview-iframe {
+    background: transparent !important;
+  }
+
+  #storybook-explorer-searchfield {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+  }
+
+  .sidebar-item svg,
+  .sidebar-svg-icon {
+    color: var(--hl-text) !important;
+  }
+
+  .sidebar-item[data-selected='true'] svg,
+  .sidebar-item[data-selected='true'] .sidebar-svg-icon {
+    color: var(--hl-accent-contrast) !important;
+  }
+
+  /**
+    The `button[data-action='collapse-ref']` selector is used to ensure
+    that the "Storybook Composition" (https://storybook.js.org/docs/sharing/storybook-composition) menu items
+    align with the styling of the other sidebar menu items.
+  */
+  .sidebar-subheading,
+  button[data-action='collapse-ref'] {
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 20px !important;
+    text-transform: none !important;
+    color: var(--hl-text) !important;
+  }
+
+  .sidebar-subheading button,
+  button[data-action='collapse-ref'] {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .sidebar-item {
+    align-items: center !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 24px !important;
+    color: var(--hl-text) !important;
+    border-radius: 999px !important;
+  }
+
+  /*
+    Override Storybook's default hover (a saturated pink derived from
+    `colorSecondary`) with a subtle neutral surface tone. Matches the
+    `--surface-muted` token from {@link ../../../packages/react-components/react-headless-components-preview/stories/.storybook/tokens.css}.
+  */
+  .sidebar-item:hover,
+  .sidebar-item:hover svg,
+  .sidebar-item:hover .sidebar-svg-icon {
+    background: #f2f2f4 !important;
+    color: var(--hl-text) !important;
+  }
+
+  .sidebar-item[data-selected='true']:hover,
+  .sidebar-item[data-selected='true']:hover svg,
+  .sidebar-item[data-selected='true']:hover .sidebar-svg-icon {
+    background: var(--hl-accent) !important;
+    color: var(--hl-accent-contrast) !important;
+  }
+
+  .sidebar-item a {
+    align-items: center !important;
+  }
+
+  .sidebar-item[data-selected='true'] {
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 24px !important;
+    color: var(--hl-accent-contrast) !important;
+    background: var(--hl-accent) !important;
+  }
+
+  .sidebar-item > span:first-child,
+  button[data-action='collapse-ref'] > span:first-child,
+  .sidebar-item > svg {
+    margin-top: 0 !important;
+  }
+
+  /*
+  * Hides "Addons" button from mobile view nav.
+  */
+  nav > button:last-child {
+    display: none;
+  }
+
+  /*
+  Storybook has proposed a feature for this in https://github.com/storybookjs/storybook/issues/9209
+  which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page
+  Using suggested temporary workaround until storybook gets proper support
+  See https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/authoring-stories.md#10-internal-stories-for-testing
+  */
+  [id*='accessibility-stories'] {
+    display: none !important;
+  }
+</style>

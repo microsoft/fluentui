@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
+import type { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingDisplaySlots = {
   root: NonNullable<Slot<'div'>>;

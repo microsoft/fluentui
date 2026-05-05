@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { TreeItem } from './TreeItem';
 import { isConformant } from '../../testing/isConformant';
-import { TreeItemProps } from './TreeItem.types';
+import type { TreeItemProps } from './TreeItem.types';
 import { treeItemClassNames } from './useTreeItemStyles.styles';
 import { Tree } from '../../Tree';
 

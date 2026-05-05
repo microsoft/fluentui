@@ -5,10 +5,11 @@ import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
-import { ComboboxProps } from '../Combobox/Combobox.types';
-import { UseTriggerSlotState, useTriggerSlot } from '../../utils/useTriggerSlot';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
-import { OptionValue } from '../../utils/OptionCollection.types';
+import type { ComboboxProps } from '../Combobox/Combobox.types';
+import type { UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import { useTriggerSlot } from '../../utils/useTriggerSlot';
+import type { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UsedComboboxState = UseTriggerSlotState &

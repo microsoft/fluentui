@@ -1,0 +1,86 @@
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--surface-muted);
+  border-radius: var(--radius-pill);
+}
+
+.tabsVertical {
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  width: 200px;
+  align-self: flex-start;
+}
+
+.tab {
+  position: relative;
+  padding: 7px 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  text-align: left;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.tabsVertical .tab {
+  border-radius: var(--radius-md);
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.tab[data-selected] {
+  background: var(--bg-elev);
+  color: var(--text);
+  box-shadow: var(--shadow-1);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.layoutVertical {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.panel {
+  padding: 16px 4px 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.layoutVertical .panel {
+  padding: 4px 0 0;
+}
+
+.panelTitle {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 520px;
+}

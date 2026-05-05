@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useBadgeBase_unstable } from '../Badge/index';
 import type {
   CounterBadgeBaseProps,
