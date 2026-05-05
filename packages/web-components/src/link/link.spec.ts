@@ -86,13 +86,7 @@ test.describe('Link', () => {
 
     await fastPage.setTemplate({ attributes: { href: '#foo' } });
 
-    await page.evaluate(() => {
-      const link = document.querySelector('fluent-link');
-
-      if (!link) {
-        throw new Error('Expected fluent-link to be present');
-      }
-
+    await element.evaluate((link: Link) => {
       let clickCount = 0;
       link.addEventListener('click', () => {
         clickCount += 1;

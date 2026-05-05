@@ -182,13 +182,7 @@ test.describe('Anchor Button', () => {
 
     await fastPage.setTemplate({ attributes: { href: '#foo' } });
 
-    await page.evaluate(() => {
-      const anchorButton = document.querySelector('fluent-anchor-button');
-
-      if (!anchorButton) {
-        throw new Error('Expected fluent-anchor-button to be present');
-      }
-
+    await element.evaluate((anchorButton) => {
       let clickCount = 0;
       anchorButton.addEventListener('click', () => {
         clickCount += 1;
