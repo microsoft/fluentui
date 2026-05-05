@@ -2,7 +2,12 @@
 
 import type * as React from 'react';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
-import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
+import type {
+  TagPickerButtonBaseProps,
+  TagPickerButtonBaseState,
+  TagPickerButtonProps,
+  TagPickerButtonState,
+} from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 
@@ -19,6 +24,23 @@ export const useTagPickerButton_unstable = (
   props: TagPickerButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): TagPickerButtonState => {
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+  return {
+    ...useTagPickerButtonBase_unstable(props, ref),
+    size,
+  };
+};
+
+/**
+ * Create the base state required to render TagPickerButton, without design-only props.
+ *
+ * @param props - props from this instance of PickerButton (without size, appearance)
+ * @param ref - reference to root HTMLButtonElement of PickerButton
+ */
+export const useTagPickerButtonBase_unstable = (
+  props: TagPickerButtonBaseProps,
+  ref: React.Ref<HTMLButtonElement>,
+): TagPickerButtonBaseState => {
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
@@ -39,7 +61,7 @@ export const useTagPickerButton_unstable = (
       tabIndex: 0,
       children:
         value ||
-        // @ts-expect-error - FIXME: TS2339: Property 'placeholder' does not exist on type 'TagPickerButtonProps'
+        // @ts-expect-error - FIXME: TS2339: Property 'placeholder' does not exist on type 'TagPickerButtonBaseProps'
         props.placeholder,
       'aria-controls': open ? popoverId : undefined,
       ref,
@@ -54,16 +76,11 @@ export const useTagPickerButton_unstable = (
     },
   });
 
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
-
-  const state: TagPickerButtonState = {
+  return {
     components: {
       root: 'button',
     },
     root,
-    size,
     hasSelectedOption,
   };
-
-  return state;
 };

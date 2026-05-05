@@ -106,3 +106,13 @@ export type TagPickerContextValues = {
   activeDescendant: ActiveDescendantContextValue;
   listbox: ListboxContextValue;
 };
+
+/**
+ * TagPicker Base Props - omits design-only props
+ */
+export type TagPickerBaseProps = Omit<TagPickerProps, 'size' | 'appearance'>;
+
+/**
+ * TagPicker Base State - omits design-only state
+ */
+export type TagPickerBaseState = Omit<TagPickerState, 'size' | 'appearance'>;

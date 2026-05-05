@@ -3,14 +3,19 @@
 import * as React from 'react';
 import { elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
+  TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
   TagPickerProps,
   TagPickerState,
 } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
-import type { PositioningShorthandValue } from '@fluentui/react-positioning';
-import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import {
+  type PositioningShorthandValue,
+  resolvePositioningShorthand,
+  usePositioning,
+} from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '@fluentui/react-combobox';
 
@@ -26,11 +31,27 @@ const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after
  * @param props - props from this instance of Picker
  */
 export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
+  const { size = 'medium', appearance = 'outline', ...baseProps } = props;
+  const state = useTagPickerBase_unstable(baseProps);
+
+  return {
+    ...state,
+    size,
+    appearance,
+  };
+};
+
+/**
+ * Create the base state required to render TagPicker, without design-only props.
+ *
+ * @param props - props from this instance of TagPicker (without size, appearance)
+ */
+export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerBaseState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false, noPopover = false, disableAutoFocus } = props;
+  const { positioning, inline = false, noPopover = false, disableAutoFocus } = props;
 
   const { targetRef, containerRef } = usePositioning({
     position: 'below' as const,
@@ -87,7 +108,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     secondaryActionRef,
     tagPickerGroupRef,
     targetRef,
-    size,
     inline,
     open: comboboxState.open,
     mountNode: comboboxState.mountNode,
@@ -95,7 +115,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
       comboboxState.onOptionClick(event);
       comboboxState.setOpen(event, false);
     }),
-    appearance: comboboxState.appearance,
     clearSelection: comboboxState.clearSelection,
     getOptionById: comboboxState.getOptionById,
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
