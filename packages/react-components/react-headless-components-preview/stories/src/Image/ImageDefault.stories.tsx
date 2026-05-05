@@ -4,7 +4,7 @@ import styles from './image.module.css';
 
 const src = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image.png';
 
-export const Default = () => (
+export const Default = (): React.ReactNode => (
   <div className={styles.grid}>
     <div>
       <p>cover</p>
