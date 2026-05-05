@@ -1,8 +1,7 @@
 //Copied from @microsoft/fast-foundation
 
 import { type CaptureType, html, ref } from '@microsoft/fast-element';
-import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
-import { staticallyCompose } from '../utils/template-helpers.js';
+import { type StaticallyComposableHTML, staticallyCompose } from '../utils/template-helpers.js';
 
 /**
  * Start configuration options
