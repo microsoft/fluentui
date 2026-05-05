@@ -87,12 +87,20 @@ export function printSummary(results: DirectiveAnalysis[]): void {
   const redundant = results.filter(r => r.status === 'redundant').length;
   const active = results.filter(r => r.status === 'active').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
+  const broken = results.filter(r => r.status === 'broken').length;
+  const conflicting = results.filter(r => r.status === 'conflicting').length;
 
   console.log('## Summary\n');
   console.log(`- **Total directives:** ${total}`);
   console.log(`- **Redundant** (removable): ${redundant}`);
   console.log(`- **Active** (needs \`// justified:\` comment): ${active}`);
   console.log(`- **Skipped** (already justified): ${skipped}`);
+  if (broken > 0) {
+    console.log(`- **Broken** ('use memo' on non-compilable): ${broken}`);
+  }
+  if (conflicting > 0) {
+    console.log(`- **Conflicting** (both directives on same function): ${conflicting}`);
+  }
   console.log('');
 
   if (redundant > 0 && active > 0) {
@@ -108,9 +116,74 @@ export function printSummary(results: DirectiveAnalysis[]): void {
   } else if (active > 0) {
     console.log(`> **${active}** active directive(s) need a \`// justified: <reason>\` comment.`);
     console.log('> Run with `--fix` to annotate them.\n');
-  } else {
+  } else if (broken === 0 && conflicting === 0) {
     console.log('> All directives are justified. Nothing to do.\n');
   }
+
+  if (broken > 0) {
+    console.log(`> ⚠ **${broken}** broken \`'use memo'\` directive(s) — function cannot be compiled.\n`);
+  }
+  if (conflicting > 0) {
+    console.log(
+      `> ⚠ **${conflicting}** conflicting directive(s) — both 'use no memo' and 'use memo' on same function.\n`,
+    );
+  }
+}
+
+/**
+ * Print a compact one-liner directive summary for use in the `analyze` command.
+ */
+export function printDirectiveSummary(results: DirectiveAnalysis[]): void {
+  if (results.length === 0) {
+    console.log('\nDirectives: none found');
+    return;
+  }
+
+  const noMemoResults = results.filter(r => r.directiveType === 'use-no-memo');
+  const memoResults = results.filter(r => r.directiveType === 'use-memo');
+
+  const parts: string[] = [];
+
+  if (noMemoResults.length > 0) {
+    const noMemoRedundant = noMemoResults.filter(r => r.status === 'redundant').length;
+    const noMemoActive = noMemoResults.filter(r => r.status === 'active').length;
+    const noMemoSkipped = noMemoResults.filter(r => r.status === 'skipped').length;
+    const subParts = [`${noMemoResults.length} 'use no memo'`];
+    if (noMemoRedundant > 0) {
+      subParts.push(`${noMemoRedundant} redundant`);
+    }
+    if (noMemoActive > 0) {
+      subParts.push(`${noMemoActive} active`);
+    }
+    if (noMemoSkipped > 0) {
+      subParts.push(`${noMemoSkipped} justified`);
+    }
+    parts.push(subParts.join(' — '));
+  }
+
+  if (memoResults.length > 0) {
+    const memoRedundant = memoResults.filter(r => r.status === 'redundant').length;
+    const memoActive = memoResults.filter(r => r.status === 'active').length;
+    const memoBroken = memoResults.filter(r => r.status === 'broken').length;
+    const subParts = [`${memoResults.length} 'use memo'`];
+    if (memoRedundant > 0) {
+      subParts.push(`${memoRedundant} redundant`);
+    }
+    if (memoActive > 0) {
+      subParts.push(`${memoActive} active`);
+    }
+    if (memoBroken > 0) {
+      subParts.push(`${memoBroken} broken`);
+    }
+    parts.push(subParts.join(' — '));
+  }
+
+  const conflicting = results.filter(r => r.status === 'conflicting').length;
+  if (conflicting > 0) {
+    parts.push(`${conflicting} conflicting`);
+  }
+
+  console.log(`\nDirectives: ${parts.join('; ')}`);
 }
 
 function truncate(str: string, maxLen: number): string {

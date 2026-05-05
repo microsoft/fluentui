@@ -24,7 +24,7 @@ function makeAnalysis(filePath: string, line: number, bodyInsertionLine: number)
     functionName: 'TestComponent',
     status: 'compiled',
     compilerEvent: 'CompileSuccess',
-    manualMemo: { useMemo: 1, useCallback: 0, reactMemo: false },
+    manualMemo: { useMemo: 1, useCallback: 0, reactMemo: false, reactMemoHasComparator: false },
     bodyInsertionLine,
   };
 }
@@ -50,7 +50,7 @@ describe('applyAnnotations', () => {
       makeAnalysis(filePath, 3, 4),
       {
         ...makeAnalysis(filePath, 8, 9),
-        manualMemo: { useMemo: 0, useCallback: 1, reactMemo: false },
+        manualMemo: { useMemo: 0, useCallback: 1, reactMemo: false, reactMemoHasComparator: false },
       },
     ];
 

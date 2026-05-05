@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
 
+import type { CompilationMode } from '../types';
+
 export const DEFAULT_EXCLUDE = [
   '**/__tests__/**',
   '**/testing/**',
@@ -43,6 +45,12 @@ export function sharedOptions<T>(yarg: Argv<T>) {
       array: true as const,
       describe: 'Glob patterns passed to fs.globSync exclude',
       default: DEFAULT_EXCLUDE,
+    })
+    .option('mode', {
+      type: 'string' as const,
+      describe: 'React Compiler compilation mode',
+      choices: ['infer', 'annotation', 'all'] as const,
+      default: 'infer' as CompilationMode,
     });
 }
 

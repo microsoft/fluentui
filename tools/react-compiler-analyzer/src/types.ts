@@ -7,7 +7,9 @@ export interface FileEntry {
 
 // ── Directive analysis types ──
 
-export type DirectiveStatus = 'redundant' | 'active' | 'skipped';
+export type DirectiveStatus = 'redundant' | 'active' | 'skipped' | 'broken' | 'conflicting';
+
+export type DirectiveType = 'use-no-memo' | 'use-memo';
 
 export interface DirectiveLocation {
   /** 1-based line number in the original source */
@@ -18,6 +20,8 @@ export interface DirectiveLocation {
   justified: boolean;
   /** The justification reason, if present */
   justification?: string;
+  /** Which directive type this location represents */
+  directiveType: DirectiveType;
 }
 
 export interface DirectiveAnalysis {
@@ -28,11 +32,13 @@ export interface DirectiveAnalysis {
   status: DirectiveStatus;
   compilerEvent: 'CompileError' | 'CompileSuccess' | 'PipelineError' | 'none' | 'skipped';
   reason?: string;
+  directiveType: DirectiveType;
 }
 
 export interface AnalyzerOptions {
   concurrency: number;
   verbose: boolean;
+  compilationMode?: CompilationMode;
 }
 
 export interface FixResult {
