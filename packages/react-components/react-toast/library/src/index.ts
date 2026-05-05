@@ -1,5 +1,19 @@
-export { useToastController } from './state';
-export type { ToastPosition, ToastId, ToastOffset, ToastPoliteness, ToastStatus, ToastIntent } from './state';
+export { useToastController, useToaster } from './state';
+export type {
+  ToastPosition,
+  ToastId,
+  ToastOffset,
+  ToastPoliteness,
+  ToastStatus,
+  ToastIntent,
+  ToasterId,
+  ToastImperativeRef,
+  Toast as ToastData,
+  ToastChangeData,
+  ToastChangeHandler,
+  DispatchToastOptions,
+  UpdateToastOptions,
+} from './state';
 
 export { ToastTrigger, useToastTrigger_unstable, renderToastTrigger_unstable } from './ToastTrigger';
 export type { ToastTriggerChildProps, ToastTriggerProps, ToastTriggerState } from './ToastTrigger';
@@ -11,26 +25,47 @@ export {
   toasterClassNames,
 } from './Toaster';
 export type { ToasterProps, ToasterState, ToasterSlots } from './Toaster';
-export { Toast, useToastStyles_unstable, useToast_unstable, renderToast_unstable, toastClassNames } from './Toast';
-export type { ToastProps, ToastState, ToastSlots } from './Toast';
+export {
+  Toast,
+  useToastStyles_unstable,
+  useToastBase_unstable,
+  useToast_unstable,
+  renderToast_unstable,
+  toastClassNames,
+} from './Toast';
+export type { ToastBaseProps, ToastBaseState, ToastProps, ToastState, ToastSlots } from './Toast';
 
 export {
   ToastTitle,
   useToastTitleStyles_unstable,
+  useToastTitleBase_unstable,
   useToastTitle_unstable,
   renderToastTitle_unstable,
   toastTitleClassNames,
 } from './ToastTitle';
-export type { ToastTitleProps, ToastTitleState, ToastTitleSlots } from './ToastTitle';
+export type {
+  ToastTitleBaseProps,
+  ToastTitleBaseState,
+  ToastTitleProps,
+  ToastTitleState,
+  ToastTitleSlots,
+} from './ToastTitle';
 
 export {
   ToastBody,
   useToastBodyStyles_unstable,
+  useToastBodyBase_unstable,
   useToastBody_unstable,
   renderToastBody_unstable,
   toastBodyClassNames,
 } from './ToastBody';
-export type { ToastBodyProps, ToastBodyState, ToastBodySlots } from './ToastBody';
+export type {
+  ToastBodyBaseProps,
+  ToastBodyBaseState,
+  ToastBodyProps,
+  ToastBodyState,
+  ToastBodySlots,
+} from './ToastBody';
 
 export {
   ToastFooter,

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add useToastBase_unstable, useToastTitleBase_unstable, and useToastBodyBase_unstable hooks; export useToaster, ToastData, ToasterId, ToastImperativeRef, ToastChangeData, ToastChangeHandler, DispatchToastOptions, UpdateToastOptions from public API",
+  "packageName": "@fluentui/react-toast",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
