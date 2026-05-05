@@ -4,7 +4,7 @@ import { analyzeCommand } from './commands/analyze';
 import { lintCommand } from './commands/lint';
 
 export async function cli(): Promise<void> {
-  await yargs(process.argv.slice(2))
+  yargs(process.argv.slice(2))
     .scriptName('react-compiler-analyzer')
     .usage('Analyze React Compiler behavior on TypeScript source files.\n\nUsage: $0 <command> <path>')
     .command(lintCommand)

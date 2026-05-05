@@ -1,13 +1,21 @@
 import { join } from 'path';
 
-import { analyzeFileForCoverage } from '../coverage-analyzer';
+import { compileFile } from '../compiler';
+import { deriveCoverage } from '../coverage-analyzer';
+import type { FileEntry } from '../types';
 
 const FIXTURES_DIR = join(__dirname, '__fixtures__', 'coverage-analyzer');
 
-describe('analyzeFileForCoverage — manual memo integration', () => {
+async function analyzeFixture(fileName: string) {
+  const filePath = join(FIXTURES_DIR, fileName);
+  const entry: FileEntry = { filePath, packageName: 'test-pkg' };
+  const compiled = await compileFile(entry, 'infer', false);
+  return deriveCoverage(compiled);
+}
+
+describe('deriveCoverage — manual memo integration', () => {
   it('detects manual memoization in a compilable function', async () => {
-    const filePath = join(FIXTURES_DIR, 'compilable-with-memo.tsx');
-    const results = await analyzeFileForCoverage(filePath, 'test-pkg', 'infer', false);
+    const results = await analyzeFixture('compilable-with-memo.tsx');
 
     const compiled = results.filter(r => r.status === 'compiled');
     expect(compiled.length).toBeGreaterThan(0);
@@ -21,8 +29,7 @@ describe('analyzeFileForCoverage — manual memo integration', () => {
   });
 
   it('detects manual memoization in functions with errors', async () => {
-    const filePath = join(FIXTURES_DIR, 'error-with-memo.tsx');
-    const results = await analyzeFileForCoverage(filePath, 'test-pkg', 'infer', false);
+    const results = await analyzeFixture('error-with-memo.tsx');
 
     // The function may error or compile depending on compiler version
     // but it should still have manualMemo data if detected
@@ -35,8 +42,7 @@ describe('analyzeFileForCoverage — manual memo integration', () => {
   });
 
   it('returns no manualMemo for functions without memoization hooks', async () => {
-    const filePath = join(FIXTURES_DIR, 'compilable-no-memo.tsx');
-    const results = await analyzeFileForCoverage(filePath, 'test-pkg', 'infer', false);
+    const results = await analyzeFixture('compilable-no-memo.tsx');
 
     const compiled = results.filter(r => r.status === 'compiled');
     expect(compiled.length).toBeGreaterThan(0);
@@ -47,8 +53,7 @@ describe('analyzeFileForCoverage — manual memo integration', () => {
   });
 
   it('detects reactMemoHasComparator for React.memo with custom comparator', async () => {
-    const filePath = join(FIXTURES_DIR, 'memo-with-comparator.tsx');
-    const results = await analyzeFileForCoverage(filePath, 'test-pkg', 'infer', false);
+    const results = await analyzeFixture('memo-with-comparator.tsx');
 
     const withMemo = results.filter(r => r.manualMemo?.reactMemo);
     expect(withMemo.length).toBeGreaterThan(0);

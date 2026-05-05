@@ -1,9 +1,13 @@
 import { extname } from 'node:path';
+import { readFile } from 'node:fs/promises';
 
 import { transformAsync } from '@babel/core';
 import type { PluginItem } from '@babel/core';
 
-import type { CompilationMode } from './types';
+import { processFilesConcurrently } from './concurrency';
+import { manualMemoPlugin } from './manual-memo-plugin';
+import type { ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
+import type { CompilationMode, CompileFilesOptions, FileEntry } from './types';
 
 export interface CompilerEvent {
   kind: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError' | string;
@@ -125,4 +129,54 @@ export async function compileSource(
   }
 
   return { events };
+}
+
+// ── Unified file compilation ──
+
+export interface FileCompilationResult {
+  filePath: string;
+  packageName: string;
+  source: string;
+  events: CompilerEvent[];
+  error?: Error;
+  manualMemo: Map<string, ManualMemoEntry>;
+}
+
+/**
+ * Read and compile a single file with the React Compiler + manualMemoPlugin.
+ * Returns all metadata needed for both coverage and directive analysis.
+ */
+export async function compileFile(
+  entry: FileEntry,
+  compilationMode: CompilationMode,
+  verbose: boolean,
+): Promise<FileCompilationResult> {
+  const source = await readFile(entry.filePath, 'utf-8');
+  const manualMemo = new Map<string, ManualMemoEntry>();
+
+  const { events, error } = await compileSource(source, entry.filePath, {
+    compilationMode,
+    plugins: [[manualMemoPlugin, { results: manualMemo } as ManualMemoPluginOptions]],
+  });
+
+  if (verbose && !error) {
+    for (const ev of events) {
+      const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
+      const name = ev.fnName ?? '';
+      console.log(`  [${ev.kind}] ${entry.filePath} fn@${loc} ${name}`);
+    }
+  }
+
+  return { filePath: entry.filePath, packageName: entry.packageName, source, events, error, manualMemo };
+}
+
+/**
+ * Compile multiple files with concurrency-limited parallelism.
+ */
+export async function compileFiles(files: FileEntry[], options: CompileFilesOptions): Promise<FileCompilationResult[]> {
+  return processFilesConcurrently(
+    files,
+    entry => compileFile(entry, options.compilationMode, options.verbose).then(r => [r]),
+    { concurrency: options.concurrency, verbose: options.verbose },
+  );
 }

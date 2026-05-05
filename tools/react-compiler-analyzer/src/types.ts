@@ -35,12 +35,6 @@ export interface DirectiveAnalysis {
   directiveType: DirectiveType;
 }
 
-export interface AnalyzerOptions {
-  concurrency: number;
-  verbose: boolean;
-  compilationMode?: CompilationMode;
-}
-
 export interface FixResult {
   filesModified: number;
   directivesRemoved: number;
@@ -87,9 +81,8 @@ export interface AnnotateResult {
   functionsAnnotated: number;
 }
 
-export interface CoverageAnalyzerOptions {
+export interface CompileFilesOptions {
   concurrency: number;
   verbose: boolean;
   compilationMode: CompilationMode;
-  annotate?: boolean;
 }

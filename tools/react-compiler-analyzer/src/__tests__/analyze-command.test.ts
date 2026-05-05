@@ -2,10 +2,15 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
-import { analyzeFilesForCoverage } from '../coverage-analyzer';
+import { compileFile } from '../compiler';
+import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
-import { printMigrationCandidates } from '../coverage-reporter';
-import type { FileEntry } from '../types';
+import type { FileEntry, FunctionAnalysis } from '../types';
+
+async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
+  const compiled = await compileFile(entry, 'infer', false);
+  return deriveCoverage(compiled);
+}
 
 describe('coverage command integration', () => {
   let tempDir: string;
@@ -30,12 +35,7 @@ export function MyComponent({ items }: { items: string[] }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-integration-pkg' }];
-    const results = await analyzeFilesForCoverage(files, {
-      concurrency: 1,
-      verbose: false,
-      compilationMode: 'infer',
-    });
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
 
     const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
     expect(candidates.length).toBeGreaterThan(0);
@@ -55,12 +55,7 @@ export function Annotatable({ items }: { items: string[] }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-integration-pkg' }];
-    const results = await analyzeFilesForCoverage(files, {
-      concurrency: 1,
-      verbose: false,
-      compilationMode: 'infer',
-    });
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
 
     const outcome = await applyAnnotations(results);
 
@@ -84,23 +79,15 @@ export function Idempotent({ items }: { items: string[] }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-integration-pkg' }];
-    const results = await analyzeFilesForCoverage(files, {
-      concurrency: 1,
-      verbose: false,
-      compilationMode: 'infer',
-    });
+    const entry: FileEntry = { filePath: componentFile, packageName: 'test-integration-pkg' };
 
     // First pass
+    const results = await analyzeForCoverage(entry);
     await applyAnnotations(results);
     const firstContent = readFileSync(componentFile, 'utf-8');
 
     // Re-analyze after annotation
-    const results2 = await analyzeFilesForCoverage([{ filePath: componentFile, packageName: 'test-integration-pkg' }], {
-      concurrency: 1,
-      verbose: false,
-      compilationMode: 'infer',
-    });
+    const results2 = await analyzeForCoverage(entry);
 
     // Second pass
     const outcome2 = await applyAnnotations(results2);
@@ -131,12 +118,7 @@ export function NamespaceComponent(props: { items: string[]; multiplier: number 
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-integration-pkg' }];
-    const results = await analyzeFilesForCoverage(files, {
-      concurrency: 1,
-      verbose: false,
-      compilationMode: 'infer',
-    });
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
 
     const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
     expect(candidates.length).toBeGreaterThan(0);

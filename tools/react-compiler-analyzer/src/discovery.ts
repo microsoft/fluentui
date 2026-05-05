@@ -40,6 +40,22 @@ export async function findPackageName(startDir: string): Promise<string> {
 }
 
 /**
+ * Filter a file list to only those containing directives.
+ */
+export async function filterFilesWithDirectives(files: FileEntry[]): Promise<FileEntry[]> {
+  const result: FileEntry[] = [];
+
+  for (const entry of files) {
+    const content = await readFile(entry.filePath, 'utf-8');
+    if (USE_NO_MEMO_CONTENT_RE.test(content) || USE_MEMO_CONTENT_RE.test(content)) {
+      result.push(entry);
+    }
+  }
+
+  return result;
+}
+
+/**
  * Discover files containing 'use no memo' or 'use memo' directives in the given directory.
  */
 export async function discoverFilesWithDirectives(
@@ -48,15 +64,8 @@ export async function discoverFilesWithDirectives(
   exclude: string[],
   verbose: boolean,
 ): Promise<FileEntry[]> {
-  const files: FileEntry[] = [];
-  const tsFiles = globTypeScriptFiles(scanDir, exclude);
-
-  for (const filePath of tsFiles) {
-    const content = await readFile(filePath, 'utf-8');
-    if (USE_NO_MEMO_CONTENT_RE.test(content) || USE_MEMO_CONTENT_RE.test(content)) {
-      files.push({ filePath, packageName });
-    }
-  }
+  const allFiles = await discoverAllFiles(scanDir, packageName, exclude, false);
+  const files = await filterFilesWithDirectives(allFiles);
 
   if (verbose && files.length === 0) {
     console.log(`  No directive files found in ${scanDir}`);

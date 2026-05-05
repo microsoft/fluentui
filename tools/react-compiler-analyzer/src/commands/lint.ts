@@ -1,10 +1,11 @@
 import type { CommandModule } from 'yargs';
 
-import { analyzeFiles } from '../analyzer';
+import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
+import { compileFiles } from '../compiler';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import { printReport, printSummary } from '../reporter';
-import type { CompilationMode } from '../types';
+import type { CompilationMode, DirectiveAnalysis } from '../types';
 import { sharedOptions, validateConcurrency, validatePath } from './shared';
 
 type LintArgv = {
@@ -47,11 +48,22 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
 
     console.log(`Files with directives: ${files.length}\n`);
 
-    const results = await analyzeFiles(files, {
+    // Single compilation pass for all directive files
+    const compilationResults = await compileFiles(files, {
       concurrency: argv.concurrency,
       verbose: argv.verbose,
       compilationMode: argv.mode,
     });
+
+    // Derive directive statuses from compilation results
+    const results: DirectiveAnalysis[] = [];
+
+    for (const compiled of compilationResults) {
+      // 'use memo' statuses come directly from first compilation (no recompile)
+      results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode));
+      // 'use no memo' requires strip + recompile
+      results.push(...(await analyzeNoMemoDirectives(compiled, argv.mode, argv.verbose)));
+    }
 
     const workspaceRoot = process.cwd();
     printReport(results, workspaceRoot, argv['full-reasons']);

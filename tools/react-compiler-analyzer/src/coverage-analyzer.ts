@@ -1,56 +1,19 @@
-import { readFile } from 'node:fs/promises';
-
-import { compileSource, extractDetailReason } from './compiler';
-import type { CompilerEvent } from './compiler';
-import { processFilesConcurrently } from './concurrency';
-import type {
-  FunctionAnalysis,
-  FileEntry,
-  CoverageAnalyzerOptions,
-  CompilationMode,
-  MemoStats,
-  ManualMemoization,
-} from './types';
-import { manualMemoPlugin, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
+import { extractDetailReason } from './compiler';
+import type { FileCompilationResult } from './compiler';
+import type { FunctionAnalysis, MemoStats } from './types';
 
 /**
- * Analyze a single file to determine which functions the React Compiler would memoize.
+ * Derive coverage results from a pre-compiled FileCompilationResult.
+ * Pure function — no I/O, no compilation.
  */
-export async function analyzeFileForCoverage(
-  filePath: string,
-  packageName: string,
-  compilationMode: CompilationMode,
-  verbose: boolean,
-): Promise<FunctionAnalysis[]> {
-  const source = await readFile(filePath, 'utf-8');
+export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[] {
+  if (result.error) {
+    return [];
+  }
+
   const results: FunctionAnalysis[] = [];
 
-  // Collect manual memoization data
-  const manualMemoResults = new Map<string, ManualMemoEntry>();
-
-  const { events, error } = await compileSource(source, filePath, {
-    compilationMode,
-    plugins: [[manualMemoPlugin, { results: manualMemoResults } as ManualMemoPluginOptions]],
-  });
-
-  if (error) {
-    if (verbose) {
-      console.error(`  babel error in ${filePath}: ${error.message}`);
-    }
-    // Nothing to report — file-level parse errors don't produce function-level results
-    return results;
-  }
-
-  if (verbose) {
-    for (const ev of events) {
-      const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
-      const name = ev.fnName ?? '';
-      console.log(`  [${ev.kind}] ${filePath} fn@${loc} ${name}`);
-    }
-  }
-
-  for (const event of events) {
-    // Skip non-analysis events (Timing, AutoDeps*, etc.)
+  for (const event of result.events) {
     if (!['CompileSuccess', 'CompileError', 'CompileSkip', 'PipelineError'].includes(event.kind)) {
       continue;
     }
@@ -69,8 +32,8 @@ export async function analyzeFileForCoverage(
       };
 
       results.push({
-        filePath,
-        packageName,
+        filePath: result.filePath,
+        packageName: result.packageName,
         line,
         column,
         functionName,
@@ -80,8 +43,8 @@ export async function analyzeFileForCoverage(
       });
     } else if (event.kind === 'CompileSkip') {
       results.push({
-        filePath,
-        packageName,
+        filePath: result.filePath,
+        packageName: result.packageName,
         line,
         column,
         functionName,
@@ -91,8 +54,8 @@ export async function analyzeFileForCoverage(
       });
     } else if (event.kind === 'CompileError') {
       results.push({
-        filePath,
-        packageName,
+        filePath: result.filePath,
+        packageName: result.packageName,
         line,
         column,
         functionName,
@@ -102,8 +65,8 @@ export async function analyzeFileForCoverage(
       });
     } else if (event.kind === 'PipelineError') {
       results.push({
-        filePath,
-        packageName,
+        filePath: result.filePath,
+        packageName: result.packageName,
         line,
         column,
         functionName,
@@ -115,35 +78,19 @@ export async function analyzeFileForCoverage(
   }
 
   // Merge manual memoization data into results by matching function location
-  for (const result of results) {
-    const key = `${result.line}:${result.column}`;
-    const memoEntry = manualMemoResults.get(key);
+  for (const r of results) {
+    const key = `${r.line}:${r.column}`;
+    const memoEntry = result.manualMemo.get(key);
     if (memoEntry) {
-      result.manualMemo = {
+      r.manualMemo = {
         useMemo: memoEntry.useMemo,
         useCallback: memoEntry.useCallback,
         reactMemo: memoEntry.reactMemo,
         reactMemoHasComparator: memoEntry.reactMemoHasComparator,
       };
-      result.bodyInsertionLine = memoEntry.bodyInsertionLine;
+      r.bodyInsertionLine = memoEntry.bodyInsertionLine;
     }
   }
 
   return results;
-}
-
-/**
- * Analyze multiple files for coverage with concurrency-limited parallelism.
- */
-export async function analyzeFilesForCoverage(
-  files: FileEntry[],
-  options: CoverageAnalyzerOptions,
-): Promise<FunctionAnalysis[]> {
-  const { concurrency, verbose, compilationMode } = options;
-
-  return processFilesConcurrently(
-    files,
-    entry => analyzeFileForCoverage(entry.filePath, entry.packageName, compilationMode, verbose),
-    { concurrency, verbose },
-  );
 }
