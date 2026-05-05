@@ -1,4 +1,4 @@
-import { Spinner } from '@fluentui/react-headless-components-preview';
+import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 
 import descriptionMd from './SpinnerDescription.md';
 

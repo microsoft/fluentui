@@ -1,4 +1,4 @@
-import { ToggleButton } from '@fluentui/react-headless-components-preview';
+import { ToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 
 import descriptionMd from './ToggleButtonDescription.md';
 

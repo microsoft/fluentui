@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   colorBrandStroke1,
   colorBrandStroke2,
@@ -154,8 +154,8 @@ export const styles = css`
       transform: rotate(70deg);
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     .background {
       display: none;
     }
@@ -164,5 +164,5 @@ export const styles = css`
       border-block-start-color: Highlight;
       border-right-color: Highlight;
     }
-  `),
-);
+  }
+`;

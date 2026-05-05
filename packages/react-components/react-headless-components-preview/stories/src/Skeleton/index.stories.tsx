@@ -1,4 +1,4 @@
-import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview';
+import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
 import descriptionMd from './SkeletonDescription.md';
 

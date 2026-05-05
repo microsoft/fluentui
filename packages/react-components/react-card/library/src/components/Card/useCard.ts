@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
-import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
+import { useFocusableGroup, useFocusFinders, useFocusWithin } from '@fluentui/react-tabster';
 
-import type { CardBaseProps, CardBaseState, CardProps, CardState } from './Card.types';
+import type { CardBaseProps, CardBaseState, CardOnSelectionChangeEvent, CardProps, CardState } from './Card.types';
 import { useCardSelectable } from './useCardSelectable';
 import { cardContextDefaultValue } from './CardContext';
 
@@ -15,58 +15,30 @@ const focusMap = {
   'tab-only': 'unlimited',
 } as const;
 
+const interactiveEventProps = [
+  'onClick',
+  'onDoubleClick',
+  'onMouseUp',
+  'onMouseDown',
+  'onPointerUp',
+  'onPointerDown',
+  'onTouchStart',
+  'onTouchEnd',
+  'onDragStart',
+  'onDragEnd',
+] as (keyof React.HTMLAttributes<HTMLElement>)[];
+
 /**
- * Create the state for interactive cards.
- *
- * This internal hook defines if the card is interactive
- * and control focus properties based on that.
- *
- * @param props - props from this instance of Card
+ * Compute whether a Card is interactive based on the presence of pointer/mouse
+ * event props and the disabled flag. This intentionally does not depend on
+ * focus management utilities so it can be used from headless contexts.
  */
-const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...props }: CardProps) => {
-  const interactive = (
-    [
-      'onClick',
-      'onDoubleClick',
-      'onMouseUp',
-      'onMouseDown',
-      'onPointerUp',
-      'onPointerDown',
-      'onTouchStart',
-      'onTouchEnd',
-      'onDragStart',
-      'onDragEnd',
-    ] as (keyof React.HTMLAttributes<HTMLElement>)[]
-  ).some(prop => props[prop]);
-
-  // default focusMode to tab-only when interactive, and off when not
-  const focusMode = initialFocusMode ?? (interactive ? 'no-tab' : 'off');
-
-  const groupperAttrs = useFocusableGroup({
-    tabBehavior: focusMap[focusMode],
-  });
-
-  if (disabled) {
-    return {
-      interactive: false,
-      focusAttributes: null,
-    };
+const computeInteractive = (props: CardProps): boolean => {
+  if (props.disabled) {
+    return false;
   }
 
-  if (focusMode === 'off') {
-    return {
-      interactive,
-      focusAttributes: null,
-    };
-  }
-
-  return {
-    interactive,
-    focusAttributes: {
-      ...groupperAttrs,
-      tabIndex: 0,
-    },
-  };
+  return interactiveEventProps.some(prop => props[prop] !== undefined);
 };
 
 /**
@@ -80,7 +52,50 @@ const useCardInteractive = ({ focusMode: initialFocusMode, disabled = false, ...
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
   const { appearance = 'filled', orientation = 'vertical', size = 'medium', ...cardProps } = props;
-  const state = useCardBase_unstable(cardProps, ref);
+  const { disabled = false, focusMode: focusModeProp } = props;
+
+  // Focus-within ref drives the styled focus outline; merged with the user ref
+  // before being passed down so the base hook does not depend on react-tabster.
+  const focusWithinRef = useFocusWithin<HTMLDivElement>();
+  const cardRef = useMergedRefs(focusWithinRef, ref);
+
+  // Focus-aware predicate that prevents toggling the selection when the user
+  // interacts with an inner focusable element.
+  const { findAllFocusable } = useFocusFinders();
+  const shouldRestrictTriggerAction = React.useCallback(
+    (event: CardOnSelectionChangeEvent) => {
+      if (!focusWithinRef.current) {
+        return false;
+      }
+
+      const focusableElements = findAllFocusable(focusWithinRef.current);
+      const target = event.target as HTMLElement;
+
+      return focusableElements.some(element => element.contains(target));
+    },
+    [findAllFocusable, focusWithinRef],
+  );
+
+  const interactive = computeInteractive(props);
+  const focusMode = focusModeProp ?? (interactive ? 'no-tab' : 'off');
+  const groupperAttrs = useFocusableGroup({
+    tabBehavior: focusMap[focusMode],
+  });
+
+  const state = useCardBase_unstable(
+    {
+      shouldRestrictTriggerAction,
+      ...cardProps,
+    },
+    cardRef,
+  );
+
+  // Apply focusable-group attributes only when the card is not selectable, not
+  // disabled and the focus mode is enabled.
+  const shouldApplyFocusAttributes = !disabled && !state.selectable && focusMode !== 'off';
+  if (shouldApplyFocusAttributes) {
+    Object.assign(state.root, groupperAttrs, { tabIndex: 0 });
+  }
 
   return {
     ...state,
@@ -92,10 +107,16 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
 
 /**
  * Base hook for Card component, which manages state related to interactivity, selection,
- * focus management, ARIA attributes, and slot structure without design props.
+ * ARIA attributes, and slot structure without design props or focus management.
+ *
+ * This hook is intentionally free of `@fluentui/react-tabster` so that it can be
+ * consumed by headless component packages. Focus management (focusable group
+ * attributes, focus-within, focus-restriction predicate) is layered on top in
+ * `useCard_unstable`.
  *
  * @param props - props from this instance of Card
  * @param ref - reference to the root element of Card
+ * @param options - optional behavior overrides such as a focus-aware restriction predicate
  */
 export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDivElement>): CardBaseState => {
   const { disabled = false, ...restProps } = props;
@@ -103,16 +124,12 @@ export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDi
   const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
   const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
 
-  const cardBaseRef = useFocusWithin<HTMLDivElement>();
   const { selectable, selected, selectableCardProps, selectFocused, checkboxSlot, floatingActionSlot } =
-    useCardSelectable(props, { referenceId, referenceLabel }, cardBaseRef);
+    useCardSelectable(props, { referenceId, referenceLabel });
 
-  const cardRef = useMergedRefs(cardBaseRef, ref);
-
-  const { interactive, focusAttributes } = useCardInteractive(props);
+  const interactive = computeInteractive(props);
 
   let cardRootProps = {
-    ...(!selectable ? focusAttributes : null),
     ...restProps,
     ...selectableCardProps,
   };
@@ -146,7 +163,7 @@ export const useCardBase_unstable = (props: CardBaseProps, ref: React.Ref<HTMLDi
 
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: cardRef,
+        ref,
         role: 'group',
         ...cardRootProps,
       }),

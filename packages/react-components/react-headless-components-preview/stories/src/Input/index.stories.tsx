@@ -1,4 +1,4 @@
-import { Input } from '@fluentui/react-headless-components-preview';
+import { Input } from '@fluentui/react-headless-components-preview/input';
 
 import descriptionMd from './InputDescription.md';
 

@@ -24,6 +24,19 @@ export const parameters = {
     ...rootPreview.parameters.exportToSandbox,
     ...tailwindSandboxTemplate,
   },
+  reactStorybookAddon: {
+    docs: {
+      argTable: {
+        slotsApi: true,
+        nativePropsApi: true,
+      },
+      copyAsMarkdown: true,
+      tableOfContents: true,
+      dirSwitcher: true,
+      // headless components don't support theming
+      themePicker: false,
+    },
+  },
 };
 
 export const tags = ['autodocs'];

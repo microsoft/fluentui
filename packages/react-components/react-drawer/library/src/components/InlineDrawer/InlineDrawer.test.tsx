@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { InlineDrawer } from './InlineDrawer';
 import { isConformant } from '../../testing/isConformant';
 import type { InlineDrawerProps } from './InlineDrawer.types';
+import { useInlineDrawer_unstable } from './useInlineDrawer';
 
 describe('InlineDrawer', () => {
   isConformant<InlineDrawerProps>({
@@ -36,5 +38,12 @@ describe('InlineDrawer', () => {
         </div>
       </div>
     `);
+  });
+
+  it('keeps size in state for styled drawer styles and motion', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { result } = renderHook(() => useInlineDrawer_unstable({ open: true, size: 'large' }, ref));
+
+    expect(result.current.size).toBe('large');
   });
 });

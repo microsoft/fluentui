@@ -1,4 +1,4 @@
-import { Textarea } from '@fluentui/react-headless-components-preview';
+import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 import descriptionMd from './TextareaDescription.md';
 

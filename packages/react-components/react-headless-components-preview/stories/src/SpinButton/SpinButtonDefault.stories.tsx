@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from '@fluentui/react-headless-components-preview';
+import { SpinButton } from '@fluentui/react-headless-components-preview/spin-button';
 
 export const Default = (): React.ReactNode => (
   <div className="flex w-full max-w-sm flex-col gap-2">

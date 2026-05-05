@@ -1,4 +1,4 @@
-import { Field } from '@fluentui/react-headless-components-preview';
+import { Field } from '@fluentui/react-headless-components-preview/field';
 
 import descriptionMd from './FieldDescription.md';
 

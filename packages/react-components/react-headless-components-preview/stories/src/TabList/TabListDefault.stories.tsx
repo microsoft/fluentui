@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TabList, Tab } from '@fluentui/react-headless-components-preview';
+import { TabList, Tab } from '@fluentui/react-headless-components-preview/tab-list';
 
 const tabs = [
   { value: 'account', label: 'Account', content: 'Manage your account settings and preferences.' },

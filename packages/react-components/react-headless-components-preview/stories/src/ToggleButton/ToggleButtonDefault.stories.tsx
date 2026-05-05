@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleButton } from '@fluentui/react-headless-components-preview';
+import { ToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
 
 export const Default = (): React.ReactNode => {
   const [checked, setChecked] = React.useState(false);

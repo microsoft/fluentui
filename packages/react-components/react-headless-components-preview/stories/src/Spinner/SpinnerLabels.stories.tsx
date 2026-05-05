@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Spinner } from '@fluentui/react-headless-components-preview';
+import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 import { SpinnerIosRegular } from '@fluentui/react-icons';
 
 export const Labels = (): React.ReactNode => (
