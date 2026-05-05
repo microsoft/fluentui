@@ -7,6 +7,7 @@ export interface ManualMemoEntry {
   useMemo: number;
   useCallback: number;
   reactMemo: boolean;
+  reactMemoHasComparator: boolean;
   bodyInsertionLine: number;
 }
 
@@ -150,11 +151,13 @@ export function manualMemoPlugin(): PluginObj {
               useMemo: 0,
               useCallback: 0,
               reactMemo: false,
+              reactMemoHasComparator: false,
               bodyInsertionLine: getBodyInsertionLine(targetFnPath),
             };
             opts.results.set(key, entry);
           }
           entry.reactMemo = true;
+          entry.reactMemoHasComparator = path.node.arguments.length > 1;
           return;
         }
 
@@ -180,6 +183,7 @@ export function manualMemoPlugin(): PluginObj {
             useMemo: 0,
             useCallback: 0,
             reactMemo: false,
+            reactMemoHasComparator: false,
             bodyInsertionLine: getBodyInsertionLine(fnPath),
           };
           opts.results.set(key, entry);
