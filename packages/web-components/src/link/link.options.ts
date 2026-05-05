@@ -1,5 +1,5 @@
 import { AnchorAttributes, AnchorTarget } from '../anchor-button/anchor-button.options.js';
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * Link Appearance constants

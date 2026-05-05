@@ -1,6 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { StartEnd } from '../patterns/index.js';
+import { StartEnd } from '../patterns/start-end.js';
 import {
   CounterBadgeAppearance,
   CounterBadgeColor,

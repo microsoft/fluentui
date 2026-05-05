@@ -1,7 +1,7 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { html, slotted } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
-import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { MenuItem, MenuItemOptions } from './menu-item.js';
 
 const Checkmark16Filled = html.partial(

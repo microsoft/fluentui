@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
-import { whitespaceFilter } from '../utils/index.js';
+import { whitespaceFilter } from '../utils/whitespace-filter.js';
 import type { Label } from '../label/label.js';
 import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
 import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';

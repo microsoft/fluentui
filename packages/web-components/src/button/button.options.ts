@@ -1,5 +1,5 @@
-import type { StartEndOptions } from '../patterns/index.js';
-import type { ValuesOf } from '../utils/index.js';
+import type { StartEndOptions } from '../patterns/start-end.js';
+import type { ValuesOf } from '../utils/typings.js';
 import type { Button } from './button.js';
 
 /**
