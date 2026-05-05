@@ -1,6 +1,6 @@
 import type { ButtonOptions } from '../button/button.options.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * Menu Button Appearance constants

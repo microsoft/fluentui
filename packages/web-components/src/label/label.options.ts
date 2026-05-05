@@ -1,4 +1,4 @@
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * A Labels font size can be small, medium, or large

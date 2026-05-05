@@ -1,4 +1,4 @@
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 import { Dialog } from './dialog.js';
 
 /**
