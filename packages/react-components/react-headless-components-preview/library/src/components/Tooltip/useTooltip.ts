@@ -128,7 +128,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     return () => {
       el.removeEventListener('toggle', onToggle);
     };
-  }, [contentRef, visible, setVisible]);
+  }, [contentRef, visible, setVisible, onToggle]);
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
