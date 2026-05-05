@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './dialog-body.options.js';
 import { DialogBody } from './dialog-body.js';
 import { template } from './dialog-body.template.js';
 import { styles } from './dialog-body.styles.js';
@@ -11,7 +11,7 @@ import { styles } from './dialog-body.styles.js';
  * HTML Element: \<fluent-dialog-body\>
  */
 export const definition = DialogBody.compose({
-  name: `${FluentDesignSystem.prefix}-dialog-body`,
+  name: tagName,
   template,
   styles,
 });

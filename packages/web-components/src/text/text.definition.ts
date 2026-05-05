@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './text.options.js';
 import { Text } from './text.js';
 import { styles } from './text.styles.js';
 import { template } from './text.template.js';
@@ -12,7 +12,7 @@ import { template } from './text.template.js';
  * HTML Element: \<fluent-text\>
  */
 export const definition = Text.compose({
-  name: `${FluentDesignSystem.prefix}-text`,
+  name: tagName,
   template,
   styles,
 });

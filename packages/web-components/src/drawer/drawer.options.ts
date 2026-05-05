@@ -1,4 +1,5 @@
 import type { ValuesOf } from '../utils/typings.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 
 /**
  * A drawer can be positioned on the left or right side of the viewport.
@@ -44,3 +45,10 @@ export const DrawerType = {
  * @public
  */
 export type DrawerType = ValuesOf<typeof DrawerType>;
+
+/**
+ * The tag name for the drawer element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-drawer` as const;

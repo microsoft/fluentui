@@ -1,4 +1,5 @@
 import type { ValuesOf } from '../utils/typings.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { Dialog } from './dialog.js';
 
 /**
@@ -28,3 +29,10 @@ export function isDialog(element?: Node | null, tagName: string = '-dialog'): el
 
   return (element as Element).tagName.toLowerCase().endsWith(tagName);
 }
+
+/**
+ * The tag name for the dialog element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-dialog` as const;

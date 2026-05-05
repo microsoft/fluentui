@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 import type { ValuesOf } from '../utils/typings.js';
 import type { AnchorOptions } from './anchor-button.js';
@@ -81,3 +82,10 @@ export const AnchorAttributes = {
  * @public
  */
 export type AnchorAttributes = ValuesOf<typeof AnchorAttributes>;
+
+/**
+ * The tag name for the anchor button element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-anchor-button` as const;

@@ -1,4 +1,5 @@
 import type { ValuesOf } from '../utils/typings.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 
 /**
  * ProgressBarThickness Constants
@@ -45,3 +46,10 @@ export const ProgressBarValidationState = {
  * @public
  */
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
+
+/**
+ * The tag name for the progress bar element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-progress-bar` as const;

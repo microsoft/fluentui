@@ -1,5 +1,6 @@
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { ValuesOf } from '../utils/typings.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 
 /**
  * Divider roles
@@ -66,3 +67,10 @@ export const DividerAppearance = {
  * @public
  */
 export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
+
+/**
+ * The tag name for the divider element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-divider` as const;

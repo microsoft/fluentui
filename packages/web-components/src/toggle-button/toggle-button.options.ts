@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 import type { ButtonOptions } from '../button/button.options.js';
 import type { ValuesOf } from '../utils/typings.js';
@@ -38,3 +39,10 @@ export const ToggleButtonSize = ButtonSize;
 export type ToggleButtonSize = ValuesOf<typeof ToggleButtonSize>;
 
 export type { ButtonOptions as ToggleButtonOptions };
+
+/**
+ * The tag name for the toggle button element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-toggle-button` as const;
