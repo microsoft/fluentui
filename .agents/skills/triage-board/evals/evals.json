@@ -1,0 +1,22 @@
+{
+  "skill_name": "triage-board",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "triage the fluent board",
+      "expected_output": "Runs preflight auth check, fetches the Unified board items, filters to open issues with no Team field set across all three linked repos, maps each via CODEOWNERS to the right board Team, proposes an assignee from the CODEOWNERS line, presents a recommendation table, waits for approval before mutating.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "can you go through the unified project board and figure out which team each untriaged item should go to?",
+      "expected_output": "Same flow as above. Should correctly distinguish v9 (cxe-prg) from v8 (cxe-red) from web-components (cxe-coastal), and flag any CODEOWNERS handles without a board mapping (charting-team, northstar) as low-confidence.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "route the unassigned items on microsoft/projects/395 to the right teams",
+      "expected_output": "Fetches items, classifies, recommends team + assignee, does not touch Status or labels. Apply only after approval. Leaves team-only CODEOWNERS lines with assignee empty (flagged for human)."
+    }
+  ]
+}

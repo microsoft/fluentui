@@ -1,0 +1,23 @@
+{
+  "skill_name": "triage-issues",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "triage new issues",
+      "expected_output": "Fetches the Needs: Triage :mag: queue, classifies each issue, presents a recommendation table, and waits for approval before applying any gh mutations.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "can you go through the fluent ui triage queue and tell me what needs labels?",
+      "expected_output": "Same flow as above — fetches the queue and produces per-issue recommendations. Should correctly route web-components issues to the web-components owner and surface reports that document a critical regression as `Shield: P1` candidates.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "run shield triage on the open issues",
+      "expected_output": "Fetches queue, classifies, produces recommendations. Should not apply any labels without approval. Should correctly identify feature requests and recommend 'Needs: Backlog review'.",
+      "files": []
+    }
+  ]
+}
