@@ -20,6 +20,7 @@ type UseInputTriggerSlotOptions = {
   freeform: boolean | undefined;
   defaultProps?: Partial<ComboboxProps>;
   activeDescendantController: ActiveDescendantImperativeRef;
+  disableAutoFocus?: boolean;
 };
 
 /**
@@ -51,6 +52,7 @@ export function useInputTriggerSlot(
     freeform,
     defaultProps,
     activeDescendantController,
+    disableAutoFocus,
   } = options;
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -77,10 +79,13 @@ export function useInputTriggerSlot(
     }
 
     const matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString) === 0;
-    const match = activeDescendantController.find(id => {
-      const option = getOptionById(id);
-      return !!option && matcher(option.text);
-    });
+    const match = activeDescendantController.find(
+      id => {
+        const option = getOptionById(id);
+        return !!option && matcher(option.text);
+      },
+      disableAutoFocus ? { passive: true } : undefined,
+    );
 
     if (!match) {
       activeDescendantController.blur();

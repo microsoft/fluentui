@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: use disableAutoFocus prop to prevent auto-highlighting of active option",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
