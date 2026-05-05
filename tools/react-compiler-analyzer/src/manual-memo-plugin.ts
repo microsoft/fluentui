@@ -1,5 +1,5 @@
 import type { PluginObj, NodePath } from '@babel/core';
-import type { Function as BabelFunction } from '@babel/types';
+import type { Function as BabelFunction, CallExpression } from '@babel/types';
 
 import type { ManualMemoization } from './types';
 
@@ -43,6 +43,45 @@ function hasUseMemoDirective(fnPath: NodePath<BabelFunction>): boolean {
     }
   }
   return false;
+}
+
+/**
+ * Resolve the target function wrapped by React.memo(fn).
+ * Handles: identifiers referencing functions, inline function expressions, and arrow functions.
+ */
+function resolveReactMemoTarget(callPath: NodePath<CallExpression>): NodePath<BabelFunction> | null {
+  const args = callPath.node.arguments;
+  if (args.length === 0) {
+    return null;
+  }
+  const firstArg = args[0];
+
+  if (firstArg.type === 'Identifier') {
+    // React.memo(InnerComponent) — resolve binding to find the function
+    const binding = callPath.scope.getBinding(firstArg.name);
+    if (!binding) {
+      return null;
+    }
+    const bindingPath = binding.path;
+    if (bindingPath.isFunctionDeclaration()) {
+      return bindingPath as NodePath<BabelFunction>;
+    }
+    if (bindingPath.isVariableDeclarator()) {
+      const init = bindingPath.get('init') as NodePath;
+      if (init.isFunctionExpression() || init.isArrowFunctionExpression()) {
+        return init as NodePath<BabelFunction>;
+      }
+    }
+    return null;
+  }
+
+  if (firstArg.type === 'FunctionExpression' || firstArg.type === 'ArrowFunctionExpression') {
+    // React.memo(function() {...}) or React.memo(() => {...})
+    const argPath = callPath.get('arguments.0') as NodePath<BabelFunction>;
+    return argPath;
+  }
+
+  return null;
 }
 
 /**
@@ -96,7 +135,30 @@ export function manualMemoPlugin(): PluginObj {
           return;
         }
 
-        // Find the enclosing function
+        // For reactMemo, resolve the *wrapped* function (the argument to React.memo())
+        // rather than the enclosing function, since React.memo() is typically at module level.
+        if (hookName === 'reactMemo') {
+          const targetFnPath = resolveReactMemoTarget(path);
+          if (!targetFnPath || !targetFnPath.node.loc) {
+            return;
+          }
+
+          const key = fnKey(targetFnPath.node.loc.start);
+          let entry = opts.results.get(key);
+          if (!entry) {
+            entry = {
+              useMemo: 0,
+              useCallback: 0,
+              reactMemo: false,
+              bodyInsertionLine: getBodyInsertionLine(targetFnPath),
+            };
+            opts.results.set(key, entry);
+          }
+          entry.reactMemo = true;
+          return;
+        }
+
+        // For useMemo/useCallback, find the enclosing function
         const fnPath = path.findParent(
           p => p.isFunctionDeclaration() || p.isFunctionExpression() || p.isArrowFunctionExpression(),
         ) as NodePath<BabelFunction> | null;
@@ -127,8 +189,6 @@ export function manualMemoPlugin(): PluginObj {
           entry.useMemo++;
         } else if (hookName === 'useCallback') {
           entry.useCallback++;
-        } else if (hookName === 'reactMemo') {
-          entry.reactMemo = true;
         }
       },
     },
