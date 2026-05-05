@@ -9,6 +9,7 @@ import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
 import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
 import * as Field from '@fluentui/react-headless-components-preview/field';
+import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
@@ -43,6 +44,7 @@ console.log({
   Divider,
   Drawer,
   Field,
+  Image,
   Input,
   Link,
   MessageBar,
