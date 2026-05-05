@@ -1,5 +1,6 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { BadgeOptions } from '../badge/badge.options.js';
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * CounterBadge options
@@ -76,3 +77,10 @@ export const CounterBadgeSize = {
  * @public
  */
 export type CounterBadgeSize = ValuesOf<typeof CounterBadgeSize>;
+
+/**
+ * The tag name for the counter badge element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-counter-badge` as const;

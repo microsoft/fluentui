@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './tablist.options.js';
 import { Tablist } from './tablist.js';
 import { template } from './tablist.template.js';
 import { styles } from './tablist.styles.js';
@@ -9,7 +9,7 @@ import { styles } from './tablist.styles.js';
  * HTML Element: \<fluent-tablist\>
  */
 export const definition = Tablist.compose({
-  name: `${FluentDesignSystem.prefix}-tablist`,
+  name: tagName,
   template,
   styles,
 });

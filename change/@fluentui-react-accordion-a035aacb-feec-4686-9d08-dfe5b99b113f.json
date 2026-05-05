@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "perf: memoize context values in use*ContextValues hooks",
-  "packageName": "@fluentui/react-accordion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

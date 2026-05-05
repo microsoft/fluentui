@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 09 Apr 2026 04:07:27 GMT and should not be manually modified.
+This log was last generated on Fri, 01 May 2026 04:08:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.15)
+
+Fri, 01 May 2026 04:08:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.14..@fluentui/web-components_v3.0.0-rc.15)
+
+### Changes
+
+- fix: remove unnecessary id property mappings in accordion-item ([PR #36060](https://github.com/microsoft/fluentui/pull/36060) by 863023+radium-v@users.noreply.github.com)
+- fix: remove errant preventDefault causing element interactions to be blocked inside drawer ([PR #36032](https://github.com/microsoft/fluentui/pull/36032) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.14)
+
+Wed, 29 Apr 2026 19:07:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.13..@fluentui/web-components_v3.0.0-rc.14)
+
+### Changes
+
+- fix: improve SSR compatibility and component lifecycle management for Menu, Accordion, Dropdown, Tablist, and waitForConnectedDescendants ([PR #36018](https://github.com/microsoft/fluentui/pull/36018) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.13)
 

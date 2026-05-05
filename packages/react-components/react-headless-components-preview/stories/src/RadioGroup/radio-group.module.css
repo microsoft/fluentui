@@ -1,0 +1,88 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    background var(--duration-fast) var(--ease-standard);
+}
+
+.row:hover {
+  border-color: var(--border-strong);
+}
+
+.row[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.indicator {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-stronger);
+  background: var(--bg-elev);
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.input:checked + .indicator {
+  border-color: var(--accent);
+  border-width: 5px;
+  background: var(--bg-elev);
+}
+
+.input:focus-visible + .indicator {
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.row:has(.input:checked) {
+  border-color: var(--accent);
+  background: var(--bg-elev);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.title {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 13.5px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 360px;
+}

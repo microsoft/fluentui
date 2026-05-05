@@ -1,4 +1,4 @@
-const sandboxApp = `import { Provider } from '@fluentui/react-headless-components-preview';
+const sandboxApp = `import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import { Example } from './example';
 
 const App = () => (

@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandForeground1Hover,
