@@ -170,6 +170,10 @@ export function printCoverageSummary(results: FunctionAnalysis[], verbose: boole
  * Print a "Migration Candidates" section — functions that compile successfully
  * and also use manual memoization (useMemo, useCallback, React.memo).
  * These are candidates for adding 'use memo' and removing manual hooks.
+ *
+ * Buckets:
+ * 1. **Safe to remove** — useMemo/useCallback hooks and React.memo without comparator
+ * 2. **Needs manual review** — React.memo with custom comparator (custom equality logic)
  */
 export function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string): void {
   const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
@@ -178,29 +182,55 @@ export function printMigrationCandidates(results: FunctionAnalysis[], workspaceR
     return;
   }
 
+  const safeToRemove = candidates.filter(r => !r.manualMemo!.reactMemoHasComparator);
+  const needsReview = candidates.filter(r => r.manualMemo!.reactMemoHasComparator);
+
   console.log('## Migration Candidates\n');
   console.log(
     'Functions that compile successfully and contain manual memoization. ' +
       "These can safely use `'use memo'` and may have their manual hooks removed.\n",
   );
 
+  if (safeToRemove.length > 0) {
+    console.log('### Safe to Remove\n');
+    console.log(
+      '`useMemo`/`useCallback` hooks and `React.memo` wrappers (without comparator) are redundant ' +
+        'after compiler adoption and can be removed.\n',
+    );
+    printMigrationTable(safeToRemove, workspaceRoot);
+  }
+
+  if (needsReview.length > 0) {
+    console.log('### Needs Manual Review\n');
+    console.log(
+      '`React.memo` with a custom comparator cannot be automatically removed — the comparator ' +
+        'provides custom equality logic not replicated by the compiler. The function body is still ' +
+        'optimized, but the wrapper requires human judgment.\n',
+    );
+    printMigrationTable(needsReview, workspaceRoot);
+  }
+
+  console.log(`> **${candidates.length}** migration candidate(s) found`);
+  if (needsReview.length > 0) {
+    console.log(`> (**${needsReview.length}** need manual review due to custom comparator).`);
+  }
+  console.log('');
+}
+
+function printMigrationTable(entries: FunctionAnalysis[], workspaceRoot: string): void {
   console.log('| Location | Function | useMemo | useCallback | React.memo | Memo Slots |');
   console.log('|----------|----------|---------|-------------|------------|------------|');
 
-  for (const r of candidates) {
+  for (const r of entries) {
     const relPath = relative(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(anonymous)';
     const memo = r.manualMemo!;
     const slots = r.memoStats?.memoSlots ?? 0;
-    console.log(
-      `| ${relPath}:${r.line} | ${fn} | ${memo.useMemo} | ${memo.useCallback} | ${
-        memo.reactMemo ? 'yes' : 'no'
-      } | ${slots} |`,
-    );
+    const memoLabel = memo.reactMemo ? (memo.reactMemoHasComparator ? 'yes (comparator)' : 'yes') : 'no';
+    console.log(`| ${relPath}:${r.line} | ${fn} | ${memo.useMemo} | ${memo.useCallback} | ${memoLabel} | ${slots} |`);
   }
 
   console.log('');
-  console.log(`> **${candidates.length}** migration candidate(s) found.\n`);
 }
 
 function pct(count: number, total: number): string {

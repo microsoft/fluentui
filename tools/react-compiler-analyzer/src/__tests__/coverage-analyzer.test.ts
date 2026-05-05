@@ -45,4 +45,19 @@ describe('analyzeFileForCoverage — manual memo integration', () => {
       expect(r.manualMemo).toBeUndefined();
     }
   });
+
+  it('detects reactMemoHasComparator for React.memo with custom comparator', async () => {
+    const filePath = join(FIXTURES_DIR, 'memo-with-comparator.tsx');
+    const results = await analyzeFileForCoverage(filePath, 'test-pkg', 'infer', false);
+
+    const withMemo = results.filter(r => r.manualMemo?.reactMemo);
+    expect(withMemo.length).toBeGreaterThan(0);
+
+    // Compiler compiles the wrapped function body, but React.memo with a custom
+    // comparator cannot simply be removed — the comparator provides custom equality logic.
+    const entry = withMemo[0];
+    expect(entry.status).toBe('compiled');
+    expect(entry.manualMemo!.reactMemo).toBe(true);
+    expect(entry.manualMemo!.reactMemoHasComparator).toBe(true);
+  });
 });

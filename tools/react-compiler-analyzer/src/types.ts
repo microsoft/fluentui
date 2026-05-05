@@ -59,6 +59,7 @@ export interface ManualMemoization {
   useMemo: number;
   useCallback: number;
   reactMemo: boolean;
+  reactMemoHasComparator: boolean;
 }
 
 export interface FunctionAnalysis {

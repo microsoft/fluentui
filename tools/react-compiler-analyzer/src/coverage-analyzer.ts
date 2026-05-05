@@ -160,6 +160,7 @@ export async function analyzeFileForCoverage(
         useMemo: memoEntry.useMemo,
         useCallback: memoEntry.useCallback,
         reactMemo: memoEntry.reactMemo,
+        reactMemoHasComparator: memoEntry.reactMemoHasComparator,
       };
       result.bodyInsertionLine = memoEntry.bodyInsertionLine;
     }

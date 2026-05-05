@@ -43,7 +43,9 @@ describe('manualMemoPlugin', () => {
         // Both reference-based memo(InnerComponent) and inline memo(() => {...}) detected
         expect(withReactMemo).toHaveLength(2);
         for (const entry of withReactMemo) {
-          expect(entry).toEqual(expect.objectContaining({ useMemo: 0, useCallback: 0, reactMemo: true }));
+          expect(entry).toEqual(
+            expect.objectContaining({ useMemo: 0, useCallback: 0, reactMemo: true, reactMemoHasComparator: false }),
+          );
         }
 
         // All entries should have valid bodyInsertionLine
@@ -87,6 +89,14 @@ describe('manualMemoPlugin', () => {
     it('ignores useMemo/useCallback not imported from react', async () => {
       const results = await runPlugin('non-react-memo.tsx');
       expect(results.size).toBe(0);
+    });
+
+    it('detects reactMemoHasComparator when memo is called with a custom comparator', async () => {
+      const results = await runPlugin('memo-with-comparator.tsx');
+      expect(results.size).toBe(1);
+      const entry = [...results.values()][0];
+      expect(entry.reactMemo).toBe(true);
+      expect(entry.reactMemoHasComparator).toBe(true);
     });
   });
 });
