@@ -1,6 +1,7 @@
 import type { Direction } from '@microsoft/fast-web-utilities';
 import { Orientation } from '@microsoft/fast-web-utilities';
-import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import type { ValuesOf } from '../utils/typings.js';
 import type { Slider } from './slider.js';
 
 /**
