@@ -1,42 +1,26 @@
 import * as React from 'react';
-import { demoBoxClass, demoBoxStyle, flipDemoSurfaceCss } from './demoBox';
 import { InlineAnchored } from './InlineAnchored';
 
-const classes = {
-  page: 'flex flex-col gap-6 p-4',
-  sectionTitle: 'text-sm font-semibold text-gray-800 mb-1',
-  sectionNote: 'text-xs text-gray-500 max-w-xl mb-2',
-  grid: 'grid grid-cols-1 sm:grid-cols-2 gap-4',
-  trigger:
-    'px-3 py-1.5 rounded-md bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 cursor-pointer border-none',
-  surface: 'flip-demo bg-white rounded-md shadow-md border border-gray-200 p-3 min-w-[200px] max-w-xs text-sm',
-};
+import styles from './positioning.module.css';
 
 export const FallbackPositions = (): React.ReactNode => (
-  <div className={classes.page}>
-    <style>{flipDemoSurfaceCss}</style>
-
-    <section>
-      <h3 className={classes.sectionTitle}>Basic fallback</h3>
-      <p className={classes.sectionNote}>
+  <div className={styles.pageRoomy}>
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>Basic fallback</h3>
+      <p className={styles.sectionNote}>
         Primary <code>above</code> overflows the box → first fallback <code>below-start</code> fits → surface renders
         there.
       </p>
-      <div className={demoBoxClass} style={demoBoxStyle}>
+      <div className={styles.demoBox}>
         <InlineAnchored
           positioning={{
             position: 'above',
             align: 'center',
             fallbackPositions: ['below-start', 'after'],
           }}
-          surfaceClassName={classes.surface}
+          surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
           trigger={
-            <button
-              className={classes.trigger}
-              style={{ position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)' }}
-            >
-              trigger near top
-            </button>
+            <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}>trigger near top</button>
           }
         >
           <strong>Requested:</strong> above · fallbacks: <code>below-start</code>, <code>after</code>
@@ -44,25 +28,23 @@ export const FallbackPositions = (): React.ReactNode => (
       </div>
     </section>
 
-    <section>
-      <h3 className={classes.sectionTitle}>Chain walking</h3>
-      <p className={classes.sectionNote}>
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>Chain walking</h3>
+      <p className={styles.sectionNote}>
         Trigger pinned to top-left. Primary <code>above</code> overflows, first fallback <code>before</code> also
         overflows (no room to the left), so the browser falls through to <code>below</code>. The live{' '}
         <strong>Actual</strong> readout should read <code>below</code>.
       </p>
-      <div className={demoBoxClass} style={demoBoxStyle}>
+      <div className={styles.demoBox}>
         <InlineAnchored
           positioning={{
             position: 'above',
             align: 'center',
             fallbackPositions: ['before', 'below'],
           }}
-          surfaceClassName={classes.surface}
+          surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
           trigger={
-            <button className={classes.trigger} style={{ position: 'absolute', top: 12, left: 12 }}>
-              top-left trigger
-            </button>
+            <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopLeft}`}>top-left trigger</button>
           }
         >
           <strong>Requested:</strong> above · fallbacks: <code>before</code>, <code>below</code>
@@ -70,43 +52,35 @@ export const FallbackPositions = (): React.ReactNode => (
       </div>
     </section>
 
-    <section>
-      <h3 className={classes.sectionTitle}>Custom chain replaces default flip</h3>
-      <p className={classes.sectionNote}>
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>Custom chain replaces default flip</h3>
+      <p className={styles.sectionNote}>
         Same overflow condition, different chains. Left popover has no <code>fallbackPositions</code> → default{' '}
         <code>flip-block, flip-inline</code> fires → surface ends up below. Right popover passes <code>['after']</code>{' '}
         → custom chain replaces defaults → surface goes to the right instead of flipping.
       </p>
-      <div className={classes.grid}>
-        <div className={demoBoxClass} style={demoBoxStyle}>
+      <div className={styles.grid}>
+        <div className={styles.demoBox}>
           <InlineAnchored
             positioning={{ position: 'above', align: 'center' }}
-            surfaceClassName={classes.surface}
+            surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
             trigger={
-              <button
-                className={classes.trigger}
-                style={{ position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)' }}
-              >
-                default (flip)
-              </button>
+              <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}>default (flip)</button>
             }
           >
             <strong>Requested:</strong> above · no custom fallbacks
           </InlineAnchored>
         </div>
-        <div className={demoBoxClass} style={demoBoxStyle}>
+        <div className={styles.demoBox}>
           <InlineAnchored
             positioning={{
               position: 'above',
               align: 'center',
               fallbackPositions: ['after', 'below'],
             }}
-            surfaceClassName={classes.surface}
+            surfaceClassName={`${styles.surfaceFallback} ${styles.flipReadout}`}
             trigger={
-              <button
-                className={classes.trigger}
-                style={{ position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)' }}
-              >
+              <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopCenter}`}>
                 custom ({`['after']`})
               </button>
             }
