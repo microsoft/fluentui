@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add Menu component (Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuDivider) — wraps v9 useMenu*Base_unstable hooks; uses native popover='auto' for top-layer rendering instead of Portal",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}

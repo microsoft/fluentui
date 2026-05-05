@@ -62,6 +62,9 @@ export type PopoverProps = {
   /**
    * Positioning configuration. Accepts either a full `PositioningProps`
    * object or a shorthand string such as `'below'` / `'above-end'`.
+   *
+   * See the {@link https://react.fluentui.dev/?path=/docs/headless-concepts-positioning--docs Positioning concept}
+   * for the full list of options and live examples.
    */
   positioning?: PositioningShorthand;
 
