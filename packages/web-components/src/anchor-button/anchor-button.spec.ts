@@ -177,6 +177,31 @@ test.describe('Anchor Button', () => {
     await expect(page).toHaveURL(expectedUrl);
   });
 
+  test('should emit a single click event when clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    await page.evaluate(() => {
+      const anchorButton = document.querySelector('fluent-anchor-button');
+
+      if (!anchorButton) {
+        throw new Error('Expected fluent-anchor-button to be present');
+      }
+
+      let clickCount = 0;
+      anchorButton.addEventListener('click', () => {
+        clickCount += 1;
+        anchorButton.setAttribute('data-click-count', String(clickCount));
+      });
+      anchorButton.setAttribute('data-click-count', '0');
+    });
+
+    await element.click();
+
+    await expect(element).toHaveAttribute('data-click-count', '1');
+  });
+
   test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or `Meta` on Mac', async ({
     fastPage,
     context,
