@@ -13,6 +13,7 @@ import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
+import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
@@ -47,6 +48,7 @@ console.log({
   Link,
   MessageBar,
   ProgressBar,
+  Persona,
   Popover,
   Provider,
   RadioGroup,

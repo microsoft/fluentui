@@ -153,6 +153,12 @@
       "import": "./lib/message-bar.js",
       "require": "./lib-commonjs/message-bar.js"
     },
+    "./persona": {
+      "types": "./dist/persona.d.ts",
+      "node": "./lib-commonjs/persona.js",
+      "import": "./lib/persona.js",
+      "require": "./lib-commonjs/persona.js"
+    },
     "./popover": {
       "types": "./dist/popover.d.ts",
       "node": "./lib-commonjs/popover.js",
