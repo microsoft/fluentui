@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   colorBrandForeground1,
   colorBrandStroke1,
@@ -123,8 +123,8 @@ export const styles = css`
   :host([appearance='subtle']) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host([appearance='strong'])::before,
     :host([appearance='strong'])::after,
     :host([appearance='brand'])::before,
@@ -136,5 +136,5 @@ export const styles = css`
       background: WindowText;
       color: WindowText;
     }
-  `),
-);
+  }
+`;

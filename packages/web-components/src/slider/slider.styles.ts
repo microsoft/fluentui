@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -189,8 +189,8 @@ export const styles = css`
   .track::before {
     background-color: var(--rail-color);
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     .track:hover,
     .track:active,
     .track {
@@ -207,5 +207,5 @@ export const styles = css`
     .track::before {
       background: Highlight;
     }
-  `),
-);
+  }
+`;

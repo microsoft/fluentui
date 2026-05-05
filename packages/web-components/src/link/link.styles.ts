@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   colorBrandForegroundLink,
   colorBrandForegroundLinkHover,
@@ -75,10 +75,10 @@ export const styles = css`
     position: absolute;
     inset: 0;
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       color: LinkText;
     }
-  `),
-);
+  }
+`;

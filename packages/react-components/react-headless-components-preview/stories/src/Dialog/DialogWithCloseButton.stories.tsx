@@ -7,62 +7,60 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@fluentui/react-headless-components-preview/dialog';
+import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
+import { CheckmarkRegular } from '@fluentui/react-icons';
 
+import styles from './dialog.module.css';
+import checkboxStyles from '../Checkbox/checkbox.module.css';
 /**
  * Use `DialogTrigger` with `action="close"` to wire up a close button anywhere
- * inside the dialog — including the "X in the top-right corner" UX pattern.
- * It defaults to `type="button"` and calls `onOpenChange` when clicked.
+ * inside the dialog. It defaults to `type="button"` and calls `onOpenChange`
+ * when clicked.
  */
 export const WithCloseButton = (): React.ReactNode => (
   <Dialog>
     <DialogTrigger>
-      <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
-        Open dialog
+      <button type="button" className={styles.btn}>
+        Open settings
       </button>
     </DialogTrigger>
 
-    <DialogSurface className="fixed inset-0 m-auto w-full max-w-[480px] rounded-lg border border-zinc-200 bg-white p-0 shadow-lg">
-      <DialogBody className="px-4 py-3 text-sm text-zinc-700">
-        <DialogTitle className="mb-3 mt-0 text-lg font-semibold text-zinc-900">Settings</DialogTitle>
-        <p className="mt-0 mb-3">Update your preferences below.</p>
-        <div className="flex flex-col gap-3">
-          <label className="flex cursor-pointer items-center gap-2">
-            <input type="checkbox" className="h-4 w-4 accent-zinc-900" defaultChecked />
-            Email notifications
-          </label>
-          <label className="flex cursor-pointer items-center gap-2">
-            <input type="checkbox" className="h-4 w-4 accent-zinc-900" />
-            SMS notifications
-          </label>
-          <label className="flex cursor-pointer items-center gap-2">
-            <input type="checkbox" className="h-4 w-4 accent-zinc-900" defaultChecked />
-            Weekly digest
-          </label>
+    <DialogSurface className={styles.surface}>
+      <DialogBody className={styles.body}>
+        <DialogTitle className={styles.title}>Settings</DialogTitle>
+        <p className={`${styles.copy} ${styles.demoSpacerLg}`}>Update your preferences below.</p>
+        <div className={checkboxStyles.list}>
+          {[
+            { label: 'Email notifications', defaultChecked: true },
+            { label: 'SMS notifications', defaultChecked: false },
+            { label: 'Weekly digest', defaultChecked: true },
+          ].map(opt => (
+            <Checkbox
+              key={opt.label}
+              defaultChecked={opt.defaultChecked}
+              label={{ children: opt.label, className: checkboxStyles.label }}
+              className={checkboxStyles.row}
+              input={{ className: checkboxStyles.input }}
+              indicator={{
+                className: checkboxStyles.indicator,
+                children: <CheckmarkRegular className={checkboxStyles.iconCheck} aria-hidden />,
+              }}
+            />
+          ))}
         </div>
       </DialogBody>
 
-      <DialogActions className="flex justify-end gap-2 px-4 pb-4">
+      <DialogActions className={styles.actions}>
         <DialogTrigger action="close">
-          <button
-            type="button"
-            aria-label="Close"
-            className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100"
-          >
-            Close
-          </button>
-        </DialogTrigger>
-        <DialogTrigger action="close">
-          <button type="button" className="rounded px-3 py-1.5 text-sm border border-zinc-200 hover:bg-zinc-100">
+          <button type="button" className={styles.btn}>
             Cancel
           </button>
         </DialogTrigger>
-        <button
-          type="button"
-          className="rounded bg-zinc-900 px-3 py-1.5 text-sm font-medium text-zinc-50 hover:bg-zinc-800"
-          onClick={() => alert('Settings saved!')}
-        >
-          Save
-        </button>
+        <DialogTrigger action="close">
+          <button type="button" className={`${styles.btn} ${styles.primary}`}>
+            Save
+          </button>
+        </DialogTrigger>
       </DialogActions>
     </DialogSurface>
   </Dialog>

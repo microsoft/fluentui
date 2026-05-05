@@ -34,6 +34,7 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
         role: 'group',
         ...props,
         id: surfaceId,
+        popover: 'auto',
         'data-popover-surface': '',
         'data-open': stringifyDataAttribute(open),
       },

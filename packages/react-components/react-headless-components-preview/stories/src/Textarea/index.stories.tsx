@@ -1,7 +1,6 @@
 import { Textarea } from '@fluentui/react-headless-components-preview/textarea';
 
 import descriptionMd from './TextareaDescription.md';
-
 export { Default } from './TextareaDefault.stories';
 
 export default {

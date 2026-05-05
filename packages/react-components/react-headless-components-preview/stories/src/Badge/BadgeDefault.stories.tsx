@@ -1,22 +1,27 @@
 import * as React from 'react';
 import { Badge } from '@fluentui/react-headless-components-preview/badge';
 
+import styles from './badge.module.css';
 export const Default = (): React.ReactNode => (
-  <div className="flex items-center gap-3 flex-wrap">
-    <Badge className="inline-flex items-center rounded-full bg-gray-900 px-2.5 py-0.5 text-xs font-medium text-white">
-      New
-    </Badge>
-    <Badge className="inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-medium text-white">
+  <div className={styles.demo}>
+    <Badge className={styles.badge}>Default</Badge>
+    <Badge className={`${styles.badge} ${styles.solid}`}>Solid</Badge>
+    <Badge className={`${styles.badge} ${styles.success}`}>
+      <span className={styles.dot} />
       Success
     </Badge>
-    <Badge className="inline-flex items-center rounded-full bg-orange-500 px-2.5 py-0.5 text-xs font-medium text-white">
+    <Badge className={`${styles.badge} ${styles.warning}`}>
+      <span className={styles.dot} />
       Warning
     </Badge>
-    <Badge className="inline-flex items-center rounded-full bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
+    <Badge className={`${styles.badge} ${styles.danger}`}>
+      <span className={styles.dot} />
       Error
     </Badge>
-    <Badge className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-900 text-xs font-bold text-white">
-      9
+    <Badge className={`${styles.badge} ${styles.info}`}>
+      <span className={styles.dot} />
+      Info
     </Badge>
+    <Badge className={`${styles.badge} ${styles.counter}`}>9</Badge>
   </div>
 );
