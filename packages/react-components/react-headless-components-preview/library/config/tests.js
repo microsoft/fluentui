@@ -1,6 +1,7 @@
 /** Jest test setup file. */
 
 require('@testing-library/jest-dom');
+require('@oddbird/popover-polyfill');
 
 global.ResizeObserver = class ResizeObserver {
   observe() {
@@ -33,24 +34,6 @@ if (typeof HTMLDialogElement !== 'undefined') {
   if (!proto.close) {
     proto.close = function close() {
       this.removeAttribute('open');
-    };
-  }
-}
-
-// JSDOM does not implement the Popover API yet.
-// Provide a minimal test shim so components using showPopover/hidePopover can run in Jest.
-if (typeof HTMLElement !== 'undefined') {
-  const proto = HTMLElement.prototype;
-
-  if (!proto.showPopover) {
-    proto.showPopover = function showPopover() {
-      /* no-op */
-    };
-  }
-
-  if (!proto.hidePopover) {
-    proto.hidePopover = function hidePopover() {
-      /* no-op */
     };
   }
 }
