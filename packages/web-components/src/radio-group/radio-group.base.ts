@@ -1,9 +1,16 @@
-import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
-import { findLastIndex } from '@microsoft/fast-web-utilities';
-import { Radio } from '../radio/radio.js';
+import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
+import {
+  findLastIndex,
+  keyArrowDown,
+  keyArrowLeft,
+  keyArrowRight,
+  keyArrowUp,
+  keyEnd,
+  keyHome,
+  keySpace,
+} from '@microsoft/fast-web-utilities';
+import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
-import { getDirection } from '../utils/direction.js';
-import { getRootActiveElement } from '../utils/root-active-element.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
@@ -13,6 +20,8 @@ import { RadioGroupOrientation } from './radio-group.options.js';
  * @public
  */
 export class BaseRadioGroup extends FASTElement {
+  private isNavigating = false;
+
   /**
    * The index of the checked radio, scoped to the enabled radios.
    *
@@ -64,7 +73,6 @@ export class BaseRadioGroup extends FASTElement {
       this.radios?.forEach(radio => {
         radio.disabled = !!radio.disabledAttribute || !!this.disabled;
       });
-      this.restrictFocus();
     }
   }
 
@@ -179,15 +187,8 @@ export class BaseRadioGroup extends FASTElement {
     if (
       !this.value ||
       // This logic covers the case when the RadioGroup doesn't have a `value`
-      // attribute, but does have a checked child Radio. Without this condition,
-      // the checked Radio's value will be assigned to `this.value`, and
-      // `checkedIndex` will be the checked Radio's index, but `this.checkedIndex`
-      // will remain `undefined`, which would cause the RadioGroup to add
-      // `tabindex=-1` to the checked Radio, and effectively makes the whole
-      // RadioGroup unfocusable.
       (this.value && typeof this.checkedIndex !== 'number' && checkedIndex >= 0)
     ) {
-      // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
       this.checkedIndex = checkedIndex;
     }
 
@@ -196,10 +197,6 @@ export class BaseRadioGroup extends FASTElement {
     if (radioIds) {
       this.setAttribute('aria-owns', radioIds);
     }
-
-    Updates.enqueue(() => {
-      this.restrictFocus();
-    });
   }
 
   /**
@@ -422,36 +419,6 @@ export class BaseRadioGroup extends FASTElement {
     this.enabledRadios[Math.max(0, this.checkedIndex)]?.focus();
   }
 
-  /**
-   * Enables tabbing through the radio group when the group receives focus.
-   *
-   * @param e - the focus event
-   * @internal
-   */
-  public focusinHandler(e: FocusEvent): boolean | void {
-    if (!this.disabled) {
-      this.enabledRadios.forEach(radio => {
-        radio.tabIndex = 0;
-      });
-    }
-
-    return true;
-  }
-
-  /**
-   * Sets the tabindex of the radios based on the checked state when the radio group loses focus.
-   *
-   * @param e - the focusout event
-   * @internal
-   */
-  public focusoutHandler(e: FocusEvent): boolean | void {
-    if (this.radios?.includes(e.relatedTarget as Radio) && this.radios?.some(x => x.checked)) {
-      this.restrictFocus();
-    }
-
-    return true;
-  }
-
   formResetCallback(): void {
     this.dirtyState = false;
     this.checkedIndex = -1;
@@ -459,12 +426,30 @@ export class BaseRadioGroup extends FASTElement {
     this.setValidity();
   }
 
-  private getEnabledIndexInBounds(index: number, upperBound = this.enabledRadios.length): number {
-    if (upperBound === 0) {
-      return -1;
+  /**
+   * Enables tabbing through the radio group when the group receives focus.
+   *
+   * @param e - the focus event
+   * @internal
+   */
+  public focusinHandler(e: FocusEvent): boolean | void {
+    if (!this.disabled && (this.isNavigating || this.value)) {
+      // Uncheck the checked disabled radio, if any.
+      this.radios?.forEach(radio => {
+        if (radio.disabled && radio.checked) {
+          radio.checked = false;
+        }
+      });
+
+      const index = this.enabledRadios.indexOf(e.target as Radio);
+      if (index > -1) {
+        this.checkRadio(index, true);
+      }
+
+      this.isNavigating = false;
     }
 
-    return (index + upperBound) % upperBound;
+    return true;
   }
 
   /**
@@ -474,49 +459,20 @@ export class BaseRadioGroup extends FASTElement {
    * @internal
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
-    const isRtl = getDirection(this) === 'rtl';
-    const checkedIndex = this.enabledRadios.findIndex(x => x === getRootActiveElement(this)) ?? this.checkedIndex;
-    let increment = 0;
-
     switch (e.key) {
-      case 'ArrowLeft': {
-        increment = isRtl ? 1 : -1;
+      case keyArrowUp:
+      case keyArrowDown:
+      case keyArrowLeft:
+      case keyArrowRight:
+      case keyHome:
+      case keyEnd:
+        this.isNavigating = true;
         break;
-      }
-
-      case 'ArrowUp': {
-        increment = -1;
-        break;
-      }
-
-      case 'ArrowRight': {
-        increment = isRtl ? -1 : 1;
-        break;
-      }
-
-      case 'ArrowDown': {
-        increment = 1;
-        break;
-      }
-
-      case 'Tab': {
-        this.restrictFocus();
-        break;
-      }
-
-      case ' ': {
+      case keySpace:
         this.checkRadio();
         break;
-      }
     }
-
-    if (!increment) {
-      return true;
-    }
-
-    const nextIndex = checkedIndex + increment;
-    this.checkRadio(this.getEnabledIndexInBounds(nextIndex), true);
-    this.enabledRadios[this.checkedIndex]?.focus();
+    return true;
   }
 
   /**
@@ -538,26 +494,6 @@ export class BaseRadioGroup extends FASTElement {
    */
   public reportValidity(): boolean {
     return this.elementInternals.reportValidity();
-  }
-
-  /**
-   * Resets the `tabIndex` for all child radios when the radio group loses focus.
-   *
-   * @internal
-   */
-  private restrictFocus() {
-    let activeIndex = Math.max(this.checkedIndex, 0);
-    const focusedRadioIndex = this.enabledRadios.indexOf(getRootActiveElement(this) as Radio);
-
-    if (focusedRadioIndex !== -1) {
-      activeIndex = focusedRadioIndex;
-    }
-
-    activeIndex = this.getEnabledIndexInBounds(activeIndex);
-
-    this.enabledRadios.forEach((item, index) => {
-      item.tabIndex = index === activeIndex ? 0 : -1;
-    });
   }
 
   /**

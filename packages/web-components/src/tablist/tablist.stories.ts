@@ -18,8 +18,8 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
       }}"
       ${ref('tablist')}
     >
-      <fluent-tab id="first-tab">First Tab</fluent-tab>
-      <fluent-tab id="second-tab">
+      <fluent-tab id="${story => story.ids?.[0]}">First Tab</fluent-tab>
+      <fluent-tab id="${story => story.ids?.[1]}">
         ${when(
           story => story.hasStartSlot,
           html`<span slot="start">
@@ -40,8 +40,8 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
         )}
         Second Tab
       </fluent-tab>
-      <fluent-tab id="third-tab">Third Tab</fluent-tab>
-      <fluent-tab id="fourth-tab">Fourth Tab</fluent-tab>
+      <fluent-tab id="${story => story.ids?.[2]}">Third Tab</fluent-tab>
+      <fluent-tab id="${story => story.ids?.[3]}">Fourth Tab</fluent-tab>
     </fluent-tablist>
     <div ${ref('panel')}></div>
   </div>
@@ -93,6 +93,7 @@ export default {
         type: { summary: Object.values(TablistSize).join('|') },
       },
     },
+    ids: { table: { disable: true } },
   },
 } as Meta<FluentTablist>;
 
@@ -140,6 +141,7 @@ export const Disabled: Story = {
 export const ActiveId: Story = {
   args: {
     activeid: 'third-tab',
+    ids: ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'],
   },
 };
 

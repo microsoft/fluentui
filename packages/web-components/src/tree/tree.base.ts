@@ -1,15 +1,5 @@
 import { FASTElement, observable } from '@microsoft/fast-element';
-import {
-  isHTMLElement,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyEnter,
-  keyHome,
-  keySpace,
-} from '@microsoft/fast-web-utilities';
+import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
 import { isTreeItem } from '../tree-item/tree-item.options.js';
 
@@ -20,13 +10,6 @@ export class BaseTree extends FASTElement {
    */
   @observable
   public currentSelected: HTMLElement | null = null;
-
-  /**
-   * The tree item that is designated to be in the tab queue.
-   *
-   * @internal
-   */
-  private currentFocused: HTMLElement | null = null;
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -54,12 +37,6 @@ export class BaseTree extends FASTElement {
     this.elementInternals.role = 'tree';
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-  }
-
   /** @internal */
   @observable
   childTreeItems!: BaseTreeItem[];
@@ -77,11 +54,6 @@ export class BaseTree extends FASTElement {
     // defaults to first one found
     const selectedItem = this.querySelector<HTMLElement>(`[selected]`);
     this.currentSelected = selectedItem;
-
-    // invalidate the current focused item if it is no longer valid
-    if (this.currentFocused === null || !this.contains(this.currentFocused)) {
-      this.currentFocused = this.getValidFocusableItem();
-    }
   }
 
   /**
@@ -99,21 +71,7 @@ export class BaseTree extends FASTElement {
       return true;
     }
 
-    const elements = this.getVisibleNodes();
-
     switch (e.key) {
-      case keyHome: {
-        if (elements.length) {
-          elements[0].focus();
-        }
-        return;
-      }
-      case keyEnd: {
-        if (elements.length) {
-          elements[elements.length - 1].focus();
-        }
-        return;
-      }
       case keyArrowLeft: {
         if (item?.childTreeItems?.length && item.expanded) {
           item.expanded = false;
@@ -126,18 +84,8 @@ export class BaseTree extends FASTElement {
         if (item?.childTreeItems?.length) {
           if (!item.expanded) {
             item.expanded = true;
-          } else {
-            this.focusNextNode(1, item);
           }
         }
-        return;
-      }
-      case keyArrowDown: {
-        this.focusNextNode(1, item);
-        return;
-      }
-      case keyArrowUp: {
-        this.focusNextNode(-1, item);
         return;
       }
       case keyEnter: {
@@ -154,44 +102,6 @@ export class BaseTree extends FASTElement {
 
     // don't prevent default if we took no action
     return true;
-  }
-
-  /**
-   * Handle focus events
-   *
-   * @internal
-   */
-  public focusHandler(e: FocusEvent): void {
-    if (this.childTreeItems.length < 1) {
-      // no child items, nothing to do
-      return;
-    }
-
-    if (e.target === this) {
-      this.currentFocused = this.getValidFocusableItem();
-      if (this.currentFocused && this.currentFocused.tabIndex < 0) {
-        this.currentFocused.tabIndex = 0;
-      }
-      this.currentFocused?.focus();
-
-      return;
-    }
-
-    if (this.contains(e.target as Node)) {
-      this.setAttribute('tabindex', '-1');
-      this.currentFocused = e.target as HTMLElement;
-    }
-  }
-
-  /**
-   * Handle blur events
-   *
-   * @internal
-   */
-  public blurHandler(e: FocusEvent): void {
-    if (e.target instanceof HTMLElement && (e.relatedTarget === null || !this.contains(e.relatedTarget as Node))) {
-      this.setAttribute('tabindex', '0');
-    }
   }
 
   /**
@@ -235,7 +145,7 @@ export class BaseTree extends FASTElement {
     const item = e.target as BaseTreeItem;
 
     if (item.selected) {
-      // Deselect the prevously selected item
+      // Deselect the previously selected item
       if (this.currentSelected && this.currentSelected !== item && isTreeItem(this.currentSelected)) {
         this.currentSelected.selected = false;
       }
@@ -247,46 +157,27 @@ export class BaseTree extends FASTElement {
     }
   }
 
-  /**
-   * checks if there are any nested tree items
-   */
-  private getValidFocusableItem() {
-    const elements: HTMLElement[] | void = this.getVisibleNodes();
-    // default to selected element if there is one
-    let focusIndex = elements.findIndex(el => (el as any).selected);
-    if (focusIndex === -1) {
-      // otherwise first focusable tree item
-      focusIndex = elements.findIndex(el => isTreeItem(el));
-    }
-    if (focusIndex !== -1) {
-      return elements[focusIndex];
-    }
-    return null;
-  }
-
-  private getVisibleNodes(): HTMLElement[] {
-    return Array.from(this.querySelectorAll('*')).filter(
-      node => isTreeItem(node) && node.offsetParent !== null,
-    ) as HTMLElement[];
-  }
-
-  /**
-   * Move focus to a tree item based on its offset from the provided item
-   */
-  private focusNextNode(delta: number, item: BaseTreeItem): void {
-    const visibleNodes = this.getVisibleNodes();
-    if (!visibleNodes.length) {
-      return;
-    }
-
-    const focusItem = visibleNodes[visibleNodes.indexOf(item) + delta];
-    if (isHTMLElement(focusItem)) {
-      focusItem.focus();
-    }
-  }
-
   /** @internal */
   public handleDefaultSlotChange() {
     this.childTreeItems = this.defaultSlot.assignedElements().filter(el => isTreeItem(el));
+  }
+
+  /**
+   * All descendant tree items in DOM order, recursively flattened from
+   * {@link childTreeItems}.
+   */
+  protected get descendantTreeItems(): BaseTreeItem[] {
+    const result: BaseTreeItem[] = [];
+    const visit = (items: BaseTreeItem[] | undefined) => {
+      if (!items) {
+        return;
+      }
+      for (const item of items) {
+        result.push(item);
+        visit(item.childTreeItems);
+      }
+    };
+    visit(this.childTreeItems);
+    return result;
   }
 }

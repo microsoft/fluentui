@@ -30,31 +30,6 @@ test.describe('Tablist', () => {
     expect(hasError).toBe(false);
   });
 
-  test('should reset tab indicator offset and scale for horizontal orientation after animation', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
-
-    await tabs.nth(2).click();
-
-    await expect(element).toHaveCSS('--tabIndicatorOffset', '0px');
-
-    await expect(element).toHaveCSS('--tabIndicatorScale', '1');
-  });
-
-  test('should animate the active tab indicator', async ({ fastPage }) => {
-    const { element } = fastPage;
-    const tabs = element.locator('fluent-tab');
-    const tab = tabs.nth(2);
-
-    await expect(tab).not.toHaveAttribute('data-animate');
-
-    await tab.click();
-
-    await expect(tab).toHaveAttribute('data-animate', 'true');
-  });
-
   test('should have reflect disabled attribute on control', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -156,8 +131,6 @@ test.describe('Tablist', () => {
       const tabs = element.locator('fluent-tab');
 
       await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
-
-      await expect(element).toHaveJSProperty('activeTabIndex', 0);
     });
   });
 
@@ -299,6 +272,37 @@ test.describe('Tablist', () => {
     await secondTab.click();
 
     await expect(element).toHaveJSProperty('activeid', secondTabId);
+  });
+
+  test('should keep disabled selected tab focusable until it loses selected state', async ({ fastPage }) => {
+    const { element, page } = fastPage;
+    const tabs = element.locator('fluent-tab');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+      `,
+    });
+
+    const secondTab = tabs.nth(1);
+
+    await secondTab.focus();
+    await expect(secondTab).toHaveAttribute('aria-selected', 'true');
+
+    await secondTab.evaluate((node: Tab) => {
+      node.disabled = true;
+    });
+
+    await secondTab.focus();
+    await page.keyboard.press('ArrowLeft');
+
+    await expect(tabs.nth(0)).toBeFocused();
+
+    await page.keyboard.press('ArrowRight');
+
+    await expect(tabs.nth(2)).toBeFocused();
   });
 
   test('should not allow selecting hidden tab using arrow keys', async ({ fastPage }) => {

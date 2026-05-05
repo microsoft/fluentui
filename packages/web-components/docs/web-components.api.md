@@ -739,11 +739,7 @@ export class BaseMenuList extends FASTElement {
     elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
-    protected isMenuItemElement: (el: Element) => el is HTMLElement;
+    protected isMenuItemElement(el: Element): el is MenuItem;
     // @internal (undocumented)
     readonly isNestedMenu: () => boolean;
     // @internal (undocumented)
@@ -751,7 +747,9 @@ export class BaseMenuList extends FASTElement {
     // (undocumented)
     protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
     // (undocumented)
-    protected menuItems: Element[] | undefined;
+    protected menuChildren: HTMLElement[] | undefined;
+    // (undocumented)
+    protected menuItems: MenuItem[] | undefined;
     // (undocumented)
     protected setItems(): void;
 }
@@ -808,8 +806,6 @@ export class BaseRadioGroup extends FASTElement {
     focus(): void;
     // @internal
     focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
     static formAssociated: boolean;
     // (undocumented)
     formResetCallback(): void;
@@ -893,22 +889,26 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: Tab;
-    adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
-    // @internal
+    // @internal (undocumented)
     protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
-    orientation: TablistOrientation;
     // @internal (undocumented)
+    handleFocusIn(event: FocusEvent): void;
+    orientation: TablistOrientation;
+    // (undocumented)
     protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
-    protected setTabs(): void;
+    protected setTabs({ connectToPanel, forceDisabled }?: {
+        connectToPanel?: boolean | undefined;
+        forceDisabled?: boolean | undefined;
+    }): void;
     // @internal
     slottedTabs: Node[];
-    // @internal
-    slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    // @internal (undocumented)
+    protected slottedTabsChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     // @internal (undocumented)
     tabs: Tab[];
     // @internal (undocumented)
@@ -1076,8 +1076,6 @@ export class BaseTextInput extends FASTElement {
 export class BaseTree extends FASTElement {
     constructor();
     // @internal
-    blurHandler(e: FocusEvent): void;
-    // @internal
     changeHandler(e: Event): boolean | void;
     // Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
     //
@@ -1087,17 +1085,14 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
     // @internal
     defaultSlotChanged(): void;
+    protected get descendantTreeItems(): BaseTreeItem[];
     // @internal
     elementInternals: ElementInternals;
-    // @internal
-    focusHandler(e: FocusEvent): void;
     // @internal (undocumented)
     handleDefaultSlotChange(): void;
     // @internal
@@ -3287,6 +3282,10 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
+    // @internal (undocumented)
+    handleSubmenuFocusOut: (e: FocusEvent) => void;
+    // @internal
+    handleToggle: (e: Event) => void;
     hidden: boolean;
     role: MenuItemRole;
     roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
@@ -3298,8 +3297,6 @@ export class MenuItem extends FASTElement {
     protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]): void;
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
-    // @internal
-    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -3340,6 +3337,10 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends BaseMenuList {
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    setItems(): void;
 }
 
 // @public (undocumented)
@@ -3486,6 +3487,10 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends BaseRadioGroup {
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
 }
 
 // @public
@@ -3955,6 +3960,8 @@ export class Tab extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
 }
@@ -3970,9 +3977,11 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 
 // @public
 export class Tablist extends BaseTablist {
-    activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
+    // (undocumented)
+    disconnectedCallback(): void;
     size?: TablistSize;
+    // (undocumented)
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
@@ -4369,6 +4378,10 @@ export class Tree extends BaseTree {
     protected appearanceChanged(): void;
     // @internal
     childTreeItemsChanged(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal (undocumented)
+    itemToggleHandler(): void;
     size: TreeItemSize;
     // (undocumented)
     protected sizeChanged(): void;

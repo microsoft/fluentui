@@ -23,6 +23,9 @@ export class Tab extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public disabled!: boolean;
+  protected disabledChanged(prev: boolean, next: boolean) {
+    this.setDisabledSideEffect(next);
+  }
 
   /**
    * Internal text content stylesheet, used to set the content of the `::after`
@@ -49,9 +52,7 @@ export class Tab extends FASTElement {
 
     this.slot ||= 'tab';
 
-    if (this.disabled) {
-      this.setAttribute('aria-disabled', 'true');
-    }
+    this.setDisabledSideEffect(this.disabled);
 
     if (this.styles) {
       this.$fastController.removeStyles(this.styles);
@@ -59,11 +60,20 @@ export class Tab extends FASTElement {
 
     this.styles = css`
       :host {
-        --textContent: '${this.textContent as any}';
+        --textContent: '${this.textContent as string}';
       }
     `;
 
     this.$fastController.addStyles(this.styles);
+  }
+
+  private setDisabledSideEffect(disabled: boolean) {
+    if (disabled) {
+      this.setAttribute('aria-disabled', 'true');
+    } else {
+      this.removeAttribute('aria-disabled');
+    }
+    this.tabIndex = disabled && this.getAttribute('aria-selected') !== 'true' ? -1 : 0;
   }
 }
 
