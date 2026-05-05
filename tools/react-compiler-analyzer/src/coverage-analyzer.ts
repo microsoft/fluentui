@@ -1,8 +1,8 @@
 import { readFile } from 'node:fs/promises';
-import { extname } from 'node:path';
 
-import { transformAsync } from '@babel/core';
-
+import { compileSource, extractDetailReason } from './compiler';
+import type { CompilerEvent } from './compiler';
+import { processFilesConcurrently } from './concurrency';
 import type {
   FunctionAnalysis,
   FileEntry,
@@ -11,8 +11,6 @@ import type {
   MemoStats,
   ManualMemoization,
 } from './types';
-import { extractDetailReason } from './compiler-utils';
-import type { CompilerEvent } from './compiler-utils';
 import { manualMemoPlugin, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
 
 /**
@@ -27,52 +25,17 @@ export async function analyzeFileForCoverage(
   const source = await readFile(filePath, 'utf-8');
   const results: FunctionAnalysis[] = [];
 
-  // Collect compiler events
-  const events: CompilerEvent[] = [];
-  const logger = {
-    logEvent: (_filename: string | null, event: CompilerEvent) => {
-      events.push(event);
-    },
-  };
-
-  const ext = extname(filePath);
-  const isTSX = ext === '.tsx';
-
   // Collect manual memoization data
   const manualMemoResults = new Map<string, ManualMemoEntry>();
 
-  try {
-    await transformAsync(source, {
-      filename: filePath,
-      ast: false,
-      code: false,
-      babelrc: false,
-      configFile: false,
-      presets: [
-        [
-          require.resolve('@babel/preset-typescript'),
-          {
-            isTSX: isTSX || ext === '.ts',
-            allExtensions: true,
-          },
-        ],
-      ],
-      plugins: [
-        [manualMemoPlugin, { results: manualMemoResults } as ManualMemoPluginOptions],
-        [
-          require.resolve('babel-plugin-react-compiler'),
-          {
-            noEmit: true,
-            panicThreshold: 'none',
-            compilationMode,
-            logger,
-          },
-        ],
-      ],
-    });
-  } catch (err) {
+  const { events, error } = await compileSource(source, filePath, {
+    compilationMode,
+    plugins: [[manualMemoPlugin, { results: manualMemoResults } as ManualMemoPluginOptions]],
+  });
+
+  if (error) {
     if (verbose) {
-      console.error(`  babel error in ${filePath}: ${(err as Error).message}`);
+      console.error(`  babel error in ${filePath}: ${error.message}`);
     }
     // Nothing to report — file-level parse errors don't produce function-level results
     return results;
@@ -176,27 +139,11 @@ export async function analyzeFilesForCoverage(
   files: FileEntry[],
   options: CoverageAnalyzerOptions,
 ): Promise<FunctionAnalysis[]> {
-  const allResults: FunctionAnalysis[] = [];
   const { concurrency, verbose, compilationMode } = options;
 
-  let index = 0;
-
-  async function worker(): Promise<void> {
-    while (index < files.length) {
-      const current = index++;
-      const entry = files[current];
-
-      if (verbose) {
-        console.log(`Analyzing: ${entry.filePath}`);
-      }
-
-      const results = await analyzeFileForCoverage(entry.filePath, entry.packageName, compilationMode, verbose);
-      allResults.push(...results);
-    }
-  }
-
-  const workers = Array.from({ length: Math.min(concurrency, files.length) }, () => worker());
-  await Promise.all(workers);
-
-  return allResults;
+  return processFilesConcurrently(
+    files,
+    entry => analyzeFileForCoverage(entry.filePath, entry.packageName, compilationMode, verbose),
+    { concurrency, verbose },
+  );
 }

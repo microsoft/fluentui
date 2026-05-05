@@ -1,20 +1,16 @@
 import { readFile } from 'node:fs/promises';
-import { extname } from 'node:path';
 
-import { transformAsync } from '@babel/core';
-
-import type { DirectiveAnalysis, DirectiveLocation, FileEntry, AnalyzerOptions } from './types';
-import { extractDetailReason } from './compiler-utils';
-import type { CompilerEvent } from './compiler-utils';
+import { compileSource, extractDetailReason } from './compiler';
+import type { CompilerEvent } from './compiler';
+import { processFilesConcurrently } from './concurrency';
+import { USE_NO_MEMO_LINE_RE, USE_MEMO_LINE_RE } from './patterns';
+import type { DirectiveAnalysis, DirectiveLocation, DirectiveType, FileEntry, AnalyzerOptions } from './types';
 
 // Regex matching the ESLint rule's justification pattern
 const JUSTIFIED_RE = /^\s*justified:/;
 
-// Match 'use no memo' as either a plain expression statement or parenthesized
-const USE_NO_MEMO_RE = /^\s*(?:\(?'use no memo'\)?;?\s*)(\/\/.*)?$/;
-
 /**
- * Parse source text to find all 'use no memo' directive locations.
+ * Parse source text to find all directive locations ('use no memo' and 'use memo').
  */
 function findDirectiveLocations(source: string): DirectiveLocation[] {
   const lines = source.split('\n');
@@ -22,9 +18,18 @@ function findDirectiveLocations(source: string): DirectiveLocation[] {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (!USE_NO_MEMO_RE.test(line)) {
+    let directiveType: DirectiveType | null = null;
+
+    if (USE_NO_MEMO_LINE_RE.test(line)) {
+      directiveType = 'use-no-memo';
+    } else if (USE_MEMO_LINE_RE.test(line)) {
+      directiveType = 'use-memo';
+    }
+
+    if (!directiveType) {
       continue;
     }
+
     // Check for inline justification comment on the same line
     const commentMatch = line.match(/\/\/(.*)$/);
     let justified = false;
@@ -42,6 +47,7 @@ function findDirectiveLocations(source: string): DirectiveLocation[] {
       lineText: line,
       justified,
       justification,
+      directiveType,
     });
   }
 
@@ -58,7 +64,7 @@ function stripDirectives(
 ): { modifiedSource: string; removedLines: Set<number> } {
   const removedLines = new Set<number>();
   for (const directive of directives) {
-    if (!directive.justified) {
+    if (!directive.justified && directive.directiveType === 'use-no-memo') {
       removedLines.add(directive.line);
     }
   }
@@ -150,15 +156,10 @@ function matchEventToDirective(
   }
 
   // Find which directive falls within this function's range.
-  // The directive was removed, so its original line should be between the function start
-  // and the first kept line after function start.
   for (const dir of directives) {
     if (dir.justified) {
       continue;
     }
-    // The directive was originally between origStartLine and origEndLine
-    // Since we removed it, its original line should be >= function start and <= function end
-    // Account for the shift: the directive was on dir.line in original, which is now missing
     if (dir.line >= origStartLine && dir.line <= origEndLine + removedLines.size) {
       return dir;
     }
@@ -167,12 +168,52 @@ function matchEventToDirective(
 }
 
 /**
- * Analyze a single file for redundant 'use no memo' directives.
+ * Group directives by enclosing function to detect conflicts
+ * (both 'use no memo' and 'use memo' on same function).
+ */
+function detectConflicts(
+  directives: DirectiveLocation[],
+  source: string,
+): { conflicts: Map<string, DirectiveLocation[]>; nonConflicting: DirectiveLocation[] } {
+  // Group by enclosing function (using function name as key)
+  const byFunction = new Map<string, DirectiveLocation[]>();
+
+  for (const dir of directives) {
+    if (dir.justified) {
+      continue;
+    }
+    const fnName = findEnclosingFunctionName(source, dir.line);
+    const key = fnName ?? `__anon_at_${dir.line}`;
+    const group = byFunction.get(key) ?? [];
+    group.push(dir);
+    byFunction.set(key, group);
+  }
+
+  const conflicts = new Map<string, DirectiveLocation[]>();
+  const nonConflicting: DirectiveLocation[] = [];
+
+  for (const [key, dirs] of byFunction) {
+    const hasNoMemo = dirs.some(d => d.directiveType === 'use-no-memo');
+    const hasMemo = dirs.some(d => d.directiveType === 'use-memo');
+
+    if (hasNoMemo && hasMemo) {
+      conflicts.set(key, dirs);
+    } else {
+      nonConflicting.push(...dirs);
+    }
+  }
+
+  return { conflicts, nonConflicting };
+}
+
+/**
+ * Analyze a single file for directive health (both 'use no memo' and 'use memo').
  */
 export async function analyzeFile(
   filePath: string,
   packageName: string,
   verbose: boolean,
+  compilationMode: string = 'infer',
 ): Promise<DirectiveAnalysis[]> {
   const source = await readFile(filePath, 'utf-8');
   const directives = findDirectiveLocations(source);
@@ -194,6 +235,7 @@ export async function analyzeFile(
       status: 'skipped',
       compilerEvent: 'skipped',
       reason: dir.justification,
+      directiveType: dir.directiveType,
     });
   }
 
@@ -202,131 +244,261 @@ export async function analyzeFile(
     return results;
   }
 
-  // Strip non-justified directives and run the compiler
-  const { modifiedSource, removedLines } = stripDirectives(source, directives);
-  const totalOriginalLines = source.split('\n').length;
-  const lineMapping = buildLineMapping(totalOriginalLines, removedLines);
+  // Detect conflicts (both 'use no memo' and 'use memo' on same function)
+  const { conflicts, nonConflicting } = detectConflicts(directives, source);
 
-  // Collect compiler events
-  const events: CompilerEvent[] = [];
-  const logger = {
-    logEvent: (_filename: string | null, event: CompilerEvent) => {
-      events.push(event);
-    },
-  };
+  // Report conflicting directives
+  for (const [, dirs] of conflicts) {
+    for (const dir of dirs) {
+      if (dir.justified) {
+        continue;
+      }
+      results.push({
+        filePath,
+        packageName,
+        line: dir.line,
+        functionName: findEnclosingFunctionName(source, dir.line),
+        status: 'conflicting',
+        compilerEvent: 'none',
+        reason: "conflicting directives: both 'use no memo' and 'use memo' on same function",
+        directiveType: dir.directiveType,
+      });
+    }
+  }
 
-  const ext = extname(filePath);
-  const isTSX = ext === '.tsx';
+  // Separate non-conflicting directives by type
+  const noMemoDirs = nonConflicting.filter(d => d.directiveType === 'use-no-memo');
+  const memoDirs = nonConflicting.filter(d => d.directiveType === 'use-memo');
 
-  try {
-    await transformAsync(modifiedSource, {
-      filename: filePath,
-      ast: false,
-      code: false,
-      babelrc: false,
-      configFile: false,
-      presets: [
-        [
-          require.resolve('@babel/preset-typescript'),
-          {
-            isTSX: isTSX || ext === '.ts', // enable JSX parsing for .ts too (some .ts files use JSX pragma)
-            allExtensions: true,
-          },
-        ],
-      ],
-      plugins: [
-        [
-          require.resolve('babel-plugin-react-compiler'),
-          {
-            noEmit: true,
-            panicThreshold: 'none',
-            logger,
-          },
-        ],
-      ],
+  // ── Analyze 'use no memo' directives ──
+  // Strip them and run compiler to see what would happen without them
+  if (noMemoDirs.length > 0) {
+    const { modifiedSource, removedLines } = stripDirectives(source, directives);
+    const totalOriginalLines = source.split('\n').length;
+    const lineMapping = buildLineMapping(totalOriginalLines, removedLines);
+
+    const { events, error } = await compileSource(modifiedSource, filePath, {
+      compilationMode: compilationMode as 'infer' | 'annotation' | 'all',
     });
-  } catch (err) {
-    // If babel itself fails (e.g. syntax error), mark all directives in this file as redundant
-    // since we can't determine compiler behavior
-    if (verbose) {
-      console.error(`  babel error in ${filePath}: ${(err as Error).message}`);
+
+    if (error) {
+      if (verbose) {
+        console.error(`  babel error in ${filePath}: ${error.message}`);
+      }
+      const fullTrace = error.stack ?? error.message;
+      for (const dir of noMemoDirs) {
+        results.push({
+          filePath,
+          packageName,
+          line: dir.line,
+          functionName: findEnclosingFunctionName(source, dir.line),
+          status: 'redundant',
+          compilerEvent: 'none',
+          reason: `babel parse error:\n${fullTrace}`,
+          directiveType: 'use-no-memo',
+        });
+      }
+    } else {
+      if (verbose) {
+        for (const ev of events) {
+          const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
+          const name = ev.fnName ?? '';
+          console.log(`  [${ev.kind}] ${filePath} fn@${loc} ${name}`);
+        }
+      }
+
+      // Match each non-justified 'use no memo' directive to compiler events
+      const matched = new Set<DirectiveLocation>();
+
+      for (const event of events) {
+        if (!event.fnLoc) {
+          continue;
+        }
+
+        const dir = matchEventToDirective(event, noMemoDirs, lineMapping, removedLines);
+        if (!dir || matched.has(dir)) {
+          continue;
+        }
+
+        matched.add(dir);
+
+        if (event.kind === 'CompileSuccess') {
+          const fnName = event.fnName ?? findEnclosingFunctionName(source, dir.line);
+
+          if (compilationMode === 'annotation') {
+            // In annotation mode, compiler wouldn't touch functions without 'use memo'
+            // So 'use no memo' is redundant
+            results.push({
+              filePath,
+              packageName,
+              line: dir.line,
+              functionName: fnName,
+              status: 'redundant',
+              compilerEvent: 'CompileSuccess',
+              reason: "in annotation mode, compiler requires 'use memo' — 'use no memo' has no effect",
+              directiveType: 'use-no-memo',
+            });
+          } else {
+            // In infer mode, the compiler CAN compile this function → directive was actively preventing optimization
+            results.push({
+              filePath,
+              packageName,
+              line: dir.line,
+              functionName: fnName,
+              status: 'active',
+              compilerEvent: 'CompileSuccess',
+              directiveType: 'use-no-memo',
+            });
+          }
+        } else if (event.kind === 'CompileError' || event.kind === 'PipelineError') {
+          // The compiler bails on this function anyway → the directive is redundant
+          const reason = event.kind === 'PipelineError' ? event.data ?? '' : extractDetailReason(event.detail);
+          results.push({
+            filePath,
+            packageName,
+            line: dir.line,
+            functionName: findEnclosingFunctionName(source, dir.line),
+            status: 'redundant',
+            compilerEvent: event.kind as 'CompileError' | 'PipelineError',
+            reason,
+            directiveType: 'use-no-memo',
+          });
+        }
+      }
+
+      // Any non-justified 'use no memo' directives not matched → dead directive (redundant)
+      for (const dir of noMemoDirs) {
+        if (!matched.has(dir)) {
+          results.push({
+            filePath,
+            packageName,
+            line: dir.line,
+            functionName: findEnclosingFunctionName(source, dir.line),
+            status: 'redundant',
+            compilerEvent: 'none',
+            reason: 'no compiler event — function not recognized as React component/hook',
+            directiveType: 'use-no-memo',
+          });
+        }
+      }
     }
-    const fullTrace = (err as Error).stack ?? (err as Error).message;
-    for (const dir of nonJustifiedDirs) {
-      results.push({
-        filePath,
-        packageName,
-        line: dir.line,
-        functionName: findEnclosingFunctionName(source, dir.line),
-        status: 'redundant',
-        compilerEvent: 'none',
-        reason: `babel parse error:\n${fullTrace}`,
-      });
-    }
-    return results;
   }
 
-  if (verbose) {
-    for (const ev of events) {
-      const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
-      const name = (ev as { fnName?: string }).fnName ?? '';
-      console.log(`  [${ev.kind}] ${filePath} fn@${loc} ${name}`);
-    }
-  }
+  // ── Analyze 'use memo' directives ──
+  // Compile as-is (with the directive in place) to check if it works
+  if (memoDirs.length > 0) {
+    const { events, error } = await compileSource(source, filePath, {
+      compilationMode: compilationMode as 'infer' | 'annotation' | 'all',
+    });
 
-  // Match each non-justified directive to compiler events
-  const matched = new Set<DirectiveLocation>();
+    if (error) {
+      if (verbose) {
+        console.error(`  babel error in ${filePath}: ${error.message}`);
+      }
+      const fullTrace = error.stack ?? error.message;
+      for (const dir of memoDirs) {
+        results.push({
+          filePath,
+          packageName,
+          line: dir.line,
+          functionName: findEnclosingFunctionName(source, dir.line),
+          status: 'broken',
+          compilerEvent: 'none',
+          reason: `babel parse error:\n${fullTrace}`,
+          directiveType: 'use-memo',
+        });
+      }
+    } else {
+      if (verbose) {
+        for (const ev of events) {
+          const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
+          const name = ev.fnName ?? '';
+          console.log(`  [${ev.kind}] ${filePath} fn@${loc} ${name}`);
+        }
+      }
 
-  for (const event of events) {
-    if (!event.fnLoc) {
-      continue;
-    }
+      // For each 'use memo' directive, find the compiler event for its enclosing function
+      for (const dir of memoDirs) {
+        const fnName = findEnclosingFunctionName(source, dir.line);
+        let matchedEvent: CompilerEvent | null = null;
 
-    const dir = matchEventToDirective(event, nonJustifiedDirs, lineMapping, removedLines);
-    if (!dir || matched.has(dir)) {
-      continue;
-    }
+        // Find the event whose function range contains this directive
+        for (const event of events) {
+          if (!event.fnLoc) {
+            continue;
+          }
+          if (dir.line >= event.fnLoc.start.line && dir.line <= event.fnLoc.end.line) {
+            matchedEvent = event;
+            break;
+          }
+        }
 
-    matched.add(dir);
-
-    if (event.kind === 'CompileSuccess') {
-      // The compiler CAN compile this function → the directive was actively preventing optimization
-      results.push({
-        filePath,
-        packageName,
-        line: dir.line,
-        functionName: (event as { fnName?: string | null }).fnName ?? findEnclosingFunctionName(source, dir.line),
-        status: 'active',
-        compilerEvent: 'CompileSuccess',
-      });
-    } else if (event.kind === 'CompileError' || event.kind === 'PipelineError') {
-      // The compiler bails on this function anyway → the directive is redundant
-      const reason =
-        event.kind === 'PipelineError' ? (event as { data?: string }).data ?? '' : extractDetailReason(event.detail);
-      results.push({
-        filePath,
-        packageName,
-        line: dir.line,
-        functionName: findEnclosingFunctionName(source, dir.line),
-        status: 'redundant',
-        compilerEvent: event.kind as 'CompileError' | 'PipelineError',
-        reason,
-      });
-    }
-  }
-
-  // Any non-justified directives not matched to any event → dead directive (redundant)
-  for (const dir of nonJustifiedDirs) {
-    if (!matched.has(dir)) {
-      results.push({
-        filePath,
-        packageName,
-        line: dir.line,
-        functionName: findEnclosingFunctionName(source, dir.line),
-        status: 'redundant',
-        compilerEvent: 'none',
-        reason: 'no compiler event — function not recognized as React component/hook',
-      });
+        if (!matchedEvent) {
+          // No compiler event — function not recognized
+          results.push({
+            filePath,
+            packageName,
+            line: dir.line,
+            functionName: fnName,
+            status: 'broken',
+            compilerEvent: 'none',
+            reason: 'no compiler event — function not recognized as React component/hook',
+            directiveType: 'use-memo',
+          });
+        } else if (matchedEvent.kind === 'CompileSuccess') {
+          if (compilationMode === 'infer') {
+            // In infer mode, compiler already picks up named components/hooks
+            // 'use memo' is redundant (informational only)
+            results.push({
+              filePath,
+              packageName,
+              line: dir.line,
+              functionName: matchedEvent.fnName ?? fnName,
+              status: 'redundant',
+              compilerEvent: 'CompileSuccess',
+              reason: 'compiler already optimizes this function in infer mode',
+              directiveType: 'use-memo',
+            });
+          } else {
+            // In annotation mode, 'use memo' is actively triggering compilation
+            results.push({
+              filePath,
+              packageName,
+              line: dir.line,
+              functionName: matchedEvent.fnName ?? fnName,
+              status: 'active',
+              compilerEvent: 'CompileSuccess',
+              directiveType: 'use-memo',
+            });
+          }
+        } else if (matchedEvent.kind === 'CompileError' || matchedEvent.kind === 'PipelineError') {
+          // 'use memo' opts in a function that the compiler can't handle → broken
+          const reason =
+            matchedEvent.kind === 'PipelineError' ? matchedEvent.data ?? '' : extractDetailReason(matchedEvent.detail);
+          results.push({
+            filePath,
+            packageName,
+            line: dir.line,
+            functionName: fnName,
+            status: 'broken',
+            compilerEvent: matchedEvent.kind as 'CompileError' | 'PipelineError',
+            reason,
+            directiveType: 'use-memo',
+          });
+        } else if (matchedEvent.kind === 'CompileSkip') {
+          // Compiler skipped this function even with 'use memo' — broken
+          results.push({
+            filePath,
+            packageName,
+            line: dir.line,
+            functionName: fnName,
+            status: 'broken',
+            compilerEvent: 'none',
+            reason: matchedEvent.reason ?? 'compiler skipped this function',
+            directiveType: 'use-memo',
+          });
+        }
+      }
     }
   }
 
@@ -337,28 +509,11 @@ export async function analyzeFile(
  * Analyze multiple files with concurrency-limited parallelism.
  */
 export async function analyzeFiles(files: FileEntry[], options: AnalyzerOptions): Promise<DirectiveAnalysis[]> {
-  const allResults: DirectiveAnalysis[] = [];
-  const { concurrency, verbose } = options;
+  const compilationMode = options.compilationMode ?? 'infer';
 
-  // Simple concurrency pool
-  let index = 0;
-
-  async function worker(): Promise<void> {
-    while (index < files.length) {
-      const current = index++;
-      const entry = files[current];
-
-      if (verbose) {
-        console.log(`Analyzing: ${entry.filePath}`);
-      }
-
-      const results = await analyzeFile(entry.filePath, entry.packageName, verbose);
-      allResults.push(...results);
-    }
-  }
-
-  const workers = Array.from({ length: Math.min(concurrency, files.length) }, () => worker());
-  await Promise.all(workers);
-
-  return allResults;
+  return processFilesConcurrently(
+    files,
+    entry => analyzeFile(entry.filePath, entry.packageName, options.verbose, compilationMode),
+    { concurrency: options.concurrency, verbose: options.verbose },
+  );
 }

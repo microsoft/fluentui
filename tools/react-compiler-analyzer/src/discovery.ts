@@ -3,8 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
 
 import type { FileEntry } from './types';
-
-const USE_NO_MEMO_RE = /['(]use no memo[')]/;
+import { USE_NO_MEMO_CONTENT_RE, USE_MEMO_CONTENT_RE } from './patterns';
 
 /**
  * Walk up from `startDir` to find the nearest package.json and return its `name` field.
@@ -34,9 +33,9 @@ export async function findPackageName(startDir: string): Promise<string> {
 }
 
 /**
- * Discover files containing 'use no memo' in the given directory.
+ * Discover files containing 'use no memo' or 'use memo' directives in the given directory.
  */
-export async function discoverDirectiveFiles(
+export async function discoverFilesWithDirectives(
   scanDir: string,
   packageName: string,
   exclude: string[],
@@ -51,16 +50,29 @@ export async function discoverDirectiveFiles(
 
   for (const filePath of tsFiles) {
     const content = await readFile(filePath, 'utf-8');
-    if (USE_NO_MEMO_RE.test(content)) {
+    if (USE_NO_MEMO_CONTENT_RE.test(content) || USE_MEMO_CONTENT_RE.test(content)) {
       files.push({ filePath, packageName });
     }
   }
 
   if (verbose && files.length === 0) {
-    console.log(`  No 'use no memo' files found in ${scanDir}`);
+    console.log(`  No directive files found in ${scanDir}`);
   }
 
   return files;
+}
+
+/**
+ * Discover files containing 'use no memo' in the given directory.
+ * @deprecated Use discoverFilesWithDirectives instead.
+ */
+export async function discoverDirectiveFiles(
+  scanDir: string,
+  packageName: string,
+  exclude: string[],
+  verbose: boolean,
+): Promise<FileEntry[]> {
+  return discoverFilesWithDirectives(scanDir, packageName, exclude, verbose);
 }
 
 /**

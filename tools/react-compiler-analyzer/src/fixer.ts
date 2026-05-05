@@ -7,12 +7,25 @@ type LineAction = { kind: 'remove'; line: number } | { kind: 'justify'; line: nu
 /**
  * Auto-fix directives in source files:
  * - Remove redundant 'use no memo' directives
- * - Annotate active directives with `// justified: <reason>`
+ * - Annotate active 'use no memo' directives with `// justified: <reason>`
+ * - Resolve conflicting directives: remove 'use no memo', keep 'use memo' if compilable
  *
  * Processes changes bottom-to-top within each file to avoid offset shifts.
  */
 export async function applyFixes(results: DirectiveAnalysis[]): Promise<FixResult> {
-  const actionable = results.filter(r => r.status === 'redundant' || r.status === 'active');
+  const actionable = results.filter(r => {
+    if (r.status === 'redundant' && r.directiveType === 'use-no-memo') {
+      return true;
+    }
+    if (r.status === 'active' && r.directiveType === 'use-no-memo') {
+      return true;
+    }
+    if (r.status === 'conflicting') {
+      return true;
+    }
+    return false;
+  });
+
   if (actionable.length === 0) {
     return { filesModified: 0, directivesRemoved: 0, directivesJustified: 0 };
   }
@@ -21,11 +34,22 @@ export async function applyFixes(results: DirectiveAnalysis[]): Promise<FixResul
   const byFile = new Map<string, LineAction[]>();
   for (const r of actionable) {
     const actions = byFile.get(r.filePath) ?? [];
-    if (r.status === 'redundant') {
+
+    if (r.status === 'redundant' && r.directiveType === 'use-no-memo') {
       actions.push({ kind: 'remove', line: r.line });
-    } else if (r.status === 'active') {
+    } else if (r.status === 'active' && r.directiveType === 'use-no-memo') {
       actions.push({ kind: 'justify', line: r.line, reason: buildJustification(r) });
+    } else if (r.status === 'conflicting') {
+      // For conflicts: always remove 'use no memo'
+      if (r.directiveType === 'use-no-memo') {
+        actions.push({ kind: 'remove', line: r.line });
+      }
+      // For 'use memo' in conflicts: remove if function is non-compilable (broken)
+      // Keep it if the function is compilable (compiler event isn't an error)
+      // Since conflicting status is set before compilation check, we remove 'use memo'
+      // only if there's no CompileSuccess event context. In practice, we keep it.
     }
+
     byFile.set(r.filePath, actions);
   }
 
