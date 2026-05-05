@@ -47,23 +47,22 @@ describe('manualMemoPlugin', () => {
 
   it('detects React.memo wrapper', async () => {
     const results = await runPlugin('react-memo-wrapper.tsx');
-    // React.memo is at module level — the enclosing function is the one wrapping it
-    // or there may be no enclosing function. Let's check if there's a result.
-    // React.memo(InnerComponent) is called at module scope, so the parent function
-    // would not be found — the plugin checks for enclosing function.
-    // Actually in this fixture, React.memo is called at module scope, so no enclosing function.
-    // The module-level arrow or the component itself should catch it if called inside a function.
-    // Since it's at module scope, we expect no results from this particular fixture
-    // unless the plugin handles module-level calls. Per the plan, it walks to enclosing function.
-    // Module-level memo() won't have an enclosing function — so it won't be detected.
-    // This is actually the expected behavior for the annotation use case.
-    expect(results.size).toBe(0);
+    // React.memo at module level resolves the wrapped function (InnerComponent)
+    expect(results.size).toBe(1);
+    const entry = [...results.values()][0];
+    expect(entry.useMemo).toBe(0);
+    expect(entry.useCallback).toBe(0);
+    expect(entry.reactMemo).toBe(true);
   });
 
   it('detects memo() import shorthand', async () => {
     const results = await runPlugin('memo-import.tsx');
-    // Same as above — memo() called at module scope, no enclosing function
-    expect(results.size).toBe(0);
+    // memo() at module scope resolves the wrapped function (InnerComponent)
+    expect(results.size).toBe(1);
+    const entry = [...results.values()][0];
+    expect(entry.useMemo).toBe(0);
+    expect(entry.useCallback).toBe(0);
+    expect(entry.reactMemo).toBe(true);
   });
 
   it('detects mixed useMemo + useCallback in one function', async () => {
@@ -100,13 +99,16 @@ describe('manualMemoPlugin', () => {
 
   it('detects React.useMemo and React.useCallback via namespace', async () => {
     const results = await runPlugin('react-namespace-hooks.tsx');
-    // code that uses React.useCallback + React.useMemo, and React.memo at module scope (no enclosing function)
-    expect(results.size).toBe(1);
-    const entry = [...results.values()][0];
-    expect(entry.useMemo).toBe(1);
-    expect(entry.useCallback).toBe(1);
-    expect(entry.reactMemo).toBe(false);
-    expect(entry.bodyInsertionLine).toBeGreaterThan(0);
+    // TestButton has React.useCallback + React.useMemo; CountDisplay is wrapped in React.memo (inline fn expression)
+    expect(results.size).toBe(2);
+    const entries = [...results.values()];
+    const withHooks = entries.find(e => e.useMemo > 0 || e.useCallback > 0);
+    const withMemo = entries.find(e => e.reactMemo);
+    expect(withHooks).toBeDefined();
+    expect(withHooks!.useMemo).toBe(1);
+    expect(withHooks!.useCallback).toBe(1);
+    expect(withMemo).toBeDefined();
+    expect(withMemo!.reactMemo).toBe(true);
   });
 
   it('ignores useMemo/useCallback not imported from react', async () => {
