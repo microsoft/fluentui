@@ -51,3 +51,12 @@ export const WithAppearanceOverride = () => (
   </FluentProvider>
 );
 WithAppearanceOverride.storyName = 'With appearance override';
+
+export const ShrinkToWrapper = () => (
+  <div style={{ maxWidth: '50px' }}>
+    <div style={{ display: 'grid' }}>
+      <Input defaultValue="Some text that extends past the default size of 20 characters" />
+    </div>
+  </div>
+);
+ShrinkToWrapper.storyName = 'Shrink to wrapper';

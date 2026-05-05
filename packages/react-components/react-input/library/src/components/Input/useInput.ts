@@ -74,6 +74,7 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
     input: slot.always(props.input, {
       defaultProps: {
         type: 'text',
+        size: 1,
         ref,
         ...nativeProps.primary,
       },
