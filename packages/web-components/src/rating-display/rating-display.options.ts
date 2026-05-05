@@ -1,4 +1,4 @@
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * The color of the Rating Display items can be `neutral`, `brand`, or `marigold`.

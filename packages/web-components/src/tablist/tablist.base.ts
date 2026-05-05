@@ -13,7 +13,7 @@ import type { Tab } from '../tab/tab.js';
 import { isTab } from '../tab/tab.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
-import { getDirection } from '../utils/index.js';
+import { getDirection } from '../utils/direction.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { TablistOrientation } from './tablist.options.js';
 
