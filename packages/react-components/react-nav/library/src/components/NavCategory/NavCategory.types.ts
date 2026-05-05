@@ -18,6 +18,16 @@ export type NavCategoryProps = {
 };
 
 /**
+ * NavCategory base props — same as NavCategoryProps (no design-only props).
+ */
+export type NavCategoryBaseProps = NavCategoryProps;
+
+/**
  * State used in rendering NavCategory
  */
 export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryProps>;
+
+/**
+ * NavCategory base state — same as NavCategoryState (no design-only state).
+ */
+export type NavCategoryBaseState = NavCategoryState;
