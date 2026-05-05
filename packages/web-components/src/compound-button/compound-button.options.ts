@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 import type { ButtonOptions } from '../button/button.options.js';
 import type { ValuesOf } from '../utils/index.js';
@@ -39,3 +40,10 @@ export const CompoundButtonSize = ButtonSize;
 export type CompoundButtonSize = ValuesOf<typeof CompoundButtonSize>;
 
 export type { ButtonOptions as CompoundButtonOptions };
+
+/**
+ * The tag name for the compound button element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-compound-button` as const;

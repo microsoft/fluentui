@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -15,3 +16,10 @@ export const SwitchLabelPosition = {
  * @public
  */
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
+
+/**
+ * The tag name for the switch element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-switch` as const;

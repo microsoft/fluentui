@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 import type { MenuItem } from './menu-item.js';
 
@@ -54,3 +55,10 @@ export function isMenuItem(element?: Node | null, tagName: string = '-menu-item'
 
   return (element as Element).tagName.toLowerCase().endsWith(tagName);
 }
+
+/**
+ * The tag name for the menu item element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-menu-item` as const;

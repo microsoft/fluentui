@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './slider.options.js';
 import { Slider } from './slider.js';
 import { styles } from './slider.styles.js';
 import { template } from './slider.template.js';
@@ -12,7 +12,7 @@ import { template } from './slider.template.js';
  * HTML Element: \<fluent-slider\>
  */
 export const definition = Slider.compose({
-  name: `${FluentDesignSystem.prefix}-slider`,
+  name: tagName,
   template,
   styles,
 });

@@ -8,3 +8,4 @@ export {
 export { template as CounterBadgeTemplate } from './counter-badge.template.js';
 export { styles as CounterBadgeStyles } from './counter-badge.styles.js';
 export { definition as CounterBadgeDefinition } from './counter-badge.definition.js';
+export { tagName as CounterBadgeTagName } from './counter-badge.options.js';

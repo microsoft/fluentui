@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './listbox.options.js';
 import { Listbox } from './listbox.js';
 import { styles } from './listbox.styles.js';
 import { template } from './listbox.template.js';
@@ -11,7 +11,7 @@ import { template } from './listbox.template.js';
  * HTML Element: `<fluent-listbox>`
  */
 export const definition = Listbox.compose({
-  name: `${FluentDesignSystem.prefix}-listbox`,
+  name: tagName,
   template,
   styles,
 });

@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './checkbox.options.js';
 import { Checkbox } from './checkbox.js';
 import { styles } from './checkbox.styles.js';
 import { template } from './checkbox.template.js';
@@ -11,7 +11,7 @@ import { template } from './checkbox.template.js';
  * HTML Element: \<fluent-checkbox\>
  */
 export const definition = Checkbox.compose({
-  name: `${FluentDesignSystem.prefix}-checkbox`,
+  name: tagName,
   template,
   styles,
 });

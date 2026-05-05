@@ -5,3 +5,4 @@ export { TextInputAppearance, TextInputControlSize, TextInputType } from './text
 export type { TextInputOptions } from './text-input.options.js';
 export { styles as TextInputStyles } from './text-input.styles.js';
 export { template as TextInputTemplate } from './text-input.template.js';
+export { tagName as TextInputTagName } from './text-input.options.js';

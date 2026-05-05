@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './field.options.js';
 import { Field } from './field.js';
 import { styles } from './field.styles.js';
 import { template } from './field.template.js';
@@ -11,7 +11,7 @@ import { template } from './field.template.js';
  * HTML Element: `<fluent-field>`
  */
 export const definition = Field.compose({
-  name: `${FluentDesignSystem.prefix}-field`,
+  name: tagName,
   template,
   styles,
   shadowOptions: {

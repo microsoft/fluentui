@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './badge.options.js';
 import { Badge } from './badge.js';
 import { styles } from './badge.styles.js';
 import { template } from './badge.template.js';
@@ -10,7 +10,7 @@ import { template } from './badge.template.js';
  * HTML Element: \<fluent-badge\>
  */
 export const definition = Badge.compose({
-  name: `${FluentDesignSystem.prefix}-badge`,
+  name: tagName,
   template,
   styles,
 });

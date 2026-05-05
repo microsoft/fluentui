@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -14,3 +15,10 @@ export const AccordionExpandMode = {
  * @public
  */
 export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
+
+/**
+ * The tag name for the accordion element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-accordion` as const;
