@@ -36,7 +36,7 @@ export const Inline = (): React.ReactNode => {
       </Drawer>
 
       <main className={styles.inlineMain}>
-        <button className={styles.secondaryButton} onClick={toggleDrawer}>
+        <button className={styles.primaryButton} onClick={toggleDrawer}>
           {open ? 'Hide inline drawer' : 'Show inline drawer'}
         </button>
       </main>

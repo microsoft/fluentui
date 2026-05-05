@@ -8,6 +8,11 @@
 .item {
   position: relative;
   display: inline-flex;
+  border-radius: var(--radius-sm);
+}
+
+.item:has(:focus-within) {
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
 .input {
