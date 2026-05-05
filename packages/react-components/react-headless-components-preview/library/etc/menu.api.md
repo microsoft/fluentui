@@ -175,7 +175,7 @@ export { MenuSplitGroupSlots }
 
 export { MenuSplitGroupState }
 
-// @public
+// @public (undocumented)
 export type MenuState = MenuBaseState;
 
 // @public
@@ -187,7 +187,7 @@ export { MenuTriggerProps }
 
 export { MenuTriggerState }
 
-// @public
+// @public (undocumented)
 export const renderMenu: (state: MenuState, contextValues: MenuContextValues) => JSXElement;
 
 // @public (undocumented)
@@ -230,7 +230,7 @@ export const renderMenuSplitGroup: (state: MenuSplitGroupState, contexts?: {
 // @public
 export const renderMenuTrigger: (state: MenuTriggerState) => JSXElement;
 
-// @public
+// @public (undocumented)
 export const useMenu: (props: MenuProps) => MenuState;
 
 export { useMenuContext }

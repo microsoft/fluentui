@@ -28,9 +28,6 @@ export type MenuProps = Omit<MenuBaseProps, 'positioning'> & {
   positioning?: PositioningShorthand;
 };
 
-/**
- * Menu State — the value produced by `useMenu` and consumed by `renderMenu`.
- */
 export type MenuState = MenuBaseState;
 
 export type MenuContextValues = {
