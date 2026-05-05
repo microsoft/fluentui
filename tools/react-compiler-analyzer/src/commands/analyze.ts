@@ -1,11 +1,10 @@
 import type { CommandModule } from 'yargs';
 
-import { analyzeFiles } from '../analyzer';
-import { analyzeFilesForCoverage } from '../coverage-analyzer';
+import { compileFiles } from '../compiler';
+import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
-import { discoverAllFiles, discoverFilesWithDirectives, findPackageName } from '../discovery';
-import { printDirectiveSummary } from '../reporter';
+import { discoverAllFiles, findPackageName } from '../discovery';
 import type { CompilationMode } from '../types';
 import { sharedOptions, validateConcurrency, validatePath } from './shared';
 
@@ -21,7 +20,7 @@ type AnalyzeArgv = {
 
 export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
   command: 'analyze <path>',
-  describe: 'Analyze React Compiler coverage, directives, and migration potential',
+  describe: 'Analyze React Compiler coverage and migration potential',
   builder: yarg =>
     sharedOptions(yarg).option('annotate', {
       type: 'boolean' as const,
@@ -49,30 +48,20 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
 
     console.log(`Files to analyze: ${files.length}\n`);
 
-    // Coverage analysis
-    const coverageResults = await analyzeFilesForCoverage(files, {
+    // Single compilation pass for all files
+    const compilationResults = await compileFiles(files, {
       concurrency: argv.concurrency,
       verbose: argv.verbose,
       compilationMode: argv.mode,
     });
 
+    // Derive coverage from compilation results
+    const coverageResults = compilationResults.flatMap(deriveCoverage);
+
     const workspaceRoot = process.cwd();
     printCoverageReport(coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
     printMigrationCandidates(coverageResults, workspaceRoot);
     printCoverageSummary(coverageResults, argv.verbose);
-
-    // Directive analysis — run on files with directives to show breakdown
-    const directiveFiles = await discoverFilesWithDirectives(resolvedPath, packageName, argv.exclude, false);
-    if (directiveFiles.length > 0) {
-      const directiveResults = await analyzeFiles(directiveFiles, {
-        concurrency: argv.concurrency,
-        verbose: false,
-        compilationMode: argv.mode,
-      });
-      printDirectiveSummary(directiveResults);
-    } else {
-      console.log('\nDirectives: none found');
-    }
 
     if (argv.annotate) {
       const outcome = await applyAnnotations(coverageResults);
@@ -84,6 +73,8 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
         console.log('\nNo functions to annotate.');
       }
     }
+
+    console.log("\nTip: Run 'lint <path>' for directive health checks.");
 
     process.exit(0);
   },

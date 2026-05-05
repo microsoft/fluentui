@@ -189,12 +189,12 @@ src/
 ├── commands/
 │   ├── shared.ts         — Shared options, validation, DEFAULT_EXCLUDE
 │   ├── lint.ts           — 'lint' command (directive health CI gate)
-│   └── analyze.ts        — 'analyze' command (coverage + directives + migration)
-├── compiler.ts           — Unified compiler invocation (compileSource, CompilerEvent, extractDetailReason)
+│   └── analyze.ts        — 'analyze' command (coverage + migration)
+├── compiler.ts           — Unified compilation: compileFile, compileFiles, compileSource
 ├── concurrency.ts        — Generic concurrent file processor
 ├── discovery.ts          — File discovery (findPackageName, discoverFilesWithDirectives, discoverAllFiles)
-├── analyzer.ts           — Directive analysis engine (both 'use no memo' + 'use memo')
-├── coverage-analyzer.ts  — Coverage engine (compiler + manual-memo plugin)
+├── analyzer.ts           — Pure derivation: deriveMemoDirectiveStatuses, analyzeNoMemoDirectives
+├── coverage-analyzer.ts  — Pure derivation: deriveCoverage (from FileCompilationResult)
 ├── manual-memo-plugin.ts — Babel plugin detecting useMemo/useCallback/React.memo
 ├── fixer.ts              — Directive fixes (remove redundant, justify active, resolve conflicts)
 ├── coverage-fixer.ts     — Insert 'use memo' annotations for migration candidates
@@ -204,6 +204,22 @@ src/
 ├── types.ts              — Shared TypeScript interfaces
 └── index.ts              — Package entry (CLI-only, no public API)
 ```
+
+### Data flow
+
+```
+discoverFiles → compileFiles(entries) → FileCompilationResult[]
+                                            │
+                          ┌─────────────────┼─────────────────┐
+                          ▼                 ▼                  ▼
+                  deriveCoverage   deriveMemoDirective   analyzeNoMemo
+                                   Statuses              Directives
+                          │                 │                  │
+                          ▼                 ▼                  ▼
+                   FunctionAnalysis[]  DirectiveAnalysis[]  DirectiveAnalysis[]
+```
+
+Each file is compiled **once** via `compileFile()`. Downstream analysis functions are pure derivations over the `FileCompilationResult` (except `analyzeNoMemoDirectives` which requires a second stripped-directive compilation).
 
 Key dependencies:
 

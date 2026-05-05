@@ -2,9 +2,18 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
-import { analyzeFiles } from '../analyzer';
+import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
+import { compileFile } from '../compiler';
 import { applyFixes } from '../fixer';
-import type { FileEntry } from '../types';
+import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
+
+async function lintFile(entry: FileEntry, compilationMode: CompilationMode = 'infer'): Promise<DirectiveAnalysis[]> {
+  const compiled = await compileFile(entry, compilationMode, false);
+  return [
+    ...deriveMemoDirectiveStatuses(compiled, compilationMode),
+    ...(await analyzeNoMemoDirectives(compiled, compilationMode)),
+  ];
+}
 
 describe('lint command integration', () => {
   let tempDir: string;
@@ -30,8 +39,7 @@ export function useUncompilable() {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-    const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
 
     expect(results.length).toBe(1);
     expect(results[0].status).toBe('redundant');
@@ -52,8 +60,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-    const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
 
     expect(results.length).toBe(1);
     expect(results[0].status).toBe('active');
@@ -75,8 +82,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-    const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
 
     expect(results.length).toBe(1);
     expect(results[0].status).toBe('skipped');
@@ -97,8 +103,7 @@ export function useUncompilable() {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-    const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
     const fixResult = await applyFixes(results);
 
     expect(fixResult.directivesRemoved).toBe(1);
@@ -122,8 +127,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-    const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
     const fixResult = await applyFixes(results);
 
     expect(fixResult.directivesJustified).toBe(1);
@@ -147,15 +151,15 @@ export function MyComponent({ label }: { label: string }) {
 `,
     );
 
-    const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
+    const entry: FileEntry = { filePath: componentFile, packageName: 'test-lint-pkg' };
 
     // First pass
-    const results1 = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results1 = await lintFile(entry);
     await applyFixes(results1);
     const firstContent = readFileSync(componentFile, 'utf-8');
 
     // Second pass — re-analyze the fixed file
-    const results2 = await analyzeFiles(files, { concurrency: 1, verbose: false });
+    const results2 = await lintFile(entry);
     const fixResult2 = await applyFixes(results2);
     const secondContent = readFileSync(componentFile, 'utf-8');
 
@@ -178,12 +182,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, {
-        concurrency: 1,
-        verbose: false,
-        compilationMode: 'annotation',
-      });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' }, 'annotation');
 
       expect(results.length).toBe(1);
       expect(results[0].status).toBe('redundant');
@@ -207,8 +206,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
 
       const conflicting = results.filter(r => r.status === 'conflicting');
       expect(conflicting.length).toBe(2); // both directives marked as conflicting
@@ -231,8 +229,7 @@ export function useUncompilable() {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
 
       expect(results.length).toBe(1);
       expect(results[0].status).toBe('broken');
@@ -253,12 +250,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, {
-        concurrency: 1,
-        verbose: false,
-        compilationMode: 'infer',
-      });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' }, 'infer');
 
       expect(results.length).toBe(1);
       expect(results[0].status).toBe('redundant');
@@ -279,12 +271,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, {
-        concurrency: 1,
-        verbose: false,
-        compilationMode: 'annotation',
-      });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' }, 'annotation');
 
       expect(results.length).toBe(1);
       expect(results[0].status).toBe('active');
@@ -307,12 +294,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, {
-        concurrency: 1,
-        verbose: false,
-        compilationMode: 'annotation',
-      });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' }, 'annotation');
 
       expect(results.length).toBe(1);
       expect(results[0].status).toBe('active');
@@ -333,8 +315,7 @@ export function MyComponent({ label }: { label: string }) {
 `,
       );
 
-      const files: FileEntry[] = [{ filePath: componentFile, packageName: 'test-lint-pkg' }];
-      const results = await analyzeFiles(files, { concurrency: 1, verbose: false });
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
 
       expect(results.length).toBe(1);
       expect(results[0].status).toBe('active');
