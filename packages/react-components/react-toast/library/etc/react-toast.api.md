@@ -39,7 +39,19 @@ export const renderToastTrigger_unstable: (state: ToastTriggerState) => JSXEleme
 export const Toast: ForwardRefComponent<ToastProps>;
 
 // @public
+export type ToastBaseProps = Omit<ToastProps, 'appearance'>;
+
+// @public
+export type ToastBaseState = Omit<ToastState, 'backgroundAppearance'>;
+
+// @public
 export const ToastBody: ForwardRefComponent<ToastBodyProps>;
+
+// @public
+export type ToastBodyBaseProps = ToastBodyProps;
+
+// @public
+export type ToastBodyBaseState = Omit<ToastBodyState, 'backgroundAppearance'>;
 
 // @public (undocumented)
 export const toastBodyClassNames: SlotClassNames<ToastBodySlots>;
@@ -154,6 +166,12 @@ export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
 
+// @public
+export type ToastTitleBaseProps = ToastTitleProps;
+
+// @public
+export type ToastTitleBaseState = Omit<ToastTitleState, 'backgroundAppearance'>;
+
 // @public (undocumented)
 export const toastTitleClassNames: SlotClassNames<ToastTitleSlots>;
 
@@ -192,7 +210,13 @@ export type ToastTriggerState = {
 export const useToast_unstable: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
 
 // @public
+export const useToastBase_unstable: (props: ToastBaseProps, ref: React_2.Ref<HTMLElement>) => ToastBaseState;
+
+// @public
 export const useToastBody_unstable: (props: ToastBodyProps, ref: React_2.Ref<HTMLElement>) => ToastBodyState;
+
+// @public
+export const useToastBodyBase_unstable: (props: ToastBodyBaseProps, ref: React_2.Ref<HTMLElement>) => ToastBodyBaseState;
 
 // @public
 export const useToastBodyStyles_unstable: (state: ToastBodyState) => ToastBodyState;
@@ -224,6 +248,9 @@ export const useToastStyles_unstable: (state: ToastState) => ToastState;
 
 // @public
 export const useToastTitle_unstable: (props: ToastTitleProps, ref: React_2.Ref<HTMLElement>) => ToastTitleState;
+
+// @public
+export const useToastTitleBase_unstable: (props: ToastTitleBaseProps, ref: React_2.Ref<HTMLElement>) => ToastTitleBaseState;
 
 // @public
 export const useToastTitleStyles_unstable: (state: ToastTitleState) => ToastTitleState;
