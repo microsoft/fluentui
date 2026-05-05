@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add css-modules support as opt in via 'cssModules' config",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-headless-components-preview/drawer';
 import { DismissRegular } from '@fluentui/react-icons';
 
-const buttonClassName = 'rounded bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-800';
+import styles from './drawer.module.css';
 
 export const Default = (): React.ReactNode => {
   const [open, setOpen] = React.useState(false);
@@ -18,40 +18,38 @@ export const Default = (): React.ReactNode => {
   return (
     <>
       <Drawer
-        className={
-          'fixed inset-y-0 right-0 m-0 hidden min-h-screen w-80 max-w-[calc(100vw-32px)] translate-x-full flex-col border-0 border-l border-zinc-200 bg-white p-0 shadow-xl transition-transform [&[open]]:flex [&[open]]:translate-x-0 [&[open]]:starting:-translate-x-full backdrop:bg-black/40'
-        }
+        className={styles.drawerOverlay}
         open={open}
         onOpenChange={(_, data) => setOpen(data.open)}
         unmountOnClose={false}
       >
-        <DrawerHeader className="border-b border-zinc-200 px-4 py-3">
+        <DrawerHeader className={styles.drawerHeader}>
           <DrawerHeaderTitle
             action={
-              <button aria-label="Close drawer" className="rounded size-8 hover:bg-zinc-100" onClick={closeDrawer}>
+              <button aria-label="Close drawer" className={styles.closeButton} onClick={closeDrawer}>
                 <DismissRegular />
               </button>
             }
-            className="flex items-start justify-between gap-3"
-            heading={{ className: 'text-lg font-semibold text-zinc-900' }}
+            className={styles.drawerHeaderTitle}
+            heading={{ className: styles.drawerHeading }}
           >
             Overlay drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
-        <DrawerBody className="flex-grow overflow-auto px-3 py-3 text-sm text-zinc-700">
+        <DrawerBody className={styles.drawerBody}>
           <DrawerContent />
         </DrawerBody>
 
-        <DrawerFooter className="flex justify-end gap-2 border-t border-zinc-200 px-4 py-3">
-          <button className={buttonClassName} onClick={closeDrawer}>
+        <DrawerFooter className={styles.drawerFooter}>
+          <button className={styles.primaryButton} onClick={closeDrawer}>
             Close
           </button>
         </DrawerFooter>
       </Drawer>
 
-      <div className="p-4">
-        <button className={buttonClassName} onClick={toggleDrawer}>
+      <div className={styles.trigger}>
+        <button className={styles.primaryButton} onClick={toggleDrawer}>
           Open drawer
         </button>
       </div>
@@ -63,14 +61,9 @@ const DrawerContent = () => {
   const items = ['Dashboard', 'Activity', 'Projects', 'Calendar', 'Settings'];
 
   return (
-    <nav aria-label="Example navigation" className="flex flex-col gap-1">
+    <nav aria-label="Example navigation" className={styles.nav}>
       {items.map((item, index) => (
-        <a
-          key={item}
-          aria-current={index === 0 ? 'page' : undefined}
-          href="#"
-          className="rounded px-3 py-2 font-medium no-underline aria-[current]:bg-zinc-200 aria-[current]:text-zinc-950 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950"
-        >
+        <a key={item} aria-current={index === 0 ? 'page' : undefined} href="#" className={styles.navLink}>
           {item}
         </a>
       ))}

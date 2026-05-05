@@ -1,19 +1,49 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-headless-components-preview/button';
+import { AddRegular } from '@fluentui/react-icons';
 
-const classes = {
-  button:
-    'flex items-center justify-center h-10 px-4 m-0 border border-transparent rounded-md bg-gray-900 font-inherit text-base font-medium leading-6 text-white select-none cursor-pointer hover:bg-gray-800 hover:data-[disabled]:bg-gray-900 active:bg-gray-700 active:shadow-[inset_0_1px_3px_rgba(0,0,0,0.2)] active:data-[disabled]:bg-gray-900 active:data-[disabled]:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
-};
-
+import styles from './button.module.css';
 export const Default = (): React.ReactNode => (
-  <div className="flex gap-4">
-    <Button className={classes.button}>Button</Button>
-    <Button className={classes.button} disabled>
-      Button disabled
-    </Button>
-    <Button className={classes.button} disabled disabledFocusable>
-      Button disabled focusable
-    </Button>
+  <div className={styles.demo}>
+    <div className={styles.demoRow}>
+      <Button className={styles.button}>Primary</Button>
+      <Button className={`${styles.button} ${styles.secondary}`}>Secondary</Button>
+      <Button className={`${styles.button} ${styles.subtle}`}>Subtle</Button>
+      <Button className={`${styles.button} ${styles.outline}`}>Outline</Button>
+    </div>
+
+    <div className={styles.demoRow}>
+      <Button className={`${styles.button} ${styles.small}`}>Small</Button>
+      <Button className={styles.button}>Medium</Button>
+      <Button className={`${styles.button} ${styles.large}`}>Large</Button>
+    </div>
+
+    <div className={styles.demoRow}>
+      <Button
+        className={styles.button}
+        icon={{ children: <AddRegular className={styles.icon} aria-hidden />, className: styles.icon }}
+      >
+        New project
+      </Button>
+      <Button
+        className={styles.button}
+        aria-label="Add"
+        icon={{ children: <AddRegular className={styles.icon} aria-hidden />, className: styles.icon }}
+      />
+      <Button
+        className={`${styles.button} ${styles.secondary} ${styles.small} ${styles.iconOnlySmall}`}
+        aria-label="Add"
+        icon={{ children: <AddRegular className={styles.icon} aria-hidden />, className: styles.icon }}
+      />
+    </div>
+
+    <div className={styles.demoRow}>
+      <Button className={styles.button} disabled>
+        Disabled
+      </Button>
+      <Button className={styles.button} disabled disabledFocusable>
+        Disabled focusable
+      </Button>
+    </div>
   </div>
 );

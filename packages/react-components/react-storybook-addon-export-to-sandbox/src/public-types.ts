@@ -30,7 +30,16 @@ export interface ParametersExtension {
 }
 
 export interface PresetConfig {
-  importMappings: import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions;
+  importMappings: import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions['importMappings'];
   webpackRule?: import('webpack').RuleSetRule;
   babelLoaderOptionsUpdater?: (value: import('@babel/core').TransformOptions) => typeof value;
+  /**
+   * When `true` (or a config object), enables CSS module auto-detection in the babel plugin:
+   *  - Preserves `*.module.css` imports (rewriting paths to `./styles/<basename>`)
+   *  - Auto-detects CSS module files on disk and injects `Story.parameters.cssModuleSources.cssModules`
+   *  - If `tokensFilePath` is provided, reads the file and injects `Story.parameters.cssModuleSources.tokensSource`
+   *
+   * @default false
+   */
+  cssModules?: import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions['cssModules'];
 }

@@ -22,8 +22,9 @@ export { Parameters_2 as Parameters }
 export interface PresetConfig {
     // (undocumented)
     babelLoaderOptionsUpdater?: (value: TransformOptions) => typeof value;
+    cssModules?: BabelPluginOptions['cssModules'];
     // (undocumented)
-    importMappings: BabelPluginOptions;
+    importMappings: BabelPluginOptions['importMappings'];
     // (undocumented)
     webpackRule?: RuleSetRule;
 }

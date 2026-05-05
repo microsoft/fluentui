@@ -1,7 +1,6 @@
 import { Select } from '@fluentui/react-headless-components-preview/select';
 
 import descriptionMd from './SelectDescription.md';
-
 export { Default } from './SelectDefault.stories';
 
 export default {

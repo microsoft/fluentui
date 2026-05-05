@@ -1,7 +1,6 @@
 import { Spinner } from '@fluentui/react-headless-components-preview/spinner';
 
 import descriptionMd from './SpinnerDescription.md';
-
 export { Default } from './SpinnerDefault.stories';
 export { Labels } from './SpinnerLabels.stories';
 

@@ -1,7 +1,6 @@
 import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
 
 import descriptionMd from './CheckboxDescription.md';
-
 export { Default } from './CheckboxDefault.stories';
 
 export default {

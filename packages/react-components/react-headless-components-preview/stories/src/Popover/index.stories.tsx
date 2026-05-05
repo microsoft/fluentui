@@ -2,7 +2,6 @@ import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headles
 
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
-
 export { Default } from './PopoverDefault.stories';
 export { WithArrow } from './PopoverWithArrow.stories';
 export { Controlled } from './PopoverControlled.stories';
