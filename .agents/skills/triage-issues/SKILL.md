@@ -1,6 +1,7 @@
 ---
 name: triage-issues
-description: Triage newly-filed GitHub issues on the Fluent UI repo (microsoft/fluentui) following the Shield triage guidelines. Fetches open issues labeled `Needs: Triage :mag:` via the `gh` CLI, classifies each (bug vs feature, product area, partner ask, repro quality, a11y), recommends label changes and area-owner assignment, and then applies the approved changes. Use this skill whenever the user asks to triage issues, run shield triage, go through the triage queue, process needs-triage, or any variation — even if they don't mention "Fluent UI" or "GitHub" explicitly, since that's the project context here.
+description: >-
+  Triage newly-filed GitHub issues on the Fluent UI repo (microsoft/fluentui) following the Shield triage guidelines. Fetches open issues labeled `Needs: Triage :mag:` via the `gh` CLI, classifies each (bug vs feature, product area, partner ask, repro quality, a11y), recommends label changes and area-owner assignment, and then applies the approved changes. Use this skill whenever the user asks to triage issues, run shield triage, go through the triage queue, process needs-triage, or any variation -- even if they don't mention "Fluent UI" or "GitHub" explicitly, since that's the project context here.
 allowed-tools: Bash Read Grep Glob
 ---
 
