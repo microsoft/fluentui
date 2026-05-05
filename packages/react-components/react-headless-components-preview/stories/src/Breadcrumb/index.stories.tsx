@@ -6,7 +6,6 @@ import {
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
 import descriptionMd from './BreadcrumbDescription.md';
-
 export { Default } from './BreadcrumbDefault.stories';
 
 export default {

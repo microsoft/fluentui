@@ -8,7 +8,6 @@ import {
 } from '@fluentui/react-headless-components-preview/toolbar';
 
 import descriptionMd from './ToolbarDescription.md';
-
 export { Default } from './ToolbarDefault.stories';
 export { Vertical } from './ToolbarVertical.stories';
 export { Toggle } from './ToolbarToggleButton.stories';

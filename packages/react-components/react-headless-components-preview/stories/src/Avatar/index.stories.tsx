@@ -1,7 +1,6 @@
 import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
 
 import descriptionMd from './AvatarDescription.md';
-
 export { Default } from './AvatarDefault.stories';
 
 export default {

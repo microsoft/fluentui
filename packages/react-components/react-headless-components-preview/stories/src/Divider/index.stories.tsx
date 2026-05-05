@@ -1,7 +1,6 @@
 import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
 import descriptionMd from './DividerDescription.md';
-
 export { Default } from './DividerDefault.stories';
 export { Vertical } from './DividerVertical.stories';
 

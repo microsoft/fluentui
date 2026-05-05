@@ -1,7 +1,6 @@
 import { Skeleton, SkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
 import descriptionMd from './SkeletonDescription.md';
-
 export { Default } from './SkeletonDefault.stories';
 
 export default {

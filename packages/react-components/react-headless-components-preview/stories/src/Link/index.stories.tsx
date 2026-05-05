@@ -1,7 +1,6 @@
 import { Link } from '@fluentui/react-headless-components-preview/link';
 
 import descriptionMd from './LinkDescription.md';
-
 export { Default } from './LinkDefault.stories';
 
 export default {

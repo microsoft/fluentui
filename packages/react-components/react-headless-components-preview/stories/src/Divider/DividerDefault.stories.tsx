@@ -1,10 +1,23 @@
 import * as React from 'react';
 import { Divider } from '@fluentui/react-headless-components-preview/divider';
 
+import styles from './divider.module.css';
 export const Default = (): React.ReactNode => (
-  <div className="flex flex-col max-w-48 w-full gap-2 *:my-0">
-    <p>Content above the divider</p>
-    <Divider className="h-px bg-gray-300" />
-    <p>Content below the divider</p>
+  <div className={styles.column}>
+    <p className={styles.section}>Content above</p>
+    <Divider className={styles.divider}>
+      <span className={styles.label}>Or</span>
+    </Divider>
+    <p className={styles.section}>Content below</p>
+
+    <Divider className={`${styles.divider} ${styles.start}`}>
+      <span className={styles.label}>Section</span>
+    </Divider>
+
+    <Divider className={`${styles.divider} ${styles.end}`}>
+      <span className={styles.label}>End</span>
+    </Divider>
+
+    <Divider className={styles.horizontal} />
   </div>
 );

@@ -10,7 +10,6 @@ import {
 } from '@fluentui/react-headless-components-preview/drawer';
 
 import descriptionMd from './DrawerDescription.md';
-
 export { Default } from './DefaultDrawer.stories';
 export { Inline } from './InlineDrawer.stories';
 
