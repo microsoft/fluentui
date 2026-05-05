@@ -5,10 +5,10 @@ import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
   PositioningImperativeRef,
-  PositioningProps,
+  PositioningShorthandValue,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-import type { PositioningReturn } from './types';
+import type { PositioningProps, PositioningReturn } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
@@ -17,6 +17,7 @@ import { usePlacementObserver } from './usePlacementObserver';
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
+const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
 
 export function usePositioning(options: PositioningProps): PositioningReturn {
   const {
@@ -24,7 +25,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     target: customTarget = null,
     align: alignInput = ALIGNMENTS.center,
     position = POSITIONS.above,
-    fallbackPositions = [],
+    fallbackPositions = EMPTY_FALLBACK_POSITIONS,
     offset,
     coverTarget = false,
     strategy = 'absolute',
@@ -35,7 +36,10 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const align = normalizeAlign(alignInput);
 
   const { mainAxis, crossAxis } = resolveOffset(offset);
-  const coverAlignment = coverTarget ? getCoverSelfAlignment(position, align) : null;
+  const coverAlignment = React.useMemo(
+    () => (coverTarget ? getCoverSelfAlignment(position, align) : null),
+    [coverTarget, position, align],
+  );
 
   const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
   const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
@@ -50,15 +54,17 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
+  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
     () => ({
       setTarget: (el: TargetElement | null) => {
         setImperativeTarget(resolveElementRef(el));
       },
-      updatePosition: () => undefined,
+      updatePosition: requestPlacementUpdate,
     }),
-    [],
+    [requestPlacementUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
@@ -148,8 +154,6 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       matchTargetSize,
     ],
   );
-
-  usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
 
   return { targetRef, containerRef };
 }
