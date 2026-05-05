@@ -3,7 +3,7 @@ import { Persona } from '@fluentui/react-headless-components-preview/persona';
 
 import styles from './persona.module.css';
 
-export const Default = () => (
+export const Default = (): React.ReactNode => (
   <Persona
     name="Kevin Sturgis"
     className={styles.persona}
