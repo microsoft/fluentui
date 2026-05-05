@@ -5,8 +5,6 @@ import type { PluginItem } from '@babel/core';
 
 import type { CompilationMode } from './types';
 
-// ── CompilerEvent type (moved from compiler-utils.ts) ──
-
 export interface CompilerEvent {
   kind: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError' | string;
   fnLoc: { start: { line: number; column: number }; end: { line: number; column: number } } | null;
@@ -20,8 +18,6 @@ export interface CompilerEvent {
   prunedMemoBlocks?: number;
   prunedMemoValues?: number;
 }
-
-// ── extractDetailReason (moved from compiler-utils.ts) ──
 
 interface CompilerDetailLike {
   reason?: string;
