@@ -164,7 +164,7 @@ export class BaseTree extends FASTElement {
 
   /**
    * All descendant tree items in DOM order, recursively flattened from
-   * {@link childTreeItems}.
+   * `childTreeItems`.
    */
   protected get descendantTreeItems(): BaseTreeItem[] {
     const result: BaseTreeItem[] = [];
