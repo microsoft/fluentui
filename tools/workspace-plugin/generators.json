@@ -96,6 +96,11 @@
       "schema": "./src/generators/epic-generator/schema.json",
       "description": "DEPRECATED: Create a migration tracker issue epic and subsequent team sub-issues on GitHub for React v9",
       "hidden": true
+    },
+    "cli-command": {
+      "implementation": "./src/generators/cli-command/generator",
+      "schema": "./src/generators/cli-command/schema.json",
+      "description": "Create a new CLI command for @fluentui/cli"
     }
   }
 }
