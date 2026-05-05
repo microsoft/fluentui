@@ -18,7 +18,6 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 
 // Need to support icon hover styles
 export const styles = css`
@@ -118,11 +117,11 @@ export const styles = css`
   :host([size='large']) ::slotted([slot='description']) {
     font-size: ${fontSizeBase300};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host([appearance='primary']:not(:hover, :focus-visible, :disabled, [disabled-focusable]))
       ::slotted([slot='description']) {
       color: HighlightText;
     }
-  `),
-);
+  }
+`;
