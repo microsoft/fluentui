@@ -57,6 +57,7 @@ export {
   tableClassNames,
   useTableStyles_unstable,
   useTable_unstable,
+  useTableContextValues_unstable,
   renderTable_unstable,
 } from './Table';
 export type { TableProps, TableSlots, TableState, TableContextValue, TableContextValues, SortDirection } from './Table';
@@ -118,9 +119,15 @@ export {
   tableCellLayoutClassNames,
   useTableCellLayoutStyles_unstable,
   useTableCellLayout_unstable,
+  useTableCellLayoutContextValues_unstable,
   renderTableCellLayout_unstable,
 } from './TableCellLayout';
-export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';
+export type {
+  TableCellLayoutProps,
+  TableCellLayoutSlots,
+  TableCellLayoutState,
+  TableCellLayoutContextValues,
+} from './TableCellLayout';
 
 export {
   DataGridCell,
