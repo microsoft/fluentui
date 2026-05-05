@@ -1,7 +1,6 @@
 import type { ValuesOf } from '../utils/typings.js';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 
-
 /**
  * Image fit
  * @public
