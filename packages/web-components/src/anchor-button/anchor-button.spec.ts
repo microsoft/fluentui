@@ -182,7 +182,7 @@ test.describe('Anchor Button', () => {
 
     await fastPage.setTemplate({ attributes: { href: '#foo' } });
 
-    await element.evaluate((anchorButton) => {
+    await element.evaluate(anchorButton => {
       let clickCount = 0;
       anchorButton.addEventListener('click', () => {
         clickCount += 1;
