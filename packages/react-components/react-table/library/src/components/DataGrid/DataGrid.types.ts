@@ -102,6 +102,17 @@ export type DataGridProps = TableProps &
        * @default true
        * */
       autoFitColumns?: boolean;
+
+      /**
+       * In pixels. Default padding value used when calculating the total width of the columns.
+       * This is used when adjusting the column widths to fit the container.
+       *
+       * Change this value to total horizontal padding of your cells when you have
+       * custom padding set on the cells or set to 0 if the cells have box-sizing: border-box.
+       *
+       * Specify this value in columnSizingOptions for per-column padding.
+       * */
+      defaultColumnPadding?: number;
     };
   };
 
