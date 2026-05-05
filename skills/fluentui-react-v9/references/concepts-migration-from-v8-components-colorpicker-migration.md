@@ -1,0 +1,75 @@
+# ColorPicker migration
+
+## Examples
+
+Basic usage of `ColorPicker` v8
+
+An equivalent `ColorPicker` in v9 is
+
+## Props mapping
+
+### ColorPicker
+
+This table maps v8 `ColorPicker` component props to their v9 equivalents.
+
+| v8                  | v9              | Notes                                                                                        |
+| ------------------- | --------------- | -------------------------------------------------------------------------------------------- |
+| `alphaType`         | `not supported` | Use `AlphaSlider` component.                                                                 |
+| `alphaSliderHidden` | `not supported` |                                                                                              |
+| `color`             | `color`         | Type changed `IColor, string`->`HSV`                                                         |
+| `className`         | `not supported` | Slot system supports it by default. We don't need to provide it explicitly.                  |
+| `componentRef`      | `not supported` |                                                                                              |
+| `hexLabel`          | `not supported` |                                                                                              |
+| `redLabel`          | `not supported` |                                                                                              |
+| `greenLabel`        | `not supported` |                                                                                              |
+| `blueLabel`         | `not supported` |                                                                                              |
+| `alphaLabel`        | `not supported` |                                                                                              |
+| `onChange`          | `onColorChange` | Renamed. Type changed `(ev: React.SyntheticEvent, color: IColor) => void;` => `EventHandler` |
+| `no equivalent`     | `shape`         | New prop, `shape` of the ColorPicker.                                                        |
+| `showPreview`       | `not supported` | Use `ColorSwatch` instead.                                                                   |
+| `strings`           | `not supported` |                                                                                              |
+| `styles`            | `not supported` | Use style customization through `className` instead.                                         |
+| `theme`             | `not supported` |                                                                                              |
+| `tooltipProps`      | `not supported` | Use `Tooltip` component instead.                                                             |
+
+### ColorRectangle -> ColorArea
+
+This table maps changes between `ColorRectangle` and `ColorArea` equivalent in v9.
+
+| v8                | v9              | Notes                                                                                        |
+| ----------------- | --------------- | -------------------------------------------------------------------------------------------- |
+| `ariaLabel`       | `not supported` | Use native `aria-attributes`                                                                 |
+| `ariaValueFormat` | `not supported` |                                                                                              |
+| `ariaDescription` | `not supported` |                                                                                              |
+| `color`           | `color`         | Type changed `IColor`->`HSV`                                                                 |
+| `no equivalent`   | `defaultColor`  | Default color for uncontrollable ColorArea                                                   |
+| `minSize`         | `not supported` |                                                                                              |
+| `onChange`        | `onColorChange` | Renamed. Type changed `(ev: React.SyntheticEvent, color: IColor) => void;` => `EventHandler` |
+| `no equivalent`   | `shape`         | New prop, `shape` of the ColorPicker.                                                        |
+
+### ColorSlider
+
+| v8              | v9              | Notes                                                                                                        |
+| --------------- | --------------- | ------------------------------------------------------------------------------------------------------------ |
+| `type`          | `channel`       | Color channel. Currently supported `hue`, `saturation` and `brightness`. For alpha channel use `AlphaSlider` |
+| `color`         | `color`         | Type changed `IColor`->`HSV`                                                                                 |
+| `no equivalent` | `defaultColor`  | Default color for uncontrollable ColorArea                                                                   |
+| `minValue`      | `not supported` | Use native input `min` prop                                                                                  |
+| `maxValue`      | `not supported` | Use native input `max` prop                                                                                  |
+| `isAlpha`       | `not supported` |                                                                                                              |
+| `overlayColor`  | `not supported` |                                                                                                              |
+| `thumbColor`    | `not supported` | Use native input `max` prop                                                                                  |
+| `overlayStyle`  | `not supported` | Use native input `max` prop                                                                                  |
+| `onChange`      | `onColorChange` | Renamed. Type changed `(ev: React.SyntheticEvent, color: IColor) => void;` => `EventHandler`                 |
+| `no equivalent` | `shape`         | New prop, `shape` of the ColorPicker.                                                                        |
+| `no equivalent` | `vertical`      | Vertical slider.                                                                                             |
+
+### No equivalent in V8 -> AlphaSlider
+
+For aplha channel, use `AlphaSlider` component. It has all the props of the `ColorSlider`.
+
+| v8              | v9             | Notes                                                                        |
+| --------------- | -------------- | ---------------------------------------------------------------------------- |
+| `no equivalent` | `transparency` | The `transparency` property determines how the alpha channel is interpreted. |
+
+For more examples, please refer to the [ColorPicker documentation](https://react.fluentui.dev/?path=/docs/preview-components-colorpicker--docs).
