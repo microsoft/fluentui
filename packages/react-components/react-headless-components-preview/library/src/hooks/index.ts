@@ -9,3 +9,4 @@ export type {
   PositioningShorthandValue,
 } from './usePositioning';
 export { POSITIONS, ALIGNMENTS, getPlacementString, resolvePositioningShorthand } from './usePositioning';
+export { useFocusTrap } from './useFocusTrap';

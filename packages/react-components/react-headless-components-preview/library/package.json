@@ -253,6 +253,12 @@
       "import": "./lib/toggle-button.js",
       "require": "./lib-commonjs/toggle-button.js"
     },
+    "./focus": {
+      "types": "./dist/focus.d.ts",
+      "node": "./lib-commonjs/focus.js",
+      "import": "./lib/focus.js",
+      "require": "./lib-commonjs/focus.js"
+    },
     "./toolbar": {
       "types": "./dist/toolbar.d.ts",
       "node": "./lib-commonjs/toolbar.js",
