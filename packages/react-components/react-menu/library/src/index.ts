@@ -120,8 +120,18 @@ export {
   useMenuSplitGroup_unstable,
 } from './MenuSplitGroup';
 export type { MenuSplitGroupProps, MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup';
-export { MenuTrigger, renderMenuTrigger_unstable, useMenuTrigger_unstable } from './MenuTrigger';
-export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger';
+export {
+  MenuTrigger,
+  renderMenuTrigger_unstable,
+  useMenuTrigger_unstable,
+  useMenuTriggerBase_unstable,
+} from './MenuTrigger';
+export type {
+  MenuTriggerChildProps,
+  MenuTriggerProps,
+  MenuTriggerState,
+  UseMenuTriggerBaseOptions,
+} from './MenuTrigger';
 
 export { useCheckmarkStyles_unstable } from './selectable/index';
 export type { MenuItemSelectableProps, MenuItemSelectableState, SelectableHandler } from './selectable/index';

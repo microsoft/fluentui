@@ -609,6 +609,14 @@ export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => M
 // @public
 export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;
 
+// @internal
+export const useMenuTriggerBase_unstable: (props: MenuTriggerProps, options?: UseMenuTriggerBaseOptions) => MenuTriggerState;
+
+// @public
+export type UseMenuTriggerBaseOptions = {
+    focusFirst?: () => void;
+};
+
 // @public (undocumented)
 export const useMenuTriggerContext_unstable: () => boolean;
 

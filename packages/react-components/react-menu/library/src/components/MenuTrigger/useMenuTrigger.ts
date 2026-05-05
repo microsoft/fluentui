@@ -26,15 +26,62 @@ function noop() {
 
 /**
  * Create the state required to render MenuTrigger.
- * Clones the only child component and adds necessary event handling behaviours to open a popup menu
+ * Clones the only child component and adds necessary event handling behaviours to open a popup menu.
+ *
+ * Composes with `useMenuTriggerBase_unstable` and supplies Tabster's `findFirstFocusable`
+ * as the `focusFirst` callback so that submenu-trigger keyboard navigation honours
+ * Tabster movers, focus traps, and other Tabster-managed state.
  *
  * @param props - props from this instance of MenuTrigger
  */
 export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
+  const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
+
+  const { findFirstFocusable } = useFocusFinders();
+
+  const focusFirst = React.useCallback(() => {
+    const firstFocusable = findFirstFocusable(menuPopoverRef.current);
+    firstFocusable?.focus();
+  }, [findFirstFocusable, menuPopoverRef]);
+
+  return useMenuTriggerBase_unstable(props, { focusFirst });
+};
+
+/**
+ * Options accepted by `useMenuTriggerBase_unstable`.
+ */
+export type UseMenuTriggerBaseOptions = {
+  /**
+   * Pluggable "focus the first focusable element in the menu popover" callback,
+   * invoked when an already-open submenu trigger receives the open arrow key.
+   *
+   * Not provided by the base hook itself - the base hook is intentionally headless
+   * and leaves focus discovery to the caller. `useMenuTrigger_unstable` plugs in a
+   * Tabster-aware implementation; a headless consumer is expected to supply its own.
+   * If omitted, the keyboard handler is a no-op for that case.
+   */
+  focusFirst?: () => void;
+};
+
+/**
+ * Base hook for MenuTrigger component, produces state required to render the component.
+ *
+ * Headless: this hook does not import from `@fluentui/react-tabster` and does not
+ * perform any focus discovery on its own. The submenu-already-open arrow-key path
+ * delegates to the optional `options.focusFirst` callback, which lets consumers wire
+ * up whichever focus-finding strategy fits their environment (Tabster, a native DOM
+ * query, a virtual focus manager, etc.). When `focusFirst` is not provided that path
+ * becomes a no-op.
+ *
+ * @internal
+ */
+export const useMenuTriggerBase_unstable = (
+  props: MenuTriggerProps,
+  options?: UseMenuTriggerBaseOptions,
+): MenuTriggerState => {
   const { children, disableButtonEnhancement = false } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
-  const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);
   const triggerId = useMenuContext_unstable(context => context.triggerId);
@@ -44,11 +91,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const isSubmenu = useIsSubmenu();
   const shouldOpenOnArrowRight = useMenuListContext_unstable(ctx => ctx.shouldOpenOnArrowRight ?? true);
 
-  const { findFirstFocusable } = useFocusFinders();
-  const focusFirst = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(menuPopoverRef.current);
-    firstFocusable?.focus();
-  }, [findFirstFocusable, menuPopoverRef]);
+  const focusFirst = options?.focusFirst;
 
   const openedWithKeyboardRef = React.useRef(false);
   const openedViaSafeZoneRef = React.useRef(false);
@@ -113,7 +156,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
     // if menu is already open, can't rely on effects to focus
     if (open && key === OpenArrowKey && isSubmenu && shouldOpenOnArrowRight) {
-      focusFirst();
+      focusFirst?.();
     }
   };
 
