@@ -9,11 +9,6 @@ import type { MenuListProps } from './MenuList.types';
 
 /**
  * Headless MenuList component.
- *
- * Renders a `role="menu"` container, applies controlled `checkedValues` for
- * MenuItemCheckbox/Radio descendants, and exposes a DOM-walking
- * `setFocusByFirstCharacter` for type-ahead. Arrow-key navigation is left to
- * the consumer.
  */
 export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((props, ref) => {
   const state = useMenuList(props, ref);

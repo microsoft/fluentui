@@ -25,9 +25,6 @@ export type ArrowNavigationOptions = {
  * on the next item; siblings keep their default tab-order so the consumer
  * does not need to manage `tabIndex` per item.
  *
- * Why not Tabster? The headless package deliberately does not pull
- * `@fluentui/react-tabster` into application code paths, so we implement
- * the WAI-ARIA Authoring Practices keyboard contract for `menu` directly.
  */
 export const useArrowNavigation = (
   containerRef: React.RefObject<HTMLElement | null>,

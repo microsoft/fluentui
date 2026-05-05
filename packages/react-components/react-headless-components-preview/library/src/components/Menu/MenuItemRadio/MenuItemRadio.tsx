@@ -9,9 +9,6 @@ import type { MenuItemRadioProps } from './MenuItemRadio.types';
 
 /**
  * Headless MenuItemRadio component.
- *
- * Renders a single-select item with `role="menuitemradio"` whose checked
- * state is driven by the parent MenuList's controlled `checkedValues`.
  */
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef<
   ARIAButtonElement<'div'>,

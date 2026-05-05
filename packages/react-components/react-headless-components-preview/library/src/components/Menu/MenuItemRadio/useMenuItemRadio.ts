@@ -10,8 +10,7 @@ import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.typ
  *
  * Delegates to v9's `useMenuItemRadioBase_unstable`. The base hook applies
  * `role="menuitemradio"`, enforces single-selection per `name` group via the
- * parent MenuList's `checkedValues`, and skips the default checkmark icon
- * (headless consumers supply their own).
+ * parent MenuList's `checkedValues`, and skips the default checkmark icon.
  */
 export const useMenuItemRadio = (
   props: MenuItemRadioProps,
