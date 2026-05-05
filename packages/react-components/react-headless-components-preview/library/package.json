@@ -135,6 +135,12 @@
       "import": "./lib/field.js",
       "require": "./lib-commonjs/field.js"
     },
+    "./image": {
+      "types": "./dist/image.d.ts",
+      "node": "./lib-commonjs/image.js",
+      "import": "./lib/image.js",
+      "require": "./lib-commonjs/image.js"
+    },
     "./input": {
       "types": "./dist/input.d.ts",
       "node": "./lib-commonjs/input.js",
