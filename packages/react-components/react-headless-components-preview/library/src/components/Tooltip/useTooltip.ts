@@ -15,11 +15,7 @@ import {
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
-import {
-  useTooltipVisibility_unstable as useTooltipVisibility,
-  useFluent_unstable as useFluent,
-} from '@fluentui/react-shared-contexts';
-import { Escape } from '@fluentui/keyboard-keys';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
 import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 
@@ -34,7 +30,6 @@ import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 export const useTooltip = (props: TooltipProps): TooltipState => {
   'use no memo';
 
-  const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
 
@@ -66,7 +61,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     content: slot.always(content, {
       defaultProps: {
         role: 'tooltip',
-        popover: 'manual',
+        popover: 'hint',
       },
       elementType: 'div',
     }),
@@ -76,6 +71,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
+
+  const contentRef = useMergedRefs(state.content.ref, containerRef);
+  state.content.ref = contentRef;
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
@@ -92,53 +90,21 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  const contentRef = useMergedRefs(state.content.ref, containerRef);
-  state.content.ref = contentRef;
-
-  // When this tooltip is visible, hide any other tooltips, and register it
-  // as the visibleTooltip with the TooltipContext.
-  // Also add a listener on document to hide the tooltip if Escape is pressed
-  useIsomorphicLayoutEffect(() => {
-    if (visible) {
-      const thisTooltip = {
-        hide: (ev?: KeyboardEvent) => setVisible(undefined, { visible: false, documentKeyboardEvent: ev }),
-      };
-
-      context.visibleTooltip?.hide();
-      context.visibleTooltip = thisTooltip;
-
-      const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === Escape && !ev.defaultPrevented) {
-          thisTooltip.hide(ev);
-          // Stop propagation to avoid conflicting with other elements that listen for `Escape`
-          // e.g.: Dialog, Popover, Menu and Tooltip
-          ev.preventDefault();
-          ev.stopPropagation();
-        }
-      };
-
-      targetDocument?.addEventListener('keydown', onDocumentKeyDown, {
-        // As this event is added at targeted document,
-        // we need to capture the event to be sure keydown handling from tooltip happens first
-        capture: true,
-      });
-
-      return () => {
-        if (context.visibleTooltip === thisTooltip) {
-          context.visibleTooltip = undefined;
-        }
-
-        targetDocument?.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
-      };
+  const onToggle = useEventCallback((event: Event) => {
+    if ((event as ToggleEvent).newState === 'closed') {
+      setVisible(undefined, { visible: false });
     }
-  }, [context, targetDocument, visible, setVisible]);
+  });
 
-  // Keep the tooltip in sync with the state when it is changed programmatically
+  // Keep the tooltip in sync with the state when it is changed programmatically.
+  // Also sync React state when the browser auto-dismisses the hint popover (click outside, Escape).
   useIsomorphicLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) {
       return;
     }
+
+    el.addEventListener('toggle', onToggle);
 
     try {
       if (visible) {
@@ -147,8 +113,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         el.hidePopover();
       }
     } catch (error) {
-      el.toggleAttribute('hidden', !visible);
-
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
         console.warn(
@@ -160,7 +124,11 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         );
       }
     }
-  }, [contentRef, visible]);
+
+    return () => {
+      el.removeEventListener('toggle', onToggle);
+    };
+  }, [contentRef, visible, setVisible]);
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
@@ -174,16 +142,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         return;
       }
 
-      // Show immediately if another tooltip is already visible
-      const delay = context.visibleTooltip ? 0 : state.showDelay;
-
       setDelayTimeout(() => {
         setVisible(ev, { visible: true });
-      }, delay);
+      }, state.showDelay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.showDelay, context],
+    [setDelayTimeout, setVisible, state.showDelay],
   );
 
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
