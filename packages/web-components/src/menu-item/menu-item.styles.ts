@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandForeground1Pressed,
@@ -169,12 +169,12 @@ export const styles = css`
       }
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host(${disabledState}),
     :host(${disabledState}) ::slotted([slot='start']),
     :host(${disabledState}) ::slotted([slot='end']) {
       color: GrayText;
     }
-  `),
-);
+  }
+`;

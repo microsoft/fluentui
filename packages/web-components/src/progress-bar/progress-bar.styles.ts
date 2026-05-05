@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   borderRadiusMedium,
   borderRadiusNone,
@@ -103,8 +103,8 @@ export const styles = css`
       inset-inline-start: 100%;
     }
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       background-color: CanvasText;
     }
@@ -112,5 +112,5 @@ export const styles = css`
     :host(:is([validation-state='success'], [validation-state='warning'], [validation-state='error'])) .indicator {
       background-color: Highlight;
     }
-  `),
-);
+  }
+`;
