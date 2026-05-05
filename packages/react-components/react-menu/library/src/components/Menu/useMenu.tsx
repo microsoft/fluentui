@@ -27,7 +27,14 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
-import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+import type {
+  MenuBaseProps,
+  MenuBaseState,
+  MenuOpenChangeData,
+  MenuOpenEvent,
+  MenuProps,
+  MenuState,
+} from './Menu.types';
 import { MenuSurfaceMotion } from './MenuSurfaceMotion';
 
 // If it's not possible to position the submenu in smaller viewports, try
@@ -50,6 +57,34 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
+  const { surfaceMotion, ...baseProps } = props;
+  const baseState = useMenuBase_unstable(baseProps);
+
+  return {
+    ...baseState,
+    components: {
+      surfaceMotion: MenuSurfaceMotion,
+    },
+    surfaceMotion: presenceMotionSlot(surfaceMotion, {
+      elementType: MenuSurfaceMotion,
+      defaultProps: {
+        visible: baseState.open,
+        appear: true,
+        unmountOnExit: true,
+      },
+    }),
+  };
+};
+
+/**
+ * Base hook for Menu component, produces state required to render the component.
+ * It doesn't set any design-related slots specific to Menu such as `surfaceMotion`.
+ *
+ * @param props - props from this instance of Menu
+ */
+export const useMenuBase_unstable = (
+  props: MenuBaseProps & { safeZone?: boolean | { timeout?: number } },
+): MenuBaseState => {
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
@@ -190,9 +225,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     mountNode,
     triggerRef,
     menuPopoverRef,
-    components: {
-      surfaceMotion: MenuSurfaceMotion,
-    },
     openOnContext,
     open,
     setOpen,
@@ -200,14 +232,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     onCheckedValueChange,
     persistOnItemClick,
     safeZone: safeZoneHandle.elementToRender,
-    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
-      elementType: MenuSurfaceMotion,
-      defaultProps: {
-        visible: open,
-        appear: true,
-        unmountOnExit: true,
-      },
-    }),
   };
 };
 

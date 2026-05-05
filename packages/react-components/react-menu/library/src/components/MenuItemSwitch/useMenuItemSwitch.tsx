@@ -34,7 +34,6 @@ export const useMenuItemSwitch_unstable = (
  * Base hook for MenuItemSwitch component, produces state required to render the component.
  * It doesn't set any design-related props specific to MenuItemSwitch.
  *
- * @internal
  * @param props - props from this instance of MenuItemSwitch
  * @param ref - reference to root HTMLDivElement of MenuItemSwitch
  */

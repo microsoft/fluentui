@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose react-menu base hooks",
+  "packageName": "@fluentui/react-menu",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
