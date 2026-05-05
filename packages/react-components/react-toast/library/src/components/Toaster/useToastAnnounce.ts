@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Announce } from '../AriaLive';
+import type { Announce } from '../AriaLive';
 import { isHTMLElement } from '@fluentui/react-utilities';
 
 /**

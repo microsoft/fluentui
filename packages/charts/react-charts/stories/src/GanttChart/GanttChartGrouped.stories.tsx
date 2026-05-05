@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
+import type { GanttChartDataPoint } from '@fluentui/react-charts';
+import { DataVizPalette, GanttChart } from '@fluentui/react-charts';
 import { Switch, makeStyles } from '@fluentui/react-components';
 
 const data: GanttChartDataPoint[] = [
@@ -131,7 +132,8 @@ export const GanttChartGrouped = (): JSXElement => {
             max={1000}
             id="width-slider"
             onChange={e => setWidth(parseInt(e.target.value, 10))}
-            aria-valuetext={`Width: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 0 and Maximum 1000`}
           />
           <span>{width}</span>
         </div>
@@ -144,7 +146,8 @@ export const GanttChartGrouped = (): JSXElement => {
             max={1000}
             id="height-slider"
             onChange={e => setHeight(parseInt(e.target.value, 10))}
-            aria-valuetext={`Height: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 0 and Maximum 1000`}
           />
           <span>{height}</span>
         </div>

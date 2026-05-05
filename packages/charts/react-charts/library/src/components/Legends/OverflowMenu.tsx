@@ -21,9 +21,19 @@ export const OverflowMenu: React.FC<{
   const remainingItemsCount = itemIds.length - overflowCount;
   const menuList = [];
   for (let i = remainingItemsCount; i < itemIds.length; i++) {
+    const buttonElement = items[i];
     menuList.push(
-      <MenuItem tabIndex={-1} key={i}>
-        {items[i]}
+      <MenuItem
+        tabIndex={-1}
+        key={i}
+        onClick={e => {
+          const button = buttonElement.props;
+          if (button.onClick) {
+            button.onClick(e);
+          }
+        }}
+      >
+        {buttonElement}
       </MenuItem>,
     );
   }

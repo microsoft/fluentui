@@ -44,7 +44,7 @@ const config = {
         'codesandbox-import-utils',
         'copy-to-clipboard',
         'del',
-        'eslint-config-airbnb',
+        'eslint-config-airbnb-extended',
         'eslint-config-prettier',
         'eslint-import-resolver-typescript',
         'eslint-plugin-compat',

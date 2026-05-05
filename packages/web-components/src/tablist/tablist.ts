@@ -164,8 +164,8 @@ export class Tablist extends BaseTablist {
   /**
    * Initiates the active tab indicator animation loop when tabs change.
    */
-  public tabsChanged(): void {
-    super.tabsChanged();
+  public tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void {
+    super.tabsChanged(prev, next);
     this.setTabData();
 
     if (this.activetab) {

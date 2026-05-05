@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, JSXElement, Slot, TriggerProps } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
@@ -122,6 +122,8 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
     withArrow?: boolean;
   };
 
+export type TooltipBaseProps = Omit<TooltipProps, 'appearance'>;
+
 /**
  * State used in rendering Tooltip
  */
@@ -145,3 +147,5 @@ export type TooltipState = ComponentState<TooltipSlots> &
      */
     arrowClassName?: string;
   };
+
+export type TooltipBaseState = Omit<TooltipState, 'appearance'>;

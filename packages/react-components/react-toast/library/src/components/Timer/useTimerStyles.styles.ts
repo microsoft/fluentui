@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles } from '@griffel/react';
 
 export const useBaseAnimationStyles = makeResetStyles({

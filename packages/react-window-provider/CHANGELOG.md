@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Thu, 23 Oct 2025 10:23:21 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Dec 2025 06:28:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.3.2)
+
+Wed, 10 Dec 2025 06:28:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.3.1..@fluentui/react-window-provider_v2.3.2)
+
+### Patches
+
+- chore: remove unused eslint-disable directives ([PR #35518](https://github.com/microsoft/fluentui/pull/35518) by vgenaev@gmail.com)
 
 ## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.3.0)
 

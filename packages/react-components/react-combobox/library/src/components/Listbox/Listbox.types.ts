@@ -4,8 +4,8 @@ import type {
   ActiveDescendantContextValue,
   ActiveDescendantImperativeRef,
 } from '@fluentui/react-aria';
-import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
-import { SelectionEvents, SelectionProps, SelectionState } from '../../utils/Selection.types';
+import type { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
+import type { SelectionEvents, SelectionProps, SelectionState } from '../../utils/Selection.types';
 import type { ListboxContextValue } from '../../contexts/ListboxContext';
 
 export type ListboxSlots = {

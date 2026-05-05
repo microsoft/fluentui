@@ -1,4 +1,4 @@
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 import webcomponentsTheme from './theme.mjs';
 
 addons.setConfig({

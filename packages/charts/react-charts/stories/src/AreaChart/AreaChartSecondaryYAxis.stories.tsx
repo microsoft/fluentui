@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { AreaChart, ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
+import type { ChartProps, LineChartDataPoint, LineChartPoints } from '@fluentui/react-charts';
+import { AreaChart } from '@fluentui/react-charts';
 import { makeStyles, tokens, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -120,7 +121,8 @@ export const AreaChartSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_widthSliderId}
         onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor={_heightSliderId}>Change Height:</label>
       <input
@@ -130,7 +132,8 @@ export const AreaChartSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_heightSliderId}
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <div style={rootStyle}>
         <AreaChart

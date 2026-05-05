@@ -1,37 +1,44 @@
+import type { ESLint } from 'eslint';
+
 import { name, version } from '../package.json';
+import { RULE_NAME as enforceUseClientName, rule as enforceUseClient } from './rules/enforce-use-client';
 import { RULE_NAME as preferFluentUIV9Name, rule as preferFluentUIV9 } from './rules/prefer-fluentui-v9';
 
-const allRules = {
+export const meta = {
+  name,
+  version,
+};
+export const rules = {
+  [enforceUseClientName]: enforceUseClient,
   [preferFluentUIV9Name]: preferFluentUIV9,
 };
 
-const configs = {
+const recommendedRules = {
+  // Add rules to the recommended config here in the future
+};
+
+export const configs = {
   recommended: {
     plugins: [name],
-    rules: {
-      // add all recommended rules here
-    },
+    rules: recommendedRules,
+  },
+  'flat/recommended': {
+    // Define plugins as an object to satisfy ESLint v9 flat config format
+    // the actual plugin will be assigned later to avoid circular dependencies
+    plugins: { [name]: {} as ESLint.Plugin },
+    rules: recommendedRules,
   },
 };
 
-// Plugin definition
-export const plugin = {
-  meta: {
-    name,
-    version,
-  },
+const plugin = {
+  meta,
   configs,
-  rules: allRules,
+  rules,
 };
 
 // Flat config for eslint v9
-Object.assign(configs, {
-  flat: {
-    recommended: {
-      plugins: { [name]: plugin },
-      rules: configs.recommended.rules,
-    },
-  },
-});
+configs['flat/recommended'].plugins = {
+  [name]: plugin as unknown as ESLint.Plugin,
+};
 
 module.exports = plugin;

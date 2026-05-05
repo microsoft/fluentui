@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 11 Nov 2025 19:18:11 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.14)
+
+Thu, 23 Apr 2026 14:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.13..@fluentui/react-tabster_v9.26.14)
+
+### Patches
+
+- fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path ([PR #35933](https://github.com/microsoft/fluentui/pull/35933) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.26.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.13)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.12..@fluentui/react-tabster_v9.26.13)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.26.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.12)
+
+Thu, 22 Jan 2026 17:06:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.11..@fluentui/react-tabster_v9.26.12)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+## [9.26.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.11)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.10..@fluentui/react-tabster_v9.26.11)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
 
 ## [9.26.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.10)
 

@@ -52,6 +52,8 @@ extends:
                   artifactName: output
             steps:
               - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
 
               - script: |
                   git config user.name "Fluent UI Build"

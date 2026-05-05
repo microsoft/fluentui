@@ -57,17 +57,14 @@ const useStyles = makeStyles({
 const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level }) => {
   const duration = motionTokens.durationNormal;
   const easing = motionTokens.curveEasyEase;
-  const fromX = level === 1 ? '-100%' : '100%';
+  const outX = level === 1 ? '-100%' : '100%';
 
   return {
     enter: [
       fadeAtom({ direction: 'enter', duration, easing }),
-      slideAtom({ direction: 'enter', duration, easing, fromX }),
+      slideAtom({ direction: 'enter', duration, easing, outX }),
     ],
-    exit: [
-      fadeAtom({ direction: 'exit', duration, easing }),
-      slideAtom({ direction: 'exit', duration, easing, fromX }),
-    ],
+    exit: [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outX })],
   };
 });
 

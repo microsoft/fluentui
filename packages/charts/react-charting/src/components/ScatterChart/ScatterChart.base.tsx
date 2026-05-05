@@ -33,7 +33,6 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -64,7 +63,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _circleId = React.useMemo(() => getId('circle'), []);
   const _seriesId: string = React.useMemo(() => getId('seriesID'), []);
   const _verticalLine: string = React.useMemo(() => getId('verticalLine'), []);
-  const _tooltipId: string = React.useMemo(() => getId('ScatterChartTooltipId_'), []);
   const _firstRenderOptimization = true;
   const _emptyChartId: string = React.useMemo(() => getId('_ScatterChart_empty'), []);
   const _points = React.useRef<ScatterChartDataWithIndex[]>(
@@ -94,6 +92,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
+  const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ICustomizedCalloutData>();
   const [isCalloutVisible, setCalloutVisible] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [refSelected, setRefSelected] = React.useState<string>('');
@@ -408,6 +407,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           setRefSelected(`#${circleId}`);
           setYValueHover(found.values);
           setStackCalloutProps(found!);
+          setDataPointCalloutProps(found!);
           setActivePoint(circleId);
         }
       } else {
@@ -625,36 +625,12 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           </g>,
         );
       }
-
-      // Removing un wanted tooltip div from DOM, when prop not provided.
-      if (!props.showXAxisLablesTooltip) {
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at x axis labels.
-      if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-        const xAxisElement = d3Select(xElement).call(_xAxisScale.current);
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const tooltipProps = {
-          tooltipCls: classNames.tooltip!,
-          id: _tooltipId,
-          xAxis: xAxisElement,
-        };
-        xAxisElement && tooltipOfAxislabels(tooltipProps);
-      }
       return series;
     },
     [
       _xAxisScale,
       _yAxisScale,
       props.data.scatterChartData,
-      props.showXAxisLablesTooltip,
-      props.wrapXAxisLables,
       _circleId,
       _getAriaLabel,
       _getPointFill,
@@ -664,7 +640,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _legendHighlighted,
       _noLegendHighlighted,
       _seriesId,
-      _tooltipId,
       _xAxisType,
       _yAxisType,
       activePoint,
@@ -718,6 +693,14 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   function _closeCallout() {
     setCalloutVisible(false);
+  }
+
+  function _getCustomizedCallout() {
+    return props.onRenderCalloutPerStack
+      ? props.onRenderCalloutPerStack(stackCalloutProps)
+      : props.onRenderCalloutPerDataPoint
+      ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+      : null;
   }
 
   const _getNumericMinMaxOfY = React.useCallback(
@@ -809,6 +792,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}
       {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
+      customizedCallout={_getCustomizedCallout()}
       /* eslint-disable react/jsx-no-bind */
 
       children={(childProps: IChildProps) => {

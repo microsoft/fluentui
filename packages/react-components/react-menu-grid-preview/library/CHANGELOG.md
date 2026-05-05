@@ -1,8 +1,145 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Fri, 05 Dec 2025 22:38:36 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.1)
+
+Thu, 23 Apr 2026 14:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.5.0..@fluentui/react-menu-grid-preview_v0.5.1)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.24.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-table to v9.19.15 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.0)
+
+Wed, 01 Apr 2026 15:52:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.4.1..@fluentui/react-menu-grid-preview_v0.5.0)
+
+### Minor changes
+
+- Fix: Left arrow behavior in MenuGrid submenus ([PR #35928](https://github.com/microsoft/fluentui/pull/35928) by email not defined)
+- Fix: Correct type for content prop in MenuGridItem ([PR #35939](https://github.com/microsoft/fluentui/pull/35939) by email not defined)
+- Bump @fluentui/react-menu to v9.24.0 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+- Bump @fluentui/react-table to v9.19.14 ([PR #35912](https://github.com/microsoft/fluentui/pull/35912) by beachball)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.4.1)
+
+Mon, 30 Mar 2026 14:37:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.4.0..@fluentui/react-menu-grid-preview_v0.4.1)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.23.1 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+- Bump @fluentui/react-table to v9.19.13 ([PR #35907](https://github.com/microsoft/fluentui/pull/35907) by beachball)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.4.0)
+
+Thu, 26 Mar 2026 08:12:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.2..@fluentui/react-menu-grid-preview_v0.4.0)
+
+### Minor changes
+
+- Add circular and first-letter navigation ([PR #35880](https://github.com/microsoft/fluentui/pull/35880) by email not defined)
+- Bump @fluentui/react-table to v9.19.12 ([PR #35824](https://github.com/microsoft/fluentui/pull/35824) by beachball)
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.2)
+
+Tue, 17 Mar 2026 07:57:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.1..@fluentui/react-menu-grid-preview_v0.3.2)
+
+### Patches
+
+- fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation) ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-menu to v9.23.0 ([PR #35871](https://github.com/microsoft/fluentui/pull/35871) by beachball)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.1)
+
+Wed, 11 Mar 2026 12:58:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.3.0..@fluentui/react-menu-grid-preview_v0.3.1)
+
+### Patches
+
+- fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover ([PR #35862](https://github.com/microsoft/fluentui/pull/35862) by bernardo.sunderhus@gmail.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.3.0)
+
+Wed, 11 Mar 2026 09:22:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.11..@fluentui/react-menu-grid-preview_v0.3.0)
+
+### Minor changes
+
+- Proper onClick handling for MenuGridRow ([PR #35795](https://github.com/microsoft/fluentui/pull/35795) by adam.samec@gmail.com)
+- Bump @fluentui/react-table to v9.19.11 ([PR #35859](https://github.com/microsoft/fluentui/pull/35859) by beachball)
+
+## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.11)
+
+Tue, 03 Mar 2026 09:43:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.10..@fluentui/react-menu-grid-preview_v0.2.11)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.22.0 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+- Bump @fluentui/react-table to v9.19.10 ([commit](https://github.com/microsoft/fluentui/commit/81e1556b008bfbd07fe427d89af6142459d74c6f) by beachball)
+
+## [0.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.10)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.9..@fluentui/react-menu-grid-preview_v0.2.10)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.21.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-table to v9.19.9 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-tabster to v9.26.13 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.1 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.9)
+
+Thu, 12 Feb 2026 10:46:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.8..@fluentui/react-menu-grid-preview_v0.2.9)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.21.1 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-table to v9.19.8 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.0 ([PR #35743](https://github.com/microsoft/fluentui/pull/35743) by beachball)
+
+## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.8)
+
+Thu, 22 Jan 2026 17:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.7..@fluentui/react-menu-grid-preview_v0.2.8)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.21.0 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-table to v9.19.7 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-tabster to v9.26.12 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.5 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-theme to v9.2.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.7)
+
+Wed, 17 Dec 2025 18:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.6..@fluentui/react-menu-grid-preview_v0.2.7)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.20.6 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-table to v9.19.6 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-tabster to v9.26.11 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.4 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
 
 ## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.6)
 

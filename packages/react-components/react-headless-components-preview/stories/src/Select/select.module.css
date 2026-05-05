@@ -1,0 +1,53 @@
+.wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  border-radius: var(--radius-md);
+  padding: 8px 36px 8px 12px;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.select:hover {
+  border-color: var(--border-strong);
+}
+
+.select:focus-visible {
+  outline: none;
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px var(--surface-muted);
+}
+
+.select:disabled {
+  background: var(--surface-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  color: var(--text-soft);
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 360px;
+}

@@ -31,14 +31,14 @@ describe('FunnelChart', () => {
   it('renders basic funnel chart correctly', () => {
     render(<FunnelChart data={basicData} chartTitle="Test Funnel Chart" width={400} height={300} />);
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
     expect(screen.getByLabelText('Test Funnel Chart')).toBeInTheDocument();
   });
 
   it('renders stacked funnel chart correctly', () => {
     render(<FunnelChart data={stackedData} chartTitle="Stacked Funnel Chart" width={400} height={300} />);
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
     expect(screen.getByLabelText('Stacked Funnel Chart')).toBeInTheDocument();
   });
 
@@ -52,7 +52,7 @@ describe('FunnelChart', () => {
   it('renders with horizontal orientation by default', () => {
     render(<FunnelChart data={basicData} chartTitle="Horizontal Chart" width={400} height={300} />);
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 
   it('renders with vertical orientation when specified', () => {
@@ -60,7 +60,7 @@ describe('FunnelChart', () => {
       <FunnelChart data={basicData} chartTitle="Vertical Chart" width={400} height={300} orientation="vertical" />,
     );
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 
   it('hides legend when hideLegend is true', () => {
@@ -68,13 +68,13 @@ describe('FunnelChart', () => {
       <FunnelChart data={basicData} chartTitle="Hidden Legend Chart" width={400} height={300} hideLegend={true} />,
     );
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
     // Legend should not be present when hideLegend is true
   });
 
   it('renders with custom culture for number formatting', () => {
     render(<FunnelChart data={basicData} chartTitle="Culture Chart" width={400} height={300} culture="en-US" />);
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getAllByRole('img').length).toBeGreaterThan(0);
   });
 });

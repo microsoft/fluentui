@@ -1,11 +1,17 @@
-import * as React from 'react';
-import { Chart } from './index';
+import type * as React from 'react';
+import type { TitleStyles } from '../../utilities/Common.styles';
+import type { Chart } from './index';
 
 /**
  * Chart Table properties
  * {@docCategory ChartTable}
  */
 export interface ChartTableProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * 1d or 2d Array of header values.
    */
@@ -27,6 +33,11 @@ export interface ChartTableProps {
    * @default '650px'
    */
   height?: string | number;
+
+  /**
+   * Chart title to display above the table
+   */
+  chartTitle?: string;
 
   /**
    * Additional class name(s) to apply to the table chart
@@ -55,4 +66,6 @@ export interface ChartTableStyles {
   headerCell?: string;
   bodyCell?: string;
   chart?: string;
+  chartTitle?: string;
+  svgTooltip?: string;
 }

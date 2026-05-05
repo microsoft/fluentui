@@ -1,3 +1,4 @@
+export { BaseMenuList } from './menu-list.base.js';
 export { MenuList } from './menu-list.js';
 export { template as MenuListTemplate } from './menu-list.template.js';
 export { styles as MenuListStyles } from './menu-list.styles.js';

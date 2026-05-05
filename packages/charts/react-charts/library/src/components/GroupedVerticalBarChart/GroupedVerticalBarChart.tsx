@@ -2,16 +2,17 @@
 
 import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
-import { select as d3Select, pointer as d3Pointer } from 'd3-selection';
+import { pointer as d3Pointer } from 'd3-selection';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { ScaleBand, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
+import { scaleBand as d3ScaleBand } from 'd3-scale';
 
-import { useId, JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-utilities';
+import type { IAxisData, IDomainNRange, YAxisType } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
-  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatScientificLimitWidth,
@@ -19,14 +20,12 @@ import {
   getBarWidth,
   isScalePaddingDefined,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
   getNextColor,
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
-  YAxisType,
   calcRequiredWidth,
   calcTotalWidth,
   calcBandwidth,
@@ -34,22 +33,20 @@ import {
   sortAxisCategories,
 } from '../../utilities/index';
 
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   Margins,
   Legend,
   GroupedVerticalBarChartProps,
   GroupedVerticalBarChartData,
   GVBarChartSeriesPoint,
-  Legends,
   YValueHover,
   ChartPopoverProps,
   LineSeries,
-  getColorFromToken,
   BarSeries,
   ChildProps,
 } from '../../index';
+import { CartesianChart, Legends, getColorFromToken } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import { useImageExport } from '../../utilities/hooks';
 import { isInvalidValue } from '@fluentui/chart-utilities';
@@ -83,7 +80,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     maxBarWidth: 24,
     ..._props,
   };
-  const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
@@ -318,8 +314,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             series:
               point.series?.map(seriesPoint => {
                 // TODO: Add support for gradient colors
-                let startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
-                let endColor = startColor;
+                const startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
+                const endColor = startColor;
                 if (!_legendColorMap[seriesPoint.legend]) {
                   _legendColorMap[seriesPoint.legend] = [startColor, endColor];
                 }
@@ -433,7 +429,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
   // using only the data points associated with the primary y-axis.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const yMax = _getMinMaxOfYAxis(_datasetForBars).endValue;
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
@@ -602,6 +598,23 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             />,
           );
 
+          // Render individual bar label if provided
+          if (pointData.barLabel && isLegendActive) {
+            barLabelsForGroup.push(
+              <text
+                key={`${singleSet.indexNum}-${legendIndex}-${pointIndex}-label`}
+                x={xPoint + _barWidth / 2}
+                y={pointData.data >= Y_ORIGIN ? yPoint - 6 : yPoint + height + 12}
+                textAnchor="middle"
+                className={classes.barLabel}
+                aria-hidden={true}
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+              >
+                {pointData.barLabel}
+              </text>,
+            );
+          }
+
           barTotalValue += pointData.data;
         });
         if (barTotalValue !== null && !props.hideLabels && Math.ceil(_barWidth) >= 16 && isLegendActive) {
@@ -623,20 +636,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
-    // Used to display tooltip at x axis labels.
-    if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xScale0);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return (
       <g
         key={singleSet.indexNum}
@@ -869,7 +868,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             opacity={shouldHighlight ? 1 : 0.1}
             onMouseOver={e => _onLineHover(e, series, seriesIdx, pointIdx, scaleLineX)}
             onMouseLeave={_onBarLeave}
-            data-is-focusable={shouldHighlight}
+            tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
             role="img"

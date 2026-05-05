@@ -1,10 +1,10 @@
 // @ts-check
 
 const { defineConfig } = require('eslint/config');
-const fluentPlugin = require('@fluentui/eslint-plugin');
+const rootConfig = require('../../../eslint.config.js');
 
 module.exports = defineConfig([
-  ...fluentPlugin.configs['flat/react'],
+  ...rootConfig,
   {
     files: ['src/index.ts'],
     rules: {

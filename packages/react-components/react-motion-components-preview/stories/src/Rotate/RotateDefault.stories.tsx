@@ -1,6 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import {
+  Card,
+  CardHeader,
   Field,
   makeStyles,
   tokens,
@@ -11,6 +13,7 @@ import {
   Radio,
   motionTokens,
   Button,
+  Text,
 } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
@@ -21,11 +24,13 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalMNudge}`,
-    overflow: 'clip',
   },
   card: {
     gridArea: 'card',
     padding: tokens.spacingHorizontalMNudge,
+  },
+  cardHeaderText: {
+    margin: 0,
   },
   controls: {
     display: 'flex',
@@ -47,7 +52,7 @@ const useClasses = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground2,
     marginBottom: tokens.spacingVerticalXS,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     paddingBottom: tokens.spacingVerticalXS,
   },
   toggleGroup: {
@@ -104,11 +109,11 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
   const [axis, setAxis] = React.useState<Axis3D>('z');
-  const [fromAngle, setFromAngle] = React.useState<number>(-90);
+  const [outAngle, setOutAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const fromAngleSliderId = useId();
+  const outAngleSliderId = useId();
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
@@ -141,18 +146,18 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
 
           <Field className={classes.sliderField}>
             <div className={classes.sliderHeader}>
-              <Label htmlFor={fromAngleSliderId} className={classes.sliderLabel}>
-                From Angle
+              <Label htmlFor={outAngleSliderId} className={classes.sliderLabel}>
+                Out Angle
               </Label>
-              <span className={classes.valueDisplay}>{fromAngle}°</span>
+              <span className={classes.valueDisplay}>{outAngle}°</span>
             </div>
             <Slider
               min={angleMin}
               max={angleMax}
-              defaultValue={fromAngle}
-              id={fromAngleSliderId}
+              defaultValue={outAngle}
+              id={outAngleSliderId}
               onChange={(_, data) => {
-                setFromAngle(data.value);
+                setOutAngle(data.value);
               }}
             />
           </Field>
@@ -198,10 +203,17 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
         </div>
       </div>
 
-      <Rotate visible={visible} axis={axis} fromAngle={fromAngle} duration={duration}>
-        <div className={classes.card}>
+      <Rotate visible={visible} axis={axis} outAngle={outAngle} duration={duration}>
+        <Card className={classes.card}>
+          <CardHeader
+            header={
+              <Text as="h3" className={classes.cardHeaderText} weight="semibold">
+                Lorem Ipsum
+              </Text>
+            }
+          />
           <LoremIpsum />
-        </div>
+        </Card>
       </Rotate>
     </div>
   );

@@ -10,7 +10,7 @@ import {
   generateFiles,
 } from '@fluentui/scripts-projects-test';
 
-const tsVersion = '3.9';
+const tsVersion = '5.4';
 const testName = 'ts-minbar-react';
 
 async function performTest() {

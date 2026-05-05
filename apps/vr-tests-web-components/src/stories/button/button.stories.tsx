@@ -86,6 +86,7 @@ export const Rounded = () => parse(`<fluent-button id="${buttonId}" shape="round
 export const Circular = () => parse(`<fluent-button id="${buttonId}" shape="circular">Circular</fluent-button>`);
 export const Square = () => parse(`<fluent-button id="${buttonId}" shape="square">Square</fluent-button>`);
 
+// eslint-disable-next-line no-unused-vars
 const icon: (slot?: 'start' | undefined) => string = slot => `<svg
       fill="currentColor"
       aria-hidden="true"

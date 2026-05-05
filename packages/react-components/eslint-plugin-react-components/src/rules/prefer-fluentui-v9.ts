@@ -27,7 +27,10 @@ export const rule = createRule<Options, MessageIds>({
   create(context) {
     return {
       ImportDeclaration(node) {
-        if (node.source.value !== '@fluentui/react') {
+        const source = node.source.value;
+        const isFluentV8Import = source === '@fluentui/react' || source.startsWith('@fluentui/react/');
+
+        if (!isFluentV8Import) {
           return;
         }
 
@@ -81,22 +84,25 @@ const MIGRATIONS = {
   Announced: { import: 'useAnnounce', package: '@fluentui/react-components' },
   Breadcrumb: { import: 'Breadcrumb', package: '@fluentui/react-components' },
   Button: { import: 'Button', package: '@fluentui/react-components' },
-  Callout: { import: 'Popover', package: '@fluentui/react-components' },
   Calendar: { import: 'Calendar', package: '@fluentui/react-calendar-compat' },
-  CommandBar: { import: 'Toolbar', package: '@fluentui/react-components' },
-  CommandBarButton: { import: 'Toolbar', package: '@fluentui/react-components' },
-  CommandButton: { import: 'MenuButton', package: '@fluentui/react-components' },
-  CompoundButton: { import: 'CompoundButton', package: '@fluentui/react-components' },
+  Callout: { import: 'Popover', package: '@fluentui/react-components' },
   Checkbox: { import: 'Checkbox', package: '@fluentui/react-components' },
   ChoiceGroup: { import: 'RadioGroup', package: '@fluentui/react-components' },
   Coachmark: { import: 'TeachingPopover', package: '@fluentui/react-components' },
   ComboBox: { import: 'Combobox', package: '@fluentui/react-components' },
+  CommandBar: { import: 'Toolbar', package: '@fluentui/react-components' },
+  CommandBarButton: { import: 'Toolbar', package: '@fluentui/react-components' },
+  CommandButton: { import: 'MenuButton', package: '@fluentui/react-components' },
+  CompoundButton: { import: 'CompoundButton', package: '@fluentui/react-components' },
   ContextualMenu: { import: 'Menu', package: '@fluentui/react-components' },
-  DefaultButton: { import: 'Button', package: '@fluentui/react-components' },
+  ContextualMenuItem: { import: 'MenuItem', package: '@fluentui/react-components' },
   DatePicker: { import: 'DatePicker', package: '@fluentui/react-datepicker-compat' },
+  DefaultButton: { import: 'Button', package: '@fluentui/react-components' },
   DetailsList: { import: 'DataGrid', package: '@fluentui/react-components' },
   Dialog: { import: 'Dialog', package: '@fluentui/react-components' },
   DocumentCard: { import: 'Card', package: '@fluentui/react-components' },
+  DocumentCardTitle: { import: 'CardHeader', package: '@fluentui/react-components' },
+  DocumentCardPreview: { import: 'CardPreview', package: '@fluentui/react-components' },
   Dropdown: { import: 'Dropdown', package: '@fluentui/react-components' },
   Fabric: { import: 'FluentProvider', package: '@fluentui/react-components' },
   Facepile: { import: 'AvatarGroup', package: '@fluentui/react-components' },
@@ -110,13 +116,16 @@ const MIGRATIONS = {
   Label: { import: 'Label', package: '@fluentui/react-components' },
   Layer: { import: 'Portal', package: '@fluentui/react-components' },
   Link: { import: 'Link', package: '@fluentui/react-components' },
+  List: { import: 'List', package: '@fluentui/react-components' },
   MessageBar: { import: 'MessageBar', package: '@fluentui/react-components' },
   Modal: { import: 'Dialog', package: '@fluentui/react-components' },
+  Nav: { import: 'Nav', package: '@fluentui/react-components' },
   OverflowSet: { import: 'Overflow', package: '@fluentui/react-components' },
   Overlay: { import: 'Portal', package: '@fluentui/react-components' },
   Panel: { import: 'Drawer', package: '@fluentui/react-components' },
   PeoplePicker: { import: 'TagPicker', package: '@fluentui/react-components' },
   Persona: { import: 'Persona', package: '@fluentui/react-components' },
+  PersonaPresence: { import: 'Persona', package: '@fluentui/react-components' },
   Pivot: { import: 'TabList', package: '@fluentui/react-components' },
   PivotItem: { import: 'Tab', package: '@fluentui/react-components' },
   ProgressIndicator: { import: 'ProgressBar', package: '@fluentui/react-components' },
@@ -125,9 +134,9 @@ const MIGRATIONS = {
   Separator: { import: 'Divider', package: '@fluentui/react-components' },
   Shimmer: { import: 'Skeleton', package: '@fluentui/react-components' },
   Slider: { import: 'Slider', package: '@fluentui/react-components' },
-  SplitButton: { import: 'SplitButton', package: '@fluentui/react-components' },
   SpinButton: { import: 'SpinButton', package: '@fluentui/react-components' },
   Spinner: { import: 'Spinner', package: '@fluentui/react-components' },
+  SplitButton: { import: 'SplitButton', package: '@fluentui/react-components' },
   Stack: { import: 'StackShim', package: '@fluentui/react-components' },
   SwatchColorPicker: { import: 'SwatchPicker', package: '@fluentui/react-components' },
   TagPicker: { import: 'TagPicker', package: '@fluentui/react-components' },
@@ -135,9 +144,10 @@ const MIGRATIONS = {
   Text: { import: 'Text', package: '@fluentui/react-components' },
   TextField: { import: 'Input', package: '@fluentui/react-components' },
   TimePicker: { import: 'TimePicker', package: '@fluentui/react-timepicker-compat' },
-  ToggleButton: { import: 'ToggleButton', package: '@fluentui/react-components' },
   Toggle: { import: 'Switch', package: '@fluentui/react-components' },
+  ToggleButton: { import: 'ToggleButton', package: '@fluentui/react-components' },
   Tooltip: { import: 'Tooltip', package: '@fluentui/react-components' },
+  TooltipHost: { import: 'Tooltip', package: '@fluentui/react-components' },
 };
 
 /**

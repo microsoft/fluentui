@@ -2,7 +2,7 @@ import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { tokens, webLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 

@@ -1,9 +1,12 @@
-import { create } from '@storybook/theming';
+import { create } from 'storybook/theming';
+import brandImage from './logo.svg';
 
 export default create({
   base: 'light',
   brandTitle: 'Fluent UI\nWeb Components',
   brandUrl: 'https://github.com/microsoft/fluentui',
+  brandImage,
+  brandTarget: '_self',
 
   // Toolbar default and active colors
   barSelectedColor: '#0078d4', // use msft primary blue default
@@ -20,7 +23,7 @@ export default create({
 
   // Typography
   fontBase:
-      '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
+    '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
   fontCode: 'monospace',
 
   // Text colors
@@ -32,4 +35,3 @@ export default create({
   inputTextColor: 'black',
   inputBorderRadius: 4,
 });
-

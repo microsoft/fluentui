@@ -1,5 +1,5 @@
 import { FASTElement } from '@microsoft/fast-element';
-import { isDialog } from '../dialog/dialog.options';
+import { isDialog } from '../dialog/dialog.options.js';
 
 /**
  * A DrawerBody component to layout drawer content

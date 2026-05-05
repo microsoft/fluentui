@@ -1,8 +1,36 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 26 Nov 2025 09:34:50 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Feb 2026 18:07:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.0)
+
+Thu, 26 Feb 2026 18:07:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.14.0..@fluentui/style-utilities_v8.15.0)
+
+### Minor changes
+
+- fabric-cdn url update to latest ([PR #35740](https://github.com/microsoft/fluentui/pull/35740) by caperez@microsoft.com)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.14.0)
+
+Tue, 27 Jan 2026 05:19:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.13.6..@fluentui/style-utilities_v8.14.0)
+
+### Minor changes
+
+- updating to latest fabric CDN url ([PR #35650](https://github.com/microsoft/fluentui/pull/35650) by caperez@microsoft.com)
+
+## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.6)
+
+Wed, 10 Dec 2025 06:28:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.13.5..@fluentui/style-utilities_v8.13.6)
+
+### Patches
+
+- Bump @fluentui/theme to v2.7.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/utilities to v8.17.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
 
 ## [8.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.5)
 

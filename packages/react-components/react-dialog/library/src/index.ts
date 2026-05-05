@@ -59,6 +59,7 @@ export {
   renderDialogSurface_unstable,
 } from './DialogSurface';
 export type {
+  DialogBackdropSlotProps,
   DialogSurfaceProps,
   DialogSurfaceSlots,
   DialogSurfaceState,
@@ -80,9 +81,11 @@ export {
   useDialogSurfaceContext_unstable,
   DialogProvider,
   DialogSurfaceProvider,
+  DialogBackdropProvider,
+  useDialogBackdropContext_unstable,
 } from './contexts/index';
 
-export type { DialogContextValue, DialogSurfaceContextValue } from './contexts/index';
+export type { DialogContextValue, DialogSurfaceContextValue, DialogBackdropContextValue } from './contexts/index';
 
 export {
   DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,

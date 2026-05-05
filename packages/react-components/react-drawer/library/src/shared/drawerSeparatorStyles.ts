@@ -1,5 +1,5 @@
 import { tokens } from '@fluentui/react-theme';
-import { GriffelStyle } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
 
 export const drawerSeparatorStyles: GriffelStyle = {
   height: '1px',

@@ -10,17 +10,7 @@ const tsPaths = new TsconfigPathsPlugin({
 });
 
 module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
-  addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
-        viewport: false,
-        toolbars: false,
-        actions: false,
-      },
-    },
-  ],
+  addons: [],
 
   stories: ['../src/**/*.stories.tsx'],
   core: {

@@ -1,20 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  HorizontalBarChartWithAxisDataPoint,
-  HorizontalBarChartWithAxis,
-  getColorFromToken,
-  DataVizPalette,
-} from '@fluentui/react-charts';
-import {
-  Checkbox,
-  CheckboxOnChangeData,
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { HorizontalBarChartWithAxisDataPoint } from '@fluentui/react-charts';
+import { HorizontalBarChartWithAxis, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import { Checkbox, Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const HorizontalBarWithAxisBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
@@ -109,7 +97,8 @@ export const HorizontalBarWithAxisBasic = (): JSXElement => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -119,7 +108,8 @@ export const HorizontalBarWithAxisBasic = (): JSXElement => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <Field label="Pick one">

@@ -1,11 +1,10 @@
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
-import { withPerformance } from 'storybook-addon-performance';
 import { globalTypes, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 initializeIcons();
 
 export default /** @type {import('@storybook/react').Preview} */ ({
-  decorators: [withPerformance, withStrictMode, withKeytipLayer],
+  decorators: [withStrictMode, withKeytipLayer],
 
   globalTypes: {
     ...globalTypes(),

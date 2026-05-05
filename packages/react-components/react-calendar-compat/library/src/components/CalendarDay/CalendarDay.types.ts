@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarNavigationIcons } from '../Calendar/calendarNavigationIcons';

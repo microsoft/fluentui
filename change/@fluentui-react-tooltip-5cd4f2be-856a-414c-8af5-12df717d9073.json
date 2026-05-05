@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: dismiss Tooltip when the document becomes hidden (e.g. tab backgrounded or app switched on mobile)",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

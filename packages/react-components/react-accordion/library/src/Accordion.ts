@@ -7,6 +7,8 @@ export type {
   AccordionToggleData,
   AccordionToggleEvent,
   AccordionToggleEventHandler,
+  AccordionBaseState,
+  AccordionBaseProps,
 } from './components/Accordion/index';
 export {
   Accordion,
@@ -15,4 +17,5 @@ export {
   useAccordionContextValues_unstable,
   useAccordionStyles_unstable,
   useAccordion_unstable,
+  useAccordionBase_unstable,
 } from './components/Accordion/index';

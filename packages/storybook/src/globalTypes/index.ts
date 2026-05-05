@@ -1,4 +1,4 @@
-import type { GlobalTypes } from '@storybook/types';
+import type { GlobalTypes } from 'storybook/internal/types';
 
 export function globalTypes(): GlobalTypes {
   return {

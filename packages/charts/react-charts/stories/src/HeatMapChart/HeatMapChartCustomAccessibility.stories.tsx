@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  HeatMapChart,
-  HeatMapChartDataPoint,
-  HeatMapChartProps,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { HeatMapChartDataPoint, HeatMapChartProps } from '@fluentui/react-charts';
+import { HeatMapChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const yPoint: string[] = ['CHN', 'IND', 'USA', 'IDN', 'PAK'];
@@ -106,7 +101,8 @@ export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = (): 
           max={1000}
           id="ChangeWidth_Custom"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="ChangeHeight_Custom">Change Height:</label>
         <input
@@ -116,7 +112,8 @@ export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = (): 
           max={1000}
           id="changeHeight_Custom"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightSlider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <h4>Heat map showing population growth over decades</h4>
@@ -129,7 +126,7 @@ export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = (): 
           height={height}
           domainValuesForColorScale={[0, 1500]}
           rangeValuesForColorScale={[
-            getColorFromToken(DataVizPalette.color6),
+            getColorFromToken(DataVizPalette.color3),
             getColorFromToken(DataVizPalette.color10),
           ]}
           reflowProps={{ mode: 'min-width' }}

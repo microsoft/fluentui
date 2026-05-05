@@ -26,12 +26,14 @@ The generator also bumps the versions in any dependent packages.
   - [`exclude`](#exclude)
   - [`bumpType`](#bumpType)
   - [`prereleaseTag`](#prereleaseTag)
+  - [`scope`](#scope)
+  - [`versionSuffix`](#versionsuffix)
 
 <!-- tocstop -->
 
 ## NOTES
 
-- Can bump single package or all convered packages
+- Can bump single package or all packages in a given scope
 - Bumps the package version in all dependent packages
 - Converged packages are currently only identified as having version `9.x`
 
@@ -73,6 +75,12 @@ Bump all vNext packages for a nightly release (0.0.0-nightly).
 yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag nightly
 ```
 
+Bump all tools packages for an experimental release, preserving each package's base version:
+
+```sh
+yarn nx g @fluentui/workspace-plugin:version-bump --all --scope tools --versionSuffix "experimental.my-feature.20260408-abc1234"
+```
+
 ## Options
 
 #### `name`
@@ -87,7 +95,7 @@ Project name (without @npmScope prefix - e.g. `<project-name>`)
 
 Type: `boolean`
 
-Run batch migration on all vNext packages with the tag `platform:web` in `nx.json`
+Run batch migration on all packages in the specified scope (see [`scope`](#scope)).
 
 #### `exclude`
 
@@ -114,3 +122,23 @@ Bump type that can be any allowed in the official NPM [semver](https://github.co
 Type: `string`
 
 For example `alpha` or `beta` Only used when bumping prerelease versions.
+
+### `scope`
+
+Type: `string` (enum: `vNext`, `tools`)
+Default: `vNext`
+
+Which package scope `--all` targets:
+
+- `vNext` — all converged/vNext packages (default, backward compatible)
+- `tools` — all public tools packages (tagged `tools`, non-private, non-v8)
+
+### `versionSuffix`
+
+Type: `string`
+
+A suffix to append to each package's current version. The resulting version will be `{currentVersion}-{versionSuffix}`.
+
+- Mutually exclusive with `--bumpType` and `--explicitVersion`
+- Requires `--all`
+- Useful for experimental releases where each package keeps its own base version

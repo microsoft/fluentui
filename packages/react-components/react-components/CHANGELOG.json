@@ -2,6 +2,2507 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:20:56 GMT",
+      "tag": "@fluentui/react-components_v9.73.8",
+      "version": "9.73.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4adb3ad77d16b40a79f12e3a3afd78cb09bf9c6a",
+            "comment": "fix: add focusgroupstart property to baseElementProperties"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "81852161f3ed30c461b2c8e7af30b8d0b4387fa1",
+            "comment": "fix: Combobox now expands/collapses when clicking in the right padding area (the dead zone between the chevron and the right border)"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "eb054f28154691c4c9dc27b2a79725dccdb90d47",
+            "comment": "fix: use subtle appearance for radio button by default"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "a8c2f2d833c1456244655207b23f044992dae6fb",
+            "comment": "fix: export base hook types"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "faf6311ea1b5dd72b70c4acb9356e60c8d83f6ff",
+            "comment": "fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "a771e440bcd6513b9fc9f372ceabb458a5be2f0c",
+            "comment": "fix: prevent spreading of custom props on html element"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "13bcf75018ad4fa0b2f1b6e2de42d2cfcbdfaf6c",
+            "comment": "perf: memoize context values in use*ContextValues hooks"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5a2ed7e2f471cf05a06d13f88893db50cb49f51b",
+            "comment": "fix: prevent keyboard focus from entering a collapsing panel"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update Switch component to conditionally render CircleFilled in indicator"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fc37669010c08b57352656569c789974ff61b990",
+            "comment": "fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "48ff10fe4f0fe4c1ab9999a2544d6d49740728f3",
+            "comment": "refactor: remove Griffel dependency from usePortalMountNode"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: add mising base hook export"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: add missing base hook export"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "a2d20711a3f628284eafb8abb771d4948f82a2ad",
+            "comment": "fix(react-breadcrumb): wrong appearance applied by default to BreadcrumbButton"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: update types for render function"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c1144c8a16c3ef5702557825cef3a5bc5c963085",
+            "comment": "fix: isSafeUrl utility"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: add CollapseParams to the motion slot type"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c93849cf045adf92b80a2a4fa8efc615f94f9a86",
+            "comment": "feat: expose base hooks for Toolbar components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "020511b1bc6245cadd6cdda36fd194104baced0b",
+            "comment": "feat(react-message-bar): add useMessageBarBase_unstable hook"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: expose motion params as direct props on motion slot types"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ba68f3ae34eca3000c4c0432ba07fd5b95c7001d",
+            "comment": "fix(react-motion): apply MotionComponent type to presence definition"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: add ScaleParams to the motion slot type"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "fix: update type for drawerMotion slot"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "85ba749380bcc7df6e1257ee636fa1192c58744f",
+            "comment": "feat: add CollapseParams to the motion slot type"
+          }
+        ],
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "20b08c0e037ff33a63055b88b68ae793ab54f1da",
+            "comment": "Add cypress e2e tests for TeachingPopover"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 15:52:39 GMT",
+      "tag": "@fluentui/react-components_v9.73.7",
+      "version": "9.73.7",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "2b928d016809ccd4b33ada33678a56c289e8e13e",
+            "comment": "feat: expose base hooks for Avatar"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b5fd7a7d9180fefbc2ca46789f246a571a6c72b3",
+            "comment": "feat: add base hooks for Checkbox"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d743ae8841a74632c7adcb80ec8070da8f65b681",
+            "comment": "feat: add useComboboxBase_unstable and useDropdownBase_unstable hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "381468576f19140edb1051990083830d62f17796",
+            "comment": "feat: add base hooks for Field"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "48c16913efc9bb85f3a3d2a4ce6ec713cae1d9d2",
+            "comment": "feat: add useLabelBase_unstable hook"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu",
+            "commit": "50162292a5a16f1c7e2f7285678965a8228307c1",
+            "comment": "Fix: Left arrow behavior in MenuGrid submenus"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "50162292a5a16f1c7e2f7285678965a8228307c1",
+            "comment": "Fix: Left arrow behavior in MenuGrid submenus"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "4319a8d2d0007b36857d821ec32280fc6b475b58",
+            "comment": "Fix: Correct type for content prop in MenuGridItem"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "b9772fe20aff3c8cfed35f6e471cdd447eacb032",
+            "comment": "feat: add base hooks for ProgressBar"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "eaea7b7df203a87ba69e3d96a5f55174043f6668",
+            "comment": "feat(react-select): add useSelectBase_unstable hook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e084883ccefb9f57a4127b1a815765f4d2cae8cb",
+            "comment": "feat: expose base hooks for Tab and TabList"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f",
+            "comment": "feat: add base hooks for Tags components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "6603c85a1b8beacc28d5f38901d2c97aed199a9f",
+            "comment": "feat: expose base hooks for Tooltip"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "51317b2404ffd14b04619e696ee5ed44beee066d",
+            "comment": "fix: support initials calculation for GB18030-2022 extension characters"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2026 14:37:39 GMT",
+      "tag": "@fluentui/react-components_v9.73.6",
+      "version": "9.73.6",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "60e59306fff71cffb065250b2b1a68490d0528f3",
+            "comment": "feat: expose base hooks and types for Accordion components"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "a72cc70fab2a56641dd70b83586039833376298b",
+            "comment": "feat: add motionSlot() as parallel to presenceMotionSlot()"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "1e832bd4c587ea496247f7e81ac5714bcfba3830",
+            "comment": "feat: add motionSlot() as parallel to presenceMotionSlot()"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ca8968af85531cc12b0371680a0de44e884dfae0",
+            "comment": "feat: expose base state hooks for Radio components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4",
+            "comment": "feat(react-spinbutton): add useSpinButtonBase_unstable hook"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "99713fdb62519430c1bab8d565a1fa134564483d",
+            "comment": "fix: fix incorrect PresenceBadge aria-label"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "1e832bd4c587ea496247f7e81ac5714bcfba3830",
+            "comment": "refactor: migrate ProgressBar from CSS to motion components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Mar 2026 08:12:47 GMT",
+      "tag": "@fluentui/react-components_v9.73.5",
+      "version": "9.73.5",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2747bc1dad2cb2dc8674a8c2d3f5fb0b286008a5",
+            "comment": "feat: add base hooks for Badge"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "f630c09bb0bbacb6e616e767b42af39982177d64",
+            "comment": "feat: add base hooks for Breadcrumb"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b3ee095a0faf60ed0eba642a26e698453b2fffa5",
+            "comment": "fix: ToggleButton provides an opt-in isAccessible variant for accessible checked colors"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "5a0dfa8f625b9becf86ad17289988e2a494f184b",
+            "comment": "feat: expose button base hooks and types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "dc6108e6bec042117f717ccdf0232446eef137d4",
+            "comment": "feat: add base hooks for Card"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "108eb5b1a7d515ca9f00cc9a0b5b845da491f4cb",
+            "comment": "feat: expose base hook and types for Divider component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "35fe7957c67573f8d13a5ccd91ea801b66a545e7",
+            "comment": "feat: add base hooks for Image"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "cd159227b9f5dd4d6d5b28b363971843ffac5d0d",
+            "comment": "feat: add base hooks for Input"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "ee6a69da2a9d939fe1cf47ec721f0884ed55d82f",
+            "comment": "feat: add base hooks for Link"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "d2d48440be57395a523dfd901621d99b58340ef4",
+            "comment": "Add circular and first-letter navigation"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "109610e4667712e7f93bf0ec3bc5d3052c900288",
+            "comment": "feat: expose base hooks for Persona"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "bd4ea9164d0412cc5eeed2a927cdca28ffd6d0f6",
+            "comment": "feat: add base hooks for Rating"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "17eeda5bbac5fa585a0c4fe4a45745f7a4e53f84",
+            "comment": "feat: add base hooks for SearchBox"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "8b677d0f0120d5bb60acc558325d8a0e37269cf6",
+            "comment": "feat: add base hooks for Skeleton"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "35e19d05bde0efa931508f861e9afd17d70f2c8e",
+            "comment": "feat: add base hooks for Slider"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "991db63a413d8a800d496f45c0e47ba7267b4b56",
+            "comment": "feat: add base hooks for Spinner"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4267b29a575d6480c73f4700dbb5b2b0626addb2",
+            "comment": "feat: add base hooks for Switch"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "cd29f13fec3bd7fe638323d6a821b4aaf931a29b",
+            "comment": "feat: expose base hook and types for Textarea"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "3c6e2f147eebe0e2ce07e04660373d66c20794db",
+            "comment": "feat: add base hooks for Textarea"
+          }
+        ],
+        "patch": [
+          {
+            "author": "karesansui.u@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "609f8c5062cfbd19c6d7e8c56e8d2bb17c9d4c8a",
+            "comment": "fix: preserve slot onChange handler using mergeCallbacks instead of direct assignment"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "3d3d763e52a1c29cf4e7a621038af1daf7c258a0",
+            "comment": "fix: preserve user-defined appearance prop in useToolbarToggleButton"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2026 07:57:15 GMT",
+      "tag": "@fluentui/react-components_v9.73.4",
+      "version": "9.73.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "feat: add shouldOpenOnArrowRight to MenuListContextValue to allow grid containers to opt out of ArrowRight opening submenus"
+          },
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4946012a1e9752d2b2baef42bae321c1f899136d",
+            "comment": "feat: add missing SkeletonItem sizes (14, 22, 52, 92) to match typography line-height scale"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "ec5736348028dcf9a0fbebb818a79242d23b4e1c",
+            "comment": "fix: ArrowRight no longer opens submenus inside MenuGrid (reserved for column navigation)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 12:58:37 GMT",
+      "tag": "@fluentui/react-components_v9.73.3",
+      "version": "9.73.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          }
+        ],
+        "minor": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "8ed78ce7d400e750c9ae53400a6088608f3f13de",
+            "comment": "feat: add onNavigateDate callback to CalendarYear decade selector"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "de6619310a88ff6bf955685b690c82993e1bb413",
+            "comment": "fix(react-menu-grid-preview): submenus inside MenuGrid now stay open when moving mouse from trigger to submenu popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:18 GMT",
+      "tag": "@fluentui/react-components_v9.73.3",
+      "version": "9.73.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "0fbdec76bdcfd6ef4727c52edb9e0a71ada8b823",
+            "comment": "feat(react-calendar-compat): added navigation to the next date when date is on row edge"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bd7fdfb3ed559bd2a2c8cdb36ba53829303a13ed",
+            "comment": "Replace unsafe expression evaluation with safe recursive-descent parser"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b10b744fcc9443059ab9ea27534cd76776f04abb",
+            "comment": "fix(charts): block unsafe urls in chart click-to-navigate handlers"
+          },
+          {
+            "author": "yushsingla@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "2f037abe0ee131efaf68504d37ac9eadc000f6ea",
+            "comment": "Marker size issue in scatter chart and line chart"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "040150f9b6103861438c6e2238a33560c0f638c1",
+            "comment": "Fix legend hover opacity not applied to path elements when barCornerRadius is set in VerticalStackedBarChart"
+          },
+          {
+            "author": "85318654+JakubWieclaw@users.noreply.github.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "490829c876d1c628aeabc30354c2f94243bea02f",
+            "comment": "fix: reorder event handling for Escape key"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-field",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-toast",
+            "commit": "d33ac4d486d36f4298889dc7ca11330c7268eb5e",
+            "comment": "Update MessageBar, Field, and Toast to use Dismiss Diamond icons"
+          }
+        ],
+        "minor": [
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "80f357995c67265a761717b3ea4bd4ca300dc220",
+            "comment": "Proper onClick handling for MenuGridRow"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "ace36179073ac4600a3635304a0941bd7dcda21d",
+            "comment": "feat(react-skeleton): Add size and shape props to Skeleton component"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "3f14e213637ad8b64495aa760d3a6b4b78d2415b",
+            "comment": "feat(react-swatch-picker): Add focusMode prop for tab/arrow key navigation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2026 09:43:39 GMT",
+      "tag": "@fluentui/react-components_v9.73.2",
+      "version": "9.73.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "015419bb3fa5f37fdf8025dc7bafbdcd5f71b4de",
+            "comment": "fix: reset MotionRefForwarder context in renderDialogSurface to prevent child components from corrupting Dialog's motion ref"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "015419bb3fa5f37fdf8025dc7bafbdcd5f71b4de",
+            "comment": "fix: add MotionRefForwarderReset to prevent context leaking to descendants"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "4e21b54d65b4951c8cba94f8a15d16568400b43c",
+            "comment": "fix: prevent calendar-compat from crashing when value is undefined"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "26229a953219cf4ec5b4c9f7aeb37070e2cf38db",
+            "comment": "(feat): Add support for vega based schema"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: migrate slide animation from CSS to motion components with surfaceMotion slot"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "fix: make children optional in MotionRefForwarder to resolve type issue"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: migrate slide animation from CSS to motion components with surfaceMotion slot"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9ff8261fe32e27783d236369dc510be312614b69",
+            "comment": "refactor: deprecate createSlideStyles"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "f9a6d8435efa5aff110f335d10e2fc51656167ee",
+            "comment": "feat: add disabledFocusable prop to Switch component"
+          }
+        ],
+        "none": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "e20285c6647bb91dc502946a5225b39d9c555e22",
+            "comment": "Add autoplayInterval control to Autoplay story example"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Feb 2026 13:32:21 GMT",
+      "tag": "@fluentui/react-components_v9.73.1",
+      "version": "9.73.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "019b0e71ea99a047874cbf7b7729451e3431ca0c",
+            "comment": "refactor: use shared MotionRefForwarder from react-motion"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add missing \"use client\" directive to getWindow utility files"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "019b0e71ea99a047874cbf7b7729451e3431ca0c",
+            "comment": "refactor: use shared MotionRefForwarder from react-motion"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "cdded25b6868b0d884c1bf1098390e2f2e50a180",
+            "comment": "fix: fix read-only functionality"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978",
+            "comment": "fix: tabster attributes should be overridable on Tabs"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "019b0e71ea99a047874cbf7b7729451e3431ca0c",
+            "comment": "feat: export MotionRefForwarder and useMotionForwardedRef for shared motion ref forwarding"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "cbf0ef209ac4a8398a2b3ab65cf866761725f782",
+            "comment": "feat(react-positioning): add placement to onPositioningEnd event"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "1d5fa17929cd536f71c9d3274b15a053f8ad7444",
+            "comment": "feat: add disableAutoFocus prop to TagPicker and deprecate on TagPickerList"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "16db0e6234dd1ad6cb234333b75d55f42a85b1c6",
+            "comment": "fix: add  missing \"use client\" directive to client components and styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Feb 2026 10:46:10 GMT",
+      "tag": "@fluentui/react-components_v9.73.0",
+      "version": "9.73.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d9efb3590d2fcacb3ed6ca7386bf9f1519b7c719",
+            "comment": "feat: add support for pinned items"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "ed9f192aba0e8e2982dc12c0f417e93fe034f59c",
+            "comment": "feat: add base hook for Persona component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d9efb3590d2fcacb3ed6ca7386bf9f1519b7c719",
+            "comment": "feat: add support for pinned items"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bb2f4bc402a88cea3bd61ce3d7bebcfab8406076",
+            "comment": "feat: add base hooks for Accordion components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "18a6e2ba4b5fffcf26fe536a3c6b2788d5fe765c",
+            "comment": "feat: add base hooks for Avatar component"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "feat: add DialogBackdropProvider to react-dialog"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "feat: add appearance to backdrop slot"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "93f8af06be5ab06d974cf936a462d739a98231fb",
+            "comment": "feat: remove react-is dependency and update warnIfElementTypeIsInvalid logic"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f17bb7ecaae51c2c01401a7d37e09a7fde13a373",
+            "comment": "fix: prevent XSS theme vulnerability during SSR"
+          },
+          {
+            "author": "copilot@github.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4a303837f102daa3a83eb61a507fc2a62a5f0f32",
+            "comment": "refactor: add base state hooks for Switch component"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "72fa991316ec4a9d207a2926f4bf41c683314bad",
+            "comment": "fix: single-select Table radio header should be fully hidden, not just 0 opacity"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "8f7d1cc6974c5bbe6f2539ae8590ccd02cd00441",
+            "comment": "fix: prevent custom props from leaking to the DOM "
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "8f7d1cc6974c5bbe6f2539ae8590ccd02cd00441",
+            "comment": "fix: prevent custom props from leaking to the DOM"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d912aa79a75dbb5c3037925e16abb9dabba0db3e",
+            "comment": "A11y fix: updated focus-visible outline data"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "116cd14a5df7dca2d6a8fd3ee476770d2a79691f",
+            "comment": "fix: use DialogBackdropProvider to fix no dimmed nested dialogs inside OverlayDrawer'"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e",
+            "comment": "fix: update NavSubItemGroup motion handling and fix styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Jan 2026 12:55:50 GMT",
+      "tag": "@fluentui/react-components_v9.72.11",
+      "version": "9.72.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "7480b016c4964282218eb319f7c8ca3d916a421e",
+            "comment": "fix: ToolbarRadioButton should respect \"size\" prop"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "492633457bfd226a6d84ee521a8773c9265838fe",
+            "comment": "A11y bugs fixes"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "83f780ca128cfe6c9ea35cc3f3b180e2eae1b60d",
+            "comment": "A11y bug fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jan 2026 17:06:27 GMT",
+      "tag": "@fluentui/react-components_v9.72.10",
+      "version": "9.72.10",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "97e6233d301640501d5dcf27ef8a90e5aca51f34",
+            "comment": "chore: migrate to new eslint flat config format"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-popover",
+            "commit": "d685a5d72d905ddaf49d887b3754500b89754b2b",
+            "comment": "fix: incorrect Positioning docs link in Popover component"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "ce5910c75e9e7fb6c74155836b9e338a38e7c170",
+            "comment": "fix: fix test target dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "f9fd012ebe9dd1d6ac7839f6952d0d153c46de19",
+            "comment": "chore: fix test target dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "1ee2498e4360ba474450a19e21109a945fb7c322",
+            "comment": "feat: add base hooks for Toolbar components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "19567b57b3fb7e18dd9a118edf14ebf92d1fec23",
+            "comment": "feat: add base hook for Tooltip component"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda",
+            "comment": "Update CAP DR tokens"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "9dc5e0af5f79de5dfb66a84c4ffab8f6ad59078e",
+            "comment": "refactor(motion-components): improve parameter naming from 'from/to' to 'out/in'"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "d6f0fdca1ad79bf0bc9d9d76bfd062789c665423",
+            "comment": "feat: add base hooks for Popover component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "d9c1e788f99b8b174d60e0b555d71bb15ce16cdf",
+            "comment": "feat: add base hooks for tabs components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "61d916bab29e92ff5db81a3fc876a6f3cf73608a",
+            "comment": "refactor(react-tabs): separate focus behavior from base hook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "3383bfe463a6e80c5b813b2a8e49ff1d7c88acd6",
+            "comment": "feat: add base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0fcb91b47d90677a10cbff63da2b02444f324368",
+            "comment": "feat: add base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "9745983cfa8656d24418bdf01386e9fc4243d774",
+            "comment": "feat: add base hooks for button components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f4279dd02fa4315887b6ce3d88e891d36b4d8ed0",
+            "comment": "feat: add focusgroup attribute to baseElementProperties"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "92b783d67cf6aa835e968ab0898fb3d840db5055",
+            "comment": "fix: cleanup animation handle on unmounted component"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "9dc5e0af5f79de5dfb66a84c4ffab8f6ad59078e",
+            "comment": "fix(react-nav): update Rotate param from \"fromAngle\" to \"outAngle\""
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "043eb8a34e09aab0e18a3e2d4ec296fd9dd7a3a5",
+            "comment": "fix: replace Node.ELEMENT_NODE with hardcoded value for SSR compatibility"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "32d2e6d036ca462858d6290dd55b0cb0f661cb32",
+            "comment": "fix: use distinct hover background color"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "13dd01914fe3ee817ac30df0b2e9f8804d157405",
+            "comment": "fix(react-charts): Add prop to regulate removal of default annotation styling"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "29998d3827059ba391ffdb47ecd9b8f9d12d9025",
+            "comment": "fix barlabel issue for stacked bars"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5f4d3c4103d008d6a85302f0be6cd7cb5b661473",
+            "comment": "fix scatter marker issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "02a94262f035ca3e61f86c34359e12bcd6f9a74b",
+            "comment": "support chart title from plotly schema"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d849b4c228e239590ff9dbffca4d8242cb5f398c",
+            "comment": "fix chart title styles"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "fb1285feb479f5821dc0fc1fc10485025730e6a1",
+            "comment": "fix: resolve minor bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "be3c7c07fb6c27e892854769bec1d816efe9fdd8",
+            "comment": "fix funnel chart navigation issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "01e5afdb3271a2e74c096a123425b7a75bd89357",
+            "comment": "fix nvda bugs"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "80c2cd0058dc026e1959a93770c62e7b0088e816",
+            "comment": "feat: Add PolarChart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "41605eb44cf68859da69177519ab26bd6f177373",
+            "comment": "fix(react-charts): Fixing date related annotation issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "1441a0c7fa8a597dfcf0db0443616bfe9197ab6b",
+            "comment": "fix chart title bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "282750834d403666f2a6a36093f3373c370c8a8c",
+            "comment": "honor alignment and padding properties for chart title"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a672403eee15accc35eabd1ff329397919de7822",
+            "comment": "support for barlabels in declarative HBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64b1b1345ea19c07caf9ce2ab8547107819204fb",
+            "comment": "fix heatmap navigation issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "feceec6b66f4a197b65cbf53f4f6deab52487ff4",
+            "comment": "fix chart width issue in donut chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cacbad90ceef5c0b91248a86ab5d60c0c6553699",
+            "comment": "fix accessibility issues "
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "9dc5e0af5f79de5dfb66a84c4ffab8f6ad59078e",
+            "comment": "fix(react-dialog): update Scale param from \"fromScale\" to \"outScale\""
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "a122e9487ad2b9e8b4b732003f2c6f7a8a4300ff",
+            "comment": "chore: remove experimental style hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "7f1c7e14d32ed82244d09cb9dc54d693612dbc00",
+            "comment": "refactor: refactor divider base hook"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "7d6a04b3943a5a889d77e77d41086ed03e9c7a2f",
+            "comment": "fix: use brand tokens for inverted variant"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "9dc5e0af5f79de5dfb66a84c4ffab8f6ad59078e",
+            "comment": "fix(react-message-bar): update slide atom param from \"fromY\" to \"outY\""
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "a122e9487ad2b9e8b4b732003f2c6f7a8a4300ff",
+            "comment": "chore: remove experimental style hooks"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda",
+            "comment": "chore(tokens): Add CAP DR tokens"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda",
+            "comment": "chore(tokens): Add CAP DR tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Dec 2025 18:10:05 GMT",
+      "tag": "@fluentui/react-components_v9.72.9",
+      "version": "9.72.9",
+      "comments": {
+        "minor": [
+          {
+            "author": "oleksandr.katrukhin@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "c4199f9dad719b5037c259f9d1aa072088c37b41",
+            "comment": "feat: add appearance prop ('flat' | 'elevated')"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2",
+            "comment": "add HTML Popover API attributes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d",
+            "comment": "fix(react-charts): Mixed coordinate annotations"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "36132887d7fdf3a0649ba1fa8c517379c1b9246b",
+            "comment": "add missing aria-labels in v9 cartesian charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "bf3a7316a9978f86576be660a3d4248b06a4b4fc",
+            "comment": "fix label percentage issue in donut, VBC, VSBC and heatmap chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e869d28b446ffb57a0e17a9d40c8960bdaf2b088",
+            "comment": "fix a11y bugs in line chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b46962181fa1c21e5ce467f8eacd3224e2941808",
+            "comment": "fix a11y issues"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c5be00c373a4f3ea0ee4be38b53d2b51ec295b7d",
+            "comment": "feat: improve x-axis tick label layout with automatic wrapping, truncation, or multi-level rendering based on available space"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6729b6cb149daa9671380a4580c03796199773fe",
+            "comment": "fix: resolve minor gantt chart bugs"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "abd28e66882be9e43821b6c83798304596cd2679",
+            "comment": "fix(react-charts):Fixing annotations opacity issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "569edee37b5abbc3c4816c9d8e6ad71a013252e4",
+            "comment": "enable custom callout in scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5cfc307dba2ebe94e9a318f44ed223b8371705bd",
+            "comment": "fix double padding issue in scatter chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "91a2495ab3187a578971877c40c907afdb29e930",
+            "comment": "fix: constrain Field label size to prevent empty space click activation"
+          },
+          {
+            "author": "charles.assuncao@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "4a46ec4e34629134c85f9e75f374a88448c31aa8",
+            "comment": "Fix toolbar toggle button"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e409f75e58c26ea360d81e3d0ef1e63dcff29707",
+            "comment": "fix: ensure slot className is saved from defaultProps"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "9eca6a10706556ef7714297775aa0a829c915d1e",
+            "comment": "Add cypress e2e tests for MenuGrid"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:18 GMT",
       "tag": "@fluentui/react-components_v9.72.8",
       "version": "9.72.8",

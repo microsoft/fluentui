@@ -11,8 +11,6 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
-import type { HostBehavior } from '@microsoft/fast-element';
-import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
@@ -22,9 +20,11 @@ import { ViewTemplate } from '@microsoft/fast-element';
 export class Accordion extends FASTElement {
     // @internal (undocumented)
     protected accordionItems: Element[];
+    // (undocumented)
+    connectedCallback(): void;
     expandmode: AccordionExpandMode;
     // (undocumented)
-    expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
+    expandmodeChanged(prev: AccordionExpandMode | undefined, next: AccordionExpandMode): void;
     // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
@@ -435,7 +435,6 @@ export class BaseAccordionItem extends FASTElement {
     expandbutton: HTMLElement;
     expanded: boolean;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
 }
 
 // @public
@@ -466,9 +465,31 @@ export class BaseAnchor extends FASTElement {
 export class BaseAvatar extends FASTElement {
     constructor();
     // @internal
+    protected cleanupSlottedContent(): void;
+    // @internal
+    defaultSlot: HTMLSlotElement;
+    // @internal
+    defaultSlotChanged(): void;
+    // @internal
     elementInternals: ElementInternals;
+    // @internal
+    generateInitials(): string | void;
     initials?: string | undefined;
+    // @internal
+    protected initialsChanged(): void;
+    // @internal
+    monogram: HTMLElement;
+    // @internal
+    protected monogramChanged(): void;
     name?: string | undefined;
+    // @internal
+    protected nameChanged(): void;
+    // @internal
+    slottedDefaults: Node[];
+    // @internal
+    protected slottedDefaultsChanged(): void;
+    // @internal
+    protected updateMonogram(): void;
 }
 
 // @public
@@ -481,8 +502,8 @@ export class BaseButton extends FASTElement {
     connectedCallback(): void;
     defaultSlottedContent: HTMLElement[];
     disabled: boolean;
-    // (undocumented)
-    protected disabledChanged(): void;
+    // @internal
+    disabledChanged(): void;
     disabledFocusable: boolean;
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
@@ -503,6 +524,8 @@ export class BaseButton extends FASTElement {
     name?: string;
     protected press(): void;
     resetForm(): void;
+    // @internal
+    protected setTabIndex(): void;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -591,6 +614,8 @@ export class BaseDropdown extends FASTElement {
     changeHandler(e: Event): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -704,14 +729,42 @@ export class BaseField extends FASTElement {
 }
 
 // @public
-export class BaseProgressBar extends FASTElement {
+export class BaseMenuList extends FASTElement {
     constructor();
-    // (undocumented)
+    // @internal (undocumented)
     connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
+    focus(): void;
+    handleChange(source: any, propertyName: string): void;
+    // @internal
+    handleFocusOut: (e: FocusEvent) => void;
     // @internal (undocumented)
-    indicator: HTMLElement;
+    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
+    protected isMenuItemElement: (el: Element) => el is HTMLElement;
+    // @internal (undocumented)
+    readonly isNestedMenu: () => boolean;
+    // @internal (undocumented)
+    items: HTMLElement[];
+    // (undocumented)
+    protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
+    // (undocumented)
+    protected menuItems: Element[] | undefined;
+    // (undocumented)
+    protected setItems(): void;
+}
+
+// @public
+export class BaseProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    indicator?: HTMLElement;
+    // @internal
+    protected indicatorChanged(): void;
     // @internal
     max?: number;
     // @internal
@@ -719,12 +772,75 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    protected setIndicatorWidth(): void;
     validationState: ProgressBarValidationState | null;
     validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
     value?: number;
     // @internal
     protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export class BaseRadioGroup extends FASTElement {
+    constructor();
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number, shouldEmit?: boolean): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slottedRadios: Radio[];
+    slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
 }
 
 // @public
@@ -743,8 +859,10 @@ export class BaseRatingDisplay extends FASTElement {
     get formattedCount(): string;
     // @internal (undocumented)
     handleSlotChange(): void;
-    // @internal (undocumented)
+    // @internal
     iconSlot: HTMLSlotElement;
+    // @internal
+    iconSlotChanged(): void;
     // @deprecated
     iconViewBox?: string;
     max?: number;
@@ -770,6 +888,7 @@ export class BaseSpinner extends FASTElement {
 
 // @public
 export class BaseTablist extends FASTElement {
+    constructor();
     activeid: string;
     // @internal (undocumented)
     protected activeidChanged(oldValue: string, newValue: string): void;
@@ -793,7 +912,7 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     tabs: Tab[];
     // @internal (undocumented)
-    protected tabsChanged(): void;
+    protected tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
 // @public
@@ -810,6 +929,8 @@ export class BaseTextArea extends FASTElement {
     connectedCallback(): void;
     // @internal
     controlEl: HTMLTextAreaElement;
+    // @internal
+    protected controlElChanged(): void;
     // @internal
     defaultSlottedNodes: Node[];
     // (undocumented)
@@ -859,6 +980,8 @@ export class BaseTextArea extends FASTElement {
     resize: TextAreaResize;
     // (undocumented)
     protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    // @internal
+    rootEl: HTMLDivElement;
     select(): void;
     setCustomValidity(message: string | null): void;
     // @internal
@@ -964,9 +1087,13 @@ export class BaseTree extends FASTElement {
     childTreeItemsChanged(): void;
     // @internal
     clickHandler(e: Event): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     currentSelected: HTMLElement | null;
     // @internal (undocumented)
     defaultSlot: HTMLSlotElement;
+    // @internal
+    defaultSlotChanged(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -976,6 +1103,21 @@ export class BaseTree extends FASTElement {
     // @internal
     keydownHandler(e: KeyboardEvent): boolean | void;
 }
+
+// @public
+export const borderRadius2XLarge = "var(--borderRadius2XLarge)";
+
+// @public
+export const borderRadius3XLarge = "var(--borderRadius3XLarge)";
+
+// @public
+export const borderRadius4XLarge = "var(--borderRadius4XLarge)";
+
+// @public
+export const borderRadius5XLarge = "var(--borderRadius5XLarge)";
+
+// @public
+export const borderRadius6XLarge = "var(--borderRadius6XLarge)";
 
 // @public
 export const borderRadiusCircular = "var(--borderRadiusCircular)";
@@ -1062,7 +1204,7 @@ export const ButtonSize: {
 export type ButtonSize = ValuesOf<typeof ButtonSize>;
 
 // @public
-export const ButtonTemplate: ElementViewTemplate<Button>;
+export const ButtonTemplate: ElementViewTemplate<BaseButton>;
 
 // @public
 export const ButtonType: {
@@ -1322,6 +1464,21 @@ export const colorNeutralBackground5Selected = "var(--colorNeutralBackground5Sel
 export const colorNeutralBackground6 = "var(--colorNeutralBackground6)";
 
 // @public
+export const colorNeutralBackground7 = "var(--colorNeutralBackground7)";
+
+// @public
+export const colorNeutralBackground7Hover = "var(--colorNeutralBackground7Hover)";
+
+// @public
+export const colorNeutralBackground7Pressed = "var(--colorNeutralBackground7Pressed)";
+
+// @public
+export const colorNeutralBackground7Selected = "var(--colorNeutralBackground7Selected)";
+
+// @public
+export const colorNeutralBackground8 = "var(--colorNeutralBackground8)";
+
+// @public
 export const colorNeutralBackgroundAlpha = "var(--colorNeutralBackgroundAlpha)";
 
 // @public
@@ -1331,10 +1488,22 @@ export const colorNeutralBackgroundAlpha2 = "var(--colorNeutralBackgroundAlpha2)
 export const colorNeutralBackgroundDisabled = "var(--colorNeutralBackgroundDisabled)";
 
 // @public
+export const colorNeutralBackgroundDisabled2 = "var(--colorNeutralBackgroundDisabled2)";
+
+// @public
 export const colorNeutralBackgroundInverted = "var(--colorNeutralBackgroundInverted)";
 
 // @public
 export const colorNeutralBackgroundInvertedDisabled = "var(--colorNeutralBackgroundInvertedDisabled)";
+
+// @public
+export const colorNeutralBackgroundInvertedHover = "var(--colorNeutralBackgroundInvertedHover)";
+
+// @public
+export const colorNeutralBackgroundInvertedPressed = "var(--colorNeutralBackgroundInvertedPressed)";
+
+// @public
+export const colorNeutralBackgroundInvertedSelected = "var(--colorNeutralBackgroundInvertedSelected)";
 
 // @public
 export const colorNeutralBackgroundStatic = "var(--colorNeutralBackgroundStatic)";
@@ -1427,6 +1596,18 @@ export const colorNeutralForeground3Selected = "var(--colorNeutralForeground3Sel
 export const colorNeutralForeground4 = "var(--colorNeutralForeground4)";
 
 // @public
+export const colorNeutralForeground5 = "var(--colorNeutralForeground5)";
+
+// @public
+export const colorNeutralForeground5Hover = "var(--colorNeutralForeground5Hover)";
+
+// @public
+export const colorNeutralForeground5Pressed = "var(--colorNeutralForeground5Pressed)";
+
+// @public
+export const colorNeutralForeground5Selected = "var(--colorNeutralForeground5Selected)";
+
+// @public
 export const colorNeutralForegroundDisabled = "var(--colorNeutralForegroundDisabled)";
 
 // @public
@@ -1514,6 +1695,18 @@ export const colorNeutralStroke2 = "var(--colorNeutralStroke2)";
 export const colorNeutralStroke3 = "var(--colorNeutralStroke3)";
 
 // @public
+export const colorNeutralStroke4 = "var(--colorNeutralStroke4)";
+
+// @public
+export const colorNeutralStroke4Hover = "var(--colorNeutralStroke4Hover)";
+
+// @public
+export const colorNeutralStroke4Pressed = "var(--colorNeutralStroke4Pressed)";
+
+// @public
+export const colorNeutralStroke4Selected = "var(--colorNeutralStroke4Selected)";
+
+// @public
 export const colorNeutralStrokeAccessible = "var(--colorNeutralStrokeAccessible)";
 
 // @public
@@ -1533,6 +1726,9 @@ export const colorNeutralStrokeAlpha2 = "var(--colorNeutralStrokeAlpha2)";
 
 // @public
 export const colorNeutralStrokeDisabled = "var(--colorNeutralStrokeDisabled)";
+
+// @public
+export const colorNeutralStrokeDisabled2 = "var(--colorNeutralStrokeDisabled2)";
 
 // @public
 export const colorNeutralStrokeInvertedDisabled = "var(--colorNeutralStrokeInvertedDisabled)";
@@ -2320,23 +2516,23 @@ export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
 export const curveLinear = "var(--curveLinear)";
 
 // @public
-export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
+    ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
-    // @internal (undocumented)
-    connectedCallback(): void;
     dialog: HTMLDialogElement;
+    // (undocumented)
+    protected dialogChanged(): void;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
     show(): void;
     type: DialogType;
     // (undocumented)
-    protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined): void;
+    protected typeChanged(prev: DialogType | undefined, next: DialogType): void;
+    // @internal
+    protected updateDialogAttributes(): void;
 }
 
 // @public
@@ -2780,9 +2976,6 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public
-export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
@@ -2888,9 +3081,6 @@ export const LabelWeight: {
 export type LabelWeight = ValuesOf<typeof LabelWeight>;
 
 // @public
-export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export const lineHeightBase100 = "var(--lineHeightBase100)";
 
 // @public
@@ -2962,6 +3152,12 @@ export class Listbox extends FASTElement {
     // @internal
     beforetoggleHandler(e: ToggleEvent): boolean | undefined;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    defaultSlot: HTMLSlotElement;
+    // @internal
+    protected defaultSlotChanged(): void;
     // @internal
     dropdown?: BaseDropdown;
     // @internal
@@ -2970,8 +3166,6 @@ export class Listbox extends FASTElement {
     get enabledOptions(): DropdownOption[];
     // @internal
     handleChange(source: any, propertyName?: string): void;
-    // @override
-    id: string;
     multiple?: boolean;
     multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
     options: DropdownOption[];
@@ -2981,7 +3175,7 @@ export class Listbox extends FASTElement {
     selectedIndex: number;
     get selectedOptions(): DropdownOption[];
     selectOption(index?: number): void;
-    slotchangeHandler(e: Event): void;
+    slotchangeHandler(e?: Event): void;
 }
 
 // @public
@@ -2995,29 +3189,6 @@ export const ListboxTemplate: ElementViewTemplate<Listbox>;
 
 // @public
 export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
-
-// @public
-export abstract class MatchMediaBehavior implements HostBehavior {
-    constructor(query: MediaQueryList);
-    connectedCallback(controller: HostController): void;
-    protected abstract constructListener(controller: HostController): MediaQueryListListener;
-    disconnectedCallback(controller: HostController): void;
-    readonly query: MediaQueryList;
-}
-
-// @public
-export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
-    constructor(query: MediaQueryList, styles: ElementStyles);
-    protected constructListener(controller: HostController): MediaQueryListListener;
-    readonly query: MediaQueryList;
-    // @internal
-    removedCallback(controller: HostController<any>): void;
-    readonly styles: ElementStyles;
-    static with(query: MediaQueryList): (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-}
-
-// @public
-export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListEvent) => void;
 
 // @public
 export class Menu extends FASTElement {
@@ -3037,9 +3208,14 @@ export class Menu extends FASTElement {
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
     primaryAction: HTMLSlotElement;
+    // @deprecated
     setComponent(): void;
-    slottedMenuList: MenuList[];
+    slottedMenuList: HTMLElement[];
+    // @internal
+    slottedMenuListChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
     slottedTriggers: HTMLElement[];
+    // @internal
+    slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
     split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
@@ -3163,31 +3339,7 @@ export const MenuItemStyles: ElementStyles;
 export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
-export class MenuList extends FASTElement {
-    constructor();
-    // @internal (undocumented)
-    connectedCallback(): void;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    focus(): void;
-    handleChange(source: any, propertyName: string): void;
-    // @internal
-    handleFocusOut: (e: FocusEvent) => void;
-    // @internal (undocumented)
-    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
-    protected isMenuItemElement: (el: Element) => el is HTMLElement;
-    // @internal (undocumented)
-    readonly isNestedMenu: () => boolean;
-    // @internal (undocumented)
-    items: HTMLElement[];
-    // (undocumented)
-    protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
-    // (undocumented)
-    protected menuItems: Element[] | undefined;
-    // (undocumented)
-    protected setItems(): void;
+export class MenuList extends BaseMenuList {
 }
 
 // @public (undocumented)
@@ -3333,63 +3485,7 @@ export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focu
 export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
-export class RadioGroup extends FASTElement {
-    constructor();
-    changeHandler(e: Event): boolean | void;
-    // @internal
-    protected checkedIndex: number;
-    // @internal
-    protected checkedIndexChanged(prev: number | undefined, next: number): void;
-    // @internal
-    checkRadio(index?: number, shouldEmit?: boolean): void;
-    checkValidity(): boolean;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    disabled: boolean;
-    // @internal
-    protected disabledChanged(prev?: boolean, next?: boolean): void;
-    // (undocumented)
-    disabledRadioHandler(e: CustomEvent): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    get enabledRadios(): Radio[];
-    // @internal
-    focus(): void;
-    // @internal
-    focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
-    static formAssociated: boolean;
-    // (undocumented)
-    formResetCallback(): void;
-    initialValue?: string;
-    initialValueChanged(prev: string | undefined, next: string | undefined): void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    name: string;
-    // @internal
-    protected nameChanged(prev: string | undefined, next: string | undefined): void;
-    orientation?: RadioGroupOrientation;
-    // @internal
-    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
-    radios: Radio[];
-    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
-    reportValidity(): boolean;
-    required: boolean;
-    // (undocumented)
-    requiredChanged(prev: boolean, next: boolean): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    // @internal
-    slotchangeHandler(e: Event): void;
-    // @internal
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string | null;
-    set value(next: string | null);
+export class RadioGroup extends BaseRadioGroup {
 }
 
 // @public
@@ -3466,9 +3562,7 @@ export const roleForMenuItem: {
     [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
 };
 
-// Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
@@ -3518,7 +3612,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     calculateNewValue(rawValue: number): number;
     checkValidity(): boolean;
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
@@ -3548,6 +3642,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     initialValue: string;
     // @internal
     protected initialValueChanged(_: string, next: string): void;
+    // @internal
+    protected get isDisabled(): boolean;
     // @internal (undocumented)
     isDragging: boolean;
     get labels(): ReadonlyArray<Node>;
@@ -3855,9 +3951,12 @@ export const SwitchTemplate: ElementViewTemplate<Switch>;
 //
 // @public
 export class Tab extends FASTElement {
+    constructor();
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
+    // @internal
+    elementInternals: ElementInternals;
 }
 
 // @public (undocumented)
@@ -3874,7 +3973,7 @@ export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
     size?: TablistSize;
-    tabsChanged(): void;
+    tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
 
 // @public
@@ -3916,98 +4015,6 @@ export const TablistTemplate: ViewTemplate<Tablist, any>;
 
 // @public
 export type TabOptions = StartEndOptions<Tab>;
-
-// Warning: (ae-missing-release-tag) "TabPanel" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public @deprecated (undocumented)
-export class TabPanel extends FASTElement {
-}
-
-// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public @deprecated (undocumented)
-export const TabPanelDefinition: FASTElementDefinition<typeof TabPanel>;
-
-// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabPanelStyles: ElementStyles;
-
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
-
-// Warning: (ae-forgotten-export) The symbol "BaseTabs" needs to be exported by the entry point index.d.ts
-// Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-// Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public @deprecated (undocumented)
-export class Tabs extends BaseTabs {
-    // (undocumented)
-    activeidChanged(oldValue: string, newValue: string): void;
-    appearance?: TabsAppearance;
-    disabled?: boolean;
-    size?: TabsSize;
-    // (undocumented)
-    tabsChanged(): void;
-}
-
-// @public (undocumented)
-export interface Tabs extends StartEnd {
-}
-
-// Warning: (ae-missing-release-tag) "TabsAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-// Warning: (ae-missing-release-tag) "TabsAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabsAppearance: {
-    readonly subtle: "subtle";
-    readonly transparent: "transparent";
-};
-
-// @public (undocumented)
-export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
-
-// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public @deprecated (undocumented)
-export const TabsDefinition: FASTElementDefinition<typeof Tabs>;
-
-// @public
-export type TabsOptions = StartEndOptions<Tabs>;
-
-// @public
-export const TabsOrientation: {
-    readonly horizontal: "horizontal";
-    readonly vertical: "vertical";
-};
-
-// @public
-export type TabsOrientation = ValuesOf<typeof TabsOrientation>;
-
-// Warning: (ae-missing-release-tag) "TabsSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-// Warning: (ae-missing-release-tag) "TabsSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabsSize: {
-    readonly small: "small";
-    readonly medium: "medium";
-    readonly large: "large";
-};
-
-// @public (undocumented)
-export type TabsSize = ValuesOf<typeof TabsSize>;
-
-// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabsStyles: ElementStyles;
-
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabsTemplate: ElementViewTemplate<Tabs, any>;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -4242,9 +4249,7 @@ export const TextWeight: {
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
 
-// Warning: (ae-internal-missing-underscore) The name "Theme" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export type Theme = Record<string, string | number>;
 
 // @public

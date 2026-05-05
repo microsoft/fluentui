@@ -257,13 +257,13 @@ describe('collapsePresenceFn', () => {
       expect(motion.enter[2]).toMatchObject({ duration: 0, delay: 0 });
     });
 
-    it('handles custom fromSize values', () => {
+    it('handles custom outSize values', () => {
       const motion = collapsePresenceFn({
         element: mockElement,
-        fromSize: '10px',
+        outSize: '10px',
       });
 
-      // Size atoms should use the custom fromSize
+      // Size atoms should use the custom outSize
       expect(motion.enter[0].keyframes[0]).toMatchObject({ maxHeight: '10px' });
       expect(motion.exit[1].keyframes[1]).toMatchObject({ maxHeight: '10px' });
     });

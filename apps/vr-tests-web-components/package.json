@@ -7,7 +7,7 @@
   "scripts": {
     "build-storybook": "storybook build -o dist/storybook",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint src --ext .ts,.tsx",
+    "lint": "eslint src --ext .ts,.tsx",
     "start": "storybook dev",
     "type-check": "tsc -p . --baseUrl . --noEmit",
     "test-vr": "storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"

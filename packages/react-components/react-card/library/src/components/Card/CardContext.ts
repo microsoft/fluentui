@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { CardContextValue } from './Card.types';
+import type { CardContextValue } from './Card.types';
 
 const cardContext = React.createContext<CardContextValue | undefined>(undefined);
 

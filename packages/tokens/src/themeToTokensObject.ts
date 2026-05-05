@@ -1,4 +1,4 @@
-import { Theme } from './types';
+import type { Theme } from './types';
 
 /**
  * Programmatically generates a tokens to css variables mapping object from the keys in a theme.

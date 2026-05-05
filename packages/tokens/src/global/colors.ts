@@ -53,6 +53,7 @@ export const grey: Record<Greys, string> = {
   '94': '#f0f0f0',
   '96': '#f5f5f5',
   '98': '#fafafa',
+  '99': '#fcfcfc',
 };
 
 export const whiteAlpha: Record<AlphaColors, string> = {

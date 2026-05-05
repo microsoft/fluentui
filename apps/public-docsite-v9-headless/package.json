@@ -1,0 +1,24 @@
+{
+  "name": "@fluentui/public-docsite-v9-headless",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fluent UI React Headless Components Preview documentation",
+  "scripts": {
+    "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "build-storybook:docsite": "cross-env DEPLOY_PATH=/headless/ storybook build -o ./dist/storybook --docs",
+    "postbuild-storybook": "yarn generate-llms-docs",
+    "postbuild-storybook:docsite": "yarn postbuild-storybook",
+    "generate-llms-docs": "yarn storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/headless/\" --summaryTitle \"Fluent UI React Headless Components\" --summaryDescription \"Fluent UI React headless components provide unstyled, accessible component primitives that can be styled with any CSS approach.\"",
+    "start": "yarn storybook:docs",
+    "storybook": "storybook dev --port 3000",
+    "storybook:docs": "yarn storybook --docs"
+  },
+  "dependencies": {
+    "@fluentui/react-headless-components-preview": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tslib": "^2.1.0"
+  }
+}

@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
-import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
-import {
-  classNamesFunction,
-  getId,
-  getRTL,
-  initializeComponentRef,
-  memoizeFunction,
-} from '@fluentui/react/lib/Utilities';
+import { getId, getRTL, initializeComponentRef, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -20,8 +13,6 @@ import {
   ILineChartPoints,
   IChildProps,
   IMargins,
-  IAreaChartStyleProps,
-  IAreaChartStyles,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
@@ -31,7 +22,6 @@ import {
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   findNumericMinMaxOfY,
@@ -52,8 +42,6 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import type { JSXElement } from '@fluentui/utilities';
-
-const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -140,7 +128,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
-  private _tooltipId: string;
   private _highlightedCircleId: string;
   //enableComputationOptimization is used for optimized code to group data points by x value
   //from O(n^2) to O(n) using a map.
@@ -181,7 +168,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._verticalLineId = getId('verticalLine_');
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
-    this._tooltipId = getId('AreaChartTooltipID');
     this._enableComputationOptimization = true;
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_AreaChart_empty');
@@ -1026,30 +1012,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         {...getSecureProps(pointLineOptions)}
       />,
     );
-    const classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-    });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return graph;
   };
 

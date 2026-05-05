@@ -5,4 +5,5 @@ export {
   renderMenuItemCheckbox_unstable,
   useMenuItemCheckboxStyles_unstable,
   useMenuItemCheckbox_unstable,
+  useMenuItemCheckboxBase_unstable,
 } from './components/MenuItemCheckbox/index';

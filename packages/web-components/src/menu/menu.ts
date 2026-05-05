@@ -1,6 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
-import type { MenuList } from '../menu-list/menu-list.js';
 import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
@@ -89,14 +88,55 @@ export class Menu extends FASTElement {
    * @public
    */
   @observable
-  public slottedMenuList: MenuList[] = [];
+  public slottedMenuList!: HTMLElement[];
+
+  /**
+   * Sets up the component when the slotted menu list changes.
+   * @param prev - The previous items in the slotted menu list.
+   * @param next - The new items in the slotted menu list.
+   * @internal
+   */
+  slottedMenuListChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void {
+    this._menuListAbortController?.abort();
+
+    if (!next?.length) {
+      return;
+    }
+
+    this._menuList = next[0];
+    this._menuList.popover = this.openOnContext ? 'manual' : '';
+    this.addMenuListListeners();
+  }
 
   /**
    * Holds the slotted triggers.
    * @public
    */
   @observable
-  public slottedTriggers: HTMLElement[] = [];
+  public slottedTriggers!: HTMLElement[];
+
+  /**
+   * Ensures the trigger is properly set up when the slotted triggers change.
+   * This includes setting ARIA attributes and adding event listeners based on the current property values.
+   *
+   * @param prev - The previous items in the slotted triggers list.
+   * @param next - The current items in the slotted triggers list.
+   * @internal
+   */
+  public slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void {
+    this._triggerAbortController?.abort();
+
+    if (next?.length) {
+      const trigger = next[0];
+      this._trigger = trigger;
+
+      if (this._trigger?.isConnected) {
+        this._trigger.setAttribute('aria-haspopup', 'true');
+        this._trigger.setAttribute('aria-expanded', `${this._open}`);
+        this.addTriggerListeners();
+      }
+    }
+  }
 
   /**
    * Holds the primary slot element.
@@ -123,15 +163,26 @@ export class Menu extends FASTElement {
   private _menuList?: HTMLElement;
 
   /**
+   * @internal
+   */
+  private _triggerAbortController?: AbortController;
+
+  /**
+   * @internal
+   */
+  private _menuListAbortController?: AbortController;
+
+  /**
    * Called when the element is connected to the DOM.
    * Sets up the component.
    * @public
    */
   public connectedCallback() {
     super.connectedCallback();
-    queueMicrotask(() => {
-      this.setComponent();
-    });
+
+    // Retained for backward compatibility. The trigger and menu list listeners are now managed by their respective
+    // slot-changed callbacks, so this method is no longer responsible for setting up the component. However, it is left in place to avoid breaking changes for any existing implementations that may be relying on it.
+    this.setComponent();
   }
 
   /**
@@ -141,25 +192,18 @@ export class Menu extends FASTElement {
    */
   public disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeListeners();
+
+    this._triggerAbortController?.abort();
+    this._menuListAbortController?.abort();
   }
 
   /**
    * Sets the component.
-   * Sets the trigger and menu list elements and adds event listeners.
+   * @deprecated This method is no longer used. Trigger and menu-list listeners are now
+   * managed by their respective slot-changed callbacks.
    * @public
    */
-  public setComponent(): void {
-    if (this.$fastController.isConnected && this.slottedMenuList.length && this.slottedTriggers.length) {
-      this._trigger = this.slottedTriggers![0];
-      this._menuList = this.slottedMenuList![0];
-      this._trigger.setAttribute('aria-haspopup', 'true');
-      this._trigger.setAttribute('aria-expanded', `${this._open}`);
-      this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
-
-      this.addListeners();
-    }
-  }
+  public setComponent(): void {}
 
   /**
    * Toggles the open state of the menu.
@@ -253,10 +297,9 @@ export class Menu extends FASTElement {
    * @public
    */
   public openOnHoverChanged(oldValue: boolean, newValue: boolean): void {
-    if (newValue) {
-      this._trigger?.addEventListener('mouseover', this.openMenu);
-    } else {
-      this._trigger?.removeEventListener('mouseover', this.openMenu);
+    if (this._trigger) {
+      this._triggerAbortController?.abort();
+      this.addTriggerListeners();
     }
   }
 
@@ -268,10 +311,9 @@ export class Menu extends FASTElement {
    * @param newValue - The new value of 'persistOnItemClick'.
    */
   public persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void {
-    if (!newValue) {
-      this._menuList?.addEventListener('change', this.closeMenu);
-    } else {
-      this._menuList?.removeEventListener('change', this.closeMenu);
+    if (this._menuList) {
+      this._menuListAbortController?.abort();
+      this.addMenuListListeners();
     }
   }
 
@@ -284,9 +326,14 @@ export class Menu extends FASTElement {
    */
   public openOnContextChanged(oldValue: boolean, newValue: boolean): void {
     if (newValue) {
-      this._trigger?.addEventListener('contextmenu', this.openMenu);
+      this._menuList?.setAttribute('popover', 'manual');
     } else {
-      this._trigger?.removeEventListener('contextmenu', this.openMenu);
+      this._menuList?.setAttribute('popover', '');
+    }
+
+    if (this._trigger) {
+      this._triggerAbortController?.abort();
+      this.addTriggerListeners();
     }
   }
 
@@ -306,54 +353,37 @@ export class Menu extends FASTElement {
   }
 
   /**
-   * Adds event listeners.
-   * Adds click and keydown event listeners to the trigger.
-   * Adds a 'toggle' event listener to the menu list.
-   * If 'openOnHover' is true, adds a 'mouseover' event listener to the trigger.
-   * If 'openOnContext' is true, adds a 'contextmenu' event listener to the trigger and a document 'click' event listener.
+   * Adds trigger-related event listeners.
    * @internal
    */
-  private addListeners(): void {
-    this._menuList?.addEventListener('toggle', this.toggleHandler);
+  private addTriggerListeners(): void {
+    this._triggerAbortController = new AbortController();
+    const { signal } = this._triggerAbortController;
 
-    this._trigger?.addEventListener('keydown', this.triggerKeydownHandler);
+    this._trigger?.addEventListener('keydown', this.triggerKeydownHandler, { signal });
 
-    if (!this.persistOnItemClick) {
-      this._menuList?.addEventListener('change', this.closeMenu);
-    }
     if (this.openOnHover) {
-      this._trigger?.addEventListener('mouseover', this.openMenu);
+      this._trigger?.addEventListener('mouseover', this.openMenu, { signal });
     } else if (this.openOnContext) {
-      this._trigger?.addEventListener('contextmenu', this.openMenu);
-      document.addEventListener('click', this.documentClickHandler);
+      this._trigger?.addEventListener('contextmenu', this.openMenu, { signal });
+      document.addEventListener('click', this.documentClickHandler, { signal });
     } else {
-      this._trigger?.addEventListener('click', this.toggleMenu);
+      this._trigger?.addEventListener('click', this.toggleMenu, { signal });
     }
   }
 
   /**
-   * Removes event listeners.
-   * Removes click and keydown event listeners from the trigger.
-   * Also removes toggle event listener from the menu list.
-   * Also removes 'mouseover' event listeners from the trigger.
-   * Also removes 'contextmenu' event listeners from the trigger and document 'click' event listeners.
+   * Adds menu-list event listeners.
    * @internal
    */
-  private removeListeners(): void {
-    this._menuList?.removeEventListener('toggle', this.toggleHandler);
+  private addMenuListListeners(): void {
+    this._menuListAbortController = new AbortController();
+    const { signal } = this._menuListAbortController;
 
-    this._trigger?.removeEventListener('keydown', this.triggerKeydownHandler);
+    this._menuList?.addEventListener('toggle', this.toggleHandler, { signal });
+
     if (!this.persistOnItemClick) {
-      this._menuList?.removeEventListener('change', this.closeMenu);
-    }
-    if (this.openOnHover) {
-      this._trigger?.removeEventListener('mouseover', this.openMenu);
-    }
-    if (this.openOnContext) {
-      this._trigger?.removeEventListener('contextmenu', this.openMenu);
-      document.removeEventListener('click', this.documentClickHandler);
-    } else {
-      this._trigger?.removeEventListener('click', this.toggleMenu);
+      this._menuList?.addEventListener('change', this.closeMenu, { signal });
     }
   }
 

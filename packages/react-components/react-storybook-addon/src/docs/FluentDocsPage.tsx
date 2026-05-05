@@ -9,8 +9,8 @@ import {
   Primary,
   Stories,
   type DocsContextProps,
-} from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, SBEnumType } from '@storybook/core/types';
+} from '@storybook/addon-docs/blocks';
+import type { PreparedStory, Renderer, SBEnumType } from 'storybook/internal/types';
 
 import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';

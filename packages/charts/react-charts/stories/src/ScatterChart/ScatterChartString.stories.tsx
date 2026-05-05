@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import type { ChartProps } from '@fluentui/react-charts';
+import { ScatterChart, DataVizPalette } from '@fluentui/react-charts';
 import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -103,7 +104,8 @@ export const ScatterChartString = (): JSXElement => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight">Change Height:</label>
         <input
@@ -113,7 +115,8 @@ export const ScatterChartString = (): JSXElement => {
           max={1000}
           id="changeHeight"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>

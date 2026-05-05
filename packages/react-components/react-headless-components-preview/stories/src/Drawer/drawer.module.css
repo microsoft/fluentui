@@ -1,0 +1,222 @@
+/*
+  Overlay variant: position fixed to the right edge, slides in via translateX
+  on the [open] attribute. Uses a `::backdrop` (per the native `<dialog>`
+  Drawer renders into) for the dim layer.
+*/
+.drawerOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* `left: auto` overrides the user-agent `inset-inline-start: 0` on
+     `<dialog>` so the drawer pins to the right edge instead of centering. */
+  left: auto;
+  margin: 0;
+  display: none;
+  min-height: 100vh;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  flex-direction: column;
+  border: 0;
+  border-left: var(--stroke-thin) solid var(--border);
+  background: var(--bg-elev);
+  padding: 0;
+  box-shadow: var(--shadow-4);
+  transform: translateX(100%);
+  transition: transform 200ms ease-in-out;
+}
+
+.drawerOverlay[open] {
+  display: flex;
+  transform: translateX(0);
+}
+
+@starting-style {
+  .drawerOverlay[open] {
+    transform: translateX(100%);
+  }
+}
+
+.drawerOverlay::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/*
+  Inline variant: lives inside a container, animates width + border-color +
+  opacity on the [data-open] attribute.
+*/
+.drawerInline {
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border-right: var(--stroke-thin) solid transparent;
+  width: 0;
+  opacity: 0;
+  transition: width 200ms linear, opacity 200ms linear, border-color 200ms linear;
+}
+
+.drawerInline[data-open] {
+  width: 288px;
+  opacity: 1;
+  border-right-color: var(--border);
+}
+
+.drawerHeader {
+  border-bottom: var(--stroke-thin) solid var(--border);
+  padding: var(--space-3) var(--space-4);
+}
+
+.drawerHeaderTitle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.drawerHeaderTitleInline {
+  align-items: center;
+}
+
+.drawerHeading {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.drawerHeadingInline {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.drawerBody {
+  flex-grow: 1;
+  overflow: auto;
+  padding: var(--space-3);
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.drawerFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  border-top: var(--stroke-thin) solid var(--border);
+  padding: var(--space-3) var(--space-4);
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.closeButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--text);
+  outline-offset: 2px;
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--text);
+  color: var(--text-on-accent);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background: var(--text-muted);
+}
+
+.primaryButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--text);
+  outline-offset: 2px;
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--space-3);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.secondaryButton:hover {
+  background: var(--surface-muted);
+}
+
+.secondaryButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--text);
+  outline-offset: 2px;
+}
+
+.trigger {
+  padding: var(--space-4);
+}
+
+.inlineFrame {
+  display: flex;
+  height: 420px;
+  overflow: hidden;
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+}
+
+.inlineMain {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navLink {
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.navLink:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.navLink[aria-current] {
+  background: var(--surface-sunken);
+  color: var(--text);
+}

@@ -1,13 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { useId, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -205,7 +199,8 @@ export const VerticalStackedBarSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_widthSliderId}
         onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
+        aria-label="Change Width"
+        aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
       />
       <label htmlFor={_heightSliderId}>Change Height:</label>
       <input
@@ -215,7 +210,8 @@ export const VerticalStackedBarSecondaryYAxis = (): JSXElement => {
         max={1000}
         id={_heightSliderId}
         onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
+        aria-label="Change Height"
+        aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
       />
       <div style={rootStyle}>
         <VerticalStackedBarChart

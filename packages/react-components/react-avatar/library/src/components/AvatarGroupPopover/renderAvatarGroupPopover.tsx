@@ -1,18 +1,18 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
-import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
+import type { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { PopoverTrigger } from '@fluentui/react-popover';
-import type { AvatarGroupPopoverState, AvatarGroupPopoverSlots } from './AvatarGroupPopover.types';
+import type { AvatarGroupPopoverBaseState, AvatarGroupPopoverSlots } from './AvatarGroupPopover.types';
 
 /**
  * Render the final JSX of AvatarGroupPopover
  */
 export const renderAvatarGroupPopover_unstable = (
-  state: AvatarGroupPopoverState,
+  state: AvatarGroupPopoverBaseState,
   contextValues: AvatarGroupContextValues,
 ): JSXElement => {
   assertSlots<AvatarGroupPopoverSlots>(state);

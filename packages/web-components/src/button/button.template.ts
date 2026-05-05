@@ -1,6 +1,6 @@
 import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
-import type { Button } from './button.js';
+import type { BaseButton } from './button.base.js';
 import type { ButtonOptions } from './button.options.js';
 
 /**
@@ -8,7 +8,7 @@ import type { ButtonOptions } from './button.options.js';
  *
  * @public
  */
-export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): ElementViewTemplate<T> {
+export function buttonTemplate<T extends BaseButton>(options: ButtonOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
@@ -28,4 +28,4 @@ export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): E
  *
  * @public
  */
-export const template: ElementViewTemplate<Button> = buttonTemplate();
+export const template: ElementViewTemplate<BaseButton> = buttonTemplate();

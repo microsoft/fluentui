@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
 import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
+import { Checkbox, Switch } from '@fluentui/react-components';
 
 export const GaugeChartBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(252);
@@ -49,7 +49,8 @@ export const GaugeChartBasic = (): JSXElement => {
             max={1000}
             id="width-slider"
             onChange={_onWidthChange}
-            aria-valuetext={`Width: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 0 and Maximum 1000`}
           />
           <span>{width}</span>
         </div>
@@ -62,7 +63,8 @@ export const GaugeChartBasic = (): JSXElement => {
             max={1000}
             id="height-slider"
             onChange={_onHeightChange}
-            aria-valuetext={`Height: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 0 and Maximum 1000`}
           />
           <span>{height}</span>
         </div>
@@ -75,7 +77,8 @@ export const GaugeChartBasic = (): JSXElement => {
             max={100}
             id="value-slider"
             onChange={_onValueChange}
-            aria-valuetext={`Current value: ${chartValue}`}
+            aria-label="Change Current Value"
+            aria-valuetext={`current value ${chartValue}', Minimum 0 and Maximum 100`}
           />
           <span>{chartValue}</span>
         </div>

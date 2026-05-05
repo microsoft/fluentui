@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DocsContainer, type DocsContextProps } from '@storybook/addon-docs';
+import { DocsContainer, type DocsContextProps } from '@storybook/addon-docs/blocks';
 import { webLightTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 

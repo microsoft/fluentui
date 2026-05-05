@@ -10,6 +10,10 @@ const items = {
 };
 
 export const GroupingItems = (): JSXElement => {
+  const showAlert = (name: string) => {
+    alert(`Item ${name} activated`);
+  };
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -38,6 +42,7 @@ export const GroupingItems = (): JSXElement => {
                     aria-label={`Remove ${name}`}
                   />
                 }
+                onClick={() => showAlert(name)}
                 aria-label={name}
               >
                 {name}
@@ -65,6 +70,7 @@ export const GroupingItems = (): JSXElement => {
                     aria-label={`Remove ${name}`}
                   />
                 }
+                onClick={() => showAlert(name)}
                 aria-label={name}
               >
                 {name}

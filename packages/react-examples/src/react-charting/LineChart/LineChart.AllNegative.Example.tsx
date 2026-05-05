@@ -210,7 +210,6 @@ export class LineChartAllNegativeExample extends React.Component<{}, ILineChartB
             yMaxValue={301}
             height={this.state.height}
             width={this.state.width}
-            xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             enablePerfOptimization={true}
             yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}

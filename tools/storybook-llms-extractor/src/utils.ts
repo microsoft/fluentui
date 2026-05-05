@@ -210,7 +210,46 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
       throw new Error('Unable to find cached CSF files in Storybook store');
     }
 
-    return Object.values(storyStore.cachedCSFFiles);
+    // Picks only serializable fields before returning across the browser → Node boundary.
+    // cachedCSFFiles may contain functions (React components, story functions, decorators, etc.)
+    // that would cause structured-clone to fail.
+    const serializeCSFFile = (item: StorybookStoreItem): StorybookStoreItem => ({
+      meta: {
+        id: item.meta.id,
+        title: item.meta.title,
+        parameters: {
+          fileName: item.meta.parameters.fileName,
+          docs: item.meta.parameters.docs ? { description: item.meta.parameters.docs.description } : undefined,
+        },
+        component: item.meta.component
+          ? { displayName: item.meta.component.displayName, __docgenInfo: item.meta.component.__docgenInfo }
+          : undefined,
+        subcomponents: item.meta.subcomponents
+          ? Object.fromEntries(
+              Object.entries(item.meta.subcomponents).map(([key, comp]) => [
+                key,
+                { displayName: comp.displayName, __docgenInfo: comp.__docgenInfo },
+              ]),
+            )
+          : undefined,
+      },
+      stories: Object.fromEntries(
+        Object.entries(item.stories).map(([key, story]) => [
+          key,
+          {
+            id: story.id,
+            name: story.name,
+            parameters: {
+              docs: story.parameters.docs,
+              fullSource: story.parameters.fullSource,
+              docsOnly: story.parameters.docsOnly,
+            },
+          },
+        ]),
+      ),
+    });
+
+    return Object.values(storyStore.cachedCSFFiles).map(serializeCSFFile);
   });
 
   await page.close();

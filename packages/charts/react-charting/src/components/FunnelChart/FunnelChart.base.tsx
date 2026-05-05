@@ -14,6 +14,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getContrastTextColor } from '../../utilities/utilities';
+import { ChartTitle, CHART_TITLE_PADDING } from '../../utilities/index';
 import {
   getHorizontalFunnelSegmentGeometry,
   getVerticalFunnelSegmentGeometry,
@@ -450,7 +451,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     chartHeight: height,
   });
 
-  const funnelMarginTop = 40;
+  const titleHeight = props.chartTitle
+    ? Math.max(
+        (typeof props.titleStyles?.titleFont?.size === 'number' ? props.titleStyles.titleFont.size : 13) +
+          CHART_TITLE_PADDING,
+        40,
+      )
+    : 40;
+  const funnelMarginTop = titleHeight;
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
 
@@ -458,6 +466,16 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     <div ref={chartContainerRef} className={classNames.root}>
       <FocusZone direction={FocusZoneDirection.horizontal}>
         <svg width={width} height={height} className={classNames.chart} role={'img'} aria-label={props.chartTitle}>
+          {!props.hideLegend && props.chartTitle && (
+            <ChartTitle
+              title={props.chartTitle}
+              x={width / 2}
+              maxWidth={width - 20}
+              className={classNames.chartTitle}
+              titleStyles={props.titleStyles}
+              tooltipClassName={classNames.svgTooltip}
+            />
+          )}
           <g
             transform={
               isRTL

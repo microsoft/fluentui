@@ -45,6 +45,7 @@ import {
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
+  formatScientificLimitWidth,
 } from '../../utilities/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
@@ -538,6 +539,66 @@ export class HorizontalBarChartWithAxisBase
     }
   };
 
+  private _calculateBarTotals = (
+    singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+  ): {
+    totalPositiveValue: number;
+    totalNegativeValue: number;
+    totalBarValue: number;
+    showLabelOnPositiveSide: boolean;
+    shouldShowLabel: (isPositiveBar: boolean, currPositiveCounter: number, currNegativeCounter: number) => boolean;
+  } => {
+    const totalPositiveValue = singleBarData
+      .filter(point => point.x >= this.X_ORIGIN)
+      .reduce((sum, point) => sum + point.x, 0);
+    const totalNegativeValue = singleBarData
+      .filter(point => point.x < this.X_ORIGIN)
+      .reduce((sum, point) => sum + point.x, 0);
+    const totalBarValue = totalPositiveValue + totalNegativeValue;
+    const showLabelOnPositiveSide = totalBarValue >= 0;
+
+    const totalPositiveBars = singleBarData.filter(point => point.x >= this.X_ORIGIN).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+
+    const shouldShowLabel = (
+      isPositiveBar: boolean,
+      currPositiveCounter: number,
+      currNegativeCounter: number,
+    ): boolean => {
+      const isLastPositiveBar = isPositiveBar && currPositiveCounter === totalPositiveBars;
+      const isLastNegativeBar = !isPositiveBar && currNegativeCounter === totalNegativeBars;
+      return showLabelOnPositiveSide ? isLastPositiveBar : isLastNegativeBar;
+    };
+
+    return { totalPositiveValue, totalNegativeValue, totalBarValue, showLabelOnPositiveSide, shouldShowLabel };
+  };
+
+  private _renderBarLabel = (
+    xPosition: number,
+    yPosition: number,
+    value: number,
+    isPositiveBar: boolean,
+  ): JSXElement | null => {
+    if (this.props.hideLabels || this._barHeight < 16) {
+      return null;
+    }
+
+    return (
+      <text
+        x={xPosition}
+        y={yPosition + this._barHeight / 2}
+        textAnchor={this._isRtl ? (isPositiveBar ? 'end' : 'start') : isPositiveBar ? 'start' : 'end'}
+        transform={`translate(${isPositiveBar ? (this._isRtl ? -4 : 4) : this._isRtl ? 4 : -4})`}
+        dominantBaseline="central"
+        className={this._classNames.barLabel}
+        aria-hidden={true}
+        style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+      >
+        {formatScientificLimitWidth(value)}
+      </text>
+    );
+  };
+
   private _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -556,6 +617,8 @@ export class HorizontalBarChartWithAxisBase
       const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
       return bValue - aValue;
     });
+
+    const { totalBarValue, shouldShowLabel } = this._calculateBarTotals(singleBarData);
 
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
@@ -642,6 +705,16 @@ export class HorizontalBarChartWithAxisBase
       } else {
         xStart = point.x > this.X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
+      const barWidth = currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR);
+      const barEndX = this._isRtl
+        ? point.x >= this.X_ORIGIN
+          ? xStart
+          : xStart + barWidth
+        : point.x >= this.X_ORIGIN
+        ? xStart + barWidth
+        : xStart;
+      const isPositiveBar = point.x >= this.X_ORIGIN;
+      const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
       prevPoint = point.x;
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -659,7 +732,7 @@ export class HorizontalBarChartWithAxisBase
             className={this._classNames.opacityChangeOnHover}
             y={yBarScale(point.y) - this._barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
+            width={barWidth}
             height={this._barHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -675,6 +748,8 @@ export class HorizontalBarChartWithAxisBase
             onBlur={this._onBarLeave}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
+          {showLabel &&
+            this._renderBarLabel(barEndX, yBarScale(point.y) - this._barHeight / 2, totalBarValue, isPositiveBar)}
         </React.Fragment>
       );
     });
@@ -756,6 +831,9 @@ export class HorizontalBarChartWithAxisBase
     yBarScale: any,
   ): JSXElement[] {
     const { useSingleColor = false } = this.props;
+
+    const { totalBarValue, shouldShowLabel } = this._calculateBarTotals(singleBarData);
+
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
     let prevPoint = 0;
@@ -839,6 +917,17 @@ export class HorizontalBarChartWithAxisBase
       } else {
         xStart = point.x > this.X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
+      const barWidth = currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR);
+      const barEndX = this._isRtl
+        ? point.x >= this.X_ORIGIN
+          ? xStart
+          : xStart + barWidth
+        : point.x >= this.X_ORIGIN
+        ? xStart + barWidth
+        : xStart;
+      const isPositiveBar = point.x >= this.X_ORIGIN;
+      const yPosition = yBarScale(point.y) + 0.5 * (yBarScale.bandwidth() - this._barHeight);
+      const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           {this.props.enableGradient && (
@@ -856,7 +945,7 @@ export class HorizontalBarChartWithAxisBase
             x={xStart}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
-            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
+            width={barWidth}
             height={this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
@@ -872,6 +961,7 @@ export class HorizontalBarChartWithAxisBase
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
+          {showLabel && this._renderBarLabel(barEndX, yPosition, totalBarValue, isPositiveBar)}
         </React.Fragment>
       );
     });

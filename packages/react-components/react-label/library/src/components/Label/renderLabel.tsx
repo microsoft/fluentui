@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { LabelState, LabelSlots } from './Label.types';
+import type { LabelBaseState, LabelSlots } from './Label.types';
 
 /**
  * Render the final JSX of Label
  */
-export const renderLabel_unstable = (state: LabelState): JSXElement => {
+export const renderLabel_unstable = (state: LabelBaseState): JSXElement => {
   assertSlots<LabelSlots>(state);
 
   return (

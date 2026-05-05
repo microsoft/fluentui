@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { usePositioning, useSafeZoneArea, type PositioningProps } from '@fluentui/react-positioning';
 import { useMergedRefs } from '@fluentui/react-utilities';
 

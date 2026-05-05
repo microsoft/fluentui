@@ -2,6 +2,7 @@ import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IChart, IChartProps } from '../../types/IDataPoint';
+import { ITitleStyles } from '../../utilities/Common.styles';
 
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
@@ -10,6 +11,11 @@ export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDat
  * {@docCategory SankeyChart}
  */
 export interface ISankeyChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -96,6 +102,12 @@ export interface ISankeyChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Whether to hide the legend
+   * @default false
+   */
+  hideLegend?: boolean;
 }
 
 /**
@@ -156,6 +168,16 @@ export interface ISankeyChartStyles {
    * Styles for the chart svg element
    */
   chart?: IStyle;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: IStyle;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: IStyle;
 }
 
 /**

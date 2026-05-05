@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: enforce consistent type imports in react packages",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "copilot@microsoft.com",
+  "dependentChangeType": "patch"
+}

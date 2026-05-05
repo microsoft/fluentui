@@ -330,7 +330,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
         dateTimeFormatter.formatMonthDayYear(today, strings!),
       );
     }
-    if (dateTimeFormatter && strings!.selectedDateFormatString) {
+    if (dateTimeFormatter && strings!.selectedDateFormatString && selectedDate) {
       const dateStringFormatter = monthPickerOnly
         ? dateTimeFormatter.formatMonthYear
         : dateTimeFormatter.formatMonthDayYear;
@@ -349,8 +349,8 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
         {isDayPickerVisible && (
           <CalendarDay
             gridLabel={selectionAndTodayString}
-            selectedDate={selectedDate!}
-            navigatedDate={navigatedDay!}
+            selectedDate={selectedDate ?? today}
+            navigatedDate={navigatedDay ?? today}
             today={today}
             onSelectDate={onDateSelected}
             // eslint-disable-next-line react/jsx-no-bind

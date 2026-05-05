@@ -8,15 +8,21 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTextarea_unstable: (state: TextareaState) => JSXElement;
+export const renderTextarea_unstable: (state: TextareaBaseState) => JSXElement;
 
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
+
+// @public
+export type TextareaBaseProps = Omit<TextareaProps, 'appearance' | 'size'>;
+
+// @public
+export type TextareaBaseState = Omit<TextareaState, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
@@ -47,6 +53,9 @@ export type TextareaState = ComponentState<TextareaSlots> & Required<Pick<Textar
 
 // @public
 export const useTextarea_unstable: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;
+
+// @public
+export const useTextareaBase_unstable: (props: TextareaBaseProps, ref?: React_2.Ref<HTMLTextAreaElement>) => TextareaBaseState;
 
 // @public
 export const useTextareaStyles_unstable: (state: TextareaState) => TextareaState;

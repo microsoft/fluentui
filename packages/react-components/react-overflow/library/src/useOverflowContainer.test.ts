@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { createOverflowManager, OverflowAxis, OverflowManager } from '@fluentui/priority-overflow';
+import type * as React from 'react';
+import type { OverflowAxis, OverflowManager } from '@fluentui/priority-overflow';
+import { createOverflowManager } from '@fluentui/priority-overflow';
 import { useOverflowContainer } from './useOverflowContainer';
 import { renderHook } from '@testing-library/react-hooks';
 

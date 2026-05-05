@@ -1,4 +1,5 @@
-import { clampValue, adjustChannel, ChannelActions } from './adjustChannel';
+import type { ChannelActions } from './adjustChannel';
+import { clampValue, adjustChannel } from './adjustChannel';
 import { MIN, HUE_MAX, MAX as COLOR_MAX } from './constants';
 
 describe('clampValue', () => {

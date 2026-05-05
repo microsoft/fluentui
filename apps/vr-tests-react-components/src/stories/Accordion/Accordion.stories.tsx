@@ -3,7 +3,7 @@ import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 import { CircleRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {

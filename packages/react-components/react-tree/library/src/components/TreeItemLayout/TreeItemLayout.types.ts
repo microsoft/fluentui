@@ -7,9 +7,9 @@ import type {
   EventData,
   EventHandler,
 } from '@fluentui/react-utilities';
-import { ButtonContextValue } from '@fluentui/react-button';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { Radio } from '@fluentui/react-radio';
+import type { ButtonContextValue } from '@fluentui/react-button';
+import type { Checkbox } from '@fluentui/react-checkbox';
+import type { Radio } from '@fluentui/react-radio';
 
 export type TreeItemLayoutActionVisibilityChangeData = (
   | EventData<'mouseover' | 'mouseout', MouseEvent>

@@ -1,7 +1,7 @@
 import { computePosition } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { PositionManager, TargetElement } from './types';
+import type { OnPositioningEndEventDetail, PositionManager, PositioningPlacement, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
 import { listScrollParents } from './utils/listScrollParents';
 import { POSITIONING_END_EVENT } from './constants';
@@ -135,7 +135,16 @@ export function createPositionManager(options: PositionManagerOptions): Position
           useTransform,
         });
 
-        container.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT));
+        container.dispatchEvent(
+          new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
+            detail: {
+              // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
+              // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
+              // types into the public API surface.
+              placement: computedPlacement satisfies PositioningPlacement,
+            },
+          }),
+        );
       })
       .catch(err => {
         // https://github.com/floating-ui/floating-ui/issues/1845

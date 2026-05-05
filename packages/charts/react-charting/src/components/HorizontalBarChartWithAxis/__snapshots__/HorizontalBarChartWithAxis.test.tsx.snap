@@ -14,6 +14,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_1"
@@ -43,7 +44,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -577,6 +578,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_1"
@@ -606,7 +608,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1140,6 +1142,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_1"
@@ -1169,7 +1172,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1703,6 +1706,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_1"
@@ -1732,7 +1736,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1807,6 +1811,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_1"
@@ -1836,7 +1841,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2070,6 +2075,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
   id="chart_1"
@@ -2099,7 +2105,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

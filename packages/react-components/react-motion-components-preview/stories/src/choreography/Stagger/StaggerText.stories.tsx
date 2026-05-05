@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StaggerTextDescription from './StaggerText.stories.md';
-import { Field, makeStyles, tokens, Button, motionTokens, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Button, motionTokens } from '@fluentui/react-components';
 import { Stagger, Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
@@ -51,7 +52,7 @@ const useClasses = makeStyles({
 export const Text = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
-  const fromScale = visible ? 3 : 0;
+  const outScale = visible ? 3 : 0;
 
   return (
     <div className={classes.container}>
@@ -68,7 +69,7 @@ export const Text = (): JSXElement => {
           {/* Create a list of items, each wrapped with a presence transition */}
           {Array.from({ length: 4 }, (_, i) => (
             <Scale
-              fromScale={fromScale}
+              outScale={outScale}
               duration={1200}
               exitDuration={1200}
               easing={motionTokens.curveDecelerateMax}

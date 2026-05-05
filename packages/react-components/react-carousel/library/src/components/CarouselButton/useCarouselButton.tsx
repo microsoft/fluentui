@@ -31,7 +31,7 @@ export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselButtonState => {
-  const { navType = 'next' } = props;
+  const { navType = 'next', ...buttonProps } = props;
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
@@ -115,7 +115,7 @@ export const useCarouselButton_unstable = (
         tabIndex: isTrailing ? -1 : 0,
         'aria-disabled': isTrailing,
         appearance: 'subtle',
-        ...props,
+        ...buttonProps,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       useMergedRefs(ref, buttonRef) as React.Ref<HTMLButtonElement>,

@@ -24,16 +24,40 @@ export class Tab extends FASTElement {
   @attr({ mode: 'boolean' })
   public disabled!: boolean;
 
-  private styles: ElementStyles | undefined;
+  /**
+   * Internal text content stylesheet, used to set the content of the `::after`
+   * pseudo element to prevent layout shift when the font weight changes on selection.
+   * @internal
+   */
+  private styles?: ElementStyles;
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'tab';
+  }
 
   connectedCallback() {
     super.connectedCallback();
 
-    if (this.styles !== undefined) {
+    this.slot ||= 'tab';
+
+    if (this.disabled) {
+      this.setAttribute('aria-disabled', 'true');
+    }
+
+    if (this.styles) {
       this.$fastController.removeStyles(this.styles);
     }
 
-    this.styles = css/**css*/ `
+    this.styles = css`
       :host {
         --textContent: '${this.textContent as any}';
       }

@@ -4,8 +4,9 @@ export {
   renderButton_unstable,
   useButtonStyles_unstable,
   useButton_unstable,
+  useButtonBase_unstable,
 } from './Button';
-export type { ButtonProps, ButtonSlots, ButtonState } from './Button';
+export type { ButtonProps, ButtonSlots, ButtonState, ButtonBaseProps, ButtonBaseState } from './Button';
 export {
   CompoundButton,
   compoundButtonClassNames,
@@ -36,8 +37,14 @@ export {
   toggleButtonClassNames,
   useToggleButtonStyles_unstable,
   useToggleButton_unstable,
+  useToggleButtonBase_unstable,
 } from './ToggleButton';
-export type { ToggleButtonProps, ToggleButtonState } from './ToggleButton';
+export type {
+  ToggleButtonProps,
+  ToggleButtonState,
+  ToggleButtonBaseProps,
+  ToggleButtonBaseState,
+} from './ToggleButton';
 
 export { useToggleState } from './utils/index';
 

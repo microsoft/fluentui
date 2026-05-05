@@ -4,6 +4,7 @@ export {
   tooltipClassNames,
   useTooltipStyles_unstable,
   useTooltip_unstable,
+  useTooltipBase_unstable,
 } from './Tooltip';
 export type {
   OnVisibleChangeData,
@@ -11,4 +12,6 @@ export type {
   TooltipSlots,
   TooltipState,
   TooltipChildProps as TooltipTriggerProps,
+  TooltipBaseProps,
+  TooltipBaseState,
 } from './Tooltip';

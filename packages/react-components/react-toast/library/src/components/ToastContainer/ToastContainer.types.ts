@@ -1,9 +1,9 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Announce } from '../AriaLive/AriaLive.types';
-import { Toast, ToastIntent } from '../../state';
-import { ToastContainerContextValue } from '../../contexts/toastContainerContext';
-import { TimerProps } from '../Timer/Timer';
+import type { Announce } from '../AriaLive/AriaLive.types';
+import type { Toast, ToastIntent } from '../../state';
+import type { ToastContainerContextValue } from '../../contexts/toastContainerContext';
+import type { TimerProps } from '../Timer/Timer';
 
 export type ToastContainerContextValues = {
   toast: ToastContainerContextValue;

@@ -131,6 +131,9 @@ export class BaseAnchor extends FASTElement {
 
   public connectedCallback() {
     super.connectedCallback();
+
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+
     Observable.getNotifier(this).subscribe(this);
 
     Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
@@ -170,6 +173,9 @@ export class BaseAnchor extends FASTElement {
   public clickHandler(e: PointerEvent): boolean {
     if (this.href) {
       const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
+      if (newTab) {
+        e.preventDefault();
+      }
       this.handleNavigation(newTab);
     }
 

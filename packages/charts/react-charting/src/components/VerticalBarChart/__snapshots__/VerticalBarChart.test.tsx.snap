@@ -14,12 +14,13 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -30,7 +31,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -43,7 +44,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -67,7 +68,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -95,7 +96,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -142,7 +143,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -481,12 +482,13 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -497,7 +499,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -510,7 +512,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -534,7 +536,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -562,7 +564,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -609,7 +611,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -948,12 +950,13 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -964,7 +967,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -977,7 +980,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1001,7 +1004,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -1029,7 +1032,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -1076,7 +1079,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -1415,12 +1418,13 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -1431,7 +1435,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -1444,7 +1448,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1468,7 +1472,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -1496,7 +1500,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -1543,7 +1547,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -1882,12 +1886,13 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -1898,7 +1903,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -1911,7 +1916,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1935,7 +1940,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -1963,7 +1968,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -2002,7 +2007,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         role="listbox"
       >
@@ -2338,12 +2343,13 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -2354,7 +2360,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -2367,7 +2373,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2391,7 +2397,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -2419,7 +2425,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -2446,12 +2452,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -2462,7 +2469,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -2475,7 +2482,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2499,7 +2506,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -2527,7 +2534,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -2574,7 +2581,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -2913,12 +2920,13 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -2929,7 +2937,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -2942,7 +2950,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2966,7 +2974,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -2994,7 +3002,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -3041,7 +3049,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -3380,12 +3388,13 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -3396,7 +3405,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -3409,7 +3418,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3433,7 +3442,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -3461,7 +3470,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -3508,7 +3517,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >
@@ -3847,12 +3856,13 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         font-weight: 400;
         height: 100%;
         overflow: hidden;
+        position: relative;
         width: 100%;
       }
-  id="chart_3"
+  id="chart_2"
 >
   <div
-    id="defaultTabbableElement_4"
+    id="defaultTabbableElement_3"
   />
   <div
     class=
@@ -3863,7 +3873,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         {
           position: relative;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <svg
@@ -3876,7 +3886,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     >
       <g
         class=
-
+            fui-cart__xAxis
             & text {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -3900,7 +3910,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_3"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -3928,7 +3938,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_3"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
@@ -3975,7 +3985,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               role="listbox"
             >

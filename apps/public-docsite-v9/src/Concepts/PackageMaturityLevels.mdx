@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Package Maturity Levels" />
 
@@ -101,18 +101,18 @@ Some packages don't follow the preview naming convention but are still considere
 
 **Migration Guide:**
 
-| Deprecated Package           | Stable Alternative                                   |
-| ---------------------------- | ---------------------------------------------------- |
-| `@fluentui/react-alert`      | `@fluentui/react-components` (`Toast`, `MessageBar`) |
-| `@fluentui/react-infobutton` | `@fluentui/react-components` (`InfoLabel`)           |
+| Deprecated Package             | Stable Alternative                                         |
+| ------------------------------ | ---------------------------------------------------------- |
+| \`@fluentui/react-alert\`      | \`@fluentui/react-components\` (\`Toast\`, \`MessageBar\`) |
+| \`@fluentui/react-infobutton\` | \`@fluentui/react-components\` (\`InfoLabel\`)             |
 
 **Migration strategy:** Migrate to stable alternatives as soon as possible. Deprecated packages may not receive updates or security fixes.
 
 ## Quick Reference
 
-| Maturity Level | Version Format | Production Ready    | Breaking Changes | Import Source                         |
-| -------------- | -------------- | ------------------- | ---------------- | ------------------------------------- |
-| 🟢 Stable      | `9.x.x`        | ✅ Yes              | ❌ No            | `@fluentui/react-components`          |
-| 🟡 Preview     | `0.x.x`        | ⚠️ Use with caution | ✅ Possible      | `@fluentui/react-<name>-preview`      |
-| 🔵 Compat      | `0.x.x`        | ⚠️ Migration only   | ✅ Possible      | `@fluentui/react-<name>-compat`       |
-| 🔴 Deprecated  | various        | ❌ No               | N/A              | `@fluentui/react-components/unstable` |
+| Maturity Level | Version Format | Production Ready    | Breaking Changes | Import Source                           |
+| -------------- | -------------- | ------------------- | ---------------- | --------------------------------------- |
+| 🟢 Stable      | \`9.x.x\`      | ✅ Yes              | ❌ No            | \`@fluentui/react-components\`          |
+| 🟡 Preview     | \`0.x.x\`      | ⚠️ Use with caution | ✅ Possible      | \`@fluentui/react-\-preview\`           |
+| 🔵 Compat      | \`0.x.x\`      | ⚠️ Migration only   | ✅ Possible      | \`@fluentui/react-\-compat\`            |
+| 🔴 Deprecated  | various        | ❌ No               | N/A              | \`@fluentui/react-components/unstable\` |

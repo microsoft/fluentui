@@ -1,6 +1,5 @@
 import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Dialog } from './dialog.js';
-import { DialogType } from './dialog.options.js';
 
 /**
  * Template for the Dialog component

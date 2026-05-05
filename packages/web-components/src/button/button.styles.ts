@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusLarge,
@@ -310,8 +310,8 @@ export const styles = css`
     border-color: transparent;
     background-color: ${colorTransparentBackground};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       background-color: ButtonFace;
       color: ButtonText;
@@ -332,5 +332,5 @@ export const styles = css`
       color: GrayText;
       border-color: ButtonText;
     }
-  `),
-);
+  }
+`;

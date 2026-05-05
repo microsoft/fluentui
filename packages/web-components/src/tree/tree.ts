@@ -12,8 +12,11 @@ import { BaseTree } from './tree.base.js';
 export class Tree extends BaseTree {
   /**
    * The size of the tree item element
-   * @public
+   * The size of the tree item element
+   *
    * HTML Attribute: size
+   *
+   * @public
    */
   @attr
   public size: TreeItemSize = TreeItemSize.small;
@@ -23,8 +26,11 @@ export class Tree extends BaseTree {
 
   /**
    * The appearance variants of the tree item element
-   * @public
+   * The appearance variants of the tree item element
+   *
    * HTML Attribute: appearance
+   *
+   * @public
    */
   @attr
   public appearance: TreeItemAppearance = TreeItemAppearance.subtle;

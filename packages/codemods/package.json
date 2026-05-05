@@ -22,11 +22,6 @@
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "tslib": "^2.1.0",
     "ts-morph": "^23.0.0",

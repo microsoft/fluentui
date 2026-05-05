@@ -22,7 +22,6 @@ const tsConfigPath = path.join(workspaceRoot, 'tsconfig.base.json');
 module.exports = {
   addons: [
     // 3rd party packages/addons
-    '@storybook/addon-essentials',
     '@storybook/addon-a11y',
 
     // workspace custom addon

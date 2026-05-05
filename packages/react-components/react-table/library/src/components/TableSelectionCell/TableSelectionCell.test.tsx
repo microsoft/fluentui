@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { TableSelectionCell } from './TableSelectionCell';
 import { isConformant } from '../../testing/isConformant';
-import { TableSelectionCellProps } from './TableSelectionCell.types';
+import type { TableSelectionCellProps } from './TableSelectionCell.types';
 import { tableContextDefaultValue, TableContextProvider } from '../../contexts/tableContext';
 import { tableSelectionCellClassNames } from './useTableSelectionCellStyles.styles';
 
@@ -72,5 +72,13 @@ describe('TableSelectionCell', () => {
     });
     expect(queryByRole('checkbox')).toBeNull();
     expect(queryByRole('radio')).not.toBeNull();
+  });
+
+  it('should not render a radio if invisible', () => {
+    const { queryByRole } = render(<TableSelectionCell type="radio" invisible />, {
+      container: tr,
+    });
+    expect(queryByRole('checkbox')).toBeNull();
+    expect(queryByRole('radio')).toBeNull();
   });
 });

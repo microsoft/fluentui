@@ -185,9 +185,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
             height={this.state.height}
             width={this.state.width}
             margins={margins}
-            xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
-            rotateXAxisLables={true}
             timeFormatLocale={this.state.customLocale}
             enablePerfOptimization={true}
           />

@@ -2,7 +2,7 @@ import { screen, fireEvent } from '@testing-library/react';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { ScatterChart } from './ScatterChart';
 import { toHaveNoViolations } from 'jest-axe';
-import { ChartProps } from '../../ScatterChart';
+import type { ChartProps } from '../../ScatterChart';
 expect.extend(toHaveNoViolations);
 
 const chartData: ChartProps = {

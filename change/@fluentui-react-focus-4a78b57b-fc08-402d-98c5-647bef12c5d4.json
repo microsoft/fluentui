@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate eslint to use flat config",
-  "packageName": "@fluentui/react-focus",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

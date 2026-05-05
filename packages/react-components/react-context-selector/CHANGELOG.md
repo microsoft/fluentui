@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Tue, 11 Nov 2025 19:18:29 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.16)
+
+Thu, 23 Apr 2026 14:21:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.15..@fluentui/react-context-selector_v9.2.16)
+
+### Patches
+
+- fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers ([PR #36002](https://github.com/microsoft/fluentui/pull/36002) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.15)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.14..@fluentui/react-context-selector_v9.2.15)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.14)
+
+Thu, 22 Jan 2026 17:06:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.13..@fluentui/react-context-selector_v9.2.14)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+## [9.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.13)
+
+Wed, 17 Dec 2025 18:10:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.12..@fluentui/react-context-selector_v9.2.13)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.0 ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by beachball)
 
 ## [9.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.12)
 

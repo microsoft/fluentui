@@ -15,7 +15,6 @@ import {
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToChartTableProps,
-  projectPolarToCartesian,
   findArrayAttributes,
   getAllupLegendsProps,
   isNonPlotType,
@@ -155,19 +154,19 @@ describe('isMonthArray', () => {
 
 describe('correctYearMonth', () => {
   test('Should return dates array when input array contains months data', () => {
-    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
+    expect(correctYearMonth([10, 11, 1])).toMatchSnapshot();
   });
 
   test('Should return error when input array contains invalid months', () => {
-    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
+    expect(correctYearMonth([10, 11, 16])).toMatchSnapshot();
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
-    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2025', 'February 01, 2025']);
+    expect(correctYearMonth(['January', 'February'])).toMatchSnapshot();
   });
 
   test('Should return dates array when input array contains months data in MM format', () => {
-    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2025', 'Feb 01, 2025']);
+    expect(correctYearMonth(['Jan', 'Feb'])).toMatchSnapshot();
   });
 
   test('Should return dates array when input array is empty', () => {
@@ -1326,168 +1325,6 @@ describe('transformPlotlyJsonToChartTableProps', () => {
     );
     expect(result.headers).toHaveLength(2);
     expect(result.rows).toHaveLength(1);
-  });
-});
-
-describe('projectPolarToCartesian', () => {
-  test('Should convert polar coordinates to cartesian', () => {
-    const polarSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          r: [1, 2, 3],
-          theta: [0, 90, 180],
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(polarSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(3);
-    expect(seriesData.y).toHaveLength(3);
-    // Normalized values: x = [1/6, 0/6, -3/6], y = [0/6, 2/6, 0/6]
-    expect(seriesData.x[0]).toBeCloseTo(1 / 6, 4); // ≈ 0.1667
-    expect(seriesData.y[0]).toBeCloseTo(0, 4);
-    expect(seriesData.x[1]).toBeCloseTo(0, 4);
-    expect(seriesData.y[1]).toBeCloseTo(2 / 6, 4); // ≈ 0.3333
-    expect(seriesData.x[2]).toBeCloseTo(-0.5, 4);
-    expect(seriesData.y[2]).toBeCloseTo(0, 4);
-  });
-
-  test('Should handle invalid polar data', () => {
-    const invalidSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          r: [1, null, NaN, Infinity],
-          theta: [0, 90, null, 270],
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(invalidSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(1); // Only valid point
-    expect(seriesData.y).toHaveLength(1);
-  });
-
-  test('Should handle empty polar data', () => {
-    const emptySchema = {
-      data: [{ type: 'scatterpolar' as const, r: [], theta: [] }],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(emptySchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(0);
-    expect(seriesData.y).toHaveLength(0);
-  });
-
-  test('Should handle negative radius values', () => {
-    const negativeSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          r: [-1, -2, 1],
-          theta: [0, 90, 180],
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(negativeSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(3);
-    expect(seriesData.y).toHaveLength(3);
-    // Correct normalized values: x = [-0.1, -0.2, -0.5], y = [0, 0, 0]
-    expect(seriesData.x[0]).toBeCloseTo(-0.1, 4);
-    expect(seriesData.x[1]).toBeCloseTo(-0.2, 4);
-    expect(seriesData.x[2]).toBeCloseTo(-0.5, 4);
-    expect(seriesData.y[0]).toBeCloseTo(0, 4);
-    expect(seriesData.y[1]).toBeCloseTo(0, 4);
-    expect(seriesData.y[2]).toBeCloseTo(0, 4);
-  });
-
-  test('Should handle very large angles', () => {
-    const largeAngleSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          r: [1, 1, 1],
-          theta: [0, 360, 720], // Full rotations
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(largeAngleSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(3);
-    expect(seriesData.x[0]).toBeCloseTo(seriesData.x[1], 1); // 0° and 360° should be similar
-    expect(seriesData.x[0]).toBeCloseTo(seriesData.x[2], 1); // 0° and 720° should be similar
-  });
-
-  test('Should handle string values in arrays', () => {
-    const stringSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          r: ['1', '2', 'invalid'],
-          theta: ['0', '90', 'bad'],
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(stringSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x.length).toBeGreaterThanOrEqual(0); // Should handle conversion gracefully
-    expect(seriesData.y.length).toBeGreaterThanOrEqual(0);
-  });
-
-  test('Should handle mismatched array lengths', () => {
-    const mismatchedSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          r: [1, 2, 3, 4, 5],
-          theta: [0, 90], // Shorter array
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(mismatchedSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(2); // Should use minimum length
-    expect(seriesData.y).toHaveLength(2);
-  });
-
-  test('Should handle missing r or theta arrays', () => {
-    const missingRSchema = {
-      data: [
-        {
-          type: 'scatterpolar' as const,
-          theta: [0, 90, 180],
-        },
-      ],
-      layout: {},
-    };
-
-    const result = projectPolarToCartesian(missingRSchema);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const seriesData = result.data[0] as any; // Type assertion for test purposes
-    expect(seriesData.x).toHaveLength(0);
-    expect(seriesData.y).toHaveLength(0);
   });
 });
 

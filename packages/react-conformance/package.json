@@ -15,9 +15,6 @@
       "prerelease"
     ]
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
-  },
   "dependencies": {
     "lodash": "^4.17.15",
     "chalk": "^2.4.2",

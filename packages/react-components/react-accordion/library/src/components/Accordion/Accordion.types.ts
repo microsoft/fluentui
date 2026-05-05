@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { AccordionContextValue } from '../../contexts/accordion';
+import type { AccordionContextValue } from '../../contexts/accordion';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
@@ -59,4 +59,8 @@ export type AccordionProps<Value = AccordionItemValue> = Omit<ComponentProps<Acc
   openItems?: Value | Value[];
 };
 
+export type AccordionBaseProps<Value = AccordionItemValue> = Omit<AccordionProps<Value>, 'navigation'>;
+
 export type AccordionState<Value = AccordionItemValue> = ComponentState<AccordionSlots> & AccordionContextValue<Value>;
+
+export type AccordionBaseState<Value = AccordionItemValue> = Omit<AccordionState<Value>, 'navigation'>;

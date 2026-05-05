@@ -1,3 +1,4 @@
+import headlessConfig from './release-headless.config';
 import toolsConfig from './release-tools.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';
@@ -20,6 +21,7 @@ describe(`beachball configs`, () => {
         '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
+        '**/eslint.config.*',
         '**/rit.config.js',
         '**/__fixtures__/**',
         '**/__mocks__/**',
@@ -98,6 +100,9 @@ describe(`beachball configs`, () => {
 
     // Ensure that vNext config does not include "tools" packages
     expect(vNextConfig.scope.some(scope => toolsConfig.scope.includes(scope))).toBe(false);
+
+    // Ensure that vNext config does not include "react-headless" packages
+    expect(vNextConfig.scope.some(scope => headlessConfig.scope.includes(scope))).toBe(false);
   });
 
   it(`should generate web-components release config`, () => {
@@ -110,6 +115,22 @@ describe(`beachball configs`, () => {
     );
 
     expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);
+  });
+
+  it(`should generate react-headless release config`, () => {
+    expect(headlessConfig.scope).toEqual(
+      expect.arrayContaining(['packages/react-components/react-headless-components-preview/library']),
+    );
+
+    // Ensure only headless packages are included, not broader vNext or tools packages
+    const nonHeadlessScopes = [
+      'packages/react-components/react-components',
+      'packages/react-components/react-button',
+      'packages/react',
+    ];
+    expect(headlessConfig.scope.some(scope => nonHeadlessScopes.includes(scope))).toBe(false);
+
+    expect(headlessConfig.changelog).toEqual(sharedConfig.changelog);
   });
 
   it(`should generate tools release config`, () => {

@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
-import type { ColorPickerState, ColorPickerProps } from '../components/ColorPicker/ColorPicker.types';
+import type { ColorPickerProps } from '../components/ColorPicker/ColorPicker.types';
 import type { HsvColor } from '../types/color';
 
 /**
@@ -11,24 +11,12 @@ import type { HsvColor } from '../types/color';
  */
 export type ColorPickerContextValue = Pick<ColorPickerProps, 'shape' | 'color'> & {
   /**
-   * @internal
    * Callback used by Sliders to request a change on it's selected value
    * Should be used to get value of color channel
+   *
+   * @internal
    */
   requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { color: HsvColor }) => void;
-};
-
-export const useColorPickerContextValues = (state: ColorPickerState): ColorPickerContextValues => {
-  const { color, shape, requestChange } = state;
-
-  // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
-  const colorPicker: ColorPickerContextValue = {
-    requestChange,
-    color,
-    shape,
-  };
-
-  return { colorPicker };
 };
 
 export const colorPickerContextDefaultValue: ColorPickerContextValue = {

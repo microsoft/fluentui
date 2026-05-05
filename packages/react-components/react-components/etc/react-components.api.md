@@ -342,6 +342,7 @@ import { DialogActionsPosition } from '@fluentui/react-dialog';
 import { DialogActionsProps } from '@fluentui/react-dialog';
 import { DialogActionsSlots } from '@fluentui/react-dialog';
 import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBackdropContextValue } from '@fluentui/react-dialog';
 import { DialogBody } from '@fluentui/react-dialog';
 import { dialogBodyClassNames } from '@fluentui/react-dialog';
 import { DialogBodyProps } from '@fluentui/react-dialog';
@@ -678,6 +679,8 @@ import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
 import { MotionComponentProps } from '@fluentui/react-motion';
 import { MotionImperativeRef } from '@fluentui/react-motion';
+import { motionSlot } from '@fluentui/react-motion';
+import { MotionSlotProps } from '@fluentui/react-motion';
 import { motionTokens } from '@fluentui/react-motion';
 import { Nav } from '@fluentui/react-nav';
 import { NavButtonRenderFunction } from '@fluentui/react-carousel';
@@ -833,6 +836,8 @@ import { presenceDndRegular } from '@fluentui/react-badge';
 import { PresenceGroup } from '@fluentui/react-motion';
 import { PresenceMotion } from '@fluentui/react-motion';
 import { PresenceMotionFn } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { presenceOfflineRegular } from '@fluentui/react-badge';
 import { presenceOofRegular } from '@fluentui/react-badge';
 import { presenceUnknownRegular } from '@fluentui/react-badge';
@@ -1642,6 +1647,7 @@ import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useDialog_unstable } from '@fluentui/react-dialog';
 import { useDialogActions_unstable } from '@fluentui/react-dialog';
 import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogBackdropContext_unstable } from '@fluentui/react-dialog';
 import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContent_unstable } from '@fluentui/react-dialog';
@@ -2701,6 +2707,8 @@ export { DialogActionsSlots }
 
 export { DialogActionsState }
 
+export { DialogBackdropContextValue }
+
 export { DialogBody }
 
 export { dialogBodyClassNames }
@@ -3373,6 +3381,10 @@ export { MotionComponentProps }
 
 export { MotionImperativeRef }
 
+export { motionSlot }
+
+export { MotionSlotProps }
+
 export { motionTokens }
 
 export { Nav }
@@ -3682,6 +3694,10 @@ export { PresenceGroup }
 export { PresenceMotion }
 
 export { PresenceMotionFn }
+
+export { presenceMotionSlot }
+
+export { PresenceMotionSlotProps }
 
 export { presenceOfflineRegular }
 
@@ -5300,6 +5316,8 @@ export { useDialog_unstable }
 export { useDialogActions_unstable }
 
 export { useDialogActionsStyles_unstable }
+
+export { useDialogBackdropContext_unstable }
 
 export { useDialogBody_unstable }
 

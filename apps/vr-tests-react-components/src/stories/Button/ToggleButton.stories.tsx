@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ToggleButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
 import type { StoryParameters } from 'storywright';

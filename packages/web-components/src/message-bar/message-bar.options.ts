@@ -1,8 +1,9 @@
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
- * @public
  * The `layout` variations for the MessageBar component.
+ *
+ * @public
  */
 export const MessageBarLayout = {
   multiline: 'multiline',
@@ -12,8 +13,9 @@ export const MessageBarLayout = {
 export type MessageBarLayout = ValuesOf<typeof MessageBarLayout>;
 
 /**
- * @public
  * The `shape` variations for the MessageBar component.
+ *
+ * @public
  */
 export const MessageBarShape = {
   rounded: 'rounded',
@@ -23,8 +25,9 @@ export const MessageBarShape = {
 export type MessageBarShape = ValuesOf<typeof MessageBarShape>;
 
 /**
- * @public
  * The `intent` variations for the MessageBar component.
+ *
+ * @public
  */
 export const MessageBarIntent = {
   success: 'success',

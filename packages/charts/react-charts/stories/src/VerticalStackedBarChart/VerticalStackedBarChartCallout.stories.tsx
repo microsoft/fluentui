@@ -1,14 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  VerticalStackedBarChart,
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
-import { Field, Checkbox, CheckboxOnChangeData, Radio, RadioGroup } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import { Field, Checkbox, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const VerticalStackedBarCallout = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
@@ -180,7 +174,8 @@ export const VerticalStackedBarCallout = (): JSXElement => {
           max={1000}
           id="changeWidth_Callout"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Callout">Change Height:</label>
         <input
@@ -190,7 +185,8 @@ export const VerticalStackedBarCallout = (): JSXElement => {
           max={1000}
           id="changeHeight_Callout"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeBarGapMax_Callout">BarGapMax:</label>
         <input
@@ -200,7 +196,8 @@ export const VerticalStackedBarCallout = (): JSXElement => {
           max={10}
           id="changeBarGapMax_Callout"
           onChange={e => setBarGapMax(+e.target.value)}
-          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+          aria-label="Change Bar Gap Max"
+          aria-valuetext={`current value ${barGapMax}', Minimum 0 and Maximum 10`}
         />
         <label htmlFor="barWidthSlider">BarWidth:</label>
         <input
@@ -210,7 +207,8 @@ export const VerticalStackedBarCallout = (): JSXElement => {
           max={50}
           id="barWidthSlider"
           onChange={e => setBarWidth(+e.target.value)}
-          aria-valuetext={`BarWidthSlider${barWidth}`}
+          aria-label="Change Bar Width"
+          aria-valuetext={`current value ${barWidth}', Minimum 1 and Maximum 50`}
         />
         <span>{barWidth}</span>
       </div>

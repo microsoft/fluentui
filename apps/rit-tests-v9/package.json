@@ -3,9 +3,6 @@
   "description": "React Integration Tester application for problematic v9 scenarios",
   "version": "1.0.0",
   "private": true,
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
-  },
   "dependencies": {
     "@fluentui/react-components": "*",
     "@fluentui/react-calendar-compat": "*",

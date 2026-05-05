@@ -5,8 +5,10 @@ export type {
   SelectTabEventHandler,
   TabListContextValue,
   TabListContextValues,
+  TabListBaseProps,
   TabListProps,
   TabListSlots,
+  TabListBaseState,
   TabListState,
   TabRegisterData,
 } from './components/TabList/index';
@@ -20,4 +22,6 @@ export {
   useTabListContext_unstable,
   useTabListStyles_unstable,
   useTabList_unstable,
+  useTabListBase_unstable,
+  useTabListA11yBehavior_unstable,
 } from './components/TabList/index';

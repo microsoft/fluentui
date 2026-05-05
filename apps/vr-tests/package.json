@@ -13,11 +13,6 @@
     "type-check": "tsc -p . --noEmit --baseUrl .",
     "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/example-data": "*",
     "@fluentui/font-icons-mdl2": "*",

@@ -493,6 +493,99 @@ test.describe('Menu', () => {
     }
   });
 
+  test('should set the data-indent attribute correctly when menu items are dynamically appended', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ innerHTML: '' });
+
+    await element.evaluate(node => {
+      const items = ['item 1', 'item 2', 'item 3'];
+
+      items.forEach(item => {
+        const menuItem = document.createElement('fluent-menu-item');
+        menuItem.role = 'menuitemradio';
+        menuItem.textContent = item;
+        node.append(menuItem);
+      });
+    });
+
+    const menuItems = element.locator('fluent-menu-item');
+    await expect(menuItems).toHaveCount(3);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '1');
+    }
+  });
+
+  test('should set the data-indent attribute correctly when menu items are appended via a DocumentFragment', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ innerHTML: '' });
+
+    await element.evaluate(node => {
+      const fragment = document.createDocumentFragment();
+      const items = ['item 1', 'item 2', 'item 3'];
+
+      items.forEach(item => {
+        const menuItem = document.createElement('fluent-menu-item');
+        menuItem.role = 'menuitemradio';
+        menuItem.textContent = item;
+        fragment.append(menuItem);
+      });
+
+      node.append(fragment);
+    });
+
+    const menuItems = element.locator('fluent-menu-item');
+    await expect(menuItems).toHaveCount(3);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '1');
+    }
+  });
+
+  test('should update data-indent on existing items when a menuitemradio is appended and removed', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const menuItems = element.locator('fluent-menu-item');
+
+    await test.step('all plain menuitems should start with data-indent 0', async () => {
+      for (const item of await menuItems.all()) {
+        await expect(item).toHaveAttribute('data-indent', '0');
+      }
+    });
+
+    await test.step('appending a menuitemradio should update all items to data-indent 1', async () => {
+      await element.evaluate(node => {
+        const menuItem = document.createElement('fluent-menu-item');
+        menuItem.role = 'menuitemradio';
+        menuItem.textContent = 'Radio item';
+        node.append(menuItem);
+      });
+
+      await expect(menuItems).toHaveCount(5);
+
+      for (const item of await menuItems.all()) {
+        await expect(item).toHaveAttribute('data-indent', '1');
+      }
+    });
+
+    await test.step('removing the menuitemradio should revert all items to data-indent 0', async () => {
+      await menuItems.last().evaluate(node => node.remove());
+
+      await expect(menuItems).toHaveCount(4);
+
+      for (const item of await menuItems.all()) {
+        await expect(item).toHaveAttribute('data-indent', '0');
+      }
+    });
+  });
+
   test.describe('`change` event', () => {
     test('should emit `change` event when `checked` property changed', async ({ fastPage }) => {
       const { element } = fastPage;

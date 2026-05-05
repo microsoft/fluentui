@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TabValue } from '../Tab/Tab.types';
+import type { TabValue } from '../Tab/Tab.types';
 
 export type TabRegisterData = {
   /**
@@ -102,6 +102,8 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   vertical?: boolean;
 };
 
+export type TabListBaseProps = Omit<TabListProps, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;
+
 export type TabListContextValue = Pick<
   TabListProps,
   'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'reserveSelectedTabSpace'
@@ -140,3 +142,5 @@ export type TabListContextValues = {
  * State used in rendering TabList.
  */
 export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
+
+export type TabListBaseState = Omit<TabListState, 'appearance' | 'size' | 'reserveSelectedTabSpace'>;

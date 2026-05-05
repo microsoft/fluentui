@@ -24,7 +24,7 @@ describe('collapse atoms', () => {
         duration: 300,
         easing: 'ease-out',
         element: mockElement,
-        fromSize: '0px',
+        outSize: '0px',
       });
 
       // Should expand from 0px to measured height (100px), then to unset
@@ -47,7 +47,7 @@ describe('collapse atoms', () => {
         duration: 250,
         easing: 'ease-in',
         element: mockElement,
-        fromSize: '5px',
+        outSize: '5px',
       });
 
       // Should expand from 5px to measured width (200px), then to unset
@@ -64,13 +64,13 @@ describe('collapse atoms', () => {
       });
     });
 
-    it('handles custom fromSize values', () => {
+    it('handles custom outSize values', () => {
       const atom = sizeEnterAtom({
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
         element: mockElement,
-        fromSize: '10px',
+        outSize: '10px',
       });
 
       expect(atom.keyframes[0]).toMatchObject({ maxHeight: '10px' });
@@ -123,7 +123,7 @@ describe('collapse atoms', () => {
         duration: 300,
         easing: 'ease-in',
         element: mockElement,
-        fromSize: '0px',
+        outSize: '0px',
       });
 
       // Should collapse from measured height (100px) to 0px
@@ -146,7 +146,7 @@ describe('collapse atoms', () => {
         duration: 250,
         easing: 'ease-out',
         element: mockElement,
-        fromSize: '5px',
+        outSize: '5px',
       });
 
       // Should collapse from measured width (200px) to 5px
@@ -163,13 +163,13 @@ describe('collapse atoms', () => {
       });
     });
 
-    it('handles custom fromSize values', () => {
+    it('handles custom outSize values', () => {
       const atom = sizeExitAtom({
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
         element: mockElement,
-        fromSize: '10px',
+        outSize: '10px',
       });
 
       expect(atom.keyframes[1]).toMatchObject({ maxHeight: '10px' });
@@ -417,7 +417,7 @@ describe('collapse atoms', () => {
         duration: 300,
         easing: 'ease-out',
         element: mockElement,
-        fromSize: '5px',
+        outSize: '5px',
       });
 
       const exitAtom = sizeExitAtom({
@@ -425,7 +425,7 @@ describe('collapse atoms', () => {
         duration: 300,
         easing: 'ease-out',
         element: mockElement,
-        fromSize: '5px',
+        outSize: '5px',
       });
 
       // Enter expands from 5px to 100px

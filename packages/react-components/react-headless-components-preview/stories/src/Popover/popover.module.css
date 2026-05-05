@@ -1,0 +1,267 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--text);
+  color: var(--text-on-accent);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.trigger:hover,
+.trigger[data-open] {
+  background: var(--text-muted);
+}
+
+.trigger:focus-visible {
+  outline: var(--stroke-thick) solid var(--text);
+  outline-offset: 2px;
+}
+
+.triggerSecondary {
+  background: var(--accent);
+}
+
+.triggerSecondary:hover,
+.triggerSecondary[data-open] {
+  background: var(--accent-strong);
+}
+
+.triggerSecondary:focus-visible {
+  outline-color: var(--accent);
+}
+
+.triggerSmall {
+  height: 28px;
+  padding: 0 var(--space-3);
+  font-size: 12.5px;
+}
+
+.contextTrigger {
+  display: inline-block;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  font-weight: 500;
+  border: var(--stroke-thin) dashed var(--border-stronger);
+  cursor: context-menu;
+  user-select: none;
+}
+
+.contextTrigger:focus-visible {
+  outline: var(--stroke-thick) solid var(--text);
+  outline-offset: 2px;
+}
+
+.surface {
+  background: var(--bg-elev);
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-4);
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.surfaceColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.surfaceColumnLg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.surfaceWide {
+  width: 320px;
+}
+
+.surfaceMenu {
+  padding: var(--space-2) 0;
+  min-width: 160px;
+}
+
+.heading {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 var(--space-1);
+}
+
+.headingFlush {
+  margin: 0;
+}
+
+.body {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.bodySpaced {
+  margin: 0 0 var(--space-3);
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 var(--space-3);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.actionButton:hover {
+  background: var(--surface-muted);
+}
+
+.actionButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--text);
+  outline-offset: 2px;
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: var(--space-1) var(--space-4);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: var(--surface-muted);
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--accent-strong);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.fieldLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.columnSpacious {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.cluster {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+}
+
+.outerPad {
+  padding: var(--space-12);
+  min-height: 320px;
+}
+
+.localPad {
+  padding: var(--space-4);
+}
+
+/*
+  Arrow rendering for PopoverWithArrow. The headless Popover paints a 12×12
+  rotated square that tracks the surface's data-placement attribute via the
+  positioning hook.
+*/
+.surfaceWithArrow {
+  overflow: visible;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+  border: 0;
+  box-shadow: none;
+}
+
+.surfaceWithArrow [data-arrow] {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-elev);
+  transform: rotate(45deg);
+}
+
+.surfaceWithArrow[data-placement^='above'] [data-arrow] {
+  bottom: -6px;
+}
+
+.surfaceWithArrow[data-placement^='below'] [data-arrow] {
+  top: -6px;
+}
+
+.surfaceWithArrow[data-placement^='before'] [data-arrow] {
+  right: -6px;
+}
+
+.surfaceWithArrow[data-placement^='after'] [data-arrow] {
+  left: -6px;
+}
+
+.surfaceWithArrow[data-placement='above'] [data-arrow],
+.surfaceWithArrow[data-placement='below'] [data-arrow] {
+  inset-inline: 0;
+  margin-inline: auto;
+}
+
+.surfaceWithArrow[data-placement='before'] [data-arrow],
+.surfaceWithArrow[data-placement='after'] [data-arrow] {
+  inset-block: 0;
+  margin-block: auto;
+}
+
+.surfaceWithArrow[data-placement$='-start'] [data-arrow] {
+  inset-inline-start: var(--arrow-padding, 12px);
+}
+
+.surfaceWithArrow[data-placement$='-end'] [data-arrow] {
+  inset-inline-end: var(--arrow-padding, 12px);
+}

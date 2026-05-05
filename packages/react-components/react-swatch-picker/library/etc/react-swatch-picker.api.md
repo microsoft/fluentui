@@ -150,6 +150,7 @@ export type SwatchPickerOnSelectionChangeData = EventData<'click', React_2.Mouse
 // @public
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     defaultSelectedValue?: string;
+    focusMode?: 'arrow' | 'tab';
     layout?: 'row' | 'grid';
     onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
     selectedValue?: string;

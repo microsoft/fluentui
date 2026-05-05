@@ -1,3 +1,5 @@
+'use client';
+
 import { createCustomFocusIndicatorStyle, makeResetStyles, makeStyles, tokens } from '@fluentui/react-components';
 import { attachmentActionClassName } from './AttachmentAction';
 import { attachmentIconClassName } from './AttachmentIcon';

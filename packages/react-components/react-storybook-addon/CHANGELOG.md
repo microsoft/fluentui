@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Tue, 04 Nov 2025 14:47:00 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2026 13:16:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.6.0)
+
+Tue, 03 Mar 2026 13:16:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.5.1..@fluentui/react-storybook-addon_v0.6.0)
+
+### Minor changes
+
+- feat: upgrade to storybook 9 ([PR #35459](https://github.com/microsoft/fluentui/pull/35459) by dmytrokirpa@microsoft.com)
+- BREAKING: upgrade storybook to v8 ([PR #35279](https://github.com/microsoft/fluentui/pull/35279) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- chore: bump storybook to mitigate CVE ([PR #35748](https://github.com/microsoft/fluentui/pull/35748) by martinhochel@microsoft.com)
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.5.1)
 

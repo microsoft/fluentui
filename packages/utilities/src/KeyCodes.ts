@@ -1,8 +1,11 @@
 /**
  * Simulated enum for keycodes. These will get inlined by uglify when used much like an enum
  *
- * @public
+ * Simulated enum for keycodes. These will get inlined by uglify when used much like an enum
+ *
  * {@docCategory KeyCodes}
+ *
+ * @public
  */
 export const KeyCodes = {
   backspace: 8 as 8,

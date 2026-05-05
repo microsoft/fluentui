@@ -58,7 +58,7 @@ describe(`utils`, () => {
       const newPaths = actual.overrideTsconfig.compilerOptions.paths as unknown as Record<string, string[]>;
 
       const newPath = Object.values(newPaths)[0][0];
-      expect(newPath).toMatch(new RegExp('^dist/for/types.+src/index.d.ts$', 'i'));
+      expect(newPath).toMatch(/^dist\/for\/types.+src\/index\.d\.ts$/i);
     });
 
     it(`should set allowSyntheticDefaultImports if package has invalid deps/peerDeps`, () => {

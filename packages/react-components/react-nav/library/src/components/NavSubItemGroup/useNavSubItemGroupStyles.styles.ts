@@ -13,6 +13,7 @@ export const navSubItemGroupClassNames: SlotClassNames<Omit<NavSubItemGroupSlots
  */
 const useStyles = makeStyles({
   root: {
+    flexShrink: 0,
     transform: 'translateZ(0)',
     overflow: 'hidden',
   },

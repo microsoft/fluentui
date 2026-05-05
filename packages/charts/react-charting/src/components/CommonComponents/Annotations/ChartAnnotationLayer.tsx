@@ -345,7 +345,7 @@ const resolveCoordinates = (
 };
 
 export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.memo(props => {
-  const { annotations: annotationsProp, theme, context, className } = props;
+  const { annotations: annotationsProp, theme, context, className, hideDefaultStyles } = props;
 
   const classNames = getClassNames(getStyles, { theme, className });
   const idPrefix = React.useMemo(() => getId('chart-annotation'), []);
@@ -439,9 +439,16 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
 
     const containerStyle: React.CSSProperties = {
       maxWidth: layout?.maxWidth,
-      ...(hasCustomBackground && {
-        backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity),
-      }),
+      ...(hasCustomBackground
+        ? {
+            backgroundColor: applyOpacityToColor(baseBackgroundColor, backgroundOpacity),
+          }
+        : !hideDefaultStyles && {
+            backgroundColor: applyOpacityToColor(
+              theme.semanticColors.bodyBackground,
+              DEFAULT_ANNOTATION_BACKGROUND_OPACITY,
+            ),
+          }),
       borderColor: annotation.style?.borderColor,
       borderWidth: annotation.style?.borderWidth,
       borderStyle: annotation.style?.borderStyle ?? (annotation.style?.borderColor ? 'solid' : undefined),
@@ -542,6 +549,8 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
       ...containerStyle,
     };
 
+    const annotationClass = hideDefaultStyles ? classNames.annotationNoDefaults : classNames.annotation;
+
     if (!isMeasurementValid) {
       measurementElements.push(
         <div
@@ -554,7 +563,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
               }
             }
           }}
-          className={css(classNames.annotation, classNames.measurement, layout?.className, annotation.style?.className)}
+          className={css(annotationClass, classNames.measurement, layout?.className, annotation.style?.className)}
           style={measurementStyle}
           aria-hidden={true}
           data-annotation-key={key}
@@ -581,7 +590,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
         data-annotation-key={key}
       >
         <div
-          className={css(classNames.annotation, layout?.className, annotation.style?.className)}
+          className={css(annotationClass, layout?.className, annotation.style?.className)}
           style={containerStyle}
           data-annotation-key={key}
         >

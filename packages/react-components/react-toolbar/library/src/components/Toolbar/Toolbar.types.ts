@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ToolbarSlots = {
@@ -51,6 +51,8 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
   onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
 };
 
+export type ToolbarBaseProps = Omit<ToolbarProps, 'size'>;
+
 /**
  * State used in rendering Toolbar
  */
@@ -67,6 +69,8 @@ export type ToolbarState = ComponentState<ToolbarSlots> &
     handleRadio: ToggableHandler;
   };
 
+export type ToolbarBaseState = Omit<ToolbarState, 'size'>;
+
 export type ToolbarContextValue = Pick<ToolbarState, 'size' | 'vertical' | 'checkedValues'> & {
   handleToggleButton?: ToggableHandler;
   handleRadio?: ToggableHandler;
@@ -76,7 +80,7 @@ export type ToolbarContextValues = {
   toolbar: ToolbarContextValue;
 };
 
-export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'handleToggleButton' | 'handleRadio'> &
+export type UninitializedToolbarState = Omit<ToolbarBaseState, 'checkedValues' | 'handleToggleButton' | 'handleRadio'> &
   Partial<Pick<ToolbarState, 'checkedValues'>>;
 
 export type ToggableHandler = (

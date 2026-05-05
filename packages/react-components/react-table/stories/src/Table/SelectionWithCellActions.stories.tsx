@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus, TableColumnDefinition } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -15,7 +15,6 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   Button,
   TableBody,
@@ -27,7 +26,6 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  TableColumnDefinition,
   useTableSelection,
   createTableColumn,
   TableCellActions,

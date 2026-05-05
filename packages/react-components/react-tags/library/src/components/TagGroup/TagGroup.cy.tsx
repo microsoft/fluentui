@@ -6,7 +6,7 @@ import { InteractionTag } from '../InteractionTag/InteractionTag';
 import { InteractionTagPrimary } from '../InteractionTagPrimary/InteractionTagPrimary';
 import { InteractionTagSecondary } from '../InteractionTagSecondary/InteractionTagSecondary';
 import { TagGroup } from './TagGroup';
-import { TagGroupProps } from './TagGroup.types';
+import type { TagGroupProps } from './TagGroup.types';
 import { Tag } from '../Tag/Tag';
 import type { JSXElement } from '@fluentui/react-utilities';
 
