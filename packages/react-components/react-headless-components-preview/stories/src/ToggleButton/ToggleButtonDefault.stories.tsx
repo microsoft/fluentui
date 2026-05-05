@@ -1,16 +1,45 @@
 import * as React from 'react';
 import { ToggleButton } from '@fluentui/react-headless-components-preview/toggle-button';
+import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
 
+import styles from './toggle-button.module.css';
 export const Default = (): React.ReactNode => {
-  const [checked, setChecked] = React.useState(false);
+  const [bold, setBold] = React.useState(false);
+  const [italic, setItalic] = React.useState(false);
+  const [underline, setUnderline] = React.useState(false);
+
   return (
-    <ToggleButton
-      className="flex items-center justify-center size-9 px-0 border border-gray-300 rounded-md bg-white font-inherit text-sm font-bold text-gray-700 select-none cursor-pointer hover:bg-gray-50 hover:data-[disabled]:bg-white data-[checked]:bg-gray-900 data-[checked]:text-white data-[checked]:border-gray-900 data-[checked]:hover:bg-gray-800 data-[checked]:hover:data-[disabled]:bg-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed"
-      checked={checked}
-      onClick={() => setChecked(v => !v)}
-      aria-label="Toggle value"
-    >
-      {checked ? 'On' : 'Off'}
-    </ToggleButton>
+    <div className={styles.demo}>
+      <div className={styles.demoRow}>
+        <ToggleButton className={styles.toggle} checked={bold} onClick={() => setBold(v => !v)}>
+          {bold ? 'On' : 'Off'}
+        </ToggleButton>
+        <ToggleButton className={styles.toggle} disabled>
+          Disabled
+        </ToggleButton>
+      </div>
+
+      <div className={styles.group} role="group" aria-label="Text formatting">
+        <ToggleButton className={styles.groupItem} aria-label="Bold" checked={bold} onClick={() => setBold(v => !v)}>
+          <TextBoldRegular />
+        </ToggleButton>
+        <ToggleButton
+          className={styles.groupItem}
+          aria-label="Italic"
+          checked={italic}
+          onClick={() => setItalic(v => !v)}
+        >
+          <TextItalicRegular />
+        </ToggleButton>
+        <ToggleButton
+          className={styles.groupItem}
+          aria-label="Underline"
+          checked={underline}
+          onClick={() => setUnderline(v => !v)}
+        >
+          <TextUnderlineRegular />
+        </ToggleButton>
+      </div>
+    </div>
   );
 };

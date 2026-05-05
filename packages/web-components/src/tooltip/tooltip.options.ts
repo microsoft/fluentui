@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
@@ -24,3 +25,10 @@ export const TooltipPositioningOption = {
  * @public
  */
 export type TooltipPositioningOption = ValuesOf<typeof TooltipPositioningOption>;
+
+/**
+ * The tag name for the tooltip element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-tooltip` as const;

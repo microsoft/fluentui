@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -131,10 +131,10 @@ export const styles = css`
   :host([data-hasIndent]) .tab-content {
     grid-column: 2;
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host([aria-selected='true'])::after {
       background-color: Highlight;
     }
-  `),
-);
+  }
+`;

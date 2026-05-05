@@ -19,7 +19,12 @@ describe(`webpack`, () => {
         use: {
           loader: expect.stringContaining('custom-babel-loader'),
           options: {
-            plugins: [[expect.stringContaining('babel-preset-storybook-full-source'), undefined]],
+            plugins: [
+              [
+                expect.stringContaining('babel-preset-storybook-full-source'),
+                { importMappings: undefined, cssModules: false },
+              ],
+            ],
           },
         },
       },
@@ -56,10 +61,46 @@ describe(`webpack`, () => {
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
-                { '@proj/foo': { replace: '@proj/moo' } },
+                {
+                  importMappings: { '@proj/foo': { replace: '@proj/moo' } },
+                  cssModules: false,
+                },
               ],
             ],
             presets: ['babel-foo-bar-preset'],
+          },
+        },
+      },
+    ]);
+  });
+
+  it.each([
+    ['boolean true', true as const],
+    ['object with tokensFilePath', { tokensFilePath: '/path/to/tokens.css' }],
+  ])(`should propagate cssModules config (%s) to babel plugin`, (_label, cssModules) => {
+    const actual = webpack({ module: { rules: [] } }, {
+      presetsList: [
+        {
+          name: 'node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib/preset.js',
+          preset: {},
+          options: { cssModules } as PresetConfig,
+        },
+      ],
+    } as WebpackFinalOptions);
+
+    expect(actual.module?.rules).toEqual([
+      {
+        enforce: 'post',
+        test: /\.stories\.(jsx?$|tsx?$)/,
+        use: {
+          loader: expect.stringContaining('custom-babel-loader'),
+          options: {
+            plugins: [
+              [
+                expect.stringContaining('babel-preset-storybook-full-source'),
+                { importMappings: undefined, cssModules },
+              ],
+            ],
           },
         },
       },

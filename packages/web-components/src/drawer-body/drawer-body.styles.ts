@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display } from '../utils/display.js';
 import { spacingHorizontalM, spacingHorizontalXL } from '../theme/design-tokens.js';
 import { typographySubtitle1Styles } from '../styles/partials/typography.partials.js';
 

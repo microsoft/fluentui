@@ -11,8 +11,6 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
-import type { HostBehavior } from '@microsoft/fast-element';
-import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
@@ -2513,9 +2511,6 @@ export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
 export const curveLinear = "var(--curveLinear)";
 
 // @public
-export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabel: string | null;
@@ -2976,9 +2971,6 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public
-export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
@@ -3082,9 +3074,6 @@ export const LabelWeight: {
 
 // @public
 export type LabelWeight = ValuesOf<typeof LabelWeight>;
-
-// @public
-export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
 // @public
 export const lineHeightBase100 = "var(--lineHeightBase100)";
@@ -3195,29 +3184,6 @@ export const ListboxTemplate: ElementViewTemplate<Listbox>;
 
 // @public
 export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
-
-// @public
-export abstract class MatchMediaBehavior implements HostBehavior {
-    constructor(query: MediaQueryList);
-    connectedCallback(controller: HostController): void;
-    protected abstract constructListener(controller: HostController): MediaQueryListListener;
-    disconnectedCallback(controller: HostController): void;
-    readonly query: MediaQueryList;
-}
-
-// @public
-export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
-    constructor(query: MediaQueryList, styles: ElementStyles);
-    protected constructListener(controller: HostController): MediaQueryListListener;
-    readonly query: MediaQueryList;
-    // @internal
-    removedCallback(controller: HostController<any>): void;
-    readonly styles: ElementStyles;
-    static with(query: MediaQueryList): (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-}
-
-// @public
-export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListEvent) => void;
 
 // @public
 export class Menu extends FASTElement {
@@ -4617,7 +4583,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/esm/accordion-item/accordion-item.d.ts:15:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/esm/accordion-item/accordion-item.d.ts:13:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

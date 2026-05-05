@@ -17,6 +17,8 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
  */
 export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
+  const { importMappings } = options;
+  const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
     name: PLUGIN_NAME,
@@ -27,8 +29,8 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
       parserOptions.plugins.push('typescript');
     },
     pre() {
-      this.imports = Object.keys(options).reduce((acc, cur) => {
-        acc[options[cur].replace] = [];
+      this.imports = Object.keys(importMappings).reduce((acc, cur) => {
+        acc[importMappings[cur].replace] = [];
         return acc;
       }, {} as PluginState['imports']);
     },
@@ -53,6 +55,16 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
         const isRelativeImportToIndexBarrel = importSource.value.endsWith('./index');
 
         if (isRelativeImport && !isRelativeImportToIndexBarrel) {
+          // When cssModules is enabled, preserve *.module.css imports — rewrite path
+          // to ./styles/<basename> so the displayed source matches the Stackblitz sandbox layout.
+          if (cssModulesEnabled) {
+            const cssModuleMatch = importSource.value.match(/([^/]+\.module\.css)$/);
+            if (cssModuleMatch) {
+              path.node.source = t.stringLiteral(`./styles/${cssModuleMatch[1]}`);
+              return;
+            }
+          }
+
           if (process.env.NODE_ENV !== 'production') {
             console.warn(
               [
@@ -78,14 +90,14 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
           }
         }
 
-        if (t.isLiteral(path.node.source) && options[importSource.value]) {
+        if (t.isLiteral(path.node.source) && importMappings[importSource.value]) {
           path.node.specifiers.forEach(specifier => {
             if (
               t.isImportSpecifier(specifier) &&
               t.isIdentifier(specifier.imported) &&
               t.isIdentifier(specifier.local)
             ) {
-              pluginState.imports[options[importSource.value].replace].push(specifier.imported.name);
+              pluginState.imports[importMappings[importSource.value].replace].push(specifier.imported.name);
             }
           });
 

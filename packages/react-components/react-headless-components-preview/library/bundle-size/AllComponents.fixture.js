@@ -29,6 +29,7 @@ import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
+import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
 
 console.log({
   Accordion,
@@ -62,6 +63,7 @@ console.log({
   Textarea,
   ToggleButton,
   Toolbar,
+  Tooltip,
 });
 
 export default {

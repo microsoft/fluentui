@@ -54,9 +54,11 @@
     "@fluentui/react-spinner": "^9.8.2",
     "@fluentui/react-switch": "^9.7.2",
     "@fluentui/react-tabs": "^9.12.1",
+    "@fluentui/react-tabster": "^9.26.14",
     "@fluentui/react-tags": "^9.8.1",
     "@fluentui/react-textarea": "^9.7.2",
     "@fluentui/react-toolbar": "^9.8.0",
+    "@fluentui/react-tooltip": "^9.10.1",
     "@fluentui/react-utilities": "^9.26.3",
     "@swc/helpers": "^0.5.1"
   },
@@ -259,6 +261,12 @@
       "import": "./lib/toolbar.js",
       "require": "./lib-commonjs/toolbar.js"
     },
+    "./tooltip": {
+      "types": "./dist/tooltip.d.ts",
+      "node": "./lib-commonjs/tooltip.js",
+      "import": "./lib/tooltip.js",
+      "require": "./lib-commonjs/tooltip.js"
+    },
     "./package.json": "./package.json"
   },
   "beachball": {
@@ -268,6 +276,7 @@
     ]
   },
   "devDependencies": {
-    "@fluentui/scripts-cypress": "*"
+    "@fluentui/scripts-cypress": "*",
+    "@oddbird/popover-polyfill": "^0.6.1"
   }
 }

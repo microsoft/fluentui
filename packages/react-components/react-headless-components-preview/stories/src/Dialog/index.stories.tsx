@@ -8,7 +8,6 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import descriptionMd from './DialogDescription.md';
-
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';

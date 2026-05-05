@@ -8,11 +8,11 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  *
  * @extends FASTElement
  *
- * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
- * @attr {DrawerPosition} position - Sets the position of the drawer (start/end).
- * @attr {DrawerSize} size - Sets the size of the drawer (small/medium/large).
- * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
- * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
+ * @attr type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
+ * @attr position - Sets the position of the drawer (start/end).
+ * @attr size - Sets the size of the drawer (small/medium/large).
+ * @attr ariaDescribedby - The ID of the element that describes the drawer.
+ * @attr ariaLabelledby - The ID of the element that labels the drawer.
  *
  * @csspart dialog - The dialog element of the drawer.
  *
@@ -73,10 +73,11 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**""
+  /**
+   * Sets the position of the drawer (start/end).
+   *
    * @public
    * @defaultValue start
-   * Sets the position of the drawer (start/end).
    */
   @attr
   public position: DrawerPosition = DrawerPosition.start;
