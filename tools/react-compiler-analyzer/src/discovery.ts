@@ -6,6 +6,13 @@ import type { FileEntry } from './types';
 import { USE_NO_MEMO_CONTENT_RE, USE_MEMO_CONTENT_RE } from './patterns';
 
 /**
+ * Glob all TypeScript files in a directory, respecting exclude patterns.
+ */
+function globTypeScriptFiles(scanDir: string, exclude: string[]): string[] {
+  return globSync('**/*.{ts,tsx}', { cwd: scanDir, exclude }).map(relative => join(scanDir, relative));
+}
+
+/**
  * Walk up from `startDir` to find the nearest package.json and return its `name` field.
  * Falls back to the basename of `startDir`.
  */
@@ -42,11 +49,7 @@ export async function discoverFilesWithDirectives(
   verbose: boolean,
 ): Promise<FileEntry[]> {
   const files: FileEntry[] = [];
-
-  const tsFiles = globSync('**/*.{ts,tsx}', {
-    cwd: scanDir,
-    exclude,
-  }).map(relative => join(scanDir, relative));
+  const tsFiles = globTypeScriptFiles(scanDir, exclude);
 
   for (const filePath of tsFiles) {
     const content = await readFile(filePath, 'utf-8');
@@ -63,19 +66,6 @@ export async function discoverFilesWithDirectives(
 }
 
 /**
- * Discover files containing 'use no memo' in the given directory.
- * @deprecated Use discoverFilesWithDirectives instead.
- */
-export async function discoverDirectiveFiles(
-  scanDir: string,
-  packageName: string,
-  exclude: string[],
-  verbose: boolean,
-): Promise<FileEntry[]> {
-  return discoverFilesWithDirectives(scanDir, packageName, exclude, verbose);
-}
-
-/**
  * Discover all TypeScript files in the given directory (for coverage analysis).
  */
 export async function discoverAllFiles(
@@ -84,10 +74,7 @@ export async function discoverAllFiles(
   exclude: string[],
   verbose: boolean,
 ): Promise<FileEntry[]> {
-  const tsFiles = globSync('**/*.{ts,tsx}', {
-    cwd: scanDir,
-    exclude,
-  }).map(relative => join(scanDir, relative));
+  const tsFiles = globTypeScriptFiles(scanDir, exclude);
 
   if (verbose) {
     console.log(`  Found ${tsFiles.length} TypeScript files in ${scanDir}`);

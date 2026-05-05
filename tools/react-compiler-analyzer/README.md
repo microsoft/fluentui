@@ -200,9 +200,9 @@ src/
 ├── coverage-fixer.ts     — Insert 'use memo' annotations for migration candidates
 ├── reporter.ts           — Directive reporting (full report + compact summary for analyze)
 ├── coverage-reporter.ts  — Coverage reporting (stats, per-function, migration candidates)
-├── compiler-utils.ts     — Re-exports from compiler.ts (backward compatibility)
+├── patterns.ts           — Shared regex patterns for directive detection
 ├── types.ts              — Shared TypeScript interfaces
-└── index.ts              — Public API exports
+└── index.ts              — Package entry (CLI-only, no public API)
 ```
 
 Key dependencies:
