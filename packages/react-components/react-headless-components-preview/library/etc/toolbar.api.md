@@ -20,6 +20,8 @@ import type { ToolbarDividerBaseProps } from '@fluentui/react-toolbar';
 import type { ToolbarDividerBaseState } from '@fluentui/react-toolbar';
 import type { ToolbarGroupProps as ToolbarGroupProps_2 } from '@fluentui/react-toolbar';
 import { ToolbarGroupState as ToolbarGroupState_2 } from '@fluentui/react-toolbar';
+import type { ToolbarRadioButtonBaseProps } from '@fluentui/react-toolbar';
+import type { ToolbarRadioButtonBaseState } from '@fluentui/react-toolbar';
 import type { ToolbarRadioGroupProps as ToolbarRadioGroupProps_2 } from '@fluentui/react-toolbar';
 import type { ToolbarRadioGroupState as ToolbarRadioGroupState_2 } from '@fluentui/react-toolbar';
 import type { ToolbarSlots as ToolbarSlots_2 } from '@fluentui/react-toolbar';
@@ -37,6 +39,9 @@ export const renderToolbarDivider: (state: DividerBaseState) => JSXElement;
 
 // @public
 export const renderToolbarGroup: (state: ToolbarGroupState_2) => JSXElement;
+
+// @public
+export const renderToolbarRadioButton: (state: ButtonBaseState) => JSXElement;
 
 // @public
 export const renderToolbarRadioGroup: (state: ToolbarGroupState_2) => JSXElement;
@@ -96,6 +101,22 @@ export type ToolbarGroupState = ToolbarGroupState_2 & {
 export type ToolbarProps = ToolbarBaseProps;
 
 // @public
+export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
+
+// @public (undocumented)
+export type ToolbarRadioButtonProps = ToolbarRadioButtonBaseProps;
+
+// @public (undocumented)
+export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-disabled-focusable'?: string;
+        'data-icon-only'?: string;
+        'data-checked'?: string;
+    };
+};
+
+// @public
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
 
 // @public (undocumented)
@@ -153,6 +174,9 @@ export const useToolbarDivider: (props: ToolbarDividerProps, ref: React_2.Ref<HT
 
 // @public
 export const useToolbarGroup: (props: ToolbarGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarGroupState;
+
+// @public
+export const useToolbarRadioButton: (props: ToolbarRadioButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarRadioButtonState;
 
 // @public
 export const useToolbarRadioGroup: (props: ToolbarRadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => ToolbarRadioGroupState;
