@@ -1,23 +1,9 @@
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback } from 'react';
 
 export function MixedComponent({ items }: { items: string[] }) {
-  const [filter, setFilter] = useState('');
-
-  const filtered = useMemo(() => items.filter(i => i.includes(filter)), [items, filter]);
+  const filtered = useMemo(() => items.filter(Boolean), [items]);
   const sorted = useMemo(() => [...filtered].sort(), [filtered]);
+  const handleClick = useCallback(() => void 0, []);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(e.target.value);
-  }, []);
-
-  return (
-    <div>
-      <input onChange={handleChange} />
-      <ul>
-        {sorted.map(i => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div onClick={handleClick}>{sorted.join(', ')}</div>;
 }
