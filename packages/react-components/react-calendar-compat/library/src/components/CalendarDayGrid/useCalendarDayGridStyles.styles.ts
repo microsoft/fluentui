@@ -2,22 +2,6 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import {
-  DURATION_2,
-  DURATION_3,
-  EASING_FUNCTION_1,
-  EASING_FUNCTION_2,
-  FADE_IN,
-  FADE_OUT,
-  SLIDE_DOWN_IN20,
-  SLIDE_DOWN_OUT20,
-  SLIDE_LEFT_IN20,
-  SLIDE_RIGHT_IN20,
-  SLIDE_UP_IN20,
-  SLIDE_UP_OUT20,
-  TRANSITION_ROW_DISAPPEARANCE,
-} from '../../utils';
-import { AnimationDirection } from '../Calendar/Calendar.types';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -180,32 +164,11 @@ const useWeekRowStyles = makeStyles({
       zIndex: 1,
     },
   },
-  animation: {
-    animationDuration: DURATION_3,
-    animationFillMode: 'both',
-    animationTimingFunction: EASING_FUNCTION_1,
-  },
-  horizontalBackward: {
-    animationName: [FADE_IN, SLIDE_RIGHT_IN20],
-  },
-  horizontalForward: {
-    animationName: [FADE_IN, SLIDE_LEFT_IN20],
-  },
-  verticalBackward: {
-    animationName: [FADE_IN, SLIDE_DOWN_IN20],
-  },
-  verticalForward: {
-    animationName: [FADE_IN, SLIDE_UP_IN20],
-  },
 });
 
 const useWeekDayLabelCellStyles = makeStyles({
   base: {
     userSelect: 'none',
-    animationDuration: DURATION_2,
-    animationFillMode: 'both',
-    animationName: FADE_IN,
-    animationTimingFunction: EASING_FUNCTION_2,
   },
 });
 
@@ -318,15 +281,8 @@ const useFirstTransitionWeekStyles = makeStyles({
     height: 0,
     opacity: 0,
     overflow: 'hidden',
-
     position: 'absolute',
     width: 0,
-  },
-  verticalForward: {
-    animationDuration: DURATION_3,
-    animationFillMode: 'both',
-    animationName: [FADE_OUT, SLIDE_UP_OUT20, TRANSITION_ROW_DISAPPEARANCE],
-    animationTimingFunction: EASING_FUNCTION_1,
   },
 });
 
@@ -338,12 +294,6 @@ const useLastTransitionWeekStyles = makeStyles({
     overflow: 'hidden',
     position: 'absolute',
     width: 0,
-  },
-  verticalBackward: {
-    animationDuration: DURATION_3,
-    animationFillMode: 'both',
-    animationName: [FADE_OUT, SLIDE_DOWN_OUT20, TRANSITION_ROW_DISAPPEARANCE],
-    animationTimingFunction: EASING_FUNCTION_1,
   },
 });
 
@@ -410,7 +360,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
   const cornerBorderAndRadiusStyles = useCornerBorderAndRadiusStyles();
   const dayTodayMarkerStyles = useDayTodayMarkerStyles();
 
-  const { animateBackwards, animationDirection, lightenDaysOutsideNavigatedMonth, showWeekNumbers } = props;
+  const { lightenDaysOutsideNavigatedMonth, showWeekNumbers } = props;
 
   return {
     wrapper: mergeClasses(calendarDayGridClassNames.wrapper, wrapperStyles.base),
@@ -427,19 +377,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
     ),
     daySelected: mergeClasses(calendarDayGridClassNames.daySelected, daySelectedStyles.base),
     daySingleSelected: mergeClasses(calendarDayGridClassNames.daySingleSelected, daySingleSelectedStyles.base),
-    weekRow: mergeClasses(
-      calendarDayGridClassNames.weekRow,
-      weekRowStyles.base,
-      animateBackwards !== undefined && weekRowStyles.animation,
-      animateBackwards !== undefined &&
-        (animationDirection === AnimationDirection.Horizontal
-          ? animateBackwards
-            ? weekRowStyles.horizontalBackward
-            : weekRowStyles.horizontalForward
-          : animateBackwards
-          ? weekRowStyles.verticalBackward
-          : weekRowStyles.verticalForward),
-    ),
+    weekRow: mergeClasses(calendarDayGridClassNames.weekRow, weekRowStyles.base),
     weekDayLabelCell: mergeClasses(calendarDayGridClassNames.weekDayLabelCell, weekDayLabelCellStyles.base),
     weekNumberCell: mergeClasses(calendarDayGridClassNames.weekNumberCell, weekNumberCellStyles.base),
     dayOutsideBounds: mergeClasses(calendarDayGridClassNames.dayOutsideBounds, dayOutsideBoundsStyles.base),
@@ -449,22 +387,8 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
     ),
     dayButton: mergeClasses(calendarDayGridClassNames.dayButton, dayButtonStyles.base),
     dayIsToday: mergeClasses(calendarDayGridClassNames.dayIsToday, dayIsTodayStyles.base),
-    firstTransitionWeek: mergeClasses(
-      calendarDayGridClassNames.firstTransitionWeek,
-      firstTransitionWeekStyles.base,
-      animateBackwards !== undefined &&
-        animationDirection !== AnimationDirection.Horizontal &&
-        !animateBackwards &&
-        firstTransitionWeekStyles.verticalForward,
-    ),
-    lastTransitionWeek: mergeClasses(
-      calendarDayGridClassNames.lastTransitionWeek,
-      lastTransitionWeekStyles.base,
-      animateBackwards !== undefined &&
-        animationDirection !== AnimationDirection.Horizontal &&
-        animateBackwards &&
-        lastTransitionWeekStyles.verticalBackward,
-    ),
+    firstTransitionWeek: mergeClasses(calendarDayGridClassNames.firstTransitionWeek, firstTransitionWeekStyles.base),
+    lastTransitionWeek: mergeClasses(calendarDayGridClassNames.lastTransitionWeek, lastTransitionWeekStyles.base),
     dayMarker: mergeClasses(calendarDayGridClassNames.dayMarker, dayMarkerStyles.base),
     dayTodayMarker: mergeClasses(calendarDayGridClassNames.dayTodayMarker, dayTodayMarkerStyles.base),
   };

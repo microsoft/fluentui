@@ -2,18 +2,6 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import {
-  DURATION_2,
-  DURATION_3,
-  EASING_FUNCTION_1,
-  EASING_FUNCTION_2,
-  FADE_IN,
-  SLIDE_DOWN_IN20,
-  SLIDE_LEFT_IN20,
-  SLIDE_RIGHT_IN20,
-  SLIDE_UP_IN20,
-} from '../../utils/animations';
-import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
 
@@ -68,12 +56,6 @@ const useCurrentItemButtonStyles = makeStyles({
     overflow: 'visible',
     padding: '0 4px 0 10px',
     textAlign: 'left',
-  },
-  animation: {
-    animationDuration: DURATION_2,
-    animationFillMode: 'both',
-    animationName: FADE_IN,
-    animationTimingFunction: EASING_FUNCTION_2,
   },
   hasHeaderClickCallback: {
     // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
@@ -144,23 +126,6 @@ const useButtonRowStyles = makeStyles({
     '&:last-of-type': {
       marginBottom: 0,
     },
-  },
-  animation: {
-    animationDuration: DURATION_3,
-    animationFillMode: 'both',
-    animationTimingFunction: EASING_FUNCTION_1,
-  },
-  horizontalBackward: {
-    animationName: [FADE_IN, SLIDE_RIGHT_IN20],
-  },
-  horizontalForward: {
-    animationName: [FADE_IN, SLIDE_LEFT_IN20],
-  },
-  verticalBackward: {
-    animationName: [FADE_IN, SLIDE_DOWN_IN20],
-  },
-  verticalForward: {
-    animationName: [FADE_IN, SLIDE_UP_IN20],
   },
 });
 
@@ -302,14 +267,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
   const selectedStyles = useSelectedStyles();
   const disabledStyles = useDisabledStyles();
 
-  const {
-    animateBackwards,
-    animationDirection,
-    className,
-    hasHeaderClickCallback,
-    highlightCurrent,
-    highlightSelected,
-  } = props;
+  const { className, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
 
   return {
     root: mergeClasses(calendarPickerClassNames.root, rootStyles.normalize, rootStyles.base, className),
@@ -317,7 +275,6 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     currentItemButton: mergeClasses(
       calendarPickerClassNames.currentItemButton,
       currentItemButtonStyles.base,
-      animateBackwards !== undefined && currentItemButtonStyles.animation,
       hasHeaderClickCallback && currentItemButtonStyles.hasHeaderClickCallback,
     ),
     navigationButtonsContainer: mergeClasses(
@@ -326,19 +283,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
     ),
     navigationButton: mergeClasses(calendarPickerClassNames.navigationButton, navigationButtonStyles.base),
     gridContainer: mergeClasses(calendarPickerClassNames.gridContainer, gridContainerStyles.base),
-    buttonRow: mergeClasses(
-      calendarPickerClassNames.buttonRow,
-      buttonRowStyles.base,
-      buttonRowStyles.animation,
-      animateBackwards !== undefined &&
-        (animationDirection === AnimationDirection.Horizontal
-          ? animateBackwards
-            ? buttonRowStyles.horizontalBackward
-            : buttonRowStyles.horizontalForward
-          : animateBackwards
-          ? buttonRowStyles.verticalBackward
-          : buttonRowStyles.verticalForward),
-    ),
+    buttonRow: mergeClasses(calendarPickerClassNames.buttonRow, buttonRowStyles.base),
     itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
     selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
     current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),

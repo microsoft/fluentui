@@ -2,7 +2,6 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
 
@@ -63,12 +62,6 @@ const useMonthAndYearStyles = makeStyles({
     textAlign: 'left',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-  },
-  animation: {
-    animationDuration: DURATION_2,
-    animationFillMode: 'both',
-    animationName: FADE_IN,
-    animationTimingFunction: EASING_FUNCTION_2,
   },
   headerIsClickable: {
     '&:hover': {
@@ -166,7 +159,6 @@ export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): Cal
     monthAndYear: mergeClasses(
       calendarDayClassNames.monthAndYear,
       monthAndYearStyles.base,
-      monthAndYearStyles.animation,
       headerIsClickable && monthAndYearStyles.headerIsClickable,
     ),
     monthComponents: mergeClasses(calendarDayClassNames.monthComponents, monthComponentsStyles.base),
