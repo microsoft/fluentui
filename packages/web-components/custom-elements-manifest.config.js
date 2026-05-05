@@ -2,6 +2,7 @@ import { modulePathResolverPlugin } from '@wc-toolkit/module-path-resolver';
 import { cemValidatorPlugin } from '@wc-toolkit/cem-validator';
 import { getTsProgram, typeParserPlugin } from '@wc-toolkit/type-parser';
 import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
+import { sourcePathToDistPlugin } from './scripts/source-path-to-dist-plugin.js';
 
 export default {
   /** Globs to analyze */
@@ -33,6 +34,7 @@ export default {
     }),
     typeParserPlugin(),
     cemInheritancePlugin(),
+    sourcePathToDistPlugin(),
     cemValidatorPlugin({
       rules: {
         packageJson: {
