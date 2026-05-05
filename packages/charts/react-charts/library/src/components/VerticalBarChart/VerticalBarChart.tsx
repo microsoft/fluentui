@@ -674,12 +674,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role={point.onClick || !props.hideTooltip ? 'button' : 'img'}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={(!props.hideTooltip || point.onClick) && shouldHighlight ? 0 : undefined}
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
@@ -732,7 +732,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             width={_barWidth}
             height={adjustedBarHeight}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role={point.onClick || !props.hideTooltip ? 'button' : 'img'}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -742,7 +742,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onBlur={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={(!props.hideTooltip || point.onClick) && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />
@@ -796,12 +796,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role={point.onClick || !props.hideTooltip ? 'button' : 'img'}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={(!props.hideTooltip || point.onClick) && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />

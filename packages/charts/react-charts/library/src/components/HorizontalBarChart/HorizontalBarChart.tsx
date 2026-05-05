@@ -320,13 +320,18 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
           }
           onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role="img"
+          role={point.onClick || (!props.hideTooltip && point.legend !== '') ? 'button' : 'img'}
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
           opacity={isLegendSelected ? 1 : 0.1}
-          tabIndex={_legendHighlighted(point.legend!) || _noLegendHighlighted() ? 0 : undefined}
+          tabIndex={
+            (_legendHighlighted(point.legend!) || _noLegendHighlighted()) &&
+            (point.onClick || (!props.hideTooltip && point.legend !== ''))
+              ? 0
+              : undefined
+          }
         />
       );
     });
