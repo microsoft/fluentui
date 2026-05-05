@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -28,3 +29,10 @@ export const LabelWeight = {
  * @public
  */
 export type LabelWeight = ValuesOf<typeof LabelWeight>;
+
+/**
+ * The tag name for the label element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-label` as const;

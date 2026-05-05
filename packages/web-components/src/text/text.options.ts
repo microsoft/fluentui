@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -73,3 +74,10 @@ export const TextAlign = {
  * @public
  */
 export type TextAlign = ValuesOf<typeof TextAlign>;
+
+/**
+ * The tag name for the text element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-text` as const;

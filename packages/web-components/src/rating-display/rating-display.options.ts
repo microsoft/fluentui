@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -31,3 +32,10 @@ export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
  * @public
  */
 export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+/**
+ * The tag name for the rating display element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-rating-display` as const;

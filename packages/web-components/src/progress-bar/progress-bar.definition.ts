@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './progress-bar.options.js';
 import { ProgressBar } from './progress-bar.js';
 import { styles } from './progress-bar.styles.js';
 import { template } from './progress-bar.template.js';
@@ -12,7 +12,7 @@ import { template } from './progress-bar.template.js';
  * HTML Element: \<fluent-progress-bar\>
  */
 export const definition = ProgressBar.compose({
-  name: `${FluentDesignSystem.prefix}-progress-bar`,
+  name: tagName,
   template,
   styles,
 });

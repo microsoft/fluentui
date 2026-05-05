@@ -1,4 +1,5 @@
 import { Orientation } from '@microsoft/fast-web-utilities';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -43,3 +44,10 @@ export const TablistOrientation = Orientation;
  * @public
  */
 export type TablistOrientation = ValuesOf<typeof TablistOrientation>;
+
+/**
+ * The tag name for the tablist element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-tablist` as const;

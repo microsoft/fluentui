@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './radio.options.js';
 import { Radio } from './radio.js';
 import { styles } from './radio.styles.js';
 import { template } from './radio.template.js';
@@ -12,7 +12,7 @@ import { template } from './radio.template.js';
  * HTML Element: \<fluent-radio\>
  */
 export const definition = Radio.compose({
-  name: `${FluentDesignSystem.prefix}-radio`,
+  name: tagName,
   template,
   styles,
 });

@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -123,3 +124,10 @@ export const AvatarSize = {
  * @public
  */
 export type AvatarSize = ValuesOf<typeof AvatarSize>;
+
+/**
+ * The tag name for the avatar element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-avatar` as const;

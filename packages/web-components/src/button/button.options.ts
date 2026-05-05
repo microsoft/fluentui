@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import type { ValuesOf } from '../utils/index.js';
 import type { Button } from './button.js';
@@ -91,3 +92,10 @@ export const ButtonFormTarget = {
  * @public
  */
 export type ButtonFormTarget = ValuesOf<typeof ButtonFormTarget>;
+
+/**
+ * The tag name for the button element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-button` as const;

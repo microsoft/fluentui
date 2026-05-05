@@ -5,3 +5,4 @@ export { AccordionItemSize, AccordionItemMarkerPosition } from './accordion-item
 export { styles as accordionItemStyles } from './accordion-item.styles.js';
 export { definition as accordionItemDefinition } from './accordion-item.definition.js';
 export { template as accordionItemTemplate } from './accordion-item.template.js';
+export { tagName as AccordionItemTagName } from './accordion-item.options.js';

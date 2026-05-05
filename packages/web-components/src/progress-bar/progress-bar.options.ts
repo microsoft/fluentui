@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -45,3 +46,10 @@ export const ProgressBarValidationState = {
  * @public
  */
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
+
+/**
+ * The tag name for the progress bar element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-progress-bar` as const;

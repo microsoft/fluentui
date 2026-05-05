@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -34,3 +35,10 @@ export const SpinnerSize = {
  * @public
  */
 export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
+
+/**
+ * The tag name for the spinner element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-spinner` as const;

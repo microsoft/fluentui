@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -27,3 +28,10 @@ export const ImageShape = {
 } as const;
 
 export type ImageShape = ValuesOf<typeof ImageShape>;
+
+/**
+ * The tag name for the image element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-image` as const;

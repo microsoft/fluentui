@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './textarea.options.js';
 import { TextArea } from './textarea.js';
 import { styles } from './textarea.styles.js';
 import { template } from './textarea.template.js';
@@ -11,7 +11,7 @@ import { template } from './textarea.template.js';
  * HTML Element: `<fluent-textarea>`
  */
 export const definition = TextArea.compose({
-  name: `${FluentDesignSystem.prefix}-textarea`,
+  name: tagName,
   template,
   styles,
   shadowOptions: {

@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './divider.options.js';
 import { Divider } from './divider.js';
 import { template } from './divider.template.js';
 import { styles } from './divider.styles.js';
@@ -11,7 +11,7 @@ import { styles } from './divider.styles.js';
  * HTML Element: \<fluent-divider\>
  */
 export const definition = Divider.compose({
-  name: `${FluentDesignSystem.prefix}-divider`,
+  name: tagName,
   template,
   styles,
 });
