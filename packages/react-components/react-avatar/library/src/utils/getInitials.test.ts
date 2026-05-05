@@ -106,6 +106,26 @@ describe('getInitials', () => {
     expect(result).toEqual('');
   });
 
+  it('calculates initials for GB18030-2022 extension characters (CJK Ext B-I)', () => {
+    // These characters are encoded as surrogate pairs; the character itself should be returned as the initial
+    expect(getInitials('𬸚', false)).toEqual('𬸚'); // GFZB-196
+    expect(getInitials('𢃾', false)).toEqual('𢃾'); // CJK Ext B
+    expect(getInitials('𪜀', false)).toEqual('𪜀'); // CJK Ext C
+    expect(getInitials('𫜴', false)).toEqual('𫜴'); // CJK Ext C
+    expect(getInitials('𫟰', false)).toEqual('𫟰'); // CJK Ext D
+    expect(getInitials('𬺠', false)).toEqual('𬺠'); // CJK Ext E
+    expect(getInitials('𮓇', false)).toEqual('𮓇'); // CJK Ext F
+    expect(getInitials('𪛝', false)).toEqual('𪛝'); // BX
+    expect(getInitials('𰉖', false)).toEqual('𰉖'); // GX
+    expect(getInitials('𱘍', false)).toEqual('𱘍'); // HX
+    expect(getInitials('𮯰', false)).toEqual('𮯰'); // IX
+  });
+
+  it('calculates initials for mixed strings starting with GB18030-2022 extension characters', () => {
+    // First code point of a mixed string should be used as the initial
+    expect(getInitials('𫚭齅䶱5𮯠灋𬘭r𫟼蝌龯𪛒𪛛㊣𫜹⾢Ｚ𱔟𫍲𮴋䶺𰆬a', false)).toEqual('𫚭');
+  });
+
   it('calculates an expected initials for Japanese names', () => {
     let result = getInitials('松田', false);
     expect(result).toEqual('');

@@ -1,5 +1,17 @@
 # Install versions of Node and Yarn required by build pipelines.
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 steps:
+  # Logs a message when dry run mode is enabled.
+  - script: |
+      echo "DRY RUN mode enabled!"
+    displayName: DRY RUN mode status
+    condition: eq(${{ parameters.dryRun }}, true)
+
   - task: UseNode@1
     inputs:
       # 👉 NOTE:
@@ -38,9 +50,3 @@ steps:
       echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
     displayName: Log environment variables (Linux)
     condition: eq(variables['Agent.OS'], 'Linux')
-
-  # Logs a message when dry run mode is enabled.
-  - script: |
-      echo "dry run mode enabled!"
-    displayName: dry run mode notification
-    condition: eq(variables.dryRun, true)

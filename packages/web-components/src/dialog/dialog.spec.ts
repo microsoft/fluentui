@@ -316,6 +316,21 @@ test.describe('Dialog', () => {
     await expect(dialog).toHaveAttribute('aria-describedby', 'elementID');
   });
 
+  test('should set the `aria-label` attribute on the internal dialog element when the `aria-label` attribute is set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
+
+    await expect(dialog).not.toHaveAttribute('aria-label');
+
+    await element.evaluate(node => {
+      node.setAttribute('aria-label', 'My dialog');
+    });
+
+    await expect(dialog).toHaveAttribute('aria-label', 'My dialog');
+  });
+
   test('should not prevent default on clicks for dialog content', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const content = element.locator('#content');

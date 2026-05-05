@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 11 Nov 2025 19:18:29 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.3)
+
+Thu, 23 Apr 2026 14:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.2..@fluentui/react-utilities_v9.26.3)
+
+### Patches
+
+- fix: add focusgroupstart property to baseElementProperties ([PR #36020](https://github.com/microsoft/fluentui/pull/36020) by dmytrokirpa@microsoft.com)
+
+## [9.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.2)
+
+Wed, 25 Feb 2026 13:32:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.1..@fluentui/react-utilities_v9.26.2)
+
+### Patches
+
+- fix: add  missing "use client" directive to client components and styles ([PR #35719](https://github.com/microsoft/fluentui/pull/35719) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.2 ([PR #35782](https://github.com/microsoft/fluentui/pull/35782) by beachball)
+
+## [9.26.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.1)
+
+Thu, 22 Jan 2026 17:06:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.0..@fluentui/react-utilities_v9.26.1)
+
+### Patches
+
+- feat: add focusgroup attribute to baseElementProperties ([PR #35674](https://github.com/microsoft/fluentui/pull/35674) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.1 ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by beachball)
+
+## [9.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.0)
+
+Wed, 17 Dec 2025 18:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.4..@fluentui/react-utilities_v9.26.0)
+
+### Minor changes
+
+- add HTML Popover API attributes ([PR #35582](https://github.com/microsoft/fluentui/pull/35582) by seanmonahan@microsoft.com)
+
+### Patches
+
+- fix: ensure slot className is saved from defaultProps ([PR #35555](https://github.com/microsoft/fluentui/pull/35555) by dmytrokirpa@microsoft.com)
 
 ## [9.25.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.4)
 

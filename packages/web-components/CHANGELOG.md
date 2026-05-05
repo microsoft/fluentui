@@ -1,8 +1,136 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 26 Nov 2025 04:06:59 GMT and should not be manually modified.
+This log was last generated on Fri, 01 May 2026 04:08:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.15)
+
+Fri, 01 May 2026 04:08:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.14..@fluentui/web-components_v3.0.0-rc.15)
+
+### Changes
+
+- fix: remove unnecessary id property mappings in accordion-item ([PR #36060](https://github.com/microsoft/fluentui/pull/36060) by 863023+radium-v@users.noreply.github.com)
+- fix: remove errant preventDefault causing element interactions to be blocked inside drawer ([PR #36032](https://github.com/microsoft/fluentui/pull/36032) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.14)
+
+Wed, 29 Apr 2026 19:07:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.13..@fluentui/web-components_v3.0.0-rc.14)
+
+### Changes
+
+- fix: improve SSR compatibility and component lifecycle management for Menu, Accordion, Dropdown, Tablist, and waitForConnectedDescendants ([PR #36018](https://github.com/microsoft/fluentui/pull/36018) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.13)
+
+Thu, 09 Apr 2026 04:07:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.12..@fluentui/web-components_v3.0.0-rc.13)
+
+### Changes
+
+- add base classes for menu-list and radio-group ([PR #35965](https://github.com/microsoft/fluentui/pull/35965) by machi@microsoft.com)
+
+## [3.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.12)
+
+Tue, 07 Apr 2026 20:44:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.11..@fluentui/web-components_v3.0.0-rc.12)
+
+### Changes
+
+- feat: enhance Accordion component with improved item handling and lifecycle management ([PR #35954](https://github.com/microsoft/fluentui/pull/35954) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.11)
+
+Mon, 06 Apr 2026 22:24:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.10..@fluentui/web-components_v3.0.0-rc.11)
+
+### Changes
+
+- fix: harden component lifecycle for SSR/DSD hydration scenarios ([PR #35838](https://github.com/microsoft/fluentui/pull/35838) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.10)
+
+Wed, 01 Apr 2026 04:08:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.9..@fluentui/web-components_v3.0.0-rc.10)
+
+### Changes
+
+- remove deprecated tabs and tab-panel components ([PR #35936](https://github.com/microsoft/fluentui/pull/35936) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.9)
+
+Thu, 12 Mar 2026 04:08:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.8..@fluentui/web-components_v3.0.0-rc.9)
+
+### Changes
+
+- fix(web-components): resolve auto-resize issues for TextArea in Firefox ([PR #35849](https://github.com/microsoft/fluentui/pull/35849) by 198982749+Copilot@users.noreply.github.com)
+
+## [3.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.8)
+
+Tue, 03 Mar 2026 04:07:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.7..@fluentui/web-components_v3.0.0-rc.8)
+
+### Changes
+
+- fix: reflect ariaLabel on dialog ([PR #35806](https://github.com/microsoft/fluentui/pull/35806) by rupertdavid@microsoft.com)
+
+## [3.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.7)
+
+Wed, 25 Feb 2026 04:09:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.6..@fluentui/web-components_v3.0.0-rc.7)
+
+### Changes
+
+- fix: add setTheme export ([PR #35778](https://github.com/microsoft/fluentui/pull/35778) by rupertdavid@microsoft.com)
+
+## [3.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.6)
+
+Mon, 23 Feb 2026 04:08:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.5..@fluentui/web-components_v3.0.0-rc.6)
+
+### Changes
+
+- fix(web-components): prevent double tab open on Ctrl+click in BaseAnchor by calling e.preventDefault() when opening in a new tab ([PR #35745](https://github.com/microsoft/fluentui/pull/35745) by zoghadya@microsoft.com)
+- [fix]: menu-items programmatically added to menu-list do not  properly get assigned data indent. ([PR #35765](https://github.com/microsoft/fluentui/pull/35765) by jes@microsoft.com)
+
+## [3.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.5)
+
+Wed, 04 Feb 2026 04:08:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.4..@fluentui/web-components_v3.0.0-rc.5)
+
+### Changes
+
+- fix: remove extraneous closing parentheses in avatar CSS ([PR #35716](https://github.com/microsoft/fluentui/pull/35716) by 198982749+Copilot@users.noreply.github.com)
+
+## [3.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.4)
+
+Fri, 23 Jan 2026 04:07:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.3..@fluentui/web-components_v3.0.0-rc.4)
+
+### Changes
+
+- Update CAP DR tokens ([PR #35574](https://github.com/microsoft/fluentui/pull/35574) by jukapsia@microsoft.com)
+
+## [3.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.3)
+
+Wed, 14 Jan 2026 04:07:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.2..@fluentui/web-components_v3.0.0-rc.3)
+
+### Changes
+
+- chore: upgrade to storybook 9 ([PR #35459](https://github.com/microsoft/fluentui/pull/35459) by dmytrokirpa@microsoft.com)
+
+## [3.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.2)
+
+Mon, 12 Jan 2026 04:07:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.1..@fluentui/web-components_v3.0.0-rc.2)
+
+### Changes
+
+- fix: remove empty text nodes from avatar ([PR #33963](https://github.com/microsoft/fluentui/pull/33963) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.1)
 

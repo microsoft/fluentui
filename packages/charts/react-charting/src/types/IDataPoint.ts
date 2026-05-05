@@ -222,6 +222,12 @@ export interface IVerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -267,6 +273,11 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * onClick action for each datapoint in the chart
@@ -597,6 +608,7 @@ interface ISLinkExtra {
    */
   value: number;
   unnormalizedValue?: number;
+  color?: string;
 }
 
 export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
@@ -663,6 +675,12 @@ export interface IVSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   * This is an optional prop that can be used to show custom text on bars
+   */
+  barLabel?: string;
 }
 
 /**
@@ -773,6 +791,11 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Label to display on the bar
+   */
+  barLabel?: string;
 
   /**
    * Whether to use the secondary y scale or not
@@ -1262,4 +1285,109 @@ export interface ILineSeries<X extends string | number | Date, Y extends string 
    * Callback invoked when the line itself is clicked.
    */
   onLineClick?: () => void;
+}
+
+/**
+ * Represents a single data point in a polar series.
+ */
+export interface IPolarDataPoint {
+  /**
+   * Radial value of the data point.
+   */
+  r: string | number | Date;
+
+  /**
+   * Angular value of the data point, specified as a category or in degrees.
+   */
+  theta: string | number;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the radial axis value.
+   */
+  radialAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the angular axis value.
+   */
+  angularAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
+}
+
+/**
+ * Represents a scatterpolar series.
+ */
+export interface IScatterPolarSeries extends IDataSeries {
+  /**
+   * Type discriminator: always 'scatterpolar' for this series.
+   */
+  type: 'scatterpolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IPolarDataPoint[];
+}
+
+/**
+ * Represents a linepolar series.
+ */
+export interface ILinePolarSeries extends IDataSeries {
+  /**
+   * Type discriminator: always 'linepolar' for this series.
+   */
+  type: 'linepolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IPolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: ILineChartLineOptions;
+}
+
+/**
+ * Represents a areapolar series.
+ */
+export interface IAreaPolarSeries extends IDataSeries {
+  /**
+   * Type discriminator: always 'areapolar' for this series.
+   */
+  type: 'areapolar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IPolarDataPoint[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: ILineChartLineOptions;
 }

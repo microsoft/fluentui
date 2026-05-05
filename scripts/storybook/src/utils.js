@@ -22,7 +22,6 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  * ```js
  *  module.exports = {
  *    addons: [
-        '@storybook/addon-essentials',
         loadWorkspaceAddon('@fluentui/custom-storybook-addon',{ tsConfigPath: path.join(__dirname,'../tsconfig.base.json') }),
       ]
  *  }
@@ -113,7 +112,7 @@ function loadWorkspaceAddon(addonName, options) {
   // absolute path needs to be always posix, non posix will explode in module resolution
   const posixTsConfigPath = tsConfigPath.split(path.sep).join(path.posix.sep);
 
-  const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}`, 'g');
+  const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}(-commonjs)?`, 'g');
   const presetConfigRegex = /const\s+([a-z]+)\s+=\s+require\('([a-z/.]+)\/preset'\)/i;
   const presetApiRegex = /module\.exports\s+=\s+({).+}/;
   const presetApiPathRegex = /(\/manager|\/preview)/g;
@@ -394,8 +393,7 @@ function processBabelLoaderOptions(loaderConfig) {
  */
 function overrideDefaultBabelLoader(options) {
   const { config } = options;
-  config.module = config.module ?? {};
-  config.module.rules = config.module.rules ?? [];
+  config.module = config.module ?? { rules: [] };
 
   const loader = getBabelLoader(/** @type {RuleSetRule[]}*/ (config.module.rules));
 

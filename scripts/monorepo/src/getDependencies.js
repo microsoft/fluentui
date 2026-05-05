@@ -11,7 +11,7 @@ const { createProjectGraphAsync, joinPathFragments, workspaceRoot } = require('@
 * @typedef {{
     name: string,
     isTopLevel: boolean,
-    dependencyType: 'dependencies' | 'devDependencies' | 'optionalDependencies' | null,
+    dependencyType: 'dependencies' | 'devDependencies' | 'optionalDependencies',
   }} Dependency
  */
 
@@ -80,7 +80,7 @@ function getLocalDeps(project, projectGraph) {
  *
  * @param {string} pkgName
  * @param {PackageJson} json
- * @returns
+ * @returns {"dependencies" | "devDependencies" | "optionalDependencies"} if the dependency is resolved via nx graph but is not physically specified in package.json, it will be inferred as `devDependencies`
  */
 function getDepType(pkgName, json) {
   // need to check against real npmPackageName (including scope) - NOTE: once we move to dynamic project graph creation with nx this will no longer work - redo/simplify implementation
@@ -94,7 +94,7 @@ function getDepType(pkgName, json) {
   if (json.optionalDependencies?.[npmPackageName]) {
     return 'optionalDependencies';
   }
-  return null;
+  return 'devDependencies';
 }
 
 /**

@@ -138,9 +138,9 @@ const useDisabledStyleStyles = makeStyles({
 });
 
 /**
- * @internal
- *
  * Apply styling to the CalendarDay slots based on the state
+ *
+ * @internal
  */
 export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): CalendarDayStyles => {
   'use no memo';

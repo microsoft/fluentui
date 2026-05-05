@@ -4,12 +4,12 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { FieldContextProvider, getFieldControlProps } from '../../contexts/index';
-import type { FieldContextValues, FieldSlots, FieldState } from './Field.types';
+import type { FieldContextValues, FieldSlots, FieldBaseState } from './Field.types';
 
 /**
  * Render the final JSX of Field
  */
-export const renderField_unstable = (state: FieldState, contextValues: FieldContextValues): JSXElement => {
+export const renderField_unstable = (state: FieldBaseState, contextValues: FieldContextValues): JSXElement => {
   assertSlots<FieldSlots>(state);
 
   let { children } = state;

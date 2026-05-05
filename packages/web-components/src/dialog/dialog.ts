@@ -10,60 +10,56 @@ import { DialogType } from './dialog.options.js';
  */
 export class Dialog extends FASTElement {
   /**
-   * @public
    * The dialog element
+   *
+   * @public
    */
   @observable
   public dialog!: HTMLDialogElement;
+  protected dialogChanged() {
+    this.updateDialogAttributes();
+  }
 
   /**
-   * @public
    * The ID of the element that describes the dialog
+   *
+   * @public
    */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
   /**
-   * @public
    * The ID of the element that labels the dialog
+   *
+   * @public
    */
   @attr({ attribute: 'aria-labelledby' })
   public ariaLabelledby?: string;
 
   /**
+   * The label of the dialog
+   *
    * @public
+   */
+  @attr({ attribute: 'aria-label' })
+  public ariaLabel!: string | null;
+
+  /**
    * The type of the dialog modal
+   *
+   * @public
    */
   @attr
   public type: DialogType = DialogType.modal;
-  protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined) {
-    if (!this.dialog) {
-      return;
-    }
-
-    if (next === DialogType.alert) {
-      this.dialog.setAttribute('role', 'alertdialog');
-    } else {
-      this.dialog.removeAttribute('role');
-    }
-
-    if (next !== DialogType.nonModal) {
-      this.dialog.setAttribute('aria-modal', 'true');
-    } else {
-      this.dialog.removeAttribute('aria-modal');
-    }
-  }
-
-  /** @internal */
-  connectedCallback() {
-    super.connectedCallback();
-    this.typeChanged(undefined, this.type);
+  protected typeChanged(prev: DialogType | undefined, next: DialogType): void {
+    this.updateDialogAttributes();
   }
 
   /**
-   * @public
    * Method to emit an event before the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   *
+   * @public
    */
   public emitBeforeToggle = (): void => {
     this.$emit('beforetoggle', {
@@ -73,9 +69,10 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @public
    * Method to emit an event after the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   *
+   * @public
    */
   public emitToggle = (): void => {
     this.$emit('toggle', {
@@ -85,8 +82,9 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @public
    * Method to show the dialog
+   *
+   * @public
    */
   public show(): void {
     Updates.enqueue(() => {
@@ -101,8 +99,9 @@ export class Dialog extends FASTElement {
   }
 
   /**
-   * @public
    * Method to hide the dialog
+   *
+   * @public
    */
   public hide(): void {
     this.emitBeforeToggle();
@@ -111,8 +110,9 @@ export class Dialog extends FASTElement {
   }
 
   /**
-   * @public
    * Handles click events on the dialog overlay for light-dismiss
+   *
+   * @public
    * @param event - The click event
    * @returns boolean
    */
@@ -122,5 +122,28 @@ export class Dialog extends FASTElement {
     }
 
     return true;
+  }
+
+  /**
+   * Updates the internal dialog element's attributes based on its type.
+   *
+   * @internal
+   */
+  protected updateDialogAttributes(): void {
+    if (!this.dialog) {
+      return;
+    }
+
+    if (this.type === DialogType.alert) {
+      this.dialog.setAttribute('role', 'alertdialog');
+    } else {
+      this.dialog.removeAttribute('role');
+    }
+
+    if (this.type !== DialogType.nonModal) {
+      this.dialog.setAttribute('aria-modal', 'true');
+    } else {
+      this.dialog.removeAttribute('aria-modal');
+    }
   }
 }

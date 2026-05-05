@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 26 Nov 2025 09:34:51 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Feb 2026 18:07:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.16.5)
+
+Thu, 26 Feb 2026 18:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.16.4..@fluentui/react-experiments_v8.16.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.5 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
+- Bump @fluentui/foundation-legacy to v8.6.5 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.72 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
+- Bump @fluentui/style-utilities to v8.15.0 ([commit](https://github.com/microsoft/fluentui/commit/cbf6cd22febb874c8e360def57b140ea42291902) by beachball)
+
+## [8.16.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.16.4)
+
+Tue, 27 Jan 2026 05:19:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.16.3..@fluentui/react-experiments_v8.16.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.125.4 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
+- Bump @fluentui/foundation-legacy to v8.6.4 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.71 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
+- Bump @fluentui/style-utilities to v8.14.0 ([PR #35643](https://github.com/microsoft/fluentui/pull/35643) by beachball)
+
+## [8.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.16.3)
+
+Wed, 10 Dec 2025 06:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.16.2..@fluentui/react-experiments_v8.16.3)
+
+### Patches
+
+- chore: remove unused eslint-disable directives ([PR #35518](https://github.com/microsoft/fluentui/pull/35518) by vgenaev@gmail.com)
+- Bump @fluentui/react to v8.125.3 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/theme to v2.7.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/foundation-legacy to v8.6.3 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.70 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/react-hooks to v8.10.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/style-utilities to v8.13.6 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
+- Bump @fluentui/utilities to v8.17.2 ([PR #35532](https://github.com/microsoft/fluentui/pull/35532) by beachball)
 
 ## [8.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.16.2)
 

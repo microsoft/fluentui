@@ -1,6 +1,7 @@
 import { TokenBoxes } from './TokenBoxes';
 import { getBrandTokensFromPalette } from '../../utils/getBrandTokensFromPalette';
-import { createLightTheme, BrandVariants, Theme } from '@fluentui/react-components';
+import type { BrandVariants, Theme } from '@fluentui/react-components';
+import { createLightTheme } from '@fluentui/react-components';
 export default { component: TokenBoxes };
 
 const brand: BrandVariants = getBrandTokensFromPalette('#006bc7');

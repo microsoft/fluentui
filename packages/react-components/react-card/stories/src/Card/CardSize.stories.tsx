@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CardProps } from '@fluentui/react-components';
 import { makeStyles, tokens, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
-import { Card, CardHeader, CardProps } from '@fluentui/react-components';
+import { Card, CardHeader } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =

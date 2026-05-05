@@ -21,12 +21,6 @@
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "tslib": "^2.1.0"
   },

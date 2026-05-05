@@ -1,8 +1,10 @@
-import * as React from 'react';
+'use client';
+
+import type * as React from 'react';
 import { createContext as baseCreateContext } from '@fluentui/react-context-selector';
 import { canUseDOM } from '@fluentui/react-utilities';
 import { getMajorVersion } from './utils';
-import { GlobalObject } from './types';
+import type { GlobalObject } from './types';
 
 const isBrowser = canUseDOM();
 const globalObject: GlobalObject = isBrowser

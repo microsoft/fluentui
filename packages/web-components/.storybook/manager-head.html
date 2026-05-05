@@ -2,6 +2,29 @@
 <link rel="shortcut icon" href="/favicon.png" />
 <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
 <link href="shell.css" rel="stylesheet" />
+
+<!-- Primary meta tags -->
+<meta name="title" content="Fluent UI Web Components" />
+<meta
+  name="description"
+  content="Fluent UI Web Components is a set of UI components and utilities built with web standards."
+/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://web-components.fluentui.dev/" />
+<meta property="og:title" content="Fluent UI Web Components" />
+<meta
+  property="og:description"
+  content="Fluent UI Web Components is a set of UI components and utilities built with web standards."
+/>
+<meta property="og:locale" content="en_US" />
+<!-- <meta property="og:image" content="https://web-components.fluentui.dev/fluentui-banner-meta.png" />
+<meta property="og:image:width" content="1207" />
+<meta property="og:image:height" content="705" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:alt" content="Fluent UI Web Components v3 banner" /> -->
+
 <!--
    Override the default styles used in the Storybook svg icons for the left tree panel.
    @see https://storybook.js.org/docs/react/configure/theming#css-escape-hatches
@@ -77,7 +100,13 @@
     color: #ffffff !important;
   }
 
-  .sidebar-subheading {
+  /**
+    The `button[data-action='collapse-ref']` selector is used to ensure
+    that the "Storybook Composition" (https://storybook.js.org/docs/sharing/storybook-composition) menu items
+    align with the styling of the other sidebar menu items.
+  */
+  .sidebar-subheading,
+  button[data-action='collapse-ref'] {
     font-weight: 600 !important;
     font-size: 16px !important;
     letter-spacing: 0px !important;
@@ -86,33 +115,61 @@
     color: #11100f !important;
   }
 
+  .sidebar-subheading button,
+  button[data-action='collapse-ref'] {
+    display: flex !important;
+    align-items: center !important;
+  }
+
   .sidebar-item {
+    align-items: center !important;
     font-weight: 400 !important;
     font-size: 14px !important;
     letter-spacing: -0.01em !important;
-    line-height: 14px !important;
+    line-height: 24px !important;
     color: #11100f !important;
+  }
+
+  .sidebar-item a {
+    align-items: center !important;
   }
 
   .sidebar-item[data-selected='true'] {
     font-weight: 600 !important;
     font-size: 14px !important;
     letter-spacing: -0.01em !important;
-    line-height: 14px !important;
+    line-height: 24px !important;
     color: #ffffff !important;
   }
 
-  /* Hides "Addons" button from mobile view nav. */
+  .sidebar-item > span:first-child,
+  button[data-action='collapse-ref'] > span:first-child,
+  .sidebar-item > svg {
+    margin-top: 0 !important;
+  }
+
+  /*
+  * Hides "Addons" button from mobile view nav.
+  */
   nav > button:last-child {
     display: none;
   }
 
   /*
-    Storybook has proposed a feature for this in https://github.com/storybookjs/storybook/issues/9209
-    which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page
-    Using suggested temporary workaround until storybook gets proper support.
+  Storybook has proposed a feature for this in https://github.com/storybookjs/storybook/issues/9209
+  which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page
+  Using suggested temporary workaround until storybook gets proper support
+  See https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/authoring-stories.md#10-internal-stories-for-testing
   */
   [id*='accessibility-stories'] {
     display: none !important;
+  }
+
+  /* Target the brand image container */
+  .sidebar-header a::after {
+    content: 'Web Components v3';
+    display: block;
+    font-size: 12px;
+    margin-left: 34px;
   }
 </style>

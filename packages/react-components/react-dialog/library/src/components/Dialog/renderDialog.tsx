@@ -5,7 +5,7 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { MotionRefForwarder } from '../MotionRefForwarder';
+import { MotionRefForwarder } from '@fluentui/react-motion';
 import { DialogProvider, DialogSurfaceProvider } from '../../contexts';
 import type { DialogState, DialogContextValues, InternalDialogSlots } from './Dialog.types';
 

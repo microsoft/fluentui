@@ -59,9 +59,10 @@ export function useFieldControlProps_unstable<Props extends FieldControlProps>(
 }
 
 /**
- * @internal
  * Implementation of useFieldControlProps_unstable.
  * Split out so it can be used directly in renderField_unstable.
+ *
+ * @internal
  */
 export function getFieldControlProps<Props extends FieldControlProps>(
   context: FieldContextValue | undefined,

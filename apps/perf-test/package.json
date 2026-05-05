@@ -12,11 +12,6 @@
     "type-check": "just-scripts type-check",
     "test-perf": "just-scripts perf-test"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-storybook": "*"
-  },
   "dependencies": {
     "@fluentui/scripts-perf-test-flamegrill": "*",
     "@fluentui/example-data": "*",

@@ -28,6 +28,7 @@ export enum FileIconType {
   portfolio = 20,
   album = 21,
   listForm = 22,
+  campaign = 23,
 }
 
 export type FileIconTypeInput =
@@ -52,4 +53,5 @@ export type FileIconTypeInput =
   | 19
   | 20
   | 21
-  | 22;
+  | 22
+  | 23;

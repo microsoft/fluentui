@@ -45,6 +45,10 @@ export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>>
   size?: AccordionHeaderSize;
 };
 
+export type AccordionHeaderBaseProps = Omit<AccordionHeaderProps, 'inline' | 'size'>;
+
 export type AccordionHeaderState = ComponentState<AccordionHeaderSlots> &
   Required<Pick<AccordionHeaderProps, 'inline'>> &
   AccordionHeaderContextValue;
+
+export type AccordionHeaderBaseState = Omit<AccordionHeaderState, 'inline' | 'size'>;

@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { compareDates, DAYS_IN_WEEK, getDayGrid } from '../../utils/index';
-import { DayInfo } from './CalendarDayGrid';
-import { CalendarDayGridProps } from './CalendarDayGrid.types';
+import type { DayInfo } from './CalendarDayGrid';
+import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
 /**
  * @internal

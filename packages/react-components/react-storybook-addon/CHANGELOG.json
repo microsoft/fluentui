@@ -2,6 +2,61 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 13:16:24 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "2b0d32457b4ab696d0135d68a88da6e47a0e2aaf",
+            "comment": "chore: bump storybook to mitigate CVE"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "430e23b560d11c778254921d10365777a2728ec4",
+            "comment": "chore: Bump @griffel/react package."
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "a5b354084d7de7c0c0567b96624590ba513f6d4c",
+            "comment": "feat: upgrade to storybook 9"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "ab76553324dce1ae74096a21bf3215b1a2723f21",
+            "comment": "BREAKING: upgrade storybook to v8"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Nov 2025 14:47:00 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.5.1",
       "version": "0.5.1",

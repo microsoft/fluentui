@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Menu Migration" />
 
@@ -38,21 +38,21 @@ export const Component = () => {
 
 ## How to migrate props:
 
-| `MenuButton` props        | migrate guide                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------- |
-| as, className             | keep it as is                                                                                            |
-| variables, styles, design | see [Migrate style overrides](#migrate-style-overrides) in this document                                 |
-| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
-| ref, key                  | keep it as is                                                                                            |
-| contextMenu               | use `openOnContext` instead                                                                              |
-| menu                      | see [Migrate menu and trigger props](#./Migrate-`menu`-and-`trigger`-props) in this document             |
-| mouseLeaveDelay           | replace with `hoverDelay`                                                                                |
-| on                        | replace `on='hover'` with `openOnHover`; `on='context'` with `openOnContext`                             |
-| onMenuItemClick           | use `onClick` with each `MenuItem` instead                                                               |
-| defaultOpen               | keep it as is                                                                                            |
-| onOpenChange              | keep it as is                                                                                            |
-| open                      | keep it as is                                                                                            |
-| trigger                   | see [Migrate menu and trigger props](#./Migrate-`menu`-and-`trigger`-props) in this document             |
+| \`MenuButton\` props      | migrate guide                                                                                              |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                              |
+| variables, styles, design | see \[Migrate style overrides\](#migrate-style-overrides) in this document                                 |
+| accessibility             | see \[migrate-custom-accessibility.md\](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+| ref, key                  | keep it as is                                                                                              |
+| contextMenu               | use \`openOnContext\` instead                                                                              |
+| menu                      | see \[Migrate menu and trigger props\](#./Migrate-\`menu\`-and-\`trigger\`-props) in this document         |
+| mouseLeaveDelay           | replace with \`hoverDelay\`                                                                                |
+| on                        | replace \`on='hover'\` with \`openOnHover\`; \`on='context'\` with \`openOnContext\`                       |
+| onMenuItemClick           | use \`onClick\` with each \`MenuItem\` instead                                                             |
+| defaultOpen               | keep it as is                                                                                              |
+| onOpenChange              | keep it as is                                                                                              |
+| open                      | keep it as is                                                                                              |
+| trigger                   | see \[Migrate menu and trigger props\](#./Migrate-\`menu\`-and-\`trigger\`-props) in this document         |
 
 Postioning props: `align`, `autoSize`, `flipBoundary`, `offset`,`overflowBoundary`,`popperRef`,`position`,`positionFixed`,`target`, `unstable_disableTether`, `unstable_pinned` are now attributes of the `positioning` prop.
 v9 positioning shorthand is recommended when only `positon` or/and `align` is used: `<MenuButton position="below" align="end" />` can be migrate to a string like `<Menu positioning="below-end" />`.

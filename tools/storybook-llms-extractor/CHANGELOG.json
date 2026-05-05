@@ -2,6 +2,35 @@
   "name": "@fluentui/storybook-llms-extractor",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2026 13:16:29 GMT",
+      "tag": "@fluentui/storybook-llms-extractor_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "33f50ee6ccc7666d142564029e33717d1ad673e0",
+            "comment": "Update Playwright to 1.55.1 to fix SSL certificate verification vulnerability"
+          },
+          {
+            "author": "colin.kwon@kakaostyle.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "f3c840081f1b3791b36f6767dd2d9c9f1904dd7a",
+            "comment": "fix: extract only serializable component props before page.evaluate"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "dd22403aaf7d127bd27df4840da54c7215b519ab",
+            "comment": "chore: migrate to eslint flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Nov 2025 14:47:01 GMT",
       "tag": "@fluentui/storybook-llms-extractor_v0.0.3",
       "version": "0.0.3",

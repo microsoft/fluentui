@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import type { RatingItemProps, RatingItemState } from './RatingItem.types';
+import type { RatingItemBaseProps, RatingItemBaseState, RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
 
 const defaultItemLabel = (num: number) => num + '';
@@ -18,6 +18,28 @@ const defaultItemLabel = (num: number) => num + '';
  * @param ref - reference to root HTMLElement of RatingItem
  */
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
+  const context = useRatingItemContextValue_unstable();
+  const state = useRatingItemBase_unstable(props, ref);
+
+  return {
+    ...state,
+    color: context.color,
+    size: context.size,
+  };
+};
+
+/**
+ * Base hook for RatingItem component. Manages state related to fill width calculation,
+ * radio input slots (for ARIA rating interaction), icon slots, and interactive mode —
+ * without design props (color, size from context).
+ *
+ * @param props - props from this instance of RatingItem
+ * @param ref - reference to root HTMLElement of RatingItem
+ */
+export const useRatingItemBase_unstable = (
+  props: RatingItemBaseProps,
+  ref: React.Ref<HTMLSpanElement>,
+): RatingItemBaseState => {
   const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
   const { itemLabel = defaultItemLabel, iconFilled: IconFilled, iconOutline: IconOutline } = context;
@@ -104,11 +126,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     });
   }
 
-  const state: RatingItemState = {
+  return {
     appearance,
-    color: context.color,
     step: context.step,
-    size: context.size,
     iconFillWidth,
     value,
     components: {
@@ -124,6 +144,4 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     halfValueInput,
     fullValueInput,
   };
-
-  return state;
 };

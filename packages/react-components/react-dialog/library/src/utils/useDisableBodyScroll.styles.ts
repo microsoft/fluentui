@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles } from '@griffel/react';
 
 // this style must be applied to the html element to disable scrolling

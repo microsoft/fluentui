@@ -19,6 +19,7 @@ export {
   renderOption_unstable,
   useOptionStyles_unstable,
   useOption_unstable,
+  useOptionBase_unstable,
 } from './Option';
 export type { OptionProps, OptionSlots, OptionState } from './Option';
 export {
@@ -26,9 +27,12 @@ export {
   comboboxClassNames,
   renderCombobox_unstable,
   useComboboxStyles_unstable,
+  useComboboxBase_unstable,
   useCombobox_unstable,
 } from './Combobox';
 export type {
+  BaseComboboxProps,
+  BaseComboboxState,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -41,9 +45,12 @@ export {
   dropdownClassNames,
   renderDropdown_unstable,
   useDropdownStyles_unstable,
+  useDropdownBase_unstable,
   useDropdown_unstable,
 } from './Dropdown';
 export type {
+  DropdownBaseHookProps,
+  DropdownBaseHookState,
   DropdownContextValues,
   DropdownOpenChangeData,
   DropdownOpenEvents,

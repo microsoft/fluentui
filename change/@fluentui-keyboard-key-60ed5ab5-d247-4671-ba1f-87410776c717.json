@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to jest v30, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support",
-  "packageName": "@fluentui/keyboard-key",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

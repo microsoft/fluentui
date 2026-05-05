@@ -4,9 +4,9 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
-import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
+import type { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

@@ -4,9 +4,9 @@
 
 ```ts
 
-import { ARIAButtonElement } from '@fluentui/react-aria';
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonElement } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -14,9 +14,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
-import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
+import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -229,6 +230,8 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
     toggleCheckbox?: SelectableHandler;
     selectRadio?: SelectableHandler;
     onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+    shouldOpenOnArrowRight?: boolean;
+    shouldCloseOnArrowLeft?: boolean;
 };
 
 // @public (undocumented)
@@ -337,7 +340,7 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalPro
 };
 
 // @public
-export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
+export type MenuProps = ComponentProps<Partial<MenuSlots>> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
     children: [JSXElement, JSXElement] | JSXElement;
     hoverDelay?: number;
     inline?: boolean;
@@ -355,7 +358,9 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
 export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
-export type MenuSlots = {};
+export type MenuSlots = {
+    surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
 
 // @public
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
@@ -375,7 +380,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<MenuSplitGroupContextValue, 'setMultiline'>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;

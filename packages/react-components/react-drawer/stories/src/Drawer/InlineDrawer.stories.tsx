@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, InlineDrawerProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -8,7 +8,6 @@ import {
   Button,
   makeStyles,
   tokens,
-  InlineDrawerProps,
   mergeClasses,
   useRestoreFocusSource,
   useRestoreFocusTarget,

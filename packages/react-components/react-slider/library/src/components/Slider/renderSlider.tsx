@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { SliderState, SliderSlots } from './Slider.types';
+import type { SliderBaseState, SliderSlots } from './Slider.types';
 
 /**
  * Render the final JSX of Slider
  */
-export const renderSlider_unstable = (state: SliderState): JSXElement => {
+export const renderSlider_unstable = (state: SliderBaseState): JSXElement => {
   assertSlots<SliderSlots>(state);
 
   return (

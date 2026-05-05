@@ -21,12 +21,8 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import {
-  ARIAButtonElement,
-  ARIAButtonElementIntersection,
-  ARIAButtonProps,
-  useARIAButtonProps,
-} from '@fluentui/react-aria';
+import type { ARIAButtonElement, ARIAButtonElementIntersection, ARIAButtonProps } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
 import { useValidateNesting } from '../../utils/useValidateNesting';
@@ -38,6 +34,27 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
  * Returns the props and state required to render the component
  */
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
+  const { dir } = useFluent();
+  const state = useMenuItemBase_unstable(props, ref);
+
+  // Set default chevron icon
+  if (state.submenuIndicator) {
+    state.submenuIndicator.children ??= dir === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />;
+  }
+
+  return state;
+};
+
+/**
+ * Base hook for MenuItem component, produces state required to render the component.
+ * It doesn't set any design-related props specific to MenuItem such as submenu indicator icon.
+ *
+ * @internal
+ */
+export const useMenuItemBase_unstable = (
+  props: MenuItemProps,
+  ref: React.Ref<ARIAButtonElement<'div'>>,
+): MenuItemState => {
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const {
@@ -52,7 +69,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
 
-  const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
   const dismissedWithKeyboardRef = React.useRef(false);
 
@@ -118,9 +134,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
     }),
     submenuIndicator: slot.optional(props.submenuIndicator, {
       renderByDefault: hasSubmenu,
-      defaultProps: {
-        children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
-      },
       elementType: 'span',
     }),
     content: slot.optional(props.content, {

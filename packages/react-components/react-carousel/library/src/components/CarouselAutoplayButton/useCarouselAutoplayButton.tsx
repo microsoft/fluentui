@@ -22,7 +22,7 @@ export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
-  const { onCheckedChange, checked, defaultChecked } = props;
+  const { onCheckedChange, checked, defaultChecked, ...buttonProps } = props;
 
   const [autoplay, setAutoplay] = useControllableState({
     state: checked,
@@ -63,7 +63,7 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
-        ...props,
+        ...buttonProps,
         checked: autoplay,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },

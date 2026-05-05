@@ -541,4 +541,146 @@ export const storybookStoreItems: StorybookStoreItem[] = [
       },
     },
   },
+
+  // Component story for props extraction from function-type component (serialized __docgenInfo)
+  {
+    meta: {
+      id: 'components-badge',
+      title: 'Components/Badge',
+      parameters: {
+        fileName: 'components-badge.tsx',
+        docs: {
+          description: {
+            component: 'A badge is a visual decoration for UI elements.\n',
+          },
+        },
+      },
+      component: {
+        displayName: 'Badge',
+        __docgenInfo: {
+          props: {
+            appearance: {
+              defaultValue: { value: '"filled"' },
+              description: 'A Badge can be filled, outline, ghost, inverted',
+              name: 'appearance',
+              required: false,
+              type: {
+                name: 'enum',
+                value: [{ value: '"filled"' }, { value: '"ghost"' }, { value: '"outline"' }, { value: '"tint"' }],
+              },
+            },
+            color: {
+              defaultValue: { value: '"brand"' },
+              description: 'A Badge can be one of preset colors',
+              name: 'color',
+              required: false,
+              type: {
+                name: 'enum',
+                value: [
+                  { value: '"brand"' },
+                  { value: '"danger"' },
+                  { value: '"important"' },
+                  { value: '"informative"' },
+                ],
+              },
+            },
+            shape: {
+              defaultValue: { value: '"circular"' },
+              description: 'A Badge can be square, circular or rounded.',
+              name: 'shape',
+              required: false,
+              type: {
+                name: 'enum',
+                value: [{ value: '"circular"' }, { value: '"rounded"' }, { value: '"square"' }],
+              },
+            },
+            size: {
+              defaultValue: { value: '"medium"' },
+              description: 'A Badge can be on of several preset sizes.',
+              name: 'size',
+              required: false,
+              type: {
+                name: 'enum',
+                value: [
+                  { value: '"tiny"' },
+                  { value: '"extra-small"' },
+                  { value: '"small"' },
+                  { value: '"medium"' },
+                  { value: '"large"' },
+                  { value: '"extra-large"' },
+                ],
+              },
+            },
+          },
+        },
+      },
+      subcomponents: {
+        CounterBadge: {
+          displayName: 'CounterBadge',
+          __docgenInfo: {
+            description: 'A counter badge is a badge that displays a numerical count.',
+            props: {
+              count: {
+                defaultValue: { value: '0' },
+                description: 'Value displayed by the Badge',
+                name: 'count',
+                required: false,
+                type: {
+                  name: 'number',
+                },
+              },
+              overflowCount: {
+                defaultValue: { value: '99' },
+                description: 'Max number to be displayed',
+                name: 'overflowCount',
+                required: false,
+                type: {
+                  name: 'number',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    stories: {
+      'components-badge--default': {
+        id: 'components-badge--default',
+        name: 'Default',
+        parameters: {
+          docs: {},
+          fullSource:
+            'import * as React from "react";\nimport { Badge } from "@fluentui/react-components";\n\nexport const Default = () => <Badge appearance="filled" color="brand">1</Badge>;\n',
+        },
+      },
+    },
+  },
+
+  // Component story for props extraction when component is not specified in meta
+  {
+    meta: {
+      id: 'components-toast',
+      title: 'Components/Toast',
+      parameters: {
+        fileName: 'components-toast.tsx',
+        docs: {
+          description: {
+            component:
+              'A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by user action or a application timeout.\n',
+          },
+        },
+      },
+    },
+    stories: {
+      'components-toast--default': {
+        id: 'components-toast--default',
+        name: 'Default',
+        parameters: {
+          docs: {},
+          fullSource:
+            'import * as React from "react";\nimport { Toaster, useToastController, Toast, ToastTitle } from "@fluentui/react-components";\n\nexport const Default = () => {\n  const { dispatchToast } = useToastController();\n  return <Toaster><Toast><ToastTitle>Success</ToastTitle></Toast></Toaster>;\n};\n',
+        },
+      },
+    },
+  },
 ];

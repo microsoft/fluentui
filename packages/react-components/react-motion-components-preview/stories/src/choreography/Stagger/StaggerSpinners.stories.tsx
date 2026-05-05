@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { makeStyles, tokens, motionTokens, createMotionComponent, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { makeStyles, tokens, motionTokens, createMotionComponent } from '@fluentui/react-components';
 import { Stagger } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({

@@ -5,6 +5,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState, SliderSlots } from './Slider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { sliderCSSVars } from './Slider.constants';
 
 export const sliderClassNames: SlotClassNames<SliderSlots> = {
   root: 'fui-Slider',
@@ -15,18 +16,6 @@ export const sliderClassNames: SlotClassNames<SliderSlots> = {
 
 // Internal CSS variables
 const thumbPositionVar = `--fui-Slider__thumb--position`;
-
-export const sliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderInnerThumbRadiusVar: `--fui-Slider__inner-thumb--radius`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  sliderProgressColorVar: `--fui-Slider__progress--color`,
-  sliderRailSizeVar: `--fui-Slider__rail--size`,
-  sliderRailColorVar: `--fui-Slider__rail--color`,
-  sliderStepsPercentVar: `--fui-Slider--steps-percent`,
-  sliderThumbColorVar: `--fui-Slider__thumb--color`,
-  sliderThumbSizeVar: `--fui-Slider__thumb--size`,
-};
 
 const {
   sliderDirectionVar,

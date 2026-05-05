@@ -2,6 +2,238 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:10 GMT",
+      "tag": "@fluentui/react-progress_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: drop unnecessary dependencies from base hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-motion to v9.15.0",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.5.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 15:52:42 GMT",
+      "tag": "@fluentui/react-progress_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "b9772fe20aff3c8cfed35f6e471cdd447eacb032",
+            "comment": "feat: add base hooks for ProgressBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.5.0",
+            "commit": "e068b98d026c7992f6bd8aa59d6645b40fd0632f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Mar 2026 14:37:40 GMT",
+      "tag": "@fluentui/react-progress_v9.4.17",
+      "version": "9.4.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "1e832bd4c587ea496247f7e81ac5714bcfba3830",
+            "comment": "refactor: migrate ProgressBar from CSS to motion components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-motion to v9.14.0",
+            "commit": "ee548ba567ddc8957d900bba92b821474e9dcdc4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2026 09:22:22 GMT",
+      "tag": "@fluentui/react-progress_v9.4.16",
+      "version": "9.4.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.4.16",
+            "commit": "d4bbbb5e44fa216adc336a87533df4f04ac140e3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Feb 2026 13:32:28 GMT",
+      "tag": "@fluentui/react-progress_v9.4.15",
+      "version": "9.4.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.4.15",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.1",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.2",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.26.2",
+            "commit": "e9a0c230e4ed76e55ddb083538962c82da2bf978"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Feb 2026 10:46:15 GMT",
+      "tag": "@fluentui/react-progress_v9.4.14",
+      "version": "9.4.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.4.14",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.0",
+            "commit": "276096c349d3074eb8ebab44379a7367527c507e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jan 2026 17:06:37 GMT",
+      "tag": "@fluentui/react-progress_v9.4.13",
+      "version": "9.4.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.4.13",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.5",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.2.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.26.1",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Dec 2025 18:10:11 GMT",
+      "tag": "@fluentui/react-progress_v9.4.12",
+      "version": "9.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.4.12",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.4",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.26.0",
+            "commit": "2d739ef5d58bfea65301192ae1d28e3ea4ef75d2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Dec 2025 22:38:18 GMT",
       "tag": "@fluentui/react-progress_v9.4.11",
       "version": "9.4.11",

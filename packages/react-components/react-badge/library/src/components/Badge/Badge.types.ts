@@ -41,3 +41,7 @@ export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
 
 export type BadgeState = ComponentState<BadgeSlots> &
   Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size'>>;
+
+export type BadgeBaseProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape' | 'size'>;
+
+export type BadgeBaseState = Omit<BadgeState, 'appearance' | 'color' | 'shape' | 'size'>;

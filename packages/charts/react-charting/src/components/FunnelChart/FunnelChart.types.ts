@@ -4,6 +4,7 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
+import { ITitleStyles } from '../../utilities/Common.styles';
 
 /**
  * Data point for funnel chart
@@ -34,6 +35,11 @@ export interface IFunnelChartDataPoint {
  * {@docCategory FunnelChart}
  */
 export interface IFunnelChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: ITitleStyles;
+
   /**
    * Data points for the funnel chart
    */
@@ -140,9 +146,19 @@ export interface IFunnelChartStyles {
   chart?: IStyle;
 
   /**
+   * Style for the chart title.
+   */
+  chartTitle?: IStyle;
+
+  /**
    * Styles for text elements
    */
   text?: IStyle;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: IStyle;
 
   /**
    * Styles for sub-components

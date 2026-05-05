@@ -1,15 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { useAreaChartStyles } from './useAreaChartStyles.styles';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
-import { select as d3Select } from 'd3-selection';
 import { tokens } from '@fluentui/react-theme';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   CustomizedCalloutData,
   AreaChartProps,
   LineChartDataPoint,
@@ -19,13 +16,14 @@ import {
   YValueHover,
   ChartPopoverProps,
 } from '../../index';
+import { CartesianChart } from '../../index';
+import type { IDomainNRange, YAxisType } from '../../utilities/index';
 import {
   calloutData,
   getXAxisType,
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   getSecureProps,
@@ -33,17 +31,16 @@ import {
   getCurveFactory,
   findNumericMinMaxOfY,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfNumericForAreaLineScatterCharts,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   createStringYAxis,
-  YAxisType,
   findCalloutPoints,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Legend, Legends } from '../Legends/index';
-import { ScaleLinear } from 'd3-scale';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
+import type { ScaleLinear } from 'd3-scale';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -91,15 +88,14 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     const _verticalLineId: string = useId('verticalLine_');
     const _circleId: string = useId('circle');
     const _rectId: string = useId('rectangle');
-    const _tooltipId: string = useId('AreaChartTooltipID');
     //enableComputationOptimization is used for optimized code to group data points by x value
     //from O(n^2) to O(n) using a map.
     const _enableComputationOptimization: boolean = true;
     const _firstRenderOptimization: boolean = true;
     const _emptyChartId: string = useId('_AreaChart_empty');
     let _containsSecondaryYAxis = false;
-    let _hasMissingXValues = _containsMissingXValues();
-    let _hasDuplicateXValues = _xCoordinateContainsMultipleY();
+    const _hasMissingXValues = _containsMissingXValues();
+    const _hasDuplicateXValues = _xCoordinateContainsMultipleY();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any;
     let _createSet: (data: LineChartPoints[]) => {
@@ -125,7 +121,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
     const [hoverXValue, setHoverXValue] = React.useState<string | number | undefined | null>('');
-    // eslint-disable-next-line @typescript-eslint/no-shadow
+
     const [YValueHover, setYValueHover] = React.useState<YValueHover[]>([]);
     const [lineXValue, setLineXValue] = React.useState<number>(0);
     const [displayOfLine, setDisplayOfLine] = React.useState<InterceptVisibility>(InterceptVisibility.hide);
@@ -148,8 +144,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       }
       prevPropsRef.current = props;
     }, [props]);
-
-    const classes = useAreaChartStyles(props);
 
     function _getMinMaxOfYAxis(points: LineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) {
       return findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
@@ -240,7 +234,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           ? formatDateToLocaleString(pointToHighlight, props.culture, props.useUTC as boolean)
           : pointToHighlight;
       const found = findCalloutPoints(_calloutPoints, pointToHighlight);
-      // eslint-disable-next-line @typescript-eslint/no-shadow
+
       const _nearestCircleToHighlight =
         axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
       // if no points need to be called out then don't show vertical line and callout card
@@ -846,29 +840,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           {...getSecureProps(pointLineOptions)}
         />,
       );
-      // Removing un wanted tooltip div from DOM, when prop not provided.
-      if (!props.showXAxisLablesTooltip) {
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at x axis labels.
-      if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-        const xAxisElement = d3Select(xElement).call(xScale);
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const tooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          axis: xAxisElement,
-        };
-        xAxisElement && tooltipOfAxislabels(tooltipProps);
-      }
       return graph;
     }
 
@@ -1150,7 +1121,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
           componentRef={cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
-          // eslint-disable-next-line react/no-children-prop, @typescript-eslint/no-shadow
+          // eslint-disable-next-line @typescript-eslint/no-shadow
           children={(props: ChildProps) => {
             _xAxisRectScale = props.xScale;
             const ticks = _xAxisRectScale.ticks();

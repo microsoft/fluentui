@@ -17,10 +17,6 @@
     "just": "just-scripts",
     "lint": "just-scripts lint"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "tslib": "^2.1.0"
   },

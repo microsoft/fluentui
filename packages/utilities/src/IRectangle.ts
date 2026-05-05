@@ -1,8 +1,11 @@
 /**
  * Rectangle interface.
  *
- * @public
+ * Rectangle interface.
+ *
  * {@docCategory IRectangle}
+ *
+ * @public
  */
 export interface IRectangle {
   left: number;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, OverflowItemProps } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -12,7 +12,6 @@ import {
   tokens,
   Overflow,
   OverflowItem,
-  OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
 } from '@fluentui/react-components';

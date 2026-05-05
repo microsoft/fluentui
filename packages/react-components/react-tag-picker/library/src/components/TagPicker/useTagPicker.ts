@@ -9,7 +9,8 @@ import type {
   TagPickerState,
 } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
-import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '@fluentui/react-combobox';
 
@@ -29,7 +30,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false, noPopover = false } = props;
+  const { positioning, size = 'medium', inline = false, noPopover = false, disableAutoFocus } = props;
 
   const { targetRef, containerRef } = usePositioning({
     position: 'below' as const,
@@ -66,6 +67,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
       } as TagPickerOnOpenChangeData),
     ),
     activeDescendantController,
+    disableAutoFocus,
     editable: true,
     multiselect: true,
     size: 'medium',

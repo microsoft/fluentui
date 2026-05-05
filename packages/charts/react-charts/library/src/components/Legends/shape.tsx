@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { LegendShape } from './Legends.types';
+import type { LegendShape } from './Legends.types';
 import { CustomPoints, Points, getSecureProps } from '../../utilities/utilities';
 
 export interface ShapeProps {

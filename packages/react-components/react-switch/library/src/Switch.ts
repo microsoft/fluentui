@@ -1,4 +1,11 @@
-export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from './components/Switch/index';
+export type {
+  SwitchBaseProps,
+  SwitchBaseState,
+  SwitchOnChangeData,
+  SwitchProps,
+  SwitchSlots,
+  SwitchState,
+} from './components/Switch/index';
 export {
   Switch,
   renderSwitch_unstable,
@@ -7,4 +14,5 @@ export {
   switchClassNames,
   useSwitchStyles_unstable,
   useSwitch_unstable,
+  useSwitchBase_unstable,
 } from './components/Switch/index';

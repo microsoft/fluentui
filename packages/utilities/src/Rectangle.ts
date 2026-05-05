@@ -1,8 +1,11 @@
 /**
  * Rectangle helper class.
  *
- * @public
+ * Rectangle helper class.
+ *
  * {@docCategory Rectangle}
+ *
+ * @public
  */
 export class Rectangle {
   public top: number;

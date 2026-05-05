@@ -1,4 +1,4 @@
-import { ShowToastEventDetail, ToastOptions } from '../types';
+import type { ShowToastEventDetail, ToastOptions } from '../types';
 import { EVENTS } from '../constants';
 
 let counter = 0;

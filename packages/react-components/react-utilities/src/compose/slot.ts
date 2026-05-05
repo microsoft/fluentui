@@ -40,7 +40,7 @@ export function always<Props extends UnknownSlotProps>(
     ...defaultProps,
     ...props,
     [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
-    [SLOT_CLASS_NAME_PROP_SYMBOL]: props?.className,
+    [SLOT_CLASS_NAME_PROP_SYMBOL]: props?.className || defaultProps?.className,
   } as SlotComponentType<Props>;
 
   if (props && typeof props.children === 'function') {

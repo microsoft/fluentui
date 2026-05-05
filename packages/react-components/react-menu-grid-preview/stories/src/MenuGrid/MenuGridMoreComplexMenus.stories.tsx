@@ -7,6 +7,10 @@ import { CameraRegular, DeleteRegular, GlobePersonRegular, PhoneRegular } from '
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
 export const MoreComplexMenus = (): JSXElement => {
+  const showAlert = (name: string) => {
+    alert(`Item ${name} activated`);
+  };
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -15,7 +19,7 @@ export const MoreComplexMenus = (): JSXElement => {
       <MenuPopover>
         <MenuGrid>
           {items.map(name => (
-            <MenuGridRow key={name} aria-label={name}>
+            <MenuGridRow key={name} onClick={() => showAlert(name)} aria-label={name}>
               <MenuGridCell>
                 <Button
                   size="small"

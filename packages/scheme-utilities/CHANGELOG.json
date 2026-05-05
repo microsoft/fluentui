@@ -2,6 +2,44 @@
   "name": "@fluentui/scheme-utilities",
   "entries": [
     {
+      "date": "Tue, 27 Jan 2026 05:19:04 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.3.73",
+      "version": "8.3.73",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/scheme-utilities",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Dec 2025 06:28:01 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.3.73",
+      "version": "8.3.73",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/scheme-utilities",
+            "commit": "f8d1b4ce74409f63cec13ea202710ebeef2a8377",
+            "comment": "chore: migrate eslint to use flat config"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/scheme-utilities",
+            "comment": "Bump @fluentui/theme to v2.7.2",
+            "commit": "99d36f6724acd1f6a8c11ccc6811784a8571933d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:28 GMT",
       "tag": "@fluentui/scheme-utilities_v8.3.72",
       "version": "8.3.72",

@@ -49,6 +49,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trapFocus: modalType !== 'non-modal',
     legacyTrapFocus: !inertTrapFocus,
   });
+
   const isNestedDialog = useHasParentContext(DialogContext);
 
   return {

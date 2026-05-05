@@ -1,21 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  DataVizPalette,
-  getColorFromToken,
-  HorizontalBarChartWithAxis,
-  HorizontalBarChartWithAxisDataPoint,
-} from '@fluentui/react-charts';
-import {
-  Checkbox,
-  CheckboxOnChangeData,
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-  Button,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { HorizontalBarChartWithAxisDataPoint } from '@fluentui/react-charts';
+import { DataVizPalette, getColorFromToken, HorizontalBarChartWithAxis } from '@fluentui/react-charts';
+import { Checkbox, Switch, Field, Radio, RadioGroup, Button } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
@@ -122,13 +109,31 @@ export const HorizontalBarWithAxisDynamic = (): JSXElement => {
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
-          <input type="range" id="input-width" value={width} min={200} max={1000} onChange={_onWidthChange} />
+          <input
+            type="range"
+            id="input-width"
+            value={width}
+            min={200}
+            max={1000}
+            onChange={_onWidthChange}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
+          />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
           </label>
-          <input type="range" id="input-datasize" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} />
+          <input
+            type="range"
+            id="input-datasize"
+            value={dataSize}
+            min={0}
+            max={50}
+            onChange={_onDataSizeChange}
+            aria-label="Change Data Size"
+            aria-valuetext={`current value ${dataSize}', Minimum 0 and Maximum 50`}
+          />
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { useMenuContext_unstable } from '../contexts/menuContext';
 import type { MenuContextValue } from '../contexts/menuContext';
 

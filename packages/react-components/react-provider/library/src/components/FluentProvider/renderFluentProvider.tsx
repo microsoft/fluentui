@@ -1,8 +1,12 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
+
+'use client';
+
 import { canUseDOM, assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { TextDirectionProvider } from '@griffel/react';
+import type { CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue } from '@fluentui/react-shared-contexts';
 import {
   OverridesProvider_unstable as OverridesProvider,
   Provider_unstable as Provider,
@@ -10,7 +14,6 @@ import {
   ThemeProvider_unstable as ThemeProvider,
   ThemeClassNameProvider_unstable as ThemeClassNameProvider,
   CustomStyleHooksProvider_unstable as CustomStyleHooksProvider,
-  CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
 import { IconDirectionContextProvider } from '@fluentui/react-icons/lib/providers';

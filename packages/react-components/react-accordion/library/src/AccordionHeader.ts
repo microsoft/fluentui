@@ -5,6 +5,8 @@ export type {
   AccordionHeaderSize,
   AccordionHeaderSlots,
   AccordionHeaderState,
+  AccordionHeaderBaseState,
+  AccordionHeaderBaseProps,
 } from './components/AccordionHeader/index';
 export {
   AccordionHeader,
@@ -13,4 +15,5 @@ export {
   useAccordionHeaderContextValues_unstable,
   useAccordionHeaderStyles_unstable,
   useAccordionHeader_unstable,
+  useAccordionHeaderBase_unstable,
 } from './components/AccordionHeader/index';

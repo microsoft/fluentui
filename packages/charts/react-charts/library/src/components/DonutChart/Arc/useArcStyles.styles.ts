@@ -1,6 +1,6 @@
 'use client';
 
-import { ArcProps, ArcStyles } from './Arc.types';
+import type { ArcProps, ArcStyles } from './Arc.types';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';

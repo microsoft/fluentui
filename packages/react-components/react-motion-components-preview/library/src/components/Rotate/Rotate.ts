@@ -1,7 +1,8 @@
-import { AtomMotion, createPresenceComponent, motionTokens, PresenceMotionFn } from '@fluentui/react-motion';
+import type { AtomMotion, PresenceMotionFn } from '@fluentui/react-motion';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { rotateAtom } from '../../atoms/rotate-atom';
-import { RotateParams } from './rotate-types';
+import type { RotateParams } from './rotate-types';
 
 /**
  * Define a presence motion for rotate in/out
@@ -13,8 +14,8 @@ import { RotateParams } from './rotate-types';
  * @param exitEasing - Easing curve for the exit transition (rotate-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'z'.
- * @param fromAngle - The starting rotation angle in degrees. Defaults to -90.
- * @param toAngle - The ending rotation angle in degrees. Defaults to 0.
+ * @param outAngle - Rotation angle for the out state (exited) in degrees. Defaults to -90.
+ * @param inAngle - Rotation angle for the in state (entered) in degrees. Defaults to 0.
  * @param animateOpacity - Whether to animate the opacity during the rotation. Defaults to `true`.
  */
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
@@ -25,8 +26,8 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   exitEasing = motionTokens.curveAccelerateMax,
   exitDelay = delay,
   axis = 'z',
-  fromAngle = -90,
-  toAngle = 0,
+  outAngle = -90,
+  inAngle = 0,
   animateOpacity = true,
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
@@ -36,8 +37,8 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
       easing,
       delay,
       axis,
-      fromAngle,
-      toAngle,
+      outAngle,
+      inAngle,
     }),
   ];
 
@@ -48,8 +49,8 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
       easing: exitEasing,
       delay: exitDelay,
       axis,
-      fromAngle,
-      toAngle,
+      outAngle,
+      inAngle,
     }),
   ];
 

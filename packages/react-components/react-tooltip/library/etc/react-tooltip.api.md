@@ -9,7 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -21,10 +21,16 @@ export type OnVisibleChangeData = {
 };
 
 // @public
-export const renderTooltip_unstable: (state: TooltipState) => JSXElement;
+export const renderTooltip_unstable: (state: TooltipBaseState) => JSXElement;
 
 // @public
 export const Tooltip: React_2.FC<TooltipProps>;
+
+// @public (undocumented)
+export type TooltipBaseProps = Omit<TooltipProps, 'appearance'>;
+
+// @public (undocumented)
+export type TooltipBaseState = Omit<TooltipState, 'appearance'>;
 
 // @public (undocumented)
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;
@@ -61,6 +67,9 @@ export type TooltipTriggerProps = {
 
 // @public
 export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
+
+// @public
+export const useTooltipBase_unstable: (props: TooltipBaseProps) => TooltipBaseState;
 
 // @public
 export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;

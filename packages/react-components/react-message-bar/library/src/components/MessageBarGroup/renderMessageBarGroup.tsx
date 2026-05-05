@@ -6,7 +6,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { MessageBarGroupState, MessageBarGroupSlots } from './MessageBarGroup.types';
 import { PresenceGroup } from '@fluentui/react-motion';
 import { MessageBarMotion } from './MessageBarGroup.motions';
-import { MotionRefForwarder } from '../MotionRefForwarder';
+import { MotionRefForwarder } from '@fluentui/react-motion';
 
 /**
  * Render the final JSX of MessageBarGroup

@@ -92,12 +92,12 @@ const useStyles = makeStyles({
     },
   },
   inverted: {
-    color: tokens.colorNeutralForegroundInverted2,
+    color: tokens.colorBrandForegroundInverted,
     ':hover': {
-      color: tokens.colorNeutralForegroundInverted2,
+      color: tokens.colorBrandForegroundInverted,
     },
     ':active': {
-      color: tokens.colorNeutralForegroundInverted2,
+      color: tokens.colorBrandForegroundInverted,
     },
   },
   brand: {

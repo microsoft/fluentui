@@ -3,28 +3,25 @@
 import * as React from 'react';
 import { mergeCallbacks, slot, useControllableState } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
-import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots, CardState } from './Card.types';
+import type { CardBaseProps, CardContextValue, CardOnSelectionChangeEvent, CardSlots, CardState } from './Card.types';
 
 type SelectableA11yProps = Pick<CardContextValue['selectableA11yProps'], 'referenceId' | 'referenceLabel'>;
 
 /**
- * @internal
- *
  * Create the state related to selectable cards.
  *
  * This internal hook controls all the logic for selectable cards and is
- * intended to be used alongside with useCard_unstable.
+ * intended to be used alongside with useCardBase_unstable / useCard_unstable.
  *
+ * @internal
  * @param props - props from this instance of Card
  * @param a11yProps - accessibility props shared between elements of the card
- * @param cardRef - reference to the root element of Card
+ * @param options - optional behavior overrides such as a focus-aware restriction predicate
  */
 export const useCardSelectable = (
-  props: CardProps,
+  props: CardBaseProps,
   { referenceLabel, referenceId }: SelectableA11yProps,
-  cardRef: React.RefObject<HTMLDivElement | null>,
 ): {
   selected: boolean;
   selectable: boolean;
@@ -36,9 +33,16 @@ export const useCardSelectable = (
   checkboxSlot: CardState['checkbox'];
   floatingActionSlot: CardState['floatingAction'];
 } => {
-  const { checkbox = {}, onSelectionChange, floatingAction, onClick, onKeyDown, disabled } = props;
+  const {
+    checkbox = {},
+    onSelectionChange,
+    floatingAction,
+    onClick,
+    onKeyDown,
+    disabled,
+    shouldRestrictTriggerAction,
+  } = props;
 
-  const { findAllFocusable } = useFocusFinders();
   const checkboxRef = React.useRef<HTMLInputElement>(null);
 
   const [selected, setSelected] = useControllableState({
@@ -52,25 +56,15 @@ export const useCardSelectable = (
 
   const [selectFocused, setSelectFocused] = React.useState(false);
 
-  const shouldRestrictTriggerAction = React.useCallback(
-    (event: CardOnSelectionChangeEvent) => {
-      if (!cardRef.current) {
-        return false;
-      }
-
-      const focusableElements = findAllFocusable(cardRef.current);
-      const target = event.target as HTMLElement;
-      const isElementInFocusableGroup = focusableElements.some(element => element.contains(target));
-      const isCheckboxSlot = checkboxRef?.current === target;
-
-      return isElementInFocusableGroup && !isCheckboxSlot;
-    },
-    [cardRef, findAllFocusable],
-  );
-
   const onChangeHandler = React.useCallback(
     (event: CardOnSelectionChangeEvent) => {
-      if (disabled || shouldRestrictTriggerAction(event)) {
+      if (disabled) {
+        return;
+      }
+
+      const isCheckboxOrFloatingActionTarget = checkboxRef.current === (event.target as HTMLElement);
+
+      if (!isCheckboxOrFloatingActionTarget && shouldRestrictTriggerAction?.(event)) {
         return;
       }
 

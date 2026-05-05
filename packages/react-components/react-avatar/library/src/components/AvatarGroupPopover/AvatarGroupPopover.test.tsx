@@ -3,7 +3,8 @@ import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { AvatarGroupPopover } from './AvatarGroupPopover';
 import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles.styles';
 import { isConformant } from '../../testing/isConformant';
-import { render, RenderResult, screen, fireEvent } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {

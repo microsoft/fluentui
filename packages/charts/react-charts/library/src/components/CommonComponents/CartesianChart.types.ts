@@ -1,7 +1,8 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { LegendsProps } from '../Legends/index';
-import {
+import type { LegendsProps } from '../Legends/index';
+import type { TitleStyles } from '../../utilities/Common.styles';
+import type {
   AccessibilityProps,
   Chart,
   Margins,
@@ -19,10 +20,17 @@ import {
   AxisProps,
   AxisScaleType,
 } from '../../types/index';
-import { TimeLocaleDefinition } from 'd3-time-format';
-import { ChartPopoverProps } from './ChartPopover.types';
-import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
-import { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { TimeLocaleDefinition } from 'd3-time-format';
+import type { ChartPopoverProps } from './ChartPopover.types';
+import type {
+  ChartTypes,
+  IAxisData,
+  IDomainNRange,
+  IYAxisParams,
+  XAxisTypes,
+  YAxisType,
+} from '../../utilities/utilities';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -177,6 +185,11 @@ export interface CartesianChartStyles {
  */
 export interface CartesianChartProps {
   /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
+  /**
    * Below height used for resizing of the chart
    * Wrap chart in your container and send the updated height and width to these props.
    * These values decide wheather chart re render or not. Please check examples for reference
@@ -278,7 +291,7 @@ export interface CartesianChartProps {
   xMinValue?: number;
 
   /**
-   * maximum data value point in x-axis (for numeric x-axis)
+   * maximum data value point in x-axis
    */
   xMaxValue?: number;
 
@@ -512,7 +525,17 @@ export interface CartesianChartProps {
    * Configuration for the x-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
-  xAxis?: AxisProps;
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
 
   /**
    * Configuration for the y-axis.

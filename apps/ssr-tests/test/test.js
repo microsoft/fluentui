@@ -21,7 +21,7 @@ initializeIcons('dist/', { disableWarnings: true });
 let assert = require('assert');
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
-let AppDefinition = require('@fluentui/public-docsite-resources/lib/AppDefinition').AppDefinition;
+let { AppDefinition } = require('@fluentui/public-docsite-resources/lib/AppDefinition');
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {

@@ -2,13 +2,15 @@
 
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useMotionForwardedRef } from '@fluentui/react-motion';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useMenuContext_unstable } from '../../contexts/menuContext';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { dispatchMenuEnterEvent, useIsSubmenu } from '../../utils/index';
-import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
+import type { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 
 /**
  * Create the state required to render MenuPopover.
@@ -30,6 +32,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
 
   const isSubmenu = useIsSubmenu();
+  const shouldCloseOnArrowLeft = useMenuListContext_unstable(ctx => ctx.shouldCloseOnArrowLeft ?? true);
+
   const canDispatchCustomEventRef = React.useRef(true);
   const restoreFocusSourceAttributes = useRestoreFocusSource();
   const [setThrottleTimeout, clearThrottleTimeout] = useTimeout();
@@ -74,7 +78,12 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
       // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef) as React.Ref<HTMLDivElement>,
+      ref: useMergedRefs(
+        ref,
+        popoverRef,
+        mouseOverListenerCallbackRef,
+        useMotionForwardedRef(),
+      ) as React.Ref<HTMLDivElement>,
     }),
     { elementType: 'div' },
   );
@@ -87,7 +96,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   });
   rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     const key = event.key;
-    if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
+    if (key === Escape || (isSubmenu && shouldCloseOnArrowLeft && key === CloseArrowKey)) {
       if (open && popoverRef.current?.contains(event.target as HTMLElement) && !event.isDefaultPrevented()) {
         setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
         // stop propagation to avoid conflicting with other elements that listen for `Escape`

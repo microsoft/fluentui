@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Decorator, StoryFn } from '@storybook/react';
+import type { Decorator, StoryFn } from '@storybook/react-webpack5';
 import { FASTElement, customElement, html, attr } from '@microsoft/fast-element';
 import { teamsLightTheme, teamsDarkTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
 import { setThemeFor } from '@fluentui/web-components';

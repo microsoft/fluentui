@@ -1,7 +1,7 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { createArrowHeightStyles, createArrowStyles, createSlideStyles } from '@fluentui/react-positioning';
+import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
@@ -27,7 +27,6 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
-    ...createSlideStyles(10),
 
     // TODO need to add versions of tokens.alias.shadow.shadow16, etc. that work with filter
     filter:

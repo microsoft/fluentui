@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Bump @griffel/react package.",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

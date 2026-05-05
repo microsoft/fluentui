@@ -1,4 +1,5 @@
 export * from './ChartHoverCard/index';
+export * from './ChartTitle';
 export * from './Common.styles';
 export * from './utilities';
 export * from './colors';

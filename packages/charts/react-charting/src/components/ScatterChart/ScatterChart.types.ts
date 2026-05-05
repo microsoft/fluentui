@@ -38,6 +38,11 @@ export interface IScatterChartProps extends ICartesianChartProps {
   onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
 
   /**
+   * Define a custom callout renderer for a stack; default is to render per data point
+   */
+  onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
    * Callback for getting callout description message
    */
   getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;

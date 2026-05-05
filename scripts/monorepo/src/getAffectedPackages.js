@@ -14,14 +14,16 @@ function getAffectedPackages(base = 'origin/master') {
     'show',
     'projects',
     '--affected',
-    `--base=${base}`,
+    '--base',
+    base,
     '--json',
     // override NX_VERBOSE_LOGGING in order to emit valid JSON
-    `--verbose=false`,
+    '--verbose=false',
   ];
-  const res = spawnSync('nx', cmdArgs, {
+  const nx = process.platform === 'win32' ? 'nx.cmd' : 'nx';
+  const res = spawnSync(nx, cmdArgs, {
     cwd: workspaceRoot,
-    shell: true,
+    shell: false,
   });
 
   if (res.status !== 0) {

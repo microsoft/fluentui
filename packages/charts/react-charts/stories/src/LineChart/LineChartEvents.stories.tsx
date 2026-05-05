@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
+import type { LineChartProps, ChartProps } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 import * as d3 from 'd3-format';
 import { Label, Switch } from '@fluentui/react-components';
 
@@ -125,7 +126,8 @@ export const LineChartEvents = (props: LineChartProps): JSXElement => {
           max={1000}
           onChange={_onWidthChange}
           id="changeWidth_Events"
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Events">Change Height:</label>
         <input
@@ -135,7 +137,8 @@ export const LineChartEvents = (props: LineChartProps): JSXElement => {
           max={1000}
           id="changeHeight_Events"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
         <Switch
           label={

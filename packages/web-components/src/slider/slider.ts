@@ -1,5 +1,5 @@
-import { attr, css, FASTElement, observable, Observable } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
+import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
 import {
   Direction,
   keyArrowDown,
@@ -13,9 +13,8 @@ import {
 } from '@microsoft/fast-web-utilities';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
-import { swapStates } from '../utils/element-internals.js';
-import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
+import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 
 /**
  * The base class used for constructing a fluent-slider custom element
@@ -197,7 +196,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
     if (this.$fastController.isConnected) {
-      if (this.disabled) {
+      if (this.isDisabled) {
         this.elementInternals.setValidity({});
         return;
       }
@@ -389,6 +388,18 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
+   * Returns true if the component is disabled, taking into account the `disabled`
+   * attribute, `aria-disabled` attribute, and the `:disabled` pseudo-class.
+   *
+   * @internal
+   */
+  protected get isDisabled() {
+    return (
+      this.disabled || this.elementInternals?.ariaDisabled === 'true' || (this.isConnected && this.matches(':disabled'))
+    );
+  }
+
+  /**
    * The minimum allowed value.
    *
    * @public
@@ -523,25 +534,32 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
   }
 
-  /**
-   * @internal
-   */
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.direction = getDirection(this);
+    requestAnimationFrame(() => {
+      if (!this.$fastController.isConnected) {
+        // The component may have been disconnected between the connectedCallback and this frame.
+        // This can happen during rapid DOM updates, framework-level element recycling, or SSR/DSD hydration teardown.
+        // Bail out to avoid performing setup work on a detached element.
+        return;
+      }
 
-    this.setDisabledSideEffect(this.disabled);
-    this.updateStepMultiplier();
-    this.setupTrackConstraints();
-    this.setupDefaultValue();
-    this.setSliderPosition();
+      this.direction = getDirection(this);
 
-    Observable.getNotifier(this).subscribe(this, 'max');
-    Observable.getNotifier(this).subscribe(this, 'min');
-    Observable.getNotifier(this).subscribe(this, 'step');
+      this.setDisabledSideEffect(this.disabled);
+      this.updateStepMultiplier();
+      this.setupTrackConstraints();
+      this.setupDefaultValue();
+      this.setSliderPosition();
 
-    this.handleStepStyles();
+      this.handleStepStyles();
+
+      const notifier = Observable.getNotifier(this);
+      notifier.subscribe(this, 'max');
+      notifier.subscribe(this, 'min');
+      notifier.subscribe(this, 'step');
+    });
   }
 
   /**
@@ -550,9 +568,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    Observable.getNotifier(this).unsubscribe(this, 'max');
-    Observable.getNotifier(this).unsubscribe(this, 'min');
-    Observable.getNotifier(this).unsubscribe(this, 'step');
+    const notifier = Observable.getNotifier(this);
+    notifier.unsubscribe(this, 'max');
+    notifier.unsubscribe(this, 'min');
+    notifier.unsubscribe(this, 'step');
   }
 
   /**
@@ -588,7 +607,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   public handleKeydown(event: KeyboardEvent): boolean {
-    if (this.disabled) {
+    if (this.isDisabled) {
       return true;
     }
 
@@ -686,6 +705,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *  If the event handler is null it removes the events
    */
   public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
+    if (this.isDisabled) {
+      return true;
+    }
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
     windowFn('pointerup', this.handleWindowPointerUp);
     windowFn('pointermove', this.handlePointerMove, { passive: true });
@@ -699,7 +721,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *  Handle mouse moves during a thumb drag operation
    */
   private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
-    if (this.disabled || event.defaultPrevented) {
+    if (this.isDisabled || event.defaultPrevented) {
       return;
     }
 
@@ -756,7 +778,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @param event - PointerEvent or null. If there is no event handler it will remove the events
    */
   public handlePointerDown = (event: PointerEvent | null) => {
-    if (event === null || !this.disabled) {
+    if (event === null || !this.isDisabled) {
       const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
       const documentFn = event !== null ? document.addEventListener : document.removeEventListener;
       windowFn('pointerup', this.handleWindowPointerUp);
@@ -804,11 +826,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * Makes sure the side effects of set up when the disabled state changes.
    */
-  private setDisabledSideEffect(disabled: boolean) {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-    this.elementInternals.ariaDisabled = disabled.toString();
-    this.tabIndex = disabled ? -1 : 0;
+  private setDisabledSideEffect(disabled: boolean = this.isDisabled): void {
+    Updates.enqueue(() => {
+      this.elementInternals.ariaDisabled = disabled.toString();
+      this.tabIndex = disabled ? -1 : 0;
+    });
   }
 }

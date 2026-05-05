@@ -1,0 +1,83 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 160px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.wrap:hover {
+  border-color: var(--border-strong);
+}
+
+.wrap:has(:focus-visible) {
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px var(--surface-muted);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px 36px 8px 12px;
+  min-width: 0;
+  color: var(--text);
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  width: 28px;
+  height: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.btn:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.btn:focus-visible {
+  outline: none;
+  z-index: 1;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.btnUp {
+  top: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.btnDown {
+  bottom: 0;
+}
+
+.icon {
+  width: 11px;
+  height: 11px;
+  stroke-width: 2;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  max-width: 240px;
+}

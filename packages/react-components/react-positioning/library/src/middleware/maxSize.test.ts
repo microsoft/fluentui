@@ -1,4 +1,5 @@
-import { Platform, computePosition } from '@floating-ui/dom';
+import type { Platform } from '@floating-ui/dom';
+import { computePosition } from '@floating-ui/dom';
 import { resetMaxSize } from './maxSize';
 
 const referenceRect: Partial<DOMRect> = { x: 0, y: 0, width: 100, height: 100 };

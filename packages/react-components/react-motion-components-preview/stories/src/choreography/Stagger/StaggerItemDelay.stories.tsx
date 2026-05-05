@@ -1,6 +1,7 @@
 import * as React from 'react';
 import StaggerItemDelayDescription from './StaggerItemDelay.stories.md';
-import { Field, makeStyles, tokens, Button, Label, Slider, JSXElement } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Button, Label, Slider } from '@fluentui/react-components';
 import { Stagger, Slide } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
@@ -70,7 +71,7 @@ export const ItemDelay = (): JSXElement => {
         <Stagger visible={visible} itemDelay={itemDelay}>
           {/* Create a list of items, each wrapped with a presence transition */}
           {Array.from({ length: 8 }, (_, i) => (
-            <Slide key={`stagger-item-${i}`}>
+            <Slide key={`stagger-item-${i}`} outY="20px">
               {/* Outer div protects the inner div from Slide's opacity animation */}
               <div>
                 <div className={classes.item} style={{ opacity: 1 - 0.1 * i }}>

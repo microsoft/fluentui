@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { AnimationDirection } from '../Calendar/Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utils';
+import type * as React from 'react';
+import type { AnimationDirection } from '../Calendar/Calendar.types';
+import type { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utils';
 import type { CalendarStrings, DateFormatting, DayGridOptions } from '../../utils';
 
 /**

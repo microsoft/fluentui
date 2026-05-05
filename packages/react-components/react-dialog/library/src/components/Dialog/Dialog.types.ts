@@ -1,5 +1,6 @@
 import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { ScaleParams } from '@fluentui/react-motion-components-preview';
 import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
@@ -10,11 +11,11 @@ export type DialogSlots = {
    * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    *
    */
-  surfaceMotion: Slot<PresenceMotionSlotProps>;
+  surfaceMotion: Slot<PresenceMotionSlotProps<ScaleParams>>;
 };
 
 export type InternalDialogSlots = {
-  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps<ScaleParams>>>;
 };
 
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];

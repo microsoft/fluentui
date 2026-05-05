@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { addons } from '@storybook/preview-api';
+import { addons } from 'storybook/preview-api';
 
 import { Label } from '@fluentui/react-label';
 import { Switch, type SwitchProps } from '@fluentui/react-switch';

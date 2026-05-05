@@ -1,6 +1,7 @@
-import { Ref } from 'react';
-import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
-import { Chart, ChartProps } from '../../types/DataPoint';
+import type { Ref } from 'react';
+import type { TitleStyles } from '../../utilities/Common.styles';
+import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { Chart, ChartProps } from '../../types/DataPoint';
 
 export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoint';
 
@@ -9,6 +10,11 @@ export type { ChartProps, DataPoint, SankeyChartData } from '../../types/DataPoi
  * {@docCategory SankeyChart}
  */
 export interface SankeyChartProps {
+  /**
+   * Title styles configuration for the chart title
+   */
+  titleStyles?: TitleStyles;
+
   /**
    * Data to render in the chart.
    */
@@ -97,6 +103,12 @@ export interface SankeyChartProps {
   culture?: string;
 
   /**
+   * Whether to hide the legend
+   * @default false
+   */
+  hideLegend?: boolean;
+
+  /**
    * Props related to reflow behavior of the chart
    */
   reflowProps?: {
@@ -148,6 +160,16 @@ export interface SankeyChartStyles {
    * Styles for the chart svg element
    */
   chart?: string;
+
+  /**
+   * Style for SVG tooltip text
+   */
+  svgTooltip?: string;
+
+  /**
+   * Style for the chart title.
+   */
+  chartTitle?: string;
 }
 
 /**

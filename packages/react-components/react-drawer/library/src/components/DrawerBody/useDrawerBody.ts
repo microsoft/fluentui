@@ -11,16 +11,15 @@ import {
 } from '@fluentui/react-utilities';
 
 import { useDrawerContext_unstable } from '../../contexts/drawerContext';
-import { DrawerScrollState } from '../../shared/DrawerBase.types';
+import type { DrawerScrollState } from '../../shared/DrawerBase.types';
 
 import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
- * @internal
- *
  * Get the current scroll state of the DrawerBody.
  *
+ * @internal
  * @param element - HTMLElement to check scroll state of
  */
 const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {

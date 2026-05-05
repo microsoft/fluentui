@@ -11,6 +11,8 @@ export const Disabled = (): JSXElement => (
   <div style={wrapperStyle}>
     <Switch disabled label="Unchecked and disabled" />
     <Switch checked disabled label="Checked and disabled" />
+    <Switch disabledFocusable label="Unchecked and disabled focusable" />
+    <Switch checked disabledFocusable label="Checked and disabled focusable" />
   </div>
 );
 

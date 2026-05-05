@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
-import { select as d3Select } from 'd3-selection';
 import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
@@ -38,7 +37,6 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
@@ -111,7 +109,6 @@ export class VerticalBarChartBase
   private _yMax: number;
   private _yMin: number;
   private _isHavingLine: boolean;
-  private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   private _domainMargin: number;
@@ -142,7 +139,6 @@ export class VerticalBarChartBase
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
-    this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
@@ -867,31 +863,10 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars;
   }
 
@@ -981,33 +956,10 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
-
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-        showTooltip: this.props.showXAxisLablesTooltip,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars;
   }
 
@@ -1093,31 +1045,10 @@ export class VerticalBarChartBase
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative, point.barLabel)}
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!this.props.showXAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at x axis labels.
-    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
-      const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        axis: xAxisElement,
-      };
-      xAxisElement && tooltipOfAxislabels(tooltipProps);
-    }
     return bars;
   }
 
@@ -1269,7 +1200,14 @@ export class VerticalBarChartBase
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
+  private _renderBarLabel(
+    xPoint: number,
+    yPoint: number,
+    barValue: number,
+    legend: string,
+    isNegativeBar: boolean,
+    customBarLabel?: string,
+  ) {
     if (
       this.props.hideLabels ||
       this._barWidth < 16 ||
@@ -1277,6 +1215,14 @@ export class VerticalBarChartBase
     ) {
       return null;
     }
+
+    // Use custom barLabel if provided, otherwise use the formatted barValue
+    const displayLabel =
+      customBarLabel !== undefined
+        ? customBarLabel
+        : typeof this.props.yAxisTickFormat === 'function'
+        ? this.props.yAxisTickFormat(barValue)
+        : formatScientificLimitWidth(barValue);
 
     return (
       <text
@@ -1286,9 +1232,7 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {typeof this.props.yAxisTickFormat === 'function'
-          ? this.props.yAxisTickFormat(barValue)
-          : formatScientificLimitWidth(barValue)}
+        {displayLabel}
       </text>
     );
   }

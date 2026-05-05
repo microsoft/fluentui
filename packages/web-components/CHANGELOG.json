@@ -2,6 +2,310 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 01 May 2026 04:08:47 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.15",
+      "version": "3.0.0-rc.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7dfa6a36eb39d998dff0c627f83e1ac728c8020c",
+            "comment": "fix: remove unnecessary id property mappings in accordion-item"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "86cf4cbebfc9517e2373ce8077674bbcaf3ce7da",
+            "comment": "fix: remove errant preventDefault causing element interactions to be blocked inside drawer"
+          }
+        ],
+        "none": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "233e02d989fd22ba25b73affdf2012019f71f9ad",
+            "comment": " chore: fixing package bump issue to latest published version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2026 19:07:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.14",
+      "version": "3.0.0-rc.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c2bf30e8260326f8e7c018853e4e86cbfae0d2d0",
+            "comment": "fix: improve SSR compatibility and component lifecycle management for Menu, Accordion, Dropdown, Tablist, and waitForConnectedDescendants"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2026 04:07:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.13",
+      "version": "3.0.0-rc.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c207e1425c9a98ded3c06adf037bca603ad1f8eb",
+            "comment": "add base classes for menu-list and radio-group"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Apr 2026 20:44:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.12",
+      "version": "3.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1668a3c1995614853faf0adabd33fcb5b6994aa0",
+            "comment": "feat: enhance Accordion component with improved item handling and lifecycle management"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Apr 2026 22:24:42 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.11",
+      "version": "3.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "da4bf9e456311296cb300097ddfd98764888f61a",
+            "comment": "fix: harden component lifecycle for SSR/DSD hydration scenarios"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 04:08:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.10",
+      "version": "3.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e89fd73d5695771e599d74828e4fc1fd7c375f55",
+            "comment": "remove deprecated tabs and tab-panel components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2026 04:08:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.9",
+      "version": "3.0.0-rc.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "58e9491eace2cde9ed715bb578bfec64eb674f1b",
+            "comment": "fix(web-components): resolve auto-resize issues for TextArea in Firefox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2026 04:07:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.8",
+      "version": "3.0.0-rc.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "12f2c8e22113b6e29b4e1360e972f39eaae1c13d",
+            "comment": "fix: reflect ariaLabel on dialog"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Feb 2026 04:09:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.7",
+      "version": "3.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cbc248724854d89b0576ff2b7c94b664a31af96",
+            "comment": "fix: add setTheme export"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Feb 2026 04:08:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.6",
+      "version": "3.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "zoghadya@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7a60597b731d7f3836ac34a75e97a125cfef9b2a",
+            "comment": "fix(web-components): prevent double tab open on Ctrl+click in BaseAnchor by calling e.preventDefault() when opening in a new tab"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "45e7e0a973ef86223690dfd98f6564f61d93c960",
+            "comment": "[fix]: menu-items programmatically added to menu-list do not  properly get assigned data indent."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Feb 2026 04:07:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.5",
+      "version": "3.0.0-rc.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2b0d32457b4ab696d0135d68a88da6e47a0e2aaf",
+            "comment": "chore: bump storybook to mitigate CVE"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Feb 2026 04:08:37 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.5",
+      "version": "3.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "31c5eb7c476e7cfe8ef3b172d20357684cf6b101",
+            "comment": "fix: remove extraneous closing parentheses in avatar CSS"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jan 2026 04:07:04 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.4",
+      "version": "3.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3e77c7d37f628ab997da534ff1cdd8a71d583eda",
+            "comment": "Update CAP DR tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Jan 2026 04:07:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.3",
+      "version": "3.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a5b354084d7de7c0c0567b96624590ba513f6d4c",
+            "comment": "chore: upgrade to storybook 9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jan 2026 04:07:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.2",
+      "version": "3.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "ee24cc9ccd31483a3b7e5c77757d320d32ab1236",
+            "comment": "fix: remove empty text nodes from avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jan 2026 04:07:38 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.1",
+      "version": "3.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5e245979f55d1694e2f2f7e303701628285c62dc",
+            "comment": "chore: use nx graph instead of manually defined devDependencies in package.json files across whole workspace"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "97e6233d301640501d5dcf27ef8a90e5aca51f34",
+            "comment": "chore: update verify-packaging script to exclude root eslintrc file"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Dec 2025 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.1",
+      "version": "3.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "64213a1e9fbc15fa1c3b546b3454d3cb9f5a01a6",
+            "comment": "chore: migrate to eslint flat configs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Dec 2025 04:07:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.1",
+      "version": "3.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1a9b6c27939b5dfc39dee090e9ae27461215f0c6",
+            "comment": "chore: update web-component storybook to match react version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Nov 2025 04:06:59 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.1",
       "version": "3.0.0-rc.1",

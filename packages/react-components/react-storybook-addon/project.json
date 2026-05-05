@@ -26,7 +26,16 @@
           ],
           "target": "build"
         }
-      ]
+      ],
+      "options": {
+        "assets": [
+          {
+            "input": "{projectRoot}/src",
+            "output": "dist",
+            "glob": "styles.css"
+          }
+        ]
+      }
     }
   }
 }

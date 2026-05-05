@@ -1,4 +1,5 @@
-import { getTheme, IStackProps, IStackTokens, IStyle, ITheme } from '@fluentui/react';
+import type { IStackProps, IStackTokens, IStyle, ITheme } from '@fluentui/react';
+import { getTheme } from '@fluentui/react';
 
 // Helper function that converts a themed spacing key (if given) to the corresponding themed spacing value.
 const getThemedSpacing = (space: string, theme: ITheme): string => {

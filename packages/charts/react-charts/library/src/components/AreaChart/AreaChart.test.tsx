@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-import { AreaChart, CustomizedCalloutData, LineChartPoints } from './index';
+import type { CustomizedCalloutData, LineChartPoints } from './index';
+import { AreaChart } from './index';
 import { getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -696,50 +696,50 @@ describe('AreaChart snapShot testing', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
   it('renders Areachart correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} hideLegend={true} />);
+    const wrapper = render(<AreaChart data={chartData} hideLegend={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} hideTooltip={true} />);
+    const wrapper = render(<AreaChart data={chartData} hideTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} enabledLegendsWrapLines={true} />);
+    const wrapper = render(<AreaChart data={chartData} enabledLegendsWrapLines={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} yAxisTickFormat={'.1f'} />);
+    const wrapper = render(<AreaChart data={chartData} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders Areachart with single point correctly', async () => {
-    let wrapper = render(<AreaChart data={singleChartPoint} />);
+    const wrapper = render(<AreaChart data={singleChartPoint} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Should render with default colors when line color is not provided', async () => {
     const lineColor = points[0].color;
     delete points[0].color;
-    let wrapper = render(<AreaChart data={{ chartTitle: 'AreaChart', lineChartData: chartPoints }} />);
+    const wrapper = render(<AreaChart data={{ chartTitle: 'AreaChart', lineChartData: chartPoints }} />);
     expect(wrapper).toMatchSnapshot();
     points[0].color = lineColor;
   });
 
   it('Should not render circles when optimizeLargeData is true', async () => {
-    let wrapper = render(<AreaChart data={chartData} optimizeLargeData />);
+    const wrapper = render(<AreaChart data={chartData} optimizeLargeData />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} showXAxisLablesTooltip={true} />);
+    const wrapper = render(<AreaChart data={chartData} showXAxisLablesTooltip={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -754,7 +754,7 @@ describe('AreaChart snapShot testing', () => {
         value: mockGetComputedTextLength,
       },
     );
-    let wrapper = render(<AreaChart data={chartData} wrapXAxisLables={true} />);
+    const wrapper = render(<AreaChart data={chartData} wrapXAxisLables={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -763,29 +763,29 @@ describe('AreaChart - basic props', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(<AreaChart data={chartData} hideLegend={true} />);
+    const wrapper = render(<AreaChart data={chartData} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(<AreaChart data={chartData} hideTooltip={true} />);
+    const wrapper = render(<AreaChart data={chartData} hideTooltip={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerStack ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <AreaChart
         data={chartData}
         onRenderCalloutPerStack={(props: CustomizedCalloutData) =>
@@ -801,13 +801,13 @@ describe('AreaChart - basic props', () => {
     expect(renderedDOM).toBeDefined();
   });
   it('Should not render onRenderCalloutPerStack ', () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <AreaChart
         data={chartData}
         onRenderCalloutPerDataPoint={(props: CustomizedCalloutData) =>
@@ -824,7 +824,7 @@ describe('AreaChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -865,7 +865,7 @@ describe('AreaChart - mouse events', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
   it('Should render callout correctly on mouseover', () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const bars = wrapper.container.querySelectorAll('rect');
     fireEvent.mouseOver(bars[0]);
     expect(wrapper).toMatchSnapshot();
@@ -884,7 +884,7 @@ describe('AreaChart - mouse events', () => {
       }
     };
 
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const bars = wrapper.container.querySelectorAll('rect');
     fireEvent.mouseMove(bars[0], { clientX: 40, clientY: 0 });
     const html1 = wrapper.container.innerHTML;
@@ -894,7 +894,7 @@ describe('AreaChart - mouse events', () => {
   });
 
   it('Should render customized callout on mouseover', () => {
-    let wrapper = render(
+    const wrapper = render(
       <AreaChart
         data={chartData}
         onRenderCalloutPerDataPoint={(props: CustomizedCalloutData) =>
@@ -913,7 +913,7 @@ describe('AreaChart - mouse events', () => {
   });
 
   it('Should render customized callout per stack on mouseover', () => {
-    let wrapper = render(
+    const wrapper = render(
       <AreaChart
         data={chartData}
         onRenderCalloutPerStack={(props: CustomizedCalloutData) =>
@@ -935,13 +935,13 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<AreaChart data={chartData} />);
+    const wrapper = render(<AreaChart data={chartData} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<AreaChart data={emptyChartPoints} />);
+    const wrapper = render(<AreaChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });

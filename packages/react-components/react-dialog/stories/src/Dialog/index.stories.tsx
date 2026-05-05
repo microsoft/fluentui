@@ -8,6 +8,7 @@ import ssrMd from './DialogSSR.md';
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
+export { BackdropAppearance } from './DialogBackdropAppearance.stories';
 export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
 export { KeepRenderedInTheDOM } from './DialogKeepRenderedInTheDOM.stories';
 export { Actions } from './DialogActions.stories';
@@ -21,6 +22,7 @@ export { WithForm } from './DialogWithForm.stories';
 export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 export { Confirmation } from './DialogConfirmation.stories';
+export { MotionCustom } from './DialogMotionCustom.stories';
 
 // Typing with Meta<typeof Dialog> generates a type error for the `subcomponents` property.
 // https://github.com/storybookjs/storybook/issues/27535

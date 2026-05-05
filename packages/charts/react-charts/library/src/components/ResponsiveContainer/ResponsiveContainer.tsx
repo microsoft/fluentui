@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { getWindow } from '../../utilities/getWindow';
-import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
+import type { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
 import { useResponsiveChildStyles } from './useResponsiveChildStyles.styles';
 import { mergeClasses } from '@griffel/react';
 

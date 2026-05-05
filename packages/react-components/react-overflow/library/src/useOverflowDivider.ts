@@ -5,8 +5,9 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useOverflowContext } from './overflowContext';
 
 /**
- * @internal
  * Registers an overflow item
+ *
+ * @internal
  * @param groupId - assigns the item to a group, group visibility can be watched
  * @returns ref to assign to an intrinsic HTML element
  */

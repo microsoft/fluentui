@@ -1,4 +1,4 @@
-import { type DocsContextProps } from '@storybook/addon-docs';
+import { type DocsContextProps } from '@storybook/addon-docs/blocks';
 
 import { type FluentParameters } from '../hooks';
 

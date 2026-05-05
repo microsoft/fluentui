@@ -646,7 +646,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
 };
 
 const canMapToGantt = (data: Partial<PlotData>) => {
-  return isDateArray(data.base) || isNumberArray(data.base);
+  return isDateArray(data.base) || isNumberArray(data.base) || isDate(data.base) || isNumber(data.base);
 };
 
 export const getAxisIds = (data: Partial<PlotData>): { x: number; y: number } => {

@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { SkeletonContextValue } from '../../contexts/index';
+import type { SkeletonContextValue } from '../../contexts/index';
 
 export type SkeletonSlots = {
   /**
@@ -8,6 +8,31 @@ export type SkeletonSlots = {
    */
   root: NonNullable<Slot<'div', 'span'>>;
 };
+
+/**
+ * Sizes for the SkeletonItem
+ */
+export type SkeletonItemSize =
+  | 8
+  | 12
+  | 14
+  | 16
+  | 20
+  | 22
+  | 24
+  | 28
+  | 32
+  | 36
+  | 40
+  | 48
+  | 52
+  | 56
+  | 64
+  | 72
+  | 92
+  | 96
+  | 120
+  | 128;
 
 /**
  * Skeleton Props
@@ -31,7 +56,25 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
    * @deprecated Use `className` prop to set width
    */
   width?: number | string;
+
+  /**
+   * Sets the size of the SkeletonItems inside the Skeleton in pixels.
+   * Size is restricted to a limited set of values recommended for most uses (see SkeletonItemSize).
+   * This value can be overridden by the individual SkeletonItem's `size` prop.
+   */
+  size?: SkeletonItemSize;
+
+  /**
+   * Sets the shape of the SkeletonItems inside the Skeleton.
+   * This value can be overridden by the individual SkeletonItem's `shape` prop.
+   */
+  shape?: 'circle' | 'square' | 'rectangle';
 };
+
+/**
+ * Skeleton base props, excluding design-related props like animation and appearance.
+ */
+export type SkeletonBaseProps = Omit<SkeletonProps, 'animation' | 'appearance'>;
 
 export type SkeletonContextValues = {
   skeletonGroup: SkeletonContextValue;
@@ -40,4 +83,11 @@ export type SkeletonContextValues = {
 /**
  * State used in rendering Skeleton
  */
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
+export type SkeletonState = ComponentState<SkeletonSlots> &
+  Required<Pick<SkeletonProps, 'animation' | 'appearance'>> &
+  Pick<SkeletonProps, 'size' | 'shape'>;
+
+/**
+ * Skeleton base state, excluding design-related state like animation and appearance.
+ */
+export type SkeletonBaseState = Omit<SkeletonState, 'animation' | 'appearance' | 'size' | 'shape'>;

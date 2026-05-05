@@ -3,14 +3,15 @@
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
-import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType, DayOfWeek } from '../../utils';
+import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType } from '../../utils';
 import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles.styles';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
 import { useWeeks } from './useWeeks';
-import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles.styles';
+import type { WeekCorners } from './useWeekCornerStyles.styles';
+import { useWeekCornerStyles } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
-import type { Day } from '../../utils';
+import type { Day, DayOfWeek } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
 export interface DayInfo extends Day {
@@ -155,7 +156,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     getRefsFromDayInfos,
   } as const;
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid-linear' });
 
   return (
     <table

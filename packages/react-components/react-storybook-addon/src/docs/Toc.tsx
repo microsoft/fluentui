@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { addons } from '@storybook/preview-api';
-import { NAVIGATE_URL } from '@storybook/core-events';
+import { addons } from 'storybook/manager-api';
+import { NAVIGATE_URL } from 'storybook/internal/core-events';
 
 import { makeStyles } from '@griffel/react';
 import type { JSXElement } from '@fluentui/react-utilities';

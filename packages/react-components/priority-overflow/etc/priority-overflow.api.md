@@ -64,6 +64,7 @@ export interface OverflowItemEntry {
     // (undocumented)
     groupId?: string;
     id: string;
+    pinned?: boolean;
     priority: number;
 }
 

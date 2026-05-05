@@ -4,6 +4,7 @@ import { IChartTableStyleProps, IChartTableStyles } from '../../index';
 import { classNamesFunction, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IImageExportOptions } from '../../types/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
+import { ChartTitle } from '../../utilities/index';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { ITheme } from '@fluentui/react';
@@ -66,7 +67,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
   };
 
   public render(): JSXElement {
-    const { headers, rows, width, height, styles, theme } = this.props;
+    const { headers, rows, width, height, styles, theme, chartTitle } = this.props;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -108,16 +109,33 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
       }
     }
 
+    const titleHeight = chartTitle ? 30 : 0;
+    const totalHeight = typeof height === 'number' ? height : 650;
+    const tableHeight = `${totalHeight - titleHeight}px`;
+    const svgWidth = typeof width === 'number' ? width : '100%';
+    const titleMaxWidth = typeof width === 'number' ? width - 20 : undefined;
+    const titleX = typeof width === 'number' ? width / 2 : 0;
+
     return (
       <div
         ref={el => {
           this._rootElem = el;
         }}
         className={classNames.root}
-        style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
+        style={{ height: `${totalHeight}px`, overflow: 'hidden' }}
       >
-        <svg width={width ?? '100%'} height={height ?? '650px'} className={classNames.chart}>
-          <foreignObject x="0" y="0" width="100%" height="100%">
+        <svg width={svgWidth} height={`${totalHeight}px`} className={classNames.chart}>
+          {chartTitle && (
+            <ChartTitle
+              title={chartTitle}
+              x={titleX}
+              maxWidth={titleMaxWidth}
+              className={classNames.chartTitle}
+              titleStyles={this.props.titleStyles}
+              tooltipClassName={classNames.svgTooltip}
+            />
+          )}
+          <foreignObject x="0" y={titleHeight} width="100%" height={tableHeight}>
             <div
               style={{
                 maxHeight: height ? `${height}px` : '650px',

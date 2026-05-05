@@ -122,10 +122,9 @@ async function render(element: React.ReactElement, container: HTMLElement) {
   } else {
     // augment legacy react-dom APIs when using React 18 types
     const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
-    /* eslint-disable @typescript-eslint/no-deprecated -- This is expect to support React 17 */
+
     ReactDOM.render(element, container);
     unmount = () => ReactDOM.unmountComponentAtNode(container);
-    /* eslint-enable @typescript-eslint/no-deprecated */
   }
 
   return { container, unmount };

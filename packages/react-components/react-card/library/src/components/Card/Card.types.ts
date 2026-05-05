@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
@@ -135,6 +135,13 @@ export type CardProps = ComponentProps<CardSlots> & {
   disabled?: boolean;
 };
 
+export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size'> & {
+  /**
+   * Predicate function to determine whether the card's selection action should be restricted.
+   */
+  shouldRestrictTriggerAction?: (event: CardOnSelectionChangeEvent) => boolean;
+};
+
 /**
  * State used in rendering Card.
  */
@@ -178,3 +185,5 @@ export type CardState = ComponentState<CardSlots> &
       disabled: boolean;
     }
   >;
+
+export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;

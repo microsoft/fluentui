@@ -1,9 +1,0 @@
-{
-  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
-  "root": true,
-  "rules": {
-    "no-console": "off",
-    "no-restricted-globals": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
-  }
-}

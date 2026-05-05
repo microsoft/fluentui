@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
-import { HeatMapChart, HeatMapChartProps } from './index';
+import type { HeatMapChartProps } from './index';
+import { HeatMapChart } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
@@ -454,7 +455,7 @@ describe('HeatMapChart snapShot testing', () => {
   afterEach(sharedAfterEach);
 
   it('renders HeatMapChart correctly', async () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
@@ -465,7 +466,7 @@ describe('HeatMapChart snapShot testing', () => {
   });
 
   it('renders corretly even when data is not present for some group', async () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapStringData} // first group has no data in it
         domainValuesForColorScale={[0, 600]}
@@ -476,7 +477,7 @@ describe('HeatMapChart snapShot testing', () => {
   });
 
   it('renders hideLegend correctly', async () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         hideLegend={true}
@@ -488,7 +489,7 @@ describe('HeatMapChart snapShot testing', () => {
   });
 
   it('renders hideTooltip correctly', async () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         hideTooltip={true}
@@ -500,7 +501,7 @@ describe('HeatMapChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         yAxisTickFormat={'.1f'}
@@ -512,7 +513,7 @@ describe('HeatMapChart snapShot testing', () => {
   });
 
   it('should render HeatMapChart correctly when the layout direction is RTL', () => {
-    let wrapper = render(
+    const wrapper = render(
       <div dir="rtl">
         <HeatMapChart
           data={HeatMapDateStringData}
@@ -525,7 +526,7 @@ describe('HeatMapChart snapShot testing', () => {
   });
 
   it('should render HeatMapChart correctly in dark theme', () => {
-    let wrapper = render(
+    const wrapper = render(
       <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
         <HeatMapChart
           data={HeatMapDateStringData}
@@ -543,7 +544,7 @@ describe('HeatMapChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         hideLegend={true}
@@ -556,7 +557,7 @@ describe('HeatMapChart - basic props', () => {
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
@@ -568,7 +569,7 @@ describe('HeatMapChart - basic props', () => {
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
@@ -580,7 +581,7 @@ describe('HeatMapChart - basic props', () => {
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
@@ -630,7 +631,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   afterEach(sharedAfterEach);
 
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
@@ -642,7 +643,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(
+    const wrapper = render(
       <HeatMapChart
         data={[]}
         domainValuesForColorScale={[0, 600]}

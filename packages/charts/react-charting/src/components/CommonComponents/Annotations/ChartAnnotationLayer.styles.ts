@@ -11,6 +11,7 @@ import { ChartAnnotationArrowHead } from '../../../types/IChartAnnotation';
 export interface IChartAnnotationLayerStyles {
   root?: IStyle;
   annotation?: IStyle;
+  annotationNoDefaults?: IStyle;
   connectorLayer?: IStyle;
   measurement?: IStyle;
   annotationContent?: IStyle;
@@ -79,12 +80,28 @@ export const getStyles: IStyleFunctionOrObject<IChartAnnotationLayerStyleProps, 
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        backgroundColor: defaultBackground,
         color: defaultTextColor,
         padding: DEFAULT_ANNOTATION_PADDING,
         borderRadius: 4,
+        whiteSpace: 'pre-wrap',
+        zIndex: 2,
+        backgroundColor: defaultBackground,
         boxShadow: theme.effects.elevation4,
         border: `1px solid ${defaultBorderColor}`,
+      },
+    ],
+    annotationNoDefaults: [
+      theme.fonts.small,
+      {
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        color: defaultTextColor,
+        padding: DEFAULT_ANNOTATION_PADDING,
+        borderRadius: 4,
         whiteSpace: 'pre-wrap',
         zIndex: 2,
       },

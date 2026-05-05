@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import type { ArgTypes } from '@storybook/react';
+import type { ArgTypes } from '@storybook/react-webpack5';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
 

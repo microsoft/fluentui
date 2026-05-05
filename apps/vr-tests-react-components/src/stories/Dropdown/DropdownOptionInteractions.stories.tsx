@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Dropdown, Option, OptionGroup } from '@fluentui/react-combobox';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';

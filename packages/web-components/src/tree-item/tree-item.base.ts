@@ -1,4 +1,4 @@
-import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
@@ -14,6 +14,16 @@ export class BaseTreeItem extends FASTElement {
   @observable
   public itemSlot!: HTMLSlotElement;
 
+  /**
+   * Calls the slot change handler when the `itemSlot` reference is updated
+   * by the template binding.
+   *
+   * @internal
+   */
+  public itemSlotChanged() {
+    this.handleItemSlotChange();
+  }
+
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
@@ -21,8 +31,11 @@ export class BaseTreeItem extends FASTElement {
 
   /**
    * When true, the control will be appear expanded by user interaction.
-   * @public
+   * When true, the control will be appear expanded by user interaction.
+   *
    * HTML Attribute: `expanded`
+   *
+   * @public
    */
   @attr({ mode: 'boolean' })
   expanded: boolean = false;
@@ -52,7 +65,7 @@ export class BaseTreeItem extends FASTElement {
    * HTML Attribute: selected
    */
   @attr({ mode: 'boolean' })
-  selected: boolean = false;
+  selected!: boolean;
 
   /**
    * Handles changes to the selected attribute
@@ -70,8 +83,11 @@ export class BaseTreeItem extends FASTElement {
 
   /**
    * When true, the control has no child tree items
-   * @public
+   * When true, the control has no child tree items
+   *
    * HTML Attribute: empty
+   *
+   * @public
    */
   @attr({ mode: 'boolean' })
   public empty: boolean = false;
@@ -116,7 +132,10 @@ export class BaseTreeItem extends FASTElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateTabindexBySelected();
+
+    Updates.enqueue(() => {
+      this.updateTabindexBySelected();
+    });
   }
 
   /**
@@ -167,9 +186,7 @@ export class BaseTreeItem extends FASTElement {
   }
 
   protected updateTabindexBySelected() {
-    if (this.$fastController.isConnected) {
-      this.tabIndex = this.selected ? 0 : -1;
-    }
+    this.tabIndex = this.selected ? 0 : -1;
   }
 
   /** @internal */

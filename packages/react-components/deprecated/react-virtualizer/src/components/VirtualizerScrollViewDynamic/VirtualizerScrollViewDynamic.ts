@@ -4,7 +4,7 @@ import type { VirtualizerScrollViewDynamicProps } from './VirtualizerScrollViewD
 import { useVirtualizerScrollViewDynamic_unstable } from './useVirtualizerScrollViewDynamic';
 import { renderVirtualizerScrollViewDynamic_unstable } from './renderVirtualizerScrollViewDynamic';
 import { useVirtualizerScrollViewDynamicStyles_unstable } from './useVirtualizerScrollViewDynamicStyles.styles';
-import * as React from 'react';
+import type * as React from 'react';
 import type { VirtualizerContextProps } from '../../Utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 

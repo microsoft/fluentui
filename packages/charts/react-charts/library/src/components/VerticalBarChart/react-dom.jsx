@@ -1,4 +1,3 @@
-import React from 'react';
 const reactDom = jest.createMockFromModule('react-dom');
 
 function mockCreatePortal(element, target) {

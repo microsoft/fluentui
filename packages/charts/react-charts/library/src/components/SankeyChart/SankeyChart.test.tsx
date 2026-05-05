@@ -5,9 +5,9 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { SankeyChart } from './SankeyChart';
-import { ChartProps } from './index';
+import type { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
+import type { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
 
 expect.extend(toHaveNoViolations);
 
@@ -170,12 +170,16 @@ describe('Sankey chart - Subcomponent Node', () => {
     async container => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.click(nodes[0]);
-      const pathsAfterMouseOver = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
-      // Assert
-      expect(pathsAfterMouseOver).toBeDefined();
-      expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
-      expect(nodes[0].getAttribute('fill')).toEqual('#757575');
-      expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      await waitFor(() => {
+        const pathsAfterMouseOver = screen.getAllByText(
+          (content, element) => element!.tagName.toLowerCase() === 'path',
+        );
+        // Assert
+        expect(pathsAfterMouseOver).toBeDefined();
+        expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
+        expect(nodes[0].getAttribute('fill')).toEqual('#757575');
+        expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+      });
     },
   );
 });
@@ -212,7 +216,7 @@ describe('Sankey chart - Mouse events', () => {
     },
   );
 
-  testWithoutWait(
+  testWithWait(
     'Should reset node on mouse leave from node',
     SankeyChart,
     { data: chartPointsWithStringNodeId() },
@@ -220,9 +224,13 @@ describe('Sankey chart - Mouse events', () => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const prevFill = nodes[1].getAttribute('fill');
       fireEvent.mouseOver(nodes[0]);
-      expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      await waitFor(() => {
+        expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      });
       fireEvent.mouseOut(nodes[0]);
-      expect(nodes[1]).toHaveAttribute('fill', prevFill);
+      await waitFor(() => {
+        expect(nodes[1]).toHaveAttribute('fill', prevFill);
+      });
     },
   );
 });
@@ -449,7 +457,7 @@ describe('SankeyChart - mouse events', () => {
   }
   beforeEach(sharedBeforeEach);
   it('Should render correctly on node mouseover', () => {
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     const rects = wrapper.container.querySelectorAll('rect');
     fireEvent.mouseOver(rects[1]);
     expect(wrapper).toMatchSnapshot();
@@ -471,7 +479,7 @@ describe('SankeyChart - mouse events', () => {
 
   it('Should not add elements to the diagram when moving inside a "link" element and then back out', () => {
     // ARRANGE
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {
@@ -503,7 +511,7 @@ describe('SankeyChart - mouse events', () => {
 
   it.skip('Should not add elements to the diagram when moving inside a "node" element and then back out', () => {
     // ARRANGE
-    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {

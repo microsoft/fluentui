@@ -4,7 +4,7 @@ import { uniqueId } from '@microsoft/fast-web-utilities';
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
  * tokens to be added.
- * @internal
+ * @public
  */
 export type Theme = Record<string, string | number>;
 
@@ -46,7 +46,7 @@ const globalThemeStyleSheet = new CSSStyleSheet();
  *     as each entry’s value is either a string or a number.
  * @param node - The node to set the theme on, defaults to `document` for
  *     setting global theme.
- * @internal
+ * @public
  */
 export function setTheme(theme: Theme | null, node: Document | HTMLElement = document) {
   if (!node || !isThemeableNode(node)) {

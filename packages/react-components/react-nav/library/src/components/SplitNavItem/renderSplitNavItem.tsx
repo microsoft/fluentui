@@ -8,9 +8,9 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types';
 
 /**
- * @internal
- *
  * Helper function to render button slots
+ *
+ * @internal
  */
 const renderButtonSlot = (Button?: React.ElementType, ButtonTooltip?: React.ElementType) => {
   if (!Button) {

@@ -1,11 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  GroupedVerticalBarChart,
-  GroupedVerticalBarChartProps,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { GroupedVerticalBarChartProps } from '@fluentui/react-charts';
+import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Field, Label, Radio, RadioGroup, Slider, Switch, useId } from '@fluentui/react-components';
 
 const chartData: GroupedVerticalBarChartProps['dataV2'] = [
@@ -175,7 +171,8 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
             max={1000}
             id={_widthSliderId}
             onChange={(_, data) => setWidth(data.value)}
-            aria-valuetext={`Width slider: ${width}`}
+            aria-label="Change Width"
+            aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
           />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -186,7 +183,8 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
             max={1000}
             id={_heightSliderId}
             onChange={(_, data) => setHeight(data.value)}
-            aria-valuetext={`Height slider: ${height}`}
+            aria-label="Change Height"
+            aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
           />
         </div>
       </div>

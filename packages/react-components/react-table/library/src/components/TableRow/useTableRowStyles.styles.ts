@@ -125,9 +125,7 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
+
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },

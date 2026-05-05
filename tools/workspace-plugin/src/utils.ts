@@ -126,7 +126,7 @@ export function parseArgs<T extends Record<string, any>>(args: string[]) {
   return parsedArguments;
 }
 
-export { updateJestConfig } from '@nx/jest/src/generators/configuration/lib/update-jestconfig';
+export { updateJestConfig } from '@nx/workspace/src/generators/move/lib/update-jest-config';
 
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
@@ -263,6 +263,14 @@ export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
 export function isV8Package(tree: Tree, project: ProjectConfiguration) {
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
   return packageJson.version.startsWith('8.');
+}
+
+export function isToolsPackage(tree: Tree, project: ProjectConfiguration) {
+  const hasToolsTag = !!project.tags?.includes('tools');
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  const isPrivate = !!packageJson.private;
+
+  return hasToolsTag && !isPrivate && !isV8Package(tree, project);
 }
 
 export function packageJsonHasBeachballConfig(packageJson: PackageJson): packageJson is PackageJsonWithBeachball {

@@ -9,4 +9,10 @@ export {
 export type { DialogContextValue } from './dialogContext';
 export { DialogContext, DialogProvider, useDialogContext_unstable } from './dialogContext';
 export type { DialogSurfaceContextValue } from './dialogSurfaceContext';
+export type { DialogBackdropContextValue } from './dialogBackdropContext';
 export { DialogSurfaceContext, DialogSurfaceProvider, useDialogSurfaceContext_unstable } from './dialogSurfaceContext';
+export {
+  DialogBackdropContext,
+  DialogBackdropProvider,
+  useDialogBackdropContext_unstable,
+} from './dialogBackdropContext';

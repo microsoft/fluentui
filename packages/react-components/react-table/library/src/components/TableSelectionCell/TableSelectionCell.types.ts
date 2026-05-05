@@ -1,8 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import type { Radio } from '@fluentui/react-radio';
-import { TableCellSlots } from '../TableCell/TableCell.types';
-import { TableContextValue } from '../Table/Table.types';
+import type { TableCellSlots } from '../TableCell/TableCell.types';
+import type { TableContextValue } from '../Table/Table.types';
 
 export type TableSelectionCellSlots = {
   /**

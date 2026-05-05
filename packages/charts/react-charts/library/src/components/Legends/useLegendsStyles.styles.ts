@@ -2,7 +2,7 @@
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { LegendsProps, LegendsStyles } from './Legends.types';
+import type { LegendsProps, LegendsStyles } from './Legends.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector } from '../../utilities/index';
 
@@ -60,6 +60,10 @@ const useStyles = makeStyles({
     [HighContrastSelector]: {
       color: 'WindowText',
       forcedColorAdjust: 'none',
+      '&:focus-visible': {
+        outline: `${tokens.strokeWidthThick} solid canvasText`,
+        outlineOffset: `calc(${tokens.strokeWidthThick} * -1)`,
+      },
     },
     '&:hover': {
       [HighContrastSelector]: {

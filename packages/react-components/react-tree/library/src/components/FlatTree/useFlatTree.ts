@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
-import { FlatTreeProps, FlatTreeState } from './FlatTree.types';
+import type { FlatTreeProps, FlatTreeState } from './FlatTree.types';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { useSubtree } from '../../hooks/useSubtree';

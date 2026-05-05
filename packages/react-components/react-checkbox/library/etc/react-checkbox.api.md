@@ -4,17 +4,23 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+import type { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
-import { Slot } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
+
+// @public (undocumented)
+export type CheckboxBaseProps = Omit<CheckboxProps, 'shape' | 'size'>;
+
+// @public (undocumented)
+export type CheckboxBaseState = Omit<CheckboxState, 'shape' | 'size'>;
 
 // @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
@@ -48,10 +54,13 @@ export type CheckboxSlots = {
 export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
 
 // @public (undocumented)
-export const renderCheckbox_unstable: (state: CheckboxState) => JSXElement;
+export const renderCheckbox_unstable: (state: CheckboxBaseState) => JSXElement;
 
 // @public
 export const useCheckbox_unstable: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxState;
+
+// @public
+export const useCheckboxBase_unstable: (props: CheckboxBaseProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxBaseState;
 
 // @public
 export const useCheckboxStyles_unstable: (state: CheckboxState) => CheckboxState;

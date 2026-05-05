@@ -1,0 +1,114 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.toggle:hover {
+  background: var(--surface-muted);
+  border-color: var(--border-strong);
+}
+
+.toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.toggle[data-checked] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.toggle[data-checked]:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.toggle[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+}
+
+.iconOnly {
+  width: 32px;
+  padding: 0;
+}
+
+/* Segmented group — single bordered shell, dividers between cells */
+.group {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  padding: 2px;
+  gap: 2px;
+}
+
+.groupItem {
+  height: 28px;
+  width: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.groupItem:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.groupItem[data-checked] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.groupItem[data-checked]:hover {
+  background: var(--accent-strong);
+}
+
+.groupItem:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 3px var(--accent);
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.demoRow {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+}

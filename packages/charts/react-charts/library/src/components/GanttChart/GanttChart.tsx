@@ -2,15 +2,18 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
+import type { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Legend, Legends } from '../Legends/index';
-import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
-import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
-import { GanttChartProps } from './GanttChart.types';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
+import type { Margins, GanttChartDataPoint } from '../../types/DataPoint';
+import type { ModifiedCartesianChartProps } from '../CommonComponents/index';
+import { CartesianChart } from '../CommonComponents/index';
+import type { GanttChartProps } from './GanttChart.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ChartPopoverProps } from '../../index';
+import type { ChartPopoverProps } from '../../index';
+import type { IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
   YAxisType,
@@ -19,7 +22,6 @@ import {
   getNextColor,
   findHBCWANumericMinMaxOfY,
   createYAxisForHorizontalBarChartWithAxis,
-  IDomainNRange,
   createStringYAxisForHorizontalBarChartWithAxis,
   areArraysEqual,
   MIN_DOMAIN_MARGIN,
@@ -412,7 +414,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
               key={index}
               x={Math.min(rectStartX, rectEndX)}
               y={rectY}
-              width={Math.abs(rectEndX - rectStartX)}
+              width={Math.max(Math.abs(rectEndX - rectStartX), 2)}
               height={_barHeight.current}
               rx={props.roundCorners ? 3 : 0}
               fill={props.enableGradient ? `url(#${getGradientId(point.legend)})` : point.color}

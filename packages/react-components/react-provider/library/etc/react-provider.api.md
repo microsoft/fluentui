@@ -15,7 +15,7 @@ import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';

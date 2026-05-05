@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Decorator, Meta } from '@storybook/react';
+import type { Decorator, Meta } from '@storybook/react-webpack5';
 import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, type StoryParameters } from 'storywright';

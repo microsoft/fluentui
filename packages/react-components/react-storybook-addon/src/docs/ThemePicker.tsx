@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { addons } from '@storybook/preview-api';
+import { addons } from 'storybook/preview-api';
 
 import { Menu, MenuItemRadio, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { MenuProps } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { makeStyles } from '@griffel/react';
 
-import { themes, ThemeIds, THEME_ID } from '..';
+import type { ThemeIds } from '..';
+import { themes, THEME_ID } from '..';
 
 const useStyles = makeStyles({
   menuButton: {

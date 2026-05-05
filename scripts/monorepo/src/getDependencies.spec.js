@@ -50,11 +50,6 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": true,
-          "name": "eslint-plugin",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": true,
           "name": "react-conformance",
         },
         Object {
@@ -64,8 +59,13 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": true,
-          "name": "scripts-api-extractor",
+          "isTopLevel": false,
+          "name": "eslint-plugin",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "eslint-plugin-react-components",
         },
         Object {
           "dependencyType": "devDependencies",

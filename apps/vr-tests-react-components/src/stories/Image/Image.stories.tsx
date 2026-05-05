@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Image } from '@fluentui/react-image';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 const imageUrl = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 

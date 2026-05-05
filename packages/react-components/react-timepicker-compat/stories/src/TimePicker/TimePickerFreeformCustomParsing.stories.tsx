@@ -1,7 +1,8 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles } from '@fluentui/react-components';
-import { TimePicker, TimePickerProps } from '@fluentui/react-timepicker-compat';
+import type { TimePickerProps } from '@fluentui/react-timepicker-compat';
+import { TimePicker } from '@fluentui/react-timepicker-compat';
 import story from './TimePickerFreeformCustomParsing.md';
 
 const useStyles = makeStyles({

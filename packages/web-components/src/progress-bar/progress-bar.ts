@@ -14,16 +14,22 @@ export class ProgressBar extends BaseProgressBar {
   /**
    * The thickness of the progress bar
    *
-   * @public
+   * The thickness of the progress bar
+   *
    * HTML Attribute: `thickness`
+   *
+   * @public
    */
   @attr
   public thickness?: ProgressBarThickness;
 
   /**
    * The shape of the progress bar
-   * @public
+   * The shape of the progress bar
+   *
    * HTML Attribute: `shape`
+   *
+   * @public
    */
   @attr
   public shape?: ProgressBarShape;

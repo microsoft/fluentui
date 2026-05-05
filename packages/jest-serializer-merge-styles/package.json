@@ -12,11 +12,6 @@
   "scripts": {
     "build": "just-scripts build"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/merge-styles": "^8.6.14"
   }

@@ -1,4 +1,4 @@
-import { MappedStatusColorNames } from './types';
+import type { MappedStatusColorNames } from './types';
 
 export const statusColorMapping: Record<string, MappedStatusColorNames> = {
   success: 'green',

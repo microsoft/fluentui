@@ -3,7 +3,9 @@ import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
 import type { Badge } from './badge.js';
 
 /**
- * @internal - marking as internal update when Badge PR for start/end is in
+ * - marking as internal update when Badge PR for start/end is in
+ *
+ * @internal
  */
 export type BadgeOptions = StartEndOptions<Badge> & {
   defaultContent?: StaticallyComposableHTML;

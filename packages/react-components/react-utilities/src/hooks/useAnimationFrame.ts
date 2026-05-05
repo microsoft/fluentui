@@ -10,11 +10,11 @@ const setAnimationFrameNoop = (callback: FrameRequestCallback) => {
 const cancelAnimationFrameNoop = (handle: number) => handle;
 
 /**
- * @internal
  * Helper to manage a browser requestAnimationFrame.
  * Ensures that the requestAnimationFrame isn't set multiple times at once and is cleaned up
  * when the component is unloaded.
  *
+ * @internal
  * @returns A pair of [requestAnimationFrame, cancelAnimationFrame] that are stable between renders.
  */
 export function useAnimationFrame(): readonly [(fn: FrameRequestCallback) => number, () => void] {

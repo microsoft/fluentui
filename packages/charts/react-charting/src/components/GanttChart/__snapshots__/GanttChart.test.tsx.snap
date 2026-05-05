@@ -15,6 +15,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -44,7 +45,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -872,6 +873,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -901,7 +903,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1652,6 +1654,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -1681,7 +1684,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2449,6 +2452,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             font-weight: 400;
             height: 100%;
             overflow: hidden;
+            position: relative;
             width: 100%;
           }
       id="chart_8"
@@ -2478,7 +2482,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         >
           <g
             class=
-
+                fui-cart__xAxis
                 & text {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -3234,6 +3238,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -3263,7 +3268,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4021,6 +4026,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_8"
@@ -4050,7 +4056,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -5065,6 +5071,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -5094,7 +5101,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -5887,6 +5894,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -5916,7 +5924,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -6671,6 +6679,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -6700,7 +6709,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -7615,6 +7624,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           font-weight: 400;
           height: 100%;
           overflow: hidden;
+          position: relative;
           width: 100%;
         }
     id="chart_5"
@@ -7644,7 +7654,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
       >
         <g
           class=
-
+              fui-cart__xAxis
               & text {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -7782,20 +7792,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Final Inspections"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Final Inspections"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Fina...
@@ -7812,20 +7815,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Interior Finishing"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Interior Finishing"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Inte...
@@ -7842,20 +7838,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Exterior Finishing"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Exterior Finishing"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Exte...
@@ -7872,20 +7861,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Plumbing/Electrical"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Plumbing/Electrical"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Plum...
@@ -7902,20 +7884,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Roof Installation"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Roof Installation"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Roof...
@@ -7932,20 +7907,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Framing"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Framing"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Fram...
@@ -7962,20 +7930,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Foundation Work"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Foundation Work"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Foun...
@@ -7992,20 +7953,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Site Preparation"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Site Preparation"
                 dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots"
                 x="-16"
               >
                 Site...
@@ -8480,6 +8434,31 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
         </div>
       </div>
     </div>
+    <div
+      class=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background: #ffffff;
+            border-radius: 2px;
+            color: #323130;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            padding-bottom: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 8px;
+            pointer-events: none;
+            position: absolute;
+            text-align: center;
+          }
+      id="tooltip_7"
+      style="opacity: 0;"
+    />
   </div>
 </div>
 `;

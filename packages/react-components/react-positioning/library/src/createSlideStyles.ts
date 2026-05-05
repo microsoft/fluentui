@@ -6,6 +6,9 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * Creates animation styles so that positioned elements slide in from the main axis
  * @param mainAxis - distance than the element sides for
  * @returns Griffel styles to spread to a slot
+ *
+ * @deprecated The popover-related components now use the Slide motion component,
+ * which they inject using the `surfaceMotion` slot.
  */
 export function createSlideStyles(mainAxis: number): GriffelStyle {
   // With 'accumulate' animation composition, these opacity keyframes are added onto the default opacity of 1.

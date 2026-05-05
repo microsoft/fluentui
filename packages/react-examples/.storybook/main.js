@@ -5,7 +5,7 @@ import { merge } from 'webpack-merge';
 
 const config = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
   stories: getStories(),
-  addons: ['@storybook/addon-a11y', '@storybook/addon-essentials', 'storybook-addon-performance'],
+  addons: ['@storybook/addon-a11y'],
   typescript: {
     // disable react-docgen-typescript due to perf issues
     // (also appears that it would require more configuration to work properly)

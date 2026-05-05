@@ -10,10 +10,5 @@
     "lint": "eslint --cache .",
     "type-check": "tsc -p . --noEmit"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-monorepo": "*"
-  }
+  "license": "MIT"
 }

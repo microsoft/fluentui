@@ -4,26 +4,33 @@
 
 ```ts
 
-import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
+import type { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { EventData } from '@fluentui/react-utilities';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { PortalProps } from '@fluentui/react-portal';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
+
+// @public
+export type BaseComboboxProps = DistributiveOmit<ComboboxProps, 'appearance' | 'size'>;
+
+// @public
+export type BaseComboboxState = DistributiveOmit<ComboboxState, 'appearance' | 'size'>;
 
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
@@ -105,6 +112,12 @@ export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & 
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
+
+// @public
+export type DropdownBaseHookProps = DistributiveOmit<DropdownProps, 'appearance' | 'size'>;
+
+// @public
+export type DropdownBaseHookState = DistributiveOmit<DropdownState, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export const dropdownClassNames: SlotClassNames<DropdownSlots>;
@@ -238,7 +251,7 @@ export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disab
 };
 
 // @public
-export const renderCombobox_unstable: (state: ComboboxState, contextValues: ComboboxContextValues) => JSXElement;
+export const renderCombobox_unstable: (state: BaseComboboxState, contextValues: ComboboxContextValues) => JSXElement;
 
 // @public
 export const renderDropdown_unstable: (state: DropdownState, contextValues: DropdownContextValues) => JSXElement;
@@ -260,6 +273,9 @@ export function useButtonTriggerSlot(triggerFromProps: NonNullable<Slot<'button'
 
 // @public
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
+
+// @public
+export const useComboboxBase_unstable: (props: BaseComboboxProps, ref: React_2.Ref<HTMLInputElement>) => BaseComboboxState;
 
 // @internal
 export const useComboboxBaseState: (props: ComboboxBaseProps & {
@@ -286,6 +302,9 @@ export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState
 export const useDropdown_unstable: (props: DropdownProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownState;
 
 // @public
+export const useDropdownBase_unstable: (props: DropdownBaseHookProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownBaseHookState;
+
+// @public
 export const useDropdownStyles_unstable: (state: DropdownState) => DropdownState;
 
 // @internal
@@ -308,6 +327,9 @@ export const useListboxStyles_unstable: (state: ListboxState) => ListboxState;
 
 // @public
 export const useOption_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
+
+// @public
+export const useOptionBase_unstable: (props: OptionProps, ref: React_2.Ref<HTMLElement>) => OptionState;
 
 // @public
 export const useOptionGroup_unstable: (props: OptionGroupProps, ref: React_2.Ref<HTMLElement>) => OptionGroupState;

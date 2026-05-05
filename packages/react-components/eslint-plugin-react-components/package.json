@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin-react-components",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "description": "ESLint plugin and custom rules for Fluent UI components v9",
   "main": "./lib-commonjs/index.js",
   "module": "./lib/index.js",
@@ -18,9 +18,9 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "typescript-eslint": "^8.46.2",
-    "eslint": "^8.0.0",
-    "typescript": "^5.0.0"
+    "typescript-eslint": ">= 8.46.2",
+    "eslint": ">= 8.0.0",
+    "typescript": ">= 5.0.0"
   },
   "exports": {
     ".": {

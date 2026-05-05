@@ -1,4 +1,4 @@
-import { addons, types } from '@storybook/manager-api';
+import { addons, types } from 'storybook/manager-api';
 
 import { ADDON_ID, DIR_ID, STRICT_MODE_ID, THEME_ID } from '../constants';
 import { ThemePicker } from '../components/ThemePicker';

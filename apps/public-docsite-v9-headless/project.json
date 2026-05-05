@@ -1,0 +1,26 @@
+{
+  "name": "public-docsite-v9-headless",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": ["react-headless-components-preview-stories"],
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": [
+        {
+          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "target": "build"
+        }
+      ]
+    },
+    "build-storybook:docsite": {
+      "dependsOn": [
+        {
+          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "target": "build"
+        }
+      ],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"]
+    }
+  }
+}

@@ -8,12 +8,18 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
+
+// @public
+export type InputBaseProps = Omit<InputProps, 'appearance' | 'size'>;
+
+// @public
+export type InputBaseState = Omit<InputState, 'appearance' | 'size'>;
 
 // @public (undocumented)
 export const inputClassNames: SlotClassNames<InputSlots>;
@@ -46,10 +52,13 @@ export type InputSlots = {
 export type InputState = Required<Pick<InputProps, 'appearance' | 'size'>> & ComponentState<InputSlots>;
 
 // @public
-export const renderInput_unstable: (state: InputState) => JSXElement;
+export const renderInput_unstable: (state: InputBaseState) => JSXElement;
 
 // @public
 export const useInput_unstable: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
+
+// @public
+export const useInputBase_unstable: (props: InputBaseProps, ref: React_2.Ref<HTMLInputElement>) => InputBaseState;
 
 // @public
 export const useInputStyles_unstable: (state: InputState) => InputState;

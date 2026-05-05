@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';

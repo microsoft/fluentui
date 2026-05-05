@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { isConformant } from '../../testing/isConformant';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
-import { CarouselAutoplayButtonProps } from './CarouselAutoplayButton.types';
+import type { CarouselAutoplayButtonProps } from './CarouselAutoplayButton.types';
 
 describe('CarouselAutoplayButton', () => {
   isConformant({

@@ -8,7 +8,7 @@ const config = createConfig({
   displayName: 'rit-tests-v8',
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@fluentui/jest-serializer-merge-styles'],
+  snapshotSerializers: [require.resolve('@fluentui/jest-serializer-merge-styles')],
 });
 
 // use default jest config to properly resolve react-18

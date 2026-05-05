@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { LineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
+import type { LineChartProps } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 
 export const LineChartStyled = (props: LineChartProps): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
@@ -52,7 +53,8 @@ export const LineChartStyled = (props: LineChartProps): JSXElement => {
           max={1000}
           id="changeWidth_Styled"
           onChange={_onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${width}`}
+          aria-label="Change Width"
+          aria-valuetext={`current value ${width}', Minimum 200 and Maximum 1000`}
         />
         <label htmlFor="changeHeight_Styled">Change Height:</label>
         <input
@@ -62,7 +64,8 @@ export const LineChartStyled = (props: LineChartProps): JSXElement => {
           max={1000}
           id="changeHeight_Styled"
           onChange={_onHeightChange}
-          aria-valuetext={`ChangeHeightslider${height}`}
+          aria-label="Change Height"
+          aria-valuetext={`current value ${height}', Minimum 200 and Maximum 1000`}
         />
       </div>
       <div style={rootStyle}>

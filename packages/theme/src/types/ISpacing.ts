@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * This is an experimental interface and will be changed post design review.
  * {@docCategory ISpacing}
+ *
+ * @internal
  */
 export interface ISpacing {
   s2: string;

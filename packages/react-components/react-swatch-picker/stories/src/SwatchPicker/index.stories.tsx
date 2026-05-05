@@ -13,6 +13,7 @@ export { EmptySwatchExample } from './EmptySwatch.stories';
 export { ColorSwatchVariants } from './ColorSwatchVariants.stories';
 export { SwatchPickerMixedSwatches } from './SwatchPickerMixedSwatches.stories';
 export { SwatchPickerWithTooltip } from './SwatchPickerWithTooltip.stories';
+export { SwatchPickerFocusMode } from './SwatchPickerFocusMode.stories';
 export { SwatchPickerPopup } from './SwatchPickerPopup.stories';
 
 // Typing with Meta<typeof SwatchPicker> generates a type error for the `subcomponents` property.

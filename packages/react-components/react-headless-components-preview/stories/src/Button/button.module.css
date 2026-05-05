@@ -1,0 +1,149 @@
+/* button — pill-shaped, monochrome */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard),
+    transform 80ms var(--ease-standard);
+}
+
+.button:hover {
+  background: var(--accent-strong);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.button[data-disabled],
+.button[data-disabled-focusable] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button[data-disabled]:hover,
+.button[data-disabled-focusable]:hover {
+  background: var(--accent);
+}
+
+/* Secondary — light gray pill */
+.secondary {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.secondary:hover {
+  background: var(--surface-sunken);
+}
+
+.secondary[data-disabled]:hover,
+.secondary[data-disabled-focusable]:hover {
+  background: var(--surface-muted);
+}
+
+/* Subtle — text-only, no chrome until hover */
+.subtle {
+  background: transparent;
+  color: var(--text);
+}
+
+.subtle:hover {
+  background: var(--surface-muted);
+}
+
+.subtle[data-disabled]:hover,
+.subtle[data-disabled-focusable]:hover {
+  background: transparent;
+}
+
+/* Outline — bordered transparent */
+.outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.outline:hover {
+  background: var(--surface-muted);
+  border-color: var(--text);
+}
+
+/* Sizes */
+.small {
+  height: 26px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.large {
+  height: 40px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+/* Icon-only — perfectly circular */
+.button[data-icon-only] {
+  width: 32px;
+  padding: 0;
+}
+
+.iconOnlySmall[data-icon-only] {
+  width: 26px;
+  height: 26px;
+}
+
+.iconOnlyLarge[data-icon-only] {
+  width: 40px;
+  height: 40px;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.large .icon,
+.iconOnlyLarge .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Demo helpers (used by Storybook examples) */
+
+.demo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.demoRow {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+}
