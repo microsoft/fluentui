@@ -2,18 +2,14 @@ import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import type { PositioningProps } from '@fluentui/react-headless-components-preview/positioning';
 
-const classes = {
-  trigger:
-    'px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 data-[open]:bg-blue-700 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 cursor-pointer border-none',
-  surface: 'bg-white rounded-lg shadow-lg border border-gray-200 p-4 min-w-[160px]',
-};
+import styles from './positioning.module.css';
 
 export const Default = (props: PositioningProps): React.ReactNode => (
   <Popover positioning={props}>
     <PopoverTrigger>
-      <button className={classes.trigger}>Click me</button>
+      <button className={styles.trigger}>Click me</button>
     </PopoverTrigger>
-    <PopoverSurface className={classes.surface}>Container</PopoverSurface>
+    <PopoverSurface className={styles.surfaceCallout}>Container</PopoverSurface>
   </Popover>
 );
 
