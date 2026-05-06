@@ -263,6 +263,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   copilot: {
     extensions: ['copilot'],
   },
+  cowork: {
+    extensions: ['work'],
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
@@ -299,6 +302,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   ipynb: {
     extensions: ['nnb', 'ipynb'],
   },
+  inkcanvas: {
+    extensions: ['canvas'],
+  },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
@@ -315,6 +321,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   splist: {},
   mcworld: {
     extensions: ['mcworld'],
+  },
+  md: {
+    extensions: ['md', 'markdn', 'markdown', 'mdown', 'mkdn'],
   },
   mctemplate: {
     extensions: ['mctemplate'],
@@ -445,7 +454,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
-    extensions: ['epub', 'gdoc', 'odt', 'md', 'markdn', 'markdown', 'mdown', 'mkdn', 'rtf', 'wri', 'pages'],
+    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
   playlist: {},
