@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: fix API extractor warnings in tsdocs and comments",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "none"
-}

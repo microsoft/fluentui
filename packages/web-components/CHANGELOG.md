@@ -1,8 +1,22 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 01 May 2026 04:08:47 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2026 04:07:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.16)
+
+Wed, 06 May 2026 04:07:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.15..@fluentui/web-components_v3.0.0-rc.16)
+
+### Changes
+
+- fix: remove behaviors in favor of direct css inclusion ([PR #36092](https://github.com/microsoft/fluentui/pull/36092) by 13071055+chrisdholt@users.noreply.github.com)
+- adopt focusgroup and polyfill ([PR #35884](https://github.com/microsoft/fluentui/pull/35884) by machi@microsoft.com)
+- fix components for native focusgroup implementation ([PR #36107](https://github.com/microsoft/fluentui/pull/36107) by machi@microsoft.com)
+- fix: stopImmediatePropagation on internalProxyAnchors ([PR #36085](https://github.com/microsoft/fluentui/pull/36085) by rupertdavid@microsoft.com)
+- update import references to point directly to non-barrel files ([PR #36093](https://github.com/microsoft/fluentui/pull/36093) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: add tagName export in options and leverage for consistent name implementation ([PR #36095](https://github.com/microsoft/fluentui/pull/36095) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.15)
 

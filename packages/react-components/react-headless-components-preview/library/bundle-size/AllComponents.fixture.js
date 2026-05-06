@@ -9,10 +9,12 @@ import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
 import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
 import * as Field from '@fluentui/react-headless-components-preview/field';
+import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
+import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
@@ -43,11 +45,13 @@ console.log({
   Divider,
   Drawer,
   Field,
+  Image,
   Input,
   Link,
   MessageBar,
-  ProgressBar,
+  Persona,
   Popover,
+  ProgressBar,
   Provider,
   RadioGroup,
   RatingDisplay,

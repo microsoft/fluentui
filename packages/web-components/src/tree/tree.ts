@@ -1,6 +1,8 @@
 import { attr } from '@microsoft/fast-element';
+import { FocusGroup } from '@microsoft/focusgroup-polyfill/shadowless';
 import type { TreeItem } from '../tree-item/tree-item.js';
 import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
+import { ArrayItemCollection } from '../utils/focusgroup.js';
 import { BaseTree } from './tree.base.js';
 
 /**
@@ -38,13 +40,39 @@ export class Tree extends BaseTree {
     this.updateSizeAndAppearance();
   }
 
+  private fg?: FocusGroup;
+
+  private fgItems?: ArrayItemCollection<TreeItem>;
+
   /**
    * child tree items supered change event
    * @internal
    */
   public childTreeItemsChanged() {
     super.childTreeItemsChanged();
+
     this.updateSizeAndAppearance();
+
+    this.fgItems ??= new ArrayItemCollection<TreeItem>(
+      () => this.descendantTreeItems.filter(i => !i.isHidden) as TreeItem[],
+      () => (this.currentSelected as TreeItem | null) ?? null,
+    );
+    if (!this.fg) {
+      this.fg = new FocusGroup(this, this.fgItems, {
+        definition: {
+          behavior: 'menu',
+          axis: 'block',
+          memory: false,
+        },
+      });
+    } else {
+      this.fg.update();
+    }
+  }
+
+  disconnectedCallback() {
+    this.fg?.disconnect();
+    super.disconnectedCallback();
   }
 
   /**
@@ -60,5 +88,10 @@ export class Tree extends BaseTree {
       (item as TreeItem).size = this.size;
       (item as TreeItem).appearance = this.appearance;
     });
+  }
+
+  /** @internal */
+  public itemToggleHandler() {
+    this.fg?.update();
   }
 }

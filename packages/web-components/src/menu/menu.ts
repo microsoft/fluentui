@@ -279,9 +279,10 @@ export class Menu extends FASTElement {
     // @ts-expect-error - Baseline 2024
     if (e.type === 'toggle' && e.newState) {
       // @ts-expect-error - Baseline 2024
-      const newState = e.newState === 'open';
-      this._trigger?.setAttribute('aria-expanded', `${newState}`);
-      this._open = newState;
+      const open = e.newState === 'open';
+      this._trigger?.setAttribute('aria-expanded', `${open}`);
+      this._menuList?.setAttribute('focusgroup', open ? 'menu' : 'none');
+      this._open = open;
       if (this._open) {
         this.focusMenuList();
       }

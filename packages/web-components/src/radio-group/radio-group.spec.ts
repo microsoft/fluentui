@@ -502,14 +502,16 @@ test.describe('RadioGroup', () => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');
 
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
-      `,
-    });
+      </fluent-radio-group>
+    `);
 
+    await page.getByTestId('before').focus();
     await page.keyboard.press('Tab');
 
     await expect(radios.nth(0)).toBeFocused();
@@ -735,5 +737,57 @@ test.describe('RadioGroup', () => {
     await button.click();
 
     await expect(page).not.toHaveURL(/radio=/);
+  });
+
+  test('should NOT check the first radio when the group gains focus and check when space is hit', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator('fluent-radio');
+    const before = page.getByTestId('before');
+
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group name="radio">
+        <fluent-radio value="foo"></fluent-radio>
+        <fluent-radio value="bar"></fluent-radio>
+        <fluent-radio value="baz"></fluent-radio>
+      </fluent-radio-group>
+    `);
+
+    await before.focus();
+    await page.keyboard.press('Tab');
+
+    await expect(radios.nth(0)).toBeFocused();
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+
+    await page.keyboard.press('Space');
+    await expect(radios.nth(0)).toHaveJSProperty('checked', true);
+  });
+
+  test('should check the second radio when the focus is moved to it by directional navigation', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator('fluent-radio');
+    const before = page.getByTestId('before');
+
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group name="radio">
+        <fluent-radio value="foo"></fluent-radio>
+        <fluent-radio value="bar"></fluent-radio>
+        <fluent-radio value="baz"></fluent-radio>
+      </fluent-radio-group>
+    `);
+
+    await before.focus();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+
+    await expect(radios.nth(1)).toBeFocused();
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
   });
 });
