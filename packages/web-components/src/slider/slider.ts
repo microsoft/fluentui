@@ -1,7 +1,7 @@
 import type { ElementStyles } from '@microsoft/fast-element';
 import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
-import { limit } from '@microsoft/fast-web-utilities';
 import { Direction } from '../utils/direction.js';
+import { limit } from '../utils/numbers.js';
 import { Orientation } from '../utils/orientation.js';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
