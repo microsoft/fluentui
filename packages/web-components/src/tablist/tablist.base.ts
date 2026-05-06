@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 import type { Tab } from '../tab/tab.js';
 import { isTab } from '../tab/tab.options.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
