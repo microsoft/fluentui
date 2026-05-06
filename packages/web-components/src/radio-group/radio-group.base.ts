@@ -178,6 +178,7 @@ export class BaseRadioGroup extends FASTElement {
 
       radio.name = this.name ?? radio.name;
       radio.disabled = !!this.disabled || !!radio.disabledAttribute;
+      radio.toggleAttribute('focusgroupstart', radio.checked && !radio.disabled);
     });
 
     if (!this.dirtyState && this.initialValue) {
