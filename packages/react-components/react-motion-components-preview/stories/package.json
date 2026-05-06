@@ -7,6 +7,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-motion": "*",
     "@fluentui/react-motion-components-preview": "*",
-    "@fluentui/react-shared-contexts": "*"
+    "@fluentui/react-shared-contexts": "*",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   }
 }
