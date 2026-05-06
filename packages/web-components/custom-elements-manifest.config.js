@@ -29,8 +29,12 @@ export default {
   /** Provide custom plugins */
   plugins: [
     modulePathResolverPlugin({
-      modulePathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/${getFileName(name)}`,
-      definitionPathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/define.js`,
+      modulePathTemplate: (modulePath, name, tagName) =>
+        modulePath.replace(/^(\.\/)?src\//, './dist/esm/').replace(/\.ts$/, '.js'),
+      definitionPathTemplate: (modulePath, name, tagName) => {
+        const folder = modulePath.replace(/^(\.\/)?src\//, './dist/esm/').replace(/\/[^/]+$/, '');
+        return `${folder}/define.js`;
+      },
     }),
     typeParserPlugin(),
     cemInheritancePlugin(),
@@ -56,22 +60,3 @@ export default {
     return program.getSourceFiles().filter(sf => globs.find(glob => sf.fileName.includes(glob)));
   },
 };
-
-function getFolderName(baseName) {
-  // Convert "BaseAccordionItem" to "accordion-item"
-  return baseName
-    .replace(/^Base/, '') // Remove the "Base" prefix
-    .replace(/([a-z])([A-Z])/g, '$1-$2') // Convert camelCase to kebab-case
-    .toLowerCase();
-}
-
-function getFileName(baseName) {
-  // Convert "BaseAccordionItem" to "accordion-item"
-  const kebabCaseName = baseName
-    .replace(/^Base/, '') // Remove the "Base" prefix
-    .replace(/([a-z])([A-Z])/g, '$1-$2') // Convert camelCase to kebab-case
-    .toLowerCase();
-
-  // Construct the file path
-  return `${kebabCaseName}${baseName.includes('Base') ? '.base' : ''}.js`;
-}

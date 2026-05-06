@@ -53,8 +53,9 @@
     "./dist/web-components.min.js"
   ],
   "scripts": {
-    "analyze": "cem analyze",
+    "analyze": "cem analyze && yarn verify-cem",
     "verify-packaging": "node ./scripts/verify-packaging",
+    "verify-cem": "node ./scripts/verify-cem",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
     "compile": "node ./scripts/compile",
