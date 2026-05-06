@@ -1,5 +1,12 @@
 {
   "name": "@fluentui/react-motion-components-preview-stories",
   "version": "0.0.0",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-icons": "*",
+    "@fluentui/react-motion": "*",
+    "@fluentui/react-motion-components-preview": "*",
+    "@fluentui/react-shared-contexts": "*"
+  }
 }
