@@ -659,7 +659,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             onFocus={event => _lineFocus(event, circlePoint, circleRef)}
             onBlur={_handleMouseOut}
-            role="img"
+            role={!props.hideTooltip ? 'button' : 'img'}
             aria-label={_getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint, true)}
           />,
         );
@@ -1043,8 +1043,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
             onBlur: _handleMouseOut,
             onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-            role: 'img',
-            tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
+            role: props.onBarClick || props.href || !props.hideTooltip ? 'button' : 'img',
+            tabIndex: (props.onBarClick || props.href || !props.hideTooltip) && shouldHighlight ? 0 : undefined,
           };
 
         let barHeight: number;
@@ -1146,8 +1146,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onFocus: () => _onStackFocus(singleChartData, groupRef),
           onBlur: _handleMouseOut,
           onClick: (event: any) => _onClick(singleChartData, event),
-          role: 'img',
-          tabIndex: !props.hideTooltip ? 0 : undefined,
+          role: props.onBarClick || props.href || !props.hideTooltip ? 'button' : 'img',
+          tabIndex: props.onBarClick || props.href || !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
       let barLabel: string | number = 0;

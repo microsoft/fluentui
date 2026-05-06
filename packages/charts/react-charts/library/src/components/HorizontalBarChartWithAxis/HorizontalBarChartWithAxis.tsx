@@ -471,14 +471,14 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onClick={point.onClick}
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role={point.onClick ? 'button' : 'img'}
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
             onBlur={_onBarLeave}
             fill={startColor}
             opacity={shouldHighlight ? 1 : 0.1}
-            tabIndex={shouldHighlight ? 0 : undefined}
+            tabIndex={point.onClick && shouldHighlight ? 0 : undefined}
           />
           {showLabel && _renderBarLabel(barEndX, yBarScale(point.y) - _barHeight / 2, totalBarValue, isPositiveBar)}
         </React.Fragment>
@@ -646,7 +646,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role={point.onClick ? 'button' : 'img'}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -657,7 +657,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             opacity={shouldHighlight ? 1 : 0.1}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
             fill={startColor}
-            tabIndex={shouldHighlight ? 0 : undefined}
+            tabIndex={point.onClick && shouldHighlight ? 0 : undefined}
           />
           {showLabel && _renderBarLabel(barEndX, yPosition, totalBarValue, isPositiveBar)}
         </React.Fragment>
