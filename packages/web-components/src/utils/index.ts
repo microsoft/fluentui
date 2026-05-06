@@ -1,4 +1,3 @@
-export * from './array.js';
 export * from './converters.js';
 export * from './direction.js';
 export * from './numbers.js';

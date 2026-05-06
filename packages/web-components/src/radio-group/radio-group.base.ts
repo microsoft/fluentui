@@ -1,5 +1,4 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import { findLastIndex } from '../utils/array.js';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
@@ -155,7 +154,7 @@ export class BaseRadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+    const checkedIndex = this.enabledRadios.findLastIndex(x => x.initialChecked);
 
     next.forEach((radio, index) => {
       radio.ariaPosInSet = `${index + 1}`;
