@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 06 May 2026 19:08:42 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.17",
+      "version": "3.0.0-rc.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d57f87e85e38fe4b70ff74a775065cc3e21e8dd3",
+            "comment": "fix menu not closing when menu list loses keyboard focus"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "3d24f1499aa6dbb31f031c7995217993be2f5edb",
+            "comment": "fix: remove deprecated fast-web-utilities references"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 May 2026 04:07:34 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.16",
       "version": "3.0.0-rc.16",
