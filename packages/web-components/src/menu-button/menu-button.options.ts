@@ -1,6 +1,7 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ButtonOptions } from '../button/button.options.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
-import type { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * Menu Button Appearance constants
@@ -39,3 +40,10 @@ export const MenuButtonSize = ButtonSize;
 export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
 
 export type { ButtonOptions as MenuButtonOptions };
+
+/**
+ * The tag name for the menu button element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-menu-button` as const;

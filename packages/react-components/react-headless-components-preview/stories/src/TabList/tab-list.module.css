@@ -4,6 +4,7 @@
   padding: 4px;
   background: var(--surface-muted);
   border-radius: var(--radius-pill);
+  width: max-content;
 }
 
 .tabsVertical {
@@ -35,15 +36,15 @@
   color: var(--text);
 }
 
-.tab:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
-}
-
 .tab[data-selected] {
   background: var(--bg-elev);
   color: var(--text);
   box-shadow: var(--shadow-1);
+}
+
+.tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
 .layout {

@@ -19,7 +19,7 @@
 }
 
 .card:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -131,7 +131,7 @@
 }
 
 .iconButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -171,7 +171,7 @@
 }
 
 .footerButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -186,7 +186,7 @@
 }
 
 .checkbox:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 

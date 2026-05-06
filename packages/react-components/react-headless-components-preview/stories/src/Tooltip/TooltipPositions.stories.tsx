@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { Tooltip } from '@fluentui/react-headless-components-preview/tooltip';
 
+import styles from './tooltip.module.css';
+
 export const Positions = (): React.ReactNode => (
-  <div className="flex gap-4 flex-wrap p-20">
+  <div className={styles.row}>
     {(['above', 'below', 'before', 'after'] as const).map(position => (
       <Tooltip
         key={position}
         content={{
-          className: 'bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-md',
+          className: styles.content,
           children: `Position: ${position}`,
         }}
         relationship="description"
-        positioning={position}
+        positioning={{ position, offset: 8 }}
       >
-        <button className="px-3 py-1.5 rounded border border-gray-300 bg-white hover:bg-gray-50 text-sm cursor-pointer capitalize">
-          {position}
-        </button>
+        <button className={`${styles.trigger} ${styles.capitalize}`}>{position}</button>
       </Tooltip>
     ))}
   </div>

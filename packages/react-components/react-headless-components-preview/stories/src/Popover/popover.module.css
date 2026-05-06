@@ -5,8 +5,8 @@
   padding: 0 var(--space-4);
   border: 0;
   border-radius: var(--radius-md);
-  background: var(--text);
-  color: var(--text-on-accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
   font-size: 13.5px;
   font-weight: 500;
   cursor: pointer;
@@ -14,25 +14,22 @@
 
 .trigger:hover,
 .trigger[data-open] {
-  background: var(--text-muted);
+  background: var(--accent-strong);
 }
 
 .trigger:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
 .triggerSecondary {
-  background: var(--accent);
+  background: var(--text);
+  color: var(--text-on-accent);
 }
 
 .triggerSecondary:hover,
 .triggerSecondary[data-open] {
-  background: var(--accent-strong);
-}
-
-.triggerSecondary:focus-visible {
-  outline-color: var(--accent);
+  background: var(--text-muted);
 }
 
 .triggerSmall {
@@ -54,7 +51,7 @@
 }
 
 .contextTrigger:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -129,7 +126,7 @@
 }
 
 .actionButton:focus-visible {
-  outline: var(--stroke-thick) solid var(--text);
+  outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 2px;
 }
 

@@ -14,8 +14,7 @@
 }
 
 .wrap:has(:focus-visible) {
-  border-color: var(--text);
-  box-shadow: 0 0 0 3px var(--surface-muted);
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
 .textarea {

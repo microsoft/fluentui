@@ -65,6 +65,14 @@
   transition: background var(--duration-fast) var(--ease-standard);
 }
 
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
 .btn:hover {
   background: var(--surface-sunken);
 }

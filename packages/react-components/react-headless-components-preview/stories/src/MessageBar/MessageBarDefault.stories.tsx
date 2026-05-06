@@ -26,7 +26,7 @@ export const Default = (): React.ReactNode => (
       <button type="button" className={styles.actionBtn}>
         Action
       </button>
-      <button type="button" className={styles.iconBtn} aria-label="Dismiss">
+      <button type="button" className={`${styles.actionBtn} ${styles.iconBtn}`} aria-label="Dismiss">
         <DismissRegular aria-hidden />
       </button>
     </MessageBarActions>

@@ -212,7 +212,7 @@ test.describe('Tree', () => {
     const treeItem1 = element.locator('fluent-tree-item').nth(0);
     expect(await treeItem1.getAttribute('selected')).toBeNull();
 
-    await element.focus();
+    await treeItem1.focus();
     expect(await elementHandle).toBe(false);
     await page.keyboard.press('Space');
 
@@ -231,14 +231,14 @@ test.describe('Tree', () => {
       innerHTML: /* html */ `
           <fluent-tree-item>
             Item1
-            <a href='edge://settings'>Link1</a>
+            <a href='edge://settings' focusgroup='none'>Link1</a>
           </fluent-tree-item>
           <fluent-tree-item>Item 2</fluent-tree-item>
       `,
     });
 
     const treeItems = page.locator('fluent-tree-item');
-    await element.focus();
+    await treeItems.nth(0).focus();
     await expect(treeItems.nth(0)).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(treeItems.nth(0)).toHaveAttribute('selected');
