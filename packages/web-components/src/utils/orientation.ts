@@ -2,6 +2,7 @@
 
 /**
  * Standard orientation values
+ * @public
  */
 export const Orientation = {
   horizontal: 'horizontal',
@@ -10,5 +11,6 @@ export const Orientation = {
 
 /**
  * The orientation type
+ * @public
  */
 export type Orientation = (typeof Orientation)[keyof typeof Orientation];

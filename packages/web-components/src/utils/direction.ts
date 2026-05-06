@@ -2,6 +2,7 @@
 
 /**
  * Expose ltr and rtl strings
+ * @public
  */
 export const Direction = {
   ltr: 'ltr',
@@ -10,6 +11,7 @@ export const Direction = {
 
 /**
  * The direction type
+ * @public
  */
 export type Direction = (typeof Direction)[keyof typeof Direction];
 

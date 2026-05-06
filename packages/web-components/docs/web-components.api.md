@@ -2564,9 +2564,6 @@ export const DialogType: {
 // @public (undocumented)
 export type DialogType = ValuesOf<typeof DialogType>;
 
-// Warning: (ae-missing-release-tag) "Direction" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-// Warning: (ae-missing-release-tag) "Direction" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
 export const Direction: {
     readonly ltr: "ltr";
@@ -3429,9 +3426,6 @@ export const MessageBarStyles: ElementStyles;
 // @public
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
-// Warning: (ae-missing-release-tag) "Orientation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-// Warning: (ae-missing-release-tag) "Orientation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
 export const Orientation: {
     readonly horizontal: "horizontal";
