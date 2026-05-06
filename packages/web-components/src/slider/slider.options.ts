@@ -1,5 +1,5 @@
 import type { Direction } from '@microsoft/fast-web-utilities';
-import { Orientation } from '@microsoft/fast-web-utilities';
+import { Orientation } from '../utils/orientation.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { ValuesOf } from '../utils/typings.js';
 import { FluentDesignSystem } from '../fluent-design-system.js';
