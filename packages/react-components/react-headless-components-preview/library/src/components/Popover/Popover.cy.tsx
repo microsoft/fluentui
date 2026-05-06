@@ -5,6 +5,7 @@ import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import type { PopoverProps } from './Popover.types';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 const mount = (element: JSXElement) => {
   mountBase(element);
@@ -377,5 +378,32 @@ describe('Popover', () => {
         .get(popoverContentSelector)
         .should('have.length', 2);
     });
+  });
+});
+
+describe('positioning observer', () => {
+  const surfaceSelector = popoverContentSelector;
+
+  it('imperative updatePosition() is callable while the surface is open and does not throw', () => {
+    const positioningRef = React.createRef<PositioningImperativeRef>();
+
+    const Fixture = () => (
+      <div style={{ padding: 16, paddingTop: 240 }}>
+        <Popover defaultOpen positioning={{ position: 'above', positioningRef }}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface style={{ width: 200, height: 80, padding: 8 }}>Surface</PopoverSurface>
+        </Popover>
+      </div>
+    );
+
+    cy.viewport(1000, 600);
+    mount(<Fixture />);
+    cy.get(surfaceSelector).should('be.visible');
+    cy.then(() => {
+      expect(() => positioningRef.current?.updatePosition()).not.to.throw();
+    });
+    cy.get(surfaceSelector).should('have.attr', 'data-placement', 'above');
   });
 });
