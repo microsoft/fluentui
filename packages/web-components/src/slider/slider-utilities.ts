@@ -1,4 +1,5 @@
-import { Direction, limit } from '@microsoft/fast-web-utilities';
+import { limit } from '@microsoft/fast-web-utilities';
+import { Direction } from '../utils/direction.js';
 
 /**
  * Converts a pixel coordinate on the track to a percent of the track's range

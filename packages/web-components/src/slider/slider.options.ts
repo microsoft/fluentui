@@ -1,4 +1,4 @@
-import type { Direction } from '@microsoft/fast-web-utilities';
+import type { Direction } from '../utils/direction.js';
 import { Orientation } from '../utils/orientation.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { ValuesOf } from '../utils/typings.js';

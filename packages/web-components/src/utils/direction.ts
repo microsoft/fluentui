@@ -1,6 +1,17 @@
 //Copied from @microsoft/fast-foundation
 
-import { Direction } from '@microsoft/fast-web-utilities';
+/**
+ * Expose ltr and rtl strings
+ */
+export const Direction = {
+  ltr: 'ltr',
+  rtl: 'rtl',
+} as const;
+
+/**
+ * The direction type
+ */
+export type Direction = (typeof Direction)[keyof typeof Direction];
 
 /**
  * Determines the current localization direction of an element.
