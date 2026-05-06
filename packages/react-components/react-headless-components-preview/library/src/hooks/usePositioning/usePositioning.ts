@@ -11,7 +11,14 @@ import type {
 import type { PositioningProps, PositioningReturn } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
-import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
+import {
+  applyOffset,
+  getCoverSelfAlignment,
+  resolveElementRef,
+  resolveOffset,
+  shorthandToPositionArea,
+  supportsAnchoredContainerQueries,
+} from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
@@ -102,7 +109,20 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       }
 
       node.style.setProperty('position-anchor', anchorName);
-      node.setAttribute('data-placement', placement);
+
+      node.setAttribute('data-position', position);
+      node.setAttribute('data-align', align);
+
+      const win = node.ownerDocument?.defaultView;
+
+      if (win && supportsAnchoredContainerQueries(win)) {
+        // Chrome 143+: opt into `@container anchored(fallback: …)` queries.
+        node.style.setProperty('container-type', 'anchored');
+        node.removeAttribute('data-placement');
+      } else {
+        node.style.removeProperty('container-type');
+        node.setAttribute('data-placement', placement);
+      }
 
       if (coverAlignment) {
         node.style.setProperty('position-area', 'center');

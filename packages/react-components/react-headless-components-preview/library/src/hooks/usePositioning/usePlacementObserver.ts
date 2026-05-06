@@ -1,7 +1,7 @@
 'use client';
 
 import { useIsomorphicLayoutEffect, useEventCallback } from '@fluentui/react-utilities';
-import { computePosition, debounce } from './utils';
+import { computePosition, debounce, supportsAnchoredContainerQueries } from './utils';
 
 /**
  * Mirrors the placement that the browser actually resolves for an
@@ -10,6 +10,9 @@ import { computePosition, debounce } from './utils';
  * or content reflow — consumers can style the surface (arrows, animations)
  * via `[data-placement^="above"]` and friends and stay in sync.
  *
+ * On browsers that support anchored container queries
+ * (`@container anchored(fallback: …)`), this observer is a no-op: consumers
+ * are expected to react to fallback activations in pure CSS instead.
  */
 export function usePlacementObserver(
   containerEl: HTMLElement | null,
@@ -23,10 +26,13 @@ export function usePlacementObserver(
     }
 
     const result = computePosition(targetEl, containerEl);
-    const next = result?.placement ?? 'indeterminate';
 
-    if (containerEl.getAttribute('data-placement') !== next) {
-      containerEl.setAttribute('data-placement', next);
+    if (!result) {
+      return;
+    }
+
+    if (containerEl.getAttribute('data-placement') !== result.placement) {
+      containerEl.setAttribute('data-placement', result.placement);
     }
   });
 
@@ -36,7 +42,12 @@ export function usePlacementObserver(
     }
 
     const win = targetDocument?.defaultView;
+
     if (!win) {
+      return;
+    }
+
+    if (supportsAnchoredContainerQueries(win)) {
       return;
     }
 

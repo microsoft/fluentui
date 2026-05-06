@@ -404,6 +404,6 @@ describe('positioning observer', () => {
     cy.then(() => {
       expect(() => positioningRef.current?.updatePosition()).not.to.throw();
     });
-    cy.get(surfaceSelector).should('have.attr', 'data-placement', 'above');
+    cy.get(surfaceSelector).should('have.attr', 'data-position', 'above');
   });
 });

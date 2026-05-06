@@ -68,7 +68,7 @@ describe('usePositioning', () => {
     expect(node).toHaveStyle({ position: 'fixed' });
   });
 
-  it('containerRef writes data-placement matching (position, align)', () => {
+  it('containerRef writes data-position and data-align matching the requested (position, align)', () => {
     const result = mountHook({ position: 'below', align: 'start' });
     const node = document.createElement('div');
 
@@ -76,7 +76,45 @@ describe('usePositioning', () => {
       result.current.containerRef(node);
     });
 
+    expect(node).toHaveAttribute('data-position', 'below');
+    expect(node).toHaveAttribute('data-align', 'start');
+  });
+
+  it('containerRef writes data-placement on browsers without anchored container queries (jsdom default)', () => {
+    const result = mountHook({ position: 'below', align: 'start' });
+    const node = document.createElement('div');
+
+    act(() => {
+      result.current.containerRef(node);
+    });
+
+    // jsdom's CSS.supports returns false for `container-type: anchored`, so the
+    // observer-maintained `data-placement` is set with the resolved-on-mount value.
     expect(node).toHaveAttribute('data-placement', 'below-start');
+  });
+
+  it('containerRef omits data-placement and sets container-type when anchored CQ is supported', () => {
+    type WindowWithCSS = Window & { CSS?: { supports?: (prop: string, value: string) => boolean } };
+    const originalCSS = (window as WindowWithCSS).CSS;
+    (window as WindowWithCSS).CSS = {
+      supports: (prop: string, value: string) => prop === 'container-type' && value === 'anchored',
+    };
+
+    try {
+      const result = mountHook({ position: 'below', align: 'start' });
+      const node = document.createElement('div');
+
+      act(() => {
+        result.current.containerRef(node);
+      });
+
+      expect(node).not.toHaveAttribute('data-placement');
+      expect(node.style.getPropertyValue('container-type')).toBe('anchored');
+      expect(node).toHaveAttribute('data-position', 'below');
+      expect(node).toHaveAttribute('data-align', 'start');
+    } finally {
+      (window as WindowWithCSS).CSS = originalCSS;
+    }
   });
 
   it('containerRef sets position-try-fallbacks to the three-try flip chain by default', () => {
@@ -159,7 +197,7 @@ describe('usePositioning', () => {
     expect(node).toHaveStyle({ width: 'anchor-size(width)' });
   });
 
-  it('containerRef applies offset as symmetric logical margins so flips keep their gap', () => {
+  it('containerRef applies offset as a logical margin on the side facing the anchor', () => {
     const result = mountHook({ position: 'below', offset: { mainAxis: 8, crossAxis: 4 } });
     const node = document.createElement('div');
 
@@ -169,9 +207,7 @@ describe('usePositioning', () => {
 
     expect(node).toHaveStyle({
       marginBlockStart: '8px',
-      marginBlockEnd: '8px',
       marginInlineStart: '4px',
-      marginInlineEnd: '4px',
     });
   });
 
@@ -202,5 +238,84 @@ describe('getPlacementString', () => {
     expect(getPlacementString('below', 'end')).toBe('below-end');
     expect(getPlacementString('before', 'start')).toBe('before-top');
     expect(getPlacementString('after', 'end')).toBe('after-bottom');
+  });
+});
+
+describe('placement observer feature detection', () => {
+  type WindowWithCSS = Window & { CSS?: { supports?: (prop: string, value: string) => boolean } };
+
+  let originalCSS: WindowWithCSS['CSS'];
+  let originalRO: typeof ResizeObserver | undefined;
+  let resizeObserverCount: number;
+
+  const ObserverHarness = () => {
+    const { targetRef, containerRef } = usePositioning({});
+    return (
+      <>
+        <div data-testid="target" ref={targetRef} />
+        <div data-testid="container" ref={containerRef} />
+      </>
+    );
+  };
+
+  class CountingResizeObserver implements ResizeObserver {
+    constructor() {
+      resizeObserverCount++;
+    }
+    public observe(): void {
+      /* no-op */
+    }
+    public unobserve(): void {
+      /* no-op */
+    }
+    public disconnect(): void {
+      /* no-op */
+    }
+  }
+
+  beforeEach(() => {
+    originalCSS = (window as WindowWithCSS).CSS;
+    originalRO = window.ResizeObserver;
+    resizeObserverCount = 0;
+    window.ResizeObserver = CountingResizeObserver as unknown as typeof ResizeObserver;
+  });
+
+  afterEach(() => {
+    (window as WindowWithCSS).CSS = originalCSS;
+    if (originalRO) {
+      window.ResizeObserver = originalRO;
+    } else {
+      delete (window as { ResizeObserver?: typeof ResizeObserver }).ResizeObserver;
+    }
+  });
+
+  it('skips attaching listeners and ResizeObserver when CSS supports container-type: anchored', () => {
+    (window as WindowWithCSS).CSS = {
+      supports: (prop: string, value: string) => prop === 'container-type' && value === 'anchored',
+    };
+
+    const addSpy = jest.spyOn(window, 'addEventListener');
+    render(<ObserverHarness />);
+
+    const scrollOrResize = addSpy.mock.calls.filter(call => call[0] === 'scroll' || call[0] === 'resize');
+    expect(scrollOrResize).toHaveLength(0);
+    expect(resizeObserverCount).toBe(0);
+
+    addSpy.mockRestore();
+  });
+
+  it('attaches listeners when CSS does not support container-type: anchored', () => {
+    (window as WindowWithCSS).CSS = { supports: () => false };
+
+    const addSpy = jest.spyOn(window, 'addEventListener');
+    render(<ObserverHarness />);
+
+    const scrollAdds = addSpy.mock.calls.filter(call => call[0] === 'scroll');
+    const resizeAdds = addSpy.mock.calls.filter(call => call[0] === 'resize');
+    expect(scrollAdds.length).toBeGreaterThanOrEqual(1);
+    expect(resizeAdds.length).toBeGreaterThanOrEqual(1);
+    expect(resizeObserverCount).toBeGreaterThanOrEqual(1);
+
+    addSpy.mockRestore();
   });
 });

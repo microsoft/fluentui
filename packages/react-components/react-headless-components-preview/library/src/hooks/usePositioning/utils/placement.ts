@@ -59,3 +59,12 @@ export function getCoverSelfAlignment(
 
   return { alignSelf: align, justifySelf: ALIGNMENTS.start };
 }
+
+export const supportsAnchoredContainerQueries = (win: Window): boolean => {
+  return Boolean(
+    (win as Window & { CSS?: { supports?: (prop: string, value: string) => boolean } }).CSS?.supports?.(
+      'container-type',
+      'anchored',
+    ),
+  );
+};
