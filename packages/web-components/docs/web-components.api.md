@@ -6,13 +6,11 @@
 
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
-import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
-import { Orientation } from '@microsoft/fast-web-utilities';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
@@ -2970,6 +2968,8 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 // @public
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
+// Warning: (ae-forgotten-export) The symbol "Direction" needs to be exported by the entry point index.d.ts
+//
 // @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
@@ -3659,6 +3659,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
+    // Warning: (ae-forgotten-export) The symbol "Orientation" needs to be exported by the entry point index.d.ts
     orientation?: Orientation;
     // (undocumented)
     protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
