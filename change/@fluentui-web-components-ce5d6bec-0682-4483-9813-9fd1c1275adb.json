@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix components for native focusgroup implementation",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
