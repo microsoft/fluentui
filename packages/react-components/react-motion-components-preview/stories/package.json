@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-icons": "*",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-motion": "*",
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-shared-contexts": "*"
