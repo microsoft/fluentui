@@ -13,7 +13,6 @@ export const useMutationObserver = (
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   observer: React.MutableRefObject<MutationObserver | undefined>;
 } => {
   'use no memo';

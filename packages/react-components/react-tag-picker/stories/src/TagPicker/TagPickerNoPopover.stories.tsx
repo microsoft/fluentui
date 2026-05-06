@@ -1,12 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  TagPicker,
-  TagPickerInput,
-  TagPickerControl,
-  TagPickerProps,
-  TagPickerGroup,
-} from '@fluentui/react-components';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
+import { TagPicker, TagPickerInput, TagPickerControl, TagPickerGroup } from '@fluentui/react-components';
 import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 export const NoPopover = (): JSXElement => {

@@ -1,6 +1,6 @@
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { tokens } from '@fluentui/react-theme';
-import { ProviderContextValue_unstable as FluentProviderContextValue } from '@fluentui/react-shared-contexts';
+import type { ProviderContextValue_unstable as FluentProviderContextValue } from '@fluentui/react-shared-contexts';
 
 import type { DrawerBaseProps } from './DrawerBase.types';
 import { drawerCSSVars } from './useDrawerBaseStyles.styles';

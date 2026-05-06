@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 
-import { classNamesFunction, ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
+import type { ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
+import { classNamesFunction } from '@fluentui/react';
 import { Checkbox, mergeClasses } from '@fluentui/react-components';
 import { useCheckboxProps } from './shimCheckboxProps';
 import { useCheckboxStyles } from './Checkbox.styles';

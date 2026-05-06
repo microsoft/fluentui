@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { useArcStyles } from './useArcStyles.styles';
-import { ChartDataPoint } from '../index';
-import { ArcProps } from './index';
+import type { ChartDataPoint } from '../index';
+import type { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
 

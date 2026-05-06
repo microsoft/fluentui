@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';

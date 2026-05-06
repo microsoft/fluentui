@@ -1,5 +1,5 @@
 import { Updates } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom

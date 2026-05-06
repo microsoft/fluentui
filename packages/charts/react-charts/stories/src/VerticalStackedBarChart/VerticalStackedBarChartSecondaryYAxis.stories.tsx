@@ -1,13 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  VerticalStackedBarChart,
-  LineChartLineOptions,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { VSChartDataPoint, VerticalStackedChartProps, LineChartLineOptions } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { useId, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

@@ -12,7 +12,7 @@ import type { MenuListContextValue } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
 export const MenuGrid: ForwardRefComponent<MenuGridProps>;

@@ -17,8 +17,10 @@ import type {
   TreeItemLayoutProps,
   TreeItemLayoutState,
 } from './TreeItemLayout.types';
-import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
-import { Radio, RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
+import { Radio } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
 import { useArrowNavigationGroup, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

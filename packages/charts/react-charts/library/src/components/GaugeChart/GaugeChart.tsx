@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useGaugeChartStyles } from './useGaugeChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
 import { arc as d3Arc } from 'd3-shape';
-import { YValueHover } from '../../index';
+import type { YValueHover } from '../../index';
 import {
   Points,
   areArraysEqual,
@@ -18,8 +18,9 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
-import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
+import type { Legend, LegendShape } from '../Legends/index';
+import { Legends, Shape } from '../Legends/index';
+import type { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
@@ -217,7 +218,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         .padRadius(_outerRadius);
       const rtlSafeSegments = _isRTL ? Array.from(processedSegments).reverse() : processedSegments;
       let prevAngle = -Math.PI / 2;
-      // eslint-disable-next-line @typescript-eslint/no-shadow
+
       const arcs = rtlSafeSegments.map((segment, index) => {
         const endAngle = prevAngle + (segment.size / (total - minValue)) * Math.PI;
         const d = arcGenerator({
@@ -305,7 +306,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             legends={legends}
             centerLegends
             {...props.legendProps}
-            // eslint-disable-next-line react/jsx-no-bind
             onChange={_onLegendSelectionChange}
             legendRef={_legendsRef}
           />
@@ -371,7 +371,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       _hideCallout(false);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function _showCallout(
       event: React.MouseEvent<SVGElement, MouseEvent> | React.FocusEvent<SVGElement, Element>,
       legend: string,
@@ -707,7 +706,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             }}
             isPopoverOpen={isPopoverOpen}
             customCallout={{
-              customizedCallout: _multiValueCallout({ hoverXValue: hoverXValue, YValueHover: hoverYValues }),
+              customizedCallout: _multiValueCallout({ hoverXValue, YValueHover: hoverYValues }),
             }}
           />
         )}

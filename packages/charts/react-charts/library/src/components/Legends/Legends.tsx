@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Button } from '@fluentui/react-button';
-import { Legend, LegendsProps, LegendShape } from './Legends.types';
+import type { Legend, LegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles } from './useLegendsStyles.styles';
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
@@ -43,7 +43,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
   (props, forwardedRef) => {
     /** Boolean variable to check if one or more legends are selected */
     let _isLegendSelected = false;
-    let _rootElem = React.useRef<HTMLDivElement | null>(null);
+    const _rootElem = React.useRef<HTMLDivElement | null>(null);
 
     // set states separately for each instance of the component
     const [activeLegend, setActiveLegend] = React.useState('');
@@ -310,10 +310,9 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             '--rect-backgroundColor': legend.stripePattern ? '' : color,
             '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
             '--rect-content': legend.stripePattern
-              ? // eslint-disable-next-line @fluentui/max-len
-                `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
+              ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
               : '',
-          }} /* eslint-enable react/jsx-no-bind */
+          }}
         >
           {shape}
           <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
@@ -344,8 +343,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
               backgroundColor: legend.stripePattern ? '' : color,
               borderColor: legend.color ? legend.color : tokens.colorNeutralStroke1,
               content: legend.stripePattern
-                ? // eslint-disable-next-line @fluentui/max-len
-                  `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
+                ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
                 : '',
               '--rect-content-high-contrast': `linear-gradient(to right, ${color}, ${color})`,
               '--rect-opacity-high-contrast': color === tokens.colorNeutralBackground1 ? '0.6' : '',

@@ -5,7 +5,7 @@ export interface VersionBumpGeneratorSchema {
   name?: string;
 
   /**
-   * Runs migration for all vNext packages
+   * Runs migration for all packages in the specified scope
    */
   all?: boolean;
 
@@ -31,4 +31,19 @@ export interface VersionBumpGeneratorSchema {
    * Explicit version to set
    */
   explicitVersion?: string;
+
+  /**
+   * Which package scope `--all` targets.
+   * - `vNext` (default): all converged/vNext packages
+   * - `tools`: all public tools packages
+   */
+  scope?: 'vNext' | 'tools';
+
+  /**
+   * A suffix to append to each package's current version.
+   * The resulting version will be `{currentVersion}-{versionSuffix}`.
+   * Mutually exclusive with `bumpType` and `explicitVersion`.
+   * Requires `--all`.
+   */
+  versionSuffix?: string;
 }

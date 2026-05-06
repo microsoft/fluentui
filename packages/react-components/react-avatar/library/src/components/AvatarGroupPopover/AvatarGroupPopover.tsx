@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { renderAvatarGroupPopover_unstable } from './renderAvatarGroupPopover';
 import { useAvatarGroupPopoverContextValues_unstable } from './useAvatarGroupPopoverContextValues';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

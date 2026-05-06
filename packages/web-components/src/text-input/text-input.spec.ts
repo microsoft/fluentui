@@ -239,10 +239,26 @@ test.describe('TextInput', () => {
     const { element } = fastPage;
     const label = element.locator('label');
 
+    await fastPage.setTemplate({ innerHTML: '' });
+
+    await expect(label).toBeHidden();
+
+    await element.evaluate(node => {
+      const textNode = document.createTextNode('hello');
+
+      node.append(textNode);
+    });
+
+    await expect(label).toBeVisible();
+
+    await element.evaluate(node => {
+      node.textContent = '   ';
+    });
+
     await expect(label).toBeHidden();
   });
 
-  test('should hide the label when start content is provided', async ({ fastPage }) => {
+  test('should hide the label when only start content is provided', async ({ fastPage }) => {
     const { element } = fastPage;
     const label = element.locator('label');
 
@@ -253,9 +269,17 @@ test.describe('TextInput', () => {
     });
 
     await expect(label).toBeHidden();
+
+    await element.evaluate(node => {
+      const textNode = document.createTextNode('hello');
+
+      node.append(textNode);
+    });
+
+    await expect(label).toBeVisible();
   });
 
-  test('should hide the label when end content is provided', async ({ fastPage }) => {
+  test('should hide the label when only end content is provided', async ({ fastPage }) => {
     const { element } = fastPage;
     const label = element.locator('label');
 
@@ -266,9 +290,16 @@ test.describe('TextInput', () => {
     });
 
     await expect(label).toBeHidden();
+
+    await element.evaluateHandle(node => {
+      const textNode = document.createTextNode('hello');
+      node.append(textNode);
+    });
+
+    await expect(label).toBeVisible();
   });
 
-  test('should hide the label when start and end content are provided', async ({ fastPage }) => {
+  test('should hide the label when only start and end content are provided', async ({ fastPage }) => {
     const { element } = fastPage;
     const label = element.locator('label');
 
@@ -280,6 +311,14 @@ test.describe('TextInput', () => {
     });
 
     await expect(label).toBeHidden();
+
+    await element.evaluate(node => {
+      const textNode = document.createTextNode('hello');
+
+      node.append(textNode);
+    });
+
+    await expect(label).toBeVisible();
   });
 
   test('should hide the label when space-only text nodes are slotted', async ({ fastPage }) => {
@@ -678,8 +717,8 @@ test.describe('TextInput', () => {
     await fastPage.setTemplate({
       innerHTML: /* html */ `
         <span>Label</span>
-        <button slot="start">start</button>
-        <button slot="end">end</button>
+        <button tabindex="0" slot="start">start</button>
+        <button tabindex="0" slot="end">end</button>
       `,
     });
 

@@ -8,7 +8,7 @@ import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -92,7 +92,7 @@ export type MenuButtonSlots = ButtonSlots & {
 export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
 
 // @public
-const renderButton_unstable: (state: ButtonState) => JSXElement;
+const renderButton_unstable: (state: ButtonBaseState) => JSXElement;
 export { renderButton_unstable }
 export { renderButton_unstable as renderToggleButton_unstable }
 

@@ -1,11 +1,12 @@
 'use client';
 
-import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeItemType, TreeItemValue } from '../TreeItem';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { TreeItemType, TreeItemValue } from '../TreeItem';
 import type { SelectionMode, DistributiveOmit } from '@fluentui/react-utilities';
 import { ImmutableSet } from '../utils/ImmutableSet';
 import { ImmutableMap } from '../utils/ImmutableMap';
-import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
+import type { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
   contextType?: 'root';

@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import type { OverflowDividerEntry } from '@fluentui/priority-overflow';

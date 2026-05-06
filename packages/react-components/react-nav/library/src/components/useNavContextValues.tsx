@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { NavContextValue, NavContextValues, NavState } from '../Nav';
+import type { NavContextValue, NavContextValues, NavState } from '../Nav';
 
 export function useNavContextValues_unstable(state: NavState): NavContextValues {
   const {

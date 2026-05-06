@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
-import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
+import type { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;

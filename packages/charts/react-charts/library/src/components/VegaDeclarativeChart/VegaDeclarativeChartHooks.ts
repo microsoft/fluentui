@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme, webLightTheme } from '@fluentui/tokens';
+import type { Theme } from '@fluentui/tokens';
+import { webLightTheme } from '@fluentui/tokens';
 import { hsl as d3Hsl } from 'd3-color';
 
 /**

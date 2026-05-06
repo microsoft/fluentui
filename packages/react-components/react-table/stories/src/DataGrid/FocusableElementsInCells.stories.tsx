@@ -11,7 +11,6 @@ import {
   DeleteRegular,
 } from '@fluentui/react-icons';
 import {
-  PresenceBadgeStatus,
   Avatar,
   DataGridBody,
   DataGridRow,
@@ -20,7 +19,6 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableCellLayout,
-  TableColumnDefinition,
   createTableColumn,
   Button,
   Menu,
@@ -28,11 +26,15 @@ import {
   MenuList,
   MenuItem,
   MenuPopover,
+} from '@fluentui/react-components';
+
+import type {
+  JSXElement,
+  PresenceBadgeStatus,
+  TableColumnDefinition,
   TableColumnId,
   DataGridCellFocusMode,
 } from '@fluentui/react-components';
-
-import type { JSXElement } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;

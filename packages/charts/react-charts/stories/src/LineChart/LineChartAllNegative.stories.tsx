@@ -1,7 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox, CheckboxOnChangeData, makeStyles, tokens } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
+import { Switch, Checkbox, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {

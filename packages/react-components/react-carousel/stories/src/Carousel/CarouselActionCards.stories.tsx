@@ -13,16 +13,14 @@ import {
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
-  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselProps,
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CarouselAnnouncerFunction, CarouselProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {

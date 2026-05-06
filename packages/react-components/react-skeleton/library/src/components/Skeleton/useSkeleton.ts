@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SkeletonBaseProps, SkeletonBaseState, SkeletonProps, SkeletonState } from './Skeleton.types';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';

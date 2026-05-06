@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import type { CarouselNavContextValue, CarouselNavState } from './CarouselNav.types';
+import type { CarouselNavContextValue } from './CarouselNav.types';
 
 const carouselNavContext = React.createContext<CarouselNavContextValue | undefined>(undefined);
 
@@ -20,10 +20,3 @@ export const CarouselNavContextProvider = carouselNavContext.Provider;
 export type CarouselNavContextValues = {
   carouselNav: CarouselNavContextValue;
 };
-
-export function useCarouselNavContextValues_unstable(state: CarouselNavState): CarouselNavContextValues {
-  const { appearance } = state;
-  const carouselNav = React.useMemo(() => ({ appearance }), [appearance]);
-
-  return { carouselNav };
-}

@@ -1,7 +1,8 @@
-import { AtomMotion, createPresenceComponent, motionTokens, PresenceMotionFn } from '@fluentui/react-motion';
+import type { AtomMotion, PresenceMotionFn } from '@fluentui/react-motion';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { rotateAtom } from '../../atoms/rotate-atom';
-import { RotateParams } from './rotate-types';
+import type { RotateParams } from './rotate-types';
 
 /**
  * Define a presence motion for rotate in/out

@@ -1,6 +1,6 @@
 'use client';
 
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';

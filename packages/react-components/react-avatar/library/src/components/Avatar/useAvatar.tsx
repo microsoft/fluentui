@@ -46,8 +46,8 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     });
   }
 
-  if (state.icon) {
-    state.icon.children ??= <PersonRegular />;
+  if (state.icon && !state.icon.hasOwnProperty('children')) {
+    state.icon.children = <PersonRegular />;
   }
 
   const badge: AvatarState['badge'] = slot.optional(props.badge, {
@@ -110,7 +110,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
  */
 export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<HTMLElement>): AvatarBaseState => {
   const { dir } = useFluent();
-  const { name, ...rest } = props;
+  const { name, image: imageProp, initials: initialsProp, ...rest } = props;
 
   const baseId = useId('avatar-');
 
@@ -126,7 +126,7 @@ export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<H
 
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
 
-  let image: AvatarBaseState['image'] = slot.optional(props.image, {
+  let image: AvatarBaseState['image'] = slot.optional(imageProp, {
     defaultProps: { alt: '', role: 'presentation', 'aria-hidden': true, hidden: imageHidden },
     elementType: 'img',
   });
@@ -143,7 +143,7 @@ export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<H
   }
 
   // Resolve the initials slot, defaulted to getInitials
-  let initials: AvatarBaseState['initials'] = slot.optional(props.initials, {
+  let initials: AvatarBaseState['initials'] = slot.optional(initialsProp, {
     renderByDefault: true,
     defaultProps: {
       children: getInitials(name, dir === 'rtl'),

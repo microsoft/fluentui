@@ -1,5 +1,6 @@
 import * as React from 'react';
 import StaggerExpandableContainerDescription from './StaggerExpandableContainer.stories.md';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   tokens,
@@ -8,7 +9,6 @@ import {
   Persona,
   Slider,
   Label,
-  JSXElement,
   type PersonaProps,
 } from '@fluentui/react-components';
 import { Stagger, Slide, Collapse } from '@fluentui/react-motion-components-preview';

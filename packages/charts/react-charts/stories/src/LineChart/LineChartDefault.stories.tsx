@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
+import type { LineChartProps, ChartProps } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette } from '@fluentui/react-charts';
 import { Switch, Checkbox, makeStyles, tokens, Field, Radio, RadioGroup } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 

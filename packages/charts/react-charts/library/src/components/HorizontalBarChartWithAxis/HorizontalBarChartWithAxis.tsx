@@ -2,36 +2,34 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { Legend } from '../../components/Legends/Legends.types';
+import type { ScaleLinear as D3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import type { Legend } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import {
+import type {
   AccessibilityProps,
   HorizontalBarChartWithAxisDataPoint,
   RefArrayData,
   Margins,
   ChartPopoverProps,
 } from '../../index';
-import { ChildProps } from '../CommonComponents/CartesianChart.types';
+import type { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
-import { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
+import type { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
 import { useHorizontalBarChartWithAxisStyles } from './useHorizontalBarChartWithAxisStyles.styles';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import type { IAxisData, NumericAxis, StringAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   YAxisType,
   XAxisTypes,
-  NumericAxis,
-  StringAxis,
   getTypeOfAxis,
   getNextColor,
   findHBCWANumericMinMaxOfY,
   createYAxisForHorizontalBarChartWithAxis,
-  IDomainNRange,
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
   areArraysEqual,
@@ -72,7 +70,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _yAxisLabels: string[];
   let _xMax: number;
   let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   let _longestBarPositiveTotalValue: number;
   let _longestBarNegativeTotalValue: number;
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
@@ -866,7 +864,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   if (!_isChartEmpty()) {
     _adjustProps();
     const calloutProps: ChartPopoverProps = {
-      color: color,
+      color,
       legend: selectedLegendTitle,
       XValue: xCalloutValue,
       YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,

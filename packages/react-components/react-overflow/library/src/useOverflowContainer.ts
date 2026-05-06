@@ -15,7 +15,7 @@ import type {
   ObserveOptions,
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { UseOverflowContainerReturn } from './types';
+import type { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
 const noop = () => null;

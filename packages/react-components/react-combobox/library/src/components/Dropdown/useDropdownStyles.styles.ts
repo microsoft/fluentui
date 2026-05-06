@@ -2,7 +2,7 @@
 
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
 import type { DropdownSlots, DropdownState } from './Dropdown.types';

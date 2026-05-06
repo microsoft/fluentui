@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 01 Apr 2026 15:52:43 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.18)
+
+Thu, 23 Apr 2026 14:21:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.17..@fluentui/react-charts_v9.3.18)
+
+### Patches
+
+- fix: isSafeUrl utility ([PR #35963](https://github.com/microsoft/fluentui/pull/35963) by vgenaev@gmail.com)
+- Bump @fluentui/react-button to v9.9.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-overflow to v9.7.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-popover to v9.14.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.1 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.17)
 

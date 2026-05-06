@@ -1,0 +1,181 @@
+/* Headless Divider renders <root><wrapper>{children}</wrapper></root>.
+   The line itself comes from ::before / ::after on the root. */
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--text-faint);
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Start: short 8 px stub before content, full line after. */
+.divider.start::before {
+  flex: 0 0 8px;
+}
+
+/* End: full line before content, short 8 px stub after. */
+.divider.end::after {
+  flex: 0 0 8px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-stronger);
+}
+
+/* Sentence-case content (icon + text) used inside dividers. */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.content svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Vertical: stack lines top/bottom of label, swap orientation. */
+.dividerVertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  width: auto;
+  min-width: 80px;
+}
+
+.dividerVertical::before,
+.dividerVertical::after {
+  content: '';
+  flex: 1;
+  width: 1px;
+  height: auto;
+  min-height: 8px;
+  background: var(--border);
+}
+
+/* Start: 8 px stub above content, full line below. */
+.dividerVertical.start::before {
+  flex: 0 0 8px;
+}
+
+/* End: full line above content, 8 px stub below. */
+.dividerVertical.end::after {
+  flex: 0 0 8px;
+}
+
+/* Plain hairline (no label) */
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+.vertical {
+  width: 1px;
+  background: var(--border);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.section {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.verticalGroup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  height: 180px;
+  width: 100%;
+}
+
+.verticalCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 6px;
+}
+
+.verticalCaption {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.verticalLineWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.labelled {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.labelledLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.labelledText {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}

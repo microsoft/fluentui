@@ -1,5 +1,4 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { type ButtonFormTarget, ButtonType } from './button.options.js';
 
 /**
@@ -42,21 +41,18 @@ export class BaseButton extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  disabled = false;
+  disabled!: boolean;
 
-  protected disabledChanged() {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-    if (this.disabled) {
-      this.removeAttribute('tabindex');
-    } else {
-      // If author sets tabindex to a non-positive value, the component should
-      // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
-      // tabindex to a positive number. See details:
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
-      this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-    }
+  /**
+   * Handles changes to the disabled attribute. If the button is disabled, it
+   * should not be focusable.
+   *
+   * @param previous - the previous disabled value
+   * @param next - the new disabled value
+   * @internal
+   */
+  disabledChanged() {
+    this.setTabIndex();
   }
 
   /**
@@ -77,7 +73,7 @@ export class BaseButton extends FASTElement {
    * @internal
    */
   public disabledFocusableChanged(previous: boolean, next: boolean): void {
-    if (this.$fastController.isConnected) {
+    if (this.elementInternals) {
       this.elementInternals.ariaDisabled = `${!!next}`;
     }
   }
@@ -262,7 +258,7 @@ export class BaseButton extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
-    this.disabledChanged();
+    this.setTabIndex();
   }
 
   constructor() {
@@ -350,7 +346,7 @@ export class BaseButton extends FASTElement {
       return;
     }
 
-    if (e.key === keyEnter || e.key === keySpace) {
+    if (e.key === 'Enter' || e.key === ' ') {
       this.click();
       return;
     }
@@ -384,6 +380,24 @@ export class BaseButton extends FASTElement {
    */
   public resetForm(): void {
     this.elementInternals.form?.reset();
+  }
+
+  /**
+   * Sets the `tabindex` attribute based on the disabled state of the button.
+   *
+   * @internal
+   */
+  protected setTabIndex(): void {
+    if (this.disabled) {
+      this.removeAttribute('tabindex');
+      return;
+    }
+
+    // If author sets tabindex to a non-positive value, the component should
+    // respect it, otherwise set it to 0 to avoid the anti-pattern of setting
+    // tabindex to a positive number. See details:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
   }
 
   /**

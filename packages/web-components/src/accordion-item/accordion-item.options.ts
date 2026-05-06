@@ -1,4 +1,6 @@
-import type { ValuesOf } from '../utils/index.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
+import { isCustomElement, type ValuesOf } from '../utils/typings.js';
+import type { BaseAccordionItem } from './accordion-item.base.js';
 
 /**
  * An Accordion Item header font size can be small, medium, large, and extra-large
@@ -29,3 +31,25 @@ export const AccordionItemMarkerPosition = {
  * @public
  */
 export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
+
+/**
+ * Predicate function that determines if the element should be considered an accordion item element.
+ *
+ * @param element - The element to check.
+ * @param tagName - The tag name to check against, defaults to '-accordion-item'.
+ * @returns True if the element is an accordion item element, false otherwise.
+ * @public
+ */
+export function isAccordionItem(
+  element?: Node | null,
+  tagName: string = '-accordion-item',
+): element is BaseAccordionItem {
+  return isCustomElement(tagName)(element);
+}
+
+/**
+ * The tag name for the accordion item element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-accordion-item` as const;

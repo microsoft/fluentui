@@ -1,5 +1,5 @@
-import { Avatar } from '@fluentui/react-avatar';
-import { PresenceBadge } from '@fluentui/react-badge';
+import type { Avatar } from '@fluentui/react-avatar';
+import type { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type PersonaSlots = {

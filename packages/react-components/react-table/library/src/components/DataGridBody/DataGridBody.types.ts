@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { TableRowData } from '../../hooks';
 import type { TableBodySlots, TableBodyProps, TableBodyState } from '../TableBody/TableBody.types';
 

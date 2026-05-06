@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import type { DividerSlots, DividerState } from '@fluentui/react-divider';
+import type { DividerSlots, DividerState, DividerBaseState } from '@fluentui/react-divider';
 
 /**
  * ToolbarDivider Props
@@ -20,4 +20,4 @@ export type ToolbarDividerBaseProps = ToolbarDividerProps;
  */
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
 
-export type ToolbarDividerBaseState = Omit<ToolbarDividerState, 'appearance'>;
+export type ToolbarDividerBaseState = ComponentState<Partial<DividerSlots>> & DividerBaseState;

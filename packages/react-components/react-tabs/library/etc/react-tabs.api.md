@@ -14,7 +14,7 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
@@ -39,6 +39,12 @@ export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData)
 
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
+
+// @public (undocumented)
+export type TabBaseProps = Omit<TabProps, 'contentReservedSpace'>;
+
+// @public (undocumented)
+export type TabBaseState = Omit<TabState, 'appearance' | 'size' | 'contentReservedSpace'>;
 
 // @public (undocumented)
 export const tabClassNames: SlotClassNames<TabSlots>;

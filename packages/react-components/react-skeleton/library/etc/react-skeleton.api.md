@@ -13,7 +13,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSkeleton_unstable: (state: SkeletonState, contextValues: SkeletonContextValues) => JSXElement;
+export const renderSkeleton_unstable: (state: SkeletonBaseState, contextValues: SkeletonContextValues) => JSXElement;
 
 // @public
 export const renderSkeletonItem_unstable: (state: SkeletonItemBaseState) => JSXElement;
@@ -44,6 +44,11 @@ export interface SkeletonContextValue {
     // (undocumented)
     size?: SkeletonItemSize;
 }
+
+// @public (undocumented)
+export type SkeletonContextValues = {
+    skeletonGroup: SkeletonContextValue;
+};
 
 // @public (undocumented)
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
@@ -96,6 +101,9 @@ export const useSkeletonBase_unstable: (props: SkeletonBaseProps, ref: React_2.R
 
 // @public (undocumented)
 export const useSkeletonContext: () => SkeletonContextValue;
+
+// @public (undocumented)
+export const useSkeletonContextValues: (state: SkeletonState) => SkeletonContextValues;
 
 // @public
 export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;

@@ -10,4 +10,5 @@ export {
   renderMessageBarBody_unstable,
   useMessageBarBodyStyles_unstable,
   useMessageBarBody_unstable,
+  useMessageBarBodyContextValues_unstable,
 } from './components/MessageBarBody/index';

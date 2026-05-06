@@ -1,20 +1,15 @@
 'use client';
 
 import * as React from 'react';
-import {
-  ExtractSlotProps,
-  Slot,
-  getIntrinsicElementProps,
-  useEventCallback,
-  useMergedRefs,
-  slot,
-} from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { Escape } from '@fluentui/keyboard-keys';
 import type { ToasterProps, ToasterState } from './Toaster.types';
-import { TOAST_POSITIONS, ToastPosition, useToaster } from '../../state';
-import { Announce } from '../AriaLive';
+import type { ToastPosition } from '../../state';
+import { TOAST_POSITIONS, useToaster } from '../../state';
+import type { Announce } from '../AriaLive';
 import { ToastContainer } from '../ToastContainer';
 import { useToasterFocusManagement_unstable } from './useToasterFocusManagement';
 import { useToastAnnounce } from './useToastAnnounce';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { render, screen, fireEvent, act, cleanup, queryAllByAttribute } from '@testing-library/react';
@@ -7,7 +6,7 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { GanttChart } from './index';
 import { ganttData, ganttDataWithLongY, ganttDataWithNumericY } from '../../utilities/test-data';
-import { GanttChartDataPoint } from '../../types/index';
+import type { GanttChartDataPoint } from '../../types/index';
 
 expect.extend(toHaveNoViolations);
 
@@ -76,7 +75,7 @@ describe('GanttChart rendering and behavior tests', () => {
   });
 
   it('should render GanttChart correctly when the layout direction is RTL', () => {
-    let wrapper = render(
+    const wrapper = render(
       <div dir="rtl">
         <GanttChart data={ganttData} />
       </div>,

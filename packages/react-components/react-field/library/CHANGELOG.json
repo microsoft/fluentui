@@ -2,6 +2,53 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:16 GMT",
+      "tag": "@fluentui/react-field_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2c3174eadee70cc3848ed0c135e8aeea7200a96d",
+            "comment": "fix: add missing base hook export"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.16",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.4.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2026 15:52:40 GMT",
       "tag": "@fluentui/react-field_v9.5.0",
       "version": "9.5.0",

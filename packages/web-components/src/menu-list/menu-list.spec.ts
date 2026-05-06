@@ -2,7 +2,7 @@ import { expect, test } from '../../test/playwright/index.js';
 import type { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
-test.describe('Menu', () => {
+test.describe('MenuList', () => {
   test.use({
     tagName: 'fluent-menu-list',
     waitFor: ['fluent-menu-item'],

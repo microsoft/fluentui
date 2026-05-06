@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Context, ContextValue } from './types';
+import type { Context, ContextValue } from './types';
 
 /**
  * Utility hook for contexts created by react-context-selector to determine if a parent context exists
@@ -14,9 +14,5 @@ import { Context, ContextValue } from './types';
 export function useHasParentContext<Value>(context: Context<Value>): boolean {
   const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
 
-  if (contextValue.version) {
-    return contextValue.version.current !== -1;
-  }
-
-  return false;
+  return !contextValue.isDefault;
 }

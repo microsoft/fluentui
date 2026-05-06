@@ -12,8 +12,8 @@ import {
   type OnOverflowChangeData,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
-import { OverflowAxis } from '@fluentui/priority-overflow';
-import { DistributiveOmit } from '@fluentui/react-utilities';
+import type { OverflowAxis } from '@fluentui/priority-overflow';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 
 const selectors = {
   container: 'data-test-container',

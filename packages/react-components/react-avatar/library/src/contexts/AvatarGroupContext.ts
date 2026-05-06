@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupContextValue } from '../AvatarGroup';
 
 /**

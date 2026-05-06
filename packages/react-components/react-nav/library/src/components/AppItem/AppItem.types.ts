@@ -1,6 +1,6 @@
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavDensity } from '../Nav/Nav.types';
+import type { NavDensity } from '../Nav/Nav.types';
 
 export type AppItemSlots = {
   /**
