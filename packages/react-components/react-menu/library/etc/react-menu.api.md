@@ -199,7 +199,9 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    submenuOpen: boolean;
+};
 
 // @public (undocumented)
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
