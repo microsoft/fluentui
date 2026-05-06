@@ -14,6 +14,7 @@ const chevronRight16Filled = html.partial(
 export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
+      tabindex="0"
       @keydown="${(x, c) => x.handleMenuItemKeyDown(c.event as KeyboardEvent)}"
       @click="${(x, c) => x.handleMenuItemClick(c.event as MouseEvent)}"
       @mouseover="${(x, c) => x.handleMouseOver(c.event as MouseEvent)}"
