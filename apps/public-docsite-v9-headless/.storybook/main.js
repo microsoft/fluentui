@@ -1,23 +1,14 @@
-const rootMain = require('../../../.storybook/main');
+const headlessMain = require('../../../packages/react-components/react-headless-components-preview/stories/.storybook/main');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
-  ...rootMain,
+  ...headlessMain,
   stories: [
-    ...rootMain.stories,
-    // docsite stories
-    '../src/**/*.mdx',
-    '../src/**/index.stories.@(ts|tsx)',
+    ...headlessMain.stories,
     // headless package stories
     '../../../packages/react-components/react-headless-components-preview/stories/src/**/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: [...rootMain.addons],
   build: {
     previewUrl: process.env.DEPLOY_PATH,
-  },
-  webpackFinal: (config, options) => {
-    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal(config, options) });
-
-    return localConfig;
   },
 });

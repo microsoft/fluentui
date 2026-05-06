@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-accordion": "^9.11.0",
-    "@fluentui/react-aria": "^9.17.10",
+    "@fluentui/react-aria": "^9.17.11",
     "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-avatar": "^9.11.1",
     "@fluentui/react-badge": "^9.5.2",
@@ -47,16 +47,18 @@
     "@fluentui/react-search": "^9.4.2",
     "@fluentui/react-select": "^9.5.1",
     "@fluentui/react-shared-contexts": "^9.26.2",
-    "@fluentui/react-context-selector": "^9.2.15",
+    "@fluentui/react-context-selector": "^9.2.16",
     "@fluentui/react-skeleton": "^9.7.2",
     "@fluentui/react-slider": "^9.6.2",
     "@fluentui/react-spinbutton": "^9.6.2",
     "@fluentui/react-spinner": "^9.8.2",
     "@fluentui/react-switch": "^9.7.2",
     "@fluentui/react-tabs": "^9.12.1",
+    "@fluentui/react-tabster": "^9.26.14",
     "@fluentui/react-tags": "^9.8.1",
     "@fluentui/react-textarea": "^9.7.2",
     "@fluentui/react-toolbar": "^9.8.0",
+    "@fluentui/react-tooltip": "^9.10.1",
     "@fluentui/react-utilities": "^9.26.3",
     "@swc/helpers": "^0.5.1"
   },
@@ -259,6 +261,12 @@
       "import": "./lib/toolbar.js",
       "require": "./lib-commonjs/toolbar.js"
     },
+    "./tooltip": {
+      "types": "./dist/tooltip.d.ts",
+      "node": "./lib-commonjs/tooltip.js",
+      "import": "./lib/tooltip.js",
+      "require": "./lib-commonjs/tooltip.js"
+    },
     "./package.json": "./package.json"
   },
   "beachball": {
@@ -268,6 +276,7 @@
     ]
   },
   "devDependencies": {
-    "@fluentui/scripts-cypress": "*"
+    "@fluentui/scripts-cypress": "*",
+    "@oddbird/popover-polyfill": "^0.6.1"
   }
 }

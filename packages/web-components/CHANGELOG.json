@@ -2,6 +2,59 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 06 May 2026 04:07:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.16",
+      "version": "3.0.0-rc.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f00737e6d6de50b96763ab82034bdd7fa95a7fb5",
+            "comment": "fix: remove behaviors in favor of direct css inclusion"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5b7ded8469369a4d1926b8c51ed416b30a651572",
+            "comment": "adopt focusgroup and polyfill"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "0d2ce67719198ed3b17939508616faff43f0ef40",
+            "comment": "fix components for native focusgroup implementation"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5bbe4de21b3ecb71b78f19e0316574f7594a9e30",
+            "comment": "fix: stopImmediatePropagation on internalProxyAnchors"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "410796d8313465ae5c9d8a2c2fbf0a168b589bf8",
+            "comment": "update import references to point directly to non-barrel files"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8a2c6ce6a065820a03637050568dd7f3a61787fb",
+            "comment": "fix: add tagName export in options and leverage for consistent name implementation"
+          }
+        ],
+        "none": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f5be51804a5cc039ce282a5cc2b6286a2b71ce0e",
+            "comment": "chore: fix API extractor warnings in tsdocs and comments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 May 2026 04:08:47 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.15",
       "version": "3.0.0-rc.15",

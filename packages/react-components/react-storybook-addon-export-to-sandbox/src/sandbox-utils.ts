@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 import { getDependencies } from './getDependencies';
-import { StoryContext, ParametersExtension } from './types';
+import type { StoryContext, ParametersExtension } from './types';
 
 type ParametersConfig = NonNullable<ParametersExtension['exportToSandbox']>;
 
@@ -63,6 +63,8 @@ export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
   optionalDependencies: Record<string, string>;
   devDependencies: Record<string, string>;
   transformFiles?: NonNullable<ParametersConfig['transformFiles']>;
+  /** CSS module sources injected by the babel plugin (modules + tokens). */
+  cssModuleSources?: StoryContext['parameters']['cssModuleSources'];
 };
 
 export function prepareData(context: StoryContext): Data | null {
@@ -113,6 +115,7 @@ export function prepareData(context: StoryContext): Data | null {
     optionalDependencies: addonConfig.optionalDependencies,
     devDependencies: addonConfig.devDependencies,
     transformFiles: addonConfig.transformFiles,
+    cssModuleSources: context.parameters.cssModuleSources,
   };
 
   return demoData;

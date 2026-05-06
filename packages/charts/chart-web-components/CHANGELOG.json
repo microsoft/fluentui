@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Wed, 06 May 2026 04:07:36 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.74",
+      "version": "0.0.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "f00737e6d6de50b96763ab82034bdd7fa95a7fb5",
+            "comment": "fix: remove behaviors in favor of direct css inclusion"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.16",
+            "commit": "0d2ce67719198ed3b17939508616faff43f0ef40"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 May 2026 04:08:48 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.73",
       "version": "0.0.73",

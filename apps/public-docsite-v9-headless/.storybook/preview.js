@@ -1,28 +1,15 @@
-import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
+import * as headlessPreview from '../../../packages/react-components/react-headless-components-preview/stories/.storybook/preview';
 
-import * as rootPreview from '../../../.storybook/preview';
-import { tailwindSandboxTemplate } from './tailwind-sandbox-template';
+export const decorators = [...headlessPreview.decorators];
 
-polyfillBodyAndObserve();
-
-/** @type {typeof rootPreview.decorators} */
-export const decorators = [...rootPreview.decorators];
-
-/** @type {typeof rootPreview.parameters} */
+/** @type {typeof headlessPreview.parameters} */
 export const parameters = {
-  ...rootPreview.parameters,
-  docs: {
-    ...rootPreview.parameters.docs,
-  },
+  ...headlessPreview.parameters,
   options: {
     storySort: {
       method: 'alphabetical',
       order: ['Introduction', 'Headless Components'],
     },
-  },
-  exportToSandbox: {
-    ...rootPreview.parameters.exportToSandbox,
-    ...tailwindSandboxTemplate,
   },
   reactStorybookAddon: {
     docs: {
