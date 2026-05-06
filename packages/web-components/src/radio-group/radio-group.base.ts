@@ -1,5 +1,5 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import { findLastIndex } from '@microsoft/fast-web-utilities';
+import { findLastIndex } from '../utils/array.js';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
