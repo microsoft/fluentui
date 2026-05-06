@@ -130,6 +130,7 @@ export class BaseTablist extends FASTElement {
       }
 
       const isSelected = this.activeid === tab.id;
+      tab.toggleAttribute('focusgroupstart', isSelected);
       tab.setAttribute('aria-selected', isSelected.toString());
 
       // Only set the data-hasIndent attribute if the tab has a start slot and the orientation is vertical
