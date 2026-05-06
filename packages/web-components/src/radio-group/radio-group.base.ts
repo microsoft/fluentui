@@ -1,14 +1,5 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import {
-  findLastIndex,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyHome,
-  keySpace,
-} from '@microsoft/fast-web-utilities';
+import { findLastIndex } from '@microsoft/fast-web-utilities';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
@@ -461,15 +452,15 @@ export class BaseRadioGroup extends FASTElement {
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     switch (e.key) {
-      case keyArrowUp:
-      case keyArrowDown:
-      case keyArrowLeft:
-      case keyArrowRight:
-      case keyHome:
-      case keyEnd:
+      case 'ArrowUp':
+      case 'ArrowDown':
+      case 'ArrowLeft':
+      case 'ArrowRight':
+      case 'Home':
+      case 'End':
         this.isNavigating = true;
         break;
-      case keySpace:
+      case ' ':
         this.checkRadio();
         break;
     }

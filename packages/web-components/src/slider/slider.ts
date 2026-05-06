@@ -1,16 +1,6 @@
 import type { ElementStyles } from '@microsoft/fast-element';
 import { attr, css, FASTElement, observable, Observable, Updates } from '@microsoft/fast-element';
-import {
-  Direction,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyHome,
-  limit,
-  Orientation,
-} from '@microsoft/fast-web-utilities';
+import { Direction, limit, Orientation } from '@microsoft/fast-web-utilities';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
 import { convertPixelToPercent } from './slider-utilities.js';
@@ -612,29 +602,29 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     switch (event.key) {
-      case keyHome:
+      case 'Home':
         event.preventDefault();
         this.value =
           this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
             ? `${this.minAsNumber}`
             : `${this.maxAsNumber}`;
         break;
-      case keyEnd:
+      case 'End':
         event.preventDefault();
         this.value =
           this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
             ? `${this.maxAsNumber}`
             : `${this.minAsNumber}`;
         break;
-      case keyArrowRight:
-      case keyArrowUp:
+      case 'ArrowRight':
+      case 'ArrowUp':
         if (!event.shiftKey) {
           event.preventDefault();
           this.increment();
         }
         break;
-      case keyArrowLeft:
-      case keyArrowDown:
+      case 'ArrowLeft':
+      case 'ArrowDown':
         if (!event.shiftKey) {
           event.preventDefault();
           this.decrement();
