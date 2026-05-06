@@ -1,5 +1,4 @@
 import { FASTElement, observable } from '@microsoft/fast-element';
-import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
 import { isTreeItem } from '../tree-item/tree-item.options.js';
 
@@ -72,7 +71,7 @@ export class BaseTree extends FASTElement {
     }
 
     switch (e.key) {
-      case keyArrowLeft: {
+      case 'ArrowLeft': {
         if (item?.childTreeItems?.length && item.expanded) {
           item.expanded = false;
         } else if (isTreeItem(item.parentElement)) {
@@ -80,7 +79,7 @@ export class BaseTree extends FASTElement {
         }
         return;
       }
-      case keyArrowRight: {
+      case 'ArrowRight': {
         if (item?.childTreeItems?.length) {
           if (!item.expanded) {
             item.expanded = true;
@@ -88,13 +87,13 @@ export class BaseTree extends FASTElement {
         }
         return;
       }
-      case keyEnter: {
+      case 'Enter': {
         // In single-select trees where selection does not follow focus (see note below),
         // the default action is typically to select the focused node.
         this.clickHandler(e as Event);
         return;
       }
-      case keySpace: {
+      case ' ': {
         item.selected = true;
         return;
       }

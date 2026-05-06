@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.wc.json",
   "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "resolveJsonModule": true,

@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, Updates } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 import { AnchorPositioningCSSSupported, AnchorPositioningHTMLSupported } from '../utils/support.js';
 import type { TooltipPositioningOption } from './tooltip.options.js';
 
