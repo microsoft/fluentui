@@ -2564,6 +2564,18 @@ export const DialogType: {
 // @public (undocumented)
 export type DialogType = ValuesOf<typeof DialogType>;
 
+// Warning: (ae-missing-release-tag) "Direction" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "Direction" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const Direction: {
+    readonly ltr: "ltr";
+    readonly rtl: "rtl";
+};
+
+// @public
+export type Direction = (typeof Direction)[keyof typeof Direction];
+
 // Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -2968,8 +2980,6 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 // @public
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
-// Warning: (ae-forgotten-export) The symbol "Direction" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
@@ -3419,6 +3429,18 @@ export const MessageBarStyles: ElementStyles;
 // @public
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
+// Warning: (ae-missing-release-tag) "Orientation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "Orientation" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const Orientation: {
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public
+export type Orientation = (typeof Orientation)[keyof typeof Orientation];
+
 // @public
 export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
@@ -3659,7 +3681,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
-    // Warning: (ae-forgotten-export) The symbol "Orientation" needs to be exported by the entry point index.d.ts
     orientation?: Orientation;
     // (undocumented)
     protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined): void;
