@@ -5,7 +5,6 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
-import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -271,12 +270,10 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const subtextBaseStyles = useSubtextBaseStyles();
   const subTextStyles = useSubTextStyles();
   const multiline = !!state.subText;
-  const open = useMenuContext_unstable(context => context.open);
-  const submenuOpen = state.hasSubmenu && open;
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
-    submenuOpen && styles.submenuOpen,
+    state.submenuOpen && styles.submenuOpen,
     state.disabled && styles.disabled,
     state.root.className,
   );

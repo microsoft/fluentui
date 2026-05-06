@@ -145,6 +145,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
     checkmark: undefined,
     submenuIndicator: undefined,
     hasSubmenu: false,
+    submenuOpen: false,
     persistOnClick: true,
   });
 
