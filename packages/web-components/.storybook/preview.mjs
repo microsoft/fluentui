@@ -16,8 +16,10 @@ const themes = {
 };
 
 // This is needed in Playwright.
+// @ts-ignore - setTheme is set on globalThis by the index-rollup bundle
 Object.defineProperty(window, 'setTheme', { value: setTheme });
 
+// @ts-ignore - setTheme is set on globalThis by the index-rollup bundle
 setTheme(themes['web-light']);
 
 export const globalTypes = {
@@ -62,6 +64,7 @@ export const decorators = [
      * @type {keyof typeof themes}
      */
     const theme = context.globals.theme || 'web-light';
+    // @ts-ignore - setTheme is set on globalThis by the index-rollup bundle
     setTheme(themes[theme]);
 
     // Set direction on the document body
