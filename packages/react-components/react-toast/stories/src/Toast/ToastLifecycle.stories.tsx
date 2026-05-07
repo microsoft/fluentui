@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ToastStatus } from '@fluentui/react-components';
 import {
   useId,
   Link,
@@ -13,7 +13,6 @@ import {
   ToastTitle,
   ToastBody,
   ToastFooter,
-  ToastStatus,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

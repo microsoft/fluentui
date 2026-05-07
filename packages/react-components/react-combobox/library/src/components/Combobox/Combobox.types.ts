@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
@@ -9,7 +9,7 @@ import type {
   ComboboxBaseProps,
   ComboboxBaseState,
 } from '../../utils/ComboboxBase.types';
-import { Listbox } from '../Listbox/Listbox';
+import type { Listbox } from '../Listbox/Listbox';
 
 export type ComboboxSlots = {
   /** The root combobox slot */

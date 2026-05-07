@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { VirtualizerMeasureProps } from './hooks.types';
+import type { VirtualizerMeasureProps } from './hooks.types';
 import { useResizeObserverRef_unstable } from './useResizeObserverRef';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -16,7 +16,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: TElement | null) => void;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   containerSizeRef: React.MutableRefObject<number>;
 } => {
   const { defaultItemSize, direction = 'vertical', bufferItems, bufferSize } = virtualizerProps;
@@ -38,7 +38,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
       _observer: ResizeObserver,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {
       if (!scrollRef?.current) {

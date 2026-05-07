@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ArrowLeft, ArrowRight, Enter } from '@fluentui/keyboard-keys';
 import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { TreeItemContextValue } from '../../contexts';

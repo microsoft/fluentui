@@ -9,7 +9,6 @@ import {
   DataVizGradientPalette,
   getGradientFromToken,
 } from '@fluentui/react-charts';
-// } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';

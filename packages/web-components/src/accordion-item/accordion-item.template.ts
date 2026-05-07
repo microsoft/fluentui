@@ -41,11 +41,11 @@ export function accordionItemTemplate<T extends AccordionItem>(
       <button
         class="button"
         part="button"
-        ${ref('expandbutton')}
-        ?disabled="${x => (x.disabled ? 'true' : void 0)}"
+        id="control"
+        aria-controls="panel"
         aria-expanded="${x => x.expanded}"
-        aria-controls="${x => x.id}-panel"
-        id="${x => x.id}"
+        ?disabled="${x => x.disabled}"
+        ${ref('expandbutton')}
       >
         <slot name="heading"></slot>
       </button>
@@ -53,7 +53,7 @@ export function accordionItemTemplate<T extends AccordionItem>(
       <slot name="marker-expanded"> ${staticallyCompose(options.expandedIcon)} </slot>
       <slot name="marker-collapsed"> ${staticallyCompose(options.collapsedIcon)} </slot>
     </div>
-    <div class="content" part="content" id="${x => x.id}-panel" role="region" aria-labelledby="${x => x.id}">
+    <div class="content" part="content" id="panel" role="region" aria-labelledby="control">
       <slot></slot>
     </div>
   `;

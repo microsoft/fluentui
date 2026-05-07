@@ -1,13 +1,13 @@
 'use client';
 
 import * as React from 'react';
+import type { EventHandler } from '@fluentui/react-utilities';
 import {
   useControllableState,
   useEventCallback,
   useMergedRefs,
   slot,
   getIntrinsicElementProps,
-  EventHandler,
 } from '@fluentui/react-utilities';
 
 import type { NavProps, NavState, OnNavItemSelectData } from './Nav.types';

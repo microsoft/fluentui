@@ -201,27 +201,9 @@ function buildWorkspaceProjectConfiguration(
 
     // library
 
-    targets['generate-api'] = {
-      cache: true,
-      executor: '@fluentui/workspace-plugin:generate-api',
-      inputs: [
-        '{projectRoot}/config/api-extractor.json',
-        '{projectRoot}/tsconfig.json',
-        '{projectRoot}/tsconfig.lib.json',
-        '{projectRoot}/src/**/*.tsx?',
-        // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
-        '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
-        { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
-      ],
-      outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
-      metadata: {
-        technologies: ['typescript', 'api-extractor'],
-        help: {
-          command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
-          example: {},
-        },
-      },
-    };
+    targets['generate-api'] = buildGenerateApiTarget(projectRoot, config);
+
+    const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
 
     targets.build = {
       cache: true,
@@ -235,6 +217,7 @@ function buildWorkspaceProjectConfiguration(
           config.tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
+        ...(userEnabledExportSubpaths ? { generateApi: { exportSubpaths: userExportSubpaths } } : null),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
@@ -253,7 +236,8 @@ function buildWorkspaceProjectConfiguration(
         `{projectRoot}/lib-commonjs`,
         config.tags.includes('ships-amd') ? `{projectRoot}/lib-amd` : null,
         `{projectRoot}/dist`,
-        ...targets['generate-api'].outputs!,
+        // only spread etc/ outputs from generate-api (dist/ is already covered by {projectRoot}/dist above)
+        ...targets['generate-api'].outputs!.filter(outputPath => !outputPath.startsWith('{projectRoot}/dist')),
       ].filter(Boolean) as string[],
       metadata: {
         technologies: ['swc', 'typescript', 'api-extractor'],
@@ -285,6 +269,45 @@ function buildWorkspaceProjectConfiguration(
   }
 
   return { targets };
+}
+
+function resolveExportSubpathsOption(config: TaskBuilderConfig): {
+  value: boolean | { apiReport?: boolean };
+  enabled: boolean;
+} {
+  const value = config.projectJSON.targets?.['generate-api']?.options?.exportSubpaths;
+  const enabled = value === true || (typeof value === 'object' && value !== null);
+  return { value, enabled };
+}
+
+function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
+  const { enabled: hasExportSubpaths } = resolveExportSubpathsOption(config);
+
+  return {
+    cache: true,
+    executor: '@fluentui/workspace-plugin:generate-api',
+    inputs: [
+      '{projectRoot}/config/api-extractor.json',
+      '{projectRoot}/tsconfig.json',
+      '{projectRoot}/tsconfig.lib.json',
+      '{projectRoot}/src/**/*.tsx?',
+      // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
+      '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+      { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+    ],
+    // When exportSubpaths is enabled, use broad globs for outputs
+    // — the executor resolves exact paths at runtime.
+    outputs: hasExportSubpaths
+      ? ['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']
+      : [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
+    metadata: {
+      technologies: ['typescript', 'api-extractor'],
+      help: {
+        command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
+        example: {},
+      },
+    },
+  };
 }
 
 function buildTestTarget(

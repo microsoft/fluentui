@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { TableColumnDefinition } from './types';
+import type { TableColumnDefinition } from './types';
 import { useTableSortState } from './useTableSort';
 import { mockTableState } from '../testing/mockTableState';
 import { createTableColumn } from './createColumn';

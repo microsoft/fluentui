@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  VerticalStackedBarChart,
-  VSChartDataPoint,
-  VerticalStackedChartProps,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { VSChartDataPoint, VerticalStackedChartProps } from '@fluentui/react-charts';
+import { VerticalStackedBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const VerticalStackedBarDateAxis = (): JSXElement => {

@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TextareaBaseProps, TextareaBaseState, TextareaProps, TextareaState } from './Textarea.types';

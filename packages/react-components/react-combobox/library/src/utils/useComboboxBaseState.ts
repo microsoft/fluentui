@@ -3,12 +3,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
-import { ActiveDescendantChangeEvent, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantChangeEvent, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
-import { OptionValue } from '../utils/OptionCollection.types';
+import type { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
-import { SelectionEvents } from './Selection.types';
+import type { SelectionEvents } from './Selection.types';
 
 /**
  * State shared between Combobox and Dropdown components

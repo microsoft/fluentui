@@ -6,9 +6,9 @@
 import * as React from 'react';
 import { pie as d3Pie, PieArcDatum } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { PieProps } from './index';
+import type { PieProps } from './index';
 import { Arc } from '../Arc/index';
-import { ChartDataPoint } from '../index';
+import type { ChartDataPoint } from '../index';
 import { usePieStyles } from './usePieStyles.styles';
 import { wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;

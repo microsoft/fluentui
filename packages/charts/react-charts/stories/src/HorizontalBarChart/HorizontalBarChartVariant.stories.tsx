@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
+import type { ChartProps } from '@fluentui/react-charts';
 import {
   HorizontalBarChart,
   HorizontalBarChartVariant,
@@ -7,7 +8,7 @@ import {
   DataVizGradientPalette,
   getGradientFromToken,
 } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Checkbox } from '@fluentui/react-components';
 
 export const HorizontalBarAbsoluteScale = (): JSXElement => {
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);

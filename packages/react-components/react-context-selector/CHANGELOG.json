@@ -2,6 +2,35 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:04 GMT",
+      "tag": "@fluentui/react-context-selector_v9.2.16",
+      "version": "9.2.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "faf6311ea1b5dd72b70c4acb9356e60c8d83f6ff",
+            "comment": "fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ],
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:39 GMT",
       "tag": "@fluentui/react-context-selector_v9.2.15",
       "version": "9.2.15",

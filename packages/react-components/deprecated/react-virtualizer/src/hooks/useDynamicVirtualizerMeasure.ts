@@ -2,7 +2,7 @@
 
 import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { VirtualizerMeasureDynamicProps } from './hooks.types';
+import type { VirtualizerMeasureDynamicProps } from './hooks.types';
 import { useResizeObserverRef_unstable } from './useResizeObserverRef';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -43,7 +43,6 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
   const handleScrollResize = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (scrollRef: React.MutableRefObject<HTMLElement | null>) => {
       if (!scrollRef?.current) {
         // Error? ignore?
@@ -138,7 +137,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
       _observer: ResizeObserver,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {
       if (scrollRef) {

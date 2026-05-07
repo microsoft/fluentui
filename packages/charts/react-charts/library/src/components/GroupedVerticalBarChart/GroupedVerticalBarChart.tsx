@@ -4,12 +4,14 @@ import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
 import { pointer as d3Pointer } from 'd3-selection';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { ScaleBand, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import type { ScaleBand, ScaleLinear } from 'd3-scale';
+import { scaleBand as d3ScaleBand } from 'd3-scale';
 
-import { useId, JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-utilities';
+import type { IAxisData, IDomainNRange, YAxisType } from '../../utilities/index';
 import {
   ChartTypes,
-  IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
@@ -18,7 +20,6 @@ import {
   getBarWidth,
   isScalePaddingDefined,
   createNumericYAxis,
-  IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
   getNextColor,
@@ -26,7 +27,6 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
-  YAxisType,
   calcRequiredWidth,
   calcTotalWidth,
   calcBandwidth,
@@ -34,22 +34,20 @@ import {
   sortAxisCategories,
 } from '../../utilities/index';
 
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   Margins,
   Legend,
   GroupedVerticalBarChartProps,
   GroupedVerticalBarChartData,
   GVBarChartSeriesPoint,
-  Legends,
   YValueHover,
   ChartPopoverProps,
   LineSeries,
-  getColorFromToken,
   BarSeries,
   ChildProps,
 } from '../../index';
+import { CartesianChart, Legends, getColorFromToken } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import { useImageExport } from '../../utilities/hooks';
 import { isInvalidValue } from '@fluentui/chart-utilities';
@@ -441,7 +439,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
   // using only the data points associated with the primary y-axis.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const yMax = _getMinMaxOfYAxis(_datasetForBars).endValue;
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 

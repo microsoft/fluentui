@@ -10,6 +10,7 @@ import { getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorep
 export function getConfig({ version }: { version: 'web-components' }): { scope: string[] };
 export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
 export function getConfig({ version }: { version: 'tools' }): { scope: string[] };
+export function getConfig({ version }: { version: 'headless' }): { scope: string[] };
 export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
   groupConfig: {
@@ -18,8 +19,8 @@ export function getConfig({ version }: { version: 'vNext' }): {
     include: string[];
   };
 };
-export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' | 'tools' }) {
-  const { vNextPaths, webComponentsPaths, toolsPaths, v8Paths } = getPackagePaths();
+export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' | 'tools' | 'headless' }) {
+  const { vNextPaths, webComponentsPaths, toolsPaths, v8Paths, headlessPaths } = getPackagePaths();
 
   if (version === 'vNext') {
     return {
@@ -48,6 +49,12 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-componen
     };
   }
 
+  if (version === 'headless') {
+    return {
+      scope: [...headlessPaths],
+    };
+  }
+
   throw new Error('Unsupported version scopes acquisition');
 }
 
@@ -66,6 +73,12 @@ const isToolsPackage: typeof isConvergedPackage = metadata => {
 
   return hasToolsTag && !isPrivate && !isV8Package(metadata);
 };
+const isHeadlessPackage: typeof isConvergedPackage = metadata => {
+  const hasHeadlessTag = Boolean(metadata.project.tags?.includes('react-headless'));
+  const isPrivate = Boolean(metadata.packageJson.private);
+
+  return hasHeadlessTag && !isPrivate;
+};
 
 function getPackagePaths() {
   const allProjects = getAllPackageInfo();
@@ -73,11 +86,12 @@ function getPackagePaths() {
   const webComponentsPaths: string[] = [];
   const v8Paths: string[] = [];
   const toolsPaths: string[] = [];
+  const headlessPaths: string[] = [];
 
   for (const project of Object.values(allProjects)) {
     const isPrivate = Boolean(project.packageJson.private);
     const metadata = { project: project.projectConfig, packageJson: project.packageJson };
-    if (isConvergedPackage(metadata) && !isToolsPackage(metadata) && !isPrivate) {
+    if (isConvergedPackage(metadata) && !isToolsPackage(metadata) && !isHeadlessPackage(metadata) && !isPrivate) {
       vNextPaths.push(project.packagePath);
     }
     if (isWebComponentPackage(metadata)) {
@@ -89,7 +103,10 @@ function getPackagePaths() {
     if (isV8Package(metadata)) {
       v8Paths.push(project.packagePath);
     }
+    if (isHeadlessPackage(metadata)) {
+      headlessPaths.push(project.packagePath);
+    }
   }
 
-  return { vNextPaths, webComponentsPaths, toolsPaths, v8Paths };
+  return { vNextPaths, webComponentsPaths, toolsPaths, v8Paths, headlessPaths };
 }

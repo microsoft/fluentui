@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { getObservedElement, Types as TabsterTypes } from 'tabster';
+import type { Types as TabsterTypes } from 'tabster';
+import { getObservedElement } from 'tabster';
 import { useTabster } from './useTabster';
 
 interface UseFocusObservedOptions {

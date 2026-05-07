@@ -1,5 +1,5 @@
 import { EVENTS } from '../constants';
-import { PlayToastEventDetail, ToastId, ToasterId } from '../types';
+import type { PlayToastEventDetail, ToastId, ToasterId } from '../types';
 
 export function playToast(
   toastId: ToastId,

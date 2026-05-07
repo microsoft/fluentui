@@ -1,7 +1,8 @@
-import { motionTokens, createPresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
+import type { PresenceMotionFn } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { blurAtom } from '../../atoms/blur-atom';
-import { BlurParams } from './blur-types';
+import type { BlurParams } from './blur-types';
 
 /**
  * Define a presence motion for blur in/out

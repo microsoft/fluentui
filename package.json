@@ -71,6 +71,7 @@
     "@microsoft/api-extractor": "7.51.0",
     "@microsoft/api-extractor-model": "7.31.2",
     "@microsoft/eslint-plugin-sdl": "1.0.1",
+    "@microsoft/focusgroup-polyfill": "^1.2.1",
     "@microsoft/load-themed-styles": "1.10.26",
     "@microsoft/loader-load-themed-styles": "2.0.17",
     "@microsoft/tsdoc": "0.15.1",

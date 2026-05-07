@@ -1,4 +1,11 @@
-export { Field, fieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from './Field';
+export {
+  Field,
+  fieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+  useFieldBase_unstable,
+} from './Field';
 export type {
   FieldContextValue,
   FieldContextValues,
@@ -6,6 +13,8 @@ export type {
   FieldProps,
   FieldSlots,
   FieldState,
+  FieldBaseProps,
+  FieldBaseState,
 } from './Field';
 export {
   FieldContextProvider,

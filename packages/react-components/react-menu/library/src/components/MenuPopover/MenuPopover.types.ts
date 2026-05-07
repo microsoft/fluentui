@@ -1,6 +1,6 @@
 import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type * as React from 'react';
 
 export type MenuPopoverSlots = {
   root: Slot<'div'>;

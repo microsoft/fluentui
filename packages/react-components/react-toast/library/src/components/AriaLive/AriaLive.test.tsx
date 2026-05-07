@@ -2,7 +2,7 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { AriaLive } from './AriaLive';
 import { isConformant } from '../../testing/isConformant';
-import { Announce, AriaLivePoliteness } from './AriaLive.types';
+import type { Announce, AriaLivePoliteness } from './AriaLive.types';
 
 describe('AriaLive', () => {
   isConformant({

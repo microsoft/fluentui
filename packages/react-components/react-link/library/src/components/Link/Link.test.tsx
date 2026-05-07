@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../testing/isConformant';
 import { Link } from './Link';
-import { LinkProps } from './Link.types';
+import type { LinkProps } from './Link.types';
 import { Enter } from '@fluentui/keyboard-keys';
 
 describe('Link', () => {

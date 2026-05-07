@@ -3,6 +3,7 @@ import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button } from '@fluentui/react-components';
 import { Slide } from '@fluentui/react-motion-components-preview';
 import SlideDirectionsDescription from './SlideDirections.stories.md';
+import type { FluentIcon } from '@fluentui/react-icons';
 import {
   ArrowUpFilled,
   ArrowDownFilled,
@@ -12,7 +13,6 @@ import {
   ArrowUpRightFilled,
   ArrowDownLeftFilled,
   ArrowDownRightFilled,
-  FluentIcon,
 } from '@fluentui/react-icons';
 
 const useClasses = makeStyles({

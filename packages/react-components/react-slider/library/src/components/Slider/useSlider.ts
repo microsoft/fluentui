@@ -1,10 +1,10 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getPartitionedNativeProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useSliderState_unstable } from './useSliderState';
-import { SliderBaseProps, SliderBaseState, SliderProps, SliderState } from './Slider.types';
+import type { SliderBaseProps, SliderBaseState, SliderProps, SliderState } from './Slider.types';
 import { useFocusWithin } from '@fluentui/react-tabster';
 
 export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {

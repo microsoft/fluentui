@@ -591,7 +591,6 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/lib",
                         "{projectRoot}/lib-commonjs",
                         "{projectRoot}/dist",
-                        "{projectRoot}/dist/index.d.ts",
                         "{projectRoot}/etc/proj.api.md",
                       ],
                     },
@@ -819,6 +818,74 @@ describe(`workspace-plugin`, () => {
           },
         }
       `);
+    });
+
+    describe('generate-api target', () => {
+      const v9LibFiles = {
+        'proj/project.json': serializeJson({
+          root: 'proj',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      };
+
+      async function setupAndGetGenerateApiTarget(extraFiles: Record<string, string> = {}) {
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        return getTargets(results)?.['generate-api'];
+      }
+
+      it('should use default inputs and outputs for a standard v9 library', async () => {
+        const target = await setupAndGetGenerateApiTarget();
+
+        expect(target?.inputs).toEqual([
+          '{projectRoot}/config/api-extractor.json',
+          '{projectRoot}/tsconfig.json',
+          '{projectRoot}/tsconfig.lib.json',
+          '{projectRoot}/src/**/*.tsx?',
+          '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+          { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+        ]);
+        expect(target?.outputs).toEqual(['{projectRoot}/dist/index.d.ts', '{projectRoot}/etc/proj.api.md']);
+      });
+
+      it('should add glob outputs when user configures exportSubpaths on generate-api target', async () => {
+        const extraFiles = {
+          'proj/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+            targets: {
+              'generate-api': {
+                options: {
+                  exportSubpaths: true,
+                },
+              },
+            },
+          } satisfies ProjectConfiguration),
+        };
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        const targets = getTargets(results);
+
+        const generateApiTarget = targets?.['generate-api'];
+        expect(generateApiTarget?.outputs).toEqual(['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']);
+
+        const buildTarget = targets?.build;
+        expect(buildTarget?.options?.generateApi).toEqual({ exportSubpaths: true });
+        expect(buildTarget?.outputs).toEqual([
+          '{projectRoot}/lib',
+          '{projectRoot}/lib-commonjs',
+          '{projectRoot}/dist',
+          '{projectRoot}/etc/*.api.md',
+        ]);
+      });
     });
 
     it('should add verify-packaging task only if package is not private', async () => {

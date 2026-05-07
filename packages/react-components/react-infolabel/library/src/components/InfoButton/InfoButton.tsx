@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderInfoButton_unstable } from './renderInfoButton';
 import { useInfoButton_unstable } from './useInfoButton';
 import { useInfoButtonStyles_unstable } from './useInfoButtonStyles.styles';

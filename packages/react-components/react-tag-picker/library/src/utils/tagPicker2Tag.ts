@@ -1,6 +1,6 @@
 import type { TagAppearance, TagSize } from '@fluentui/react-tags/src/index';
 import type { TagPickerSize } from '../TagPicker';
-import { ComboboxBaseProps } from '@fluentui/react-combobox';
+import type { ComboboxBaseProps } from '@fluentui/react-combobox';
 
 export function tagPickerSizeToTagSize(size: TagPickerSize): TagSize {
   switch (size) {

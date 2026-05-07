@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
-import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
+import type { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
 import * as slot from './slot';
 
 type SlotComponents<Slots extends SlotPropsRecord> = {

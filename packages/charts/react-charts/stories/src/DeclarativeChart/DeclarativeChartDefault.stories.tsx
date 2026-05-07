@@ -1,19 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { DeclarativeChart, IDeclarativeChart, Schema } from '@fluentui/react-charts';
-import {
-  Button,
-  Dropdown,
-  Field,
-  Input,
-  InputOnChangeData,
-  Option,
-  OptionOnSelectData,
-  SelectionEvents,
-  Spinner,
-  Switch,
-  useFluent,
-} from '@fluentui/react-components';
+import type { JSXElement, InputOnChangeData, OptionOnSelectData, SelectionEvents } from '@fluentui/react-components';
+import type { IDeclarativeChart, Schema } from '@fluentui/react-charts';
+import { DeclarativeChart } from '@fluentui/react-charts';
+import { Button, Dropdown, Field, Input, Option, Spinner, Switch, useFluent } from '@fluentui/react-components';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;

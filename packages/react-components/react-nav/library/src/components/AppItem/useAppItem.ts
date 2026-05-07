@@ -1,9 +1,10 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { AppItemProps, AppItemState } from './AppItem.types';
-import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 
 /**

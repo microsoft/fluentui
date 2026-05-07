@@ -1564,8 +1564,16 @@ describe('isSafeUrl', () => {
     expect(utils.isSafeUrl('file:///etc/passwd')).toBe(false);
   });
 
-  test('Should block ftp: protocol', () => {
-    expect(utils.isSafeUrl('ftp://example.com/file')).toBe(false);
+  test('Should allow ftp: protocol', () => {
+    expect(utils.isSafeUrl('ftp://example.com/file')).toBe(true);
+  });
+
+  test('Should allow mailto: protocol', () => {
+    expect(utils.isSafeUrl('mailto:user@example.com')).toBe(true);
+  });
+
+  test('Should allow tel: protocol', () => {
+    expect(utils.isSafeUrl('tel:+1234567890')).toBe(true);
   });
 
   test('Should block custom: protocol', () => {

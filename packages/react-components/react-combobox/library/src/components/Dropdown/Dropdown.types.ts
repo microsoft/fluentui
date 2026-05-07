@@ -8,7 +8,7 @@ import type {
   ComboboxBaseProps,
   ComboboxBaseState,
 } from '../../utils/ComboboxBase.types';
-import { Listbox } from '../Listbox/Listbox';
+import type { Listbox } from '../Listbox/Listbox';
 
 export type DropdownSlots = {
   /** The root dropdown slot */

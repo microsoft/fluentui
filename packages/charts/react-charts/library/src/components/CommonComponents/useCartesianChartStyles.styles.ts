@@ -1,8 +1,9 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
+import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { CARTESIAN_XAXIS_CLASSNAME, HighContrastSelector, useRtl } from '../../utilities/utilities';
 import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.14)
+
+Thu, 23 Apr 2026 14:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.13..@fluentui/react-tabster_v9.26.14)
+
+### Patches
+
+- fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path ([PR #35933](https://github.com/microsoft/fluentui/pull/35933) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.26.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.13)
 

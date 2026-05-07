@@ -21,12 +21,8 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import {
-  ARIAButtonElement,
-  ARIAButtonElementIntersection,
-  ARIAButtonProps,
-  useARIAButtonProps,
-} from '@fluentui/react-aria';
+import type { ARIAButtonElement, ARIAButtonElementIntersection, ARIAButtonProps } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
 import { useValidateNesting } from '../../utils/useValidateNesting';

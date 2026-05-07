@@ -36,16 +36,34 @@ export class BaseTree extends FASTElement {
   public elementInternals: ElementInternals = this.attachInternals();
 
   /** @internal */
+  @observable
   public defaultSlot!: HTMLSlotElement;
+
+  /**
+   * Calls the slot change handler when the `defaultSlot` reference is updated
+   * by the template binding.
+   *
+   * @internal
+   */
+  defaultSlotChanged() {
+    this.handleDefaultSlotChange();
+  }
 
   constructor() {
     super();
     this.elementInternals.role = 'tree';
   }
 
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
+  }
+
   /** @internal */
   @observable
-  childTreeItems: BaseTreeItem[] = [];
+  childTreeItems!: BaseTreeItem[];
+
   /** @internal */
   public childTreeItemsChanged() {
     this.updateCurrentSelected();

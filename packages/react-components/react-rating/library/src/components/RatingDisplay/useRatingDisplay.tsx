@@ -27,8 +27,22 @@ export const useRatingDisplay_unstable = (
   const { color = 'neutral', size = 'medium', icon = StarFilled, ...baseProps } = props;
   const state = useRatingDisplayBase_unstable({ icon, ...baseProps }, ref);
 
+  const { compact, max } = state;
+
+  const rootChildren = React.useMemo(() => {
+    return compact ? (
+      <RatingItem value={1} key={1} aria-hidden={true} />
+    ) : (
+      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} aria-hidden={true} />)
+    );
+  }, [compact, max]);
+
   return {
     ...state,
+    root: {
+      children: rootChildren,
+      ...state.root,
+    },
     icon,
     color,
     size,
@@ -52,15 +66,6 @@ export const useRatingDisplayBase_unstable = (
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
 
-  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
-  const rootChildren = React.useMemo(() => {
-    return compact ? (
-      <RatingItem value={1} key={1} aria-hidden={true} />
-    ) : (
-      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} aria-hidden={true} />)
-    );
-  }, [compact, max]);
-
   const state: RatingDisplayBaseState = {
     compact,
     icon,
@@ -74,7 +79,6 @@ export const useRatingDisplayBase_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        children: rootChildren,
         role: 'img',
         ...props,
       }),

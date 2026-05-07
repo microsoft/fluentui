@@ -809,6 +809,38 @@ test.describe('Slider', () => {
         expect(thumbBox.y + thumbBox.height / 2).toBeCloseTo(thumbMoveToY);
       }
     });
+
+    test('should not change value when dragging inside a disabled fieldset', async ({ fastPage, page }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate(/* html */ `
+        <form>
+          <fieldset disabled>
+            <fluent-slider></fluent-slider>
+          </fieldset>
+        </form>
+      `);
+
+      const thumb = element.locator('.thumb-container');
+      const track = element.locator('.track');
+      const trackBox = (await track.boundingBox()) as BoundingBox;
+
+      expect(trackBox).not.toBeNull();
+
+      const thumbBox = (await thumb.boundingBox()) as BoundingBox;
+      expect(thumbBox).not.toBeNull();
+
+      const thumbCenterX = thumbBox.x + thumbBox.width / 2;
+      const thumbCenterY = thumbBox.y + thumbBox.height / 2;
+      const thumbMoveToX = thumbCenterX - trackBox.width * 0.1;
+
+      await page.mouse.move(thumbCenterX, thumbCenterY);
+      await page.mouse.down();
+      await page.mouse.move(thumbMoveToX, thumbCenterY);
+      await page.mouse.up();
+
+      await expect(element).toHaveJSProperty('valueAsNumber', 50);
+    });
   });
 
   test('should allow keyboard interactions after clicking on the thumb', async ({ fastPage, page }) => {

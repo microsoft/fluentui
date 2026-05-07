@@ -5,6 +5,8 @@ export type {
   FieldProps,
   FieldSlots,
   FieldState,
+  FieldBaseProps,
+  FieldBaseState,
 } from './components/Field/index';
 export {
   Field,
@@ -12,4 +14,5 @@ export {
   renderField_unstable,
   useFieldStyles_unstable,
   useField_unstable,
+  useFieldBase_unstable,
 } from './components/Field/index';

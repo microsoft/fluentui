@@ -155,6 +155,7 @@
 }
 
 #storybook-docs .innerZoomElementWrapper {
+  background-color: var(--colorNeutralBackground2);
   padding: 30px;
 }
 

@@ -1,18 +1,15 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts';
-import {
-  Checkbox,
-  Field,
-  Radio,
-  RadioGroup,
+import type {
+  JSXElement,
   CheckboxOnChangeData,
   CheckboxProps,
-  Input,
   InputProps,
   InputOnChangeData,
   Switch,
 } from '@fluentui/react-components';
+import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
+import { VerticalBarChart } from '@fluentui/react-charts';
+import { Checkbox, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
 
 export const VerticalBarAxisTooltip = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');

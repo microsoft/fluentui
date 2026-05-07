@@ -4,26 +4,26 @@
 
 ```ts
 
-import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
+import type { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
-import { EventData } from '@fluentui/react-utilities';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { PortalProps } from '@fluentui/react-portal';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
 
 // @public
