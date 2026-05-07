@@ -66,12 +66,14 @@ export type MotionComponentProps = {
    * of calling `imperativeRef.current.play()` but driven by a prop rather than a ref call.
    *
    * @example
+   * ```tsx
    * // Replay a Fade.In each time the user clicks "Refresh"
    * const [replayKey, setReplayKey] = React.useState(0);
    * <Fade.In replayKey={replayKey}>
    *   <div>Content</div>
    * </Fade.In>
    * <button onClick={() => setReplayKey(k => k + 1)}>Refresh</button>
+   * ```
    */
   replayKey?: string | number;
 };
