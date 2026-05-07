@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Support for new markdown, \"special folder\" filetype icon (default \"shortcuts\" folder) and other fixes",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
