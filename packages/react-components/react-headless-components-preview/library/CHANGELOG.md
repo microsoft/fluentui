@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Mon, 04 May 2026 11:47:29 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2026 23:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.3)
+
+Wed, 06 May 2026 23:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.0.2..@fluentui/react-headless-components-preview_v0.0.3)
+
+### Patches
+
+- feat: add Tooltip component ([PR #36079](https://github.com/microsoft/fluentui/pull/36079) by dmytrokirpa@microsoft.com)
+- feat: add Image component ([PR #36099](https://github.com/microsoft/fluentui/pull/36099) by dmytrokirpa@microsoft.com)
+- fix: set popover=auto on surface via jsx defaults ([PR #36090](https://github.com/microsoft/fluentui/pull/36090) by vgenaev@gmail.com)
+- feat: add ToolbarRadioButton component ([PR #36100](https://github.com/microsoft/fluentui/pull/36100) by dmytrokirpa@microsoft.com)
+- feat: add Persona component ([PR #36102](https://github.com/microsoft/fluentui/pull/36102) by dmytrokirpa@microsoft.com)
 
 ## [0.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.2)
 

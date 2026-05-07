@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 06 May 2026 04:07:34 GMT and should not be manually modified.
+This log was last generated on Wed, 06 May 2026 19:08:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.17)
+
+Wed, 06 May 2026 19:08:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.16..@fluentui/web-components_v3.0.0-rc.17)
+
+### Changes
+
+- fix menu not closing when menu list loses keyboard focus ([PR #36111](https://github.com/microsoft/fluentui/pull/36111) by machi@microsoft.com)
+- fix: remove deprecated fast-web-utilities references ([PR #36106](https://github.com/microsoft/fluentui/pull/36106) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-rc.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.16)
 

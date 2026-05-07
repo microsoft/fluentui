@@ -1,5 +1,4 @@
 import { attr, FASTElement, Observable } from '@microsoft/fast-element';
-import { keyEnter } from '@microsoft/fast-web-utilities';
 import { AnchorAttributes, type AnchorTarget } from './anchor-button.options.js';
 
 /**
@@ -193,7 +192,7 @@ export class BaseAnchor extends FASTElement {
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     if (this.href) {
-      if (e.key === keyEnter) {
+      if (e.key === 'Enter') {
         const newTab = !this.isMac ? e.ctrlKey : e.metaKey || e.ctrlKey;
         this.handleNavigation(newTab);
         return;

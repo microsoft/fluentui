@@ -1,14 +1,4 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import {
-  findLastIndex,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnd,
-  keyHome,
-  keySpace,
-} from '@microsoft/fast-web-utilities';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
@@ -164,7 +154,7 @@ export class BaseRadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+    const checkedIndex = this.enabledRadios.findLastIndex(x => x.initialChecked);
 
     next.forEach((radio, index) => {
       radio.ariaPosInSet = `${index + 1}`;
@@ -461,15 +451,15 @@ export class BaseRadioGroup extends FASTElement {
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     switch (e.key) {
-      case keyArrowUp:
-      case keyArrowDown:
-      case keyArrowLeft:
-      case keyArrowRight:
-      case keyHome:
-      case keyEnd:
+      case 'ArrowUp':
+      case 'ArrowDown':
+      case 'ArrowLeft':
+      case 'ArrowRight':
+      case 'Home':
+      case 'End':
         this.isNavigating = true;
         break;
-      case keySpace:
+      case ' ':
         this.checkRadio();
         break;
     }

@@ -1,5 +1,5 @@
 import { FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { isHTMLElement } from '@microsoft/fast-web-utilities';
+import { isHTMLElement } from '../utils/typings.js';
 import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
 import type { MenuItem } from '../menu-item/menu-item.js';
 import { isMenuItem, MenuItemRole } from '../menu-item/menu-item.options.js';
