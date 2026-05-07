@@ -57,6 +57,7 @@
   },
   "sideEffects": [
     "define.*",
+    "define-all.*",
     "index-rollup.*",
     "index-all-rollup.*",
     "./dist/esm/**/define.js",
