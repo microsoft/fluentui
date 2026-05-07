@@ -1,10 +1,9 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
-import { setTheme } from '../src/theme/set-theme.js';
 import webcomponentsTheme from './theme.mjs';
 
-import '../src/index-rollup.js';
+import '../src/index.bundle.js';
 import './docs-root.css';
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions

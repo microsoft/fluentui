@@ -8,7 +8,7 @@ if (!CSS.supports('anchor-name: --foo')) {
 
 import { webLightTheme } from '@fluentui/tokens';
 import { setTheme } from '../../../src/theme/set-theme.js';
-import '../../../src/index-rollup.js';
+import '../../../src/index.bundle.js';
 
 setTheme(webLightTheme);
 

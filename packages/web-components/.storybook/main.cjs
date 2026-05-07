@@ -59,7 +59,7 @@ function createTypeScriptAliases(configPath) {
 /**
  * Creates a Vite plugin that resolves .ts files when imported with .js extension.
  * This matches webpack's extensionAlias behavior and is needed for imports like
- * '../src/index-rollup.js' to work in production builds.
+ * '../src/index.bundle.js' to work in production builds.
  * @returns {object} Vite plugin object
  */
 function createResolveTsAsJsPlugin() {
