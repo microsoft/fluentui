@@ -53,7 +53,6 @@ function transformTaggedTemplates() {
 }
 
 const sharedOptions = {
-  entryPoints: ['src/index.bundle.ts'],
   bundle: true,
   format: 'esm',
   platform: 'browser',
@@ -63,11 +62,26 @@ const sharedOptions = {
 
 await build({
   ...sharedOptions,
+  entryPoints: ['src/index.bundle.ts'],
   outfile: 'dist/web-components.js',
 });
 
 await build({
   ...sharedOptions,
+  entryPoints: ['src/index.bundle.ts'],
   outfile: 'dist/web-components.min.js',
+  minify: true,
+});
+
+await build({
+  ...sharedOptions,
+  entryPoints: ['src/index-all.bundle.ts'],
+  outfile: 'dist/web-components-all.js',
+});
+
+await build({
+  ...sharedOptions,
+  entryPoints: ['src/index-all.bundle.ts'],
+  outfile: 'dist/web-components-all.min.js',
   minify: true,
 });

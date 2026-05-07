@@ -30,13 +30,15 @@
   ],
   "exports": {
     ".": "./dist/esm/index.js",
-    "./web-components.js": {
+    "./web-components.js": "./dist/web-components.js",
+    "./web-components.min.js": "./dist/web-components.min.js",
+    "./web-components-all.js": {
       "types": "./dist/web-components.d.ts",
-      "default": "./dist/web-components.js"
+      "default": "./dist/web-components-all.js"
     },
-    "./web-components.min.js": {
+    "./web-components-all.min.js": {
       "types": "./dist/web-components.d.ts",
-      "default": "./dist/web-components.min.js"
+      "default": "./dist/web-components-all.min.js"
     },
     "./utils/behaviors/*.js": "./dist/esm/utils/behaviors/*.js",
     "./utils/*.js": "./dist/esm/utils/*.js",
@@ -56,9 +58,12 @@
   "sideEffects": [
     "define.*",
     "index.bundle.*",
+    "index-all.bundle.*",
     "./dist/esm/**/define.js",
     "./dist/web-components.js",
-    "./dist/web-components.min.js"
+    "./dist/web-components.min.js",
+    "./dist/web-components-all.js",
+    "./dist/web-components-all.min.js"
   ],
   "scripts": {
     "analyze": "cem analyze",
