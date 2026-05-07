@@ -123,6 +123,7 @@ apps/vr-tests-web-components @microsoft/fui-wc
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg @microsoft/fluentui-react-build
+apps/public-docsite-v9-headless @microsoft/cxe-prg @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/rit-tests-v8 @microsoft/fluentui-react-build

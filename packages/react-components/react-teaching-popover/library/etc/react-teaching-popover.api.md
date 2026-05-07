@@ -15,6 +15,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
+import { PopoverContextValues } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverState } from '@fluentui/react-popover';
 import type { PopoverSurfaceSlots } from '@fluentui/react-popover';
@@ -27,7 +28,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTeachingPopover_unstable: (state: PopoverState) => JSXElement;
+export const renderTeachingPopover_unstable: (state: PopoverState, contextValues?: PopoverContextValues) => JSXElement;
 
 // @public
 export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSXElement;
@@ -376,6 +377,9 @@ export const useTeachingPopoverCarouselPageCountStyles_unstable: (state: Teachin
 
 // @public
 export const useTeachingPopoverCarouselStyles_unstable: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselState;
+
+// @public (undocumented)
+export const useTeachingPopoverContextValues_unstable: (state: TeachingPopoverState) => TeachingPopoverContextValues;
 
 // @public
 export const useTeachingPopoverFooter_unstable: (props: TeachingPopoverFooterProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverFooterState;

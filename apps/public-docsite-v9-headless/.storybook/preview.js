@@ -1,18 +1,27 @@
-import * as rootPreview from '../../../.storybook/preview';
+import * as headlessPreview from '../../../packages/react-components/react-headless-components-preview/stories/.storybook/preview';
 
-/** @type {typeof rootPreview.decorators} */
-export const decorators = [...rootPreview.decorators];
+export const decorators = [...headlessPreview.decorators];
 
-/** @type {typeof rootPreview.parameters} */
+/** @type {typeof headlessPreview.parameters} */
 export const parameters = {
-  ...rootPreview.parameters,
-  docs: {
-    ...rootPreview.parameters.docs,
-  },
+  ...headlessPreview.parameters,
   options: {
     storySort: {
       method: 'alphabetical',
       order: ['Introduction', 'Headless Components'],
+    },
+  },
+  reactStorybookAddon: {
+    docs: {
+      argTable: {
+        slotsApi: true,
+        nativePropsApi: true,
+      },
+      copyAsMarkdown: true,
+      tableOfContents: true,
+      dirSwitcher: true,
+      // headless components don't support theming
+      themePicker: false,
     },
   },
 };

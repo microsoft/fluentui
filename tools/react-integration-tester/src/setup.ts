@@ -260,6 +260,7 @@ function prepareTsConfigTemplate(options: {
 
   const target = tsConfig.compilerOptions?.target ?? 'ES2019';
   const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
+  const moduleResolution = tsConfig.compilerOptions?.moduleResolution ?? 'node';
 
   return {
     pathToProjectConfig: options.projectTsConfigPath,
@@ -269,6 +270,7 @@ function prepareTsConfigTemplate(options: {
     target,
     lib,
     strictMode,
+    moduleResolution,
   };
 }
 

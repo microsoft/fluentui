@@ -1,14 +1,14 @@
-import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-
+import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
 import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-extractor';
 
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
-import { isCI } from './lib/shared';
+import { isCI, verboseLog } from './lib/shared';
+import { getExportSubpathConfigs } from './lib/utils';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   measureStart('GenerateApiExecutor');
@@ -26,14 +26,30 @@ export default runExecutor;
 
 // ===========
 
-interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
+export interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 
 async function runGenerateApi(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
-  if (generateTypeDeclarations(options)) {
-    return apiExtractor(options, context);
+  if (!generateTypeDeclarations(options)) {
+    return false;
   }
 
-  return false;
+  // Run primary api-extractor config
+  if (!apiExtractor({ configPath: options.config }, options, context)) {
+    return false;
+  }
+
+  // Expand export subpaths and run api-extractor for each resolved entry
+  if (options.exportSubpaths.enabled) {
+    const subpathConfigs = getExportSubpathConfigs(options);
+    for (const configObject of subpathConfigs) {
+      verboseLog(`Running api-extractor for export subpath entry: ${configObject.mainEntryPointFilePath}`);
+      if (!apiExtractor({ configObject }, options, context)) {
+        return false;
+      }
+    }
+  }
+
+  return true;
 }
 
 function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorContext) {
@@ -43,6 +59,13 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     diagnostics: false,
   };
   const resolvedSchema = { ...defaults, ...schema };
+
+  // Normalize exportSubpaths into { enabled, apiReport }
+  const rawExportSubpaths = resolvedSchema.exportSubpaths;
+  const exportSubpaths =
+    typeof rawExportSubpaths === 'object' && rawExportSubpaths !== null
+      ? { enabled: true, apiReport: rawExportSubpaths.apiReport !== false }
+      : { enabled: rawExportSubpaths === true, apiReport: true };
 
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
@@ -62,6 +85,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
 
   return {
     ...resolvedSchema,
+    exportSubpaths,
     local: resolveLocalFlag,
     config: resolveConfig.result!,
     project,
@@ -92,15 +116,18 @@ function generateTypeDeclarations(options: NormalizedOptions) {
   }
 }
 
-function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
-  const extractorConfigPath = options.config;
+function apiExtractor(
+  configSource: { configPath: string } | { configObject: IConfigFile },
+  options: NormalizedOptions,
+  context: ExecutorContext,
+) {
+  const { rawConfig, fullPath } = resolveConfigSource();
 
   // Load,parse,customize and prepare the api-extractor.json file for API Extractor API
-  const rawExtractorConfig = ExtractorConfig.loadFile(extractorConfigPath);
-  customizeExtractorConfig(rawExtractorConfig);
+  customizeExtractorConfig(rawConfig);
   const extractorConfig = ExtractorConfig.prepare({
-    configObject: rawExtractorConfig,
-    configObjectFullPath: extractorConfigPath,
+    configObject: rawConfig,
+    configObjectFullPath: fullPath,
     packageJsonFullPath: options.packageJsonPath,
   });
 
@@ -124,6 +151,25 @@ function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
       ` and ${extractorResult.warningCount} warnings`,
   );
   return false;
+
+  /**
+   * Resolves the config source into a raw IConfigFile and the full path used for token resolution.
+   * File-based sources are loaded from disk; programmatic configs reuse the primary config path.
+   */
+  function resolveConfigSource(): { rawConfig: IConfigFile; fullPath: string } {
+    if ('configPath' in configSource) {
+      return {
+        rawConfig: ExtractorConfig.loadFile(configSource.configPath),
+        fullPath: configSource.configPath,
+      };
+    }
+
+    return {
+      rawConfig: configSource.configObject,
+      // Reuse the primary config path so that token resolution matches file-based configs.
+      fullPath: options.config,
+    };
+  }
 
   function customizeExtractorConfig(apiExtractorConfig: IConfigFile) {
     apiExtractorConfig.compiler = getTsConfigForApiExtractor({
@@ -214,7 +260,7 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
-function getApiExtractorConfigPath(schema: Required<GenerateApiExecutorSchema>, projectRoot: string) {
+function getApiExtractorConfigPath(schema: Required<Pick<GenerateApiExecutorSchema, 'config'>>, projectRoot: string) {
   const configPath = schema.config.replace('{projectRoot}', projectRoot);
 
   if (!existsSync(configPath)) {
@@ -242,10 +288,4 @@ function getTsConfigPathUsedForProduction(projectRoot: string) {
   }
 
   return { error: null, result: tsConfigFileForCompilation };
-}
-
-function verboseLog(message: string, kind: keyof typeof logger = 'info') {
-  if (process.env.NX_VERBOSE_LOGGING === 'true') {
-    logger[kind](message);
-  }
 }

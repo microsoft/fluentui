@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Wed, 01 Apr 2026 15:52:42 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.12.1)
+
+Thu, 23 Apr 2026 14:21:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.12.0..@fluentui/react-tabs_v9.12.1)
+
+### Patches
+
+- perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- fix: export base hook types ([PR #35989](https://github.com/microsoft/fluentui/pull/35989) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.16 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-tabster to v9.26.14 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.12.0)
 

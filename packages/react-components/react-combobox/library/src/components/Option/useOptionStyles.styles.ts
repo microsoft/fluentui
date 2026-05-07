@@ -27,7 +27,9 @@ const useStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
     padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalS}`,
     position: 'relative',
+  },
 
+  interactive: {
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       color: tokens.colorNeutralForeground1Hover,
@@ -60,18 +62,7 @@ const useStyles = makeStyles({
 
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      color: tokens.colorNeutralForegroundDisabled,
-      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
-    },
-
-    ':active': {
-      backgroundColor: tokens.colorTransparentBackground,
-      color: tokens.colorNeutralForegroundDisabled,
-      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
-    },
+    cursor: 'default',
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
@@ -141,6 +132,7 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
   state.root.className = mergeClasses(
     optionClassNames.root,
     styles.root,
+    !disabled && styles.interactive,
     styles.active,
     disabled && styles.disabled,
     selected && styles.selected,

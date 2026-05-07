@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './switch.options.js';
 import { Switch } from './switch.js';
 import { template } from './switch.template.js';
 import { styles } from './switch.styles.js';
@@ -11,7 +11,7 @@ import { styles } from './switch.styles.js';
  * HTML Element: \<fluent-switch\>
  */
 export const definition = Switch.compose({
-  name: `${FluentDesignSystem.prefix}-switch`,
+  name: tagName,
   template,
   styles,
 });

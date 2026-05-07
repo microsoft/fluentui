@@ -21,4 +21,4 @@ export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> &
   Required<Pick<ToggleButtonProps, 'checked'>> &
   Pick<ToolbarToggleButtonProps, 'name' | 'value'>;
 
-export type ToolbarToggleButtonBaseState = DistributiveOmit<ToolbarToggleButtonState, 'appearance'>;
+export type ToolbarToggleButtonBaseState = DistributiveOmit<ToolbarToggleButtonState, 'appearance' | 'size' | 'shape'>;

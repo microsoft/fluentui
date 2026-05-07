@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Make Card base hooks tabster-free; expose shouldRestrictTriggerAction on CardBaseProps",
+  "packageName": "@fluentui/react-card",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

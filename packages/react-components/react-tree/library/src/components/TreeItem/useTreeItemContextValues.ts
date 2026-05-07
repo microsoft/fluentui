@@ -1,3 +1,6 @@
+'use client';
+
+import * as React from 'react';
 import type { TreeItemContextValues, TreeItemState } from './TreeItem.types';
 import type { TreeItemContextValue } from '../../contexts';
 
@@ -19,24 +22,36 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     checked,
   } = state;
 
-  /**
-   * This context is created with "@fluentui/react-context-selector",
-   * there is no sense to memoize it
-   */
-  const treeItem: TreeItemContextValue = {
-    value,
-    checked,
-    itemType,
-    layoutRef,
-    subtreeRef,
-    open,
-    selectionRef,
-    isActionsVisible,
-    isAsideVisible,
-    actionsRef,
-    treeItemRef,
-    expandIconRef,
-  };
+  const treeItem = React.useMemo<TreeItemContextValue>(
+    () => ({
+      value,
+      checked,
+      itemType,
+      layoutRef,
+      subtreeRef,
+      open,
+      selectionRef,
+      isActionsVisible,
+      isAsideVisible,
+      actionsRef,
+      treeItemRef,
+      expandIconRef,
+    }),
+    [
+      value,
+      checked,
+      itemType,
+      layoutRef,
+      subtreeRef,
+      open,
+      selectionRef,
+      isActionsVisible,
+      isAsideVisible,
+      actionsRef,
+      treeItemRef,
+      expandIconRef,
+    ],
+  );
 
   return { treeItem };
 }

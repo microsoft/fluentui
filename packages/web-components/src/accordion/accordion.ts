@@ -43,7 +43,7 @@ export class Accordion extends FASTElement {
     }
 
     // Clean up single expand mode behavior
-    (expandedItem as BaseAccordionItem)?.expandbutton.removeAttribute('aria-disabled');
+    (expandedItem as BaseAccordionItem)?.expandbutton?.removeAttribute('aria-disabled');
   }
 
   /**
@@ -61,10 +61,14 @@ export class Accordion extends FASTElement {
    * @internal
    */
   public slottedAccordionItemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
-    if (this.$fastController.isConnected) {
-      this.setItems();
-    }
+    this.setItems();
   }
+
+  /**
+   * Guard flag to prevent re-entrant calls to setSingleExpandMode.
+   * @internal
+   */
+  private _isAdjusting: boolean = false;
 
   /**
    * Watch for changes to the slotted accordion items `disabled` and `expanded` attributes
@@ -76,8 +80,10 @@ export class Accordion extends FASTElement {
     } else if (propertyName === 'expanded') {
       // we only need to manage single expanded instances
       // such as scenarios where a child is programatically expanded
-      if (source.expanded && this.isSingleExpandMode()) {
+      if (source.expanded && this.isSingleExpandMode() && !this._isAdjusting) {
+        this._isAdjusting = true;
         this.setSingleExpandMode(source);
+        this._isAdjusting = false;
       }
     }
   }
@@ -86,7 +92,6 @@ export class Accordion extends FASTElement {
 
   /**
    * Find the first expanded item in the accordion
-   * @returns {void}
    */
   private findExpandedItem(): BaseAccordionItem | Element | null {
     if (!this.accordionItems || this.accordionItems?.length === 0) {
@@ -102,7 +107,6 @@ export class Accordion extends FASTElement {
   /**
    * Resets event listeners and sets the `accordionItems` property
    * then rebinds event listeners to each non-disabled item
-   * @returns {void}
    */
   private setItems = (): void => {
     waitForConnectedDescendants(this, () => {
@@ -134,7 +138,7 @@ export class Accordion extends FASTElement {
 
   /**
    * Checks if the accordion is in single expand mode
-   * @returns {boolean}
+   * @returns true if the accordion is in single expand mode.
    */
   private isSingleExpandMode(): boolean {
     return this.expandmode === AccordionExpandMode.single;
@@ -142,37 +146,34 @@ export class Accordion extends FASTElement {
 
   /**
    * Controls the behavior of the accordion in single expand mode
-   * @param expandedItem The item to expand in single expand mode
-   * @returns {void}
+   * @param expandedItem - The item to expand in single expand mode
    */
   private setSingleExpandMode(expandedItem: Element): void {
-    requestAnimationFrame(() => {
-      if (this.accordionItems.length === 0) {
-        return;
-      }
-      const currentItems = Array.from(this.accordionItems);
-      this.activeItemIndex = currentItems.indexOf(expandedItem);
+    if (this.accordionItems.length === 0) {
+      return;
+    }
+    const currentItems = Array.from(this.accordionItems);
+    this.activeItemIndex = currentItems.indexOf(expandedItem);
 
-      currentItems.forEach((item: Element, index: number) => {
-        if (isAccordionItem(item)) {
-          if (this.activeItemIndex === index) {
-            item.expanded = true;
-            item.expandbutton.setAttribute('aria-disabled', 'true');
-          } else {
-            item.expanded = false;
+    currentItems.forEach((item: Element, index: number) => {
+      if (isAccordionItem(item)) {
+        if (this.activeItemIndex === index) {
+          item.expanded = true;
+          item.expandbutton?.setAttribute('aria-disabled', 'true');
+        } else {
+          item.expanded = false;
 
-            if (!item.hasAttribute('disabled')) {
-              item.expandbutton.removeAttribute('aria-disabled');
-            }
+          if (!item.hasAttribute('disabled')) {
+            item.expandbutton?.removeAttribute('aria-disabled');
           }
         }
-      });
+      }
     });
   }
 
   /**
    * Removes event listeners from the previous accordion items
-   * @param oldValue An array of the previous accordion items
+   * @param oldValue - An array of the previous accordion items
    */
   private removeItemListeners = (oldValue: any): void => {
     oldValue.forEach((item: HTMLElement, index: number) => {
@@ -184,7 +185,7 @@ export class Accordion extends FASTElement {
 
   /**
    * Changes the expanded state of the accordion item
-   * @param evt Click event
+   * @param evt - Click event
    * @returns
    */
   private expandedChangedHandler: EventListener = (evt: Event): void => {
@@ -206,9 +207,7 @@ export class Accordion extends FASTElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    requestAnimationFrame(() => {
-      this.expandmode = this.expandmode || AccordionExpandMode.multi;
-      this.setItems();
-    });
+    this.expandmode = this.expandmode || AccordionExpandMode.multi;
+    this.setItems();
   }
 }

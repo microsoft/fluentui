@@ -80,4 +80,25 @@ test.describe('Link', () => {
 
     await expect(element).not.toHaveAttribute('inline');
   });
+
+  test('should emit a single click event when clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { href: '#foo' } });
+
+    await element.evaluate((link: Link) => {
+      let clickCount = 0;
+      link.addEventListener('click', () => {
+        clickCount += 1;
+        link.setAttribute('data-click-count', String(clickCount));
+      });
+      link.setAttribute('data-click-count', '0');
+    });
+
+    await element.evaluate((node: HTMLElement) => {
+      node.click();
+    });
+
+    await expect(element).toHaveAttribute('data-click-count', '1');
+  });
 });

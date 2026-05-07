@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add css-modules support as opt in via 'cssModules' preset config",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

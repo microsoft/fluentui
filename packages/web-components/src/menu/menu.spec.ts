@@ -139,6 +139,22 @@ test.describe('Menu', () => {
     await expect(menuList).toBeHidden();
   });
 
+  test('should close when the menu list loses keyboard focus', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const menuButton = element.locator('fluent-menu-button');
+    const menuList = element.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await menuButton.click();
+
+    await expect(menuList).toBeVisible();
+    await expect(menuItems.nth(0)).toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(menuList).toBeHidden();
+  });
+
   test('should NOT open on hover when the `openOnHover` property is false', async ({ fastPage }) => {
     const { element } = fastPage;
     const menuButton = element.locator('fluent-menu-button');
