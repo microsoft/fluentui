@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix right arrow navigation for tree and include menu item in navigation when hidden removed",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
