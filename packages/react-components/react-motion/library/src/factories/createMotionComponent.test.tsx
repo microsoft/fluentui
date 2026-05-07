@@ -167,7 +167,7 @@ describe('createMotionComponent', () => {
     const { ElementMock } = createElementMock();
     let mountCount = 0;
 
-    const TrackedChild = React.forwardRef<HTMLDivElement, Record<string, never>>((_, ref) => {
+    const TrackedChild = React.forwardRef<{ animate: () => void }, Record<string, never>>((_, ref) => {
       React.useEffect(() => {
         mountCount++;
       }, []);
