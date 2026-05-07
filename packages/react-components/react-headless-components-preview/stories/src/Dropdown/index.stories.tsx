@@ -1,7 +1,6 @@
 import { Dropdown, Listbox, Option, OptionGroup } from '@fluentui/react-headless-components-preview/dropdown';
 
 import descriptionMd from './DropdownDescription.md';
-import bestPracticesMd from './DropdownBestPractices.md';
 
 export { Default } from './DropdownDefault.stories';
 export { Multiselect } from './DropdownMultiselect.stories';
@@ -17,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: descriptionMd,
       },
     },
   },
