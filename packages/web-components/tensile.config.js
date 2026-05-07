@@ -12,7 +12,6 @@ const config = {
     '@fluentui/tokens': '/tensile-assets/benchmark-dependencies/tokens.js',
     '@fluentui/web-components': '/node_modules/@fluentui/web-components/dist/esm/index.js',
     'exenv-es6': '/node_modules/exenv-es6/dist/index.js',
-    tabbable: '/node_modules/tabbable/dist/index.esm.js',
     tslib: '/node_modules/tslib/tslib.es6.js',
   },
 };

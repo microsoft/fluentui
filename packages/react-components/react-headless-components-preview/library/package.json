@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -135,6 +135,12 @@
       "import": "./lib/field.js",
       "require": "./lib-commonjs/field.js"
     },
+    "./image": {
+      "types": "./dist/image.d.ts",
+      "node": "./lib-commonjs/image.js",
+      "import": "./lib/image.js",
+      "require": "./lib-commonjs/image.js"
+    },
     "./input": {
       "types": "./dist/input.d.ts",
       "node": "./lib-commonjs/input.js",
@@ -152,6 +158,12 @@
       "node": "./lib-commonjs/message-bar.js",
       "import": "./lib/message-bar.js",
       "require": "./lib-commonjs/message-bar.js"
+    },
+    "./persona": {
+      "types": "./dist/persona.d.ts",
+      "node": "./lib-commonjs/persona.js",
+      "import": "./lib/persona.js",
+      "require": "./lib-commonjs/persona.js"
     },
     "./popover": {
       "types": "./dist/popover.d.ts",

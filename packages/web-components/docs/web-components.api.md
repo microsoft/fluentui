@@ -6,13 +6,11 @@
 
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
-import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
-import { Orientation } from '@microsoft/fast-web-utilities';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
@@ -2566,6 +2564,15 @@ export const DialogType: {
 // @public (undocumented)
 export type DialogType = ValuesOf<typeof DialogType>;
 
+// @public
+export const Direction: {
+    readonly ltr: "ltr";
+    readonly rtl: "rtl";
+};
+
+// @public
+export type Direction = (typeof Direction)[keyof typeof Direction];
+
 // Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -3418,6 +3425,15 @@ export const MessageBarStyles: ElementStyles;
 //
 // @public
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
+
+// @public
+export const Orientation: {
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public
+export type Orientation = (typeof Orientation)[keyof typeof Orientation];
 
 // @public
 export class ProgressBar extends BaseProgressBar {

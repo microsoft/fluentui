@@ -2699,10 +2699,10 @@
   dependencies:
     exenv-es6 "^1.1.1"
 
-"@microsoft/focusgroup-polyfill@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/focusgroup-polyfill/-/focusgroup-polyfill-1.3.0.tgz#12a4e9abac1b7736ca7c4f59c923a45713a8c274"
-  integrity sha512-rlhfgqEsC6jR36/LSrl4dd0xQha05gGv5q7cfz+dnGKGVcsCo6CI6C0GYiq+jSja+VzVY97fRQnMiBJR1EgOeg==
+"@microsoft/focusgroup-polyfill@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/focusgroup-polyfill/-/focusgroup-polyfill-1.4.1.tgz#0d3feee675775f7a692a3b1e974eea107503c78e"
+  integrity sha512-nXn/kJ5ZnzpR+TWYGV+nU2yaHPJORjWf2lSQJ90VT6Ydsmmkaz/yOYW3CizDGPPsA7ouAu9K8khCUeyfBcz7UA==
 
 "@microsoft/load-themed-styles@1.10.26", "@microsoft/load-themed-styles@^1.10.26":
   version "1.10.26"

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: set popover=auto on surface via jsx defaults",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

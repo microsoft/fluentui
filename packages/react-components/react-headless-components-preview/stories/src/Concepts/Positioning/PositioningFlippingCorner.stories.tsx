@@ -1,28 +1,18 @@
 import * as React from 'react';
-import { demoBoxClass, demoBoxStyle, flipDemoSurfaceCss } from './demoBox';
 import { InlineAnchored } from './InlineAnchored';
 
 import descriptionMd from './PositioningFlippingCornerDescription.md';
-
-const classes = {
-  page: 'flex flex-col gap-4 p-4',
-  grid: 'grid grid-cols-1 sm:grid-cols-2 gap-4',
-  trigger:
-    'px-3 py-1.5 rounded-md bg-blue-600 text-white text-xs font-medium hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 cursor-pointer border-none',
-  surface: 'flip-demo bg-white rounded-md shadow-md border border-gray-200 p-3 w-[320px] max-h-[140px] text-sm',
-};
+import styles from './positioning.module.css';
 
 export const FlippingCorner = (): React.ReactNode => (
-  <div className={classes.page}>
-    <style>{flipDemoSurfaceCss}</style>
-
-    <div className={classes.grid}>
-      <div className={demoBoxClass} style={demoBoxStyle}>
+  <div className={styles.page}>
+    <div className={styles.grid}>
+      <div className={styles.demoBox}>
         <InlineAnchored
           positioning={{ position: 'above', align: 'end' }}
-          surfaceClassName={classes.surface}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
           trigger={
-            <button className={classes.trigger} style={{ position: 'absolute', top: 12, left: 12 }}>
+            <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopLeft}`}>
               top-left · requested above-end
             </button>
           }
@@ -31,12 +21,12 @@ export const FlippingCorner = (): React.ReactNode => (
         </InlineAnchored>
       </div>
 
-      <div className={demoBoxClass} style={demoBoxStyle}>
+      <div className={styles.demoBox}>
         <InlineAnchored
           positioning={{ position: 'above', align: 'start' }}
-          surfaceClassName={classes.surface}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
           trigger={
-            <button className={classes.trigger} style={{ position: 'absolute', top: 12, right: 12 }}>
+            <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinTopRight}`}>
               top-right · requested above-start
             </button>
           }
@@ -45,12 +35,12 @@ export const FlippingCorner = (): React.ReactNode => (
         </InlineAnchored>
       </div>
 
-      <div className={demoBoxClass} style={demoBoxStyle}>
+      <div className={styles.demoBox}>
         <InlineAnchored
           positioning={{ position: 'below', align: 'end' }}
-          surfaceClassName={classes.surface}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
           trigger={
-            <button className={classes.trigger} style={{ position: 'absolute', bottom: 12, left: 12 }}>
+            <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinBottomLeft}`}>
               bottom-left · requested below-end
             </button>
           }
@@ -59,12 +49,12 @@ export const FlippingCorner = (): React.ReactNode => (
         </InlineAnchored>
       </div>
 
-      <div className={demoBoxClass} style={demoBoxStyle}>
+      <div className={styles.demoBox}>
         <InlineAnchored
           positioning={{ position: 'below', align: 'start' }}
-          surfaceClassName={classes.surface}
+          surfaceClassName={`${styles.surfaceFlipWide} ${styles.flipReadout}`}
           trigger={
-            <button className={classes.trigger} style={{ position: 'absolute', bottom: 12, right: 12 }}>
+            <button className={`${styles.trigger} ${styles.triggerSm} ${styles.pinBottomRight}`}>
               bottom-right · requested below-start
             </button>
           }
