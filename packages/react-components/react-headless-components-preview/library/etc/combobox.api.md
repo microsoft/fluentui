@@ -5,8 +5,8 @@
 ```ts
 
 import type { BaseComboboxProps } from '@fluentui/react-combobox';
+import type { BaseComboboxState } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
-import { BaseComboboxState as ComboboxState } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import { ListboxContextValues as ListboxContextValues_2 } from '@fluentui/react-combobox';
@@ -27,7 +27,14 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 // @public (undocumented)
 export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode'>;
 
-export { ComboboxState }
+// @public (undocumented)
+export type ComboboxState = BaseComboboxState & {
+    input: {
+        'data-state'?: 'open' | 'closed';
+        'data-disabled'?: string;
+        'data-placeholder'?: string;
+    };
+};
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
@@ -67,7 +74,12 @@ export type OptionProps = OptionProps_2;
 export type OptionSlots = OptionSlots_2;
 
 // @public
-export type OptionState = OptionState_2;
+export type OptionState = OptionState_2 & {
+    root: {
+        'data-disabled'?: string;
+        'data-selected'?: string;
+    };
+};
 
 // @public (undocumented)
 export const renderCombobox: (state: ComboboxState, contextValues: ComboboxContextValues) => JSXElement;
