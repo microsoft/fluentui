@@ -1,14 +1,16 @@
 import * as headlessPreview from '../../../packages/react-components/react-headless-components-preview/stories/.storybook/preview';
+import * as headlessChangelog from '../../../packages/react-components/react-headless-components-preview/library/CHANGELOG.json';
 
 export const decorators = [...headlessPreview.decorators];
 
 /** @type {typeof headlessPreview.parameters} */
 export const parameters = {
   ...headlessPreview.parameters,
+  changelog: headlessChangelog,
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ['Introduction', 'Headless Components'],
+      order: ['Overview', ['Introduction', 'Getting Started', 'Accessibility'], 'Guides', 'Components', 'Concepts'],
     },
   },
   reactStorybookAddon: {
