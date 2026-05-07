@@ -5,8 +5,6 @@ import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentReplayKey.stories.md';
 
-const SCALE_PROPS = { duration: 2000, outScale: 1.5, animateOpacity: false } as const;
-
 const useClasses = makeStyles({
   root: {
     display: 'grid',
@@ -55,18 +53,20 @@ export const CreateMotionComponentReplayKey = (): JSXElement => {
       </Text>
 
       <Card className={classes.card} style={{ gridArea: 'cardBefore' }}>
-        <Scale.In {...SCALE_PROPS}>
+        <Scale.In duration={2000} outScale={1.5} animateOpacity={false}>
           <span className={classes.counter}>{count}</span>
         </Scale.In>
       </Card>
       <Card className={classes.card} style={{ gridArea: 'cardAfter' }}>
-        <Scale.In {...SCALE_PROPS} replayKey={count}>
+        <Scale.In duration={2000} outScale={1.5} animateOpacity={false} replayKey={count}>
           <span className={classes.counter}>{count}</span>
         </Scale.In>
       </Card>
 
       <div className={classes.controls}>
-        <Button onClick={() => setCount(n => n + 1)}>Increment</Button>
+        <Button appearance="primary" onClick={() => setCount(n => n + 1)}>
+          Increment
+        </Button>
       </div>
     </div>
   );
