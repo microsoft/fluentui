@@ -3,7 +3,7 @@ import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
 import webcomponentsTheme from './theme.mjs';
 
-import '../src/index.bundle.js';
+import '../src/index-rollup.js';
 import './docs-root.css';
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions

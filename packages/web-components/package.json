@@ -57,8 +57,8 @@
   },
   "sideEffects": [
     "define.*",
-    "index.bundle.*",
-    "index-all.bundle.*",
+    "index-rollup.*",
+    "index-all-rollup.*",
     "./dist/esm/**/define.js",
     "./dist/web-components.js",
     "./dist/web-components.min.js",
@@ -74,7 +74,7 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && node scripts/bundle.js && yarn generate-api && yarn analyze",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api && yarn analyze",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} src/*.{ts,html} --ignore-path ../../.prettierignore",
@@ -98,8 +98,7 @@
     "@wc-toolkit/cem-inheritance": "1.2.2",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
-    "chromedriver": "^125.0.0",
-    "parse-literals": "^1.2.1"
+    "chromedriver": "^125.0.0"
   },
   "dependencies": {
     "@fluentui/tokens": "1.0.0-alpha.23",
