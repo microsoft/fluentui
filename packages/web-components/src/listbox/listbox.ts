@@ -83,7 +83,23 @@ export class Listbox extends FASTElement {
     next?.forEach((option, index) => {
       option.elementInternals.ariaPosInSet = `${index + 1}`;
       option.elementInternals.ariaSetSize = `${next.length}`;
+
+      if (this.dropdown) {
+        option.multiple = !!this.multiple;
+        option.disabled = option.disabledAttribute || this.dropdown.disabled;
+        option.name = this.dropdown.name;
+      }
     });
+
+    if (this.dropdown) {
+      next
+        ?.filter(option => option.defaultSelected)
+        .forEach((option, index) => {
+          option.selected = !!this.multiple || index === 0;
+        });
+
+      this.dropdown.setValidity();
+    }
   }
 
   /**

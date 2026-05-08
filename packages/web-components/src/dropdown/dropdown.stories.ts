@@ -118,9 +118,20 @@ export const Default: Story = {
 
 export const MultipleSelection: Story = {
   args: {
-    ...Default.args,
     multiple: true,
-    placeholder: 'Select fruits',
+    placeholder: 'Best pet',
+    slot: 'input',
+    slottedContent: () => [
+      { selected: true, value: 'cat', slottedContent: () => 'Cat' },
+      { selected: true, value: 'dog', slottedContent: () => 'Dog' },
+      { selected: true, value: 'fish', slottedContent: () => 'Fish' },
+      { selected: true, value: 'hamster', slottedContent: () => 'Hamster' },
+      { selected: true, value: 'snake', slottedContent: () => 'Snake' },
+      { selected: true, value: 'bird', slottedContent: () => 'Bird' },
+      { selected: true, value: 'wolf', slottedContent: () => 'Wolf' },
+      { selected: true, value: 'beetle', slottedContent: () => 'Beetle' },
+      { selected: true, value: 'squirrel', slottedContent: () => 'Squirrel' },
+    ],
   },
 };
 

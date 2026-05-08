@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: display multiple selected dropdown options",
+  "packageName": "@fluentui/web-components",
+  "email": "brianbrady@microsoft.com",
+  "dependentChangeType": "none"
+}
