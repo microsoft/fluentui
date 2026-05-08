@@ -63,6 +63,9 @@ export class BaseMenuList extends FASTElement {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
+    Array.from(this.children).forEach(child => {
+      Observable.getNotifier(child).unsubscribe(this, 'hidden');
+    });
     this.menuChildren = undefined;
     this.removeEventListener('change', this.changedMenuItemHandler);
   }
