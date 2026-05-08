@@ -9,6 +9,7 @@ export type {
 } from './hooks/usePositioning';
 export {
   usePositioning,
+  preloadPositioning,
   POSITIONS,
   ALIGNMENTS,
   getPlacementString,
