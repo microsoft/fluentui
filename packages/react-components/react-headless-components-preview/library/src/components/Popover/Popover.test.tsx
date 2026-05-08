@@ -136,7 +136,7 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toBeInTheDocument();
+    expect(getByRole('group', { hidden: true })).toBeInTheDocument();
   });
 
   it('sets data-open attribute on surface', () => {
@@ -149,7 +149,7 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('data-open');
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('data-open');
   });
 
   it('mirrors a browser-driven `toggle` event into React state and closes the surface', () => {
@@ -162,7 +162,7 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    const surface = getByRole('group');
+    const surface = getByRole('group', { hidden: true });
     const toggleEvent = new Event('toggle');
     (toggleEvent as unknown as { newState: string }).newState = 'closed';
     fireEvent(surface, toggleEvent);
@@ -180,6 +180,6 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('popover', 'auto');
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
   });
 });
