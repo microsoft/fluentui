@@ -220,7 +220,7 @@ Due to web platform labelling constraints of the ShadowDOM, the labelling API fo
 
 The package ships two CDN-ready bundles, each available in minified and non-minified versions:
 
-- **`web-components.js`** / **`web-components.min.js`** — Registers all components and exposes `setTheme` on `globalThis`. This is the recommended bundle for most CDN and script-tag consumers.
+- **`web-components.js`** / **`web-components.min.js`** — Registers all components and exposes `Fluent.setTheme` on `globalThis`. This is the recommended bundle for most CDN and script-tag consumers.
 - **`web-components-all.js`** / **`web-components-all.min.js`** — Everything in the standard bundle, plus all named exports from the package (base classes, templates, styles, design tokens, and utilities). Use this if you need programmatic access to the full API surface from a CDN context.
 
 ### setTheme

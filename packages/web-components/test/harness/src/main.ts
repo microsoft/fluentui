@@ -12,6 +12,6 @@ import '../../../src/index-rollup.js';
 
 setTheme(webLightTheme);
 
-Object.defineProperty(window, 'setTheme', {
-  value: setTheme,
+Object.defineProperty(window, 'Fluent', {
+  value: { setTheme },
 });
