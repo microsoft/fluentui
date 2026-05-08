@@ -310,7 +310,7 @@ export {
   TextWeight,
 } from './text/index.js';
 export * from './theme/design-tokens.js';
-export { setTheme, setThemeFor, type Theme } from './theme/index.js';
+export { setTheme, type Theme } from './theme/index.js';
 export {
   ToggleButton,
   ToggleButtonAppearance,
