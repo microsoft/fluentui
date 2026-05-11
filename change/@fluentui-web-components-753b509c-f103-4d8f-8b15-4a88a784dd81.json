@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: migrate to esbuild for CDN bundle, enable setTheme on globalThis",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

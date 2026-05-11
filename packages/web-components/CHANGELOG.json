@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 11 May 2026 04:09:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.18",
+      "version": "3.0.0-rc.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "39041d7c84a1e8cca8b74703ddef48b1a88e1a0c",
+            "comment": "fix: migrate to esbuild for CDN bundle, enable setTheme on globalThis"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 May 2026 19:08:42 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.17",
       "version": "3.0.0-rc.17",
