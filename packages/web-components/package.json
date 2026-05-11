@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-rc.17",
+  "version": "3.0.0-rc.18",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -30,6 +30,16 @@
   ],
   "exports": {
     ".": "./dist/esm/index.js",
+    "./web-components.js": "./dist/web-components.js",
+    "./web-components.min.js": "./dist/web-components.min.js",
+    "./web-components-all.js": {
+      "types": "./dist/web-components.d.ts",
+      "default": "./dist/web-components-all.js"
+    },
+    "./web-components-all.min.js": {
+      "types": "./dist/web-components.d.ts",
+      "default": "./dist/web-components-all.min.js"
+    },
     "./utils/behaviors/*.js": "./dist/esm/utils/behaviors/*.js",
     "./utils/*.js": "./dist/esm/utils/*.js",
     "./utilities.js": "./dist/esm/utils/index.js",
@@ -47,10 +57,14 @@
   },
   "sideEffects": [
     "define.*",
+    "define-all.*",
     "index-rollup.*",
+    "index-all-rollup.*",
     "./dist/esm/**/define.js",
     "./dist/web-components.js",
-    "./dist/web-components.min.js"
+    "./dist/web-components.min.js",
+    "./dist/web-components-all.js",
+    "./dist/web-components-all.min.js"
   ],
   "scripts": {
     "analyze": "cem analyze",
@@ -85,7 +99,8 @@
     "@wc-toolkit/cem-inheritance": "1.2.2",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
-    "chromedriver": "^125.0.0"
+    "chromedriver": "^125.0.0",
+    "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
   "dependencies": {
     "@fluentui/tokens": "1.0.0-alpha.23",

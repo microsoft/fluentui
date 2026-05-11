@@ -214,11 +214,3 @@ function forceRepaint(element: HTMLElement) {
 
   element.style.setProperty(name, currentValue);
 }
-
-/**
- * @internal
- * @deprecated Use `setTheme(theme, element)` instead.
- */
-export function setThemeFor(element: HTMLElement, theme: Theme | null) {
-  setThemePropertiesOnElement(theme, element);
-}
