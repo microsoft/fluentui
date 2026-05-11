@@ -202,6 +202,40 @@ describe('createMotionComponent', () => {
     expect(mountCount).toBe(1); // child was not remounted
   });
 
+  it('fires onMotionStart and onMotionFinish again when replayKey changes', async () => {
+    const TestAtom = createMotionComponent(motion);
+    const onMotionStart = jest.fn();
+    const onMotionFinish = jest.fn();
+    const { ElementMock } = createElementMock();
+
+    const { rerender } = render(
+      <TestAtom replayKey="a" onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
+
+    rerender(
+      <TestAtom replayKey="b" onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    // onMotionStart and onMotionFinish fire again for the replayed animation
+    expect(onMotionStart).toHaveBeenCalledTimes(2);
+    expect(onMotionFinish).toHaveBeenCalledTimes(2);
+  });
+
   it('finishes motion when wrapped in motion context with skip behaviour', async () => {
     const TestAtom = createMotionComponent(motion);
     const onMotionStart = jest.fn();
