@@ -296,11 +296,19 @@ export class BaseDropdown extends FASTElement {
     }
   }
 
+  /**
+   * Applies a single-select value to the listbox and tracks the value observable.
+   *
+   * @param next - The value to apply.
+   */
   private applyValue(next: string | null): void {
     this.selectOption(this.enabledOptions.findIndex(x => x.value === next));
     Observable.track(this, 'value');
   }
 
+  /**
+   * Applies the pending value after the listbox and options are initialized.
+   */
   private applyPendingValue(): void {
     if (this.pendingValue === undefined) {
       return;
