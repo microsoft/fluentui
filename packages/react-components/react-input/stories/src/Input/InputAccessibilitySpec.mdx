@@ -142,6 +142,14 @@ All inputs must have some part of their boundary meet 3:1 contrast against the b
 
 The bottom focus border (`::after`) uses `colorCompoundBrandStroke`, which is the brand color and is guaranteed to meet 3:1 against all supported page surfaces in the included themes.
 
+### Placing Input within an arrow-navigation region like Toolbar or Menu
+
+It is not recommended to place an input inside a horizontal arrow-navigable region like a `Toolbar`, since left/right arrow keys are already used within an input to move through characters in its value. If this is done, the consumer must provide a custom way to switch between navigating the input value and navigating the `Toolbar` with arrow keys.
+
+An `input` is not technically a valid child of other arrow-navigable controls like `Menu` -- doing so violates the ARIA spec's parent/child requirements for `role=menu`, as well as others like `role=tree` or `role=listbox`. However, the practical consequences of doing so are relatively low in severity **if** the input is the first interactive child of the menu or listbox. Exercise caution when doing so, and document both the ARIA violation and reason for doing so.
+
+If Input is used within a vertical arrow-navigation region like Menu or Listbox, do not put any interactive controls like `button` inside the `contentBefore` and `contentAfter` slots.
+
 ## Semantics
 
 `Input` renders a wrapping `<span>` for styling and the actual `<input>` element for editing:
@@ -164,10 +172,6 @@ The wrapping `<span>` is **not** a `<label>`. Clicking on the wrapper padding or
 When `disabled` is set, the input is removed from the tab order entirely, and is not interactable.
 
 Focusable content placed in `contentBefore` or `contentAfter` is a separate tab stop. Within the rendered DOM order, the tab sequence is: `contentBefore` (if focusable) → `input` → `contentAfter` (if focusable).
-
-It is not recommended to plae an input inside a horizontal arrow-navigable region like a `Toolbar`, since left/right arrow keys are already used within an input to move through characters in its value. If this is done, the consumer must provide a custom way to switch between navigating the input value and navigating the `Toolbar` with arrow keys.
-
-An `input` is not technically a valid child of other arrow-navigable controls like `Menu` -- doing so violates the ARIA spec's parent/child requirements for `role=menu`, as well as others like `role=tree` or `role=listbox`. However, the practical consequences of doing so are relatively low in severity **if** the input is the first interactive child of the menu or listbox. Exercise caution when doing so, and document both the ARIA violation and reason for doing so.
 
 ## Windows contrast themes (high contrast mode)
 
