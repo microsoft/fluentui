@@ -55,43 +55,6 @@ test.describe('Dropdown', () => {
     await expect(button).toHaveCount(1);
   });
 
-  test('should display comma-separated selected options when multiple options are initially selected', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const button = element.locator('button');
-
-    await fastPage.setTemplate(/* html */ `
-      <fluent-dropdown multiple>
-        <fluent-listbox>
-          <fluent-option>Option 1</fluent-option>
-          <fluent-option selected>Option 2 (Selectable)</fluent-option>
-          <fluent-option selected>Option 3 (Selectable)</fluent-option>
-        </fluent-listbox>
-      </fluent-dropdown>
-    `);
-
-    await expect(button).toHaveText('Option 2 (Selectable), Option 3 (Selectable)');
-  });
-
-  test('should update the comma-separated selected options display when selecting multiple options', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const button = element.locator('button');
-
-    await fastPage.setTemplate({ attributes: { multiple: true } });
-
-    await element.click();
-    await element.locator('fluent-option[value=banana]').click();
-
-    await expect(button).toHaveText('Banana');
-
-    await element.locator('fluent-option[value=orange]').click();
-
-    await expect(button).toHaveText('Banana, Orange');
-  });
-
   test('should render an input when the type attribute is set to "combobox"', async ({ fastPage }) => {
     const { element } = fastPage;
     const input = element.locator('input');

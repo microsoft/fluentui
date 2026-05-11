@@ -151,10 +151,7 @@ export class BaseDropdown extends FASTElement {
         style: 'narrow',
       });
 
-    const selectedOptions = this.selectedOptions;
-    const displayValue = this.multiple
-      ? selectedOptions.map(x => x.text).join(', ')
-      : this.listFormatter.format(selectedOptions.map(x => x.text));
+    const displayValue = this.listFormatter.format(this.selectedOptions.map(x => x.text));
     toggleState(this.elementInternals, 'placeholder-shown', !displayValue);
 
     if (this.isCombobox) {

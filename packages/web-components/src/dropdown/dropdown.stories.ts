@@ -117,10 +117,30 @@ export const Default: Story = {
 };
 
 export const MultipleSelection: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <fluent-field ?disabled="${story => story.disabled}">
+      <label slot="label">${story => story.placeholder}</label>
+      <fluent-dropdown
+        slot="input"
+        appearance="${story => story.appearance}"
+        ?disabled="${story => story.disabled}"
+        ?multiple="${story => story.multiple}"
+        ?required="${story => story.required}"
+        name="${story => story.name}"
+        size="${story => story.size}"
+        id="${story => story.id}"
+        placeholder="${story => story.placeholder}"
+        type="${story => story.type}"
+        style="width: 280px"
+        ${ref('dropdown')}
+      >
+        <fluent-listbox>${repeat(story => story.slottedContent?.(), optionTemplate)}</fluent-listbox>
+      </fluent-dropdown>
+    </fluent-field>
+  `),
   args: {
     multiple: true,
     placeholder: 'Best pet',
-    slot: 'input',
     slottedContent: () => [
       { selected: true, value: 'cat', slottedContent: () => 'Cat' },
       { selected: true, value: 'dog', slottedContent: () => 'Dog' },
