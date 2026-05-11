@@ -108,6 +108,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const [child, childRef] = useChildElement(children);
 
     const handleRef = useMotionImperativeRef(imperativeRef);
+    const isInitialRender = React.useRef(true);
     const skipMotions = useMotionBehaviourContext() === 'skip';
     const optionsRef = React.useRef<{ skipMotions: boolean; params: MotionParams }>({
       skipMotions,
@@ -154,8 +155,27 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
           handle.cancel();
         };
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally included to replay the animation
-    }, [animateAtoms, childRef, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel, replayKey]);
+    }, [animateAtoms, childRef, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
+
+    useIsomorphicLayoutEffect(() => {
+      if (isInitialRender.current) {
+        isInitialRender.current = false;
+        return;
+      }
+
+      const handle = handleRef.current;
+      if (handle) {
+        handle.cancel();
+        handle.play();
+        onMotionStart();
+        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
+
+        if (optionsRef.current.skipMotions) {
+          handle.finish();
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally the only trigger; other deps are stable refs/callbacks
+    }, [replayKey]);
 
     return child;
   };

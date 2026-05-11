@@ -12,8 +12,11 @@ const motion: AtomMotion = {
 
 function createElementMock() {
   const finishMock = jest.fn();
+  const cancelMock = jest.fn();
+  const playMock = jest.fn();
   const animateMock = jest.fn().mockImplementation(() => ({
-    cancel: jest.fn(),
+    cancel: cancelMock,
+    play: playMock,
     persist: jest.fn(),
     finish: finishMock,
     set onfinish(fn: () => void) {
@@ -32,6 +35,8 @@ function createElementMock() {
 
   return {
     animateMock,
+    cancelMock,
+    playMock,
     ElementMock,
     finishMock,
   };
@@ -135,7 +140,7 @@ describe('createMotionComponent', () => {
 
   it('replays animation when replayKey changes', () => {
     const TestAtom = createMotionComponent(motion);
-    const { animateMock, ElementMock } = createElementMock();
+    const { animateMock, cancelMock, playMock, ElementMock } = createElementMock();
 
     const { rerender } = render(
       <TestAtom replayKey="a">
@@ -143,6 +148,7 @@ describe('createMotionComponent', () => {
       </TestAtom>,
     );
 
+    // element.animate() is called once on initial mount
     expect(animateMock).toHaveBeenCalledTimes(1);
 
     // Same replayKey — no replay
@@ -152,14 +158,19 @@ describe('createMotionComponent', () => {
       </TestAtom>,
     );
     expect(animateMock).toHaveBeenCalledTimes(1);
+    expect(cancelMock).not.toHaveBeenCalled();
+    expect(playMock).not.toHaveBeenCalled();
 
-    // Changed replayKey — animation replays
+    // Changed replayKey — imperatively cancel + replay on the existing handle
     rerender(
       <TestAtom replayKey="b">
         <ElementMock />
       </TestAtom>,
     );
-    expect(animateMock).toHaveBeenCalledTimes(2);
+    // element.animate() is NOT called again — no new Animation objects created
+    expect(animateMock).toHaveBeenCalledTimes(1);
+    expect(cancelMock).toHaveBeenCalledTimes(1);
+    expect(playMock).toHaveBeenCalledTimes(1);
   });
 
   it('does not remount the child element when replayKey changes', () => {
