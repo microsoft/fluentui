@@ -208,6 +208,20 @@ export class BaseDropdown extends FASTElement {
   public listbox!: Listbox;
 
   /**
+   * Stores a value set before the listbox/options are ready.
+   *
+   * @internal
+   */
+  private pendingValue: string | null | undefined;
+
+  /**
+   * Tracks whether the listbox has completed its default selection setup.
+   *
+   * @internal
+   */
+  private listboxInitialized: boolean = false;
+
+  /**
    * Updates properties on the listbox element when the listbox reference changes.
    *
    * @param prev - the previous listbox element
@@ -220,7 +234,10 @@ export class BaseDropdown extends FASTElement {
   public listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void {
     if (prev) {
       Observable.getNotifier(this).unsubscribe(prev);
+      Observable.getNotifier(prev).unsubscribe(this, 'options');
     }
+
+    this.listboxInitialized = false;
 
     if (next) {
       next.dropdown = this;
@@ -229,6 +246,7 @@ export class BaseDropdown extends FASTElement {
 
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
+      Observable.getNotifier(next).subscribe(this, 'options');
 
       notifier.notify('multiple');
 
@@ -246,6 +264,9 @@ export class BaseDropdown extends FASTElement {
               x.selected = this.multiple || i === 0;
             });
 
+          this.listboxInitialized = true;
+          this.applyPendingValue();
+
           this.setValidity();
         },
         { idleCallback: true },
@@ -259,6 +280,45 @@ export class BaseDropdown extends FASTElement {
         this.listbox.style.setProperty('position-anchor', anchorName);
       }
     }
+  }
+
+  /**
+   * Handles observable subscriptions.
+   *
+   * @param source - The source of the observed change.
+   * @param propertyName - The name of the property that changed.
+   *
+   * @internal
+   */
+  public handleChange(source: any, propertyName?: string): void {
+    if (source === this.listbox && propertyName === 'options' && this.listboxInitialized) {
+      this.applyPendingValue();
+    }
+  }
+
+  private applyValue(next: string | null): void {
+    this.selectOption(this.enabledOptions.findIndex(x => x.value === next));
+    Observable.track(this, 'value');
+  }
+
+  private applyPendingValue(): void {
+    if (this.pendingValue === undefined) {
+      return;
+    }
+
+    const pendingValue = this.pendingValue;
+    this.pendingValue = undefined;
+
+    if (this.multiple) {
+      return;
+    }
+
+    if (!this.listbox?.options) {
+      this.pendingValue = pendingValue;
+      return;
+    }
+
+    this.applyValue(pendingValue);
   }
 
   /**
@@ -598,8 +658,13 @@ export class BaseDropdown extends FASTElement {
     if (this.multiple) {
       return;
     }
-    this.selectOption(this.enabledOptions.findIndex(x => x.value === next));
-    Observable.track(this, 'value');
+
+    if (!this.listbox?.options) {
+      this.pendingValue = next;
+      return;
+    }
+
+    this.applyValue(next);
   }
 
   /**
@@ -945,6 +1010,10 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public selectOption(index: number = this.selectedIndex, shouldEmit: boolean = false): void {
+    if (!this.listbox) {
+      return;
+    }
+
     this.listbox.selectOption(index);
     if (this.control) {
       this.control.value = this.displayValue;

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: apply dropdown value set before initialization",
+  "packageName": "@fluentui/web-components",
+  "email": "brianbrady@microsoft.com",
+  "dependentChangeType": "none"
+}

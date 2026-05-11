@@ -55,6 +55,146 @@ test.describe('Dropdown', () => {
     await expect(button).toHaveCount(1);
   });
 
+  test('should apply a value set before the listbox is initialized', async ({ page, fastPage }) => {
+    await fastPage.setTemplate('');
+
+    await page.evaluate(() => {
+      const dropdown = document.createElement('fluent-dropdown') as Dropdown;
+
+      dropdown.value = 'banana';
+
+      const listbox = document.createElement('fluent-listbox');
+      listbox.innerHTML = /* html */ `
+        <fluent-option value="apple">Apple</fluent-option>
+        <fluent-option value="banana">Banana</fluent-option>
+        <fluent-option value="orange">Orange</fluent-option>
+      `;
+
+      dropdown.append(listbox);
+      document.body.append(dropdown);
+    });
+
+    await page.waitForFunction(() => {
+      const dropdown = document.querySelector('fluent-dropdown') as Dropdown | null;
+
+      return dropdown?.selectedOptions[0]?.value === 'banana' && dropdown.value === 'banana';
+    });
+
+    const value = await page.locator('fluent-dropdown').evaluate((dropdown: Dropdown) => ({
+      selectedOptionValue: dropdown.selectedOptions[0]?.value,
+      value: dropdown.value,
+    }));
+
+    expect(value).toEqual({ selectedOptionValue: 'banana', value: 'banana' });
+  });
+
+  test('should apply a null value set before the listbox is initialized', async ({ page, fastPage }) => {
+    await fastPage.setTemplate('');
+
+    await page.evaluate(() => {
+      const dropdown = document.createElement('fluent-dropdown') as Dropdown;
+
+      dropdown.value = null;
+
+      const listbox = document.createElement('fluent-listbox');
+      listbox.innerHTML = /* html */ `
+        <fluent-option selected value="apple">Apple</fluent-option>
+        <fluent-option value="banana">Banana</fluent-option>
+        <fluent-option value="orange">Orange</fluent-option>
+      `;
+
+      dropdown.append(listbox);
+      document.body.append(dropdown);
+    });
+
+    await page.waitForFunction(() => {
+      const dropdown = document.querySelector('fluent-dropdown') as Dropdown | null;
+
+      return dropdown?.options.length === 3 && dropdown.selectedOptions.length === 0 && dropdown.value === null;
+    });
+
+    const value = await page.locator('fluent-dropdown').evaluate((dropdown: Dropdown) => ({
+      selectedOptionsLength: dropdown.selectedOptions.length,
+      value: dropdown.value,
+    }));
+
+    expect(value).toEqual({ selectedOptionsLength: 0, value: null });
+  });
+
+  test('should ignore a value set before the listbox is initialized when multiple is true', async ({
+    page,
+    fastPage,
+  }) => {
+    await fastPage.setTemplate('');
+
+    await page.evaluate(() => {
+      const dropdown = document.createElement('fluent-dropdown') as Dropdown;
+
+      dropdown.multiple = true;
+      dropdown.value = 'banana';
+
+      const listbox = document.createElement('fluent-listbox');
+      listbox.innerHTML = /* html */ `
+        <fluent-option value="apple">Apple</fluent-option>
+        <fluent-option value="banana">Banana</fluent-option>
+        <fluent-option value="orange">Orange</fluent-option>
+      `;
+
+      dropdown.append(listbox);
+      document.body.append(dropdown);
+    });
+
+    await page.waitForFunction(() => {
+      const dropdown = document.querySelector('fluent-dropdown') as Dropdown | null;
+
+      return dropdown?.options.length === 3 && dropdown.selectedOptions.length === 0 && dropdown.value === null;
+    });
+
+    const value = await page.locator('fluent-dropdown').evaluate((dropdown: Dropdown) => ({
+      selectedOptionsLength: dropdown.selectedOptions.length,
+      value: dropdown.value,
+    }));
+
+    expect(value).toEqual({ selectedOptionsLength: 0, value: null });
+  });
+
+  test('should display comma-separated selected options when multiple options are initially selected', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const button = element.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <fluent-dropdown multiple>
+        <fluent-listbox>
+          <fluent-option>Option 1</fluent-option>
+          <fluent-option selected>Option 2 (Selectable)</fluent-option>
+          <fluent-option selected>Option 3 (Selectable)</fluent-option>
+        </fluent-listbox>
+      </fluent-dropdown>
+    `);
+
+    await expect(button).toHaveText('Option 2 (Selectable), Option 3 (Selectable)');
+  });
+
+  test('should update the comma-separated selected options display when selecting multiple options', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const button = element.locator('button');
+
+    await fastPage.setTemplate({ attributes: { multiple: true } });
+
+    await element.click();
+    await element.locator('fluent-option[value=banana]').click();
+
+    await expect(button).toHaveText('Banana');
+
+    await element.locator('fluent-option[value=orange]').click();
+
+    await expect(button).toHaveText('Banana, Orange');
+  });
+
   test('should render an input when the type attribute is set to "combobox"', async ({ fastPage }) => {
     const { element } = fastPage;
     const input = element.locator('input');
