@@ -297,6 +297,13 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Determines whether the listbox is ready to apply a pending value.
+   */
+  private canApplyValue(): boolean {
+    return this.listboxInitialized && !!this.listbox?.options?.length;
+  }
+
+  /**
    * Applies a single-select value to the listbox and tracks the value observable.
    *
    * @param next - The value to apply.
@@ -321,7 +328,7 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
-    if (!this.listbox?.options) {
+    if (!this.canApplyValue()) {
       this.pendingValue = pendingValue;
       return;
     }
@@ -667,7 +674,7 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
-    if (!this.listbox?.options) {
+    if (!this.canApplyValue()) {
       this.pendingValue = next;
       return;
     }

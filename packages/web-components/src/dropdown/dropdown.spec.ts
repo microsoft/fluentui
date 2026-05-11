@@ -88,6 +88,50 @@ test.describe('Dropdown', () => {
     expect(value).toEqual({ selectedOptionValue: 'banana', value: 'banana' });
   });
 
+  test('should apply a value set after the listbox is initialized but before options are initialized', async ({
+    page,
+    fastPage,
+  }) => {
+    await fastPage.setTemplate('');
+
+    await page.evaluate(() => {
+      const dropdown = document.createElement('fluent-dropdown') as Dropdown;
+      const listbox = document.createElement('fluent-listbox');
+
+      dropdown.append(listbox);
+      document.body.append(dropdown);
+    });
+
+    await page.waitForFunction(() => {
+      const dropdown = document.querySelector('fluent-dropdown') as Dropdown | null;
+
+      return dropdown?.listbox && dropdown.options.length === 0;
+    });
+
+    await page.locator('fluent-dropdown').evaluate((dropdown: Dropdown) => {
+      dropdown.value = 'banana';
+
+      dropdown.listbox.innerHTML = /* html */ `
+        <fluent-option value="apple">Apple</fluent-option>
+        <fluent-option value="banana">Banana</fluent-option>
+        <fluent-option value="orange">Orange</fluent-option>
+      `;
+    });
+
+    await page.waitForFunction(() => {
+      const dropdown = document.querySelector('fluent-dropdown') as Dropdown | null;
+
+      return dropdown?.selectedOptions[0]?.value === 'banana' && dropdown.value === 'banana';
+    });
+
+    const value = await page.locator('fluent-dropdown').evaluate((dropdown: Dropdown) => ({
+      selectedOptionValue: dropdown.selectedOptions[0]?.value,
+      value: dropdown.value,
+    }));
+
+    expect(value).toEqual({ selectedOptionValue: 'banana', value: 'banana' });
+  });
+
   test('should apply a null value set before the listbox is initialized', async ({ page, fastPage }) => {
     await fastPage.setTemplate('');
 
