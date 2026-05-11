@@ -7,5 +7,5 @@
   <rect x="182" y="32" width="40" height="96" rx="8" fill="#fff1f3"/>
   <rect x="182" y="32" width="40" height="96" rx="8" stroke="#e4e4e7" stroke-width="1.5"/>
   <!-- Checkmark on first swatch -->
-  <path d="M46 76 L52 83 L66 67" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 80 L48 88 L64 72" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
