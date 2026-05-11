@@ -8,7 +8,7 @@ import { useAnimateAtoms } from '../hooks/useAnimateAtoms';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useChildElement } from '../utils/useChildElement';
-import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
+import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef, AnimationHandle } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
 /**
@@ -130,6 +130,21 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       onMotionCancelProp?.(null);
     });
 
+    // Stable callback (all deps are refs or useEventCallback) that activates a handle for a new playback cycle.
+    //
+    // TODO: consider moving the cancel+play+rewire sequence into a handle.replay() method on AnimationHandle,
+    // keeping pure animation sequencing on the handle and React callbacks here in the component.
+    const startAnimationHandle = React.useCallback(
+      (handle: AnimationHandle) => {
+        onMotionStart();
+        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
+        if (optionsRef.current.skipMotions) {
+          handle.finish();
+        }
+      },
+      [onMotionStart, onMotionFinish, onMotionCancel],
+    );
+
     useIsomorphicLayoutEffect(() => {
       // Heads up!
       // We store the params in a ref to avoid re-rendering the component when the params change.
@@ -142,20 +157,15 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       if (element) {
         const atoms = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
 
-        onMotionStart();
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
         handleRef.current = handle;
-        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
-
-        if (optionsRef.current.skipMotions) {
-          handle.finish();
-        }
+        startAnimationHandle(handle);
 
         return () => {
           handle.cancel();
         };
       }
-    }, [animateAtoms, childRef, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
+    }, [animateAtoms, childRef, handleRef, isReducedMotion, startAnimationHandle]);
 
     useIsomorphicLayoutEffect(() => {
       if (isInitialRender.current) {
@@ -167,12 +177,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       if (handle) {
         handle.cancel();
         handle.play();
-        onMotionStart();
-        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
-
-        if (optionsRef.current.skipMotions) {
-          handle.finish();
-        }
+        startAnimationHandle(handle);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally the only trigger; other deps are stable refs/callbacks
     }, [replayKey]);

@@ -258,4 +258,34 @@ describe('createMotionComponent', () => {
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
     expect(finishMock).toHaveBeenCalledTimes(1);
   });
+
+  it('calls finish on replay when wrapped in motion context with skip behaviour', async () => {
+    const TestAtom = createMotionComponent(motion);
+    const { finishMock, ElementMock } = createElementMock();
+
+    const { rerender } = render(
+      <TestAtom replayKey="a">
+        <ElementMock />
+      </TestAtom>,
+      { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(finishMock).toHaveBeenCalledTimes(1);
+
+    rerender(
+      <TestAtom replayKey="b">
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(finishMock).toHaveBeenCalledTimes(2);
+  });
 });
