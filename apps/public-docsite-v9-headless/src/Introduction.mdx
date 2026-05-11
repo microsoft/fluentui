@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 import pkg from '@fluentui/react-headless-components-preview/package.json';
 
-import styles from './Introduction.module.css';
+import { Hero, Features, Feature, WhyGrid, WhyCard } from './Introduction';
 import hero from './assets/images/hero.svg';
 import composition from './assets/images/features-composition.svg';
 import primitives from './assets/images/features-primitives.svg';
@@ -20,9 +20,7 @@ import whyBattleTested from './assets/images/why-battle-tested.svg';
   Fluent UI Headless Components <span class="fluent-version">v{pkg.version}</span>
 </h1>
 
-<div className={styles.hero}>
-  <img src={hero} alt="Fluent headless hero" />
-</div>
+<Hero src={hero} alt="Fluent headless hero" />
 
 # Overview
 
@@ -38,70 +36,45 @@ import whyBattleTested from './assets/images/why-battle-tested.svg';
 
 ## Features
 
-<div className={styles.features}>
-  <div className={styles.feature}>
-    <img src={composition} alt="Composition" />
-    <h3>Flexible composition</h3>
-    <p>Build component hierarchies that match your design system. Slot-based architecture gives you complete control over structure and content nesting.</p>
-  </div>
-
-<div className={styles.feature}>
-  <img src={primitives} alt="Primitives" />
-  <h3>Unstyled building blocks</h3>
-  <p>
+<Features>
+  <Feature src={composition} alt="Composition" title="Flexible composition">
+    Build component hierarchies that match your design system. Slot-based architecture gives you complete control over
+    structure and content nesting.
+  </Feature>
+  <Feature src={primitives} alt="Primitives" title="Unstyled building blocks">
     Start from zero styling constraints. Use CSS-in-JS, CSS modules, Tailwind, or any styling approach without conflicts
     or overrides.
-  </p>
-</div>
-
-  <div className={styles.feature}>
-    <img src={accessibility} alt="Accessibility" />
-    <h3>Accessible by default</h3>
-    <p>WCAG 2.1 AA compliant with full keyboard support, screen reader optimization, and semantic HTML. Accessibility is built in, not bolted on.</p>
-  </div>
-</div>
+  </Feature>
+  <Feature src={accessibility} alt="Accessibility" title="Accessible by default">
+    WCAG 2.1 AA compliant with full keyboard support, screen reader optimization, and semantic HTML. Accessibility is
+    built in, not bolted on.
+  </Feature>
+</Features>
 
 ## Why choose Fluent UI Headless
 
 Designed for flexibility, maintainability, and performance without sacrificing accessibility or developer experience.
 
-<div className={styles.grid}>
-  <div>
-    <img src={whyControl} alt="Complete control" />
-    <h4>Complete control</h4>
-    <p>No predefined colors, spacing, or typography. You own every pixel of your design system implementation.</p>
-  </div>
-
-<div>
-  <img src={whyBrand} alt="Brand consistency" />
-  <h4>Brand consistency</h4>
-  <p>Integrate seamlessly with existing design systems. Apply your brand identity without fighting CSS specificity.</p>
-</div>
-
-<div>
-  <img src={whyAccessibility} alt="Enterprise accessibility" />
-  <h4>Enterprise accessibility</h4>
-  <p>WCAG 2.1 AA compliant with keyboard navigation and screen reader support out of the box.</p>
-</div>
-
-<div>
-  <img src={whyBundle} alt="Reduced bundle size" />
-  <h4>Reduced bundle size</h4>
-  <p>Only ship the styles you use. No unused CSS framework bloat in your production bundles.</p>
-</div>
-
-<div>
-  <img src={whyFlexibility} alt="Framework flexibility" />
-  <h4>Framework flexibility</h4>
-  <p>React hooks-based architecture. Easy to adapt patterns to other frameworks if needed.</p>
-</div>
-
-  <div>
-    <img src={whyBattleTested} alt="Battle-tested logic" />
-    <h4>Battle-tested logic</h4>
-    <p>Leverages years of Fluent UI development. Proven interaction patterns for common components.</p>
-  </div>
-</div>
+<WhyGrid>
+  <WhyCard src={whyControl} alt="Complete control" title="Complete control">
+    No predefined colors, spacing, or typography. You own every pixel of your design system implementation.
+  </WhyCard>
+  <WhyCard src={whyBrand} alt="Brand consistency" title="Brand consistency">
+    Integrate seamlessly with existing design systems. Apply your brand identity without fighting CSS specificity.
+  </WhyCard>
+  <WhyCard src={whyAccessibility} alt="Enterprise accessibility" title="Enterprise accessibility">
+    WCAG 2.1 AA compliant with keyboard navigation and screen reader support out of the box.
+  </WhyCard>
+  <WhyCard src={whyBundle} alt="Reduced bundle size" title="Reduced bundle size">
+    Only ship the styles you use. No unused CSS framework bloat in your production bundles.
+  </WhyCard>
+  <WhyCard src={whyFlexibility} alt="Framework flexibility" title="Framework flexibility">
+    React hooks-based architecture. Easy to adapt patterns to other frameworks if needed.
+  </WhyCard>
+  <WhyCard src={whyBattleTested} alt="Battle-tested logic" title="Battle-tested logic">
+    Leverages years of Fluent UI development. Proven interaction patterns for common components.
+  </WhyCard>
+</WhyGrid>
 
 ## Perfect for
 
