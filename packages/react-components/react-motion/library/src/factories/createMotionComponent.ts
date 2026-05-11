@@ -134,7 +134,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     //
     // TODO: consider moving the cancel+play+rewire sequence into a handle.replay() method on AnimationHandle,
     // keeping pure animation sequencing on the handle and React callbacks here in the component.
-    const startAnimationHandle = React.useCallback(
+    const activateAnimationHandle = React.useCallback(
       (handle: AnimationHandle) => {
         onMotionStart();
         handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
@@ -159,14 +159,16 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
         handleRef.current = handle;
-        startAnimationHandle(handle);
+        activateAnimationHandle(handle);
 
         return () => {
           handle.cancel();
         };
       }
-    }, [animateAtoms, childRef, handleRef, isReducedMotion, startAnimationHandle]);
+    }, [animateAtoms, childRef, handleRef, isReducedMotion, activateAnimationHandle]);
 
+    // Skips initial mount; on replayKey changes, reuses existing Animation objects via cancel+play
+    // rather than recreating them, preserving DOM continuity.
     useIsomorphicLayoutEffect(() => {
       if (isInitialRender.current) {
         isInitialRender.current = false;
@@ -177,7 +179,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       if (handle) {
         handle.cancel();
         handle.play();
-        startAnimationHandle(handle);
+        activateAnimationHandle(handle);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally the only trigger; other deps are stable refs/callbacks
     }, [replayKey]);
