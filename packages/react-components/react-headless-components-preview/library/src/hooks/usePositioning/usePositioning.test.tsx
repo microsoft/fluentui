@@ -98,7 +98,7 @@ describe('usePositioning', () => {
       result.current.containerRef(node);
     });
 
-    expect(node.style.getPropertyValue('position-try-fallbacks')).toBe('block-end span-inline-end, inline-end');
+    expect(node).toHaveStyle({ positionTryFallbacks: 'block-end span-inline-end, inline-end' });
   });
 
   it('containerRef removes position-try-fallbacks when pinned', () => {
