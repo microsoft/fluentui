@@ -56,7 +56,6 @@ test.describe('Rating Display', () => {
 
   test('should display the correct number of filled icons and label text based on the `value` attribute', async ({
     fastPage,
-    browserName,
   }) => {
     const { element } = fastPage;
     const display = element.locator('.display');
@@ -67,9 +66,7 @@ test.describe('Rating Display', () => {
     await expect(display).toHaveCSS('inline-size', `${5 * (16 + 2) - 2 / 2}px`);
     await expect(display).toHaveCSS(
       'background-image',
-      browserName === 'chromium'
-        ? 'linear-gradient(90deg, rgb(234, 163, 0) calc(63px), rgb(249, 226, 174) calc(63.5px))'
-        : 'linear-gradient(90deg, rgb(234, 163, 0) 63px, rgb(249, 226, 174) 63.5px)',
+      'linear-gradient(90deg, rgb(234, 163, 0) 63px, rgb(249, 226, 174) 63.5px)',
     );
   });
 
