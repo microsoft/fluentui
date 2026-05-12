@@ -81,17 +81,21 @@ describe('FileTypeIcon', () => {
   });
 
   it('supports v9 custom style hooks', () => {
-    const useFileTypeIconStyles_unstable = jest.fn((state: FileTypeIconState) => {
-      state.root['data-custom-style-hook'] = 'true';
+    const fileTypeIconStylesHook = jest.fn((state: unknown) => {
+      const fileTypeIconState = state as FileTypeIconState;
+      (fileTypeIconState.root as Record<string, unknown>)['data-custom-style-hook'] = 'true';
     });
+    const customStyleHooks = {
+      ['useFileTypeIconStyles_unstable']: fileTypeIconStylesHook,
+    };
 
     const { getByRole } = render(
-      <CustomStyleHooksProvider_unstable value={{ useFileTypeIconStyles_unstable }}>
+      <CustomStyleHooksProvider_unstable value={customStyleHooks}>
         <FileTypeIcon extension="docx" />
       </CustomStyleHooksProvider_unstable>,
     );
 
-    expect(useFileTypeIconStyles_unstable).toHaveBeenCalledTimes(1);
+    expect(fileTypeIconStylesHook).toHaveBeenCalledTimes(1);
     expect(getByRole('img').getAttribute('data-custom-style-hook')).toBe('true');
   });
 });
