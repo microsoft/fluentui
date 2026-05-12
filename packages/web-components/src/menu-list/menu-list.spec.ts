@@ -402,14 +402,14 @@ test.describe('MenuList', () => {
 
   test('should navigate to previously hidden items when visibility restored', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item hidden="hidden">Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <${MenuItemTagName}>Menu item 1</${MenuItemTagName}>
+        <${MenuItemTagName} hidden="hidden">Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
       `,
     });
 
