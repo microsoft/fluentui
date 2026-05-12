@@ -212,7 +212,7 @@ function buildWorkspaceProjectConfiguration(
 
     const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
 
-    const isReactProject = Boolean(config.packageJSON.peerDependencies?.['react']);
+    const isReactProject = Boolean(config.packageJSON.peerDependencies?.react);
 
     targets.build = {
       cache: true,
