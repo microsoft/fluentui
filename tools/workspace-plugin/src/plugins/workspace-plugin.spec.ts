@@ -911,6 +911,7 @@ describe(`workspace-plugin`, () => {
     describe('react library project', () => {
       describe('with react in peerDependencies', () => {
         let targets: ReturnType<typeof getTargets>;
+        let metadata: ReturnType<typeof getMetadata>;
 
         beforeEach(async () => {
           await tempFs.createFiles({
@@ -927,13 +928,14 @@ describe(`workspace-plugin`, () => {
           });
           const results = await createNodesFunction(['proj/library/project.json'], options, context);
           targets = getTargets(results, 'proj/library');
+          metadata = getMetadata(results, 'proj/library');
         });
 
-        it('should add react-compiler-analyzer target', async () => {
-          expect(targets?.['react-compiler-analyzer']).toMatchInlineSnapshot(`
+        it('should add react-compiler-analyzer target group', async () => {
+          expect(targets?.['react-compiler-analyzer--lint']).toMatchInlineSnapshot(`
             Object {
               "cache": true,
-              "command": "yarn react-compiler-analyzer directives ./src",
+              "command": "yarn react-compiler-analyzer lint ./src",
               "inputs": Array [
                 "default",
                 Object {
@@ -943,9 +945,9 @@ describe(`workspace-plugin`, () => {
                 },
               ],
               "metadata": Object {
-                "description": "Analyze redundant 'use no memo' directives",
+                "description": "Lint redundant 'use no memo' directives",
                 "help": Object {
-                  "command": "yarn react-compiler-analyzer --help",
+                  "command": "yarn react-compiler-analyzer lint --help",
                   "example": Object {
                     "options": Object {
                       "fix": true,
@@ -961,10 +963,83 @@ describe(`workspace-plugin`, () => {
               },
             }
           `);
+
+          expect(targets?.['react-compiler-analyzer--analyze']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "command": "yarn react-compiler-analyzer analyze ./src",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "Analyze React Compiler coverage and migration status",
+                "help": Object {
+                  "command": "yarn react-compiler-analyzer analyze --help",
+                  "example": Object {
+                    "options": Object {
+                      "annotate": true,
+                    },
+                  },
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+              "options": Object {
+                "cwd": "proj/library",
+              },
+            }
+          `);
+
+          expect(targets?.['react-compiler-analyzer']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "dependsOn": Array [
+                "react-compiler-analyzer--lint",
+              ],
+              "executor": "nx:noop",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "React Compiler analysis (runs lint on CI)",
+                "help": Object {
+                  "command": "yarn react-compiler-analyzer --help",
+                  "example": Object {},
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+            }
+          `);
+
+          expect(metadata?.targetGroups).toMatchInlineSnapshot(`
+            Object {
+              "React Compiler Analyzer": Array [
+                "react-compiler-analyzer--lint",
+                "react-compiler-analyzer--analyze",
+                "react-compiler-analyzer",
+              ],
+              "React Integration Tester": Array [
+                "react-integration-testing",
+              ],
+            }
+          `);
         });
 
-        it('should set reactCompiler build option to true', async () => {
-          expect(targets?.build.options.reactCompiler).toBe(true);
+        it('should not set reactCompiler build option by default', async () => {
+          expect(targets?.build.options.reactCompiler).toBeUndefined();
         });
       });
 
@@ -988,8 +1063,10 @@ describe(`workspace-plugin`, () => {
           targets = getTargets(results, 'proj/library');
         });
 
-        it('should not add react-compiler-analyzer target', async () => {
+        it('should not add react-compiler-analyzer targets', async () => {
           expect(targets?.['react-compiler-analyzer']).toBeUndefined();
+          expect(targets?.['react-compiler-analyzer--lint']).toBeUndefined();
+          expect(targets?.['react-compiler-analyzer--analyze']).toBeUndefined();
         });
 
         it('should not set reactCompiler build option', async () => {
@@ -1002,6 +1079,9 @@ describe(`workspace-plugin`, () => {
 
 function getTargets(results: CreateNodesResultV2, projRoot = 'proj') {
   return results[0][1].projects?.[projRoot].targets;
+}
+function getMetadata(results: CreateNodesResultV2, projRoot = 'proj') {
+  return results[0][1].projects?.[projRoot].metadata;
 }
 function getTargetsNames(results: CreateNodesResultV2, projRoot = 'proj'): string[] {
   return Object.keys(getTargets(results, projRoot) ?? {});

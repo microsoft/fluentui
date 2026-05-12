@@ -127,7 +127,14 @@ function createNodesInternal(
     projects: {
       [projectRoot]: {
         targets: { ...workspaceConfig.targets, ...ritConfig.targets },
-        metadata: { ...workspaceConfig.metadata, ...ritConfig.metadata },
+        metadata: {
+          ...workspaceConfig.metadata,
+          ...ritConfig.metadata,
+          targetGroups: {
+            ...workspaceConfig.metadata?.targetGroups,
+            ...ritConfig.metadata?.targetGroups,
+          },
+        },
       },
     },
   };
@@ -220,7 +227,6 @@ function buildWorkspaceProjectConfiguration(
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
         ...(userEnabledExportSubpaths ? { generateApi: { exportSubpaths: userExportSubpaths } } : null),
-        ...(isReactProject ? { reactCompiler: true } : {}),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
@@ -270,37 +276,42 @@ function buildWorkspaceProjectConfiguration(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
-    const reactCompilerAnalyzerTarget = buildReactCompilerAnalyzerTarget(projectRoot, options, context, config);
-    if (reactCompilerAnalyzerTarget) {
-      targets['react-compiler-analyzer'] = reactCompilerAnalyzerTarget;
+    let metadata: WorkspaceTargets['metadata'];
+
+    if (isReactProject) {
+      const rcaConfig = buildReactCompilerAnalyzerTargets(projectRoot, options, context, config);
+      Object.assign(targets, rcaConfig.targets);
+      metadata = rcaConfig.metadata;
     }
 
-    return { targets };
+    return { targets, metadata };
   }
 
   return { targets };
 }
 
-function buildReactCompilerAnalyzerTarget(
+function buildReactCompilerAnalyzerTargets(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
-): TargetConfiguration | null {
-  if (!config.packageJSON.peerDependencies?.['react']) {
-    return null;
-  }
+): WorkspaceTargets {
+  const targets: Record<string, TargetConfiguration> = {};
+  const groupName = 'React Compiler Analyzer';
+  const metadata = { targetGroups: { [groupName]: [] as string[] } };
 
-  return {
-    command: `${config.pmc.exec} react-compiler-analyzer directives ./src`,
+  const inputs = ['default', { externalDependencies: ['babel-plugin-react-compiler'] }];
+
+  targets['react-compiler-analyzer--lint'] = {
+    command: `${config.pmc.exec} react-compiler-analyzer lint ./src`,
     options: { cwd: projectRoot },
     cache: true,
-    inputs: ['default', { externalDependencies: ['babel-plugin-react-compiler'] }],
+    inputs,
     metadata: {
       technologies: ['react-compiler'],
-      description: "Analyze redundant 'use no memo' directives",
+      description: "Lint redundant 'use no memo' directives",
       help: {
-        command: `${config.pmc.exec} react-compiler-analyzer --help`,
+        command: `${config.pmc.exec} react-compiler-analyzer lint --help`,
         example: {
           options: {
             fix: true,
@@ -309,6 +320,44 @@ function buildReactCompilerAnalyzerTarget(
       },
     },
   };
+
+  targets['react-compiler-analyzer--analyze'] = {
+    command: `${config.pmc.exec} react-compiler-analyzer analyze ./src`,
+    options: { cwd: projectRoot },
+    cache: true,
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: 'Analyze React Compiler coverage and migration status',
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer analyze --help`,
+        example: {
+          options: {
+            annotate: true,
+          },
+        },
+      },
+    },
+  };
+
+  targets['react-compiler-analyzer'] = {
+    executor: 'nx:noop',
+    cache: true,
+    dependsOn: ['react-compiler-analyzer--lint'],
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: 'React Compiler analysis (runs lint on CI)',
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer --help`,
+        example: {},
+      },
+    },
+  };
+
+  metadata.targetGroups[groupName].push(...Object.keys(targets));
+
+  return { targets, metadata };
 }
 
 function resolveExportSubpathsOption(config: TaskBuilderConfig): {
