@@ -187,8 +187,7 @@
         "packages/utilities/**",
         "packages/react-icons-mdl2/**",
         "packages/react-monaco-editor/**",
-        "packages/react-docsite-components/**",
-        "packages/react-file-type-icons/**"
+        "packages/react-docsite-components/**"
       ]
     }
   ],

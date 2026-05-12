@@ -65,7 +65,6 @@ describe(`beachball configs`, () => {
         'packages/react-docsite-components',
         'packages/react-examples',
         'packages/react-experiments',
-        'packages/react-file-type-icons',
         'packages/react-focus',
         'packages/react-hooks',
         'packages/scheme-utilities',

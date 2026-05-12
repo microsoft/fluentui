@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Added v9 calling patterns to @fluentui/react-file-type-icons",
+  "comment": "Move react-file-type-icons under react-components and harden FileTypeIcon for v9",
   "packageName": "@fluentui/react-file-type-icons",
   "email": "caperez@microsoft.com",
   "dependentChangeType": "patch"
