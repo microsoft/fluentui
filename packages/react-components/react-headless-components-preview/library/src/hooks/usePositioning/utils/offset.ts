@@ -2,33 +2,27 @@ import type { Position, PositioningProps } from '@fluentui/react-positioning';
 import { POSITIONS } from '../constants';
 
 export function applyOffset(node: HTMLElement, position: Position, mainAxis: number, crossAxis: number): void {
+  const isBlockMain = position === POSITIONS.above || position === POSITIONS.below;
+
   if (mainAxis) {
-    switch (position) {
-      case POSITIONS.above:
-        node.style.marginBlockEnd = `${mainAxis}px`;
-        break;
-      case POSITIONS.below:
-        node.style.marginBlockStart = `${mainAxis}px`;
-        break;
-      case POSITIONS.before:
-        node.style.marginInlineEnd = `${mainAxis}px`;
-        break;
-      case POSITIONS.after:
-        node.style.marginInlineStart = `${mainAxis}px`;
-        break;
+    const main = `${mainAxis}px`;
+    if (isBlockMain) {
+      node.style.marginBlockStart = main;
+      node.style.marginBlockEnd = main;
+    } else {
+      node.style.marginInlineStart = main;
+      node.style.marginInlineEnd = main;
     }
   }
 
   if (crossAxis) {
-    switch (position) {
-      case POSITIONS.above:
-      case POSITIONS.below:
-        node.style.marginInlineStart = `${crossAxis}px`;
-        break;
-      case POSITIONS.before:
-      case POSITIONS.after:
-        node.style.marginBlockStart = `${crossAxis}px`;
-        break;
+    const cross = `${crossAxis}px`;
+    if (isBlockMain) {
+      node.style.marginInlineStart = cross;
+      node.style.marginInlineEnd = cross;
+    } else {
+      node.style.marginBlockStart = cross;
+      node.style.marginBlockEnd = cross;
     }
   }
 }

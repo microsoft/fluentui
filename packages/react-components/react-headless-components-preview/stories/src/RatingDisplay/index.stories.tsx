@@ -5,7 +5,7 @@ export { Default } from './RatingDisplayDefault.stories';
 export { Compact } from './RatingDisplayCompact.stories';
 
 export default {
-  title: 'Headless Components/RatingDisplay',
+  title: 'Components/RatingDisplay',
   component: RatingDisplay,
   parameters: {
     docs: {

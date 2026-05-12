@@ -2,8 +2,7 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
-import type { PositioningProps } from '@fluentui/react-positioning';
-import type { PositioningReturn } from './types';
+import type { PositioningProps, PositioningReturn } from './types';
 
 function mountHook(options: PositioningProps = {}) {
   const resultRef = React.createRef<{ current: PositioningReturn }>();
@@ -160,7 +159,7 @@ describe('usePositioning', () => {
     expect(node).toHaveStyle({ width: 'anchor-size(width)' });
   });
 
-  it('containerRef applies offset as logical margins', () => {
+  it('containerRef applies offset as symmetric logical margins so flips keep their gap', () => {
     const result = mountHook({ position: 'below', offset: { mainAxis: 8, crossAxis: 4 } });
     const node = document.createElement('div');
 
@@ -168,7 +167,27 @@ describe('usePositioning', () => {
       result.current.containerRef(node);
     });
 
-    expect(node).toHaveStyle({ marginBlockStart: '8px', marginInlineStart: '4px' });
+    expect(node).toHaveStyle({
+      marginBlockStart: '8px',
+      marginBlockEnd: '8px',
+      marginInlineStart: '4px',
+      marginInlineEnd: '4px',
+    });
+  });
+
+  describe('imperative ref', () => {
+    it('exposes a callable updatePosition()', () => {
+      const positioningRef = React.createRef<{
+        updatePosition: () => void;
+        setTarget: (el: HTMLElement | null) => void;
+      }>();
+      mountHook({
+        positioningRef: positioningRef as unknown as PositioningProps['positioningRef'],
+      });
+
+      expect(positioningRef.current).not.toBeNull();
+      expect(() => positioningRef.current?.updatePosition()).not.toThrow();
+    });
   });
 });
 

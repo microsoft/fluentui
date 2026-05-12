@@ -5,7 +5,7 @@ export { Default } from './DividerDefault.stories';
 export { Vertical } from './DividerVertical.stories';
 
 export default {
-  title: 'Headless Components/Divider',
+  title: 'Components/Divider',
   component: Divider,
   parameters: {
     docs: {

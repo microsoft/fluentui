@@ -4,7 +4,7 @@ import descriptionMd from './ProgressBarDescription.md';
 export { Default } from './ProgressBarDefault.stories';
 
 export default {
-  title: 'Headless Components/ProgressBar',
+  title: 'Components/ProgressBar',
   component: ProgressBar,
   parameters: {
     docs: {

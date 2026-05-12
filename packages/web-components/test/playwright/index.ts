@@ -34,7 +34,6 @@ export const test = baseTest.extend<Fixtures & FixtureOptions>({
     await fastPage.goto();
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await fastPage.waitForCustomElement(tagName, ...waitFor);
-    await fastPage.setTemplate();
 
     await use(fastPage);
   },
