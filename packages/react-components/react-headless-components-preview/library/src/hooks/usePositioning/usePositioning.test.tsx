@@ -54,18 +54,18 @@ describe('usePositioning', () => {
       result.current.containerRef(node);
     });
 
-    expect(node).toHaveStyle({ position: 'absolute', inset: 'auto', margin: '0px' });
+    expect(node).toHaveStyle({ position: 'fixed', inset: 'auto', margin: '0px' });
   });
 
-  it('containerRef honors strategy: "fixed"', () => {
-    const result = mountHook({ strategy: 'fixed' });
+  it('containerRef honors strategy: "absolute"', () => {
+    const result = mountHook({ strategy: 'absolute' });
     const node = document.createElement('div');
 
     act(() => {
       result.current.containerRef(node);
     });
 
-    expect(node).toHaveStyle({ position: 'fixed' });
+    expect(node).toHaveStyle({ position: 'absolute' });
   });
 
   it('containerRef writes data-placement matching (position, align)', () => {
@@ -79,7 +79,7 @@ describe('usePositioning', () => {
     expect(node).toHaveAttribute('data-placement', 'below-start');
   });
 
-  it('containerRef sets position-try-fallbacks to the three-try flip chain by default', () => {
+  it('containerRef sets position-try-fallbacks to the default flip chain', () => {
     const result = mountHook();
     const node = document.createElement('div');
 
