@@ -29,7 +29,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     fallbackPositions = EMPTY_FALLBACK_POSITIONS,
     offset,
     coverTarget = false,
-    strategy = 'absolute',
+    strategy = 'fixed',
     matchTargetSize,
     positioningRef,
   } = options;

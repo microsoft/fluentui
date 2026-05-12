@@ -73,7 +73,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const surfaceId = useId('fui-popover-surface-');
 
-  const positioning = usePositioning({ strategy: 'fixed', ...resolvePositioningShorthand(props.positioning) });
+  const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
   const onSurfaceToggle = useEventCallback((event: Event) => {
     const toggle = event as ToggleEvent;
