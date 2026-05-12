@@ -216,6 +216,7 @@ test.describe('Tree', () => {
     await expect(treeItem1).toHaveAttribute('selected');
     expect(await elementHandle).toBe(false);
   });
+
   test('keyboard navigation should work when the tree-item contains focusable elements', async ({
     fastPage,
     page,
@@ -240,5 +241,186 @@ test.describe('Tree', () => {
     await expect(treeItems.nth(0)).toHaveAttribute('selected');
     await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
     await expect(anchor).toBeFocused();
+  });
+  test('should move focus down with ArrowDown', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const treeItems = element.locator(`:scope > fluent-tree-item`);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>Item 1</fluent-tree-item>
+                <fluent-tree-item>Item 2</fluent-tree-item>
+                <fluent-tree-item>Item 3</fluent-tree-item>
+            `,
+    });
+
+    await treeItems.nth(0).focus();
+    await expect(treeItems.nth(0)).toBeFocused();
+
+    await page.keyboard.press('ArrowDown');
+    await expect(treeItems.nth(1)).toBeFocused();
+
+    await page.keyboard.press('ArrowDown');
+    await expect(treeItems.nth(2)).toBeFocused();
+  });
+
+  test('should move focus up with ArrowUp', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const treeItems = element.locator(`:scope > fluent-tree-item`);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>Item 1</fluent-tree-item>
+                <fluent-tree-item>Item 2</fluent-tree-item>
+                <fluent-tree-item>Item 3</fluent-tree-item>
+            `,
+    });
+
+    await treeItems.nth(0).focus();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await expect(treeItems.nth(2)).toBeFocused();
+
+    await page.keyboard.press('ArrowUp');
+    await expect(treeItems.nth(1)).toBeFocused();
+
+    await page.keyboard.press('ArrowUp');
+    await expect(treeItems.nth(0)).toBeFocused();
+  });
+
+  test('should expand a collapsed item with ArrowRight', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const parentItem = element.locator(`:scope > fluent-tree-item`);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>
+                    Item 1
+                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
+                </fluent-tree-item>
+            `,
+    });
+
+    await parentItem.focus();
+    await expect(parentItem).toBeFocused();
+    await expect(parentItem).not.toHaveAttribute('expanded');
+
+    await page.keyboard.press('ArrowRight');
+    await expect(parentItem).toHaveAttribute('expanded');
+  });
+
+  test('should focus child after ArrowRight on an expanded item', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const parentItem = element.locator(`:scope > fluent-tree-item`);
+    const nestedItem = parentItem.locator('fluent-tree-item');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>
+                    Item 1
+                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
+                </fluent-tree-item>
+            `,
+    });
+
+    await parentItem.focus();
+    // expand first
+    await page.keyboard.press('ArrowRight');
+    await expect(parentItem).toHaveAttribute('expanded');
+    await expect(nestedItem).toBeVisible();
+
+    // arrow right again should focus the nested item
+    await page.keyboard.press('ArrowRight');
+    await expect(nestedItem).toBeFocused();
+  });
+
+  test('should collapse an expanded item with ArrowLeft', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const parentItem = element.locator(`:scope > fluent-tree-item`);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>
+                    Item 1
+                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
+                </fluent-tree-item>
+            `,
+    });
+
+    await parentItem.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(parentItem).toHaveAttribute('expanded');
+
+    await page.keyboard.press('ArrowLeft');
+    await expect(parentItem).not.toHaveAttribute('expanded');
+  });
+
+  test('should focus parent item with ArrowLeft on a nested item', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const parentItem = element.locator(`:scope > fluent-tree-item`);
+    const nestedItem = parentItem.locator('fluent-tree-item');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>
+                    Item 1
+                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
+                </fluent-tree-item>
+            `,
+    });
+
+    await parentItem.focus();
+    // expand and wait for nested item to be visible
+    await page.keyboard.press('ArrowRight');
+    await expect(parentItem).toHaveAttribute('expanded');
+    await expect(nestedItem).toBeVisible();
+
+    // focus nested item
+    await page.keyboard.press('ArrowRight');
+    await expect(nestedItem).toBeFocused();
+
+    // arrow left on leaf should focus parent
+    await page.keyboard.press('ArrowLeft');
+    await expect(parentItem).toBeFocused();
+  });
+
+  test('should focus first item with Home key', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const treeItems = element.locator(`:scope > fluent-tree-item`);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>Item 1</fluent-tree-item>
+                <fluent-tree-item>Item 2</fluent-tree-item>
+                <fluent-tree-item>Item 3</fluent-tree-item>
+            `,
+    });
+
+    await treeItems.nth(0).focus();
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await expect(treeItems.nth(2)).toBeFocused();
+
+    await page.keyboard.press('Home');
+    await expect(treeItems.nth(0)).toBeFocused();
+  });
+
+  test('should focus last item with End key', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const treeItems = element.locator(`:scope > fluent-tree-item`);
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+                <fluent-tree-item>Item 1</fluent-tree-item>
+                <fluent-tree-item>Item 2</fluent-tree-item>
+                <fluent-tree-item>Item 3</fluent-tree-item>
+            `,
+    });
+
+    await treeItems.nth(0).focus();
+    await expect(treeItems.nth(0)).toBeFocused();
+
+    await page.keyboard.press('End');
+    await expect(treeItems.nth(2)).toBeFocused();
   });
 });

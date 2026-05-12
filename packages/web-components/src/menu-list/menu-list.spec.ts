@@ -400,6 +400,44 @@ test.describe('MenuList', () => {
     await expect(menuItems.nth(0)).toBeFocused();
   });
 
+  test('should navigate to previously hidden items when visibility restored', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const menuItems = element.locator('fluent-menu-item');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <fluent-menu-item>Menu item 1</fluent-menu-item>
+        <fluent-menu-item hidden="hidden">Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      `,
+    });
+
+    await element.evaluate(node => {
+      node.focus();
+    });
+
+    await expect(menuItems.nth(0)).toBeFocused();
+
+    await element.press('ArrowDown');
+
+    await expect(menuItems.nth(2)).toBeFocused();
+
+    await menuItems.nth(1).evaluate(node => {
+      node.removeAttribute('hidden');
+    });
+
+    await element.evaluate(node => {
+      node.focus();
+    });
+
+    await expect(menuItems.nth(0)).toBeFocused();
+
+    await element.press('ArrowDown');
+
+    await expect(menuItems.nth(1)).toBeFocused();
+  });
+
   test('should set the data-indent attribute to 0 correctly on all MenuItem elements when role of menuitem and not content in start slot', async ({
     fastPage,
   }) => {
