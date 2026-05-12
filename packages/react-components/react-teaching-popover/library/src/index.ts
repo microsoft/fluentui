@@ -117,7 +117,12 @@ export type {
   TeachingPopoverTriggerProps,
   TeachingPopoverTriggerState,
 } from './TeachingPopoverTrigger';
-export { TeachingPopover, renderTeachingPopover_unstable, useTeachingPopover_unstable } from './TeachingPopover';
+export {
+  TeachingPopover,
+  renderTeachingPopover_unstable,
+  useTeachingPopover_unstable,
+  useTeachingPopoverContextValues_unstable,
+} from './TeachingPopover';
 export type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover';
 export {
   TeachingPopoverFooter,

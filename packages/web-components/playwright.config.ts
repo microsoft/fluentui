@@ -2,7 +2,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  reporter: 'list',
+  reporter: process.env.CI ? 'github' : 'list',
   retries: 3,
   fullyParallel: process.env.CI ? false : true,
   timeout: process.env.CI ? 10000 : 30000,
@@ -27,6 +27,8 @@ const config: PlaywrightTestConfig = {
     command: 'yarn vite preview test/harness',
     port: 5173,
     reuseExistingServer: true,
+    stderr: 'pipe',
+    stdout: 'pipe',
   },
 };
 

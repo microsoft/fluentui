@@ -17,10 +17,18 @@ export type ToggleButtonProps = ButtonProps & {
    * @default false
    */
   checked?: boolean;
+
+  /**
+   * Defines whether the `ToggleButton` should use the alternate selected styles that have adequate contrast with the rest style
+   *
+   * @default false
+   */
+  isAccessible?: boolean;
 };
 
-export type ToggleButtonBaseProps = ButtonBaseProps & Pick<ToggleButtonProps, 'defaultChecked' | 'checked'>;
+export type ToggleButtonBaseProps = ButtonBaseProps &
+  Pick<ToggleButtonProps, 'defaultChecked' | 'checked' | 'isAccessible'>;
 
-export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
+export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked' | 'isAccessible'>>;
 
-export type ToggleButtonBaseState = ButtonBaseState & Required<Pick<ToggleButtonProps, 'checked'>>;
+export type ToggleButtonBaseState = ButtonBaseState & Required<Pick<ToggleButtonProps, 'checked' | 'isAccessible'>>;

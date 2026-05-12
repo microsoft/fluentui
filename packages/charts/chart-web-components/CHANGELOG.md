@@ -1,8 +1,99 @@
 # Change Log - @fluentui/chart-web-components
 
-This log was last generated on Tue, 03 Mar 2026 04:07:50 GMT and should not be manually modified.
+This log was last generated on Mon, 11 May 2026 04:09:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.76](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.76)
+
+Mon, 11 May 2026 04:09:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.75..@fluentui/chart-web-components_v0.0.76)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.18 ([PR #36113](https://github.com/microsoft/fluentui/pull/36113) by beachball)
+
+## [0.0.75](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.75)
+
+Wed, 06 May 2026 19:08:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.74..@fluentui/chart-web-components_v0.0.75)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.17 ([PR #36111](https://github.com/microsoft/fluentui/pull/36111) by beachball)
+
+## [0.0.74](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.74)
+
+Wed, 06 May 2026 04:07:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.73..@fluentui/chart-web-components_v0.0.74)
+
+### Patches
+
+- fix: remove behaviors in favor of direct css inclusion ([PR #36092](https://github.com/microsoft/fluentui/pull/36092) by 13071055+chrisdholt@users.noreply.github.com)
+- Bump @fluentui/web-components to v3.0.0-rc.16 ([PR #36107](https://github.com/microsoft/fluentui/pull/36107) by beachball)
+
+## [0.0.73](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.73)
+
+Fri, 01 May 2026 04:08:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.72..@fluentui/chart-web-components_v0.0.73)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.15 ([PR #36077](https://github.com/microsoft/fluentui/pull/36077) by beachball)
+
+## [0.0.72](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.72)
+
+Wed, 29 Apr 2026 19:07:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.71..@fluentui/chart-web-components_v0.0.72)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.14 ([commit](https://github.com/microsoft/fluentui/commit/1176b50b415faa35a2763cac41c572b063bcc524) by beachball)
+
+## [0.0.71](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.71)
+
+Thu, 09 Apr 2026 04:07:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.70..@fluentui/chart-web-components_v0.0.71)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.13 ([PR #35965](https://github.com/microsoft/fluentui/pull/35965) by beachball)
+
+## [0.0.70](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.70)
+
+Tue, 07 Apr 2026 20:44:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.69..@fluentui/chart-web-components_v0.0.70)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.12 ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by beachball)
+
+## [0.0.69](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.69)
+
+Mon, 06 Apr 2026 22:24:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.68..@fluentui/chart-web-components_v0.0.69)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.11 ([PR #35838](https://github.com/microsoft/fluentui/pull/35838) by beachball)
+
+## [0.0.68](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.68)
+
+Wed, 01 Apr 2026 04:08:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.67..@fluentui/chart-web-components_v0.0.68)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.10 ([PR #35827](https://github.com/microsoft/fluentui/pull/35827) by beachball)
+
+## [0.0.67](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.67)
+
+Thu, 12 Mar 2026 04:08:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.66..@fluentui/chart-web-components_v0.0.67)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.9 ([PR #35863](https://github.com/microsoft/fluentui/pull/35863) by beachball)
 
 ## [0.0.66](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.66)
 

@@ -4,7 +4,7 @@ import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ImmutableSet } from '../utils/ImmutableSet';
 import type { TreeItemValue } from '../components/TreeItem/TreeItem.types';
-import { TreeOpenChangeData, TreeProps } from '../Tree';
+import type { TreeOpenChangeData, TreeProps } from '../Tree';
 
 /**
  * @internal

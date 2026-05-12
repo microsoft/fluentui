@@ -1,7 +1,7 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
-import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
+import type { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
 import * as slot from './slot';
 
 type SlotComponents<Slots extends SlotPropsRecord> = {
@@ -9,22 +9,22 @@ type SlotComponents<Slots extends SlotPropsRecord> = {
 };
 
 /**
- * @internal
  * Assertion method to ensure state slots properties are properly declared.
  * A properly declared slot must be declared by using the `slot` method.
  *
+ * @internal
  * @example
  * ```tsx
  * export const renderInput_unstable  = (state: InputState): JSXElement => {
-    assertSlots<InputSlots>(state);
-    return (
-      <state.root>
-        {state.contentBefore && <state.contentBefore />}
-        <state.input />
-        {state.contentAfter && <state.contentAfter />}
-      </state.root>
-    );
-  };
+ *     assertSlots<InputSlots>(state);
+ *     return (
+ *       <state.root>
+ *         {state.contentBefore && <state.contentBefore />}
+ *         <state.input />
+ *         {state.contentAfter && <state.contentAfter />}
+ *       </state.root>
+ *     );
+ *   };
  * ```
  */
 export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots> {

@@ -4,7 +4,7 @@ import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/reac
 import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
 import { Collapse } from '@fluentui/react-motion-components-preview';
-import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
+import type { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
 import { createNextOpenItems } from './useControllableOpenItems';

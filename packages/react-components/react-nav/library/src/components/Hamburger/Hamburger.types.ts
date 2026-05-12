@@ -1,4 +1,4 @@
-import { ButtonProps, ButtonState } from '@fluentui/react-button';
+import type { ButtonProps, ButtonState } from '@fluentui/react-button';
 
 /**
  * Hamburger Props

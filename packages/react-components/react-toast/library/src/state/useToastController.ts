@@ -10,7 +10,7 @@ import {
   playToast as playToastVanilla,
   pauseToast as pauseToastVanilla,
 } from './vanilla';
-import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
+import type { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
 
 const noop = () => undefined;
 

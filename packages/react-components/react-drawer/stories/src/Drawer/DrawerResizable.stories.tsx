@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, InputProps } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -10,7 +10,6 @@ import {
   tokens,
   Button,
   Input,
-  InputProps,
   Label,
   useId,
   Dialog,

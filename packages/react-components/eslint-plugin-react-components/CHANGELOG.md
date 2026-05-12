@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin-react-components
 
-This log was last generated on Tue, 03 Mar 2026 13:16:20 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2026 14:06:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.2.1)
+
+Wed, 01 Apr 2026 14:06:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin-react-components_v0.2.0..@fluentui/eslint-plugin-react-components_v0.2.1)
+
+### Patches
+
+- refactor: optimize identifier tracking in enforce-use-client rule ([PR #35772](https://github.com/microsoft/fluentui/pull/35772) by dmytrokirpa@microsoft.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.2.0)
 

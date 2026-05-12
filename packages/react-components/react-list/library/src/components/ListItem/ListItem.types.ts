@@ -1,6 +1,6 @@
-import { Checkbox } from '@fluentui/react-checkbox';
+import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import { ListItemActionEvent, ListItemActionEventName } from '../../events/ListItemActionEvent';
+import type { ListItemActionEvent, ListItemActionEventName } from '../../events/ListItemActionEvent';
 
 export type ListItemSlots = {
   root: NonNullable<Slot<'li', 'div'>>;

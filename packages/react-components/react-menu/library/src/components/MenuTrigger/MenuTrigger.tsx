@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useMenuTrigger_unstable } from './useMenuTrigger';
 import { renderMenuTrigger_unstable } from './renderMenuTrigger';
 import type { MenuTriggerProps } from './MenuTrigger.types';

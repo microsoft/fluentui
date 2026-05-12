@@ -13,7 +13,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-components';
-import { DrawerProps } from '@fluentui/react-drawer';
+import type { DrawerProps } from '@fluentui/react-drawer';
 import {
   Label,
   Radio,

@@ -267,9 +267,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   copilot: {
     extensions: ['copilot'],
   },
+  cowork: {
+    extensions: ['work'],
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
+  },
+  companyfolder: {
+    types: [FileIconType.shortcutsdefaultfolder],
   },
   designer: {
     extensions: ['design'],
@@ -314,6 +320,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   ipynb: {
     extensions: ['nnb', 'ipynb'],
   },
+  inkcanvas: {
+    extensions: ['canvas'],
+  },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
@@ -340,6 +349,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   },
   mcworld: {
     extensions: ['mcworld'],
+  },
+  md: {
+    extensions: ['md', 'markdn', 'markdown', 'mdown', 'mkdn'],
   },
   mctemplate: {
     extensions: ['mctemplate'],
@@ -482,7 +494,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
-    extensions: ['epub', 'gdoc', 'odt', 'md', 'markdn', 'markdown', 'mdown', 'mkdn', 'rtf', 'wri', 'pages'],
+    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {
     types: [FileIconType.sharedFolder],

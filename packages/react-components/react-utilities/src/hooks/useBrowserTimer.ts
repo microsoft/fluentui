@@ -7,11 +7,11 @@ type BrowserTimerSetter =
   | ((fn: () => void) => number);
 
 /**
- * @internal
  * Helper to manage a browser timer.
  * Ensures that the timer isn't set multiple times at once,
  * and is cleaned up when the component is unloaded.
  *
+ * @internal
  * @param setTimer - The timer setter function
  * @param cancelTimer - The timer cancel function
  * @returns A pair of [setTimer, cancelTimer] that are stable between renders.

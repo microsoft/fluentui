@@ -13,8 +13,9 @@ import type { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface.types';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
- * @internal
  * OverlayDrawerSurface is a proxy for DialogSurface as is only meant to be used internally for Drawer.
+ *
+ * @internal
  */
 export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps> = React.forwardRef((props, ref) => {
   const dialogSurfaceState = useDialogSurface_unstable(

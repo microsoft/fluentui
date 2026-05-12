@@ -1,4 +1,4 @@
-import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
@@ -14,6 +14,16 @@ export class BaseTreeItem extends FASTElement {
   @observable
   public itemSlot!: HTMLSlotElement;
 
+  /**
+   * Calls the slot change handler when the `itemSlot` reference is updated
+   * by the template binding.
+   *
+   * @internal
+   */
+  public itemSlotChanged() {
+    this.handleItemSlotChange();
+  }
+
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
@@ -21,8 +31,11 @@ export class BaseTreeItem extends FASTElement {
 
   /**
    * When true, the control will be appear expanded by user interaction.
-   * @public
+   * When true, the control will be appear expanded by user interaction.
+   *
    * HTML Attribute: `expanded`
+   *
+   * @public
    */
   @attr({ mode: 'boolean' })
   expanded: boolean = false;
@@ -42,6 +55,23 @@ export class BaseTreeItem extends FASTElement {
     toggleState(this.elementInternals, 'expanded', next);
     if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
+      // Update focusgroup attributes after subtree show/hide rendering is done.
+      requestAnimationFrame(() => {
+        const walker = document.createTreeWalker(this, NodeFilter.SHOW_ELEMENT, node =>
+          isTreeItem(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
+        );
+        while (walker.nextNode()) {
+          const item = walker.currentNode as BaseTreeItem;
+          if (next) {
+            item.removeAttribute('focusgroup');
+          } else {
+            if (item.selected) {
+              item.selected = false;
+            }
+            item.setAttribute('focusgroup', 'none');
+          }
+        }
+      });
     }
   }
 
@@ -52,7 +82,7 @@ export class BaseTreeItem extends FASTElement {
    * HTML Attribute: selected
    */
   @attr({ mode: 'boolean' })
-  selected: boolean = false;
+  selected!: boolean;
 
   /**
    * Handles changes to the selected attribute
@@ -62,7 +92,6 @@ export class BaseTreeItem extends FASTElement {
    * @internal
    */
   protected selectedChanged(prev: boolean, next: boolean): void {
-    this.updateTabindexBySelected();
     this.$emit('change');
     toggleState(this.elementInternals, 'selected', next);
     this.elementInternals.ariaSelected = next ? 'true' : 'false';
@@ -70,8 +99,11 @@ export class BaseTreeItem extends FASTElement {
 
   /**
    * When true, the control has no child tree items
-   * @public
+   * When true, the control has no child tree items
+   *
    * HTML Attribute: empty
+   *
+   * @public
    */
   @attr({ mode: 'boolean' })
   public empty: boolean = false;
@@ -114,11 +146,6 @@ export class BaseTreeItem extends FASTElement {
     this.updateChildTreeItems();
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.updateTabindexBySelected();
-  }
-
   /**
    * Updates the childrens indent
    *
@@ -159,17 +186,26 @@ export class BaseTreeItem extends FASTElement {
   }
 
   /**
-   * Whether the tree is nested
+   * Whether the tree item is nested
    * @internal
    */
   get isNestedItem() {
     return isTreeItem(this.parentElement);
   }
 
-  protected updateTabindexBySelected() {
-    if (this.$fastController.isConnected) {
-      this.tabIndex = this.selected ? 0 : -1;
+  /**
+   * Whether the tree item is nested in a collapsed tree item.
+   * @internal
+   */
+  get isHidden(): boolean {
+    let parent = this.parentElement;
+    while (isTreeItem(parent)) {
+      if (!parent.expanded) {
+        return true;
+      }
+      parent = parent.parentElement;
     }
+    return false;
   }
 
   /** @internal */

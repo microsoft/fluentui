@@ -21,12 +21,8 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import {
-  ARIAButtonElement,
-  ARIAButtonElementIntersection,
-  ARIAButtonProps,
-  useARIAButtonProps,
-} from '@fluentui/react-aria';
+import type { ARIAButtonElement, ARIAButtonElementIntersection, ARIAButtonProps } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
 import { useValidateNesting } from '../../utils/useValidateNesting';
@@ -71,6 +67,7 @@ export const useMenuItemBase_unstable = (
   } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const open = useMenuContext_unstable(context => context.open);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
 
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -80,6 +77,7 @@ export const useMenuItemBase_unstable = (
 
   const state: MenuItemState = {
     hasSubmenu,
+    submenuOpen: hasSubmenu && open,
     disabled,
     persistOnClick,
     components: {

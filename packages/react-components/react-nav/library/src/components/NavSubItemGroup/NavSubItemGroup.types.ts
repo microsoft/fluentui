@@ -1,6 +1,6 @@
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavDensity } from '../Nav/Nav.types';
+import type { NavDensity } from '../Nav/Nav.types';
 
 /**
  * Context value for NavSubItemGroup

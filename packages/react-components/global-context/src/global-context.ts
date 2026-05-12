@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
-import { GlobalObject } from './types';
+import type { GlobalObject } from './types';
 import { getMajorVersion } from './utils';
 
 const isBrowser = canUseDOM();

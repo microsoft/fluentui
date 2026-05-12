@@ -13,11 +13,12 @@ function shouldRegisterInternal() {
 const shouldRegister = shouldRegisterInternal();
 
 /**
- * @internal
  *
  * this will be removed after https://github.com/microsoft/fluentui/issues/30332
  *
  * expands this with rulesets/overrides that are necessary for specific configs
+ *
+ * @internal
  */
 const __internal = {
   /**

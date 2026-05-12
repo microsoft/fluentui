@@ -28,31 +28,41 @@ test.describe('RadioGroup', () => {
   test('should have a role of `radiogroup`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'radiogroup');
   });
 
   test('should set a default `aria-orientation` value when `orientation` is not defined', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
-  test('should set the `aria-orientation` attribute equal to the `orientation` value', async ({ fastPage }) => {
+  test('should set the `aria-orientation` attribute to `horizontal` when the `orientation` attribute is set to `horizontal`', async ({
+    fastPage,
+  }) => {
     const { element } = fastPage;
 
-    await test.step('horizontal', async () => {
-      await fastPage.setTemplate({ attributes: { orientation: 'horizontal' } });
-
-      await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
+    await fastPage.setTemplate({
+      attributes: { orientation: 'horizontal' },
     });
 
-    await test.step('vertical', async () => {
-      await element.evaluate(node => {
-        node.setAttribute('orientation', 'vertical');
-      });
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
+  });
 
-      await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
+  test('should set the `aria-orientation` attribute to `vertical` when the `orientation` attribute is set to `vertical`', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      attributes: { orientation: 'vertical' },
     });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
   test('should set the `aria-setsize` and `aria-posinset` attributes on the radios', async ({ fastPage }) => {
@@ -122,13 +132,13 @@ test.describe('RadioGroup', () => {
     const second = page.locator('button', { hasText: 'Second' });
 
     await fastPage.setTemplate(/* html */ `
-      <button>First</button>
+      <button tabindex="0">First</button>
       <fluent-radio-group disabled>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
       </fluent-radio-group>
-      <button>Second</button>
+      <button tabindex="0">Second</button>
     `);
 
     await expect(element).toHaveAttribute('disabled');
@@ -206,7 +216,7 @@ test.describe('RadioGroup', () => {
     await expect(radios.nth(0)).toHaveAttribute('tabindex', '0');
   });
 
-  test('should set tabindex of 0 to a child radio that’s initially checked', async ({ fastPage }) => {
+  test("should set tabindex of 0 to a child radio that's initially checked", async ({ fastPage }) => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');
 
@@ -492,14 +502,16 @@ test.describe('RadioGroup', () => {
     const { element } = fastPage;
     const radios = element.locator('fluent-radio');
 
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
         <fluent-radio></fluent-radio>
-      `,
-    });
+      </fluent-radio-group>
+    `);
 
+    await page.getByTestId('before').focus();
     await page.keyboard.press('Tab');
 
     await expect(radios.nth(0)).toBeFocused();
@@ -725,5 +737,57 @@ test.describe('RadioGroup', () => {
     await button.click();
 
     await expect(page).not.toHaveURL(/radio=/);
+  });
+
+  test('should NOT check the first radio when the group gains focus and check when space is hit', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator('fluent-radio');
+    const before = page.getByTestId('before');
+
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group name="radio">
+        <fluent-radio value="foo"></fluent-radio>
+        <fluent-radio value="bar"></fluent-radio>
+        <fluent-radio value="baz"></fluent-radio>
+      </fluent-radio-group>
+    `);
+
+    await before.focus();
+    await page.keyboard.press('Tab');
+
+    await expect(radios.nth(0)).toBeFocused();
+    await expect(radios.nth(0)).toHaveJSProperty('checked', false);
+
+    await page.keyboard.press('Space');
+    await expect(radios.nth(0)).toHaveJSProperty('checked', true);
+  });
+
+  test('should check the second radio when the focus is moved to it by directional navigation', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const radios = element.locator('fluent-radio');
+    const before = page.getByTestId('before');
+
+    await fastPage.setTemplate(/* html */ `
+      <button data-testid="before">before</button>
+      <fluent-radio-group name="radio">
+        <fluent-radio value="foo"></fluent-radio>
+        <fluent-radio value="bar"></fluent-radio>
+        <fluent-radio value="baz"></fluent-radio>
+      </fluent-radio-group>
+    `);
+
+    await before.focus();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowRight');
+
+    await expect(radios.nth(1)).toBeFocused();
+    await expect(radios.nth(1)).toHaveJSProperty('checked', true);
   });
 });

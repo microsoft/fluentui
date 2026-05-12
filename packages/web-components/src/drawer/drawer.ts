@@ -8,11 +8,11 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  *
  * @extends FASTElement
  *
- * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
- * @attr {DrawerPosition} position - Sets the position of the drawer (start/end).
- * @attr {DrawerSize} size - Sets the size of the drawer (small/medium/large).
- * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
- * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
+ * @attr type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
+ * @attr position - Sets the position of the drawer (start/end).
+ * @attr size - Sets the size of the drawer (small/medium/large).
+ * @attr ariaDescribedby - The ID of the element that describes the drawer.
+ * @attr ariaLabelledby - The ID of the element that labels the drawer.
  *
  * @csspart dialog - The dialog element of the drawer.
  *
@@ -36,9 +36,10 @@ export class Drawer extends FASTElement {
   protected roleAttrObserver!: MutationObserver;
 
   /**
-   * @public
    * Determines whether the drawer should be displayed as modal or non-modal
    * When rendered as a modal, an overlay is applied over the rest of the view.
+   *
+   * @public
    */
   @attr
   public type: DrawerType = DrawerType.modal;
@@ -57,23 +58,26 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * @public
    * The ID of the element that labels the drawer.
+   *
+   * @public
    */
   @attr({ attribute: 'aria-labelledby' })
   public ariaLabelledby?: string;
 
   /**
-   * @public
    * The ID of the element that describes the drawer.
+   *
+   * @public
    */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**""
+  /**
+   * Sets the position of the drawer (start/end).
+   *
    * @public
    * @defaultValue start
-   * Sets the position of the drawer (start/end).
    */
   @attr
   public position: DrawerPosition = DrawerPosition.start;
@@ -87,8 +91,9 @@ export class Drawer extends FASTElement {
   public size: DrawerSize = DrawerSize.medium;
 
   /**
-   * @public
    * The dialog element.
+   *
+   * @public
    */
   @observable
   public dialog!: HTMLDialogElement;
@@ -107,9 +112,10 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * @public
    * Method to emit an event after the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   *
+   * @public
    */
   public emitToggle = (): void => {
     this.$emit('toggle', {
@@ -119,9 +125,10 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * @public
    * Method to emit an event before the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   *
+   * @public
    */
   public emitBeforeToggle = (): void => {
     this.$emit('beforetoggle', {
@@ -131,8 +138,9 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * @public
    * Method to show the drawer
+   *
+   * @public
    */
   public show(): void {
     Updates.enqueue(() => {
@@ -147,8 +155,9 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * @public
    * Method to hide the drawer
+   *
+   * @public
    */
   public hide(): void {
     this.emitBeforeToggle();
@@ -163,7 +172,6 @@ export class Drawer extends FASTElement {
    * Handles click events on the drawer.
    */
   public clickHandler(event: Event): boolean {
-    event.preventDefault();
     if (this.dialog.open && event.target === this.dialog) {
       this.hide();
     }
@@ -171,8 +179,9 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * @public
    * Handles cancel events on the drawer.
+   *
+   * @public
    */
   public cancelHandler() {
     this.hide();
@@ -193,7 +202,6 @@ export class Drawer extends FASTElement {
   }
 
   protected updateDialogRole() {
-    console.log(this.role);
     if (!this.dialog) {
       return;
     }

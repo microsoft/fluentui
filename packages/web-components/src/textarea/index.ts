@@ -10,3 +10,4 @@ export {
 } from './textarea.options.js';
 export { styles as TextAreaStyles } from './textarea.styles.js';
 export { template as TextAreaTemplate } from './textarea.template.js';
+export { tagName as TextareaTagName } from './textarea.options.js';

@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { TreeContextValue } from '../../contexts';
-import { TreeContextValues, TreeState } from './Tree.types';
+import type { TreeContextValue } from '../../contexts';
+import type { TreeContextValues, TreeState } from './Tree.types';
 
 export function useTreeContextValues_unstable(state: TreeState): TreeContextValues {
   'use no memo';
@@ -21,23 +21,36 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       requestTreeResponse,
       forceUpdateRovingTabIndex,
     } = state;
-    /**
-     * This context is created with "@fluentui/react-context-selector",
-     * there is no sense to memoize it
-     */
-    const tree: TreeContextValue = {
-      treeType,
-      size,
-      openItems,
-      appearance,
-      checkedItems,
-      selectionMode,
-      navigationMode,
-      contextType,
-      level,
-      requestTreeResponse,
-      forceUpdateRovingTabIndex,
-    };
+    // contextType is statically determined by the context
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const tree = React.useMemo<TreeContextValue>(
+      () => ({
+        treeType,
+        size,
+        openItems,
+        appearance,
+        checkedItems,
+        selectionMode,
+        navigationMode,
+        contextType,
+        level,
+        requestTreeResponse,
+        forceUpdateRovingTabIndex,
+      }),
+      [
+        treeType,
+        size,
+        openItems,
+        appearance,
+        checkedItems,
+        selectionMode,
+        navigationMode,
+        contextType,
+        level,
+        requestTreeResponse,
+        forceUpdateRovingTabIndex,
+      ],
+    );
 
     return { tree };
   }

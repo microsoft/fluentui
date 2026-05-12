@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 25 Feb 2026 13:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Apr 2026 14:21:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.7.1)
+
+Thu, 23 Apr 2026 14:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.7.0..@fluentui/react-divider_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.2 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.7.0)
+
+Thu, 26 Mar 2026 08:12:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.6.2..@fluentui/react-divider_v9.7.0)
+
+### Minor changes
+
+- feat: expose base hook and types for Divider component ([PR #35889](https://github.com/microsoft/fluentui/pull/35889) by dmytrokirpa@microsoft.com)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.6.2)
 

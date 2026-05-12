@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './button.options.js';
 import { Button } from './button.js';
 import { styles } from './button.styles.js';
 import { template } from './button.template.js';
@@ -11,7 +11,7 @@ import { template } from './button.template.js';
  * HTML Element: `<fluent-button>`
  */
 export const definition = Button.compose({
-  name: `${FluentDesignSystem.prefix}-button`,
+  name: tagName,
   template,
   styles,
 });

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { NavSubItemGroup } from './NavSubItemGroup';
-import { NavCategoryContextValue, NavCategoryProvider } from '../NavCategoryContext';
+import type { NavCategoryContextValue } from '../NavCategoryContext';
+import { NavCategoryProvider } from '../NavCategoryContext';
 
 export function mockNavCategoryContextValue(partialValue?: Partial<NavCategoryContextValue>): NavCategoryContextValue {
   return {

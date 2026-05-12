@@ -3,7 +3,12 @@
 import * as React from 'react';
 import { useEventCallback, slot, isResolvedShorthand } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
-import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
+import type {
+  AccordionHeaderBaseProps,
+  AccordionHeaderBaseState,
+  AccordionHeaderProps,
+  AccordionHeaderState,
+} from './AccordionHeader.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -20,7 +25,8 @@ export const useAccordionHeader_unstable = (
   props: AccordionHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionHeaderState => {
-  const state = useAccordionHeaderBase_unstable(props, ref);
+  const { inline = false, size = 'medium', ...baseProps } = props;
+  const state = useAccordionHeaderBase_unstable(baseProps, ref);
   const { dir } = useFluent();
 
   // Calculate how to rotate the expand icon [>] (ChevronRightRegular)
@@ -44,7 +50,7 @@ export const useAccordionHeader_unstable = (
     );
   }
 
-  return state;
+  return { ...state, inline, size };
 };
 
 /**
@@ -54,10 +60,10 @@ export const useAccordionHeader_unstable = (
  * @param ref - reference to root HTMLElement of AccordionHeader
  */
 export const useAccordionHeaderBase_unstable = (
-  props: AccordionHeaderProps,
+  props: AccordionHeaderBaseProps,
   ref: React.Ref<HTMLElement>,
-): AccordionHeaderState => {
-  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start', ...rest } = props;
+): AccordionHeaderBaseState => {
+  const { icon, button, expandIcon, expandIconPosition = 'start', ...rest } = props;
   const { value, disabled, open } = useAccordionItemContext_unstable();
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
 
@@ -89,8 +95,6 @@ export const useAccordionHeaderBase_unstable = (
   return {
     disabled,
     open,
-    size,
-    inline,
     expandIconPosition,
     components: {
       root: 'div',

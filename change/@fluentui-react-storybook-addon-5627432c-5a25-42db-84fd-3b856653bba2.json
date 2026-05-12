@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Allow consumers to replace primary-story / args-table / stories sections of FluentDocsPage",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

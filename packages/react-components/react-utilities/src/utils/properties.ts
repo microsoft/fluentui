@@ -120,6 +120,7 @@ export const baseElementProperties = toObjectMap([
   'lang', // global
   'popover', // global
   'focusgroup', // global
+  'focusgroupstart', // global
   'ref', // global
   'role', // global
   'style', // global

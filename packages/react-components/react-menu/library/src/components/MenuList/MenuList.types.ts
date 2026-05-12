@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
 import type { SelectableHandler } from '../../selectable/index';

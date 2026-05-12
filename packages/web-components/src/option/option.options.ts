@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { StartOptions } from '../patterns/start-end.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { DropdownOption } from './option.js';
@@ -26,3 +27,10 @@ export function isDropdownOption(value: Node | null, tagName: string = '-option'
 export type DropdownOptionOptions = StartOptions<DropdownOption> & {
   checkedIndicator?: StaticallyComposableHTML<DropdownOption>;
 };
+
+/**
+ * The tag name for the option element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-option` as const;

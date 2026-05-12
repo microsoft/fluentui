@@ -94,6 +94,20 @@ export const MotionRefForwarderReset: React_2.FC<{
 }>;
 
 // @public (undocumented)
+export function motionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: MotionSlotProps<MotionParams> | null | undefined, options: {
+    elementType: React_2.FC<MotionComponentProps & MotionParams>;
+    defaultProps: MotionSlotRenderProps & MotionParams;
+}): SlotComponentType<MotionSlotRenderProps & MotionParams>;
+
+// @public (undocumented)
+export type MotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<MotionComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart' | 'onMotionCancel'> & Partial<MotionParams> & {
+    as?: JSXIntrinsicElementKeys;
+    children?: SlotRenderFunction<MotionSlotRenderProps & MotionParams & {
+        children: JSXElement;
+    }>;
+};
+
+// @public (undocumented)
 export const motionTokens: {
     curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
     curveAccelerateMid: "cubic-bezier(1,0,1,1)";
@@ -118,8 +132,8 @@ export const motionTokens: {
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-    In: React_2.FC<MotionComponentProps & MotionParams>;
-    Out: React_2.FC<MotionComponentProps & MotionParams>;
+    In: MotionComponent<MotionParams>;
+    Out: MotionComponent<MotionParams>;
 };
 
 // @public (undocumented)
@@ -182,7 +196,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 }): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
 
 // @public (undocumented)
-export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
+export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & Partial<MotionParams> & {
     as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: JSXElement;

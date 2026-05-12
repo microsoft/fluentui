@@ -1,6 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { StartEnd } from '../patterns/index.js';
+import { StartEnd } from '../patterns/start-end.js';
 import {
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -110,10 +110,11 @@ export class CounterBadge extends FASTElement {
   public dot: boolean = false;
 
   /**
-   * @internal
    * Function to set the count
    * This is the default slotted content for the counter badge
    * If children are slotted, that will override the value returned
+   *
+   * @internal
    */
   public setCount(): string | void {
     const count: number | null = this.count ?? 0;

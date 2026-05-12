@@ -4,9 +4,11 @@ import { ArrowDownIcon } from '@storybook/icons';
 import { useParameter } from 'storybook/manager-api';
 
 import type { JSXElement } from '@fluentui/react-utilities';
-import { ThemeIds, themes, defaultTheme } from '../theme';
+import type { ThemeIds } from '../theme';
+import { themes, defaultTheme } from '../theme';
 import { THEME_ID } from '../constants';
-import { useGlobals, FluentParameters } from '../hooks';
+import type { FluentParameters } from '../hooks';
+import { useGlobals } from '../hooks';
 
 export interface ThemeSelectorItem {
   id: string;

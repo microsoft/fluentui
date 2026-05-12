@@ -228,13 +228,6 @@ export const rule = createRule<[RuleOptions?], MessageIds>({
      * Checks if an identifier references an imported custom hook or RSC-unsafe function
      * and records it as a client feature if found.
      *
-     * This is separated from the ImportDeclaration visitor for performance:
-     * - ImportDeclaration builds O(n) lookup sets during import scanning
-     * - This helper performs O(1) set membership checks per identifier
-     *
-     * Alternative approach of merging with scope-based analysis would require
-     * O(scope depth) traversal per identifier, which is significantly slower.
-     *
      * @param node - The identifier node to check
      * @param name - The identifier name
      */
@@ -275,48 +268,7 @@ export const rule = createRule<[RuleOptions?], MessageIds>({
       },
 
       /**
-       * Track imported custom hooks and RSC-unsafe functions
-       */
-      ImportDeclaration(node: TSESTree.ImportDeclaration) {
-        if (shouldSkipAnalysis()) {
-          return;
-        }
-
-        // Track React default/namespace imports (import React from 'react', import * as React from 'react')
-        const source = node.source.value;
-        if (source === 'react') {
-          for (const specifier of node.specifiers) {
-            if (
-              specifier.type === AST_NODE_TYPES.ImportDefaultSpecifier ||
-              specifier.type === AST_NODE_TYPES.ImportNamespaceSpecifier
-            ) {
-              ruleState.reactImportNames.add(specifier.local.name);
-            }
-          }
-        }
-
-        for (const specifier of node.specifiers) {
-          if (specifier.type === AST_NODE_TYPES.ImportSpecifier) {
-            const importedName =
-              specifier.imported.type === AST_NODE_TYPES.Identifier
-                ? specifier.imported.name
-                : specifier.imported.value;
-
-            // Track custom hooks
-            if (isPotentialCustomHook(importedName)) {
-              ruleState.importedCustomHooks.add(specifier.local.name);
-            }
-
-            // Track RSC-unsafe functions (including user-configured ones)
-            if (rscUnsafeFunctions.has(importedName)) {
-              ruleState.importedRSCUnsafeFunctions.add(specifier.local.name);
-            }
-          }
-        }
-      },
-
-      /**
-       * Detect when imported custom hooks or RSC-unsafe functions are referenced
+       * Track imports and detect when imported custom hooks or RSC-unsafe functions are referenced
        */
       Identifier(node: TSESTree.Identifier) {
         if (shouldSkipAnalysis()) {
@@ -330,15 +282,56 @@ export const rule = createRule<[RuleOptions?], MessageIds>({
           return;
         }
 
-        // Skip type annotations, type parameters, and import/export declarations
+        // Track React default/namespace imports (import React from 'react', import * as React from 'react')
+        if (
+          parent.type === AST_NODE_TYPES.ImportDefaultSpecifier ||
+          parent.type === AST_NODE_TYPES.ImportNamespaceSpecifier
+        ) {
+          const importDecl = parent.parent as TSESTree.ImportDeclaration;
+          if (importDecl?.source?.value === 'react') {
+            ruleState.reactImportNames.add(node.name);
+          }
+          return;
+        }
+
+        // Track imported custom hooks and RSC-unsafe functions
+        if (parent.type === AST_NODE_TYPES.ImportSpecifier) {
+          let importedName: string;
+          let localName: string;
+
+          if (parent.imported.type === AST_NODE_TYPES.Identifier) {
+            // Normal import: { useFoo } or { useFoo as bar }
+            // Process only when visiting the imported identifier to avoid duplicate processing
+            if (parent.imported !== node) {
+              return; // Skip when visiting the local alias
+            }
+            importedName = node.name;
+            localName = parent.local.name;
+          } else {
+            // String literal import: { "use-foo" as bar }
+            // The imported node is a Literal (not visited by Identifier), so process on local identifier
+            if (parent.local !== node) {
+              return;
+            }
+            importedName = (parent.imported as TSESTree.Literal).value as string;
+            localName = node.name;
+          }
+
+          if (isPotentialCustomHook(importedName)) {
+            ruleState.importedCustomHooks.add(localName);
+          }
+          if (rscUnsafeFunctions.has(importedName)) {
+            ruleState.importedRSCUnsafeFunctions.add(localName);
+          }
+          return;
+        }
+
+        // Skip type annotations, type parameters, and export declarations
         if (
           parent.type === AST_NODE_TYPES.TSTypeReference ||
           parent.type === AST_NODE_TYPES.TSTypeQuery ||
           parent.type === AST_NODE_TYPES.TSTypeAnnotation ||
           parent.type === AST_NODE_TYPES.TSTypeParameter ||
-          parent.type === AST_NODE_TYPES.ImportSpecifier ||
-          parent.type === AST_NODE_TYPES.ImportDefaultSpecifier ||
-          parent.type === AST_NODE_TYPES.ImportNamespaceSpecifier ||
           parent.type === AST_NODE_TYPES.ExportSpecifier
         ) {
           return;

@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './menu-item.options.js';
 import { MenuItem } from './menu-item.js';
 import { styles } from './menu-item.styles.js';
 import { template } from './menu-item.template.js';
@@ -9,7 +9,7 @@ import { template } from './menu-item.template.js';
  * HTML Element: <fluent-menu-item>
  */
 export const definition = MenuItem.compose({
-  name: `${FluentDesignSystem.prefix}-menu-item`,
+  name: tagName,
   template,
   styles,
 });

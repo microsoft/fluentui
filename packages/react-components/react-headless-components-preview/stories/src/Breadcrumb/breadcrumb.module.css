@@ -1,0 +1,63 @@
+.crumb {
+  display: flex;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.btn:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.btn[data-current] {
+  color: var(--text);
+  font-weight: 600;
+  cursor: default;
+}
+
+.btn[data-current]:hover {
+  background: transparent;
+}
+
+.divider {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-faint);
+  list-style: none;
+}
+
+.divider svg {
+  width: 12px;
+  height: 12px;
+}

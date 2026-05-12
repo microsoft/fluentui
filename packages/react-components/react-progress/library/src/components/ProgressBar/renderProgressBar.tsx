@@ -3,12 +3,23 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
+import type { ProgressBarBaseState, ProgressBarSlots } from './ProgressBar.types';
 
 /**
  * Render the final JSX of ProgressBar
  */
-export const renderProgressBar_unstable = (state: ProgressBarState): JSXElement => {
+export const renderProgressBar_unstable = (state: ProgressBarBaseState): JSXElement => {
   assertSlots<ProgressBarSlots>(state);
-  return <state.root>{state.bar && <state.bar />}</state.root>;
+  return (
+    <state.root>
+      {state.bar &&
+        (state.indeterminateMotion ? (
+          <state.indeterminateMotion>
+            <state.bar />
+          </state.indeterminateMotion>
+        ) : (
+          <state.bar />
+        ))}
+    </state.root>
+  );
 };

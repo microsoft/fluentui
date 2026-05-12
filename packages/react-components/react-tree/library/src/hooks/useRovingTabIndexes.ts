@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useFocusedElementChange } from '@fluentui/react-tabster';
 
 const findTreeItemRoot = (element: HTMLElement) => {
@@ -14,8 +14,9 @@ const findTreeItemRoot = (element: HTMLElement) => {
 };
 
 /**
- * @internal
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
+ *
+ * @internal
  */
 export function useRovingTabIndex(): {
   rove: (nextElement: HTMLElement, focusOptions?: FocusOptions) => void;

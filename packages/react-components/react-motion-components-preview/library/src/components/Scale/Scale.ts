@@ -1,12 +1,8 @@
-import {
-  motionTokens,
-  createPresenceComponent,
-  PresenceMotionFn,
-  createPresenceComponentVariant,
-} from '@fluentui/react-motion';
+import type { PresenceMotionFn } from '@fluentui/react-motion';
+import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { scaleAtom } from '../../atoms/scale-atom';
-import { ScaleParams } from './scale-types';
+import type { ScaleParams } from './scale-types';
 
 /**
  * Define a presence motion for scale in/out

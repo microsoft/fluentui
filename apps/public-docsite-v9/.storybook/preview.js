@@ -1,7 +1,5 @@
 import * as rootPreview from '../../../.storybook/preview';
 
-import './docs-root-v9.css';
-
 /** @type {NonNullable<import('@storybook/react').Decorator[]>} */
 export const decorators = rootPreview.decorators;
 
@@ -46,7 +44,7 @@ export const parameters = {
         'Compat Components',
         'Preview Components',
         'Icons',
-        ['Overview', 'Catalog', 'FileTypeIcon'],
+        ['FileTypeIcon'],
         'Motion',
         'Utilities',
       ],

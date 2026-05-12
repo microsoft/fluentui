@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, Updates } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 import { AnchorPositioningCSSSupported, AnchorPositioningHTMLSupported } from '../utils/support.js';
 import type { TooltipPositioningOption } from './tooltip.options.js';
 
@@ -124,7 +124,7 @@ export class Tooltip extends FASTElement {
 
   /**
    * Shows the tooltip
-   * @param delay Number of milliseconds to delay showing the tooltip
+   * @param delay - Number of milliseconds to delay showing the tooltip
    * @internal
    */
   public showTooltip(delay: number = this.defaultDelay): void {
@@ -136,7 +136,7 @@ export class Tooltip extends FASTElement {
 
   /**
    * Hide the tooltip
-   * @param delay Number of milliseconds to delay hiding the tooltip
+   * @param delay - Number of milliseconds to delay hiding the tooltip
    * @internal
    */
   public hideTooltip(delay: number = this.defaultDelay): void {

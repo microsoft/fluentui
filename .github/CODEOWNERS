@@ -123,6 +123,7 @@ apps/vr-tests-web-components @microsoft/fui-wc
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg @microsoft/fluentui-react-build
+apps/public-docsite-v9-headless @microsoft/cxe-prg @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/rit-tests-v8 @microsoft/fluentui-react-build
@@ -233,8 +234,8 @@ packages/react-components/react-portal/library @microsoft/teams-prg
 packages/react-components/react-portal/stories @microsoft/teams-prg
 packages/react-components/react-provider/library @microsoft/teams-prg
 packages/react-components/react-provider/stories @microsoft/teams-prg
-packages/react-components/react-radio/library @microsoft/cxe-red  @spmonahan
-packages/react-components/react-radio/stories @microsoft/cxe-red  @spmonahan
+packages/react-components/react-radio/library @microsoft/cxe-prg  @dmytrokirpa
+packages/react-components/react-radio/stories @microsoft/cxe-prg  @dmytrokirpa
 packages/react-components/react-select/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-select/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-slider/library @microsoft/cxe-prg @dmytrokirpa
@@ -331,6 +332,8 @@ packages/react-components/component-selector-preview/library @microsoft/teams-pr
 packages/react-components/component-selector-preview/stories @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
+packages/react-components/react-headless-components-preview/library @microsoft/cxe-prg
+packages/react-components/react-headless-components-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 # Deprecated v9 packages - exposed as part of `/unstable` api
@@ -373,7 +376,7 @@ packages/react/src/components/Overlay @microsoft/cxe-red @khmakoto
 packages/react/src/components/Panel @microsoft/cxe-red @khmakoto
 packages/react/src/components/Persona @microsoft/cxe-red
 packages/react/src/components/PersonaCoin @microsoft/cxe-red
-packages/react/src/components/Pivot @microsoft/cxe-red 
+packages/react/src/components/Pivot @microsoft/cxe-red
 packages/react/src/components/SearchBox @microsoft/cxe-red
 packages/react/src/components/Shimmer @microsoft/cxe-red
 packages/react/src/components/SpinButton @microsoft/cxe-red
@@ -387,7 +390,7 @@ packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
-packages/fluent2-theme @microsoft/cxe-red 
+packages/fluent2-theme @microsoft/cxe-red
 ## Experiments
 packages/react-experiments @microsoft/cxe-red
 packages/react-experiments/src/components/Signals @ThomasMichon

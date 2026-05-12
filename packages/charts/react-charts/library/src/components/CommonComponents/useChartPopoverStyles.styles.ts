@@ -1,9 +1,9 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
+import type { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
 
 /**
  * @internal

@@ -1,16 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { TableColumnId, ColumnResizeState } from './types';
+import type { TableColumnId, ColumnResizeState } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import {
-  NativeTouchOrMouseEvent,
-  ReactTouchOrMouseEvent,
-  getEventClientCoords,
-  isMouseEvent,
-  isTouchEvent,
-  useAnimationFrame,
-} from '@fluentui/react-utilities';
+import type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent } from '@fluentui/react-utilities';
+import { getEventClientCoords, isMouseEvent, isTouchEvent, useAnimationFrame } from '@fluentui/react-utilities';
 
 export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState): {
   getOnMouseDown: (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => void;
