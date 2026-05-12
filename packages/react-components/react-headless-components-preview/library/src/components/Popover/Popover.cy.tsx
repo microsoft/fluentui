@@ -404,6 +404,13 @@ describe('positioning observer', () => {
     cy.then(() => {
       expect(() => positioningRef.current?.updatePosition()).not.to.throw();
     });
-    cy.get(surfaceSelector).should('have.attr', 'data-placement', 'above');
+    // Only assert the resolved placement when the browser supports CSS anchor positioning
+    // (Chromium 125+). Without it the surface stays at its static DOM position and the
+    // observer correctly reports whatever side it ends up on — not necessarily 'above'.
+    cy.window().then(win => {
+      if (win.CSS?.supports?.('anchor-name: --x')) {
+        cy.get(surfaceSelector).should('have.attr', 'data-placement', 'above');
+      }
+    });
   });
 });

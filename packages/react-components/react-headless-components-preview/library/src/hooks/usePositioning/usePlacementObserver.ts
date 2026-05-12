@@ -23,10 +23,12 @@ export function usePlacementObserver(
     }
 
     const result = computePosition(targetEl, containerEl);
-    const next = result?.placement ?? 'indeterminate';
+    if (!result) {
+      return;
+    }
 
-    if (containerEl.getAttribute('data-placement') !== next) {
-      containerEl.setAttribute('data-placement', next);
+    if (containerEl.getAttribute('data-placement') !== result.placement) {
+      containerEl.setAttribute('data-placement', result.placement);
     }
   });
 
