@@ -48,6 +48,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   }
 
   if (state.icon && !state.icon.hasOwnProperty('children')) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.children = <PersonRegular />;
   }
 

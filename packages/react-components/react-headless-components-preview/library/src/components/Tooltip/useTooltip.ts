@@ -136,6 +136,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
+    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
         ignoreNextFocusEventRef.current = false;
@@ -178,6 +179,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
+    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       let delay = state.hideDelay;
 
@@ -204,9 +206,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
   // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
+  // eslint-disable-next-line react-hooks/immutability
   state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  // eslint-disable-next-line react-hooks/immutability
   state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
 
   const child = getTriggerChild(children);
@@ -223,21 +229,25 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+      // eslint-disable-next-line react-hooks/immutability
       state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
     triggerAriaProps['aria-describedby'] = state.content.id;
     // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+    // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = true;
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
   // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
   if (isServerSideRender || isPopupExpanded) {
+    // eslint-disable-next-line react-hooks/immutability
     state.shouldRenderTooltip = false;
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
+  // eslint-disable-next-line react-hooks/immutability
   state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
     ...child?.props,
@@ -247,9 +257,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
     ),
+    // eslint-disable-next-line react-hooks/refs
     onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
+    // eslint-disable-next-line react-hooks/refs
     onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
+    // eslint-disable-next-line react-hooks/refs
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
+    // eslint-disable-next-line react-hooks/refs
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
 

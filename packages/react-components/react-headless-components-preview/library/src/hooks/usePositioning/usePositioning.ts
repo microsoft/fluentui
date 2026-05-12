@@ -78,11 +78,13 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     };
   }, [effectiveTarget, anchorName]);
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
     setTriggerEl(node);
   }, []);
 
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
+    // eslint-disable-next-line react-hooks/preserve-manual-memoization
     node => {
       setContainerEl(node);
 
