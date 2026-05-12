@@ -1,16 +1,18 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as DividerTagName } from '../divider/divider.options.js';
 import type { MenuItem } from '../menu-item/menu-item.js';
-import { MenuItemRole } from '../menu-item/menu-item.options.js';
+import { MenuItemRole, tagName as MenuItemTagName } from '../menu-item/menu-item.options.js';
+import { tagName } from './menu-list.options.js';
 
-test.describe('Menu', () => {
+test.describe('MenuList', () => {
   test.use({
-    tagName: 'fluent-menu-list',
-    waitFor: ['fluent-menu-item'],
+    tagName,
+    waitFor: [MenuItemTagName, DividerTagName],
     innerHTML: /* html */ `
-      <fluent-menu-item>Menu item 1</fluent-menu-item>
-      <fluent-menu-item>Menu item 2</fluent-menu-item>
-      <fluent-menu-item>Menu item 3</fluent-menu-item>
-      <fluent-menu-item>Menu item 4</fluent-menu-item>
+      <${MenuItemTagName}>Menu item 1</${MenuItemTagName}>
+      <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
+      <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+      <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
     `,
   });
 
@@ -23,9 +25,9 @@ test.describe('Menu', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-menu-list');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -33,34 +35,39 @@ test.describe('Menu', () => {
   test('should have a role of `menu`', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
   });
 
   test('should set `tabindex` of the first focusable menu item to 0', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
+
+    await fastPage.setTemplate();
 
     await expect(menuItems.first()).toHaveAttribute('tabindex', '0');
   });
 
   test('should NOT set any `tabindex` on non-menu-item elements', async ({ fastPage }) => {
     const { element } = fastPage;
+    const divider = element.locator('div.divider');
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item>Menu item</fluent-menu-item>
+        <${MenuItemTagName}>Menu item</${MenuItemTagName}>
         <div class="divider">Not a menu item</div>
       `,
     });
-
-    const divider = element.locator('div.divider');
 
     await expect(divider).not.toHaveAttribute('tabindex');
   });
 
   test('should focus on first menu item when `focus()` is called', async ({ fastPage }) => {
     const { element } = fastPage;
-    const firstItem = element.locator('fluent-menu-item').first();
+    const firstItem = element.locator(MenuItemTagName).first();
+
+    await fastPage.setTemplate();
 
     await expect(firstItem).toHaveAttribute('tabindex', '0');
 
@@ -88,29 +95,28 @@ test.describe('Menu', () => {
 
     await fastPage.setTemplate('');
 
-    await page.evaluate(() => {
-      const menu = document.createElement('fluent-menu-list');
+    await page.evaluate(tagName => {
+      const menu = document.createElement(tagName);
 
       menu.focus();
 
       document.body.append(menu);
-    });
+    }, tagName);
 
     await expect(element).not.toBeFocused();
   });
 
   test('should focus disabled items', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
+    const firstMenuItem = menuItems.first();
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item disabled>Menu item</fluent-menu-item>
-        <fluent-menu-item>Menu item</fluent-menu-item>
+        <${MenuItemTagName} disabled>Menu item</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item</${MenuItemTagName}>
       `,
     });
-
-    const firstMenuItem = menuItems.first();
 
     await expect(firstMenuItem).toHaveAttribute('disabled');
     await expect(firstMenuItem).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
@@ -134,16 +140,9 @@ test.describe('Menu', () => {
 
   test('should not navigate to hidden items when changed after connection', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-      `,
-    });
+    await fastPage.setTemplate();
 
     await expect(menuItems).toHaveCount(4);
 
@@ -190,14 +189,14 @@ test.describe('Menu', () => {
 
   test('should treat all checkbox menu items as individually selectable items', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemcheckbox">Menu item 1</fluent-menu-item>
-        <fluent-menu-item role="menuitemcheckbox">Menu item 2</fluent-menu-item>
-        <fluent-menu-item role="menuitemcheckbox">Menu item 3</fluent-menu-item>
-        <fluent-menu-item role="menuitemcheckbox">Menu item 4</fluent-menu-item>
+        <${MenuItemTagName} role="menuitemcheckbox">Menu item 1</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemcheckbox">Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemcheckbox">Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemcheckbox">Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -218,13 +217,13 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
-        <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
-        <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
+        <${MenuItemTagName} role="menuitemradio">Menu item 1</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemradio">Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemradio">Menu item 3</${MenuItemTagName}>
       `,
     });
 
@@ -257,15 +256,15 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
-        <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
-        <fluent-divider role="separator"></fluent-divider>
-        <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
-        <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
+        <${MenuItemTagName} role="menuitemradio">Menu item 1</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemradio">Menu item 2</${MenuItemTagName}>
+        <${DividerTagName} role="separator"></${DividerTagName}>
+        <${MenuItemTagName} role="menuitemradio">Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName} role="menuitemradio">Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -308,7 +307,9 @@ test.describe('Menu', () => {
 
   test('should navigate the menu on arrow up/down keys', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
+
+    await fastPage.setTemplate();
 
     await element.evaluate(node => {
       node.focus();
@@ -335,18 +336,18 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item
+        <${MenuItemTagName}
           >Menu item 1
-          <fluent-menu-list slot="submenu">
-            <fluent-menu-item>Menu item 1.1</fluent-menu-item>
-            <fluent-menu-item>Menu item 1.2</fluent-menu-item>
-            <fluent-menu-item>Menu item 1.3</fluent-menu-item>
-          </fluent-menu-list>
-        </fluent-menu-item>
+          <${tagName} slot="submenu">
+            <${MenuItemTagName}>Menu item 1.1</${MenuItemTagName}>
+            <${MenuItemTagName}>Menu item 1.2</${MenuItemTagName}>
+            <${MenuItemTagName}>Menu item 1.3</${MenuItemTagName}>
+          </${tagName}>
+        </${MenuItemTagName}>
       `,
     });
 
@@ -365,14 +366,14 @@ test.describe('Menu', () => {
 
   test('should not navigate to hidden items when set before connection', async ({ fastPage }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item hidden="hidden">Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <${MenuItemTagName}>Menu item 1</${MenuItemTagName}>
+        <${MenuItemTagName} hidden="hidden">Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -403,7 +404,9 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
+
+    await fastPage.setTemplate();
 
     for (const item of await menuItems.all()) {
       await expect(item).toHaveAttribute('data-indent', '0');
@@ -414,14 +417,14 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemcheckbox"></fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <${MenuItemTagName} role="menuitemcheckbox"></${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -434,14 +437,14 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemradio"></fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <${MenuItemTagName} role="menuitemradio"></${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -454,17 +457,17 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemcheckbox">
+        <${MenuItemTagName} role="menuitemcheckbox">
           Item 1
           <span slot="start" class="start">Icon</span>
-        </fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        </${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -477,14 +480,14 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-menu-item role="menuitemradio"> Item 1 <span slot="start" class="start">Icon</span> </fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <${MenuItemTagName} role="menuitemradio"> Item 1 <span slot="start" class="start">Icon</span> </${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
       `,
     });
 
@@ -497,21 +500,21 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({ innerHTML: '' });
 
-    await element.evaluate(node => {
+    await element.evaluate((node, MenuItemTagName) => {
       const items = ['item 1', 'item 2', 'item 3'];
 
       items.forEach(item => {
-        const menuItem = document.createElement('fluent-menu-item');
+        const menuItem = document.createElement(MenuItemTagName);
         menuItem.role = 'menuitemradio';
         menuItem.textContent = item;
         node.append(menuItem);
       });
-    });
+    }, MenuItemTagName);
 
-    const menuItems = element.locator('fluent-menu-item');
     await expect(menuItems).toHaveCount(3);
 
     for (const item of await menuItems.all()) {
@@ -523,24 +526,24 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
+    const menuItems = element.locator(MenuItemTagName);
 
     await fastPage.setTemplate({ innerHTML: '' });
 
-    await element.evaluate(node => {
+    await element.evaluate((node, MenuItemTagName) => {
       const fragment = document.createDocumentFragment();
       const items = ['item 1', 'item 2', 'item 3'];
 
       items.forEach(item => {
-        const menuItem = document.createElement('fluent-menu-item');
+        const menuItem = document.createElement(MenuItemTagName);
         menuItem.role = 'menuitemradio';
         menuItem.textContent = item;
         fragment.append(menuItem);
       });
 
       node.append(fragment);
-    });
+    }, MenuItemTagName);
 
-    const menuItems = element.locator('fluent-menu-item');
     await expect(menuItems).toHaveCount(3);
 
     for (const item of await menuItems.all()) {
@@ -552,7 +555,9 @@ test.describe('Menu', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const menuItems = element.locator('fluent-menu-item');
+    const menuItems = element.locator(MenuItemTagName);
+
+    await fastPage.setTemplate();
 
     await test.step('all plain menuitems should start with data-indent 0', async () => {
       for (const item of await menuItems.all()) {
@@ -561,12 +566,12 @@ test.describe('Menu', () => {
     });
 
     await test.step('appending a menuitemradio should update all items to data-indent 1', async () => {
-      await element.evaluate(node => {
-        const menuItem = document.createElement('fluent-menu-item');
+      await element.evaluate((node, MenuItemTagName) => {
+        const menuItem = document.createElement(MenuItemTagName);
         menuItem.role = 'menuitemradio';
         menuItem.textContent = 'Radio item';
         node.append(menuItem);
-      });
+      }, MenuItemTagName);
 
       await expect(menuItems).toHaveCount(5);
 
@@ -589,16 +594,16 @@ test.describe('Menu', () => {
   test.describe('`change` event', () => {
     test('should emit `change` event when `checked` property changed', async ({ fastPage }) => {
       const { element } = fastPage;
-      const menuItems = element.locator('fluent-menu-item');
+      const menuItems = element.locator(MenuItemTagName);
 
-      await fastPage.setTemplate(/* html */ `
-        <fluent-menu-list>
-          <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
-          <fluent-menu-item>Menu item 2</fluent-menu-item>
-          <fluent-menu-item>Menu item 3</fluent-menu-item>
-          <fluent-menu-item>Menu item 4</fluent-menu-item>
-        </fluent-menu-list>
-      `);
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${MenuItemTagName} role="menuitemradio">Menu Item 1</${MenuItemTagName}>
+          <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
+          <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
+          <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
+        `,
+      });
 
       const [wasChanged] = await Promise.all([
         menuItems
@@ -616,16 +621,18 @@ test.describe('Menu', () => {
 
     test('should emit change event when menu-item checked and unchecked', async ({ fastPage }) => {
       const { element } = fastPage;
-      const menuItems = element.locator('fluent-menu-item');
+      const menuItems = element.locator(MenuItemTagName);
 
-      await fastPage.setTemplate(/* html */ `
-        <fluent-menu-list>
-          <fluent-menu-item role="menuitemradio">Menu Item 1</fluent-menu-item>
-          <fluent-menu-item checked role="menuitemradio">Menu item 2</fluent-menu-item>
-          <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
-          <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
-        </fluent-menu-list>
-      `);
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${tagName}>
+            <${MenuItemTagName} role="menuitemradio">Menu Item 1</${MenuItemTagName}>
+            <${MenuItemTagName} checked role="menuitemradio">Menu item 2</${MenuItemTagName}>
+            <${MenuItemTagName} role="menuitemradio">Menu item 3</${MenuItemTagName}>
+            <${MenuItemTagName} role="menuitemradio">Menu item 4</${MenuItemTagName}>
+          </${tagName}>
+        `,
+      });
 
       let wasChanged = menuItems.nth(0).evaluate((node: MenuItem) => {
         return new Promise(resolve => {

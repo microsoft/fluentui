@@ -149,12 +149,24 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
         capture: true,
       });
 
+      // Dismiss the tooltip when the document becomes hidden (e.g. tab backgrounded,
+      // app switched on mobile). The original trigger (hover/tap/focus) is no longer
+      // active in this case, so persisting the tooltip is a stale UI state.
+      const onDocumentVisibilityChange = () => {
+        if (targetDocument?.visibilityState === 'hidden') {
+          thisTooltip.hide();
+        }
+      };
+
+      targetDocument?.addEventListener('visibilitychange', onDocumentVisibilityChange);
+
       return () => {
         if (context.visibleTooltip === thisTooltip) {
           context.visibleTooltip = undefined;
         }
 
         targetDocument?.removeEventListener('keydown', onDocumentKeyDown, { capture: true });
+        targetDocument?.removeEventListener('visibilitychange', onDocumentVisibilityChange);
       };
     }
   }, [context, targetDocument, visible, setVisible]);

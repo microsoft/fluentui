@@ -1,8 +1,36 @@
 # Change Log - @fluentui/chart-web-components
 
-This log was last generated on Fri, 01 May 2026 04:08:48 GMT and should not be manually modified.
+This log was last generated on Mon, 11 May 2026 04:09:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.76](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.76)
+
+Mon, 11 May 2026 04:09:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.75..@fluentui/chart-web-components_v0.0.76)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.18 ([PR #36113](https://github.com/microsoft/fluentui/pull/36113) by beachball)
+
+## [0.0.75](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.75)
+
+Wed, 06 May 2026 19:08:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.74..@fluentui/chart-web-components_v0.0.75)
+
+### Patches
+
+- Bump @fluentui/web-components to v3.0.0-rc.17 ([PR #36111](https://github.com/microsoft/fluentui/pull/36111) by beachball)
+
+## [0.0.74](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.74)
+
+Wed, 06 May 2026 04:07:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.73..@fluentui/chart-web-components_v0.0.74)
+
+### Patches
+
+- fix: remove behaviors in favor of direct css inclusion ([PR #36092](https://github.com/microsoft/fluentui/pull/36092) by 13071055+chrisdholt@users.noreply.github.com)
+- Bump @fluentui/web-components to v3.0.0-rc.16 ([PR #36107](https://github.com/microsoft/fluentui/pull/36107) by beachball)
 
 ## [0.0.73](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.73)
 

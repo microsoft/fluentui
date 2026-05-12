@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './rating-display.options.js';
 import { RatingDisplay } from './rating-display.js';
 import { styles } from './rating-display.styles.js';
 import { template } from './rating-display.template.js';
@@ -11,7 +11,7 @@ import { template } from './rating-display.template.js';
  * HTML Element: `<fluent-rating-display>`
  */
 export const definition = RatingDisplay.compose({
-  name: `${FluentDesignSystem.prefix}-rating-display`,
+  name: tagName,
   template,
   styles,
 });

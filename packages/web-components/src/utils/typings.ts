@@ -23,3 +23,10 @@ export function isCustomElement<T extends HTMLElement>(tagSuffix: string): (elem
     return (element as Element).tagName.toLowerCase().endsWith(tagSuffix);
   };
 }
+
+/**
+ * A test that ensures that all arguments are HTML Elements
+ */
+export function isHTMLElement(...args: any[]): boolean {
+  return args.every((arg: any) => arg instanceof HTMLElement);
+}

@@ -1,8 +1,11 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as TreeItemTagName } from '../tree-item/tree-item.options.js';
+import { tagName } from './tree.options.js';
 
 test.describe('Tree', () => {
   test.use({
-    tagName: 'fluent-tree',
+    tagName,
+    waitFor: [TreeItemTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -14,9 +17,9 @@ test.describe('Tree', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-tree');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -26,12 +29,12 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
-          <fluent-tree-item>Item 2</fluent-tree-item>
-          <fluent-tree-item>Item 3</fluent-tree-item>
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
       `,
     });
-    const treeItems = element.locator('fluent-tree-item');
+    const treeItems = element.locator(TreeItemTagName);
     await expect(element).toHaveCount(1);
     await expect(treeItems).toHaveCount(3);
     await expect(treeItems.nth(0)).toHaveText('Item 1');
@@ -44,32 +47,30 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <fluent-tree-item>
+        <${TreeItemTagName}>
           Item 1
-          <fluent-tree-item>Nested Item A</fluent-tree-item>
-        </fluent-tree-item>
-        <fluent-tree-item>
+          <${TreeItemTagName}>Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+        <${TreeItemTagName}>
           Item 2
-          <fluent-tree-item>Nested Item B</fluent-tree-item>
-        </fluent-tree-item>
+          <${TreeItemTagName}>Nested Item B</${TreeItemTagName}>
+        </${TreeItemTagName}>
       `,
     });
-    const treeItems = element.locator('fluent-tree-item');
+    const treeItems = element.locator(TreeItemTagName);
     await expect(element).toHaveCount(1);
     await expect(treeItems).toHaveCount(4);
-    const nestedItems = treeItems.nth(0).locator('fluent-tree-item');
+    const nestedItems = treeItems.nth(0).locator(TreeItemTagName);
     await expect(nestedItems).toHaveCount(1);
   });
 
   test('works with size variants - small', async ({ fastPage }) => {
     const { element } = fastPage;
-    const treeItemEl = element.locator('fluent-tree-item');
+    const treeItemEl = element.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
       attributes: { size: 'small' },
-      innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
-      `,
+      innerHTML: /* html */ ` <${TreeItemTagName}>Item 1</${TreeItemTagName}> `,
     });
 
     await expect(treeItemEl).toHaveCount(1);
@@ -80,13 +81,11 @@ test.describe('Tree', () => {
 
   test('works with size variants - medium', async ({ fastPage }) => {
     const { element } = fastPage;
-    const treeItemEl = element.locator('fluent-tree-item');
+    const treeItemEl = element.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
       attributes: { size: 'medium' },
-      innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
-      `,
+      innerHTML: /* html */ ` <${TreeItemTagName}>Item 1</${TreeItemTagName}> `,
     });
     await expect(treeItemEl).toHaveCount(1);
     await expect(treeItemEl).toHaveAttribute('size', 'medium');
@@ -96,12 +95,10 @@ test.describe('Tree', () => {
 
   test('works with appearance variants - subtle', async ({ fastPage }) => {
     const { element } = fastPage;
-    const treeItemEl = element.locator('fluent-tree-item');
+    const treeItemEl = element.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
-      innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
-      `,
+      innerHTML: /* html */ ` <${TreeItemTagName}>Item 1</${TreeItemTagName}> `,
     });
 
     await expect(treeItemEl).toHaveAttribute('appearance', 'subtle');
@@ -109,12 +106,12 @@ test.describe('Tree', () => {
 
   test('works with appearance variants - subtle-alpha', async ({ fastPage }) => {
     const { element } = fastPage;
-    const treeItemEl = element.locator('fluent-tree-item');
+    const treeItemEl = element.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
       attributes: { appearance: 'subtle-alpha' },
       innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
       `,
     });
 
@@ -123,12 +120,12 @@ test.describe('Tree', () => {
 
   test('works with appearance variants - transparent', async ({ fastPage }) => {
     const { element } = fastPage;
-    const treeItemEl = element.locator('fluent-tree-item');
+    const treeItemEl = element.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
       attributes: { appearance: 'transparent' },
       innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
       `,
     });
 
@@ -141,10 +138,10 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-          <fluent-tree-item id="click-tree-item">
-            Item 1
-            <fluent-tree-item>Nested Item A</fluent-tree-item>
-          </fluent-tree-item>
+        <${TreeItemTagName} id="click-tree-item">
+          Item 1
+          <${TreeItemTagName}>Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
       `,
     });
 
@@ -166,11 +163,11 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
-          <fluent-tree-item>Item 2</fluent-tree-item>
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
       `,
     });
-    const treeItemEl = element.locator('fluent-tree-item');
+    const treeItemEl = element.locator(TreeItemTagName);
     await expect(element).toHaveCount(1);
     await expect(treeItemEl).toHaveCount(2);
     await expect(treeItemEl.nth(0)).not.toHaveAttribute('selected');
@@ -194,7 +191,7 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-          <fluent-tree-item>Item 1</fluent-tree-item>
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
       `,
     });
     // mock scroll event
@@ -202,17 +199,17 @@ test.describe('Tree', () => {
       element.evaluate(node => new Promise(resolve => node.addEventListener('scroll', () => resolve(true)))),
       new Promise(resolve => setTimeout(() => resolve(false), 10)),
     ]);
-    await element.evaluate(node => {
+    await element.evaluate((node, tagName) => {
       for (let i = 0; i < 30; i++) {
-        node.appendChild(document.createElement('fluent-tree-item'));
+        node.appendChild(document.createElement(tagName));
       }
-    });
+    }, TreeItemTagName);
     expect(await element.evaluate(node => node.children.length)).toBe(31);
 
-    const treeItem1 = element.locator('fluent-tree-item').nth(0);
+    const treeItem1 = element.locator(TreeItemTagName).nth(0);
     expect(await treeItem1.getAttribute('selected')).toBeNull();
 
-    await element.focus();
+    await treeItem1.focus();
     expect(await elementHandle).toBe(false);
     await page.keyboard.press('Space');
 
@@ -224,21 +221,20 @@ test.describe('Tree', () => {
     page,
     browserName,
   }) => {
-    const { element } = fastPage;
     const anchor = page.locator('a');
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-          <fluent-tree-item>
-            Item1
-            <a href='edge://settings'>Link1</a>
-          </fluent-tree-item>
-          <fluent-tree-item>Item 2</fluent-tree-item>
+        <${TreeItemTagName}>
+          Item1
+          <a href="#" focusgroup="none">Link1</a>
+        </${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
       `,
     });
 
-    const treeItems = page.locator('fluent-tree-item');
-    await element.focus();
+    const treeItems = page.locator(TreeItemTagName);
+    await treeItems.nth(0).focus();
     await expect(treeItems.nth(0)).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(treeItems.nth(0)).toHaveAttribute('selected');

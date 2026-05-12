@@ -1,12 +1,16 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
 import esbuild, { minify } from 'rollup-plugin-esbuild';
-import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
-import { transformCSSFragment, transformHTMLFragment } from './scripts/transform-fragments';
+import fastTaggedTemplates from 'rollup-plugin-fast-tagged-templates';
 
-const parserOptions = {
-  sourceType: 'module',
-};
+const plugins = [
+  nodeResolve({ browser: true }),
+  commonJS(),
+  esbuild({
+    tsconfig: './tsconfig.lib.json',
+  }),
+  fastTaggedTemplates(),
+];
 
 export default [
   {
@@ -22,22 +26,21 @@ export default [
         plugins: [minify()],
       },
     ],
-    plugins: [
-      nodeResolve({ browser: true }),
-      commonJS(),
-      esbuild({
-        tsconfig: './tsconfig.lib.json',
-      }),
-      transformTaggedTemplate({
-        tagsToProcess: ['css'],
-        transformer: transformCSSFragment,
-        parserOptions,
-      }),
-      transformTaggedTemplate({
-        tagsToProcess: ['html'],
-        transformer: transformHTMLFragment,
-        parserOptions,
-      }),
+    plugins,
+  },
+  {
+    input: 'src/index-all-rollup.ts',
+    output: [
+      {
+        file: 'dist/web-components-all.js',
+        format: 'esm',
+      },
+      {
+        file: 'dist/web-components-all.min.js',
+        format: 'esm',
+        plugins: [minify()],
+      },
     ],
+    plugins,
   },
 ];

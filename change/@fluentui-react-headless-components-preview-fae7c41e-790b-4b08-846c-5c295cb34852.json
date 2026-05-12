@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add Card component",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

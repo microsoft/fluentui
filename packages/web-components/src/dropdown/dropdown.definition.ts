@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './dropdown.options.js';
 import { Dropdown } from './dropdown.js';
 import { styles } from './dropdown.styles.js';
 import { template } from './dropdown.template.js';
@@ -11,7 +11,7 @@ import { template } from './dropdown.template.js';
  * HTML Element: `<fluent-dropdown>`
  */
 export const definition = Dropdown.compose({
-  name: `${FluentDesignSystem.prefix}-dropdown`,
+  name: tagName,
   template,
   styles,
 });

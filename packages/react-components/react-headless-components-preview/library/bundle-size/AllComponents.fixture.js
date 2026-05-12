@@ -3,15 +3,18 @@ import * as Avatar from '@fluentui/react-headless-components-preview/avatar';
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
+import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
 import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
 import * as Field from '@fluentui/react-headless-components-preview/field';
+import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
+import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
@@ -28,6 +31,7 @@ import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
+import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
 
 console.log({
   Accordion,
@@ -35,16 +39,19 @@ console.log({
   Badge,
   Breadcrumb,
   Button,
+  Card,
   Checkbox,
   Dialog,
   Divider,
   Drawer,
   Field,
+  Image,
   Input,
   Link,
   MessageBar,
-  ProgressBar,
+  Persona,
   Popover,
+  ProgressBar,
   Provider,
   RadioGroup,
   RatingDisplay,
@@ -60,6 +67,7 @@ console.log({
   Textarea,
   ToggleButton,
   Toolbar,
+  Tooltip,
 });
 
 export default {

@@ -19,9 +19,9 @@ import type { ListboxProps, ListboxState } from './Listbox.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
-import { optionClassNames } from '../Option/useOptionStyles.styles';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
+import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UNSAFE_noLongerUsed = {
@@ -50,7 +50,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     activeParentRef,
     controller,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
-    matchOption: el => el.classList.contains(optionClassNames.root),
+    matchOption: isComboboxOptionElement,
   });
 
   const hasListboxContext = useHasParentContext(ListboxContext);

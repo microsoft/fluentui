@@ -6,7 +6,6 @@ import {
 } from '@fluentui/react-headless-components-preview/accordion';
 
 import descriptionMd from './AccordionDescription.md';
-
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 

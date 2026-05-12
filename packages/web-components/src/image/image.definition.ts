@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './image.options.js';
 import { Image } from './image.js';
 import { template } from './image.template.js';
 import { styles } from './image.styles.js';
@@ -11,7 +11,7 @@ import { styles } from './image.styles.js';
  * HTML Element: \<fluent-image\>
  */
 export const definition = Image.compose({
-  name: `${FluentDesignSystem.prefix}-image`,
+  name: tagName,
   template,
   styles,
 });

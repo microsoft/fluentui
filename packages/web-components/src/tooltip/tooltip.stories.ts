@@ -1,5 +1,5 @@
 import { css, html, repeat } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { definition } from './tooltip.definition.js';
 import type { Tooltip as FluentTooltip } from './tooltip.js';
