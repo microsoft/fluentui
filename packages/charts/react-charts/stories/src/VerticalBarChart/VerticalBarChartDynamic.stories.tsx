@@ -6,12 +6,11 @@ import type {
   RadioGroupOnChangeData,
   InputProps,
   InputOnChangeData,
-  Switch,
 } from '@fluentui/react-components';
 import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
 import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button } from '@fluentui/react-components';
-import { Checkbox, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
+import { Checkbox, Field, Radio, RadioGroup, Input, Switch } from '@fluentui/react-components';
 
 export const VerticalBarDynamic = (): JSXElement => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
