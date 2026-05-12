@@ -1,6 +1,11 @@
-When using a `Dialog` without a `DialogTrigger` (or when using a `DialogTrigger` outside of a `Dialog`), it becomes your responsibility to control some of the dialog's behavior.
+When using a `Dialog` without a `DialogTrigger`, you become responsible for managing the dialog's behavior. This applies to:
 
-1. You must make sure that the `open` state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by `onOpenChange` callback on `Dialog` component).
-2. You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the `useRestoreFocusTarget` hook, or by manually invoking `.focus()` on the target element).
+- Opening dialogs programmatically (via state, API calls, side effects)
+- Opening nested dialogs where the inner dialog is not wrapped in a `DialogTrigger`
 
-The example bellow showcases both explicit responsibilities:
+**Your responsibilities:**
+
+1. **Control the open state** - React to the `onOpenChange` callback and ensure the `open` state reflects the dialog's visibility
+2. **Restore focus** - When the dialog closes, you must restore focus to the element that triggered the open. Use `useRestoreFocusTarget` on the trigger element and `useRestoreFocusSource` on the `DialogSurface`, or manually invoke `.focus()` on the target element.
+
+The example below showcases both responsibilities:

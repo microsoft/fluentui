@@ -23,7 +23,6 @@ export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 export { Confirmation } from './DialogConfirmation.stories';
 export { MotionCustom } from './DialogMotionCustom.stories';
-export { NestedDialogs } from './DialogNestedDialogs.stories';
 export { NestedDialogsWithTrigger } from './DialogNestedDialogsWithTrigger.stories';
 
 // Typing with Meta<typeof Dialog> generates a type error for the `subcomponents` property.
