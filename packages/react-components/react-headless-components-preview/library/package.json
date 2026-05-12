@@ -60,6 +60,7 @@
     "@fluentui/react-toolbar": "^9.8.0",
     "@fluentui/react-tooltip": "^9.10.1",
     "@fluentui/react-utilities": "^9.26.3",
+    "@floating-ui/dom": "^1.6.12",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

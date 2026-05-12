@@ -35,6 +35,7 @@ export { PositioningProps }
 export type PositioningReturn = {
     targetRef: React_2.RefCallback<HTMLElement>;
     containerRef: React_2.RefCallback<HTMLElement>;
+    arrowRef: React_2.RefCallback<HTMLElement>;
 };
 
 export { PositioningShorthand }
@@ -49,9 +50,12 @@ export const POSITIONS: {
     readonly after: "after";
 };
 
+// @public
+export function preloadPositioning(): Promise<unknown>;
+
 export { resolvePositioningShorthand }
 
-// @public (undocumented)
+// @public
 export function usePositioning(options: PositioningProps): PositioningReturn;
 
 // (No @packageDocumentation comment for this package)

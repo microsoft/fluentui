@@ -5,4 +5,5 @@ export type LogicalAlignment = 'start' | 'center' | 'end';
 export type PositioningReturn = {
   targetRef: React.RefCallback<HTMLElement>;
   containerRef: React.RefCallback<HTMLElement>;
+  arrowRef: React.RefCallback<HTMLElement>;
 };
