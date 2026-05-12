@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(positioning): fix positioning types and performance issues",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
