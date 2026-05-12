@@ -13,7 +13,7 @@ export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions
 }
 
 const identity = <T extends unknown>(value: T) => value;
-const addonFilePattern = /react-storybook-addon-export-to-sandbox\/[a-z/]+.[jt]s$/;
+const addonFilePattern = /react-storybook-addon-export-to-sandbox[\\/][a-z\\/]+\.[jt]s$/;
 const defaultOptions = {
   webpackRule: {},
   babelLoaderOptionsUpdater: identity,

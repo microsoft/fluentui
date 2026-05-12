@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix export-to-sandbox addon options on Windows Storybook paths",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

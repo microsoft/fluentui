@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Normalize full source sandbox output across platforms",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
