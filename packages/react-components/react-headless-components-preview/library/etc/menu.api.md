@@ -49,7 +49,6 @@ import { MenuSplitGroupState } from '@fluentui/react-menu';
 import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { useMenuContext_unstable as useMenuContext } from '@fluentui/react-menu';
 
@@ -152,7 +151,7 @@ export { MenuOpenChangeData }
 
 export { MenuOpenEvent }
 
-// @public
+// @public (undocumented)
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 
 export { MenuPopoverProps }
@@ -161,12 +160,10 @@ export { MenuPopoverSlots }
 
 export { MenuPopoverState }
 
-// @public
-export type MenuProps = Omit<MenuBaseProps, 'positioning'> & {
-    positioning?: PositioningShorthand;
-};
+// @public (undocumented)
+export type MenuProps = MenuBaseProps;
 
-// @public
+// @public (undocumented)
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 
 export { MenuSplitGroupProps }
@@ -217,7 +214,7 @@ export const renderMenuItemSwitch: (state: MenuItemSwitchState) => JSXElement;
 // @public (undocumented)
 export const renderMenuList: (state: MenuListState_2, contextValues: MenuListContextValues) => JSXElement;
 
-// @public
+// @public (undocumented)
 export const renderMenuPopover: (state: MenuPopoverState) => JSXElement;
 
 // @public (undocumented)
@@ -268,10 +265,10 @@ export const useMenuItemSwitch: (props: MenuItemSwitchProps, ref: React_2.Ref<HT
 // @public
 export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
 
-// @public
+// @public (undocumented)
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
 
-// @public
+// @public (undocumented)
 export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
 
 // @public
