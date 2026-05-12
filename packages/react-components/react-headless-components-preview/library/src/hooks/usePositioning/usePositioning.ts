@@ -17,6 +17,7 @@ import { usePlacementObserver } from './usePlacementObserver';
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
+
 const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
 
 export function usePositioning(options: PositioningProps): PositioningReturn {

@@ -301,6 +301,7 @@
   box-shadow: var(--shadow-2);
   padding: var(--space-2);
   font-size: 12px;
+  position: fixed;
 }
 
 .surfaceFlipWide {
@@ -313,6 +314,7 @@
   box-shadow: var(--shadow-2);
   padding: var(--space-3);
   font-size: 13px;
+  position: fixed;
 }
 
 .surfaceFallback {
@@ -325,6 +327,7 @@
   box-shadow: var(--shadow-2);
   padding: var(--space-3);
   font-size: 13px;
+  position: fixed;
 }
 
 /* Adds the "Actual: <data-placement>" readout under any surface */

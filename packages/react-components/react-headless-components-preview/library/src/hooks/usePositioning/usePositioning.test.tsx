@@ -79,7 +79,7 @@ describe('usePositioning', () => {
     expect(node).toHaveAttribute('data-placement', 'below-start');
   });
 
-  it('containerRef sets position-try-fallbacks to the three-try flip chain by default', () => {
+  it('containerRef sets position-try-fallbacks to the default flip chain', () => {
     const result = mountHook();
     const node = document.createElement('div');
 
@@ -98,7 +98,7 @@ describe('usePositioning', () => {
       result.current.containerRef(node);
     });
 
-    expect(node).toHaveStyle({ positionTryFallbacks: 'block-end span-inline-end, inline-end' });
+    expect(node.style.getPropertyValue('position-try-fallbacks')).toBe('block-end span-inline-end, inline-end');
   });
 
   it('containerRef removes position-try-fallbacks when pinned', () => {
