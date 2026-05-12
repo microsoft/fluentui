@@ -2687,10 +2687,10 @@
     eslint-plugin-react "7.35.2"
     eslint-plugin-security "1.4.0"
 
-"@microsoft/fast-element@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.0.0.tgz#4b3551159290f14ec59f9b48c6c4c26b4e086a0f"
-  integrity sha512-Tzv4dCGTg10NNyqWWGRy3bYG4vacQUapjy5gpdpmFbSgvNF8aOzJJMkG5CfVUDoC9gWxY1ZyGgjXX0p86ZXX5w==
+"@microsoft/fast-element@2.10.4", "@microsoft/fast-element@^2.0.0":
+  version "2.10.4"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.10.4.tgz#12b8c6c90902f2a54d5b27f618d7d095e133546d"
+  integrity sha512-OkHIlMztq7+PgkRF1LscgBd/MVzMhGrWPkJRDvOEqdqEdZOKocKvaKcUKZubIBz4RpLIrhLD3lOJzCsspk6jXg==
 
 "@microsoft/fast-web-utilities@^6.0.0":
   version "6.0.0"
