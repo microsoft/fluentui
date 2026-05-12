@@ -248,10 +248,10 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>Item 1</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 2</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 3</${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
@@ -270,10 +270,10 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>Item 1</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 2</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 3</${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
@@ -294,11 +294,11 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>
-                    Item 1
-                    <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
-                </${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -316,11 +316,11 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>
-                    Item 1
-                    <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
-                </${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -340,11 +340,11 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>
-                    Item 1
-                    <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
-                </${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -362,11 +362,11 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>
-                    Item 1
-                    <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
-                </${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -390,10 +390,10 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>Item 1</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 2</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 3</${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
@@ -411,10 +411,10 @@ test.describe('Tree', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <${TreeItemTagName}>Item 1</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 2</${TreeItemTagName}>
-                <${TreeItemTagName}>Item 3</${TreeItemTagName}>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
