@@ -6,7 +6,7 @@ export { Selectable } from './CardSelectable.stories';
 export { Disabled } from './CardDisabled.stories';
 
 export default {
-  title: 'Headless Components/Card',
+  title: 'Components/Card',
   component: Card,
   subcomponents: { CardHeader, CardPreview, CardFooter },
   parameters: {

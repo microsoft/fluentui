@@ -4,7 +4,7 @@ import descriptionMd from './AvatarDescription.md';
 export { Default } from './AvatarDefault.stories';
 
 export default {
-  title: 'Headless Components/Avatar',
+  title: 'Components/Avatar',
   component: Avatar,
   parameters: {
     docs: {

@@ -7,7 +7,7 @@
 import { Alignment } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import { PositioningProps } from '@fluentui/react-positioning';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
@@ -23,13 +23,14 @@ export const ALIGNMENTS: {
 };
 
 // @public
-export function getPlacementString(position: Position, align: LogicalAlignment): string;
+export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue;
 
 export { Position }
 
 export { PositioningImperativeRef }
 
-export { PositioningProps }
+// @public (undocumented)
+export type PositioningProps = Pick<PositioningProps_2, 'align' | 'coverTarget' | 'fallbackPositions' | 'matchTargetSize' | 'offset' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'>;
 
 // @public (undocumented)
 export type PositioningReturn = {

@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { RatingDisplaySize } from './rating-display.options.js';
 import type { RatingDisplay } from './rating-display.js';
+import { RatingDisplaySize, tagName } from './rating-display.options.js';
 
 function encodedSvg(str: string, browserName: string) {
   return encodeURIComponent(str)
@@ -10,7 +10,7 @@ function encodedSvg(str: string, browserName: string) {
 
 test.describe('Rating Display', () => {
   test.use({
-    tagName: 'fluent-rating-display',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -22,15 +22,18 @@ test.describe('Rating Display', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-rating-display');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
   test('should not set any default attributes and custom states', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
     await expect(element).toBeVisible();
     for (const attribute of ['color', 'compact', 'count', 'icon-view-box', 'max', 'size']) {
       await expect(element).not.toHaveAttribute(attribute);

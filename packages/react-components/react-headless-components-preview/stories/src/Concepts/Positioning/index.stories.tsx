@@ -14,7 +14,7 @@ export { FlippingInline } from './PositioningFlippingInline.stories';
 export { FlippingCorner } from './PositioningFlippingCorner.stories';
 
 export default {
-  title: 'Headless Concepts/Positioning',
+  title: 'Concepts/Positioning',
   component: Positioning,
   parameters: {
     docs: {

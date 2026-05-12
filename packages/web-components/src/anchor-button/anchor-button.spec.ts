@@ -1,10 +1,10 @@
 import { expect, test } from '../../test/playwright/index.js';
-import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
+import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize, tagName } from './anchor-button.options.js';
 
 test.describe('Anchor Button', () => {
   test.use({
-    innerHTML: 'Fluent Anchor Button',
-    tagName: 'fluent-anchor-button',
+    innerHTML: 'Anchor Button',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -16,9 +16,9 @@ test.describe('Anchor Button', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-anchor-button');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });

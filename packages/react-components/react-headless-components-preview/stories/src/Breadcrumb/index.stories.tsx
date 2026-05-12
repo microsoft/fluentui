@@ -9,7 +9,7 @@ import descriptionMd from './BreadcrumbDescription.md';
 export { Default } from './BreadcrumbDefault.stories';
 
 export default {
-  title: 'Headless Components/Breadcrumb',
+  title: 'Components/Breadcrumb',
   component: Breadcrumb,
   subcomponents: { BreadcrumbItem, BreadcrumbButton, BreadcrumbDivider },
   parameters: {

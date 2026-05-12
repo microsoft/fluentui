@@ -4,7 +4,7 @@ import descriptionMd from './RadioGroupDescription.md';
 export { Default } from './RadioGroupDefault.stories';
 
 export default {
-  title: 'Headless Components/RadioGroup',
+  title: 'Components/RadioGroup',
   component: RadioGroup,
   subcomponents: { Radio },
   parameters: {
