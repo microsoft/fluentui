@@ -10,13 +10,22 @@ export const SecondaryContent = (): React.ReactNode => (
     </MenuTrigger>
     <MenuPopover className={styles.surface}>
       <MenuList className={styles.list}>
-        <MenuItem className={`${styles.item} ${styles.itemSpread}`} secondaryContent={<span className={styles.shortcut}>⌘X</span>}>
+        <MenuItem
+          className={`${styles.item} ${styles.itemSpread}`}
+          secondaryContent={<span className={styles.shortcut}>⌘X</span>}
+        >
           Cut
         </MenuItem>
-        <MenuItem className={`${styles.item} ${styles.itemSpread}`} secondaryContent={<span className={styles.shortcut}>⌘C</span>}>
+        <MenuItem
+          className={`${styles.item} ${styles.itemSpread}`}
+          secondaryContent={<span className={styles.shortcut}>⌘C</span>}
+        >
           Copy
         </MenuItem>
-        <MenuItem className={`${styles.item} ${styles.itemSpread}`} secondaryContent={<span className={styles.shortcut}>⌘V</span>}>
+        <MenuItem
+          className={`${styles.item} ${styles.itemSpread}`}
+          secondaryContent={<span className={styles.shortcut}>⌘V</span>}
+        >
           Paste
         </MenuItem>
       </MenuList>

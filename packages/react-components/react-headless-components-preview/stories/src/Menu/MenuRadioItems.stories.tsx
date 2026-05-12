@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItemRadio,
+} from '@fluentui/react-headless-components-preview/menu';
 
 import styles from './menu.module.css';
 
