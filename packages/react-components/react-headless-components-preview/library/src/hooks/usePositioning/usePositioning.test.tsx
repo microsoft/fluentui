@@ -93,7 +93,7 @@ describe('usePositioning', () => {
     expect(node).toHaveAttribute('data-placement', 'below-start');
   });
 
-  it('containerRef omits data-placement and sets container-type when anchored CQ is supported', () => {
+  it('containerRef keeps data-placement and adds container-type when anchored CQ is supported', () => {
     type WindowWithCSS = Window & { CSS?: { supports?: (prop: string, value: string) => boolean } };
     const originalCSS = (window as WindowWithCSS).CSS;
     (window as WindowWithCSS).CSS = {
@@ -108,7 +108,10 @@ describe('usePositioning', () => {
         result.current.containerRef(node);
       });
 
-      expect(node).not.toHaveAttribute('data-placement');
+      // `data-placement` is always set so consumers can author a single set of
+      // `[data-placement="…"]` rules; `container-type: anchored` then lets them
+      // add optional `@container anchored(fallback: …)` overrides on top.
+      expect(node).toHaveAttribute('data-placement', 'below-start');
       expect(node.style.getPropertyValue('container-type')).toBe('anchored');
       expect(node).toHaveAttribute('data-position', 'below');
       expect(node).toHaveAttribute('data-align', 'start');

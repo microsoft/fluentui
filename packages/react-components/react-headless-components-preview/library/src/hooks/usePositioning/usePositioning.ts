@@ -112,16 +112,14 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
       node.setAttribute('data-position', position);
       node.setAttribute('data-align', align);
+      node.setAttribute('data-placement', placement);
 
       const win = node.ownerDocument?.defaultView;
 
       if (win && supportsAnchoredContainerQueries(win)) {
-        // Chrome 143+: opt into `@container anchored(fallback: …)` queries.
         node.style.setProperty('container-type', 'anchored');
-        node.removeAttribute('data-placement');
       } else {
         node.style.removeProperty('container-type');
-        node.setAttribute('data-placement', placement);
       }
 
       if (coverAlignment) {

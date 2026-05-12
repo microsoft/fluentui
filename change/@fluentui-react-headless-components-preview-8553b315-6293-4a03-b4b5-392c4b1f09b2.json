@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat(headless): use container-type for arrow positioning in Popover' ",
+  "comment": "feat(Popover): adopt anchored container queries for arrow placement",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"

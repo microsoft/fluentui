@@ -264,104 +264,65 @@
 }
 
 /*
-  On Chrome 143+ the JS placement observer is skipped, so `data-placement`
-  is not set on the surface. The rules below mirror the base ones above but
-  key on `data-position` / `data-align` (the requested side/alignment, always
-  set), and `@container anchored(fallback: …)` overrides handle CSS flips.
-
-  Mapping (per requested placement):
-    above/below — `flip-block`  flips main side (top ↔ bottom of surface)
-                  `flip-inline` flips alignment padding (-start ↔ -end)
-    before/after — `flip-inline` flips main side (left ↔ right of surface)
-                   `flip-block`  flips block-axis alignment (no rule needed)
+  Chrome 143+ exposes `@container anchored(fallback: …)` which fires when a
+  CSS `position-try-fallback` is active. The base `[data-placement^="…"]`
+  rules above keep working (the requested placement is always written to
+  `data-placement`); the overrides below only flip the arrow when the
+  surface itself was flipped by the browser.
 */
-@supports (container-type: anchored) {
-  .surfaceWithArrow[data-position='above'] [data-arrow] {
+@container anchored(fallback: flip-block) {
+  .surfaceWithArrow[data-placement^='above'] [data-arrow] {
+    top: -6px;
+    bottom: auto;
+  }
+  .surfaceWithArrow[data-placement^='below'] [data-arrow] {
+    top: auto;
     bottom: -6px;
   }
-  .surfaceWithArrow[data-position='below'] [data-arrow] {
-    top: -6px;
+}
+
+@container anchored(fallback: flip-inline) {
+  .surfaceWithArrow[data-placement^='before'] [data-arrow] {
+    left: -6px;
+    right: auto;
   }
-  .surfaceWithArrow[data-position='before'] [data-arrow] {
+  .surfaceWithArrow[data-placement^='after'] [data-arrow] {
+    left: auto;
     right: -6px;
   }
-  .surfaceWithArrow[data-position='after'] [data-arrow] {
-    left: -6px;
-  }
-
-  .surfaceWithArrow[data-position='above'][data-align='center'] [data-arrow],
-  .surfaceWithArrow[data-position='below'][data-align='center'] [data-arrow] {
-    inset-inline: 0;
-    margin-inline: auto;
-  }
-
-  .surfaceWithArrow[data-position='before'][data-align='center'] [data-arrow],
-  .surfaceWithArrow[data-position='after'][data-align='center'] [data-arrow] {
-    inset-block: 0;
-    margin-block: auto;
-  }
-
-  .surfaceWithArrow[data-align='start'] [data-arrow] {
-    inset-inline-start: var(--arrow-padding, 12px);
-  }
-  .surfaceWithArrow[data-align='end'] [data-arrow] {
+  .surfaceWithArrow[data-placement$='-start'] [data-arrow] {
+    inset-inline-start: auto;
     inset-inline-end: var(--arrow-padding, 12px);
   }
-
-  @container anchored(fallback: flip-block) {
-    .surfaceWithArrow[data-position='above'] [data-arrow] {
-      top: -6px;
-      bottom: auto;
-    }
-    .surfaceWithArrow[data-position='below'] [data-arrow] {
-      top: auto;
-      bottom: -6px;
-    }
+  .surfaceWithArrow[data-placement$='-end'] [data-arrow] {
+    inset-inline-end: auto;
+    inset-inline-start: var(--arrow-padding, 12px);
   }
+}
 
-  @container anchored(fallback: flip-inline) {
-    .surfaceWithArrow[data-position='before'] [data-arrow] {
-      left: -6px;
-      right: auto;
-    }
-    .surfaceWithArrow[data-position='after'] [data-arrow] {
-      left: auto;
-      right: -6px;
-    }
-    .surfaceWithArrow[data-align='start'] [data-arrow] {
-      inset-inline-start: auto;
-      inset-inline-end: var(--arrow-padding, 12px);
-    }
-    .surfaceWithArrow[data-align='end'] [data-arrow] {
-      inset-inline-end: auto;
-      inset-inline-start: var(--arrow-padding, 12px);
-    }
+@container anchored(fallback: flip-block flip-inline) {
+  .surfaceWithArrow[data-placement^='above'] [data-arrow] {
+    top: -6px;
+    bottom: auto;
   }
-
-  @container anchored(fallback: flip-block flip-inline) {
-    .surfaceWithArrow[data-position='above'] [data-arrow] {
-      top: -6px;
-      bottom: auto;
-    }
-    .surfaceWithArrow[data-position='below'] [data-arrow] {
-      top: auto;
-      bottom: -6px;
-    }
-    .surfaceWithArrow[data-position='before'] [data-arrow] {
-      left: -6px;
-      right: auto;
-    }
-    .surfaceWithArrow[data-position='after'] [data-arrow] {
-      left: auto;
-      right: -6px;
-    }
-    .surfaceWithArrow[data-align='start'] [data-arrow] {
-      inset-inline-start: auto;
-      inset-inline-end: var(--arrow-padding, 12px);
-    }
-    .surfaceWithArrow[data-align='end'] [data-arrow] {
-      inset-inline-end: auto;
-      inset-inline-start: var(--arrow-padding, 12px);
-    }
+  .surfaceWithArrow[data-placement^='below'] [data-arrow] {
+    top: auto;
+    bottom: -6px;
+  }
+  .surfaceWithArrow[data-placement^='before'] [data-arrow] {
+    left: -6px;
+    right: auto;
+  }
+  .surfaceWithArrow[data-placement^='after'] [data-arrow] {
+    left: auto;
+    right: -6px;
+  }
+  .surfaceWithArrow[data-placement$='-start'] [data-arrow] {
+    inset-inline-start: auto;
+    inset-inline-end: var(--arrow-padding, 12px);
+  }
+  .surfaceWithArrow[data-placement$='-end'] [data-arrow] {
+    inset-inline-end: auto;
+    inset-inline-start: var(--arrow-padding, 12px);
   }
 }
