@@ -11,5 +11,5 @@
 ### Don't
 
 - Don't use more than three buttons between `DialogActions`.
-- Don't open nested `Dialog`s without proper focus management. If you need nested dialogs, use `DialogTrigger` for automatic focus restoration or `useRestoreFocusSource()` and `useRestoreFocusTarget()` hooks for programmatic control. See the [Nested Dialogs](/docs/components-dialog--nested-dialogs) example for details.
+- Don't open nested `Dialog`s without proper focus management. Use `DialogTrigger` for automatic focus restoration when dialogs are opened by user interaction, or use `useRestoreFocusSource()` and `useRestoreFocusTarget()` hooks when opening dialogs programmatically. See the [Nested Dialogs](/docs/components-dialog--nested-dialogs) example for details.
 - Don't use a `Dialog` with no focusable elements

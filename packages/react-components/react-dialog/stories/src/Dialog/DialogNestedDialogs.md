@@ -1,16 +1,14 @@
 # Nested Dialogs
 
-When implementing nested dialogs (a dialog opened from within another dialog), proper focus management is critical to ensure users can navigate back through the dialog stack correctly.
+Nested dialogs (opening a dialog from within another dialog) require proper focus management to ensure accessibility and predictable user experience.
 
-## Important: Nested Dialogs Should Be Closed Programmatically
+## Key Principle
 
-Nested dialogs should **always be closed programmatically** through state management, not manually by clicking outside or pressing Escape. This ensures predictable focus behavior and a better user experience.
+When using nested dialogs, **always use `DialogTrigger` for focus restoration**. If you open a dialog programmatically without `DialogTrigger`, you become responsible for managing focus restoration using `useRestoreFocusSource()` and `useRestoreFocusTarget()` hooks.
 
-## Two Approaches
+## Recommended: Using DialogTrigger
 
-### Approach 1: Using DialogTrigger (Recommended for User-Triggered Opens)
-
-If the nested dialog is opened by a button click (user interaction), use `DialogTrigger` for automatic focus restoration:
+Use `DialogTrigger` for opening nested dialogs. This provides automatic focus restoration when dialogs close:
 
 ```tsx
 <Dialog>
@@ -35,11 +33,11 @@ If the nested dialog is opened by a button click (user interaction), use `Dialog
 
 - Focus is automatically restored when dialogs close
 - Simpler to implement
-- No need for manual focus management hooks
+- No manual focus management needed
 
-### Approach 2: Using Focus Restoration Hooks (For Programmatic Control)
+## Programmatic Control: Using Focus Restoration Hooks
 
-If the nested dialog is opened programmatically (not triggered by user interaction), use `useRestoreFocusSource()` and `useRestoreFocusTarget()` hooks:
+If you must open dialogs programmatically (without user click), use `useRestoreFocusSource()` and `useRestoreFocusTarget()` hooks. Note that you are responsible for ensuring focus is correctly restored:
 
 ```tsx
 const [outerOpen, setOuterOpen] = React.useState(false);
@@ -80,14 +78,13 @@ return (
 1. **Use DialogTrigger by default** - It provides automatic focus restoration for user-triggered opens
 2. **Use focus hooks for programmatic dialogs** - When you open dialogs from code (not user clicks), use the focus restoration hooks
 3. **Always apply focus attributes** - Don't skip focus management; it's essential for accessibility
-4. **Close dialogs programmatically** - Don't rely on manual close (clicking outside, pressing Escape) for nested dialogs
-5. **Test with keyboard navigation** - Verify that Tab and Shift+Tab work correctly through the dialog stack
+4. **Test with keyboard navigation** - Verify that Escape key and backdrop clicks work correctly, and Tab/Shift+Tab navigate through the dialog stack
 
 ## Accessibility
 
 Proper focus management in nested dialogs is crucial for:
 
-- **Keyboard users** - They can navigate back through the dialog stack using Tab
+- **Keyboard users** - They can close dialogs with Escape and navigate through the dialog stack using Tab
 - **Screen reader users** - Focus announcements help users understand which dialog is active
 - **Motor control users** - They depend on consistent focus behavior for reliable navigation
 
