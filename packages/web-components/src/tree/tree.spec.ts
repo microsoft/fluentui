@@ -244,14 +244,14 @@ test.describe('Tree', () => {
   });
   test('should move focus down with ArrowDown', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const treeItems = element.locator(`:scope > fluent-tree-item`);
+    const treeItems = element.locator(`:scope > ${TreeItemTagName}`);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>Item 1</fluent-tree-item>
-                <fluent-tree-item>Item 2</fluent-tree-item>
-                <fluent-tree-item>Item 3</fluent-tree-item>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
@@ -266,14 +266,14 @@ test.describe('Tree', () => {
 
   test('should move focus up with ArrowUp', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const treeItems = element.locator(`:scope > fluent-tree-item`);
+    const treeItems = element.locator(`:scope > ${TreeItemTagName}`);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>Item 1</fluent-tree-item>
-                <fluent-tree-item>Item 2</fluent-tree-item>
-                <fluent-tree-item>Item 3</fluent-tree-item>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
@@ -290,15 +290,15 @@ test.describe('Tree', () => {
 
   test('should expand a collapsed item with ArrowRight', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const parentItem = element.locator(`:scope > fluent-tree-item`);
+    const parentItem = element.locator(`:scope > ${TreeItemTagName}`);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>
-                    Item 1
-                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
-                </fluent-tree-item>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -311,16 +311,16 @@ test.describe('Tree', () => {
 
   test('should focus child after ArrowRight on an expanded item', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const parentItem = element.locator(`:scope > fluent-tree-item`);
-    const nestedItem = parentItem.locator('fluent-tree-item');
+    const parentItem = element.locator(`:scope > ${TreeItemTagName}`);
+    const nestedItem = parentItem.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>
-                    Item 1
-                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
-                </fluent-tree-item>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -336,15 +336,15 @@ test.describe('Tree', () => {
 
   test('should collapse an expanded item with ArrowLeft', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const parentItem = element.locator(`:scope > fluent-tree-item`);
+    const parentItem = element.locator(`:scope > ${TreeItemTagName}`);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>
-                    Item 1
-                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
-                </fluent-tree-item>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -357,16 +357,16 @@ test.describe('Tree', () => {
 
   test('should focus parent item with ArrowLeft on a nested item', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const parentItem = element.locator(`:scope > fluent-tree-item`);
-    const nestedItem = parentItem.locator('fluent-tree-item');
+    const parentItem = element.locator(`:scope > ${TreeItemTagName}`);
+    const nestedItem = parentItem.locator(TreeItemTagName);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>
-                    Item 1
-                    <fluent-tree-item slot="item">Nested Item A</fluent-tree-item>
-                </fluent-tree-item>
-            `,
+        <${TreeItemTagName}>
+          Item 1
+          <${TreeItemTagName} slot="item">Nested Item A</${TreeItemTagName}>
+        </${TreeItemTagName}>
+      `,
     });
 
     await parentItem.focus();
@@ -386,14 +386,14 @@ test.describe('Tree', () => {
 
   test('should focus first item with Home key', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const treeItems = element.locator(`:scope > fluent-tree-item`);
+    const treeItems = element.locator(`:scope > ${TreeItemTagName}`);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>Item 1</fluent-tree-item>
-                <fluent-tree-item>Item 2</fluent-tree-item>
-                <fluent-tree-item>Item 3</fluent-tree-item>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
@@ -407,14 +407,14 @@ test.describe('Tree', () => {
 
   test('should focus last item with End key', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const treeItems = element.locator(`:scope > fluent-tree-item`);
+    const treeItems = element.locator(`:scope > ${TreeItemTagName}`);
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-                <fluent-tree-item>Item 1</fluent-tree-item>
-                <fluent-tree-item>Item 2</fluent-tree-item>
-                <fluent-tree-item>Item 3</fluent-tree-item>
-            `,
+        <${TreeItemTagName}>Item 1</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 2</${TreeItemTagName}>
+        <${TreeItemTagName}>Item 3</${TreeItemTagName}>
+      `,
     });
 
     await treeItems.nth(0).focus();
