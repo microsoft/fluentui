@@ -6,7 +6,7 @@ import descriptionMd from './PersonaDescription.md';
 export { Default } from './PersonaDefault.stories';
 
 export default {
-  title: 'Headless Components/Persona',
+  title: 'Components/Persona',
   component: Persona,
   subcomponent: { Avatar },
   parameters: {

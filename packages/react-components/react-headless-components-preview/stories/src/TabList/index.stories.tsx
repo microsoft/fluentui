@@ -4,7 +4,7 @@ import descriptionMd from './TabListDescription.md';
 export { Default } from './TabListDefault.stories';
 
 export default {
-  title: 'Headless Components/TabList',
+  title: 'Components/TabList',
   component: TabList,
   parameters: {
     docs: {
