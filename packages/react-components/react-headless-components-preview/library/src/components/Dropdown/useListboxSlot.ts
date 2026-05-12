@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { type FieldControlProps, useFieldControlProps_unstable } from '@fluentui/react-field';
+import type { DropdownOpenEvents } from '@fluentui/react-combobox';
 import {
   mergeCallbacks,
   useId,
@@ -16,7 +17,7 @@ import type { DropdownState } from './Dropdown.types';
 import { Listbox } from './Listbox';
 import type { ListboxProps } from './Listbox';
 
-export type UseListboxSlotState = Pick<DropdownState, 'multiselect' | 'open'>;
+export type UseListboxSlotState = Pick<DropdownState, 'multiselect' | 'open' | 'setOpen'>;
 
 type UseListboxSlotOptions = {
   state: UseListboxSlotState;
@@ -37,7 +38,7 @@ export function useListboxSlot(
   options: UseListboxSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<typeof Listbox>>> | undefined {
   const {
-    state: { multiselect, open },
+    state: { multiselect, open, setOpen },
     triggerRef,
     defaultProps,
   } = options;
@@ -99,19 +100,45 @@ export function useListboxSlot(
     listboxSlot.onClick = onClick;
   }
 
-  useIsomorphicLayoutEffect(() => {
-    const listboxElement = popoverRef.current;
-    if (!listboxElement) {
+  const onListboxToggle = useEventCallback((event: Event & { newState?: 'open' | 'closed' }) => {
+    const nextOpen = event.newState === 'open';
+    if (nextOpen === open) {
       return;
     }
-    if (open) {
-      if (!listboxElement.matches(':popover-open')) {
-        listboxElement.showPopover();
-      }
-    } else if (listboxElement.matches(':popover-open')) {
-      listboxElement.hidePopover();
+    setOpen(event as unknown as DropdownOpenEvents, nextOpen);
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    const el = listboxRef.current;
+    if (!el) {
+      return;
     }
-  }, [open]);
+
+    el.addEventListener('toggle', onListboxToggle);
+
+    try {
+      if (open) {
+        el.showPopover();
+      } else if (el.matches(':popover-open')) {
+        el.hidePopover();
+      }
+    } catch (error) {
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.warn(
+          [
+            'Popover API is not supported in this browser, and the listbox will not work correctly.',
+            'Please include a popover polyfill for better browser support.',
+          ].join(' '),
+          { error },
+        );
+      }
+    }
+
+    return () => {
+      el.removeEventListener('toggle', onListboxToggle);
+    };
+  }, [open, onListboxToggle]);
 
   return listboxSlot;
 }

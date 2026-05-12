@@ -143,7 +143,9 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
     React.useEffect(() => {
       if (clearable && multiselect) {
         // eslint-disable-next-line no-console
-        console.error(`[@fluentui/react-combobox] "clearable" prop is not supported in multiselect mode.`);
+        console.error(
+          `[@fluentui/react-headless-components-preview] "clearable" prop is not supported in multiselect mode.`,
+        );
       }
     }, [clearable, multiselect]);
   }

@@ -5,7 +5,7 @@ import type { DropdownProps } from '@fluentui/react-headless-components-preview/
 import styles from './dropdown.module.css';
 
 export const ControllingOpenAndClose = (): React.ReactNode => {
-  const options = ['Cat', 'Caterpillar', 'Corgi', 'Dog', 'Fish', 'Hamster', 'Snake'];
+  const options = ['Cat', 'Caterpillar', 'Corgi', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
 
   const [open, setOpen] = React.useState(false);
 
