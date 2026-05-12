@@ -21,8 +21,6 @@ export const useMenuSplitGroup_unstable = (
   props: MenuSplitGroupProps,
   ref: React.Ref<HTMLElement>,
 ): MenuSplitGroupState => {
-  'use no memo';
-
   const innerRef = React.useRef<HTMLDivElement>(undefined);
   const { dir, targetDocument } = useFluent();
 

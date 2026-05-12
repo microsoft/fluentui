@@ -12,8 +12,6 @@ import * as React from 'react';
  * const isFirstMount = useFirstMount();
  */
 export function useFirstMount(): boolean {
-  'use no memo';
-
   const isFirst = React.useRef(true);
 
   React.useEffect(() => {

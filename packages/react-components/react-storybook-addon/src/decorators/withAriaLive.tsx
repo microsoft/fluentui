@@ -18,8 +18,6 @@ export const withAriaLive = (Story: () => JSXElement, context: FluentStoryContex
 };
 
 const AriaLiveWrapper: React.FC<{ children: React.ReactNode }> = props => {
-  'use no memo';
-
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {

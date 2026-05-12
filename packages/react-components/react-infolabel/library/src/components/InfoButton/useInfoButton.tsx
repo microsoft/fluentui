@@ -37,8 +37,6 @@ const popoverSizeMap = {
  * @param ref - reference to root HTMLButtonElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLButtonElement>): InfoButtonState => {
-  ('use no memo');
-
   const { size = 'medium', inline = true, popover, info, ...rest } = props;
 
   const rootRef = useMergedRefs(ref);

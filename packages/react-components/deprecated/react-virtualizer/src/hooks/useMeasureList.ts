@@ -33,8 +33,6 @@ export function useMeasureList<
   refArray: React.MutableRefObject<Array<TElement | undefined | null>>;
   sizeUpdateCount: number;
 } {
-  'use no memo';
-
   const widthArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
   const heightArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
 

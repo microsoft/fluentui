@@ -106,7 +106,7 @@ const useMenuIconStyles = makeStyles({
 });
 
 export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
-  ('use no memo');
+  'use no memo';
 
   const rootExpandedStyles = useRootExpandedStyles();
   const iconExpandedStyles = useIconExpandedStyles();

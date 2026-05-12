@@ -551,7 +551,7 @@ const useIconStyles = makeStyles({
 });
 
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
-  ('use no memo');
+  'use no memo';
 
   const rootBaseClassName = useRootBaseClassName();
   const iconBaseClassName = useIconBaseClassName();

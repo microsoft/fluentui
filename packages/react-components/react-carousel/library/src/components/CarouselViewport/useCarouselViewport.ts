@@ -18,8 +18,6 @@ export const useCarouselViewport_unstable = (
   props: CarouselViewportProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselViewportState => {
-  'use no memo';
-
   const hasFocus = React.useRef(false);
   const hasMouse = React.useRef(false);
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);

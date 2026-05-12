@@ -19,8 +19,6 @@ const findTreeItemRoot = (element: HTMLElement) => {
  * @internal
  */
 export function useRovingTabIndex(): {
-  'use no memo';
-
   rove: (nextElement: HTMLElement, focusOptions?: FocusOptions) => void;
   initialize: (walker: HTMLElementWalker) => void;
   forceUpdate: () => void;

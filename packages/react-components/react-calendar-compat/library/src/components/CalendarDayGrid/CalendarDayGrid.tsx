@@ -34,8 +34,6 @@ function useDayRefs() {
 }
 
 function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
-  'use no memo';
-
   const previousNavigatedDateRef = React.useRef<Date | undefined>(undefined);
   React.useEffect(() => {
     previousNavigatedDateRef.current = weeks[0][0].originalDate;

@@ -45,8 +45,6 @@ export const useToolbarRadioButtonBase_unstable = (
   props: ToolbarRadioButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarRadioButtonBaseState => {
-  'use no memo';
-
   const handleRadio = useToolbarContext_unstable(ctx => ctx.handleRadio);
   const checked = useToolbarContext_unstable(ctx => !!ctx.checkedValues[props.name]?.includes(props.value));
 

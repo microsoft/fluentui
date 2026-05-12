@@ -35,8 +35,6 @@ export const useCardPreviewBase_unstable = (
   props: CardPreviewBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardPreviewBaseState => {
-  'use no memo';
-
   const { logo } = props;
 
   const {

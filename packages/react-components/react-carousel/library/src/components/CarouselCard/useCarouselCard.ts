@@ -31,8 +31,6 @@ export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  'use no memo';
-
   const { autoSize } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
   const isMouseEvent = React.useRef<boolean>(false);

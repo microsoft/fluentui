@@ -48,8 +48,6 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
  * @param ref - reference to root HTMLElement of DrawerBody
  */
 export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HTMLElement>): DrawerBodyState => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 

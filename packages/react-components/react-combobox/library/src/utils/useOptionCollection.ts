@@ -7,8 +7,6 @@ import type { OptionCollectionState, OptionValue } from './OptionCollection.type
  * A hook for managing a collection of child Options
  */
 export const useOptionCollection = (): OptionCollectionState => {
-  'use no memo';
-
   const optionsById = React.useRef(new Map<string, OptionValue>());
 
   const collectionAPI = React.useMemo(() => {

@@ -57,8 +57,6 @@ const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemVal
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  'use no memo';
-
   const {
     onNavItemSelect,
     onNavCategoryItemToggle,

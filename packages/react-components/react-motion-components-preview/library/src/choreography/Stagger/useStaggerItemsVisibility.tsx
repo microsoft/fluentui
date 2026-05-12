@@ -53,8 +53,6 @@ export function useStaggerItemsVisibility({
   onMotionFinish,
   hideMode = 'visibleProp',
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: Record<string, boolean> } {
-  'use no memo';
-
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   // Stabilize the callback reference to avoid re-triggering effects on every render

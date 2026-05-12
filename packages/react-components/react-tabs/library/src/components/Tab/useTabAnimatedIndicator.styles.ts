@@ -76,8 +76,6 @@ const isValueDefined = (value: TabValue) => value != null;
  * Adds additional styling to the active tab selection indicator to create a sliding animation.
  */
 export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const { disabled, selected, vertical } = state;
 
   const activeIndicatorStyles = useActiveIndicatorStyles();

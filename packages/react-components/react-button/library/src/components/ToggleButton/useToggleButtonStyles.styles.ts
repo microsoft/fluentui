@@ -306,7 +306,7 @@ const usePrimaryHighContrastStyles = makeStyles({
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
-  ('use no memo');
+  'use no memo';
 
   const rootCheckedStyles = useRootCheckedStyles();
   const accessibleCheckedStyles = useCheckedAccessibleStyles();

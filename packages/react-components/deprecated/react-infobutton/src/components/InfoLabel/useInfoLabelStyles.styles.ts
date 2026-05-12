@@ -46,8 +46,6 @@ const useInfoButtonStyles = makeStyles({
  * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelState => {
-  'use no memo';
-
   // eslint-disable-next-line react-hooks/immutability -- deprecated component, not worth refactoring
   state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
 

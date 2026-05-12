@@ -24,8 +24,6 @@ import { Tooltip } from '@fluentui/react-tooltip';
  * @param props - props from this instance of AvatarGroupPopover
  */
 export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): AvatarGroupPopoverState => {
-  'use no memo';
-
   const size = useAvatarGroupContext_unstable(ctx => ctx.size) ?? defaultAvatarGroupSize;
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   const { indicator = size < 24 ? 'icon' : 'count', ...baseProps } = props;

@@ -95,8 +95,6 @@ const useActionButtonColorInverted = makeStyles({
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
-  'use no memo';
-
   const inverted = state.appearance === 'inverted';
   const styles = useStyles();
   const intentIconStylesPrimary = useIntentIconStyles();

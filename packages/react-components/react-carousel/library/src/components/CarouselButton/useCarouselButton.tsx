@@ -31,8 +31,6 @@ export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselButtonState => {
-  'use no memo';
-
   const { navType = 'next', ...buttonProps } = props;
 
   // Locally tracks the total number of slides, will only update if this changes.

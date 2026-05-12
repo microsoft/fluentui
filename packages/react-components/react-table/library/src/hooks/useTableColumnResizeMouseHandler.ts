@@ -10,8 +10,6 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   getOnMouseDown: (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => void;
   dragging: boolean;
 } {
-  'use no memo';
-
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);

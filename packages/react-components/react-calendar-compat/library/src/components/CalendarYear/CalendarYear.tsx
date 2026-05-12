@@ -353,8 +353,6 @@ const CalendarYearHeader: React.FunctionComponent<CalendarYearHeaderProps> = pro
 CalendarYearHeader.displayName = 'CalendarYearHeader';
 
 function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps) {
-  'use no memo';
-
   const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
   const fromYear = Math.floor(rangeYear / 10) * 10;
 
@@ -376,8 +374,6 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps)
 }
 
 function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: CalendarYearProps) {
-  'use no memo';
-
   const rangeYear = React.useMemo(() => {
     return selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10;
   }, [navigatedYear, selectedYear]);

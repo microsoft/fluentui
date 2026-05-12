@@ -52,8 +52,6 @@ export const useSpinButtonBase_unstable = (
   props: SpinButtonBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): SpinButtonBaseState => {
-  ('use no memo');
-
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',

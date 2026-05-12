@@ -16,7 +16,7 @@ export type RefObjectFunction<T> = React.RefObject<T | null> & ((value: T | null
  */
 // LegacyRef is actually not supported, but in React v18 types this is leaking directly from forwardRef component declaration
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
-  ('use no memo');
+  'use no memo';
 
   const mergedCallback = React.useCallback(
     // eslint-disable-next-line react-hooks/immutability

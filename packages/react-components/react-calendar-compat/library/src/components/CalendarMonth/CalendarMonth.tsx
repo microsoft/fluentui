@@ -22,8 +22,6 @@ import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarY
 const MONTHS_PER_ROW = 4;
 
 function useAnimateBackwards({ navigatedDate }: { navigatedDate: CalendarMonthProps['navigatedDate'] }) {
-  'use no memo';
-
   const currentYear = navigatedDate.getFullYear();
 
   const previousYearRef = React.useRef<number | undefined>(undefined);

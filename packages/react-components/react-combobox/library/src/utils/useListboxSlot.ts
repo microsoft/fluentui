@@ -35,8 +35,6 @@ export function useListboxSlot(
   ref: React.Ref<HTMLDivElement>,
   options: UseListboxSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<typeof Listbox>>> | undefined {
-  'use no memo';
-
   const {
     state: { multiselect },
     triggerRef,

@@ -60,8 +60,6 @@ export const useSearchBoxBase_unstable = (
   props: SearchBoxBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): SearchBoxBaseState => {
-  'use no memo';
-
   const { disabled = false, root, contentBefore, dismiss, contentAfter, value, defaultValue, ...inputProps } = props;
 
   const searchBoxRootRef = React.useRef<HTMLDivElement>(null);

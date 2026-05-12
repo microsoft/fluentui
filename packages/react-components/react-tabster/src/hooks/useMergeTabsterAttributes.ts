@@ -67,7 +67,7 @@ const safelyParseJSON = (json: string): object => {
  * This hook will console.warn if the attributes change at runtime.
  */
 const useWarnIfUnstableAttributes = (attributes: string[]) => {
-  ('use no memo');
+  'use no memo';
 
   const initialAttributesRef = React.useRef(attributes);
 

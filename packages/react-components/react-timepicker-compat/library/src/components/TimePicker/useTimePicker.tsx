@@ -173,8 +173,6 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
  * - TimePicker loses focus, signifying a possible change.
  */
 const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeChange']) => {
-  'use no memo';
-
   const { getOptionById, freeform, parseTimeStringToDate, submittedText, value, activeDescendantController } = state;
   const getActiveOption = React.useCallback(() => {
     const activeOptionId = activeDescendantController.active();
@@ -250,8 +248,6 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
  * Provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field.
  */
 const useDefaultChevronIconLabel = (state: TimePickerState) => {
-  'use no memo';
-
   const fieldContext = useFieldContext();
   const chevronDefaultId = useId('timepicker-chevron-');
   const defaultLabelFromCombobox = 'Open';

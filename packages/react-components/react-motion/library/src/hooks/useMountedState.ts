@@ -11,8 +11,6 @@ export function useMountedState(
   visible: boolean = false,
   unmountOnExit: boolean = false,
 ): [boolean, (value: boolean) => void] {
-  'use no memo';
-
   const mountedRef = React.useRef<boolean>(unmountOnExit ? visible : true);
   const forceUpdate = useForceUpdate();
 

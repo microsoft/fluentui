@@ -174,7 +174,7 @@ const useRootStyles = makeStyles({
 });
 
 export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
-  ('use no memo');
+  'use no memo';
 
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();

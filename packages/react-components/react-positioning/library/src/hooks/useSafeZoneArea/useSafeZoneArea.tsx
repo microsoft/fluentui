@@ -54,8 +54,6 @@ export function useSafeZoneArea({
   targetRef: RefObjectFunction<HTMLElement>;
   elementToRender: JSXElement | null;
 } {
-  ('use no memo');
-
   const [stateStore] = React.useState(createSafeZoneAreaStateStore);
 
   const safeZoneAreaRef = React.useRef<SafeZoneAreaImperativeHandle>(null);

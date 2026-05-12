@@ -70,8 +70,6 @@ function usePopupVisibility(props: DatePickerProps) {
 }
 
 function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
-  'use no memo';
-
   const [selectedDate, setSelectedDateState] = useControllableState<Date | null | undefined>({
     initialState: null,
     state: value,
