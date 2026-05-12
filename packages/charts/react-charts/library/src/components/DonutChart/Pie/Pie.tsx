@@ -4,7 +4,8 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { pie as d3Pie, PieArcDatum } from 'd3-shape';
+import { pie as d3Pie } from 'd3-shape';
+import type { PieArcDatum } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PieProps } from './index';
 import { Arc } from '../Arc/index';
