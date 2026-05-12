@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  DonutChart,
-  ChartProps,
-  ChartDataPoint,
-  DataVizGradientPalette,
-  getGradientFromToken,
-} from '@fluentui/react-charts';
+import { DonutChart, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts';
+import type { ChartProps, ChartDataPoint } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
 import { Switch } from '@fluentui/react-components';
 

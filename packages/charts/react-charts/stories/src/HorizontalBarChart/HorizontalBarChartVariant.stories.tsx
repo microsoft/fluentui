@@ -4,7 +4,6 @@ import type { ChartProps } from '@fluentui/react-charts';
 import {
   HorizontalBarChart,
   HorizontalBarChartVariant,
-  ChartProps,
   DataVizGradientPalette,
   getGradientFromToken,
 } from '@fluentui/react-charts';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
+import { Checkbox, Switch } from '@fluentui/react-components';
 
 export const GroupedVerticalBarDefault = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);

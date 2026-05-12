@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DonutChart, ChartProps, ChartDataPoint } from '@fluentui/react-charts';
+import { DonutChart } from '@fluentui/react-charts';
+import type { ChartProps, ChartDataPoint } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
 
 export const DonutChartCustomGradient = (): JSXElement => {

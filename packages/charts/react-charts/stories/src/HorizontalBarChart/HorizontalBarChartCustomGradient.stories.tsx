@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ChartProps, HorizontalBarChart } from '@fluentui/react-charts';
+import { HorizontalBarChart } from '@fluentui/react-charts';
+import type { ChartProps } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
 
 export const HorizontalBarCustomGradient = (): JSXElement => {
