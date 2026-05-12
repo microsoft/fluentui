@@ -262,3 +262,67 @@
 .surfaceWithArrow[data-placement$='-end'] [data-arrow] {
   inset-inline-end: var(--arrow-padding, 12px);
 }
+
+/*
+  Chrome 143+ exposes `@container anchored(fallback: …)` which fires when a
+  CSS `position-try-fallback` is active. The base `[data-placement^="…"]`
+  rules above keep working (the requested placement is always written to
+  `data-placement`); the overrides below only flip the arrow when the
+  surface itself was flipped by the browser.
+*/
+@container anchored(fallback: flip-block) {
+  .surfaceWithArrow[data-placement^='above'] [data-arrow] {
+    top: -6px;
+    bottom: auto;
+  }
+  .surfaceWithArrow[data-placement^='below'] [data-arrow] {
+    top: auto;
+    bottom: -6px;
+  }
+}
+
+@container anchored(fallback: flip-inline) {
+  .surfaceWithArrow[data-placement^='before'] [data-arrow] {
+    left: -6px;
+    right: auto;
+  }
+  .surfaceWithArrow[data-placement^='after'] [data-arrow] {
+    left: auto;
+    right: -6px;
+  }
+  .surfaceWithArrow[data-placement$='-start'] [data-arrow] {
+    inset-inline-start: auto;
+    inset-inline-end: var(--arrow-padding, 12px);
+  }
+  .surfaceWithArrow[data-placement$='-end'] [data-arrow] {
+    inset-inline-end: auto;
+    inset-inline-start: var(--arrow-padding, 12px);
+  }
+}
+
+@container anchored(fallback: flip-block flip-inline) {
+  .surfaceWithArrow[data-placement^='above'] [data-arrow] {
+    top: -6px;
+    bottom: auto;
+  }
+  .surfaceWithArrow[data-placement^='below'] [data-arrow] {
+    top: auto;
+    bottom: -6px;
+  }
+  .surfaceWithArrow[data-placement^='before'] [data-arrow] {
+    left: -6px;
+    right: auto;
+  }
+  .surfaceWithArrow[data-placement^='after'] [data-arrow] {
+    left: auto;
+    right: -6px;
+  }
+  .surfaceWithArrow[data-placement$='-start'] [data-arrow] {
+    inset-inline-start: auto;
+    inset-inline-end: var(--arrow-padding, 12px);
+  }
+  .surfaceWithArrow[data-placement$='-end'] [data-arrow] {
+    inset-inline-end: auto;
+    inset-inline-start: var(--arrow-padding, 12px);
+  }
+}

@@ -1,9 +1,7 @@
 import { resolvePositioningShorthand } from '@fluentui/react-positioning';
-import type { Position, PositioningShorthandValue } from '@fluentui/react-positioning';
+import type { Alignment, Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { LogicalAlignment } from '../types';
 import { ALIGNMENTS, POSITIONS, POSITION_AREA_MAP } from '../constants';
-
-export { resolvePositioningShorthand };
 
 const ALIGN_ALIASES: Record<string, LogicalAlignment> = {
   top: ALIGNMENTS.start,
@@ -19,22 +17,23 @@ export function normalizeAlign(raw: string): LogicalAlignment {
 }
 
 /**
- * Maps (position, align) into the human-readable placement string used for the
- * `data-placement` attribute. Center alignment renders as the bare position.
- *
- * For horizontal positions (`before`/`after`) the alignment is rendered using
- * physical names (`top`/`bottom`) to match react-positioning's convention.
+ * Maps (position, align) into the placement value used for the `data-placement`
+ * attribute. Center alignment renders as the bare position; horizontal positions
+ * (`before`/`after`) render their alignment as physical (`top`/`bottom`) to
+ * match react-positioning's convention.
  */
-export function getPlacementString(position: Position, align: LogicalAlignment): string {
-  if (align === ALIGNMENTS.center) {
+export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue {
+  const logical = normalizeAlign(align);
+
+  if (logical === ALIGNMENTS.center) {
     return position;
   }
 
   if (position === POSITIONS.before || position === POSITIONS.after) {
-    return `${position}-${align === ALIGNMENTS.start ? 'top' : 'bottom'}`;
+    return `${position}-${logical === ALIGNMENTS.start ? 'top' : 'bottom'}`;
   }
 
-  return `${position}-${align}`;
+  return `${position}-${logical}`;
 }
 
 export function shorthandToPositionArea(shorthand: PositioningShorthandValue): string {
@@ -60,3 +59,12 @@ export function getCoverSelfAlignment(
 
   return { alignSelf: align, justifySelf: ALIGNMENTS.start };
 }
+
+export const supportsAnchoredContainerQueries = (win: Window): boolean => {
+  return Boolean(
+    (win as Window & { CSS?: { supports?: (prop: string, value: string) => boolean } }).CSS?.supports?.(
+      'container-type',
+      'anchored',
+    ),
+  );
+};
