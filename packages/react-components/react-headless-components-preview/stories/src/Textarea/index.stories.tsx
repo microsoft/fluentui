@@ -4,7 +4,7 @@ import descriptionMd from './TextareaDescription.md';
 export { Default } from './TextareaDefault.stories';
 
 export default {
-  title: 'Headless Components/Textarea',
+  title: 'Components/Textarea',
   component: Textarea,
   parameters: {
     docs: {

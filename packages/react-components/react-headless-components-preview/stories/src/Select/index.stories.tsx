@@ -4,7 +4,7 @@ import descriptionMd from './SelectDescription.md';
 export { Default } from './SelectDefault.stories';
 
 export default {
-  title: 'Headless Components/Select',
+  title: 'Components/Select',
   component: Select,
   parameters: {
     docs: {
