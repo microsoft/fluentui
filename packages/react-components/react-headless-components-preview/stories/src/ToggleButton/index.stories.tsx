@@ -4,7 +4,7 @@ import descriptionMd from './ToggleButtonDescription.md';
 export { Default } from './ToggleButtonDefault.stories';
 
 export default {
-  title: 'Headless Components/ToggleButton',
+  title: 'Components/ToggleButton',
   component: ToggleButton,
   parameters: {
     docs: {

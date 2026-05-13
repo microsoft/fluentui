@@ -18,7 +18,7 @@ export { Nested } from './DialogNested.stories';
 export { NoTrigger } from './DialogNoTrigger.stories';
 
 export default {
-  title: 'Headless Components/Dialog',
+  title: 'Components/Dialog',
   component: Dialog,
   subcomponents: { DialogSurface, DialogTrigger, DialogTitle, DialogBody, DialogActions },
   parameters: {

@@ -1,4 +1,4 @@
-import { FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement } from '../utils/typings.js';
 import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
 import type { MenuItem } from '../menu-item/menu-item.js';
@@ -63,6 +63,9 @@ export class BaseMenuList extends FASTElement {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
+    Array.from(this.children).forEach(child => {
+      Observable.getNotifier(child).unsubscribe(this, 'hidden');
+    });
     this.menuChildren = undefined;
     this.removeEventListener('change', this.changedMenuItemHandler);
   }
@@ -100,6 +103,9 @@ export class BaseMenuList extends FASTElement {
 
   protected setItems(): void {
     const children: HTMLElement[] = Array.from(this.children) as HTMLElement[];
+    children.forEach((child: Element) => {
+      Observable.getNotifier(child).subscribe(this, 'hidden');
+    });
 
     this.menuChildren = children.filter(child => !child.hasAttribute('hidden'));
 

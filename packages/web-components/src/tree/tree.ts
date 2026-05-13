@@ -61,7 +61,7 @@ export class Tree extends BaseTree {
       this.fg = new FocusGroup(this, this.fgItems, {
         definition: {
           behavior: 'menu',
-          axis: 'block',
+          axis: undefined,
           memory: false,
         },
       });

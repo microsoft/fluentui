@@ -216,11 +216,16 @@ Due to web platform labelling constraints of the ShadowDOM, the labelling API fo
 </fluent-field>
 ```
 
+### Bundles
+
+The package ships two CDN-ready bundles, each available in minified and non-minified versions:
+
+- **`web-components.js`** / **`web-components.min.js`** — Registers all components and exposes `Fluent.setTheme` on `globalThis`. This is the recommended bundle for most CDN and script-tag consumers.
+- **`web-components-all.js`** / **`web-components-all.min.js`** — Everything in the standard bundle, plus all named exports from the package (base classes, templates, styles, design tokens, and utilities). Use this if you need programmatic access to the full API surface from a CDN context.
+
 ### setTheme
 
-A more powerful and simpler set-theme API that allows setting themes at the element level.
-
-- `setThemeFor()` is deprecated in favor of `setTheme( theme, element )`
+- `setTheme()` can set themes such as `setTheme(webLightTheme)` (defaults to document) or `setTheme(webDarkTheme, element)` to theme an element and its children
 - `setTheme()` can unset themes with `setTheme(null)` or `setTheme( null, element )`
 
 ### Case studies

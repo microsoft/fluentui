@@ -5,7 +5,7 @@ import descriptionMd from './ImageDescription.md';
 export { Default } from './ImageDefault.stories';
 
 export default {
-  title: 'Headless Components/Image',
+  title: 'Components/Image',
   component: Image,
   parameters: {
     docs: {

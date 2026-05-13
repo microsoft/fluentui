@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: enhance accessibility attributes for drawer component",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
