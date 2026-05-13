@@ -2716,32 +2716,9 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 };
 
 export function isSafeUrl(href: string): boolean {
-  const normalizedHref = href.trim();
-
-  if (!normalizedHref) {
-    return true;
+  const normalized = href.replace(/[\u0000-\u001F\u007F\s]+/g, '');
+  if (/^[a-z][a-z0-9+.-]*:/i.test(normalized)) {
+    return /^(https?|mailto|tel|ftp):/i.test(normalized);
   }
-
-  // Browsers normalize control characters and whitespace in URLs, so sanitize them
-  // before scheme detection to avoid bypasses such as "java\nscript:".
-  const normalizedHrefForSchemeCheck = normalizedHref.replace(/[\u0000-\u001F\u007F\s]+/g, '');
-
-  if (!normalizedHrefForSchemeCheck) {
-    return true;
-  }
-
-  // Detect an explicit URI scheme only when ':' appears before '/', '?', or '#'.
-  const firstPathOrQueryOrFragmentIndex = normalizedHrefForSchemeCheck.search(/[/?#]/);
-  const colonIndex = normalizedHrefForSchemeCheck.indexOf(':');
-  const hasExplicitScheme =
-    colonIndex > 0 &&
-    (firstPathOrQueryOrFragmentIndex === -1 || colonIndex < firstPathOrQueryOrFragmentIndex) &&
-    /^[a-z][a-z0-9+.-]*$/i.test(normalizedHrefForSchemeCheck.slice(0, colonIndex));
-
-  if (!hasExplicitScheme) {
-    return true;
-  }
-
-  const scheme = normalizedHrefForSchemeCheck.slice(0, colonIndex).toLowerCase();
-  return scheme === 'http' || scheme === 'https' || scheme === 'mailto' || scheme === 'tel' || scheme === 'ftp';
+  return true;
 }
