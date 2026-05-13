@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Move react-file-type-icons under react-components and harden FileTypeIcon for v9",
+  "comment": "Move react-file-type-icons under react-components, harden FileTypeIcon for v9, and keep file type icon asset resolution self-contained",
   "packageName": "@fluentui/react-file-type-icons",
   "email": "caperez@microsoft.com",
   "dependentChangeType": "patch"

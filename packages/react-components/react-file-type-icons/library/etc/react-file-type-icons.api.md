@@ -7,7 +7,6 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IIconOptions } from '@fluentui/style-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -119,6 +118,14 @@ export interface IFileTypeIconOptions {
     imageFileType?: ImageFileType;
     size?: FileTypeIconSize;
     type?: FileIconTypeInput;
+}
+
+// @public (undocumented)
+export interface IIconOptions {
+    // (undocumented)
+    disableWarnings: boolean;
+    // (undocumented)
+    warnOnMissingIcons?: boolean;
 }
 
 // @public (undocumented)

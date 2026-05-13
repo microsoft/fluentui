@@ -1,4 +1,5 @@
 export { initializeFileTypeIcons } from './initializeFileTypeIcons';
+export type { IIconOptions } from './initializeFileTypeIcons';
 
 export { FileTypeIcon } from './FileTypeIcon';
 export {
