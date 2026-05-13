@@ -739,6 +739,12 @@ export interface GVBarChartSeriesPoint {
   color?: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop when `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
    * Legend text in the chart
    */
   legend: string;

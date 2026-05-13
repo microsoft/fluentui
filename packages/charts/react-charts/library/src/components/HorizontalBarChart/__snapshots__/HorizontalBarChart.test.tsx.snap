@@ -255,11 +255,29 @@ exports[`Horizontal Bar Chart - Gradient Should compare HorizontalBarChart snaps
         <g
           id="_HorizontalLine__r_4n__0"
         >
+          <defs>
+            <lineargradient
+              id="HBC_Gradient_r_4p__0_0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stop-color="rgb(0, 60, 64)"
+              />
+              <stop
+                offset="100%"
+                stop-color="rgb(51, 111, 115)"
+              />
+            </lineargradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 10%."
             class="fui-hbc__barWrapper"
             data-is-focusable="true"
-            fill="#004b50"
+            fill="url(#HBC_Gradient_r_4p__0_0)"
             height="12"
             opacity="1"
             role="img"
@@ -323,11 +341,29 @@ exports[`Horizontal Bar Chart - Gradient Should compare HorizontalBarChart snaps
         <g
           id="_HorizontalLine__r_4n__1"
         >
+          <defs>
+            <lineargradient
+              id="HBC_Gradient_r_4p__1_0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stop-color="rgb(74, 36, 116)"
+              />
+              <stop
+                offset="100%"
+                stop-color="rgb(125, 87, 167)"
+              />
+            </lineargradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 5%."
             class="fui-hbc__barWrapper"
             data-is-focusable="true"
-            fill="#5c2d91"
+            fill="url(#HBC_Gradient_r_4p__1_0)"
             height="12"
             opacity="1"
             role="img"
@@ -391,11 +427,29 @@ exports[`Horizontal Bar Chart - Gradient Should compare HorizontalBarChart snaps
         <g
           id="_HorizontalLine__r_4n__2"
         >
+          <defs>
+            <lineargradient
+              id="HBC_Gradient_r_4p__2_0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stop-color="rgb(131, 30, 35)"
+              />
+              <stop
+                offset="100%"
+                stop-color="rgb(182, 81, 86)"
+              />
+            </lineargradient>
+          </defs>
           <rect
             aria-label="2020/04/30, 59%."
             class="fui-hbc__barWrapper"
             data-is-focusable="true"
-            fill="#a4262c"
+            fill="url(#HBC_Gradient_r_4p__2_0)"
             height="12"
             opacity="1"
             role="img"

@@ -638,11 +638,11 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
             >
               <stop
                 offset="0"
-                stop-color="#4760D5"
+                stop-color="rgb(0, 150, 194)"
               />
               <stop
                 offset="100%"
-                stop-color="#637CEF"
+                stop-color="rgb(51, 201, 245)"
               />
             </lineargradient>
           </defs>
@@ -669,11 +669,11 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
             >
               <stop
                 offset="0"
-                stop-color="#795AA6"
+                stop-color="rgb(0, 96, 170)"
               />
               <stop
                 offset="100%"
-                stop-color="#9373C0"
+                stop-color="rgb(51, 147, 221)"
               />
             </lineargradient>
           </defs>
@@ -724,11 +724,11 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
             >
               <stop
                 offset="0"
-                stop-color="#4760D5"
+                stop-color="rgb(0, 150, 194)"
               />
               <stop
                 offset="100%"
-                stop-color="#637CEF"
+                stop-color="rgb(51, 201, 245)"
               />
             </lineargradient>
           </defs>
@@ -755,11 +755,11 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
             >
               <stop
                 offset="0"
-                stop-color="#795AA6"
+                stop-color="rgb(0, 96, 170)"
               />
               <stop
                 offset="100%"
-                stop-color="#9373C0"
+                stop-color="rgb(51, 147, 221)"
               />
             </lineargradient>
           </defs>
@@ -810,11 +810,11 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
             >
               <stop
                 offset="0"
-                stop-color="#4760D5"
+                stop-color="rgb(0, 150, 194)"
               />
               <stop
                 offset="100%"
-                stop-color="#637CEF"
+                stop-color="rgb(51, 201, 245)"
               />
             </lineargradient>
           </defs>
@@ -841,11 +841,11 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
             >
               <stop
                 offset="0"
-                stop-color="#795AA6"
+                stop-color="rgb(0, 96, 170)"
               />
               <stop
                 offset="100%"
-                stop-color="#9373C0"
+                stop-color="rgb(51, 147, 221)"
               />
             </lineargradient>
           </defs>
@@ -906,12 +906,12 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 150, 194); --rect-borderColor: rgb(0, 150, 194);"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+            style="height: 12px; background-color: rgb(0, 150, 194); border-color: rgb(0, 150, 194); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 150, 194), rgb(0, 150, 194));"
           />
           <div
             class="fui-legend__text"
@@ -925,12 +925,12 @@ exports[`Grouped Vertical Bar Chart - Gradient Should compare GroupedVerticalBar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 96, 170); --rect-borderColor: rgb(0, 96, 170);"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+            style="height: 12px; background-color: rgb(0, 96, 170); border-color: rgb(0, 96, 170); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 96, 170), rgb(0, 96, 170));"
           />
           <div
             class="fui-legend__text"

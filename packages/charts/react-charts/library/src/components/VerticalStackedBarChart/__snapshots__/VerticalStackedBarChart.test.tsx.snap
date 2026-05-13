@@ -882,11 +882,11 @@ exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBar
               >
                 <stop
                   offset="0"
-                  stop-color="#4760D5"
+                  stop-color="rgb(0, 204, 204)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#637CEF"
+                  stop-color="rgb(51, 255, 255)"
                 />
               </lineargradient>
             </defs>
@@ -915,11 +915,11 @@ exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBar
               >
                 <stop
                   offset="0"
-                  stop-color="#795AA6"
+                  stop-color="rgb(0, 0, 102)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#9373C0"
+                  stop-color="rgb(51, 51, 153)"
                 />
               </lineargradient>
             </defs>
@@ -966,11 +966,11 @@ exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBar
               >
                 <stop
                   offset="0"
-                  stop-color="#4760D5"
+                  stop-color="rgb(0, 204, 204)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#637CEF"
+                  stop-color="rgb(51, 255, 255)"
                 />
               </lineargradient>
             </defs>
@@ -999,11 +999,11 @@ exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBar
               >
                 <stop
                   offset="0"
-                  stop-color="#795AA6"
+                  stop-color="rgb(0, 0, 102)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#9373C0"
+                  stop-color="rgb(51, 51, 153)"
                 />
               </lineargradient>
             </defs>
@@ -1060,12 +1060,12 @@ exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 204, 204); --rect-borderColor: rgb(0, 204, 204);"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+            style="height: 12px; background-color: rgb(0, 204, 204); border-color: rgb(0, 204, 204); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 204, 204), rgb(0, 204, 204));"
           />
           <div
             class="fui-legend__text"
@@ -1079,12 +1079,12 @@ exports[`Vertical Stacked Bar Chart - Gradient Should compare VerticalStackedBar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 0, 102); --rect-borderColor: rgb(0, 0, 102);"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+            style="height: 12px; background-color: rgb(0, 0, 102); border-color: rgb(0, 0, 102); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 0, 102), rgb(0, 0, 102));"
           />
           <div
             class="fui-legend__text"
@@ -2550,11 +2550,11 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 >
                   <stop
                     offset="0"
-                    stop-color="#4760D5"
+                    stop-color="rgb(0, 204, 204)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#637CEF"
+                    stop-color="rgb(51, 255, 255)"
                   />
                 </lineargradient>
               </defs>
@@ -2583,11 +2583,11 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 >
                   <stop
                     offset="0"
-                    stop-color="#795AA6"
+                    stop-color="rgb(0, 0, 102)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#9373C0"
+                    stop-color="rgb(51, 51, 153)"
                   />
                 </lineargradient>
               </defs>
@@ -2634,11 +2634,11 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 >
                   <stop
                     offset="0"
-                    stop-color="#4760D5"
+                    stop-color="rgb(0, 204, 204)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#637CEF"
+                    stop-color="rgb(51, 255, 255)"
                   />
                 </lineargradient>
               </defs>
@@ -2667,11 +2667,11 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 >
                   <stop
                     offset="0"
-                    stop-color="#795AA6"
+                    stop-color="rgb(0, 0, 102)"
                   />
                   <stop
                     offset="100%"
-                    stop-color="#9373C0"
+                    stop-color="rgb(51, 51, 153)"
                   />
                 </lineargradient>
               </defs>
@@ -2728,12 +2728,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+            style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 204, 204); --rect-borderColor: rgb(0, 204, 204);"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+              style="height: 12px; background-color: rgb(0, 204, 204); border-color: rgb(0, 204, 204); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 204, 204), rgb(0, 204, 204));"
             />
             <div
               class="fui-legend__text"
@@ -2747,12 +2747,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+            style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 0, 102); --rect-borderColor: rgb(0, 0, 102);"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+              style="height: 12px; background-color: rgb(0, 0, 102); border-color: rgb(0, 0, 102); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 0, 102), rgb(0, 0, 102));"
             />
             <div
               class="fui-legend__text"
@@ -5881,11 +5881,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stop-color="#4760D5"
+                  stop-color="rgb(0, 204, 204)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#637CEF"
+                  stop-color="rgb(51, 255, 255)"
                 />
               </lineargradient>
             </defs>
@@ -5914,11 +5914,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stop-color="#795AA6"
+                  stop-color="rgb(0, 0, 102)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#9373C0"
+                  stop-color="rgb(51, 51, 153)"
                 />
               </lineargradient>
             </defs>
@@ -5965,11 +5965,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stop-color="#4760D5"
+                  stop-color="rgb(0, 204, 204)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#637CEF"
+                  stop-color="rgb(51, 255, 255)"
                 />
               </lineargradient>
             </defs>
@@ -5998,11 +5998,11 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stop-color="#795AA6"
+                  stop-color="rgb(0, 0, 102)"
                 />
                 <stop
                   offset="100%"
-                  stop-color="#9373C0"
+                  stop-color="rgb(51, 51, 153)"
                 />
               </lineargradient>
             </defs>
@@ -6059,12 +6059,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 204, 204); --rect-borderColor: rgb(0, 204, 204);"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+            style="height: 12px; background-color: rgb(0, 204, 204); border-color: rgb(0, 204, 204); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 204, 204), rgb(0, 204, 204));"
           />
           <div
             class="fui-legend__text"
@@ -6078,12 +6078,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 0, 102); --rect-borderColor: rgb(0, 0, 102);"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+            style="height: 12px; background-color: rgb(0, 0, 102); border-color: rgb(0, 0, 102); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 0, 102), rgb(0, 0, 102));"
           />
           <div
             class="fui-legend__text"

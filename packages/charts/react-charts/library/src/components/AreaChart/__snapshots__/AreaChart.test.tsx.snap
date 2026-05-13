@@ -1213,7 +1213,7 @@ exports[`Area Chart - Gradient Should compare AreaChart snapshots with enableGra
             />
             <stop
               offset="100%"
-              stop-color="green33"
+              stop-color="transparent"
             />
           </lineargradient>
         </defs>
@@ -1246,7 +1246,7 @@ exports[`Area Chart - Gradient Should compare AreaChart snapshots with enableGra
             />
             <stop
               offset="100%"
-              stop-color="yellow33"
+              stop-color="transparent"
             />
           </lineargradient>
         </defs>
@@ -1279,7 +1279,7 @@ exports[`Area Chart - Gradient Should compare AreaChart snapshots with enableGra
             />
             <stop
               offset="100%"
-              stop-color="blue33"
+              stop-color="transparent"
             />
           </lineargradient>
         </defs>

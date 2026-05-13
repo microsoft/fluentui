@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed gradient funcation bug",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "132879294+v-baambati@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

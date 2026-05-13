@@ -211,9 +211,28 @@ exports[`Donut Chart - Gradient Should compare DonutChart snapshots with enableG
             id="_Pie__r_35_first20000"
             opacity="1"
             role="img"
-            style="fill: #E5E5E5; cursor: default;"
+            style="fill: transparent; cursor: default;"
             tabindex="0"
           />
+          <clippath
+            id="Arc_clip_r_38_#E5E5E5_#E5E5E5"
+          >
+            <path
+              d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
+            />
+          </clippath>
+          <foreignobject
+            clip-path="url(#Arc_clip_r_38_#E5E5E5_#E5E5E5)"
+            height="100%"
+            width="100%"
+            x="-50%"
+            y="-50%"
+          >
+            <div
+              class="fui-donut-arc__root"
+              style="width: 100%; height: 100%; background: conic-gradient( from 0rad, #E5E5E5, #E5E5E5 1.2167664052268437rad ); opacity: 1;"
+            />
+          </foreignobject>
         </g>
         <g>
           <path
@@ -224,9 +243,28 @@ exports[`Donut Chart - Gradient Should compare DonutChart snapshots with enableG
             id="_Pie__r_35_second39000"
             opacity="1"
             role="img"
-            style="fill: #0078D4; cursor: default;"
+            style="fill: transparent; cursor: default;"
             tabindex="0"
           />
+          <clippath
+            id="Arc_clip_r_39_#0078D4_#0078D4"
+          >
+            <path
+              d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
+            />
+          </clippath>
+          <foreignobject
+            clip-path="url(#Arc_clip_r_39_#0078D4_#0078D4)"
+            height="100%"
+            width="100%"
+            x="-50%"
+            y="-50%"
+          >
+            <div
+              class="fui-donut-arc__root"
+              style="width: 100%; height: 100%; background: conic-gradient( from 1.2167664052268437rad, #0078D4, #0078D4 2.3536944901923453rad ); opacity: 1;"
+            />
+          </foreignobject>
         </g>
         <g>
           <path
@@ -237,9 +275,28 @@ exports[`Donut Chart - Gradient Should compare DonutChart snapshots with enableG
             id="_Pie__r_35_third45000"
             opacity="1"
             role="img"
-            style="fill: #DADADA; cursor: default;"
+            style="fill: transparent; cursor: default;"
             tabindex="0"
           />
+          <clippath
+            id="Arc_clip_r_3a_#DADADA_#DADADA"
+          >
+            <path
+              d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
+            />
+          </clippath>
+          <foreignobject
+            clip-path="url(#Arc_clip_r_3a_#DADADA_#DADADA)"
+            height="100%"
+            width="100%"
+            x="-50%"
+            y="-50%"
+          >
+            <div
+              class="fui-donut-arc__root"
+              style="width: 100%; height: 100%; background: conic-gradient( from 3.5704608954191888rad, #DADADA, #DADADA 2.7127244117603975rad ); opacity: 1;"
+            />
+          </foreignobject>
         </g>
       </g>
     </svg>
@@ -2393,7 +2450,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             id="_Pie__r_3l_first20000"
             opacity="1"
             role="img"
-            style="fill: #4760D5; cursor: default;"
+            style="fill: #637cef; cursor: default;"
             tabindex="0"
           />
         </g>
@@ -2406,7 +2463,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             id="_Pie__r_3l_second39000"
             opacity="1"
             role="img"
-            style="fill: #795AA6; cursor: default;"
+            style="fill: #e3008c; cursor: default;"
             tabindex="0"
           />
         </g>
@@ -2419,7 +2476,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             id="_Pie__r_3l_third45000"
             opacity="1"
             role="img"
-            style="fill: #159195; cursor: default;"
+            style="fill: #2aa0a4; cursor: default;"
             tabindex="0"
           />
         </g>
@@ -2451,12 +2508,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #4760D5; --rect-borderColor: #4760D5;"
+          style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(71, 96, 213); border-color: rgb(71, 96, 213); --rect-content-high-contrast: linear-gradient(to right, #4760D5, #4760D5);"
+            style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
           />
           <div
             class="fui-legend__text"
@@ -2470,12 +2527,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #795AA6; --rect-borderColor: #795AA6;"
+          style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(121, 90, 166); border-color: rgb(121, 90, 166); --rect-content-high-contrast: linear-gradient(to right, #795AA6, #795AA6);"
+            style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
           />
           <div
             class="fui-legend__text"
@@ -2489,12 +2546,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           class="fui-Button fui-legend__legend"
           data-overflow-item=""
           role="option"
-          style="--rect-height: 12px; --rect-backgroundColor: #159195; --rect-borderColor: #159195;"
+          style="--rect-height: 12px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
           type="button"
         >
           <div
             class="fui-legend__rect"
-            style="height: 12px; background-color: rgb(21, 145, 149); border-color: rgb(21, 145, 149); --rect-content-high-contrast: linear-gradient(to right, #159195, #159195);"
+            style="height: 12px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
           />
           <div
             class="fui-legend__text"
