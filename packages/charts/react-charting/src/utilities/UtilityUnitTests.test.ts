@@ -1584,6 +1584,25 @@ describe('isSafeUrl', () => {
     expect(utils.isSafeUrl('vbscript:msgbox("xss")')).toBe(false);
   });
 
+  test('Should block vbscript:alert(1)', () => {
+    expect(utils.isSafeUrl('vbscript:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with null byte prefix', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('\0javascript:alert(1)')).toBe(false);
+  });
+
+  test('Should block mixed-case javascript: protocol with embedded newline', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('JaVa\nScRiPt:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with CRLF prefix', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('\r\njavascript:alert(1)')).toBe(false);
+  });
+
   test('Should block file: protocol', () => {
     expect(utils.isSafeUrl('file:///etc/passwd')).toBe(false);
   });
