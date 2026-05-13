@@ -1,6 +1,8 @@
 'use client';
 
 import * as React from 'react';
+import { scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { rgb } from 'd3-color';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import type { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData } from './index';
 import { HorizontalBarChartVariant } from './index';
@@ -80,7 +82,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
 
       updatePosition(x, y);
       setHoverValue(hoverVal);
-      // Use gradient start color when gradients are enabled
+      // Use gradient start color when gradients are enabled.
       const calloutColor =
         props.enableGradient && Array.isArray(point.color)
           ? point.color[0]
@@ -307,7 +309,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       }
 
       const gradientId = _gradientId + `_${dataPointIndex}_${index}`;
-      // Only use gradients when both enableGradient prop is true and color is an array
+      // Only use gradients when both enableGradient is true and a color pair is available.
       const useGradient = props.enableGradient && Array.isArray(point.color);
 
       // Determine fill color based on gradient settings
@@ -362,29 +364,39 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     return bars;
   }
 
+  // Lighten/darken a color by a given percentage to derive gradients from explicit colors.
+  const _adjustColor = (color: string, percentage: number, lightenColor: boolean): string => {
+    const targetColor = lightenColor ? '#ffffff' : '#000000';
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, targetColor]);
+    return rgb(colorInterpolator(percentage)).formatRgb();
+  };
+
   function _addDefaultColors(dataPoints: ChartDataPoint[], chartDataIndex: number): ChartDataPoint[] {
     return dataPoints
       ? dataPoints.map((item, index) => {
           let itemColor = item.color;
 
-          // if color is not defined, assign a default color based on enableGradient prop
-          if (!itemColor) {
-            itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
-          }
-          // if color is a string, check if it is undefined or blank assign a default color
-          if (typeof itemColor === 'string' && itemColor.trim() === '') {
-            itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
-          }
-          // if color is an array, check if either colors are undefined or blank
-          // if startColor is undefined or blank, assign a default color
-          // if endColor is undefined or blank, assign the startColor to endColor
-          if (Array.isArray(itemColor)) {
-            const [startColor, endColor] = itemColor;
-            if (!startColor || startColor.trim() === '') {
-              itemColor[0] = getNextGradient(index)[0];
+          if (props.enableGradient) {
+            if (typeof itemColor === 'string' && itemColor.trim() !== '') {
+              itemColor = [_adjustColor(itemColor, 0.2, false), _adjustColor(itemColor, 0.2, true)];
+            } else if (Array.isArray(itemColor)) {
+              const [startColor, endColor] = itemColor;
+              if (!startColor || startColor.trim() === '') {
+                itemColor[0] = getNextGradient(index)[0];
+              }
+              if (!endColor || endColor.trim() === '') {
+                itemColor[1] = getNextGradient(index)[1];
+              }
+            } else {
+              itemColor = getNextGradient(index);
             }
-            if (!endColor || endColor.trim() === '') {
-              itemColor[1] = itemColor[0];
+          } else {
+            if (!itemColor) {
+              itemColor = getNextGradient(index)[0];
+            } else if (typeof itemColor === 'string' && itemColor.trim() === '') {
+              itemColor = getNextGradient(index)[0];
+            } else if (Array.isArray(itemColor)) {
+              itemColor = itemColor[0] && itemColor[0].trim() !== '' ? itemColor[0] : getNextGradient(index)[0];
             }
           }
 

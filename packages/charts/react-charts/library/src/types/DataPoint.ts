@@ -245,6 +245,12 @@ export interface HorizontalBarChartWithAxisDataPoint {
   color?: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop when `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
    * Callout data for x axis
    * This is an optional prop, If haven't given legend will take
    */
@@ -622,6 +628,12 @@ export interface VSChartDataPoint {
   color?: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop when `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
    * Callout data for x axis
    * This is an optional prop, If haven't given legend will take
    */
@@ -725,12 +737,6 @@ export interface GVBarChartSeriesPoint {
    * Color for the legend in the chart
    */
   color?: string;
-
-  /**
-   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
-   * If provided, it will override the color prop, granted `enableGradient` is set to true for the chart.
-   */
-  gradient?: [string, string];
 
   /**
    * Legend text in the chart

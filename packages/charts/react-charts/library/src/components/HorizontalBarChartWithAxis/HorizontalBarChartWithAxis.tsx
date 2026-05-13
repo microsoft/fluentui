@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
+import { rgb } from 'd3-color';
 import type { ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import type { Legend } from '../../components/Legends/Legends.types';
@@ -132,14 +133,12 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         selectedPointIndex = index;
       }
     });
-    let color: string;
-    if (useSingleColor) {
-      //if useSingle color , then check if user has given a palette or not
-      // and pick the first color from that or else from our paltette.
-      color = props.colors ? _createColors()(1) : getNextColor(1, 0);
-    } else {
-      color = point.color ? point.color : props.colors ? _createColors()(point.x) : getNextColor(selectedPointIndex, 0);
-    }
+    const { solidColor, startColor } = _resolveBarColors(
+      point,
+      useSingleColor ? 0 : selectedPointIndex,
+      useSingleColor,
+    );
+    const color = props.enableGradient ? startColor : solidColor;
     return (
       <>
         <ChartPopover
@@ -379,6 +378,48 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     return { totalPositiveValue, totalNegativeValue, totalBarValue, showLabelOnPositiveSide, shouldShowLabel };
   }
 
+  function _adjustColor(color: string, percentage: number, lightenColor: boolean): string {
+    const targetColor = lightenColor ? '#ffffff' : '#000000';
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, targetColor]);
+    return rgb(colorInterpolator(percentage)).formatRgb();
+  }
+
+  function _resolveBarColors(
+    point: HorizontalBarChartWithAxisDataPoint,
+    colorIndex: number,
+    useSingleColor: boolean,
+  ): { solidColor: string; startColor: string; endColor: string } {
+    const solidColor = useSingleColor
+      ? props.colors
+        ? _createColors()(1)
+        : getNextColor(1, 0)
+      : point.color
+      ? point.color
+      : props.colors
+      ? _createColors()(point.x)
+      : getNextColor(colorIndex, 0);
+
+    let startColor = solidColor;
+    let endColor = solidColor;
+
+    if (props.enableGradient) {
+      if (!useSingleColor && point.color) {
+        // Match GroupedVerticalBarChart behavior for explicit per-point color.
+        startColor = _adjustColor(point.color, 0.2, false);
+        endColor = _adjustColor(point.color, 0.2, true);
+      } else if (useSingleColor) {
+        startColor = _adjustColor(solidColor, 0.2, false);
+        endColor = _adjustColor(solidColor, 0.2, true);
+      } else {
+        const nextGradient = getNextGradient(colorIndex);
+        startColor = point.gradient?.[0] || nextGradient[0];
+        endColor = point.gradient?.[1] || nextGradient[1];
+      }
+    }
+
+    return { solidColor, startColor, endColor };
+  }
+
   function _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -433,32 +474,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
-      let startColor: string;
-      let endColor: string;
-      if (useSingleColor) {
-        //if useSingle color , then check if user has given a palette or not
-        // and pick the first color from that or else from our paltette.
-        if (props.enableGradient) {
-          const gradientColors = props.colors ? getNextGradient(0) : getNextGradient(0);
-          startColor = Array.isArray(gradientColors) ? gradientColors[0] : gradientColors;
-          endColor = Array.isArray(gradientColors) ? gradientColors[1] : gradientColors;
-        } else {
-          startColor = props.colors ? _createColors()(1) : getNextColor(1, 0);
-          endColor = startColor;
-        }
-      } else {
-        if (props.enableGradient) {
-          const gradientColors = props.colors ? getNextGradient(globalIndex) : getNextGradient(globalIndex);
-          startColor = Array.isArray(gradientColors) ? gradientColors[0] : gradientColors;
-          endColor = Array.isArray(gradientColors) ? gradientColors[1] : gradientColors;
-        } else {
-          startColor = props.colors ? _createColors()(point.x) : getNextColor(globalIndex, 0);
-          endColor = startColor;
-        }
-      }
-
-      startColor = !props.enableGradient && point.color && !useSingleColor ? point.color : startColor;
-      endColor = !props.enableGradient && point.color && !useSingleColor ? point.color : endColor;
+      const { startColor, endColor } = _resolveBarColors(point, useSingleColor ? 0 : globalIndex, useSingleColor);
 
       const prevBarWidth = Math.abs(xBarScale(prevPoint + X_ORIGIN) - xBarScale(X_ORIGIN));
       prevPoint > X_ORIGIN ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
@@ -495,7 +511,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       const gradientId = `${_gradientId}_numeric_${globalIndex}`;
-      const useGradient = props.enableGradient && startColor !== endColor;
+      const useGradient = !!props.enableGradient;
       const fillColor = useGradient ? `url(#${gradientId})` : startColor;
 
       return (
@@ -641,32 +657,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
-      let startColor: string;
-      let endColor: string;
-      if (useSingleColor) {
-        //if useSingle color , then check if user has given a palette or not
-        // and pick the first color from that or else from our paltette.
-        if (props.enableGradient) {
-          const gradientColors = props.colors ? getNextGradient(0) : getNextGradient(0);
-          startColor = Array.isArray(gradientColors) ? gradientColors[0] : gradientColors;
-          endColor = Array.isArray(gradientColors) ? gradientColors[1] : gradientColors;
-        } else {
-          startColor = props.colors ? _createColors()(1) : getNextColor(1, 0);
-          endColor = startColor;
-        }
-      } else {
-        if (props.enableGradient) {
-          const gradientColors = props.colors ? getNextGradient(globalIndex) : getNextGradient(globalIndex);
-          startColor = Array.isArray(gradientColors) ? gradientColors[0] : gradientColors;
-          endColor = Array.isArray(gradientColors) ? gradientColors[1] : gradientColors;
-        } else {
-          startColor = props.colors ? _createColors()(point.x) : getNextColor(globalIndex, 0);
-          endColor = startColor;
-        }
-      }
-
-      startColor = !props.enableGradient && point.color && !useSingleColor ? point.color : startColor;
-      endColor = !props.enableGradient && point.color && !useSingleColor ? point.color : endColor;
+      const { startColor, endColor } = _resolveBarColors(point, useSingleColor ? 0 : globalIndex, useSingleColor);
       const prevBarWidth = Math.abs(xBarScale(prevPoint + X_ORIGIN) - xBarScale(X_ORIGIN));
       prevPoint > 0 ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
       const currentWidth = Math.abs(xBarScale(point.x + X_ORIGIN) - xBarScale(X_ORIGIN));
@@ -703,7 +694,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       const gradientId = `${_gradientId}_string_${globalIndex}`;
-      const useGradient = props.enableGradient && startColor !== endColor;
+      const useGradient = !!props.enableGradient;
       const fillColor = useGradient ? `url(#${gradientId})` : startColor;
 
       return (
@@ -767,23 +758,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const mapLegendToColor: Record<string, string> = {};
 
     data.forEach((point: HorizontalBarChartWithAxisDataPoint, index: number) => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      let color: string;
-      if (useSingleColor) {
-        if (props.enableGradient) {
-          const gradientColors = props.colors ? getNextGradient(0) : getNextGradient(0);
-          color = Array.isArray(gradientColors) ? gradientColors[0] : gradientColors;
-        } else {
-          color = props.colors ? _createColors()(1) : getNextColor(1, 0);
-        }
-      } else {
-        if (props.enableGradient) {
-          const gradientColors = props.colors ? getNextGradient(index) : getNextGradient(index);
-          color = Array.isArray(gradientColors) ? gradientColors[0] : gradientColors;
-        } else {
-          color = point.color ? point.color : props.colors ? _createColors()(point.x) : getNextColor(index, 0);
-        }
-      }
+      const { solidColor, startColor } = _resolveBarColors(point, useSingleColor ? 0 : index, !!useSingleColor);
+      const color = props.enableGradient ? startColor : solidColor;
 
       mapLegendToColor[point.legend!] = color;
     });
