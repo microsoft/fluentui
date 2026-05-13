@@ -117,23 +117,18 @@ export const Default: Story = {
 };
 
 export const MultipleSelection: Story = {
+  args: {
+    ...Default.args,
+    multiple: true,
+    placeholder: 'Select fruits',
+  },
+};
+
+export const MultipleSelectionConstrainedWidth: Story = {
   render: renderComponent(html<StoryArgs<FluentDropdown>>`
-    <fluent-field ?disabled="${story => story.disabled}">
+    <fluent-field>
       <label slot="label">${story => story.placeholder}</label>
-      <fluent-dropdown
-        slot="input"
-        appearance="${story => story.appearance}"
-        ?disabled="${story => story.disabled}"
-        ?multiple="${story => story.multiple}"
-        ?required="${story => story.required}"
-        name="${story => story.name}"
-        size="${story => story.size}"
-        id="${story => story.id}"
-        placeholder="${story => story.placeholder}"
-        type="${story => story.type}"
-        style="width: 280px"
-        ${ref('dropdown')}
-      >
+      <fluent-dropdown slot="input" ?multiple="${story => story.multiple}" style="width: 280px" ${ref('dropdown')}>
         <fluent-listbox>${repeat(story => story.slottedContent?.(), optionTemplate)}</fluent-listbox>
       </fluent-dropdown>
     </fluent-field>
