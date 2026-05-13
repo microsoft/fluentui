@@ -138,7 +138,7 @@ export function useListboxSlot(
     return () => {
       el.removeEventListener('toggle', onListboxToggle);
     };
-  }, [open, onListboxToggle]);
+  }, [listboxRef, open, onListboxToggle]);
 
   return listboxSlot;
 }
