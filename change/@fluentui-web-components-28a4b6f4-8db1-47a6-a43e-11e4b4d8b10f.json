@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: allow multiple selected dropdown text to wrap",
+  "type": "none",
+  "comment": "chore: add constrained width dropdown story",
   "packageName": "@fluentui/web-components",
   "email": "brianbrady@microsoft.com",
   "dependentChangeType": "none"
