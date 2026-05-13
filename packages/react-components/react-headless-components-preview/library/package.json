@@ -312,6 +312,12 @@
       "import": "./lib/tag-group.js",
       "require": "./lib-commonjs/tag-group.js"
     },
+    "./teaching-popover": {
+      "types": "./dist/teaching-popover.d.ts",
+      "node": "./lib-commonjs/teaching-popover.js",
+      "import": "./lib/teaching-popover.js",
+      "require": "./lib-commonjs/teaching-popover.js"
+    },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
       "node": "./lib-commonjs/textarea.js",
