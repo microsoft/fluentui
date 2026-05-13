@@ -10,6 +10,7 @@ import {
   DialogActions,
   Button,
 } from '@fluentui/react-components';
+import story from './DialogNestedDialogs.md';
 
 export const NestedDialogsWithTrigger = (): JSXElement => {
   return (
@@ -35,8 +36,8 @@ export const NestedDialogsWithTrigger = (): JSXElement => {
                 <DialogBody>
                   <DialogTitle>Inner Dialog</DialogTitle>
                   <DialogContent>
-                    This is a nested dialog inside the outer dialog. Focus will automatically be restored to the outer
-                    dialog when this one closes thanks to DialogTrigger.
+                    This is a nested dialog inside the outer dialog. Focus will automatically be restored to the Open
+                    Inner Dialog button when this one closes thanks to DialogTrigger.
                   </DialogContent>
                   <DialogActions>
                     <Button appearance="primary">Confirm</Button>
@@ -61,11 +62,7 @@ export const NestedDialogsWithTrigger = (): JSXElement => {
 NestedDialogsWithTrigger.parameters = {
   docs: {
     description: {
-      story: [
-        'Using DialogTrigger for nested dialogs provides automatic focus restoration.',
-        'This is the simpler and recommended approach when the dialogs are opened by user interaction.',
-        'Focus management is handled automatically without needing useRestoreFocusSource and useRestoreFocusTarget hooks.',
-      ].join('\n'),
+      story,
     },
   },
 };
