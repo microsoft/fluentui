@@ -111,11 +111,6 @@ export const styles = css`
     cursor: pointer;
   }
 
-  :host([multiple]) ::slotted(button) {
-    min-width: 0;
-    white-space: normal;
-  }
-
   ::slotted(input) {
     cursor: text;
   }
@@ -127,7 +122,6 @@ export const styles = css`
     aspect-ratio: 1;
     color: ${colorNeutralForeground3};
     display: inline-flex;
-    flex-shrink: 0;
     justify-content: center;
     width: 20px;
   }
