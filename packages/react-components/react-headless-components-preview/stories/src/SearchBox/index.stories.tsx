@@ -4,7 +4,7 @@ import descriptionMd from './SearchBoxDescription.md';
 export { Default } from './SearchBoxDefault.stories';
 
 export default {
-  title: 'Headless Components/SearchBox',
+  title: 'Components/SearchBox',
   component: SearchBox,
   parameters: {
     docs: {

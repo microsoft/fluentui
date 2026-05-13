@@ -14,7 +14,7 @@ export { Nested } from './PopoverNested.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 
 export default {
-  title: 'Headless Components/Popover',
+  title: 'Components/Popover',
   component: Popover,
   subcomponents: { PopoverTrigger, PopoverSurface },
   parameters: {

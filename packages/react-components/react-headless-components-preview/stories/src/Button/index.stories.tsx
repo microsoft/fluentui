@@ -4,7 +4,7 @@ import descriptionMd from './ButtonDescription.md';
 export { Default } from './ButtonDefault.stories';
 
 export default {
-  title: 'Headless Components/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     docs: {

@@ -4,7 +4,7 @@ import descriptionMd from './SpinButtonDescription.md';
 export { Default } from './SpinButtonDefault.stories';
 
 export default {
-  title: 'Headless Components/SpinButton',
+  title: 'Components/SpinButton',
   component: SpinButton,
   parameters: {
     docs: {

@@ -10,7 +10,7 @@ export { Default } from './MessageBarDefault.stories';
 export { Intent } from './MessageBarIntent.stories';
 
 export default {
-  title: 'Headless Components/MessageBar',
+  title: 'Components/MessageBar',
   component: MessageBar,
   subcomponents: {
     MessageBarBody,

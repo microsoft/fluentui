@@ -11,7 +11,7 @@ export { RelationshipLabel } from './TooltipRelationshipLabel.stories';
 export { RelationshipDescription } from './TooltipRelationshipDescription.stories';
 
 export default {
-  title: 'Headless Components/Tooltip',
+  title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
     docs: {

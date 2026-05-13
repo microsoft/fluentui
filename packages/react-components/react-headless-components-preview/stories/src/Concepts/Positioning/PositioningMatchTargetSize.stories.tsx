@@ -6,7 +6,7 @@ import styles from './positioning.module.css';
 
 export const MatchTargetSize = (): React.ReactNode => (
   <div className={styles.column}>
-    <Popover open positioning={{ matchTargetSize: 'width' }}>
+    <Popover defaultOpen positioning={{ matchTargetSize: 'width' }}>
       <PopoverTrigger>
         <button className={`${styles.trigger} ${styles.triggerWide}`}>Click me</button>
       </PopoverTrigger>
