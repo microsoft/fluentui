@@ -9,6 +9,8 @@ import type { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   areArraysEqual,
+  getColorFromToken,
+  getNextColor,
   getNextGradient,
   MIN_DONUT_RADIUS,
   ChartTitle,
@@ -31,6 +33,8 @@ const MIN_LEGEND_CONTAINER_HEIGHT = 40;
  */
 export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwardRef<HTMLDivElement, DonutChartProps>(
   ({ innerRadius = 0, hideLabels = true, ...restProps }, forwardedRef) => {
+    type DonutChartDataPointWithGradient = ChartDataPoint & { gradient?: [string, string] };
+
     const props = { innerRadius, hideLabels, ...restProps };
     const { chartContainerRef: _rootElem, legendsRef: _legendsRef } = useImageExport(
       props.componentRef,
@@ -49,7 +53,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
     const [_height, setHeight] = React.useState<number | undefined>(props.height || 200);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
-    const [color, setColor] = React.useState<string | [string, string] | undefined>('');
+    const [color, setColor] = React.useState<string | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
@@ -109,11 +113,13 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         });
       }
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
-        const useGradient = Array.isArray(point.color);
+        const pointWithGradient = point as DonutChartDataPointWithGradient;
+        const legendColor =
+          props.enableGradient && pointWithGradient.gradient ? pointWithGradient.gradient[0] : (point.color as string);
         // mapping data to the format Legends component needs
         const pointLegend: Legend = {
           title: point.legend!,
-          color: useGradient ? point.color![0] : (point.color as string),
+          color: legendColor,
           action: () => {
             if (selectedLegends.includes(point.legend!)) {
               setSelectedLegends(selectedLegends.filter(legend => legend !== point.legend!));
@@ -164,10 +170,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       e: React.FocusEvent<SVGPathElement>,
       targetElement?: HTMLElement | null,
     ): void {
+      const focusColor = typeof data.color === 'string' ? data.color : data.color?.[0];
       setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
       setValue(data.data!.toString());
       setLegend(data.legend);
-      setColor(data.color);
+      setColor(focusColor);
       setXCalloutValue(data.xAxisCalloutData!);
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
@@ -182,10 +189,17 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     ): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
+        const pointWithGradient = data as DonutChartDataPointWithGradient;
+        let hoverColor = data.color as string;
+
+        if (props.enableGradient && pointWithGradient.gradient) {
+          hoverColor = pointWithGradient.gradient[0];
+        }
+
         setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
         setValue(data.data!.toString());
         setLegend(data.legend);
-        setColor(data.color);
+        setColor(hoverColor);
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
@@ -263,34 +277,34 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     function _addDefaultColors(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            let itemColor = item.color;
+            let itemColor: string;
+            let gradient: [string, string] | undefined;
+            const itemWithGradient = item as DonutChartDataPointWithGradient;
 
-            // if color is not defined, assign a default color
-            if (!itemColor) {
-              itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
-            }
-            // if color is a string, check if it is undefined or blank assign a default color
-            if (typeof itemColor === 'string' && itemColor.trim() === '') {
-              itemColor = props.enableGradient ? getNextGradient(index) : getNextGradient(index)[0];
-            }
-            // if color is an array, check if either colors are undefined or blank
-            // if startColor is undefined or blank, assign a default color
-            // if endColor is undefined or blank, assign the startColor to endColor
-            if (Array.isArray(itemColor)) {
-              const [startColor, endColor] = itemColor;
-              if (!startColor || startColor.trim() === '') {
-                itemColor[0] = getNextGradient(index)[0];
-              }
-              if (!endColor || endColor.trim() === '') {
-                itemColor[1] = props.enableGradient ? getNextGradient(index)[1] : itemColor[0];
-              }
-              // If gradients are disabled, convert array to single color
-              if (!props.enableGradient) {
-                itemColor = itemColor[0];
-              }
+            if (typeof item.color === 'undefined' || item.color === '') {
+              // Auto-selected color: generate gradient
+              itemColor = getNextColor(index, 0);
+              gradient = getNextGradient(index);
+            } else if (typeof item.color === 'string') {
+              // User-provided solid color: no gradient
+              itemColor = getColorFromToken(item.color);
+              gradient = undefined;
+            } else {
+              // User-provided gradient array: use it
+              const startColor = item.color[0] || getNextColor(index, 0);
+              const endColor = item.color[1] || startColor;
+              itemColor = startColor;
+              gradient = [startColor, endColor];
             }
 
-            return { ...item, color: itemColor };
+            // Override with explicit gradient property if provided
+            if (itemWithGradient.gradient) {
+              const start = itemWithGradient.gradient[0] || itemColor;
+              const end = itemWithGradient.gradient[1] || start;
+              gradient = [start, end];
+            }
+
+            return { ...item, color: itemColor, ...(gradient ? { gradient } : {}) } as DonutChartDataPointWithGradient;
           })
         : [];
     }
@@ -387,6 +401,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
               outerRadius={outerRadius}
               innerRadius={props.innerRadius!}
               data={chartData!}
+              enableGradient={props.enableGradient}
+              roundCorners={props.roundCorners}
               onFocusCallback={_focusCallback}
               hoverOnCallback={_hoverCallback}
               hoverLeaveCallback={_hoverLeave}
@@ -413,7 +429,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           }
           legend={legend!}
           YValue={value!}
-          color={Array.isArray(color) ? color[0] : color}
+          color={color}
           isCalloutForStack={false}
           customCallout={{
             customizedCallout: props.onRenderCalloutPerDataPoint

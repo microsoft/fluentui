@@ -25,7 +25,6 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   getNextColor,
-  getNextGradient,
   getColorFromToken,
   getSecureProps,
   areArraysEqual,
@@ -689,11 +688,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
             {props.enableGradient && (
               <defs>
                 <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
-                  <stop offset="0" stopColor={Array.isArray(_colors[index]) ? _colors[index][0] : _colors[index]} />
-                  <stop
-                    offset="100%"
-                    stopColor={Array.isArray(_colors[index]) ? _colors[index][1] : _colors[index] + '33'}
-                  />
+                  <stop offset="0" stopColor={_colors[index]} />
+                  <stop offset="100%" stopColor="transparent" />
                 </linearGradient>
               </defs>
             )}
@@ -702,7 +698,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
               d={line(singleStackedData)!}
               fill={'transparent'}
               strokeWidth={points[index]?.lineOptions?.strokeWidth ?? 3}
-              stroke={Array.isArray(_colors[index]) ? _colors[index][0] : _colors[index]}
+              stroke={_colors[index]}
               opacity={_getLineOpacity(points[index]!.legend)}
               onMouseMove={event => _onRectMouseMove(event)}
               onMouseOut={_onRectMouseOut}
@@ -731,13 +727,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
               <path
                 id={`${index}-graph-${_uniqueIdForGraph}`}
                 d={area(singleStackedData)!}
-                fill={
-                  props.enableGradient
-                    ? `url(#gradient_${index})`
-                    : Array.isArray(_colors[index])
-                    ? _colors[index][0]
-                    : _colors[index]
-                }
+                fill={props.enableGradient ? `url(#gradient_${index})` : _colors[index]}
                 opacity={layerOpacity}
                 fillOpacity={_getOpacity(points[index]!.legend)}
                 onMouseMove={event => _onRectMouseMove(event)}
@@ -936,10 +926,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
             let color: string;
             // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
-              // If enableGradient and no color defined, use gradient array; otherwise use solid color
-              color = props.enableGradient ? getNextGradient(index)[0] : getNextColor(index, 0);
+              color = getNextColor(index, 0);
             } else {
-              // Use solid colors when gradient is disabled
               color = getColorFromToken(item.color);
             }
 

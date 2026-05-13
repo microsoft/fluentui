@@ -5,7 +5,8 @@ import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalB
 import { pointer as d3Pointer } from 'd3-selection';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import type { ScaleBand, ScaleLinear } from 'd3-scale';
-import { scaleBand as d3ScaleBand } from 'd3-scale';
+import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { rgb } from 'd3-color';
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useId } from '@fluentui/react-utilities';
@@ -281,7 +282,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             key: series.key ?? series.legend,
             data: point.y,
             color: point.color ?? series.color,
-            // gradient: series.gradient,
+            gradient: series.gradient,
             legend: series.legend,
             xAxisCalloutData: point.xAxisCalloutData,
             yAxisCalloutData: point.yAxisCalloutData,
@@ -295,6 +296,13 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     });
 
     return { barData: Object.values(barPointsByX), lineData };
+  };
+
+  // Lighten/darken a color by a given percentage to derive gradients from explicit bar colors.
+  const _adjustColor = (color: string, percentage: number, lightenColor: boolean): string => {
+    const targetColor = lightenColor ? '#ffffff' : '#000000';
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, targetColor]);
+    return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
   const _prepareChartData = () => {
@@ -318,14 +326,17 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
                 let startColor = seriesPoint.color ? seriesPoint.color : getNextColor(colorIndex, 0);
                 let endColor = startColor;
                 if (props.enableGradient) {
-                  if (seriesPoint.color && Array.isArray(seriesPoint.color)) {
-                    startColor = seriesPoint.color[0];
-                    endColor = seriesPoint.color[1];
+                  if (seriesPoint.color) {
+                    // Generate gradient colors based on seriesPoint.color (v8 behavior)
+                    startColor = _adjustColor(seriesPoint.color || endColor, 0.2, false);
+                    endColor = _adjustColor(seriesPoint.color || startColor, 0.2, true);
                   } else {
-                    startColor = getNextGradient(colorIndex)[0];
-                    endColor = getNextGradient(colorIndex)[1];
+                    const nextGradient = getNextGradient(colorIndex, 0);
+                    startColor = seriesPoint.gradient?.[0] || nextGradient[0];
+                    endColor = seriesPoint.gradient?.[1] || nextGradient[1];
                   }
                 }
+                const pointGradient: [string, string] = [startColor, endColor];
                 if (!_legendColorMap[seriesPoint.legend]) {
                   _legendColorMap[seriesPoint.legend] = [startColor, endColor];
                 }
@@ -334,6 +345,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
                 return {
                   ...seriesPoint,
                   color: seriesPoint.color ?? _legendColorMap[seriesPoint.legend][0],
+                  ...(props.enableGradient ? { gradient: pointGradient } : {}),
                 };
               }) ?? [],
           };
@@ -575,13 +587,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           }
           const barGap = (VERTICAL_BAR_GAP / 2) * (pointIndex > 0 ? 2 : 0);
           const height = Math.max(yBarScale(Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
-          let pointColor = pointData.color; // Use the color of the current point
-          let endColor = pointColor;
-          if (props.enableGradient) {
-            const gradientColors = _legendColorMap[pointData.legend];
-            pointColor = gradientColors[0];
-            endColor = gradientColors[1];
-          }
+          const pointColor = pointData.color; // Use the color of the current point
+          const startColor = pointData.gradient?.[0] || pointData.color;
+          const endColor = pointData.gradient?.[1] || pointData.color;
           const gradientId = `${_gradientId}_${singleSet.indexNum}_${legendIndex}_${pointIndex}`;
 
           if (pointData.data >= Y_ORIGIN) {
@@ -597,7 +605,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               {props.enableGradient && (
                 <defs>
                   <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
-                    <stop offset="0" stopColor={pointColor} />
+                    <stop offset="0" stopColor={startColor} />
                     <stop offset="100%" stopColor={endColor} />
                   </linearGradient>
                 </defs>
@@ -984,13 +992,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
     setCalloutLegend(pointData.legend);
     setDataForHoverCard(pointData.data);
-
-    // Use gradient colors from legend color map when gradients are enabled
-    const calloutColor =
-      props.enableGradient && _legendColorMap[pointData.legend]
-        ? _legendColorMap[pointData.legend][0]
-        : pointData.color;
-    setColor(calloutColor);
+    setColor(pointData.color);
 
     setXCalloutValue(pointData.xAxisCalloutData ?? groupData.xAxisPoint);
     setYCalloutValue(pointData.yAxisCalloutData);

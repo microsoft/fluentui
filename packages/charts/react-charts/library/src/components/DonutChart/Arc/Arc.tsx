@@ -115,17 +115,15 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
 
-    // check if gradient ([string, string]) or color (string) is provided
-    const useGradient = Array.isArray(props.color);
-    const clipId = useId('Arc_clip') + (useGradient ? `${props.color[0]}_${props.color[1]}` : (props.color as string));
+    const clipId = useId('Arc_clip') + `${props.color}_${props.nextColor}`;
 
-    const fill = useGradient
+    const fill = props.enableGradient
       ? `conic-gradient(
       from ${props.data?.startAngle}rad,
-      ${props.color[0]},
-      ${props.color[1]} ${props.data!.endAngle - props.data!.startAngle}rad
+      ${props.color},
+      ${props.nextColor} ${props.data!.endAngle - props.data!.startAngle}rad
     )`
-      : (props.color as string);
+      : props.color;
 
     const pathData = arc.cornerRadius(cornerRadius)({
       ...props.data!,
@@ -148,7 +146,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           id={id}
           d={pathData}
           className={classes.root}
-          style={{ fill: useGradient ? 'transparent' : (props.color as string), cursor: href ? 'pointer' : 'default' }}
+          style={{ fill: props.enableGradient ? 'transparent' : props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
           data-is-focusable={_shouldHighlightArc(props.data!.data.legend!) || activeArc?.length === 0}
           onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}
@@ -162,7 +160,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           role="img"
         />
         {/* Gradient rendering when useGradient is true */}
-        {useGradient && (
+        {props.enableGradient && (
           <>
             {/* clipping mask */}
             <clipPath id={clipId}>

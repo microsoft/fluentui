@@ -85,6 +85,16 @@ export interface PieProps {
   hideLabels?: boolean;
 
   /**
+   * Prop to enable the gradient in the chart
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Prop to enable round corners in the chart
+   */
+  roundCorners?: boolean;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: PieStyles;

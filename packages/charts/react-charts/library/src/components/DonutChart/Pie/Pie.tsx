@@ -21,6 +21,8 @@ const TEXT_PADDING: number = 5;
  */
 export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivElement, PieProps>(
   (props, forwardedRef) => {
+    type DonutChartDataPointWithGradient = ChartDataPoint & { gradient?: [string, string] };
+
     React.useEffect(() => {
       wrapTextInsideDonut(classes.insideDonutString, props.innerRadius! * 2 - TEXT_PADDING);
     }, []);
@@ -59,6 +61,16 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSXElement {
+      const point = d.data as DonutChartDataPointWithGradient;
+      let color = (point.color as string) || '';
+      let nextColor = color;
+
+      if (props.enableGradient && point.gradient) {
+        // Only use gradient if it exists (auto-selected color or user-provided gradient)
+        color = point.gradient[0];
+        nextColor = point.gradient[1];
+      }
+
       return (
         <Arc
           key={i}
@@ -66,7 +78,10 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
           focusData={focusData}
           innerRadius={props.innerRadius}
           outerRadius={props.outerRadius}
-          color={d.data.color!}
+          color={color}
+          nextColor={nextColor}
+          enableGradient={props.enableGradient}
+          roundCorners={props.roundCorners}
           onFocusCallback={_focusCallback}
           hoverOnCallback={_hoverCallback}
           onBlurCallback={props.onBlurCallback}
