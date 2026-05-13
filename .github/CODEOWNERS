@@ -148,13 +148,13 @@ packages/foundation-legacy @microsoft/cxe-red @khmakoto
 packages/merge-styles @dzearing @microsoft/cxe-red
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
-packages/react-components/priority-overflow @microsoft/teams-prg
-packages/react-components/react-aria @microsoft/teams-prg
-packages/react-components/react-aria/library @microsoft/teams-prg
-packages/react-components/react-aria/stories @microsoft/teams-prg
+packages/react-components/priority-overflow @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-aria @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-aria/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-aria/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
-packages/react-components/react-conformance-griffel @microsoft/teams-prg
-packages/react-components/react-context-selector @microsoft/teams-prg
+packages/react-components/react-conformance-griffel @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-context-selector @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-examples @microsoft/cxe-red
@@ -164,20 +164,20 @@ packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red
 packages/react-icons-mdl2-branded @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
-packages/react-components/react-positioning @microsoft/teams-prg
-packages/react-components/react-positioning/library @microsoft/teams-prg
-packages/react-components/react-positioning/stories @microsoft/teams-prg
-packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-components/react-overflow/library @microsoft/teams-prg
-packages/react-components/react-overflow/stories @microsoft/teams-prg
+packages/react-components/react-positioning @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-positioning/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-positioning/stories @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-overflow @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-overflow/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-overflow/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-shared-contexts @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-shared-contexts/library @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-shared-contexts/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
-packages/react-components/react-tabster @microsoft/teams-prg
-packages/react-components/react-theme @microsoft/teams-prg
-packages/react-components/react-theme/library @microsoft/teams-prg
-packages/react-components/react-theme/stories @microsoft/teams-prg
+packages/react-components/react-tabster @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-theme @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-theme/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-theme/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-utilities @microsoft/teams-prg @microsoft/cxe-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/style-utilities @bigbadcapers @microsoft/cxe-red
@@ -254,22 +254,22 @@ packages/react-components/react-textarea/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-textarea/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-tooltip/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-tooltip/stories @microsoft/cxe-prg @mainframev
-packages/react-components/react-toolbar/library @microsoft/teams-prg @chpalac
-packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac
-packages/react-components/react-portal-compat @microsoft/teams-prg
-packages/react-components/react-portal-compat-context @microsoft/teams-prg
-packages/react-components/react-theme-sass @microsoft/teams-prg
+packages/react-components/react-toolbar/library @microsoft/teams-prg @chpalac @microsoft/cxe-prg
+packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac @microsoft/cxe-prg
+packages/react-components/react-portal-compat @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-portal-compat-context @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-theme-sass @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/theme-designer @microsoft/cxe-red
-packages/react-components/global-context @microsoft/teams-prg
-packages/react-components/babel-preset-global-context @microsoft/teams-prg
-packages/react-components/react-table/library @microsoft/teams-prg
-packages/react-components/react-table/stories @microsoft/teams-prg
+packages/react-components/global-context @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/babel-preset-global-context @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-table/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-table/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-progress/library @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-progress/stories @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-persona/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-persona/stories @microsoft/cxe-prg @mainframev
-packages/react-components/react-tree/library @microsoft/teams-prg
-packages/react-components/react-tree/stories @microsoft/teams-prg
+packages/react-components/react-tree/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-tree/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-virtualizer/library @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-virtualizer/stories @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton/library @microsoft/cxe-prg @ValentinaKozlova
@@ -307,18 +307,18 @@ packages/react-components/react-calendar-compat/library @microsoft/cxe-prg @Vale
 packages/react-components/react-calendar-compat/stories @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-infolabel/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-infolabel/stories @microsoft/cxe-prg @mainframev
-packages/react-components/react-list/library @microsoft/teams-prg
-packages/react-components/react-list/stories @microsoft/teams-prg
-packages/react-components/react-motion/library @microsoft/teams-prg @microsoft/fluent-motion-framework
-packages/react-components/react-motion/stories @microsoft/teams-prg @microsoft/fluent-motion-framework
-packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @Mitch-At-Work
-packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @Mitch-At-Work
-packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
-packages/react-components/react-timepicker-compat/stories @microsoft/teams-prg
+packages/react-components/react-list/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-list/stories @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-motion/library @microsoft/teams-prg @microsoft/fluent-motion-framework @microsoft/cxe-prg
+packages/react-components/react-motion/stories @microsoft/teams-prg @microsoft/fluent-motion-framework @microsoft/cxe-prg
+packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @Mitch-At-Work @microsoft/cxe-prg
+packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @Mitch-At-Work @microsoft/cxe-prg
+packages/react-components/react-timepicker-compat/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-timepicker-compat/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-icons-compat/library @microsoft/cxe-red
 packages/react-components/react-icons-compat/stories @microsoft/cxe-red
-packages/react-components/react-tag-picker/library @microsoft/teams-prg
-packages/react-components/react-tag-picker/stories @microsoft/teams-prg
+packages/react-components/react-tag-picker/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-tag-picker/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/react-carousel/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
@@ -328,10 +328,10 @@ packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
 packages/react-components/react-color-picker/library @microsoft/cxe-prg
 packages/react-components/react-color-picker/stories @microsoft/cxe-prg
-packages/react-components/component-selector-preview/library @microsoft/teams-prg
-packages/react-components/component-selector-preview/stories @microsoft/teams-prg
-packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
-packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
+packages/react-components/component-selector-preview/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/component-selector-preview/stories @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-headless-components-preview/library @microsoft/cxe-prg
 packages/react-components/react-headless-components-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
