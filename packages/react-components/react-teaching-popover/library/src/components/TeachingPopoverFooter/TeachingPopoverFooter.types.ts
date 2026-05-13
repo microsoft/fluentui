@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import type { Button } from '@fluentui/react-button';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverContextValue } from '@fluentui/react-popover';
@@ -30,3 +31,16 @@ export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlo
 
 export type TeachingPopoverFooterProps = ComponentProps<TeachingPopoverFooterSlots> &
   Pick<TeachingPopoverFooterState, 'footerLayout'>;
+
+export type TeachingPopoverFooterBaseProps = TeachingPopoverFooterProps;
+
+/**
+ * Base state intentionally omits the `primary` / `secondary` slot and `appearance` —
+ * those are Button-styling concerns layered on by the styled hook. The styled hook
+ * uses `handleButtonClick` and `hasSecondary` to wire user-provided callbacks correctly.
+ */
+export type TeachingPopoverFooterBaseState = ComponentState<Pick<TeachingPopoverFooterSlots, 'root'>> & {
+  footerLayout?: 'horizontal' | 'vertical';
+  handleButtonClick: (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+  hasSecondary: boolean;
+};
