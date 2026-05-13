@@ -17,7 +17,7 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
  */
 export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
-  const importMappings = options.importMappings ?? {};
+  const { importMappings } = options;
   const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
@@ -29,10 +29,13 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
       parserOptions.plugins.push('typescript');
     },
     pre() {
-      this.imports = Object.keys(importMappings).reduce((acc, cur) => {
-        acc[importMappings[cur].replace] = [];
-        return acc;
-      }, {} as PluginState['imports']);
+      this.imports = Object.keys(importMappings).reduce(
+        (acc, cur) => {
+          acc[importMappings[cur].replace] = [];
+          return acc;
+        },
+        {} as PluginState['imports'],
+      );
     },
     visitor: {
       Program: {

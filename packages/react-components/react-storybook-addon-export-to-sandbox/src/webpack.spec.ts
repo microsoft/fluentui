@@ -1,14 +1,11 @@
 import { PresetConfig } from './public-types';
 import { webpack, WebpackFinalOptions } from './webpack';
 describe(`webpack`, () => {
-  it.each([
-    ['POSIX path', 'node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib/preset.js'],
-    ['Windows path', 'node_modules\\@fluentui\\react-storybook-addon-export-to-sandbox\\lib\\preset.js'],
-  ])(`should register webpack preset with defaults from %s`, (_label, presetName) => {
+  it(`should register webpack preset with defaults`, () => {
     const actual = webpack({ module: { rules: [] } }, {
       presetsList: [
         {
-          name: presetName,
+          name: 'node_modules/@fluentui/react-storybook-addon-export-to-sandbox/lib/preset.js',
           preset: {},
           options: {},
         },

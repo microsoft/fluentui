@@ -43,8 +43,6 @@ export const parameters = {
         'Components',
         'Compat Components',
         'Preview Components',
-        'Icons',
-        ['FileTypeIcon'],
         'Motion',
         'Utilities',
       ],

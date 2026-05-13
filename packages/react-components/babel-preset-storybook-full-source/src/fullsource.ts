@@ -170,7 +170,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           if (cssModulesEnabled) {
             const cssModules = collectCssModuleImports(path, t, state.filename);
             const tokensSource = cssModulesConfig?.tokensFilePath
-              ? normalizeLineEndings(fs.readFileSync(cssModulesConfig.tokensFilePath, 'utf-8'))
+              ? fs.readFileSync(cssModulesConfig.tokensFilePath, 'utf-8')
               : undefined;
 
             if (cssModules.length > 0 || tokensSource) {
@@ -223,15 +223,11 @@ function collectCssModuleImports(
     seen.add(resolved);
     try {
       const source = fs.readFileSync(resolved, 'utf-8');
-      result.push({ name: nodePath.basename(resolved), source: normalizeLineEndings(source) });
+      result.push({ name: nodePath.basename(resolved), source });
     } catch {
       // CSS file not found — skip silently (it may be handled by webpack aliases)
     }
   }
 
   return result;
-}
-
-function normalizeLineEndings(source: string) {
-  return source.replace(/\r\n/g, '\n');
 }
