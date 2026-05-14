@@ -12,6 +12,12 @@ export type DirectionalSlideProps = {
   easing?: string;
   animationDirection?: AnimationDirection;
   animateBackwards?: boolean;
+  /**
+   * When this value changes, the slide animation replays from the start on the same DOM element
+   * without remounting the subtree. Use this instead of a React `key` to retrigger the animation
+   * on navigation, so focus and DOM identity are preserved during keyboard navigation.
+   */
+  replayKey?: string | number;
   children: JSXElement;
 };
 
@@ -25,6 +31,7 @@ export const DirectionalSlide = React.forwardRef<HTMLElement, DirectionalSlidePr
     easing = motionTokens.curveDecelerateMax,
     animationDirection = AnimationDirection.Vertical,
     animateBackwards = false,
+    replayKey,
     children,
   } = props;
 
@@ -44,7 +51,7 @@ export const DirectionalSlide = React.forwardRef<HTMLElement, DirectionalSlidePr
   const childWithRef = React.cloneElement(child, { ref: mergedRef });
 
   return (
-    <Slide.In duration={duration} easing={easing} outX={outX} outY={outY}>
+    <Slide.In duration={duration} easing={easing} outX={outX} outY={outY} replayKey={replayKey}>
       {childWithRef}
     </Slide.In>
   );

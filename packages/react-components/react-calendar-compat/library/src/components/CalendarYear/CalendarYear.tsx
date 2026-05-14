@@ -177,9 +177,8 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
   return (
     <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
       {cells.map((cellRow: React.ReactNode[], index: number) => {
-        const rowKey = 'yearPickerRow_' + index + '_' + fromYear;
         return (
-          <DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
+          <DirectionalSlide key={index} replayKey={fromYear} {...{ animationDirection, animateBackwards }}>
             <div role="row" className={classNames.buttonRow}>
               {cellRow}
             </div>

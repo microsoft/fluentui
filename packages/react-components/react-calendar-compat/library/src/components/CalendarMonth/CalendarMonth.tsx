@@ -254,9 +254,12 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
       <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={yearString}>
         {rowIndexes.map((rowNum: number) => {
           const monthsForRow = strings!.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
-          const rowKey = 'monthRow_' + rowNum + navigatedDate.getFullYear();
           return (
-            <DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
+            <DirectionalSlide
+              key={rowNum}
+              replayKey={navigatedDate.getFullYear()}
+              {...{ animationDirection, animateBackwards }}
+            >
               <div role="row" className={classNames.buttonRow}>
                 {monthsForRow.map((month: string, index: number) => {
                   const monthIndex = rowNum * MONTHS_PER_ROW + index;

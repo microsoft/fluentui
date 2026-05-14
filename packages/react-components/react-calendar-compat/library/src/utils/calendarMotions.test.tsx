@@ -54,4 +54,22 @@ describe('DirectionalSlide', () => {
     );
     expect(container.firstElementChild).toBe(getByTestId('child'));
   });
+
+  it('preserves child DOM identity when replayKey changes (does not remount)', () => {
+    const { getByTestId, rerender } = render(
+      <DirectionalSlide replayKey="a">
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+    const childBefore = getByTestId('child');
+
+    rerender(
+      <DirectionalSlide replayKey="b">
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+    const childAfter = getByTestId('child');
+
+    expect(childAfter).toBe(childBefore);
+  });
 });

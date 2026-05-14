@@ -165,6 +165,10 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid-linear' });
   const firstWeek = weeks[0];
   const finalWeek = weeks![weeks!.length - 1];
+  // Single navigation epoch for all rows in the grid. Derived from the first visible day's key
+  // (`Date.toString()`), which changes when the user navigates to a different month but stays
+  // stable across intra-month interactions (e.g. day selection).
+  const navigationEpoch = firstWeek[0].key;
 
   return (
     <table
@@ -178,7 +182,11 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     >
       <tbody>
         <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
-        <DirectionalSlide key={'firstTransitionWeek_' + firstWeek[0].key} {...{ animationDirection, animateBackwards }}>
+        <DirectionalSlide
+          key="firstTransitionWeek"
+          replayKey={navigationEpoch}
+          {...{ animationDirection, animateBackwards }}
+        >
           <CalendarGridRow
             {...props}
             {...partialWeekProps}
@@ -190,7 +198,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           />
         </DirectionalSlide>
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
-          <DirectionalSlide key={weekIndex + '_' + week[0].key} {...{ animationDirection, animateBackwards }}>
+          <DirectionalSlide key={weekIndex} replayKey={navigationEpoch} {...{ animationDirection, animateBackwards }}>
             <CalendarGridRow
               {...props}
               {...partialWeekProps}
@@ -201,7 +209,11 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
             />
           </DirectionalSlide>
         ))}
-        <DirectionalSlide key={'lastTransitionWeek_' + finalWeek[0].key} {...{ animationDirection, animateBackwards }}>
+        <DirectionalSlide
+          key="lastTransitionWeek"
+          replayKey={navigationEpoch}
+          {...{ animationDirection, animateBackwards }}
+        >
           <CalendarGridRow
             {...props}
             {...partialWeekProps}
