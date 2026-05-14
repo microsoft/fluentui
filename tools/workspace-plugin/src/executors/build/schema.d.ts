@@ -40,6 +40,11 @@ export interface BuildExecutorSchema {
    */
   enableGriffelRawStyles?: boolean;
   /**
+   * Enable babel-plugin-react-compiler processing.
+   * When enabled, source is processed with React Compiler as a separate Babel pass before Griffel AOT.
+   */
+  reactCompiler?: boolean;
+  /**
    * List of static assets.
    */
   assets?: (

@@ -389,4 +389,120 @@ describe('Build Executor', () => {
       expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js.map'))).toBe(false);
     }, 60000);
   });
+
+  describe(`#reactCompiler`, () => {
+    const reactCompilerContext: ExecutorContext = {
+      root: workspaceRoot,
+      cwd: process.cwd(),
+      isVerbose: false,
+      projectName: 'react-compiler-proj',
+      projectsConfigurations: {
+        version: 2,
+        projects: {
+          'react-compiler-proj': {
+            root: 'libs/react-compiler-proj',
+            name: 'react-compiler-proj',
+          },
+        },
+      },
+      nxJsonConfiguration: {},
+      projectGraph: { nodes: {}, dependencies: {} },
+    };
+
+    it('applies react-compiler transforms to ESM output (without styles)', async () => {
+      jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
+      jest.spyOn(logger, 'verbose').mockImplementation(() => {
+        return;
+      });
+
+      const reactCompilerOptions: BuildExecutorSchema = {
+        sourceRoot: 'src',
+        outputPathRoot: 'libs/react-compiler-proj/dist',
+        moduleOutput: [
+          { module: 'es6', outputPath: 'lib' },
+          { module: 'commonjs', outputPath: 'lib-commonjs' },
+        ],
+        assets: [],
+        generateApi: false,
+        clean: true,
+        reactCompiler: true,
+      };
+
+      const output = await executor(reactCompilerOptions, reactCompilerContext);
+      expect(output.success).toBe(true);
+
+      // assert react-compiler memoization cache is present in ESM output
+      expect(readFileSync(join(workspaceRoot, 'libs/react-compiler-proj/lib/Counter.js'), 'utf-8'))
+        .toMatchInlineSnapshot(`
+        "import { c as _c } from \\"react/compiler-runtime\\";
+        import * as React from 'react';
+        export function Counter(t0) {
+            const $ = _c(2);
+            const { initialCount: t1 } = t0;
+            const initialCount = t1 === undefined ? 0 : t1;
+            const [count, setCount] = React.useState(initialCount);
+            let t2;
+            if ($[0] !== count) {
+                t2 = /*#__PURE__*/ React.createElement(\\"div\\", null, /*#__PURE__*/ React.createElement(\\"p\\", null, \\"Count: \\", count), /*#__PURE__*/ React.createElement(\\"button\\", {
+                    onClick: ()=>setCount(count + 1)
+                }, \\"Increment\\"));
+                $[0] = count;
+                $[1] = t2;
+            } else {
+                t2 = $[1];
+            }
+            return t2;
+        }
+        "
+      `);
+
+      // assert intermediate directory is cleaned up
+      expect(existsSync(join(workspaceRoot, 'libs/react-compiler-proj/temp/react-compiler-intermediate'))).toBe(false);
+    }, 60000);
+
+    it('applies react-compiler before griffel AOT (with styles)', async () => {
+      jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
+      jest.spyOn(logger, 'verbose').mockImplementation(() => {
+        return;
+      });
+
+      const optionsWithReactCompiler: BuildExecutorSchema = {
+        ...options,
+        reactCompiler: true,
+      };
+
+      const output = await executor(optionsWithReactCompiler, context);
+      expect(output.success).toBe(true);
+
+      // assert greeter.js ESM output is valid (react-compiler ran on TS source, SWC compiled from intermediate)
+      expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
+        "import { useStyles } from './greeter.styles';
+        export function greeter(greeting, user) {
+            var _user_hometown;
+            const styles = useStyles();
+            return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${(_user_hometown = user.hometown) === null || _user_hometown === void 0 ? void 0 : _user_hometown.name}</h1>\`;
+        }
+        "
+      `);
+
+      // assert griffel AOT still applied correctly on styles files
+      expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.js'), 'utf-8')).toMatchInlineSnapshot(`
+        "import { __styles } from '@griffel/react';
+        export const useStyles = /*#__PURE__*/__styles({
+          root: {
+            sj55zd: \\"fe3e8s9\\"
+          }
+        }, {
+          d: [\\".fe3e8s9{color:red;}\\"]
+        });"
+      `);
+
+      // assert intermediate directory is cleaned up
+      expect(existsSync(join(workspaceRoot, 'libs/proj/temp/react-compiler-intermediate'))).toBe(false);
+    }, 60000);
+  });
 });

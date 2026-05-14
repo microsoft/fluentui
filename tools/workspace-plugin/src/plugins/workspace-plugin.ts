@@ -127,7 +127,14 @@ function createNodesInternal(
     projects: {
       [projectRoot]: {
         targets: { ...workspaceConfig.targets, ...ritConfig.targets },
-        metadata: { ...workspaceConfig.metadata, ...ritConfig.metadata },
+        metadata: {
+          ...workspaceConfig.metadata,
+          ...ritConfig.metadata,
+          targetGroups: {
+            ...workspaceConfig.metadata?.targetGroups,
+            ...ritConfig.metadata?.targetGroups,
+          },
+        },
       },
     },
   };
@@ -205,6 +212,8 @@ function buildWorkspaceProjectConfiguration(
 
     const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
 
+    const isReactProject = Boolean(config.packageJSON.peerDependencies?.react);
+
     targets.build = {
       cache: true,
       executor: '@fluentui/workspace-plugin:build',
@@ -229,7 +238,9 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/package.json',
         '{projectRoot}/.swcrc',
         ...targets['generate-api'].inputs!,
-        { externalDependencies: ['@swc/core', '@microsoft/api-extractor', 'typescript'] },
+        {
+          externalDependencies: ['@swc/core', '@microsoft/api-extractor', 'typescript', 'babel-plugin-react-compiler'],
+        },
       ],
       outputs: [
         `{projectRoot}/lib`,
@@ -265,10 +276,88 @@ function buildWorkspaceProjectConfiguration(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
-    return { targets };
+    let metadata: WorkspaceTargets['metadata'];
+
+    if (isReactProject) {
+      const rcaConfig = buildReactCompilerAnalyzerTargets(projectRoot, options, context, config);
+      Object.assign(targets, rcaConfig.targets);
+      metadata = rcaConfig.metadata;
+    }
+
+    return { targets, metadata };
   }
 
   return { targets };
+}
+
+function buildReactCompilerAnalyzerTargets(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): WorkspaceTargets {
+  const targets: Record<string, TargetConfiguration> = {};
+  const groupName = 'React Compiler Analyzer';
+  const metadata = { targetGroups: { [groupName]: [] as string[] } };
+
+  const inputs = ['default', { externalDependencies: ['babel-plugin-react-compiler'] }];
+
+  targets['react-compiler-analyzer--lint'] = {
+    command: `${config.pmc.exec} react-compiler-analyzer lint ./src`,
+    options: { cwd: projectRoot },
+    cache: true,
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: "Lint redundant 'use no memo' directives",
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer lint --help`,
+        example: {
+          options: {
+            fix: true,
+          },
+        },
+      },
+    },
+  };
+
+  targets['react-compiler-analyzer--analyze'] = {
+    command: `${config.pmc.exec} react-compiler-analyzer analyze ./src`,
+    options: { cwd: projectRoot },
+    cache: true,
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: 'Analyze React Compiler coverage and migration status',
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer analyze --help`,
+        example: {
+          options: {
+            annotate: true,
+          },
+        },
+      },
+    },
+  };
+
+  targets['react-compiler-analyzer'] = {
+    executor: 'nx:noop',
+    cache: true,
+    dependsOn: ['react-compiler-analyzer--lint'],
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: 'React Compiler analysis (runs lint on CI)',
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer --help`,
+        example: {},
+      },
+    },
+  };
+
+  metadata.targetGroups[groupName].push(...Object.keys(targets));
+
+  return { targets, metadata };
 }
 
 function resolveExportSubpathsOption(config: TaskBuilderConfig): {
