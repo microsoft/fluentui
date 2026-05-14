@@ -171,7 +171,6 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     // rather than recreating them, preserving DOM continuity.
     useIsomorphicLayoutEffect(() => {
       if (isInitialRender.current) {
-        isInitialRender.current = false;
         return;
       }
 
@@ -183,6 +182,14 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps -- replayKey is intentionally the only trigger; other deps are stable refs/callbacks
     }, [replayKey]);
+
+    useIsomorphicLayoutEffect(() => {
+      isInitialRender.current = false;
+
+      return () => {
+        isInitialRender.current = true;
+      };
+    }, []);
 
     return child;
   };
