@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ToolbarProps } from '@fluentui/react-components';
 import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarToggleButton, ToolbarProps } from '@fluentui/react-components';
+import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components';
 
 export const ControlledToggleButton = (): JSXElement => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({

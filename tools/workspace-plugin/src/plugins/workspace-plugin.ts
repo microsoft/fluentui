@@ -127,7 +127,14 @@ function createNodesInternal(
     projects: {
       [projectRoot]: {
         targets: { ...workspaceConfig.targets, ...ritConfig.targets },
-        metadata: { ...workspaceConfig.metadata, ...ritConfig.metadata },
+        metadata: {
+          ...workspaceConfig.metadata,
+          ...ritConfig.metadata,
+          targetGroups: {
+            ...workspaceConfig.metadata?.targetGroups,
+            ...ritConfig.metadata?.targetGroups,
+          },
+        },
       },
     },
   };
@@ -201,27 +208,11 @@ function buildWorkspaceProjectConfiguration(
 
     // library
 
-    targets['generate-api'] = {
-      cache: true,
-      executor: '@fluentui/workspace-plugin:generate-api',
-      inputs: [
-        '{projectRoot}/config/api-extractor.json',
-        '{projectRoot}/tsconfig.json',
-        '{projectRoot}/tsconfig.lib.json',
-        '{projectRoot}/src/**/*.tsx?',
-        // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
-        '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
-        { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
-      ],
-      outputs: [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
-      metadata: {
-        technologies: ['typescript', 'api-extractor'],
-        help: {
-          command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
-          example: {},
-        },
-      },
-    };
+    targets['generate-api'] = buildGenerateApiTarget(projectRoot, config);
+
+    const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
+
+    const isReactProject = Boolean(config.packageJSON.peerDependencies?.react);
 
     targets.build = {
       cache: true,
@@ -235,6 +226,7 @@ function buildWorkspaceProjectConfiguration(
           config.tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
+        ...(userEnabledExportSubpaths ? { generateApi: { exportSubpaths: userExportSubpaths } } : null),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
@@ -246,14 +238,17 @@ function buildWorkspaceProjectConfiguration(
         '{projectRoot}/package.json',
         '{projectRoot}/.swcrc',
         ...targets['generate-api'].inputs!,
-        { externalDependencies: ['@swc/core', '@microsoft/api-extractor', 'typescript'] },
+        {
+          externalDependencies: ['@swc/core', '@microsoft/api-extractor', 'typescript', 'babel-plugin-react-compiler'],
+        },
       ],
       outputs: [
         `{projectRoot}/lib`,
         `{projectRoot}/lib-commonjs`,
         config.tags.includes('ships-amd') ? `{projectRoot}/lib-amd` : null,
         `{projectRoot}/dist`,
-        ...targets['generate-api'].outputs!,
+        // only spread etc/ outputs from generate-api (dist/ is already covered by {projectRoot}/dist above)
+        ...targets['generate-api'].outputs!.filter(outputPath => !outputPath.startsWith('{projectRoot}/dist')),
       ].filter(Boolean) as string[],
       metadata: {
         technologies: ['swc', 'typescript', 'api-extractor'],
@@ -281,10 +276,127 @@ function buildWorkspaceProjectConfiguration(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
-    return { targets };
+    let metadata: WorkspaceTargets['metadata'];
+
+    if (isReactProject) {
+      const rcaConfig = buildReactCompilerAnalyzerTargets(projectRoot, options, context, config);
+      Object.assign(targets, rcaConfig.targets);
+      metadata = rcaConfig.metadata;
+    }
+
+    return { targets, metadata };
   }
 
   return { targets };
+}
+
+function buildReactCompilerAnalyzerTargets(
+  projectRoot: string,
+  options: Required<WorkspacePluginOptions>,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): WorkspaceTargets {
+  const targets: Record<string, TargetConfiguration> = {};
+  const groupName = 'React Compiler Analyzer';
+  const metadata = { targetGroups: { [groupName]: [] as string[] } };
+
+  const inputs = ['default', { externalDependencies: ['babel-plugin-react-compiler'] }];
+
+  targets['react-compiler-analyzer--lint'] = {
+    command: `${config.pmc.exec} react-compiler-analyzer lint ./src`,
+    options: { cwd: projectRoot },
+    cache: true,
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: "Lint redundant 'use no memo' directives",
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer lint --help`,
+        example: {
+          options: {
+            fix: true,
+          },
+        },
+      },
+    },
+  };
+
+  targets['react-compiler-analyzer--analyze'] = {
+    command: `${config.pmc.exec} react-compiler-analyzer analyze ./src`,
+    options: { cwd: projectRoot },
+    cache: true,
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: 'Analyze React Compiler coverage and migration status',
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer analyze --help`,
+        example: {
+          options: {
+            annotate: true,
+          },
+        },
+      },
+    },
+  };
+
+  targets['react-compiler-analyzer'] = {
+    executor: 'nx:noop',
+    cache: true,
+    dependsOn: ['react-compiler-analyzer--lint'],
+    inputs,
+    metadata: {
+      technologies: ['react-compiler'],
+      description: 'React Compiler analysis (runs lint on CI)',
+      help: {
+        command: `${config.pmc.exec} react-compiler-analyzer --help`,
+        example: {},
+      },
+    },
+  };
+
+  metadata.targetGroups[groupName].push(...Object.keys(targets));
+
+  return { targets, metadata };
+}
+
+function resolveExportSubpathsOption(config: TaskBuilderConfig): {
+  value: boolean | { apiReport?: boolean };
+  enabled: boolean;
+} {
+  const value = config.projectJSON.targets?.['generate-api']?.options?.exportSubpaths;
+  const enabled = value === true || (typeof value === 'object' && value !== null);
+  return { value, enabled };
+}
+
+function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
+  const { enabled: hasExportSubpaths } = resolveExportSubpathsOption(config);
+
+  return {
+    cache: true,
+    executor: '@fluentui/workspace-plugin:generate-api',
+    inputs: [
+      '{projectRoot}/config/api-extractor.json',
+      '{projectRoot}/tsconfig.json',
+      '{projectRoot}/tsconfig.lib.json',
+      '{projectRoot}/src/**/*.tsx?',
+      // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
+      '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+      { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+    ],
+    // When exportSubpaths is enabled, use broad globs for outputs
+    // — the executor resolves exact paths at runtime.
+    outputs: hasExportSubpaths
+      ? ['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']
+      : [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
+    metadata: {
+      technologies: ['typescript', 'api-extractor'],
+      help: {
+        command: `${config.pmc.exec} nx run ${config.projectJSON.name}:generate-api --help`,
+        example: {},
+      },
+    },
+  };
 }
 
 function buildTestTarget(

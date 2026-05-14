@@ -1,15 +1,10 @@
 'use client';
 
-import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  OnSelectionChangeData,
-  slot,
-  useControllableState,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type { OnSelectionChangeData } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { ListProps, ListState } from './List.types';
+import type { ListProps, ListState } from './List.types';
 import { useListSelection } from '../hooks/useListSelection';
 
 const DEFAULT_ROOT_EL_TYPE = 'ul';

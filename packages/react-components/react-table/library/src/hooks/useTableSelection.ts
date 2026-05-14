@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
+import type { SelectionHookParams } from '@fluentui/react-utilities';
+import { useEventCallback, useSelection } from '@fluentui/react-utilities';
 import type { TableRowId, TableSelectionState, TableFeaturesState } from './types';
 
 const noop = (): void => undefined;

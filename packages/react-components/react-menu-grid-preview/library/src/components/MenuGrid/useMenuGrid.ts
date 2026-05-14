@@ -56,14 +56,11 @@ export const useMenuGrid_unstable = (props: MenuGridProps, ref: React.Ref<HTMLDi
       const target = e.target as HTMLElement;
 
       // Only apply first-letter navigation when event target is a grid row, otherwise it may conflict with other components inside the grid row
-      if (!target.hasAttribute('role') || target.getAttribute('role') !== 'row') {
+      if (target.role !== 'row') {
         return;
       }
 
-      const rows = findAllFocusable(
-        innerRef.current,
-        (el: HTMLElement) => el.hasAttribute('role') && el.getAttribute('role') === 'row',
-      );
+      const rows = findAllFocusable(innerRef.current, (el: HTMLElement) => el.role === 'row');
 
       let startIndex = rows.indexOf(itemEl) + 1;
       if (startIndex === rows.length) {

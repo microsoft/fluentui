@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
-import { useToggleButton_unstable } from '@fluentui/react-button';
+import type * as React from 'react';
+import { useToggleButtonBase_unstable } from '@fluentui/react-button';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import type {
   ToolbarToggleButtonProps,
@@ -20,11 +20,15 @@ export const useToolbarToggleButton_unstable = (
   props: ToolbarToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarToggleButtonState => {
-  const { appearance = 'subtle', ...baseProps } = props;
+  const contextSize = useToolbarContext_unstable(ctx => ctx.size);
+  const { appearance = 'subtle', size = contextSize ?? 'medium', ...baseProps } = props;
   const state = useToolbarToggleButtonBase_unstable(baseProps, ref);
+
   return {
-    appearance,
     ...state,
+    appearance,
+    size,
+    shape: 'rounded',
   };
 };
 
@@ -44,7 +48,7 @@ export const useToolbarToggleButtonBase_unstable = (
   const checked = useToolbarContext_unstable(ctx => !!ctx.checkedValues[props.name]?.includes(props.value));
 
   const { onClick: onClickOriginal } = props;
-  const toggleButtonState = useToggleButton_unstable({ checked, ...props }, ref);
+  const toggleButtonState = useToggleButtonBase_unstable({ checked, ...props }, ref);
   const state: ToolbarToggleButtonBaseState = {
     ...toggleButtonState,
     name: props.name,

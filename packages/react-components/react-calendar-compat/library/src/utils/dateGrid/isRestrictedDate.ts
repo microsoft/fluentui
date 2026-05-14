@@ -1,4 +1,4 @@
-import { RestrictedDatesOptions } from './dateGrid.types';
+import type { RestrictedDatesOptions } from './dateGrid.types';
 import { compareDates } from '../dateMath/dateMath';
 import { isBeforeMinDate } from './isBeforeMinDate';
 import { isAfterMaxDate } from './isAfterMaxDate';

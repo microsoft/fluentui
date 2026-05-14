@@ -1,5 +1,6 @@
-import { AtomMotion, motionTokens } from '@fluentui/react-motion';
-import { BaseAtomParams } from '../types';
+import type { AtomMotion } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
+import type { BaseAtomParams } from '../types';
 
 interface FadeAtomParams extends BaseAtomParams {
   /** Defines how values are applied before and after execution. Defaults to 'both'. */

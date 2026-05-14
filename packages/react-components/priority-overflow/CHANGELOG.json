@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Thu, 23 Apr 2026 14:21:21 GMT",
+      "tag": "@fluentui/priority-overflow_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Feb 2026 10:46:12 GMT",
       "tag": "@fluentui/priority-overflow_v9.3.0",
       "version": "9.3.0",

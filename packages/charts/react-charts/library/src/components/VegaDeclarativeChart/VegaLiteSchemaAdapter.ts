@@ -2660,7 +2660,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   const hasSecondaryYAxis = chartData.some(point => point.lineData?.some(line => line.useSecondaryYScale));
 
   // Extract secondary Y-axis properties from line layers
-  let secondaryYAxisProps: Record<string, unknown> = {};
+  const secondaryYAxisProps: Record<string, unknown> = {};
   if (hasSecondaryYAxis && lineSpecs.length > 0) {
     const lineSpec = lineSpecs[0];
     const lineEncoding = lineSpec.encoding || {};

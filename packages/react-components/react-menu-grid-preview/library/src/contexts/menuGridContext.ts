@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 export const MenuGridContext = React.createContext<MenuGridContextValue | undefined>(
   undefined,

@@ -4,7 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
-import { RadioGroupContextValues, RadioGroupSlots, RadioGroupBaseState } from './RadioGroup.types';
+import type { RadioGroupContextValues, RadioGroupSlots, RadioGroupBaseState } from './RadioGroup.types';
 
 /**
  * Render the final JSX of RadioGroup

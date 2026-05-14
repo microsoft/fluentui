@@ -1,4 +1,4 @@
-import { TableCellProps, TableCellSlots, TableCellState } from '../TableCell/TableCell.types';
+import type { TableCellProps, TableCellSlots, TableCellState } from '../TableCell/TableCell.types';
 
 export type DataGridCellSlots = TableCellSlots;
 

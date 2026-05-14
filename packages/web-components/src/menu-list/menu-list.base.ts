@@ -1,0 +1,183 @@
+import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
+import { isHTMLElement } from '../utils/typings.js';
+import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
+import type { MenuItem } from '../menu-item/menu-item.js';
+import { isMenuItem, MenuItemRole } from '../menu-item/menu-item.options.js';
+
+/**
+ * A Base MenuList Custom HTML Element.
+ * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#menu | ARIA menu }.
+ *
+ * @public
+ */
+export class BaseMenuList extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
+   * @internal
+   */
+  @observable
+  public items!: HTMLElement[];
+  protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
+    // only update children after the component is connected and
+    // the setItems has run on connectedCallback
+    // (menuItems is undefined until then)
+    if (this.$fastController.isConnected && this.menuChildren !== undefined) {
+      this.setItems();
+    }
+  }
+
+  protected menuChildren: HTMLElement[] | undefined;
+
+  protected menuItems: MenuItem[] | undefined;
+
+  private static focusableElementRoles = MenuItemRole;
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'menu';
+  }
+
+  /**
+   * @internal
+   */
+  public connectedCallback(): void {
+    super.connectedCallback();
+    Updates.enqueue(() => {
+      // wait until children have had a chance to
+      // connect before setting/checking their props/attributes
+      this.setItems();
+    });
+
+    this.addEventListener('change', this.changedMenuItemHandler);
+  }
+
+  /**
+   * @internal
+   */
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+    Array.from(this.children).forEach(child => {
+      Observable.getNotifier(child).unsubscribe(this, 'hidden');
+    });
+    this.menuChildren = undefined;
+    this.removeEventListener('change', this.changedMenuItemHandler);
+  }
+
+  /**
+   * @internal
+   */
+  public readonly isNestedMenu = (): boolean => {
+    return (
+      this.parentElement !== null &&
+      isHTMLElement(this.parentElement) &&
+      this.parentElement.getAttribute('role') === 'menuitem'
+    );
+  };
+
+  /**
+   * Focuses the first item in the menu.
+   *
+   * @public
+   */
+  public focus(): void {
+    this.menuItems?.find(item => !item.disabled)?.focus();
+  }
+
+  private static elementIndent(el: HTMLElement): MenuItemColumnCount {
+    const role = el.role;
+    const startSlot = el.querySelector('[slot=start]');
+
+    if (role && role !== MenuItemRole.menuitem) {
+      return startSlot ? 2 : 1;
+    }
+
+    return startSlot ? 1 : 0;
+  }
+
+  protected setItems(): void {
+    const children: HTMLElement[] = Array.from(this.children) as HTMLElement[];
+    children.forEach((child: Element) => {
+      Observable.getNotifier(child).subscribe(this, 'hidden');
+    });
+
+    this.menuChildren = children.filter(child => !child.hasAttribute('hidden'));
+
+    /**
+     * Set the indent attribute on MenuItem elements based on their
+     * position in the MenuList. Each MenuItem element has a data-indent attribute that is
+     * used to set the indent of the element's start slot content.
+     */
+    this.menuItems = this.menuChildren?.filter(this.isMenuItemElement);
+    const indent: MenuItemColumnCount = this.menuItems?.reduce<MenuItemColumnCount>((accum, current) => {
+      const elementValue = BaseMenuList.elementIndent(current as HTMLElement);
+
+      return Math.max(accum, elementValue as number) as MenuItemColumnCount;
+    }, 0);
+
+    this.menuItems?.forEach((item: HTMLElement) => {
+      item.dataset.indent = `${indent}`;
+    });
+  }
+
+  /**
+   * Method for Observable changes to the hidden attribute of child elements
+   */
+  public handleChange(source: any, propertyName: string) {
+    if (propertyName === 'hidden') {
+      this.setItems();
+    }
+  }
+
+  /**
+   * Handle change from child MenuItem element and set radio group behavior
+   */
+  private changedMenuItemHandler = (e: Event): void => {
+    if (this.menuChildren === undefined) {
+      return;
+    }
+    const changedMenuItem: MenuItem = e.target as MenuItem;
+    const changeItemIndex: number = this.menuChildren.indexOf(changedMenuItem);
+
+    if (changeItemIndex === -1) {
+      return;
+    }
+
+    if (changedMenuItem.role === 'menuitemradio' && changedMenuItem.checked === true) {
+      for (let i = changeItemIndex - 1; i >= 0; --i) {
+        const item: Element = this.menuChildren[i];
+        const role: string | null = (item as HTMLElement).role;
+        if (role === MenuItemRole.menuitemradio) {
+          (item as MenuItem).checked = false;
+        }
+        if (role === 'separator') {
+          break;
+        }
+      }
+      const maxIndex: number = this.menuChildren.length - 1;
+      for (let i = changeItemIndex + 1; i <= maxIndex; ++i) {
+        const item: Element = this.menuChildren[i];
+        const role: string | null = (item as HTMLElement).role;
+        if (role === MenuItemRole.menuitemradio) {
+          (item as MenuItem).checked = false;
+        }
+        if (role === 'separator') {
+          break;
+        }
+      }
+    }
+  };
+
+  /**
+   * check if the item is a menu item
+   */
+  protected isMenuItemElement(el: Element): el is MenuItem {
+    return isMenuItem(el) || (isHTMLElement(el) && !!el.role && el.role in BaseMenuList.focusableElementRoles);
+  }
+}

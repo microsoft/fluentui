@@ -147,6 +147,29 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralStroke1,
     },
   },
+  submenuOpen: {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+    color: tokens.colorNeutralForeground2Hover,
+
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+    [`& .${menuItemClassNames.icon}`]: {
+      color: tokens.colorNeutralForeground2BrandSelected,
+    },
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Hover,
+    },
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Canvas',
+      color: 'Highlight',
+    },
+  },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
@@ -250,6 +273,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
+    state.submenuOpen && styles.submenuOpen,
     state.disabled && styles.disabled,
     state.root.className,
   );

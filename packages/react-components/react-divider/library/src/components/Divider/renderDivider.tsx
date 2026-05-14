@@ -3,7 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { DividerSlots, DividerBaseState } from './Divider.types';
+import type { DividerSlots, DividerBaseState } from './Divider.types';
 
 /**
  * Renders a Divider component by passing the slot props (defined in `state`) to the appropriate slots.

@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  HeatMapChart,
-  HeatMapChartDataPoint,
-  HeatMapChartProps,
-  DataVizPalette,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import type { HeatMapChartDataPoint, HeatMapChartProps } from '@fluentui/react-charts';
+import { HeatMapChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const yPoint: string[] = ['CHN', 'IND', 'USA', 'IDN', 'PAK'];

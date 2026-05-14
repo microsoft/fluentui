@@ -1,15 +1,11 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  FlatTree,
-  FlatTreeItem,
-  TreeItemLayout,
+import type {
+  JSXElement,
   TreeItemValue,
-  Spinner,
-  makeStyles,
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
 } from '@fluentui/react-components';
+import { FlatTree, FlatTreeItem, TreeItemLayout, Spinner, makeStyles } from '@fluentui/react-components';
 import { useQuery } from './utils/useQuery';
 import { mockFetch } from './utils/mockFetch';
 

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none">
+  <rect width="240" height="160" fill="#fff1f3"/>
+  <!-- Shield -->
+  <path d="M120 24 L168 44 L168 92 Q168 126 120 140 Q72 126 72 92 L72 44 Z" fill="#9b1f5a" opacity="0.12" stroke="#9b1f5a" stroke-width="2.5"/>
+  <!-- Checkmark inside shield -->
+  <path d="M102 82 L113 94 L138 68" stroke="#9b1f5a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Keyboard dots suggesting keyboard nav -->
+  <rect x="48" y="136" width="12" height="12" rx="3" fill="#9b1f5a" opacity="0.3"/>
+  <rect x="66" y="136" width="12" height="12" rx="3" fill="#9b1f5a" opacity="0.5"/>
+  <rect x="84" y="136" width="36" height="12" rx="3" fill="#9b1f5a" opacity="0.7"/>
+  <rect x="126" y="136" width="12" height="12" rx="3" fill="#9b1f5a" opacity="0.5"/>
+  <rect x="144" y="136" width="12" height="12" rx="3" fill="#9b1f5a" opacity="0.3"/>
+  <rect x="162" y="136" width="12" height="12" rx="3" fill="#9b1f5a" opacity="0.2"/>
+</svg>

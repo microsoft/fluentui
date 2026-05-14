@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
-import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
+import type { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
+import type { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
 export type BreadcrumbButtonSlots = ButtonSlots;
 
@@ -27,4 +27,4 @@ export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> &
 
 export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
 
-export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'size'>;
+export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'appearance' | 'size' | 'shape'>;

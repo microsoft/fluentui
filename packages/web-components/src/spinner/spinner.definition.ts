@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './spinner.options.js';
 import { Spinner } from './spinner.js';
 import { styles } from './spinner.styles.js';
 import { template } from './spinner.template.js';
@@ -9,7 +9,7 @@ import { template } from './spinner.template.js';
  * HTML Element: \<fluent-spinner\>
  */
 export const definition = Spinner.compose({
-  name: `${FluentDesignSystem.prefix}-spinner`,
+  name: tagName,
   template,
   styles,
 });

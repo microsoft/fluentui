@@ -2,6 +2,176 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Wed, 13 May 2026 04:08:42 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.77",
+      "version": "0.0.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "e5b0e2412175216210360fee356a404af60f38d5",
+            "comment": "fix: update fast-element dependency version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.19",
+            "commit": "193b721bfced61e2faa1293118b8ff086634a317"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2026 04:09:08 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.76",
+      "version": "0.0.76",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.18",
+            "commit": "39041d7c84a1e8cca8b74703ddef48b1a88e1a0c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2026 19:08:43 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.75",
+      "version": "0.0.75",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.17",
+            "commit": "d57f87e85e38fe4b70ff74a775065cc3e21e8dd3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2026 04:07:36 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.74",
+      "version": "0.0.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "f00737e6d6de50b96763ab82034bdd7fa95a7fb5",
+            "comment": "fix: remove behaviors in favor of direct css inclusion"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.16",
+            "commit": "0d2ce67719198ed3b17939508616faff43f0ef40"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 May 2026 04:08:48 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.73",
+      "version": "0.0.73",
+      "comments": {
+        "none": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "233e02d989fd22ba25b73affdf2012019f71f9ad",
+            "comment": "chore: fixing package bump issue to latest published version"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.15",
+            "commit": "080f3979fff1a551f3616b37d2dafcd7401a51b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Apr 2026 19:07:13 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.72",
+      "version": "0.0.72",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.14",
+            "commit": "1176b50b415faa35a2763cac41c572b063bcc524"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Apr 2026 04:07:27 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.71",
+      "version": "0.0.71",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.13",
+            "commit": "c207e1425c9a98ded3c06adf037bca603ad1f8eb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Apr 2026 20:44:54 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.70",
+      "version": "0.0.70",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.12",
+            "commit": "ba68f3ae34eca3000c4c0432ba07fd5b95c7001d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Apr 2026 22:24:43 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.69",
+      "version": "0.0.69",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.11",
+            "commit": "da4bf9e456311296cb300097ddfd98764888f61a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2026 04:08:06 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.68",
+      "version": "0.0.68",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.10",
+            "commit": "381468576f19140edb1051990083830d62f17796"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2026 04:08:49 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.67",
       "version": "0.0.67",

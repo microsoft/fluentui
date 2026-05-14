@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates, volatile } from '@microsoft/fast-element';
 import { DialogType } from './dialog.options.js';
 
 /**
@@ -47,29 +47,79 @@ export class Dialog extends FASTElement {
    * @public
    */
   @attr
-  public type: DialogType = DialogType.modal;
-  protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined) {
-    if (!this.dialog) {
-      return;
-    }
+  public type!: DialogType;
 
-    if (next === DialogType.alert) {
-      this.dialog.setAttribute('role', 'alertdialog');
-    } else {
-      this.dialog.removeAttribute('role');
-    }
-
-    if (next !== DialogType.nonModal) {
-      this.dialog.setAttribute('aria-modal', 'true');
-    } else {
-      this.dialog.removeAttribute('aria-modal');
+  /**
+   * The `aria-describedby` attribute value for the dialog, which is determined by the `ariaDescribedby` property. This
+   * is used to ensure that the dialog's accessible description is properly announced by assistive technologies.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogDescribedby(): string | undefined {
+    if (this.dialog) {
+      return this.ariaDescribedby;
     }
   }
 
-  /** @internal */
+  /**
+   * The `aria-label` attribute value for the dialog, which is determined by the `ariaLabel` property. This is used to
+   * ensure that the dialog's accessible name is properly announced by assistive technologies.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogLabel(): string | null | undefined {
+    if (this.dialog) {
+      return this.ariaLabel;
+    }
+  }
+
+  /**
+   * The `aria-labelledby` attribute value for the dialog, which is determined by the `ariaLabelledby` property. This is
+   * used to ensure that the dialog's accessible name is properly announced by assistive technologies.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogLabelledby(): string | undefined {
+    if (this.dialog) {
+      return this.ariaLabelledby;
+    }
+  }
+
+  /**
+   * The modal state of the dialog, which is determined by the `type` property. If the dialog is not a non-modal dialog,
+   * the modal state will be true, otherwise it will be undefined.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogModal(): boolean | undefined {
+    if (this.dialog && this.type !== DialogType.nonModal) {
+      return true;
+    }
+  }
+
+  /**
+   * The role of the dialog, which is determined by the `type` property. If the dialog is an alert dialog, the role will
+   * be 'alertdialog', otherwise it will be undefined.
+   *
+   * @internal
+   */
+  @volatile
+  public get dialogRole(): string | undefined {
+    if (this.dialog && this.type === DialogType.alert) {
+      return 'alertdialog';
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
-    this.typeChanged(undefined, this.type);
+
+    Updates.enqueue(() => {
+      this.type = this.type ?? DialogType.modal;
+    });
   }
 
   /**
@@ -78,12 +128,12 @@ export class Dialog extends FASTElement {
    *
    * @public
    */
-  public emitBeforeToggle = (): void => {
+  public emitBeforeToggle(): void {
     this.$emit('beforetoggle', {
       oldState: this.dialog.open ? 'open' : 'closed',
       newState: this.dialog.open ? 'closed' : 'open',
     });
-  };
+  }
 
   /**
    * Method to emit an event after the dialog's open state changes

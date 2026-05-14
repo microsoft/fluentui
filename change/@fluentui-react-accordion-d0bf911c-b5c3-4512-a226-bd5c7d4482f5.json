@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: fix after broken release",
+  "packageName": "@fluentui/react-accordion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

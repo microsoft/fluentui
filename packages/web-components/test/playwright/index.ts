@@ -30,9 +30,10 @@ export const test = baseTest.extend<Fixtures & FixtureOptions>({
 
   fastPage: async ({ page, innerHTML, tagName, waitFor }, use) => {
     const fastPage = new FASTFixture(page, tagName, innerHTML);
+
     await fastPage.goto();
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await fastPage.waitForCustomElement(tagName, ...waitFor);
-    await fastPage.setTemplate();
 
     await use(fastPage);
   },

@@ -1,6 +1,6 @@
-import { OptionSlots, OptionState } from '@fluentui/react-combobox';
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import type { OptionSlots, OptionState } from '@fluentui/react-combobox';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type * as React from 'react';
 
 export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
   media?: Slot<'div'>;

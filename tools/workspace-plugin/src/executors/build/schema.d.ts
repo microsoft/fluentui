@@ -33,12 +33,17 @@ export interface BuildExecutorSchema {
   /**
    * Generate rolluped 'd.ts' bundle including 'api.md' that provides project public API
    */
-  generateApi?: boolean;
+  generateApi?: boolean | { exportSubpaths?: boolean | { apiReport?: boolean } };
   /**
    * Enable Griffel raw styles output.
    * This will generate additional files with '.styles.raw.js' extension that contain Griffel raw styles
    */
   enableGriffelRawStyles?: boolean;
+  /**
+   * Enable babel-plugin-react-compiler processing.
+   * When enabled, source is processed with React Compiler as a separate Babel pass before Griffel AOT.
+   */
+  reactCompiler?: boolean;
   /**
    * List of static assets.
    */

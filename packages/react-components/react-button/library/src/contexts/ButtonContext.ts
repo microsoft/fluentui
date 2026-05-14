@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ButtonSize } from '../components/Button/Button.types';
+import type { ButtonSize } from '../components/Button/Button.types';
 
 const buttonContext = React.createContext<ButtonContextValue | undefined>(undefined);
 

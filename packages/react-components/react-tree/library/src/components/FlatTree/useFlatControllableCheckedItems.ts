@@ -1,13 +1,13 @@
 'use client';
 
 import { useControllableState } from '@fluentui/react-utilities';
-import { TreeItemValue } from '../../TreeItem';
+import type { TreeItemValue } from '../../TreeItem';
 import { ImmutableMap } from '../../utils/ImmutableMap';
 import * as React from 'react';
 import type { HeadlessTree, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
 import { createCheckedItems } from '../../utils/createCheckedItems';
 import type { TreeCheckedChangeData, TreeSelectionValue } from '../Tree/Tree.types';
-import { HeadlessFlatTreeOptions } from './useHeadlessFlatTree';
+import type { HeadlessFlatTreeOptions } from './useHeadlessFlatTree';
 
 export function useFlatControllableCheckedItems<Props extends HeadlessTreeItemProps>(
   props: Pick<HeadlessFlatTreeOptions, 'checkedItems' | 'defaultCheckedItems' | 'selectionMode'>,

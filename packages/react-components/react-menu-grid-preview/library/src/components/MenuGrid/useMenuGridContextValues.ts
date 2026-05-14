@@ -8,6 +8,7 @@ const menuList = {
   hasIcons: false,
   hasCheckmarks: false,
   shouldOpenOnArrowRight: false,
+  shouldCloseOnArrowLeft: false,
 };
 
 export function useMenuGridContextValues_unstable(state: MenuGridState): MenuGridContextValues {

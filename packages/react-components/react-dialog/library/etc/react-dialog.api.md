@@ -4,21 +4,23 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
+import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
+import type { ScaleParams } from '@fluentui/react-motion-components-preview';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
-import { useModalAttributes } from '@fluentui/react-tabster';
+import type { useModalAttributes } from '@fluentui/react-tabster';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
@@ -158,7 +160,7 @@ export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & 
 
 // @public (undocumented)
 export type DialogSlots = {
-    surfaceMotion: Slot<PresenceMotionSlotProps>;
+    surfaceMotion: Slot<PresenceMotionSlotProps<ScaleParams>>;
 };
 
 // @public (undocumented)
@@ -194,7 +196,7 @@ export const DialogSurfaceProvider: React_2.Provider<boolean | undefined>;
 export type DialogSurfaceSlots = {
     backdrop?: Slot<DialogBackdropSlotProps>;
     root: Slot<'div'>;
-    backdropMotion: Slot<PresenceMotionSlotProps>;
+    backdropMotion: Slot<PresenceMotionSlotProps<FadeParams>>;
 };
 
 // @public

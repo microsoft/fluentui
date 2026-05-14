@@ -1,4 +1,4 @@
-import * as FloatingUI from '@floating-ui/dom';
+import type * as FloatingUI from '@floating-ui/dom';
 import { parseFloatingUIPlacement } from './parseFloatingUIPlacement';
 
 describe('getSide', () => {

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { VirtualizerStaticPaginationProps } from './hooks.types';
+import type { VirtualizerStaticPaginationProps } from './hooks.types';
 import { useTimeout } from '@fluentui/react-utilities';
 
 /**

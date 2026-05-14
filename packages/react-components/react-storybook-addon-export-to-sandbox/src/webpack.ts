@@ -17,17 +17,18 @@ const addonFilePattern = /react-storybook-addon-export-to-sandbox\/[a-z/]+.[jt]s
 const defaultOptions = {
   webpackRule: {},
   babelLoaderOptionsUpdater: identity,
+  cssModules: false,
 };
 
 const PLUGIN_PATH =
-  process.env.NODE_ENV !== 'production'
+  process.env.BABEL_PRESET_FULL_SOURCE_DEV === 'true'
     ? '@fluentui/babel-preset-storybook-full-source/__dev'
     : '@fluentui/babel-preset-storybook-full-source';
 
 function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack').RuleSetRule {
-  const { babelLoaderOptionsUpdater, importMappings, webpackRule } = config;
+  const { babelLoaderOptionsUpdater, importMappings, webpackRule, cssModules } = config;
 
-  const plugin = [require.resolve(PLUGIN_PATH), importMappings];
+  const plugin = [require.resolve(PLUGIN_PATH), { importMappings, cssModules }];
 
   return {
     test: /\.stories\.(jsx?$|tsx?$)/,

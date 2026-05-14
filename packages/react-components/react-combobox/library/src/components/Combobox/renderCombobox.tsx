@@ -6,13 +6,13 @@ import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
-import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
+import type { ComboboxContextValues, BaseComboboxState, ComboboxSlots } from './Combobox.types';
 import { ListboxProvider } from '../../contexts/ListboxContext';
 
 /**
  * Render the final JSX of Combobox
  */
-export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues): JSXElement => {
+export const renderCombobox_unstable = (state: BaseComboboxState, contextValues: ComboboxContextValues): JSXElement => {
   assertSlots<ComboboxSlots>(state);
 
   return (

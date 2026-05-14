@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ListItem } from './ListItem';
-import { ListItemProps } from './ListItem.types';
+import type { ListItemProps } from './ListItem.types';
 
 describe('ListItem', () => {
   isConformant<ListItemProps>({

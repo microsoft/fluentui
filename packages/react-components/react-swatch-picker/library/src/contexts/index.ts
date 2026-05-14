@@ -3,5 +3,5 @@ export {
   SwatchPickerProvider,
   swatchPickerContextDefaultValue,
   useSwatchPickerContextValue_unstable,
-  useSwatchPickerContextValues,
 } from './swatchPicker';
+export { useSwatchPickerContextValues } from '../components/SwatchPicker/useSwatchPickerContextValues';
