@@ -2,6 +2,74 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 13 May 2026 04:08:40 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.19",
+      "version": "3.0.0-rc.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e5b0e2412175216210360fee356a404af60f38d5",
+            "comment": "fix: remove hoisted peer dependency entries"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "28238ebebb45c41d0ec3df57003dbbe5fc422c6b",
+            "comment": "fix: enhance accessibility attributes for drawer component"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "52fd89c25172001d37bc9e36a7b2f2587272edbe",
+            "comment": "fix keyboard navigation regressions for tree and menu-list"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "28238ebebb45c41d0ec3df57003dbbe5fc422c6b",
+            "comment": "fix: synchronize compound-button template with button template"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "28238ebebb45c41d0ec3df57003dbbe5fc422c6b",
+            "comment": "fix: enhance accessibility attributes for dialog component"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "28238ebebb45c41d0ec3df57003dbbe5fc422c6b",
+            "comment": "test: add tests for compound-button, dialog-body, drawer-body, menu-button, and menu-item components"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "6bc6e8c9ffabd0f970fb211bb924938064dce76e",
+            "comment": "chore: use component tag names in playwright tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2026 04:09:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.18",
+      "version": "3.0.0-rc.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "39041d7c84a1e8cca8b74703ddef48b1a88e1a0c",
+            "comment": "fix: migrate to esbuild for CDN bundle, enable setTheme on globalThis"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 May 2026 19:08:42 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.17",
       "version": "3.0.0-rc.17",

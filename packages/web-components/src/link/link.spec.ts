@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
-import type { Link } from './link.js';
-import { LinkAppearance } from './link.options.js';
+import { Link } from './link.js';
+import { LinkAppearance, tagName } from './link.options.js';
 
 const attributes = {
   download: 'download',
@@ -14,7 +14,9 @@ const attributes = {
 };
 
 test.describe('Link', () => {
-  test.use({ tagName: 'fluent-link' });
+  test.use({
+    tagName,
+  });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
@@ -25,9 +27,9 @@ test.describe('Link', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-link');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -36,9 +38,11 @@ test.describe('Link', () => {
     const { element } = fastPage;
     const anchor = element.locator('a');
 
+    await fastPage.setTemplate();
+
     for (const [attribute, value] of Object.entries(attributes)) {
       await test.step(`should set the \`${attribute}\` property to match the \`${attribute}\` attribute`, async () => {
-        await fastPage.setTemplate({ attributes: { [attribute]: value } });
+        await fastPage.updateTemplate(element, { attributes: { [attribute]: value } });
 
         await expect(element).toHaveAttribute(attribute, value);
 
@@ -54,9 +58,11 @@ test.describe('Link', () => {
   test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const appearance of Object.values(LinkAppearance)) {
       await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
+        await fastPage.updateTemplate(element, { attributes: { appearance } });
 
         await expect(element).toHaveJSProperty('appearance', appearance);
 
@@ -67,6 +73,8 @@ test.describe('Link', () => {
 
   test('should add an "inline" attribute when the `inline` property is true', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate((node: Link) => {
       node.inline = true;

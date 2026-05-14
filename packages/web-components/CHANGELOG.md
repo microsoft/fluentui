@@ -1,8 +1,30 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 06 May 2026 19:08:42 GMT and should not be manually modified.
+This log was last generated on Wed, 13 May 2026 04:08:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.19)
+
+Wed, 13 May 2026 04:08:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.18..@fluentui/web-components_v3.0.0-rc.19)
+
+### Changes
+
+- fix: remove hoisted peer dependency entries ([PR #36184](https://github.com/microsoft/fluentui/pull/36184) by 863023+radium-v@users.noreply.github.com)
+- fix: enhance accessibility attributes for drawer component ([PR #36191](https://github.com/microsoft/fluentui/pull/36191) by 863023+radium-v@users.noreply.github.com)
+- fix keyboard navigation regressions for tree and menu-list ([PR #36118](https://github.com/microsoft/fluentui/pull/36118) by machi@microsoft.com)
+- fix: synchronize compound-button template with button template ([PR #36191](https://github.com/microsoft/fluentui/pull/36191) by 863023+radium-v@users.noreply.github.com)
+- fix: enhance accessibility attributes for dialog component ([PR #36191](https://github.com/microsoft/fluentui/pull/36191) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.18)
+
+Mon, 11 May 2026 04:09:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.17..@fluentui/web-components_v3.0.0-rc.18)
+
+### Changes
+
+- fix: migrate to esbuild for CDN bundle, enable setTheme on globalThis ([PR #36113](https://github.com/microsoft/fluentui/pull/36113) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-rc.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.17)
 

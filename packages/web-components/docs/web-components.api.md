@@ -2514,18 +2514,24 @@ export class Dialog extends FASTElement {
     ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
-    dialog: HTMLDialogElement;
     // (undocumented)
-    protected dialogChanged(): void;
-    emitBeforeToggle: () => void;
+    connectedCallback(): void;
+    dialog: HTMLDialogElement;
+    // @internal
+    get dialogDescribedby(): string | undefined;
+    // @internal
+    get dialogLabel(): string | null | undefined;
+    // @internal
+    get dialogLabelledby(): string | undefined;
+    // @internal
+    get dialogModal(): boolean | undefined;
+    // @internal
+    get dialogRole(): string | undefined;
+    emitBeforeToggle(): void;
     emitToggle: () => void;
     hide(): void;
     show(): void;
     type: DialogType;
-    // (undocumented)
-    protected typeChanged(prev: DialogType | undefined, next: DialogType): void;
-    // @internal
-    protected updateDialogAttributes(): void;
 }
 
 // @public
@@ -2644,27 +2650,29 @@ export class Drawer extends FASTElement {
     cancelHandler(): void;
     // (undocumented)
     clickHandler(event: Event): boolean;
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
     dialog: HTMLDialogElement;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
+    // @internal
+    get dialogDescribedby(): string | undefined;
+    // @internal
+    get dialogLabel(): string | null | undefined;
+    // @internal
+    get dialogLabelledby(): string | undefined;
+    // @internal
+    get dialogModal(): boolean | undefined;
+    // @internal
+    get dialogRole(): string | null;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
-    // (undocumented)
-    protected observeRoleAttr(): void;
     position: DrawerPosition;
     // (undocumented)
-    protected roleAttrObserver: MutationObserver;
+    role: string | null;
     show(): void;
     // (undocumented)
     size: DrawerSize;
     type: DrawerType;
-    // (undocumented)
-    protected typeChanged(): void;
-    // (undocumented)
-    protected updateDialogRole(): void;
 }
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -3585,11 +3593,6 @@ export const roleForMenuItem: {
 
 // @public
 export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
-
-// Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated (undocumented)
-export function setThemeFor(element: HTMLElement, theme: Theme | null): void;
 
 // @public
 export const shadow16 = "var(--shadow16)";

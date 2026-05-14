@@ -12,6 +12,7 @@ import '../../../src/index-rollup.js';
 
 setTheme(webLightTheme);
 
+// Expose directly on window for Playwright test access
 Object.defineProperty(window, 'setTheme', {
   value: setTheme,
 });

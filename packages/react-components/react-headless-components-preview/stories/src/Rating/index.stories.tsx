@@ -4,7 +4,7 @@ import descriptionMd from './RatingDescription.md';
 export { Default } from './RatingDefault.stories';
 
 export default {
-  title: 'Headless Components/Rating',
+  title: 'Components/Rating',
   component: Rating,
   subcomponents: { RatingItem },
   parameters: {

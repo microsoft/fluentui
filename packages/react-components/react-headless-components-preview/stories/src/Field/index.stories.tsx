@@ -4,7 +4,7 @@ import descriptionMd from './FieldDescription.md';
 export { Default } from './FieldDefault.stories';
 
 export default {
-  title: 'Headless Components/Field',
+  title: 'Components/Field',
   component: Field,
   parameters: {
     docs: {

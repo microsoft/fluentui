@@ -1,7 +1,11 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName } from './tab.options.js';
 
 test.describe('Tab', () => {
-  test.use({ tagName: 'fluent-tab' });
+  test.use({
+    tagName,
+    innerHTML: 'Tab',
+  });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate('');
@@ -12,9 +16,9 @@ test.describe('Tab', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-tab');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
