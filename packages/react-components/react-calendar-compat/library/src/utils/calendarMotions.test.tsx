@@ -35,4 +35,23 @@ describe('DirectionalSlide', () => {
     );
     expect(getByTestId('child')).toBeTruthy();
   });
+
+  it('forwards its ref to the child element', () => {
+    const ref = React.createRef<HTMLElement>();
+    const { getByTestId } = render(
+      <DirectionalSlide ref={ref}>
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+    expect(ref.current).toBe(getByTestId('child'));
+  });
+
+  it('does not introduce a wrapper DOM element around the child', () => {
+    const { container, getByTestId } = render(
+      <DirectionalSlide>
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+    expect(container.firstElementChild).toBe(getByTestId('child'));
+  });
 });
