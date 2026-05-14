@@ -10,7 +10,7 @@ export { ControllingOpenAndClose } from './DropdownControllingOpenAndClose.stori
 export { Disabled } from './DropdownDisabled.stories';
 
 export default {
-  title: 'Headless Components/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
   subcomponents: { Listbox, Option, OptionGroup },
   parameters: {
