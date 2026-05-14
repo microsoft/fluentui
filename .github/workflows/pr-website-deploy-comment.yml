@@ -50,7 +50,7 @@ jobs:
         with:
           script: |
             const run = require('./.github/scripts/validate-pr-number');
-            const result = run({filePath:'results/pr.txt'});
+            const result = await run({filePath:'results/pr.txt', github, context});
             return result;
           result-encoding: string
 

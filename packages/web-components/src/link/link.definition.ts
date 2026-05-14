@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './link.options.js';
 import { Link } from './link.js';
 import { styles } from './link.styles.js';
 import { template } from './link.template.js';
@@ -9,7 +9,7 @@ import { template } from './link.template.js';
  * HTML Element: \<fluent-link\>
  */
 export const definition = Link.compose({
-  name: `${FluentDesignSystem.prefix}-link`,
+  name: tagName,
   template,
   styles,
 });

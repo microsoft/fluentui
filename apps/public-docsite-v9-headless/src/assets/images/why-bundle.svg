@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none">
+  <rect width="240" height="160" fill="#fff1f3"/>
+  <!-- Box -->
+  <rect x="72" y="60" width="96" height="72" rx="6" fill="#9b1f5a" opacity="0.1" stroke="#9b1f5a" stroke-width="2"/>
+  <!-- Box lid -->
+  <path d="M66 60 L120 46 L174 60" stroke="#9b1f5a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="120" y1="46" x2="120" y2="60" stroke="#9b1f5a" stroke-width="2" stroke-dasharray="4 3"/>
+  <!-- Down arrow inside box -->
+  <path d="M120 80 L120 108 M108 96 L120 108 L132 96" stroke="#9b1f5a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Small minus badges suggesting trimming -->
+  <rect x="148" y="74" width="16" height="8" rx="4" fill="#9b1f5a" opacity="0.6"/>
+  <line x1="153" y1="78" x2="159" y2="78" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="148" y="90" width="16" height="8" rx="4" fill="#9b1f5a" opacity="0.4"/>
+  <line x1="153" y1="94" x2="159" y2="94" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

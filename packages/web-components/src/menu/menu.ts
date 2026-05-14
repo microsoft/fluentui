@@ -1,5 +1,4 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
 import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
@@ -279,9 +278,10 @@ export class Menu extends FASTElement {
     // @ts-expect-error - Baseline 2024
     if (e.type === 'toggle' && e.newState) {
       // @ts-expect-error - Baseline 2024
-      const newState = e.newState === 'open';
-      this._trigger?.setAttribute('aria-expanded', `${newState}`);
-      this._open = newState;
+      const open = e.newState === 'open';
+      this._trigger?.setAttribute('aria-expanded', `${open}`);
+      this._menuList?.setAttribute('focusgroup', open ? 'menu' : 'none');
+      this._open = open;
       if (this._open) {
         this.focusMenuList();
       }
@@ -401,14 +401,14 @@ export class Menu extends FASTElement {
     const key = e.key;
 
     switch (key) {
-      case keyEscape:
+      case 'Escape':
         e.preventDefault();
         if (this._open) {
           this.closeMenu();
           this.focusTrigger();
         }
         break;
-      case keyTab:
+      case 'Tab':
         if (this._open) this.closeMenu();
         if (
           e.shiftKey &&
@@ -437,8 +437,8 @@ export class Menu extends FASTElement {
     }
     const key = e.key;
     switch (key) {
-      case keySpace:
-      case keyEnter:
+      case ' ':
+      case 'Enter':
         e.preventDefault();
         this.toggleMenu();
         break;

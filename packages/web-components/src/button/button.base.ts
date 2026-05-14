@@ -1,5 +1,4 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { type ButtonFormTarget, ButtonType } from './button.options.js';
 
 /**
@@ -347,7 +346,7 @@ export class BaseButton extends FASTElement {
       return;
     }
 
-    if (e.key === keyEnter || e.key === keySpace) {
+    if (e.key === 'Enter' || e.key === ' ') {
       this.click();
       return;
     }

@@ -42,7 +42,7 @@ export async function visitPage(browser: Browser, url: string) {
   });
 
   page.on('pageerror', err => {
-    error = err;
+    error = err as Error;
   });
 
   await visitUrl(page, url);

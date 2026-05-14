@@ -3,10 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import {
-  Provider_unstable as Provider,
-  TooltipVisibilityProvider_unstable as TooltipVisibilityProvider,
-} from '@fluentui/react-shared-contexts';
+import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderSlots } from '@fluentui/react-provider';
 import type { ProviderState } from './Provider.types';
 
@@ -18,9 +15,7 @@ export const renderProvider = (state: ProviderState, contextValues: FluentProvid
 
   return (
     <Provider value={contextValues.provider}>
-      <TooltipVisibilityProvider value={contextValues.tooltip}>
-        <state.root />
-      </TooltipVisibilityProvider>
+      <state.root />
     </Provider>
   );
 };

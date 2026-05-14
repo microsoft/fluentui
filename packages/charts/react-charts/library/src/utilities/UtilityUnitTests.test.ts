@@ -1528,6 +1528,10 @@ describe('isSafeUrl', () => {
     expect(utils.isSafeUrl('https://example.com')).toBe(true);
   });
 
+  test('Should allow https URL with leading whitespace', () => {
+    expect(utils.isSafeUrl('  https://example.com')).toBe(true);
+  });
+
   test('Should allow https URL with path, query, and fragment', () => {
     expect(utils.isSafeUrl('https://example.com/path?q=1#section')).toBe(true);
   });
@@ -1557,12 +1561,51 @@ describe('isSafeUrl', () => {
     expect(utils.isSafeUrl('javascript:alert(1)')).toBe(false);
   });
 
+  test('Should block javascript: protocol with leading whitespace', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl(' javascript:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with leading tabs/newlines', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('\n\tjavascript:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with embedded newline in scheme', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('java\nscript:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with embedded tab in scheme', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('java\tscript:alert(1)')).toBe(false);
+  });
+
   test('Should block data: protocol', () => {
     expect(utils.isSafeUrl('data:text/html,<script>alert(1)</script>')).toBe(false);
   });
 
   test('Should block vbscript: protocol', () => {
     expect(utils.isSafeUrl('vbscript:msgbox("xss")')).toBe(false);
+  });
+
+  test('Should block vbscript:alert(1)', () => {
+    expect(utils.isSafeUrl('vbscript:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with null byte prefix', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('\0javascript:alert(1)')).toBe(false);
+  });
+
+  test('Should block mixed-case javascript: protocol with embedded newline', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('JaVa\nScRiPt:alert(1)')).toBe(false);
+  });
+
+  test('Should block javascript: protocol with CRLF prefix', () => {
+    // eslint-disable-next-line no-script-url
+    expect(utils.isSafeUrl('\r\njavascript:alert(1)')).toBe(false);
   });
 
   test('Should block file: protocol', () => {
@@ -1583,6 +1626,10 @@ describe('isSafeUrl', () => {
 
   test('Should block custom: protocol', () => {
     expect(utils.isSafeUrl('custom:payload')).toBe(false);
+  });
+
+  test('Should block custom: protocol with leading whitespace', () => {
+    expect(utils.isSafeUrl(' custom:payload')).toBe(false);
   });
 
   test('Should allow a path that contains a colon but is not a scheme', () => {

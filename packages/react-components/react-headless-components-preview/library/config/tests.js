@@ -1,6 +1,7 @@
 /** Jest test setup file. */
 
 require('@testing-library/jest-dom');
+require('@oddbird/popover-polyfill');
 
 global.ResizeObserver = class ResizeObserver {
   observe() {
