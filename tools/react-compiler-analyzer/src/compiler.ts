@@ -140,6 +140,7 @@ export interface FileCompilationResult {
   events: CompilerEvent[];
   error?: Error;
   manualMemo: Map<string, ManualMemoEntry>;
+  bodyInsertionLines: Map<string, number>;
 }
 
 /**
@@ -153,10 +154,11 @@ export async function compileFile(
 ): Promise<FileCompilationResult> {
   const source = await readFile(entry.filePath, 'utf-8');
   const manualMemo = new Map<string, ManualMemoEntry>();
+  const bodyInsertionLines = new Map<string, number>();
 
   const { events, error } = await compileSource(source, entry.filePath, {
     compilationMode,
-    plugins: [[manualMemoPlugin, { results: manualMemo } as ManualMemoPluginOptions]],
+    plugins: [[manualMemoPlugin, { results: manualMemo, bodyInsertionLines } as ManualMemoPluginOptions]],
   });
 
   if (verbose && !error) {
@@ -167,7 +169,15 @@ export async function compileFile(
     }
   }
 
-  return { filePath: entry.filePath, packageName: entry.packageName, source, events, error, manualMemo };
+  return {
+    filePath: entry.filePath,
+    packageName: entry.packageName,
+    source,
+    events,
+    error,
+    manualMemo,
+    bodyInsertionLines,
+  };
 }
 
 /**

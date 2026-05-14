@@ -23,8 +23,11 @@ Team reviews output — identifies which components compile, which error out, wh
 # 1. Identify candidates — what CAN compile and has manual memo
 react-compiler-analyzer analyze ./library/src --mode infer
 
-# 2. Opt-in compilable candidates — insert 'use memo' for compiler to pick up at build time
-react-compiler-analyzer analyze ./library/src --mode infer --annotate
+# 2a. Opt-in only functions with manual memoization (useMemo/useCallback/React.memo)
+react-compiler-analyzer analyze ./library/src --mode infer --annotate manual-memo
+
+# 2b. Or opt-in ALL compilable functions
+react-compiler-analyzer analyze ./library/src --mode infer --annotate all
 
 # 3. Verify — run tests, check bundle size
 yarn nx run react-button:test
@@ -126,19 +129,21 @@ Reports which functions the React Compiler will memoize, skip, or bail out on. A
 
 #### Options
 
-| Flag         | Type      | Default   | Description                                                               |
-| ------------ | --------- | --------- | ------------------------------------------------------------------------- |
-| `--mode`     | `string`  | `"infer"` | Compilation mode: `infer`, `annotation`, `all`                            |
-| `--annotate` | `boolean` | `false`   | Insert `'use memo'` into compilable functions that use manual memoization |
+| Flag         | Type     | Default   | Description                                                                                                             |
+| ------------ | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--mode`     | `string` | `"infer"` | Compilation mode: `infer`, `annotation`, `all`                                                                          |
+| `--annotate` | `string` | —         | Insert `'use memo'` directives. `manual-memo`: only functions with manual memoization. `all`: all compilable functions. |
 
 #### `--annotate`
 
-A function is a **migration candidate** when:
+Controls which compilable functions receive a `'use memo'` directive:
 
-1. The React Compiler reports `CompileSuccess`
-2. The function contains manual memoization (`useMemo`, `useCallback`, `React.memo`)
+| Mode          | Annotates                                                                                                            |
+| ------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `manual-memo` | Only functions that compile successfully **and** contain manual memoization (`useMemo`, `useCallback`, `React.memo`) |
+| `all`         | All functions that compile successfully, regardless of manual memoization                                            |
 
-Inserts `'use memo';` at the top of each candidate's function body. Idempotent.
+Inserts `'use memo';` at the top of each matching function's body. Idempotent — functions that already have the directive are skipped.
 
 #### Examples
 
@@ -149,8 +154,11 @@ react-compiler-analyzer analyze ./library/src --verbose
 # Use annotation compilation mode
 react-compiler-analyzer analyze ./library/src --mode annotation
 
-# Auto-annotate migration candidates
-react-compiler-analyzer analyze ./library/src --annotate
+# Auto-annotate only functions with manual memoization (migration candidates)
+react-compiler-analyzer analyze ./library/src --annotate manual-memo
+
+# Auto-annotate all compilable functions
+react-compiler-analyzer analyze ./library/src --annotate all
 ```
 
 ## Shared options
@@ -197,7 +205,7 @@ src/
 ├── coverage-analyzer.ts  — Pure derivation: deriveCoverage (from FileCompilationResult)
 ├── manual-memo-plugin.ts — Babel plugin detecting useMemo/useCallback/React.memo
 ├── fixer.ts              — Directive fixes (remove redundant, justify active, resolve conflicts)
-├── coverage-fixer.ts     — Insert 'use memo' annotations for migration candidates
+├── coverage-fixer.ts     — Insert 'use memo' annotations (manual-memo or all compilable)
 ├── reporter.ts           — Directive reporting (full report + compact summary for analyze)
 ├── coverage-reporter.ts  — Coverage reporting (stats, per-function, migration candidates)
 ├── patterns.ts           — Shared regex patterns for directive detection

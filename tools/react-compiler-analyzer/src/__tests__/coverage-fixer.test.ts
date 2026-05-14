@@ -3,7 +3,7 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 
 import { applyAnnotations } from '../coverage-fixer';
-import type { FunctionAnalysis } from '../types';
+import type { FunctionAnalysis, AnnotateMode } from '../types';
 
 const FIXTURES_DIR = join(__dirname, '__fixtures__', 'annotate');
 
@@ -34,7 +34,7 @@ describe('applyAnnotations', () => {
     const filePath = createTempFixture('single-function');
     const results: FunctionAnalysis[] = [makeAnalysis(filePath, 3, 4)];
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
 
     expect(outcome.filesModified).toBe(1);
     expect(outcome.functionsAnnotated).toBe(1);
@@ -54,7 +54,7 @@ describe('applyAnnotations', () => {
       },
     ];
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
 
     expect(outcome.filesModified).toBe(1);
     expect(outcome.functionsAnnotated).toBe(2);
@@ -68,7 +68,7 @@ describe('applyAnnotations', () => {
     const filePath = createTempFixture('arrow-function');
     const results: FunctionAnalysis[] = [makeAnalysis(filePath, 3, 4)];
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
 
     expect(outcome.filesModified).toBe(1);
     expect(outcome.functionsAnnotated).toBe(1);
@@ -82,7 +82,7 @@ describe('applyAnnotations', () => {
     const filePath = createTempFixture('already-annotated');
     const results: FunctionAnalysis[] = [makeAnalysis(filePath, 3, 4)];
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
 
     expect(outcome.filesModified).toBe(0);
     expect(outcome.functionsAnnotated).toBe(0);
@@ -106,8 +106,179 @@ describe('applyAnnotations', () => {
       },
     ];
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
     expect(outcome.filesModified).toBe(0);
     expect(outcome.functionsAnnotated).toBe(0);
+  });
+
+  it("'all' mode annotates compilable functions without manual memoization", async () => {
+    const filePath = createTempFixture('compilable-no-memo');
+    const results: FunctionAnalysis[] = [
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 4,
+        column: 0,
+        functionName: 'RegularComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 5,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 10,
+        column: 40,
+        functionName: 'ArrowComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 11,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 20,
+        column: 0,
+        functionName: 'useCounter',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 21,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 27,
+        column: 0,
+        functionName: 'MultiHookComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 28,
+      },
+    ];
+
+    const outcome = await applyAnnotations(results, 'all');
+
+    expect(outcome.filesModified).toBe(1);
+    expect(outcome.functionsAnnotated).toBe(4);
+
+    const actual = readFileSync(filePath, 'utf-8');
+    const expected = readFileSync(join(FIXTURES_DIR, 'compilable-no-memo', 'output.tsx'), 'utf-8');
+    expect(actual).toBe(expected);
+  });
+
+  it("'all' mode skips non-compiled functions mixed with compilable ones", async () => {
+    const filePath = createTempFixture('compilable-no-memo');
+    const results: FunctionAnalysis[] = [
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 4,
+        column: 0,
+        functionName: 'RegularComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 5,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 10,
+        column: 40,
+        functionName: 'ArrowComponent',
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'some error',
+        bodyInsertionLine: 11,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 20,
+        column: 0,
+        functionName: 'useCounter',
+        status: 'skipped',
+        compilerEvent: 'CompileSkip',
+        bodyInsertionLine: 21,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 27,
+        column: 0,
+        functionName: 'MultiHookComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 28,
+      },
+    ];
+
+    const outcome = await applyAnnotations(results, 'all');
+
+    // Only the 2 compiled functions should be annotated
+    expect(outcome.filesModified).toBe(1);
+    expect(outcome.functionsAnnotated).toBe(2);
+
+    const actual = readFileSync(filePath, 'utf-8');
+    expect(actual).toContain("export function RegularComponent() {\n  'use memo';");
+    expect(actual).toContain("export function MultiHookComponent({ id }: { id: string }) {\n  'use memo';");
+    // Error and skipped functions should NOT have 'use memo'
+    expect(actual).not.toContain("ArrowComponent = ({ label }: { label: string }) => {\n  'use memo';");
+    expect(actual).not.toContain("export function useCounter(initial: number) {\n  'use memo';");
+  });
+
+  it("'manual-memo' mode skips compilable functions without manual memoization", async () => {
+    const filePath = createTempFixture('compilable-no-memo');
+    const results: FunctionAnalysis[] = [
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 4,
+        column: 0,
+        functionName: 'RegularComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 5,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 10,
+        column: 40,
+        functionName: 'ArrowComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 11,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 20,
+        column: 0,
+        functionName: 'useCounter',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 21,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 27,
+        column: 0,
+        functionName: 'MultiHookComponent',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 28,
+      },
+    ];
+
+    const outcome = await applyAnnotations(results, 'manual-memo');
+
+    expect(outcome.filesModified).toBe(0);
+    expect(outcome.functionsAnnotated).toBe(0);
+
+    // File should remain unchanged
+    const actual = readFileSync(filePath, 'utf-8');
+    const input = readFileSync(join(FIXTURES_DIR, 'compilable-no-memo', 'input.tsx'), 'utf-8');
+    expect(actual).toBe(input);
   });
 });

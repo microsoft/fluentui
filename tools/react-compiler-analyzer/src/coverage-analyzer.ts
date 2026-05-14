@@ -90,6 +90,15 @@ export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[
       };
       r.bodyInsertionLine = memoEntry.bodyInsertionLine;
     }
+
+    // Merge bodyInsertionLine from the all-functions map for compiled functions
+    // that don't already have one from the manual-memo map
+    if (!r.bodyInsertionLine) {
+      const insertionLine = result.bodyInsertionLines.get(key);
+      if (insertionLine) {
+        r.bodyInsertionLine = insertionLine;
+      }
+    }
   }
 
   return results;

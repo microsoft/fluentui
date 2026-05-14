@@ -1,11 +1,11 @@
-import type { CommandModule } from 'yargs';
+import type { CommandModule, Argv } from 'yargs';
 
 import { compileFiles } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
 import { discoverAllFiles, findPackageName } from '../discovery';
-import type { CompilationMode } from '../types';
+import type { AnnotateMode, CompilationMode } from '../types';
 import { sharedOptions, validateConcurrency, validatePath } from './shared';
 
 type AnalyzeArgv = {
@@ -15,7 +15,7 @@ type AnalyzeArgv = {
   'full-reasons': boolean;
   exclude: string[];
   mode: CompilationMode;
-  annotate: boolean;
+  annotate: AnnotateMode | undefined;
 };
 
 export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
@@ -23,10 +23,11 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
   describe: 'Analyze React Compiler coverage and migration potential',
   builder: yarg =>
     sharedOptions(yarg).option('annotate', {
-      type: 'boolean' as const,
-      describe: "Insert 'use memo' into compilable functions that use manual memoization",
-      default: false,
-    }),
+      type: 'string' as const,
+      describe:
+        "Insert 'use memo' into compilable functions. 'manual-memo': only those with useMemo/useCallback/React.memo. 'all': all compilable functions.",
+      choices: ['manual-memo', 'all'] as const,
+    }) as Argv<AnalyzeArgv>,
   handler: async argv => {
     const resolvedPath = validatePath(argv.path);
     validateConcurrency(argv.concurrency);
@@ -64,10 +65,10 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
     printCoverageSummary(coverageResults, argv.verbose);
 
     if (argv.annotate) {
-      const outcome = await applyAnnotations(coverageResults);
+      const outcome = await applyAnnotations(coverageResults, argv.annotate);
       if (outcome.functionsAnnotated > 0) {
         console.log(
-          `\n✓ Annotated ${outcome.functionsAnnotated} function(s) in ${outcome.filesModified} file(s) with 'use memo'.`,
+          `\n✓ Annotated ${outcome.functionsAnnotated} function(s) in ${outcome.filesModified} file(s) with 'use memo' (mode: ${argv.annotate}).`,
         );
       } else {
         console.log('\nNo functions to annotate.');

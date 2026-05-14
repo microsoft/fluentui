@@ -57,7 +57,7 @@ export function Annotatable({ items }: { items: string[] }) {
 
     const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
 
     if (outcome.functionsAnnotated > 0) {
       const modified = readFileSync(componentFile, 'utf-8');
@@ -83,14 +83,14 @@ export function Idempotent({ items }: { items: string[] }) {
 
     // First pass
     const results = await analyzeForCoverage(entry);
-    await applyAnnotations(results);
+    await applyAnnotations(results, 'manual-memo');
     const firstContent = readFileSync(componentFile, 'utf-8');
 
     // Re-analyze after annotation
     const results2 = await analyzeForCoverage(entry);
 
     // Second pass
-    const outcome2 = await applyAnnotations(results2);
+    const outcome2 = await applyAnnotations(results2, 'manual-memo');
     const secondContent = readFileSync(componentFile, 'utf-8');
 
     // Content should be the same (idempotent)
@@ -125,10 +125,60 @@ export function NamespaceComponent(props: { items: string[]; multiplier: number 
     expect(candidates[0].manualMemo!.useMemo).toBe(1);
     expect(candidates[0].manualMemo!.useCallback).toBe(1);
 
-    const outcome = await applyAnnotations(results);
+    const outcome = await applyAnnotations(results, 'manual-memo');
     expect(outcome.functionsAnnotated).toBeGreaterThan(0);
 
     const modified = readFileSync(componentFile, 'utf-8');
     expect(modified).toContain("'use memo'");
+  });
+
+  it("'all' mode annotates compilable functions without manual memoization", async () => {
+    const componentFile = join(tempDir, 'src', 'NoMemo.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useState } from 'react';
+
+export function NoMemoComponent() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    // Verify this function has no manual memo
+    const compiled = results.filter(r => r.status === 'compiled');
+    expect(compiled.length).toBeGreaterThan(0);
+    expect(compiled[0].manualMemo).toBeUndefined();
+    expect(compiled[0].bodyInsertionLine).toBeGreaterThan(0);
+
+    const outcome = await applyAnnotations(results, 'all');
+    expect(outcome.functionsAnnotated).toBeGreaterThan(0);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).toContain("'use memo'");
+  });
+
+  it("'manual-memo' mode skips compilable functions without manual memoization", async () => {
+    const componentFile = join(tempDir, 'src', 'NoMemoSkipped.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useState } from 'react';
+
+export function NoMemoSkipped() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    const outcome = await applyAnnotations(results, 'manual-memo');
+    expect(outcome.functionsAnnotated).toBe(0);
+
+    const content = readFileSync(componentFile, 'utf-8');
+    expect(content).not.toContain("'use memo'");
   });
 });
