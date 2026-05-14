@@ -8,7 +8,14 @@ export {
   useSlider_unstable,
   useSliderBase_unstable,
 } from './Slider';
-export type { SliderOnChangeData, SliderProps, SliderSlots, SliderState, SliderBaseProps, SliderBaseState } from './Slider';
+export type {
+  SliderOnChangeData,
+  SliderProps,
+  SliderSlots,
+  SliderState,
+  SliderBaseProps,
+  SliderBaseState,
+} from './Slider';
 export {
   rangeSliderClassNames,
   rangeSliderCSSVars,
