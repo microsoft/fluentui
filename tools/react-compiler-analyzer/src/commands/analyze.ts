@@ -5,11 +5,11 @@ import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
 import { discoverAllFiles, findPackageName } from '../discovery';
-import type { AnnotateMode, CompilationMode } from '../types';
-import { sharedOptions, validateConcurrency, validatePath } from './shared';
+import type { AnnotateMode, CompilationMode, FileEntry } from '../types';
+import { sharedOptions, validateConcurrency, validatePaths } from './shared';
 
 type AnalyzeArgv = {
-  path: string;
+  paths: string[];
   verbose: boolean;
   concurrency: number;
   'full-reasons': boolean;
@@ -19,7 +19,7 @@ type AnalyzeArgv = {
 };
 
 export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
-  command: 'analyze <path>',
+  command: 'analyze <paths..>',
   describe: 'Analyze React Compiler coverage and migration potential',
   builder: yarg =>
     sharedOptions(yarg).option('annotate', {
@@ -29,18 +29,23 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       choices: ['manual-memo', 'all'] as const,
     }) as Argv<AnalyzeArgv>,
   handler: async argv => {
-    const resolvedPath = validatePath(argv.path);
+    const resolvedPaths = validatePaths(argv.paths);
     validateConcurrency(argv.concurrency);
 
     console.log('━━ React Compiler Analysis ━━\n');
 
-    const packageName = await findPackageName(resolvedPath);
+    const files: FileEntry[] = [];
 
-    console.log(`## Scanning: ${resolvedPath}`);
-    console.log(`   Package: ${packageName}`);
-    console.log(`   Mode: ${argv.mode}\n`);
+    for (const resolvedPath of resolvedPaths) {
+      const packageName = await findPackageName(resolvedPath);
 
-    const files = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
+      console.log(`## Scanning: ${resolvedPath}`);
+      console.log(`   Package: ${packageName}`);
+      console.log(`   Mode: ${argv.mode}\n`);
+
+      const discovered = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
+      files.push(...discovered);
+    }
 
     if (files.length === 0) {
       console.log('No TypeScript files found.');

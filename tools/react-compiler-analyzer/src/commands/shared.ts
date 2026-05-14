@@ -20,9 +20,10 @@ export const DEFAULT_EXCLUDE = [
  */
 export function sharedOptions<T>(yarg: Argv<T>) {
   return yarg
-    .positional('path', {
+    .positional('paths', {
       type: 'string' as const,
-      describe: 'Directory to scan for TypeScript files',
+      array: true as const,
+      describe: 'One or more directories to scan for TypeScript files',
       demandOption: true,
     })
     .option('verbose', {
@@ -67,6 +68,10 @@ export function validatePath(rawPath: string): string {
   }
 
   return resolvedPath;
+}
+
+export function validatePaths(rawPaths: string[]): string[] {
+  return rawPaths.map(validatePath);
 }
 
 export function validateConcurrency(concurrency: number): void {
