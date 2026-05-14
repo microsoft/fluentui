@@ -9,13 +9,19 @@ const useClasses = makeStyles({
   root: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: 'auto auto auto',
-    gridTemplateAreas: `"labelBefore labelAfter" "cardBefore cardAfter" "controls controls"`,
+    gridTemplateRows: 'auto auto auto auto',
+    gridTemplateAreas: `"labelBefore labelAfter" "cardBefore cardAfter" "exampleBelowBefore exampleBelowAfter" "controls controls"`,
     gap: '12px 20px',
   },
 
   label: {
     textAlign: 'center',
+  },
+
+  example: {
+    textAlign: 'center',
+    fontFamily: 'monospace',
+    whiteSpace: 'pre-wrap',
   },
 
   card: {
@@ -45,11 +51,23 @@ export const CreateMotionComponentReplayKey = (): JSXElement => {
 
   return (
     <div className={classes.root}>
-      <Text className={classes.label} weight="semibold">
-        Without replayKey
+      <Text className={classes.label}>
+        <b>Without replayKey</b>
+        <br />
+        no animation on change
       </Text>
-      <Text className={classes.label} weight="semibold">
-        With replayKey
+      <Text className={classes.label}>
+        <b>With replayKey</b>
+        <br />
+        animates on change
+      </Text>
+
+      <Text className={classes.example} size={300} style={{ gridArea: 'exampleBelowBefore' }}>
+        {'<Scale.In>'}
+      </Text>
+      <Text className={classes.example} size={300} style={{ gridArea: 'exampleBelowAfter' }}>
+        <span>{`<Scale.In `}</span>
+        <b>{`replayKey={${count}}>`}</b>
       </Text>
 
       <Card className={classes.card} style={{ gridArea: 'cardBefore' }}>
