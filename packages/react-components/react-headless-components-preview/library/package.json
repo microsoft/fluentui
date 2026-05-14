@@ -27,6 +27,7 @@
     "@fluentui/react-breadcrumb": "^9.4.1",
     "@fluentui/react-card": "^9.6.1",
     "@fluentui/react-checkbox": "^9.6.1",
+    "@fluentui/react-combobox": "^9.17.1",
     "@fluentui/react-dialog": "^9.18.0",
     "@fluentui/react-divider": "^9.7.1",
     "@fluentui/react-drawer": "^9.12.0",
@@ -128,6 +129,12 @@
       "node": "./lib-commonjs/drawer.js",
       "import": "./lib/drawer.js",
       "require": "./lib-commonjs/drawer.js"
+    },
+    "./dropdown": {
+      "types": "./dist/dropdown.d.ts",
+      "node": "./lib-commonjs/dropdown.js",
+      "import": "./lib/dropdown.js",
+      "require": "./lib-commonjs/dropdown.js"
     },
     "./field": {
       "types": "./dist/field.d.ts",

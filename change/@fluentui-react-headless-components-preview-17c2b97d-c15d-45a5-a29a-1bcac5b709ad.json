@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add Dropdown component",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
