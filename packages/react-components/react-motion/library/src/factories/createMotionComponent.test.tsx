@@ -291,7 +291,7 @@ describe('createMotionComponent', () => {
 
   it('does not replay on initial mount in StrictMode when replayKey is set', () => {
     const TestAtom = createMotionComponent(motion);
-    const { animateMock, cancelMock, playMock, ElementMock } = createElementMock();
+    const { animateMock, playMock, ElementMock } = createElementMock();
 
     render(
       <React.StrictMode>
@@ -301,10 +301,10 @@ describe('createMotionComponent', () => {
       </React.StrictMode>,
     );
 
-    // StrictMode may invoke mount/cleanup cycles in development. cleanup can call cancel(),
-    // so play() is the reliable replay signal and must stay untouched on initial mount.
+    // React 18+ StrictMode invokes mount/cleanup/remount cycles in development; cleanup can call cancel().
+    // React 17 StrictMode does not double-invoke effects, so cancel() may not be called at all.
+    // play() is the reliable cross-version replay signal and must stay untouched on initial mount.
     expect(animateMock).toHaveBeenCalled();
-    expect(cancelMock).toHaveBeenCalledTimes(1);
     expect(playMock).not.toHaveBeenCalled();
   });
 });
