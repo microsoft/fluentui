@@ -330,9 +330,7 @@ const CalendarYearTitle: React.FunctionComponent<CalendarYearHeaderProps> = prop
 
   return (
     <div className={classNames.current}>
-      <span>
-        {onRenderYear(fromYear)} - {onRenderYear(toYear)}
-      </span>
+      {onRenderYear(fromYear)} - {onRenderYear(toYear)}
     </div>
   );
 };
