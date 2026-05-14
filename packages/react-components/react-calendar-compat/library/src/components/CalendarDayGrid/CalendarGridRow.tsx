@@ -54,7 +54,11 @@ export const CalendarGridRow = React.forwardRef<HTMLTableRowElement, CalendarGri
     : '';
 
   return (
-    <tr ref={ref} role={ariaRole} aria-hidden={ariaHidden} className={rowClassName} key={weekIndex + '_' + week[0].key}>
+    // No `key` here — the parent DirectionalSlide already has a stable key for this row.
+    // A date-based key (e.g. `weekIndex + '_' + week[0].key`) would remount the <tr> on every
+    // navigation, detaching it from Slide.In's Web Animation handle and silently breaking replay.
+    // Day cells inside reconcile correctly via their own `key={day.key}`.
+    <tr ref={ref} role={ariaRole} aria-hidden={ariaHidden} className={rowClassName}>
       {showWeekNumbers && weekNumbers && (
         <th
           className={classNames.weekNumberCell}
