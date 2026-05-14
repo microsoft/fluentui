@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 import type { FunctionAnalysis, AnnotateResult, AnnotateMode } from './types';
+import { USE_MEMO_CONTENT_RE } from './patterns';
 
 /**
  * Apply 'use memo' annotations to compilable functions.
@@ -71,11 +72,13 @@ export async function applyAnnotations(results: FunctionAnalysis[], mode: Annota
       }
 
       // Check if 'use memo' is already present nearby (idempotent)
+      // Look from the insertion point down a few lines to handle blank lines / comments
+      // between the opening brace and the directive. Match both quote styles.
       const surroundingStart = Math.max(0, insertIndex - 1);
-      const surroundingEnd = Math.min(lines.length - 1, insertIndex + 1);
+      const surroundingEnd = Math.min(lines.length - 1, insertIndex + 4);
       let alreadyPresent = false;
       for (let i = surroundingStart; i <= surroundingEnd; i++) {
-        if (lines[i].includes("'use memo'")) {
+        if (USE_MEMO_CONTENT_RE.test(lines[i])) {
           alreadyPresent = true;
           break;
         }
