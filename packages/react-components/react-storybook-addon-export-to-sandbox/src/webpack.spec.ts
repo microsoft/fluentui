@@ -22,7 +22,7 @@ describe(`webpack`, () => {
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
-                { importMappings: {}, cssModules: false },
+                { importMappings: undefined, cssModules: false },
               ],
             ],
           },

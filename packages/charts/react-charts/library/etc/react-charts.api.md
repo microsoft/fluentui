@@ -829,11 +829,13 @@ export interface EventsAnnotationProps {
 // @public (undocumented)
 export interface ExtendedSegment extends Omit<GaugeChartSegment, 'color'> {
     // (undocumented)
-    color: string | [string, string];
+    color: string;
     // (undocumented)
     end: number;
     // (undocumented)
-    gradientId?: string;
+    gradient: [string, string] | undefined;
+    // (undocumented)
+    gradientId: string;
     // (undocumented)
     start: number;
 }
@@ -1071,6 +1073,7 @@ export interface GVBarChartSeriesPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data: number;
+    gradient?: [string, string];
     key: string;
     legend: string;
     onClick?: VoidFunction;
@@ -1209,6 +1212,7 @@ export interface HorizontalBarChartWithAxisDataPoint {
     barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend?: string;
     onClick?: VoidFunction;
     x: number;
@@ -2058,6 +2062,7 @@ export interface VSChartDataPoint {
     color?: string;
     culture?: string;
     data: number | string;
+    gradient?: [string, string];
     legend: string;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;

@@ -18,7 +18,6 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
 export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
   const { importMappings } = options;
-  const safeImportMappings = importMappings ?? {};
   const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
@@ -30,8 +29,8 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
       parserOptions.plugins.push('typescript');
     },
     pre() {
-      this.imports = Object.keys(safeImportMappings).reduce((acc, cur) => {
-        acc[safeImportMappings[cur].replace] = [];
+      this.imports = Object.keys(importMappings).reduce((acc, cur) => {
+        acc[importMappings[cur].replace] = [];
         return acc;
       }, {} as PluginState['imports']);
     },
@@ -91,19 +90,14 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
           }
         }
 
-        const importMapping = t.isLiteral(path.node.source) ? safeImportMappings[importSource.value] : undefined;
-        if (importMapping) {
-          if (!pluginState.imports[importMapping.replace]) {
-            pluginState.imports[importMapping.replace] = [];
-          }
-
+        if (t.isLiteral(path.node.source) && importMappings[importSource.value]) {
           path.node.specifiers.forEach(specifier => {
             if (
               t.isImportSpecifier(specifier) &&
               t.isIdentifier(specifier.imported) &&
               t.isIdentifier(specifier.local)
             ) {
-              pluginState.imports[importMapping.replace].push(specifier.imported.name);
+              pluginState.imports[importMappings[importSource.value].replace].push(specifier.imported.name);
             }
           });
 
