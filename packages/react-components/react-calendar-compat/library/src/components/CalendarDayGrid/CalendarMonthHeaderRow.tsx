@@ -43,6 +43,9 @@ export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHea
         const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
         const label = strings.days[i];
         return (
+          // Plain list key, not a `replayKey`: day labels are stable across navigation so the fade
+          // plays once on mount. The only remount is in single-week view, when a label is swapped
+          // for a short month name.
           <Fade.In key={dayLabels[i] + ' ' + index} duration={motionTokens.durationGentle}>
             <th
               className={mergeClasses(classNames.dayCell, classNames.weekDayLabelCell)}
