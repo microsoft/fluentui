@@ -127,13 +127,18 @@ function printFunctionTable(
  */
 export function printCoverageSummary(results: FunctionAnalysis[], verbose: boolean): void {
   const total = results.length;
-  const compiled = results.filter(r => r.status === 'compiled').length;
+  const compiledResults = results.filter(r => r.status === 'compiled');
+  const compiled = compiledResults.length;
+  const migrationCandidates = compiledResults.filter(r => r.manualMemo).length;
+  const compilerReady = compiled - migrationCandidates;
   const skipped = results.filter(r => r.status === 'skipped').length;
   const errored = results.filter(r => r.status === 'error').length;
 
   console.log('## Summary\n');
   console.log(`- **Total functions analyzed:** ${total}`);
   console.log(`- **Compiled** (will be memoized): ${compiled} (${pct(compiled, total)})`);
+  console.log(`  - Migration candidates (has manual memoization): ${migrationCandidates}`);
+  console.log(`  - Compiler-ready (no manual memoization): ${compilerReady}`);
   console.log(`- **Skipped** (not a component/hook): ${skipped} (${pct(skipped, total)})`);
   console.log(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
   console.log('');
