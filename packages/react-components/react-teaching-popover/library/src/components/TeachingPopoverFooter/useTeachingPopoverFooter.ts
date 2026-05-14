@@ -38,7 +38,6 @@ export const useTeachingPopoverFooterBase_unstable = (
   return {
     footerLayout: props.footerLayout ?? 'horizontal',
     handleButtonClick,
-    hasSecondary: props.secondary !== undefined,
     components: {
       root: 'div',
     },
@@ -72,7 +71,7 @@ export const useTeachingPopoverFooter_unstable = (
     defaultProps: {
       appearance: secondaryDefaultAppearance,
     },
-    renderByDefault: baseState.hasSecondary,
+    renderByDefault: props.secondary !== undefined,
     elementType: Button,
   });
 

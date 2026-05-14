@@ -10,6 +10,7 @@ import type { ButtonProps } from '@fluentui/react-button';
 import type { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -267,14 +268,13 @@ export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopov
 // @public
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
 
-// @public (undocumented)
-export type TeachingPopoverFooterBaseProps = TeachingPopoverFooterProps;
+// @public
+export type TeachingPopoverFooterBaseProps = DistributiveOmit<TeachingPopoverFooterProps, 'primary' | 'secondary'>;
 
 // @public
 export type TeachingPopoverFooterBaseState = ComponentState<Pick<TeachingPopoverFooterSlots, 'root'>> & {
     footerLayout?: 'horizontal' | 'vertical';
     handleButtonClick: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
-    hasSecondary: boolean;
 };
 
 // @public (undocumented)
