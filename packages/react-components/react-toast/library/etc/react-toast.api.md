@@ -31,7 +31,7 @@ export type AriaLivePoliteness = 'polite' | 'assertive';
 // @public (undocumented)
 export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
     // (undocumented)
-    root?: RootSlot;
+    root?: Slot<'div'>;
 }
 
 // @public (undocumented)
@@ -238,6 +238,22 @@ export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
 // @public (undocumented)
+export interface ToastOptions<TData = object> {
+    content: unknown;
+    data: TData;
+    intent?: ToastIntent;
+    onStatusChange: ToastChangeHandler | undefined;
+    pauseOnHover: boolean;
+    pauseOnWindowBlur: boolean;
+    politeness?: ToastPoliteness;
+    position: ToastPosition;
+    priority: number;
+    timeout: number;
+    toasterId: ToasterId | undefined;
+    toastId: ToastId;
+}
+
+// @public (undocumented)
 export type ToastPoliteness = 'assertive' | 'polite';
 
 // @public (undocumented)
@@ -306,9 +322,15 @@ export type ToastTriggerState = {
 };
 
 // @public (undocumented)
+export interface UpdateToastEventDetail extends Partial<ToastOptions>, CommonToastDetail {
+    // (undocumented)
+    toastId: ToastId;
+}
+
+// @public (undocumented)
 export interface UpdateToastOptions extends UpdateToastEventDetail {
     // (undocumented)
-    root?: RootSlot;
+    root?: Slot<'div'>;
 }
 
 // @public

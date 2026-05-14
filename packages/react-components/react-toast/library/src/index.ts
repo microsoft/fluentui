@@ -14,8 +14,10 @@ export type {
   Toast as ToastData,
   ToastChangeData,
   ToastChangeHandler,
+  ToastOptions,
   DispatchToastOptions,
   UpdateToastOptions,
+  UpdateToastEventDetail,
 } from './state';
 
 export { ToastTrigger, useToastTrigger_unstable, renderToastTrigger_unstable } from './ToastTrigger';

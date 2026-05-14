@@ -54,6 +54,8 @@ export const useToastTitleBase_unstable = (
  * @param ref - reference to root HTMLElement of ToastTitle
  */
 export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HTMLElement>): ToastTitleState => {
+  'use no memo';
+
   const backgroundAppearance = useBackgroundAppearance();
   const baseState = useToastTitleBase_unstable(props, ref);
 
@@ -74,11 +76,13 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
       break;
   }
 
+  // Add default media if intent is provided but media slot is not
+  if (baseState.media && !baseState.media.hasOwnProperty('children')) {
+    baseState.media.children = defaultIcon;
+  }
+
   return {
     ...baseState,
     backgroundAppearance,
-    media: baseState.media
-      ? { ...baseState.media, children: baseState.media.children ?? defaultIcon }
-      : baseState.media,
   };
 };
