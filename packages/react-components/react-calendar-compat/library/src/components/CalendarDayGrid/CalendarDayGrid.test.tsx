@@ -152,4 +152,28 @@ describe('CalendarDayGrid', () => {
       expect(navigatedTo.getDate()).toBe(7);
     });
   });
+
+  // Motion-component wrappers (DirectionalSlide, Fade.In) must remain transparent —
+  // table semantics require <tr> to be a direct child of <tbody> and <th>/<td>
+  // to be direct children of <tr>. Any wrapper element would break a11y and CSS.
+  describe('motion wrappers preserve table structure', () => {
+    it('renders week rows as direct children of <tbody>', () => {
+      const { container } = render(<CalendarDayGrid {...defaultProps} />);
+      const tbody = container.querySelector('tbody');
+      expect(tbody).not.toBeNull();
+      Array.from(tbody!.children).forEach(child => {
+        expect(child.tagName).toBe('TR');
+      });
+    });
+
+    it('renders weekday label cells as direct children of the header <tr>', () => {
+      const { container } = render(<CalendarDayGrid {...defaultProps} />);
+      // The header row contains the weekday label <th> cells (Sun, Mon, …)
+      const headerCells = container.querySelectorAll('th[scope="col"]');
+      expect(headerCells.length).toBeGreaterThan(0);
+      headerCells.forEach(cell => {
+        expect(cell.parentElement?.tagName).toBe('TR');
+      });
+    });
+  });
 });
