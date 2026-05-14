@@ -10,7 +10,7 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -82,7 +82,7 @@ export type RangeSliderValue = {
 export const renderRangeSlider_unstable: (state: RangeSliderState) => JSXElement;
 
 // @public
-export const renderSlider_unstable: (state: SliderState) => JSXElement;
+export const renderSlider_unstable: (state: SliderBaseState) => JSXElement;
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
