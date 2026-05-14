@@ -5,7 +5,7 @@ import type { ComboboxProps } from '@fluentui/react-headless-components-preview/
 import styles from './combobox.module.css';
 
 export const ControllingOpenAndClose = (): React.ReactNode => {
-  const options = ['Cat', 'Caterpillar', 'Corgi', 'Dog', 'Fish', 'Hamster', 'Snake'];
+  const options = ['Cat', 'Caterpillar', 'Corgi', 'Dog', 'Fish', 'Ferret', 'Hamster', 'Snake'];
 
   const [open, setOpen] = React.useState(false);
 

@@ -11,7 +11,7 @@ export { ControllingOpenAndClose } from './ComboboxControllingOpenAndClose.stori
 export { Disabled } from './ComboboxDisabled.stories';
 
 export default {
-  title: 'Headless Components/Combobox',
+  title: 'Components/Combobox',
   component: Combobox,
   subcomponents: { Listbox, Option, OptionGroup },
   parameters: {
