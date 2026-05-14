@@ -231,6 +231,8 @@ describe('multi-path coverage reporting', () => {
 
       - **Total functions analyzed:** 3
       - **Compiled** (will be memoized): 2 (66.7%)
+        - Migration candidates (has manual memoization): 0
+        - Compiler-ready (no manual memoization): 2
       - **Skipped** (not a component/hook): 0 (0.0%)
       - **Errors** (compiler bailout): 1 (33.3%)
 
