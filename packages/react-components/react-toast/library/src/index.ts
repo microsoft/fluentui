@@ -1,4 +1,5 @@
 export { useToastController, useToaster } from './state';
+export type { Announce, AnnounceOptions, AriaLivePoliteness, LiveMessage } from './AriaLive';
 export type {
   ToastPosition,
   ToastId,
@@ -7,6 +8,8 @@ export type {
   ToastStatus,
   ToastIntent,
   ToasterId,
+  ToasterOptions,
+  ToasterShortcuts,
   ToastImperativeRef,
   Toast as ToastData,
   ToastChangeData,
@@ -23,6 +26,7 @@ export {
   useToasterStyles_unstable,
   renderToaster_unstable,
   toasterClassNames,
+  useToastAnnounce,
 } from './Toaster';
 export type { ToasterProps, ToasterState, ToasterSlots } from './Toaster';
 export {
@@ -76,5 +80,12 @@ export {
 } from './ToastFooter';
 export type { ToastFooterProps, ToastFooterState, ToastFooterSlots } from './ToastFooter';
 
+export type { ToastContainerContextValue } from './contexts/toastContainerContext';
+export { ToastContainerContextProvider, useToastContainerContext } from './contexts/toastContainerContext';
 export { toastContainerClassNames } from './ToastContainer';
-export type { ToastContainerState } from './ToastContainer';
+export type { ToastContainerSlots, ToastContainerProps, ToastContainerState } from './ToastContainer';
+export {
+  useToastContainer_unstable,
+  renderToastContainer_unstable,
+  useToastContainerContextValues_unstable,
+} from './ToastContainer';
