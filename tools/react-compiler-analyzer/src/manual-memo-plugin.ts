@@ -14,6 +14,8 @@ export interface ManualMemoEntry {
 export interface ManualMemoPluginOptions {
   /** Shared map keyed by `line:column` of the enclosing function start */
   results: Map<string, ManualMemoEntry>;
+  /** Body insertion lines for ALL functions, keyed by `line:column` */
+  bodyInsertionLines?: Map<string, number>;
 }
 
 function fnKey(loc: { line: number; column: number }): string {
@@ -87,12 +89,29 @@ function resolveReactMemoTarget(callPath: NodePath<CallExpression>): NodePath<Ba
 
 /**
  * Babel plugin that detects manual memoization (useMemo, useCallback, React.memo)
- * within function bodies. Populates a shared Map in plugin options keyed by function location.
+ * within function bodies and records body insertion lines for all functions.
+ *
+ * Populates two shared Maps in plugin options keyed by `line:column` of the function start:
+ * - `results`: Manual memoization entries for functions containing useMemo/useCallback/React.memo
+ * - `bodyInsertionLines`: The line where a directive can be inserted for ALL functions (used by `--annotate all`)
  */
 export function manualMemoPlugin(): PluginObj {
   return {
     name: 'manual-memo-detection',
     visitor: {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      Function(path, state) {
+        const opts = state.opts as unknown as ManualMemoPluginOptions;
+        const fnNode = path.node as BabelFunction;
+        if (!fnNode.loc) {
+          return;
+        }
+        const key = fnKey(fnNode.loc.start);
+        const insertionLine = getBodyInsertionLine(path as NodePath<BabelFunction>);
+        if (insertionLine > 0) {
+          opts.bodyInsertionLines?.set(key, insertionLine);
+        }
+      },
       // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(path, state) {
         const opts = state.opts as unknown as ManualMemoPluginOptions;

@@ -76,6 +76,8 @@ export interface FunctionAnalysis {
   bodyInsertionLine?: number;
 }
 
+export type AnnotateMode = 'manual-memo' | 'all';
+
 export interface AnnotateResult {
   filesModified: number;
   functionsAnnotated: number;

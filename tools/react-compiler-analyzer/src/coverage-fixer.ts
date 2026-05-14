@@ -1,22 +1,33 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
-import type { FunctionAnalysis, AnnotateResult } from './types';
+import type { FunctionAnalysis, AnnotateResult, AnnotateMode } from './types';
 
 /**
- * Apply 'use memo' annotations to functions that are migration candidates.
- * A migration candidate is a function that:
- * - Has CompileSuccess status (compiler can optimize it)
- * - Has manual memoization (useMemo/useCallback/React.memo)
- * - Has a valid bodyInsertionLine
+ * Apply 'use memo' annotations to compilable functions.
+ *
+ * When mode is 'manual-memo', only annotates functions that:
+ * - Have CompileSuccess status (compiler can optimize it)
+ * - Have manual memoization (useMemo/useCallback/React.memo)
+ * - Have a valid bodyInsertionLine
+ *
+ * When mode is 'all', annotates all functions that:
+ * - Have CompileSuccess status
+ * - Have a valid bodyInsertionLine
  *
  * Inserts 'use memo'; directive at the top of the function body.
  * Processes insertions bottom-to-top within each file to preserve line numbers.
  */
-export async function applyAnnotations(results: FunctionAnalysis[]): Promise<AnnotateResult> {
-  // Filter to migration candidates
-  const candidates = results.filter(
-    r => r.status === 'compiled' && r.manualMemo && r.bodyInsertionLine && r.bodyInsertionLine > 0,
-  );
+export async function applyAnnotations(results: FunctionAnalysis[], mode: AnnotateMode): Promise<AnnotateResult> {
+  // Filter to candidates based on mode
+  const candidates = results.filter(r => {
+    if (r.status !== 'compiled' || !r.bodyInsertionLine || r.bodyInsertionLine <= 0) {
+      return false;
+    }
+    if (mode === 'manual-memo') {
+      return !!r.manualMemo;
+    }
+    return true;
+  });
 
   if (candidates.length === 0) {
     return { filesModified: 0, functionsAnnotated: 0 };
