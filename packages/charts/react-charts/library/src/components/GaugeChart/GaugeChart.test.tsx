@@ -459,7 +459,13 @@ describe('GaugeChart rendering and behavior tests', () => {
   });
 
   it('should render segment sizes correctly', () => {
-    const extendedSegement1: ExtendedSegment = { ...segments[0], start: 0, end: 33 };
+    const extendedSegement1: ExtendedSegment = {
+      ...segments[0],
+      start: 0,
+      end: 33,
+      gradient: undefined,
+      gradientId: 'gauge-gradient-0',
+    };
 
     expect(getSegmentLabel(extendedSegement1, 0, 100)).toMatch(/0 - 33/);
     expect(getSegmentLabel(extendedSegement1, 0, 100, undefined, true)).toMatch(/0 to 33/);
@@ -470,7 +476,13 @@ describe('GaugeChart rendering and behavior tests', () => {
     expect(getSegmentLabel(extendedSegement1, 0, 100, GaugeChartVariant.MultipleSegments)).toMatch(/0 - 33/);
     expect(getSegmentLabel(extendedSegement1, 0, 100, GaugeChartVariant.MultipleSegments, true)).toMatch(/0 to 33/);
 
-    const extendedSegement2: ExtendedSegment = { ...segments[0], start: 100, end: 133 };
+    const extendedSegement2: ExtendedSegment = {
+      ...segments[0],
+      start: 100,
+      end: 133,
+      gradient: undefined,
+      gradientId: 'gauge-gradient-0',
+    };
 
     expect(getSegmentLabel(extendedSegement2, 100, 200)).toMatch(/100 - 133/);
     expect(getSegmentLabel(extendedSegement2, 100, 200, undefined, true)).toMatch(/100 to 133/);
