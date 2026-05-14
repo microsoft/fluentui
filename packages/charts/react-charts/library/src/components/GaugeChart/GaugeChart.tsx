@@ -625,13 +625,23 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             <defs>
               {props.enableGradient &&
                 _segments.map((segment, index) => {
-                  if (!segment.gradient) return null;
-                  return (
-                    <linearGradient key={segment.gradientId} id={segment.gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor={segment.gradient[0]} />
-                      <stop offset="100%" stopColor={segment.gradient[1]} />
-                    </linearGradient>
-                  );
+                  if (!segment.gradient) {
+                    return null;
+                  } else {
+                    return (
+                      <linearGradient
+                        key={segment.gradientId}
+                        id={segment.gradientId}
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stopColor={segment.gradient[0]} />
+                        <stop offset="100%" stopColor={segment.gradient[1]} />
+                      </linearGradient>
+                    );
+                  }
                 })}
             </defs>
             <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
