@@ -72,4 +72,38 @@ describe('DirectionalSlide', () => {
 
     expect(childAfter).toBe(childBefore);
   });
+
+  it('preserves child DOM identity across replayKey changes within the same direction', () => {
+    const { getByTestId, rerender } = render(
+      <DirectionalSlide animateBackwards={false} replayKey="a">
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+    const childBefore = getByTestId('child');
+
+    rerender(
+      <DirectionalSlide animateBackwards={false} replayKey="b">
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+
+    expect(getByTestId('child')).toBe(childBefore);
+  });
+
+  it('remounts the child when animateBackwards flips so the new slide direction takes effect', () => {
+    const { getByTestId, rerender } = render(
+      <DirectionalSlide animateBackwards={false} replayKey="a">
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+    const childBefore = getByTestId('child');
+
+    rerender(
+      <DirectionalSlide animateBackwards={true} replayKey="b">
+        <div data-testid="child">content</div>
+      </DirectionalSlide>,
+    );
+
+    expect(getByTestId('child')).not.toBe(childBefore);
+  });
 });

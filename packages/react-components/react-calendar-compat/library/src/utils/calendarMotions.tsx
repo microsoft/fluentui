@@ -50,8 +50,12 @@ export const DirectionalSlide = React.forwardRef<HTMLElement, DirectionalSlidePr
   const mergedRef = useMergedRefs(ref, getReactElementRef(child));
   const childWithRef = React.cloneElement(child, { ref: mergedRef });
 
+  // `Slide.In` bakes `outY` into its atoms at mount and `replayKey` only replays them, so a
+  // direction flip needs a remount. Same-direction navigations keep the key and reuse the DOM.
+  const directionKey = animateBackwards ? 'back' : 'fwd';
+
   return (
-    <Slide.In duration={duration} easing={easing} outX={outX} outY={outY} replayKey={replayKey}>
+    <Slide.In key={directionKey} duration={duration} easing={easing} outX={outX} outY={outY} replayKey={replayKey}>
       {childWithRef}
     </Slide.In>
   );
