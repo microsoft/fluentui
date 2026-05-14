@@ -15,6 +15,7 @@ import {
   resolvePositioningShorthand,
   mergeArrowOffset,
   usePositioningMouseTarget,
+  usePositioningSlideDirection,
 } from '@fluentui/react-positioning';
 import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
@@ -26,6 +27,8 @@ import type {
   PopoverState,
 } from './Popover.types';
 import { popoverSurfaceBorderRadius } from './constants';
+import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PopoverSurfaceMotion } from './PopoverSurfaceMotion';
 
 /**
  * Create the state required to render Popover.
@@ -40,19 +43,38 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const positioning = resolvePositioningShorthand(props.positioning);
   const withArrow = props.withArrow && !positioning.coverTarget;
 
+  const { targetDocument } = useFluent();
+
+  const handlePositionEnd = usePositioningSlideDirection({
+    targetDocument,
+    onPositioningEnd: positioning.onPositioningEnd,
+  });
+
   const state = usePopoverBase_unstable({
     ...props,
     positioning: {
       ...positioning,
+      onPositioningEnd: handlePositionEnd,
       // Update the offset with the arrow size only when it's available
       ...(withArrow ? { offset: mergeArrowOffset(positioning.offset, arrowHeights[size]) } : {}),
     },
   });
 
   return {
+    components: {
+      surfaceMotion: PopoverSurfaceMotion,
+    },
     appearance,
     size,
     ...state,
+    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+      elementType: PopoverSurfaceMotion,
+      defaultProps: {
+        visible: state.open,
+        appear: true,
+        unmountOnExit: true,
+      },
+    }),
   };
 };
 
@@ -145,6 +167,39 @@ export const usePopoverBase_unstable = (props: PopoverBaseProps): PopoverBaseSta
     refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open || !closeOnScroll,
   });
+
+  // When trapFocus is enabled, close the popover if focus is programmatically moved outside
+  // (e.g. via element.focus()), which doesn't trigger click or scroll dismiss handlers.
+  // Internal `closeOnFocusOutside` prop allows consumers to opt out during gradual rollout.
+  const closeOnFocusOutside =
+    (props as PopoverBaseProps & { closeOnFocusOutside?: boolean }).closeOnFocusOutside ?? true;
+
+  const closeOnFocusOutCallback = useEventCallback((ev: FocusEvent) => {
+    const target = (ev.composedPath()[0] ?? ev.target) as HTMLElement;
+    const contentElement = positioningRefs.contentRef.current;
+    const triggerElement = positioningRefs.triggerRef.current ?? null;
+
+    if (!contentElement) {
+      return;
+    }
+
+    const isOutside = !elementContains(contentElement, target) && !elementContains(triggerElement, target);
+
+    if (isOutside) {
+      setOpen(ev, false);
+    }
+  });
+
+  React.useEffect(() => {
+    if (!open || !props.trapFocus || !closeOnFocusOutside) {
+      return;
+    }
+
+    targetDocument?.addEventListener('focusin', closeOnFocusOutCallback, true);
+    return () => {
+      targetDocument?.removeEventListener('focusin', closeOnFocusOutCallback, true);
+    };
+  }, [open, props.trapFocus, closeOnFocusOutside, targetDocument, closeOnFocusOutCallback]);
 
   const { findFirstFocusable } = useFocusFinders();
   const activateModal = useActivateModal();

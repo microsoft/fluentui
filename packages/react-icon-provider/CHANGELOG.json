@@ -2,6 +2,44 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Mon, 11 May 2026 10:02:38 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.4.6",
+      "version": "1.4.6",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-icon-provider",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icon-provider",
+            "comment": "Bump @fluentui/style-utilities to v8.15.1",
+            "commit": "04bf7a7dd2b5c8f6963d3bf63187017e96c57a10"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Feb 2026 18:07:05 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.4.5",
+      "version": "1.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icon-provider",
+            "comment": "Bump @fluentui/style-utilities to v8.15.0",
+            "commit": "cbf6cd22febb874c8e360def57b140ea42291902"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:02 GMT",
       "tag": "@fluentui/react-icon-provider_v1.4.4",
       "version": "1.4.4",

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use role attribute instead of classname for active descendant",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

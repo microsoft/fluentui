@@ -1,6 +1,7 @@
-import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import type { AtomMotion } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
 import type { RotateParams } from '../components/Rotate/rotate-types';
-import { BaseAtomParams } from '../types';
+import type { BaseAtomParams } from '../types';
 
 type Axis3D = NonNullable<RotateParams['axis']>;
 

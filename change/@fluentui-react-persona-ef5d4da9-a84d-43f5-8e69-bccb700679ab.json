@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hook for Persona component",
-  "packageName": "@fluentui/react-persona",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

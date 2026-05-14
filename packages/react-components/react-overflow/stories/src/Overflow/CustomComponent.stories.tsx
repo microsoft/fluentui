@@ -1,6 +1,5 @@
 import {
   Button,
-  ForwardRefComponent,
   makeStyles,
   mergeClasses,
   Overflow,
@@ -9,7 +8,7 @@ import {
   useIsOverflowItemVisible,
 } from '@fluentui/react-components';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, ForwardRefComponent } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

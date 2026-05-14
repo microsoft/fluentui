@@ -1,20 +1,8 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  HorizontalBarChartWithAxisDataPoint,
-  HorizontalBarChartWithAxis,
-  getColorFromToken,
-  DataVizPalette,
-} from '@fluentui/react-charts';
-import {
-  Checkbox,
-  CheckboxOnChangeData,
-  Switch,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import type { JSXElement, CheckboxOnChangeData, RadioGroupOnChangeData } from '@fluentui/react-components';
+import type { HorizontalBarChartWithAxisDataPoint } from '@fluentui/react-charts';
+import { HorizontalBarChartWithAxis, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import { Checkbox, Switch, Field, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const HorizontalBarWithAxisBasic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);

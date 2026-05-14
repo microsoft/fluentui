@@ -1,13 +1,6 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
-import {
-  makeStyles,
-  Subtitle2Stronger,
-  Text,
-  Theme,
-  typographyStyles,
-  webLightTheme,
-} from '@fluentui/react-components';
+import type { JSXElement, Theme } from '@fluentui/react-components';
+import { makeStyles, Subtitle2Stronger, Text, typographyStyles, webLightTheme } from '@fluentui/react-components';
 import type { TypographyStyles } from '@fluentui/react-components';
 
 type TypographyTokens = [token: keyof TypographyStyles, tokenName: string, entries: [string, string][]][];

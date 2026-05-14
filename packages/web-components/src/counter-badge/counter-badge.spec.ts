@@ -5,11 +5,12 @@ import {
   CounterBadgeColor,
   CounterBadgeShape,
   CounterBadgeSize,
+  tagName,
 } from './counter-badge.options.js';
 
 test.describe('CounterBadge component', () => {
   test.use({
-    tagName: 'fluent-counter-badge',
+    tagName,
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -21,9 +22,9 @@ test.describe('CounterBadge component', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-counter-badge');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -174,9 +175,11 @@ test.describe('CounterBadge component', () => {
   test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const shape of Object.values(CounterBadgeShape)) {
       await test.step(`should set the \`shape\` property to \`${shape}\``, async () => {
-        await fastPage.setTemplate({ attributes: { shape } });
+        await fastPage.updateTemplate(element, { attributes: { shape } });
 
         await expect(element).toHaveAttribute('shape', shape);
 
@@ -188,9 +191,11 @@ test.describe('CounterBadge component', () => {
   test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const color of Object.values(CounterBadgeColor)) {
       await test.step(`should set the \`color\` property to \`${color}\``, async () => {
-        await fastPage.setTemplate({ attributes: { color } });
+        await fastPage.updateTemplate(element, { attributes: { color } });
 
         await expect(element).toHaveAttribute('color', color);
 
@@ -202,9 +207,11 @@ test.describe('CounterBadge component', () => {
   test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const size of Object.values(CounterBadgeSize)) {
       await test.step(`should set the \`size\` property to "${size}"`, async () => {
-        await fastPage.setTemplate({ attributes: { size } });
+        await fastPage.updateTemplate(element, { attributes: { size } });
 
         await expect(element).toHaveAttribute('size', size);
 
@@ -216,9 +223,11 @@ test.describe('CounterBadge component', () => {
   test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     for (const appearance of Object.values(CounterBadgeAppearance)) {
       await test.step(appearance, async () => {
-        await fastPage.setTemplate({ attributes: { appearance } });
+        await fastPage.updateTemplate(element, { attributes: { appearance } });
 
         await expect(element).toHaveJSProperty('appearance', appearance);
 

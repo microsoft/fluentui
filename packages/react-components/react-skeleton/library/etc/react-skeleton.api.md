@@ -13,13 +13,19 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSkeleton_unstable: (state: SkeletonState, contextValues: SkeletonContextValues) => JSXElement;
+export const renderSkeleton_unstable: (state: SkeletonBaseState, contextValues: SkeletonContextValues) => JSXElement;
 
 // @public
-export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSXElement;
+export const renderSkeletonItem_unstable: (state: SkeletonItemBaseState) => JSXElement;
 
 // @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
+
+// @public
+export type SkeletonBaseProps = Omit<SkeletonProps, 'animation' | 'appearance'>;
+
+// @public
+export type SkeletonBaseState = Omit<SkeletonState, 'animation' | 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
@@ -33,20 +39,33 @@ export interface SkeletonContextValue {
     animation?: 'wave' | 'pulse';
     // (undocumented)
     appearance?: 'opaque' | 'translucent';
+    // (undocumented)
+    shape?: 'circle' | 'square' | 'rectangle';
+    // (undocumented)
+    size?: SkeletonItemSize;
 }
 
 // @public (undocumented)
+export type SkeletonContextValues = {
+    skeletonGroup: SkeletonContextValue;
+};
+
+// @public (undocumented)
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
+
+// @public
+export type SkeletonItemBaseProps = Omit<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>;
+
+// @public
+export type SkeletonItemBaseState = Omit<SkeletonItemState, 'animation' | 'appearance' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
 
 // @public
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & Pick<SkeletonProps, 'size' | 'shape'> & {
     animation?: 'wave' | 'pulse';
     appearance?: 'opaque' | 'translucent';
-    size?: SkeletonItemSize;
-    shape?: 'circle' | 'square' | 'rectangle';
 };
 
 // @public (undocumented)
@@ -62,6 +81,8 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
     animation?: 'wave' | 'pulse';
     appearance?: 'opaque' | 'translucent';
     width?: number | string;
+    size?: SkeletonItemSize;
+    shape?: 'circle' | 'square' | 'rectangle';
 };
 
 // @public (undocumented)
@@ -70,16 +91,25 @@ export type SkeletonSlots = {
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>> & Pick<SkeletonProps, 'size' | 'shape'>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
 
+// @public
+export const useSkeletonBase_unstable: (props: SkeletonBaseProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonBaseState;
+
 // @public (undocumented)
 export const useSkeletonContext: () => SkeletonContextValue;
 
+// @public (undocumented)
+export const useSkeletonContextValues: (state: SkeletonState) => SkeletonContextValues;
+
 // @public
 export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
+
+// @public
+export const useSkeletonItemBase_unstable: (props: SkeletonItemBaseProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonItemBaseState;
 
 // @public
 export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;

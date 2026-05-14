@@ -1,6 +1,6 @@
-import { Button } from '@fluentui/react-button';
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { PopoverContextValue } from '@fluentui/react-popover';
+import type { Button } from '@fluentui/react-button';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { PopoverContextValue } from '@fluentui/react-popover';
 
 export type TeachingPopoverFooterSlots = {
   /**

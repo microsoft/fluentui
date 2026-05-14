@@ -1,6 +1,5 @@
 import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Dialog } from './dialog.js';
-import { DialogType } from './dialog.options.js';
 
 /**
  * Template for the Dialog component
@@ -10,9 +9,11 @@ export const template: ElementViewTemplate<Dialog> = html`
   <dialog
     class="dialog"
     part="dialog"
-    aria-describedby="${x => x.ariaDescribedby}"
-    aria-labelledby="${x => x.ariaLabelledby}"
-    aria-label="${x => x.ariaLabel}"
+    aria-modal="${x => x.dialogModal}"
+    aria-describedby="${x => x.dialogDescribedby}"
+    aria-labelledby="${x => x.dialogLabelledby}"
+    aria-label="${x => x.dialogLabel}"
+    role="${x => x.dialogRole}"
     @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
     @cancel="${x => x.hide()}"
     ${ref('dialog')}

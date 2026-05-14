@@ -1,19 +1,16 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, TagPickerProps, TagPickerInputProps, TagProps } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
   TagPickerInput,
   TagPickerControl,
-  TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
   makeStyles,
   tagPickerGroupClassNames,
   useOverflowCount,
-  TagPickerInputProps,
   useTagPickerContext_unstable,
-  TagProps,
   Tag,
   Avatar,
   Overflow,

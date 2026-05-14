@@ -1,4 +1,4 @@
-import { PresenceBadge } from '@fluentui/react-badge';
+import type { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 
 /**

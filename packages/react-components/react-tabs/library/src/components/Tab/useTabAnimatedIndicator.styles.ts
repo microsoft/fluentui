@@ -5,7 +5,7 @@ import type { TabState, TabValue } from './Tab.types';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
-import { TabRegisterData } from '../TabList/TabList.types';
+import type { TabRegisterData } from '../TabList/TabList.types';
 import { tokens } from '@fluentui/react-theme';
 import { useAnimationFrame } from '@fluentui/react-utilities';
 

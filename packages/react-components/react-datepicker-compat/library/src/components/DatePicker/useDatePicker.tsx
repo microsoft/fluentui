@@ -293,9 +293,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           break;
 
         case Escape:
-          ev.stopPropagation();
-          ev.preventDefault();
           if (open) {
+            ev.stopPropagation();
+            ev.preventDefault();
             calendarDismissed();
           }
           break;

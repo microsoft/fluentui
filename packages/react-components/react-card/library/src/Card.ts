@@ -5,6 +5,8 @@ export type {
   CardProps,
   CardSlots,
   CardState,
+  CardBaseProps,
+  CardBaseState,
 } from './components/Card/index';
 export {
   Card,
@@ -16,4 +18,5 @@ export {
   useCardContext_unstable,
   useCardStyles_unstable,
   useCard_unstable,
+  useCardBase_unstable,
 } from './components/Card/index';

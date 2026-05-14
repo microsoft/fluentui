@@ -3,7 +3,6 @@ import type { ICustomizerContext } from '@fluentui/utilities';
 import type { ISchemeNames, ITheme } from '../interfaces/index';
 
 /**
- * @internal
  * This function is still in experimental phase in support of Foundation experimental development.
  * Its API signature and existence are subject to change.
  *
@@ -12,6 +11,7 @@ import type { ISchemeNames, ITheme } from '../interfaces/index';
  * scheme must be present in theme arg, otherwise new context will default to theme arg (there is no fallback to
  * settings to look up scheme.)
  *
+ * @internal
  * @param context - Context in which to get schemed customizations.
  * @param scheme - Scheme to get customizations for from theme arg (if supplied) OR from context and global settings.
  * @param theme - Theme to merge into context.

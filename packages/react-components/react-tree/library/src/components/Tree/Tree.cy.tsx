@@ -4,15 +4,8 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities';
-import {
-  TreeProps,
-  Tree,
-  TreeItem,
-  TreeItemLayout,
-  TreeItemPersonaLayout,
-  treeItemLayoutClassNames,
-  TreeItemValue,
-} from '@fluentui/react-tree';
+import type { TreeProps, TreeItemValue } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout, treeItemLayoutClassNames } from '@fluentui/react-tree';
 import { Button } from '@fluentui/react-button';
 import { Avatar } from '@fluentui/react-avatar';
 

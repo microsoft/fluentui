@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '@fluentui/react-conformance';
 import { List } from './List';
-import { ListProps } from './List.types';
+import type { ListProps } from './List.types';
 
 describe('List', () => {
   isConformant({

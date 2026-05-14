@@ -17,11 +17,18 @@ export interface OverflowItemEntry {
   id: string;
 
   groupId?: string;
+
+  /**
+   * If true, the item will never overflow and will always be visible.
+   * Pinned items are excluded from the overflow count.
+   * @default false
+   */
+  pinned?: boolean;
 }
 
 export interface OverflowDividerEntry {
   /**
-   * HTML element that will be disappear when overflowed
+   * HTML element that will disappear when overflowed
    */
   element: HTMLElement;
 

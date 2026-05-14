@@ -4,11 +4,6 @@ export {
   borderRadiusMedium,
   borderRadiusLarge,
   borderRadiusXLarge,
-  borderRadius2XLarge,
-  borderRadius3XLarge,
-  borderRadius4XLarge,
-  borderRadius5XLarge,
-  borderRadius6XLarge,
   borderRadiusCircular,
   fontSizeBase100,
   fontSizeBase200,
@@ -154,9 +149,6 @@ export {
   colorNeutralBackground5Selected,
   colorNeutralBackground6,
   colorNeutralBackgroundInverted,
-  colorNeutralBackgroundInvertedHover,
-  colorNeutralBackgroundInvertedPressed,
-  colorNeutralBackgroundInvertedSelected,
   colorNeutralBackgroundStatic,
   colorSubtleBackground,
   colorSubtleBackgroundHover,
@@ -392,4 +384,4 @@ export {
   shadow28Brand,
   shadow64Brand,
 } from './design-tokens.js';
-export { setTheme, setThemeFor, type Theme } from './set-theme.js';
+export { setTheme, type Theme } from './set-theme.js';

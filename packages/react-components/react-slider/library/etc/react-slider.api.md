@@ -10,7 +10,7 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -87,6 +87,12 @@ export const renderSlider_unstable: (state: SliderState) => JSXElement;
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
 
+// @public
+export type SliderBaseProps = Omit<SliderProps, 'size'>;
+
+// @public
+export type SliderBaseState = Omit<SliderState, 'size'>;
+
 // @public (undocumented)
 export const sliderClassNames: SlotClassNames<SliderSlots>;
 
@@ -146,8 +152,11 @@ export const useRangeSliderStyles_unstable: (state: RangeSliderState) => RangeSl
 // @public (undocumented)
 export const useSlider_unstable: (props: SliderProps, ref: React_2.Ref<HTMLInputElement>) => SliderState;
 
+// @public
+export const useSliderBase_unstable: (props: SliderBaseProps, ref: React_2.Ref<HTMLInputElement>) => SliderBaseState;
+
 // @public (undocumented)
-export const useSliderState_unstable: (state: SliderState, props: SliderProps) => SliderState;
+export const useSliderState_unstable: (state: SliderBaseState, props: SliderBaseProps) => SliderBaseState;
 
 // @public
 export const useSliderStyles_unstable: (state: SliderState) => SliderState;

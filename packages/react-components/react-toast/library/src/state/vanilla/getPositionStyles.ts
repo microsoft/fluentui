@@ -1,4 +1,4 @@
-import { ToastOffsetObject, ToastOffset, ToastPosition } from '../types';
+import type { ToastOffsetObject, ToastOffset, ToastPosition } from '../types';
 
 interface PositionStyles {
   top?: number;

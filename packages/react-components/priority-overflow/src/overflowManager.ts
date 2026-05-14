@@ -1,7 +1,8 @@
 import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP } from './consts';
 import { observeResize } from './createResizeObserver';
 import { debounce } from './debounce';
-import { createPriorityQueue, PriorityQueue } from './priorityQueue';
+import type { PriorityQueue } from './priorityQueue';
+import { createPriorityQueue } from './priorityQueue';
 import type {
   OverflowGroupState,
   OverflowItemEntry,
@@ -59,6 +60,11 @@ export function createOverflowManager(): OverflowManager {
     // Try to find a consistent repro for this
     if (!lte || !rte) {
       return lte ? 1 : -1;
+    }
+
+    // Pinned items have "infinite" priority - they should never be hidden
+    if (lte.pinned !== rte.pinned) {
+      return lte.pinned ? 1 : -1;
     }
 
     if (lte.priority !== rte.priority) {
@@ -175,6 +181,13 @@ export function createOverflowManager(): OverflowManager {
 
       // Remove items until there's no more overflow
       while (occupiedSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+        const nextItemId = visibleItemQueue.peek();
+
+        // Never hide pinned items - they should always remain visible
+        if (nextItemId && overflowItems[nextItemId]?.pinned) {
+          break;
+        }
+
         hideItem();
       }
     }

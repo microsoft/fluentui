@@ -205,6 +205,32 @@ describe('SwatchPicker', () => {
         cy.get('#color-6').should('be.focused');
       });
     });
+    describe('focusMode="tab"', () => {
+      it('should navigate between swatches with Tab key', () => {
+        mountFluent(<SwatchPickerRowColorSample focusMode="tab" />);
+
+        cy.get('#before').focus();
+
+        cy.realPress('Tab');
+        cy.get('#swatch-0').should('be.focused');
+
+        cy.realPress('Tab');
+        cy.get('#swatch-1').should('be.focused');
+
+        cy.realPress('Tab');
+        // swatch-2 is disabled, so it should be skipped
+        cy.get('#swatch-3').should('be.focused');
+      });
+
+      it('should move focus out of picker after last swatch', () => {
+        mountFluent(<SwatchPickerRowColorSample focusMode="tab" />);
+
+        cy.get('#swatch-3').focus();
+
+        cy.realPress('Tab');
+        cy.get('#after').should('be.focused');
+      });
+    });
   });
 
   describe('selection behaviors', () => {

@@ -2,8 +2,9 @@ import { tokens } from '@fluentui/react-theme';
 import type { GriffelStyle } from '@griffel/react';
 
 /**
- * @internal
  * Options parameter for the createArrowStyles function
+ *
+ * @internal
  */
 export type CreateArrowStylesOptions = {
   /**
@@ -37,7 +38,6 @@ export type CreateArrowStylesOptions = {
 };
 
 /**
- * @internal
  * Helper that creates a makeStyles rule for an arrow element.
  * For runtime arrow size toggling simply create extra classnames to apply to the arrow element
  *
@@ -58,6 +58,8 @@ export type CreateArrowStylesOptions = {
  *     state.mediumArrow && styles.mediumArrow,
  *   )
  * ```
+ *
+ * @internal
  */
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle {
   const {
@@ -119,11 +121,12 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
 }
 
 /**
- * @internal
  * Creates CSS styles to size the arrow created by createArrowStyles to the given height.
  *
  * Use this when you need to create classes for several different arrow sizes. If you only need a
  * constant arrow size, you can pass the `arrowHeight` param to createArrowStyles instead.
+ *
+ * @internal
  */
 export function createArrowHeightStyles(arrowHeight: number): GriffelStyle {
   // The arrow is a square rotated 45 degrees to have its bottom and right edges form a right triangle.

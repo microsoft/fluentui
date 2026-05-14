@@ -1,4 +1,5 @@
 export type {
+  DialogBackdropSlotProps,
   DialogSurfaceContextValues,
   DialogSurfaceElement,
   DialogSurfaceProps,

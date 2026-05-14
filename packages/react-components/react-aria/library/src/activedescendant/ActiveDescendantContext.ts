@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ActiveDescendantImperativeRef } from './types';
+import type { ActiveDescendantImperativeRef } from './types';
 
 export type ActiveDescendantContextValue = {
   controller: ActiveDescendantImperativeRef;

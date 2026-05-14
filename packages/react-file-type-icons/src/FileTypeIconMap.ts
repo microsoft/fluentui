@@ -167,11 +167,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'make',
       'manifest',
       'master',
-      'md',
-      'markdn',
-      'markdown',
-      'mdown',
-      'mkdn',
       'ml',
       'mli',
       'mll',
@@ -268,10 +263,14 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   copilot: {
     extensions: ['copilot'],
   },
+  cowork: {
+    extensions: ['work'],
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
   },
+  companyfolder: {},
   designer: {
     extensions: ['design'],
   },
@@ -303,6 +302,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   ipynb: {
     extensions: ['nnb', 'ipynb'],
   },
+  inkcanvas: {
+    extensions: ['canvas'],
+  },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
@@ -319,6 +321,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   splist: {},
   mcworld: {
     extensions: ['mcworld'],
+  },
+  md: {
+    extensions: ['md', 'markdn', 'markdown', 'mdown', 'mkdn'],
   },
   mctemplate: {
     extensions: ['mctemplate'],

@@ -1,15 +1,13 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, Theme, MenuCheckedValueChangeData } from '@fluentui/react-components';
 import {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
   webLightTheme,
   webDarkTheme,
-  Theme,
   Input,
   makeStyles,
-  MenuCheckedValueChangeData,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';

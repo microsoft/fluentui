@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, BadgeProps } from '@fluentui/react-components';
 
-import { Badge, makeStyles, tokens, BadgeProps } from '@fluentui/react-components';
+import { Badge, makeStyles, tokens } from '@fluentui/react-components';
 import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({

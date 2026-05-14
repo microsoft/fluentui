@@ -38,6 +38,7 @@ import {
   calcTotalBandUnits,
   calcRequiredWidth,
   getColorFromToken,
+  isSafeUrl,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -420,7 +421,9 @@ export class GroupedVerticalBarChartBase
   };
 
   private _redirectToUrl = (href: string | undefined): void => {
-    href ? (window.location.href = href) : '';
+    if (href && isSafeUrl(href)) {
+      window.location.href = href;
+    }
   };
 
   private _buildGraph = (

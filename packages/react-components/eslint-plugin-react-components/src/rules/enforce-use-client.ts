@@ -8,9 +8,26 @@ export const RULE_NAME = 'enforce-use-client';
 type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';
 
 /**
+ * Rule options for configuring RSC-unsafe functions
+ */
+export interface RuleOptions {
+  /**
+   * Functions that require 'use client' directive when called or referenced.
+   * These are functions that internally use browser APIs or client-side features.
+   *
+   * Consumers can override this list completely to customize which functions
+   * are considered unsafe for React Server Components.
+   *
+   * @default ["canUseDOM", "makeStyles", "makeResetStyles", "makeStaticStyles"]
+   * @example ["myCustomBrowserFunction", "useClientOnlyUtil"]
+   */
+  rscUnsafeFunctions?: string[];
+}
+
+/**
  * Represents the different types of client-side features that require the 'use client' directive
  */
-type FeatureKind = 'react_api' | 'custom_hook' | 'event_handler' | 'browser_api';
+type FeatureKind = 'react_api' | 'custom_hook' | 'event_handler' | 'browser_api' | 'rsc_unsafe_function';
 
 /**
  * Combined client feature detection result
@@ -35,6 +52,12 @@ interface RuleState {
   misplacedDirective: TSESTree.ExpressionStatement | null;
   /** First detected client-side feature with its node (for early exit and error reporting) */
   firstClientFeature: ClientFeatureDetection | null;
+  /** Set of imported custom hook names (e.g., useCustomHook from imports) */
+  importedCustomHooks: Set<string>;
+  /** Set of imported RSC-unsafe function names */
+  importedRSCUnsafeFunctions: Set<string>;
+  /** React namespace/default import names (e.g., 'React' from 'import React' or 'import * as React') */
+  reactImportNames: Set<string>;
 }
 
 /**
@@ -85,7 +108,21 @@ const BROWSER_GLOBALS = new Set([
   'sessionStorage',
   'history',
   'location',
+  'globalThis',
 ]);
+
+/**
+ * Functions that internally use browser APIs and should only be called in 'use client' modules
+ * These functions may have typeof checks internally, but when called at module scope they still
+ * require client-side execution.
+ */
+const RSC_UNSAFE_FUNCTIONS = [
+  'canUseDOM',
+  // Griffel styling functions that require client-side execution
+  'makeStyles',
+  'makeResetStyles',
+  'makeStaticStyles',
+];
 
 /**
  * Determines if a property name represents an event handler
@@ -105,7 +142,7 @@ const isPotentialCustomHook = (name: string): boolean =>
 /**
  * ESLint rule configuration and metadata
  */
-export const rule = createRule<[], MessageIds>({
+export const rule = createRule<[RuleOptions?], MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'problem',
@@ -118,18 +155,39 @@ export const rule = createRule<[], MessageIds>({
       unnecessaryUseClient:
         "The module does not use any client-side features and should not include the 'use client' directive.",
     },
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        properties: {
+          rscUnsafeFunctions: {
+            type: 'array',
+            items: {
+              type: 'string',
+            },
+            description:
+              'Functions that require "use client" directive when called or referenced. Defaults to FluentUI-specific functions but can be overridden.',
+          },
+        },
+        additionalProperties: false,
+      },
+    ],
     fixable: 'code',
   },
-  defaultOptions: [],
-  create(context) {
+  defaultOptions: [{ rscUnsafeFunctions: RSC_UNSAFE_FUNCTIONS }],
+  create(context, [options]) {
     const sourceCode = context.sourceCode;
+
+    // Use configured RSC-unsafe functions (defaults are set in defaultOptions)
+    const rscUnsafeFunctions = new Set(options?.rscUnsafeFunctions || RSC_UNSAFE_FUNCTIONS);
 
     // State tracking for rule analysis
     const ruleState: RuleState = {
       topDirectivePresent: false,
       misplacedDirective: null,
       firstClientFeature: null,
+      importedCustomHooks: new Set(),
+      importedRSCUnsafeFunctions: new Set(),
+      reactImportNames: new Set(),
     };
 
     /**
@@ -166,6 +224,25 @@ export const rule = createRule<[], MessageIds>({
       return ruleState.firstClientFeature !== null && ruleState.topDirectivePresent;
     }
 
+    /**
+     * Checks if an identifier references an imported custom hook or RSC-unsafe function
+     * and records it as a client feature if found.
+     *
+     * @param node - The identifier node to check
+     * @param name - The identifier name
+     */
+    function checkImportedIdentifier(node: TSESTree.Identifier, name: string): void {
+      // Check if this is a reference to an imported custom hook
+      if (ruleState.importedCustomHooks.has(name)) {
+        recordFirstClientFeature('custom_hook', name, node);
+      }
+
+      // Check if this is a reference to an imported RSC-unsafe function
+      if (ruleState.importedRSCUnsafeFunctions.has(name)) {
+        recordFirstClientFeature('rsc_unsafe_function', name, node);
+      }
+    }
+
     return {
       /**
        * Check for 'use client' directive at program start
@@ -191,6 +268,107 @@ export const rule = createRule<[], MessageIds>({
       },
 
       /**
+       * Track imports and detect when imported custom hooks or RSC-unsafe functions are referenced
+       */
+      Identifier(node: TSESTree.Identifier) {
+        if (shouldSkipAnalysis()) {
+          return;
+        }
+
+        // Defensive null check to satisfy TypeScript
+        // In practice, identifiers in the AST should always have a parent node
+        const parent = node.parent;
+        if (!parent) {
+          return;
+        }
+
+        // Track React default/namespace imports (import React from 'react', import * as React from 'react')
+        if (
+          parent.type === AST_NODE_TYPES.ImportDefaultSpecifier ||
+          parent.type === AST_NODE_TYPES.ImportNamespaceSpecifier
+        ) {
+          const importDecl = parent.parent as TSESTree.ImportDeclaration;
+          if (importDecl?.source?.value === 'react') {
+            ruleState.reactImportNames.add(node.name);
+          }
+          return;
+        }
+
+        // Track imported custom hooks and RSC-unsafe functions
+        if (parent.type === AST_NODE_TYPES.ImportSpecifier) {
+          let importedName: string;
+          let localName: string;
+
+          if (parent.imported.type === AST_NODE_TYPES.Identifier) {
+            // Normal import: { useFoo } or { useFoo as bar }
+            // Process only when visiting the imported identifier to avoid duplicate processing
+            if (parent.imported !== node) {
+              return; // Skip when visiting the local alias
+            }
+            importedName = node.name;
+            localName = parent.local.name;
+          } else {
+            // String literal import: { "use-foo" as bar }
+            // The imported node is a Literal (not visited by Identifier), so process on local identifier
+            if (parent.local !== node) {
+              return;
+            }
+            importedName = (parent.imported as TSESTree.Literal).value as string;
+            localName = node.name;
+          }
+
+          if (isPotentialCustomHook(importedName)) {
+            ruleState.importedCustomHooks.add(localName);
+          }
+          if (rscUnsafeFunctions.has(importedName)) {
+            ruleState.importedRSCUnsafeFunctions.add(localName);
+          }
+          return;
+        }
+
+        // Skip type annotations, type parameters, and export declarations
+        if (
+          parent.type === AST_NODE_TYPES.TSTypeReference ||
+          parent.type === AST_NODE_TYPES.TSTypeQuery ||
+          parent.type === AST_NODE_TYPES.TSTypeAnnotation ||
+          parent.type === AST_NODE_TYPES.TSTypeParameter ||
+          parent.type === AST_NODE_TYPES.ExportSpecifier
+        ) {
+          return;
+        }
+
+        // Skip if it's a property key in an object (unless it's a shorthand property)
+        if (parent.type === AST_NODE_TYPES.Property) {
+          if (parent.key === node && !parent.shorthand && !parent.computed) {
+            return;
+          }
+        }
+
+        // Skip if it's the left side of an assignment or variable declarator
+        if (
+          (parent.type === AST_NODE_TYPES.AssignmentExpression && parent.left === node) ||
+          (parent.type === AST_NODE_TYPES.VariableDeclarator && parent.id === node)
+        ) {
+          return;
+        }
+
+        // Check for direct browser global references (e.g., `const w = window;`)
+        // But skip if:
+        // - It's part of a MemberExpression (handled by MemberExpression visitor)
+        // - It's used in typeof check (typeof window) - this is safe for SSR/RSC
+        if (
+          BROWSER_GLOBALS.has(node.name) &&
+          parent.type !== AST_NODE_TYPES.MemberExpression &&
+          !(parent.type === AST_NODE_TYPES.UnaryExpression && parent.operator === 'typeof')
+        ) {
+          recordFirstClientFeature('browser_api', node.name, node);
+        }
+
+        // Check if this identifier references an imported custom hook or RSC-unsafe function
+        checkImportedIdentifier(node, node.name);
+      },
+
+      /**
        * Check function calls for React APIs and custom hooks
        */
       CallExpression(node: TSESTree.CallExpression) {
@@ -204,15 +382,35 @@ export const rule = createRule<[], MessageIds>({
             recordFirstClientFeature('react_api', name, node);
           } else if (isPotentialCustomHook(name)) {
             recordFirstClientFeature('custom_hook', name, node);
+          } else if (rscUnsafeFunctions.has(name)) {
+            recordFirstClientFeature('rsc_unsafe_function', name, node);
           }
         } else if (node.callee.type === AST_NODE_TYPES.MemberExpression) {
           const memberExpr = node.callee;
-          if (memberExpr.property.type === AST_NODE_TYPES.Identifier) {
+          if (
+            memberExpr.object.type === AST_NODE_TYPES.Identifier &&
+            memberExpr.property.type === AST_NODE_TYPES.Identifier
+          ) {
+            const objectName = memberExpr.object.name;
             const prop = memberExpr.property.name;
-            if (CLIENT_REACT_APIS.has(prop)) {
-              recordFirstClientFeature('react_api', `React.${prop}`, node);
-            } else if (isPotentialCustomHook(prop)) {
-              recordFirstClientFeature('custom_hook', `React.${prop}`, node);
+
+            // Check if calling React.* where React is imported (import React from 'react')
+            if (ruleState.reactImportNames.has(objectName)) {
+              if (CLIENT_REACT_APIS.has(prop)) {
+                recordFirstClientFeature('react_api', `${objectName}.${prop}`, node);
+              } else if (isPotentialCustomHook(prop)) {
+                recordFirstClientFeature('custom_hook', `${objectName}.${prop}`, node);
+              } else if (prop === 'lazy') {
+                // React.lazy() requires client-side execution
+                recordFirstClientFeature('react_api', `${objectName}.lazy`, node);
+              }
+            } else {
+              // Fallback for untracked React usage (e.g., from global scope)
+              if (CLIENT_REACT_APIS.has(prop)) {
+                recordFirstClientFeature('react_api', `${objectName}.${prop}`, node);
+              } else if (isPotentialCustomHook(prop)) {
+                recordFirstClientFeature('custom_hook', `${objectName}.${prop}`, node);
+              }
             }
           }
         }
@@ -243,6 +441,7 @@ export const rule = createRule<[], MessageIds>({
           recordFirstClientFeature('browser_api', node.object.name, node);
         }
       },
+
       /**
        * Handles program exit to generate final rule violations
        */

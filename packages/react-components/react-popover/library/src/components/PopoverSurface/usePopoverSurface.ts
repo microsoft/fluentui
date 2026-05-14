@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
@@ -10,6 +10,7 @@ import type {
   PopoverSurfaceBaseProps,
   PopoverSurfaceBaseState,
 } from './PopoverSurface.types';
+import { useMotionForwardedRef } from '@fluentui/react-motion';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -26,7 +27,8 @@ export const usePopoverSurface_unstable = (
 ): PopoverSurfaceState => {
   const size = usePopoverContext_unstable(context => context.size);
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const state = usePopoverSurfaceBase_unstable(props, ref);
+  const motionForwardedRef = useMotionForwardedRef();
+  const state = usePopoverSurfaceBase_unstable(props, useMergedRefs(ref, motionForwardedRef));
 
   return {
     appearance,

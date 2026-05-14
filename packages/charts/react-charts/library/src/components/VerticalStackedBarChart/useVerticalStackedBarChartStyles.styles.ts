@@ -1,8 +1,9 @@
 'use client';
 
-import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { VerticalStackedBarChartProps, VerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
-import { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { GriffelStyle } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { VerticalStackedBarChartProps, VerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
+import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 export const verticalstackedbarchartClassNames: SlotClassNames<VerticalStackedBarChartStyles> = {

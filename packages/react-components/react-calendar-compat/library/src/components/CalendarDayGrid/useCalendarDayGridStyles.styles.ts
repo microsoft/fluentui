@@ -385,9 +385,9 @@ const useCornerBorderAndRadiusStyles = makeStyles({
 });
 
 /**
- * @internal
- *
  * Apply styling to the CalendarDayGrid slots based on the state
+ *
+ * @internal
  */
 export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStyleProps): CalendarDayGridStyles => {
   'use no memo';

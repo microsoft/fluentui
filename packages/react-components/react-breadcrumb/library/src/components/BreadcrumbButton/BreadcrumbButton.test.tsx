@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { BreadcrumbButton } from './BreadcrumbButton';
-import { BreadcrumbButtonProps } from './BreadcrumbButton.types';
+import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
 import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
 import { ArrowRight16Filled } from '@fluentui/react-icons';

@@ -31,8 +31,8 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   return {
     ...state,
     root: {
-      ...state.root,
       ...focusAttributes,
+      ...state.root,
     },
     appearance,
     reserveSelectedTabSpace,

@@ -1,5 +1,5 @@
-import { RenderFunction } from '../../utilities/index';
-import {
+import type { RenderFunction } from '../../utilities/index';
+import type {
   CartesianChartProps,
   CartesianChartStyleProps,
   CartesianChartStyles,

@@ -1,10 +1,10 @@
 import { Updates } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
  * tokens to be added.
- * @internal
+ * @public
  */
 export type Theme = Record<string, string | number>;
 
@@ -46,7 +46,7 @@ const globalThemeStyleSheet = new CSSStyleSheet();
  *     as each entry’s value is either a string or a number.
  * @param node - The node to set the theme on, defaults to `document` for
  *     setting global theme.
- * @internal
+ * @public
  */
 export function setTheme(theme: Theme | null, node: Document | HTMLElement = document) {
   if (!node || !isThemeableNode(node)) {
@@ -213,12 +213,4 @@ function forceRepaint(element: HTMLElement) {
   Updates.process();
 
   element.style.setProperty(name, currentValue);
-}
-
-/**
- * @internal
- * @deprecated Use `setTheme(theme, element)` instead.
- */
-export function setThemeFor(element: HTMLElement, theme: Theme | null) {
-  setThemePropertiesOnElement(theme, element);
 }

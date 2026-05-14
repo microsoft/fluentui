@@ -6,7 +6,9 @@ export type {
   RadioGroupProps,
   RadioGroupSlots,
   RadioGroupState,
+  RadioGroupBaseProps,
+  RadioGroupBaseState,
 } from './RadioGroup.types';
 export { renderRadioGroup_unstable } from './renderRadioGroup';
-export { useRadioGroup_unstable } from './useRadioGroup';
+export { useRadioGroup_unstable, useRadioGroupBase_unstable } from './useRadioGroup';
 export { radioGroupClassNames, useRadioGroupStyles_unstable } from './useRadioGroupStyles.styles';

@@ -4,17 +4,29 @@
 
 ```ts
 
-import { Args } from '@storybook/react-webpack5';
+import type { Args } from '@storybook/react-webpack5';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Parameters as Parameters_2 } from '@storybook/react-webpack5';
+import type { Parameters as Parameters_2 } from '@storybook/react-webpack5';
+import type { PreparedStory } from 'storybook/internal/types';
 import * as React_2 from 'react';
-import { StoryContext } from '@storybook/react-webpack5';
+import type { Renderer } from 'storybook/internal/types';
+import type { StoryContext } from '@storybook/react-webpack5';
 
 // @public (undocumented)
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
 
 // @public
 export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
+
+// @public (undocumented)
+export const FluentDocsPage: ({ renderPrimaryStory, renderArgsTable, renderStories, }?: FluentDocsPageProps) => JSXElement;
+
+// @public (undocumented)
+export type FluentDocsPageProps = {
+    renderPrimaryStory?: typeof RenderPrimaryStory;
+    renderArgsTable?: typeof RenderArgsTable;
+    renderStories?: typeof RenderStories;
+};
 
 // @public
 export interface FluentGlobals extends Args {

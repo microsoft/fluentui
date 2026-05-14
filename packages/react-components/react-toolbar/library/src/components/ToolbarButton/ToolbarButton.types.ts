@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, DistributiveOmit } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
+import type { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 
 /**
  * ToolbarButton Props

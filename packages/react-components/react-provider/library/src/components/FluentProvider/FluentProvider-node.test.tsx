@@ -11,7 +11,7 @@ import { FluentProvider } from './FluentProvider';
 import * as prettier from 'prettier';
 import { createDOMRenderer } from '@griffel/core';
 import { RendererProvider } from '@griffel/react';
-import { PartialTheme } from '@fluentui/react-theme';
+import type { PartialTheme } from '@fluentui/react-theme';
 
 jest.mock('@fluentui/react-utilities', () => ({
   ...jest.requireActual('@fluentui/react-utilities'),

@@ -1,6 +1,6 @@
 'use client';
 
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToolbarSlots, ToolbarState } from './Toolbar.types';
 

@@ -1,5 +1,5 @@
 import type { JSXElement } from '@fluentui/react-utilities';
-import { TeachingPopoverTriggerState } from './TeachingPopoverTrigger.types';
+import type { TeachingPopoverTriggerState } from './TeachingPopoverTrigger.types';
 
 /**
  * Render the final JSX of TeachingPopoverTrigger

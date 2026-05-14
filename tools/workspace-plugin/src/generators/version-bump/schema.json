@@ -22,7 +22,7 @@
     },
     "all": {
       "type": "boolean",
-      "description": "Bumps all v9 packages at once"
+      "description": "Bumps all packages in the specified 'scope' at once"
     },
     "exclude": {
       "type": "string",
@@ -31,6 +31,16 @@
     "explicitVersion": {
       "type": "string",
       "description": "Explicit version to set. If provided, bumpType and prereleaseTag are ignored."
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["vNext", "tools"],
+      "default": "vNext",
+      "description": "Which package scope --all targets. 'vNext' (default) for converged packages, 'tools' for public tools packages."
+    },
+    "versionSuffix": {
+      "type": "string",
+      "description": "Suffix to append to each package's current version: {version}-{suffix}. Mutually exclusive with bumpType and explicitVersion. Requires --all."
     }
   },
   "required": []

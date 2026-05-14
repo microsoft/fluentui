@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 
 import { getDependencies } from './getDependencies';
-import { StoryContext, ParametersExtension } from './types';
+import type { StoryContext, ParametersExtension } from './types';
 
 type ParametersConfig = NonNullable<ParametersExtension['exportToSandbox']>;
 
@@ -14,7 +14,11 @@ export function addHiddenInput(form: HTMLFormElement, name: string, value: strin
 }
 
 export function prepareSandboxContainers(context: StoryContext) {
-  const docsSelector = `#anchor--${context.id} .docs-story`;
+  // Support anchor ID formats for our Storybook major versions range.
+  // 10< `#anchor--{id}`
+  // >=10 `#anchor--primary--{id}`
+  // See: https://github.com/storybookjs/storybook/pull/33384
+  const docsSelector = `#anchor--${context.id} .docs-story, #anchor--primary--${context.id} .docs-story`;
   const rootElements = document.querySelectorAll(docsSelector);
 
   if (!rootElements.length) {
@@ -42,7 +46,7 @@ export function prepareSandboxContainers(context: StoryContext) {
   });
 }
 
-const addonConfigDefaults = { requiredDependencies: {}, optionalDependencies: {} };
+const addonConfigDefaults = { requiredDependencies: {}, optionalDependencies: {}, devDependencies: {} };
 export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
   storyFile: string;
   // use originalStoryFn because users can override the `storyName` property.
@@ -55,6 +59,12 @@ export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
   dependencies: Record<string, string>;
   title: string;
   description: string;
+  requiredDependencies: Record<string, string>;
+  optionalDependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+  transformFiles?: NonNullable<ParametersConfig['transformFiles']>;
+  /** CSS module sources injected by the babel plugin (modules + tokens). */
+  cssModuleSources?: StoryContext['parameters']['cssModuleSources'];
 };
 
 export function prepareData(context: StoryContext): Data | null {
@@ -62,7 +72,7 @@ export function prepareData(context: StoryContext): Data | null {
     throw new Error('exportToSandbox config parameter cannot be empty');
   }
 
-  const addonConfig: Required<ParametersConfig> = {
+  const addonConfig: ParametersConfig & typeof addonConfigDefaults = {
     ...addonConfigDefaults,
     ...context.parameters.exportToSandbox,
   };
@@ -93,7 +103,7 @@ export function prepareData(context: StoryContext): Data | null {
     throw new Error('issues processing story export token');
   }
 
-  const demoData = {
+  const demoData: Data = {
     storyFile,
     storyExportToken,
     provider,
@@ -101,6 +111,11 @@ export function prepareData(context: StoryContext): Data | null {
     dependencies,
     title,
     description,
+    requiredDependencies: addonConfig.requiredDependencies,
+    optionalDependencies: addonConfig.optionalDependencies,
+    devDependencies: addonConfig.devDependencies,
+    transformFiles: addonConfig.transformFiles,
+    cssModuleSources: context.parameters.cssModuleSources,
   };
 
   return demoData;

@@ -1,14 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { ScatterChartProps } from './ScatterChart.types';
+import type { ScatterChartProps } from './ScatterChart.types';
 import { useScatterChartStyles } from './useScatterChartStyles.styles';
-import { Axis as D3Axis } from 'd3-axis';
+import type { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { Legend, Legends } from '../Legends/index';
+import type { Legend } from '../Legends/index';
+import { Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { IDomainNRange } from '../../utilities/index';
 import {
   areArraysEqual,
   createNumericYAxis,
@@ -16,20 +18,19 @@ import {
   getDomainPaddingForMarkers,
   domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
-  IDomainNRange,
   YAxisType,
   isTextMode,
   isScatterPolarSeries,
   isPlottable,
   getRangeForScatterMarkerSize,
+  calculateMarkerRadius,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   sortAxisCategories,
   findCalloutPoints,
 } from '../../utilities/index';
-import {
+import type {
   AccessibilityProps,
-  CartesianChart,
   ChildProps,
   CustomizedCalloutData,
   Margins,
@@ -38,6 +39,7 @@ import {
   ScatterChartPoints,
   YValueHover,
 } from '../../index';
+import { CartesianChart } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
   calloutData,
@@ -47,7 +49,7 @@ import {
   getNextColor,
   getColorFromToken,
 } from '../../utilities/index';
-import { LineChartPoints } from '../../types/DataPoint';
+import type { LineChartPoints } from '../../types/DataPoint';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
@@ -76,11 +78,11 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _yAxisScale: any = '';
   let _uniqueCallOutID: string | null = '';
-  let _refArray: RefArrayData[] = [];
+  const _refArray: RefArrayData[] = [];
   let margins: Margins;
   let renderSeries: JSXElement[];
   let _xAxisLabels: string[] = [];
-  let xAxisCalloutAccessibilityData: AccessibilityProps = {};
+  const xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
   const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const classes = useScatterChartStyles(props);
@@ -415,18 +417,16 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         const seriesId = `${_seriesId}_${i}_${j}`;
         const circleId = `${_circleId}_${i}_${j}`;
         const pointMarkerSize = (_points[i].data[j] as ScatterChartDataPoint).markerSize;
-        const minPixel = 4;
-        const maxPixel = 16;
-        let circleRadius = activePoint === circleId ? 6 : 4;
-
-        if (pointMarkerSize) {
-          if (isContinuousXY && maxMarkerSize !== 0) {
-            circleRadius = (pointMarkerSize * extraMaxPixels) / maxMarkerSize;
-          } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
-            circleRadius =
-              minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
-          }
-        }
+        const circleRadius = calculateMarkerRadius({
+          pointMarkerSize,
+          minMarkerSize,
+          maxMarkerSize,
+          extraMaxPixels,
+          isContinuousXY,
+          isActive: activePoint === circleId,
+          defaultRadius: 4,
+          activeRadius: 6,
+        });
 
         const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 
@@ -438,7 +438,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
               <circle
                 id={circleId}
                 key={circleId}
-                r={Math.max(circleRadius, 4)}
+                r={circleRadius}
                 cx={xPoint + _xBandwidth}
                 cy={yPoint}
                 data-is-focusable={isLegendSelected}
@@ -742,7 +742,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       componentRef={cartesianChartRef}
       {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
       /* eslint-disable react/jsx-no-bind */
-      // eslint-disable-next-line react/no-children-prop
+
       children={(props: ChildProps) => {
         _xAxisScale = props.xScale!;
         _yAxisScale = props.yScalePrimary!;

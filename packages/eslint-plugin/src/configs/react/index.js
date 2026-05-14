@@ -6,6 +6,7 @@ const reactCompilerPlugin = require('eslint-plugin-react-compiler');
 const { __internal } = require('../../internal');
 const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
 const { defineConfig } = require('eslint/config');
+const { testFiles } = require('../../utils/configHelpers');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -49,6 +50,10 @@ module.exports = defineConfig(
           // nx-ignore-next-line - this is a valid use case to ignore workspace packages. keeping  them part of the project dependencies would be wrong assumption
           imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
         },
+      ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', disallowTypeAnnotations: false },
       ],
       'react-compiler/react-compiler': ['error'],
       ...createReactCrossVersionRules({
@@ -105,7 +110,7 @@ module.exports = defineConfig(
   },
 
   {
-    files: ['**/*.test.{ts,tsx}'],
+    files: [...testFiles],
     rules: {
       'react-compiler/react-compiler': 'off',
       '@fluentui/react-components/enforce-use-client': 'off',

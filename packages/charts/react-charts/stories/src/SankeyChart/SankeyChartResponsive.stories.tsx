@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import {
-  ChartProps,
-  DataVizPalette,
-  getColorFromToken,
-  ResponsiveContainer,
-  SankeyChart,
-} from '@fluentui/react-charts';
+import type { ChartProps } from '@fluentui/react-charts';
+import { DataVizPalette, getColorFromToken, ResponsiveContainer, SankeyChart } from '@fluentui/react-charts';
 
 export const SankeyChartResponsive = (): JSXElement => {
   const data: ChartProps = {

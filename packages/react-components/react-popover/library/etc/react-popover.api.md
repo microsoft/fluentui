@@ -4,20 +4,21 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
+import type { ARIAButtonResultProps } from '@fluentui/react-aria';
+import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -32,7 +33,7 @@ export type OnOpenChangeData = {
 };
 
 // @public
-export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
+export type OpenPopoverEvents = MouseEvent | TouchEvent | FocusEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
 export const Popover: React_2.FC<PopoverProps>;
@@ -40,8 +41,13 @@ export const Popover: React_2.FC<PopoverProps>;
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inertTrapFocus' | 'inline'>;
 
+// @public (undocumented)
+export type PopoverContextValues = {
+    popover: PopoverContextValue;
+};
+
 // @public
-export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
+export type PopoverProps = ComponentProps<Partial<PopoverSlots>> & Pick<PortalProps, 'mountNode'> & {
     appearance?: 'brand' | 'inverted';
     children: [JSXElement, JSXElement] | JSXElement;
     closeOnScroll?: boolean;
@@ -69,7 +75,7 @@ export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<P
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+export type PopoverState = ComponentState<InternalPopoverSlots> & Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     contextTarget: PositioningVirtualElement | undefined;
@@ -124,7 +130,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover_unstable: (state: PopoverState) => JSXElement;
+export const renderPopover_unstable: (state: PopoverState, contextValues?: PopoverContextValues) => JSXElement;
 
 // @public
 export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSXElement;
@@ -137,6 +143,9 @@ export const usePopover_unstable: (props: PopoverProps) => PopoverState;
 
 // @public (undocumented)
 export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+
+// @public (undocumented)
+export function usePopoverContextValues_unstable(state: PopoverState): PopoverContextValues;
 
 // @public
 export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;

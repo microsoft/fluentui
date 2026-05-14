@@ -150,6 +150,7 @@ const jsDocRules = {
       definedTags: ['remarks', 'defaultValue'],
     },
   ],
+  'jsdoc/empty-tags': 'error',
 };
 
 /** @type {import('eslint').Linter.RulesRecord} */
@@ -214,7 +215,7 @@ module.exports = defineConfig(
     },
     settings: {
       jsdoc: {
-        ignoreInternal: true,
+        ignoreInternal: false,
         tagNamePreference: {
           default: 'default',
           defaultvalue: 'defaultvalue',

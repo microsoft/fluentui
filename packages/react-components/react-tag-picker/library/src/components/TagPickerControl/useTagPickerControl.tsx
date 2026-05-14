@@ -1,9 +1,8 @@
 'use client';
 
 import * as React from 'react';
+import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import {
-  ExtractSlotProps,
-  Slot,
   elementContains,
   getIntrinsicElementProps,
   slot,

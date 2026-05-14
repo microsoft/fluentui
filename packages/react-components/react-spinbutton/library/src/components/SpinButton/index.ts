@@ -1,5 +1,7 @@
 export { SpinButton } from './SpinButton';
 export type {
+  SpinButtonBaseProps,
+  SpinButtonBaseState,
   SpinButtonBounds,
   SpinButtonChangeEvent,
   SpinButtonOnChangeData,
@@ -9,5 +11,5 @@ export type {
   SpinButtonState,
 } from './SpinButton.types';
 export { renderSpinButton_unstable } from './renderSpinButton';
-export { useSpinButton_unstable } from './useSpinButton';
+export { useSpinButtonBase_unstable, useSpinButton_unstable } from './useSpinButton';
 export { spinButtonClassNames, useSpinButtonStyles_unstable } from './useSpinButtonStyles.styles';

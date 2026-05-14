@@ -26,7 +26,6 @@ import {
   spacingHorizontalXXS,
   strokeWidthThick,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
 
 export const styles = css`
@@ -124,8 +123,8 @@ export const styles = css`
     outline-offset: 1px;
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       border-color: InactiveBorder;
     }
@@ -149,5 +148,5 @@ export const styles = css`
     :host(${checkedState}:disabled) .checked-indicator {
       background-color: GrayText;
     }
-  `),
-);
+  }
+`;

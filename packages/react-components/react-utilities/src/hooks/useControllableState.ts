@@ -26,12 +26,11 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
 }
 
 /**
- * @internal
- *
  * A [`useState`](https://reactjs.org/docs/hooks-reference.html#usestate)-like hook
  * to manage a value that could be either `controlled` or `uncontrolled`,
  * such as a checked state or text input string.
  *
+ * @internal
  * @see https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components for more details on `controlled`/`uncontrolled`
  *
  * @returns an array of the current value and an updater (dispatcher) function.
@@ -40,7 +39,6 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
  *
  * ❗️❗️ Calls to the dispatcher will only modify the state if the state is `uncontrolled`.
  * Meaning that if a state is `controlled`, calls to the dispatcher do not modify the state.
- *
  */
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,

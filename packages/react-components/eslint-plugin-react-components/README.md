@@ -119,6 +119,7 @@ The rule looks for any of the following client-only features:
 - Custom hooks (functions whose name starts with `use` and are not in the safe set: `use`, `useId`)
 - JSX event handler props (properties starting with `on` followed by a capital letter, like `onClick`)
 - Direct references to browser globals (`window`, `document`, `navigator`, `localStorage`, `sessionStorage`, `history`, `location`)
+- SSR-unsafe functions that internally use browser APIs (e.g. `canUseDOM()`, `makeStyles()`, `makeResetStyles()`, `makeStaticStyles()`)
 
 If at least one feature is present, the directive must be the very first statement in the file. If no features are found, any existing `'use client'` directive will be reported as unnecessary and auto-fixed.
 
@@ -162,6 +163,47 @@ export function add(a: number, b: number) {
 export function add(a: number, b: number) {
   return a + b;
 }
+```
+
+#### ❌ Don't (SSR-unsafe function at module scope)
+
+```ts
+import * as React from 'react';
+import { canUseDOM } from '../ssr/index';
+
+// canUseDOM() accesses browser APIs internally
+export const useIsomorphicLayoutEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
+```
+
+#### ✅ Do (directive added for SSR-unsafe function)
+
+```ts
+'use client';
+import * as React from 'react';
+import { canUseDOM } from '../ssr/index';
+
+export const useIsomorphicLayoutEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
+```
+
+#### ❌ Don't (Griffel styling function at module scope)
+
+```ts
+import { makeStyles } from '@griffel/react';
+
+export const useStyles = makeStyles({
+  root: { backgroundColor: 'red' },
+});
+```
+
+#### ✅ Do (directive added for Griffel function)
+
+```ts
+'use client';
+import { makeStyles } from '@griffel/react';
+
+export const useStyles = makeStyles({
+  root: { backgroundColor: 'red' },
+});
 ```
 
 No options – enable to enforce consistent usage of the directive.

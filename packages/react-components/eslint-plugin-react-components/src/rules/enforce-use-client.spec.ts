@@ -159,6 +159,73 @@ export const testCases = {
       const title = document.title.trim();
       return { userAgent, protocol, title };
     };`,
+    directWindowReference: `export const WindowRef = () => {
+      const w = window;
+      return <div>{w.innerWidth}</div>;
+    };`,
+    directDocumentReference: `export const DocRef = () => {
+      const d = document;
+      return <div>{d.title}</div>;
+    };`,
+    typeofCheck: `export const isClient = typeof window !== 'undefined';`,
+    directNavigatorReference: `export const NavRef = () => {
+      const nav = navigator;
+      return <div>{nav.userAgent}</div>;
+    };`,
+  },
+
+  // =============================================================================
+  // SSR UNSAFE FUNCTIONS - Functions that internally use browser APIs at module scope
+  // =============================================================================
+  ssrUnsafeFunctions: {
+    canUseDOMAtModuleScope: `import * as React from 'react';
+      import { canUseDOM } from '../ssr/index';
+
+      export const useIsomorphicLayoutEffect: typeof React.useEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
+    `,
+    canUseDOMInVariable: `import { canUseDOM } from '../ssr/canUseDOM';
+
+      const IS_BROWSER = canUseDOM();
+
+      export const getBrowserInfo = () => IS_BROWSER ? 'browser' : 'server';
+    `,
+  },
+
+  // =============================================================================
+  // DEFAULT/NAMESPACE IMPORTS - React imported as default or namespace
+  // =============================================================================
+  defaultNamespaceImports: {
+    defaultImport: `import React from 'react';
+      export const Counter = () => {
+        const [count] = React.useState(0);
+        return <div>{count}</div>;
+      };
+    `,
+    namespaceImport: `import * as ReactLib from 'react';
+      export const Timer = () => {
+        ReactLib.useEffect(() => {
+          console.log('mounted');
+        }, []);
+        return <div>Timer</div>;
+      };
+    `,
+    reactLazy: `import React from 'react';
+      const LazyComponent = React.lazy(() => import('./Component'));
+      export default LazyComponent;
+    `,
+  },
+
+  // =============================================================================
+  // GLOBALTHIS - globalThis usage patterns
+  // =============================================================================
+  globalThisUsage: {
+    directAccess: `export const checkGlobal = () => {
+      const g = globalThis;
+      return g !== undefined;
+    };`,
+    propertyAccess: `export const getWindow = () => {
+      return globalThis.window;
+    };`,
   },
 
   // =============================================================================
@@ -230,6 +297,20 @@ export const testCases = {
       export const useComponentState_unstable = (props) => {
         const state = React.useState(0);
         return state;
+      };
+    `,
+    importedHookReference: `import * as React from 'react';
+      import { useBody1Styles } from './useBody1Styles.styles';
+
+      export const Body1 = () => {
+        const styles = useBody1Styles();
+        return <div className={styles.root}>Body1</div>;
+      };
+    `,
+    importedSSRUnsafeReference: `import { canUseDOM } from '../ssr/canUseDOM';
+
+      export const config = {
+        checkDOM: canUseDOM,
       };
     `,
   },
@@ -331,6 +412,16 @@ export const testCases = {
         root: { backgroundColor: 'red' },
       });
     `,
+    resetStyles: `import { makeResetStyles } from '@griffel/react';
+      export const useResetStyles = makeResetStyles({
+        color: 'blue',
+      });
+    `,
+    staticStyles: `import { makeStaticStyles } from '@griffel/react';
+      export const useStaticStyles = makeStaticStyles({
+        body: { margin: 0 },
+      });
+    `,
     barrelExports: `export { Counter } from './Counter';`,
   },
 
@@ -392,10 +483,6 @@ ruleTester.run(RULE_NAME, rule, {
       code: testCases.utilities.pureFunctions,
     },
     {
-      name: 'Styling utilities (makeStyles) - no directive needed',
-      code: testCases.utilities.stylingUtilities,
-    },
-    {
       name: 'Barrel re-exports - no directive needed',
       code: testCases.utilities.barrelExports,
     },
@@ -414,6 +501,10 @@ ruleTester.run(RULE_NAME, rule, {
     {
       name: 'Leading comment then directive (correctly positioned)',
       code: testCases.edgeCases.leadingCommentThenDirective,
+    },
+    {
+      name: 'typeof window check - no directive needed (SSR-safe pattern)',
+      code: testCases.browserApis.typeofCheck,
     },
 
     // =============================================================================
@@ -495,6 +586,46 @@ ruleTester.run(RULE_NAME, rule, {
       name: 'Nested browser API access with "use client" directive',
       code: `"use client";\n${testCases.browserApis.nestedAccess}`,
     },
+    {
+      name: 'Direct window reference with "use client" directive',
+      code: `"use client";\n${testCases.browserApis.directWindowReference}`,
+    },
+    {
+      name: 'Direct document reference with "use client" directive',
+      code: `"use client";\n${testCases.browserApis.directDocumentReference}`,
+    },
+    {
+      name: 'Direct navigator reference with "use client" directive',
+      code: `"use client";\n${testCases.browserApis.directNavigatorReference}`,
+    },
+
+    // =============================================================================
+    // DEFAULT/NAMESPACE IMPORTS - With directive (correct usage)
+    // =============================================================================
+    {
+      name: 'React default import with hooks with "use client" directive',
+      code: `"use client";\n${testCases.defaultNamespaceImports.defaultImport}`,
+    },
+    {
+      name: 'React namespace import with hooks with "use client" directive',
+      code: `"use client";\n${testCases.defaultNamespaceImports.namespaceImport}`,
+    },
+    {
+      name: 'React.lazy() with "use client" directive',
+      code: `"use client";\n${testCases.defaultNamespaceImports.reactLazy}`,
+    },
+
+    // =============================================================================
+    // GLOBALTHIS - With directive (correct usage)
+    // =============================================================================
+    {
+      name: 'globalThis direct access with "use client" directive',
+      code: `"use client";\n${testCases.globalThisUsage.directAccess}`,
+    },
+    {
+      name: 'globalThis property access with "use client" directive',
+      code: `"use client";\n${testCases.globalThisUsage.propertyAccess}`,
+    },
 
     // =============================================================================
     // EVENT HANDLERS - With directive (correct usage)
@@ -539,6 +670,34 @@ ruleTester.run(RULE_NAME, rule, {
       name: 'Custom hook with context with "use client" directive',
       code: `"use client";\n${testCases.customHooks.customHookWithContext}`,
     },
+    {
+      name: 'Imported custom hook reference with "use client" directive',
+      code: `"use client";\n${testCases.customHooks.importedHookReference}`,
+    },
+    {
+      name: 'Imported RSC-unsafe function reference with "use client" directive',
+      code: `"use client";\n${testCases.customHooks.importedSSRUnsafeReference}`,
+    },
+
+    // =============================================================================
+    // SSR UNSAFE FUNCTIONS - With directive (correct usage)
+    // =============================================================================
+    {
+      name: 'Styling utilities (makeStyles) with "use client" directive',
+      code: `"use client";\n${testCases.utilities.stylingUtilities}`,
+    },
+    {
+      name: 'Reset styles (makeResetStyles) with "use client" directive',
+      code: `"use client";\n${testCases.utilities.resetStyles}`,
+    },
+    {
+      name: 'Static styles (makeStaticStyles) with "use client" directive',
+      code: `"use client";\n${testCases.utilities.staticStyles}`,
+    },
+    {
+      name: 'canUseDOM() with "use client" directive',
+      code: `"use client";\n${testCases.ssrUnsafeFunctions.canUseDOMAtModuleScope}`,
+    },
 
     // =============================================================================
     // IMPORT VARIATIONS - With directive (correct usage)
@@ -574,6 +733,34 @@ ruleTester.run(RULE_NAME, rule, {
     {
       name: 'Conditional hooks with "use client" directive',
       code: `"use client";\n${testCases.componentPatterns.conditionalHooks}`,
+    },
+
+    // =============================================================================
+    // CUSTOM CONFIGURATION - Additional RSC-unsafe functions (correct usage)
+    // =============================================================================
+    {
+      name: 'Custom RSC-unsafe function with "use client" directive',
+      code: `"use client";\nimport { myCustomBrowserUtil } from './utils';
+        export const config = {
+          browserCheck: myCustomBrowserUtil,
+        };
+      `,
+      options: [{ rscUnsafeFunctions: ['myCustomBrowserUtil'] }],
+    },
+    {
+      name: 'Custom RSC-unsafe function called with "use client" directive',
+      code: `"use client";\nimport { initBrowser } from './browser';
+        const result = initBrowser();
+        export { result };
+      `,
+      options: [{ rscUnsafeFunctions: ['initBrowser'] }],
+    },
+    {
+      name: 'Default unsafe functions are not checked when custom list is provided (override behavior)',
+      code: `import { canUseDOM } from './ssr';
+        export const config = { check: canUseDOM };
+      `,
+      options: [{ rscUnsafeFunctions: ['myCustomFunction'] }],
     },
   ],
 
@@ -691,6 +878,96 @@ ruleTester.run(RULE_NAME, rule, {
       errors: [{ messageId: 'missingUseClient' }],
       output: `"use client";\n${testCases.browserApis.nestedAccess}`,
     },
+    {
+      name: 'Direct window reference without "use client" directive',
+      code: testCases.browserApis.directWindowReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.browserApis.directWindowReference}`,
+    },
+    {
+      name: 'Direct document reference without "use client" directive',
+      code: testCases.browserApis.directDocumentReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.browserApis.directDocumentReference}`,
+    },
+    {
+      name: 'Direct navigator reference without "use client" directive',
+      code: testCases.browserApis.directNavigatorReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.browserApis.directNavigatorReference}`,
+    },
+
+    // =============================================================================
+    // DEFAULT/NAMESPACE IMPORTS - Missing directive (should error)
+    // =============================================================================
+    {
+      name: 'React default import with hooks without "use client" directive',
+      code: testCases.defaultNamespaceImports.defaultImport,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.defaultNamespaceImports.defaultImport}`,
+    },
+    {
+      name: 'React namespace import with hooks without "use client" directive',
+      code: testCases.defaultNamespaceImports.namespaceImport,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.defaultNamespaceImports.namespaceImport}`,
+    },
+    {
+      name: 'React.lazy() without "use client" directive',
+      code: testCases.defaultNamespaceImports.reactLazy,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.defaultNamespaceImports.reactLazy}`,
+    },
+
+    // =============================================================================
+    // GLOBALTHIS - Missing directive (should error)
+    // =============================================================================
+    {
+      name: 'globalThis direct access without "use client" directive',
+      code: testCases.globalThisUsage.directAccess,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.globalThisUsage.directAccess}`,
+    },
+    {
+      name: 'globalThis property access without "use client" directive',
+      code: testCases.globalThisUsage.propertyAccess,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.globalThisUsage.propertyAccess}`,
+    },
+
+    // =============================================================================
+    // SSR UNSAFE FUNCTIONS - Missing directive (should error)
+    // =============================================================================
+    {
+      name: 'makeStyles() without "use client" directive',
+      code: testCases.utilities.stylingUtilities,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.utilities.stylingUtilities}`,
+    },
+    {
+      name: 'makeResetStyles() without "use client" directive',
+      code: testCases.utilities.resetStyles,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.utilities.resetStyles}`,
+    },
+    {
+      name: 'makeStaticStyles() without "use client" directive',
+      code: testCases.utilities.staticStyles,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.utilities.staticStyles}`,
+    },
+    {
+      name: 'canUseDOM() called at module scope without "use client" directive',
+      code: testCases.ssrUnsafeFunctions.canUseDOMAtModuleScope,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.ssrUnsafeFunctions.canUseDOMAtModuleScope}`,
+    },
+    {
+      name: 'canUseDOM() in variable declaration without "use client" directive',
+      code: testCases.ssrUnsafeFunctions.canUseDOMInVariable,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.ssrUnsafeFunctions.canUseDOMInVariable}`,
+    },
 
     // =============================================================================
     // EVENT HANDLERS - Missing directive (should error)
@@ -750,6 +1027,18 @@ ruleTester.run(RULE_NAME, rule, {
       code: testCases.customHooks.customHookWithContext,
       errors: [{ messageId: 'missingUseClient' }],
       output: `"use client";\n${testCases.customHooks.customHookWithContext}`,
+    },
+    {
+      name: 'Imported custom hook reference without "use client" directive',
+      code: testCases.customHooks.importedHookReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.customHooks.importedHookReference}`,
+    },
+    {
+      name: 'Imported RSC-unsafe function reference without "use client" directive',
+      code: testCases.customHooks.importedSSRUnsafeReference,
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\n${testCases.customHooks.importedSSRUnsafeReference}`,
     },
 
     // =============================================================================
@@ -824,12 +1113,6 @@ ruleTester.run(RULE_NAME, rule, {
       output: testCases.utilities.pureFunctions,
     },
     {
-      name: 'Styling utilities with unnecessary "use client" directive',
-      code: `"use client";\n${testCases.utilities.stylingUtilities}`,
-      errors: [{ messageId: 'unnecessaryUseClient' }],
-      output: testCases.utilities.stylingUtilities,
-    },
-    {
       name: 'Barrel exports with unnecessary "use client" directive',
       code: `"use client";\n${testCases.utilities.barrelExports}`,
       errors: [{ messageId: 'unnecessaryUseClient' }],
@@ -852,6 +1135,55 @@ ruleTester.run(RULE_NAME, rule, {
       code: `"use client";\n${testCases.serverSafeHooks.useIdAndUse}`,
       errors: [{ messageId: 'unnecessaryUseClient' }],
       output: testCases.serverSafeHooks.useIdAndUse,
+    },
+
+    // =============================================================================
+    // CUSTOM CONFIGURATION - Additional RSC-unsafe functions
+    // =============================================================================
+    {
+      name: 'Custom RSC-unsafe function without "use client" directive',
+      code: `import { myCustomBrowserUtil } from './utils';
+        export const config = {
+          browserCheck: myCustomBrowserUtil,
+        };
+      `,
+      options: [{ rscUnsafeFunctions: ['myCustomBrowserUtil'] }],
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\nimport { myCustomBrowserUtil } from './utils';
+        export const config = {
+          browserCheck: myCustomBrowserUtil,
+        };
+      `,
+    },
+    {
+      name: 'Custom RSC-unsafe function called without "use client" directive',
+      code: `import { initBrowser } from './browser';
+        const result = initBrowser();
+        export { result };
+      `,
+      options: [{ rscUnsafeFunctions: ['initBrowser'] }],
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\nimport { initBrowser } from './browser';
+        const result = initBrowser();
+        export { result };
+      `,
+    },
+    {
+      name: 'Multiple custom RSC-unsafe functions without "use client" directive',
+      code: `import { getBrowserInfo, checkWindowSize } from './utils';
+        export const config = {
+          info: getBrowserInfo(),
+          size: checkWindowSize,
+        };
+      `,
+      options: [{ rscUnsafeFunctions: ['getBrowserInfo', 'checkWindowSize'] }],
+      errors: [{ messageId: 'missingUseClient' }],
+      output: `"use client";\nimport { getBrowserInfo, checkWindowSize } from './utils';
+        export const config = {
+          info: getBrowserInfo(),
+          size: checkWindowSize,
+        };
+      `,
     },
   ],
 });

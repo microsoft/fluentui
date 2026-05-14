@@ -13,7 +13,7 @@ env:
 jobs:
   run_vr_diff:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'microsoft' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     permissions:
       # necessary to write comments to the PR from the vr-approval-cli
       pull-requests: write
@@ -74,7 +74,7 @@ jobs:
         with:
           script: |
             const run = require('./.github/scripts/validate-pr-number');
-            const pull_number = run({filePath:'results/pr.txt'});
+            const pull_number = await run({filePath:'results/pr.txt', github, context});
 
             const result = await github.rest.pulls.get({
               owner: context.payload.workflow_run.repository.owner.login,
@@ -83,15 +83,6 @@ jobs:
             });
 
             const pr = result.data;
-
-            if (pr.head.sha !== context.payload.workflow_run.head_commit.id) {
-              console.log(
-                "PR head sha does not match the workflow run head commit id. " +
-                "There has probably been a push to the PR, so we will not run the VR Diff for the last iteration. " +
-                "Exiting the script."
-              );
-              process.exit(0);
-            }
 
             const headOwner = pr.head.repo.owner.login;
             const baseOwner = pr.base.repo.owner.login;

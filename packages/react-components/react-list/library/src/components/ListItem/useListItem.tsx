@@ -23,12 +23,10 @@ import {
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListSynchronousContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import {
-  createListItemActionEvent,
-  ListItemActionEvent,
-  ListItemActionEventName,
-} from '../../events/ListItemActionEvent';
+import type { CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-checkbox';
+import type { ListItemActionEvent } from '../../events/ListItemActionEvent';
+import { createListItemActionEvent, ListItemActionEventName } from '../../events/ListItemActionEvent';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 

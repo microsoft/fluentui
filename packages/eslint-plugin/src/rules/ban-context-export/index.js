@@ -40,8 +40,10 @@ module.exports = createRule({
       description: 'Ban export of React context or context selector objects',
     },
     messages: {
-      nativeContext: '{{exportName}} should not be exported directly',
-      contextSelector: '{{exportName}} should not be exported directly',
+      nativeContext:
+        '{{exportName}} should not be exported directly. Export a Provider component and a use*Context hook instead. See docs/architecture/component-patterns.md',
+      contextSelector:
+        '{{exportName}} should not be exported directly. Export a Provider component and a use*Context hook instead. See docs/architecture/component-patterns.md',
     },
   },
   create(context) {

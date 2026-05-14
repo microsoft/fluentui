@@ -558,6 +558,7 @@ describe(`workspace-plugin`, () => {
                             "@swc/core",
                             "@microsoft/api-extractor",
                             "typescript",
+                            "babel-plugin-react-compiler",
                           ],
                         },
                       ],
@@ -591,7 +592,6 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/lib",
                         "{projectRoot}/lib-commonjs",
                         "{projectRoot}/dist",
-                        "{projectRoot}/dist/index.d.ts",
                         "{projectRoot}/etc/proj.api.md",
                       ],
                     },
@@ -821,6 +821,74 @@ describe(`workspace-plugin`, () => {
       `);
     });
 
+    describe('generate-api target', () => {
+      const v9LibFiles = {
+        'proj/project.json': serializeJson({
+          root: 'proj',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      };
+
+      async function setupAndGetGenerateApiTarget(extraFiles: Record<string, string> = {}) {
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        return getTargets(results)?.['generate-api'];
+      }
+
+      it('should use default inputs and outputs for a standard v9 library', async () => {
+        const target = await setupAndGetGenerateApiTarget();
+
+        expect(target?.inputs).toEqual([
+          '{projectRoot}/config/api-extractor.json',
+          '{projectRoot}/tsconfig.json',
+          '{projectRoot}/tsconfig.lib.json',
+          '{projectRoot}/src/**/*.tsx?',
+          '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+          { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
+        ]);
+        expect(target?.outputs).toEqual(['{projectRoot}/dist/index.d.ts', '{projectRoot}/etc/proj.api.md']);
+      });
+
+      it('should add glob outputs when user configures exportSubpaths on generate-api target', async () => {
+        const extraFiles = {
+          'proj/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+            targets: {
+              'generate-api': {
+                options: {
+                  exportSubpaths: true,
+                },
+              },
+            },
+          } satisfies ProjectConfiguration),
+        };
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        const targets = getTargets(results);
+
+        const generateApiTarget = targets?.['generate-api'];
+        expect(generateApiTarget?.outputs).toEqual(['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']);
+
+        const buildTarget = targets?.build;
+        expect(buildTarget?.options?.generateApi).toEqual({ exportSubpaths: true });
+        expect(buildTarget?.outputs).toEqual([
+          '{projectRoot}/lib',
+          '{projectRoot}/lib-commonjs',
+          '{projectRoot}/dist',
+          '{projectRoot}/etc/*.api.md',
+        ]);
+      });
+    });
+
     it('should add verify-packaging task only if package is not private', async () => {
       await tempFs.createFiles({
         'proj/project.json': serializeJson({
@@ -839,11 +907,181 @@ describe(`workspace-plugin`, () => {
         }
       `);
     });
+
+    describe('react library project', () => {
+      describe('with react in peerDependencies', () => {
+        let targets: ReturnType<typeof getTargets>;
+        let metadata: ReturnType<typeof getMetadata>;
+
+        beforeEach(async () => {
+          await tempFs.createFiles({
+            'proj/library/project.json': serializeJson({
+              root: 'proj/library',
+              name: 'proj',
+              projectType: 'library',
+              tags: ['vNext'],
+            } satisfies ProjectConfiguration),
+            'proj/library/package.json': serializeJson({
+              name: '@proj/proj',
+              peerDependencies: { react: '>=16' },
+            } satisfies Partial<PackageJson>),
+          });
+          const results = await createNodesFunction(['proj/library/project.json'], options, context);
+          targets = getTargets(results, 'proj/library');
+          metadata = getMetadata(results, 'proj/library');
+        });
+
+        it('should add react-compiler-analyzer target group', async () => {
+          expect(targets?.['react-compiler-analyzer--lint']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "command": "yarn react-compiler-analyzer lint ./src",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "Lint redundant 'use no memo' directives",
+                "help": Object {
+                  "command": "yarn react-compiler-analyzer lint --help",
+                  "example": Object {
+                    "options": Object {
+                      "fix": true,
+                    },
+                  },
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+              "options": Object {
+                "cwd": "proj/library",
+              },
+            }
+          `);
+
+          expect(targets?.['react-compiler-analyzer--analyze']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "command": "yarn react-compiler-analyzer analyze ./src",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "Analyze React Compiler coverage and migration status",
+                "help": Object {
+                  "command": "yarn react-compiler-analyzer analyze --help",
+                  "example": Object {
+                    "options": Object {
+                      "annotate": true,
+                    },
+                  },
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+              "options": Object {
+                "cwd": "proj/library",
+              },
+            }
+          `);
+
+          expect(targets?.['react-compiler-analyzer']).toMatchInlineSnapshot(`
+            Object {
+              "cache": true,
+              "dependsOn": Array [
+                "react-compiler-analyzer--lint",
+              ],
+              "executor": "nx:noop",
+              "inputs": Array [
+                "default",
+                Object {
+                  "externalDependencies": Array [
+                    "babel-plugin-react-compiler",
+                  ],
+                },
+              ],
+              "metadata": Object {
+                "description": "React Compiler analysis (runs lint on CI)",
+                "help": Object {
+                  "command": "yarn react-compiler-analyzer --help",
+                  "example": Object {},
+                },
+                "technologies": Array [
+                  "react-compiler",
+                ],
+              },
+            }
+          `);
+
+          expect(metadata?.targetGroups).toMatchInlineSnapshot(`
+            Object {
+              "React Compiler Analyzer": Array [
+                "react-compiler-analyzer--lint",
+                "react-compiler-analyzer--analyze",
+                "react-compiler-analyzer",
+              ],
+              "React Integration Tester": Array [
+                "react-integration-testing",
+              ],
+            }
+          `);
+        });
+
+        it('should not set reactCompiler build option by default', async () => {
+          expect(targets?.build.options.reactCompiler).toBeUndefined();
+        });
+      });
+
+      describe('without react in peerDependencies', () => {
+        let targets: ReturnType<typeof getTargets>;
+
+        beforeEach(async () => {
+          await tempFs.createFiles({
+            'proj/library/project.json': serializeJson({
+              root: 'proj/library',
+              name: 'proj',
+              projectType: 'library',
+              tags: ['vNext'],
+            } satisfies ProjectConfiguration),
+            'proj/library/package.json': serializeJson({
+              name: '@proj/proj',
+              private: true,
+            } satisfies Partial<PackageJson>),
+          });
+          const results = await createNodesFunction(['proj/library/project.json'], options, context);
+          targets = getTargets(results, 'proj/library');
+        });
+
+        it('should not add react-compiler-analyzer targets', async () => {
+          expect(targets?.['react-compiler-analyzer']).toBeUndefined();
+          expect(targets?.['react-compiler-analyzer--lint']).toBeUndefined();
+          expect(targets?.['react-compiler-analyzer--analyze']).toBeUndefined();
+        });
+
+        it('should not set reactCompiler build option', async () => {
+          expect(targets?.build.options.reactCompiler).toBeUndefined();
+        });
+      });
+    });
   });
 });
 
 function getTargets(results: CreateNodesResultV2, projRoot = 'proj') {
   return results[0][1].projects?.[projRoot].targets;
+}
+function getMetadata(results: CreateNodesResultV2, projRoot = 'proj') {
+  return results[0][1].projects?.[projRoot].metadata;
 }
 function getTargetsNames(results: CreateNodesResultV2, projRoot = 'proj'): string[] {
   return Object.keys(getTargets(results, projRoot) ?? {});

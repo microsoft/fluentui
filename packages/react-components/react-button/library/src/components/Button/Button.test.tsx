@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { buttonAccessibilityBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../testing/isConformant';
 import { Button } from './Button';
-import { ButtonProps } from './Button.types';
+import type { ButtonProps } from './Button.types';
 
 describe('Button', () => {
   isConformant({

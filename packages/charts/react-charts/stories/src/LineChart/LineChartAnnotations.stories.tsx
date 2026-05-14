@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  ChartProps,
-  LineChartProps,
-  LineChart,
-  DataVizPalette,
-  getColorFromToken,
-  ChartAnnotation,
-} from '@fluentui/react-charts';
-import { JSXElement, makeStyles, tokens } from '@fluentui/react-components';
+import type { ChartProps, LineChartProps, ChartAnnotation } from '@fluentui/react-charts';
+import { LineChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   svgTooltip: {

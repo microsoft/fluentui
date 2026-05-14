@@ -2,12 +2,15 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  reporter: 'list',
+  reporter: process.env.CI ? 'github' : 'list',
   retries: 3,
   fullyParallel: process.env.CI ? false : true,
   timeout: process.env.CI ? 10000 : 30000,
   use: {
     baseURL: 'http://localhost:5173',
+    contextOptions: {
+      reducedMotion: 'reduce',
+    },
   },
   projects: [
     {
@@ -20,13 +23,18 @@ const config: PlaywrightTestConfig = {
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        deviceScaleFactor: 1,
+      },
     },
   ],
   webServer: {
     command: 'yarn vite preview test/harness',
     port: 5173,
     reuseExistingServer: true,
+    stderr: 'pipe',
+    stdout: 'pipe',
   },
 };
 

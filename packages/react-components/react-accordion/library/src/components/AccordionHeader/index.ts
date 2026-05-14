@@ -6,6 +6,8 @@ export type {
   AccordionHeaderSize,
   AccordionHeaderSlots,
   AccordionHeaderState,
+  AccordionHeaderBaseState,
+  AccordionHeaderBaseProps,
 } from './AccordionHeader.types';
 export { renderAccordionHeader_unstable } from './renderAccordionHeader';
 export { useAccordionHeader_unstable, useAccordionHeaderBase_unstable } from './useAccordionHeader';

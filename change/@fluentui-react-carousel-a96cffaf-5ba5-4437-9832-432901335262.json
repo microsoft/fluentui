@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: prevent custom props from leaking to the DOM",
-  "packageName": "@fluentui/react-carousel",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

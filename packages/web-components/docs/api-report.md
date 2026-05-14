@@ -833,6 +833,8 @@ export class BaseTextArea extends FASTElement {
     // (undocumented)
     protected readOnlyChanged(): void;
     reportValidity(): boolean;
+    // @internal
+    rootEl: HTMLDivElement;
     required: boolean;
     // (undocumented)
     protected requiredChanged(): void;

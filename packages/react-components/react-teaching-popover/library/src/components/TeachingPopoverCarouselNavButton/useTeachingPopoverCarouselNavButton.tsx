@@ -1,7 +1,8 @@
 'use client';
 
-import * as React from 'react';
-import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import type * as React from 'react';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';

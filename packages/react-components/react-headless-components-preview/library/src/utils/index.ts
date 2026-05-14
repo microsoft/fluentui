@@ -1,0 +1,1 @@
+export { stringifyDataAttribute } from './stringifyDataAttribute';

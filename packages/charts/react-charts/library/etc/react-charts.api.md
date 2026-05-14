@@ -4,21 +4,21 @@
 
 ```ts
 
-import { CurveFactory } from 'd3-shape';
+import type { CurveFactory } from 'd3-shape';
 import type { Font } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Margin } from '@fluentui/chart-utilities';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { Ref } from 'react';
-import { SankeyGraph } from 'd3-sankey';
-import { SankeyLayout } from 'd3-sankey';
-import { SankeyLink } from 'd3-sankey';
-import { SankeyNode } from 'd3-sankey';
-import { ScaleBand } from 'd3-scale';
-import { ScaleLinear } from 'd3-scale';
-import { SVGProps } from 'react';
-import { TimeLocaleDefinition } from 'd3-time-format';
+import type { Ref } from 'react';
+import type { SankeyGraph } from 'd3-sankey';
+import type { SankeyLayout } from 'd3-sankey';
+import type { SankeyLink } from 'd3-sankey';
+import type { SankeyNode } from 'd3-sankey';
+import type { ScaleBand } from 'd3-scale';
+import type { ScaleLinear } from 'd3-scale';
+import type { SVGProps } from 'react';
+import type { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public (undocumented)
 export interface AccessibilityProps {
@@ -1834,6 +1834,74 @@ export interface SparklineStyles {
 
 // @public (undocumented)
 export const Textbox: React_2.FunctionComponent<TextboxProps>;
+
+// @public
+export const VegaDeclarativeChart: React_2.ForwardRefExoticComponent<VegaDeclarativeChartProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public
+export interface VegaDeclarativeChartProps {
+    chartSchema: VegaSchema;
+    className?: string;
+    onSchemaChange?: (newSchema: VegaSchema) => void;
+    style?: React_2.CSSProperties;
+}
+
+// @public
+export interface VegaLiteSpec {
+    $schema?: string;
+    autosize?: string | {
+        type?: string;
+        contains?: string;
+    };
+    background?: string;
+    config?: Record<string, unknown>;
+    data?: VegaLiteData;
+    description?: string;
+    encoding?: VegaLiteEncoding;
+    facet?: Record<string, unknown>;
+    hconcat?: VegaLiteSpec[];
+    height?: number | 'container';
+    layer?: VegaLiteUnitSpec[];
+    mark?: VegaLiteMarkDef;
+    padding?: number | {
+        top?: number;
+        bottom?: number;
+        left?: number;
+        right?: number;
+    };
+    repeat?: Record<string, unknown>;
+    resolve?: {
+        scale?: {
+            x?: 'shared' | 'independent';
+            y?: 'shared' | 'independent';
+            color?: 'shared' | 'independent';
+            opacity?: 'shared' | 'independent';
+            size?: 'shared' | 'independent';
+            shape?: 'shared' | 'independent';
+        };
+        axis?: {
+            x?: 'shared' | 'independent';
+            y?: 'shared' | 'independent';
+        };
+        legend?: {
+            color?: 'shared' | 'independent';
+            opacity?: 'shared' | 'independent';
+            size?: 'shared' | 'independent';
+            shape?: 'shared' | 'independent';
+        };
+    };
+    selection?: Record<string, unknown>;
+    title?: string | VegaLiteTitleParams;
+    transform?: Array<Record<string, unknown>>;
+    vconcat?: VegaLiteSpec[];
+    width?: number | 'container';
+}
+
+// @public
+export interface VegaSchema {
+    selectedLegends?: string[];
+    vegaLiteSpec: VegaLiteSpec;
+}
 
 // @public
 export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;

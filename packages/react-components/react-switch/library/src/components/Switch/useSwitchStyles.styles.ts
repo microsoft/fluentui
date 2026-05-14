@@ -115,7 +115,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Disabled (both checked and unchecked)
-  ':disabled': {
+  ':disabled, &[aria-disabled="true"]': {
     cursor: 'default',
 
     [`& ~ .${switchClassNames.indicator}`]: {
@@ -129,7 +129,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Enabled and unchecked
-  ':enabled:not(:checked)': {
+  ':enabled:not(:checked):not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       color: tokens.colorNeutralStrokeAccessible,
       borderColor: tokens.colorNeutralStrokeAccessible,
@@ -155,7 +155,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Enabled and checked
-  ':enabled:checked': {
+  ':enabled:checked:not([aria-disabled="true"])': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorCompoundBrandBackground,
       color: tokens.colorNeutralForegroundInverted,
@@ -178,14 +178,14 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   // Disabled and unchecked
-  ':disabled:not(:checked)': {
+  ':disabled:not(:checked), &[aria-disabled="true"]:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
       borderColor: tokens.colorNeutralStrokeDisabled,
     },
   },
 
   // Disabled and checked
-  ':disabled:checked': {
+  ':disabled:checked, &[aria-disabled="true"]:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       borderColor: tokens.colorTransparentStrokeDisabled,
@@ -193,7 +193,7 @@ const useInputBaseClassName = makeResetStyles({
   },
 
   '@media (forced-colors: active)': {
-    ':disabled': {
+    ':disabled, &[aria-disabled="true"]': {
       [`& ~ .${switchClassNames.indicator}`]: {
         color: 'GrayText',
         borderColor: 'GrayText',
@@ -209,7 +209,7 @@ const useInputBaseClassName = makeResetStyles({
     ':hover:active': {
       color: 'CanvasText',
     },
-    ':enabled:checked': {
+    ':enabled:checked:not([aria-disabled="true"])': {
       ':hover': {
         [`& ~ .${switchClassNames.indicator}`]: {
           backgroundColor: 'Highlight',

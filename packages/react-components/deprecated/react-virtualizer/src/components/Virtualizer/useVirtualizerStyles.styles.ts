@@ -1,7 +1,7 @@
 'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
+import type { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 const virtualizerClassName = 'fui-Virtualizer';

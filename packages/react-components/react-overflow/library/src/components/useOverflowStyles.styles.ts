@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles } from '@griffel/react';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU } from '../constants';
 

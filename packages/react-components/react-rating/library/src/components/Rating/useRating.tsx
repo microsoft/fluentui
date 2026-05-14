@@ -9,7 +9,7 @@ import {
   useControllableState,
   useId,
 } from '@fluentui/react-utilities';
-import type { RatingProps, RatingState } from './Rating.types';
+import type { RatingBaseProps, RatingBaseState, RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
@@ -23,18 +23,41 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of Rating
  */
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
-  const generatedName = useId('rating-');
   const {
     color = 'neutral',
+    size = 'extra-large',
     iconFilled = StarFilled,
     iconOutline = StarRegular,
     max = 5,
-    name = generatedName,
-    onChange,
-    step = 1,
-    size = 'extra-large',
-    itemLabel,
+    ...baseProps
   } = props;
+  const state = useRatingBase_unstable({ iconFilled, iconOutline, ...baseProps }, ref);
+
+  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
+  const rootChildren = React.useMemo(() => {
+    return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
+  }, [max]);
+
+  state.root.children ??= rootChildren;
+
+  return {
+    ...state,
+    color,
+    size,
+  };
+};
+
+/**
+ * Base hook for Rating component. Manages state related to controlled/uncontrolled
+ * rating value, hover state, radiogroup ARIA role, and keyboard/mouse interaction —
+ * without design props (color, size).
+ *
+ * @param props - props from this instance of Rating (without color, size)
+ * @param ref - reference to root HTMLElement of Rating
+ */
+export const useRatingBase_unstable = (props: RatingBaseProps, ref: React.Ref<HTMLDivElement>): RatingBaseState => {
+  const generatedName = useId('rating-');
+  const { iconFilled = 'span', iconOutline = 'span', name = generatedName, onChange, step = 1, itemLabel } = props;
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -46,19 +69,11 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     isHTMLElement(target, { constructorName: 'HTMLInputElement' }) && target.type === 'radio' && target.name === name;
 
   const [hoveredValue, setHoveredValue] = React.useState<number | undefined>(undefined);
-
-  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
-  const rootChildren = React.useMemo(() => {
-    return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
-  }, [max]);
-
-  const state: RatingState = {
-    color,
+  const state: RatingBaseState = {
     iconFilled,
     iconOutline,
     name,
     step,
-    size,
     itemLabel,
     value,
     hoveredValue,
@@ -70,7 +85,6 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
         'div',
         {
           ref,
-          children: rootChildren,
           role: 'radiogroup',
           ...props,
         },

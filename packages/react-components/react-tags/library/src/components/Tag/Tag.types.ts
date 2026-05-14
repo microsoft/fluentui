@@ -1,6 +1,6 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagAppearance, TagShape, TagSize } from '../../utils/types';
-import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
+import type { TagAppearance, TagShape, TagSize } from '../../utils/types';
+import type { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
 export type TagContextValues = TagAvatarContextValues;
 
@@ -92,3 +92,13 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
 export type TagState = ComponentState<TagSlots> &
   Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'selected' | 'shape' | 'size'>> &
   UseTagAvatarContextValuesOptions;
+
+/**
+ * Tag Base Props - omits design-only props
+ */
+export type TagBaseProps = DistributiveOmit<TagProps, 'appearance' | 'size' | 'shape'>;
+
+/**
+ * Tag Base State - omits design-only state
+ */
+export type TagBaseState = DistributiveOmit<TagState, 'appearance' | 'size' | 'shape' | 'avatarShape' | 'avatarSize'>;

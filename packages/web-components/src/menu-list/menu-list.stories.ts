@@ -128,6 +128,21 @@ export const RadioItems: Story = {
   },
 };
 
+export const RadioItemsWithSeparators: Story = {
+  args: {
+    slottedContent: () => html`
+      <fluent-menu-item role="menuitemradio">Item 1</fluent-menu-item>
+      <fluent-menu-item role="menuitemradio">Item 2</fluent-menu-item>
+      <fluent-divider role="separator"></fluent-divider>
+      <fluent-menu-item role="menuitemradio">Item 3</fluent-menu-item>
+      <fluent-menu-item role="menuitemradio">Item 4</fluent-menu-item>
+      <fluent-divider role="separator"></fluent-divider>
+      <fluent-menu-item role="menuitemradio">Item 5</fluent-menu-item>
+      <fluent-menu-item role="menuitemradio">Item 6</fluent-menu-item>
+    `,
+  },
+};
+
 export const DisabledItems: Story = {
   args: {
     slottedContent: () => html`
