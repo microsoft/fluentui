@@ -11,6 +11,15 @@ import type { RangeSliderState, RangeSliderSlots } from './RangeSlider.types';
 export const renderRangeSlider_unstable = (state: RangeSliderState): JSXElement => {
   assertSlots<RangeSliderSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      <state.rail />
+      <state.startThumb>
+        <state.startInput />
+      </state.startThumb>
+      <state.endThumb>
+        <state.endInput />
+      </state.endThumb>
+    </state.root>
+  );
 };

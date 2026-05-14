@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "extracts getPercent from Slider component and adds it as a helper to react-utilities so it can be shared by Slider and RangeSlider",
+  "packageName": "@fluentui/react-utilities",
+  "email": "soniaboller@gmail.com",
+  "dependentChangeType": "patch"
+}

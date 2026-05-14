@@ -1,11 +1,134 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`RangeSlider renders a default state 1`] = `
+exports[`RangeSlider renders disabled RangeSlider correctly 1`] = `
 <div>
   <div
     class="fui-RangeSlider"
+    style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
   >
-    Default RangeSlider
+    <div
+      class="fui-RangeSlider__rail"
+    />
+    <div
+      class="fui-RangeSlider__startThumb"
+      role="presentation"
+    >
+      <input
+        aria-orientation="horizontal"
+        class="fui-RangeSlider__startInput"
+        disabled=""
+        id="rangeslider-start-_r_i_"
+        max="80"
+        min="0"
+        step="1"
+        type="range"
+        value="20"
+      />
+    </div>
+    <div
+      class="fui-RangeSlider__endThumb"
+      role="presentation"
+    >
+      <input
+        aria-orientation="horizontal"
+        class="fui-RangeSlider__endInput"
+        disabled=""
+        id="rangeslider-end-_r_j_"
+        max="100"
+        min="20"
+        step="1"
+        type="range"
+        value="80"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeSlider renders horizontal RangeSlider correctly 1`] = `
+<div>
+  <div
+    class="fui-RangeSlider"
+    style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
+  >
+    <div
+      class="fui-RangeSlider__rail"
+    />
+    <div
+      class="fui-RangeSlider__startThumb"
+      role="presentation"
+    >
+      <input
+        aria-orientation="horizontal"
+        class="fui-RangeSlider__startInput"
+        id="rangeslider-start-_r_e_"
+        max="80"
+        min="0"
+        step="1"
+        type="range"
+        value="20"
+      />
+    </div>
+    <div
+      class="fui-RangeSlider__endThumb"
+      role="presentation"
+    >
+      <input
+        aria-orientation="horizontal"
+        class="fui-RangeSlider__endInput"
+        id="rangeslider-end-_r_f_"
+        max="100"
+        min="20"
+        step="1"
+        type="range"
+        value="80"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RangeSlider renders vertical RangeSlider correctly 1`] = `
+<div>
+  <div
+    class="fui-RangeSlider"
+    style="--fui-RangeSlider--direction: 0deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
+  >
+    <div
+      class="fui-RangeSlider__rail"
+    />
+    <div
+      class="fui-RangeSlider__startThumb"
+      role="presentation"
+    >
+      <input
+        aria-orientation="vertical"
+        class="fui-RangeSlider__startInput"
+        id="rangeslider-start-_r_g_"
+        max="80"
+        min="0"
+        orient="vertical"
+        step="1"
+        type="range"
+        value="20"
+      />
+    </div>
+    <div
+      class="fui-RangeSlider__endThumb"
+      role="presentation"
+    >
+      <input
+        aria-orientation="vertical"
+        class="fui-RangeSlider__endInput"
+        id="rangeslider-end-_r_h_"
+        max="100"
+        min="20"
+        orient="vertical"
+        step="1"
+        type="range"
+        value="80"
+      />
+    </div>
   </div>
 </div>
 `;
