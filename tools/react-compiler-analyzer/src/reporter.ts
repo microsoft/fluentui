@@ -9,7 +9,7 @@ const TABLE_REASON_MAX_LEN = 80;
  */
 export function printReport(results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
   if (results.length === 0) {
-    console.log("\nNo 'use no memo' directives found.");
+    console.log('\nNo directives found.');
     return;
   }
 
@@ -103,21 +103,27 @@ export function printSummary(results: DirectiveAnalysis[]): void {
   }
   console.log('');
 
-  if (redundant > 0 && active > 0) {
-    console.log(`> **${redundant}** redundant directive(s) can be safely removed.`);
+  // Break down redundant/active by directive type for clearer messaging
+  const redundantNoMemo = results.filter(r => r.status === 'redundant' && r.directiveType === 'use-no-memo').length;
+  const activeNoMemo = results.filter(r => r.status === 'active' && r.directiveType === 'use-no-memo').length;
+
+  if (redundantNoMemo > 0 && activeNoMemo > 0) {
+    console.log(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) can be safely removed.`);
     console.log(
-      `> **${active}** active directive(s) need a \`// justified: <reason>\` comment — the compiler would optimize these functions without the directive.`,
+      `> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
     );
     console.log('>');
     console.log('> Run with `--fix` to auto-remove redundant directives and annotate active ones.\n');
-  } else if (redundant > 0) {
-    console.log(`> **${redundant}** redundant \`'use no memo'\` directive(s) found.`);
+  } else if (redundantNoMemo > 0) {
+    console.log(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) found.`);
     console.log('> Run with `--fix` to auto-remove them.\n');
-  } else if (active > 0) {
-    console.log(`> **${active}** active directive(s) need a \`// justified: <reason>\` comment.`);
+  } else if (activeNoMemo > 0) {
+    console.log(
+      `> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
+    );
     console.log('> Run with `--fix` to annotate them.\n');
-  } else if (broken === 0 && conflicting === 0) {
-    console.log('> All directives are justified. Nothing to do.\n');
+  } else if (broken === 0 && conflicting === 0 && redundant === 0) {
+    console.log('> All directives are valid. Nothing to do.\n');
   }
 
   if (broken > 0) {
