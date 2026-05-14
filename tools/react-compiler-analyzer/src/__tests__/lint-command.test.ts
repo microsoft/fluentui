@@ -3,9 +3,12 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
-import { compileFile } from '../compiler';
+import { compileFile, compileFiles } from '../compiler';
+import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
+import { DEFAULT_EXCLUDE } from '../commands/shared';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
+import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 
 async function lintFile(entry: FileEntry, compilationMode: CompilationMode = 'infer'): Promise<DirectiveAnalysis[]> {
   const compiled = await compileFile(entry, compilationMode, false);
@@ -321,5 +324,51 @@ export function MyComponent({ label }: { label: string }) {
       expect(results[0].status).toBe('active');
       expect(results[0].directiveType).toBe('use-no-memo');
     });
+  });
+});
+
+describe('multi-path lint', () => {
+  let pkgA: TempPackage;
+  let pkgB: TempPackage;
+
+  beforeEach(() => {
+    pkgA = createTempPackage('lint-pkg-alpha');
+    pkgB = createTempPackage('lint-pkg-beta');
+    writeComponent(pkgA, 'A.tsx', DIRECTIVE_COMPONENT);
+    writeComponent(pkgB, 'B.tsx', DIRECTIVE_COMPONENT);
+  });
+
+  it('discovers directive files from multiple paths with correct package names', async () => {
+    const filesA = await discoverFilesWithDirectives(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverFilesWithDirectives(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+    const allFiles = [...filesA, ...filesB];
+
+    expect(allFiles.length).toBe(2);
+    expect(allFiles[0].packageName).toBe('lint-pkg-alpha');
+    expect(allFiles[1].packageName).toBe('lint-pkg-beta');
+  });
+
+  it('lints merged files from multiple paths and produces results for each', async () => {
+    const filesA = await discoverFilesWithDirectives(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverFilesWithDirectives(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+    const allFiles = [...filesA, ...filesB];
+
+    const compilationResults = await compileFiles(allFiles, {
+      concurrency: 10,
+      verbose: false,
+      compilationMode: 'infer',
+    });
+
+    const results: DirectiveAnalysis[] = [];
+    for (const compiled of compilationResults) {
+      results.push(...deriveMemoDirectiveStatuses(compiled, 'infer'));
+      results.push(...(await analyzeNoMemoDirectives(compiled, 'infer')));
+    }
+
+    const packagesInResults = new Set(results.map(r => r.packageName));
+    expect(packagesInResults).toEqual(new Set(['lint-pkg-alpha', 'lint-pkg-beta']));
+    expect(results.length).toBe(2);
+    // Both have 'use no memo' on a compilable function → active
+    expect(results.every(r => r.status === 'active')).toBe(true);
   });
 });

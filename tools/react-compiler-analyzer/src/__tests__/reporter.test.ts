@@ -248,3 +248,89 @@ describe('printSummary', () => {
     expect(output).not.toContain('Run with `--fix`');
   });
 });
+
+describe('multi-path reporting', () => {
+  it('printReport groups results by package in alphabetical order with correct sections', () => {
+    const results: DirectiveAnalysis[] = [
+      makeResult({
+        packageName: '@scope/pkg-alpha',
+        functionName: 'CompA',
+        status: 'active',
+        directiveType: 'use-no-memo',
+      }),
+      makeResult({
+        packageName: '@scope/pkg-beta',
+        functionName: 'CompB',
+        status: 'redundant',
+        directiveType: 'use-no-memo',
+        compilerEvent: 'CompileError',
+      }),
+    ];
+
+    const output = captureConsole(() => printReport(results, '/workspace', false));
+
+    expect(output).toMatchInlineSnapshot(`
+      "
+      ## @scope/pkg-alpha
+
+      ### Active (needs \`// justified:\` comment)
+
+      | Location | Function | Compiler Event | Reason |
+      |----------|----------|----------------|--------|
+      | src/Component.tsx:5 | CompA | CompileSuccess |  |
+
+
+      ## @scope/pkg-beta
+
+      ### Redundant (removable)
+
+      | Location | Function | Compiler Event | Reason |
+      |----------|----------|----------------|--------|
+      | src/Component.tsx:5 | CompB | CompileError |  |
+      "
+    `);
+    // Alpha appears before Beta (alphabetical)
+    expect(output).not.toContain('Active (compilable)');
+  });
+
+  it('printSummary aggregates counts across multiple packages', () => {
+    const results: DirectiveAnalysis[] = [
+      makeResult({
+        packageName: '@scope/pkg-alpha',
+        status: 'active',
+        directiveType: 'use-no-memo',
+      }),
+      makeResult({
+        packageName: '@scope/pkg-beta',
+        status: 'active',
+        directiveType: 'use-no-memo',
+        functionName: 'CompB',
+      }),
+      makeResult({
+        packageName: '@scope/pkg-beta',
+        status: 'redundant',
+        directiveType: 'use-no-memo',
+        compilerEvent: 'CompileError',
+        functionName: 'CompC',
+      }),
+    ];
+
+    const output = captureConsole(() => printSummary(results));
+
+    expect(output).toMatchInlineSnapshot(`
+      "## Summary
+
+      - **Total directives:** 3
+      - **Redundant** (removable): 1
+      - **Active** \`'use no memo'\` (needs \`// justified:\` comment): 2
+      - **Skipped** (already justified): 0
+
+      > **1** redundant \`'use no memo'\` directive(s) can be safely removed.
+      > **2** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.
+      >
+      > Run with \`--fix\` to auto-remove redundant directives and annotate active ones.
+      "
+    `);
+    expect(output).not.toContain('compilable');
+  });
+});

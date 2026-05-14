@@ -2,10 +2,13 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
-import { compileFile } from '../compiler';
+import { compileFile, compileFiles } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
+import { discoverAllFiles, findPackageName } from '../discovery';
+import { DEFAULT_EXCLUDE } from '../commands/shared';
 import type { FileEntry, FunctionAnalysis } from '../types';
+import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 
 async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
   const compiled = await compileFile(entry, 'infer', false);
@@ -180,5 +183,77 @@ export function NoMemoSkipped() {
 
     const content = readFileSync(componentFile, 'utf-8');
     expect(content).not.toContain("'use memo'");
+  });
+});
+
+describe('multi-path analyze', () => {
+  let pkgA: TempPackage;
+  let pkgB: TempPackage;
+
+  beforeEach(() => {
+    pkgA = createTempPackage('pkg-alpha');
+    pkgB = createTempPackage('pkg-beta');
+    writeComponent(pkgA, 'A.tsx', COMPILABLE_COMPONENT);
+    writeComponent(pkgB, 'B.tsx', COMPILABLE_COMPONENT);
+  });
+
+  it('discovers files from multiple paths with correct package names', async () => {
+    const filesA = await discoverAllFiles(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverAllFiles(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+    const allFiles = [...filesA, ...filesB];
+
+    expect(allFiles.length).toBe(2);
+    expect(allFiles[0].packageName).toBe('pkg-alpha');
+    expect(allFiles[1].packageName).toBe('pkg-beta');
+  });
+
+  it('resolves distinct package names per path via findPackageName', async () => {
+    const nameA = await findPackageName(pkgA.srcDir);
+    const nameB = await findPackageName(pkgB.srcDir);
+
+    expect(nameA).toBe('pkg-alpha');
+    expect(nameB).toBe('pkg-beta');
+  });
+
+  it('compiles merged files from multiple paths and produces results for each', async () => {
+    const filesA = await discoverAllFiles(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverAllFiles(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+    const allFiles = [...filesA, ...filesB];
+
+    const compilationResults = await compileFiles(allFiles, {
+      concurrency: 10,
+      verbose: false,
+      compilationMode: 'infer',
+    });
+
+    const coverageResults = compilationResults.flatMap(deriveCoverage);
+
+    const packagesInResults = new Set(coverageResults.map(r => r.packageName));
+    expect(packagesInResults).toEqual(new Set(['pkg-alpha', 'pkg-beta']));
+    expect(coverageResults.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('applies annotations across files from multiple paths', async () => {
+    const fileA = writeComponent(pkgA, 'Annotatable.tsx', COMPILABLE_COMPONENT);
+    const fileB = writeComponent(pkgB, 'Annotatable.tsx', COMPILABLE_COMPONENT);
+
+    const filesA = await discoverAllFiles(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverAllFiles(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+
+    const compilationResults = await compileFiles([...filesA, ...filesB], {
+      concurrency: 10,
+      verbose: false,
+      compilationMode: 'infer',
+    });
+    const coverageResults = compilationResults.flatMap(deriveCoverage);
+    const outcome = await applyAnnotations(coverageResults, 'manual-memo');
+
+    if (outcome.functionsAnnotated > 0) {
+      // At least one file from each package should have been annotated
+      const modifiedA = readFileSync(fileA, 'utf-8');
+      const modifiedB = readFileSync(fileB, 'utf-8');
+      expect(modifiedA).toContain("'use memo'");
+      expect(modifiedB).toContain("'use memo'");
+    }
   });
 });

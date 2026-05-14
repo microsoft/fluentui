@@ -5,11 +5,11 @@ import { compileFiles } from '../compiler';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import { printReport, printSummary } from '../reporter';
-import type { CompilationMode, DirectiveAnalysis } from '../types';
-import { sharedOptions, validateConcurrency, validatePath } from './shared';
+import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
+import { sharedOptions, validateConcurrency, validatePaths } from './shared';
 
 type LintArgv = {
-  path: string;
+  paths: string[];
   verbose: boolean;
   concurrency: number;
   'full-reasons': boolean;
@@ -19,7 +19,7 @@ type LintArgv = {
 };
 
 export const lintCommand: CommandModule<{}, LintArgv> = {
-  command: 'lint <path>',
+  command: 'lint <paths..>',
   describe: "Lint 'use no memo' and 'use memo' directives for redundancy (CI gate)",
   builder: yarg =>
     sharedOptions(yarg).option('fix', {
@@ -28,18 +28,23 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
       default: false,
     }),
   handler: async argv => {
-    const resolvedPath = validatePath(argv.path);
+    const resolvedPaths = validatePaths(argv.paths);
     validateConcurrency(argv.concurrency);
 
     console.log('━━ React Compiler Lint ━━\n');
 
-    const packageName = await findPackageName(resolvedPath);
+    const files: FileEntry[] = [];
 
-    console.log(`## Scanning: ${resolvedPath}`);
-    console.log(`   Package: ${packageName}`);
-    console.log(`   Mode: ${argv.mode}\n`);
+    for (const resolvedPath of resolvedPaths) {
+      const packageName = await findPackageName(resolvedPath);
 
-    const files = await discoverFilesWithDirectives(resolvedPath, packageName, argv.exclude, argv.verbose);
+      console.log(`## Scanning: ${resolvedPath}`);
+      console.log(`   Package: ${packageName}`);
+      console.log(`   Mode: ${argv.mode}\n`);
+
+      const discovered = await discoverFilesWithDirectives(resolvedPath, packageName, argv.exclude, argv.verbose);
+      files.push(...discovered);
+    }
 
     if (files.length === 0) {
       console.log('No files with directives found.');
