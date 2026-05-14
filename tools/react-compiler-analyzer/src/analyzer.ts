@@ -305,28 +305,19 @@ export function deriveMemoDirectiveStatuses(
         directiveType: 'use-memo',
       });
     } else if (matchedEvent.kind === 'CompileSuccess') {
-      if (compilationMode === 'infer') {
-        results.push({
-          filePath,
-          packageName,
-          line: dir.line,
-          functionName: matchedEvent.fnName ?? fnName,
-          status: 'redundant',
-          compilerEvent: 'CompileSuccess',
-          reason: 'compiler already optimizes this function in infer mode',
-          directiveType: 'use-memo',
-        });
-      } else {
-        results.push({
-          filePath,
-          packageName,
-          line: dir.line,
-          functionName: matchedEvent.fnName ?? fnName,
-          status: 'active',
-          compilerEvent: 'CompileSuccess',
-          directiveType: 'use-memo',
-        });
-      }
+      // In all modes, 'use memo' on a compilable function is valid and active.
+      // In 'infer' mode: the compiler already optimizes it, so 'use memo' is a no-op
+      // but it's forward-compatible for switching to 'annotation' mode later.
+      // In 'annotation'/'all' mode: the directive triggers compilation.
+      results.push({
+        filePath,
+        packageName,
+        line: dir.line,
+        functionName: matchedEvent.fnName ?? fnName,
+        status: 'active',
+        compilerEvent: 'CompileSuccess',
+        directiveType: 'use-memo',
+      });
     } else if (matchedEvent.kind === 'CompileError' || matchedEvent.kind === 'PipelineError') {
       const reason =
         matchedEvent.kind === 'PipelineError' ? matchedEvent.data ?? '' : extractDetailReason(matchedEvent.detail);

@@ -56,8 +56,8 @@ react-compiler-analyzer lint ./library/src --mode infer
 # - Broken 'use memo' (compiler can't handle the function)
 # - Conflicting directives
 
-# Informational only (exit 0): 'use memo' is redundant in infer mode
-# (compiler already picks up named components/hooks without it)
+# Passes (exit 0): 'use memo' is valid in infer mode
+# (forward-compatible for switching to annotation mode later)
 ```
 
 ## Commands
@@ -72,23 +72,23 @@ Scans for both `'use no memo'` and `'use memo'` directives. `--mode` controls wh
 
 #### Status categories
 
-| Status        | Meaning                                                | Exit code                                                                 |
-| ------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
-| `redundant`   | Directive has no effect                                | **1** (for `'use no memo'`); **0** (for `'use memo'`, informational only) |
-| `active`      | Directive meaningfully changes compiler behavior       | 0                                                                         |
-| `broken`      | `'use memo'` requests compilation that errors          | **1**                                                                     |
-| `conflicting` | Both `'use no memo'` and `'use memo'` on same function | **1**                                                                     |
-| `skipped`     | Has `// justified:` comment                            | 0                                                                         |
+| Status        | Meaning                                                    | Exit code |
+| ------------- | ---------------------------------------------------------- | --------- |
+| `redundant`   | Directive has no effect                                    | **1**     |
+| `active`      | Directive is valid (compilable or intentionally opted out) | 0         |
+| `broken`      | `'use memo'` requests compilation that errors              | **1**     |
+| `conflicting` | Both `'use no memo'` and `'use memo'` on same function     | **1**     |
+| `skipped`     | Has `// justified:` comment                                | 0         |
 
 #### Classification matrix
 
-| Directive                      | Scenario                      | `--mode infer`              | `--mode annotation` |
-| ------------------------------ | ----------------------------- | --------------------------- | ------------------- |
-| `'use no memo'`                | on compilable named component | **active**                  | **redundant**       |
-| `'use no memo'`                | on non-compilable function    | **redundant**               | **redundant**       |
-| `'use no memo'` + `'use memo'` | on same function              | **conflicting**             | **conflicting**     |
-| `'use memo'`                   | on compilable named component | **redundant** _(info only)_ | **active**          |
-| `'use memo'`                   | on non-compilable function    | **broken**                  | **broken**          |
+| Directive                      | Scenario                      | `--mode infer`  | `--mode annotation` |
+| ------------------------------ | ----------------------------- | --------------- | ------------------- |
+| `'use no memo'`                | on compilable named component | **active**      | **redundant**       |
+| `'use no memo'`                | on non-compilable function    | **redundant**   | **redundant**       |
+| `'use no memo'` + `'use memo'` | on same function              | **conflicting** | **conflicting**     |
+| `'use memo'`                   | on compilable named component | **active**      | **active**          |
+| `'use memo'`                   | on non-compilable function    | **broken**      | **broken**          |
 
 #### Options
 

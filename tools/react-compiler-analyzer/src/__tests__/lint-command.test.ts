@@ -236,8 +236,8 @@ export function useUncompilable() {
       expect(results[0].directiveType).toBe('use-memo');
     });
 
-    it('classifies use-memo as redundant in infer mode on named component', async () => {
-      const componentFile = join(tempDir, 'src', 'RedundantMemo.tsx');
+    it('classifies use-memo as active in infer mode on named component', async () => {
+      const componentFile = join(tempDir, 'src', 'ActiveMemoInfer.tsx');
       writeFileSync(
         componentFile,
         `import { useState } from 'react';
@@ -253,7 +253,7 @@ export function MyComponent({ label }: { label: string }) {
       const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' }, 'infer');
 
       expect(results.length).toBe(1);
-      expect(results[0].status).toBe('redundant');
+      expect(results[0].status).toBe('active');
       expect(results[0].directiveType).toBe('use-memo');
     });
 
