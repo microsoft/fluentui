@@ -281,4 +281,44 @@ describe('applyAnnotations', () => {
     const input = readFileSync(join(FIXTURES_DIR, 'compilable-no-memo', 'input.tsx'), 'utf-8');
     expect(actual).toBe(input);
   });
+
+  it('is idempotent — skips already-annotated functions in all mode regardless of quote style', async () => {
+    const filePath = createTempFixture('already-annotated-all-mode');
+    const results: FunctionAnalysis[] = [
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 3,
+        column: 0,
+        functionName: 'SingleQuoteAnnotated',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 4,
+      },
+      {
+        filePath,
+        packageName: 'test-pkg',
+        line: 9,
+        column: 0,
+        functionName: 'DoubleQuoteAnnotated',
+        status: 'compiled',
+        compilerEvent: 'CompileSuccess',
+        bodyInsertionLine: 10,
+      },
+    ];
+
+    // First run — nothing should be inserted (both already annotated)
+    const first = await applyAnnotations(results, 'all');
+    expect(first.filesModified).toBe(0);
+    expect(first.functionsAnnotated).toBe(0);
+
+    const actual = readFileSync(filePath, 'utf-8');
+    const expected = readFileSync(join(FIXTURES_DIR, 'already-annotated-all-mode', 'output.tsx'), 'utf-8');
+    expect(actual).toBe(expected);
+
+    // Second run — still idempotent
+    const second = await applyAnnotations(results, 'all');
+    expect(second.filesModified).toBe(0);
+    expect(second.functionsAnnotated).toBe(0);
+  });
 });
