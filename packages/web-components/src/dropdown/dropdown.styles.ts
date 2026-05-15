@@ -102,6 +102,14 @@ export const styles = css`
     ${typographyBody2Styles}
   }
 
+  .control-slot-container {
+    overflow: hidden;
+  }
+
+  .indicator-slot-container {
+    margin-inline-start: ${spacingHorizontalS};
+  }
+
   ::slotted(:is(input, button)) {
     all: unset;
     flex: 1 1 auto;
