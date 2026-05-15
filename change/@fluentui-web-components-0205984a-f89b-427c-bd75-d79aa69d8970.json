@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds css and DOM slot containers to dropdown hardenning component against white-space vulnerabilities.",
+  "packageName": "@fluentui/web-components",
+  "email": "mibaraka@microsoft.com",
+  "dependentChangeType": "patch"
+}
