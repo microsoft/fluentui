@@ -27,9 +27,7 @@ const moduleGlobalSettings: Record<string, unknown> = {
   [CALLBACK_STATE_PROP_NAME]: {},
 };
 
-export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
-  void options;
-
+export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, _options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {
     _initializeIcons(baseUrl, size);
   });

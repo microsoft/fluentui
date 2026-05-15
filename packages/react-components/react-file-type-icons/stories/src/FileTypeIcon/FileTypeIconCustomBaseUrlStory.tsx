@@ -1,11 +1,25 @@
 import * as React from 'react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 
-const customBaseUrl = 'https://res.cdn.office.net/files/fabric-cdn-prod_20260506.001/assets/item-types/';
+const customBaseUrl = 'https://my-cdn.example.com/assets/item-types/';
 
 export const CustomBaseUrl = (): React.ReactElement => (
   <div>
-    <FileTypeIcon extension="docx" size={24} baseUrl={customBaseUrl} />
-    <FileTypeIcon type={FileIconType.folder} size={24} baseUrl={customBaseUrl} />
+    <div>
+      <FileTypeIcon extension="docx" size={24} baseUrl={customBaseUrl} /> <span>custom base URL with extension</span>
+    </div>
+    <div>
+      <FileTypeIcon type={FileIconType.folder} size={24} baseUrl={customBaseUrl} />{' '}
+      <span>custom base URL with type</span>
+    </div>
   </div>
 );
+
+CustomBaseUrl.parameters = {
+  docs: {
+    description: {
+      story:
+        'Use baseUrl only when hosting the exact compatible item-types assets yourself. Keep the asset structure and naming aligned with the resolver expectations.',
+    },
+  },
+};

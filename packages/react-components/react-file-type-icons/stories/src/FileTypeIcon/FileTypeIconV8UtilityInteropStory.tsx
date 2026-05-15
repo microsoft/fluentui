@@ -7,9 +7,26 @@ export const V8UtilityInterop = (): React.ReactElement => {
 
   return (
     <div>
-      <div>Utility iconName: {iconProps.iconName}</div>
-      <div>Utility URL: {iconUrl}</div>
-      <FileTypeIcon extension="docx" size={16} imageFileType="svg" />
+      <div>
+        <strong>Legacy utility output</strong>
+      </div>
+      <div>iconName: {iconProps.iconName}</div>
+      <div>url: {iconUrl}</div>
+      <div>
+        <strong>Recommended component output</strong>
+      </div>
+      <div>
+        <FileTypeIcon extension="docx" size={16} imageFileType="svg" /> <span>FileTypeIcon extension="docx"</span>
+      </div>
     </div>
   );
+};
+
+V8UtilityInterop.parameters = {
+  docs: {
+    description: {
+      story:
+        'Shows parity between utility resolvers and component rendering. Prefer FileTypeIcon for new UI, and keep utility APIs for incremental migration paths.',
+    },
+  },
 };
