@@ -143,12 +143,7 @@ describe('Combobox', () => {
 
   describe('clearable', () => {
     const ClearableCombobox = () => (
-      <Combobox
-        id="combobox"
-        placeholder="Select an animal"
-        clearable
-        clearIcon={{ id: 'clear-icon', children: 'X', 'aria-label': 'Clear selection' }}
-      >
+      <Combobox id="combobox" placeholder="Select an animal" clearable clearIcon={{ id: 'clear-icon', children: 'X' }}>
         <Option>Cat</Option>
         <Option>Dog</Option>
       </Combobox>
