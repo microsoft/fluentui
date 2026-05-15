@@ -22,3 +22,7 @@ export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlo
   Pick<PopoverContextValue, 'appearance'>;
 
 export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;
+
+export type TeachingPopoverHeaderBaseProps = TeachingPopoverHeaderProps;
+
+export type TeachingPopoverHeaderBaseState = Omit<TeachingPopoverHeaderState, 'appearance'>;
