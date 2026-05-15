@@ -27,13 +27,13 @@ const moduleGlobalSettings: Record<string, unknown> = {
   [CALLBACK_STATE_PROP_NAME]: {},
 };
 
-export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, _options?: Partial<IIconOptions>): void {
+export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {
-    _initializeIcons(baseUrl, size);
+    _initializeIcons(baseUrl, size, options);
   });
 }
 
-function _initializeIcons(baseUrl: string, size: number): void {
+function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIconOptions>): void {
   const iconTypes: string[] = Object.keys(FileTypeIconMap);
   const fileTypeIcons: { [key: string]: React.ReactElement } = {};
 
@@ -68,19 +68,31 @@ function _initializeIcons(baseUrl: string, size: number): void {
     );
   });
 
-  registerIcons(fileTypeIcons);
+  registerIcons(fileTypeIcons, options);
 }
 
 function createFileTypeIconImage(src: string, size: number): React.ReactElement {
   return <img src={src} height={size} width={size} alt="" />;
 }
 
-function registerIcons(icons: Record<string, React.ReactElement>): void {
+function registerIcons(icons: Record<string, React.ReactElement>, options?: Partial<IIconOptions>): void {
   const iconSettings = getIconSettings();
+
+  // Merge caller-provided options onto the persisted defaults so subsequent registrations
+  // observe the most recent preference (matches v8 @fluentui/style-utilities behavior).
+  if (options) {
+    iconSettings.__options = { ...iconSettings.__options, ...options };
+  }
+  const { disableWarnings } = iconSettings.__options;
 
   for (const iconName in icons) {
     if (Object.prototype.hasOwnProperty.call(icons, iconName)) {
-      iconSettings[normalizeIconName(iconName)] = {
+      const normalizedIconName = normalizeIconName(iconName);
+      if (iconSettings[normalizedIconName] && !disableWarnings) {
+        // eslint-disable-next-line no-console
+        console.warn(`Icon '${iconName}' was re-registered. Use 'disableWarnings' to suppress this warning.`);
+      }
+      iconSettings[normalizedIconName] = {
         code: icons[iconName],
         subset: fileTypeIconSubset,
       };

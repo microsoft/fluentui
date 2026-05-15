@@ -84,7 +84,7 @@ describe('initializeFileTypeIcons', () => {
   it('redefines file type icons when initialized with a different base URL', () => {
     const baseUrl = 'https://example.com/assets/item-types/';
     initializeFileTypeIcons();
-    initializeFileTypeIcons(baseUrl);
+    initializeFileTypeIcons(baseUrl, { disableWarnings: true });
 
     expectImageIcon(getRegisteredIcon('docx16_svg').code, {
       src: `${baseUrl}16/docx.svg`,
@@ -100,5 +100,24 @@ describe('initializeFileTypeIcons', () => {
     const { subset } = getRegisteredIcon('docx16_svg');
 
     expect(subset).toEqual({ mergeImageProps: true });
+  });
+
+  it('warns when icons are re-registered unless disableWarnings is set', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+
+    try {
+      initializeFileTypeIcons();
+      expect(warnSpy).not.toHaveBeenCalled();
+
+      initializeFileTypeIcons();
+      expect(warnSpy).toHaveBeenCalled();
+      expect(warnSpy.mock.calls[0][0]).toMatch(/was re-registered/);
+
+      warnSpy.mockClear();
+      initializeFileTypeIcons(undefined, { disableWarnings: true });
+      expect(warnSpy).not.toHaveBeenCalled();
+    } finally {
+      warnSpy.mockRestore();
+    }
   });
 });
