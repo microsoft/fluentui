@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: add isSafeUrl utility to validate URLs and prevent potential security vulnerabilities",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

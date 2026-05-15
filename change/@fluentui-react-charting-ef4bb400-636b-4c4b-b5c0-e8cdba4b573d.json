@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: validate URL in DocumentCard to prevent potential security vulnerabilities",
+  "comment": "refactor: move isSafeUrl to chart-utilities package and update imports",
   "packageName": "@fluentui/react-charting",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
