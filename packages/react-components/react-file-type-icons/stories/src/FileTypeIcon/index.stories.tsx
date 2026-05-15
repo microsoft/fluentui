@@ -2,6 +2,7 @@ import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 import type { Meta } from '@storybook/react-webpack5';
 
 import descriptionMd from './FileTypeIconDescription.md';
+import bestPracticesMd from './FileTypeIconBestPractices.md';
 
 export { Default } from './FileTypeIconDefault.stories';
 export { Playground } from './FileTypeIconPlayground.stories';
@@ -50,7 +51,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

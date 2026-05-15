@@ -2,19 +2,15 @@ import * as React from 'react';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 
 export const Default = (): React.ReactElement => (
-  <div>
-    <div>
-      <FileTypeIcon extension="docx" /> <span>.docx default size</span>
-    </div>
-    <div>
-      <FileTypeIcon extension="xlsx" size={20} /> <span>.xlsx compact list size</span>
-    </div>
-    <div>
-      <FileTypeIcon extension="pptx" size={24} /> <span>.pptx standard list size</span>
-    </div>
-    <div>
-      <FileTypeIcon type={FileIconType.folder} size={32} imageFileType="png" /> <span>folder by type using PNG</span>
-    </div>
+  <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 12, rowGap: 8, alignItems: 'center' }}>
+    <FileTypeIcon extension="docx" />
+    <span>Microsoft Word document (smallest size is 16px)</span>
+    <FileTypeIcon extension="xlsx" size={20} />
+    <span>Microsoft Excel spreadsheet (compact list size is 20px)</span>
+    <FileTypeIcon extension="pptx" size={24} />
+    <span>Microsoft PowerPoint presentation (standard list size is 24px)</span>
+    <FileTypeIcon type={FileIconType.folder} size={32} imageFileType="png" />
+    <span>Folder icon (PNG format, size is 32px)</span>
   </div>
 );
 
@@ -26,4 +22,4 @@ Default.parameters = {
   },
 };
 
-Default.storyName = 'Overview';
+Default.storyName = 'Default';
