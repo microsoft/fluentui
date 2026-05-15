@@ -26,7 +26,9 @@ FallbackBehavior.parameters = {
   docs: {
     description: {
       story:
-        'Unknown or empty extensions gracefully render the generic file icon. Extension values are case-insensitive, and leading dots are supported.',
+        'Step 5: Validate fallback behavior. Unknown or empty extensions render the generic file icon. Extension values are case-insensitive, and leading dots are supported.',
     },
   },
 };
+
+FallbackBehavior.storyName = '05 Fallbacks';

@@ -21,7 +21,9 @@ export const Default = (): React.ReactElement => (
 Default.parameters = {
   docs: {
     description: {
-      story: 'Quick overview of common component usage with extension-based and type-based icon resolution.',
+      story: 'Step 1: Start here for a quick overview of extension-based and type-based usage.',
     },
   },
 };
+
+Default.storyName = '01 Overview';

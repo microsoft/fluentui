@@ -19,7 +19,9 @@ CustomBaseUrl.parameters = {
   docs: {
     description: {
       story:
-        'Use baseUrl only when hosting the exact compatible item-types assets yourself. Keep the asset structure and naming aligned with the resolver expectations.',
+        'Step 6: Use baseUrl only when hosting the exact compatible item-types assets yourself. Keep the asset structure and naming aligned with the resolver expectations.',
     },
   },
 };
+
+CustomBaseUrl.storyName = '06 Custom CDN';

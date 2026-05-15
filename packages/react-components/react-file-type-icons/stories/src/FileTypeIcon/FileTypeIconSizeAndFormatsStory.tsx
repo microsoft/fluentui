@@ -22,7 +22,9 @@ SizeAndFormats.parameters = {
   docs: {
     description: {
       story:
-        'Compares SVG and PNG output at representative sizes. Use SVG by default, and use PNG when your scenario requires bitmap assets.',
+        'Step 4: Compare SVG and PNG output at representative sizes. Use SVG by default, and use PNG when your scenario requires bitmap assets.',
     },
   },
 };
+
+SizeAndFormats.storyName = '04 Sizes and Formats';

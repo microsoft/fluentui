@@ -20,7 +20,9 @@ Playground.parameters = {
   docs: {
     description: {
       story:
-        'Use controls to quickly validate extension mapping, type mapping, size, and SVG or PNG output. Prefer setting either extension or type; when both are set, extension takes precedence.',
+        'Step 2: Use controls to validate extension mapping, type mapping, size, and SVG or PNG output. Prefer setting either extension or type; when both are set, extension takes precedence.',
     },
   },
 };
+
+Playground.storyName = '02 Playground';

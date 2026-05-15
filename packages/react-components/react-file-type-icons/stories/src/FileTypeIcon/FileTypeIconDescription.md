@@ -44,6 +44,16 @@ Use `extension` for file extensions and `type` for non-file entities.
 
 Use `baseUrl` only when hosting a fully compatible copy of the item-type icon assets.
 
+## Recommended story order
+
+1. `Overview`
+2. `Playground`
+3. `Types`
+4. `Sizes and Formats`
+5. `Fallbacks`
+6. `Custom CDN`
+7. `Migration and Interop`
+
 Stories in this section cover:
 
 - a controls-first playground for quick validation
