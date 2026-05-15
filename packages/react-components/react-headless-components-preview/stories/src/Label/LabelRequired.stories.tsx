@@ -17,8 +17,8 @@ Required.parameters = {
   docs: {
     description: {
       story:
-        'A Label can display a required asterisk or a custom required indicator. This custom required indicator can' +
-        'be a custom string or jsx content.',
+        'A Label can display a required asterisk or a custom required indicator. This custom required indicator can ' +
+        'be a custom string or JSX content.',
     },
   },
 };
