@@ -132,7 +132,7 @@ export interface IIconOptions {
 export type ImageFileType = 'svg' | 'png';
 
 // @public (undocumented)
-export function initializeFileTypeIcons(baseUrl?: string, _options?: Partial<IIconOptions>): void;
+export function initializeFileTypeIcons(baseUrl?: string, options?: Partial<IIconOptions>): void;
 
 // @public
 export const renderFileTypeIcon_unstable: (state: FileTypeIconState) => JSXElement;
