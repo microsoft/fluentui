@@ -25,8 +25,6 @@ export const useMenuItemCheckbox_unstable = (
 
 /**
  * Base hook for MenuItemCheckbox component, produces state required to render the component
- *
- * @internal
  */
 export const useMenuItemCheckboxBase_unstable = (
   props: MenuItemCheckboxProps,
