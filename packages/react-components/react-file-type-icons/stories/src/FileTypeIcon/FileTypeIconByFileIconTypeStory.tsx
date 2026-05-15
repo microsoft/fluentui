@@ -22,9 +22,9 @@ ByFileIconType.parameters = {
   docs: {
     description: {
       story:
-        'Step 3: Use FileIconType when rendering non-file entities, such as folders or list-like objects, where extension lookup is not applicable.',
+        'Use FileIconType when rendering non-file entities, such as folders or list-like objects, where extension lookup is not applicable.',
     },
   },
 };
 
-ByFileIconType.storyName = '03 Types';
+ByFileIconType.storyName = 'Types';

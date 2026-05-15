@@ -26,9 +26,9 @@ V8UtilityInterop.parameters = {
   docs: {
     description: {
       story:
-        'Step 7: Migration reference. This shows parity between utility resolvers and component rendering. Prefer FileTypeIcon for new UI, and keep utility APIs for incremental migration paths.',
+        'Migration reference: this shows parity between utility resolvers and component rendering. Prefer FileTypeIcon for new UI, and keep utility APIs for incremental migration paths.',
     },
   },
 };
 
-V8UtilityInterop.storyName = '07 Migration and Interop';
+V8UtilityInterop.storyName = 'Migration and Interop';

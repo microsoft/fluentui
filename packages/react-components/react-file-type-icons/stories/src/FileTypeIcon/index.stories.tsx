@@ -1,4 +1,5 @@
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
+import type { Meta } from '@storybook/react-webpack5';
 
 import descriptionMd from './FileTypeIconDescription.md';
 
@@ -10,7 +11,7 @@ export { FallbackBehavior } from './FileTypeIconFallbackBehaviorStory';
 export { CustomBaseUrl } from './FileTypeIconCustomBaseUrlStory';
 export { V8UtilityInterop } from './FileTypeIconV8UtilityInteropStory';
 
-export default {
+const meta = {
   title: 'Components/FileTypeIcon',
   component: FileTypeIcon,
   argTypes: {
@@ -53,4 +54,6 @@ export default {
       },
     },
   },
-};
+} satisfies Meta<typeof FileTypeIcon>;
+
+export default meta;
