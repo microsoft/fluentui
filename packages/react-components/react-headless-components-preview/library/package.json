@@ -154,6 +154,12 @@
       "import": "./lib/input.js",
       "require": "./lib-commonjs/input.js"
     },
+    "./label": {
+      "types": "./dist/label.d.ts",
+      "node": "./lib-commonjs/label.js",
+      "import": "./lib/label.js",
+      "require": "./lib-commonjs/label.js"
+    },
     "./link": {
       "types": "./dist/link.d.ts",
       "node": "./lib-commonjs/link.js",
