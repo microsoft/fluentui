@@ -5,11 +5,6 @@ import descriptionMd from './FileTypeIconDescription.md';
 import bestPracticesMd from './FileTypeIconBestPractices.md';
 
 export { Default } from './FileTypeIconDefault.stories';
-export { Playground } from './FileTypeIconPlayground.stories';
-export { ByFileIconType } from './FileTypeIconByFileIconType.stories';
-export { SizeAndFormats } from './FileTypeIconSizeAndFormats.stories';
-export { FallbackBehavior } from './FileTypeIconFallbackBehavior.stories';
-export { CustomBaseUrl } from './FileTypeIconCustomBaseUrl.stories';
 export { V8UtilityInterop } from './FileTypeIconV8UtilityInterop.stories';
 
 const meta = {
