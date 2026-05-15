@@ -3,13 +3,13 @@ import type { Meta } from '@storybook/react-webpack5';
 
 import descriptionMd from './FileTypeIconDescription.md';
 
-export { Default } from './FileTypeIconDefaultStory';
-export { Playground } from './FileTypeIconPlaygroundStory';
-export { ByFileIconType } from './FileTypeIconByFileIconTypeStory';
-export { SizeAndFormats } from './FileTypeIconSizeAndFormatsStory';
-export { FallbackBehavior } from './FileTypeIconFallbackBehaviorStory';
-export { CustomBaseUrl } from './FileTypeIconCustomBaseUrlStory';
-export { V8UtilityInterop } from './FileTypeIconV8UtilityInteropStory';
+export { Default } from './FileTypeIconDefault.stories';
+export { Playground } from './FileTypeIconPlayground.stories';
+export { ByFileIconType } from './FileTypeIconByFileIconType.stories';
+export { SizeAndFormats } from './FileTypeIconSizeAndFormats.stories';
+export { FallbackBehavior } from './FileTypeIconFallbackBehavior.stories';
+export { CustomBaseUrl } from './FileTypeIconCustomBaseUrl.stories';
+export { V8UtilityInterop } from './FileTypeIconV8UtilityInterop.stories';
 
 const meta = {
   title: 'Components/FileTypeIcon',
