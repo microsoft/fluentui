@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/start-end.js';
 import {
@@ -72,9 +72,6 @@ export class CounterBadge extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public count: number = 0;
-  protected countChanged() {
-    this.setCount();
-  }
 
   /**
    * Max number to be displayed
@@ -85,9 +82,6 @@ export class CounterBadge extends FASTElement {
    */
   @attr({ attribute: 'overflow-count', converter: nullableNumberConverter })
   public overflowCount: number = 99;
-  protected overflowCountChanged() {
-    this.setCount();
-  }
 
   /**
    * If the badge should be shown when count is 0
@@ -110,13 +104,12 @@ export class CounterBadge extends FASTElement {
   public dot: boolean = false;
 
   /**
-   * Function to set the count
-   * This is the default slotted content for the counter badge
-   * If children are slotted, that will override the value returned
+   * The value to be displayed in the badge, which is determined by the `count`, `overflow-count`, and `show-zero` attributes.
    *
-   * @internal
+   * @public
    */
-  public setCount(): string | void {
+  @volatile
+  public get displayValue(): string | undefined {
     const count: number | null = this.count ?? 0;
 
     if ((count !== 0 || this.showZero) && !this.dot) {

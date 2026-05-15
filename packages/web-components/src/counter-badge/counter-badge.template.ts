@@ -6,7 +6,7 @@ import type { CounterBadgeOptions } from './counter-badge.options.js';
 
 function composeTemplate<T extends CounterBadge & Badge>(options: CounterBadgeOptions = {}): ElementViewTemplate<T> {
   return badgeTemplate<T>({
-    defaultContent: html<T>`${x => x.setCount()}`,
+    defaultContent: html<T>`${x => x.displayValue}`,
   });
 }
 

@@ -2407,16 +2407,11 @@ export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
     color?: CounterBadgeColor;
     count: number;
-    // (undocumented)
-    protected countChanged(): void;
+    get displayValue(): string | undefined;
     dot: boolean;
     // @internal
     elementInternals: ElementInternals;
     overflowCount: number;
-    // (undocumented)
-    protected overflowCountChanged(): void;
-    // @internal
-    setCount(): string | void;
     shape?: CounterBadgeShape;
     showZero: boolean;
     size?: CounterBadgeSize;
