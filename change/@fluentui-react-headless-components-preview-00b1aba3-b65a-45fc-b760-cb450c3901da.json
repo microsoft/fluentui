@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add Nav component and stories",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

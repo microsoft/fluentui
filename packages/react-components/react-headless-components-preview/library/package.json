@@ -37,6 +37,7 @@
     "@fluentui/react-label": "^9.4.1",
     "@fluentui/react-link": "^9.8.1",
     "@fluentui/react-message-bar": "^9.7.0",
+    "@fluentui/react-nav": "^9.3.24",
     "@fluentui/react-persona": "^9.7.3",
     "@fluentui/react-popover": "^9.14.2",
     "@fluentui/react-portal": "^9.8.12",
@@ -177,6 +178,12 @@
       "node": "./lib-commonjs/message-bar.js",
       "import": "./lib/message-bar.js",
       "require": "./lib-commonjs/message-bar.js"
+    },
+    "./nav": {
+      "types": "./dist/nav.d.ts",
+      "node": "./lib-commonjs/nav.js",
+      "import": "./lib/nav.js",
+      "require": "./lib-commonjs/nav.js"
     },
     "./persona": {
       "types": "./dist/persona.d.ts",
