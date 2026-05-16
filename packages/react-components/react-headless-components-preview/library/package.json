@@ -112,6 +112,12 @@
       "import": "./lib/checkbox.js",
       "require": "./lib-commonjs/checkbox.js"
     },
+    "./combobox": {
+      "types": "./dist/combobox.d.ts",
+      "node": "./lib-commonjs/combobox.js",
+      "import": "./lib/combobox.js",
+      "require": "./lib-commonjs/combobox.js"
+    },
     "./dialog": {
       "types": "./dist/dialog.d.ts",
       "node": "./lib-commonjs/dialog.js",
