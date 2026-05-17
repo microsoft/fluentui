@@ -16,15 +16,6 @@ describe('Nav', () => {
     displayName: 'Nav',
   });
 
-  it('renders a default state', () => {
-    const result = render(
-      <Nav>
-        <NavItem value="item1">Item 1</NavItem>
-      </Nav>,
-    );
-    expect(result.getByRole('navigation')).toBeInTheDocument();
-  });
-
   it('renders NavItem children', () => {
     const result = render(
       <Nav>

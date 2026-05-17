@@ -1,15 +1,19 @@
-import * as React from 'react';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
 import type { JSXElement } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
+
 import { NavProvider } from '../navContext';
 import type { NavContextValues } from '../navContext';
-import type { NavDrawerState } from './NavDrawer.types';
+import type { NavDrawerSlots, NavDrawerState } from './NavDrawer.types';
 
 export const renderNavDrawer = (state: NavDrawerState, contextValues: NavContextValues): JSXElement => {
-  const Root = state.components.root;
+  assertSlots<NavDrawerSlots>(state);
 
   return (
     <NavProvider value={contextValues.nav}>
-      <Root {...state.root} />
+      <state.root />
     </NavProvider>
   );
 };

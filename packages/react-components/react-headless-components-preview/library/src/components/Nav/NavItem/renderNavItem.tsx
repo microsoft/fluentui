@@ -1,5 +1,6 @@
 import { renderNavItem_unstable } from '@fluentui/react-nav';
+import type { JSXElement } from '@fluentui/react-utilities';
+
 import type { NavItemState } from './NavItem.types';
 
-export const renderNavItem = (state: NavItemState) =>
-  renderNavItem_unstable(state as unknown as Parameters<typeof renderNavItem_unstable>[0]);
+export const renderNavItem = renderNavItem_unstable as (state: NavItemState) => JSXElement;
