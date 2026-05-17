@@ -3,7 +3,7 @@ import { Nav, NavItem, NavDivider, NavSectionHeader } from '@fluentui/react-head
 
 import styles from './nav.module.css';
 
-export const Default = () => (
+export const Default = (): React.ReactNode => (
   <Nav defaultSelectedValue="item1" className={styles.nav}>
     <NavSectionHeader className={styles.sectionHeader}>Getting Started</NavSectionHeader>
     <NavItem value="item1" className={styles.navItem}>

@@ -47,7 +47,7 @@ const getRandomPage = () => {
   }
 };
 
-export const NavDrawerControlled = () => {
+export const NavDrawerControlled = (): React.ReactNode => {
   const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['6', '11']);
   const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string | undefined>('6');
   const [selectedValue, setSelectedValue] = React.useState<string>('7');

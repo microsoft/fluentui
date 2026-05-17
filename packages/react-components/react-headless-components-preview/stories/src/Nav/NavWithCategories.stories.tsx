@@ -13,7 +13,7 @@ import { ChevronDownFilled } from '@fluentui/react-icons';
 
 import styles from './nav.module.css';
 
-export const WithCategories = () => (
+export const WithCategories = (): React.ReactNode => (
   <Nav defaultSelectedValue="overview" defaultOpenCategories={['components']} className={styles.nav}>
     <NavSectionHeader className={styles.sectionHeader}>Documentation</NavSectionHeader>
     <NavItem value="overview" className={styles.navItem}>

@@ -3,7 +3,7 @@ import { Nav, NavItem } from '@fluentui/react-headless-components-preview/nav';
 
 import styles from './nav.module.css';
 
-export const Controlled = () => {
+export const Controlled = (): React.ReactNode => {
   const [selectedValue, setSelectedValue] = React.useState('item1');
 
   return (

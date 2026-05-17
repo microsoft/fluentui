@@ -15,7 +15,7 @@ import { ChevronDownFilled, NavigationFilled } from '@fluentui/react-icons';
 
 import styles from './nav.module.css';
 
-export const NavDrawerBasic = () => {
+export const NavDrawerBasic = (): React.ReactNode => {
   const [isOpen, setIsOpen] = React.useState(true);
   const [type, setType] = React.useState<'inline' | 'overlay'>('inline');
   const [isMultiple, setIsMultiple] = React.useState(true);
