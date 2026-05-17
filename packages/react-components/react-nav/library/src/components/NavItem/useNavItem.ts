@@ -34,9 +34,8 @@ export const useNavItem_unstable = (
  * NavItemBaseState is the base state used in rendering NavItem,
  * excluding any design-related properties such as `density`.
  *
- * @param props
- * @param ref
- * @returns
+ * @param props - props from this instance of NavItem
+ * @param ref - reference to root HTMLAnchorElement of NavItem
  */
 export const useNavItemBase_unstable = (
   props: NavItemProps,
