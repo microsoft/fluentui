@@ -490,3 +490,21 @@ export const OverflowScroll: Story = {
   `),
   args: { ...Default.args },
 };
+
+export const MultipleSelectionOverflow: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <div style="white-space: nowrap; width: 300px;">${storyTemplate}</div>
+  `),
+  args: {
+    ...Default.args,
+    multiple: true,
+    placeholder: 'Select vegetables',
+    slottedContent: () => [
+      { value: 'carrot', selected: true, slottedContent: () => 'Carrot' },
+      { value: 'celery', selected: true, slottedContent: () => 'Celery' },
+      { value: 'cucumber', selected: true, slottedContent: () => 'Cucumber' },
+      { value: 'potato', selected: true, slottedContent: () => 'Potato' },
+      { value: 'beetroot', selected: true, slottedContent: () => 'Beetroot' },
+    ],
+  },
+};

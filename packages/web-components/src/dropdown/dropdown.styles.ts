@@ -105,6 +105,10 @@ export const styles = css`
   ::slotted(:is(input, button)) {
     all: unset;
     flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   ::slotted(button) {
