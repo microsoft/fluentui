@@ -27,7 +27,7 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 1. **Find the component's stories package.** Each v9 component has a dedicated stories package named `react-<component>-stories`:
 
    ```bash
-   yarn nx show projects 2>/dev/null | grep "^react-<lowercase-component-name>-stories$"
+   yarn --silent nx show project react-<lowercase-component-name>-stories --json
    ```
 
    If the grep returns nothing, the component doesn't have its own stories package — check for a preview package (`react-<component>-preview-stories`) or ask before proceeding.
