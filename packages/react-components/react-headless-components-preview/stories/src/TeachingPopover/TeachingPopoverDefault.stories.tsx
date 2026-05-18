@@ -1,33 +1,37 @@
 import * as React from 'react';
+import { DismissRegular, ImageRegular, LightbulbRegular } from '@fluentui/react-icons';
 import {
   TeachingPopover,
-  TeachingPopoverTrigger,
-  TeachingPopoverSurface,
-  TeachingPopoverHeader,
-  TeachingPopoverTitle,
   TeachingPopoverBody,
   TeachingPopoverFooter,
+  TeachingPopoverHeader,
+  TeachingPopoverSurface,
+  TeachingPopoverTitle,
+  TeachingPopoverTrigger,
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 
 import styles from './teaching-popover.module.css';
 
 export const Default = (): React.ReactNode => (
-  <TeachingPopover>
+  <TeachingPopover positioning={{ offset: 10 }}>
     <TeachingPopoverTrigger>
-      <button className={styles.trigger}>Show teaching popover</button>
+      <button className={styles.trigger}>TeachingPopover trigger</button>
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface className={styles.surface}>
-      <TeachingPopoverHeader className={styles.header}>
-        <span aria-hidden>💡</span>
-        <span className={styles.headerSpacer} />
-        <button className={styles.iconButton}>×</button>
+      <TeachingPopoverHeader
+        className={styles.header}
+        icon={{ className: styles.headerIcon, children: <LightbulbRegular /> }}
+        dismissButton={{ className: styles.dismissButton, children: <DismissRegular /> }}
+      >
+        Tips
       </TeachingPopoverHeader>
-      <TeachingPopoverTitle className={styles.title}>Did you know?</TeachingPopoverTitle>
-      <TeachingPopoverBody className={styles.body}>
-        Teaching popovers are great for quick contextual learning moments — keep them short.
+      <TeachingPopoverBody className={styles.body} media={{ className: styles.media, children: <ImageRegular /> }}>
+        <TeachingPopoverTitle className={styles.title}>Teaching Bubble Title</TeachingPopoverTitle>
+        <p className={styles.bodyText}>This is a teaching popover body</p>
       </TeachingPopoverBody>
       <TeachingPopoverFooter className={styles.footer}>
-        <button className={`${styles.actionButton} ${styles.actionButtonPrimary}`}>Got it</button>
+        <button className={`${styles.actionButton} ${styles.actionButtonPrimary}`}>Learn more</button>
+        <button className={styles.actionButton}>Got it</button>
       </TeachingPopoverFooter>
     </TeachingPopoverSurface>
   </TeachingPopover>

@@ -1,10 +1,7 @@
 import * as React from 'react';
+import { DismissRegular } from '@fluentui/react-icons';
 import {
   TeachingPopover,
-  TeachingPopoverTrigger,
-  TeachingPopoverSurface,
-  TeachingPopoverHeader,
-  TeachingPopoverTitle,
   TeachingPopoverBody,
   TeachingPopoverCarousel,
   TeachingPopoverCarouselCard,
@@ -13,14 +10,23 @@ import {
   TeachingPopoverCarouselNav,
   TeachingPopoverCarouselNavButton,
   TeachingPopoverCarouselPageCount,
+  TeachingPopoverHeader,
+  TeachingPopoverSurface,
+  TeachingPopoverTitle,
+  TeachingPopoverTrigger,
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 
 import styles from './teaching-popover.module.css';
 
 const PAGES = ['intro', 'features', 'wrap-up'] as const;
 
+const dismissButtonSlot = {
+  className: styles.dismissButton,
+  children: <DismissRegular />,
+};
+
 export const WithCarousel = (): React.ReactNode => (
-  <TeachingPopover>
+  <TeachingPopover positioning={{ offset: 10 }}>
     <TeachingPopoverTrigger>
       <button className={styles.trigger}>Start tour</button>
     </TeachingPopoverTrigger>
@@ -28,44 +34,44 @@ export const WithCarousel = (): React.ReactNode => (
       <TeachingPopoverCarousel defaultValue={PAGES[0]} announcement={i => `Slide ${i + 1} of ${PAGES.length}`}>
         <div className={styles.carousel}>
           <TeachingPopoverCarouselCard value="intro">
-            <TeachingPopoverHeader className={styles.header}>
-              <span aria-hidden>👋</span>
-              <span className={styles.headerSpacer} />
-              <button className={styles.iconButton}>×</button>
-            </TeachingPopoverHeader>
-            <TeachingPopoverTitle className={styles.title}>Welcome</TeachingPopoverTitle>
+            <TeachingPopoverHeader
+              className={styles.header}
+              icon={{ className: styles.headerIcon, children: <span aria-hidden>👋</span> }}
+              dismissButton={dismissButtonSlot}
+            />
             <TeachingPopoverBody className={styles.body}>
-              Let&apos;s take a quick tour of the new features.
+              <TeachingPopoverTitle className={styles.title}>Welcome</TeachingPopoverTitle>
+              <p className={styles.bodyText}>Let&apos;s take a quick tour of the new features.</p>
             </TeachingPopoverBody>
           </TeachingPopoverCarouselCard>
 
           <TeachingPopoverCarouselCard value="features">
-            <TeachingPopoverHeader className={styles.header}>
-              <span aria-hidden>✨</span>
-              <span className={styles.headerSpacer} />
-              <button className={styles.iconButton}>×</button>
-            </TeachingPopoverHeader>
-            <TeachingPopoverTitle className={styles.title}>Better workflows</TeachingPopoverTitle>
+            <TeachingPopoverHeader
+              className={styles.header}
+              icon={{ className: styles.headerIcon, children: <span aria-hidden>✨</span> }}
+              dismissButton={dismissButtonSlot}
+            />
             <TeachingPopoverBody className={styles.body}>
-              Save time with shortcuts you can configure to taste.
+              <TeachingPopoverTitle className={styles.title}>Better workflows</TeachingPopoverTitle>
+              <p className={styles.bodyText}>Save time with shortcuts you can configure to taste.</p>
             </TeachingPopoverBody>
           </TeachingPopoverCarouselCard>
 
           <TeachingPopoverCarouselCard value="wrap-up">
-            <TeachingPopoverHeader className={styles.header}>
-              <span aria-hidden>🎉</span>
-              <span className={styles.headerSpacer} />
-              <button className={styles.iconButton}>×</button>
-            </TeachingPopoverHeader>
-            <TeachingPopoverTitle className={styles.title}>You&apos;re ready</TeachingPopoverTitle>
+            <TeachingPopoverHeader
+              className={styles.header}
+              icon={{ className: styles.headerIcon, children: <span aria-hidden>🎉</span> }}
+              dismissButton={dismissButtonSlot}
+            />
             <TeachingPopoverBody className={styles.body}>
-              That&apos;s the highlights — explore at your own pace.
+              <TeachingPopoverTitle className={styles.title}>You&apos;re ready</TeachingPopoverTitle>
+              <p className={styles.bodyText}>That&apos;s the highlights — explore at your own pace.</p>
             </TeachingPopoverBody>
           </TeachingPopoverCarouselCard>
 
           <TeachingPopoverCarouselFooter className={styles.carouselFooter}>
             <TeachingPopoverCarouselFooterButton navType="prev" altText="Back" className={styles.actionButton}>
-              Previous
+              Back
             </TeachingPopoverCarouselFooterButton>
             <TeachingPopoverCarouselNav className={styles.carouselNav}>
               {(value: string) => (

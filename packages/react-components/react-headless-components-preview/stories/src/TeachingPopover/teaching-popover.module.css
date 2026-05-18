@@ -22,78 +22,166 @@
   outline-offset: 2px;
 }
 
+/*
+  TeachingPopover always renders with an arrow (the headless useTeachingPopover
+  defaults withArrow to true). The surface borrows the same arrow technique as
+  the headless Popover stories: overflow:visible plus a CSS filter drop-shadow
+  so the shadow traces around the rotated arrow shape (a box-shadow would clip
+  on the rotated square and a border wouldn't connect to it).
+*/
 .surface {
   background: var(--bg-elev);
-  border-radius: var(--radius-md);
-  border: var(--stroke-thin) solid var(--border);
-  box-shadow: var(--shadow-3);
-  padding: var(--space-4);
-  min-width: 280px;
+  border: 0;
+  border-radius: var(--radius-lg);
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+  overflow: visible;
+  padding: var(--space-5);
+  min-width: 320px;
   max-width: 360px;
+}
+
+/*
+  Arrow rendering — headless popover surface paints a <div data-arrow /> and
+  keeps the surface's data-placement attribute in sync with usePositioning.
+  Mirrors stories/src/Popover/popover.module.css so visuals stay consistent.
+*/
+.surface [data-arrow] {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-elev);
+  transform: rotate(45deg);
+}
+
+.surface[data-placement^='above'] [data-arrow] {
+  bottom: -6px;
+}
+
+.surface[data-placement^='below'] [data-arrow] {
+  top: -6px;
+}
+
+.surface[data-placement^='before'] [data-arrow] {
+  right: -6px;
+}
+
+.surface[data-placement^='after'] [data-arrow] {
+  left: -6px;
+}
+
+.surface[data-placement='above'] [data-arrow],
+.surface[data-placement='below'] [data-arrow] {
+  inset-inline: 0;
+  margin-inline: auto;
+}
+
+.surface[data-placement='before'] [data-arrow],
+.surface[data-placement='after'] [data-arrow] {
+  inset-block: 0;
+  margin-block: auto;
+}
+
+.surface[data-placement$='-start'] [data-arrow] {
+  inset-inline-start: var(--arrow-padding, 12px);
+}
+
+.surface[data-placement$='-end'] [data-arrow] {
+  inset-inline-end: var(--arrow-padding, 12px);
 }
 
 .header {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  margin: 0 0 var(--space-2);
-}
-
-.headerSpacer {
-  flex: 1;
-}
-
-.title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 var(--space-1);
-}
-
-.body {
   font-size: 13px;
+  font-weight: 500;
   color: var(--text-muted);
-  line-height: 1.45;
   margin: 0 0 var(--space-3);
 }
 
-.footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
+.headerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  color: var(--text-muted);
 }
 
-/* Dismiss / icon button — mirrors v9 subtle button appearance. */
-.iconButton {
+/* Dismiss button — boxed subtle button, mirrors v9 TeachingPopoverHeader__dismissButton. */
+.dismissButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 24px;
   height: 24px;
   padding: 0;
-  border: 0;
+  margin-inline-start: auto;
+  border: var(--stroke-thin) solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-muted);
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 80ms ease, color 80ms ease;
+  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
 }
 
-.iconButton:hover {
+.dismissButton:hover {
   background: var(--surface-muted);
+  border-color: var(--border-stronger);
   color: var(--text);
 }
 
-.iconButton:active {
+.dismissButton:active {
   background: var(--surface-sunken);
 }
 
-.iconButton:focus-visible {
+.dismissButton:focus-visible {
   outline: var(--stroke-thick) solid var(--accent);
   outline-offset: 1px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 var(--space-4);
+}
+
+/* Media placeholder — 288×176 (v9 'medium' aspect ratio) gray box. */
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 288 / 176;
+  background: var(--surface-muted);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+  color: var(--text-faint);
+  font-size: 64px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 var(--space-1);
+}
+
+.bodyText {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: 0;
 }
 
 /*
