@@ -20,7 +20,7 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
 
 ## Critical: use the per-component Storybook only
 
-**Never** use `yarn storybook` at the repo root, `public-docsite-v9`, or any workspace-wide Storybook build for visual validation. They pull in every v9 package (including deprecated `unstable` re-exports) and will either fail to compile due to missing packages or get stuck in HMR restart loops — the validation becomes useless. Always boot the **per-component stories package**, which only imports its own component's stories and dependencies.
+Always boot the **per-component stories package** (`react-<component>-stories`) via nx `storybook` target, which only imports its own component's stories and dependencies.
 
 ## Steps
 
