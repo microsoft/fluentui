@@ -30,7 +30,7 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
    yarn --silent nx show project react-<lowercase-component-name>-stories --json
    ```
 
-   If the grep returns nothing, the component doesn't have its own stories package — check for a preview package (`react-<component>-preview-stories`) or ask before proceeding.
+   If nx returns nothing with output of `Could not find project react-<component>-stories`, the component doesn't have its own stories package — check for a preview package (`react-<component>-preview-stories`) or ask before proceeding.
 
 2. **Start the component's Storybook dev server.** Use the `storybook` target on the stories project directly — it's the most portable, since library aliases like `react-<component>:start` were only added in April 2026 and may not exist in older workspace snapshots:
 
