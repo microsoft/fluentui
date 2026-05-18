@@ -35,7 +35,7 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 2. **Start the component's Storybook dev server.** Use the `storybook` target on the stories project directly — it's the most portable, since library aliases like `react-<component>:start` were only added in April 2026 and may not exist in older workspace snapshots:
 
    ```bash
-   yarn nx run react-<component>-stories:storybook --skip-nx-cache &
+   yarn nx run react-<component>-stories:storybook &
    NX_PID=$!
    ```
 
