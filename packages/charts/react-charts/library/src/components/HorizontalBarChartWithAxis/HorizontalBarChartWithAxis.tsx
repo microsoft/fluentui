@@ -122,6 +122,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     _margins = margins;
   }
 
+  // Utility to determine ARIA role for interactive elements
+  function getAriaRole(onClick?: unknown): 'button' | 'img' {
+    return onClick ? 'button' : 'img';
+  }
+
   function _renderContentForOnlyBars(point: HorizontalBarChartWithAxisDataPoint): JSXElement {
     const { useSingleColor = false } = props;
     let selectedPointIndex = 0;
@@ -471,7 +476,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onClick={point.onClick}
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             aria-label={_getAriaLabel(point)}
-            role="button"
+            role={getAriaRole(point.onClick)}
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
@@ -646,7 +651,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
-            role="button"
+            role={getAriaRole(point.onClick)}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}

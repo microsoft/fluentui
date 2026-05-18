@@ -427,6 +427,11 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     return domainNRangeValue;
   }
 
+  // Utility to determine ARIA role for interactive elements
+  function getAriaRole(onClick?: unknown): 'button' | 'img' {
+    return onClick ? 'button' : 'img';
+  }
+
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
   // using only the data points associated with the primary y-axis.
 
@@ -594,7 +599,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
               tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
-              role="button"
+              role={getAriaRole(pointData.onClick)}
             />,
           );
 
@@ -871,7 +876,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
-            role="button"
+            role={getAriaRole(point.onClick)}
             aria-label={getAriaLabel(
               {
                 xAxisCalloutData: point.xAxisCalloutData,

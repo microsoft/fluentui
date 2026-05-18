@@ -48,6 +48,16 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
 
+  // Utility to check if a bar is interactive
+  const _isBarInteractive = (point: ChartDataPoint): boolean => {
+    return Boolean(point.onClick) || (!props.hideTooltip && point.legend !== '');
+  };
+
+  // Utility to determine ARIA role for bar
+  const _getBarAriaRole = (point: ChartDataPoint): 'button' | 'img' => {
+    return _isBarInteractive(point) ? 'button' : 'img';
+  };
+
   function _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
     _refArray.push({ index: legendTitle, refElement: element });
   }
@@ -320,17 +330,14 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
           }
           onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role={point.onClick || (!props.hideTooltip && point.legend !== '') ? 'button' : 'img'}
+          role={_getBarAriaRole(point)}
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
           opacity={isLegendSelected ? 1 : 0.1}
           tabIndex={
-            (_legendHighlighted(point.legend!) || _noLegendHighlighted()) &&
-            (point.onClick || (!props.hideTooltip && point.legend !== ''))
-              ? 0
-              : undefined
+            (_legendHighlighted(point.legend!) || _noLegendHighlighted()) && _isBarInteractive(point) ? 0 : undefined
           }
         />
       );

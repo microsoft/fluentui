@@ -296,6 +296,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return data!.some((item: VerticalBarChartDataPoint) => item?.lineData?.y !== undefined);
   }
 
+  // Utility to determine ARIA role for interactive elements
+  const getAriaRole = (onClick?: unknown): 'button' | 'img' => {
+    return onClick || !props.hideTooltip ? 'button' : 'img';
+  };
+
   function _adjustProps(): void {
     _xAxisType =
       props.data! && props.data!.length > 0
@@ -674,7 +679,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role={point.onClick || !props.hideTooltip ? 'button' : 'img'}
+            role={getAriaRole(point.onClick)}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
@@ -732,7 +737,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             width={_barWidth}
             height={adjustedBarHeight}
             aria-label={_getAriaLabel(point)}
-            role={point.onClick || !props.hideTooltip ? 'button' : 'img'}
+            role={getAriaRole(point.onClick)}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -796,7 +801,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
-            role={point.onClick || !props.hideTooltip ? 'button' : 'img'}
+            role={getAriaRole(point.onClick)}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
