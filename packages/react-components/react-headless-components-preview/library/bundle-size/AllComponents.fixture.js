@@ -12,6 +12,7 @@ import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
 import * as Dropdown from '@fluentui/react-headless-components-preview/dropdown';
 import * as Field from '@fluentui/react-headless-components-preview/field';
 import * as Image from '@fluentui/react-headless-components-preview/image';
+import * as InfoLabel from '@fluentui/react-headless-components-preview/info-label';
 import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
@@ -52,6 +53,7 @@ console.log({
   Dropdown,
   Field,
   Image,
+  InfoLabel,
   Input,
   Label,
   Link,
