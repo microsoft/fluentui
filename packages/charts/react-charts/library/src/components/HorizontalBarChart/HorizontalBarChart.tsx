@@ -54,7 +54,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   };
 
   // Utility to determine ARIA role for bar
-  const _getBarAriaRole = (point: ChartDataPoint): 'button' | 'img' => {
+  const _getAriaRole = (point: ChartDataPoint): 'button' | 'img' => {
     return _isBarInteractive(point) ? 'button' : 'img';
   };
 
@@ -330,7 +330,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
           }
           onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role={_getBarAriaRole(point)}
+          role={_getAriaRole(point)}
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
