@@ -15,9 +15,9 @@ type TriggerChildProps = {
 };
 
 /**
- * Mirrors v9's `isTargetDisabled` check used by `useMenuTriggerBase_unstable`'s
- * own onContextMenu handler. Kept local because the helper is not exported by
- * `@fluentui/react-menu`.
+ * Mirrors the `isTargetDisabled` check used inside `@fluentui/react-menu`'s
+ * `useMenuTriggerBase_unstable` onContextMenu handler. Kept local because the
+ * helper is not exported by `@fluentui/react-menu`.
  */
 const isTargetDisabled = (event: React.SyntheticEvent): boolean => {
   const target = event.target;

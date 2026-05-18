@@ -11,11 +11,10 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
  * focusable MenuItem (set imperatively because React skips autoFocus on divs).
  */
 export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
-  'use no memo';
-
   const baseState = useMenuListBase_unstable(props, ref) as MenuListState;
 
-  baseState.root.focusgroup = 'menubar block wrap';
+  // eslint-disable-next-line react-compiler/react-compiler -- attribute is mutated to opt into the focusgroup polyfill.
+  baseState.root.focusgroup = 'menu block wrap';
 
   return baseState;
 };

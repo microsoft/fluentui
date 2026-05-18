@@ -8,15 +8,15 @@ import type { MenuSplitGroupProps, MenuSplitGroupState } from '@fluentui/react-m
  * Headless `useMenuSplitGroup`.
  *
  * Renders a `role="group"` div and wires the consumer ref. Intentionally
- * omits the v9 hook's arrow-key navigation (which pulls
+ * omits the styled hook's arrow-key navigation (which pulls
  * `@fluentui/react-tabster`'s `useFocusFinders` for `findNextFocusable` /
  * `findPrevFocusable`) — the parent `MenuList` already exposes a
- * `focusgroup="menubar block wrap"` attribute that gives the browser-native
+ * `focusgroup="menu block wrap"` attribute that gives the browser-native
  * roving-tabindex behaviour we want.
  *
  * `setMultiline` is exposed as a no-op so child MenuItems can still call it
- * without runtime errors; the multiline class-attribute toggle is a v9
- * styling concern that the headless package does not render.
+ * without runtime errors; the multiline class-attribute toggle is a styling
+ * concern that the headless package does not render.
  */
 export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTMLElement>): MenuSplitGroupState => {
   const innerRef = React.useRef<HTMLDivElement>(null);
@@ -28,8 +28,8 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
     setMultiline: NOOP_SET_MULTILINE,
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME (mirrors v9): `ref` is wrongly typed as `Ref<HTMLElement>`
-        // instead of `Ref<HTMLDivElement>`; casting to keep behaviour aligned.
+        // FIXME: `ref` is wrongly typed as `Ref<HTMLElement>` instead of
+        // `Ref<HTMLDivElement>` upstream; casting to keep behaviour aligned.
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'group',
         ...props,
@@ -40,5 +40,5 @@ export const useMenuSplitGroup = (props: MenuSplitGroupProps, ref: React.Ref<HTM
 };
 
 const NOOP_SET_MULTILINE = () => {
-  /* no-op: multiline attribute is a v9 styling concern */
+  /* no-op: multiline attribute is a styling concern handled by consumers. */
 };

@@ -1,3 +1,1 @@
-import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
-
-export const renderMenuItemRadio = renderMenuItemRadio_unstable;
+export { renderMenuItemRadio_unstable as renderMenuItemRadio } from '@fluentui/react-menu';

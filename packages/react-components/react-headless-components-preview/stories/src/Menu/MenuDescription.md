@@ -1,6 +1,6 @@
 Headless `Menu` for the `react-headless-components-preview` package.
 
-Composes the new v9 `useMenu*Base_unstable` hooks (introduced in #36087) without
+Composes the new `useMenu*Base_unstable` hooks from `@fluentui/react-menu` (introduced in #36087) without
 Tabster, Griffel, or motion. The popover surface is rendered in the browser top
 layer using the native HTML `popover="auto"` attribute, so no React Portal is
 required and light dismiss (Escape, click-outside, popover-stack peer dismissal)

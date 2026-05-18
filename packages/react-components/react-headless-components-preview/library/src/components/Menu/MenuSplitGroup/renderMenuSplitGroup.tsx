@@ -1,3 +1,1 @@
-import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
-
-export const renderMenuSplitGroup = renderMenuSplitGroup_unstable;
+export { renderMenuSplitGroup_unstable as renderMenuSplitGroup } from '@fluentui/react-menu';

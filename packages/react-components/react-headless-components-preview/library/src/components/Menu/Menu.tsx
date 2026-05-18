@@ -11,7 +11,7 @@ import type { MenuProps } from './Menu.types';
  */
 export const Menu: React.FC<MenuProps> = props => {
   const state = useMenu(props);
-  const contextValues = useMenuContextValues(state);
+  const contextValues = useMenuContextValues(state as Parameters<typeof useMenuContextValues>[0]);
 
   return renderMenu(state, contextValues);
 };

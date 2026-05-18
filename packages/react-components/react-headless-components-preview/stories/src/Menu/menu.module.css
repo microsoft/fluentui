@@ -75,7 +75,7 @@
   outline: none;
 }
 
-/* Base item — sized to match v9 Menu's item height (~32px) so the headless
+/* Base item — sized to match the styled Menu's item height (~32px) so the headless
    demo reads as the same affordance, while still using headless tokens. */
 .item {
   display: flex;

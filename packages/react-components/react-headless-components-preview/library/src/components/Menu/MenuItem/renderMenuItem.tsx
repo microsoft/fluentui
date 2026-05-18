@@ -1,3 +1,1 @@
-import { renderMenuItem_unstable } from '@fluentui/react-menu';
-
-export const renderMenuItem = renderMenuItem_unstable;
+export { renderMenuItem_unstable as renderMenuItem } from '@fluentui/react-menu';

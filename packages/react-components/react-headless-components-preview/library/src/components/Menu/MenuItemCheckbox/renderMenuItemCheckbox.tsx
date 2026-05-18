@@ -1,3 +1,1 @@
-import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
-
-export const renderMenuItemCheckbox = renderMenuItemCheckbox_unstable;
+export { renderMenuItemCheckbox_unstable as renderMenuItemCheckbox } from '@fluentui/react-menu';

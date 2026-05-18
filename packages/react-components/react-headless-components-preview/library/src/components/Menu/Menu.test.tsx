@@ -36,7 +36,7 @@ describe('Menu', () => {
   });
 
   it('opens on trigger click (uncontrolled)', () => {
-    const { getByText, queryByText } = render(
+    const { getByText } = render(
       <Menu>
         <MenuTrigger>
           <button>Trigger</button>
@@ -49,15 +49,16 @@ describe('Menu', () => {
       </Menu>,
     );
 
-    expect(queryByText('Item 1')).not.toBeInTheDocument();
+    const trigger = getByText('Trigger');
+    expect(trigger).not.toHaveAttribute('aria-expanded');
 
-    userEvent.click(getByText('Trigger'));
+    userEvent.click(trigger);
 
-    expect(getByText('Item 1')).toBeInTheDocument();
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('closes on trigger click when open', () => {
-    const { getByText, queryByText } = render(
+    const { getByText } = render(
       <Menu defaultOpen>
         <MenuTrigger>
           <button>Trigger</button>
@@ -70,11 +71,12 @@ describe('Menu', () => {
       </Menu>,
     );
 
-    expect(getByText('Item 1')).toBeInTheDocument();
+    const trigger = getByText('Trigger');
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
-    userEvent.click(getByText('Trigger'));
+    userEvent.click(trigger);
 
-    expect(queryByText('Item 1')).not.toBeInTheDocument();
+    expect(trigger).not.toHaveAttribute('aria-expanded');
   });
 
   it('fires onOpenChange callback', () => {
@@ -99,7 +101,7 @@ describe('Menu', () => {
   });
 
   it('supports controlled open state', () => {
-    const { getByText, queryByText, rerender } = render(
+    const { getByText, rerender } = render(
       <Menu open={false}>
         <MenuTrigger>
           <button>Trigger</button>
@@ -112,7 +114,7 @@ describe('Menu', () => {
       </Menu>,
     );
 
-    expect(queryByText('Item 1')).not.toBeInTheDocument();
+    expect(getByText('Trigger')).not.toHaveAttribute('aria-expanded');
 
     rerender(
       <Menu open={true}>
@@ -127,7 +129,7 @@ describe('Menu', () => {
       </Menu>,
     );
 
-    expect(getByText('Item 1')).toBeInTheDocument();
+    expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('sets aria-haspopup="menu" and aria-expanded on trigger', () => {
@@ -215,7 +217,7 @@ describe('Menu', () => {
   });
 
   it('closes the menu when a MenuItem is clicked', () => {
-    const { getByText, queryByText } = render(
+    const { getByText } = render(
       <Menu defaultOpen>
         <MenuTrigger>
           <button>Trigger</button>
@@ -228,9 +230,10 @@ describe('Menu', () => {
       </Menu>,
     );
 
-    expect(getByText('Item 1')).toBeInTheDocument();
+    const trigger = getByText('Trigger');
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
     userEvent.click(getByText('Item 1'));
-    expect(queryByText('Item 1')).not.toBeInTheDocument();
+    expect(trigger).not.toHaveAttribute('aria-expanded');
   });
 
   it('keeps the menu open when persistOnItemClick is set', () => {

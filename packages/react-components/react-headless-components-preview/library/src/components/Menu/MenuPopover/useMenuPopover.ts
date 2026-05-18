@@ -34,9 +34,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     }
 
     const firstFocusable = surface.querySelector<HTMLElement>(
-      '[role="menuitem"]:not([aria-disabled="true"]),' +
-        '[role="menuitemcheckbox"]:not([aria-disabled="true"]),' +
-        '[role="menuitemradio"]:not([aria-disabled="true"])',
+      ':is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):not([aria-disabled="true"])',
     );
 
     firstFocusable?.setAttribute('autofocus', '');

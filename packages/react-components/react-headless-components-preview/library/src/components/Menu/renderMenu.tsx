@@ -6,6 +6,6 @@ import type { MenuState, MenuContextValues } from './Menu.types';
 export const renderMenu = (state: MenuState, contextValues: MenuContextValues): JSXElement => (
   <MenuProvider value={contextValues.menu}>
     {state.menuTrigger}
-    {state.open ? (state.menuPopover as React.ReactNode) : null}
+    {state.menuPopover as React.ReactNode}
   </MenuProvider>
 );

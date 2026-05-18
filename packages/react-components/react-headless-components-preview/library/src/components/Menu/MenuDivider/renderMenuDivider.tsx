@@ -1,3 +1,1 @@
-import { renderMenuDivider_unstable } from '@fluentui/react-menu';
-
-export const renderMenuDivider = renderMenuDivider_unstable;
+export { renderMenuDivider_unstable as renderMenuDivider } from '@fluentui/react-menu';

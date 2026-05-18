@@ -7,9 +7,7 @@
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
-import type { MenuBaseProps } from '@fluentui/react-menu';
-import type { MenuBaseState } from '@fluentui/react-menu';
-import type { MenuContextValue } from '@fluentui/react-menu';
+import { MenuContextValue } from '@fluentui/react-menu';
 import { MenuDividerProps } from '@fluentui/react-menu';
 import { MenuDividerSlots } from '@fluentui/react-menu';
 import { MenuDividerState } from '@fluentui/react-menu';
@@ -28,29 +26,46 @@ import { MenuItemLinkState } from '@fluentui/react-menu';
 import type { MenuItemProps as MenuItemProps_2 } from '@fluentui/react-menu';
 import { MenuItemRadioBaseProps as MenuItemRadioProps } from '@fluentui/react-menu';
 import { MenuItemRadioBaseState as MenuItemRadioState } from '@fluentui/react-menu';
-import { MenuItemRadioState as MenuItemRadioState_2 } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState as MenuItemState_2 } from '@fluentui/react-menu';
 import { MenuItemSwitchProps } from '@fluentui/react-menu';
 import { MenuItemSwitchSlots } from '@fluentui/react-menu';
 import { MenuItemSwitchState } from '@fluentui/react-menu';
-import { MenuListContextValues } from '@fluentui/react-menu';
 import type { MenuListProps as MenuListProps_2 } from '@fluentui/react-menu';
 import type { MenuListSlots } from '@fluentui/react-menu';
-import { MenuListState as MenuListState_2 } from '@fluentui/react-menu';
-import type { MenuOpenChangeData } from '@fluentui/react-menu';
-import type { MenuOpenEvent } from '@fluentui/react-menu';
+import type { MenuListState as MenuListState_2 } from '@fluentui/react-menu';
+import { MenuOpenChangeData } from '@fluentui/react-menu';
+import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuPopoverProps } from '@fluentui/react-menu';
 import { MenuPopoverSlots } from '@fluentui/react-menu';
 import { MenuPopoverState } from '@fluentui/react-menu';
+import { MenuBaseProps as MenuProps } from '@fluentui/react-menu';
 import { MenuSplitGroupProps } from '@fluentui/react-menu';
 import { MenuSplitGroupSlots } from '@fluentui/react-menu';
 import { MenuSplitGroupState } from '@fluentui/react-menu';
+import { MenuBaseState as MenuState } from '@fluentui/react-menu';
 import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import * as React_2 from 'react';
+import { renderMenuDivider_unstable as renderMenuDivider } from '@fluentui/react-menu';
+import { renderMenuGroupHeader_unstable as renderMenuGroupHeader } from '@fluentui/react-menu';
+import { renderMenuItemCheckbox_unstable as renderMenuItemCheckbox } from '@fluentui/react-menu';
+import { renderMenuItemLink_unstable as renderMenuItemLink } from '@fluentui/react-menu';
+import { renderMenuItemRadio_unstable as renderMenuItemRadio } from '@fluentui/react-menu';
+import { renderMenuItemSwitch_unstable as renderMenuItemSwitch } from '@fluentui/react-menu';
+import { renderMenuList_unstable as renderMenuList } from '@fluentui/react-menu';
+import { renderMenuSplitGroup_unstable as renderMenuSplitGroup } from '@fluentui/react-menu';
+import { renderMenuTrigger_unstable as renderMenuTrigger } from '@fluentui/react-menu';
 import { useMenuContext_unstable as useMenuContext } from '@fluentui/react-menu';
+import { useMenuContextValues_unstable as useMenuContextValues } from '@fluentui/react-menu';
+import { useMenuDivider_unstable as useMenuDivider } from '@fluentui/react-menu';
+import { useMenuGroup_unstable as useMenuGroup } from '@fluentui/react-menu';
+import { useMenuGroupHeader_unstable as useMenuGroupHeader } from '@fluentui/react-menu';
+import { useMenuItemCheckboxBase_unstable as useMenuItemCheckbox } from '@fluentui/react-menu';
+import { useMenuItemLinkBase_unstable as useMenuItemLink } from '@fluentui/react-menu';
+import { useMenuItemRadioBase_unstable as useMenuItemRadio } from '@fluentui/react-menu';
+import { useMenuItemSwitchBase_unstable as useMenuItemSwitch } from '@fluentui/react-menu';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
@@ -166,8 +181,7 @@ export { MenuPopoverSlots }
 
 export { MenuPopoverState }
 
-// @public (undocumented)
-export type MenuProps = MenuBaseProps;
+export { MenuProps }
 
 // @public (undocumented)
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
@@ -178,8 +192,7 @@ export { MenuSplitGroupSlots }
 
 export { MenuSplitGroupState }
 
-// @public (undocumented)
-export type MenuState = MenuBaseState;
+export { MenuState }
 
 // @public
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
@@ -193,80 +206,59 @@ export { MenuTriggerState }
 // @public (undocumented)
 export const renderMenu: (state: MenuState, contextValues: MenuContextValues) => JSXElement;
 
-// @public (undocumented)
-export const renderMenuDivider: (state: MenuDividerState) => JSXElement;
+export { renderMenuDivider }
 
 // @public (undocumented)
 export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSXElement;
 
-// @public (undocumented)
-export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSXElement;
+export { renderMenuGroupHeader }
 
 // @public (undocumented)
 export const renderMenuItem: (state: MenuItemState_2) => JSXElement;
 
-// @public (undocumented)
-export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSXElement;
+export { renderMenuItemCheckbox }
 
-// @public (undocumented)
-export const renderMenuItemLink: (state: MenuItemLinkState) => JSXElement;
+export { renderMenuItemLink }
 
-// @public (undocumented)
-export const renderMenuItemRadio: (state: MenuItemRadioState_2) => JSXElement;
+export { renderMenuItemRadio }
 
-// @public (undocumented)
-export const renderMenuItemSwitch: (state: MenuItemSwitchState) => JSXElement;
+export { renderMenuItemSwitch }
 
-// @public (undocumented)
-export const renderMenuList: (state: MenuListState_2, contextValues: MenuListContextValues) => JSXElement;
+export { renderMenuList }
 
 // @public (undocumented)
 export const renderMenuPopover: (state: MenuPopoverState) => JSXElement;
 
+export { renderMenuSplitGroup }
+
+export { renderMenuTrigger }
+
 // @public (undocumented)
-export const renderMenuSplitGroup: (state: MenuSplitGroupState, contexts?: {
-    menuSplitGroup: {
-        setMultiline: (multiline: boolean) => void;
-    };
-}) => JSXElement;
-
-// @public
-export const renderMenuTrigger: (state: MenuTriggerState) => JSXElement;
-
-// @public
 export const useMenu: (props: MenuProps) => MenuState;
 
 export { useMenuContext }
 
-// @public (undocumented)
-export const useMenuContextValues: (state: MenuState) => MenuContextValues;
+export { useMenuContextValues }
 
-// @public
-export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>) => MenuDividerState;
+export { useMenuDivider }
 
-// @public
-export const useMenuGroup: (props: MenuGroupProps, ref: React_2.Ref<HTMLElement>) => MenuGroupState;
+export { useMenuGroup }
 
 // @public (undocumented)
 export const useMenuGroupContextValues: (state: MenuGroupState) => MenuGroupContextValues;
 
-// @public
-export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>) => MenuGroupHeaderState;
+export { useMenuGroupHeader }
 
 // @public
 export const useMenuItem: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
 
-// @public
-export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState;
+export { useMenuItemCheckbox }
 
-// @public
-export const useMenuItemLink: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
+export { useMenuItemLink }
 
-// @public
-export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioState;
+export { useMenuItemRadio }
 
-// @public
-export const useMenuItemSwitch: (props: MenuItemSwitchProps, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState;
+export { useMenuItemSwitch }
 
 // @public
 export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;

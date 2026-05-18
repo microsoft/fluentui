@@ -69,8 +69,10 @@ export const useMenu = (props: MenuProps): MenuState => {
   const [open, setOpen] = useMenuOpenState({
     hoverDelay,
     setContextTarget,
-    triggerRef: triggerRef as React.MutableRefObject<HTMLElement | null>, // eslint-disable-next-line @typescript-eslint/no-deprecated
-    menuPopoverRef: menuPopoverRef as React.MutableRefObject<HTMLElement | null>, // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    triggerRef: triggerRef as React.MutableRefObject<HTMLElement | null>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    menuPopoverRef: menuPopoverRef as React.MutableRefObject<HTMLElement | null>,
     open: props.open,
     defaultOpen: props.defaultOpen,
     onOpenChange: props.onOpenChange,
@@ -93,11 +95,11 @@ export const useMenu = (props: MenuProps): MenuState => {
 
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
-  const mergedTriggerRef = useMergedRefs(triggerRef, targetRef) as React.MutableRefObject<HTMLElement | null>; // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const mergedMenuPopoverRef = useMergedRefs(
-    menuPopoverRef,
-    containerRef,
-  ) as React.MutableRefObject<HTMLElement | null>; // eslint-disable-next-line @typescript-eslint/no-deprecated
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const mergedTriggerRef = useMergedRefs(triggerRef, targetRef) as React.MutableRefObject<HTMLElement | null>;
+  // prettier-ignore
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const mergedMenuPopoverRef = useMergedRefs(menuPopoverRef, containerRef) as React.MutableRefObject<HTMLElement | null>;
 
   return {
     inline,
