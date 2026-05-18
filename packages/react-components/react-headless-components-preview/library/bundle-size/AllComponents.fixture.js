@@ -5,12 +5,15 @@ import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcr
 import * as Button from '@fluentui/react-headless-components-preview/button';
 import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
+import * as Combobox from '@fluentui/react-headless-components-preview/combobox';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
 import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
+import * as Dropdown from '@fluentui/react-headless-components-preview/dropdown';
 import * as Field from '@fluentui/react-headless-components-preview/field';
 import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as Input from '@fluentui/react-headless-components-preview/input';
+import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
@@ -41,12 +44,15 @@ console.log({
   Button,
   Card,
   Checkbox,
+  Combobox,
   Dialog,
   Divider,
   Drawer,
+  Dropdown,
   Field,
   Image,
   Input,
+  Label,
   Link,
   MessageBar,
   Persona,

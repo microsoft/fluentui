@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: export base hooks",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}

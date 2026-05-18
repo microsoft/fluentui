@@ -29,3 +29,7 @@ export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopov
 export type TeachingPopoverCarouselContextValues = {
   carousel: CarouselContextValue;
 };
+
+export type TeachingPopoverCarouselBaseProps = TeachingPopoverCarouselProps;
+
+export type TeachingPopoverCarouselBaseState = Omit<TeachingPopoverCarouselState, 'appearance'>;
