@@ -25,12 +25,12 @@ import { MenuItemCheckboxState } from '@fluentui/react-menu';
 import { MenuItemLinkProps } from '@fluentui/react-menu';
 import { MenuItemLinkSlots } from '@fluentui/react-menu';
 import { MenuItemLinkState } from '@fluentui/react-menu';
-import { MenuItemProps } from '@fluentui/react-menu';
+import type { MenuItemProps as MenuItemProps_2 } from '@fluentui/react-menu';
 import { MenuItemRadioBaseProps as MenuItemRadioProps } from '@fluentui/react-menu';
 import { MenuItemRadioBaseState as MenuItemRadioState } from '@fluentui/react-menu';
 import { MenuItemRadioState as MenuItemRadioState_2 } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
-import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemState as MenuItemState_2 } from '@fluentui/react-menu';
 import { MenuItemSwitchProps } from '@fluentui/react-menu';
 import { MenuItemSwitchSlots } from '@fluentui/react-menu';
 import { MenuItemSwitchState } from '@fluentui/react-menu';
@@ -110,7 +110,8 @@ export { MenuItemLinkSlots }
 
 export { MenuItemLinkState }
 
-export { MenuItemProps }
+// @public (undocumented)
+export type MenuItemProps = MenuItemProps_2;
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
@@ -121,7 +122,12 @@ export { MenuItemRadioState }
 
 export { MenuItemSlots }
 
-export { MenuItemState }
+// @public (undocumented)
+export type MenuItemState = MenuItemState_2 & {
+    root: {
+        focusgroupstart?: string;
+    };
+};
 
 // @public
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
@@ -197,7 +203,7 @@ export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupCo
 export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSXElement;
 
 // @public (undocumented)
-export const renderMenuItem: (state: MenuItemState) => JSXElement;
+export const renderMenuItem: (state: MenuItemState_2) => JSXElement;
 
 // @public (undocumented)
 export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSXElement;
@@ -227,7 +233,7 @@ export const renderMenuSplitGroup: (state: MenuSplitGroupState, contexts?: {
 // @public
 export const renderMenuTrigger: (state: MenuTriggerState) => JSXElement;
 
-// @public (undocumented)
+// @public
 export const useMenu: (props: MenuProps) => MenuState;
 
 export { useMenuContext }
@@ -268,7 +274,7 @@ export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) 
 // @public (undocumented)
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;
 
-// @public (undocumented)
+// @public
 export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
 
 // @public (undocumented)
