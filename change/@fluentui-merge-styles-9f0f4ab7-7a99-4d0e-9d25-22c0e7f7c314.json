@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: simplify mergeStyles argument type to avoid excessive type instantiation",
+  "packageName": "@fluentui/merge-styles",
+  "email": "mariamsulakian@gmail.com",
+  "dependentChangeType": "patch"
+}
