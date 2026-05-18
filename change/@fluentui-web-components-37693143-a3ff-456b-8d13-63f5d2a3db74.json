@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: use volatile getter for counter-badge display value",
+  "comment": "feat: implement BaseCounterBadge class and update CounterBadge component structure",
   "packageName": "@fluentui/web-components",
   "email": "863023+radium-v@users.noreply.github.com",
   "dependentChangeType": "patch"
