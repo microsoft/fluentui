@@ -72,6 +72,7 @@ export {
   CompoundButtonTemplate,
 } from './compound-button/index.js';
 export {
+  BaseCounterBadge,
   CounterBadge,
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -79,6 +80,7 @@ export {
   CounterBadgeShape,
   CounterBadgeSize,
   CounterBadgeStyles,
+  CounterBadgeTagName,
   CounterBadgeTemplate,
 } from './counter-badge/index.js';
 export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles, isDialog } from './dialog/index.js';

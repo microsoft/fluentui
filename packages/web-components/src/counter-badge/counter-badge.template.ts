@@ -1,17 +1,26 @@
 import { type ElementViewTemplate, html } from '@microsoft/fast-element';
-import { badgeTemplate } from '../badge/badge.template.js';
-import type { Badge } from '../badge/badge.js';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { CounterBadge } from './counter-badge.js';
 import type { CounterBadgeOptions } from './counter-badge.options.js';
 
-function composeTemplate<T extends CounterBadge & Badge>(options: CounterBadgeOptions = {}): ElementViewTemplate<T> {
-  return badgeTemplate<T>({
-    defaultContent: html<T>`${x => x.displayValue}`,
-  });
+/**
+ * Generates a template for the CounterBadge component.
+ *
+ * @public
+ */
+export function counterBadgeTemplate<T extends CounterBadge>(
+  options: CounterBadgeOptions = {},
+): ElementViewTemplate<T> {
+  return html<T>`
+    ${startSlotTemplate(options)}
+    <span>${x => x.displayValue}</span>
+    ${endSlotTemplate(options)}
+  `;
 }
 
 /**
- * The template for the Counter Badge component.
+ * The template for the fluent-counter-badge component.
+ *
  * @public
  */
-export const template: ElementViewTemplate<CounterBadge> = composeTemplate<CounterBadge & Badge>();
+export const template: ElementViewTemplate<CounterBadge> = counterBadgeTemplate();

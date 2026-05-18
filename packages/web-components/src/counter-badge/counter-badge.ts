@@ -1,6 +1,7 @@
-import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
-import { applyMixins } from '../utils/apply-mixins.js';
+import { attr } from '@microsoft/fast-element';
 import { StartEnd } from '../patterns/start-end.js';
+import { applyMixins } from '../utils/apply-mixins.js';
+import { BaseCounterBadge } from './counter-badge.base.js';
 import {
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -9,20 +10,14 @@ import {
 } from './counter-badge.options.js';
 
 /**
- * The base class used for constructing a fluent-badge custom element
+ * A CounterBadge Custom HTML Element.
+ * Based on BaseCounterBadge and includes style and layout specific attributes.
  *
  * @tag fluent-counter-badge
  *
  * @public
  */
-export class CounterBadge extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
+export class CounterBadge extends BaseCounterBadge {
   /**
    * The appearance the badge should have.
    *
@@ -62,70 +57,8 @@ export class CounterBadge extends FASTElement {
    */
   @attr
   public size?: CounterBadgeSize;
-
-  /**
-   * The count the badge should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: count
-   */
-  @attr({ converter: nullableNumberConverter })
-  public count: number = 0;
-
-  /**
-   * Max number to be displayed
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: overflow-count
-   */
-  @attr({ attribute: 'overflow-count', converter: nullableNumberConverter })
-  public overflowCount: number = 99;
-
-  /**
-   * If the badge should be shown when count is 0
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: show-zero
-   */
-  @attr({ attribute: 'show-zero', mode: 'boolean' })
-  public showZero: boolean = false;
-
-  /**
-   * If a dot should be displayed without the count
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: dot
-   */
-  @attr({ mode: 'boolean' })
-  public dot: boolean = false;
-
-  /**
-   * The value to be displayed in the badge, which is determined by the `count`, `overflow-count`, and `show-zero` attributes.
-   *
-   * @public
-   */
-  @volatile
-  public get displayValue(): string | undefined {
-    const count: number | null = this.count ?? 0;
-
-    if ((count !== 0 || this.showZero) && !this.dot) {
-      return count > this.overflowCount ? `${this.overflowCount}+` : `${count}`;
-    }
-
-    return;
-  }
 }
 
-/**
- * Mark internal because exporting class and interface of the same name
- * confuses API extractor.
- * TODO: Below will be unnecessary when Badge class gets updated
- * @internal
- */
 /* eslint-disable-next-line */
 export interface CounterBadge extends StartEnd {}
 applyMixins(CounterBadge, StartEnd);
