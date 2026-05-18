@@ -104,3 +104,14 @@ pipelines:
           lastModifiedDate: 2025-07-28
         accessibilityinsights:
           lastModifiedDate: 2025-07-28
+  246:
+    retail:
+      source:
+        eslint:
+          lastModifiedDate: 2026-05-18
+        psscriptanalyzer:
+          lastModifiedDate: 2026-05-18
+        armory:
+          lastModifiedDate: 2026-05-18
+        accessibilityinsights:
+          lastModifiedDate: 2026-05-18
