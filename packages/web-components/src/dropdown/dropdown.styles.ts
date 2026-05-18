@@ -83,6 +83,7 @@ export const styles = css`
     min-width: 160px;
     overflow: hidden;
     padding: ${spacingVerticalSNudge} ${spacingHorizontalMNudge};
+    white-space: normal;
     position: relative;
     text-align: start;
     width: 100%;
@@ -100,14 +101,6 @@ export const styles = css`
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalS} ${spacingHorizontalM};
     ${typographyBody2Styles}
-  }
-
-  .control-slot-container {
-    overflow: hidden;
-  }
-
-  .indicator-slot-container {
-    margin-inline-start: ${spacingHorizontalS};
   }
 
   ::slotted(:is(input, button)) {
