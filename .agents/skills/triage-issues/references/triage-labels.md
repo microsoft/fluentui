@@ -14,7 +14,6 @@ gh api repos/microsoft/fluentui/labels --paginate -q '.[] | .name' | sort
 - `Fluent UI react (v8)`
 - `Fluent UI WC (v3)` (use together with `web-components`)
 - `web-components`
-- `Fluent UI react-northstar` / `Fluent UI react-northstar (v0)`
 - `Fluent UI vNext`
 - `Package: charting`
 
