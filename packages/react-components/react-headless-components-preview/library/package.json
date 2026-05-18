@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -112,6 +112,12 @@
       "import": "./lib/checkbox.js",
       "require": "./lib-commonjs/checkbox.js"
     },
+    "./combobox": {
+      "types": "./dist/combobox.d.ts",
+      "node": "./lib-commonjs/combobox.js",
+      "import": "./lib/combobox.js",
+      "require": "./lib-commonjs/combobox.js"
+    },
     "./dialog": {
       "types": "./dist/dialog.d.ts",
       "node": "./lib-commonjs/dialog.js",
@@ -153,6 +159,12 @@
       "node": "./lib-commonjs/input.js",
       "import": "./lib/input.js",
       "require": "./lib-commonjs/input.js"
+    },
+    "./label": {
+      "types": "./dist/label.d.ts",
+      "node": "./lib-commonjs/label.js",
+      "import": "./lib/label.js",
+      "require": "./lib-commonjs/label.js"
     },
     "./link": {
       "types": "./dist/link.d.ts",
