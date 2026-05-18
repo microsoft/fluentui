@@ -271,7 +271,7 @@ export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElem
 // @public (undocumented)
 export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
 
-// @public
+// @public (undocumented)
 export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;
 
 // (No @packageDocumentation comment for this package)

@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useMenuItemLinkBase_unstable } from '@fluentui/react-menu';
-import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
+import type { MenuItemLinkProps, MenuItemLinkState } from '@fluentui/react-menu';
 
 /**
  * Returns the state for a MenuItemLink.

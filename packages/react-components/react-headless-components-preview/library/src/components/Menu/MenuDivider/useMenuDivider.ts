@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useMenuDivider_unstable } from '@fluentui/react-menu';
-import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
+import type { MenuDividerProps, MenuDividerState } from '@fluentui/react-menu';
 
 /**
  * Returns the state for a MenuDivider.

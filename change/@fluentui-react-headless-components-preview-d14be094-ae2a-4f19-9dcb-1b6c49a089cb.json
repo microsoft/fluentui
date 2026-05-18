@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: add Menu component (Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuDivider) — wraps v9 useMenu*Base_unstable hooks; uses native popover='auto' for top-layer rendering instead of Portal",
+  "comment": "feat: add Menu component family — Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuItemCheckbox, MenuItemRadio, MenuItemSwitch, MenuItemLink, MenuDivider, MenuGroup, MenuGroupHeader, MenuSplitGroup. Wraps v9 useMenu*Base_unstable hooks and uses native popover='auto' for top-layer rendering instead of Portal. Uses focusgroup='menu block wrap' attribute for native arrow key navigation (W3C proposal).",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "viktorgenaev@microsoft.com",
   "dependentChangeType": "patch"

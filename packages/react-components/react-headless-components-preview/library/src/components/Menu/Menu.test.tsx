@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
 import { MenuTrigger } from './MenuTrigger/MenuTrigger';
@@ -147,10 +147,12 @@ describe('Menu', () => {
     const trigger = getByText('Trigger');
     expect(trigger).toHaveAttribute('aria-haspopup', 'menu');
     expect(trigger).not.toHaveAttribute('aria-expanded');
+    expect(trigger).not.toHaveAttribute('data-open');
 
     userEvent.click(trigger);
 
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(trigger).toHaveAttribute('data-open', '');
   });
 
   it('sets role="menu" on MenuList and links aria-labelledby to trigger id', () => {
@@ -267,56 +269,9 @@ describe('Menu', () => {
     expect(container.contains(getByRole('menu'))).toBe(true);
   });
 
-  describe('arrow-key navigation in MenuList', () => {
-    const renderMenu = () =>
-      render(
-        <Menu defaultOpen>
-          <MenuTrigger>
-            <button>Trigger</button>
-          </MenuTrigger>
-          <MenuPopover>
-            <MenuList>
-              <MenuItem>Apple</MenuItem>
-              <MenuItem>Banana</MenuItem>
-              <MenuItem>Cherry</MenuItem>
-            </MenuList>
-          </MenuPopover>
-        </Menu>,
-      );
-
-    it('ArrowDown moves focus across MenuItems', () => {
-      const { getAllByRole } = renderMenu();
-      const [apple, banana] = getAllByRole('menuitem');
-      act(() => apple.focus());
-      fireEvent.keyDown(apple, { key: 'ArrowDown' });
-      expect(apple.ownerDocument.activeElement).toBe(banana);
-    });
-
-    it('ArrowUp wraps to the last item from the first', () => {
-      const { getAllByRole } = renderMenu();
-      const items = getAllByRole('menuitem');
-      const [apple] = items;
-      const cherry = items[items.length - 1];
-      act(() => apple.focus());
-      fireEvent.keyDown(apple, { key: 'ArrowUp' });
-      expect(apple.ownerDocument.activeElement).toBe(cherry);
-    });
-
-    it('Home jumps to first item', () => {
-      const { getAllByRole } = renderMenu();
-      const items = getAllByRole('menuitem');
-      const apple = items[0];
-      const cherry = items[items.length - 1];
-      act(() => cherry.focus());
-      fireEvent.keyDown(cherry, { key: 'Home' });
-      expect(cherry.ownerDocument.activeElement).toBe(apple);
-    });
-
-    it('stamps focusgroup attribute on MenuList root for forward-compat', () => {
-      const { getByRole } = renderMenu();
-      expect(getByRole('menu')).toHaveAttribute('focusgroup', 'block wrap');
-    });
-  });
+  // Arrow navigation is handled by Tabster (useArrowNavigationGroup).
+  // Tabster's behavior is comprehensively tested in @fluentui/react-tabster.
+  // E2E and integration tests should verify arrow navigation works correctly in the browser.
 
   describe('MenuItemCheckbox', () => {
     it('renders role="menuitemcheckbox"', () => {

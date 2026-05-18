@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuGroup } from './useMenuGroup';
 import { useMenuGroupContextValues } from './useMenuGroupContextValues';
 import { renderMenuGroup } from './renderMenuGroup';
-import type { MenuGroupProps } from './MenuGroup.types';
+import type { MenuGroupProps } from '@fluentui/react-menu';
 
 /**
  * Headless MenuGroup component.

@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuItemLink } from './useMenuItemLink';
 import { renderMenuItemLink } from './renderMenuItemLink';
-import type { MenuItemLinkProps } from './MenuItemLink.types';
+import type { MenuItemLinkProps } from '@fluentui/react-menu';
 
 /**
  * Headless MenuItemLink component.

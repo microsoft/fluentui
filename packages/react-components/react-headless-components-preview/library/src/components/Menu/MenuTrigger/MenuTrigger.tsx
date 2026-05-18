@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useMenuTrigger } from './useMenuTrigger';
 import { renderMenuTrigger } from './renderMenuTrigger';
-import type { MenuTriggerProps } from './MenuTrigger.types';
+import type { MenuTriggerProps } from '@fluentui/react-menu';
 
 /**
  * Headless MenuTrigger component.

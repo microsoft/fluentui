@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useMenuItemCheckboxBase_unstable } from '@fluentui/react-menu';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
-import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
+import type { MenuItemCheckboxProps, MenuItemCheckboxState } from '@fluentui/react-menu';
 
 /**
  * Returns the state for a MenuItemCheckbox.

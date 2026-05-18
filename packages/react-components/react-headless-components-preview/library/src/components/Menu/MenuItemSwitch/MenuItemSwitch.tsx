@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuItemSwitch } from './useMenuItemSwitch';
 import { renderMenuItemSwitch } from './renderMenuItemSwitch';
-import type { MenuItemSwitchProps } from './MenuItemSwitch.types';
+import type { MenuItemSwitchProps } from '@fluentui/react-menu';
 
 /**
  * Headless MenuItemSwitch component.

@@ -10,11 +10,6 @@ export type MenuListProps = MenuListBaseProps;
 
 export type MenuListState = MenuListBaseState & {
   root: {
-    /**
-     * Forward-compat hint for the WICG `focusgroup` HTML attribute. Currently
-     * a no-op in shipping browsers; arrow-key navigation is provided by
-     * `useArrowNavigation`.
-     */
     focusgroup?: string;
   };
 };

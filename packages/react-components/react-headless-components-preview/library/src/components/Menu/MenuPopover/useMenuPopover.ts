@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useMenuPopoverBase_unstable } from '@fluentui/react-menu';
 import { useMenuContext } from '../menuContext';
-import type { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
+import type { MenuPopoverProps, MenuPopoverState } from '@fluentui/react-menu';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -32,6 +32,14 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     if (typeof surface.showPopover !== 'function') {
       return;
     }
+
+    const firstFocusable = surface.querySelector<HTMLElement>(
+      '[role="menuitem"]:not([aria-disabled="true"]),' +
+        '[role="menuitemcheckbox"]:not([aria-disabled="true"]),' +
+        '[role="menuitemradio"]:not([aria-disabled="true"])',
+    );
+
+    firstFocusable?.setAttribute('autofocus', '');
 
     if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
       surface.showPopover();

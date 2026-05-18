@@ -7,6 +7,5 @@ export const renderMenu = (state: MenuState, contextValues: MenuContextValues): 
   <MenuProvider value={contextValues.menu}>
     {state.menuTrigger}
     {state.open ? (state.menuPopover as React.ReactNode) : null}
-    {state.safeZone}
   </MenuProvider>
 );

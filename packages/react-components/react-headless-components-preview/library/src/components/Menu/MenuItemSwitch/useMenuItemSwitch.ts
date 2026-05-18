@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useMenuItemSwitchBase_unstable } from '@fluentui/react-menu';
-import type { MenuItemSwitchProps, MenuItemSwitchState } from './MenuItemSwitch.types';
+import type { MenuItemSwitchProps, MenuItemSwitchState } from '@fluentui/react-menu';
 
 /**
  * Returns the state for a MenuItemSwitch.

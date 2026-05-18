@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useMenuGroupHeader_unstable } from '@fluentui/react-menu';
-import type { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
+import type { MenuGroupHeaderProps, MenuGroupHeaderState } from '@fluentui/react-menu';
 
 /**
  * Returns the state for a MenuGroupHeader.

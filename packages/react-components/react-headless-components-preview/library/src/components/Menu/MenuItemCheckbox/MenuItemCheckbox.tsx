@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { useMenuItemCheckbox } from './useMenuItemCheckbox';
 import { renderMenuItemCheckbox } from './renderMenuItemCheckbox';
-import type { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
+import type { MenuItemCheckboxProps } from '@fluentui/react-menu';
 
 /**
  * Headless MenuItemCheckbox component.

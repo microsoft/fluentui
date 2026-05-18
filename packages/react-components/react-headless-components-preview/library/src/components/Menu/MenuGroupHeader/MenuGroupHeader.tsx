@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuGroupHeader } from './useMenuGroupHeader';
 import { renderMenuGroupHeader } from './renderMenuGroupHeader';
-import type { MenuGroupHeaderProps } from './MenuGroupHeader.types';
+import type { MenuGroupHeaderProps } from '@fluentui/react-menu';
 
 /**
  * Headless MenuGroupHeader component.
