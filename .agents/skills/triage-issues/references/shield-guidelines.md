@@ -43,7 +43,6 @@ issue labeled "Needs: Triage :mag:"
 
 | Area                        | Assignee GitHub login |
 | --------------------------- | --------------------- |
-| Northstar (v0)              | `jurokapsiar`         |
 | Web Components (v3)         | `chrisdholt`          |
 | Charting                    | `AtishayMsft`         |
 | Date/Time pickers           | `ermercer`            |

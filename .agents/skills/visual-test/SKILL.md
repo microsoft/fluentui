@@ -20,22 +20,22 @@ npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
 
 ## Critical: use the per-component Storybook only
 
-**Never** use `yarn storybook` at the repo root, `public-docsite-v9`, or any workspace-wide Storybook build for visual validation. They pull in every v9 package (including deprecated `unstable` re-exports) and will either fail to compile due to missing packages or get stuck in HMR restart loops — the validation becomes useless. Always boot the **per-component stories package**, which only imports its own component's stories and dependencies.
+Always boot the **per-component stories package** (`react-<component>-stories`) via nx `storybook` target, which only imports its own component's stories and dependencies.
 
 ## Steps
 
 1. **Find the component's stories package.** Each v9 component has a dedicated stories package named `react-<component>-stories`:
 
    ```bash
-   yarn nx show projects 2>/dev/null | grep "^react-<lowercase-component-name>-stories$"
+   yarn --silent nx show project react-<lowercase-component-name>-stories --json
    ```
 
-   If the grep returns nothing, the component doesn't have its own stories package — check for a preview package (`react-<component>-preview-stories`) or ask before proceeding.
+   If nx returns nothing with output of `Could not find project react-<component>-stories`, the component doesn't have its own stories package — check for a preview package (`react-<component>-preview-stories`) or ask before proceeding.
 
 2. **Start the component's Storybook dev server.** Use the `storybook` target on the stories project directly — it's the most portable, since library aliases like `react-<component>:start` were only added in April 2026 and may not exist in older workspace snapshots:
 
    ```bash
-   yarn nx run react-<component>-stories:storybook --skip-nx-cache &
+   yarn nx run react-<component>-stories:storybook &
    NX_PID=$!
    ```
 
