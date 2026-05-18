@@ -1,7 +1,6 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
-import { setTheme } from '../src/theme/set-theme.js';
 import webcomponentsTheme from './theme.mjs';
 
 import '../src/index-rollup.js';
@@ -17,9 +16,11 @@ const themes = {
 };
 
 // This is needed in Playwright.
-Object.defineProperty(window, 'setTheme', { value: setTheme });
+// @ts-ignore - setTheme is set on globalThis.Fluent by the index-rollup bundle
+Object.defineProperty(window, 'Fluent', { value: globalThis.Fluent });
 
-setTheme(themes['web-light']);
+// @ts-ignore - setTheme is set on globalThis.Fluent by the index-rollup bundle
+Fluent.setTheme(themes['web-light']);
 
 export const globalTypes = {
   theme: {
@@ -63,7 +64,8 @@ export const decorators = [
      * @type {keyof typeof themes}
      */
     const theme = context.globals.theme || 'web-light';
-    setTheme(themes[theme]);
+    // @ts-ignore - setTheme is set on globalThis.Fluent by the index-rollup bundle
+    Fluent.setTheme(themes[theme]);
 
     // Set direction on the document body
     const dir = context.globals.dir || 'ltr';

@@ -4,7 +4,7 @@ import descriptionMd from './LinkDescription.md';
 export { Default } from './LinkDefault.stories';
 
 export default {
-  title: 'Headless Components/Link',
+  title: 'Components/Link',
   component: Link,
   parameters: {
     docs: {

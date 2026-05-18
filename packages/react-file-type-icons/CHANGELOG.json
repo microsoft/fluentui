@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Mon, 11 May 2026 10:02:37 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.18.0",
+      "version": "8.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "7b586d76279e090d7b459bc4c066bd9804e4f2aa",
+            "comment": "Support for new markdown, \"special folder\" filetype icon (default \"shortcuts\" folder) and other fixes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.15.1",
+            "commit": "04bf7a7dd2b5c8f6963d3bf63187017e96c57a10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Feb 2026 18:07:04 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.17.0",
       "version": "8.17.0",

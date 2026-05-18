@@ -1,27 +1,16 @@
 /**
- * `HeadlessDocsPage` — replaces Storybook's autodocs page so we can render a
- * **tabbed** "Show code" panel under each story (TSX + each CSS Module the
- * story uses). The deployed Fluent docs page (`FluentDocsPage`) hard-wires
- * `<Primary>` / `<Stories>` blocks whose Source can't be made multi-language,
- * so we re-implement the same layout (Title / Subtitle / Description /
- * primary canvas + source / ArgTypes / Stories heading / each story canvas +
- * source) and swap the source block for our own `<HeadlessSourcePanel>`. The order
- * mirrors `packages/react-components/react-storybook-addon/src/docs/FluentDocsPage.tsx`
- * so the page matches what's deployed at storybooks.fluentui.dev/headless.
- *
+ * `HeadlessDocsPage` — thin wrapper around `FluentDocsPage` that swaps in
+ * headless-specific renderers for the primary story and the secondary
+ * stories list. The shared page handles the docs chrome (Title / Subtitle /
+ * Description / ArgTypes via the slot enhancer); the renderers here add the
+ * "preview" disclaimer, wrap each canvas in `<Anchor>`, and replace
+ * Storybook's single-blob Source block with the tabbed `<HeadlessSourcePanel>`
+ * (TSX + each CSS Module the story uses).
  */
 import * as React from 'react';
 
-import {
-  Anchor,
-  ArgTypes,
-  Canvas,
-  Description,
-  DocsContext,
-  HeaderMdx,
-  Subtitle,
-  Title,
-} from '@storybook/addon-docs/blocks';
+import { Anchor, Canvas, Description, HeaderMdx } from '@storybook/addon-docs/blocks';
+import { FluentDocsPage, type FluentDocsPageProps } from '@fluentui/react-storybook-addon';
 
 import { HeadlessSourcePanel } from './HeadlessSourcePanel';
 
@@ -70,67 +59,71 @@ const disclaimerNoteStyle: React.CSSProperties = {
   color: '#3c3c3c',
 };
 
-export const HeadlessDocsPage: React.FC = () => {
-  const docsContext = React.useContext(DocsContext);
-  const stories = docsContext.componentStories();
+const Disclaimer: React.FC = () => (
+  <aside style={disclaimerStyle} role="note">
+    <div>
+      <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is
+      provided purely as a demonstration of one possible look.
+    </div>
+    <div style={disclaimerNoteStyle}>
+      <strong>Preview:</strong> these controls are in preview and their APIs are subject to change.
+    </div>
+  </aside>
+);
 
-  const primaryStory = stories[0];
-  const remainingStories = stories.slice(1);
-
+/**
+ * Prefixes the preview disclaimer, then renders the primary story inside an
+ * `<Anchor>` so `HeadlessSourcePanel` can portal its tabbed code panel into
+ * the same canvas card as the story.
+ *
+ * The `@fluentui/react-storybook-addon-export-to-sandbox` decorator looks for
+ * `.docblock-code-toggle` inside `.docs-story` — Canvas's default
+ * `sourceState: 'hidden'` keeps that toggle in the canvas footer next to the
+ * "Open in Stackblitz" button (see `HeadlessSourcePanel` for how the toggle
+ * drives the tabbed panel).
+ */
+const HeadlessRenderPrimaryStory: FluentDocsPageProps['renderPrimaryStory'] = ({ primaryStory, skipPrimaryStory }) => {
+  if (skipPrimaryStory) {
+    return null;
+  }
   return (
-    <div className="sb-unstyled headless-docs-page">
-      {/*
-        The `@fluentui/react-storybook-addon-export-to-sandbox` decorator looks
-        for `.docblock-code-toggle` inside `.docs-story` of each story to anchor
-        its "Open in Stackblitz" button. We keep Canvas's default sourceState
-        ('hidden') so the native "Show code" toggle is rendered there too —
-        the Stackblitz button sits next to it inside the canvas footer (see
-        `HeadlessSourcePanel` for how its clicks drive our tabbed panel).
-      */}
-      <Title />
-      <Subtitle />
-      <Description />
-      <aside style={disclaimerStyle} role="note">
-        <div>
-          <strong>Heads up:</strong> headless components ship without default styles. The CSS shown in these stories is
-          provided purely as a demonstration of one possible look.
-        </div>
-        <div style={disclaimerNoteStyle}>
-          <strong>Preview:</strong> these controls are in preview and their APIs are subject to change.
-        </div>
-      </aside>
-
-      {primaryStory && (
-        <>
-          <hr style={dividerStyle} />
-          <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
-            {primaryStory.name}
-          </HeaderMdx>
-          <Anchor storyId={primaryStory.id}>
-            <Canvas of={primaryStory.moduleExport} />
-            <HeadlessSourcePanel of={primaryStory.moduleExport} />
-          </Anchor>
-        </>
-      )}
-
-      {/* Component-level props table (mirrors what FluentDocsPage renders). */}
-      <ArgTypes />
-
-      {remainingStories.length > 0 && (
-        <>
-          <h2 style={storiesHeadingStyle}>Stories</h2>
-          {remainingStories.map(story => (
-            <Anchor key={story.id} storyId={story.id}>
-              <HeaderMdx as="h3" id={nameToHash(story.name)}>
-                {story.name}
-              </HeaderMdx>
-              <Description of={story.moduleExport} />
-              <Canvas of={story.moduleExport} />
-              <HeadlessSourcePanel of={story.moduleExport} />
-            </Anchor>
-          ))}
-        </>
-      )}
+    <div>
+      <Disclaimer />
+      <hr style={dividerStyle} />
+      <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
+        {primaryStory.name}
+      </HeaderMdx>
+      <Anchor storyId={primaryStory.id}>
+        <Canvas of={primaryStory.moduleExport} />
+        <HeadlessSourcePanel of={primaryStory.moduleExport} />
+      </Anchor>
     </div>
   );
 };
+
+const HeadlessRenderStories: FluentDocsPageProps['renderStories'] = ({ stories }) => {
+  if (stories.length === 0) {
+    return <></>;
+  }
+  return (
+    <>
+      <h2 style={storiesHeadingStyle}>Stories</h2>
+      {stories.map(story => (
+        <Anchor key={story.id} storyId={story.id}>
+          <HeaderMdx as="h3" id={nameToHash(story.name)}>
+            {story.name}
+          </HeaderMdx>
+          <Description of={story.moduleExport} />
+          <Canvas of={story.moduleExport} />
+          <HeadlessSourcePanel of={story.moduleExport} />
+        </Anchor>
+      ))}
+    </>
+  );
+};
+
+export const HeadlessDocsPage: React.FC = () => (
+  <div className="headless-docs-page">
+    <FluentDocsPage renderPrimaryStory={HeadlessRenderPrimaryStory} renderStories={HeadlessRenderStories} />
+  </div>
+);

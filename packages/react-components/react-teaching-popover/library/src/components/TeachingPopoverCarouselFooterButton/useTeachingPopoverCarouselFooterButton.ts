@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot } from '@fluentui/react-utilities';
 import type {
+  TeachingPopoverCarouselFooterButtonBaseProps,
+  TeachingPopoverCarouselFooterButtonBaseState,
   TeachingPopoverCarouselFooterButtonProps,
   TeachingPopoverCarouselFooterButtonState,
 } from './TeachingPopoverCarouselFooterButton.types';
@@ -13,21 +15,19 @@ import { useButton_unstable } from '@fluentui/react-button';
 import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
- * Create the state required to render TeachingPopoverCarouselFooterButton.
- *
- * The returned state can be modified with hooks such as useTeachingPopoverCarouselFooterButtonStyles_unstable,
- * before being passed to renderTeachingPopoverCarouselFooterButton_unstable.
- *
+ * Base hook that builds TeachingPopoverCarouselFooterButton state for behavior and structure only.
+ * Does not read `appearance` from the popover context, does not derive the button's
+ * appearance from the navType/popoverAppearance combination, and does not call
+ * `useButton_unstable` (the styled hook does that with the right appearance).
  * @param props - props from this instance of TeachingPopoverCarouselFooterButton
  * @param ref - reference to root HTMLDivElement of TeachingPopoverCarouselFooterButton
  */
-export const useTeachingPopoverCarouselFooterButton_unstable = (
-  props: TeachingPopoverCarouselFooterButtonProps,
+export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
+  props: TeachingPopoverCarouselFooterButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
-): TeachingPopoverCarouselFooterButtonState => {
+): TeachingPopoverCarouselFooterButtonBaseState => {
   const { navType, altText } = props;
 
-  const popoverAppearance = usePopoverContext_unstable(context => context.appearance);
   const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
   const values = useCarouselValues_unstable(snapshot => snapshot);
   const activeValue = useCarouselContext_unstable(c => c.value);
@@ -54,14 +54,6 @@ export const useTeachingPopoverCarouselFooterButton_unstable = (
     return values.indexOf(activeValue) === values.length - 1;
   }, [navType, activeValue, values]);
 
-  let buttonAppearanceType: 'primary' | 'outline' | undefined;
-
-  if (navType === 'next') {
-    buttonAppearanceType = popoverAppearance === 'brand' ? undefined : 'primary';
-  } else {
-    buttonAppearanceType = popoverAppearance === 'brand' ? 'outline' : undefined;
-  }
-
   /* Handle altText on trailing step */
   let buttonChild = props.children;
   if (isTrailing) {
@@ -69,20 +61,54 @@ export const useTeachingPopoverCarouselFooterButton_unstable = (
   }
 
   return {
-    ...useButton_unstable({ appearance: buttonAppearanceType, ...props }, ref),
     navType,
-    popoverAppearance,
     altText,
-    // Override useButton root slot
+    components: {
+      root: 'button',
+    },
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
-        appearance: buttonAppearanceType,
         ...props,
         onClick: handleButtonClick,
         children: buttonChild,
       }),
       { elementType: 'button' },
     ),
+  };
+};
+
+/**
+ * Create the state required to render TeachingPopoverCarouselFooterButton.
+ *
+ * The returned state can be modified with hooks such as useTeachingPopoverCarouselFooterButtonStyles_unstable,
+ * before being passed to renderTeachingPopoverCarouselFooterButton_unstable.
+ *
+ * @param props - props from this instance of TeachingPopoverCarouselFooterButton
+ * @param ref - reference to root HTMLDivElement of TeachingPopoverCarouselFooterButton
+ */
+export const useTeachingPopoverCarouselFooterButton_unstable = (
+  props: TeachingPopoverCarouselFooterButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): TeachingPopoverCarouselFooterButtonState => {
+  const baseState = useTeachingPopoverCarouselFooterButtonBase_unstable(props, ref);
+  const popoverAppearance = usePopoverContext_unstable(context => context.appearance);
+
+  let buttonAppearanceType: 'primary' | 'outline' | undefined;
+
+  if (props.navType === 'next') {
+    buttonAppearanceType = popoverAppearance === 'brand' ? undefined : 'primary';
+  } else {
+    buttonAppearanceType = popoverAppearance === 'brand' ? 'outline' : undefined;
+  }
+
+  const buttonState = useButton_unstable({ appearance: buttonAppearanceType, ...props }, ref);
+
+  return {
+    ...buttonState,
+    navType: baseState.navType,
+    altText: baseState.altText,
+    root: baseState.root,
+    popoverAppearance,
   };
 };

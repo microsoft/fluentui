@@ -62,6 +62,11 @@
       "description": "Enable Griffel raw styles output. This will generate additional files with '.styles.raw.js' extension that contain Griffel raw styles",
       "default": false
     },
+    "reactCompiler": {
+      "type": "boolean",
+      "description": "Enable babel-plugin-react-compiler processing. When enabled, source is processed with React Compiler as a separate Babel pass before Griffel AOT.",
+      "default": false
+    },
     "assets": {
       "type": "array",
       "description": "List of static assets.",

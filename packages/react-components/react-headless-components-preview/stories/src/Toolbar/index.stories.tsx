@@ -15,7 +15,7 @@ export { Toggle } from './ToolbarToggleButton.stories';
 export { RadioButton } from './ToolbarRadioButton.stories';
 
 export default {
-  title: 'Headless Components/Toolbar',
+  title: 'Components/Toolbar',
   component: Toolbar,
   subcomponents: {
     ToolbarButton,
