@@ -33,7 +33,7 @@ export { GroupingItems } from './MenuGroupingItems.stories';
 export { SplitMenuItem } from './MenuSplitMenuItem.stories';
 
 export default {
-  title: 'Headless Components/Menu',
+  title: 'Components/Menu',
   component: Menu,
   subcomponents: {
     MenuTrigger,
