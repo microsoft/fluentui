@@ -15,6 +15,10 @@ const defaultContextValue: ToastContainerContextValue = {
   titleId: 'test-title-id',
 };
 
+function assertReactElement(node: React.ReactNode): asserts node is React.ReactElement {
+  expect(React.isValidElement(node)).toBe(true);
+}
+
 function makeWrapper(
   options: {
     context?: Partial<ToastContainerContextValue>;
@@ -130,21 +134,23 @@ describe('useToastTitle_unstable', () => {
       expect(result.current.media).toBeUndefined();
     });
 
-    it.each([
+    const intentIconCases: Array<[ToastIntent, React.ElementType]> = [
       ['success', CheckmarkCircleFilled],
       ['error', DiamondDismissFilled],
       ['warning', WarningFilled],
       ['info', InfoFilled],
-    ] as [ToastIntent, React.ElementType][])('injects default icon for intent="%s"', (intent, ExpectedIcon) => {
+    ];
+
+    it.each(intentIconCases)('injects default icon for intent="%s"', (intent, ExpectedIcon) => {
       const ref = React.createRef<HTMLElement>();
       const { result } = renderHook(() => useToastTitle_unstable({}, ref), {
         wrapper: makeWrapper({ context: { intent } }),
       });
 
       expect(result.current.media).toBeDefined();
-      const children = result.current.media?.children as React.ReactElement | undefined;
-      expect(children).toBeDefined();
-      expect((children as React.ReactElement).type).toBe(ExpectedIcon);
+      const children = result.current.media?.children;
+      assertReactElement(children);
+      expect(children.type).toBe(ExpectedIcon);
     });
 
     it('renders media slot (without default icon) when intent is set but media has explicit children', () => {
@@ -155,7 +161,8 @@ describe('useToastTitle_unstable', () => {
       });
 
       expect(result.current.media).toBeDefined();
-      const children = result.current.media?.children as React.ReactElement;
+      const children = result.current.media?.children;
+      assertReactElement(children);
       // User's children must take precedence over the default icon
       expect(children).toBe(customIcon);
       expect(children.type).not.toBe(CheckmarkCircleFilled);
@@ -177,9 +184,9 @@ describe('useToastTitle_unstable', () => {
       });
 
       expect(result.current.media).toBeDefined();
-      const children = result.current.media?.children as React.ReactElement | undefined;
-      expect(children).toBeDefined();
-      expect((children as React.ReactElement).type).toBe(WarningFilled);
+      const children = result.current.media?.children;
+      assertReactElement(children);
+      expect(children.type).toBe(WarningFilled);
     });
   });
 });
