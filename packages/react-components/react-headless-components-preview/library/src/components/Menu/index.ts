@@ -19,7 +19,7 @@ export { MenuList, useMenuList, renderMenuList } from './MenuList';
 export type { MenuListProps, MenuListState, MenuListSlots } from './MenuList';
 
 export { MenuItem, useMenuItem, renderMenuItem } from './MenuItem';
-export type { MenuItemProps, MenuItemState, MenuItemSlots } from '@fluentui/react-menu';
+export type { MenuItemProps, MenuItemState, MenuItemSlots } from './MenuItem';
 
 export { MenuItemCheckbox, useMenuItemCheckbox, renderMenuItemCheckbox } from './MenuItemCheckbox';
 export type { MenuItemCheckboxProps, MenuItemCheckboxState } from '@fluentui/react-menu';

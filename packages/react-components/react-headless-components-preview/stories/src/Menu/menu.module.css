@@ -20,7 +20,7 @@
 }
 
 .trigger:hover,
-.trigger[data-open] {
+.trigger[aria-expanded='true'] {
   background: var(--accent-strong);
 }
 
