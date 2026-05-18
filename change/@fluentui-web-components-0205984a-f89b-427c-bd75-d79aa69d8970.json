@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds white-space normal to dropdown .control div to prevent text overflow issues.",
+  "packageName": "@fluentui/web-components",
+  "email": "mibaraka@microsoft.com",
+  "dependentChangeType": "patch"
+}
