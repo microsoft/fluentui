@@ -13,9 +13,11 @@ import { stringifyDataAttribute } from '../../utils';
 export const useTag = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
   const state: TagState = useTagBase_unstable(props, ref);
 
+  /* eslint-disable react-hooks/immutability -- intentional: decorate base state with data-* attrs for styling */
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   state.root['data-dismissible'] = stringifyDataAttribute(state.dismissible);
   state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  /* eslint-enable react-hooks/immutability */
 
   return state;
 };

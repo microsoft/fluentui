@@ -13,8 +13,10 @@ import { stringifyDataAttribute } from '../../utils';
 export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   const state: TagGroupState = useTagGroupBase_unstable(props, ref);
 
+  /* eslint-disable react-hooks/immutability -- intentional: decorate base state with data-* attrs for styling */
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   state.root['data-dismissible'] = stringifyDataAttribute(state.dismissible);
+  /* eslint-enable react-hooks/immutability */
 
   return state;
 };

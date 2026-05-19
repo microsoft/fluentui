@@ -16,8 +16,10 @@ export const useInteractionTagSecondary = (
 ): InteractionTagSecondaryState => {
   const state: InteractionTagSecondaryState = useInteractionTagSecondaryBase_unstable(props, ref);
 
+  /* eslint-disable react-hooks/immutability -- intentional: decorate base state with data-* attrs for styling */
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  /* eslint-enable react-hooks/immutability */
 
   return state;
 };

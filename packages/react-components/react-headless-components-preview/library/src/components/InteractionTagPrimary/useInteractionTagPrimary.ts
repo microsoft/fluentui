@@ -20,9 +20,11 @@ export const useInteractionTagPrimary = (
 ): InteractionTagPrimaryState => {
   const state: InteractionTagPrimaryState = useInteractionTagPrimaryBase_unstable(props, ref);
 
+  /* eslint-disable react-hooks/immutability -- intentional: decorate base state with data-* attrs for styling */
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   state.root['data-selected'] = stringifyDataAttribute(state.selected);
   state.root['data-has-secondary-action'] = stringifyDataAttribute(state.hasSecondaryAction);
+  /* eslint-enable react-hooks/immutability */
 
   return state;
 };
