@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Decouple useTagGroupBase_unstable from Tabster (pluggable arrowNavigationProps/onAfterTagDismiss options); export TagGroupContextProvider/useTagGroupContext_unstable and InteractionTagContextProvider/useInteractionTagContext_unstable for headless consumers",
+  "comment": "feat: export contexts for headless",
   "packageName": "@fluentui/react-tags",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
