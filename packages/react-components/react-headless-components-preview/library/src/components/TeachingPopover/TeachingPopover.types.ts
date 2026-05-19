@@ -1,4 +1,4 @@
-import type { PopoverContextValue as V9PopoverContextValue } from '@fluentui/react-popover';
+import type { PopoverContextValue as BasePopoverContextValue } from '@fluentui/react-popover';
 import type { PopoverProps, PopoverState, PopoverContextValue } from '../Popover/Popover.types';
 
 /**
@@ -8,18 +8,19 @@ export type TeachingPopoverProps = PopoverProps;
 
 /**
  * TeachingPopover State — identical to the headless Popover state. Styling
- * concerns from the v9 component (`appearance`, `trapFocus`, `inline`) are
- * intentionally omitted; consumers control presentation.
+ * concerns from `@fluentui/react-teaching-popover` (`appearance`, `trapFocus`,
+ * `inline`) are intentionally omitted; consumers control presentation.
  */
 export type TeachingPopoverState = PopoverState;
 
 /**
- * Subset of the v9 `PopoverContextValue` that the v9 teaching-popover base
- * hooks actually read (`toggleOpen`, `setOpen`, `triggerRef`). The other v9
- * fields fall back to `popoverContextDefaultValue` from `@fluentui/react-popover`.
+ * Subset of the `@fluentui/react-popover` `PopoverContextValue` that the
+ * `@fluentui/react-teaching-popover` base hooks actually read (`toggleOpen`,
+ * `setOpen`, `triggerRef`). The other fields fall back to
+ * `popoverContextDefaultValue` from `@fluentui/react-popover`.
  */
-export type TeachingPopoverV9BridgedContextValue = Pick<
-  V9PopoverContextValue,
+export type TeachingPopoverBaseBridgedContextValue = Pick<
+  BasePopoverContextValue,
   | 'open'
   | 'setOpen'
   | 'toggleOpen'
@@ -33,5 +34,5 @@ export type TeachingPopoverV9BridgedContextValue = Pick<
 
 export type TeachingPopoverContextValues = {
   popover: PopoverContextValue;
-  v9Popover: TeachingPopoverV9BridgedContextValue;
+  basePopover: TeachingPopoverBaseBridgedContextValue;
 };

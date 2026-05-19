@@ -110,6 +110,9 @@ export const TeachingPopover: {
     displayName: string;
 };
 
+// @public
+export type TeachingPopoverBaseBridgedContextValue = Pick<PopoverContextValue_2, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow'>;
+
 // @public (undocumented)
 export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps>;
 
@@ -195,7 +198,7 @@ export { TeachingPopoverCarouselState }
 // @public (undocumented)
 export type TeachingPopoverContextValues = {
     popover: PopoverContextValue;
-    v9Popover: TeachingPopoverV9BridgedContextValue;
+    basePopover: TeachingPopoverBaseBridgedContextValue;
 };
 
 // @public (undocumented)
@@ -271,9 +274,6 @@ export type TeachingPopoverTriggerState = {
 };
 
 // @public
-export type TeachingPopoverV9BridgedContextValue = Pick<PopoverContextValue_2, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow'>;
-
-// @public
 export const useTeachingPopover: (props: TeachingPopoverProps) => TeachingPopoverState;
 
 export { useTeachingPopoverBody }
@@ -282,7 +282,7 @@ export { useTeachingPopoverCarousel }
 
 export { useTeachingPopoverCarouselCard }
 
-// @public
+// @public (undocumented)
 export const useTeachingPopoverCarouselContextValues: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselContextValues;
 
 // @public (undocumented)

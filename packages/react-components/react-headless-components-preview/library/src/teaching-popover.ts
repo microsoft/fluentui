@@ -48,7 +48,7 @@ export type {
   TeachingPopoverProps,
   TeachingPopoverState,
   TeachingPopoverContextValues,
-  TeachingPopoverV9BridgedContextValue,
+  TeachingPopoverBaseBridgedContextValue,
   TeachingPopoverTriggerProps,
   TeachingPopoverTriggerState,
   TeachingPopoverTriggerChildProps,

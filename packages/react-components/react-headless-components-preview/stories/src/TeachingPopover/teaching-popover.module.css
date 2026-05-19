@@ -1,92 +1,9 @@
-.trigger {
-  display: inline-flex;
-  align-items: center;
-  height: 36px;
-  padding: 0 var(--space-4);
-  border: 0;
-  border-radius: var(--radius-md);
-  background: var(--accent);
-  color: var(--accent-contrast);
-  font-size: 13.5px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.trigger:hover,
-.trigger[data-open] {
-  background: var(--accent-strong);
-}
-
-.trigger:focus-visible {
-  outline: var(--stroke-thick) solid var(--accent);
-  outline-offset: 2px;
-}
-
-/*
-  TeachingPopover always renders with an arrow (the headless useTeachingPopover
-  defaults withArrow to true). The surface borrows the same arrow technique as
-  the headless Popover stories: overflow:visible plus a CSS filter drop-shadow
-  so the shadow traces around the rotated arrow shape (a box-shadow would clip
-  on the rotated square and a border wouldn't connect to it).
-*/
 .surface {
   background: var(--bg-elev);
-  border: 0;
   border-radius: var(--radius-lg);
-  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
-  overflow: visible;
   padding: var(--space-5);
   min-width: 320px;
   max-width: 360px;
-}
-
-/*
-  Arrow rendering — headless popover surface paints a <div data-arrow /> and
-  keeps the surface's data-placement attribute in sync with usePositioning.
-  Mirrors stories/src/Popover/popover.module.css so visuals stay consistent.
-*/
-.surface [data-arrow] {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: var(--bg-elev);
-  transform: rotate(45deg);
-}
-
-.surface[data-placement^='above'] [data-arrow] {
-  bottom: -6px;
-}
-
-.surface[data-placement^='below'] [data-arrow] {
-  top: -6px;
-}
-
-.surface[data-placement^='before'] [data-arrow] {
-  right: -6px;
-}
-
-.surface[data-placement^='after'] [data-arrow] {
-  left: -6px;
-}
-
-.surface[data-placement='above'] [data-arrow],
-.surface[data-placement='below'] [data-arrow] {
-  inset-inline: 0;
-  margin-inline: auto;
-}
-
-.surface[data-placement='before'] [data-arrow],
-.surface[data-placement='after'] [data-arrow] {
-  inset-block: 0;
-  margin-block: auto;
-}
-
-.surface[data-placement$='-start'] [data-arrow] {
-  inset-inline-start: var(--arrow-padding, 12px);
-}
-
-.surface[data-placement$='-end'] [data-arrow] {
-  inset-inline-end: var(--arrow-padding, 12px);
 }
 
 .header {

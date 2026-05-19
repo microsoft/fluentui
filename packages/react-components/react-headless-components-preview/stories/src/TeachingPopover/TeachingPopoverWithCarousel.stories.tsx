@@ -17,6 +17,7 @@ import {
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 
 import styles from './teaching-popover.module.css';
+import popoverStyles from '../Popover/popover.module.css';
 
 const PAGES = ['intro', 'features', 'wrap-up'] as const;
 
@@ -28,9 +29,9 @@ const dismissButtonSlot = {
 export const WithCarousel = (): React.ReactNode => (
   <TeachingPopover positioning={{ offset: 10 }}>
     <TeachingPopoverTrigger>
-      <button className={styles.trigger}>Start tour</button>
+      <button className={popoverStyles.trigger}>Start tour</button>
     </TeachingPopoverTrigger>
-    <TeachingPopoverSurface className={styles.surface}>
+    <TeachingPopoverSurface className={`${popoverStyles.surfaceWithArrow} ${styles.surface}`}>
       <TeachingPopoverCarousel defaultValue={PAGES[0]} announcement={i => `Slide ${i + 1} of ${PAGES.length}`}>
         <div className={styles.carousel}>
           <TeachingPopoverCarouselCard value="intro">

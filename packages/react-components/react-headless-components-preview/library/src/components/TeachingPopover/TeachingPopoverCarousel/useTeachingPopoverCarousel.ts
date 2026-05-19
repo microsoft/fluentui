@@ -8,13 +8,6 @@ import type {
 
 export { useTeachingPopoverCarouselBase_unstable as useTeachingPopoverCarousel } from '@fluentui/react-teaching-popover';
 
-/**
- * Cast around the v9 contextValues helper, which is typed against the
- * styled state but only reads carousel fields that exist on the base state.
- */
-export const useTeachingPopoverCarouselContextValues = (
+export const useTeachingPopoverCarouselContextValues = useTeachingPopoverCarouselContextValues_unstable as (
   state: TeachingPopoverCarouselState,
-): TeachingPopoverCarouselContextValues =>
-  useTeachingPopoverCarouselContextValues_unstable(
-    state as Parameters<typeof useTeachingPopoverCarouselContextValues_unstable>[0],
-  );
+) => TeachingPopoverCarouselContextValues;

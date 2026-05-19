@@ -2,7 +2,6 @@ import { renderTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselNavButtonState } from './TeachingPopoverCarouselNavButton.types';
 
-export const renderTeachingPopoverCarouselNavButton = (state: TeachingPopoverCarouselNavButtonState): JSXElement =>
-  renderTeachingPopoverCarouselNavButton_unstable(
-    state as Parameters<typeof renderTeachingPopoverCarouselNavButton_unstable>[0],
-  );
+export const renderTeachingPopoverCarouselNavButton = renderTeachingPopoverCarouselNavButton_unstable as (
+  state: TeachingPopoverCarouselNavButtonState,
+) => JSXElement;

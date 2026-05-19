@@ -6,7 +6,7 @@ export type {
   TeachingPopoverProps,
   TeachingPopoverState,
   TeachingPopoverContextValues,
-  TeachingPopoverV9BridgedContextValue,
+  TeachingPopoverBaseBridgedContextValue,
 } from './TeachingPopover.types';
 
 export {

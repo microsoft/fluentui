@@ -5,31 +5,32 @@ import { usePopoverContextValues } from '../Popover/usePopover';
 import type {
   TeachingPopoverContextValues,
   TeachingPopoverState,
-  TeachingPopoverV9BridgedContextValue,
+  TeachingPopoverBaseBridgedContextValue,
 } from './TeachingPopover.types';
 
-type V9SetOpen = TeachingPopoverV9BridgedContextValue['setOpen'];
-type V9ToggleOpen = TeachingPopoverV9BridgedContextValue['toggleOpen'];
+type BaseSetOpen = TeachingPopoverBaseBridgedContextValue['setOpen'];
+type BaseToggleOpen = TeachingPopoverBaseBridgedContextValue['toggleOpen'];
 
 /**
- * Builds both the headless `PopoverContext` value and a v9-compatible
- * `PopoverContext` value. The v9 bridge lets sub-components consume base
- * hooks from `@fluentui/react-teaching-popover` (e.g. `useTeachingPopoverHeaderBase_unstable`),
- * which read `toggleOpen` / `setOpen` / `triggerRef` from the v9 context.
+ * Builds both the headless `PopoverContext` value and a
+ * `@fluentui/react-popover`-compatible `PopoverContext` value. The bridge
+ * lets sub-components consume base hooks from
+ * `@fluentui/react-teaching-popover` (e.g. `useTeachingPopoverHeaderBase_unstable`),
+ * which read `toggleOpen` / `setOpen` / `triggerRef` from that context.
  *
- * The v9 `OpenPopoverEvents` union is wider than the headless one (it
- * accepts `FocusEvent`). Base hooks never fire focus-driven dismisses, so
- * casting `state.setOpen` / `state.toggleOpen` to the v9 signatures is safe
- * — no extra event types reach them in practice.
+ * The `@fluentui/react-popover` `OpenPopoverEvents` union is wider than the
+ * headless one (it accepts `FocusEvent`). Base hooks never fire focus-driven
+ * dismisses, so casting `state.setOpen` / `state.toggleOpen` to those
+ * signatures is safe — no extra event types reach them in practice.
  */
 export const useTeachingPopoverContextValues = (state: TeachingPopoverState): TeachingPopoverContextValues => {
   const { popover } = usePopoverContextValues(state);
 
-  const v9Popover = React.useMemo<TeachingPopoverV9BridgedContextValue>(
+  const basePopover = React.useMemo<TeachingPopoverBaseBridgedContextValue>(
     () => ({
       open: state.open,
-      setOpen: state.setOpen as unknown as V9SetOpen,
-      toggleOpen: state.toggleOpen as unknown as V9ToggleOpen,
+      setOpen: state.setOpen as unknown as BaseSetOpen,
+      toggleOpen: state.toggleOpen as unknown as BaseToggleOpen,
       triggerRef: state.triggerRef,
       contentRef: state.contentRef,
       arrowRef: state.arrowRef,
@@ -50,5 +51,5 @@ export const useTeachingPopoverContextValues = (state: TeachingPopoverState): Te
     ],
   );
 
-  return { popover, v9Popover };
+  return { popover, basePopover };
 };
