@@ -1,6 +1,1 @@
-import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
-
-/**
- * Renders the final JSX of the InteractionTagPrimary component.
- */
-export const renderInteractionTagPrimary = renderInteractionTagPrimary_unstable;
+export { renderInteractionTagPrimary_unstable as renderInteractionTagPrimary } from '@fluentui/react-tags';

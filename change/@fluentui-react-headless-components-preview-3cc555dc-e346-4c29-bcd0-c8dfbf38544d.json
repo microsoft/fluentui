@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add headless Tag, InteractionTag, InteractionTagPrimary, InteractionTagSecondary, TagGroup. Available as ./tag, ./interaction-tag, ./interaction-tag-primary, ./interaction-tag-secondary, ./tag-group subpath exports. Delegates to @fluentui/react-tags base hooks; no icons, styles, Tabster, or floating-ui.",
+  "comment": "feat: add headless Tags components",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"

@@ -4,7 +4,7 @@ import descriptionMd from './TagDescription.md';
 export { Default } from './TagDefault.stories';
 
 export default {
-  title: 'Components/Tag',
+  title: 'Components/Tags/Tag',
   component: Tag,
   parameters: {
     docs: {

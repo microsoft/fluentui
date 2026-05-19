@@ -5,15 +5,14 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { renderTag_unstable as renderTag } from '@fluentui/react-tags';
 import type { TagBaseProps } from '@fluentui/react-tags';
-import { TagBaseState } from '@fluentui/react-tags';
-import { TagContextValues as TagContextValues_2 } from '@fluentui/react-tags';
+import type { TagBaseState } from '@fluentui/react-tags';
+import type { TagContextValues as TagContextValues_2 } from '@fluentui/react-tags';
 import type { TagSlots as TagSlots_2 } from '@fluentui/react-tags';
 
-// @public
-export const renderTag: (state: TagBaseState, contextValues: TagContextValues_2) => JSXElement;
+export { renderTag }
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;

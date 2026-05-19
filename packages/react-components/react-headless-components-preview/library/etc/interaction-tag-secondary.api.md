@@ -6,10 +6,10 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InteractionTagSecondaryBaseProps } from '@fluentui/react-tags';
-import { InteractionTagSecondaryBaseState } from '@fluentui/react-tags';
+import type { InteractionTagSecondaryBaseState } from '@fluentui/react-tags';
 import type { InteractionTagSecondarySlots as InteractionTagSecondarySlots_2 } from '@fluentui/react-tags';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderInteractionTagSecondary_unstable as renderInteractionTagSecondary } from '@fluentui/react-tags';
 
 // @public
 export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
@@ -28,8 +28,7 @@ export type InteractionTagSecondaryState = InteractionTagSecondaryBaseState & {
     };
 };
 
-// @public
-export const renderInteractionTagSecondary: (state: InteractionTagSecondaryBaseState) => JSXElement;
+export { renderInteractionTagSecondary }
 
 // @public
 export const useInteractionTagSecondary: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagSecondaryState;

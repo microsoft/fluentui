@@ -6,11 +6,11 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InteractionTagPrimaryBaseProps } from '@fluentui/react-tags';
-import { InteractionTagPrimaryBaseState } from '@fluentui/react-tags';
-import { InteractionTagPrimaryContextValues as InteractionTagPrimaryContextValues_2 } from '@fluentui/react-tags';
+import type { InteractionTagPrimaryBaseState } from '@fluentui/react-tags';
+import type { InteractionTagPrimaryContextValues as InteractionTagPrimaryContextValues_2 } from '@fluentui/react-tags';
 import type { InteractionTagPrimarySlots as InteractionTagPrimarySlots_2 } from '@fluentui/react-tags';
-import { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { renderInteractionTagPrimary_unstable as renderInteractionTagPrimary } from '@fluentui/react-tags';
 
 // @public
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
@@ -33,8 +33,7 @@ export type InteractionTagPrimaryState = InteractionTagPrimaryBaseState & {
     };
 };
 
-// @public
-export const renderInteractionTagPrimary: (state: InteractionTagPrimaryBaseState, contextValues: InteractionTagPrimaryContextValues_2) => JSXElement;
+export { renderInteractionTagPrimary }
 
 // @public
 export const useInteractionTagPrimary: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;

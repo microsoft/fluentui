@@ -9,11 +9,6 @@ import { stringifyDataAttribute } from '../../utils';
 
 /**
  * Returns the state for a TagGroup component, given its props and ref.
- *
- * Headless: the canonical `useTagGroupBase_unstable` accepts pluggable
- * `arrowNavigationProps` and `onAfterTagDismiss` options for keyboard
- * navigation and post-dismiss focus restoration. The headless flavour omits
- * them - consumers wire those behaviours up themselves.
  */
 export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   'use no memo';
@@ -26,11 +21,6 @@ export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>
   return state;
 };
 
-/**
- * Maps the state of the TagGroup onto the context consumed by Tag children.
- * Forwards neutral design defaults so the base Tag hooks (which do not read
- * appearance/shape/size) still type-check against the canonical context value.
- */
 export const useTagGroupContextValues = (state: TagGroupState): TagGroupContextValues => {
   const { handleTagDismiss, handleTagSelect, selectedValues, disabled, dismissible, role } = state;
 

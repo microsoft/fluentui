@@ -31,11 +31,6 @@ export const useInteractionTagPrimary = (
 
 const emptyAvatarContext = { size: undefined, shape: undefined } as const;
 
-/**
- * Returns the avatar context values consumed by the canonical InteractionTagPrimary
- * renderer. The headless flavour passes no avatar size/shape - consumers style
- * the media slot themselves.
- */
 export const useInteractionTagPrimaryContextValues = (
   _state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryContextValues => {

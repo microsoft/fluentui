@@ -4,7 +4,7 @@ import descriptionMd from './InteractionTagDescription.md';
 export { Default } from './InteractionTagDefault.stories';
 
 export default {
-  title: 'Components/InteractionTag',
+  title: 'Components/Tags/InteractionTag',
   component: InteractionTag,
   parameters: {
     docs: {

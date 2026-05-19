@@ -6,11 +6,11 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InteractionTagBaseProps } from '@fluentui/react-tags';
-import { InteractionTagBaseState } from '@fluentui/react-tags';
-import { InteractionTagContextValue } from '@fluentui/react-tags';
+import type { InteractionTagBaseState } from '@fluentui/react-tags';
+import type { InteractionTagContextValue } from '@fluentui/react-tags';
 import type { InteractionTagSlots as InteractionTagSlots_2 } from '@fluentui/react-tags';
-import { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { renderInteractionTag_unstable as renderInteractionTag } from '@fluentui/react-tags';
 
 // @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
@@ -34,10 +34,7 @@ export type InteractionTagState = InteractionTagBaseState & {
     };
 };
 
-// @public
-export const renderInteractionTag: (state: InteractionTagBaseState, contextValues: {
-    interactionTag: InteractionTagContextValue;
-}) => JSXElement;
+export { renderInteractionTag }
 
 // @public
 export const useInteractionTag: (props: InteractionTagProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagState;
