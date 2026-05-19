@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,6 +27,7 @@
     "@fluentui/react-breadcrumb": "^9.4.1",
     "@fluentui/react-card": "^9.6.1",
     "@fluentui/react-checkbox": "^9.6.1",
+    "@fluentui/react-combobox": "^9.17.1",
     "@fluentui/react-dialog": "^9.18.0",
     "@fluentui/react-divider": "^9.7.1",
     "@fluentui/react-drawer": "^9.12.0",
@@ -111,6 +112,12 @@
       "import": "./lib/checkbox.js",
       "require": "./lib-commonjs/checkbox.js"
     },
+    "./combobox": {
+      "types": "./dist/combobox.d.ts",
+      "node": "./lib-commonjs/combobox.js",
+      "import": "./lib/combobox.js",
+      "require": "./lib-commonjs/combobox.js"
+    },
     "./dialog": {
       "types": "./dist/dialog.d.ts",
       "node": "./lib-commonjs/dialog.js",
@@ -129,6 +136,12 @@
       "import": "./lib/drawer.js",
       "require": "./lib-commonjs/drawer.js"
     },
+    "./dropdown": {
+      "types": "./dist/dropdown.d.ts",
+      "node": "./lib-commonjs/dropdown.js",
+      "import": "./lib/dropdown.js",
+      "require": "./lib-commonjs/dropdown.js"
+    },
     "./field": {
       "types": "./dist/field.d.ts",
       "node": "./lib-commonjs/field.js",
@@ -146,6 +159,12 @@
       "node": "./lib-commonjs/input.js",
       "import": "./lib/input.js",
       "require": "./lib-commonjs/input.js"
+    },
+    "./label": {
+      "types": "./dist/label.d.ts",
+      "node": "./lib-commonjs/label.js",
+      "import": "./lib/label.js",
+      "require": "./lib-commonjs/label.js"
     },
     "./link": {
       "types": "./dist/link.d.ts",

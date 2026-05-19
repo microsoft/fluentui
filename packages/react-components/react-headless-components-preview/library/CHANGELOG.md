@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Wed, 06 May 2026 23:32:44 GMT and should not be manually modified.
+This log was last generated on Mon, 18 May 2026 09:35:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.4)
+
+Mon, 18 May 2026 09:35:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.0.3..@fluentui/react-headless-components-preview_v0.0.4)
+
+### Patches
+
+- feat: add Combobox component ([PR #36114](https://github.com/microsoft/fluentui/pull/36114) by dmytrokirpa@microsoft.com)
+- feat: add Dropdown component ([PR #36101](https://github.com/microsoft/fluentui/pull/36101) by dmytrokirpa@microsoft.com)
+- fix(headless): fix Popover flipping behavior ([PR #36197](https://github.com/microsoft/fluentui/pull/36197) by vgenaev@gmail.com)
+- feat: add Label component export, tests and stories ([PR #36208](https://github.com/microsoft/fluentui/pull/36208) by dmytrokirpa@microsoft.com)
+- fix(positioning): fix positioning types and performance issues ([PR #36192](https://github.com/microsoft/fluentui/pull/36192) by vgenaev@gmail.com)
 
 ## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.3)
 

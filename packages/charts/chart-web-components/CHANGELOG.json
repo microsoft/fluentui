@@ -2,6 +2,42 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Tue, 19 May 2026 04:10:54 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.78",
+      "version": "0.0.78",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.20",
+            "commit": "4f2032148ac2b6f33a248b90f8aea357788ac834"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 May 2026 04:08:42 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.77",
+      "version": "0.0.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "e5b0e2412175216210360fee356a404af60f38d5",
+            "comment": "fix: update fast-element dependency version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.19",
+            "commit": "193b721bfced61e2faa1293118b8ff086634a317"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 04:09:08 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.76",
       "version": "0.0.76",

@@ -587,6 +587,17 @@ export class BaseCheckbox extends FASTElement {
 }
 
 // @public
+export class BaseCounterBadge extends FASTElement {
+    count: number;
+    get displayValue(): string | undefined;
+    dot: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    overflowCount: number;
+    showZero: boolean;
+}
+
+// @public
 export class BaseDivider extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
@@ -2399,30 +2410,17 @@ export const CompoundButtonStyles: ElementStyles;
 // @public
 export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 
-// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
+// Warning: (ae-missing-release-tag) "CounterBadge" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public
-export class CounterBadge extends FASTElement {
+export class CounterBadge extends BaseCounterBadge {
     appearance?: CounterBadgeAppearance;
     color?: CounterBadgeColor;
-    count: number;
-    // (undocumented)
-    protected countChanged(): void;
-    dot: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    overflowCount: number;
-    // (undocumented)
-    protected overflowCountChanged(): void;
-    // @internal
-    setCount(): string | void;
     shape?: CounterBadgeShape;
-    showZero: boolean;
     size?: CounterBadgeSize;
 }
 
-// @internal
+// @public (undocumented)
 export interface CounterBadge extends StartEnd {
 }
 
@@ -2479,6 +2477,9 @@ export type CounterBadgeSize = ValuesOf<typeof CounterBadgeSize>;
 export const CounterBadgeStyles: ElementStyles;
 
 // @public
+export const CounterBadgeTagName: "fluent-counter-badge";
+
+// @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
 
 // @public
@@ -2514,18 +2515,24 @@ export class Dialog extends FASTElement {
     ariaLabel: string | null;
     ariaLabelledby?: string;
     clickHandler(event: Event): boolean;
-    dialog: HTMLDialogElement;
     // (undocumented)
-    protected dialogChanged(): void;
-    emitBeforeToggle: () => void;
+    connectedCallback(): void;
+    dialog: HTMLDialogElement;
+    // @internal
+    get dialogDescribedby(): string | undefined;
+    // @internal
+    get dialogLabel(): string | null | undefined;
+    // @internal
+    get dialogLabelledby(): string | undefined;
+    // @internal
+    get dialogModal(): boolean | undefined;
+    // @internal
+    get dialogRole(): string | undefined;
+    emitBeforeToggle(): void;
     emitToggle: () => void;
     hide(): void;
     show(): void;
     type: DialogType;
-    // (undocumented)
-    protected typeChanged(prev: DialogType | undefined, next: DialogType): void;
-    // @internal
-    protected updateDialogAttributes(): void;
 }
 
 // @public
@@ -2644,27 +2651,29 @@ export class Drawer extends FASTElement {
     cancelHandler(): void;
     // (undocumented)
     clickHandler(event: Event): boolean;
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
     dialog: HTMLDialogElement;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
+    // @internal
+    get dialogDescribedby(): string | undefined;
+    // @internal
+    get dialogLabel(): string | null | undefined;
+    // @internal
+    get dialogLabelledby(): string | undefined;
+    // @internal
+    get dialogModal(): boolean | undefined;
+    // @internal
+    get dialogRole(): string | null;
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
-    // (undocumented)
-    protected observeRoleAttr(): void;
     position: DrawerPosition;
     // (undocumented)
-    protected roleAttrObserver: MutationObserver;
+    role: string | null;
     show(): void;
     // (undocumented)
     size: DrawerSize;
     type: DrawerType;
-    // (undocumented)
-    protected typeChanged(): void;
-    // (undocumented)
-    protected updateDialogRole(): void;
 }
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)

@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-rc.18",
+  "version": "3.0.0-rc.20",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -90,8 +90,6 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.10",
-    "@microsoft/fast-element": "2.0.0",
-    "@microsoft/focusgroup-polyfill": "^1.4.1",
     "@tensile-perf/web-components": "~0.2.2",
     "@storybook/html": "9.1.17",
     "@storybook/html-vite": "9.1.17",

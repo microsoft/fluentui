@@ -77,7 +77,7 @@ import classes from './my-component.module.css';
 export { Default } from './MyComponentDefault.stories';
 
 export default {
-  title: 'Headless Components/MyComponent',
+  title: 'Components/MyComponent',
   component: MyComponent,
   parameters: {
     docs: {

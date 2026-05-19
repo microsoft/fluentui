@@ -10,7 +10,7 @@ export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 
 export default {
-  title: 'Headless Components/Accordion',
+  title: 'Components/Accordion',
   component: Accordion,
   subcomponents: { AccordionHeader, AccordionItem, AccordionPanel },
   parameters: {

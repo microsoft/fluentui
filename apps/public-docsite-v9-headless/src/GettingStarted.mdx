@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Getting Started" />
+
+# Get started
+
+## Install the package
+
+```bash
+npm install @fluentui/react-headless-components-preview
+```
+
+Fluent UI Headless ships as a single package and is tree-shakable, so your bundle includes only the components you import.
+
+You can also install with your preferred package manager:
+
+```bash
+yarn add @fluentui/react-headless-components-preview
+pnpm add @fluentui/react-headless-components-preview
+```
+
+## Build your first component
+
+Import a headless component and compose its subcomponents. Headless components provide ARIA attributes, keyboard handling, and interaction logic out of the box.
+
+You are responsible for the visual layer, including focus indicators, color contrast, and state styling.
+
+```jsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+} from '@fluentui/react-headless-components-preview/accordion';
+
+export function MyAccordion() {
+  return (
+    <Accordion>
+      <AccordionItem value="item-1">
+        <AccordionHeader>Section 1</AccordionHeader>
+        <AccordionPanel>Content goes here</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## Style with your framework
+
+Fluent UI Headless components are unstyled by default, so you can style them with any approach that fits your stack.
+
+```jsx
+// With CSS modules
+import styles from './MyAccordion.module.css';
+
+<AccordionHeader className={styles.header}>Section 1</AccordionHeader>;
+```
+
+```css
+/* MyAccordion.module.css */
+.header {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.header:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+```
+
+```jsx
+// With Tailwind
+<AccordionHeader className="rounded-md px-4 py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+  Section 1
+</AccordionHeader>
+```
+
+```jsx
+// With styled-components
+const StyledHeader = styled(AccordionHeader)`
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+`;
+```
+
+## First-component accessibility check
+
+Before shipping, verify:
+
+- Keyboard navigation works with Tab, Shift+Tab, Enter, Space, and arrow keys where expected
+- Focus indicators are clearly visible on every interactive element
+- Text and UI states meet your target contrast standard (WCAG AA or AAA)
+- Interactive targets are large enough for touch usage
+- Screen readers announce labels and state changes correctly
+
+For detailed guidance, review the [Accessibility overview](/?path=/docs/overview-accessibility--docs).
+
+## Working with LLMs
+
+Each docs page has a "View as Markdown" link at the top. Share that URL with your AI assistant to provide clean, context-rich documentation for Fluent UI concepts and component APIs.
+
+Additionally, the "llms.txt" link in the "Handbook" sidebar helps assistants discover and navigate the docs more effectively.
+
+## Explore more
+
+Visit the [components documentation](/components) to see all available headless components and their APIs.

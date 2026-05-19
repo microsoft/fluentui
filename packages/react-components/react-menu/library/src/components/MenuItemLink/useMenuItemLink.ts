@@ -4,7 +4,7 @@ import type * as React from 'react';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
-import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
+import { useMenuItemBase_unstable, useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemProps } from '../MenuItem/MenuItem.types';
 
 /**
@@ -25,6 +25,37 @@ export const useMenuItemLink_unstable = (
   // FIXME: casting because the root slot changes from div to a,
   // ideal solution would be to extract common logic from useMenuItem_unstable root
   // and use it in both without assuming element type
+  const _props = { ...props, ...(baseState.root as ExtractSlotProps<Slot<'a'>>), ref, tabIndex: props.tabIndex };
+
+  return {
+    ...baseState,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...baseState.components,
+      root: 'a',
+    },
+    root: slot.always(
+      getIntrinsicElementProps('a', {
+        role: 'menuitem',
+        ..._props,
+      }),
+      { elementType: 'a' },
+    ),
+  };
+};
+
+/**
+ * Base hook for MenuItemLink, mirrors `useMenuItemLink_unstable` but composes with
+ * `useMenuItemBase_unstable`.
+ *
+ * @param props - props from this instance of MenuItemLink
+ * @param ref - reference to root HTMLElement of MenuItemLink
+ */
+export const useMenuItemLinkBase_unstable = (
+  props: MenuItemLinkProps,
+  ref: React.Ref<HTMLAnchorElement>,
+): MenuItemLinkState => {
+  const baseState = useMenuItemBase_unstable(props as MenuItemProps, null);
   const _props = { ...props, ...(baseState.root as ExtractSlotProps<Slot<'a'>>), ref, tabIndex: props.tabIndex };
 
   return {

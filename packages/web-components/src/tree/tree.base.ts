@@ -83,6 +83,8 @@ export class BaseTree extends FASTElement {
         if (item?.childTreeItems?.length) {
           if (!item.expanded) {
             item.expanded = true;
+          } else {
+            return true;
           }
         }
         return;
