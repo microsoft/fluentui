@@ -160,6 +160,16 @@ describe(`sandbox-factory`, () => {
 
         canvas.cleanup();
       });
+
+      it(`should not render when openInNewTab is false`, () => {
+        const { canvas, context } = setup({ bundler: 'vite', provider: 'codesandbox-cloud' });
+        context.parameters.openInNewTab = false;
+        addDemoActionButtons(context);
+
+        expect(canvas.getNewTabButton()).toBeNull();
+
+        canvas.cleanup();
+      });
     });
 
     describe('button layout', () => {
@@ -191,6 +201,21 @@ describe(`sandbox-factory`, () => {
 
         expect(sandboxButtons).toHaveLength(1);
         expect(newTabButtons).toHaveLength(1);
+
+        canvas.cleanup();
+      });
+
+      it(`should only show sandbox button when openInNewTab is false`, () => {
+        const { canvas, context } = setup({ bundler: 'vite', provider: 'codesandbox-cloud' });
+        context.parameters.openInNewTab = false;
+        addDemoActionButtons(context);
+
+        const container = canvas.getActionButtonsContainer();
+        const buttons = container?.querySelectorAll('button');
+
+        expect(buttons).toHaveLength(2);
+        expect(buttons?.[0].textContent).toContain('Open in CodeSandbox');
+        expect(buttons?.[1].textContent).toBe('Show Code');
 
         canvas.cleanup();
       });

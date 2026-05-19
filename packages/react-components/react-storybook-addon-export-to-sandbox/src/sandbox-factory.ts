@@ -34,15 +34,17 @@ export function addDemoActionButtons(context: StoryContext) {
     const files = scaffold[config.bundler](config);
     const action = actionConfig[config.provider];
 
-    addButton({
-      container,
-      classList: cssClasses,
-      markerClass: 'with-open-in-new-tab-button',
-      content: `${externalLinkIconSvg} Open in new tab`,
-      onClick: () => {
-        window.open(`./iframe.html?id=${encodeURIComponent(context.id)}&viewMode=story`, '_blank');
-      },
-    });
+    if (context.parameters.openInNewTab !== false) {
+      addButton({
+        container,
+        classList: cssClasses,
+        markerClass: 'with-open-in-new-tab-button',
+        content: `${externalLinkIconSvg} Open in new tab`,
+        onClick: () => {
+          window.open(`./iframe.html?id=${encodeURIComponent(context.id)}&viewMode=story`, '_blank');
+        },
+      });
+    }
 
     addButton({
       container,
