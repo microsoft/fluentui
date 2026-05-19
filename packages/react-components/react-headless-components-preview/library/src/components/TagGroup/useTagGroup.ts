@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../utils';
  * Returns the state for a TagGroup component, given its props and ref.
  */
 export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
-  'use no memo';
-
   const state: TagGroupState = useTagGroupBase_unstable(props, ref);
 
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);

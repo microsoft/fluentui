@@ -12,8 +12,6 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderInteractionTag`.
  */
 export const useInteractionTag = (props: InteractionTagProps, ref: React.Ref<HTMLDivElement>): InteractionTagState => {
-  'use no memo';
-
   const state: InteractionTagState = useInteractionTagBase_unstable(props, ref);
 
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
@@ -22,14 +20,6 @@ export const useInteractionTag = (props: InteractionTagProps, ref: React.Ref<HTM
   return state;
 };
 
-/**
- * Maps the state of the InteractionTag onto the context consumed by its
- * `InteractionTagPrimary` and `InteractionTagSecondary` children. The headless
- * flavour omits design-only fields (appearance/shape/size) on the public state,
- * but the canonical `InteractionTagContextValue` requires them - we forward
- * neutral defaults so the base child hooks (which do not read these fields)
- * still type-check.
- */
 export const useInteractionTagContextValues = (state: InteractionTagState): InteractionTagContextValues => {
   const { disabled, handleTagDismiss, handleTagSelect, interactionTagPrimaryId, selected, selectedValues, value } =
     state;

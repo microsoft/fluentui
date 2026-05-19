@@ -18,8 +18,6 @@ export const useInteractionTagPrimary = (
   props: InteractionTagPrimaryProps,
   ref: React.Ref<HTMLButtonElement>,
 ): InteractionTagPrimaryState => {
-  'use no memo';
-
   const state: InteractionTagPrimaryState = useInteractionTagPrimaryBase_unstable(props, ref);
 
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
