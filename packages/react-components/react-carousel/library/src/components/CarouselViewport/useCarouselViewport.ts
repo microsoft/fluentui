@@ -53,9 +53,13 @@ export const useCarouselViewport_unstable = (
     }
   }, [enableAutoplay]);
 
+  // eslint-disable-next-line react-hooks/refs
   const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  // eslint-disable-next-line react-hooks/refs
   const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);
+  // eslint-disable-next-line react-hooks/refs
   const onMouseEnter = mergeCallbacks(props.onMouseEnter, handleMouseEnter);
+  // eslint-disable-next-line react-hooks/refs
   const onMouseLeave = mergeCallbacks(props.onMouseLeave, handleMouseLeave);
 
   return {

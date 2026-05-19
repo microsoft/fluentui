@@ -17,9 +17,11 @@ export const useTagPickerOptionGroupStyles = (state: TagPickerOptionGroupState):
   'use no memo';
 
   useOptionGroupStyles_unstable(state);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(tagPickerOptionGroupClassNames.root, state.root.className);
 
   if (state.label) {
+    // eslint-disable-next-line react-hooks/immutability
     state.label.className = mergeClasses(tagPickerOptionGroupClassNames.label, state.label.className);
   }
 

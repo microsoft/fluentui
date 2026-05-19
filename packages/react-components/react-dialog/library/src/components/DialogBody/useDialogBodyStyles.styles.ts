@@ -44,6 +44,7 @@ export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBody
 
   const resetStyles = useResetStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dialogBodyClassNames.root, resetStyles, state.root.className);
 
   return state;

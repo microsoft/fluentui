@@ -294,6 +294,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     comboboxClassNames.root,
     styles.root,
@@ -306,6 +307,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     comboboxClassNames.input,
     inputStyles.input,
@@ -315,6 +317,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   );
 
   if (state.listbox) {
+    // eslint-disable-next-line react-hooks/immutability
     state.listbox.className = mergeClasses(
       comboboxClassNames.listbox,
       styles.listbox,
@@ -325,6 +328,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   }
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       comboboxClassNames.expandIcon,
       iconStyles.icon,
@@ -336,6 +340,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   }
 
   if (state.clearIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.clearIcon.className = mergeClasses(
       comboboxClassNames.clearIcon,
       iconStyles.icon,

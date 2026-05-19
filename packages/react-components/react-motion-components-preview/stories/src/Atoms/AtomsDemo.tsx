@@ -104,6 +104,7 @@ export const AtomsDemo: React.FC = () => {
       </div>
       <div className={classes.body}>
         <div className={classes.demoArea}>
+          {/* eslint-disable-next-line react-hooks/static-components */}
           <MotionComponent key={key}>
             <div className={classes.demoBox}>{atomLabels[atomType]}</div>
           </MotionComponent>

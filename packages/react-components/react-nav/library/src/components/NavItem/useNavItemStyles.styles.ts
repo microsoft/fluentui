@@ -30,6 +30,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
 
   const { selected, density } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navItemClassNames.root,
     rootDefaultClassName,
@@ -40,6 +41,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       navItemClassNames.icon,
       iconStyles.base,

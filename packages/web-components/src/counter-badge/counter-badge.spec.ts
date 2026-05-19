@@ -38,7 +38,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
-    await expect(element).toContainText('100');
+    await expect(element).toHaveText('100');
   });
 
   test('should display an overflow count when the `count` attribute is greater than the `overflow-count` attribute', async ({
@@ -50,7 +50,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
-    await expect(element).toContainText('100+');
+    await expect(element).toHaveText('100+');
 
     await test.step('should display the count when the `count` attribute is less than the `overflow-count` attribute', async () => {
       await element.evaluate((node: CounterBadge) => {
@@ -59,7 +59,7 @@ test.describe('CounterBadge component', () => {
 
       await expect(element).toHaveAttribute('overflow-count', '100');
 
-      await expect(element).toContainText('99');
+      await expect(element).toHaveText('99');
     });
   });
 
@@ -72,7 +72,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
-    await expect(element).toContainText('100+');
+    await expect(element).toHaveText('100+');
 
     await element.evaluate((node: CounterBadge) => {
       node.overflowCount = 101;
@@ -80,7 +80,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveAttribute('overflow-count', '101');
 
-    await expect(element).toContainText('101');
+    await expect(element).toHaveText('101');
   });
 
   test('should display the count when the `count` attribute is set', async ({ fastPage }) => {
@@ -90,7 +90,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveAttribute('count', '5');
 
-    await expect(element).toContainText('5');
+    await expect(element).toHaveText('5');
   });
 
   test('should show 0 when showZero attribute is present and value is 0', async ({ fastPage }) => {
@@ -102,7 +102,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('showZero', true);
 
-    await expect(element).toContainText('0');
+    await expect(element).toHaveText('0');
 
     await element.evaluate(node => {
       node.removeAttribute('show-zero');
@@ -112,7 +112,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('showZero', false);
 
-    await expect(element).not.toContainText('0');
+    await expect(element).not.toHaveText('0');
   });
 
   test('should display "0" when the `showZero` property is set to true and the `count` property is set to 0', async ({
@@ -124,7 +124,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('showZero', false);
 
-    await expect(element).not.toContainText('0');
+    await expect(element).not.toHaveText('0');
 
     await element.evaluate((node: CounterBadge) => {
       node.showZero = true;
@@ -133,7 +133,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('showZero', true);
 
-    await expect(element).toContainText('0');
+    await expect(element).toHaveText('0');
   });
 
   test('should display as a dot when the `dot` property is set to true', async ({ fastPage }) => {
@@ -141,7 +141,7 @@ test.describe('CounterBadge component', () => {
 
     await fastPage.setTemplate({ attributes: { count: '5' } });
 
-    await expect(element).toContainText('5');
+    await expect(element).toHaveText('5');
 
     await expect(element).toHaveJSProperty('dot', false);
 
@@ -151,7 +151,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('dot', true);
 
-    await expect(element).not.toContainText('5');
+    await expect(element).not.toHaveText('5');
   });
 
   test('should display as a number when the `dot` property is set to false', async ({ fastPage }) => {
@@ -159,7 +159,7 @@ test.describe('CounterBadge component', () => {
 
     await fastPage.setTemplate({ attributes: { count: '5', dot: true } });
 
-    await expect(element).not.toContainText('5');
+    await expect(element).not.toHaveText('5');
 
     await expect(element).toHaveJSProperty('dot', true);
 
@@ -167,7 +167,7 @@ test.describe('CounterBadge component', () => {
       node.dot = false;
     });
 
-    await expect(element).toContainText('5');
+    await expect(element).toHaveText('5');
 
     await expect(element).toHaveJSProperty('dot', false);
   });
@@ -234,5 +234,37 @@ test.describe('CounterBadge component', () => {
         await expect(element).toHaveAttribute('appearance', appearance);
       });
     }
+  });
+
+  test('should NOT display the word "null" when only the `count` attribute is present', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { count: '5' } });
+
+    await expect(element).toHaveText('5');
+
+    await element.evaluate(node => {
+      node.removeAttribute('overflow-count');
+    });
+
+    await expect(element).not.toHaveText('null');
+
+    await expect(element).toHaveText('5');
+  });
+
+  test('should display the raw `count` when the `overflow-count` attribute is zero', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { count: '5', 'overflow-count': '0' } });
+
+    await expect(element).toHaveText('5');
+  });
+
+  test('should display the raw `count` when the `overflow-count` attribute is negative', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { count: '5', 'overflow-count': '-5' } });
+
+    await expect(element).toHaveText('5');
   });
 });

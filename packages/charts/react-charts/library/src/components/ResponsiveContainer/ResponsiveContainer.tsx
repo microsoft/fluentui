@@ -17,6 +17,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
+  // eslint-disable-next-line react-hooks/refs
   onResizeRef.current = props.onResize;
 
   React.useEffect(() => {
@@ -29,6 +30,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       // rAF is an alternative to the throttle function. For more info, see:
       // https://css-tricks.com/debouncing-throttling-explained-examples/#aa-requestanimationframe-raf
       animationFrameId = _window?.requestAnimationFrame(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSize(prevSize => {
           const roundedWidth = Math.floor(containerWidth);
           const roundedHeight = Math.floor(containerHeight);

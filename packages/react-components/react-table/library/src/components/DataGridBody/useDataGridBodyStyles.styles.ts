@@ -16,6 +16,7 @@ export const useDataGridBodyStyles_unstable = (state: DataGridBodyState): DataGr
   'use no memo';
 
   useTableBodyStyles_unstable(state);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dataGridBodyClassNames.root, state.root.className);
 
   return state;

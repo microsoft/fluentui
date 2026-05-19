@@ -27,6 +27,7 @@ export const useDrawerHeaderNavigationStyles_unstable = (
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(drawerHeaderNavigationClassNames.root, styles, state.root.className);
 
   return state;

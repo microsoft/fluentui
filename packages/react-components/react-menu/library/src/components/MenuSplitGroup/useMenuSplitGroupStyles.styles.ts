@@ -47,6 +47,7 @@ export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): Me
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuSplitGroupClassNames.root, styles.root, state.root.className);
   return state;
 };

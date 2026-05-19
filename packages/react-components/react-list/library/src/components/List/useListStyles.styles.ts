@@ -23,6 +23,7 @@ export const useListStyles_unstable = (state: ListState): ListState => {
 
   const rootStyles = useRootBaseStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(listClassNames.root, rootStyles, state.root.className);
 
   return state;

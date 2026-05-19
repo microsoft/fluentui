@@ -34,6 +34,7 @@ export const useTableCellActionsStyles_unstable = (state: TableCellActionsState)
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableCellActionsClassNames.root,
     styles.root,

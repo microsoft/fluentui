@@ -28,8 +28,10 @@ function useAnimateBackwards({ navigatedDate }: { navigatedDate: CalendarMonthPr
   React.useEffect(() => {
     previousYearRef.current = currentYear;
   });
+  // eslint-disable-next-line react-hooks/refs
   const previousYear = previousYearRef.current;
 
+  // eslint-disable-next-line react-hooks/refs
   if (previousYear === undefined || previousYear === currentYear) {
     return undefined;
   } else {

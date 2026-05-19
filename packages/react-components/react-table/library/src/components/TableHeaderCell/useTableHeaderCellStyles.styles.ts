@@ -105,6 +105,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableHeaderCellClassNames.root,
     styles.root,
@@ -113,6 +114,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,
@@ -122,6 +124,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   );
 
   if (state.sortIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.sortIcon.className = mergeClasses(
       tableHeaderCellClassNames.sortIcon,
       styles.sortIcon,
@@ -130,6 +133,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   }
 
   if (state.aside) {
+    // eslint-disable-next-line react-hooks/immutability
     state.aside.className = mergeClasses(tableHeaderCellClassNames.aside, styles.resizeHandle, state.aside.className);
   }
 

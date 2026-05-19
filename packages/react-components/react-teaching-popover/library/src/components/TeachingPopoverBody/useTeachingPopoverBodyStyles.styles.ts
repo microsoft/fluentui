@@ -57,9 +57,11 @@ export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBody
   const styles = useStyles();
   const mediaStyles = useMediaStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverBodyClassNames.root, styles.root, state.root.className);
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       teachingPopoverBodyClassNames.media,
       mediaStyles.base,

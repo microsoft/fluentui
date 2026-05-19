@@ -60,10 +60,14 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
 
   const styles = useStyles();
   const thumbStyles = useThumbStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(alphaSliderClassNames.root, state.root.className);
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(alphaSliderClassNames.input, state.input.className);
+  // eslint-disable-next-line react-hooks/immutability
   state.rail.className = mergeClasses(alphaSliderClassNames.rail, styles.rail, state.rail.className);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     alphaSliderClassNames.thumb,
     thumbStyles.thumb,
@@ -71,6 +75,7 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     alphaSliderClassNames.thumb,
     thumbStyles.thumb,
