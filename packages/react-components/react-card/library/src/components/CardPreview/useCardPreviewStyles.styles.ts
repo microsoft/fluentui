@@ -39,9 +39,11 @@ export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPrev
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(cardPreviewClassNames.root, styles.root, state.root.className);
 
   if (state.logo) {
+    // eslint-disable-next-line react-hooks/immutability
     state.logo.className = mergeClasses(cardPreviewClassNames.logo, styles.logo, state.logo.className);
   }
 

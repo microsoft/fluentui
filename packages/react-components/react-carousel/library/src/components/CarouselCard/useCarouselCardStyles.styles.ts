@@ -41,6 +41,7 @@ export const useCarouselCardStyles_unstable = (state: CarouselCardState): Carous
   const appearance = useCarouselContext(context => context.appearance);
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselCardClassNames.root,
     styles.root,

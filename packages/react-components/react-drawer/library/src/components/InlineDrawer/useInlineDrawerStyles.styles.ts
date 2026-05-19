@@ -95,6 +95,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,
     resetStyles,

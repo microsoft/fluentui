@@ -47,6 +47,7 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
   const { selected, density } = state;
   const isSmallDensity = density === 'small';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navSubItemClassNames.root,
     rootDefaultClassName,

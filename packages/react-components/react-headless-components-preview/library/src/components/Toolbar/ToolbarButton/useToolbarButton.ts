@@ -19,9 +19,13 @@ export const useToolbarButton = (
   const state: ToolbarButtonState = useToolbarButtonBase_unstable(props, ref);
 
   // Set data attributes for vertical, disabled, disabledFocusable, and iconOnly states to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
 
   return state;

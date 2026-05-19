@@ -64,6 +64,7 @@ export const useEmptySwatchStyles_unstable = (state: EmptySwatchState): EmptySwa
 
   const size = state.size ?? 'medium';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     emptySwatchClassNames.root,
     styles,

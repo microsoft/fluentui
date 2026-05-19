@@ -26,7 +26,9 @@ export const useNavDividerStyles_unstable = (state: NavDividerState): NavDivider
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navDividerClassNames.root, styles.root, state.root.className);
+  // eslint-disable-next-line react-hooks/immutability
   state.wrapper.className = mergeClasses(navDividerClassNames.wrapper, state.wrapper.className);
 
   useDividerStyles_unstable(state);

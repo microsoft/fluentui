@@ -12,6 +12,7 @@ export const useDrawerFooter = (props: DrawerFooterProps, ref: React.Ref<HTMLEle
   'use no memo';
 
   const state: DrawerFooterState = useDrawerFooter_unstable(props, ref);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-scroll-state'] = stringifyDataAttribute(state.scrollState);
 
   return state;

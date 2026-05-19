@@ -45,6 +45,7 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
   const secondaryContentBaseStyle = useSecondaryContentBaseStyle();
   const mediaBaseStyle = useMediaBaseStyle();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerOptionClassNames.root,
     rootBaseStyle,
@@ -60,10 +61,12 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
     selected: false,
   });
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(tagPickerOptionClassNames.media, mediaBaseStyle, state.media.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       tagPickerOptionClassNames.secondaryContent,
       secondaryContentBaseStyle,

@@ -257,6 +257,7 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
 
   const { alignContent, appearance, inset, vertical } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     dividerClassNames.root,
 
@@ -284,6 +285,7 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
   );
 
   if (state.wrapper) {
+    // eslint-disable-next-line react-hooks/immutability
     state.wrapper.className = mergeClasses(dividerClassNames.wrapper, state.wrapper.className);
   }
 

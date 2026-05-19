@@ -16,6 +16,7 @@ export const useDataGridHeaderStyles_unstable = (state: DataGridHeaderState): Da
   'use no memo';
 
   useTableHeaderStyles_unstable(state);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dataGridHeaderClassNames.root, state.root.className);
 
   return state;

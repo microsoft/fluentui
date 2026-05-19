@@ -20,9 +20,11 @@ export const useDataGridSelectionCellStyles_unstable = (
   'use no memo';
 
   useTableSelectionCellStyles_unstable(state);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dataGridSelectionCellClassNames.root, state.root.className);
 
   if (state.checkboxIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkboxIndicator.className = mergeClasses(
       dataGridSelectionCellClassNames.checkboxIndicator,
       state.checkboxIndicator.className,
@@ -30,6 +32,7 @@ export const useDataGridSelectionCellStyles_unstable = (
   }
 
   if (state.radioIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.radioIndicator.className = mergeClasses(
       dataGridSelectionCellClassNames.radioIndicator,
       state.radioIndicator.className,

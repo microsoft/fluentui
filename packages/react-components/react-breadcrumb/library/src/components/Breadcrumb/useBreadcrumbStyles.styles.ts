@@ -24,8 +24,10 @@ export const useBreadcrumbStyles_unstable = (state: BreadcrumbState): Breadcrumb
   'use no memo';
 
   const listBaseClassName = useListClassName();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(breadcrumbClassNames.root, state.root.className);
   if (state.list) {
+    // eslint-disable-next-line react-hooks/immutability
     state.list.className = mergeClasses(listBaseClassName, breadcrumbClassNames.list, state.list.className);
   }
   return state;

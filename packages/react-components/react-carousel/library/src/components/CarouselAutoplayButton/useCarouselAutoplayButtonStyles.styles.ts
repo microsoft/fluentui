@@ -42,9 +42,11 @@ export const useCarouselAutoplayButtonStyles_unstable = (
 
   useToggleButtonStyles_unstable(state);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(carouselAutoplayButtonClassNames.icon, state.icon.className);
   }
 
