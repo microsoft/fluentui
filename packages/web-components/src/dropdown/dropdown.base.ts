@@ -13,6 +13,11 @@ import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
 /**
+ * The duration in milliseconds after the last typeahead keystroke before the buffer is cleared.
+ */
+const TYPEAHEAD_TIMEOUT = 500;
+
+/**
  * A Dropdown Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#combobox | ARIA combobox } role.
  *
@@ -836,6 +841,59 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * The accumulated typeahead buffer used to match option labels by prefix.
+   *
+   * @internal
+   */
+  private typeaheadBuffer: string = '';
+
+  /**
+   * The timeout id used to reset the typeahead buffer.
+   *
+   * @internal
+   */
+  private typeaheadTimeout?: ReturnType<typeof setTimeout>;
+
+  /**
+   * Handles typeahead character input by moving {@link activeIndex} to the next option whose label matches the
+   * accumulated buffer. When the buffer is a single character (or the same character repeated), matching options are
+   * cycled through; otherwise the buffer is treated as a prefix match.
+   *
+   * @param char - the printable character that was pressed
+   * @internal
+   */
+  private handleTypeahead(char: string): void {
+    const isRepeating = this.typeaheadBuffer === char.repeat(this.typeaheadBuffer.length);
+    this.typeaheadBuffer += char;
+
+    let candidates = this.typeaheadBuffer.length > 1 ? this.filterOptions(this.typeaheadBuffer) : [];
+    let isCycling = false;
+
+    if (!candidates.length && isRepeating) {
+      candidates = this.filterOptions(char);
+      isCycling = true;
+    }
+
+    if (candidates.length) {
+      const activeOption = this.enabledOptions[this.activeIndex];
+      const currentPos = candidates.indexOf(activeOption);
+      const nextMatch = isCycling
+        ? candidates[this.getEnabledIndexInBounds(currentPos + 1, candidates.length)]
+        : currentPos >= 0
+        ? activeOption
+        : candidates[0];
+
+      this.activeIndex = this.enabledOptions.indexOf(nextMatch);
+    }
+
+    clearTimeout(this.typeaheadTimeout);
+    this.typeaheadTimeout = setTimeout(() => {
+      this.typeaheadBuffer = '';
+      this.typeaheadTimeout = undefined;
+    }, TYPEAHEAD_TIMEOUT);
+  }
+
+  /**
    * Handles the keydown events for the dropdown.
    *
    * @param e - the keyboard event
@@ -889,6 +947,12 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (!increment) {
+      if (!this.isCombobox && e.key.length === 1 && e.key !== ' ' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (!this.open) {
+          this.listbox.showPopover();
+        }
+        this.handleTypeahead(e.key);
+      }
       return true;
     }
 
@@ -1044,6 +1108,12 @@ export class BaseDropdown extends FASTElement {
   disconnectedCallback(): void {
     BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
     this.debounceController?.abort();
+
+    if (this.typeaheadTimeout) {
+      clearTimeout(this.typeaheadTimeout);
+      this.typeaheadTimeout = undefined;
+      this.typeaheadBuffer = '';
+    }
 
     super.disconnectedCallback();
   }
