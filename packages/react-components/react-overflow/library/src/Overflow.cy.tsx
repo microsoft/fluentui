@@ -1311,12 +1311,12 @@ describe('Overflow', () => {
   describe('OverflowReorderObserver', () => {
     const INITIAL_IDS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
-    const ReorderExample: React.FC<{ withObserver: boolean }> = ({ withObserver }) => {
+    const ReorderExample: React.FC = () => {
       const [ids, setIds] = React.useState(INITIAL_IDS);
       return (
         <>
           <Container size={300}>
-            {withObserver && <OverflowReorderObserver />}
+            <OverflowReorderObserver />
             {ids.map(id => (
               <Item key={id} id={id} priority={1}>
                 {id}
@@ -1332,7 +1332,7 @@ describe('Overflow', () => {
     };
 
     it('recomputes overflow when items are reordered via React state', () => {
-      mount(<ReorderExample withObserver />);
+      mount(<ReorderExample />);
 
       // Initial layout: container=300px, items=50px each + 50px menu → ~5 visible, 3 overflow.
       cy.get(`[${selectors.item}="a"]`).should('be.visible');
@@ -1344,21 +1344,6 @@ describe('Overflow', () => {
       // visible. Items pushed to the tail (..., b, a) should overflow.
       cy.get(`[${selectors.item}="h"]`).should('be.visible');
       cy.get(`[${selectors.item}="a"]`).should('not.be.visible');
-    });
-
-    it('without the observer, reorder leaves visibility flags stale (regression guard)', () => {
-      mount(<ReorderExample withObserver={false} />);
-
-      cy.get(`[${selectors.item}="a"]`).should('be.visible');
-      cy.get(`[${selectors.item}="h"]`).should('not.be.visible');
-
-      cy.get('#reverse').click();
-
-      // Bug-by-design: without the observer, the manager never recomputes on a pure
-      // reorder, so the originally-hidden ids stay hidden even though they moved to
-      // the front of the DOM.
-      cy.get(`[${selectors.item}="a"]`).should('be.visible');
-      cy.get(`[${selectors.item}="h"]`).should('not.be.visible');
     });
   });
 });

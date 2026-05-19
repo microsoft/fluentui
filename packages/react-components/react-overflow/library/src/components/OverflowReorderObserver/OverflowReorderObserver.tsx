@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useOverflowContext } from '../../overflowContext';
 
 /**
@@ -24,19 +25,20 @@ import { useOverflowContext } from '../../overflowContext';
 export const OverflowReorderObserver: React.FC = () => {
   const containerRef = useOverflowContext(v => v.containerRef);
   const updateOverflow = useOverflowContext(v => v.updateOverflow);
+  const { targetDocument } = useFluent();
+  const targetWindow = targetDocument?.defaultView;
 
   React.useEffect(() => {
     const el = containerRef?.current;
-    const win = el?.ownerDocument.defaultView;
-    if (!el || !win?.MutationObserver) {
+    if (!el || !targetWindow?.MutationObserver) {
       return;
     }
 
-    const mutationObserver = new win.MutationObserver(() => updateOverflow());
+    const mutationObserver = new targetWindow.MutationObserver(() => updateOverflow());
     mutationObserver.observe(el, { childList: true });
 
     return () => mutationObserver.disconnect();
-  }, [containerRef, updateOverflow]);
+  }, [containerRef, updateOverflow, targetWindow]);
 
   return null;
 };
