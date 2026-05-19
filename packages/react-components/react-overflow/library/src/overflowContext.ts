@@ -16,11 +16,6 @@ export interface OverflowContextValue {
   registerOverflowMenu: (el: HTMLElement) => () => void;
   registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
-  /**
-   * Ref to the overflow container element. Optional to preserve backwards
-   * compatibility with any external consumers that build a context value
-   * by hand.
-   */
   containerRef?: React.RefObject<HTMLElement | null>;
 }
 
