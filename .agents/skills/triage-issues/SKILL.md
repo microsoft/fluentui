@@ -80,7 +80,7 @@ For v9/v8 components, look up the package owner. Fast path:
 
 ```bash
 # Example: find the CODEOWNERS entry for react-skeleton
-grep -n 'react-skeleton' /Users/doidor/src/microsoft/fluentui/.github/CODEOWNERS || true
+grep -n 'react-skeleton' .github/CODEOWNERS || true
 ```
 
 If CODEOWNERS lists a team (e.g., `@microsoft/cxe-prg`), leave `assignee` empty and put the team in `needs_human_followup` — teams can't be assigned on issues via `gh`, so the user will route manually.
@@ -179,7 +179,6 @@ For each confirmed issue:
    - A StackBlitz / CodeSandbox / JSFiddle / CodePen link in the issue body — use it directly.
    - A link to a specific Storybook story hosted at `storybooks.fluentui.dev` or similar — use it directly.
    - Otherwise: spin up the relevant component's **per-component** Storybook (e.g. `yarn nx run react-<component>-stories:storybook --skip-nx-cache`). Follow the full pattern in the `visual-test` skill for port detection and troubleshooting.
-
 
 3. **Capture evidence.** Don't try to "prove" the bug — just gather what a human needs to decide:
 

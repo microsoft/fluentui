@@ -18,11 +18,19 @@ Both skills can run in the same session without interfering, but don't conflate 
 
 Operate in **recommend-then-apply** mode: never mutate anything until the user has approved the batch. CODEOWNERS can list multiple candidates per path, and in edge cases (cross-cutting issues, unclear area) a wrong auto-assignment is annoying to undo — the approval gate is worth the extra step.
 
-## Preflight: verify the gh account can write
+## Preflight: verify `gh` is installed and the account can write
 
-Two distinct problems can block Step 5 (apply) — both should be caught upfront so the user doesn't spend time reviewing recommendations that can't be applied:
+Three distinct problems can block Step 5 (apply) — all should be caught upfront so the user doesn't spend time reviewing recommendations that can't be applied:
 
-**1. Account identity / repo permission.** The board and its linked repos are under the `microsoft` org; EMU (Enterprise Managed User) tokens typically cannot mutate them even though they can read:
+**1. GitHub CLI installed.** All three scripts and every preflight check below shell out to `gh`. Verify it's on `PATH` before anything else:
+
+```bash
+command -v gh >/dev/null 2>&1 && gh --version | head -1 || echo "MISSING_GH_CLI"
+```
+
+If the check prints `MISSING_GH_CLI`, stop and ask the user to install it (`brew install gh` on macOS, see https://cli.github.com for other platforms). Do not try to substitute `curl` against the GraphQL API — auth handling diverges and the rest of the workflow assumes `gh`.
+
+**2. Account identity / repo permission.** The board and its linked repos are under the `microsoft` org; EMU (Enterprise Managed User) tokens typically cannot mutate them even though they can read:
 
 ```bash
 gh api graphql -f query='{ viewer { login } repository(owner:"microsoft", name:"fluentui") { viewerPermission } }'
@@ -30,7 +38,7 @@ gh api graphql -f query='{ viewer { login } repository(owner:"microsoft", name:"
 
 If `viewerPermission` is `NONE` or the active viewer is an EMU account, stop and suggest `gh auth switch --user <non-emu-account>`.
 
-**2. Token scope for ProjectV2 mutations.** `read:project` is enough to fetch items, but the `updateProjectV2ItemFieldValue` mutation requires the unqualified `project` scope. Check scopes directly — the read-query above will pass even when write scope is missing:
+**3. Token scope for ProjectV2 mutations.** `read:project` is enough to fetch items, but the `updateProjectV2ItemFieldValue` mutation requires the unqualified `project` scope. Check scopes directly — the read-query above will pass even when write scope is missing:
 
 ```bash
 gh auth status 2>&1 | grep -A0 "Token scopes" | grep -q "'project'," || echo "MISSING_PROJECT_SCOPE"
@@ -38,7 +46,7 @@ gh auth status 2>&1 | grep -A0 "Token scopes" | grep -q "'project'," || echo "MI
 
 If the check prints `MISSING_PROJECT_SCOPE`, stop and ask the user to run `gh auth refresh -s project` (interactive device flow). Tell them to paste `! gh auth refresh -s project` into the prompt so the output lands in this session. Do not try to attempt the mutation and recover — every apply call will fail the same way and waste time.
 
-Failing loud on either of these is much better than failing at apply time after the user has spent time reviewing recommendations.
+Failing loud on any of these is much better than failing at apply time after the user has spent time reviewing recommendations.
 
 ## What each item needs
 
@@ -58,17 +66,21 @@ Don't invent Team values. The board's Team field has a fixed option set — see 
 
 ## The fetch
 
-The board is an org-level ProjectV2 with ID `PVT_kwDOAF3p4s4AD4d_` and project number `395`. Items span three repos. Fetch everything and filter client-side — the GraphQL API doesn't let you filter on "field not set" directly.
+The board is an org-level ProjectV2 with ID `PVT_kwDOAF3p4s4AD4d_` and project number `395`. Items span three repos. The GraphQL API doesn't let you filter on "field not set" directly, so fetch everything and filter client-side.
 
-The full paginated query is in `references/graphql-snippets.md` under "Fetch untriaged items". Use it as-is; pagination matters because the board has 600+ items and the untriaged subset changes over time.
-
-After fetch, filter to items where ALL of these hold (this matches the board's **"By team"** view — view 6 — which is the canonical triage view):
+Run the fetch script — it paginates through all items (the board has 600+) and applies the **"By team"** view (view 6) filter, which keeps items where ALL of these hold:
 
 - `content.__typename === "Issue"` (skip DraftIssue and PullRequest)
 - `content.state === "OPEN"`
 - No `fieldValues` node has `field.name === "Team"` (i.e. Team is unset)
 - No `fieldValues` node has `field.name === "Status"` and value `"✅ Done"`
 - Labels do NOT include any of: `Help Wanted ✨`, `Type: Epic`, `Needs: Triage :mag:`, `Resolution: Soft Close`
+
+```bash
+node .agents/skills/triage-board/scripts/fetch-untriaged.js > /tmp/board-untriaged.jsonl
+```
+
+Pass `--count` if you only want the count for a quick sanity check.
 
 The label exclusions matter:
 
@@ -92,7 +104,7 @@ If the issue targets a specific package path inside `fluentui`, grep CODEOWNERS 
 
 ```bash
 # Example: react-combobox
-grep -n 'react-combobox' /Users/doidor/src/microsoft/fluentui/.github/CODEOWNERS | head -3
+grep -n 'react-combobox' .github/CODEOWNERS | head -3
 ```
 
 For issues in sibling repos (`fluentui-system-icons`, `fluentui-contrib`), fetch that repo's CODEOWNERS:
@@ -170,6 +182,8 @@ mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $optionId:String!) {
   -f optionId="<team option id from team-mapping.md>"
 ```
 
+If you applied a wrong Team and need to undo it before the user notices, swap `updateProjectV2ItemFieldValue` for `clearProjectV2ItemFieldValue` and drop the `value` / `optionId` arg.
+
 **Set the GitHub-issue assignee** (only if the recommendation has a specific user, and the issue doesn't already have an assignee):
 
 ```bash
@@ -194,4 +208,4 @@ Print: X items triaged (team set + assignee), Y items team-only (flagged for hum
 ## Reference files
 
 - `references/team-mapping.md` — CODEOWNERS handle → board Team option (name + option ID) mapping, plus the known-ambiguous handles that should trip `team_confidence: low`.
-- `references/graphql-snippets.md` — fetch query for paginated untriaged items, plus the mutation for setting the Team field.
+- `scripts/fetch-untriaged.js` — paginated fetch + view-6 filter; emits JSONL of untriaged open issues.
