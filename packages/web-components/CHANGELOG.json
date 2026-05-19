@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 19 May 2026 04:10:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.20",
+      "version": "3.0.0-rc.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eaabe416a19ed53c50df7ea4b2870a2942e3f230",
+            "comment": "Adds white-space normal to dropdown .control div to prevent text overflow issues."
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1e70fc2b24be6389cfc7d357cb97aa900f52daa7",
+            "comment": "feat: implement BaseCounterBadge class and update CounterBadge component structure"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 May 2026 04:08:40 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.19",
       "version": "3.0.0-rc.19",
