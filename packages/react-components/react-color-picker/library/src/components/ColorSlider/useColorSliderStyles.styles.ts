@@ -209,6 +209,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
   const channelStyles = useChannelStyles();
   const isVertical = state.vertical;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     colorSliderClassNames.root,
     rootStyles,
@@ -216,6 +217,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.rail.className = mergeClasses(
     colorSliderClassNames.rail,
     railStyles.rail,
@@ -225,6 +227,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     state.rail.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     colorSliderClassNames.thumb,
     thumbStyles.thumb,
@@ -232,6 +235,7 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     colorSliderClassNames.input,
     inputStyles.input,

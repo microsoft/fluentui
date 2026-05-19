@@ -136,6 +136,7 @@ export const useComboboxBase_unstable = (
   const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
 
   const onExpandIconMouseDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(onIconMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
       state.setOpen(event, !state.open);

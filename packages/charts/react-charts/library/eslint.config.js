@@ -27,8 +27,6 @@ module.exports = [
   {
     files: ['src/**/*.{ts,tsx}'],
     rules: {
-      // react-compiler plugin is only registered for ts/tsx files in flat/react
-      'react-compiler/react-compiler': 'warn',
       '@typescript-eslint/naming-convention': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-shadow': 'warn',

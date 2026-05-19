@@ -561,13 +561,16 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     }
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
 
   if (state.badge) {
+    // eslint-disable-next-line react-hooks/immutability
     state.badge.className = mergeClasses(avatarClassNames.badge, styles.badge, state.badge.className);
   }
 
   if (state.image) {
+    // eslint-disable-next-line react-hooks/immutability
     state.image.className = mergeClasses(
       avatarClassNames.image,
       imageClassName,
@@ -578,6 +581,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   }
 
   if (state.initials) {
+    // eslint-disable-next-line react-hooks/immutability
     state.initials.className = mergeClasses(
       avatarClassNames.initials,
       iconInitialsClassName,
@@ -605,6 +609,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconSizeClass = styles.icon48;
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       avatarClassNames.icon,
       iconInitialsClassName,

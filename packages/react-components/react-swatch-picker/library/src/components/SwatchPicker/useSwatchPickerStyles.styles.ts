@@ -36,6 +36,7 @@ export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): Swatch
   const layoutStyle = state.isGrid ? styles.grid : styles.row;
 
   const spacingStyle = state.spacing === 'small' ? styles.spacingSmall : styles.spacingMedium;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     swatchPickerClassNames.root,
     styles.root,

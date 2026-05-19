@@ -25,6 +25,7 @@ export const useMenuGridCellStyles_unstable = (state: MenuGridCellState): MenuGr
   'use no memo';
 
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     menuGridCellClassNames.root,
     rootStyles.root,

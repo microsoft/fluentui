@@ -31,6 +31,7 @@ export const useNavDrawerBodyStyles_unstable = (state: NavDrawerBodyState): NavD
 
   useDrawerBodyStyles_unstable(state);
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navDrawerBodyClassNames.root, styles.root, state.root.className);
   return state;
 };

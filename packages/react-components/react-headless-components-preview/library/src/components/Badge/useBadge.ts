@@ -15,6 +15,7 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLDivElement>): Bad
   const state: BadgeState = useBadgeBase_unstable(props, ref);
 
   // Set data-icon-position only when an icon slot is present.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-position'] = state.icon ? state.iconPosition : undefined;
 
   return state;

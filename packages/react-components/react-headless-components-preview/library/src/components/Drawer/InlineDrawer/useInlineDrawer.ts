@@ -14,7 +14,9 @@ export const useInlineDrawer = (props: InlineDrawerProps, ref: React.Ref<HTMLEle
 
   const state: InlineDrawerState = useInlineDrawerBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-open'] = stringifyDataAttribute(state.open);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-position'] = state.position;
 
   return state;

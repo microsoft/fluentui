@@ -92,6 +92,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   const intentIconStylesInverted = useIntentIconStylesInverted();
   const { intent } = state;
   const invertedStyles = useInvertedStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toastTitleClassNames.root,
     rootBaseClassName,
@@ -100,6 +101,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   );
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       toastTitleClassNames.media,
       mediaBaseClassName,
@@ -111,6 +113,7 @@ export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitle
   }
 
   if (state.action) {
+    // eslint-disable-next-line react-hooks/immutability
     state.action.className = mergeClasses(
       toastTitleClassNames.action,
       actionBaseClassName,

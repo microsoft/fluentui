@@ -189,6 +189,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   const iconStyles = useIconStyles();
   const smallerSelectedStyles = size === 'small' || size === 'extra-small' ? styles.selectedSmall : '';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
     resetStyles,
@@ -201,6 +202,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   );
 
   if (state.disabled && state.disabledIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.disabledIcon.className = mergeClasses(
       iconStyles.icon,
       iconStyles[size],
@@ -210,6 +212,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(iconStyles.icon, iconStyles[size], state.icon.className);
   }
 

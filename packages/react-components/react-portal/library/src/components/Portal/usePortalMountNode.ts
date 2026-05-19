@@ -58,15 +58,18 @@ const useLegacyElementFactory: UseElementFactory = options => {
   // We don't want to re-create the portal element when its attributes change. This also cannot not be done in an effect
   // because, changing the value of CSS variables after an initial mount will trigger interesting CSS side effects like
   // transitions.
+  // eslint-disable-next-line react-hooks/void-use-memo
   React.useMemo(() => {
     if (!targetElement) {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     targetElement.className = className;
     targetElement.setAttribute('dir', dir);
     targetElement.setAttribute('data-portal-node', 'true');
 
+    // eslint-disable-next-line react-hooks/refs
     focusVisibleRef.current = targetElement;
   }, [className, dir, targetElement, focusVisibleRef]);
 

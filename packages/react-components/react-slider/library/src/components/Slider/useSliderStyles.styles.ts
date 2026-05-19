@@ -281,6 +281,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const inputStyles = useInputStyles();
   const isVertical = state.vertical;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     sliderClassNames.root,
     rootStyles.root,
@@ -291,6 +292,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.rail.className = mergeClasses(
     sliderClassNames.rail,
     railStyles.rail,
@@ -298,6 +300,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.rail.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     sliderClassNames.thumb,
     thumbStyles.thumb,
@@ -306,6 +309,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     sliderClassNames.input,
     inputStyles.input,

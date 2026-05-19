@@ -269,6 +269,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
 
   const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     compoundButtonClassNames.root,
 
@@ -289,6 +290,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.contentContainer.className = mergeClasses(
     compoundButtonClassNames.contentContainer,
     contentContainerStyles.base,
@@ -296,6 +298,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       compoundButtonClassNames.icon,
       iconStyles.base,
@@ -305,6 +308,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       compoundButtonClassNames.secondaryContent,
       secondaryContentStyles.base,
