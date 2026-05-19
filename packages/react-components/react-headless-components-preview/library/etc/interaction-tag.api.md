@@ -39,7 +39,7 @@ export { renderInteractionTag }
 // @public
 export const useInteractionTag: (props: InteractionTagProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagState;
 
-// @public
+// @public (undocumented)
 export const useInteractionTagContextValues: (state: InteractionTagState) => InteractionTagContextValues;
 
 // (No @packageDocumentation comment for this package)

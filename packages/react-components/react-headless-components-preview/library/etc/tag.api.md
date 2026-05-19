@@ -38,7 +38,7 @@ export type TagState = TagBaseState & {
 // @public
 export const useTag: (props: TagProps, ref: React_2.Ref<HTMLSpanElement | HTMLButtonElement>) => TagState;
 
-// @public
+// @public (undocumented)
 export const useTagContextValues: (_state: TagState) => TagContextValues;
 
 // (No @packageDocumentation comment for this package)

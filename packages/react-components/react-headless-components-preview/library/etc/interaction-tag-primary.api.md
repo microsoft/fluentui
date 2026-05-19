@@ -38,7 +38,7 @@ export { renderInteractionTagPrimary }
 // @public
 export const useInteractionTagPrimary: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;
 
-// @public
+// @public (undocumented)
 export const useInteractionTagPrimaryContextValues: (_state: InteractionTagPrimaryState) => InteractionTagPrimaryContextValues;
 
 // (No @packageDocumentation comment for this package)
