@@ -13,8 +13,6 @@ import type { ResizeCallbackWithRef } from './hooks.types';
 export const useResizeObserverRef_unstable = (
   resizeCallback: ResizeCallbackWithRef,
 ): ((instance: HTMLElement | HTMLDivElement | null) => void) => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
   const containerHeightRef = React.useRef<number>(0);

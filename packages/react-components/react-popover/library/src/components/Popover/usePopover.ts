@@ -254,8 +254,6 @@ function usePopoverRefs(
   state: Pick<PopoverState, 'size' | 'contextTarget'> &
     Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow'>,
 ) {
-  'use no memo';
-
   const positioningOptions = {
     position: 'above' as const,
     align: 'center' as const,

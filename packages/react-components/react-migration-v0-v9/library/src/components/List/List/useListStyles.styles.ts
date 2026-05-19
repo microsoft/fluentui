@@ -32,8 +32,6 @@ const useStyles = makeStyles({
  * Apply styling to the List slots based on the state
  */
 export const useListStyles_unstable = (state: ListState): ListState => {
-  'use no memo';
-
   const rootStyles = useRootBaseStyles();
   const styles = useStyles();
 

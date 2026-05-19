@@ -24,8 +24,6 @@ const useStyles = makeStyles({
  * Apply styling to the ColorPicker slots based on the state
  */
 export const useColorPickerStyles_unstable = (state: ColorPickerState): ColorPickerState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(colorPickerClassNames.root, styles.root, state.root.className);

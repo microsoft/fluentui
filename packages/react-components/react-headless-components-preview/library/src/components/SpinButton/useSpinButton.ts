@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderSpinButton`.
  */
 export const useSpinButton = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
-  'use no memo';
-
   const state: SpinButtonState = useSpinButtonBase_unstable(props, ref);
 
   // Set data attributes for disabled, spin direction, and bound states to simplify styling.

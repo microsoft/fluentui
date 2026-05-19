@@ -95,8 +95,6 @@ const useSplitNaveItemStyles = makeStyles({
  * Apply styling to the SplitNavItem slots based on the state
  */
 export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitNavItemState => {
-  'use no memo';
-
   const splitNavItemStyles = useSplitNaveItemStyles();
   const sharedRootClassNames = useRootDefaultClassName();
 

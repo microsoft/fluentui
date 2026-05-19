@@ -30,8 +30,6 @@ const useStyles = makeStyles({
  * Apply styling to the MenuItemLink slots based on the state
  */
 export const useMenuItemLinkStyles_unstable = (state: MenuItemLinkState): MenuItemLinkState => {
-  'use no memo';
-
   useMenuItemStyles_unstable(state as MenuItemState);
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability

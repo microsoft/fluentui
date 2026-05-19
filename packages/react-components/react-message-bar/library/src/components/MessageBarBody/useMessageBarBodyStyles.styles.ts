@@ -19,8 +19,6 @@ const useRootBaseStyles = makeResetStyles({
  * Apply styling to the MessageBarBody slots based on the state
  */
 export const useMessageBarBodyStyles_unstable = (state: MessageBarBodyState): MessageBarBodyState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(messageBarBodyClassNames.root, rootBaseStyles, state.root.className);

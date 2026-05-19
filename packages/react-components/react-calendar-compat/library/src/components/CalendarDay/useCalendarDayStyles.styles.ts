@@ -143,7 +143,7 @@ const useDisabledStyleStyles = makeStyles({
  * @internal
  */
 export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): CalendarDayStyles => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCalendarDayStyles_unstable — manual opt-out to preserve runtime behavior
 
   const rootStyles = useRootStyles();
   const headerStyles = useHeaderStyles();

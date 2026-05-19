@@ -97,8 +97,6 @@ const useMultilineStyles = makeStyles({
  * Apply styling to the MenuItemSwitch slots based on the state
  */
 export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): MenuItemSwitchState => {
-  'use no memo';
-
   const { checked, subText } = state;
   const multiline = !!subText;
   const switchIndicatorStyles = useSwitchIndicatorStyles();

@@ -159,8 +159,6 @@ const useIconAfterStyles = makeStyles({
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  'use no memo';
-
   const { main, iconAfter, iconBefore, expandIcon, root, aside, actions, selector } = state;
   const rootStyles = useRootStyles();
   const rootBaseStyles = useRootBaseStyles();

@@ -13,8 +13,6 @@ const getPercent = (value: number, min: number, max: number) => {
 };
 
 export const useSliderState_unstable = (state: SliderBaseState, props: SliderBaseProps): SliderBaseState => {
-  'use no memo';
-
   const { min = 0, max = 100, step } = props;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({

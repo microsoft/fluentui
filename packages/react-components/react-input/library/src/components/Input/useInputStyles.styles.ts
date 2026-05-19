@@ -329,8 +329,6 @@ const useContentStyles = makeStyles({
  * Apply styling to the Input slots based on the state
  */
 export const useInputStyles_unstable = (state: InputState): InputState => {
-  'use no memo';
-
   const { size, appearance } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';

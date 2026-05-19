@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderButton`.
  */
 export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>): ButtonState => {
-  'use no memo';
-
   const state: ButtonState = useButtonBase_unstable(props, ref);
 
   // Set data attributes for disabled, disabledFocusable, and iconOnly states to simplify styling of these states.
