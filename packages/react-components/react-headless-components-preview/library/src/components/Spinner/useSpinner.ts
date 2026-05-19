@@ -14,6 +14,7 @@ export const useSpinner = (props: SpinnerProps, ref: React.Ref<HTMLElement>): Sp
 
   const state: SpinnerState = useSpinnerBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-label-position'] = state.labelPosition;
 
   return state;

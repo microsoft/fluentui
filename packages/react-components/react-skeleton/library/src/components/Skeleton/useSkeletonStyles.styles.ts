@@ -21,6 +21,7 @@ export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState 
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     skeletonClassNames.root,
     state.root.as === 'span' && styles.blockStyling,

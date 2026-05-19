@@ -36,6 +36,7 @@ export const useTeachingPopoverCarouselNavStyles_unstable = (
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverCarouselNavClassNames.root, styles.root, state.root.className);
 
   return state;

@@ -83,6 +83,7 @@ export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
 
   const brandStyles = isSelected ? styles.rootBrand : styles.rootBrandUnselected;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverCarouselNavButtonClassNames.root,
     styles.root,

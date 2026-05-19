@@ -360,8 +360,10 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps)
   React.useRef(() => {
     previousFromYearRef.current = fromYear;
   });
+  // eslint-disable-next-line react-hooks/refs
   const previousFromYear = previousFromYearRef.current;
 
+  // eslint-disable-next-line react-hooks/refs
   if (!previousFromYear || previousFromYear === fromYear) {
     return undefined;
   } else if (previousFromYear > fromYear) {
@@ -391,6 +393,7 @@ function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: Cale
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFromYear(rangeYear);
   }, [rangeYear]);
 

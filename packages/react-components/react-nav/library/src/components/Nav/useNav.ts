@@ -73,7 +73,6 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
     onNavItemSelect,
     onNavCategoryItemToggle,
     multiple = true,
-    // density = 'medium',
     openCategories: controlledOpenCategoryItems,
     selectedCategoryValue: controlledSelectedCategoryValue,
     selectedValue: controlledSelectedValue,
@@ -112,13 +111,19 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
   const currentSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
   const previousSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
 
+  // eslint-disable-next-line react-hooks/refs
   if (currentSelectedValue.current !== selectedValue) {
+    // eslint-disable-next-line react-hooks/refs
     previousSelectedValue.current = currentSelectedValue.current;
+    // eslint-disable-next-line react-hooks/refs
     currentSelectedValue.current = selectedValue;
   }
 
+  // eslint-disable-next-line react-hooks/refs
   if (currentSelectedCategoryValue.current !== selectedCategoryValue) {
+    // eslint-disable-next-line react-hooks/refs
     previousSelectedCategoryValue.current = currentSelectedCategoryValue.current;
+    // eslint-disable-next-line react-hooks/refs
     currentSelectedCategoryValue.current = selectedCategoryValue;
   }
 
@@ -178,7 +183,5 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     multiple,
-    // density,
-    // tabbable: false,
   };
 };

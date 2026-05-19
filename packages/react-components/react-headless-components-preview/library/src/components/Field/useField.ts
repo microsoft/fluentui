@@ -14,6 +14,7 @@ export const useField = (props: FieldProps, ref: React.Ref<HTMLDivElement>): Fie
 
   const state: FieldState = useFieldBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-validate-state'] = state.validationState;
 
   return state;

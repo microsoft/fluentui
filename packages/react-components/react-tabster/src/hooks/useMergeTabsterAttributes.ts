@@ -37,7 +37,7 @@ export const useMergedTabsterAttributes_unstable = (
     }),
     // disable exhaustive-deps because we want to memoize the result of the reduction
     // this is safe because the collection of attributes is not expected to change at runtime
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/use-memo
     stringAttributes,
   );
 };
@@ -71,9 +71,12 @@ const useWarnIfUnstableAttributes = (attributes: string[]) => {
 
   const initialAttributesRef = React.useRef(attributes);
 
+  // eslint-disable-next-line react-hooks/refs
   let isStable = initialAttributesRef.current.length === attributes.length;
+  // eslint-disable-next-line react-hooks/refs
   if (initialAttributesRef.current !== attributes && isStable) {
     for (let i = 0; i < attributes.length; i++) {
+      // eslint-disable-next-line react-hooks/refs
       if (initialAttributesRef.current[i] !== attributes[i]) {
         isStable = false;
         break;

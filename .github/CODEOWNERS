@@ -399,6 +399,7 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 
 ### generic rules for v-build. Might be tweaked based on needs.
 **/project.json @microsoft/fluentui-react-build
+**/monosize.config.mjs @microsoft/fluentui-react-build
 **/just.config.ts @microsoft/fluentui-react-build
 **/jest.config.js @microsoft/fluentui-react-build
 **/webpack.*.js @microsoft/fluentui-react-build

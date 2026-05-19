@@ -19,6 +19,7 @@ export const useDrawerHeaderTitle = (
   const { dialogTitleId } = useDialogContext();
 
   if (state.heading && dialogTitleId) {
+    // eslint-disable-next-line react-hooks/immutability
     state.heading.id = dialogTitleId;
   }
 
