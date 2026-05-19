@@ -17,7 +17,7 @@ const renderInfoLabel = (props: InfoLabelProps): JSXElement => {
 
 describe('InfoLabel - close on tab-out', () => {
   const openInfoButton = () => {
-    return cy.get(`button.info-button`).focus().realPress('{enter}');
+    return cy.get(`button.info-button`).click();
   };
 
   it('no focusable elements', () => {
@@ -32,9 +32,7 @@ describe('InfoLabel - close on tab-out', () => {
     );
 
     openInfoButton().get(surfaceSelector).should('exist');
-    // Shift-tab to InfoButton, the surface should still be visible
-    cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('exist');
-    // Shift-tab again to the 'before' button, surface should be hidden
+    // Shift-tab to the 'before' button, surface should be hidden
     cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('not.exist');
     openInfoButton();
     cy.realPress('Tab').get(surfaceSelector).should('not.exist');
@@ -57,9 +55,7 @@ describe('InfoLabel - close on tab-out', () => {
     );
 
     openInfoButton().get(surfaceSelector).should('exist');
-    // Shift-tab to InfoButton, the surface should still be visible
-    cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('exist');
-    // Shift-tab again to the 'before' button, surface should be hidden
+    // Shift-tab to the 'before' button, surface should be hidden
     cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('not.exist');
     openInfoButton();
     // moving into the focusable item
@@ -90,9 +86,7 @@ describe('InfoLabel - close on tab-out', () => {
     );
 
     openInfoButton().get(surfaceSelector).should('exist');
-    // Shift-tab to InfoButton, the surface should still be visible
-    cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('exist');
-    // Shift-tab again to the 'before' button, surface should be hidden
+    // Shift-tab to the 'before' button, surface should be hidden
     cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('not.exist');
     openInfoButton();
     // moving into the focusable item

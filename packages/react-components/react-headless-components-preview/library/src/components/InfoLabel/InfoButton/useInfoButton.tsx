@@ -74,7 +74,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   const onBlurButtonOrInfo = (e: React.FocusEvent) => {
     const nextFocused = e.relatedTarget;
 
-    if (nextFocused && rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused)) {
+    if (!nextFocused || (rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused))) {
       setPopoverOpen(false);
     }
   };
