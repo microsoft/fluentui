@@ -77,9 +77,10 @@ describe('useTagBase_unstable', () => {
   it('should attach onClick/onKeyDown handlers when dismissible', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTagBase_unstable({ dismissible: true }, ref), { wrapper: wrap() });
-    expect(result.current.root.onClick).toBeDefined();
-    expect(result.current.root.onKeyDown).toBeDefined();
-    expect(result.current.root.type).toBe('button');
+    const root = result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>;
+    expect(root.onClick).toBeDefined();
+    expect(root.onKeyDown).toBeDefined();
+    expect(root.type).toBe('button');
   });
 
   it('should NOT inject a default dismissIcon children (icon injection lives in the styled hook)', () => {
@@ -112,7 +113,8 @@ describe('useTagBase_unstable', () => {
       wrapper: wrap({ handleTagDismiss: () => ({}), size: 'medium', disabled: true }),
     });
     expect(result.current.disabled).toBe(true);
-    expect(result.current.root.disabled).toBe(true);
+    const root = result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>;
+    expect(root.disabled).toBe(true);
   });
 
   it('should inherit dismissible from TagGroupContext when not set on props', () => {
@@ -121,6 +123,7 @@ describe('useTagBase_unstable', () => {
       wrapper: wrap({ handleTagDismiss: () => ({}), size: 'medium', dismissible: true }),
     });
     expect(result.current.dismissible).toBe(true);
-    expect(result.current.root.type).toBe('button');
+    const root = result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>;
+    expect(root.type).toBe('button');
   });
 });

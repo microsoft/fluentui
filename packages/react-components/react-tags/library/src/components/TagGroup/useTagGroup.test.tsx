@@ -1,7 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 import { useTagGroup_unstable, useTagGroupBase_unstable } from './useTagGroup';
+
+// Slot props are a discriminated union that doesn't expose `data-*` index access at
+// the type level; cast to a plain record for the data-attribute assertions below.
+type RootRecord = Record<string, unknown>;
 
 describe('useTagGroup_unstable', () => {
   it('should default size to medium and appearance to filled', () => {
@@ -18,7 +23,7 @@ describe('useTagGroup_unstable', () => {
 
     // useTagGroup_unstable wires up useArrowNavigationGroup via the base hook's
     // arrowNavigationProps option; Tabster's contract is a data-tabster attribute.
-    expect(result.current.root['data-tabster']).toBeDefined();
+    expect((result.current.root as RootRecord)['data-tabster']).toBeDefined();
   });
 
   it('should default role to toolbar', () => {
@@ -33,16 +38,15 @@ describe('useTagGroupBase_unstable', () => {
   it('should NOT include arrow-navigation props when options omitted (true headless mode)', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroupBase_unstable({}, ref));
-    expect(result.current.root['data-tabster']).toBeUndefined();
+    expect((result.current.root as RootRecord)['data-tabster']).toBeUndefined();
   });
 
   it('should spread arrowNavigationProps option onto root when supplied', () => {
     const ref = React.createRef<HTMLDivElement>();
-    const arrowNavigationProps = { 'data-arrow': 'group', tabIndex: 0 };
+    const arrowNavigationProps: TabsterDOMAttribute = { 'data-tabster': '{"mock":"value"}' };
     const { result } = renderHook(() => useTagGroupBase_unstable({}, ref, { arrowNavigationProps }));
 
-    expect(result.current.root['data-arrow']).toBe('group');
-    expect(result.current.root.tabIndex).toBe(0);
+    expect((result.current.root as RootRecord)['data-tabster']).toBe('{"mock":"value"}');
   });
 
   it('should call onAfterTagDismiss with the group container after a tag is dismissed', () => {
