@@ -6,10 +6,10 @@ import { InteractionTagPrimary } from '@fluentui/react-headless-components-previ
 
 import styles from './tagGroup.module.css';
 
-export const Default = (): React.ReactNode => (
+export const Disabled = (): React.ReactNode => (
   <div className={styles.demo}>
-    <div className={styles.label}>Example with Tag:</div>
-    <TagGroup aria-label="Simple tag group with Tag" role="list" className={styles.group}>
+    <div className={styles.label}>Disabled example with Tag:</div>
+    <TagGroup disabled aria-label="Disabled tag group with Tag" role="list" className={styles.group}>
       <Tag role="listitem" className={styles.tag}>
         Tag 1
       </Tag>
@@ -21,8 +21,8 @@ export const Default = (): React.ReactNode => (
       </Tag>
     </TagGroup>
 
-    <div className={styles.label}>Example with InteractionTag:</div>
-    <TagGroup aria-label="Simple tag group with InteractionTag" className={styles.group}>
+    <div className={styles.label}>Disabled example with InteractionTag:</div>
+    <TagGroup disabled aria-label="Disabled tag group with InteractionTag" className={styles.group}>
       <InteractionTag className={styles.interactionTag}>
         <InteractionTagPrimary className={styles.primary}>Tag 1</InteractionTagPrimary>
       </InteractionTag>
@@ -35,3 +35,11 @@ export const Default = (): React.ReactNode => (
     </TagGroup>
   </div>
 );
+
+Disabled.parameters = {
+  docs: {
+    description: {
+      story: 'A disabled TagGroup propagates `disabled` to every child Tag / InteractionTag via the group context.',
+    },
+  },
+};
