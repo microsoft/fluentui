@@ -1,0 +1,68 @@
+.interactionTag {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 12px;
+  height: 28px;
+}
+
+.interactionTag[data-selected] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.primary {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.primary:hover {
+  background: var(--surface-muted);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev) inset, 0 0 0 4px var(--accent) inset;
+}
+
+.primary[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.secondary {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  padding: 0 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+}
+
+.secondary:hover {
+  background: var(--surface-muted);
+}
+
+.demo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}

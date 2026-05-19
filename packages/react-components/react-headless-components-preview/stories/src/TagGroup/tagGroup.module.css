@@ -1,0 +1,50 @@
+.group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.group[data-disabled] {
+  opacity: 0.55;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 0 0 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-muted);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+}
+
+.tag:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.tag[data-disabled] {
+  cursor: not-allowed;
+}
+
+.dismissIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
