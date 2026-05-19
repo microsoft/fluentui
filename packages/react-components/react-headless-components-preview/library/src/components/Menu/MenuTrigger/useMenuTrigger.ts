@@ -27,8 +27,18 @@ const isTargetDisabled = (event: React.SyntheticEvent): boolean => {
   return target.hasAttribute('disabled') || target.getAttribute('aria-disabled') === 'true';
 };
 
+const FIRST_MENU_ITEM_SELECTOR =
+  ':is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):not([aria-disabled="true"])';
+
 export const useMenuTrigger = (props: MenuTriggerProps): MenuTriggerState => {
-  const baseState = useMenuTriggerBase_unstable(props);
+  const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
+
+  const focusFirst = React.useCallback(() => {
+    const firstFocusable = menuPopoverRef.current?.querySelector<HTMLElement>(FIRST_MENU_ITEM_SELECTOR);
+    firstFocusable?.focus();
+  }, [menuPopoverRef]);
+
+  const baseState = useMenuTriggerBase_unstable(props, { focusFirst });
   const open = useMenuContext(ctx => ctx.open);
   const openOnContext = useMenuContext(ctx => ctx.openOnContext);
   const setOpen = useMenuContext(ctx => ctx.setOpen);

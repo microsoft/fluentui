@@ -25,11 +25,20 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   React.useEffect(() => {
     const surface = menuPopoverRef.current as HTMLElement | null;
 
-    if (!surface || !open) {
+    if (!surface) {
       return;
     }
 
     if (typeof surface.showPopover !== 'function') {
+      return;
+    }
+
+    if (!open) {
+      if (SUPPORTS_POPOVER_OPEN_SELECTOR && !surface.matches(':popover-open')) {
+        return;
+      }
+
+      surface.hidePopover();
       return;
     }
 
@@ -41,6 +50,12 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
     if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
       surface.showPopover();
+    }
+
+    const menuListEl = surface.querySelector<HTMLElement>('[focusgroup]');
+
+    if (menuListEl) {
+      menuListEl.setAttribute('focusgroup', menuListEl.getAttribute('focusgroup') ?? '');
     }
 
     const onSurfaceToggle = (event: Event) => {
