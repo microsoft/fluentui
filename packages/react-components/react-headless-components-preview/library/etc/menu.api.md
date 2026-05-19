@@ -27,7 +27,7 @@ import type { MenuItemProps as MenuItemProps_2 } from '@fluentui/react-menu';
 import { MenuItemRadioBaseProps as MenuItemRadioProps } from '@fluentui/react-menu';
 import { MenuItemRadioBaseState as MenuItemRadioState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
-import { MenuItemState as MenuItemState_2 } from '@fluentui/react-menu';
+import type { MenuItemState as MenuItemState_2 } from '@fluentui/react-menu';
 import { MenuItemSwitchProps } from '@fluentui/react-menu';
 import { MenuItemSwitchSlots } from '@fluentui/react-menu';
 import { MenuItemSwitchState } from '@fluentui/react-menu';
@@ -50,6 +50,7 @@ import { MenuTriggerState } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import { renderMenuDivider_unstable as renderMenuDivider } from '@fluentui/react-menu';
 import { renderMenuGroupHeader_unstable as renderMenuGroupHeader } from '@fluentui/react-menu';
+import { renderMenuItem_unstable as renderMenuItem } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable as renderMenuItemCheckbox } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable as renderMenuItemLink } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable as renderMenuItemRadio } from '@fluentui/react-menu';
@@ -213,8 +214,7 @@ export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupCo
 
 export { renderMenuGroupHeader }
 
-// @public (undocumented)
-export const renderMenuItem: (state: MenuItemState_2) => JSXElement;
+export { renderMenuItem }
 
 export { renderMenuItemCheckbox }
 
