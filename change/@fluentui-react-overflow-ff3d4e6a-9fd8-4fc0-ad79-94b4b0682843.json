@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize",
+  "packageName": "@fluentui/react-overflow",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

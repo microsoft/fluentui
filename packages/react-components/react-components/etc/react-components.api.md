@@ -772,6 +772,7 @@ import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { OverflowReorderObserver } from '@fluentui/react-overflow';
 import { OverlayDrawer } from '@fluentui/react-drawer';
 import { overlayDrawerClassNames } from '@fluentui/react-drawer';
 import { OverlayDrawerProps } from '@fluentui/react-drawer';
@@ -3566,6 +3567,8 @@ export { OverflowItem }
 export { OverflowItemProps }
 
 export { OverflowProps }
+
+export { OverflowReorderObserver }
 
 export { OverlayDrawer }
 
