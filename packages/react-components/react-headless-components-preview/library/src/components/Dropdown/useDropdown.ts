@@ -86,6 +86,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
   };
 
   const onClearButtonClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.clearButton?.onClick, (ev: React.MouseEvent<HTMLButtonElement>) => {
       clearSelection(ev);
       triggerRef.current?.focus();
