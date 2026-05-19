@@ -1,3 +1,1 @@
-import { renderMenuGroup_unstable } from '@fluentui/react-menu';
-
-export const renderMenuGroup = renderMenuGroup_unstable;
+export { renderMenuGroup_unstable as renderMenuGroup } from '@fluentui/react-menu';
