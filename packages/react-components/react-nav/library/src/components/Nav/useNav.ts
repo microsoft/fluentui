@@ -73,7 +73,6 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
     onNavItemSelect,
     onNavCategoryItemToggle,
     multiple = true,
-    // density = 'medium',
     openCategories: controlledOpenCategoryItems,
     selectedCategoryValue: controlledSelectedCategoryValue,
     selectedValue: controlledSelectedValue,
@@ -178,7 +177,5 @@ export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivE
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     multiple,
-    // density,
-    // tabbable: false,
   };
 };
