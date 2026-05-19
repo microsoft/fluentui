@@ -105,7 +105,6 @@ export const Default: Story = {
     slottedContent: () => [
       { value: 'apple', slottedContent: () => 'Apple' },
       { value: 'banana', slottedContent: () => 'Banana' },
-      { value: 'banana', slottedContent: () => 'Bbanana' },
       { value: 'blueberry', slottedContent: () => 'Blueberry' },
       { value: 'orange', slottedContent: () => 'Orange' },
       { value: 'mango', slottedContent: () => 'Mango' },
