@@ -150,6 +150,9 @@ export type TagBaseState = DistributiveOmit<TagState, 'appearance' | 'size' | 's
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public (undocumented)
+export type TagContextValues = TagAvatarContextValues;
+
+// @public (undocumented)
 export type TagDismissData<Value = TagValue> = {
     value: Value;
 };

@@ -6,7 +6,7 @@ export {
   useTagBase_unstable,
   useTag_unstable,
 } from './Tag';
-export type { TagBaseProps, TagBaseState, TagProps, TagSlots, TagState } from './Tag';
+export type { TagBaseProps, TagBaseState, TagContextValues, TagProps, TagSlots, TagState } from './Tag';
 
 export {
   InteractionTag,
