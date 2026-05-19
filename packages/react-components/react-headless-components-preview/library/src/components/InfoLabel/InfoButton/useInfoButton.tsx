@@ -34,6 +34,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
     },
 
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('button', {
         type: 'button',
         'aria-label': 'information',
@@ -79,7 +80,9 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
     }
   };
 
+  // eslint-disable-next-line react-hooks/refs
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  // eslint-disable-next-line react-hooks/refs
   state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
   return state;
 };
