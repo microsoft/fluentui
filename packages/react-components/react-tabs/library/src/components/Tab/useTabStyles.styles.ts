@@ -654,6 +654,7 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
     );
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(...classes, state.root.className);
 
   useTabAnimatedIndicatorStyles_unstable(state);
@@ -711,6 +712,7 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     disabled && rootStyles.disabled,
   ];
 
+  // eslint-disable-next-line react-hooks/immutability
   slot.className = mergeClasses(
     rootStyles.button,
     // orientation
@@ -745,6 +747,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
   const { selected, size } = state;
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       tabClassNames.icon,
       iconStyles.base,
@@ -756,6 +759,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
 
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentReservedSpace.className = mergeClasses(
       tabReservedSpaceClassNames.content,
       contentStyles.base,
@@ -766,10 +770,11 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
     );
     // FIXME: this is a deprecated API
     // should be removed in the next major version
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, react-hooks/immutability
     state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.content.className = mergeClasses(
     tabClassNames.content,
     contentStyles.base,

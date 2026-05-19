@@ -55,7 +55,10 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
-    registerRules({ rules: [rules.scssRule], config: localConfig });
+    registerRules({
+      rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
+      config: localConfig,
+    });
 
     return localConfig;
   },

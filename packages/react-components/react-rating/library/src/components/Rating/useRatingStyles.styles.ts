@@ -24,6 +24,7 @@ export const useRatingStyles_unstable = (state: RatingState): RatingState => {
   'use no memo';
 
   const rootClassName = useRootClassName();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(ratingClassNames.root, rootClassName, state.root.className);
   return state;
 };

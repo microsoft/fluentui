@@ -19,7 +19,9 @@ export const useMessageBar = (props: MessageBarProps, ref: React.Ref<HTMLDivElem
 
   const state: MessageBarState = useMessageBarBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-layout'] = state.layout;
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = stringifyDataAttribute(state.intent);
 
   return state;

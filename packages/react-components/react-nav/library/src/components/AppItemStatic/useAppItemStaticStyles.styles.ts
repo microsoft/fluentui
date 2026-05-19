@@ -36,6 +36,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
 
   const { density, icon } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     rootDefaultClassName,
     appItemStaticClassNames.root,
@@ -47,6 +48,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(appItemStaticClassNames.icon, iconStyles.base, state.icon.className);
   }
 

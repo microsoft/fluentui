@@ -13,6 +13,13 @@ const config = {
     tableName: 'fluentuilatest',
   }),
   bundler: webpackBundler(config => {
+    config.externals = config.externals ?? {};
+    config.externals = {
+      react: 'React',
+      'react/jsx-runtime': 'jsxRuntime',
+      'react-dom': 'ReactDOM',
+      'react/compiler-runtime': 'ReactCompilerRuntime',
+    };
     return config;
   }),
   reportResolvers: {

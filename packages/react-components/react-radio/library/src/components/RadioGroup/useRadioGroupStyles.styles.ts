@@ -27,6 +27,7 @@ export const useRadioGroupStyles_unstable = (state: RadioGroupState): RadioGroup
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     radioGroupClassNames.root,
     styles.root,

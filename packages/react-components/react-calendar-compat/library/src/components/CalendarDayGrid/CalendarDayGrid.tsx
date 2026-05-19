@@ -40,8 +40,10 @@ function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
   });
   const previousNavigatedDate = previousNavigatedDateRef.current;
 
+  // eslint-disable-next-line react-hooks/refs
   if (!previousNavigatedDate || previousNavigatedDate.getTime() === weeks[0][0].originalDate.getTime()) {
     return undefined;
+    // eslint-disable-next-line react-hooks/refs
   } else if (previousNavigatedDate <= weeks[0][0].originalDate) {
     return false;
   } else {
@@ -61,6 +63,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     const { firstDayOfWeek, minDate, maxDate, workWeekDays, daysToSelectInDayView, restrictedDates } = props;
     const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
+    // eslint-disable-next-line react-hooks/immutability
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
     dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
 

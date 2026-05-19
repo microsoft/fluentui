@@ -16,6 +16,7 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
   const state: AccordionPanelState = useAccordionPanelBase_unstable(props, ref);
 
   // Set data attribute for open state to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-open'] = stringifyDataAttribute(state.open);
 
   return state;

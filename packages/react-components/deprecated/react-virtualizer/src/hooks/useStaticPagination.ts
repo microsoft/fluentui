@@ -27,6 +27,7 @@ export const useStaticVirtualizerPagination = (
 
   const clearListeners = () => {
     if (scrollContainer.current) {
+      // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
       scrollContainer.current.removeEventListener('scroll', onScroll);
 
       scrollContainer.current = null;
@@ -84,6 +85,7 @@ export const useStaticVirtualizerPagination = (
   /**
    * On scroll timer that will continuously delay callback until scrolling stops
    */
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization -- deprecated package, not worth refactoring
   const onScroll = React.useCallback(() => {
     clearScrollTimer();
     setScrollTimer(onScrollEnd, 100);

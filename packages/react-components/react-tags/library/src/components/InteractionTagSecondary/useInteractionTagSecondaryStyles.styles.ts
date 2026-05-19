@@ -220,6 +220,7 @@ export const useInteractionTagSecondaryStyles_unstable = (
 
   const { disabled, selected, shape, size, appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     interactionTagSecondaryClassNames.root,
     rootBaseClassName,

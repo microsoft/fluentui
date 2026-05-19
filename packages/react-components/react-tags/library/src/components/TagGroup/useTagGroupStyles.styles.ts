@@ -35,6 +35,7 @@ export const useTagGroupStyles_unstable = (state: TagGroupState): TagGroupState 
 
   const styles = useRootStyles();
   const { size } = state;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(tagGroupClassNames.root, styles.base, styles[size], state.root.className);
 
   return state;

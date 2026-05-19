@@ -26,6 +26,7 @@ export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState): 
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuGroupHeaderClassNames.root, styles.root, state.root.className);
 
   return state;
