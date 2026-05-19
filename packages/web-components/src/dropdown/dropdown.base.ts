@@ -915,16 +915,17 @@ export class BaseDropdown extends FASTElement {
         break;
       }
 
-      case ' ': {
-        if (this.isCombobox) {
-          break;
-        }
-
-        e.preventDefault();
-      }
-
+      case ' ':
       case 'Enter':
       case 'Tab': {
+        if (e.key === ' ') {
+          if (this.isCombobox) {
+            break;
+          }
+
+          e.preventDefault();
+        }
+
         if (this.open) {
           this.selectOption(this.activeIndex, true);
           if (this.multiple) {
