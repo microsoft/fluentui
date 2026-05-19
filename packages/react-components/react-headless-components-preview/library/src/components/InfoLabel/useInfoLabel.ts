@@ -10,8 +10,8 @@ import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 /**
  * Create the state required to render InfoLabel.
  *
- * The returned state can be modified with hooks such as useInfoLabelStyles_unstable,
- * before being passed to renderInfoLabel_unstable.
+ * The returned state can be modified with hooks such as useInfoLabel,
+ * before being passed to renderInfoLabel.
  *
  * @param props - props from this instance of InfoLabel
  * @param ref - reference to label element of InfoLabel
@@ -65,20 +65,20 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
   );
 
   if (infoButton) {
-    infoButton.popover = infoButtonPopover;
     const infoPopupId = baseId + '__info'; // used as a self-referencing aria-labelledby to name the popup
+    infoButtonPopover.id ??= infoPopupId;
+    infoButton.popover = infoButtonPopover;
     infoButton.info = slot.optional(infoButton?.info, {
       defaultProps: {
-        id: infoPopupId,
-        'aria-labelledby': infoPopupId,
+        'aria-labelledby': infoButtonPopover.id,
       },
-      elementType: 'div',
+      elementType: 'dialog',
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
 
     if (open) {
-      root['aria-owns'] ??= infoButton.info?.id;
+      root['aria-owns'] ??= infoButtonPopover.id;
     }
   }
 

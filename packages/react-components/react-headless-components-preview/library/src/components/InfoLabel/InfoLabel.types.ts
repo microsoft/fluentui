@@ -1,6 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { InfoButton } from './InfoButton';
-import type { InfoButtonProps } from './InfoButton';
+import type { InfoButton, InfoButtonProps } from './InfoButton';
 import type { Label } from '../Label';
 
 export type InfoLabelSlots = {

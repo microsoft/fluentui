@@ -16,6 +16,24 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
+export const InfoButton: ForwardRefComponent<InfoButtonProps>;
+
+// @public
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'popover'> & {
+    popover?: InfoButtonSlots['popover'];
+};
+
+// @public (undocumented)
+export type InfoButtonSlots = {
+    root: NonNullable<Slot<'button'>>;
+    popover: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
+    info: NonNullable<Slot<typeof PopoverSurface>>;
+};
+
+// @public
+export type InfoButtonState = ComponentState<InfoButtonSlots>;
+
+// @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 
 // @public
@@ -23,11 +41,24 @@ export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & 
     info?: InfoButtonProps['info'];
 };
 
+// @public (undocumented)
+export type InfoLabelSlots = {
+    root: NonNullable<Slot<'span'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    infoButton: Slot<typeof InfoButton>;
+};
+
 // @public
 export type InfoLabelState = ComponentState<InfoLabelSlots>;
 
 // @public
+export const renderInfoButton: (state: InfoButtonState) => JSXElement;
+
+// @public
 export const renderInfoLabel: (state: InfoLabelState) => JSXElement;
+
+// @public
+export const useInfoButton: (props: InfoButtonProps, ref: React_2.Ref<HTMLButtonElement>) => InfoButtonState;
 
 // @public
 export const useInfoLabel: (props: InfoLabelProps, ref: React_2.Ref<HTMLLabelElement>) => InfoLabelState;

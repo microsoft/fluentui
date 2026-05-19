@@ -75,6 +75,13 @@ export type PopoverProps = {
   withArrow?: boolean;
 
   /**
+   * Optional id for the popover surface. When provided, this id is applied to
+   * the `PopoverSurface` element and referenced by `PopoverTrigger`
+   * (`aria-details`). If omitted, a generated id is used.
+   */
+  id?: string;
+
+  /**
    * When true, opens the popover as a modal via `HTMLDialogElement.showModal()`.
    * Focus is trapped inside the surface, the rest of the page is inert, and
    * focus is restored to the trigger when the popover closes — all spec-mandated
