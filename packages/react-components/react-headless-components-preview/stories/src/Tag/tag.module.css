@@ -1,0 +1,77 @@
+/* tag — outlined pill with selectable + dismissible states */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  cursor: default;
+  user-select: none;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+
+.tag[data-dismissible] {
+  cursor: pointer;
+  border: none;
+  padding: 0 0 0 10px;
+  background: var(--surface-muted);
+}
+
+.tag[data-dismissible]:hover {
+  background: var(--surface-sunken);
+}
+
+.tag[data-dismissible]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.tag[data-selected] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.tag[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tag[data-disabled][data-dismissible]:hover {
+  background: var(--surface-muted);
+}
+
+.dismissIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  border-radius: 50%;
+}
+
+.tag[data-dismissible]:hover .dismissIcon {
+  background: var(--surface);
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.demoRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
