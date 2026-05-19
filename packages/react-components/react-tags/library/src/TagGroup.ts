@@ -5,6 +5,7 @@ export type {
   TagGroupProps,
   TagGroupSlots,
   TagGroupState,
+  UseTagGroupBaseOptions,
 } from './components/TagGroup/index';
 export {
   TagGroup,

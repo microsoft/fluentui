@@ -15,6 +15,11 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
 import type { TagValue } from '../../utils/types';
 
+export type UseTagGroupBaseOptions = {
+  arrowNavigationProps?: object;
+  onAfterTagDismiss?: (container: HTMLElement | null) => void;
+};
+
 /**
  * Create the base state required to render TagGroup, without design-only props.
  *
@@ -24,6 +29,7 @@ import type { TagValue } from '../../utils/types';
 export const useTagGroupBase_unstable = (
   props: TagGroupBaseProps,
   ref: React.Ref<HTMLDivElement>,
+  options?: UseTagGroupBaseOptions,
 ): TagGroupBaseState => {
   const {
     onDismiss,
@@ -37,8 +43,6 @@ export const useTagGroupBase_unstable = (
   } = props;
 
   const innerRef = React.useRef<HTMLElement>(undefined);
-  const { targetDocument } = useFluent();
-  const { findNextFocusable, findPrevFocusable } = useFocusFinders();
 
   const [items, setItems] = useControllableState<Array<TagValue>>({
     defaultState: defaultSelectedValues,
@@ -48,26 +52,7 @@ export const useTagGroupBase_unstable = (
 
   const handleTagDismiss: TagGroupBaseState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
-
-    // set focus after tag dismiss
-    const activeElement = targetDocument?.activeElement;
-    if (innerRef.current?.contains(activeElement as HTMLElement)) {
-      // focus on next tag only if the active element is within the current tag group
-      const next = findNextFocusable(activeElement as HTMLElement, { container: innerRef.current });
-      if (next) {
-        next.focus();
-        return;
-      }
-
-      // if there is no next focusable, focus on the previous focusable
-      if (activeElement?.className.includes(interactionTagSecondaryClassNames.root)) {
-        const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container: innerRef.current });
-        prev?.focus();
-      } else {
-        const prev = findPrevFocusable(activeElement as HTMLElement, { container: innerRef.current });
-        prev?.focus();
-      }
-    }
+    options?.onAfterTagDismiss?.(innerRef.current ?? null);
   });
 
   const handleTagSelect: TagGroupBaseState['handleTagSelect'] = useEventCallback(
@@ -79,12 +64,6 @@ export const useTagGroupBase_unstable = (
       }
     }),
   );
-
-  const arrowNavigationProps = useArrowNavigationGroup({
-    circular: true,
-    axis: 'both',
-    memorizeCurrent: true,
-  });
 
   return {
     handleTagDismiss,
@@ -105,7 +84,7 @@ export const useTagGroupBase_unstable = (
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role,
         'aria-disabled': disabled,
-        ...arrowNavigationProps,
+        ...(options?.arrowNavigationProps as Record<string, unknown> | undefined),
         ...rest,
       }),
       { elementType: 'div' },
@@ -116,6 +95,9 @@ export const useTagGroupBase_unstable = (
 /**
  * Create the state required to render TagGroup.
  *
+ * Composes with `useTagGroupBase_unstable` and supplies Tabster-backed arrow
+ * navigation and post-dismiss focus restoration via the base hook's `options`.
+ *
  * The returned state can be modified with hooks such as useTagGroupStyles_unstable,
  * before being passed to renderTagGroup_unstable.
  *
@@ -124,8 +106,39 @@ export const useTagGroupBase_unstable = (
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   const { size = 'medium', appearance = 'filled' } = props;
+
+  const { targetDocument } = useFluent();
+  const { findNextFocusable, findPrevFocusable } = useFocusFinders();
+
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: true,
+    axis: 'both',
+    memorizeCurrent: true,
+  });
+
+  const onAfterTagDismiss = useEventCallback((container: HTMLElement | null) => {
+    const activeElement = targetDocument?.activeElement;
+    if (container?.contains(activeElement as HTMLElement)) {
+      // focus on next tag only if the active element is within the current tag group
+      const next = findNextFocusable(activeElement as HTMLElement, { container });
+      if (next) {
+        next.focus();
+        return;
+      }
+
+      // if there is no next focusable, focus on the previous focusable
+      if (activeElement?.className.includes(interactionTagSecondaryClassNames.root)) {
+        const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container });
+        prev?.focus();
+      } else {
+        const prev = findPrevFocusable(activeElement as HTMLElement, { container });
+        prev?.focus();
+      }
+    }
+  });
+
   return {
-    ...useTagGroupBase_unstable(props, ref),
+    ...useTagGroupBase_unstable(props, ref, { arrowNavigationProps, onAfterTagDismiss }),
     size,
     appearance,
   };

@@ -73,6 +73,13 @@ export type {
   TagGroupState,
   TagGroupContextValues,
 } from './TagGroup';
+export type { UseTagGroupBaseOptions } from './TagGroup';
+
+export { TagGroupContextProvider, useTagGroupContext_unstable } from './contexts/tagGroupContext';
+export type { TagGroupContextValue } from './contexts/tagGroupContext';
+
+export { InteractionTagContextProvider, useInteractionTagContext_unstable } from './contexts/interactionTagContext';
+export type { InteractionTagContextValue } from './contexts/interactionTagContext';
 
 export { useTagAvatarContextValues_unstable } from './utils';
 export type {
