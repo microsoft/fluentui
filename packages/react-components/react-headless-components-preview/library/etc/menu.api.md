@@ -6,7 +6,7 @@
 
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { MenuContextValue } from '@fluentui/react-menu';
 import { MenuDividerProps } from '@fluentui/react-menu';
 import { MenuDividerSlots } from '@fluentui/react-menu';
@@ -31,6 +31,7 @@ import type { MenuItemState as MenuItemState_2 } from '@fluentui/react-menu';
 import { MenuItemSwitchProps } from '@fluentui/react-menu';
 import { MenuItemSwitchSlots } from '@fluentui/react-menu';
 import { MenuItemSwitchState } from '@fluentui/react-menu';
+import type { MenuListContextValues } from '@fluentui/react-menu';
 import type { MenuListProps as MenuListProps_2 } from '@fluentui/react-menu';
 import type { MenuListSlots } from '@fluentui/react-menu';
 import type { MenuListState as MenuListState_2 } from '@fluentui/react-menu';
@@ -49,19 +50,20 @@ import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import { renderMenuDivider_unstable as renderMenuDivider } from '@fluentui/react-menu';
+import { renderMenuGroup_unstable as renderMenuGroup } from '@fluentui/react-menu';
 import { renderMenuGroupHeader_unstable as renderMenuGroupHeader } from '@fluentui/react-menu';
 import { renderMenuItem_unstable as renderMenuItem } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable as renderMenuItemCheckbox } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable as renderMenuItemLink } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable as renderMenuItemRadio } from '@fluentui/react-menu';
 import { renderMenuItemSwitch_unstable as renderMenuItemSwitch } from '@fluentui/react-menu';
-import { renderMenuList_unstable as renderMenuList } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable as renderMenuSplitGroup } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable as renderMenuTrigger } from '@fluentui/react-menu';
 import { useMenuContext_unstable as useMenuContext } from '@fluentui/react-menu';
 import { useMenuContextValues_unstable as useMenuContextValues } from '@fluentui/react-menu';
 import { useMenuDivider_unstable as useMenuDivider } from '@fluentui/react-menu';
 import { useMenuGroup_unstable as useMenuGroup } from '@fluentui/react-menu';
+import { useMenuGroupContextValues_unstable as useMenuGroupContextValues } from '@fluentui/react-menu';
 import { useMenuGroupHeader_unstable as useMenuGroupHeader } from '@fluentui/react-menu';
 import { useMenuItemCheckboxBase_unstable as useMenuItemCheckbox } from '@fluentui/react-menu';
 import { useMenuItemLinkBase_unstable as useMenuItemLink } from '@fluentui/react-menu';
@@ -209,8 +211,7 @@ export const renderMenu: (state: MenuState, contextValues: MenuContextValues) =>
 
 export { renderMenuDivider }
 
-// @public (undocumented)
-export const renderMenuGroup: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSXElement;
+export { renderMenuGroup }
 
 export { renderMenuGroupHeader }
 
@@ -224,7 +225,8 @@ export { renderMenuItemRadio }
 
 export { renderMenuItemSwitch }
 
-export { renderMenuList }
+// @public (undocumented)
+export const renderMenuList: (state: MenuListState_2, contextValues: MenuListContextValues) => JSXElement;
 
 // @public (undocumented)
 export const renderMenuPopover: (state: MenuPopoverState) => JSXElement;
@@ -244,8 +246,7 @@ export { useMenuDivider }
 
 export { useMenuGroup }
 
-// @public (undocumented)
-export const useMenuGroupContextValues: (state: MenuGroupState) => MenuGroupContextValues;
+export { useMenuGroupContextValues }
 
 export { useMenuGroupHeader }
 
