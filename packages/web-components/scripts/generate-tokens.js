@@ -1,37 +1,56 @@
-import fs from 'node:fs';
-import path from 'node:path';
+/**
+ * Generates design token artifacts from @fluentui/tokens:
+ *
+ * 1. src/theme/design-tokens.ts — TypeScript constants mapping token
+ *    names to CSS custom property var() references.
+ *
+ * 2. public/fluent-tokens.css — A plain CSS stylesheet with all token
+ *    values under :root, for SSR/DSD testing where JS setTheme() isn't
+ *    available.
+ */
 
-import chalk from 'chalk';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import tokensPackage from '@fluentui/tokens';
 
-main();
+const { tokens, webLightTheme } = tokensPackage;
+const tokenNames = Object.keys(tokens);
+const rootDir = join(import.meta.dirname, '..');
 
-function main() {
-  console.log(tokensPackage);
+// ── 1. design-tokens.ts ─────────────────────────────────────────────────
 
-  const fluentTokens = Object.keys(tokensPackage.tokens);
-  const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
-
-  const generatedTokens = fluentTokens.reduce((acc, t) => {
-    const token = `
+const tsContent =
+  '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n' +
+  tokenNames
+    .map(
+      t =>
+        `
 /**
  * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
  * @public
  */
-export const ${t} = 'var(--${t})';
-`;
-    return acc + token;
-  }, '');
+export const ${t} = 'var(--${t})';`,
+    )
+    .join('\n') +
+  '\n';
 
-  const dir = path.join(import.meta.dirname, '../src', 'theme');
+const tsDir = join(rootDir, 'src', 'theme');
+mkdirSync(tsDir, { recursive: true });
+writeFileSync(join(tsDir, 'design-tokens.ts'), tsContent);
+console.log(`✔ ${tokenNames.length} token constants → src/theme/design-tokens.ts`);
 
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
+// ── 2. fluent-tokens.css ────────────────────────────────────────────────
 
-  fs.writeFile(path.join(dir, 'design-tokens.ts'), comment + generatedTokens, err => {
-    if (err) throw err;
-    console.log(chalk.greenBright(`Design token file has been successfully created!`));
-  });
-}
+const cssContent =
+  '/* THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE */\n:root {\n' +
+  tokenNames
+    .filter(t => t in webLightTheme)
+    .map(t => `  --${t}: ${webLightTheme[t]};`)
+    .join('\n') +
+  '\n}\n';
+
+const cssDir = join(rootDir, 'public');
+mkdirSync(cssDir, { recursive: true });
+writeFileSync(join(cssDir, 'fluent-tokens.css'), cssContent);
+console.log(`✔ ${tokenNames.length} token properties → public/fluent-tokens.css`);
