@@ -12,7 +12,7 @@ export const Required = (): React.ReactNode => (
       children: (
         <>
           This is an InfoLabel's information.
-          <a href="#">Learn more</a>
+          <a href="https://storybooks.fluentui.dev/headless/">Learn more</a>
         </>
       ),
     }}

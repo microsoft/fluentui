@@ -170,6 +170,20 @@ describe('Popover', () => {
     expect(queryByText('Surface')).not.toBeInTheDocument();
   });
 
+  it('uses a custom id for the surface and references it from the trigger', () => {
+    const { getByRole } = render(
+      <Popover id="my-id" defaultOpen>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Surface</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('group')).toHaveAttribute('id', 'my-id');
+    expect(getByRole('button')).toHaveAttribute('aria-details', 'my-id');
+  });
+
   it('sets popover="auto" on surface by default', () => {
     const { getByRole } = render(
       <Popover defaultOpen>

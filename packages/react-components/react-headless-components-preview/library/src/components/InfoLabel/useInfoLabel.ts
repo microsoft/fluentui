@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
-import { mergeCallbacks, useId, slot, useEventCallback } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import { mergeCallbacks, useControllableState, useId, slot, useEventCallback } from '@fluentui/react-utilities';
 
 import { Label } from '../Label';
 import { InfoButton } from './InfoButton/InfoButton';
@@ -27,7 +27,6 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     ...labelProps
   } = props;
   const baseId = useId('infolabel-');
-  const [open, setOpen] = React.useState(false);
 
   const root = slot.always(rootShorthand, {
     defaultProps: {
@@ -57,6 +56,11 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
 
   const infoButtonPopover = slot.always(infoButton?.popover, {
     elementType: 'div',
+  });
+  const [open, setOpen] = useControllableState({
+    state: infoButtonPopover.open,
+    defaultState: infoButtonPopover.defaultOpen,
+    initialState: false,
   });
   infoButtonPopover.onOpenChange = useEventCallback(
     mergeCallbacks(infoButtonPopover.onOpenChange, (_, data) => {
