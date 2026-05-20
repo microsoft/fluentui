@@ -125,6 +125,7 @@ export function useButtonTriggerSlot(
     elementType: 'button',
     activeDescendantController,
   });
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

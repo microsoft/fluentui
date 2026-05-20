@@ -2,6 +2,84 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Mon, 18 May 2026 09:35:35 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.0.4",
+      "version": "0.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "33ba2d2ef92de430727ff69d43d93dbf51d697a5",
+            "comment": "feat: add Combobox component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "c2c6c2d4a7b2d4801d0121bf48bca511a9c82eae",
+            "comment": "feat: add Dropdown component"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "0403572a88a8fcd6a1dc7244fdfd21efe0787ec7",
+            "comment": "fix(headless): fix Popover flipping behavior"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f00a0e6e39771477e8c8b74480c3fc78873d6f8d",
+            "comment": "feat: add Label component export, tests and stories"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "db585d2ae06bbdb75de752d2aaa3347979f7b816",
+            "comment": "fix(positioning): fix positioning types and performance issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 May 2026 23:32:44 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.0.3",
+      "version": "0.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "b0cb4c7930b9d4389a5fbcb7b448527cd323a364",
+            "comment": "feat: add Tooltip component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "a425a19f2fde9447f902be1e1bbf3f7574189ea6",
+            "comment": "feat: add Image component"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f1e6a792f57be18492e2e0e1de7c96df10e91ac3",
+            "comment": "fix: set popover=auto on surface via jsx defaults"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1012c9d099de055cf16dd2099288a90a5aa4fc80",
+            "comment": "feat: add ToolbarRadioButton component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "df3355d99ceb03774b9a93ddee5b2db40aba2b2a",
+            "comment": "feat: add Persona component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 May 2026 11:47:29 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.0.2",
       "version": "0.0.2",

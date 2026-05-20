@@ -26,7 +26,7 @@ import type {
 } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
-import { optionClassNames } from '../Option/useOptionStyles.styles';
+import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
 
 /**
  * Create the base state required to render Combobox, without design-only props.
@@ -47,7 +47,7 @@ export const useComboboxBase_unstable = (
     activeParentRef,
     controller: activeDescendantController,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
-    matchOption: el => el.classList.contains(optionClassNames.root),
+    matchOption: isComboboxOptionElement,
   });
   const comboboxInternalState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
   const { appearance: _appearance, size: _size, ...baseState } = comboboxInternalState;
@@ -136,6 +136,7 @@ export const useComboboxBase_unstable = (
   const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
 
   const onExpandIconMouseDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(onIconMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
       state.setOpen(event, !state.open);

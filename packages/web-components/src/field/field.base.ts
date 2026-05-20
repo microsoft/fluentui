@@ -1,5 +1,5 @@
 import { FASTElement, observable } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
+import { uniqueId } from '../utils/unique-id.js';
 import { toggleState } from '../utils/element-internals.js';
 import { type SlottableInput, ValidationFlags } from './field.options.js';
 

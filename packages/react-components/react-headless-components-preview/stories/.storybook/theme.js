@@ -1,4 +1,5 @@
 import { create } from 'storybook/theming';
+import brandImage from './logo.svg';
 
 /**
  * Custom Storybook chrome for the headless components docsite.
@@ -47,6 +48,7 @@ const theme = create({
   inputTextColor: '#0a0a0a',
   inputBorderRadius: 8, // --radius-md
 
+  brandImage,
   brandTitle: 'Fluent UI Headless Components',
   brandUrl:
     'https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-headless-components-preview',

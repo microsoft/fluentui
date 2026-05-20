@@ -13,5 +13,8 @@ export type { ToolbarGroupProps, ToolbarGroupState } from './components/Toolbar'
 export { ToolbarRadioGroup, renderToolbarRadioGroup, useToolbarRadioGroup } from './components/Toolbar';
 export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './components/Toolbar';
 
+export { ToolbarRadioButton, renderToolbarRadioButton, useToolbarRadioButton } from './components/Toolbar';
+export type { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './components/Toolbar';
+
 export { ToolbarToggleButton, renderToolbarToggleButton, useToolbarToggleButton } from './components/Toolbar';
 export type { ToolbarToggleButtonProps, ToolbarToggleButtonState } from './components/Toolbar';

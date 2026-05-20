@@ -72,6 +72,7 @@ export {
   CompoundButtonTemplate,
 } from './compound-button/index.js';
 export {
+  BaseCounterBadge,
   CounterBadge,
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -79,6 +80,7 @@ export {
   CounterBadgeShape,
   CounterBadgeSize,
   CounterBadgeStyles,
+  CounterBadgeTagName,
   CounterBadgeTemplate,
 } from './counter-badge/index.js';
 export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles, isDialog } from './dialog/index.js';
@@ -310,7 +312,7 @@ export {
   TextWeight,
 } from './text/index.js';
 export * from './theme/design-tokens.js';
-export { setTheme, setThemeFor, type Theme } from './theme/index.js';
+export { setTheme, type Theme } from './theme/index.js';
 export {
   ToggleButton,
   ToggleButtonAppearance,
@@ -331,5 +333,6 @@ export {
 export { BaseTree, Tree, TreeDefinition, TreeTemplate, TreeStyles } from './tree/index.js';
 export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
 export type { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
-export { getDirection } from './utils/direction.js';
+export { Direction, getDirection } from './utils/direction.js';
+export { Orientation } from './utils/orientation.js';
 export { display } from './utils/display.js';

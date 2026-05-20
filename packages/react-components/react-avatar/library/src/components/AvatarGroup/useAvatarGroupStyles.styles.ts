@@ -37,6 +37,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
     styles.base,

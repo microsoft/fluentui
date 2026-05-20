@@ -1,12 +1,13 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as AccordionTagName } from '../accordion/accordion.options.js';
 import { AccordionItem } from './accordion-item.js';
-import { AccordionItemSize } from './accordion-item.options.js';
+import { AccordionItemSize, tagName } from './accordion-item.options.js';
 
 test.describe('Accordion item', () => {
   test.use({
     innerHTML: 'Hello, World!',
-    tagName: 'fluent-accordion-item',
-    waitFor: ['fluent-accordion-item'],
+    tagName,
+    waitFor: [AccordionTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -18,9 +19,9 @@ test.describe('Accordion item', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-accordion-item');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -29,12 +30,12 @@ test.describe('Accordion item', () => {
     const { element } = fastPage;
 
     await fastPage.setTemplate(/* html */ `
-      <fluent-accordion>
-        <fluent-accordion-item>
+      <${AccordionTagName}>
+        <${tagName}>
           <span slot="heading">Heading 1</span>
           <div>Content 1</div>
-        </fluent-accordion-item>
-      </fluent-accordion>
+        </${tagName}>
+      </${AccordionTagName}>
     `);
 
     await expect(element).toHaveJSProperty('headinglevel', 2);
@@ -78,7 +79,7 @@ test.describe('Accordion item', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const button = fastPage.element.locator('button');
+    const button = element.locator('button');
 
     await fastPage.setTemplate({ attributes: { disabled: true } });
 
@@ -95,11 +96,11 @@ test.describe('Accordion item', () => {
     const { element } = fastPage;
 
     await fastPage.setTemplate(/* html */ `
-      <fluent-accordion>
-        <fluent-accordion-item>Item 1</fluent-accordion-item>
-        <fluent-accordion-item disabled>Item 2</fluent-accordion-item>
-        <fluent-accordion-item>Item 3</fluent-accordion-item>
-      </fluent-accordion>
+      <${AccordionTagName}>
+        <${tagName}>Item 1</${tagName}>
+        <${tagName} disabled>Item 2</${tagName}>
+        <${tagName}>Item 3</${tagName}>
+      </${AccordionTagName}>
     `);
     const firstItem = element.nth(0);
     const secondItem = element.nth(1);

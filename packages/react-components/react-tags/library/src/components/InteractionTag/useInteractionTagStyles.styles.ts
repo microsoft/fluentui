@@ -42,6 +42,7 @@ export const useInteractionTagStyles_unstable = (state: InteractionTagState): In
 
   const { shape, size } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     interactionTagClassNames.root,
     rootBaseClassName,

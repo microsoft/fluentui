@@ -1,15 +1,18 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import type { BadgeOptions } from '../badge/badge.options.js';
+import type { StartEndOptions } from '../patterns/start-end.js';
 import type { ValuesOf } from '../utils/typings.js';
+import type { CounterBadge } from './counter-badge.js';
 
 /**
- * CounterBadge options
+ * Template options for CounterBadge component.
+ *
  * @public
  */
-export type CounterBadgeOptions = BadgeOptions;
+export type CounterBadgeOptions = StartEndOptions<CounterBadge>;
 
 /**
- * CounterBadgeAppearance constants
+ * Values for the `appearance` attribute on CounterBadge elements.
+ *
  * @public
  */
 export const CounterBadgeAppearance = {
@@ -18,13 +21,14 @@ export const CounterBadgeAppearance = {
 } as const;
 
 /**
- * A CounterBadge can have an appearance of filled or ghost
+ * Type for the `appearance` attribute on CounterBadge elements, based on the CounterBadgeAppearance constants.
  * @public
  */
 export type CounterBadgeAppearance = ValuesOf<typeof CounterBadgeAppearance>;
 
 /**
- * CounterBadgeColor constants
+ * Values for the `color` attribute on CounterBadge elements.
+ *
  * @public
  */
 export const CounterBadgeColor = {
@@ -39,13 +43,14 @@ export const CounterBadgeColor = {
 } as const;
 
 /**
- * A CounterBadge can be one of preset colors
+ * Type for the `color` attribute on CounterBadge elements, based on the CounterBadgeColor constants.
  * @public
  */
 export type CounterBadgeColor = ValuesOf<typeof CounterBadgeColor>;
 
 /**
- * A CounterBadge shape can be circular or rounded.
+ * Values for the `shape` attribute on CounterBadge elements.
+ *
  * @public
  */
 export const CounterBadgeShape = {
@@ -54,13 +59,15 @@ export const CounterBadgeShape = {
 } as const;
 
 /**
- * A CounterBadge can be one of preset colors
+ * Type for the `shape` attribute on CounterBadge elements, based on the CounterBadgeShape constants.
+ *
  * @public
  */
 export type CounterBadgeShape = ValuesOf<typeof CounterBadgeShape>;
 
 /**
- * A CounterBadge can be square, circular or rounded.
+ * Values for the `size` attribute on CounterBadge elements.
+ *
  * @public
  */
 export const CounterBadgeSize = {
@@ -73,7 +80,8 @@ export const CounterBadgeSize = {
 } as const;
 
 /**
- * A CounterBadge can be on of several preset sizes.
+ * Type for the `size` attribute on CounterBadge elements, based on the CounterBadgeSize constants.
+ *
  * @public
  */
 export type CounterBadgeSize = ValuesOf<typeof CounterBadgeSize>;

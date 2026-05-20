@@ -16,6 +16,7 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLLabelElement>): L
   const state: LabelState = useLabelBase_unstable(props, ref);
 
   // Set data attribute for disabled state to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
 
   return state;

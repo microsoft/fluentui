@@ -78,6 +78,7 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableSelectionCellClassNames.root,
     styles.root,
@@ -87,6 +88,7 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     state.root.className,
   );
   if (state.checkboxIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkboxIndicator.className = mergeClasses(
       tableSelectionCellClassNames.checkboxIndicator,
       state.checkboxIndicator.className,
@@ -94,6 +96,7 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
   }
 
   if (state.radioIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.radioIndicator.className = mergeClasses(
       tableSelectionCellClassNames.radioIndicator,
       styles.radioIndicator,

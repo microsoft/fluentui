@@ -27,6 +27,13 @@ interface ParametersConfig {
 
 export interface ParametersExtension {
   exportToSandbox?: ParametersConfig;
+  /**
+   * Adds an "Open in new tab" button to each story in the Docs view.
+   * Opens the story's iframe URL directly in a new browser tab, outside of the Storybook shell.
+   *
+   * @default true
+   */
+  openInNewTab?: boolean;
 }
 
 export interface PresetConfig {

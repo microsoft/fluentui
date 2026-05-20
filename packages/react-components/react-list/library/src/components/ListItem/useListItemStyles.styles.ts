@@ -56,6 +56,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   const checkmarkBaseStyles = useCheckmarkBaseStyles();
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
@@ -65,6 +66,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   );
 
   if (state.checkmark) {
+    // eslint-disable-next-line react-hooks/immutability
     state.checkmark.className = mergeClasses(
       listItemClassNames.checkmark,
       checkmarkBaseStyles.root,

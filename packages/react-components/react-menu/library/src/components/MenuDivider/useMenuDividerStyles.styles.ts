@@ -21,6 +21,7 @@ export const useMenuDividerStyles_unstable = (state: MenuDividerState): MenuDivi
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuDividerClassNames.root, styles.root, state.root.className);
 
   return state;

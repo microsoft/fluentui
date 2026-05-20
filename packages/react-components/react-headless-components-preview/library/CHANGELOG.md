@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Mon, 04 May 2026 11:47:29 GMT and should not be manually modified.
+This log was last generated on Mon, 18 May 2026 09:35:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.4)
+
+Mon, 18 May 2026 09:35:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.0.3..@fluentui/react-headless-components-preview_v0.0.4)
+
+### Patches
+
+- feat: add Combobox component ([PR #36114](https://github.com/microsoft/fluentui/pull/36114) by dmytrokirpa@microsoft.com)
+- feat: add Dropdown component ([PR #36101](https://github.com/microsoft/fluentui/pull/36101) by dmytrokirpa@microsoft.com)
+- fix(headless): fix Popover flipping behavior ([PR #36197](https://github.com/microsoft/fluentui/pull/36197) by vgenaev@gmail.com)
+- feat: add Label component export, tests and stories ([PR #36208](https://github.com/microsoft/fluentui/pull/36208) by dmytrokirpa@microsoft.com)
+- fix(positioning): fix positioning types and performance issues ([PR #36192](https://github.com/microsoft/fluentui/pull/36192) by vgenaev@gmail.com)
+
+## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.3)
+
+Wed, 06 May 2026 23:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.0.2..@fluentui/react-headless-components-preview_v0.0.3)
+
+### Patches
+
+- feat: add Tooltip component ([PR #36079](https://github.com/microsoft/fluentui/pull/36079) by dmytrokirpa@microsoft.com)
+- feat: add Image component ([PR #36099](https://github.com/microsoft/fluentui/pull/36099) by dmytrokirpa@microsoft.com)
+- fix: set popover=auto on surface via jsx defaults ([PR #36090](https://github.com/microsoft/fluentui/pull/36090) by vgenaev@gmail.com)
+- feat: add ToolbarRadioButton component ([PR #36100](https://github.com/microsoft/fluentui/pull/36100) by dmytrokirpa@microsoft.com)
+- feat: add Persona component ([PR #36102](https://github.com/microsoft/fluentui/pull/36102) by dmytrokirpa@microsoft.com)
 
 ## [0.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.2)
 

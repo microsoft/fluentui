@@ -62,6 +62,7 @@ export const useDialogActionsStyles_unstable = (state: DialogActionsState): Dial
 
   const resetStyles = useResetStyles();
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     dialogActionsClassNames.root,
     resetStyles,

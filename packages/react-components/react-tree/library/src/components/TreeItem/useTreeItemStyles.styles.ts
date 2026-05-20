@@ -70,6 +70,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
 
   const { level } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     treeItemClassNames.root,
     baseStyles,

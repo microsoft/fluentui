@@ -14,7 +14,7 @@ export { Default } from './DefaultDrawer.stories';
 export { Inline } from './InlineDrawer.stories';
 
 export default {
-  title: 'Headless Components/Drawer',
+  title: 'Components/Drawer',
   component: Drawer,
   subcomponents: {
     OverlayDrawer,

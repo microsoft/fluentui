@@ -48,8 +48,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
 /**
  * Base hook for MenuItem component, produces state required to render the component.
  * It doesn't set any design-related props specific to MenuItem such as submenu indicator icon.
- *
- * @internal
  */
 export const useMenuItemBase_unstable = (
   props: MenuItemProps,
@@ -67,6 +65,7 @@ export const useMenuItemBase_unstable = (
   } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const open = useMenuContext_unstable(context => context.open);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
 
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -76,6 +75,7 @@ export const useMenuItemBase_unstable = (
 
   const state: MenuItemState = {
     hasSubmenu,
+    submenuOpen: hasSubmenu && open,
     disabled,
     persistOnClick,
     components: {

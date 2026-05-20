@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: add tagName export in options and leverage for consistent name implementation",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,64 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 01 May 2026 04:08:47 GMT and should not be manually modified.
+This log was last generated on Tue, 19 May 2026 04:10:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.20)
+
+Tue, 19 May 2026 04:10:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.19..@fluentui/web-components_v3.0.0-rc.20)
+
+### Changes
+
+- Adds white-space normal to dropdown .control div to prevent text overflow issues. ([PR #36210](https://github.com/microsoft/fluentui/pull/36210) by mibaraka@microsoft.com)
+- feat: implement BaseCounterBadge class and update CounterBadge component structure ([PR #36209](https://github.com/microsoft/fluentui/pull/36209) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.19)
+
+Wed, 13 May 2026 04:08:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.18..@fluentui/web-components_v3.0.0-rc.19)
+
+### Changes
+
+- fix: remove hoisted peer dependency entries ([PR #36184](https://github.com/microsoft/fluentui/pull/36184) by 863023+radium-v@users.noreply.github.com)
+- fix: enhance accessibility attributes for drawer component ([PR #36191](https://github.com/microsoft/fluentui/pull/36191) by 863023+radium-v@users.noreply.github.com)
+- fix keyboard navigation regressions for tree and menu-list ([PR #36118](https://github.com/microsoft/fluentui/pull/36118) by machi@microsoft.com)
+- fix: synchronize compound-button template with button template ([PR #36191](https://github.com/microsoft/fluentui/pull/36191) by 863023+radium-v@users.noreply.github.com)
+- fix: enhance accessibility attributes for dialog component ([PR #36191](https://github.com/microsoft/fluentui/pull/36191) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-rc.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.18)
+
+Mon, 11 May 2026 04:09:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.17..@fluentui/web-components_v3.0.0-rc.18)
+
+### Changes
+
+- fix: migrate to esbuild for CDN bundle, enable setTheme on globalThis ([PR #36113](https://github.com/microsoft/fluentui/pull/36113) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.17)
+
+Wed, 06 May 2026 19:08:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.16..@fluentui/web-components_v3.0.0-rc.17)
+
+### Changes
+
+- fix menu not closing when menu list loses keyboard focus ([PR #36111](https://github.com/microsoft/fluentui/pull/36111) by machi@microsoft.com)
+- fix: remove deprecated fast-web-utilities references ([PR #36106](https://github.com/microsoft/fluentui/pull/36106) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-rc.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.16)
+
+Wed, 06 May 2026 04:07:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.15..@fluentui/web-components_v3.0.0-rc.16)
+
+### Changes
+
+- fix: remove behaviors in favor of direct css inclusion ([PR #36092](https://github.com/microsoft/fluentui/pull/36092) by 13071055+chrisdholt@users.noreply.github.com)
+- adopt focusgroup and polyfill ([PR #35884](https://github.com/microsoft/fluentui/pull/35884) by machi@microsoft.com)
+- fix components for native focusgroup implementation ([PR #36107](https://github.com/microsoft/fluentui/pull/36107) by machi@microsoft.com)
+- fix: stopImmediatePropagation on internalProxyAnchors ([PR #36085](https://github.com/microsoft/fluentui/pull/36085) by rupertdavid@microsoft.com)
+- update import references to point directly to non-barrel files ([PR #36093](https://github.com/microsoft/fluentui/pull/36093) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: add tagName export in options and leverage for consistent name implementation ([PR #36095](https://github.com/microsoft/fluentui/pull/36095) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.15)
 

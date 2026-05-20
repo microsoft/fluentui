@@ -8,6 +8,9 @@ const config: PlaywrightTestConfig = {
   timeout: process.env.CI ? 10000 : 30000,
   use: {
     baseURL: 'http://localhost:5173',
+    contextOptions: {
+      reducedMotion: 'reduce',
+    },
   },
   projects: [
     {
@@ -20,7 +23,10 @@ const config: PlaywrightTestConfig = {
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        deviceScaleFactor: 1,
+      },
     },
   ],
   webServer: {

@@ -110,6 +110,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     accordionHeaderClassNames.root,
     styles.root,
@@ -118,6 +119,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.button.className = mergeClasses(
     accordionHeaderClassNames.button,
     styles.resetButton,
@@ -134,6 +136,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   );
 
   if (state.expandIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = mergeClasses(
       accordionHeaderClassNames.expandIcon,
       styles.expandIcon,
@@ -143,6 +146,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
     );
   }
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(accordionHeaderClassNames.icon, styles.icon, state.icon.className);
   }
   return state;
