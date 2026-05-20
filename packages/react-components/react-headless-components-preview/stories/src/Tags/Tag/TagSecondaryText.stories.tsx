@@ -4,9 +4,11 @@ import { Tag } from '@fluentui/react-headless-components-preview/tag';
 import styles from './tag.module.css';
 
 export const SecondaryText = (): React.ReactNode => (
-  <Tag className={styles.tag} secondaryText={{ className: styles.secondaryText, children: 'Secondary text' }}>
-    Primary text
-  </Tag>
+  <Tag
+    className={styles.tag}
+    primaryText={{ className: styles.primaryText, children: 'Primary text' }}
+    secondaryText={{ className: styles.secondaryText, children: 'Secondary text' }}
+  />
 );
 
 SecondaryText.parameters = {

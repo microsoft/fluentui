@@ -8,10 +8,9 @@ export const SecondaryText = (): React.ReactNode => (
   <InteractionTag className={styles.interactionTag}>
     <InteractionTagPrimary
       className={styles.primary}
+      primaryText={{ className: styles.primaryText, children: 'Primary text' }}
       secondaryText={{ className: styles.secondaryText, children: 'Secondary text' }}
-    >
-      Primary text
-    </InteractionTagPrimary>
+    />
   </InteractionTag>
 );
 

@@ -1,11 +1,16 @@
-/* tag — outlined pill with selectable + dismissible states */
 .tag {
-  display: inline-flex;
+  display: inline-grid;
+  grid-template-areas:
+    'media primary dismiss'
+    'media secondary dismiss';
   align-items: center;
-  gap: 6px;
-  height: 28px;
+  align-content: center;
+  justify-items: start;
+  min-height: 28px;
+  width: max-content;
+  max-width: 100%;
   padding: 0 10px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   color: var(--text);
@@ -34,10 +39,18 @@
   box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
+.tag[data-selected][data-dismissible]:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 4px var(--accent-contrast);
+}
+
 .tag[data-selected] {
   background: var(--accent);
   color: var(--accent-contrast);
   border-color: var(--accent);
+}
+
+.tag[data-selected][data-dismissible]:hover {
+  background: color-mix(in srgb, var(--accent) 85%, white);
 }
 
 .tag[data-disabled] {
@@ -49,22 +62,27 @@
   background: var(--surface-muted);
 }
 
-.icon {
+.icon,
+.media {
+  grid-area: media;
+  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 14px;
   flex-shrink: 0;
 }
 
+.icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
 .media {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 22px;
   height: 22px;
   margin-left: -4px;
+  margin-right: 6px;
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-contrast);
@@ -73,28 +91,40 @@
 }
 
 .primaryText {
-  display: inline-flex;
-  align-items: baseline;
+  grid-area: primary;
+  line-height: 1.2;
+}
+
+.tag:not(:has(> .secondaryText)) > .primaryText {
+  grid-row-end: secondary;
 }
 
 .secondaryText {
-  margin-left: 4px;
+  grid-area: secondary;
   font-size: 11px;
   color: var(--text-muted);
+  line-height: 1.2;
 }
 
 .dismissIcon {
+  grid-area: dismiss;
+  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 22px;
   height: 22px;
-  margin-left: 2px;
-  border-radius: 50%;
+  margin-left: 6px;
+  border-radius: var(--radius-sm, 4px);
+  flex-shrink: 0;
 }
 
 .tag[data-dismissible]:hover .dismissIcon {
   background: var(--surface);
+}
+
+.tag[data-selected] .secondaryText {
+  color: color-mix(in srgb, var(--accent-contrast) 80%, transparent);
 }
 
 .demo {
