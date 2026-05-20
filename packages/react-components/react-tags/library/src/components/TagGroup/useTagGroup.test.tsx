@@ -4,8 +4,6 @@ import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 import { useTagGroup_unstable, useTagGroupBase_unstable } from './useTagGroup';
 
-// Slot props are a discriminated union that doesn't expose `data-*` index access at
-// the type level; cast to a plain record for the data-attribute assertions below.
 type RootRecord = Record<string, unknown>;
 
 describe('useTagGroup_unstable', () => {
@@ -21,9 +19,7 @@ describe('useTagGroup_unstable', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroup_unstable({}, ref));
 
-    // useTagGroup_unstable wires up useArrowNavigationGroup via the base hook's
-    // arrowNavigationProps option; Tabster's contract is a data-tabster attribute.
-    expect((result.current.root as RootRecord)['data-tabster']).toBeDefined();
+    expect((result.current.root as RootRecord)['data-tabster']).toEqual(expect.any(String));
   });
 
   it('should default role to toolbar', () => {
@@ -38,7 +34,7 @@ describe('useTagGroupBase_unstable', () => {
   it('should NOT include arrow-navigation props when options omitted (true headless mode)', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroupBase_unstable({}, ref));
-    expect((result.current.root as RootRecord)['data-tabster']).toBeUndefined();
+    expect(result.current.root).not.toHaveProperty('data-tabster');
   });
 
   it('should spread arrowNavigationProps option onto root when supplied', () => {
@@ -59,8 +55,6 @@ describe('useTagGroupBase_unstable', () => {
     result.current.handleTagDismiss(event, { value: 'v1' });
 
     expect(onDismiss).toHaveBeenCalledWith(event, { value: 'v1' });
-    // innerRef hasn't been attached to a DOM node in the renderHook environment,
-    // so the container argument is null - we still expect the callback to be invoked.
     expect(onAfterTagDismiss).toHaveBeenCalledWith(null);
   });
 
@@ -80,17 +74,17 @@ describe('useTagGroupBase_unstable', () => {
   it('should NOT expose design-only fields (size, appearance) on base state', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroupBase_unstable({}, ref));
-    expect((result.current as unknown as { size?: unknown }).size).toBeUndefined();
-    expect((result.current as unknown as { appearance?: unknown }).appearance).toBeUndefined();
+    expect(result.current).not.toHaveProperty('size');
+    expect(result.current).not.toHaveProperty('appearance');
   });
 
   it('should provide handleTagSelect only when onTagSelect is supplied', () => {
     const ref = React.createRef<HTMLDivElement>();
     const without = renderHook(() => useTagGroupBase_unstable({}, ref));
-    expect(without.result.current.handleTagSelect).toBeUndefined();
+    expect(without.result.current.handleTagSelect).toBe(undefined);
 
     const onTagSelect = jest.fn();
     const withSelect = renderHook(() => useTagGroupBase_unstable({ onTagSelect }, ref));
-    expect(withSelect.result.current.handleTagSelect).toBeDefined();
+    expect(withSelect.result.current.handleTagSelect).toEqual(expect.any(Function));
   });
 });

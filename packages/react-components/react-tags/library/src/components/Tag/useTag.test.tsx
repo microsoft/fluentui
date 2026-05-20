@@ -25,9 +25,9 @@ describe('useTag_unstable', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTag_unstable({ dismissible }, ref), { wrapper: wrap() });
     if (dismissible) {
-      expect(result.current.root.onClick).toBeDefined();
+      expect(result.current.root.onClick).toEqual(expect.any(Function));
     } else {
-      expect(result.current.root.onClick).toBeUndefined();
+      expect(result.current.root).not.toHaveProperty('onClick');
     }
   });
 
@@ -70,16 +70,16 @@ describe('useTagBase_unstable', () => {
   it('should NOT attach onClick/onKeyDown handlers when not dismissible', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTagBase_unstable({}, ref), { wrapper: wrap() });
-    expect(result.current.root.onClick).toBeUndefined();
-    expect(result.current.root.onKeyDown).toBeUndefined();
+    expect(result.current.root).not.toHaveProperty('onClick');
+    expect(result.current.root).not.toHaveProperty('onKeyDown');
   });
 
   it('should attach onClick/onKeyDown handlers when dismissible', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTagBase_unstable({ dismissible: true }, ref), { wrapper: wrap() });
     const root = result.current.root as React.ButtonHTMLAttributes<HTMLButtonElement>;
-    expect(root.onClick).toBeDefined();
-    expect(root.onKeyDown).toBeDefined();
+    expect(root.onClick).toEqual(expect.any(Function));
+    expect(root.onKeyDown).toEqual(expect.any(Function));
     expect(root.type).toBe('button');
   });
 
@@ -87,9 +87,8 @@ describe('useTagBase_unstable', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTagBase_unstable({ dismissible: true }, ref), { wrapper: wrap() });
 
-    // dismissIcon slot is rendered by default when dismissible, but no children are injected by base
     expect(result.current.dismissIcon).toBeDefined();
-    expect(result.current.dismissIcon?.children).toBeUndefined();
+    expect(result.current.dismissIcon).not.toHaveProperty('children');
   });
 
   it('should set aria-selected when TagGroupContext role is listbox', () => {

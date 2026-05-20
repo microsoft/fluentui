@@ -2,20 +2,21 @@ import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { InteractionTagContextProvider } from '../../contexts/interactionTagContext';
+import type { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 import {
   useInteractionTagSecondary_unstable,
   useInteractionTagSecondaryBase_unstable,
 } from './useInteractionTagSecondary';
 
-const baseContext = {
-  appearance: 'filled' as const,
+const baseContext: InteractionTagContextValue = {
+  appearance: 'filled',
   disabled: false,
   handleTagDismiss: () => ({}),
   interactionTagPrimaryId: 'fui-InteractionTagPrimary-_test_',
   selected: false,
   selectedValues: [],
-  shape: 'rounded' as const,
-  size: 'medium' as const,
+  shape: 'rounded',
+  size: 'medium',
   value: 'test',
 };
 
@@ -64,14 +65,14 @@ describe('useInteractionTagSecondaryBase_unstable', () => {
   it('should NOT inject DismissRegular children by default (icon injection lives in the styled hook)', () => {
     const ref = React.createRef<HTMLButtonElement>();
     const { result } = renderHook(() => useInteractionTagSecondaryBase_unstable({}, ref), { wrapper: wrap() });
-    expect(result.current.root.children).toBeUndefined();
+    expect(result.current.root).not.toHaveProperty('children');
   });
 
   it('should attach onClick and onKeyDown handlers', () => {
     const ref = React.createRef<HTMLButtonElement>();
     const { result } = renderHook(() => useInteractionTagSecondaryBase_unstable({}, ref), { wrapper: wrap() });
-    expect(result.current.root.onClick).toBeDefined();
-    expect(result.current.root.onKeyDown).toBeDefined();
+    expect(result.current.root.onClick).toEqual(expect.any(Function));
+    expect(result.current.root.onKeyDown).toEqual(expect.any(Function));
   });
 
   it('should build aria-labelledby from interactionTagPrimaryId and own id', () => {
@@ -85,9 +86,9 @@ describe('useInteractionTagSecondaryBase_unstable', () => {
   it('should NOT expose design-only fields (appearance/shape/size)', () => {
     const ref = React.createRef<HTMLButtonElement>();
     const { result } = renderHook(() => useInteractionTagSecondaryBase_unstable({}, ref), { wrapper: wrap() });
-    expect((result.current as unknown as { appearance?: unknown }).appearance).toBeUndefined();
-    expect((result.current as unknown as { shape?: unknown }).shape).toBeUndefined();
-    expect((result.current as unknown as { size?: unknown }).size).toBeUndefined();
+    expect(result.current).not.toHaveProperty('appearance');
+    expect(result.current).not.toHaveProperty('shape');
+    expect(result.current).not.toHaveProperty('size');
   });
 
   it('should call handleTagDismiss on Delete/Backspace keyDown via context', () => {

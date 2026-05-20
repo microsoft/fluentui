@@ -55,9 +55,9 @@ describe('useInteractionTagBase_unstable', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useInteractionTagBase_unstable({}, ref), { wrapper: wrap() });
 
-    expect((result.current as unknown as { appearance?: unknown }).appearance).toBeUndefined();
-    expect((result.current as unknown as { shape?: unknown }).shape).toBeUndefined();
-    expect((result.current as unknown as { size?: unknown }).size).toBeUndefined();
+    expect(result.current).not.toHaveProperty('appearance');
+    expect(result.current).not.toHaveProperty('shape');
+    expect(result.current).not.toHaveProperty('size');
   });
 
   it('should force disabled when TagGroupContext.disabled is true regardless of props', () => {
