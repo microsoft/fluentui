@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { DividerBaseProps } from '@fluentui/react-divider';
 import { DividerBaseState } from '@fluentui/react-divider';
 import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
+import { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import type { EventHandler } from '@fluentui/react-utilities';
@@ -16,6 +17,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InlineDrawerBaseProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
 import { JSXElement } from '@fluentui/react-utilities';
+import type { NavBaseState } from '@fluentui/react-nav';
 import { NavCategoryContextValues } from '@fluentui/react-nav';
 import { NavCategoryItemProvider } from '@fluentui/react-nav';
 import { NavCategoryProps } from '@fluentui/react-nav';
@@ -25,7 +27,6 @@ import { NavContextValue } from '@fluentui/react-nav';
 import { NavContextValues } from '@fluentui/react-nav';
 import { DrawerBodyProps as NavDrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots as NavDrawerBodySlots } from '@fluentui/react-drawer';
-import { DrawerBodyState as NavDrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooterProps as NavDrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots as NavDrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderProps as NavDrawerHeaderProps } from '@fluentui/react-drawer';
@@ -38,7 +39,6 @@ import { NavItemValue } from '@fluentui/react-nav';
 import { NavBaseProps as NavProps } from '@fluentui/react-nav';
 import { NavProvider } from '@fluentui/react-nav';
 import { NavSlots } from '@fluentui/react-nav';
-import { NavBaseState as NavState } from '@fluentui/react-nav';
 import { NavSubItemBaseProps as NavSubItemProps } from '@fluentui/react-nav';
 import { NavSubItemSlots } from '@fluentui/react-nav';
 import { NavSubItemBaseState as NavSubItemState } from '@fluentui/react-nav';
@@ -48,7 +48,6 @@ import * as React_2 from 'react';
 import { RegisterNavItemEventHandler } from '@fluentui/react-nav';
 import { renderNavCategory_unstable } from '@fluentui/react-nav';
 import type { Slot } from '@fluentui/react-utilities';
-import { useNavBase_unstable as useNav_unstable } from '@fluentui/react-nav';
 import { useNavCategory_unstable } from '@fluentui/react-nav';
 import { useNavCategoryContext_unstable as useNavCategoryContext } from '@fluentui/react-nav';
 import { useNavCategoryContextValues_unstable } from '@fluentui/react-nav';
@@ -134,7 +133,12 @@ export { NavDrawerBodyProps }
 
 export { NavDrawerBodySlots }
 
-export { NavDrawerBodyState }
+// @public (undocumented)
+export type NavDrawerBodyState = DrawerBodyState & {
+    root: DrawerBodyState['root'] & {
+        focusgroup?: string;
+    };
+};
 
 // @public
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
@@ -203,7 +207,12 @@ export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
 
 export { NavSlots }
 
-export { NavState }
+// @public (undocumented)
+export type NavState = NavBaseState & {
+    root: NavBaseState['root'] & {
+        focusgroup?: string;
+    };
+};
 
 // @public
 export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
@@ -249,7 +258,7 @@ export const renderNavDivider_unstable: (state: DividerBaseState) => JSXElement;
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
 
 // @public
-export const renderNavDrawerBody_unstable: (state: NavDrawerBodyState) => JSXElement;
+export const renderNavDrawerBody_unstable: (state: DrawerBodyState) => JSXElement;
 
 // @public
 export const renderNavDrawerFooter_unstable: (state: DrawerFooterState) => JSXElement;
@@ -269,7 +278,8 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSXElement;
 // @public
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSXElement | null;
 
-export { useNav_unstable }
+// @public (undocumented)
+export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
 
 export { useNavCategory_unstable }
 
