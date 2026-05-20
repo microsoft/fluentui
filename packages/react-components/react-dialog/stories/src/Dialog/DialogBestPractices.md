@@ -11,5 +11,5 @@
 ### Don't
 
 - Don't use more than three buttons between `DialogActions`.
-- Don't open nested `Dialog`s without proper focus management. Use `DialogTrigger` for automatic focus restoration when dialogs are opened by user interaction, or use `useRestoreFocusTarget()` when opening dialogs programmatically. `DialogSurface` already provides restore-focus source attributes when used inside `Dialog`. See the [Nested Dialogs](https://react.fluentui.dev/?path=/docs/components-dialog--docs#nested-dialogs-with-trigger) example for details.
+- Don't open nested `Dialog`s. They are an anti-pattern and should be avoided. Nested dialogs create complex focus restoration logic and confuse users. If your design requires stacking dialogs, consider using a multi-step wizard within a single dialog, sequential dialogs, or a different UI component (panels, sidebars, popovers).
 - Don't use a `Dialog` with no focusable elements
