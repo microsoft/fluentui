@@ -4,8 +4,9 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-utilities';
 import { pie as d3Pie } from 'd3-shape';
+import type { PieArcDatum } from 'd3-shape';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PieProps } from './index';
 import { Arc } from '../Arc/index';
 import type { ChartDataPoint } from '../index';
@@ -20,6 +21,8 @@ const TEXT_PADDING: number = 5;
  */
 export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivElement, PieProps>(
   (props, forwardedRef) => {
+    type DonutChartDataPointWithGradient = ChartDataPoint & { gradient?: [string, string] };
+
     React.useEffect(() => {
       wrapTextInsideDonut(classes.insideDonutString, props.innerRadius! * 2 - TEXT_PADDING);
     }, []);
@@ -28,7 +31,6 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     const classes = usePieStyles(props);
     const pieForFocusRing = d3Pie()
       .sort(null)
-
       .value((d: any) => d.data)
       .padAngle(0);
 
@@ -57,8 +59,18 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       return totalValue;
     }
 
-    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSXElement {
-      const color = d && d.data && d.data.color;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSXElement {
+      const point = d.data as DonutChartDataPointWithGradient;
+      let color = (point.color as string) || '';
+      let nextColor = color;
+
+      if (props.enableGradient && point.gradient) {
+        // Only use gradient if it exists (auto-selected color or user-provided gradient)
+        color = point.gradient[0];
+        nextColor = point.gradient[1];
+      }
+
       return (
         <Arc
           key={i}
@@ -66,7 +78,10 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
           focusData={focusData}
           innerRadius={props.innerRadius}
           outerRadius={props.outerRadius}
-          color={color!}
+          color={color}
+          nextColor={nextColor}
+          enableGradient={props.enableGradient}
+          roundCorners={props.roundCorners}
           onFocusCallback={_focusCallback}
           hoverOnCallback={_hoverCallback}
           onBlurCallback={props.onBlurCallback}
@@ -93,7 +108,6 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
 
     const piechart = d3Pie<ChartDataPoint>()
       .sort(null)
-
       .value((d: any) => d.data)
       .padAngle(0.02)(filteredData);
     const translate = `translate(${props.width / 2}, ${props.height / 2})`;
@@ -102,7 +116,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
 
     return (
       <g transform={translate}>
-        {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
+        {piechart.map((d: PieArcDatum<ChartDataPoint>, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
             {props.valueInsideDonut}

@@ -560,17 +560,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1k_"
+          id="tooltip__r_1r_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1k_"
+          id="tooltip__r_1r_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1k_"
+          id="tooltip__r_1r_"
           style="opacity: 0;"
         />
       </div>
@@ -1003,17 +1003,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1q_"
+          id="tooltip__r_23_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1q_"
+          id="tooltip__r_23_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1q_"
+          id="tooltip__r_23_"
           style="opacity: 0;"
         />
       </div>
@@ -1446,17 +1446,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1n_"
+          id="tooltip__r_1v_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1n_"
+          id="tooltip__r_1v_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1n_"
+          id="tooltip__r_1v_"
           style="opacity: 0;"
         />
       </div>
@@ -1625,9 +1625,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_1v_"
+              aria-describedby="tooltip-_r_29_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_1u_"
+              id="tooltip-host_r_28_"
               text-anchor="middle"
               x="22"
               y="NaN"
@@ -2051,9 +2051,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_21_"
+              aria-describedby="tooltip-_r_2b_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_20_"
+              id="tooltip-host_r_2a_"
               text-anchor="middle"
               transform="rotate(-90, 16, NaN)"
               x="16"
@@ -2123,17 +2123,17 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1t_"
+          id="tooltip__r_27_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1t_"
+          id="tooltip__r_27_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_1t_"
+          id="tooltip__r_27_"
           style="opacity: 0;"
         />
       </div>
@@ -2168,7 +2168,8 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="A, 28."
                   class="fui-donut-arc__root"
                   d="M0.5,-49.998A50,50,0,0,1,42.748,25.935L0,0Z"
-                  id="_Pie__r_2s_A28"
+                  data-is-focusable="true"
+                  id="_Pie__r_3i_A28"
                   opacity="1"
                   role="img"
                   style="fill: #637cef; cursor: default;"
@@ -2180,7 +2181,8 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="B, 55."
                   class="fui-donut-arc__root"
                   d="M42.22,26.785A50,50,0,1,1,-0.5,-49.998L0,0Z"
-                  id="_Pie__r_2s_B55"
+                  data-is-focusable="true"
+                  id="_Pie__r_3i_B55"
                   opacity="1"
                   role="img"
                   style="fill: #e3008c; cursor: default;"
@@ -2192,7 +2194,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_2t_"
+          id="callout_r_3l_"
         />
         <div
           class="fui-donut__legendContainer"
@@ -2652,7 +2654,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_30_"
+          id="tooltip__r_3o_"
           style="opacity: 0;"
         />
       </div>
@@ -2707,9 +2709,9 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_34_"
+              aria-describedby="tooltip-_r_3s_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_33_"
+              id="tooltip-host_r_3r_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -3103,9 +3105,9 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_36_"
+              aria-describedby="tooltip-_r_3u_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_35_"
+              id="tooltip-host_r_3t_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -3120,7 +3122,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_32_"
+          id="tooltip__r_3q_"
           style="opacity: 0;"
         />
       </div>
@@ -3257,7 +3259,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3e_"
+          id="tooltip__r_46_"
           style="opacity: 0;"
         />
       </div>
@@ -3650,17 +3652,17 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3n_"
+          id="tooltip__r_4h_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3n_"
+          id="tooltip__r_4h_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3n_"
+          id="tooltip__r_4h_"
           style="opacity: 0;"
         />
       </div>
@@ -3715,9 +3717,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_4s_"
+              aria-describedby="tooltip-_r_5m_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4r_"
+              id="tooltip-host_r_5l_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -4111,9 +4113,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_4u_"
+              aria-describedby="tooltip-_r_5o_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4t_"
+              id="tooltip-host_r_5n_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -4128,7 +4130,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4q_"
+          id="tooltip__r_5k_"
           style="opacity: 0;"
         />
       </div>
@@ -4183,9 +4185,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_52_"
+              aria-describedby="tooltip-_r_5s_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_51_"
+              id="tooltip-host_r_5r_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -4579,9 +4581,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_54_"
+              aria-describedby="tooltip-_r_5u_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_53_"
+              id="tooltip-host_r_5t_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -4596,7 +4598,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_50_"
+          id="tooltip__r_5q_"
           style="opacity: 0;"
         />
       </div>
@@ -4800,7 +4802,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4o_"
+          id="tooltip__r_5i_"
           style="opacity: 0;"
         />
       </div>
@@ -4912,9 +4914,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4d_"
+              aria-describedby="tooltip-_r_57_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4c_"
+              id="tooltip-host_r_56_"
               text-anchor="middle"
               x="22"
               y="NaN"
@@ -5036,7 +5038,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             </g>
             <g>
               <line
-                id="verticalLine_r_49_"
+                id="verticalLine_r_53_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5069,9 +5071,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4f_"
+              aria-describedby="tooltip-_r_59_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4e_"
+              id="tooltip-host_r_58_"
               text-anchor="middle"
               transform="rotate(-90, 16, NaN)"
               x="16"
@@ -5385,7 +5387,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_3t_"
+                id="verticalLine_r_4n_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5731,7 +5733,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_43_"
+                id="verticalLine_r_4t_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"

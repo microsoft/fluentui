@@ -66,6 +66,7 @@ export const HorizontalBarWithAxisDynamic = (): JSXElement => {
   const [yAxisType, setYAxisType] = React.useState<string>(initialyAxisType);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
   const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [yAxisPadding, setYAxisPadding] = React.useState<number | undefined>(0);
   const [yAxisPaddingEnabled, setYAxisPaddingEnabled] = React.useState<boolean | undefined>(false);
 
@@ -100,6 +101,10 @@ export const HorizontalBarWithAxisDynamic = (): JSXElement => {
 
   const _onSwitchRoundCorners = React.useCallback((ev: any) => {
     setRoundCorners(ev.currentTarget.checked);
+  }, []);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   return (
@@ -173,6 +178,13 @@ export const HorizontalBarWithAxisDynamic = (): JSXElement => {
             label={roundCorners ? 'Rounded Corners ON' : 'Rounded Corners OFF'}
           />
         </div>
+        <div style={{ marginLeft: '20px' }}>
+          <Switch
+            checked={enableGradient}
+            onChange={_onSwitchGradient}
+            label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          />
+        </div>
       </div>
 
       <div style={{ width: `${width}px`, height: '350px', marginTop: '20px' }}>
@@ -184,6 +196,7 @@ export const HorizontalBarWithAxisDynamic = (): JSXElement => {
           hideLegend={true}
           width={width}
           roundCorners={roundCorners}
+          enableGradient={enableGradient}
           hideTickOverlap={true}
           yAxisPadding={yAxisPaddingEnabled ? yAxisPadding : undefined}
         />

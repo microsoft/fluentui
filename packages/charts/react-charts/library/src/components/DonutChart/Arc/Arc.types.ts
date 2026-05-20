@@ -31,9 +31,19 @@ export interface ArcProps {
   outerRadius: number;
 
   /**
-   * Color for the Arc.
+   * Color for the legend in the chart.
    */
   color: string;
+
+  /**
+   * Secondary color used for gradient fill.
+   */
+  nextColor?: string;
+
+  /**
+   * Prop to enable the gradient in the chart.
+   */
+  enableGradient?: boolean;
 
   /**
    * Defines the function that is executed upon hovering over the legend

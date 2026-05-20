@@ -1,25 +1,32 @@
 import * as React from 'react';
 
+import {
+  DonutChart,
+  DataVizPalette,
+  getColorFromToken,
+  getGradientFromToken,
+  DataVizGradientPalette,
+} from '@fluentui/react-charts';
 import type { ChartProps, ChartDataPoint, ChartPopoverProps } from '@fluentui/react-charts';
-import { DonutChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 
 export const DonutChartCustomCallout = (): JSXElement => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
 
   const points: ChartDataPoint[] = [
     {
       legend: 'first',
       data: 20000,
-      color: getColorFromToken(DataVizPalette.color9),
+      color: getGradientFromToken(DataVizGradientPalette.gradient9),
       xAxisCalloutData: '2020/04/30',
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 20000h' },
     },
     {
       legend: 'second',
       data: 39000,
-      color: getColorFromToken(DataVizPalette.color10),
+      color: getGradientFromToken(DataVizGradientPalette.gradient10),
       xAxisCalloutData: '2020/04/20',
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 39000h' },
     },
@@ -28,6 +35,10 @@ export const DonutChartCustomCallout = (): JSXElement => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _onTogglePopoverCheckChange = React.useCallback((ev: any) => {
     setUseCustomPopover(ev.currentTarget.checked);
+  }, []);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
   }, []);
 
   const data: ChartProps = {
@@ -84,7 +95,14 @@ export const DonutChartCustomCallout = (): JSXElement => {
 
   return (
     <>
-      <Switch label={'User Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+        <Switch label={'User Popover Override'} checked={useCustomPopover} onChange={_onTogglePopoverCheckChange} />
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
       <DonutChart
         data={data}
         innerRadius={55}
@@ -93,6 +111,7 @@ export const DonutChartCustomCallout = (): JSXElement => {
         hideLegend={false}
         height={220}
         valueInsideDonut={39000}
+        enableGradient={enableGradient}
         calloutPropsPerDataPoint={(props: ChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerDataPoint={(props: ChartDataPoint) => customPopover(props)}
       />

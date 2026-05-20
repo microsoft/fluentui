@@ -11,6 +11,7 @@ import {
   areArraysEqual,
   getColorFromToken,
   getNextColor,
+  getNextGradient,
   MIN_DONUT_RADIUS,
   ChartTitle,
   CHART_TITLE_PADDING,
@@ -32,6 +33,8 @@ const MIN_LEGEND_CONTAINER_HEIGHT = 40;
  */
 export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwardRef<HTMLDivElement, DonutChartProps>(
   ({ innerRadius = 0, hideLabels = true, ...restProps }, forwardedRef) => {
+    type DonutChartDataPointWithGradient = ChartDataPoint & { gradient?: [string, string] };
+
     const props = { innerRadius, hideLabels, ...restProps };
     const { chartContainerRef: _rootElem, legendsRef: _legendsRef } = useImageExport(
       props.componentRef,
@@ -110,11 +113,20 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         });
       }
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
-        const color: string = point.color!;
+        const pointWithGradient = point as DonutChartDataPointWithGradient;
+        const legendColor =
+          props.enableGradient && pointWithGradient.gradient ? pointWithGradient.gradient[0] : (point.color as string);
         // mapping data to the format Legends component needs
-        const legend: Legend = {
+        const pointLegend: Legend = {
           title: point.legend!,
-          color,
+          color: legendColor,
+          action: () => {
+            if (selectedLegends.includes(point.legend!)) {
+              setSelectedLegends(selectedLegends.filter(legend => legend !== point.legend!));
+            } else {
+              setSelectedLegends([...selectedLegends, point.legend!]);
+            }
+          },
           hoverAction: () => {
             _handleChartMouseLeave();
             setActiveLegend(point.legend!);
@@ -123,7 +135,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
             setActiveLegend(undefined);
           },
         };
-        return legend;
+        return pointLegend;
       });
       const legends = (
         <Legends
@@ -158,10 +170,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       e: React.FocusEvent<SVGPathElement>,
       targetElement?: HTMLElement | null,
     ): void {
+      const focusColor = typeof data.color === 'string' ? data.color : data.color?.[0];
       setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
       setValue(data.data!.toString());
       setLegend(data.legend);
-      setColor(data.color!);
+      setColor(focusColor);
       setXCalloutValue(data.xAxisCalloutData!);
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
@@ -176,10 +189,17 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     ): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
+        const pointWithGradient = data as DonutChartDataPointWithGradient;
+        let hoverColor = data.color as string;
+
+        if (props.enableGradient && pointWithGradient.gradient) {
+          hoverColor = pointWithGradient.gradient[0];
+        }
+
         setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
         setValue(data.data!.toString());
         setLegend(data.legend);
-        setColor(data.color!);
+        setColor(hoverColor);
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
@@ -257,13 +277,34 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     function _addDefaultColors(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            let defaultColor: string;
-            if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0);
+            let itemColor: string;
+            let gradient: [string, string] | undefined;
+            const itemWithGradient = item as DonutChartDataPointWithGradient;
+
+            if (typeof item.color === 'undefined' || item.color === '') {
+              // Auto-selected color: generate gradient
+              itemColor = getNextColor(index, 0);
+              gradient = getNextGradient(index);
+            } else if (typeof item.color === 'string') {
+              // User-provided solid color: no gradient
+              itemColor = getColorFromToken(item.color);
+              gradient = undefined;
             } else {
-              defaultColor = getColorFromToken(item.color);
+              // User-provided gradient array: use it
+              const startColor = item.color[0] || getNextColor(index, 0);
+              const endColor = item.color[1] || startColor;
+              itemColor = startColor;
+              gradient = [startColor, endColor];
             }
-            return { ...item, defaultColor };
+
+            // Override with explicit gradient property if provided
+            if (itemWithGradient.gradient) {
+              const start = itemWithGradient.gradient[0] || itemColor;
+              const end = itemWithGradient.gradient[1] || start;
+              gradient = [start, end];
+            }
+
+            return { ...item, color: itemColor, ...(gradient ? { gradient } : {}) } as DonutChartDataPointWithGradient;
           })
         : [];
     }
@@ -319,7 +360,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         )
       : 0;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical - titleHeight) / 2;
-    const chartData = _elevateToMinimums(points);
+    const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
@@ -360,6 +401,8 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
               outerRadius={outerRadius}
               innerRadius={props.innerRadius!}
               data={chartData!}
+              enableGradient={props.enableGradient}
+              roundCorners={props.roundCorners}
               onFocusCallback={_focusCallback}
               hoverOnCallback={_hoverCallback}
               hoverLeaveCallback={_hoverLeave}

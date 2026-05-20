@@ -435,7 +435,7 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
 // @public (undocumented)
 export interface ChartDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
-    color?: string;
+    color?: string | [string, string];
     data?: number;
     horizontalBarChartdata?: HorizontalDataPoint;
     legend?: string;
@@ -659,6 +659,36 @@ export interface DataSeries {
 }
 
 // @public (undocumented)
+export const DataVizGradientPalette: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
+    gradient5: string;
+    gradient6: string;
+    gradient7: string;
+    gradient8: string;
+    gradient9: string;
+    gradient10: string;
+    gradient1Ext: string;
+    gradient2Ext: string;
+    gradient3Ext: string;
+    gradient4Ext: string;
+    gradient5Ext: string;
+    gradient6Ext: string;
+    gradient7Ext: string;
+    gradient8Ext: string;
+    gradient9Ext: string;
+    gradient10Ext: string;
+    success: string;
+    highSuccess: string;
+    warning: string;
+    error: string;
+    highError: string;
+    disabled: string;
+};
+
+// @public (undocumented)
 export const DataVizPalette: {
     color1: string;
     color2: string;
@@ -731,6 +761,7 @@ export interface DonutChartProps extends CartesianChartProps {
     componentRef?: React_2.Ref<Chart>;
     culture?: string;
     data?: ChartProps;
+    enableGradient?: boolean;
     height?: number;
     hideLabels?: boolean;
     hideLegend?: boolean;
@@ -796,9 +827,15 @@ export interface EventsAnnotationProps {
 }
 
 // @public (undocumented)
-export interface ExtendedSegment extends GaugeChartSegment {
+export interface ExtendedSegment extends Omit<GaugeChartSegment, 'color'> {
+    // (undocumented)
+    color: string;
     // (undocumented)
     end: number;
+    // (undocumented)
+    gradient: [string, string] | undefined;
+    // (undocumented)
+    gradientId: string;
     // (undocumented)
     start: number;
 }
@@ -974,10 +1011,16 @@ export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string
 export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;
 
 // @public (undocumented)
+export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
+
+// @public (undocumented)
 export const getInvertedTextColor: (color: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getNextGradient: (index: number, offset?: number, isDarkTheme?: boolean) => [string, string];
 
 // @public (undocumented)
 export const getSegmentLabel: (segment: ExtendedSegment, minValue: number, maxValue: number, variant?: GaugeChartVariant, isAriaLabel?: boolean) => string;
@@ -1000,6 +1043,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     culture?: string;
     data?: GroupedVerticalBarChartData[];
     dataV2?: (BarSeries<string, number> | LineSeries<string, number>)[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
@@ -1029,6 +1073,7 @@ export interface GVBarChartSeriesPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     data: number;
+    gradient?: [string, string];
     key: string;
     legend: string;
     onClick?: VoidFunction;
@@ -1118,6 +1163,7 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     color?: string;
     culture?: string;
     data?: ChartProps[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
@@ -1166,6 +1212,7 @@ export interface HorizontalBarChartWithAxisDataPoint {
     barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend?: string;
     onClick?: VoidFunction;
     x: number;
@@ -1910,7 +1957,7 @@ export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
 export interface VerticalBarChartDataPoint {
     barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
-    color?: string;
+    color?: string | [string, string];
     legend?: string;
     lineData?: LineDataInVerticalBarChart;
     onClick?: VoidFunction;
@@ -2015,6 +2062,7 @@ export interface VSChartDataPoint {
     color?: string;
     culture?: string;
     data: number | string;
+    gradient?: [string, string];
     legend: string;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;

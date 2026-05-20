@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import { HorizontalBarChart, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts';
 import type { ChartProps } from '@fluentui/react-charts';
-import { HorizontalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
+import type { JSXElement } from '@fluentui/react-components';
 
 export const HorizontalBarBenchmark = (): JSXElement => {
   const hideRatio: boolean[] = [true, false];
@@ -13,7 +13,7 @@ export const HorizontalBarBenchmark = (): JSXElement => {
           legend: 'one',
           data: 50,
           horizontalBarChartdata: { x: 10, total: 100 },
-          color: getColorFromToken(DataVizPalette.color25),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8Ext),
         },
       ],
     },
@@ -24,7 +24,7 @@ export const HorizontalBarBenchmark = (): JSXElement => {
           legend: 'two',
           data: 30,
           horizontalBarChartdata: { x: 30, total: 200 },
-          color: getColorFromToken(DataVizPalette.color26),
+          color: getGradientFromToken(DataVizGradientPalette.gradient9Ext),
         },
       ],
     },
@@ -35,7 +35,7 @@ export const HorizontalBarBenchmark = (): JSXElement => {
           legend: 'three',
           data: 5,
           horizontalBarChartdata: { x: 15, total: 50 },
-          color: getColorFromToken(DataVizPalette.color27),
+          color: getGradientFromToken(DataVizGradientPalette.gradient10Ext),
         },
       ],
     },

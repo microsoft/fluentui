@@ -11,6 +11,7 @@ export * from './Sparkline';
 export * from './ScatterChart';
 export * from './GaugeChart';
 export * from './utilities/colors';
+export * from './utilities/gradients';
 export * from './Popover';
 export * from './ResponsiveContainer';
 export * from './DeclarativeChart';

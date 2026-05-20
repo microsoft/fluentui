@@ -1,8 +1,14 @@
 import * as React from 'react';
+import { HorizontalBarChart, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts';
 import type { JSXElement } from '@fluentui/react-components';
-import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
+import { Switch } from '@fluentui/react-components';
 
 export const HorizontalBarBasic = (): JSXElement => {
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
+
+  const _onSwitchGradient = React.useCallback((ev: any) => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
   const data = [
     {
       chartTitle: 'one',
@@ -10,7 +16,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color1),
+          color: getGradientFromToken(DataVizGradientPalette.gradient1),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '10%',
         },
@@ -22,7 +28,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color2),
+          color: getGradientFromToken(DataVizGradientPalette.gradient2),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
         },
@@ -34,7 +40,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color3),
+          color: getGradientFromToken(DataVizGradientPalette.gradient3),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '59%',
         },
@@ -46,7 +52,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color4),
+          color: getGradientFromToken(DataVizGradientPalette.gradient4),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '106%',
         },
@@ -58,7 +64,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color5),
+          color: getGradientFromToken(DataVizGradientPalette.gradient5),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',
         },
@@ -70,7 +76,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color6),
+          color: getGradientFromToken(DataVizGradientPalette.gradient6),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '93%',
         },
@@ -82,7 +88,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color7),
+          color: getGradientFromToken(DataVizGradientPalette.gradient7),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '66%',
         },
@@ -94,7 +100,7 @@ export const HorizontalBarBasic = (): JSXElement => {
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, total: 15000 },
-          color: getColorFromToken(DataVizPalette.color8),
+          color: getGradientFromToken(DataVizGradientPalette.gradient8),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '28%',
         },
@@ -103,9 +109,23 @@ export const HorizontalBarBasic = (): JSXElement => {
   ];
 
   return (
-    <div style={{ maxWidth: 600 }}>
-      <HorizontalBarChart data={data} chartDataMode={'default'} className={'hbcbasic'} />
-    </div>
+    <>
+      <div style={{ marginBottom: '10px' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+      </div>
+      <div style={{ maxWidth: 600 }}>
+        <HorizontalBarChart
+          data={data}
+          chartDataMode={'default'}
+          className={'hbcbasic'}
+          enableGradient={enableGradient}
+        />
+      </div>
+    </>
   );
 };
 

@@ -28,6 +28,7 @@ import {
   sortAxisCategories,
   calculateAppropriateBarWidth,
   getColorFromToken,
+  getNextGradient,
   getScalePadding,
   getDateFormatLevel,
 } from '../../utilities/index';
@@ -81,8 +82,9 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
             let endColor = startColor;
 
             if (props.enableGradient) {
-              startColor = point.gradient?.[0]!;
-              endColor = point.gradient?.[1]!;
+              const nextGradient = getNextGradient(colorIndex, 0);
+              startColor = point.gradient?.[0] || nextGradient[0];
+              endColor = point.gradient?.[1] || nextGradient[1];
             }
 
             _legendMap.current[legend] = { id: `${_legendId}_${colorIndex}`, startColor, endColor };

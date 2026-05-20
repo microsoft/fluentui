@@ -1,6 +1,12 @@
 import * as React from 'react';
 import type { JSXElement, CheckboxOnChangeData } from '@fluentui/react-components';
-import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
+import {
+  DataVizGradientPalette,
+  DataVizPalette,
+  GaugeChart,
+  getColorFromToken,
+  getGradientFromToken,
+} from '@fluentui/react-charts';
 import { Checkbox, Switch } from '@fluentui/react-components';
 
 export const GaugeChartBasic = (): JSXElement => {
@@ -88,7 +94,7 @@ export const GaugeChartBasic = (): JSXElement => {
       </div>
       <div style={{ display: 'flex' }}>
         <Switch
-          label={enableGradient ? 'Enable Gradient' : 'Disable Gradient'}
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
           checked={enableGradient}
           onChange={_onSwitchGradient}
         />
@@ -113,16 +119,19 @@ export const GaugeChartBasic = (): JSXElement => {
           {
             size: 33,
             color: getColorFromToken(DataVizPalette.success),
+            gradient: getGradientFromToken(DataVizGradientPalette.success),
             legend: 'Low Risk',
           },
           {
             size: 34,
             color: getColorFromToken(DataVizPalette.warning),
+            gradient: getGradientFromToken(DataVizGradientPalette.warning),
             legend: 'Medium Risk',
           },
           {
             size: 33,
             color: getColorFromToken(DataVizPalette.error),
+            gradient: getGradientFromToken(DataVizGradientPalette.error),
             legend: 'High Risk',
           },
         ]}

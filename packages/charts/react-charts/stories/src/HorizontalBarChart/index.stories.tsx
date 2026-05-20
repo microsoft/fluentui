@@ -9,6 +9,7 @@ export { HorizontalBarBenchmark } from './HorizontalBarChartBenchmark.stories';
 export { HorizontalBarStacked } from './HorizontalBarChartStacked.stories';
 export { HorizontalBarCustomAccessibility } from './HorizontalBarChartCustomAccessibility.stories';
 export { HorizontalBarCustomCallout } from './HorizontalBarChartCustomCallout.stories';
+export { HorizontalBarCustomGradient } from './HorizontalBarChartCustomGradient.stories';
 export { HorizontalBarStackedAnnotatedInlineLegend } from './HorizontalBarChartStackedAnnotatedInlineLegend.stories';
 
 export default {

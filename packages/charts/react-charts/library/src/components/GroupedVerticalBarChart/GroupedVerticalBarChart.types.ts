@@ -97,6 +97,12 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
   roundCorners?: boolean;
 
   /**
+   * @default false
+   * The prop used to enable gradient colors for the chart.
+   */
+  enableGradient?: boolean;
+
+  /**
    * New flexible data prop - supports both bar and line series.
    * Use `dataV2` instead of `data` when line series are included.
    */

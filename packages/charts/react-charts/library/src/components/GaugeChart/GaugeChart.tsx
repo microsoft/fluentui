@@ -12,6 +12,7 @@ import {
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
+  getNextGradient,
   pointTypes,
   useRtl,
   ChartTitle,
@@ -99,9 +100,12 @@ export const getChartValueLabel = (
 interface YValue extends Omit<YValueHover, 'y'> {
   y?: string | number;
 }
-export interface ExtendedSegment extends GaugeChartSegment {
+export interface ExtendedSegment extends Omit<GaugeChartSegment, 'color'> {
   start: number;
   end: number;
+  color: string;
+  gradient: [string, string] | undefined;
+  gradientId: string;
 }
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
@@ -185,16 +189,32 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       let total = minValue;
       const processedSegments: ExtendedSegment[] = segments.map(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (segment: { size: number; legend: any; color: string; accessibilityData: any }, index: number) => {
+        (
+          segment: { size: number; legend: any; color: string; gradient?: [string, string]; accessibilityData: any },
+          index: number,
+        ) => {
           const size = Math.max(segment.size, 0);
           total += size;
+
+          // Always assign solid color (v8 behavior - always prepared regardless of enableGradient)
+          const solidColor =
+            typeof segment.color !== 'undefined'
+              ? getColorFromToken(segment.color, false)
+              : getNextColor(index, 0, false);
+
+          // Only generate gradient if:
+          // 1. User explicitly provided one, OR
+          // 2. User didn't provide a color (using auto-selected color)
+          // Do NOT auto-generate gradient for user-provided colors
+          const gradient =
+            segment.gradient ?? (typeof segment.color === 'undefined' ? getNextGradient(index) : undefined);
+
           return {
             legend: segment.legend,
             size,
-            color:
-              typeof segment.color !== 'undefined'
-                ? getColorFromToken(segment.color, false)
-                : getNextColor(index, 0, false),
+            color: solidColor,
+            gradient,
+            gradientId: `gauge-gradient-${index}`,
             accessibilityData: segment.accessibilityData,
             start: total - size,
             end: total,
@@ -202,10 +222,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         },
       );
       if (typeof maxValue !== 'undefined' && total < maxValue) {
+        const unknownIndex = processedSegments.length;
+        const unknownColor = getColorFromToken('neutralLight', false);
         processedSegments.push({
           legend: 'Unknown',
           size: maxValue - total,
-          color: 'neutralLight',
+          color: unknownColor,
+          gradient: undefined, // User-provided color, no gradient
+          gradientId: `gauge-gradient-${unknownIndex}`,
           start: total,
           end: maxValue,
         });
@@ -286,11 +310,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
 
       const legends: Legend[] = _segments.map((segment, index) => {
-        const color: string = segment.color || getNextColor(index, 0, false);
+        // Use gradient start color if enableGradient and gradient exists, otherwise use solid color
+        const legendColor: string = props.enableGradient && segment.gradient ? segment.gradient[0] : segment.color;
 
         return {
           title: segment.legend,
-          color,
+          color: legendColor,
           hoverAction: () => {
             setHoveredLegend(segment.legend);
           },
@@ -389,10 +414,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const hoverYValues: YValue[] = _segments
         .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
         .map(segment => {
+          const segmentColor = Array.isArray(segment.color) ? segment.color[0] : segment.color;
           const yValue: YValue = {
             legend: segment.legend,
             y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
-            color: segment.color,
+            color: segmentColor,
           };
           return yValue;
         });
@@ -596,6 +622,28 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             aria-label={_getChartTitle()}
             onMouseLeave={_handleMouseOut}
           >
+            <defs>
+              {props.enableGradient &&
+                _segments.map((segment, index) => {
+                  if (!segment.gradient) {
+                    return null;
+                  } else {
+                    return (
+                      <linearGradient
+                        key={segment.gradientId}
+                        id={segment.gradientId}
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stopColor={segment.gradient[0]} />
+                        <stop offset="100%" stopColor={segment.gradient[1]} />
+                      </linearGradient>
+                    );
+                  }
+                })}
+            </defs>
             <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
               {props.chartTitle && (
                 <ChartTitle
@@ -634,6 +682,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               {arcs.map((arc, index) => {
                 const segment = _segments[arc.segmentIndex];
                 const arcId = `gauge-chart-arc-${index}`;
+                // Only use gradient URL if gradient exists and enableGradient is true
+                const fillColor =
+                  props.enableGradient && segment.gradient ? `url(#${segment.gradientId})` : segment.color;
+
                 return (
                   <React.Fragment key={index}>
                     <path
@@ -641,7 +693,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       id={arcId}
                       strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
                       className={classes.segment}
-                      fill={segment.color}
+                      fill={fillColor}
                       opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
                       {...getAccessibleDataObject(
                         {

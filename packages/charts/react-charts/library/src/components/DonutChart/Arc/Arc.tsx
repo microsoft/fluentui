@@ -7,6 +7,7 @@ import type { ChartDataPoint } from '../index';
 import type { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
+import { useId } from '@fluentui/react-utilities';
 
 // Create a Arc within Donut Chart variant which uses these default styles and this styled subcomponent.
 /**
@@ -15,7 +16,7 @@ import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
  */
 export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivElement, ArcProps>(
   (props, forwardedRef) => {
-    const arc = d3Arc();
+    const arc = d3Arc().cornerRadius(5);
     const currentRef = React.createRef<SVGPathElement>();
     const _isRTL: boolean = useRtl();
     const classes = useArcStyles(props);
@@ -113,35 +114,41 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       activeArc && activeArc.length > 0 ? (activeArc.includes(props.data?.data.legend!) ? 1 : 0.1) : 1;
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
+
+    const clipId = useId('Arc_clip') + `${props.color}_${props.nextColor}`;
+
+    const fill = props.enableGradient
+      ? `conic-gradient(
+      from ${props.data?.startAngle}rad,
+      ${props.color},
+      ${props.nextColor} ${props.data!.endAngle - props.data!.startAngle}rad
+    )`
+      : props.color;
+
+    const pathData = arc.cornerRadius(cornerRadius)({
+      ...props.data!,
+      innerRadius: props.innerRadius,
+      outerRadius: props.outerRadius,
+    })!;
+    const focusPathData = arc.cornerRadius(cornerRadius)({
+      ...props.focusData!,
+      innerRadius: props.innerRadius,
+      outerRadius: props.outerRadius,
+    })!;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
-          <path
-            id={id + 'focusRing'}
-            d={
-              arc.cornerRadius(cornerRadius)({
-                ...props.data!,
-                innerRadius: props.innerRadius,
-                outerRadius: props.outerRadius,
-              })!
-            }
-            className={classes.focusRing}
-          />
+          <path id={id + 'focusRing'} d={focusPathData} className={classes.focusRing} />
         )}
         <path
           // TODO innerradius and outerradius were absent
           id={id}
-          d={
-            arc.cornerRadius(cornerRadius)({
-              ...props.data!,
-              innerRadius: props.innerRadius,
-              outerRadius: props.outerRadius,
-            })!
-          }
+          d={pathData}
           className={classes.root}
-          style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
+          style={{ fill: props.enableGradient ? 'transparent' : props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
+          data-is-focusable={_shouldHighlightArc(props.data!.data.legend!) || activeArc?.length === 0}
           onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseMove={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseLeave={_hoverOff}
@@ -152,6 +159,27 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           aria-label={_getAriaLabel()}
           role="img"
         />
+        {/* Gradient rendering when useGradient is true */}
+        {props.enableGradient && (
+          <>
+            {/* clipping mask */}
+            <clipPath id={clipId}>
+              <path d={pathData} />
+            </clipPath>
+            {/* div to attach conic-gradient fill to */}
+            <foreignObject x="-50%" y="-50%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
+              <div
+                className={classes.root}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: fill,
+                  opacity,
+                }}
+              />
+            </foreignObject>
+          </>
+        )}
         {_renderArcLabel(classes.arcLabel)}
       </g>
     );
