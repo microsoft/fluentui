@@ -13,9 +13,9 @@ import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
 /**
- * The duration in milliseconds after the last typeahead keystroke before the buffer is cleared.
+ * The duration in milliseconds after the last character search keystroke before the search string is cleared.
  */
-const TYPEAHEAD_TIMEOUT = 500;
+const SEARCH_TIMEOUT = 500;
 
 /**
  * A Dropdown Custom HTML Element.
@@ -841,32 +841,32 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
-   * The accumulated typeahead buffer used to match option labels by prefix.
+   * The accumulated search string used to match option labels by prefix when printable characters are typed.
    *
    * @internal
    */
-  private typeaheadBuffer: string = '';
+  private searchString: string = '';
 
   /**
-   * The timeout id used to reset the typeahead buffer.
+   * The timeout id used to reset the search string.
    *
    * @internal
    */
-  private typeaheadTimeout?: ReturnType<typeof setTimeout>;
+  private searchTimeout?: ReturnType<typeof setTimeout>;
 
   /**
-   * Handles typeahead character input by moving {@link activeIndex} to the next option whose label matches the
-   * accumulated buffer. When the buffer is a single character (or the same character repeated), matching options are
-   * cycled through; otherwise the buffer is treated as a prefix match.
+   * Handles printable character input by moving {@link activeIndex} to the next option whose label matches the
+   * accumulated search string. When the string is a single character (or the same character repeated), matching
+   * options are cycled through; otherwise the string is treated as a prefix match.
    *
    * @param char - the printable character that was pressed
    * @internal
    */
-  private handleTypeahead(char: string): void {
-    const isRepeating = this.typeaheadBuffer === char.repeat(this.typeaheadBuffer.length);
-    this.typeaheadBuffer += char;
+  private handleSearchCharacter(char: string): void {
+    const isRepeating = this.searchString === char.repeat(this.searchString.length);
+    this.searchString += char;
 
-    let candidates = this.typeaheadBuffer.length > 1 ? this.filterOptions(this.typeaheadBuffer) : [];
+    let candidates = this.searchString.length > 1 ? this.filterOptions(this.searchString) : [];
     let isCycling = false;
 
     if (!candidates.length && isRepeating) {
@@ -886,11 +886,11 @@ export class BaseDropdown extends FASTElement {
       this.activeIndex = this.enabledOptions.indexOf(nextMatch);
     }
 
-    clearTimeout(this.typeaheadTimeout);
-    this.typeaheadTimeout = setTimeout(() => {
-      this.typeaheadBuffer = '';
-      this.typeaheadTimeout = undefined;
-    }, TYPEAHEAD_TIMEOUT);
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.searchString = '';
+      this.searchTimeout = undefined;
+    }, SEARCH_TIMEOUT);
   }
 
   /**
@@ -952,7 +952,7 @@ export class BaseDropdown extends FASTElement {
         if (!this.open) {
           this.listbox.showPopover();
         }
-        this.handleTypeahead(e.key);
+        this.handleSearchCharacter(e.key);
       }
       return true;
     }
@@ -1110,10 +1110,10 @@ export class BaseDropdown extends FASTElement {
     BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
     this.debounceController?.abort();
 
-    if (this.typeaheadTimeout) {
-      clearTimeout(this.typeaheadTimeout);
-      this.typeaheadTimeout = undefined;
-      this.typeaheadBuffer = '';
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = undefined;
+      this.searchString = '';
     }
 
     super.disconnectedCallback();

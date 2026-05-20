@@ -583,7 +583,7 @@ test.describe('Dropdown', () => {
     await expect(listbox).toBeHidden();
   });
 
-  test.describe('type ahead', () => {
+  test.describe('search options by printable characters', () => {
     test.beforeEach(async ({ fastPage }) => {
       await fastPage.setTemplate({
         innerHTML: `
