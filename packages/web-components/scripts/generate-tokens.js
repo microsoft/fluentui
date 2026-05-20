@@ -62,7 +62,7 @@ const themes = new Map([
 
 const cssLines = [
   `/* THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE */
-  :root {
+  [data-theme] {
     color-scheme: light dark;
 
     &[data-theme$="-light"] {
