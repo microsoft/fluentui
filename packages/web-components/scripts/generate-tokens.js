@@ -5,8 +5,8 @@
  *    names to CSS custom property var() references.
  *
  * 2. public/fluent-tokens.css — A CSS stylesheet that provides all token
- *    values using CSS nesting and light-dark() under :root, gated by
- *    data-theme attributes (e.g. data-theme="web-light").
+ *    values using light-dark() gated by data-theme attributes
+ *    (e.g. data-theme="web-light").
  */
 
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -18,6 +18,8 @@ import prettier from 'prettier';
 const { tokens, webLightTheme, webDarkTheme, teamsLightTheme, teamsDarkTheme } = tokensPackage;
 const tokenNames = Object.keys(tokens);
 const rootDir = join(import.meta.dirname, '..');
+
+const rgbaPattern = /rgba?\([^)]+\)/g;
 
 // ── 1. design-tokens.ts ─────────────────────────────────────────────────
 
@@ -47,8 +49,7 @@ console.log(`✔ ${tokenNames.length} token constants → src/theme/design-token
  * Returns true when a token can safely be used inside `light-dark()`.
  * Per spec, `light-dark()` only accepts `<color>` or `<image>` values.
  * Fluent token names follow a convention where color tokens start with
- * "color", so we use that as the primary check. Tokens that aren't
- * colors (shadows, fonts, spacing, etc.) must go in per-scheme blocks.
+ * "color", so we use that as the primary check.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark
  */
@@ -62,48 +63,44 @@ const themes = new Map([
 ]);
 
 const cssLines = [
-  `/* THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE */
-  [data-theme] {
-    color-scheme: light dark;
-
-    &[data-theme$="-light"] {
-      color-scheme:light;
-    }
-    &[data-theme$="-dark"] {
-      color-scheme:dark;
-    }
-  `,
+  `/* THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE */`,
+  ``,
+  `:root {`,
+  `  color-scheme: light dark;`,
+  `}`,
+  ``,
+  `[data-theme$="-light"] {`,
+  `  color-scheme: light;`,
+  `}`,
+  ``,
+  `[data-theme$="-dark"] {`,
+  `  color-scheme: dark;`,
+  `}`,
 ];
 
 for (const [prefix, { light, dark }] of themes) {
   const available = tokenNames.filter(t => t in light && t in dark);
-  const shared = [];
-  const perScheme = { light: [], dark: [] };
+
+  cssLines.push('', `[data-theme^="${prefix}-"] {`);
 
   for (const t of available) {
     if (light[t] === dark[t]) {
-      shared.push(`--${t}: ${light[t]};`);
+      cssLines.push(`--${t}: ${light[t]};`);
     } else if (isColorToken(t)) {
-      shared.push(`--${t}: light-dark(${light[t]}, ${dark[t]});`);
+      cssLines.push(`--${t}: light-dark(${light[t]}, ${dark[t]});`);
     } else {
-      perScheme.light.push(`--${t}: ${light[t]};`);
-      perScheme.dark.push(`--${t}: ${dark[t]};`);
+      const darkColors = [...dark[t].matchAll(rgbaPattern)].map(m => m[0]);
+      let colorIndex = 0;
+      const merged = light[t].replace(rgbaPattern, match => {
+        const darkColor = darkColors[colorIndex++];
+        return match === darkColor ? match : `light-dark(${match}, ${darkColor})`;
+      });
+      cssLines.push(`--${t}: ${merged};`);
     }
-  }
-
-  cssLines.push('', `&[data-theme^="${prefix}-"] {`, ...shared);
-
-  if (perScheme.light.length) {
-    cssLines.push('', '&[data-theme$="-light"] {', ...perScheme.light, '}');
-  }
-  if (perScheme.dark.length) {
-    cssLines.push('', '&[data-theme$="-dark"] {', ...perScheme.dark, '}');
   }
 
   cssLines.push('}');
 }
-
-cssLines.push('}');
 
 const cssContent = cssLines.join('\n');
 const cssDir = join(rootDir, 'public');
