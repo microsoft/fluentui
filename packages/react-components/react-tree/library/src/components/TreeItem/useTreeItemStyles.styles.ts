@@ -83,6 +83,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   // generating an unbounded number of atomic classes while still supporting
   // arbitrarily deep trees. User-provided inline styles take precedence.
   if (!isStaticallyDefinedLevel(level)) {
+    // eslint-disable-next-line react-hooks/immutability
     state.root.style = {
       [treeItemLevelToken]: level,
       ...state.root.style,
