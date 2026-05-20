@@ -10,7 +10,7 @@ import type { MenuItemProps, MenuItemState } from './MenuItem.types';
 export const useMenuItem = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
   const state: MenuItemState = useMenuItemBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-compiler/react-compiler -- attribute is mutated to opt into the focusgroup polyfill.
+  // eslint-disable-next-line react-hooks/immutability -- attribute is mutated to opt into the focusgroup polyfill.
   state.root.focusgroupstart = '';
 
   return state;

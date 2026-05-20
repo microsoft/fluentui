@@ -13,7 +13,7 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
 export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const baseState: MenuListState = useMenuListBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-compiler/react-compiler -- attribute is mutated to opt into the focusgroup polyfill.
+  // eslint-disable-next-line react-hooks/immutability -- attribute is mutated to opt into the focusgroup polyfill.
   baseState.root.focusgroup = 'menu block wrap';
 
   return baseState;
