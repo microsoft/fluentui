@@ -20,6 +20,7 @@ export const useProgressBar = (props: ProgressBarProps, ref: React.Ref<HTMLDivEl
   const state = useProgressBarBase_unstable(props, ref);
 
   if (state.bar && state.value !== undefined) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bar.style = {
       width: Math.min(100, Math.max(0, (state.value / state.max) * 100)) + '%',
       ...state.bar.style,

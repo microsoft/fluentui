@@ -72,6 +72,7 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
 
   const baseStyle = useBaseStyle();
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerInputClassNames.root,
     baseStyle,

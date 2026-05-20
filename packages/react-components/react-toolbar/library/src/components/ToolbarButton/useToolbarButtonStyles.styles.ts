@@ -22,9 +22,11 @@ export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void
 
   const buttonStyles = useBaseStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(state.vertical && buttonStyles.vertical, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(state.vertical && buttonStyles.verticalIcon, state.icon.className);
   }
 

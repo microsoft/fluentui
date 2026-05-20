@@ -117,6 +117,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
   const { appearance, disabled, inline, root, backgroundAppearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     linkClassNames.root,
     styles.root,

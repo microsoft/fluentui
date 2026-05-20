@@ -75,6 +75,7 @@ export const useCardPreviewBase_unstable = (
     },
 
     root: slot.always(
+      // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('div', {
         ref: previewRef,
         ...props,

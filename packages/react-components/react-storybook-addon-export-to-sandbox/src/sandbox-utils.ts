@@ -26,7 +26,9 @@ export function prepareSandboxContainers(context: StoryContext) {
   }
 
   return Array.from(rootElements).map(rootElement => {
-    const showCodeButton = rootElement.querySelector('.docblock-code-toggle');
+    const showCodeButton = rootElement.querySelector(
+      '.docblock-code-toggle:not(.with-code-sandbox-button):not(.with-open-in-new-tab-button)',
+    );
     const container = showCodeButton?.parentElement;
 
     if (!container) {
@@ -35,8 +37,8 @@ export function prepareSandboxContainers(context: StoryContext) {
 
     const classList = (showCodeButton.classList.value + ' with-code-sandbox-button').split(' ');
 
-    // remove button if it already existed
-    const ourButtons = container.querySelectorAll(`.with-code-sandbox-button`);
+    // remove buttons if they already existed
+    const ourButtons = container.querySelectorAll(`.with-code-sandbox-button, .with-open-in-new-tab-button`);
     ourButtons.forEach(node => node.remove());
 
     return {

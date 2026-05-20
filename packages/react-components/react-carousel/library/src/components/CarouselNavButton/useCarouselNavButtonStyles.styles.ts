@@ -132,6 +132,7 @@ export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonStat
 
   const { selected, appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselNavButtonClassNames.root,
     styles.root,

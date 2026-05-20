@@ -307,6 +307,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
 
   const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     badgeClassNames.root,
     rootClassName,
@@ -333,6 +334,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
       }
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       badgeClassNames.icon,
       iconRootClassName,

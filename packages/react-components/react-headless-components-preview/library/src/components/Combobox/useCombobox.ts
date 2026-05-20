@@ -77,6 +77,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     }),
   );
   const onClearIconClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.clearIcon?.onClick, (ev: React.MouseEvent<HTMLSpanElement>) => {
       clearSelection(ev);
       triggerRef.current?.focus();

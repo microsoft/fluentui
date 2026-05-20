@@ -20,8 +20,11 @@ export const useAccordionHeader = (props: AccordionHeaderProps, ref: React.Ref<H
   const state: AccordionHeaderState = useAccordionHeaderBase_unstable(props, ref);
 
   // Set data attributes for open, disabled, and expand icon position states to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-open'] = stringifyDataAttribute(state.open);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-expand-icon-position'] = state.expandIconPosition;
 
   return state;

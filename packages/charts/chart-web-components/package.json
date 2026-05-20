@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/chart-web-components",
   "description": "A library of Fluent Chart Web Components",
-  "version": "0.0.77",
+  "version": "0.0.78",
   "author": {
     "name": "Microsoft"
   },
@@ -69,7 +69,7 @@
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "^1.0.0-alpha.23",
-    "@fluentui/web-components": "^3.0.0-rc.19",
+    "@fluentui/web-components": "^3.0.0-rc.20",
     "@types/d3-selection": "^3.0.0",
     "@types/d3-shape": "^3.0.0",
     "d3-selection": "^3.0.0",

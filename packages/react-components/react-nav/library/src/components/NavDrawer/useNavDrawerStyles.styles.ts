@@ -34,6 +34,7 @@ export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerSta
   const { size } = state;
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navDrawerClassNames.root,
     styles.root,

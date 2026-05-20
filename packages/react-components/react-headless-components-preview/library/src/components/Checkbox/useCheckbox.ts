@@ -20,7 +20,9 @@ export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElemen
   const state: CheckboxState = useCheckboxBase_unstable(props, ref);
 
   // Set data attributes for disabled and checked states to simplify styling of these states.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-checked'] = stringifyDataAttribute(state.checked);
 
   return state;

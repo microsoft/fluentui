@@ -520,6 +520,9 @@ export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined)
 // @public (undocumented)
 export const isObjectArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
+// @public
+export function isSafeUrl(href: string): boolean;
+
 // @public (undocumented)
 export const isScatterAreaChart: (data: Partial<PlotData>) => boolean;
 
