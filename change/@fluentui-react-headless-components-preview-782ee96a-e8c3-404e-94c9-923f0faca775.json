@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "This branch showed lint problems when merged an unrelated commit, submitting with linter fix to ensure the GH Actions pass.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "none"
+}
