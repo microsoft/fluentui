@@ -114,21 +114,26 @@ export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeader
     );
   };
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = getSlotStyles('root');
 
   if (state.image) {
+    // eslint-disable-next-line react-hooks/immutability
     state.image.className = getSlotStyles('image');
   }
 
   if (state.header) {
+    // eslint-disable-next-line react-hooks/immutability
     state.header.className = getSlotStyles('header');
   }
 
   if (state.description) {
+    // eslint-disable-next-line react-hooks/immutability
     state.description.className = getSlotStyles('description');
   }
 
   if (state.action) {
+    // eslint-disable-next-line react-hooks/immutability
     state.action.className = getSlotStyles('action');
   }
 

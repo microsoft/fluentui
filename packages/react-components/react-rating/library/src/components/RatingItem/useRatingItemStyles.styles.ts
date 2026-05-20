@@ -128,9 +128,11 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, styles[size], state.root.className);
 
   if (state.halfValueInput) {
+    // eslint-disable-next-line react-hooks/immutability
     state.halfValueInput.className = mergeClasses(
       ratingItemClassNames.halfValueInput,
       inputBaseClassName,
@@ -140,6 +142,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   }
 
   if (state.fullValueInput) {
+    // eslint-disable-next-line react-hooks/immutability
     state.fullValueInput.className = mergeClasses(
       ratingItemClassNames.fullValueInput,
       inputBaseClassName,
@@ -149,6 +152,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   }
 
   if (state.unselectedIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.unselectedIcon.className = mergeClasses(
       ratingItemClassNames.unselectedIcon,
       indicatorBaseClassName,
@@ -161,6 +165,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   }
 
   if (state.selectedIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.selectedIcon.className = mergeClasses(
       ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,

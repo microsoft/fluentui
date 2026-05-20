@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 13 May 2026 04:08:40 GMT and should not be manually modified.
+This log was last generated on Tue, 19 May 2026 04:10:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.20)
+
+Tue, 19 May 2026 04:10:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.19..@fluentui/web-components_v3.0.0-rc.20)
+
+### Changes
+
+- Adds white-space normal to dropdown .control div to prevent text overflow issues. ([PR #36210](https://github.com/microsoft/fluentui/pull/36210) by mibaraka@microsoft.com)
+- feat: implement BaseCounterBadge class and update CounterBadge component structure ([PR #36209](https://github.com/microsoft/fluentui/pull/36209) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.19)
 

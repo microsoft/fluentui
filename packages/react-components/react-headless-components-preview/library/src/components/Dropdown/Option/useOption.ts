@@ -11,11 +11,13 @@ import { stringifyDataAttribute } from '../../../utils/stringifyDataAttribute';
  * The returned state can be modified with hooks before being passed to `renderOption`.
  */
 export const useOption = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  'use no memo';
+  ('use no memo');
 
   const state: OptionState = useOptionBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = stringifyDataAttribute(state.selected);
 
   return state;

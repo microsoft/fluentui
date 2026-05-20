@@ -10,7 +10,7 @@ import {
   getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
 
-import type { NavProps, NavState, OnNavItemSelectData } from './Nav.types';
+import type { NavBaseProps, NavBaseState, NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
 
 /**
@@ -57,11 +57,22 @@ const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemVal
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
+  const { density = 'medium' } = props;
+
+  const state = useNavBase_unstable(props, ref);
+
+  return {
+    ...state,
+    density,
+    tabbable: false,
+  };
+};
+
+export const useNavBase_unstable = (props: NavBaseProps, ref: React.Ref<HTMLDivElement>): NavBaseState => {
   const {
     onNavItemSelect,
     onNavCategoryItemToggle,
     multiple = true,
-    density = 'medium',
     openCategories: controlledOpenCategoryItems,
     selectedCategoryValue: controlledSelectedCategoryValue,
     selectedValue: controlledSelectedValue,
@@ -100,13 +111,19 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   const currentSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
   const previousSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
 
+  // eslint-disable-next-line react-hooks/refs
   if (currentSelectedValue.current !== selectedValue) {
+    // eslint-disable-next-line react-hooks/refs
     previousSelectedValue.current = currentSelectedValue.current;
+    // eslint-disable-next-line react-hooks/refs
     currentSelectedValue.current = selectedValue;
   }
 
+  // eslint-disable-next-line react-hooks/refs
   if (currentSelectedCategoryValue.current !== selectedCategoryValue) {
+    // eslint-disable-next-line react-hooks/refs
     previousSelectedCategoryValue.current = currentSelectedCategoryValue.current;
+    // eslint-disable-next-line react-hooks/refs
     currentSelectedCategoryValue.current = selectedCategoryValue;
   }
 
@@ -166,7 +183,5 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     multiple,
-    density,
-    tabbable: false,
   };
 };

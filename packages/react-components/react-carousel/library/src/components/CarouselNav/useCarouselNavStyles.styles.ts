@@ -39,6 +39,7 @@ export const useCarouselNavStyles_unstable = (state: CarouselNavState): Carousel
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(carouselNavClassNames.root, styles.root, state.root.className);
 
   return state;

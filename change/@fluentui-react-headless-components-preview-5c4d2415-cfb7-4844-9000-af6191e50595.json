@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(headless): fix Popover flipping behavior",
+  "comment": "feat: add headless Menu components",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"

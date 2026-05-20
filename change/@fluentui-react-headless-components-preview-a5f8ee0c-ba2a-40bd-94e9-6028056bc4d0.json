@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: migrate to latest react hooks and react compiler lint rules",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

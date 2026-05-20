@@ -31,6 +31,7 @@ export const useTableHeaderStyles_unstable = (state: TableHeaderState): TableHea
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableHeaderClassName,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,

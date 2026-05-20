@@ -204,7 +204,9 @@ export const useMenuTriggerBase_unstable = (
     onMouseEnter: useEventCallback(child?.props.onMouseEnter ?? noop),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    // eslint-disable-next-line react-hooks/refs
     onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
+    // eslint-disable-next-line react-hooks/refs
     onMouseOver: useEventCallback(mergeCallbacks(child?.props.onMouseOver, onMouseOver)),
   };
 
@@ -212,7 +214,9 @@ export const useMenuTriggerBase_unstable = (
     'aria-haspopup': 'menu',
     'aria-expanded': !open && !isSubmenu ? undefined : open,
     ...contextMenuProps,
+    // eslint-disable-next-line react-hooks/refs
     onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    // eslint-disable-next-line react-hooks/refs
     onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
   } as const;
 

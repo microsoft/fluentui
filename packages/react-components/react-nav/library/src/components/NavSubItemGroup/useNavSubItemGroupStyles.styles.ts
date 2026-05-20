@@ -27,6 +27,7 @@ export const useNavSubItemGroupStyles_unstable = (state: NavSubItemGroupState): 
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navSubItemGroupClassNames.root, styles.root, state.root.className);
 
   return state;
