@@ -31,7 +31,7 @@ export const useNavCategoryItem = (
   );
 
   const selected = selectedCategoryValue === value && !open;
-  const validAriaCurrent: 'page' | 'false' = selected && !open ? 'page' : 'false';
+  const validAriaCurrent: 'page' | 'false' = selected ? 'page' : 'false';
 
   return {
     open,
