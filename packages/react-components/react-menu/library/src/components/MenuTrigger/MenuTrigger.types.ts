@@ -10,6 +10,19 @@ export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
   disableButtonEnhancement?: boolean;
 };
 
+export type MenuTriggerBaseProps = MenuTriggerProps & {
+  /**
+   * Pluggable "focus the first focusable element in the menu popover" callback,
+   * invoked when an already-open submenu trigger receives the open arrow key.
+   *
+   * Not provided by the base hook itself - the base hook is intentionally headless
+   * and leaves focus discovery to the caller. `useMenuTrigger_unstable` plugs in a
+   * Tabster-aware implementation; a headless consumer is expected to supply its own.
+   * If omitted, the keyboard handler is a no-op for that case.
+   */
+  focusFirst?: () => void;
+};
+
 /**
  * Props that are passed to the child of the MenuTrigger when cloned to ensure correct behaviour for the Menu
  */

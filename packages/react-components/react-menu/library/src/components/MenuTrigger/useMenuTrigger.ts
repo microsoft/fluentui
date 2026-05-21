@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import type { MenuTriggerBaseProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useIsSubmenu, useOnMenuSafeZoneTimeout } from '../../utils';
@@ -44,24 +44,12 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     firstFocusable?.focus();
   }, [findFirstFocusable, menuPopoverRef]);
 
-  return useMenuTriggerBase_unstable(props, { focusFirst });
+  return useMenuTriggerBase_unstable({ ...props, focusFirst });
 };
 
 /**
  * Options accepted by `useMenuTriggerBase_unstable`.
  */
-export type UseMenuTriggerBaseOptions = {
-  /**
-   * Pluggable "focus the first focusable element in the menu popover" callback,
-   * invoked when an already-open submenu trigger receives the open arrow key.
-   *
-   * Not provided by the base hook itself - the base hook is intentionally headless
-   * and leaves focus discovery to the caller. `useMenuTrigger_unstable` plugs in a
-   * Tabster-aware implementation; a headless consumer is expected to supply its own.
-   * If omitted, the keyboard handler is a no-op for that case.
-   */
-  focusFirst?: () => void;
-};
 
 /**
  * Base hook for MenuTrigger component, produces state required to render the component.
@@ -75,11 +63,8 @@ export type UseMenuTriggerBaseOptions = {
  *
  * @public
  */
-export const useMenuTriggerBase_unstable = (
-  props: MenuTriggerProps,
-  options?: UseMenuTriggerBaseOptions,
-): MenuTriggerState => {
-  const { children, disableButtonEnhancement = false } = props;
+export const useMenuTriggerBase_unstable = (props: MenuTriggerBaseProps): MenuTriggerState => {
+  const { children, disableButtonEnhancement = false, focusFirst } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
@@ -90,8 +75,6 @@ export const useMenuTriggerBase_unstable = (
 
   const isSubmenu = useIsSubmenu();
   const shouldOpenOnArrowRight = useMenuListContext_unstable(ctx => ctx.shouldOpenOnArrowRight ?? true);
-
-  const focusFirst = options?.focusFirst;
 
   const openedWithKeyboardRef = React.useRef(false);
   const openedViaSafeZoneRef = React.useRef(false);
