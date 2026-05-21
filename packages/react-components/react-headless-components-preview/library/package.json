@@ -204,6 +204,12 @@
       "import": "./lib/popover.js",
       "require": "./lib-commonjs/popover.js"
     },
+    "./portal": {
+      "types": "./dist/portal.d.ts",
+      "node": "./lib-commonjs/portal.js",
+      "import": "./lib/portal.js",
+      "require": "./lib-commonjs/portal.js"
+    },
     "./positioning": {
       "types": "./dist/positioning.d.ts",
       "node": "./lib-commonjs/positioning.js",

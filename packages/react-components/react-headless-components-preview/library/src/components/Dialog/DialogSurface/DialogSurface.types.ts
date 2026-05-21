@@ -44,4 +44,10 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
    * browser run its native close-the-dialog focus restoration.
    */
   shouldRender: boolean;
+
+  /**
+   * The DOM element to render the dialog into when `modalType` is `non-modal`.
+   * Ignored for modal dialogs, which are always rendered in the browser top layer.
+   */
+  mountNode?: HTMLElement;
 };
