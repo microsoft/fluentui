@@ -2554,11 +2554,3 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 
   return text.slice(0, lo) + '...';
 };
-
-export function isSafeUrl(href: string): boolean {
-  const normalized = href.replace(/[\u0000-\u001F\u007F\s]+/g, '');
-  if (/^[a-z][a-z0-9+.-]*:/i.test(normalized)) {
-    return /^(https?|mailto|tel|ftp):/i.test(normalized);
-  }
-  return true;
-}

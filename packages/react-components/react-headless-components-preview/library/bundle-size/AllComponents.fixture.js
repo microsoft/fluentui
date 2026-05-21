@@ -15,7 +15,9 @@ import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as Input from '@fluentui/react-headless-components-preview/input';
 import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
+import * as Menu from '@fluentui/react-headless-components-preview/menu';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
+import * as Nav from '@fluentui/react-headless-components-preview/nav';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
 import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
@@ -54,7 +56,9 @@ console.log({
   Input,
   Label,
   Link,
+  Menu,
   MessageBar,
+  Nav,
   Persona,
   Popover,
   ProgressBar,

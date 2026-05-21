@@ -4,7 +4,8 @@ import type * as React from 'react';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
-import { useMenuItemBase_unstable, useMenuItem_unstable } from '../MenuItem/useMenuItem';
+import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
+import { useMenuItemBase_unstable } from '../MenuItem/useMenuItemBase';
 import type { MenuItemProps } from '../MenuItem/MenuItem.types';
 
 /**
