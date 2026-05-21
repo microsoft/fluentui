@@ -35,7 +35,7 @@ import { Escape } from '@fluentui/keyboard-keys';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseState => {
-  'use no memo';
+  ('use no memo');
 
   const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
@@ -197,10 +197,12 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     [setDelayTimeout, setVisible, state.showDelay, context],
   );
 
+  // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: tabster usage should be moved out of base hook
   const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
 
   // Callback ref that attaches a keyborg:focusin event listener.
   const [keyborgListenerCallbackRef] = React.useState(() => {
+    // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: keyborg/tabster types used in base hook
     const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
       // Skip showing the tooltip if focus moved programmatically.
       // For example, we don't want to show the tooltip when a dialog is closed
@@ -216,7 +218,9 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
     // Callback ref that attaches the listener to the element
     return (element: Element | null) => {
+      // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: keyborg constant used in base hook
       current?.removeEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
+      // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: keyborg constant used in base hook
       element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
       current = element;
     };

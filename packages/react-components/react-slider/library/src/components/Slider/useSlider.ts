@@ -72,6 +72,7 @@ export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HT
     thumb: slot.always(thumb, { elementType: 'div' }),
   };
 
+  // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: tabster usage should be moved out of base hook
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
 
   useSliderState_unstable(state, props);

@@ -61,6 +61,7 @@ export const useRadioBase_unstable = (props: RadioBaseProps, ref: React.Ref<HTML
 
   const root = slot.always(props.root, {
     defaultProps: {
+      // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: tabster usage should be moved out of base hook
       ref: useFocusWithin<HTMLSpanElement>(),
       ...nativeProps.root,
     },

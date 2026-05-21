@@ -61,6 +61,7 @@ export const useRatingItemBase_unstable = (
 
   const root = slot.always(
     getIntrinsicElementProps('span', {
+      // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: tabster usage should be moved out of base hook
       ref: useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref),
       ...props,
     }),
