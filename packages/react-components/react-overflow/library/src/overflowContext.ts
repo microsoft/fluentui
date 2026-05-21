@@ -1,5 +1,6 @@
 'use client';
 
+import type * as React from 'react';
 import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from '@fluentui/priority-overflow';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
@@ -15,6 +16,7 @@ export interface OverflowContextValue {
   registerOverflowMenu: (el: HTMLElement) => () => void;
   registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
+  containerRef?: React.RefObject<HTMLElement | null>;
 }
 
 export const OverflowContext = createContext<OverflowContextValue | undefined>(

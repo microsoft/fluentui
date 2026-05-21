@@ -59,6 +59,9 @@ export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overf
     onOverflowChange?: (ev: null, data: OverflowState) => void;
 };
 
+// @public
+export const OverflowReorderObserver: React_2.FC;
+
 // @public (undocumented)
 export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 
