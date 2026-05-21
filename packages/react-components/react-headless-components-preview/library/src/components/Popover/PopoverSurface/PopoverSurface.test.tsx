@@ -28,7 +28,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toBeInTheDocument();
+    expect(getByRole('group', { hidden: true })).toBeInTheDocument();
   });
 
   it('has data-open attribute when open', () => {
@@ -41,7 +41,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('data-open');
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('data-open');
   });
 
   it('has popover="auto" attribute by default', () => {
@@ -54,7 +54,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('popover', 'auto');
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
   });
 
   it('mirrors a browser-driven `toggle` event into onOpenChange', () => {
@@ -69,7 +69,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    const surface = getByRole('group');
+    const surface = getByRole('group', { hidden: true });
     const toggleEvent = new Event('toggle');
     (toggleEvent as unknown as { newState: string }).newState = 'closed';
     fireEvent(surface, toggleEvent);
@@ -87,7 +87,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group').querySelector('[data-arrow]')).toBeInTheDocument();
+    expect(getByRole('group', { hidden: true }).querySelector('[data-arrow]')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
@@ -100,11 +100,11 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveClass('my-surface');
+    expect(getByRole('group', { hidden: true })).toHaveClass('my-surface');
   });
 
   it('keeps trigger aria-details linked to the surface even when a custom id is provided', () => {
-    const { getByText, getByRole } = render(
+    const { getByRole, getByText } = render(
       <Popover open>
         <PopoverTrigger>
           <button>Trigger</button>
@@ -113,7 +113,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    const surface = getByRole('group');
+    const surface = getByRole('group', { hidden: true });
     const trigger = getByText('Trigger');
 
     expect(surface.id).not.toBe('user-provided-id');

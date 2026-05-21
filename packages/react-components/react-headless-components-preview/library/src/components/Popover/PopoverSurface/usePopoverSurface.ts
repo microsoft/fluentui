@@ -8,13 +8,11 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
 
 /**
  * Returns the state for a PopoverSurface component.
- *
- * The surface is rendered with `popover="auto"` so the browser owns light
- * dismiss (Escape, click-outside, popover-stack peer dismissal) — there is
- * no React-side Escape handler. Hover handlers stay because hover is an
- * open-side concern.
  */
-export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTMLDivElement>): PopoverSurfaceState => {
+export const usePopoverSurface = (
+  props: PopoverSurfaceProps,
+  ref: React.Ref<HTMLDialogElement>,
+): PopoverSurfaceState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const setOpen = usePopoverContext(context => context.setOpen);
@@ -23,36 +21,37 @@ export const usePopoverSurface = (props: PopoverSurfaceProps, ref: React.Ref<HTM
   const open = usePopoverContext(context => context.open);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
+  const trapFocus = usePopoverContext(context => context.trapFocus);
 
   const state: PopoverSurfaceState = {
     withArrow,
     arrowRef,
-    components: { root: 'div' },
+    components: { root: 'dialog' },
     root: slot.always(
       {
-        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDivElement>,
-        role: 'group',
+        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDialogElement>,
+        role: trapFocus ? 'dialog' : 'group',
         ...props,
         id: surfaceId,
-        popover: 'auto',
+        popover: trapFocus ? undefined : 'auto',
         'data-popover-surface': '',
         'data-open': stringifyDataAttribute(open),
       },
-      { elementType: 'div' },
+      { elementType: 'dialog' },
     ),
     'data-open': open ? 'true' : 'false',
   };
 
   const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
 
-  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
     onMouseEnterOriginal?.(e);
   });
 
-  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDialogElement>) => {
     if (openOnHover) {
       setOpen(e, false);
     }
