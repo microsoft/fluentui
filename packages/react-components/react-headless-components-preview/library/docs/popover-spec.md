@@ -34,6 +34,7 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 | `openOnContext`   | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
 | `withArrow`       | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
 | `positioning`     | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
+| `trapFocus`       | `boolean`                                                   | `false`     | Open the popover as a modal via `HTMLDialogElement.showModal()`. See [Focus management](#focus-management).                  |
 
 ### `PopoverTrigger`
 
@@ -44,21 +45,21 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 ### `PopoverSurface`
 
-| Prop       | Type        | Default | Description                                                                                                          |
-| ---------- | ----------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
-| `tabIndex` | `number`    | —       | Forwarded to the rendered `<div>` so the surface can be focusable when the consumer needs it (e.g. `tabIndex={-1}`). |
-| `children` | `ReactNode` | —       | Surface content.                                                                                                     |
+| Prop       | Type        | Default | Description                                                                                                             |
+| ---------- | ----------- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `tabIndex` | `number`    | —       | Forwarded to the rendered `<dialog>` so the surface can be focusable when the consumer needs it (e.g. `tabIndex={-1}`). |
+| `children` | `ReactNode` | —       | Surface content.                                                                                                        |
 
 ## States
 
-| State              | Trigger                                                                                                                                    | Behaviour                                                                                                                                                                                                                                                 | ARIA                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **Closed**         | Initial, or after dismissal                                                                                                                | Surface unmounted. Trigger has `aria-expanded="false"`, no `data-open`.                                                                                                                                                                                   | `aria-expanded="false"` on trigger.                                                     |
-| **Open**           | `open={true}` / click / keyboard activation / hover / right-click (depending on props)                                                     | Surface mounted and promoted into the top layer via `showPopover()` (feature-detected). `data-placement` reflects the requested placement; `usePlacementObserver` overwrites it with the resolved placement.                                              | `aria-expanded="true"`, `data-open` on trigger; `role="group"`, `data-open` on surface. |
-| **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                                                                        | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                                                              | Same as Open.                                                                           |
-| **Context-pinned** | `openOnContext` + right-click                                                                                                              | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                                                                            | Same as Open.                                                                           |
-| **Dismissing**     | Browser-driven: Escape, click-outside, popover-stack peer dismissal. Plus React-driven hover-leave (`openOnHover`) and programmatic close. | `toggle` event on the surface mirrors the browser's decision into React; `onOpenChange(e, { open: false, type })` fires with the originating event.                                                                                                       | `aria-expanded` returns to `"false"` on trigger.                                        |
-| **Nested**         | Popover rendered inside another Popover's surface                                                                                          | Nested popovers participate in the browser-managed `popover="auto"` stack. Escape, click-outside, and peer-dismissal use native HTML Popover semantics, and each surface mirrors its own `toggle` event back into React — no React-side Escape filtering. | Each surface keeps its own `role="group"`.                                              |
+| State              | Trigger                                                                                                                                    | Behaviour                                                                                                                                                                                                                                                                                                                                                                              | ARIA                                                                                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Closed**         | Initial, or after dismissal                                                                                                                | Surface unmounted. Trigger has `aria-expanded="false"`, no `data-open`.                                                                                                                                                                                                                                                                                                                | `aria-expanded="false"` on trigger.                                                                                                                                   |
+| **Open**           | `open={true}` / click / keyboard activation / hover / right-click (depending on props)                                                     | Surface mounted and promoted into the top layer. `usePopover` calls `showModal()` when `trapFocus={true}` (modal trap), otherwise `showPopover()` (non-modal). Both methods are feature-detected. `data-placement` reflects the requested placement; `usePlacementObserver` overwrites it with the resolved placement.                                                                 | `aria-expanded="true"`, `data-open` on trigger; `data-open` on surface. Surface role is `group` (default) or `dialog` (`trapFocus={true}`, supplied by the platform). |
+| **Hover-held**     | `openOnHover` and pointer inside trigger or surface                                                                                        | Popover stays open while pointer is inside either element; closes `mouseLeaveDelay` ms after it leaves both.                                                                                                                                                                                                                                                                           | Same as Open.                                                                                                                                                         |
+| **Context-pinned** | `openOnContext` + right-click                                                                                                              | `onOpenChange(e, { type: 'contextmenu', open: true })` with the mouse event; `contextTarget` state stores `{ x, y }`. Click and keyboard activation on the trigger do nothing.                                                                                                                                                                                                         | Same as Open.                                                                                                                                                         |
+| **Dismissing**     | Browser-driven: Escape, click-outside, popover-stack peer dismissal. Plus React-driven hover-leave (`openOnHover`) and programmatic close. | `toggle` event on the surface mirrors the browser's decision into React; `onOpenChange(e, { open: false, type })` fires with the originating event.                                                                                                                                                                                                                                    | `aria-expanded` returns to `"false"` on trigger.                                                                                                                      |
+| **Nested**         | Popover rendered inside another Popover's surface                                                                                          | Nested popovers participate in the browser-managed `popover="auto"` stack. Escape, click-outside, and peer-dismissal use native HTML Popover semantics, and each surface mirrors its own `toggle` event back into React — no React-side Escape filtering. A nested `trapFocus` popover stacks via `showModal()` and suspends the outer trap until it closes (browser top-layer rules). | Each surface keeps its own role per its `trapFocus` setting.                                                                                                          |
 
 ## Keyboard Navigation
 
@@ -72,12 +73,12 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 ### Inside surface
 
-| Key               | Action                                                                                                                                              |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Tab**           | Default browser tab order. The surface does **not** trap focus in this iteration; Tab can move focus out of the surface.                            |
-| **Shift + Tab**   | Default browser reverse tab order.                                                                                                                  |
-| **Escape**        | Dismiss the current popover. Filtered to the nearest enclosing surface, so Escape in a nested popover only closes that popover — not its ancestors. |
-| **Enter / Space** | Default button activation inside the surface.                                                                                                       |
+| Key               | Action                                                                                                                                                            |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Tab**           | Default browser tab order; Tab may move focus out of the surface. With `trapFocus={true}`, the platform's modal `<dialog>` semantics keep Tab inside the surface. |
+| **Shift + Tab**   | Default browser reverse tab order.                                                                                                                                |
+| **Escape**        | Dismiss the current popover. Filtered to the nearest enclosing surface, so Escape in a nested popover only closes that popover — not its ancestors.               |
+| **Enter / Space** | Default button activation inside the surface.                                                                                                                     |
 
 ## Events
 
@@ -101,11 +102,11 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
   // click / keydown / context / hover handlers merged onto the cloned child
 />
 
-// Surface (top layer)
-<div
+// Surface (top layer) — always a <dialog popover="auto">; role differs per trapFocus
+<dialog
   id={surfaceId}
   popover="auto"
-  role="group"
+  role={trapFocus ? undefined /* platform supplies role="dialog" + aria-modal */ : 'group'}
   data-popover-surface=""
   data-placement="below-start"   // requested placement; live-updated by observer
   data-open="true"
@@ -129,24 +130,38 @@ Instead, the relationship is wired **explicitly** and uniformly:
 
 This matches the behavioural guarantees consumers would get from `popovertarget` (for the ARIA-relationship piece).
 
+### Surface element
+
+`PopoverSurface` always renders as a native **`<dialog popover="auto">`**. A single element supports both show modes the component switches between at open time:
+
+- `surface.showPopover()` — non-modal popover (default, `trapFocus={false}`).
+- `surface.showModal()` — modal dialog (`trapFocus={true}`).
+
+The element choice follows the [Open UI popover-vs-dialog research](https://open-ui.org/components/popover.research.explainer/#popover-vs-dialog), which recommends `<dialog popover>` for top-layer non-modal cases — it preserves popover-style stacking and light-dismiss in the default path while leaving modal trap as a one-method swap when consumers opt in.
+
 ### Role selection
 
-The surface always renders as **`role="group"`** in this iteration — a non-modal anchored container suitable for menus, cards, and informational overlays. Modal `role="dialog"` (with `aria-modal="true"`, `aria-haspopup="dialog"` on the trigger, and a focus trap) is planned for a follow-up iteration that re-introduces a focus-management hook. Consumers needing modal semantics today should reach for the `Dialog` headless component instead.
+The role on the surface depends on `trapFocus`:
+
+| `trapFocus` | Implicit/explicit role                                                                                                                                                                                    | Why                                                                                                                                   |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `false`     | Explicit `role="group"`, overriding `<dialog>`'s implicit `role="dialog"`.                                                                                                                                | Non-modal anchored container suitable for menus, cards, and informational overlays. Matches the prior contract.                       |
+| `true`      | No explicit role; the platform supplies `role="dialog"` (or `role="alertdialog"` if a consumer sets it via `...props`) and `aria-modal="true"` automatically when the dialog is opened via `showModal()`. | Modal dialog semantics for assistive tech; the explicit `role="group"` is dropped so the platform-provided semantics aren't shadowed. |
 
 ### Focus management
 
-This iteration ships **no built-in focus management**:
+Focus management is delegated to the platform; the component adds no React-side focus trap, focus finder, or restoration logic.
 
-- **No auto-focus on open.** Whatever was focused before `open` flipped to `true` remains focused. Consumers who need focus inside the surface (e.g., for menu/dialog-style flows) should call `.focus()` on the desired element themselves, typically in their `onOpenChange` handler or in an effect keyed on the popover's open state.
-- **No focus trap.** Tab / Shift+Tab follow the document's normal tab order. With a top-layer surface, focus may move to elements behind the surface — expected for a non-modal popover.
+- **`trapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
+- **`trapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. On close, `dialog.close()` restores focus to whatever element was focused when `showModal()` ran — typically the trigger.
 
-### Auto-focus on open — not currently supported
+#### Specifying initial focus
 
-The previously-reserved `disableAutoFocus` prop has been **removed** from `PopoverProps`. The component does not move focus on open, so an opt-out flag is unnecessary. A future iteration will introduce a focus-management hook covering both auto-focus on open and focus trap; an opt-in/opt-out prop (likely with a different name reflecting the broader semantics) will arrive together with that hook.
+Consumers control which child receives initial focus via the standard React `autoFocus` attribute on the desired child JSX element. There is no `initialFocusRef` prop — the HTML attribute already covers it for both show modes.
 
-### Focus restore on dismiss — native only
+#### Cancel handling (modal Esc)
 
-The component does **not** supplement the browser's focus restore. What `popover="auto"` provides is what the consumer gets. Per the HTML Popover spec, the `hide popover` algorithm restores focus to a stored `previously focused element` — but that field is set only for the **first popover in the auto stack** (the spec text states: _"This ensures that focus is returned to the previously-focused element only for the first popover in a stack."_), and only when focus is currently inside the dismissing surface, and only when the popover is dismissed via the spec's hide algorithm (Escape close-watcher, click-outside light-dismiss, peer-auto dismissal, an explicit `hidePopover()` call).
+When `trapFocus={true}`, Escape fires the native `cancel` event on the dialog. `usePopover` listens for `cancel`, calls `event.preventDefault()` (so the browser doesn't close the dialog before React re-renders), and routes through `setOpen(false)`. The subsequent close — driven by `open` flipping to `false` — runs `dialog.close()`, which performs the spec-mandated focus restoration to the trigger. This keeps controlled consumers authoritative without losing the platform's restore behavior.
 
 ### Labeling
 
@@ -201,7 +216,7 @@ The surface is rendered with `popover="auto"`, so the **browser owns light dismi
 | Context menu             | `openOnContext={true}` → `contextmenu` on trigger defers to the trailing `pointerup` (see [Context-menu open deferral](#context-menu-open-deferral)), then calls `setOpen(true)` and stores the cursor `{x, y}` as `contextTarget`. |
 | Programmatic             | Consumer sets `open={true}` or uses `defaultOpen` / `positioningRef.setTarget`.                                                                                                                                                     |
 
-When `open` flips to `true`, `usePopover` calls `surface.showPopover()` and the surface enters the top layer with `popover="auto"`.
+When `open` flips to `true`, `usePopover` calls `surface.showModal()` if `trapFocus` is set (modal `<dialog>` semantics: focus trap, autofocus, inert backdrop, spec-mandated focus restoration on close), or `surface.showPopover()` otherwise (non-modal popover with browser-managed light dismiss). When `open` flips to `false`, the trap path additionally calls `dialog.close()` while the element is still connected so the browser runs its native close-the-dialog focus restoration.
 
 #### Context-menu open deferral
 
