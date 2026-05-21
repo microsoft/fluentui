@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat(react-headless-components-preview): add trapFocus prop to Popover for modal focus-trap via native dialog API",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "minor"
 }
