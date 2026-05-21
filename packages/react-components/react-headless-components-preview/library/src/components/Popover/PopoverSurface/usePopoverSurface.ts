@@ -30,7 +30,7 @@ export const usePopoverSurface = (
     root: slot.always(
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDialogElement>,
-        role: trapFocus ? undefined : 'group',
+        role: trapFocus ? 'dialog' : 'group',
         ...props,
         id: surfaceId,
         popover: trapFocus ? undefined : 'auto',
