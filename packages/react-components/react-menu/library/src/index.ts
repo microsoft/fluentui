@@ -126,12 +126,7 @@ export {
   useMenuTrigger_unstable,
   useMenuTriggerBase_unstable,
 } from './MenuTrigger';
-export type {
-  MenuTriggerChildProps,
-  MenuTriggerProps,
-  MenuTriggerState,
-  UseMenuTriggerBaseOptions,
-} from './MenuTrigger';
+export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState, MenuTriggerBaseProps } from './MenuTrigger';
 
 export { useCheckmarkStyles_unstable } from './selectable/index';
 export type { MenuItemSelectableProps, MenuItemSelectableState, SelectableHandler } from './selectable/index';
