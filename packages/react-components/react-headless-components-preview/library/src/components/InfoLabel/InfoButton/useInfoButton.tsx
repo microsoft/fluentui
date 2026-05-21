@@ -1,6 +1,6 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
@@ -70,6 +70,15 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
 
   const infoRef = useMergedRefs(state.info.ref);
   state.info.ref = infoRef;
+
+  React.useEffect(() => {
+    if (!popoverOpen) {
+      return;
+    }
+
+    // InfoButton pattern requires focusing the surface first so content is read in order.
+    infoRef.current?.focus();
+  }, [popoverOpen, infoRef]);
 
   // Hide the popover when focus moves out of the button and popover
   const onBlurButtonOrInfo = (e: React.FocusEvent) => {
