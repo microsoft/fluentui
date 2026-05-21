@@ -7,7 +7,7 @@ import { useDivider } from '../../Divider';
 /**
  * Create the state required to render NavDivider.
  *
- * Headless version — self-contained separator without react-divider dependency.
+ * Headless version — delegates to the headless Divider with `vertical` fixed to `false`.
  *
  * @param props - props from this instance of NavDivider
  * @param ref - reference to root HTMLDivElement of NavDivider

@@ -5,6 +5,6 @@ export type {
   NavCategoryItemState,
   NavCategoryItemContextValues,
 } from './NavCategoryItem.types';
-export { renderNavCategoryItem as renderNavCategoryItem_unstable } from './renderNavCategoryItem';
-export { useNavCategoryItem as useNavCategoryItem_unstable } from './useNavCategoryItem';
-export { useNavCategoryItemContextValues as useNavCategoryItemContextValues_unstable } from './useNavCategoryItemContextValues';
+export { renderNavCategoryItem } from './renderNavCategoryItem';
+export { useNavCategoryItem } from './useNavCategoryItem';
+export { useNavCategoryItemContextValues } from './useNavCategoryItemContextValues';

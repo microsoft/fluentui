@@ -1,4 +1,4 @@
 export { NavDivider } from './NavDivider';
 export type { NavDividerProps, NavDividerSlots, NavDividerState } from './NavDivider.types';
-export { renderNavDivider as renderNavDivider_unstable } from './renderNavDivider';
-export { useNavDivider as useNavDivider_unstable } from './useNavDivider';
+export { renderNavDivider } from './renderNavDivider';
+export { useNavDivider } from './useNavDivider';

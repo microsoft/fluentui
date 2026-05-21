@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { useNavContext_unstable, useNavCategoryContext_unstable } from '@fluentui/react-nav';
+import { useNavContext_unstable, useNavCategoryContext_unstable, type OnNavItemSelectData } from '@fluentui/react-nav';
 
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 
@@ -26,7 +26,8 @@ export const useNavCategoryItem = (
 
   const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event =>
-      onRequestNavCategoryItemToggle(event, { type: 'click', event, value: '', categoryValue: value }),
+      // Category toggles emit no `value` so consumers can distinguish them from item selection.
+      onRequestNavCategoryItemToggle(event, { type: 'click', event, categoryValue: value } as OnNavItemSelectData),
     ),
   );
 
@@ -40,9 +41,9 @@ export const useNavCategoryItem = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
+        ...props,
         'aria-current': validAriaCurrent,
         'aria-expanded': open,
-        ...props,
         onClick: onNavCategoryItemClick,
       }),
       { elementType: 'button' },

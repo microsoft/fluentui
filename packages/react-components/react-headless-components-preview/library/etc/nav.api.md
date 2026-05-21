@@ -46,15 +46,15 @@ import { OnNavItemSelectData } from '@fluentui/react-nav';
 import type { OverlayDrawerProps as OverlayDrawerProps_2 } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
 import { RegisterNavItemEventHandler } from '@fluentui/react-nav';
-import { renderNavCategory_unstable } from '@fluentui/react-nav';
+import { renderNavCategory_unstable as renderNavCategory } from '@fluentui/react-nav';
 import type { Slot } from '@fluentui/react-utilities';
-import { useNavCategory_unstable } from '@fluentui/react-nav';
+import { useNavCategory_unstable as useNavCategory } from '@fluentui/react-nav';
 import { useNavCategoryContext_unstable as useNavCategoryContext } from '@fluentui/react-nav';
-import { useNavCategoryContextValues_unstable } from '@fluentui/react-nav';
+import { useNavCategoryContextValues_unstable as useNavCategoryContextValues } from '@fluentui/react-nav';
 import { useNavCategoryItemContext_unstable as useNavCategoryItemContext } from '@fluentui/react-nav';
 import { useNavContext_unstable as useNavContext } from '@fluentui/react-nav';
-import { useNavItemBase_unstable as useNavItem_unstable } from '@fluentui/react-nav';
-import { useNavSubItemBase_unstable as useNavSubItem_unstable } from '@fluentui/react-nav';
+import { useNavItemBase_unstable as useNavItem } from '@fluentui/react-nav';
+import { useNavSubItemBase_unstable as useNavSubItem } from '@fluentui/react-nav';
 
 // @public
 export const Nav: ForwardRefComponent<NavProps>;
@@ -244,86 +244,86 @@ export { OnNavItemSelectData }
 export { RegisterNavItemEventHandler }
 
 // @public (undocumented)
-export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSXElement;
+export const renderNav: (state: NavState, contextValues: NavContextValues) => JSXElement;
 
-export { renderNavCategory_unstable }
-
-// @public
-export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSXElement;
+export { renderNavCategory }
 
 // @public
-export const renderNavDivider_unstable: (state: DividerBaseState) => JSXElement;
+export const renderNavCategoryItem: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSXElement;
+
+// @public
+export const renderNavDivider: (state: DividerBaseState) => JSXElement;
 
 // @public (undocumented)
-export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
+export const renderNavDrawer: (state: NavDrawerState, contextValues: NavContextValues) => JSXElement;
 
 // @public
-export const renderNavDrawerBody_unstable: (state: DrawerBodyState) => JSXElement;
+export const renderNavDrawerBody: (state: DrawerBodyState) => JSXElement;
 
 // @public
-export const renderNavDrawerFooter_unstable: (state: DrawerFooterState) => JSXElement;
+export const renderNavDrawerFooter: (state: DrawerFooterState) => JSXElement;
 
 // @public
-export const renderNavDrawerHeader_unstable: (state: DrawerHeaderState) => JSXElement;
+export const renderNavDrawerHeader: (state: DrawerHeaderState) => JSXElement;
 
 // @public (undocumented)
-export const renderNavItem_unstable: (state: NavItemState) => JSXElement;
+export const renderNavItem: (state: NavItemState) => JSXElement;
 
 // @public
-export const renderNavSectionHeader_unstable: (state: NavSectionHeaderState) => JSXElement;
+export const renderNavSectionHeader: (state: NavSectionHeaderState) => JSXElement;
 
 // @public (undocumented)
-export const renderNavSubItem_unstable: (state: NavSubItemState) => JSXElement;
+export const renderNavSubItem: (state: NavSubItemState) => JSXElement;
 
 // @public
-export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSXElement | null;
+export const renderNavSubItemGroup: (state: NavSubItemGroupState) => JSXElement | null;
 
 // @public (undocumented)
-export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
+export const useNav: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
 
-export { useNavCategory_unstable }
+export { useNavCategory }
 
 export { useNavCategoryContext }
 
-export { useNavCategoryContextValues_unstable }
+export { useNavCategoryContextValues }
 
 // @public
-export const useNavCategoryItem_unstable: (props: NavCategoryItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavCategoryItemState;
+export const useNavCategoryItem: (props: NavCategoryItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavCategoryItemState;
 
 export { useNavCategoryItemContext }
 
 // @public
-export function useNavCategoryItemContextValues_unstable(state: NavCategoryItemState): NavCategoryItemContextValues;
+export function useNavCategoryItemContextValues(state: NavCategoryItemState): NavCategoryItemContextValues;
 
 export { useNavContext }
 
 // @public (undocumented)
-export function useNavContextValues_unstable(state: NavState): NavContextValues;
+export function useNavContextValues(state: NavState): NavContextValues;
 
 // @public
-export const useNavDivider_unstable: (props: NavDividerProps, ref: React_2.Ref<HTMLDivElement>) => NavDividerState;
+export const useNavDivider: (props: NavDividerProps, ref: React_2.Ref<HTMLDivElement>) => NavDividerState;
 
 // @public
-export const useNavDrawer_unstable: (props: NavDrawerProps, ref: React_2.Ref<HTMLElement>) => NavDrawerState;
-
-// @public (undocumented)
-export const useNavDrawerBody_unstable: (props: NavDrawerBodyProps, ref: React_2.Ref<HTMLElement>) => NavDrawerBodyState;
+export const useNavDrawer: (props: NavDrawerProps, ref: React_2.Ref<HTMLElement>) => NavDrawerState;
 
 // @public
-export const useNavDrawerFooter_unstable: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLElement>) => NavDrawerFooterState;
+export const useNavDrawerBody: (props: NavDrawerBodyProps, ref: React_2.Ref<HTMLElement>) => NavDrawerBodyState;
 
 // @public
-export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderState;
-
-export { useNavItem_unstable }
+export const useNavDrawerFooter: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLElement>) => NavDrawerFooterState;
 
 // @public
-export const useNavSectionHeader_unstable: (props: NavSectionHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavSectionHeaderState;
+export const useNavDrawerHeader: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderState;
 
-export { useNavSubItem_unstable }
+export { useNavItem }
 
 // @public
-export const useNavSubItemGroup_unstable: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;
+export const useNavSectionHeader: (props: NavSectionHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavSectionHeaderState;
+
+export { useNavSubItem }
+
+// @public
+export const useNavSubItemGroup: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;
 
 // (No @packageDocumentation comment for this package)
 
