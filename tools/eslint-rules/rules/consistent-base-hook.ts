@@ -8,9 +8,23 @@ const EXPECTED_PARAM_NAMES = ['props', 'ref'] as const;
 const MIN_PARAM_COUNT = 1;
 const MAX_PARAM_COUNT = 2;
 const DEFAULT_FORBIDDEN_PACKAGES: ReadonlyArray<ForbiddenPackageOption> = [
-  { name: '@fluentui/react-tabster', allow: ['useFocusWithin', 'useFocusVisible'] },
+  {
+    name: '@fluentui/react-tabster',
+    // APIs that only depend on `keyborg` (no `tabster` runtime) are safe to use inside base hooks.
+    allow: [
+      'useFocusWithin',
+      'useFocusVisible',
+      'useKeyboardNavAttribute',
+      'useIsNavigatingWithKeyboard',
+      'useSetKeyboardNavigation',
+      'useOnKeyboardNavigationChange',
+      'applyFocusVisiblePolyfill',
+      // re-exports from `keyborg`
+      'KEYBORG_FOCUSIN',
+      'KeyborgFocusInEvent',
+    ],
+  },
   'tabster',
-  'keyborg',
 ];
 
 type ForbiddenPackageOption = string | { name: string; allow?: string[] };

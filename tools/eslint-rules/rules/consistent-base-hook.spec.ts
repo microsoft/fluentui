@@ -77,6 +77,15 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
+    // `keyborg` is not forbidden by default — bindings imported from it are allowed inside base hooks.
+    {
+      code: `
+        import { createKeyborg, KEYBORG_FOCUSIN } from 'keyborg';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { kb: createKeyborg(window), evt: KEYBORG_FOCUSIN };
+        };
+      `,
+    },
     // Identifier with the same local name as a forbidden import alias does not collide via scope analysis.
     {
       code: `
@@ -205,25 +214,6 @@ ruleTester.run(RULE_NAME, rule, {
             hookName: 'useThingBase_unstable',
             importedName: 'getTabsterAttribute',
             package: 'tabster',
-          },
-        },
-      ],
-    },
-    // Body uses a binding imported from keyborg.
-    {
-      code: `
-        import { createKeyborg } from 'keyborg';
-        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
-          return { kb: createKeyborg(window) };
-        };
-      `,
-      errors: [
-        {
-          messageId: 'forbiddenPackageUsage',
-          data: {
-            hookName: 'useThingBase_unstable',
-            importedName: 'createKeyborg',
-            package: 'keyborg',
           },
         },
       ],
