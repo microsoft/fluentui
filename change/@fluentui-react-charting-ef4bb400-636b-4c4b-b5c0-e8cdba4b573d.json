@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: move isSafeUrl to chart-utilities package and update imports",
+  "packageName": "@fluentui/react-charting",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

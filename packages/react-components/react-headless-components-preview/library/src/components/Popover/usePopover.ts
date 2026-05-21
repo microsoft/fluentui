@@ -10,18 +10,20 @@ const SUPPORTS_POPOVER_OPEN_SELECTOR =
 
 type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
+const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
+  !!el && typeof (el as HTMLDialogElement).showModal === 'function';
+
 /**
  * Returns the state for a Popover component.
- *
- * The surface is rendered with `popover="auto"` so the browser owns light
- * dismiss (Escape, click-outside, popover-stack peer dismissal). React
- * mirrors the surface's `toggle` events back into state and fires
- * `onOpenChange`, so controlled consumers stay in sync with what the
- * browser does.
- *
  */
 export const usePopover = (props: PopoverProps): PopoverState => {
-  const { openOnHover = false, openOnContext = false, mouseLeaveDelay = 500, withArrow = false } = props;
+  const {
+    openOnHover = false,
+    openOnContext = false,
+    mouseLeaveDelay = 500,
+    withArrow = false,
+    trapFocus = false,
+  } = props;
 
   const [open, setOpenState] = useControllableState({
     state: props.open,
@@ -71,7 +73,8 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const contentRef = React.useRef<HTMLElement>(null);
   const arrowRef = React.useRef<HTMLDivElement>(null);
 
-  const surfaceId = useId('fui-popover-surface-');
+  const generatedSurfaceId = useId('fui-popover-surface-');
+  const surfaceId = props.id ?? generatedSurfaceId;
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
@@ -87,11 +90,36 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
   });
 
+  const onSurfaceClose = useEventCallback((event: Event) => {
+    setOpenState(false);
+    props.onOpenChange?.(event, { event, type: event.type, open: false });
+  });
+
   React.useEffect(() => {
     const surface = contentRef.current;
 
-    if (!surface || !open) {
+    if (!surface) {
       return;
+    }
+
+    if (!open) {
+      if (isDialogElement(surface) && surface.open) {
+        surface.close();
+      }
+      return;
+    }
+
+    if (trapFocus) {
+      if (!isDialogElement(surface)) {
+        return;
+      }
+
+      if (!surface.open) {
+        surface.showModal();
+      }
+
+      surface.addEventListener('close', onSurfaceClose);
+      return () => surface.removeEventListener('close', onSurfaceClose);
     }
 
     if (typeof surface.showPopover !== 'function') {
@@ -104,7 +132,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
     surface.addEventListener('toggle', onSurfaceToggle);
     return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, contentRef, onSurfaceToggle]);
+  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -142,6 +170,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnHover,
     openOnContext,
     withArrow,
+    trapFocus,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
@@ -161,6 +190,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     openOnHover,
     openOnContext,
     withArrow,
+    trapFocus,
     positioning,
     surfaceId,
   } = state;
@@ -176,6 +206,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnHover,
       openOnContext,
       withArrow,
+      trapFocus,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,

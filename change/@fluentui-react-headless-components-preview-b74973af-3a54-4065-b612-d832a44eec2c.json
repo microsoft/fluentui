@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: adopt to a new react-hooks lint rules",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
