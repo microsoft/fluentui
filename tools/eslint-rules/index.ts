@@ -4,6 +4,7 @@ import {
   RULE_NAME as consistentCallbackTypeName,
   rule as consistentCallbackType,
 } from './rules/consistent-callback-type';
+import { RULE_NAME as consistentBaseHookName, rule as consistentBaseHook } from './rules/consistent-base-hook';
 
 /**
  * Import your custom workspace rules at the top of this file.
@@ -32,6 +33,7 @@ module.exports = {
    */
   rules: {
     [consistentCallbackTypeName]: consistentCallbackType,
+    [consistentBaseHookName]: consistentBaseHook,
     [noRestrictedGlobalsName]: noRestrictedGlobals,
     [noMissingJsxPragmaName]: noMissingJsxPragma,
   },
