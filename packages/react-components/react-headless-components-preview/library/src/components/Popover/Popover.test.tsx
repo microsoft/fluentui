@@ -180,7 +180,7 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    expect(getByRole('group')).toHaveAttribute('id', 'my-id');
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('id', 'my-id');
     expect(getByRole('button')).toHaveAttribute('aria-details', 'my-id');
   });
 
