@@ -67,11 +67,12 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
-    // Default allowlist: `useFocusWithin` from `@fluentui/react-tabster` is permitted inside base hooks.
+    // Default allowlist: `useFocusWithin` and `useFocusVisible` from `@fluentui/react-tabster` are permitted inside base hooks.
     {
       code: `
-        import { useFocusWithin } from '@fluentui/react-tabster';
+        import { useFocusWithin, useFocusVisible } from '@fluentui/react-tabster';
         export const useThingBase_unstable = (props, ref: React.Ref<HTMLSpanElement>) => {
+          useFocusVisible();
           return { props, ref: useFocusWithin<HTMLSpanElement>() };
         };
       `,

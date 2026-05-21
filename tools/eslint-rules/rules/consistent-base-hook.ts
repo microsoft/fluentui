@@ -8,7 +8,7 @@ const EXPECTED_PARAM_NAMES = ['props', 'ref'] as const;
 const MIN_PARAM_COUNT = 1;
 const MAX_PARAM_COUNT = 2;
 const DEFAULT_FORBIDDEN_PACKAGES: ReadonlyArray<ForbiddenPackageOption> = [
-  { name: '@fluentui/react-tabster', allow: ['useFocusWithin'] },
+  { name: '@fluentui/react-tabster', allow: ['useFocusWithin', 'useFocusVisible'] },
   'tabster',
   'keyborg',
 ];
