@@ -68,7 +68,6 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   const id = useId('switch-', nativeProps.primary.id);
 
   const root = slot.always(props.root, {
-    // eslint-disable-next-line @nx/workspace-consistent-base-hook -- legacy: tabster usage should be moved out of base hook
     defaultProps: { ref: useFocusWithin<HTMLDivElement>(), ...nativeProps.root },
     elementType: 'div',
   });
