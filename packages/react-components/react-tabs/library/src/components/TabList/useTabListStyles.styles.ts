@@ -48,6 +48,7 @@ export const useTabListStyles_unstable = (state: TabListState): TabListState => 
 
   const isRounded = appearance === 'subtle-circular' || appearance === 'filled-circular';
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tabListClassNames.root,
     styles.root,

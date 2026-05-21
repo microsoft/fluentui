@@ -54,6 +54,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
   const popupSurfaceClassName = usePopupSurfaceClassName();
   const { disabled, inlinePopup } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     datePickerClassNames.root,
     styles.base,
@@ -62,6 +63,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
   );
 
   if (state.popupSurface) {
+    // eslint-disable-next-line react-hooks/immutability
     state.popupSurface.className = mergeClasses(
       datePickerClassNames.popupSurface,
       popupSurfaceClassName,
@@ -70,6 +72,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     );
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.calendar.className = mergeClasses(datePickerClassNames.calendar, state.calendar.className);
 
   return state;

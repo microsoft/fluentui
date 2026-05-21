@@ -35,6 +35,7 @@ export const useSwatchPickerRowStyles_unstable = (state: SwatchPickerRowState): 
   const styles = useStyles();
   const spacingStyle = state.spacing === 'small' ? styles.spacingSmall : styles.spacingMedium;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(swatchPickerRowClassNames.root, resetStyles, spacingStyle, state.root.className);
 
   return state;

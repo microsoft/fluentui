@@ -38,6 +38,7 @@ export const useToastStyles_unstable = (state: ToastState): ToastState => {
 
   const rootBaseClassName = useRootBaseClassName();
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toastClassNames.root,
     rootBaseClassName,

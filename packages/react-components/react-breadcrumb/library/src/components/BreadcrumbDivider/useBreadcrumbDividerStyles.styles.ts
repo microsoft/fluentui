@@ -37,6 +37,7 @@ export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerStat
   const iconStyles = useIconStyles();
   const { size = 'medium' } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(breadcrumbDividerClassNames.root, styles, iconStyles[size], state.root.className);
 
   return state;

@@ -33,6 +33,7 @@ export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopo
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuPopoverClassNames.root, styles.root, state.root.className);
   return state;
 };

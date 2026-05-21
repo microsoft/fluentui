@@ -19,7 +19,9 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
 
   const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'} wrap`;
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
 
   return state;

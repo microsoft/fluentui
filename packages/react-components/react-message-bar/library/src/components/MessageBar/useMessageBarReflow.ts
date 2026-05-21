@@ -92,5 +92,6 @@ export function useMessageBarReflow(enabled: boolean = false): {
     };
   }, []);
 
+  // eslint-disable-next-line react-hooks/refs
   return { ref, reflowing: reflowingRef.current };
 }

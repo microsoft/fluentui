@@ -116,6 +116,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     textClassNames.root,
     styles.root,

@@ -52,6 +52,7 @@ export const useDrawerHeaderStyles_unstable = (state: DrawerHeaderState): Drawer
   const styles = useStyles();
   const rootStyles = useDrawerHeaderStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     drawerHeaderClassNames.root,
     styles,

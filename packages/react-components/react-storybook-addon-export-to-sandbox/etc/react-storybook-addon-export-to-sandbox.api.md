@@ -15,6 +15,7 @@ import { TransformOptions } from '@babel/core';
 interface Parameters_2 {
     // (undocumented)
     exportToSandbox?: ParametersConfig;
+    openInNewTab?: boolean;
 }
 export { Parameters_2 as Parameters }
 
