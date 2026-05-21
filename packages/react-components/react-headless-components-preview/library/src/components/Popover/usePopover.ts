@@ -73,7 +73,8 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const contentRef = React.useRef<HTMLElement>(null);
   const arrowRef = React.useRef<HTMLDivElement>(null);
 
-  const surfaceId = useId('fui-popover-surface-');
+  const generatedSurfaceId = useId('fui-popover-surface-');
+  const surfaceId = props.id ?? generatedSurfaceId;
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 

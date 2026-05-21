@@ -156,6 +156,12 @@
       "import": "./lib/image.js",
       "require": "./lib-commonjs/image.js"
     },
+    "./info-label": {
+      "types": "./dist/info-label.d.ts",
+      "node": "./lib-commonjs/info-label.js",
+      "import": "./lib/info-label.js",
+      "require": "./lib-commonjs/info-label.js"
+    },
     "./input": {
       "types": "./dist/input.d.ts",
       "node": "./lib-commonjs/input.js",

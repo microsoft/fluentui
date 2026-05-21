@@ -1,8 +1,8 @@
 export type {
   MenuTriggerChildProps,
+  MenuTriggerBaseProps,
   MenuTriggerProps,
   MenuTriggerState,
-  UseMenuTriggerBaseOptions,
 } from './components/MenuTrigger/index';
 export {
   MenuTrigger,

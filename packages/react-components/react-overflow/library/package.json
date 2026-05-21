@@ -14,6 +14,7 @@
   "dependencies": {
     "@fluentui/priority-overflow": "^9.3.0",
     "@fluentui/react-context-selector": "^9.2.16",
+    "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.3",
     "@griffel/react": "^1.5.32",

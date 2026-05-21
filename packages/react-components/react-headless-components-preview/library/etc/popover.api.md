@@ -51,6 +51,7 @@ export type PopoverProps = {
     mouseLeaveDelay?: number;
     positioning?: PositioningShorthand;
     withArrow?: boolean;
+    id?: string;
     trapFocus?: boolean;
 };
 

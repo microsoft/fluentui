@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: re-export OverflowReorderObserver from @fluentui/react-overflow",
+  "packageName": "@fluentui/react-components",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
