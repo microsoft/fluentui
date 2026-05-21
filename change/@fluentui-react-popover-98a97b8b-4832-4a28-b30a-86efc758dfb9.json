@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: revert base hooks for Popover component",
+  "packageName": "@fluentui/react-popover",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "none"
+}
