@@ -67,6 +67,15 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+    // Default allowlist: `useFocusWithin` from `@fluentui/react-tabster` is permitted inside base hooks.
+    {
+      code: `
+        import { useFocusWithin } from '@fluentui/react-tabster';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLSpanElement>) => {
+          return { props, ref: useFocusWithin<HTMLSpanElement>() };
+        };
+      `,
+    },
     // Identifier with the same local name as a forbidden import alias does not collide via scope analysis.
     {
       code: `

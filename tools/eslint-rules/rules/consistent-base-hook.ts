@@ -7,7 +7,11 @@ const BASE_HOOK_NAME_PATTERN = /^use[A-Z]\w*Base_unstable$/;
 const EXPECTED_PARAM_NAMES = ['props', 'ref'] as const;
 const MIN_PARAM_COUNT = 1;
 const MAX_PARAM_COUNT = 2;
-const DEFAULT_FORBIDDEN_PACKAGES: ReadonlyArray<string> = ['@fluentui/react-tabster', 'tabster', 'keyborg'];
+const DEFAULT_FORBIDDEN_PACKAGES: ReadonlyArray<ForbiddenPackageOption> = [
+  { name: '@fluentui/react-tabster', allow: ['useFocusWithin'] },
+  'tabster',
+  'keyborg',
+];
 
 type ForbiddenPackageOption = string | { name: string; allow?: string[] };
 type Options = [
