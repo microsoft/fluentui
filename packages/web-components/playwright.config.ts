@@ -1,41 +1,10 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import defaultConfig from '@microsoft/fast-test-harness/playwright.config.mjs';
+import { defineConfig } from '@playwright/test';
 
-const config: PlaywrightTestConfig = {
-  reporter: process.env.CI ? 'github' : 'list',
-  retries: 3,
-  fullyParallel: process.env.CI ? false : true,
-  timeout: process.env.CI ? 10000 : 30000,
-  use: {
-    baseURL: 'http://localhost:5173',
-    contextOptions: {
-      reducedMotion: 'reduce',
-    },
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-        deviceScaleFactor: 1,
-      },
-    },
-  ],
-  webServer: {
-    command: 'yarn vite preview test/harness',
-    port: 5173,
-    reuseExistingServer: true,
-    stderr: 'pipe',
-    stdout: 'pipe',
-  },
-};
+const CI = process.env.CI === 'true';
 
-export default config;
+export default defineConfig({
+  ...defaultConfig,
+  reporter: CI ? 'github' : 'list',
+  testMatch: 'src/**/*.spec.ts',
+});
