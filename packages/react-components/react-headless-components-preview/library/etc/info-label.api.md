@@ -12,7 +12,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { LabelBaseProps } from '@fluentui/react-label';
 import { PositioningShorthand } from '@fluentui/react-positioning';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
