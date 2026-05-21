@@ -38,7 +38,7 @@ export const useMenuTrigger = (props: MenuTriggerProps): MenuTriggerState => {
     firstFocusable?.focus();
   }, [menuPopoverRef]);
 
-  const baseState = useMenuTriggerBase_unstable(props, { focusFirst });
+  const baseState = useMenuTriggerBase_unstable({ ...props, focusFirst });
   const open = useMenuContext(ctx => ctx.open);
   const openOnContext = useMenuContext(ctx => ctx.openOnContext);
   const setOpen = useMenuContext(ctx => ctx.setOpen);
