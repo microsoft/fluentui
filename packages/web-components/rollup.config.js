@@ -26,6 +26,7 @@ export default [
         plugins: [minify()],
       },
     ],
+    context: 'window',
     plugins,
   },
   {
@@ -41,6 +42,7 @@ export default [
         plugins: [minify()],
       },
     ],
+    context: 'window',
     plugins,
   },
 ];

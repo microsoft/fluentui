@@ -10,6 +10,15 @@ export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
   disableButtonEnhancement?: boolean;
 };
 
+export type MenuTriggerBaseProps = MenuTriggerProps & {
+  /**
+   * Optional callback to focus the first focusable element in the menu popover
+   * when an arrow key is pressed on an open submenu trigger.
+   * If omitted, the keyboard handler is a no-op.
+   */
+  focusFirst?: () => void;
+};
+
 /**
  * Props that are passed to the child of the MenuTrigger when cloned to ensure correct behaviour for the Menu
  */

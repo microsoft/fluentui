@@ -16,3 +16,4 @@ export { useOverflowContext } from './overflowContext';
 export type { OverflowItemProps } from './components/OverflowItem/OverflowItem.types';
 export { OverflowItem } from './components/OverflowItem/OverflowItem';
 export { OverflowDivider } from './components/OverflowDivider/OverflowDivider';
+export { OverflowReorderObserver } from './components/OverflowReorderObserver';
