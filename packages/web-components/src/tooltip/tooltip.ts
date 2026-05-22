@@ -115,11 +115,17 @@ export class Tooltip extends FASTElement {
   }
 
   public disconnectedCallback(): void {
-    super.disconnectedCallback();
     this.anchorElement?.removeEventListener('focus', this.focusAnchorHandler);
     this.anchorElement?.removeEventListener('blur', this.blurAnchorHandler);
     this.anchorElement?.removeEventListener('mouseenter', this.mouseenterAnchorHandler);
     this.anchorElement?.removeEventListener('mouseleave', this.mouseleaveAnchorHandler);
+
+    if (this.anchorElement) {
+      const describedBy = this.anchorElement.getAttribute('aria-describedby')?.trim().split(' ') ?? [];
+      this.anchorElement.setAttribute('aria-describedby', describedBy.filter(id => id !== this.id).join(' '));
+    }
+
+    super.disconnectedCallback();
   }
 
   /**
