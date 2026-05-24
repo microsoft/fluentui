@@ -232,24 +232,20 @@ export class BaseDropdown extends FASTElement {
 
       notifier.notify('multiple');
 
-      waitForConnectedDescendants(
-        next,
-        () => {
-          this.options.forEach(option => {
-            option.disabled = option.disabledAttribute || this.disabled;
-            option.name = this.name;
+      Updates.enqueue(() => {
+        this.options.forEach(option => {
+          option.disabled = option.disabledAttribute || this.disabled;
+          option.name = this.name;
+        });
+
+        this.enabledOptions
+          .filter(x => x.defaultSelected)
+          .forEach((x, i) => {
+            x.selected = this.multiple || i === 0;
           });
 
-          this.enabledOptions
-            .filter(x => x.defaultSelected)
-            .forEach((x, i) => {
-              x.selected = this.multiple || i === 0;
-            });
-
-          this.setValidity();
-        },
-        { idleCallback: true },
-      );
+        this.setValidity();
+      });
 
       if (AnchorPositioningCSSSupported) {
         // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
@@ -448,7 +444,12 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get enabledOptions(): DropdownOption[] {
-    return this.listbox?.enabledOptions ?? [];
+    return (
+      this.listbox?.enabledOptions ??
+      Array.from(this.querySelectorAll('*')).filter<DropdownOption>(
+        (o): o is DropdownOption => isDropdownOption(o) && !o.disabled,
+      )
+    );
   }
 
   /**
@@ -513,7 +514,9 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get options(): DropdownOption[] {
-    return this.listbox?.options ?? [];
+    return (
+      this.listbox?.options ?? Array.from(this.querySelectorAll('*')).filter<DropdownOption>(o => isDropdownOption(o))
+    );
   }
 
   /**
