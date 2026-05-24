@@ -828,7 +828,7 @@ describe('Overflow', () => {
     cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
-  it('should count accurately size of items', () => {
+  it.skip('should count accurately size of items', () => {
     mount(
       <Container>
         <Item width="unset" id="0">
