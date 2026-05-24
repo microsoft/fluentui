@@ -15,6 +15,17 @@ function sharedBeforeEach() {
   resetIds();
 }
 
+function renderChartMarkup(element: React.ReactElement): string {
+  resetIds();
+  let result: ReturnType<typeof render> | undefined;
+  act(() => {
+    result = render(element);
+  });
+  const markup = result!.container.innerHTML;
+  result!.unmount();
+  return markup;
+}
+
 const pointsForWrapLabels = [
   {
     y: 'String One',
@@ -72,6 +83,28 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
       );
     });
     expect(result!.container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders showYAxisLabelsTooltip the same as showYAxisLablesTooltip', () => {
+    const legacyMarkup = renderChartMarkup(
+      <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />,
+    );
+    const correctedMarkup = renderChartMarkup(
+      <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLabelsTooltip={true} />,
+    );
+
+    expect(correctedMarkup).toBe(legacyMarkup);
+  });
+
+  it('renders showYAxisLabels the same as showYAxisLables', () => {
+    const legacyMarkup = renderChartMarkup(
+      <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
+    );
+    const correctedMarkup = renderChartMarkup(
+      <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLabels={true} showYAxisLabelsTooltip={false} />,
+    );
+
+    expect(correctedMarkup).toBe(legacyMarkup);
   });
 
   it('Should render gradients on bars', () => {

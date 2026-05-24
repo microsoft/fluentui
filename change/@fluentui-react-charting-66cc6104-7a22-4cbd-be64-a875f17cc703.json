@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add correctly spelled Cartesian axis label props",
+  "packageName": "@fluentui/react-charting",
+  "email": "kirtiar15502@gmail.com",
+  "dependentChangeType": "patch"
+}

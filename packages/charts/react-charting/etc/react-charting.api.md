@@ -429,6 +429,8 @@ export interface ICartesianChartProps {
     margins?: IMargins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
+    rotateXAxisLabels?: boolean;
+    // @deprecated (undocumented)
     rotateXAxisLables?: boolean;
     roundedTicks?: boolean;
     secondaryYAxistitle?: string;
@@ -437,8 +439,14 @@ export interface ICartesianChartProps {
         yMaxValue?: number;
     };
     secondaryYScaleType?: AxisScaleType;
+    showXAxisLabelsTooltip?: boolean;
+    // @deprecated (undocumented)
     showXAxisLablesTooltip?: boolean;
+    showYAxisLabels?: boolean;
+    showYAxisLabelsTooltip?: boolean;
+    // @deprecated (undocumented)
     showYAxisLables?: boolean;
+    // @deprecated (undocumented)
     showYAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
@@ -453,6 +461,8 @@ export interface ICartesianChartProps {
     titleStyles?: ITitleStyles;
     useUTC?: boolean;
     width?: number;
+    wrapXAxisLabels?: boolean;
+    // @deprecated (undocumented)
     wrapXAxisLables?: boolean;
     xAxis?: AxisProps & {
         tickLayout?: 'default' | 'auto';
@@ -1446,7 +1456,11 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     points: any;
     ref?: IRefObject<IChart>;
     showRoundOffXTickValues?: boolean;
+    showYAxisLabels?: boolean;
+    showYAxisLabelsTooltip?: boolean;
+    // @deprecated (undocumented)
     showYAxisLables?: boolean;
+    // @deprecated (undocumented)
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
     svgFocusZoneProps?: IFocusZoneProps;

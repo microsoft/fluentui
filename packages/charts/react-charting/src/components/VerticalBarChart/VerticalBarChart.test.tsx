@@ -19,6 +19,17 @@ function sharedAfterEach() {
   }
 }
 
+function renderChartMarkup(element: React.ReactElement): string {
+  resetIds();
+  let result: ReturnType<typeof render> | undefined;
+  act(() => {
+    result = render(element);
+  });
+  const markup = result!.container.innerHTML;
+  result!.unmount();
+  return markup;
+}
+
 describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
 
@@ -68,6 +79,27 @@ describe('VerticalBarChart snapShot testing', () => {
       result = render(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
     });
     expect(result!.container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders showXAxisLabelsTooltip the same as showXAxisLablesTooltip', () => {
+    const legacyMarkup = renderChartMarkup(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
+    const correctedMarkup = renderChartMarkup(<VerticalBarChart data={chartPointsVBC} showXAxisLabelsTooltip={true} />);
+
+    expect(correctedMarkup).toBe(legacyMarkup);
+  });
+
+  it('renders wrapXAxisLabels the same as wrapXAxisLables', () => {
+    const legacyMarkup = renderChartMarkup(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
+    const correctedMarkup = renderChartMarkup(<VerticalBarChart data={chartPointsVBC} wrapXAxisLabels={true} />);
+
+    expect(correctedMarkup).toBe(legacyMarkup);
+  });
+
+  it('renders rotateXAxisLabels the same as rotateXAxisLables', () => {
+    const legacyMarkup = renderChartMarkup(<VerticalBarChart data={chartPointsVBC} rotateXAxisLables={true} />);
+    const correctedMarkup = renderChartMarkup(<VerticalBarChart data={chartPointsVBC} rotateXAxisLabels={true} />);
+
+    expect(correctedMarkup).toBe(legacyMarkup);
   });
 
   it('renders yAxisTickFormat correctly', () => {
