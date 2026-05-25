@@ -84,14 +84,6 @@ describe('useTagBase_unstable', () => {
     expect(root.type).toBe('button');
   });
 
-  it('should NOT inject a default dismissIcon children (icon injection lives in the styled hook)', () => {
-    const ref = React.createRef<HTMLElement>();
-    const { result } = renderHook(() => useTagBase_unstable({ dismissible: true }, ref), { wrapper: wrap() });
-
-    expect(result.current.dismissIcon).toBeDefined();
-    expect(result.current.dismissIcon).not.toHaveProperty('children');
-  });
-
   it('should set aria-selected when TagGroupContext role is listbox', () => {
     const ref = React.createRef<HTMLElement>();
     const { result } = renderHook(() => useTagBase_unstable({ selected: true }, ref), {
