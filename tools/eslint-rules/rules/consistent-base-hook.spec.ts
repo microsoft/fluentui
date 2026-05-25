@@ -170,6 +170,16 @@ const transitiveOptions: readonly [{ watchedPackages: string[]; forbiddenRuntime
   },
 ];
 
+const transitiveOptionsAllowTypeImports: readonly [
+  { watchedPackages: string[]; forbiddenRuntimes: string[]; allowTypeImports: boolean },
+] = [
+  {
+    watchedPackages: ['watched-pkg'],
+    forbiddenRuntimes: ['heavy-runtime'],
+    allowTypeImports: true,
+  },
+];
+
 typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
   valid: [
     // The defining file of \`useLight\` only reaches \`light-helper\`, not \`heavy-runtime\`.
@@ -241,6 +251,29 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
           return { props, ref, value: useA() };
         };
       `,
+    }, // With `allowTypeImports: true`, type-only imports from a forbidden runtime are permitted.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptionsAllowTypeImports,
+      code: `
+        import type { HeavyOptions } from 'heavy-runtime';
+        export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+    // With `allowTypeImports: true`, per-specifier type-only import from a forbidden runtime is permitted.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptionsAllowTypeImports,
+      code: `
+        import { type HeavyOptions } from 'heavy-runtime';
+        export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
     },
   ],
   invalid: [
@@ -307,6 +340,50 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
           data: {
             hookName: 'useThingBase_unstable',
             importedName: 'runHeavy',
+            package: 'heavy-runtime',
+          },
+        },
+      ],
+    },
+    // By default, a top-level type-only import from a forbidden runtime is disallowed.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import type { HeavyOptions } from 'heavy-runtime';
+        export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeDirect',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'HeavyOptions',
+            package: 'heavy-runtime',
+          },
+        },
+      ],
+    },
+    // By default, a per-specifier type-only import from a forbidden runtime is also disallowed.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import { type HeavyOptions } from 'heavy-runtime';
+        export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeDirect',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'HeavyOptions',
             package: 'heavy-runtime',
           },
         },

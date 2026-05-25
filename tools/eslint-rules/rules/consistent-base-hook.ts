@@ -33,6 +33,15 @@ type Options = [
      * these packages are also forbidden.
      */
     forbiddenRuntimes?: string[];
+    /**
+     * When `true`, type-only imports from `forbiddenRuntimes` packages are
+     * permitted inside base hooks (they emit no runtime code).
+     *
+     * Defaults to `false` — type-only imports from forbidden runtimes are
+     * disallowed as well, to keep the base hook's public API fully decoupled
+     * from those packages.
+     */
+    allowTypeImports?: boolean;
   }?,
 ];
 
@@ -92,6 +101,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
             items: { type: 'string' },
             uniqueItems: true,
           },
+          allowTypeImports: {
+            type: 'boolean',
+          },
         },
         additionalProperties: false,
       },
@@ -114,6 +126,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     const options = context.options[0] ?? {};
     const watchedPackages = new Set(options.watchedPackages ?? DEFAULT_WATCHED_PACKAGES);
     const forbiddenRuntimes = new Set(options.forbiddenRuntimes ?? DEFAULT_FORBIDDEN_RUNTIMES);
+    const allowTypeImports = options.allowTypeImports ?? false;
     // `forbidden` takes precedence: if the same name appears in both lists, treat the binding as forbidden.
     const trackedPackages = new Set<string>([...watchedPackages, ...forbiddenRuntimes]);
 
@@ -284,15 +297,18 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         if (typeof source !== 'string' || !trackedPackages.has(source)) {
           return;
         }
-        // Purely type-only imports cannot pull runtime.
-        if (node.importKind === 'type') {
+        const isForbiddenPkg = forbiddenRuntimes.has(source);
+        const declTypeOnly = node.importKind === 'type';
+        // Type-only imports from a watched package can never pull runtime; always skip.
+        // Type-only imports from a forbidden-runtime package are skipped only when explicitly allowed.
+        if (declTypeOnly && (!isForbiddenPkg || allowTypeImports)) {
           return;
         }
-        const kind: TrackedImport['kind'] = forbiddenRuntimes.has(source) ? 'forbidden' : 'watched';
+        const kind: TrackedImport['kind'] = isForbiddenPkg ? 'forbidden' : 'watched';
 
         node.specifiers.forEach(specifier => {
-          // Per-specifier type-only imports are also runtime-free.
-          if (specifier.type === AST_NODE_TYPES.ImportSpecifier && specifier.importKind === 'type') {
+          const specTypeOnly = specifier.type === AST_NODE_TYPES.ImportSpecifier && specifier.importKind === 'type';
+          if (specTypeOnly && (!isForbiddenPkg || allowTypeImports)) {
             return;
           }
           let importedName: string;
