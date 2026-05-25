@@ -11,8 +11,6 @@ It is intentionally focused on the engine itself: queues, measurement, lifecycle
 
 For the React integration layer, see `docs/react-overflow-react-bridge.md`.
 
-For open design directions, refactor ideas, and unresolved questions, see `docs/overflow-northstar.md`.
-
 ## One-sentence model
 
 The engine keeps two priority queues of item ids, measures the observed container and registered elements, then repeatedly moves items between the visible and invisible queues until occupied size fits within available size while publishing a canonical snapshot and optional callbacks.
@@ -138,6 +136,12 @@ The manager uses paired setup and cleanup boundaries for its runtime relationshi
 - returns a cleanup function that removes the divider registration
 
 Important: the engine still exposes `removeItem()` as a lower-level removal helper, but the preferred lifecycle model is the cleanup returned from `registerItem()`.
+
+Current recommendation:
+
+- keep `removeItem()` as a low-level internal escape hatch for now
+- keep cleanup-returning registration as the primary lifecycle model
+- only revisit tighter removal semantics if the team later chooses to narrow the internal manager surface further
 
 ### 4. Update scheduling
 
@@ -445,6 +449,32 @@ The manager still invokes:
 - `onUpdateOverflow`
 
 These remain useful for imperative side effects such as applying `data-overflowing` attributes, but they are no longer the only way to observe engine state.
+
+Current recommendation:
+
+- keep `onUpdateOverflow` and `onUpdateItemVisibility` for now
+- treat callbacks as secondary imperative hooks, not the primary readable state channel
+- only revisit further callback pruning if a later cleanup pass can prove there is no remaining value in the current callback model
+
+## Deferred engine follow-up
+
+The following engine ideas are intentionally deferred rather than treated as active design work.
+
+### Handle-based registration
+
+Possible future shapes such as:
+
+```ts
+registerItem(item): OverflowItemHandle;
+registerDivider(divider): OverflowDividerHandle;
+```
+
+are intentionally deferred.
+
+Current recommendation:
+
+- do not add handle-based registration now
+- only revisit it if metadata churn becomes a meaningful measured cost
 
 ## Scenario atlas
 

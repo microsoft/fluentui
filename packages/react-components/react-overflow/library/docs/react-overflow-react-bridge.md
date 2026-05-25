@@ -119,6 +119,12 @@ This is understandable because the menu itself changes occupied size, but archit
 
 So the bridge can create a second phase of work around menu activation.
 
+Current recommendation:
+
+- keep this follow-up update path for now
+- treat it as an acceptable bridge feedback loop in the current menu participation model
+- only revisit it if later profiling or a broader menu/measurement redesign offers a clearly better alternative
+
 ### Improvement: option changes no longer recreate the engine instance
 
 `useOverflowContainer()` now creates one manager instance per container and reconfigures it through `setOptions()`.
@@ -142,6 +148,12 @@ This is not necessarily slow in isolation, but it is a sign that the bridge is p
 The selector hook layer still uses `useSyncExternalStore` against the manager.
 
 That keeps the strongest external-store correctness semantics, but it also means the bridge has not fully moved to a mirrored React snapshot model.
+
+Current recommendation:
+
+- keep the selector-hook path on direct external-store reads for now
+- do not add custom selector equality
+- keep selector reads narrow and only revisit broader equality machinery if profiling proves it necessary
 
 ### Pain point 5: state and DOM can never be truly single-source
 
@@ -206,7 +218,7 @@ This includes:
 
 This is not the dominant runtime cost, but it makes the design more intricate and timing-sensitive.
 
-For design directions, refactor ideas, and unresolved questions beyond the current bridge, see `overflow-northstar.md`. This document stays focused on the current bridge and where its cost comes from.
+This document stays focused on the current bridge and where its cost comes from.
 
 ## What the bridge does well
 
@@ -239,9 +251,9 @@ It is best understood as an adapter between two different worlds:
 
 That adapter still adds synchronization, re-rendering, and some API awkwardness. The biggest remaining structural question is whether the selector-hook path should continue rendering directly from the manager as an external store, or whether the bridge should eventually move back to a mirrored React snapshot model.
 
-If the question is "what should replace it?", that belongs in `overflow-northstar.md`. The purpose of this document is narrower: explain how the current bridge works, where it pays, and why it feels awkward.
+The purpose of this document is narrower: explain how the current bridge works, where it pays, and why it feels awkward.
 
-That narrower scope is deliberate. Once the current bridge is described precisely, future improvement discussions can be grounded in specific costs and tradeoffs rather than broad impressions.
+That narrower scope is deliberate. Now that the lifecycle refactor and its follow-up decisions are recorded here and in the engine spec, future improvement discussions can start directly from those two specs rather than from a third design ledger.
 
 ## Relevant source files
 
