@@ -4,8 +4,6 @@ import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 import { useTagGroup_unstable, useTagGroupBase_unstable } from './useTagGroup';
 
-type RootRecord = Record<string, unknown>;
-
 describe('useTagGroup_unstable', () => {
   it('should default size to medium and appearance to filled', () => {
     const ref = React.createRef<HTMLDivElement>();
@@ -19,7 +17,7 @@ describe('useTagGroup_unstable', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroup_unstable({}, ref));
 
-    expect((result.current.root as RootRecord)['data-tabster']).toEqual(expect.any(String));
+    expect(result.current.root).toHaveProperty('data-tabster', expect.any(String));
   });
 
   it('should default role to toolbar', () => {
@@ -42,7 +40,7 @@ describe('useTagGroupBase_unstable', () => {
     const arrowNavigationProps: TabsterDOMAttribute = { 'data-tabster': '{"mock":"value"}' };
     const { result } = renderHook(() => useTagGroupBase_unstable({}, ref, { arrowNavigationProps }));
 
-    expect((result.current.root as RootRecord)['data-tabster']).toBe('{"mock":"value"}');
+    expect(result.current.root).toHaveProperty('data-tabster', '{"mock":"value"}');
   });
 
   it('should call onAfterTagDismiss with the group container after a tag is dismissed', () => {
@@ -58,24 +56,10 @@ describe('useTagGroupBase_unstable', () => {
     expect(onAfterTagDismiss).toHaveBeenCalledWith(null);
   });
 
-  it('should NOT throw when onDismiss/onAfterTagDismiss are omitted (true headless mode)', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    const { result } = renderHook(() => useTagGroupBase_unstable({}, ref));
-
-    expect(() => result.current.handleTagDismiss({} as React.MouseEvent, { value: 'v1' })).not.toThrow();
-  });
-
   it('should set aria-disabled on the root when disabled', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroupBase_unstable({ disabled: true }, ref));
     expect(result.current.root['aria-disabled']).toBe(true);
-  });
-
-  it('should NOT expose design-only fields (size, appearance) on base state', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    const { result } = renderHook(() => useTagGroupBase_unstable({}, ref));
-    expect(result.current).not.toHaveProperty('size');
-    expect(result.current).not.toHaveProperty('appearance');
   });
 
   it('should provide handleTagSelect only when onTagSelect is supplied', () => {

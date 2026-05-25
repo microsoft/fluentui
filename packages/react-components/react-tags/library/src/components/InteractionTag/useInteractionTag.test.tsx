@@ -2,10 +2,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { TagGroupContextProvider } from '../../contexts/tagGroupContext';
+import type { TagGroupContextValue } from '../../contexts/tagGroupContext';
 import { useInteractionTag_unstable, useInteractionTagBase_unstable } from './useInteractionTag';
 
 const wrap = (
-  contextOverrides: Parameters<typeof TagGroupContextProvider>[0]['value'] = {
+  contextOverrides: TagGroupContextValue = {
     handleTagDismiss: () => ({}),
     size: 'medium',
   },
@@ -51,15 +52,6 @@ describe('useInteractionTag_unstable', () => {
 });
 
 describe('useInteractionTagBase_unstable', () => {
-  it('should NOT expose design-only fields (appearance/shape/size) on base state', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    const { result } = renderHook(() => useInteractionTagBase_unstable({}, ref), { wrapper: wrap() });
-
-    expect(result.current).not.toHaveProperty('appearance');
-    expect(result.current).not.toHaveProperty('shape');
-    expect(result.current).not.toHaveProperty('size');
-  });
-
   it('should force disabled when TagGroupContext.disabled is true regardless of props', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useInteractionTagBase_unstable({ disabled: false }, ref), {

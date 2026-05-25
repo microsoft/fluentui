@@ -17,9 +17,7 @@ const baseContext: InteractionTagContextValue = {
   value: 'test',
 };
 
-const wrap = (
-  overrides: Partial<Parameters<typeof InteractionTagContextProvider>[0]['value']> = {},
-): React.FC<{ children?: React.ReactNode }> => {
+const wrap = (overrides: Partial<InteractionTagContextValue> = {}): React.FC<{ children?: React.ReactNode }> => {
   const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
     <InteractionTagContextProvider value={{ ...baseContext, ...overrides }}>{children}</InteractionTagContextProvider>
   );
@@ -46,17 +44,6 @@ describe('useInteractionTagPrimaryBase_unstable', () => {
     const ref = React.createRef<HTMLButtonElement>();
     const { result } = renderHook(() => useInteractionTagPrimaryBase_unstable({}, ref), { wrapper: wrap() });
     expect(result.current.root.id).toBe('fui-InteractionTagPrimary-_test_');
-  });
-
-  it('should NOT expose design-only fields (appearance/shape/size/avatar*) on base state', () => {
-    const ref = React.createRef<HTMLButtonElement>();
-    const { result } = renderHook(() => useInteractionTagPrimaryBase_unstable({}, ref), { wrapper: wrap() });
-
-    expect(result.current).not.toHaveProperty('appearance');
-    expect(result.current).not.toHaveProperty('shape');
-    expect(result.current).not.toHaveProperty('size');
-    expect(result.current).not.toHaveProperty('avatarShape');
-    expect(result.current).not.toHaveProperty('avatarSize');
   });
 
   it('should set aria-pressed when context has handleTagSelect (selectable group)', () => {

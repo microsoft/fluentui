@@ -2,10 +2,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { TagGroupContextProvider } from '../../contexts/tagGroupContext';
+import type { TagGroupContextValue } from '../../contexts/tagGroupContext';
 import { useTag_unstable, useTagBase_unstable } from './useTag';
 
 const wrap = (
-  contextOverrides: Parameters<typeof TagGroupContextProvider>[0]['value'] = {
+  contextOverrides: TagGroupContextValue = {
     handleTagDismiss: () => ({}),
     size: 'medium',
   },
@@ -52,7 +53,7 @@ describe('useTag_unstable', () => {
     const { result } = renderHook(() => useTag_unstable({ dismissible: true }, ref), { wrapper: wrap() });
 
     expect(result.current.dismissIcon).toBeDefined();
-    expect(result.current.dismissIcon?.children).toBeDefined();
+    expect(React.isValidElement(result.current.dismissIcon?.children)).toBe(true);
   });
 
   it('should inherit appearance and size from TagGroupContext when not set on props', () => {
