@@ -1,10 +1,5 @@
-import {
-  ESLintUtils,
-  AST_NODE_TYPES,
-  TSESTree,
-  TSESLint,
-  ParserServicesWithTypeInformation,
-} from '@typescript-eslint/utils';
+import type { TSESTree, TSESLint, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
 import * as ts from 'typescript';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-consistent-base-hook"
@@ -274,7 +269,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       if (!symbol) {
         return null;
       }
-      if (symbol.flags & ts.SymbolFlags.Alias) {
+      // ts.SymbolFlags is a bitfield enum
+      if ((symbol.flags & ts.SymbolFlags.Alias) !== 0) {
         try {
           symbol = checker.getAliasedSymbol(symbol);
         } catch {
@@ -291,48 +287,36 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       return { reached, viaFile: shortenPath(sf.fileName) };
     }
 
-    return {
-      ImportDeclaration(node) {
-        const source = node.source.value;
-        if (typeof source !== 'string' || !trackedPackages.has(source)) {
-          return;
-        }
-        const isForbiddenPkg = forbiddenRuntimes.has(source);
-        const declTypeOnly = node.importKind === 'type';
-        // Type-only imports from a watched package can never pull runtime; always skip.
-        // Type-only imports from a forbidden-runtime package are skipped only when explicitly allowed.
-        if (declTypeOnly && (!isForbiddenPkg || allowTypeImports)) {
-          return;
-        }
-        const kind: TrackedImport['kind'] = isForbiddenPkg ? 'forbidden' : 'watched';
+    function trackImportDeclaration(node: TSESTree.ImportDeclaration): void {
+      const source = node.source.value;
+      if (typeof source !== 'string' || !trackedPackages.has(source)) {
+        return;
+      }
+      const isForbiddenPkg = forbiddenRuntimes.has(source);
+      // Type-only imports from a watched package can never pull runtime; always skip.
+      // Type-only imports from a forbidden-runtime package are skipped only when explicitly allowed.
+      if (node.importKind === 'type' && (!isForbiddenPkg || allowTypeImports)) {
+        return;
+      }
+      const kind: TrackedImport['kind'] = isForbiddenPkg ? 'forbidden' : 'watched';
 
-        node.specifiers.forEach(specifier => {
-          const specTypeOnly = specifier.type === AST_NODE_TYPES.ImportSpecifier && specifier.importKind === 'type';
-          if (specTypeOnly && (!isForbiddenPkg || allowTypeImports)) {
-            return;
-          }
-          let importedName: string;
-          switch (specifier.type) {
-            case AST_NODE_TYPES.ImportSpecifier:
-              importedName =
-                specifier.imported.type === AST_NODE_TYPES.Identifier
-                  ? specifier.imported.name
-                  : String(specifier.imported.value);
-              break;
-            case AST_NODE_TYPES.ImportDefaultSpecifier:
-              importedName = 'default';
-              break;
-            case AST_NODE_TYPES.ImportNamespaceSpecifier:
-              importedName = '*';
-              break;
-            default:
-              return;
-          }
-          for (const variable of sourceCode.getDeclaredVariables(specifier)) {
-            trackedImports.set(variable, { package: source, importedName, kind, specifier });
-          }
-        });
-      },
+      node.specifiers.forEach(specifier => {
+        const specTypeOnly = specifier.type === AST_NODE_TYPES.ImportSpecifier && specifier.importKind === 'type';
+        if (specTypeOnly && (!isForbiddenPkg || allowTypeImports)) {
+          return;
+        }
+        const importedName = getImportedName(specifier);
+        if (importedName === undefined) {
+          return;
+        }
+        for (const variable of sourceCode.getDeclaredVariables(specifier)) {
+          trackedImports.set(variable, { package: source, importedName, kind, specifier });
+        }
+      });
+    }
+
+    return {
+      ImportDeclaration: trackImportDeclaration,
 
       [`FunctionDeclaration[id.name=/${BASE_HOOK_NAME_PATTERN.source}/]`]: (node: TSESTree.FunctionDeclaration) => {
         if (!node.id) {
@@ -547,6 +531,26 @@ function shortenPath(absolute: string): string {
 // ---------------------------------------------------------------------------
 // AST helpers (unchanged from previous version)
 // ---------------------------------------------------------------------------
+
+/**
+ * Resolves the original (imported) name from an import specifier.
+ * Returns `'default'` for default imports, `'*'` for namespace imports,
+ * and the imported identifier/string-literal name for named imports.
+ */
+function getImportedName(specifier: ImportSpecifierNode): string | undefined {
+  switch (specifier.type) {
+    case AST_NODE_TYPES.ImportSpecifier:
+      return specifier.imported.type === AST_NODE_TYPES.Identifier
+        ? specifier.imported.name
+        : String(specifier.imported.value);
+    case AST_NODE_TYPES.ImportDefaultSpecifier:
+      return 'default';
+    case AST_NODE_TYPES.ImportNamespaceSpecifier:
+      return '*';
+    default:
+      return undefined;
+  }
+}
 
 function describeParam(param: TSESTree.Parameter): string {
   switch (param.type) {

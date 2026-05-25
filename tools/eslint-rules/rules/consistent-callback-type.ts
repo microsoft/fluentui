@@ -1,4 +1,5 @@
-import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
+import type { TSESTree } from '@typescript-eslint/utils';
+import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-consistent-callback-type"
 export const RULE_NAME = 'consistent-callback-type';
