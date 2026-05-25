@@ -1,3 +1,4 @@
+import type { InitialTemplateAttributes } from '@microsoft/fast-test-harness/fixtures/csr-fixture.js';
 import { expect, test } from '../../test/playwright/index.js';
 import type { TextInput } from './text-input.js';
 import { ImplicitSubmissionBlockingTypes, tagName } from './text-input.options.js';
@@ -23,10 +24,17 @@ test.describe('TextInput', () => {
     expect(hasError).toBe(false);
   });
 
-  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage, ssr }) => {
     const { element } = fastPage;
 
-    await fastPage.setTemplate({ attributes: { autofocus: true } });
+    const attributes: InitialTemplateAttributes = { autofocus: true };
+
+    if (ssr) {
+      // the host element needs to be focusable for autofocus to work on the server, so we need to set tabindex="0"
+      attributes.tabindex = '0';
+    }
+
+    await fastPage.setTemplate({ attributes });
 
     await expect(element).toBeFocused();
   });
@@ -334,10 +342,10 @@ test.describe('TextInput', () => {
     const label = element.locator('label');
 
     await fastPage.setTemplate({
-      innerHTML: '\n \n',
+      innerHTML: '&nbsp;',
     });
 
-    await expect(element).toHaveText(/\n\s\n/);
+    await expect(element).toHaveText('\u00A0');
 
     await expect(label).toBeHidden();
   });
@@ -800,6 +808,30 @@ test.describe('TextInput', () => {
     await reset.click();
 
     await expect(control).toHaveValue('');
+  });
+
+  test('should reset the value to the initial value when the form is reset and the `value` attribute was set pre-connection', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const control = element.locator('input');
+    const reset = page.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <form id="form" action="foo">
+        <${tagName} name="testinput" value="initial"></${tagName}>
+        <button type="reset">Reset</button>
+      </form>
+    `);
+
+    await expect(control).toHaveValue('initial');
+
+    await control.fill('hello');
+
+    await reset.click();
+
+    await expect(control).toHaveValue('initial');
   });
 
   test('should change the `value` property when the `current-value` attribute changes', async ({ fastPage, page }) => {
