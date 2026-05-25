@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { OverflowManager } from '@fluentui/priority-overflow';
 import { useOverflowItem } from './useOverflowItem';
 import type { OverflowContextValue } from './overflowContext';
 import { OverflowContext } from './overflowContext';
@@ -6,9 +7,18 @@ import { renderHook } from '@testing-library/react-hooks';
 
 const mockContextValue = (options: Partial<OverflowContextValue> = {}) =>
   ({
-    groupVisibility: {},
-    hasOverflow: false,
-    itemVisibility: {},
+    manager: {
+      attachOverflowMenu: jest.fn(() => () => undefined),
+      forceUpdate: jest.fn(),
+      getSnapshot: jest.fn(() => ({ hasOverflow: false, overflowCount: 0, itemVisibility: {}, groupVisibility: {} })),
+      observe: jest.fn(() => () => undefined),
+      registerDivider: jest.fn(() => () => undefined),
+      registerItem: jest.fn(() => () => undefined),
+      removeItem: jest.fn(),
+      setOptions: jest.fn(),
+      subscribe: jest.fn(() => () => undefined),
+      update: jest.fn(),
+    } as unknown as OverflowManager,
     registerItem: jest.fn(),
     updateOverflow: jest.fn(),
     ...options,

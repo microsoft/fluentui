@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import type { OverflowGroupState, OverflowSnapshot, ObserveOptions } from '@fluentui/priority-overflow';
+import type { ObserveOptions, OverflowGroupState, OverflowSnapshot } from '@fluentui/priority-overflow';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
@@ -10,7 +10,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 
-import { OverflowContext } from '../overflowContext';
+import { defaultOverflowManager, OverflowContext } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
 import { useOverflowStyles } from './useOverflowStyles.styles';
 
@@ -19,19 +19,6 @@ interface OverflowState {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
 }
-
-const emptyOverflowState: OverflowState = {
-  hasOverflow: false,
-  itemVisibility: {},
-  groupVisibility: {},
-};
-
-const emptyOverflowSnapshot: OverflowSnapshot = {
-  hasOverflow: false,
-  overflowCount: 0,
-  itemVisibility: {},
-  groupVisibility: {},
-};
 
 const toOverflowState = (snapshot: OverflowSnapshot): OverflowState => ({
   hasOverflow: snapshot.hasOverflow,
@@ -80,32 +67,27 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       onUpdateItemVisibility: updateVisibilityAttribute,
     });
 
-  const snapshot = React.useSyncExternalStore(
-    manager?.subscribe ?? (() => () => undefined),
-    () => (manager ? manager.getSnapshot() : emptyOverflowSnapshot),
-    () => (manager ? manager.getSnapshot() : emptyOverflowSnapshot),
-  );
-
-  const overflowState = React.useMemo(
-    () => (snapshot === emptyOverflowSnapshot ? emptyOverflowState : toOverflowState(snapshot)),
-    [snapshot],
-  );
-
   const lastReportedState = React.useRef<OverflowState | null>(null);
 
   React.useEffect(() => {
-    if (!onOverflowChange) {
+    if (!manager || !onOverflowChange) {
       return;
     }
 
-    if (lastReportedState.current === null) {
+    lastReportedState.current = null;
+
+    return manager.subscribe(() => {
+      const overflowState = toOverflowState(manager.getSnapshot());
+
+      if (lastReportedState.current === null) {
+        lastReportedState.current = overflowState;
+        return;
+      }
+
+      onOverflowChange(null, overflowState);
       lastReportedState.current = overflowState;
-      return;
-    }
-
-    onOverflowChange(null, overflowState);
-    lastReportedState.current = overflowState;
-  }, [onOverflowChange, overflowState]);
+    });
+  }, [manager, onOverflowChange]);
 
   const child = getTriggerChild<HTMLElement>(children);
   const clonedChild = applyTriggerPropsToChildren(children, {
@@ -116,10 +98,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   return (
     <OverflowContext.Provider
       value={{
-        manager,
-        itemVisibility: overflowState.itemVisibility,
-        groupVisibility: overflowState.groupVisibility,
-        hasOverflow: overflowState.hasOverflow,
+        manager: manager ?? defaultOverflowManager,
         registerItem,
         updateOverflow,
         registerOverflowMenu,

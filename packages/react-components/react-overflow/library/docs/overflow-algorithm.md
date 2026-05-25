@@ -15,7 +15,7 @@ For open design directions, refactor ideas, and unresolved questions, see `docs/
 
 ## One-sentence model
 
-The engine keeps two priority queues of item ids, measures the container and registered elements, then repeatedly moves items between the visible and invisible queues until occupied size fits within available size.
+The engine keeps two priority queues of item ids, measures the observed container and registered elements, then repeatedly moves items between the visible and invisible queues until occupied size fits within available size while publishing a canonical snapshot and optional callbacks.
 
 ## Core concepts
 
@@ -53,15 +53,16 @@ The comparator uses three rules:
 
 ```mermaid
 flowchart TD
-    A[Register container and options] --> B[Register items, menu, dividers]
-    B --> C[ResizeObserver or manual update]
-    C --> D[Microtask debounce]
-    D --> E[Read container client size]
-    E --> F[Read item, divider, and menu sizes with cache]
-    F --> G[Rebalance queues by priority and fit]
-    G --> H[Mark items and dividers overflowing or visible]
-    H --> I[Dispatch visibleItems, invisibleItems, groupVisibility]
-    I --> J[Consumer layer applies visibility changes]
+    A[Create manager] --> B[setOptions]
+    B --> C[Register items, menu, dividers]
+    C --> D[observe container]
+    D --> E[ResizeObserver or manual update]
+    E --> F[Microtask debounce]
+    F --> G[Read container client size]
+    G --> H[Read item, divider, and menu sizes with cache]
+    H --> I[Rebalance queues by priority and fit]
+    I --> J[Update snapshot and invoke callbacks]
+    J --> K[Subscribers and wrapper react]
 ```
 
 ## Lifecycle
@@ -69,12 +70,13 @@ flowchart TD
 ```mermaid
 stateDiagram-v2
     [*] --> Idle
-    Idle --> Observing: observe(container, options)
-    Observing --> Dirty: addItem / removeItem / resize / manual update
+    Idle --> Configured: setOptions / registerItem / registerDivider / attachOverflowMenu
+    Configured --> Observing: observe(container)
+    Observing --> Dirty: register or unregister / resize / manual update
     Dirty --> Scheduled: update()
     Scheduled --> Processing: microtask runs forceUpdate()
-    Processing --> Observing: state stabilized and callback dispatched
-    Observing --> Idle: disconnect()
+    Processing --> Observing: snapshot and callbacks updated
+    Observing --> Configured: observation cleanup
 ```
 
 ## Detailed lifecycle
@@ -91,25 +93,51 @@ stateDiagram-v2
 
 At this point, nothing is observed and no DOM reads happen.
 
-### 2. Observation starts
+### 2. Configuration
 
-`observe(container, options)`:
+`setOptions(options)` mutates the live options object independently from observation.
 
-- copies user options into the live options object
-- moves all already-known items into the visible queue
+That means configuration and attachment are separate concerns:
+
+- options can change without recreating observation
+- callback handlers can be replaced incrementally
+- observation does not implicitly own all other runtime relationships
+
+The engine still keeps `onUpdateOverflow` and `onUpdateItemVisibility` in its options object, but they are no longer the only readable output channel because the manager also maintains a canonical `OverflowSnapshot`.
+
+### 3. Runtime connections
+
+The manager uses paired setup and cleanup boundaries for its runtime relationships.
+
+`observe(container)`:
+
 - stores the container reference
-- starts a `ResizeObserver` on the container
+- reconnects the `ResizeObserver`
+- enqueues any already-known items that are not yet in either queue
+- schedules an update
+- returns a cleanup function that detaches observation and resets the current snapshot to empty
 
-Important: the engine does not discover DOM nodes by itself. Items must be registered explicitly.
+`registerItem(item)`:
 
-### 3. Registration churn
+- inserts the item into the registry
+- updates group membership when `groupId` exists
+- enqueues the item immediately if observation is already active
+- schedules an update
+- returns a cleanup function that removes the item from queues and registries
 
-`addItem`, `removeItem`, `addOverflowMenu`, and `addDivider` mutate the engine model.
+`attachOverflowMenu(element)`:
 
-- `addItem` inserts an item into the registry and queue, updates group membership, and schedules `update()`
-- `removeItem` removes it from both queues and schedules `update()`
-- `addOverflowMenu` only stores a reference; the menu enters size calculations later
-- `addDivider` stores a divider keyed by `groupId`
+- stores the overflow menu reference
+- schedules an update
+- returns a cleanup function that detaches that same menu element
+
+`registerDivider(divider)`:
+
+- stores the divider by `groupId`
+- sets the divider's group attribute
+- returns a cleanup function that removes the divider registration
+
+Important: the engine still exposes `removeItem()` as a lower-level removal helper, but the preferred lifecycle model is the cleanup returned from `registerItem()`.
 
 ### 4. Update scheduling
 
@@ -132,7 +160,7 @@ The algorithm:
 2. Reads available size as `container.clientWidth` or `clientHeight` minus `padding`.
 3. Repairs priority ordering if the best hidden item outranks the worst visible item.
 4. Runs two show/hide rounds to stabilize the state.
-5. Dispatches only if queue tops changed, or if `forceDispatch` was set.
+5. Rebuilds the canonical snapshot and notifies listeners when queue tops changed, or when `forceDispatch` was set.
 
 The two-round design matters when a new item is added as visible by default and the first pass has not yet settled into the best visible/invisible split.
 
@@ -392,6 +420,32 @@ In practical terms, the engine is usually fine for toolbar-sized collections. Th
 - many groups and active dividers
 - updates happen while layout is already dirty
 
+## Outputs
+
+The engine now has two output channels.
+
+### 1. Canonical snapshot and subscription
+
+Every dispatched pass rebuilds:
+
+- `hasOverflow`
+- `overflowCount`
+- `itemVisibility`
+- `groupVisibility`
+
+Subscribers registered through `subscribe(listener)` are notified after the snapshot is updated.
+
+This is the stable readable state channel used by the React selector hooks.
+
+### 2. Optional callbacks
+
+The manager still invokes:
+
+- `onUpdateItemVisibility`
+- `onUpdateOverflow`
+
+These remain useful for imperative side effects such as applying `data-overflowing` attributes, but they are no longer the only way to observe engine state.
+
 ## Scenario atlas
 
 This section turns the abstract algorithm into concrete situations. The goal is to answer two questions for each case:
@@ -411,13 +465,14 @@ sequenceDiagram
     participant Browser as Browser
 
     App->>Wrapper: mount container and items
+    Wrapper->>Engine: setOptions(...)
+    Wrapper->>Engine: registerItem(A..N)
     Wrapper->>Engine: observe(container)
-    Wrapper->>Engine: addItem(A..N)
     Engine->>Engine: queue all items as visible
     Browser-->>Engine: ResizeObserver callback
     Engine->>Browser: read container and item sizes
     Engine->>Engine: occupiedSize <= availableSize
-    Engine-->>Wrapper: dispatch all visible
+    Engine-->>Wrapper: update snapshot and callbacks
     Wrapper->>Browser: no data-overflowing writes needed
 ```
 
@@ -773,8 +828,8 @@ sequenceDiagram
     participant Engine as Overflow manager
     participant Microtask as Microtask queue
 
-    App->>Engine: addItem(A)
-    App->>Engine: addItem(B)
+    App->>Engine: registerItem(A)
+    App->>Engine: registerItem(B)
     App->>Engine: removeItem(C)
     App->>Engine: update()
     Engine->>Microtask: schedule one debounced run

@@ -34,8 +34,6 @@ describe('useOverflowVisibility', () => {
           value={
             {
               manager,
-              groupVisibility,
-              itemVisibility,
             } as unknown as OverflowContextValue
           }
         />

@@ -2,7 +2,6 @@
 
 import type * as React from 'react';
 import type {
-  OverflowGroupState,
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowManager,
@@ -18,7 +17,7 @@ const defaultSnapshot: OverflowSnapshot = {
   groupVisibility: {},
 };
 
-const defaultManager: OverflowManager = {
+export const defaultOverflowManager: OverflowManager = {
   setOptions: () => undefined,
   observe: () => () => undefined,
   registerItem: () => () => undefined,
@@ -36,9 +35,6 @@ const defaultManager: OverflowManager = {
  */
 export interface OverflowContextValue {
   manager: OverflowManager;
-  itemVisibility: Record<string, boolean>;
-  groupVisibility: Record<string, OverflowGroupState>;
-  hasOverflow: boolean;
   registerItem: (item: OverflowItemEntry) => () => void;
   registerOverflowMenu: (el: HTMLElement) => () => void;
   registerDivider: (divider: OverflowDividerEntry) => () => void;
@@ -51,10 +47,7 @@ export const OverflowContext = createContext<OverflowContextValue | undefined>(
 ) as Context<OverflowContextValue>;
 
 const overflowContextDefaultValue: OverflowContextValue = {
-  manager: defaultManager,
-  itemVisibility: {},
-  groupVisibility: {},
-  hasOverflow: false,
+  manager: defaultOverflowManager,
   registerItem: () => () => null,
   updateOverflow: () => null,
   registerOverflowMenu: () => () => null,

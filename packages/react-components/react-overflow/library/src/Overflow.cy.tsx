@@ -7,7 +7,7 @@ import {
   OverflowReorderObserver,
   useIsOverflowGroupVisible,
   useOverflowMenu,
-  useOverflowContext,
+  useOverflowVisibility,
   type OverflowProps,
   type OverflowItemProps,
   type OnOverflowChangeData,
@@ -96,7 +96,7 @@ const Item = ({ children, width, ...overflowItemProps }: ItemProps) => {
 
 const Menu: React.FC<{ width?: number }> = ({ width }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
+  const { itemVisibility } = useOverflowVisibility();
   const selector = {
     [selectors.menu]: '',
   };
