@@ -37,6 +37,7 @@ export const useCarouselStyles_unstable = (state: CarouselState): CarouselState 
   const styles = useStyles();
   const { appearance } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     carouselClassNames.root,
     styles.root,

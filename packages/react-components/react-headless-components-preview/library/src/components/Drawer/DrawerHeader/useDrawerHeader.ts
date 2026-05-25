@@ -12,6 +12,7 @@ export const useDrawerHeader = (props: DrawerHeaderProps, ref: React.Ref<HTMLEle
   'use no memo';
 
   const state: DrawerHeaderState = useDrawerHeader_unstable(props, ref);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-scroll-state'] = stringifyDataAttribute(state.scrollState);
 
   return state;

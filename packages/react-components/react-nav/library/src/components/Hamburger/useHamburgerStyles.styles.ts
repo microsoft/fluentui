@@ -38,9 +38,11 @@ export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerSta
   useButtonStyles_unstable(state);
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(hamburgerClassNames.root, styles.root, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(hamburgerClassNames.icon, state.icon.className);
   }
 

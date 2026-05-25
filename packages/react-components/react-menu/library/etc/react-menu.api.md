@@ -414,6 +414,11 @@ export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuPr
 // @public
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
+// @public (undocumented)
+export type MenuTriggerBaseProps = MenuTriggerProps & {
+    focusFirst?: () => void;
+};
+
 // @public
 export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
     'aria-haspopup'?: 'menu';
@@ -612,12 +617,7 @@ export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => M
 export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;
 
 // @public
-export const useMenuTriggerBase_unstable: (props: MenuTriggerProps, options?: UseMenuTriggerBaseOptions) => MenuTriggerState;
-
-// @public
-export type UseMenuTriggerBaseOptions = {
-    focusFirst?: () => void;
-};
+export const useMenuTriggerBase_unstable: (props: MenuTriggerBaseProps) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext_unstable: () => boolean;

@@ -25,6 +25,7 @@ export const useCarouselViewportStyles_unstable = (state: CarouselViewportState)
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(carouselViewportClassNames.root, styles.root, state.root.className);
 
   return state;

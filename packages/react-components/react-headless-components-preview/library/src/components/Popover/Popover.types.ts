@@ -62,6 +62,9 @@ export type PopoverProps = {
   /**
    * Positioning configuration. Accepts either a full `PositioningProps`
    * object or a shorthand string such as `'below'` / `'above-end'`.
+   *
+   * See the {@link https://react.fluentui.dev/?path=/docs/headless-concepts-positioning--docs Positioning concept}
+   * for the full list of options and live examples.
    */
   positioning?: PositioningShorthand;
 
@@ -70,12 +73,34 @@ export type PopoverProps = {
    * @default false
    */
   withArrow?: boolean;
+
+  /**
+   * Optional id for the popover surface. When provided, this id is applied to
+   * the `PopoverSurface` element and referenced by `PopoverTrigger`
+   * (`aria-details`). If omitted, a generated id is used.
+   */
+  id?: string;
+
+  /**
+   * When true, opens the popover as a modal via `HTMLDialogElement.showModal()`.
+   * Focus is trapped inside the surface, the rest of the page is inert, and
+   * focus is restored to the trigger when the popover closes — all spec-mandated
+   * by the native dialog element.
+   *
+   * When false (default), the popover is non-modal: opens via `showPopover()`,
+   * the browser handles light dismiss (Escape, click-outside, popover-stack
+   * peer dismissal), and no focus trap or autofocus is applied unless a child
+   * has the HTML `autofocus` attribute.
+   *
+   * @default false
+   */
+  trapFocus?: boolean;
 };
 
 /**
  * Popover State
  */
-export type PopoverState = Required<Pick<PopoverProps, 'open'>> &
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
   Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -105,6 +130,7 @@ export type PopoverContextValue = Pick<
   | 'openOnContext'
   | 'withArrow'
   | 'surfaceId'
+  | 'trapFocus'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;

@@ -20,5 +20,6 @@ export function useFirstMount(): boolean {
     }
   }, []);
 
+  // eslint-disable-next-line react-hooks/refs
   return isFirst.current;
 }

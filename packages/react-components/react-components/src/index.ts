@@ -931,6 +931,7 @@ export {
   Overflow,
   OverflowItem,
   OverflowDivider,
+  OverflowReorderObserver,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
   useOverflowCount,

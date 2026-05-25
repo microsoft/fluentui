@@ -30,6 +30,7 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   const styles = useStyles();
 
   // Make sure to merge teaching bubble surface prior to popover styles
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverSurfaceClassNames.root, styles.root, state.root.className);
 
   const updatedState = usePopoverSurfaceStyles_unstable(state);

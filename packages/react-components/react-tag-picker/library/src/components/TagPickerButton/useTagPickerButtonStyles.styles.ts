@@ -131,6 +131,7 @@ export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): 
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerButtonClassNames.root,
     styles.button,

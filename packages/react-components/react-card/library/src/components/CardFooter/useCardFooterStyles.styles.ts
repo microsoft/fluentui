@@ -40,9 +40,11 @@ export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooter
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(cardFooterClassNames.root, styles.root, state.root.className);
 
   if (state.action) {
+    // eslint-disable-next-line react-hooks/immutability
     state.action.className = mergeClasses(cardFooterClassNames.action, styles.action, state.action.className);
   }
 

@@ -57,6 +57,7 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
       return providedId;
     }
 
+    // eslint-disable-next-line react-hooks/immutability
     return `${idPrefix}${prefix}${++contextValue.current}`;
   }, [idPrefix, prefix, providedId, contextValue]);
 }

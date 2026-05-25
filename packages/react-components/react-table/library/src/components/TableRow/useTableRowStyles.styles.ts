@@ -147,6 +147,7 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,

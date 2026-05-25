@@ -55,9 +55,8 @@ import {
   calcBandwidth,
   calcRequiredWidth,
   sortAxisCategories,
-  isSafeUrl,
 } from '../../utilities/index';
-import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
 
 type NumericScale = D3ScaleLinear<number, number>;

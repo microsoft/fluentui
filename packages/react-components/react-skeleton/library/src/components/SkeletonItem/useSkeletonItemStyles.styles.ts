@@ -165,6 +165,7 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
   const sizeStyles = useSizeStyles();
   const circleStyles = useCircleSizeStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     skeletonItemClassNames.root,
     rootStyles.root,
