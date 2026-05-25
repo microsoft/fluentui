@@ -151,38 +151,31 @@ test.describe('TextArea', () => {
     }) => {
       const { element } = fastPage;
 
-      // Mock CSS.supports to simulate a browser that doesn't support `field-sizing: content` (e.g. Firefox)
-      // and restore it after to avoid affecting subsequent tests
-      await page.evaluate(() => {
-        const originalSupports = CSS.supports.bind(CSS);
-        (window as Window & { __originalCSSSupports?: typeof CSS.supports }).__originalCSSSupports = originalSupports;
-        CSS.supports = (property: string, value?: string) => {
-          if (property === 'field-sizing: content' || (property === 'field-sizing' && value === 'content')) {
-            return false;
-          }
-          return originalSupports(property, value as string);
-        };
+      await page.addInitScript({
+        content: `
+          const originalSupports = CSS.supports.bind(CSS);
+          window.__originalCSSSupports = originalSupports;
+          CSS.supports = (property, value) => {
+            if (property === 'field-sizing: content' || (property === 'field-sizing' && value === 'content')) {
+              console.log('Mocking CSS.supports to return false for', property);
+              return false;
+            }
+            return originalSupports(property, value);
+          };
+        `,
       });
 
-      try {
-        await fastPage.setTemplate({ attributes: { 'auto-resize': true } });
+      // Ensures the next navigation creates a new context where the patched CSS.supports is in effect.
+      await fastPage.goto();
 
-        const autoSizerIsInsideRoot = await element.evaluate((node: TextArea) => {
-          const root = node.shadowRoot?.querySelector('.root');
-          return root?.contains(node.autoSizerEl ?? null) ?? false;
-        });
+      await fastPage.setTemplate({ attributes: { 'auto-resize': true } });
 
-        expect(autoSizerIsInsideRoot).toBe(true);
-      } finally {
-        // Restore the original CSS.supports to avoid affecting other tests
-        await page.evaluate(() => {
-          const w = window as Window & { __originalCSSSupports?: typeof CSS.supports };
-          if (w.__originalCSSSupports) {
-            CSS.supports = w.__originalCSSSupports;
-            delete w.__originalCSSSupports;
-          }
-        });
-      }
+      const autoSizerIsInsideRoot = await element.evaluate((node: TextArea) => {
+        const root = node.shadowRoot?.querySelector('.root');
+        return root?.contains(node.autoSizerEl ?? null) ?? false;
+      });
+
+      expect(autoSizerIsInsideRoot).toBe(true);
     });
 
     test('should toggle block attribute', async ({ fastPage }) => {
