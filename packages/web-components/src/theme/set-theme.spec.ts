@@ -18,6 +18,11 @@ declare global {
   }
 }
 
+test.skip(
+  ({ ssr }) => ssr === true,
+  'setTheme tests are the same in SSR and CSR, so they are only run in CSR to avoid unnecessary test runs.',
+);
+
 test.describe('setTheme()', () => {
   test('should set and uset global tokens', async ({ fastPage, page }) => {
     const html = page.locator('html');
