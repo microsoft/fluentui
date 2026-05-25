@@ -4,9 +4,10 @@ import { tmpdir } from 'os';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
+import { lintCommand } from '../commands/lint';
+import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
-import { DEFAULT_EXCLUDE } from '../commands/shared';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 
@@ -370,5 +371,82 @@ describe('multi-path lint', () => {
     expect(results.length).toBe(2);
     // Both have 'use no memo' on a compilable function → active
     expect(results.every(r => r.status === 'active')).toBe(true);
+  });
+});
+
+describe('lint command — scan log wrapping', () => {
+  let tempDir: string;
+  let originalLog: typeof console.log;
+  let originalExit: typeof process.exit;
+  let captured: string[];
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), 'lint-wrap-test-'));
+    mkdirSync(join(tempDir, 'src'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'wrap-test-lint-pkg' }));
+    // Seed a file with a directive so discoverFilesWithDirectives returns it
+    writeFileSync(join(tempDir, 'src', 'L.tsx'), `export function L() {\n  'use memo';\n  return <div />;\n}\n`);
+
+    captured = [];
+    originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    originalExit = process.exit;
+    process.exit = ((_code?: number) => undefined) as never;
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+    process.exit = originalExit;
+  });
+
+  it('wraps scan + both compile passes in a single <details> block', async () => {
+    await lintCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      fix: false,
+      mode: 'infer',
+      _: [],
+      $0: '',
+    } as never);
+
+    const openIdx = captured.indexOf('<details>');
+    const closeIdx = captured.indexOf('</details>');
+
+    // exactly one wrapper, properly ordered
+    expect(openIdx).toBeGreaterThanOrEqual(0);
+    expect(closeIdx).toBeGreaterThan(openIdx);
+    expect(captured.filter(l => l === '<details>')).toHaveLength(1);
+    expect(captured.filter(l => l === '</details>')).toHaveLength(1);
+
+    // banner before the wrapper
+    expect(captured.slice(0, openIdx).some(l => l.includes('React Compiler Lint'))).toBe(true);
+
+    // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
+    const wrapper = captured
+      .slice(openIdx, closeIdx + 1)
+      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .join('\n');
+
+    expect(wrapper).toMatchInlineSnapshot(`
+      "<details>
+      <summary>📋 Scan & compile log</summary>
+
+      ## Scanning: <TEMP>
+         Package: wrap-test-lint-pkg
+         Mode: infer
+
+      Files with directives: 1
+
+      Analyzing: <TEMP>/src/L.tsx
+        [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
+
+      </details>"
+    `);
   });
 });
