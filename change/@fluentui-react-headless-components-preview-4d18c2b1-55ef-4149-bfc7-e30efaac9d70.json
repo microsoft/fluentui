@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(react-headless-components-preview): descendant clicks no longer trigger Dialog backdrop dismissal",
+  "comment": "fix: descendant clicks no longer trigger Dialog backdrop dismissal",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
