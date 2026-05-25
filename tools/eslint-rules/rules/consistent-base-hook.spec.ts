@@ -19,7 +19,7 @@ const ruleTester = new RuleTester();
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [
-    // Valid base hook: 2 Identifier params, no forbidden imports.
+    // Valid base hook: namespace import — `import * as React from 'react'` + `React.Ref<...>`.
     {
       code: `
         import * as React from 'react';
@@ -28,13 +28,22 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
-    // Valid base hook declared as FunctionDeclaration.
+    // Valid base hook: named import — `import { Ref } from 'react'` + `Ref<...>` (FunctionDeclaration form).
     {
       code: `
         import { Ref } from 'react';
         export function useThingBase_unstable(props, ref: Ref<HTMLElement>) {
           return { props, ref };
         }
+      `,
+    },
+    // Valid base hook: default import — `import React from 'react'` + `React.Ref<...>`.
+    {
+      code: `
+        import React from 'react';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
       `,
     },
     // Valid base hook with only \`props\` (ref is optional).
@@ -56,6 +65,7 @@ ruleTester.run(RULE_NAME, rule, {
     // Identifier with the same local name as a forbidden import alias does not collide via scope analysis.
     {
       code: `
+        import * as React from 'react';
         import { useArrowNavigationGroup } from '@fluentui/react-tabster';
         export const useThing_unstable = (props, ref) => {
           return useArrowNavigationGroup({});
@@ -69,6 +79,7 @@ ruleTester.run(RULE_NAME, rule, {
     // \`keyborg\` is not in the default forbidden runtime list — bindings imported from it are allowed inside base hooks.
     {
       code: `
+        import * as React from 'react';
         import { createKeyborg, KEYBORG_FOCUSIN } from 'keyborg';
         export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
           return { kb: createKeyborg(window), evt: KEYBORG_FOCUSIN };
@@ -110,6 +121,7 @@ ruleTester.run(RULE_NAME, rule, {
     // ObjectPattern for \`props\` is not allowed.
     {
       code: `
+        import * as React from 'react';
         export const useThingBase_unstable = ({ a }, ref: React.Ref<HTMLElement>) => ({ a, ref });
       `,
       errors: [
@@ -155,6 +167,45 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+    // \`Ref\` is a locally declared type alias, not imported from react.
+    {
+      code: `
+        type Ref<T> = { current: T | null };
+        export const useThingBase_unstable = (props, ref: Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'Ref' },
+        },
+      ],
+    },
+    // \`Ref\` imported from a non-react package is not accepted.
+    {
+      code: `
+        import { Ref } from 'not-react';
+        export const useThingBase_unstable = (props, ref: Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'Ref' },
+        },
+      ],
+    },
+    // \`React\` is a locally declared identifier, not the react module namespace.
+    {
+      code: `
+        const React = { Ref: null };
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'React.Ref' },
+        },
+      ],
+    },
   ],
 });
 
@@ -188,6 +239,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { useLight } from 'watched-pkg';
         export const useThingBase_unstable = (props: { a: number }, ref: React.Ref<HTMLElement>) => {
           useLight();
@@ -201,6 +253,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import type { HeavyType } from 'watched-pkg';
         export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
@@ -213,6 +266,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { type HeavyType, useLight } from 'watched-pkg';
         export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
           useLight();
@@ -226,6 +280,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { useHeavy } from 'watched-pkg';
         export const useThingBase_unstable = (props: { a: number }, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
@@ -246,6 +301,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         },
       ],
       code: `
+        import * as React from 'react';
         import { useA } from 'cyclic-pkg';
         export const useThingBase_unstable = (props: { a: number }, ref: React.Ref<HTMLElement>) => {
           return { props, ref, value: useA() };
@@ -257,6 +313,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptionsAllowTypeImports,
       code: `
+        import * as React from 'react';
         import type { HeavyOptions } from 'heavy-runtime';
         export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
@@ -269,6 +326,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptionsAllowTypeImports,
       code: `
+        import * as React from 'react';
         import { type HeavyOptions } from 'heavy-runtime';
         export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
@@ -283,6 +341,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { runHeavy } from 'heavy-runtime';
         export const useThingBase_unstable = (props: { a: number }, ref: React.Ref<HTMLElement>) => {
           return { props, ref, x: runHeavy() };
@@ -305,6 +364,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { useHeavy } from 'watched-pkg';
         export const useThingBase_unstable = (props: { a: number }, ref: React.Ref<HTMLElement>) => {
           return { props, ref, x: useHeavy() };
@@ -329,6 +389,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { runHeavy as go } from 'heavy-runtime';
         export function useThingBase_unstable(props: { a: number }, ref: React.Ref<HTMLElement>) {
           return go();
@@ -351,6 +412,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import type { HeavyOptions } from 'heavy-runtime';
         export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
@@ -373,6 +435,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
+        import * as React from 'react';
         import { type HeavyOptions } from 'heavy-runtime';
         export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
           return { props, ref };

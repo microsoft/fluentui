@@ -167,7 +167,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
           });
           return;
         }
-        if (index === 1 && !isReactRefTypeAnnotation(param.typeAnnotation)) {
+        if (index === 1 && !isReactRefTypeAnnotation(param.typeAnnotation, sourceCode.getScope(param))) {
           context.report({
             node: reportNode,
             messageId: 'invalidRefType',
@@ -569,7 +569,10 @@ function describeParam(param: TSESTree.Parameter): string {
   }
 }
 
-function isReactRefTypeAnnotation(annotation: TSESTree.TSTypeAnnotation | undefined): boolean {
+function isReactRefTypeAnnotation(
+  annotation: TSESTree.TSTypeAnnotation | undefined,
+  scope: TSESLint.Scope.Scope,
+): boolean {
   if (!annotation) {
     return false;
   }
@@ -579,16 +582,78 @@ function isReactRefTypeAnnotation(annotation: TSESTree.TSTypeAnnotation | undefi
   }
   const { typeName } = type;
   if (typeName.type === AST_NODE_TYPES.Identifier) {
-    return typeName.name === 'Ref';
+    return typeName.name === 'Ref' && isReactImportedIdentifier(typeName, scope, 'Ref');
   }
   if (typeName.type === AST_NODE_TYPES.TSQualifiedName) {
     return (
       typeName.left.type === AST_NODE_TYPES.Identifier &&
       typeName.left.name === 'React' &&
-      typeName.right.name === 'Ref'
+      typeName.right.name === 'Ref' &&
+      isReactImportedIdentifier(typeName.left, scope, '*')
     );
   }
   return false;
+}
+
+/**
+ * Resolves the given identifier in `scope` and verifies it was imported from the `react`
+ * package. `expectedImportedName` is matched against the original import name:
+ *   - a named-import specifier (e.g. `import { Ref } from 'react'`) must match the name,
+ *   - a namespace/default import (e.g. `import * as React from 'react'`) matches `'*'`/`'default'`.
+ *
+ * Untyped fallback (scope-only): does not require ParserServices, so the rule still works
+ * without TypeScript type information.
+ */
+function isReactImportedIdentifier(
+  identifier: TSESTree.Identifier,
+  scope: TSESLint.Scope.Scope,
+  expectedImportedName: string,
+): boolean {
+  const variable = findVariableInScope(scope, identifier.name);
+  if (!variable) {
+    return false;
+  }
+  return variable.defs.some(def => {
+    if (def.type !== 'ImportBinding') {
+      return false;
+    }
+    const importDecl = def.parent;
+    if (!importDecl || importDecl.type !== AST_NODE_TYPES.ImportDeclaration) {
+      return false;
+    }
+    if (importDecl.source.value !== 'react') {
+      return false;
+    }
+    const specifier = def.node;
+    switch (specifier.type) {
+      case AST_NODE_TYPES.ImportSpecifier: {
+        const importedName =
+          specifier.imported.type === AST_NODE_TYPES.Identifier
+            ? specifier.imported.name
+            : String(specifier.imported.value);
+        return importedName === expectedImportedName;
+      }
+      case AST_NODE_TYPES.ImportNamespaceSpecifier:
+        return expectedImportedName === '*';
+      case AST_NODE_TYPES.ImportDefaultSpecifier:
+        // `import React from 'react'` is also a valid way to access `React.Ref`.
+        return expectedImportedName === '*' || expectedImportedName === 'default';
+      default:
+        return false;
+    }
+  });
+}
+
+function findVariableInScope(scope: TSESLint.Scope.Scope, name: string): TSESLint.Scope.Variable | undefined {
+  let current: TSESLint.Scope.Scope | null = scope;
+  while (current) {
+    const variable = current.set.get(name);
+    if (variable) {
+      return variable;
+    }
+    current = current.upper;
+  }
+  return undefined;
 }
 
 function describeRefType(annotation: TSESTree.TSTypeAnnotation | undefined): string {

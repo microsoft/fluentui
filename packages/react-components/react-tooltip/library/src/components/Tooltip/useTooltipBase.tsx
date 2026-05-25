@@ -35,7 +35,7 @@ import { Escape } from '@fluentui/keyboard-keys';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseState => {
-  ('use no memo');
+  'use no memo';
 
   const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
