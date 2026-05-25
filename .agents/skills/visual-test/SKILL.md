@@ -39,7 +39,6 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
    NX_PID=$!
    ```
 
-   `--skip-nx-cache` matters: the `storybook` target is (unusually) declared with `cache: true`, and a prior run can replay cached output and exit without actually starting a server.
 
 3. **Find the storybook port.** Three quirks to know:
 
