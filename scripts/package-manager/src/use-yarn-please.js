@@ -6,16 +6,18 @@ const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER
 
 const Strings = {
   useYarnInstead: `
-- 🚨 Looks like you are trying to run "npm install". This repository has migrated to use Yarn as its package manager.
-- 📜 Please install the latest stable version of Yarn@1 following the instructions at https://classic.yarnpkg.com/en/docs/install or by running "npm install -g yarn@1
+- This repository uses Yarn as its package manager.
+- Please install the latest version of Yarn@4 by enabling corepack: "corepack enable" or by running "npm install -g yarn"
+- More information: https://yarnpkg.com/getting-started/install
 `,
-  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn@1 following the instructions at https://classic.yarnpkg.com/en/docs/install or by running "npm install -g yarn@1".
+  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest version of Yarn@4 by enabling corepack: "corepack enable" or by running "npm install -g yarn".
+More information: https://yarnpkg.com/getting-started/install
 `,
 };
 
 function checkPackageManager() {
   console.log(COMMAND_PREFIX);
-  console.log(`⌛️ checking existing package manager`);
+  console.log(`Checking existing package manager`);
 
   if (userInvokedNpmInstall()) {
     console.error(Strings.useYarnInstead);
@@ -29,7 +31,7 @@ function checkPackageManager() {
     process.exit(1);
   }
 
-  console.log(`✅ package manager found - yarn v${yarnInfo.version} \n`);
+  console.log(`Package manager found - yarn v${yarnInfo.version} \n`);
 }
 
 function userInvokedNpmInstall() {

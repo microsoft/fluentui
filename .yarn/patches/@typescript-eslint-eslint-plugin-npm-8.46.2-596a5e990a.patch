@@ -1,0 +1,38 @@
+diff --git a/dist/rules/no-deprecated.js b/dist/rules/no-deprecated.js
+index 84d6ced644db612993e30d8948ab55a6a74d1277..4512f0662f652686bcc4d62bfb8fb6a8b5d09646 100644
+--- a/dist/rules/no-deprecated.js
++++ b/dist/rules/no-deprecated.js
+@@ -90,19 +90,26 @@ exports.default = (0, util_1.createRule)({
+                     ? getJsDocDeprecation(symbol)
+                     : undefined;
+             }
++            const seen = new Set();
+             const targetSymbol = checker.getAliasedSymbol(symbol);
+-            while (tsutils.isSymbolFlagSet(symbol, ts.SymbolFlags.Alias)) {
+-                const reason = getJsDocDeprecation(symbol);
++            let current = symbol;
++            while (tsutils.isSymbolFlagSet(current, ts.SymbolFlags.Alias)) {
++                if (seen.has(current)) {
++                    break;
++                }
++                seen.add(current);
++                const reason = getJsDocDeprecation(current);
+                 if (reason != null) {
+                     return reason;
+                 }
+-                const immediateAliasedSymbol = symbol.getDeclarations() && checker.getImmediateAliasedSymbol(symbol);
+-                if (!immediateAliasedSymbol) {
++                const nextAlias = current.getDeclarations() &&
++                    checker.getImmediateAliasedSymbol(current);
++                if (!nextAlias) {
+                     break;
+                 }
+-                symbol = immediateAliasedSymbol;
+-                if (checkDeprecationsOfAliasedSymbol && symbol === targetSymbol) {
+-                    return getJsDocDeprecation(symbol);
++                current = nextAlias;
++                if (checkDeprecationsOfAliasedSymbol && current === targetSymbol) {
++                    return getJsDocDeprecation(current);
+                 }
+             }
+             return undefined;

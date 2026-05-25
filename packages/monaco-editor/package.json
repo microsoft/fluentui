@@ -10,10 +10,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "lint": "just-scripts lint",
-    "just": "just-scripts"
+    "build": "yarn run -T just-scripts build",
+    "clean": "yarn run -T just-scripts clean",
+    "lint": "yarn run -T just-scripts lint",
+    "just": "yarn run -T just-scripts"
   },
   "devDependencies": {
     "monaco-editor": "0.33.0"

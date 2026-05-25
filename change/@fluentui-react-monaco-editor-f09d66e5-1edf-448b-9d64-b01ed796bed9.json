@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: sort package.json dependencies (Yarn Modern normalization)",
+  "packageName": "@fluentui/react-monaco-editor",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
