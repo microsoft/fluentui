@@ -11,10 +11,16 @@ const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
     addItem: jest.fn(),
     addOverflowMenu: jest.fn(),
     disconnect: jest.fn(),
+    destroy: jest.fn(),
     forceUpdate: jest.fn(),
+    getSnapshot: jest.fn(() => ({ hasOverflow: false, overflowCount: 0, itemVisibility: {}, groupVisibility: {} })),
     observe: jest.fn(),
     removeItem: jest.fn(),
     removeOverflowMenu: jest.fn(),
+    setContainer: jest.fn(),
+    setOptions: jest.fn(),
+    setOverflowMenu: jest.fn(),
+    subscribe: jest.fn(() => () => undefined),
     update: jest.fn(),
     addDivider: jest.fn(),
     removeDivider: jest.fn(),
@@ -87,6 +93,28 @@ describe('useOverflowContainer', () => {
     `);
   });
 
+  it('should reconfigure the same manager when options change', () => {
+    const setOptionsMock = jest.fn();
+    mockOverflowManager({ setOptions: setOptionsMock });
+
+    let overflowAxis: OverflowAxis = 'horizontal';
+    const { rerender } = renderHook(() => {
+      return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis });
+    });
+
+    expect(createOverflowManager).toHaveBeenCalledTimes(1);
+
+    overflowAxis = 'vertical';
+    rerender();
+
+    expect(createOverflowManager).toHaveBeenCalledTimes(1);
+    expect(setOptionsMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        overflowAxis: 'vertical',
+      }),
+    );
+  });
+
   it('should invoke updateOverflow on overflow manager', () => {
     const updateMock = jest.fn();
     mockOverflowManager({ update: updateMock });
@@ -108,22 +136,5 @@ describe('useOverflowContainer', () => {
     });
 
     expect(renderCount).toEqual(1);
-  });
-
-  it('should re-render when option changes', () => {
-    let overflowAxis: OverflowAxis = 'horizontal';
-    mockOverflowManager();
-    let renderCount = 0;
-    const { rerender } = renderHook(() => {
-      renderCount++;
-      return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis });
-    });
-
-    expect(renderCount).toEqual(1);
-
-    overflowAxis = 'vertical';
-    rerender();
-
-    expect(renderCount).toEqual(2);
   });
 });

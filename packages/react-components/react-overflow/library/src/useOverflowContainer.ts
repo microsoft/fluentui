@@ -42,20 +42,21 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   } = options;
 
   const onUpdateOverflow = useEventCallback(update);
+  const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
-  const overflowOptions = React.useMemo(
+  const observeOptions = React.useMemo(
     () => ({
       overflowAxis,
       overflowDirection,
       padding,
       minimumVisible,
-      onUpdateItemVisibility,
+      onUpdateItemVisibility: onUpdateItemVisibilityCallback,
       onUpdateOverflow,
       hasHiddenItems,
     }),
     [
       minimumVisible,
-      onUpdateItemVisibility,
+      onUpdateItemVisibilityCallback,
       overflowAxis,
       overflowDirection,
       padding,
@@ -64,38 +65,57 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     ],
   );
 
+  const managerOptions = React.useMemo(
+    () => ({
+      overflowAxis,
+      overflowDirection,
+      padding,
+      minimumVisible,
+      hasHiddenItems,
+    }),
+    [minimumVisible, overflowAxis, overflowDirection, padding, hasHiddenItems],
+  );
+
   const firstMount = useFirstMount();
+  const hasObservedRef = React.useRef(false);
 
   // DOM ref to the overflow container element
   const containerRef = React.useRef<TElement>(null);
 
-  const [overflowManager, setOverflowManager] = React.useState<OverflowManager | null>(() =>
+  const overflowManager = React.useState<OverflowManager | null>(() =>
     canUseDOM() ? createOverflowManager() : null,
-  );
+  )[0];
 
-  // On first mount there is no need to create an overflow manager and re-render
+  // Initialize the manager with the full observation contract once, when the container ref is first available.
   useIsomorphicLayoutEffect(() => {
-    if (firstMount && containerRef.current) {
-      overflowManager?.observe(containerRef.current, overflowOptions);
+    if (!hasObservedRef.current && containerRef.current) {
+      overflowManager?.observe(containerRef.current, observeOptions);
+      hasObservedRef.current = true;
     }
-  }, [firstMount, overflowManager, overflowOptions]);
+  }, [overflowManager, observeOptions, firstMount]);
 
+  // After first mount, option changes should reconfigure the same manager.
   useIsomorphicLayoutEffect(() => {
-    if (!containerRef.current || !canUseDOM() || firstMount) {
+    if (!overflowManager || firstMount) {
       return;
     }
 
-    const newOverflowManager = createOverflowManager();
-    newOverflowManager.observe(containerRef.current, overflowOptions);
-    setOverflowManager(newOverflowManager);
-    // We don't want to re-create the overflow manager when the first mount flag changes from true to false
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [overflowOptions]);
+    overflowManager.setOptions(managerOptions);
+  }, [firstMount, overflowManager, managerOptions]);
 
-  /* Clean up overflow manager on unmount */
+  // Keep the attached container current across renders after mount.
+  useIsomorphicLayoutEffect(() => {
+    if (!overflowManager || !hasObservedRef.current || firstMount) {
+      return;
+    }
+
+    overflowManager.setContainer(containerRef.current);
+  });
+
+  /* Fully destroy the manager on unmount */
   React.useEffect(
     () => () => {
-      overflowManager?.disconnect();
+      overflowManager?.destroy();
     },
     [overflowManager],
   );
@@ -130,11 +150,11 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   const registerOverflowMenu = React.useCallback(
     (el: HTMLElement) => {
-      overflowManager?.addOverflowMenu(el);
+      overflowManager?.setOverflowMenu(el);
       el.setAttribute(DATA_OVERFLOW_MENU, '');
 
       return () => {
-        overflowManager?.removeOverflowMenu();
+        overflowManager?.setOverflowMenu(null);
         el.removeAttribute(DATA_OVERFLOW_MENU);
       };
     },
@@ -151,6 +171,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     registerOverflowMenu,
     updateOverflow,
     containerRef,
+    manager: overflowManager,
   };
 };
 

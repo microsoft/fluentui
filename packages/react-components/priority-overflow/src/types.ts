@@ -1,6 +1,14 @@
 export type OverflowDirection = 'start' | 'end';
 export type OverflowAxis = 'horizontal' | 'vertical';
 export type OverflowGroupState = 'visible' | 'hidden' | 'overflow';
+
+export interface OverflowSnapshot {
+  hasOverflow: boolean;
+  overflowCount: number;
+  itemVisibility: Record<string, boolean>;
+  groupVisibility: Record<string, OverflowGroupState>;
+}
+
 export interface OverflowItemEntry {
   /**
    * HTML element that will be disappear when overflowed
@@ -98,10 +106,24 @@ export interface ObserveOptions {
   hasHiddenItems?: boolean;
 }
 
+export type OverflowManagerOptions = Omit<ObserveOptions, 'onUpdateItemVisibility' | 'onUpdateOverflow'>;
+
 /**
  * @internal
  */
 export interface OverflowManager {
+  /**
+   * Updates engine options without requiring full observation re-creation.
+   */
+  setOptions: (options: Partial<OverflowManagerOptions>) => void;
+  /**
+   * Attaches or detaches the observed container element.
+   */
+  setContainer: (container: HTMLElement | null) => void;
+  /**
+   * Attaches or detaches the overflow menu element.
+   */
+  setOverflowMenu: (element: HTMLElement | null) => void;
   /**
    * Starts observing the container and managing the overflow state
    */
@@ -147,4 +169,19 @@ export interface OverflowManager {
    * Unsets the overflow menu element
    */
   removeOverflowMenu: () => void;
+
+  /**
+   * Returns the current canonical overflow snapshot.
+   */
+  getSnapshot: () => OverflowSnapshot;
+
+  /**
+   * Subscribes to snapshot changes.
+   */
+  subscribe: (listener: () => void) => () => void;
+
+  /**
+   * Fully tears down the manager and clears all tracked state.
+   */
+  destroy: () => void;
 }
