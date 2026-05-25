@@ -16,7 +16,7 @@ const dialogTriggerId = 'dialog-trigger';
 const dialogTriggerOpenId = `${dialogTriggerId}-open`;
 const dialogTriggerCloseId = `${dialogTriggerId}-close`;
 const dialogPrimaryButtonId = 'do-something-btn';
-const dialogSurfaceSelector = `dialog[open]`;
+const dialogSurfaceSelector = `dialog[data-open]`;
 const dialogSurfaceElementSelector = `dialog`;
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
 const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
@@ -260,10 +260,9 @@ describe('Dialog', () => {
         <>
           {/*
             The headless component ships no default styles. The UA stylesheet combined
-            with the portal mount node (`position: absolute; top: 0; left: 0; right: 0`)
-            pins the non-modal dialog to the top of the viewport, where it would overlap
-            and intercept clicks on the sibling "outside" button. Position it out of the
-            way so this test can verify focus behaviour rather than layout.
+            with top-layer placement can visually overlap the sibling "outside" button.
+            Position it out of the way so this test can verify focus behaviour rather
+            than layout.
           */}
           <BasicDialog
             modalType="non-modal"
