@@ -81,14 +81,14 @@ async function runE2ETest() {
 
   logger('STEP 2. Create test React app from template');
   await prepareCreateReactApp(tempPaths, `file:${templatePath}`);
-  await shEcho('yarn add cross-env', tempPaths.testApp);
+  await shEcho('npm install cross-env', tempPaths.testApp);
   logger(`✔️ Test React app is successfully created: ${tempPaths.testApp}`);
 
   logger('STEP 3. Build test app');
-  await shEcho(`yarn cross-env CI=1 yarn build`, tempPaths.testApp);
+  await shEcho(`npx cross-env CI=1 npm run build`, tempPaths.testApp);
 
   logger('STEP 4. Run test app tests');
-  await shEcho(`yarn cross-env CI=1 yarn test`, tempPaths.testApp);
+  await shEcho(`npx cross-env CI=1 npm run test`, tempPaths.testApp);
 
   logger('STEP 5. Load the test app in the browser');
   await performBrowserTest(path.join(tempPaths.testApp, 'build'));
