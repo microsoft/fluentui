@@ -1,29 +1,22 @@
-import type * as React from 'react';
 import type { OverflowAxis, OverflowManager } from '@fluentui/priority-overflow';
 import { createOverflowManager } from '@fluentui/priority-overflow';
 import { useOverflowContainer } from './useOverflowContainer';
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 
 jest.mock('@fluentui/priority-overflow');
 
 const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
   const defaultMock: OverflowManager = {
-    addItem: jest.fn(),
-    addOverflowMenu: jest.fn(),
-    disconnect: jest.fn(),
-    destroy: jest.fn(),
+    attachOverflowMenu: jest.fn(() => () => undefined),
     forceUpdate: jest.fn(),
     getSnapshot: jest.fn(() => ({ hasOverflow: false, overflowCount: 0, itemVisibility: {}, groupVisibility: {} })),
-    observe: jest.fn(),
+    observe: jest.fn(() => () => undefined),
+    registerDivider: jest.fn(() => () => undefined),
+    registerItem: jest.fn(() => () => undefined),
     removeItem: jest.fn(),
-    removeOverflowMenu: jest.fn(),
-    setContainer: jest.fn(),
     setOptions: jest.fn(),
-    setOverflowMenu: jest.fn(),
     subscribe: jest.fn(() => () => undefined),
     update: jest.fn(),
-    addDivider: jest.fn(),
-    removeDivider: jest.fn(),
   };
   (createOverflowManager as jest.Mock).mockReturnValue({
     ...defaultMock,
@@ -39,8 +32,8 @@ describe('useOverflowContainer', () => {
   });
 
   it('should add to overflow manager when registering item', () => {
-    const addItemMock = jest.fn();
-    mockOverflowManager({ addItem: addItemMock });
+    const registerItemMock = jest.fn(() => () => undefined);
+    mockOverflowManager({ registerItem: registerItemMock });
     const { result } = renderHook(() =>
       useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
     );
@@ -48,13 +41,14 @@ describe('useOverflowContainer', () => {
     const overflowItem = { element: document.createElement('div'), id: 'test', priority: 0, groupId: '0' };
     result.current.registerItem(overflowItem);
 
-    expect(addItemMock).toHaveBeenCalledTimes(1);
-    expect(addItemMock).toHaveBeenCalledWith(overflowItem);
+    expect(registerItemMock).toHaveBeenCalledTimes(1);
+    expect(registerItemMock).toHaveBeenCalledWith(overflowItem);
   });
 
   it('should return cleanup when registering item', () => {
-    const removeItemMock = jest.fn();
-    mockOverflowManager({ removeItem: removeItemMock });
+    const deregisterItemMock = jest.fn();
+    const registerItemMock = jest.fn(() => deregisterItemMock);
+    mockOverflowManager({ registerItem: registerItemMock });
     const { result } = renderHook(() =>
       useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
     );
@@ -63,8 +57,7 @@ describe('useOverflowContainer', () => {
     const deregister = result.current.registerItem(overflowItem);
 
     deregister();
-    expect(removeItemMock).toHaveBeenCalledTimes(1);
-    expect(removeItemMock).toHaveBeenCalledWith(overflowItem.id);
+    expect(deregisterItemMock).toHaveBeenCalledTimes(1);
   });
 
   it('should call observe with default options', () => {
@@ -73,22 +66,14 @@ describe('useOverflowContainer', () => {
     const { result, rerender } = renderHook(() => {
       return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined });
     });
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    (result.current.containerRef as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
+    act(() => {
+      result.current.containerRef(document.createElement('div'));
+    });
     rerender();
     expect(observeMock).toHaveBeenCalledTimes(1);
     expect(observeMock.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <div />,
-        Object {
-          "hasHiddenItems": false,
-          "minimumVisible": 0,
-          "onUpdateItemVisibility": [Function],
-          "onUpdateOverflow": [Function],
-          "overflowAxis": "horizontal",
-          "overflowDirection": "end",
-          "padding": 10,
-        },
       ]
     `);
   });
@@ -110,7 +95,13 @@ describe('useOverflowContainer', () => {
     expect(createOverflowManager).toHaveBeenCalledTimes(1);
     expect(setOptionsMock).toHaveBeenCalledWith(
       expect.objectContaining({
+        hasHiddenItems: false,
+        minimumVisible: 0,
+        onUpdateItemVisibility: expect.any(Function),
+        onUpdateOverflow: expect.any(Function),
         overflowAxis: 'vertical',
+        overflowDirection: 'end',
+        padding: 10,
       }),
     );
   });

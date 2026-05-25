@@ -70,16 +70,31 @@ export interface OverflowItemEntry {
 
 // @internal (undocumented)
 export interface OverflowManager {
-    addDivider: (divider: OverflowDividerEntry) => void;
-    addItem: (items: OverflowItemEntry) => void;
-    addOverflowMenu: (element: HTMLElement) => void;
-    disconnect: () => void;
+    attachOverflowMenu: (element: HTMLElement) => () => void;
     forceUpdate: () => void;
-    observe: (container: HTMLElement, options: ObserveOptions) => void;
-    removeDivider: (groupId: string) => void;
+    getSnapshot: () => OverflowSnapshot;
+    observe: (container: HTMLElement) => () => void;
+    registerDivider: (divider: OverflowDividerEntry) => () => void;
+    registerItem: (items: OverflowItemEntry) => () => void;
     removeItem: (itemId: string) => void;
-    removeOverflowMenu: () => void;
+    setOptions: (options: Partial<OverflowManagerOptions>) => void;
+    subscribe: (listener: () => void) => () => void;
     update: () => void;
+}
+
+// @public (undocumented)
+export type OverflowManagerOptions = ObserveOptions;
+
+// @public (undocumented)
+export interface OverflowSnapshot {
+    // (undocumented)
+    groupVisibility: Record<string, OverflowGroupState>;
+    // (undocumented)
+    hasOverflow: boolean;
+    // (undocumented)
+    itemVisibility: Record<string, boolean>;
+    // (undocumented)
+    overflowCount: number;
 }
 
 // (No @packageDocumentation comment for this package)

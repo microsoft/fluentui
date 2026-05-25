@@ -106,7 +106,7 @@ export interface ObserveOptions {
   hasHiddenItems?: boolean;
 }
 
-export type OverflowManagerOptions = Omit<ObserveOptions, 'onUpdateItemVisibility' | 'onUpdateOverflow'>;
+export type OverflowManagerOptions = ObserveOptions;
 
 /**
  * @internal
@@ -117,25 +117,13 @@ export interface OverflowManager {
    */
   setOptions: (options: Partial<OverflowManagerOptions>) => void;
   /**
-   * Attaches or detaches the observed container element.
-   */
-  setContainer: (container: HTMLElement | null) => void;
-  /**
-   * Attaches or detaches the overflow menu element.
-   */
-  setOverflowMenu: (element: HTMLElement | null) => void;
-  /**
    * Starts observing the container and managing the overflow state
    */
-  observe: (container: HTMLElement, options: ObserveOptions) => void;
+  observe: (container: HTMLElement) => () => void;
   /**
-   * Stops observing the container
+   * Registers an overflow item and returns a cleanup function.
    */
-  disconnect: () => void;
-  /**
-   * Add overflow items
-   */
-  addItem: (items: OverflowItemEntry) => void;
+  registerItem: (items: OverflowItemEntry) => () => void;
   /**
    * Remove overflow item
    */
@@ -150,25 +138,15 @@ export interface OverflowManager {
   forceUpdate: () => void;
 
   /**
-   * Adds an element that opens an overflow menu. This is used to calculate
-   * available space and check if additional items need to overflow
+   * Attaches an element that opens an overflow menu and returns a cleanup function.
+   * This is used to calculate available space and check if additional items need to overflow.
    */
-  addOverflowMenu: (element: HTMLElement) => void;
+  attachOverflowMenu: (element: HTMLElement) => () => void;
 
   /**
-   * Add overflow divider
+   * Registers a divider and returns a cleanup function.
    */
-  addDivider: (divider: OverflowDividerEntry) => void;
-
-  /**
-   * Remove overflow divider
-   */
-  removeDivider: (groupId: string) => void;
-
-  /**
-   * Unsets the overflow menu element
-   */
-  removeOverflowMenu: () => void;
+  registerDivider: (divider: OverflowDividerEntry) => () => void;
 
   /**
    * Returns the current canonical overflow snapshot.
@@ -179,9 +157,4 @@ export interface OverflowManager {
    * Subscribes to snapshot changes.
    */
   subscribe: (listener: () => void) => () => void;
-
-  /**
-   * Fully tears down the manager and clears all tracked state.
-   */
-  destroy: () => void;
 }

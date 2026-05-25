@@ -98,31 +98,48 @@ The target is a future shape of `OverflowManager`, not a separately named contro
 
 Readable state and generic subscription are acceptable engine concerns as long as they remain host-agnostic and do not make the engine React-shaped.
 
-### 5. Converge on the viable engine contract first
+### 5. Pure construction and paired cleanup are required
+
+The manager should be created in a pure way.
+
+That means construction itself should not require cleanup.
+
+Cleanup should be attached to the specific runtime relationships that are created later:
+
+- observation
+- subscription
+- item registration
+- divider registration
+- menu attachment
+- container attachment
+
+The normal desired design should not rely on a monolithic `destroy()` to compensate for blurred lifecycle boundaries.
+
+### 6. Converge on the viable engine contract first
 
 The current target is the viable future `OverflowManager`, not the ideal one.
 
 The viable target includes:
 
 - `setOptions()`
-- `setContainer()`
-- `setOverflowMenu()`
-- existing add/remove registration for now
+- `observe(container)` returning cleanup
+- `attachOverflowMenu(element)` returning cleanup
+- `registerItem(item)` returning cleanup
+- `registerDivider(divider)` returning cleanup
 - `getSnapshot()`
 - `subscribe()`
-- `destroy()`
 
-### 6. Handle-based registration is ideal, but not required yet
+### 7. Handle-based registration is ideal, but not required yet
 
 `registerItem(...)->handle.update()/unregister()` and its divider equivalent remain part of the ideal engine surface, but they are not required for the first viable improved state.
 
-### 7. Engine contract work comes before deeper bridge redesign
+### 8. Engine contract work comes before deeper bridge redesign
 
 The next phase should assume that improving the engine contract comes first.
 
 Only after that should we decide how much of the remaining bridge complexity still justifies deeper bridge redesign or ideal-surface expansion.
 
-### 8. The viable transition should be non-breaking at the component level
+### 9. The viable transition should be non-breaking at the component level
 
 The viable engine and bridge redesign should be treated as non-breaking at the component level.
 
@@ -142,6 +159,8 @@ The desired engine state is:
 - it exposes canonical readable overflow state
 - it exposes generic subscription semantics
 - it stays host-agnostic and non-React-specific
+- its pure construction is separate from all runtime connections
+- cleanup is paired with each connection boundary rather than collapsed into a single lifetime method
 
 ### Viable future `OverflowManager`
 
@@ -150,21 +169,17 @@ The current convergence target is:
 ```ts
 interface OverflowManager {
   setOptions(options: Partial<OverflowManagerOptions>): void;
-  setContainer(element: HTMLElement | null): void;
-  setOverflowMenu(element: HTMLElement | null): void;
+  observe(container: HTMLElement): () => void;
+  attachOverflowMenu(element: HTMLElement): () => void;
 
-  addItem(item: OverflowItemEntry): void;
-  removeItem(itemId: string): void;
-  addDivider(divider: OverflowDividerEntry): void;
-  removeDivider(groupId: string): void;
+  registerItem(item: OverflowItemEntry): () => void;
+  registerDivider(divider: OverflowDividerEntry): () => void;
 
   update(): void;
   forceUpdate(): void;
 
   getSnapshot(): OverflowSnapshot;
   subscribe(listener: () => void): () => void;
-
-  destroy(): void;
 }
 ```
 
@@ -182,6 +197,42 @@ registerDivider(divider: OverflowDividerEntry): OverflowDividerHandle;
 where the returned handles support `update()` and `unregister()`.
 
 This remains a second-order improvement, not part of the immediate target.
+
+### Lifecycle boundaries
+
+The desired lifecycle boundaries are:
+
+1. pure construction
+
+- `createOverflowManager()`
+- no cleanup required
+
+2. configuration
+
+- `setOptions()`
+- no external connection implied
+
+3. container observation
+
+- `observe(container)` returns observation cleanup
+
+4. menu attachment
+
+- `attachOverflowMenu(element)` returns detach cleanup
+
+5. item registration
+
+- `registerItem(item)` returns unregister cleanup
+
+6. divider registration
+
+- `registerDivider(divider)` returns unregister cleanup
+
+7. subscription
+
+- `subscribe(listener)` returns unsubscribe cleanup
+
+This is the corrected desired model.
 
 ### 2. Bridge-facing snapshot
 
@@ -224,9 +275,9 @@ The desired `useOverflowContainer` shape is:
 
 - one long-lived manager instance per overflow container
 - `setOptions()` used for configuration changes
-- `setContainer()` used for container attachment changes
-- `setOverflowMenu()` used for menu attachment changes
-- registration helpers exposed for item and divider wiring
+- `observe(container)` used for observation setup with paired cleanup
+- `attachOverflowMenu(element)` used for menu attachment with paired cleanup
+- registration helpers exposed for item and divider wiring through paired cleanup boundaries
 - manager returned explicitly for downstream bridge usage
 
 A likely internal bridge-facing return shape is:
@@ -243,6 +294,12 @@ type UseOverflowContainerReturn<TElement extends HTMLElement> = {
 ```
 
 This keeps current registration ergonomics while making manager ownership explicit.
+
+Internally, this implies a different lifecycle model from the current implementation:
+
+- the manager should not be created in render and then destroyed on unmount as if those were symmetrical operations
+- instead, the manager should be treated as a pure inert object, and runtime connections should be established and torn down through paired boundaries
+- `useOverflowContainer` should own the manager reference, but not collapse all cleanup into one terminal manager teardown path
 
 ### 5. `Overflow.tsx`
 
@@ -276,6 +333,8 @@ type OverflowContextValue = {
 ```
 
 This preserves the current practical API shape while keeping ownership explicit.
+
+The important nuance is that these bridge registration helpers remain bridge ergonomics, not canonical lifecycle primitives. Under the corrected model they should be thin wrappers over engine APIs that already provide paired cleanup.
 
 ### 7. Subscription helper layer
 
@@ -317,7 +376,7 @@ The desired registration model in the viable state is:
 
 - public component APIs stay stable
 - registration helpers continue to exist for bridge ergonomics
-- internal registration still uses add/remove semantics first
+- internal registration should map onto paired engine registration boundaries first
 
 If later evidence shows metadata churn is still a first-order problem, then handle-based registration can be added as the next engine step.
 
@@ -341,6 +400,7 @@ If the viable future `OverflowManager` existed, these bridge problems improve im
 3. callback-only engine state access
 4. the bridge being forced to act as the only stable state publisher
 5. menu attachment awkwardness as a lifecycle concern
+6. the need to model manager lifetime cleanup as one monolithic teardown path
 
 ## What still remains bridge-owned after that
 
@@ -392,6 +452,12 @@ The current desired state is:
 6. a small bridge subscription helper layer
 7. state-reading hooks that subscribe/select from manager-owned state
 8. no required public component-level breaking changes for the viable transition
+
+And, critically:
+
+9. pure manager construction should not itself require cleanup
+10. every runtime connection should have paired local cleanup
+11. the normal desired design should not depend on a monolithic `destroy()` to compensate for blurred lifecycle boundaries
 
 This is the current basis for implementation discussions.
 

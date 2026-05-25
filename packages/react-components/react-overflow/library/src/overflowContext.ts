@@ -20,19 +20,13 @@ const defaultSnapshot: OverflowSnapshot = {
 
 const defaultManager: OverflowManager = {
   setOptions: () => undefined,
-  setContainer: () => undefined,
-  setOverflowMenu: () => undefined,
-  observe: () => undefined,
-  disconnect: () => undefined,
-  destroy: () => undefined,
-  addItem: () => undefined,
+  observe: () => () => undefined,
+  registerItem: () => () => undefined,
   removeItem: () => undefined,
   update: () => undefined,
   forceUpdate: () => undefined,
-  addOverflowMenu: () => undefined,
-  addDivider: () => undefined,
-  removeDivider: () => undefined,
-  removeOverflowMenu: () => undefined,
+  attachOverflowMenu: () => () => undefined,
+  registerDivider: () => () => undefined,
   getSnapshot: () => defaultSnapshot,
   subscribe: () => () => undefined,
 };

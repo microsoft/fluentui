@@ -52,10 +52,11 @@ describe('overflowManager', () => {
     const itemB = createElementWithSize('button', 40);
     const menu = createElementWithSize('button', 20);
 
-    manager.addItem({ element: itemA, id: 'a', priority: 1 });
-    manager.addItem({ element: itemB, id: 'b', priority: 0 });
-    manager.setOverflowMenu(menu);
-    manager.observe(container, createObserveOptions());
+    manager.setOptions(createObserveOptions());
+    manager.registerItem({ element: itemA, id: 'a', priority: 1 });
+    manager.registerItem({ element: itemB, id: 'b', priority: 0 });
+    manager.attachOverflowMenu(menu);
+    manager.observe(container);
     manager.forceUpdate();
 
     expect(manager.getSnapshot()).toEqual({
@@ -74,10 +75,11 @@ describe('overflowManager', () => {
     const menu = createElementWithSize('button', 20);
     const listener = jest.fn();
 
-    manager.addItem({ element: itemA, id: 'a', priority: 1 });
-    manager.addItem({ element: itemB, id: 'b', priority: 0 });
-    manager.setOverflowMenu(menu);
-    manager.observe(container, createObserveOptions());
+    manager.setOptions(createObserveOptions());
+    manager.registerItem({ element: itemA, id: 'a', priority: 1 });
+    manager.registerItem({ element: itemB, id: 'b', priority: 0 });
+    manager.attachOverflowMenu(menu);
+    manager.observe(container);
     manager.forceUpdate();
     const unsubscribe = manager.subscribe(listener);
 
@@ -94,18 +96,42 @@ describe('overflowManager', () => {
     unsubscribe();
   });
 
-  it('should destroy and clear snapshot state', () => {
+  it('should reset snapshot state when observation cleanup runs', () => {
     const manager = createOverflowManager();
     const container = createContainer(100);
     const item = createElementWithSize('button', 40);
 
-    manager.addItem({ element: item, id: 'a', priority: 1 });
-    manager.observe(container, createObserveOptions());
+    manager.setOptions(createObserveOptions());
+    manager.registerItem({ element: item, id: 'a', priority: 1 });
+    const cleanup = manager.observe(container);
     manager.forceUpdate();
 
     expect(manager.getSnapshot().itemVisibility).toEqual({ a: true });
 
-    manager.destroy();
+    cleanup();
+
+    expect(manager.getSnapshot()).toEqual({
+      hasOverflow: false,
+      overflowCount: 0,
+      itemVisibility: {},
+      groupVisibility: {},
+    });
+  });
+
+  it('should remove items through registration cleanup', () => {
+    const manager = createOverflowManager();
+    const container = createContainer(100);
+    const item = createElementWithSize('button', 40);
+
+    manager.setOptions(createObserveOptions());
+    const cleanupItem = manager.registerItem({ element: item, id: 'a', priority: 1 });
+    manager.observe(container);
+    manager.forceUpdate();
+
+    expect(manager.getSnapshot().itemVisibility).toEqual({ a: true });
+
+    cleanupItem();
+    manager.forceUpdate();
 
     expect(manager.getSnapshot()).toEqual({
       hasOverflow: false,

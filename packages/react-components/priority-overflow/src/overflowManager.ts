@@ -275,7 +275,7 @@ export function createOverflowManager(): OverflowManager {
     }
   };
 
-  const setContainer: OverflowManager['setContainer'] = nextContainer => {
+  const connectContainer = (nextContainer: HTMLElement | null) => {
     if (container === nextContainer) {
       return;
     }
@@ -294,13 +294,31 @@ export function createOverflowManager(): OverflowManager {
     }
   };
 
-  const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
-    Object.assign(options, userOptions);
-    Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
-    setContainer(observedContainer);
+  const observe: OverflowManager['observe'] = observedContainer => {
+    Object.values(overflowItems).forEach(item => {
+      if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
+        visibleItemQueue.enqueue(item.id);
+      }
+    });
+
+    connectContainer(observedContainer);
+
+    return () => {
+      if (container !== observedContainer) {
+        return;
+      }
+
+      disposeResizeObserver();
+      disposeResizeObserver = () => null;
+      container = undefined;
+      observing = false;
+      forceDispatch = true;
+      resetSnapshot();
+      notify();
+    };
   };
 
-  const addItem: OverflowManager['addItem'] = item => {
+  const addItem = (item: OverflowItemEntry) => {
     if (overflowItems[item.id]) {
       return;
     }
@@ -324,21 +342,13 @@ export function createOverflowManager(): OverflowManager {
     update();
   };
 
-  const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
+  const addOverflowMenu = (el: HTMLElement) => {
     overflowMenu = el;
     forceDispatch = true;
     update();
   };
 
-  const setOverflowMenu: OverflowManager['setOverflowMenu'] = element => {
-    if (element) {
-      addOverflowMenu(element);
-    } else {
-      removeOverflowMenu();
-    }
-  };
-
-  const addDivider: OverflowManager['addDivider'] = divider => {
+  const addDivider = (divider: OverflowDividerEntry) => {
     if (!divider.groupId || overflowDividers[divider.groupId]) {
       return;
     }
@@ -347,13 +357,13 @@ export function createOverflowManager(): OverflowManager {
     overflowDividers[divider.groupId] = divider;
   };
 
-  const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+  const removeOverflowMenu = () => {
     overflowMenu = undefined;
     forceDispatch = true;
     update();
   };
 
-  const removeDivider: OverflowManager['removeDivider'] = groupId => {
+  const removeDivider = (groupId: string) => {
     if (!overflowDividers[groupId]) {
       return;
     }
@@ -389,6 +399,34 @@ export function createOverflowManager(): OverflowManager {
     update();
   };
 
+  const registerItem: OverflowManager['registerItem'] = item => {
+    addItem(item);
+
+    return () => {
+      removeItem(item.id);
+    };
+  };
+
+  const attachOverflowMenu: OverflowManager['attachOverflowMenu'] = element => {
+    addOverflowMenu(element);
+
+    return () => {
+      if (overflowMenu === element) {
+        removeOverflowMenu();
+      }
+    };
+  };
+
+  const registerDivider: OverflowManager['registerDivider'] = divider => {
+    addDivider(divider);
+
+    return () => {
+      if (overflowDividers[divider.groupId]?.element === divider.element) {
+        removeDivider(divider.groupId);
+      }
+    };
+  };
+
   const resetSnapshot = () => {
     snapshot = {
       hasOverflow: false,
@@ -396,53 +434,6 @@ export function createOverflowManager(): OverflowManager {
       itemVisibility: {},
       groupVisibility: {},
     };
-  };
-
-  const disconnect: OverflowManager['disconnect'] = () => {
-    disposeResizeObserver();
-    disposeResizeObserver = () => null;
-
-    // reset flags
-    container = undefined;
-    observing = false;
-    forceDispatch = true;
-
-    resetSnapshot();
-
-    notify();
-  };
-
-  const destroy: OverflowManager['destroy'] = () => {
-    disposeResizeObserver();
-    disposeResizeObserver = () => null;
-
-    container = undefined;
-    overflowMenu = undefined;
-    observing = false;
-    forceDispatch = true;
-
-    visibleItemQueue.clear();
-    invisibleItemQueue.clear();
-
-    Object.values(overflowItems).forEach(item => {
-      item.element.removeAttribute(DATA_OVERFLOW_GROUP);
-      item.element.removeAttribute(DATA_OVERFLOWING);
-    });
-    Object.values(overflowDividers).forEach(divider => {
-      divider.element.removeAttribute(DATA_OVERFLOW_GROUP);
-      divider.element.removeAttribute(DATA_OVERFLOWING);
-    });
-
-    Object.keys(overflowItems).forEach(itemId => {
-      delete overflowItems[itemId];
-    });
-    Object.keys(overflowDividers).forEach(groupId => {
-      delete overflowDividers[groupId];
-    });
-
-    sizeCache.clear();
-    resetSnapshot();
-    listeners.clear();
   };
 
   const subscribe: OverflowManager['subscribe'] = listener => {
@@ -454,22 +445,16 @@ export function createOverflowManager(): OverflowManager {
   };
 
   return {
-    addItem,
-    destroy,
-    disconnect,
+    attachOverflowMenu,
     forceUpdate,
     getSnapshot,
     observe,
     removeItem,
-    setContainer,
+    registerDivider,
+    registerItem,
     setOptions,
-    setOverflowMenu,
     subscribe,
     update,
-    addOverflowMenu,
-    removeOverflowMenu,
-    addDivider,
-    removeDivider,
   };
 }
 
