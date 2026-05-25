@@ -32,7 +32,7 @@ export const renderDialogSurface = (state: DialogSurfaceState): JSXElement | nul
   );
 
   if (state.modalType === 'non-modal') {
-    return <Portal mountNode={state.mountNode}>{content}</Portal>;
+    return <Portal>{content}</Portal>;
   }
 
   return content;

@@ -11,7 +11,7 @@ describe('Portal', () => {
     disabledTests: ['component-handles-classname', 'component-has-root-ref', 'component-handles-ref'],
   });
 
-  it('renders children into document.body by default', () => {
+  it('renders children into a dedicated mount node appended to document.body by default', () => {
     const { getByTestId, baseElement } = render(
       <Portal>
         <div data-testid="portal-child">Content</div>
@@ -19,7 +19,10 @@ describe('Portal', () => {
     );
 
     const child = getByTestId('portal-child');
-    expect(child.parentElement).toBe(baseElement);
+    const dedicatedMount = child.parentElement;
+    expect(dedicatedMount).not.toBeNull();
+    expect(dedicatedMount).toHaveAttribute('data-portal-node', 'true');
+    expect(dedicatedMount?.parentElement).toBe(baseElement);
   });
 
   it('renders children into the provided mountNode', () => {
@@ -53,6 +56,22 @@ describe('Portal', () => {
     const anchor = container.querySelector<HTMLSpanElement>('[data-testid="parent"] > span');
     expect(anchor).not.toBeNull();
     expect(anchor).toHaveAttribute('hidden');
+  });
+
+  it('links the default mount node to the anchor via setVirtualParent', () => {
+    const { getByTestId } = render(
+      <div data-testid="react-parent">
+        <Portal>
+          <div data-testid="portal-child">Content</div>
+        </Portal>
+      </div>,
+    );
+
+    const anchor = getByTestId('react-parent').querySelector<HTMLSpanElement>(':scope > span');
+    const dedicatedMount = getByTestId('portal-child').parentElement;
+
+    // Walking up from the dedicated mount node reaches the anchor via virtual parent.
+    expect(getParent(dedicatedMount)).toBe(anchor);
   });
 
   it('links the portal mountNode to the anchor via setVirtualParent', () => {

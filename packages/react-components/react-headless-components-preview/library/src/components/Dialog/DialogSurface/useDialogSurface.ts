@@ -145,7 +145,6 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     open,
     unmountOnClose,
     modalType,
-    mountNode: targetDocument?.body ?? undefined,
     shouldRender,
     root: slot.always(
       getIntrinsicElementProps('dialog', {
