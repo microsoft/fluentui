@@ -7,10 +7,13 @@ import { manualMemoPlugin, ManualMemoEntry, ManualMemoPluginOptions } from '../m
 
 const FIXTURES_DIR = join(__dirname, '__fixtures__', 'manual-memo');
 
-async function runPlugin(fixtureName: string): Promise<Map<string, ManualMemoEntry>> {
+async function runPlugin(
+  fixtureName: string,
+): Promise<{ results: Map<string, ManualMemoEntry>; bodyInsertionLines: Map<string, number> }> {
   const filePath = join(FIXTURES_DIR, fixtureName);
   const source = readFileSync(filePath, 'utf-8');
   const results = new Map<string, ManualMemoEntry>();
+  const bodyInsertionLines = new Map<string, number>();
 
   await transformAsync(source, {
     filename: filePath,
@@ -19,10 +22,10 @@ async function runPlugin(fixtureName: string): Promise<Map<string, ManualMemoEnt
     babelrc: false,
     configFile: false,
     presets: [[require.resolve('@babel/preset-typescript'), { isTSX: true, allExtensions: true }]],
-    plugins: [[manualMemoPlugin, { results } as ManualMemoPluginOptions]],
+    plugins: [[manualMemoPlugin, { results, bodyInsertionLines } as ManualMemoPluginOptions]],
   });
 
-  return results;
+  return { results, bodyInsertionLines };
 }
 
 describe('manualMemoPlugin', () => {
@@ -30,7 +33,7 @@ describe('manualMemoPlugin', () => {
     it.each(['named-import.tsx', 'namespace-import.tsx', 'default-import.tsx'])(
       'detects useMemo, useCallback, and memo in %s',
       async fixture => {
-        const results = await runPlugin(fixture);
+        const { results } = await runPlugin(fixture);
         expect(results.size).toBe(4);
 
         const entries = [...results.values()];
@@ -58,7 +61,7 @@ describe('manualMemoPlugin', () => {
 
   describe('edge cases', () => {
     it('counts multiple useMemo + useCallback in one function', async () => {
-      const results = await runPlugin('mixed-hooks.tsx');
+      const { results } = await runPlugin('mixed-hooks.tsx');
       expect(results.size).toBe(1);
       const entry = [...results.values()][0];
       expect(entry.useMemo).toBe(2);
@@ -67,7 +70,7 @@ describe('manualMemoPlugin', () => {
     });
 
     it('detects memoization in nested functions separately', async () => {
-      const results = await runPlugin('nested-functions.tsx');
+      const { results } = await runPlugin('nested-functions.tsx');
       expect(results.size).toBe(2);
       const entries = [...results.values()];
       const outer = entries.find(e => e.useMemo > 0);
@@ -77,26 +80,36 @@ describe('manualMemoPlugin', () => {
     });
 
     it('skips functions that already have "use memo" directive', async () => {
-      const results = await runPlugin('already-annotated.tsx');
+      const { results } = await runPlugin('already-annotated.tsx');
       expect(results.size).toBe(0);
     });
 
     it('returns empty map when no memoization is present', async () => {
-      const results = await runPlugin('no-memo.tsx');
+      const { results } = await runPlugin('no-memo.tsx');
       expect(results.size).toBe(0);
     });
 
     it('ignores useMemo/useCallback not imported from react', async () => {
-      const results = await runPlugin('non-react-memo.tsx');
+      const { results } = await runPlugin('non-react-memo.tsx');
       expect(results.size).toBe(0);
     });
 
     it('detects reactMemoHasComparator when memo is called with a custom comparator', async () => {
-      const results = await runPlugin('memo-with-comparator.tsx');
+      const { results } = await runPlugin('memo-with-comparator.tsx');
       expect(results.size).toBe(1);
       const entry = [...results.values()][0];
       expect(entry.reactMemo).toBe(true);
       expect(entry.reactMemoHasComparator).toBe(true);
+    });
+
+    it('does not record a bodyInsertionLine for expression-body arrow functions', async () => {
+      // Expression-body arrows (e.g. `const X = () => <div />`) have no block where a
+      // `'use memo';` directive could be safely inserted. Recording an insertion line
+      // for them causes the fixer to splice the directive into the surrounding
+      // declaration, corrupting the source file.
+      const { bodyInsertionLines } = await runPlugin('expression-body-arrow.tsx');
+
+      expect(bodyInsertionLines.size).toBe(0);
     });
   });
 });

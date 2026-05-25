@@ -28,10 +28,9 @@ function getBodyInsertionLine(fnPath: NodePath<BabelFunction>): number {
     // Insert after the opening brace — first statement line, or body start + 1
     return body.loc.start.line + 1;
   }
-  // Arrow function with expression body — use the function start line
-  if (fnPath.node.loc) {
-    return fnPath.node.loc.start.line;
-  }
+  // Arrow function with expression body (e.g. `() => <div />`) — there is no block
+  // where a `'use memo';` directive can be inserted without rewriting the function.
+  // Return 0 so callers (fixer, coverage analyzer) skip this function.
   return 0;
 }
 
