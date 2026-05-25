@@ -6,7 +6,7 @@ import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import { printReport, printSummary } from '../reporter';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
-import { sharedOptions, validateConcurrency, validatePaths } from './shared';
+import { closeScanLog, openScanLog, sharedOptions, validateConcurrency, validatePaths } from './shared';
 
 type LintArgv = {
   paths: string[];
@@ -33,6 +33,8 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
 
     console.log('━━ React Compiler Lint ━━\n');
 
+    openScanLog('Scan & compile log');
+
     const files: FileEntry[] = [];
 
     for (const resolvedPath of resolvedPaths) {
@@ -47,6 +49,7 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
     }
 
     if (files.length === 0) {
+      closeScanLog();
       console.log('No files with directives found.');
       process.exit(0);
     }
@@ -69,6 +72,8 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
       // 'use no memo' requires strip + recompile
       results.push(...(await analyzeNoMemoDirectives(compiled, argv.mode, argv.verbose)));
     }
+
+    closeScanLog();
 
     const workspaceRoot = process.cwd();
     printReport(results, workspaceRoot, argv['full-reasons']);

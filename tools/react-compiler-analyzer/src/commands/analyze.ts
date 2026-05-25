@@ -6,7 +6,7 @@ import { applyAnnotations } from '../coverage-fixer';
 import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
 import { discoverAllFiles, findPackageName } from '../discovery';
 import type { AnnotateMode, CompilationMode, FileEntry } from '../types';
-import { sharedOptions, validateConcurrency, validatePaths } from './shared';
+import { closeScanLog, openScanLog, sharedOptions, validateConcurrency, validatePaths } from './shared';
 
 type AnalyzeArgv = {
   paths: string[];
@@ -34,6 +34,8 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
 
     console.log('━━ React Compiler Analysis ━━\n');
 
+    openScanLog('Scan & compile log');
+
     const files: FileEntry[] = [];
 
     for (const resolvedPath of resolvedPaths) {
@@ -48,6 +50,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
     }
 
     if (files.length === 0) {
+      closeScanLog();
       console.log('No TypeScript files found.');
       process.exit(0);
     }
@@ -60,6 +63,8 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       verbose: argv.verbose,
       compilationMode: argv.mode,
     });
+
+    closeScanLog();
 
     // Derive coverage from compilation results
     const coverageResults = compilationResults.flatMap(deriveCoverage);

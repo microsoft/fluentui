@@ -80,3 +80,25 @@ export function validateConcurrency(concurrency: number): void {
     process.exit(1);
   }
 }
+
+/**
+ * Open a collapsible `<details>` block wrapping all scan + compile output.
+ * Pair with `closeScanLog()` after the last compilation pass completes.
+ *
+ * The blank line after `<summary>` is required so GitHub-flavored markdown
+ * renders the inner content as markdown (headings, lists) instead of inline HTML.
+ */
+export function openScanLog(title: string): void {
+  console.log('<details>');
+  console.log(`<summary>📋 ${title}</summary>`);
+  console.log('');
+}
+
+/**
+ * Close the `<details>` block opened by `openScanLog()`.
+ */
+export function closeScanLog(): void {
+  console.log('');
+  console.log('</details>');
+  console.log('');
+}

@@ -3,10 +3,11 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 
 import { compileFile, compileFiles } from '../compiler';
+import { analyzeCommand } from '../commands/analyze';
+import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, findPackageName } from '../discovery';
-import { DEFAULT_EXCLUDE } from '../commands/shared';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 
@@ -255,5 +256,83 @@ describe('multi-path analyze', () => {
       expect(modifiedA).toContain("'use memo'");
       expect(modifiedB).toContain("'use memo'");
     }
+  });
+});
+
+describe('analyze command — scan log wrapping', () => {
+  let tempDir: string;
+  let originalLog: typeof console.log;
+  let originalExit: typeof process.exit;
+  let captured: string[];
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), 'analyze-wrap-test-'));
+    mkdirSync(join(tempDir, 'src'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'wrap-test-pkg' }));
+    writeFileSync(join(tempDir, 'src', 'A.tsx'), `export function A() { return <div />; }\n`);
+
+    captured = [];
+    originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    originalExit = process.exit;
+    process.exit = ((_code?: number) => undefined) as never;
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+    process.exit = originalExit;
+  });
+
+  it('wraps scan + compile output in a single <details> block', async () => {
+    await analyzeCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    const openIdx = captured.indexOf('<details>');
+    const closeIdx = captured.indexOf('</details>');
+
+    // exactly one wrapper, properly ordered
+    expect(openIdx).toBeGreaterThanOrEqual(0);
+    expect(closeIdx).toBeGreaterThan(openIdx);
+    expect(captured.filter(l => l === '<details>')).toHaveLength(1);
+    expect(captured.filter(l => l === '</details>')).toHaveLength(1);
+
+    // banner before, report content after
+    expect(captured.slice(0, openIdx).some(l => l.includes('React Compiler Analysis'))).toBe(true);
+    expect(captured.slice(closeIdx + 1).join('\n')).toMatch(/Coverage|Migration|Summary/);
+
+    // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
+    const wrapper = captured
+      .slice(openIdx, closeIdx + 1)
+      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .join('\n');
+
+    expect(wrapper).toMatchInlineSnapshot(`
+      "<details>
+      <summary>📋 Scan & compile log</summary>
+
+      ## Scanning: <TEMP>
+         Package: wrap-test-pkg
+         Mode: infer
+
+        Found 1 TypeScript files in <TEMP>
+      Files to analyze: 1
+
+      Analyzing: <TEMP>/src/A.tsx
+        [CompileSuccess] <TEMP>/src/A.tsx fn@1:7 A
+
+      </details>"
+    `);
   });
 });
