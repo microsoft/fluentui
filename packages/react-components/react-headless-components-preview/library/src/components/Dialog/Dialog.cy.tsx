@@ -328,4 +328,60 @@ describe('Dialog', () => {
     cy.get('#close-first-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('not.exist');
   });
+
+  it('should render nested non-modal dialog in modal dialog accessibly', () => {
+    mount(
+      <Dialog modalType="modal">
+        <DialogTrigger>
+          <Button id="open-outer-dialog-btn">Open outer dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Outer dialog title</DialogTitle>
+            <Dialog modalType="non-modal">
+              <DialogTrigger>
+                <Button id="open-inner-dialog-btn">Open inner dialog</Button>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Inner non-modal dialog title</DialogTitle>
+                  <Button id="inner-non-modal-action">Inner action</Button>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+
+    cy.get('dialog[data-modal-type="modal"]').should('not.exist');
+    cy.get('dialog[data-modal-type="non-modal"]').should('not.exist');
+
+    cy.get('#open-outer-dialog-btn').realClick();
+    cy.get('dialog[data-modal-type="modal"]').should('have.length', 1);
+    cy.get('dialog[data-modal-type="non-modal"]').should('not.exist');
+
+    cy.get('#open-inner-dialog-btn').realClick();
+    cy.get('dialog[data-modal-type="non-modal"]').should('have.length', 1);
+
+    // Outer dialog should be modal and have an accessible name from title linkage.
+    cy.contains('h2', 'Outer dialog title')
+      .invoke('attr', 'id')
+      .then(outerTitleId => {
+        cy.get('dialog[data-modal-type="modal"]').should('have.attr', 'aria-modal', 'true');
+        cy.get('dialog[data-modal-type="modal"]').should('have.attr', 'aria-labelledby', outerTitleId);
+      });
+
+    // Inner dialog should be non-modal, remain non-aria-modal, and expose title linkage.
+    cy.contains('h2', 'Inner non-modal dialog title')
+      .invoke('attr', 'id')
+      .then(innerTitleId => {
+        cy.get('dialog[data-modal-type="non-modal"]').should('not.have.attr', 'aria-modal');
+        cy.get('dialog[data-modal-type="non-modal"]').should('have.attr', 'aria-labelledby', innerTitleId);
+      });
+
+    cy.get('#inner-non-modal-action').should('exist');
+    cy.get('dialog[data-modal-type="modal"]').should('have.length', 1);
+    cy.get('dialog[data-modal-type="non-modal"]').should('have.length', 1);
+  });
 });
