@@ -7,8 +7,7 @@ import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTr
 import type { DialogProps, DialogSurfaceProps } from '.';
 import { Button } from '../Button';
 import { Provider } from '../Provider';
-// TODO: replace with headless alternatives when available
-import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
+import { Popover, PopoverSurface, PopoverTrigger } from '../Popover';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 
@@ -254,6 +253,51 @@ describe('Dialog', () => {
     });
   });
 
+  describe('backdrop click (modal)', () => {
+    it('should close when the backdrop is clicked', () => {
+      mount(<BasicDialog modalType="modal" surfaceProps={{ id: 'dialog-surface' }} />);
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogSurfaceSelector).should('exist');
+
+      cy.get(dialogSurfaceSelector).realClick({ x: -10, y: -10 });
+      cy.get(dialogSurfaceSelector).should('not.exist');
+    });
+
+    it('should not close when a descendant button receives a keyboard click', () => {
+      mount(<BasicDialog modalType="modal" />);
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogPrimaryButtonSelector).focus().realType('{enter}');
+      cy.get(dialogSurfaceSelector).should('exist');
+    });
+
+    it('should not close when clicking inside a portaled Popover descendant', () => {
+      mount(
+        <Dialog modalType="modal">
+          <DialogTrigger>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogBody>
+              <DialogTitle>Dialog title</DialogTitle>
+              <Popover>
+                <PopoverTrigger disableButtonEnhancement>
+                  <Button id="popover-trigger-btn">Toggle popover</Button>
+                </PopoverTrigger>
+                <PopoverSurface aria-label="popover">
+                  <Button id="popover-inner-btn">Inner action</Button>
+                </PopoverSurface>
+              </Popover>
+            </DialogBody>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#popover-trigger-btn').realClick();
+      cy.get('#popover-inner-btn').should('be.visible').realClick();
+      cy.get(dialogSurfaceSelector).should('exist');
+    });
+  });
+
   describe('modalType = non-modal', () => {
     it('should be able to focus inside non-modal dialog after navigating outside', () => {
       mount(
@@ -321,10 +365,7 @@ describe('Dialog', () => {
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#open-second-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('have.length', 2);
-    // Use Escape to close only the top-most nested dialog.
-    // Clicking inside nested modal dialogs can be interpreted as a backdrop click
-    // by the parent native <dialog> in some browsers.
-    cy.get('#close-second-dialog-btn').should('exist').focus().realType('{esc}');
+    cy.get('#close-second-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#close-first-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('not.exist');
