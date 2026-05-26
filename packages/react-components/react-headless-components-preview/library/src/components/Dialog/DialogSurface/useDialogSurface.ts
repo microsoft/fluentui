@@ -68,6 +68,8 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
           if (isPopoverOpen) {
             dialog.hidePopover();
           }
+        } else if (dialog.open) {
+          dialog.close();
         }
 
         const elementToFocus = previouslyFocusedElement.current;
