@@ -37,7 +37,7 @@ type BaseHookFunction = TSESTree.FunctionDeclaration | TSESTree.FunctionExpressi
 
 type Options = [];
 
-type MessageIds = 'invalidParamCount' | 'invalidParamName' | 'invalidRefType';
+type MessageIds = 'invalidParamCount' | 'invalidParamName' | 'invalidRefType' | 'missingPropsType';
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
@@ -45,7 +45,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     type: 'problem',
     docs: {
       description:
-        'Enforce the API contract for v9 "base" hooks (`use<Name>Base_unstable`) and their paired wrapping state hooks (`use<Name>_unstable` declared in the same file or a sibling component-folder file): a required `props` parameter and an optional `ref` parameter typed as `React.Ref<...>`.',
+        'Enforce the API contract for v9 "base" hooks (`use<Name>Base_unstable`) and their paired wrapping state hooks (`use<Name>_unstable` declared in the same file or a sibling component-folder file): a required `props` parameter (with an explicit type annotation, otherwise TypeScript infers `any`) and an optional `ref` parameter typed as `React.Ref<...>`.',
     },
     schema: [],
     messages: {
@@ -53,6 +53,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         'Hook `{{hookName}}` must take 1 or 2 positional parameters (`props`, optional `ref`), got {{actual}}.',
       invalidParamName:
         'Hook `{{hookName}}` parameter #{{index}} must be named `{{expected}}` (Identifier), got `{{actual}}`.',
+      missingPropsType:
+        'Hook `{{hookName}}` parameter `props` must have an explicit type annotation; otherwise TypeScript infers `any` and fails under `noImplicitAny`.',
       invalidRefType: 'Hook `{{hookName}}` parameter `ref` must be typed as `React.Ref<...>`, got `{{actual}}`.',
     },
   },
@@ -83,6 +85,16 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
             node: reportNode,
             messageId: 'invalidParamName',
             data: { hookName, index: index + 1, expected, actual: describeParam(param) },
+          });
+          return;
+        }
+        if (index === 0 && !param.typeAnnotation) {
+          // `props` without a type annotation is inferred as `any` and fails under `noImplicitAny`.
+          // The shape of the type is intentionally not validated here — we only require one to exist.
+          context.report({
+            node: reportNode,
+            messageId: 'missingPropsType',
+            data: { hookName },
           });
           return;
         }

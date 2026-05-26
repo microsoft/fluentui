@@ -29,7 +29,7 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         import * as React from 'react';
-        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+        export const useThingBase_unstable = (props: {}, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
       `,
@@ -38,7 +38,7 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         import { Ref } from 'react';
-        export function useThingBase_unstable(props, ref: Ref<HTMLElement>) {
+        export function useThingBase_unstable(props: {}, ref: Ref<HTMLElement>) {
           return { props, ref };
         }
       `,
@@ -47,15 +47,15 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         import React from 'react';
-        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+        export const useThingBase_unstable = (props: {}, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
       `,
     },
-    // Valid base hook with only \`props\` (ref is optional).
+    // Valid base hook with only \`props\` (ref is optional). \`props\` still needs a type annotation.
     {
       code: `
-        export const useThingBase_unstable = (props) => {
+        export const useThingBase_unstable = (props: {}) => {
           return { props };
         };
       `,
@@ -73,10 +73,10 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         import * as React from 'react';
-        export const useThing_unstable = (props, ref: React.Ref<HTMLElement>) => {
+        export const useThing_unstable = (props: {}, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
-        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+        export const useThingBase_unstable = (props: {}, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
       `,
@@ -98,7 +98,7 @@ ruleTester.run(RULE_NAME, rule, {
       filename: SIBLING_FILENAME,
       code: `
         import * as React from 'react';
-        export const useSibling_unstable = (props, ref: React.Ref<HTMLElement>) => {
+        export const useSibling_unstable = (props: {}, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
       `,
@@ -148,10 +148,11 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
-    // \`ref\` parameter without a type annotation.
+    // \`ref\` parameter without a type annotation. \`props\` is typed so this case stays focused
+    // on the ref-type assertion (an untyped \`props\` would also trigger \`missingPropsType\`).
     {
       code: `
-        export const useThingBase_unstable = (props, ref) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref) => ({ props, ref });
       `,
       errors: [
         {
@@ -163,7 +164,7 @@ ruleTester.run(RULE_NAME, rule, {
     // \`ref\` parameter typed as something other than React.Ref.
     {
       code: `
-        export const useThingBase_unstable = (props, ref: HTMLElement) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref: HTMLElement) => ({ props, ref });
       `,
       errors: [
         {
@@ -175,7 +176,7 @@ ruleTester.run(RULE_NAME, rule, {
     // \`ref\` parameter typed as React.ForwardedRef (must be React.Ref).
     {
       code: `
-        export const useThingBase_unstable = (props, ref: React.ForwardedRef<HTMLElement>) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref: React.ForwardedRef<HTMLElement>) => ({ props, ref });
       `,
       errors: [
         {
@@ -188,7 +189,7 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         type Ref<T> = { current: T | null };
-        export const useThingBase_unstable = (props, ref: Ref<HTMLElement>) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref: Ref<HTMLElement>) => ({ props, ref });
       `,
       errors: [
         {
@@ -201,7 +202,7 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         import { Ref } from 'not-react';
-        export const useThingBase_unstable = (props, ref: Ref<HTMLElement>) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref: Ref<HTMLElement>) => ({ props, ref });
       `,
       errors: [
         {
@@ -214,7 +215,7 @@ ruleTester.run(RULE_NAME, rule, {
     {
       code: `
         const React = { Ref: null };
-        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref: React.Ref<HTMLElement>) => ({ props, ref });
       `,
       errors: [
         {
@@ -224,12 +225,13 @@ ruleTester.run(RULE_NAME, rule, {
       ],
     },
     // Pair detection (same file): wrapping state hook with too many params is flagged because
-    // its sibling base hook in the same file marks it as a paired wrapper.
+    // its sibling base hook in the same file marks it as a paired wrapper. The base hook itself
+    // is correctly typed so only the wrapping hook's error is asserted.
     {
       code: `
         import * as React from 'react';
         export const useThing_unstable = (props, ref, extra) => ({ props, ref, extra });
-        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+        export const useThingBase_unstable = (props: {}, ref: React.Ref<HTMLElement>) => ({ props, ref });
       `,
       errors: [{ messageId: 'invalidParamCount', data: { hookName: 'useThing_unstable', actual: 3 } }],
     },
@@ -251,6 +253,24 @@ ruleTester.run(RULE_NAME, rule, {
           data: { hookName: 'useSibling_unstable', index: 2, expected: 'ref', actual: 'r' },
         },
       ],
+    },
+    // \`props\` parameter without a type annotation (would be inferred as \`any\` and fail
+    // \`noImplicitAny\` under TS strict). Asserted on a base hook with only \`props\`.
+    {
+      code: `
+        export const useThingBase_unstable = (props) => ({ props });
+      `,
+      errors: [{ messageId: 'missingPropsType', data: { hookName: 'useThingBase_unstable' } }],
+    },
+    // \`props\` without type annotation, even when a correctly-typed \`ref\` is present.
+    // Demonstrates that the \`props\`-type check short-circuits before the \`ref\` check, so the
+    // user sees the more fundamental problem first.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [{ messageId: 'missingPropsType', data: { hookName: 'useThingBase_unstable' } }],
     },
   ],
 });
