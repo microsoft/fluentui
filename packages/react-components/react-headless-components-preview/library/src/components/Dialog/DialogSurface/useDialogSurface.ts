@@ -159,17 +159,23 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   // Backdrop click is detected by checking clicks outside the dialog rect.
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDialogElement>) => {
     props.onClick?.(event);
-    if (modalType === 'modal' && !event.isDefaultPrevented()) {
-      const rect = event.currentTarget.getBoundingClientRect();
-      const isBackdropClick =
-        event.clientX < rect.left ||
-        event.clientX > rect.right ||
-        event.clientY < rect.top ||
-        event.clientY > rect.bottom;
+    if (modalType !== 'modal' || event.isDefaultPrevented()) {
+      return;
+    }
 
-      if (isBackdropClick) {
-        requestOpenChange({ type: 'backdropClick', open: false, event });
-      }
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const isBackdropClick =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (isBackdropClick) {
+      requestOpenChange({ type: 'backdropClick', open: false, event });
     }
   });
 

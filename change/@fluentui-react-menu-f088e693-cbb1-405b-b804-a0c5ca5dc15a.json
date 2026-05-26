@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: extract useMenuItemBase_unstable into a separate module",
-  "packageName": "@fluentui/react-menu",
-  "email": "viktorgenaev@microsoft.com",
-  "dependentChangeType": "patch"
-}

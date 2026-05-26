@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 23 Apr 2026 14:20:56 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.0)
+
+Tue, 26 May 2026 09:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.8..@fluentui/react-components_v9.74.0)
+
+### Minor changes
+
+- `@fluentui/react-tags`
+  - feat: export contexts for headless ([PR #36229](https://github.com/microsoft/fluentui/pull/36229) by vgenaev@gmail.com)
+- `@fluentui/react-teaching-popover`
+  - feat: export base hooks ([PR #36200](https://github.com/microsoft/fluentui/pull/36200) by viktorgenaev@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: expose react-menu base hooks ([PR #36087](https://github.com/microsoft/fluentui/pull/36087) by vgenaev@gmail.com)
+- `@fluentui/react-motion`
+  - feat(react-motion): add replayKey prop to replay motion without remounting ([PR #36108](https://github.com/microsoft/fluentui/pull/36108) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add base hooks and expose them ([PR #35812](https://github.com/microsoft/fluentui/pull/35812) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: fix after broken release ([PR #36037](https://github.com/microsoft/fluentui/pull/36037) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - Make Card base hooks tabster-free; expose shouldRestrictTriggerAction on CardBaseProps ([PR #36004](https://github.com/microsoft/fluentui/pull/36004) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - feat: re-export motionSlot and presenceMotionSlot from @fluentui/react-motion ([PR #35922](https://github.com/microsoft/fluentui/pull/35922) by robertpenner@microsoft.com)
+  - feat: re-export OverflowReorderObserver from @fluentui/react-overflow ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: expose inline drawer types and base hooks ([PR #36042](https://github.com/microsoft/fluentui/pull/36042) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: bump tabster to ^8.8.0 and keyborg to ^2.14.1 ([PR #36082](https://github.com/microsoft/fluentui/pull/36082) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tooltip`
+  - fix: dismiss Tooltip when the document becomes hidden (e.g. tab backgrounded or app switched on mobile) ([PR #36023](https://github.com/microsoft/fluentui/pull/36023) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tree`
+  - fix(react-tree): support indentation for TreeItem levels greater than 10 via inline CSS variable fallback ([PR #36014](https://github.com/microsoft/fluentui/pull/36014) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-utilities`
+  - style: replace deprecated assertion syntax that causes issues to babel tsx ([PR #36185](https://github.com/microsoft/fluentui/pull/36185) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(Menu): Menu item with expanded submenu should be highlighted ([PR #36098](https://github.com/microsoft/fluentui/pull/36098) by jukapsia@microsoft.com)
+  - fix: update useMenuTriggerBase hook signature ([PR #36237](https://github.com/microsoft/fluentui/pull/36237) by dmytrokirpa@microsoft.com)
+  - feat: add headless Menu components ([PR #36110](https://github.com/microsoft/fluentui/pull/36110) by vgenaev@gmail.com)
+  - chore: extract useMenuItemBase_unstable into a separate module ([PR #36234](https://github.com/microsoft/fluentui/pull/36234) by viktorgenaev@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: close Popover when focus escapes outside while trapFocus is enabled ([PR #35995](https://github.com/microsoft/fluentui/pull/35995) by petrduda@microsoft.com)
+- `@fluentui/react-portal`
+  - revert: revert removal of Griffel dependency from usePortalMount #35994 ([PR #36235](https://github.com/microsoft/fluentui/pull/36235) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - fix: avoid pulling griffel in CardHeader and CardPreview base hooks ([PR #36194](https://github.com/microsoft/fluentui/pull/36194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - refactor: move isSafeUrl to chart-utilities package and update imports ([PR #36206](https://github.com/microsoft/fluentui/pull/36206) by dmytrokirpa@microsoft.com)
+  - safeurl related bug fix ([PR #36121](https://github.com/microsoft/fluentui/pull/36121) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-combobox`
+  - fix(Option): when disabled, hover styles should not show ([PR #36077](https://github.com/microsoft/fluentui/pull/36077) by sarah.higley@microsoft.com)
+  - fix: use role attribute instead of classname for active descendant ([PR #36109](https://github.com/microsoft/fluentui/pull/36109) by dmytrokirpa@microsoft.com)
 
 ## [9.73.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.8)
 

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Thu, 23 Apr 2026 14:21:00 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.2)
+
+Tue, 26 May 2026 09:39:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.17.1..@fluentui/react-combobox_v9.17.2)
+
+### Patches
+
+- fix(Option): when disabled, hover styles should not show ([PR #36077](https://github.com/microsoft/fluentui/pull/36077) by sarah.higley@microsoft.com)
+- fix: use role attribute instead of classname for active descendant ([PR #36109](https://github.com/microsoft/fluentui/pull/36109) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.12 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-field to v9.5.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-portal to v9.8.13 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-positioning to v9.22.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.1)
 

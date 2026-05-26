@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "style: replace deprecated assertion syntax that causes issues to babel tsx",
-  "packageName": "@fluentui/react-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
