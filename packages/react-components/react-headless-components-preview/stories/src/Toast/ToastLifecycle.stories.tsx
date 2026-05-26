@@ -11,7 +11,7 @@ import type { ToastStatus } from '@fluentui/react-headless-components-preview/to
 import styles from './toast.module.css';
 
 export const ToastLifecycle = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'toast-lifecycle-toaster';
   const { dispatchToast } = useToastController(toasterId);
   const [statusLog, setStatusLog] = React.useState<[number, ToastStatus][]>([]);
   const [dismissed, setDismissed] = React.useState(true);

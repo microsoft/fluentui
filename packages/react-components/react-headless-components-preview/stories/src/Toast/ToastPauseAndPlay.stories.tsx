@@ -3,7 +3,7 @@ import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-
 import styles from './toast.module.css';
 
 export const PauseAndPlay = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'pause-play-toaster';
   const toastId = `pause-play-${toasterId}`;
   const [unmounted, setUnmounted] = React.useState(true);
   const [paused, setPaused] = React.useState(false);

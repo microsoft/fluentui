@@ -10,7 +10,7 @@ import {
 import styles from './toast.module.css';
 
 export const Default = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'default-toaster';
   const { dispatchToast } = useToastController(toasterId);
 
   const notify = () =>

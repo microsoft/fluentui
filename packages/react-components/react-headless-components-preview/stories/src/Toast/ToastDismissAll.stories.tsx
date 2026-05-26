@@ -3,7 +3,7 @@ import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-
 import styles from './toast.module.css';
 
 export const DismissAll = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'dismiss-all-toaster';
   const { dispatchToast, dismissAllToasts } = useToastController(toasterId);
 
   const notify = () =>

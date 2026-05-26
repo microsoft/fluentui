@@ -3,7 +3,7 @@ import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-
 import styles from './toast.module.css';
 
 export const PauseOnHover = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'pause-on-hover-toaster';
   const { dispatchToast } = useToastController(toasterId);
 
   const notify = () =>

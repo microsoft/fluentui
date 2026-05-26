@@ -41,7 +41,7 @@ const getIntentClass = (intent: ToastIntent): string => {
 };
 
 export const Intent = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'intent-toaster';
   const { dispatchToast } = useToastController(toasterId);
   const [intent, setIntent] = React.useState<ToastIntent>('success');
 

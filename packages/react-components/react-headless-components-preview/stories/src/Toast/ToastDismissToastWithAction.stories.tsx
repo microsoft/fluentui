@@ -22,7 +22,7 @@ const DismissButton = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const DismissToastWithAction = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'dismiss-toast-with-action-toaster';
   const { dispatchToast } = useToastController(toasterId);
 
   const notify = () =>

@@ -3,7 +3,7 @@ import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-
 import styles from './toast.module.css';
 
 export const UpdateToast = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'update-toast-toaster';
   const toastId = `update-example-${toasterId}`;
   const [unmounted, setUnmounted] = React.useState(true);
   const { dispatchToast, updateToast } = useToastController(toasterId);

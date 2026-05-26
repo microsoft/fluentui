@@ -39,7 +39,7 @@ const DownloadProgressBar: React.FC<{ onDownloadEnd: () => void }> = ({ onDownlo
 };
 
 export const ProgressToast = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'progress-toaster';
   const toastId = `progress-${toasterId}`;
   const [unmounted, setUnmounted] = React.useState(true);
   const { dispatchToast, dismissToast } = useToastController(toasterId);

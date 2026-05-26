@@ -18,7 +18,7 @@ const DismissButton = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const CustomTimeout = (): React.ReactNode => {
-  const toasterId = React.useId();
+  const toasterId = 'custom-timeout-toaster';
   const { dispatchToast } = useToastController(toasterId);
   const [timeout, setDismissTimeout] = React.useState(1000);
 

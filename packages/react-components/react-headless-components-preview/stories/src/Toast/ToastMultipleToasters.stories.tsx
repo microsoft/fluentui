@@ -3,8 +3,8 @@ import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-
 import styles from './toast.module.css';
 
 export const MultipleToasters = (): React.ReactNode => {
-  const firstId = React.useId();
-  const secondId = React.useId();
+  const firstId = 'first-toaster';
+  const secondId = 'second-toaster';
   const [toaster, setToaster] = React.useState<'first' | 'second'>('first');
   const { dispatchToast: dispatchFirst } = useToastController(firstId);
   const { dispatchToast: dispatchSecond } = useToastController(secondId);

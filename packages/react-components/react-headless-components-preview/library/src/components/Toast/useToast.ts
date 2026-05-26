@@ -11,6 +11,7 @@ import type { ToastProps, ToastState } from './Toast.types';
 export const useToast = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
   const state: ToastState = useToastBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = state.intent;
 
   return state;
