@@ -1,6 +1,7 @@
 {
   "type": "minor",
-  "comment": "feat: add useToastBase_unstable, useToastTitleBase_unstable, useToastBodyBase_unstable hooks and export state/announce primitives (useToaster, useToastAnnounce, ToastAnnounce, ToastAnnounceOptions, ToastLiveMessage, ToasterId, ToasterOptions, ToasterShortcuts, ToastImperativeRef, ToastData, ToastChangeData, ToastChangeHandler, ToastOptions, DispatchToastOptions, UpdateToastOptions, UpdateToastEventDetail) for headless composition",
+
+  "comment": "feat: export toast base hooks and types",
   "packageName": "@fluentui/react-toast",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
