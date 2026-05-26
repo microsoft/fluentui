@@ -155,6 +155,8 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
 // @public (undocumented)
 export type TeachingPopoverCarouselFooterSlots = {
     root: NonNullable<Slot<'div'>>;
+    previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
+    next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
 };
 
 // @public (undocumented)
@@ -231,7 +233,7 @@ export type TeachingPopoverSurfaceProps = ComponentProps<TeachingPopoverSurfaceS
 
 // @public
 export type TeachingPopoverSurfaceSlots = {
-    root: Slot<'div'>;
+    root: Slot<'dialog'>;
 };
 
 // @public (undocumented)
@@ -298,7 +300,7 @@ export { useTeachingPopoverFooter }
 export { useTeachingPopoverHeader }
 
 // @public
-export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverSurfaceState;
+export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => TeachingPopoverSurfaceState;
 
 export { useTeachingPopoverTitle }
 

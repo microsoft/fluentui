@@ -71,8 +71,9 @@ export const WithCarousel = (): React.ReactNode => (
 
           <TeachingPopoverCarouselFooter
             className={styles.carouselFooter}
-            previous={{ altText: 'Back', className: styles.actionButton, children: 'Back' }}
+            previous={{ navType: 'prev', altText: 'Back', className: styles.actionButton, children: 'Back' }}
             next={{
+              navType: 'next',
               altText: 'Done',
               className: `${styles.actionButton} ${styles.actionButtonPrimary}`,
               children: 'Next',
