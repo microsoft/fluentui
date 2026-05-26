@@ -5,6 +5,12 @@ export type { TagGroupBaseProps as TagGroupProps, TagGroupSlots } from '@fluentu
 export type TagGroupState = TagGroupBaseState & {
   root: {
     /**
+     * Native WICG `focusgroup` attribute for arrow-key navigation across tags.
+     * Defaults to `'toolbar inline wrap'`.
+     */
+    focusgroup?: string;
+
+    /**
      * Data attribute set when the group is disabled.
      */
     'data-disabled'?: string;

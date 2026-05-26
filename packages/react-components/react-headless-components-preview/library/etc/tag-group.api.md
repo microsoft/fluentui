@@ -29,6 +29,7 @@ export { TagGroupSlots }
 // @public (undocumented)
 export type TagGroupState = TagGroupBaseState & {
     root: {
+        focusgroup?: string;
         'data-disabled'?: string;
         'data-dismissible'?: string;
     };

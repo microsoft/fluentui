@@ -13,7 +13,8 @@ import { stringifyDataAttribute } from '../../utils';
 export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   const state: TagGroupState = useTagGroupBase_unstable(props, ref);
 
-  /* eslint-disable react-hooks/immutability -- intentional: decorate base state with data-* attrs for styling */
+  /* eslint-disable react-hooks/immutability -- intentional: decorate base state with focusgroup + data-* attrs */
+  state.root.focusgroup = 'toolbar inline wrap';
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
   state.root['data-dismissible'] = stringifyDataAttribute(state.dismissible);
   /* eslint-enable react-hooks/immutability */

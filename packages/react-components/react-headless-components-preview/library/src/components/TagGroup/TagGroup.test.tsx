@@ -34,6 +34,15 @@ describe('TagGroup', () => {
     expect(getByRole('toolbar')).toHaveAttribute('data-disabled');
   });
 
+  it('sets the focusgroup attribute on root for arrow-key navigation', () => {
+    const { getByRole } = render(
+      <TagGroup>
+        <Tag value="1">tag</Tag>
+      </TagGroup>,
+    );
+    expect(getByRole('toolbar')).toHaveAttribute('focusgroup', 'toolbar inline wrap');
+  });
+
   it('does NOT spread Tabster arrow-navigation attributes onto root (headless)', () => {
     const { getByRole } = render(
       <TagGroup>
