@@ -1,11 +1,5 @@
-import type {
-  TeachingPopoverHeaderBaseProps,
-  TeachingPopoverHeaderBaseState,
+export type {
+  TeachingPopoverHeaderBaseProps as TeachingPopoverHeaderProps,
+  TeachingPopoverHeaderBaseState as TeachingPopoverHeaderState,
   TeachingPopoverHeaderSlots,
 } from '@fluentui/react-teaching-popover';
-
-export type TeachingPopoverHeaderProps = TeachingPopoverHeaderBaseProps;
-
-export type TeachingPopoverHeaderState = TeachingPopoverHeaderBaseState;
-
-export type { TeachingPopoverHeaderSlots };

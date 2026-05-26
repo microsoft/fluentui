@@ -6,7 +6,6 @@ import {
   TeachingPopoverCarousel,
   TeachingPopoverCarouselCard,
   TeachingPopoverCarouselFooter,
-  TeachingPopoverCarouselFooterButton,
   TeachingPopoverCarouselNav,
   TeachingPopoverCarouselNavButton,
   TeachingPopoverCarouselPageCount,
@@ -70,10 +69,15 @@ export const WithCarousel = (): React.ReactNode => (
             </TeachingPopoverBody>
           </TeachingPopoverCarouselCard>
 
-          <TeachingPopoverCarouselFooter className={styles.carouselFooter}>
-            <TeachingPopoverCarouselFooterButton navType="prev" altText="Back" className={styles.actionButton}>
-              Back
-            </TeachingPopoverCarouselFooterButton>
+          <TeachingPopoverCarouselFooter
+            className={styles.carouselFooter}
+            previous={{ altText: 'Back', className: styles.actionButton, children: 'Back' }}
+            next={{
+              altText: 'Done',
+              className: `${styles.actionButton} ${styles.actionButtonPrimary}`,
+              children: 'Next',
+            }}
+          >
             <TeachingPopoverCarouselNav className={styles.carouselNav}>
               {(value: string) => (
                 <TeachingPopoverCarouselNavButton aria-label={`Go to ${value}`} className={styles.carouselNavButton} />
@@ -82,13 +86,6 @@ export const WithCarousel = (): React.ReactNode => (
             <TeachingPopoverCarouselPageCount className={styles.pageCount}>
               {(current, total) => `${current} / ${total}`}
             </TeachingPopoverCarouselPageCount>
-            <TeachingPopoverCarouselFooterButton
-              navType="next"
-              altText="Done"
-              className={`${styles.actionButton} ${styles.actionButtonPrimary}`}
-            >
-              Next
-            </TeachingPopoverCarouselFooterButton>
           </TeachingPopoverCarouselFooter>
         </div>
       </TeachingPopoverCarousel>

@@ -10,5 +10,11 @@ import type {
 export const renderTeachingPopoverCarouselFooter = (state: TeachingPopoverCarouselFooterState): JSXElement => {
   assertSlots<TeachingPopoverCarouselFooterSlots>(state);
 
-  return <state.root />;
+  return (
+    <state.root>
+      {state.previous && <state.previous />}
+      {state.root.children}
+      <state.next />
+    </state.root>
+  );
 };

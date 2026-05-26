@@ -42,14 +42,14 @@ import { TeachingPopoverCarouselPageCountState } from '@fluentui/react-teaching-
 import { TeachingPopoverCarouselBaseProps as TeachingPopoverCarouselProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselBaseState as TeachingPopoverCarouselState } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverFooterBaseProps } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverFooterBaseState } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverHeaderBaseProps } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverHeaderBaseState } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverHeaderSlots } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverTitleBaseProps } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverTitleBaseState } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverTitleSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterBaseProps as TeachingPopoverFooterProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterBaseState as TeachingPopoverFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderBaseProps as TeachingPopoverHeaderProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderBaseState as TeachingPopoverHeaderState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleBaseProps as TeachingPopoverTitleProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleBaseState as TeachingPopoverTitleState } from '@fluentui/react-teaching-popover';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import { useTeachingPopoverBody_unstable as useTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselBase_unstable as useTeachingPopoverCarousel } from '@fluentui/react-teaching-popover';
@@ -71,7 +71,7 @@ export const renderTeachingPopover: (state: TeachingPopoverState, contextValues:
 
 export { renderTeachingPopoverBody }
 
-// @public
+// @public (undocumented)
 export const renderTeachingPopoverCarousel: (state: TeachingPopoverCarouselState, contextValues: TeachingPopoverCarouselContextValues) => JSXElement;
 
 export { renderTeachingPopoverCarouselCard }
@@ -92,13 +92,13 @@ export { renderTeachingPopoverCarouselPageCount }
 // @public
 export const renderTeachingPopoverFooter: (state: TeachingPopoverFooterState) => JSXElement;
 
-// @public
+// @public (undocumented)
 export const renderTeachingPopoverHeader: (state: TeachingPopoverHeaderState) => JSXElement;
 
 // @public (undocumented)
 export const renderTeachingPopoverSurface: (state: TeachingPopoverSurfaceState) => JSXElement;
 
-// @public
+// @public (undocumented)
 export const renderTeachingPopoverTitle: (state: TeachingPopoverTitleState) => JSXElement;
 
 // @public
@@ -204,22 +204,18 @@ export type TeachingPopoverContextValues = {
 // @public (undocumented)
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
 
-// @public (undocumented)
-export type TeachingPopoverFooterProps = TeachingPopoverFooterBaseProps;
+export { TeachingPopoverFooterProps }
 
-// @public (undocumented)
-export type TeachingPopoverFooterState = TeachingPopoverFooterBaseState;
+export { TeachingPopoverFooterState }
 
 // @public (undocumented)
 export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps>;
 
-// @public (undocumented)
-export type TeachingPopoverHeaderProps = TeachingPopoverHeaderBaseProps;
+export { TeachingPopoverHeaderProps }
 
 export { TeachingPopoverHeaderSlots }
 
-// @public (undocumented)
-export type TeachingPopoverHeaderState = TeachingPopoverHeaderBaseState;
+export { TeachingPopoverHeaderState }
 
 // @public
 export type TeachingPopoverProps = PopoverProps;
@@ -248,13 +244,11 @@ export type TeachingPopoverSurfaceState = ComponentState<TeachingPopoverSurfaceS
 // @public (undocumented)
 export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps>;
 
-// @public (undocumented)
-export type TeachingPopoverTitleProps = TeachingPopoverTitleBaseProps;
+export { TeachingPopoverTitleProps }
 
 export { TeachingPopoverTitleSlots }
 
-// @public (undocumented)
-export type TeachingPopoverTitleState = TeachingPopoverTitleBaseState;
+export { TeachingPopoverTitleState }
 
 // @public
 export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
