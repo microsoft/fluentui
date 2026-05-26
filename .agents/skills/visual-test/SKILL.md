@@ -120,9 +120,6 @@ cd packages/react-components/react-<component>/stories && yarn storybook dev --p
 # --port 0 asks Storybook to pick a free port; detect it via the pgrep/lsof pattern above
 ```
 
-**The story loads but keeps reloading (`[HMR] Cannot find update (Full reload needed)`).**
-Same root cause — you're on the workspace-wide Storybook, which has HMR issues when preview packages rebuild. Kill it and use the per-component one.
-
 ## Story ID Pattern
 
 Story IDs follow the pattern `<category>-<component>--<story>`:
