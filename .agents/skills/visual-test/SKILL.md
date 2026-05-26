@@ -36,7 +36,6 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 
    ```bash
    yarn nx run react-<component>-stories:storybook &
-   NX_PID=$!
    ```
 
 3. **Find the storybook port.** Three quirks to know:
