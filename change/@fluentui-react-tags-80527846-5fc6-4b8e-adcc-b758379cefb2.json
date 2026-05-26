@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: decouple useTagGroupBase_unstable from Tabster for headless consumers",
-  "packageName": "@fluentui/react-tags",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
