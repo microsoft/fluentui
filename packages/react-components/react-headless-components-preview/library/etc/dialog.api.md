@@ -88,6 +88,10 @@ export type DialogOpenChangeData = {
     open: boolean;
     event: React_2.MouseEvent<HTMLDialogElement>;
 } | {
+    type: 'surfaceToggle';
+    open: boolean;
+    event: Event;
+} | {
     type: 'triggerClick';
     open: boolean;
     event: React_2.MouseEvent;

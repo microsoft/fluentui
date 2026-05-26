@@ -17,9 +17,11 @@ steps:
       # 👉 NOTE:
       # - we can use only versions that ship with container, otherwise we will run into nodejs installation issues.
       # - as 1es bumps those versions within container automatically we need to use `<major>.x` to not run into issues once they bump the versions.
+      # - `checkLatest: true` is required because some dependencies (e.g. @microsoft/fast-build) require node >=22.18.0,
+      #   while the 1ES container may still ship an older 22.x (e.g. 22.14.0). This forces the task to install the latest 22.x.
       # https://github.com/actions/runner-images/blob/ubuntu20/20230924.1/images/linux/Ubuntu2004-Readme.md#nodejs
       version: '22.x'
-      checkLatest: false
+      checkLatest: true
     displayName: 'Install Node.js'
     retryCountOnTaskFailure: 1
 

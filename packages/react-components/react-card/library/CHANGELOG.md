@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 23 Apr 2026 14:21:18 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.7.0)
+
+Tue, 26 May 2026 09:39:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.6.1..@fluentui/react-card_v9.7.0)
+
+### Minor changes
+
+- Make Card base hooks tabster-free; expose shouldRestrictTriggerAction on CardBaseProps ([PR #36004](https://github.com/microsoft/fluentui/pull/36004) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-text to v9.6.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+### Patches
+
+- fix: avoid pulling griffel in CardHeader and CardPreview base hooks ([PR #36194](https://github.com/microsoft/fluentui/pull/36194) by dmytrokirpa@microsoft.com)
 
 ## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.6.1)
 
