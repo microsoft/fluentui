@@ -279,6 +279,28 @@ describe('Dialog', () => {
       cy.get(dialogPrimaryButtonSelector).realClick().should('be.focused').realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
+
+    it('should move focus into dialog when Tab is pressed after clicking dialog surface', () => {
+      mount(
+        <>
+          <BasicDialog
+            modalType="non-modal"
+            surfaceProps={{
+              style: { position: 'fixed', top: 'auto', bottom: 0, right: 0, left: 'auto', margin: 0 },
+            }}
+          />
+          <Button id="extra-btn-outside">Button outside dialog</Button>
+        </>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#extra-btn-outside').realClick().should('be.focused');
+      // Click on the dialog surface itself (not on a focusable descendant).
+      // Focus lands on the <dialog> via its tabIndex=-1; pressing Tab should
+      // step into the dialog's first focusable descendant.
+      cy.get(dialogSurfaceElementSelector).realClick();
+      cy.realPress('Tab');
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
+    });
   });
 
   it('should allow nested dialogs', () => {

@@ -134,6 +134,25 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
       requestOpenChange({ type: 'escapeKeyDown', open: false, event });
       // Stop propagation to avoid closing parent dialogs simultaneously.
       event.stopPropagation();
+      return;
+    }
+
+    // When the non-modal surface itself is focused, move Tab to the first
+    // focusable descendant explicitly.
+    if (
+      modalType === 'non-modal' &&
+      event.key === 'Tab' &&
+      !event.shiftKey &&
+      !event.isDefaultPrevented() &&
+      event.target === event.currentTarget
+    ) {
+      const firstFocusable = event.currentTarget.querySelector<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (firstFocusable) {
+        event.preventDefault();
+        firstFocusable.focus();
+      }
     }
   });
 
