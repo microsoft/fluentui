@@ -6,9 +6,10 @@ import {
   useFluent_unstable as useFluent,
   usePortalMountNode as usePortalMountNodeContext,
 } from '@fluentui/react-shared-contexts';
+import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 
-import { usePortalMountNodeStyles } from './usePortalMountNodeStyles';
+import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
@@ -200,14 +201,16 @@ const useModernElementFactory: UseElementFactory = options => {
       return;
     }
 
-    elementProxy.setAttribute('class', className);
+    const classesToApply = className.split(' ').filter(Boolean);
+
+    elementProxy.classList.add(...classesToApply);
     elementProxy.setAttribute('dir', dir);
     elementProxy.setAttribute('data-portal-node', 'true');
 
     focusVisibleRef.current = elementProxy;
 
     return () => {
-      elementProxy.removeAttribute('class');
+      elementProxy.classList.remove(...classesToApply);
       elementProxy.removeAttribute('dir');
     };
   }, [className, dir, elementProxy, focusVisibleRef]);
@@ -243,6 +246,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
+  const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();
 
   const factoryOptions: UseElementFactoryOptions = {
@@ -250,11 +254,9 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     disabled: options.disabled,
     focusVisibleRef,
 
-    className: [themeClassName, options.className].filter(Boolean).join(' '),
+    className: mergeClasses(themeClassName, classes.root, options.className),
     targetNode: mountNode ?? targetDocument?.body,
   };
-
-  usePortalMountNodeStyles(options.disabled);
 
   return useElementFactory(factoryOptions);
 };

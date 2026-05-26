@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: expose inline drawer types and base hooks",
-  "packageName": "@fluentui/react-drawer",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -16,7 +16,7 @@ const dialogTriggerId = 'dialog-trigger';
 const dialogTriggerOpenId = `${dialogTriggerId}-open`;
 const dialogTriggerCloseId = `${dialogTriggerId}-close`;
 const dialogPrimaryButtonId = 'do-something-btn';
-const dialogSurfaceSelector = `dialog[open]`;
+const dialogSurfaceSelector = `dialog[data-open]`;
 const dialogSurfaceElementSelector = `dialog`;
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
 const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
@@ -254,16 +254,65 @@ describe('Dialog', () => {
     });
   });
 
+  describe('backdrop click (modal)', () => {
+    it('should close when the backdrop is clicked', () => {
+      // Constrain the dialog so that `realClick({ x: -10, y: -10 })` lands inside
+      // the iframe viewport — without explicit dimensions the dialog spans nearly
+      // the full 500px width and the negative-offset click would go off-screen.
+      mount(
+        <BasicDialog modalType="modal" surfaceProps={{ id: 'dialog-surface', style: { width: 200, height: 100 } }} />,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogSurfaceSelector).should('exist');
+
+      cy.get(dialogSurfaceSelector).realClick({ x: -10, y: -10 });
+      cy.get(dialogSurfaceSelector).should('not.exist');
+    });
+
+    it('should not close when a descendant button receives a keyboard click', () => {
+      mount(<BasicDialog modalType="modal" />);
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogPrimaryButtonSelector).focus().realType('{enter}');
+      cy.get(dialogSurfaceSelector).should('exist');
+    });
+
+    it('should not close when clicking inside a portaled Popover descendant', () => {
+      mount(
+        <Dialog modalType="modal">
+          <DialogTrigger>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogBody>
+              <DialogTitle>Dialog title</DialogTitle>
+              <Popover>
+                <PopoverTrigger disableButtonEnhancement>
+                  <Button id="popover-trigger-btn">Toggle popover</Button>
+                </PopoverTrigger>
+                <PopoverSurface aria-label="popover">
+                  <Button id="popover-inner-btn">Inner action</Button>
+                </PopoverSurface>
+              </Popover>
+            </DialogBody>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#popover-trigger-btn').realClick();
+      cy.get('#popover-inner-btn').should('be.visible').realClick();
+      cy.get(dialogSurfaceSelector).should('exist');
+    });
+  });
+
   describe('modalType = non-modal', () => {
     it('should be able to focus inside non-modal dialog after navigating outside', () => {
       mount(
         <>
           {/*
             The headless component ships no default styles. The UA stylesheet combined
-            with the portal mount node (`position: absolute; top: 0; left: 0; right: 0`)
-            pins the non-modal dialog to the top of the viewport, where it would overlap
-            and intercept clicks on the sibling "outside" button. Position it out of the
-            way so this test can verify focus behaviour rather than layout.
+            with top-layer placement can visually overlap the sibling "outside" button.
+            Position it out of the way so this test can verify focus behaviour rather
+            than layout.
           */}
           <BasicDialog
             modalType="non-modal"
@@ -279,6 +328,28 @@ describe('Dialog', () => {
       cy.get('#extra-btn-outside').realClick().should('be.focused');
       cy.get(dialogPrimaryButtonSelector).realClick().should('be.focused').realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
+    });
+
+    it('should move focus into dialog when Tab is pressed after clicking dialog surface', () => {
+      mount(
+        <>
+          <BasicDialog
+            modalType="non-modal"
+            surfaceProps={{
+              style: { position: 'fixed', top: 'auto', bottom: 0, right: 0, left: 'auto', margin: 0 },
+            }}
+          />
+          <Button id="extra-btn-outside">Button outside dialog</Button>
+        </>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get('#extra-btn-outside').realClick().should('be.focused');
+      // Click on the dialog surface itself (not on a focusable descendant).
+      // Focus lands on the <dialog> via its tabIndex=-1; pressing Tab should
+      // step into the dialog's first focusable descendant.
+      cy.get(dialogSurfaceElementSelector).realClick();
+      cy.realPress('Tab');
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
     });
   });
 
@@ -321,12 +392,65 @@ describe('Dialog', () => {
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#open-second-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('have.length', 2);
-    // Use Escape to close only the top-most nested dialog.
-    // Clicking inside nested modal dialogs can be interpreted as a backdrop click
-    // by the parent native <dialog> in some browsers.
-    cy.get('#close-second-dialog-btn').should('exist').focus().realType('{esc}');
+    cy.get('#close-second-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('have.length', 1);
     cy.get('#close-first-dialog-btn').should('exist').realClick();
     cy.get(dialogSurfaceSelector).should('not.exist');
+  });
+
+  it('should render nested non-modal dialog in modal dialog accessibly', () => {
+    mount(
+      <Dialog modalType="modal">
+        <DialogTrigger>
+          <Button id="open-outer-dialog-btn">Open outer dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Outer dialog title</DialogTitle>
+            <Dialog modalType="non-modal">
+              <DialogTrigger>
+                <Button id="open-inner-dialog-btn">Open inner dialog</Button>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogTitle>Inner non-modal dialog title</DialogTitle>
+                  <Button id="inner-non-modal-action">Inner action</Button>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+
+    cy.get('dialog[data-modal-type="modal"]').should('not.exist');
+    cy.get('dialog[data-modal-type="non-modal"]').should('not.exist');
+
+    cy.get('#open-outer-dialog-btn').realClick();
+    cy.get('dialog[data-modal-type="modal"]').should('have.length', 1);
+    cy.get('dialog[data-modal-type="non-modal"]').should('not.exist');
+
+    cy.get('#open-inner-dialog-btn').realClick();
+    cy.get('dialog[data-modal-type="non-modal"]').should('have.length', 1);
+
+    // Outer dialog should be modal and have an accessible name from title linkage.
+    cy.contains('h2', 'Outer dialog title')
+      .invoke('attr', 'id')
+      .then(outerTitleId => {
+        cy.get('dialog[data-modal-type="modal"]').should('have.attr', 'aria-modal', 'true');
+        cy.get('dialog[data-modal-type="modal"]').should('have.attr', 'aria-labelledby', outerTitleId);
+      });
+
+    // Inner dialog should be non-modal, remain non-aria-modal, and expose title linkage.
+    cy.contains('h2', 'Inner non-modal dialog title')
+      .invoke('attr', 'id')
+      .then(innerTitleId => {
+        cy.get('dialog[data-modal-type="non-modal"]').should('not.have.attr', 'aria-modal');
+        cy.get('dialog[data-modal-type="non-modal"]').should('have.attr', 'aria-labelledby', innerTitleId);
+      });
+
+    cy.get('#inner-non-modal-action').should('exist');
+    cy.get('dialog[data-modal-type="modal"]').should('have.length', 1);
+    cy.get('dialog[data-modal-type="non-modal"]').should('have.length', 1);
   });
 });

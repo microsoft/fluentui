@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 23 Apr 2026 14:21:00 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.4)
+
+Tue, 26 May 2026 09:39:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.3..@fluentui/react-utilities_v9.26.4)
+
+### Patches
+
+- style: replace deprecated assertion syntax that causes issues to babel tsx ([PR #36185](https://github.com/microsoft/fluentui/pull/36185) by martinhochel@microsoft.com)
 
 ## [9.26.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.3)
 
