@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useOverflowSnapshot } from './useOverflowSnapshot';
+import { useSyncOverflowSnapshot } from './useOverflowSnapshot';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 
 /**
@@ -17,6 +17,6 @@ export function useOverflowVisibility(): {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
 } {
-  const { itemVisibility, groupVisibility } = useOverflowSnapshot();
+  const { itemVisibility, groupVisibility } = useSyncOverflowSnapshot();
   return React.useMemo(() => ({ itemVisibility, groupVisibility }), [itemVisibility, groupVisibility]);
 }
