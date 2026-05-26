@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 import { useTagGroup_unstable, useTagGroupBase_unstable } from './useTagGroup';
+import type { TagGroupBaseProps } from './TagGroup.types';
 
 describe('useTagGroup_unstable', () => {
   it('should default size to medium and appearance to filled', () => {
@@ -13,7 +14,7 @@ describe('useTagGroup_unstable', () => {
     expect(result.current.appearance).toBe('filled');
   });
 
-  it('should spread Tabster arrow-navigation attributes onto root (via UseTagGroupBaseOptions)', () => {
+  it('should spread Tabster arrow-navigation attributes onto root', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroup_unstable({}, ref));
 
@@ -29,31 +30,31 @@ describe('useTagGroup_unstable', () => {
 });
 
 describe('useTagGroupBase_unstable', () => {
-  it('should NOT include arrow-navigation props when options omitted (true headless mode)', () => {
+  it('should NOT include arrow-navigation props by default (true headless mode)', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useTagGroupBase_unstable({}, ref));
     expect(result.current.root).not.toHaveProperty('data-tabster');
   });
 
-  it('should spread arrowNavigationProps option onto root when supplied', () => {
+  it('should spread arrow-navigation attributes onto root when passed via props', () => {
     const ref = React.createRef<HTMLDivElement>();
     const arrowNavigationProps: TabsterDOMAttribute = { 'data-tabster': '{"mock":"value"}' };
-    const { result } = renderHook(() => useTagGroupBase_unstable({}, ref, { arrowNavigationProps }));
+    const { result } = renderHook(() =>
+      useTagGroupBase_unstable({ ...arrowNavigationProps } as TagGroupBaseProps, ref),
+    );
 
     expect(result.current.root).toHaveProperty('data-tabster', '{"mock":"value"}');
   });
 
-  it('should call onAfterTagDismiss with the group container after a tag is dismissed', () => {
-    const onAfterTagDismiss = jest.fn();
+  it('should call onDismiss when a tag is dismissed', () => {
     const onDismiss = jest.fn();
     const ref = React.createRef<HTMLDivElement>();
-    const { result } = renderHook(() => useTagGroupBase_unstable({ onDismiss }, ref, { onAfterTagDismiss }));
+    const { result } = renderHook(() => useTagGroupBase_unstable({ onDismiss }, ref));
 
     const event = {} as React.MouseEvent;
     result.current.handleTagDismiss(event, { value: 'v1' });
 
     expect(onDismiss).toHaveBeenCalledWith(event, { value: 'v1' });
-    expect(onAfterTagDismiss).toHaveBeenCalledWith(null);
   });
 
   it('should set aria-disabled on the root when disabled', () => {

@@ -14,12 +14,6 @@ import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabste
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
 import type { TagValue } from '../../utils/types';
-import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
-
-type UseTagGroupBaseOptions = {
-  arrowNavigationProps?: TabsterDOMAttribute;
-  onAfterTagDismiss?: (container: HTMLElement | null) => void;
-};
 
 /**
  * Create the base state required to render TagGroup, without design-only props.
@@ -30,7 +24,6 @@ type UseTagGroupBaseOptions = {
 export const useTagGroupBase_unstable = (
   props: TagGroupBaseProps,
   ref: React.Ref<HTMLDivElement>,
-  options?: UseTagGroupBaseOptions,
 ): TagGroupBaseState => {
   const {
     onDismiss,
@@ -43,8 +36,6 @@ export const useTagGroupBase_unstable = (
     ...rest
   } = props;
 
-  const innerRef = React.useRef<HTMLElement>(undefined);
-
   const [items, setItems] = useControllableState<Array<TagValue>>({
     defaultState: defaultSelectedValues,
     state: selectedValues,
@@ -53,7 +44,6 @@ export const useTagGroupBase_unstable = (
 
   const handleTagDismiss: TagGroupBaseState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
-    options?.onAfterTagDismiss?.(innerRef.current ?? null);
   });
 
   const handleTagSelect: TagGroupBaseState['handleTagSelect'] = useEventCallback(
@@ -79,13 +69,9 @@ export const useTagGroupBase_unstable = (
 
     root: slot.always(
       getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
+        ref,
         role,
         'aria-disabled': disabled,
-        ...options?.arrowNavigationProps,
         ...rest,
       }),
       { elementType: 'div' },
@@ -114,8 +100,15 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     memorizeCurrent: true,
   });
 
-  const onAfterTagDismiss = useEventCallback((container: HTMLElement | null) => {
+  const innerRef = React.useRef<HTMLDivElement>(null);
+  const mergedRef = useMergedRefs(ref, innerRef);
+
+  const enhancedOnDismiss: TagGroupProps['onDismiss'] = useEventCallback((e, data) => {
+    props.onDismiss?.(e, data);
+
+    const container = innerRef.current;
     const activeElement = targetDocument?.activeElement;
+
     if (container?.contains(activeElement as HTMLElement)) {
       // focus on next tag only if the active element is within the current tag group
       const next = findNextFocusable(activeElement as HTMLElement, { container });
@@ -136,7 +129,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
   });
 
   return {
-    ...useTagGroupBase_unstable(props, ref, { arrowNavigationProps, onAfterTagDismiss }),
+    ...useTagGroupBase_unstable({ ...arrowNavigationProps, ...props, onDismiss: enhancedOnDismiss }, mergedRef),
     size,
     appearance,
   };

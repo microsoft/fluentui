@@ -16,7 +16,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
@@ -290,7 +289,7 @@ export const useTagBase_unstable: (props: TagBaseProps, ref: React_2.Ref<HTMLSpa
 export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagGroupState;
 
 // @public
-export const useTagGroupBase_unstable: (props: TagGroupBaseProps, ref: React_2.Ref<HTMLDivElement>, options?: UseTagGroupBaseOptions) => TagGroupBaseState;
+export const useTagGroupBase_unstable: (props: TagGroupBaseProps, ref: React_2.Ref<HTMLDivElement>) => TagGroupBaseState;
 
 // @public (undocumented)
 export const useTagGroupContext_unstable: () => TagGroupContextValue;
