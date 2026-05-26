@@ -2,6 +2,53 @@
   "name": "@fluentui/react-color-picker",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 09:39:51 GMT",
+      "tag": "@fluentui/react-color-picker_v9.2.17",
+      "version": "9.2.17",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.17",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.3",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.15",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.26.4",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Apr 2026 14:21:04 GMT",
       "tag": "@fluentui/react-color-picker_v9.2.16",
       "version": "9.2.16",

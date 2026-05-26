@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+
+  "comment": "feat: export toast base hooks and types",
+  "packageName": "@fluentui/react-toast",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

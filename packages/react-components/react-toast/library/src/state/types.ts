@@ -152,14 +152,12 @@ export type ToastListenerMap = {
   [EVENTS.pause]: EventListener<PauseToastEventDetail>;
 };
 
-type RootSlot = Slot<'div'>;
-
 export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
-  root?: RootSlot;
+  root?: Slot<'div'>;
 }
 
 export interface UpdateToastOptions extends UpdateToastEventDetail {
-  root?: RootSlot;
+  root?: Slot<'div'>;
 }
 
 export type ToastImperativeRef = {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: avoid pulling griffel in CardHeader and CardPreview base hooks",
-  "packageName": "@fluentui/react-card",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
