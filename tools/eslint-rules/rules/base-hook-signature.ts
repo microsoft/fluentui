@@ -74,6 +74,13 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
      * Validates the hook signature: 1 or 2 positional params, first must be Identifier `props`,
      * optional second must be Identifier `ref` typed as `React.Ref<...>` (verified to originate
      * from the `react` package so collisions with same-named locals don't pass).
+     *
+     * Validation order:
+     *   1. Param count must be 1 or 2
+     *   2. `props` name must be correct
+     *   3. `ref` name must be correct (if present)
+     *   4. `props` must have a type annotation
+     *   5. `ref` type must be React.Ref<...> (if present)
      */
     function checkParameters(hookName: string, hookFn: BaseHookFunction, reportNode: TSESTree.Node): void {
       if (hookFn.params.length < MIN_PARAM_COUNT || hookFn.params.length > MAX_PARAM_COUNT) {
@@ -85,34 +92,39 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         return;
       }
 
-      for (let index = 0; index < hookFn.params.length; index++) {
-        const param = hookFn.params[index];
-        const expected = EXPECTED_PARAM_NAMES[index];
-        if (param.type !== AST_NODE_TYPES.Identifier || param.name !== expected) {
-          context.report({
-            node: reportNode,
-            messageId: 'invalidParamName',
-            data: { hookName, index: index + 1, expected, actual: describeParam(param) },
-          });
-          // Don't return here; continue checking other param names.
-          // Only short-circuit on fatal type-annotation checks below.
-        } else if (index === 0 && !param.typeAnnotation) {
-          // `props` without a type annotation is inferred as `any` and fails under `noImplicitAny`.
-          // The shape of the type is intentionally not validated here — we only require one to exist.
-          context.report({
-            node: reportNode,
-            messageId: 'missingPropsType',
-            data: { hookName },
-          });
-          return; // Short-circuit: don't check ref type if props type is missing.
-        } else if (index === 1 && !isReactRefTypeAnnotation(param.typeAnnotation, sourceCode.getScope(param))) {
-          context.report({
-            node: reportNode,
-            messageId: 'invalidRefType',
-            data: { hookName, actual: describeRefType(param.typeAnnotation) },
-          });
-          return; // Short-circuit: stop after first fatal ref-type error.
-        }
+      const [propsParam, refParam] = hookFn.params;
+
+      if (propsParam.type !== AST_NODE_TYPES.Identifier || propsParam.name !== EXPECTED_PARAM_NAMES[0]) {
+        context.report({
+          node: reportNode,
+          messageId: 'invalidParamName',
+          data: { hookName, index: 1, expected: EXPECTED_PARAM_NAMES[0], actual: describeParam(propsParam) },
+        });
+        return;
+      }
+
+      if (refParam && (refParam.type !== AST_NODE_TYPES.Identifier || refParam.name !== EXPECTED_PARAM_NAMES[1])) {
+        context.report({
+          node: reportNode,
+          messageId: 'invalidParamName',
+          data: { hookName, index: 2, expected: EXPECTED_PARAM_NAMES[1], actual: describeParam(refParam) },
+        });
+        return;
+      }
+
+      // `props` without a type annotation is inferred as `any` and fails under `noImplicitAny`.
+      // The shape of the type is intentionally not validated here — we only require one to exist.
+      if (!propsParam.typeAnnotation) {
+        context.report({ node: reportNode, messageId: 'missingPropsType', data: { hookName } });
+        return; // Short-circuit: don't check ref type if props type is missing.
+      }
+
+      if (refParam && !isReactRefTypeAnnotation(refParam.typeAnnotation, sourceCode.getScope(refParam))) {
+        context.report({
+          node: reportNode,
+          messageId: 'invalidRefType',
+          data: { hookName, actual: describeRefType(refParam.typeAnnotation) },
+        });
       }
     }
 
