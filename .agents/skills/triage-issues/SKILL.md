@@ -29,7 +29,7 @@ For every issue, you're producing a **recommendation** with these fields:
 | Field                  | Possible values                                                                      |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`     |
-| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`               |
+| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`                                  |
 | `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                  |
 | `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                    |
 | `add_labels`           | list of label names to add                                                           |
@@ -167,10 +167,10 @@ Validation is the human-in-the-loop gate on agent initiative: you proposed the s
 
 For each confirmed issue:
 
-1. **Prerequisites.** Make sure playwright-cli is available (same install as `visual-test`):
+1. **Prerequisites.** Run `playwright-cli` via `npx` (same as `visual-test`, so nothing is installed globally on the user's box). First invocation downloads `@playwright/cli@0.1.1` into the npx cache; subsequent calls are cached:
 
    ```bash
-   npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
+   npx -y @playwright/cli@0.1.1 <command>
    ```
 
 2. **Pick the target URL.** In priority order:
@@ -182,11 +182,11 @@ For each confirmed issue:
 3. **Capture evidence.** Don't try to "prove" the bug — just gather what a human needs to decide:
 
    ```bash
-   playwright-cli goto "<repro URL>"
-   playwright-cli screenshot --filename=/tmp/triage-<num>-screenshot.png
-   playwright-cli snapshot > /tmp/triage-<num>-dom.txt
+   npx -y @playwright/cli@0.1.1 goto "<repro URL>"
+   npx -y @playwright/cli@0.1.1 screenshot --filename=/tmp/triage-<num>-screenshot.png
+   npx -y @playwright/cli@0.1.1 snapshot > /tmp/triage-<num>-dom.txt
    # Console errors and warnings — often the most useful signal
-   playwright-cli console > /tmp/triage-<num>-console.txt
+   npx -y @playwright/cli@0.1.1 console > /tmp/triage-<num>-console.txt
    ```
 
    If the sandbox has a specific interaction to trigger the bug (click a button, type in a field), follow it using refs from the snapshot.
@@ -206,7 +206,7 @@ For each confirmed issue:
 6. **Clean up.** Close the browser, kill any Storybook you started, and delete the evidence files unless the user wants to keep them:
 
    ```bash
-   playwright-cli close
+   npx -y @playwright/cli@0.1.1 close
    # If you started Storybook:
    lsof -i :$SB_PORT -t 2>/dev/null | xargs kill 2>/dev/null
    ```

@@ -12,10 +12,10 @@ Visually verify **$ARGUMENTS** by launching Storybook and capturing a screenshot
 
 ## Prerequisites
 
-Ensure `playwright-cli` is installed globally:
+Run `playwright-cli` via `npx` so nothing is installed globally on the user's box. The first invocation downloads `@playwright/cli@0.1.1` into the npx cache; subsequent calls are cached. Every command below uses this form:
 
 ```bash
-npm ls -g @playwright/cli 2>/dev/null || npm install -g @playwright/cli@0.1.1
+npx -y @playwright/cli@0.1.1 <command>
 ```
 
 ## Critical: use the per-component Storybook only
@@ -38,7 +38,6 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
    yarn nx run react-<component>-stories:storybook &
    NX_PID=$!
    ```
-
 
 3. **Find the storybook port.** Three quirks to know:
 
@@ -81,15 +80,15 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 4. **Open the page with playwright-cli:**
 
    ```bash
-   playwright-cli open "http://localhost:$SB_PORT"
+   npx -y @playwright/cli@0.1.1 open "http://localhost:$SB_PORT"
    ```
 
 5. **Navigate to the specific story iframe** and capture a screenshot.
    Use the iframe URL for a clean render without Storybook chrome:
 
    ```bash
-   playwright-cli goto "http://localhost:$SB_PORT/iframe.html?id=components-<component>--default&viewMode=story"
-   playwright-cli screenshot --filename=/tmp/visual-test-$ARGUMENTS.png
+   npx -y @playwright/cli@0.1.1 goto "http://localhost:$SB_PORT/iframe.html?id=components-<component>--default&viewMode=story"
+   npx -y @playwright/cli@0.1.1 screenshot --filename=/tmp/visual-test-$ARGUMENTS.png
    ```
 
 6. **View the screenshot** using the Read tool to visually inspect the rendered component.
@@ -97,7 +96,7 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 7. **Use `snapshot`** to get the accessibility tree and find interactive element refs:
 
    ```bash
-   playwright-cli snapshot
+   npx -y @playwright/cli@0.1.1 snapshot
    ```
 
    Then interact with elements by ref (e.g., click, hover) before taking more screenshots.
@@ -106,7 +105,7 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 
 9. **Clean up** when done:
    ```bash
-   playwright-cli close
+   npx -y @playwright/cli@0.1.1 close
    # Kill storybook — the nx wrapper may already be gone, so target the child
    [ -n "$SB_CHILD" ] && kill "$SB_CHILD" 2>/dev/null
    lsof -i :$SB_PORT -t 2>/dev/null | xargs kill 2>/dev/null
@@ -169,7 +168,7 @@ The `/iframe.html` URL gives a clean render without Storybook chrome — always 
 
 ## Tips
 
-- Use `playwright-cli snapshot` to get an accessibility tree — useful for verifying ARIA attributes and finding interactive elements.
-- Use `playwright-cli click <ref>` to interact with the component (test hover states, open menus, etc.) before taking a screenshot.
-- Use `playwright-cli resize <width> <height>` to test responsive behavior.
+- Use `npx -y @playwright/cli@0.1.1 snapshot` to get an accessibility tree — useful for verifying ARIA attributes and finding interactive elements.
+- Use `npx -y @playwright/cli@0.1.1 click <ref>` to interact with the component (test hover states, open menus, etc.) before taking a screenshot.
+- Use `npx -y @playwright/cli@0.1.1 resize <width> <height>` to test responsive behavior.
 - For multiple story variants, take a screenshot of each: Default, Appearance, Size, Disabled, etc.
