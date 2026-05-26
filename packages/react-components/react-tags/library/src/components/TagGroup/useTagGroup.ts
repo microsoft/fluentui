@@ -27,7 +27,7 @@ type UseTagGroupBaseOptions = {
  * @param props - props from this instance of TagGroup (without appearance, size)
  * @param ref - reference to root HTMLDivElement of TagGroup
  */
-// eslint-disable-next-line @nx/workspace-consistent-base-hook -- accepts an extra `options` arg used internally by `useTagGroup_unstable` to coordinate focus after a tag is dismissed
+// eslint-disable-next-line @nx/workspace-base-hook-signature -- accepts an extra `options` arg used internally by `useTagGroup_unstable` to coordinate focus after a tag is dismissed
 export const useTagGroupBase_unstable = (
   props: TagGroupBaseProps,
   ref: React.Ref<HTMLDivElement>,
