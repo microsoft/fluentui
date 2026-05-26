@@ -21,7 +21,7 @@
     "dependencyTypes": []
   },
   "dependencies": {
-    "@fluentui/chart-utilities": "^1.1.38",
+    "@fluentui/chart-utilities": "^1.1.39",
     "@fluentui/react-button": "^9.9.2",
     "@fluentui/react-jsx-runtime": "^9.4.3",
     "@fluentui/react-overflow": "^9.8.0",
