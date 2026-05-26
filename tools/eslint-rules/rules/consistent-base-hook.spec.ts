@@ -4,6 +4,8 @@ import { rule, RULE_NAME } from './consistent-base-hook';
 
 const FIXTURE_ROOT = path.join(__dirname, '__fixtures__/consistent-base-hook');
 const TYPED_FILENAME = 'src/test.ts';
+const SIBLING_FILENAME = path.join(FIXTURE_ROOT, 'src/components/Sibling/useSibling.ts');
+const ORPHAN_FILENAME = path.join(FIXTURE_ROOT, 'src/components/Orphan/useOrphan.ts');
 
 const typedLanguageOptions = {
   parserOptions: {
@@ -62,12 +64,47 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
+    // Pair detection (same file): a state hook `useThing_unstable` next to its base hook
+    // `useThingBase_unstable` IS subject to the contract. Correct signature passes.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThing_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+    // Pair detection (no sibling base hook on disk): `useOrphanContextValues_unstable(state)`
+    // is NOT a paired wrapping hook and must NOT be flagged for its non-(props, ref) signature.
+    // The Orphan folder has no `useOrphanContextValuesBase.ts(x)` next to it.
+    {
+      filename: ORPHAN_FILENAME,
+      code: `
+        export function useOrphanContextValues_unstable(state) {
+          return { state };
+        }
+      `,
+    },
+    // Pair detection (sibling file): wrapping state hook lives in `useSibling.ts`, paired with
+    // `useSiblingBase.ts` in the same folder. Correct (props, ref) signature passes.
+    {
+      filename: SIBLING_FILENAME,
+      code: `
+        import * as React from 'react';
+        export const useSibling_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
     // Identifier with the same local name as a forbidden import alias does not collide via scope analysis.
     {
       code: `
         import * as React from 'react';
         import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-        export const useThing_unstable = (props, ref) => {
+        export const useThing_unstable = (props, ref: React.Ref<HTMLElement>) => {
           return useArrowNavigationGroup({});
         };
         export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
@@ -226,6 +263,35 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+    // Pair detection (same file): wrapping state hook with too many params is flagged because
+    // its sibling base hook in the same file marks it as a paired wrapper.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThing_unstable = (props, ref, extra) => ({ props, ref, extra });
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [{ messageId: 'invalidParamCount', data: { hookName: 'useThing_unstable', actual: 3 } }],
+    },
+    // Pair detection (sibling file): wrapping state hook in `useSibling.ts` is paired with
+    // `useSiblingBase.ts` in the same folder. Wrong param names are flagged.
+    {
+      filename: SIBLING_FILENAME,
+      code: `
+        import * as React from 'react';
+        export const useSibling_unstable = (p, r: React.Ref<HTMLElement>) => ({ p, r });
+      `,
+      errors: [
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useSibling_unstable', index: 1, expected: 'props', actual: 'p' },
+        },
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useSibling_unstable', index: 2, expected: 'ref', actual: 'r' },
+        },
+      ],
+    },
   ],
 });
 
@@ -293,7 +359,7 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         export const useThingBase_unstable = (props: { a: number }, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
-        export const useThing_unstable = (props, ref) => {
+        export const useThing_unstable = (props, ref: React.Ref<HTMLElement>) => {
           return useHeavy();
         };
       `,

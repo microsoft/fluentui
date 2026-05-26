@@ -1,11 +1,20 @@
 import type { TSESTree, TSESLint, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
 import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
 import * as ts from 'typescript';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-consistent-base-hook"
 export const RULE_NAME = 'consistent-base-hook';
 
 const BASE_HOOK_NAME_PATTERN = /^use[A-Z]\w*Base_unstable$/;
+// State hook candidates are any `_unstable` hook NOT ending in `Base_unstable`. They are only
+// subjected to the signature contract when they are paired with a sibling base hook (Option C —
+// pair detection). See `hasPairedBaseHook`.
+const STATE_HOOK_NAME_PATTERN = /^use[A-Z]\w*_unstable$/;
+const BASE_SUFFIX = 'Base_unstable';
+const UNSTABLE_SUFFIX = '_unstable';
+const SIBLING_EXTENSIONS: ReadonlyArray<string> = ['.ts', '.tsx'];
 const EXPECTED_PARAM_NAMES = ['props', 'ref'] as const;
 const MIN_PARAM_COUNT = 1;
 const MAX_PARAM_COUNT = 2;
@@ -101,7 +110,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     type: 'problem',
     docs: {
       description:
-        'Enforce the API contract for v9 "base" hooks (`use<Name>Base_unstable`): a required `props` parameter and an optional `ref` parameter typed as `React.Ref<...>`, and disallow referencing any binding whose defining module transitively pulls a forbidden runtime package (default `tabster`) \u2014 both at value positions (runtime coupling) and at type positions (API surface coupling).',
+        'Enforce the API contract for v9 "base" hooks (`use<Name>Base_unstable`) and their paired wrapping state hooks (`use<Name>_unstable` declared in the same file or sibling component-folder file): a required `props` parameter and an optional `ref` parameter typed as `React.Ref<...>`. Additionally, disallow inside base hooks any binding whose defining module transitively pulls a forbidden runtime package (default `tabster`) \u2014 both at value positions (runtime coupling) and at type positions (API surface coupling).',
     },
     schema: [
       {
@@ -126,10 +135,10 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     ],
     messages: {
       invalidParamCount:
-        'Base hook `{{hookName}}` must take 1 or 2 positional parameters (`props`, optional `ref`), got {{actual}}.',
+        'Hook `{{hookName}}` must take 1 or 2 positional parameters (`props`, optional `ref`), got {{actual}}.',
       invalidParamName:
-        'Base hook `{{hookName}}` parameter #{{index}} must be named `{{expected}}` (Identifier), got `{{actual}}`.',
-      invalidRefType: 'Base hook `{{hookName}}` parameter `ref` must be typed as `React.Ref<...>`, got `{{actual}}`.',
+        'Hook `{{hookName}}` parameter #{{index}} must be named `{{expected}}` (Identifier), got `{{actual}}`.',
+      invalidRefType: 'Hook `{{hookName}}` parameter `ref` must be typed as `React.Ref<...>`, got `{{actual}}`.',
       forbiddenRuntimeDirect:
         'Base hook `{{hookName}}` cannot reference `{{importedName}}` from forbidden runtime package `{{package}}`. Move logic that depends on `{{package}}` to the wrapping `*_unstable` hook instead.',
       forbiddenRuntimeReach:
@@ -151,6 +160,17 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     // Map of locally-declared variable identity → original import origin metadata. Keyed by Variable
     // identity (not name) so re-declarations / shadowing inside the base hook resolve correctly.
     const trackedImports = new Map<TSESLint.Scope.Variable, TrackedImport>();
+
+    // Names of base hooks (`use<Name>Base_unstable`) declared at the top level of the current file.
+    // Populated on `Program` enter so the state-hook visitor can synchronously decide pairing for
+    // the same-file (82 / 85) case without re-scanning.
+    const baseHooksInCurrentFile = new Set<string>();
+
+    // Caches sibling-file existence checks (`./useXBase.ts` / `./useXBase.tsx`) for the lifetime of
+    // this rule instance. The keys are absolute candidate paths; values are `true` if the file exists
+    // on disk. Used to cover the 3 outliers where the base hook and wrapping hook live in sibling
+    // files within the same component folder (Tooltip, Field, MenuItem).
+    const siblingFileExistsCache = new Map<string, boolean>();
 
     // Tracks whether `computeSymbolReach` was invoked while typed services were unavailable. When set,
     // we emit a single diagnostic on `Program:exit` so the user knows transitive analysis was skipped.
@@ -183,6 +203,50 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
     function checkBaseHook(hookName: string, hookFn: BaseHookFunction, reportNode: TSESTree.Node): void {
       checkParameters(hookName, hookFn, reportNode);
       checkBodyReferences(hookName, hookFn);
+    }
+
+    /**
+     * Returns `true` when `stateHookName` (e.g. `useFoo_unstable`) is paired with a base hook
+     * `useFooBase_unstable` declared either in the current file or in a sibling file within the
+     * same directory (component folder convention `components/<Name>/useXBase.ts(x)`).
+     *
+     * The base hook is the structural marker for the `(props, ref)` contract. When found, the
+     * wrapping state hook is required to honor the same contract; otherwise it is left alone,
+     * which avoids false positives on unrelated `_unstable` hooks such as
+     * `useFooContextValues_unstable`, `useFooStyles_unstable`, etc.
+     */
+    function hasPairedBaseHook(stateHookName: string): boolean {
+      const baseHookName = stateHookName.slice(0, -UNSTABLE_SUFFIX.length) + BASE_SUFFIX;
+      if (baseHooksInCurrentFile.has(baseHookName)) {
+        return true;
+      }
+      const filename = context.filename;
+      // ESLint passes synthetic filenames like `<input>` for inline code; nothing to check.
+      if (!filename || !path.isAbsolute(filename)) {
+        return false;
+      }
+      const dir = path.dirname(filename);
+      // Sibling base-hook file (the wrapping hook lives in `useFoo.tsx`, the base in `useFooBase.tsx`).
+      const siblingBasename = baseHookName.slice(0, -UNSTABLE_SUFFIX.length); // e.g. `useFooBase`
+      for (const ext of SIBLING_EXTENSIONS) {
+        const candidate = path.join(dir, siblingBasename + ext);
+        if (candidate === filename) {
+          continue;
+        }
+        let exists = siblingFileExistsCache.get(candidate);
+        if (exists === undefined) {
+          try {
+            exists = fs.statSync(candidate).isFile();
+          } catch {
+            exists = false;
+          }
+          siblingFileExistsCache.set(candidate, exists);
+        }
+        if (exists) {
+          return true;
+        }
+      }
+      return false;
     }
 
     /**
@@ -406,39 +470,65 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       });
     }
 
+    /**
+     * Returns the function literal initializer of a `VariableDeclarator` when the declarator is a
+     * plain Identifier bound to an inline arrow/function expression; otherwise `undefined`. Skips
+     * destructuring patterns (no inspectable function literal) and non-function initializers
+     * (call expressions, identifier aliases, missing initializer for ambients).
+     */
+    function getFunctionInit(node: TSESTree.VariableDeclarator): BaseHookFunction | undefined {
+      if (node.id.type !== AST_NODE_TYPES.Identifier) {
+        return undefined;
+      }
+      const init = node.init;
+      if (
+        !init ||
+        (init.type !== AST_NODE_TYPES.ArrowFunctionExpression && init.type !== AST_NODE_TYPES.FunctionExpression)
+      ) {
+        return undefined;
+      }
+      return init;
+    }
+
     return {
+      // Populate `baseHooksInCurrentFile` from top-level declarations so the state-hook visitor can
+      // synchronously decide pairing for the same-file case (82 / 85 occurrences across react-components).
+      Program(node: TSESTree.Program): void {
+        for (const stmt of node.body) {
+          collectBaseHookNames(stmt, baseHooksInCurrentFile);
+        }
+      },
+
       ImportDeclaration: trackImportDeclaration,
 
-      [`FunctionDeclaration[id.name=/${BASE_HOOK_NAME_PATTERN.source}/]`]: (node: TSESTree.FunctionDeclaration) => {
+      // Broader selector matches both base hooks and state-hook candidates; the handler dispatches
+      // by name. State hooks only get the signature check when paired with a sibling base hook.
+      [`FunctionDeclaration[id.name=/${STATE_HOOK_NAME_PATTERN.source}/]`]: (node: TSESTree.FunctionDeclaration) => {
         // `export default function () {}` produces an anonymous FunctionDeclaration (id === null).
         // The esquery selector above requires `id.name`, so this branch should be unreachable in
         // practice — kept as a type-narrowing guard so TS treats `node.id` as non-null below.
         if (!node.id) {
           return;
         }
-        checkBaseHook(node.id.name, node, node.id);
+        const name = node.id.name;
+        if (BASE_HOOK_NAME_PATTERN.test(name)) {
+          checkBaseHook(name, node, node.id);
+        } else if (hasPairedBaseHook(name)) {
+          checkParameters(name, node, node.id);
+        }
       },
 
-      [`VariableDeclarator[id.name=/${BASE_HOOK_NAME_PATTERN.source}/]`]: (node: TSESTree.VariableDeclarator) => {
-        // The declarator's `id` can be a destructuring pattern (e.g. `const { useFooBase_unstable } = mod`).
-        // Such patterns never define a function literal we can inspect, and the selector only matched
-        // because esquery probed the nested Identifier name. Skip anything that isn't a plain Identifier.
-        if (node.id.type !== AST_NODE_TYPES.Identifier) {
+      [`VariableDeclarator[id.name=/${STATE_HOOK_NAME_PATTERN.source}/]`]: (node: TSESTree.VariableDeclarator) => {
+        const init = getFunctionInit(node);
+        if (!init || node.id.type !== AST_NODE_TYPES.Identifier) {
           return;
         }
-        // We only check inline function literals (`= (props, ref) => {}` or `= function () {}`) because
-        // the param-shape / body-reference analysis needs a function node we can walk. Any other Right Hand Side
-        // — missing initializer (`let useFooBase_unstable;`, ambient `declare const ... : Hook`), a call
-        // expression (`= wrap(impl)`), an identifier alias (`= someOtherHook`), `require(...)`, etc. —
-        // is out of scope for this rule.
-        const init = node.init;
-        if (
-          !init ||
-          (init.type !== AST_NODE_TYPES.ArrowFunctionExpression && init.type !== AST_NODE_TYPES.FunctionExpression)
-        ) {
-          return;
+        const name = node.id.name;
+        if (BASE_HOOK_NAME_PATTERN.test(name)) {
+          checkBaseHook(name, init, node.id);
+        } else if (hasPairedBaseHook(name)) {
+          checkParameters(name, init, node.id);
         }
-        checkBaseHook(node.id.name, init, node.id);
       },
 
       /**
@@ -695,6 +785,34 @@ function shortenPath(absolute: string): string {
 // ---------------------------------------------------------------------------
 // AST helpers (unchanged from previous version)
 // ---------------------------------------------------------------------------
+
+/**
+ * Collects names of top-level declarations matching `BASE_HOOK_NAME_PATTERN` into `out`.
+ * Handles both `export const useFooBase_unstable = ...` (incl. `export const` chains) and
+ * `export function useFooBase_unstable() {}`, plus the unexported / `export { ... }` forms.
+ */
+function collectBaseHookNames(stmt: TSESTree.Node, out: Set<string>): void {
+  // `export const useFooBase_unstable = ...` / `export function useFooBase_unstable() {}`
+  if (stmt.type === AST_NODE_TYPES.ExportNamedDeclaration && stmt.declaration) {
+    collectBaseHookNames(stmt.declaration, out);
+    return;
+  }
+  // `function useFooBase_unstable() {}`
+  if (stmt.type === AST_NODE_TYPES.FunctionDeclaration) {
+    if (stmt.id && BASE_HOOK_NAME_PATTERN.test(stmt.id.name)) {
+      out.add(stmt.id.name);
+    }
+    return;
+  }
+  // `const useFooBase_unstable = ...` (incl. multi-declarator forms)
+  if (stmt.type === AST_NODE_TYPES.VariableDeclaration) {
+    for (const decl of stmt.declarations) {
+      if (decl.id.type === AST_NODE_TYPES.Identifier && BASE_HOOK_NAME_PATTERN.test(decl.id.name)) {
+        out.add(decl.id.name);
+      }
+    }
+  }
+}
 
 /**
  * Resolves the original (imported) name from an import specifier.
