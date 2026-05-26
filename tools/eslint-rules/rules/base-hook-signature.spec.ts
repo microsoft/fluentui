@@ -103,6 +103,20 @@ ruleTester.run(RULE_NAME, rule, {
         };
       `,
     },
+    // Re-export of a base hook from another module is valid. We can't inspect the params
+    // of an identifier initializer, so we skip validation but accept it as a pairing marker.
+    {
+      code: `
+        export const useThingBase_unstable = useThingBase;
+      `,
+    },
+    // Re-export of an externally-imported base hook is also valid.
+    {
+      code: `
+        import { useExternalBase_unstable } from 'external-lib';
+        export const useThingBase_unstable = useExternalBase_unstable;
+      `,
+    },
   ],
   invalid: [
     // Too few params (0).
@@ -271,6 +285,36 @@ ruleTester.run(RULE_NAME, rule, {
         export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
       `,
       errors: [{ messageId: 'missingPropsType', data: { hookName: 'useThingBase_unstable' } }],
+    },
+    // Base hook initialized to a number literal is invalid.
+    {
+      code: `
+        export const useThingBase_unstable = 42;
+      `,
+      errors: [{ messageId: 'invalidBaseHookInit', data: { hookName: 'useThingBase_unstable', actual: '42' } }],
+    },
+    // Base hook initialized to an object literal is invalid.
+    {
+      code: `
+        export const useThingBase_unstable = {};
+      `,
+      errors: [{ messageId: 'invalidBaseHookInit', data: { hookName: 'useThingBase_unstable', actual: '{}' } }],
+    },
+    // Base hook initialized to an array literal is invalid.
+    {
+      code: `
+        export const useThingBase_unstable = [];
+      `,
+      errors: [{ messageId: 'invalidBaseHookInit', data: { hookName: 'useThingBase_unstable', actual: '[]' } }],
+    },
+    // Base hook initialized to a string literal is invalid.
+    {
+      code: `
+        export const useThingBase_unstable = "not-a-function";
+      `,
+      errors: [
+        { messageId: 'invalidBaseHookInit', data: { hookName: 'useThingBase_unstable', actual: '"not-a-function"' } },
+      ],
     },
   ],
 });

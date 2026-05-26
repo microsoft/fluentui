@@ -37,7 +37,12 @@ type BaseHookFunction = TSESTree.FunctionDeclaration | TSESTree.FunctionExpressi
 
 type Options = [];
 
-type MessageIds = 'invalidParamCount' | 'invalidParamName' | 'invalidRefType' | 'missingPropsType';
+type MessageIds =
+  | 'invalidParamCount'
+  | 'invalidParamName'
+  | 'invalidRefType'
+  | 'missingPropsType'
+  | 'invalidBaseHookInit';
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
@@ -56,6 +61,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       missingPropsType:
         'Hook `{{hookName}}` parameter `props` must have an explicit type annotation; otherwise TypeScript infers `any` and fails under `noImplicitAny`.',
       invalidRefType: 'Hook `{{hookName}}` parameter `ref` must be typed as `React.Ref<...>`, got `{{actual}}`.',
+      invalidBaseHookInit:
+        'Base hook `{{hookName}}` must be a function declaration, function expression, arrow function, or a re-export of another function; got `{{actual}}`.',
     },
   },
   defaultOptions: [],
@@ -78,7 +85,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         return;
       }
 
-      hookFn.params.forEach((param, index) => {
+      for (let index = 0; index < hookFn.params.length; index++) {
+        const param = hookFn.params[index];
         const expected = EXPECTED_PARAM_NAMES[index];
         if (param.type !== AST_NODE_TYPES.Identifier || param.name !== expected) {
           context.report({
@@ -86,9 +94,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
             messageId: 'invalidParamName',
             data: { hookName, index: index + 1, expected, actual: describeParam(param) },
           });
-          return;
-        }
-        if (index === 0 && !param.typeAnnotation) {
+          // Don't return here; continue checking other param names.
+          // Only short-circuit on fatal type-annotation checks below.
+        } else if (index === 0 && !param.typeAnnotation) {
           // `props` without a type annotation is inferred as `any` and fails under `noImplicitAny`.
           // The shape of the type is intentionally not validated here — we only require one to exist.
           context.report({
@@ -96,16 +104,16 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
             messageId: 'missingPropsType',
             data: { hookName },
           });
-          return;
-        }
-        if (index === 1 && !isReactRefTypeAnnotation(param.typeAnnotation, sourceCode.getScope(param))) {
+          return; // Short-circuit: don't check ref type if props type is missing.
+        } else if (index === 1 && !isReactRefTypeAnnotation(param.typeAnnotation, sourceCode.getScope(param))) {
           context.report({
             node: reportNode,
             messageId: 'invalidRefType',
             data: { hookName, actual: describeRefType(param.typeAnnotation) },
           });
+          return; // Short-circuit: stop after first fatal ref-type error.
         }
-      });
+      }
     }
 
     return {
@@ -134,12 +142,38 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
       },
 
       [`VariableDeclarator[id.name=/${STATE_HOOK_NAME_PATTERN.source}/]`]: (node: TSESTree.VariableDeclarator) => {
-        const init = getFunctionInit(node);
-        if (!init || node.id.type !== AST_NODE_TYPES.Identifier) {
+        if (node.id.type !== AST_NODE_TYPES.Identifier) {
           return;
         }
         const name = node.id.name;
-        if (BASE_HOOK_NAME_PATTERN.test(name) || pairDetector.hasPairedBaseHook(name)) {
+        const isBase = BASE_HOOK_NAME_PATTERN.test(name);
+        const init = getFunctionInit(node);
+
+        // If this is a base hook, validate the initializer type.
+        // Valid: FunctionExpression, ArrowFunctionExpression (getFunctionInit accepts these),
+        // or Identifier (re-export; we can't inspect params but accept it).
+        // Invalid: literals like 42, {}, etc. (would have init !== undefined but fail getFunctionInit)
+        if (isBase && node.init) {
+          if (
+            node.init.type !== AST_NODE_TYPES.ArrowFunctionExpression &&
+            node.init.type !== AST_NODE_TYPES.FunctionExpression &&
+            node.init.type !== AST_NODE_TYPES.Identifier
+          ) {
+            // Invalid initializer: not a function, not a re-export identifier
+            context.report({
+              node: node.id,
+              messageId: 'invalidBaseHookInit',
+              data: { hookName: name, actual: describeInitializer(node.init) },
+            });
+            return;
+          }
+        }
+
+        // Only validate parameters if we have an inline function (not a re-export).
+        if (!init) {
+          return;
+        }
+        if (isBase || pairDetector.hasPairedBaseHook(name)) {
           checkParameters(name, init, node.id);
         }
       },
@@ -396,4 +430,22 @@ function describeRefType(annotation: TSESTree.TSTypeAnnotation | undefined): str
     return `${left}.${typeName.right.name}`;
   }
   return type.type;
+}
+
+/**
+ * Renders the actual initializer type as a string for `invalidBaseHookInit` diagnostics.
+ */
+function describeInitializer(node: TSESTree.Expression): string {
+  switch (node.type) {
+    case AST_NODE_TYPES.Literal:
+      return typeof node.value === 'string' ? `"${node.value}"` : String(node.value);
+    case AST_NODE_TYPES.ObjectExpression:
+      return '{}';
+    case AST_NODE_TYPES.ArrayExpression:
+      return '[]';
+    case AST_NODE_TYPES.Identifier:
+      return node.name;
+    default:
+      return node.type;
+  }
 }
