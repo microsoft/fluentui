@@ -1,13 +1,6 @@
-import type {
-  TagSlots as TagBaseSlots,
-  TagBaseProps,
-  TagBaseState,
-  TagContextValues as TagBaseContextValues,
-} from '@fluentui/react-tags';
+import type { TagBaseState } from '@fluentui/react-tags';
 
-export type TagSlots = TagBaseSlots;
-
-export type TagProps = TagBaseProps;
+export type { TagBaseProps as TagProps, TagSlots, TagContextValues } from '@fluentui/react-tags';
 
 export type TagState = TagBaseState & {
   root: {
@@ -27,5 +20,3 @@ export type TagState = TagBaseState & {
     'data-selected'?: string;
   };
 };
-
-export type TagContextValues = TagBaseContextValues;

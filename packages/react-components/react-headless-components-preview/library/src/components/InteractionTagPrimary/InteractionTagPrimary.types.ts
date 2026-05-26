@@ -1,13 +1,12 @@
 import type {
-  InteractionTagPrimarySlots as InteractionTagPrimaryBaseSlots,
-  InteractionTagPrimaryBaseProps,
   InteractionTagPrimaryBaseState,
   InteractionTagPrimaryContextValues as InteractionTagPrimaryBaseContextValues,
 } from '@fluentui/react-tags';
 
-export type InteractionTagPrimarySlots = InteractionTagPrimaryBaseSlots;
-
-export type InteractionTagPrimaryProps = InteractionTagPrimaryBaseProps;
+export type {
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryBaseProps as InteractionTagPrimaryProps,
+} from '@fluentui/react-tags';
 
 export type InteractionTagPrimaryState = InteractionTagPrimaryBaseState & {
   root: {

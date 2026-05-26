@@ -29,7 +29,7 @@ export const useInteractionTagPrimary = (
   return state;
 };
 
-const emptyAvatarContext = { size: undefined, shape: undefined } as const;
+const emptyAvatarContext = { size: undefined, shape: undefined };
 
 export const useInteractionTagPrimaryContextValues = (
   _state: InteractionTagPrimaryState,

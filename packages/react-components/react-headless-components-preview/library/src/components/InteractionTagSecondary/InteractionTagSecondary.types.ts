@@ -1,12 +1,9 @@
-import type {
-  InteractionTagSecondarySlots as InteractionTagSecondaryBaseSlots,
-  InteractionTagSecondaryBaseProps,
-  InteractionTagSecondaryBaseState,
+import type { InteractionTagSecondaryBaseState } from '@fluentui/react-tags';
+
+export type {
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryBaseProps as InteractionTagSecondaryProps,
 } from '@fluentui/react-tags';
-
-export type InteractionTagSecondarySlots = InteractionTagSecondaryBaseSlots;
-
-export type InteractionTagSecondaryProps = InteractionTagSecondaryBaseProps;
 
 export type InteractionTagSecondaryState = InteractionTagSecondaryBaseState & {
   root: {

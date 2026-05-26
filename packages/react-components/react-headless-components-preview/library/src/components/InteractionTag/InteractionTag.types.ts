@@ -1,13 +1,6 @@
-import type {
-  InteractionTagSlots as InteractionTagBaseSlots,
-  InteractionTagBaseProps,
-  InteractionTagBaseState,
-} from '@fluentui/react-tags';
-import type { InteractionTagContextValue } from '@fluentui/react-tags';
+import type { InteractionTagBaseState, InteractionTagContextValue } from '@fluentui/react-tags';
 
-export type InteractionTagSlots = InteractionTagBaseSlots;
-
-export type InteractionTagProps = InteractionTagBaseProps;
+export type { InteractionTagSlots, InteractionTagBaseProps as InteractionTagProps } from '@fluentui/react-tags';
 
 export type InteractionTagState = InteractionTagBaseState & {
   root: {

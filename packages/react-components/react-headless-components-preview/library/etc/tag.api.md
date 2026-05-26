@@ -7,24 +7,21 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { renderTag_unstable as renderTag } from '@fluentui/react-tags';
-import type { TagBaseProps } from '@fluentui/react-tags';
 import type { TagBaseState } from '@fluentui/react-tags';
-import type { TagContextValues as TagContextValues_2 } from '@fluentui/react-tags';
-import type { TagSlots as TagSlots_2 } from '@fluentui/react-tags';
+import { TagContextValues } from '@fluentui/react-tags';
+import { TagBaseProps as TagProps } from '@fluentui/react-tags';
+import { TagSlots } from '@fluentui/react-tags';
 
 export { renderTag }
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
 
-// @public (undocumented)
-export type TagContextValues = TagContextValues_2;
+export { TagContextValues }
 
-// @public (undocumented)
-export type TagProps = TagBaseProps;
+export { TagProps }
 
-// @public (undocumented)
-export type TagSlots = TagSlots_2;
+export { TagSlots }
 
 // @public (undocumented)
 export type TagState = TagBaseState & {

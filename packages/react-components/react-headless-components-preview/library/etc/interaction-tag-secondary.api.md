@@ -5,20 +5,18 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { InteractionTagSecondaryBaseProps } from '@fluentui/react-tags';
 import type { InteractionTagSecondaryBaseState } from '@fluentui/react-tags';
-import type { InteractionTagSecondarySlots as InteractionTagSecondarySlots_2 } from '@fluentui/react-tags';
+import { InteractionTagSecondaryBaseProps as InteractionTagSecondaryProps } from '@fluentui/react-tags';
+import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import type * as React_2 from 'react';
 import { renderInteractionTagSecondary_unstable as renderInteractionTagSecondary } from '@fluentui/react-tags';
 
 // @public
 export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
 
-// @public (undocumented)
-export type InteractionTagSecondaryProps = InteractionTagSecondaryBaseProps;
+export { InteractionTagSecondaryProps }
 
-// @public (undocumented)
-export type InteractionTagSecondarySlots = InteractionTagSecondarySlots_2;
+export { InteractionTagSecondarySlots }
 
 // @public (undocumented)
 export type InteractionTagSecondaryState = InteractionTagSecondaryBaseState & {

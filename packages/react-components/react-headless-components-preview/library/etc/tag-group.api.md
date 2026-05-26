@@ -7,10 +7,10 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { renderTagGroup_unstable as renderTagGroup } from '@fluentui/react-tags';
-import type { TagGroupBaseProps } from '@fluentui/react-tags';
 import type { TagGroupBaseState } from '@fluentui/react-tags';
 import type { TagGroupContextValue } from '@fluentui/react-tags';
-import type { TagGroupSlots as TagGroupSlots_2 } from '@fluentui/react-tags';
+import { TagGroupBaseProps as TagGroupProps } from '@fluentui/react-tags';
+import { TagGroupSlots } from '@fluentui/react-tags';
 
 export { renderTagGroup }
 
@@ -22,11 +22,9 @@ export type TagGroupContextValues = {
     tagGroup: TagGroupContextValue;
 };
 
-// @public (undocumented)
-export type TagGroupProps = TagGroupBaseProps;
+export { TagGroupProps }
 
-// @public (undocumented)
-export type TagGroupSlots = TagGroupSlots_2;
+export { TagGroupSlots }
 
 // @public (undocumented)
 export type TagGroupState = TagGroupBaseState & {

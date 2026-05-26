@@ -1,13 +1,6 @@
-import type {
-  TagGroupSlots as TagGroupBaseSlots,
-  TagGroupBaseProps,
-  TagGroupBaseState,
-  TagGroupContextValue,
-} from '@fluentui/react-tags';
+import type { TagGroupBaseState, TagGroupContextValue } from '@fluentui/react-tags';
 
-export type TagGroupSlots = TagGroupBaseSlots;
-
-export type TagGroupProps = TagGroupBaseProps;
+export type { TagGroupBaseProps as TagGroupProps, TagGroupSlots } from '@fluentui/react-tags';
 
 export type TagGroupState = TagGroupBaseState & {
   root: {

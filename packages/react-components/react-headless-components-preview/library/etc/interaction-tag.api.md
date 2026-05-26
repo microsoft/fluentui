@@ -5,10 +5,10 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { InteractionTagBaseProps } from '@fluentui/react-tags';
 import type { InteractionTagBaseState } from '@fluentui/react-tags';
 import type { InteractionTagContextValue } from '@fluentui/react-tags';
-import type { InteractionTagSlots as InteractionTagSlots_2 } from '@fluentui/react-tags';
+import { InteractionTagBaseProps as InteractionTagProps } from '@fluentui/react-tags';
+import { InteractionTagSlots } from '@fluentui/react-tags';
 import * as React_2 from 'react';
 import { renderInteractionTag_unstable as renderInteractionTag } from '@fluentui/react-tags';
 
@@ -20,11 +20,9 @@ export type InteractionTagContextValues = {
     interactionTag: InteractionTagContextValue;
 };
 
-// @public (undocumented)
-export type InteractionTagProps = InteractionTagBaseProps;
+export { InteractionTagProps }
 
-// @public (undocumented)
-export type InteractionTagSlots = InteractionTagSlots_2;
+export { InteractionTagSlots }
 
 // @public (undocumented)
 export type InteractionTagState = InteractionTagBaseState & {
