@@ -16,6 +16,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
@@ -28,6 +29,18 @@ export type InteractionTagBaseState<Value = TagValue> = Omit<InteractionTagState
 
 // @public (undocumented)
 export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
+
+// @public (undocumented)
+export const InteractionTagContextProvider: React_2.Provider<InteractionTagContextValue<string> | undefined>;
+
+// @public
+export type InteractionTagContextValue<Value = string> = Required<Pick<InteractionTagState, 'appearance' | 'disabled' | 'selected' | 'selectedValues' | 'shape' | 'size'> & {
+    handleTagDismiss: TagDismissHandler<Value>;
+    interactionTagPrimaryId: string;
+    value?: Value;
+}> & {
+    handleTagSelect?: TagSelectHandler<Value>;
+};
 
 // @public
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
@@ -138,6 +151,9 @@ export type TagBaseState = DistributiveOmit<TagState, 'appearance' | 'size' | 's
 export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public (undocumented)
+export type TagContextValues = TagAvatarContextValues;
+
+// @public (undocumented)
 export type TagDismissData<Value = TagValue> = {
     value: Value;
 };
@@ -159,6 +175,12 @@ export type TagGroupBaseState<Value = TagValue> = Omit<TagGroupState<Value>, 'ap
 
 // @public (undocumented)
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
+
+// @public (undocumented)
+export const TagGroupContextProvider: React_2.Provider<TagGroupContextValue | undefined>;
+
+// @public
+export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismiss' | 'size'>> & Partial<Pick<TagGroupState, 'disabled' | 'appearance' | 'dismissible' | 'handleTagSelect' | 'role' | 'selectedValues'>>;
 
 // @public (undocumented)
 export type TagGroupContextValues = {
@@ -229,6 +251,9 @@ export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React
 export const useInteractionTagBase_unstable: (props: InteractionTagBaseProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagBaseState;
 
 // @public (undocumented)
+export const useInteractionTagContext_unstable: () => InteractionTagContextValue;
+
+// @public (undocumented)
 export function useInteractionTagContextValues_unstable(state: InteractionTagState): InteractionTagContextValues;
 
 // @public
@@ -265,7 +290,10 @@ export const useTagBase_unstable: (props: TagBaseProps, ref: React_2.Ref<HTMLSpa
 export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagGroupState;
 
 // @public
-export const useTagGroupBase_unstable: (props: TagGroupBaseProps, ref: React_2.Ref<HTMLDivElement>) => TagGroupBaseState;
+export const useTagGroupBase_unstable: (props: TagGroupBaseProps, ref: React_2.Ref<HTMLDivElement>, options?: UseTagGroupBaseOptions) => TagGroupBaseState;
+
+// @public (undocumented)
+export const useTagGroupContext_unstable: () => TagGroupContextValue;
 
 // @public (undocumented)
 export function useTagGroupContextValues_unstable(state: TagGroupState): TagGroupContextValues;
