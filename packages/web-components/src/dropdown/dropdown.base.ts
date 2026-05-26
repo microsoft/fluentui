@@ -446,9 +446,7 @@ export class BaseDropdown extends FASTElement {
   public get enabledOptions(): DropdownOption[] {
     return (
       this.listbox?.enabledOptions ??
-      Array.from(this.querySelectorAll('*')).filter<DropdownOption>(
-        (o): o is DropdownOption => isDropdownOption(o) && !o.disabled,
-      )
+      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled)
     );
   }
 

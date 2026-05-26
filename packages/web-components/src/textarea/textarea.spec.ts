@@ -151,18 +151,15 @@ test.describe('TextArea', () => {
     }) => {
       const { element } = fastPage;
 
-      await page.addInitScript({
-        content: `
-          const originalSupports = CSS.supports.bind(CSS);
-          window.__originalCSSSupports = originalSupports;
-          CSS.supports = (property, value) => {
-            if (property === 'field-sizing: content' || (property === 'field-sizing' && value === 'content')) {
-              console.log('Mocking CSS.supports to return false for', property);
-              return false;
-            }
-            return originalSupports(property, value);
-          };
-        `,
+      await page.addInitScript(() => {
+        const originalSupports = CSS.supports.bind(CSS);
+        (window as any).__originalCSSSupports = originalSupports;
+        (CSS as any).supports = (property: string, value: string) => {
+          if (property === 'field-sizing: content' || (property === 'field-sizing' && value === 'content')) {
+            return false;
+          }
+          return originalSupports(property, value);
+        };
       });
 
       // Ensures the next navigation creates a new context where the patched CSS.supports is in effect.

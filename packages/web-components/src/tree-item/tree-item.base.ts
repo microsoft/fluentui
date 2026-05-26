@@ -1,4 +1,4 @@
-import { attr, css, type ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
