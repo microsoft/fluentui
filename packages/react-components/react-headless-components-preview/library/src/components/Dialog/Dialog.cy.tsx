@@ -7,7 +7,8 @@ import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTr
 import type { DialogProps, DialogSurfaceProps } from '.';
 import { Button } from '../Button';
 import { Provider } from '../Provider';
-import { Popover, PopoverSurface, PopoverTrigger } from '../Popover';
+// TODO: replace with headless alternatives when available
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 
@@ -255,7 +256,12 @@ describe('Dialog', () => {
 
   describe('backdrop click (modal)', () => {
     it('should close when the backdrop is clicked', () => {
-      mount(<BasicDialog modalType="modal" surfaceProps={{ id: 'dialog-surface' }} />);
+      // Constrain the dialog so that `realClick({ x: -10, y: -10 })` lands inside
+      // the iframe viewport — without explicit dimensions the dialog spans nearly
+      // the full 500px width and the negative-offset click would go off-screen.
+      mount(
+        <BasicDialog modalType="modal" surfaceProps={{ id: 'dialog-surface', style: { width: 200, height: 100 } }} />,
+      );
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get(dialogSurfaceSelector).should('exist');
 
