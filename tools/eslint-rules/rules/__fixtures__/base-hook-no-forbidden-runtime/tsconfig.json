@@ -14,7 +14,8 @@
       "watched-pkg/*": ["./stubs/watched-pkg/*"],
       "heavy-runtime": ["./stubs/heavy-runtime/index.ts"],
       "light-helper": ["./stubs/light-helper/index.ts"],
-      "cyclic-pkg": ["./stubs/cyclic-pkg/index.ts"]
+      "cyclic-pkg": ["./stubs/cyclic-pkg/index.ts"],
+      "cyclic-heavy-pkg": ["./stubs/cyclic-heavy-pkg/index.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "stubs/**/*.ts"]

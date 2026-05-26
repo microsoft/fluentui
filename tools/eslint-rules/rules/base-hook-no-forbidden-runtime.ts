@@ -1,5 +1,6 @@
 import type { TSESTree, TSESLint, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
 import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
+import * as path from 'node:path';
 import * as ts from 'typescript';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-base-hook-no-forbidden-runtime"
@@ -99,8 +100,6 @@ interface Reach {
   value: ReadonlySet<string>;
   all: ReadonlySet<string>;
 }
-
-const EMPTY_REACH: Reach = { value: new Set(), all: new Set() };
 
 /**
  * Per-Program cache: source file path → reach sets transitively computed from that file.
@@ -497,8 +496,8 @@ function transitiveReach(program: ts.Program, sourceFile: ts.SourceFile): Reach 
 /**
  * Recursive worker for `transitiveReach`. Walks the import graph DFS, recording every bare
  * specifier encountered (separately for value-only vs value+type follow modes) and recursing into
- * each resolved source file. Uses `inProgress` to break cycles (cycle hits return empty sets
- * without caching, so the originating call still commits the complete result).
+ * each resolved source file. Uses `inProgress` to break cycles by returning the already-cached,
+ * in-progress reach object for the cycle participant.
  */
 function computeReach(
   program: ts.Program,
@@ -506,49 +505,51 @@ function computeReach(
   cache: Map<string, Reach>,
   inProgress: Set<string>,
 ): Reach {
-  const cached = cache.get(sourceFile.fileName);
+  const fileName = sourceFile.fileName;
+  const cached = cache.get(fileName);
   if (cached) {
     return cached;
   }
-  if (inProgress.has(sourceFile.fileName)) {
-    // Cycle: return empty sets without caching so the eventual full result is committed by the originator.
-    return EMPTY_REACH;
-  }
-  inProgress.add(sourceFile.fileName);
-
   const value = new Set<string>();
   const all = new Set<string>();
-  for (const imp of collectImports(sourceFile)) {
-    if (isBareSpecifier(imp.specifier)) {
-      const pkg = packageNameOf(imp.specifier);
-      all.add(pkg);
-      if (!imp.typeOnly) {
-        value.add(pkg);
-      }
-    }
-    const resolved = resolveModule(program, sourceFile, imp.specifier, imp.literal);
-    if (!resolved) {
-      continue;
-    }
-    const childSourceFile = program.getSourceFile(resolved);
-    if (!childSourceFile) {
-      continue;
-    }
-    const childReach = computeReach(program, childSourceFile, cache, inProgress);
-    for (const pkg of childReach.all) {
-      all.add(pkg);
-    }
-    if (!imp.typeOnly) {
-      // A type-only edge does not propagate runtime reach: it can only widen the `all` set.
-      for (const pkg of childReach.value) {
-        value.add(pkg);
-      }
-    }
-  }
-
-  inProgress.delete(sourceFile.fileName);
   const result: Reach = { value, all };
-  cache.set(sourceFile.fileName, result);
+  cache.set(fileName, result);
+  if (inProgress.has(fileName)) {
+    return result;
+  }
+  inProgress.add(fileName);
+
+  try {
+    for (const imp of collectImports(sourceFile)) {
+      if (isBareSpecifier(imp.specifier)) {
+        const pkg = packageNameOf(imp.specifier);
+        all.add(pkg);
+        if (!imp.typeOnly) {
+          value.add(pkg);
+        }
+      }
+      const resolved = resolveModule(program, sourceFile, imp.specifier, imp.literal);
+      if (!resolved) {
+        continue;
+      }
+      const childSourceFile = program.getSourceFile(resolved);
+      if (!childSourceFile) {
+        continue;
+      }
+      const childReach = computeReach(program, childSourceFile, cache, inProgress);
+      for (const pkg of childReach.all) {
+        all.add(pkg);
+      }
+      if (!imp.typeOnly) {
+        // A type-only edge does not propagate runtime reach: it can only widen the `all` set.
+        for (const pkg of childReach.value) {
+          value.add(pkg);
+        }
+      }
+    }
+  } finally {
+    inProgress.delete(fileName);
+  }
   return result;
 }
 
@@ -691,14 +692,22 @@ function packageNameOf(specifier: string): string {
  * path workspace-relative when inside the current working directory.
  */
 function shortenPath(absolute: string): string {
-  const marker = '/node_modules/';
-  const idx = absolute.lastIndexOf(marker);
-  if (idx !== -1) {
-    return absolute.slice(idx + marker.length);
+  const resolvedAbsolute = path.resolve(absolute);
+  const normalizedAbsolute = toPosixPath(resolvedAbsolute);
+  const segments = normalizedAbsolute.split('/');
+  const nodeModulesIdx = segments.lastIndexOf('node_modules');
+  if (nodeModulesIdx !== -1 && nodeModulesIdx + 1 < segments.length) {
+    return segments.slice(nodeModulesIdx + 1).join('/');
   }
-  const cwd = process.cwd();
-  if (absolute.startsWith(cwd)) {
-    return absolute.slice(cwd.length + 1);
+
+  const relative = path.relative(path.resolve(process.cwd()), resolvedAbsolute);
+  if (relative.length > 0 && !relative.startsWith('..') && !path.isAbsolute(relative)) {
+    return toPosixPath(relative);
   }
-  return absolute;
+
+  return normalizedAbsolute;
+}
+
+function toPosixPath(value: string): string {
+  return value.replace(/\\/g, '/');
 }

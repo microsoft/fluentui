@@ -241,6 +241,36 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         },
       ],
     },
+    // Regression: when the defining symbol lives on one node of a cycle, forbidden runtime
+    // imported by another node in that cycle must still appear in transitive reach.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: [
+        {
+          watchedPackages: ['cyclic-heavy-pkg'],
+          forbiddenRuntimes: ['heavy-runtime'],
+        },
+      ],
+      code: `
+          import { useB } from 'cyclic-heavy-pkg';
+          export const useThingBase_unstable = (props: { a: number }, ref) => {
+            return { props, ref, value: useB() };
+          };
+        `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'useB',
+            package: 'cyclic-heavy-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/base-hook-no-forbidden-runtime/stubs/cyclic-heavy-pkg/b.ts',
+          },
+        },
+      ],
+    },
     // Aliased import from a forbidden-runtime package is still flagged on the alias use site.
     {
       languageOptions: typedLanguageOptions,
