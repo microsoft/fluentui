@@ -68,6 +68,17 @@ export default {
         type: Object.values(SliderSetOrientation).join('|'),
       },
     },
+    mode: {
+      control: 'text',
+      description: 'The slider mode.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    thumbSlottedContent: {
+      control: false,
+      description: 'Slot for custom thumb content.',
+      name: 'thumb',
+      table: { category: 'slots', type: {} },
+    },
   },
 } as Meta<FluentSlider>;
 

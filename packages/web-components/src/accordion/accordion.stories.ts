@@ -55,12 +55,6 @@ export default {
       name: '',
       table: { category: 'slots', type: {} },
     },
-    headingSlottedContent: {
-      control: false,
-      description: 'The slot for the heading content',
-      name: 'heading',
-      table: { category: 'slots', type: {} },
-    },
   },
 } as Meta<FluentAccordion>;
 

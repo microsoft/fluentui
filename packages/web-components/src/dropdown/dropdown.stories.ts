@@ -58,6 +58,11 @@ export default {
   title: 'Components/Dropdown',
   render: renderComponent(storyTemplate),
   argTypes: {
+    ariaLabelledby: {
+      control: 'text',
+      name: 'aria-labelledby',
+      table: { category: 'attributes' },
+    },
     appearance: {
       control: 'select',
       options: ['', ...Object.values(DropdownAppearance)],
@@ -92,6 +97,24 @@ export default {
       control: 'select',
       options: ['', ...Object.values(DropdownSize)],
       table: { category: 'attributes' },
+    },
+    id: {
+      control: 'text',
+      table: { category: 'attributes' },
+    },
+    value: {
+      control: 'text',
+      table: { category: 'attributes' },
+    },
+    controlSlottedContent: {
+      control: false,
+      name: 'control',
+      table: { category: 'slots', type: {} },
+    },
+    indicatorSlottedContent: {
+      control: false,
+      name: 'indicator',
+      table: { category: 'slots', type: {} },
     },
     slottedContent: { table: { disable: true } },
     slot: { table: { disable: true } },

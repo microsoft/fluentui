@@ -64,7 +64,7 @@ export default {
       mapping: { '': null, ...['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span'] },
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span'],
       table: {
-        category: 'attributes',
+        category: 'demo',
         type: { summary: Object.values(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span']).join('|') },
       },
     },

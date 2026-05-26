@@ -7,7 +7,6 @@ type Story = StoryObj<FluentButton>;
 
 const storyTemplate = html<StoryArgs<FluentButton>>`
   <fluent-button
-    ?autofocus="${story => story.autofocus}"
     ?disabled-focusable="${story => story.disabledFocusable}"
     ?disabled="${story => story.disabled}"
     ?formnovalidate="${story => story.formnovalidate}"

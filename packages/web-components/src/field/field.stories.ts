@@ -66,7 +66,7 @@ export default {
     labelPosition: {
       control: 'select',
       description: 'Sets the position of the label relative to the input',
-      name: 'size',
+      name: 'label-position',
       mapping: { '': null, ...LabelPosition },
       options: ['', ...Object.values(LabelPosition)],
       table: {

@@ -10,6 +10,7 @@ import { uniqueId } from '../utils/unique-id.js';
  * @tag fluent-dropdown-option
  *
  * @slot - The default slot for the option's content.
+ * @slot start - Optional content shown at the start of the option.
  * @slot checked-indicator - The checked indicator.
  * @slot description - Optional description content.
  *

@@ -7,7 +7,6 @@ type Story = StoryObj<FluentToggleButton>;
 
 const storyTemplate = html<StoryArgs<FluentToggleButton>>`
   <fluent-toggle-button
-    ?autofocus="${story => story.autofocus}"
     ?disabled-focusable="${story => story.disabledFocusable}"
     ?disabled="${story => story.disabled}"
     ?formnovalidate="${story => story.formnovalidate}"
@@ -142,6 +141,11 @@ export default {
     value: {
       control: 'text',
       description: 'The initial value of the button.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    type: {
+      control: 'text',
+      description: 'The button type.',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
     slottedContent: {

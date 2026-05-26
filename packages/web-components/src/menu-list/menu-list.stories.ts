@@ -87,7 +87,7 @@ export default {
       control: false,
       description: 'The default slot. Contains the menu items.',
       name: '',
-      table: { category: 'content', type: {} },
+      table: { category: 'slots', type: {} },
     },
   },
 } as Meta<FluentMenuList>;

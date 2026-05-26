@@ -34,7 +34,13 @@ export default {
     slottedContent: {
       control: false,
       description: 'The default slot',
+      name: '',
       table: { category: 'slots', type: {} },
+    },
+    id: {
+      control: 'text',
+      description: 'The id of the anchor element for examples.',
+      table: { category: 'attributes', type: { summary: 'string' } },
     },
     delay: {
       control: 'number',

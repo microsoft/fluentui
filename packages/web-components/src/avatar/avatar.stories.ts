@@ -53,6 +53,12 @@ export default {
         type: { summary: Object.values(AvatarColor).join('|') },
       },
     },
+    colorId: {
+      control: 'text',
+      description: 'Provides a deterministic colorful avatar color id.',
+      name: 'color-id',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     initials: {
       control: 'text',
       description: 'Provide custom initials rather than one generated via the name',

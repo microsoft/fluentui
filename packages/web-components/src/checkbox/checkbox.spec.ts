@@ -419,4 +419,12 @@ test.describe('Checkbox', () => {
 
     await expect(element).toHaveJSProperty('checked', false);
   });
+
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { autofocus: true } });
+
+    await expect(element).toBeFocused();
+  });
 });

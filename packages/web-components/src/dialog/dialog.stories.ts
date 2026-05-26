@@ -79,6 +79,24 @@ export default {
     closeSlottedContent: () => closeTemplate,
   },
   argTypes: {
+    ariaDescribedby: {
+      control: 'text',
+      description: 'Sets aria-describedby on the dialog.',
+      name: 'aria-describedby',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    ariaLabel: {
+      control: 'text',
+      description: 'Sets aria-label on the dialog.',
+      name: 'aria-label',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    ariaLabelledby: {
+      control: 'text',
+      description: 'Sets aria-labelledby on the dialog.',
+      name: 'aria-labelledby',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     type: {
       control: 'select',
       description:
@@ -94,9 +112,10 @@ export default {
     slottedContent: {
       control: false,
       name: '',
-      description: 'Default slot for the dialog content.',
+      description: 'Default slot for the dialog content, e.g. `<fluent-dialog-body>`.',
       table: { category: 'slots', type: {} },
     },
+    closeSlottedContent: { table: { disable: true } },
     actionSlottedContent: { table: { disable: true } },
     titleSlottedContent: { table: { disable: true } },
     titleActionSlottedContent: { table: { disable: true } },

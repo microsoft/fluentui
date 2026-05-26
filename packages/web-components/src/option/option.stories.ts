@@ -38,6 +38,21 @@ export default {
       description: 'Sets the disabled state of the option',
       table: { category: 'attributes', type: { summary: 'boolean' } },
     },
+    form: {
+      control: 'text',
+      description: 'The form element that the option belongs to',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    freeform: {
+      control: 'boolean',
+      description: 'Sets whether the option behaves as freeform content',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    id: {
+      control: 'text',
+      description: 'The id of the option',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     name: {
       control: 'text',
       description: 'The name of the option',
@@ -56,7 +71,7 @@ export default {
     selectedIndicatorContent: {
       control: false,
       description: 'Slot for selected indicator',
-      name: 'indicator',
+      name: 'checked-indicator',
       table: { category: 'slots', type: {} },
     },
     slottedContent: {

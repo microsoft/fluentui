@@ -29,6 +29,32 @@ export default {
       description: 'Sets disabled state on radio',
       table: { category: 'attributes', type: { summary: 'boolean' } },
     },
+    form: {
+      control: 'text',
+      description: 'The form element that the radio belongs to',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    name: {
+      control: 'text',
+      description: 'The name of the radio',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    required: {
+      control: 'boolean',
+      description: 'Marks radio as required',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    value: {
+      control: 'text',
+      description: 'The value of the radio',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    checkedIndicatorContent: {
+      control: false,
+      description: 'Slot for checked indicator',
+      name: 'checked-indicator',
+      table: { category: 'slots', type: {} },
+    },
   },
 } as Meta<FluentRadio>;
 

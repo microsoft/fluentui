@@ -46,7 +46,7 @@ export default {
     fit: {
       control: 'select',
       description: 'Determines how the image will be scaled and positioned within its parent container.',
-      name: 'size',
+      name: 'fit',
       mapping: { '': null, ...ImageFit },
       options: ['', ...Object.values(ImageFit)],
       table: {
@@ -66,7 +66,7 @@ export default {
     shape: {
       control: 'select',
       description: 'Image Shape',
-      name: 'size',
+      name: 'shape',
       mapping: { '': null, ...ImageShape },
       options: ['', ...Object.values(ImageShape)],
       table: {

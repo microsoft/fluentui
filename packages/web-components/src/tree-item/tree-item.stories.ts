@@ -57,6 +57,27 @@ export default {
     appearance: TreeItemAppearance.subtle,
   },
   argTypes: {
+    dataIndent: {
+      control: 'number',
+      description: 'Indent level for nested items.',
+      name: 'data-indent',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    empty: {
+      control: 'boolean',
+      description: 'Whether the tree item has no child items.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    expanded: {
+      control: 'boolean',
+      description: 'Whether the tree item is expanded.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    selected: {
+      control: 'boolean',
+      description: 'Whether the tree item is selected.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
     size: {
       control: 'select',
       options: Object.values(TreeItemSize),
@@ -65,8 +86,8 @@ export default {
         defaultValue: {
           summary: 'medium',
         },
+        category: 'attributes',
       },
-      category: 'attributes',
     },
     appearance: {
       control: 'select',
@@ -76,8 +97,8 @@ export default {
         defaultValue: {
           summary: 'subtle',
         },
+        category: 'attributes',
       },
-      category: 'attributes',
     },
     slottedContent: {
       control: false,

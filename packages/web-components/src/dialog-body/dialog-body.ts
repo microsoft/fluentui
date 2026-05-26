@@ -5,6 +5,12 @@ import { isDialog } from '../dialog/dialog.options.js';
  *
  * @tag fluent-dialog-body
  *
+ * @slot title - Content for the dialog title.
+ * @slot title-action - Content for actions shown near the title.
+ * @slot close - Content for the close action.
+ * @slot action - Content for footer actions.
+ * @slot - Default dialog body content.
+ *
  * @public
  * @extends FASTElement
  */

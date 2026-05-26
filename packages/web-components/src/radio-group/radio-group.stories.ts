@@ -82,6 +82,12 @@ export default {
       description: 'The name of the radio group.',
       type: 'string',
     },
+    required: {
+      control: 'boolean',
+      table: { category: 'attributes' },
+      description: 'Marks the radio group as required.',
+      type: 'boolean',
+    },
     orientation: {
       control: 'select',
       description: 'The orientation of the radio group.',

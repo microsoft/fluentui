@@ -27,6 +27,28 @@ export default {
     size: BadgeSize.medium,
   },
   argTypes: {
+    count: {
+      control: 'number',
+      description: 'Sets the count shown by a counter badge variant.',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    dot: {
+      control: 'boolean',
+      description: 'Shows a dot badge for a counter badge variant.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    overflowCount: {
+      control: 'number',
+      description: 'Sets the overflow threshold shown by a counter badge variant.',
+      name: 'overflow-count',
+      table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    showZero: {
+      control: 'boolean',
+      description: 'Shows zero when count is 0 for a counter badge variant.',
+      name: 'show-zero',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
     appearance: {
       description: 'Sets the appearance of the badge to one of the predefined styles',
       options: Object.values(BadgeAppearance),

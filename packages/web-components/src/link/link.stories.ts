@@ -53,6 +53,18 @@ export default {
       name: 'rel',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
+    download: {
+      control: 'text',
+      description: 'The download attribute.',
+      name: 'download',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    ping: {
+      control: 'text',
+      description: 'The ping attribute.',
+      name: 'ping',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     type: {
       control: 'text',
       description: 'The type attribute.',
@@ -89,6 +101,18 @@ export default {
       control: false,
       description: 'The default slot',
       name: '',
+      table: { category: 'slots', type: {} },
+    },
+    startSlottedContent: {
+      control: false,
+      description: 'Content which can be provided before the link content.',
+      name: 'start',
+      table: { category: 'slots', type: {} },
+    },
+    endSlottedContent: {
+      control: false,
+      description: 'Content which can be provided after the link content.',
+      name: 'end',
       table: { category: 'slots', type: {} },
     },
   },

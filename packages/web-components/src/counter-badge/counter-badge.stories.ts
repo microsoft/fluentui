@@ -82,13 +82,13 @@ export default {
     count: {
       control: 'number',
       description: "Sets the badge's count attribute",
-      name: 'formmethod',
+      name: 'count',
       table: { category: 'attributes', type: { summary: 'number' } },
     },
     overflowCount: {
-      control: 'text',
+      control: 'number',
       description: "Sets the badge's overflow count attribute",
-      name: 'formmethod',
+      name: 'overflow-count',
       table: { category: 'attributes', type: { summary: 'number' } },
     },
     startSlottedContent: {

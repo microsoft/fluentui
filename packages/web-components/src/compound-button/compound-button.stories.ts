@@ -70,6 +70,57 @@ export default {
       name: 'disabled-focusable',
       table: { category: 'attributes', type: { summary: 'boolean' } },
     },
+    form: {
+      control: 'text',
+      description: 'The id of a form to associate the element to.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formaction: {
+      control: 'text',
+      description: 'The URL that processes the form submission.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formenctype: {
+      control: 'text',
+      description: 'The encoding type for the form submission.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formmethod: {
+      control: 'text',
+      description: 'The HTTP method used to submit the form.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    formnovalidate: {
+      control: 'boolean',
+      description: 'Disables form validation on submit.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    formtarget: {
+      control: 'text',
+      description: 'Target frame or window for form submission.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Indicates the button should only display as an icon.',
+      name: 'icon-only',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    name: {
+      control: 'text',
+      description: 'The name used during form submission.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    type: {
+      control: 'text',
+      description: 'The button type.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    value: {
+      control: 'text',
+      description: 'The initial value of the button.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     slottedContent: {
       control: false,
       description: 'The default slot',
@@ -79,7 +130,7 @@ export default {
     descriptionSlottedContent: {
       control: false,
       description: 'The description slot',
-      name: '',
+      name: 'description',
       table: { category: 'slots', type: {} },
     },
     startSlottedContent: {

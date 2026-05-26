@@ -38,11 +38,6 @@ export default {
     disabled: false,
   },
   argTypes: {
-    autofocus: {
-      control: 'boolean',
-      description: 'Sets the checkbox to autofocus',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
     checked: {
       control: 'boolean',
       description: 'Sets the checked state of the checkbox',
@@ -61,7 +56,7 @@ export default {
     indeterminate: {
       control: 'boolean',
       description: 'Sets the indeterminate state of the checkbox',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
+      table: { category: 'properties', type: { summary: 'boolean' } },
     },
     name: {
       control: 'text',
@@ -101,13 +96,13 @@ export default {
     checkedIndicatorContent: {
       control: false,
       description: 'Slot for checked indicator',
-      name: 'start',
+      name: 'checked-indicator',
       table: { category: 'slots', type: {} },
     },
     indeterminateIndicatorContent: {
       control: false,
       description: 'Slot for indeterminate indicator',
-      name: 'end',
+      name: 'indeterminate-indicator',
       table: { category: 'slots', type: {} },
     },
     label: { table: { disable: true } },

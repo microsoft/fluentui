@@ -55,7 +55,9 @@ export default {
     },
     'icon-view-box': {
       control: 'text',
+      description: 'The viewBox attribute value used for the slotted icon.',
       table: {
+        category: 'attributes',
         type: {
           summary: 'The `viewBox` attribute of the icon SVG element',
         },
@@ -73,6 +75,12 @@ export default {
       control: 'number',
       description: 'The value of the rating',
       table: { category: 'attributes', type: { summary: 'number' } },
+    },
+    ariaLabel: {
+      control: 'text',
+      name: 'aria-label',
+      description: 'Accessible label for assistive technologies.',
+      table: { category: 'aria-attributes', type: { summary: 'string' } },
     },
     iconSlottedContent: {
       control: false,

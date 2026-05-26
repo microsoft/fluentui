@@ -34,17 +34,6 @@ export class BaseTextInput extends FASTElement {
   public autocomplete?: string;
 
   /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
-
-  /**
    * The current value of the input.
    * @public
    * @remarks

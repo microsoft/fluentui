@@ -94,13 +94,13 @@ export default {
     primaryActionSlottedContent: {
       control: false,
       description: 'The primary action slot. Used when the menu is `split`',
-      name: '',
+      name: 'primary-action',
       table: { category: 'slots', type: {} },
     },
     triggerSlottedContent: {
       control: false,
       description: 'The trigger slot',
-      name: '',
+      name: 'trigger',
       table: { category: 'slots', type: {} },
     },
   },

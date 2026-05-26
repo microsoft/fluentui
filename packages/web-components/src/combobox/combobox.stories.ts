@@ -43,8 +43,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.
-        To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.`,
+        component: `
+The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
+To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
+`,
       },
     },
   },
@@ -53,9 +55,26 @@ export default {
     type: DropdownType.combobox,
   },
   argTypes: {
+    ariaLabelledby: {
+      control: 'text',
+      name: 'aria-labelledby',
+      table: { category: 'attributes' },
+    },
     appearance: {
       control: 'select',
       options: ['', ...Object.values(DropdownAppearance)],
+      table: { category: 'attributes' },
+    },
+    disabled: {
+      control: 'boolean',
+      table: { category: 'attributes' },
+    },
+    id: {
+      control: 'text',
+      table: { category: 'attributes' },
+    },
+    name: {
+      control: 'text',
       table: { category: 'attributes' },
     },
     type: {
@@ -71,10 +90,28 @@ export default {
       control: 'boolean',
       table: { category: 'attributes' },
     },
+    required: {
+      control: 'boolean',
+      table: { category: 'attributes' },
+    },
     size: {
       control: 'select',
       options: ['', ...Object.values(DropdownSize)],
       table: { category: 'attributes' },
+    },
+    value: {
+      control: 'text',
+      table: { category: 'attributes' },
+    },
+    controlSlottedContent: {
+      control: false,
+      name: 'control',
+      table: { category: 'slots', type: {} },
+    },
+    indicatorSlottedContent: {
+      control: false,
+      name: 'indicator',
+      table: { category: 'slots', type: {} },
     },
     slottedContent: { table: { disable: true } },
     slot: { table: { disable: true } },

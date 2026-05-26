@@ -97,6 +97,18 @@ export default {
     '--dialog-backdrop': 'var(--colorBackgroundOverlay)',
   },
   argTypes: {
+    ariaDescribedby: {
+      control: 'text',
+      name: 'aria-describedby',
+      description: 'Sets aria-describedby on the drawer.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    ariaLabelledby: {
+      control: 'text',
+      name: 'aria-labelledby',
+      description: 'Sets aria-labelledby on the drawer.',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     position: {
       control: 'select',
       description: 'Sets the position of drawer',

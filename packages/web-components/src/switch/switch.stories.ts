@@ -44,10 +44,25 @@ export default {
       control: 'boolean',
       table: { category: 'attributes', type: { summary: 'boolean' } },
     },
+    form: {
+      description: 'The form element that the switch belongs to',
+      control: 'text',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    name: {
+      description: 'The name of the switch',
+      control: 'text',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
     required: {
       description: 'Sets the switch as required',
       control: 'boolean',
       table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    value: {
+      description: 'The value of the switch',
+      control: 'text',
+      table: { category: 'attributes', type: { summary: 'string' } },
     },
   },
 } as Meta<FluentSwitch>;

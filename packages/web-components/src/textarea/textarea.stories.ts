@@ -10,7 +10,6 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
   <fluent-textarea
     appearance="${x => x.appearance}"
     autocomplete="${x => x.autocomplete}"
-    ?autofocus="${x => x.autofocus}"
     ?auto-resize="${x => x.autoResize}"
     ?block="${x => x.block}"
     dirname="${x => x.dirName}"
@@ -53,12 +52,6 @@ export default {
       table: { category: 'attributes' },
       description: "Indicates the element's autocomplete state.",
       type: 'string',
-    },
-    autofocus: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Indicates that this element should get focus after the page finishes loading.',
-      type: 'boolean',
     },
     autoResize: {
       control: 'boolean',
@@ -180,7 +173,7 @@ export default {
       table: { category: 'slots', type: {} },
     },
     labelSlottedContent: {
-      name: '',
+      name: 'label',
       description: 'The label slot. Content in this slot is used as the `<label>` for the input.',
       table: { category: 'slots', type: {} },
     },

@@ -26,7 +26,6 @@ const storyTemplate = html<StoryArgs<FluentTextInput>>`
   <fluent-text-input
     appearance="${story => story.appearance}"
     autocomplete="${story => story.autocomplete}"
-    ?autofocus="${story => story.autofocus}"
     control-size="${story => story.controlSize}"
     dirname="${story => story.dirname}"
     ?disabled="${story => story.disabled}"
@@ -73,12 +72,6 @@ export default {
       description: "Indicates the element's autocomplete state.",
       type: 'string',
     },
-    autofocus: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Indicates that this element should get focus after the page finishes loading.',
-      type: 'boolean',
-    },
     controlSize: {
       description: 'Indicates the size of the input.',
       control: 'select',
@@ -90,6 +83,13 @@ export default {
           summary: Object.values(TextInputControlSize).join('|'),
         },
       },
+    },
+    currentValue: {
+      control: 'text',
+      name: 'current-value',
+      table: { category: 'attributes' },
+      description: 'The current value representation used by the control.',
+      type: 'string',
     },
     dirname: {
       control: 'text',
@@ -167,6 +167,21 @@ export default {
         defaultValue: { summary: 'false' },
       },
       description: 'Sets the required state',
+      type: 'boolean',
+    },
+    size: {
+      control: 'number',
+      table: { category: 'attributes' },
+      description: 'Sets the width hint of the input in characters.',
+      type: 'number',
+    },
+    spellcheck: {
+      control: 'boolean',
+      table: {
+        category: 'attributes',
+        defaultValue: { summary: 'false' },
+      },
+      description: 'Controls whether to enable spell checking for the content.',
       type: 'boolean',
     },
     type: {

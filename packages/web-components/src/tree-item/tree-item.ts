@@ -7,6 +7,11 @@ import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
  *
  * @tag fluent-tree-item
  *
+ * @slot start - Content shown before the item label.
+ * @slot end - Content shown after the item label.
+ * @slot aside - Content shown at the far end of the row.
+ * @slot item - Child tree items.
+ *
  */
 export class TreeItem extends BaseTreeItem {
   /**

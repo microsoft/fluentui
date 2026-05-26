@@ -7,6 +7,8 @@ import '../src/index-rollup.js';
 import './docs-root.css';
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
+const ARIA_ATTRIBUTE_PATTERN = /^aria(?:$|[-A-Z])/;
+const ARIA_ATTRIBUTES_CATEGORY = 'aria-attributes';
 
 const themes = {
   'web-light': webLightTheme,
@@ -74,6 +76,38 @@ export const decorators = [
     return Story();
   },
 ];
+
+function withAriaAttributesCategory(context) {
+  if (!context.argTypes) {
+    return context.argTypes;
+  }
+
+  return Object.fromEntries(
+    Object.entries(context.argTypes).map(([key, argType]) => {
+      const argName = argType?.name;
+      const isAriaAttribute =
+        (typeof key === 'string' && ARIA_ATTRIBUTE_PATTERN.test(key)) ||
+        (typeof argName === 'string' && ARIA_ATTRIBUTE_PATTERN.test(argName));
+
+      if (!isAriaAttribute) {
+        return [key, argType];
+      }
+
+      return [
+        key,
+        {
+          ...argType,
+          table: {
+            ...argType?.table,
+            category: ARIA_ATTRIBUTES_CATEGORY,
+          },
+        },
+      ];
+    }),
+  );
+}
+
+export const argTypesEnhancers = [withAriaAttributesCategory];
 
 export const parameters = {
   layout: 'fullscreen',
