@@ -206,6 +206,26 @@ ruleTester.run(RULE_NAME, rule, {
         },
       ],
     },
+    // Referencing a watched-package binding inside a base hook without typed services available
+    // surfaces a one-shot `typedServicesUnavailable` diagnostic so the misconfiguration is visible.
+    {
+      code: `
+        import * as React from 'react';
+        import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return useArrowNavigationGroup({});
+        };
+      `,
+      errors: [
+        {
+          messageId: 'typedServicesUnavailable',
+          data: {
+            watchedPackages: '@fluentui/react-tabster',
+            forbiddenRuntimes: 'tabster',
+          },
+        },
+      ],
+    },
   ],
 });
 
@@ -247,29 +267,17 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         };
       `,
     },
-    // Type-only import of a symbol whose defining file reaches the forbidden runtime is allowed.
+    // Type-only import of a watched-package symbol whose defining file does NOT reach the
+    // forbidden runtime is allowed (`LightOptions` is defined in `light.ts` which only pulls
+    // `light-helper`).
     {
       languageOptions: typedLanguageOptions,
       filename: TYPED_FILENAME,
       options: transitiveOptions,
       code: `
         import * as React from 'react';
-        import type { HeavyType } from 'watched-pkg';
-        export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
-          return { props, ref };
-        };
-      `,
-    },
-    // Per-specifier type-only import is also OK.
-    {
-      languageOptions: typedLanguageOptions,
-      filename: TYPED_FILENAME,
-      options: transitiveOptions,
-      code: `
-        import * as React from 'react';
-        import { type HeavyType, useLight } from 'watched-pkg';
-        export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
-          useLight();
+        import type { LightOptions } from 'watched-pkg';
+        export const useThingBase_unstable = (props: LightOptions, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
       `,
@@ -329,6 +337,20 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
         import * as React from 'react';
         import { type HeavyOptions } from 'heavy-runtime';
         export const useThingBase_unstable = (props: HeavyOptions, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+    // Symmetric `allowTypeImports`: also exempts watched-package type-only imports whose defining
+    // module reaches a forbidden runtime (no runtime coupling is possible from a type).
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptionsAllowTypeImports,
+      code: `
+        import * as React from 'react';
+        import type { HeavyType } from 'watched-pkg';
+        export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
           return { props, ref };
         };
       `,
@@ -448,6 +470,86 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
             hookName: 'useThingBase_unstable',
             importedName: 'HeavyOptions',
             package: 'heavy-runtime',
+          },
+        },
+      ],
+    },
+    // Type-leakage through a watched package: a top-level `import type` of a watched-package
+    // symbol whose defining module transitively reaches the forbidden runtime is disallowed
+    // because the type still ties the base hook's public API to the forbidden runtime.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import * as React from 'react';
+        import type { HeavyType } from 'watched-pkg';
+        export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'HeavyType',
+            package: 'watched-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/consistent-base-hook/stubs/watched-pkg/heavy.ts',
+          },
+        },
+      ],
+    },
+    // Per-specifier `type` modifier variant of the same scenario.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import * as React from 'react';
+        import { type HeavyType, useLight } from 'watched-pkg';
+        export const useThingBase_unstable = (props: HeavyType, ref: React.Ref<HTMLElement>) => {
+          useLight();
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'HeavyType',
+            package: 'watched-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/consistent-base-hook/stubs/watched-pkg/heavy.ts',
+          },
+        },
+      ],
+    },
+    // Indirect type leakage: `HeavyWrapper` is declared in `watched-pkg/index.ts` (not in `heavy.ts`),
+    // but its defining file value-re-exports `./heavy`, so the type-graph reach from `index.ts` still
+    // includes `heavy-runtime`. The base hook surface is therefore tied to the forbidden runtime.
+    {
+      languageOptions: typedLanguageOptions,
+      filename: TYPED_FILENAME,
+      options: transitiveOptions,
+      code: `
+        import * as React from 'react';
+        import type { HeavyWrapper } from 'watched-pkg';
+        export const useThingBase_unstable = (props: HeavyWrapper, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenRuntimeReach',
+          data: {
+            hookName: 'useThingBase_unstable',
+            importedName: 'HeavyWrapper',
+            package: 'watched-pkg',
+            runtime: 'heavy-runtime',
+            viaFile: 'rules/__fixtures__/consistent-base-hook/stubs/watched-pkg/index.ts',
           },
         },
       ],
