@@ -13,11 +13,6 @@ import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
 /**
- * The duration in milliseconds after the last character search keystroke before the search string is cleared.
- */
-const SEARCH_TIMEOUT = 500;
-
-/**
  * A Dropdown Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#combobox | ARIA combobox } role.
  *
@@ -841,6 +836,11 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * The duration in milliseconds after the last character search keystroke before the search string is cleared.
+   */
+  protected searchTimeoutMs = 500;
+
+  /**
    * The accumulated search string used to match option labels by prefix when printable characters are typed.
    *
    * @internal
@@ -890,7 +890,7 @@ export class BaseDropdown extends FASTElement {
     this.searchTimeout = setTimeout(() => {
       this.searchString = '';
       this.searchTimeout = undefined;
-    }, SEARCH_TIMEOUT);
+    }, this.searchTimeoutMs);
   }
 
   /**
