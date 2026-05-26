@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "style: migrate to latest react hooks and react compiler lint rules",
-  "packageName": "@fluentui/react-drawer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

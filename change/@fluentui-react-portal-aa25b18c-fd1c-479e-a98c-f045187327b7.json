@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "revert: revert removal of Griffel dependency from usePortalMount #35994",
-  "packageName": "@fluentui/react-portal",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 09:39:16 GMT",
+      "tag": "@fluentui/react-utilities_v9.26.4",
+      "version": "9.26.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f5bccb884ab92356ee9912cd29937d35e1d66d91",
+            "comment": "style: replace deprecated assertion syntax that causes issues to babel tsx"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Apr 2026 14:21:00 GMT",
       "tag": "@fluentui/react-utilities_v9.26.3",
       "version": "9.26.3",

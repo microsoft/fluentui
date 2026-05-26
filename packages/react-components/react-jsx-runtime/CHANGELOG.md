@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Thu, 23 Apr 2026 14:21:12 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:40:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.4.3)
+
+Tue, 26 May 2026 09:40:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.4.2..@fluentui/react-jsx-runtime_v9.4.3)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.4.2)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add base hooks and expose them",
-  "packageName": "@fluentui/react-nav",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
