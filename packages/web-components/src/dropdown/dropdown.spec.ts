@@ -603,23 +603,17 @@ test.describe('Dropdown', () => {
       await fastPage.setTemplate();
 
       await combobox.focus();
-      await page.keyboard.press('b');
+      await page.keyboard.press('b', { delay: 500 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
 
-      await page.waitForTimeout(500);
-
-      await page.keyboard.press('a');
+      await page.keyboard.press('a', { delay: 500 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o1');
 
-      await page.waitForTimeout(500);
-
-      await page.keyboard.press('c');
+      await page.keyboard.press('c', { delay: 500 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
-
-      await page.waitForTimeout(500);
 
       await page.keyboard.press('d');
 
