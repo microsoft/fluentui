@@ -114,7 +114,7 @@ Always boot the **per-component stories package** (`react-<component>-stories`) 
 ## Troubleshooting
 
 **`yarn nx run react-<component>-stories:storybook` says the target doesn't exist.**
-The workspace graph may be stale (recent reparent). Run `yarn nx reset` then retry. If `start` aliases still don't exist, use the direct yarn invocation:
+The workspace graph may be stale (recent reparent). Run `yarn nx reset` then retry. If `stroybook` aliases still don't exist, use the direct yarn invocation:
 
 ```bash
 cd packages/react-components/react-<component>/stories && yarn storybook dev --port 0 &
