@@ -4,6 +4,7 @@ export type {
   TeachingPopoverCarouselBaseProps as TeachingPopoverCarouselProps,
   TeachingPopoverCarouselBaseState as TeachingPopoverCarouselState,
   TeachingPopoverCarouselSlots,
+  TeachingPopoverCarouselContextValues,
 } from '@fluentui/react-teaching-popover';
 
 /**
