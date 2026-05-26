@@ -2,9 +2,6 @@ import type { TSESTree, TSESLint, ParserServicesWithTypeInformation } from '@typ
 import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
 import * as ts from 'typescript';
 import { BASE_HOOK_NAME_PATTERN, type BaseHookFunction, getFunctionInit } from '../utils/base-hook-detector';
-import { transitiveReach } from '../utils/transitive-reach';
-import { shortenPath } from '../utils/module-resolver';
-import { type ImportSpecifierNode, type TrackedImport, getImportedName } from '../utils/tracked-imports';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-base-hook-no-forbidden-runtime"
 export const RULE_NAME = 'base-hook-no-forbidden-runtime';
@@ -41,6 +38,66 @@ type Options = [
 ];
 
 type MessageIds = 'forbiddenRuntimeDirect' | 'forbiddenRuntimeReach' | 'typedServicesUnavailable';
+
+/**
+ * The original (imported) name of an import specifier, used for diagnostics and for matching
+ * against a forbidden/watched package's exports.
+ *
+ *  - named import         (`import { Foo }`)        → `'Foo'`
+ *  - aliased named import (`import { Foo as Bar }`) → `'Foo'` (the original, not the alias)
+ *  - default import       (`import X from 'pkg'`)   → `'default'`
+ *  - namespace import     (`import * as X`)         → `'*'`
+ */
+type ImportSpecifierNode =
+  | TSESTree.ImportSpecifier
+  | TSESTree.ImportDefaultSpecifier
+  | TSESTree.ImportNamespaceSpecifier;
+
+/**
+ * A locally-declared binding originating from a tracked import (a watched or forbidden-runtime
+ * package). Built when walking `ImportDeclaration` nodes so body references can be matched in
+ * O(1) via a `Map<Variable, TrackedImport>`.
+ */
+interface TrackedImport {
+  /** The package the binding came from (a watched OR forbidden-runtime package). */
+  package: string;
+  /** Original imported name (not the local alias). `default` or `*` for default / namespace. */
+  importedName: string;
+  /** Kind of package — controls how the reference is checked. */
+  kind: 'watched' | 'forbidden';
+  /**
+   * `true` when the binding is type-only (either the declaration is `import type ...`
+   * or the specifier is `import { type Foo }`). Used to gate whether direct usage in a
+   * value position is even possible (type-only bindings only surface in type positions).
+   */
+  isTypeOnly: boolean;
+  /** The specifier node (used for symbol lookup via ParserServices). */
+  specifier: ImportSpecifierNode;
+}
+
+/**
+ * Result of a single transitive-reach DFS over a source file's import graph.
+ *  - `value` — packages reachable via value (non type-only) imports only. Used to decide
+ *    whether a runtime reference can pull a forbidden runtime at execution time.
+ *  - `all`   — packages reachable via value OR type imports. Used to decide whether a
+ *    type reference can leak a forbidden runtime through the public API surface.
+ * `value` is always a subset of `all`.
+ */
+interface Reach {
+  value: ReadonlySet<string>;
+  all: ReadonlySet<string>;
+}
+
+const EMPTY_REACH: Reach = { value: new Set(), all: new Set() };
+
+/**
+ * Per-Program cache: source file path → reach sets transitively computed from that file.
+ * Both `value` and `all` sets are filled in a single DFS pass to share resolution work.
+ *
+ * Keyed by `ts.Program` identity so the cache is invalidated whenever
+ * typescript-eslint rebuilds the Program.
+ */
+const programCache = new WeakMap<ts.Program, Map<string, Reach>>();
 
 export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageIds>({
   name: RULE_NAME,
@@ -345,6 +402,29 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
   },
 });
 
+// ---------------------------------------------------------------------------
+// Import-specifier helpers
+// ---------------------------------------------------------------------------
+
+function getImportedName(specifier: ImportSpecifierNode): string | undefined {
+  switch (specifier.type) {
+    case AST_NODE_TYPES.ImportSpecifier:
+      return specifier.imported.type === AST_NODE_TYPES.Identifier
+        ? specifier.imported.name
+        : String(specifier.imported.value);
+    case AST_NODE_TYPES.ImportDefaultSpecifier:
+      return 'default';
+    case AST_NODE_TYPES.ImportNamespaceSpecifier:
+      return '*';
+    default:
+      return undefined;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Scope helpers
+// ---------------------------------------------------------------------------
+
 /**
  * `true` when `scope` (or any of its ancestor scopes) is the function scope of `hookFn`. Used to
  * confine the body-reference walk to the base hook itself — references in sibling functions are
@@ -359,4 +439,236 @@ function isScopeWithinFunction(scope: TSESLint.Scope.Scope, hookFn: BaseHookFunc
     current = current.upper;
   }
   return false;
+}
+
+// ---------------------------------------------------------------------------
+// Transitive value/type reach analysis
+// ---------------------------------------------------------------------------
+
+/**
+ * Returns the bare package specifiers transitively reachable from `sourceFile`, computed in two
+ * granularities in a single DFS pass:
+ *   - `value` — only value (non type-only) imports are followed. Used to decide whether a runtime
+ *     reference can pull a forbidden runtime at execution time.
+ *   - `all`   — both value and type imports are followed. Used to decide whether a type reference
+ *     can leak a forbidden runtime through the public API surface of a base hook.
+ *
+ * Memoized per Program × file. Cycle-safe.
+ */
+function transitiveReach(program: ts.Program, sourceFile: ts.SourceFile): Reach {
+  let cache = programCache.get(program);
+  if (!cache) {
+    cache = new Map();
+    programCache.set(program, cache);
+  }
+  return computeReach(program, sourceFile, cache, new Set());
+}
+
+/**
+ * Recursive worker for `transitiveReach`. Walks the import graph DFS, recording every bare
+ * specifier encountered (separately for value-only vs value+type follow modes) and recursing into
+ * each resolved source file. Uses `inProgress` to break cycles (cycle hits return empty sets
+ * without caching, so the originating call still commits the complete result).
+ */
+function computeReach(
+  program: ts.Program,
+  sourceFile: ts.SourceFile,
+  cache: Map<string, Reach>,
+  inProgress: Set<string>,
+): Reach {
+  const cached = cache.get(sourceFile.fileName);
+  if (cached) {
+    return cached;
+  }
+  if (inProgress.has(sourceFile.fileName)) {
+    // Cycle: return empty sets without caching so the eventual full result is committed by the originator.
+    return EMPTY_REACH;
+  }
+  inProgress.add(sourceFile.fileName);
+
+  const value = new Set<string>();
+  const all = new Set<string>();
+  for (const imp of collectImports(sourceFile)) {
+    if (isBareSpecifier(imp.specifier)) {
+      const pkg = packageNameOf(imp.specifier);
+      all.add(pkg);
+      if (!imp.typeOnly) {
+        value.add(pkg);
+      }
+    }
+    const resolved = resolveModule(program, sourceFile, imp.specifier, imp.literal);
+    if (!resolved) {
+      continue;
+    }
+    const childSourceFile = program.getSourceFile(resolved);
+    if (!childSourceFile) {
+      continue;
+    }
+    const childReach = computeReach(program, childSourceFile, cache, inProgress);
+    for (const pkg of childReach.all) {
+      all.add(pkg);
+    }
+    if (!imp.typeOnly) {
+      // A type-only edge does not propagate runtime reach: it can only widen the `all` set.
+      for (const pkg of childReach.value) {
+        value.add(pkg);
+      }
+    }
+  }
+
+  inProgress.delete(sourceFile.fileName);
+  const result: Reach = { value, all };
+  cache.set(sourceFile.fileName, result);
+  return result;
+}
+
+interface ImportEdge {
+  specifier: string;
+  literal: ts.StringLiteralLike;
+  /** `true` when this edge only carries type information (no runtime side-effect). */
+  typeOnly: boolean;
+}
+
+/**
+ * Enumerates every module specifier in `sourceFile`, tagging each edge as value (`typeOnly: false`)
+ * or type-only (`typeOnly: true`). `import type` / `export type`, fully type-only named import or
+ * export clauses, and `import type =` are emitted with `typeOnly: true`. Side-effect imports
+ * (no clause) are emitted as value edges.
+ */
+function collectImports(sourceFile: ts.SourceFile): ImportEdge[] {
+  const result: ImportEdge[] = [];
+  for (const stmt of sourceFile.statements) {
+    if (ts.isImportDeclaration(stmt)) {
+      let typeOnly = false;
+      if (stmt.importClause?.isTypeOnly) {
+        typeOnly = true;
+      } else if (
+        stmt.importClause &&
+        stmt.importClause.namedBindings &&
+        ts.isNamedImports(stmt.importClause.namedBindings)
+      ) {
+        const named = stmt.importClause.namedBindings;
+        const hasValue = !!stmt.importClause.name || named.elements.some(element => !element.isTypeOnly);
+        typeOnly = !hasValue;
+      }
+      if (ts.isStringLiteralLike(stmt.moduleSpecifier)) {
+        result.push({ specifier: stmt.moduleSpecifier.text, literal: stmt.moduleSpecifier, typeOnly });
+      }
+      continue;
+    }
+    if (ts.isExportDeclaration(stmt) && stmt.moduleSpecifier && ts.isStringLiteralLike(stmt.moduleSpecifier)) {
+      let typeOnly = stmt.isTypeOnly;
+      if (!typeOnly && stmt.exportClause && ts.isNamedExports(stmt.exportClause)) {
+        typeOnly = stmt.exportClause.elements.every(element => element.isTypeOnly);
+      }
+      result.push({ specifier: stmt.moduleSpecifier.text, literal: stmt.moduleSpecifier, typeOnly });
+      continue;
+    }
+    if (
+      ts.isImportEqualsDeclaration(stmt) &&
+      ts.isExternalModuleReference(stmt.moduleReference) &&
+      ts.isStringLiteralLike(stmt.moduleReference.expression)
+    ) {
+      result.push({
+        specifier: stmt.moduleReference.expression.text,
+        literal: stmt.moduleReference.expression,
+        typeOnly: stmt.isTypeOnly,
+      });
+    }
+  }
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// Module resolution helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolves `specifier` (as used in `sourceFile`) to an absolute file path using the same algorithm
+ * the host TS Program uses. Prefers the (faster) `program.getResolvedModule` API exposed in TS ≥ 5.3
+ * and falls back to `ts.resolveModuleName` for older toolchains. Returns `undefined` if the module
+ * cannot be resolved (e.g. ambient declarations, broken paths).
+ */
+function resolveModule(
+  program: ts.Program,
+  sourceFile: ts.SourceFile,
+  specifier: string,
+  literal: ts.StringLiteralLike,
+): string | undefined {
+  // TS ≥ 5.3 exposes program.getResolvedModule
+  const getResolvedModule = (
+    program as unknown as {
+      getResolvedModule?: (
+        file: ts.SourceFile,
+        moduleName: string,
+        mode?: ts.ResolutionMode,
+      ) => { resolvedModule?: ts.ResolvedModuleFull } | undefined;
+    }
+  ).getResolvedModule;
+  const mode = (
+    ts as unknown as {
+      getModeForUsageLocation?: (file: ts.SourceFile, usage: ts.StringLiteralLike) => ts.ResolutionMode;
+    }
+  ).getModeForUsageLocation?.(sourceFile, literal);
+
+  if (typeof getResolvedModule === 'function') {
+    const resolutionResult = getResolvedModule.call(program, sourceFile, specifier, mode);
+    if (resolutionResult?.resolvedModule) {
+      return resolutionResult.resolvedModule.resolvedFileName;
+    }
+  }
+
+  // Fallback for older TS: use ts.resolveModuleName against the compiler host.
+  const compilerOptions = program.getCompilerOptions();
+  const host =
+    (program as unknown as { getCompilerHost?: () => ts.ModuleResolutionHost }).getCompilerHost?.() ?? ts.sys;
+  const result = ts.resolveModuleName(
+    specifier,
+    sourceFile.fileName,
+    compilerOptions,
+    host as ts.ModuleResolutionHost,
+    undefined,
+    undefined,
+    mode,
+  );
+  return result.resolvedModule?.resolvedFileName;
+}
+
+/**
+ * `true` when the import specifier refers to a package (e.g. `react`, `@scope/pkg`, `pkg/sub`)
+ * rather than a relative or absolute path.
+ */
+function isBareSpecifier(specifier: string): boolean {
+  return !specifier.startsWith('.') && !specifier.startsWith('/');
+}
+
+/**
+ * Extracts the npm package name from a bare specifier. Handles both unscoped (`pkg/sub` → `pkg`)
+ * and scoped (`@scope/pkg/sub` → `@scope/pkg`) forms.
+ */
+function packageNameOf(specifier: string): string {
+  if (specifier.startsWith('@')) {
+    const [scope, name] = specifier.split('/', 2);
+    return name ? `${scope}/${name}` : scope;
+  }
+  const slash = specifier.indexOf('/');
+  return slash === -1 ? specifier : specifier.slice(0, slash);
+}
+
+/**
+ * Shortens an absolute file path for display in diagnostics: returns the part after the last
+ * `node_modules/` segment when present (so users see e.g. `tabster/dist/index.js`), or makes the
+ * path workspace-relative when inside the current working directory.
+ */
+function shortenPath(absolute: string): string {
+  const marker = '/node_modules/';
+  const idx = absolute.lastIndexOf(marker);
+  if (idx !== -1) {
+    return absolute.slice(idx + marker.length);
+  }
+  const cwd = process.cwd();
+  if (absolute.startsWith(cwd)) {
+    return absolute.slice(cwd.length + 1);
+  }
+  return absolute;
 }

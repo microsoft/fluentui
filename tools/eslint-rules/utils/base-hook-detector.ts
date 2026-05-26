@@ -19,8 +19,8 @@ export const BASE_HOOK_NAME_PATTERN = /^use[A-Z]\w*Base_unstable$/;
  */
 export const STATE_HOOK_NAME_PATTERN = /^use[A-Z]\w*_unstable$/;
 
-export const BASE_SUFFIX = 'Base_unstable';
-export const UNSTABLE_SUFFIX = '_unstable';
+const BASE_SUFFIX = 'Base_unstable';
+const UNSTABLE_SUFFIX = '_unstable';
 const SIBLING_EXTENSIONS: ReadonlyArray<string> = ['.ts', '.tsx'];
 
 /**
