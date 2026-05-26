@@ -65,72 +65,67 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     ],
   );
 
-  const [container, setContainer] = React.useState<TElement | null>(null);
+  const overflowManagerRef = React.useRef<OverflowManager | null>(null);
+  const cleanupObservationRef = React.useRef<(() => void) | null>(null);
+  const observedContainerRef = React.useRef<TElement | null>(null);
+
+  if (!overflowManagerRef.current && canUseDOM()) {
+    overflowManagerRef.current = createOverflowManager();
+  }
 
   const containerRef = React.useCallback<React.RefCallback<TElement>>(node => {
-    setContainer(node);
-  }, []);
-
-  const overflowManager = React.useState<OverflowManager | null>(() =>
-    canUseDOM() ? createOverflowManager() : null,
-  )[0];
-
-  useIsomorphicLayoutEffect(() => {
-    overflowManager?.setOptions(observeOptions);
-  }, [observeOptions, overflowManager]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (!overflowManager || !container) {
+    if (observedContainerRef.current === node) {
       return;
     }
 
-    return overflowManager.observe(container);
-  }, [container, overflowManager]);
+    cleanupObservationRef.current?.();
+    cleanupObservationRef.current = null;
+    observedContainerRef.current = node;
 
-  const registerItem = React.useCallback(
-    (item: OverflowItemEntry) => {
-      const deregisterItem = overflowManager?.registerItem(item) ?? noop;
-      item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
+    if (overflowManagerRef.current && node) {
+      cleanupObservationRef.current = overflowManagerRef.current.observe(node);
+    }
+  }, []);
 
-      return () => {
-        item.element.removeAttribute(DATA_OVERFLOWING);
-        item.element.removeAttribute(DATA_OVERFLOW_ITEM);
-        deregisterItem();
-      };
-    },
-    [overflowManager],
-  );
+  useIsomorphicLayoutEffect(() => {
+    overflowManagerRef.current?.setOptions(observeOptions);
+  }, [observeOptions]);
 
-  const registerDivider = React.useCallback(
-    (divider: OverflowDividerEntry) => {
-      const el = divider.element;
-      const deregisterDivider = overflowManager?.registerDivider(divider) ?? noop;
-      el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+  const registerItem = React.useCallback((item: OverflowItemEntry) => {
+    const deregisterItem = overflowManagerRef.current?.registerItem(item) ?? noop;
+    item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
 
-      return () => {
-        deregisterDivider();
-        el.removeAttribute(DATA_OVERFLOW_DIVIDER);
-      };
-    },
-    [overflowManager],
-  );
+    return () => {
+      item.element.removeAttribute(DATA_OVERFLOWING);
+      item.element.removeAttribute(DATA_OVERFLOW_ITEM);
+      deregisterItem();
+    };
+  }, []);
 
-  const registerOverflowMenu = React.useCallback(
-    (el: HTMLElement) => {
-      const detachOverflowMenu = overflowManager?.attachOverflowMenu(el) ?? noop;
-      el.setAttribute(DATA_OVERFLOW_MENU, '');
+  const registerDivider = React.useCallback((divider: OverflowDividerEntry) => {
+    const el = divider.element;
+    const deregisterDivider = overflowManagerRef.current?.registerDivider(divider) ?? noop;
+    el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
 
-      return () => {
-        detachOverflowMenu();
-        el.removeAttribute(DATA_OVERFLOW_MENU);
-      };
-    },
-    [overflowManager],
-  );
+    return () => {
+      deregisterDivider();
+      el.removeAttribute(DATA_OVERFLOW_DIVIDER);
+    };
+  }, []);
+
+  const registerOverflowMenu = React.useCallback((el: HTMLElement) => {
+    const detachOverflowMenu = overflowManagerRef.current?.attachOverflowMenu(el) ?? noop;
+    el.setAttribute(DATA_OVERFLOW_MENU, '');
+
+    return () => {
+      detachOverflowMenu();
+      el.removeAttribute(DATA_OVERFLOW_MENU);
+    };
+  }, []);
 
   const updateOverflow = React.useCallback(() => {
-    overflowManager?.update();
-  }, [overflowManager]);
+    overflowManagerRef.current?.update();
+  }, []);
 
   return {
     registerItem,
@@ -138,7 +133,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     registerOverflowMenu,
     updateOverflow,
     containerRef,
-    manager: overflowManager,
+    manager: overflowManagerRef.current,
   };
 };
 
