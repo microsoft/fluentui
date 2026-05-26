@@ -584,23 +584,23 @@ test.describe('Dropdown', () => {
   });
 
   test.describe('search options by printable characters', () => {
-    test.beforeEach(async ({ fastPage }) => {
-      await fastPage.setTemplate({
-        innerHTML: `
-          <${ListboxTagName}>
-            <${OptionTagName} id="o1">Afoo</${OptionTagName}>
-            <${OptionTagName} id="o2">Bfoo</${OptionTagName}>
-            <${OptionTagName} id="o3">Bbfoo</${OptionTagName}>
-            <${OptionTagName} id="o4">Bcfoo</${OptionTagName}>
-            <${OptionTagName} id="o5">Cfoo</${OptionTagName}>
-          </${ListboxTagName}>
-        `,
-      });
+    test.use({
+      innerHTML: /* html */ `
+        <${ListboxTagName}>
+          <${OptionTagName} id="o1">Afoo</${OptionTagName}>
+          <${OptionTagName} id="o2">Bfoo</${OptionTagName}>
+          <${OptionTagName} id="o3">Bbfoo</${OptionTagName}>
+          <${OptionTagName} id="o4">Bcfoo</${OptionTagName}>
+          <${OptionTagName} id="o5">Cfoo</${OptionTagName}>
+        </${ListboxTagName}>
+      `,
     });
 
     test('should set active descendant based on user typing', async ({ fastPage }) => {
       const { element, page } = fastPage;
       const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
 
       await combobox.focus();
       await page.keyboard.press('b');
@@ -630,6 +630,8 @@ test.describe('Dropdown', () => {
       const { element, page } = fastPage;
       const combobox = element.getByRole('combobox');
 
+      await fastPage.setTemplate();
+
       await combobox.focus();
       await page.keyboard.press('b');
 
@@ -651,6 +653,8 @@ test.describe('Dropdown', () => {
     test('should set active descendant if its label has repeated character', async ({ fastPage }) => {
       const { element, page } = fastPage;
       const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
 
       await combobox.focus();
       await page.keyboard.type('bb', { delay: 100 });
