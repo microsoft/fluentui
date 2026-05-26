@@ -76,13 +76,13 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
       break;
   }
 
-  // Add default media if intent is provided but media slot is not
-  if (baseState.media && !baseState.media.hasOwnProperty('children')) {
-    baseState.media.children = defaultIcon;
-  }
-
   return {
     ...baseState,
+    media: slot.optional(props.media, {
+      defaultProps: { children: defaultIcon },
+      renderByDefault: !!baseState.intent,
+      elementType: 'div',
+    }),
     backgroundAppearance,
   };
 };
