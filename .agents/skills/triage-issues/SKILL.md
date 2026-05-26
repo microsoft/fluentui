@@ -72,7 +72,6 @@ Route to people first, then to teams. Teams are in [docs/team-routing.md](../../
 | Charting (`@fluentui/charts`)                                    | `AtishayMsft`                             | `Package: charting`, chart component names                               |
 | Date/Time pickers                                                | `ermercer`                                | DatePicker, Calendar, TimePicker                                         |
 | Accessibility (any product)                                      | `smhigley`                                | a11y keywords; also assigned in addition to product owner                |
-| Northstar (legacy v0)                                            | `jurokapsiar`                             | `Fluent UI react-northstar`                                              |
 | v9 React components                                              | CODEOWNERS owner for the specific package | Everything under `packages/react-components/*`                           |
 | v8 React components                                              | CODEOWNERS owner for the specific package | Everything under `packages/react/*`                                      |
 
