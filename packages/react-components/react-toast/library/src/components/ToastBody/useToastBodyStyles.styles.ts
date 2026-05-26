@@ -49,6 +49,7 @@ export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodySta
   const rootBaseClassName = useRootBaseClassName();
   const subtitleBaseClassName = useSubtitleBaseClassName();
   const invertedStyles = useInvertedStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toastBodyClassNames.root,
     rootBaseClassName,
@@ -57,6 +58,7 @@ export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodySta
   );
 
   if (state.subtitle) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subtitle.className = mergeClasses(
       toastBodyClassNames.subtitle,
       subtitleBaseClassName,

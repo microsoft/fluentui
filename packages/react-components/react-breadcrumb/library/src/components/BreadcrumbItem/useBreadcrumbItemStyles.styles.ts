@@ -25,6 +25,7 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
 
   const resetStyles = useBreadcrumbItemResetStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(breadcrumbItemClassNames.root, resetStyles, state.root.className);
 
   return state;

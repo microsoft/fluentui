@@ -120,6 +120,7 @@ export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwa
 
   const { size = 'medium', shape = 'square' } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     imageSwatchClassNames.root,
     styles,

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 11 May 2026 10:02:36 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 12:04:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.10)
+
+Tue, 26 May 2026 12:04:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.9..@fluentui/react-charting_v5.25.10)
+
+### Patches
+
+- refactor: move isSafeUrl to chart-utilities package and update imports ([PR #36206](https://github.com/microsoft/fluentui/pull/36206) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.39 ([commit](https://github.com/microsoft/fluentui/commit/9317e51771e26f6142b72bb6f689aa9731218273) by beachball)
+
+## [5.25.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.9)
+
+Tue, 19 May 2026 01:18:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.8..@fluentui/react-charting_v5.25.9)
+
+### Patches
+
+- safeurl related bug fix ([PR #36121](https://github.com/microsoft/fluentui/pull/36121) by 132879294+v-baambati@users.noreply.github.com)
 
 ## [5.25.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.8)
 

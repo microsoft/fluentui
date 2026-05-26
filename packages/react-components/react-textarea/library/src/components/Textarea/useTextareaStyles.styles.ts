@@ -228,6 +228,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     textareaClassNames.root,
     rootStyles.base,
@@ -242,6 +243,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
 
   const textareaStyles = useTextareaStyles();
   const textareaResizeStyles = useTextareaResizeStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.textarea.className = mergeClasses(
     textareaClassNames.textarea,
     textareaStyles.base,

@@ -12,6 +12,7 @@ export const useCharacterSearch = (state: MenuItemState, ref: React.RefObject<HT
 
   const { onKeyDown: originalOnKeyDown } = state.root;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.onKeyDown = (e: React.KeyboardEvent<ARIAButtonElementIntersection>) => {
     originalOnKeyDown?.(e);
 

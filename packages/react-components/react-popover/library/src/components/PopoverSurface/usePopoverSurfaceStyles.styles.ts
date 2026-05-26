@@ -68,6 +68,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     popoverSurfaceClassNames.root,
     styles.root,
@@ -80,6 +81,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.arrowClassName = mergeClasses(
     styles.arrow,
     state.size === 'small' ? styles.smallArrow : styles.mediumLargeArrow,

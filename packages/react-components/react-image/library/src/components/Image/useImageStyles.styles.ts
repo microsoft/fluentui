@@ -81,6 +81,7 @@ export const useImageStyles_unstable = (state: ImageState): ImageState => {
   const hasExplicitSize = height != null || width != null;
   const shouldApplyFitFill = state.fit !== 'default' && !hasExplicitSize;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     imageClassNames.root,
     styles.base,

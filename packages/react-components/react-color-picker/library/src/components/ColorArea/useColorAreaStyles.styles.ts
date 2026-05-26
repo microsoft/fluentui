@@ -117,6 +117,7 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
   const inputStyles = useInputStyles();
   const shapeStyles = useShapeStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     colorAreaClassNames.root,
     rootStyles,
@@ -124,6 +125,7 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.thumb.className = mergeClasses(
     colorAreaClassNames.thumb,
     thumbStyles.thumb,
@@ -131,8 +133,10 @@ export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaSta
     state.thumb.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.inputX.className = mergeClasses(colorAreaClassNames.inputX, inputStyles.input, state.inputX.className);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.inputY.className = mergeClasses(colorAreaClassNames.inputY, inputStyles.input, state.inputY.className);
   return state;
 };

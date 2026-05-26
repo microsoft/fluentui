@@ -20,7 +20,9 @@ export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLE
   const state: AccordionItemState = useAccordionItem_unstable(props, ref);
 
   // Set data attributes for open and disabled states to simplify styling of these states.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-open'] = stringifyDataAttribute(state.open);
 
   return state;

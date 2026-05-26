@@ -53,6 +53,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
 
   const { selected, open, density } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
     defaultRootClassName,
@@ -63,6 +64,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
     state.root.className,
   );
 
+  // eslint-disable-next-line react-hooks/immutability
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
     expandIconStyles.base,
@@ -70,6 +72,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       navCategoryItemClassNames.icon,
       iconStyles.base,

@@ -104,6 +104,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
         updateOverflow,
         registerOverflowMenu,
         registerDivider,
+        containerRef,
       }}
     >
       {clonedChild}

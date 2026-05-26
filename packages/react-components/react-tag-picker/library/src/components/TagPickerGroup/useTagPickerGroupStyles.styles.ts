@@ -43,6 +43,7 @@ export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): Ta
 
   useTagGroupStyles_unstable(state);
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tagPickerGroupClassNames.root,
     styles[tagSizeToTagPickerSize(state.size)],

@@ -38,6 +38,7 @@ export const useDrawerBodyStyles_unstable = (state: DrawerBodyState): DrawerBody
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(drawerBodyClassNames.root, styles, state.root.className);
 
   return state;

@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Thu, 23 Apr 2026 14:21:03 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.13.0)
+
+Tue, 26 May 2026 09:39:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.12.0..@fluentui/react-drawer_v9.13.0)
+
+### Minor changes
+
+- feat: expose inline drawer types and base hooks ([PR #36042](https://github.com/microsoft/fluentui/pull/36042) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-dialog to v9.18.1 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-motion to v9.16.0 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-portal to v9.8.13 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.5 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.12.0)
 

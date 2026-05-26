@@ -313,70 +313,101 @@ describe('Popover', () => {
     });
   });
 
-  describe('with Iframe', () => {
-    const iframeContent = `<div id="iframecontent">
-  <button>Hello World!</button>
-</div>`;
+  describe('Focus trap', () => {
+    const trapSurfaceSelector = '[role="dialog"]';
 
-    const ExampleFrame = () => {
-      return <iframe title="frame" srcDoc={iframeContent} />;
-    };
-
-    it('should not close when focus is on an internal iframe', () => {
+    it('moves focus into the surface on open and walks through focusables', () => {
       mount(
-        <>
-          <Popover>
-            <PopoverTrigger disableButtonEnhancement>
-              <button>Popover trigger</button>
-            </PopoverTrigger>
-            <PopoverSurface>
-              <ExampleFrame />
-            </PopoverSurface>
-          </Popover>
-        </>,
+        <Popover trapFocus>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="first">First</button>
+            <button data-testid="second">Second</button>
+            <button data-testid="third">Third</button>
+          </PopoverSurface>
+        </Popover>,
       );
 
-      cy.get(popoverTriggerSelector)
-        .click()
-        .get('iframe')
-        .focus()
-        .wait(2000)
-        .get(popoverContentSelector)
-        .should('exist');
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get(trapSurfaceSelector).should('be.visible');
+
+      cy.focused().should('have.attr', 'data-testid', 'first');
+
+      cy.realPress('Tab');
+      cy.focused().should('have.attr', 'data-testid', 'second');
+      cy.realPress('Tab');
+      cy.focused().should('have.attr', 'data-testid', 'third');
     });
 
-    it('should not close when focus is on an internal iframe in a nested popover', () => {
+    it('honors the autofocus HTML attribute on a child', () => {
+      const setAutofocus = (el: HTMLInputElement | null) => el?.setAttribute('autofocus', '');
+
       mount(
-        <>
-          <Popover>
-            <PopoverTrigger disableButtonEnhancement>
-              <button>First</button>
-            </PopoverTrigger>
-            <PopoverSurface>
-              <Popover>
-                <PopoverTrigger>
-                  <button>Second</button>
-                </PopoverTrigger>
-                <PopoverSurface>
-                  <ExampleFrame />
-                </PopoverSurface>
-              </Popover>
-            </PopoverSurface>
-          </Popover>
-        </>,
+        <Popover trapFocus>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="first">First</button>
+            <input data-testid="auto" ref={setAutofocus} />
+            <button data-testid="last">Last</button>
+          </PopoverSurface>
+        </Popover>,
       );
 
-      cy.get(popoverTriggerSelector)
-        .first()
-        .click()
-        .get(popoverTriggerSelector)
-        .eq(1)
-        .click()
-        .get('iframe')
-        .focus()
-        .wait(2000)
-        .get(popoverContentSelector)
-        .should('have.length', 2);
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get(trapSurfaceSelector).should('be.visible');
+      cy.focused().should('have.attr', 'data-testid', 'auto');
+    });
+
+    it('restores focus to the trigger on Escape', () => {
+      mount(
+        <Popover trapFocus>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="inner">Inner</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get(trapSurfaceSelector).should('be.visible');
+      cy.realPress('Escape');
+      cy.get(trapSurfaceSelector).should('not.exist');
+      cy.focused().should('have.attr', 'data-testid', 'trigger');
+    });
+
+    it('makes content behind the surface inert (cannot be clicked)', () => {
+      const Example = () => {
+        const [outsideClicks, setOutsideClicks] = React.useState(0);
+        return (
+          <>
+            <button data-testid="outside" onClick={() => setOutsideClicks(c => c + 1)}>
+              Outside ({outsideClicks})
+            </button>
+            <Popover trapFocus>
+              <PopoverTrigger disableButtonEnhancement>
+                <button data-testid="trigger">Trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface data-testid="surface">
+                <button data-testid="inner">Inner</button>
+              </PopoverSurface>
+            </Popover>
+          </>
+        );
+      };
+
+      mount(<Example />);
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get(trapSurfaceSelector).should('be.visible');
+
+      cy.get('[data-testid=outside]').realClick();
+      cy.get('[data-testid=outside]').should('have.text', 'Outside (0)');
+      cy.get(trapSurfaceSelector).should('be.visible');
     });
   });
 });

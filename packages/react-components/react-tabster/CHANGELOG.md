@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 23 Apr 2026 14:21:07 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.15)
+
+Tue, 26 May 2026 09:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.14..@fluentui/react-tabster_v9.26.15)
+
+### Patches
+
+- chore: bump tabster to ^8.8.0 and keyborg to ^2.14.1 ([PR #36082](https://github.com/microsoft/fluentui/pull/36082) by 198982749+Copilot@users.noreply.github.com)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [9.26.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.14)
 

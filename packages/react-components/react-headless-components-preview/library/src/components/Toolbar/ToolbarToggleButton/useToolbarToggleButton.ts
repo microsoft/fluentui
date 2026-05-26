@@ -14,13 +14,17 @@ export const useToolbarToggleButton = (
   props: ToolbarToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarToggleButtonState => {
-  'use no memo';
+  ('use no memo');
 
   const state: ToolbarToggleButtonState = useToolbarToggleButtonBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-checked'] = stringifyDataAttribute(state.checked);
 
   return state;

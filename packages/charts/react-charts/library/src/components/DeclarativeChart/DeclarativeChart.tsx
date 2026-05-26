@@ -405,6 +405,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const { plotlySchema } = sanitizeJson(props.chartSchema);
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { selectedLegends } = plotlySchema;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setActiveLegends(selectedLegends ?? []);
   }, [props.chartSchema]);
 
@@ -496,15 +497,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     });
   }
 
+  // eslint-disable-next-line react-hooks/refs
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
   const gridProperties: GridProperties = getGridProperties(
     plotlyInputWithValidData,
+    // eslint-disable-next-line react-hooks/refs
     isMultiPlot.current,
     chart.validTracesInfo!,
   );
 
   // Render only one plot if the grid properties cannot determine positioning of multiple plots.
   if (
+    // eslint-disable-next-line react-hooks/refs
     isMultiPlot.current &&
     gridProperties.templateRows === SINGLE_REPEAT &&
     gridProperties.templateColumns === SINGLE_REPEAT
@@ -524,6 +528,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         }
       });
     }
+    // eslint-disable-next-line react-hooks/refs
     isMultiPlot.current = false;
   }
 
@@ -552,6 +557,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   // map through the grouped traces and render the appropriate chart
   return (
     <>
+      {/* eslint-disable-next-line react-hooks/refs */}
       {isMultiPlot.current && chartTitle && <div style={titleStyle}>{chartTitle}</div>}
       <div
         style={{
@@ -561,6 +567,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         }}
         ref={containerRef}
       >
+        {/* eslint-disable-next-line react-hooks/refs */}
         {Object.entries(groupedTraces).map(([xAxisKey, index], chartIdx) => {
           const plotlyInputForGroup: PlotlySchema = {
             ...plotlyInputWithValidData,
@@ -600,7 +607,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
+                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme], // eslint-disable-line react-hooks/refs
                 {
                   ...resolvedCommonProps,
                   ...(cellProperties?.xAnnotation && { xAxisAnnotation: cellProperties.xAnnotation }),
@@ -623,6 +630,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           }
         })}
       </div>
+      {/* eslint-disable-next-line react-hooks/refs */}
       {isMultiPlot.current && createLegends(allupLegendsProps)}
     </>
   );
