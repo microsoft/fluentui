@@ -1,5 +1,6 @@
 /* Tooltip content bubble — inverse surface (dark on light, light on dark) */
 .content {
+  position: fixed;
   background: var(--bg-elev);
   color: var(--text);
   font-size: 12px;
