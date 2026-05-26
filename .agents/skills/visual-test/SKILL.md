@@ -121,18 +121,6 @@ cd packages/react-components/react-<component>/stories && yarn storybook dev --p
 # --port 0 asks Storybook to pick a free port; detect it via the pgrep/lsof pattern above
 ```
 
-**The build stops mid-compilation and nx "completes" with exit 0.**
-That's the nx cache replaying a prior partial run. Always pass `--skip-nx-cache`.
-
-**The build fails with `Module not found: @fluentui/react-alert`, `@fluentui/react-infobutton`, or `@fluentui/react-virtualizer`.**
-These three packages are listed as deps of `@fluentui/react-components` and are linked into `node_modules` from local workspace sources (`packages/react-components/deprecated/react-alert/`, `deprecated/react-infobutton/`, `react-virtualizer/`). Their `lib-commonjs/` output only exists after they're built. On a fresh clone this build hasn't run yet, so the linked entry points at files that don't exist. Fix:
-
-```bash
-yarn nx run-many -t build -p react-alert,react-infobutton,react-virtualizer
-```
-
-Then restart the storybook target. This is a real infrastructure wart — it affects **any** per-component Storybook that pulls stories from the shared `@fluentui/react-components` barrel, not just combobox. (If you see the error elsewhere in this repo — e.g. the workspace-wide Storybook — the same fix applies plus the "don't use workspace-wide" rule above still stands.)
-
 **The story loads but keeps reloading (`[HMR] Cannot find update (Full reload needed)`).**
 Same root cause — you're on the workspace-wide Storybook, which has HMR issues when preview packages rebuild. Kill it and use the per-component one.
 
