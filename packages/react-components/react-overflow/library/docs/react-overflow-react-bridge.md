@@ -125,6 +125,18 @@ Current recommendation:
 - treat it as an acceptable bridge feedback loop in the current menu participation model
 - only revisit it if later profiling or a broader menu/measurement redesign offers a clearly better alternative
 
+Important nuance:
+
+- the follow-up update remains a real logical step
+- the timing of that step relative to paint depends on how the surrounding registration and subscription work is scheduled
+
+For the current mount path, the important distinction is the same as in the engine spec:
+
+- the bridge can still perform more than one logical correction step while mounting
+- but those steps are expected to collapse into a single visible first paint for correctness purposes on the initial mount path this bridge is centered around
+
+So the existence of a follow-up update does not automatically imply a second visible paint. It means the bridge has a multi-step mount-time convergence model that still aims to finish before the first presented frame.
+
 ### Improvement: option changes no longer recreate the engine instance
 
 `useOverflowContainer()` now creates one manager instance per container and reconfigures it through `setOptions()`.

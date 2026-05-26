@@ -154,6 +154,33 @@ That means the lifecycle is usually:
 3. a microtask is queued
 4. the queued task performs one rebalance pass
 
+## Initial mount convergence model
+
+For initial mount, the most practical mental model is:
+
+- a single-step path in non-overflowing or already-stable cases
+- a multi-step path in the initial-overflow edge case, where the overflow menu becomes layout-participating only after the first overflow computation
+
+The reason is architectural rather than incidental:
+
+1. the container and items commit first
+2. registration and observation schedule the first engine update
+3. the first engine pass can compute overflow before the menu itself participates in layout
+4. once overflow exists, the menu can mount and participate in size calculation
+5. a second engine pass can then settle the final overflow split with menu width included
+
+Those steps describe the logical convergence path. The important architectural point is that initial overflowing mount is not conceptually a single-step path: menu participation can introduce a second correction step even without any later resize or user interaction.
+
+At the same time, those logical steps still occur inside the pre-paint mount pipeline for correctness purposes. In other words:
+
+- the engine may need more than one internal correction step
+- but those steps are still expected to collapse into the same visible first paint on the normal initial-mount path
+
+So the right distinction is not "one step versus two steps". It is:
+
+- logically multi-step
+- visually single-paint-final for correctness on the mount path this design is centered around
+
 ### 5. Processing pass
 
 `forceUpdate()` calls `processOverflowItems()`.
@@ -545,6 +572,14 @@ Functionally:
 - all items begin life in the visible queue
 - the hide loop repeatedly removes the worst visible candidate
 - once the first item hides, the overflow menu may enter the occupied-size equation, which can force one more hide than a naive width sum would suggest
+
+Mount-time convergence note:
+
+- this is still the main case where the system needs a second logical correction step
+- the first pass can compute a provisional overflow state before menu participation
+- a follow-up pass can then settle the final state once the menu mounts and contributes its width
+
+For documentation purposes, that should be read as an internal correction sequence, not as an instruction that a second visible paint is expected. The implementation is allowed to take more than one logical step while still reaching the final correct DOM before the browser presents the first visible frame.
 
 Cost profile:
 
