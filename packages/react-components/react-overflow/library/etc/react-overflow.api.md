@@ -4,13 +4,13 @@
 
 ```ts
 
-import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
-import { OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import type { OverflowManager } from '@fluentui/priority-overflow';
+import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -79,7 +79,10 @@ export interface UseOverflowContainerReturn<TElement extends HTMLElement> extend
 }
 
 // @internal (undocumented)
-export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
+export const useOverflowContext: {
+    <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>): SelectedValue;
+    (): OverflowContextValue;
+};
 
 // @public (undocumented)
 export const useOverflowCount: () => number;

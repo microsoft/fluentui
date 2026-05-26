@@ -1,8 +1,8 @@
 'use client';
 
-import { useOverflowSelector } from './useOverflowSelector';
+import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
  * @returns Number of items that are overflowing
  */
-export const useOverflowCount = (): number => useOverflowSelector(snapshot => snapshot.overflowCount);
+export const useOverflowCount = (): number => useOverflowSnapshot().overflowCount;

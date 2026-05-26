@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import type { ObserveOptions, OverflowGroupState, OverflowSnapshot } from '@fluentui/priority-overflow';
+import type { ObserveOptions, OnUpdateOverflow, OverflowGroupState } from '@fluentui/priority-overflow';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
@@ -10,7 +10,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 
-import { defaultOverflowManager, OverflowContext } from '../overflowContext';
+import { OverflowContext, type OverflowContextValue } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
 import { useOverflowStyles } from './useOverflowStyles.styles';
 
@@ -19,12 +19,6 @@ interface OverflowState {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
 }
-
-const toOverflowState = (snapshot: OverflowSnapshot): OverflowState => ({
-  hasOverflow: snapshot.hasOverflow,
-  itemVisibility: snapshot.itemVisibility,
-  groupVisibility: snapshot.groupVisibility,
-});
 
 export interface OnOverflowChangeData extends OverflowState {}
 
@@ -57,8 +51,24 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     hasHiddenItems,
   } = props;
 
+  const update: OnUpdateOverflow = data => {
+    const { visibleItems, invisibleItems, groupVisibility } = data;
+
+    const itemVisibility: Record<string, boolean> = {};
+    visibleItems.forEach(item => {
+      itemVisibility[item.id] = true;
+    });
+    invisibleItems.forEach(x => (itemVisibility[x.id] = false));
+    const newState = {
+      hasOverflow: data.invisibleItems.length > 0,
+      itemVisibility,
+      groupVisibility,
+    };
+    onOverflowChange?.(null, { ...newState });
+  };
+
   const { containerRef, manager, registerItem, updateOverflow, registerOverflowMenu, registerDivider } =
-    useOverflowContainer(() => undefined, {
+    useOverflowContainer(update, {
       overflowDirection,
       overflowAxis,
       padding,
@@ -67,46 +77,26 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       onUpdateItemVisibility: updateVisibilityAttribute,
     });
 
-  const lastReportedState = React.useRef<OverflowState | null>(null);
-
-  React.useEffect(() => {
-    if (!manager || !onOverflowChange) {
-      return;
-    }
-
-    lastReportedState.current = null;
-
-    return manager.subscribe(() => {
-      const overflowState = toOverflowState(manager.getSnapshot());
-
-      if (lastReportedState.current === null) {
-        lastReportedState.current = overflowState;
-        return;
-      }
-
-      onOverflowChange(null, overflowState);
-      lastReportedState.current = overflowState;
-    });
-  }, [manager, onOverflowChange]);
-
   const child = getTriggerChild<HTMLElement>(children);
   const clonedChild = applyTriggerPropsToChildren(children, {
     ref: useMergedRefs(containerRef, ref, getReactElementRef(child)),
     className: mergeClasses('fui-Overflow', styles.overflowMenu, styles.overflowingItems, child?.props.className),
   });
 
-  return (
-    <OverflowContext.Provider
-      value={{
-        manager: manager ?? defaultOverflowManager,
-        registerItem,
-        updateOverflow,
-        registerOverflowMenu,
-        registerDivider,
-        containerRef,
-      }}
-    >
-      {clonedChild}
-    </OverflowContext.Provider>
+  const ctx: OverflowContextValue = React.useMemo(
+    () => ({
+      groupVisibility: {},
+      itemVisibility: {},
+      hasOverflow: false,
+      registerItem,
+      updateOverflow,
+      registerOverflowMenu,
+      registerDivider,
+      getSnapshot: manager!.getSnapshot,
+      subscribe: manager!.subscribe,
+    }),
+    [manager, registerItem, updateOverflow, registerOverflowMenu, registerDivider],
   );
+
+  return <OverflowContext.Provider value={ctx}>{clonedChild}</OverflowContext.Provider>;
 });

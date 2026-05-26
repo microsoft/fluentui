@@ -1,11 +1,11 @@
 'use client';
 
-import { useOverflowSelector } from './useOverflowSelector';
+import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
  * @param id - unique identifier for the item used by the overflow manager
  * @returns visibility state of an overflow item
  */
 export function useIsOverflowItemVisible(id: string): boolean {
-  return !!useOverflowSelector(snapshot => snapshot.itemVisibility[id]);
+  return !!useOverflowSnapshot().itemVisibility[id];
 }

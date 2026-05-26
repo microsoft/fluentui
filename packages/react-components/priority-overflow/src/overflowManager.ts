@@ -16,7 +16,7 @@ import type {
  * @internal
  * @returns overflow manager instance
  */
-export function createOverflowManager(): OverflowManager {
+export function createOverflowManager(initialOptions: Required<ObserveOptions>): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
@@ -27,16 +27,7 @@ export function createOverflowManager(): OverflowManager {
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
-  const options: Required<ObserveOptions> = {
-    padding: 10,
-    overflowAxis: 'horizontal',
-    overflowDirection: 'end',
-    minimumVisible: 0,
-    onUpdateItemVisibility: () => undefined,
-    onUpdateOverflow: () => undefined,
-    hasHiddenItems: false,
-  };
-
+  const options: Required<ObserveOptions> = initialOptions;
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
   const listeners = new Set<() => void>();
@@ -255,6 +246,7 @@ export function createOverflowManager(): OverflowManager {
   };
 
   const setOptions: OverflowManager['setOptions'] = nextOptions => {
+    if (options === nextOptions) return;
     const previousAxis = options.overflowAxis;
     const previousDirection = options.overflowDirection;
     const previousPadding = options.padding;

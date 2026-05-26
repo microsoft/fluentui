@@ -14,7 +14,7 @@ import type {
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
-import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useEventCallback } from '@fluentui/react-utilities';
 import type { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
@@ -44,7 +44,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   const onUpdateOverflow = useEventCallback(update);
   const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
-  const observeOptions = React.useMemo(
+  const observeOptions: Required<ObserveOptions> = React.useMemo(
     () => ({
       overflowAxis,
       overflowDirection,
@@ -69,8 +69,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   const cleanupObservationRef = React.useRef<(() => void) | null>(null);
   const observedContainerRef = React.useRef<TElement | null>(null);
 
+  // eslint-disable-next-line react-hooks/refs
   if (!overflowManagerRef.current && canUseDOM()) {
-    overflowManagerRef.current = createOverflowManager();
+    overflowManagerRef.current = createOverflowManager(observeOptions);
   }
 
   const containerRef = React.useCallback<React.RefCallback<TElement>>(node => {
@@ -87,7 +88,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     }
   }, []);
 
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     overflowManagerRef.current?.setOptions(observeOptions);
   }, [observeOptions]);
 
@@ -133,6 +134,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     registerOverflowMenu,
     updateOverflow,
     containerRef,
+    // eslint-disable-next-line react-hooks/refs
     manager: overflowManagerRef.current,
   };
 };

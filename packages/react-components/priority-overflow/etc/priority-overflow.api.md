@@ -5,7 +5,7 @@
 ```ts
 
 // @internal (undocumented)
-export function createOverflowManager(): OverflowManager;
+export function createOverflowManager(initialOptions: Required<ObserveOptions>): OverflowManager;
 
 // @public (undocumented)
 export interface ObserveOptions {
