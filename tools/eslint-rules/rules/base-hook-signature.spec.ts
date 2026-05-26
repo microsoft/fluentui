@@ -143,10 +143,6 @@ ruleTester.run(RULE_NAME, rule, {
           messageId: 'invalidParamName',
           data: { hookName: 'useThingBase_unstable', index: 1, expected: 'props', actual: 'p' },
         },
-        {
-          messageId: 'invalidParamName',
-          data: { hookName: 'useThingBase_unstable', index: 2, expected: 'ref', actual: 'r' },
-        },
       ],
     },
     // ObjectPattern for \`props\` is not allowed.
@@ -250,7 +246,7 @@ ruleTester.run(RULE_NAME, rule, {
       errors: [{ messageId: 'invalidParamCount', data: { hookName: 'useThing_unstable', actual: 3 } }],
     },
     // Pair detection (sibling file): wrapping state hook in `useSibling.ts` is paired with
-    // `useSiblingBase.ts` in the same folder. Wrong param names are flagged.
+    // `useSiblingBase.ts` in the same folder. Wrong param names are flagged (stops at first).
     {
       filename: SIBLING_FILENAME,
       code: `
@@ -261,10 +257,6 @@ ruleTester.run(RULE_NAME, rule, {
         {
           messageId: 'invalidParamName',
           data: { hookName: 'useSibling_unstable', index: 1, expected: 'props', actual: 'p' },
-        },
-        {
-          messageId: 'invalidParamName',
-          data: { hookName: 'useSibling_unstable', index: 2, expected: 'ref', actual: 'r' },
         },
       ],
     },
