@@ -29,7 +29,7 @@ For every issue, you're producing a **recommendation** with these fields:
 | Field                  | Possible values                                                                      |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`     |
-| `product`              | `v9`, `v8`, `v7`, `web-components`, `charting`, `northstar`, `unknown`               |
+| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`               |
 | `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                  |
 | `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                    |
 | `add_labels`           | list of label names to add                                                           |
