@@ -13,7 +13,7 @@
   box-shadow: var(--shadow-5);
 }
 
-.surface::backdrop {
+.surface:modal::backdrop {
   background: rgba(10, 10, 10, 0.4);
   backdrop-filter: blur(2px);
 }
