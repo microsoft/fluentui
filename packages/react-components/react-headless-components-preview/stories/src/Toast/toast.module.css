@@ -1,0 +1,548 @@
+.toaster {
+  border: none;
+  background: transparent;
+  display: flex;
+  padding: 0;
+  gap: var(--space-2);
+}
+
+.toaster[data-position='top-start'] {
+  flex-direction: column;
+  margin: 16px auto auto 16px;
+}
+
+.toaster[data-position='top-end'] {
+  flex-direction: column;
+  margin: 16px 16px auto auto;
+}
+
+.toaster[data-position='bottom-start'] {
+  flex-direction: column-reverse;
+  margin: auto auto 16px 16px;
+}
+
+.toaster[data-position='bottom-end'] {
+  flex-direction: column-reverse;
+  margin: auto 16px 16px auto;
+}
+
+/* Toast card wrapper — white elevated surface with subtle border and shadow */
+.toast {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-4);
+  margin: unset;
+  margin-block-start: auto;
+  margin-inline-start: auto;
+  padding: 12px;
+  min-width: 280px;
+  max-width: 400px;
+  transition: box-shadow var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
+  animation: slideIn var(--duration-medium) var(--ease-emphasized);
+}
+
+.toast:hover {
+  box-shadow: var(--shadow-5);
+}
+
+/* Intent accent — left border color per intent */
+.intentSuccess {
+  border-left: 4px solid var(--success);
+}
+
+.intentInfo {
+  border-left: 4px solid var(--info);
+}
+
+.intentWarning {
+  border-left: 4px solid var(--warning);
+}
+
+.intentError {
+  border-left: 4px solid var(--danger);
+}
+
+/* Toast title — heading with optional action slot */
+.title {
+  display: flex;
+  grid-column-end: 3;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--text);
+  word-break: break-word;
+}
+
+/* Toast subtitle — smaller, muted text */
+.subtitle {
+  display: block;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-top: 4px;
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+/* Toast body — main content area */
+.body,
+.bodyText {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-top: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Toast body text — regular body content */
+.bodyText {
+  margin: 0;
+}
+
+/* Toast footer — action button container */
+.footer {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* Icon badge — circular badge for intent icon */
+.iconBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column-end: 2;
+  margin-inline-end: var(--space-2);
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-on-accent);
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.iconBadge:hover {
+  transform: scale(1.08);
+}
+
+.iconBadgeSuccess {
+  background: var(--success);
+}
+
+.iconBadgeInfo {
+  background: var(--info);
+}
+
+.iconBadgeWarning {
+  background: var(--warning);
+}
+
+.iconBadgeError {
+  background: var(--danger);
+}
+
+/* Action button — link-style button for toast actions */
+.actionBtn {
+  display: flex;
+  align-items: flex-start;
+  grid-column-end: -1;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: var(--space-1) var(--space-2);
+  margin: 0 calc(var(--space-1) * -1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: inherit;
+  border-radius: var(--radius-xs);
+}
+
+.actionBtn:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  background: var(--accent-soft);
+}
+
+.actionBtn:active {
+  color: var(--accent-strong);
+  transform: scale(0.98);
+}
+
+.actionBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.actionBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* Dismiss button — text link for dismissing toasts */
+.dismissBtn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: var(--space-1) 0;
+  margin: 0 calc(var(--space-1) * -1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: inherit;
+  border-radius: var(--radius-xs);
+}
+
+.dismissBtn:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  background: var(--accent-soft);
+}
+
+.dismissBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Primary button — solid color action button */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-3);
+  height: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: inherit;
+}
+
+.btnPrimary:hover {
+  background: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.btnPrimary:active {
+  transform: translateY(0);
+}
+
+.btnPrimary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary button — light background */
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  background: var(--surface-muted);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-3);
+  height: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: inherit;
+}
+
+.btnSecondary:hover {
+  background: var(--surface-sunken);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.btnSecondary:active {
+  transform: translateY(0);
+}
+
+.btnSecondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.btnSecondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Trigger button — for triggering toasts */
+.triggerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-3);
+  height: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: inherit;
+}
+
+.triggerBtn:hover {
+  background: var(--surface-muted);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.triggerBtn:active {
+  transform: translateY(0);
+}
+
+.triggerBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.triggerBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Controls wrapper — vertical flex for controls in demo */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+/* Fieldset — for grouping related controls */
+.fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: 12px;
+}
+
+/* Legend — label for fieldset */
+.legend {
+  padding-inline: var(--space-2);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Radio/checkbox options container */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* Option label */
+.optionLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.optionLabel input {
+  cursor: pointer;
+}
+
+/* Progress bar styling */
+.progressBar {
+  width: 100%;
+  height: 4px;
+  margin-top: var(--space-1);
+}
+
+.progressBar::-webkit-progress-bar {
+  background: var(--surface-muted);
+  border-radius: var(--radius-pill);
+  height: 4px;
+}
+
+.progressBar::-webkit-progress-value {
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  transition: width var(--duration-medium) linear;
+}
+
+.progressBar::-moz-progress-bar {
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  transition: width var(--duration-medium) linear;
+}
+
+/* Toast slide-in animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Toast fade-out animation */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+/* Demo container — wrapper for demo content */
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Demo row — horizontal flex for related items */
+.demoRow {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Toaster popover positioning — fixed in bottom-right corner with optimal spacing */
+.toasterPopover {
+  position: fixed;
+  inset: auto calc(var(--space-4) + var(--space-1)) calc(var(--space-4) + var(--space-1)) auto;
+  max-width: 420px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Allow pointer events on toast children */
+.toasterPopover > * {
+  pointer-events: auto;
+}
+
+/* Support for LTR/RTL — adjust inset-inline for RTL */
+@supports (inset-inline-start: 0) {
+  .toasterPopover {
+    inset-inline-end: calc(var(--space-4) + var(--space-1));
+    inset-inline-start: auto;
+    inset-block-end: calc(var(--space-4) + var(--space-1));
+    inset-block-start: auto;
+  }
+}
+
+/* Timeout input wrapper — vertical flex for label and input */
+.timeoutInput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.timeoutInput input {
+  width: 128px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 0 var(--space-2);
+  font-size: 12px;
+}
+
+.timeoutInputHint {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* Log container — flex wrapper for lifecycle status log */
+.logContainer {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.logSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.logViewer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 200px;
+}
+
+.logHeader {
+  background: var(--text);
+  color: var(--bg);
+  font-size: 10px;
+  font-weight: bold;
+  padding: var(--space-2);
+  width: fit-content;
+  border-radius: var(--radius-xs);
+}
+
+.logContent {
+  overflow-y: auto;
+  border: 2px solid var(--text);
+  padding: var(--space-3);
+  height: 200px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
