@@ -8,7 +8,7 @@ import { isHTMLElement } from '@fluentui/react-utilities';
  * Wraps an aria live announcement function.
  * Aria live announcements can be detrimental once the user is already navigating
  * multiple toasts. Once the user is focused inside the toaster, the announecments should be disabled.
- * @param announce
+ * @param announce - The aria live announcement function to wrap
  * @returns A function to announce a toast and a ref to attach to the toaster element
  */
 export function useToastAnnounce(announce: Announce): {
