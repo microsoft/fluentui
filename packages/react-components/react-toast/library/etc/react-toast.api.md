@@ -17,30 +17,6 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-export type Announce = (message: string, options: AnnounceOptions) => void;
-
-// @public (undocumented)
-export type AnnounceOptions = {
-    politeness: AriaLivePoliteness;
-};
-
-// @public (undocumented)
-export type AriaLivePoliteness = 'polite' | 'assertive';
-
-// @public (undocumented)
-export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
-    // (undocumented)
-    root?: Slot<'div'>;
-}
-
-// @public (undocumented)
-export type LiveMessage = {
-    message: string;
-    createdAt: number;
-    politeness: AriaLivePoliteness;
-};
-
 // @public
 export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSXElement;
 
@@ -64,6 +40,14 @@ export const renderToastTrigger_unstable: (state: ToastTriggerState) => JSXEleme
 
 // @public
 export const Toast: ForwardRefComponent<ToastProps>;
+
+// @public (undocumented)
+export type ToastAnnounce = (message: string, options: ToastAnnounceOptions) => void;
+
+// @public (undocumented)
+export type ToastAnnounceOptions = {
+    politeness: AriaLivePoliteness;
+};
 
 // @public
 export type ToastBaseProps = Omit<ToastProps, 'appearance'>;
@@ -126,7 +110,7 @@ export type ToastContainerContextValue = {
 // @public
 export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> & ToastData & {
     visible: boolean;
-    announce: Announce;
+    announce: ToastAnnounce;
     intent: ToastIntent | undefined;
     tryRestoreFocus: () => void;
 };
@@ -159,6 +143,12 @@ export interface ToastData<TData = object> extends ToastOptions<TData> {
     updateId: number;
 }
 
+// @public (undocumented)
+export interface ToastDispatchOptions extends Partial<Omit<ToastOptions, 'toasterId'>> {
+    // (undocumented)
+    root?: Slot<'div'>;
+}
+
 // @public
 export const Toaster: React_2.FC<ToasterProps>;
 
@@ -182,7 +172,7 @@ export interface ToasterOptions extends Pick<ToastOptions, 'position' | 'timeout
 
 // @public
 export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & Pick<PortalProps, 'mountNode'> & {
-    announce?: Announce;
+    announce?: ToastAnnounce;
     inline?: boolean;
 };
 
@@ -233,6 +223,13 @@ export type ToastImperativeRef = {
 
 // @public (undocumented)
 export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
+
+// @public (undocumented)
+export type ToastLiveMessage = {
+    message: string;
+    createdAt: number;
+    politeness: AriaLivePoliteness;
+};
 
 // @public (undocumented)
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
@@ -322,13 +319,13 @@ export type ToastTriggerState = {
 };
 
 // @public (undocumented)
-export interface UpdateToastEventDetail extends Partial<ToastOptions>, CommonToastDetail {
+export interface ToastUpdateEventDetail extends Partial<ToastOptions>, CommonToastDetail {
     // (undocumented)
     toastId: ToastId;
 }
 
 // @public (undocumented)
-export interface UpdateToastOptions extends UpdateToastEventDetail {
+export interface ToastUpdateOptions extends ToastUpdateEventDetail {
     // (undocumented)
     root?: Slot<'div'>;
 }
@@ -337,8 +334,8 @@ export interface UpdateToastOptions extends UpdateToastEventDetail {
 export const useToast_unstable: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
 
 // @public
-export function useToastAnnounce(announce: Announce): {
-    announceToast: Announce;
+export function useToastAnnounce(announce: ToastAnnounce): {
+    announceToast: ToastAnnounce;
     toasterRef: React_2.RefCallback<HTMLDivElement>;
 };
 
@@ -365,10 +362,10 @@ export function useToastContainerContextValues_unstable(state: ToastContainerSta
 
 // @public (undocumented)
 export function useToastController(toasterId?: ToasterId): {
-    dispatchToast: (content: React_2.ReactNode, options?: DispatchToastOptions) => void;
+    dispatchToast: (content: React_2.ReactNode, options?: ToastDispatchOptions) => void;
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
-    updateToast: (options: UpdateToastOptions) => void;
+    updateToast: (options: ToastUpdateOptions) => void;
     pauseToast: (toastId: ToastId) => void;
     playToast: (toastId: ToastId) => void;
 };

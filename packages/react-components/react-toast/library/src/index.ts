@@ -1,5 +1,9 @@
 export { useToastController, useToaster } from './state';
-export type { Announce, AnnounceOptions, AriaLivePoliteness, LiveMessage } from './AriaLive';
+export type {
+  Announce as ToastAnnounce,
+  AnnounceOptions as ToastAnnounceOptions,
+  LiveMessage as ToastLiveMessage,
+} from './AriaLive';
 export type {
   ToastPosition,
   ToastId,
@@ -15,9 +19,9 @@ export type {
   ToastChangeData,
   ToastChangeHandler,
   ToastOptions,
-  DispatchToastOptions,
-  UpdateToastOptions,
-  UpdateToastEventDetail,
+  DispatchToastOptions as ToastDispatchOptions,
+  UpdateToastOptions as ToastUpdateOptions,
+  UpdateToastEventDetail as ToastUpdateEventDetail,
 } from './state';
 
 export { ToastTrigger, useToastTrigger_unstable, renderToastTrigger_unstable } from './ToastTrigger';
