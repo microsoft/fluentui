@@ -1,10 +1,25 @@
 import type { TSESTree, TSESLint, ParserServicesWithTypeInformation } from '@typescript-eslint/utils';
 import { ESLintUtils, AST_NODE_TYPES } from '@typescript-eslint/utils';
 import * as ts from 'typescript';
-import { BASE_HOOK_NAME_PATTERN, type BaseHookFunction, getFunctionInit } from '../utils/base-hook-detector';
 
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-base-hook-no-forbidden-runtime"
 export const RULE_NAME = 'base-hook-no-forbidden-runtime';
+
+/**
+ * Names of v9 "base hooks": the implementation-only half of a `useFoo` / `useFooBase_unstable`
+ * pair, kept free of focus/keyboard runtime so it can be composed by callers that may opt out
+ * of those concerns.
+ */
+const BASE_HOOK_NAME_PATTERN = /^use[A-Z]\w*Base_unstable$/;
+
+/**
+ * Any function-literal form a base hook can take: top-level function declaration, inline arrow
+ * function, or function expression bound to a variable / export.
+ */
+type BaseHookFunction =
+  | TSESTree.FunctionDeclaration
+  | TSESTree.FunctionExpression
+  | TSESTree.ArrowFunctionExpression;
 
 const DEFAULT_WATCHED_PACKAGES: ReadonlyArray<string> = ['@fluentui/react-tabster'];
 const DEFAULT_FORBIDDEN_RUNTIMES: ReadonlyArray<string> = ['tabster'];
@@ -424,6 +439,24 @@ function getImportedName(specifier: ImportSpecifierNode): string | undefined {
 // ---------------------------------------------------------------------------
 // Scope helpers
 // ---------------------------------------------------------------------------
+
+/**
+ * Returns the function literal initializer of a `VariableDeclarator` when the declarator is a
+ * plain Identifier bound to an inline arrow/function expression; otherwise `undefined`.
+ */
+function getFunctionInit(node: TSESTree.VariableDeclarator): BaseHookFunction | undefined {
+  if (node.id.type !== AST_NODE_TYPES.Identifier) {
+    return undefined;
+  }
+  const init = node.init;
+  if (
+    !init ||
+    (init.type !== AST_NODE_TYPES.ArrowFunctionExpression && init.type !== AST_NODE_TYPES.FunctionExpression)
+  ) {
+    return undefined;
+  }
+  return init;
+}
 
 /**
  * `true` when `scope` (or any of its ancestor scopes) is the function scope of `hookFn`. Used to
