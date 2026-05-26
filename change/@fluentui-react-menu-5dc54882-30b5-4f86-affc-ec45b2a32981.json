@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update useMenuTriggerBase hook signature",
-  "packageName": "@fluentui/react-menu",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

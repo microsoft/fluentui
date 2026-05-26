@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 12:04:31 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.39",
+      "version": "1.1.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "8531d26ae750f91537ced80d6679bc406acd4d23",
+            "comment": "refactor: centralize isSafeUrl and reuse across chart and utility consumers"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:08 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.38",
       "version": "1.1.38",

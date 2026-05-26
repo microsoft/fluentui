@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-teaching-popover
 
-This log was last generated on Thu, 23 Apr 2026 14:21:00 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.7.0)
+
+Tue, 26 May 2026 09:39:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover_v9.6.21..@fluentui/react-teaching-popover_v9.7.0)
+
+### Minor changes
+
+- feat: export base hooks ([PR #36200](https://github.com/microsoft/fluentui/pull/36200) by viktorgenaev@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-popover to v9.14.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-button to v9.9.2 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-tabster to v9.26.15 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-aria to v9.17.12 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [9.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover_v9.6.21)
 

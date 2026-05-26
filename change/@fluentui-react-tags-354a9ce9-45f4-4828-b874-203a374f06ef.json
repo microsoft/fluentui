@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: decouple useTagGroupBase_unstable from Tabster; export contexts. This is technically a breaking change, but the prior Tabster coupling was a programmatic mistake and not intended public behavior. If you run into issues, please bump to the next version.",
+  "packageName": "@fluentui/react-tags",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

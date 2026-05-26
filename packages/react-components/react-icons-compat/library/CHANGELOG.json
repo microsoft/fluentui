@@ -2,6 +2,35 @@
   "name": "@fluentui/react-icons-compat",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 09:39:59 GMT",
+      "tag": "@fluentui/react-icons-compat_v0.2.20",
+      "version": "0.2.20",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.3",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.26.4",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Apr 2026 14:21:16 GMT",
       "tag": "@fluentui/react-icons-compat_v0.2.19",
       "version": "0.2.19",
