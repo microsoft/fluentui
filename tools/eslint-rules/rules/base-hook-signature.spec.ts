@@ -3,6 +3,21 @@ import { RuleTester } from '@typescript-eslint/rule-tester';
 import { rule, RULE_NAME } from './base-hook-signature';
 
 const FIXTURE_ROOT = path.join(__dirname, '__fixtures__/base-hook-signature');
+// NOTE on fixture filenames below:
+//   `RuleTester` always lints source code provided in-memory via the `code` field — it never
+//   reads the file at `filename` from disk. The `filename` value is only used (a) as a label
+//   in error messages and (b) by rules that perform their OWN filesystem lookups relative to it.
+//
+//   `base-hook-signature` does exactly that: given a state-hook file `useFoo.ts(x)`, it calls
+//   `fs.statSync` to check whether a sibling `useFooBase.ts(x)` exists in the same folder, and
+//   only enforces the contract when a pair is detected.
+//
+//   So for the fixture tree under `__fixtures__/base-hook-signature/src/components/`:
+//     - The two stub files `Sibling/useSibling.ts` and `Orphan/useOrphan.ts` are docs-only —
+//       their existence does NOT affect any assertion (the rule never reads them).
+//     - What actually drives the test outcomes is the presence of `Sibling/useSiblingBase.ts`
+//       (pair detected → contract enforced) and the absence of
+//       `Orphan/useOrphanContextValuesBase.ts(x)` (no pair → contract NOT enforced).
 const SIBLING_FILENAME = path.join(FIXTURE_ROOT, 'src/components/Sibling/useSibling.ts');
 const ORPHAN_FILENAME = path.join(FIXTURE_ROOT, 'src/components/Orphan/useOrphan.ts');
 
