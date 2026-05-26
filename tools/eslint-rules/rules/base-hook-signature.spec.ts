@@ -1,0 +1,241 @@
+import * as path from 'node:path';
+import { RuleTester } from '@typescript-eslint/rule-tester';
+import { rule, RULE_NAME } from './base-hook-signature';
+
+const FIXTURE_ROOT = path.join(__dirname, '__fixtures__/base-hook-signature');
+const SIBLING_FILENAME = path.join(FIXTURE_ROOT, 'src/components/Sibling/useSibling.ts');
+const ORPHAN_FILENAME = path.join(FIXTURE_ROOT, 'src/components/Orphan/useOrphan.ts');
+
+const ruleTester = new RuleTester();
+
+ruleTester.run(RULE_NAME, rule, {
+  valid: [
+    // Valid base hook: namespace import — `import * as React from 'react'` + `React.Ref<...>`.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+    // Valid base hook: named import — `import { Ref } from 'react'` + `Ref<...>` (FunctionDeclaration form).
+    {
+      code: `
+        import { Ref } from 'react';
+        export function useThingBase_unstable(props, ref: Ref<HTMLElement>) {
+          return { props, ref };
+        }
+      `,
+    },
+    // Valid base hook: default import — `import React from 'react'` + `React.Ref<...>`.
+    {
+      code: `
+        import React from 'react';
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+    // Valid base hook with only \`props\` (ref is optional).
+    {
+      code: `
+        export const useThingBase_unstable = (props) => {
+          return { props };
+        };
+      `,
+    },
+    // Non-base hook without a paired base hook is not subject to the contract.
+    {
+      code: `
+        export const useThing_unstable = (props, ref, extra) => {
+          return { props, ref, extra };
+        };
+      `,
+    },
+    // Pair detection (same file): a state hook `useThing_unstable` next to its base hook
+    // `useThingBase_unstable` IS subject to the contract. Correct signature passes.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThing_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+    // Pair detection (no sibling base hook on disk): `useOrphanContextValues_unstable(state)`
+    // is NOT a paired wrapping hook and must NOT be flagged for its non-(props, ref) signature.
+    // The Orphan folder has no `useOrphanContextValuesBase.ts(x)` next to it.
+    {
+      filename: ORPHAN_FILENAME,
+      code: `
+        export function useOrphanContextValues_unstable(state) {
+          return { state };
+        }
+      `,
+    },
+    // Pair detection (sibling file): wrapping state hook lives in `useSibling.ts`, paired with
+    // `useSiblingBase.ts` in the same folder. Correct (props, ref) signature passes.
+    {
+      filename: SIBLING_FILENAME,
+      code: `
+        import * as React from 'react';
+        export const useSibling_unstable = (props, ref: React.Ref<HTMLElement>) => {
+          return { props, ref };
+        };
+      `,
+    },
+  ],
+  invalid: [
+    // Too few params (0).
+    {
+      code: `
+        export const useThingBase_unstable = () => ({});
+      `,
+      errors: [{ messageId: 'invalidParamCount', data: { hookName: 'useThingBase_unstable', actual: 0 } }],
+    },
+    // Too many params.
+    {
+      code: `
+        export const useThingBase_unstable = (props, ref, extra) => ({ props, ref, extra });
+      `,
+      errors: [{ messageId: 'invalidParamCount', data: { hookName: 'useThingBase_unstable', actual: 3 } }],
+    },
+    // Wrong param names.
+    {
+      code: `
+        export const useThingBase_unstable = (p, r) => ({ p, r });
+      `,
+      errors: [
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useThingBase_unstable', index: 1, expected: 'props', actual: 'p' },
+        },
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useThingBase_unstable', index: 2, expected: 'ref', actual: 'r' },
+        },
+      ],
+    },
+    // ObjectPattern for \`props\` is not allowed.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThingBase_unstable = ({ a }, ref: React.Ref<HTMLElement>) => ({ a, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useThingBase_unstable', index: 1, expected: 'props', actual: '{ ... }' },
+        },
+      ],
+    },
+    // \`ref\` parameter without a type annotation.
+    {
+      code: `
+        export const useThingBase_unstable = (props, ref) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: '<missing type annotation>' },
+        },
+      ],
+    },
+    // \`ref\` parameter typed as something other than React.Ref.
+    {
+      code: `
+        export const useThingBase_unstable = (props, ref: HTMLElement) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'HTMLElement' },
+        },
+      ],
+    },
+    // \`ref\` parameter typed as React.ForwardedRef (must be React.Ref).
+    {
+      code: `
+        export const useThingBase_unstable = (props, ref: React.ForwardedRef<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'React.ForwardedRef' },
+        },
+      ],
+    },
+    // \`Ref\` is a locally declared type alias, not imported from react.
+    {
+      code: `
+        type Ref<T> = { current: T | null };
+        export const useThingBase_unstable = (props, ref: Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'Ref' },
+        },
+      ],
+    },
+    // \`Ref\` imported from a non-react package is not accepted.
+    {
+      code: `
+        import { Ref } from 'not-react';
+        export const useThingBase_unstable = (props, ref: Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'Ref' },
+        },
+      ],
+    },
+    // \`React\` is a locally declared identifier, not the react module namespace.
+    {
+      code: `
+        const React = { Ref: null };
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [
+        {
+          messageId: 'invalidRefType',
+          data: { hookName: 'useThingBase_unstable', actual: 'React.Ref' },
+        },
+      ],
+    },
+    // Pair detection (same file): wrapping state hook with too many params is flagged because
+    // its sibling base hook in the same file marks it as a paired wrapper.
+    {
+      code: `
+        import * as React from 'react';
+        export const useThing_unstable = (props, ref, extra) => ({ props, ref, extra });
+        export const useThingBase_unstable = (props, ref: React.Ref<HTMLElement>) => ({ props, ref });
+      `,
+      errors: [{ messageId: 'invalidParamCount', data: { hookName: 'useThing_unstable', actual: 3 } }],
+    },
+    // Pair detection (sibling file): wrapping state hook in `useSibling.ts` is paired with
+    // `useSiblingBase.ts` in the same folder. Wrong param names are flagged.
+    {
+      filename: SIBLING_FILENAME,
+      code: `
+        import * as React from 'react';
+        export const useSibling_unstable = (p, r: React.Ref<HTMLElement>) => ({ p, r });
+      `,
+      errors: [
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useSibling_unstable', index: 1, expected: 'props', actual: 'p' },
+        },
+        {
+          messageId: 'invalidParamName',
+          data: { hookName: 'useSibling_unstable', index: 2, expected: 'ref', actual: 'r' },
+        },
+      ],
+    },
+  ],
+});
