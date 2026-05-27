@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-headless-components-preview",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Fluent UI React Headless Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -57,7 +57,7 @@
     "@fluentui/react-switch": "^9.7.3",
     "@fluentui/react-tabs": "^9.12.2",
     "@fluentui/react-tabster": "^9.26.15",
-    "@fluentui/react-tags": "^9.9.0",
+    "@fluentui/react-tags": "^9.9.1",
     "@fluentui/react-textarea": "^9.7.3",
     "@fluentui/react-toolbar": "^9.8.1",
     "@fluentui/react-toast": "^9.7.18",

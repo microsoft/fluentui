@@ -24,7 +24,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-spinner": "^9.8.3",
-    "@fluentui/react-toast": "^9.7.18",
+    "@fluentui/react-toast": "^9.8.0",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

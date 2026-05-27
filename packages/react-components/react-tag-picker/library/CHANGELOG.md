@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tag-picker
 
-This log was last generated on Tue, 26 May 2026 09:39:08 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2026 11:18:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.8.8)
+
+Wed, 27 May 2026 11:18:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.8.7..@fluentui/react-tag-picker_v9.8.8)
+
+### Patches
+
+- Bump @fluentui/react-tags to v9.9.1 ([commit](https://github.com/microsoft/fluentui/commit/5e0f816076baa63d07331287402ed4bd6d8e3c60) by beachball)
 
 ## [9.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.8.7)
 
