@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: add cypress regression coverage for useContextSelector eager-bailout (React 18)",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

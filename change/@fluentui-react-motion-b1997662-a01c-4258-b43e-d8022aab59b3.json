@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(react-motion): add replayKey prop to replay motion without remounting",
-  "packageName": "@fluentui/react-motion",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}
