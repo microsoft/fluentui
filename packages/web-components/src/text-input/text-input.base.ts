@@ -419,19 +419,6 @@ export class BaseTextInput extends FASTElement {
   }
 
   /**
-   * Handles the internal control's `keypress` event.
-   *
-   * @internal
-   */
-  public beforeinputHandler(e: InputEvent): boolean | void {
-    if (e.inputType === 'insertLineBreak') {
-      this.implicitSubmit();
-    }
-
-    return true;
-  }
-
-  /**
    * Change event handler for inner control.
    *
    * @internal

@@ -11,7 +11,6 @@ import type { TextInputOptions } from './text-input.options.js';
 export function textInputTemplate<T extends TextInput>(options: TextInputOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      @beforeinput="${(x, c) => x.beforeinputHandler(c.event as InputEvent)}"
       @focusin="${(x, c) => x.focusinHandler(c.event as FocusEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >

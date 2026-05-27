@@ -699,6 +699,34 @@ test.describe('TextInput', () => {
     expect(page.url()).toMatch(/foo/);
   });
 
+  test('should only submit form once when Enter is pressed', async ({ fastPage }) => {
+    const { element, page } = fastPage;
+    const control = element.locator('input');
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <${tagName} name="testinput"></${tagName}>
+      </form>
+    `);
+
+    await form.evaluate(node => {
+      node.addEventListener('submit', evt => {
+        if (!node.dataset.count) {
+          node.dataset.count = '0';
+        }
+        const count = Number(node.dataset.count) + 1;
+        node.dataset.count = String(count);
+        evt.preventDefault();
+      });
+    });
+
+    await control.focus();
+    await page.keyboard.press('Enter');
+
+    await expect(form).toHaveAttribute('data-count', '1');
+  });
+
   test('should allow comma-separated values when the `multiple` attribute is set and the `type` is "email"', async ({
     fastPage,
     page,
