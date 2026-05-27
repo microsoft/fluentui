@@ -18,7 +18,7 @@ export const styles = css`
     position-anchor: --menu-trigger;
     position-area: block-end span-inline-end;
     position-try-fallbacks: flip-block;
-    position: absolute;
+    position: fixed;
     z-index: 1;
   }
 

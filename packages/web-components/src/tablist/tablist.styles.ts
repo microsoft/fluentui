@@ -201,7 +201,7 @@ export const styles = css`
       content: '';
       inline-size: 100%;
       inset: auto auto anchor(end) anchor(center);
-      position: absolute;
+      position: fixed;
       position-anchor: --tab;
       transform: translateX(-50%);
       transition-property: inset-inline, width;

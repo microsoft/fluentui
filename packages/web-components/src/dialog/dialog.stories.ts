@@ -67,6 +67,15 @@ const storyTemplate = html<StoryArgs<FluentDialog & FluentDialogBody>>`
       ${story => story.actionSlottedContent?.()} ${story => story.slottedContent?.()}
       ${story => story.titleActionSlottedContent?.()} ${story => story.closeSlottedContent?.()}
       ${story => story.titleSlottedContent?.()}
+      <fluent-dropdown placeholder="Select">
+        <fluent-listbox>
+          <fluent-option>Option 1</fluent-option>
+          <fluent-option>Option 2</fluent-option>
+          <fluent-option>Option 3</fluent-option>
+          <fluent-option>Option 4</fluent-option>
+          <fluent-option>Option 5</fluent-option>
+        </fluent-listbox>
+      </fluent-dropdown>
     </fluent-dialog-body>
   </fluent-dialog>
 `;

@@ -40,7 +40,7 @@ export const styles = css`
 
   @supports (anchor-name: --anchor) {
     :host([popover]) {
-      position: absolute;
+      position: fixed;
       margin-block-start: 0;
       max-height: var(--listbox-max-height, calc(50vh - anchor-size(self-block)));
       min-width: anchor-size(width);
