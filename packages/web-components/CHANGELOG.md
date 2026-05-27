@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 19 May 2026 04:10:54 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2026 04:07:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.21](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.21)
+
+Wed, 27 May 2026 04:07:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.20..@fluentui/web-components_v3.0.0-rc.21)
+
+### Changes
+
+- feat(web-components): switch e2e test harness to @microsoft/fast-test-harness ([PR #36105](https://github.com/microsoft/fluentui/pull/36105) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.20)
 
