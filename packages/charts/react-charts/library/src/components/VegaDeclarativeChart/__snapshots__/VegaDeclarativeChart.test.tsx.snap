@@ -413,7 +413,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#2aa0a4"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -426,7 +425,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#2aa0a4"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -439,7 +437,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#2aa0a4"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -452,7 +449,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#2aa0a4"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -465,7 +461,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#2aa0a4"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -478,7 +473,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#2aa0a4"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
             </g>
@@ -914,7 +908,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -927,7 +920,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -940,7 +932,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
             </g>
@@ -1357,7 +1348,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -1370,7 +1360,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
               <circle
@@ -1383,7 +1372,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(5.428571428571429, 0)"
               />
             </g>
@@ -1973,7 +1961,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="red"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(3.1250000000000004, 0)"
               />
               <circle
@@ -1986,7 +1973,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="red"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(3.1250000000000004, 0)"
               />
               <circle
@@ -1999,7 +1985,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="red"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(3.1250000000000004, 0)"
               />
               <circle
@@ -2012,7 +1997,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="red"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(3.1250000000000004, 0)"
               />
               <circle
@@ -2025,7 +2009,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="red"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(3.1250000000000004, 0)"
               />
               <circle
@@ -2038,7 +2021,6 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 role="button"
                 stroke="red"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(3.1250000000000004, 0)"
               />
             </g>
@@ -3574,7 +3556,6 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(9.5, 0)"
               />
               <circle
@@ -3587,7 +3568,6 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 role="button"
                 stroke="#e3008c"
                 stroke-width="3"
-                tabindex="0"
                 transform="translate(9.5, 0)"
               />
             </g>

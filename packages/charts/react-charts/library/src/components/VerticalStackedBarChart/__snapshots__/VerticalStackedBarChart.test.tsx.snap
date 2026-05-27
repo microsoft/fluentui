@@ -412,7 +412,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             role="button"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
           />
           <circle
@@ -425,7 +424,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             role="button"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
           />
           <circle
@@ -438,7 +436,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             role="button"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
           />
         </g>
@@ -953,7 +950,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             role="button"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
           />
           <circle
@@ -966,7 +962,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             role="button"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
           />
           <circle
@@ -979,7 +974,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             role="button"
             stroke="#0078d4"
             stroke-width="3"
-            tabindex="0"
             transform="translate(8, 0)"
           />
         </g>
@@ -3185,7 +3179,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="button"
             stroke="yellow"
             stroke-width="3"
-            tabindex="0"
             transform="translate(0, 0)"
           />
           <circle
@@ -3198,7 +3191,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="button"
             stroke="yellow"
             stroke-width="3"
-            tabindex="0"
             transform="translate(0, 0)"
           />
         </g>
@@ -6710,7 +6702,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="button"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6724,7 +6716,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="button"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6756,7 +6748,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="button"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6770,7 +6762,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="button"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
