@@ -82,7 +82,7 @@ test.describe('Tablist', () => {
 
     await fastPage.setTemplate();
 
-    await expect(element).toHaveAttribute('role', 'tablist');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'tablist');
   });
 
   test('should set a default orientation value of `horizontal` when `orientation` is not provided', async ({
@@ -397,7 +397,7 @@ test.describe('Tablist', () => {
           <div id="panel3">Panel three</div>
       `);
 
-    const tabs = element.getByRole('tab');
+    const tabs = element.locator(TabTagName);
     const firstTab = tabs.nth(0);
     const secondTab = tabs.nth(1);
     const firstPanel = page.getByText('Panel one');

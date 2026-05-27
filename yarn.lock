@@ -2757,10 +2757,15 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.10.4.tgz#12b8c6c90902f2a54d5b27f618d7d095e133546d"
   integrity sha512-OkHIlMztq7+PgkRF1LscgBd/MVzMhGrWPkJRDvOEqdqEdZOKocKvaKcUKZubIBz4RpLIrhLD3lOJzCsspk6jXg==
 
-"@microsoft/fast-test-harness@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-test-harness/-/fast-test-harness-0.1.0.tgz#e372cd6e23b921ee4c5aca35a5eb2bcf6b60843a"
-  integrity sha512-TEbNxPBbF9XDlqZTF21fymWrTUhBpPxqi4yznFzTdX+mBslNTLPfqOUXxd4zd0Vz1zn3SKtW4OIop0vCSu1oXQ==
+"@microsoft/fast-html@1.0.0-alpha.53":
+  version "1.0.0-alpha.53"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-html/-/fast-html-1.0.0-alpha.53.tgz#e656a38386a998640fd7af40bbcd5aae321092f9"
+  integrity sha512-S6fUlNjk3aj9SP1U4sRWA1Cf1gns7FLJOed3NMvndWQBfmQczVX8CHXbfVKF55B7nKWRkAQwDHN0wOu7yxw+aw==
+
+"@microsoft/fast-test-harness@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-test-harness/-/fast-test-harness-0.3.0.tgz#9d5536c8cbf1e4ecae9d70bfe0fe105b5e215caf"
+  integrity sha512-EZ0iLxy/AEaOMthJmalD4fIp4rAM/ypBfqXmMJD4ZffVUVnLkfUw2NFZNUIsMbP/S4+tsfBnBlX5tyKSYD5TIQ==
   dependencies:
     cheerio "1.2.0"
 
@@ -2771,10 +2776,10 @@
   dependencies:
     exenv-es6 "^1.1.1"
 
-"@microsoft/focusgroup-polyfill@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/focusgroup-polyfill/-/focusgroup-polyfill-1.4.1.tgz#0d3feee675775f7a692a3b1e974eea107503c78e"
-  integrity sha512-nXn/kJ5ZnzpR+TWYGV+nU2yaHPJORjWf2lSQJ90VT6Ydsmmkaz/yOYW3CizDGPPsA7ouAu9K8khCUeyfBcz7UA==
+"@microsoft/focusgroup-polyfill@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/focusgroup-polyfill/-/focusgroup-polyfill-1.5.0.tgz#f59ab909169b3c82921d845e2034f50426eeab87"
+  integrity sha512-2tw+AISULD5xhP+wIqUheej5wZbwiuPaqjuCa8A8jLdq2ikklZBIvSDLLa6j7zbDbtV5BXnrYgSuyW1Bj5JA4A==
 
 "@microsoft/load-themed-styles@1.10.26", "@microsoft/load-themed-styles@^1.10.26":
   version "1.10.26"
