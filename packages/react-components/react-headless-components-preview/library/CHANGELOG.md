@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Mon, 18 May 2026 09:35:35 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2026 11:54:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.1.0)
+
+Wed, 27 May 2026 11:54:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.0.4..@fluentui/react-headless-components-preview_v0.1.0)
+
+### Minor changes
+
+- feat: add InfoLabel component and stories ([PR #36220](https://github.com/microsoft/fluentui/pull/36220) by dmytrokirpa@microsoft.com)
+- feat(react-headless-components-preview): add trapFocus prop to Popover for modal focus-trap via native dialog API ([PR #36123](https://github.com/microsoft/fluentui/pull/36123) by vgenaev@gmail.com)
+
+### Patches
+
+- feat: add Nav component and stories ([PR #36213](https://github.com/microsoft/fluentui/pull/36213) by dmytrokirpa@microsoft.com)
+- fix: descendant clicks no longer trigger Dialog backdrop dismissal ([PR #36245](https://github.com/microsoft/fluentui/pull/36245) by vgenaev@gmail.com)
+- feat: add headless Menu components ([PR #36110](https://github.com/microsoft/fluentui/pull/36110) by vgenaev@gmail.com)
+- fix: update non-modal dialog implementation to use popover API ([PR #36244](https://github.com/microsoft/fluentui/pull/36244) by dmytrokirpa@microsoft.com)
+- fix: update useMenuTriggerBase hook signature ([PR #36237](https://github.com/microsoft/fluentui/pull/36237) by dmytrokirpa@microsoft.com)
 
 ## [0.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.0.4)
 

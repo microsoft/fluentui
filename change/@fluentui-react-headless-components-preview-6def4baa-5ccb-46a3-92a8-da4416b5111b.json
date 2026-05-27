@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update non-modal dialog implementation to use popover API",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

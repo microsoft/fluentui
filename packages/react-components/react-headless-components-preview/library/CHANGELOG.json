@@ -2,6 +2,73 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Wed, 27 May 2026 11:54:45 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "b7214c3161b6bc48253fc228d2a24a95fd5631dd",
+            "comment": "feat: add Nav component and stories"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1321fff3859bf91c42ad48df618bf090aec57822",
+            "comment": "fix: descendant clicks no longer trigger Dialog backdrop dismissal"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "9204ee11f390cea11b6c0d35213a7a9a01f05856",
+            "comment": "feat: add headless Menu components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6cdfd5198fa185e7e229fd426805bcdbb35c3109",
+            "comment": "fix: update non-modal dialog implementation to use popover API"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "aa727a4aac5088916fe7d22e11355ba4938951e2",
+            "comment": "fix: update useMenuTriggerBase hook signature"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "4c758e46232f72a041bf8aaed8e1e64ef0db1c3b",
+            "comment": "feat: add InfoLabel component and stories"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "c2f4e86dd45380404d00ff35a392be7cdbe1294d",
+            "comment": "feat(react-headless-components-preview): add trapFocus prop to Popover for modal focus-trap via native dialog API"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "b8b8a0fb355dc821456330d060b9e1cc5ecf2558",
+            "comment": "style: adopt to a new react-hooks lint rules"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 May 2026 09:35:35 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.0.4",
       "version": "0.0.4",
