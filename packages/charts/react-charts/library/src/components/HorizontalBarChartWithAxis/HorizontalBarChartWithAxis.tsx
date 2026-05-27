@@ -41,6 +41,7 @@ import {
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
   formatScientificLimitWidth,
+  getAriaRole,
 } from '../../utilities/index';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 import { useImageExport } from '../../utilities/hooks';
@@ -120,11 +121,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   function _getMargins(margins: Margins) {
     _margins = margins;
-  }
-
-  // Utility to determine ARIA role for interactive elements
-  function getAriaRole(onClick?: unknown): 'button' | 'img' {
-    return onClick ? 'button' : 'img';
   }
 
   function _renderContentForOnlyBars(point: HorizontalBarChartWithAxisDataPoint): JSXElement {

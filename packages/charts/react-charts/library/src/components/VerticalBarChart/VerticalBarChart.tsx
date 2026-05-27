@@ -45,6 +45,8 @@ import {
   calcBandwidth,
   calcRequiredWidth,
   sortAxisCategories,
+  getAriaRole,
+  isOnClickFunction,
 } from '../../utilities/index';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -295,11 +297,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { data } = props;
     return data!.some((item: VerticalBarChartDataPoint) => item?.lineData?.y !== undefined);
   }
-
-  // Utility to determine ARIA role for interactive elements
-  const getAriaRole = (onClick?: unknown): 'button' | 'img' => {
-    return onClick || !props.hideTooltip ? 'button' : 'img';
-  };
 
   function _adjustProps(): void {
     _xAxisType =
@@ -684,7 +681,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
-            tabIndex={(!props.hideTooltip || point.onClick) && shouldHighlight ? 0 : undefined}
+            tabIndex={(!props.hideTooltip || isOnClickFunction(point.onClick)) && shouldHighlight ? 0 : undefined}
             opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
@@ -747,7 +744,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onBlur={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
-            tabIndex={(!props.hideTooltip || point.onClick) && shouldHighlight ? 0 : undefined}
+            tabIndex={(!props.hideTooltip || isOnClickFunction(point.onClick)) && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
             opacity={shouldHighlight ? 1 : 0.1}
           />

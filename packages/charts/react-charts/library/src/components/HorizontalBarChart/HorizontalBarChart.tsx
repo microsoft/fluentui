@@ -5,7 +5,13 @@ import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.style
 import type { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData } from './index';
 import { HorizontalBarChartVariant } from './index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
+import {
+  formatScientificLimitWidth,
+  getAccessibleDataObject,
+  getAriaRole,
+  isOnClickFunction,
+  useRtl,
+} from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -47,16 +53,6 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
-
-  // Utility to check if a bar is interactive
-  const _isBarInteractive = (point: ChartDataPoint): boolean => {
-    return Boolean(point.onClick) || (!props.hideTooltip && point.legend !== '');
-  };
-
-  // Utility to determine ARIA role for bar
-  const _getAriaRole = (point: ChartDataPoint): 'button' | 'img' => {
-    return _isBarInteractive(point) ? 'button' : 'img';
-  };
 
   function _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
     _refArray.push({ index: legendTitle, refElement: element });
@@ -330,14 +326,16 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
           }
           onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role={_getAriaRole(point)}
+          role={getAriaRole(point.onClick)}
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
           opacity={isLegendSelected ? 1 : 0.1}
           tabIndex={
-            (_legendHighlighted(point.legend!) || _noLegendHighlighted()) && _isBarInteractive(point) ? 0 : undefined
+            (_legendHighlighted(point.legend!) || _noLegendHighlighted()) && isOnClickFunction(point.onClick)
+              ? 0
+              : undefined
           }
         />
       );

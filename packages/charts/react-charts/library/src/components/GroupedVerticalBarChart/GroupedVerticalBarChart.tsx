@@ -31,6 +31,7 @@ import {
   calcBandwidth,
   calcTotalBandUnits,
   sortAxisCategories,
+  getAriaRole,
 } from '../../utilities/index';
 
 import type {
@@ -425,11 +426,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
     }
     return domainNRangeValue;
-  }
-
-  // Utility to determine ARIA role for interactive elements
-  function getAriaRole(onClick?: unknown): 'button' | 'img' {
-    return onClick ? 'button' : 'img';
   }
 
   // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated

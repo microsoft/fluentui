@@ -55,6 +55,8 @@ import {
   calcBandwidth,
   calcRequiredWidth,
   sortAxisCategories,
+  getAriaRole,
+  isOnClickFunction,
 } from '../../utilities/index';
 import { formatDateToLocaleString, isInvalidValue, isSafeUrl } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
@@ -422,14 +424,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     return _getHighlightedLegend().length === 0;
   }
 
-  function _isInteractiveElement(): boolean {
-    return Boolean(props.onBarClick || props.href || !props.hideTooltip);
-  }
-
-  function _getAriaRole(): 'button' | 'img' {
-    return _isInteractiveElement() ? 'button' : 'img';
-  }
-
   function _getAriaLabel(
     singleChartData: VerticalStackedChartProps,
     point?: VSChartDataPoint | LineDataInVerticalStackedBarChart,
@@ -663,7 +657,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => {
               circleRef.refElement = e;
             }}
-            tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
+            tabIndex={!props.hideTooltip && shouldHighlight && isOnClickFunction(props.onBarClick) ? 0 : undefined}
             onFocus={event => _lineFocus(event, circlePoint, circleRef)}
             onBlur={_handleMouseOut}
             role={!props.hideTooltip ? 'button' : 'img'}
@@ -1038,6 +1032,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       const singleBar = barsToDisplay.map((point: VSChartDataPoint, index: number) => {
         const startColor = point.color ? point.color : _colors[index];
         const ref: RefArrayData = {};
+        const onBarClick = (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event);
         const shouldHighlight = _isLegendHighlighted(point.legend) || _noLegendHighlighted() ? true : false;
         const rectFocusProps = !shouldFocusWholeStack &&
           shouldHighlight && {
@@ -1049,9 +1044,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             onMouseLeave: _handleMouseOut,
             onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
             onBlur: _handleMouseOut,
-            onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-            role: _getAriaRole(),
-            tabIndex: _isInteractiveElement() && shouldHighlight ? 0 : undefined,
+            onClick: onBarClick,
+            role: getAriaRole(onBarClick),
+            tabIndex: !props.hideTooltip && shouldHighlight && isOnClickFunction(onBarClick) ? 0 : undefined,
           };
 
         let barHeight: number;
@@ -1141,6 +1136,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       const someBarsActive =
         singleChartData.chartData.filter(dataPoint => _noLegendHighlighted() || _isLegendHighlighted(dataPoint.legend))
           .length > 0;
+      const onStackClick = (event: React.MouseEvent<SVGElement>) => _onClick(singleChartData, event);
       // FIXME: Making the entire stack focusable when stack callout is enabled adds unnecessary complexity
       // and can reduce usability in certain scenarios. Instead, each individual element within the stack
       // should be focusable on its own, with its own aria-label. This behavior is also seen in Highcharts.
@@ -1152,9 +1148,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onMouseLeave: _handleMouseOut,
           onFocus: () => _onStackFocus(singleChartData, groupRef),
           onBlur: _handleMouseOut,
-          onClick: (event: any) => _onClick(singleChartData, event),
-          role: _getAriaRole(),
-          tabIndex: _isInteractiveElement() ? 0 : undefined,
+          onClick: onStackClick,
+          role: getAriaRole(onStackClick),
+          tabIndex: !props.hideTooltip && isOnClickFunction(onStackClick) ? 0 : undefined,
         };
       let showLabel = false;
       let barLabel: string | number = 0;

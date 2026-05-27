@@ -2714,3 +2714,13 @@ const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: str
 
   return text.slice(0, lo) + '...';
 };
+
+// Utility to check whether onClick is a function
+export function isOnClickFunction(onClick?: unknown): boolean {
+  return typeof onClick === 'function';
+}
+
+// Utility to determine ARIA role for interactive elements
+export function getAriaRole(onClick?: unknown): 'button' | 'img' {
+  return isOnClickFunction(onClick) ? 'button' : 'img';
+}
