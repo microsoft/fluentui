@@ -6,6 +6,7 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete } from '@fluentui/keyboard-keys';
 import type { ToastPoliteness, ToastStatus } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
+import { usePausableTimer } from './usePausableTimer';
 
 const intentPolitenessMap: Record<NonNullable<ToastContainerProps['intent']>, ToastPoliteness> = {
   success: 'assertive',
@@ -26,7 +27,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     updateId,
     onStatusChange,
     data,
-    timeout: timerTimeout = -1,
+    timeout = -1,
     intent = 'info',
     politeness,
     pauseOnHover,
@@ -62,7 +63,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       return;
     }
 
-    if (timerTimeout < 0) {
+    if (timeout < 0) {
       setRunning(true);
       return;
     }
@@ -114,14 +115,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     reportStatus('visible');
   }, [visible, play, reportStatus, updateId]);
 
-  React.useEffect(() => {
-    if (!running || timerTimeout < 0 || !targetDocument?.defaultView) {
-      return;
-    }
-
-    const timeoutId = targetDocument.defaultView.setTimeout(close, timerTimeout);
-    return () => targetDocument.defaultView?.clearTimeout(timeoutId);
-  }, [running, timerTimeout, targetDocument, close]);
+  usePausableTimer({ timeout, running, onTimeout: close, resetKey: updateId });
 
   React.useEffect(() => {
     if (!visible) {

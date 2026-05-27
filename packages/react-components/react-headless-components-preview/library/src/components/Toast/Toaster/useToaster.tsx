@@ -29,6 +29,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     toasterId,
     offset,
     shortcuts,
+    pauseOnHover: true,
   });
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);
