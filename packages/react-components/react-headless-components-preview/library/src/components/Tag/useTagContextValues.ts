@@ -1,12 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
 
 import type { TagContextValues, TagState } from './Tag.types';
 
-const emptyAvatarContext = { size: undefined, shape: undefined } as const;
-
-export const useTagContextValues = (_state: TagState): TagContextValues => {
-  const avatar = React.useMemo(() => emptyAvatarContext, []);
-  return { avatar };
-};
+export const useTagContextValues = useTagAvatarContextValues_unstable as unknown as (
+  state: TagState,
+) => TagContextValues;

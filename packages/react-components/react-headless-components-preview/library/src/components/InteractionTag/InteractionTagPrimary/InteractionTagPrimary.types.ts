@@ -1,11 +1,9 @@
-import type {
-  InteractionTagPrimaryBaseState,
-  InteractionTagPrimaryContextValues as InteractionTagPrimaryBaseContextValues,
-} from '@fluentui/react-tags';
+import type { InteractionTagPrimaryBaseState } from '@fluentui/react-tags';
 
 export type {
   InteractionTagPrimarySlots,
   InteractionTagPrimaryBaseProps as InteractionTagPrimaryProps,
+  InteractionTagPrimaryContextValues,
 } from '@fluentui/react-tags';
 
 export type InteractionTagPrimaryState = InteractionTagPrimaryBaseState & {
@@ -26,5 +24,3 @@ export type InteractionTagPrimaryState = InteractionTagPrimaryBaseState & {
     'data-has-secondary-action'?: string;
   };
 };
-
-export type InteractionTagPrimaryContextValues = InteractionTagPrimaryBaseContextValues;

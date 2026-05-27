@@ -8,7 +8,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InteractionTagBaseState } from '@fluentui/react-tags';
 import type { InteractionTagContextValue } from '@fluentui/react-tags';
 import type { InteractionTagPrimaryBaseState } from '@fluentui/react-tags';
-import type { InteractionTagPrimaryContextValues as InteractionTagPrimaryContextValues_2 } from '@fluentui/react-tags';
+import { InteractionTagPrimaryContextValues } from '@fluentui/react-tags';
 import { InteractionTagPrimaryBaseProps as InteractionTagPrimaryProps } from '@fluentui/react-tags';
 import { InteractionTagPrimarySlots } from '@fluentui/react-tags';
 import { InteractionTagBaseProps as InteractionTagProps } from '@fluentui/react-tags';
@@ -32,8 +32,7 @@ export type InteractionTagContextValues = {
 // @public
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
 
-// @public (undocumented)
-export type InteractionTagPrimaryContextValues = InteractionTagPrimaryContextValues_2;
+export { InteractionTagPrimaryContextValues }
 
 export { InteractionTagPrimaryProps }
 
@@ -91,7 +90,7 @@ export const useInteractionTagContextValues: (state: InteractionTagState) => Int
 export const useInteractionTagPrimary: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;
 
 // @public (undocumented)
-export const useInteractionTagPrimaryContextValues: (_state: InteractionTagPrimaryState) => InteractionTagPrimaryContextValues;
+export const useInteractionTagPrimaryContextValues: (state: InteractionTagPrimaryState) => InteractionTagPrimaryContextValues;
 
 // @public
 export const useInteractionTagSecondary: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagSecondaryState;
