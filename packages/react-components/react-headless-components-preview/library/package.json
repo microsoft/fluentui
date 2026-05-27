@@ -168,6 +168,12 @@
       "import": "./lib/input.js",
       "require": "./lib-commonjs/input.js"
     },
+    "./interaction-tag": {
+      "types": "./dist/interaction-tag.d.ts",
+      "node": "./lib-commonjs/interaction-tag.js",
+      "import": "./lib/interaction-tag.js",
+      "require": "./lib-commonjs/interaction-tag.js"
+    },
     "./label": {
       "types": "./dist/label.d.ts",
       "node": "./lib-commonjs/label.js",
@@ -293,6 +299,18 @@
       "node": "./lib-commonjs/tab-list.js",
       "import": "./lib/tab-list.js",
       "require": "./lib-commonjs/tab-list.js"
+    },
+    "./tag": {
+      "types": "./dist/tag.d.ts",
+      "node": "./lib-commonjs/tag.js",
+      "import": "./lib/tag.js",
+      "require": "./lib-commonjs/tag.js"
+    },
+    "./tag-group": {
+      "types": "./dist/tag-group.d.ts",
+      "node": "./lib-commonjs/tag-group.js",
+      "import": "./lib/tag-group.js",
+      "require": "./lib-commonjs/tag-group.js"
     },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
