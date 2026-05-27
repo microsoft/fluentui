@@ -9,10 +9,10 @@ describe('Tag', () => {
     displayName: 'Tag',
   });
 
-  it('renders a default span', () => {
+  it('renders a non-interactive tag by default', () => {
     const result = render(<Tag>Default tag</Tag>);
-    const tag = result.getByText('Default tag');
-    expect(tag.closest('span')).toBeInTheDocument();
+    expect(result.getByText('Default tag')).toBeInTheDocument();
+    expect(result.queryByRole('button')).toBeNull();
   });
 
   it('renders a button with state data attributes when dismissible', () => {

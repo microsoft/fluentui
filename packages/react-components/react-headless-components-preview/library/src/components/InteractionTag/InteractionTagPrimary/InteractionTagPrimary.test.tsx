@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../testing/isConformant';
+import { isConformant } from '../../../testing/isConformant';
 import { InteractionTagPrimary } from './InteractionTagPrimary';
 import { InteractionTag } from '../InteractionTag';
 
@@ -13,9 +13,8 @@ describe('InteractionTagPrimary', () => {
     requiredProps: { children: 'tag' },
   });
 
-  it('renders a button using the parent InteractionTag context id', () => {
+  it('exposes its content as the accessible name of a button', () => {
     const result = wrap(<InteractionTagPrimary>label</InteractionTagPrimary>);
-    const button = result.getByRole('button');
-    expect(button.id).toEqual(expect.stringMatching(/fui-InteractionTagPrimary-/));
+    expect(result.getByRole('button', { name: 'label' })).toBeInTheDocument();
   });
 });

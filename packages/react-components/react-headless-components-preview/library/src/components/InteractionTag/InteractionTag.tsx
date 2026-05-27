@@ -4,7 +4,8 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 import type { InteractionTagProps } from './InteractionTag.types';
-import { useInteractionTag, useInteractionTagContextValues } from './useInteractionTag';
+import { useInteractionTag } from './useInteractionTag';
+import { useInteractionTagContextValues } from './useInteractionTagContextValues';
 import { renderInteractionTag } from './renderInteractionTag';
 
 /**

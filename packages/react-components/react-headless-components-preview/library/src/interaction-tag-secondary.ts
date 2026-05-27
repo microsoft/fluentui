@@ -2,9 +2,9 @@ export {
   InteractionTagSecondary,
   renderInteractionTagSecondary,
   useInteractionTagSecondary,
-} from './components/InteractionTagSecondary';
+} from './components/InteractionTag/InteractionTagSecondary';
 export type {
   InteractionTagSecondarySlots,
   InteractionTagSecondaryProps,
   InteractionTagSecondaryState,
-} from './components/InteractionTagSecondary';
+} from './components/InteractionTag/InteractionTagSecondary';

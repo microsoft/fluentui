@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: add headless Tags components",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",

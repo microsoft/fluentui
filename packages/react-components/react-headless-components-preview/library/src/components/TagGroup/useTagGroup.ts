@@ -1,10 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useTagGroupBase_unstable } from '@fluentui/react-tags';
-import type { TagGroupContextValue } from '@fluentui/react-tags';
 
-import type { TagGroupContextValues, TagGroupProps, TagGroupState } from './TagGroup.types';
+import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { stringifyDataAttribute } from '../../utils';
 
 /**
@@ -20,24 +19,4 @@ export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>
   /* eslint-enable react-hooks/immutability */
 
   return state;
-};
-
-export const useTagGroupContextValues = (state: TagGroupState): TagGroupContextValues => {
-  const { handleTagDismiss, handleTagSelect, selectedValues, disabled, dismissible, role } = state;
-
-  const tagGroup: TagGroupContextValue = React.useMemo(
-    () => ({
-      handleTagDismiss,
-      handleTagSelect,
-      selectedValues,
-      disabled,
-      dismissible,
-      role,
-      size: 'medium',
-      appearance: 'filled',
-    }),
-    [handleTagDismiss, handleTagSelect, selectedValues, disabled, dismissible, role],
-  );
-
-  return { tagGroup };
 };

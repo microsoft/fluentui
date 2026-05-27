@@ -9,23 +9,179 @@
 }
 
 .tag {
-  composes: tag from '../Tag/tag.module.css';
+  display: inline-grid;
+  grid-template-areas:
+    'media primary dismiss'
+    'media secondary dismiss';
+  align-items: center;
+  align-content: center;
+  justify-items: start;
+  min-height: 28px;
+  width: max-content;
+  max-width: 100%;
+  padding: 0 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  cursor: default;
+  user-select: none;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+
+.tag[data-dismissible] {
+  cursor: pointer;
+  border: none;
+  padding: 0 0 0 10px;
+  background: var(--surface-muted);
+}
+
+.tag[data-dismissible]:hover {
+  background: var(--surface-sunken);
+}
+
+.tag[data-dismissible]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.tag[data-selected][data-dismissible]:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 4px var(--accent-contrast);
+}
+
+.tag[data-selected] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.tag[data-selected][data-dismissible]:hover {
+  background: color-mix(in srgb, var(--accent) 85%, white);
+}
+
+.tag[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tag[data-disabled][data-dismissible]:hover {
+  background: var(--surface-muted);
 }
 
 .interactionTag {
-  composes: interactionTag from '../InteractionTag/interactionTag.module.css';
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 12px;
+  min-height: 28px;
+  width: max-content;
+  max-width: 100%;
+}
+
+.interactionTag[data-selected] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.interactionTag[data-disabled] {
+  opacity: 0.55;
 }
 
 .primary {
-  composes: primary from '../InteractionTag/interactionTag.module.css';
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 4px 12px;
+  cursor: pointer;
+  display: inline-grid;
+  grid-template-areas:
+    'media primary'
+    'media secondary';
+  align-items: center;
+  align-content: center;
+  justify-items: start;
+  border-radius: calc(var(--radius-md) - 1px) 0 0 calc(var(--radius-md) - 1px);
+}
+
+.primary:hover {
+  background: var(--surface-muted);
+}
+
+.interactionTag[data-selected] .primary:hover {
+  background: color-mix(in srgb, var(--accent) 85%, white);
+}
+
+.primary[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .secondary {
-  composes: secondary from '../InteractionTag/interactionTag.module.css';
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  padding: 0 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+  border-radius: 0 calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0;
+}
+
+.secondary:hover {
+  background: var(--surface-muted);
+}
+
+.interactionTag[data-selected] .secondary {
+  border-left-color: color-mix(in srgb, var(--accent-contrast) 30%, transparent);
+}
+
+.interactionTag[data-selected] .secondary:hover {
+  background: color-mix(in srgb, var(--accent) 85%, white);
+}
+
+.interactionTag:not(:has(.secondary)) .primary {
+  border-radius: calc(var(--radius-md) - 1px);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.interactionTag[data-selected] .primary:focus-visible,
+.interactionTag[data-selected] .secondary:focus-visible {
+  outline-color: var(--accent-contrast);
 }
 
 .dismissIcon {
-  composes: dismissIcon from '../Tag/tag.module.css';
+  grid-area: dismiss;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 6px;
+  border-radius: var(--radius-sm, 4px);
+  flex-shrink: 0;
+}
+
+.tag[data-dismissible]:hover .dismissIcon {
+  background: var(--surface);
 }
 
 .demo {
@@ -41,7 +197,20 @@
 }
 
 .resetButton {
-  composes: resetButton from '../Tag/tag.module.css';
+  appearance: none;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.resetButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .selectedReadout {

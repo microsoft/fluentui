@@ -8,9 +8,18 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InteractionTagBaseState } from '@fluentui/react-tags';
 import type { InteractionTagContextValue } from '@fluentui/react-tags';
 import { InteractionTagBaseProps as InteractionTagProps } from '@fluentui/react-tags';
+import { InteractionTagPrimaryBaseProps as InteractionTagPrimaryProps } from '@fluentui/react-tags';
+import type { InteractionTagPrimaryBaseState } from '@fluentui/react-tags';
+import type { InteractionTagPrimaryContextValues as InteractionTagPrimaryContextValues_2 } from '@fluentui/react-tags';
+import { InteractionTagPrimarySlots } from '@fluentui/react-tags';
+import { InteractionTagSecondaryBaseProps as InteractionTagSecondaryProps } from '@fluentui/react-tags';
+import type { InteractionTagSecondaryBaseState } from '@fluentui/react-tags';
+import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import * as React_2 from 'react';
 import { renderInteractionTag_unstable as renderInteractionTag } from '@fluentui/react-tags';
+import { renderInteractionTagPrimary_unstable as renderInteractionTagPrimary } from '@fluentui/react-tags';
+import { renderInteractionTagSecondary_unstable as renderInteractionTagSecondary } from '@fluentui/react-tags';
 
 // @public
 export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
@@ -20,7 +29,41 @@ export type InteractionTagContextValues = {
     interactionTag: InteractionTagContextValue;
 };
 
+// @public
+export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
+
+// @public (undocumented)
+export type InteractionTagPrimaryContextValues = InteractionTagPrimaryContextValues_2;
+
+export { InteractionTagPrimaryProps }
+
+export { InteractionTagPrimarySlots }
+
+// @public (undocumented)
+export type InteractionTagPrimaryState = InteractionTagPrimaryBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-selected'?: string;
+        'data-has-secondary-action'?: string;
+    };
+};
+
 export { InteractionTagProps }
+
+// @public
+export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+export { InteractionTagSecondaryProps }
+
+export { InteractionTagSecondarySlots }
+
+// @public (undocumented)
+export type InteractionTagSecondaryState = InteractionTagSecondaryBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-selected'?: string;
+    };
+};
 
 export { InteractionTagSlots }
 
@@ -34,11 +77,24 @@ export type InteractionTagState = InteractionTagBaseState & {
 
 export { renderInteractionTag }
 
+export { renderInteractionTagPrimary }
+
+export { renderInteractionTagSecondary }
+
 // @public
 export const useInteractionTag: (props: InteractionTagProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagState;
 
 // @public (undocumented)
 export const useInteractionTagContextValues: (state: InteractionTagState) => InteractionTagContextValues;
+
+// @public
+export const useInteractionTagPrimary: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;
+
+// @public (undocumented)
+export const useInteractionTagPrimaryContextValues: (_state: InteractionTagPrimaryState) => InteractionTagPrimaryContextValues;
+
+// @public
+export const useInteractionTagSecondary: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagSecondaryState;
 
 // (No @packageDocumentation comment for this package)
 

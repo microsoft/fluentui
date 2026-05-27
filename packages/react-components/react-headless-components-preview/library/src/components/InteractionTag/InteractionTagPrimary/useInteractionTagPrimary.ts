@@ -1,14 +1,10 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useInteractionTagPrimaryBase_unstable } from '@fluentui/react-tags';
 
-import type {
-  InteractionTagPrimaryContextValues,
-  InteractionTagPrimaryProps,
-  InteractionTagPrimaryState,
-} from './InteractionTagPrimary.types';
-import { stringifyDataAttribute } from '../../utils';
+import type { InteractionTagPrimaryProps, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
+import { stringifyDataAttribute } from '../../../utils';
 
 /**
  * Returns the state for an InteractionTagPrimary component, given its props and ref.
@@ -27,13 +23,4 @@ export const useInteractionTagPrimary = (
   /* eslint-enable react-hooks/immutability */
 
   return state;
-};
-
-const emptyAvatarContext = { size: undefined, shape: undefined };
-
-export const useInteractionTagPrimaryContextValues = (
-  _state: InteractionTagPrimaryState,
-): InteractionTagPrimaryContextValues => {
-  const avatar = React.useMemo(() => emptyAvatarContext, []);
-  return { avatar };
 };

@@ -1,10 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useInteractionTagBase_unstable } from '@fluentui/react-tags';
-import type { InteractionTagContextValue } from '@fluentui/react-tags';
 
-import type { InteractionTagContextValues, InteractionTagProps, InteractionTagState } from './InteractionTag.types';
+import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
 import { stringifyDataAttribute } from '../../utils';
 
 /**
@@ -20,27 +19,4 @@ export const useInteractionTag = (props: InteractionTagProps, ref: React.Ref<HTM
   /* eslint-enable react-hooks/immutability */
 
   return state;
-};
-
-export const useInteractionTagContextValues = (state: InteractionTagState): InteractionTagContextValues => {
-  const { disabled, handleTagDismiss, handleTagSelect, interactionTagPrimaryId, selected, selectedValues, value } =
-    state;
-
-  const interactionTag: InteractionTagContextValue = React.useMemo(
-    () => ({
-      appearance: 'filled',
-      shape: 'rounded',
-      size: 'medium',
-      disabled,
-      handleTagDismiss,
-      handleTagSelect,
-      interactionTagPrimaryId,
-      selected,
-      selectedValues,
-      value,
-    }),
-    [disabled, handleTagDismiss, handleTagSelect, interactionTagPrimaryId, selected, selectedValues, value],
-  );
-
-  return { interactionTag };
 };

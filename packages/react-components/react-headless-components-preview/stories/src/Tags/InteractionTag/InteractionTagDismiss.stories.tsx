@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { InteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
-import { InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag-primary';
-import { InteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag-secondary';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-headless-components-preview/interaction-tag';
 import { TagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupProps } from '@fluentui/react-headless-components-preview/tag-group';
 import { DismissRegular } from '@fluentui/react-icons';

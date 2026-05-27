@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useInteractionTagSecondaryBase_unstable } from '@fluentui/react-tags';
 
 import type { InteractionTagSecondaryProps, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
-import { stringifyDataAttribute } from '../../utils';
+import { stringifyDataAttribute } from '../../../utils';
 
 /**
  * Returns the state for an InteractionTagSecondary component, given its props and ref.

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { InteractionTag } from './InteractionTag';
-import { InteractionTagPrimary } from '../InteractionTagPrimary';
+import { InteractionTagPrimary } from './InteractionTagPrimary';
+import { TagGroup } from '../TagGroup';
 
 const requiredProps = { children: <InteractionTagPrimary>tag</InteractionTagPrimary> };
 
@@ -13,8 +14,14 @@ describe('InteractionTag', () => {
     requiredProps,
   });
 
-  it('provides a child InteractionTagPrimary with an aria-pressed when handleTagSelect is wired', () => {
-    const result = render(<InteractionTag {...requiredProps} />);
-    expect(result.getByRole('button')).toBeInTheDocument();
+  it('propagates TagGroup selection so the primary button reflects aria-pressed', () => {
+    const result = render(
+      <TagGroup onTagSelect={jest.fn()} selectedValues={['x']}>
+        <InteractionTag value="x">
+          <InteractionTagPrimary>tag</InteractionTagPrimary>
+        </InteractionTag>
+      </TagGroup>,
+    );
+    expect(result.getByRole('button')).toHaveAttribute('aria-pressed', 'true');
   });
 });

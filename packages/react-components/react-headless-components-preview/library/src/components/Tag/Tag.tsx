@@ -4,7 +4,8 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 import type { TagProps } from './Tag.types';
-import { useTag, useTagContextValues } from './useTag';
+import { useTag } from './useTag';
+import { useTagContextValues } from './useTagContextValues';
 import { renderTag } from './renderTag';
 
 /**

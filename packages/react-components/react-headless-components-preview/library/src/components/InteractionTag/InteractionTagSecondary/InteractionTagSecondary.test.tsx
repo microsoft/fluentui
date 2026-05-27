@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../testing/isConformant';
+import { isConformant } from '../../../testing/isConformant';
 import { InteractionTagSecondary } from './InteractionTagSecondary';
 import { InteractionTag } from '../InteractionTag';
 import { InteractionTagPrimary } from '../InteractionTagPrimary';
@@ -23,6 +23,6 @@ describe('InteractionTagSecondary', () => {
   it('does NOT render a default dismiss icon (headless)', () => {
     const result = wrap(<InteractionTagSecondary data-testid="sec" aria-label="dismiss" />);
     const sec = result.getByTestId('sec');
-    expect(sec.children).toHaveLength(0);
+    expect(sec).toBeEmptyDOMElement();
   });
 });

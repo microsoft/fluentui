@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { TagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupProps } from '@fluentui/react-headless-components-preview/tag-group';
-import { InteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
-import { InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag-primary';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import type { TagValue } from '@fluentui/react-components';
 
 import styles from './tagGroup.module.css';

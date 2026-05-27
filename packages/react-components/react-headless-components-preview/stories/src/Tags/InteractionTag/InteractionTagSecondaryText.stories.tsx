@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { InteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
-import { InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag-primary';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
 
 import styles from './interactionTag.module.css';
 

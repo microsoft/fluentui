@@ -4,7 +4,8 @@ import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 import type { TagGroupProps } from './TagGroup.types';
-import { useTagGroup, useTagGroupContextValues } from './useTagGroup';
+import { useTagGroup } from './useTagGroup';
+import { useTagGroupContextValues } from './useTagGroupContextValues';
 import { renderTagGroup } from './renderTagGroup';
 
 /**

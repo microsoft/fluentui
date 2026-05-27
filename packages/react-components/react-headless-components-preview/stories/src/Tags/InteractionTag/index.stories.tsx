@@ -1,6 +1,8 @@
-import { InteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
-import { InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag-primary';
-import { InteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag-secondary';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-headless-components-preview/interaction-tag';
 
 import descriptionMd from './InteractionTagDescription.md';
 export { Default } from './InteractionTagDefault.stories';

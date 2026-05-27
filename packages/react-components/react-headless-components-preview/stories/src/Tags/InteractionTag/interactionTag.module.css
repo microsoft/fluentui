@@ -94,7 +94,15 @@
 }
 
 .icon {
-  composes: icon from '../Tag/tag.module.css';
+  grid-area: media;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
 }
 
 .media {
@@ -116,7 +124,8 @@
 }
 
 .primaryText {
-  composes: primaryText from '../Tag/tag.module.css';
+  grid-area: primary;
+  line-height: 1.2;
 }
 
 .primary:not(:has(> .secondaryText)) > .primaryText {
@@ -124,7 +133,10 @@
 }
 
 .secondaryText {
-  composes: secondaryText from '../Tag/tag.module.css';
+  grid-area: secondary;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.2;
 }
 
 .interactionTag[data-selected] .secondaryText {

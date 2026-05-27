@@ -2,9 +2,11 @@ import * as React from 'react';
 import { TagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupProps } from '@fluentui/react-headless-components-preview/tag-group';
 import { Tag } from '@fluentui/react-headless-components-preview/tag';
-import { InteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
-import { InteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag-primary';
-import { InteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag-secondary';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-headless-components-preview/interaction-tag';
 import { DismissRegular } from '@fluentui/react-icons';
 
 import styles from './tagGroup.module.css';

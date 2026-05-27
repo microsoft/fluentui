@@ -3,10 +3,10 @@ export {
   renderInteractionTagPrimary,
   useInteractionTagPrimary,
   useInteractionTagPrimaryContextValues,
-} from './components/InteractionTagPrimary';
+} from './components/InteractionTag/InteractionTagPrimary';
 export type {
   InteractionTagPrimarySlots,
   InteractionTagPrimaryProps,
   InteractionTagPrimaryState,
   InteractionTagPrimaryContextValues,
-} from './components/InteractionTagPrimary';
+} from './components/InteractionTag/InteractionTagPrimary';

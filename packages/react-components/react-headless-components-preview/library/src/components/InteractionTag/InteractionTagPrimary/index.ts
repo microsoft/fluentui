@@ -1,6 +1,7 @@
 export { InteractionTagPrimary } from './InteractionTagPrimary';
 export { renderInteractionTagPrimary } from './renderInteractionTagPrimary';
-export { useInteractionTagPrimary, useInteractionTagPrimaryContextValues } from './useInteractionTagPrimary';
+export { useInteractionTagPrimary } from './useInteractionTagPrimary';
+export { useInteractionTagPrimaryContextValues } from './useInteractionTagPrimaryContextValues';
 export type {
   InteractionTagPrimarySlots,
   InteractionTagPrimaryProps,

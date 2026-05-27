@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useTagBase_unstable } from '@fluentui/react-tags';
 
-import type { TagContextValues, TagProps, TagState } from './Tag.types';
+import type { TagProps, TagState } from './Tag.types';
 import { stringifyDataAttribute } from '../../utils';
 
 /**
@@ -20,11 +20,4 @@ export const useTag = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLBut
   /* eslint-enable react-hooks/immutability */
 
   return state;
-};
-
-const emptyAvatarContext = { size: undefined, shape: undefined } as const;
-
-export const useTagContextValues = (_state: TagState): TagContextValues => {
-  const avatar = React.useMemo(() => emptyAvatarContext, []);
-  return { avatar };
 };
