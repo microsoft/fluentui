@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Tue, 26 May 2026 09:39:13 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2026 11:18:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.8.0)
+
+Wed, 27 May 2026 11:18:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.7.18..@fluentui/react-toast_v9.8.0)
+
+### Minor changes
+
+- feat: export toast base hooks and types ([PR #35914](https://github.com/microsoft/fluentui/pull/35914) by dmytrokirpa@microsoft.com)
 
 ## [9.7.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.7.18)
 

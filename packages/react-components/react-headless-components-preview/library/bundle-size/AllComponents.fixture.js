@@ -14,6 +14,7 @@ import * as Field from '@fluentui/react-headless-components-preview/field';
 import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as InfoLabel from '@fluentui/react-headless-components-preview/info-label';
 import * as Input from '@fluentui/react-headless-components-preview/input';
+import * as InteractionTag from '@fluentui/react-headless-components-preview/interaction-tag';
 import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
@@ -34,6 +35,8 @@ import * as SpinButton from '@fluentui/react-headless-components-preview/spin-bu
 import * as Spinner from '@fluentui/react-headless-components-preview/spinner';
 import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
+import * as Tag from '@fluentui/react-headless-components-preview/tag';
+import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
@@ -56,6 +59,7 @@ console.log({
   Image,
   InfoLabel,
   Input,
+  InteractionTag,
   Label,
   Link,
   Menu,
@@ -76,6 +80,8 @@ console.log({
   Spinner,
   Switch,
   TabList,
+  Tag,
+  TagGroup,
   Textarea,
   ToggleButton,
   Toolbar,

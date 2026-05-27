@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Tue, 26 May 2026 09:39:09 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2026 11:18:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.9.1)
+
+Wed, 27 May 2026 11:18:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.9.0..@fluentui/react-tags_v9.9.1)
+
+### Patches
+
+- fix: decouple useTagGroupBase_unstable from Tabster; export contexts. This is technically a breaking change, but the prior Tabster coupling was a programmatic mistake and not intended public behavior. If you run into issues, please bump to the next version. ([PR #36228](https://github.com/microsoft/fluentui/pull/36228) by vgenaev@gmail.com)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.9.0)
 
