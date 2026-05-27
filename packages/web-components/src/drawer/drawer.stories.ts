@@ -156,6 +156,21 @@ export default {
         type: { summary: 'Defaults to --colorBackgroundOverlay' },
       },
     },
+    dialog: {
+      control: false,
+      description: 'The dialog element of the drawer.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    beforetoggle: {
+      control: false,
+      description: "Emitted before the dialog's open state changes.",
+      table: { category: 'events', type: { summary: 'Event' } },
+    },
+    toggle: {
+      control: false,
+      description: "Emitted after the dialog's open state changes.",
+      table: { category: 'events', type: { summary: 'Event' } },
+    },
   },
 } as Meta<FluentDrawer>;
 

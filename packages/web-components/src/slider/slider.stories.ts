@@ -79,6 +79,21 @@ export default {
       name: 'thumb',
       table: { category: 'slots', type: {} },
     },
+    'thumb-container': {
+      control: false,
+      description: 'The container element of the thumb.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    'track-container': {
+      control: false,
+      description: 'The container element of the track.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    change: {
+      control: false,
+      description: 'Fires when the value changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentSlider>;
 

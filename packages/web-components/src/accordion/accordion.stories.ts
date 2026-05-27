@@ -55,6 +55,11 @@ export default {
       name: '',
       table: { category: 'slots', type: {} },
     },
+    change: {
+      control: false,
+      description: 'Fires when the active accordion item changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentAccordion>;
 

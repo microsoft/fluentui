@@ -115,6 +115,16 @@ export default {
       name: 'end',
       table: { category: 'slots', type: {} },
     },
+    control: {
+      control: false,
+      description: 'The internal anchor element.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    content: {
+      control: false,
+      description: 'The element wrapping link content.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentLink>;
 

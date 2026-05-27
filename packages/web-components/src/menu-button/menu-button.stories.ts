@@ -152,6 +152,11 @@ export default {
       name: 'end',
       table: { category: 'slots', type: {} },
     },
+    content: {
+      control: false,
+      description: 'The button content container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentMenuButton>;
 

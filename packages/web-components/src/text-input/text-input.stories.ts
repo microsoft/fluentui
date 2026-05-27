@@ -84,13 +84,6 @@ export default {
         },
       },
     },
-    currentValue: {
-      control: 'text',
-      name: 'current-value',
-      table: { category: 'attributes' },
-      description: 'The current value representation used by the control.',
-      type: 'string',
-    },
     dirname: {
       control: 'text',
       table: { category: 'attributes' },
@@ -217,6 +210,21 @@ export default {
       name: 'end',
       description: 'Content in this slot is placed at the end of the input.',
       table: { category: 'slots', type: {} },
+    },
+    label: {
+      control: false,
+      description: 'The internal label element.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    root: {
+      control: false,
+      description: 'The root container for the internal control.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    control: {
+      control: false,
+      description: 'The internal input control.',
+      table: { category: 'css parts', type: { summary: 'part' } },
     },
   },
 } as Meta<FluentTextInput>;

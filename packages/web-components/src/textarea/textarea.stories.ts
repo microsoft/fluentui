@@ -177,6 +177,31 @@ export default {
       description: 'The label slot. Content in this slot is used as the `<label>` for the input.',
       table: { category: 'slots', type: {} },
     },
+    label: {
+      control: false,
+      description: 'The internal label element.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    root: {
+      control: false,
+      description: 'The container element of the textarea.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    control: {
+      control: false,
+      description: 'The internal textarea element.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    change: {
+      control: false,
+      description: 'Fires after the control loses focus when content has changed.',
+      table: { category: 'events', type: { summary: 'Event' } },
+    },
+    select: {
+      control: false,
+      description: 'Fires when the select() method is called.',
+      table: { category: 'events', type: { summary: 'Event' } },
+    },
   },
 } as Meta<FluentTextArea>;
 

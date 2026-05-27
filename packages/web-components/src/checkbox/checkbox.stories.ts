@@ -106,6 +106,16 @@ export default {
       table: { category: 'slots', type: {} },
     },
     label: { table: { disable: true } },
+    change: {
+      control: false,
+      description: 'Fires when the checked state changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
+    input: {
+      control: false,
+      description: 'Fires while the checked state changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentCheckbox>;
 

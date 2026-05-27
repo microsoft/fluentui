@@ -56,7 +56,7 @@ const CATEGORY_LABELS = {
   properties: 'properties',
 };
 
-const CORE_ALWAYS_VALIDATED_CATEGORIES = new Set(['attributes', 'slots']);
+const CORE_ALWAYS_VALIDATED_CATEGORIES = new Set(['attributes', 'slots', 'cssParts', 'events']);
 
 const readFile = filePath => fs.readFileSync(filePath, 'utf8');
 
@@ -347,9 +347,141 @@ function relativeFromPackage(filePath) {
   return path.relative(packageRoot, filePath).replaceAll(path.sep, '/');
 }
 
+function toCanonicalSet(values) {
+  const set = new Set();
+
+  for (const value of values) {
+    const canonical = toCanonicalName(value);
+    if (canonical) {
+      set.add(canonical);
+    }
+  }
+
+  return set;
+}
+
+function listMissingByCanonical(expected, actual) {
+  const expectedCanonical = toCanonicalSet(expected);
+  const actualCanonical = toCanonicalSet(actual);
+
+  return [...expectedCanonical].filter(value => !actualCanonical.has(value)).sort();
+}
+
+function walkSourceComponentDirectories(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  return entries.filter(entry => entry.isDirectory()).map(entry => path.join(dir, entry.name));
+}
+
+function listTsFiles(dir) {
+  return fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter(entry => entry.isFile() && entry.name.endsWith('.ts'))
+    .map(entry => path.join(dir, entry.name));
+}
+
+function extractTemplateParts(sourceText) {
+  const parts = new Set();
+
+  for (const match of sourceText.matchAll(/\bpart\s*=\s*['"]([^'"]+)['"]/g)) {
+    const [, rawParts = ''] = match;
+
+    for (const part of rawParts.split(/\s+/)) {
+      const normalizedPart = part.trim();
+      if (normalizedPart) {
+        parts.add(normalizedPart);
+      }
+    }
+  }
+
+  return parts;
+}
+
+function extractEmittedEvents(sourceText) {
+  const events = new Set();
+
+  for (const match of sourceText.matchAll(/\$emit\(\s*['"`]([a-z0-9-]+)['"`]/gi)) {
+    events.add(match[1]);
+  }
+
+  for (const match of sourceText.matchAll(
+    /dispatchEvent\(\s*new\s+[A-Za-z0-9_.]*Event\s*\(\s*['"`]([a-z0-9-]+)['"`]/gi,
+  )) {
+    events.add(match[1]);
+  }
+
+  return events;
+}
+
+function auditSourceTagsAgainstCem(cemByTag) {
+  const componentDirs = walkSourceComponentDirectories(srcDir);
+  const issues = [];
+
+  for (const componentDir of componentDirs) {
+    const componentName = path.basename(componentDir);
+    const tagName = pickTagName({ tagCandidates: [], componentName, cemByTag });
+
+    if (!tagName) {
+      continue;
+    }
+
+    const cemEntry = cemByTag.get(tagName);
+    if (!cemEntry) {
+      continue;
+    }
+
+    const tsFiles = listTsFiles(componentDir);
+    if (tsFiles.length === 0) {
+      continue;
+    }
+
+    const templateFiles = tsFiles.filter(filePath => filePath.endsWith('.template.ts'));
+    const componentFiles = tsFiles.filter(
+      filePath =>
+        !filePath.endsWith('.stories.ts') &&
+        !filePath.endsWith('.template.ts') &&
+        !filePath.endsWith('.options.ts') &&
+        !filePath.endsWith('.styles.ts') &&
+        !filePath.endsWith('.spec.ts') &&
+        !filePath.endsWith('.test.ts'),
+    );
+
+    const discoveredParts = new Set();
+    for (const templateFile of templateFiles) {
+      const parts = extractTemplateParts(readFile(templateFile));
+      for (const part of parts) {
+        discoveredParts.add(part);
+      }
+    }
+
+    const emittedEvents = new Set();
+    for (const componentFile of componentFiles) {
+      const events = extractEmittedEvents(readFile(componentFile));
+      for (const eventName of events) {
+        emittedEvents.add(eventName);
+      }
+    }
+
+    const missingCssPartsInCem = listMissingByCanonical(discoveredParts, cemEntry.cssParts);
+    const missingEventsInCem = listMissingByCanonical(emittedEvents, cemEntry.events);
+
+    if (missingCssPartsInCem.length > 0 || missingEventsInCem.length > 0) {
+      issues.push({
+        componentPath: relativeFromPackage(componentDir),
+        tagName,
+        missingCssPartsInCem,
+        missingEventsInCem,
+      });
+    }
+  }
+
+  return issues;
+}
+
 function validate({ failOnMismatch = true } = {}) {
   const cemByTag = loadCustomElementsMap();
   const storyFiles = walkStories(srcDir);
+  const sourceTagIssues = auditSourceTagsAgainstCem(cemByTag);
 
   const errors = [];
   const warnings = [];
@@ -442,8 +574,24 @@ function validate({ failOnMismatch = true } = {}) {
     console.log('');
   }
 
+  if (sourceTagIssues.length > 0) {
+    console.log('Source tag audit (potential missing @csspart/@fires tags):');
+    for (const issue of sourceTagIssues) {
+      console.log(`  - ${issue.componentPath} (${issue.tagName})`);
+
+      if (issue.missingCssPartsInCem.length > 0) {
+        console.log(`    template parts missing from CEM cssParts: ${issue.missingCssPartsInCem.join(', ')}`);
+      }
+
+      if (issue.missingEventsInCem.length > 0) {
+        console.log(`    emitted events missing from CEM events: ${issue.missingEventsInCem.join(', ')}`);
+      }
+    }
+    console.log('');
+  }
+
   console.log(
-    `Checked ${storyFiles.length} story files. Skipped: ${skipped.length}. Warnings: ${warnings.length}. Mismatches: ${errors.length}.`,
+    `Checked ${storyFiles.length} story files. Skipped: ${skipped.length}. Warnings: ${warnings.length}. Source tag issues: ${sourceTagIssues.length}. Mismatches: ${errors.length}.`,
   );
 
   if (errors.length === 0) {

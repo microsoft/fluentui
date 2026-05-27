@@ -55,6 +55,16 @@ export default {
       name: 'checked-indicator',
       table: { category: 'slots', type: {} },
     },
+    change: {
+      control: false,
+      description: 'Fires when the checked state changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
+    input: {
+      control: false,
+      description: 'Fires while the checked state changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentRadio>;
 
