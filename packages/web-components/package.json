@@ -85,8 +85,8 @@
     "start-storybook": "storybook dev",
     "build-storybook": "storybook build -o ./dist/storybook --docs",
     "build-storybook:docsite": "cross-env DEPLOY_PATH=/web-components/ storybook build -o ./dist/storybook --docs",
-    "e2e": "node ./scripts/e2e.js",
-    "e2e:local": "node ./scripts/e2e.js --ui"
+    "e2e": "playwright test",
+    "e2e:local": "playwright test --ui"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.10",
