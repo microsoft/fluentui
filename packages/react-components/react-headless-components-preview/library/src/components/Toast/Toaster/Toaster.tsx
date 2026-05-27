@@ -6,8 +6,9 @@ import { useToaster } from './useToaster';
 import { renderToaster } from './renderToaster';
 
 /**
- * Toaster — subscribes to the event-driven toast state machine and
- * renders toasts in a Portal with position-based slot containers.
+ * Toaster — subscribes to the event-driven toast state machine and renders
+ * position-based slot containers. Each container is promoted to the browser
+ * top layer via the native Popover API.
  *
  * Pair with useToastController from @fluentui/react-toast to dispatch and dismiss toasts imperatively.
  */

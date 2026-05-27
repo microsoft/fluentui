@@ -1,5 +1,5 @@
-A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by
-user action or a application timeout. Toasts are typically used in the following situations:
+A Toast displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by
+user action or an application timeout. Toasts are typically used in the following situations:
 
 - Update the user on the status of a task
 - Display the progress of a task

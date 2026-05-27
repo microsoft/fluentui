@@ -60,7 +60,7 @@
     "@fluentui/react-tags": "^9.9.0",
     "@fluentui/react-textarea": "^9.7.3",
     "@fluentui/react-toolbar": "^9.8.1",
-    "@fluentui/react-toast": "^9.7.17",
+    "@fluentui/react-toast": "^9.7.18",
     "@fluentui/react-tooltip": "^9.10.2",
     "@fluentui/react-utilities": "^9.26.4",
     "@swc/helpers": "^0.5.1"

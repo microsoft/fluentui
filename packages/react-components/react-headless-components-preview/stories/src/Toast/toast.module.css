@@ -6,22 +6,22 @@
   gap: var(--space-2);
 }
 
-.toaster[data-position='top-start'] {
+.toaster[data-toaster-position='top-start'] {
   flex-direction: column;
   margin: 16px auto auto 16px;
 }
 
-.toaster[data-position='top-end'] {
+.toaster[data-toaster-position='top-end'] {
   flex-direction: column;
   margin: 16px 16px auto auto;
 }
 
-.toaster[data-position='bottom-start'] {
+.toaster[data-toaster-position='bottom-start'] {
   flex-direction: column-reverse;
   margin: auto auto 16px 16px;
 }
 
-.toaster[data-position='bottom-end'] {
+.toaster[data-toaster-position='bottom-end'] {
   flex-direction: column-reverse;
   margin: auto 16px 16px auto;
 }
@@ -454,37 +454,6 @@
   gap: var(--space-3);
   align-items: center;
   flex-wrap: wrap;
-}
-
-/* Toaster popover positioning — fixed in bottom-right corner with optimal spacing */
-.toasterPopover {
-  position: fixed;
-  inset: auto calc(var(--space-4) + var(--space-1)) calc(var(--space-4) + var(--space-1)) auto;
-  max-width: 420px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  background: transparent;
-  pointer-events: none;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-/* Allow pointer events on toast children */
-.toasterPopover > * {
-  pointer-events: auto;
-}
-
-/* Support for LTR/RTL — adjust inset-inline for RTL */
-@supports (inset-inline-start: 0) {
-  .toasterPopover {
-    inset-inline-end: calc(var(--space-4) + var(--space-1));
-    inset-inline-start: auto;
-    inset-block-end: calc(var(--space-4) + var(--space-1));
-    inset-block-start: auto;
-  }
 }
 
 /* Timeout input wrapper — vertical flex for label and input */

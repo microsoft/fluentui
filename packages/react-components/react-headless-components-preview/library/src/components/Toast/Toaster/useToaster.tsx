@@ -91,7 +91,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
         )),
         onKeyDown,
         popover: 'manual' as const,
-        'data-position': toastPosition,
+        'data-toaster-position': toastPosition,
         role: 'list',
         ...rootProps,
       } as ExtractSlotProps<Slot<'div'>>,

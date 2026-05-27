@@ -87,7 +87,7 @@ ToastLifecycle.parameters = {
     description: {
       story: [
         'The `onStatusChange` callback reports each lifecycle transition of a toast.',
-        'Possible statuses: `queued`, `visible`, `hidden`, `unmounted`.',
+        'Possible statuses: `queued`, `visible`, `dismissed`, `unmounted`.',
       ].join('\n'),
     },
   },

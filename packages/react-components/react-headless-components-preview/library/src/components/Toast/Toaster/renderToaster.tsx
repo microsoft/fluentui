@@ -10,8 +10,8 @@ import { AriaLive } from '../AriaLive';
  * Render the position-based containers for the headless Toaster.
  *
  * Each container is a `<div role="list" data-toaster-position="...">` that
- * consumers can target with CSS to apply positioning/styling. When `inline` is
- * true the slots render in-place; otherwise they render inside a Portal.
+ * consumers can target with CSS to apply positioning/styling. Containers use
+ * the native Popover API to render in the browser top layer.
  */
 export const renderToaster = (state: ToasterState): JSXElement => {
   const { announceRef, renderAriaLive } = state;
