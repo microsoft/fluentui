@@ -2,9 +2,6 @@
 import { execSync } from 'node:child_process';
 
 try {
-  // Generate the fluent tokens stylesheet before Playwright starts the server.
-  execSync(`node ./scripts/generate-tokens`, { stdio: 'inherit' });
-
   // Run Playwright — the test harness server is spawned automatically
   // via the webServer config in playwright.config.ts.
   execSync(`playwright test ${process.argv.slice(2).join(' ')}`, {
