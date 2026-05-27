@@ -5,7 +5,7 @@
 ```ts
 
 // @internal (undocumented)
-export function createOverflowManager(initialOptions: Required<ObserveOptions>): OverflowManager;
+export function createOverflowManager(initialOptions?: Partial<ObserveOptions>): OverflowManager;
 
 // @public (undocumented)
 export interface ObserveOptions {
@@ -70,13 +70,25 @@ export interface OverflowItemEntry {
 
 // @internal (undocumented)
 export interface OverflowManager {
+    // @deprecated (undocumented)
+    addDivider: (divider: OverflowDividerEntry) => void;
+    // @deprecated (undocumented)
+    addItem: (item: OverflowItemEntry) => void;
+    // @deprecated (undocumented)
+    addOverflowMenu: (element: HTMLElement) => void;
     attachOverflowMenu: (element: HTMLElement) => () => void;
+    // @deprecated (undocumented)
+    disconnect: () => void;
     forceUpdate: () => void;
     getSnapshot: () => OverflowSnapshot;
     observe: (container: HTMLElement) => () => void;
     registerDivider: (divider: OverflowDividerEntry) => () => void;
     registerItem: (items: OverflowItemEntry) => () => void;
+    // @deprecated (undocumented)
+    removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
+    // @deprecated (undocumented)
+    removeOverflowMenu: () => void;
     setOptions: (options: Partial<OverflowManagerOptions>) => void;
     subscribe: (listener: () => void) => () => void;
     update: () => void;

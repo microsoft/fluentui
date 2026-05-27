@@ -157,4 +157,36 @@ export interface OverflowManager {
    * Subscribes to snapshot changes.
    */
   subscribe: (listener: () => void) => () => void;
+
+  // --- Deprecated backward-compat methods ---
+
+  /**
+   * @deprecated Use `registerItem` instead — it returns a cleanup function.
+   */
+  addItem: (item: OverflowItemEntry) => void;
+
+  /**
+   * @deprecated Use `registerDivider` instead — it returns a cleanup function.
+   */
+  addDivider: (divider: OverflowDividerEntry) => void;
+
+  /**
+   * @deprecated Use `attachOverflowMenu` instead — it returns a cleanup function.
+   */
+  addOverflowMenu: (element: HTMLElement) => void;
+
+  /**
+   * @deprecated Call the cleanup function returned by `observe` instead.
+   */
+  disconnect: () => void;
+
+  /**
+   * @deprecated Call the cleanup function returned by `registerDivider` instead.
+   */
+  removeDivider: (groupId: string) => void;
+
+  /**
+   * @deprecated Call the cleanup function returned by `attachOverflowMenu` instead.
+   */
+  removeOverflowMenu: () => void;
 }

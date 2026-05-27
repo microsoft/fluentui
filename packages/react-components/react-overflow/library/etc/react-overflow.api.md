@@ -75,6 +75,8 @@ export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpda
 // @internal (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
     containerRef: React_2.RefCallback<TElement>;
+    // @deprecated
+    containerRefObject: React_2.RefObject<TElement | null>;
     manager: OverflowManager | null;
 }
 

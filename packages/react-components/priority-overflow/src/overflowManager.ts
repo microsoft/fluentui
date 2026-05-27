@@ -12,11 +12,21 @@ import type {
   OverflowDividerEntry,
 } from './types';
 
+const DEFAULT_OPTIONS: Required<ObserveOptions> = {
+  overflowAxis: 'horizontal',
+  overflowDirection: 'end',
+  padding: 10,
+  minimumVisible: 0,
+  hasHiddenItems: false,
+  onUpdateItemVisibility: () => null,
+  onUpdateOverflow: () => null,
+};
+
 /**
  * @internal
  * @returns overflow manager instance
  */
-export function createOverflowManager(initialOptions: Required<ObserveOptions>): OverflowManager {
+export function createOverflowManager(initialOptions: Partial<ObserveOptions> = {}): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
@@ -27,7 +37,7 @@ export function createOverflowManager(initialOptions: Required<ObserveOptions>):
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
-  const options: Required<ObserveOptions> = initialOptions;
+  const options: Required<ObserveOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
   const listeners = new Set<() => void>();
@@ -286,6 +296,8 @@ export function createOverflowManager(initialOptions: Required<ObserveOptions>):
     }
   };
 
+  let observeCleanup: () => void = () => null;
+
   const observe: OverflowManager['observe'] = observedContainer => {
     Object.values(overflowItems).forEach(item => {
       if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
@@ -295,7 +307,7 @@ export function createOverflowManager(initialOptions: Required<ObserveOptions>):
 
     connectContainer(observedContainer);
 
-    return () => {
+    const cleanup = () => {
       if (container !== observedContainer) {
         return;
       }
@@ -308,7 +320,12 @@ export function createOverflowManager(initialOptions: Required<ObserveOptions>):
       resetSnapshot();
       notify();
     };
+
+    observeCleanup = cleanup;
+    return cleanup;
   };
+
+  const disconnect: OverflowManager['disconnect'] = () => observeCleanup();
 
   const addItem = (item: OverflowItemEntry) => {
     if (overflowItems[item.id]) {
@@ -447,6 +464,13 @@ export function createOverflowManager(initialOptions: Required<ObserveOptions>):
     setOptions,
     subscribe,
     update,
+    // deprecated backward-compat methods
+    addItem,
+    addDivider,
+    addOverflowMenu,
+    disconnect,
+    removeDivider,
+    removeOverflowMenu,
   };
 }
 

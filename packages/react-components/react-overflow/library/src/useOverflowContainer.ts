@@ -134,6 +134,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     registerOverflowMenu,
     updateOverflow,
     containerRef,
+    containerRefObject: observedContainerRef,
     // eslint-disable-next-line react-hooks/refs
     manager: overflowManagerRef.current,
   };

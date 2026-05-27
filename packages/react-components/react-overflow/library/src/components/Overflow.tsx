@@ -67,15 +67,22 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     onOverflowChange?.(null, { ...newState });
   };
 
-  const { containerRef, manager, registerItem, updateOverflow, registerOverflowMenu, registerDivider } =
-    useOverflowContainer(update, {
-      overflowDirection,
-      overflowAxis,
-      padding,
-      minimumVisible,
-      hasHiddenItems,
-      onUpdateItemVisibility: updateVisibilityAttribute,
-    });
+  const {
+    containerRef,
+    containerRefObject,
+    manager,
+    registerItem,
+    updateOverflow,
+    registerOverflowMenu,
+    registerDivider,
+  } = useOverflowContainer(update, {
+    overflowDirection,
+    overflowAxis,
+    padding,
+    minimumVisible,
+    hasHiddenItems,
+    onUpdateItemVisibility: updateVisibilityAttribute,
+  });
 
   const child = getTriggerChild<HTMLElement>(children);
   const clonedChild = applyTriggerPropsToChildren(children, {
@@ -92,10 +99,11 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       updateOverflow,
       registerOverflowMenu,
       registerDivider,
+      containerRef: containerRefObject,
       getSnapshot: manager!.getSnapshot,
       subscribe: manager!.subscribe,
     }),
-    [manager, registerItem, updateOverflow, registerOverflowMenu, registerDivider],
+    [manager, registerItem, updateOverflow, registerOverflowMenu, registerDivider, containerRefObject],
   );
 
   return <OverflowContext.Provider value={ctx}>{clonedChild}</OverflowContext.Provider>;
