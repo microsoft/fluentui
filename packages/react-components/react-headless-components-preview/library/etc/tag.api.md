@@ -5,7 +5,7 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import { renderTag_unstable as renderTag } from '@fluentui/react-tags';
 import type { TagBaseState } from '@fluentui/react-tags';
 import { TagContextValues } from '@fluentui/react-tags';

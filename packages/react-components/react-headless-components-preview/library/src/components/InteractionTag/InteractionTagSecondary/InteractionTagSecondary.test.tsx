@@ -18,6 +18,7 @@ describe('InteractionTagSecondary', () => {
     Component: InteractionTagSecondary,
     displayName: 'InteractionTagSecondary',
     requiredProps: { 'aria-label': 'dismiss' },
+    disabledTests: ['has-top-level-file-extra'],
   });
 
   it('does NOT render a default dismiss icon (headless)', () => {

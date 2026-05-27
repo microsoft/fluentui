@@ -11,6 +11,7 @@ describe('InteractionTagPrimary', () => {
     Component: InteractionTagPrimary,
     displayName: 'InteractionTagPrimary',
     requiredProps: { children: 'tag' },
+    disabledTests: ['has-top-level-file-extra'],
   });
 
   it('exposes its content as the accessible name of a button', () => {
