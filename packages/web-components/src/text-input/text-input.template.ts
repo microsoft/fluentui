@@ -40,7 +40,7 @@ export function textInputTemplate<T extends TextInput>(options: TextInputOptions
           size="${x => x.size}"
           spellcheck="${x => x.spellcheck}"
           type="${x => x.type}"
-          value="${x => x.initialValue}"
+          value="${x => x.value}"
           ${ref('control')}
         />
         ${endSlotTemplate(options)}
