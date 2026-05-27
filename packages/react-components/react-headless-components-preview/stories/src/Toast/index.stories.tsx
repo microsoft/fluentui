@@ -4,6 +4,7 @@ import descriptionMd from './ToastDescription.md';
 
 export { Default } from './ToastDefault.stories';
 export { Intent } from './ToastIntent.stories';
+export { Positions } from './ToastPositions.stories';
 export { DismissToast } from './ToastDismissToast.stories';
 export { DismissToastWithAction } from './ToastDismissToastWithAction.stories';
 export { UpdateToast } from './ToastUpdateToast.stories';

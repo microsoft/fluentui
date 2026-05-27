@@ -23,8 +23,6 @@ const SUPPORTS_POPOVER_OPEN_SELECTOR =
  * Create the state required to render the Toaster.
  */
 export const useToaster = (props: ToasterProps): ToasterState => {
-  'use no memo';
-
   const { toasterId, offset, shortcuts, announce: announceProp, ...rest } = props;
 
   const { toastsToRender, isToastVisible, tryRestoreFocus, closeAllToasts } = useToasterState<HTMLDivElement>({

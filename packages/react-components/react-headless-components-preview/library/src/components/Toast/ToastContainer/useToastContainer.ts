@@ -178,7 +178,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, toastRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, toastRef),
         children,
         tabIndex: 0,
         role: 'listitem',

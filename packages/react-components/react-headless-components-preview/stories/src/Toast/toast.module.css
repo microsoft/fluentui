@@ -9,21 +9,39 @@
 .toaster[data-toaster-position='top-start'] {
   flex-direction: column;
   margin: 16px auto auto 16px;
+  --toast-enter-animation: slideInFromLeft;
+}
+
+.toaster[data-toaster-position='top'] {
+  flex-direction: column;
+  margin: 16px auto auto;
+  align-items: center;
+  --toast-enter-animation: slideInFromTop;
 }
 
 .toaster[data-toaster-position='top-end'] {
   flex-direction: column;
   margin: 16px 16px auto auto;
+  --toast-enter-animation: slideInFromRight;
 }
 
 .toaster[data-toaster-position='bottom-start'] {
   flex-direction: column-reverse;
   margin: auto auto 16px 16px;
+  --toast-enter-animation: slideInFromLeft;
+}
+
+.toaster[data-toaster-position='bottom'] {
+  flex-direction: column-reverse;
+  margin: auto auto 16px;
+  align-items: center;
+  --toast-enter-animation: slideInFromBottom;
 }
 
 .toaster[data-toaster-position='bottom-end'] {
   flex-direction: column-reverse;
   margin: auto 16px 16px auto;
+  --toast-enter-animation: slideInFromRight;
 }
 
 /* Toast card wrapper — white elevated surface with subtle border and shadow */
@@ -41,7 +59,7 @@
   min-width: 280px;
   max-width: 400px;
   transition: box-shadow var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
-  animation: slideIn var(--duration-medium) var(--ease-emphasized);
+  animation: var(--toast-enter-animation, slideInFromRight) var(--duration-medium) var(--ease-emphasized);
 }
 
 .toast:hover {
@@ -352,6 +370,7 @@
 .controls {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-3);
   width: 100%;
 }
@@ -419,7 +438,7 @@
 }
 
 /* Toast slide-in animation */
-@keyframes slideIn {
+@keyframes slideInFromRight {
   from {
     opacity: 0;
     transform: translateX(24px);
@@ -427,6 +446,39 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
