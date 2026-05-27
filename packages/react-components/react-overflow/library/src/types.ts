@@ -10,14 +10,7 @@ export interface UseOverflowContainerReturn<TElement extends HTMLElement>
   /**
    * Ref callback to apply to the container that will overflow
    */
-  containerRef: React.RefCallback<TElement>;
-
-  /**
-   * RefObject pointing to the currently observed container element.
-   * Use this when you need to read `containerRef.current` (e.g. for MutationObserver).
-   * @deprecated Prefer `containerRef` (RefCallback). This exists for backward compatibility.
-   */
-  containerRefObject: React.RefObject<TElement | null>;
+  containerRef: React.RefObject<TElement | null>;
 
   /**
    * Canonical overflow manager for the current container.

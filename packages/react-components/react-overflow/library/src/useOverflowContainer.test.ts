@@ -7,13 +7,16 @@ jest.mock('@fluentui/priority-overflow');
 
 const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
   const defaultMock: OverflowManager = {
-    attachOverflowMenu: jest.fn(() => () => undefined),
+    addDivider: jest.fn(),
+    addItem: jest.fn(),
+    addOverflowMenu: jest.fn(),
+    disconnect: jest.fn(),
     forceUpdate: jest.fn(),
-    getSnapshot: jest.fn(() => ({ hasOverflow: false, overflowCount: 0, itemVisibility: {}, groupVisibility: {} })),
+    getSnapshot: jest.fn(() => ({ visibleItems: [], invisibleItems: [], groupVisibility: {} })),
     observe: jest.fn(() => () => undefined),
-    registerDivider: jest.fn(() => () => undefined),
-    registerItem: jest.fn(() => () => undefined),
+    removeDivider: jest.fn(),
     removeItem: jest.fn(),
+    removeOverflowMenu: jest.fn(),
     setOptions: jest.fn(),
     subscribe: jest.fn(() => () => undefined),
     update: jest.fn(),
@@ -32,8 +35,8 @@ describe('useOverflowContainer', () => {
   });
 
   it('should add to overflow manager when registering item', () => {
-    const registerItemMock = jest.fn(() => () => undefined);
-    mockOverflowManager({ registerItem: registerItemMock });
+    const addItemMock = jest.fn();
+    mockOverflowManager({ addItem: addItemMock });
     const { result } = renderHook(() =>
       useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
     );
@@ -41,14 +44,13 @@ describe('useOverflowContainer', () => {
     const overflowItem = { element: document.createElement('div'), id: 'test', priority: 0, groupId: '0' };
     result.current.registerItem(overflowItem);
 
-    expect(registerItemMock).toHaveBeenCalledTimes(1);
-    expect(registerItemMock).toHaveBeenCalledWith(overflowItem);
+    expect(addItemMock).toHaveBeenCalledTimes(1);
+    expect(addItemMock).toHaveBeenCalledWith(overflowItem);
   });
 
   it('should return cleanup when registering item', () => {
     const deregisterItemMock = jest.fn();
-    const registerItemMock = jest.fn(() => deregisterItemMock);
-    mockOverflowManager({ registerItem: registerItemMock });
+    mockOverflowManager({ removeItem: deregisterItemMock });
     const { result } = renderHook(() =>
       useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
     );
@@ -67,7 +69,7 @@ describe('useOverflowContainer', () => {
       return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined });
     });
     act(() => {
-      result.current.containerRef(document.createElement('div'));
+      result.current.containerRef.current = document.createElement('div');
     });
     rerender();
     expect(observeMock).toHaveBeenCalledTimes(1);

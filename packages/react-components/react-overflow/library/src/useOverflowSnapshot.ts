@@ -1,10 +1,17 @@
 'use client';
 
-import type { OverflowSnapshot } from '@fluentui/priority-overflow';
+import type { OverflowEventPayload } from '@fluentui/priority-overflow';
 import * as React from 'react';
 import { useOverflowContext } from './overflowContext';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
-export const useSyncOverflowSnapshot = (): OverflowSnapshot => {
+export const useOverflowSnapshot = (): OverflowEventPayload => {
   const { getSnapshot, subscribe } = useOverflowContext();
-  return React.useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+  const [snapshot, setSnapshot] = React.useState(() => getSnapshot());
+  useIsomorphicLayoutEffect(() => {
+    return subscribe(() => {
+      setSnapshot(getSnapshot());
+    });
+  }, [subscribe, getSnapshot]);
+  return snapshot;
 };

@@ -4,7 +4,7 @@ import type {
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowGroupState,
-  OverflowSnapshot,
+  OverflowEventPayload,
 } from '@fluentui/priority-overflow';
 import * as React from 'react';
 
@@ -29,7 +29,7 @@ export interface OverflowContextValue {
   registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
   containerRef?: React.RefObject<HTMLElement | null>;
-  getSnapshot: () => OverflowSnapshot;
+  getSnapshot: () => OverflowEventPayload;
   subscribe: (listener: () => void) => () => void;
 }
 
@@ -46,9 +46,8 @@ const overflowContextDefaultValue: OverflowContextValue = {
   registerOverflowMenu: () => () => null,
   registerDivider: () => () => null,
   getSnapshot: () => ({
-    hasOverflow: false,
-    overflowCount: 0,
-    itemVisibility: {},
+    visibleItems: [],
+    invisibleItems: [],
     groupVisibility: {},
   }),
   subscribe: () => () => null,

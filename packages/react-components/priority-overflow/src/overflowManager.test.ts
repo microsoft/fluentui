@@ -53,9 +53,9 @@ describe('overflowManager', () => {
     const menu = createElementWithSize('button', 20);
 
     manager.setOptions(createObserveOptions());
-    manager.registerItem({ element: itemA, id: 'a', priority: 1 });
-    manager.registerItem({ element: itemB, id: 'b', priority: 0 });
-    manager.attachOverflowMenu(menu);
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+    manager.addOverflowMenu(menu);
     manager.observe(container);
     manager.forceUpdate();
 
@@ -76,9 +76,9 @@ describe('overflowManager', () => {
     const listener = jest.fn();
 
     manager.setOptions(createObserveOptions());
-    manager.registerItem({ element: itemA, id: 'a', priority: 1 });
-    manager.registerItem({ element: itemB, id: 'b', priority: 0 });
-    manager.attachOverflowMenu(menu);
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+    manager.addOverflowMenu(menu);
     manager.observe(container);
     manager.forceUpdate();
     const unsubscribe = manager.subscribe(listener);
@@ -102,7 +102,7 @@ describe('overflowManager', () => {
     const item = createElementWithSize('button', 40);
 
     manager.setOptions(createObserveOptions());
-    manager.registerItem({ element: item, id: 'a', priority: 1 });
+    manager.addItem({ element: item, id: 'a', priority: 1 });
     const cleanup = manager.observe(container);
     manager.forceUpdate();
 
@@ -118,19 +118,19 @@ describe('overflowManager', () => {
     });
   });
 
-  it('should remove items through registration cleanup', () => {
+  it('should remove items through removeItem', () => {
     const manager = createOverflowManager();
     const container = createContainer(100);
     const item = createElementWithSize('button', 40);
 
     manager.setOptions(createObserveOptions());
-    const cleanupItem = manager.registerItem({ element: item, id: 'a', priority: 1 });
+    manager.addItem({ element: item, id: 'a', priority: 1 });
     manager.observe(container);
     manager.forceUpdate();
 
     expect(manager.getSnapshot().itemVisibility).toEqual({ a: true });
 
-    cleanupItem();
+    manager.removeItem('a');
     manager.forceUpdate();
 
     expect(manager.getSnapshot()).toEqual({

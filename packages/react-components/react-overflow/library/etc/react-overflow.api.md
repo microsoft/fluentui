@@ -7,10 +7,10 @@
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
+import type { OverflowEventPayload } from '@fluentui/priority-overflow';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import type { OverflowManager } from '@fluentui/priority-overflow';
-import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -74,9 +74,7 @@ export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpda
 
 // @internal (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
-    containerRef: React_2.RefCallback<TElement>;
-    // @deprecated
-    containerRefObject: React_2.RefObject<TElement | null>;
+    containerRef: React_2.RefObject<TElement | null>;
     manager: OverflowManager | null;
 }
 

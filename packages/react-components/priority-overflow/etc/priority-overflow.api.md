@@ -4,10 +4,10 @@
 
 ```ts
 
-// @internal (undocumented)
+// @internal
 export function createOverflowManager(initialOptions?: Partial<ObserveOptions>): OverflowManager;
 
-// @public (undocumented)
+// @public
 export interface ObserveOptions {
     hasHiddenItems?: boolean;
     minimumVisible?: number;
@@ -18,97 +18,67 @@ export interface ObserveOptions {
     padding?: number;
 }
 
-// @public (undocumented)
+// @public
 export type OnUpdateItemVisibility = (data: OnUpdateItemVisibilityPayload) => void;
 
-// @public (undocumented)
+// @public
 export interface OnUpdateItemVisibilityPayload {
-    // (undocumented)
     item: OverflowItemEntry;
-    // (undocumented)
     visible: boolean;
 }
 
 // @public
 export type OnUpdateOverflow = (data: OverflowEventPayload) => void;
 
-// @public (undocumented)
+// @public
 export type OverflowAxis = 'horizontal' | 'vertical';
 
-// @public (undocumented)
+// @public
 export type OverflowDirection = 'start' | 'end';
 
-// @public (undocumented)
+// @public
 export interface OverflowDividerEntry {
     element: HTMLElement;
-    // (undocumented)
     groupId: string;
 }
 
 // @public
 export interface OverflowEventPayload {
-    // (undocumented)
     groupVisibility: Record<string, OverflowGroupState>;
-    // (undocumented)
     invisibleItems: OverflowItemEntry[];
-    // (undocumented)
     visibleItems: OverflowItemEntry[];
 }
 
-// @public (undocumented)
+// @public
 export type OverflowGroupState = 'visible' | 'hidden' | 'overflow';
 
-// @public (undocumented)
+// @public
 export interface OverflowItemEntry {
     element: HTMLElement;
-    // (undocumented)
     groupId?: string;
     id: string;
     pinned?: boolean;
     priority: number;
 }
 
-// @internal (undocumented)
+// @internal
 export interface OverflowManager {
-    // @deprecated (undocumented)
     addDivider: (divider: OverflowDividerEntry) => void;
-    // @deprecated (undocumented)
     addItem: (item: OverflowItemEntry) => void;
-    // @deprecated (undocumented)
     addOverflowMenu: (element: HTMLElement) => void;
-    attachOverflowMenu: (element: HTMLElement) => () => void;
-    // @deprecated (undocumented)
     disconnect: () => void;
     forceUpdate: () => void;
-    getSnapshot: () => OverflowSnapshot;
+    getSnapshot: () => OverflowEventPayload;
     observe: (container: HTMLElement) => () => void;
-    registerDivider: (divider: OverflowDividerEntry) => () => void;
-    registerItem: (items: OverflowItemEntry) => () => void;
-    // @deprecated (undocumented)
     removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
-    // @deprecated (undocumented)
     removeOverflowMenu: () => void;
     setOptions: (options: Partial<OverflowManagerOptions>) => void;
     subscribe: (listener: () => void) => () => void;
     update: () => void;
 }
 
-// @public (undocumented)
+// @public
 export type OverflowManagerOptions = ObserveOptions;
-
-// @public (undocumented)
-export interface OverflowSnapshot {
-    // (undocumented)
-    groupVisibility: Record<string, OverflowGroupState>;
-    // (undocumented)
-    hasOverflow: boolean;
-    // (undocumented)
-    itemVisibility: Record<string, boolean>;
-    // (undocumented)
-    overflowCount: number;
-}
-
-// (No @packageDocumentation comment for this package)
 
 ```

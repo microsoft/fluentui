@@ -18,14 +18,18 @@ describe('useOverflowVisibility', () => {
       bar: true,
       baz: false,
     } as const;
+    const snapshot = {
+      hasOverflow: true,
+      overflowCount: 1,
+      itemVisibility,
+      groupVisibility,
+    };
+    const getSnapshot = jest.fn(() => snapshot);
+    const subscribe = jest.fn(() => () => undefined);
+
     const manager = {
-      getSnapshot: jest.fn(() => ({
-        hasOverflow: true,
-        overflowCount: 1,
-        itemVisibility,
-        groupVisibility,
-      })),
-      subscribe: jest.fn(() => () => undefined),
+      getSnapshot,
+      subscribe,
     } as unknown as OverflowManager;
     const Wrapper: React.FC = props => {
       return (
@@ -34,6 +38,8 @@ describe('useOverflowVisibility', () => {
           value={
             {
               manager,
+              getSnapshot,
+              subscribe,
             } as unknown as OverflowContextValue
           }
         />

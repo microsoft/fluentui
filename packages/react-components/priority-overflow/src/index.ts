@@ -1,3 +1,8 @@
+/**
+ * Utilities for measuring container overflow and managing priority-based item visibility.
+ *
+ * @packageDocumentation
+ */
 export { createOverflowManager } from './overflowManager';
 export type {
   ObserveOptions,
@@ -9,7 +14,6 @@ export type {
   OverflowDirection,
   OverflowEventPayload,
   OverflowGroupState,
-  OverflowSnapshot,
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowManager,
