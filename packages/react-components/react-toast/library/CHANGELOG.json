@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Wed, 27 May 2026 11:18:57 GMT",
+      "tag": "@fluentui/react-toast_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "1d15557476d0e1eafbddd55c318d94bccd289a24",
+            "comment": "feat: export toast base hooks and types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2026 09:39:13 GMT",
       "tag": "@fluentui/react-toast_v9.7.18",
       "version": "9.7.18",
