@@ -88,6 +88,24 @@ import CEM from '@fluentui/custom-elements.json' with { type: 'json' };
 
 To start the component development environment, run `yarn start`.
 
+### SSR templates and stylesheets
+
+Each component ships a declarative-shadow-DOM template (`*.template.html`) and an extracted stylesheet (`*.styles.css`) next to its `*.template.ts` and `*.styles.ts` sources. These files are generated from the TypeScript sources and committed to the repo so the DSD output is visible without running a build.
+
+After editing a `*.template.ts` or `*.styles.ts`, regenerate the matching HTML and CSS with:
+
+```sh
+yarn generate:ssr
+```
+
+To check that the committed files match what the generators would produce (for example, before opening a PR), run:
+
+```sh
+yarn check:ssr
+```
+
+`yarn compile` does not regenerate these files; it copies them from `src/` into `dist/esm/` alongside the compiled JS.
+
 ### Known issue with Storybook site hot-reloading during development
 
 Storybook will watch modules for changes and hot-reload the module when necessary. This is usually great but poses a problem when the module being hot-reloaded defines a custom element. A custom element name can only be defined by the `CustomElementsRegistry` once, so reloading a module that defines a custom element will attempt to re-register the custom element name, throwing an error because the name has already been defined. This error will manifest with the following message:
