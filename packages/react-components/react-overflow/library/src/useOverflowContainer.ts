@@ -30,12 +30,19 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 ): UseOverflowContainerReturn<TElement> => {
   'use no memo';
 
-  const { overflowAxis, overflowDirection, padding, minimumVisible, onUpdateItemVisibility, hasHiddenItems } = options;
+  const {
+    overflowAxis = 'horizontal',
+    overflowDirection = 'end',
+    padding = 10,
+    minimumVisible = 0,
+    onUpdateItemVisibility = noop,
+    hasHiddenItems = false,
+  } = options;
 
   const onUpdateOverflow = useEventCallback(update);
-  const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility ?? noop);
+  const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
-  const observeOptions: Partial<ObserveOptions> = React.useMemo(
+  const observeOptions: Required<ObserveOptions> = React.useMemo(
     () => ({
       overflowAxis,
       overflowDirection,
