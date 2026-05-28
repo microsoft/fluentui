@@ -1,0 +1,142 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+
+:host {
+  --_icon-size: 16px;
+  --_icon-gradient-degree: 90deg;
+  --_icon-color-value: var(--colorPaletteMarigoldBorderActive);
+  --_icon-color-empty: var(--colorPaletteMarigoldBackground2);
+  --_default-value: 0;
+  --_default-max: 5;
+  --_mask-image-filled: url(data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2012%2012%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5.28347%201.54605C5.57692%200.951448%206.42479%200.951449%206.71825%201.54605L7.82997%203.79866L10.3159%204.15988C10.9721%204.25523%2011.2341%205.0616%2010.7592%205.52443L8.96043%207.27785L9.38507%209.7537C9.49716%2010.4072%208.81122%2010.9056%208.22431%2010.597L6.00086%209.4281L3.7774%2010.597C3.19049%2010.9056%202.50455%2010.4072%202.61664%209.7537L3.04128%207.27784L1.24246%205.52443C0.767651%205.0616%201.02966%204.25523%201.68584%204.15988L4.17174%203.79865L5.28347%201.54605Z%22%20%2F%3E%3C%2Fsvg%3E);
+  --_mask-image-outlined: url(data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2012%2012%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M5.28347%201.54605C5.57692%200.951448%206.42479%200.951449%206.71825%201.54605L7.82997%203.79866L10.3159%204.15988C10.9721%204.25523%2011.2341%205.0616%2010.7592%205.52443L8.96043%207.27785L9.38507%209.7537C9.49716%2010.4072%208.81122%2010.9056%208.22431%2010.597L6.00086%209.4281L3.7774%2010.597C3.19049%2010.9056%202.50455%2010.4072%202.61664%209.7537L3.04128%207.27784L1.24246%205.52443C0.767651%205.0616%201.02966%204.25523%201.68584%204.15988L4.17174%203.79865L5.28347%201.54605Z%22%20%2F%3E%3C%2Fsvg%3E);
+  --_mask-position-x: left;
+
+  align-items: center;
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  contain: layout style;
+  user-select: none;
+}
+
+:host(:dir(rtl)) {
+  --_icon-gradient-degree: -90deg;
+  --_mask-position-x: right;
+}
+
+:host([size='small']) {
+  --_icon-size: 12px;
+}
+
+:host([size='large']) {
+  --_icon-size: 20px;
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}
+
+::slotted([slot='icon']) {
+  display: none;
+}
+
+:host([color='neutral']) {
+  --_icon-color-value: var(--colorNeutralForeground1);
+  --_icon-color-empty: var(--colorNeutralBackground6);
+}
+
+:host([color='brand']) {
+  --_icon-color-value: var(--colorBrandForeground1);
+  --_icon-color-empty: var(--colorBrandBackground2);
+}
+
+@supports (width: attr(value type(<number>))) {
+  :host {
+    --_attr-value: attr(value type(<number>));
+    --_attr-max: attr(max type(<number>));
+  }
+}
+
+:host([compact]) .display {
+  --_max: 1;
+}
+
+.display {
+  --_value: max(0, round(var(--_attr-value, var(--_default-value)) * 2) / 2);
+  --_max: max(1, var(--_attr-max, var(--_default-max)));
+  --_mask-inline-size: calc(var(--_icon-size) + var(--spacingHorizontalXXS));
+  --_icon-gradient-stop-visual-adjustment: 0px;
+  --_icon-gradient-stop: calc(var(--_mask-inline-size) * var(--_value) - var(--_icon-gradient-stop-visual-adjustment));
+
+  background-image: linear-gradient(
+    var(--_icon-gradient-degree),
+    var(--_icon-color-value) var(--_icon-gradient-stop),
+    var(--_icon-color-empty) calc(var(--_icon-gradient-stop) + 0.5px)
+  );
+  block-size: var(--_icon-size);
+  display: grid;
+  inline-size: calc(var(--_max) * var(--_mask-inline-size) - var(--spacingHorizontalXXS) / 2);
+  mask-image: var(--_mask-image-filled);
+  mask-repeat: repeat no-repeat;
+  mask-size: var(--_mask-inline-size) var(--_icon-size);
+  mask-position: var(--_mask-position-x) center;
+}
+
+.value-label,
+::slotted([slot='value']) {
+  display: block;
+  margin-inline-start: var(--spacingHorizontalXS);
+  font-weight: var(--fontWeightSemibold);
+}
+
+:host([size='small']) .value-label,
+:host([size='small']) ::slotted([slot='value']) {
+  margin-inline-start: var(--spacingHorizontalXXS);
+}
+
+:host([size='large']) .value-label,
+:host([size='large']) ::slotted([slot='value']) {
+  margin-inline-start: var(--spacingHorizontalSNudge);
+}
+
+:host(:not([count])) .count-label {
+  display: none;
+}
+
+.count-label::before,
+::slotted([slot='count'])::before {
+  content: '·';
+  margin-inline: var(--spacingHorizontalXS);
+}
+
+:host([size='small']) .count-label::before,
+:host([size='small']) ::slotted([slot='count'])::before {
+  margin-inline: var(--spacingHorizontalXXS);
+}
+
+:host([size='large']) .count-label::before,
+:host([size='large']) ::slotted([slot='count'])::before {
+  margin-inline: var(--spacingHorizontalSNudge);
+}
+
+@media (forced-colors: active) {
+  .display {
+    --_icon-color-value: CanvasText;
+    --_icon-color-empty: Canvas;
+    --_icon-gradient-stop-visual-adjustment: 0.5px;
+
+    forced-color-adjust: none;
+  }
+
+  .display::before {
+    background-color: var(--_icon-color-value);
+    content: '';
+    grid-area: 1 / 1 / -1 / -1;
+    mask: inherit;
+    mask-image: var(--_mask-image-outlined);
+  }
+}
