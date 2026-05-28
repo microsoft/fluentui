@@ -12,7 +12,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       <svg
         aria-label="Donut chart example"
         class="fui-donut__chart"
-        height="214"
+        height="196"
         width="0"
       >
         <rect
@@ -38,7 +38,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           hidden=""
         />
         <g
-          transform="translate(0, 98)"
+          transform="translate(0, 89)"
         >
           <g>
             <path
@@ -178,7 +178,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="214"
+          height="196"
           width="0"
         >
           <rect
@@ -204,7 +204,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             hidden=""
           />
           <g
-            transform="translate(0, 98)"
+            transform="translate(0, 89)"
           >
             <g>
               <path
@@ -346,7 +346,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="214"
+            height="196"
             width="0"
           >
             <rect
@@ -372,7 +372,7 @@ Object {
               hidden=""
             />
             <g
-              transform="translate(0, 98)"
+              transform="translate(0, 89)"
             >
               <g>
                 <path
@@ -566,7 +566,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="214"
+          height="196"
           width="0"
         >
           <rect
@@ -592,7 +592,7 @@ Object {
             hidden=""
           />
           <g
-            transform="translate(0, 98)"
+            transform="translate(0, 89)"
           >
             <g>
               <path
@@ -826,7 +826,7 @@ Object {
           <svg
             aria-label="Donut chart example"
             class="fui-donut__chart"
-            height="214"
+            height="196"
             width="0"
           >
             <rect
@@ -852,7 +852,7 @@ Object {
               hidden=""
             />
             <g
-              transform="translate(0, 98)"
+              transform="translate(0, 89)"
             >
               <g>
                 <path
@@ -1046,7 +1046,7 @@ Object {
         <svg
           aria-label="Donut chart example"
           class="fui-donut__chart"
-          height="214"
+          height="196"
           width="0"
         >
           <rect
@@ -1072,7 +1072,7 @@ Object {
             hidden=""
           />
           <g
-            transform="translate(0, 98)"
+            transform="translate(0, 89)"
           >
             <g>
               <path
@@ -1300,7 +1300,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -1326,7 +1326,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -1460,7 +1460,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -1486,7 +1486,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -1650,7 +1650,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -1676,7 +1676,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -1840,7 +1840,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -1866,7 +1866,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -2000,7 +2000,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -2026,7 +2026,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -2160,7 +2160,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -2186,7 +2186,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -2393,7 +2393,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -2419,7 +2419,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
@@ -2553,7 +2553,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
     <svg
       aria-label="Donut chart example"
       class="fui-donut__chart"
-      height="214"
+      height="196"
       width="0"
     >
       <rect
@@ -2579,7 +2579,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         hidden=""
       />
       <g
-        transform="translate(0, 98)"
+        transform="translate(0, 89)"
       >
         <g>
           <path
