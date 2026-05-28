@@ -9,8 +9,6 @@ const useStyles = makeStyles({
   wrapper: {
     columnGap: '15px',
     display: 'flex',
-    flexWrap: 'wrap',
-    rowGap: '15px',
     minWidth: 'min-content',
   },
 });
@@ -82,21 +80,6 @@ export const Appearance = (): JSXElement => {
         <MenuTrigger disableButtonEnhancement>
           <MenuButton appearance="transparent" icon={<CalendarMonth />}>
             Transparent
-          </MenuButton>
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Item a</MenuItem>
-            <MenuItem>Item b</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-
-      <Menu>
-        <MenuTrigger disableButtonEnhancement>
-          <MenuButton appearance="tint" icon={<CalendarMonth />}>
-            Tint
           </MenuButton>
         </MenuTrigger>
 
