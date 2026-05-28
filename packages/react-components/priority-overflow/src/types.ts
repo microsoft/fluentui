@@ -204,4 +204,14 @@ export interface OverflowManager {
    * Unsets the overflow menu element
    */
   removeOverflowMenu: () => void;
+
+  /**
+   * Returns the current canonical overflow snapshot.
+   */
+  getSnapshot: () => OverflowEventPayload;
+
+  /**
+   * Subscribes to snapshot changes.
+   */
+  subscribe: (listener: () => void) => () => void;
 }

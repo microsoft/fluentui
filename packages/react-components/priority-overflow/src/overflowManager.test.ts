@@ -1,5 +1,5 @@
 import { createOverflowManager } from './overflowManager';
-import type { ObserveOptions, OverflowEventPayload } from './types';
+import type { ObserveOptions } from './types';
 
 describe('overflowManager', () => {
   beforeAll(() => {
@@ -45,13 +45,20 @@ describe('overflowManager', () => {
     ...options,
   });
 
-  const lastDispatch = (onUpdateOverflow: jest.Mock): OverflowEventPayload =>
-    onUpdateOverflow.mock.calls[onUpdateOverflow.mock.calls.length - 1][0];
+  const getVisibleIds = (manager: ReturnType<typeof createOverflowManager>) =>
+    manager
+      .getSnapshot()
+      .visibleItems.map(item => item.id)
+      .sort();
 
-  it('should dispatch overflow update after forceUpdate', () => {
-    const onUpdateOverflow = jest.fn();
-    const options = createObserveOptions({ onUpdateOverflow });
-    const manager = createOverflowManager(options);
+  const getInvisibleIds = (manager: ReturnType<typeof createOverflowManager>) =>
+    manager
+      .getSnapshot()
+      .invisibleItems.map(item => item.id)
+      .sort();
+
+  it('should expose a stable snapshot after forceUpdate', () => {
+    const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
     const itemA = createElementWithSize('button', 40);
     const itemB = createElementWithSize('button', 40);
@@ -63,79 +70,74 @@ describe('overflowManager', () => {
     manager.observe(container);
     manager.forceUpdate();
 
-    const dispatch = lastDispatch(onUpdateOverflow);
-    expect(dispatch.visibleItems.map(item => item.id).sort()).toEqual(['a', 'b']);
-    expect(dispatch.invisibleItems).toEqual([]);
-    expect(dispatch.groupVisibility).toEqual({});
+    expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+    expect(getInvisibleIds(manager)).toEqual([]);
+    expect(manager.getSnapshot().groupVisibility).toEqual({});
   });
 
-  it('should re-dispatch when setOptions changes a relevant option', () => {
-    const onUpdateOverflow = jest.fn();
-    const options = createObserveOptions({ onUpdateOverflow });
-    const manager = createOverflowManager(options);
+  it('should update snapshot and notify subscribers when options change', () => {
+    const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
     const itemA = createElementWithSize('button', 40);
     const itemB = createElementWithSize('button', 40);
     const menu = createElementWithSize('button', 20);
+    const listener = jest.fn();
 
     manager.addItem({ element: itemA, id: 'a', priority: 1 });
     manager.addItem({ element: itemB, id: 'b', priority: 0 });
     manager.addOverflowMenu(menu);
     manager.observe(container);
     manager.forceUpdate();
+    const unsubscribe = manager.subscribe(listener);
 
-    onUpdateOverflow.mockClear();
     manager.setOptions({ padding: 30 });
 
-    expect(onUpdateOverflow).toHaveBeenCalled();
-    const dispatch = lastDispatch(onUpdateOverflow);
-    expect(dispatch.visibleItems.map(item => item.id)).toEqual(['a']);
-    expect(dispatch.invisibleItems.map(item => item.id)).toEqual(['b']);
+    expect(listener).toHaveBeenCalled();
+    expect(getVisibleIds(manager)).toEqual(['a']);
+    expect(getInvisibleIds(manager)).toEqual(['b']);
+    expect(manager.getSnapshot().groupVisibility).toEqual({});
+
+    unsubscribe();
   });
 
-  it('should not re-dispatch when setOptions is called with a partial that does not change anything', () => {
-    const onUpdateOverflow = jest.fn();
-    const options = createObserveOptions({ onUpdateOverflow });
-    const manager = createOverflowManager(options);
+  it('should not notify subscribers when setOptions is called with a partial that does not change anything', () => {
+    const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
     const itemA = createElementWithSize('button', 40);
 
     manager.addItem({ element: itemA, id: 'a', priority: 1 });
-    manager.observe(container, options);
+    manager.observe(container);
     manager.forceUpdate();
 
-    onUpdateOverflow.mockClear();
+    const listener = jest.fn();
+    manager.subscribe(listener);
     manager.setOptions({ padding: 10 }); // padding is already 10; no real change
 
-    expect(onUpdateOverflow).not.toHaveBeenCalled();
+    expect(listener).not.toHaveBeenCalled();
   });
 
-  it('disconnect stops observation and re-observe restarts dispatching', () => {
-    const onUpdateOverflow = jest.fn();
-    const options = createObserveOptions({ onUpdateOverflow });
-    const manager = createOverflowManager(options);
+  it('should reset snapshot state when disconnect runs', () => {
+    const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
     const item = createElementWithSize('button', 40);
 
     manager.addItem({ element: item, id: 'a', priority: 1 });
     manager.observe(container);
     manager.forceUpdate();
-    expect(lastDispatch(onUpdateOverflow).visibleItems.map(i => i.id)).toEqual(['a']);
+
+    expect(getVisibleIds(manager)).toEqual(['a']);
 
     manager.disconnect();
-    onUpdateOverflow.mockClear();
 
-    manager.addItem({ element: item, id: 'a', priority: 1 });
-    manager.observe(container);
-    manager.forceUpdate();
-    expect(onUpdateOverflow).toHaveBeenCalled();
-    expect(lastDispatch(onUpdateOverflow).visibleItems.map(i => i.id)).toEqual(['a']);
+    expect(manager.getSnapshot()).toEqual({
+      visibleItems: [],
+      invisibleItems: [],
+      groupVisibility: {},
+    });
   });
 
   it('should remove items through removeItem', () => {
-    const onUpdateOverflow = jest.fn();
-    const options = createObserveOptions({ onUpdateOverflow });
-    const manager = createOverflowManager(options);
+    const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);
     const item = createElementWithSize('button', 40);
 
@@ -143,13 +145,15 @@ describe('overflowManager', () => {
     manager.observe(container);
     manager.forceUpdate();
 
-    expect(lastDispatch(onUpdateOverflow).visibleItems.map(i => i.id)).toEqual(['a']);
+    expect(getVisibleIds(manager)).toEqual(['a']);
 
     manager.removeItem('a');
     manager.forceUpdate();
 
-    const dispatch = lastDispatch(onUpdateOverflow);
-    expect(dispatch.visibleItems).toEqual([]);
-    expect(dispatch.invisibleItems).toEqual([]);
+    expect(manager.getSnapshot()).toEqual({
+      visibleItems: [],
+      invisibleItems: [],
+      groupVisibility: {},
+    });
   });
 });

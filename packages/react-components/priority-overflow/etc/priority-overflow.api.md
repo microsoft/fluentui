@@ -68,11 +68,13 @@ export interface OverflowManager {
     addOverflowMenu: (element: HTMLElement) => void;
     disconnect: () => void;
     forceUpdate: () => void;
+    getSnapshot: () => OverflowEventPayload;
     observe: (container: HTMLElement, options?: ObserveOptions) => void;
     removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
     removeOverflowMenu: () => void;
     setOptions: (options: Partial<ObserveOptions>) => void;
+    subscribe: (listener: () => void) => () => void;
     update: () => void;
 }
 

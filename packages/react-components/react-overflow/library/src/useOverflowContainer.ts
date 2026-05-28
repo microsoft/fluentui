@@ -118,17 +118,35 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     managerRef.current?.update();
   }, []);
 
+  const getSnapshot = React.useCallback<OverflowManager['getSnapshot']>(
+    () => managerRef.current?.getSnapshot() ?? defaultSnapshot,
+    [],
+  );
+
+  const subscribe = React.useCallback<OverflowManager['subscribe']>(
+    listener => managerRef.current?.subscribe(listener) ?? noop,
+    [],
+  );
+
   return {
     registerItem,
     registerDivider,
     registerOverflowMenu,
     updateOverflow,
     containerRef,
+    getSnapshot,
+    subscribe,
   };
 };
 
 const noop = () => {
   /* noop */
+};
+
+const defaultSnapshot = {
+  visibleItems: [],
+  invisibleItems: [],
+  groupVisibility: {},
 };
 
 export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visible }) => {

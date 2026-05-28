@@ -1,17 +1,8 @@
 'use client';
 
-import { useOverflowContext } from './overflowContext';
+import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
  * @returns Number of items that are overflowing
  */
-export const useOverflowCount = (): number =>
-  useOverflowContext(v => {
-    return Object.entries(v.itemVisibility).reduce((acc, [id, visible]) => {
-      if (!visible) {
-        acc++;
-      }
-
-      return acc;
-    }, 0);
-  });
+export const useOverflowCount = (): number => useOverflowSnapshot().invisibleItems.length;

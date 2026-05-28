@@ -9,6 +9,7 @@ import type {
   OverflowManager,
   ObserveOptions,
   OverflowDividerEntry,
+  OverflowEventPayload,
 } from './types';
 
 const DEFAULT_OPTIONS: Required<ObserveOptions> = {
@@ -46,8 +47,20 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
   const options: Required<ObserveOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
+  const listeners = new Set<() => void>();
   let disposeResizeObserver: () => void = () => {
     /* noop */
+  };
+
+  let snapshot: OverflowEventPayload = {
+    visibleItems: [],
+    invisibleItems: [],
+    groupVisibility: {},
+  };
+  const takeSnapshot = (nextSnapshot: OverflowEventPayload) => {
+    snapshot = nextSnapshot;
+    options.onUpdateOverflow(snapshot);
+    listeners.forEach(listener => listener());
   };
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
@@ -159,8 +172,14 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     const visibleItems = visibleItemIds.map(itemId => overflowItems[itemId]);
     const invisibleItems = invisibleItemIds.map(itemId => overflowItems[itemId]);
 
-    options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility: groupManager.groupVisibility() });
+    takeSnapshot({
+      visibleItems,
+      invisibleItems,
+      groupVisibility: groupManager.groupVisibility(),
+    });
   };
+
+  const getSnapshot: OverflowManager['getSnapshot'] = () => snapshot;
 
   const processOverflowItems = (): boolean => {
     if (!container) {
@@ -271,6 +290,13 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
     removeOverflowMenu();
     sizeCache.clear();
+
+    // notify subscribers that the manager is no longer tracking anything
+    takeSnapshot({
+      visibleItems: [],
+      invisibleItems: [],
+      groupVisibility: {},
+    });
   };
 
   const addItem: OverflowManager['addItem'] = items => {
@@ -351,6 +377,14 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     }
   };
 
+  const subscribe: OverflowManager['subscribe'] = listener => {
+    listeners.add(listener);
+
+    return () => {
+      listeners.delete(listener);
+    };
+  };
+
   return {
     addItem,
     disconnect,
@@ -363,6 +397,8 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     addDivider,
     removeDivider,
     setOptions,
+    getSnapshot,
+    subscribe,
   };
 }
 
