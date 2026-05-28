@@ -1,5 +1,6 @@
-export { TagPicker, renderTagPicker_unstable, useTagPicker_unstable } from './TagPicker';
+export { TagPicker, renderTagPicker_unstable, useTagPicker_unstable, useTagPickerBase_unstable } from './TagPicker';
 export type {
+  TagPickerBaseProps,
   TagPickerContextValues,
   TagPickerProps,
   TagPickerSlots,
@@ -14,8 +15,15 @@ export {
   renderTagPickerInput_unstable,
   useTagPickerInputStyles_unstable,
   useTagPickerInput_unstable,
+  useTagPickerInputBase_unstable,
 } from './TagPickerInput';
-export type { TagPickerInputProps, TagPickerInputSlots, TagPickerInputState } from './TagPickerInput';
+export type {
+  TagPickerInputBaseProps,
+  TagPickerInputBaseState,
+  TagPickerInputProps,
+  TagPickerInputSlots,
+  TagPickerInputState,
+} from './TagPickerInput';
 export {
   TagPickerList,
   tagPickerListClassNames,
@@ -30,16 +38,29 @@ export {
   renderTagPickerButton_unstable,
   useTagPickerButtonStyles_unstable,
   useTagPickerButton_unstable,
+  useTagPickerButtonBase_unstable,
 } from './TagPickerButton';
-export type { TagPickerButtonProps, TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButton';
+export type {
+  TagPickerButtonBaseProps,
+  TagPickerButtonBaseState,
+  TagPickerButtonProps,
+  TagPickerButtonSlots,
+  TagPickerButtonState,
+} from './TagPickerButton';
 export {
   TagPickerControl,
   tagPickerControlClassNames,
   renderTagPickerControl_unstable,
   useTagPickerControlStyles_unstable,
   useTagPickerControl_unstable,
+  useTagPickerControlBase_unstable,
 } from './TagPickerControl';
-export type { TagPickerControlProps, TagPickerControlSlots, TagPickerControlState } from './TagPickerControl';
+export type {
+  TagPickerControlBaseState,
+  TagPickerControlProps,
+  TagPickerControlSlots,
+  TagPickerControlState,
+} from './TagPickerControl';
 export {
   TagPickerOption,
   tagPickerOptionClassNames,
@@ -72,5 +93,5 @@ export type {
 
 export { useTagPickerFilter } from './utils/useTagPickerFilter';
 
-export { useTagPickerContext_unstable } from './contexts/TagPickerContext';
+export { TagPickerContextProvider, useTagPickerContext_unstable } from './contexts/TagPickerContext';
 export type { TagPickerContextValue } from './contexts/TagPickerContext';
