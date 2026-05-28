@@ -106,4 +106,5 @@ export const styles = css`
       position: sticky;
       z-index: 2;
     }
+  }
 `;
