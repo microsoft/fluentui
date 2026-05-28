@@ -7,8 +7,8 @@ import type { ToastAnnounce } from '@fluentui/react-toast';
 
 export type AriaLiveProps = {
   /**
-   * Receives the announce function resolved from `AnnounceContext`. Must be
-   * rendered inside an `<AriaLiveAnnouncer>` ancestor.
+   * Receives the announce function resolved from `AnnounceContext`.
+   * Requires an `AnnounceProvider` ancestor (e.g. `<AriaLiveAnnouncer>`); otherwise announcements are a no-op.
    */
   announceRef: React.Ref<ToastAnnounce>;
 };

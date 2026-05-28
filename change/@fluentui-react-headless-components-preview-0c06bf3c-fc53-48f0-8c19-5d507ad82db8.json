@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: use  AriaLiveAnnouncer for Toast component and update tests",
+  "comment": "feat: use AriaLiveAnnouncer for Toast component and update tests",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
