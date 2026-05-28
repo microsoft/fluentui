@@ -37,20 +37,24 @@ export const OverflowContext = React.createContext<OverflowContextValue | undefi
   undefined,
 ) as React.Context<OverflowContextValue>;
 
+const noop = () => {
+  /* noop */
+};
+
 const overflowContextDefaultValue: OverflowContextValue = {
   hasOverflow: false,
   itemVisibility: {},
   groupVisibility: {},
-  registerItem: () => () => null,
-  updateOverflow: () => null,
-  registerOverflowMenu: () => () => null,
-  registerDivider: () => () => null,
+  registerItem: () => noop,
+  updateOverflow: noop,
+  registerOverflowMenu: () => noop,
+  registerDivider: () => noop,
   getSnapshot: () => ({
     visibleItems: [],
     invisibleItems: [],
     groupVisibility: {},
   }),
-  subscribe: () => () => null,
+  subscribe: () => noop,
 };
 
 /**
