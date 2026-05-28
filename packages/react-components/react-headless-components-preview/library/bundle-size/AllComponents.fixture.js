@@ -38,6 +38,7 @@ import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Tag from '@fluentui/react-headless-components-preview/tag';
 import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
+import * as Toast from '@fluentui/react-headless-components-preview/toast';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
 import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
@@ -83,6 +84,7 @@ console.log({
   Tag,
   TagGroup,
   Textarea,
+  Toast,
   ToggleButton,
   Toolbar,
   Tooltip,
