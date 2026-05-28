@@ -239,11 +239,10 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     }
   };
 
-  let observeCleanup: () => void = () => {
-    /* noop */
-  };
-
-  const observe: OverflowManager['observe'] = observedContainer => {
+  const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
+    if (userOptions) {
+      Object.assign(options, userOptions);
+    }
     Object.values(overflowItems).forEach(item => {
       if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
         visibleItemQueue.enqueue(item.id);
@@ -258,32 +257,32 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
       }
       update();
     });
-
-    const cleanup = () => {
-      if (container !== observedContainer) {
-        return;
-      }
-      disposeResizeObserver();
-      disposeResizeObserver = () => {
-        /* noop */
-      };
-      container = undefined;
-      observing = false;
-      forceDispatch = true;
-    };
-
-    observeCleanup = cleanup;
-    return cleanup;
   };
 
-  const disconnect: OverflowManager['disconnect'] = () => observeCleanup();
+  const disconnect: OverflowManager['disconnect'] = () => {
+    disposeResizeObserver();
+    disposeResizeObserver = () => {
+      /* noop */
+    };
 
-  const addItem: OverflowManager['addItem'] = item => {
-    if (overflowItems[item.id]) {
+    // reset flags
+    container = undefined;
+    observing = false;
+    forceDispatch = true;
+
+    // clear all entries
+    Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
+    Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
+    removeOverflowMenu();
+    sizeCache.clear();
+  };
+
+  const addItem: OverflowManager['addItem'] = items => {
+    if (overflowItems[items.id]) {
       return;
     }
 
-    overflowItems[item.id] = item;
+    overflowItems[items.id] = items;
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
@@ -291,13 +290,13 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
       // i.e. new element is enqueued but the top of the queue stays the same
       // force a dispatch on the next batched update
       forceDispatch = true;
-      visibleItemQueue.enqueue(item.id);
+      visibleItemQueue.enqueue(items.id);
       update();
     }
 
-    if (item.groupId) {
-      groupManager.addItem(item.id, item.groupId);
-      item.element.setAttribute(DATA_OVERFLOW_GROUP, item.groupId);
+    if (items.groupId) {
+      groupManager.addItem(items.id, items.groupId);
+      items.element.setAttribute(DATA_OVERFLOW_GROUP, items.groupId);
     }
   };
 

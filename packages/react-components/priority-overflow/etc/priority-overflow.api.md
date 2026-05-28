@@ -64,11 +64,11 @@ export interface OverflowItemEntry {
 // @internal
 export interface OverflowManager {
     addDivider: (divider: OverflowDividerEntry) => void;
-    addItem: (item: OverflowItemEntry) => void;
+    addItem: (items: OverflowItemEntry) => void;
     addOverflowMenu: (element: HTMLElement) => void;
     disconnect: () => void;
     forceUpdate: () => void;
-    observe: (container: HTMLElement) => () => void;
+    observe: (container: HTMLElement, options?: ObserveOptions) => void;
     removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
     removeOverflowMenu: () => void;

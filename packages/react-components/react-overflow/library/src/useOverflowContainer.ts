@@ -74,7 +74,8 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   useIsomorphicLayoutEffect(() => {
     if (manager && containerRef.current) {
-      return manager.observe(containerRef.current);
+      manager.observe(containerRef.current);
+      return () => manager.disconnect();
     }
   }, [manager]);
 

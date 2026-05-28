@@ -13,7 +13,7 @@ const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
     addOverflowMenu: jest.fn(),
     disconnect: jest.fn(),
     forceUpdate: jest.fn(),
-    observe: jest.fn(() => () => null),
+    observe: jest.fn(),
     removeItem: jest.fn(),
     removeOverflowMenu: jest.fn(),
     update: jest.fn(),
@@ -76,7 +76,7 @@ describe('useOverflowContainer', () => {
   });
 
   it('should call observe with the container element', () => {
-    const observeMock = jest.fn(() => () => null);
+    const observeMock = jest.fn();
     mockOverflowManager({ observe: observeMock });
 
     const TestComponent: React.FC = () => {
@@ -91,10 +91,10 @@ describe('useOverflowContainer', () => {
     expect(observeMock).toHaveBeenCalledWith(getByTestId('container'));
   });
 
-  it('should dispose observation on unmount', () => {
-    const disposeMock = jest.fn();
-    const observeMock = jest.fn(() => disposeMock);
-    mockOverflowManager({ observe: observeMock });
+  it('should disconnect on unmount', () => {
+    const disconnectMock = jest.fn();
+    const observeMock = jest.fn();
+    mockOverflowManager({ observe: observeMock, disconnect: disconnectMock });
 
     const TestComponent: React.FC = () => {
       const { containerRef } = useOverflowContainer<HTMLDivElement>(() => undefined, {
@@ -104,9 +104,9 @@ describe('useOverflowContainer', () => {
     };
 
     const { unmount } = render(<TestComponent />);
-    expect(disposeMock).not.toHaveBeenCalled();
+    expect(disconnectMock).not.toHaveBeenCalled();
     unmount();
-    expect(disposeMock).toHaveBeenCalledTimes(1);
+    expect(disconnectMock).toHaveBeenCalledTimes(1);
   });
 
   it('should call setOptions when options change', () => {

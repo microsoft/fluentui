@@ -50,7 +50,8 @@ describe('overflowManager', () => {
 
   it('should dispatch overflow update after forceUpdate', () => {
     const onUpdateOverflow = jest.fn();
-    const manager = createOverflowManager(createObserveOptions({ onUpdateOverflow }));
+    const options = createObserveOptions({ onUpdateOverflow });
+    const manager = createOverflowManager(options);
     const container = createContainer(100);
     const itemA = createElementWithSize('button', 40);
     const itemB = createElementWithSize('button', 40);
@@ -70,7 +71,8 @@ describe('overflowManager', () => {
 
   it('should re-dispatch when setOptions changes a relevant option', () => {
     const onUpdateOverflow = jest.fn();
-    const manager = createOverflowManager(createObserveOptions({ onUpdateOverflow }));
+    const options = createObserveOptions({ onUpdateOverflow });
+    const manager = createOverflowManager(options);
     const container = createContainer(100);
     const itemA = createElementWithSize('button', 40);
     const itemB = createElementWithSize('button', 40);
@@ -91,20 +93,22 @@ describe('overflowManager', () => {
     expect(dispatch.invisibleItems.map(item => item.id)).toEqual(['b']);
   });
 
-  it('observe should return a cleanup that allows re-observation', () => {
+  it('disconnect stops observation and re-observe restarts dispatching', () => {
     const onUpdateOverflow = jest.fn();
-    const manager = createOverflowManager(createObserveOptions({ onUpdateOverflow }));
+    const options = createObserveOptions({ onUpdateOverflow });
+    const manager = createOverflowManager(options);
     const container = createContainer(100);
     const item = createElementWithSize('button', 40);
 
     manager.addItem({ element: item, id: 'a', priority: 1 });
-    const cleanup = manager.observe(container);
+    manager.observe(container);
     manager.forceUpdate();
     expect(lastDispatch(onUpdateOverflow).visibleItems.map(i => i.id)).toEqual(['a']);
 
-    cleanup();
+    manager.disconnect();
     onUpdateOverflow.mockClear();
 
+    manager.addItem({ element: item, id: 'a', priority: 1 });
     manager.observe(container);
     manager.forceUpdate();
     expect(onUpdateOverflow).toHaveBeenCalled();
@@ -113,7 +117,8 @@ describe('overflowManager', () => {
 
   it('should remove items through removeItem', () => {
     const onUpdateOverflow = jest.fn();
-    const manager = createOverflowManager(createObserveOptions({ onUpdateOverflow }));
+    const options = createObserveOptions({ onUpdateOverflow });
+    const manager = createOverflowManager(options);
     const container = createContainer(100);
     const item = createElementWithSize('button', 40);
 

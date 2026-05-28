@@ -156,55 +156,52 @@ export interface ObserveOptions {
  */
 export interface OverflowManager {
   /**
-   * Updates engine options without requiring full observation re-creation.
+   * Starts observing the container and managing the overflow state
+   */
+  observe: (container: HTMLElement, options?: ObserveOptions) => void;
+  /**
+   * Stops observing the container
+   */
+  disconnect: () => void;
+  /**
+   * Updates engine options without restarting observation.
    */
   setOptions: (options: Partial<ObserveOptions>) => void;
   /**
-   * Starts observing the container and managing overflow state.
+   * Add overflow items
    */
-  observe: (container: HTMLElement) => () => void;
+  addItem: (items: OverflowItemEntry) => void;
   /**
-   * Adds an item to overflow tracking.
-   */
-  addItem: (item: OverflowItemEntry) => void;
-
-  /**
-   * Removes an overflow item by id.
+   * Remove overflow item
    */
   removeItem: (itemId: string) => void;
   /**
-   * Schedules an asynchronous overflow recomputation.
+   * Manually update the overflow, updates are batched and async
    */
   update: () => void;
   /**
-   * Forces an immediate synchronous overflow recomputation.
+   * Manually update the overflow sync
    */
   forceUpdate: () => void;
 
   /**
-   * Attaches the overflow menu element.
-   * This is used to calculate available space and determine whether more items should overflow.
+   * Adds an element that opens an overflow menu. This is used to calculate
+   * available space and check if additional items need to overflow
    */
   addOverflowMenu: (element: HTMLElement) => void;
 
   /**
-   * Removes the overflow menu element.
-   */
-  removeOverflowMenu: () => void;
-
-  /**
-   * Adds a divider for the provided group.
+   * Add overflow divider
    */
   addDivider: (divider: OverflowDividerEntry) => void;
 
   /**
-   * Removes a divider by group id.
+   * Remove overflow divider
    */
   removeDivider: (groupId: string) => void;
 
   /**
-   * Disconnects all active observers.
-   * Equivalent to calling the latest cleanup function returned by `observe`.
+   * Unsets the overflow menu element
    */
-  disconnect: () => void;
+  removeOverflowMenu: () => void;
 }
