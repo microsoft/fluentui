@@ -76,7 +76,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   useIsomorphicLayoutEffect(() => {
     if (manager && containerRef.current) {
-      return manager.observe(containerRef.current);
+      const unsubscribe = manager.observe(containerRef.current);
+      manager.forceUpdate();
+      return unsubscribe;
     }
   }, [manager]);
 
@@ -137,15 +139,28 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     manager?.update();
   }, [manager]);
 
+  const forceUpdateOverflow = React.useCallback(() => {
+    manager?.forceUpdate();
+  }, [manager]);
+
   return {
     registerItem,
     registerDivider,
     registerOverflowMenu,
     updateOverflow,
+    forceUpdateOverflow,
     containerRef,
-    manager,
+    getSnapshot: manager?.getSnapshot ?? defaultGetSnapshot,
+    subscribe: manager?.subscribe ?? defaultSubscribe,
   };
 };
+
+const defaultGetSnapshot = () => ({
+  visibleItems: [],
+  invisibleItems: [],
+  groupVisibility: {},
+});
+const defaultSubscribe = () => () => null;
 
 export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visible }) => {
   if (visible) {

@@ -11,15 +11,17 @@ export function useOverflowMenu<TElement extends HTMLElement>(
 ): { ref: React.MutableRefObject<TElement | null>; overflowCount: number; isOverflowing: boolean } {
   const elementId = useId('overflow-menu', id);
   const overflowCount = useOverflowCount();
-  const { registerOverflowMenu } = useOverflowContext();
+  const { registerOverflowMenu, forceUpdateOverflow } = useOverflowContext();
   const ref = React.useRef<TElement | null>(null);
   const isOverflowing = overflowCount > 0;
 
   useIsomorphicLayoutEffect(() => {
     if (ref.current) {
-      return registerOverflowMenu(ref.current);
+      const unregister = registerOverflowMenu(ref.current);
+      forceUpdateOverflow();
+      return unregister;
     }
-  }, [registerOverflowMenu, isOverflowing, elementId]);
+  }, [registerOverflowMenu, forceUpdateOverflow, isOverflowing, elementId]);
 
   return { ref, overflowCount, isOverflowing };
 }

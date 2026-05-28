@@ -28,6 +28,7 @@ export interface OverflowContextValue {
   registerOverflowMenu: (el: HTMLElement) => () => void;
   registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
+  forceUpdateOverflow: () => void;
   containerRef?: React.RefObject<HTMLElement | null>;
   getSnapshot: () => OverflowEventPayload;
   subscribe: (listener: () => void) => () => void;
@@ -43,6 +44,7 @@ const overflowContextDefaultValue: OverflowContextValue = {
   groupVisibility: {},
   registerItem: () => () => null,
   updateOverflow: () => null,
+  forceUpdateOverflow: () => null,
   registerOverflowMenu: () => () => null,
   registerDivider: () => () => null,
   getSnapshot: () => ({
