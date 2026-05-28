@@ -38,10 +38,10 @@
     "@fluentui/react-link": "^9.8.2",
     "@fluentui/react-menu": "^9.25.0",
     "@fluentui/react-message-bar": "^9.7.1",
+    "@fluentui/react-teaching-popover": "^9.7.0",
     "@fluentui/react-nav": "^9.4.0",
     "@fluentui/react-persona": "^9.7.4",
     "@fluentui/react-popover": "^9.14.3",
-    "@fluentui/react-portal": "^9.8.13",
     "@fluentui/react-positioning": "^9.22.2",
     "@fluentui/react-progress": "^9.5.2",
     "@fluentui/react-provider": "^9.22.17",
@@ -61,6 +61,7 @@
     "@fluentui/react-tags": "^9.9.1",
     "@fluentui/react-textarea": "^9.7.3",
     "@fluentui/react-toolbar": "^9.8.1",
+    "@fluentui/react-toast": "^9.7.18",
     "@fluentui/react-tooltip": "^9.10.2",
     "@fluentui/react-utilities": "^9.26.4",
     "@swc/helpers": "^0.5.1"
@@ -312,11 +313,23 @@
       "import": "./lib/tag-group.js",
       "require": "./lib-commonjs/tag-group.js"
     },
+    "./teaching-popover": {
+      "types": "./dist/teaching-popover.d.ts",
+      "node": "./lib-commonjs/teaching-popover.js",
+      "import": "./lib/teaching-popover.js",
+      "require": "./lib-commonjs/teaching-popover.js"
+    },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
       "node": "./lib-commonjs/textarea.js",
       "import": "./lib/textarea.js",
       "require": "./lib-commonjs/textarea.js"
+    },
+    "./toast": {
+      "types": "./dist/toast.d.ts",
+      "node": "./lib-commonjs/toast.js",
+      "import": "./lib/toast.js",
+      "require": "./lib-commonjs/toast.js"
     },
     "./toggle-button": {
       "types": "./dist/toggle-button.d.ts",
