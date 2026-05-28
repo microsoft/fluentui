@@ -178,6 +178,12 @@ test.describe('MenuList', () => {
       node.removeAttribute('hidden');
     });
 
+    await element.evaluate(node => {
+      node.focus();
+    });
+
+    await expect(menuItems.nth(0)).toBeFocused();
+
     await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
@@ -663,12 +669,10 @@ test.describe('MenuList', () => {
 
       await fastPage.setTemplate({
         innerHTML: /* html */ `
-          <${tagName}>
-            <${MenuItemTagName} role="menuitemradio">Menu Item 1</${MenuItemTagName}>
-            <${MenuItemTagName} checked role="menuitemradio">Menu item 2</${MenuItemTagName}>
-            <${MenuItemTagName} role="menuitemradio">Menu item 3</${MenuItemTagName}>
-            <${MenuItemTagName} role="menuitemradio">Menu item 4</${MenuItemTagName}>
-          </${tagName}>
+          <${MenuItemTagName} role="menuitemradio">Menu Item 1</${MenuItemTagName}>
+          <${MenuItemTagName} checked role="menuitemradio">Menu item 2</${MenuItemTagName}>
+          <${MenuItemTagName} role="menuitemradio">Menu item 3</${MenuItemTagName}>
+          <${MenuItemTagName} role="menuitemradio">Menu item 4</${MenuItemTagName}>
         `,
       });
 

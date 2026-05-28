@@ -110,7 +110,7 @@ export class Accordion extends FASTElement {
    */
   private setItems = (): void => {
     waitForConnectedDescendants(this, () => {
-      if (this.slottedAccordionItems.length === 0) {
+      if (!this.slottedAccordionItems?.length) {
         return;
       }
 

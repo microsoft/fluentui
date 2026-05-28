@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 27 May 2026 11:18:57 GMT",
+      "tag": "@fluentui/react-components_v9.74.1",
+      "version": "9.74.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "c70f899a84e796058de43f17eb46d5445e7a5bbc",
+            "comment": "fix: decouple useTagGroupBase_unstable from Tabster; export contexts. This is technically a breaking change, but the prior Tabster coupling was a programmatic mistake and not intended public behavior. If you run into issues, please bump to the next version."
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "1d15557476d0e1eafbddd55c318d94bccd289a24",
+            "comment": "feat: export toast base hooks and types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2026 09:39:05 GMT",
       "tag": "@fluentui/react-components_v9.74.0",
       "version": "9.74.0",

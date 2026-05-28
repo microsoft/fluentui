@@ -172,9 +172,11 @@ test.describe('Anchor Button', () => {
 
     await fastPage.setTemplate({ attributes: { href: expectedUrl } });
 
+    expect(page.url()).not.toMatch(expectedUrl);
+
     await element.click();
 
-    await expect(page).toHaveURL(expectedUrl);
+    expect(page.url()).toMatch(expectedUrl);
   });
 
   test('should emit a single click event when clicked', async ({ fastPage, page }) => {
@@ -197,8 +199,9 @@ test.describe('Anchor Button', () => {
   });
 
   test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or `Meta` on Mac', async ({
-    fastPage,
     context,
+    fastPage,
+    page,
   }) => {
     const { element } = fastPage;
 
@@ -212,7 +215,11 @@ test.describe('Anchor Button', () => {
 
     const newPage = await newPagePromise;
 
-    await expect(newPage).toHaveURL(expectedUrl);
+    expect(page.url()).not.toMatch(expectedUrl);
+
+    expect(newPage.url()).toMatch(expectedUrl);
+
+    await newPage.close();
   });
 
   test('should navigate to the provided url when `Enter` is pressed via keyboard', async ({ fastPage, page }) => {
@@ -226,12 +233,13 @@ test.describe('Anchor Button', () => {
 
     await element.press('Enter');
 
-    await expect(page).toHaveURL(expectedUrl);
+    expect(page.url()).toMatch(expectedUrl);
   });
 
   test('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
-    fastPage,
     context,
+    fastPage,
+    page,
   }) => {
     const { element } = fastPage;
 
@@ -249,6 +257,10 @@ test.describe('Anchor Button', () => {
 
     const newPage = await newPagePromise;
 
-    await expect(newPage).toHaveURL(expectedUrl);
+    expect(page.url()).not.toMatch(expectedUrl);
+
+    expect(newPage.url()).toMatch(expectedUrl);
+
+    await newPage.close();
   });
 });
