@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: each overflow hook (useOverflowCount, useIsOverflowItemVisible, useIsOverflowGroupVisible, useOverflowVisibility) now subscribes to the manager snapshot directly so the Overflow container no longer holds intermediate state. itemVisibility, groupVisibility and hasOverflow on the context are kept for backward compatibility but are now deprecated.",
+  "comment": "fix: subscribe overflow hooks directly to the manager snapshot",
   "packageName": "@fluentui/react-overflow",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"

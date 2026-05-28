@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: OverflowManager now exposes getSnapshot and subscribe so consumers can subscribe directly to overflow state without forcing intermediate re-renders.",
+  "comment": "feat: expose getSnapshot and subscribe on OverflowManager",
   "packageName": "@fluentui/priority-overflow",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
