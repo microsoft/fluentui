@@ -136,6 +136,25 @@ describe('overflowManager', () => {
     });
   });
 
+  it('should re-dispatch when the overflow menu is attached while observing', () => {
+    const onUpdateOverflow = jest.fn();
+    const manager = createOverflowManager(createObserveOptions({ onUpdateOverflow }));
+    const container = createContainer(100);
+    const itemA = createElementWithSize('button', 60);
+    const itemB = createElementWithSize('button', 60);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    onUpdateOverflow.mockClear();
+
+    const menu = createElementWithSize('button', 30);
+    manager.addOverflowMenu(menu);
+
+    expect(onUpdateOverflow).toHaveBeenCalled();
+  });
+
   it('should remove items through removeItem', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

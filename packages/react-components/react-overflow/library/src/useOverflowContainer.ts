@@ -72,6 +72,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
       managerRef.current.observe(containerRef.current);
+      // Force a synchronous overflow computation so the first painted frame already
+      // reflects the final visible/invisible split instead of flashing all items.
+      managerRef.current.forceUpdate();
       return () => managerRef.current?.disconnect();
     }
   }, []);
@@ -126,11 +129,16 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     [],
   );
 
+  const forceUpdateOverflow = React.useCallback(() => {
+    managerRef.current?.forceUpdate();
+  }, []);
+
   return {
     registerItem,
     registerDivider,
     registerOverflowMenu,
     updateOverflow,
+    forceUpdateOverflow,
     containerRef,
     getSnapshot,
     subscribe,

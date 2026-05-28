@@ -93,6 +93,24 @@ describe('useOverflowContainer', () => {
     expect(observeMock).toHaveBeenCalledWith(getByTestId('container'));
   });
 
+  it('should force a synchronous overflow update immediately after observation starts', () => {
+    const forceUpdateMock = jest.fn();
+    const observeMock = jest.fn();
+    mockOverflowManager({ observe: observeMock, forceUpdate: forceUpdateMock });
+
+    const TestComponent: React.FC = () => {
+      const { containerRef } = useOverflowContainer<HTMLDivElement>(() => undefined, {
+        onUpdateItemVisibility: () => undefined,
+      });
+      return <div ref={containerRef} />;
+    };
+
+    render(<TestComponent />);
+    expect(forceUpdateMock).toHaveBeenCalledTimes(1);
+    expect(observeMock).toHaveBeenCalledTimes(1);
+    expect(observeMock.mock.invocationCallOrder[0]).toBeLessThan(forceUpdateMock.mock.invocationCallOrder[0]);
+  });
+
   it('should disconnect on unmount', () => {
     const disconnectMock = jest.fn();
     const observeMock = jest.fn();

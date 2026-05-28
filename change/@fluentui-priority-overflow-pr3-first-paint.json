@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: attaching or detaching the overflow menu while observing now eagerly recomputes overflow so the snapshot reflects the menu's footprint before the first paint.",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

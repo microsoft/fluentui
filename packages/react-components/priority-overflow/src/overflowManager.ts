@@ -330,6 +330,11 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
     overflowMenu = el;
+
+    if (observing) {
+      forceDispatch = true;
+      update();
+    }
   };
 
   const addDivider: OverflowManager['addDivider'] = divider => {
@@ -343,6 +348,11 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
     overflowMenu = undefined;
+
+    if (observing) {
+      forceDispatch = true;
+      update();
+    }
   };
 
   const removeDivider: OverflowManager['removeDivider'] = groupId => {
