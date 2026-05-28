@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: the overflow snapshot is now correct on the first paint. The container forces a synchronous overflow computation inside the same layout effect that starts observation, useOverflowMenu forces another after the menu element is registered, and useOverflowContainer exposes forceUpdateOverflow for advanced consumers.",
+  "comment": "feat: produce a correct overflow snapshot before the first paint",
   "packageName": "@fluentui/react-overflow",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
