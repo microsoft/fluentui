@@ -66,13 +66,13 @@ export const useTagPickerButtonBase_unstable = (
 };
 
 /**
- * Create the state required to render PickerButton.
+ * Create the state required to render TagPickerButton.
  *
- * The returned state can be modified with hooks such as usePickerButtonStyles_unstable,
- * before being passed to renderPickerButton_unstable.
+ * The returned state can be modified with hooks such as useTagPickerButtonStyles_unstable,
+ * before being passed to renderTagPickerButton_unstable.
  *
- * @param props - props from this instance of PickerButton
- * @param ref - reference to root HTMLDivElement of PickerButton
+ * @param props - props from this instance of TagPickerButton
+ * @param ref - reference to root HTMLButtonElement of TagPickerButton
  */
 export const useTagPickerButton_unstable = (
   props: TagPickerButtonProps,
