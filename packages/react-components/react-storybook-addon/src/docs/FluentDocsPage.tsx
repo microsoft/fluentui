@@ -318,6 +318,7 @@ const RenderArgsTable = ({
   return hideArgsTable ? null : (
     <>
       <div className={styles.additionalInfoWrapper}>
+        <ArgTypes of={component} />
         {hasArgAsProp && (
           <AdditionalApiDocs>
             <p>
@@ -369,7 +370,6 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgTypes of={component} />
     </>
   );
 };
@@ -393,7 +393,37 @@ const RenderPrimaryStory = ({
   );
 };
 
-export const FluentDocsPage = (): JSXElement => {
+const RenderStories = ({ skipPrimaryStory }: { stories: PrimaryStory[]; skipPrimaryStory?: boolean }) => (
+  <Stories includePrimary={!skipPrimaryStory} />
+);
+
+export type FluentDocsPageProps = {
+  /**
+   * Render the primary-story section (divider + h3 anchor heading + canvas).
+   * Defaults to the addon's built-in `RenderPrimaryStory`. Pass a custom
+   * component to swap the canvas/source rendering (e.g. wrap in `<Anchor>`,
+   * use a custom source panel) while keeping the rest of the docs page chrome.
+   */
+  renderPrimaryStory?: typeof RenderPrimaryStory;
+  /**
+   * Render the props table. Defaults to the addon's built-in `RenderArgsTable`,
+   * which runs `withSlotEnhancer` and adds the slot/native-props info cards.
+   */
+  renderArgsTable?: typeof RenderArgsTable;
+  /**
+   * Render the secondary-stories section. Defaults to Storybook's `<Stories />`
+   * block. When overridden, the page passes the non-primary stories so the
+   * consumer can iterate (e.g. to add per-story anchors and a custom source
+   * panel). The default ignores `stories` and lets `<Stories />` self-iterate.
+   */
+  renderStories?: typeof RenderStories;
+};
+
+export const FluentDocsPage = ({
+  renderPrimaryStory = RenderPrimaryStory,
+  renderArgsTable = RenderArgsTable,
+  renderStories = RenderStories,
+}: FluentDocsPageProps = {}): JSXElement => {
   const context = React.useContext(DocsContext);
 
   // Get the fluent docs page configuration from context
@@ -425,9 +455,9 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} slotClassNames={slotClassNames} />
-        <Stories />
+        {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
+        {renderArgsTable({ story: primaryStory, hideArgsTable, slotClassNames })}
+        {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
   }
@@ -470,18 +500,15 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory
-            primaryStory={primaryStory as unknown as PrimaryStory}
-            skipPrimaryStory={skipPrimaryStory}
-          />
-          <RenderArgsTable
-            story={primaryStory as unknown as PrimaryStory}
-            hideArgsTable={hideArgsTable}
-            showSlotsApi={argTable.slotsApi}
-            showNativePropsApi={argTable.nativePropsApi}
-            slotClassNames={slotClassNames}
-          />
-          <Stories />
+          {renderPrimaryStory({ primaryStory, skipPrimaryStory })}
+          {renderArgsTable({
+            story: primaryStory,
+            hideArgsTable,
+            showSlotsApi: argTable.slotsApi,
+            showNativePropsApi: argTable.nativePropsApi,
+            slotClassNames,
+          })}
+          {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>
         {showTableOfContents && (
           <div className={styles.toc}>

@@ -2,6 +2,89 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 12:04:31 GMT",
+      "tag": "@fluentui/react-charting_v5.25.10",
+      "version": "5.25.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8531d26ae750f91537ced80d6679bc406acd4d23",
+            "comment": "refactor: move isSafeUrl to chart-utilities package and update imports"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.39",
+            "commit": "9317e51771e26f6142b72bb6f689aa9731218273"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 May 2026 01:18:44 GMT",
+      "tag": "@fluentui/react-charting_v5.25.9",
+      "version": "5.25.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "99955e344d7a0f6381f24d2b7cf4fbc06c4d6a32",
+            "comment": "safeurl related bug fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2026 10:02:36 GMT",
+      "tag": "@fluentui/react-charting_v5.25.8",
+      "version": "5.25.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "dd187e211864a05ffcfff828e16778a24782783c",
+            "comment": "style: enforce jsdoc/empty-tags rule and fix all violations"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b10b744fcc9443059ab9ea27534cd76776f04abb",
+            "comment": "fix(charts): block unsafe urls in chart click-to-navigate handlers"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c1144c8a16c3ef5702557825cef3a5bc5c963085",
+            "comment": "fix: isSafeUrl utility"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.10.6",
+            "commit": "04bf7a7dd2b5c8f6963d3bf63187017e96c57a10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.225",
+            "commit": "04bf7a7dd2b5c8f6963d3bf63187017e96c57a10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.125.6",
+            "commit": "04bf7a7dd2b5c8f6963d3bf63187017e96c57a10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Feb 2026 18:07:05 GMT",
       "tag": "@fluentui/react-charting_v5.25.7",
       "version": "5.25.7",

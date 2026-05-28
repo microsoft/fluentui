@@ -4,6 +4,7 @@ import {
   Overflow,
   OverflowItem,
   OverflowDivider,
+  OverflowReorderObserver,
   useIsOverflowGroupVisible,
   useOverflowMenu,
   useOverflowContext,
@@ -1304,6 +1305,45 @@ describe('Overflow', () => {
       cy.get(`[${selectors.item}="8"]`).should('be.visible');
       // After pinning item 8: 8 items overflow (1-7, 9) - pinned item 8 is not counted
       cy.get(`[${selectors.menu}]`).should('have.text', '+8');
+    });
+  });
+
+  describe('OverflowReorderObserver', () => {
+    const INITIAL_IDS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+    const ReorderExample: React.FC = () => {
+      const [ids, setIds] = React.useState(INITIAL_IDS);
+      return (
+        <>
+          <Container size={300}>
+            <OverflowReorderObserver />
+            {ids.map(id => (
+              <Item key={id} id={id} priority={1}>
+                {id}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <button id="reverse" onClick={() => setIds(prev => [...prev].reverse())}>
+            Reverse
+          </button>
+        </>
+      );
+    };
+
+    it('recomputes overflow when items are reordered via React state', () => {
+      mount(<ReorderExample />);
+
+      // Initial layout: container=300px, items=50px each + 50px menu → ~5 visible, 3 overflow.
+      cy.get(`[${selectors.item}="a"]`).should('be.visible');
+      cy.get(`[${selectors.item}="h"]`).should('not.be.visible');
+
+      cy.get('#reverse').click();
+
+      // After reversing, the items at the front of the new order (h, g, f, ...) should be
+      // visible. Items pushed to the tail (..., b, a) should overflow.
+      cy.get(`[${selectors.item}="h"]`).should('be.visible');
+      cy.get(`[${selectors.item}="a"]`).should('not.be.visible');
     });
   });
 });

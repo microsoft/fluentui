@@ -36,6 +36,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       : propColor;
 
   if (state.initials) {
+    // eslint-disable-next-line react-hooks/immutability
     state.initials = slot.optional(props.initials, {
       renderByDefault: true,
       defaultProps: {
@@ -46,8 +47,9 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     });
   }
 
-  if (state.icon) {
-    state.icon.children ??= <PersonRegular />;
+  if (state.icon && !state.icon.hasOwnProperty('children')) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.icon.children = <PersonRegular />;
   }
 
   const badge: AvatarState['badge'] = slot.optional(props.badge, {
@@ -65,11 +67,14 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   if (!userProvidedAriaLabel && !userProvidedAriaLabelledby) {
     if (props.name) {
       if (badge) {
+        // eslint-disable-next-line react-hooks/immutability
         state.root['aria-labelledby'] = state.root.id + ' ' + badge.id;
       }
     } else if (state.initials) {
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
+      // eslint-disable-next-line react-hooks/immutability
       state.root['aria-labelledby'] = state.initials.id + (badge ? ' ' + badge.id : '');
+      // eslint-disable-next-line react-hooks/immutability
       delete state.root['aria-label'];
     }
     // Add the active state to the aria label
@@ -78,6 +83,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       if (state.root['aria-labelledby']) {
         // If using aria-labelledby, render a hidden span and append it to the labelledby
         const activeId = state.root.id + '__active';
+        // eslint-disable-next-line react-hooks/immutability
         state.root['aria-labelledby'] += ' ' + activeId;
         activeAriaLabelElement = (
           <span hidden id={activeId}>
@@ -86,6 +92,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
         );
       } else if (state.root['aria-label']) {
         // Otherwise, just append it to the aria-label
+        // eslint-disable-next-line react-hooks/immutability
         state.root['aria-label'] += ' ' + activeText;
       }
     }
@@ -110,7 +117,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
  */
 export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<HTMLElement>): AvatarBaseState => {
   const { dir } = useFluent();
-  const { name, ...rest } = props;
+  const { name, image: imageProp, initials: initialsProp, ...rest } = props;
 
   const baseId = useId('avatar-');
 
@@ -126,7 +133,7 @@ export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<H
 
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
 
-  let image: AvatarBaseState['image'] = slot.optional(props.image, {
+  let image: AvatarBaseState['image'] = slot.optional(imageProp, {
     defaultProps: { alt: '', role: 'presentation', 'aria-hidden': true, hidden: imageHidden },
     elementType: 'img',
   });
@@ -143,7 +150,7 @@ export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<H
   }
 
   // Resolve the initials slot, defaulted to getInitials
-  let initials: AvatarBaseState['initials'] = slot.optional(props.initials, {
+  let initials: AvatarBaseState['initials'] = slot.optional(initialsProp, {
     renderByDefault: true,
     defaultProps: {
       children: getInitials(name, dir === 'rtl'),

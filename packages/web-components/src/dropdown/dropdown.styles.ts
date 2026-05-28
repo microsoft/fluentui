@@ -4,7 +4,7 @@ import {
   typographyBody2Styles,
   typographyCaption1Styles,
 } from '../styles/partials/typography.partials.js';
-import { flipBlockState, openState, placeholderShownState } from '../styles/states/index.js';
+import { openState, placeholderShownState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusNone,
@@ -83,6 +83,7 @@ export const styles = css`
     min-width: 160px;
     overflow: hidden;
     padding: ${spacingVerticalSNudge} ${spacingHorizontalMNudge};
+    white-space: normal;
     position: relative;
     text-align: start;
     width: 100%;
@@ -233,6 +234,7 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
+  ::slotted(:not([slot]):not([popover])),
   ::slotted([popover]:not(:popover-open)) {
     display: none;
   }

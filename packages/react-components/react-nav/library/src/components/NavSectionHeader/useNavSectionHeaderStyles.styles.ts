@@ -27,6 +27,7 @@ export const useNavSectionHeaderStyles_unstable = (state: NavSectionHeaderState)
   'use no memo';
 
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(navSectionHeaderClassNames.root, styles.root, state.root.className);
 
   return state;

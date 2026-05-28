@@ -91,6 +91,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
 
   const mountedAndClosed = !unmountOnClose && !open;
 
+  // eslint-disable-next-line react-hooks/immutability
   root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     rootBaseStyle,
@@ -99,6 +100,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   );
 
   if (backdrop) {
+    // eslint-disable-next-line react-hooks/immutability
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,

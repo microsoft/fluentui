@@ -23,6 +23,7 @@ export const useTeachingPopoverCarouselCardStyles_unstable = (
 
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(teachingPopoverCarouselCardClassNames.root, styles.root, state.root.className);
 
   return state;

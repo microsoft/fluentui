@@ -3,12 +3,14 @@
  * TODO: remove this module and its usage once we will be able to remove griffel AOT from our build output -> https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/shared/build-system/stop-styles-transforms.md
  */
 
-import { writeFile, readFile, copyFile } from 'node:fs/promises';
-import { basename, join } from 'node:path';
+import { writeFile, readFile, copyFile, mkdir, rm } from 'node:fs/promises';
+import { basename, dirname, join } from 'node:path';
 
 import { type BabelFileResult, transformAsync } from '@babel/core';
 import { globSync } from 'fast-glob';
-import { logger } from '@nx/devkit';
+import { logger, readJsonFile } from '@nx/devkit';
+import { isMatch } from 'micromatch';
+import { type Config } from '@swc/core';
 
 import { processAsyncQueue, type NormalizedOptions } from './shared';
 import { compileSwc } from './swc';
@@ -26,21 +28,7 @@ export function hasStylesFilesToProcess(normalizedOptions: NormalizedOptions) {
 }
 
 export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
-  const { esmConfig, restOfConfigs } = options.moduleOutput.reduce<{
-    esmConfig: NormalizedOptions['moduleOutput'][number] | null;
-    restOfConfigs: NormalizedOptions['moduleOutput'];
-  }>(
-    (acc, outputConfig) => {
-      if (outputConfig.module === 'es6') {
-        acc.esmConfig = outputConfig;
-        return acc;
-      }
-
-      acc.restOfConfigs.push(outputConfig);
-      return acc;
-    },
-    { esmConfig: null, restOfConfigs: [] },
-  );
+  const { esmConfig, restOfConfigs } = splitEsmConfig(options.moduleOutput);
 
   if (!esmConfig) {
     logger.warn('es6 module output not specified. Skipping griffel AOT...');
@@ -55,7 +43,21 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
     logger.log('💅 Griffel RAW styles output enabled');
     transforms.push(createStyleRawOutput);
   }
-  await compileSwc(esmConfig, options, transforms);
+
+  // When react-compiler is enabled, run it on source TS/TSX BEFORE SWC (compiler needs JSX intact).
+  // Output goes to an intermediate dir (types stripped, JSX preserved), then SWC compiles from there.
+  let swcSourceOptions = options;
+  if (options.reactCompiler) {
+    const intermediateDir = await babelReactCompiler(options);
+    swcSourceOptions = { ...options, absoluteSourceRoot: intermediateDir };
+  }
+
+  await compileSwc(esmConfig, swcSourceOptions, transforms);
+
+  if (options.reactCompiler) {
+    await rm(swcSourceOptions.absoluteSourceRoot, { recursive: true, force: true });
+  }
+
   await babel(esmConfig, options);
 
   const compilationQueue = restOfConfigs.map(outputConfig => {
@@ -138,6 +140,133 @@ async function createStyleRawOutput(filePath: string): Promise<void> {
   const rawFilePath = filePath.replace('.styles.', '.styles.raw.');
   await copyFile(filePath, rawFilePath);
   logger.verbose(`raw-style: created ${rawFilePath}`);
+}
+
+function splitEsmConfig(moduleOutput: NormalizedOptions['moduleOutput']) {
+  return moduleOutput.reduce<{
+    esmConfig: NormalizedOptions['moduleOutput'][number] | null;
+    restOfConfigs: NormalizedOptions['moduleOutput'];
+  }>(
+    (acc, outputConfig) => {
+      if (outputConfig.module === 'es6') {
+        acc.esmConfig = outputConfig;
+        return acc;
+      }
+
+      acc.restOfConfigs.push(outputConfig);
+      return acc;
+    },
+    { esmConfig: null, restOfConfigs: [] },
+  );
+}
+
+/**
+ * Runs babel-plugin-react-compiler on source TS/TSX files.
+ *
+ * The compiler needs to see JSX (not React.createElement), so it must run BEFORE SWC transforms JSX.
+ * Uses @babel/preset-typescript to strip types while preserving JSX syntax.
+ * Outputs JS files (with JSX intact) to a temporary intermediate directory.
+ * SWC then compiles from the intermediate directory (handling JSX + module format).
+ *
+ * @returns The absolute path to the intermediate directory containing compiled files.
+ */
+async function babelReactCompiler(normalizedOptions: NormalizedOptions): Promise<string> {
+  const sourceRoot = normalizedOptions.absoluteSourceRoot;
+  const intermediateDir = join(normalizedOptions.absoluteProjectRoot, 'temp/react-compiler-intermediate');
+
+  const files = globSync('**/*.{ts,tsx}', { cwd: sourceRoot });
+
+  if (files.length === 0) {
+    return intermediateDir;
+  }
+
+  // Use same exclude patterns as SWC to skip test files
+  const swcConfigPath = join(normalizedOptions.absoluteProjectRoot, '.swcrc');
+  const swcConfig = readJsonFile<Config>(swcConfigPath);
+
+  const tsFileExtensionRegex = /\.(tsx|ts)$/;
+  let processedCount = 0;
+
+  for (const filename of files) {
+    const srcFilePath = join(sourceRoot, filename);
+    const isFileExcluded = swcConfig.exclude ? isMatch(srcFilePath, swcConfig.exclude, { contains: true }) : false;
+
+    if (isFileExcluded) {
+      continue;
+    }
+
+    const codeBuffer = await readFile(srcFilePath);
+    const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
+
+    const result = (await transformAsync(sourceCode, {
+      ast: false,
+      sourceMaps: true,
+
+      // Isolated from project babel configs — only run react-compiler
+      babelrc: false,
+      configFile: false,
+
+      // Strip TypeScript types but preserve JSX (no @babel/preset-react)
+      // Only enable isTSX for .tsx files — .ts files use angle-bracket type assertions that conflict with JSX parsing
+      presets: [['@babel/preset-typescript', { isTSX: srcFilePath.endsWith('.tsx'), allExtensions: true }]],
+      plugins: ['babel-plugin-react-compiler'],
+
+      caller: { name: '@fluentui/workspace-plugin:build:react-compiler' },
+      filename: srcFilePath,
+
+      sourceFileName: basename(filename),
+    })) as NonNullableRecord<BabelFileResult>;
+
+    const jsFileName = filename.replace(tsFileExtensionRegex, '.js');
+    const outputPath = join(intermediateDir, jsFileName);
+
+    await mkdir(dirname(outputPath), { recursive: true });
+    await writeFile(outputPath, result.code);
+
+    if (result.map) {
+      await writeFile(outputPath + '.map', JSON.stringify(result.map));
+    }
+
+    processedCount++;
+  }
+
+  logger.log(`Processing react-compiler with babel: ${processedCount} files`);
+
+  return intermediateDir;
+}
+
+export async function compileWithReactCompiler(options: NormalizedOptions) {
+  const { esmConfig, restOfConfigs } = splitEsmConfig(options.moduleOutput);
+
+  if (!esmConfig) {
+    logger.warn('es6 module output not specified. Skipping react-compiler...');
+    const compilationQueue = restOfConfigs.map(outputConfig => {
+      return compileSwc(outputConfig, options);
+    });
+    return processAsyncQueue(compilationQueue);
+  }
+
+  // Run react-compiler on source TS/TSX, output to intermediate dir (JS with JSX preserved)
+  const intermediateDir = await babelReactCompiler(options);
+
+  // SWC compiles from intermediate dir (handles JSX transform + module format)
+  await compileSwc(esmConfig, { ...options, absoluteSourceRoot: intermediateDir });
+
+  // Clean up intermediate dir
+  await rm(intermediateDir, { recursive: true, force: true });
+
+  const compilationQueue = restOfConfigs.map(outputConfig => {
+    const overriddenSourceRoot = join(options.workspaceRoot, options.project.root);
+    // Transpile from ESM+react-compiler output → CJS (same pattern as Griffel AOT)
+    const overriddenAbsoluteSourceRoot = join(overriddenSourceRoot, esmConfig.outputPath);
+
+    return compileSwc(outputConfig, {
+      ...options,
+      absoluteSourceRoot: overriddenAbsoluteSourceRoot,
+    });
+  });
+
+  return processAsyncQueue(compilationQueue);
 }
 
 type NonNullableRecord<T> = {

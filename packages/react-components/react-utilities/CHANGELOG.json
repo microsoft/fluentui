@@ -2,6 +2,58 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 09:39:16 GMT",
+      "tag": "@fluentui/react-utilities_v9.26.4",
+      "version": "9.26.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f5bccb884ab92356ee9912cd29937d35e1d66d91",
+            "comment": "style: replace deprecated assertion syntax that causes issues to babel tsx"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2026 14:21:00 GMT",
+      "tag": "@fluentui/react-utilities_v9.26.3",
+      "version": "9.26.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4adb3ad77d16b40a79f12e3a3afd78cb09bf9c6a",
+            "comment": "fix: add focusgroupstart property to baseElementProperties"
+          }
+        ],
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2026 12:58:44 GMT",
       "tag": "@fluentui/react-utilities_v9.26.2",
       "version": "9.26.2",

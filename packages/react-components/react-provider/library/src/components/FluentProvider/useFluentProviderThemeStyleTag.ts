@@ -63,7 +63,7 @@ export const useFluentProviderThemeStyleTag = (
   const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // eslint-disable-next-line react-hooks/rules-of-hooks, react-hooks/void-use-memo
     React.useMemo(() => {
       // Heads up!
       // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,

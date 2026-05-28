@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 26 Feb 2026 18:07:04 GMT and should not be manually modified.
+This log was last generated on Mon, 11 May 2026 10:02:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.1)
+
+Mon, 11 May 2026 10:02:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.0..@fluentui/style-utilities_v8.15.1)
+
+### Patches
+
+- Updated OneCDN url to latest version (adding support for new markdown, "shortcuts folder" filetype icon and other fixes) ([PR #35945](https://github.com/microsoft/fluentui/pull/35945) by caperez@microsoft.com)
 
 ## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.0)
 

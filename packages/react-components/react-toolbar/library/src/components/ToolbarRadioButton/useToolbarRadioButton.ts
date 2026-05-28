@@ -22,7 +22,7 @@ export const useToolbarRadioButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarRadioButtonState => {
   const contextSize = useToolbarContext_unstable(ctx => ctx.size);
-  const { appearance = 'secondary', size = contextSize, ...baseProps } = props;
+  const { appearance = 'subtle', size = contextSize, ...baseProps } = props;
   const state = useToolbarRadioButtonBase_unstable(baseProps, ref);
 
   return {
@@ -65,7 +65,9 @@ export const useToolbarRadioButtonBase_unstable = (
       onClickOriginal?.(e);
     },
   );
+  // eslint-disable-next-line react-hooks/immutability
   state.root['aria-pressed'] = undefined;
+  // eslint-disable-next-line react-hooks/immutability
   state.root.onClick = handleOnClick;
 
   return state;

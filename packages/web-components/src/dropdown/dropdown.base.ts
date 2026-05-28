@@ -444,7 +444,10 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get enabledOptions(): DropdownOption[] {
-    return this.listbox?.enabledOptions ?? [];
+    return (
+      this.listbox?.enabledOptions ??
+      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled)
+    );
   }
 
   /**
@@ -509,7 +512,9 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get options(): DropdownOption[] {
-    return this.listbox?.options ?? [];
+    return (
+      this.listbox?.options ?? Array.from(this.querySelectorAll('*')).filter<DropdownOption>(o => isDropdownOption(o))
+    );
   }
 
   /**
@@ -802,6 +807,12 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Guard flag to prevent reentrant calls to `insertControl`.
+   * @internal
+   */
+  private _insertingControl = false;
+
+  /**
    * Inserts the control element based on the dropdown type.
    *
    * @public
@@ -809,6 +820,11 @@ export class BaseDropdown extends FASTElement {
    * This method can be overridden in derived classes to provide custom control elements, though this is not recommended.
    */
   protected insertControl(): void {
+    if (this._insertingControl) {
+      return;
+    }
+
+    this._insertingControl = true;
     this.controlSlot?.assignedNodes().forEach(x => this.removeChild(x));
 
     if (this.type === DropdownType.combobox) {
@@ -817,6 +833,7 @@ export class BaseDropdown extends FASTElement {
     }
 
     dropdownButtonTemplate.render(this, this);
+    this._insertingControl = false;
   }
 
   /**
@@ -930,7 +947,9 @@ export class BaseDropdown extends FASTElement {
    */
   public selectOption(index: number = this.selectedIndex, shouldEmit: boolean = false): void {
     this.listbox.selectOption(index);
-    this.control.value = this.displayValue;
+    if (this.control) {
+      this.control.value = this.displayValue;
+    }
 
     this.setValidity();
 
@@ -951,20 +970,22 @@ export class BaseDropdown extends FASTElement {
    * @internal
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
-    if (this.$fastController.isConnected) {
-      if (this.disabled || !this.required) {
-        this.elementInternals.setValidity({});
-        return;
-      }
-
-      const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
-
-      this.elementInternals.setValidity(
-        { valueMissing, ...flags },
-        message ?? this.validationMessage,
-        anchor ?? this.control,
-      );
+    if (!this.elementInternals) {
+      return;
     }
+
+    if (this.disabled || !this.required) {
+      this.elementInternals.setValidity({});
+      return;
+    }
+
+    const valueMissing = this.required && this.listbox.selectedOptions.length === 0;
+
+    this.elementInternals.setValidity(
+      { valueMissing, ...flags },
+      message ?? this.validationMessage,
+      anchor ?? this.control,
+    );
   }
 
   /**

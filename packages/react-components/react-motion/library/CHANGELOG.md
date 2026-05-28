@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 30 Mar 2026 14:37:40 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.0)
+
+Tue, 26 May 2026 09:39:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.15.0..@fluentui/react-motion_v9.16.0)
+
+### Minor changes
+
+- feat(react-motion): add replayKey prop to replay motion without remounting ([PR #36108](https://github.com/microsoft/fluentui/pull/36108) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.15.0)
+
+Thu, 23 Apr 2026 14:21:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.14.0..@fluentui/react-motion_v9.15.0)
+
+### Minor changes
+
+- feat: expose motion params as direct props on motion slot types ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- fix(react-motion): apply MotionComponent type to presence definition ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.3 ([PR #36035](https://github.com/microsoft/fluentui/pull/36035) by beachball)
 
 ## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.14.0)
 

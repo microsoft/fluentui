@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" fill="none">
+  <rect width="240" height="160" fill="#fff1f3"/>
+  <!-- Slider track 1 -->
+  <rect x="32" y="44" width="176" height="6" rx="3" fill="#e4e4e7"/>
+  <rect x="32" y="44" width="110" height="6" rx="3" fill="#9b1f5a"/>
+  <circle cx="142" cy="47" r="10" fill="#9b1f5a" stroke="white" stroke-width="3"/>
+  <!-- Slider track 2 -->
+  <rect x="32" y="76" width="176" height="6" rx="3" fill="#e4e4e7"/>
+  <rect x="32" y="76" width="60" height="6" rx="3" fill="#9b1f5a"/>
+  <circle cx="92" cy="79" r="10" fill="#9b1f5a" stroke="white" stroke-width="3"/>
+  <!-- Slider track 3 -->
+  <rect x="32" y="108" width="176" height="6" rx="3" fill="#e4e4e7"/>
+  <rect x="32" y="108" width="148" height="6" rx="3" fill="#9b1f5a"/>
+  <circle cx="180" cy="111" r="10" fill="#9b1f5a" stroke="white" stroke-width="3"/>
+</svg>

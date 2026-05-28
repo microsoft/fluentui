@@ -105,5 +105,6 @@ function useStableDataGridContextValue() {
     return null;
   });
 
+  // eslint-disable-next-line react-hooks/refs
   return ref.current!;
 }

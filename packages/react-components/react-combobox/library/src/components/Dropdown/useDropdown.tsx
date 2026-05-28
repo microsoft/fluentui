@@ -19,8 +19,8 @@ import { Listbox } from '../Listbox/Listbox';
 import type { DropdownBaseProps, DropdownBaseState, DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
-import { optionClassNames } from '../Option/useOptionStyles.styles';
 import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
+import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
 
 /**
  * Create the base state required to render Dropdown, without design-only props.
@@ -41,7 +41,7 @@ export const useDropdownBase_unstable = (
     activeParentRef,
     controller: activeDescendantController,
   } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
-    matchOption: el => el.classList.contains(optionClassNames.root),
+    matchOption: isComboboxOptionElement,
   });
 
   const dropdownInternalState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
@@ -125,6 +125,7 @@ export const useDropdownBase_unstable = (
   };
 
   const onClearButtonClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.clearButton?.onClick, (ev: React.MouseEvent<HTMLButtonElement>) => {
       clearSelection(ev);
       triggerRef.current?.focus();

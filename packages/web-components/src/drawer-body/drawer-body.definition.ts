@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './drawer-body.options.js';
 import { DrawerBody } from './drawer-body.js';
 import { styles } from './drawer-body.styles.js';
 import { template } from './drawer-body.template.js';
@@ -11,7 +11,7 @@ import { template } from './drawer-body.template.js';
  */
 
 export const definition = DrawerBody.compose({
-  name: `${FluentDesignSystem.prefix}-drawer-body`,
+  name: tagName,
   template,
   styles,
 });

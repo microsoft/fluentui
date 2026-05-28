@@ -58,6 +58,7 @@ export const useTeachingPopoverFooterStyles_unstable = (
   const styles = useStyles();
   const { appearance, footerLayout } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     teachingPopoverFooterClassNames.root,
     styles.root,
@@ -65,6 +66,7 @@ export const useTeachingPopoverFooterStyles_unstable = (
     state.root.className,
   );
   if (state.secondary) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondary.className = mergeClasses(
       teachingPopoverFooterClassNames.secondary,
       footerLayout === 'horizontal' ? styles.buttonRootHorizontal : styles.buttonRootVertical,
@@ -72,6 +74,7 @@ export const useTeachingPopoverFooterStyles_unstable = (
       state.secondary.className,
     );
   }
+  // eslint-disable-next-line react-hooks/immutability
   state.primary.className = mergeClasses(
     teachingPopoverFooterClassNames.primary,
     footerLayout === 'horizontal' ? styles.buttonRootHorizontal : styles.buttonRootVertical,

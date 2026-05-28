@@ -42,7 +42,6 @@ import {
   spacingVerticalXS,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
 import { userInvalidState } from '../styles/states/index.js';
 
@@ -286,8 +285,8 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
+
+  @media (forced-colors: active) {
     :host {
       --border-color: FieldText;
       --border-block-end-color: FieldText;
@@ -308,5 +307,5 @@ export const styles: ElementStyles = css`
       --border-block-end-color: GrayText;
       --placeholder-color: GrayText;
     }
-  `),
-);
+  }
+`;

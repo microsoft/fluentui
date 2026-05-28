@@ -29,6 +29,7 @@ export const useToolbarGroupStyles_unstable = (state: ToolbarGroupState): Toolba
   const { vertical } = state;
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     toolbarGroupClassNames.root,
     styles.root,

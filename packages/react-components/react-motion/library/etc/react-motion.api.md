@@ -72,6 +72,7 @@ export type MotionComponentProps = {
     onMotionFinish?: (ev: null) => void;
     onMotionCancel?: (ev: null) => void;
     onMotionStart?: (ev: null) => void;
+    replayKey?: string | number;
 };
 
 // @public (undocumented)
@@ -100,7 +101,7 @@ export function motionSlot<MotionParams extends Record<string, MotionParam> = {}
 }): SlotComponentType<MotionSlotRenderProps & MotionParams>;
 
 // @public (undocumented)
-export type MotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<MotionComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart' | 'onMotionCancel'> & {
+export type MotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<MotionComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart' | 'onMotionCancel'> & Partial<MotionParams> & {
     as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<MotionSlotRenderProps & MotionParams & {
         children: JSXElement;
@@ -196,7 +197,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 }): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
 
 // @public (undocumented)
-export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
+export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & Partial<MotionParams> & {
     as?: JSXIntrinsicElementKeys;
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: JSXElement;

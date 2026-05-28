@@ -13,6 +13,7 @@ import type { AvatarSize } from '@fluentui/react-avatar';
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
+import type { CollapseParams } from '@fluentui/react-motion-components-preview';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -408,7 +409,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 // @public (undocumented)
 export type TreeSlots = {
     root: Slot<'div'>;
-    collapseMotion?: Slot<PresenceMotionSlotProps>;
+    collapseMotion?: Slot<PresenceMotionSlotProps<CollapseParams>>;
 };
 
 // @public

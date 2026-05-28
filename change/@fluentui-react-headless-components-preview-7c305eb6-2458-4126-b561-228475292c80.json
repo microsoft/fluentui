@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add headless TeachingPopover composed on top of the headless Popover and the v9 react-teaching-popover base hooks",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}
