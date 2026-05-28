@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: make Overflow container strict-mode safe by creating the manager via useMemo, starting observation in a single layout effect with colocated cleanup, propagating option changes through setOptions, and ref-guarding overflow menu and divider deregistration.",
+  "comment": "fix: make Overflow container strict-mode safe",
   "packageName": "@fluentui/react-overflow",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"

@@ -33,16 +33,14 @@ describe('useOverflowContainer', () => {
     mockOverflowManager();
   });
 
-  it('should create overflow manager with initial options', () => {
-    renderHook(() => useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }));
+  it('should create overflow manager with the provided options', () => {
+    renderHook(() => useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, padding: 25 }));
 
     expect(createOverflowManager).toHaveBeenCalledTimes(1);
     expect((createOverflowManager as jest.Mock).mock.calls[0][0]).toMatchObject({
-      hasHiddenItems: false,
-      minimumVisible: 0,
-      overflowAxis: 'horizontal',
-      overflowDirection: 'end',
-      padding: 10,
+      padding: 25,
+      onUpdateItemVisibility: expect.any(Function),
+      onUpdateOverflow: expect.any(Function),
     });
   });
 

@@ -17,8 +17,12 @@ const DEFAULT_OPTIONS: Required<ObserveOptions> = {
   padding: 10,
   minimumVisible: 0,
   hasHiddenItems: false,
-  onUpdateItemVisibility: () => undefined,
-  onUpdateOverflow: () => undefined,
+  onUpdateItemVisibility: () => {
+    /* noop */
+  },
+  onUpdateOverflow: () => {
+    /* noop */
+  },
 };
 
 /**
@@ -42,7 +46,9 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
   const options: Required<ObserveOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
-  let disposeResizeObserver: () => void = () => null;
+  let disposeResizeObserver: () => void = () => {
+    /* noop */
+  };
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
@@ -233,7 +239,9 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     }
   };
 
-  let observeCleanup: () => void = () => null;
+  let observeCleanup: () => void = () => {
+    /* noop */
+  };
 
   const observe: OverflowManager['observe'] = observedContainer => {
     Object.values(overflowItems).forEach(item => {
@@ -256,7 +264,9 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
         return;
       }
       disposeResizeObserver();
-      disposeResizeObserver = () => null;
+      disposeResizeObserver = () => {
+        /* noop */
+      };
       container = undefined;
       observing = false;
       forceDispatch = true;
