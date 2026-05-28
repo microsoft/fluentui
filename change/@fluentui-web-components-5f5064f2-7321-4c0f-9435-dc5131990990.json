@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "prevent text input from submitting its associated form twice when Enter is pressed",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

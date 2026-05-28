@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove tooltip id from target’s aria-describedby attribute when the tooltip is removed from DOM",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
