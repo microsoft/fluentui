@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported.",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
