@@ -45,6 +45,18 @@ describe('overflowManager', () => {
     ...options,
   });
 
+  const getVisibleIds = (manager: ReturnType<typeof createOverflowManager>) =>
+    manager
+      .getSnapshot()
+      .visibleItems.map(item => item.id)
+      .sort();
+
+  const getInvisibleIds = (manager: ReturnType<typeof createOverflowManager>) =>
+    manager
+      .getSnapshot()
+      .invisibleItems.map(item => item.id)
+      .sort();
+
   it('should expose a stable snapshot after forceUpdate', () => {
     const manager = createOverflowManager();
     const container = createContainer(100);
@@ -59,12 +71,9 @@ describe('overflowManager', () => {
     manager.observe(container);
     manager.forceUpdate();
 
-    expect(manager.getSnapshot()).toEqual({
-      hasOverflow: false,
-      overflowCount: 0,
-      itemVisibility: { a: true, b: true },
-      groupVisibility: {},
-    });
+    expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+    expect(getInvisibleIds(manager)).toEqual([]);
+    expect(manager.getSnapshot().groupVisibility).toEqual({});
   });
 
   it('should update snapshot and notify subscribers when options change', () => {
@@ -86,12 +95,9 @@ describe('overflowManager', () => {
     manager.setOptions({ padding: 30 });
 
     expect(listener).toHaveBeenCalled();
-    expect(manager.getSnapshot()).toEqual({
-      hasOverflow: true,
-      overflowCount: 1,
-      itemVisibility: { a: true, b: false },
-      groupVisibility: {},
-    });
+    expect(getVisibleIds(manager)).toEqual(['a']);
+    expect(getInvisibleIds(manager)).toEqual(['b']);
+    expect(manager.getSnapshot().groupVisibility).toEqual({});
 
     unsubscribe();
   });
@@ -106,14 +112,13 @@ describe('overflowManager', () => {
     const cleanup = manager.observe(container);
     manager.forceUpdate();
 
-    expect(manager.getSnapshot().itemVisibility).toEqual({ a: true });
+    expect(getVisibleIds(manager)).toEqual(['a']);
 
     cleanup();
 
     expect(manager.getSnapshot()).toEqual({
-      hasOverflow: false,
-      overflowCount: 0,
-      itemVisibility: {},
+      visibleItems: [],
+      invisibleItems: [],
       groupVisibility: {},
     });
   });
@@ -128,15 +133,14 @@ describe('overflowManager', () => {
     manager.observe(container);
     manager.forceUpdate();
 
-    expect(manager.getSnapshot().itemVisibility).toEqual({ a: true });
+    expect(getVisibleIds(manager)).toEqual(['a']);
 
     manager.removeItem('a');
     manager.forceUpdate();
 
     expect(manager.getSnapshot()).toEqual({
-      hasOverflow: false,
-      overflowCount: 0,
-      itemVisibility: {},
+      visibleItems: [],
+      invisibleItems: [],
       groupVisibility: {},
     });
   });
