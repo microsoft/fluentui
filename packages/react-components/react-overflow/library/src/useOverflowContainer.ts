@@ -14,7 +14,7 @@ import type {
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
-import { canUseDOM, useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
@@ -42,20 +42,21 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   } = options;
 
   const onUpdateOverflow = useEventCallback(update);
+  const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
-  const overflowOptions = React.useMemo(
+  const observeOptions: Required<ObserveOptions> = React.useMemo(
     () => ({
       overflowAxis,
       overflowDirection,
       padding,
       minimumVisible,
-      onUpdateItemVisibility,
+      onUpdateItemVisibility: onUpdateItemVisibilityCallback,
       onUpdateOverflow,
       hasHiddenItems,
     }),
     [
       minimumVisible,
-      onUpdateItemVisibility,
+      onUpdateItemVisibilityCallback,
       overflowAxis,
       overflowDirection,
       padding,
@@ -64,86 +65,79 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     ],
   );
 
-  const firstMount = useFirstMount();
-
-  // DOM ref to the overflow container element
   const containerRef = React.useRef<TElement>(null);
+  const overflowMenuRef = React.useRef<HTMLElement | null>(null);
+  const dividerElementsRef = React.useRef(new Map<string, HTMLElement>());
 
-  const [overflowManager, setOverflowManager] = React.useState<OverflowManager | null>(() =>
-    canUseDOM() ? createOverflowManager() : null,
-  );
-
-  // On first mount there is no need to create an overflow manager and re-render
-  useIsomorphicLayoutEffect(() => {
-    if (firstMount && containerRef.current) {
-      overflowManager?.observe(containerRef.current, overflowOptions);
-    }
-  }, [firstMount, overflowManager, overflowOptions]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (!containerRef.current || !canUseDOM() || firstMount) {
-      return;
-    }
-
-    const newOverflowManager = createOverflowManager();
-    newOverflowManager.observe(containerRef.current, overflowOptions);
-    setOverflowManager(newOverflowManager);
-    // We don't want to re-create the overflow manager when the first mount flag changes from true to false
+  const manager = React.useMemo<OverflowManager | null>(
+    () => (canUseDOM() ? createOverflowManager(observeOptions) : null),
+    // Manager is created once for the component's lifetime; option changes go through setOptions.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [overflowOptions]);
-
-  /* Clean up overflow manager on unmount */
-  React.useEffect(
-    () => () => {
-      overflowManager?.disconnect();
-    },
-    [overflowManager],
+    [],
   );
+
+  useIsomorphicLayoutEffect(() => {
+    if (manager && containerRef.current) {
+      return manager.observe(containerRef.current);
+    }
+  }, [manager]);
+
+  React.useEffect(() => {
+    manager?.setOptions(observeOptions);
+  }, [observeOptions, manager]);
 
   const registerItem = React.useCallback(
     (item: OverflowItemEntry) => {
-      overflowManager?.addItem(item);
+      manager?.addItem(item);
       item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
 
       return () => {
         item.element.removeAttribute(DATA_OVERFLOWING);
         item.element.removeAttribute(DATA_OVERFLOW_ITEM);
-        overflowManager?.removeItem(item.id);
+        manager?.removeItem(item.id);
       };
     },
-    [overflowManager],
+    [manager],
   );
 
   const registerDivider = React.useCallback(
     (divider: OverflowDividerEntry) => {
       const el = divider.element;
-      overflowManager?.addDivider(divider);
+      manager?.addDivider(divider);
+      dividerElementsRef.current.set(divider.groupId, el);
       el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
 
       return () => {
-        divider.groupId && overflowManager?.removeDivider(divider.groupId);
+        if (dividerElementsRef.current.get(divider.groupId) === el) {
+          manager?.removeDivider(divider.groupId);
+          dividerElementsRef.current.delete(divider.groupId);
+        }
         el.removeAttribute(DATA_OVERFLOW_DIVIDER);
       };
     },
-    [overflowManager],
+    [manager],
   );
 
   const registerOverflowMenu = React.useCallback(
     (el: HTMLElement) => {
-      overflowManager?.addOverflowMenu(el);
+      manager?.addOverflowMenu(el);
+      overflowMenuRef.current = el;
       el.setAttribute(DATA_OVERFLOW_MENU, '');
 
       return () => {
-        overflowManager?.removeOverflowMenu();
+        if (overflowMenuRef.current === el) {
+          manager?.removeOverflowMenu();
+          overflowMenuRef.current = null;
+        }
         el.removeAttribute(DATA_OVERFLOW_MENU);
       };
     },
-    [overflowManager],
+    [manager],
   );
 
   const updateOverflow = React.useCallback(() => {
-    overflowManager?.update();
-  }, [overflowManager]);
+    manager?.update();
+  }, [manager]);
 
   return {
     registerItem,
