@@ -15,7 +15,7 @@ export type {
 export { MenuTrigger, useMenuTrigger, renderMenuTrigger } from './MenuTrigger';
 export type { MenuTriggerProps, MenuTriggerState, MenuTriggerChildProps } from '@fluentui/react-menu';
 
-export { MenuList, useMenuList, renderMenuList } from './MenuList';
+export { MenuList, useMenuList, useMenuListContextValues, renderMenuList } from './MenuList';
 export type { MenuListProps, MenuListState, MenuListSlots } from './MenuList';
 
 export { MenuItem, useMenuItem, renderMenuItem } from './MenuItem';
