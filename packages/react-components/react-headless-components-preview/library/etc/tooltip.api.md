@@ -6,9 +6,9 @@
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
-import type { TooltipBaseProps } from '@fluentui/react-tooltip';
-import type { TooltipBaseState } from '@fluentui/react-tooltip';
+import type { TooltipProps as TooltipProps_2 } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
+import type { TooltipState as TooltipState_2 } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
 
 export { OnVisibleChangeData }
@@ -23,12 +23,12 @@ export const Tooltip: {
 };
 
 // @public
-export type TooltipProps = Omit<TooltipBaseProps, 'mountNode'>;
+export type TooltipProps = Omit<TooltipProps_2, 'appearance' | 'mountNode'>;
 
 export { TooltipSlots }
 
 // @public
-export type TooltipState = Omit<TooltipBaseState, 'mountNode'>;
+export type TooltipState = Omit<TooltipState_2, 'appearance' | 'mountNode'>;
 
 export { TooltipTriggerProps }
 
