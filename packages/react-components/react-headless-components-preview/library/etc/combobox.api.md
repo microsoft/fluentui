@@ -7,6 +7,7 @@
 import type { BaseComboboxProps } from '@fluentui/react-combobox';
 import type { BaseComboboxState } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import { ListboxContextValues as ListboxContextValues_2 } from '@fluentui/react-combobox';
@@ -26,6 +27,8 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public (undocumented)
 export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode'>;
+
+export { ComboboxSlots }
 
 // @public (undocumented)
 export type ComboboxState = BaseComboboxState & {
