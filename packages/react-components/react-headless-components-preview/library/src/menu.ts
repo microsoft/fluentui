@@ -9,6 +9,7 @@ export {
   renderMenuTrigger,
   MenuList,
   useMenuList,
+  useMenuListContextValues,
   renderMenuList,
   MenuItem,
   useMenuItem,
