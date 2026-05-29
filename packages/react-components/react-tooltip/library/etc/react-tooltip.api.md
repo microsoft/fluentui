@@ -21,16 +21,10 @@ export type OnVisibleChangeData = {
 };
 
 // @public
-export const renderTooltip_unstable: (state: TooltipBaseState) => JSXElement;
+export const renderTooltip_unstable: (state: TooltipState) => JSXElement;
 
 // @public
 export const Tooltip: React_2.FC<TooltipProps>;
-
-// @public (undocumented)
-export type TooltipBaseProps = Omit<TooltipProps, 'appearance'>;
-
-// @public (undocumented)
-export type TooltipBaseState = Omit<TooltipState, 'appearance'>;
 
 // @public (undocumented)
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;
@@ -67,9 +61,6 @@ export type TooltipTriggerProps = {
 
 // @public
 export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
-
-// @public
-export const useTooltipBase_unstable: (props: TooltipBaseProps) => TooltipBaseState;
 
 // @public
 export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
