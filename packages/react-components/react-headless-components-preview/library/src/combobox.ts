@@ -15,6 +15,7 @@ export {
   useOptionGroup,
 } from './components/Combobox';
 export type {
+  ComboboxSlots,
   ComboboxProps,
   ComboboxState,
   ListboxSlots,

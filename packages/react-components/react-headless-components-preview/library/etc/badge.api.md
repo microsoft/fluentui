@@ -6,6 +6,7 @@
 
 import type { BadgeBaseProps } from '@fluentui/react-badge';
 import { BadgeBaseState } from '@fluentui/react-badge';
+import type { BadgeSlots as BadgeSlots_2 } from '@fluentui/react-badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
@@ -15,6 +16,9 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 
 // @public
 export type BadgeProps = BadgeBaseProps;
+
+// @public
+export type BadgeSlots = BadgeSlots_2;
 
 // @public
 export type BadgeState = BadgeBaseState & {
