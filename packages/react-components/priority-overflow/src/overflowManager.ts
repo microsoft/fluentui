@@ -11,11 +11,28 @@ import type {
   OverflowDividerEntry,
 } from './types';
 
+const DEFAULT_OPTIONS: Required<ObserveOptions> = {
+  overflowAxis: 'horizontal',
+  overflowDirection: 'end',
+  padding: 10,
+  minimumVisible: 0,
+  hasHiddenItems: false,
+  onUpdateItemVisibility: () => {
+    /* noop */
+  },
+  onUpdateOverflow: () => {
+    /* noop */
+  },
+};
+
 /**
+ * Creates an overflow manager instance for a single container.
+ *
  * @internal
+ * @param initialOptions - Initial observe options. Missing values are filled with defaults.
  * @returns overflow manager instance
  */
-export function createOverflowManager(): OverflowManager {
+export function createOverflowManager(initialOptions: Partial<ObserveOptions> = {}): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
@@ -26,19 +43,12 @@ export function createOverflowManager(): OverflowManager {
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
-  const options: Required<ObserveOptions> = {
-    padding: 10,
-    overflowAxis: 'horizontal',
-    overflowDirection: 'end',
-    minimumVisible: 0,
-    onUpdateItemVisibility: () => undefined,
-    onUpdateOverflow: () => undefined,
-    hasHiddenItems: false,
-  };
-
+  const options: Required<ObserveOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
-  let disposeResizeObserver: () => void = () => null;
+  let disposeResizeObserver: () => void = () => {
+    /* noop */
+  };
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
@@ -205,27 +215,70 @@ export function createOverflowManager(): OverflowManager {
 
   const update: OverflowManager['update'] = debounce(forceUpdate);
 
+  const setOptions: OverflowManager['setOptions'] = nextOptions => {
+    if (options === nextOptions) {
+      return;
+    }
+
+    const shouldTriggerUpdate =
+      (nextOptions.overflowAxis && options.overflowAxis !== nextOptions.overflowAxis) ||
+      (nextOptions.overflowDirection && options.overflowDirection !== nextOptions.overflowDirection) ||
+      (nextOptions.padding && options.padding !== nextOptions.padding) ||
+      (nextOptions.minimumVisible && options.minimumVisible !== nextOptions.minimumVisible) ||
+      (nextOptions.hasHiddenItems && options.hasHiddenItems !== nextOptions.hasHiddenItems);
+
+    Object.assign(options, nextOptions);
+
+    if (shouldTriggerUpdate) {
+      forceDispatch = true;
+      update();
+    }
+  };
+
   const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
-    Object.assign(options, userOptions);
-    observing = true;
-    Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
+    if (userOptions) {
+      Object.assign(options, userOptions);
+    }
+    Object.values(overflowItems).forEach(item => {
+      if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
+        visibleItemQueue.enqueue(item.id);
+      }
+    });
 
     container = observedContainer;
+    observing = true;
     disposeResizeObserver = observeResize(container, entries => {
       if (!entries[0] || !container) {
         return;
       }
-
       update();
     });
   };
 
-  const addItem: OverflowManager['addItem'] = item => {
-    if (overflowItems[item.id]) {
+  const disconnect: OverflowManager['disconnect'] = () => {
+    disposeResizeObserver();
+    disposeResizeObserver = () => {
+      /* noop */
+    };
+
+    // reset flags
+    container = undefined;
+    observing = false;
+    forceDispatch = true;
+
+    // clear all entries
+    Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
+    Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
+    removeOverflowMenu();
+    sizeCache.clear();
+  };
+
+  const addItem: OverflowManager['addItem'] = items => {
+    if (overflowItems[items.id]) {
       return;
     }
 
-    overflowItems[item.id] = item;
+    overflowItems[items.id] = items;
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
@@ -233,15 +286,14 @@ export function createOverflowManager(): OverflowManager {
       // i.e. new element is enqueued but the top of the queue stays the same
       // force a dispatch on the next batched update
       forceDispatch = true;
-      visibleItemQueue.enqueue(item.id);
+      visibleItemQueue.enqueue(items.id);
+      update();
     }
 
-    if (item.groupId) {
-      groupManager.addItem(item.id, item.groupId);
-      item.element.setAttribute(DATA_OVERFLOW_GROUP, item.groupId);
+    if (items.groupId) {
+      groupManager.addItem(items.id, items.groupId);
+      items.element.setAttribute(DATA_OVERFLOW_GROUP, items.groupId);
     }
-
-    update();
   };
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
@@ -294,22 +346,9 @@ export function createOverflowManager(): OverflowManager {
 
     sizeCache.delete(item.element);
     delete overflowItems[itemId];
-    update();
-  };
-
-  const disconnect: OverflowManager['disconnect'] = () => {
-    disposeResizeObserver();
-
-    // reset flags
-    container = undefined;
-    observing = false;
-    forceDispatch = true;
-
-    // clear all entries
-    Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
-    Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
-    removeOverflowMenu();
-    sizeCache.clear();
+    if (observing) {
+      update();
+    }
   };
 
   return {
@@ -323,6 +362,7 @@ export function createOverflowManager(): OverflowManager {
     removeOverflowMenu,
     addDivider,
     removeDivider,
+    setOptions,
   };
 }
 
