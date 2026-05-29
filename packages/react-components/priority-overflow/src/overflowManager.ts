@@ -219,21 +219,17 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     if (options === nextOptions) {
       return;
     }
-    const previousAxis = options.overflowAxis;
-    const previousDirection = options.overflowDirection;
-    const previousPadding = options.padding;
-    const previousMinimumVisible = options.minimumVisible;
-    const previousHasHiddenItems = options.hasHiddenItems;
+
+    const shouldTriggerUpdate =
+      (nextOptions.overflowAxis && options.overflowAxis !== nextOptions.overflowAxis) ||
+      (nextOptions.overflowDirection && options.overflowDirection !== nextOptions.overflowDirection) ||
+      (nextOptions.padding && options.padding !== nextOptions.padding) ||
+      (nextOptions.minimumVisible && options.minimumVisible !== nextOptions.minimumVisible) ||
+      (nextOptions.hasHiddenItems && options.hasHiddenItems !== nextOptions.hasHiddenItems);
 
     Object.assign(options, nextOptions);
 
-    if (
-      previousAxis !== options.overflowAxis ||
-      previousDirection !== options.overflowDirection ||
-      previousPadding !== options.padding ||
-      previousMinimumVisible !== options.minimumVisible ||
-      previousHasHiddenItems !== options.hasHiddenItems
-    ) {
+    if (shouldTriggerUpdate) {
       forceDispatch = true;
       update();
     }

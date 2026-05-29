@@ -93,6 +93,23 @@ describe('overflowManager', () => {
     expect(dispatch.invisibleItems.map(item => item.id)).toEqual(['b']);
   });
 
+  it('should not re-dispatch when setOptions is called with a partial that does not change anything', () => {
+    const onUpdateOverflow = jest.fn();
+    const options = createObserveOptions({ onUpdateOverflow });
+    const manager = createOverflowManager(options);
+    const container = createContainer(100);
+    const itemA = createElementWithSize('button', 40);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.observe(container, options);
+    manager.forceUpdate();
+
+    onUpdateOverflow.mockClear();
+    manager.setOptions({ padding: 10 }); // padding is already 10; no real change
+
+    expect(onUpdateOverflow).not.toHaveBeenCalled();
+  });
+
   it('disconnect stops observation and re-observe restarts dispatching', () => {
     const onUpdateOverflow = jest.fn();
     const options = createObserveOptions({ onUpdateOverflow });
