@@ -101,6 +101,8 @@ interface Reach {
   all: ReadonlySet<string>;
 }
 
+type SymbolReach = Reach & { viaFile: string };
+
 /**
  * Per-Program cache: source file path → reach sets transitively computed from that file.
  * Both `value` and `all` sets are filled in a single DFS pass to share resolution work.
@@ -278,9 +280,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
      * Returns `null` (and flips the `typedServicesNeededButMissing` flag) when typed services
      * aren't available, so the caller can silently skip and we can warn once on `Program:exit`.
      */
-    function computeSymbolReach(
-      origin: TrackedImport,
-    ): { value: ReadonlySet<string>; all: ReadonlySet<string>; viaFile: string } | null {
+    function computeSymbolReach(origin: TrackedImport): SymbolReach | null {
       const services = getTypedServices();
       if (!services) {
         typedServicesNeededButMissing = true;
@@ -292,16 +292,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         return null;
       }
 
-      // For an ImportSpecifier we want the imported (right-hand) identifier so the symbol resolves to
-      // the exported name on the source module, not the local alias.
-      let nameNode: ts.Node | undefined;
-      if (ts.isImportSpecifier(tsNode)) {
-        nameNode = tsNode.propertyName ?? tsNode.name;
-      } else if (ts.isImportClause(tsNode) || ts.isNamespaceImport(tsNode)) {
-        nameNode = tsNode.name;
-      } else {
-        nameNode = tsNode;
-      }
+      const nameNode = getImportSymbolNameNode(tsNode);
       if (!nameNode) {
         return null;
       }
@@ -356,7 +347,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
         if (specTypeOnly && allowTypeImports) {
           return;
         }
-        const importedName = getImportedName(specifier as ImportSpecifierNode);
+        const importedName = getImportedName(specifier);
         if (importedName === undefined) {
           return;
         }
@@ -366,7 +357,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
             importedName,
             kind,
             isTypeOnly: specTypeOnly,
-            specifier: specifier as ImportSpecifierNode,
+            specifier,
           });
         }
       });
@@ -416,6 +407,20 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<Options, MessageId
 // ---------------------------------------------------------------------------
 // Import-specifier helpers
 // ---------------------------------------------------------------------------
+
+/**
+ * Resolves the identifier node that should be used for symbol lookup from a TS import node.
+ * For named imports, this returns the imported name (right-hand side), not the local alias.
+ */
+function getImportSymbolNameNode(tsNode: ts.Node): ts.Node | undefined {
+  if (ts.isImportSpecifier(tsNode)) {
+    return tsNode.propertyName ?? tsNode.name;
+  }
+  if (ts.isImportClause(tsNode) || ts.isNamespaceImport(tsNode)) {
+    return tsNode.name;
+  }
+  return tsNode;
+}
 
 function getImportedName(specifier: ImportSpecifierNode): string | undefined {
   switch (specifier.type) {
@@ -615,10 +620,9 @@ function collectImports(sourceFile: ts.SourceFile): ImportEdge[] {
 // ---------------------------------------------------------------------------
 
 /**
- * Resolves `specifier` (as used in `sourceFile`) to an absolute file path using the same algorithm
- * the host TS Program uses. Prefers the (faster) `program.getResolvedModule` API exposed in TS ≥ 5.3
- * and falls back to `ts.resolveModuleName` for older toolchains. Returns `undefined` if the module
- * cannot be resolved (e.g. ambient declarations, broken paths).
+ * Resolves `specifier` (as used in `sourceFile`) to an absolute file path using TS Program module
+ * resolution APIs available in TypeScript >= 5.3. Returns `undefined` if the module cannot be
+ * resolved (e.g. ambient declarations, broken paths).
  */
 function resolveModule(
   program: ts.Program,
@@ -626,7 +630,6 @@ function resolveModule(
   specifier: string,
   literal: ts.StringLiteralLike,
 ): string | undefined {
-  // TS ≥ 5.3 exposes program.getResolvedModule
   const getResolvedModule = (
     program as unknown as {
       getResolvedModule?: (
@@ -636,33 +639,18 @@ function resolveModule(
       ) => { resolvedModule?: ts.ResolvedModuleFull } | undefined;
     }
   ).getResolvedModule;
+  if (typeof getResolvedModule !== 'function') {
+    return undefined;
+  }
+
   const mode = (
     ts as unknown as {
       getModeForUsageLocation?: (file: ts.SourceFile, usage: ts.StringLiteralLike) => ts.ResolutionMode;
     }
   ).getModeForUsageLocation?.(sourceFile, literal);
 
-  if (typeof getResolvedModule === 'function') {
-    const resolutionResult = getResolvedModule.call(program, sourceFile, specifier, mode);
-    if (resolutionResult?.resolvedModule) {
-      return resolutionResult.resolvedModule.resolvedFileName;
-    }
-  }
-
-  // Fallback for older TS: use ts.resolveModuleName against the compiler host.
-  const compilerOptions = program.getCompilerOptions();
-  const host =
-    (program as unknown as { getCompilerHost?: () => ts.ModuleResolutionHost }).getCompilerHost?.() ?? ts.sys;
-  const result = ts.resolveModuleName(
-    specifier,
-    sourceFile.fileName,
-    compilerOptions,
-    host as ts.ModuleResolutionHost,
-    undefined,
-    undefined,
-    mode,
-  );
-  return result.resolvedModule?.resolvedFileName;
+  const resolutionResult = getResolvedModule.call(program, sourceFile, specifier, mode);
+  return resolutionResult?.resolvedModule?.resolvedFileName;
 }
 
 /**
