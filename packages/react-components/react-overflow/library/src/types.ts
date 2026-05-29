@@ -5,9 +5,18 @@ import type { OverflowContextValue } from './overflowContext';
  * @internal
  */
 export interface UseOverflowContainerReturn<TElement extends HTMLElement>
-  extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
+  extends Pick<
+    OverflowContextValue,
+    | 'registerItem'
+    | 'updateOverflow'
+    | 'forceUpdateOverflow'
+    | 'registerOverflowMenu'
+    | 'registerDivider'
+    | 'getSnapshot'
+    | 'subscribe'
+  > {
   /**
-   * Ref to apply to the container that will overflow
+   * Ref callback to apply to the container that will overflow
    */
   containerRef: React.RefObject<TElement | null>;
 }

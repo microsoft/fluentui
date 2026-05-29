@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { OverflowManager } from '@fluentui/priority-overflow';
 import { renderHook } from '@testing-library/react-hooks';
 import { useOverflowVisibility } from './useOverflowVisibility';
 import type { OverflowContextValue } from './overflowContext';
@@ -17,14 +18,28 @@ describe('useOverflowVisibility', () => {
       bar: true,
       baz: false,
     } as const;
+    const snapshot = {
+      hasOverflow: true,
+      overflowCount: 1,
+      itemVisibility,
+      groupVisibility,
+    };
+    const getSnapshot = jest.fn(() => snapshot);
+    const subscribe = jest.fn(() => () => undefined);
+
+    const manager = {
+      getSnapshot,
+      subscribe,
+    } as unknown as OverflowManager;
     const Wrapper: React.FC = props => {
       return (
         <OverflowContext.Provider
           {...props}
           value={
             {
-              groupVisibility,
-              itemVisibility,
+              manager,
+              getSnapshot,
+              subscribe,
             } as unknown as OverflowContextValue
           }
         />

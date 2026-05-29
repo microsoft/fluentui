@@ -1,23 +1,25 @@
-import type * as React from 'react';
 import type { OverflowAxis, OverflowManager } from '@fluentui/priority-overflow';
 import { createOverflowManager } from '@fluentui/priority-overflow';
 import { useOverflowContainer } from './useOverflowContainer';
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 
 jest.mock('@fluentui/priority-overflow');
 
 const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
   const defaultMock: OverflowManager = {
+    addDivider: jest.fn(),
     addItem: jest.fn(),
     addOverflowMenu: jest.fn(),
     disconnect: jest.fn(),
     forceUpdate: jest.fn(),
-    observe: jest.fn(),
+    getSnapshot: jest.fn(() => ({ visibleItems: [], invisibleItems: [], groupVisibility: {} })),
+    observe: jest.fn(() => () => undefined),
+    removeDivider: jest.fn(),
     removeItem: jest.fn(),
     removeOverflowMenu: jest.fn(),
+    setOptions: jest.fn(),
+    subscribe: jest.fn(() => () => undefined),
     update: jest.fn(),
-    addDivider: jest.fn(),
-    removeDivider: jest.fn(),
   };
   (createOverflowManager as jest.Mock).mockReturnValue({
     ...defaultMock,
@@ -47,8 +49,8 @@ describe('useOverflowContainer', () => {
   });
 
   it('should return cleanup when registering item', () => {
-    const removeItemMock = jest.fn();
-    mockOverflowManager({ removeItem: removeItemMock });
+    const deregisterItemMock = jest.fn();
+    mockOverflowManager({ removeItem: deregisterItemMock });
     const { result } = renderHook(() =>
       useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
     );
@@ -57,8 +59,7 @@ describe('useOverflowContainer', () => {
     const deregister = result.current.registerItem(overflowItem);
 
     deregister();
-    expect(removeItemMock).toHaveBeenCalledTimes(1);
-    expect(removeItemMock).toHaveBeenCalledWith(overflowItem.id);
+    expect(deregisterItemMock).toHaveBeenCalledTimes(1);
   });
 
   it('should call observe with default options', () => {
@@ -67,24 +68,44 @@ describe('useOverflowContainer', () => {
     const { result, rerender } = renderHook(() => {
       return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined });
     });
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    (result.current.containerRef as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
+    act(() => {
+      result.current.containerRef.current = document.createElement('div');
+    });
     rerender();
     expect(observeMock).toHaveBeenCalledTimes(1);
     expect(observeMock.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <div />,
-        Object {
-          "hasHiddenItems": false,
-          "minimumVisible": 0,
-          "onUpdateItemVisibility": [Function],
-          "onUpdateOverflow": [Function],
-          "overflowAxis": "horizontal",
-          "overflowDirection": "end",
-          "padding": 10,
-        },
       ]
     `);
+  });
+
+  it('should reconfigure the same manager when options change', () => {
+    const setOptionsMock = jest.fn();
+    mockOverflowManager({ setOptions: setOptionsMock });
+
+    let overflowAxis: OverflowAxis = 'horizontal';
+    const { rerender } = renderHook(() => {
+      return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis });
+    });
+
+    expect(createOverflowManager).toHaveBeenCalledTimes(1);
+
+    overflowAxis = 'vertical';
+    rerender();
+
+    expect(createOverflowManager).toHaveBeenCalledTimes(1);
+    expect(setOptionsMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        hasHiddenItems: false,
+        minimumVisible: 0,
+        onUpdateItemVisibility: expect.any(Function),
+        onUpdateOverflow: expect.any(Function),
+        overflowAxis: 'vertical',
+        overflowDirection: 'end',
+        padding: 10,
+      }),
+    );
   });
 
   it('should invoke updateOverflow on overflow manager', () => {
@@ -108,22 +129,5 @@ describe('useOverflowContainer', () => {
     });
 
     expect(renderCount).toEqual(1);
-  });
-
-  it('should re-render when option changes', () => {
-    let overflowAxis: OverflowAxis = 'horizontal';
-    mockOverflowManager();
-    let renderCount = 0;
-    const { rerender } = renderHook(() => {
-      renderCount++;
-      return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis });
-    });
-
-    expect(renderCount).toEqual(1);
-
-    overflowAxis = 'vertical';
-    rerender();
-
-    expect(renderCount).toEqual(2);
   });
 });

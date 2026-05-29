@@ -4,11 +4,11 @@
 
 ```ts
 
-import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
-import { OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowEventPayload } from '@fluentui/priority-overflow';
+import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
@@ -72,12 +72,15 @@ export function useIsOverflowItemVisible(id: string): boolean;
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, "onUpdateOverflow">) => UseOverflowContainerReturn<TElement>;
 
 // @internal (undocumented)
-export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
+export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'forceUpdateOverflow' | 'registerOverflowMenu' | 'registerDivider' | 'getSnapshot' | 'subscribe'> {
     containerRef: React_2.RefObject<TElement | null>;
 }
 
 // @internal (undocumented)
-export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
+export const useOverflowContext: {
+    <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>): SelectedValue;
+    (): OverflowContextValue;
+};
 
 // @public (undocumented)
 export const useOverflowCount: () => number;

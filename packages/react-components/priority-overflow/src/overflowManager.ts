@@ -9,13 +9,27 @@ import type {
   OverflowManager,
   ObserveOptions,
   OverflowDividerEntry,
+  OverflowEventPayload,
 } from './types';
 
+const DEFAULT_OPTIONS: Required<ObserveOptions> = {
+  overflowAxis: 'horizontal',
+  overflowDirection: 'end',
+  padding: 10,
+  minimumVisible: 0,
+  hasHiddenItems: false,
+  onUpdateItemVisibility: () => null,
+  onUpdateOverflow: () => null,
+};
+
 /**
+ * Creates an overflow manager instance for a single container.
+ *
  * @internal
+ * @param initialOptions - Initial observe options. Missing values are filled with defaults.
  * @returns overflow manager instance
  */
-export function createOverflowManager(): OverflowManager {
+export function createOverflowManager(initialOptions: Partial<ObserveOptions> = {}): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
@@ -26,19 +40,22 @@ export function createOverflowManager(): OverflowManager {
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
-  const options: Required<ObserveOptions> = {
-    padding: 10,
-    overflowAxis: 'horizontal',
-    overflowDirection: 'end',
-    minimumVisible: 0,
-    onUpdateItemVisibility: () => undefined,
-    onUpdateOverflow: () => undefined,
-    hasHiddenItems: false,
-  };
-
+  const options: Required<ObserveOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
+  const listeners = new Set<() => void>();
   let disposeResizeObserver: () => void = () => null;
+
+  let snapshot: OverflowEventPayload = {
+    visibleItems: [],
+    invisibleItems: [],
+    groupVisibility: {},
+  };
+  const takeSnapshot = (nextSnapshot: OverflowEventPayload) => {
+    snapshot = nextSnapshot;
+    options.onUpdateOverflow(snapshot);
+    listeners.forEach(listener => listener());
+  };
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
@@ -149,8 +166,14 @@ export function createOverflowManager(): OverflowManager {
     const visibleItems = visibleItemIds.map(itemId => overflowItems[itemId]);
     const invisibleItems = invisibleItemIds.map(itemId => overflowItems[itemId]);
 
-    options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility: groupManager.groupVisibility() });
+    takeSnapshot({
+      visibleItems,
+      invisibleItems,
+      groupVisibility: groupManager.groupVisibility(),
+    });
   };
+
+  const getSnapshot: OverflowManager['getSnapshot'] = () => snapshot;
 
   const processOverflowItems = (): boolean => {
     if (!container) {
@@ -205,12 +228,16 @@ export function createOverflowManager(): OverflowManager {
 
   const update: OverflowManager['update'] = debounce(forceUpdate);
 
-  const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
-    Object.assign(options, userOptions);
-    observing = true;
-    Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
+  const reconnectObserver = () => {
+    disposeResizeObserver();
+    disposeResizeObserver = () => null;
 
-    container = observedContainer;
+    if (!container) {
+      observing = false;
+      return;
+    }
+
+    observing = true;
     disposeResizeObserver = observeResize(container, entries => {
       if (!entries[0] || !container) {
         return;
@@ -220,7 +247,82 @@ export function createOverflowManager(): OverflowManager {
     });
   };
 
-  const addItem: OverflowManager['addItem'] = item => {
+  const setOptions: OverflowManager['setOptions'] = nextOptions => {
+    if (options === nextOptions) return;
+    const previousAxis = options.overflowAxis;
+    const previousDirection = options.overflowDirection;
+    const previousPadding = options.padding;
+    const previousMinimumVisible = options.minimumVisible;
+    const previousHasHiddenItems = options.hasHiddenItems;
+
+    Object.assign(options, nextOptions);
+
+    if (
+      previousAxis !== options.overflowAxis ||
+      previousDirection !== options.overflowDirection ||
+      previousPadding !== options.padding ||
+      previousMinimumVisible !== options.minimumVisible ||
+      previousHasHiddenItems !== options.hasHiddenItems
+    ) {
+      forceDispatch = true;
+      update();
+    }
+  };
+
+  const connectContainer = (nextContainer: HTMLElement | null) => {
+    if (container === nextContainer) {
+      return;
+    }
+
+    container = nextContainer ?? undefined;
+    reconnectObserver();
+
+    if (container) {
+      Object.values(overflowItems).forEach(item => {
+        if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
+          visibleItemQueue.enqueue(item.id);
+        }
+      });
+      forceDispatch = true;
+      update();
+    }
+  };
+
+  let observeCleanup: () => void = () => null;
+
+  const observe: OverflowManager['observe'] = observedContainer => {
+    Object.values(overflowItems).forEach(item => {
+      if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
+        visibleItemQueue.enqueue(item.id);
+      }
+    });
+
+    connectContainer(observedContainer);
+
+    const cleanup = () => {
+      if (container !== observedContainer) {
+        return;
+      }
+
+      disposeResizeObserver();
+      disposeResizeObserver = () => null;
+      container = undefined;
+      observing = false;
+      forceDispatch = true;
+      takeSnapshot({
+        visibleItems: [],
+        invisibleItems: [],
+        groupVisibility: {},
+      });
+    };
+
+    observeCleanup = cleanup;
+    return cleanup;
+  };
+
+  const disconnect: OverflowManager['disconnect'] = () => observeCleanup();
+
+  const addItem = (item: OverflowItemEntry) => {
     if (overflowItems[item.id]) {
       return;
     }
@@ -234,21 +336,25 @@ export function createOverflowManager(): OverflowManager {
       // force a dispatch on the next batched update
       forceDispatch = true;
       visibleItemQueue.enqueue(item.id);
+      update();
     }
 
     if (item.groupId) {
       groupManager.addItem(item.id, item.groupId);
       item.element.setAttribute(DATA_OVERFLOW_GROUP, item.groupId);
     }
-
-    update();
   };
 
-  const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
+  const addOverflowMenu = (el: HTMLElement) => {
     overflowMenu = el;
+
+    if (observing) {
+      forceDispatch = true;
+      update();
+    }
   };
 
-  const addDivider: OverflowManager['addDivider'] = divider => {
+  const addDivider = (divider: OverflowDividerEntry) => {
     if (!divider.groupId || overflowDividers[divider.groupId]) {
       return;
     }
@@ -257,11 +363,16 @@ export function createOverflowManager(): OverflowManager {
     overflowDividers[divider.groupId] = divider;
   };
 
-  const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
+  const removeOverflowMenu = () => {
     overflowMenu = undefined;
+
+    if (observing) {
+      forceDispatch = true;
+      update();
+    }
   };
 
-  const removeDivider: OverflowManager['removeDivider'] = groupId => {
+  const removeDivider = (groupId: string) => {
     if (!overflowDividers[groupId]) {
       return;
     }
@@ -294,35 +405,33 @@ export function createOverflowManager(): OverflowManager {
 
     sizeCache.delete(item.element);
     delete overflowItems[itemId];
-    update();
+    if (observing) {
+      update();
+    }
   };
 
-  const disconnect: OverflowManager['disconnect'] = () => {
-    disposeResizeObserver();
+  const subscribe: OverflowManager['subscribe'] = listener => {
+    listeners.add(listener);
 
-    // reset flags
-    container = undefined;
-    observing = false;
-    forceDispatch = true;
-
-    // clear all entries
-    Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
-    Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
-    removeOverflowMenu();
-    sizeCache.clear();
+    return () => {
+      listeners.delete(listener);
+    };
   };
 
   return {
+    addDivider,
     addItem,
+    addOverflowMenu,
     disconnect,
     forceUpdate,
+    getSnapshot,
     observe,
-    removeItem,
-    update,
-    addOverflowMenu,
-    removeOverflowMenu,
-    addDivider,
     removeDivider,
+    removeItem,
+    removeOverflowMenu,
+    setOptions,
+    subscribe,
+    update,
   };
 }
 

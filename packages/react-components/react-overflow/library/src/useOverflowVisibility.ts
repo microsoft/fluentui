@@ -1,7 +1,9 @@
 'use client';
 
+import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import * as React from 'react';
-import { useOverflowContext } from './overflowContext';
+import { _overflowPayloadToState } from './components/Overflow';
+import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
  * A hook that returns the visibility status of all items and groups.
@@ -14,10 +16,8 @@ import { useOverflowContext } from './overflowContext';
  */
 export function useOverflowVisibility(): {
   itemVisibility: Record<string, boolean>;
-  groupVisibility: Record<string, import('@fluentui/priority-overflow').OverflowGroupState>;
+  groupVisibility: Record<string, OverflowGroupState>;
 } {
-  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
-  const groupVisibility = useOverflowContext(ctx => ctx.groupVisibility);
-
-  return React.useMemo(() => ({ itemVisibility, groupVisibility }), [itemVisibility, groupVisibility]);
+  const snapshot = useOverflowSnapshot();
+  return React.useMemo(() => _overflowPayloadToState(snapshot), [snapshot]);
 }
