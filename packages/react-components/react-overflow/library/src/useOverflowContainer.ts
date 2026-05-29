@@ -72,9 +72,22 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
       managerRef.current.observe(containerRef.current);
-      // Force a synchronous overflow computation so the first painted frame already
-      // reflects the final visible/invisible split instead of flashing all items.
-      managerRef.current.forceUpdate();
+      /**
+       * FIXME: Ideally this measurement guard would live
+       * inside the manager (alongside the rest of the overflow logic),
+       * and that is most likely where it should eventually move.
+       * It lives here, at the call site, only to preserve previous behavior and
+       * avoid regressions: `forceUpdate`(and the `update` it backs) is also
+       * invoked by addItem / addOverflowMenu / setOptions / ResizeObserver —
+       * all pre-existing paths.
+       * Gating it inside the manager would change those long-standing behaviors too
+       * (e.g. it would suppress the collapsed state some downstream snapshots already encode).
+       * Only this first-paint call is new,
+       * so for now only this call is conditioned on the container being measured.
+       */
+      if (containerRef.current.clientWidth > 0 || containerRef.current.clientHeight > 0) {
+        managerRef.current.forceUpdate();
+      }
       return () => managerRef.current?.disconnect();
     }
   }, []);

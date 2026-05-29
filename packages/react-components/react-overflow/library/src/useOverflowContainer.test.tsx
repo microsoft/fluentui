@@ -93,7 +93,30 @@ describe('useOverflowContainer', () => {
     expect(observeMock).toHaveBeenCalledWith(getByTestId('container'));
   });
 
-  it('should force a synchronous overflow update immediately after observation starts', () => {
+  it('should force a synchronous overflow update after observation starts when the container is measured', () => {
+    const clientWidthSpy = jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
+    try {
+      const forceUpdateMock = jest.fn();
+      const observeMock = jest.fn();
+      mockOverflowManager({ observe: observeMock, forceUpdate: forceUpdateMock });
+
+      const TestComponent: React.FC = () => {
+        const { containerRef } = useOverflowContainer<HTMLDivElement>(() => undefined, {
+          onUpdateItemVisibility: () => undefined,
+        });
+        return <div ref={containerRef} />;
+      };
+
+      render(<TestComponent />);
+      expect(forceUpdateMock).toHaveBeenCalledTimes(1);
+      expect(observeMock).toHaveBeenCalledTimes(1);
+      expect(observeMock.mock.invocationCallOrder[0]).toBeLessThan(forceUpdateMock.mock.invocationCallOrder[0]);
+    } finally {
+      clientWidthSpy.mockRestore();
+    }
+  });
+
+  it('should not force an overflow update before the container has been measured', () => {
     const forceUpdateMock = jest.fn();
     const observeMock = jest.fn();
     mockOverflowManager({ observe: observeMock, forceUpdate: forceUpdateMock });
@@ -105,10 +128,11 @@ describe('useOverflowContainer', () => {
       return <div ref={containerRef} />;
     };
 
+    // jsdom reports 0 sizes; the first-paint force is skipped so nothing collapses against a
+    // degenerate measurement. The ResizeObserver drives the first real pass instead.
     render(<TestComponent />);
-    expect(forceUpdateMock).toHaveBeenCalledTimes(1);
     expect(observeMock).toHaveBeenCalledTimes(1);
-    expect(observeMock.mock.invocationCallOrder[0]).toBeLessThan(forceUpdateMock.mock.invocationCallOrder[0]);
+    expect(forceUpdateMock).not.toHaveBeenCalled();
   });
 
   it('should disconnect on unmount', () => {
