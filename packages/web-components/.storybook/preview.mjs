@@ -4,12 +4,9 @@ import prettierPluginHTML from 'prettier/parser-html.js';
 import webcomponentsTheme from './theme.mjs';
 
 import '../src/index-rollup.js';
-/* @ts-ignore-next-line - Vite supports CSS imports but TS expects type declarations */
-import './docs-root.css' with { type: 'css' };
+import './docs-root.css';
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
-const ARIA_ATTRIBUTE_PATTERN = /^aria(?:$|[-A-Z])/;
-const ARIA_ATTRIBUTES_CATEGORY = 'aria-attributes';
 
 const themes = {
   'web-light': webLightTheme,
@@ -79,41 +76,90 @@ export const decorators = [
 ];
 
 /** @param {{ argTypes?: Record<string, any> }} context */
-function withAriaAttributesCategory(context) {
+function withOrderedCategories(context) {
   if (!context.argTypes) {
     return context.argTypes;
   }
 
-  return Object.fromEntries(
-    Object.entries(context.argTypes).map(([key, argType]) => {
-      const argName = argType?.name;
-      const isAriaAttribute =
-        (typeof key === 'string' && ARIA_ATTRIBUTE_PATTERN.test(key)) ||
-        (typeof argName === 'string' && ARIA_ATTRIBUTE_PATTERN.test(argName));
+  console.log('UNFILTERED ARGTYPES KEYS:', Object.keys(context.argTypes));
+  console.log('UNFILTERED CATEGORIES:', Object.values(context.argTypes).map(a => a.table?.category));
 
-      if (!isAriaAttribute) {
-        return [key, argType];
+  /** @param {string | undefined} cat */
+  function getCategoryIndex(cat) {
+    if (!cat) return -1;
+    const clean = cat.toLowerCase().trim().replace(/[\s-_]+/g, '');
+    if (clean === 'attributes' || clean === 'attribute' || clean === 'ariaattributes') return 0;
+    if (clean === 'properties' || clean === 'property') return 1;
+    if (clean === 'slots' || clean === 'slot') return 2;
+    if (clean === 'csscustomproperties' || clean === 'csscustomproperty' || clean === 'cssprops' || clean === 'cssproperties' || clean === 'cssvariables' || clean === 'cssvariable') return 3;
+    if (clean === 'cssparts' || clean === 'csspart') return 4;
+    if (clean === 'cssstates' || clean === 'cssstate') return 5;
+    if (clean === 'methods' || clean === 'method') return 6;
+    if (clean === 'events' || clean === 'event') return 7;
+    return -1;
+  }
+
+  const sortedEntries = Object.entries(context.argTypes).sort(([aKey, aArg], [bKey, bArg]) => {
+    const aCategory = aArg.table?.category;
+    const bCategory = bArg.table?.category;
+
+    const aIndex = getCategoryIndex(aCategory);
+    const bIndex = getCategoryIndex(bCategory);
+
+    // If both have assigned indices, sort by index
+    if (aIndex !== -1 && bIndex !== -1) {
+      if (aIndex !== bIndex) {
+        return aIndex - bIndex;
       }
+    } else if (aIndex !== -1) {
+      return -1; // Standard categories with index come first
+    } else if (bIndex !== -1) {
+      return 1;
+    } else if (aCategory && bCategory) {
+      // Both are non-standard categories; sort them alphabetically
+      const catCompare = aCategory.localeCompare(bCategory);
+      if (catCompare !== 0) return catCompare;
+    } else if (aCategory) {
+      return -1;
+    } else if (bCategory) {
+      return 1;
+    }
 
-      return [
-        key,
-        {
-          ...argType,
-          table: {
-            ...argType?.table,
-            category: ARIA_ATTRIBUTES_CATEGORY,
-          },
-        },
-      ];
-    }),
-  );
+    // Within the same category index or name (or if neither has a category), sort alphabetically by key
+    return aKey.localeCompare(bKey);
+  });
+
+  const sortedResult = Object.fromEntries(sortedEntries);
+  console.log('SORTED ARGTYPES KEYS:', Object.keys(sortedResult));
+  console.log('SORTED CATEGORIES:', Object.values(sortedResult).map(a => a.table?.category));
+
+  return sortedResult;
 }
 
-export const argTypesEnhancers = [withAriaAttributesCategory];
+// Ensure withOrderedCategories is run after Storybook's built-in enhancers (inferArgTypes, inferControls)
+if (typeof window !== 'undefined') {
+  const alignEnhancers = () => {
+    const store = /** @type {any} */ (window)['__STORYBOOK_PREVIEW__']?.storyStoreValue;
+    if (store && store.projectAnnotations && store.projectAnnotations.argTypesEnhancers) {
+      const enhancers = store.projectAnnotations.argTypesEnhancers;
+      const idx = enhancers.findIndex((/** @type {any} */ e) => e.name === 'withOrderedCategories');
+      if (idx !== -1) {
+        // Move withOrderedCategories to the end of the array so it runs after inferArgTypes/inferControls
+        const [withOrdered] = enhancers.splice(idx, 1);
+        enhancers.push(withOrdered);
+      }
+    } else {
+      setTimeout(alignEnhancers, 10);
+    }
+  };
+  alignEnhancers();
+}
+
+export const argTypesEnhancers = [withOrderedCategories];
 
 export const parameters = {
   layout: 'fullscreen',
-  controls: { expanded: true },
+  controls: { expanded: true, sort: 'none' },
   viewMode: 'docs',
   previewTabs: {
     canvas: { hidden: true },
@@ -125,6 +171,10 @@ export const parameters = {
     },
   },
   docs: {
+    argTypes: { sort: 'none' },
+    stories: {
+      filter: (/** @type {any} */ story) => story.name.toLowerCase() === 'default',
+    },
     source: {
       // To get around the inability to change Prettier options in the source addon, this transform function
       // imports the standalone Prettier and uses it to format the source with the desired options.

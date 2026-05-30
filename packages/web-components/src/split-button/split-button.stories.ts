@@ -101,7 +101,7 @@ export default {
       options: ['', ...Object.values(ButtonAppearance)],
       mapping: { '': null, ...ButtonAppearance },
       table: {
-        category: 'button attributes',
+        category: 'attributes',
         type: { summary: Object.values(ButtonAppearance).join('|') },
       },
     },
@@ -111,7 +111,7 @@ export default {
       options: ['', ...Object.values(ButtonSize)],
       mapping: { '': null, ...ButtonSize },
       table: {
-        category: 'button attributes',
+        category: 'attributes',
         type: { summary: Object.values(ButtonSize).join('|') },
       },
     },
@@ -121,7 +121,7 @@ export default {
       options: ['', ...Object.values(ButtonShape)],
       mapping: { '': null, ...ButtonShape },
       table: {
-        category: 'button attributes',
+        category: 'attributes',
         type: { summary: Object.values(ButtonShape).join('|') },
       },
     },
