@@ -37,7 +37,11 @@ const readPaintPhaseSnapshot = (): PaintPhaseSnapshot => {
   };
 };
 
-const writePhaseSnapshot = (name: string, phase: 'layout' | 'effect' | 'raf1', snapshot: PaintPhaseSnapshot) => {
+const writePhaseSnapshot = (
+  name: string,
+  phase: 'layout' | 'effect' | 'raf1' | 'raf2',
+  snapshot: PaintPhaseSnapshot,
+) => {
   const probeRoot = document.querySelector<HTMLElement>(`[${selectors.probe}="${name}"]`);
   const phaseNode = probeRoot?.querySelector<HTMLElement>(`[${selectors.probePhase}="${phase}"]`);
 
@@ -122,6 +126,11 @@ const PaintPhaseProbe: React.FC<{ name: string }> = ({ name }) => {
 
     requestAnimationFrame(() => {
       writePhaseSnapshot(name, 'raf1', readPaintPhaseSnapshot());
+      // Second frame: used to assert the first-rAF snapshot is already settled (no drift),
+      // i.e. it is the converged value rather than a transient mid-convergence reading.
+      requestAnimationFrame(() => {
+        writePhaseSnapshot(name, 'raf2', readPaintPhaseSnapshot());
+      });
     });
   }, [name]);
 
@@ -136,6 +145,7 @@ const PaintPhaseProbeHarness: React.FC<{ name: string; children: React.ReactNode
         <pre {...{ [selectors.probePhase]: 'layout' }} />
         <pre {...{ [selectors.probePhase]: 'effect' }} />
         <pre {...{ [selectors.probePhase]: 'raf1' }} />
+        <pre {...{ [selectors.probePhase]: 'raf2' }} />
       </div>
       <PaintPhaseProbe name={name} />
     </>
@@ -147,23 +157,24 @@ const assertProbeConvergence = (name: string, expected: PaintPhaseSnapshot) => {
     expect($node.text(), 'raf1 snapshot marker').not.to.equal('');
   });
 
+  cy.get(`[${selectors.probe}="${name}"] [${selectors.probePhase}="raf2"]`).should($node => {
+    expect($node.text(), 'raf2 snapshot marker').not.to.equal('');
+  });
+
   cy.get(`[${selectors.probe}="${name}"]`).then($probe => {
-    const read = (phase: 'layout' | 'effect' | 'raf1') => {
+    const read = (phase: 'layout' | 'effect' | 'raf1' | 'raf2') => {
       const text = $probe.find(`[${selectors.probePhase}="${phase}"]`).text();
       return JSON.parse(text) as PaintPhaseSnapshot;
     };
 
-    const layout = read('layout');
-    const effect = read('effect');
     const raf1 = read('raf1');
-    const debugSnapshots = `layout=${JSON.stringify(layout)} effect=${JSON.stringify(effect)} raf1=${JSON.stringify(
-      raf1,
-    )}`;
+    const raf2 = read('raf2');
+    const debugSnapshots = `raf1=${JSON.stringify(raf1)} raf2=${JSON.stringify(raf2)}`;
 
-    expect(layout, `missing layout snapshot; ${debugSnapshots}`).to.exist;
-    expect(effect, `missing effect snapshot; ${debugSnapshots}`).to.exist;
-    expect(raf1, `missing first-raf snapshot; ${debugSnapshots}`).to.exist;
+    // First-paint correctness: the snapshot is already the expected final value by the first rAF.
     expect(raf1, `unexpected first-raf snapshot; ${debugSnapshots}`).to.deep.equal(expected);
+    // Convergence: the first-rAF value is settled, not a transient — it does not drift next frame.
+    expect(raf2, `first-raf snapshot drifted on the next frame; ${debugSnapshots}`).to.deep.equal(raf1);
   });
 };
 
@@ -219,21 +230,28 @@ describe('Overflow paint probe', () => {
   it('is already final by first rAF for an uneven-width initial-overflow case', { retries: 0 }, () => {
     mount(
       <PaintPhaseProbeHarness name="initial-overflow-uneven">
+        {/* Explicit, uneven, font-independent widths. Text-content widths vary with the host's
+            installed fonts (narrower on CI), shifting the overflow boundary and making the
+            expected snapshot non-deterministic across environments. */}
         <Container size={355}>
-          <Item width="unset" id="0">
+          <Item width={40} id="0">
             Item 0
           </Item>
-          <Item width="unset" id="1">
+          <Item width={55} id="1">
             Item 1
           </Item>
-          <Item width="unset" id="2">
+          <Item width={95} id="2">
             Super Long Item 2
           </Item>
-          <Item width="unset" id="3">
+          <Item width={70} id="3">
             3
           </Item>
-          <Item id="4">Item 4</Item>
-          <Item id="5">Item 5</Item>
+          <Item width={65} id="4">
+            Item 4
+          </Item>
+          <Item width={80} id="5">
+            Item 5
+          </Item>
           <Menu />
         </Container>
       </PaintPhaseProbeHarness>,
