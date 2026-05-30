@@ -24,6 +24,15 @@ export function useOverflowMenu<TElement extends HTMLElement>(
         forceUpdateOverflow();
       };
     }
+    /**
+     * `isOverflowing` is a re-run trigger.
+     * Consumers gate the menu element on it,
+     * so it stands in for "ref.current (re)attached".
+     *
+     * MAYBE: A callback ref would express this better,
+     * but that would change the public ref type and
+     * move logic earlier in the commit.
+     */
   }, [registerOverflowMenu, forceUpdateOverflow, isOverflowing, elementId]);
 
   return { ref, overflowCount, isOverflowing };
