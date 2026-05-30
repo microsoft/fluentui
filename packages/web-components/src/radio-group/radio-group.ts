@@ -10,6 +10,7 @@ import { BaseRadioGroup } from './radio-group.base.js';
  * @tag fluent-radio-group
  *
  * @slot - The default slot for the radio group
+ * @fires change - Fired when the selected radio changes.
  *
  * @public
  */

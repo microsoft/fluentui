@@ -84,6 +84,13 @@ export default {
         },
       },
     },
+    currentValue: {
+      control: 'text',
+      name: 'current-value',
+      table: { category: 'attributes' },
+      description: 'The current value representation used by the control.',
+      type: 'string',
+    },
     dirname: {
       control: 'text',
       table: { category: 'attributes' },
@@ -225,6 +232,16 @@ export default {
       control: false,
       description: 'The internal input control.',
       table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    change: {
+      control: false,
+      description: 'Fired when the input value is committed via a change event.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
+    select: {
+      control: false,
+      description: 'Fired when text is selected in the input control.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
     },
   },
 } as Meta<FluentTextInput>;

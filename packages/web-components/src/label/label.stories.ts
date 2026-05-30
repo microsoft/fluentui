@@ -61,6 +61,11 @@ export default {
       name: '',
       table: { category: 'slots', type: {} },
     },
+    asterisk: {
+      control: false,
+      description: 'The required-field asterisk indicator.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentLabel>;
 

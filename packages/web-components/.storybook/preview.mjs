@@ -4,7 +4,8 @@ import prettierPluginHTML from 'prettier/parser-html.js';
 import webcomponentsTheme from './theme.mjs';
 
 import '../src/index-rollup.js';
-import './docs-root.css';
+/* @ts-ignore-next-line - Vite supports CSS imports but TS expects type declarations */
+import './docs-root.css' with { type: 'css' };
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
 const ARIA_ATTRIBUTE_PATTERN = /^aria(?:$|[-A-Z])/;
@@ -77,6 +78,7 @@ export const decorators = [
   },
 ];
 
+/** @param {{ argTypes?: Record<string, any> }} context */
 function withAriaAttributesCategory(context) {
   if (!context.argTypes) {
     return context.argTypes;

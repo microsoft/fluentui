@@ -133,6 +133,11 @@ export default {
       name: 'dismiss',
       table: { category: 'slots', type: {} },
     },
+    dismiss: {
+      control: false,
+      description: 'Fired when the message bar is dismissed.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentMessageBar>;
 

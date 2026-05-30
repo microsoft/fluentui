@@ -130,6 +130,41 @@ export default {
       name: 'item',
       table: { category: 'slots', type: {} },
     },
+    'positioning-region': {
+      control: false,
+      description: 'The container for item content and aside regions.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    content: {
+      control: false,
+      description: 'The item content region.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    chevron: {
+      control: false,
+      description: 'The expand/collapse indicator region.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    aside: {
+      control: false,
+      description: 'The trailing aside region.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    items: {
+      control: false,
+      description: 'The child items group region.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    toggle: {
+      control: false,
+      description: 'Fired when expanded state toggles.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
+    change: {
+      control: false,
+      description: 'Fired when selected state changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentTreeItem>;
 

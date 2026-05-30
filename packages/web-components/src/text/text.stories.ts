@@ -61,6 +61,7 @@ export default {
   argTypes: {
     as: {
       control: 'select',
+      name: 'Text element',
       mapping: { '': null, ...['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span'] },
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span'],
       table: {

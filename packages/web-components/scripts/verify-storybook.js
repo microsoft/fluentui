@@ -18,9 +18,6 @@ const SKIPPED_STORIES = new Map([
   // Utility/demo stories that are not single-component API docs.
   ['src/theme/set-theme.stories.ts', 'theme utility story with many components'],
   ['src/theme/theme.stories.ts', 'token demo story without a component contract'],
-  // Tags currently not present in custom-elements.json.
-  ['src/accordion-item/accordion-item.stories.ts', 'no fluent-accordion-item tagName in CEM'],
-  ['src/anchor-button/anchor-button.stories.ts', 'no fluent-anchor-button tagName in CEM'],
 ]);
 
 const STORY_CATEGORY_TO_CEM = new Map([
@@ -59,6 +56,23 @@ const CATEGORY_LABELS = {
 const CORE_ALWAYS_VALIDATED_CATEGORIES = new Set(['attributes', 'slots', 'cssParts', 'events']);
 
 const readFile = filePath => fs.readFileSync(filePath, 'utf8');
+
+function derivePublicNameFromAttributeFieldName(fieldName) {
+  if (!fieldName || typeof fieldName !== 'string') {
+    return undefined;
+  }
+
+  if (fieldName.endsWith('Attribute') && fieldName.length > 'Attribute'.length) {
+    return fieldName.slice(0, -'Attribute'.length);
+  }
+
+  if (fieldName.startsWith('initial') && fieldName.length > 'initial'.length) {
+    const suffix = fieldName.slice('initial'.length);
+    return suffix ? suffix[0].toLowerCase() + suffix.slice(1) : undefined;
+  }
+
+  return undefined;
+}
 
 function walkStories(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -255,9 +269,30 @@ function loadCustomElementsMap() {
           .filter(Boolean),
       );
 
+      const attributeCanonicalNames = new Set([...attributes].map(toCanonicalName));
+      const attributeFieldCanonicalNames = new Set(
+        (declaration.attributes ?? []).map(attribute => toCanonicalName(attribute?.fieldName)).filter(Boolean),
+      );
+
+      const attributeAliasCanonicalNames = new Set(
+        (declaration.attributes ?? [])
+          .map(attribute => derivePublicNameFromAttributeFieldName(attribute?.fieldName))
+          .map(toCanonicalName)
+          .filter(Boolean),
+      );
+
       const properties = new Set(
         (declaration.members ?? [])
           .filter(member => member?.kind === 'field' && member?.privacy !== 'private')
+          .filter(member => member?.static !== true)
+          .filter(member => member?.readonly !== true)
+          .filter(member => member?.name !== 'role')
+          // Attributes are verified in the attributes category; avoid requiring duplicate property docs.
+          .filter(member => !attributeCanonicalNames.has(toCanonicalName(member?.name)))
+          // Internal decorator backing fields such as `disabledAttribute` / `initialValue`.
+          .filter(member => !attributeFieldCanonicalNames.has(toCanonicalName(member?.name)))
+          // Public aliases derived from decorator backing fields, e.g. `initialValue` -> `value`.
+          .filter(member => !attributeAliasCanonicalNames.has(toCanonicalName(member?.name)))
           .map(member => member?.name)
           .filter(Boolean),
       );

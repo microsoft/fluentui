@@ -85,6 +85,11 @@ export default {
       description: 'The value of the progress.',
       table: { category: 'attributes', type: { summary: 'number' } },
     },
+    indicator: {
+      control: false,
+      description: 'The internal progress indicator element.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentProgressBar>;
 

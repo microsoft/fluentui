@@ -94,7 +94,6 @@ export default {
     size: DrawerSize.medium,
     position: DrawerPosition.start,
     '--drawer-width': '',
-    '--dialog-backdrop': 'var(--colorBackgroundOverlay)',
   },
   argTypes: {
     ariaDescribedby: {
@@ -145,15 +144,6 @@ export default {
       required: false,
       table: {
         category: 'CSS Custom Properties',
-      },
-    },
-    '--dialog-backdrop': {
-      control: 'color',
-      description: 'Sets the custom color of the drawer backdrop, e.g. #000000',
-      required: false,
-      table: {
-        category: 'CSS Custom Properties',
-        type: { summary: 'Defaults to --colorBackgroundOverlay' },
       },
     },
     dialog: {

@@ -130,22 +130,22 @@ export default {
       options: Object.values(TreeItemSize),
       description: 'Sets the visual appearance of the control',
       table: {
+        category: 'attributes',
         defaultValue: {
           summary: 'medium',
         },
       },
-      category: 'attributes',
     },
     appearance: {
       control: 'select',
       options: Object.values(TreeItemAppearance),
       description: 'The appearance variants of the tree item element',
       table: {
+        category: 'attributes',
         defaultValue: {
           summary: 'subtle',
         },
       },
-      category: 'attributes',
     },
   },
 } as Meta<FluentTree>;

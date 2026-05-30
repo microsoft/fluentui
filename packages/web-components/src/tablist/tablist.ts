@@ -9,6 +9,7 @@ import { TablistAppearance, type TablistSize } from './tablist.options.js';
  * A Tablist component.
  *
  * @tag fluent-tablist
+ * @fires change - Fired when the active tab changes.
  *
  * @public
  */

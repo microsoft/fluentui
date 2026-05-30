@@ -4,6 +4,8 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 /**
  * A Drawer component that allows content to be displayed in a side panel. It can be rendered as modal or non-modal.
  *
+ * @tag fluent-drawer
+ *
  * @extends FASTElement
  *
  * @attr type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
@@ -13,6 +15,7 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @attr ariaLabelledby - The ID of the element that labels the drawer.
  *
  * @csspart dialog - The dialog element of the drawer.
+ * @cssprop --drawer-width - Sets the width of the drawer to a custom value (e.g., 300px).
  *
  * @slot - Default slot for the content of the drawer.
  *
@@ -27,8 +30,6 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
  *
  * @summary A component that provides a drawer for displaying content in a side panel.
- *
- * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
   /**

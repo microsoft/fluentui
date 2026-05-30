@@ -64,6 +64,11 @@ export default {
       control: 'text',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
+    'checked-indicator': {
+      control: false,
+      description: 'The internal switch indicator element.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentSwitch>;
 

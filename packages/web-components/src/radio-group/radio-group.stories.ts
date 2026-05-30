@@ -113,6 +113,11 @@ export default {
       description: 'The default slot',
       table: { category: 'slots', type: {} },
     },
+    change: {
+      control: false,
+      description: 'Fired when the selected radio changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentRadioGroup>;
 

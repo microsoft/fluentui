@@ -13,6 +13,8 @@ import { uniqueId } from '../utils/unique-id.js';
  * @slot start - Optional content shown at the start of the option.
  * @slot checked-indicator - The checked indicator.
  * @slot description - Optional description content.
+ * @csspart content - The wrapper for the option content.
+ * @csspart description - The wrapper for the option description.
  *
  * @remarks
  * To support single and multiple selection modes with the {@link (BaseDropdown:class)} element, the Option element

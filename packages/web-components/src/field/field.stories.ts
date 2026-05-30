@@ -92,6 +92,24 @@ export default {
       name: 'message',
       table: { category: 'slots', type: {} },
     },
+    labelPart: {
+      control: false,
+      name: 'label',
+      description: 'The label slot container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    inputPart: {
+      control: false,
+      name: 'input',
+      description: 'The input slot container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    messagePart: {
+      control: false,
+      name: 'message',
+      description: 'The message slot container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentField>;
 

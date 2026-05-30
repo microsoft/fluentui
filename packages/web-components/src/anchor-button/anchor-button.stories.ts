@@ -97,10 +97,16 @@ export default {
       name: 'icon-only',
       table: { category: 'attributes', type: { summary: 'boolean' } },
     },
-    name: {
+    download: {
       control: 'text',
-      description:
-        "The name of the element. This element's value will be surfaced during form submission under the provided name.",
+      description: 'Prompts the user to save the linked URL.',
+      name: 'download',
+      table: { category: 'attributes', type: { summary: 'string' } },
+    },
+    ping: {
+      control: 'text',
+      description: 'The ping attribute.',
+      name: 'ping',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
     size: {
@@ -130,6 +136,18 @@ export default {
       description: 'Slot for end icons',
       name: 'end',
       table: { category: 'slots', type: {} },
+    },
+    contentPart: {
+      control: false,
+      description: 'The element wrapping anchor content.',
+      name: 'content',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    controlPart: {
+      control: false,
+      description: 'The anchor element.',
+      name: 'control',
+      table: { category: 'css parts', type: { summary: 'part' } },
     },
   },
 } as Meta<FluentAnchorButton>;

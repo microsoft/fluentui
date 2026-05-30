@@ -92,6 +92,16 @@ export default {
       name: 'description',
       table: { category: 'slots', type: {} },
     },
+    content: {
+      control: false,
+      description: 'The wrapper for the option content.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    description: {
+      control: false,
+      description: 'The wrapper for the option description.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
   decorators: [
     Story => {

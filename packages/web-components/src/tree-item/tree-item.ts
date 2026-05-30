@@ -11,6 +11,13 @@ import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
  * @slot end - Content shown after the item label.
  * @slot aside - Content shown at the far end of the row.
  * @slot item - Child tree items.
+ * @csspart positioning-region - The container for item content and aside regions.
+ * @csspart content - The item content region.
+ * @csspart chevron - The expand/collapse indicator region.
+ * @csspart aside - The trailing aside region.
+ * @csspart items - The child items group region.
+ * @fires toggle - Fired when expanded state toggles.
+ * @fires change - Fired when selected state changes.
  *
  */
 export class TreeItem extends BaseTreeItem {

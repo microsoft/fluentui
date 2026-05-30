@@ -94,6 +94,11 @@ export default {
       },
     },
     ids: { table: { disable: true } },
+    change: {
+      control: false,
+      description: 'Fired when the active tab changes.',
+      table: { category: 'events', type: { summary: 'CustomEvent' } },
+    },
   },
 } as Meta<FluentTablist>;
 

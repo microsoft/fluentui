@@ -96,6 +96,42 @@ export default {
       name: 'heading',
       table: { category: 'slots', type: {} },
     },
+    startSlottedContent: {
+      control: false,
+      description: 'Content positioned before heading in the collapsed state.',
+      name: 'start',
+      table: { category: 'slots', type: {} },
+    },
+    markerCollapsedSlottedContent: {
+      control: false,
+      description: 'The collapsed icon.',
+      name: 'marker-collapsed',
+      table: { category: 'slots', type: {} },
+    },
+    markerExpandedSlottedContent: {
+      control: false,
+      description: 'The expanded icon.',
+      name: 'marker-expanded',
+      table: { category: 'slots', type: {} },
+    },
+    buttonPart: {
+      control: false,
+      description: 'The button which serves to invoke the item.',
+      name: 'button',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    contentPart: {
+      control: false,
+      description: 'The wrapper for the accordion item content.',
+      name: 'content',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    headingPart: {
+      control: false,
+      description: 'Wraps the button.',
+      name: 'heading',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentAccordionItem>;
 

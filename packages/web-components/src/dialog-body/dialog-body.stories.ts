@@ -106,6 +106,21 @@ export default {
       name: 'title',
       table: { category: 'slots', type: {} },
     },
+    title: {
+      control: false,
+      description: 'The title container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    content: {
+      control: false,
+      description: 'The content container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
+    actions: {
+      control: false,
+      description: 'The actions container.',
+      table: { category: 'css parts', type: { summary: 'part' } },
+    },
   },
 } as Meta<FluentDialogBody>;
 
