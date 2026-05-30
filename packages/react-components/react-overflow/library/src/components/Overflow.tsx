@@ -51,15 +51,21 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     hasHiddenItems,
   } = props;
 
-  const update: OnUpdateOverflow = data => {
-    const snapshot = getSnapshot();
-    const state: OverflowState = {
-      hasOverflow: snapshot.invisibleItemCount > 0,
-      itemVisibility: snapshot.itemVisibility,
-      groupVisibility: snapshot.groupVisibility,
-    };
-    onOverflowChange?.(null, state);
-  };
+  const update: OnUpdateOverflow = React.useCallback(
+    () => {
+      const snapshot = getSnapshot();
+      const state: OverflowState = {
+        hasOverflow: snapshot.invisibleItemCount > 0,
+        itemVisibility: snapshot.itemVisibility,
+        groupVisibility: snapshot.groupVisibility,
+      };
+      onOverflowChange?.(null, state);
+    },
+    // `getSnapshot` is a stable callback from useOverflowContainer (declared just below); omitted
+    // from deps to avoid a temporal-dead-zone reference.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onOverflowChange],
+  );
 
   const {
     containerRef,

@@ -37,7 +37,6 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     hasHiddenItems = false,
   } = options;
 
-  const onUpdateOverflow = useEventCallback(update);
   const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
   const observeOptions: Required<ObserveOptions> = React.useMemo(
@@ -47,18 +46,10 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
       padding,
       minimumVisible,
       onUpdateItemVisibility: onUpdateItemVisibilityCallback,
-      onUpdateOverflow,
+      onUpdateOverflow: update,
       hasHiddenItems,
     }),
-    [
-      minimumVisible,
-      onUpdateItemVisibilityCallback,
-      overflowAxis,
-      overflowDirection,
-      padding,
-      onUpdateOverflow,
-      hasHiddenItems,
-    ],
+    [minimumVisible, onUpdateItemVisibilityCallback, overflowAxis, overflowDirection, padding, update, hasHiddenItems],
   );
 
   const containerRef = React.useRef<TElement>(null);
@@ -84,12 +75,21 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
        * (e.g. it would suppress the collapsed state some downstream snapshots already encode).
        * Only this first-paint call is new,
        * so for now only this call is conditioned on the container being measured.
+       *
+       * Another problem with moving this to the manager is
+       * opting out of this eager behavior that ensure first paint correctness.
+       * TODO: expose a configuration option to disable this eager behavior
        */
-      if (containerRef.current.clientWidth > 0 || containerRef.current.clientHeight > 0) {
+      const axisClientSize =
+        overflowAxis === 'horizontal' ? containerRef.current.clientWidth : containerRef.current.clientHeight;
+      if (axisClientSize > 0) {
         managerRef.current.forceUpdate();
       }
       return () => managerRef.current?.disconnect();
     }
+    // Mount-only: observe + first-paint force run once. `overflowAxis` is captured at mount; later
+    // changes are handled by the setOptions effect and ResizeObserver.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useIsomorphicLayoutEffect(() => {

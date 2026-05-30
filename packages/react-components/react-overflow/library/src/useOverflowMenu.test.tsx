@@ -28,6 +28,29 @@ const Menu: React.FC = () => {
 };
 
 describe('useOverflowMenu', () => {
+  // jsdom has no ResizeObserver. The manager's observeResize() falls back to console.error when it
+  // is missing; once the hook is fixed the container observes and that error would pollute the run.
+  // Mock it to a no-op (as in Overflow.firstPaint.test.tsx) so the test stays valid post-fix.
+  // https://github.com/jsdom/jsdom/issues/3368
+  let originalResizeObserver: typeof ResizeObserver;
+  beforeAll(() => {
+    originalResizeObserver = global.ResizeObserver;
+    global.ResizeObserver = class ResizeObserver {
+      public observe() {
+        // do nothing
+      }
+      public unobserve() {
+        // do nothing
+      }
+      public disconnect() {
+        // do nothing
+      }
+    } as unknown as typeof ResizeObserver;
+  });
+  afterAll(() => {
+    global.ResizeObserver = originalResizeObserver;
+  });
+
   it('does not dispatch synchronously from its mount effect before the container callback is ready', () => {
     expect(() =>
       render(
