@@ -45,7 +45,10 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundStaticInverted,
   },
 
-  arrow: createArrowStyles({ arrowHeight }),
+  arrow: {
+    ...createArrowStyles({ arrowHeight }),
+    clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)',
+  },
 });
 
 /**

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: clip tooltip arrow before applying drop shadow",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "kirtiar15502@gmail.com",
+  "dependentChangeType": "patch"
+}
