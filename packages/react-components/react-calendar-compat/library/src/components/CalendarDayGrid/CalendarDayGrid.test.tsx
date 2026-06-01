@@ -165,16 +165,20 @@ describe('CalendarDayGrid', () => {
       const { container, rerender } = render(<CalendarDayGrid {...defaultProps} />);
       const tbody = container.querySelector('tbody')!;
 
-      // Skip the header row (index 0). Remaining rows: firstTransitionWeek, weekRows, lastTransitionWeek.
-      const rowsBefore = Array.from(tbody.querySelectorAll('tr')).slice(1);
+      // Only the persistent week rows must keep their DOM identity — they are what `Slide.In`
+      // replays against on navigation. The first/last transition (filler) rows are intentionally
+      // remounted when they start or stop animating (their `DirectionalSlideOut` wrapper mounts
+      // only for the matching navigation direction), so they are excluded here.
+      const getWeekRows = () => Array.from(tbody.querySelectorAll('tr.fui-CalendarDayGrid__weekRow'));
+      const rowsBefore = getWeekRows();
       expect(rowsBefore.length).toBeGreaterThan(0);
 
       // Navigate to October 2020.
       rerender(<CalendarDayGrid {...defaultProps} navigatedDate={new Date(2020, 9, 1)} />);
 
-      const rowsAfter = Array.from(tbody.querySelectorAll('tr')).slice(1);
+      const rowsAfter = getWeekRows();
 
-      // Every row present in both months must be the same DOM node — not a new element.
+      // Every week row present in both months must be the same DOM node — not a new element.
       const sharedCount = Math.min(rowsBefore.length, rowsAfter.length);
       for (let i = 0; i < sharedCount; i++) {
         expect(rowsAfter[i]).toBe(rowsBefore[i]);
