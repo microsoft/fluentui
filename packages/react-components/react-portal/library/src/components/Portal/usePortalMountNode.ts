@@ -38,8 +38,6 @@ type UseElementFactory = (options: UseElementFactoryOptions) => HTMLDivElement |
  * Creates a new element on a "document.body" to mount portals.
  */
 const useLegacyElementFactory: UseElementFactory = options => {
-  'use no memo';
-
   const { className, dir, focusVisibleRef, targetNode } = options;
 
   const targetElement = React.useMemo(() => {
@@ -120,7 +118,7 @@ const initializeElementFactory = () => {
  * - all other methods (and properties) will be called by React once a portal is mounted
  */
 const useModernElementFactory: UseElementFactory = options => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize dispose — manual opt-out to preserve runtime behavior
 
   const { className, dir, focusVisibleRef, targetNode } = options;
 
@@ -239,7 +237,7 @@ const useElementFactory = useInsertionEffect ? useModernElementFactory : useLega
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
-  ('use no memo');
+  ('use no memo'); // justified: compiler would optimize usePortalMountNode — manual opt-out to preserve runtime behavior
 
   const { targetDocument, dir } = useFluent();
   const mountNode = usePortalMountNodeContext();

@@ -38,8 +38,6 @@ export const useComboboxBase_unstable = (
   props: BaseComboboxProps,
   ref: React.Ref<HTMLInputElement>,
 ): BaseComboboxState => {
-  'use no memo';
-
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
   const {
@@ -215,8 +213,6 @@ export const useComboboxBase_unstable = (
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  'use no memo';
-
   const { appearance = 'outline', size = 'medium', ...baseProps } = props;
   const baseState = useComboboxBase_unstable(baseProps, ref);
 

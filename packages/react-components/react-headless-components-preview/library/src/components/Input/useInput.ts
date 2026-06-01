@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderInput`.
  */
 export const useInput = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  'use no memo';
-
   const state: InputState = useInputBase_unstable(props, ref);
 
   // Set data attribute for disabled state to simplify styling.

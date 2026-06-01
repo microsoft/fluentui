@@ -9,8 +9,6 @@ import { stringifyDataAttribute } from '../../../utils';
  * Returns the state for a DrawerFooter component, given its props and ref.
  */
 export const useDrawerFooter = (props: DrawerFooterProps, ref: React.Ref<HTMLElement>): DrawerFooterState => {
-  'use no memo';
-
   const state: DrawerFooterState = useDrawerFooter_unstable(props, ref);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-scroll-state'] = stringifyDataAttribute(state.scrollState);

@@ -198,8 +198,6 @@ const useInputStyles = makeStyles({
  * Apply styling to the ColorSlider slots based on the state
  */
 export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSliderState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const styles = useStyles();
   const railStyles = useRailStyles();

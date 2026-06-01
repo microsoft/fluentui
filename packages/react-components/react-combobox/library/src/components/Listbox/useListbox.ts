@@ -40,8 +40,6 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  'use no memo';
-
   const { multiselect, disableAutoFocus = false } = props;
   const optionCollection = useOptionCollection();
 

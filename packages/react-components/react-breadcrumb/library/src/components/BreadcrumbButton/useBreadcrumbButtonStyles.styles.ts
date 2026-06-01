@@ -110,8 +110,6 @@ const useStyles = makeStyles({
  * Apply styling to the BreadcrumbButton slots based on the state
  */
 export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
-  'use no memo';
-
   const styles = useStyles();
   const iconStyles = useIconStyles();
 

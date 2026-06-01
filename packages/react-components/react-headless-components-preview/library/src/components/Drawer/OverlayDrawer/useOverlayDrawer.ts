@@ -10,8 +10,6 @@ import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.typ
  * Returns the state for an OverlayDrawer component, given its props and ref.
  */
 export const useOverlayDrawer = (props: OverlayDrawerProps, ref: React.Ref<HTMLDialogElement>): OverlayDrawerState => {
-  'use no memo';
-
   const {
     open = false,
     position = 'start',

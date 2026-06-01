@@ -28,8 +28,6 @@ import { resolvePositioningShorthand, usePositioning } from '../../positioning';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltip = (props: TooltipProps): TooltipState => {
-  'use no memo';
-
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
 

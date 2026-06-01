@@ -77,8 +77,6 @@ const useStyles = makeStyles({
 export const useTeachingPopoverHeaderStyles_unstable = (
   state: TeachingPopoverHeaderState,
 ): TeachingPopoverHeaderState => {
-  'use no memo';
-
   const styles = useStyles();
   const { appearance } = state;
 

@@ -15,8 +15,6 @@ import { TABSTER_ATTRIBUTE_NAME } from 'tabster';
 export const useMergedTabsterAttributes_unstable = (
   ...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]
 ): Types.TabsterDOMAttribute => {
-  'use no memo';
-
   const stringAttributes = attributes.reduce<string[]>((acc, curr) => {
     if (curr?.[TABSTER_ATTRIBUTE_NAME]) {
       acc.push(curr[TABSTER_ATTRIBUTE_NAME]);
@@ -67,8 +65,6 @@ const safelyParseJSON = (json: string): object => {
  * This hook will console.warn if the attributes change at runtime.
  */
 const useWarnIfUnstableAttributes = (attributes: string[]) => {
-  'use no memo';
-
   const initialAttributesRef = React.useRef(attributes);
 
   // eslint-disable-next-line react-hooks/refs

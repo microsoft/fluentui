@@ -52,8 +52,6 @@ const useLabelStyles = makeStyles({
  * Apply styling to the RatingDisplay slots based on the state
  */
 export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
-  'use no memo';
-
   const { size } = state;
   const rootClassName = useRootClassName();
   // eslint-disable-next-line react-hooks/immutability
