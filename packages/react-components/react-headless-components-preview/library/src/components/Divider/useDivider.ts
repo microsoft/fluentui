@@ -10,8 +10,6 @@ import type { DividerProps, DividerState } from './Divider.types';
  * The returned state can be modified with hooks before being passed to `renderDivider`.
  */
 export const useDivider = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
-  'use no memo';
-
   const state: DividerState = useDividerBase_unstable(props, ref);
 
   // Set data attribute for orientation to simplify styling of vertical vs horizontal dividers.

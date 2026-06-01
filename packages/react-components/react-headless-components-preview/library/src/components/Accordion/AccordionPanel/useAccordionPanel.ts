@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderAccordionPanel`.
  */
 export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLElement>): AccordionPanelState => {
-  'use no memo';
-
   const state: AccordionPanelState = useAccordionPanelBase_unstable(props, ref);
 
   // Set data attribute for open state to simplify styling.

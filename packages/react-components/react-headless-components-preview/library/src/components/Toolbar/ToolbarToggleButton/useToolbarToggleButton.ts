@@ -14,8 +14,6 @@ export const useToolbarToggleButton = (
   props: ToolbarToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarToggleButtonState => {
-  ('use no memo');
-
   const state: ToolbarToggleButtonState = useToolbarToggleButtonBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability

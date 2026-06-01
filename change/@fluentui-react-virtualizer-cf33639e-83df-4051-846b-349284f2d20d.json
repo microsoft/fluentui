@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: remove redundant use no memo directives, and add justification to valid ones",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

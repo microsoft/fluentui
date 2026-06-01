@@ -13,8 +13,6 @@ import { adjustToTransparency, calculateTransparencyValue, getSliderDirection } 
 import { createHsvColor } from '../../utils/createHsvColor';
 
 export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: AlphaSliderProps): AlphaSliderState => {
-  'use no memo';
-
   const { dir } = useFluent();
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);

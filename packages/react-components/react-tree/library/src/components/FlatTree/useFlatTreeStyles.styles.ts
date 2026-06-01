@@ -16,8 +16,6 @@ const useBaseStyles = makeResetStyles({
 });
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
-  'use no memo';
-
   const baseStyles = useBaseStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(flatTreeClassNames.root, baseStyles, state.root.className);

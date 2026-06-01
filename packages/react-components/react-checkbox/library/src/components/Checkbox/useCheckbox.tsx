@@ -32,8 +32,6 @@ import { useFocusWithin } from '@fluentui/react-tabster';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  'use no memo';
-
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
@@ -88,7 +86,7 @@ export const useCheckboxBase_unstable = (
   props: CheckboxBaseProps,
   ref: React.Ref<HTMLInputElement>,
 ): CheckboxBaseState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCheckboxBase_unstable — manual opt-out to preserve runtime behavior
 
   const { disabled = false, required, labelPosition = 'after', onChange } = props;
 

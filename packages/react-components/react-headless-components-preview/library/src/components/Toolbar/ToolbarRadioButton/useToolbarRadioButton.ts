@@ -14,8 +14,6 @@ export const useToolbarRadioButton = (
   props: ToolbarRadioButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarRadioButtonState => {
-  'use no memo';
-
   const state: ToolbarRadioButtonState = useToolbarRadioButtonBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability

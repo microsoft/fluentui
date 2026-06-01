@@ -17,8 +17,6 @@ export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submen
 };
 
 export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState): void => {
-  'use no memo';
-
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuItemRadioClassNames.root, state.root.className);
 

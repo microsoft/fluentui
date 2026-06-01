@@ -56,8 +56,6 @@ const useStyles = makeStyles({
  * Apply styling to the TableResizeHandle slots based on the state
  */
 export const useTableResizeHandleStyles_unstable = (state: TableResizeHandleState): TableResizeHandleState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(tableResizeHandleClassNames.root, styles.root, state.root.className);
