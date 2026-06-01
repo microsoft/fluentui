@@ -7,6 +7,18 @@ import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
 import { AnimationDirection } from '../Calendar';
 import type { JSXElement } from '@fluentui/react-utilities';
 
+// Distance the rows travel as they slide in/out. Shared so the enter and exit motions stay in sync.
+const SLIDE_DISTANCE = '20px';
+
+// Clones the single child with a ref that merges the forwarded ref and the child's own ref. Lets the
+// `DirectionalSlideIn`/`DirectionalSlideOut` wrappers render no DOM of their own while still exposing a
+// ref to the actual child element (e.g. the `<tr>`), keeping them transparent for table semantics.
+function useChildWithMergedRef(children: JSXElement, ref: React.Ref<HTMLElement>) {
+  const child = React.Children.only(children) as React.ReactElement<{ ref?: React.Ref<HTMLElement> }>;
+  const mergedRef = useMergedRefs(ref, getReactElementRef(child));
+  return React.cloneElement(child, { ref: mergedRef });
+}
+
 export type DirectionalSlideInProps = {
   duration?: number;
   easing?: string;
@@ -37,18 +49,15 @@ export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlide
 
   let outX = '0px';
   let outY = '0px';
-  const distance = animateBackwards ? '-20px' : '20px';
+  const distance = animateBackwards ? `-${SLIDE_DISTANCE}` : SLIDE_DISTANCE;
   if (animationDirection === AnimationDirection.Horizontal) {
     outX = distance;
   } else {
     outY = distance;
   }
 
-  // Merge the forwarded ref with the child's own ref (preserving any caller-supplied ref on the
-  // child element). `Slide.In`'s `useChildElement` will further merge its motion ref on top.
-  const child = React.Children.only(children) as React.ReactElement<{ ref?: React.Ref<HTMLElement> }>;
-  const mergedRef = useMergedRefs(ref, getReactElementRef(child));
-  const childWithRef = React.cloneElement(child, { ref: mergedRef });
+  // `Slide.In`'s `useChildElement` will further merge its motion ref on top.
+  const childWithRef = useChildWithMergedRef(children, ref);
 
   // `Slide.In` bakes `outY` into its atoms at mount and `replayKey` only replays them, so a
   // direction flip needs a remount. Same-direction navigations keep the key and reuse the DOM.
@@ -94,14 +103,12 @@ export type DirectionalSlideOutProps = {
 export const DirectionalSlideOut = React.forwardRef<HTMLElement, DirectionalSlideOutProps>((props, ref) => {
   const { edge, animationDirection = AnimationDirection.Vertical, animateBackwards, replayKey, children } = props;
 
-  const child = React.Children.only(children) as React.ReactElement<{ ref?: React.Ref<HTMLElement> }>;
-  const mergedRef = useMergedRefs(ref, getReactElementRef(child));
-  const childWithRef = React.cloneElement(child, { ref: mergedRef });
+  const childWithRef = useChildWithMergedRef(children, ref);
 
   // The legacy animation only ran for vertical navigation, and only on the row matching the
   // navigation direction: the top (first) row slides up & out when navigating forward, the bottom
   // (last) row slides down & out when navigating backward. `animateBackwards === undefined` means no
-  // navigation has happened yet, so nothing animates on initial mount (the row stays collapsed).
+  // navigation has happened yet, so nothing animates on initial mount (the row stays hidden at rest).
   const isVertical = animationDirection !== AnimationDirection.Horizontal;
   const shouldAnimate =
     isVertical && animateBackwards !== undefined && (edge === 'first' ? !animateBackwards : animateBackwards);
@@ -111,7 +118,7 @@ export const DirectionalSlideOut = React.forwardRef<HTMLElement, DirectionalSlid
   }
 
   // First (top) row slides up and out; last (bottom) row slides down and out.
-  const outY = edge === 'first' ? '-20px' : '20px';
+  const outY = edge === 'first' ? `-${SLIDE_DISTANCE}` : SLIDE_DISTANCE;
 
   return (
     <TransitionRowSlideOut outY={outY} replayKey={replayKey}>
