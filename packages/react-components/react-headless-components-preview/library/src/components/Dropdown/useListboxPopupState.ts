@@ -86,8 +86,6 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
   initialProps: TProps,
   options: UseListboxPopupStateOptions<TProps>,
 ): UseListboxPopupStateReturn<TProps, TTrigger> {
-  'use no memo';
-
   const { primarySlotTagName, fieldControlOptions, baseStateExtras, rootDefaultProps } = options;
 
   const positioningOptions = resolvePositioningShorthand(initialProps.positioning);

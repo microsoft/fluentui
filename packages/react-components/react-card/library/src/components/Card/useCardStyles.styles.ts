@@ -412,8 +412,6 @@ const useCardStyles = makeStyles({
  * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
-  'use no memo';
-
   const resetStyles = useCardResetStyles();
   const styles = useCardStyles();
 

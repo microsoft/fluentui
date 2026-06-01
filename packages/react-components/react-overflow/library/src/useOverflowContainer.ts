@@ -28,8 +28,6 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
   options: Omit<ObserveOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
-  'use no memo';
-
   const {
     overflowAxis = 'horizontal',
     overflowDirection = 'end',

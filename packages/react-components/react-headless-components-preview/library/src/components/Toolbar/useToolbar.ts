@@ -15,8 +15,6 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderToolbar`.
  */
 export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
-  'use no memo';
-
   const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability

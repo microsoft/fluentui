@@ -22,8 +22,6 @@ const useStyles = makeStyles({
  * Apply styling to the NavDivider slots based on the state
  */
 export const useNavDividerStyles_unstable = (state: NavDividerState): NavDividerState => {
-  'use no memo';
-
   const styles = useStyles();
 
   // eslint-disable-next-line react-hooks/immutability

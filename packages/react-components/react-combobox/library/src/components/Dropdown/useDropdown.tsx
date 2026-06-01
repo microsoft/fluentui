@@ -32,8 +32,6 @@ export const useDropdownBase_unstable = (
   props: DropdownBaseProps,
   ref: React.Ref<HTMLButtonElement>,
 ): DropdownBaseState => {
-  'use no memo';
-
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
   const {
@@ -164,8 +162,6 @@ export const useDropdownBase_unstable = (
  * @param ref - reference to root HTMLElement of Dropdown
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
-  'use no memo';
-
   const { appearance = 'outline', size = 'medium', ...baseProps } = props;
   const baseState = useDropdownBase_unstable(baseProps, ref);
 

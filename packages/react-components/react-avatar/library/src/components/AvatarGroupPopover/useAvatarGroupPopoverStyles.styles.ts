@@ -118,8 +118,6 @@ const useTriggerButtonStyles = makeStyles({
  * Apply styling to the AvatarGroupPopover slots based on the state
  */
 export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverState): AvatarGroupPopoverState => {
-  'use no memo';
-
   const { indicator, size, layout, popoverOpen } = state;
   const sizeStyles = useSizeStyles();
   const triggerButtonStyles = useTriggerButtonStyles();

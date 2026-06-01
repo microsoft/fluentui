@@ -178,8 +178,6 @@ const useIconStyles = makeStyles({
  * Apply styling to the ColorSwatch slots based on the state
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
-  'use no memo';
-
   const { size = 'medium', shape = 'square' } = state;
 
   const resetStyles = useResetStyles();

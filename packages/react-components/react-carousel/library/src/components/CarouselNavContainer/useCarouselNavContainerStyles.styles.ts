@@ -94,8 +94,6 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselNavContainer slots based on the state
  */
 export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContainerState): CarouselNavContainerState => {
-  'use no memo';
-
   const { layout } = state;
   const isOverlay = layout === 'overlay' || layout === 'overlay-wide' || layout === 'overlay-expanded';
   const isWide = layout === 'inline-wide' || layout === 'overlay-wide';

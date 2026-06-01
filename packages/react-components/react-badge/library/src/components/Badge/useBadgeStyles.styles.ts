@@ -300,8 +300,6 @@ const useIconStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
-  'use no memo';
-
   const rootClassName = useRootClassName();
   const rootStyles = useRootStyles();
 

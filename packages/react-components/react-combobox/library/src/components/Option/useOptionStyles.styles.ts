@@ -125,8 +125,6 @@ const useStyles = makeStyles({
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
-  'use no memo';
-
   const { disabled, multiselect, selected } = state;
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability

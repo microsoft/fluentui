@@ -31,8 +31,6 @@ export function resetIdsForTests(): void {
  * @returns The ID
  */
 export function useId(prefix: string = 'fui-', providedId?: string): string {
-  'use no memo';
-
   const contextValue = useSSRContext();
   const idPrefix = useIdPrefix();
 
