@@ -1841,10 +1841,10 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
-"@fluentui/react-compiler-analyzer@0.0.0-experimental.rc-analyzer.20260514-5d0a891a8f.0":
-  version "0.0.0-experimental.rc-analyzer.20260514-5d0a891a8f.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-compiler-analyzer/-/react-compiler-analyzer-0.0.0-experimental.rc-analyzer.20260514-5d0a891a8f.0.tgz#871b79822e176c257c754d5983dc71701157e6be"
-  integrity sha512-GoaiQn7NUMBUPeAtlM8vm+xWYDOl2BiTL4mGbJ3cbRAMtwxfKzqyiV4gQsVGivCJ6Srl0LiDkBXMqF9NJOGwQw==
+"@fluentui/react-compiler-analyzer@0.0.0-experimental.rc-analyzer.20260526-7c5862ce36.0":
+  version "0.0.0-experimental.rc-analyzer.20260526-7c5862ce36.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-compiler-analyzer/-/react-compiler-analyzer-0.0.0-experimental.rc-analyzer.20260526-7c5862ce36.0.tgz#ea2ed759ed4c70a7f14dbab5e244f0f830c47e54"
+  integrity sha512-1fW/0YrInAvQfFKD2hxx8A/j8Egt/mBJfims39IthjAxU53pQFciv1EUcQupUwbY7AWZAwcanrLGF9E7cO7sKQ==
   dependencies:
     "@babel/core" "^7.28.5"
     "@babel/preset-typescript" "^7.28.5"
