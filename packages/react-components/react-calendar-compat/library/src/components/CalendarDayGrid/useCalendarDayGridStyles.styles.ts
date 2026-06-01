@@ -278,22 +278,22 @@ const useDayTodayMarkerStyles = makeStyles({
 
 const useFirstTransitionWeekStyles = makeStyles({
   base: {
-    height: 0,
+    // Overlaid out of flow and transparent at rest; `pointerEvents: 'none'` stops the invisible
+    // overlay from intercepting clicks. `TransitionRowSlideOut` fades opacity 1 → 0, ending here.
     opacity: 0,
     overflow: 'hidden',
+    pointerEvents: 'none',
     position: 'absolute',
-    width: 0,
   },
 });
 
 const useLastTransitionWeekStyles = makeStyles({
   base: {
-    height: 0,
     marginTop: '-28px',
     opacity: 0,
     overflow: 'hidden',
+    pointerEvents: 'none',
     position: 'absolute',
-    width: 0,
   },
 });
 

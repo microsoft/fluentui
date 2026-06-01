@@ -1,7 +1,7 @@
 'use client';
 
 import { motionTokens, createMotionComponent } from '@fluentui/react-motion';
-import { Slide } from '@fluentui/react-motion-components-preview';
+import { Slide, fadeAtom, slideAtom } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
 import { AnimationDirection } from '../Calendar';
@@ -63,30 +63,17 @@ export const DirectionalSlide = React.forwardRef<HTMLElement, DirectionalSlidePr
 
 DirectionalSlide.displayName = 'DirectionalSlide';
 
-// One-way "out" motion for the day grid's transition (filler) rows. It mirrors the legacy CSS
-// animation that combined a fade-out, a vertical slide, and a final height/width collapse
-// (`TRANSITION_ROW_DISAPPEARANCE`). At rest the row is `position: absolute` with `height/width: 0`
-// and `opacity: 0`; this motion temporarily expands it to full size, slides + fades it out, then
-// collapses it back so it returns to its hidden resting state once the animation's forward fill
-// is in effect.
-const TransitionRowSlideOut = createMotionComponent(({ outY }: { outY: string }) => [
-  {
-    keyframes: [
-      { opacity: 1, transform: 'translate3d(0, 0, 0)', height: '28px', width: '100%', overflow: 'visible' },
-      {
-        opacity: 0,
-        transform: `translate3d(0, ${outY}, 0)`,
-        height: '28px',
-        width: '100%',
-        overflow: 'visible',
-        offset: 0.999,
-      },
-      { opacity: 0, transform: `translate3d(0, ${outY}, 0)`, height: '0px', width: '0px', overflow: 'hidden' },
-    ],
-    duration: motionTokens.durationSlower,
-    easing: motionTokens.curveDecelerateMax,
-  },
-]);
+// One-way "out" motion for the day grid's transition (filler) rows. It fades and slides the row
+// out in the navigation direction (the top row slides up, the bottom row slides down). The row is
+// `position: absolute` and `opacity: 0` at rest, so the motion's forwards fill leaves it back at its
+// hidden resting state once it finishes. Composed from Fluent's `fadeAtom` + `slideAtom` so it stays
+// consistent with the rest of the motion system; there is no size animation, because the row is
+// overlaid out of flow and hidden via opacity (not by collapsing its box).
+const TransitionRowSlideOut = createMotionComponent(({ outY }: { outY: string }) => {
+  const duration = motionTokens.durationSlower;
+  const easing = motionTokens.curveDecelerateMax;
+  return [fadeAtom({ direction: 'exit', duration, easing }), slideAtom({ direction: 'exit', duration, easing, outY })];
+});
 
 export type DirectionalSlideOutProps = {
   /** Which transition row this wraps: the first (top) or last (bottom) filler row. */
