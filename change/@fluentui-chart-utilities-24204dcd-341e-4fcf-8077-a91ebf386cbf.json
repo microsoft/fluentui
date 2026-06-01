@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: centralize isSafeUrl and reuse across chart and utility consumers",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -14,18 +14,19 @@ import * as Field from '@fluentui/react-headless-components-preview/field';
 import * as Image from '@fluentui/react-headless-components-preview/image';
 import * as InfoLabel from '@fluentui/react-headless-components-preview/info-label';
 import * as Input from '@fluentui/react-headless-components-preview/input';
+import * as InteractionTag from '@fluentui/react-headless-components-preview/interaction-tag';
 import * as Label from '@fluentui/react-headless-components-preview/label';
 import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as Nav from '@fluentui/react-headless-components-preview/nav';
-import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
 import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
+import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
-import * as RatingDisplay from '@fluentui/react-headless-components-preview/rating-display';
 import * as Rating from '@fluentui/react-headless-components-preview/rating';
+import * as RatingDisplay from '@fluentui/react-headless-components-preview/rating-display';
 import * as SearchBox from '@fluentui/react-headless-components-preview/search-box';
 import * as Select from '@fluentui/react-headless-components-preview/select';
 import * as Skeleton from '@fluentui/react-headless-components-preview/skeleton';
@@ -34,7 +35,11 @@ import * as SpinButton from '@fluentui/react-headless-components-preview/spin-bu
 import * as Spinner from '@fluentui/react-headless-components-preview/spinner';
 import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
+import * as Tag from '@fluentui/react-headless-components-preview/tag';
+import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
+import * as TeachingPopover from '@fluentui/react-headless-components-preview/teaching-popover';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
+import * as Toast from '@fluentui/react-headless-components-preview/toast';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
 import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
@@ -56,6 +61,7 @@ console.log({
   Image,
   InfoLabel,
   Input,
+  InteractionTag,
   Label,
   Link,
   Menu,
@@ -66,8 +72,8 @@ console.log({
   ProgressBar,
   Provider,
   RadioGroup,
-  RatingDisplay,
   Rating,
+  RatingDisplay,
   SearchBox,
   Select,
   Skeleton,
@@ -76,7 +82,11 @@ console.log({
   Spinner,
   Switch,
   TabList,
+  Tag,
+  TagGroup,
+  TeachingPopover,
   Textarea,
+  Toast,
   ToggleButton,
   Toolbar,
   Tooltip,

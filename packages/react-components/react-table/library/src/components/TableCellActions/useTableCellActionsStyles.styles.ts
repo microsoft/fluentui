@@ -31,8 +31,6 @@ const useStyles = makeStyles({
  * Apply styling to the TableCellActions slots based on the state
  */
 export const useTableCellActionsStyles_unstable = (state: TableCellActionsState): TableCellActionsState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(

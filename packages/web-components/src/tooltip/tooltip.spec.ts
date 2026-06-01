@@ -71,6 +71,45 @@ test.describe('Tooltip', () => {
     await expect(button).toHaveAttribute('aria-describedby', id);
   });
 
+  test('should remove the tooltip id from `aria-describedby` attribute when tooltip is removed', async ({
+    fastPage,
+  }) => {
+    const { element, page } = fastPage;
+    const button = page.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <div style="position: absolute; inset: 200px">
+        <button id="target">Target</button>
+        <${tagName} anchor="target">This is a tooltip</${tagName}>
+        <${tagName} anchor="target">This is another tooltip</${tagName}>
+      </div>
+    `);
+
+    const id1 = await element.nth(0).evaluate((node: Tooltip) => node.id);
+    const id2 = await element.nth(1).evaluate((node: Tooltip) => node.id);
+
+    await expect(button).toHaveAttribute('aria-describedby', [id1, id2].join(' '));
+
+    await element.nth(0).evaluate(node => {
+      node.remove();
+    });
+
+    await expect(button).toHaveAttribute('aria-describedby', id2);
+
+    await button.evaluate(
+      (node, [tagName, id]) => {
+        const tooltip = document.createElement(tagName);
+        tooltip.id = id;
+        tooltip.setAttribute('anchor', 'target');
+        tooltip.textContent = 'New tooltip';
+        node.after(tooltip);
+      },
+      [tagName, id1],
+    );
+
+    await expect(button).toHaveAttribute('aria-describedby', [id2, id1].join(' '));
+  });
+
   test('should not be visible by default', async ({ fastPage }) => {
     const { element } = fastPage;
 

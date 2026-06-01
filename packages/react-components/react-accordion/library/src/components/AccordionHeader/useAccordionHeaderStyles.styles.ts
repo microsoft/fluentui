@@ -107,8 +107,6 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(

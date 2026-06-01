@@ -15,8 +15,6 @@ import { stringifyDataAttribute } from '../../utils';
  * @param ref - reference to root HTMLInputElement of Checkbox
  */
 export const useCheckbox = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  'use no memo';
-
   const state: CheckboxState = useCheckboxBase_unstable(props, ref);
 
   // Set data attributes for disabled and checked states to simplify styling of these states.

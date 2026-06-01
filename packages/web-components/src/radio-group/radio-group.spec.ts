@@ -236,12 +236,14 @@ test.describe('RadioGroup', () => {
     const { element } = fastPage;
     const radios = element.locator(RadioTagName);
 
-    await fastPage.setTemplate(/* html */ `
-      <${tagName} value="bar">
+    await fastPage.setTemplate({
+      attributes: { value: 'bar' },
+      innerHTML: /* html */ `
         <${RadioTagName} id="radio-1" name="radio" value="foo"></${RadioTagName}>
         <${RadioTagName} id="radio-2" name="radio" value="bar"></${RadioTagName}>
         <${RadioTagName} id="radio-3" name="radio" value="baz"></${RadioTagName}>
-    `);
+      `,
+    });
 
     await expect(radios.nth(0)).toHaveJSProperty('checked', false);
 

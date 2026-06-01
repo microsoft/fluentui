@@ -18,8 +18,6 @@ export const useMessageBarActions = (
   props: MessageBarActionsProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarActionsState => {
-  'use no memo';
-
   const state: MessageBarActionsState = useMessageBarActions_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability

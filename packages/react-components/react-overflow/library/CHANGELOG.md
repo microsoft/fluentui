@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 23 Apr 2026 14:21:14 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.8.0)
+
+Tue, 26 May 2026 09:39:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.7.2..@fluentui/react-overflow_v9.8.0)
+
+### Minor changes
+
+- feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.2.17 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.7.2)
 

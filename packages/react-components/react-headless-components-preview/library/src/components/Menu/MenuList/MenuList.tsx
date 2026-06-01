@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useMenuList } from './useMenuList';
+import { useMenuListContextValues } from './useMenuListContextValues';
 import { renderMenuList } from './renderMenuList';
 import type { MenuListProps } from './MenuList.types';
 
@@ -12,7 +12,7 @@ import type { MenuListProps } from './MenuList.types';
  */
 export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((props, ref) => {
   const state = useMenuList(props, ref);
-  const contextValues = useMenuListContextValues_unstable(state);
+  const contextValues = useMenuListContextValues(state);
   return renderMenuList(state, contextValues);
 });
 

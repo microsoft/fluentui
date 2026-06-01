@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add headless Menu components",
-  "packageName": "@fluentui/react-menu",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

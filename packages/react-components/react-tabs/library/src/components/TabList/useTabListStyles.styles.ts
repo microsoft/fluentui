@@ -40,8 +40,6 @@ const useStyles = makeStyles({
  * Apply styling to the TabList slots based on the state
  */
 export const useTabListStyles_unstable = (state: TabListState): TabListState => {
-  'use no memo';
-
   const { appearance, vertical, size } = state;
 
   const styles = useStyles();

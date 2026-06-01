@@ -9,8 +9,6 @@ import { stringifyDataAttribute } from '../../utils';
 import { useListboxPopupState } from '../Dropdown/useListboxPopupState';
 
 export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  'use no memo';
-
   const { freeform } = props;
 
   const {

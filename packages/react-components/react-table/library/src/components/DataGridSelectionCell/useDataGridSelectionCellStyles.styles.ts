@@ -17,8 +17,6 @@ export const dataGridSelectionCellClassNames: SlotClassNames<DataGridSelectionCe
 export const useDataGridSelectionCellStyles_unstable = (
   state: DataGridSelectionCellState,
 ): DataGridSelectionCellState => {
-  'use no memo';
-
   useTableSelectionCellStyles_unstable(state);
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dataGridSelectionCellClassNames.root, state.root.className);

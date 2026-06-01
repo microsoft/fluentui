@@ -10,8 +10,6 @@ import type { InlineDrawerProps, InlineDrawerState } from './InlineDrawer.types'
  * Returns the state for an InlineDrawer component, given its props and ref.
  */
 export const useInlineDrawer = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
-  'use no memo';
-
   const state: InlineDrawerState = useInlineDrawerBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability

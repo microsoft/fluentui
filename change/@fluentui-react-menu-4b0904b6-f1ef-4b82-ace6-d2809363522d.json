@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Menu): Menu item with expanded submenu should be highlighted",
-  "packageName": "@fluentui/react-menu",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "patch"
-}

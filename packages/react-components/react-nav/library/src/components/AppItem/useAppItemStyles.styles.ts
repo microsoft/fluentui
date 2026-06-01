@@ -38,8 +38,6 @@ export const useAppItemStyles = makeStyles({
  * Apply styling to the AppItem slots based on the state
  */
 export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => {
-  'use no memo';
-
   const rootDefaultClassName = useRootDefaultClassName();
   const iconStyles = useIconStyles();
   const appItemSpecificStyles = useAppItemStyles();

@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderToolbarDivider`.
  */
 export const useToolbarDivider = (props: ToolbarDividerProps, ref: React.Ref<HTMLElement>): ToolbarDividerState => {
-  'use no memo';
-
   const state: ToolbarDividerState = useToolbarDividerBase_unstable(props, ref);
 
   // Set data-vertical based on the resolved orientation of the divider (already inverted relative to the toolbar).

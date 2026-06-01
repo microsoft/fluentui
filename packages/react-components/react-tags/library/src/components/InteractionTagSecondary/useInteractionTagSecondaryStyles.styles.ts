@@ -212,8 +212,6 @@ const useRootDisabledStyles = makeStyles({
 export const useInteractionTagSecondaryStyles_unstable = (
   state: InteractionTagSecondaryState,
 ): InteractionTagSecondaryState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();

@@ -38,8 +38,6 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  'use no memo';
-
   const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);

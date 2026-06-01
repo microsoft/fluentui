@@ -17,8 +17,6 @@ export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'sub
 };
 
 export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState): MenuItemCheckboxState => {
-  'use no memo';
-
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuItemCheckboxClassNames.root, state.root.className);
 

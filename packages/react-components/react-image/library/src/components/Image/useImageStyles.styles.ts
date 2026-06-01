@@ -72,8 +72,6 @@ const useStyles = makeStyles({
 });
 
 export const useImageStyles_unstable = (state: ImageState): ImageState => {
-  'use no memo';
-
   const styles = useStyles();
 
   const { height, width } = state.root;

@@ -27,8 +27,6 @@ const useBackdropStyles = makeStyles({
  * Apply styling to the OverlayDrawerSurface slots based on the state
  */
 export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
-  'use no memo';
-
   const { treatBackdropAsNested, backdrop, open, unmountOnClose } = state;
 
   const backdropResetStyles = useBackdropResetStyles();

@@ -21,8 +21,6 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useAccordionPanelStyles_unstable = (state: AccordionPanelState): AccordionPanelState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(accordionPanelClassNames.root, styles.root, state.root.className);

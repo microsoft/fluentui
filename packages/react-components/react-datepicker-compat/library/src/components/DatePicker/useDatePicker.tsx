@@ -44,8 +44,6 @@ function useFocusLogic() {
 }
 
 function usePopupVisibility(props: DatePickerProps) {
-  'use no memo';
-
   const [open, setOpen] = useControllableState({
     initialState: false,
     defaultState: props.defaultOpen,
@@ -106,8 +104,6 @@ const defaultParseDateFromString = (dateStr: string) => {
  * @param ref - reference to root Input slot
  */
 export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLInputElement>): DatePickerState => {
-  'use no memo';
-
   const {
     allowTextInput = false,
     allFocusable = false,

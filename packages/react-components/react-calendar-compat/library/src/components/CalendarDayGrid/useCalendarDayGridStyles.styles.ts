@@ -340,7 +340,7 @@ const useCornerBorderAndRadiusStyles = makeStyles({
  * @internal
  */
 export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStyleProps): CalendarDayGridStyles => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useCalendarDayGridStyles_unstable — manual opt-out to preserve runtime behavior
 
   const wrapperStyles = useWrapperStyles();
   const tableStyles = useTableStyles();

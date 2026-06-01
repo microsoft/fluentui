@@ -41,8 +41,6 @@ export const useRootStyles = makeStyles({
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const smallStyles = useSmallStyles();
   const defaultRootClassName = useRootDefaultClassName();

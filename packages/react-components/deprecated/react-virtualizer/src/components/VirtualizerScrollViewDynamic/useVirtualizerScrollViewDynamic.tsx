@@ -20,8 +20,6 @@ import { useDynamicVirtualizerPagination } from '../../hooks/useDynamicPaginatio
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  'use no memo';
-
   const contextState = useVirtualizerContextState_unstable(props.virtualizerContext);
   const {
     imperativeRef,

@@ -56,8 +56,6 @@ const useThumbStyles = makeStyles({
  * Apply styling to the AlphaSlider slots based on the state
  */
 export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSliderState => {
-  'use no memo';
-
   const styles = useStyles();
   const thumbStyles = useThumbStyles();
   // eslint-disable-next-line react-hooks/immutability

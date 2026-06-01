@@ -1012,8 +1012,6 @@ export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
     // @internal
-    beforeinputHandler(e: InputEvent): boolean | void;
-    // @internal
     changeHandler(e: InputEvent): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: MouseEvent): boolean | void;

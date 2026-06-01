@@ -10,8 +10,6 @@ import type { DrawerProps, DrawerState } from './Drawer.types';
  * The returned state can be modified with hooks before being passed to `renderDrawer`.
  */
 export const useDrawer = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
-  'use no memo';
-
   const { type, ...restProps } = props;
   const elementType = (type === 'inline' ? InlineDrawer : OverlayDrawer) as React.FC<
     InlineDrawerProps | OverlayDrawerProps
