@@ -56,13 +56,7 @@ export const CalendarGridRow = React.forwardRef<HTMLTableRowElement, CalendarGri
   return (
     <tr ref={ref} role={ariaRole} aria-hidden={ariaHidden} className={rowClassName}>
       {showWeekNumbers && weekNumbers && (
-        <th
-          className={classNames.weekNumberCell}
-          key={weekIndex}
-          title={titleString}
-          aria-label={titleString}
-          scope="row"
-        >
+        <th className={classNames.weekNumberCell} title={titleString} aria-label={titleString} scope="row">
           <span>{weekNumbers[weekIndex]}</span>
         </th>
       )}
