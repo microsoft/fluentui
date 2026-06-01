@@ -258,7 +258,8 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             <DirectionalSlide
               key={rowNum}
               replayKey={navigatedDate.getFullYear()}
-              {...{ animationDirection, animateBackwards }}
+              animationDirection={animationDirection}
+              animateBackwards={animateBackwards}
             >
               <div role="row" className={classNames.buttonRow}>
                 {monthsForRow.map((month: string, index: number) => {
