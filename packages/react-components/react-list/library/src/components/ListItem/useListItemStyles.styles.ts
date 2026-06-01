@@ -50,8 +50,6 @@ const useStyles = makeStyles({
  * Apply styling to the ListItem slots based on the state
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   const checkmarkBaseStyles = useCheckmarkBaseStyles();
   const styles = useStyles();

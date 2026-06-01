@@ -47,8 +47,6 @@ const useStyles = makeStyles({
 export const useVirtualizerScrollViewStyles_unstable = (
   state: VirtualizerScrollViewState,
 ): VirtualizerScrollViewState => {
-  'use no memo';
-
   const styles = useStyles();
 
   // Default virtualizer styles base

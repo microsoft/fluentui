@@ -12,8 +12,6 @@ import { flushSync } from 'react-dom';
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
-  'use no memo';
-
   const {
     itemSize,
     numItems,

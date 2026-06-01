@@ -9,8 +9,6 @@ import { stringifyDataAttribute } from '../../../utils';
  * Returns the state for a DrawerHeader component, given its props and ref.
  */
 export const useDrawerHeader = (props: DrawerHeaderProps, ref: React.Ref<HTMLElement>): DrawerHeaderState => {
-  'use no memo';
-
   const state: DrawerHeaderState = useDrawerHeader_unstable(props, ref);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-scroll-state'] = stringifyDataAttribute(state.scrollState);

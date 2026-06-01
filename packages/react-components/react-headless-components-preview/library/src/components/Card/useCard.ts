@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../utils/stringifyDataAttribute';
  * The returned state can be modified with hooks before being passed to `renderCard`.
  */
 export const useCard = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
-  ('use no memo');
-
   const state: CardState = useCardBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability

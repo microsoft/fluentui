@@ -113,8 +113,6 @@ const useDismissStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  'use no memo';
-
   const { disabled, focused, size } = state;
 
   const rootStyles = useRootStyles();

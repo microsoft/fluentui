@@ -13,7 +13,7 @@ export const useMessageBarBody = (
   props: MessageBarBodyProps,
   ref: ReactTypes.Ref<HTMLDivElement>,
 ): MessageBarBodyState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useMessageBarBody — manual opt-out to preserve runtime behavior
 
   return useMessageBarBody_unstable(props, ref);
 };

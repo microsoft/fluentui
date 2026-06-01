@@ -58,8 +58,6 @@ const useStyles = makeStyles({
  * Apply styling to the DialogActions slots based on the state
  */
 export const useDialogActionsStyles_unstable = (state: DialogActionsState): DialogActionsState => {
-  'use no memo';
-
   const resetStyles = useResetStyles();
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability

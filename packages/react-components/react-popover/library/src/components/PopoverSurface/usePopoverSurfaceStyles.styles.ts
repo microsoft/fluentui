@@ -65,8 +65,6 @@ const useStyles = makeStyles({
  * Apply styling to the PopoverSurface slots based on the state
  */
 export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): PopoverSurfaceState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(

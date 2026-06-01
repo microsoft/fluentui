@@ -81,6 +81,34 @@ jobs:
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
+  react-compiler-analyzer:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - run: yarn install --frozen-lockfile
+
+      - name: React Compiler analysis (affected)
+        run: |
+          yarn nx affected -t react-compiler-analyzer--lint --nxBail
+
   react-major-versions-integration:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge

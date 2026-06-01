@@ -19,8 +19,6 @@ const useRootBaseStyles = makeResetStyles({
  * Apply styling to the List slots based on the state
  */
 export const useListStyles_unstable = (state: ListState): ListState => {
-  'use no memo';
-
   const rootStyles = useRootBaseStyles();
 
   // eslint-disable-next-line react-hooks/immutability

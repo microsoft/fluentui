@@ -60,7 +60,6 @@ import { renderMenuItemSwitch_unstable as renderMenuItemSwitch } from '@fluentui
 import { renderMenuSplitGroup_unstable as renderMenuSplitGroup } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable as renderMenuTrigger } from '@fluentui/react-menu';
 import { useMenuContext_unstable as useMenuContext } from '@fluentui/react-menu';
-import { useMenuContextValues_unstable as useMenuContextValues } from '@fluentui/react-menu';
 import { useMenuDivider_unstable as useMenuDivider } from '@fluentui/react-menu';
 import { useMenuGroup_unstable as useMenuGroup } from '@fluentui/react-menu';
 import { useMenuGroupContextValues_unstable as useMenuGroupContextValues } from '@fluentui/react-menu';
@@ -69,6 +68,7 @@ import { useMenuItemCheckboxBase_unstable as useMenuItemCheckbox } from '@fluent
 import { useMenuItemLinkBase_unstable as useMenuItemLink } from '@fluentui/react-menu';
 import { useMenuItemRadioBase_unstable as useMenuItemRadio } from '@fluentui/react-menu';
 import { useMenuItemSwitchBase_unstable as useMenuItemSwitch } from '@fluentui/react-menu';
+import { useMenuListContextValues_unstable as useMenuListContextValues } from '@fluentui/react-menu';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
@@ -240,7 +240,8 @@ export const useMenu: (props: MenuProps) => MenuState;
 
 export { useMenuContext }
 
-export { useMenuContextValues }
+// @public (undocumented)
+export const useMenuContextValues: (state: MenuState) => MenuContextValues;
 
 export { useMenuDivider }
 
@@ -263,6 +264,8 @@ export { useMenuItemSwitch }
 
 // @public
 export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;
+
+export { useMenuListContextValues }
 
 // @public (undocumented)
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>) => MenuPopoverState;

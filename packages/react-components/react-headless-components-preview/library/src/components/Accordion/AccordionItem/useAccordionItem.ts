@@ -15,8 +15,6 @@ import { stringifyDataAttribute } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderAccordionItem`.
  */
 export const useAccordionItem = (props: AccordionItemProps, ref: React.Ref<HTMLElement>): AccordionItemState => {
-  'use no memo';
-
   const state: AccordionItemState = useAccordionItem_unstable(props, ref);
 
   // Set data attributes for open and disabled states to simplify styling of these states.

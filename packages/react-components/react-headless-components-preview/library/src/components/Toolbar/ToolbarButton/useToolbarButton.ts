@@ -14,8 +14,6 @@ export const useToolbarButton = (
   props: ToolbarButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToolbarButtonState => {
-  'use no memo';
-
   const state: ToolbarButtonState = useToolbarButtonBase_unstable(props, ref);
 
   // Set data attributes for vertical, disabled, disabledFocusable, and iconOnly states to simplify styling.

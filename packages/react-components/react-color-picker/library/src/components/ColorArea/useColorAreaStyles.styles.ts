@@ -110,8 +110,6 @@ const useShapeStyles = makeStyles({
  * Apply styling to the ColorArea slots based on the state
  */
 export const useColorAreaStyles_unstable = (state: ColorAreaState): ColorAreaState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const thumbStyles = useThumbStyles();
   const inputStyles = useInputStyles();

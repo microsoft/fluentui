@@ -25,8 +25,6 @@ const useRootBaseClassName = makeResetStyles({
  * Apply styling to the ToastContainer slots based on the state
  */
 export const useToastContainerStyles_unstable = (state: ToastContainerState): ToastContainerState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(toastContainerClassNames.root, rootBaseClassName, state.root.className);
