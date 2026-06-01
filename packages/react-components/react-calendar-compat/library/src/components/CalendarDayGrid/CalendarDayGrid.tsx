@@ -198,7 +198,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           />
         </DirectionalSlide>
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
-          <DirectionalSlide key={weekIndex} replayKey={navigationEpoch} {...{ animationDirection, animateBackwards }}>
+          <DirectionalSlide key={weekIndex} replayKey={navigationEpoch} animationDirection={animationDirection} animateBackwards={animateBackwards}>
             <CalendarGridRow
               {...props}
               {...partialWeekProps}
