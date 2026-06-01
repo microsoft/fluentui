@@ -47,7 +47,7 @@ export const FADE_OUT = {
 
 // === SLIDE ANIMATIONS ===
 
-/** @deprecated Slide animations now use DirectionalSlide motion component. */
+/** @deprecated Slide-in animations now use the `DirectionalSlideIn` motion component. */
 export const SLIDE_DOWN_IN20 = {
   from: {
     pointerEvents: 'none' as const,
@@ -59,7 +59,7 @@ export const SLIDE_DOWN_IN20 = {
   },
 };
 
-/** @deprecated Slide animations now use DirectionalSlide motion component. */
+/** @deprecated Slide-in animations now use the `DirectionalSlideIn` motion component. */
 export const SLIDE_UP_IN20 = {
   from: {
     pointerEvents: 'none' as const,
@@ -71,7 +71,7 @@ export const SLIDE_UP_IN20 = {
   },
 };
 
-/** @deprecated Slide animations now use DirectionalSlide motion component. */
+/** @deprecated Slide-in animations now use the `DirectionalSlideIn` motion component. */
 export const SLIDE_LEFT_IN20 = {
   from: {
     pointerEvents: 'none' as const,
@@ -83,7 +83,7 @@ export const SLIDE_LEFT_IN20 = {
   },
 };
 
-/** @deprecated Slide animations now use DirectionalSlide motion component. */
+/** @deprecated Slide-in animations now use the `DirectionalSlideIn` motion component. */
 export const SLIDE_RIGHT_IN20 = {
   from: {
     pointerEvents: 'none' as const,
@@ -95,7 +95,7 @@ export const SLIDE_RIGHT_IN20 = {
   },
 };
 
-/** @deprecated Slide animations now use DirectionalSlide motion component. */
+/** @deprecated Slide-out animations now use the `DirectionalSlideOut` motion component. */
 export const SLIDE_DOWN_OUT20 = {
   from: {
     transform: 'translate3d(0, 0, 0)',
@@ -105,7 +105,7 @@ export const SLIDE_DOWN_OUT20 = {
   },
 };
 
-/** @deprecated Slide animations now use DirectionalSlide motion component. */
+/** @deprecated Slide-out animations now use the `DirectionalSlideOut` motion component. */
 export const SLIDE_UP_OUT20 = {
   from: {
     transform: 'translate3d(0, 0, 0)',

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { DirectionalSlide } from './calendarMotions';
+import { DirectionalSlideIn } from './calendarMotions';
 import { AnimationDirection } from '../Calendar';
 
-describe('DirectionalSlide', () => {
+describe('DirectionalSlideIn', () => {
   it('renders its children with default props', () => {
     const { getByTestId } = render(
-      <DirectionalSlide>
+      <DirectionalSlideIn>
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     expect(getByTestId('child').textContent).toBe('content');
   });
@@ -20,18 +20,18 @@ describe('DirectionalSlide', () => {
     [AnimationDirection.Horizontal, true],
   ])('renders children with animationDirection=%s, animateBackwards=%s', (animationDirection, animateBackwards) => {
     const { getByTestId } = render(
-      <DirectionalSlide animationDirection={animationDirection} animateBackwards={animateBackwards}>
+      <DirectionalSlideIn animationDirection={animationDirection} animateBackwards={animateBackwards}>
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     expect(getByTestId('child')).toBeTruthy();
   });
 
   it('accepts custom duration and easing', () => {
     const { getByTestId } = render(
-      <DirectionalSlide duration={500} easing="linear">
+      <DirectionalSlideIn duration={500} easing="linear">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     expect(getByTestId('child')).toBeTruthy();
   });
@@ -39,34 +39,34 @@ describe('DirectionalSlide', () => {
   it('forwards its ref to the child element', () => {
     const ref = React.createRef<HTMLElement>();
     const { getByTestId } = render(
-      <DirectionalSlide ref={ref}>
+      <DirectionalSlideIn ref={ref}>
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     expect(ref.current).toBe(getByTestId('child'));
   });
 
   it('does not introduce a wrapper DOM element around the child', () => {
     const { container, getByTestId } = render(
-      <DirectionalSlide>
+      <DirectionalSlideIn>
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     expect(container.firstElementChild).toBe(getByTestId('child'));
   });
 
   it('preserves child DOM identity when replayKey changes (does not remount)', () => {
     const { getByTestId, rerender } = render(
-      <DirectionalSlide replayKey="a">
+      <DirectionalSlideIn replayKey="a">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     const childBefore = getByTestId('child');
 
     rerender(
-      <DirectionalSlide replayKey="b">
+      <DirectionalSlideIn replayKey="b">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     const childAfter = getByTestId('child');
 
@@ -75,16 +75,16 @@ describe('DirectionalSlide', () => {
 
   it('preserves child DOM identity across replayKey changes within the same direction', () => {
     const { getByTestId, rerender } = render(
-      <DirectionalSlide animateBackwards={false} replayKey="a">
+      <DirectionalSlideIn animateBackwards={false} replayKey="a">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     const childBefore = getByTestId('child');
 
     rerender(
-      <DirectionalSlide animateBackwards={false} replayKey="b">
+      <DirectionalSlideIn animateBackwards={false} replayKey="b">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
 
     expect(getByTestId('child')).toBe(childBefore);
@@ -92,16 +92,16 @@ describe('DirectionalSlide', () => {
 
   it('remounts the child when animateBackwards flips so the new slide direction takes effect', () => {
     const { getByTestId, rerender } = render(
-      <DirectionalSlide animateBackwards={false} replayKey="a">
+      <DirectionalSlideIn animateBackwards={false} replayKey="a">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
     const childBefore = getByTestId('child');
 
     rerender(
-      <DirectionalSlide animateBackwards={true} replayKey="b">
+      <DirectionalSlideIn animateBackwards={true} replayKey="b">
         <div data-testid="child">content</div>
-      </DirectionalSlide>,
+      </DirectionalSlideIn>,
     );
 
     expect(getByTestId('child')).not.toBe(childBefore);

@@ -13,7 +13,7 @@ import { useWeekCornerStyles } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
 import type { Day, DayOfWeek } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
-import { DirectionalSlide, DirectionalSlideOut } from '../../utils/calendarMotions';
+import { DirectionalSlideIn, DirectionalSlideOut } from '../../utils/calendarMotions';
 import { AnimationDirection } from '../../Calendar';
 
 export interface DayInfo extends Day {
@@ -199,7 +199,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           />
         </DirectionalSlideOut>
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
-          <DirectionalSlide
+          <DirectionalSlideIn
             key={weekIndex}
             replayKey={navigationEpoch}
             animationDirection={animationDirection}
@@ -212,7 +212,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
               weekIndex={weekIndex}
               rowClassName={classNames.weekRow}
             />
-          </DirectionalSlide>
+          </DirectionalSlideIn>
         ))}
         <DirectionalSlideOut
           edge="last"

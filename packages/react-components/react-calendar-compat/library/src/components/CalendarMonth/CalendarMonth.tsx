@@ -18,7 +18,7 @@ import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
-import { DirectionalSlide } from '../../utils/calendarMotions';
+import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
@@ -255,7 +255,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
         {rowIndexes.map((rowNum: number) => {
           const monthsForRow = strings!.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
           return (
-            <DirectionalSlide
+            <DirectionalSlideIn
               key={rowNum}
               replayKey={navigatedDate.getFullYear()}
               animationDirection={animationDirection}
@@ -298,7 +298,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
                   );
                 })}
               </div>
-            </DirectionalSlide>
+            </DirectionalSlideIn>
           );
         })}
       </div>

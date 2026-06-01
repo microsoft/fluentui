@@ -7,7 +7,7 @@ import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
 import { AnimationDirection } from '../Calendar';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-export type DirectionalSlideProps = {
+export type DirectionalSlideInProps = {
   duration?: number;
   easing?: string;
   animationDirection?: AnimationDirection;
@@ -23,8 +23,8 @@ export type DirectionalSlideProps = {
 
 // `forwardRef` per the repo rule banning `React.FC`. This wrapper renders no DOM of its own,
 // so the forwarded ref is cloned onto the child below — callers get a ref to the actual
-// `<tr>`/`<div role="row">`, keeping `DirectionalSlide` transparent.
-export const DirectionalSlide = React.forwardRef<HTMLElement, DirectionalSlideProps>((props, ref) => {
+// `<tr>`/`<div role="row">`, keeping `DirectionalSlideIn` transparent.
+export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlideInProps>((props, ref) => {
   const {
     // Using durationSlower (400ms) as the closest token to the original 367ms
     duration = motionTokens.durationSlower,
@@ -61,7 +61,7 @@ export const DirectionalSlide = React.forwardRef<HTMLElement, DirectionalSlidePr
   );
 });
 
-DirectionalSlide.displayName = 'DirectionalSlide';
+DirectionalSlideIn.displayName = 'DirectionalSlideIn';
 
 // One-way "out" motion for the day grid's transition (filler) rows. It fades and slides the row
 // out in the navigation direction (the top row slides up, the bottom row slides down). The row is
@@ -82,13 +82,13 @@ export type DirectionalSlideOutProps = {
   animateBackwards?: boolean;
   /**
    * When this value changes, the slide-out animation replays from the start on the same DOM element
-   * without remounting the subtree, matching {@link DirectionalSlide}.
+   * without remounting the subtree, matching {@link DirectionalSlideIn}.
    */
   replayKey?: string | number;
   children: JSXElement;
 };
 
-// `forwardRef` per the repo rule banning `React.FC`. Like `DirectionalSlide`, this wrapper renders
+// `forwardRef` per the repo rule banning `React.FC`. Like `DirectionalSlideIn`, this wrapper renders
 // no DOM of its own — the forwarded ref is cloned onto the child so callers get a ref to the actual
 // `<tr>`, keeping the wrapper transparent for table semantics.
 export const DirectionalSlideOut = React.forwardRef<HTMLElement, DirectionalSlideOutProps>((props, ref) => {

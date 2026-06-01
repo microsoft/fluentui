@@ -5,7 +5,7 @@ import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
-import { DirectionalSlide } from '../../utils/calendarMotions';
+import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import type {
   CalendarYearStrings,
   CalendarYearProps,
@@ -178,7 +178,7 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
       {cells.map((cellRow: React.ReactNode[], index: number) => {
         return (
-          <DirectionalSlide
+          <DirectionalSlideIn
             key={index}
             replayKey={fromYear}
             animationDirection={animationDirection}
@@ -187,7 +187,7 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
             <div role="row" className={classNames.buttonRow}>
               {cellRow}
             </div>
-          </DirectionalSlide>
+          </DirectionalSlideIn>
         );
       })}
     </div>
