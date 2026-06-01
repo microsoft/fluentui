@@ -360,20 +360,18 @@ const CalendarYearHeader: React.FunctionComponent<CalendarYearHeaderProps> = pro
 };
 CalendarYearHeader.displayName = 'CalendarYearHeader';
 
-function useAnimateBackwards({ selectedYear, navigatedYear }: CalendarYearProps) {
-  const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-  const fromYear = Math.floor(rangeYear / 10) * 10;
-
-  const previousFromYearRef = React.useRef<number | undefined>(fromYear);
-  React.useRef(() => {
+function useAnimateBackwards(fromYear: number): boolean | undefined {
+  const previousFromYearRef = React.useRef<number | undefined>(undefined);
+  React.useEffect(() => {
     previousFromYearRef.current = fromYear;
   });
   // eslint-disable-next-line react-hooks/refs
   const previousFromYear = previousFromYearRef.current;
 
   // eslint-disable-next-line react-hooks/refs
-  if (!previousFromYear || previousFromYear === fromYear) {
+  if (previousFromYear === undefined || previousFromYear === fromYear) {
     return undefined;
+    // eslint-disable-next-line react-hooks/refs
   } else if (previousFromYear > fromYear) {
     return true;
   } else {
@@ -414,8 +412,8 @@ function useYearRangeState({ selectedYear, navigatedYear, onNavigateDate }: Cale
  * @internal
  */
 export const CalendarYear: React.FunctionComponent<CalendarYearProps> = props => {
-  const animateBackwards = useAnimateBackwards(props);
   const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
+  const animateBackwards = useAnimateBackwards(fromYear);
 
   const gridRef = React.useRef<CalendarYearGrid>(null);
 
