@@ -1,41 +1,72 @@
 'use client';
 
-import type * as React from 'react';
-import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from '@fluentui/priority-overflow';
-import type { ContextSelector, Context } from '@fluentui/react-context-selector';
-import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type {
+  OverflowItemEntry,
+  OverflowDividerEntry,
+  OverflowGroupState,
+  OverflowSnapshot,
+} from '@fluentui/priority-overflow';
+import { EMPTY_SNAPSHOT } from '@fluentui/priority-overflow';
+import * as React from 'react';
 
 /**
  * @internal
  */
 export interface OverflowContextValue {
+  /**
+   * @deprecated This value is not guaranteed to be up to date and should not be used directly. Use getSnapshot or the provided hooks instead
+   */
   itemVisibility: Record<string, boolean>;
+  /**
+   * @deprecated This value is not guaranteed to be up to date and should not be used directly. Use getSnapshot or the provided hooks instead
+   */
   groupVisibility: Record<string, OverflowGroupState>;
+  /**
+   * @deprecated This value is not guaranteed to be up to date and should not be used directly. Use getSnapshot or the provided hooks instead
+   */
   hasOverflow: boolean;
   registerItem: (item: OverflowItemEntry) => () => void;
   registerOverflowMenu: (el: HTMLElement) => () => void;
   registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
   containerRef?: React.RefObject<HTMLElement | null>;
+  getSnapshot: () => OverflowSnapshot;
+  subscribe: (listener: () => void) => () => void;
 }
 
-export const OverflowContext = createContext<OverflowContextValue | undefined>(
+export const OverflowContext = React.createContext<OverflowContextValue | undefined>(
   undefined,
-) as Context<OverflowContextValue>;
+) as React.Context<OverflowContextValue>;
+
+const noop = () => {
+  /* noop */
+};
 
 const overflowContextDefaultValue: OverflowContextValue = {
+  hasOverflow: false,
   itemVisibility: {},
   groupVisibility: {},
-  hasOverflow: false,
-  registerItem: () => () => null,
-  updateOverflow: () => null,
-  registerOverflowMenu: () => () => null,
-  registerDivider: () => () => null,
+  registerItem: () => noop,
+  updateOverflow: noop,
+  registerOverflowMenu: () => noop,
+  registerDivider: () => noop,
+  getSnapshot: () => EMPTY_SNAPSHOT,
+  subscribe: () => noop,
 };
 
 /**
  * @internal
  */
-export const useOverflowContext = <SelectedValue>(
-  selector: ContextSelector<OverflowContextValue, SelectedValue>,
-): SelectedValue => useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));
+export function useOverflowContext(): OverflowContextValue;
+/**
+ * @internal
+ */
+export function useOverflowContext<SelectedValue>(
+  selector: (context: OverflowContextValue) => SelectedValue,
+): SelectedValue;
+export function useOverflowContext<SelectedValue>(
+  selector?: (context: OverflowContextValue) => SelectedValue,
+): SelectedValue | OverflowContextValue {
+  const context = React.useContext(OverflowContext) ?? overflowContextDefaultValue;
+  return selector ? selector(context) : context;
+}

@@ -90,6 +90,29 @@ export interface OverflowEventPayload {
 }
 
 /**
+ * Indexed, immutable overflow state returned by `OverflowManager.getSnapshot`.
+ *
+ * Unlike {@link OverflowEventPayload}, this is shaped for O(1) consumer lookups (item/group
+ * visibility by id, item count) rather than ordered item entries.
+ */
+export interface OverflowSnapshot {
+  /**
+   * Visibility of each registered item, keyed by item id.
+   */
+  itemVisibility: Record<string, boolean>;
+
+  /**
+   * Current visibility state by group id.
+   */
+  groupVisibility: Record<string, OverflowGroupState>;
+
+  /**
+   * Number of items currently moved to overflow (invisible).
+   */
+  invisibleItemCount: number;
+}
+
+/**
  * Payload for item-level visibility updates.
  */
 export interface OnUpdateItemVisibilityPayload {
@@ -204,4 +227,14 @@ export interface OverflowManager {
    * Unsets the overflow menu element
    */
   removeOverflowMenu: () => void;
+
+  /**
+   * Returns the current overflow snapshot.
+   */
+  getSnapshot: () => OverflowSnapshot;
+
+  /**
+   * Subscribes to snapshot changes.
+   */
+  subscribe: (listener: () => void) => () => void;
 }
