@@ -399,3 +399,16 @@ export const ScrollingLongContent: Story = {
     },
   ],
 };
+
+export const WithTablist: Story = {
+  args: {
+    closeSlottedContent: () => html``,
+    slottedContent: () => html`
+      <fluent-tablist activeid="tab2">
+        <fluent-tab id="tab1">tab 1</fluent-tab>
+        <fluent-tab id="tab2">tab 2</fluent-tab>
+        <fluent-tab id="tab3">tab 3</fluent-tab>
+      </fluent-tablist>
+    `,
+  },
+};
