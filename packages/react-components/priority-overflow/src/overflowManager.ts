@@ -9,7 +9,7 @@ import type {
   OverflowManager,
   ObserveOptions,
   OverflowDividerEntry,
-  OverflowEventPayload,
+  OverflowSnapshot,
 } from './types';
 
 const DEFAULT_OPTIONS: Required<ObserveOptions> = {
@@ -52,10 +52,9 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     /* noop */
   };
 
-  let snapshot: OverflowEventPayload = EMPTY_SNAPSHOT;
-  const takeSnapshot = (nextSnapshot: OverflowEventPayload) => {
+  let snapshot: OverflowSnapshot = EMPTY_SNAPSHOT;
+  const takeSnapshot = (nextSnapshot: OverflowSnapshot) => {
     snapshot = nextSnapshot;
-    options.onUpdateOverflow(snapshot);
     listeners.forEach(listener => listener());
   };
 
@@ -117,11 +116,10 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
   const visibleItemQueue = createPriorityQueue<string>(compareItems);
 
   function occupiedSize(): number {
-    const totalItemSize = visibleItemQueue
-      .all()
-      .map(id => overflowItems[id].element)
-      .map(getOffsetSize)
-      .reduce((prev, current) => prev + current, 0);
+    let totalItemSize = 0;
+    for (const id of visibleItemQueue) {
+      totalItemSize += getOffsetSize(overflowItems[id].element);
+    }
 
     const totalDividerSize = Object.entries(groupManager.groupVisibility()).reduce(
       (acc, [id, state]) =>
@@ -162,17 +160,33 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
   };
 
   const dispatchOverflowUpdate = () => {
-    const visibleItemIds = visibleItemQueue.all();
-    const invisibleItemIds = invisibleItemQueue.all();
+    const groupVisibility = groupManager.groupVisibility();
 
-    const visibleItems = visibleItemIds.map(itemId => overflowItems[itemId]);
-    const invisibleItems = invisibleItemIds.map(itemId => overflowItems[itemId]);
+    // Build the legacy ordered-entry arrays and the snapshot's id -> visible map in a single pass
+    // over each queue.
+    const itemVisibility: Record<string, boolean> = {};
+    const visibleItems: OverflowItemEntry[] = [];
+    const invisibleItems: OverflowItemEntry[] = [];
 
+    for (const itemId of visibleItemQueue) {
+      itemVisibility[itemId] = true;
+      visibleItems.push(overflowItems[itemId]);
+    }
+    for (const itemId of invisibleItemQueue) {
+      itemVisibility[itemId] = false;
+      invisibleItems.push(overflowItems[itemId]);
+    }
+
+    // Set the snapshot first so `getSnapshot()` is current for both subscribers and any
+    // `onUpdateOverflow` consumer that reads it.
     takeSnapshot({
-      visibleItems,
-      invisibleItems,
-      groupVisibility: groupManager.groupVisibility(),
+      itemVisibility,
+      groupVisibility,
+      invisibleItemCount: invisibleItems.length,
     });
+
+    // Legacy event payload: ordered item entries for `onUpdateOverflow` consumers.
+    options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility });
   };
 
   const getSnapshot: OverflowManager['getSnapshot'] = () => snapshot;

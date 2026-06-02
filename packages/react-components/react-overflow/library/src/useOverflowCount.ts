@@ -1,6 +1,6 @@
 'use client';
 
-import type { OverflowEventPayload } from '@fluentui/priority-overflow';
+import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
@@ -8,4 +8,4 @@ import { useOverflowSnapshot } from './useOverflowSnapshot';
  */
 export const useOverflowCount = (): number => useOverflowSnapshot(selectInvisibleItemCount);
 
-const selectInvisibleItemCount = (snapshot: OverflowEventPayload): number => snapshot.invisibleItems.length;
+const selectInvisibleItemCount = (snapshot: OverflowSnapshot): number => snapshot.invisibleItemCount;

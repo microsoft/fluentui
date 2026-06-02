@@ -4,7 +4,7 @@ import type {
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowGroupState,
-  OverflowEventPayload,
+  OverflowSnapshot,
 } from '@fluentui/priority-overflow';
 import { EMPTY_SNAPSHOT } from '@fluentui/priority-overflow';
 import * as React from 'react';
@@ -30,7 +30,7 @@ export interface OverflowContextValue {
   registerDivider: (divider: OverflowDividerEntry) => () => void;
   updateOverflow: (padding?: number) => void;
   containerRef?: React.RefObject<HTMLElement | null>;
-  getSnapshot: () => OverflowEventPayload;
+  getSnapshot: () => OverflowSnapshot;
   subscribe: (listener: () => void) => () => void;
 }
 

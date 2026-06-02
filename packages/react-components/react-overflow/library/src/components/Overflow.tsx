@@ -2,12 +2,7 @@
 
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import type {
-  ObserveOptions,
-  OnUpdateOverflow,
-  OverflowEventPayload,
-  OverflowGroupState,
-} from '@fluentui/priority-overflow';
+import type { ObserveOptions, OnUpdateOverflow, OverflowGroupState } from '@fluentui/priority-overflow';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
@@ -17,7 +12,6 @@ import {
 
 import { OverflowContext, type OverflowContextValue } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
-import { selectVisibility } from '../useOverflowVisibility';
 import { useOverflowStyles } from './useOverflowStyles.styles';
 
 interface OverflowState {
@@ -58,7 +52,13 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   } = props;
 
   const update: OnUpdateOverflow = data => {
-    onOverflowChange?.(null, _overflowPayloadToState(data));
+    const snapshot = getSnapshot();
+    const state: OverflowState = {
+      hasOverflow: snapshot.invisibleItemCount > 0,
+      itemVisibility: snapshot.itemVisibility,
+      groupVisibility: snapshot.groupVisibility,
+    };
+    onOverflowChange?.(null, state);
   };
 
   const { containerRef, getSnapshot, subscribe, registerItem, updateOverflow, registerOverflowMenu, registerDivider } =
@@ -94,12 +94,4 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   );
 
   return <OverflowContext.Provider value={ctx}>{clonedChild}</OverflowContext.Provider>;
-});
-
-/**
- * @internal
- */
-export const _overflowPayloadToState = (data: OverflowEventPayload): OverflowState => ({
-  ...selectVisibility(data),
-  hasOverflow: data.invisibleItems.length > 0,
 });

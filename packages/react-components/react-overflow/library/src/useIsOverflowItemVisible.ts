@@ -7,5 +7,5 @@ import { useOverflowSnapshot } from './useOverflowSnapshot';
  * @returns visibility state of an overflow item
  */
 export function useIsOverflowItemVisible(id: string): boolean {
-  return useOverflowSnapshot(snapshot => snapshot.visibleItems.some(item => item.id === id));
+  return useOverflowSnapshot(snapshot => !!snapshot.itemVisibility[id]);
 }

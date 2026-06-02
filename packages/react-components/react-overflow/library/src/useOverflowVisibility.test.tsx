@@ -13,12 +13,9 @@ describe('useOverflowVisibility', () => {
     } as const;
 
     const snapshot = {
-      visibleItems: [
-        { id: 'foo', element: document.createElement('div'), priority: 0 },
-        { id: 'bar', element: document.createElement('div'), priority: 0 },
-      ],
-      invisibleItems: [{ id: 'baz', element: document.createElement('div'), priority: 0 }],
+      itemVisibility: { foo: true, bar: true, baz: false },
       groupVisibility,
+      invisibleItemCount: 1,
     };
 
     const Wrapper: React.FC<{ children?: React.ReactNode }> = props => {

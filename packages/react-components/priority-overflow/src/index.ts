@@ -12,4 +12,5 @@ export type {
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowManager,
+  OverflowSnapshot,
 } from './types';

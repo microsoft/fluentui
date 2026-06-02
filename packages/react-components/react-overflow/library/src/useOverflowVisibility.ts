@@ -1,6 +1,6 @@
 'use client';
 
-import type { OverflowEventPayload, OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowGroupState, OverflowSnapshot } from '@fluentui/priority-overflow';
 import { useOverflowSnapshot } from './useOverflowSnapshot';
 
 /**
@@ -19,25 +19,12 @@ export function useOverflowVisibility(): {
   return useOverflowSnapshot(selectVisibility);
 }
 
-/**
- * Derives the item and group visibility maps from an overflow snapshot.
- * @internal
- */
-export const selectVisibility = (
-  snapshot: OverflowEventPayload,
+const selectVisibility = (
+  snapshot: OverflowSnapshot,
 ): {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
-} => {
-  const itemVisibility: Record<string, boolean> = {};
-  snapshot.visibleItems.forEach(item => {
-    itemVisibility[item.id] = true;
-  });
-  snapshot.invisibleItems.forEach(item => {
-    itemVisibility[item.id] = false;
-  });
-  return {
-    itemVisibility,
-    groupVisibility: snapshot.groupVisibility,
-  };
-};
+} => ({
+  itemVisibility: snapshot.itemVisibility,
+  groupVisibility: snapshot.groupVisibility,
+});

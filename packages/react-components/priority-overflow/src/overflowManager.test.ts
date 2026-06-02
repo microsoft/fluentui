@@ -46,15 +46,15 @@ describe('overflowManager', () => {
   });
 
   const getVisibleIds = (manager: ReturnType<typeof createOverflowManager>) =>
-    manager
-      .getSnapshot()
-      .visibleItems.map(item => item.id)
+    Object.entries(manager.getSnapshot().itemVisibility)
+      .filter(([, visible]) => visible)
+      .map(([id]) => id)
       .sort();
 
   const getInvisibleIds = (manager: ReturnType<typeof createOverflowManager>) =>
-    manager
-      .getSnapshot()
-      .invisibleItems.map(item => item.id)
+    Object.entries(manager.getSnapshot().itemVisibility)
+      .filter(([, visible]) => !visible)
+      .map(([id]) => id)
       .sort();
 
   it('should expose a stable snapshot after forceUpdate', () => {
@@ -130,9 +130,9 @@ describe('overflowManager', () => {
     manager.disconnect();
 
     expect(manager.getSnapshot()).toEqual({
-      visibleItems: [],
-      invisibleItems: [],
+      itemVisibility: {},
       groupVisibility: {},
+      invisibleItemCount: 0,
     });
   });
 
@@ -151,9 +151,9 @@ describe('overflowManager', () => {
     manager.forceUpdate();
 
     expect(manager.getSnapshot()).toEqual({
-      visibleItems: [],
-      invisibleItems: [],
+      itemVisibility: {},
       groupVisibility: {},
+      invisibleItemCount: 0,
     });
   });
 });

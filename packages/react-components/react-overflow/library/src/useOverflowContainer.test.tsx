@@ -20,7 +20,7 @@ const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
     addDivider: jest.fn(),
     removeDivider: jest.fn(),
     setOptions: jest.fn(),
-    getSnapshot: jest.fn(() => ({ visibleItems: [], invisibleItems: [], groupVisibility: {} })),
+    getSnapshot: jest.fn(() => ({ itemVisibility: {}, groupVisibility: {}, invisibleItemCount: 0 })),
     subscribe: jest.fn(() => () => null),
   };
   (createOverflowManager as jest.Mock).mockReturnValue({
