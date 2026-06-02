@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Minor refactor of modifyImports/fullsource helpers carried on this branch from an earlier dev session; no published runtime changes.",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "none"
+}
