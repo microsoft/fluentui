@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { ArrowLeft, Backspace, Enter, Space } from '@fluentui/keyboard-keys';
 import * as React from 'react';
 
@@ -89,7 +89,9 @@ describe('useTagPickerInput_unstable', () => {
       currentTarget: { selectionStart: 0, selectionEnd: 0 },
       preventDefault: jest.fn(),
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
-    result.current.root.onKeyDown?.(event);
+    act(() => {
+      result.current.root.onKeyDown?.(event);
+    });
 
     expect(setOpen).toHaveBeenCalledWith(event, false);
   });
@@ -107,7 +109,9 @@ describe('useTagPickerInput_unstable', () => {
       currentTarget: { selectionStart: 0, selectionEnd: 0 },
       preventDefault: jest.fn(),
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
-    result.current.root.onKeyDown?.(event);
+    act(() => {
+      result.current.root.onKeyDown?.(event);
+    });
 
     expect(setOpen).toHaveBeenCalledWith(event, true);
   });
@@ -129,7 +133,9 @@ describe('useTagPickerInput_unstable', () => {
       currentTarget: { selectionStart: 0, selectionEnd: 0 },
       preventDefault: jest.fn(),
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
-    result.current.root.onKeyDown?.(event);
+    act(() => {
+      result.current.root.onKeyDown?.(event);
+    });
 
     expect(findLastFocusable).toHaveBeenCalledWith(group);
   });
@@ -147,7 +153,9 @@ describe('useTagPickerInput_unstable', () => {
       currentTarget: { selectionStart: 1, selectionEnd: 1 },
       preventDefault: jest.fn(),
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
-    result.current.root.onKeyDown?.(event);
+    act(() => {
+      result.current.root.onKeyDown?.(event);
+    });
 
     expect(userKeyDown).toHaveBeenCalledWith(event);
   });
