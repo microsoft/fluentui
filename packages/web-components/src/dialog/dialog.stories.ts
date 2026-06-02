@@ -402,6 +402,8 @@ export const ScrollingLongContent: Story = {
 
 export const WithTablist: Story = {
   args: {
+    ariaLabel: 'With Tablist',
+    titleSlottedContent: () => html` <h2 slot="title">With Tablist</h2> `,
     closeSlottedContent: () => html``,
     slottedContent: () => html`
       <fluent-tablist activeid="tab2">
