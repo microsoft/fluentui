@@ -12,5 +12,5 @@ export function getFileTypeIconAsUrl(
   options: IFileTypeIconOptions,
   baseUrl: string = DEFAULT_BASE_URL,
 ): string | undefined {
-  return resolveFileTypeIconUrl(options, baseUrl)?.src;
+  return resolveFileTypeIconUrl(options, baseUrl).src;
 }

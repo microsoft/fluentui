@@ -14,9 +14,8 @@ export function getFileTypeIconAsHTMLString(
 ): string | undefined {
   const resolution = resolveFileTypeIconUrl(options, baseUrl);
 
-  if (resolution?.usesPixelRatioDirectory) {
+  if (resolution.usesPixelRatioDirectory) {
     return `<img src="${resolution.src}" height="100%" width="100%" />`;
-  } else if (resolution) {
-    return `<img src="${resolution.src}" alt="" />`;
   }
+  return `<img src="${resolution.src}" alt="" />`;
 }

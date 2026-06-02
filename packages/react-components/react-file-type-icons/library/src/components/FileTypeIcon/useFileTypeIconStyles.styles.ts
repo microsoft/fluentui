@@ -16,8 +16,6 @@ const useStyles = makeStyles({
 });
 
 export const useFileTypeIconStyles_unstable = (state: FileTypeIconState): FileTypeIconState => {
-  'use no memo';
-
   const styles = useStyles();
 
   state.root.className = mergeClasses(fileTypeIconClassNames.root, styles.root, state.root.className);

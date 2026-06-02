@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { getFileTypeIconAsUrl } from '../../getFileTypeIconAsUrl';
-import { DEFAULT_ICON_SIZE, getFileTypeIconProps } from '../../getFileTypeIconProps';
+import { resolveFileTypeIconUrl } from '../../fileTypeIconUrl';
+import { DEFAULT_ICON_SIZE } from '../../getFileTypeIconProps';
 import type { FileTypeIconProps, FileTypeIconState } from './FileTypeIcon.types';
 
 /**
@@ -21,15 +21,17 @@ export const useFileTypeIcon_unstable = (
     ...rootProps
   } = props;
 
-  const options = { extension, type, size, imageFileType };
-  const iconProps = getFileTypeIconProps(options);
-  const src = getFileTypeIconAsUrl(options, baseUrl);
+  const {
+    src,
+    iconName,
+    ariaLabel: resolvedAriaLabel,
+  } = resolveFileTypeIconUrl({ extension, type, size, imageFileType }, baseUrl);
 
-  const state: FileTypeIconState = {
+  return {
     size,
     imageFileType,
     baseUrl,
-    iconName: iconProps.iconName,
+    iconName,
     src,
     extension,
     type,
@@ -39,22 +41,14 @@ export const useFileTypeIcon_unstable = (
     root: slot.always(
       getIntrinsicElementProps('img', {
         ref,
+        width: size,
+        height: size,
         ...rootProps,
         src,
-        'aria-label': ariaLabel ?? iconProps['aria-label'],
-        'data-icon-name': iconProps.iconName,
+        'aria-label': ariaLabel ?? resolvedAriaLabel,
+        'data-icon-name': iconName,
       }),
       { elementType: 'img' },
     ),
   };
-
-  if (state.root.width === undefined) {
-    state.root.width = size;
-  }
-
-  if (state.root.height === undefined) {
-    state.root.height = size;
-  }
-
-  return state;
 };

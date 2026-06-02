@@ -1,3 +1,4 @@
+import { canUseDOM } from '@fluentui/react-utilities';
 import { FileTypeIconMap } from './FileTypeIconMap';
 import type { FileIconType, FileIconTypeInput } from './FileIconType';
 
@@ -103,36 +104,43 @@ export function getFileTypeIconNameFromExtensionOrType(
   return GENERIC_FILE;
 }
 
-export function getFileTypeIconSuffix(
+export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
+  const { dprDir, ext } = getDevicePixelRatioVariant(size, imageFileType);
+  return size + dprDir + '_' + ext;
+}
+
+/**
+ * Internal helper that returns the device-pixel-ratio directory suffix and image extension to use
+ * for a given icon size + format. Centralizes the DPR branching so URL construction and the
+ * `getFileTypeIconSuffix` string output stay in lock-step.
+ */
+export function getDevicePixelRatioVariant(
   size: FileTypeIconSize,
   imageFileType: ImageFileType = 'svg',
-  win?: Window,
-): string {
-  const resolvedWindow =
-    win ?? (typeof globalThis !== 'undefined' && 'window' in globalThis ? globalThis.window : undefined);
-  const devicePixelRatio: number = resolvedWindow?.devicePixelRatio ?? 1;
-  let devicePixelRatioSuffix = ''; // Default is 1x
+): { dprDir: '' | '_1.5x' | '_2x' | '_3x' | '_4x'; ext: ImageFileType } {
+  const devicePixelRatio: number = canUseDOM() ? window.devicePixelRatio : 1;
+  let dprDir: '' | '_1.5x' | '_2x' | '_3x' | '_4x' = '';
 
   // SVGs scale well, so you can generally use the default image.
   // 1.5x is a special case where SVGs need a different image.
   if (imageFileType === 'svg' && devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
     // Currently missing 1.5x SVGs at size 20, snap to 1x for now
     if (size !== 20) {
-      devicePixelRatioSuffix = '_1.5x';
+      dprDir = '_1.5x';
     }
   } else if (imageFileType === 'png') {
     // To look good, PNGs should use a different image for higher device pixel ratios
     if (devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
       // Currently missing 1.5x icons for size 20, snap to 2x for now
-      devicePixelRatioSuffix = size === 20 ? '_2x' : '_1.5x';
+      dprDir = size === 20 ? '_2x' : '_1.5x';
     } else if (devicePixelRatio > 1.5 && devicePixelRatio <= 2) {
-      devicePixelRatioSuffix = '_2x';
+      dprDir = '_2x';
     } else if (devicePixelRatio > 2 && devicePixelRatio <= 3) {
-      devicePixelRatioSuffix = '_3x';
+      dprDir = '_3x';
     } else if (devicePixelRatio > 3) {
-      devicePixelRatioSuffix = '_4x';
+      dprDir = '_4x';
     }
   }
 
-  return size + devicePixelRatioSuffix + '_' + imageFileType;
+  return { dprDir, ext: imageFileType };
 }

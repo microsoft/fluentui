@@ -3,9 +3,6 @@ import { canUseDOM } from '@fluentui/react-utilities';
 import { FileTypeIconMap } from './FileTypeIconMap';
 import { DEFAULT_BASE_URL, ICON_SIZES } from './fileTypeIconUrl';
 
-const PNG_SUFFIX = '_png';
-const SVG_SUFFIX = '_svg';
-
 export { DEFAULT_BASE_URL, ICON_SIZES } from './fileTypeIconUrl';
 
 export interface IIconOptions {
@@ -15,17 +12,23 @@ export interface IIconOptions {
 
 type IconRecords = Record<string, unknown> & {
   __options: IIconOptions;
-  __remapped: Record<string, string>;
 };
 
 const GLOBAL_SETTINGS_PROP_NAME = '__globalSettings__';
 const ICON_SETTING_NAME = 'icons';
-const CALLBACK_STATE_PROP_NAME = '__callbacks__';
 const fileTypeIconSubset = { mergeImageProps: true };
 
-const moduleGlobalSettings: Record<string, unknown> = {
-  [CALLBACK_STATE_PROP_NAME]: {},
-};
+// Each entry produces a `<size><dir>_<ext>` key for every icon name.
+// SVGs only ship at 1x and 1.5x; PNGs ship the full DPR ladder.
+const ICON_VARIANTS: ReadonlyArray<{ dir: string; exts: ReadonlyArray<'png' | 'svg'> }> = [
+  { dir: '', exts: ['png', 'svg'] },
+  { dir: '_1.5x', exts: ['png', 'svg'] },
+  { dir: '_2x', exts: ['png'] },
+  { dir: '_3x', exts: ['png'] },
+  { dir: '_4x', exts: ['png'] },
+];
+
+const moduleGlobalSettings: Record<string, unknown> = {};
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {
@@ -38,34 +41,13 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
   const fileTypeIcons: { [key: string]: React.ReactElement } = {};
 
   iconTypes.forEach((type: string) => {
-    const baseUrlSizeType = baseUrl + size + '/' + type;
-    fileTypeIcons[type + size + PNG_SUFFIX] = createFileTypeIconImage(baseUrlSizeType + '.png', size);
-    fileTypeIcons[type + size + SVG_SUFFIX] = createFileTypeIconImage(baseUrlSizeType + '.svg', size);
-
-    // SVGs scale well, so you can generally use the default image.
-    // 1.5x is a special case where both SVGs and PNGs need a different image.
-
-    fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = createFileTypeIconImage(
-      baseUrl + size + '_1.5x/' + type + '.png',
-      size,
-    );
-    fileTypeIcons[type + size + '_1.5x' + SVG_SUFFIX] = createFileTypeIconImage(
-      baseUrl + size + '_1.5x/' + type + '.svg',
-      size,
-    );
-
-    fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = createFileTypeIconImage(
-      baseUrl + size + '_2x/' + type + '.png',
-      size,
-    );
-    fileTypeIcons[type + size + '_3x' + PNG_SUFFIX] = createFileTypeIconImage(
-      baseUrl + size + '_3x/' + type + '.png',
-      size,
-    );
-    fileTypeIcons[type + size + '_4x' + PNG_SUFFIX] = createFileTypeIconImage(
-      baseUrl + size + '_4x/' + type + '.png',
-      size,
-    );
+    ICON_VARIANTS.forEach(({ dir, exts }) => {
+      exts.forEach(ext => {
+        const key = `${type}${size}${dir}_${ext}`;
+        const src = `${baseUrl}${size}${dir}/${type}.${ext}`;
+        fileTypeIcons[key] = createFileTypeIconImage(src, size);
+      });
+    });
   });
 
   registerIcons(fileTypeIcons, options);
@@ -110,7 +92,6 @@ function getIconSettings(): IconRecords {
         disableWarnings: false,
         warnOnMissingIcons: true,
       },
-      __remapped: {},
     };
   }
 
@@ -127,9 +108,7 @@ function getGlobalSettings(): Record<string, unknown> {
   };
 
   if (!globalScope[GLOBAL_SETTINGS_PROP_NAME]) {
-    globalScope[GLOBAL_SETTINGS_PROP_NAME] = {
-      [CALLBACK_STATE_PROP_NAME]: {},
-    };
+    globalScope[GLOBAL_SETTINGS_PROP_NAME] = {};
   }
 
   return globalScope[GLOBAL_SETTINGS_PROP_NAME];

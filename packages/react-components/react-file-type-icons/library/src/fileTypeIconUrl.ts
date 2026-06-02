@@ -1,7 +1,7 @@
 import {
   DEFAULT_ICON_SIZE,
+  getDevicePixelRatioVariant,
   getFileTypeIconNameFromExtensionOrType,
-  getFileTypeIconSuffix,
 } from './getFileTypeIconProps';
 import type { IFileTypeIconOptions } from './getFileTypeIconProps';
 
@@ -12,27 +12,25 @@ export const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
 export type FileTypeIconUrlResolution = {
   src: string;
+  iconName: string;
+  ariaLabel?: string;
   usesPixelRatioDirectory: boolean;
 };
 
 export function resolveFileTypeIconUrl(
   options: IFileTypeIconOptions,
   baseUrl: string = DEFAULT_BASE_URL,
-): FileTypeIconUrlResolution | undefined {
+): FileTypeIconUrlResolution {
   const { extension, size = DEFAULT_ICON_SIZE, type, imageFileType } = options;
   const baseIconName = getFileTypeIconNameFromExtensionOrType(extension, type);
-  const baseSuffix = getFileTypeIconSuffix(size, imageFileType);
-  const suffixArray = baseSuffix.split('_');
+  const { dprDir, ext } = getDevicePixelRatioVariant(size, imageFileType);
 
-  if (suffixArray.length === 3) {
-    return {
-      src: `${baseUrl}${size}_${suffixArray[1]}/${baseIconName}.${suffixArray[2]}`,
-      usesPixelRatioDirectory: true,
-    };
-  } else if (suffixArray.length === 2) {
-    return {
-      src: `${baseUrl}${size}/${baseIconName}.${suffixArray[1]}`,
-      usesPixelRatioDirectory: false,
-    };
-  }
+  const src = dprDir ? `${baseUrl}${size}${dprDir}/${baseIconName}.${ext}` : `${baseUrl}${size}/${baseIconName}.${ext}`;
+
+  return {
+    src,
+    iconName: baseIconName + size + dprDir + '_' + ext,
+    ariaLabel: extension,
+    usesPixelRatioDirectory: dprDir !== '',
+  };
 }
