@@ -18,6 +18,7 @@ export const template: ElementViewTemplate<Dialog> = html`
     @cancel="${x => x.hide()}"
     ${ref('dialog')}
   >
+    <div tabindex="-1"></div>
     <slot></slot>
   </dialog>
 `;
