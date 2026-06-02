@@ -7,6 +7,9 @@
 // @internal
 export function createOverflowManager(initialOptions?: Partial<ObserveOptions>): OverflowManager;
 
+// @internal
+export const EMPTY_SNAPSHOT: OverflowEventPayload;
+
 // @public
 export interface ObserveOptions {
     hasHiddenItems?: boolean;

@@ -1,4 +1,4 @@
-import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP } from './consts';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP, EMPTY_SNAPSHOT } from './consts';
 import { observeResize } from './createResizeObserver';
 import { debounce } from './debounce';
 import type { PriorityQueue } from './priorityQueue';
@@ -52,11 +52,7 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     /* noop */
   };
 
-  let snapshot: OverflowEventPayload = {
-    visibleItems: [],
-    invisibleItems: [],
-    groupVisibility: {},
-  };
+  let snapshot: OverflowEventPayload = EMPTY_SNAPSHOT;
   const takeSnapshot = (nextSnapshot: OverflowEventPayload) => {
     snapshot = nextSnapshot;
     options.onUpdateOverflow(snapshot);
@@ -292,11 +288,7 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     sizeCache.clear();
 
     // notify subscribers that the manager is no longer tracking anything
-    takeSnapshot({
-      visibleItems: [],
-      invisibleItems: [],
-      groupVisibility: {},
-    });
+    takeSnapshot(EMPTY_SNAPSHOT);
   };
 
   const addItem: OverflowManager['addItem'] = items => {

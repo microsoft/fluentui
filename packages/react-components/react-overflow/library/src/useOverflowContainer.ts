@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { createOverflowManager } from '@fluentui/priority-overflow';
+import { createOverflowManager, EMPTY_SNAPSHOT } from '@fluentui/priority-overflow';
 
 /**
  * @internal
@@ -119,7 +119,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   }, []);
 
   const getSnapshot = React.useCallback<OverflowManager['getSnapshot']>(
-    () => managerRef.current?.getSnapshot() ?? defaultSnapshot,
+    () => managerRef.current?.getSnapshot() ?? EMPTY_SNAPSHOT,
     [],
   );
 
@@ -141,12 +141,6 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
 const noop = () => {
   /* noop */
-};
-
-const defaultSnapshot = {
-  visibleItems: [],
-  invisibleItems: [],
-  groupVisibility: {},
 };
 
 export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visible }) => {

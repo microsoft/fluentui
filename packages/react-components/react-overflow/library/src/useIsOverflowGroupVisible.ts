@@ -8,5 +8,5 @@ import { useOverflowSnapshot } from './useOverflowSnapshot';
  * @returns visibility state of the group
  */
 export function useIsOverflowGroupVisible(id: string): OverflowGroupState {
-  return useOverflowSnapshot().groupVisibility[id];
+  return useOverflowSnapshot(snapshot => snapshot.groupVisibility[id]);
 }

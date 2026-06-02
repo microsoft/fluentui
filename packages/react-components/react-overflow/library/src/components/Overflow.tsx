@@ -17,6 +17,7 @@ import {
 
 import { OverflowContext, type OverflowContextValue } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
+import { selectVisibility } from '../useOverflowVisibility';
 import { useOverflowStyles } from './useOverflowStyles.styles';
 
 interface OverflowState {
@@ -57,10 +58,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   } = props;
 
   const update: OnUpdateOverflow = data => {
-    if (!onOverflowChange) {
-      return;
-    }
-    onOverflowChange(null, _overflowPayloadToState(data));
+    onOverflowChange?.(null, _overflowPayloadToState(data));
   };
 
   const { containerRef, getSnapshot, subscribe, registerItem, updateOverflow, registerOverflowMenu, registerDivider } =
@@ -101,15 +99,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
 /**
  * @internal
  */
-export const _overflowPayloadToState = (data: OverflowEventPayload): OverflowState => {
-  const itemVisibility: Record<string, boolean> = {};
-  data.visibleItems.forEach(item => {
-    itemVisibility[item.id] = true;
-  });
-  data.invisibleItems.forEach(x => (itemVisibility[x.id] = false));
-  return {
-    itemVisibility,
-    groupVisibility: data.groupVisibility,
-    hasOverflow: data.invisibleItems.length > 0,
-  };
-};
+export const _overflowPayloadToState = (data: OverflowEventPayload): OverflowState => ({
+  ...selectVisibility(data),
+  hasOverflow: data.invisibleItems.length > 0,
+});

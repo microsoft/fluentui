@@ -6,6 +6,7 @@ import type {
   OverflowGroupState,
   OverflowEventPayload,
 } from '@fluentui/priority-overflow';
+import { EMPTY_SNAPSHOT } from '@fluentui/priority-overflow';
 import * as React from 'react';
 
 /**
@@ -49,11 +50,7 @@ const overflowContextDefaultValue: OverflowContextValue = {
   updateOverflow: noop,
   registerOverflowMenu: () => noop,
   registerDivider: () => noop,
-  getSnapshot: () => ({
-    visibleItems: [],
-    invisibleItems: [],
-    groupVisibility: {},
-  }),
+  getSnapshot: () => EMPTY_SNAPSHOT,
   subscribe: () => noop,
 };
 
