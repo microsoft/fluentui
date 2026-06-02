@@ -80,6 +80,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
     backgroundClip: 'content-box',
 
     borderBottomLeftRadius: `${tokens.borderRadiusSmall} /* @noflip */`,
+    clipPath: 'polygon(-1px -1px, calc(100% + 1px) calc(100% + 1px), -1px calc(100% + 1px))',
     transform: 'rotate(var(--fui-positioning-arrow-angle)) /* @noflip */',
 
     height: 'var(--fui-positioning-arrow-height)',

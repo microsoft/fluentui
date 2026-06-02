@@ -47,7 +47,6 @@ const useStyles = makeStyles({
 
   arrow: {
     ...createArrowStyles({ arrowHeight }),
-    clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)',
   },
 });
 
