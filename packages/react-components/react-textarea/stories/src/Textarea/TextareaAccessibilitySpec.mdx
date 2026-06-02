@@ -1,0 +1,176 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/Textarea" />
+
+# Textarea Accessibility Spec
+
+`Textarea` is a multi-line text entry control. It wraps a native HTML `<textarea>` element in a styled `<span>` container that provides the focus-indicator border animation. There is no slot for in-field decoration — `Textarea` exposes only the wrapper and the textarea itself.
+
+Because the rendered control is a real `<textarea>`, `Textarea` inherits the browser's built-in accessibility behavior for multi-line text fields: caret movement, line wrapping, selection, IME composition, autofill, spellcheck, scrolling, and the platform-native keyboard contract are all handled by the browser. This spec covers what Fluent layers on top: labelling, the `Field` integration, the `resize` prop, validation, and visual considerations.
+
+## Usage
+
+### When to choose Textarea
+
+`Textarea` is for free-form multi-line text entry: comments, descriptions, free-form notes, or any value that may legitimately wrap to multiple lines.
+
+#### Textarea vs. Input
+
+Use `Textarea` when the value may contain newlines or wrap across multiple visual lines. Use `Input` for single-line entry, even if the value is long — an `Input` scrolls horizontally rather than wrapping, which is the correct behavior for fields like name, email, or URL where the value is semantically a single line.
+
+A useful rule of thumb: if pressing <kbd>Enter</kbd> should commit the value (submit a form, run a search), use `Input`. If pressing <kbd>Enter</kbd> should insert a newline in the value, use `Textarea`.
+
+#### Textarea vs. a rich text editor
+
+Use `Textarea` for plain-text content. Use a rich text editor when the user needs to apply formatting (bold, italic, lists, links). A rich text editor is significantly more complex to make accessible than a `Textarea` — only adopt one when the formatting requirement is real or when nested links and buttons are needed.
+
+### Implementing Textarea
+
+#### Programmatic Label
+
+`Textarea` does not render its own label. Authors must always associate the textarea with visible label text. The recommended pattern is to wrap `Textarea` in a `Field`, which sets `id` and the label association automatically:
+
+```tsx
+<Field label="Description">
+  <Textarea />
+</Field>
+```
+
+If `Field` is not appropriate for the layout, use `Label` directly with `htmlFor`:
+
+```tsx
+<Label htmlFor="description">Description</Label>
+<Textarea id="description" />
+```
+
+Other options:
+
+1. `aria-labelledby="label-id"` on the `<Textarea>`, pointing at the id of visible label text elsewhere on the page.
+2. `aria-label="label text string"` on the `<Textarea>`. Use sparingly — some sort of visible or contextual label is required.
+
+#### Visual Label
+
+All form fields including Textarea require a visible label per [WCAG 3.3.2 -- Labels or Instructions](https://w3c.github.io/wcag/understanding/labels-or-instructions.html). That label does not need to be a `<label>` element, but there must be text that is visually associated with the textarea that functions as its label. The programmatic accessible name of the textarea should match that text.
+
+There is one exception worth calling out for `Textarea` specifically: in chat applications such as Teams or M365 Copilot, where the main content area contains exactly one chat composer, the surrounding context plus the visual language of the composer staying anchored at the bottom of the pane is generally sufficient for users to understand what the textarea does. Even in this case, an `aria-label` is required so the textarea has a programmatic name.
+
+#### Placeholder
+
+The `placeholder` prop is **not** a substitute for a label. Placeholder text disappears as soon as the user starts typing, while WCAG requires a persistent visual label to be present. Placeholder also fails contrast requirements in some themes by design.
+
+Because the `placeholder` is not persistent, it also should never be used for user instructions such as "Press Enter to add a new line" or "Type @ to mention someone" unless those instructions are easily accessible elsewhere — for example, in a hint slot provided by `Field`.
+
+#### Field integration
+
+When `Textarea` is rendered inside `Field`, `Field` automatically wires up:
+
+- `id` — generated and applied so the field's `<Label>` `htmlFor` points at the textarea.
+- `aria-labelledby` — set if the consumer's `id` does not match the label's `htmlFor` (so the textarea is still labelled even when the consumer overrides the id).
+- `aria-describedby` — set to point at the validation message and hint elements, merged with any consumer-provided `aria-describedby`.
+- `aria-invalid` — set to `true` when `Field`'s `validationState` is `"error"`.
+- `required` — applied as the native attribute when `Field` is marked required.
+- `size` — propagated from `Field` so the textarea matches the field's size.
+
+When `Textarea` is **not** inside `Field`, the consumer is responsible for any of these attributes that are needed (`aria-describedby` for hint/error text, `aria-invalid` for validation state, `required`).
+
+#### Resize
+
+The `resize` prop maps directly to the CSS `resize` property on the `<textarea>` and controls whether the user can drag a corner handle to resize the field:
+
+- `none` (default) — no resize handle. The textarea expands and scrolls within its size-defined min/max height.
+- `vertical` — the user can drag the bottom edge to make the textarea taller or shorter.
+- `horizontal` — the user can drag the right edge to make the textarea wider or narrower.
+- `both` — the user can drag the bottom-right corner to resize in both axes.
+
+The resize handle is a browser-native control and is only operable by mouse or touch pointer. **There is no keyboard equivalent** for the resize gesture, and assistive technologies do not expose the handle as a separate focusable target. This is a known limitation of the native `<textarea>` element across browsers, not a Fluent-specific issue.
+
+`resize: 'none'` is the default because it avoids exposing an inaccessible handle. When using any other value, ensure the textarea's default size is large enough that resizing is a convenience, not a requirement — a keyboard-only user who cannot operate the handle should never be forced to resize the field to use it.
+
+The size variants set bounded `min-height` and `max-height`: small (40–200px), medium (52–260px), large (64–320px). When the textarea is set to `resize: 'none'` and the content exceeds the max-height, the browser-native vertical scrollbar appears inside the textarea.
+
+#### Disabled
+
+`Textarea` supports the native `disabled` attribute, which removes the textarea from the tab order and prevents value changes. There is no `disabledFocusable` analog for `Textarea` — keeping a disabled text field in the tab order is rarely useful, and the native disabled behavior is the standard. The `readonly` attribute is a native alternative state for textareas that is still focusable and allows text to be read, selected, and copied but not edited.
+
+When disabled, the focus underline animation and focus outline are suppressed, the cursor becomes `not-allowed`, and the border switches to `colorNeutralStrokeDisabled` (or `GrayText` in forced colors). The disabled state also disables the resize handle, regardless of the `resize` prop value.
+
+#### Validation
+
+When `Textarea` is inside `Field` with `validationState="error"`, `aria-invalid="true"` is applied to the `<textarea>` and the wrapper switches to the red border style. Outside of `Field`, the consumer can set `aria-invalid` directly — the red border style keys off the rendered `aria-invalid` attribute on the `<textarea>` ([useTextareaStyles.styles.ts:227](packages/react-components/react-textarea/library/src/components/Textarea/useTextareaStyles.styles.ts#L227)), so styling and ARIA state stay in sync.
+
+The error **message** itself is not provided by `Textarea`. Use `Field`'s `validationMessage` (which is automatically wired into `aria-describedby`), or wire your own message element via `aria-describedby`. An `aria-invalid` value with no accompanying description tells the user the field is invalid but does not tell them why.
+
+Both `error` and `warning` validation states give the `validationMessage` a `role=alert` and will be announced to screen reader users as soon as they appear. Other validation states will not cause the message to be announced automatically. If this behavior is desired, use the `useAnnounce` utility to do so.
+
+#### Character limits
+
+When using `maxLength` to cap the value, consider also exposing a visible character counter so users — especially those with cognitive disabilities — can see how much space remains before they hit the limit. Wire the counter to the textarea via `aria-describedby` so screen reader users hear the remaining count when the field is focused.
+
+Do **not** put `aria-live="polite"` (or any other live region) directly on the counter element. Firing a live region while the user is actively typing collides with the screen reader's native keyboard echo — the reader is already announcing each typed character, and a simultaneous live-region update either gets dropped, gets queued behind every keystroke, or talks over the echo. As a rule, **never trigger a live-region announcement at the same time the user is typing.**
+
+Instead, use the [`useTypingAnnounce`](https://storybooks.fluentui.dev/react/?path=/docs/utilities-aria-live-usetypingannounce--docs) utility, which is designed for exactly this case. It debounces announcements so they fire only after the user pauses typing, which lets the screen reader's typing echo finish without interference and avoids flooding the live region with every keystroke. Trigger it when the remaining character count crosses a meaningful threshold (for example, the last 20 characters), not on every input event.
+
+`maxLength` itself is a native attribute on `<textarea>` and is enforced by the browser — additional characters past the limit are silently dropped, which can be confusing without a visible counter.
+
+#### Color contrast and appearance variants
+
+All textareas must have some part of their boundary meet 3:1 contrast against the background behind the textarea. The placeholder or value text are not sufficient to meet this requirement. Each appearance variant meets this contrast requirement in a different way:
+
+- `outline` (default) — the bottom border specifically uses `colorNeutralStrokeAccessible`, which is darker than the surrounding border tokens to meet the indicator-contrast requirement.
+- `filled-darker` and `filled-lighter` — these must be placed on a surface that provides at least 3:1 contrast against the textarea's background color, so the boundary of the textarea is still discernible.
+- `filled-darker-shadow` and `filled-lighter-shadow` — **deprecated**. Do not use in new code; they emit a console error in development.
+
+`Textarea` does not include an `underline` appearance like `Input` does, because the additional visual weight of an underline-only boundary is less useful at the larger sizes of a multi-line field.
+
+The bottom focus border (`::after`) uses `colorCompoundBrandStroke`, which is the brand color and is guaranteed to meet 3:1 against all supported page surfaces in the included themes.
+
+### Placing Textarea within an arrow-navigation region like Toolbar or Menu
+
+It is not recommended to place a textarea inside an arrow-navigable region like a `Toolbar`, `Menu`, or `Listbox`. The arrow keys, <kbd>Home</kbd>, <kbd>End</kbd>, and <kbd>Enter</kbd> are all already used within a textarea to move the caret and insert newlines, and these conflict with the keyboard contract of arrow-navigation containers. The conflict is stronger than for `Input`, because the textarea also consumes <kbd>Up</kbd> / <kbd>Down</kbd> arrows for vertical caret movement.
+
+Additionally, `<textarea>` is not a valid descendant of most arrow-navigation containers (`role=menu`, `role=tree`, `role=listbox`), and doing so violates the ARIA specification's parent/child requirements.
+
+If a multi-line input is genuinely needed inside one of these regions — for example, a chat composer that appears within a menu surface — use a Dialog/`role=dialog` or Popover container instead, and place the menu before or after the textarea in the dialog.
+
+## Semantics
+
+`Textarea` renders a wrapping `<span>` for styling and the actual `<textarea>` element for editing:
+
+| Slot     | Role             | States and properties                                                                                                                         |
+| -------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| root     | none             | A plain `<span>` with no role; used only for visual border and focus styling.                                                                 |
+| textarea | textbox (native) | `aria-invalid`, `aria-describedby`, `aria-labelledby`, `disabled`, `required`, `readonly`, `maxLength` as applied by `Field` or the consumer. |
+
+Focus lives on the `<textarea>` element. The visual focus state (the animated bottom border) is applied to the root via `:focus-within`, but the focused element from a screen reader and keyboard perspective is always the `<textarea>`.
+
+Native browsers expose `<textarea>` with the `textbox` role and announce it as a multi-line edit field — for example, NVDA announces "edit, multi-line". This is what tells screen reader users that <kbd>Enter</kbd> will insert a newline rather than commit the value.
+
+## Keyboard interaction
+
+`Textarea` is a single tab stop. All editing key behavior comes from the browser's native `<textarea>` implementation and matches platform conventions. Notable behaviors specific to multi-line text fields:
+
+- <kbd>Enter</kbd> inserts a newline. It does **not** submit a surrounding form (unlike single-line `<input>`).
+- <kbd>Up</kbd> and <kbd>Down</kbd> arrows move the caret between lines.
+- <kbd>Tab</kbd> moves focus out of the textarea (it does not insert a tab character). This is the standard HTML behavior
+  and is what allows keyboard users to escape the field.
+
+When `disabled` is set, the textarea is removed from the tab order entirely and is not interactable.
+
+The resize handle (when `resize` is not `'none'`) is not a separate tab stop, is not keyboard-operable, and is not exposed to assistive technologies as a focusable target. See [Resize](#resize) above.
+
+## Windows contrast themes (high contrast mode)
+
+`Textarea` relies almost entirely on the browser's native `<textarea>` behavior in Windows contrast themes. The native textarea adapts its background, text, caret, placeholder, and scrollbar colors to the user-selected theme without explicit overrides in the component's styles.
+
+The only explicit forced-colors rule on `Textarea` is for the disabled state: the border switches to `GrayText` so the disabled affordance matches the system disabled-control color. This is because the border style is on the parent root node and not on the `<textarea>` element itself, so it does not natively pick up the disabled state's color.
+
+The resize handle's appearance in forced colors is determined by the browser. Authors should not attempt to restyle the resize handle, as doing so can break its forced-colors behavior.
+
+## Motion and animation
+
+The bottom focus border has two animations — one for focus in and one for focus out — using `durationNormal` (focus in) and `durationUltraFast` (focus out) respectively. Both animations are shortened to `0.01ms` when [`prefers-reduced-motion: reduce`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) is set, effectively disabling the motion while preserving the final visual state. There is no other motion on `Textarea`.
+
+## Known issues
+
+- The browser-native resize handle is not keyboard-operable and is not exposed to assistive technologies. Authors using any `resize` value other than `'none'` should ensure the default field size is sufficient for users who cannot operate the handle. Consider exposing a separate keyboard-operable size toggle if larger sizes are critical to the user's task.
+- `maxLength` silently drops typed characters past the limit. Always pair `maxLength` with a visible character counter wired via `aria-describedby`, and ideally screen reader notifications using `useTypingAnnounce`.
