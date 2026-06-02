@@ -1,5 +1,5 @@
 {
-  "type": "major",
+  "type": "minor",
   "comment": "Move @fluentui/react-file-type-icons under react-components and ship as 9.0.0 (same npm name, major bump - v8 consumers must opt in). Adds the FileTypeIcon v9 component while preserving the v8 utility surface (initializeFileTypeIcons, getFileTypeIconProps, getFileTypeIconAsHTMLString, getFileTypeIconAsUrl, FileIconType, FileTypeIconMap). Behavior notes: initializeFileTypeIcons now honors its options.disableWarnings flag (warns on duplicate icon registration unless suppressed) but overwrites existing entries rather than skipping them; getFileTypeIconSuffix is SSR-safe and falls back to a 1x device pixel ratio when window is absent instead of throwing; icons are still written to globalThis.__globalSettings__.icons with the same record shape, preserving interop with v8 @fluentui/react <Icon>; src/version.ts is removed (no setVersion call), so the v8 duplicate-package warning will not fire if 8.x and 9.x copies are bundled together.",
   "packageName": "@fluentui/react-file-type-icons",
   "email": "caperez@microsoft.com",
