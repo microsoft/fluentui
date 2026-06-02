@@ -119,8 +119,6 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  'use no memo';
-
   const { color, size, iconFillWidth, appearance } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();

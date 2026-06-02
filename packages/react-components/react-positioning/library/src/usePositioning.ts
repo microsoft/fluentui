@@ -20,8 +20,6 @@ import { useCallbackRef, hasAutofocusFilter } from './utils';
  * @internal
  */
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
-  'use no memo';
-
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);

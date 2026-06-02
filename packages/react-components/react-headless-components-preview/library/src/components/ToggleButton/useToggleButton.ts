@@ -14,8 +14,6 @@ export const useToggleButton = (
   props: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
-  'use no memo';
-
   const state: ToggleButtonState = useToggleButtonBase_unstable(props, ref);
 
   // Set data attributes for disabled, disabledFocusable, iconOnly, and checked states to simplify styling of these states.

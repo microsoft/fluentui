@@ -36,8 +36,6 @@ const useStyles = makeStyles({
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
 export const useVirtualizerStyles_unstable = (state: VirtualizerState): VirtualizerState => {
-  'use no memo';
-
   const styles = useStyles();
   const { reversed, axis, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
   const horizontal = axis === 'horizontal';

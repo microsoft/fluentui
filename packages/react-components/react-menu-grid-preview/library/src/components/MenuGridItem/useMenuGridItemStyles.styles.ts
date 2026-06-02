@@ -31,8 +31,6 @@ const useStyles = makeStyles({
 });
 
 export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGridItemState => {
-  'use no memo';
-
   const styles = useStyles();
 
   // eslint-disable-next-line react-hooks/immutability

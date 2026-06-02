@@ -598,7 +598,7 @@ const useContentStyles = makeStyles({
  * Apply styling to the Tab slots based on the state
  */
 export const useTabStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useTabStyles_unstable — manual opt-out to preserve runtime behavior
 
   useTabIndicatorStyles_unstable(state);
 
@@ -619,8 +619,6 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
  * @returns The state object with updated button styles
  */
 export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
@@ -673,8 +671,6 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
  * @returns The state object with updated button styles
  */
 export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['root']): TabState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const circularStyles = useCircularAppearanceStyles();
@@ -739,8 +735,6 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
  * @returns The state object with updated content styles
  */
 export const useTabContentStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 

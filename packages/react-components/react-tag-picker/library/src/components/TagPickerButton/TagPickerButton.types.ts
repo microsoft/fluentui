@@ -1,5 +1,5 @@
 import type { DropdownProps } from '@fluentui/react-combobox';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
 
 export type TagPickerButtonSlots = {
@@ -21,3 +21,13 @@ export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> &
   Pick<TagPickerContextValue, 'size'> & {
     hasSelectedOption: boolean;
   };
+
+/**
+ * TagPickerButton Base Props - omits design-only props
+ */
+export type TagPickerButtonBaseProps = DistributiveOmit<TagPickerButtonProps, 'size' | 'appearance'>;
+
+/**
+ * TagPickerButton Base State - omits design-only state
+ */
+export type TagPickerButtonBaseState = DistributiveOmit<TagPickerButtonState, 'size'>;

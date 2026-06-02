@@ -31,8 +31,6 @@ const useRootStyles = makeStyles({
  * Apply styling to the TagGroup slots based on the state
  */
 export const useTagGroupStyles_unstable = (state: TagGroupState): TagGroupState => {
-  'use no memo';
-
   const styles = useRootStyles();
   const { size } = state;
   // eslint-disable-next-line react-hooks/immutability
