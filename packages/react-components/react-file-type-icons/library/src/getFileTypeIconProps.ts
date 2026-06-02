@@ -118,7 +118,7 @@ export function getDevicePixelRatioVariant(
   size: FileTypeIconSize,
   imageFileType: ImageFileType = 'svg',
 ): { dprDir: '' | '_1.5x' | '_2x' | '_3x' | '_4x'; ext: ImageFileType } {
-  const devicePixelRatio: number = canUseDOM() ? window.devicePixelRatio : 1;
+  const devicePixelRatio: number = canUseDOM() ? globalThis.window.devicePixelRatio : 1;
   let dprDir: '' | '_1.5x' | '_2x' | '_3x' | '_4x' = '';
 
   // SVGs scale well, so you can generally use the default image.
