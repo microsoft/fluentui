@@ -7,6 +7,9 @@
 // @internal
 export function createOverflowManager(initialOptions?: Partial<ObserveOptions>): OverflowManager;
 
+// @internal
+export const EMPTY_SNAPSHOT: OverflowSnapshot;
+
 // @public
 export interface ObserveOptions {
     hasHiddenItems?: boolean;
@@ -68,12 +71,21 @@ export interface OverflowManager {
     addOverflowMenu: (element: HTMLElement) => void;
     disconnect: () => void;
     forceUpdate: () => void;
+    getSnapshot: () => OverflowSnapshot;
     observe: (container: HTMLElement, options?: ObserveOptions) => void;
     removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
     removeOverflowMenu: () => void;
     setOptions: (options: Partial<ObserveOptions>) => void;
+    subscribe: (listener: () => void) => () => void;
     update: () => void;
+}
+
+// @public
+export interface OverflowSnapshot {
+    groupVisibility: Record<string, OverflowGroupState>;
+    invisibleItemCount: number;
+    itemVisibility: Record<string, boolean>;
 }
 
 // (No @packageDocumentation comment for this package)
