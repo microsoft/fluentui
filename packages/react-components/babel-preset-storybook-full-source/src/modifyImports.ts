@@ -17,7 +17,7 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
  */
 export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
-  const { importMappings } = options;
+  const importMappings = options.importMappings ?? {};
   const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
