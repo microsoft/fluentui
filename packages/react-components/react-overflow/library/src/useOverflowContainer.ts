@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { createOverflowManager } from '@fluentui/priority-overflow';
+import { createOverflowManager, EMPTY_SNAPSHOT } from '@fluentui/priority-overflow';
 
 /**
  * @internal
@@ -116,12 +116,24 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     managerRef.current?.update();
   }, []);
 
+  const getSnapshot = React.useCallback<OverflowManager['getSnapshot']>(
+    () => managerRef.current?.getSnapshot() ?? EMPTY_SNAPSHOT,
+    [],
+  );
+
+  const subscribe = React.useCallback<OverflowManager['subscribe']>(
+    listener => managerRef.current?.subscribe(listener) ?? noop,
+    [],
+  );
+
   return {
     registerItem,
     registerDivider,
     registerOverflowMenu,
     updateOverflow,
     containerRef,
+    getSnapshot,
+    subscribe,
   };
 };
 
