@@ -7,8 +7,7 @@
     "declarationDir": "../../../dist/out-tsc/types",
     "outDir": "../../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["environment", "node"],
-    "module": "CommonJS"
+    "types": ["environment", "node"]
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]

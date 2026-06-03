@@ -1,6 +1,6 @@
 import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 
-import { createRule } from './utils/create-rule';
+import { createRule } from './utils/create-rule.js';
 
 export const RULE_NAME = 'prefer-fluentui-v9';
 
