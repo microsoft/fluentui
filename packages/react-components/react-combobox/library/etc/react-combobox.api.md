@@ -49,6 +49,7 @@ export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<P
     positioning?: PositioningShorthand;
     size?: 'small' | 'medium' | 'large';
     value?: string;
+    activeDescendantImperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef | null>;
 };
 
 // @public
@@ -174,6 +175,7 @@ export type ListboxContextValues = {
 // @public
 export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps & {
     disableAutoFocus?: boolean;
+    activeDescendantImperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef | null>;
 };
 
 // @public (undocumented)
