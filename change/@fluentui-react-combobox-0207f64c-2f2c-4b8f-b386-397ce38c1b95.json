@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Exposed `activeDescendantImperativeRef` on Combobox, Dropdown, and Listbox",
+  "packageName": "@fluentui/react-combobox",
+  "email": "personal_dev@mkurr.com",
+  "dependentChangeType": "patch"
+}
