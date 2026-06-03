@@ -22,6 +22,7 @@ export function useOverflowItem<TElement extends HTMLElement>(
 ): React.RefObject<TElement | null> {
   const ref = React.useRef<TElement | null>(null);
   const registerItem = useOverflowContext(v => v.registerItem);
+  const forceUpdateOverflow = useOverflowContext(v => v.forceUpdateOverflow);
 
   useIsomorphicLayoutEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
@@ -35,15 +36,20 @@ export function useOverflowItem<TElement extends HTMLElement>(
     }
 
     if (ref.current) {
-      return registerItem({
+      const unregister = registerItem({
         element: ref.current,
         id,
         priority: priority ?? 0,
         groupId,
         pinned,
       });
+      // Request first-paint correctness. Before the container observes this defers a synchronous
+      // force to the container's observe effect; after, it recomputes for the (re)registered item.
+      // An item hook that omits this call opts the container out of the synchronous first-paint pass.
+      forceUpdateOverflow();
+      return unregister;
     }
-  }, [id, priority, registerItem, groupId, pinned]);
+  }, [id, priority, registerItem, forceUpdateOverflow, groupId, pinned]);
 
   return ref;
 }
