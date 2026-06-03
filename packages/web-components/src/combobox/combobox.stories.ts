@@ -1,5 +1,5 @@
 import { html, repeat } from '@microsoft/fast-element';
-import { dedent } from 'dedent';
+import dedent from 'dedent';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { DropdownOption as FluentDropdownOption } from '../option/option.js';
@@ -41,14 +41,16 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
   >
 `;
 
+// The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
+// To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
+
 export default {
   title: 'Components/Combobox',
   parameters: {
     docs: {
       description: {
-        component: dedent`
-          The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
-          To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
+        component: dedent`hello
+        world
         `,
       },
     },
