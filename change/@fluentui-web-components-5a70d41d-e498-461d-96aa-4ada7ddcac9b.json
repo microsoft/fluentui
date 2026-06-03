@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add keyboard support for printable characters in Dropdown",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

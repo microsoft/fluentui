@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 03 Jun 2026 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.23",
+      "version": "3.0.0-rc.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f14249d2f042c3c30ce16a60b14d2d912aa2ad80",
+            "comment": "add keyboard support for printable characters in Dropdown"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 May 2026 04:09:42 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.22",
       "version": "3.0.0-rc.22",
