@@ -60,7 +60,18 @@ export default {
   args: {
     slottedContent: () => html`${story => generateSemanticElementTemplate(story.as, 'text')}`,
   },
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    as: {
+      name: 'Text wrapping element',
+      description: 'The semantic element to use for the slotted content.',
+      control: 'select',
+      options: ['span', 'p', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      table: {
+        category: 'demo',
+      },
+    },
+  },
 } as Meta<FluentText>;
 
 export const Text: Story = {};
