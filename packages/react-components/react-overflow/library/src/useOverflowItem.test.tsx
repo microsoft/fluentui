@@ -11,6 +11,7 @@ const mockContextValue = (options: Partial<OverflowContextValue> = {}) =>
     itemVisibility: {},
     registerItem: jest.fn(),
     updateOverflow: jest.fn(),
+    forceUpdateOverflow: jest.fn(),
     ...options,
   } as OverflowContextValue);
 

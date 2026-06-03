@@ -4,10 +4,12 @@ import {
   Overflow,
   OverflowItem,
   useOverflowMenu,
+  useOverflowContext,
+  useOverflowCount,
   type OverflowProps,
   type OverflowItemProps,
 } from '@fluentui/react-overflow';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, type DistributiveOmit } from '@fluentui/react-utilities';
 
 // Disable StrictMode so the probe measures a single mount/commit path.
 const mount = (element: React.ReactElement) => mountBase(element, { strict: false });
@@ -108,6 +110,54 @@ const Menu = () => {
 
   return (
     <button {...selector} ref={ref} style={{ width: 50, height: 50, flexShrink: 0 }}>
+      +{overflowCount}
+    </button>
+  );
+};
+
+// Opt-out hooks: equivalent to useOverflowItem / useOverflowMenu but WITHOUT requesting first-paint
+// correctness (no forceUpdateOverflow on registration). This is how a hot-path consumer opts the
+// container out of the synchronous first-paint pass — no Overflow prop, just a custom item/menu hook.
+const useOptOutOverflowItem = <TElement extends HTMLElement>(id: string): React.RefObject<TElement | null> => {
+  const ref = React.useRef<TElement | null>(null);
+  const registerItem = useOverflowContext(v => v.registerItem);
+  useIsomorphicLayoutEffect(() => {
+    if (ref.current) {
+      return registerItem({ element: ref.current, id, priority: 0 });
+    }
+  }, [id, registerItem]);
+  return ref;
+};
+
+const useOptOutOverflowMenu = <TElement extends HTMLElement>() => {
+  const ref = React.useRef<TElement | null>(null);
+  const overflowCount = useOverflowCount();
+  const registerOverflowMenu = useOverflowContext(v => v.registerOverflowMenu);
+  const isOverflowing = overflowCount > 0;
+  useIsomorphicLayoutEffect(() => {
+    if (ref.current) {
+      return registerOverflowMenu(ref.current);
+    }
+  }, [registerOverflowMenu, isOverflowing]);
+  return { ref, overflowCount, isOverflowing };
+};
+
+const OptOutItem = ({ children, width, id }: { children?: React.ReactNode; width?: number; id: string }) => {
+  const ref = useOptOutOverflowItem<HTMLButtonElement>(id);
+  return (
+    <button ref={ref} {...{ [selectors.item]: id }} style={{ width: width ?? 50, height: 50, flexShrink: 0 }}>
+      {children}
+    </button>
+  );
+};
+
+const OptOutMenu = () => {
+  const { isOverflowing, ref, overflowCount } = useOptOutOverflowMenu<HTMLButtonElement>();
+  if (!isOverflowing) {
+    return null;
+  }
+  return (
+    <button {...{ [selectors.menu]: '' }} ref={ref} style={{ width: 50, height: 50, flexShrink: 0 }}>
       +{overflowCount}
     </button>
   );
@@ -283,5 +333,39 @@ describe('Overflow paint probe', () => {
       menuText: null,
       overflowingItemIds: [],
     });
+  });
+
+  it('defers overflow past first paint when items and menu opt out of first-paint correctness', { retries: 0 }, () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+
+    mount(
+      <PaintPhaseProbeHarness name="opt-out">
+        <Container size={300}>
+          {mapHelper.map(i => (
+            <OptOutItem key={i} id={i.toString()}>
+              {i}
+            </OptOutItem>
+          ))}
+          <OptOutMenu />
+        </Container>
+      </PaintPhaseProbeHarness>,
+    );
+
+    // The opt-out hooks never call forceUpdateOverflow, so nothing requests the synchronous
+    // first-paint pass. At the synchronous commit (layout phase) overflow is therefore unresolved —
+    // the eager cases above collapse items here instead. The ResizeObserver resolves it afterwards.
+    cy.get(`[${selectors.probe}="opt-out"] [${selectors.probePhase}="raf2"]`).should($node => {
+      expect($node.text(), 'probe snapshots written').not.to.equal('');
+    });
+    cy.get(`[${selectors.probe}="opt-out"]`).then($probe => {
+      const layout = JSON.parse($probe.find(`[${selectors.probePhase}="layout"]`).text()) as PaintPhaseSnapshot;
+      expect(layout, 'first paint (layout) is unresolved when opting out of first-paint correctness').to.deep.equal({
+        menuText: null,
+        overflowingItemIds: [],
+      });
+    });
+
+    // It still resolves eventually — the ResizeObserver drives the deferred overflow pass.
+    cy.get(`[${selectors.menu}]`).should('exist');
   });
 });
