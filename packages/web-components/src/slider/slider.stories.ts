@@ -1,9 +1,11 @@
 import { html, ref } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import { SliderOrientation as SliderSetOrientation, SliderSize as SliderSetSize } from './slider.options.js';
 import type { Slider as FluentSlider } from './slider.js';
 
 type Story = StoryObj<FluentSlider>;
+const { argTypes } = getStorybookHelpers<FluentSlider>('fluent-slider');
 
 const storyTemplate = html<StoryArgs<FluentSlider>>`
   <fluent-slider
@@ -22,79 +24,7 @@ const storyTemplate = html<StoryArgs<FluentSlider>>`
 export default {
   title: 'Components/Slider',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    disabled: {
-      control: 'boolean',
-      description: "The element's disabled state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    min: {
-      control: 'number',
-      description: 'The minimum value of the slider.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    max: {
-      control: 'number',
-      description: 'The maximum value of the slider.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    value: {
-      control: 'number',
-      description: 'The value of the slider.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    step: {
-      control: 'number',
-      description: 'The step value of the slider.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the slider.',
-      options: ['', ...Object.values(SliderSetSize)],
-      mapping: { '': null, ...SliderSetSize },
-      table: {
-        category: 'attributes',
-        type: Object.values(SliderSetSize).join('|'),
-      },
-    },
-    orientation: {
-      control: 'select',
-      description: 'The orientation of the slider',
-      options: ['', ...Object.values(SliderSetOrientation)],
-      mapping: { '': null, ...SliderSetOrientation },
-      table: {
-        category: 'attributes',
-        type: Object.values(SliderSetOrientation).join('|'),
-      },
-    },
-    mode: {
-      control: 'text',
-      description: 'The slider mode.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    thumbSlottedContent: {
-      control: false,
-      description: 'Slot for custom thumb content.',
-      name: 'thumb',
-      table: { category: 'slots', type: {} },
-    },
-    'thumb-container': {
-      control: false,
-      description: 'The container element of the thumb.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-    'track-container': {
-      control: false,
-      description: 'The container element of the track.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-    change: {
-      control: false,
-      description: 'Fires when the value changes.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentSlider>;
 
 export const Default: Story = {};

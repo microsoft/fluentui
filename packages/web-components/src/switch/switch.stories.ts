@@ -1,9 +1,12 @@
 import { html, ref, repeat } from '@microsoft/fast-element';
 import { LabelPosition } from '../field/field.options.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Switch as FluentSwitch } from './switch.js';
 
 type Story = StoryObj<FluentSwitch>;
+
+const { argTypes } = getStorybookHelpers<FluentSwitch>('fluent-switch');
 
 const storyTemplate = html<StoryArgs<FluentSwitch>>`
   <fluent-switch
@@ -33,43 +36,7 @@ export default {
     disabled: false,
     required: false,
   },
-  argTypes: {
-    checked: {
-      description: 'Sets the checked state of the switch',
-      control: 'boolean',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      description: 'Sets the disabled state of the switch',
-      control: 'boolean',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    form: {
-      description: 'The form element that the switch belongs to',
-      control: 'text',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    name: {
-      description: 'The name of the switch',
-      control: 'text',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    required: {
-      description: 'Sets the switch as required',
-      control: 'boolean',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    value: {
-      description: 'The value of the switch',
-      control: 'text',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    'checked-indicator': {
-      control: false,
-      description: 'The internal switch indicator element.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentSwitch>;
 
 export const Default: Story = {};

@@ -178,7 +178,7 @@ const getHashCode = (str: string): number => {
   for (let len: number = str.length - 1; len >= 0; len--) {
     const ch = str.charCodeAt(len);
     const shift = len % 8;
-    hashCode ^= (ch << shift) + (ch >> (8 - shift));  
+    hashCode ^= (ch << shift) + (ch >> (8 - shift));
   }
 
   return hashCode;

@@ -1,5 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { CounterBadge as FluentCounterBadge } from './counter-badge.js';
 import {
   CounterBadgeAppearance,
@@ -9,6 +10,7 @@ import {
 } from './counter-badge.options.js';
 
 type Story = StoryObj<FluentCounterBadge>;
+const { argTypes } = getStorybookHelpers<FluentCounterBadge>('fluent-counter-badge');
 
 const storyTemplate = html<StoryArgs<FluentCounterBadge>>`
   <fluent-counter-badge
@@ -28,82 +30,7 @@ const storyTemplate = html<StoryArgs<FluentCounterBadge>>`
 export default {
   title: 'Components/Badge/Counter Badge',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    appearance: {
-      description: 'Sets the appearance of the badge to one of the predefined styles',
-      options: ['', ...Object.values(CounterBadgeAppearance)],
-      mapping: { '': null, ...CounterBadgeAppearance },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CounterBadgeAppearance).join('|') },
-      },
-    },
-    color: {
-      description: 'Sets the color of the badge to one of the predefined colors',
-      options: ['', ...Object.values(CounterBadgeColor)],
-      mapping: { '': null, ...CounterBadgeColor },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CounterBadgeColor).join('|') },
-      },
-    },
-    shape: {
-      description: 'Sets the shape of the badge to one of the predefined shapes',
-      options: ['', ...Object.values(CounterBadgeShape)],
-      mapping: { '': null, ...CounterBadgeShape },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CounterBadgeShape).join('|') },
-      },
-    },
-    size: {
-      description: 'Sets the size of the badge to one of the predefined sizes',
-      options: ['', ...Object.values(CounterBadgeSize)],
-      mapping: { '': null, ...CounterBadgeSize },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CounterBadgeSize).join('|') },
-      },
-    },
-    dot: {
-      control: 'boolean',
-      description: "Sets the badge's dot state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    showZero: {
-      control: 'boolean',
-      description: "Sets the badge's show-zero state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    count: {
-      control: 'number',
-      description: "Sets the badge's count attribute",
-      name: 'count',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    overflowCount: {
-      control: 'number',
-      description: "Sets the badge's overflow count attribute",
-      name: 'overflow-count',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'Slot for start icons',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'Slot for end icons',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentCounterBadge>;
 
 export const Default: Story = {};

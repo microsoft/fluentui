@@ -1,10 +1,12 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorNeutralBackground6 } from '../theme/design-tokens.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Text as FluentText } from './text.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 type Story = StoryObj<FluentText>;
+const { argTypes } = getStorybookHelpers<FluentText>('fluent-text');
 
 /**
  * Used to generate slotted content for stories
@@ -58,97 +60,7 @@ export default {
   args: {
     slottedContent: () => html`${story => generateSemanticElementTemplate(story.as, 'text')}`,
   },
-  argTypes: {
-    as: {
-      control: 'select',
-      name: 'Text element',
-      mapping: { '': null, ...['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span'] },
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span'],
-      table: {
-        category: 'demo',
-        type: { summary: Object.values(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'span']).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'Indicates the size of the text.',
-      mapping: { '': null, ...TextSize },
-      options: ['', ...Object.values(TextSize)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TextSize).join('|') },
-      },
-    },
-    weight: {
-      description: 'Indicates the weight of the text.',
-      mapping: { '': null, ...TextWeight },
-      options: ['', ...Object.values(TextWeight)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TextWeight).join('|') },
-      },
-    },
-    align: {
-      description: 'Indicates the alignment of the text.',
-      mapping: { '': null, ...TextAlign },
-      options: ['', ...Object.values(TextAlign)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TextAlign).join('|') },
-      },
-    },
-    font: {
-      description: 'Indicates the font family of the text.',
-      mapping: { '': null, ...TextFont },
-      options: ['', ...Object.values(TextFont)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TextFont).join('|') },
-      },
-    },
-    nowrap: {
-      control: 'boolean',
-      description: 'Indicates if the text is set to no-wrap.',
-      name: 'nowrap',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    truncate: {
-      control: 'boolean',
-      description: 'Indicates if the text should truncate.',
-      name: 'truncate',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    italic: {
-      control: 'boolean',
-      description: 'Indicates if the text is set to italic.',
-      name: 'italic',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    underline: {
-      control: 'boolean',
-      description: 'Indicates if the text is set to underline.',
-      name: 'underline',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    strikethrough: {
-      control: 'boolean',
-      description: 'Indicates if the text is set to strikethrough.',
-      name: 'strikethrough',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    block: {
-      control: 'boolean',
-      description: 'Indicates if the text is set to block.',
-      name: 'block',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentText>;
 
 export const Text: Story = {};

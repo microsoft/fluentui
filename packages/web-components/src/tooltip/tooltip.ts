@@ -9,6 +9,8 @@ import type { TooltipPositioningOption } from './tooltip.options.js';
  *
  * @tag fluent-tooltip
  *
+ * @slot - The default slot. Accepts the content of the tooltip.
+ *
  * @public
  */
 export class Tooltip extends FASTElement {

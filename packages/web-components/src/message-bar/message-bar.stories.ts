@@ -1,9 +1,11 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { MessageBar as FluentMessageBar } from './message-bar.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 type Story = StoryObj<FluentMessageBar>;
+const { argTypes } = getStorybookHelpers<FluentMessageBar>('fluent-message-bar');
 
 const checkmarkCircle20Filled = html`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
   <path
@@ -76,69 +78,7 @@ export default {
       </fluent-button>
     `,
   },
-  argTypes: {
-    ariaLabelledby: { table: { disable: true } },
-    ariaLive: { table: { disable: true } },
-    intent: {
-      control: 'select',
-      description: 'MessageBar intent',
-      options: ['', ...Object.values(MessageBarIntent)],
-      mapping: { '': null, ...MessageBarIntent },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(MessageBarIntent).join('|') },
-      },
-    },
-    layout: {
-      control: 'select',
-      description: 'MessageBar layout',
-      options: ['', ...Object.values(MessageBarLayout)],
-      mapping: { '': null, ...MessageBarLayout },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(MessageBarLayout).join('|') },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'MessageBar shape',
-      options: ['', ...Object.values(MessageBarShape)],
-      mapping: { '': null, ...MessageBarShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(MessageBarShape).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot, for the main content',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    iconSlottedContent: {
-      control: false,
-      description: 'Slot for icons, to be displayed inline before the main content.',
-      name: 'icon',
-      table: { category: 'slots', type: {} },
-    },
-    actionsSlottedContent: {
-      control: false,
-      description: 'Slot for actions, to be displayed inline after the main content.',
-      name: 'actions',
-      table: { category: 'slots', type: {} },
-    },
-    dismissSlottedContent: {
-      control: false,
-      description: 'Slot for dismiss button, to be displayed inline at the end of the message bar.',
-      name: 'dismiss',
-      table: { category: 'slots', type: {} },
-    },
-    dismiss: {
-      control: false,
-      description: 'Fired when the message bar is dismissed.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentMessageBar>;
 
 export const Default: Story = {};

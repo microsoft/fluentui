@@ -2,10 +2,12 @@ import { html, ref, repeat } from '@microsoft/fast-element';
 import type { Field as FluentField } from '../field/field.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { ValidationFlags } from '../field/field.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { RadioGroup as FluentRadioGroup } from './radio-group.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 type Story = StoryObj<FluentRadioGroup>;
+const { argTypes } = getStorybookHelpers<FluentRadioGroup>('fluent-radio-group');
 
 const radioFieldTemplate = html<StoryArgs<FluentField>>`
   <fluent-field label-position="${story => story.labelPosition ?? 'after'}">
@@ -33,7 +35,7 @@ const storyTemplate = html<StoryArgs<FluentRadioGroup>>`
       required="${story => story.required}"
       ${ref('radioGroup')}
     >
-      ${story => story.defaultSlotContent?.()}
+      ${story => story.slottedContent?.()}
     </fluent-radio-group>
     ${story => story.messageSlottedContent?.()}
   </fluent-field>
@@ -43,7 +45,7 @@ export default {
   title: 'Components/RadioGroup',
   render: renderComponent(storyTemplate),
   args: {
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -70,54 +72,9 @@ export default {
     name: 'favorite-fruit',
   },
   argTypes: {
-    disabled: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Disables the radio group and child radios.',
-      type: 'boolean',
-    },
-    name: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The name of the radio group.',
-      type: 'string',
-    },
-    required: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-      description: 'Marks the radio group as required.',
-      type: 'boolean',
-    },
-    orientation: {
-      control: 'select',
-      description: 'The orientation of the radio group.',
-      options: ['', ...Object.values(RadioGroupOrientation)],
-      mapping: { '': null, ...RadioGroupOrientation },
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: RadioGroupOrientation.horizontal },
-        type: {
-          summary: Object.values(RadioGroupOrientation).join('|'),
-        },
-      },
-    },
-    value: {
-      control: 'text',
-      table: { category: 'attributes' },
-      description: 'The value of the checked radio.',
-      type: 'string',
-    },
+    ...argTypes,
     labelSlottedContent: { table: { disable: true } },
-    defaultSlotContent: {
-      name: '',
-      description: 'The default slot',
-      table: { category: 'slots', type: {} },
-    },
-    change: {
-      control: false,
-      description: 'Fired when the selected radio changes.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
+    messageSlottedContent: { table: { disable: true } },
   },
 } as Meta<FluentRadioGroup>;
 
@@ -140,7 +97,7 @@ export const InitialValue: Story = {
 export const InitialCheckedRadio: Story = {
   args: {
     id: 'radio-group-checked',
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -178,7 +135,7 @@ export const DisabledItems: Story = {
   args: {
     orientation: RadioGroupOrientation.vertical,
     id: 'radio-group-disabled-items',
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {
@@ -220,7 +177,7 @@ export const DisabledAndCheckedItem: Story = {
     orientation: RadioGroupOrientation.vertical,
     id: 'radio-group-disabled-and-checked-item',
     value: 'pear',
-    defaultSlotContent: () => html`
+    slottedContent: () => html`
       ${repeat(
         [
           {

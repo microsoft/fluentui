@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { ProgressBar as FluentProgressBar } from './progress-bar.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 type Story = StoryObj<FluentProgressBar>;
+const { argTypes } = getStorybookHelpers<FluentProgressBar>('fluent-progress-bar');
 
 const storyTemplate = html<StoryArgs<FluentProgressBar>>`
   <fluent-progress-bar
@@ -32,65 +34,7 @@ const withText = html`
 export default {
   title: 'Components/ProgressBar',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    max: {
-      control: 'number',
-      description: 'The maximum value.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    min: {
-      control: 'number',
-      description: 'The minimum value.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    shape: {
-      control: 'select',
-      description: 'The shape of the progress bar.',
-      options: ['', ...Object.values(ProgressBarShape)],
-      mapping: { '': null, ...ProgressBarShape },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(ProgressBarShape).join('|'),
-        },
-      },
-    },
-    thickness: {
-      control: 'select',
-      description: 'The thickness of the progress bar.',
-      options: ['', ...Object.values(ProgressBarThickness)],
-      mapping: { '': null, ...ProgressBarThickness },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(ProgressBarThickness).join('|'),
-        },
-      },
-    },
-    validationState: {
-      control: 'select',
-      description: 'The validation state of the progress bar.',
-      name: 'validation-state',
-      options: ['', ...Object.values(ProgressBarValidationState)],
-      mapping: { '': null, ...ProgressBarValidationState },
-      table: {
-        category: 'attributes',
-        type: {
-          summary: Object.values(ProgressBarValidationState).join('|'),
-        },
-      },
-    },
-    value: {
-      control: 'number',
-      description: 'The value of the progress.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    indicator: {
-      control: false,
-      description: 'The internal progress indicator element.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentProgressBar>;
 
 export const Default: Story = {};

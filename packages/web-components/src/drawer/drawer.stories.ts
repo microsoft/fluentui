@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 type Story = StoryObj<FluentDrawer>;
+const { argTypes } = getStorybookHelpers<FluentDrawer>('fluent-drawer');
 
 const dismissed20Regular = html<StoryArgs<FluentDrawer>>`<svg
   fill="currentColor"
@@ -95,73 +97,7 @@ export default {
     position: DrawerPosition.start,
     '--drawer-width': '',
   },
-  argTypes: {
-    ariaDescribedby: {
-      control: 'text',
-      name: 'aria-describedby',
-      description: 'Sets aria-describedby on the drawer.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    ariaLabelledby: {
-      control: 'text',
-      name: 'aria-labelledby',
-      description: 'Sets aria-labelledby on the drawer.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    position: {
-      control: 'select',
-      description: 'Sets the position of drawer',
-      mapping: { '': null, ...DrawerPosition },
-      options: ['', ...Object.values(DrawerPosition)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(DrawerPosition).join('|') },
-      },
-    },
-    type: {
-      control: 'select',
-      description: 'Sets the modal type of the drawer',
-      mapping: { '': null, ...DrawerType },
-      options: ['', ...Object.values(DrawerType)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(DrawerType).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'Sets the modal type of the drawer',
-      mapping: { '': null, ...DrawerSize },
-      options: ['', ...Object.values(DrawerSize)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(DrawerSize).join('|') },
-      },
-    },
-    '--drawer-width': {
-      control: 'text',
-      description: 'Sets the custom width of drawer, e.g. 300px',
-      required: false,
-      table: {
-        category: 'CSS Custom Properties',
-      },
-    },
-    dialog: {
-      control: false,
-      description: 'The dialog element of the drawer.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-    beforetoggle: {
-      control: false,
-      description: "Emitted before the dialog's open state changes.",
-      table: { category: 'events', type: { summary: 'Event' } },
-    },
-    toggle: {
-      control: false,
-      description: "Emitted after the dialog's open state changes.",
-      table: { category: 'events', type: { summary: 'Event' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentDrawer>;
 
 export const Default: Story = {};

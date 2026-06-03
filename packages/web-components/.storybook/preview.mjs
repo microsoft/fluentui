@@ -2,9 +2,23 @@ import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@f
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
 import webcomponentsTheme from './theme.mjs';
+import { setStorybookHelpersConfig } from './wc-toolkit-helpers.js';
 
 import '../src/index-rollup.js';
 import './docs-root.css';
+
+// Load the Custom Elements Manifest for Storybook helpers
+// @ts-ignore — JSON import attribute not needed in Vite, TS NodeNext is overly strict here
+import customElementsManifest from '../custom-elements.json';
+// @ts-ignore — Storybook global
+window.__STORYBOOK_CUSTOM_ELEMENTS_MANIFEST__ = customElementsManifest;
+
+// Configure CEM-based argTypes generation
+setStorybookHelpersConfig({
+  typeRef: 'parsedType',
+  hideArgRef: true,
+  categoryOrder: ['attributes', 'properties', 'slots', 'cssProps', 'cssParts', 'cssStates', 'methods', 'events'],
+});
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
 
@@ -74,88 +88,6 @@ export const decorators = [
     return Story();
   },
 ];
-
-/** @param {{ argTypes?: Record<string, any> }} context */
-function withOrderedCategories(context) {
-  if (!context.argTypes) {
-    return context.argTypes;
-  }
-
-  console.log('UNFILTERED ARGTYPES KEYS:', Object.keys(context.argTypes));
-  console.log('UNFILTERED CATEGORIES:', Object.values(context.argTypes).map(a => a.table?.category));
-
-  /** @param {string | undefined} cat */
-  function getCategoryIndex(cat) {
-    if (!cat) return -1;
-    const clean = cat.toLowerCase().trim().replace(/[\s-_]+/g, '');
-    if (clean === 'attributes' || clean === 'attribute' || clean === 'ariaattributes') return 0;
-    if (clean === 'properties' || clean === 'property') return 1;
-    if (clean === 'slots' || clean === 'slot') return 2;
-    if (clean === 'csscustomproperties' || clean === 'csscustomproperty' || clean === 'cssprops' || clean === 'cssproperties' || clean === 'cssvariables' || clean === 'cssvariable') return 3;
-    if (clean === 'cssparts' || clean === 'csspart') return 4;
-    if (clean === 'cssstates' || clean === 'cssstate') return 5;
-    if (clean === 'methods' || clean === 'method') return 6;
-    if (clean === 'events' || clean === 'event') return 7;
-    return -1;
-  }
-
-  const sortedEntries = Object.entries(context.argTypes).sort(([aKey, aArg], [bKey, bArg]) => {
-    const aCategory = aArg.table?.category;
-    const bCategory = bArg.table?.category;
-
-    const aIndex = getCategoryIndex(aCategory);
-    const bIndex = getCategoryIndex(bCategory);
-
-    // If both have assigned indices, sort by index
-    if (aIndex !== -1 && bIndex !== -1) {
-      if (aIndex !== bIndex) {
-        return aIndex - bIndex;
-      }
-    } else if (aIndex !== -1) {
-      return -1; // Standard categories with index come first
-    } else if (bIndex !== -1) {
-      return 1;
-    } else if (aCategory && bCategory) {
-      // Both are non-standard categories; sort them alphabetically
-      const catCompare = aCategory.localeCompare(bCategory);
-      if (catCompare !== 0) return catCompare;
-    } else if (aCategory) {
-      return -1;
-    } else if (bCategory) {
-      return 1;
-    }
-
-    // Within the same category index or name (or if neither has a category), sort alphabetically by key
-    return aKey.localeCompare(bKey);
-  });
-
-  const sortedResult = Object.fromEntries(sortedEntries);
-  console.log('SORTED ARGTYPES KEYS:', Object.keys(sortedResult));
-  console.log('SORTED CATEGORIES:', Object.values(sortedResult).map(a => a.table?.category));
-
-  return sortedResult;
-}
-
-// Ensure withOrderedCategories is run after Storybook's built-in enhancers (inferArgTypes, inferControls)
-if (typeof window !== 'undefined') {
-  const alignEnhancers = () => {
-    const store = /** @type {any} */ (window)['__STORYBOOK_PREVIEW__']?.storyStoreValue;
-    if (store && store.projectAnnotations && store.projectAnnotations.argTypesEnhancers) {
-      const enhancers = store.projectAnnotations.argTypesEnhancers;
-      const idx = enhancers.findIndex((/** @type {any} */ e) => e.name === 'withOrderedCategories');
-      if (idx !== -1) {
-        // Move withOrderedCategories to the end of the array so it runs after inferArgTypes/inferControls
-        const [withOrdered] = enhancers.splice(idx, 1);
-        enhancers.push(withOrdered);
-      }
-    } else {
-      setTimeout(alignEnhancers, 10);
-    }
-  };
-  alignEnhancers();
-}
-
-export const argTypesEnhancers = [withOrderedCategories];
 
 export const parameters = {
   layout: 'fullscreen',

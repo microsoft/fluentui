@@ -2,10 +2,12 @@ import { html, ref, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { LabelPosition } from '../field/field.options.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 type Story = StoryObj<FluentCheckbox>;
+const { argTypes } = getStorybookHelpers<FluentCheckbox>('fluent-checkbox');
 
 const storyTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-checkbox
@@ -37,86 +39,7 @@ export default {
   args: {
     disabled: false,
   },
-  argTypes: {
-    checked: {
-      control: 'boolean',
-      description: 'Sets the checked state of the checkbox',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets the disabled state of the checkbox',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    form: {
-      control: 'text',
-      description: 'The form element that the checkbox belongs to',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    indeterminate: {
-      control: 'boolean',
-      description: 'Sets the indeterminate state of the checkbox',
-      table: { category: 'properties', type: { summary: 'boolean' } },
-    },
-    name: {
-      control: 'text',
-      description: 'The name of the checkbox',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    required: {
-      control: 'boolean',
-      description: 'Sets the checkbox as required',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    value: {
-      control: 'text',
-      description: 'The value of the checkbox',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    shape: {
-      description: 'Sets the shape of the checkbox',
-      control: 'select',
-      options: Object.values(CheckboxShape),
-      mapping: { '': null, ...CheckboxShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CheckboxShape).join('|') },
-      },
-    },
-    size: {
-      description: 'Sets the size of the checkbox',
-      control: 'select',
-      options: Object.values(CheckboxSize),
-      mapping: { '': null, ...CheckboxSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CheckboxSize).join('|') },
-      },
-    },
-    checkedIndicatorContent: {
-      control: false,
-      description: 'Slot for checked indicator',
-      name: 'checked-indicator',
-      table: { category: 'slots', type: {} },
-    },
-    indeterminateIndicatorContent: {
-      control: false,
-      description: 'Slot for indeterminate indicator',
-      name: 'indeterminate-indicator',
-      table: { category: 'slots', type: {} },
-    },
-    label: { table: { disable: true } },
-    change: {
-      control: false,
-      description: 'Fires when the checked state changes.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
-    input: {
-      control: false,
-      description: 'Fires while the checked state changes.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentCheckbox>;
 
 export const Default: Story = {};

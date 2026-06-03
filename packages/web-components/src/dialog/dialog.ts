@@ -6,6 +6,8 @@ import { DialogType } from './dialog.options.js';
  *
  * @tag fluent-dialog
  *
+ * @slot - The default slot. {@link (DialogBody:class)} element recommended.
+ *
  * @public
  */
 export class Dialog extends FASTElement {

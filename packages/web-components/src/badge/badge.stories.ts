@@ -1,9 +1,11 @@
 import { html, when } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Badge as FluentBadge } from './badge.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
 type Story = StoryObj<FluentBadge>;
+const { argTypes } = getStorybookHelpers<FluentBadge>('fluent-badge');
 
 const storyTemplate = html<StoryArgs<FluentBadge>>`
   <fluent-badge
@@ -25,89 +27,9 @@ export default {
     color: BadgeColor.brand,
     shape: BadgeShape.circular,
     size: BadgeSize.medium,
+    slottedContent: () => 'Badge',
   },
-  argTypes: {
-    count: {
-      control: 'number',
-      description: 'Sets the count shown by a counter badge variant.',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    dot: {
-      control: 'boolean',
-      description: 'Shows a dot badge for a counter badge variant.',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    overflowCount: {
-      control: 'number',
-      description: 'Sets the overflow threshold shown by a counter badge variant.',
-      name: 'overflow-count',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    showZero: {
-      control: 'boolean',
-      description: 'Shows zero when count is 0 for a counter badge variant.',
-      name: 'show-zero',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    appearance: {
-      description: 'Sets the appearance of the badge to one of the predefined styles',
-      options: Object.values(BadgeAppearance),
-      mapping: { '': null, ...BadgeAppearance },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(BadgeAppearance).join('|') },
-      },
-    },
-    color: {
-      description: 'Sets the color of the badge to one of the predefined colors',
-      options: Object.values(BadgeColor),
-      mapping: { '': null, ...BadgeColor },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(BadgeColor).join('|') },
-      },
-    },
-    shape: {
-      description: 'Sets the shape of the badge to one of the predefined shapes',
-      options: Object.values(BadgeShape),
-      mapping: { '': null, ...BadgeShape },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(BadgeShape).join('|') },
-      },
-    },
-    size: {
-      description: 'Sets the size of the badge to one of the predefined sizes',
-      options: Object.values(BadgeSize),
-      mapping: { '': null, ...BadgeSize },
-      control: 'select',
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(BadgeSize).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'Slot for start icons',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'Slot for end icons',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentBadge>;
 
 export const Default: Story = {};

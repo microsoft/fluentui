@@ -1,8 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Radio as FluentRadio } from './radio.js';
 
 type Story = StoryObj<FluentRadio>;
+const { argTypes } = getStorybookHelpers<FluentRadio>('fluent-radio');
 
 const storyTemplate = html<StoryArgs<FluentRadio>>`
   <fluent-radio
@@ -18,54 +20,7 @@ const storyTemplate = html<StoryArgs<FluentRadio>>`
 export default {
   title: 'Components/Radio',
   render: renderComponent(storyTemplate),
-  argTypes: {
-    checked: {
-      control: 'boolean',
-      description: 'Sets checked state on radio',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets disabled state on radio',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    form: {
-      control: 'text',
-      description: 'The form element that the radio belongs to',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    name: {
-      control: 'text',
-      description: 'The name of the radio',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    required: {
-      control: 'boolean',
-      description: 'Marks radio as required',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    value: {
-      control: 'text',
-      description: 'The value of the radio',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    checkedIndicatorContent: {
-      control: false,
-      description: 'Slot for checked indicator',
-      name: 'checked-indicator',
-      table: { category: 'slots', type: {} },
-    },
-    change: {
-      control: false,
-      description: 'Fires when the checked state changes.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
-    input: {
-      control: false,
-      description: 'Fires while the checked state changes.',
-      table: { category: 'events', type: { summary: 'CustomEvent' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentRadio>;
 
 export const Default: Story = {};

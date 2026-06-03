@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Tree as FluentTree } from './tree.js';
 
 type Story = StoryObj<FluentTree>;
+const { argTypes } = getStorybookHelpers<FluentTree>('fluent-tree');
 
 const storyTemplate = html<StoryArgs<FluentTree>>`
   <fluent-tree size="${x => x.size}" appearance="${x => x.appearance}">
@@ -118,36 +120,7 @@ export default {
     size: TreeItemSize.medium,
     appearance: TreeItemAppearance.subtle,
   },
-  argTypes: {
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    size: {
-      control: 'select',
-      options: Object.values(TreeItemSize),
-      description: 'Sets the visual appearance of the control',
-      table: {
-        category: 'attributes',
-        defaultValue: {
-          summary: 'medium',
-        },
-      },
-    },
-    appearance: {
-      control: 'select',
-      options: Object.values(TreeItemAppearance),
-      description: 'The appearance variants of the tree item element',
-      table: {
-        category: 'attributes',
-        defaultValue: {
-          summary: 'subtle',
-        },
-      },
-    },
-  },
+  argTypes,
 } as Meta<FluentTree>;
 
 export const Default: Story = {};

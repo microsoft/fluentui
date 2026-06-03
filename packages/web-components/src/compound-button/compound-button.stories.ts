@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { CompoundButton as FluentCompoundButton } from './compound-button.js';
 import { CompoundButtonAppearance, CompoundButtonShape, CompoundButtonSize } from './compound-button.options.js';
 
 type Story = StoryObj<FluentCompoundButton>;
+const { argTypes } = getStorybookHelpers<FluentCompoundButton>('fluent-compound-button');
 
 const storyTemplate = html<StoryArgs<FluentCompoundButton>>`
   <fluent-compound-button
@@ -28,129 +30,7 @@ export default {
     slottedContent: () => 'Button',
     descriptionSlottedContent: () => html`<span slot="description">Secondary content</span>`,
   },
-  argTypes: {
-    appearance: {
-      control: 'select',
-      description: 'Indicates the styled appearance of the button.',
-      options: ['', ...Object.values(CompoundButtonAppearance)],
-      mapping: { '': null, ...CompoundButtonAppearance },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CompoundButtonAppearance).join('|') },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'The shape of the button.',
-      options: ['', ...Object.values(CompoundButtonShape)],
-      mapping: { '': null, ...CompoundButtonShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CompoundButtonShape).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the button.',
-      options: ['', ...Object.values(CompoundButtonSize)],
-      mapping: { '': null, ...CompoundButtonSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(CompoundButtonSize).join('|') },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: "Sets the button's disabled state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabledFocusable: {
-      control: 'boolean',
-      description: 'Indicates the button is focusable while disabled.',
-      name: 'disabled-focusable',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    form: {
-      control: 'text',
-      description: 'The id of a form to associate the element to.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formaction: {
-      control: 'text',
-      description: 'The URL that processes the form submission.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formenctype: {
-      control: 'text',
-      description: 'The encoding type for the form submission.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formmethod: {
-      control: 'text',
-      description: 'The HTTP method used to submit the form.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formnovalidate: {
-      control: 'boolean',
-      description: 'Disables form validation on submit.',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    formtarget: {
-      control: 'text',
-      description: 'Target frame or window for form submission.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    iconOnly: {
-      control: 'boolean',
-      description: 'Indicates the button should only display as an icon.',
-      name: 'icon-only',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    name: {
-      control: 'text',
-      description: 'The name used during form submission.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    type: {
-      control: 'text',
-      description: 'The button type.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    value: {
-      control: 'text',
-      description: 'The initial value of the button.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    descriptionSlottedContent: {
-      control: false,
-      description: 'The description slot',
-      name: 'description',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'Slot for start icons',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'Slot for end icons',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-    content: {
-      control: false,
-      description: 'The button content container.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentCompoundButton>;
 
 export const Appearance: Story = {

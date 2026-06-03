@@ -2,9 +2,11 @@ import { html, repeat } from '@microsoft/fast-element';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { toggleState } from '../utils/element-internals.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import { DropdownOption as FluentDropdownOption } from './option.js';
 
 type Story = StoryObj<FluentDropdownOption>;
+const { argTypes } = getStorybookHelpers<FluentDropdownOption>('fluent-dropdown-option');
 
 const storyTemplate = html<StoryArgs<FluentDropdownOption>>`
   <fluent-option
@@ -27,82 +29,7 @@ export default {
   args: {
     disabled: false,
   },
-  argTypes: {
-    selected: {
-      control: 'boolean',
-      description: 'Sets the selected state of the option',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets the disabled state of the option',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    form: {
-      control: 'text',
-      description: 'The form element that the option belongs to',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    freeform: {
-      control: 'boolean',
-      description: 'Sets whether the option behaves as freeform content',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    id: {
-      control: 'text',
-      description: 'The id of the option',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    name: {
-      control: 'text',
-      description: 'The name of the option',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    text: {
-      control: 'text',
-      description: 'The text to display in the dropdown when the option is selected',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    value: {
-      control: 'text',
-      description: 'The value of the option',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    selectedIndicatorContent: {
-      control: false,
-      description: 'Slot for selected indicator',
-      name: 'checked-indicator',
-      table: { category: 'slots', type: {} },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The content to display in the option',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'The content to display at the start of the option',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    descriptionSlottedContent: {
-      control: false,
-      description: 'The content to display in the description slot',
-      name: 'description',
-      table: { category: 'slots', type: {} },
-    },
-    content: {
-      control: false,
-      description: 'The wrapper for the option content.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-    description: {
-      control: false,
-      description: 'The wrapper for the option description.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-  },
+  argTypes,
   decorators: [
     Story => {
       const story = Story() as DocumentFragment | FluentDropdownOption;

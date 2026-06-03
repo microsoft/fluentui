@@ -1,10 +1,12 @@
 import { html, ref, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Field as FluentField } from './field.js';
 import { LabelPosition } from './field.options.js';
 
 type Story = StoryObj<FluentField>;
+const { argTypes } = getStorybookHelpers<FluentField>('fluent-field');
 
 const SuccessIcon = html.partial(/* html */ `
   <svg fill="${colorStatusSuccessBackground3}" aria-hidden="true" width="1em" height="1em" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -60,57 +62,7 @@ export default {
     inputSlottedContent: () => html`<fluent-checkbox slot="input"></fluent-checkbox>`,
     labelPosition: LabelPosition.above,
   },
-  argTypes: {
-    label: { table: { disable: true } },
-    message: { table: { disable: true } },
-    labelPosition: {
-      control: 'select',
-      description: 'Sets the position of the label relative to the input',
-      name: 'label-position',
-      mapping: { '': null, ...LabelPosition },
-      options: ['', ...Object.values(LabelPosition)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(LabelPosition).join('|') },
-      },
-    },
-    labelSlottedContent: {
-      control: false,
-      description: 'The associated label for the control. This should be a label element.',
-      name: 'label',
-      table: { category: 'slots', type: {} },
-    },
-    inputSlottedContent: {
-      control: false,
-      description: 'The input control for the field.',
-      name: 'input',
-      table: { category: 'slots', type: {} },
-    },
-    messageSlottedContent: {
-      control: false,
-      description: 'Hint or validation messages for the field.',
-      name: 'message',
-      table: { category: 'slots', type: {} },
-    },
-    labelPart: {
-      control: false,
-      name: 'label',
-      description: 'The label slot container.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-    inputPart: {
-      control: false,
-      name: 'input',
-      description: 'The input slot container.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-    messagePart: {
-      control: false,
-      name: 'message',
-      description: 'The message slot container.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentField>;
 
 export const Default: Story = {};

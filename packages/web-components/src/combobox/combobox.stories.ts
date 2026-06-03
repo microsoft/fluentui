@@ -1,11 +1,14 @@
 import { html, repeat } from '@microsoft/fast-element';
+import { dedent } from 'dedent';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { DropdownOption as FluentDropdownOption } from '../option/option.js';
 import type { Dropdown as FluentDropdown } from '../dropdown/dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from '../dropdown/dropdown.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 
 type Story = StoryObj<FluentDropdown>;
+const { argTypes } = getStorybookHelpers<FluentDropdown>('fluent-dropdown');
 
 const optionTemplate = html<StoryArgs<FluentDropdownOption>>` <fluent-option
   ?disabled="${story => story.disabled}"
@@ -43,10 +46,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `
-The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
-To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
-`,
+        component: dedent`
+          The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
+          To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
+        `,
       },
     },
   },
@@ -55,65 +58,7 @@ To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
     type: DropdownType.combobox,
   },
   argTypes: {
-    ariaLabelledby: {
-      control: 'text',
-      name: 'aria-labelledby',
-      table: { category: 'attributes' },
-    },
-    appearance: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownAppearance)],
-      table: { category: 'attributes' },
-    },
-    disabled: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    id: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    name: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    type: {
-      control: 'radio',
-      options: Object.values(DropdownType),
-      table: { category: 'attributes' },
-    },
-    placeholder: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    multiple: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    required: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    size: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownSize)],
-      table: { category: 'attributes' },
-    },
-    value: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    controlSlottedContent: {
-      control: false,
-      name: 'control',
-      table: { category: 'slots', type: {} },
-    },
-    indicatorSlottedContent: {
-      control: false,
-      name: 'indicator',
-      table: { category: 'slots', type: {} },
-    },
-    slottedContent: { table: { disable: true } },
+    ...argTypes,
     slot: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;

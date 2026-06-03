@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Button as FluentButton } from './button.js';
 import { ButtonAppearance, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 
 type Story = StoryObj<FluentButton>;
+const { argTypes } = getStorybookHelpers<FluentButton>('fluent-button');
 
 const storyTemplate = html<StoryArgs<FluentButton>>`
   <fluent-button
@@ -36,135 +38,7 @@ export default {
     disabledFocusable: false,
     slottedContent: () => 'Button',
   },
-  argTypes: {
-    appearance: {
-      control: 'select',
-      description: 'Indicates the styled appearance of the button.',
-      options: ['', ...Object.values(ButtonAppearance)],
-      mapping: { '': null, ...ButtonAppearance },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(ButtonAppearance).join('|') },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      description: "Sets the button's disabled state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabledFocusable: {
-      control: 'boolean',
-      description: 'Indicates the button is focusable while disabled.',
-      name: 'disabled-focusable',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    formAction: {
-      control: 'text',
-      description: 'The URL that processes the form submission.',
-      name: 'formaction',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formAttribute: {
-      control: 'text',
-      description: 'The id of a form to associate the element to.',
-      name: 'form',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formEnctype: {
-      control: 'text',
-      description: 'The encoding type for the form submission.',
-      name: 'formenctype',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formMethod: {
-      control: 'text',
-      description: 'The HTTP method that the browser uses to submit the form.',
-      name: 'formmethod',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    formNoValidate: {
-      control: 'boolean',
-      description: 'Indicates that the form will not be validated when submitted.',
-      name: 'formnovalidate',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    formTarget: {
-      control: 'text',
-      description: 'The target frame or window to open the form submission in.',
-      name: 'formtarget',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    iconOnly: {
-      control: 'boolean',
-      description: 'Indicates the button should only display as an icon.',
-      name: 'icon-only',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    name: {
-      control: 'text',
-      description:
-        "The name of the element. This element's value will be surfaced during form submission under the provided name.",
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the button.',
-      options: ['', ...Object.values(ButtonSize)],
-      mapping: { '': null, ...ButtonSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(ButtonSize).join('|') },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'The shape of the button.',
-      options: ['', ...Object.values(ButtonShape)],
-      mapping: { '': null, ...ButtonShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(ButtonShape).join('|') },
-      },
-    },
-    type: {
-      control: 'select',
-      description: 'The type of the button.',
-      options: ['', ...Object.values(ButtonType)],
-      mapping: { '': null, ...ButtonType },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(ButtonType).join('|') },
-      },
-    },
-    value: {
-      control: 'text',
-      description: 'The initial value of the button.',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'Slot for start icons',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'Slot for end icons',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-    content: {
-      control: false,
-      description: 'The button content container.',
-      table: { category: 'css parts', type: { summary: 'part' } },
-    },
-  },
+  argTypes,
 } as Meta<FluentButton>;
 
 export const Default: Story = {};
