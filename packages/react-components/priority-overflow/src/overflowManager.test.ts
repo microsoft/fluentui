@@ -175,4 +175,52 @@ describe('overflowManager', () => {
       invisibleItemCount: 0,
     });
   });
+
+  it('resolves overflow synchronously when observed with forceUpdate and the container is measured', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(100);
+    const itemA = createElementWithSize('button', 60);
+    const itemB = createElementWithSize('button', 60);
+    const menu = createElementWithSize('button', 30);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+    manager.addOverflowMenu(menu);
+
+    // No manual forceUpdate(); observing with forceUpdate resolves overflow on its own.
+    manager.observe(container, { forceUpdate: true });
+
+    expect(getVisibleIds(manager)).toEqual(['a']);
+    expect(getInvisibleIds(manager)).toEqual(['b']);
+  });
+
+  it('does not resolve overflow on observe when forceUpdate is not requested', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(100);
+    const itemA = createElementWithSize('button', 60);
+    const itemB = createElementWithSize('button', 60);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+
+    manager.observe(container);
+
+    // Nothing has been computed yet (the ResizeObserver is mocked to a noop).
+    expect(manager.getSnapshot().itemVisibility).toEqual({});
+  });
+
+  it('does not resolve overflow on observe with forceUpdate when the container is not measured', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(0);
+    const itemA = createElementWithSize('button', 60);
+    const itemB = createElementWithSize('button', 60);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+
+    // Degenerate 0 size — the guard skips the force so nothing collapses.
+    manager.observe(container, { forceUpdate: true });
+
+    expect(manager.getSnapshot().itemVisibility).toEqual({});
+  });
 });

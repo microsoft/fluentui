@@ -4,11 +4,11 @@
 
 ```ts
 
-import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
+import type { OverflowOptions } from '@fluentui/priority-overflow';
 import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
@@ -29,7 +29,7 @@ export interface OnOverflowChangeData extends OverflowState {
 }
 
 // @public
-export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible" | "hasHiddenItems">> & {
+export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible" | "hasHiddenItems">> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
 } & React_2.RefAttributes<unknown>>;
@@ -54,7 +54,7 @@ export type OverflowItemProps = {
 });
 
 // @public
-export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>> & {
+export type OverflowProps = Partial<Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
 };
@@ -69,7 +69,7 @@ export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 export function useIsOverflowItemVisible(id: string): boolean;
 
 // @internal (undocumented)
-export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, "onUpdateOverflow">) => UseOverflowContainerReturn<TElement>;
+export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<OverflowOptions, "onUpdateOverflow">) => UseOverflowContainerReturn<TElement>;
 
 // @internal (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'forceUpdateOverflow' | 'registerOverflowMenu' | 'registerDivider' | 'getSnapshot' | 'subscribe'> {

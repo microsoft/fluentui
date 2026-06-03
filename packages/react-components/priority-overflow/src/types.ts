@@ -130,7 +130,7 @@ export interface OnUpdateItemVisibilityPayload {
 /**
  * Options used to initialize or reconfigure overflow observation.
  */
-export interface ObserveOptions {
+export interface OverflowOptions {
   /**
    * Padding in pixels reserved at the end of the container before overflow occurs.
    * Useful for accounting for extra elements (for example an overflow menu button)
@@ -172,6 +172,14 @@ export interface ObserveOptions {
   hasHiddenItems?: boolean;
 }
 
+export interface ObserveOptions extends Partial<OverflowOptions> {
+  /**
+   * forces update when observation begins, ensuring initial overflow state is correct. This is useful when the container starts with items that should be overflowed, or when the container resizes immediately after mounting.
+   * @default false
+   */
+  forceUpdate?: boolean;
+}
+
 /**
  * Internal manager contract used to observe and compute priority overflow.
  *
@@ -189,7 +197,7 @@ export interface OverflowManager {
   /**
    * Updates engine options without restarting observation.
    */
-  setOptions: (options: Partial<ObserveOptions>) => void;
+  setOptions: (options: Partial<OverflowOptions>) => void;
   /**
    * Add overflow items
    */

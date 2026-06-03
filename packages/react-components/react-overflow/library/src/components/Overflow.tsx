@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import type { ObserveOptions, OnUpdateOverflow, OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowOptions, OnUpdateOverflow, OverflowGroupState } from '@fluentui/priority-overflow';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
   getReactElementRef,
   useMergedRefs,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 
 import { OverflowContext, type OverflowContextValue } from '../overflowContext';
@@ -26,7 +27,7 @@ export interface OnOverflowChangeData extends OverflowState {}
  * Overflow Props
  */
 export type OverflowProps = Partial<
-  Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>
+  Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>
 > & {
   children: React.ReactElement;
 
@@ -51,21 +52,15 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     hasHiddenItems,
   } = props;
 
-  const update: OnUpdateOverflow = React.useCallback(
-    () => {
-      const snapshot = getSnapshot();
-      const state: OverflowState = {
-        hasOverflow: snapshot.invisibleItemCount > 0,
-        itemVisibility: snapshot.itemVisibility,
-        groupVisibility: snapshot.groupVisibility,
-      };
-      onOverflowChange?.(null, state);
-    },
-    // `getSnapshot` is a stable callback from useOverflowContainer (declared just below); omitted
-    // from deps to avoid a temporal-dead-zone reference.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onOverflowChange],
-  );
+  const update: OnUpdateOverflow = useEventCallback(() => {
+    const snapshot = getSnapshot();
+    const state: OverflowState = {
+      hasOverflow: snapshot.invisibleItemCount > 0,
+      itemVisibility: snapshot.itemVisibility,
+      groupVisibility: snapshot.groupVisibility,
+    };
+    onOverflowChange?.(null, state);
+  });
 
   const {
     containerRef,

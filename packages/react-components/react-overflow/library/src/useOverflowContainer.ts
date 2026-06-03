@@ -12,7 +12,7 @@ import type {
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowManager,
-  ObserveOptions,
+  OverflowOptions,
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { UseOverflowContainerReturn } from './types';
@@ -26,7 +26,7 @@ import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERF
  */
 export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
-  options: Omit<ObserveOptions, 'onUpdateOverflow'>,
+  options: Omit<OverflowOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
   const {
     overflowAxis = 'horizontal',
@@ -39,7 +39,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
-  const observeOptions: Required<ObserveOptions> = React.useMemo(
+  const observeOptions: Required<OverflowOptions> = React.useMemo(
     () => ({
       overflowAxis,
       overflowDirection,
@@ -62,34 +62,11 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
-      managerRef.current.observe(containerRef.current);
-      /**
-       * FIXME: Ideally this measurement guard would live
-       * inside the manager (alongside the rest of the overflow logic),
-       * and that is most likely where it should eventually move.
-       * It lives here, at the call site, only to preserve previous behavior and
-       * avoid regressions: `forceUpdate`(and the `update` it backs) is also
-       * invoked by addItem / addOverflowMenu / setOptions / ResizeObserver —
-       * all pre-existing paths.
-       * Gating it inside the manager would change those long-standing behaviors too
-       * (e.g. it would suppress the collapsed state some downstream snapshots already encode).
-       * Only this first-paint call is new,
-       * so for now only this call is conditioned on the container being measured.
-       *
-       * Another problem with moving this to the manager is
-       * opting out of this eager behavior that ensure first paint correctness.
-       * TODO: expose a configuration option to disable this eager behavior
-       */
-      const axisClientSize =
-        overflowAxis === 'horizontal' ? containerRef.current.clientWidth : containerRef.current.clientHeight;
-      if (axisClientSize > 0) {
-        managerRef.current.forceUpdate();
-      }
+      // forceUpdate resolves overflow synchronously for a correct first paint; the manager guards it
+      // on the container being measured.
+      managerRef.current.observe(containerRef.current, { forceUpdate: true });
       return () => managerRef.current?.disconnect();
     }
-    // Mount-only: observe + first-paint force run once. `overflowAxis` is captured at mount; later
-    // changes are handled by the setOptions effect and ResizeObserver.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useIsomorphicLayoutEffect(() => {
