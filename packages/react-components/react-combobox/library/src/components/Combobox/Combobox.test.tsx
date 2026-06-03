@@ -8,6 +8,7 @@ import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { comboboxClassNames } from './useComboboxStyles.styles';
 import type { ComboboxProps } from '@fluentui/react-combobox';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -1195,6 +1196,28 @@ describe('Combobox', () => {
       );
 
       expect(container.querySelector(`.${comboboxClassNames.expandIcon}`)).not.toBeInTheDocument();
+    });
+  });
+
+  describe('activeDescendantImperativeRef', () => {
+    it('passes activeDescendantImperativeRef through to useActiveDescendant', () => {
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+
+      const { getByRole } = render(
+        <Combobox open inlinePopup disableAutoFocus activeDescendantImperativeRef={imperativeRef}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      const firstId = imperativeRef.current?.first();
+      const lastId = imperativeRef.current?.last();
+
+      expect(firstId).toBeTruthy();
+      expect(lastId).toBeTruthy();
+      expect(lastId).not.toBe(firstId);
+      expect(getByRole('combobox').getAttribute('aria-activedescendant')).toBe(lastId);
     });
   });
 });

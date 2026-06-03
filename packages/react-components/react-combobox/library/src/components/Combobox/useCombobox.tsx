@@ -46,6 +46,7 @@ export const useComboboxBase_unstable = (
     controller: activeDescendantController,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
     matchOption: isComboboxOptionElement,
+    imperativeRef: props.activeDescendantImperativeRef,
   });
   const comboboxInternalState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
   const { appearance: _appearance, size: _size, ...baseState } = comboboxInternalState;

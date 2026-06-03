@@ -40,7 +40,7 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  const { multiselect, disableAutoFocus = false } = props;
+  const { multiselect, disableAutoFocus = false, activeDescendantImperativeRef } = props;
   const optionCollection = useOptionCollection();
 
   const {
@@ -49,6 +49,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     controller,
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
     matchOption: isComboboxOptionElement,
+    imperativeRef: activeDescendantImperativeRef,
   });
 
   const hasListboxContext = useHasParentContext(ListboxContext);
