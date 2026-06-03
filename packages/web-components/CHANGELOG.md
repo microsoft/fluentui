@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 28 May 2026 04:09:42 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jun 2026 04:07:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.23)
+
+Wed, 03 Jun 2026 04:07:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.22..@fluentui/web-components_v3.0.0-rc.23)
+
+### Changes
+
+- add keyboard support for printable characters in Dropdown ([PR #36232](https://github.com/microsoft/fluentui/pull/36232) by machi@microsoft.com)
 
 ## [3.0.0-rc.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.22)
 
