@@ -72,7 +72,6 @@
   ],
   "scripts": {
     "analyze": "cem analyze",
-    "verify-storybook": "node ./scripts/verify-storybook.js --no-fail",
     "verify-packaging": "node ./scripts/verify-packaging",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
