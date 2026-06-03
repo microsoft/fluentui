@@ -11,7 +11,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
+import type { TagPickerControlBaseState, TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
@@ -20,18 +20,15 @@ import { useFieldContext_unstable } from '@fluentui/react-field';
 import { useExpandLabel } from '../../utils/useExpandLabel';
 
 /**
- * Create the state required to render PickerControl.
+ * Create the base state required to render TagPickerControl, without design-only state.
  *
- * The returned state can be modified with hooks such as usePickerControlStyles_unstable,
- * before being passed to renderPickerControl_unstable.
- *
- * @param props - props from this instance of PickerControl
- * @param ref - reference to root HTMLDivElement of PickerControl
+ * @param props - props from this instance of TagPickerControl
+ * @param ref - reference to root HTMLDivElement of TagPickerControl
  */
-export const useTagPickerControl_unstable = (
+export const useTagPickerControlBase_unstable = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
-): TagPickerControlState => {
+): TagPickerControlBaseState => {
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
@@ -39,8 +36,6 @@ export const useTagPickerControl_unstable = (
   const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const invalid = useFieldContext_unstable()?.validationState === 'error';
   const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
@@ -114,7 +109,7 @@ export const useTagPickerControl_unstable = (
     }
   });
 
-  const state: TagPickerControlState = {
+  const state: TagPickerControlBaseState = {
     components: {
       root: 'div',
       expandIcon: 'span',
@@ -133,13 +128,14 @@ export const useTagPickerControl_unstable = (
     aside,
     expandIcon,
     secondaryAction,
-    size,
-    appearance,
     disabled,
     invalid,
   };
 
-  const expandIconLabelRef = useExpandLabel({ tagPickerId, state: state as Pick<TagPickerControlState, 'expandIcon'> });
+  const expandIconLabelRef = useExpandLabel({
+    tagPickerId,
+    state: state as Pick<TagPickerControlBaseState, 'expandIcon'>,
+  });
 
   const expandIconLabelMergeRef = useMergedRefs(expandIcon?.ref, expandIconLabelRef);
   if (state.expandIcon) {
@@ -153,4 +149,28 @@ export const useTagPickerControl_unstable = (
   }, [targetDocument]);
 
   return state;
+};
+
+/**
+ * Create the state required to render PickerControl.
+ *
+ * The returned state can be modified with hooks such as usePickerControlStyles_unstable,
+ * before being passed to renderPickerControl_unstable.
+ *
+ * @param props - props from this instance of PickerControl
+ * @param ref - reference to root HTMLDivElement of PickerControl
+ */
+export const useTagPickerControl_unstable = (
+  props: TagPickerControlProps,
+  ref: React.Ref<HTMLDivElement>,
+): TagPickerControlState => {
+  const baseState = useTagPickerControlBase_unstable(props, ref);
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
+
+  return {
+    ...baseState,
+    size,
+    appearance,
+  };
 };
