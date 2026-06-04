@@ -7,12 +7,12 @@ import type {
   OverflowGroupState,
   OverflowItemEntry,
   OverflowManager,
-  ObserveOptions,
+  OverflowOptions,
   OverflowDividerEntry,
   OverflowSnapshot,
 } from './types';
 
-const DEFAULT_OPTIONS: Required<ObserveOptions> = {
+const DEFAULT_OPTIONS: Required<OverflowOptions> = {
   overflowAxis: 'horizontal',
   overflowDirection: 'end',
   padding: 10,
@@ -33,7 +33,7 @@ const DEFAULT_OPTIONS: Required<ObserveOptions> = {
  * @param initialOptions - Initial observe options. Missing values are filled with defaults.
  * @returns overflow manager instance
  */
-export function createOverflowManager(initialOptions: Partial<ObserveOptions> = {}): OverflowManager {
+export function createOverflowManager(initialOptions: Partial<OverflowOptions> = {}): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
@@ -44,7 +44,7 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
-  const options: Required<ObserveOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
+  const options: Required<OverflowOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
   const listeners = new Set<() => void>();
@@ -264,10 +264,10 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
     }
   };
 
-  const observe: OverflowManager['observe'] = (observedContainer, userOptions) => {
-    if (userOptions) {
-      Object.assign(options, userOptions);
-    }
+  const observe: OverflowManager['observe'] = (observedContainer, observeOptions) => {
+    const { forceUpdate: shouldForceUpdate, ...userOptions } = observeOptions ?? {};
+    Object.assign(options, userOptions);
+
     Object.values(overflowItems).forEach(item => {
       if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
         visibleItemQueue.enqueue(item.id);
@@ -282,6 +282,10 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
       }
       update();
     });
+
+    if (shouldForceUpdate && getClientSize(observedContainer) > 0) {
+      forceUpdate();
+    }
   };
 
   const disconnect: OverflowManager['disconnect'] = () => {
@@ -330,6 +334,11 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
     overflowMenu = el;
+
+    if (observing) {
+      forceDispatch = true;
+      update();
+    }
   };
 
   const addDivider: OverflowManager['addDivider'] = divider => {
@@ -343,6 +352,11 @@ export function createOverflowManager(initialOptions: Partial<ObserveOptions> = 
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
     overflowMenu = undefined;
+
+    if (observing) {
+      forceDispatch = true;
+      update();
+    }
   };
 
   const removeDivider: OverflowManager['removeDivider'] = groupId => {
