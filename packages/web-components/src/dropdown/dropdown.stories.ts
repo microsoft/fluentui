@@ -493,3 +493,85 @@ export const OverflowScroll: Story = {
   `),
   args: { ...Default.args },
 };
+
+export const InsideDialog: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <fluent-button @click="${story => story.dialog.show()}">Open dialog</fluent-button>
+    <fluent-dialog ${ref('dialog')} aria-label="Dropdown in a dialog">
+      <fluent-dialog-body>
+        <h3 slot="title">Dropdown in a dialog</h3>
+        ${storyTemplate}
+      </fluent-dialog-body>
+    </fluent-dialog>
+  `),
+  args: { ...Default.args },
+};
+
+export const InsideDialogWithScrollingContent: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <fluent-button @click="${story => story.dialog.show()}">Open dialog</fluent-button>
+    <fluent-dialog ${ref('dialog')} aria-label="Dropdown in a dialog with scrolling content">
+      <fluent-dialog-body style="max-block-size: 30vb;">
+        <h3 slot="title">Dropdown in a dialog</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec lectus non lorem iaculis luctus. Proin ac
+          dolor eget enim commodo pretium. Duis ut nibh ac metus interdum finibus. Integer maximus ante a tincidunt
+          pretium. Aliquam erat volutpat. Sed nec ante vel lectus dignissim commodo id ut elit. Curabitur ullamcorper
+          sapien id mauris interdum, ac placerat mi malesuada. Duis aliquam, dolor eget facilisis mollis, ante leo
+          tincidunt quam, vel convallis ipsum turpis et turpis. Mauris fermentum neque nec tortor semper tempus. Integer
+          malesuada, nunc ac cursus facilisis, lectus mauris interdum erat, in vulputate risus velit in neque. Etiam
+          volutpat ante nec fringilla tempus. Quisque et lobortis dolor. Fusce sit amet odio sed ipsum fringilla auctor.
+          Suspendisse faucibus tellus in luctus hendrerit. Vestibulum euismod velit non laoreet feugiat. Nam sit amet
+          velit urna. Cras consectetur tempor sem, in suscipit sem ultrices id. Vivamus id felis fringilla, scelerisque
+          nulla non, aliquam leo. In pharetra mauris ut enim ullamcorper, id suscipit quam ullamcorper. Quisque
+          tincidunt, felis nec congue elementum, mauris est finibus ex, ut volutpat ante est nec est. Aliquam tempor,
+          turpis ac scelerisque dignissim, metus velit rutrum sem, eget efficitur mauris erat in metus. Vestibulum in
+          urna massa. Donec eleifend leo at dui convallis aliquet. Integer eleifend, velit ut consequat tempus, enim
+          elit ultricies diam, at congue enim enim id nunc. Nullam fringilla bibendum nulla, at lacinia sem bibendum
+          eget. Nunc posuere ipsum sed enim facilisis efficitur. Pellentesque id semper mi, a feugiat sem. Nunc
+          interdum, leo ut tincidunt consectetur, nunc mauris accumsan nulla, vel ultricies velit erat nec sapien.
+          Praesent eleifend ex at odio scelerisque cursus. Morbi eget tellus sed sapien scelerisque cursus at a ante.
+          Sed venenatis vehicula erat eu feugiat. Ut eu elit vitae urna tincidunt pulvinar nec at nunc. Vestibulum eget
+          tristique sapien. Sed egestas sapien vel ante viverra pharetra. Cras sit amet felis at nulla tincidunt euismod
+          vitae et justo. Duis nec rutrum lectus, nec lobortis quam. Pellentesque habitant morbi tristique senectus et
+          netus et malesuada fames ac turpis egestas. Sed ac ex condimentum, consectetur felis non, maximus odio. Sed
+          mattis arcu id justo fringilla, a tristique purus vestibulum. Nulla nec fringilla quam. Sed ac elit ac sem
+          posuere cursus nec vitae mauris. Suspendisse nec pulvinar risus. Sed a tincidunt elit, in gravida tortor.
+          Quisque sollicitudin lectus vel interdum tempor. Fusce dictum fermentum sem sed suscipit. Vivamus sollicitudin
+          ex turpis, sit amet consequat leo auctor at. Donec fermentum aliquet lectus, sit amet efficitur nibh
+          pellentesque et. Curabitur dapibus quam vitae lectus pellentesque, vitae varius massa facilisis. Quisque
+          consectetur eros a arcu cursus fringilla. Fusce efficitur auctor nibh, nec sollicitudin eros semper eget. Cras
+          a elit ut tortor semper volutpat eu vel nunc. Duis dapibus quam risus, ac tristique nisl aliquam eu. Curabitur
+          vel ipsum non nunc euismod fringilla vel a lorem. Curabitur viverra magna ac justo fringilla, eu vestibulum
+          purus finibus. Donec elementum volutpat libero, in tempus massa convallis vitae. Curabitur vitae mauris id
+          urna dictum pharetra. Nullam vehicula arcu arcu, vitae elementum enim tincidunt at. Duis eleifend, lorem a
+          efficitur facilisis, nulla dolor finibus orci, et ullamcorper orci ex ac purus. Aenean sem lectus, malesuada
+          id magna id, facilisis condimentum nibh. Cras tempor neque mi, sit amet suscipit libero consectetur non.
+          Nullam id eleifend mauris. Mauris iaculis lectus eu scelerisque efficitur. In id suscipit libero. Donec
+          condimentum, purus ac laoreet facilisis, risus lorem facilisis neque, id volutpat felis mi eget metus. Nulla
+          facilisi. Donec consequat tincidunt nunc sed elementum. Integer consectetur tristique orci, ut congue justo
+          pellentesque eu. Fusce faucibus iaculis mauris, eu lobortis orci egestas eget. Nullam nec arcu bibendum,
+          cursus diam ac, facilisis enim. Nulla facilisi. Curabitur lacinia odio mauris, a gravida nisi volutpat in.
+          Aliquam at maximus felis. Vestibulum convallis dignissim urna id gravida.
+        </p>
+        ${storyTemplate}
+      </fluent-dialog-body>
+    </fluent-dialog>
+  `),
+  args: { ...Default.args },
+};
+
+export const InsideNonModalDialog: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <div style="min-block-size: 20rem;">
+      <fluent-button @click="${story => story.dialog.show()}">Open dialog</fluent-button>
+      <fluent-dialog ${ref('dialog')} type="non-modal" aria-label="Dropdown in a non-modal dialog">
+        <fluent-dialog-body>
+          <h3 slot="title">Dropdown in a non-modal dialog</h3>
+          ${storyTemplate}
+        </fluent-dialog-body>
+      </fluent-dialog>
+    </div>
+  `),
+  args: { ...Default.args },
+};
