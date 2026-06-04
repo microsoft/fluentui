@@ -5,20 +5,14 @@
 ```ts
 
 // @internal
-export function createOverflowManager(initialOptions?: Partial<ObserveOptions>): OverflowManager;
+export function createOverflowManager(initialOptions?: Partial<OverflowOptions>): OverflowManager;
 
 // @internal
 export const EMPTY_SNAPSHOT: OverflowSnapshot;
 
-// @public
-export interface ObserveOptions {
-    hasHiddenItems?: boolean;
-    minimumVisible?: number;
-    onUpdateItemVisibility: OnUpdateItemVisibility;
-    onUpdateOverflow: OnUpdateOverflow;
-    overflowAxis?: OverflowAxis;
-    overflowDirection?: OverflowDirection;
-    padding?: number;
+// @public (undocumented)
+export interface ObserveOptions extends Partial<OverflowOptions> {
+    forceUpdate?: boolean;
 }
 
 // @public
@@ -76,9 +70,20 @@ export interface OverflowManager {
     removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
     removeOverflowMenu: () => void;
-    setOptions: (options: Partial<ObserveOptions>) => void;
+    setOptions: (options: Partial<OverflowOptions>) => void;
     subscribe: (listener: () => void) => () => void;
     update: () => void;
+}
+
+// @public
+export interface OverflowOptions {
+    hasHiddenItems?: boolean;
+    minimumVisible?: number;
+    onUpdateItemVisibility: OnUpdateItemVisibility;
+    onUpdateOverflow: OnUpdateOverflow;
+    overflowAxis?: OverflowAxis;
+    overflowDirection?: OverflowDirection;
+    padding?: number;
 }
 
 // @public

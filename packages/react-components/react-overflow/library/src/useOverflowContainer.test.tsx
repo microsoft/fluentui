@@ -90,7 +90,7 @@ describe('useOverflowContainer', () => {
 
     const { getByTestId } = render(<TestComponent />);
     expect(observeMock).toHaveBeenCalledTimes(1);
-    expect(observeMock).toHaveBeenCalledWith(getByTestId('container'));
+    expect(observeMock.mock.calls[0][0]).toBe(getByTestId('container'));
   });
 
   it('should disconnect on unmount', () => {
