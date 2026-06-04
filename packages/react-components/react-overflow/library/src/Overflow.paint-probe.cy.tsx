@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import { Overflow, useOverflowContext, useOverflowCount } from '@fluentui/react-overflow';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-overflow';
+import { OverflowContext, useOverflowContext } from './overflowContext';
 
 // Disable StrictMode so the probe measures a single mount/commit path.
 const mount = (element: React.ReactElement) => mountBase(element, { strict: false });
@@ -55,46 +55,31 @@ const PaintRecorder: React.FC<{ name: string; frames: number }> = ({ name, frame
 const distinctPaints = (filmstrip: Paint[]): Paint[] =>
   filmstrip.filter((paint, i) => i === 0 || JSON.stringify(paint) !== JSON.stringify(filmstrip[i - 1]));
 
-// ── Opt-in / opt-out building blocks ──────────────────────────────────────────────────────────────
-// Opt-in item mirrors useOverflowItem: it requests first-paint correctness by calling
-// forceUpdateOverflow on registration. Opt-out only registers.
-const Item: React.FC<{ id: string; optOut: boolean }> = ({ id, optOut }) => {
-  const ref = React.useRef<HTMLButtonElement>(null);
-  const registerItem = useOverflowContext(v => v.registerItem);
-  const forceUpdateOverflow = useOverflowContext(v => v.forceUpdateOverflow);
-  useIsomorphicLayoutEffect(() => {
-    if (ref.current) {
-      const unregister = registerItem({ element: ref.current, id, priority: 0 });
-      if (!optOut) {
-        forceUpdateOverflow();
-      }
-      return unregister;
-    }
-  }, [id, registerItem, forceUpdateOverflow, optOut]);
-  return (
-    <button ref={ref} {...{ [selectors.item]: id }} style={{ width: 50, height: 50, flexShrink: 0 }}>
-      {id}
-    </button>
-  );
+// ── Opt-out, without reimplementing anything ──────────────────────────────────────────────────────
+// First-paint correctness is requested by the real useOverflowItem / useOverflowMenu calling
+// forceUpdateOverflow. Opting out is simply overriding that one context method to a no-op for a
+// subtree — the real components inside then request nothing. A Context.Provider renders no DOM node,
+// so the flex layout (and overflow geometry) is untouched.
+const noop = () => {
+  /* opt out of first-paint correctness */
+};
+const OptOut: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+  const ctx = useOverflowContext();
+  const value = React.useMemo(() => ({ ...ctx, forceUpdateOverflow: noop }), [ctx]);
+  return <OverflowContext.Provider value={value}>{children}</OverflowContext.Provider>;
 };
 
-// Opt-in menu mirrors useOverflowMenu: it forces synchronously when overflowing so its own width is
-// accounted before paint. Opt-out only registers (relying on addOverflowMenu's async pass).
-const Menu: React.FC<{ optOut: boolean }> = ({ optOut }) => {
-  const ref = React.useRef<HTMLButtonElement>(null);
-  const overflowCount = useOverflowCount();
-  const registerOverflowMenu = useOverflowContext(v => v.registerOverflowMenu);
-  const forceUpdateOverflow = useOverflowContext(v => v.forceUpdateOverflow);
-  const isOverflowing = overflowCount > 0;
-  useIsomorphicLayoutEffect(() => {
-    if (ref.current) {
-      const unregister = registerOverflowMenu(ref.current);
-      if (!optOut && isOverflowing) {
-        forceUpdateOverflow();
-      }
-      return unregister;
-    }
-  }, [registerOverflowMenu, forceUpdateOverflow, isOverflowing, optOut]);
+// Real shipping components, used as-is.
+const Item: React.FC<{ id: string }> = ({ id }) => (
+  <OverflowItem id={id}>
+    <button {...{ [selectors.item]: id }} style={{ width: 50, height: 50, flexShrink: 0 }}>
+      {id}
+    </button>
+  </OverflowItem>
+);
+
+const Menu: React.FC = () => {
+  const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
   if (!isOverflowing) {
     return null;
   }
@@ -117,22 +102,17 @@ const Container: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
 );
 
 // 300px container, 10 items @ 50px, menu @ 50px, padding 0 -> settled state hides items 5..9 (+5).
-const ITEM_IDS = Array.from({ length: 10 }, (_, i) => String(i));
+const items = Array.from({ length: 10 }, (_, i) => <Item key={i} id={String(i)} />);
 const FRAMES = 12;
 
 const SETTLED: Paint = { menuText: '+5', overflowingItemIds: ['5', '6', '7', '8', '9'] };
 const UNRESOLVED: Paint = { menuText: null, overflowingItemIds: [] };
 const RESOLVED_ITEMS = ['5', '6', '7', '8', '9'];
 
-const recordCase = (name: string, itemsOptOut: boolean, menuOptOut: boolean) => {
+const recordCase = (name: string, content: React.ReactNode) => {
   mount(
     <>
-      <Container>
-        {ITEM_IDS.map(id => (
-          <Item key={id} id={id} optOut={itemsOptOut} />
-        ))}
-        <Menu optOut={menuOptOut} />
-      </Container>
+      <Container>{content}</Container>
       <PaintRecorder name={name} frames={FRAMES} />
     </>,
   );
@@ -162,7 +142,13 @@ describe('Overflow paint probe', () => {
   // No opt-out: both item and menu request first-paint correctness, so the very first painted frame
   // is already fully settled (items hidden AND menu count correct). Filmstrip: [+5].
   it('no opt-out: first paint is fully settled', () => {
-    recordCase('no-opt-out', false, false);
+    recordCase(
+      'no-opt-out',
+      <>
+        {items}
+        <Menu />
+      </>,
+    );
     assertFilmstrip('no-opt-out', first => {
       expect(first, 'no-opt-out: first paint is fully settled').to.deep.equal(SETTLED);
     });
@@ -172,7 +158,15 @@ describe('Overflow paint probe', () => {
   // corrected asynchronously and the menu number flickers. Filmstrip: [+4 -> +5]. We assert only the
   // stable part — items are correct on the first painted frame.
   it('menu opt-out: items correct at first paint (menu count may flicker)', () => {
-    recordCase('menu-opt-out', false, true);
+    recordCase(
+      'menu-opt-out',
+      <>
+        {items}
+        <OptOut>
+          <Menu />
+        </OptOut>
+      </>,
+    );
     assertFilmstrip('menu-opt-out', first => {
       expect(first.overflowingItemIds, 'menu-opt-out: items resolved at first paint').to.deep.equal(RESOLVED_ITEMS);
     });
@@ -181,7 +175,13 @@ describe('Overflow paint probe', () => {
   // Items opt-out: nothing forces, so the first painted frame is unresolved (all items visible, no
   // menu); the ResizeObserver drives a later pass. Filmstrip: [none -> +5].
   it('items opt-out: first paint is unresolved, settles later', () => {
-    recordCase('items-opt-out', true, false);
+    recordCase(
+      'items-opt-out',
+      <>
+        <OptOut>{items}</OptOut>
+        <Menu />
+      </>,
+    );
     assertFilmstrip('items-opt-out', first => {
       expect(first, 'items-opt-out: first paint is unresolved').to.deep.equal(UNRESOLVED);
     });
@@ -190,7 +190,13 @@ describe('Overflow paint probe', () => {
   // Both opt-out: the worst case — first paint unresolved, then items + menu appear, then the menu
   // count settles. Filmstrip: [none -> (+4) -> +5]. First paint unresolved is the stable anchor.
   it('both opt-out: first paint is unresolved, settles later', () => {
-    recordCase('both-opt-out', true, true);
+    recordCase(
+      'both-opt-out',
+      <OptOut>
+        {items}
+        <Menu />
+      </OptOut>,
+    );
     assertFilmstrip('both-opt-out', first => {
       expect(first, 'both-opt-out: first paint is unresolved').to.deep.equal(UNRESOLVED);
     });
