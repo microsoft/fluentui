@@ -43,11 +43,11 @@ export function useOverflowItem<TElement extends HTMLElement>(
         groupId,
         pinned,
       });
-      // Request first-paint correctness. Before the container observes this defers a synchronous
-      // force to the container's observe effect; after, it recomputes for the (re)registered item.
-      // An item hook that omits this call opts the container out of the synchronous first-paint pass.
       forceUpdateOverflow();
-      return unregister;
+      return () => {
+        unregister();
+        forceUpdateOverflow();
+      };
     }
   }, [id, priority, registerItem, forceUpdateOverflow, groupId, pinned]);
 
