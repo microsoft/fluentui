@@ -17,11 +17,13 @@ if (swcJestConfig.swcrc === undefined) {
 // https://nx.dev/packages/jest/documents/overview#global-setup/teardown-with-nx-libraries
 // jest needs EsModule Interop to find the default exported setup/teardown functions
 // swcJestConfig.module.noInterop = false;
+// Jest is not resolving properly with the .js extension in the imports of the test files,
+// we need to strip the .js extension in the imports for Jest to resolve them correctly
+// moduleNameMapper  '^(\\.{1,2}/.*)\\.js$': '$1'
 
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
- * moduleNameMapper  '^(\\.{1,2}/.*)\\.js$': '$1', strip `.js` extension from imports
  */
 module.exports = {
   displayName: 'eslint-plugin-react-components',

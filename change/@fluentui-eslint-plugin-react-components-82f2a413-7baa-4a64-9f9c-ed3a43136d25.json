@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fixing ESM build output, since\u0017 it fails in pure ESM mode.",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "ngo.trev.95@gmail.com",
+  "dependentChangeType": "patch"
+}
