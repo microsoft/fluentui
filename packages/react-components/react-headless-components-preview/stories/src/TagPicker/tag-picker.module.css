@@ -114,7 +114,7 @@
 /* popup listbox — rendered in the top layer via the native `popover` attribute and anchored to the
    control by `usePositioning`, so placement (position/inset) is owned by those, not this rule. */
 .listbox {
-  /* reset the user-agent [popover] centering so floating-ui's fixed offsets take effect */
+  /* reset the user-agent [popover] centering so usePositioning's anchor-positioned offsets take effect */
   margin: 0;
   max-height: 256px;
   width: max-content;
