@@ -1,0 +1,78 @@
+'use client';
+
+import * as React from 'react';
+import type { TagPickerContextValues, TagPickerState } from './TagPicker.types';
+
+const noop = () => {
+  /** noop */
+};
+
+/**
+ * Assembles the context values consumed by the TagPicker subcomponents.
+ *
+ * Mirrors the styled package's `useTagPickerContextValues`, which is not part of the
+ * public API. Pure context wiring — no styles.
+ */
+export function useTagPickerContextValues(state: TagPickerState): TagPickerContextValues {
+  const {
+    onOptionClick,
+    registerOption,
+    selectedOptions,
+    selectOption,
+    value,
+    triggerRef,
+    secondaryActionRef,
+    tagPickerGroupRef,
+    targetRef,
+    size,
+    setValue,
+    setOpen,
+    setHasFocus,
+    popoverRef,
+    appearance,
+    clearSelection,
+    getOptionById,
+    getOptionsMatchingValue,
+    open,
+    popoverId,
+    disabled,
+    noPopover,
+  } = state;
+  return {
+    activeDescendant: React.useMemo(
+      () => ({ controller: state.activeDescendantController }),
+      [state.activeDescendantController],
+    ),
+    listbox: {
+      onOptionClick,
+      registerOption,
+      getOptionById,
+      getOptionsMatchingValue,
+      selectedOptions,
+      selectOption,
+      focusVisible: false,
+      setActiveOption: noop,
+    },
+    picker: {
+      value,
+      triggerRef,
+      targetRef,
+      secondaryActionRef,
+      tagPickerGroupRef,
+      size,
+      setValue,
+      setOpen,
+      setHasFocus,
+      selectOption,
+      popoverRef,
+      selectedOptions,
+      appearance,
+      clearSelection,
+      getOptionById,
+      open,
+      popoverId,
+      disabled,
+      noPopover,
+    },
+  };
+}
