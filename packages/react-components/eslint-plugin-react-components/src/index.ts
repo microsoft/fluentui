@@ -1,8 +1,10 @@
 import type { ESLint } from 'eslint';
 
-import { name, version } from '../package.json';
+import packageJson from '../package.json';
 import { RULE_NAME as enforceUseClientName, rule as enforceUseClient } from './rules/enforce-use-client';
 import { RULE_NAME as preferFluentUIV9Name, rule as preferFluentUIV9 } from './rules/prefer-fluentui-v9';
+
+const { name, version } = packageJson;
 
 export const meta = {
   name,
@@ -35,10 +37,13 @@ const plugin = {
   configs,
   rules,
 };
+export default plugin;
 
 // Flat config for eslint v9
 configs['flat/recommended'].plugins = {
   [name]: plugin as unknown as ESLint.Plugin,
 };
 
-module.exports = plugin;
+if (typeof module !== 'undefined') {
+  module.exports = plugin;
+}

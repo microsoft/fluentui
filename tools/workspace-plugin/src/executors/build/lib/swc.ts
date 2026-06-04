@@ -54,9 +54,13 @@ export async function compileSwc(
     });
 
     // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
-    const resultCode = result.code
+    let resultCode = result.code
       .replace('/** @jsxRuntime automatic */', '')
       .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
+
+    if (module === 'es6') {
+      resultCode = addJsonImportAttributes(resultCode);
+    }
 
     const jsFileName = fileName.replace(tsFileExtensionRegex, '.js');
     const compiledFilePath = join(absoluteOutputPath, jsFileName);
@@ -84,4 +88,8 @@ async function applyTransforms(filePath: string, transforms?: Array<Transform>):
   for (const transform of transforms) {
     await transform(filePath);
   }
+}
+
+function addJsonImportAttributes(code: string): string {
+  return code.replace(/from\s+(['"][^'"]+\.json['"])\s*;/g, "from $1 with { type: 'json' };");
 }

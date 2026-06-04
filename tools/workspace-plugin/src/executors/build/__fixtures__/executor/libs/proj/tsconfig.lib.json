@@ -3,7 +3,9 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "declaration": true,
-    "types": []
+    "types": [],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/*.ts"],
   "exclude": ["src/*.spec.ts"]

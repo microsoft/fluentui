@@ -16,6 +16,7 @@
       "decorators": false,
       "dynamicImport": false
     },
+    "baseUrl": ".",
     "externalHelpers": true,
     "transform": {
       "react": {

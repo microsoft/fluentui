@@ -8,7 +8,8 @@
     "outDir": "../../../dist/out-tsc",
     "inlineSources": true,
     "types": ["environment", "node"],
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]

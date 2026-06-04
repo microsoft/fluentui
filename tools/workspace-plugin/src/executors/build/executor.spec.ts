@@ -103,9 +103,9 @@ describe('Build Executor', () => {
     expect(stripIndents`${clearLogs}`).toEqual(stripIndents`
       Cleaning outputs:
 
-       - ${workspaceRoot}/libs/proj/lib-commonjs
-       - ${workspaceRoot}/libs/proj/lib
-       - ${workspaceRoot}/libs/proj/dist/assets/spec.md
+       - ${join(workspaceRoot, 'libs/proj/lib-commonjs')}
+       - ${join(workspaceRoot, 'libs/proj/lib')}
+       - ${join(workspaceRoot, 'libs/proj/dist/assets/spec.md')}
     `);
 
     expect(restOfLogs).toEqual([
@@ -116,22 +116,22 @@ describe('Build Executor', () => {
 
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
       `Applying transforms: 0`,
-      `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
+      `babel: transformed ${join(workspaceRoot, 'libs/proj/lib/greeter.styles.js')}`,
       `Applying transforms: 0`,
     ]);
 
     expect(rmMock.mock.calls.flat()).toEqual([
-      `${workspaceRoot}/libs/proj/lib-commonjs`,
+      join(workspaceRoot, 'libs/proj/lib-commonjs'),
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/lib`,
+      join(workspaceRoot, 'libs/proj/lib'),
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/dist/assets/spec.md`,
+      join(workspaceRoot, 'libs/proj/dist/assets/spec.md'),
       {
         force: true,
         recursive: true,
@@ -154,6 +154,8 @@ describe('Build Executor', () => {
       'greeter.styles.js.map',
       'index.js',
       'index.js.map',
+      'package-info.js',
+      'package-info.js.map',
     ]);
     expect(readdirSync(join(workspaceRoot, 'libs/proj/lib-commonjs'))).toEqual([
       'greeter.js',
@@ -162,6 +164,8 @@ describe('Build Executor', () => {
       'greeter.styles.js.map',
       'index.js',
       'index.js.map',
+      'package-info.js',
+      'package-info.js.map',
     ]);
 
     // ====================================
@@ -231,6 +235,12 @@ describe('Build Executor', () => {
       }
       "
     `);
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/package-info.js'), 'utf-8')).toContain(
+      `from './package-info.json' with { type: 'json' };`,
+    );
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/package-info.js'), 'utf-8')).toContain(
+      `require("./package-info.json")`,
+    );
 
     // =====================
     // assert griffel AOT
