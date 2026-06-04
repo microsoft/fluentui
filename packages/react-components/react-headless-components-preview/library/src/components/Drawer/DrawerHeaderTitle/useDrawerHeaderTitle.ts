@@ -13,8 +13,6 @@ export const useDrawerHeaderTitle = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  'use no memo';
-
   const state = useDrawerHeaderTitle_unstable(props, ref);
   const { dialogTitleId } = useDialogContext();
 

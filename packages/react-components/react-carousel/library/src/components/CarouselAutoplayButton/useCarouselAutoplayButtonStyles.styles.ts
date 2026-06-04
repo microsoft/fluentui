@@ -36,8 +36,6 @@ const useStyles = makeStyles({
 export const useCarouselAutoplayButtonStyles_unstable = (
   state: CarouselAutoplayButtonState,
 ): CarouselAutoplayButtonState => {
-  'use no memo';
-
   const styles = useStyles();
 
   useToggleButtonStyles_unstable(state);

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 27 May 2026 04:07:54 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jun 2026 04:07:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.23)
+
+Wed, 03 Jun 2026 04:07:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.22..@fluentui/web-components_v3.0.0-rc.23)
+
+### Changes
+
+- add keyboard support for printable characters in Dropdown ([PR #36232](https://github.com/microsoft/fluentui/pull/36232) by machi@microsoft.com)
+
+## [3.0.0-rc.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.22)
+
+Thu, 28 May 2026 04:09:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.21..@fluentui/web-components_v3.0.0-rc.22)
+
+### Changes
+
+- prevent text input from submitting its associated form twice when Enter is pressed ([PR #36240](https://github.com/microsoft/fluentui/pull/36240) by machi@microsoft.com)
+- remove tooltip id from target’s aria-describedby attribute when the tooltip is removed from DOM ([PR #36241](https://github.com/microsoft/fluentui/pull/36241) by machi@microsoft.com)
+- feat(web-components): add SSR support via Declarative Shadow DOM modules ([PR #36247](https://github.com/microsoft/fluentui/pull/36247) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-rc.21](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.21)
 

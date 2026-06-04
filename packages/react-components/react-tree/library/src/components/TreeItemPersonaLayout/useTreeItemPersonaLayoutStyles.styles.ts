@@ -160,8 +160,6 @@ const useExpandIconBaseStyles = makeResetStyles({
 export const useTreeItemPersonaLayoutStyles_unstable = (
   state: TreeItemPersonaLayoutState,
 ): TreeItemPersonaLayoutState => {
-  'use no memo';
-
   const rootBaseStyles = useRootBaseStyles();
   const rootStyles = useRootStyles();
   const mediaBaseStyles = useMediaBaseStyles();

@@ -33,8 +33,6 @@ const useStyles = makeStyles({
  * Apply styling to the DrawerHeaderTitle slots based on the state
  */
 export const useDrawerHeaderTitleStyles_unstable = (state: DrawerHeaderTitleState): DrawerHeaderTitleState => {
-  'use no memo';
-
   const styles = useStyles();
 
   const {

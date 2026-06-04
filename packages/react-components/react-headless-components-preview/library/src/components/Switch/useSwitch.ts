@@ -11,8 +11,6 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderSwitch`.
  */
 export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
-  'use no memo';
-
   const state: SwitchState = useSwitchBase_unstable(props, ref);
 
   // Set data attributes for disabled, disabledFocusable, and checked states to simplify styling.

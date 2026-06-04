@@ -20,13 +20,13 @@ import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as Nav from '@fluentui/react-headless-components-preview/nav';
-import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
 import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
+import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
 import * as Provider from '@fluentui/react-headless-components-preview/provider';
 import * as RadioGroup from '@fluentui/react-headless-components-preview/radio-group';
-import * as RatingDisplay from '@fluentui/react-headless-components-preview/rating-display';
 import * as Rating from '@fluentui/react-headless-components-preview/rating';
+import * as RatingDisplay from '@fluentui/react-headless-components-preview/rating-display';
 import * as SearchBox from '@fluentui/react-headless-components-preview/search-box';
 import * as Select from '@fluentui/react-headless-components-preview/select';
 import * as Skeleton from '@fluentui/react-headless-components-preview/skeleton';
@@ -37,7 +37,9 @@ import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Tag from '@fluentui/react-headless-components-preview/tag';
 import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
+import * as TeachingPopover from '@fluentui/react-headless-components-preview/teaching-popover';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
+import * as Toast from '@fluentui/react-headless-components-preview/toast';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
 import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
@@ -70,8 +72,8 @@ console.log({
   ProgressBar,
   Provider,
   RadioGroup,
-  RatingDisplay,
   Rating,
+  RatingDisplay,
   SearchBox,
   Select,
   Skeleton,
@@ -82,7 +84,9 @@ console.log({
   TabList,
   Tag,
   TagGroup,
+  TeachingPopover,
   Textarea,
+  Toast,
   ToggleButton,
   Toolbar,
   Tooltip,

@@ -114,6 +114,38 @@ test.describe('Dropdown', () => {
     await expect(listbox).toBeVisible();
   });
 
+  test('should open the dropdown when a character is pressed', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const listbox = element.locator(ListboxTagName);
+    const button = element.locator('[role=combobox]');
+
+    await fastPage.setTemplate();
+
+    await button.press('a');
+
+    await expect(listbox).toBeVisible();
+  });
+
+  test('should not open the dropdown when a character is pressed with Meta, Alt, or Ctrl', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const listbox = element.locator(ListboxTagName);
+    const button = element.locator('[role=combobox]');
+
+    await fastPage.setTemplate();
+
+    await button.press('Meta+a');
+
+    await expect(listbox).toBeHidden();
+
+    await button.press('Alt+a');
+
+    await expect(listbox).toBeHidden();
+
+    await button.press('Control+a');
+
+    await expect(listbox).toBeHidden();
+  });
+
   test("should set the `name` property on options when it's set on the dropdown", async ({ fastPage }) => {
     const { element } = fastPage;
     const options = element.locator(OptionTagName);
@@ -549,5 +581,91 @@ test.describe('Dropdown', () => {
     await page.keyboard.press('Tab');
 
     await expect(listbox).toBeHidden();
+  });
+
+  test.describe('search options by printable characters', () => {
+    test.use({
+      innerHTML: /* html */ `
+        <${ListboxTagName}>
+          <${OptionTagName} id="o1">Afoo</${OptionTagName}>
+          <${OptionTagName} id="o2">Bfoo</${OptionTagName}>
+          <${OptionTagName} id="o3">Bbfoo</${OptionTagName}>
+          <${OptionTagName} id="o4">Bcfoo</${OptionTagName}>
+          <${OptionTagName} id="o5">Cfoo</${OptionTagName}>
+        </${ListboxTagName}>
+      `,
+    });
+
+    test('should set active descendant based on user typing', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
+
+      await combobox.focus();
+      await page.keyboard.press('b', { delay: 500 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+
+      await page.keyboard.press('a', { delay: 500 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o1');
+
+      await page.keyboard.press('c', { delay: 500 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
+
+      await page.keyboard.press('d');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
+    });
+
+    test('should cycle through matching options as active descendant based on user typing', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
+
+      await combobox.focus();
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
+
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o4');
+
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+    });
+
+    test('should set active descendant if its label has repeated character', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
+
+      await combobox.focus();
+      await page.keyboard.type('bb', { delay: 100 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
+
+      await page.waitForTimeout(500);
+
+      await page.keyboard.type('bb', { delay: 100 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
+
+      await page.waitForTimeout(500);
+
+      await page.keyboard.type('bb', { delay: 600 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+    });
   });
 });

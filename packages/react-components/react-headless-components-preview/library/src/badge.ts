@@ -1,2 +1,2 @@
-export { Badge, renderBadge, useBadge } from './components/Badge/index';
-export type { BadgeProps, BadgeState } from './components/Badge/index';
+export { Badge, renderBadge, useBadge } from './components/Badge';
+export type { BadgeSlots, BadgeProps, BadgeState } from './components/Badge';

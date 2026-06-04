@@ -2,6 +2,56 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 03 Jun 2026 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.23",
+      "version": "3.0.0-rc.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f14249d2f042c3c30ce16a60b14d2d912aa2ad80",
+            "comment": "add keyboard support for printable characters in Dropdown"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 May 2026 04:09:42 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.22",
+      "version": "3.0.0-rc.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "afcbd6d6fe32561ca735ad47f55334bb1e459f53",
+            "comment": "prevent text input from submitting its associated form twice when Enter is pressed"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cedbb6921dee5bf9a4e765d7bf22cbff57b4c365",
+            "comment": "remove tooltip id from target’s aria-describedby attribute when the tooltip is removed from DOM"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8ee8c7e1622bcd22a978858baee73420331fe256",
+            "comment": "feat(web-components): add SSR support via Declarative Shadow DOM modules"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "0cab54311f8902c8441e3449f732486ce321566b",
+            "comment": "fix(test): ensure package is built before running e2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2026 04:07:54 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.21",
       "version": "3.0.0-rc.21",
