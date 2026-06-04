@@ -62,10 +62,6 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
-      // First-paint correctness is requested by descendants (the default item/menu hooks call
-      // forceUpdateOverflow during their layout effects, which commit before this one). The manager
-      // honors any such pre-observe request here, guarded on the container being measured. A consumer
-      // whose item hook omits that request opts out — the ResizeObserver drives the first pass.
       managerRef.current.observe(containerRef.current);
       return () => managerRef.current?.disconnect();
     }
@@ -122,8 +118,6 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   );
 
   const forceUpdateOverflow = React.useCallback(() => {
-    // The manager handles the before/after-observe distinction: a call before observation is
-    // recorded and applied once it observes (first-paint correctness); a call after forces directly.
     managerRef.current?.forceUpdate();
   }, []);
 

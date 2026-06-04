@@ -238,8 +238,6 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
     if (!container) {
-      // Not observing yet — there is nothing to measure. Remember the request and let observe()
-      // honor it once the container is being observed (first-paint correctness).
       forceUpdateOnObserve = true;
       return;
     }
