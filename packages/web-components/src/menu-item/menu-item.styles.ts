@@ -149,17 +149,15 @@ export const styles = css`
       max-height: var(--menu-max-height, auto);
       position: fixed;
       position-anchor: --menu-trigger;
-      position-area: inline-end span-block-end;
+      inset: unset;
+      inset-block-start: anchor(start);
+      inset-inline-start: anchor(end);
       position-try-fallbacks: flip-inline, block-start, block-end;
       z-index: 1;
     }
 
     ::slotted([popover]:not(:popover-open)) {
       display: none;
-    }
-
-    ::slotted([popover]:popover-open) {
-      inset: unset;
     }
 
     /* Fallback for no anchor-positioning */
