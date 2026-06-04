@@ -59,6 +59,7 @@
     "@fluentui/react-switch": "^9.7.4",
     "@fluentui/react-tabs": "^9.12.3",
     "@fluentui/react-tabster": "^9.26.16",
+    "@fluentui/react-tag-picker": "^9.10.0",
     "@fluentui/react-tags": "^9.9.2",
     "@fluentui/react-teaching-popover": "^9.7.2",
     "@fluentui/react-textarea": "^9.7.4",
@@ -326,6 +327,12 @@
       "node": "./lib-commonjs/tag-group.js",
       "import": "./lib/tag-group.js",
       "require": "./lib-commonjs/tag-group.js"
+    },
+    "./tag-picker": {
+      "types": "./dist/tag-picker.d.ts",
+      "node": "./lib-commonjs/tag-picker.js",
+      "import": "./lib/tag-picker.js",
+      "require": "./lib-commonjs/tag-picker.js"
     },
     "./teaching-popover": {
       "types": "./dist/teaching-popover.d.ts",
