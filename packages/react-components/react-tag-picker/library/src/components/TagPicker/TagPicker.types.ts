@@ -1,5 +1,12 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler, JSXElement } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  DistributiveOmit,
+  EventData,
+  EventHandler,
+  JSXElement,
+} from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState, ListboxContextValue } from '@fluentui/react-combobox';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
@@ -106,3 +113,9 @@ export type TagPickerContextValues = {
   activeDescendant: ActiveDescendantContextValue;
   listbox: ListboxContextValue;
 };
+
+/**
+ * TagPicker Base Props - omits the floating-ui `positioning` prop; the styled wrapper
+ * {@link TagPickerProps} re-introduces it via `usePositioning`.
+ */
+export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning'>;

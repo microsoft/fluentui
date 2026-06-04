@@ -12,7 +12,7 @@ import type {
   OverflowItemEntry,
   OverflowDividerEntry,
   OverflowManager,
-  ObserveOptions,
+  OverflowOptions,
 } from '@fluentui/priority-overflow';
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { UseOverflowContainerReturn } from './types';
@@ -26,7 +26,7 @@ import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERF
  */
 export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
-  options: Omit<ObserveOptions, 'onUpdateOverflow'>,
+  options: Omit<OverflowOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
   const {
     overflowAxis = 'horizontal',
@@ -37,28 +37,19 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     hasHiddenItems = false,
   } = options;
 
-  const onUpdateOverflow = useEventCallback(update);
   const onUpdateItemVisibilityCallback = useEventCallback(onUpdateItemVisibility);
 
-  const observeOptions: Required<ObserveOptions> = React.useMemo(
+  const observeOptions: Required<OverflowOptions> = React.useMemo(
     () => ({
       overflowAxis,
       overflowDirection,
       padding,
       minimumVisible,
       onUpdateItemVisibility: onUpdateItemVisibilityCallback,
-      onUpdateOverflow,
+      onUpdateOverflow: update,
       hasHiddenItems,
     }),
-    [
-      minimumVisible,
-      onUpdateItemVisibilityCallback,
-      overflowAxis,
-      overflowDirection,
-      padding,
-      onUpdateOverflow,
-      hasHiddenItems,
-    ],
+    [minimumVisible, onUpdateItemVisibilityCallback, overflowAxis, overflowDirection, padding, update, hasHiddenItems],
   );
 
   const containerRef = React.useRef<TElement>(null);
@@ -71,7 +62,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
-      managerRef.current.observe(containerRef.current);
+      // forceUpdate resolves overflow synchronously for a correct first paint; the manager guards it
+      // on the container being measured.
+      managerRef.current.observe(containerRef.current, { forceUpdate: true });
       return () => managerRef.current?.disconnect();
     }
   }, []);
@@ -126,11 +119,16 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     [],
   );
 
+  const forceUpdateOverflow = React.useCallback(() => {
+    managerRef.current?.forceUpdate();
+  }, []);
+
   return {
     registerItem,
     registerDivider,
     registerOverflowMenu,
     updateOverflow,
+    forceUpdateOverflow,
     containerRef,
     getSnapshot,
     subscribe,

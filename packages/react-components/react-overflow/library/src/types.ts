@@ -7,7 +7,13 @@ import type { OverflowContextValue } from './overflowContext';
 export interface UseOverflowContainerReturn<TElement extends HTMLElement>
   extends Pick<
     OverflowContextValue,
-    'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider' | 'getSnapshot' | 'subscribe'
+    | 'registerItem'
+    | 'updateOverflow'
+    | 'forceUpdateOverflow'
+    | 'registerOverflowMenu'
+    | 'registerDivider'
+    | 'getSnapshot'
+    | 'subscribe'
   > {
   /**
    * Ref to apply to the container that will overflow

@@ -837,6 +837,64 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * The duration in milliseconds after the last character search keystroke before the search string is cleared.
+   */
+  protected searchTimeoutMs = 500;
+
+  /**
+   * The accumulated search string used to match option labels by prefix when printable characters are typed.
+   *
+   * @internal
+   */
+  private searchString: string = '';
+
+  /**
+   * The timeout id used to reset the search string.
+   *
+   * @internal
+   */
+  private searchTimeout?: ReturnType<typeof setTimeout>;
+
+  /**
+   * Handles printable character input by moving {@link activeIndex} to the next option whose label matches the
+   * accumulated search string. When the string is a single character (or the same character repeated), matching
+   * options are cycled through; otherwise the string is treated as a prefix match.
+   *
+   * @param char - the printable character that was pressed
+   * @internal
+   */
+  private handleSearchCharacter(char: string): void {
+    const isRepeating = this.searchString === char.repeat(this.searchString.length);
+    this.searchString += char;
+
+    let candidates = this.searchString.length > 1 ? this.filterOptions(this.searchString) : [];
+    let isCycling = false;
+
+    if (!candidates.length && isRepeating) {
+      candidates = this.filterOptions(char);
+      isCycling = true;
+    }
+
+    if (candidates.length) {
+      const activeOption = this.enabledOptions[this.activeIndex];
+      const currentPos = candidates.indexOf(activeOption);
+      const nextMatch = isCycling
+        ? candidates[this.getEnabledIndexInBounds(currentPos + 1, candidates.length)]
+        : currentPos >= 0
+        ? activeOption
+        : candidates[0];
+
+      this.activeIndex = this.enabledOptions.indexOf(nextMatch);
+    }
+
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.searchString = '';
+      this.searchTimeout = undefined;
+    }, this.searchTimeoutMs);
+  }
+
+  /**
    * Handles the keydown events for the dropdown.
    *
    * @param e - the keyboard event
@@ -858,16 +916,17 @@ export class BaseDropdown extends FASTElement {
         break;
       }
 
-      case ' ': {
-        if (this.isCombobox) {
-          break;
-        }
-
-        e.preventDefault();
-      }
-
+      case ' ':
       case 'Enter':
       case 'Tab': {
+        if (e.key === ' ') {
+          if (this.isCombobox) {
+            break;
+          }
+
+          e.preventDefault();
+        }
+
         if (this.open) {
           this.selectOption(this.activeIndex, true);
           if (this.multiple) {
@@ -890,6 +949,12 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (!increment) {
+      if (!this.isCombobox && e.key.length === 1 && e.key !== ' ' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (!this.open) {
+          this.listbox.showPopover();
+        }
+        this.handleSearchCharacter(e.key);
+      }
       return true;
     }
 
@@ -1045,6 +1110,12 @@ export class BaseDropdown extends FASTElement {
   disconnectedCallback(): void {
     BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
     this.debounceController?.abort();
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+      this.searchTimeout = undefined;
+      this.searchString = '';
+    }
 
     super.disconnectedCallback();
   }
