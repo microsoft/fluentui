@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: sort package.json dependencies (Yarn Modern normalization)",
+  "packageName": "@fluentui/react-aria",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

@@ -13,11 +13,11 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-shared-contexts": "^9.26.2",
+    "@fluentui/react-jsx-runtime": "^9.4.3",
     "@fluentui/react-label": "^9.4.2",
     "@fluentui/react-popover": "^9.14.3",
+    "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-tabster": "^9.26.15",
-    "@fluentui/react-jsx-runtime": "^9.4.3",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.4",
     "@griffel/react": "^1.5.32",

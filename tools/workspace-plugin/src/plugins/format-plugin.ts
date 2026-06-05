@@ -49,7 +49,13 @@ function createNodesInternal(
   }
 
   const normalizedOptions = normalizeOptions(options);
-  const config = { pmc: getPackageManagerCommand('yarn') };
+  const pmc = getPackageManagerCommand('yarn');
+  const config = {
+    pmc: {
+      ...pmc,
+      exec: 'yarn run -TB',
+    },
+  };
 
   const targetConfig = buildFormatTarget(normalizedOptions, context, config);
 

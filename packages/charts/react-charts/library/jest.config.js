@@ -27,8 +27,10 @@ module.exports = {
     '^d3-selection$': '<rootDir>/../../../../node_modules/d3-selection/dist/d3-selection.js',
     '^d3-format$': '<rootDir>/../../../../node_modules/d3-format/dist/d3-format.js',
     '^d3-time$': '<rootDir>/../../../../node_modules/d3-time/dist/d3-time.js',
+    '^d3-time-format$': '<rootDir>/../../../../node_modules/d3-time-format/dist/d3-time-format.js',
     '^d3-interpolate$': '<rootDir>/../../../../node_modules/d3-interpolate/dist/d3-interpolate.js',
     '^d3-color$': '<rootDir>/../../../../node_modules/d3-color/dist/d3-color.js',
     '^d3-hierarchy$': '<rootDir>/../../../../node_modules/d3-hierarchy/dist/d3-hierarchy.js',
+    '^d3-sankey$': '<rootDir>/../../../../node_modules/d3-sankey/dist/d3-sankey.js',
   },
 };

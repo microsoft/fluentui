@@ -15,10 +15,10 @@
     "@fluentui/react-avatar": "^9.11.2",
     "@fluentui/react-button": "^9.9.2",
     "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-jsx-runtime": "^9.4.3",
     "@fluentui/react-tabster": "^9.26.15",
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.4",
-    "@fluentui/react-jsx-runtime": "^9.4.3",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

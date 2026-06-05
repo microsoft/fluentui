@@ -13,8 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",
-    "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-jsx-runtime": "^9.4.3",
+    "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-tabster": "^9.26.15",
     "@fluentui/react-utilities": "^9.26.4",
     "@swc/helpers": "^0.5.1"
