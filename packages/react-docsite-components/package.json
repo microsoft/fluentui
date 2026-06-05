@@ -32,6 +32,8 @@
     "@fluentui/react-hooks": "^8.10.2",
     "@fluentui/react-monaco-editor": "^1.8.10",
     "@fluentui/set-version": "^8.2.24",
+    "@fluentui/theme": "^2.7.2",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "color-check": "0.0.2",
     "markdown-to-jsx": "^7.0.0",
     "office-ui-fabric-core": "^11.0.0",
