@@ -143,7 +143,21 @@ const useRootCheckedStyles = makeStyles({
     },
   },
   tint: {
-    /* Styles provided by custom hooks */
+    backgroundColor: tokens.colorBrandBackground2Pressed,
+    ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
+    color: tokens.colorCompoundBrandForeground1Pressed,
+
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2Hover,
+      ...shorthands.borderColor(tokens.colorBrandStroke2Hover),
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+
+    ':hover:active,:active:focus-visible': {
+      backgroundColor: tokens.colorBrandBackground2Pressed,
+      ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
   },
 });
 
@@ -199,6 +213,9 @@ const useCheckedAccessibleStyles = makeStyles({
   },
 
   secondary: {
+    /* No styles */
+  },
+  tint: {
     /* No styles */
   },
 });
@@ -270,7 +287,7 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   tint: {
-    /* Styles provided by custom hooks */
+    /* The tint styles are exactly the same as the base styles. */
   },
 });
 

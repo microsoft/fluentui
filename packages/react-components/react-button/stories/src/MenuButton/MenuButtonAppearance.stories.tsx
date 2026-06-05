@@ -90,6 +90,21 @@ export const Appearance = (): JSXElement => {
           </MenuList>
         </MenuPopover>
       </Menu>
+
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton appearance="tint" icon={<CalendarMonth />}>
+            Tint
+          </MenuButton>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
     </div>
   );
 };

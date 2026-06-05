@@ -127,7 +127,7 @@ const useRootStyles = makeStyles({
     },
   },
   tint: {
-    /* Styles provided by consumer via custom hooks */
+    /* The tint styles are exactly the same as the base styles. */
   },
 
   // Shape variations
