@@ -51,9 +51,7 @@ export class Tooltip extends FASTElement {
    * @internal
    */
   public positioningChanged(): void {
-    if (!AnchorPositioningCSSSupported) {
-      this.setFallbackStyles();
-    }
+    this.setFallbackStyles();
   }
 
   /**
@@ -85,6 +83,8 @@ export class Tooltip extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    this.popover ??= 'auto';
+
     // If the anchor element is not found, tooltip will not be shown
     if (!this.anchorElement) {
       return;
@@ -115,11 +115,25 @@ export class Tooltip extends FASTElement {
   }
 
   public disconnectedCallback(): void {
-    super.disconnectedCallback();
     this.anchorElement?.removeEventListener('focus', this.focusAnchorHandler);
     this.anchorElement?.removeEventListener('blur', this.blurAnchorHandler);
     this.anchorElement?.removeEventListener('mouseenter', this.mouseenterAnchorHandler);
     this.anchorElement?.removeEventListener('mouseleave', this.mouseleaveAnchorHandler);
+
+    if (this.anchorElement) {
+      const describedBy = this.anchorElement.getAttribute('aria-describedby') ?? '';
+      const ids = describedBy
+        .trim()
+        .split(/\s+/)
+        .filter(id => id !== this.id);
+      if (ids.length) {
+        this.anchorElement.setAttribute('aria-describedby', ids.join(' '));
+      } else {
+        this.anchorElement.removeAttribute('aria-describedby');
+      }
+    }
+
+    super.disconnectedCallback();
   }
 
   /**
@@ -128,6 +142,13 @@ export class Tooltip extends FASTElement {
    * @internal
    */
   public showTooltip(delay: number = this.defaultDelay): void {
+    if (!this.anchorPositioningReady) {
+      this.setFallbackStyles().then(() => {
+        this.showTooltip(delay);
+      });
+      return;
+    }
+
     setTimeout(() => {
       this.setAttribute('aria-hidden', 'false');
       this.showPopover();
@@ -169,7 +190,22 @@ export class Tooltip extends FASTElement {
    */
   public blurAnchorHandler = () => this.hideTooltip(0);
 
-  private setFallbackStyles(): void {
+  /**
+   * Indicates whether the tooltip styles have been applied for browsers that do not support anchor positioning.
+   * @internal
+   */
+  private anchorPositioningReady: boolean = false;
+
+  /**
+   * Sets fallback styles for the tooltip for browsers that do not support CSS anchor positioning.
+   * @internal
+   */
+  private async setFallbackStyles(): Promise<void> {
+    if (AnchorPositioningCSSSupported) {
+      this.anchorPositioningReady = true;
+      return;
+    }
+
     if (!this.anchorElement) {
       return;
     }
@@ -226,16 +262,10 @@ export class Tooltip extends FASTElement {
       }
     `;
 
-    if (window.CSS_ANCHOR_POLYFILL) {
-      window.CSS_ANCHOR_POLYFILL.call({ element: this.anchorPositioningStyleElement });
-    }
-  }
-}
+    if ((window as any).CSS_ANCHOR_POLYFILL) {
+      await (window as any).CSS_ANCHOR_POLYFILL({ elements: [this.anchorPositioningStyleElement!] });
 
-declare global {
-  interface Window {
-    CSS_ANCHOR_POLYFILL?: {
-      call: (options: { element: HTMLStyleElement }) => void;
-    };
+      this.anchorPositioningReady = true;
+    }
   }
 }

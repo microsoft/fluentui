@@ -24,8 +24,6 @@ const useStyles = makeStyles({
  * Apply styling to the Toolbar slots based on the state
  */
 export const useToolbarGroupStyles_unstable = (state: ToolbarGroupState): ToolbarGroupState => {
-  'use no memo';
-
   const { vertical } = state;
   const styles = useStyles();
 

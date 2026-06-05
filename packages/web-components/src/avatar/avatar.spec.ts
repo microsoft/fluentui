@@ -142,6 +142,7 @@ test.describe('Avatar', () => {
 
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (color !== AvatarColor.colorful) {
+          // eslint-disable-next-line playwright/no-conditional-expect
           await expect.soft(element).toHaveAttribute('data-color', color);
         }
       });

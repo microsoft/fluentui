@@ -1,21 +1,39 @@
+/**
+ * Direction where items are removed when overflow occurs.
+ */
 export type OverflowDirection = 'start' | 'end';
+
+/**
+ * Axis used to measure overflow.
+ */
 export type OverflowAxis = 'horizontal' | 'vertical';
+
+/**
+ * Visibility state for an overflow group.
+ */
 export type OverflowGroupState = 'visible' | 'hidden' | 'overflow';
+
+/**
+ * Tracked item in the overflow manager.
+ */
 export interface OverflowItemEntry {
   /**
-   * HTML element that will be disappear when overflowed
+   * HTML element that disappears when the item overflows.
    */
   element: HTMLElement;
   /**
-   * Lower priority items are invisible first when the container is overflowed
+   * Lower-priority items become invisible first when the container overflows.
    * @default 0
    */
   priority: number;
   /**
-   * Specific id, used to track visibility and provide updates to consumers
+   * Stable item id used to track visibility and emit updates.
    */
   id: string;
 
+  /**
+   * Optional group id used to coordinate divider and grouped visibility states.
+   */
   groupId?: string;
 
   /**
@@ -26,90 +44,152 @@ export interface OverflowItemEntry {
   pinned?: boolean;
 }
 
+/**
+ * Tracked divider in the overflow manager.
+ */
 export interface OverflowDividerEntry {
   /**
-   * HTML element that will disappear when overflowed
+   * HTML element that disappears when its group overflows.
    */
   element: HTMLElement;
 
+  /**
+   * Id of the group controlled by this divider.
+   */
   groupId: string;
 }
 
 /**
- * signature similar to standard event listeners, but typed to handle the custom event
+ * Signature similar to standard event listeners, typed for overflow updates.
  */
 export type OnUpdateOverflow = (data: OverflowEventPayload) => void;
 
+/**
+ * Callback invoked when a single item's visibility changes.
+ */
 export type OnUpdateItemVisibility = (data: OnUpdateItemVisibilityPayload) => void;
 
 /**
  * Payload of the custom DOM event for overflow updates
  */
 export interface OverflowEventPayload {
+  /**
+   * Items currently visible in the container.
+   */
   visibleItems: OverflowItemEntry[];
+
+  /**
+   * Items currently moved to overflow.
+   */
   invisibleItems: OverflowItemEntry[];
+
+  /**
+   * Current visibility state by group id.
+   */
   groupVisibility: Record<string, OverflowGroupState>;
 }
 
+/**
+ * Indexed, immutable overflow state returned by `OverflowManager.getSnapshot`.
+ *
+ * Unlike {@link OverflowEventPayload}, this is shaped for O(1) consumer lookups (item/group
+ * visibility by id, item count) rather than ordered item entries.
+ */
+export interface OverflowSnapshot {
+  /**
+   * Visibility of each registered item, keyed by item id.
+   */
+  itemVisibility: Record<string, boolean>;
+
+  /**
+   * Current visibility state by group id.
+   */
+  groupVisibility: Record<string, OverflowGroupState>;
+
+  /**
+   * Number of items currently moved to overflow (invisible).
+   */
+  invisibleItemCount: number;
+}
+
+/**
+ * Payload for item-level visibility updates.
+ */
 export interface OnUpdateItemVisibilityPayload {
+  /**
+   * Item whose visibility changed.
+   */
   item: OverflowItemEntry;
+
+  /**
+   * Whether the item is now visible.
+   */
   visible: boolean;
 }
 
+/**
+ * Options used to initialize or reconfigure overflow observation.
+ */
 export interface ObserveOptions {
   /**
-   * Padding (in px) at the end of the container before overflow occurs
-   * Useful to account for extra elements (i.e. dropdown menu)
-   * or to account for any kinds of margins between items which are hard to measure with JS
+   * Padding in pixels reserved at the end of the container before overflow occurs.
+   * Useful for accounting for extra elements (for example an overflow menu button)
+   * or margins between items that are difficult to measure in JavaScript.
    * @default 10
    */
   padding?: number;
   /**
-   * Direction where items are removed when overflow occurs
+   * Direction where items are removed when overflow occurs.
    * @default end
    */
   overflowDirection?: OverflowDirection;
 
   /**
-   * Horizontal or vertical overflow
+   * Overflow axis used for size measurement.
    * @default horizontal
    */
   overflowAxis?: OverflowAxis;
 
   /**
-   * The minimum number of visible items
+   * Minimum number of items that must remain visible.
    */
   minimumVisible?: number;
 
   /**
-   * Callback when item visibility is updated
+   * Callback invoked when an individual item's visibility changes.
    */
   onUpdateItemVisibility: OnUpdateItemVisibility;
 
   /**
-   * Callback when item visibility is updated
+   * Callback invoked after overflow state is recomputed.
    */
   onUpdateOverflow: OnUpdateOverflow;
 
   /**
-   * When true, the overflow menu has default hidden items
+   * When true, reserve space as if the overflow menu were visible even with no overflowing items.
    * @default false
    */
   hasHiddenItems?: boolean;
 }
 
 /**
+ * Internal manager contract used to observe and compute priority overflow.
+ *
  * @internal
  */
 export interface OverflowManager {
   /**
    * Starts observing the container and managing the overflow state
    */
-  observe: (container: HTMLElement, options: ObserveOptions) => void;
+  observe: (container: HTMLElement, options?: ObserveOptions) => void;
   /**
    * Stops observing the container
    */
   disconnect: () => void;
+  /**
+   * Updates engine options without restarting observation.
+   */
+  setOptions: (options: Partial<ObserveOptions>) => void;
   /**
    * Add overflow items
    */
@@ -147,4 +227,14 @@ export interface OverflowManager {
    * Unsets the overflow menu element
    */
   removeOverflowMenu: () => void;
+
+  /**
+   * Returns the current overflow snapshot.
+   */
+  getSnapshot: () => OverflowSnapshot;
+
+  /**
+   * Subscribes to snapshot changes.
+   */
+  subscribe: (listener: () => void) => () => void;
 }

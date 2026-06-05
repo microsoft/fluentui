@@ -30,8 +30,6 @@ const useStyles = makeStyles({
  * Apply styling to the Toolbar slots based on the state
  */
 export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => {
-  'use no memo';
-
   const styles = useStyles();
   const { vertical, size } = state;
   // eslint-disable-next-line react-hooks/immutability

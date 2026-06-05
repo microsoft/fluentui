@@ -32,8 +32,6 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useCarouselStyles_unstable = (state: CarouselState): CarouselState => {
-  'use no memo';
-
   const styles = useStyles();
   const { appearance } = state;
 

@@ -14,8 +14,6 @@ export const useBreadcrumbButton = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  'use no memo';
-
   const state: BreadcrumbButtonState = useBreadcrumbButtonBase_unstable(props, ref);
 
   // Set data attribute for current state to simplify styling of the active breadcrumb item.

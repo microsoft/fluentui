@@ -108,8 +108,6 @@ const usePopoverSurfaceStyles = makeStyles({
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
-  'use no memo';
-
   const { size } = state;
   const { open } = state.popover;
   const buttonStyles = useButtonStyles();

@@ -34,8 +34,6 @@ export function useInputTriggerSlot(
   ref: React.Ref<HTMLInputElement>,
   options: UseInputTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
-  'use no memo';
-
   const {
     state: {
       open,

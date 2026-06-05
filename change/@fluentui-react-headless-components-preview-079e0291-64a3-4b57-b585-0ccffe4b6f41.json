@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add InfoLabel component and stories",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

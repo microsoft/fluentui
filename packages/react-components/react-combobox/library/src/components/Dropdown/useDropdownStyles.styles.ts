@@ -259,8 +259,6 @@ const useBaseClearButtonStyle = makeResetStyles({
  * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
-  'use no memo';
-
   const { appearance, open, placeholderVisible, showClearButton, size } = state;
   const invalid = `${state.button['aria-invalid']}` === 'true';
   const disabled = state.button.disabled;

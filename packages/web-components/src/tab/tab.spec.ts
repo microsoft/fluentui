@@ -28,7 +28,7 @@ test.describe('Tab', () => {
 
     await fastPage.setTemplate();
 
-    await expect(element).toHaveRole('tab');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'tab');
   });
 
   test('should have a slot attribute of `tab`', async ({ fastPage }) => {

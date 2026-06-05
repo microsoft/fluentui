@@ -15,8 +15,6 @@ export const useDynamicVirtualizerPagination = (
   virtualizerProps: VirtualizerDynamicPaginationProps,
   paginationEnabled: Boolean = true,
 ): ((instance: HTMLElement | HTMLDivElement | null) => void) => {
-  'use no memo';
-
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
   const [setScrollTimer, clearScrollTimer] = useTimeout();

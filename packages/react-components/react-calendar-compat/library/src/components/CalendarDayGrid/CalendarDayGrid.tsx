@@ -13,6 +13,8 @@ import { useWeekCornerStyles } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
 import type { Day, DayOfWeek } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
+import { DirectionalSlideIn, DirectionalSlideOut } from '../../utils/calendarMotions';
+import { AnimationDirection } from '../../Calendar';
 
 export interface DayInfo extends Day {
   onSelected: () => void;
@@ -79,6 +81,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   const weeks = useWeeks(props, onSelectDate, getSetRefCallback);
   const animateBackwards = useAnimateBackwards(weeks);
+
   const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
 
   React.useImperativeHandle(
@@ -134,7 +137,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     showWeekNumbers,
     labelledBy,
     lightenDaysOutsideNavigatedMonth,
-    animationDirection,
+    animationDirection = AnimationDirection.Vertical,
   } = props;
 
   const classNames = useCalendarDayGridStyles_unstable({
@@ -160,6 +163,12 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   } as const;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid-linear' });
+  const firstWeek = weeks[0];
+  const finalWeek = weeks![weeks!.length - 1];
+  // Single navigation epoch for all rows in the grid. Derived from the first visible day's key
+  // (`Date.toString()`), which changes when the user navigates to a different month but stays
+  // stable across intra-month interactions (e.g. day selection).
+  const navigationEpoch = firstWeek[0].key;
 
   return (
     <table
@@ -173,34 +182,54 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     >
       <tbody>
         <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
-        <CalendarGridRow
-          {...props}
-          {...partialWeekProps}
-          week={weeks[0]}
-          weekIndex={-1}
-          rowClassName={classNames.firstTransitionWeek}
-          aria-role="presentation"
-          ariaHidden={true}
-        />
-        {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
+        <DirectionalSlideOut
+          edge="first"
+          replayKey={navigationEpoch}
+          animationDirection={animationDirection}
+          animateBackwards={animateBackwards}
+        >
           <CalendarGridRow
             {...props}
             {...partialWeekProps}
-            key={weekIndex}
-            week={week}
-            weekIndex={weekIndex}
-            rowClassName={classNames.weekRow}
+            week={firstWeek}
+            weekIndex={-1}
+            rowClassName={classNames.firstTransitionWeek}
+            aria-role="presentation"
+            ariaHidden={true}
           />
+        </DirectionalSlideOut>
+        {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
+          <DirectionalSlideIn
+            key={weekIndex}
+            replayKey={navigationEpoch}
+            animationDirection={animationDirection}
+            animateBackwards={animateBackwards}
+          >
+            <CalendarGridRow
+              {...props}
+              {...partialWeekProps}
+              week={week}
+              weekIndex={weekIndex}
+              rowClassName={classNames.weekRow}
+            />
+          </DirectionalSlideIn>
         ))}
-        <CalendarGridRow
-          {...props}
-          {...partialWeekProps}
-          week={weeks![weeks!.length - 1]}
-          weekIndex={-2}
-          rowClassName={classNames.lastTransitionWeek}
-          aria-role="presentation"
-          ariaHidden={true}
-        />
+        <DirectionalSlideOut
+          edge="last"
+          replayKey={navigationEpoch}
+          animationDirection={animationDirection}
+          animateBackwards={animateBackwards}
+        >
+          <CalendarGridRow
+            {...props}
+            {...partialWeekProps}
+            week={finalWeek}
+            weekIndex={-2}
+            rowClassName={classNames.lastTransitionWeek}
+            aria-role="presentation"
+            ariaHidden={true}
+          />
+        </DirectionalSlideOut>
       </tbody>
     </table>
   );

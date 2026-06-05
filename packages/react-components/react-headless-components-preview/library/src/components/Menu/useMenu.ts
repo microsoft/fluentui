@@ -206,8 +206,6 @@ const useMenuOpenState = (
     menuPopoverRef: React.MutableRefObject<HTMLElement | null>;
   } & Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
-  'use no memo';
-
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext(ctx => ctx.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));

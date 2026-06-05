@@ -19,8 +19,6 @@ import { useListboxPopupState } from './useListboxPopupState';
  * @param ref - reference to root HTMLButtonElement of Dropdown
  */
 export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
-  'use no memo';
-
   const {
     props: mergedProps,
     triggerRef,

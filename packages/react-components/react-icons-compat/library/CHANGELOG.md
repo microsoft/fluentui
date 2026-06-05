@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-icons-compat
 
-This log was last generated on Thu, 23 Apr 2026 14:21:16 GMT and should not be manually modified.
+This log was last generated on Tue, 26 May 2026 09:39:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.20)
+
+Tue, 26 May 2026 09:39:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-compat_v0.2.19..@fluentui/react-icons-compat_v0.2.20)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.3 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
+- Bump @fluentui/react-utilities to v9.26.4 ([PR #36246](https://github.com/microsoft/fluentui/pull/36246) by beachball)
 
 ## [0.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-compat_v0.2.19)
 

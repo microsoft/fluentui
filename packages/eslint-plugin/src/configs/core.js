@@ -241,6 +241,9 @@ module.exports = defineConfig(
       ...fluentRules,
       ...jsDocRules,
       ...importRules,
+      // Deprecated since ESLint v4 in favor of `padding-line-between-statements`.
+      // Inherited from airbnb config — safe to disable.
+      'lines-around-directive': 'off',
     },
   },
   {

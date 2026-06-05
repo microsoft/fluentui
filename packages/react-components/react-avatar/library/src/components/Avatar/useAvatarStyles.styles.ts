@@ -480,8 +480,6 @@ const useRingColorStyles = makeStyles({
 });
 
 export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
-  'use no memo';
-
   const { size, shape, active, activeAppearance, color } = state;
 
   const rootClassName = useRootClassName();

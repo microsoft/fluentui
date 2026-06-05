@@ -26,8 +26,6 @@ const useStyles = makeStyles({
  * Apply styling to the NavDrawerFooter slots based on the state
  */
 export const useNavDrawerFooterStyles_unstable = (state: NavDrawerFooterState): NavDrawerFooterState => {
-  'use no memo';
-
   useDrawerFooterStyles_unstable(state);
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability

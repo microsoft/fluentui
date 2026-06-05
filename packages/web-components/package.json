@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-rc.20",
+  "version": "3.0.0-rc.22",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -46,10 +46,13 @@
     "./theme/*.js": "./dist/esm/theme/*.js",
     "./*/base.js": "./dist/esm/*/*.base.js",
     "./*/define.js": "./dist/esm/*/define.js",
+    "./*/define-async.js": "./dist/esm/*/define-async.js",
     "./*/definition.js": "./dist/esm/*/*.definition.js",
     "./*/options.js": "./dist/esm/*/*.options.js",
     "./*/styles.js": "./dist/esm/*/*.styles.js",
+    "./*/styles.css": "./dist/esm/*/*.styles.css",
     "./*/template.js": "./dist/esm/*/*.template.js",
+    "./*/template.html": "./dist/esm/*/*.template.html",
     "./*/index.js": "./dist/esm/*/index.js",
     "./*.js": "./dist/esm/*/define.js",
     "./custom-elements.json": "./custom-elements.json",
@@ -57,6 +60,7 @@
   },
   "sideEffects": [
     "define.*",
+    "define-async.*",
     "define-all.*",
     "index-rollup.*",
     "index-all-rollup.*",
@@ -75,7 +79,11 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && rollup -c && yarn generate-api && yarn analyze",
+    "build": "yarn compile && yarn build:rollup && yarn build:ssr && yarn generate-api && yarn analyze",
+    "build:ssr:templates": "fast-test-harness generate-templates --tag-prefix=fluent",
+    "build:ssr:styles": "fast-test-harness generate-stylesheets",
+    "build:ssr": "yarn build:ssr:templates && yarn build:ssr:styles",
+    "build:rollup": "rollup -c",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} src/*.{ts,html} --ignore-path ../../.prettierignore",
@@ -106,7 +114,13 @@
   },
   "peerDependencies": {
     "@microsoft/fast-element": "^2.0.0",
+    "@microsoft/fast-html": "^1.0.0-alpha.53",
     "@microsoft/focusgroup-polyfill": "^1.4.1"
+  },
+  "peerDependenciesMeta": {
+    "@microsoft/fast-html": {
+      "optional": true
+    }
   },
   "beachball": {
     "disallowedChangeTypes": [

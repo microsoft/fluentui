@@ -15,8 +15,6 @@ export const useStaticVirtualizerPagination = (
   virtualizerProps: VirtualizerStaticPaginationProps,
   paginationEnabled: Boolean = true,
 ): ((instance: HTMLElement | HTMLDivElement | null) => void) => {
-  'use no memo';
-
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
   const [setScrollTimer, clearScrollTimer] = useTimeout();
