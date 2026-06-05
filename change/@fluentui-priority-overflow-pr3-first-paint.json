@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: recompute overflow eagerly when the overflow menu attaches or detaches",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

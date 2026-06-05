@@ -677,6 +677,7 @@ export class BaseDropdown extends FASTElement {
     placeholder: string;
     reportValidity(): boolean;
     required: boolean;
+    protected searchTimeoutMs: number;
     // @internal
     get selectedIndex(): number;
     get selectedOptions(): DropdownOption[];

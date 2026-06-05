@@ -2634,7 +2634,7 @@ __metadata:
   resolution: "@fluentui/chart-web-components@workspace:packages/charts/chart-web-components"
   dependencies:
     "@fluentui/tokens": "npm:^1.0.0-alpha.23"
-    "@fluentui/web-components": "npm:^3.0.0-rc.22"
+    "@fluentui/web-components": "npm:^3.0.0-rc.23"
     "@microsoft/fast-web-utilities": "npm:^6.0.0"
     "@storybook/html": "npm:9.1.17"
     "@storybook/html-vite": "npm:9.1.17"
@@ -3569,8 +3569,8 @@ __metadata:
     "@fluentui/keyboard-keys": "npm:^9.0.8"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.3"
-    "@fluentui/react-motion": "npm:^9.15.0"
-    "@fluentui/react-motion-components-preview": "npm:^0.15.4"
+    "@fluentui/react-motion": "npm:^9.16.0"
+    "@fluentui/react-motion-components-preview": "npm:^0.15.5"
     "@fluentui/react-shared-contexts": "npm:^9.26.2"
     "@fluentui/react-tabster": "npm:^9.26.15"
     "@fluentui/react-theme": "npm:^9.2.1"
@@ -4377,7 +4377,7 @@ __metadata:
     "@fluentui/react-tags": "npm:^9.9.1"
     "@fluentui/react-teaching-popover": "npm:^9.7.0"
     "@fluentui/react-textarea": "npm:^9.7.3"
-    "@fluentui/react-toast": "npm:^9.7.18"
+    "@fluentui/react-toast": "npm:^9.8.0"
     "@fluentui/react-toolbar": "npm:^9.8.1"
     "@fluentui/react-tooltip": "npm:^9.10.2"
     "@fluentui/react-utilities": "npm:^9.26.4"
@@ -4884,7 +4884,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-motion-components-preview@npm:*, @fluentui/react-motion-components-preview@npm:^0.15.4, @fluentui/react-motion-components-preview@npm:^0.15.5, @fluentui/react-motion-components-preview@workspace:packages/react-components/react-motion-components-preview/library":
+"@fluentui/react-motion-components-preview@npm:*, @fluentui/react-motion-components-preview@npm:^0.15.5, @fluentui/react-motion-components-preview@workspace:packages/react-components/react-motion-components-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-motion-components-preview@workspace:packages/react-components/react-motion-components-preview/library"
   dependencies:
@@ -4905,7 +4905,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-motion@npm:*, @fluentui/react-motion@npm:^9.15.0, @fluentui/react-motion@npm:^9.16.0, @fluentui/react-motion@workspace:packages/react-components/react-motion/library":
+"@fluentui/react-motion@npm:*, @fluentui/react-motion@npm:^9.16.0, @fluentui/react-motion@workspace:packages/react-components/react-motion/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-motion@workspace:packages/react-components/react-motion/library"
   dependencies:
@@ -5850,7 +5850,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-toast@npm:*, @fluentui/react-toast@npm:^9.7.18, @fluentui/react-toast@npm:^9.8.0, @fluentui/react-toast@workspace:packages/react-components/react-toast/library":
+"@fluentui/react-toast@npm:*, @fluentui/react-toast@npm:^9.8.0, @fluentui/react-toast@workspace:packages/react-components/react-toast/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-toast@workspace:packages/react-components/react-toast/library"
   dependencies:
@@ -6634,7 +6634,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/web-components@npm:>=3.0.0-alpha, @fluentui/web-components@npm:^3.0.0-rc.22, @fluentui/web-components@workspace:packages/web-components":
+"@fluentui/web-components@npm:>=3.0.0-alpha, @fluentui/web-components@npm:^3.0.0-rc.23, @fluentui/web-components@workspace:packages/web-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/web-components@workspace:packages/web-components"
   dependencies:
@@ -29572,16 +29572,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:7.5.7":
-  version: 7.5.7
-  resolution: "tar@npm:7.5.7"
+"tar@npm:7.5.8":
+  version: 7.5.8
+  resolution: "tar@npm:7.5.8"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
     minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10c0/51f261afc437e1112c3e7919478d6176ea83f7f7727864d8c2cce10f0b03a631d1911644a567348c3063c45abdae39718ba97abb073d22aa3538b9a53ae1e31c
+  checksum: 10c0/8569db1b49f5d72084cbdcad9d2b39fcc115993186455aa052c1da0a2739b20e2d94af6a23609fc25d3ae63c9fed8b159f3b1d16b699e9ef25e3b8464603d153
   languageName: node
   linkType: hard
 
