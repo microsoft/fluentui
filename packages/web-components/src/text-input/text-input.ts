@@ -10,8 +10,8 @@ import { TextInputAppearance, TextInputControlSize } from './text-input.options.
  * Based on BaseTextInput and includes style and layout specific attributes
  *
  * @tag fluent-text-input
- * @fires change - Fired when the input value is committed via a change event.
- * @fires select - Fired when text is selected in the input control.
+ * @fires { Event } change - Fired when the input value is committed via a change event.
+ * @fires { Event } select - Fires when the `select()` method is called.
  *
  * @public
  */

@@ -19,6 +19,10 @@ import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.opt
  * @csspart label - The internal `<label>` element
  * @csspart root - the root container for the internal control
  * @csspart control - The internal `<input>` control
+ *
+ * @fires { Event } change - Fires a custom 'change' event when the value changes and the input loses focus
+ * @fires { Event } select - Fires when the `select()` method is called.
+ *
  * @public
  */
 export class BaseTextInput extends FASTElement {

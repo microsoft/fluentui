@@ -6,6 +6,8 @@ import { DialogType } from './dialog.options.js';
  *
  * @tag fluent-dialog
  *
+ * @fires { ToggleEvent } toggle - Event emitted after the dialog's open state changes.
+ * @fires { ToggleEvent } beforetoggle - Event emitted before the dialog's open state changes.
  * @slot - The default slot. {@link (DialogBody:class)} element recommended.
  *
  * @public

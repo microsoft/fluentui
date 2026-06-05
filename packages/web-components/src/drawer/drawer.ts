@@ -19,8 +19,8 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  *
  * @slot - Default slot for the content of the drawer.
  *
- * @fires toggle - Event emitted after the dialog's open state changes.
- * @fires beforetoggle - Event emitted before the dialog's open state changes.
+ * @fires { ToggleEvent } toggle - Event emitted after the dialog's open state changes.
+ * @fires { ToggleEvent } beforetoggle - Event emitted before the dialog's open state changes.
  *
  * @method show - Method to show the drawer.
  * @method hide - Method to hide the drawer.

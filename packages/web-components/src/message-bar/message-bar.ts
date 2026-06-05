@@ -10,7 +10,7 @@ import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-b
  * @slot dismiss - Content that can be provided for the dismiss button
  * @slot icon - Content that can be provided for the leading icon
  * @slot - The default slot for the content
- * @fires dismiss - Fired when the message bar is dismissed.
+ * @fires { CustomEvent } dismiss - Fired when the message bar is dismissed.
  * @public
  */
 export class MessageBar extends FASTElement {
