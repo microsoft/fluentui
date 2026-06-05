@@ -935,7 +935,7 @@ describe(`workspace-plugin`, () => {
           expect(targets?.['react-compiler-analyzer--lint']).toMatchInlineSnapshot(`
             Object {
               "cache": true,
-              "command": "yarn react-compiler-analyzer lint ./src",
+              "command": "yarn run -T react-compiler-analyzer lint ./src",
               "inputs": Array [
                 "default",
                 Object {
@@ -947,7 +947,7 @@ describe(`workspace-plugin`, () => {
               "metadata": Object {
                 "description": "Lint redundant 'use no memo' directives",
                 "help": Object {
-                  "command": "yarn react-compiler-analyzer lint --help",
+                  "command": "yarn run -T react-compiler-analyzer lint --help",
                   "example": Object {
                     "options": Object {
                       "fix": true,
@@ -967,7 +967,7 @@ describe(`workspace-plugin`, () => {
           expect(targets?.['react-compiler-analyzer--analyze']).toMatchInlineSnapshot(`
             Object {
               "cache": true,
-              "command": "yarn react-compiler-analyzer analyze ./src",
+              "command": "yarn run -T react-compiler-analyzer analyze ./src",
               "inputs": Array [
                 "default",
                 Object {
@@ -979,7 +979,7 @@ describe(`workspace-plugin`, () => {
               "metadata": Object {
                 "description": "Analyze React Compiler coverage and migration status",
                 "help": Object {
-                  "command": "yarn react-compiler-analyzer analyze --help",
+                  "command": "yarn run -T react-compiler-analyzer analyze --help",
                   "example": Object {
                     "options": Object {
                       "annotate": true,
@@ -1014,7 +1014,7 @@ describe(`workspace-plugin`, () => {
               "metadata": Object {
                 "description": "React Compiler analysis (runs lint on CI)",
                 "help": Object {
-                  "command": "yarn react-compiler-analyzer --help",
+                  "command": "yarn run -T react-compiler-analyzer --help",
                   "example": Object {},
                 },
                 "technologies": Array [
