@@ -103,10 +103,6 @@ export const parameters = {
     },
   },
   docs: {
-    argTypes: { sort: 'none' },
-    stories: {
-      filter: (/** @type {any} */ story) => story.name.toLowerCase() === 'default',
-    },
     source: {
       // To get around the inability to change Prettier options in the source addon, this transform function
       // imports the standalone Prettier and uses it to format the source with the desired options.

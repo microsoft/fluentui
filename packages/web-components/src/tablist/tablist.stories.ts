@@ -52,7 +52,11 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
 export default {
   title: 'Components/Tablist',
   render: renderComponent(storyTemplate),
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    ids: { table: { disable: true } },
+    hasStartSlot: { table: { disable: true } },
+  },
 } as Meta<FluentTablist>;
 
 export const Default: Story = {};
