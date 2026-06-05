@@ -280,7 +280,21 @@ const useRootStyles = makeStyles({
     },
   },
   tint: {
-    /* Styles provided by consumer via custom hooks */
+    backgroundColor: tokens.colorBrandBackground2,
+    ...shorthands.borderColor(tokens.colorBrandStroke2),
+    color: tokens.colorCompoundBrandForeground1,
+
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2Hover,
+      ...shorthands.borderColor(tokens.colorBrandStroke2Hover),
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+
+    ':hover:active,:active:focus-visible': {
+      backgroundColor: tokens.colorBrandBackground2Pressed,
+      ...shorthands.borderColor(tokens.colorBrandStroke2Pressed),
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
   },
 
   // Shape variations
@@ -463,7 +477,7 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   tint: {
-    /* Styles provided by consumer via custom hooks */
+    /* The tint styles are exactly the same as the base styles. */
   },
 });
 
