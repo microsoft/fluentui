@@ -51,8 +51,6 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
 export const useFluentProviderThemeStyleTag = (
   options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { rendererAttributes: Record<string, string> },
 ): { styleTagId: string; rule: string } => {
-  'use no memo';
-
   const { targetDocument, theme, rendererAttributes } = options;
 
   const styleTag = React.useRef<HTMLStyleElement | undefined | null>(undefined);
@@ -63,7 +61,7 @@ export const useFluentProviderThemeStyleTag = (
   const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
   if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // eslint-disable-next-line react-hooks/rules-of-hooks, react-hooks/void-use-memo
     React.useMemo(() => {
       // Heads up!
       // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,

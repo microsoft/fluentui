@@ -31,25 +31,28 @@ const useStyles = makeStyles({
 });
 
 export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGridItemState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuGridItemClassNames.root, state.root.className);
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(menuGridItemClassNames.icon, styles.icon, state.icon.className);
   }
 
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(menuGridItemClassNames.content, styles.content, state.content.className);
   }
 
   if (state.subText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(menuGridItemClassNames.subText, state.subText.className);
   }
 
   if (state.firstSubAction) {
+    // eslint-disable-next-line react-hooks/immutability
     state.firstSubAction.className = mergeClasses(
       menuGridItemClassNames.firstSubAction,
       styles.firstSubAction,
@@ -57,6 +60,7 @@ export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGr
     );
   }
   if (state.secondSubAction) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondSubAction.className = mergeClasses(
       menuGridItemClassNames.secondSubAction,
       styles.secondSubAction,

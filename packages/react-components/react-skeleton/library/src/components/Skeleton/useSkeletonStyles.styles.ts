@@ -17,10 +17,9 @@ const useStyles = makeStyles({
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
-  'use no memo';
-
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     skeletonClassNames.root,
     state.root.as === 'span' && styles.blockStyling,

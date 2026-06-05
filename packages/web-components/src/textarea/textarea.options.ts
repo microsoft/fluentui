@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
@@ -59,3 +60,10 @@ export const TextAreaResize = {
 } as const;
 
 export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
+
+/**
+ * The tag name for the textarea element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-textarea` as const;

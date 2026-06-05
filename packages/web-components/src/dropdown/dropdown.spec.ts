@@ -1,22 +1,25 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { tagName as ListboxTagName } from '../listbox/listbox.options.js';
+import { tagName as OptionTagName } from '../option/option.options.js';
 import type { Dropdown } from './dropdown.js';
+import { tagName } from './dropdown.options.js';
 
 test.describe('Dropdown', () => {
   test.use({
-    tagName: 'fluent-dropdown',
+    tagName,
     innerHTML: /* html */ `
-      <fluent-listbox>
-        <fluent-option value="apple">Apple</fluent-option>
-        <fluent-option value="banana">Banana</fluent-option>
-        <fluent-option value="orange">Orange</fluent-option>
-        <fluent-option value="mango">Mango</fluent-option>
-        <fluent-option value="kiwi">Kiwi</fluent-option>
-        <fluent-option value="cherry">Cherry</fluent-option>
-        <fluent-option value="grapefruit">Grapefruit</fluent-option>
-        <fluent-option value="papaya">Papaya</fluent-option>
-      </fluent-listbox>
+      <${ListboxTagName}>
+        <${OptionTagName} value="apple">Apple</${OptionTagName}>
+        <${OptionTagName} value="banana">Banana</${OptionTagName}>
+        <${OptionTagName} value="orange">Orange</${OptionTagName}>
+        <${OptionTagName} value="mango">Mango</${OptionTagName}>
+        <${OptionTagName} value="kiwi">Kiwi</${OptionTagName}>
+        <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+        <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+        <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+      </${ListboxTagName}>
     `,
-    waitFor: ['fluent-listbox', 'fluent-option'],
+    waitFor: [ListboxTagName, OptionTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -28,9 +31,9 @@ test.describe('Dropdown', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-dropdown');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
@@ -38,12 +41,16 @@ test.describe('Dropdown', () => {
   test('should render a dropdown', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveCount(1);
   });
 
   test('should render a dropdown with options', async ({ fastPage }) => {
     const { element } = fastPage;
-    const options = element.locator('fluent-option');
+    const options = element.locator(OptionTagName);
+
+    await fastPage.setTemplate();
 
     await expect(options).toHaveCount(8);
   });
@@ -51,6 +58,8 @@ test.describe('Dropdown', () => {
   test('should render a dropdown with a button when the type is not specified', async ({ fastPage }) => {
     const { element } = fastPage;
     const button = element.locator('button');
+
+    await fastPage.setTemplate();
 
     await expect(button).toHaveCount(1);
   });
@@ -66,7 +75,9 @@ test.describe('Dropdown', () => {
 
   test('should open the dropdown on click', async ({ fastPage }) => {
     const { element } = fastPage;
-    const listbox = element.locator('fluent-listbox');
+    const listbox = element.locator(ListboxTagName);
+
+    await fastPage.setTemplate();
 
     await expect(listbox).toBeHidden();
 
@@ -77,8 +88,10 @@ test.describe('Dropdown', () => {
 
   test('should close the dropdown on click', async ({ fastPage }) => {
     const { element } = fastPage;
-    const listbox = element.locator('fluent-listbox');
+    const listbox = element.locator(ListboxTagName);
     const button = element.locator('[role=combobox]');
+
+    await fastPage.setTemplate();
 
     await button.click();
 
@@ -91,17 +104,51 @@ test.describe('Dropdown', () => {
 
   test('should open the dropdown when the space key is pressed', async ({ fastPage }) => {
     const { element } = fastPage;
-    const listbox = element.locator('fluent-listbox');
+    const listbox = element.locator(ListboxTagName);
     const button = element.locator('[role=combobox]');
+
+    await fastPage.setTemplate();
 
     await button.press(' ');
 
     await expect(listbox).toBeVisible();
   });
 
+  test('should open the dropdown when a character is pressed', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const listbox = element.locator(ListboxTagName);
+    const button = element.locator('[role=combobox]');
+
+    await fastPage.setTemplate();
+
+    await button.press('a');
+
+    await expect(listbox).toBeVisible();
+  });
+
+  test('should not open the dropdown when a character is pressed with Meta, Alt, or Ctrl', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const listbox = element.locator(ListboxTagName);
+    const button = element.locator('[role=combobox]');
+
+    await fastPage.setTemplate();
+
+    await button.press('Meta+a');
+
+    await expect(listbox).toBeHidden();
+
+    await button.press('Alt+a');
+
+    await expect(listbox).toBeHidden();
+
+    await button.press('Control+a');
+
+    await expect(listbox).toBeHidden();
+  });
+
   test("should set the `name` property on options when it's set on the dropdown", async ({ fastPage }) => {
     const { element } = fastPage;
-    const options = element.locator('fluent-option');
+    const options = element.locator(OptionTagName);
 
     await fastPage.setTemplate({ attributes: { name: 'fruit' } });
 
@@ -117,29 +164,29 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit">
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango">Mango</fluent-option>
-              <fluent-option value="kiwi">Kiwi</fluent-option>
-              <fluent-option value="cherry">Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit">
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango">Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi">Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="submit">Submit</button>
         </form>
       `);
 
       await element.click();
 
-      await expect(element.locator('fluent-listbox')).toBeVisible();
+      await expect(element.locator(ListboxTagName)).toBeVisible();
 
-      await element.locator('fluent-option[value=cherry]').click();
+      await element.locator(`${OptionTagName}[value=cherry]`).click();
 
-      await expect(element.locator('fluent-option[value=cherry]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=cherry]`)).toHaveJSProperty('selected', true);
 
       await submitButton.click();
 
@@ -152,25 +199,25 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit" disabled>
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango">Mango</fluent-option>
-              <fluent-option value="kiwi">Kiwi</fluent-option>
-              <fluent-option value="cherry" selected>Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit" disabled>
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango">Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi">Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry" selected>Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="submit">Submit</button>
         </form>
       `);
 
       await element.click();
 
-      await expect(element.locator('fluent-listbox')).toBeHidden();
+      await expect(element.locator(ListboxTagName)).toBeHidden();
 
       await submitButton.click();
 
@@ -186,25 +233,25 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit">
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango" selected>Mango</fluent-option>
-              <fluent-option value="kiwi" selected>Kiwi</fluent-option>
-              <fluent-option value="cherry">Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit">
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango" selected>Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi" selected>Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="submit">Submit</button>
         </form>
       `);
 
       await element.click();
 
-      await expect(element.locator('fluent-listbox')).toBeVisible();
+      await expect(element.locator(ListboxTagName)).toBeVisible();
 
       await submitButton.click();
 
@@ -222,27 +269,27 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit" multiple>
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango" selected>Mango</fluent-option>
-              <fluent-option value="kiwi" selected>Kiwi</fluent-option>
-              <fluent-option value="cherry">Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit" multiple>
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango" selected>Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi" selected>Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="submit">Submit</button>
         </form>
       `);
 
-      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
-      await expect(element.locator('fluent-option[value=mango]')).toHaveAttribute('selected');
+      await expect(element.locator(`${OptionTagName}[value=mango]`)).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=mango]`)).toHaveAttribute('selected');
 
-      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
-      await expect(element.locator('fluent-option[value=kiwi]')).toHaveAttribute('selected');
+      await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveAttribute('selected');
 
       await submitButton.click();
 
@@ -257,37 +304,37 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit">
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango" selected>Mango</fluent-option>
-              <fluent-option value="kiwi">Kiwi</fluent-option>
-              <fluent-option value="cherry">Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit">
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango" selected>Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi">Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="reset">Reset</button>
         </form>
       `);
 
       await element.click();
 
-      await expect(element.locator('fluent-listbox')).toBeVisible();
+      await expect(element.locator(ListboxTagName)).toBeVisible();
 
-      await element.locator('fluent-option[value=kiwi]').click();
+      await element.locator(`${OptionTagName}[value=kiwi]`).click();
 
-      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveJSProperty('selected', true);
 
-      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', false);
+      await expect(element.locator(`${OptionTagName}[value=mango]`)).toHaveJSProperty('selected', false);
 
       await resetButton.click();
 
-      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=mango]`)).toHaveJSProperty('selected', true);
 
-      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', false);
+      await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveJSProperty('selected', false);
     });
 
     test('should reset the values when the form is reset and the `multiple` attribute is present', async ({
@@ -299,41 +346,41 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit" multiple>
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango" selected>Mango</fluent-option>
-              <fluent-option value="kiwi" selected>Kiwi</fluent-option>
-              <fluent-option value="cherry">Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit" multiple>
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango" selected>Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi" selected>Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="reset">Reset</button>
         </form>
       `);
 
       await element.click();
 
-      await expect(element.locator('fluent-listbox')).toBeVisible();
+      await expect(element.locator(ListboxTagName)).toBeVisible();
 
-      await element.locator('fluent-option[value=apple]').click();
+      await element.locator(`${OptionTagName}[value=apple]`).click();
 
-      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveJSProperty('selected', true);
 
-      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=mango]`)).toHaveJSProperty('selected', true);
 
-      await expect(element.locator('fluent-option[value=apple]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=apple]`)).toHaveJSProperty('selected', true);
 
       await resetButton.click();
 
-      await expect(element.locator('fluent-option[value=mango]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=mango]`)).toHaveJSProperty('selected', true);
 
-      await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+      await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveJSProperty('selected', true);
 
-      await expect(element.locator('fluent-option[value=apple]')).toHaveJSProperty('selected', false);
+      await expect(element.locator(`${OptionTagName}[value=apple]`)).toHaveJSProperty('selected', false);
     });
 
     test('should display a validation message when the dropdown is required and the form is submitted without a value', async ({
@@ -342,7 +389,7 @@ test.describe('Dropdown', () => {
       browserName,
     }) => {
       const { element } = fastPage;
-      const options = element.locator('fluent-option');
+      const options = element.locator(OptionTagName);
       const submitButton = page.locator('button[type=submit]');
 
       const messages: Record<string, string> = {
@@ -354,18 +401,18 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate(/* html */ `
         <form action="foo">
-          <fluent-dropdown name="fruit" required>
-            <fluent-listbox>
-              <fluent-option value="apple">Apple</fluent-option>
-              <fluent-option value="banana">Banana</fluent-option>
-              <fluent-option value="orange">Orange</fluent-option>
-              <fluent-option value="mango">Mango</fluent-option>
-              <fluent-option value="kiwi">Kiwi</fluent-option>
-              <fluent-option value="cherry">Cherry</fluent-option>
-              <fluent-option value="grapefruit">Grapefruit</fluent-option>
-              <fluent-option value="papaya">Papaya</fluent-option>
-            </fluent-listbox>
-          </fluent-dropdown>
+          <${tagName} name="fruit" required>
+            <${ListboxTagName}>
+              <${OptionTagName} value="apple">Apple</${OptionTagName}>
+              <${OptionTagName} value="banana">Banana</${OptionTagName}>
+              <${OptionTagName} value="orange">Orange</${OptionTagName}>
+              <${OptionTagName} value="mango">Mango</${OptionTagName}>
+              <${OptionTagName} value="kiwi">Kiwi</${OptionTagName}>
+              <${OptionTagName} value="cherry">Cherry</${OptionTagName}>
+              <${OptionTagName} value="grapefruit">Grapefruit</${OptionTagName}>
+              <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
+            </${ListboxTagName}>
+          </${tagName}>
           <button type="submit">Submit</button>
         </form>
       `);
@@ -386,8 +433,8 @@ test.describe('Dropdown', () => {
     test('should select an option when the user types the value', async ({ fastPage }) => {
       const { element } = fastPage;
       const input = element.locator('input');
-      const listbox = element.locator('fluent-listbox');
-      const kiwiOption = element.locator('fluent-option[value=kiwi]');
+      const listbox = element.locator(ListboxTagName);
+      const kiwiOption = element.locator(`${OptionTagName}[value=kiwi]`);
 
       await fastPage.setTemplate({ attributes: { type: 'combobox' } });
 
@@ -414,7 +461,7 @@ test.describe('Dropdown', () => {
     }) => {
       const { element } = fastPage;
       const input = element.locator('input');
-      const listbox = element.locator('fluent-listbox');
+      const listbox = element.locator(ListboxTagName);
 
       await fastPage.setTemplate({ attributes: { type: 'combobox' } });
 
@@ -441,7 +488,9 @@ test.describe('Dropdown', () => {
     page,
   }) => {
     const { element } = fastPage;
-    const listbox = element.locator('fluent-listbox');
+    const listbox = element.locator(ListboxTagName);
+
+    await fastPage.setTemplate();
 
     await element.click();
 
@@ -464,7 +513,9 @@ test.describe('Dropdown', () => {
 
   test('should emit a `change` event when the value is confirmed by pressing Enter', async ({ fastPage }) => {
     const { element } = fastPage;
-    const listbox = element.locator('fluent-listbox');
+    const listbox = element.locator(ListboxTagName);
+
+    await fastPage.setTemplate();
 
     await element.click();
 
@@ -502,6 +553,8 @@ test.describe('Dropdown', () => {
   test('should NOT emit a `change` event when the value is changed programmatically', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await element.evaluate((el: Dropdown) => {
       el.addEventListener('change', () => el.insertAdjacentText('afterend', 'changed'), { once: true });
     });
@@ -514,17 +567,105 @@ test.describe('Dropdown', () => {
 
     await expect(element).toHaveJSProperty('value', 'kiwi');
 
-    await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
+    await expect(element.locator(`${OptionTagName}[value=kiwi]`)).toHaveJSProperty('selected', true);
   });
 
   test('should not focus listbox when tabbing from dropdown', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
-    const listbox = element.locator('fluent-listbox');
+    await fastPage.setTemplate();
+
+    const listbox = element.locator(ListboxTagName);
 
     await element.focus();
     await page.keyboard.press('Tab');
 
     await expect(listbox).toBeHidden();
+  });
+
+  test.describe('search options by printable characters', () => {
+    test.use({
+      innerHTML: /* html */ `
+        <${ListboxTagName}>
+          <${OptionTagName} id="o1">Afoo</${OptionTagName}>
+          <${OptionTagName} id="o2">Bfoo</${OptionTagName}>
+          <${OptionTagName} id="o3">Bbfoo</${OptionTagName}>
+          <${OptionTagName} id="o4">Bcfoo</${OptionTagName}>
+          <${OptionTagName} id="o5">Cfoo</${OptionTagName}>
+        </${ListboxTagName}>
+      `,
+    });
+
+    test('should set active descendant based on user typing', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
+
+      await combobox.focus();
+      await page.keyboard.press('b', { delay: 500 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+
+      await page.keyboard.press('a', { delay: 500 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o1');
+
+      await page.keyboard.press('c', { delay: 500 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
+
+      await page.keyboard.press('d');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
+    });
+
+    test('should cycle through matching options as active descendant based on user typing', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
+
+      await combobox.focus();
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
+
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o4');
+
+      await page.keyboard.press('b');
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+    });
+
+    test('should set active descendant if its label has repeated character', async ({ fastPage }) => {
+      const { element, page } = fastPage;
+      const combobox = element.getByRole('combobox');
+
+      await fastPage.setTemplate();
+
+      await combobox.focus();
+      await page.keyboard.type('bb', { delay: 100 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
+
+      await page.waitForTimeout(500);
+
+      await page.keyboard.type('bb', { delay: 100 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
+
+      await page.waitForTimeout(500);
+
+      await page.keyboard.type('bb', { delay: 600 });
+
+      await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
+    });
   });
 });

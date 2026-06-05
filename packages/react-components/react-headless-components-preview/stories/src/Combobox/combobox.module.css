@@ -1,0 +1,204 @@
+/* label above the combobox */
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* root container — the visible "input field" */
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  background: var(--bg-elev);
+  padding: 0 var(--space-3);
+  box-shadow: var(--shadow-1);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.root:hover {
+  border-color: var(--border-strong);
+}
+
+.root:focus-within {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* the actual <input> element */
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-faint);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.root:has(input:disabled) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* popup listbox */
+.listbox {
+  max-height: 256px;
+  width: 100%;
+  max-width: 320px;
+  overflow: auto;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border: var(--stroke-thin) solid var(--border);
+  background: var(--bg-elev);
+  padding: var(--space-1);
+  font-size: 13px;
+  color: var(--text);
+  box-shadow: var(--shadow-4);
+}
+
+/* individual option row */
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  scroll-margin-block: var(--space-1);
+  color: var(--text);
+  cursor: default;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.option:hover {
+  background: var(--surface-muted);
+}
+
+.option[data-activedescendant-focusvisible] {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.option[data-selected] {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 500;
+}
+
+.option[data-selected] .checkIcon {
+  visibility: visible;
+}
+
+.option[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.option[data-disabled]:hover {
+  background: transparent;
+}
+
+/* expand chevron */
+.expandIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--text-soft);
+}
+
+/* clear icon — inline span acting as a clickable affordance */
+.clearIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.clearIcon:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.input[data-placeholder] + .clearIcon,
+.input:not([data-placeholder]) ~ .expandIcon {
+  display: none;
+}
+
+/* option group container */
+.optionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.optionGroup:not(:last-child)::after {
+  content: '';
+  display: block;
+  border-bottom: var(--stroke-thin) solid var(--border);
+  margin: var(--space-1) 0;
+}
+
+/* group header label */
+.groupLabel {
+  display: block;
+  padding: var(--space-1) var(--space-3);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Demo helpers */
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  gap: var(--space-2);
+}
+
+/* checkbox + label row */
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}

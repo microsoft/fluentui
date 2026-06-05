@@ -89,12 +89,11 @@ function getAnimationExitClass(state: InlineDrawerState, classNames: ReturnType<
  * Apply styling to the InlineDrawer slots based on the state
  */
 export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): InlineDrawerState => {
-  'use no memo';
-
   const resetStyles = useDrawerResetStyles();
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,
     resetStyles,

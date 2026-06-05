@@ -22,12 +22,11 @@ const useStyles = makeStyles({
 });
 
 export const useTreeStyles_unstable = (state: TreeState): TreeState => {
-  'use no memo';
-
   const baseStyles = useBaseStyles();
   const styles = useStyles();
   const isSubTree = state.level > 1;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     treeClassNames.root,
     baseStyles,

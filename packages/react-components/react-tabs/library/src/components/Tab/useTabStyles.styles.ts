@@ -598,7 +598,7 @@ const useContentStyles = makeStyles({
  * Apply styling to the Tab slots based on the state
  */
 export const useTabStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
+  'use no memo'; // justified: compiler would optimize useTabStyles_unstable — manual opt-out to preserve runtime behavior
 
   useTabIndicatorStyles_unstable(state);
 
@@ -619,8 +619,6 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
  * @returns The state object with updated button styles
  */
 export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
@@ -654,6 +652,7 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
     );
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(...classes, state.root.className);
 
   useTabAnimatedIndicatorStyles_unstable(state);
@@ -672,8 +671,6 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
  * @returns The state object with updated button styles
  */
 export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['root']): TabState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const circularStyles = useCircularAppearanceStyles();
@@ -711,6 +708,7 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
     disabled && rootStyles.disabled,
   ];
 
+  // eslint-disable-next-line react-hooks/immutability
   slot.className = mergeClasses(
     rootStyles.button,
     // orientation
@@ -737,14 +735,13 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
  * @returns The state object with updated content styles
  */
 export const useTabContentStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const iconStyles = useIconStyles();
   const contentStyles = useContentStyles();
 
   const { selected, size } = state;
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       tabClassNames.icon,
       iconStyles.base,
@@ -756,6 +753,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
 
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentReservedSpace.className = mergeClasses(
       tabReservedSpaceClassNames.content,
       contentStyles.base,
@@ -766,10 +764,11 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
     );
     // FIXME: this is a deprecated API
     // should be removed in the next major version
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, react-hooks/immutability
     state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 
+  // eslint-disable-next-line react-hooks/immutability
   state.content.className = mergeClasses(
     tabClassNames.content,
     contentStyles.base,

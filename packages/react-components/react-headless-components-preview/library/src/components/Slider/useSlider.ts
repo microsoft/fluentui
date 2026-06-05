@@ -11,12 +11,12 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderSlider`.
  */
 export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
-  'use no memo';
-
   const state: SliderState = useSliderBase_unstable(props, ref);
 
   // Set data attributes for disabled and vertical states to simplify styling of these states.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
 
   return state;

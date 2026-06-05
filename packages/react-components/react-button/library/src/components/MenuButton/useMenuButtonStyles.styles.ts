@@ -106,12 +106,11 @@ const useMenuIconStyles = makeStyles({
 });
 
 export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
-  'use no memo';
-
   const rootExpandedStyles = useRootExpandedStyles();
   const iconExpandedStyles = useIconExpandedStyles();
   const menuIconStyles = useMenuIconStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     menuButtonClassNames.root,
     state.root['aria-expanded'] && rootExpandedStyles.base,
@@ -120,6 +119,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       menuButtonClassNames.icon,
       state.root['aria-expanded'] && iconExpandedStyles[state.appearance] && iconExpandedStyles.highContrast,
@@ -128,6 +128,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   }
 
   if (state.menuIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.menuIcon.className = mergeClasses(
       menuButtonClassNames.menuIcon,
       menuIconStyles.base,

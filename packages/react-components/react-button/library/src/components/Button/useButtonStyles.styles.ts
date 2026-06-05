@@ -551,8 +551,6 @@ const useIconStyles = makeStyles({
 });
 
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const iconBaseClassName = useIconBaseClassName();
 
@@ -564,6 +562,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
 
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     buttonClassNames.root,
     rootBaseClassName,
@@ -593,6 +592,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       buttonClassNames.icon,
       iconBaseClassName,

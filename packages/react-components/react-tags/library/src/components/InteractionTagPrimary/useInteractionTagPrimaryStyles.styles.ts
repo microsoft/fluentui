@@ -316,8 +316,6 @@ const useRootWithSecondaryActionStyles = makeStyles({
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
-  'use no memo';
-
   const rootRoundedBaseClassName = useRootRoundedBaseClassName();
   const rootCircularBaseClassName = useRootCircularBaseClassName();
   const rootStyles = useRootStyles();
@@ -334,6 +332,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
 
   const { disabled, shape, size, appearance, selected } = state;
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
 
@@ -353,6 +352,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
   );
 
   if (state.media) {
+    // eslint-disable-next-line react-hooks/immutability
     state.media.className = mergeClasses(
       interactionTagPrimaryClassNames.media,
       mediaStyles.base,
@@ -361,6 +361,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
     );
   }
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(
       interactionTagPrimaryClassNames.icon,
       iconStyles.base,
@@ -369,6 +370,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
     );
   }
   if (state.primaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.primaryText.className = mergeClasses(
       interactionTagPrimaryClassNames.primaryText,
 
@@ -381,6 +383,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
     );
   }
   if (state.secondaryText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryText.className = mergeClasses(
       interactionTagPrimaryClassNames.secondaryText,
       secondaryTextBaseClassName,

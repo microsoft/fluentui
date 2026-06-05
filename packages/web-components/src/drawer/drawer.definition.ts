@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './drawer.options.js';
 import { Drawer } from './drawer.js';
 import { styles } from './drawer.styles.js';
 import { template } from './drawer.template.js';
@@ -11,7 +11,7 @@ import { template } from './drawer.template.js';
  */
 
 export const definition = Drawer.compose({
-  name: `${FluentDesignSystem.prefix}-drawer`,
+  name: tagName,
   template,
   styles,
 });

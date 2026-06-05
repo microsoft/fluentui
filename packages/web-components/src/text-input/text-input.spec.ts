@@ -1,9 +1,12 @@
+import type { InitialTemplateAttributes } from '@microsoft/fast-test-harness/fixtures/csr-fixture.js';
 import { expect, test } from '../../test/playwright/index.js';
 import type { TextInput } from './text-input.js';
-import { ImplicitSubmissionBlockingTypes } from './text-input.options.js';
+import { ImplicitSubmissionBlockingTypes, tagName } from './text-input.options.js';
 
 test.describe('TextInput', () => {
-  test.use({ tagName: 'fluent-text-input' });
+  test.use({
+    tagName,
+  });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
     await fastPage.setTemplate();
@@ -14,17 +17,24 @@ test.describe('TextInput', () => {
       hasError = true;
     });
 
-    await page.evaluate(() => {
-      document.createElement('fluent-text-input');
-    });
+    await page.evaluate(tagName => {
+      document.createElement(tagName);
+    }, tagName);
 
     expect(hasError).toBe(false);
   });
 
-  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage }) => {
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage, ssr }) => {
     const { element } = fastPage;
 
-    await fastPage.setTemplate({ attributes: { autofocus: true } });
+    const attributes: InitialTemplateAttributes = { autofocus: true };
+
+    if (ssr) {
+      // the host element needs to be focusable for autofocus to work on the server, so we need to set tabindex="0"
+      attributes.tabindex = '0';
+    }
+
+    await fastPage.setTemplate({ attributes });
 
     await expect(element).toBeFocused();
   });
@@ -178,6 +188,8 @@ test.describe('TextInput', () => {
   test('should have an undefined `value` property when no `value` attribute is set', async ({ fastPage }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await expect(element).toHaveJSProperty('value', undefined);
   });
 
@@ -194,13 +206,13 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate('');
 
-    await page.evaluate(() => {
-      const textInput = document.createElement('fluent-text-input') as TextInput;
+    await page.evaluate(tagName => {
+      const textInput = document.createElement(tagName) as TextInput;
 
       textInput.value = 'foo';
 
       document.body.append(textInput);
-    });
+    }, tagName);
 
     await expect(element).toHaveJSProperty('value', 'foo');
   });
@@ -208,6 +220,8 @@ test.describe('TextInput', () => {
   test('should initialize to the provided `value` attribute if set post-connection', async ({ fastPage }) => {
     const { element } = fastPage;
     const control = element.locator('input');
+
+    await fastPage.setTemplate();
 
     await element.evaluate(node => {
       node.setAttribute('value', 'foo');
@@ -223,6 +237,8 @@ test.describe('TextInput', () => {
   }) => {
     const { element } = fastPage;
     const control = element.locator('input');
+
+    await fastPage.setTemplate();
 
     await control.fill('bar');
 
@@ -326,16 +342,18 @@ test.describe('TextInput', () => {
     const label = element.locator('label');
 
     await fastPage.setTemplate({
-      innerHTML: '\n \n',
+      innerHTML: '&nbsp;',
     });
 
-    await expect(element).toHaveText(/\n\s\n/);
+    await expect(element).toHaveText('\u00A0');
 
     await expect(label).toBeHidden();
   });
 
   test('should fire a `change` event when the internal control emits a `change` event', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     const wasChanged = element.evaluate(
       node =>
@@ -528,7 +546,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="foo">
-        <fluent-text-input></fluent-text-input>
+        <${tagName}></${tagName}>
       </form>
     `);
 
@@ -537,6 +555,8 @@ test.describe('TextInput', () => {
 
   test('should set the `form` property to `null` when the element is not in a form', async ({ fastPage }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('form', null);
   });
@@ -548,7 +568,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="foo">
-        <fluent-text-input form="foo"></fluent-text-input>
+        <${tagName} form="foo"></${tagName}>
       </form>
     `);
 
@@ -562,7 +582,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="foo">
-        <fluent-text-input form="bar"></fluent-text-input>
+        <${tagName} form="bar"></${tagName}>
       </form>
     `);
 
@@ -578,7 +598,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
-        <fluent-text-input name="testinput"></fluent-text-input>
+        <${tagName} name="testinput"></${tagName}>
       </form>
     `);
 
@@ -599,7 +619,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
-        <fluent-text-input name="testinput"></fluent-text-input>
+        <${tagName} name="testinput"></${tagName}>
         <button type="submit">Submit</button>
       </form>
     `);
@@ -620,7 +640,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
-        <fluent-text-input name="testinput"></fluent-text-input>
+        <${tagName} name="testinput"></${tagName}>
         <button type="reset">Reset</button>
       </form>
     `);
@@ -641,7 +661,7 @@ test.describe('TextInput', () => {
 
         await fastPage.setTemplate(/* html */ `
           <form id="form" action="foo">
-            <fluent-text-input name="testinput"></fluent-text-input>
+            <${tagName} name="testinput"></${tagName}>
             <input name="extrainput" type="${type}" value="extravalue" />
           </form>
         `);
@@ -663,7 +683,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
-        <fluent-text-input name="testinput" required></fluent-text-input>
+        <${tagName} name="testinput" required></${tagName}>
       </form>
     `);
 
@@ -678,13 +698,41 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-text-input name="testinput" readonly></fluent-text-input>
+        <${tagName} name="testinput" readonly></${tagName}>
       </form>
     `);
 
     await control.press('Enter');
 
     expect(page.url()).toMatch(/foo/);
+  });
+
+  test('should only submit form once when Enter is pressed', async ({ fastPage }) => {
+    const { element, page } = fastPage;
+    const control = element.locator('input');
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <${tagName} name="testinput"></${tagName}>
+      </form>
+    `);
+
+    await form.evaluate(node => {
+      node.addEventListener('submit', evt => {
+        if (!node.dataset.count) {
+          node.dataset.count = '0';
+        }
+        const count = Number(node.dataset.count) + 1;
+        node.dataset.count = String(count);
+        evt.preventDefault();
+      });
+    });
+
+    await control.focus();
+    await page.keyboard.press('Enter');
+
+    await expect(form).toHaveAttribute('data-count', '1');
   });
 
   test('should allow comma-separated values when the `multiple` attribute is set and the `type` is "email"', async ({
@@ -696,7 +744,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form action="foo">
-        <fluent-text-input name="testinput" multiple type="email"></fluent-text-input>
+        <${tagName} name="testinput" multiple type="email"></${tagName}>
       </form>
     `);
 
@@ -748,7 +796,7 @@ test.describe('TextInput', () => {
 
     await fastPage.setTemplate(/* html */ `
       <form id="form" action="foo">
-        <fluent-text-input name="testinput"></fluent-text-input>
+        <${tagName} name="testinput"></${tagName}>
         <button type="reset">Reset</button>
       </form>
     `);
@@ -762,8 +810,34 @@ test.describe('TextInput', () => {
     await expect(control).toHaveValue('');
   });
 
+  test('should reset the value to the initial value when the form is reset and the `value` attribute was set pre-connection', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const control = element.locator('input');
+    const reset = page.locator('button');
+
+    await fastPage.setTemplate(/* html */ `
+      <form id="form" action="foo">
+        <${tagName} name="testinput" value="initial"></${tagName}>
+        <button type="reset">Reset</button>
+      </form>
+    `);
+
+    await expect(control).toHaveValue('initial');
+
+    await control.fill('hello');
+
+    await reset.click();
+
+    await expect(control).toHaveValue('initial');
+  });
+
   test('should change the `value` property when the `current-value` attribute changes', async ({ fastPage, page }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await element.evaluate(node => {
       node.setAttribute('current-value', 'foo');
@@ -775,6 +849,8 @@ test.describe('TextInput', () => {
   test('should change the `value` property when the `currentValue` property changes', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
+    await fastPage.setTemplate();
+
     await element.evaluate((node: TextInput) => {
       node.currentValue = 'foo';
     });
@@ -784,6 +860,8 @@ test.describe('TextInput', () => {
 
   test('should set the `current-value` attribute to match the `value` property', async ({ fastPage, page }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).not.toHaveAttribute('current-value');
 
@@ -796,6 +874,8 @@ test.describe('TextInput', () => {
 
   test('should set the `currentValue` property to match the `value` property', async ({ fastPage, page }) => {
     const { element } = fastPage;
+
+    await fastPage.setTemplate();
 
     await expect(element).toHaveJSProperty('currentValue', undefined);
 

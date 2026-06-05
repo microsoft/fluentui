@@ -2,6 +2,82 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Tue, 26 May 2026 09:39:31 GMT",
+      "tag": "@fluentui/react-portal_v9.8.13",
+      "version": "9.8.13",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b4c9c45153b593f9049d3d32f78d512823fa077a",
+            "comment": "revert: revert removal of Griffel dependency from usePortalMount #35994"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.26.15",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.26.4",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2026 14:21:09 GMT",
+      "tag": "@fluentui/react-portal_v9.8.12",
+      "version": "9.8.12",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "48ff10fe4f0fe4c1ab9999a2544d6d49740728f3",
+            "comment": "refactor: remove Griffel dependency from usePortalMountNode"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.26.14",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Feb 2026 13:32:24 GMT",
       "tag": "@fluentui/react-portal_v9.8.11",
       "version": "9.8.11",

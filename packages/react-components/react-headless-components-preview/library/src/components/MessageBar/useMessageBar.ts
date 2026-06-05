@@ -15,11 +15,11 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderMessageBar`.
  */
 export const useMessageBar = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
-  'use no memo';
-
   const state: MessageBarState = useMessageBarBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-layout'] = state.layout;
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = stringifyDataAttribute(state.intent);
 
   return state;

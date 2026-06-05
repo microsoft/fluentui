@@ -11,11 +11,11 @@ import { stringifyDataAttribute } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderLink`.
  */
 export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>): LinkState => {
-  'use no memo';
-
   const state: LinkState = useLinkBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
 
   return state;

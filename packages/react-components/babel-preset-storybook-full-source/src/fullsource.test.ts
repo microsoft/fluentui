@@ -11,9 +11,32 @@ pluginTester({
   },
   fixtures: fixturesDir,
   pluginOptions: {
-    '@fluentui/react-button': defaultDependencyReplace,
-    '@fluentui/react-menu': defaultDependencyReplace,
-    '@fluentui/react-link': defaultDependencyReplace,
+    importMappings: {
+      '@fluentui/react-button': defaultDependencyReplace,
+      '@fluentui/react-menu': defaultDependencyReplace,
+      '@fluentui/react-link': defaultDependencyReplace,
+    },
+    cssModules: true,
+  },
+  pluginName: PLUGIN_NAME,
+  plugin,
+});
+
+pluginTester({
+  babelOptions: {
+    presets: ['@babel/preset-react'],
+  },
+  fixtures: path.join(__dirname, '__fixtures__/storybook-stories-fullsource-with-tokens'),
+  pluginOptions: {
+    importMappings: {
+      '@fluentui/react-button': defaultDependencyReplace,
+    },
+    cssModules: {
+      tokensFilePath: path.join(
+        __dirname,
+        '__fixtures__/storybook-stories-fullsource-with-tokens/css-module-with-tokens/tokens.css',
+      ),
+    },
   },
   pluginName: PLUGIN_NAME,
   plugin,

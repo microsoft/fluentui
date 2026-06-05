@@ -38,8 +38,6 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  'use no memo';
-
   const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
@@ -69,8 +67,10 @@ export const useTreeItemLayout_unstable = (
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
+  // eslint-disable-next-line react-hooks/refs
   assertIsRefObject(treeItemRef);
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
+  // eslint-disable-next-line react-hooks/refs
   assertIsRefObject(subtreeRef);
 
   const setActionsVisibleIfNotFromSubtree = React.useCallback(

@@ -1,8 +1,172 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 01 Apr 2026 15:52:39 GMT and should not be manually modified.
+This log was last generated on Wed, 27 May 2026 11:18:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.74.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.1)
+
+Wed, 27 May 2026 11:18:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.0..@fluentui/react-components_v9.74.1)
+
+### Minor changes
+
+- `@fluentui/react-toast`
+  - feat: export toast base hooks and types ([PR #35914](https://github.com/microsoft/fluentui/pull/35914) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tags`
+  - fix: decouple useTagGroupBase_unstable from Tabster; export contexts. This is technically a breaking change, but the prior Tabster coupling was a programmatic mistake and not intended public behavior. If you run into issues, please bump to the next version. ([PR #36228](https://github.com/microsoft/fluentui/pull/36228) by vgenaev@gmail.com)
+
+## [9.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.0)
+
+Tue, 26 May 2026 09:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.8..@fluentui/react-components_v9.74.0)
+
+### Minor changes
+
+- `@fluentui/react-tags`
+  - feat: export contexts for headless ([PR #36229](https://github.com/microsoft/fluentui/pull/36229) by vgenaev@gmail.com)
+- `@fluentui/react-teaching-popover`
+  - feat: export base hooks ([PR #36200](https://github.com/microsoft/fluentui/pull/36200) by viktorgenaev@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: expose react-menu base hooks ([PR #36087](https://github.com/microsoft/fluentui/pull/36087) by vgenaev@gmail.com)
+- `@fluentui/react-motion`
+  - feat(react-motion): add replayKey prop to replay motion without remounting ([PR #36108](https://github.com/microsoft/fluentui/pull/36108) by robertpenner@microsoft.com)
+- `@fluentui/react-nav`
+  - feat: add base hooks and expose them ([PR #35812](https://github.com/microsoft/fluentui/pull/35812) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: add OverflowReorderObserver to recompute overflow when items are reordered via React state without a container resize ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: fix after broken release ([PR #36037](https://github.com/microsoft/fluentui/pull/36037) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - Make Card base hooks tabster-free; expose shouldRestrictTriggerAction on CardBaseProps ([PR #36004](https://github.com/microsoft/fluentui/pull/36004) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - feat: re-export motionSlot and presenceMotionSlot from @fluentui/react-motion ([PR #35922](https://github.com/microsoft/fluentui/pull/35922) by robertpenner@microsoft.com)
+  - feat: re-export OverflowReorderObserver from @fluentui/react-overflow ([PR #36231](https://github.com/microsoft/fluentui/pull/36231) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: expose inline drawer types and base hooks ([PR #36042](https://github.com/microsoft/fluentui/pull/36042) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: bump tabster to ^8.8.0 and keyborg to ^2.14.1 ([PR #36082](https://github.com/microsoft/fluentui/pull/36082) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tooltip`
+  - fix: dismiss Tooltip when the document becomes hidden (e.g. tab backgrounded or app switched on mobile) ([PR #36023](https://github.com/microsoft/fluentui/pull/36023) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-tree`
+  - fix(react-tree): support indentation for TreeItem levels greater than 10 via inline CSS variable fallback ([PR #36014](https://github.com/microsoft/fluentui/pull/36014) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-utilities`
+  - style: replace deprecated assertion syntax that causes issues to babel tsx ([PR #36185](https://github.com/microsoft/fluentui/pull/36185) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix(Menu): Menu item with expanded submenu should be highlighted ([PR #36098](https://github.com/microsoft/fluentui/pull/36098) by jukapsia@microsoft.com)
+  - fix: update useMenuTriggerBase hook signature ([PR #36237](https://github.com/microsoft/fluentui/pull/36237) by dmytrokirpa@microsoft.com)
+  - feat: add headless Menu components ([PR #36110](https://github.com/microsoft/fluentui/pull/36110) by vgenaev@gmail.com)
+  - chore: extract useMenuItemBase_unstable into a separate module ([PR #36234](https://github.com/microsoft/fluentui/pull/36234) by viktorgenaev@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: close Popover when focus escapes outside while trapFocus is enabled ([PR #35995](https://github.com/microsoft/fluentui/pull/35995) by petrduda@microsoft.com)
+- `@fluentui/react-portal`
+  - revert: revert removal of Griffel dependency from usePortalMount #35994 ([PR #36235](https://github.com/microsoft/fluentui/pull/36235) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - fix: avoid pulling griffel in CardHeader and CardPreview base hooks ([PR #36194](https://github.com/microsoft/fluentui/pull/36194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - refactor: move isSafeUrl to chart-utilities package and update imports ([PR #36206](https://github.com/microsoft/fluentui/pull/36206) by dmytrokirpa@microsoft.com)
+  - safeurl related bug fix ([PR #36121](https://github.com/microsoft/fluentui/pull/36121) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-combobox`
+  - fix(Option): when disabled, hover styles should not show ([PR #36077](https://github.com/microsoft/fluentui/pull/36077) by sarah.higley@microsoft.com)
+  - fix: use role attribute instead of classname for active descendant ([PR #36109](https://github.com/microsoft/fluentui/pull/36109) by dmytrokirpa@microsoft.com)
+
+## [9.73.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.8)
+
+Thu, 23 Apr 2026 14:20:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.73.7..@fluentui/react-components_v9.73.8)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - feat: add CollapseParams to the motion slot type ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- `@fluentui/react-toolbar`
+  - feat: expose base hooks for Toolbar components ([PR #35903](https://github.com/microsoft/fluentui/pull/35903) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - feat(react-message-bar): add useMessageBarBase_unstable hook ([PR #35908](https://github.com/microsoft/fluentui/pull/35908) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: expose motion params as direct props on motion slot types ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+  - fix(react-motion): apply MotionComponent type to presence definition ([PR #35952](https://github.com/microsoft/fluentui/pull/35952) by robertpenner@microsoft.com)
+- `@fluentui/react-dialog`
+  - feat: add ScaleParams to the motion slot type ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: update type for drawerMotion slot ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+- `@fluentui/react-accordion`
+  - feat: add CollapseParams to the motion slot type ([PR #36011](https://github.com/microsoft/fluentui/pull/36011) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: add focusgroupstart property to baseElementProperties ([PR #36020](https://github.com/microsoft/fluentui/pull/36020) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: Combobox now expands/collapses when clicking in the right padding area (the dead zone between the chevron and the right border) ([PR #36013](https://github.com/microsoft/fluentui/pull/36013) by copilot@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-toolbar`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: use subtle appearance for radio button by default ([PR #36022](https://github.com/microsoft/fluentui/pull/36022) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: export base hook types ([PR #35989](https://github.com/microsoft/fluentui/pull/35989) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-list`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-color-picker`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-context-selector`
+  - fix: rewrite useContextSelector to avoid React's eager-bailout pitfall on memoized consumers ([PR #36002](https://github.com/microsoft/fluentui/pull/36002) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: prevent spreading of custom props on html element ([PR #36017](https://github.com/microsoft/fluentui/pull/36017) by dmytrokirpa@microsoft.com)
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+- `@fluentui/react-accordion`
+  - perf: memoize context values in use*ContextValues hooks ([PR #36008](https://github.com/microsoft/fluentui/pull/36008) by olfedias@microsoft.com)
+  - fix: prevent keyboard focus from entering a collapsing panel ([PR #35960](https://github.com/microsoft/fluentui/pull/35960) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-spinner`
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: update Switch component to conditionally render CircleFilled in indicator ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: mitigate hidden sideEffects by explicitly using type imports and decoupling useDangerousNeverHidden from tabster import path ([PR #35933](https://github.com/microsoft/fluentui/pull/35933) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - refactor: remove Griffel dependency from usePortalMountNode ([PR #35994](https://github.com/microsoft/fluentui/pull/35994) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: add mising base hook export ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: drop unnecessary dependencies from base hooks ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - fix: add missing base hook export ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+  - fix(react-breadcrumb): wrong appearance applied by default to BreadcrumbButton ([PR #35970](https://github.com/microsoft/fluentui/pull/35970) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - fix: update types for render function ([PR #35972](https://github.com/microsoft/fluentui/pull/35972) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: isSafeUrl utility ([PR #35963](https://github.com/microsoft/fluentui/pull/35963) by vgenaev@gmail.com)
 
 ## [9.73.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.73.7)
 

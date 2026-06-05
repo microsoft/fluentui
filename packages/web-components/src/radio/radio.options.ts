@@ -1,3 +1,4 @@
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import { isCustomElement } from '../utils/typings.js';
 import type { Radio } from './radio.js';
@@ -28,3 +29,10 @@ export type { CheckboxSize as RadioSize } from '../checkbox/checkbox.options.js'
 export function isRadio(element?: Node | null, tagName: string = '-radio'): element is Radio {
   return isCustomElement(tagName)(element);
 }
+
+/**
+ * The tag name for the radio element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-radio` as const;

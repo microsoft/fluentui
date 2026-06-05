@@ -151,11 +151,12 @@ export const Column2 = (): JSXElement => {
   );
 };
 
+const MeetNowIcon = bundleIcon(MeetNowFilled, MeetNowRegular);
+const CalendarLtrIcon = bundleIcon(CalendarLtrFilled, CalendarLtrRegular);
+
 // We may use these later.
 export const DemoIcons = (): JSXElement => {
   const styles = useStyles();
-  const MeetNowIcon = bundleIcon(MeetNowFilled, MeetNowRegular);
-  const CalendarLtrIcon = bundleIcon(CalendarLtrFilled, CalendarLtrRegular);
   return (
     <div className={styles.icons}>
       <Badge size="medium" appearance="filled" icon={<CalendarLtrIcon />} />

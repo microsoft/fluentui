@@ -20,8 +20,6 @@ import { useDynamicVirtualizerPagination } from '../../hooks/useDynamicPaginatio
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  'use no memo';
-
   const contextState = useVirtualizerContextState_unstable(props.virtualizerContext);
   const {
     imperativeRef,
@@ -67,8 +65,10 @@ export function useVirtualizerScrollViewDynamic_unstable(
   const _imperativeVirtualizerRef = useMergedRefs(React.useRef<VirtualizerDataRef>(null), imperativeVirtualizerRef);
 
   const paginationRef = useDynamicVirtualizerPagination(
+    // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
     {
       axis,
+      // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
       progressiveItemSizes: _imperativeVirtualizerRef.current?.progressiveSizes,
       virtualizerLength,
       currentIndex: contextState?.contextIndex ?? 0,
@@ -78,7 +78,9 @@ export function useVirtualizerScrollViewDynamic_unstable(
 
   // Store the virtualizer length as a ref for imperative ref access
   const virtualizerLengthRef = React.useRef<number>(virtualizerLength);
+  // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
   if (virtualizerLengthRef.current !== virtualizerLength) {
+    // eslint-disable-next-line react-hooks/refs -- deprecated package, not worth refactoring
     virtualizerLengthRef.current = virtualizerLength;
   }
   const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef);
@@ -150,6 +152,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   }
 
   if (axis === 'horizontal') {
+    // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
     sizeTrackingArray = measureObject.widthArray;
   } else {
     sizeTrackingArray = measureObject.heightArray;
@@ -159,6 +162,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     // Auto-measuring is required
     React.Children.map(virtualizerState.virtualizedChildren, (child, index) => {
       if (React.isValidElement(child)) {
+        // eslint-disable-next-line react-hooks/immutability -- deprecated package, not worth refactoring
         virtualizerState.virtualizedChildren[index] = (
           <child.type
             {...(child.props as Record<string, unknown>)}

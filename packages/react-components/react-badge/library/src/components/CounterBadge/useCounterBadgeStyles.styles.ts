@@ -27,9 +27,8 @@ const useStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     counterBadgeClassNames.root,
     state.dot && styles.dot,
@@ -38,6 +37,7 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(counterBadgeClassNames.icon, state.icon.className);
   }
 

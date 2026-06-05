@@ -2,6 +2,127 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Wed, 27 May 2026 11:18:57 GMT",
+      "tag": "@fluentui/react-tags_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "c70f899a84e796058de43f17eb46d5445e7a5bbc",
+            "comment": "fix: decouple useTagGroupBase_unstable from Tabster; export contexts. This is technically a breaking change, but the prior Tabster coupling was a programmatic mistake and not intended public behavior. If you run into issues, please bump to the next version."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 May 2026 09:39:09 GMT",
+      "tag": "@fluentui/react-tags_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "bcabc7c47d9c9333de8931c64e773f0b1fe9e126",
+            "comment": "feat: export contexts for headless"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.17.12",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.11.2",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.3",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.26.15",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.26.4",
+            "commit": "116265d4dfcc45dfd984a8a8829318156a343ba7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Apr 2026 14:21:08 GMT",
+      "tag": "@fluentui/react-tags_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "none": [
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.17.11",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.11.1",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.2",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.26.14",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.26.3",
+            "commit": "e10e545835bcaf9e2d6861bc2a0399578768953e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2026 15:52:43 GMT",
       "tag": "@fluentui/react-tags_v9.8.0",
       "version": "9.8.0",

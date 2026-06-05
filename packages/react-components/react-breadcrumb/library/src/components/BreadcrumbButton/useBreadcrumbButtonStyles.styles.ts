@@ -110,8 +110,6 @@ const useStyles = makeStyles({
  * Apply styling to the BreadcrumbButton slots based on the state
  */
 export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
-  'use no memo';
-
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
@@ -120,6 +118,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     medium: styles.currentMedium,
     large: styles.currentLarge,
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     breadcrumbButtonClassNames.root,
     styles[state.size],
@@ -130,6 +129,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   );
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
   }
 

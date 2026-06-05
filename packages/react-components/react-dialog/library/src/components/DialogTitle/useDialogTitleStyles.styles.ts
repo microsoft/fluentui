@@ -65,12 +65,11 @@ export const useDialogTitleInternalStyles = makeResetStyles({
  * Apply styling to the DialogTitle slots based on the state
  */
 export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTitleState => {
-  'use no memo';
-
   const rootResetStyles = useRootResetStyles();
   const actionResetStyles = useActionResetStyles();
   const styles = useStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     dialogTitleClassNames.root,
     rootResetStyles,
@@ -79,6 +78,7 @@ export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTi
   );
 
   if (state.action) {
+    // eslint-disable-next-line react-hooks/immutability
     state.action.className = mergeClasses(dialogTitleClassNames.action, actionResetStyles, state.action.className);
   }
 

@@ -28,8 +28,6 @@ const useToasterStyles = makeStyles({
  * Apply styling to the Toaster slots based on the state
  */
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
-  'use no memo';
-
   const rootBaseClassName = useRootBaseClassName();
   const styles = useToasterStyles();
   const className = mergeClasses(
@@ -39,36 +37,42 @@ export const useToasterStyles_unstable = (state: ToasterState): ToasterState => 
     state.root.className,
   );
   if (state.bottomStart) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bottomStart.className = className;
     state.bottomStart.style ??= {};
     Object.assign(state.bottomStart.style, getPositionStyles(TOAST_POSITIONS.bottomStart, state.dir, state.offset));
   }
 
   if (state.bottomEnd) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bottomEnd.className = className;
     state.bottomEnd.style ??= {};
     Object.assign(state.bottomEnd.style, getPositionStyles(TOAST_POSITIONS.bottomEnd, state.dir, state.offset));
   }
 
   if (state.topStart) {
+    // eslint-disable-next-line react-hooks/immutability
     state.topStart.className = className;
     state.topStart.style ??= {};
     Object.assign(state.topStart.style, getPositionStyles(TOAST_POSITIONS.topStart, state.dir, state.offset));
   }
 
   if (state.topEnd) {
+    // eslint-disable-next-line react-hooks/immutability
     state.topEnd.className = className;
     state.topEnd.style ??= {};
     Object.assign(state.topEnd.style, getPositionStyles(TOAST_POSITIONS.topEnd, state.dir, state.offset));
   }
 
   if (state.top) {
+    // eslint-disable-next-line react-hooks/immutability
     state.top.className = className;
     state.top.style ??= {};
     Object.assign(state.top.style, getPositionStyles(TOAST_POSITIONS.top, state.dir, state.offset));
   }
 
   if (state.bottom) {
+    // eslint-disable-next-line react-hooks/immutability
     state.bottom.className = className;
     state.bottom.style ??= {};
     Object.assign(state.bottom.style, getPositionStyles(TOAST_POSITIONS.bottom, state.dir, state.offset));

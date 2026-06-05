@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add base hooks/types for headless composition",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}

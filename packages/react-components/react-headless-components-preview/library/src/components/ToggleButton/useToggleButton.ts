@@ -14,14 +14,16 @@ export const useToggleButton = (
   props: ToggleButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ToggleButtonState => {
-  'use no memo';
-
   const state: ToggleButtonState = useToggleButtonBase_unstable(props, ref);
 
   // Set data attributes for disabled, disabledFocusable, iconOnly, and checked states to simplify styling of these states.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-checked'] = stringifyDataAttribute(state.checked);
 
   return state;

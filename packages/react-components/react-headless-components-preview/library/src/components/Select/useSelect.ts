@@ -15,11 +15,10 @@ import { stringifyDataAttribute } from '../../utils';
  * @param ref - reference to root HTMLSelectElement
  */
 export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  'use no memo';
-
   const state: SelectState = useSelectBase_unstable(props, ref);
 
   // Set data attribute for disabled state to simplify styling.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = stringifyDataAttribute(state.select.disabled);
 
   return state;

@@ -97,19 +97,20 @@ const useMultilineStyles = makeStyles({
  * Apply styling to the MenuItemSwitch slots based on the state
  */
 export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): MenuItemSwitchState => {
-  'use no memo';
-
   const { checked, subText } = state;
   const multiline = !!subText;
   const switchIndicatorStyles = useSwitchIndicatorStyles();
   const switchIndicatorBaseStyles = useSwitchIndicatorBaseClassName();
   const multilineStyles = useMultilineStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(menuItemSwitchClassNames.root, state.root.className);
   if (state.content) {
+    // eslint-disable-next-line react-hooks/immutability
     state.content.className = mergeClasses(menuItemSwitchClassNames.content, state.content.className);
   }
 
   if (state.secondaryContent) {
+    // eslint-disable-next-line react-hooks/immutability
     state.secondaryContent.className = mergeClasses(
       menuItemSwitchClassNames.secondaryContent,
       state.secondaryContent.className,
@@ -117,14 +118,17 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
   }
 
   if (state.icon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = mergeClasses(menuItemSwitchClassNames.icon, state.icon.className);
   }
 
   if (state.subText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.subText.className = mergeClasses(menuItemSwitchClassNames.subText, state.subText.className);
   }
 
   if (state.switchIndicator) {
+    // eslint-disable-next-line react-hooks/immutability
     state.switchIndicator.className = mergeClasses(
       menuItemSwitchClassNames.switchIndicator,
       switchIndicatorBaseStyles,
@@ -145,6 +149,7 @@ export const useMenuItemSwitchStyles_unstable = (state: MenuItemSwitchState): Me
     checkmark: undefined,
     submenuIndicator: undefined,
     hasSubmenu: false,
+    submenuOpen: false,
     persistOnClick: true,
   });
 

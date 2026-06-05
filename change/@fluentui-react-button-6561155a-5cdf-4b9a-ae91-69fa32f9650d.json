@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update types for render function",
-  "packageName": "@fluentui/react-button",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

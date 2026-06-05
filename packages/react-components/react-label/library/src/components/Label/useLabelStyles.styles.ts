@@ -56,9 +56,8 @@ const useStyles = makeStyles({
  * Apply styling to the Label slots based on the state
  */
 export const useLabelStyles_unstable = (state: LabelState): LabelState => {
-  'use no memo';
-
   const styles = useStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     labelClassNames.root,
     styles.root,
@@ -69,6 +68,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
   );
 
   if (state.required) {
+    // eslint-disable-next-line react-hooks/immutability
     state.required.className = mergeClasses(
       labelClassNames.required,
       styles.required,

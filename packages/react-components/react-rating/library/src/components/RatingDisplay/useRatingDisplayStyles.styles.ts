@@ -52,15 +52,15 @@ const useLabelStyles = makeStyles({
  * Apply styling to the RatingDisplay slots based on the state
  */
 export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
-  'use no memo';
-
   const { size } = state;
   const rootClassName = useRootClassName();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(ratingDisplayClassNames.root, rootClassName, state.root.className);
   const labelClassName = useLabelClassName();
   const labelStyles = useLabelStyles();
 
   if (state.valueText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.valueText.className = mergeClasses(
       ratingDisplayClassNames.valueText,
       labelClassName,
@@ -71,6 +71,7 @@ export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): Rati
     );
   }
   if (state.countText) {
+    // eslint-disable-next-line react-hooks/immutability
     state.countText.className = mergeClasses(
       ratingDisplayClassNames.countText,
       labelClassName,

@@ -220,14 +220,13 @@ const useTextareaResizeStyles = makeStyles({
  * Apply styling to the Textarea slots based on the state
  */
 export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
-  'use no memo';
-
   const { size, appearance, resize } = state;
   const disabled = state.textarea.disabled;
   const invalid = `${state.textarea['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     textareaClassNames.root,
     rootStyles.base,
@@ -242,6 +241,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
 
   const textareaStyles = useTextareaStyles();
   const textareaResizeStyles = useTextareaResizeStyles();
+  // eslint-disable-next-line react-hooks/immutability
   state.textarea.className = mergeClasses(
     textareaClassNames.textarea,
     textareaStyles.base,

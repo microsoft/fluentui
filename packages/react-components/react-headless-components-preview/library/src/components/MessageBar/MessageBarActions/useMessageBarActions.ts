@@ -18,11 +18,11 @@ export const useMessageBarActions = (
   props: MessageBarActionsProps,
   ref: React.Ref<HTMLDivElement>,
 ): MessageBarActionsState => {
-  'use no memo';
-
   const state: MessageBarActionsState = useMessageBarActions_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-layout'] = state.layout;
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-has-actions'] = stringifyDataAttribute(state.hasActions);
 
   return state;

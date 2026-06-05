@@ -10,11 +10,11 @@ import type { TabListProps, TabListState } from './TabList.types';
  * The returned state can be modified with hooks before being passed to `renderTabList`.
  */
 export const useTabList = (props: TabListProps, ref: React.Ref<HTMLElement>): TabListState => {
-  'use no memo';
-
   const state: TabListState = useTabListBase_unstable(props, ref);
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.focusgroup = state.vertical ? 'tablist block wrap no-memory' : 'tablist inline wrap no-memory';
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-orientation'] = state.vertical ? 'vertical' : 'horizontal';
 
   return state;

@@ -11,11 +11,10 @@ import { stringifyDataAttribute } from '../../../utils';
  * The returned state can be modified with hooks before being passed to `renderToolbarGroup`.
  */
 export const useToolbarGroup = (props: ToolbarGroupProps, ref: React.Ref<HTMLDivElement>): ToolbarGroupState => {
-  'use no memo';
-
   const state: ToolbarGroupState = useToolbarGroup_unstable(props, ref);
 
   // Set data-vertical based on the toolbar context orientation.
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
 
   return state;

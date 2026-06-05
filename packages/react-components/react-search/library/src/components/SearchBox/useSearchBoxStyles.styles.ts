@@ -113,8 +113,6 @@ const useDismissStyles = makeStyles({
  * Apply styling to the SearchBox slots based on the state
  */
 export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxState => {
-  'use no memo';
-
   const { disabled, focused, size } = state;
 
   const rootStyles = useRootStyles();
@@ -123,12 +121,14 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const dismissClassName = useDismissClassName();
   const dismissStyles = useDismissStyles();
 
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     searchBoxClassNames.root,
     rootStyles[size],
     !focused && rootStyles.unfocusedNoContentAfter,
     state.root.className,
   );
+  // eslint-disable-next-line react-hooks/immutability
   state.input.className = mergeClasses(
     searchBoxClassNames.input,
     rootStyles.input,
@@ -137,6 +137,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   );
 
   if (state.dismiss) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismiss.className = mergeClasses(
       searchBoxClassNames.dismiss,
       dismissClassName,
@@ -148,10 +149,12 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   }
 
   if (state.contentBefore) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentBefore.className = mergeClasses(searchBoxClassNames.contentBefore, state.contentBefore.className);
   }
 
   if (state.contentAfter) {
+    // eslint-disable-next-line react-hooks/immutability
     state.contentAfter.className = mergeClasses(
       searchBoxClassNames.contentAfter,
       contentAfterStyles.contentAfter,
@@ -161,6 +164,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
       state.contentAfter.className,
     );
   } else if (state.dismiss) {
+    // eslint-disable-next-line react-hooks/immutability
     state.dismiss.className = mergeClasses(state.dismiss.className, contentAfterStyles.contentAfter);
   }
 

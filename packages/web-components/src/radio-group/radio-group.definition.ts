@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './radio-group.options.js';
 import { RadioGroup } from './radio-group.js';
 import { styles } from './radio-group.styles.js';
 import { template } from './radio-group.template.js';
@@ -12,7 +12,7 @@ import { template } from './radio-group.template.js';
  * HTML Element: \<fluent-radio-group\>
  */
 export const definition = RadioGroup.compose({
-  name: `${FluentDesignSystem.prefix}-radio-group`,
+  name: tagName,
   template,
   styles,
 });

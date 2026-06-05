@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { tagName } from './tree.options.js';
 import { Tree } from './tree.js';
 import { styles as treeStyle } from './tree.styles.js';
 import { template as treeTemplate } from './tree.template.js';
@@ -10,7 +10,7 @@ import { template as treeTemplate } from './tree.template.js';
  * HTML Element: \<fluent-tree\>
  */
 export const definition = Tree.compose({
-  name: `${FluentDesignSystem.prefix}-tree`,
+  name: tagName,
   template: treeTemplate,
   styles: treeStyle,
 });

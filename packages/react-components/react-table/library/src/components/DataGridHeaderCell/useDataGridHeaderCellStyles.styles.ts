@@ -16,20 +16,22 @@ export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlot
  * Apply styling to the DataGridHeaderCell slots based on the state
  */
 export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellState): DataGridHeaderCellState => {
-  'use no memo';
-
   useTableHeaderCellStyles_unstable(state);
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(dataGridHeaderCellClassNames.root, state.root.className);
 
   if (state.button) {
+    // eslint-disable-next-line react-hooks/immutability
     state.button.className = mergeClasses(dataGridHeaderCellClassNames.button, state.button.className);
   }
 
   if (state.sortIcon) {
+    // eslint-disable-next-line react-hooks/immutability
     state.sortIcon.className = mergeClasses(dataGridHeaderCellClassNames.sortIcon, state.sortIcon.className);
   }
 
   if (state.aside) {
+    // eslint-disable-next-line react-hooks/immutability
     state.aside.className = mergeClasses(dataGridHeaderCellClassNames.aside, state.aside.className);
   }
 

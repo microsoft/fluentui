@@ -25,12 +25,11 @@ export const tableBodyClassNames: SlotClassNames<TableBodySlots> = {
  * Apply styling to the TableBody slots based on the state
  */
 export const useTableBodyStyles_unstable = (state: TableBodyState): TableBodyState => {
-  'use no memo';
-
   const layoutStyles = {
     table: useTableLayoutStyles(),
     flex: useFlexLayoutStyles(),
   };
+  // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(
     tableBodyClassName,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,

@@ -6,7 +6,7 @@ import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { NavItemProps, NavItemState } from './NavItem.types';
+import type { NavItemBaseState, NavItemProps, NavItemState } from './NavItem.types';
 
 /**
  * Create the state required to render NavItem.
@@ -21,9 +21,29 @@ export const useNavItem_unstable = (
   props: NavItemProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): NavItemState => {
+  const { density = 'medium' } = useNavContext_unstable();
+  const state = useNavItemBase_unstable(props, ref);
+
+  return {
+    ...state,
+    density,
+  };
+};
+
+/**
+ * NavItemBaseState is the base state used in rendering NavItem,
+ * excluding any design-related properties such as `density`.
+ *
+ * @param props - props from this instance of NavItem
+ * @param ref - reference to root HTMLAnchorElement of NavItem
+ */
+export const useNavItemBase_unstable = (
+  props: NavItemProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): NavItemBaseState => {
   const { onClick, value, icon, as, href } = props;
 
-  const { selectedValue, onRegister, onUnregister, onSelect, density = 'medium' } = useNavContext_unstable();
+  const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
   const rootElementType = as || (href ? 'a' : 'button');
 
@@ -77,6 +97,5 @@ export const useNavItem_unstable = (
     }),
     selected,
     value,
-    density,
   };
 };

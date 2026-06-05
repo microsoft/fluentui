@@ -1,6 +1,8 @@
-import type { Direction } from '@microsoft/fast-web-utilities';
-import { Orientation } from '@microsoft/fast-web-utilities';
-import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
+import type { Direction } from '../utils/direction.js';
+import { Orientation } from '../utils/orientation.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import type { ValuesOf } from '../utils/typings.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { Slider } from './slider.js';
 
 /**
@@ -60,3 +62,10 @@ export interface SliderConfiguration {
 export type SliderOptions = {
   thumb?: StaticallyComposableHTML<Slider>;
 };
+
+/**
+ * The tag name for the slider element.
+ *
+ * @public
+ */
+export const tagName = `${FluentDesignSystem.prefix}-slider` as const;
