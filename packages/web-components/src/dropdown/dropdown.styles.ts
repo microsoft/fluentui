@@ -59,7 +59,6 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    anchor-name: --dropdown-trigger;
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     cursor: pointer;

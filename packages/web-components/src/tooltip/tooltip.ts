@@ -256,7 +256,7 @@ export class Tooltip extends FASTElement {
       #${this.id} {
         inset: unset;
         position-anchor: ${anchorName};
-        position: absolute;
+        position: fixed;
         ${directionCSS}
         ${alignmentCSS}
       }
