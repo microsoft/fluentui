@@ -1,0 +1,114 @@
+import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter } from '../formatter';
+import type { OutputFormat } from '../types';
+
+/** Render a fixed sequence of formatter calls and capture the emitted lines. */
+function render(format: OutputFormat, body: (f: Formatter) => void): string {
+  const lines: string[] = [];
+  const f = createFormatter(format, line => lines.push(line));
+  body(f);
+  return lines.join('\n');
+}
+
+describe('createFormatter', () => {
+  it('returns a formatter whose `format` matches the requested format', () => {
+    expect(createFormatter('cli').format).toBe('cli');
+    expect(createFormatter('md').format).toBe('md');
+    expect(createFormatter('html').format).toBe('html');
+  });
+});
+
+describe('escapeHtml', () => {
+  it('escapes the five HTML-sensitive characters', () => {
+    expect(escapeHtml(`<a href="x" title='y'> & </a>`)).toBe(
+      '&lt;a href=&quot;x&quot; title=&#39;y&#39;&gt; &amp; &lt;/a&gt;',
+    );
+  });
+});
+
+describe('CliFormatter', () => {
+  it('renders headings, tables and notes as aligned plain text', () => {
+    const out = render('cli', f => {
+      f.heading(1, 'Title');
+      f.heading(3, 'Section');
+      f.table(['Name', 'Count'], [['alpha', 1]]);
+      f.line('- **bold** item');
+      f.line('> a note');
+    });
+
+    expect(out).toMatchInlineSnapshot(`
+      "Title
+      ═════
+      ▸ Section
+      Name   Count
+      ─────  ─────
+      alpha  1
+      - bold item
+        a note"
+    `);
+  });
+});
+
+describe('MarkdownFormatter', () => {
+  it('renders GitHub-flavored markdown', () => {
+    const out = render('md', f => {
+      f.heading(2, 'Section');
+      f.table(['Name', 'Count'], [['alpha', 1]]);
+      f.line('- **bold** item');
+    });
+
+    expect(out).toMatchInlineSnapshot(`
+      "## Section
+      | Name | Count |
+      |------|-------|
+      | alpha | 1 |
+      - **bold** item"
+    `);
+  });
+});
+
+describe('HtmlFormatter', () => {
+  it('renders HTML elements with escaping and inline emphasis', () => {
+    const out = render('html', f => {
+      f.heading(2, 'Section');
+      f.table(['Name', 'Count'], [['<alpha>', 1]]);
+      f.line('- **bold** & `code`');
+      f.line('> a note');
+      f.code('<div>raw</div>');
+    });
+
+    expect(out).toMatchInlineSnapshot(`
+      "<h2>Section</h2>
+      <table><thead><tr><th>Name</th><th>Count</th></tr></thead><tbody><tr><td>&lt;alpha&gt;</td><td>1</td></tr></tbody></table>
+      <div class=\\"li\\" style=\\"padding-left:0.4rem\\"><strong>bold</strong> &amp; <code>code</code></div>
+      <p class=\\"note\\">a note</p>
+      <pre class=\\"code\\"><code>&lt;div&gt;raw&lt;/div&gt;</code></pre>"
+    `);
+  });
+
+  it('renders details blocks', () => {
+    const out = render('html', f => {
+      f.details('More', () => {
+        f.heading(4, 'Inner');
+      });
+    });
+
+    expect(out).toMatchInlineSnapshot(`
+      "<details><summary>More</summary>
+      <h4>Inner</h4>
+      </details>"
+    `);
+  });
+});
+
+describe('renderHtmlDocument', () => {
+  it('wraps body content in a self-contained document with an escaped title', () => {
+    const doc = renderHtmlDocument('A & B', '<p>hi</p>');
+
+    expect(doc.startsWith('<!DOCTYPE html>')).toBe(true);
+    expect(doc).toContain('<title>A &amp; B</title>');
+    expect(doc).toContain('<h1 class="banner">A &amp; B</h1>');
+    expect(doc).toContain('<style>');
+    expect(doc).toContain('<p>hi</p>');
+    expect(doc.trimEnd().endsWith('</html>')).toBe(true);
+  });
+});

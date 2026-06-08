@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
 import { closeScanLog, openScanLog, validatePath } from '../commands/shared';
+import { createFormatter } from '../formatter';
 
 describe('validatePath', () => {
   let tempDir: string;
@@ -79,26 +80,35 @@ describe('scan log wrapper helpers', () => {
   });
 
   it('openScanLog emits <details> + <summary> + blank line', () => {
-    openScanLog('md', 'Scan & compile log');
+    openScanLog(createFormatter('md'), 'Scan & compile log');
     expect(logs).toEqual(['<details>', '<summary>📋 Scan & compile log</summary>', '']);
   });
 
   it('closeScanLog emits blank line + </details> + blank line', () => {
-    closeScanLog('md');
+    closeScanLog(createFormatter('md'));
     expect(logs).toEqual(['', '</details>', '']);
   });
 
   it('openScanLog/closeScanLog emit a plain titled header in cli format', () => {
-    openScanLog('cli', 'Scan & compile log');
-    closeScanLog('cli');
+    openScanLog(createFormatter('cli'), 'Scan & compile log');
+    closeScanLog(createFormatter('cli'));
     expect(logs).toEqual(['📋 Scan & compile log', '─'.repeat('Scan & compile log'.length + 3), '', '']);
   });
 
+  it('openScanLog/closeScanLog emit a collapsible scan-log block in html format', () => {
+    openScanLog(createFormatter('html'), 'Scan & compile log');
+    closeScanLog(createFormatter('html'));
+    expect(logs).toEqual([
+      '<details class="scan-log"><summary>📋 Scan &amp; compile log</summary><div class="scan-body">',
+      '</div></details>',
+    ]);
+  });
+
   it('preserves any content logged between open and close', () => {
-    openScanLog('md', 'Title');
+    openScanLog(createFormatter('md'), 'Title');
     console.log('## Scanning: /foo');
     console.log('  [CompileSuccess] /foo/Bar.tsx fn@1:1');
-    closeScanLog('md');
+    closeScanLog(createFormatter('md'));
 
     expect(logs).toEqual([
       '<details>',
@@ -114,7 +124,7 @@ describe('scan log wrapper helpers', () => {
 
   it('emits a blank line after <summary> so GFM renders the inner content as markdown', () => {
     // Regression guard: an empty line MUST follow <summary> or GFM treats the rest as raw HTML.
-    openScanLog('md', 'x');
+    openScanLog(createFormatter('md'), 'x');
     expect(logs[1]).toMatch(/^<summary>/);
     expect(logs[2]).toBe('');
   });

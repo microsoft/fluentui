@@ -181,7 +181,7 @@ react-compiler-analyzer analyze ./library/src --annotate all
 | Argument / Flag  | Type       | Default | Description                                                                                                                        |
 | ---------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `<paths..>`      | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
-| `--format`       | `string`   | `"cli"` | Output format: `cli` (terminal-friendly plain text) or `md` (GitHub-flavored markdown)                                             |
+| `--format`       | `string`   | `"cli"` | Output format: `cli` (terminal-friendly plain text), `md` (GitHub-flavored markdown), or `html` (styled document)                  |
 | `--verbose`      | `boolean`  | `false` | Print per-function detail tables                                                                                                   |
 | `--full-reasons` | `boolean`  | `false` | Show full compiler error messages                                                                                                  |
 | `--concurrency`  | `number`   | `10`    | Max parallel file processing                                                                                                       |
@@ -193,15 +193,18 @@ _(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `
 
 Controls how reports are rendered:
 
-| Value | Output                                                                                                  |
-| ----- | ------------------------------------------------------------------------------------------------------- |
-| `cli` | **Default.** Terminal-friendly plain text — aligned columns, plain headings, no markdown/HTML noise.    |
-| `md`  | GitHub-flavored markdown — pipe tables, `##` headings, and `<details>` blocks suitable for PR comments. |
+| Value  | Output                                                                                                  |
+| ------ | ------------------------------------------------------------------------------------------------------- |
+| `cli`  | **Default.** Terminal-friendly plain text — aligned columns, plain headings, no markdown/HTML noise.    |
+| `md`   | GitHub-flavored markdown — pipe tables, `##` headings, and `<details>` blocks suitable for PR comments. |
+| `html` | Self-contained styled HTML document — embedded CSS, real tables, and a collapsible scan log.            |
 
-Pass `--format md` when capturing output for a markdown destination (e.g. posting to a PR or a `.md` file):
+Pass `--format md` when capturing output for a markdown destination (e.g. posting to a PR), or `--format html`
+for a shareable report you can open in a browser:
 
 ```bash
 react-compiler-analyzer analyze ./library/src --format md > coverage-report.md
+react-compiler-analyzer analyze ./library/src --format html > coverage-report.html
 ```
 
 ## Nx integration
@@ -242,7 +245,7 @@ src/
 ├── coverage-fixer.ts     — Insert 'use memo' annotations (manual-memo or all compilable)
 ├── reporter.ts           — Directive reporting (full report + compact summary for analyze)
 ├── coverage-reporter.ts  — Coverage reporting (stats, per-function, migration candidates)
-├── formatter.ts          — Output rendering abstraction (cli plain text / md markdown)
+├── formatter.ts          — Output rendering abstraction (cli plain text / md markdown / html document)
 ├── patterns.ts           — Shared regex patterns for directive detection
 ├── types.ts              — Shared TypeScript interfaces
 └── index.ts              — Package entry (CLI-only, no public API)

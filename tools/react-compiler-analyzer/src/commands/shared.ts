@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
 
+import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter } from '../formatter';
 import type { CompilationMode, OutputFormat } from '../types';
 
 export const DEFAULT_EXCLUDE = [
@@ -55,8 +56,8 @@ export function sharedOptions<T>(yarg: Argv<T>) {
     })
     .option('format', {
       type: 'string' as const,
-      describe: 'Output format: cli (terminal-friendly) or md (GitHub-flavored markdown)',
-      choices: ['cli', 'md'] as const,
+      describe: 'Output format: cli (terminal-friendly), md (GitHub-flavored markdown), or html (styled document)',
+      choices: ['cli', 'md', 'html'] as const,
       default: 'cli' as OutputFormat,
     });
 }
@@ -99,30 +100,80 @@ export function validateConcurrency(concurrency: number): void {
  *
  * In `md` format this is a `<details>` block. The blank line after `<summary>`
  * is required so GitHub-flavored markdown renders the inner content as markdown
- * (headings, lists) instead of inline HTML. In `cli` format it is a simple
- * titled header.
+ * (headings, lists) instead of inline HTML. In `html` format it is a collapsible
+ * `<details class="scan-log">` element; in `cli` format a simple titled header.
+ *
+ * All markers are emitted through the formatter sink (`f.raw`) so that, under `html`,
+ * they bypass the raw-diagnostics capture in {@link withReportOutput}.
  */
-export function openScanLog(format: OutputFormat, title: string): void {
-  if (format === 'md') {
-    console.log('<details>');
-    console.log(`<summary>📋 ${title}</summary>`);
-    console.log('');
+export function openScanLog(f: Formatter, title: string): void {
+  if (f.format === 'md') {
+    f.raw('<details>');
+    f.raw(`<summary>📋 ${title}</summary>`);
+    f.raw('');
+  } else if (f.format === 'html') {
+    f.raw(`<details class="scan-log"><summary>📋 ${escapeHtml(title)}</summary><div class="scan-body">`);
   } else {
-    console.log(`📋 ${title}`);
-    console.log('─'.repeat(title.length + 3));
-    console.log('');
+    f.raw(`📋 ${title}`);
+    f.raw('─'.repeat(title.length + 3));
+    f.raw('');
   }
 }
 
 /**
  * Close the section opened by `openScanLog()`.
  */
-export function closeScanLog(format: OutputFormat): void {
-  if (format === 'md') {
-    console.log('');
-    console.log('</details>');
-    console.log('');
+export function closeScanLog(f: Formatter): void {
+  if (f.format === 'md') {
+    f.raw('');
+    f.raw('</details>');
+    f.raw('');
+  } else if (f.format === 'html') {
+    f.raw('</div></details>');
   } else {
-    console.log('');
+    f.raw('');
   }
+}
+
+/**
+ * Run a report-producing command body with output wired up for the requested `format`,
+ * then exit with the code it returns.
+ *
+ * For `cli`/`md` the formatter writes straight to stdout (with the `━━ title ━━` banner).
+ * For `html` everything is buffered — both formatter output and the raw `console.log`
+ * diagnostics emitted by the compiler/discovery during scanning — then injected once into a
+ * standalone HTML document. Raw diagnostics are HTML-escaped and wrapped so they remain valid
+ * inside the scan-log block; formatter output (which already emits valid HTML) is left intact.
+ */
+export async function withReportOutput(
+  format: OutputFormat,
+  title: string,
+  run: (f: Formatter) => Promise<number>,
+): Promise<void> {
+  if (format !== 'html') {
+    const f = createFormatter(format);
+    f.raw(`━━ ${title} ━━`);
+    f.raw('');
+    process.exit(await run(f));
+    return;
+  }
+
+  const buffer: string[] = [];
+  const originalLog = console.log;
+  // Capture raw compiler/discovery diagnostics (escaped) so they stay valid inside the scan log.
+  console.log = (...args: unknown[]) => {
+    buffer.push(`<div class="log-line">${escapeHtml(args.map(String).join(' '))}</div>`);
+  };
+
+  let code = 0;
+  try {
+    // Formatter output goes straight to the buffer as valid HTML (not escaped again).
+    const f = createFormatter('html', line => buffer.push(line));
+    code = await run(f);
+  } finally {
+    console.log = originalLog;
+  }
+
+  console.log(renderHtmlDocument(title, buffer.join('\n')));
+  process.exit(code);
 }
