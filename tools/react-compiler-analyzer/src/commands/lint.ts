@@ -4,8 +4,9 @@ import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyze
 import { compileFiles } from '../compiler';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
+import { createFormatter } from '../formatter';
 import { printReport, printSummary } from '../reporter';
-import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
+import type { CompilationMode, DirectiveAnalysis, FileEntry, OutputFormat } from '../types';
 import { closeScanLog, openScanLog, sharedOptions, validateConcurrency, validatePaths } from './shared';
 
 type LintArgv = {
@@ -16,6 +17,7 @@ type LintArgv = {
   exclude: string[];
   fix: boolean;
   mode: CompilationMode;
+  format: OutputFormat;
 };
 
 export const lintCommand: CommandModule<{}, LintArgv> = {
@@ -31,30 +33,35 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
     const resolvedPaths = validatePaths(argv.paths);
     validateConcurrency(argv.concurrency);
 
-    console.log('━━ React Compiler Lint ━━\n');
+    const f = createFormatter(argv.format);
 
-    openScanLog('Scan & compile log');
+    f.line('━━ React Compiler Lint ━━');
+    f.blank();
+
+    openScanLog(argv.format, 'Scan & compile log');
 
     const files: FileEntry[] = [];
 
     for (const resolvedPath of resolvedPaths) {
       const packageName = await findPackageName(resolvedPath);
 
-      console.log(`## Scanning: ${resolvedPath}`);
-      console.log(`   Package: ${packageName}`);
-      console.log(`   Mode: ${argv.mode}\n`);
+      f.heading(2, `Scanning: ${resolvedPath}`);
+      f.line(`   Package: ${packageName}`);
+      f.line(`   Mode: ${argv.mode}`);
+      f.blank();
 
       const discovered = await discoverFilesWithDirectives(resolvedPath, packageName, argv.exclude, argv.verbose);
       files.push(...discovered);
     }
 
     if (files.length === 0) {
-      closeScanLog();
-      console.log('No files with directives found.');
+      closeScanLog(argv.format);
+      f.line('No files with directives found.');
       process.exit(0);
     }
 
-    console.log(`Files with directives: ${files.length}\n`);
+    f.line(`Files with directives: ${files.length}`);
+    f.blank();
 
     // Single compilation pass for all directive files
     const compilationResults = await compileFiles(files, {
@@ -73,11 +80,11 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
       results.push(...(await analyzeNoMemoDirectives(compiled, argv.mode, argv.verbose)));
     }
 
-    closeScanLog();
+    closeScanLog(argv.format);
 
     const workspaceRoot = process.cwd();
-    printReport(results, workspaceRoot, argv['full-reasons']);
-    printSummary(results);
+    printReport(f, results, workspaceRoot, argv['full-reasons']);
+    printSummary(f, results);
 
     if (argv.fix) {
       const fixable = results.filter(
@@ -87,7 +94,7 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
           r.status === 'conflicting',
       );
       if (fixable.length > 0) {
-        console.log('Applying fixes...');
+        f.line('Applying fixes...');
         const fixResult = await applyFixes(results);
         const parts: string[] = [];
         if (fixResult.directivesRemoved > 0) {
@@ -96,9 +103,11 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
         if (fixResult.directivesJustified > 0) {
           parts.push(`${fixResult.directivesJustified} active directive(s) annotated with // justified:`);
         }
-        console.log(`Fixed: ${parts.join(', ')} across ${fixResult.filesModified} file(s).\n`);
+        f.line(`Fixed: ${parts.join(', ')} across ${fixResult.filesModified} file(s).`);
+        f.blank();
       } else {
-        console.log('Nothing to fix.\n');
+        f.line('Nothing to fix.');
+        f.blank();
       }
     }
 

@@ -5,7 +5,8 @@ import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
 import { discoverAllFiles, findPackageName } from '../discovery';
-import type { AnnotateMode, CompilationMode, FileEntry } from '../types';
+import { createFormatter } from '../formatter';
+import type { AnnotateMode, CompilationMode, FileEntry, OutputFormat } from '../types';
 import { closeScanLog, openScanLog, sharedOptions, validateConcurrency, validatePaths } from './shared';
 
 type AnalyzeArgv = {
@@ -15,6 +16,7 @@ type AnalyzeArgv = {
   'full-reasons': boolean;
   exclude: string[];
   mode: CompilationMode;
+  format: OutputFormat;
   annotate: AnnotateMode | undefined;
 };
 
@@ -32,30 +34,35 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
     const resolvedPaths = validatePaths(argv.paths);
     validateConcurrency(argv.concurrency);
 
-    console.log('━━ React Compiler Analysis ━━\n');
+    const f = createFormatter(argv.format);
 
-    openScanLog('Scan & compile log');
+    f.line('━━ React Compiler Analysis ━━');
+    f.blank();
+
+    openScanLog(argv.format, 'Scan & compile log');
 
     const files: FileEntry[] = [];
 
     for (const resolvedPath of resolvedPaths) {
       const packageName = await findPackageName(resolvedPath);
 
-      console.log(`## Scanning: ${resolvedPath}`);
-      console.log(`   Package: ${packageName}`);
-      console.log(`   Mode: ${argv.mode}\n`);
+      f.heading(2, `Scanning: ${resolvedPath}`);
+      f.line(`   Package: ${packageName}`);
+      f.line(`   Mode: ${argv.mode}`);
+      f.blank();
 
       const discovered = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
       files.push(...discovered);
     }
 
     if (files.length === 0) {
-      closeScanLog();
-      console.log('No TypeScript files found.');
+      closeScanLog(argv.format);
+      f.line('No TypeScript files found.');
       process.exit(0);
     }
 
-    console.log(`Files to analyze: ${files.length}\n`);
+    f.line(`Files to analyze: ${files.length}`);
+    f.blank();
 
     // Single compilation pass for all files
     const compilationResults = await compileFiles(files, {
@@ -64,28 +71,31 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       compilationMode: argv.mode,
     });
 
-    closeScanLog();
+    closeScanLog(argv.format);
 
     // Derive coverage from compilation results
     const coverageResults = compilationResults.flatMap(deriveCoverage);
 
     const workspaceRoot = process.cwd();
-    printCoverageReport(coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
-    printMigrationCandidates(coverageResults, workspaceRoot);
-    printCoverageSummary(coverageResults, argv.verbose);
+    printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
+    printMigrationCandidates(f, coverageResults, workspaceRoot);
+    printCoverageSummary(f, coverageResults, argv.verbose);
 
     if (argv.annotate) {
       const outcome = await applyAnnotations(coverageResults, argv.annotate);
       if (outcome.functionsAnnotated > 0) {
-        console.log(
-          `\n✓ Annotated ${outcome.functionsAnnotated} function(s) in ${outcome.filesModified} file(s) with 'use memo' (mode: ${argv.annotate}).`,
+        f.blank();
+        f.line(
+          `✓ Annotated ${outcome.functionsAnnotated} function(s) in ${outcome.filesModified} file(s) with 'use memo' (mode: ${argv.annotate}).`,
         );
       } else {
-        console.log('\nNo functions to annotate.');
+        f.blank();
+        f.line('No functions to annotate.');
       }
     }
 
-    console.log("\nTip: Run 'lint <path>' for directive health checks.");
+    f.blank();
+    f.line("Tip: Run 'lint <path>' for directive health checks.");
 
     process.exit(0);
   },

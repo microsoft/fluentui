@@ -79,20 +79,26 @@ describe('scan log wrapper helpers', () => {
   });
 
   it('openScanLog emits <details> + <summary> + blank line', () => {
-    openScanLog('Scan & compile log');
+    openScanLog('md', 'Scan & compile log');
     expect(logs).toEqual(['<details>', '<summary>📋 Scan & compile log</summary>', '']);
   });
 
   it('closeScanLog emits blank line + </details> + blank line', () => {
-    closeScanLog();
+    closeScanLog('md');
     expect(logs).toEqual(['', '</details>', '']);
   });
 
+  it('openScanLog/closeScanLog emit a plain titled header in cli format', () => {
+    openScanLog('cli', 'Scan & compile log');
+    closeScanLog('cli');
+    expect(logs).toEqual(['📋 Scan & compile log', '─'.repeat('Scan & compile log'.length + 3), '', '']);
+  });
+
   it('preserves any content logged between open and close', () => {
-    openScanLog('Title');
+    openScanLog('md', 'Title');
     console.log('## Scanning: /foo');
     console.log('  [CompileSuccess] /foo/Bar.tsx fn@1:1');
-    closeScanLog();
+    closeScanLog('md');
 
     expect(logs).toEqual([
       '<details>',
@@ -108,7 +114,7 @@ describe('scan log wrapper helpers', () => {
 
   it('emits a blank line after <summary> so GFM renders the inner content as markdown', () => {
     // Regression guard: an empty line MUST follow <summary> or GFM treats the rest as raw HTML.
-    openScanLog('x');
+    openScanLog('md', 'x');
     expect(logs[1]).toMatch(/^<summary>/);
     expect(logs[2]).toBe('');
   });

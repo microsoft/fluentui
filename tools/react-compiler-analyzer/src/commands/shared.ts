@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
 
-import type { CompilationMode } from '../types';
+import type { CompilationMode, OutputFormat } from '../types';
 
 export const DEFAULT_EXCLUDE = [
   '**/__tests__/**',
@@ -52,6 +52,12 @@ export function sharedOptions<T>(yarg: Argv<T>) {
       describe: 'React Compiler compilation mode',
       choices: ['infer', 'annotation', 'all'] as const,
       default: 'infer' as CompilationMode,
+    })
+    .option('format', {
+      type: 'string' as const,
+      describe: 'Output format: cli (terminal-friendly) or md (GitHub-flavored markdown)',
+      choices: ['cli', 'md'] as const,
+      default: 'cli' as OutputFormat,
     });
 }
 
@@ -88,23 +94,35 @@ export function validateConcurrency(concurrency: number): void {
 }
 
 /**
- * Open a collapsible `<details>` block wrapping all scan + compile output.
+ * Open a collapsible section wrapping all scan + compile output.
  * Pair with `closeScanLog()` after the last compilation pass completes.
  *
- * The blank line after `<summary>` is required so GitHub-flavored markdown
- * renders the inner content as markdown (headings, lists) instead of inline HTML.
+ * In `md` format this is a `<details>` block. The blank line after `<summary>`
+ * is required so GitHub-flavored markdown renders the inner content as markdown
+ * (headings, lists) instead of inline HTML. In `cli` format it is a simple
+ * titled header.
  */
-export function openScanLog(title: string): void {
-  console.log('<details>');
-  console.log(`<summary>📋 ${title}</summary>`);
-  console.log('');
+export function openScanLog(format: OutputFormat, title: string): void {
+  if (format === 'md') {
+    console.log('<details>');
+    console.log(`<summary>📋 ${title}</summary>`);
+    console.log('');
+  } else {
+    console.log(`📋 ${title}`);
+    console.log('─'.repeat(title.length + 3));
+    console.log('');
+  }
 }
 
 /**
- * Close the `<details>` block opened by `openScanLog()`.
+ * Close the section opened by `openScanLog()`.
  */
-export function closeScanLog(): void {
-  console.log('');
-  console.log('</details>');
-  console.log('');
+export function closeScanLog(format: OutputFormat): void {
+  if (format === 'md') {
+    console.log('');
+    console.log('</details>');
+    console.log('');
+  } else {
+    console.log('');
+  }
 }
