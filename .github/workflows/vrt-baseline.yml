@@ -9,6 +9,9 @@ env:
   NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
   NX_VERBOSE_LOGGING: true
+  # Centralized pin for `vr-approval-cli` so the version can be updated in one place.
+  # Update to the latest release when available. Tracked internally.
+  VR_APPROVAL_CLI_VERSION: '0.5.1'
 
 permissions:
   contents: 'read'
@@ -62,7 +65,7 @@ jobs:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
         run: |
-          npx vr-approval-cli@0.5.1 run-diff \
+          npx vr-approval-cli@${{ env.VR_APPROVAL_CLI_VERSION }} run-diff \
             --screenshotsDirectory "${{steps.screenshots_root.outputs.result}}" \
             --buildType release \
             --ciDefinitionId 'vrt-baseline.yml' \
