@@ -97,7 +97,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       }
 
       f.blank();
-      f.line("Tip: Run 'lint <path>' for directive health checks.");
+      f.line('> **Tip:** Run `lint <path>` for directive health checks.');
 
       return 0;
     });

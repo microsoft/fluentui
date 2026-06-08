@@ -268,6 +268,23 @@ describe('multi-path coverage reporting', () => {
     expect(output).not.toContain('All recognized functions compile successfully');
   });
 
+  it('omits the "--verbose" hint in the error summary when already verbose', () => {
+    const results: FunctionAnalysis[] = [
+      makeFunctionAnalysis({
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'err',
+        memoStats: undefined,
+      }),
+    ];
+
+    printCoverageSummary(results, true);
+
+    const output = logOutput.join('\n');
+    expect(output).toContain('**1** function(s) caused compiler errors');
+    expect(output).not.toContain('Run with `--verbose`');
+  });
+
   it('printMigrationCandidates includes candidates from multiple packages', () => {
     const results: FunctionAnalysis[] = [
       makeFunctionAnalysis({

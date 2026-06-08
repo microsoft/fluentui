@@ -18,5 +18,6 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   testEnvironment: 'node',
+  setupFiles: ['<rootDir>/jest.setup.ts'],
   coverageDirectory: '../../coverage/tools/react-compiler-analyzer',
 };

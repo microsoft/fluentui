@@ -98,6 +98,82 @@ describe('HtmlFormatter', () => {
       </details>"
     `);
   });
+
+  it('adds a status class to colored headings', () => {
+    const out = render('html', f => {
+      f.heading(3, 'Compiled (will be memoized)', 'success');
+      f.heading(3, 'Errors (compiler bailout)', 'error');
+      f.heading(3, 'Skipped (not a component/hook)', 'warning');
+      f.heading(2, 'Migration Candidates', 'info');
+    });
+
+    expect(out).toContain('<h3 class="status-success">Compiled (will be memoized)</h3>');
+    expect(out).toContain('<h3 class="status-error">Errors (compiler bailout)</h3>');
+    expect(out).toContain('<h3 class="status-warning">Skipped (not a component/hook)</h3>');
+    expect(out).toContain('<h2 class="status-info">Migration Candidates</h2>');
+  });
+
+  it('wraps a status section in a tinted container', () => {
+    const out = render('html', f => {
+      f.section('success', () => {
+        f.heading(3, 'Compiled', 'success');
+        f.table(['A'], [['1']]);
+      });
+    });
+
+    expect(out).toMatchInlineSnapshot(`
+      "<section class=\\"status-section status-success\\">
+      <h3 class=\\"status-success\\">Compiled</h3>
+      <table><thead><tr><th>A</th></tr></thead><tbody><tr><td>1</td></tr></tbody></table>
+      </section>"
+    `);
+  });
+});
+
+describe('section passthrough', () => {
+  it('cli and md emit section body inline with no wrapper markup', () => {
+    const cli = render('cli', f => f.section('success', () => f.line('hi')));
+    const md = render('md', f => f.section('error', () => f.line('hi')));
+
+    expect(cli).toBe('hi');
+    expect(md).toBe('hi');
+  });
+});
+
+describe('status coloring', () => {
+  it('md ignores the status argument (no color markup)', () => {
+    const out = render('md', f => f.heading(3, 'Compiled', 'success'));
+    expect(out).toBe('### Compiled');
+  });
+
+  it('cli emits ANSI color when FORCE_COLOR is set', () => {
+    // Use variable keys so neither tsconfig (index-signature access) nor eslint (dot-notation) complains.
+    const forceKey = 'FORCE_COLOR';
+    const noKey = 'NO_COLOR';
+    const prev = process.env[forceKey];
+    const prevNo = process.env[noKey];
+    delete process.env[noKey];
+    process.env[forceKey] = '1';
+    try {
+      const out = render('cli', f => f.heading(3, 'Errors', 'error'));
+      // Red SGR (31) around the heading, reset at the end.
+      expect(out).toBe('\x1b[31m▸ Errors\x1b[0m');
+    } finally {
+      if (prev === undefined) {
+        delete process.env[forceKey];
+      } else {
+        process.env[forceKey] = prev;
+      }
+      if (prevNo !== undefined) {
+        process.env[noKey] = prevNo;
+      }
+    }
+  });
+
+  it('cli stays plain when NO_COLOR is set even with a status', () => {
+    const out = render('cli', f => f.heading(3, 'Errors', 'error'));
+    expect(out).toBe('▸ Errors');
+  });
 });
 
 describe('renderHtmlDocument', () => {

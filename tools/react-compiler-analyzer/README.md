@@ -207,6 +207,11 @@ react-compiler-analyzer analyze ./library/src --format md > coverage-report.md
 react-compiler-analyzer analyze ./library/src --format html > coverage-report.html
 ```
 
+Section headings are color-coded by compiler state — **Compiled** (green), **Errors** (red), **Skipped** (yellow),
+and **Migration Candidates** (blue). In `cli` format, colors use ANSI and are emitted only when stdout is an
+interactive terminal; honors `NO_COLOR` / `FORCE_COLOR`. In `html` format, colors are applied via CSS. `md` output
+is left plain (markdown has no native text color).
+
 ## Nx integration
 
 ```jsonc

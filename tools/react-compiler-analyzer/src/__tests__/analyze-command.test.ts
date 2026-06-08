@@ -465,7 +465,7 @@ describe('analyze command — scan log wrapping', () => {
       Memo Values  Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders.
 
 
-      Tip: Run 'lint <path>' for directive health checks."
+        Tip: Run lint <path> for directive health checks."
     `);
   });
 
