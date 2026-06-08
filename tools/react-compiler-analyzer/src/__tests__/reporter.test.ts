@@ -1,5 +1,16 @@
+import { createFormatter } from '../formatter';
+import { printReport as printReportImpl, printSummary as printSummaryImpl } from '../reporter';
 import type { DirectiveAnalysis } from '../types';
-import { printReport, printSummary } from '../reporter';
+
+/** Render via the markdown formatter so existing snapshots stay stable. */
+function printReport(results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
+  printReportImpl(createFormatter('md'), results, workspaceRoot, fullReasons);
+}
+
+/** Render via the markdown formatter so existing snapshots stay stable. */
+function printSummary(results: DirectiveAnalysis[]): void {
+  printSummaryImpl(createFormatter('md'), results);
+}
 
 function captureConsole(fn: () => void): string {
   const logs: string[] = [];

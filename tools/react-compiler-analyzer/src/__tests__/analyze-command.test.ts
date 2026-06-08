@@ -320,6 +320,7 @@ describe('analyze command — scan log wrapping', () => {
       'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       mode: 'infer',
+      format: 'md',
       annotate: undefined,
       _: [],
       $0: '',
@@ -359,6 +360,97 @@ describe('analyze command — scan log wrapping', () => {
         [CompileSuccess] <TEMP>/src/A.tsx fn@1:7 A
 
       </details>"
+    `);
+  });
+
+  it('emits terminal-friendly output (no markdown) in the default cli format', async () => {
+    await analyzeCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'cli',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    // No HTML <details> wrapper and no markdown table pipes or heading hashes.
+    expect(captured.some(l => l.includes('<details>'))).toBe(false);
+    expect(captured.some(l => l.startsWith('## '))).toBe(false);
+    expect(captured.some(l => l.includes('|'))).toBe(false);
+
+    // Full plain-text rendering, with tempDir + cwd normalized so it stays stable across runs.
+    // The report relativizes paths against cwd, so collapse the machine-dependent `../` prefix too.
+    const output = captured
+      .map(line =>
+        line
+          .split(tempDir)
+          .join('<TEMP>')
+          .split(process.cwd())
+          .join('<CWD>')
+          .replace(/(?:\.\.\/)*\.\.(?=<TEMP>)/g, ''),
+      )
+      .join('\n');
+
+    expect(output).toMatchInlineSnapshot(`
+      "━━ React Compiler Analysis ━━
+
+      📋 Scan & compile log
+      ─────────────────────
+
+      Scanning: <TEMP>
+      ───────────────────────────────────────────────────────────────────────────────────
+         Package: wrap-test-pkg
+         Mode: infer
+
+        Found 1 TypeScript files in <TEMP>
+      Files to analyze: 1
+
+      Analyzing: <TEMP>/src/A.tsx
+        [CompileSuccess] <TEMP>/src/A.tsx fn@1:7 A
+
+
+      wrap-test-pkg
+      ─────────────
+
+      Status    Count  Percentage
+      ────────  ─────  ──────────
+      Compiled  1      100.0%
+      Skipped   0      0.0%
+      Errors    0      0.0%
+      Total     1
+
+      ▸ Compiled (will be memoized)
+
+      Location                                                                                             Function  Memo Slots  Memo Blocks  Memo Values
+      ───────────────────────────────────────────────────────────────────────────────────────────────────  ────────  ──────────  ───────────  ───────────
+      <TEMP>/src/A.tsx:1  A         1           1            1
+
+      Summary
+      ───────
+
+      - Total functions analyzed: 1
+      - Compiled (will be memoized): 1 (100.0%)
+        - Migration candidates (has manual memoization): 0
+        - Compiler-ready (no manual memoization): 1
+      - Skipped (not a component/hook): 0 (0.0%)
+      - Errors (compiler bailout): 0 (0.0%)
+
+        All recognized functions compile successfully.
+
+      ▸ Legend
+
+      Term         Meaning
+      ───────────  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+      Memo Slots   Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot.
+      Memo Blocks  Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks.
+      Memo Values  Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders.
+
+
+      Tip: Run 'lint <path>' for directive health checks."
     `);
   });
 });

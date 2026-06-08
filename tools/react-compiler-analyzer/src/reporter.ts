@@ -1,15 +1,22 @@
 import { relative } from 'node:path';
 
+import type { Formatter } from './formatter';
 import type { DirectiveAnalysis } from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
 
 /**
- * Print a markdown-formatted report of all directive analyses, grouped by package and status.
+ * Print a report of all directive analyses, grouped by package and status.
  */
-export function printReport(results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
+export function printReport(
+  f: Formatter,
+  results: DirectiveAnalysis[],
+  workspaceRoot: string,
+  fullReasons: boolean,
+): void {
   if (results.length === 0) {
-    console.log('\nNo directives found.');
+    f.blank();
+    f.line('No directives found.');
     return;
   }
 
@@ -31,56 +38,61 @@ export function printReport(results: DirectiveAnalysis[], workspaceRoot: string,
     const redundant = pkgResults.filter(r => r.status === 'redundant');
     const skipped = pkgResults.filter(r => r.status === 'skipped');
 
-    console.log(`\n## ${pkg}\n`);
+    f.blank();
+    f.heading(2, pkg);
+    f.blank();
 
     if (activeNoMemo.length > 0) {
-      console.log('### Active (needs `// justified:` comment)\n');
-      printTable(activeNoMemo, workspaceRoot, fullReasons);
+      f.heading(3, 'Active (needs `// justified:` comment)');
+      f.blank();
+      printTable(f, activeNoMemo, workspaceRoot, fullReasons);
     }
 
     if (activeMemo.length > 0) {
-      console.log('### Active (compilable)\n');
-      printTable(activeMemo, workspaceRoot, fullReasons);
+      f.heading(3, 'Active (compilable)');
+      f.blank();
+      printTable(f, activeMemo, workspaceRoot, fullReasons);
     }
 
     if (redundant.length > 0) {
-      console.log('### Redundant (removable)\n');
-      printTable(redundant, workspaceRoot, fullReasons);
+      f.heading(3, 'Redundant (removable)');
+      f.blank();
+      printTable(f, redundant, workspaceRoot, fullReasons);
     }
 
     if (skipped.length > 0) {
-      console.log('### Skipped (already justified)\n');
-      printTable(skipped, workspaceRoot, fullReasons);
+      f.heading(3, 'Skipped (already justified)');
+      f.blank();
+      printTable(f, skipped, workspaceRoot, fullReasons);
     }
   }
 }
 
-function printTable(results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
-  console.log('| Location | Function | Compiler Event | Reason |');
-  console.log('|----------|----------|----------------|--------|');
-
-  for (const r of results) {
+function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
+  const rows = results.map(r => {
     const relPath = relative(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(unknown)';
     const reason = r.reason ? (fullReasons ? escapeTableCell(r.reason) : truncate(r.reason, TABLE_REASON_MAX_LEN)) : '';
-    console.log(`| ${relPath}:${r.line} | ${fn} | ${r.compilerEvent} | ${reason} |`);
-  }
-  console.log('');
+    return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
+  });
+
+  f.table(['Location', 'Function', 'Compiler Event', 'Reason'], rows);
+  f.blank();
 
   if (fullReasons) {
     // Print full reasons as details blocks below the table for readability
     const withReasons = results.filter(r => r.reason && r.reason.includes('\n'));
     if (withReasons.length > 0) {
-      console.log('<details><summary>Full compiler output</summary>\n');
-      for (const r of withReasons) {
-        const relPath = relative(workspaceRoot, r.filePath);
-        const fn = r.functionName ?? '(unknown)';
-        console.log(`#### ${relPath}:${r.line} — ${fn}\n`);
-        console.log('```');
-        console.log(r.reason);
-        console.log('```\n');
-      }
-      console.log('</details>\n');
+      f.details('Full compiler output', () => {
+        for (const r of withReasons) {
+          const relPath = relative(workspaceRoot, r.filePath);
+          const fn = r.functionName ?? '(unknown)';
+          f.heading(4, `${relPath}:${r.line} — ${fn}`);
+          f.blank();
+          f.code(r.reason!);
+          f.blank();
+        }
+      });
     }
   }
 }
@@ -88,7 +100,7 @@ function printTable(results: DirectiveAnalysis[], workspaceRoot: string, fullRea
 /**
  * Print a summary of the analysis results.
  */
-export function printSummary(results: DirectiveAnalysis[]): void {
+export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   const total = results.length;
   const redundant = results.filter(r => r.status === 'redundant').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
@@ -98,62 +110,64 @@ export function printSummary(results: DirectiveAnalysis[]): void {
   const activeNoMemo = results.filter(r => r.status === 'active' && r.directiveType === 'use-no-memo').length;
   const activeMemo = results.filter(r => r.status === 'active' && r.directiveType === 'use-memo').length;
 
-  console.log('## Summary\n');
-  console.log(`- **Total directives:** ${total}`);
-  console.log(`- **Redundant** (removable): ${redundant}`);
+  f.heading(2, 'Summary');
+  f.blank();
+  f.line(`- **Total directives:** ${total}`);
+  f.line(`- **Redundant** (removable): ${redundant}`);
   if (activeNoMemo > 0) {
-    console.log(`- **Active** \`'use no memo'\` (needs \`// justified:\` comment): ${activeNoMemo}`);
+    f.line(`- **Active** \`'use no memo'\` (needs \`// justified:\` comment): ${activeNoMemo}`);
   }
   if (activeMemo > 0) {
-    console.log(`- **Active** \`'use memo'\` (compilable): ${activeMemo}`);
+    f.line(`- **Active** \`'use memo'\` (compilable): ${activeMemo}`);
   }
-  console.log(`- **Skipped** (already justified): ${skipped}`);
+  f.line(`- **Skipped** (already justified): ${skipped}`);
   if (broken > 0) {
-    console.log(`- **Broken** ('use memo' on non-compilable): ${broken}`);
+    f.line(`- **Broken** ('use memo' on non-compilable): ${broken}`);
   }
   if (conflicting > 0) {
-    console.log(`- **Conflicting** (both directives on same function): ${conflicting}`);
+    f.line(`- **Conflicting** (both directives on same function): ${conflicting}`);
   }
-  console.log('');
+  f.blank();
 
   // Actionable messaging based on directive types
   const redundantNoMemo = results.filter(r => r.status === 'redundant' && r.directiveType === 'use-no-memo').length;
 
   if (redundantNoMemo > 0 && activeNoMemo > 0) {
-    console.log(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) can be safely removed.`);
-    console.log(
-      `> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
-    );
-    console.log('>');
-    console.log('> Run with `--fix` to auto-remove redundant directives and annotate active ones.\n');
+    f.line(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) can be safely removed.`);
+    f.line(`> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`);
+    f.line('>');
+    f.line('> Run with `--fix` to auto-remove redundant directives and annotate active ones.');
+    f.blank();
   } else if (redundantNoMemo > 0) {
-    console.log(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) found.`);
-    console.log('> Run with `--fix` to auto-remove them.\n');
+    f.line(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) found.`);
+    f.line('> Run with `--fix` to auto-remove them.');
+    f.blank();
   } else if (activeNoMemo > 0) {
-    console.log(
-      `> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
-    );
-    console.log('> Run with `--fix` to annotate them.\n');
+    f.line(`> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`);
+    f.line('> Run with `--fix` to annotate them.');
+    f.blank();
   } else if (broken === 0 && conflicting === 0 && redundant === 0) {
-    console.log('> All directives are valid. Nothing to do.\n');
+    f.line('> All directives are valid. Nothing to do.');
+    f.blank();
   }
 
   if (broken > 0) {
-    console.log(`> ⚠ **${broken}** broken \`'use memo'\` directive(s) — function cannot be compiled.\n`);
+    f.line(`> ⚠ **${broken}** broken \`'use memo'\` directive(s) — function cannot be compiled.`);
+    f.blank();
   }
   if (conflicting > 0) {
-    console.log(
-      `> ⚠ **${conflicting}** conflicting directive(s) — both 'use no memo' and 'use memo' on same function.\n`,
-    );
+    f.line(`> ⚠ **${conflicting}** conflicting directive(s) — both 'use no memo' and 'use memo' on same function.`);
+    f.blank();
   }
 }
 
 /**
  * Print a compact one-liner directive summary for use in the `analyze` command.
  */
-export function printDirectiveSummary(results: DirectiveAnalysis[]): void {
+export function printDirectiveSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   if (results.length === 0) {
-    console.log('\nDirectives: none found');
+    f.blank();
+    f.line('Directives: none found');
     return;
   }
 
@@ -201,7 +215,8 @@ export function printDirectiveSummary(results: DirectiveAnalysis[]): void {
     parts.push(`${conflicting} conflicting`);
   }
 
-  console.log(`\nDirectives: ${parts.join('; ')}`);
+  f.blank();
+  f.line(`Directives: ${parts.join('; ')}`);
 }
 
 function truncate(str: string, maxLen: number): string {

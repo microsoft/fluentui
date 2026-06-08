@@ -1,5 +1,30 @@
-import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
+import {
+  printCoverageReport as printCoverageReportImpl,
+  printCoverageSummary as printCoverageSummaryImpl,
+  printMigrationCandidates as printMigrationCandidatesImpl,
+} from '../coverage-reporter';
+import { createFormatter } from '../formatter';
 import type { FunctionAnalysis } from '../types';
+
+/** Render via the markdown formatter so existing snapshots stay stable. */
+function printCoverageReport(
+  results: FunctionAnalysis[],
+  workspaceRoot: string,
+  verbose: boolean,
+  fullReasons: boolean,
+): void {
+  printCoverageReportImpl(createFormatter('md'), results, workspaceRoot, verbose, fullReasons);
+}
+
+/** Render via the markdown formatter so existing snapshots stay stable. */
+function printCoverageSummary(results: FunctionAnalysis[], verbose: boolean): void {
+  printCoverageSummaryImpl(createFormatter('md'), results, verbose);
+}
+
+/** Render via the markdown formatter so existing snapshots stay stable. */
+function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string): void {
+  printMigrationCandidatesImpl(createFormatter('md'), results, workspaceRoot);
+}
 
 function makeFunctionAnalysis(overrides: Partial<FunctionAnalysis>): FunctionAnalysis {
   return {
@@ -191,7 +216,7 @@ describe('multi-path coverage reporting', () => {
       | Compiled | 1 | 100.0% |
       | Skipped | 0 | 0.0% |
       | Errors | 0 | 0.0% |
-      | **Total** | **1** | |
+      | **Total** | **1** |  |
 
 
       ## @scope/pkg-beta
@@ -201,7 +226,7 @@ describe('multi-path coverage reporting', () => {
       | Compiled | 1 | 100.0% |
       | Skipped | 0 | 0.0% |
       | Errors | 0 | 0.0% |
-      | **Total** | **1** | |
+      | **Total** | **1** |  |
       "
     `);
   });

@@ -1,5 +1,6 @@
 import { relative } from 'node:path';
 
+import type { Formatter } from './formatter';
 import type { FunctionAnalysis } from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
@@ -9,13 +10,15 @@ const TABLE_REASON_MAX_LEN = 80;
  * Always prints a summary table. With `verbose`, also prints a per-function table.
  */
 export function printCoverageReport(
+  f: Formatter,
   results: FunctionAnalysis[],
   workspaceRoot: string,
   verbose: boolean,
   fullReasons: boolean,
 ): void {
   if (results.length === 0) {
-    console.log('\nNo functions analyzed by the compiler.');
+    f.blank();
+    f.line('No functions analyzed by the compiler.');
     return;
   }
 
@@ -31,8 +34,10 @@ export function printCoverageReport(
 
   for (const pkg of sortedPackages) {
     const pkgResults = byPackage.get(pkg)!;
-    console.log(`\n## ${pkg}\n`);
-    printPackageSummaryTable(pkgResults);
+    f.blank();
+    f.heading(2, pkg);
+    f.blank();
+    printPackageSummaryTable(f, pkgResults);
 
     if (verbose) {
       const compiled = pkgResults.filter(r => r.status === 'compiled');
@@ -40,59 +45,59 @@ export function printCoverageReport(
       const errored = pkgResults.filter(r => r.status === 'error');
 
       if (compiled.length > 0) {
-        console.log('### Compiled (will be memoized)\n');
-        printFunctionTable(compiled, workspaceRoot, fullReasons, true);
+        f.heading(3, 'Compiled (will be memoized)');
+        f.blank();
+        printFunctionTable(f, compiled, workspaceRoot, fullReasons, true);
       }
       if (skipped.length > 0) {
-        console.log('### Skipped (not a component/hook)\n');
-        printFunctionTable(skipped, workspaceRoot, fullReasons, false);
+        f.heading(3, 'Skipped (not a component/hook)');
+        f.blank();
+        printFunctionTable(f, skipped, workspaceRoot, fullReasons, false);
       }
       if (errored.length > 0) {
-        console.log('### Errors (compiler bailout)\n');
-        printFunctionTable(errored, workspaceRoot, fullReasons, false);
+        f.heading(3, 'Errors (compiler bailout)');
+        f.blank();
+        printFunctionTable(f, errored, workspaceRoot, fullReasons, false);
       }
     }
   }
 }
 
-function printPackageSummaryTable(results: FunctionAnalysis[]): void {
+function printPackageSummaryTable(f: Formatter, results: FunctionAnalysis[]): void {
   const total = results.length;
   const compiled = results.filter(r => r.status === 'compiled').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
   const errored = results.filter(r => r.status === 'error').length;
 
-  console.log('| Status | Count | Percentage |');
-  console.log('|--------|-------|------------|');
-  console.log(`| Compiled | ${compiled} | ${pct(compiled, total)} |`);
-  console.log(`| Skipped | ${skipped} | ${pct(skipped, total)} |`);
-  console.log(`| Errors | ${errored} | ${pct(errored, total)} |`);
-  console.log(`| **Total** | **${total}** | |`);
-  console.log('');
+  f.table(
+    ['Status', 'Count', 'Percentage'],
+    [
+      ['Compiled', compiled, pct(compiled, total)],
+      ['Skipped', skipped, pct(skipped, total)],
+      ['Errors', errored, pct(errored, total)],
+      ['**Total**', `**${total}**`, ''],
+    ],
+  );
+  f.blank();
 }
 
 function printFunctionTable(
+  f: Formatter,
   results: FunctionAnalysis[],
   workspaceRoot: string,
   fullReasons: boolean,
   showMemoStats: boolean,
 ): void {
   if (showMemoStats) {
-    console.log('| Location | Function | Memo Slots | Memo Blocks | Memo Values |');
-    console.log('|----------|----------|------------|-------------|-------------|');
-    for (const r of results) {
+    const rows = results.map(r => {
       const relPath = relative(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const stats = r.memoStats;
-      console.log(
-        `| ${relPath}:${r.line} | ${fn} | ${stats?.memoSlots ?? 0} | ${stats?.memoBlocks ?? 0} | ${
-          stats?.memoValues ?? 0
-        } |`,
-      );
-    }
+      return [`${relPath}:${r.line}`, fn, stats?.memoSlots ?? 0, stats?.memoBlocks ?? 0, stats?.memoValues ?? 0];
+    });
+    f.table(['Location', 'Function', 'Memo Slots', 'Memo Blocks', 'Memo Values'], rows);
   } else {
-    console.log('| Location | Function | Compiler Event | Reason |');
-    console.log('|----------|----------|----------------|--------|');
-    for (const r of results) {
+    const rows = results.map(r => {
       const relPath = relative(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const reason = r.reason
@@ -100,24 +105,25 @@ function printFunctionTable(
           ? escapeTableCell(r.reason)
           : truncate(r.reason, TABLE_REASON_MAX_LEN)
         : '';
-      console.log(`| ${relPath}:${r.line} | ${fn} | ${r.compilerEvent} | ${reason} |`);
-    }
+      return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
+    });
+    f.table(['Location', 'Function', 'Compiler Event', 'Reason'], rows);
   }
-  console.log('');
+  f.blank();
 
   if (fullReasons) {
     const withReasons = results.filter(r => r.reason && r.reason.includes('\n'));
     if (withReasons.length > 0) {
-      console.log('<details><summary>Full compiler output</summary>\n');
-      for (const r of withReasons) {
-        const relPath = relative(workspaceRoot, r.filePath);
-        const fn = r.functionName ?? '(anonymous)';
-        console.log(`#### ${relPath}:${r.line} — ${fn}\n`);
-        console.log('```');
-        console.log(r.reason);
-        console.log('```\n');
-      }
-      console.log('</details>\n');
+      f.details('Full compiler output', () => {
+        for (const r of withReasons) {
+          const relPath = relative(workspaceRoot, r.filePath);
+          const fn = r.functionName ?? '(anonymous)';
+          f.heading(4, `${relPath}:${r.line} — ${fn}`);
+          f.blank();
+          f.code(r.reason!);
+          f.blank();
+        }
+      });
     }
   }
 }
@@ -125,7 +131,7 @@ function printFunctionTable(
 /**
  * Print an overall coverage summary.
  */
-export function printCoverageSummary(results: FunctionAnalysis[], verbose: boolean): void {
+export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], verbose: boolean): void {
   const total = results.length;
   const compiledResults = results.filter(r => r.status === 'compiled');
   const compiled = compiledResults.length;
@@ -134,40 +140,51 @@ export function printCoverageSummary(results: FunctionAnalysis[], verbose: boole
   const skipped = results.filter(r => r.status === 'skipped').length;
   const errored = results.filter(r => r.status === 'error').length;
 
-  console.log('## Summary\n');
-  console.log(`- **Total functions analyzed:** ${total}`);
-  console.log(`- **Compiled** (will be memoized): ${compiled} (${pct(compiled, total)})`);
-  console.log(`  - Migration candidates (has manual memoization): ${migrationCandidates}`);
-  console.log(`  - Compiler-ready (no manual memoization): ${compilerReady}`);
-  console.log(`- **Skipped** (not a component/hook): ${skipped} (${pct(skipped, total)})`);
-  console.log(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
-  console.log('');
+  f.heading(2, 'Summary');
+  f.blank();
+  f.line(`- **Total functions analyzed:** ${total}`);
+  f.line(`- **Compiled** (will be memoized): ${compiled} (${pct(compiled, total)})`);
+  f.line(`  - Migration candidates (has manual memoization): ${migrationCandidates}`);
+  f.line(`  - Compiler-ready (no manual memoization): ${compilerReady}`);
+  f.line(`- **Skipped** (not a component/hook): ${skipped} (${pct(skipped, total)})`);
+  f.line(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
+  f.blank();
 
   if (total === 0) {
-    console.log('> No functions were analyzed. The directory may not contain React components or hooks.\n');
+    f.line('> No functions were analyzed. The directory may not contain React components or hooks.');
+    f.blank();
   } else if (errored > 0) {
-    console.log(
+    f.line(
       `> **${errored}** function(s) caused compiler errors — these won't be optimized until the patterns are refactored.`,
     );
-    console.log('> Run with `--verbose` to see per-function details.\n');
+    f.line('> Run with `--verbose` to see per-function details.');
+    f.blank();
   } else {
-    console.log('> All recognized functions compile successfully.\n');
+    f.line('> All recognized functions compile successfully.');
+    f.blank();
   }
 
   if (verbose) {
-    console.log('### Legend\n');
-    console.log('| Term | Meaning |');
-    console.log('|------|---------|');
-    console.log(
-      '| **Memo Slots** | Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot. |',
+    f.heading(3, 'Legend');
+    f.blank();
+    f.table(
+      ['Term', 'Meaning'],
+      [
+        [
+          '**Memo Slots**',
+          'Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot.',
+        ],
+        [
+          '**Memo Blocks**',
+          'Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks.',
+        ],
+        [
+          '**Memo Values**',
+          'Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders.',
+        ],
+      ],
     );
-    console.log(
-      '| **Memo Blocks** | Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks. |',
-    );
-    console.log(
-      '| **Memo Values** | Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders. |',
-    );
-    console.log('');
+    f.blank();
   }
 }
 
@@ -180,7 +197,7 @@ export function printCoverageSummary(results: FunctionAnalysis[], verbose: boole
  * 1. **Safe to remove** — useMemo/useCallback hooks and React.memo without comparator
  * 2. **Needs manual review** — React.memo with custom comparator (custom equality logic)
  */
-export function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string): void {
+export function printMigrationCandidates(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
   const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
 
   if (candidates.length === 0) {
@@ -190,52 +207,56 @@ export function printMigrationCandidates(results: FunctionAnalysis[], workspaceR
   const safeToRemove = candidates.filter(r => !r.manualMemo!.reactMemoHasComparator);
   const needsReview = candidates.filter(r => r.manualMemo!.reactMemoHasComparator);
 
-  console.log('## Migration Candidates\n');
-  console.log(
+  f.heading(2, 'Migration Candidates');
+  f.blank();
+  f.line(
     'Functions that compile successfully and contain manual memoization. ' +
-      "These can safely use `'use memo'` and may have their manual hooks removed.\n",
+      "These can safely use `'use memo'` and may have their manual hooks removed.",
   );
+  f.blank();
 
   if (safeToRemove.length > 0) {
-    console.log('### Safe to Remove\n');
-    console.log(
+    f.heading(3, 'Safe to Remove');
+    f.blank();
+    f.line(
       '`useMemo`/`useCallback` hooks and `React.memo` wrappers (without comparator) are redundant ' +
-        'after compiler adoption and can be removed.\n',
+        'after compiler adoption and can be removed.',
     );
-    printMigrationTable(safeToRemove, workspaceRoot);
+    f.blank();
+    printMigrationTable(f, safeToRemove, workspaceRoot);
   }
 
   if (needsReview.length > 0) {
-    console.log('### Needs Manual Review\n');
-    console.log(
+    f.heading(3, 'Needs Manual Review');
+    f.blank();
+    f.line(
       '`React.memo` with a custom comparator cannot be automatically removed — the comparator ' +
         'provides custom equality logic not replicated by the compiler. The function body is still ' +
-        'optimized, but the wrapper requires human judgment.\n',
+        'optimized, but the wrapper requires human judgment.',
     );
-    printMigrationTable(needsReview, workspaceRoot);
+    f.blank();
+    printMigrationTable(f, needsReview, workspaceRoot);
   }
 
-  console.log(`> **${candidates.length}** migration candidate(s) found`);
+  f.line(`> **${candidates.length}** migration candidate(s) found`);
   if (needsReview.length > 0) {
-    console.log(`> (**${needsReview.length}** need manual review due to custom comparator).`);
+    f.line(`> (**${needsReview.length}** need manual review due to custom comparator).`);
   }
-  console.log('');
+  f.blank();
 }
 
-function printMigrationTable(entries: FunctionAnalysis[], workspaceRoot: string): void {
-  console.log('| Location | Function | useMemo | useCallback | React.memo | Memo Slots |');
-  console.log('|----------|----------|---------|-------------|------------|------------|');
-
-  for (const r of entries) {
+function printMigrationTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot: string): void {
+  const rows = entries.map(r => {
     const relPath = relative(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(anonymous)';
     const memo = r.manualMemo!;
     const slots = r.memoStats?.memoSlots ?? 0;
     const memoLabel = memo.reactMemo ? (memo.reactMemoHasComparator ? 'yes (comparator)' : 'yes') : 'no';
-    console.log(`| ${relPath}:${r.line} | ${fn} | ${memo.useMemo} | ${memo.useCallback} | ${memoLabel} | ${slots} |`);
-  }
+    return [`${relPath}:${r.line}`, fn, memo.useMemo, memo.useCallback, memoLabel, slots];
+  });
 
-  console.log('');
+  f.table(['Location', 'Function', 'useMemo', 'useCallback', 'React.memo', 'Memo Slots'], rows);
+  f.blank();
 }
 
 function pct(count: number, total: number): string {

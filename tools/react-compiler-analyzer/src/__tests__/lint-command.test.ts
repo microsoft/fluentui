@@ -437,6 +437,7 @@ describe('lint command — scan log wrapping', () => {
       exclude: DEFAULT_EXCLUDE,
       fix: false,
       mode: 'infer',
+      format: 'md',
       _: [],
       $0: '',
     } as never);
@@ -473,6 +474,76 @@ describe('lint command — scan log wrapping', () => {
         [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
 
       </details>"
+    `);
+  });
+
+  it('emits terminal-friendly output (no markdown) in the default cli format', async () => {
+    await lintCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      fix: false,
+      mode: 'infer',
+      format: 'cli',
+      _: [],
+      $0: '',
+    } as never);
+
+    expect(captured.some(l => l.includes('<details>'))).toBe(false);
+    expect(captured.some(l => l.startsWith('## '))).toBe(false);
+    expect(captured.some(l => l.includes('|'))).toBe(false);
+
+    // Full plain-text rendering, with tempDir + cwd normalized so it stays stable across runs.
+    // The report relativizes paths against cwd, so collapse the machine-dependent `../` prefix too.
+    const output = captured
+      .map(line =>
+        line
+          .split(tempDir)
+          .join('<TEMP>')
+          .split(process.cwd())
+          .join('<CWD>')
+          .replace(/(?:\.\.\/)*\.\.(?=<TEMP>)/g, ''),
+      )
+      .join('\n');
+
+    expect(output).toMatchInlineSnapshot(`
+      "━━ React Compiler Lint ━━
+
+      📋 Scan & compile log
+      ─────────────────────
+
+      Scanning: <TEMP>
+      ────────────────────────────────────────────────────────────────────────────────
+         Package: wrap-test-lint-pkg
+         Mode: infer
+
+      Files with directives: 1
+
+      Analyzing: <TEMP>/src/L.tsx
+        [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
+
+
+      wrap-test-lint-pkg
+      ──────────────────
+
+      ▸ Active (compilable)
+
+      Location                                                                                          Function  Compiler Event  Reason
+      ────────────────────────────────────────────────────────────────────────────────────────────────  ────────  ──────────────  ──────
+      <TEMP>/src/L.tsx:2  L         CompileSuccess
+
+      Summary
+      ───────
+
+      - Total directives: 1
+      - Redundant (removable): 0
+      - Active 'use memo' (compilable): 1
+      - Skipped (already justified): 0
+
+        All directives are valid. Nothing to do.
+      "
     `);
   });
 });

@@ -5,6 +5,9 @@ export interface FileEntry {
   packageName: string;
 }
 
+/** Output rendering format. `cli` is terminal-friendly (default); `md` emits GitHub-flavored markdown. */
+export type OutputFormat = 'cli' | 'md';
+
 // ── Directive analysis types ──
 
 export type DirectiveStatus = 'redundant' | 'active' | 'skipped' | 'broken' | 'conflicting';
