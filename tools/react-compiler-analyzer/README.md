@@ -183,7 +183,7 @@ react-compiler-analyzer analyze ./library/src --annotate all
 | `<paths..>`      | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
 | `--format`       | `string`   | `"cli"` | Output format: `cli` (terminal-friendly plain text), `md` (GitHub-flavored markdown), or `html` (styled document)                  |
 | `--verbose`      | `boolean`  | `false` | Print per-function detail tables                                                                                                   |
-| `--full-reasons` | `boolean`  | `false` | Show full compiler error messages                                                                                                  |
+| `--full-reasons` | `boolean`  | `false` | Show the compiler's full code-framed diagnostics instead of one-line summaries                                                     |
 | `--concurrency`  | `number`   | `10`    | Max parallel file processing                                                                                                       |
 | `--exclude`      | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
 

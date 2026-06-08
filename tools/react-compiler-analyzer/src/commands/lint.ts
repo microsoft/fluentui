@@ -77,9 +77,13 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
 
       for (const compiled of compilationResults) {
         // 'use memo' statuses come directly from first compilation (no recompile)
-        results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode));
+        results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode, { fullReasons: argv['full-reasons'] }));
         // 'use no memo' requires strip + recompile
-        results.push(...(await analyzeNoMemoDirectives(compiled, argv.mode, argv.verbose)));
+        results.push(
+          ...(await analyzeNoMemoDirectives(compiled, argv.mode, argv.verbose, {
+            fullReasons: argv['full-reasons'],
+          })),
+        );
       }
 
       closeScanLog(f);

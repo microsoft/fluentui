@@ -308,3 +308,131 @@ describe('multi-path coverage reporting', () => {
     expect(output).not.toContain('Needs Manual Review');
   });
 });
+
+describe('printCoverageReport — error grouping', () => {
+  let logOutput: string[];
+  const originalLog = console.log;
+
+  beforeEach(() => {
+    logOutput = [];
+    console.log = (...args: unknown[]) => {
+      logOutput.push(args.join(' '));
+    };
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+  });
+
+  it('groups multiple errors for the same function under one heading', () => {
+    const results: FunctionAnalysis[] = [
+      makeFunctionAnalysis({
+        functionName: 'useThing',
+        filePath: '/workspace/src/useThing.ts',
+        line: 10,
+        column: 0,
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'first problem',
+        errorLine: 12,
+        errorColumn: 4,
+        memoStats: undefined,
+      }),
+      makeFunctionAnalysis({
+        functionName: 'useThing',
+        filePath: '/workspace/src/useThing.ts',
+        line: 10,
+        column: 0,
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'second problem',
+        errorLine: 18,
+        errorColumn: 2,
+        memoStats: undefined,
+      }),
+    ];
+
+    printCoverageReport(results, '/workspace', true, false);
+
+    const output = logOutput.join('\n');
+    // The function heading appears exactly once with the error count.
+    expect(output).toContain('#### src/useThing.ts:10 — useThing (2 errors)');
+    expect(output.match(/— useThing/g)).toHaveLength(1);
+    // Each error gets its own Line cell so the rows are distinguishable.
+    expect(output).toContain('| Line | Compiler Event | Reason |');
+    expect(output).toContain('| 12:4 | CompileError | first problem |');
+    expect(output).toContain('| 18:2 | CompileError | second problem |');
+  });
+
+  it('inlines full code-framed diagnostics under the error group with --full-reasons', () => {
+    const results: FunctionAnalysis[] = [
+      makeFunctionAnalysis({
+        functionName: 'useThing',
+        filePath: '/workspace/src/useThing.ts',
+        line: 10,
+        column: 0,
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'cannot modify',
+        fullReason: '  > 50 | state.x = 1;\n       | ^^^ cannot modify',
+        memoStats: undefined,
+      }),
+    ];
+
+    printCoverageReport(results, '/workspace', true, true);
+
+    const output = logOutput.join('\n');
+    expect(output).toContain('#### src/useThing.ts:10 — useThing (1 error)');
+    // Full diagnostic is inlined as a code block right below the group, not in a separate
+    // "Full compiler output" details section.
+    expect(output).toContain('> 50 | state.x = 1;');
+    expect(output).not.toContain('Full compiler output');
+  });
+
+  it('counts distinct functions (not error occurrences) in the summary and package table', () => {
+    const erroredTwice = [
+      makeFunctionAnalysis({
+        functionName: 'useThing',
+        filePath: '/workspace/src/useThing.ts',
+        line: 10,
+        column: 0,
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'first problem',
+        memoStats: undefined,
+      }),
+      makeFunctionAnalysis({
+        functionName: 'useThing',
+        filePath: '/workspace/src/useThing.ts',
+        line: 10,
+        column: 0,
+        status: 'error',
+        compilerEvent: 'CompileError',
+        reason: 'second problem',
+        memoStats: undefined,
+      }),
+    ];
+    const compiledOne = makeFunctionAnalysis({
+      functionName: 'useOk',
+      filePath: '/workspace/src/useOk.ts',
+      line: 3,
+      column: 0,
+      status: 'compiled',
+    });
+
+    const results: FunctionAnalysis[] = [...erroredTwice, compiledOne];
+
+    // Package table: 1 compiled + 1 errored function = 2 total (not 3 rows).
+    printCoverageReport(results, '/workspace', false, false);
+    const reportOutput = logOutput.join('\n');
+    expect(reportOutput).toContain('| Errors | 1 | 50.0% |');
+    expect(reportOutput).toContain('| **Total** | **2** |  |');
+
+    // Summary callout: 1 function, not 2 error occurrences.
+    logOutput.length = 0;
+    printCoverageSummary(results, false);
+    const summaryOutput = logOutput.join('\n');
+    expect(summaryOutput).toContain('- **Errors** (compiler bailout): 1 (50.0%)');
+    expect(summaryOutput).toContain('**1** function(s) caused compiler errors');
+  });
+});

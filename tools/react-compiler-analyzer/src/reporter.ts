@@ -72,7 +72,7 @@ function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: s
   const rows = results.map(r => {
     const relPath = relative(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(unknown)';
-    const reason = r.reason ? (fullReasons ? escapeTableCell(r.reason) : truncate(r.reason, TABLE_REASON_MAX_LEN)) : '';
+    const reason = r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : '';
     return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
   });
 
@@ -80,16 +80,16 @@ function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: s
   f.blank();
 
   if (fullReasons) {
-    // Print full reasons as details blocks below the table for readability
-    const withReasons = results.filter(r => r.reason && r.reason.includes('\n'));
-    if (withReasons.length > 0) {
+    // Print the full code-framed diagnostics as details blocks below the table for readability
+    const withFull = results.filter(r => r.fullReason);
+    if (withFull.length > 0) {
       f.details('Full compiler output', () => {
-        for (const r of withReasons) {
+        for (const r of withFull) {
           const relPath = relative(workspaceRoot, r.filePath);
           const fn = r.functionName ?? '(unknown)';
           f.heading(4, `${relPath}:${r.line} — ${fn}`);
           f.blank();
-          f.code(r.reason!);
+          f.code(r.fullReason!);
           f.blank();
         }
       });
@@ -222,9 +222,4 @@ export function printDirectiveSummary(f: Formatter, results: DirectiveAnalysis[]
 function truncate(str: string, maxLen: number): string {
   const cleaned = str.replace(/\n/g, ' ');
   return cleaned.length > maxLen ? cleaned.slice(0, maxLen - 3) + '...' : cleaned;
-}
-
-function escapeTableCell(str: string): string {
-  // For table cells, collapse to single line
-  return str.replace(/\n/g, ' ').replace(/\|/g, '\\|');
 }

@@ -243,7 +243,7 @@ describe('multi-path analyze', () => {
       compilationMode: 'infer',
     });
 
-    const coverageResults = compilationResults.flatMap(deriveCoverage);
+    const coverageResults = compilationResults.flatMap(r => deriveCoverage(r));
 
     const packagesInResults = new Set(coverageResults.map(r => r.packageName));
     expect(packagesInResults).toEqual(new Set(['pkg-alpha', 'pkg-beta']));
@@ -262,7 +262,7 @@ describe('multi-path analyze', () => {
       verbose: false,
       compilationMode: 'infer',
     });
-    const coverageResults = compilationResults.flatMap(deriveCoverage);
+    const coverageResults = compilationResults.flatMap(r => deriveCoverage(r));
     const outcome = await applyAnnotations(coverageResults, 'manual-memo');
 
     if (outcome.functionsAnnotated > 0) {

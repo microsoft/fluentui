@@ -76,7 +76,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       closeScanLog(f);
 
       // Derive coverage from compilation results
-      const coverageResults = compilationResults.flatMap(deriveCoverage);
+      const coverageResults = compilationResults.flatMap(r => deriveCoverage(r, { fullReasons: argv['full-reasons'] }));
 
       const workspaceRoot = process.cwd();
       printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);

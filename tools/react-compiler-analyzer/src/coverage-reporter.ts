@@ -47,27 +47,29 @@ export function printCoverageReport(
       if (compiled.length > 0) {
         f.heading(3, 'Compiled (will be memoized)');
         f.blank();
-        printFunctionTable(f, compiled, workspaceRoot, fullReasons, true);
+        printFunctionTable(f, compiled, workspaceRoot, true);
       }
       if (skipped.length > 0) {
         f.heading(3, 'Skipped (not a component/hook)');
         f.blank();
-        printFunctionTable(f, skipped, workspaceRoot, fullReasons, false);
+        printFunctionTable(f, skipped, workspaceRoot, false);
       }
       if (errored.length > 0) {
         f.heading(3, 'Errors (compiler bailout)');
         f.blank();
-        printFunctionTable(f, errored, workspaceRoot, fullReasons, false);
+        printErrorGroups(f, errored, workspaceRoot, fullReasons);
       }
     }
   }
 }
 
 function printPackageSummaryTable(f: Formatter, results: FunctionAnalysis[]): void {
-  const total = results.length;
   const compiled = results.filter(r => r.status === 'compiled').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
-  const errored = results.filter(r => r.status === 'error').length;
+  // The compiler emits one event per error, so a function can appear in several error
+  // rows. Count distinct functions so the totals reflect functions, not error occurrences.
+  const errored = countErroredFunctions(results);
+  const total = compiled + skipped + errored;
 
   f.table(
     ['Status', 'Count', 'Percentage'],
@@ -85,7 +87,6 @@ function printFunctionTable(
   f: Formatter,
   results: FunctionAnalysis[],
   workspaceRoot: string,
-  fullReasons: boolean,
   showMemoStats: boolean,
 ): void {
   if (showMemoStats) {
@@ -100,30 +101,63 @@ function printFunctionTable(
     const rows = results.map(r => {
       const relPath = relative(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
-      const reason = r.reason
-        ? fullReasons
-          ? escapeTableCell(r.reason)
-          : truncate(r.reason, TABLE_REASON_MAX_LEN)
-        : '';
+      const reason = r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : '';
       return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
     });
     f.table(['Location', 'Function', 'Compiler Event', 'Reason'], rows);
   }
   f.blank();
+}
 
-  if (fullReasons) {
-    const withReasons = results.filter(r => r.reason && r.reason.includes('\n'));
-    if (withReasons.length > 0) {
-      f.details('Full compiler output', () => {
-        for (const r of withReasons) {
-          const relPath = relative(workspaceRoot, r.filePath);
-          const fn = r.functionName ?? '(anonymous)';
-          f.heading(4, `${relPath}:${r.line} — ${fn}`);
-          f.blank();
-          f.code(r.reason!);
+/**
+ * Print compiler-bailout errors grouped by the function they occurred in.
+ *
+ * The React Compiler emits one event per error, so a single function can produce
+ * several rows. Grouping keeps all errors for a function together under one heading,
+ * making it clear which functions fail and where. When `fullReasons` is set, each
+ * function's full code-framed diagnostics are printed right below its summary table.
+ */
+function printErrorGroups(
+  f: Formatter,
+  errored: FunctionAnalysis[],
+  workspaceRoot: string,
+  fullReasons: boolean,
+): void {
+  // Group by function location (file + line + column + name), preserving first-seen order.
+  const groups = new Map<string, FunctionAnalysis[]>();
+  for (const r of errored) {
+    const key = `${r.filePath}:${r.line}:${r.column}:${r.functionName ?? ''}`;
+    const existing = groups.get(key);
+    if (existing) {
+      existing.push(r);
+    } else {
+      groups.set(key, [r]);
+    }
+  }
+
+  for (const group of groups.values()) {
+    const first = group[0];
+    const relPath = relative(workspaceRoot, first.filePath);
+    const fn = first.functionName ?? '(anonymous)';
+    const count = group.length;
+
+    f.heading(4, `${relPath}:${first.line} — ${fn} (${count} ${count === 1 ? 'error' : 'errors'})`);
+    f.blank();
+
+    const rows = group.map(r => {
+      const at = r.errorLine !== undefined ? `${r.errorLine}:${r.errorColumn ?? 0}` : '';
+      return [at, r.compilerEvent, r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : ''];
+    });
+    f.table(['Line', 'Compiler Event', 'Reason'], rows);
+    f.blank();
+
+    if (fullReasons) {
+      for (const r of group) {
+        if (r.fullReason) {
+          f.code(r.fullReason);
           f.blank();
         }
-      });
+      }
     }
   }
 }
@@ -132,13 +166,15 @@ function printFunctionTable(
  * Print an overall coverage summary.
  */
 export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], verbose: boolean): void {
-  const total = results.length;
   const compiledResults = results.filter(r => r.status === 'compiled');
   const compiled = compiledResults.length;
   const migrationCandidates = compiledResults.filter(r => r.manualMemo).length;
   const compilerReady = compiled - migrationCandidates;
   const skipped = results.filter(r => r.status === 'skipped').length;
-  const errored = results.filter(r => r.status === 'error').length;
+  // The compiler emits one event per error, so a function can appear in several error
+  // rows. Count distinct functions so the totals reflect functions, not error occurrences.
+  const errored = countErroredFunctions(results);
+  const total = compiled + skipped + errored;
 
   f.heading(2, 'Summary');
   f.blank();
@@ -266,11 +302,22 @@ function pct(count: number, total: number): string {
   return `${((count / total) * 100).toFixed(1)}%`;
 }
 
+/**
+ * Count distinct functions among errored results. The React Compiler emits one event
+ * per error, so a single function can produce multiple `status: 'error'` rows; these
+ * are de-duplicated by function location (file + line + column + name).
+ */
+function countErroredFunctions(results: FunctionAnalysis[]): number {
+  const seen = new Set<string>();
+  for (const r of results) {
+    if (r.status === 'error') {
+      seen.add(`${r.filePath}:${r.line}:${r.column}:${r.functionName ?? ''}`);
+    }
+  }
+  return seen.size;
+}
+
 function truncate(str: string, maxLen: number): string {
   const cleaned = str.replace(/\n/g, ' ');
   return cleaned.length > maxLen ? cleaned.slice(0, maxLen - 3) + '...' : cleaned;
-}
-
-function escapeTableCell(str: string): string {
-  return str.replace(/\n/g, ' ').replace(/\|/g, '\\|');
 }
