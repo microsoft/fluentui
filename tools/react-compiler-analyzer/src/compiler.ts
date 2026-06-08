@@ -14,6 +14,8 @@ export interface CompilerEvent {
   fnLoc: { start: { line: number; column: number }; end: { line: number; column: number } } | null;
   fnName?: string | null;
   reason?: string;
+  /** Source location of the trigger (e.g. the opt-out directive for `CompileSkip`). */
+  loc?: { start: { line: number; column: number }; end?: { line: number; column: number } } | null;
   detail?: unknown;
   data?: string;
   memoSlots?: number;
@@ -29,13 +31,40 @@ interface CompilerDetailLike {
   loc?: {
     start?: { line?: number; column?: number };
   };
+  /** Returns the primary source location. Present on CompilerErrorDetail / CompilerDiagnostic. */
+  primaryLocation?: () => { start?: { line?: number; column?: number } } | null;
+  /** Renders a full, code-framed compiler message. Present on CompilerErrorDetail / CompilerDiagnostic. */
+  printErrorMessage?: (source: string, options: { eslint: boolean }) => string;
 }
 
 /**
- * Extract a human-readable reason string from a CompileError detail object.
+ * Resolve a `{ line, column }` from a compiler detail. Prefers the `.loc` property,
+ * falling back to `primaryLocation()` (which is where `CompilerDiagnostic` exposes it).
+ * Returns `null` when no usable location is available.
+ */
+function getDetailLocation(detail: CompilerDetailLike): { line: number; column: number } | null {
+  let start = detail.loc?.start;
+  if ((!start || typeof start.line !== 'number') && typeof detail.primaryLocation === 'function') {
+    try {
+      start = detail.primaryLocation()?.start;
+    } catch {
+      start = undefined;
+    }
+  }
+  if (start && typeof start.line === 'number') {
+    return { line: start.line, column: typeof start.column === 'number' ? start.column : 0 };
+  }
+  return null;
+}
+
+/**
+ * Extract a concise, single-line reason string from a CompileError detail object.
  * The `detail` can be a CompilerErrorDetail or CompilerDiagnostic from the
- * React Compiler — both carry a `.reason` and optional `.description`.
- * Falls back to `String(detail)` and then to `Error.toString()`.
+ * React Compiler — both carry a `.reason`, optional `.description`, and a location.
+ * Returns a `reason [description] (line:col)` summary suitable for a table cell.
+ * Falls back to `String(detail)`.
+ *
+ * For the full code-framed diagnostic, use {@link extractFullDiagnostic}.
  */
 export function extractDetailReason(detail: unknown): string {
   if (detail === null || detail === undefined) {
@@ -52,16 +81,85 @@ export function extractDetailReason(detail: unknown): string {
     if (typeof compilerDetail.description === 'string') {
       parts.push(compilerDetail.description);
     }
-    // Some details nest a loc with line/column info
-    if (compilerDetail.loc && typeof compilerDetail.loc === 'object' && compilerDetail.loc.start) {
-      const start = compilerDetail.loc.start;
-      parts.push(`(${start.line ?? '?'}:${start.column ?? '?'})`);
+    // Append line/column info when available
+    const loc = getDetailLocation(compilerDetail);
+    if (loc) {
+      parts.push(`(${loc.line}:${loc.column})`);
     }
     if (parts.length > 0) {
       return parts.join(' ');
     }
   }
   return String(detail);
+}
+
+/**
+ * Render the React Compiler's full, code-framed diagnostic for a CompileError detail.
+ * Uses the detail's `.printErrorMessage(source, opts)` to produce the rich, multi-line
+ * message (with a code frame pointing at the offending lines). Returns `''` when the
+ * detail can't be printed.
+ */
+export function extractFullDiagnostic(detail: unknown, source: string): string {
+  if (detail !== null && typeof detail === 'object') {
+    const compilerDetail = detail as CompilerDetailLike;
+    if (typeof compilerDetail.printErrorMessage === 'function') {
+      try {
+        const printed = compilerDetail.printErrorMessage(source, { eslint: false });
+        if (typeof printed === 'string' && printed.trim().length > 0) {
+          return printed;
+        }
+      } catch {
+        // Fall through: caller keeps the concise reason only.
+      }
+    }
+  }
+  return '';
+}
+
+/**
+ * Extract the source location (`line:column`) of a CompileError detail — the precise
+ * spot inside the function where this specific error occurred. Returns `null` when the
+ * detail carries no usable location, which is what distinguishes one error from another
+ * when a single function produces several.
+ */
+export function extractDetailLoc(detail: unknown): { line: number; column: number } | null {
+  if (detail !== null && typeof detail === 'object') {
+    return getDetailLocation(detail as CompilerDetailLike);
+  }
+  return null;
+}
+
+/**
+ * Read the directive string literal at a source location (e.g. `use no memo`).
+ * Returns the inner text of the first quoted segment on the directive's line, or `null`.
+ */
+function readDirectiveText(source: string, loc: CompilerEvent['loc']): string | null {
+  if (!loc?.start?.line) {
+    return null;
+  }
+  const line = source.split('\n')[loc.start.line - 1];
+  if (!line) {
+    return null;
+  }
+  const match = line.match(/['"]([^'"]*)['"]/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Resolve a `CompileSkip` event's reason string.
+ *
+ * `babel-plugin-react-compiler@1.x` builds the skip message by interpolating the
+ * opt-out directive's AST node directly, producing `Skipped due to '[object Object]'
+ * directive.`. When that mangled form is detected, recover the real directive text
+ * from the event's source location.
+ */
+export function resolveSkipReason(event: CompilerEvent, source: string): string {
+  const reason = event.reason ?? 'compiler skipped this function';
+  if (!reason.includes('[object Object]')) {
+    return reason;
+  }
+  const directive = readDirectiveText(source, event.loc);
+  return directive ? reason.replace('[object Object]', directive) : reason;
 }
 
 // ── Shared compiler invocation ──

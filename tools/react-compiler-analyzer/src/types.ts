@@ -39,7 +39,10 @@ export interface DirectiveAnalysis {
   functionName: string | null;
   status: DirectiveStatus;
   compilerEvent: 'CompileError' | 'CompileSuccess' | 'PipelineError' | 'none' | 'skipped';
+  /** Concise one-line summary, suitable for a table cell. */
   reason?: string;
+  /** Full code-framed compiler diagnostic (multi-line), shown only in the detailed output. */
+  fullReason?: string;
   directiveType: DirectiveType;
 }
 
@@ -78,7 +81,17 @@ export interface FunctionAnalysis {
   functionName: string | null;
   status: FunctionStatus;
   compilerEvent: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError';
+  /** Concise one-line summary, suitable for a table cell. */
   reason?: string;
+  /** Full code-framed compiler diagnostic (multi-line), shown only in the detailed output. */
+  fullReason?: string;
+  /**
+   * For `CompileError` results, the source line where this specific error occurred
+   * (inside the function). Distinguishes multiple errors reported for one function.
+   */
+  errorLine?: number;
+  /** For `CompileError` results, the source column of this specific error. */
+  errorColumn?: number;
   memoStats?: MemoStats;
   manualMemo?: ManualMemoization;
   bodyInsertionLine?: number;

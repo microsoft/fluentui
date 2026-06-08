@@ -1,12 +1,18 @@
-import { extractDetailReason } from './compiler';
+import { extractDetailLoc, extractDetailReason, extractFullDiagnostic, resolveSkipReason } from './compiler';
 import type { FileCompilationResult } from './compiler';
 import type { FunctionAnalysis, MemoStats } from './types';
+
+/** Options for {@link deriveCoverage}. */
+export interface DeriveCoverageOptions {
+  /** When true, error reasons include the compiler's full code-framed diagnostic. */
+  fullReasons?: boolean;
+}
 
 /**
  * Derive coverage results from a pre-compiled FileCompilationResult.
  * Pure function — no I/O, no compilation.
  */
-export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[] {
+export function deriveCoverage(result: FileCompilationResult, options: DeriveCoverageOptions = {}): FunctionAnalysis[] {
   if (result.error) {
     return [];
   }
@@ -50,9 +56,11 @@ export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[
         functionName,
         status: 'skipped',
         compilerEvent: 'CompileSkip',
-        reason: event.reason,
+        reason: resolveSkipReason(event, result.source),
       });
     } else if (event.kind === 'CompileError') {
+      const fullReason = options.fullReasons ? extractFullDiagnostic(event.detail, result.source) : '';
+      const errorLoc = extractDetailLoc(event.detail);
       results.push({
         filePath: result.filePath,
         packageName: result.packageName,
@@ -62,8 +70,11 @@ export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[
         status: 'error',
         compilerEvent: 'CompileError',
         reason: extractDetailReason(event.detail),
+        ...(fullReason ? { fullReason } : {}),
+        ...(errorLoc ? { errorLine: errorLoc.line, errorColumn: errorLoc.column } : {}),
       });
     } else if (event.kind === 'PipelineError') {
+      const data = event.data ?? '';
       results.push({
         filePath: result.filePath,
         packageName: result.packageName,
@@ -72,7 +83,8 @@ export function deriveCoverage(result: FileCompilationResult): FunctionAnalysis[
         functionName,
         status: 'error',
         compilerEvent: 'PipelineError',
-        reason: event.data ?? '',
+        reason: data,
+        ...(options.fullReasons && data.includes('\n') ? { fullReason: data } : {}),
       });
     }
   }

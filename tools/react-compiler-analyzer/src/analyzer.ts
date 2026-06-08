@@ -1,7 +1,13 @@
-import { compileSource, extractDetailReason } from './compiler';
+import { compileSource, extractDetailReason, extractFullDiagnostic, resolveSkipReason } from './compiler';
 import type { CompilerEvent, FileCompilationResult } from './compiler';
 import { USE_NO_MEMO_LINE_RE, USE_MEMO_LINE_RE } from './patterns';
 import type { CompilationMode, DirectiveAnalysis, DirectiveLocation, DirectiveType } from './types';
+
+/** Options controlling reason verbosity in the directive analyzers. */
+export interface DirectiveAnalysisOptions {
+  /** When true, error reasons include the compiler's full code-framed diagnostic. */
+  fullReasons?: boolean;
+}
 
 // Regex matching the ESLint rule's justification pattern
 const JUSTIFIED_RE = /^\s*justified:/;
@@ -211,6 +217,7 @@ function detectConflicts(
 export function deriveMemoDirectiveStatuses(
   result: FileCompilationResult,
   compilationMode: CompilationMode,
+  options: DirectiveAnalysisOptions = {},
 ): DirectiveAnalysis[] {
   const { filePath, packageName, source, events, error } = result;
   const directives = findDirectiveLocations(source);
@@ -321,6 +328,10 @@ export function deriveMemoDirectiveStatuses(
     } else if (matchedEvent.kind === 'CompileError' || matchedEvent.kind === 'PipelineError') {
       const reason =
         matchedEvent.kind === 'PipelineError' ? matchedEvent.data ?? '' : extractDetailReason(matchedEvent.detail);
+      const fullReason =
+        options.fullReasons && matchedEvent.kind === 'CompileError'
+          ? extractFullDiagnostic(matchedEvent.detail, source)
+          : '';
       results.push({
         filePath,
         packageName,
@@ -329,6 +340,7 @@ export function deriveMemoDirectiveStatuses(
         status: 'broken',
         compilerEvent: matchedEvent.kind as 'CompileError' | 'PipelineError',
         reason,
+        ...(fullReason ? { fullReason } : {}),
         directiveType: 'use-memo',
       });
     } else if (matchedEvent.kind === 'CompileSkip') {
@@ -339,7 +351,7 @@ export function deriveMemoDirectiveStatuses(
         functionName: fnName,
         status: 'broken',
         compilerEvent: 'none',
-        reason: matchedEvent.reason ?? 'compiler skipped this function',
+        reason: resolveSkipReason(matchedEvent, source),
         directiveType: 'use-memo',
       });
     }
@@ -356,6 +368,7 @@ export async function analyzeNoMemoDirectives(
   result: FileCompilationResult,
   compilationMode: CompilationMode,
   verbose: boolean = false,
+  options: DirectiveAnalysisOptions = {},
 ): Promise<DirectiveAnalysis[]> {
   const { filePath, packageName, source } = result;
   const directives = findDirectiveLocations(source);
@@ -446,6 +459,8 @@ export async function analyzeNoMemoDirectives(
       }
     } else if (event.kind === 'CompileError' || event.kind === 'PipelineError') {
       const reason = event.kind === 'PipelineError' ? event.data ?? '' : extractDetailReason(event.detail);
+      const fullReason =
+        options.fullReasons && event.kind === 'CompileError' ? extractFullDiagnostic(event.detail, source) : '';
       results.push({
         filePath,
         packageName,
@@ -454,6 +469,7 @@ export async function analyzeNoMemoDirectives(
         status: 'redundant',
         compilerEvent: event.kind as 'CompileError' | 'PipelineError',
         reason,
+        ...(fullReason ? { fullReason } : {}),
         directiveType: 'use-no-memo',
       });
     }
