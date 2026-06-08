@@ -5,6 +5,10 @@ on:
     types:
       - completed
 
+# Least-privilege default for this `workflow_run`: deny all scopes by default and
+# grant only what each job explicitly needs below.
+permissions: {}
+
 env:
   NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
   NX_PREFER_TS_NODE: true
@@ -109,11 +113,11 @@ jobs:
             const { execSync } = require('child_process');
 
             try {
-              execSync(`npx vr-approval-cli@0.5.1 create-policy \
+              execSync(`npx vr-approval-cli@0.0.0-REPLACE-WITH-PATCHED-VERSION create-policy \
                 --nonBlockingPipelines '{"301":{"pipelineStatus": "PENDING","pipelineName": "Fluent UI"}}' \
                 --clientType FLUENTUI`, { stdio: 'inherit' });
 
-              execSync(`npx vr-approval-cli@0.5.1 run-diff \
+              execSync(`npx vr-approval-cli@0.0.0-REPLACE-WITH-PATCHED-VERSION run-diff \
                 --screenshotsDirectory ./screenshots \
                 --buildType pr \
                 --ciDefinitionId 'vrt-baseline.yml' \
