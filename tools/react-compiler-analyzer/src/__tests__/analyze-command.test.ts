@@ -259,6 +259,32 @@ describe('multi-path analyze', () => {
   });
 });
 
+describe('single-file path analyze', () => {
+  let pkg: TempPackage;
+
+  beforeEach(() => {
+    pkg = createTempPackage('file-path-analyze');
+  });
+
+  it('discovers a single file when the path points directly at a file', async () => {
+    const filePath = writeComponent(pkg, 'A.tsx', COMPILABLE_COMPONENT);
+
+    const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
+
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+  });
+
+  it('ignores exclude patterns when the path points directly at a file', async () => {
+    const filePath = writeComponent(pkg, 'A.test.tsx', COMPILABLE_COMPONENT);
+
+    // 'A.test.tsx' matches the default '**/*.test.*' exclude, but an explicit
+    // file path must bypass excludes.
+    const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
+
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+  });
+});
+
 describe('analyze command — scan log wrapping', () => {
   let tempDir: string;
   let originalLog: typeof console.log;

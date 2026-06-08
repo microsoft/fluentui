@@ -374,6 +374,32 @@ describe('multi-path lint', () => {
   });
 });
 
+describe('single-file path lint', () => {
+  let pkg: TempPackage;
+
+  beforeEach(() => {
+    pkg = createTempPackage('file-path-lint');
+  });
+
+  it('discovers a single directive file when the path points directly at a file', async () => {
+    const filePath = writeComponent(pkg, 'A.tsx', DIRECTIVE_COMPONENT);
+
+    const files = await discoverFilesWithDirectives(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
+
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+  });
+
+  it('ignores exclude patterns when the path points directly at a file', async () => {
+    const filePath = writeComponent(pkg, 'A.test.tsx', DIRECTIVE_COMPONENT);
+
+    // 'A.test.tsx' matches the default '**/*.test.*' exclude, but an explicit
+    // file path must bypass excludes.
+    const files = await discoverFilesWithDirectives(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
+
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+  });
+});
+
 describe('lint command — scan log wrapping', () => {
   let tempDir: string;
   let originalLog: typeof console.log;

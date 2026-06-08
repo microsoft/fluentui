@@ -74,7 +74,7 @@ react-compiler-analyzer lint ./library/src --mode infer
 react-compiler-analyzer lint <paths..> [options]
 ```
 
-Scans one or more directories for both `'use no memo'` and `'use memo'` directives. `--mode` controls what compilation strategy is assumed.
+Scans one or more files or directories for both `'use no memo'` and `'use memo'` directives. `--mode` controls what compilation strategy is assumed.
 
 #### Status categories
 
@@ -118,6 +118,9 @@ react-compiler-analyzer lint ./library/src --mode annotation
 # Lint multiple directories
 react-compiler-analyzer lint packages/pkg-a/src packages/pkg-b/src --mode annotation
 
+# Lint a single file
+react-compiler-analyzer lint ./library/src/components/Button/Button.tsx --mode annotation
+
 # Auto-fix
 react-compiler-analyzer lint ./library/src --fix
 
@@ -131,7 +134,7 @@ react-compiler-analyzer lint ./src --full-reasons
 react-compiler-analyzer analyze <paths..> [options]
 ```
 
-Reports which functions the React Compiler will memoize, skip, or bail out on across one or more directories. Also shows a directive breakdown summary. Always exits 0.
+Reports which functions the React Compiler will memoize, skip, or bail out on across one or more files or directories. Also shows a directive breakdown summary. Always exits 0.
 
 #### Options
 
@@ -160,6 +163,9 @@ react-compiler-analyzer analyze ./library/src --verbose
 # Analyze multiple directories at once
 react-compiler-analyzer analyze packages/pkg-a/src packages/pkg-b/src --verbose
 
+# Analyze a single file
+react-compiler-analyzer analyze ./library/src/components/Button/Button.tsx --verbose
+
 # Use annotation compilation mode
 react-compiler-analyzer analyze ./library/src --mode annotation
 
@@ -172,13 +178,13 @@ react-compiler-analyzer analyze ./library/src --annotate all
 
 ## Shared options
 
-| Argument / Flag  | Type       | Default | Description                                                          |
-| ---------------- | ---------- | ------- | -------------------------------------------------------------------- |
-| `<paths..>`      | `string[]` | —       | **Required.** One or more directories to scan for `.ts`/`.tsx` files |
-| `--verbose`      | `boolean`  | `false` | Print per-function detail tables                                     |
-| `--full-reasons` | `boolean`  | `false` | Show full compiler error messages                                    |
-| `--concurrency`  | `number`   | `10`    | Max parallel file processing                                         |
-| `--exclude`      | `string[]` | _(1)_   | Glob patterns to exclude                                             |
+| Argument / Flag  | Type       | Default | Description                                                                                                                        |
+| ---------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `<paths..>`      | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
+| `--verbose`      | `boolean`  | `false` | Print per-function detail tables                                                                                                   |
+| `--full-reasons` | `boolean`  | `false` | Show full compiler error messages                                                                                                  |
+| `--concurrency`  | `number`   | `10`    | Max parallel file processing                                                                                                       |
+| `--exclude`      | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
 
 _(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`
 

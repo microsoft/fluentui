@@ -1,4 +1,4 @@
-import { existsSync, globSync } from 'node:fs';
+import { existsSync, globSync, statSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
 
@@ -7,9 +7,15 @@ import { USE_NO_MEMO_CONTENT_RE, USE_MEMO_CONTENT_RE } from './patterns';
 
 /**
  * Glob all TypeScript files in a directory, respecting exclude patterns.
+ *
+ * When `scanPath` points directly at a file, it is returned as-is — excludes are
+ * not applied because the file was selected explicitly.
  */
-function globTypeScriptFiles(scanDir: string, exclude: string[]): string[] {
-  return globSync('**/*.{ts,tsx}', { cwd: scanDir, exclude }).map(relative => join(scanDir, relative));
+function globTypeScriptFiles(scanPath: string, exclude: string[]): string[] {
+  if (statSync(scanPath).isFile()) {
+    return [scanPath];
+  }
+  return globSync('**/*.{ts,tsx}', { cwd: scanPath, exclude }).map(relative => join(scanPath, relative));
 }
 
 /**
