@@ -4,6 +4,15 @@ import type { OutputFormat } from './types';
 export type Cell = string | number;
 
 /**
+ * Semantic color for a compiler state, used to colorize section headings:
+ * - `success` (green) — compiled functions
+ * - `error` (red) — compiler bailouts
+ * - `warning` (yellow) — skipped functions / needs review
+ * - `info` (blue) — migration candidates
+ */
+export type StatusKind = 'success' | 'error' | 'warning' | 'info';
+
+/**
  * Abstraction over output rendering so reporters can emit terminal-friendly plain text (`cli`),
  * GitHub-flavored markdown (`md`), or a styled HTML document (`html`) from the same call sites.
  *
@@ -15,8 +24,17 @@ export interface Formatter {
   readonly format: OutputFormat;
   /** Write a line verbatim to the sink (no transformation). Used for format-specific wrappers. */
   raw(line: string): void;
-  /** Section heading, `level` 1–4. */
-  heading(level: number, text: string): void;
+  /**
+   * Section heading, `level` 1–4. An optional `status` colors the heading by compiler state
+   * (cli: ANSI when attached to a TTY; html: CSS class; md: ignored — no color support).
+   */
+  heading(level: number, text: string, status?: StatusKind): void;
+  /**
+   * Wrap a related block of output in a status-colored section. In `html` this renders a
+   * container with a light tinted background for the whole block; in `cli`/`md` it is a
+   * transparent passthrough that simply invokes `body` (no extra markup).
+   */
+  section(status: StatusKind, body: () => void): void;
   /** A single line of body text. May contain markdown inline emphasis (`**bold**`, `` `code` ``). */
   line(text: string): void;
   /** A blank separator line. */
@@ -32,6 +50,36 @@ export interface Formatter {
 type Writer = (line: string) => void;
 
 const defaultWrite: Writer = line => console.log(line);
+
+/** ANSI SGR color codes per semantic status, plus reset. */
+const ANSI_COLOR: Record<StatusKind, string> = {
+  success: '\x1b[32m', // green
+  error: '\x1b[31m', // red
+  warning: '\x1b[33m', // yellow
+  info: '\x1b[34m', // blue
+};
+const ANSI_RESET = '\x1b[0m';
+
+/**
+ * Whether ANSI colors should be emitted for terminal output. Honors `NO_COLOR` and
+ * `FORCE_COLOR`, otherwise only colorizes when stdout is an interactive TTY. This keeps
+ * piped output (and the non-TTY test environment) plain.
+ */
+function cliColorEnabled(): boolean {
+  const { NO_COLOR, FORCE_COLOR } = process.env;
+  if (NO_COLOR) {
+    return false;
+  }
+  if (FORCE_COLOR) {
+    return true;
+  }
+  return Boolean(process.stdout && process.stdout.isTTY);
+}
+
+/** Map a semantic status to its HTML class name. */
+function statusClass(status: StatusKind): string {
+  return `status-${status}`;
+}
 
 /** Strip markdown inline emphasis markers (`**`, backticks) for plain-text rendering. */
 function stripInline(text: string): string {
@@ -64,8 +112,12 @@ class MarkdownFormatter implements Formatter {
     this.write(line);
   }
 
-  public heading(level: number, text: string): void {
+  public heading(level: number, text: string, _status?: StatusKind): void {
     this.write('#'.repeat(level) + ' ' + text);
+  }
+
+  public section(_status: StatusKind, body: () => void): void {
+    body();
   }
 
   public line(text: string): void {
@@ -101,6 +153,7 @@ class MarkdownFormatter implements Formatter {
 
 class CliFormatter implements Formatter {
   public readonly format = 'cli' as const;
+  private readonly color = cliColorEnabled();
 
   constructor(private write: Writer) {}
 
@@ -108,19 +161,23 @@ class CliFormatter implements Formatter {
     this.write(line);
   }
 
-  public heading(level: number, text: string): void {
+  public heading(level: number, text: string, status?: StatusKind): void {
     const t = stripInline(text);
     if (level <= 1) {
-      this.write(t);
+      this.write(this._colorize(t, status));
       this.write('═'.repeat(t.length));
     } else if (level === 2) {
-      this.write(t);
+      this.write(this._colorize(t, status));
       this.write('─'.repeat(t.length));
     } else if (level === 3) {
-      this.write('▸ ' + t);
+      this.write(this._colorize('▸ ' + t, status));
     } else {
-      this.write('• ' + t);
+      this.write(this._colorize('• ' + t, status));
     }
+  }
+
+  public section(_status: StatusKind, body: () => void): void {
+    body();
   }
 
   public line(text: string): void {
@@ -164,6 +221,10 @@ class CliFormatter implements Formatter {
       this.write('    ' + ln);
     }
   }
+
+  private _colorize(text: string, status?: StatusKind): string {
+    return status && this.color ? `${ANSI_COLOR[status]}${text}${ANSI_RESET}` : text;
+  }
 }
 
 class HtmlFormatter implements Formatter {
@@ -175,9 +236,16 @@ class HtmlFormatter implements Formatter {
     this.write(line);
   }
 
-  public heading(level: number, text: string): void {
+  public heading(level: number, text: string, status?: StatusKind): void {
     const l = Math.min(Math.max(level, 1), 4);
-    this.write(`<h${l}>${inlineHtml(text)}</h${l}>`);
+    const cls = status ? ` class="${statusClass(status)}"` : '';
+    this.write(`<h${l}${cls}>${inlineHtml(text)}</h${l}>`);
+  }
+
+  public section(status: StatusKind, body: () => void): void {
+    this.write(`<section class="status-section ${statusClass(status)}">`);
+    body();
+    this.write('</section>');
   }
 
   public line(text: string): void {
@@ -232,6 +300,17 @@ body{margin:0;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,H
 h2{font-size:1.25rem;margin:2rem 0 .75rem;}
 h3{font-size:1.05rem;margin:1.5rem 0 .5rem;color:var(--accent);}
 h4{font-size:.95rem;margin:1rem 0 .4rem;color:var(--muted);}
+h2.status-success,h3.status-success,h4.status-success{color:#1a7f37;}
+h2.status-error,h3.status-error,h4.status-error{color:#cf222e;}
+h2.status-warning,h3.status-warning,h4.status-warning{color:#9a6700;}
+h2.status-info,h3.status-info,h4.status-info{color:#0969da;}
+.status-section{border-radius:8px;padding:.25rem 1rem 1rem;margin:1.25rem 0;border-left:4px solid transparent;}
+.status-section>h2,.status-section>h3{margin-top:.75rem;}
+.status-section.status-success{background:#f3fbf5;border-left-color:#1a7f37;}
+.status-section.status-error{background:#fdf4f5;border-left-color:#cf222e;}
+.status-section.status-warning{background:#fdfaf1;border-left-color:#9a6700;}
+.status-section.status-info{background:#f2f8fe;border-left-color:#0969da;}
+.status-section table{background:rgba(255,255,255,.55);}
 p{margin:.35rem 0;}
 .li{margin:.2rem 0;}
 strong{font-weight:650;}

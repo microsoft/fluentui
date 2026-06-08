@@ -45,19 +45,25 @@ export function printCoverageReport(
       const errored = pkgResults.filter(r => r.status === 'error');
 
       if (compiled.length > 0) {
-        f.heading(3, 'Compiled (will be memoized)');
-        f.blank();
-        printFunctionTable(f, compiled, workspaceRoot, true);
+        f.section('success', () => {
+          f.heading(3, 'Compiled (will be memoized)', 'success');
+          f.blank();
+          printFunctionTable(f, compiled, workspaceRoot, true);
+        });
       }
       if (skipped.length > 0) {
-        f.heading(3, 'Skipped (not a component/hook)');
-        f.blank();
-        printFunctionTable(f, skipped, workspaceRoot, false);
+        f.section('warning', () => {
+          f.heading(3, 'Skipped (not a component/hook)', 'warning');
+          f.blank();
+          printFunctionTable(f, skipped, workspaceRoot, false);
+        });
       }
       if (errored.length > 0) {
-        f.heading(3, 'Errors (compiler bailout)');
-        f.blank();
-        printErrorGroups(f, errored, workspaceRoot, fullReasons);
+        f.section('error', () => {
+          f.heading(3, 'Errors (compiler bailout)', 'error');
+          f.blank();
+          printErrorGroups(f, errored, workspaceRoot, fullReasons);
+        });
       }
     }
   }
@@ -141,7 +147,7 @@ function printErrorGroups(
     const fn = first.functionName ?? '(anonymous)';
     const count = group.length;
 
-    f.heading(4, `${relPath}:${first.line} — ${fn} (${count} ${count === 1 ? 'error' : 'errors'})`);
+    f.heading(4, `${relPath}:${first.line} — ${fn} (${count} ${count === 1 ? 'error' : 'errors'})`, 'error');
     f.blank();
 
     const rows = group.map(r => {
@@ -193,7 +199,9 @@ export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], 
     f.line(
       `> **${errored}** function(s) caused compiler errors — these won't be optimized until the patterns are refactored.`,
     );
-    f.line('> Run with `--verbose` to see per-function details.');
+    if (!verbose) {
+      f.line('> Run with `--verbose` to see per-function details.');
+    }
     f.blank();
   } else {
     f.line('> All recognized functions compile successfully.');
@@ -243,42 +251,44 @@ export function printMigrationCandidates(f: Formatter, results: FunctionAnalysis
   const safeToRemove = candidates.filter(r => !r.manualMemo!.reactMemoHasComparator);
   const needsReview = candidates.filter(r => r.manualMemo!.reactMemoHasComparator);
 
-  f.heading(2, 'Migration Candidates');
-  f.blank();
-  f.line(
-    'Functions that compile successfully and contain manual memoization. ' +
-      "These can safely use `'use memo'` and may have their manual hooks removed.",
-  );
-  f.blank();
-
-  if (safeToRemove.length > 0) {
-    f.heading(3, 'Safe to Remove');
+  f.section('info', () => {
+    f.heading(2, 'Migration Candidates', 'info');
     f.blank();
     f.line(
-      '`useMemo`/`useCallback` hooks and `React.memo` wrappers (without comparator) are redundant ' +
-        'after compiler adoption and can be removed.',
+      'Functions that compile successfully and contain manual memoization. ' +
+        "These can safely use `'use memo'` and may have their manual hooks removed.",
     );
     f.blank();
-    printMigrationTable(f, safeToRemove, workspaceRoot);
-  }
 
-  if (needsReview.length > 0) {
-    f.heading(3, 'Needs Manual Review');
-    f.blank();
-    f.line(
-      '`React.memo` with a custom comparator cannot be automatically removed — the comparator ' +
-        'provides custom equality logic not replicated by the compiler. The function body is still ' +
-        'optimized, but the wrapper requires human judgment.',
-    );
-    f.blank();
-    printMigrationTable(f, needsReview, workspaceRoot);
-  }
+    if (safeToRemove.length > 0) {
+      f.heading(3, 'Safe to Remove', 'info');
+      f.blank();
+      f.line(
+        '`useMemo`/`useCallback` hooks and `React.memo` wrappers (without comparator) are redundant ' +
+          'after compiler adoption and can be removed.',
+      );
+      f.blank();
+      printMigrationTable(f, safeToRemove, workspaceRoot);
+    }
 
-  f.line(`> **${candidates.length}** migration candidate(s) found`);
-  if (needsReview.length > 0) {
-    f.line(`> (**${needsReview.length}** need manual review due to custom comparator).`);
-  }
-  f.blank();
+    if (needsReview.length > 0) {
+      f.heading(3, 'Needs Manual Review', 'warning');
+      f.blank();
+      f.line(
+        '`React.memo` with a custom comparator cannot be automatically removed — the comparator ' +
+          'provides custom equality logic not replicated by the compiler. The function body is still ' +
+          'optimized, but the wrapper requires human judgment.',
+      );
+      f.blank();
+      printMigrationTable(f, needsReview, workspaceRoot);
+    }
+
+    f.line(`> **${candidates.length}** migration candidate(s) found`);
+    if (needsReview.length > 0) {
+      f.line(`> (**${needsReview.length}** need manual review due to custom comparator).`);
+    }
+    f.blank();
+  });
 }
 
 function printMigrationTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot: string): void {
