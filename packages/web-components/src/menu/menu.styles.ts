@@ -16,18 +16,17 @@ export const styles = css`
     margin: 0;
     max-height: var(--menu-max-height, auto);
     position-anchor: --menu-trigger;
-    position-area: block-end span-inline-end;
+    inset: unset;
+    inset-block-start: anchor(end);
+    inset-inline-start: anchor(start);
     position-try-fallbacks: flip-block;
-    position: absolute;
+    position: fixed;
     z-index: 1;
   }
 
   :host([split]) ::slotted([popover]) {
-    position-area: block-end span-inline-start;
-  }
-
-  ::slotted([popover]:popover-open) {
-    inset: unset;
+    inset-inline-start: auto;
+    inset-inline-end: anchor(end);
   }
 
   ::slotted([popover]:not(:popover-open)) {
