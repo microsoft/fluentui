@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
@@ -14,6 +14,22 @@ import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPacka
 async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
   const compiled = await compileFile(entry, 'infer', false);
   return deriveCoverage(compiled);
+}
+
+/**
+ * Normalize captured CLI output for snapshotting:
+ * - replace the temp dir with `<TEMP>` so absolute scan-log paths are stable
+ * - rewrite the `Scanning:` heading underline, whose length tracks the (machine-dependent)
+ *   absolute path, to match the normalized heading text length
+ */
+function normalizeCliOutput(captured: string[], tempDir: string): string {
+  const lines = captured.map(line => line.split(tempDir).join('<TEMP>'));
+  for (let i = 0; i < lines.length - 1; i++) {
+    if (lines[i].startsWith('Scanning: ') && /^─+$/.test(lines[i + 1])) {
+      lines[i + 1] = '─'.repeat(lines[i].length);
+    }
+  }
+  return lines.join('\n');
 }
 
 describe('coverage command integration', () => {
@@ -292,7 +308,8 @@ describe('analyze command — scan log wrapping', () => {
   let captured: string[];
 
   beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'analyze-wrap-test-'));
+    // realpathSync so the path matches process.cwd() after chdir (macOS maps /var -> /private/var).
+    tempDir = realpathSync(mkdtempSync(join(tmpdir(), 'analyze-wrap-test-')));
     mkdirSync(join(tempDir, 'src'), { recursive: true });
     writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'wrap-test-pkg' }));
     writeFileSync(join(tempDir, 'src', 'A.tsx'), `export function A() { return <div />; }\n`);
@@ -364,36 +381,70 @@ describe('analyze command — scan log wrapping', () => {
   });
 
   it('emits terminal-friendly output (no markdown) in the default cli format', async () => {
-    await analyzeCommand.handler!({
-      paths: [tempDir],
-      verbose: true,
-      concurrency: 1,
-      'full-reasons': false,
-      exclude: DEFAULT_EXCLUDE,
-      mode: 'infer',
-      format: 'cli',
-      annotate: undefined,
-      _: [],
-      $0: '',
-    } as never);
+    // Run with cwd set to the temp dir so the report relativizes file paths to short,
+    // machine-independent values (e.g. `src/A.tsx`). This keeps CLI column widths
+    // deterministic, so the entire output can be snapshotted (paths normalized to <TEMP>).
+    const originalCwd = process.cwd();
+    process.chdir(tempDir);
+    try {
+      await analyzeCommand.handler!({
+        paths: [tempDir],
+        verbose: true,
+        concurrency: 1,
+        'full-reasons': false,
+        exclude: DEFAULT_EXCLUDE,
+        mode: 'infer',
+        format: 'cli',
+        annotate: undefined,
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      process.chdir(originalCwd);
+    }
 
     // No HTML <details> wrapper and no markdown table pipes or heading hashes.
     expect(captured.some(l => l.includes('<details>'))).toBe(false);
     expect(captured.some(l => l.startsWith('## '))).toBe(false);
     expect(captured.some(l => l.includes('|'))).toBe(false);
 
-    // The scan log header and a section heading still render as plain text.
-    expect(captured.some(l => l === '📋 Scan & compile log')).toBe(true);
-    expect(captured.some(l => l.startsWith('Scanning: '))).toBe(true);
+    const output = normalizeCliOutput(captured, tempDir);
 
-    // Snapshot only the Summary section onward: it is free of file paths, so its
-    // column/underline widths are deterministic across machines (CI vs local).
-    // The report tables above contain machine-dependent absolute paths whose lengths
-    // drive CLI column padding, so they are intentionally excluded from the snapshot.
-    const summary = captured.slice(captured.indexOf('Summary')).join('\n');
+    expect(output).toMatchInlineSnapshot(`
+      "━━ React Compiler Analysis ━━
 
-    expect(summary).toMatchInlineSnapshot(`
-      "Summary
+      📋 Scan & compile log
+      ─────────────────────
+
+      Scanning: <TEMP>
+      ────────────────
+         Package: wrap-test-pkg
+         Mode: infer
+
+        Found 1 TypeScript files in <TEMP>
+      Files to analyze: 1
+
+      Analyzing: <TEMP>/src/A.tsx
+        [CompileSuccess] <TEMP>/src/A.tsx fn@1:7 A
+
+
+      wrap-test-pkg
+      ─────────────
+
+      Status    Count  Percentage
+      ────────  ─────  ──────────
+      Compiled  1      100.0%
+      Skipped   0      0.0%
+      Errors    0      0.0%
+      Total     1
+
+      ▸ Compiled (will be memoized)
+
+      Location     Function  Memo Slots  Memo Blocks  Memo Values
+      ───────────  ────────  ──────────  ───────────  ───────────
+      src/A.tsx:1  A         1           1            1
+
+      Summary
       ───────
 
       - Total functions analyzed: 1

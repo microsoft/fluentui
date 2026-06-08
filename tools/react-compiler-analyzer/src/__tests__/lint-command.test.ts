@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
@@ -10,6 +10,22 @@ import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
+
+/**
+ * Normalize captured CLI output for snapshotting:
+ * - replace the temp dir with `<TEMP>` so absolute scan-log paths are stable
+ * - rewrite the `Scanning:` heading underline, whose length tracks the (machine-dependent)
+ *   absolute path, to match the normalized heading text length
+ */
+function normalizeCliOutput(captured: string[], tempDir: string): string {
+  const lines = captured.map(line => line.split(tempDir).join('<TEMP>'));
+  for (let i = 0; i < lines.length - 1; i++) {
+    if (lines[i].startsWith('Scanning: ') && /^─+$/.test(lines[i + 1])) {
+      lines[i + 1] = '─'.repeat(lines[i].length);
+    }
+  }
+  return lines.join('\n');
+}
 
 async function lintFile(entry: FileEntry, compilationMode: CompilationMode = 'infer'): Promise<DirectiveAnalysis[]> {
   const compiled = await compileFile(entry, compilationMode, false);
@@ -407,7 +423,7 @@ describe('lint command — scan log wrapping', () => {
   let captured: string[];
 
   beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'lint-wrap-test-'));
+    tempDir = realpathSync(mkdtempSync(join(tmpdir(), 'lint-wrap-test-')));
     mkdirSync(join(tempDir, 'src'), { recursive: true });
     writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'wrap-test-lint-pkg' }));
     // Seed a file with a directive so discoverFilesWithDirectives returns it
@@ -478,35 +494,61 @@ describe('lint command — scan log wrapping', () => {
   });
 
   it('emits terminal-friendly output (no markdown) in the default cli format', async () => {
-    await lintCommand.handler!({
-      paths: [tempDir],
-      verbose: true,
-      concurrency: 1,
-      'full-reasons': false,
-      exclude: DEFAULT_EXCLUDE,
-      fix: false,
-      mode: 'infer',
-      format: 'cli',
-      _: [],
-      $0: '',
-    } as never);
+    // Run with cwd set to the temp dir so the report relativizes file paths to short,
+    // machine-independent values (e.g. `src/L.tsx`). This keeps CLI column widths
+    // deterministic, so the entire output can be snapshotted (paths normalized to <TEMP>).
+    const originalCwd = process.cwd();
+    process.chdir(tempDir);
+    try {
+      await lintCommand.handler!({
+        paths: [tempDir],
+        verbose: true,
+        concurrency: 1,
+        'full-reasons': false,
+        exclude: DEFAULT_EXCLUDE,
+        fix: false,
+        mode: 'infer',
+        format: 'cli',
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      process.chdir(originalCwd);
+    }
 
     expect(captured.some(l => l.includes('<details>'))).toBe(false);
     expect(captured.some(l => l.startsWith('## '))).toBe(false);
     expect(captured.some(l => l.includes('|'))).toBe(false);
 
-    // The scan log header and a section heading still render as plain text.
-    expect(captured.some(l => l === '📋 Scan & compile log')).toBe(true);
-    expect(captured.some(l => l.startsWith('Scanning: '))).toBe(true);
+    const output = normalizeCliOutput(captured, tempDir);
 
-    // Snapshot only the Summary section onward: it is free of file paths, so its
-    // column/underline widths are deterministic across machines (CI vs local).
-    // The report tables above contain machine-dependent absolute paths whose lengths
-    // drive CLI column padding, so they are intentionally excluded from the snapshot.
-    const summary = captured.slice(captured.indexOf('Summary')).join('\n');
+    expect(output).toMatchInlineSnapshot(`
+      "━━ React Compiler Lint ━━
 
-    expect(summary).toMatchInlineSnapshot(`
-      "Summary
+      📋 Scan & compile log
+      ─────────────────────
+
+      Scanning: <TEMP>
+      ────────────────
+         Package: wrap-test-lint-pkg
+         Mode: infer
+
+      Files with directives: 1
+
+      Analyzing: <TEMP>/src/L.tsx
+        [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
+
+
+      wrap-test-lint-pkg
+      ──────────────────
+
+      ▸ Active (compilable)
+
+      Location     Function  Compiler Event  Reason
+      ───────────  ────────  ──────────────  ──────
+      src/L.tsx:2  L         CompileSuccess
+
+      Summary
       ───────
 
       - Total directives: 1
