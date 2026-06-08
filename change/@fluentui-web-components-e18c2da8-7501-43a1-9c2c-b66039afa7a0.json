@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "make anchor position target fixed position",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
