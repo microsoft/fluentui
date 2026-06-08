@@ -23,7 +23,7 @@ export function sharedOptions<T>(yarg: Argv<T>) {
     .positional('paths', {
       type: 'string' as const,
       array: true as const,
-      describe: 'One or more directories to scan for TypeScript files',
+      describe: 'One or more files or directories to scan for TypeScript files',
       demandOption: true,
     })
     .option('verbose', {
@@ -62,8 +62,14 @@ export function validatePath(rawPath: string): string {
     console.error(`Error: Path does not exist: ${resolvedPath}`);
     process.exit(1);
   }
-  if (!statSync(resolvedPath).isDirectory()) {
-    console.error(`Error: Path is not a directory: ${resolvedPath}`);
+
+  const stats = statSync(resolvedPath);
+  if (stats.isFile() && !/\.tsx?$/.test(resolvedPath)) {
+    console.error(`Error: File is not a TypeScript (.ts/.tsx) file: ${resolvedPath}`);
+    process.exit(1);
+  }
+  if (!stats.isDirectory() && !stats.isFile()) {
+    console.error(`Error: Path is not a file or directory: ${resolvedPath}`);
     process.exit(1);
   }
 
