@@ -5,8 +5,13 @@ export interface FileEntry {
   packageName: string;
 }
 
-/** Output rendering format. `cli` is terminal-friendly (default); `md` emits GitHub-flavored markdown. */
-export type OutputFormat = 'cli' | 'md';
+/**
+ * Output rendering format.
+ * - `cli` — terminal-friendly plain text (default)
+ * - `md` — GitHub-flavored markdown
+ * - `html` — self-contained styled HTML document
+ */
+export type OutputFormat = 'cli' | 'md' | 'html';
 
 // ── Directive analysis types ──
 

@@ -468,4 +468,38 @@ describe('analyze command — scan log wrapping', () => {
       Tip: Run 'lint <path>' for directive health checks."
     `);
   });
+
+  it('emits a self-contained HTML document in the html format', async () => {
+    await analyzeCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'html',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    // The whole report is emitted as a single HTML document.
+    expect(captured).toHaveLength(1);
+    const doc = captured[0];
+
+    expect(doc.startsWith('<!DOCTYPE html>')).toBe(true);
+    expect(doc.trimEnd().endsWith('</html>')).toBe(true);
+    expect(doc).toContain('<title>React Compiler Analysis</title>');
+    expect(doc).toContain('<h1 class="banner">React Compiler Analysis</h1>');
+    // Report content rendered as real HTML elements.
+    expect(doc).toContain('<details class="scan-log">');
+    expect(doc).toContain('<table>');
+    expect(doc).toContain('<h2>Summary</h2>');
+    // Raw compiler diagnostics are wrapped + escaped inside the scan log.
+    expect(doc).toContain('<div class="log-line">');
+    // No leftover terminal/markdown noise.
+    expect(doc).not.toContain('━━');
+    expect(doc).not.toMatch(/\*\*[^*]+\*\*/);
+    expect(doc).not.toContain('| Status |');
+  });
 });
