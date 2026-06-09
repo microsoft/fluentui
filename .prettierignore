@@ -40,6 +40,3 @@ CODEOWNERS
 
 /.nx/cache
 /.nx/workspace-data
-
-# todo: Remove when prettier@^3.1; "prettier": "2.8.8" does not support `with` import attr
-packages/react-components/eslint-plugin-react-components/src/index.ts

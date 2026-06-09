@@ -21,6 +21,7 @@ if (swcJestConfig.swcrc === undefined) {
 // we need to strip the .js extension in the imports for Jest to resolve them correctly
 // moduleNameMapper  '^(\\.{1,2}/.*)\\.js$': '$1'
 
+
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
