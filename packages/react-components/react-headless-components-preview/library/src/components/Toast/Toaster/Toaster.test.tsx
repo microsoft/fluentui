@@ -20,16 +20,27 @@ describe('Toaster', () => {
     ],
   });
 
-  it('renders aria-live regions by default', () => {
-    const { container } = render(<Toaster />);
+  it('mounts an aria-live region on document.body by default', () => {
+    // AriaLiveAnnouncer attaches its live region directly to document.body
+    // (not inside the Toaster's React tree) so a single shared region serves
+    // the whole app. The DOM fallback path only renders an assertive region;
+    // polite messages on browsers without `ariaNotify` are announced assertively.
+    render(<Toaster />);
 
-    expect(container.querySelector('[aria-live="assertive"]')).not.toBeNull();
-    expect(container.querySelector('[aria-live="polite"]')).not.toBeNull();
+    expect(document.body.querySelector('[aria-live="assertive"]')).not.toBeNull();
   });
 
   it('does not render position containers when there are no toasts', () => {
     const { container } = render(<Toaster />);
 
     expect(container.querySelector('[data-toaster-position]')).toBeNull();
+  });
+
+  it('does not mount its own live region when a custom `announce` prop is supplied', () => {
+    const before = document.body.querySelectorAll('[aria-live]').length;
+
+    render(<Toaster announce={jest.fn()} />);
+
+    expect(document.body.querySelectorAll('[aria-live]').length).toBe(before);
   });
 });

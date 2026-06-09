@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "description": "ESLint plugin and custom rules for Fluent UI components v9",
   "main": "./lib-commonjs/index.js",
-  "module": "./lib/index.js",
+  "type": "commonjs",
   "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "require": "./lib-commonjs/index.js",
+      "default": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
   },
