@@ -23,10 +23,7 @@
         "useSpread": true
       }
     },
-    "target": "es2019",
-    "experimental": {
-      "keepImportAttributes": true
-    }
+    "target": "es2019"
   },
   "minify": false,
   "sourceMaps": true

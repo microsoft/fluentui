@@ -18,19 +18,14 @@ if (swcJestConfig.swcrc === undefined) {
 // jest needs EsModule Interop to find the default exported setup/teardown functions
 // swcJestConfig.module.noInterop = false;
 
-
 /**
  * @type {import('@jest/types').Config.InitialOptions}
- * moduleNameMapper  '^(\\.{1,2}/.*)\\.js$': '$1', strip `.js` extension from imports
  */
 module.exports = {
   displayName: 'eslint-plugin-react-components',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
-  },
-  moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1',
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],

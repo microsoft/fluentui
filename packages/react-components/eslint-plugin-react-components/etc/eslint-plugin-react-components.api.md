@@ -29,31 +29,6 @@ export const meta: {
 };
 
 // @public (undocumented)
-const plugin: {
-    meta: {
-        name: string;
-        version: string;
-    };
-    configs: {
-        recommended: {
-            plugins: string[];
-            rules: {};
-        };
-        'flat/recommended': {
-            plugins: {
-                [x: string]: ESLint.Plugin;
-            };
-            rules: {};
-        };
-    };
-    rules: {
-        "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [(RuleOptions | undefined)?], unknown, RuleListener>;
-        "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
-    };
-};
-export default plugin;
-
-// @public (undocumented)
 export const rules: {
     "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [(RuleOptions | undefined)?], unknown, RuleListener>;
     "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
