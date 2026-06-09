@@ -78,7 +78,7 @@ describe('HtmlFormatter', () => {
 
     expect(out).toMatchInlineSnapshot(`
       "<h2>Section</h2>
-      <table><thead><tr><th>Name</th><th>Count</th></tr></thead><tbody><tr><td>&lt;alpha&gt;</td><td>1</td></tr></tbody></table>
+      <div class=\\"table-wrap\\"><table><thead><tr><th>Name</th><th>Count</th></tr></thead><tbody><tr><td>&lt;alpha&gt;</td><td>1</td></tr></tbody></table></div>
       <div class=\\"li\\" style=\\"padding-left:0.4rem\\"><strong>bold</strong> &amp; <code>code</code></div>
       <p class=\\"note\\">a note</p>
       <pre class=\\"code\\"><code>&lt;div&gt;raw&lt;/div&gt;</code></pre>"
@@ -124,7 +124,7 @@ describe('HtmlFormatter', () => {
     expect(out).toMatchInlineSnapshot(`
       "<section class=\\"status-section status-success\\">
       <h3 class=\\"status-success\\">Compiled</h3>
-      <table><thead><tr><th>A</th></tr></thead><tbody><tr><td>1</td></tr></tbody></table>
+      <div class=\\"table-wrap\\"><table><thead><tr><th>A</th></tr></thead><tbody><tr><td>1</td></tr></tbody></table></div>
       </section>"
     `);
   });
