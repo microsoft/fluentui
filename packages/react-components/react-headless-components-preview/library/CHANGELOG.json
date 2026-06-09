@@ -2,6 +2,51 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Tue, 09 Jun 2026 21:25:23 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "ecb629c1a302a40c1d8207cb44a0479850929c45",
+            "comment": "feat: add headless Tags components"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "35720ad3c847dcf7877dfaab72ad295b76c47a08",
+            "comment": "feat: add headless TeachingPopover composed on top of the headless Popover and the v9 react-teaching-popover base hooks"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "da3b7a4ffe0610abed41f005023f2b8eed2f4282",
+            "comment": "feat: add Toast component"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "80a7fb1847f8123de709fb604d20b194e4fc1379",
+            "comment": "feat: use AriaLiveAnnouncer for Toast component and update tests"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "5b60f2059ee6acf41e71ab11a30c0ecd9bb1a6cb",
+            "comment": "feat: export BadgeSlots, ComboboxSlots, useMenuListContextValues to complete consumer-side composition surface"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2026 11:54:45 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.1.0",
       "version": "0.1.0",
