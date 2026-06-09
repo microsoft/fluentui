@@ -1,5 +1,5 @@
 import type { ESLint } from 'eslint';
-// import with attribute for esm support, see https://nodejs.org/api/esm.html#json-modules
+
 import pkgJson from '../package.json' with { type: 'json' };
 import { RULE_NAME as enforceUseClientName, rule as enforceUseClient } from './rules/enforce-use-client.js';
 import { RULE_NAME as preferFluentUIV9Name, rule as preferFluentUIV9 } from './rules/prefer-fluentui-v9.js';
