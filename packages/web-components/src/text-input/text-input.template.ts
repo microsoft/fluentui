@@ -10,10 +10,7 @@ import type { TextInputOptions } from './text-input.options.js';
  */
 export function textInputTemplate<T extends TextInput>(options: TextInputOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <template
-      @focusin="${(x, c) => x.focusinHandler(c.event as FocusEvent)}"
-      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
-    >
+    <template @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}">
       <label part="label" for="control" class="label" ${ref('controlLabel')}>
         <slot ${slotted('defaultSlottedNodes')}></slot>
       </label>
@@ -25,7 +22,6 @@ export function textInputTemplate<T extends TextInput>(options: TextInputOptions
           id="control"
           @change="${(x, c) => x.changeHandler(c.event as InputEvent)}"
           @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
-          ?autofocus="${x => x.autofocus}"
           autocomplete="${x => x.autocomplete}"
           ?disabled="${x => x.disabled}"
           list="${x => x.list}"

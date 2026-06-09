@@ -1,12 +1,5 @@
-import {
-  attr,
-  FASTElement,
-  nullableNumberConverter,
-  Observable,
-  observable,
-  type Subscriber,
-  Updates,
-} from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable, observable, Updates } from '@microsoft/fast-element';
+import { setAutoFocus } from '../utils/autofocus.js';
 import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.options.js';
 
 /**
@@ -32,17 +25,6 @@ export class BaseTextInput extends FASTElement {
    */
   @attr
   public autocomplete?: string;
-
-  /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
 
   /**
    * The current value of the input.
@@ -463,24 +445,10 @@ export class BaseTextInput extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-
     this.setFormValue(this.value);
     this.setValidity();
-  }
 
-  /**
-   * Focuses the inner control when the component is focused.
-   *
-   * @param e - the event object
-   * @public
-   */
-  public focusinHandler(e: FocusEvent): boolean | void {
-    if (e.target === this) {
-      this.control?.focus();
-    }
-
-    return true;
+    setAutoFocus(this);
   }
 
   /**

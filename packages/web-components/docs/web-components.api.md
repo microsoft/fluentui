@@ -1011,7 +1011,6 @@ export class BaseTextArea extends FASTElement {
 // @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
-    autofocus: boolean;
     // @internal
     changeHandler(e: InputEvent): boolean | void;
     checkValidity(): boolean;
@@ -1035,7 +1034,6 @@ export class BaseTextInput extends FASTElement {
     disabled?: boolean;
     // @internal
     elementInternals: ElementInternals;
-    focusinHandler(e: FocusEvent): boolean | void;
     get form(): HTMLFormElement | null;
     static readonly formAssociated = true;
     formAttribute?: string;
