@@ -4,7 +4,7 @@ import { compileFiles } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
-import { discoverAllFiles, findPackageName } from '../discovery';
+import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { AnnotateMode, CompilationMode, FileEntry, OutputFormat } from '../types';
 import {
   closeScanLog,
@@ -43,7 +43,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
     await withReportOutput(argv.format, 'React Compiler Analysis', async f => {
       openScanLog(f, 'Scan & compile log');
 
-      const files: FileEntry[] = [];
+      const collected: FileEntry[] = [];
 
       for (const resolvedPath of resolvedPaths) {
         const packageName = await findPackageName(resolvedPath);
@@ -54,8 +54,12 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
         f.blank();
 
         const discovered = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
-        files.push(...discovered);
+        collected.push(...discovered);
       }
+
+      // Combining overlapping paths (e.g. a directory plus a file inside it) can surface
+      // the same file more than once — process each file a single time.
+      const files = dedupeFileEntries(collected);
 
       if (files.length === 0) {
         closeScanLog(f);

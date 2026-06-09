@@ -2,7 +2,7 @@ import type { CommandModule } from 'yargs';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFiles } from '../compiler';
-import { discoverFilesWithDirectives, findPackageName } from '../discovery';
+import { discoverFilesWithDirectives, dedupeFileEntries, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import { printReport, printSummary } from '../reporter';
 import type { CompilationMode, DirectiveAnalysis, FileEntry, OutputFormat } from '../types';
@@ -42,7 +42,7 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
     await withReportOutput(argv.format, 'React Compiler Lint', async f => {
       openScanLog(f, 'Scan & compile log');
 
-      const files: FileEntry[] = [];
+      const collected: FileEntry[] = [];
 
       for (const resolvedPath of resolvedPaths) {
         const packageName = await findPackageName(resolvedPath);
@@ -53,8 +53,12 @@ export const lintCommand: CommandModule<{}, LintArgv> = {
         f.blank();
 
         const discovered = await discoverFilesWithDirectives(resolvedPath, packageName, argv.exclude, argv.verbose);
-        files.push(...discovered);
+        collected.push(...discovered);
       }
+
+      // Combining overlapping paths (e.g. a directory plus a file inside it) can surface
+      // the same file more than once — process each file a single time.
+      const files = dedupeFileEntries(collected);
 
       if (files.length === 0) {
         closeScanLog(f);
