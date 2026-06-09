@@ -7,7 +7,7 @@ import { analyzeCommand } from '../commands/analyze';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
-import { discoverAllFiles, findPackageName } from '../discovery';
+import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 
@@ -298,6 +298,97 @@ describe('single-file path analyze', () => {
     const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
 
     expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+  });
+});
+
+describe('dedupeFileEntries', () => {
+  it('removes duplicate entries by file path, preserving first-seen order', () => {
+    const entries: FileEntry[] = [
+      { filePath: '/p/src/A.tsx', packageName: 'pkg' },
+      { filePath: '/p/src/B.tsx', packageName: 'pkg' },
+      { filePath: '/p/src/A.tsx', packageName: 'pkg' },
+    ];
+
+    expect(dedupeFileEntries(entries)).toEqual([
+      { filePath: '/p/src/A.tsx', packageName: 'pkg' },
+      { filePath: '/p/src/B.tsx', packageName: 'pkg' },
+    ]);
+  });
+
+  it('returns an empty array unchanged', () => {
+    expect(dedupeFileEntries([])).toEqual([]);
+  });
+});
+
+describe('mixed directory + file path analyze', () => {
+  let tempDir: string;
+  let originalLog: typeof console.log;
+  let originalExit: typeof process.exit;
+  let captured: string[];
+
+  beforeEach(() => {
+    // realpathSync so cwd-relative paths in the report are machine-independent.
+    tempDir = realpathSync(mkdtempSync(join(tmpdir(), 'analyze-mixed-')));
+    mkdirSync(join(tempDir, 'src', 'comp'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'mixed-pkg' }));
+    // A directory of components, plus standalone files passed explicitly alongside it.
+    writeFileSync(join(tempDir, 'src', 'comp', 'Foo.tsx'), `export function Foo() { return <div />; }\n`);
+    writeFileSync(join(tempDir, 'src', 'Bar.styles.ts'), `export const bar = 1;\n`);
+    writeFileSync(join(tempDir, 'src', 'Baz.tsx'), `export function Baz() { return <span />; }\n`);
+
+    captured = [];
+    originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    originalExit = process.exit;
+    process.exit = ((_code?: number) => undefined) as never;
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+    process.exit = originalExit;
+  });
+
+  it('accepts a directory combined with explicit files without crashing', async () => {
+    await analyzeCommand.handler!({
+      paths: [join(tempDir, 'src', 'comp'), join(tempDir, 'src', 'Bar.styles.ts'), join(tempDir, 'src', 'Baz.tsx')],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'md',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    const output = captured.join('\n');
+    // All three files (one from the directory + two explicit) are analyzed.
+    expect(output).toContain('Files to analyze: 3');
+  });
+
+  it('processes a file only once when both its directory and the file itself are passed', async () => {
+    await analyzeCommand.handler!({
+      paths: [join(tempDir, 'src', 'comp'), join(tempDir, 'src', 'comp', 'Foo.tsx')],
+      verbose: true,
+      concurrency: 1,
+      'full-reasons': false,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'md',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    const output = captured.join('\n');
+    // The directory contains only Foo.tsx; passing it again must not double-count.
+    expect(output).toContain('Files to analyze: 1');
+    const analyzingFoo = captured.filter(l => l.includes('Analyzing:') && l.includes('Foo.tsx'));
+    expect(analyzingFoo).toHaveLength(1);
   });
 });
 

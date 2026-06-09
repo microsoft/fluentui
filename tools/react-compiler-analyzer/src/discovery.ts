@@ -19,6 +19,24 @@ function globTypeScriptFiles(scanPath: string, exclude: string[]): string[] {
 }
 
 /**
+ * Remove duplicate file entries by absolute file path, preserving first-seen order.
+ *
+ * Lets callers safely combine overlapping path arguments — e.g. a directory plus a
+ * file that lives inside it — without processing (or annotating/fixing) a file twice.
+ */
+export function dedupeFileEntries(entries: FileEntry[]): FileEntry[] {
+  const seen = new Set<string>();
+  const result: FileEntry[] = [];
+  for (const entry of entries) {
+    if (!seen.has(entry.filePath)) {
+      seen.add(entry.filePath);
+      result.push(entry);
+    }
+  }
+  return result;
+}
+
+/**
  * Walk up from `startDir` to find the nearest package.json and return its `name` field.
  * Falls back to the basename of `startDir`.
  */

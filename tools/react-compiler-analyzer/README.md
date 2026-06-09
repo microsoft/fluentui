@@ -189,6 +189,25 @@ react-compiler-analyzer analyze ./library/src --annotate all
 
 _(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`
 
+### Path resolution
+
+`<paths..>` accepts any mix of directories and files, resolved **independently per path**:
+
+| Path kind         | Behavior                                                                                                  |
+| ----------------- | --------------------------------------------------------------------------------------------------------- |
+| **Directory**     | Recursively scanned for `.ts`/`.tsx` files. `--exclude` globs **are** applied.                            |
+| **Explicit file** | Analyzed as-is. `--exclude` globs are **bypassed** — naming a file selects it even if a glob excludes it. |
+
+Files discovered across all paths are **de-duplicated by absolute path**, so overlapping arguments are safe — e.g. passing a directory together with a file inside it analyzes that file once, not twice. This also means a file explicitly named alongside its containing directory is never double-processed (or double-annotated/fixed).
+
+```bash
+# Directory (excludes apply) + two explicit files (excludes bypassed), all analyzed once
+react-compiler-analyzer analyze \
+  src/components/Foo/ \
+  src/components/Bar.styles.ts \
+  src/components/Baz.test.tsx   # explicitly named — analyzed despite the default *.test.* exclude
+```
+
 ### `--format`
 
 Controls how reports are rendered:
