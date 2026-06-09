@@ -1,6 +1,8 @@
 import type { Locator } from '@playwright/test';
 import { expect, test } from '../../test/playwright/index.js';
 import { tagName as DialogBodyTagName } from '../dialog-body/dialog-body.options.js';
+import { tagName as TabTagName } from '../tab/tab.options.js';
+import { tagName as TablistTagName } from '../tablist/tablist.options.js';
 import type { Dialog } from './dialog.js';
 import { tagName } from './dialog.options.js';
 
@@ -382,5 +384,44 @@ test.describe('Dialog', () => {
     await page.mouse.click(x, y);
 
     await expect(content).toBeHidden();
+  });
+
+  test.describe('opening focus', () => {
+    test.use({
+      tagName,
+      waitFor: [DialogBodyTagName, TablistTagName, TabTagName],
+    });
+
+    test('should not change tablist’s `activeid` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+      const tablist = element.locator(TablistTagName);
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DialogBodyTagName} id="content">
+            <${TablistTagName} activeid="tab2">
+              <${TabTagName} id="tab1">tab 1</${TabTagName}>
+              <${TabTagName} id="tab2">tab 2</${TabTagName}>
+            </${TablistTagName}>
+          </${DialogBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Dialog) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(tablist).toHaveAttribute('activeid', 'tab2');
+
+      await element.evaluate((node: Dialog) => {
+        node.hide();
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(tablist).toHaveAttribute('activeid', 'tab2');
+    });
   });
 });

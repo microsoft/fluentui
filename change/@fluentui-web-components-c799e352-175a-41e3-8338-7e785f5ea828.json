@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "avoid dialog from focusing on non-active tab upon showing",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
