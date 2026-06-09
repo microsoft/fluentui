@@ -6,7 +6,6 @@
 }
 
 :host {
-  anchor-name: --dropdown-trigger;
   box-sizing: border-box;
   color: var(--colorNeutralForeground1);
   cursor: pointer;
