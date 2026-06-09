@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import { AriaLiveAnnouncer } from '@fluentui/react-aria';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { ToasterSlotsInternal, ToasterState } from './Toaster.types';
@@ -21,7 +22,12 @@ export const renderToaster = (state: ToasterState): JSXElement => {
   const hasToasts =
     !!state.bottomStart || !!state.bottomEnd || !!state.topStart || !!state.topEnd || !!state.top || !!state.bottom;
 
-  const ariaLive = renderAriaLive ? <AriaLive announceRef={announceRef} /> : null;
+  const ariaLive = renderAriaLive ? (
+    <AriaLiveAnnouncer>
+      <AriaLive announceRef={announceRef} />
+    </AriaLiveAnnouncer>
+  ) : null;
+
   const positionSlots = (
     <>
       {state.bottom ? <state.bottom /> : null}
