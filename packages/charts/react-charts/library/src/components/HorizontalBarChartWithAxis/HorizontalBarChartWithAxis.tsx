@@ -471,7 +471,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onClick={point.onClick}
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
@@ -646,7 +646,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -888,6 +888,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     _yAxisLabels = _getOrderedYAxisLabels();
     _xMax = Math.max(d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x)!, props.xMaxValue || 0);
     const legendBars: JSXElement = _getLegendData(_points);
+    const legendVal = props.chartTitle?.trim() || _points[0]?.legend || 'Series';
+    const chartGroupAriaLabel = `${legendVal}, bar chart with ${_points.length} bars and ${_points.length} data points.`;
     return (
       <CartesianChart
         yAxisPadding={_yAxisPadding}
@@ -917,7 +919,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         children={(props: ChildProps) => {
           return (
             <>
-              <g>{_bars}</g>
+              <g role="listbox" aria-label={chartGroupAriaLabel}>
+                {_bars}
+              </g>
             </>
           );
         }}

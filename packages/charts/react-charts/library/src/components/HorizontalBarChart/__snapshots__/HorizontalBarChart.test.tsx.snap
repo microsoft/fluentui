@@ -39,7 +39,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
+            aria-label="one, bar 1 of 3 with 2 data points."
             id="_HorizontalLine__r_2s__0"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 10%."
@@ -47,20 +49,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#004b50"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -103,7 +103,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
+            aria-label="two, bar 2 of 3 with 2 data points."
             id="_HorizontalLine__r_2s__1"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 5%."
@@ -111,20 +113,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#5c2d91"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -167,7 +167,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
+            aria-label="three, bar 3 of 3 with 2 data points."
             id="_HorizontalLine__r_2s__2"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 59%."
@@ -175,20 +177,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#a4262c"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -244,7 +244,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
+            aria-label="one, bar 1 of 3 with 2 data points."
             id="_HorizontalLine__r_32__0"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 10%."
@@ -252,20 +254,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#004b50"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -308,7 +308,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
+            aria-label="two, bar 2 of 3 with 2 data points."
             id="_HorizontalLine__r_32__1"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 5%."
@@ -316,20 +318,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#5c2d91"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -372,7 +372,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
+            aria-label="three, bar 3 of 3 with 2 data points."
             id="_HorizontalLine__r_32__2"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 59%."
@@ -380,20 +382,18 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#a4262c"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -453,7 +453,9 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
+              aria-label="one, bar 1 of 3 with 2 data points."
               id="_HorizontalLine__r_39__0"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 10%."
@@ -461,20 +463,18 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="#004b50"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
                 y="0"
               />
               <rect
-                aria-label="13457/15000."
                 class="fui-hbc__barWrapper"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
-                role="img"
-                tabindex="0"
+                role=""
                 width="89.71333333333334%"
                 x="10.286666666666665%"
                 y="0"
@@ -517,7 +517,9 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
+              aria-label="two, bar 2 of 3 with 2 data points."
               id="_HorizontalLine__r_39__1"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 5%."
@@ -525,20 +527,18 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
                 y="0"
               />
               <rect
-                aria-label="14200/15000."
                 class="fui-hbc__barWrapper"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
-                role="img"
-                tabindex="0"
+                role=""
                 width="94.66666666666667%"
                 x="5.333333333333334%"
                 y="0"
@@ -581,7 +581,9 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
+              aria-label="three, bar 3 of 3 with 2 data points."
               id="_HorizontalLine__r_39__2"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 59%."
@@ -589,20 +591,18 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="#a4262c"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
                 y="0"
               />
               <rect
-                aria-label="6112/15000."
                 class="fui-hbc__barWrapper"
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 opacity="1"
-                role="img"
-                tabindex="0"
+                role=""
                 width="40.74666666666666%"
                 x="59.25333333333334%"
                 y="0"
@@ -671,7 +671,9 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
+            aria-label="one, bar 1 of 3 with 2 data points."
             id="_HorizontalLine__r_3f__0"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 10%."
@@ -679,20 +681,18 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="#004b50"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -735,7 +735,9 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
+            aria-label="two, bar 2 of 3 with 2 data points."
             id="_HorizontalLine__r_3f__1"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 5%."
@@ -743,20 +745,18 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="#5c2d91"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -799,7 +799,9 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
+            aria-label="three, bar 3 of 3 with 2 data points."
             id="_HorizontalLine__r_3f__2"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 59%."
@@ -807,20 +809,18 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="#a4262c"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -869,7 +869,9 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           class="fui-hbc__chart"
         >
           <g
+            aria-label="one, bar 1 of 1 with 2 data points."
             id="_HorizontalLine__r_6__0"
+            role="listbox"
           >
             <rect
               aria-label="one.one, 10/100."
@@ -877,20 +879,18 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
               fill="#004b50"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="10%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="one.two, 90/100."
               class="fui-hbc__barWrapper"
               fill="#a4262c"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="90%"
               x="10%"
               y="0"
@@ -1015,7 +1015,9 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           class="fui-hbc__chart"
         >
           <g
+            aria-label="two, bar 1 of 1 with 2 data points."
             id="_HorizontalLine__r_a__0"
+            role="listbox"
           >
             <rect
               aria-label="two.one, 30/200."
@@ -1023,20 +1025,18 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
               fill="#5c2d91"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="15%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="two.two, 170/200."
               class="fui-hbc__barWrapper"
               fill="#a4262c"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="85%"
               x="15%"
               y="0"
@@ -1168,7 +1168,9 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           class="fui-hbc__chart"
         >
           <g
+            aria-label="one, bar 1 of 3 with 2 data points."
             id="_HorizontalLine__r_0__0"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 10%."
@@ -1176,20 +1178,18 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="#004b50"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="13457/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -1232,7 +1232,9 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           class="fui-hbc__chart"
         >
           <g
+            aria-label="two, bar 2 of 3 with 2 data points."
             id="_HorizontalLine__r_0__1"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 5%."
@@ -1240,20 +1242,18 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="#5c2d91"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="14200/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -1296,7 +1296,9 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           class="fui-hbc__chart"
         >
           <g
+            aria-label="three, bar 3 of 3 with 2 data points."
             id="_HorizontalLine__r_0__2"
+            role="listbox"
           >
             <rect
               aria-label="2020/04/30, 59%."
@@ -1304,20 +1306,18 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="#a4262c"
               height="12"
               opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
               y="0"
             />
             <rect
-              aria-label="6112/15000."
               class="fui-hbc__barWrapper"
               fill="var(--colorBackgroundOverlay)"
               height="12"
               opacity="1"
-              role="img"
-              tabindex="0"
+              role=""
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -1371,7 +1371,9 @@ Object {
               class="fui-hbc__chart"
             >
               <g
+                aria-label="one, bar 1 of 3 with 2 data points."
                 id="_HorizontalLine__r_41__0"
+                role="listbox"
               >
                 <rect
                   aria-label="2020/04/30, 10%."
@@ -1379,7 +1381,7 @@ Object {
                   fill="#004b50"
                   height="12"
                   opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   width="10.286666666666665%"
                   x="0%"
@@ -1417,7 +1419,9 @@ Object {
               class="fui-hbc__chart"
             >
               <g
+                aria-label="two, bar 2 of 3 with 2 data points."
                 id="_HorizontalLine__r_41__1"
+                role="listbox"
               >
                 <rect
                   aria-label="2020/04/30, 5%."
@@ -1425,7 +1429,7 @@ Object {
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   width="5.333333333333334%"
                   x="0%"
@@ -1463,7 +1467,9 @@ Object {
               class="fui-hbc__chart"
             >
               <g
+                aria-label="three, bar 3 of 3 with 2 data points."
                 id="_HorizontalLine__r_41__2"
+                role="listbox"
               >
                 <rect
                   aria-label="2020/04/30, 59%."
@@ -1471,7 +1477,7 @@ Object {
                   fill="#a4262c"
                   height="12"
                   opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   width="59.25333333333334%"
                   x="0%"
@@ -1568,7 +1574,9 @@ Object {
             class="fui-hbc__chart"
           >
             <g
+              aria-label="one, bar 1 of 3 with 2 data points."
               id="_HorizontalLine__r_41__0"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 10%."
@@ -1576,7 +1584,7 @@ Object {
                 fill="#004b50"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
@@ -1614,7 +1622,9 @@ Object {
             class="fui-hbc__chart"
           >
             <g
+              aria-label="two, bar 2 of 3 with 2 data points."
               id="_HorizontalLine__r_41__1"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 5%."
@@ -1622,7 +1632,7 @@ Object {
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
@@ -1660,7 +1670,9 @@ Object {
             class="fui-hbc__chart"
           >
             <g
+              aria-label="three, bar 3 of 3 with 2 data points."
               id="_HorizontalLine__r_41__2"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 59%."
@@ -1668,7 +1680,7 @@ Object {
                 fill="#a4262c"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
@@ -1776,7 +1788,9 @@ Object {
               class="fui-hbc__chart"
             >
               <g
+                aria-label="one, bar 1 of 3 with 2 data points."
                 id="_HorizontalLine__r_3r__0"
+                role="listbox"
               >
                 <rect
                   aria-label="2020/04/30, 10%."
@@ -1784,7 +1798,7 @@ Object {
                   fill="#004b50"
                   height="12"
                   opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   width="10.286666666666665%"
                   x="0%"
@@ -1831,7 +1845,9 @@ Object {
               class="fui-hbc__chart"
             >
               <g
+                aria-label="two, bar 2 of 3 with 2 data points."
                 id="_HorizontalLine__r_3r__1"
+                role="listbox"
               >
                 <rect
                   aria-label="2020/04/30, 5%."
@@ -1839,7 +1855,7 @@ Object {
                   fill="#5c2d91"
                   height="12"
                   opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   width="5.333333333333334%"
                   x="0%"
@@ -1886,7 +1902,9 @@ Object {
               class="fui-hbc__chart"
             >
               <g
+                aria-label="three, bar 3 of 3 with 2 data points."
                 id="_HorizontalLine__r_3r__2"
+                role="listbox"
               >
                 <rect
                   aria-label="2020/04/30, 59%."
@@ -1894,7 +1912,7 @@ Object {
                   fill="#a4262c"
                   height="12"
                   opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   width="59.25333333333334%"
                   x="0%"
@@ -2000,7 +2018,9 @@ Object {
             class="fui-hbc__chart"
           >
             <g
+              aria-label="one, bar 1 of 3 with 2 data points."
               id="_HorizontalLine__r_3r__0"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 10%."
@@ -2008,7 +2028,7 @@ Object {
                 fill="#004b50"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
@@ -2055,7 +2075,9 @@ Object {
             class="fui-hbc__chart"
           >
             <g
+              aria-label="two, bar 2 of 3 with 2 data points."
               id="_HorizontalLine__r_3r__1"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 5%."
@@ -2063,7 +2085,7 @@ Object {
                 fill="#5c2d91"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
@@ -2110,7 +2132,9 @@ Object {
             class="fui-hbc__chart"
           >
             <g
+              aria-label="three, bar 3 of 3 with 2 data points."
               id="_HorizontalLine__r_3r__2"
+              role="listbox"
             >
               <rect
                 aria-label="2020/04/30, 59%."
@@ -2118,7 +2142,7 @@ Object {
                 fill="#a4262c"
                 height="12"
                 opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"

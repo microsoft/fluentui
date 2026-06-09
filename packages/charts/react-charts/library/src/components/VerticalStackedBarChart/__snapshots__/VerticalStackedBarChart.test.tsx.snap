@@ -202,7 +202,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
         </g>
         <g
+          aria-label="Metadata1, bar chart with 3 bars and 3 data points."
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g>
             <g
@@ -215,7 +217,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="4.2"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -230,7 +232,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="1.05"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -242,7 +244,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 2.5"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -263,7 +265,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="62.999999999999986"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -278,7 +280,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="6.299999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -293,7 +295,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="83.99999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -305,7 +307,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 73"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -326,7 +328,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="21"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -341,7 +343,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="126"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -356,7 +358,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="63"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -368,7 +370,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 100"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -379,7 +381,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="Metadata1, line chart with 1 lines."
+          role="listbox"
+        >
           <line
             opacity="1"
             stroke="#0078d4"
@@ -409,7 +414,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
@@ -422,7 +427,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
@@ -435,7 +440,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
@@ -743,7 +748,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </g>
         </g>
         <g
+          aria-label="Metadata1, bar chart with 3 bars and 3 data points."
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g>
             <g
@@ -756,7 +763,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="4.2"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -771,7 +778,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="1.05"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -783,7 +790,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 2.5"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -804,7 +811,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="62.999999999999986"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -819,7 +826,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="6.299999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -834,7 +841,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="83.99999999999999"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -846,7 +853,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 73"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -867,7 +874,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="21"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -882,7 +889,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#002050"
                 height="126"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -897,7 +904,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="63"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0, 0)"
@@ -909,7 +916,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 100"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -920,7 +927,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="Metadata1, line chart with 1 lines."
+          role="listbox"
+        >
           <line
             opacity="1"
             stroke="#0078d4"
@@ -950,7 +960,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
@@ -963,7 +973,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
@@ -976,7 +986,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
@@ -1436,7 +1446,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           </g>
         </g>
         <g
+          aria-label="Metadata1, bar chart with 2 bars and 2 data points."
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g>
             <g
@@ -1449,7 +1461,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1464,7 +1476,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1476,7 +1488,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -1497,7 +1509,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1512,7 +1524,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1524,7 +1536,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -1535,7 +1547,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             </text>
           </g>
         </g>
-        <g />
+        <g
+          aria-label="Metadata1, line chart with 0 lines."
+          role="listbox"
+        />
       </svg>
     </div>
     <div
@@ -1951,7 +1966,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           </g>
         </g>
         <g
+          aria-label="Metadata1, bar chart with 2 bars and 2 data points."
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g>
             <g
@@ -1964,7 +1981,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1979,7 +1996,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -1991,7 +2008,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2012,7 +2029,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2027,7 +2044,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2039,7 +2056,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2050,7 +2067,10 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             </text>
           </g>
         </g>
-        <g />
+        <g
+          aria-label="Metadata1, line chart with 0 lines."
+          role="listbox"
+        />
       </svg>
     </div>
     <div
@@ -2519,7 +2539,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
         </g>
         <g
+          aria-label="Metadata1, bar chart with 2 bars and 2 data points."
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g>
             <g
@@ -2532,7 +2554,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2547,7 +2569,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2559,7 +2581,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2580,7 +2602,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2595,7 +2617,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -2607,7 +2629,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2618,7 +2640,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </text>
           </g>
         </g>
-        <g />
+        <g
+          aria-label="Metadata1, line chart with 0 lines."
+          role="listbox"
+        />
       </svg>
     </div>
     <div
@@ -3064,7 +3089,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           </g>
         </g>
         <g
+          aria-label="Metadata1, bar chart with 2 bars and 2 data points."
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g>
             <g
@@ -3077,7 +3104,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="188.46153846153845"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3092,7 +3119,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="23.557692307692307"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3104,7 +3131,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -3125,7 +3152,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="aqua"
                 height="141.34615384615384"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3140,7 +3167,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="navy"
                 height="94.23076923076923"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
@@ -3152,7 +3179,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="img"
+              role="option"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -3163,7 +3190,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="Metadata1, line chart with 1 lines."
+          role="listbox"
+        >
           <line
             opacity="1"
             stroke="yellow"
@@ -3182,7 +3212,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="yellow"
             stroke-width="3"
             tabindex="0"
@@ -3195,7 +3225,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="var(--colorNeutralBackground1)"
             opacity="0"
             r="8"
-            role="img"
+            role="option"
             stroke="yellow"
             stroke-width="3"
             tabindex="0"
@@ -3691,7 +3721,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -3704,7 +3736,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3719,7 +3751,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3740,7 +3772,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3755,7 +3787,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -3766,7 +3798,10 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           </g>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -4180,7 +4215,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -4193,7 +4230,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4208,7 +4245,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4220,7 +4257,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4241,7 +4278,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4256,7 +4293,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4268,7 +4305,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4279,7 +4316,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -4693,7 +4733,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -4706,7 +4748,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4721,7 +4763,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4733,7 +4775,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4754,7 +4796,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4769,7 +4811,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -4781,7 +4823,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4792,7 +4834,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -5206,7 +5251,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -5219,7 +5266,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5234,7 +5281,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5246,7 +5293,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5267,7 +5314,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5282,7 +5329,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5294,7 +5341,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5305,7 +5352,10 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -5719,7 +5769,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -5732,7 +5784,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5747,7 +5799,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5759,7 +5811,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5780,7 +5832,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5795,7 +5847,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -5807,7 +5859,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5818,7 +5870,10 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -6239,7 +6294,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -6252,7 +6309,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="aqua"
               height="3.846153846153846"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6267,7 +6324,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="navy"
               height="0.4807692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6279,7 +6336,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6300,7 +6357,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="aqua"
               height="2.884615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6315,7 +6372,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               fill="navy"
               height="1.923076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -6327,7 +6384,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6338,7 +6395,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
 </div>
@@ -6697,7 +6757,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -6710,7 +6772,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6724,7 +6786,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6735,7 +6797,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6756,7 +6818,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6770,7 +6832,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               transform="translate(-8, 0)"
               width="16"
@@ -6781,7 +6843,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6792,7 +6854,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -7206,13 +7271,15 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
             aria-label="0. Metadata1, 40%. Metadata2, 5%."
             id="0-singleBar"
-            role="img"
+            role="option"
             tabindex="0"
           >
             <rect
@@ -7243,7 +7310,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7257,7 +7324,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <g
             aria-label="20. Metadata1, 30%. Metadata2, 20%."
             id="1-singleBar"
-            role="img"
+            role="option"
             tabindex="0"
           >
             <rect
@@ -7288,7 +7355,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7299,7 +7366,10 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -7790,7 +7860,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -7803,7 +7875,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7818,7 +7890,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7830,7 +7902,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7851,7 +7923,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7866,7 +7938,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -7878,7 +7950,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7889,7 +7961,10 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -8385,7 +8460,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -8398,7 +8475,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8413,7 +8490,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8425,7 +8502,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -8446,7 +8523,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8461,7 +8538,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8473,7 +8550,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -8484,7 +8561,10 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div
@@ -8905,7 +8985,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         </g>
       </g>
       <g
+        aria-label="Metadata1, bar chart with 2 bars and 2 data points."
         data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+        role="listbox"
       >
         <g>
           <g
@@ -8918,7 +9000,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="aqua"
               height="188.46153846153845"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8933,7 +9015,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="navy"
               height="23.557692307692307"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8945,7 +9027,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -8966,7 +9048,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="aqua"
               height="141.34615384615384"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8981,7 +9063,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               fill="navy"
               height="94.23076923076923"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(-8, 0)"
@@ -8993,7 +9075,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="img"
+            role="option"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -9004,7 +9086,10 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           </text>
         </g>
       </g>
-      <g />
+      <g
+        aria-label="Metadata1, line chart with 0 lines."
+        role="listbox"
+      />
     </svg>
   </div>
   <div

@@ -328,14 +328,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="Oranges, bar chart with 4 bars and 4 data points."
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Oranges, 10%."
             aria-labelledby="toolTipcallout_r_0_"
             fill="#0078d4"
             height="16"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="147.5"
@@ -360,7 +363,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             fill="#002050"
             height="16"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="590"
@@ -385,7 +388,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             fill="#00188f"
             height="16"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="368.75"
@@ -410,7 +413,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             fill="#00bcf2"
             height="16"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="295"
@@ -855,14 +858,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="Series, bar chart with 4 bars and 4 data points."
+          role="listbox"
+        >
           <rect
             aria-label="String One. 1000."
             aria-labelledby="toolTipcallout_r_4_"
             fill="#0078d4"
             height="32.714285714285715"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             transform="translate(0,-3.634920634920636)"
@@ -888,7 +894,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             fill="#00bcf2"
             height="32.714285714285715"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             transform="translate(0,-3.634920634920636)"
@@ -914,7 +920,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             fill="#00188f"
             height="32.714285714285715"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             transform="translate(0,-3.634920634920636)"
@@ -940,7 +946,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             fill="#002050"
             height="32.714285714285715"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             transform="translate(0,-3.634920634920636)"
@@ -1336,14 +1342,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Oranges, bar chart with 4 bars and 4 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_2e_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="147.5"
@@ -1368,7 +1377,7 @@ Object {
                 fill="#002050"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="590"
@@ -1393,7 +1402,7 @@ Object {
                 fill="#00188f"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="368.75"
@@ -1418,7 +1427,7 @@ Object {
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="295"
@@ -1863,14 +1872,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Oranges, bar chart with 4 bars and 4 data points."
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_2e_"
               fill="#0078d4"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="147.5"
@@ -1895,7 +1907,7 @@ Object {
               fill="#002050"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="590"
@@ -1920,7 +1932,7 @@ Object {
               fill="#00188f"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="368.75"
@@ -1945,7 +1957,7 @@ Object {
               fill="#00bcf2"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="295"
@@ -2449,14 +2461,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Oranges, bar chart with 4 bars and 4 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_2i_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="3"
                 tabindex="0"
                 width="147.5"
@@ -2481,7 +2496,7 @@ Object {
                 fill="#002050"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="3"
                 tabindex="0"
                 width="590"
@@ -2506,7 +2521,7 @@ Object {
                 fill="#00188f"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="3"
                 tabindex="0"
                 width="368.75"
@@ -2531,7 +2546,7 @@ Object {
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="3"
                 tabindex="0"
                 width="295"
@@ -2976,14 +2991,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Oranges, bar chart with 4 bars and 4 data points."
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_2i_"
               fill="#0078d4"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               width="147.5"
@@ -3008,7 +3026,7 @@ Object {
               fill="#002050"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               width="590"
@@ -3033,7 +3051,7 @@ Object {
               fill="#00188f"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               width="368.75"
@@ -3058,7 +3076,7 @@ Object {
               fill="#00bcf2"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="3"
               tabindex="0"
               width="295"
@@ -3562,14 +3580,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Oranges, bar chart with 4 bars and 4 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_1r_"
                 fill="#0078d4"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="147.5"
@@ -3594,7 +3615,7 @@ Object {
                 fill="#002050"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="590"
@@ -3619,7 +3640,7 @@ Object {
                 fill="#00188f"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="368.75"
@@ -3644,7 +3665,7 @@ Object {
                 fill="#00bcf2"
                 height="16"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="295"
@@ -4089,14 +4110,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Oranges, bar chart with 4 bars and 4 data points."
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_1r_"
               fill="#0078d4"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="147.5"
@@ -4121,7 +4145,7 @@ Object {
               fill="#002050"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="590"
@@ -4146,7 +4170,7 @@ Object {
               fill="#00188f"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="368.75"
@@ -4171,7 +4195,7 @@ Object {
               fill="#00bcf2"
               height="16"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="295"
@@ -4732,14 +4756,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Product A, bar chart with 9 bars and 9 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="Q1. Product A, 10K."
                 aria-labelledby="toolTipcallout_r_1v_"
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4753,7 +4780,7 @@ Object {
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4767,7 +4794,7 @@ Object {
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4793,7 +4820,7 @@ Object {
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4807,7 +4834,7 @@ Object {
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4821,7 +4848,7 @@ Object {
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4847,7 +4874,7 @@ Object {
                 fill="#0078d4"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4861,7 +4888,7 @@ Object {
                 fill="#ff8c00"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -4875,7 +4902,7 @@ Object {
                 fill="#107c10"
                 height="45.8"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-6.542857142857141)"
@@ -5359,14 +5386,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Product A, bar chart with 9 bars and 9 data points."
+            role="listbox"
+          >
             <rect
               aria-label="Q1. Product A, 10K."
               aria-labelledby="toolTipcallout_r_1v_"
               fill="#0078d4"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5380,7 +5410,7 @@ Object {
               fill="#ff8c00"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5394,7 +5424,7 @@ Object {
               fill="#107c10"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5420,7 +5450,7 @@ Object {
               fill="#0078d4"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5434,7 +5464,7 @@ Object {
               fill="#ff8c00"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5448,7 +5478,7 @@ Object {
               fill="#107c10"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5474,7 +5504,7 @@ Object {
               fill="#0078d4"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5488,7 +5518,7 @@ Object {
               fill="#ff8c00"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5502,7 +5532,7 @@ Object {
               fill="#107c10"
               height="45.8"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-6.542857142857141)"
@@ -5988,14 +6018,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Oranges, bar chart with 4 bars and 4 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. Oranges, 10%."
                 aria-labelledby="toolTipcallout_r_23_"
                 fill="#0078d4"
                 height="1"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="147.5"
@@ -6008,7 +6041,7 @@ Object {
                 fill="#002050"
                 height="1"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="590"
@@ -6021,7 +6054,7 @@ Object {
                 fill="#00188f"
                 height="1"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="368.75"
@@ -6034,7 +6067,7 @@ Object {
                 fill="#00bcf2"
                 height="1"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="295"
@@ -6374,14 +6407,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Oranges, bar chart with 4 bars and 4 data points."
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Oranges, 10%."
               aria-labelledby="toolTipcallout_r_23_"
               fill="#0078d4"
               height="1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="147.5"
@@ -6394,7 +6430,7 @@ Object {
               fill="#002050"
               height="1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="590"
@@ -6407,7 +6443,7 @@ Object {
               fill="#00188f"
               height="1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="368.75"
@@ -6420,7 +6456,7 @@ Object {
               fill="#00bcf2"
               height="1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="295"
@@ -6841,14 +6877,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Series, bar chart with 4 bars and 4 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="String One. 1000."
                 aria-labelledby="toolTipcallout_r_26_"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -6874,7 +6913,7 @@ Object {
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -6900,7 +6939,7 @@ Object {
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -6926,7 +6965,7 @@ Object {
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -7342,14 +7381,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Series, bar chart with 4 bars and 4 data points."
+            role="listbox"
+          >
             <rect
               aria-label="String One. 1000."
               aria-labelledby="toolTipcallout_r_26_"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -7375,7 +7417,7 @@ Object {
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -7401,7 +7443,7 @@ Object {
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -7427,7 +7469,7 @@ Object {
               fill="#002050"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -7878,14 +7920,17 @@ Object {
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Series, bar chart with 4 bars and 4 data points."
+              role="listbox"
+            >
               <rect
                 aria-label="String One. 1000."
                 aria-labelledby="toolTipcallout_r_2a_"
                 fill="#0078d4"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -7911,7 +7956,7 @@ Object {
                 fill="#00bcf2"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -7937,7 +7982,7 @@ Object {
                 fill="#00188f"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -7963,7 +8008,7 @@ Object {
                 fill="#002050"
                 height="32.714285714285715"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 transform="translate(0,-3.634920634920636)"
@@ -8350,14 +8395,17 @@ Object {
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="Series, bar chart with 4 bars and 4 data points."
+            role="listbox"
+          >
             <rect
               aria-label="String One. 1000."
               aria-labelledby="toolTipcallout_r_2a_"
               fill="#0078d4"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -8383,7 +8431,7 @@ Object {
               fill="#00bcf2"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -8409,7 +8457,7 @@ Object {
               fill="#00188f"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"
@@ -8435,7 +8483,7 @@ Object {
               fill="#002050"
               height="32.714285714285715"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               transform="translate(0,-3.634920634920636)"

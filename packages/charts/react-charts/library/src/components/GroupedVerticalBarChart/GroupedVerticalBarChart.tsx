@@ -594,7 +594,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
               tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
-              role="img"
+              role="option"
             />,
           );
 
@@ -636,8 +636,15 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
+    const legendVal = props.chartTitle?.trim() || singleSet.groupSeries?.[0]?.legend || 'Series';
+    const chartGroupAriaLabel = `${legendVal}, bar ${singleSet.indexNum + 1} of ${_datasetForBars.length} with ${
+      singleSet.groupSeries?.length || 0
+    } data points.`;
+
     return (
       <g
+        role="listbox"
+        aria-label={chartGroupAriaLabel}
         key={singleSet.indexNum}
         transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - effectiveGroupWidth) / 2}, 0)`}
       >
@@ -871,7 +878,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
-            role="img"
+            role="option"
             aria-label={getAriaLabel(
               {
                 xAxisCalloutData: point.xAxisCalloutData,
@@ -891,11 +898,19 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       dots.push(<g key={`dotGroup-${seriesIdx}`}>{dotGroup}</g>);
     });
 
+    const legendVal = props.chartTitle?.trim() || _lineData[0]?.legend || 'Series';
+    const chartGroupAriaLabel = `${legendVal}, line series with ${_lineData.length} groups and ${_lineData.reduce(
+      (sum, series) => sum + (series.data?.length || 0),
+      0,
+    )} data points.`;
+
     return dots.length > 0 ? (
       <g>
         {lineBorders.length > 0 ? <g>{lineBorders}</g> : null}
         {lines.length > 0 ? <g>{lines}</g> : null}
-        <g>{dots}</g>
+        <g role="listbox" aria-label={chartGroupAriaLabel}>
+          {dots}
+        </g>
       </g>
     ) : null;
   };

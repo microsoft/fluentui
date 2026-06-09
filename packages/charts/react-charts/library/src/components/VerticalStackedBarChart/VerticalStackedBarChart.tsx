@@ -658,7 +658,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             onFocus={event => _lineFocus(event, circlePoint, circleRef)}
             onBlur={_handleMouseOut}
-            role="img"
+            role="option"
             aria-label={_getAriaLabel(circlePoint.xItem, circlePoint as VSChartDataPoint, true)}
           />,
         );
@@ -1042,7 +1042,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             onFocus: () => _onRectFocus(point, singleChartData.xAxisPoint as string, startColor, ref),
             onBlur: _handleMouseOut,
             onClick: (event: React.MouseEvent<SVGElement, MouseEvent>) => _onClick(point, event),
-            role: 'img',
+            role: 'option',
             tabIndex: !props.hideTooltip && shouldHighlight ? 0 : undefined,
           };
 
@@ -1145,7 +1145,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onFocus: () => _onStackFocus(singleChartData, groupRef),
           onBlur: _handleMouseOut,
           onClick: (event: any) => _onClick(singleChartData, event),
-          role: 'img',
+          role: 'option',
           tabIndex: !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
@@ -1199,7 +1199,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               textAnchor="middle"
               className={classes.barLabel}
               aria-label={`Total: ${barLabel}`}
-              role="img"
+              role="option"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
               style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
@@ -1337,7 +1337,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
     const shouldFocusWholeStack = _toFocusWholeStack();
     _dataset = _createDataSetLayer();
-    const legendBars: JSXElement = _getLegendData(_points, _createLegendsForLine(props.data));
+    const lineLegends = _createLegendsForLine(props.data);
+    const legendBars: JSXElement = _getLegendData(_points, lineLegends);
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
       color,
       legend: calloutLegend,
@@ -1362,6 +1363,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       tickValues: props.tickValues,
       tickFormat: props.tickFormat,
     };
+    const legendVal = props.chartTitle?.trim() || _points[0]?.chartData?.[0]?.legend || 'Series';
+    const chartGroupAriaLabel = `${legendVal}, bar chart with ${_points.length} bars and ${_points.length} data points.`;
+    const lineGroupAriaLabel = `${legendVal}, line chart with ${lineLegends.length} lines.`;
     return (
       <CartesianChart
         {...props}
@@ -1397,8 +1401,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         children={(props: ChildProps) => {
           return (
             <>
-              <g {..._arrowNavigationAttributes}>{_bars}</g>
-              <g>
+              <g role="listbox" aria-label={chartGroupAriaLabel} {..._arrowNavigationAttributes}>
+                {_bars}
+              </g>
+              <g role="listbox" aria-label={lineGroupAriaLabel}>
                 {_isHavingLines &&
                   _createLines(
                     props.xScale!,

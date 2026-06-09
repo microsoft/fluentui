@@ -236,7 +236,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
+              aria-label="North, bar chart with 3 bars and 3 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g>
                 <g
@@ -249,7 +251,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -264,7 +266,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#e3008c"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -285,7 +287,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -300,7 +302,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#e3008c"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -321,7 +323,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -336,7 +338,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#e3008c"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -347,7 +349,10 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="North, line chart with 1 lines."
+              role="listbox"
+            >
               <line
                 opacity="1"
                 stroke="#2aa0a4"
@@ -410,7 +415,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#2aa0a4"
                 stroke-width="3"
                 tabindex="0"
@@ -423,7 +428,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#2aa0a4"
                 stroke-width="3"
                 tabindex="0"
@@ -436,7 +441,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#2aa0a4"
                 stroke-width="3"
                 tabindex="0"
@@ -449,7 +454,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#2aa0a4"
                 stroke-width="3"
                 tabindex="0"
@@ -462,7 +467,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#2aa0a4"
                 stroke-width="3"
                 tabindex="0"
@@ -475,7 +480,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#2aa0a4"
                 stroke-width="3"
                 tabindex="0"
@@ -815,7 +820,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
+              aria-label="A, bar chart with 3 bars and 3 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g>
                 <g
@@ -828,7 +835,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -849,7 +856,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -870,7 +877,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -881,7 +888,10 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="A, line chart with 1 lines."
+              role="listbox"
+            >
               <line
                 opacity="1"
                 stroke="#e3008c"
@@ -911,7 +921,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -924,7 +934,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -937,7 +947,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -1258,7 +1268,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
+              aria-label="Bar, bar chart with 3 bars and 3 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g>
                 <g
@@ -1271,7 +1283,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1292,7 +1304,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1313,7 +1325,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1324,7 +1336,10 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Bar, line chart with 1 lines."
+              role="listbox"
+            >
               <line
                 opacity="1"
                 stroke="#e3008c"
@@ -1354,7 +1369,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -1367,7 +1382,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -1380,7 +1395,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -1778,7 +1793,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
+              aria-label="Sales and Profit Trend, bar chart with 6 bars and 6 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g>
                 <g
@@ -1791,7 +1808,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="lightblue"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1812,7 +1829,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="lightblue"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1833,7 +1850,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="lightblue"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1854,7 +1871,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="lightblue"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1875,7 +1892,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="lightblue"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1896,7 +1913,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                     fill="lightblue"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(0, 0)"
@@ -1907,7 +1924,10 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Sales and Profit Trend, line chart with 1 lines."
+              role="listbox"
+            >
               <line
                 opacity="1"
                 stroke="red"
@@ -1970,7 +1990,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="3"
                 tabindex="0"
@@ -1983,7 +2003,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="3"
                 tabindex="0"
@@ -1996,7 +2016,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="3"
                 tabindex="0"
@@ -2009,7 +2029,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="3"
                 tabindex="0"
@@ -2022,7 +2042,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="3"
                 tabindex="0"
@@ -2035,7 +2055,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="red"
                 stroke-width="3"
                 tabindex="0"
@@ -2411,6 +2431,8 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             />
             <g>
               <g
+                aria-label="North, bar 1 of 1 with 2 data points."
+                role="listbox"
                 transform="translate(-6.888888888888889, 0)"
               >
                 <rect
@@ -2419,7 +2441,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   fill="#637cef"
                   height="NaN"
                   opacity=""
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="16"
@@ -2432,7 +2454,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   fill="#e3008c"
                   height="NaN"
                   opacity=""
-                  role="img"
+                  role="option"
                   rx="0"
                   tabindex="0"
                   width="16"
@@ -3483,7 +3505,9 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               </g>
             </g>
             <g
+              aria-label="Bar, bar chart with 2 bars and 2 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g>
                 <g
@@ -3496,7 +3520,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(1.5, 0)"
@@ -3508,7 +3532,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 <text
                   aria-label="Total: 10"
                   class="fui-vsbc__barLabel"
-                  role="img"
+                  role="option"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   transform="translate(1.5, 0)"
@@ -3529,7 +3553,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                     fill="#637cef"
                     height="NaN"
                     opacity="1"
-                    role="img"
+                    role="option"
                     rx="3"
                     tabindex="0"
                     transform="translate(1.5, 0)"
@@ -3541,7 +3565,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 <text
                   aria-label="Total: 15"
                   class="fui-vsbc__barLabel"
-                  role="img"
+                  role="option"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   transform="translate(1.5, 0)"
@@ -3552,7 +3576,10 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 </text>
               </g>
             </g>
-            <g>
+            <g
+              aria-label="Bar, line chart with 1 lines."
+              role="listbox"
+            >
               <line
                 opacity="1"
                 stroke="#e3008c"
@@ -3571,7 +3598,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
@@ -3584,7 +3611,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 fill="var(--colorNeutralBackground1)"
                 opacity="0"
                 r="8"
-                role="img"
+                role="option"
                 stroke="#e3008c"
                 stroke-width="3"
                 tabindex="0"
