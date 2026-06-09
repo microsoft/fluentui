@@ -90,6 +90,19 @@ const useStyles = makeStyles({
       textDecorationLine: 'none',
       color: tokens.colorNeutralForegroundDisabled,
     },
+
+    // There is no native disabled state for links, so we need to explicitly style the disabled state for high contrast mode.
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+
+      ':hover': {
+        color: 'GrayText',
+      },
+
+      ':active': {
+        color: 'GrayText',
+      },
+    },
   },
   inverted: {
     color: tokens.colorBrandForegroundInverted,
