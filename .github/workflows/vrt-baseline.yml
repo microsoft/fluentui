@@ -1,9 +1,14 @@
 name: VRT Baseline
+# TEMPORARILY DISABLED: VRT is paused until the infra team ships a patched
+# `vr-approval-cli` (current `0.5.1` has a weak-hash visual-review bypass).
+# Auto-triggers are removed; this workflow can only be run manually until then.
+# Restore the `push` trigger below once a fixed CLI version is pinned.
 on:
-  push:
-    branches:
-      # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
-      - master
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
+  #     - master
 
 env:
   NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
@@ -62,7 +67,7 @@ jobs:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
         run: |
-          npx vr-approval-cli@0.0.0-REPLACE-WITH-PATCHED-VERSION run-diff \
+          npx vr-approval-cli@0.5.1 run-diff \
             --screenshotsDirectory "${{steps.screenshots_root.outputs.result}}" \
             --buildType release \
             --ciDefinitionId 'vrt-baseline.yml' \

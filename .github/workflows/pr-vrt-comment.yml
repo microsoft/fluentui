@@ -1,9 +1,15 @@
 name: VRT | Comment on PR
+# TEMPORARILY DISABLED: VRT is paused until the infra team ships a patched
+# `vr-approval-cli` (current `0.5.1` has a weak-hash visual-review bypass that
+# lets a PR author emit a false "No visual changes" clean signal on this
+# privileged path). Auto-triggers are removed; restore the `workflow_run`
+# trigger below once a fixed CLI version is pinned.
 on:
-  workflow_run:
-    workflows: ['VRT PR']
-    types:
-      - completed
+  workflow_dispatch:
+  # workflow_run:
+  #   workflows: ['VRT PR']
+  #   types:
+  #     - completed
 
 # Least-privilege default for this `workflow_run`: deny all scopes by default and
 # grant only what each job explicitly needs below.
@@ -113,11 +119,11 @@ jobs:
             const { execSync } = require('child_process');
 
             try {
-              execSync(`npx vr-approval-cli@0.0.0-REPLACE-WITH-PATCHED-VERSION create-policy \
+              execSync(`npx vr-approval-cli@0.5.1 create-policy \
                 --nonBlockingPipelines '{"301":{"pipelineStatus": "PENDING","pipelineName": "Fluent UI"}}' \
                 --clientType FLUENTUI`, { stdio: 'inherit' });
 
-              execSync(`npx vr-approval-cli@0.0.0-REPLACE-WITH-PATCHED-VERSION run-diff \
+              execSync(`npx vr-approval-cli@0.5.1 run-diff \
                 --screenshotsDirectory ./screenshots \
                 --buildType pr \
                 --ciDefinitionId 'vrt-baseline.yml' \

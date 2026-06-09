@@ -1,9 +1,14 @@
 name: VRT PR
+# TEMPORARILY DISABLED: VRT is paused until the infra team ships a patched
+# `vr-approval-cli` (current `0.5.1` has a weak-hash visual-review bypass).
+# Auto-triggers are removed; this workflow can only be run manually until then.
+# Restore the `pull_request` trigger below once a fixed CLI version is pinned.
 on:
-  pull_request:
-    branches:
-      # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
-      - master
+  workflow_dispatch:
+  # pull_request:
+  #   branches:
+  #     # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
+  #     - master
 
 concurrency:
   # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
