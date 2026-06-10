@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added part for content and actions in fluent-message-bar",
+  "packageName": "@fluentui/web-components",
+  "email": "support@marvinkleinmusic.de",
+  "dependentChangeType": "patch"
+}

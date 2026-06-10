@@ -9,6 +9,8 @@ import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-b
  * @slot actions - Content that can be provided for the actions
  * @slot dismiss - Content that can be provided for the dismiss button
  * @slot - The default slot for the content
+ * @csspart content - The wrapper for the message
+ * @csspart actions - The wrapper for extra action buttons related to the message
  * @public
  */
 export class MessageBar extends FASTElement {
