@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable, Updates } from '@microsoft/fast-element';
-import { setAutoFocus } from '../utils/autofocus.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.options.js';
 
 /**
@@ -448,7 +448,7 @@ export class BaseTextInput extends FASTElement {
     this.setFormValue(this.value);
     this.setValidity();
 
-    setAutoFocus(this);
+    maybeSetAutoFocus(this);
   }
 
   /**

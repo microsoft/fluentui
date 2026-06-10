@@ -4,6 +4,7 @@ import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { MenuItemRole, roleForMenuItem } from './menu-item.options.js';
 
 export type MenuItemColumnCount = 0 | 1 | 2;
@@ -160,6 +161,8 @@ export class MenuItem extends FASTElement {
 
     this.elementInternals.role = this.role ?? MenuItemRole.menuitem;
     this.elementInternals.ariaChecked = this.role !== MenuItemRole.menuitem ? `${!!this.checked}` : null;
+
+    maybeSetAutoFocus(this);
   }
 
   /**

@@ -9,6 +9,7 @@ import { getLanguage } from '../utils/language.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
@@ -856,7 +857,7 @@ export class BaseDropdown extends FASTElement {
   private searchTimeout?: ReturnType<typeof setTimeout>;
 
   /**
-   * Handles printable character input by moving {@link activeIndex} to the next option whose label matches the
+   * Handles printable character input by moving {@link Dropdown#activeIndex} to the next option whose label matches the
    * accumulated search string. When the string is a single character (or the same character repeated), matching
    * options are cycled through; otherwise the string is treated as a prefix match.
    *
@@ -1105,6 +1106,8 @@ export class BaseDropdown extends FASTElement {
     Updates.enqueue(() => {
       this.insertControl();
     });
+
+    maybeSetAutoFocus(this);
   }
 
   disconnectedCallback(): void {

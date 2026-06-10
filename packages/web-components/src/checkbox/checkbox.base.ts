@@ -1,5 +1,6 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 
 /**
  * The base class for a component with a toggleable checked state.
@@ -7,17 +8,6 @@ import { toggleState } from '../utils/element-internals.js';
  * @public
  */
 export class BaseCheckbox extends FASTElement {
-  /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
-
   /**
    * The element's current checked state.
    *
@@ -356,6 +346,7 @@ export class BaseCheckbox extends FASTElement {
     this.disabled = !!this.disabledAttribute;
     this.setAriaChecked();
     this.setValidity();
+    maybeSetAutoFocus(this);
   }
 
   /**

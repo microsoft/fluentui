@@ -1,5 +1,6 @@
 import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { isTreeItem } from './tree-item.options.js';
 
 export class BaseTreeItem extends FASTElement {
@@ -37,6 +38,8 @@ export class BaseTreeItem extends FASTElement {
     if (isTreeItem(this.parentElement)) {
       this.slot ||= 'item';
     }
+
+    maybeSetAutoFocus(this);
   }
 
   /**

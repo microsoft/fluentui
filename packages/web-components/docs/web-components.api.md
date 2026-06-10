@@ -493,7 +493,6 @@ export class BaseAvatar extends FASTElement {
 // @public
 export class BaseButton extends FASTElement {
     constructor();
-    autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
     // (undocumented)
