@@ -25,7 +25,6 @@ export function textInputTemplate<T extends TextInput>(options: TextInputOptions
           id="control"
           @change="${(x, c) => x.changeHandler(c.event as InputEvent)}"
           @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
-          ?autofocus="${x => x.autofocus}"
           autocomplete="${x => x.autocomplete}"
           ?disabled="${x => x.disabled}"
           list="${x => x.list}"

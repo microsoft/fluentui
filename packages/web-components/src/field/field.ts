@@ -8,6 +8,13 @@ import { LabelPosition } from './field.options.js';
  *
  * @tag fluent-field
  *
+ * @slot label - Label content associated with the control.
+ * @slot input - Input control content.
+ * @slot message - Validation and helper message content.
+ * @csspart label - The label slot container.
+ * @csspart input - The input slot container.
+ * @csspart message - The message slot container.
+ *
  * @public
  */
 export class Field extends BaseField {

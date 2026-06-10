@@ -91,7 +91,7 @@
     "code-style": "yarn format:check && yarn lint",
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
-    "build-storybook": "storybook build -o ./dist/storybook --docs",
+    "build-storybook": "yarn analyze && storybook build -o ./dist/storybook --docs",
     "build-storybook:docsite": "cross-env DEPLOY_PATH=/web-components/ storybook build -o ./dist/storybook --docs",
     "e2e": "node ./scripts/e2e.js",
     "e2e:local": "node ./scripts/e2e.js --ui"
@@ -106,6 +106,7 @@
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0",
+    "dedent": "^1.2.0",
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
   "dependencies": {

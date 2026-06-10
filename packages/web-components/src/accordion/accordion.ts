@@ -11,7 +11,7 @@ import { AccordionExpandMode } from './accordion.options.js';
  * @tag fluent-accordion
  *
  * @slot - The default slot for the accordion items
- * @fires change - Fires a custom 'change' event when the active item changes
+ * @fires { Event } change - Fires a custom 'change' event when the active item changes
  *
  * @public
  */

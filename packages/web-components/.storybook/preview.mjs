@@ -2,9 +2,23 @@ import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@f
 import * as prettier from 'prettier';
 import prettierPluginHTML from 'prettier/parser-html.js';
 import webcomponentsTheme from './theme.mjs';
+import { setStorybookHelpersConfig } from './wc-toolkit-helpers.js';
 
 import '../src/index-rollup.js';
 import './docs-root.css';
+
+// Load the Custom Elements Manifest for Storybook helpers
+// @ts-ignore — JSON import attribute not needed in Vite, TS NodeNext is overly strict here
+import customElementsManifest from '../custom-elements.json';
+// @ts-ignore — Storybook global
+window.__STORYBOOK_CUSTOM_ELEMENTS_MANIFEST__ = customElementsManifest;
+
+// Configure CEM-based argTypes generation
+setStorybookHelpersConfig({
+  typeRef: 'parsedType',
+  hideArgRef: true,
+  categoryOrder: ['attributes', 'properties', 'slots', 'cssProps', 'cssParts', 'cssStates', 'methods', 'events'],
+});
 
 const FAST_EXPRESSION_COMMENTS = /<!--((fast-\w+)\{.*\}\2)?-->/g; // Matches comments that contain FAST expressions
 
@@ -77,7 +91,7 @@ export const decorators = [
 
 export const parameters = {
   layout: 'fullscreen',
-  controls: { expanded: true },
+  controls: { expanded: true, sort: 'none' },
   viewMode: 'docs',
   previewTabs: {
     canvas: { hidden: true },

@@ -1,11 +1,13 @@
 import { css, html, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '../utils/unique-id.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import { definition } from './tooltip.definition.js';
 import type { Tooltip as FluentTooltip } from './tooltip.js';
 import { TooltipPositioningOption } from './tooltip.options.js';
 
 type Story = StoryObj<FluentTooltip>;
+const { argTypes } = getStorybookHelpers<FluentTooltip>('fluent-tooltip');
 
 const tooltipTemplate = html<StoryArgs<FluentTooltip>>`
   <fluent-tooltip
@@ -26,32 +28,7 @@ export default {
   title: 'Components/Tooltip',
   component: definition.name,
   render: renderComponent(storyTemplate),
-  argTypes: {
-    anchor: {
-      description: 'The target element for the tooltip to anchor on',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      table: { category: 'slots', type: {} },
-    },
-    delay: {
-      control: 'number',
-      description: 'Number of milliseconds to delay the tooltip from showing/hiding on hover. Default is 250ms',
-      table: { category: 'attributes', type: { summary: 'number' } },
-    },
-    positioning: {
-      control: 'select',
-      description: 'Controls the positioning of the tooltip',
-      mapping: { '': null, ...Object.keys(TooltipPositioningOption) },
-      options: ['', ...Object.keys(TooltipPositioningOption)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.keys(TooltipPositioningOption).join('|') },
-      },
-    },
-  },
+  argTypes,
 } as Meta<FluentTooltip>;
 
 export const Default: Story = {

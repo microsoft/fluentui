@@ -1,9 +1,11 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { type MenuItem as FluentMenuItem, MenuItemRole } from '../menu-item/menu-item.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { MenuList as FluentMenuList } from './menu-list.js';
 
 type Story = StoryObj<FluentMenuList>;
+const { argTypes } = getStorybookHelpers<FluentMenuList>('fluent-menu-list');
 
 const Cut20Filled = html`<svg
   fill="currentColor"
@@ -82,14 +84,7 @@ export default {
       )}
     `,
   },
-  argTypes: {
-    slottedContent: {
-      control: false,
-      description: 'The default slot. Contains the menu items.',
-      name: '',
-      table: { category: 'content', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentMenuList>;
 
 export const Default: Story = {};

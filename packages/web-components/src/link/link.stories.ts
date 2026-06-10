@@ -1,10 +1,12 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { AnchorTarget } from '../anchor-button/anchor-button.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Link as FluentLink } from './link.js';
 import { LinkAppearance } from './link.options.js';
 
 type Story = StoryObj<FluentLink>;
+const { argTypes } = getStorybookHelpers<FluentLink>('fluent-link');
 
 const storyTemplate = html<StoryArgs<FluentLink>>`
   <fluent-link
@@ -28,70 +30,7 @@ export default {
     slottedContent: () => 'Link',
     href: '#',
   },
-  argTypes: {
-    href: {
-      control: 'text',
-      description: 'The href of the anchor.',
-      name: 'href',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    hreflang: {
-      control: 'text',
-      description: 'Hints at the language of the referenced resource.',
-      name: 'hreflang',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    referrerpolicy: {
-      control: 'text',
-      description: 'The referrerpolicy attribute.',
-      name: 'referrerpolicy',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    rel: {
-      control: 'text',
-      description: 'The rel attribute.',
-      name: 'rel',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    type: {
-      control: 'text',
-      description: 'The type attribute.',
-      name: 'type',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    target: {
-      control: 'select',
-      description: 'The target attribute.',
-      mapping: { '': null, ...AnchorTarget },
-      options: ['', ...Object.values(AnchorTarget)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AnchorTarget).join('|') },
-      },
-    },
-    inline: {
-      control: 'text',
-      description: 'If the link is inline with text.',
-      name: 'inline',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    appearance: {
-      control: 'select',
-      description: 'The appearance of the link.',
-      mapping: { '': null, ...LinkAppearance },
-      options: ['', ...Object.values(LinkAppearance)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(LinkAppearance).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentLink>;
 
 export const Default = {};

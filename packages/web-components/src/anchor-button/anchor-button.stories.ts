@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { AnchorButton as FluentAnchorButton } from './anchor-button.js';
 import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize, AnchorTarget } from './anchor-button.options.js';
 
 type Story = StoryObj<FluentAnchorButton>;
+const { argTypes } = getStorybookHelpers<FluentAnchorButton>('fluent-anchor-button');
 
 const storyTemplate = html<StoryArgs<FluentAnchorButton>>`
   <fluent-anchor-button
@@ -30,108 +32,7 @@ export default {
     href: '#',
     slottedContent: () => 'Anchor',
   },
-  argTypes: {
-    appearance: {
-      control: 'select',
-      description: 'Indicates the styled appearance of the button.',
-      options: ['', ...Object.values(AnchorButtonAppearance)],
-      mapping: { '': null, ...AnchorButtonAppearance },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AnchorButtonAppearance).join('|') },
-      },
-    },
-    shape: {
-      control: 'select',
-      description: 'Indicates the shape of the button.',
-      options: ['', ...Object.values(AnchorButtonShape)],
-      mapping: { '': null, ...AnchorButtonShape },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AnchorButtonShape).join('|') },
-      },
-    },
-    href: {
-      control: 'text',
-      description: 'The href of the anchor.',
-      name: 'href',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    hreflang: {
-      control: 'text',
-      description: 'Hints at the language of the referenced resource.',
-      name: 'hreflang',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    referrerpolicy: {
-      control: 'text',
-      description: 'The referrerpolicy attribute.',
-      name: 'referrerpolicy',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    rel: {
-      control: 'text',
-      description: 'The rel attribute.',
-      name: 'rel',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    type: {
-      control: 'text',
-      description: 'The type attribute.',
-      name: 'type',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    target: {
-      control: 'select',
-      description: 'The target attribute.',
-      options: ['', ...Object.values(AnchorTarget)],
-      mapping: { '': null, ...AnchorTarget },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AnchorTarget).join('|') },
-      },
-    },
-    iconOnly: {
-      control: 'boolean',
-      description: 'Indicates the button should only display as an icon.',
-      name: 'icon-only',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    name: {
-      control: 'text',
-      description:
-        "The name of the element. This element's value will be surfaced during form submission under the provided name.",
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the button.',
-      options: ['', ...Object.values(AnchorButtonSize)],
-      mapping: { '': null, ...AnchorButtonSize },
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(AnchorButtonSize).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-    startSlottedContent: {
-      control: false,
-      description: 'Slot for start icons',
-      name: 'start',
-      table: { category: 'slots', type: {} },
-    },
-    endSlottedContent: {
-      control: false,
-      description: 'Slot for end icons',
-      name: 'end',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentAnchorButton>;
 
 export const Default: Story = {};

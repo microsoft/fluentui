@@ -10,6 +10,7 @@ export type SwitchOptions = {
  * Based on BaseCheckbox and includes style and layout specific attributes
  *
  * @tag fluent-switch
+ * @csspart checked-indicator - The internal switch indicator element.
  *
  */
 export class Switch extends BaseCheckbox {

@@ -19,6 +19,10 @@ import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.opt
  * @csspart label - The internal `<label>` element
  * @csspart root - the root container for the internal control
  * @csspart control - The internal `<input>` control
+ *
+ * @fires { Event } change - Fires a custom 'change' event when the value changes and the input loses focus
+ * @fires { Event } select - Fires when the `select()` method is called.
+ *
  * @public
  */
 export class BaseTextInput extends FASTElement {
@@ -32,17 +36,6 @@ export class BaseTextInput extends FASTElement {
    */
   @attr
   public autocomplete?: string;
-
-  /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
 
   /**
    * The current value of the input.

@@ -25,6 +25,8 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
  *
+ * @fires { Event } change - Fires a custom 'change' event when the selected option changes
+ *
  * @public
  */
 export class BaseDropdown extends FASTElement {
