@@ -36,14 +36,7 @@ type AnalyzeArgv = {
 };
 
 /** Keys allowed in a risk-config file, mirroring `risk-config.schema.json`. */
-export const RISK_CONFIG_KEYS = new Set([
-  '$schema',
-  'selectorHooks',
-  'selectorHookSources',
-  'storeAccessorPattern',
-  'detectGetStateReads',
-  'generic',
-]);
+export const RISK_CONFIG_KEYS = new Set(['$schema', 'storeAccessorPattern', 'detectGetStateReads']);
 
 /** Load and validate an optional risk-detection config JSON file. */
 function loadRiskConfig(path: string | undefined): RiskConfig {
@@ -91,7 +84,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       .option('risk-config', {
         type: 'string' as const,
         describe:
-          'Path to a JSON file configuring runtime-risk detection (selectorHooks, selectorHookSources, storeAccessorPattern, generic).',
+          'Path to a JSON file enabling non-reactive store-read detection (storeAccessorPattern, detectGetStateReads).',
       }) as Argv<AnalyzeArgv>,
   handler: async argv => {
     const resolvedPaths = validatePaths(argv.paths);

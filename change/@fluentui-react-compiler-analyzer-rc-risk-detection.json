@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: detect runtime-risky patterns (stale getState() reads, fresh inline selector-hook args) on CompileSuccess functions via a new risk-detection Babel plugin; surfaced as a 'Compiled but Risky' report section with optional --risk-config (validated against a shipped risk-config.schema.json)",
+  "comment": "feat: detect non-reactive store snapshot reads (getState()/getXStore().field) on CompileSuccess functions via a new opt-in risk-detection Babel plugin; surfaced as a 'Compiled but Risky' report section configured via --risk-config (validated against a shipped risk-config.schema.json)",
   "packageName": "@fluentui/react-compiler-analyzer",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

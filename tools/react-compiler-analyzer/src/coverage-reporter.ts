@@ -314,14 +314,15 @@ function printMigrationTable(f: Formatter, entries: FunctionAnalysis[], workspac
   f.blank();
 }
 
-/** Order risk findings high → low so the most dangerous appear first. */
-const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1, low: 2 };
+/** Order risk findings high → medium so the most dangerous appear first. */
+const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
 
 /**
  * Print a "Compiled but Risky" section — functions the compiler accepts (`CompileSuccess`)
- * that contain patterns known to break at runtime once memoized. These are exactly the
- * cases the compiler's own analysis cannot catch: stale `getState()` snapshot reads and
- * fresh inline arguments to external selector hooks (the `areHookInputsEqual` crash).
+ * that contain a non-reactive store-snapshot read (`store.getState()` / `getXStore().field`).
+ * The compiler memoizes such reads behind a compute-once cache slot, so they run on the first
+ * render and never again — freezing the value across store transitions, a bug the
+ * `CompileSuccess` verdict cannot reveal.
  *
  * Unlike compiler errors, these functions will be silently memoized — so they are the
  * highest-value rows in the report for anyone enabling the compiler ring-by-ring.
