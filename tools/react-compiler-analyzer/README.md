@@ -3,7 +3,7 @@
 Analyzes React Compiler behavior on TypeScript source files. Two commands:
 
 - **`lint`** — CI gate: validates `'use no memo'` and `'use memo'` directives for correctness. Exits 1 on issues.
-- **`analyze`** — Health report: compiler coverage stats, directive breakdown, and migration candidates.
+- **`analyze`** — Health report: compiler coverage stats, directive breakdown, migration candidates, and runtime-risk detection ("Compiled but Risky").
 
 ## User Flows
 
@@ -138,10 +138,11 @@ Reports which functions the React Compiler will memoize, skip, or bail out on ac
 
 #### Options
 
-| Flag         | Type     | Default   | Description                                                                                                             |
-| ------------ | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `--mode`     | `string` | `"infer"` | Compilation mode: `infer`, `annotation`, `all`                                                                          |
-| `--annotate` | `string` | —         | Insert `'use memo'` directives. `manual-memo`: only functions with manual memoization. `all`: all compilable functions. |
+| Flag            | Type     | Default   | Description                                                                                                             |
+| --------------- | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--mode`        | `string` | `"infer"` | Compilation mode: `infer`, `annotation`, `all`                                                                          |
+| `--annotate`    | `string` | —         | Insert `'use memo'` directives. `manual-memo`: only functions with manual memoization. `all`: all compilable functions. |
+| `--risk-config` | `string` | —         | Path to a JSON file configuring runtime-risk detection (see **Compiled but Risky**).                                    |
 
 #### `--annotate`
 
@@ -153,6 +154,62 @@ Controls which compilable functions receive a `'use memo'` directive:
 | `all`         | All functions that compile successfully, regardless of manual memoization                                            |
 
 Inserts `'use memo';` at the top of each matching function's body. Idempotent — functions that already have the directive are skipped.
+
+#### Compiled but Risky (runtime-risk heuristics)
+
+The compiler reports `CompileSuccess` based purely on whether a function is _structurally_
+compilable. It does **not** reason about two semantic contracts that break at runtime once
+the function is memoized — so `analyze` adds a heuristic **Compiled but Risky** section that
+flags them:
+
+| Rule                     | What it catches                                                                                         | Why memoization breaks it                                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `unstable-hook-arg`      | Fresh inline object/array/`equalityFn` passed to a selector hook each render (`useSelector(fn, {...})`) | Destabilizes the hook's `useSyncExternalStoreWithSelector` dependency slots → crash in React's `areHookInputsEqual`. |
+| `nonreactive-store-read` | Imperative store snapshots: `store.getState().field`, `getXStore().field` _(opt-in only)_               | The read has no tracked inputs, so the compiler caches a **stale** value across store transitions.                   |
+
+Findings are severity-ranked:
+
+- `high` — a configured selector hook, or a `.getState()` snapshot.
+- `medium` — a `getXStore().field` read matching a configured store-accessor pattern.
+- `low` — a generic inline object/array passed to an unrecognized `use*` hook.
+
+> **Note on conditional hooks.** A natural follow-up idea is to raise confidence when the
+> function also contains a _conditionally-reached_ hook (after an early `return`, or inside an
+> `if`/ternary) — the slot-count variance that backs the `areHookInputsEqual` crash. This was
+> evaluated and intentionally **not** implemented: the React Compiler already emits a
+> Rules-of-Hooks `CompileError` for that lexical shape, so such functions never reach
+> `CompileSuccess` and the signal would never co-occur with a surfaced finding. The crashing
+> functions that motivated this rule compiled successfully precisely because their hooks were
+> all lexically unconditional — the variance lived inside a third-party selector hook at
+> runtime, invisible to static analysis.
+
+`unstable-hook-arg` runs generically and is **on by default** (zero config). `nonreactive-store-read`
+is **off by default** — its `.getState()` / `getXStore()` conventions are app-specific, so it only
+runs when you opt in via `--risk-config`. Use the config file to tighten or extend detection:
+
+```jsonc
+{
+  // Optional: enables editor IntelliSense + validation against the shipped schema.
+  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/risk-config.schema.json",
+  // Exact hook names to treat as high-confidence selector hooks (raises severity to `high`).
+  "selectorHooks": ["useFilteredItems", "useItemField", "useStoreValue"],
+  // Import sources whose `use*` exports are high-confidence selector hooks.
+  "selectorHookSources": ["@acme/store-hooks"],
+  // Enable `nonreactive-store-read` for `.getState()` snapshot reads (default: false).
+  "detectGetStateReads": true,
+  // Enable `nonreactive-store-read` for `getXStore().field`. Regex matching accessor names. Omit to disable.
+  "storeAccessorPattern": "Store$",
+  // Set to false to flag ONLY the configured selector hooks (disables the generic unstable-hook-arg heuristic).
+  "generic": true
+}
+```
+
+The config is validated on load: unknown keys are rejected. A JSON schema ships with the package
+at `risk-config.schema.json` (copied to the published root on build) — point your editor's
+`$schema` at it, as shown above, for autocomplete and inline validation.
+
+Risk findings are advisory — they never change the exit code. Treat them as a review queue
+for sites that compile cleanly but may need a justified `'use no memo'` opt-out.
 
 #### Examples
 

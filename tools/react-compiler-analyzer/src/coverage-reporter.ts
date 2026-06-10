@@ -1,6 +1,6 @@
 import { relative } from 'node:path';
 
-import type { Formatter } from './formatter';
+import type { Cell, Formatter } from './formatter';
 import type { FunctionAnalysis } from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
@@ -192,6 +192,15 @@ export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], 
   f.line(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
   f.blank();
 
+  const riskyFunctions = compiledResults.filter(r => r.risks && r.risks.length > 0).length;
+  if (riskyFunctions > 0) {
+    f.line(
+      `> ⚠️ **${riskyFunctions}** compiled function(s) contain runtime-risk patterns that are unsafe to memoize ` +
+        '(see **Compiled but Risky**).',
+    );
+    f.blank();
+  }
+
   if (total === 0) {
     f.line('> No functions were analyzed. The directory may not contain React components or hooks.');
     f.blank();
@@ -303,6 +312,62 @@ function printMigrationTable(f: Formatter, entries: FunctionAnalysis[], workspac
 
   f.table(['Location', 'Function', 'useMemo', 'useCallback', 'React.memo', 'Memo Slots'], rows);
   f.blank();
+}
+
+/** Order risk findings high → low so the most dangerous appear first. */
+const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1, low: 2 };
+
+/**
+ * Print a "Compiled but Risky" section — functions the compiler accepts (`CompileSuccess`)
+ * that contain patterns known to break at runtime once memoized. These are exactly the
+ * cases the compiler's own analysis cannot catch: stale `getState()` snapshot reads and
+ * fresh inline arguments to external selector hooks (the `areHookInputsEqual` crash).
+ *
+ * Unlike compiler errors, these functions will be silently memoized — so they are the
+ * highest-value rows in the report for anyone enabling the compiler ring-by-ring.
+ */
+export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
+  const risky = results.filter(r => r.status === 'compiled' && r.risks && r.risks.length > 0);
+
+  if (risky.length === 0) {
+    return;
+  }
+
+  const totalFindings = risky.reduce((sum, r) => sum + (r.risks?.length ?? 0), 0);
+
+  f.section('warning', () => {
+    f.heading(2, 'Compiled but Risky', 'warning');
+    f.blank();
+    f.line(
+      'These functions **compile successfully** but contain patterns that break at runtime ' +
+        'once memoized — the compiler cannot detect them. Review each before opting into the ' +
+        "compiler, or add a justified `'use no memo'` opt-out.",
+    );
+    f.blank();
+
+    const rows: Cell[][] = [];
+    for (const r of risky) {
+      const relPath = relative(workspaceRoot, r.filePath);
+      const fn = r.functionName ?? '(anonymous)';
+      const sorted = [...r.risks!].sort(
+        (a, b) => (RISK_SEVERITY_ORDER[a.severity] ?? 9) - (RISK_SEVERITY_ORDER[b.severity] ?? 9),
+      );
+      for (const risk of sorted) {
+        rows.push([
+          `${relPath}:${risk.line}`,
+          fn,
+          risk.severity,
+          risk.ruleId,
+          truncate(risk.message, TABLE_REASON_MAX_LEN),
+        ]);
+      }
+    }
+
+    f.table(['Location', 'Function', 'Severity', 'Rule', 'Reason'], rows);
+    f.blank();
+    f.line(`> **${totalFindings}** runtime-risk finding(s) across **${risky.length}** compiled function(s).`);
+    f.blank();
+  });
 }
 
 function pct(count: number, total: number): string {

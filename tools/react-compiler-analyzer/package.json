@@ -7,6 +7,7 @@
   "files": [
     "bin",
     "*.md",
+    "risk-config.schema.json",
     "dist",
     "lib",
     "lib-commonjs"
