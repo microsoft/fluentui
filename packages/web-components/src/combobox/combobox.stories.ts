@@ -1,11 +1,14 @@
 import { html, repeat } from '@microsoft/fast-element';
+import dedent from 'dedent';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { DropdownOption as FluentDropdownOption } from '../option/option.js';
 import type { Dropdown as FluentDropdown } from '../dropdown/dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from '../dropdown/dropdown.options.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 
 type Story = StoryObj<FluentDropdown>;
+const { argTypes } = getStorybookHelpers<FluentDropdown>('fluent-dropdown');
 
 const optionTemplate = html<StoryArgs<FluentDropdownOption>>` <fluent-option
   ?disabled="${story => story.disabled}"
@@ -38,15 +41,18 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
   >
 `;
 
+// The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.<br>
+// To use a combobox, use \`<fluent-dropdown type="combobox"></fluent-dropdown>\`
+
 export default {
   title: 'Components/Combobox',
   parameters: {
     docs: {
       description: {
-        component: `
-The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.
+        component: dedent`
+          The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.
 
-To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.
+          To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.
         `,
       },
     },
@@ -56,30 +62,7 @@ To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.
     type: DropdownType.combobox,
   },
   argTypes: {
-    appearance: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownAppearance)],
-      table: { category: 'attributes' },
-    },
-    type: {
-      control: 'radio',
-      options: Object.values(DropdownType),
-      table: { category: 'attributes' },
-    },
-    placeholder: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    multiple: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    size: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownSize)],
-      table: { category: 'attributes' },
-    },
-    slottedContent: { table: { disable: true } },
+    ...argTypes,
     slot: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;

@@ -1,9 +1,11 @@
 import { html, ref, when } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Tablist as FluentTablist } from './tablist.js';
 import { TablistAppearance as TablistAppearanceValues, TablistOrientation, TablistSize } from './tablist.options.js';
 
 type Story = StoryObj<FluentTablist>;
+const { argTypes } = getStorybookHelpers<FluentTablist>('fluent-tablist');
 
 const storyTemplate = html<StoryArgs<FluentTablist>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
@@ -51,49 +53,9 @@ export default {
   title: 'Components/Tablist',
   render: renderComponent(storyTemplate),
   argTypes: {
-    activeid: {
-      control: 'text',
-      description: 'The id of the active tab',
-      name: 'active-id',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the tablist',
-      name: 'disabled',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    orientation: {
-      control: 'select',
-      description: 'The orientation of the tablist.',
-      mapping: { '': null, ...TablistOrientation },
-      options: ['', ...Object.values(TablistOrientation)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TablistOrientation).join('|') },
-      },
-    },
-    appearance: {
-      control: 'select',
-      description: 'The appearance of the tablist.',
-      mapping: { '': null, ...TablistAppearanceValues },
-      options: ['', ...Object.values(TablistAppearanceValues)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TablistAppearanceValues).join('|') },
-      },
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the tablist.',
-      mapping: { '': null, ...TablistSize },
-      options: ['', ...Object.values(TablistSize)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(TablistSize).join('|') },
-      },
-    },
+    ...argTypes,
     ids: { table: { disable: true } },
+    hasStartSlot: { table: { disable: true } },
   },
 } as Meta<FluentTablist>;
 

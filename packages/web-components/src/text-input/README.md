@@ -29,7 +29,6 @@ The `<fluent-text-input>` is intended to match feature parity with the Fluent UI
 | ------------------- | ------- | ----------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `appearance`        | public  | `TextInputAppearance`               | `'outline'` | Indicates the styled appearance of the element.                                                                                      |
 | `autocomplete`      | public  | `string \| undefined`               |             | Indicates the element's autocomplete state.                                                                                          |
-| `autofocus`         | public  | `boolean`                           |             | Indicates that the element should get focus after the page finishes loading.                                                         |
 | `controlSize`       | public  | `TextInputControlSize \| undefined` | `'medium'`  | Sets the size of the control.                                                                                                        |
 | `dirname`           | public  | `string \| undefined`               |             | Sets the directionality of the element to be submitted with form data.                                                               |
 | `disabled`          | public  | `boolean \| undefined`              |             | Sets the element's disabled state.                                                                                                   |
@@ -67,7 +66,6 @@ The `<fluent-text-input>` is intended to match feature parity with the Fluent UI
 | -------------- | ------------- |
 | `appearance`   | appearance    |
 | `autocomplete` | autocomplete  |
-| `autofocus`    | autofocus     |
 | `control-size` | controlSize   |
 | `dirname`      | dirname       |
 | `disabled`     | disabled      |

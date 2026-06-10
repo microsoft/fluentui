@@ -1,9 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Label as FluentLabel } from './label.js';
 import { LabelSize, LabelWeight } from './label.options.js';
 
 type Story = StoryObj<FluentLabel>;
+const { argTypes } = getStorybookHelpers<FluentLabel>('fluent-label');
 
 const storyTemplate = html<StoryArgs<FluentLabel>>`
   <fluent-label
@@ -24,44 +26,7 @@ export default {
     weight: LabelWeight.regular,
     slottedContent: () => 'Label',
   },
-  argTypes: {
-    required: {
-      control: 'boolean',
-      description: 'Sets required field styling.',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Sets disabled styling.',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    size: {
-      control: 'select',
-      description: 'Sets label font size.',
-      mapping: { '': null, ...LabelSize },
-      options: ['', ...Object.values(LabelSize)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(LabelSize).join('|') },
-      },
-    },
-    weight: {
-      control: 'select',
-      description: 'Sets label font weight.',
-      mapping: { '': null, ...LabelWeight },
-      options: ['', ...Object.values(LabelWeight)],
-      table: {
-        category: 'attributes',
-        type: { summary: Object.values(LabelWeight).join('|') },
-      },
-    },
-    slottedContent: {
-      control: false,
-      description: 'The default slot',
-      name: '',
-      table: { category: 'slots', type: {} },
-    },
-  },
+  argTypes,
 } as Meta<FluentLabel>;
 
 export const Default = {};

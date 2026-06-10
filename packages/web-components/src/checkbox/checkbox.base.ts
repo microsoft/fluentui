@@ -5,6 +5,9 @@ import { maybeSetAutoFocus } from '../utils/autofocus.js';
 /**
  * The base class for a component with a toggleable checked state.
  *
+ * @fires { Event } change - Fires a custom 'change' event when the checked state changes
+ * @fires { Event } input - Fires a custom 'input' event when the checked state changes
+ *
  * @public
  */
 export class BaseCheckbox extends FASTElement {

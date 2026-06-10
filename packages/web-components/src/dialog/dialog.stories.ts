@@ -1,11 +1,13 @@
 import { css, html, ref } from '@microsoft/fast-element';
 import type { DialogBody as FluentDialogBody } from '../dialog-body/dialog-body.js';
 import { generateImage, type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import { definition } from './dialog.definition.js';
 import type { Dialog as FluentDialog } from './dialog.js';
 import { DialogType } from './dialog.options.js';
 
 type Story = StoryObj<FluentDialog>;
+const { argTypes } = getStorybookHelpers<FluentDialog>('fluent-dialog');
 
 const dismissCircle20Regular = html`<svg
   fill="currentColor"
@@ -79,27 +81,11 @@ export default {
     closeSlottedContent: () => closeTemplate,
   },
   argTypes: {
-    type: {
-      control: 'select',
-      description:
-        '`modal`: When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab sequence is kept within the dialog and moving the focus outside the dialog will imply closing it. This is the default type of the component.<br /><br />`non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.<br /><br />`alert`: A special type of modal dialog that interrupts the users workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background.',
-      mapping: { '': null, ...DialogType },
-      options: ['', ...Object.values(DialogType)],
-      table: {
-        category: 'attributes',
-        defaultValue: { summary: DialogType.modal },
-      },
-      type: Object.values(DialogType).join('|'),
-    },
-    slottedContent: {
-      control: false,
-      name: '',
-      description: 'Default slot for the dialog content.',
-      table: { category: 'slots', type: {} },
-    },
-    actionSlottedContent: { table: { disable: true } },
+    ...argTypes,
     titleSlottedContent: { table: { disable: true } },
     titleActionSlottedContent: { table: { disable: true } },
+    actionSlottedContent: { table: { disable: true } },
+    closeSlottedContent: { table: { disable: true } },
   },
 } as Meta<FluentDialog>;
 

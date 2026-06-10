@@ -33,7 +33,7 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
  * @slot submenu-glyph - The submenu expand/collapse indicator
  * @slot submenu - Used to nest menu's within menu items
  * @csspart content - The element wrapping the menu item content
- * @fires change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
+ * @fires { Event } change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
  *
  * @public
  */

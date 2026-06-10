@@ -17,7 +17,6 @@ The browser-native select control component allows users to choose one option fr
 - @attr disabled: boolean
 - @attr required: boolean
 - @attr name: string
-- @attr autofocus: boolean
 - @attr autocomplete: "on" "off" | "off"
 - @attr aria-label: string
 - @attr aria-labelledby: string
