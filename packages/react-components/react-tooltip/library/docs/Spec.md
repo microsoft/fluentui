@@ -105,6 +105,7 @@ Render function for the trigger:
 # Variants
 
 - The tooltip supports higher contrast colors with `appearance="inverted"`.
+- The tooltip supports brand colors with `appearance="brand"`.
 - The tooltip supports rendering an arrow pointing to the target element, using `withArrow`.
 
 # API
@@ -172,10 +173,11 @@ export type TooltipProps = ComponentProps<TooltipSlots> & {
    * The tooltip's visual appearance.
    * * `normal` - Uses the theme's background and text colors.
    * * `inverted` - Higher contrast variant that uses the theme's inverted colors.
+   * * `brand` - Uses the brand colors from the theme.
    *
    * @defaultvalue normal
    */
-  appearance?: 'normal' | 'inverted';
+  appearance?: 'normal' | 'inverted' | 'brand';
 
   /**
    * Render an arrow pointing to the target element
