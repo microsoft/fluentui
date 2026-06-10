@@ -358,7 +358,9 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
           fn,
           risk.severity,
           risk.ruleId,
-          truncate(risk.message, TABLE_REASON_MAX_LEN),
+          // Risk messages are short, single-line strings we author ourselves — show them
+          // in full rather than truncating like unbounded compiler diagnostics.
+          risk.message,
         ]);
       }
     }

@@ -80,8 +80,10 @@ export function extractDetailReason(detail: unknown): string {
     if (typeof compilerDetail.reason === 'string') {
       parts.push(compilerDetail.reason);
     }
-    if (typeof compilerDetail.description === 'string') {
-      parts.push(compilerDetail.description);
+    // Wrap the description in brackets so it stays visually distinct from the reason
+    // instead of running the two sentences together (e.g. `reason [description]`).
+    if (typeof compilerDetail.description === 'string' && compilerDetail.description.length > 0) {
+      parts.push(`[${compilerDetail.description}]`);
     }
     // Append line/column info when available
     const loc = getDetailLocation(compilerDetail);
