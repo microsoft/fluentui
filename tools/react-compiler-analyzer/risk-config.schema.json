@@ -1,25 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "React Compiler Analyzer — risk-detection config",
-  "description": "Configuration for the `analyze --risk-config <file>` runtime-risk heuristics. See the package README ('Compiled but Risky') for rule semantics.",
+  "description": "Configuration for the `analyze --risk-config <file>` non-reactive store-read detection. See the package README ('Compiled but Risky') for rule semantics.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "$schema": {
       "type": "string",
       "description": "Optional reference to this JSON schema for editor IntelliSense."
-    },
-    "selectorHooks": {
-      "type": "array",
-      "description": "Hook names treated as high-confidence external selector hooks (e.g. `useFilteredItems`). A matching `unstable-hook-arg` finding is raised to `high` severity.",
-      "items": { "type": "string", "minLength": 1 },
-      "uniqueItems": true
-    },
-    "selectorHookSources": {
-      "type": "array",
-      "description": "Import sources whose exported `use*` hooks are high-confidence selector hooks (e.g. `@acme/store-hooks`). Any `use*` imported from one of these is treated like a configured selector hook.",
-      "items": { "type": "string", "minLength": 1 },
-      "uniqueItems": true
     },
     "storeAccessorPattern": {
       "type": "string",
@@ -30,11 +18,6 @@
       "type": "boolean",
       "description": "Enable detection of imperative `.getState()` snapshot reads (`nonreactive-store-read`, `high`). Default: false.",
       "default": false
-    },
-    "generic": {
-      "type": "boolean",
-      "description": "When true (default), the generic `unstable-hook-arg` heuristic flags inline object/array literals passed to any unrecognized `use*` hook. Set to false to flag only the configured `selectorHooks` / `selectorHookSources`.",
-      "default": true
     }
   }
 }

@@ -50,46 +50,15 @@ describe('riskPlugin', () => {
       expect(direct[0].severity).toBe('medium');
     });
 
-    it('does not flag `getXStore().field` when generic-only (no store config)', async () => {
-      const findings = await runPlugin('nonreactive-store-read.tsx', { generic: true });
-      expect(findings.filter(f => f.symbol === 'getAppStore')).toHaveLength(0);
-    });
-  });
-
-  describe('unstable-hook-arg', () => {
-    it('flags inline object/array literals to unknown hooks as low severity (generic)', async () => {
-      const findings = await runPlugin('unstable-hook-arg.tsx');
-      const unstable = findings.filter(f => f.ruleId === 'unstable-hook-arg');
-      expect(unstable.length).toBeGreaterThan(0);
-      // Without config, severity is low.
-      expect(unstable.every(f => f.severity === 'low')).toBe(true);
-    });
-
-    it('raises configured selector hooks to high severity', async () => {
-      const findings = await runPlugin('unstable-hook-arg.tsx', {
-        selectorHooks: ['useFilteredItems', 'useItemField'],
-      });
-      const unstable = findings.filter(f => f.ruleId === 'unstable-hook-arg');
-      expect(unstable.length).toBeGreaterThanOrEqual(2);
-      expect(unstable.every(f => f.severity === 'high')).toBe(true);
-      const symbols = new Set(unstable.map(f => f.symbol));
-      expect(symbols.has('useFilteredItems')).toBe(true);
-      expect(symbols.has('useItemField')).toBe(true);
-    });
-
-    it('raises hooks from a configured import source to high severity', async () => {
-      const findings = await runPlugin('unstable-hook-arg.tsx', {
-        selectorHookSources: ['@acme/store-hooks'],
-      });
-      const unstable = findings.filter(f => f.ruleId === 'unstable-hook-arg');
-      expect(unstable.length).toBeGreaterThanOrEqual(2);
-      expect(unstable.every(f => f.severity === 'high')).toBe(true);
+    it('does not flag `.getState()` unless detectGetStateReads is set', async () => {
+      const findings = await runPlugin('nonreactive-store-read.tsx', { storeAccessorPattern: 'Store$' });
+      expect(findings.filter(f => f.symbol.endsWith('.getState'))).toHaveLength(0);
     });
   });
 
   describe('safe code', () => {
-    it('does not flag React builtin hooks or stable arguments', async () => {
-      const findings = await runPlugin('safe.tsx');
+    it('does not flag anything in a component with no store reads', async () => {
+      const findings = await runPlugin('safe.tsx', { detectGetStateReads: true, storeAccessorPattern: 'Store$' });
       expect(findings).toHaveLength(0);
     });
   });
@@ -102,15 +71,6 @@ describe('risk integration — compileFile + deriveCoverage', () => {
     const compiled = await compileFile(entry, 'infer', false, riskConfig);
     return deriveCoverage(compiled);
   }
-
-  it('attaches risk findings to compiled functions', async () => {
-    const results = await coverageFor('unstable-hook-arg.tsx', {
-      selectorHookSources: ['@acme/store-hooks'],
-    });
-    const risky = results.filter(r => r.status === 'compiled' && r.risks && r.risks.length > 0);
-    expect(risky.length).toBeGreaterThan(0);
-    expect(risky[0].risks!.some(f => f.ruleId === 'unstable-hook-arg')).toBe(true);
-  });
 
   it('attaches store-read risks to compiled components when opted in', async () => {
     const results = await coverageFor('nonreactive-store-read.tsx', {
@@ -129,7 +89,7 @@ describe('risk integration — compileFile + deriveCoverage', () => {
   });
 
   it('reports no risks for safe code', async () => {
-    const results = await coverageFor('safe.tsx');
+    const results = await coverageFor('safe.tsx', { detectGetStateReads: true, storeAccessorPattern: 'Store$' });
     const risky = results.filter(r => r.risks && r.risks.length > 0);
     expect(risky).toHaveLength(0);
   });
