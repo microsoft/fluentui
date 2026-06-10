@@ -1,11 +1,19 @@
 import type { CommandModule, Argv } from 'yargs';
 
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+
 import { compileFiles } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
-import { printCoverageReport, printCoverageSummary, printMigrationCandidates } from '../coverage-reporter';
+import {
+  printCoverageReport,
+  printCoverageSummary,
+  printMigrationCandidates,
+  printRuntimeRisks,
+} from '../coverage-reporter';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
-import type { AnnotateMode, CompilationMode, FileEntry, OutputFormat } from '../types';
+import type { AnnotateMode, CompilationMode, FileEntry, OutputFormat, RiskConfig } from '../types';
 import {
   closeScanLog,
   openScanLog,
@@ -24,18 +32,67 @@ type AnalyzeArgv = {
   mode: CompilationMode;
   format: OutputFormat;
   annotate: AnnotateMode | undefined;
+  'risk-config': string | undefined;
 };
+
+/** Keys allowed in a risk-config file, mirroring `risk-config.schema.json`. */
+export const RISK_CONFIG_KEYS = new Set([
+  '$schema',
+  'selectorHooks',
+  'selectorHookSources',
+  'storeAccessorPattern',
+  'detectGetStateReads',
+  'generic',
+]);
+
+/** Load and validate an optional risk-detection config JSON file. */
+function loadRiskConfig(path: string | undefined): RiskConfig {
+  if (!path) {
+    return {};
+  }
+  const resolved = resolve(path);
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(readFileSync(resolved, 'utf-8'));
+  } catch (err) {
+    console.error(`Error: could not read risk config '${resolved}': ${(err as Error).message}`);
+    process.exit(1);
+  }
+  if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
+    console.error(`Error: risk config '${resolved}' must be a JSON object.`);
+    process.exit(1);
+  }
+
+  const unknownKeys = Object.keys(parsed).filter(k => !RISK_CONFIG_KEYS.has(k));
+  if (unknownKeys.length > 0) {
+    console.error(
+      `Error: risk config '${resolved}' has unknown key(s): ${unknownKeys.join(', ')}. ` +
+        'See risk-config.schema.json for the supported options.',
+    );
+    process.exit(1);
+  }
+
+  // `$schema` is an editor-only hint; strip it before handing the config to the plugin.
+  const { $schema: _schema, ...config } = parsed as RiskConfig & { $schema?: string };
+  return config;
+}
 
 export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
   command: 'analyze <paths..>',
   describe: 'Analyze React Compiler coverage and migration potential',
   builder: yarg =>
-    sharedOptions(yarg).option('annotate', {
-      type: 'string' as const,
-      describe:
-        "Insert 'use memo' into compilable functions. 'manual-memo': only those with useMemo/useCallback/React.memo. 'all': all compilable functions.",
-      choices: ['manual-memo', 'all'] as const,
-    }) as Argv<AnalyzeArgv>,
+    sharedOptions(yarg)
+      .option('annotate', {
+        type: 'string' as const,
+        describe:
+          "Insert 'use memo' into compilable functions. 'manual-memo': only those with useMemo/useCallback/React.memo. 'all': all compilable functions.",
+        choices: ['manual-memo', 'all'] as const,
+      })
+      .option('risk-config', {
+        type: 'string' as const,
+        describe:
+          'Path to a JSON file configuring runtime-risk detection (selectorHooks, selectorHookSources, storeAccessorPattern, generic).',
+      }) as Argv<AnalyzeArgv>,
   handler: async argv => {
     const resolvedPaths = validatePaths(argv.paths);
     validateConcurrency(argv.concurrency);
@@ -75,6 +132,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
         concurrency: argv.concurrency,
         verbose: argv.verbose,
         compilationMode: argv.mode,
+        riskConfig: loadRiskConfig(argv['risk-config']),
       });
 
       closeScanLog(f);
@@ -84,6 +142,7 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
 
       const workspaceRoot = process.cwd();
       printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
+      printRuntimeRisks(f, coverageResults, workspaceRoot);
       printMigrationCandidates(f, coverageResults, workspaceRoot);
       printCoverageSummary(f, coverageResults, argv.verbose);
 

@@ -73,6 +73,41 @@ export interface ManualMemoization {
   reactMemoHasComparator: boolean;
 }
 
+// ── Runtime-risk analysis types ──
+
+/**
+ * A heuristic risk rule. These flag patterns the React Compiler reports as
+ * `CompileSuccess` but which break at runtime once the function is memoized:
+ * - `unstable-hook-arg` — a fresh inline object/array/function passed to a selector
+ *   hook each render, destabilizing `useSyncExternalStoreWithSelector` dependency
+ *   slots and crashing in `areHookInputsEqual`.
+ * - `nonreactive-store-read` — an imperative store snapshot read (`store.getState()`
+ *   or `getXStore().field`) that takes no tracked inputs, so memoization caches a
+ *   stale value across store transitions.
+ */
+export type RiskRuleId = 'unstable-hook-arg' | 'nonreactive-store-read';
+
+/**
+ * Confidence that a finding is a real runtime hazard:
+ * - `high` — matches a configured selector hook, or a `.getState()` snapshot read.
+ * - `medium` — matches a configured store-accessor pattern (`getXStore().field`).
+ * - `low` — generic structural heuristic (inline object/array to an unknown `use*` hook).
+ */
+export type RiskSeverity = 'high' | 'medium' | 'low';
+
+export interface RiskFinding {
+  ruleId: RiskRuleId;
+  severity: RiskSeverity;
+  /** 1-based line of the offending call/expression. */
+  line: number;
+  /** 0-based column of the offending call/expression. */
+  column: number;
+  /** Hook or accessor involved, e.g. `useFilteredItems` or `getAppStore`. */
+  symbol: string;
+  /** Human-readable explanation of why memoization is unsafe here. */
+  message: string;
+}
+
 export interface FunctionAnalysis {
   filePath: string;
   packageName: string;
@@ -95,6 +130,11 @@ export interface FunctionAnalysis {
   memoStats?: MemoStats;
   manualMemo?: ManualMemoization;
   bodyInsertionLine?: number;
+  /**
+   * Heuristic runtime-risk findings for `CompileSuccess` functions — patterns that
+   * compile cleanly but are unsafe to memoize. Empty/undefined when none were found.
+   */
+  risks?: RiskFinding[];
 }
 
 export type AnnotateMode = 'manual-memo' | 'all';
@@ -108,4 +148,32 @@ export interface CompileFilesOptions {
   concurrency: number;
   verbose: boolean;
   compilationMode: CompilationMode;
+  /** Optional risk-detection configuration. When omitted, generic defaults are used. */
+  riskConfig?: RiskConfig;
+}
+
+/**
+ * Configuration for the runtime-risk heuristics.
+ *
+ * - **Pattern 2 (`unstable-hook-arg`)** is generic and on by default; the optional
+ *   `selectorHooks` / `selectorHookSources` allowlists raise matching hooks to high
+ *   confidence. Set `generic: false` to flag only the configured hooks.
+ * - **Pattern 1 (`nonreactive-store-read`)** is OFF by default — its `.getState()` /
+ *   `getXStore()` conventions are app-specific. Opt in via `detectGetStateReads`
+ *   and/or `storeAccessorPattern`.
+ */
+export interface RiskConfig {
+  /** Hook names treated as high-confidence external selector hooks (e.g. `useFilteredItems`). */
+  selectorHooks?: string[];
+  /** Import sources whose exported `use*` hooks are high-confidence selector hooks. */
+  selectorHookSources?: string[];
+  /**
+   * Regex source matching store-accessor function names (e.g. `Store$` for `getAppStore`).
+   * When set, enables `getXStore().field` snapshot detection. Omit to disable.
+   */
+  storeAccessorPattern?: string;
+  /** Enable detection of imperative `.getState()` snapshot reads. Default `false`. */
+  detectGetStateReads?: boolean;
+  /** Disable the generic `unstable-hook-arg` heuristic, flagging only configured hooks. Default `true` (generic on). */
+  generic?: boolean;
 }

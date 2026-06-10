@@ -111,6 +111,15 @@ export function deriveCoverage(result: FileCompilationResult, options: DeriveCov
         r.bodyInsertionLine = insertionLine;
       }
     }
+
+    // Attach runtime-risk findings — only meaningful for functions the compiler
+    // will actually memoize (CompileSuccess).
+    if (r.status === 'compiled') {
+      const risks = result.risks.get(key);
+      if (risks && risks.length > 0) {
+        r.risks = risks;
+      }
+    }
   }
 
   return results;

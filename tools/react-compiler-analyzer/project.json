@@ -12,7 +12,7 @@
         "outputPath": "{projectRoot}/dist",
         "main": "tools/react-compiler-analyzer/src/index.ts",
         "tsConfig": "tools/react-compiler-analyzer/tsconfig.lib.json",
-        "assets": ["tools/react-compiler-analyzer/*.md"]
+        "assets": ["tools/react-compiler-analyzer/*.md", "tools/react-compiler-analyzer/risk-config.schema.json"]
       }
     },
     "test": {

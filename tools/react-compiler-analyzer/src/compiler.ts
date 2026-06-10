@@ -7,7 +7,9 @@ import type { PluginItem } from '@babel/core';
 import { processFilesConcurrently } from './concurrency';
 import { manualMemoPlugin } from './manual-memo-plugin';
 import type { ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
-import type { CompilationMode, CompileFilesOptions, FileEntry } from './types';
+import { riskPlugin } from './risk-plugin';
+import type { RiskPluginOptions } from './risk-plugin';
+import type { CompilationMode, CompileFilesOptions, FileEntry, RiskConfig, RiskFinding } from './types';
 
 export interface CompilerEvent {
   kind: 'CompileSuccess' | 'CompileError' | 'CompileSkip' | 'PipelineError' | string;
@@ -239,6 +241,8 @@ export interface FileCompilationResult {
   error?: Error;
   manualMemo: Map<string, ManualMemoEntry>;
   bodyInsertionLines: Map<string, number>;
+  /** Runtime-risk findings keyed by `line:column` of the enclosing function start. */
+  risks: Map<string, RiskFinding[]>;
 }
 
 /**
@@ -249,14 +253,19 @@ export async function compileFile(
   entry: FileEntry,
   compilationMode: CompilationMode,
   verbose: boolean,
+  riskConfig: RiskConfig = {},
 ): Promise<FileCompilationResult> {
   const source = await readFile(entry.filePath, 'utf-8');
   const manualMemo = new Map<string, ManualMemoEntry>();
   const bodyInsertionLines = new Map<string, number>();
+  const risks = new Map<string, RiskFinding[]>();
 
   const { events, error } = await compileSource(source, entry.filePath, {
     compilationMode,
-    plugins: [[manualMemoPlugin, { results: manualMemo, bodyInsertionLines } as ManualMemoPluginOptions]],
+    plugins: [
+      [manualMemoPlugin, { results: manualMemo, bodyInsertionLines } as ManualMemoPluginOptions],
+      [riskPlugin, { ...riskConfig, results: risks } as RiskPluginOptions],
+    ],
   });
 
   if (verbose && !error) {
@@ -275,6 +284,7 @@ export async function compileFile(
     error,
     manualMemo,
     bodyInsertionLines,
+    risks,
   };
 }
 
@@ -284,7 +294,7 @@ export async function compileFile(
 export async function compileFiles(files: FileEntry[], options: CompileFilesOptions): Promise<FileCompilationResult[]> {
   return processFilesConcurrently(
     files,
-    entry => compileFile(entry, options.compilationMode, options.verbose).then(r => [r]),
+    entry => compileFile(entry, options.compilationMode, options.verbose, options.riskConfig).then(r => [r]),
     { concurrency: options.concurrency, verbose: options.verbose },
   );
 }
