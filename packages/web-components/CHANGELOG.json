@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 10 Jun 2026 04:08:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.25",
+      "version": "3.0.0-rc.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "071e0e7febd449244185c8e60c94bab861ffadab",
+            "comment": "avoid dialog from focusing on non-active tab upon showing"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jun 2026 04:10:19 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.24",
       "version": "3.0.0-rc.24",
