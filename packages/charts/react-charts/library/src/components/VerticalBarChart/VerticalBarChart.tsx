@@ -1116,7 +1116,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
   const legendBars: JSXElement = _getLegendData(_points);
-  const legendVal = props.chartTitle?.trim() || _points[0]?.legend || 'Series';
+  const legendVal = _points[0]?.legend || 'Series';
   const chartGroupAriaLabel = `${legendVal}, bar chart with ${_points.length} bars and ${_points.length} data points.`;
   const calloutProps = {
     ...(_isHavingLine && {

@@ -636,7 +636,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
-    const legendVal = props.chartTitle?.trim() || singleSet.groupSeries?.[0]?.legend || 'Series';
+    const legendVal = singleSet.groupSeries?.[0]?.legend || 'Series';
     const chartGroupAriaLabel = `${legendVal}, bar ${singleSet.indexNum + 1} of ${_datasetForBars.length} with ${
       singleSet.groupSeries?.length || 0
     } data points.`;
@@ -898,7 +898,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       dots.push(<g key={`dotGroup-${seriesIdx}`}>{dotGroup}</g>);
     });
 
-    const legendVal = props.chartTitle?.trim() || _lineData[0]?.legend || 'Series';
+    const legendVal = _lineData[0]?.legend || 'Series';
     const chartGroupAriaLabel = `${legendVal}, line series with ${_lineData.length} groups and ${_lineData.reduce(
       (sum, series) => sum + (series.data?.length || 0),
       0,

@@ -1793,7 +1793,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              aria-label="Sales and Profit Trend, bar chart with 6 bars and 6 data points."
+              aria-label="Bar, bar chart with 6 bars and 6 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -1925,7 +1925,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              aria-label="Sales and Profit Trend, line chart with 1 lines."
+              aria-label="Bar, line chart with 1 lines."
               role="listbox"
             >
               <line

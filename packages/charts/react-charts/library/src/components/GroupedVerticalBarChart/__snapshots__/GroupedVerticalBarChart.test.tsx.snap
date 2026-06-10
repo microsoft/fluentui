@@ -1068,6 +1068,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         />
         <g>
           <g
+            aria-label="MetaData1, bar 1 of 3 with 2 data points."
+            role="listbox"
             transform="translate(252.33333333333331, 0)"
           >
             <rect
@@ -1076,7 +1078,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="#00bcf2"
               height="161.7"
               opacity=""
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1089,7 +1091,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="#0078d4"
               height="215.6"
               opacity=""
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1118,6 +1120,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             </text>
           </g>
           <g
+            aria-label="MetaData1, bar 2 of 3 with 2 data points."
+            role="listbox"
             transform="translate(318.1111111111111, 0)"
           >
             <rect
@@ -1126,7 +1130,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="#00bcf2"
               height="161.7"
               opacity=""
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1139,7 +1143,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="#0078d4"
               height="14.700000000000017"
               opacity=""
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1168,6 +1172,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             </text>
           </g>
           <g
+            aria-label="MetaData1, bar 3 of 3 with 2 data points."
+            role="listbox"
             transform="translate(383.8888888888889, 0)"
           >
             <rect
@@ -1176,7 +1182,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="#00bcf2"
               height="68.60000000000002"
               opacity=""
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1189,7 +1195,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="#0078d4"
               height="245"
               opacity=""
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"

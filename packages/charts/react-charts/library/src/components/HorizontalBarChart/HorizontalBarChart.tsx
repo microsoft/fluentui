@@ -419,7 +419,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : _getChartDataText(points!);
         const bars = _createBars(points!);
         const keyVal = _uniqLineText + '_' + index;
-        const legendVal = points!.chartTitle?.trim() || points!.chartData?.[0]?.legend || 'Series';
+        const legendVal = points!.chartData?.[0]?.legend || 'Series';
         const chartGroupAriaLabel = `${legendVal}, bar ${index + 1} of ${data!.length} with ${
           points!.chartData?.length || 0
         } data points.`;
