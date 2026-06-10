@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: autofocus in text-input",
+  "comment": "fix: make sure autofocus works on all focusable custom elements during initial page load",
   "packageName": "@fluentui/web-components",
   "email": "machi@microsoft.com",
   "dependentChangeType": "patch"
