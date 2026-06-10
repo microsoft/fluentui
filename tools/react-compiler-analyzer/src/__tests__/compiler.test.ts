@@ -41,7 +41,7 @@ describe('extractDetailReason', () => {
       description: 'mutates a ref during render',
       loc: { start: { line: 12, column: 4 } },
     };
-    expect(extractDetailReason(detail)).toBe('Cannot compile mutates a ref during render (12:4)');
+    expect(extractDetailReason(detail)).toBe('Cannot compile [mutates a ref during render] (12:4)');
   });
 
   it('stays single-line and never includes the code frame', () => {
@@ -52,7 +52,7 @@ describe('extractDetailReason', () => {
     };
     const reason = extractDetailReason(detail);
     expect(reason).not.toContain('\n');
-    expect(reason).toBe('This value cannot be modified Modifying component props or hook arguments is not allowed.');
+    expect(reason).toBe('This value cannot be modified [Modifying component props or hook arguments is not allowed.]');
   });
 });
 
