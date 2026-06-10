@@ -531,7 +531,6 @@ export class BaseButton extends FASTElement {
 
 // @public
 export class BaseCheckbox extends FASTElement {
-    autofocus: boolean;
     get checked(): boolean;
     set checked(next: boolean);
     checkValidity(): boolean;
