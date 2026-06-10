@@ -301,7 +301,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
       this._hasBeenPositioned = false;
-      this._wasOpen = false;
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
