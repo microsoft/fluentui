@@ -2,6 +2,7 @@ export {
   Dropdown,
   renderDropdown,
   useDropdown,
+  useDropdownContextValues,
   Listbox,
   renderListbox,
   useListbox,

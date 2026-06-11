@@ -1,4 +1,12 @@
-export { Tab, renderTab, useTab, TabList, renderTabList, useTabList } from './components/TabList/index';
+export {
+  Tab,
+  renderTab,
+  useTab,
+  TabList,
+  renderTabList,
+  useTabList,
+  useTabListContextValues,
+} from './components/TabList/index';
 export type {
   TabSlots,
   TabValue,

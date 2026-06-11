@@ -5,6 +5,7 @@ export {
   Rating,
   renderRating,
   useRating,
+  useRatingContextValues,
 } from './components/Rating/index';
 export type {
   RatingItemSlots,
