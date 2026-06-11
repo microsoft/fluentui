@@ -34,6 +34,7 @@
     "@fluentui/react-field": "^9.5.2",
     "@fluentui/react-image": "^9.4.2",
     "@fluentui/react-input": "^9.8.3",
+    "@fluentui/react-jsx-runtime": "^9.4.3",
     "@fluentui/react-label": "^9.4.2",
     "@fluentui/react-link": "^9.8.2",
     "@fluentui/react-menu": "^9.25.0",
