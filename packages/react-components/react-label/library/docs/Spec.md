@@ -68,11 +68,14 @@ The Label component should be simple as shown below. It will just need the text 
 <Label required="**">
   Label
 </Label>
+
+<Label icon={<InfoRegular />}>Label</Label>
 ```
 
 ## Variants
 
 - A Label can be rendered with an asterisk or custom text when is set as `required`.
+- A Label can render an optional `icon` slot before its content.
 
 ## API
 
@@ -83,13 +86,16 @@ See API at [Label.types.ts](./src/components/Label/Label.types.ts).
 ### Public
 
 ```tsx
-<Label required>I'm a Label</Label>
+<Label required icon={<InfoRegular />}>
+  I'm a Label
+</Label>
 ```
 
 ### DOM
 
 ```tsx
 <label {/*Label*/} class="...">
+  <span {/*icon*/} class="..."><svg>...</svg></span>
   I'm a Label
   <span {/*required*/} class="...">*</span>
 </label>
@@ -99,6 +105,7 @@ See API at [Label.types.ts](./src/components/Label/Label.types.ts).
 
 ```tsx
 <slots.root {...slotProps.root}>
+  {state.icon && <slots.icon {...slotProps.icon} />}
   {state.children}
   <slots.required {...slotProps.required} />
 </slots.root>
