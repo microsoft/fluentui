@@ -79,18 +79,20 @@ export function riskPlugin(): PluginObj {
           return;
         }
 
-        // ── `getXStore().field` direct accessor read (opt-in) ──
-        // Requires an explicit `storeAccessorPattern`; only fires when the result is
-        // immediately member-accessed (a value is read off it) and it is not the
-        // `.getState()` form handled above.
+        // ── `getXStore().field` / `const { field } = getXStore()` accessor read (opt-in) ──
+        // Requires an explicit `storeAccessorPattern`. Fires when a value is read off the
+        // accessor result — either a member access (`.field`) or object destructuring
+        // (`const { field } = ...`) — but not the `.getState()` form handled above.
         if (storeAccessorRe && callee.type === 'Identifier' && storeAccessorRe.test(callee.name)) {
           const calleeName = callee.name;
           const parent = path.parentPath;
-          const isPropertyRead =
+          const isMemberRead =
             parent.isMemberExpression() &&
             parent.node.object === path.node &&
             !(parent.node.property.type === 'Identifier' && parent.node.property.name === 'getState');
-          if (isPropertyRead) {
+          const isDestructured =
+            parent.isVariableDeclarator() && parent.node.init === path.node && parent.node.id.type === 'ObjectPattern';
+          if (isMemberRead || isDestructured) {
             record(path, opts.results, {
               ruleId: 'nonreactive-store-read',
               severity: 'medium',
