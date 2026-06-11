@@ -46,8 +46,16 @@ describe('riskPlugin', () => {
     it('flags `getXStore().field` reads (medium) only when storeAccessorPattern is configured', async () => {
       const findings = await runPlugin('nonreactive-store-read.tsx', { storeAccessorPattern: 'Store$' });
       const direct = findings.filter(f => f.ruleId === 'nonreactive-store-read' && f.symbol === 'getAppStore');
-      expect(direct).toHaveLength(1);
-      expect(direct[0].severity).toBe('medium');
+      // Both the `.field` member read and the `const { flag } = getAppStore()` destructure.
+      expect(direct).toHaveLength(2);
+      expect(direct.every(f => f.severity === 'medium')).toBe(true);
+    });
+
+    it('flags `const { x } = getXStore()` destructuring off the accessor', async () => {
+      const findings = await runPlugin('nonreactive-store-read.tsx', { storeAccessorPattern: 'Store$' });
+      // The destructured read is on the fixture line where `const { flag } = getAppStore()` lives.
+      const destructured = findings.filter(f => f.ruleId === 'nonreactive-store-read' && f.symbol === 'getAppStore');
+      expect(destructured.length).toBeGreaterThanOrEqual(2);
     });
 
     it('does not flag `.getState()` unless detectGetStateReads is set', async () => {

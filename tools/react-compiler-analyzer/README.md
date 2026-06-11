@@ -161,9 +161,9 @@ The compiler reports `CompileSuccess` based purely on whether a function is _str
 compilable. It does **not** reason about a value's reactivity — so `analyze` adds an opt-in
 **Compiled but Risky** section flagging one real, compiler-introduced bug:
 
-| Rule                     | What it catches                                                                      | Why memoization breaks it                                                                                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `nonreactive-store-read` | Imperative store snapshots: `store.getState().field`, `getXStore().field` _(opt-in)_ | The read has no tracked inputs, so the compiler hoists it into a compute-once cache slot — it runs on the first render and is **never re-read**, freezing the value. |
+| Rule                     | What it catches                                                                                                       | Why memoization breaks it                                                                                                                                            |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nonreactive-store-read` | Imperative store snapshots: `store.getState().field`, `getXStore().field`, `const { field } = getXStore()` _(opt-in)_ | The read has no tracked inputs, so the compiler hoists it into a compute-once cache slot — it runs on the first render and is **never re-read**, freezing the value. |
 
 This is verifiable in the compiler's own output: a `getState()` read is wrapped in a
 `Symbol.for("react.memo_cache_sentinel")` slot that computes once and then always returns the
@@ -199,6 +199,17 @@ at `risk-config.schema.json` (copied to the published root on build) — point y
 > functions are hoisted to module scope), so the instability the rule warned about is exactly
 > what compilation eliminates. It only ever fired where the compiler had already fixed the
 > problem, so it was a false positive by construction.
+
+**Known limitations.** Detection is purely local and syntactic, so it deliberately does **not** flag:
+
+- **Wrapper helpers** — a call like `getActiveId()` whose body internally does `getStore().getState()`.
+  Resolving the wrapper requires cross-function/cross-module analysis (and the implementation often
+  lives in `node_modules`, sometimes only as bundled/minified code), which can't be done reliably.
+  Flag the read **inside** the wrapper instead, or inline it at the call site.
+- **Indirect binds** — `const s = getStore(); … s.field` (the accessor result stored in a variable and
+  read later). Only direct member access and object-destructuring off the accessor call are detected.
+- **Conditional-hook crashes** — the React Compiler already rejects those with a Rules-of-Hooks
+  `CompileError`, so they never reach `CompileSuccess`; nothing to add here.
 
 Risk findings are advisory — they never change the exit code. Treat them as a review queue
 for sites that compile cleanly but may need a justified `'use no memo'` opt-out.
