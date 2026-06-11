@@ -58,6 +58,9 @@ export const renderRatingItem: (state: RatingItemBaseState) => JSXElement;
 // @public
 export const useRating: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
 
+// @public (undocumented)
+export const useRatingContextValues: (state: RatingState) => RatingContextValues_2;
+
 // @public
 export const useRatingItem: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
 
