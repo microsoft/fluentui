@@ -64,6 +64,9 @@ export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabStat
 // @public
 export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
 
+// @public (undocumented)
+export const useTabListContextValues: (state: TabListState) => TabListContextValues_2;
+
 // (No @packageDocumentation comment for this package)
 
 ```

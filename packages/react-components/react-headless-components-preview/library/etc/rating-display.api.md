@@ -30,6 +30,9 @@ export const renderRatingDisplay: (state: RatingDisplayBaseState, contextValues:
 // @public
 export const useRatingDisplay: (props: RatingDisplayProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayState;
 
+// @public (undocumented)
+export const useRatingDisplayContextValues: (state: RatingDisplayState) => RatingDisplayContextValues_2;
+
 // (No @packageDocumentation comment for this package)
 
 ```
