@@ -46,8 +46,7 @@ const useStyles = makeStyles({
   },
 
   brand: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    /* Styles provided by consumer via custom hooks */
   },
 
   arrow: createArrowStyles({ arrowHeight }),
