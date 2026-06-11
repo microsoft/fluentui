@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 10 Jun 2026 04:08:48 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jun 2026 04:07:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.26)
+
+Thu, 11 Jun 2026 04:07:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.25..@fluentui/web-components_v3.0.0-rc.26)
+
+### Changes
+
+- docs: update storybook and CEM docs" ([PR #36271](https://github.com/microsoft/fluentui/pull/36271) by rupertdavid@microsoft.com)
 
 ## [3.0.0-rc.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.25)
 
