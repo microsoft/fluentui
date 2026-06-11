@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: detect non-reactive store snapshot reads (getState()/getXStore().field) on CompileSuccess functions via a new opt-in risk-detection Babel plugin; surfaced as a 'Compiled but Risky' report section configured via --risk-config (validated against a shipped risk-config.schema.json)",
+  "comment": "feat: add opt-in 'Compiled but Risky' detection to analyze — nonreactive-store-read (getState()/getXStore().field/destructure) and hidden-selector-hook (store.use.field() property-chain selectors the compiler memoizes around). Configured via --risk-config and validated against a shipped risk-config.schema.json.",
   "packageName": "@fluentui/react-compiler-analyzer",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

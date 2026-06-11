@@ -64,9 +64,35 @@ describe('riskPlugin', () => {
     });
   });
 
+  describe('hidden-selector-hook', () => {
+    it('is OFF by default — no selectorHookProperties means no findings', async () => {
+      const findings = await runPlugin('hidden-selector-hook.tsx');
+      expect(findings).toHaveLength(0);
+    });
+
+    it('flags `store.use.field()` property-chain selectors (high) when configured', async () => {
+      const findings = await runPlugin('hidden-selector-hook.tsx', { selectorHookProperties: ['use'] });
+      const hidden = findings.filter(f => f.ruleId === 'hidden-selector-hook');
+      expect(hidden).toHaveLength(2);
+      expect(hidden.every(f => f.severity === 'high')).toBe(true);
+      const symbols = new Set(hidden.map(f => f.symbol));
+      expect(symbols.has('appStore.use.isPrivate')).toBe(true);
+      expect(symbols.has('appStore.use.theme')).toBe(true);
+    });
+
+    it('does not flag a different marker property than configured', async () => {
+      const findings = await runPlugin('hidden-selector-hook.tsx', { selectorHookProperties: ['select'] });
+      expect(findings).toHaveLength(0);
+    });
+  });
+
   describe('safe code', () => {
     it('does not flag anything in a component with no store reads', async () => {
-      const findings = await runPlugin('safe.tsx', { detectGetStateReads: true, storeAccessorPattern: 'Store$' });
+      const findings = await runPlugin('safe.tsx', {
+        detectGetStateReads: true,
+        storeAccessorPattern: 'Store$',
+        selectorHookProperties: ['use'],
+      });
       expect(findings).toHaveLength(0);
     });
   });
@@ -94,6 +120,14 @@ describe('risk integration — compileFile + deriveCoverage', () => {
     const results = await coverageFor('nonreactive-store-read.tsx');
     const risky = results.filter(r => r.risks?.some(f => f.ruleId === 'nonreactive-store-read'));
     expect(risky).toHaveLength(0);
+  });
+
+  it('attaches hidden-selector-hook risks to compiled functions when opted in', async () => {
+    const results = await coverageFor('hidden-selector-hook.tsx', { selectorHookProperties: ['use'] });
+    const risky = results.filter(
+      r => r.status === 'compiled' && r.risks?.some(f => f.ruleId === 'hidden-selector-hook'),
+    );
+    expect(risky.length).toBeGreaterThan(0);
   });
 
   it('reports no risks for safe code', async () => {
