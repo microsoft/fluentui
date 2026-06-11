@@ -2735,25 +2735,25 @@
     eslint-plugin-react "7.35.2"
     eslint-plugin-security "1.4.0"
 
-"@microsoft/fast-build@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-build/-/fast-build-0.6.0.tgz#9791d6100d68ba7104a7727db44cf4fc27a6c939"
-  integrity sha512-N5sApsoDETr4/iHyr99iy9lfAxHsNFIzyEezGmQyWa06rzXn8QK+pLF7EKtp0N4VUsB8i+s62dtIsCgz8kp/2g==
+"@microsoft/fast-build@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-build/-/fast-build-0.7.0.tgz#a7167f8ae1bbd4a1ae379ac3b7bf84d68f464dd7"
+  integrity sha512-YKqjlwFwurd69dL6YWbvGdJ7TX8c2h4Ra7qUGUMTSQAhrnREXjtB6/cduPnkswxBfDOMwYBeaVJCDcMP5auLZg==
 
 "@microsoft/fast-element@2.10.4", "@microsoft/fast-element@^2.0.0":
   version "2.10.4"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.10.4.tgz#12b8c6c90902f2a54d5b27f618d7d095e133546d"
   integrity sha512-OkHIlMztq7+PgkRF1LscgBd/MVzMhGrWPkJRDvOEqdqEdZOKocKvaKcUKZubIBz4RpLIrhLD3lOJzCsspk6jXg==
 
-"@microsoft/fast-html@1.0.0-alpha.53":
-  version "1.0.0-alpha.53"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-html/-/fast-html-1.0.0-alpha.53.tgz#e656a38386a998640fd7af40bbcd5aae321092f9"
-  integrity sha512-S6fUlNjk3aj9SP1U4sRWA1Cf1gns7FLJOed3NMvndWQBfmQczVX8CHXbfVKF55B7nKWRkAQwDHN0wOu7yxw+aw==
+"@microsoft/fast-html@1.0.0-alpha.54":
+  version "1.0.0-alpha.54"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-html/-/fast-html-1.0.0-alpha.54.tgz#66c670aad1dd2600941029d188ed63773baaed20"
+  integrity sha512-7GWGwaJSWD/nqafn/s1YTqc5CmHbRWwEC1BA/BJHSLrX+UQZGGbCugSQ0ArL4x7goDmB6rWLTPB7UZtqOcu/3g==
 
-"@microsoft/fast-test-harness@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-test-harness/-/fast-test-harness-0.3.0.tgz#9d5536c8cbf1e4ecae9d70bfe0fe105b5e215caf"
-  integrity sha512-EZ0iLxy/AEaOMthJmalD4fIp4rAM/ypBfqXmMJD4ZffVUVnLkfUw2NFZNUIsMbP/S4+tsfBnBlX5tyKSYD5TIQ==
+"@microsoft/fast-test-harness@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-test-harness/-/fast-test-harness-0.3.1.tgz#92c671ab9d76751b41a5dc447ec1fe74420796aa"
+  integrity sha512-BxwSSJhRbCJkyjJv9xsOl0ECAHjtU+zZk4PDse7jy/iqEb2wf51QLVrHZQAgWPZWAI6OlMTrjdZTRfiea3ciWA==
   dependencies:
     cheerio "1.2.0"
 

@@ -1,0 +1,222 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+
+:host {
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground1);
+  cursor: pointer;
+}
+
+:host(:state(placeholder-shown)) {
+  color: var(--colorNeutralForeground4);
+}
+
+.control {
+  appearance: none;
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  box-shadow: inset 0 0 0 var(--strokeWidthThin) var(--control-border-color);
+  box-sizing: border-box;
+  color: inherit;
+  column-gap: var(--spacingHorizontalXXS);
+  display: inline-flex;
+  justify-content: space-between;
+  min-width: 160px;
+  overflow: hidden;
+  padding: var(--spacingVerticalSNudge) var(--spacingHorizontalMNudge);
+  white-space: normal;
+  position: relative;
+  text-align: start;
+  width: 100%;
+  z-index: 1;
+
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+  font-weight: var(--fontWeightRegular);
+}
+
+:host([size='small']) .control {
+  column-gap: var(--spacingHorizontalXXS);
+  padding: var(--spacingVerticalXS) var(--spacingHorizontalSNudge);
+
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  font-weight: var(--fontWeightRegular);
+}
+
+:host([size='large']) .control {
+  column-gap: var(--spacingHorizontalS);
+  padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+  font-weight: var(--fontWeightRegular);
+}
+
+::slotted(:is(input, button)) {
+  all: unset;
+  flex: 1 1 auto;
+}
+
+::slotted(button) {
+  cursor: pointer;
+}
+
+::slotted(input) {
+  cursor: text;
+}
+
+:where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  all: unset;
+  align-items: center;
+  appearance: none;
+  aspect-ratio: 1;
+  color: var(--colorNeutralForeground3);
+  display: inline-flex;
+  justify-content: center;
+  width: 20px;
+}
+
+:host([size='small']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  width: 16px;
+}
+
+:host([size='large']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  width: 24px;
+}
+
+.control::after,
+.control::before {
+  content: '' / '';
+  inset: auto 0 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.control::before {
+  height: var(--strokeWidthThin);
+}
+
+.control::after {
+  background-color: var(--colorCompoundBrandStroke);
+  height: var(--strokeWidthThick);
+  scale: 0 1;
+  transition: scale var(--durationUltraFast) var(--curveDecelerateMid);
+}
+
+/**
+  * focus-ring style uses lingering :focus-within selector due to platform limitations
+  * TODO: Convert selector to `:host(:has(:focus-visible)) .control` when browser support increases
+  * ISSUE: https://issues.chromium.org/issues/40062355
+  */
+:host(:where(:focus-within)) .control {
+  border-radius: var(--borderRadiusMedium);
+  box-shadow: inset 0 0 0 1px var(--colorStrokeFocus1);
+  outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+}
+
+:host(:where(:state(open), :focus-within)) .control::after {
+  scale: 1 1;
+  transition-duration: var(--durationNormal);
+  transition-timing-function: var(--curveAccelerateMid);
+}
+
+:host(:where([appearance='outline'], [appearance='transparent'])) .control::before {
+  background-color: var(--colorNeutralStrokeAccessible);
+}
+
+:host([appearance='transparent']) .control {
+  --control-border-color: var(--colorTransparentStrokeInteractive);
+  background-color: var(--colorTransparentBackground);
+  border-radius: var(--borderRadiusNone);
+}
+
+:host([appearance='outline']) .control {
+  --control-border-color: var(--colorNeutralStroke1);
+}
+
+:host([appearance='outline']) .control:hover {
+  --control-border-color: var(--colorNeutralStroke1Hover);
+}
+
+:host(:where([appearance='outline'], [appearance='transparent'])) .control:hover::before {
+  background-color: var(--colorNeutralStrokeAccessibleHover);
+}
+
+:host([appearance='outline']) .control:hover::after {
+  background-color: var(--colorCompoundBrandBackgroundHover);
+}
+
+:host([appearance='outline']) .control:active {
+  --control-border-color: var(--colorNeutralStroke1Pressed);
+}
+
+:host(:where([appearance='outline'], [appearance='transparent'])) .control:active::before {
+  background-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+
+:host(:where([appearance='outline'], [appearance='transparent'])) .control:active::after {
+  background-color: var(--colorCompoundBrandBackgroundPressed);
+}
+
+:host([appearance='filled-darker']) .control {
+  background-color: var(--colorNeutralBackground3);
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control {
+  --control-border-color: var(--colorTransparentStroke);
+}
+
+:host(:disabled),
+:host(:disabled) ::slotted(:where(button, input)) {
+  cursor: not-allowed;
+}
+
+:host(:disabled) .control::before,
+:host(:disabled) .control::after {
+  content: none;
+}
+
+:host(:disabled) .control:is(*, :active, :hover),
+:host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  --control-border-color: var(--colorNeutralStrokeDisabled);
+  background-color: var(--colorNeutralBackgroundDisabled);
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+::slotted(:not([slot]):not([popover])),
+::slotted([popover]:not(:popover-open)) {
+  display: none;
+}
+
+@supports not (anchor-name: --anchor) {
+  :host {
+    --listbox-max-height: 50vh;
+    --margin-offset: calc(var(--lineHeightBase300) + (var(--spacingVerticalSNudge) * 2) + var(--strokeWidthThin));
+  }
+
+  :host([size='small']) {
+    --margin-offset: calc(var(--lineHeightBase200) + (var(--spacingVerticalXS) * 2) + var(--strokeWidthThin));
+  }
+
+  :host([size='large']) {
+    --margin-offset: calc(var(--lineHeightBase400) + (var(--spacingVerticalS) * 2) + var(--strokeWidthThin));
+  }
+}
+
+@media (forced-colors: active) {
+  :host(:disabled) .control {
+    border-color: GrayText;
+  }
+  :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+    color: GrayText;
+  }
+}

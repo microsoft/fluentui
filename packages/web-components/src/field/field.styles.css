@@ -1,0 +1,125 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-grid;
+}
+
+:host {
+  color: var(--colorNeutralForeground1);
+  align-items: center;
+  gap: 0 var(--spacingHorizontalM);
+  justify-items: start;
+}
+
+:has([slot='message']) {
+  color: var(--colorNeutralForeground1);
+  row-gap: var(--spacingVerticalS);
+}
+
+:not(::slotted([slot='label'])) {
+  gap: 0;
+}
+
+:host([label-position='before']) {
+  grid-template-areas: 'label input' 'label message';
+}
+
+:host([label-position='after']) {
+  gap: 0;
+  grid-template-areas: 'input label' 'message message';
+  grid-template-columns: auto 1fr;
+}
+
+:host([label-position='after']) ::slotted([slot='input']) {
+  margin-inline-end: var(--spacingHorizontalM);
+}
+
+:host([label-position='above']) {
+  grid-template-areas: 'label' 'input' 'message';
+  row-gap: var(--spacingVerticalXXS);
+}
+
+:host([label-position='below']) {
+  grid-template-areas: 'input' 'label' 'message';
+  justify-items: center;
+}
+
+:host([label-position='below']) ::slotted([slot='label']) {
+  margin-block-start: var(--spacingVerticalM);
+}
+
+:host(:state(required)) ::slotted([slot='label'])::after {
+  content: '*' / '';
+  color: var(--colorPaletteRedForeground1);
+  margin-inline-start: var(--spacingHorizontalXS);
+}
+
+::slotted([slot='input']) {
+  grid-area: input;
+}
+
+::slotted([slot='message']) {
+  color: var(--colorNeutralForeground3);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  grid-area: message;
+  line-height: var(--lineHeightBase200);
+  margin-block-start: var(--spacingVerticalXXS);
+}
+
+:host(:state(focus-visible):focus-within) {
+  border-radius: var(--borderRadiusMedium);
+  outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+}
+
+::slotted(label),
+::slotted([slot='label']) {
+  cursor: inherit;
+  display: inline-flex;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  grid-area: label;
+  line-height: var(--lineHeightBase300);
+  justify-self: stretch;
+  user-select: none;
+}
+
+:host([size='small']) ::slotted(label) {
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+}
+
+:host([size='large']) ::slotted(label) {
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+:host([size='large']) ::slotted(label),
+:host([weight='semibold']) ::slotted(label) {
+  font-weight: var(--fontWeightSemibold);
+}
+
+:host(:state(disabled)) {
+  cursor: default;
+}
+
+::slotted([flag]) {
+  display: none;
+}
+
+:host(:state(bad-input)) ::slotted([flag='bad-input']),
+:host(:state(custom-error)) ::slotted([flag='custom-error']),
+:host(:state(pattern-mismatch)) ::slotted([flag='pattern-mismatch']),
+:host(:state(range-overflow)) ::slotted([flag='range-overflow']),
+:host(:state(range-underflow)) ::slotted([flag='range-underflow']),
+:host(:state(step-mismatch)) ::slotted([flag='step-mismatch']),
+:host(:state(too-long)) ::slotted([flag='too-long']),
+:host(:state(too-short)) ::slotted([flag='too-short']),
+:host(:state(type-mismatch)) ::slotted([flag='type-mismatch']),
+:host(:state(value-missing)) ::slotted([flag='value-missing']),
+:host(:state(valid)) ::slotted([flag='valid']) {
+  display: block;
+}
