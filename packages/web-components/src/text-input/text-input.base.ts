@@ -1,12 +1,5 @@
-import {
-  attr,
-  FASTElement,
-  nullableNumberConverter,
-  Observable,
-  observable,
-  type Subscriber,
-  Updates,
-} from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable, observable, Updates } from '@microsoft/fast-element';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { ImplicitSubmissionBlockingTypes, TextInputType } from './text-input.options.js';
 
 /**
@@ -456,24 +449,10 @@ export class BaseTextInput extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.tabIndex = Number(this.getAttribute('tabindex') ?? 0) < 0 ? -1 : 0;
-
     this.setFormValue(this.value);
     this.setValidity();
-  }
 
-  /**
-   * Focuses the inner control when the component is focused.
-   *
-   * @param e - the event object
-   * @public
-   */
-  public focusinHandler(e: FocusEvent): boolean | void {
-    if (e.target === this) {
-      this.control?.focus();
-    }
-
-    return true;
+    maybeSetAutoFocus(this);
   }
 
   /**

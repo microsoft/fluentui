@@ -1,4 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { type ButtonFormTarget, ButtonType } from './button.options.js';
 
 /**
@@ -248,6 +249,7 @@ export class BaseButton extends FASTElement {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
     this.setTabIndex();
+    maybeSetAutoFocus(this);
   }
 
   constructor() {

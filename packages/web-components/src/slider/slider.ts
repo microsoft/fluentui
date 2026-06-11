@@ -5,6 +5,7 @@ import { limit } from '../utils/numbers.js';
 import { Orientation } from '../utils/orientation.js';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 
@@ -552,6 +553,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
       notifier.subscribe(this, 'min');
       notifier.subscribe(this, 'step');
     });
+
+    maybeSetAutoFocus(this);
   }
 
   /**

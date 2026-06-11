@@ -29,12 +29,6 @@ test.describe('TextInput', () => {
 
     const attributes: InitialTemplateAttributes = { autofocus: true };
 
-    if (ssr) {
-      // the host element needs to be focusable for autofocus to work on the server,
-      // so we need to set tabindex="0"
-      attributes.tabindex = '0';
-    }
-
     await fastPage.setTemplate({ attributes });
 
     await expect(element).toBeFocused();

@@ -49,8 +49,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: dedent`hello
-        world
+        component: dedent`
+          The Combobox component is a variant of the <a href="/docs/components-dropdown--docs">Dropdown</a> component.
+
+          To use a combobox, use <code>&lt;fluent-dropdown type="combobox"&gt;</code>.
         `,
       },
     },

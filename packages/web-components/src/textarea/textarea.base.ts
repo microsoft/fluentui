@@ -2,6 +2,7 @@ import { attr, FASTElement, nullableNumberConverter, observable, Updates } from 
 import { whitespaceFilter } from '../utils/whitespace-filter.js';
 import type { Label } from '../label/label.js';
 import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
 
 /**
@@ -443,6 +444,7 @@ export class BaseTextArea extends FASTElement {
       this.preConnectControlEl = null;
 
       this.maybeCreateAutoSizerEl();
+      maybeSetAutoFocus(this);
     });
   }
 
