@@ -2,6 +2,29 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Thu, 11 Jun 2026 13:26:43 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "576d8ad038a1422a641bcc4059c15b65ee348758",
+            "comment": "feat: remove _unstable suffixes from Dialog functions and hooks exports"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "46418f2942b1e28f5107571c659097c3c9c6b065",
+            "comment": "fix: add missing @fluentui/react-jsx-runtime dependency"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jun 2026 10:14:53 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.1.2",
       "version": "0.1.2",

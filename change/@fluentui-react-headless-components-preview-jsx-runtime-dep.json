@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add missing @fluentui/react-jsx-runtime dependency",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
