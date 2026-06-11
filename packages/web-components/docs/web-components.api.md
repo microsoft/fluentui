@@ -1029,7 +1029,6 @@ export class BaseTextInput extends FASTElement {
     disabled?: boolean;
     // @internal
     elementInternals: ElementInternals;
-    focusinHandler(e: FocusEvent): boolean | void;
     get form(): HTMLFormElement | null;
     static readonly formAssociated = true;
     formAttribute?: string;

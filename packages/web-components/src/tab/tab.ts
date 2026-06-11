@@ -2,6 +2,7 @@ import { attr, css, type ElementStyles, FASTElement } from '@microsoft/fast-elem
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 
 /**
  * Tab configuration options
@@ -65,6 +66,8 @@ export class Tab extends FASTElement {
     `;
 
     this.$fastController.addStyles(this.styles);
+
+    maybeSetAutoFocus(this);
   }
 
   private setDisabledSideEffect(disabled: boolean) {

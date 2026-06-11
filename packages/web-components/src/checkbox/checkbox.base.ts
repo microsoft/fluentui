@@ -1,5 +1,6 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 
 /**
  * The base class for a component with a toggleable checked state.
@@ -348,6 +349,7 @@ export class BaseCheckbox extends FASTElement {
     this.disabled = !!this.disabledAttribute;
     this.setAriaChecked();
     this.setValidity();
+    maybeSetAutoFocus(this);
   }
 
   /**
