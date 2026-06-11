@@ -2,7 +2,7 @@ import type * as React from 'react';
 import type { OverflowContextValue } from './overflowContext';
 
 /**
- * @internal
+ * @public
  */
 export interface UseOverflowContainerReturn<TElement extends HTMLElement>
   extends Pick<

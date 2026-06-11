@@ -10,7 +10,7 @@ import { EMPTY_SNAPSHOT } from '@fluentui/priority-overflow';
 import * as React from 'react';
 
 /**
- * @internal
+ * @public
  */
 export interface OverflowContextValue {
   /**
@@ -38,6 +38,13 @@ export interface OverflowContextValue {
 export const OverflowContext = React.createContext<OverflowContextValue | undefined>(
   undefined,
 ) as React.Context<OverflowContextValue>;
+
+/**
+ * Provides an {@link OverflowContextValue} to descendant overflow hooks and components.
+ * Used by headless consumers that build their own overflow root.
+ * @public
+ */
+export const OverflowProvider = OverflowContext.Provider;
 
 const noop = () => {
   /* noop */
