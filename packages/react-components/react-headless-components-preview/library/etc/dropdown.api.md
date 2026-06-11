@@ -96,6 +96,9 @@ export const renderOptionGroup: (state: OptionGroupState_2) => JSXElement;
 // @public
 export const useDropdown: (props: DropdownProps, ref: React_2.Ref<HTMLButtonElement>) => DropdownState;
 
+// @public (undocumented)
+export const useDropdownContextValues: (state: DropdownState) => DropdownContextValues;
+
 // @public
 export const useListbox: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
 

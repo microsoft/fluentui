@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Tue, 09 Jun 2026 21:25:23 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jun 2026 13:26:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.0)
+
+Thu, 11 Jun 2026 13:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.1.2..@fluentui/react-headless-components-preview_v0.2.0)
+
+### Minor changes
+
+- feat: remove _unstable suffixes from Dialog functions and hooks exports ([PR #36302](https://github.com/microsoft/fluentui/pull/36302) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: add missing @fluentui/react-jsx-runtime dependency ([PR #36301](https://github.com/microsoft/fluentui/pull/36301) by dmytrokirpa@microsoft.com)
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.1.2)
+
+Thu, 11 Jun 2026 10:14:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.1.1..@fluentui/react-headless-components-preview_v0.1.2)
+
+### Patches
+
+- fix: export useContextValues for headless components requiring context in render functions ([PR #36300](https://github.com/microsoft/fluentui/pull/36300) by dmytrokirpa@microsoft.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.1.1)
 

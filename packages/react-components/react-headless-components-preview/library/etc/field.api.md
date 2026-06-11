@@ -34,6 +34,9 @@ export const renderField: (state: FieldBaseState, contextValues: FieldContextVal
 // @public
 export const useField: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
+// @public
+export const useFieldContextValues: (state: FieldState) => FieldContextValues_2;
+
 // (No @packageDocumentation comment for this package)
 
 ```
