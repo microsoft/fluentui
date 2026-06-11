@@ -23,6 +23,8 @@
  * against the matrix of (TS@HEAD vs TS@working) × (HTML@HEAD vs
  * HTML@working) × (regen output vs disk). Exits non-zero when any
  * stale, hand-edited, or conflicting files are detected.
+ *
+ * See README.md#ssr-templates-and-stylesheets for the clobber-resolution workflow.
  */
 
 import { execSync } from 'node:child_process';
@@ -103,6 +105,8 @@ async function main() {
  *                  (committed state is out of sync — CI failure signal)
  * - `handEdited` — HTML differs from HEAD with no TS change; regen would clobber
  * - `conflicts`  — both TS and HTML differ from HEAD, and regen disagrees with disk
+ *
+ * See README.md#ssr-templates-and-stylesheets for the clobber-resolution workflow.
  */
 async function classify(stagingDir) {
   const dirtyMap = buildDirtyMap();

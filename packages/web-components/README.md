@@ -106,6 +106,14 @@ yarn check:ssr
 
 `yarn compile` does not regenerate these files; it copies them from `src/` into `dist/esm/` alongside the compiled JS.
 
+Use the `yarn check:ssr` summary to avoid clobbering intentional SSR-only edits:
+
+- `stale`: the committed source and generated file are unchanged, but regeneration disagrees with disk. Rebase if needed, then run `yarn generate:ssr`, review the generated diff, and commit it with the related source or generator change.
+- `hand-edited`: the generated HTML/CSS changed without a matching `*.template.ts` or `*.styles.ts` change. Do not overwrite it blindly; either move the intended delta into the TypeScript source or generator before regenerating, or reapply and call out the intentional SSR-only edit in the PR.
+- `conflicts`: both the TypeScript source and generated file changed, and regeneration still disagrees with disk. Treat this like a merge conflict: inspect the current generated-file diff, regenerate, then preserve only the intentional SSR delta before committing.
+
+Keep generated-file updates scoped to the component you changed. If `yarn check:ssr` reports unrelated stale files, leave them out of your PR and coordinate a dedicated cleanup.
+
 ### Known issue with Storybook site hot-reloading during development
 
 Storybook will watch modules for changes and hot-reload the module when necessary. This is usually great but poses a problem when the module being hot-reloaded defines a custom element. A custom element name can only be defined by the `CustomElementsRegistry` once, so reloading a module that defines a custom element will attempt to re-register the custom element name, throwing an error because the name has already been defined. This error will manifest with the following message:
