@@ -130,19 +130,7 @@ const useRootStyles = makeStyles({
     },
   },
   tint: {
-    [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorCompoundBrandForeground1,
-    },
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active,:active:focus-visible': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
+    /* Styles provided by custom hooks */
   },
 
   // Size variations
