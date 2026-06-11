@@ -2,6 +2,21 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Thu, 11 Jun 2026 10:14:53 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "35667359d9f77cff90038dee12dc5c3e07db34ce",
+            "comment": "fix: export useContextValues for headless components requiring context in render functions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jun 2026 21:25:23 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.1.1",
       "version": "0.1.1",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: export useContextValues for headless components requiring context in render functions",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
