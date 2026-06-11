@@ -1,0 +1,131 @@
+/*
+ * The headless Overflow ships no styling — it only sets the `data-overflowing` and
+ * `data-overflow-menu` attributes. Consumers provide the two layout rules the overflow engine
+ * relies on (below), plus any presentational styling.
+ */
+
+.container [data-overflowing] {
+  display: none;
+}
+
+.container [data-overflow-menu] {
+  flex-shrink: 0;
+}
+
+.resizer {
+  resize: horizontal;
+  overflow: hidden;
+  width: 360px;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+}
+
+.resizerVertical {
+  resize: vertical;
+  overflow: hidden;
+  height: 220px;
+  max-height: 100%;
+  width: max-content;
+  padding: 8px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+}
+
+.item {
+  flex: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-muted);
+  color: var(--text);
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.itemSelected {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.menu {
+  flex: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  cursor: pointer;
+}
+
+.divider {
+  flex: none;
+  align-self: stretch;
+  width: 1px;
+  margin: 0 4px;
+  background: var(--border);
+}
+
+.vertical .divider {
+  width: auto;
+  height: 1px;
+  margin: 4px 0;
+}
+
+.menuPopover {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 140px;
+  padding: 4px;
+  margin: 0;
+  list-style: none;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+}
+
+.menuItem {
+  text-align: left;
+  padding: 6px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menuItem:hover {
+  background: var(--surface-muted);
+}
+
+.menuDivider {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--border);
+}
