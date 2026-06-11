@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "React Compiler Analyzer — risk-detection config",
-  "description": "Configuration for the `analyze --risk-config <file>` non-reactive store-read detection. See the package README ('Compiled but Risky') for rule semantics.",
+  "description": "Configuration for the `analyze --risk-config <file>` runtime-risk rules. See the package README ('Compiled but Risky') for rule semantics.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -18,6 +18,12 @@
       "type": "boolean",
       "description": "Enable detection of imperative `.getState()` snapshot reads (`nonreactive-store-read`, `high`). Default: false.",
       "default": false
+    },
+    "selectorHookProperties": {
+      "type": "array",
+      "description": "Marker property names identifying a hidden selector hook accessed via property chain, e.g. [\"use\"] matches `store.use.field()` (`hidden-selector-hook`, `high`). Empty/omitted disables the rule.",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
     }
   }
 }

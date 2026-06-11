@@ -82,8 +82,12 @@ export interface ManualMemoization {
  *   or `getXStore().field`) that takes no tracked inputs. The compiler memoizes it behind
  *   a compute-once cache slot, so it is read on the first render and never again — freezing
  *   the value across store transitions.
+ * - `hidden-selector-hook` — a selector accessed via property chain (`store.use.field()`)
+ *   that calls a real hook internally but isn't `useXxx()`-named at the call site. The
+ *   compiler doesn't recognize it as a hook and may memoize around it, moving the hidden hook
+ *   into a cache branch and causing a hook-order crash (`areHookInputsEqual`).
  */
-export type RiskRuleId = 'nonreactive-store-read';
+export type RiskRuleId = 'nonreactive-store-read' | 'hidden-selector-hook';
 
 /**
  * Confidence that a finding is a real runtime hazard:
@@ -150,15 +154,20 @@ export interface CompileFilesOptions {
 }
 
 /**
- * Configuration for the `nonreactive-store-read` risk rule. The rule is OFF unless opted
- * into — its `.getState()` / `getXStore()` conventions are app-specific, not universal.
+ * Configuration for the runtime-risk rules. Every rule is OFF unless opted into — their
+ * `.getState()` / `getXStore()` / `.use.field()` conventions are app-specific, not universal.
  */
 export interface RiskConfig {
   /**
    * Regex source matching store-accessor function names (e.g. `Store$` for `getAppStore`).
-   * When set, enables `getXStore().field` snapshot detection. Omit to disable.
+   * When set, enables `getXStore().field` snapshot detection (`nonreactive-store-read`). Omit to disable.
    */
   storeAccessorPattern?: string;
-  /** Enable detection of imperative `.getState()` snapshot reads. Default `false`. */
+  /** Enable detection of imperative `.getState()` snapshot reads (`nonreactive-store-read`). Default `false`. */
   detectGetStateReads?: boolean;
+  /**
+   * Marker property names that identify a hidden selector hook accessed via property chain,
+   * e.g. `["use"]` matches `store.use.field()` (`hidden-selector-hook`). Empty/omitted disables it.
+   */
+  selectorHookProperties?: string[];
 }
