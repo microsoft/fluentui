@@ -51,4 +51,4 @@ export type {
   DialogActionsProps,
   DialogActionsSlots,
   DialogActionsState,
-} from './components/Dialog';
+} from './components/Dialog/index';
