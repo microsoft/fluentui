@@ -180,52 +180,52 @@ export type DialogTriggerState = {
 };
 
 // @public
-export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSXElement;
+export const renderDialog: (state: DialogState, contextValues: DialogContextValues) => JSXElement;
 
 // @public (undocumented)
-export const renderDialogActions_unstable: (state: DialogActionsState) => JSXElement;
+export const renderDialogActions: (state: DialogActionsState) => JSXElement;
 
 // @public (undocumented)
-export const renderDialogBody_unstable: (state: DialogBodyState) => JSXElement;
+export const renderDialogBody: (state: DialogBodyState) => JSXElement;
 
 // @public (undocumented)
-export const renderDialogHeader_unstable: (state: DialogHeaderState) => JSXElement;
+export const renderDialogHeader: (state: DialogHeaderState) => JSXElement;
 
 // @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState) => JSXElement | null;
+export const renderDialogSurface: (state: DialogSurfaceState) => JSXElement | null;
 
 // @public (undocumented)
-export const renderDialogTitle_unstable: (state: DialogTitleState) => JSXElement;
+export const renderDialogTitle: (state: DialogTitleState) => JSXElement;
 
 // @public
-export const useDialog_unstable: (props: DialogProps) => DialogState;
+export const useDialog: (props: DialogProps) => DialogState;
 
 // @public
-export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLDivElement>) => DialogActionsState;
+export const useDialogActions: (props: DialogActionsProps, ref: React_2.Ref<HTMLDivElement>) => DialogActionsState;
 
 // @public
-export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLDivElement>) => DialogBodyState;
+export const useDialogBody: (props: DialogBodyProps, ref: React_2.Ref<HTMLDivElement>) => DialogBodyState;
 
 // @public (undocumented)
 export const useDialogContext: () => DialogContextValue;
 
 // @public (undocumented)
-export const useDialogContextValues_unstable: (state: DialogState) => DialogContextValues;
+export const useDialogContextValues: (state: DialogState) => DialogContextValues;
 
 // @public
-export const useDialogHeader_unstable: (props: DialogHeaderProps, ref: React_2.Ref<HTMLElement>) => DialogHeaderState;
+export const useDialogHeader: (props: DialogHeaderProps, ref: React_2.Ref<HTMLElement>) => DialogHeaderState;
 
 // @public
-export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => DialogSurfaceState;
+export const useDialogSurface: (props: DialogSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => DialogSurfaceState;
 
 // @public (undocumented)
 export const useDialogSurfaceContext: () => DialogSurfaceContextValue;
 
 // @public
-export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLHeadingElement>) => DialogTitleState;
+export const useDialogTitle: (props: DialogTitleProps, ref: React_2.Ref<HTMLHeadingElement>) => DialogTitleState;
 
 // @public
-export const useDialogTrigger_unstable: (props: DialogTriggerProps) => DialogTriggerState;
+export const useDialogTrigger: (props: DialogTriggerProps) => DialogTriggerState;
 
 // (No @packageDocumentation comment for this package)
 
