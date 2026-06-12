@@ -217,6 +217,12 @@ describe('html table of contents', () => {
     expect(doc).toContain("'toc-row'");
     expect(doc).toContain("classList.add('active')");
   });
+
+  it('builder script wires a collapse toggle for the whole rail', () => {
+    const doc = renderHtmlDocument('Report', '');
+    expect(doc).toContain("'toc-toggle'");
+    expect(doc).toContain("classList.toggle('collapsed')");
+  });
 });
 
 describe('status coloring', () => {
