@@ -97,6 +97,7 @@ export type OverflowItemProps = {
     id: string;
     groupId?: string;
     children: React_2.ReactElement;
+    defer?: boolean;
 } & ({
     pinned?: boolean;
     priority?: never;
@@ -163,14 +164,20 @@ export const useOverflowCount: () => number;
 export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React_2.RefObject<TElement | null>;
 
 // @internal
-export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string, pinned?: boolean): React_2.RefObject<TElement | null>;
+export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string, pinned?: boolean, defer?: boolean): React_2.RefObject<TElement | null>;
 
 // @public (undocumented)
-export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
+export function useOverflowMenu<TElement extends HTMLElement>(idOrOptions?: string | UseOverflowMenuOptions): {
     ref: React_2.MutableRefObject<TElement | null>;
     overflowCount: number;
     isOverflowing: boolean;
 };
+
+// @public (undocumented)
+export interface UseOverflowMenuOptions {
+    defer?: boolean;
+    id?: string;
+}
 
 // @public (undocumented)
 export const useOverflowStyles_unstable: (state: OverflowComponentState) => OverflowComponentState;

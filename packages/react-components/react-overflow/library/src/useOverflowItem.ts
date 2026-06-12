@@ -12,6 +12,7 @@ import { useOverflowContext } from './overflowContext';
  * @param priority - higher priority means the item overflows later
  * @param groupId - assigns the item to a group, group visibility can be watched
  * @param pinned - if true, the item will never overflow and will always be visible
+ * @param defer - if true, the item will not force an update on the overflow context when it registers/unregisters.
  * @returns ref to assign to an intrinsic HTML element
  */
 export function useOverflowItem<TElement extends HTMLElement>(
@@ -19,6 +20,7 @@ export function useOverflowItem<TElement extends HTMLElement>(
   priority?: number,
   groupId?: string,
   pinned?: boolean,
+  defer?: boolean,
 ): React.RefObject<TElement | null> {
   const ref = React.useRef<TElement | null>(null);
   const registerItem = useOverflowContext(v => v.registerItem);
@@ -43,13 +45,17 @@ export function useOverflowItem<TElement extends HTMLElement>(
         groupId,
         pinned,
       });
-      forceUpdateOverflow();
+      if (!defer) {
+        forceUpdateOverflow();
+      }
       return () => {
         unregister();
-        forceUpdateOverflow();
+        if (!defer) {
+          forceUpdateOverflow();
+        }
       };
     }
-  }, [id, priority, registerItem, forceUpdateOverflow, groupId, pinned]);
+  }, [id, priority, registerItem, forceUpdateOverflow, groupId, pinned, defer]);
 
   return ref;
 }
