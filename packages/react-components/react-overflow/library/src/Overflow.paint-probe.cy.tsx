@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
+import type { OverflowItemProps, UseOverflowMenuOptions } from '@fluentui/react-overflow';
 import { Overflow, OverflowItem, useOverflowMenu } from '@fluentui/react-overflow';
-import { OverflowContext, useOverflowContext } from './overflowContext';
 
 // Disable StrictMode so the probe measures a single mount/commit path.
 const mount = (element: React.ReactElement) => mountBase(element, { strict: false });
@@ -55,31 +55,17 @@ const PaintRecorder: React.FC<{ name: string; frames: number }> = ({ name, frame
 const distinctPaints = (filmstrip: Paint[]): Paint[] =>
   filmstrip.filter((paint, i) => i === 0 || JSON.stringify(paint) !== JSON.stringify(filmstrip[i - 1]));
 
-// ── Opt-out, without reimplementing anything ──────────────────────────────────────────────────────
-// First-paint correctness is requested by the real useOverflowItem / useOverflowMenu calling
-// forceUpdateOverflow. Opting out is simply overriding that one context method to a no-op for a
-// subtree — the real components inside then request nothing. A Context.Provider renders no DOM node,
-// so the flex layout (and overflow geometry) is untouched.
-const noop = () => {
-  /* opt out of first-paint correctness */
-};
-const OptOut: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const ctx = useOverflowContext();
-  const value = React.useMemo(() => ({ ...ctx, forceUpdateOverflow: noop }), [ctx]);
-  return <OverflowContext.Provider value={value}>{children}</OverflowContext.Provider>;
-};
-
 // Real shipping components, used as-is.
-const Item: React.FC<{ id: string }> = ({ id }) => (
-  <OverflowItem id={id}>
+const Item: React.FC<{ id: string } & Pick<OverflowItemProps, 'defer'>> = ({ id, defer }) => (
+  <OverflowItem id={id} defer={defer}>
     <button {...{ [selectors.item]: id }} style={{ width: 50, height: 50, flexShrink: 0 }}>
       {id}
     </button>
   </OverflowItem>
 );
 
-const Menu: React.FC = () => {
-  const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
+const Menu: React.FC<UseOverflowMenuOptions> = options => {
+  const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>(options);
   if (!isOverflowing) {
     return null;
   }
@@ -102,7 +88,8 @@ const Container: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
 );
 
 // 300px container, 10 items @ 50px, menu @ 50px, padding 0 -> settled state hides items 5..9 (+5).
-const items = Array.from({ length: 10 }, (_, i) => <Item key={i} id={String(i)} />);
+const createItem = (defer: boolean) =>
+  Array.from({ length: 10 }, (_, i) => <Item key={i} id={String(i)} defer={defer} />);
 const FRAMES = 12;
 
 const SETTLED: Paint = { menuText: '+5', overflowingItemIds: ['5', '6', '7', '8', '9'] };
@@ -145,7 +132,7 @@ describe('Overflow paint probe', () => {
     recordCase(
       'no-opt-out',
       <>
-        {items}
+        {createItem(false)}
         <Menu />
       </>,
     );
@@ -161,10 +148,8 @@ describe('Overflow paint probe', () => {
     recordCase(
       'menu-opt-out',
       <>
-        {items}
-        <OptOut>
-          <Menu />
-        </OptOut>
+        {createItem(false)}
+        <Menu defer />
       </>,
     );
     assertFilmstrip('menu-opt-out', first => {
@@ -178,7 +163,7 @@ describe('Overflow paint probe', () => {
     recordCase(
       'items-opt-out',
       <>
-        <OptOut>{items}</OptOut>
+        {createItem(true)}
         <Menu />
       </>,
     );
@@ -192,10 +177,10 @@ describe('Overflow paint probe', () => {
   it('both opt-out: first paint is unresolved, settles later', () => {
     recordCase(
       'both-opt-out',
-      <OptOut>
-        {items}
-        <Menu />
-      </OptOut>,
+      <>
+        {createItem(true)}
+        <Menu defer />
+      </>,
     );
     assertFilmstrip('both-opt-out', first => {
       expect(first, 'both-opt-out: first paint is unresolved').to.deep.equal(UNRESOLVED);
