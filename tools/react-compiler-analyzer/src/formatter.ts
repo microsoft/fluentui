@@ -24,6 +24,12 @@ export interface FoldableSectionOptions {
   defaultOpen?: boolean;
   /** Heading level for `cli`/`md` rendering. Default `2`. */
   level?: number;
+  /**
+   * Optional grouping label (e.g. a package name) used in `html` to disambiguate repeated chapter
+   * titles across groups: it prefixes the fold `id`, is emitted as `data-group`, and renders as a
+   * separator in the navigation bar. Ignored by `cli`/`md` (the group already appears as a heading).
+   */
+  group?: string;
 }
 
 /**
@@ -300,13 +306,15 @@ class HtmlFormatter implements Formatter {
   public foldableSection(opts: FoldableSectionOptions, body: () => void): void {
     const statusCls = opts.status ? ` ${statusClass(opts.status)}` : '';
     const openAttr = opts.defaultOpen ? ' open' : '';
-    const id = slugify(opts.title);
+    // Prefix the id with the group slug so repeated chapter titles across groups stay unique.
+    const id = opts.group ? `${slugify(opts.group)}--${slugify(opts.title)}` : slugify(opts.title);
+    const groupAttr = opts.group ? ` data-group="${escapeHtml(stripInline(opts.group))}"` : '';
     const countAttr = opts.count === undefined ? '' : ` data-count="${opts.count}"`;
     const badge = opts.count === undefined ? '' : ` <span class="fold-count">${opts.count}</span>`;
     this.write(
       `<details class="fold${statusCls}" id="${id}" data-title="${escapeHtml(
         stripInline(opts.title),
-      )}"${countAttr}${openAttr}>`,
+      )}"${groupAttr}${countAttr}${openAttr}>`,
     );
     this.write(`<summary><span class="fold-title">${inlineHtml(opts.title)}</span>${badge}</summary>`);
     this.write('<div class="fold-body">');
@@ -446,6 +454,8 @@ details.fold .table-wrap table{background:rgba(255,255,255,.55);}
 .fold-bar .nav-chip.status-warning:hover{background:#f7e8c8;}
 .fold-bar .nav-chip.status-info:hover{background:#d8e8fb;}
 .fold-bar .nav-spacer{flex:1;}
+.fold-bar .nav-group{flex:none;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:.2rem .15rem .2rem .5rem;border-left:1px solid var(--border);margin-left:.25rem;}
+.fold-bar .nav-group:first-child{border-left:none;margin-left:0;padding-left:.15rem;}
 .fold-bar .nav-act{cursor:pointer;font-size:.74rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:.2rem .55rem;}
 .fold-bar .nav-act:hover{background:var(--accent);color:#fff;}
 `.trim();
@@ -487,7 +497,19 @@ const HTML_NAV_SCRIPT = `
   var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
   if (!folds.length) return;
 
+  var lastGroup = null;
   folds.forEach(function(d){
+    // When chapters are grouped (e.g. by package), emit a non-clickable group label before
+    // the first chip of each group so repeated chapter titles stay distinguishable.
+    var group = d.getAttribute('data-group');
+    if (group && group !== lastGroup) {
+      var label = document.createElement('span');
+      label.className = 'nav-group';
+      label.textContent = group;
+      bar.appendChild(label);
+      lastGroup = group;
+    }
+
     var chip = document.createElement('span');
     chip.className = 'nav-chip';
     // Mirror the chapter's status color on its chip.
