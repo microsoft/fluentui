@@ -182,6 +182,22 @@ describe('foldableSection', () => {
     const out = render('md', f => f.foldableSection({ title: 'Errors', count: 5, level: 3 }, () => f.line('x')));
     expect(out).toBe('### Errors (5)\n\nx');
   });
+
+  it('html prefixes the id and emits data-group when grouped, keeping repeated titles unique', () => {
+    const out = render('html', f => {
+      f.foldableSection({ title: 'Compiled', status: 'success', count: 3, group: '@scope/pkg-a' }, () => f.line('x'));
+      f.foldableSection({ title: 'Compiled', status: 'success', count: 9, group: '@scope/pkg-b' }, () => f.line('y'));
+    });
+    expect(out).toContain('id="scope-pkg-a--compiled" data-title="Compiled" data-group="@scope/pkg-a"');
+    expect(out).toContain('id="scope-pkg-b--compiled" data-title="Compiled" data-group="@scope/pkg-b"');
+    // The two "Compiled" chapters now have distinct ids.
+    expect(out).not.toContain('id="compiled"');
+  });
+
+  it('cli/md ignore the group (no id/prefix concept in plain text)', () => {
+    const cli = render('cli', f => f.foldableSection({ title: 'Compiled', count: 3, group: 'pkg' }, () => f.line('x')));
+    expect(cli).toBe('Compiled (3)\n────────────\n\nx');
+  });
 });
 
 describe('html nav bar', () => {
@@ -191,6 +207,12 @@ describe('html nav bar', () => {
     expect(doc).toContain("querySelectorAll('details.fold')");
     expect(doc).toContain('Expand all');
     expect(doc).toContain('Collapse all');
+  });
+
+  it('builder script emits a group separator when data-group changes', () => {
+    const doc = renderHtmlDocument('Report', '');
+    expect(doc).toContain("getAttribute('data-group')");
+    expect(doc).toContain("'nav-group'");
   });
 });
 

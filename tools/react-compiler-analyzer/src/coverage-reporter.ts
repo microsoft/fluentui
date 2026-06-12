@@ -46,7 +46,7 @@ export function printCoverageReport(
 
       if (compiled.length > 0) {
         f.foldableSection(
-          { title: 'Compiled (will be memoized)', status: 'success', count: compiled.length, level: 3 },
+          { title: 'Compiled (will be memoized)', status: 'success', count: compiled.length, level: 3, group: pkg },
           () => {
             printFunctionTable(f, compiled, workspaceRoot, true);
           },
@@ -54,7 +54,7 @@ export function printCoverageReport(
       }
       if (skipped.length > 0) {
         f.foldableSection(
-          { title: 'Skipped (not a component/hook)', status: 'warning', count: skipped.length, level: 3 },
+          { title: 'Skipped (not a component/hook)', status: 'warning', count: skipped.length, level: 3, group: pkg },
           () => {
             printFunctionTable(f, skipped, workspaceRoot, false);
           },
@@ -62,7 +62,13 @@ export function printCoverageReport(
       }
       if (errored.length > 0) {
         f.foldableSection(
-          { title: 'Errors (compiler bailout)', status: 'error', count: countErroredFunctions(errored), level: 3 },
+          {
+            title: 'Errors (compiler bailout)',
+            status: 'error',
+            count: countErroredFunctions(errored),
+            level: 3,
+            group: pkg,
+          },
           () => {
             printErrorGroups(f, errored, workspaceRoot, fullReasons);
           },
