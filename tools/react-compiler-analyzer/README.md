@@ -282,10 +282,10 @@ recognizes those as hooks and they're flagged at their own definition), and it s
 > resolver would catch the two type-directed cases above — **method calls on inferred receivers**
 > (`service.getActive()`) and **type-directed dispatch / overloads** — and would make the
 > `pathAliases` config unnecessary (TS reads `tsconfig` `paths`/`baseUrl` natively). It would **not**
-> help the cases that motivated these rules: node*modules hook bodies (`.d.ts` ships the signature,
+> help the cases that motivated these rules: `node_modules` hook bodies (`.d.ts` ships the signature,
 > not the implementation that calls `useStore`) and dynamically-generated members (zustand's
 > `.use.*`) stay config-seeded regardless. Given the eager whole-program build cost (seconds–minutes
-> on large workspaces) buys only the \_internal* method-chain tier — not the package/dynamic boundary
+> on large workspaces) buys only the _internal_ method-chain tier — not the package/dynamic boundary
 > where real crashes originate — the lazy, demand-driven Babel approach was chosen deliberately.
 
 Risk findings are advisory — they never change the exit code. Treat them as a review queue
