@@ -138,22 +138,44 @@ Reports which functions the React Compiler will memoize, skip, or bail out on ac
 
 #### Options
 
-| Flag            | Type     | Default   | Description                                                                                                             |
-| --------------- | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `--mode`        | `string` | `"infer"` | Compilation mode: `infer`, `annotation`, `all`                                                                          |
-| `--annotate`    | `string` | —         | Insert `'use memo'` directives. `manual-memo`: only functions with manual memoization. `all`: all compilable functions. |
-| `--risk-config` | `string` | —         | Path to a JSON file enabling opt-in runtime-risk detection (see **Compiled but Risky**).                                |
+| Flag            | Type     | Default   | Description                                                                                                                                                                                                      |
+| --------------- | -------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--mode`        | `string` | `"infer"` | Compilation mode: `infer`, `annotation`, `all`                                                                                                                                                                   |
+| `--annotate`    | `string` | —         | Insert directives. `manual-memo`: `'use memo'` on functions with manual memoization. `all`: `'use memo'` on all compilable. `all-safe`: like `all`, but risky functions get a justified `'use no memo'` bailout. |
+| `--risk-config` | `string` | —         | Path to a JSON file enabling opt-in runtime-risk detection (see **Compiled but Risky**).                                                                                                                         |
 
 #### `--annotate`
 
-Controls which compilable functions receive a `'use memo'` directive:
+Controls which compilable functions receive a directive:
 
-| Mode          | Annotates                                                                                                            |
-| ------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `manual-memo` | Only functions that compile successfully **and** contain manual memoization (`useMemo`, `useCallback`, `React.memo`) |
-| `all`         | All functions that compile successfully, regardless of manual memoization                                            |
+| Mode          | Annotates                                                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `manual-memo` | `'use memo'` on functions that compile successfully **and** contain manual memoization (`useMemo`, `useCallback`, `React.memo`) |
+| `all`         | `'use memo'` on all functions that compile successfully, regardless of manual memoization                                       |
+| `all-safe`    | Like `all`, but functions carrying **runtime-risk findings** get a justified `'use no memo'` bailout instead of `'use memo'`    |
 
-Inserts `'use memo';` at the top of each matching function's body. Idempotent — functions that already have the directive are skipped.
+Inserts the directive at the top of each matching function's body. Idempotent — functions that
+already have the relevant directive are skipped.
+
+`all-safe` is the migration-friendly mode: it opts every compilable function into the compiler
+**except** the ones the risk rules flag as unsafe, which instead receive
+`'use no memo'; // justified: <rule> risk via <symbol> — unsafe to memoize`. It only differs
+from `all` when risk detection is enabled via `--risk-config` (otherwise no risks are found and
+it behaves identically). Example output:
+
+```tsx
+// WidgetViaHook — safe → opted in
+export function WidgetViaHook() {
+  'use memo';
+  // …
+}
+
+// WidgetIndirect — reaches getState() through a wrapper → bailed out
+export function WidgetIndirect() {
+  'use no memo'; // justified: nonreactive-store-read risk via getAppStore.getState — unsafe to memoize
+  // …
+}
+```
 
 #### Compiled but Risky (runtime-risk rules)
 
@@ -260,10 +282,10 @@ recognizes those as hooks and they're flagged at their own definition), and it s
 > resolver would catch the two type-directed cases above — **method calls on inferred receivers**
 > (`service.getActive()`) and **type-directed dispatch / overloads** — and would make the
 > `pathAliases` config unnecessary (TS reads `tsconfig` `paths`/`baseUrl` natively). It would **not**
-> help the cases that motivated these rules: node_modules hook bodies (`.d.ts` ships the signature,
+> help the cases that motivated these rules: node*modules hook bodies (`.d.ts` ships the signature,
 > not the implementation that calls `useStore`) and dynamically-generated members (zustand's
 > `.use.*`) stay config-seeded regardless. Given the eager whole-program build cost (seconds–minutes
-> on large workspaces) buys only the _internal_ method-chain tier — not the package/dynamic boundary
+> on large workspaces) buys only the \_internal* method-chain tier — not the package/dynamic boundary
 > where real crashes originate — the lazy, demand-driven Babel approach was chosen deliberately.
 
 Risk findings are advisory — they never change the exit code. Treat them as a review queue
@@ -289,6 +311,9 @@ react-compiler-analyzer analyze ./library/src --annotate manual-memo
 
 # Auto-annotate all compilable functions
 react-compiler-analyzer analyze ./library/src --annotate all
+
+# Opt in everything EXCEPT risk-flagged functions, which get a justified 'use no memo' bailout
+react-compiler-analyzer analyze ./library/src --risk-config risk.json --annotate all-safe
 ```
 
 ## Shared options

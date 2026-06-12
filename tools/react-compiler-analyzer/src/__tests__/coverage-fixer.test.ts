@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync, cpSync } from 'fs';
+import { mkdtempSync, readFileSync, cpSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
@@ -320,5 +320,130 @@ describe('applyAnnotations', () => {
     const second = await applyAnnotations(results, 'all');
     expect(second.filesModified).toBe(0);
     expect(second.functionsAnnotated).toBe(0);
+  });
+});
+
+describe("applyAnnotations — 'all-safe' mode", () => {
+  function writeTemp(content: string): string {
+    const tempDir = mkdtempSync(join(tmpdir(), 'annotate-all-safe-'));
+    const filePath = join(tempDir, 'input.tsx');
+    writeFileSync(filePath, content);
+    return filePath;
+  }
+
+  const SOURCE = [
+    'export function Safe() {', // 1
+    '  const a = 1;', //          2  ← body insertion
+    '  const b = 2;', //          3
+    '  return <div>{a + b}</div>;', // 4
+    '}', //                       5
+    '', //                        6
+    '', //                        7
+    'export function Risky() {', // 8
+    '  const id = getAppStore().getState().id;', // 9  ← body insertion
+    '  return <div>{id}</div>;', // 10
+    '}', //                       11
+    '',
+  ].join('\n');
+
+  function safeFn(filePath: string): FunctionAnalysis {
+    return {
+      filePath,
+      packageName: 'test-pkg',
+      line: 1,
+      column: 0,
+      functionName: 'Safe',
+      status: 'compiled',
+      compilerEvent: 'CompileSuccess',
+      bodyInsertionLine: 2,
+    };
+  }
+
+  function riskyFn(filePath: string): FunctionAnalysis {
+    return {
+      filePath,
+      packageName: 'test-pkg',
+      line: 8,
+      column: 0,
+      functionName: 'Risky',
+      status: 'compiled',
+      compilerEvent: 'CompileSuccess',
+      bodyInsertionLine: 9,
+      risks: [
+        {
+          ruleId: 'nonreactive-store-read',
+          severity: 'high',
+          line: 9,
+          column: 13,
+          symbol: 'getAppStore.getState',
+          message: 'imperative store snapshot via `.getState()` …',
+        },
+      ],
+    };
+  }
+
+  it("annotates safe functions with 'use memo' and bails out risky ones with justified 'use no memo'", async () => {
+    const filePath = writeTemp(SOURCE);
+    const outcome = await applyAnnotations([safeFn(filePath), riskyFn(filePath)], 'all-safe');
+
+    expect(outcome.filesModified).toBe(1);
+    expect(outcome.functionsAnnotated).toBe(1);
+    expect(outcome.functionsBailedOut).toBe(1);
+
+    const actual = readFileSync(filePath, 'utf-8');
+    expect(actual).toContain("export function Safe() {\n  'use memo';");
+    expect(actual).toMatch(
+      /export function Risky\(\) \{\n {2}'use no memo'; \/\/ justified: nonreactive-store-read risk via getAppStore\.getState/,
+    );
+    // The risky function must NOT receive 'use memo'.
+    expect(actual).not.toContain("export function Risky() {\n  'use memo';");
+  });
+
+  it("'all' mode annotates the risky function with 'use memo' (no bailout)", async () => {
+    const filePath = writeTemp(SOURCE);
+    const outcome = await applyAnnotations([safeFn(filePath), riskyFn(filePath)], 'all');
+
+    expect(outcome.functionsAnnotated).toBe(2);
+    expect(outcome.functionsBailedOut).toBe(0);
+    const actual = readFileSync(filePath, 'utf-8');
+    expect(actual).toContain("export function Risky() {\n  'use memo';");
+    expect(actual).not.toContain('use no memo');
+  });
+
+  it('is idempotent — skips a risky function that already has a bailout directive', async () => {
+    const preAnnotated = [
+      'export function Risky() {',
+      "  'use no memo'; // justified: pre-existing",
+      '  const id = getAppStore().getState().id;',
+      '  return <div>{id}</div>;',
+      '}',
+      '',
+    ].join('\n');
+    const filePath = writeTemp(preAnnotated);
+    const fn: FunctionAnalysis = {
+      filePath,
+      packageName: 'test-pkg',
+      line: 1,
+      column: 0,
+      functionName: 'Risky',
+      status: 'compiled',
+      compilerEvent: 'CompileSuccess',
+      bodyInsertionLine: 2,
+      risks: [
+        {
+          ruleId: 'nonreactive-store-read',
+          severity: 'high',
+          line: 3,
+          column: 13,
+          symbol: 'getAppStore.getState',
+          message: 'imperative store snapshot …',
+        },
+      ],
+    };
+
+    const outcome = await applyAnnotations([fn], 'all-safe');
+    expect(outcome.functionsBailedOut).toBe(0);
+    expect(outcome.filesModified).toBe(0);
+    expect(readFileSync(filePath, 'utf-8')).toBe(preAnnotated);
   });
 });
