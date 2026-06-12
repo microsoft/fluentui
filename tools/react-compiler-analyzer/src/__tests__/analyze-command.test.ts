@@ -529,7 +529,7 @@ describe('analyze command — scan log wrapping', () => {
       Errors    0      0.0%
       Total     1
 
-      ▸ Compiled (will be memoized)
+      ▸ Compiled (will be memoized) (1)
 
       Location     Function  Memo Slots  Memo Blocks  Memo Values
       ───────────  ────────  ──────────  ───────────  ───────────

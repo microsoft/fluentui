@@ -140,6 +140,60 @@ describe('section passthrough', () => {
   });
 });
 
+describe('foldableSection', () => {
+  it('html renders a collapsible <details> with count badge, status class and slug id', () => {
+    const out = render('html', f => {
+      f.foldableSection({ title: 'Compiled but Risky', status: 'warning', count: 4 }, () => {
+        f.line('body');
+      });
+    });
+
+    expect(out).toContain(
+      '<details class="fold status-warning" id="compiled-but-risky" data-title="Compiled but Risky" data-count="4">',
+    );
+    expect(out).toContain('<span class="fold-title">Compiled but Risky</span> <span class="fold-count">4</span>');
+    expect(out).toContain('<div class="fold-body">');
+    expect(out).toContain('</div></details>');
+    // Collapsed by default (no open attribute).
+    expect(out).not.toContain('data-count="4" open');
+  });
+
+  it('html adds the open attribute when defaultOpen is set', () => {
+    const out = render('html', f => {
+      f.foldableSection({ title: 'Summary', count: 3, defaultOpen: true }, () => f.line('x'));
+    });
+    expect(out).toContain('id="summary" data-title="Summary" data-count="3" open>');
+  });
+
+  it('html omits the badge when count is undefined', () => {
+    const out = render('html', f => {
+      f.foldableSection({ title: 'Notes' }, () => f.line('x'));
+    });
+    expect(out).toContain('<summary><span class="fold-title">Notes</span></summary>');
+    expect(out).not.toContain('fold-count');
+  });
+
+  it('cli renders a heading with the (N) count, no folding', () => {
+    const out = render('cli', f => f.foldableSection({ title: 'Migration Candidates', count: 2 }, () => f.line('x')));
+    expect(out).toBe('Migration Candidates (2)\n────────────────────────\n\nx');
+  });
+
+  it('md renders a heading with the (N) count, no folding', () => {
+    const out = render('md', f => f.foldableSection({ title: 'Errors', count: 5, level: 3 }, () => f.line('x')));
+    expect(out).toBe('### Errors (5)\n\nx');
+  });
+});
+
+describe('html nav bar', () => {
+  it('injects the sticky fold-bar element and builder script into the document', () => {
+    const doc = renderHtmlDocument('Report', '<details class="fold" id="x" data-title="X" data-count="1"></details>');
+    expect(doc).toContain('<nav class="fold-bar" aria-label="Report sections"></nav>');
+    expect(doc).toContain("querySelectorAll('details.fold')");
+    expect(doc).toContain('Expand all');
+    expect(doc).toContain('Collapse all');
+  });
+});
+
 describe('status coloring', () => {
   it('md ignores the status argument (no color markup)', () => {
     const out = render('md', f => f.heading(3, 'Compiled', 'success'));

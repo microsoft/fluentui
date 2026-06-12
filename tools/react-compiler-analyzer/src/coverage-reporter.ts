@@ -45,25 +45,28 @@ export function printCoverageReport(
       const errored = pkgResults.filter(r => r.status === 'error');
 
       if (compiled.length > 0) {
-        f.section('success', () => {
-          f.heading(3, 'Compiled (will be memoized)', 'success');
-          f.blank();
-          printFunctionTable(f, compiled, workspaceRoot, true);
-        });
+        f.foldableSection(
+          { title: 'Compiled (will be memoized)', status: 'success', count: compiled.length, level: 3 },
+          () => {
+            printFunctionTable(f, compiled, workspaceRoot, true);
+          },
+        );
       }
       if (skipped.length > 0) {
-        f.section('warning', () => {
-          f.heading(3, 'Skipped (not a component/hook)', 'warning');
-          f.blank();
-          printFunctionTable(f, skipped, workspaceRoot, false);
-        });
+        f.foldableSection(
+          { title: 'Skipped (not a component/hook)', status: 'warning', count: skipped.length, level: 3 },
+          () => {
+            printFunctionTable(f, skipped, workspaceRoot, false);
+          },
+        );
       }
       if (errored.length > 0) {
-        f.section('error', () => {
-          f.heading(3, 'Errors (compiler bailout)', 'error');
-          f.blank();
-          printErrorGroups(f, errored, workspaceRoot, fullReasons);
-        });
+        f.foldableSection(
+          { title: 'Errors (compiler bailout)', status: 'error', count: countErroredFunctions(errored), level: 3 },
+          () => {
+            printErrorGroups(f, errored, workspaceRoot, fullReasons);
+          },
+        );
       }
     }
   }
@@ -260,9 +263,7 @@ export function printMigrationCandidates(f: Formatter, results: FunctionAnalysis
   const safeToRemove = candidates.filter(r => !r.manualMemo!.reactMemoHasComparator);
   const needsReview = candidates.filter(r => r.manualMemo!.reactMemoHasComparator);
 
-  f.section('info', () => {
-    f.heading(2, 'Migration Candidates', 'info');
-    f.blank();
+  f.foldableSection({ title: 'Migration Candidates', status: 'info', count: candidates.length }, () => {
     f.line(
       'Functions that compile successfully and contain manual memoization. ' +
         "These can safely use `'use memo'` and may have their manual hooks removed.",
@@ -336,9 +337,7 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
 
   const totalFindings = risky.reduce((sum, r) => sum + (r.risks?.length ?? 0), 0);
 
-  f.section('warning', () => {
-    f.heading(2, 'Compiled but Risky', 'warning');
-    f.blank();
+  f.foldableSection({ title: 'Compiled but Risky', status: 'warning', count: totalFindings }, () => {
     f.line(
       'These functions **compile successfully** but contain patterns that break at runtime ' +
         'once memoized — the compiler cannot detect them. Review each before opting into the ' +
