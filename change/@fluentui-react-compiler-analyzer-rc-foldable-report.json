@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: HTML report — collapsible chapters with entry counts and a sticky chapter-navigation bar (Expand/Collapse all). CLI/MD gain the same '(N)' entry counts in headings.",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

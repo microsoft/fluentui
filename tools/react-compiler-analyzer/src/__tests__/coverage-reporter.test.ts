@@ -306,7 +306,7 @@ describe('multi-path coverage reporting', () => {
 
     const output = logOutput.join('\n');
     expect(output).toMatchInlineSnapshot(`
-      "## Migration Candidates
+      "## Migration Candidates (2)
 
       Functions that compile successfully and contain manual memoization. These can safely use \`'use memo'\` and may have their manual hooks removed.
 

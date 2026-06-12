@@ -12,6 +12,20 @@ export type Cell = string | number;
  */
 export type StatusKind = 'success' | 'error' | 'warning' | 'info';
 
+/** Options for {@link Formatter.foldableSection}. */
+export interface FoldableSectionOptions {
+  /** Chapter title, rendered as its heading / fold summary. */
+  title: string;
+  /** Number of entries in the chapter, shown as a count badge / `(N)` suffix. Omit to hide. */
+  count?: number;
+  /** Semantic status used to color the heading / fold. */
+  status?: StatusKind;
+  /** In `html`, start expanded instead of collapsed. Ignored by `cli`/`md`. Default `false`. */
+  defaultOpen?: boolean;
+  /** Heading level for `cli`/`md` rendering. Default `2`. */
+  level?: number;
+}
+
 /**
  * Abstraction over output rendering so reporters can emit terminal-friendly plain text (`cli`),
  * GitHub-flavored markdown (`md`), or a styled HTML document (`html`) from the same call sites.
@@ -35,6 +49,14 @@ export interface Formatter {
    * transparent passthrough that simply invokes `body` (no extra markup).
    */
   section(status: StatusKind, body: () => void): void;
+  /**
+   * A titled, countable "chapter". The `title` and entry `count` are emitted as the chapter's
+   * own heading (so `body` must NOT repeat them). In `html` the chapter is a collapsible
+   * `<details class="fold">` (collapsed unless `defaultOpen`) with a count badge and an id, which
+   * the sticky navigation bar links to. In `cli`/`md` it renders as a normal heading
+   * `Title (count)` followed by the body — no folding.
+   */
+  foldableSection(opts: FoldableSectionOptions, body: () => void): void;
   /** A single line of body text. May contain markdown inline emphasis (`**bold**`, `` `code` ``). */
   line(text: string): void;
   /** A blank separator line. */
@@ -86,6 +108,21 @@ function stripInline(text: string): string {
   return text.replace(/\*\*/g, '').replace(/`/g, '');
 }
 
+/** Render a foldable chapter's heading text, e.g. `Compiled but Risky (4)`. */
+function foldableHeadingText(opts: FoldableSectionOptions): string {
+  return opts.count === undefined ? opts.title : `${opts.title} (${opts.count})`;
+}
+
+/** Slugify a chapter title into a stable, URL-safe id for in-page anchors. */
+function slugify(text: string): string {
+  return (
+    stripInline(text)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'section'
+  );
+}
+
 /** Escape the five characters that are unsafe in HTML text/attribute content. */
 export function escapeHtml(text: string): string {
   return text
@@ -117,6 +154,12 @@ class MarkdownFormatter implements Formatter {
   }
 
   public section(_status: StatusKind, body: () => void): void {
+    body();
+  }
+
+  public foldableSection(opts: FoldableSectionOptions, body: () => void): void {
+    this.write('#'.repeat(opts.level ?? 2) + ' ' + foldableHeadingText(opts));
+    this.write('');
     body();
   }
 
@@ -177,6 +220,12 @@ class CliFormatter implements Formatter {
   }
 
   public section(_status: StatusKind, body: () => void): void {
+    body();
+  }
+
+  public foldableSection(opts: FoldableSectionOptions, body: () => void): void {
+    this.heading(opts.level ?? 2, foldableHeadingText(opts), opts.status);
+    this.write('');
     body();
   }
 
@@ -246,6 +295,23 @@ class HtmlFormatter implements Formatter {
     this.write(`<section class="status-section ${statusClass(status)}">`);
     body();
     this.write('</section>');
+  }
+
+  public foldableSection(opts: FoldableSectionOptions, body: () => void): void {
+    const statusCls = opts.status ? ` ${statusClass(opts.status)}` : '';
+    const openAttr = opts.defaultOpen ? ' open' : '';
+    const id = slugify(opts.title);
+    const countAttr = opts.count === undefined ? '' : ` data-count="${opts.count}"`;
+    const badge = opts.count === undefined ? '' : ` <span class="fold-count">${opts.count}</span>`;
+    this.write(
+      `<details class="fold${statusCls}" id="${id}" data-title="${escapeHtml(
+        stripInline(opts.title),
+      )}"${countAttr}${openAttr}>`,
+    );
+    this.write(`<summary><span class="fold-title">${inlineHtml(opts.title)}</span>${badge}</summary>`);
+    this.write('<div class="fold-body">');
+    body();
+    this.write('</div></details>');
   }
 
   public line(text: string): void {
@@ -332,6 +398,29 @@ summary{cursor:pointer;font-weight:600;color:var(--muted);}
 .scan-log{background:#fafafe;border:1px solid var(--border);border-radius:8px;padding:.5rem .9rem;}
 .scan-body{margin-top:.5rem;}
 .log-line{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.8rem;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;}
+/* Foldable chapters */
+details.fold{margin:1rem 0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;}
+details.fold>summary{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;font-size:1.05rem;font-weight:650;color:var(--fg);background:#faf9ff;list-style:none;scroll-margin-top:4rem;}
+details.fold>summary::-webkit-details-marker{display:none;}
+details.fold>summary::before{content:"▸";color:var(--muted);font-size:.8em;transition:transform .15s;}
+details.fold[open]>summary::before{transform:rotate(90deg);}
+details.fold>summary:hover{background:var(--note);}
+details.fold .fold-title{flex:1;}
+.fold-count{flex:none;min-width:1.5rem;text-align:center;font-size:.8rem;font-weight:650;color:var(--muted);background:#eceaf6;border-radius:999px;padding:.05rem .5rem;}
+.fold-body{padding:.25rem 1rem 1rem;}
+details.fold.status-success>summary{color:#1a7f37;}
+details.fold.status-error>summary{color:#cf222e;}
+details.fold.status-warning>summary{color:#9a6700;}
+details.fold.status-info>summary{color:#0969da;}
+/* Sticky navigation bar */
+.fold-bar{position:fixed;top:0;left:0;right:0;z-index:50;display:none;flex-wrap:wrap;align-items:center;gap:.4rem;padding:.5rem .9rem;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.06);}
+.fold-bar.visible{display:flex;}
+.fold-bar .nav-chip{cursor:pointer;font-size:.78rem;font-weight:600;color:var(--muted);background:#f0f0f5;border:1px solid var(--border);border-radius:999px;padding:.2rem .6rem;white-space:nowrap;}
+.fold-bar .nav-chip:hover{background:var(--note);color:var(--fg);}
+.fold-bar .nav-chip .chip-count{color:var(--accent);font-weight:700;margin-left:.25rem;}
+.fold-bar .nav-spacer{flex:1;}
+.fold-bar .nav-act{cursor:pointer;font-size:.74rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:.2rem .55rem;}
+.fold-bar .nav-act:hover{background:var(--accent);color:#fff;}
 `.trim();
 
 /** Wrap rendered HTML `body` content in a standalone, self-contained HTML document. */
@@ -346,14 +435,72 @@ export function renderHtmlDocument(title: string, body: string): string {
     `<style>${HTML_STYLES}</style>`,
     '</head>',
     '<body>',
+    '<nav class="fold-bar" aria-label="Report sections"></nav>',
     `<main class="report">`,
     `<h1 class="banner">${escapeHtml(title)}</h1>`,
     body,
     '</main>',
+    `<script>${HTML_NAV_SCRIPT}</script>`,
     '</body>',
     '</html>',
   ].join('\n');
 }
+
+/**
+ * Inline, dependency-free script that builds the sticky chapter-navigation bar at runtime from
+ * the rendered `details.fold` chapters. It populates one chip per chapter (title + entry count),
+ * adds Expand/Collapse-all controls, reveals the bar once the reader scrolls past the first
+ * chapter, and jumps to (and opens) a chapter when its chip is clicked. Runs from `file://` with
+ * no external dependencies.
+ */
+const HTML_NAV_SCRIPT = `
+(function(){
+  var bar = document.querySelector('.fold-bar');
+  if (!bar) return;
+  var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
+  if (!folds.length) return;
+
+  folds.forEach(function(d){
+    var chip = document.createElement('span');
+    chip.className = 'nav-chip';
+    var title = d.getAttribute('data-title') || 'Section';
+    var count = d.getAttribute('data-count');
+    chip.textContent = title;
+    if (count !== null) {
+      var c = document.createElement('span');
+      c.className = 'chip-count';
+      c.textContent = count;
+      chip.appendChild(c);
+    }
+    chip.addEventListener('click', function(){
+      d.open = true;
+      d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    bar.appendChild(chip);
+  });
+
+  var spacer = document.createElement('span');
+  spacer.className = 'nav-spacer';
+  bar.appendChild(spacer);
+  function mkAct(label, open){
+    var b = document.createElement('button');
+    b.className = 'nav-act';
+    b.textContent = label;
+    b.addEventListener('click', function(){ folds.forEach(function(d){ d.open = open; }); });
+    bar.appendChild(b);
+  }
+  mkAct('Expand all', true);
+  mkAct('Collapse all', false);
+
+  var threshold = folds[0].offsetTop;
+  function onScroll(){
+    if (window.scrollY > threshold) { bar.classList.add('visible'); }
+    else { bar.classList.remove('visible'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+`.trim();
 
 /**
  * Create a {@link Formatter} for the given output `format`.
