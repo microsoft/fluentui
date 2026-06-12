@@ -9,6 +9,8 @@ import { manualMemoPlugin } from './manual-memo-plugin';
 import type { ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
 import { riskPlugin } from './risk-plugin';
 import type { RiskPluginOptions } from './risk-plugin';
+import { createCallGraphAnalyzer, type CallGraphAnalyzer } from './call-graph';
+import { createModuleResolver, compilePathAliases } from './module-resolver';
 import type { CompilationMode, CompileFilesOptions, FileEntry, RiskConfig, RiskFinding } from './types';
 
 export interface CompilerEvent {
@@ -256,6 +258,7 @@ export async function compileFile(
   compilationMode: CompilationMode,
   verbose: boolean,
   riskConfig: RiskConfig = {},
+  callGraph?: CallGraphAnalyzer,
 ): Promise<FileCompilationResult> {
   const source = await readFile(entry.filePath, 'utf-8');
   const manualMemo = new Map<string, ManualMemoEntry>();
@@ -269,6 +272,25 @@ export async function compileFile(
       [riskPlugin, { ...riskConfig, results: risks } as RiskPluginOptions],
     ],
   });
+
+  // Cross-file wrapper analysis (opt-in): attach indirect risks reached through first-party
+  // wrapper calls. Synchronous and memoized across files via the shared analyzer.
+  if (callGraph?.enabled) {
+    for (const finding of callGraph.analyzeFile(entry.filePath)) {
+      const { leaf, chain } = finding.risk;
+      const via = chain.join(' → ');
+      const list = risks.get(finding.fnKey) ?? [];
+      list.push({
+        ruleId: leaf.ruleId,
+        severity: leaf.severity,
+        line: finding.line,
+        column: finding.column,
+        symbol: leaf.symbol,
+        message: `reached via \`${via}\`: ${leaf.message}`,
+      });
+      risks.set(finding.fnKey, list);
+    }
+  }
 
   if (verbose && !error) {
     for (const ev of events) {
@@ -294,9 +316,25 @@ export async function compileFile(
  * Compile multiple files with concurrency-limited parallelism.
  */
 export async function compileFiles(files: FileEntry[], options: CompileFilesOptions): Promise<FileCompilationResult[]> {
+  // One shared call-graph analyzer per run, so its module + reaches-risk caches are reused
+  // across files. Only built when wrapper resolution is opted into.
+  const callGraph = buildCallGraph(options.riskConfig);
+
   return processFilesConcurrently(
     files,
-    entry => compileFile(entry, options.compilationMode, options.verbose, options.riskConfig).then(r => [r]),
+    entry => compileFile(entry, options.compilationMode, options.verbose, options.riskConfig, callGraph).then(r => [r]),
     { concurrency: options.concurrency, verbose: options.verbose },
   );
+}
+
+/** Construct the cross-file analyzer when `resolveWrappers` is enabled; otherwise `undefined`. */
+function buildCallGraph(riskConfig?: RiskConfig): CallGraphAnalyzer | undefined {
+  if (!riskConfig?.resolveWrappers) {
+    return undefined;
+  }
+  const aliases = riskConfig.pathAliases
+    ? compilePathAliases(riskConfig.pathAliases.paths, riskConfig.pathAliases.baseUrl)
+    : [];
+  const resolver = createModuleResolver({ aliases });
+  return createCallGraphAnalyzer(resolver, riskConfig);
 }

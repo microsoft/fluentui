@@ -198,6 +198,44 @@ The config is validated on load: unknown keys are rejected. A JSON schema ships 
 at `risk-config.schema.json` (copied to the published root on build) — point your editor's
 `$schema` at it, as shown above, for autocomplete and inline validation.
 
+##### Following wrappers across files (`resolveWrappers`)
+
+By default the rules are **local** — they only see the file being analyzed. A component that
+calls a plain first-party helper which internally does the risky read slips through:
+
+```ts
+// store.ts
+export function readActiveId() {
+  return getAppStore().getState().activeId; // the actual risky leaf
+}
+
+// Widget.tsx  — looks innocent, but the compiler memoizes around `readActiveId()`
+function Widget() {
+  const id = readActiveId(); // ← cached across renders → stale
+  return <div>{id}</div>;
+}
+```
+
+Set `resolveWrappers: true` to follow first-party wrapper calls (and `export … from` barrels)
+to the leaf, reporting the finding at the call site with the resolution chain:
+
+```jsonc
+{
+  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/risk-config.schema.json",
+  "detectGetStateReads": true,
+  "resolveWrappers": true,
+  // Only needed if wrappers are imported via tsconfig path aliases (not plain relative imports).
+  "pathAliases": { "baseUrl": "/abs/repo/src", "paths": { "@app/*": ["app/*"] } }
+}
+```
+
+The finding reads e.g. `reached via \`readActiveIdIndirect → readActiveId\`: imperative store
+snapshot via .getState()…`. Resolution is **demand-driven and memoized** (files are parsed only
+when a call path reaches them), so it's far cheaper than a full TypeScript `Program`. It is
+purely **syntactic and first-party**: `useXxx()`-named callees are skipped (the compiler
+recognizes those as hooks and they're flagged at their own definition), and it stops at the
+`node_modules` boundary, dynamic dispatch, and method calls on inferred receivers.
+
 > **Why these and not `unstable-hook-arg`?** An earlier draft also flagged fresh inline arguments
 > passed to selector hooks (`useSelector(fn, { id })`). That was removed after verifying against the
 > compiler's output: for a `CompileSuccess` function the compiler **memoizes** those inline
@@ -207,13 +245,12 @@ at `risk-config.schema.json` (copied to the published root on build) — point y
 > problem, so it was a false positive by construction. The `hidden-selector-hook` rule is the
 > opposite: the compiler makes it _worse_ (it caches around a hook it failed to recognize).
 
-**Known limitations.** Detection is purely local and syntactic, so it deliberately does **not** flag:
+**Known limitations.** Detection is syntactic, so it deliberately does **not** flag:
 
-- **Wrapper helpers** — a call like `getActiveId()` whose body internally does `getStore().getState()`,
-  or a custom `useXxx()` that wraps a `.use.field()` selector. Resolving the wrapper requires
-  cross-function/cross-module analysis (and the implementation often lives in `node_modules`,
-  sometimes only as bundled/minified code), which can't be done reliably. Flag the read **inside**
-  the wrapper instead, or inline it at the call site.
+- **node_modules wrappers** — a helper whose body lives in a package (often `.d.ts`-only or
+  minified). `resolveWrappers` follows **first-party** source only; it stops at the package boundary.
+- **Dynamic / inferred dispatch** — `obj.method()` where the receiver's type comes from inference,
+  or `fns[key]()`. Following these needs type information a syntactic pass doesn't have.
 - **Indirect binds** — `const s = getStore(); … s.field` (the accessor result stored in a variable and
   read later). Only direct member access and object-destructuring off the accessor call are detected.
 - **Conditional-hook crashes** — the React Compiler already rejects lexically-conditional hook calls
@@ -333,6 +370,10 @@ src/
 ├── analyzer.ts           — Pure derivation: deriveMemoDirectiveStatuses, analyzeNoMemoDirectives
 ├── coverage-analyzer.ts  — Pure derivation: deriveCoverage (from FileCompilationResult)
 ├── manual-memo-plugin.ts — Babel plugin detecting useMemo/useCallback/React.memo
+├── risk-patterns.ts      — Shared leaf risk predicates (used by plugin + call-graph)
+├── risk-plugin.ts        — In-file Babel plugin recording 'Compiled but Risky' findings
+├── module-resolver.ts    — Sync, first-party specifier → file resolver (relative + tsconfig paths)
+├── call-graph.ts         — Demand-driven cross-file 'reaches-a-risk' analyzer (wrapper resolution)
 ├── fixer.ts              — Directive fixes (remove redundant, justify active, resolve conflicts)
 ├── coverage-fixer.ts     — Insert 'use memo' annotations (manual-memo or all compilable)
 ├── reporter.ts           — Directive reporting (full report + compact summary for analyze)
