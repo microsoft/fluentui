@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 11 Jun 2026 04:07:32 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jun 2026 04:07:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.27)
+
+Fri, 12 Jun 2026 04:07:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.26..@fluentui/web-components_v3.0.0-rc.27)
+
+### Changes
+
+- feat(web-components): generate SSR templates and stylesheets into src/ and copy into dist during compile ([PR #36259](https://github.com/microsoft/fluentui/pull/36259) by 863023+radium-v@users.noreply.github.com)
+- fix: make sure autofocus works on all focusable custom elements during initial page load ([PR #36296](https://github.com/microsoft/fluentui/pull/36296) by machi@microsoft.com)
 
 ## [3.0.0-rc.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.26)
 
