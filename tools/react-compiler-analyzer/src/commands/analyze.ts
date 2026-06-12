@@ -85,8 +85,8 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
       .option('annotate', {
         type: 'string' as const,
         describe:
-          "Insert 'use memo' into compilable functions. 'manual-memo': only those with useMemo/useCallback/React.memo. 'all': all compilable functions.",
-        choices: ['manual-memo', 'all'] as const,
+          "Insert directives into compilable functions. 'manual-memo': 'use memo' on those with useMemo/useCallback/React.memo. 'all': 'use memo' on all. 'all-safe': like 'all' but risky functions (per --risk-config) get a justified 'use no memo' bailout instead.",
+        choices: ['manual-memo', 'all', 'all-safe'] as const,
       })
       .option('risk-config', {
         type: 'string' as const,
@@ -148,11 +148,17 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
 
       if (argv.annotate) {
         const outcome = await applyAnnotations(coverageResults, argv.annotate);
-        if (outcome.functionsAnnotated > 0) {
+        const touched = outcome.functionsAnnotated + outcome.functionsBailedOut;
+        if (touched > 0) {
           f.blank();
-          f.line(
-            `✓ Annotated ${outcome.functionsAnnotated} function(s) in ${outcome.filesModified} file(s) with 'use memo' (mode: ${argv.annotate}).`,
-          );
+          const parts: string[] = [];
+          if (outcome.functionsAnnotated > 0) {
+            parts.push(`annotated ${outcome.functionsAnnotated} function(s) with 'use memo'`);
+          }
+          if (outcome.functionsBailedOut > 0) {
+            parts.push(`bailed out ${outcome.functionsBailedOut} risky function(s) with justified 'use no memo'`);
+          }
+          f.line(`✓ ${parts.join('; ')} in ${outcome.filesModified} file(s) (mode: ${argv.annotate}).`);
         } else {
           f.blank();
           f.line('No functions to annotate.');

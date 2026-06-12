@@ -138,11 +138,13 @@ export interface FunctionAnalysis {
   risks?: RiskFinding[];
 }
 
-export type AnnotateMode = 'manual-memo' | 'all';
+export type AnnotateMode = 'manual-memo' | 'all' | 'all-safe';
 
 export interface AnnotateResult {
   filesModified: number;
   functionsAnnotated: number;
+  /** Functions given a justified `'use no memo'` bailout instead of `'use memo'` (mode `all-safe`). */
+  functionsBailedOut: number;
 }
 
 export interface CompileFilesOptions {
