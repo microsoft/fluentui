@@ -258,7 +258,7 @@ describe('multi-path coverage reporting', () => {
       - **Compiled** (will be memoized): 2 (66.7%)
         - Migration candidates (has manual memoization): 0
         - Compiler-ready (no manual memoization): 2
-      - **Skipped** (not a component/hook): 0 (0.0%)
+      - **Skipped** (opted out or not a component/hook): 0 (0.0%)
       - **Errors** (compiler bailout): 1 (33.3%)
 
       > **1** function(s) caused compiler errors — these won't be optimized until the patterns are refactored.
