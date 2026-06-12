@@ -200,19 +200,22 @@ describe('foldableSection', () => {
   });
 });
 
-describe('html nav bar', () => {
-  it('injects the sticky fold-bar element and builder script into the document', () => {
+describe('html table of contents', () => {
+  it('injects the sticky TOC element and builder script into the document', () => {
     const doc = renderHtmlDocument('Report', '<details class="fold" id="x" data-title="X" data-count="1"></details>');
-    expect(doc).toContain('<nav class="fold-bar" aria-label="Report sections"></nav>');
+    expect(doc).toContain('<nav class="toc" aria-label="Report sections"></nav>');
     expect(doc).toContain("querySelectorAll('details.fold')");
+    expect(doc).toContain('On this page');
     expect(doc).toContain('Expand all');
     expect(doc).toContain('Collapse all');
   });
 
-  it('builder script emits a group separator when data-group changes', () => {
+  it('builder script renders a group label when data-group changes and supports scrollspy', () => {
     const doc = renderHtmlDocument('Report', '');
     expect(doc).toContain("getAttribute('data-group')");
-    expect(doc).toContain("'nav-group'");
+    expect(doc).toContain("'toc-group'");
+    expect(doc).toContain("'toc-row'");
+    expect(doc).toContain("classList.add('active')");
   });
 });
 
