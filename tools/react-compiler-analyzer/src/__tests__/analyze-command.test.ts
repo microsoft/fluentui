@@ -542,7 +542,7 @@ describe('analyze command — scan log wrapping', () => {
       - Compiled (will be memoized): 1 (100.0%)
         - Migration candidates (has manual memoization): 0
         - Compiler-ready (no manual memoization): 1
-      - Skipped (not a component/hook): 0 (0.0%)
+      - Skipped (opted out or not a component/hook): 0 (0.0%)
       - Errors (compiler bailout): 0 (0.0%)
 
         All recognized functions compile successfully.

@@ -54,7 +54,13 @@ export function printCoverageReport(
       }
       if (skipped.length > 0) {
         f.foldableSection(
-          { title: 'Skipped (not a component/hook)', status: 'warning', count: skipped.length, level: 3, group: pkg },
+          {
+            title: 'Skipped (opted out or not a component/hook)',
+            status: 'warning',
+            count: skipped.length,
+            level: 3,
+            group: pkg,
+          },
           () => {
             printFunctionTable(f, skipped, workspaceRoot, false);
           },
@@ -197,7 +203,7 @@ export function printCoverageSummary(f: Formatter, results: FunctionAnalysis[], 
   f.line(`- **Compiled** (will be memoized): ${compiled} (${pct(compiled, total)})`);
   f.line(`  - Migration candidates (has manual memoization): ${migrationCandidates}`);
   f.line(`  - Compiler-ready (no manual memoization): ${compilerReady}`);
-  f.line(`- **Skipped** (not a component/hook): ${skipped} (${pct(skipped, total)})`);
+  f.line(`- **Skipped** (opted out or not a component/hook): ${skipped} (${pct(skipped, total)})`);
   f.line(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
   f.blank();
 
