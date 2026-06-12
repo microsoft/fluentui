@@ -439,11 +439,17 @@ details.fold .table-wrap table{background:rgba(255,255,255,.55);}
 @media (min-width:1200px){
   .toc{display:flex;flex-direction:column;position:fixed;top:1.5rem;right:1.5rem;width:16rem;max-height:calc(100vh - 3rem);z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden;}
 }
-.toc-header{display:flex;flex-direction:column;gap:.4rem;padding:.7rem .8rem;border-bottom:1px solid var(--border);}
-.toc-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
-.toc-acts{display:flex;gap:.35rem;}
+.toc-header{display:flex;align-items:center;gap:.4rem;padding:.7rem .8rem;border-bottom:1px solid var(--border);}
+.toc-title{flex:1;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+.toc-acts{display:flex;gap:.35rem;padding:.5rem .8rem;border-bottom:1px solid var(--border);}
 .toc-act{cursor:pointer;font-size:.7rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:.15rem .45rem;}
 .toc-act:hover{background:var(--accent);color:#fff;}
+.toc-toggle{flex:none;cursor:pointer;font-size:.85rem;line-height:1;color:var(--muted);background:none;border:none;padding:.1rem .3rem;border-radius:6px;}
+.toc-toggle:hover{background:var(--note);color:var(--fg);}
+/* Collapsed: shrink to a compact pill showing just the toggle. */
+.toc.collapsed{width:auto;}
+.toc.collapsed .toc-acts,.toc.collapsed .toc-list,.toc.collapsed .toc-title{display:none;}
+.toc.collapsed .toc-header{border-bottom:none;}
 .toc-list{overflow-y:auto;padding:.4rem 0;}
 .toc-group{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:.5rem .8rem .2rem;overflow-wrap:anywhere;}
 .toc-row{display:flex;align-items:center;gap:.5rem;padding:.3rem .8rem;font-size:.82rem;color:var(--fg);text-decoration:none;border-left:2px solid transparent;cursor:pointer;}
@@ -489,9 +495,9 @@ export function renderHtmlDocument(title: string, body: string): string {
  * Inline, dependency-free script that builds the sticky right-side table of contents at runtime
  * from the rendered `details.fold` chapters. It lists one row per chapter (status dot + title +
  * entry count), groups rows under their package label (`data-group`), adds Expand/Collapse-all
- * controls, jumps to (and opens) a chapter when its row is clicked, and highlights the chapter
- * currently in view (scrollspy). Hidden on narrow viewports via CSS. Runs from `file://` with no
- * external dependencies.
+ * controls, jumps to (and opens) a chapter when its row is clicked, highlights the chapter
+ * currently in view (scrollspy), and can collapse the whole rail to a compact pill. Hidden on
+ * narrow viewports via CSS. Runs from `file://` with no external dependencies.
  */
 const HTML_NAV_SCRIPT = `
 (function(){
@@ -508,7 +514,21 @@ const HTML_NAV_SCRIPT = `
   heading.className = 'toc-title';
   heading.textContent = 'On this page';
   header.appendChild(heading);
-  var acts = document.createElement('span');
+  // Collapse/expand the whole rail down to a compact pill.
+  var toggle = document.createElement('button');
+  toggle.className = 'toc-toggle';
+  toggle.setAttribute('aria-label', 'Toggle contents');
+  toggle.textContent = '\\u2715'; // ✕ when open
+  toggle.addEventListener('click', function(){
+    var collapsed = toc.classList.toggle('collapsed');
+    toggle.textContent = collapsed ? '\\u2630' : '\\u2715'; // ☰ when collapsed, ✕ when open
+    toggle.title = collapsed ? 'Show contents' : 'Hide contents';
+  });
+  toggle.title = 'Hide contents';
+  header.appendChild(toggle);
+  toc.appendChild(header);
+
+  var acts = document.createElement('div');
   acts.className = 'toc-acts';
   function mkAct(label, open){
     var b = document.createElement('button');
@@ -519,8 +539,7 @@ const HTML_NAV_SCRIPT = `
   }
   mkAct('Expand all', true);
   mkAct('Collapse all', false);
-  header.appendChild(acts);
-  toc.appendChild(header);
+  toc.appendChild(acts);
 
   var list = document.createElement('div');
   list.className = 'toc-list';
