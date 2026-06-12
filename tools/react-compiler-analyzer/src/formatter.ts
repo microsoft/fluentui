@@ -432,6 +432,19 @@ details.fold .table-wrap table{background:rgba(255,255,255,.55);}
 .fold-bar .nav-chip{cursor:pointer;font-size:.78rem;font-weight:600;color:var(--muted);background:#f0f0f5;border:1px solid var(--border);border-radius:999px;padding:.2rem .6rem;white-space:nowrap;}
 .fold-bar .nav-chip:hover{background:var(--note);color:var(--fg);}
 .fold-bar .nav-chip .chip-count{color:var(--accent);font-weight:700;margin-left:.25rem;}
+/* Status-colored chips, mirroring their chapter. */
+.fold-bar .nav-chip.status-success{color:#1a7f37;background:#e7f6ec;border-color:#bce3c8;}
+.fold-bar .nav-chip.status-error{color:#cf222e;background:#fbe9eb;border-color:#f3c2c8;}
+.fold-bar .nav-chip.status-warning{color:#9a6700;background:#fbf1de;border-color:#ecd9a8;}
+.fold-bar .nav-chip.status-info{color:#0969da;background:#e7f1fd;border-color:#bcd6f5;}
+.fold-bar .nav-chip.status-success .chip-count{color:#1a7f37;}
+.fold-bar .nav-chip.status-error .chip-count{color:#cf222e;}
+.fold-bar .nav-chip.status-warning .chip-count{color:#9a6700;}
+.fold-bar .nav-chip.status-info .chip-count{color:#0969da;}
+.fold-bar .nav-chip.status-success:hover{background:#daf0e1;}
+.fold-bar .nav-chip.status-error:hover{background:#f7dade;}
+.fold-bar .nav-chip.status-warning:hover{background:#f7e8c8;}
+.fold-bar .nav-chip.status-info:hover{background:#d8e8fb;}
 .fold-bar .nav-spacer{flex:1;}
 .fold-bar .nav-act{cursor:pointer;font-size:.74rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:.2rem .55rem;}
 .fold-bar .nav-act:hover{background:var(--accent);color:#fff;}
@@ -477,6 +490,10 @@ const HTML_NAV_SCRIPT = `
   folds.forEach(function(d){
     var chip = document.createElement('span');
     chip.className = 'nav-chip';
+    // Mirror the chapter's status color on its chip.
+    ['status-success','status-error','status-warning','status-info'].forEach(function(s){
+      if (d.classList.contains(s)) { chip.classList.add(s); }
+    });
     var title = d.getAttribute('data-title') || 'Section';
     var count = d.getAttribute('data-count');
     chip.textContent = title;
