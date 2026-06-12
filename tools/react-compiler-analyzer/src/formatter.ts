@@ -434,30 +434,32 @@ details.fold.status-error>summary:hover{background:#f7dade;}
 details.fold.status-warning>summary:hover{background:#f7e8c8;}
 details.fold.status-info>summary:hover{background:#d8e8fb;}
 details.fold .table-wrap table{background:rgba(255,255,255,.55);}
-/* Sticky navigation bar */
-.fold-bar{position:fixed;top:0;left:0;right:0;z-index:50;display:none;flex-wrap:wrap;align-items:center;gap:.4rem;padding:.5rem .9rem;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.06);}
-.fold-bar.visible{display:flex;}
-.fold-bar .nav-chip{cursor:pointer;font-size:.78rem;font-weight:600;color:var(--muted);background:#f0f0f5;border:1px solid var(--border);border-radius:999px;padding:.2rem .6rem;white-space:nowrap;}
-.fold-bar .nav-chip:hover{background:var(--note);color:var(--fg);}
-.fold-bar .nav-chip .chip-count{color:var(--accent);font-weight:700;margin-left:.25rem;}
-/* Status-colored chips, mirroring their chapter. */
-.fold-bar .nav-chip.status-success{color:#1a7f37;background:#e7f6ec;border-color:#bce3c8;}
-.fold-bar .nav-chip.status-error{color:#cf222e;background:#fbe9eb;border-color:#f3c2c8;}
-.fold-bar .nav-chip.status-warning{color:#9a6700;background:#fbf1de;border-color:#ecd9a8;}
-.fold-bar .nav-chip.status-info{color:#0969da;background:#e7f1fd;border-color:#bcd6f5;}
-.fold-bar .nav-chip.status-success .chip-count{color:#1a7f37;}
-.fold-bar .nav-chip.status-error .chip-count{color:#cf222e;}
-.fold-bar .nav-chip.status-warning .chip-count{color:#9a6700;}
-.fold-bar .nav-chip.status-info .chip-count{color:#0969da;}
-.fold-bar .nav-chip.status-success:hover{background:#daf0e1;}
-.fold-bar .nav-chip.status-error:hover{background:#f7dade;}
-.fold-bar .nav-chip.status-warning:hover{background:#f7e8c8;}
-.fold-bar .nav-chip.status-info:hover{background:#d8e8fb;}
-.fold-bar .nav-spacer{flex:1;}
-.fold-bar .nav-group{flex:none;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:.2rem .15rem .2rem .5rem;border-left:1px solid var(--border);margin-left:.25rem;}
-.fold-bar .nav-group:first-child{border-left:none;margin-left:0;padding-left:.15rem;}
-.fold-bar .nav-act{cursor:pointer;font-size:.74rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:.2rem .55rem;}
-.fold-bar .nav-act:hover{background:var(--accent);color:#fff;}
+/* Sticky right-side table of contents (hidden on narrow viewports — see media query). */
+.toc{display:none;}
+@media (min-width:1200px){
+  .toc{display:flex;flex-direction:column;position:fixed;top:1.5rem;right:1.5rem;width:16rem;max-height:calc(100vh - 3rem);z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden;}
+}
+.toc-header{display:flex;flex-direction:column;gap:.4rem;padding:.7rem .8rem;border-bottom:1px solid var(--border);}
+.toc-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+.toc-acts{display:flex;gap:.35rem;}
+.toc-act{cursor:pointer;font-size:.7rem;font-weight:600;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:.15rem .45rem;}
+.toc-act:hover{background:var(--accent);color:#fff;}
+.toc-list{overflow-y:auto;padding:.4rem 0;}
+.toc-group{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:.5rem .8rem .2rem;overflow-wrap:anywhere;}
+.toc-row{display:flex;align-items:center;gap:.5rem;padding:.3rem .8rem;font-size:.82rem;color:var(--fg);text-decoration:none;border-left:2px solid transparent;cursor:pointer;}
+.toc-row:hover{background:var(--note);}
+.toc-row.active{background:var(--note);border-left-color:var(--accent);font-weight:650;}
+.toc-dot{flex:none;width:.5rem;height:.5rem;border-radius:999px;background:var(--muted);}
+.toc-label{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.toc-count{flex:none;min-width:1.4rem;text-align:center;font-size:.72rem;font-weight:650;color:var(--muted);background:#eceaf6;border-radius:999px;padding:.02rem .4rem;}
+.toc-row.status-success .toc-dot{background:#1a7f37;}
+.toc-row.status-error .toc-dot{background:#cf222e;}
+.toc-row.status-warning .toc-dot{background:#9a6700;}
+.toc-row.status-info .toc-dot{background:#0969da;}
+.toc-row.status-success.active{border-left-color:#1a7f37;}
+.toc-row.status-error.active{border-left-color:#cf222e;}
+.toc-row.status-warning.active{border-left-color:#9a6700;}
+.toc-row.status-info.active{border-left-color:#0969da;}
 `.trim();
 
 /** Wrap rendered HTML `body` content in a standalone, self-contained HTML document. */
@@ -472,7 +474,7 @@ export function renderHtmlDocument(title: string, body: string): string {
     `<style>${HTML_STYLES}</style>`,
     '</head>',
     '<body>',
-    '<nav class="fold-bar" aria-label="Report sections"></nav>',
+    '<nav class="toc" aria-label="Report sections"></nav>',
     `<main class="report">`,
     `<h1 class="banner">${escapeHtml(title)}</h1>`,
     body,
@@ -484,73 +486,103 @@ export function renderHtmlDocument(title: string, body: string): string {
 }
 
 /**
- * Inline, dependency-free script that builds the sticky chapter-navigation bar at runtime from
- * the rendered `details.fold` chapters. It populates one chip per chapter (title + entry count),
- * adds Expand/Collapse-all controls, reveals the bar once the reader scrolls past the first
- * chapter, and jumps to (and opens) a chapter when its chip is clicked. Runs from `file://` with
- * no external dependencies.
+ * Inline, dependency-free script that builds the sticky right-side table of contents at runtime
+ * from the rendered `details.fold` chapters. It lists one row per chapter (status dot + title +
+ * entry count), groups rows under their package label (`data-group`), adds Expand/Collapse-all
+ * controls, jumps to (and opens) a chapter when its row is clicked, and highlights the chapter
+ * currently in view (scrollspy). Hidden on narrow viewports via CSS. Runs from `file://` with no
+ * external dependencies.
  */
 const HTML_NAV_SCRIPT = `
 (function(){
-  var bar = document.querySelector('.fold-bar');
-  if (!bar) return;
+  var toc = document.querySelector('.toc');
+  if (!toc) return;
   var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
   if (!folds.length) return;
 
-  var lastGroup = null;
-  folds.forEach(function(d){
-    // When chapters are grouped (e.g. by package), emit a non-clickable group label before
-    // the first chip of each group so repeated chapter titles stay distinguishable.
-    var group = d.getAttribute('data-group');
-    if (group && group !== lastGroup) {
-      var label = document.createElement('span');
-      label.className = 'nav-group';
-      label.textContent = group;
-      bar.appendChild(label);
-      lastGroup = group;
-    }
+  var STATUS = ['status-success','status-error','status-warning','status-info'];
 
-    var chip = document.createElement('span');
-    chip.className = 'nav-chip';
-    // Mirror the chapter's status color on its chip.
-    ['status-success','status-error','status-warning','status-info'].forEach(function(s){
-      if (d.classList.contains(s)) { chip.classList.add(s); }
-    });
-    var title = d.getAttribute('data-title') || 'Section';
-    var count = d.getAttribute('data-count');
-    chip.textContent = title;
-    if (count !== null) {
-      var c = document.createElement('span');
-      c.className = 'chip-count';
-      c.textContent = count;
-      chip.appendChild(c);
-    }
-    chip.addEventListener('click', function(){
-      d.open = true;
-      d.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    bar.appendChild(chip);
-  });
-
-  var spacer = document.createElement('span');
-  spacer.className = 'nav-spacer';
-  bar.appendChild(spacer);
+  var header = document.createElement('div');
+  header.className = 'toc-header';
+  var heading = document.createElement('span');
+  heading.className = 'toc-title';
+  heading.textContent = 'On this page';
+  header.appendChild(heading);
+  var acts = document.createElement('span');
+  acts.className = 'toc-acts';
   function mkAct(label, open){
     var b = document.createElement('button');
-    b.className = 'nav-act';
+    b.className = 'toc-act';
     b.textContent = label;
     b.addEventListener('click', function(){ folds.forEach(function(d){ d.open = open; }); });
-    bar.appendChild(b);
+    acts.appendChild(b);
   }
   mkAct('Expand all', true);
   mkAct('Collapse all', false);
+  header.appendChild(acts);
+  toc.appendChild(header);
 
-  var threshold = folds[0].offsetTop;
+  var list = document.createElement('div');
+  list.className = 'toc-list';
+  toc.appendChild(list);
+
+  var rows = [];
+  var lastGroup = null;
+  folds.forEach(function(d){
+    var group = d.getAttribute('data-group');
+    if (group && group !== lastGroup) {
+      var label = document.createElement('div');
+      label.className = 'toc-group';
+      label.textContent = group;
+      list.appendChild(label);
+      lastGroup = group;
+    }
+
+    var row = document.createElement('a');
+    row.className = 'toc-row';
+    row.href = '#' + d.id;
+    STATUS.forEach(function(s){ if (d.classList.contains(s)) { row.classList.add(s); } });
+
+    var dot = document.createElement('span');
+    dot.className = 'toc-dot';
+    row.appendChild(dot);
+
+    var label2 = document.createElement('span');
+    label2.className = 'toc-label';
+    label2.textContent = d.getAttribute('data-title') || 'Section';
+    row.appendChild(label2);
+
+    var count = d.getAttribute('data-count');
+    if (count !== null) {
+      var c = document.createElement('span');
+      c.className = 'toc-count';
+      c.textContent = count;
+      row.appendChild(c);
+    }
+
+    row.addEventListener('click', function(e){
+      e.preventDefault();
+      d.open = true;
+      d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    list.appendChild(row);
+    rows.push({ row: row, fold: d });
+  });
+
+  // Scrollspy: highlight the chapter whose top is nearest above the viewport's upper third.
   function onScroll(){
-    if (window.scrollY > threshold) { bar.classList.add('visible'); }
-    else { bar.classList.remove('visible'); }
+    var marker = window.scrollY + window.innerHeight * 0.3;
+    var activeIdx = 0;
+    for (var i = 0; i < rows.length; i++){
+      if (rows[i].fold.offsetTop <= marker) { activeIdx = i; }
+    }
+    rows.forEach(function(r, i){
+      if (i === activeIdx) { r.row.classList.add('active'); }
+      else { r.row.classList.remove('active'); }
+    });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 })();
 `.trim();
