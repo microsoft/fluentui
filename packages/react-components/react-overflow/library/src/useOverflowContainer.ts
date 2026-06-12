@@ -62,9 +62,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   useIsomorphicLayoutEffect(() => {
     if (managerRef.current && containerRef.current) {
-      // forceUpdate resolves overflow synchronously for a correct first paint; the manager guards it
-      // on the container being measured.
-      managerRef.current.observe(containerRef.current, { forceUpdate: true });
+      managerRef.current.observe(containerRef.current);
       return () => managerRef.current?.disconnect();
     }
   }, []);

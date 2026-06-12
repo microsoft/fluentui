@@ -223,4 +223,40 @@ describe('overflowManager', () => {
 
     expect(manager.getSnapshot().itemVisibility).toEqual({});
   });
+
+  it('applies a forceUpdate requested before observe once observation starts (deferred first paint)', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(100);
+    const itemA = createElementWithSize('button', 60);
+    const itemB = createElementWithSize('button', 60);
+    const menu = createElementWithSize('button', 30);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+    manager.addOverflowMenu(menu);
+
+    // forceUpdate before observe can't compute anything yet; the manager defers it and observe()
+    // applies it — so overflow is resolved synchronously without passing the forceUpdate option.
+    manager.forceUpdate();
+    manager.observe(container);
+
+    expect(getVisibleIds(manager)).toEqual(['a']);
+    expect(getInvisibleIds(manager)).toEqual(['b']);
+  });
+
+  it('does not apply a deferred forceUpdate when the container is not measured', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(0);
+    const itemA = createElementWithSize('button', 60);
+    const itemB = createElementWithSize('button', 60);
+
+    manager.addItem({ element: itemA, id: 'a', priority: 1 });
+    manager.addItem({ element: itemB, id: 'b', priority: 0 });
+
+    // Degenerate 0 size — observe() skips the deferred force so nothing collapses.
+    manager.forceUpdate();
+    manager.observe(container);
+
+    expect(manager.getSnapshot().itemVisibility).toEqual({});
+  });
 });

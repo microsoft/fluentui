@@ -44,6 +44,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
+  let forceUpdateOnObserve = false;
   const options: Required<OverflowOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
@@ -236,6 +237,11 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
+    if (!container) {
+      forceUpdateOnObserve = true;
+      return;
+    }
+
     if (processOverflowItems() || forceDispatch) {
       forceDispatch = false;
       dispatchOverflowUpdate();
@@ -283,9 +289,10 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       update();
     });
 
-    if (shouldForceUpdate && getClientSize(observedContainer) > 0) {
+    if ((shouldForceUpdate || forceUpdateOnObserve) && getClientSize(observedContainer) > 0) {
       forceUpdate();
     }
+    forceUpdateOnObserve = false;
   };
 
   const disconnect: OverflowManager['disconnect'] = () => {
@@ -298,6 +305,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     container = undefined;
     observing = false;
     forceDispatch = true;
+    forceUpdateOnObserve = false;
 
     // clear all entries
     Object.keys(overflowItems).forEach(itemId => removeItem(itemId));

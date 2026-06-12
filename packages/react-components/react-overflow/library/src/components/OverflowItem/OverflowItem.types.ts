@@ -16,6 +16,10 @@ export type OverflowItemProps = {
    * The single child that has overflow item behavior attached.
    */
   children: React.ReactElement;
+  /**
+   * If true, the item will not force an update on the overflow context when it registers/unregisters.
+   */
+  defer?: boolean;
 } & (
   | {
       /**

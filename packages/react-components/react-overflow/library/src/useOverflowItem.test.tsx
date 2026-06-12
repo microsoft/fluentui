@@ -11,12 +11,14 @@ const mockContextValue = (options: Partial<OverflowContextValue> = {}) =>
     itemVisibility: {},
     registerItem: jest.fn(),
     updateOverflow: jest.fn(),
+    forceUpdateOverflow: jest.fn(),
     ...options,
   } as OverflowContextValue);
 
 describe('useOverflowItem', () => {
   it('should register item', () => {
-    const registerItemMock = jest.fn();
+    // registerItem returns an unregister cleanup, which the hook invokes on unmount.
+    const registerItemMock = jest.fn(() => jest.fn());
     const value = mockContextValue({ registerItem: registerItemMock });
     renderHook(
       () => {
