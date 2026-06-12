@@ -170,4 +170,19 @@ export interface RiskConfig {
    * e.g. `["use"]` matches `store.use.field()` (`hidden-selector-hook`). Empty/omitted disables it.
    */
   selectorHookProperties?: string[];
+  /**
+   * Follow first-party wrapper calls and re-export barrels to flag risks reached *indirectly*
+   * (e.g. a component calling a plain `readActiveId()` helper that does `getStore().getState()`).
+   * Off by default. Resolution is syntactic and first-party only — it stops at `node_modules`,
+   * dynamic dispatch, and method calls on inferred receivers. Requires at least one leaf rule.
+   */
+  resolveWrappers?: boolean;
+  /**
+   * tsconfig-style path aliases used by wrapper resolution to follow workspace imports
+   * (e.g. `@app/foo`). `baseUrl` is the absolute dir the `paths` targets are relative to.
+   */
+  pathAliases?: {
+    baseUrl: string;
+    paths: Record<string, string[]>;
+  };
 }

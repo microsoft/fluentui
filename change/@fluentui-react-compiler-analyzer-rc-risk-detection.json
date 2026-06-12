@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: add opt-in 'Compiled but Risky' detection to analyze — nonreactive-store-read (getState()/getXStore().field/destructure) and hidden-selector-hook (store.use.field() property-chain selectors the compiler memoizes around). Configured via --risk-config and validated against a shipped risk-config.schema.json.",
+  "comment": "feat: add opt-in 'Compiled but Risky' detection to analyze — nonreactive-store-read (getState()/getXStore().field/destructure) and hidden-selector-hook (store.use.field() property-chain selectors the compiler memoizes around), plus cross-file wrapper resolution (resolveWrappers) that follows first-party helper calls and re-export barrels to the risky leaf. Configured via --risk-config and validated against a shipped risk-config.schema.json.",
   "packageName": "@fluentui/react-compiler-analyzer",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

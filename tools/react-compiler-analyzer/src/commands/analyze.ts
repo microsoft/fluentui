@@ -41,6 +41,8 @@ export const RISK_CONFIG_KEYS = new Set([
   'storeAccessorPattern',
   'detectGetStateReads',
   'selectorHookProperties',
+  'resolveWrappers',
+  'pathAliases',
 ]);
 
 /** Load and validate an optional risk-detection config JSON file. */
