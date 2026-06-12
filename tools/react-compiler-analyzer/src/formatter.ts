@@ -412,6 +412,20 @@ details.fold.status-success>summary{color:#1a7f37;}
 details.fold.status-error>summary{color:#cf222e;}
 details.fold.status-warning>summary{color:#9a6700;}
 details.fold.status-info>summary{color:#0969da;}
+/* Status-tinted chapter backgrounds (whole fold + deeper summary header), with a left accent. */
+details.fold.status-success{background:#f3fbf5;border-left:4px solid #1a7f37;}
+details.fold.status-error{background:#fdf4f5;border-left:4px solid #cf222e;}
+details.fold.status-warning{background:#fdfaf1;border-left:4px solid #9a6700;}
+details.fold.status-info{background:#f2f8fe;border-left:4px solid #0969da;}
+details.fold.status-success>summary{background:#e7f6ec;}
+details.fold.status-error>summary{background:#fbe9eb;}
+details.fold.status-warning>summary{background:#fbf1de;}
+details.fold.status-info>summary{background:#e7f1fd;}
+details.fold.status-success>summary:hover{background:#daf0e1;}
+details.fold.status-error>summary:hover{background:#f7dade;}
+details.fold.status-warning>summary:hover{background:#f7e8c8;}
+details.fold.status-info>summary:hover{background:#d8e8fb;}
+details.fold .table-wrap table{background:rgba(255,255,255,.55);}
 /* Sticky navigation bar */
 .fold-bar{position:fixed;top:0;left:0;right:0;z-index:50;display:none;flex-wrap:wrap;align-items:center;gap:.4rem;padding:.5rem .9rem;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);box-shadow:0 1px 6px rgba(0,0,0,.06);}
 .fold-bar.visible{display:flex;}
