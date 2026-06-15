@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Overflow } from './Overflow';
-import { OverflowItem } from './OverflowItem';
+import { OverflowItem } from '../OverflowItem';
 
 describe('Overflow', () => {
   beforeAll(() => {
