@@ -37,6 +37,8 @@ export function printReport(
     const activeMemo = pkgResults.filter(r => r.status === 'active' && r.directiveType === 'use-memo');
     const redundant = pkgResults.filter(r => r.status === 'redundant');
     const skipped = pkgResults.filter(r => r.status === 'skipped');
+    const broken = pkgResults.filter(r => r.status === 'broken');
+    const conflicting = pkgResults.filter(r => r.status === 'conflicting');
 
     f.blank();
     f.heading(2, pkg);
@@ -52,6 +54,18 @@ export function printReport(
       f.heading(3, 'Active (compilable)');
       f.blank();
       printTable(f, activeMemo, workspaceRoot, fullReasons);
+    }
+
+    if (broken.length > 0) {
+      f.heading(3, "Broken (`'use memo'` on non-compilable)", 'error');
+      f.blank();
+      printTable(f, broken, workspaceRoot, fullReasons);
+    }
+
+    if (conflicting.length > 0) {
+      f.heading(3, 'Conflicting (both directives on same function)', 'error');
+      f.blank();
+      printTable(f, conflicting, workspaceRoot, fullReasons);
     }
 
     if (redundant.length > 0) {
