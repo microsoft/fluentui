@@ -12,12 +12,12 @@ import {
   webDarkTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
+import { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme';
 import type { ThemeIds } from '../theme';
 import { defaultTheme } from '../theme';
-import { DIR_ID, THEME_ID } from '../constants';
+import { CAP_ID, DIR_ID, THEME_ID } from '../constants';
 import type { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
-
 const themes: Record<ThemeIds, Theme> = {
   'web-light': webLightTheme,
   'web-dark': webDarkTheme,
@@ -42,12 +42,27 @@ export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentSto
 
   const isVrTest = mode === 'vr-test';
   const dir = parameters.dir ?? globals[DIR_ID] ?? 'ltr';
-  const globalTheme = findTheme(globals[THEME_ID]);
-  const paramTheme = findTheme(parameters.fluentTheme);
+  const globalThemeId: ThemeIds | undefined = globals[THEME_ID];
+  const paramThemeId: ThemeIds | undefined = parameters.fluentTheme;
+  const globalTheme = findTheme(globalThemeId);
+  const paramTheme = findTheme(paramThemeId);
   const theme = paramTheme ?? globalTheme ?? themes[defaultTheme.id];
 
+  // CAP is a visual-language overlay applied on top of any base Fluent theme.
+  // Toggle via the Storybook toolbar (CAP switch) or per-story via `parameters.cap`.
+  const capValue = parameters.cap ?? globals[CAP_ID];
+  const capEnabled = capValue === 'cap';
+  const customStyleHooks = capEnabled ? CAP_STYLE_HOOKS : undefined;
+
+  // CAP style hooks add their own React hook calls inside each Fluent component
+  // (e.g. CAP's `useButtonStyles` calls 9 hooks). Switching `customStyleHooks_unstable`
+  // between `undefined` and an object on a live tree changes the hook count, which
+  // violates the Rules of Hooks. Keying on `capEnabled` forces the subtree to
+  // remount so the hook order stays consistent within each mount.
+  const providerKey = capEnabled ? 'cap-on' : 'cap-off';
+
   return (
-    <FluentProvider theme={theme} dir={dir}>
+    <FluentProvider key={providerKey} theme={theme} dir={dir} customStyleHooks_unstable={customStyleHooks}>
       {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
     </FluentProvider>
   );

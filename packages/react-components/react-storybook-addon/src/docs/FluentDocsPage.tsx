@@ -19,10 +19,11 @@ import { makeStyles } from '@griffel/react';
 import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { DIR_ID, THEME_ID } from '../constants';
+import { CAP_ID, DIR_ID, THEME_ID } from '../constants';
 import { themes } from '../theme';
 
 import { getDocsPageConfig } from './utils';
+import { VisualLanguagePicker } from './VisualLanguagePicker';
 import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
@@ -371,6 +372,7 @@ export const FluentDocsPage = ({
   assertStoryMetaValues(primaryStory);
 
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const capValue = primaryStoryContext.parameters?.cap ?? primaryStoryContext.globals?.[CAP_ID];
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
   const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
@@ -398,6 +400,7 @@ export const FluentDocsPage = ({
     tableOfContents: showTableOfContents,
     dirSwitcher: showDirSwitcher,
     themePicker: showThemePicker,
+    visualLanguagePicker: showVisualLanguagePicker,
     copyAsMarkdown: showCopyAsMarkdown,
     argTable,
   } = docsPageConfig;
@@ -419,9 +422,10 @@ export const FluentDocsPage = ({
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
+          {(showThemePicker || showDirSwitcher || showVisualLanguagePicker || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
               {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
+              {showVisualLanguagePicker && <VisualLanguagePicker selectedCapId={capValue} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
               {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>

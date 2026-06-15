@@ -13,6 +13,9 @@ import type { Renderer } from 'storybook/internal/types';
 import type { StoryContext } from '@storybook/react-webpack5';
 
 // @public (undocumented)
+export const CAP_ID: "storybook_fluentui-react-addon_cap";
+
+// @public (undocumented)
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
 
 // @public
@@ -31,6 +34,8 @@ export type FluentDocsPageProps = {
 // @public
 export interface FluentGlobals extends Args {
     // (undocumented)
+    [CAP_ID]?: boolean;
+    // (undocumented)
     [DIR_ID]?: 'ltr' | 'rtl';
     // (undocumented)
     [STRICT_MODE_ID]?: boolean;
@@ -40,6 +45,8 @@ export interface FluentGlobals extends Args {
 
 // @public
 export interface FluentParameters extends Parameters_2 {
+    // (undocumented)
+    cap?: boolean;
     // (undocumented)
     dir?: 'ltr' | 'rtl';
     // (undocumented)
