@@ -16,8 +16,6 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
-
   const overrides = useOverrides();
 
   const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', ...baseProps } = props;
@@ -50,7 +48,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
  * @param ref - User provided ref to be passed to the Input component.
  */
 export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTMLInputElement>): InputBaseState => {
-  const { onChange } = props;
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -90,7 +88,7 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
   state.input.value = value;
   state.input.onChange = useEventCallback(ev => {
     const newValue = ev.target.value;
-    onChange?.(ev, { value: newValue });
+    props.onChange?.(ev, { value: newValue });
     setValue(newValue);
   });
 

@@ -88,6 +88,9 @@ export const useCheckboxBase_unstable = (
 ): CheckboxBaseState => {
   'use no memo'; // justified: compiler would optimize useCheckboxBase_unstable — manual opt-out to preserve runtime behavior
 
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const { disabled = false, required, labelPosition = 'after', onChange } = props;
 
   const [checked, setChecked] = useControllableState({
