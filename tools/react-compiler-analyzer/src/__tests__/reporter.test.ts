@@ -136,6 +136,41 @@ describe('printReport', () => {
       "
     `);
   });
+
+  it('shows a Broken section with location and reason for use-memo on a non-compilable function', () => {
+    const results: DirectiveAnalysis[] = [
+      makeResult({
+        directiveType: 'use-memo',
+        status: 'broken',
+        compilerEvent: 'CompileError',
+        functionName: 'useBrokenStyles',
+        reason: 'This value cannot be modified',
+      }),
+    ];
+
+    const output = captureConsole(() => printReport(results, '/workspace', false));
+
+    expect(output).toContain("### Broken (`'use memo'` on non-compilable)");
+    expect(output).toContain(
+      '| src/Component.tsx:5 | useBrokenStyles | CompileError | This value cannot be modified |',
+    );
+  });
+
+  it('shows a Conflicting section for functions with both directives', () => {
+    const results: DirectiveAnalysis[] = [
+      makeResult({
+        directiveType: 'use-no-memo',
+        status: 'conflicting',
+        compilerEvent: 'none',
+        reason: 'both directives on same function',
+      }),
+    ];
+
+    const output = captureConsole(() => printReport(results, '/workspace', false));
+
+    expect(output).toContain('### Conflicting (both directives on same function)');
+    expect(output).toContain('both directives on same function');
+  });
 });
 
 describe('printSummary', () => {
