@@ -424,3 +424,27 @@ test.describe('Tree', () => {
     await expect(treeItems.nth(2)).toBeFocused();
   });
 });
+
+test.describe('Tree upgrade order', () => {
+  test('should apply tree state when tree items upgrade after the tree', async ({ fastPage }) => {
+    await fastPage.page.goto('/test/parent-child-upgrade-order.html');
+
+    const result = await fastPage.page.evaluate(async () => {
+      return (
+        window as unknown as {
+          runTreeUpgradeOrderTest(): Promise<{
+            childTreeItemsLength: number;
+            currentSelectedLocalName: string | undefined;
+            firstItemSize: string;
+            hasOwnSize: boolean;
+          }>;
+        }
+      ).runTreeUpgradeOrderTest();
+    });
+
+    expect(result.childTreeItemsLength).toBe(2);
+    expect(result.currentSelectedLocalName).toContain('tree-item');
+    expect(result.firstItemSize).toBe('medium');
+    expect(result.hasOwnSize).toBe(false);
+  });
+});

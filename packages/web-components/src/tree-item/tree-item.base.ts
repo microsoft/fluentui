@@ -1,17 +1,8 @@
 import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { maybeSetAutoFocus } from '../utils/autofocus.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
 import { isTreeItem } from './tree-item.options.js';
 
-/**
- * Base class for Tree Item Custom HTML Element.
- * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li | `<li>`} element.
- *
- * @fires { ToggleEvent } toggle - Fires when the expanded state changes
- * @fires { Event } change - Fires when the selected state changes
- *
- * @public
- */
 export class BaseTreeItem extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -39,18 +30,6 @@ export class BaseTreeItem extends FASTElement {
     this.elementInternals.role = 'treeitem';
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    this.tabIndex = Number(this.getAttribute('tabindex') || '0');
-
-    if (isTreeItem(this.parentElement)) {
-      this.slot ||= 'item';
-    }
-
-    maybeSetAutoFocus(this);
-  }
-
   /**
    * When true, the control will be appear expanded by user interaction.
    * When true, the control will be appear expanded by user interaction.
@@ -75,7 +54,7 @@ export class BaseTreeItem extends FASTElement {
       newState: next ? 'open' : 'closed',
     });
     toggleState(this.elementInternals, 'expanded', next);
-    if (this.childTreeItems?.length) {
+    if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
       // Update focusgroup attributes after subtree show/hide rendering is done.
       requestAnimationFrame(() => {
@@ -115,11 +94,8 @@ export class BaseTreeItem extends FASTElement {
    */
   protected selectedChanged(prev: boolean, next: boolean): void {
     this.$emit('change');
-
-    if (this.elementInternals) {
-      toggleState(this.elementInternals, 'selected', next);
-      this.elementInternals.ariaSelected = next ? 'true' : 'false';
-    }
+    toggleState(this.elementInternals, 'selected', next);
+    this.elementInternals.ariaSelected = next ? 'true' : 'false';
   }
 
   /**
@@ -235,6 +211,14 @@ export class BaseTreeItem extends FASTElement {
 
   /** @internal */
   public handleItemSlotChange() {
-    this.childTreeItems = this.itemSlot.assignedElements().filter(el => isTreeItem(el));
+    const assignedElements = this.itemSlot.assignedElements();
+
+    this.childTreeItems = getUpgradedCustomElements(assignedElements, isTreeItem);
+
+    runAfterPendingDefinitions(assignedElements, isTreeItem, () => {
+      if (this.isConnected) {
+        this.handleItemSlotChange();
+      }
+    });
   }
 }

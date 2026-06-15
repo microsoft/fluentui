@@ -1,13 +1,12 @@
-import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
  * A Base Radio Group Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#radiogroup | ARIA `radiogroup` role}.
- *
- * @fires { Event } change - Fires a custom 'change' event when the checked radio changes
  *
  * @public
  */
@@ -227,7 +226,17 @@ export class BaseRadioGroup extends FASTElement {
    * @param next - the current slotted radios
    */
   slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void {
-    this.radios = [...this.querySelectorAll('*')].filter(x => isRadio(x)) as Radio[];
+    Updates.enqueue(() => {
+      const radioElements = [...this.querySelectorAll('*')].filter((element): element is Radio => isRadio(element));
+
+      this.radios = getUpgradedCustomElements(radioElements, isRadio);
+
+      runAfterPendingDefinitions(radioElements, isRadio, () => {
+        if (this.isConnected) {
+          this.radios = getUpgradedCustomElements([...this.querySelectorAll('*')], isRadio);
+        }
+      });
+    });
   }
 
   /**
