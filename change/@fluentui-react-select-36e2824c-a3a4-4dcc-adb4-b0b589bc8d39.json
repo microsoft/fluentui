@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Merge Field control props in base hooks so Field integration applies when base hooks are used directly",
+  "packageName": "@fluentui/react-select",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
