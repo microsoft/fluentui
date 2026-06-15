@@ -40,6 +40,7 @@ export const useDropdownBase_unstable = (
     controller: activeDescendantController,
   } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
     matchOption: isComboboxOptionElement,
+    imperativeRef: props.activeDescendantImperativeRef,
   });
 
   const dropdownInternalState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });

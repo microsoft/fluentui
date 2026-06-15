@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type {
   ActiveDescendantChangeEvent,
@@ -24,6 +25,13 @@ export type ListboxProps = ComponentProps<ListboxSlots> &
      * @default false
      */
     disableAutoFocus?: boolean;
+
+    /**
+     * Imperative ref that lets you manually control the active descendant associated
+     * with the Listbox. Typical use case for this is if you need to programmatically
+     * focus an active descendant.
+     */
+    activeDescendantImperativeRef?: React.RefObject<ActiveDescendantImperativeRef | null>;
   };
 
 /**

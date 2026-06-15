@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { Listbox } from './Listbox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 describe('Listbox', () => {
   isConformant({
@@ -375,5 +376,27 @@ describe('Listbox', () => {
 
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
     expect(onOptionSelect).toHaveBeenCalled();
+  });
+
+  describe('activeDescendantImperativeRef', () => {
+    it('passes activeDescendantImperativeRef through to useActiveDescendant', () => {
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+
+      const { getByRole } = render(
+        <Listbox disableAutoFocus activeDescendantImperativeRef={imperativeRef}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Listbox>,
+      );
+
+      const firstId = imperativeRef.current?.first();
+      const lastId = imperativeRef.current?.last();
+
+      expect(firstId).toBeTruthy();
+      expect(lastId).toBeTruthy();
+      expect(lastId).not.toBe(firstId);
+      expect(getByRole('listbox').getAttribute('aria-activedescendant')).toBe(lastId);
+    });
   });
 });

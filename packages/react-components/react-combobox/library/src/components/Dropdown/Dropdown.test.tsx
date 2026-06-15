@@ -8,6 +8,7 @@ import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { dropdownClassNames } from './useDropdownStyles.styles';
 import type { DropdownProps } from '@fluentui/react-combobox';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 describe('Dropdown', () => {
   beforeEach(() => {
@@ -805,6 +806,28 @@ describe('Dropdown', () => {
       expect(activeOptionText).toBe('Green');
       userEvent.keyboard('{ArrowUp}');
       expect(activeOptionText).toBe('Red');
+    });
+  });
+
+  describe('activeDescendantImperativeRef', () => {
+    it('passes activeDescendantImperativeRef through to useActiveDescendant', () => {
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+
+      const { getByRole } = render(
+        <Dropdown open inlinePopup disableAutoFocus activeDescendantImperativeRef={imperativeRef}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Dropdown>,
+      );
+
+      const firstId = imperativeRef.current?.first();
+      const lastId = imperativeRef.current?.last();
+
+      expect(firstId).toBeTruthy();
+      expect(lastId).toBeTruthy();
+      expect(lastId).not.toBe(firstId);
+      expect(getByRole('combobox').getAttribute('aria-activedescendant')).toBe(lastId);
     });
   });
 });

@@ -1,5 +1,9 @@
 import type * as React from 'react';
-import type { ActiveDescendantChangeEvent, ActiveDescendantContextValue } from '@fluentui/react-aria';
+import type {
+  ActiveDescendantChangeEvent,
+  ActiveDescendantContextValue,
+  ActiveDescendantImperativeRef,
+} from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { EventData, EventHandler } from '@fluentui/react-utilities';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
@@ -86,6 +90,13 @@ export type ComboboxBaseProps = SelectionProps &
      * Use this with `onOptionSelect` to directly control the displayed value string
      */
     value?: string;
+
+    /**
+     * Imperative ref that lets you manually control the active descendant associated
+     * with the Combobox. Typical use case for this is if you need to programmatically
+     * focus an active descendant.
+     */
+    activeDescendantImperativeRef?: React.RefObject<ActiveDescendantImperativeRef | null>;
   };
 
 /**
