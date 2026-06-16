@@ -171,6 +171,59 @@ describe('printReport', () => {
     expect(output).toContain('### Conflicting (both directives on same function)');
     expect(output).toContain('both directives on same function');
   });
+
+  it('truncates the reason column by default', () => {
+    const longReason =
+      'Cannot access refs during render. React refs are values that are not needed for rendering and must not be read during render.';
+    const results: DirectiveAnalysis[] = [
+      makeResult({ directiveType: 'use-memo', status: 'broken', compilerEvent: 'CompileError', reason: longReason }),
+    ];
+
+    const output = captureConsole(() => printReport(results, '/workspace', false));
+
+    expect(output).toContain('...');
+    expect(output).not.toContain(longReason);
+  });
+
+  it('keeps the full reason in the table column with --full-reasons (broken/redundant)', () => {
+    const longReason =
+      'Cannot access refs during render. React refs are values that are not needed for rendering and must not be read during render.';
+    const results: DirectiveAnalysis[] = [
+      makeResult({
+        directiveType: 'use-memo',
+        status: 'broken',
+        compilerEvent: 'CompileError',
+        functionName: 'useBrokenStyles',
+        reason: longReason,
+      }),
+      makeResult({
+        directiveType: 'use-no-memo',
+        status: 'redundant',
+        compilerEvent: 'CompileError',
+        functionName: 'useRedundant',
+        line: 9,
+        reason: longReason,
+      }),
+    ];
+
+    const output = captureConsole(() => printReport(results, '/workspace', true));
+
+    // Full reason present (not truncated) in both the Broken and Redundant tables.
+    expect(output).toContain(`| src/Component.tsx:5 | useBrokenStyles | CompileError | ${longReason} |`);
+    expect(output).toContain(`| src/Component.tsx:9 | useRedundant | CompileError | ${longReason} |`);
+    expect(output).not.toContain('...');
+  });
+
+  it('collapses newlines in the full reason so the table stays valid', () => {
+    const multiLine = 'babel parse error:\nUnexpected token\n  at line 3';
+    const results: DirectiveAnalysis[] = [
+      makeResult({ directiveType: 'use-memo', status: 'broken', compilerEvent: 'CompileError', reason: multiLine }),
+    ];
+
+    const output = captureConsole(() => printReport(results, '/workspace', true));
+
+    expect(output).toContain('| babel parse error: Unexpected token   at line 3 |');
+  });
 });
 
 describe('printSummary', () => {
