@@ -20,6 +20,7 @@ import * as Link from '@fluentui/react-headless-components-preview/link';
 import * as Menu from '@fluentui/react-headless-components-preview/menu';
 import * as MessageBar from '@fluentui/react-headless-components-preview/message-bar';
 import * as Nav from '@fluentui/react-headless-components-preview/nav';
+import * as Overflow from '@fluentui/react-headless-components-preview/overflow';
 import * as Persona from '@fluentui/react-headless-components-preview/persona';
 import * as Popover from '@fluentui/react-headless-components-preview/popover';
 import * as ProgressBar from '@fluentui/react-headless-components-preview/progress-bar';
@@ -67,6 +68,7 @@ console.log({
   Menu,
   MessageBar,
   Nav,
+  Overflow,
   Persona,
   Popover,
   ProgressBar,
