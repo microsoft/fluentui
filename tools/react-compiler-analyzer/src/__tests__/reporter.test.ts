@@ -47,7 +47,7 @@ describe('printReport', () => {
       "
       ## @test/pkg
 
-      ### Active (compilable)
+      ### Active (compilable) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
@@ -66,7 +66,7 @@ describe('printReport', () => {
       "
       ## @test/pkg
 
-      ### Active (needs \`// justified:\` comment)
+      ### Active (needs \`// justified:\` comment) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
@@ -88,13 +88,13 @@ describe('printReport', () => {
       "
       ## @test/pkg
 
-      ### Active (needs \`// justified:\` comment)
+      ### Active (needs \`// justified:\` comment) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
       | src/Component.tsx:10 | CompB | CompileSuccess |  |
 
-      ### Active (compilable)
+      ### Active (compilable) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
@@ -128,7 +128,7 @@ describe('printReport', () => {
       "
       ## @test/pkg
 
-      ### Redundant (removable)
+      ### Redundant (removable) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
@@ -319,7 +319,7 @@ describe('multi-path reporting', () => {
       "
       ## @scope/pkg-alpha
 
-      ### Active (needs \`// justified:\` comment)
+      ### Active (needs \`// justified:\` comment) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
@@ -328,7 +328,7 @@ describe('multi-path reporting', () => {
 
       ## @scope/pkg-beta
 
-      ### Redundant (removable)
+      ### Redundant (removable) (1)
 
       | Location | Function | Compiler Event | Reason |
       |----------|----------|----------------|--------|
