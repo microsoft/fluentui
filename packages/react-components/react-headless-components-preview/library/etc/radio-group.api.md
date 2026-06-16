@@ -62,6 +62,9 @@ export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) =
 // @public
 export const useRadioGroup: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
 
+// @public (undocumented)
+export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues_2;
+
 // (No @packageDocumentation comment for this package)
 
 ```
