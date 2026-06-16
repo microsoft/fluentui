@@ -12,7 +12,7 @@ This is a large Nx monorepo with the following key characteristics:
 
 - **Package Manager**: Yarn v1 with strict dependency management
 - **Build System**: Nx workspace with custom plugins (`tools/workspace-plugin/`)
-- **Node.js Versions**: ^22.0.0
+- **Node.js Versions**: ^22.0.0 || ^24.0.0 (CI runs on Node.js 24 — the current Active LTS)
 - **Languages**: TypeScript (strict mode), React, Web Components
 - **Testing**: Jest, Cypress (E2E), Storybook + StoryWright (Visual Regression), SSR testing (test-ssr)
 - **Documentation**: Storybook sites, api.md files via API Extractor
