@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Export useRadioGroupContextValues from RadioGroup",
+  "comment": "fix: export useRadioGroupContextValues from RadioGroup",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
