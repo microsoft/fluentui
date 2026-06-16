@@ -21,8 +21,8 @@ describe('risk-config.schema.json', () => {
 
   it('documents every option with a description', () => {
     for (const [key, def] of Object.entries<Record<string, unknown>>(schema.properties)) {
-      expect(typeof def.description).toBe('string');
-      expect((def.description as string).length).toBeGreaterThan(0);
+      expect(typeof def['description']).toBe('string');
+      expect((def['description'] as string).length).toBeGreaterThan(0);
       expect(key).toBeTruthy();
     }
   });
