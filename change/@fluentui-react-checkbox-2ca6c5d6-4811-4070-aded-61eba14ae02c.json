@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Merge Field control props in base hooks so Field integration applies when base hooks are used directly",
+  "comment": "fix: move Field control props to base hooks",
   "packageName": "@fluentui/react-checkbox",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
