@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2026 18:28:49 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.96",
+      "version": "9.0.0-beta.96",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:19 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.96",
       "version": "9.0.0-beta.96",
