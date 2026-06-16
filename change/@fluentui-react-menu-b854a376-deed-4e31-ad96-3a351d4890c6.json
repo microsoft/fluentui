@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove the tabster restorer source from MenuPopover",
+  "packageName": "@fluentui/react-menu",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
