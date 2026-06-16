@@ -16,8 +16,6 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
-
   const overrides = useOverrides();
 
   const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', ...baseProps } = props;
@@ -50,16 +48,20 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
  * @param ref - User provided ref to be passed to the Input component.
  */
 export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTMLInputElement>): InputBaseState => {
-  const { onChange } = props;
+  const fieldControlProps = useFieldControlProps_unstable(props, {
+    supportsLabelFor: true,
+    supportsRequired: true,
+    supportsSize: true,
+  });
 
   const [value, setValue] = useControllableState({
-    state: props.value,
-    defaultState: props.defaultValue,
+    state: fieldControlProps.value,
+    defaultState: fieldControlProps.defaultValue,
     initialState: '',
   });
 
   const nativeProps = getPartitionedNativeProps({
-    props,
+    props: fieldControlProps,
     primarySlotTagName: 'input',
     excludedPropNames: ['onChange', 'value', 'defaultValue'],
   });
@@ -71,7 +73,7 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
       contentBefore: 'span',
       contentAfter: 'span',
     },
-    input: slot.always(props.input, {
+    input: slot.always(fieldControlProps.input, {
       defaultProps: {
         type: 'text',
         ref,
@@ -79,9 +81,9 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
       },
       elementType: 'input',
     }),
-    contentAfter: slot.optional(props.contentAfter, { elementType: 'span' }),
-    contentBefore: slot.optional(props.contentBefore, { elementType: 'span' }),
-    root: slot.always(props.root, {
+    contentAfter: slot.optional(fieldControlProps.contentAfter, { elementType: 'span' }),
+    contentBefore: slot.optional(fieldControlProps.contentBefore, { elementType: 'span' }),
+    root: slot.always(fieldControlProps.root, {
       defaultProps: nativeProps.root,
       elementType: 'span',
     }),
@@ -90,7 +92,7 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
   state.input.value = value;
   state.input.onChange = useEventCallback(ev => {
     const newValue = ev.target.value;
-    onChange?.(ev, { value: newValue });
+    fieldControlProps.onChange?.(ev, { value: newValue });
     setValue(newValue);
   });
 
