@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "Update FAST Element peer dependency to v3.",
   "packageName": "@fluentui/chart-web-components",
-  "email": "chujane@microsoft.com",
+  "email": "7559015+janechu@users.noreply.github.com",
   "dependentChangeType": "patch"
 }
