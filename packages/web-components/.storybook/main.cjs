@@ -19,6 +19,11 @@ module.exports =
       previewUrl: process.env.DEPLOY_PATH,
     },
     viteFinal: async config => {
+      config.build = {
+        ...(config.build || {}),
+        target: 'esnext',
+      };
+
       // Configure path aliases
       config.resolve = config.resolve || {};
       config.resolve.alias = {

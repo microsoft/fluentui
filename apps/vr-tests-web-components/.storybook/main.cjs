@@ -34,6 +34,10 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     config.resolve.plugins = config.resolve.plugins ?? [];
     config.module = config.module ?? {};
     config.plugins = config.plugins ?? [];
+    config.experiments = {
+      ...(config.experiments ?? {}),
+      topLevelAwait: true,
+    };
 
     config.resolve.extensionAlias = {
       '.js': ['.js', '.ts', '.tsx'],
@@ -45,6 +49,7 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     config.module.rules.push(
       {
         test: /\.([cm]?ts|tsx)$/,
+        type: 'javascript/esm',
         loader: 'ts-loader',
         sideEffects: true,
         options: {

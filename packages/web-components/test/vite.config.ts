@@ -10,7 +10,13 @@ export default mergeConfig(defaultConfig, {
   publicDir: '../public',
   resolve: {
     alias: {
-      '@microsoft/fast-element/declarative.js': resolve(fastElementPackageRoot, 'dist', 'esm', 'declarative', 'index.js'),
+      '@microsoft/fast-element/declarative.js': resolve(
+        fastElementPackageRoot,
+        'dist',
+        'esm',
+        'declarative',
+        'index.js',
+      ),
       '@microsoft/fast-element/hydration.js': resolve(fastElementPackageRoot, 'dist', 'esm', 'hydration.js'),
     },
   },
