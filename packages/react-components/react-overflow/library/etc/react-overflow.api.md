@@ -4,11 +4,13 @@
 
 ```ts
 
-import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
+import { OnUpdateItemVisibility } from '@fluentui/priority-overflow';
+import { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
+import { OverflowEventPayload } from '@fluentui/priority-overflow';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
-import type { OverflowOptions } from '@fluentui/priority-overflow';
+import { OverflowOptions } from '@fluentui/priority-overflow';
 import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
@@ -28,14 +30,64 @@ export const DATA_OVERFLOWING = "data-overflowing";
 export interface OnOverflowChangeData extends OverflowState {
 }
 
+export { OnUpdateItemVisibility }
+
+export { OnUpdateOverflow }
+
 // @public
-export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible" | "hasHiddenItems">> & {
+export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "overflowAxis" | "overflowDirection" | "padding" | "minimumVisible" | "hasHiddenItems">> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
 } & React_2.RefAttributes<unknown>>;
 
 // @public
+export type OverflowComponentState = UseOverflowContainerReturn<HTMLElement> & {
+    ref: React_2.Ref<HTMLElement>;
+    className?: string;
+    children: React_2.ReactElement;
+};
+
+// @public (undocumented)
+export interface OverflowContextValue {
+    // (undocumented)
+    containerRef?: React_2.RefObject<HTMLElement | null>;
+    // (undocumented)
+    forceUpdateOverflow: () => void;
+    // (undocumented)
+    getSnapshot: () => OverflowSnapshot;
+    // @deprecated (undocumented)
+    groupVisibility: Record<string, OverflowGroupState>;
+    // @deprecated (undocumented)
+    hasOverflow: boolean;
+    // @deprecated (undocumented)
+    itemVisibility: Record<string, boolean>;
+    // (undocumented)
+    registerDivider: (divider: OverflowDividerEntry) => () => void;
+    // (undocumented)
+    registerItem: (item: OverflowItemEntry) => () => void;
+    // (undocumented)
+    registerOverflowMenu: (el: HTMLElement) => () => void;
+    // (undocumented)
+    subscribe: (listener: () => void) => () => void;
+    // (undocumented)
+    updateOverflow: (padding?: number) => void;
+}
+
+// @public
+export type OverflowContextValues = {
+    overflow: OverflowContextValue;
+};
+
+// @public
 export const OverflowDivider: React_2.ForwardRefExoticComponent<OverflowDividerProps & React_2.RefAttributes<unknown>>;
+
+// @public
+export type OverflowDividerProps = {
+    groupId: string;
+    children: React_2.ReactElement;
+};
+
+export { OverflowEventPayload }
 
 // @public
 export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps & React_2.RefAttributes<unknown>>;
@@ -53,14 +105,30 @@ export type OverflowItemProps = {
     priority?: number;
 });
 
-// @public
+// @public (undocumented)
 export type OverflowProps = Partial<Pick<OverflowOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'hasHiddenItems'>> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
 };
 
 // @public
+export const OverflowProvider: React_2.Provider<OverflowContextValue>;
+
+// @public
 export const OverflowReorderObserver: React_2.FC;
+
+// @public (undocumented)
+export interface OverflowState {
+    // (undocumented)
+    groupVisibility: Record<string, OverflowGroupState>;
+    // (undocumented)
+    hasOverflow: boolean;
+    // (undocumented)
+    itemVisibility: Record<string, boolean>;
+}
+
+// @public
+export const renderOverflow_unstable: (state: OverflowComponentState, contextValues: OverflowContextValues) => React_2.ReactElement;
 
 // @public (undocumented)
 export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
@@ -68,10 +136,13 @@ export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 // @public (undocumented)
 export function useIsOverflowItemVisible(id: string): boolean;
 
+// @public
+export const useOverflow_unstable: (props: OverflowProps, ref: React_2.Ref<HTMLElement>) => OverflowComponentState;
+
 // @internal (undocumented)
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<OverflowOptions, "onUpdateOverflow">) => UseOverflowContainerReturn<TElement>;
 
-// @internal (undocumented)
+// @public (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'forceUpdateOverflow' | 'registerOverflowMenu' | 'registerDivider' | 'getSnapshot' | 'subscribe'> {
     containerRef: React_2.RefObject<TElement | null>;
 }
@@ -81,6 +152,9 @@ export function useOverflowContext(): OverflowContextValue;
 
 // @internal (undocumented)
 export function useOverflowContext<SelectedValue>(selector: (context: OverflowContextValue) => SelectedValue): SelectedValue;
+
+// @internal
+export const useOverflowContextValues_unstable: (state: OverflowComponentState) => OverflowContextValues;
 
 // @public (undocumented)
 export const useOverflowCount: () => number;
@@ -97,6 +171,9 @@ export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
     overflowCount: number;
     isOverflowing: boolean;
 };
+
+// @public (undocumented)
+export const useOverflowStyles_unstable: (state: OverflowComponentState) => OverflowComponentState;
 
 // @public
 export function useOverflowVisibility(): {

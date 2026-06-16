@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-rc.26",
+  "version": "3.0.0-rc.27",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -79,11 +79,10 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && yarn build:rollup && yarn build:ssr && yarn generate-api && yarn analyze",
-    "build:ssr:templates": "fast-test-harness generate-templates --tag-prefix=fluent",
-    "build:ssr:styles": "fast-test-harness generate-stylesheets",
-    "build:ssr": "yarn build:ssr:templates && yarn build:ssr:styles",
+    "build": "yarn compile && yarn build:rollup && yarn generate-api && yarn analyze",
     "build:rollup": "rollup -c",
+    "generate:ssr": "node ./scripts/generate-ssr.js",
+    "check:ssr": "node ./scripts/generate-ssr.js --check",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} src/*.{ts,html} --ignore-path ../../.prettierignore",

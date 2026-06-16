@@ -1,0 +1,30 @@
+<f-template name="fluent-textarea" shadowrootmode="open" shadowrootdelegatesfocus>
+  <template>
+    {{styles}}
+    <label f-ref="{labelEl}" for="control" part="label">
+      <slot name="label" f-slotted="{labelSlottedNodes}"></slot>
+    </label>
+    <div class="root" part="root" f-ref="{rootEl}">
+      <textarea
+        f-ref="{controlEl}"
+        id="control"
+        class="control"
+        part="control"
+        ?required="{{required}}"
+        ?disabled="{{disabled}}"
+        ?readonly="{{readOnly}}"
+        ?spellcheck="{{spellcheck}}"
+        autocomplete="{{autocomplete}}"
+        maxlength="{{maxLength}}"
+        minlength="{{minLength}}"
+        placeholder="{{placeholder}}"
+        @change="{handleControlChange()}"
+        @select="{handleControlSelect()}"
+        @input="{handleControlInput()}"
+      ></textarea>
+    </div>
+    <div hidden>
+      <slot f-slotted="{defaultSlottedNodes}"></slot>
+    </div>
+  </template>
+</f-template>

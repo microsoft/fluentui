@@ -260,4 +260,5 @@ export const styles = css`
     :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
       color: GrayText;
     }
+  }
 `;

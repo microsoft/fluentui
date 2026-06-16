@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 12 Jun 2026 04:07:42 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.27",
+      "version": "3.0.0-rc.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "3fc293f0d90d39ab89dda8a93c5571962ced05a8",
+            "comment": "feat(web-components): generate SSR templates and stylesheets into src/ and copy into dist during compile"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cc226671e20d73583c04937def438dcade609f2b",
+            "comment": "fix: make sure autofocus works on all focusable custom elements during initial page load"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jun 2026 04:07:32 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.26",
       "version": "3.0.0-rc.26",

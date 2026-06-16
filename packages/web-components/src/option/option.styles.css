@@ -1,0 +1,134 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-grid;
+}
+
+:host {
+  -webkit-tap-highlight-color: transparent;
+
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+  font-weight: var(--fontWeightRegular);
+
+  align-items: center;
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground2);
+  column-gap: var(--spacingHorizontalXS);
+  cursor: pointer;
+  grid-template-areas: 'indicator start content';
+  grid-template-columns: auto auto 1fr;
+  min-height: 32px;
+  padding: var(--spacingHorizontalSNudge);
+  text-align: start;
+}
+
+.content {
+  grid-area: content;
+  line-height: 1;
+}
+
+::slotted([slot='start']) {
+  grid-area: start;
+}
+
+:host(:hover) {
+  background-color: var(--colorNeutralBackground1Hover);
+  color: var(--colorNeutralForeground2Hover);
+}
+
+:host(:active) {
+  background-color: var(--colorNeutralBackground1Pressed);
+  color: var(--colorNeutralForeground2Pressed);
+}
+
+:host(:disabled) {
+  background-color: var(--colorNeutralBackground1);
+  color: var(--colorNeutralForegroundDisabled);
+  cursor: default;
+}
+
+.checkmark-16-filled {
+  fill: currentColor;
+  width: 16px;
+}
+
+slot[name='checked-indicator'] > *,
+::slotted([slot='checked-indicator']) {
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  grid-area: indicator;
+  visibility: hidden;
+}
+
+:host(:state(selected)) :is(slot[name='checked-indicator'] > *, ::slotted([slot='checked-indicator'])) {
+  visibility: visible;
+}
+
+:host(:state(multiple)) .checkmark-16-filled,
+:host(:not(:state(multiple))) .checkmark-12-regular {
+  display: none;
+}
+
+:host(:state(multiple)) .checkmark-12-regular {
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusSmall);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  box-sizing: border-box;
+  cursor: pointer;
+  fill: transparent;
+  position: relative;
+  visibility: visible;
+  width: 16px;
+}
+
+:host(:state(multiple):state(selected)) .checkmark-12-regular {
+  background-color: var(--colorCompoundBrandBackground);
+  border-color: var(--colorCompoundBrandStroke);
+  fill: var(--colorNeutralForegroundInverted);
+}
+
+:host(:disabled:state(multiple)) .checkmark-12-regular {
+  border-color: var(--colorNeutralStrokeDisabled);
+}
+
+:host(:disabled:state(multiple):state(selected)) .checkmark-12-regular {
+  background-color: var(--colorNeutralBackgroundDisabled);
+}
+
+:host(:state(active)) {
+  border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+}
+
+@supports (selector(:host(:has(*)))) {
+  :host(:has([slot='start']:not([size='16']))) {
+    column-gap: var(--spacingHorizontalSNudge);
+  }
+}
+
+:host(:state(description)) {
+  column-gap: var(--spacingHorizontalSNudge);
+  grid-template-areas:
+    'indicator start content'
+    'indicator start description';
+}
+
+::slotted([slot='description']) {
+  color: var(--colorNeutralForeground3);
+  grid-area: description;
+
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  font-weight: var(--fontWeightRegular);
+}
+
+@media (forced-colors: active) {
+  :host(:disabled) {
+    color: GrayText;
+  }
+}
