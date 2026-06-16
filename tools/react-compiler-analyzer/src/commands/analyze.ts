@@ -97,78 +97,85 @@ export const analyzeCommand: CommandModule<{}, AnalyzeArgv> = {
     const resolvedPaths = validatePaths(argv.paths);
     validateConcurrency(argv.concurrency);
 
-    await withReportOutput(argv.format, 'React Compiler Analysis', async f => {
-      openScanLog(f, 'Scan & compile log');
+    await withReportOutput(
+      argv.format,
+      'React Compiler Analysis',
+      async f => {
+        openScanLog(f, 'Scan & compile log');
 
-      const collected: FileEntry[] = [];
+        const collected: FileEntry[] = [];
 
-      for (const resolvedPath of resolvedPaths) {
-        const packageName = await findPackageName(resolvedPath);
+        for (const resolvedPath of resolvedPaths) {
+          const packageName = await findPackageName(resolvedPath);
 
-        f.heading(2, `Scanning: ${resolvedPath}`);
-        f.line(`   Package: ${packageName}`);
-        f.line(`   Mode: ${argv.mode}`);
+          f.heading(2, `Scanning: ${resolvedPath}`);
+          f.line(`   Package: ${packageName}`);
+          f.line(`   Mode: ${argv.mode}`);
+          f.blank();
+
+          const discovered = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
+          collected.push(...discovered);
+        }
+
+        // Combining overlapping paths (e.g. a directory plus a file inside it) can surface
+        // the same file more than once — process each file a single time.
+        const files = dedupeFileEntries(collected);
+
+        if (files.length === 0) {
+          closeScanLog(f);
+          f.line('No TypeScript files found.');
+          return 0;
+        }
+
+        f.line(`Files to analyze: ${files.length}`);
         f.blank();
 
-        const discovered = await discoverAllFiles(resolvedPath, packageName, argv.exclude, argv.verbose);
-        collected.push(...discovered);
-      }
+        // Single compilation pass for all files
+        const compilationResults = await compileFiles(files, {
+          concurrency: argv.concurrency,
+          verbose: argv.verbose,
+          compilationMode: argv.mode,
+          riskConfig: loadRiskConfig(argv['risk-config']),
+        });
 
-      // Combining overlapping paths (e.g. a directory plus a file inside it) can surface
-      // the same file more than once — process each file a single time.
-      const files = dedupeFileEntries(collected);
-
-      if (files.length === 0) {
         closeScanLog(f);
-        f.line('No TypeScript files found.');
-        return 0;
-      }
 
-      f.line(`Files to analyze: ${files.length}`);
-      f.blank();
+        // Derive coverage from compilation results
+        const coverageResults = compilationResults.flatMap(r =>
+          deriveCoverage(r, { fullReasons: argv['full-reasons'] }),
+        );
 
-      // Single compilation pass for all files
-      const compilationResults = await compileFiles(files, {
-        concurrency: argv.concurrency,
-        verbose: argv.verbose,
-        compilationMode: argv.mode,
-        riskConfig: loadRiskConfig(argv['risk-config']),
-      });
+        const workspaceRoot = process.cwd();
+        printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
+        printRuntimeRisks(f, coverageResults, workspaceRoot);
+        printMigrationCandidates(f, coverageResults, workspaceRoot);
+        printCoverageSummary(f, coverageResults, argv.verbose);
 
-      closeScanLog(f);
-
-      // Derive coverage from compilation results
-      const coverageResults = compilationResults.flatMap(r => deriveCoverage(r, { fullReasons: argv['full-reasons'] }));
-
-      const workspaceRoot = process.cwd();
-      printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
-      printRuntimeRisks(f, coverageResults, workspaceRoot);
-      printMigrationCandidates(f, coverageResults, workspaceRoot);
-      printCoverageSummary(f, coverageResults, argv.verbose);
-
-      if (argv.annotate) {
-        const outcome = await applyAnnotations(coverageResults, argv.annotate);
-        const touched = outcome.functionsAnnotated + outcome.functionsBailedOut;
-        if (touched > 0) {
-          f.blank();
-          const parts: string[] = [];
-          if (outcome.functionsAnnotated > 0) {
-            parts.push(`annotated ${outcome.functionsAnnotated} function(s) with 'use memo'`);
+        if (argv.annotate) {
+          const outcome = await applyAnnotations(coverageResults, argv.annotate);
+          const touched = outcome.functionsAnnotated + outcome.functionsBailedOut;
+          if (touched > 0) {
+            f.blank();
+            const parts: string[] = [];
+            if (outcome.functionsAnnotated > 0) {
+              parts.push(`annotated ${outcome.functionsAnnotated} function(s) with 'use memo'`);
+            }
+            if (outcome.functionsBailedOut > 0) {
+              parts.push(`bailed out ${outcome.functionsBailedOut} risky function(s) with justified 'use no memo'`);
+            }
+            f.line(`✓ ${parts.join('; ')} in ${outcome.filesModified} file(s) (mode: ${argv.annotate}).`);
+          } else {
+            f.blank();
+            f.line('No functions to annotate.');
           }
-          if (outcome.functionsBailedOut > 0) {
-            parts.push(`bailed out ${outcome.functionsBailedOut} risky function(s) with justified 'use no memo'`);
-          }
-          f.line(`✓ ${parts.join('; ')} in ${outcome.filesModified} file(s) (mode: ${argv.annotate}).`);
-        } else {
-          f.blank();
-          f.line('No functions to annotate.');
         }
-      }
 
-      f.blank();
-      f.line('> **Tip:** Run `lint <path>` for directive health checks.');
+        f.blank();
+        f.line('> **Tip:** Run `lint <path>` for directive health checks.');
 
-      return 0;
-    });
+        return 0;
+      },
+      [{ label: 'Mode', value: argv.mode }],
+    );
   },
 };

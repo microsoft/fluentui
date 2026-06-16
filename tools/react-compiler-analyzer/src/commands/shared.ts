@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
 
-import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter } from '../formatter';
+import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter, type ReportMeta } from '../formatter';
 import type { CompilationMode, OutputFormat } from '../types';
 
 export const DEFAULT_EXCLUDE = [
@@ -144,11 +144,15 @@ export function closeScanLog(f: Formatter): void {
  * diagnostics emitted by the compiler/discovery during scanning — then injected once into a
  * standalone HTML document. Raw diagnostics are HTML-escaped and wrapped so they remain valid
  * inside the scan-log block; formatter output (which already emits valid HTML) is left intact.
+ *
+ * `meta` is rendered as a label/value bar under the document banner in `html` (e.g. the
+ * compilation mode); it is ignored by `cli`/`md` (which already surface the mode in the scan log).
  */
 export async function withReportOutput(
   format: OutputFormat,
   title: string,
   run: (f: Formatter) => Promise<number>,
+  meta: ReportMeta[] = [],
 ): Promise<void> {
   if (format !== 'html') {
     const f = createFormatter(format);
@@ -174,6 +178,6 @@ export async function withReportOutput(
     console.log = originalLog;
   }
 
-  console.log(renderHtmlDocument(title, buffer.join('\n')));
+  console.log(renderHtmlDocument(title, buffer.join('\n'), meta));
   process.exit(code);
 }

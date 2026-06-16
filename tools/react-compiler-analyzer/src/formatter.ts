@@ -374,6 +374,10 @@ html{overflow-x:hidden;}
 body{margin:0;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg);overflow-wrap:break-word;}
 .report{max-width:960px;margin:0 auto;padding:2rem 1.5rem 4rem;}
 .banner{font-size:1.6rem;font-weight:700;margin:0 0 1.5rem;padding-bottom:.6rem;border-bottom:3px solid var(--accent);}
+.report-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:-.75rem 0 1.5rem;}
+.meta-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;background:#faf9ff;border:1px solid var(--border);border-radius:999px;padding:.2rem .7rem;}
+.meta-label{font-weight:650;text-transform:uppercase;letter-spacing:.04em;font-size:.7rem;color:var(--muted);}
+.meta-value{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--fg);}
 h2{font-size:1.25rem;margin:2rem 0 .75rem;}
 h3{font-size:1.05rem;margin:1.5rem 0 .5rem;color:var(--accent);}
 h4{font-size:.95rem;margin:1rem 0 .4rem;color:var(--muted);overflow-wrap:anywhere;}
@@ -468,8 +472,25 @@ details.fold .table-wrap table{background:rgba(255,255,255,.55);}
 .toc-row.status-info.active{border-left-color:#0969da;}
 `.trim();
 
+/** A single label/value pair shown in the HTML report's meta bar (e.g. `Mode: infer`). */
+export interface ReportMeta {
+  label: string;
+  value: string;
+}
+
 /** Wrap rendered HTML `body` content in a standalone, self-contained HTML document. */
-export function renderHtmlDocument(title: string, body: string): string {
+export function renderHtmlDocument(title: string, body: string, meta: ReportMeta[] = []): string {
+  const metaBar =
+    meta.length === 0
+      ? ''
+      : `<div class="report-meta">${meta
+          .map(
+            m =>
+              `<span class="meta-chip"><span class="meta-label">${escapeHtml(
+                m.label,
+              )}</span><span class="meta-value">${escapeHtml(m.value)}</span></span>`,
+          )
+          .join('')}</div>`;
   return [
     '<!DOCTYPE html>',
     '<html lang="en">',
@@ -483,6 +504,7 @@ export function renderHtmlDocument(title: string, body: string): string {
     '<nav class="toc" aria-label="Report sections"></nav>',
     `<main class="report">`,
     `<h1 class="banner">${escapeHtml(title)}</h1>`,
+    metaBar,
     body,
     '</main>',
     `<script>${HTML_NAV_SCRIPT}</script>`,

@@ -583,6 +583,8 @@ describe('lint command — scan log wrapping', () => {
     expect(doc.trimEnd().endsWith('</html>')).toBe(true);
     expect(doc).toContain('<title>React Compiler Lint</title>');
     expect(doc).toContain('<h1 class="banner">React Compiler Lint</h1>');
+    // The compilation mode is surfaced in the meta bar for human clarity.
+    expect(doc).toContain('<span class="meta-label">Mode</span><span class="meta-value">infer</span>');
     expect(doc).toContain('<details class="scan-log">');
     expect(doc).toContain('<table>');
     expect(doc).toContain('<h2>Summary</h2>');

@@ -582,6 +582,8 @@ describe('analyze command — scan log wrapping', () => {
     expect(doc.trimEnd().endsWith('</html>')).toBe(true);
     expect(doc).toContain('<title>React Compiler Analysis</title>');
     expect(doc).toContain('<h1 class="banner">React Compiler Analysis</h1>');
+    // The compilation mode is surfaced in the meta bar for human clarity.
+    expect(doc).toContain('<span class="meta-label">Mode</span><span class="meta-value">infer</span>');
     // Report content rendered as real HTML elements.
     expect(doc).toContain('<details class="scan-log">');
     expect(doc).toContain('<table>');

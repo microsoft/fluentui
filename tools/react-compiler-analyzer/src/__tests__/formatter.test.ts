@@ -272,4 +272,20 @@ describe('renderHtmlDocument', () => {
     expect(doc).toContain('<p>hi</p>');
     expect(doc.trimEnd().endsWith('</html>')).toBe(true);
   });
+
+  it('omits the meta bar element when no meta is provided', () => {
+    const doc = renderHtmlDocument('T', '<p>hi</p>');
+    expect(doc).not.toContain('<div class="report-meta">');
+  });
+
+  it('renders a meta bar with escaped label/value chips under the banner', () => {
+    const doc = renderHtmlDocument('T', '<p>hi</p>', [{ label: 'Mode', value: 'infer' }]);
+
+    expect(doc).toContain(
+      '<div class="report-meta"><span class="meta-chip"><span class="meta-label">Mode</span>' +
+        '<span class="meta-value">infer</span></span></div>',
+    );
+    // Meta bar precedes the body content.
+    expect(doc.indexOf('report-meta')).toBeLessThan(doc.indexOf('<p>hi</p>'));
+  });
 });
