@@ -45,39 +45,63 @@ export function printReport(
     f.blank();
 
     if (activeNoMemo.length > 0) {
-      f.heading(3, 'Active (needs `// justified:` comment)');
-      f.blank();
-      printTable(f, activeNoMemo, workspaceRoot, fullReasons);
+      f.foldableSection(
+        {
+          title: 'Active (needs `// justified:` comment)',
+          status: 'warning',
+          count: activeNoMemo.length,
+          level: 3,
+          group: pkg,
+        },
+        () => printTable(f, activeNoMemo, workspaceRoot, fullReasons),
+      );
     }
 
     if (activeMemo.length > 0) {
-      f.heading(3, 'Active (compilable)');
-      f.blank();
-      printTable(f, activeMemo, workspaceRoot, fullReasons);
+      f.foldableSection(
+        { title: 'Active (compilable)', status: 'success', count: activeMemo.length, level: 3, group: pkg },
+        () => printTable(f, activeMemo, workspaceRoot, fullReasons),
+      );
     }
 
     if (broken.length > 0) {
-      f.heading(3, "Broken (`'use memo'` on non-compilable)", 'error');
-      f.blank();
-      printTable(f, broken, workspaceRoot, fullReasons);
+      f.foldableSection(
+        {
+          title: "Broken (`'use memo'` on non-compilable)",
+          status: 'error',
+          count: broken.length,
+          level: 3,
+          group: pkg,
+        },
+        () => printTable(f, broken, workspaceRoot, fullReasons),
+      );
     }
 
     if (conflicting.length > 0) {
-      f.heading(3, 'Conflicting (both directives on same function)', 'error');
-      f.blank();
-      printTable(f, conflicting, workspaceRoot, fullReasons);
+      f.foldableSection(
+        {
+          title: 'Conflicting (both directives on same function)',
+          status: 'error',
+          count: conflicting.length,
+          level: 3,
+          group: pkg,
+        },
+        () => printTable(f, conflicting, workspaceRoot, fullReasons),
+      );
     }
 
     if (redundant.length > 0) {
-      f.heading(3, 'Redundant (removable)');
-      f.blank();
-      printTable(f, redundant, workspaceRoot, fullReasons);
+      f.foldableSection(
+        { title: 'Redundant (removable)', status: 'warning', count: redundant.length, level: 3, group: pkg },
+        () => printTable(f, redundant, workspaceRoot, fullReasons),
+      );
     }
 
     if (skipped.length > 0) {
-      f.heading(3, 'Skipped (already justified)');
-      f.blank();
-      printTable(f, skipped, workspaceRoot, fullReasons);
+      f.foldableSection(
+        { title: 'Skipped (already justified)', status: 'info', count: skipped.length, level: 3, group: pkg },
+        () => printTable(f, skipped, workspaceRoot, fullReasons),
+      );
     }
   }
 }

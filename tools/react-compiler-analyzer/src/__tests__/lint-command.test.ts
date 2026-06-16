@@ -542,7 +542,7 @@ describe('lint command — scan log wrapping', () => {
       wrap-test-lint-pkg
       ──────────────────
 
-      ▸ Active (compilable)
+      ▸ Active (compilable) (1)
 
       Location     Function  Compiler Event  Reason
       ───────────  ────────  ──────────────  ──────
