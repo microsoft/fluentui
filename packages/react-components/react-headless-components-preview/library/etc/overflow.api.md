@@ -9,14 +9,14 @@ import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { OnOverflowChangeData as OnOverflowChangeData_2 } from '@fluentui/react-overflow';
+import { OnOverflowChangeData } from '@fluentui/react-overflow';
 import { OverflowComponentState } from '@fluentui/react-overflow';
 import { OverflowContextValues } from '@fluentui/react-overflow';
 import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowDividerProps } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
-import type { OverflowProps as OverflowProps_2 } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
 import { OverflowReorderObserver } from '@fluentui/react-overflow';
 import { OverflowState } from '@fluentui/react-overflow';
 import { renderOverflow_unstable as renderOverflow } from '@fluentui/react-overflow';
@@ -39,8 +39,7 @@ export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
 
-// @public (undocumented)
-export type OnOverflowChangeData = OnOverflowChangeData_2;
+export { OnOverflowChangeData }
 
 // @public
 export const Overflow: ForwardRefComponent<OverflowProps>;
@@ -57,8 +56,7 @@ export { OverflowItem }
 
 export { OverflowItemProps }
 
-// @public
-export type OverflowProps = OverflowProps_2;
+export { OverflowProps }
 
 export { OverflowReorderObserver }
 

@@ -7,6 +7,14 @@ import {
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
 } from '@fluentui/react-headless-components-preview/overflow';
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from '@fluentui/react-headless-components-preview/menu';
 
 import styles from './overflow.module.css';
 
@@ -19,9 +27,9 @@ export const OverflowMenuItem: React.FC<{ id: string; onClick?: () => void }> = 
   }
 
   return (
-    <button type="button" role="menuitem" className={styles.menuItem} onClick={onClick}>
+    <MenuItem className={styles.menuItem} onClick={onClick}>
       Item {id}
-    </button>
+    </MenuItem>
   );
 };
 
@@ -32,52 +40,35 @@ export const OverflowMenuDivider: React.FC<{ groupId: string }> = ({ groupId }) 
     return null;
   }
 
-  return <div role="separator" className={styles.menuDivider} />;
+  return <MenuDivider className={styles.menuDivider} />;
 };
 
 /**
- * Renders a `+N` button that opens a popover listing the overflowed items. Mirrors the styled
- * Overflow's overflow menu, but built from the headless hooks with no Griffel. Entries in `ids`
- * prefixed with `divider-` render a group divider (when that group is overflowing).
+ * Renders a `+N` button that opens a menu listing the overflowed items. Mirrors the styled
+ * Overflow's overflow menu, but built from the headless `Menu` — which provides the correct
+ * `menu`/`menuitem` semantics and keyboard navigation — and the headless overflow hooks, with no
+ * Griffel. Entries in `ids` prefixed with `divider-` render a group divider (when that group is
+ * overflowing).
  *
- * The popover uses `position: fixed` so it isn't clipped by the resizable container's `overflow`.
+ * `MenuPopover` renders through a portal but preserves React context, so the overflow hooks inside
+ * still read the `Overflow` root's context.
  */
 export const OverflowMenu: React.FC<{ ids: string[]; onItemClick?: (id: string) => void }> = ({ ids, onItemClick }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
-  const [position, setPosition] = React.useState<{ top: number; left: number }>();
 
   if (!isOverflowing) {
     return null;
   }
 
-  const toggle = () => {
-    if (position) {
-      setPosition(undefined);
-      return;
-    }
-    const rect = ref.current?.getBoundingClientRect();
-    setPosition(rect ? { top: rect.bottom + 4, left: rect.left } : undefined);
-  };
-
   return (
-    <>
-      <button
-        ref={ref}
-        type="button"
-        className={styles.menu}
-        aria-haspopup="menu"
-        aria-expanded={Boolean(position)}
-        aria-label={`${overflowCount} more items`}
-        onClick={toggle}
-      >
-        +{overflowCount}
-      </button>
-      {position && (
-        <div
-          role="menu"
-          className={styles.menuPopover}
-          style={{ position: 'fixed', top: position.top, left: position.left }}
-        >
+    <Menu>
+      <MenuTrigger>
+        <button ref={ref} type="button" className={styles.menu} aria-label={`${overflowCount} more items`}>
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
           {ids.map(id =>
             id.startsWith('divider-') ? (
               <OverflowMenuDivider key={id} groupId={id.slice('divider-'.length)} />
@@ -85,8 +76,8 @@ export const OverflowMenu: React.FC<{ ids: string[]; onItemClick?: (id: string) 
               <OverflowMenuItem key={id} id={id} onClick={onItemClick && (() => onItemClick(id))} />
             ),
           )}
-        </div>
-      )}
-    </>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
 };

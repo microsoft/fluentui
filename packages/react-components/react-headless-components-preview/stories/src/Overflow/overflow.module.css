@@ -1,9 +1,3 @@
-/*
- * The headless Overflow ships no styling — it only sets the `data-overflowing` and
- * `data-overflow-menu` attributes. Consumers provide the two layout rules the overflow engine
- * relies on (below), plus any presentational styling.
- */
-
 .container [data-overflowing] {
   display: none;
 }
@@ -96,20 +90,25 @@
 }
 
 .menuPopover {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
   min-width: 140px;
   padding: 4px;
-  margin: 0;
-  list-style: none;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-1);
 }
 
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  outline: none;
+}
+
 .menuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
   text-align: left;
   padding: 6px 10px;
   border: none;
@@ -118,9 +117,11 @@
   border-radius: var(--radius-pill);
   cursor: pointer;
   white-space: nowrap;
+  outline: none;
 }
 
-.menuItem:hover {
+.menuItem:hover,
+.menuItem:focus-visible {
   background: var(--surface-muted);
 }
 

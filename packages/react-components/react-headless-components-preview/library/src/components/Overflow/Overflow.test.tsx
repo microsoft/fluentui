@@ -5,22 +5,6 @@ import { Overflow } from './Overflow';
 import { OverflowItem, useOverflowMenu } from './index';
 
 describe('Overflow', () => {
-  beforeAll(() => {
-    // jsdom does not implement ResizeObserver, which the overflow manager observes the container with.
-    // https://github.com/jsdom/jsdom/issues/3368
-    global.ResizeObserver = class ResizeObserver {
-      public observe() {
-        /* noop */
-      }
-      public unobserve() {
-        /* noop */
-      }
-      public disconnect() {
-        /* noop */
-      }
-    };
-  });
-
   isConformant({
     Component: Overflow,
     displayName: 'Overflow',

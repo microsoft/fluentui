@@ -4,7 +4,15 @@ import {
   OverflowItem,
   useOverflowMenu,
   useIsOverflowGroupVisible,
+  useOverflowVisibility,
 } from '@fluentui/react-headless-components-preview/overflow';
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuDivider,
+} from '@fluentui/react-headless-components-preview/menu';
 
 import { OverflowMenuItem } from './OverflowMenu';
 import styles from './overflow.module.css';
@@ -28,62 +36,43 @@ const ContainerGroupDivider: React.FC<{ groupId: number }> = ({ groupId }) => {
  * Menu divider — because priority differs from DOM order, a divider may be needed in the menu only
  * when an overflowing group precedes another overflowing group. This mirrors the styled story's
  * reference implementation.
+ *
+ * Every group's visibility is read from a single `useOverflowVisibility()` subscription rather than
+ * calling `useIsOverflowGroupVisible` once per group — the latter would call a hook inside a loop
+ * and violate the rules of hooks.
  */
 const MenuGroupDivider: React.FC<{ groupId: number }> = ({ groupId }) => {
-  const groupVisibilities = Object.values(GROUPS).map(group => ({
-    group,
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    visibility: useIsOverflowGroupVisible(group.toString()),
-  }));
+  const { groupVisibility } = useOverflowVisibility();
+  const groups = Object.values(GROUPS);
 
-  const currentGroupPosition = groupVisibilities.findIndex(x => x.group === groupId);
-  const precedesOverflowingGroup = groupVisibilities
+  const currentGroupPosition = groups.indexOf(groupId);
+  const precedesOverflowingGroup = groups
     .slice(currentGroupPosition + 1)
-    .some(groupVisibility => groupVisibility.visibility !== 'visible');
+    .some(group => groupVisibility[group.toString()] !== 'visible');
 
-  if (groupVisibilities[currentGroupPosition].visibility === 'visible' || !precedesOverflowingGroup) {
+  if (groupVisibility[groupId.toString()] === 'visible' || !precedesOverflowingGroup) {
     return null;
   }
 
-  return <div role="separator" className={styles.menuDivider} />;
+  return <MenuDivider className={styles.menuDivider} />;
 };
 
 const PriorityOverflowMenu: React.FC<{ ids: string[] }> = ({ ids }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
-  const [position, setPosition] = React.useState<{ top: number; left: number }>();
 
   if (!isOverflowing) {
     return null;
   }
 
-  const toggle = () => {
-    if (position) {
-      setPosition(undefined);
-      return;
-    }
-    const rect = ref.current?.getBoundingClientRect();
-    setPosition(rect ? { top: rect.bottom + 4, left: rect.left } : undefined);
-  };
-
   return (
-    <>
-      <button
-        ref={ref}
-        type="button"
-        className={styles.menu}
-        aria-haspopup="menu"
-        aria-expanded={Boolean(position)}
-        aria-label={`${overflowCount} more items`}
-        onClick={toggle}
-      >
-        +{overflowCount}
-      </button>
-      {position && (
-        <div
-          role="menu"
-          className={styles.menuPopover}
-          style={{ position: 'fixed', top: position.top, left: position.left }}
-        >
+    <Menu>
+      <MenuTrigger>
+        <button ref={ref} type="button" className={styles.menu} aria-label={`${overflowCount} more items`}>
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
           {ids.map(id =>
             id.startsWith('divider-') ? (
               <MenuGroupDivider key={id} groupId={Number(id.slice('divider-'.length))} />
@@ -91,9 +80,9 @@ const PriorityOverflowMenu: React.FC<{ ids: string[] }> = ({ ids }) => {
               <OverflowMenuItem key={id} id={id} />
             ),
           )}
-        </div>
-      )}
-    </>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
 };
 
