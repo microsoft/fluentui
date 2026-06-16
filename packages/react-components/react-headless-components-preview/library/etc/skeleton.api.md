@@ -48,6 +48,9 @@ export type SkeletonState = SkeletonBaseState;
 export const useSkeleton: (props: SkeletonProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonState;
 
 // @public
+export const useSkeletonContextValues: (state: SkeletonState) => SkeletonContextValues_2;
+
+// @public
 export const useSkeletonItem: (props: SkeletonItemProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonItemState;
 
 // (No @packageDocumentation comment for this package)
