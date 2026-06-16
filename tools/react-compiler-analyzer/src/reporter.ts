@@ -110,7 +110,13 @@ function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: s
   const rows = results.map(r => {
     const relPath = relative(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(unknown)';
-    const reason = r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : '';
+    // With --full-reasons, keep the full reason (collapse newlines so the table stays valid);
+    // otherwise truncate to keep the column compact.
+    const reason = r.reason
+      ? fullReasons
+        ? r.reason.replace(/\n/g, ' ')
+        : truncate(r.reason, TABLE_REASON_MAX_LEN)
+      : '';
     return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
   });
 
