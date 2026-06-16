@@ -3,6 +3,7 @@ import {
   Overflow,
   OverflowItem,
   useOverflowMenu,
+  useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
   useOverflowVisibility,
 } from '@fluentui/react-headless-components-preview/overflow';
@@ -11,18 +12,24 @@ import {
   MenuTrigger,
   MenuPopover,
   MenuList,
+  MenuItem,
   MenuDivider,
 } from '@fluentui/react-headless-components-preview/menu';
 
-import { OverflowMenuItem } from './OverflowMenu';
 import styles from './overflow.module.css';
 
 const GROUPS = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
 
 const menuIds = ['6', 'divider-1', '7', 'divider-2', '4', '5', 'divider-3', '1', '2', '3', 'divider-4', '8'];
 
+const OverflowMenuItem = ({ id }: { id: string }): React.ReactNode => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : <MenuItem className={styles.menuItem}>Item {id}</MenuItem>;
+};
+
 /** In-container divider — hidden once its whole group has overflowed. */
-const ContainerGroupDivider: React.FC<{ groupId: number }> = ({ groupId }) => {
+const ContainerGroupDivider = ({ groupId }: { groupId: number }): React.ReactNode => {
   const groupVisibility = useIsOverflowGroupVisible(groupId.toString());
 
   if (groupVisibility === 'hidden') {
@@ -41,7 +48,7 @@ const ContainerGroupDivider: React.FC<{ groupId: number }> = ({ groupId }) => {
  * calling `useIsOverflowGroupVisible` once per group — the latter would call a hook inside a loop
  * and violate the rules of hooks.
  */
-const MenuGroupDivider: React.FC<{ groupId: number }> = ({ groupId }) => {
+const MenuGroupDivider = ({ groupId }: { groupId: number }): React.ReactNode => {
   const { groupVisibility } = useOverflowVisibility();
   const groups = Object.values(GROUPS);
 
@@ -57,7 +64,7 @@ const MenuGroupDivider: React.FC<{ groupId: number }> = ({ groupId }) => {
   return <MenuDivider className={styles.menuDivider} />;
 };
 
-const PriorityOverflowMenu: React.FC<{ ids: string[] }> = ({ ids }) => {
+const PriorityOverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {

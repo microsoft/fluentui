@@ -1,16 +1,76 @@
 import * as React from 'react';
-import { Overflow, OverflowItem, OverflowDivider } from '@fluentui/react-headless-components-preview/overflow';
+import {
+  Overflow,
+  OverflowItem,
+  OverflowDivider,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+  useIsOverflowGroupVisible,
+} from '@fluentui/react-headless-components-preview/overflow';
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from '@fluentui/react-headless-components-preview/menu';
 
-import { OverflowMenu } from './OverflowMenu';
 import styles from './overflow.module.css';
 
-const GroupDivider: React.FC<{ groupId: string }> = ({ groupId }) => (
+const GroupDivider = ({ groupId }: { groupId: string }): React.ReactNode => (
   <OverflowDivider groupId={groupId}>
     <div className={styles.divider} />
   </OverflowDivider>
 );
 
 const menuIds = ['1', 'divider-1', '2', 'divider-2', '3', '4', 'divider-3', '5', '6', '7', 'divider-4', '8'];
+
+const OverflowMenuItem = ({ id }: { id: string }): React.ReactNode => {
+  // Only the overflowed (hidden) items are listed in the menu.
+  const isVisible = useIsOverflowItemVisible(id);
+  return isVisible ? null : <MenuItem className={styles.menuItem}>Item {id}</MenuItem>;
+};
+
+const OverflowMenuDivider = ({ groupId }: { groupId: string }): React.ReactNode => {
+  const groupVisibility = useIsOverflowGroupVisible(groupId);
+  return groupVisibility === 'visible' ? null : <MenuDivider className={styles.menuDivider} />;
+};
+
+/**
+ * `+N` button that opens a headless `Menu` listing the overflowed items. `MenuPopover` renders
+ * through a portal but preserves React context, so the overflow hooks inside still read the
+ * `Overflow` root's context. Entries prefixed with `divider-` render a group divider (when that
+ * group is overflowing).
+ */
+const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
+  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button ref={ref} type="button" className={styles.menu} aria-label={`${overflowCount} more items`}>
+          +{overflowCount}
+        </button>
+      </MenuTrigger>
+      <MenuPopover className={styles.menuPopover}>
+        <MenuList className={styles.menuList}>
+          {ids.map(id =>
+            id.startsWith('divider-') ? (
+              <OverflowMenuDivider key={id} groupId={id.slice('divider-'.length)} />
+            ) : (
+              <OverflowMenuItem key={id} id={id} />
+            ),
+          )}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
 
 /**
  * `OverflowDivider` registers a divider with a `groupId` so its width is included in the overflow
