@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Escape in an open Menu does not trigger tabster actions",
+  "packageName": "@fluentui/react-menu",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
