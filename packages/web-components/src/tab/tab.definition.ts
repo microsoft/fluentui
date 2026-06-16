@@ -3,7 +3,7 @@ import { Tab } from './tab.js';
 import { template } from './tab.template.js';
 import { styles } from './tab.styles.js';
 
-export const definition = Tab.compose({
+export const definition = await Tab.compose({
   name: tagName,
   template,
   styles,

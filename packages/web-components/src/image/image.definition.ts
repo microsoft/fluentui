@@ -10,7 +10,7 @@ import { styles } from './image.styles.js';
  * @remarks
  * HTML Element: \<fluent-image\>
  */
-export const definition = Image.compose({
+export const definition = await Image.compose({
   name: tagName,
   template,
   styles,

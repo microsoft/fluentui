@@ -8,7 +8,7 @@ import { template } from './link.template.js';
  * @remarks
  * HTML Element: \<fluent-link\>
  */
-export const definition = Link.compose({
+export const definition = await Link.compose({
   name: tagName,
   template,
   styles,

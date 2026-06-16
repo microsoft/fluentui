@@ -10,7 +10,7 @@ import { template } from './option.template.js';
  * @remarks
  * HTML Element: `<fluent-option>`
  */
-export const definition = DropdownOption.compose({
+export const definition = await DropdownOption.compose({
   name: tagName,
   template,
   styles,

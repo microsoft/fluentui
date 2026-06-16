@@ -11,7 +11,7 @@ import { template } from './progress-bar.template.js';
  * @remarks
  * HTML Element: \<fluent-progress-bar\>
  */
-export const definition = ProgressBar.compose({
+export const definition = await ProgressBar.compose({
   name: tagName,
   template,
   styles,

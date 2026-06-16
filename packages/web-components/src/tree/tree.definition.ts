@@ -9,7 +9,7 @@ import { template as treeTemplate } from './tree.template.js';
  * @remarks
  * HTML Element: \<fluent-tree\>
  */
-export const definition = Tree.compose({
+export const definition = await Tree.compose({
   name: tagName,
   template: treeTemplate,
   styles: treeStyle,

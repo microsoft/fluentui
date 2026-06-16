@@ -8,6 +8,7 @@ const plugins = [
   commonJS(),
   esbuild({
     tsconfig: './tsconfig.lib.json',
+    target: 'es2022',
   }),
   fastTaggedTemplates(),
 ];
@@ -23,7 +24,7 @@ export default [
       {
         file: 'dist/web-components.min.js',
         format: 'esm',
-        plugins: [minify()],
+        plugins: [minify({ target: 'es2022' })],
       },
     ],
     context: 'window',
@@ -39,7 +40,7 @@ export default [
       {
         file: 'dist/web-components-all.min.js',
         format: 'esm',
-        plugins: [minify()],
+        plugins: [minify({ target: 'es2022' })],
       },
     ],
     context: 'window',

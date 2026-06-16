@@ -1200,7 +1200,7 @@ export const ButtonSize: {
 export type ButtonSize = ValuesOf<typeof ButtonSize>;
 
 // @public
-export const ButtonTemplate: ElementViewTemplate<BaseButton>;
+export const ButtonTemplate: ElementViewTemplate<Button>;
 
 // @public
 export const ButtonType: {
@@ -2850,7 +2850,7 @@ export type DropdownSize = ValuesOf<typeof DropdownSize>;
 export const DropdownStyles: ElementStyles;
 
 // @public
-export const DropdownTemplate: ElementViewTemplate<BaseDropdown>;
+export const DropdownTemplate: ElementViewTemplate<Dropdown>;
 
 // @public
 export const DropdownType: {
@@ -2892,7 +2892,7 @@ export type EndOptions<TSource = any, TParent = any> = {
 };
 
 // @public
-export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: EndOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: EndOptions<TSource, TParent>): CaptureType;
 
 // @public
 export class Field extends BaseField {
@@ -3907,7 +3907,7 @@ export type StartOptions<TSource = any, TParent = any> = {
 };
 
 // @public
-export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType;
 
 // @public
 export const strokeWidthThick = "var(--strokeWidthThick)";

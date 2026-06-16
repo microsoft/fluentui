@@ -8,7 +8,7 @@ import { template } from './menu-button.template.js';
  * @remarks
  * HTML Element: \<fluent-button\>
  */
-export const definition = MenuButton.compose({
+export const definition = await MenuButton.compose({
   name: tagName,
   template,
   styles,

@@ -8,7 +8,7 @@ import { template } from './menu-list.template.js';
  * @remarks
  * HTML Element: <fluent-menu-list>
  */
-export const definition = MenuList.compose({
+export const definition = await MenuList.compose({
   name: tagName,
   template,
   styles,

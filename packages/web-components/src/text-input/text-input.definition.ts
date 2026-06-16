@@ -10,7 +10,7 @@ import { template } from './text-input.template.js';
  * @remarks
  * HTML Element: `<fluent-text-input>`
  */
-export const definition = TextInput.compose({
+export const definition = await TextInput.compose({
   name: tagName,
   template,
   styles,

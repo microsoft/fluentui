@@ -9,7 +9,7 @@ import { template } from './toggle-button.template.js';
  * @remarks
  * HTML Element: \<fluent-toggle-button\>
  */
-export const definition = ToggleButton.compose({
+export const definition = await ToggleButton.compose({
   name: tagName,
   template,
   styles,

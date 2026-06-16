@@ -10,7 +10,7 @@ import { template } from './tooltip.template.js';
  * @remarks
  * HTML Element: `<fluent-tooltip>`
  */
-export const definition = Tooltip.compose({
+export const definition = await Tooltip.compose({
   name: tagName,
   template,
   styles,

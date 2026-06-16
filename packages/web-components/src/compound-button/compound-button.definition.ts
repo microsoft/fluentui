@@ -8,7 +8,7 @@ import { template } from './compound-button.template.js';
  * @remarks
  * HTML Element: \<fluent-comopund-button\>
  */
-export const definition = CompoundButton.compose({
+export const definition = await CompoundButton.compose({
   name: tagName,
   template,
   styles,

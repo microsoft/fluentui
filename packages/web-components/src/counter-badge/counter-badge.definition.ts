@@ -8,7 +8,7 @@ import { template } from './counter-badge.template.js';
  * @remarks
  * HTML Element: \<fluent-counter-badge\>
  */
-export const definition = CounterBadge.compose({
+export const definition = await CounterBadge.compose({
   name: tagName,
   template,
   styles,

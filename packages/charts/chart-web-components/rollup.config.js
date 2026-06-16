@@ -24,7 +24,7 @@ export default [
       {
         file: 'dist/chart-web-components.min.js',
         format: 'esm',
-        plugins: [minify()],
+        plugins: [minify({ target: 'es2022' })],
       },
     ],
     plugins: [
@@ -32,6 +32,7 @@ export default [
       commonJS(),
       esbuild({
         tsconfig: './tsconfig.lib.json',
+        target: 'es2022',
       }),
       transformTaggedTemplate({
         tagsToProcess: ['css'],

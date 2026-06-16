@@ -10,7 +10,7 @@ import { template } from './rating-display.template.js';
  * @remarks
  * HTML Element: `<fluent-rating-display>`
  */
-export const definition = RatingDisplay.compose({
+export const definition = await RatingDisplay.compose({
   name: tagName,
   template,
   styles,

@@ -11,7 +11,7 @@ import { template } from './label.template.js';
  * @remarks
  * HTML Element: \<fluent-label\>
  */
-export const definition = Label.compose({
+export const definition = await Label.compose({
   name: tagName,
   template,
   styles,

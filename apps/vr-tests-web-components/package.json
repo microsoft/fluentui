@@ -18,7 +18,7 @@
     "html-react-parser": "4.0.0",
     "@fluentui/tokens": ">=1.0.0-alpha",
     "@fluentui/web-components": ">=3.0.0-alpha",
-    "@microsoft/fast-element": "^2.0.0",
+    "@microsoft/fast-element": "^3.0.0-rc.1",
     "tslib": "^2.1.0"
   }
 }

@@ -11,7 +11,7 @@ import { template } from './message-bar.template.js';
  * @remarks
  * HTML Element: `<fluent-message-bar>`
  */
-export const definition = MessageBar.compose({
+export const definition = await MessageBar.compose({
   name: tagName,
   template,
   styles,

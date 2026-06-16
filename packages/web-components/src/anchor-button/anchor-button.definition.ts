@@ -8,7 +8,7 @@ import { template } from './anchor-button.template.js';
  * @remarks
  * HTML Element: \<fluent-anchor-button\>
  */
-export const definition = AnchorButton.compose({
+export const definition = await AnchorButton.compose({
   name: tagName,
   template,
   styles,

@@ -8,7 +8,7 @@ import { template } from './spinner.template.js';
  * @remarks
  * HTML Element: \<fluent-spinner\>
  */
-export const definition = Spinner.compose({
+export const definition = await Spinner.compose({
   name: tagName,
   template,
   styles,

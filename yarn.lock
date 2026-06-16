@@ -2740,10 +2740,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-build/-/fast-build-0.7.0.tgz#a7167f8ae1bbd4a1ae379ac3b7bf84d68f464dd7"
   integrity sha512-YKqjlwFwurd69dL6YWbvGdJ7TX8c2h4Ra7qUGUMTSQAhrnREXjtB6/cduPnkswxBfDOMwYBeaVJCDcMP5auLZg==
 
-"@microsoft/fast-element@2.10.4", "@microsoft/fast-element@^2.0.0":
-  version "2.10.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.10.4.tgz#12b8c6c90902f2a54d5b27f618d7d095e133546d"
-  integrity sha512-OkHIlMztq7+PgkRF1LscgBd/MVzMhGrWPkJRDvOEqdqEdZOKocKvaKcUKZubIBz4RpLIrhLD3lOJzCsspk6jXg==
+"@microsoft/fast-element@3.0.0-rc.1", "@microsoft/fast-element@^3.0.0-rc.1":
+  version "3.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-3.0.0-rc.1.tgz#719d11759cbb1e16073e8f4b3686559e4333f8b6"
+  integrity sha512-c4gtNzySRViqRQAhJKHLzIWZiWFwYXJGfFW0G5nKE1lovIPGnNhnVwOASDHKkAlL/cAHz/C65rsqYSo+Jbfq4Q==
 
 "@microsoft/fast-html@1.0.0-alpha.54":
   version "1.0.0-alpha.54"

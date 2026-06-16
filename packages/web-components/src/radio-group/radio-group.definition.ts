@@ -11,7 +11,7 @@ import { template } from './radio-group.template.js';
  * @remarks
  * HTML Element: \<fluent-radio-group\>
  */
-export const definition = RadioGroup.compose({
+export const definition = await RadioGroup.compose({
   name: tagName,
   template,
   styles,

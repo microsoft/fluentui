@@ -1,6 +1,7 @@
 import { type ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import type { BaseDropdown } from './dropdown.base.js';
+import type { Dropdown } from './dropdown.js';
 import type { DropdownOptions } from './dropdown.options.js';
 
 const dropdownIndicatorTemplate = html<BaseDropdown>`
@@ -95,6 +96,6 @@ export function dropdownTemplate<T extends BaseDropdown>(options: DropdownOption
  *
  * @public
  */
-export const template: ElementViewTemplate<BaseDropdown> = dropdownTemplate({
+export const template: ElementViewTemplate<Dropdown> = dropdownTemplate<Dropdown>({
   indicator: dropdownIndicatorTemplate,
 });

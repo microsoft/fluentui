@@ -11,7 +11,7 @@ import { template } from './slider.template.js';
  * @remarks
  * HTML Element: \<fluent-slider\>
  */
-export const definition = Slider.compose({
+export const definition = await Slider.compose({
   name: tagName,
   template,
   styles,

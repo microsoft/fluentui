@@ -10,7 +10,7 @@ import { template } from './avatar.template.js';
  * @remarks
  * HTML Element: \<fluent-badge\>
  */
-export const definition = Avatar.compose({
+export const definition = await Avatar.compose({
   name: tagName,
   template,
   styles,

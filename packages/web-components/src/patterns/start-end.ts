@@ -60,7 +60,7 @@ export class StartEnd implements Start, End {
  */
 export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(
   options: EndOptions<TSource, TParent>,
-): CaptureType<TSource, TParent> {
+): CaptureType {
   return html` <slot name="end" ${ref('end')}>${staticallyCompose(options.end)}</slot> `.inline();
 }
 
@@ -72,6 +72,6 @@ export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = a
  */
 export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(
   options: StartOptions<TSource, TParent>,
-): CaptureType<TSource, TParent> {
+): CaptureType {
   return html` <slot name="start" ${ref('start')}>${staticallyCompose(options.start)}</slot> `.inline();
 }

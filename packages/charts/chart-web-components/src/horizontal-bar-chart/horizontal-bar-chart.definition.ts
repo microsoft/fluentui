@@ -10,7 +10,7 @@ import { template } from './horizontal-bar-chart.template.js';
  * @remarks
  * HTML Element: `<fluent-textarea>`
  */
-export const definition = HorizontalBarChart.compose({
+export const definition = await HorizontalBarChart.compose({
   name: `${FluentDesignSystem.prefix}-horizontal-bar-chart`,
   template,
   styles,

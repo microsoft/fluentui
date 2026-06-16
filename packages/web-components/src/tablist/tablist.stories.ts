@@ -22,7 +22,7 @@ const storyTemplate = html<StoryArgs<FluentTablist>>`
     >
       <fluent-tab id="${story => story.ids?.[0]}">First Tab</fluent-tab>
       <fluent-tab id="${story => story.ids?.[1]}">
-        ${when(
+        ${when<StoryArgs<FluentTablist>>(
           story => story.hasStartSlot,
           html`<span slot="start">
             <svg

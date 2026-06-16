@@ -9,7 +9,7 @@ import { template } from './badge.template.js';
  * @remarks
  * HTML Element: \<fluent-badge\>
  */
-export const definition = Badge.compose({
+export const definition = await Badge.compose({
   name: tagName,
   template,
   styles,

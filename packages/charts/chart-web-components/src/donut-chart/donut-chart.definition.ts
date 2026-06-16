@@ -8,7 +8,7 @@ import { template } from './donut-chart.template.js';
  * @remarks
  * HTML Element: `<fluent-donut-chart>`
  */
-export const definition = DonutChart.compose({
+export const definition = await DonutChart.compose({
   name: `${FluentDesignSystem.prefix}-donut-chart`,
   template,
   styles,

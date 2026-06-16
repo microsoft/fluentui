@@ -10,7 +10,7 @@ import { template } from './button.template.js';
  * @remarks
  * HTML Element: `<fluent-button>`
  */
-export const definition = Button.compose({
+export const definition = await Button.compose({
   name: tagName,
   template,
   styles,

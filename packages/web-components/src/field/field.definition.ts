@@ -10,7 +10,7 @@ import { template } from './field.template.js';
  * @remarks
  * HTML Element: `<fluent-field>`
  */
-export const definition = Field.compose({
+export const definition = await Field.compose({
   name: tagName,
   template,
   styles,

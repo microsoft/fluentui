@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update FAST Element peer dependency to v3.",
+  "packageName": "@fluentui/web-components",
+  "email": "chujane@microsoft.com",
+  "dependentChangeType": "patch"
+}

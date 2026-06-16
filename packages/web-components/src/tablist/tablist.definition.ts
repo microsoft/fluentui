@@ -8,7 +8,7 @@ import { styles } from './tablist.styles.js';
  * @remarks
  * HTML Element: \<fluent-tablist\>
  */
-export const definition = Tablist.compose({
+export const definition = await Tablist.compose({
   name: tagName,
   template,
   styles,

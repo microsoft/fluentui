@@ -10,7 +10,7 @@ import { styles } from './divider.styles.js';
  * @remarks
  * HTML Element: \<fluent-divider\>
  */
-export const definition = Divider.compose({
+export const definition = await Divider.compose({
   name: tagName,
   template,
   styles,

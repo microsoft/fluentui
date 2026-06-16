@@ -10,7 +10,7 @@ import { template } from './listbox.template.js';
  * @remarks
  * HTML Element: `<fluent-listbox>`
  */
-export const definition = Listbox.compose({
+export const definition = await Listbox.compose({
   name: tagName,
   template,
   styles,

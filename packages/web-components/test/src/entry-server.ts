@@ -16,10 +16,27 @@
  * after hydration.
  */
 
-import { createSSRRenderer } from '@microsoft/fast-test-harness/ssr/render.js';
+import { createSSRRenderer, type RenderResult } from '@microsoft/fast-test-harness/ssr/render.js';
 
-export const { render } = createSSRRenderer({
+const renderer = createSSRRenderer({
   packageName: '@fluentui/web-components',
   tagPrefix: 'fluent',
   themeStylesheet: '/fluent-tokens.css',
 });
+
+// fast-build emits legacy hydration markers; FAST v3's client hydrator expects data-free sequential markers.
+function normalizeHydrationMarkers(html: string): string {
+  return html
+    .replace(/\sdata-fe-c-\d+-(\d+)(?=[\s=>/])(?:=(?:"[^"]*"|'[^']*'|[^\s>]*))?/g, ' data-fe="$1"')
+    .replace(/<!--fe-b\$\$start\$\$.*?\$\$fe-b-->/g, '<!--fe:b-->')
+    .replace(/<!--fe-b\$\$end\$\$.*?\$\$fe-b-->/g, '<!--fe:/b-->');
+}
+
+export function render(queryObj: Record<string, string>): RenderResult {
+  const result = renderer.render(queryObj);
+
+  return {
+    ...result,
+    fixture: normalizeHydrationMarkers(result.fixture),
+  };
+}

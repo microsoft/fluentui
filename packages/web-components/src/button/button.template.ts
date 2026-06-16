@@ -1,6 +1,7 @@
 import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/start-end.js';
 import type { BaseButton } from './button.base.js';
+import type { Button } from './button.js';
 import type { ButtonOptions } from './button.options.js';
 
 /**
@@ -28,4 +29,4 @@ export function buttonTemplate<T extends BaseButton>(options: ButtonOptions = {}
  *
  * @public
  */
-export const template: ElementViewTemplate<BaseButton> = buttonTemplate();
+export const template: ElementViewTemplate<Button> = buttonTemplate<Button>();

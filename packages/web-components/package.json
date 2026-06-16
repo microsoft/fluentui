@@ -113,14 +113,8 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0",
-    "@microsoft/fast-html": "^1.0.0-alpha.53",
+    "@microsoft/fast-element": "^3.0.0-rc.1",
     "@microsoft/focusgroup-polyfill": "^1.4.1"
-  },
-  "peerDependenciesMeta": {
-    "@microsoft/fast-html": {
-      "optional": true
-    }
   },
   "beachball": {
     "disallowedChangeTypes": [

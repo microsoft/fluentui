@@ -10,7 +10,7 @@ import { template } from './checkbox.template.js';
  * @remarks
  * HTML Element: \<fluent-checkbox\>
  */
-export const definition = Checkbox.compose({
+export const definition = await Checkbox.compose({
   name: tagName,
   template,
   styles,

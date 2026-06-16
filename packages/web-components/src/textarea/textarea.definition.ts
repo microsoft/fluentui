@@ -10,7 +10,7 @@ import { template } from './textarea.template.js';
  * @remarks
  * HTML Element: `<fluent-textarea>`
  */
-export const definition = TextArea.compose({
+export const definition = await TextArea.compose({
   name: tagName,
   template,
   styles,

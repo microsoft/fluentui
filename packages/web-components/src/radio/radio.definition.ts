@@ -11,7 +11,7 @@ import { template } from './radio.template.js';
  * @remarks
  * HTML Element: \<fluent-radio\>
  */
-export const definition = Radio.compose({
+export const definition = await Radio.compose({
   name: tagName,
   template,
   styles,

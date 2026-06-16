@@ -1,4 +1,5 @@
 import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { declarativeTemplate } from '@microsoft/fast-element/declarative.js';
 import { tagName } from './field.options.js';
 
 /**
@@ -7,11 +8,11 @@ import { tagName } from './field.options.js';
  * @public
  * @remarks
  * This is used in server-side rendering (SSR) scenarios where the template
- * is provided as a deferred option to be hydrated later.
+ * is resolved from its SSR `<f-template>` by the declarative renderer.
  */
 export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  templateOptions: 'defer-and-hydrate',
+  template: declarativeTemplate(),
   shadowOptions: {
     delegatesFocus: true,
   },

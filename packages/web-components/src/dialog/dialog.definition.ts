@@ -10,7 +10,7 @@ import { styles } from './dialog.styles.js';
  * @remarks
  * HTML Element: \<fluent-dialog\>
  */
-export const definition = Dialog.compose({
+export const definition = await Dialog.compose({
   name: tagName,
   template,
   styles,

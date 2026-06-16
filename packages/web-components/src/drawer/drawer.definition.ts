@@ -10,7 +10,7 @@ import { template } from './drawer.template.js';
  * HTML Element: <fluent-drawer>
  */
 
-export const definition = Drawer.compose({
+export const definition = await Drawer.compose({
   name: tagName,
   template,
   styles,

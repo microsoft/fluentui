@@ -9,7 +9,7 @@ import { template } from './accordion-item.template.js';
  * @remarks
  * HTML Element: \<fluent-accordion-item\>
  */
-export const definition = AccordionItem.compose({
+export const definition = await AccordionItem.compose({
   name: tagName,
   template,
   styles,

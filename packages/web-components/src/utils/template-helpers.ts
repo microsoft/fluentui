@@ -27,7 +27,7 @@ export type StaticallyComposableHTML<TSource = any, TParent = any> =
  */
 export function staticallyCompose<TSource = any, TParent = any>(
   item: StaticallyComposableHTML<TSource, TParent>,
-): CaptureType<TSource, TParent> {
+): CaptureType {
   if (!item) {
     return InlineTemplateDirective.empty;
   }

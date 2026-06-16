@@ -11,7 +11,7 @@ import { template } from './text.template.js';
  * @remarks
  * HTML Element: \<fluent-text\>
  */
-export const definition = Text.compose({
+export const definition = await Text.compose({
   name: tagName,
   template,
   styles,

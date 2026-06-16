@@ -10,7 +10,7 @@ import { styles } from './switch.styles.js';
  * @remarks
  * HTML Element: \<fluent-switch\>
  */
-export const definition = Switch.compose({
+export const definition = await Switch.compose({
   name: tagName,
   template,
   styles,
