@@ -1,6 +1,6 @@
-import defaultConfig from '@microsoft/fast-test-harness/vite.config.mjs';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
+import defaultConfig from '@microsoft/fast-test-harness/vite.config.mjs';
 import { mergeConfig } from 'vite';
 
 const require = createRequire(import.meta.url);
