@@ -1,0 +1,6 @@
+<f-template name="fluent-link" shadowrootmode="open">
+  <template tabindex="0" @click="{clickHandler($e)}" @keydown="{keydownHandler($e)}">
+    {{styles}}
+    <slot></slot>
+  </template>
+</f-template>

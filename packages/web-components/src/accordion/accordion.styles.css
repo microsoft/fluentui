@@ -1,0 +1,12 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: flex;
+}
+
+:host {
+  flex-direction: column;
+  width: 100%;
+  contain: content;
+}

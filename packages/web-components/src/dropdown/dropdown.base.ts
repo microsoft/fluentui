@@ -9,6 +9,7 @@ import { getLanguage } from '../utils/language.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
 
@@ -24,6 +25,8 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @slot - The default slot. Accepts a {@link (Listbox:class)} element.
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
+ *
+ * @fires { Event } change - Fires a custom 'change' event when the selected option changes
  *
  * @public
  */
@@ -856,7 +859,7 @@ export class BaseDropdown extends FASTElement {
   private searchTimeout?: ReturnType<typeof setTimeout>;
 
   /**
-   * Handles printable character input by moving {@link activeIndex} to the next option whose label matches the
+   * Handles printable character input by moving {@link Dropdown#activeIndex} to the next option whose label matches the
    * accumulated search string. When the string is a single character (or the same character repeated), matching
    * options are cycled through; otherwise the string is treated as a prefix match.
    *
@@ -1105,6 +1108,8 @@ export class BaseDropdown extends FASTElement {
     Updates.enqueue(() => {
       this.insertControl();
     });
+
+    maybeSetAutoFocus(this);
   }
 
   disconnectedCallback(): void {

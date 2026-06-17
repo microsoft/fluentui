@@ -15,11 +15,12 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @attr ariaLabelledby - The ID of the element that labels the drawer.
  *
  * @csspart dialog - The dialog element of the drawer.
+ * @cssprop --drawer-width - Sets the width of the drawer to a custom value (e.g., 300px).
  *
  * @slot - Default slot for the content of the drawer.
  *
- * @fires toggle - Event emitted after the dialog's open state changes.
- * @fires beforetoggle - Event emitted before the dialog's open state changes.
+ * @fires { ToggleEvent } toggle - Event emitted after the dialog's open state changes.
+ * @fires { ToggleEvent } beforetoggle - Event emitted before the dialog's open state changes.
  *
  * @method show - Method to show the drawer.
  * @method hide - Method to hide the drawer.
@@ -29,8 +30,6 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
  *
  * @summary A component that provides a drawer for displaying content in a side panel.
- *
- * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
   /**

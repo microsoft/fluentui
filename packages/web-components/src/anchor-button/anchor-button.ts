@@ -8,8 +8,6 @@ import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './a
 /**
  * Anchor configuration options
  *
- * @tag fluent-anchor-button
- *
  * @public
  */
 export type AnchorOptions = StartEndOptions<AnchorButton>;
@@ -17,6 +15,8 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
 /**
  * An Anchor Custom HTML Element.
  * Based on BaseAnchor and includes style and layout specific attributes
+ *
+ * @tag fluent-anchor-button
  *
  * @public
  */

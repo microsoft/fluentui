@@ -8,6 +8,7 @@ exports[`Dropdown renders a default state 1`] = `
     <button
       aria-expanded="false"
       class="fui-Dropdown__button"
+      data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":false}}}"
       role="combobox"
       tabindex="0"
       type="button"
@@ -65,6 +66,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       aria-controls="fluent-listbox_r_d_"
       aria-expanded="true"
       class="fui-Dropdown__button"
+      data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"Escape\\":true}}}"
       role="combobox"
       tabindex="0"
       type="button"

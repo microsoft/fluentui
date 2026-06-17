@@ -2,6 +2,7 @@ export { Dropdown } from './Dropdown';
 export type { DropdownProps, DropdownState } from './Dropdown.types';
 export { renderDropdown } from './renderDropdown';
 export { useDropdown } from './useDropdown';
+export { useDropdownContextValues } from './useDropdownContextValues';
 
 export { Listbox, renderListbox, useListbox, useListboxContextValues } from './Listbox';
 export type { ListboxSlots, ListboxProps, ListboxState, ListboxContextValues } from './Listbox';

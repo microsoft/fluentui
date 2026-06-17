@@ -2,6 +2,7 @@ import { attr, FASTElement, nullableNumberConverter, observable, Updates } from 
 import { whitespaceFilter } from '../utils/whitespace-filter.js';
 import type { Label } from '../label/label.js';
 import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
 
 /**
@@ -13,8 +14,8 @@ import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
  * @csspart label - The `<label>` element.
  * @csspart root - The container element of the `<textarea>` element.
  * @csspart control - The internal `<textarea>` element.
- * @fires change - Fires after the control loses focus, if the content has changed.
- * @fires select - Fires when the `select()` method is called.
+ * @fires { Event } change - Fires after the control loses focus, if the content has changed.
+ * @fires { Event } select - Fires when the `select()` method is called.
  *
  * @public
  */
@@ -443,6 +444,7 @@ export class BaseTextArea extends FASTElement {
       this.preConnectControlEl = null;
 
       this.maybeCreateAutoSizerEl();
+      maybeSetAutoFocus(this);
     });
   }
 

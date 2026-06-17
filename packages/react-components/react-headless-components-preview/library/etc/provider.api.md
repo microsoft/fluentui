@@ -30,6 +30,9 @@ export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement
 
 export { useProviderContext }
 
+// @public (undocumented)
+export const useProviderContextValues: (state: ProviderState) => ProviderContextValues;
+
 // (No @packageDocumentation comment for this package)
 
 ```

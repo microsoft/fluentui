@@ -1,0 +1,172 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: inline-flex;
+}
+
+:host {
+  --size: 16px;
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusSmall);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  width: var(--size);
+}
+
+:host,
+.indeterminate-indicator,
+.checked-indicator {
+  aspect-ratio: 1;
+}
+
+:host(:hover) {
+  border-color: var(--colorNeutralStrokeAccessibleHover);
+}
+
+:host(:active) {
+  border-color: var(--colorNeutralStrokeAccessiblePressed);
+}
+
+:host(:state(checked):hover) {
+  background-color: var(--colorCompoundBrandBackgroundHover);
+  border-color: var(--colorCompoundBrandStrokeHover);
+}
+
+:host(:state(checked):active) {
+  background-color: var(--colorCompoundBrandBackgroundPressed);
+  border-color: var(--colorCompoundBrandStrokePressed);
+}
+
+:host(:focus-visible) {
+  outline: none;
+}
+
+:host(:not([slot='input']))::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  box-sizing: border-box;
+  outline: none;
+  border: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+}
+
+:host(:not([slot='input']):focus-visible)::after {
+  border-color: var(--colorStrokeFocus2);
+}
+
+.indeterminate-indicator,
+.checked-indicator {
+  color: var(--colorNeutralForegroundInverted);
+  inset: 0;
+  margin: auto;
+  position: absolute;
+}
+
+::slotted([slot='checked-indicator']),
+.checked-indicator {
+  fill: currentColor;
+  display: inline-flex;
+  flex: 1 0 auto;
+  width: 12px;
+}
+
+:host(:not(:state(checked))) *:is(::slotted([slot='checked-indicator']), .checked-indicator) {
+  display: none;
+}
+
+:host(:state(checked)),
+:host(:state(indeterminate)) {
+  border-color: var(--colorCompoundBrandStroke);
+}
+
+:host(:state(checked)),
+:host(:state(indeterminate)) .indeterminate-indicator {
+  background-color: var(--colorCompoundBrandBackground);
+}
+
+:host(:state(indeterminate)) .indeterminate-indicator {
+  border-radius: var(--borderRadiusSmall);
+  position: absolute;
+  width: calc(var(--size) / 2);
+  inset: 0;
+}
+
+:host([size='large']) {
+  --size: 20px;
+}
+
+:host([size='large']) ::slotted([slot='checked-indicator']),
+:host([size='large']) .checked-indicator {
+  width: 16px;
+}
+
+:host([shape='circular']),
+:host([shape='circular']) .indeterminate-indicator {
+  border-radius: var(--borderRadiusCircular);
+}
+
+:host([disabled]),
+:host([disabled]:state(checked)) {
+  background-color: var(--colorNeutralBackgroundDisabled);
+  border-color: var(--colorNeutralStrokeDisabled);
+}
+
+:host([disabled]) {
+  cursor: unset;
+}
+
+:host([disabled]:state(indeterminate)) .indeterminate-indicator {
+  background-color: var(--colorNeutralStrokeDisabled);
+}
+
+:host([disabled]:state(checked)) .checked-indicator {
+  color: var(--colorNeutralStrokeDisabled);
+}
+
+@media (forced-colors: active) {
+  :host {
+    border-color: FieldText;
+  }
+
+  :host(:not([slot='input']:focus-visible))::after {
+    border-color: Canvas;
+  }
+
+  :host(:not([disabled]):hover),
+  :host(:state(checked):not([disabled]):hover),
+  :host(:not([slot='input']):focus-visible)::after {
+    border-color: Highlight;
+  }
+
+  .indeterminate-indicator,
+  .checked-indicator {
+    color: HighlightText;
+  }
+
+  :host(:state(checked)),
+  :host(:state(indeterminate)) .indeterminate-indicator {
+    background-color: FieldText;
+  }
+
+  :host(:state(checked):not([disabled]):hover),
+  :host(:state(indeterminate):not([disabled]):hover) .indeterminate-indicator {
+    background-color: Highlight;
+  }
+
+  :host([disabled]) {
+    border-color: GrayText;
+  }
+
+  :host([disabled]:state(indeterminate)) .indeterminate-indicator {
+    background-color: GrayText;
+  }
+
+  :host([disabled]),
+  :host([disabled]:state(checked)) .checked-indicator {
+    color: GrayText;
+  }
+}

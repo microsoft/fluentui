@@ -1,3 +1,4 @@
+import { type InitialTemplateAttributes } from '@microsoft/fast-test-harness';
 import { expect, test } from '../../test/playwright/index.js';
 
 import type { Checkbox } from './checkbox.js';
@@ -418,5 +419,21 @@ test.describe('Checkbox', () => {
     await page.keyboard.up(' ');
 
     await expect(element).toHaveJSProperty('checked', false);
+  });
+
+  test('should focus the element when the `autofocus` attribute is present', async ({ fastPage, ssr }) => {
+    const { element } = fastPage;
+
+    const attributes: InitialTemplateAttributes = { autofocus: true };
+
+    if (ssr) {
+      // the host element needs to be focusable for autofocus to work on the server,
+      // so we need to set tabindex="0"
+      attributes.tabindex = '0';
+    }
+
+    await fastPage.setTemplate({ attributes });
+
+    await expect(element).toBeFocused();
   });
 });

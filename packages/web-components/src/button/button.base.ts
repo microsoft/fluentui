@@ -1,4 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { type ButtonFormTarget, ButtonType } from './button.options.js';
 
 /**
@@ -13,17 +14,6 @@ import { type ButtonFormTarget, ButtonType } from './button.options.js';
  * @public
  */
 export class BaseButton extends FASTElement {
-  /**
-   * Indicates the button should be focused when the page is loaded.
-   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
-
   /**
    * Default slotted content.
    *
@@ -259,6 +249,7 @@ export class BaseButton extends FASTElement {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
     this.setTabIndex();
+    maybeSetAutoFocus(this);
   }
 
   constructor() {

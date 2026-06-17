@@ -2,6 +2,55 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Tue, 16 Jun 2026 18:28:45 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "2b409aa193f7f6ec4f034bc7f30ad147bfa14ae2",
+            "comment": "style: migrate to latest react hooks and react compiler lint rules"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "8eb125ae87e95023e826a3eb8f01b89289c08992",
+            "comment": "chore: fix after broken release"
+          },
+          {
+            "author": "copilot@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "c78d22353ba03b9eb744f577332aa400daf10934",
+            "comment": "chore: enforce consistent type imports"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "094b22fc80668355bdbc663ccd8676929bb02046",
+            "comment": "feat: Allow consumers to replace primary-story / args-table / stories sections of FluentDocsPage"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "f1902b44b70e3e59643d0e152253a82ffd0dd2b0",
+            "comment": "feat: add shared SB preview styles"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "1031517ee91349057a25fecb81eaab5794651d87",
+            "comment": "fix: resolve container preventing Canvas Toolbar interactions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2026 13:16:24 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.6.0",
       "version": "0.6.0",

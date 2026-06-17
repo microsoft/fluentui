@@ -5,6 +5,7 @@ import { limit } from '../utils/numbers.js';
 import { Orientation } from '../utils/orientation.js';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
+import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 
@@ -16,7 +17,7 @@ import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } f
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
- * @fires change - Fires a custom 'change' event when the value changes.
+ * @fires { Event } change - Fires a custom 'change' event when the value changes.
  *
  * @public
  */
@@ -552,6 +553,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
       notifier.subscribe(this, 'min');
       notifier.subscribe(this, 'step');
     });
+
+    maybeSetAutoFocus(this);
   }
 
   /**

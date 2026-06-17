@@ -8,8 +8,6 @@ import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item
 /**
  * Accordion Item configuration options
  *
- * @tag fluent-accordion-item
- *
  * @public
  */
 export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
@@ -20,6 +18,8 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
 /**
  * An Accordion Item Custom HTML Element.
  * Based on BaseAccordionItem and includes style and layout specific attributes
+ *
+ * @tag fluent-accordion-item
  *
  * @public
  */

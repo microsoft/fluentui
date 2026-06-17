@@ -1,0 +1,8 @@
+<f-template name="fluent-tab" shadowrootmode="open">
+  <template slot="tab" role="tab">
+    {{styles}}
+    <slot name="start" f-ref="{start}"></slot>
+    <span class="tab-content"><slot></slot></span>
+    <slot name="end" f-ref="{end}"></slot>
+  </template>
+</f-template>

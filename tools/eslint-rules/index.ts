@@ -5,6 +5,10 @@ import {
   rule as consistentCallbackType,
 } from './rules/consistent-callback-type';
 import { RULE_NAME as baseHookSignatureName, rule as baseHookSignature } from './rules/base-hook-signature';
+import {
+  RULE_NAME as baseHookNoForbiddenRuntimeName,
+  rule as baseHookNoForbiddenRuntime,
+} from './rules/base-hook-no-forbidden-runtime';
 
 /**
  * Import your custom workspace rules at the top of this file.
@@ -34,6 +38,7 @@ module.exports = {
   rules: {
     [consistentCallbackTypeName]: consistentCallbackType,
     [baseHookSignatureName]: baseHookSignature,
+    [baseHookNoForbiddenRuntimeName]: baseHookNoForbiddenRuntime,
     [noRestrictedGlobalsName]: noRestrictedGlobals,
     [noMissingJsxPragmaName]: noMissingJsxPragma,
   },

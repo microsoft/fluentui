@@ -1,0 +1,207 @@
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: flex;
+}
+
+:host {
+  --tabPaddingInline: var(--spacingHorizontalMNudge);
+  --tabPaddingBlock: var(--spacingHorizontalM);
+  --tabIndicatorInsetInline: var(--tabPaddingInline);
+  --tabIndicatorInsetBlock: 0;
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground2);
+  flex-direction: row;
+  position: relative;
+}
+
+:host([size='small']) {
+  --tabPaddingBlock: var(--spacingVerticalSNudge);
+  --tabPaddingInline: var(--spacingHorizontalSNudge);
+}
+
+:host([size='large']) {
+  --tabPaddingBlock: var(--spacingVerticalL);
+  --tabPaddingInline: var(--spacingHorizontalMNudge);
+}
+
+:host([orientation='vertical']) {
+  --tabPaddingBlock: var(--spacingVerticalS);
+  --tabIndicatorInsetBlock: var(--spacingVerticalS);
+  flex-direction: column;
+}
+
+:host([orientation='vertical'][size='small']) {
+  --tabPaddingBlock: var(--spacingVerticalXXS);
+  --tabIndicatorInsetBlock: var(--spacingVerticalSNudge);
+}
+
+:host([orientation='vertical'][size='large']) {
+  --tabPaddingBlock: var(--spacingVerticalS);
+  --tabIndicatorInsetBlock: var(--spacingVerticalMNudge);
+}
+
+::slotted([slot='tab']) {
+  padding-inline: var(--tabPaddingInline);
+  padding-block: var(--tabPaddingBlock);
+}
+
+:host([orientation='vertical']) ::slotted([role='tab']) {
+  justify-content: flex-start;
+}
+
+:host ::slotted([slot='tab'])::after {
+  height: var(--strokeWidthThicker);
+  margin-block-start: auto;
+}
+
+:host([orientation='vertical']) ::slotted([slot='tab'])::after {
+  width: var(--strokeWidthThicker);
+  height: unset;
+  margin-block-start: unset;
+}
+
+/* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
+:host ::slotted([slot='tab'])::before {
+  height: var(--strokeWidthThicker);
+  border-radius: var(--borderRadiusCircular);
+  content: '';
+  inset-inline: var(--tabIndicatorInsetInline);
+  inset-block: var(--tabIndicatorInsetBlock);
+  position: absolute;
+  margin-top: auto;
+}
+
+:host ::slotted([slot='tab'])::before {
+  inset-inline: var(--tabIndicatorInsetInline);
+  inset-block: var(--tabIndicatorInsetBlock);
+}
+
+:host ::slotted([slot='tab'][aria-selected='true'])::before {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+
+:host ::slotted([slot='tab'][aria-selected='false']:hover)::after {
+  height: var(--strokeWidthThicker);
+  margin-block-start: auto;
+  transform-origin: left;
+}
+
+:host([orientation='vertical']) ::slotted([slot='tab'])::before,
+:host([orientation='vertical']) ::slotted([slot='tab'][aria-selected='false']:hover)::after {
+  height: unset;
+  width: var(--strokeWidthThicker);
+  margin-inline-end: auto;
+  transform-origin: top;
+}
+
+:host([size='small']) ::slotted([slot='tab']) {
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}
+
+:host([size='large']) ::slotted([slot='tab']) {
+  font-size: var(--fontSizeBase400);
+  line-height: var(--lineHeightBase400);
+}
+
+/* horizontal spacing for indicator */
+:host ::slotted([slot='tab'])::after,
+:host ::slotted([slot='tab'])::before,
+:host ::slotted([slot='tab']:hover)::after {
+  inset-inline: var(--tabIndicatorInsetInline);
+}
+
+:host([orientation='vertical']) ::slotted([slot='tab'])::after,
+:host([orientation='vertical']) ::slotted([slot='tab'])::before,
+:host([orientation='vertical']) ::slotted([slot='tab']:hover)::after {
+  inset-inline: 0;
+  inset-block: var(--tabIndicatorInsetBlock);
+}
+
+/* disabled styles */
+:host([disabled]) {
+  cursor: not-allowed;
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+:host([disabled]) ::slotted([slot='tab']) {
+  pointer-events: none;
+  cursor: not-allowed;
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+:host([disabled]) ::slotted([slot='tab']:after) {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+
+:host([disabled]) ::slotted([slot='tab'][aria-selected='true'])::after {
+  background-color: var(--colorNeutralForegroundDisabled);
+}
+
+:host([disabled]) ::slotted([slot='tab']:hover):before {
+  content: unset;
+}
+
+:host([appearance='subtle']) ::slotted([slot='tab']:hover) {
+  background-color: var(--colorSubtleBackgroundHover);
+  color: var(--colorNeutralForeground1Hover);
+  fill: var(--colorCompoundBrandForeground1Hover);
+}
+
+:host([appearance='subtle']) ::slotted([slot='tab']:active) {
+  background-color: var(--colorSubtleBackgroundPressed);
+  fill: var(--colorSubtleBackgroundPressed);
+  color: var(--colorNeutralForeground1);
+}
+
+/*
+   * TODO: Remove '(text-size-adjust: auto)' after this bug is fixed:
+   * https://bugs.webkit.org/show_bug.cgi?id=298646
+   * Also remove the same trick from tab.styles.ts.
+   * Using '@supports (text-size-adjust: auto)' here to exclude Safari 26 from
+   * using CSS Anchor Positioning here because it crashes.
+   */
+@supports (anchor-name: --a) and (text-size-adjust: auto) {
+  ::slotted([slot='tab'][aria-selected='true']) {
+    anchor-name: --tab;
+  }
+
+  :host::after {
+    background-color: var(--colorCompoundBrandStroke);
+    content: '';
+    inline-size: 100%;
+    inset: auto auto anchor(end) anchor(center);
+    position: fixed;
+    position-anchor: --tab;
+    transform: translateX(-50%);
+    transition-property: inset-inline, width;
+    transition-duration: var(--durationSlow);
+    transition-timing-function: var(--curveDecelerateMax);
+    z-index: 3;
+
+    /* These styles should be in sync with tab.styles.ts’s :host::after */
+    border-radius: var(--borderRadiusCircular);
+    width: calc(anchor-size() - var(--tabIndicatorInsetInline) * 2);
+    height: var(--strokeWidthThicker);
+  }
+
+  :host([orientation='vertical'])::after {
+    inset: anchor(center) anchor(end) auto 0;
+    transform: translateY(-50%);
+    transition-property: inset-block, height;
+
+    /* These styles should be in sync with #vertical-tab-highlight above */
+    width: var(--strokeWidthThicker);
+    height: calc(anchor-size() - var(--tabIndicatorInsetBlock) * 2);
+  }
+
+  :host(:dir(rtl)[orientation='vertical'])::after {
+    inset: anchor(center) anchor(start) auto 0;
+  }
+
+  :host([disabled])::after {
+    background-color: var(--colorNeutralForegroundDisabled);
+  }
+}

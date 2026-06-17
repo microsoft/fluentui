@@ -2,10 +2,12 @@ import { html, ref, repeat } from '@microsoft/fast-element';
 
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { DropdownOption as FluentOption } from '../option/option.js';
+import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
 
 type Story = StoryObj<FluentDropdown>;
+const { argTypes } = getStorybookHelpers<FluentDropdown>('fluent-dropdown');
 
 const optionTemplate = html<StoryArgs<FluentOption>>` <fluent-option
   ?disabled="${story => story.disabled}"
@@ -58,42 +60,7 @@ export default {
   title: 'Components/Dropdown',
   render: renderComponent(storyTemplate),
   argTypes: {
-    appearance: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownAppearance)],
-      table: { category: 'attributes' },
-    },
-    type: {
-      control: 'radio',
-      options: Object.values(DropdownType),
-      table: { category: 'attributes' },
-    },
-    placeholder: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    disabled: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    multiple: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    name: {
-      control: 'text',
-      table: { category: 'attributes' },
-    },
-    required: {
-      control: 'boolean',
-      table: { category: 'attributes' },
-    },
-    size: {
-      control: 'select',
-      options: ['', ...Object.values(DropdownSize)],
-      table: { category: 'attributes' },
-    },
-    slottedContent: { table: { disable: true } },
+    ...argTypes,
     slot: { table: { disable: true } },
   },
 } as Meta<FluentDropdown>;

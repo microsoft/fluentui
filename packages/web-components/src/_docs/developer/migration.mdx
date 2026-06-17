@@ -22,9 +22,9 @@ Here's a snapshot of what's new and improved in v3.
 
 A high-level look at the differences between components in v2 and v3
 
-- 🆕 15 new components
+- 🆕 14 new components
 - ⚠️ 5 renamed components
-- ⛔️ 4 deprecated components
+- ⛔️ 4 removed components
 - 🛣️ 13 components on our current roadmap
 
 ### Renamed Components
@@ -35,7 +35,7 @@ A high-level look at the differences between components in v2 and v3
 - `text-area` = `textarea`
 - `text-field` = `text-input`
 
-### Deprecated Components
+### Removed Components
 
 - `anchored-region`
 - `slider-label` = `use field, label`
@@ -52,71 +52,420 @@ A high-level look at the differences between components in v2 and v3
 
 API changes, renames, and deprecations are itemized in the table below.
 
-| Component         | V2  | V3  | Notes                                                                          |
-| ----------------- | --- | --- | ------------------------------------------------------------------------------ |
-| accordion         | ✅  | ✅  |                                                                                |
-| accordion-item    | ✅  | ✅  | ⚠️ API Change → Attributes changed to better match web platform                |
-| anchor            | ✅  | ⚠️  | ⛔️ Renamed → See \`link\`, \`anchor-button\`                                  |
-| anchor-button     |     | 🆕  |                                                                                |
-| anchored-region   | ✅  | ⚠️  | ⛔️ Deprecated                                                                 |
-| avatar            |     | 🆕  |                                                                                |
-| badge             | ✅  | ✅  |                                                                                |
-| breadcrumb        | ✅  |     |                                                                                |
-| breadcrumb-item   | ✅  |     |                                                                                |
-| button            | ✅  | ✅  |                                                                                |
-| calendar          | ✅  |     |                                                                                |
-| card              | ✅  |     | 🚧 In Progress                                                                 |
-| checkbox          | ✅  | ✅  |                                                                                |
-| color             | ✅  |     |                                                                                |
-| combobox          | ✅  | ✅  |                                                                                |
-| compound-button   |     | 🆕  |                                                                                |
-| data-grid         | ✅  |     | 🚧 In Progress                                                                 |
-| dialog            | ✅  | ✅  | ⚠️ API Change → Split into two components to allow for more expressive modals. |
-| dialog-body       |     | 🆕  |                                                                                |
-| divider           | ✅  | ✅  |                                                                                |
-| drawer            |     | 🆕  |                                                                                |
-| drawer-body       |     | 🆕  |                                                                                |
-| dropdown          |     | ✅  |                                                                                |
-| field             |     | 🆕  |                                                                                |
-| flipper           | ✅  |     |                                                                                |
-| horizontal-scroll | ✅  |     |                                                                                |
-| image             |     | 🆕  |                                                                                |
-| listbox           | ✅  | ✅  |                                                                                |
-| listbox-option    | ✅  | ✅  |                                                                                |
-| label             |     | 🆕  |                                                                                |
-| link              |     | ✅  | (Renamed)                                                                      |
-| menu              | ✅  | ✅  |                                                                                |
-| menu-button       |     | 🆕  |                                                                                |
-| menu-item         | ✅  | ✅  |                                                                                |
-| menu-list         |     | 🆕  |                                                                                |
-| message-bar       |     | 🆕  |                                                                                |
-| number-field      | ✅  |     |                                                                                |
-| popover           |     | ✅  |                                                                                |
-| progress          | ✅  | 🔀  | ⛔️ Renamed → See \`progress-bar\`                                             |
-| progress-bar      |     | ✅  | (Renamed)                                                                      |
-| progress-ring     | ✅  |     |                                                                                |
-| radio             | ✅  | ✅  |                                                                                |
-| radio-group       | ✅  | ✅  |                                                                                |
-| search            | ✅  |     |                                                                                |
-| select            | ✅  | ✅  | 🚧 In Progress                                                                 |
-| skeleton          | ✅  |     |                                                                                |
-| slider            | ✅  | ✅  |                                                                                |
-| slider-label      | ✅  | ⚠️  | ⛔️ Deprecated → See \`label\`, \`field\`                                      |
-| spinner           |     | 🆕  |                                                                                |
-| switch            | ✅  | ✅  |                                                                                |
-| tab               | ✅  | ✅  |                                                                                |
-| tabs              | ✅  | ⚠️  | ⛔️ Deprecated → See \`tablist\`                                               |
-| tab-panel         | ✅  | ⚠️  | ⛔️ Deprecated                                                                 |
-| tablist           |     | 🆕  |                                                                                |
-| text              |     | 🆕  |                                                                                |
-| text-area         | ✅  | 🔀  | ⛔️ Renamed → See textarea                                                     |
-| textarea          |     | ✅  | (Renamed)                                                                      |
-| text-field        | ✅  | 🔀  | ⛔️ Renamed→ See text-input                                                    |
-| text-input        |     | ✅  | (Renamed)                                                                      |
-| toolbar           | ✅  |     |                                                                                |
-| tooltip           | ✅  | ✅  | ⚠️ API is different from React implementation                                  |
-| tree-item         | ✅  | ✅  | 🚧 In Progress                                                                 |
-| tree-view         | ✅  | ✅  | 🚧 In Progress                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accordion</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>accordion-item</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>⚠️ API Change → Attributes changed to better match web platform</td>
+    </tr>
+    <tr>
+      <td>anchor</td>
+      <td>✅</td>
+      <td>⛔️</td>
+      <td>
+        Removed → Use <code>link</code> or <code>anchor-button</code>
+      </td>
+    </tr>
+    <tr>
+      <td>anchor-button</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>anchored-region</td>
+      <td>✅</td>
+      <td>⛔️</td>
+      <td>Removed</td>
+    </tr>
+    <tr>
+      <td>avatar</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>badge</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>breadcrumb</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>breadcrumb-item</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>button</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>calendar</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>card</td>
+      <td>✅</td>
+      <td></td>
+      <td>🚧 In Progress</td>
+    </tr>
+    <tr>
+      <td>checkbox</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>combobox</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>compound-button</td>
+      <td></td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>data-grid</td>
+      <td>✅</td>
+      <td></td>
+      <td>🚧 In Progress</td>
+    </tr>
+    <tr>
+      <td>dialog</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>
+        ⚠️ API Change → Use with <code>dialog-body</code>.
+      </td>
+    </tr>
+    <tr>
+      <td>dialog-body</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>divider</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>drawer</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>drawer-body</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>dropdown</td>
+      <td></td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>field</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>flipper</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>horizontal-scroll</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>image</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>listbox</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>listbox-option</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>label</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>link</td>
+      <td></td>
+      <td>✅</td>
+      <td>(Renamed)</td>
+    </tr>
+    <tr>
+      <td>menu</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>menu-button</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>menu-item</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>menu-list</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>message-bar</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>number-field</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>popover</td>
+      <td></td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>progress</td>
+      <td>✅</td>
+      <td>🔀</td>
+      <td>
+        Renamed → See <code>progress-bar</code>
+      </td>
+    </tr>
+    <tr>
+      <td>progress-bar</td>
+      <td></td>
+      <td>🔀</td>
+      <td>
+        Previously named <code>progress</code>
+      </td>
+    </tr>
+    <tr>
+      <td>progress-ring</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>radio</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>radio-group</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>search</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>select</td>
+      <td>✅</td>
+      <td>🔀</td>
+      <td>
+        Renamed → Use <code>dropdown</code> with <code>type="select"</code>
+      </td>
+    </tr>
+    <tr>
+      <td>skeleton</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>slider</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>slider-label</td>
+      <td>✅</td>
+      <td>⛔️</td>
+      <td>
+        Removed → Use <code>label</code> with <code>field</code>
+      </td>
+    </tr>
+    <tr>
+      <td>spinner</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>switch</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>tab</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>tabs</td>
+      <td>✅</td>
+      <td>⛔️</td>
+      <td>
+        Removed → Use <code>tablist</code>
+      </td>
+    </tr>
+    <tr>
+      <td>tab-panel</td>
+      <td>✅</td>
+      <td>⛔️</td>
+      <td>
+        Removed → Use <code>role="tabpanel"</code> with <code>tablist</code>
+      </td>
+    </tr>
+    <tr>
+      <td>tablist</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td></td>
+      <td>🆕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>text-area</td>
+      <td>✅</td>
+      <td>🔀</td>
+      <td>
+        Renamed → See <code>textarea</code>
+      </td>
+    </tr>
+    <tr>
+      <td>textarea</td>
+      <td></td>
+      <td>🔀</td>
+      <td>
+        Previously named <code>text-area</code>
+      </td>
+    </tr>
+    <tr>
+      <td>text-field</td>
+      <td>✅</td>
+      <td>🔀</td>
+      <td>
+        Renamed→ See <code>text-input</code>
+      </td>
+    </tr>
+    <tr>
+      <td>text-input</td>
+      <td></td>
+      <td>🔀</td>
+      <td>
+        Previously named <code>text-field</code>
+      </td>
+    </tr>
+    <tr>
+      <td>toolbar</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>tooltip</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>⚠️ API differs from React implementation</td>
+    </tr>
+    <tr>
+      <td>tree-item</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>tree-view</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Notable API Changes
 

@@ -493,7 +493,6 @@ export class BaseAvatar extends FASTElement {
 // @public
 export class BaseButton extends FASTElement {
     constructor();
-    autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
     // (undocumented)
@@ -532,7 +531,6 @@ export class BaseButton extends FASTElement {
 
 // @public
 export class BaseCheckbox extends FASTElement {
-    autofocus: boolean;
     get checked(): boolean;
     set checked(next: boolean);
     checkValidity(): boolean;
@@ -773,18 +771,15 @@ export class BaseProgressBar extends FASTElement {
     indicator?: HTMLElement;
     // @internal
     protected indicatorChanged(): void;
-    // @internal
     max?: number;
     // @internal
     protected maxChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
     min?: number;
     protected minChanged(prev: number | undefined, next: number | undefined): void;
     // @internal
     protected setIndicatorWidth(): void;
     validationState: ProgressBarValidationState | null;
     validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
-    // @internal
     value?: number;
     // @internal
     protected valueChanged(prev: number | undefined, next: number | undefined): void;
@@ -1011,7 +1006,6 @@ export class BaseTextArea extends FASTElement {
 // @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
-    autofocus: boolean;
     // @internal
     changeHandler(e: InputEvent): boolean | void;
     checkValidity(): boolean;
@@ -1035,7 +1029,6 @@ export class BaseTextInput extends FASTElement {
     disabled?: boolean;
     // @internal
     elementInternals: ElementInternals;
-    focusinHandler(e: FocusEvent): boolean | void;
     get form(): HTMLFormElement | null;
     static readonly formAssociated = true;
     formAttribute?: string;
@@ -4602,7 +4595,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/esm/accordion-item/accordion-item.d.ts:13:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/esm/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
