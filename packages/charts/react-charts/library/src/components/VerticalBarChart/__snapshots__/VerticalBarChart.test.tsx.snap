@@ -410,11 +410,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -439,7 +439,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -464,7 +467,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -980,11 +986,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -1009,7 +1015,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -1034,7 +1043,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -1554,11 +1566,11 @@ exports[`Theme Change Should reflect theme change 1`] = `
               </text>
             </g>
           </g>
-          <g
-            aria-label="First, bar chart with 3 bars and 3 data points."
-            role="listbox"
-          >
-            <g>
+          <g>
+            <g
+              aria-label="3 series and 3 data points"
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. First, 10%."
                 fill="aqua"
@@ -1583,7 +1595,10 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 10k
               </text>
             </g>
-            <g>
+            <g
+              aria-label="3 series and 3 data points"
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. Second, 20%."
                 fill="blue"
@@ -1608,7 +1623,10 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 50k
               </text>
             </g>
-            <g>
+            <g
+              aria-label="3 series and 3 data points"
+              role="listbox"
+            >
               <rect
                 aria-label="2020/04/30. Third, 37%."
                 fill="navy"
@@ -2136,11 +2154,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -2165,7 +2183,10 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -2190,7 +2211,10 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -2706,11 +2730,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="qualitative.1"
@@ -2735,7 +2759,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               −10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="qualitative.2"
@@ -2760,7 +2787,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               −50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="qualitative.3"
@@ -3276,11 +3306,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -3305,7 +3335,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -3330,7 +3363,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -3656,11 +3692,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g
-          aria-label="Series, bar chart with 4 bars and 4 data points."
-          role="listbox"
-        >
+        <g>
           <g
+            aria-label="1 series and 4 data points"
+            role="listbox"
             transform="translate(0, 0)"
           >
             <rect
@@ -3688,6 +3723,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            aria-label="1 series and 4 data points"
+            role="listbox"
             transform="translate(0, 0)"
           >
             <rect
@@ -3715,6 +3752,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            aria-label="1 series and 4 data points"
+            role="listbox"
             transform="translate(0, 0)"
           >
             <rect
@@ -3742,6 +3781,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
           <g
+            aria-label="1 series and 4 data points"
+            role="listbox"
             transform="translate(0, 0)"
           >
             <rect
@@ -4240,11 +4281,11 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="qualitative.1"
@@ -4269,7 +4310,10 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="qualitative.2"
@@ -4294,7 +4338,10 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               −50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="qualitative.3"
@@ -4810,11 +4857,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -4839,7 +4886,10 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -4864,7 +4914,10 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -5436,11 +5489,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </text>
           </g>
         </g>
-        <g
-          aria-label="First, bar chart with 3 bars and 3 data points."
-          role="listbox"
-        >
-          <g>
+        <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
@@ -5465,7 +5518,10 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               10k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
@@ -5490,7 +5546,10 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               50k
             </text>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 data points"
+            role="listbox"
+          >
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
@@ -6039,11 +6098,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -6058,7 +6117,10 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             y="216"
           />
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -6073,7 +6135,10 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             y="20"
           />
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -6577,11 +6642,11 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -6606,7 +6671,10 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -6631,7 +6699,10 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -7145,11 +7216,11 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -7174,7 +7245,10 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -7199,7 +7273,10 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -7713,11 +7790,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -7742,7 +7819,10 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -7767,7 +7847,10 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -8281,11 +8364,11 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -8310,7 +8393,10 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -8335,7 +8421,10 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -8859,11 +8948,11 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -8888,7 +8977,10 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -8913,7 +9005,10 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -9353,11 +9448,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -9381,7 +9476,10 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -9405,7 +9503,10 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -10016,11 +10117,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -10045,7 +10146,10 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -10070,7 +10174,10 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -10687,11 +10794,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -10716,7 +10823,10 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -10741,7 +10851,10 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
@@ -11262,11 +11375,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           </text>
         </g>
       </g>
-      <g
-        aria-label="First, bar chart with 3 bars and 3 data points."
-        role="listbox"
-      >
-        <g>
+      <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
@@ -11291,7 +11404,10 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             10k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
@@ -11316,7 +11432,10 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             50k
           </text>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 data points"
+          role="listbox"
+        >
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"

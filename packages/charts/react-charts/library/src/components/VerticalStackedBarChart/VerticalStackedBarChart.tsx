@@ -561,15 +561,16 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     yScaleSecondary?: NumericScale,
   ): JSXElement {
     const lineObject: LineObject = _getFormattedLineData(props.data);
-    const lines: React.ReactNode[] = [];
-    const borderForLines: React.ReactNode[] = [];
-    const dots: React.ReactNode[] = [];
+    const lineSeriesGroups: React.ReactNode[] = [];
     //const { theme } = props;
     const lineBorderWidth = props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(props.lineOptions!.lineBorderWidth!.toString())
       : 0;
     const xScaleBandwidthTranslate = _xAxisType !== XAxisTypes.StringAxis ? 0 : xScale.bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
+      const lines: React.ReactNode[] = [];
+      const borderForLines: React.ReactNode[] = [];
+      const dots: React.ReactNode[] = [];
       const shouldHighlight = _isLegendHighlighted(item) || _noLegendHighlighted();
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
@@ -623,8 +624,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           />,
         );
       }
-    });
-    Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
         const yScaleBandwidthTranslate =
@@ -663,14 +662,20 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           />,
         );
       });
+
+      lineSeriesGroups.push(
+        <g
+          role="listbox"
+          aria-label={`${item}, line chart with ${lineObject[item].length} data points.`}
+          key={`${item}-${index}-lineSeries`}
+        >
+          {borderForLines}
+          {lines}
+          {dots}
+        </g>,
+      );
     });
-    return (
-      <>
-        {borderForLines}
-        {lines}
-        {dots}
-      </>
-    );
+    return <>{lineSeriesGroups}</>;
   }
 
   function _getCircleOpacityAndRadius(
@@ -1145,7 +1150,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           onFocus: () => _onStackFocus(singleChartData, groupRef),
           onBlur: _handleMouseOut,
           onClick: (event: any) => _onClick(singleChartData, event),
-          role: 'option',
           tabIndex: !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
@@ -1183,6 +1187,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => {
               groupRef.refElement = e;
             }}
+            role="listbox"
+            aria-label={_getAriaLabel(singleChartData)}
             {...stackFocusProps}
           >
             {singleBar}
@@ -1363,9 +1369,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       tickValues: props.tickValues,
       tickFormat: props.tickFormat,
     };
-    const legendVal = _points[0]?.chartData?.[0]?.legend || 'Series';
-    const chartGroupAriaLabel = `${legendVal}, bar chart with ${_points.length} bars and ${_points.length} data points.`;
-    const lineGroupAriaLabel = `${legendVal}, line chart with ${lineLegends.length} lines.`;
     return (
       <CartesianChart
         {...props}
@@ -1401,10 +1404,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         children={(props: ChildProps) => {
           return (
             <>
-              <g role="listbox" aria-label={chartGroupAriaLabel} {..._arrowNavigationAttributes}>
-                {_bars}
-              </g>
-              <g role="listbox" aria-label={lineGroupAriaLabel}>
+              <g {..._arrowNavigationAttributes}>{_bars}</g>
+              <g>
                 {_isHavingLines &&
                   _createLines(
                     props.xScale!,

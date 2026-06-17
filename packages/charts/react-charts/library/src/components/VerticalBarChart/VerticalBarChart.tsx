@@ -262,10 +262,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     );
 
     return (
-      <>
+      <g role="listbox" aria-label={`${lineLegendText || 'Line'} data points`}>
         {line}
         {dots}
-      </>
+      </g>
     );
   }
 
@@ -661,7 +661,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={`${point.x}_${index}` as string}>
+        <g key={`${point.x}_${index}` as string} role="listbox" aria-label={_getBarsGroupLabel()}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -723,6 +723,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       return (
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
+          role="listbox"
+          aria-label={_getBarsGroupLabel()}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
         >
           <rect
@@ -782,7 +784,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+        <g
+          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
+          role="listbox"
+          aria-label={_getBarsGroupLabel()}
+        >
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -1099,6 +1105,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return categoryToValues;
   }
 
+  function _getBarsGroupLabel(): string {
+    // Calculate number of unique series and total data points for accessibility label
+    const uniqueSeries = new Set(_points.map(point => point.legend)).size;
+    const totalDataPoints = _points.length;
+    return `${uniqueSeries} series and ${totalDataPoints} data points`;
+  }
+
   function updatePosition(newX: number, newY: number) {
     const threshold = 1; // Set a threshold for movement
     const { x, y } = clickPosition;
@@ -1116,8 +1129,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
   const legendBars: JSXElement = _getLegendData(_points);
-  const legendVal = _points[0]?.legend || 'Series';
-  const chartGroupAriaLabel = `${legendVal}, bar chart with ${_points.length} bars and ${_points.length} data points.`;
   const calloutProps = {
     ...(_isHavingLine && {
       YValueHover: hoveredYValues,
@@ -1181,20 +1192,15 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       children={(props: ChildProps) => {
         return (
           <>
-            <g role="listbox" aria-label={chartGroupAriaLabel}>
-              {_bars}
-            </g>
-            {_isHavingLine && (
-              <g>
-                {_createLine(
-                  props.xScale!,
-                  props.yScalePrimary!,
-                  props.containerHeight,
-                  props.containerWidth,
-                  props.yScaleSecondary,
-                )}
-              </g>
-            )}
+            <g>{_bars}</g>
+            {_isHavingLine &&
+              _createLine(
+                props.xScale!,
+                props.yScalePrimary!,
+                props.containerHeight,
+                props.containerWidth,
+                props.yScaleSecondary,
+              )}
           </>
         );
       }}

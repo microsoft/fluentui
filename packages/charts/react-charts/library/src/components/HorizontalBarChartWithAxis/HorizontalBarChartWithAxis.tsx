@@ -184,8 +184,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     let allBars: JSXElement[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
-      allBars = stackedChartData
-        .map(singleBarData =>
+      allBars = stackedChartData.map((singleBarData, groupIndex) => {
+        const groupBars =
           _yAxisType === YAxisType.NumericAxis
             ? _createNumericBars(
                 containerHeight,
@@ -204,9 +204,18 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
                 singleBarData,
                 xBarScale,
                 yBarScale,
-              ),
-        )
-        .flat();
+              );
+
+        return (
+          <g
+            key={`bar-group-${groupIndex}`}
+            role="listbox"
+            aria-label={_getBarGroupAriaLabel(singleBarData, groupIndex)}
+          >
+            {groupBars}
+          </g>
+        );
+      });
     }
 
     return (_bars = allBars);
@@ -771,6 +780,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + (legend ? `${legend}, ` : '') + `${xValue}.`;
   }
 
+  function _getBarGroupAriaLabel(singleBarData: HorizontalBarChartWithAxisDataPoint[], groupIndex: number): string {
+    const yGroupLabel = singleBarData[0]?.y?.toString() || `Group ${groupIndex + 1}`;
+    return `${yGroupLabel}, bar group ${groupIndex + 1} of ${_yAxisLabels.length}.`;
+  }
+
   function _renderBarLabel(
     xPosition: number,
     yPosition: number,
@@ -888,8 +902,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     _yAxisLabels = _getOrderedYAxisLabels();
     _xMax = Math.max(d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x)!, props.xMaxValue || 0);
     const legendBars: JSXElement = _getLegendData(_points);
-    const legendVal = _points[0]?.legend || 'Series';
-    const chartGroupAriaLabel = `${legendVal}, bar chart with ${_points.length} bars and ${_points.length} data points.`;
     return (
       <CartesianChart
         yAxisPadding={_yAxisPadding}
@@ -919,9 +931,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         children={(props: ChildProps) => {
           return (
             <>
-              <g role="listbox" aria-label={chartGroupAriaLabel}>
-                {_bars}
-              </g>
+              <g>{_bars}</g>
             </>
           );
         }}

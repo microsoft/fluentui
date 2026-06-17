@@ -419,15 +419,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : _getChartDataText(points!);
         const bars = _createBars(points!);
         const keyVal = _uniqLineText + '_' + index;
-        const rawLegendVal = points!.chartData?.[0]?.legend || 'Series';
-        const legendVal =
-          rawLegendVal
-            .split('.')
-            .map(segment => segment.trim())
-            .filter(Boolean)[0] || 'Series';
-        const chartGroupAriaLabel = `${legendVal}, bar ${index + 1} of ${data!.length} with ${
-          points!.chartData?.length || 0
-        } data points.`;
+        const barGroupAriaLabel = `bar ${index + 1} of ${data!.length}.`;
         // ToDo - Showtriangle property is per data series. How to account for it in the new stylesheet
         /*         const classes = useHorizontalBarChartStyles(props.styles!, {
           width: props.width,
@@ -453,7 +445,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
                 <g
                   role="listbox"
                   id={keyVal}
-                  aria-label={chartGroupAriaLabel}
+                  aria-label={barGroupAriaLabel}
                   ref={(e: SVGGElement) => {
                     _refCallback(e, points!.chartData![0].legend);
                   }}

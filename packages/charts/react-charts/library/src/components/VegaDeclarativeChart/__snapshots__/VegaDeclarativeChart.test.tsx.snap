@@ -236,13 +236,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              aria-label="North, bar chart with 3 bars and 3 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <g>
                 <g
+                  aria-label="Jan. North, 100. South, 80. Line 1, 120. Line 1, 120."
                   id="0-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="Jan. North, 100."
@@ -278,7 +278,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="Feb. North, 120. South, 90. Line 1, 130. Line 1, 130."
                   id="1-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="Feb. North, 120."
@@ -314,7 +316,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="Mar. North, 110. South, 85. Line 1, 125. Line 1, 125."
                   id="2-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="Mar. North, 110."
@@ -349,143 +353,145 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g
-              aria-label="North, line chart with 1 lines."
-              role="listbox"
-            >
-              <line
-                opacity="1"
-                stroke="#2aa0a4"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="37.14285714285714"
-                x2="37.14285714285714"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="#2aa0a4"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="37.14285714285714"
-                x2="4.571428571428569"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="#2aa0a4"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="4.571428571428569"
-                x2="4.571428571428569"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="#2aa0a4"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="4.571428571428569"
-                x2="-28"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="#2aa0a4"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="-28"
-                x2="-28"
-                y1="NaN"
-                y2="NaN"
-              />
-              <circle
-                aria-label="Jan. Line 1, 120."
-                cx="37.14285714285714"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#2aa0a4"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="Jan. Line 1, 120."
-                cx="37.14285714285714"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#2aa0a4"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="Feb. Line 1, 130."
-                cx="4.571428571428569"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#2aa0a4"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="Feb. Line 1, 130."
-                cx="4.571428571428569"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#2aa0a4"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="Mar. Line 1, 125."
-                cx="-28"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#2aa0a4"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="Mar. Line 1, 125."
-                cx="-28"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#2aa0a4"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
+            <g>
+              <g
+                aria-label="Line 1, line chart with 6 data points."
+                role="listbox"
+              >
+                <line
+                  opacity="1"
+                  stroke="#2aa0a4"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="37.14285714285714"
+                  x2="37.14285714285714"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="#2aa0a4"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="37.14285714285714"
+                  x2="4.571428571428569"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="#2aa0a4"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="4.571428571428569"
+                  x2="4.571428571428569"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="#2aa0a4"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="4.571428571428569"
+                  x2="-28"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="#2aa0a4"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="-28"
+                  x2="-28"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <circle
+                  aria-label="Jan. Line 1, 120."
+                  cx="37.14285714285714"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#2aa0a4"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="Jan. Line 1, 120."
+                  cx="37.14285714285714"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#2aa0a4"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="Feb. Line 1, 130."
+                  cx="4.571428571428569"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#2aa0a4"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="Feb. Line 1, 130."
+                  cx="4.571428571428569"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#2aa0a4"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="Mar. Line 1, 125."
+                  cx="-28"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#2aa0a4"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="Mar. Line 1, 125."
+                  cx="-28"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#2aa0a4"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+              </g>
             </g>
           </svg>
         </div>
@@ -820,13 +826,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              aria-label="A, bar chart with 3 bars and 3 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <g>
                 <g
+                  aria-label="2024-01-01. A, 100. Line 1, 30."
                   id="0-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-01-01. A, 100."
@@ -847,7 +853,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-01-02. A, 120. Line 1, 35."
                   id="1-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-01-02. A, 120."
@@ -868,7 +876,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-01-03. A, 110. Line 1, 32."
                   id="2-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-01-03. A, 110."
@@ -888,71 +898,73 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g
-              aria-label="A, line chart with 1 lines."
-              role="listbox"
-            >
-              <line
-                opacity="1"
-                stroke="#e3008c"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="37.14285714285714"
-                x2="4.571428571428569"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="#e3008c"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="4.571428571428569"
-                x2="-28"
-                y1="NaN"
-                y2="NaN"
-              />
-              <circle
-                aria-label="2024-01-01. Line 1, 30."
-                cx="37.14285714285714"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="2024-01-02. Line 1, 35."
-                cx="4.571428571428569"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="2024-01-03. Line 1, 32."
-                cx="-28"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
+            <g>
+              <g
+                aria-label="Line 1, line chart with 3 data points."
+                role="listbox"
+              >
+                <line
+                  opacity="1"
+                  stroke="#e3008c"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="37.14285714285714"
+                  x2="4.571428571428569"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="#e3008c"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="4.571428571428569"
+                  x2="-28"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <circle
+                  aria-label="2024-01-01. Line 1, 30."
+                  cx="37.14285714285714"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="2024-01-02. Line 1, 35."
+                  cx="4.571428571428569"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="2024-01-03. Line 1, 32."
+                  cx="-28"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+              </g>
             </g>
           </svg>
         </div>
@@ -1268,13 +1280,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              aria-label="Bar, bar chart with 3 bars and 3 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <g>
                 <g
+                  aria-label="A. Bar, 10. Line 1, 15."
                   id="0-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="A. Bar, 10."
@@ -1295,7 +1307,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="B. Bar, 20. Line 1, 18."
                   id="1-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="B. Bar, 20."
@@ -1316,7 +1330,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="C. Bar, 15. Line 1, 22."
                   id="2-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="C. Bar, 15."
@@ -1336,71 +1352,73 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g
-              aria-label="Bar, line chart with 1 lines."
-              role="listbox"
-            >
-              <line
-                opacity="1"
-                stroke="#e3008c"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="37.14285714285714"
-                x2="4.571428571428569"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="#e3008c"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(5.428571428571429, 0)"
-                x1="4.571428571428569"
-                x2="-28"
-                y1="NaN"
-                y2="NaN"
-              />
-              <circle
-                aria-label="A. Line 1, 15."
-                cx="37.14285714285714"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="B. Line 1, 18."
-                cx="4.571428571428569"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
-              <circle
-                aria-label="C. Line 1, 22."
-                cx="-28"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(5.428571428571429, 0)"
-              />
+            <g>
+              <g
+                aria-label="Line 1, line chart with 3 data points."
+                role="listbox"
+              >
+                <line
+                  opacity="1"
+                  stroke="#e3008c"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="37.14285714285714"
+                  x2="4.571428571428569"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="#e3008c"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(5.428571428571429, 0)"
+                  x1="4.571428571428569"
+                  x2="-28"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <circle
+                  aria-label="A. Line 1, 15."
+                  cx="37.14285714285714"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="B. Line 1, 18."
+                  cx="4.571428571428569"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+                <circle
+                  aria-label="C. Line 1, 22."
+                  cx="-28"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(5.428571428571429, 0)"
+                />
+              </g>
             </g>
           </svg>
         </div>
@@ -1793,13 +1811,13 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
             </g>
             <g
-              aria-label="Bar, bar chart with 6 bars and 6 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <g>
                 <g
+                  aria-label="2024-01. Bar, 45000. Line 1, 12000."
                   id="0-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-01. Bar, 45000."
@@ -1820,7 +1838,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-02. Bar, 52000. Line 1, 15000."
                   id="1-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-02. Bar, 52000."
@@ -1841,7 +1861,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-03. Bar, 48000. Line 1, 13500."
                   id="2-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-03. Bar, 48000."
@@ -1862,7 +1884,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-04. Bar, 61000. Line 1, 18000."
                   id="3-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-04. Bar, 61000."
@@ -1883,7 +1907,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-05. Bar, 58000. Line 1, 16500."
                   id="4-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-05. Bar, 58000."
@@ -1904,7 +1930,9 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               </g>
               <g>
                 <g
+                  aria-label="2024-06. Bar, 67000. Line 1, 20000."
                   id="5-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="2024-06. Bar, 67000."
@@ -1924,143 +1952,145 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
                 </g>
               </g>
             </g>
-            <g
-              aria-label="Bar, line chart with 1 lines."
-              role="listbox"
-            >
-              <line
-                opacity="1"
-                stroke="red"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(3.1250000000000004, 0)"
-                x1="65.75"
-                x2="47"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="red"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(3.1250000000000004, 0)"
-                x1="47"
-                x2="28.25"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="red"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(3.1250000000000004, 0)"
-                x1="28.25"
-                x2="9.5"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="red"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(3.1250000000000004, 0)"
-                x1="9.5"
-                x2="-9.25"
-                y1="NaN"
-                y2="NaN"
-              />
-              <line
-                opacity="1"
-                stroke="red"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(3.1250000000000004, 0)"
-                x1="-9.25"
-                x2="-28"
-                y1="NaN"
-                y2="NaN"
-              />
-              <circle
-                aria-label="2024-01. Line 1, 12000."
-                cx="65.75"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="red"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(3.1250000000000004, 0)"
-              />
-              <circle
-                aria-label="2024-02. Line 1, 15000."
-                cx="47"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="red"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(3.1250000000000004, 0)"
-              />
-              <circle
-                aria-label="2024-03. Line 1, 13500."
-                cx="28.25"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="red"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(3.1250000000000004, 0)"
-              />
-              <circle
-                aria-label="2024-04. Line 1, 18000."
-                cx="9.5"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="red"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(3.1250000000000004, 0)"
-              />
-              <circle
-                aria-label="2024-05. Line 1, 16500."
-                cx="-9.25"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="red"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(3.1250000000000004, 0)"
-              />
-              <circle
-                aria-label="2024-06. Line 1, 20000."
-                cx="-28"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="red"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(3.1250000000000004, 0)"
-              />
+            <g>
+              <g
+                aria-label="Line 1, line chart with 6 data points."
+                role="listbox"
+              >
+                <line
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(3.1250000000000004, 0)"
+                  x1="65.75"
+                  x2="47"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(3.1250000000000004, 0)"
+                  x1="47"
+                  x2="28.25"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(3.1250000000000004, 0)"
+                  x1="28.25"
+                  x2="9.5"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(3.1250000000000004, 0)"
+                  x1="9.5"
+                  x2="-9.25"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <line
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(3.1250000000000004, 0)"
+                  x1="-9.25"
+                  x2="-28"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <circle
+                  aria-label="2024-01. Line 1, 12000."
+                  cx="65.75"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="red"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(3.1250000000000004, 0)"
+                />
+                <circle
+                  aria-label="2024-02. Line 1, 15000."
+                  cx="47"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="red"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(3.1250000000000004, 0)"
+                />
+                <circle
+                  aria-label="2024-03. Line 1, 13500."
+                  cx="28.25"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="red"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(3.1250000000000004, 0)"
+                />
+                <circle
+                  aria-label="2024-04. Line 1, 18000."
+                  cx="9.5"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="red"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(3.1250000000000004, 0)"
+                />
+                <circle
+                  aria-label="2024-05. Line 1, 16500."
+                  cx="-9.25"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="red"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(3.1250000000000004, 0)"
+                />
+                <circle
+                  aria-label="2024-06. Line 1, 20000."
+                  cx="-28"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="red"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(3.1250000000000004, 0)"
+                />
+              </g>
             </g>
             <rect
               class="fui-cart_svgTooltip"
@@ -2431,7 +2461,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             />
             <g>
               <g
-                aria-label="North, bar 1 of 1 with 2 data points."
+                aria-label="Q1, category 1 of 1, with bar series: North, South."
                 role="listbox"
                 transform="translate(-6.888888888888889, 0)"
               >
@@ -3505,13 +3535,13 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               </g>
             </g>
             <g
-              aria-label="Bar, bar chart with 2 bars and 2 data points."
               data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <g>
                 <g
+                  aria-label="A. Bar, 10. Line 1, 20."
                   id="0-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="A. Bar, 10."
@@ -3544,7 +3574,9 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               </g>
               <g>
                 <g
+                  aria-label="B. Bar, 15. Line 1, 25."
                   id="1-singleBar"
+                  role="listbox"
                 >
                   <rect
                     aria-label="B. Bar, 15."
@@ -3576,47 +3608,49 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 </text>
               </g>
             </g>
-            <g
-              aria-label="Bar, line chart with 1 lines."
-              role="listbox"
-            >
-              <line
-                opacity="1"
-                stroke="#e3008c"
-                stroke-linecap="round"
-                stroke-width="3"
-                transform="translate(9.5, 0)"
-                x1="28.999999999999993"
-                x2="-28"
-                y1="NaN"
-                y2="NaN"
-              />
-              <circle
-                aria-label="A. Line 1, 20."
-                cx="28.999999999999993"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(9.5, 0)"
-              />
-              <circle
-                aria-label="B. Line 1, 25."
-                cx="-28"
-                cy="NaN"
-                fill="var(--colorNeutralBackground1)"
-                opacity="0"
-                r="8"
-                role="option"
-                stroke="#e3008c"
-                stroke-width="3"
-                tabindex="0"
-                transform="translate(9.5, 0)"
-              />
+            <g>
+              <g
+                aria-label="Line 1, line chart with 2 data points."
+                role="listbox"
+              >
+                <line
+                  opacity="1"
+                  stroke="#e3008c"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                  transform="translate(9.5, 0)"
+                  x1="28.999999999999993"
+                  x2="-28"
+                  y1="NaN"
+                  y2="NaN"
+                />
+                <circle
+                  aria-label="A. Line 1, 20."
+                  cx="28.999999999999993"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(9.5, 0)"
+                />
+                <circle
+                  aria-label="B. Line 1, 25."
+                  cx="-28"
+                  cy="NaN"
+                  fill="var(--colorNeutralBackground1)"
+                  opacity="0"
+                  r="8"
+                  role="option"
+                  stroke="#e3008c"
+                  stroke-width="3"
+                  tabindex="0"
+                  transform="translate(9.5, 0)"
+                />
+              </g>
             </g>
           </svg>
         </div>

@@ -39,7 +39,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            aria-label="one, bar 1 of 3 with 2 data points."
+            aria-label="bar 1 of 3."
             id="_HorizontalLine__r_2s__0"
             role="listbox"
           >
@@ -103,7 +103,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            aria-label="two, bar 2 of 3 with 2 data points."
+            aria-label="bar 2 of 3."
             id="_HorizontalLine__r_2s__1"
             role="listbox"
           >
@@ -167,7 +167,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            aria-label="three, bar 3 of 3 with 2 data points."
+            aria-label="bar 3 of 3."
             id="_HorizontalLine__r_2s__2"
             role="listbox"
           >
@@ -244,7 +244,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            aria-label="one, bar 1 of 3 with 2 data points."
+            aria-label="bar 1 of 3."
             id="_HorizontalLine__r_32__0"
             role="listbox"
           >
@@ -308,7 +308,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            aria-label="two, bar 2 of 3 with 2 data points."
+            aria-label="bar 2 of 3."
             id="_HorizontalLine__r_32__1"
             role="listbox"
           >
@@ -372,7 +372,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           class="fui-hbc__chart"
         >
           <g
-            aria-label="three, bar 3 of 3 with 2 data points."
+            aria-label="bar 3 of 3."
             id="_HorizontalLine__r_32__2"
             role="listbox"
           >
@@ -453,7 +453,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
-              aria-label="one, bar 1 of 3 with 2 data points."
+              aria-label="bar 1 of 3."
               id="_HorizontalLine__r_39__0"
               role="listbox"
             >
@@ -517,7 +517,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
-              aria-label="two, bar 2 of 3 with 2 data points."
+              aria-label="bar 2 of 3."
               id="_HorizontalLine__r_39__1"
               role="listbox"
             >
@@ -581,7 +581,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
             class="fui-hbc__chart"
           >
             <g
-              aria-label="three, bar 3 of 3 with 2 data points."
+              aria-label="bar 3 of 3."
               id="_HorizontalLine__r_39__2"
               role="listbox"
             >
@@ -671,7 +671,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
-            aria-label="one, bar 1 of 3 with 2 data points."
+            aria-label="bar 1 of 3."
             id="_HorizontalLine__r_3f__0"
             role="listbox"
           >
@@ -735,7 +735,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
-            aria-label="two, bar 2 of 3 with 2 data points."
+            aria-label="bar 2 of 3."
             id="_HorizontalLine__r_3f__1"
             role="listbox"
           >
@@ -799,7 +799,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           class="fui-hbc__chart"
         >
           <g
-            aria-label="three, bar 3 of 3 with 2 data points."
+            aria-label="bar 3 of 3."
             id="_HorizontalLine__r_3f__2"
             role="listbox"
           >
@@ -869,7 +869,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           class="fui-hbc__chart"
         >
           <g
-            aria-label="one, bar 1 of 1 with 2 data points."
+            aria-label="bar 1 of 1."
             id="_HorizontalLine__r_6__0"
             role="listbox"
           >
@@ -1015,7 +1015,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
           class="fui-hbc__chart"
         >
           <g
-            aria-label="two, bar 1 of 1 with 2 data points."
+            aria-label="bar 1 of 1."
             id="_HorizontalLine__r_a__0"
             role="listbox"
           >
@@ -1168,7 +1168,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           class="fui-hbc__chart"
         >
           <g
-            aria-label="one, bar 1 of 3 with 2 data points."
+            aria-label="bar 1 of 3."
             id="_HorizontalLine__r_0__0"
             role="listbox"
           >
@@ -1232,7 +1232,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           class="fui-hbc__chart"
         >
           <g
-            aria-label="two, bar 2 of 3 with 2 data points."
+            aria-label="bar 2 of 3."
             id="_HorizontalLine__r_0__1"
             role="listbox"
           >
@@ -1296,7 +1296,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
           class="fui-hbc__chart"
         >
           <g
-            aria-label="three, bar 3 of 3 with 2 data points."
+            aria-label="bar 3 of 3."
             id="_HorizontalLine__r_0__2"
             role="listbox"
           >
@@ -1371,7 +1371,7 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                aria-label="one, bar 1 of 3 with 2 data points."
+                aria-label="bar 1 of 3."
                 id="_HorizontalLine__r_41__0"
                 role="listbox"
               >
@@ -1419,7 +1419,7 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                aria-label="two, bar 2 of 3 with 2 data points."
+                aria-label="bar 2 of 3."
                 id="_HorizontalLine__r_41__1"
                 role="listbox"
               >
@@ -1467,7 +1467,7 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                aria-label="three, bar 3 of 3 with 2 data points."
+                aria-label="bar 3 of 3."
                 id="_HorizontalLine__r_41__2"
                 role="listbox"
               >
@@ -1574,7 +1574,7 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              aria-label="one, bar 1 of 3 with 2 data points."
+              aria-label="bar 1 of 3."
               id="_HorizontalLine__r_41__0"
               role="listbox"
             >
@@ -1622,7 +1622,7 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              aria-label="two, bar 2 of 3 with 2 data points."
+              aria-label="bar 2 of 3."
               id="_HorizontalLine__r_41__1"
               role="listbox"
             >
@@ -1670,7 +1670,7 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              aria-label="three, bar 3 of 3 with 2 data points."
+              aria-label="bar 3 of 3."
               id="_HorizontalLine__r_41__2"
               role="listbox"
             >
@@ -1788,7 +1788,7 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                aria-label="one, bar 1 of 3 with 2 data points."
+                aria-label="bar 1 of 3."
                 id="_HorizontalLine__r_3r__0"
                 role="listbox"
               >
@@ -1845,7 +1845,7 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                aria-label="two, bar 2 of 3 with 2 data points."
+                aria-label="bar 2 of 3."
                 id="_HorizontalLine__r_3r__1"
                 role="listbox"
               >
@@ -1902,7 +1902,7 @@ Object {
               class="fui-hbc__chart"
             >
               <g
-                aria-label="three, bar 3 of 3 with 2 data points."
+                aria-label="bar 3 of 3."
                 id="_HorizontalLine__r_3r__2"
                 role="listbox"
               >
@@ -2018,7 +2018,7 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              aria-label="one, bar 1 of 3 with 2 data points."
+              aria-label="bar 1 of 3."
               id="_HorizontalLine__r_3r__0"
               role="listbox"
             >
@@ -2075,7 +2075,7 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              aria-label="two, bar 2 of 3 with 2 data points."
+              aria-label="bar 2 of 3."
               id="_HorizontalLine__r_3r__1"
               role="listbox"
             >
@@ -2132,7 +2132,7 @@ Object {
             class="fui-hbc__chart"
           >
             <g
-              aria-label="three, bar 3 of 3 with 2 data points."
+              aria-label="bar 3 of 3."
               id="_HorizontalLine__r_3r__2"
               role="listbox"
             >
