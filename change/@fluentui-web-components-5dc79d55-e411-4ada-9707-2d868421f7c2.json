@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix anchor positioning for rtl",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
