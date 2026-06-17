@@ -17,9 +17,9 @@ export const styles = css`
     max-height: var(--menu-max-height, auto);
     position-anchor: --menu-trigger;
     inset: unset;
-    inset-block-start: anchor(end);
-    inset-inline-start: anchor(start);
-    position-try-fallbacks: flip-block;
+    inset-block-start: anchor(outside);
+    inset-inline-start: anchor(inside);
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
     position: fixed;
     z-index: 1;
   }

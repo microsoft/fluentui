@@ -43,8 +43,8 @@ export const styles = css`
       position: fixed;
       max-block-size: var(--listbox-max-height, calc(50vh - anchor-size(self-block)));
       min-inline-size: anchor-size(inline);
-      inset-block-start: anchor(end);
-      inset-inline-start: anchor(start);
+      inset-block-start: anchor(outside);
+      inset-inline-start: anchor(inside);
       position-try-fallbacks: flip-block, flip-inline, flip-inline flip-block;
     }
   }
