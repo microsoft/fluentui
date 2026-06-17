@@ -18,15 +18,15 @@ export const styles = css`
     position-anchor: --menu-trigger;
     inset: unset;
     inset-block-start: anchor(outside);
-    inset-inline-start: anchor(inside);
+    inset-inline-start: anchor(self-start);
     position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
     position: fixed;
     z-index: 1;
   }
 
   :host([split]) ::slotted([popover]) {
-    inset-inline-start: auto;
-    inset-inline-end: anchor(end);
+    inset-inline-start: unset;
+    inset-inline-end: anchor(self-end);
   }
 
   ::slotted([popover]:not(:popover-open)) {
