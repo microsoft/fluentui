@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { BrowserSupportMatrix } from './BrowserSupport/BrowserSupportMatrix';
+
+<Meta title="Overview/Browser support" />
+
+# Browser support
+
+Fluent UI Headless components build their overlays on modern web-platform features — the
+**Popover API**, the native **`<dialog>` element**, and **CSS anchor positioning** — instead of
+JavaScript-managed portals and z-index stacks. This keeps overlays in the browser's top layer with
+native light-dismiss, focus handling, and accessibility.
+
+These features are at different stages of [Baseline](https://web.dev/baseline) availability. Every
+component that uses them **detects support at runtime** (via `CSS.supports(...)`) and **degrades
+gracefully** where a feature is missing — falling back to `dialog.show()` or inline rendering and, in
+development, logging a warning that recommends a polyfill.
+
+**Reading the matrix:**
+
+- **Widely available** — Baseline for 2.5+ years; safe to rely on without a polyfill.
+- **Newly available** — Baseline in the current major browsers; a polyfill may be needed for older versions.
+- **Limited availability** — not yet Baseline; the JavaScript fallback keeps the component usable.
+
+To support older browsers, supply a polyfill for the relevant feature where needed.
+
+<BrowserSupportMatrix />

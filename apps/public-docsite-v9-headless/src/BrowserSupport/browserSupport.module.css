@@ -1,0 +1,166 @@
+.root {
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0 var(--space-8);
+  font-size: 14px;
+}
+
+.table caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--stroke-thin) solid var(--border);
+  vertical-align: top;
+}
+
+.table thead th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+}
+
+.table tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.version {
+  font-family: var(--font-mono);
+  color: var(--text-soft);
+}
+
+.unsupported {
+  color: var(--text-faint);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.widely {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.newly {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.limited {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.since {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.usage {
+  margin: var(--space-4) 0 var(--space-8);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.usageItem {
+  padding: var(--space-4);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+}
+
+.usageTitle {
+  margin: 0 0 var(--space-2);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.usageText {
+  margin: 0 0 var(--space-2);
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.fallback {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  border: var(--stroke-thin) solid var(--border);
+}
+
+.codeLink {
+  text-decoration: none;
+}
+
+.codeLink .code {
+  color: var(--info);
+}
+
+.codeLink:hover .code {
+  text-decoration: underline;
+}
+
+.check {
+  text-align: center;
+  color: var(--success);
+  font-weight: 600;
+}
+
+.mdnLink {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--info);
+  text-decoration: none;
+}
+
+.mdnLink:hover {
+  text-decoration: underline;
+}
+
+.fallbackLabel {
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.provenance {
+  margin-top: var(--space-6);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.provenance .provenanceLink {
+  color: inherit;
+  text-decoration: underline;
+}
