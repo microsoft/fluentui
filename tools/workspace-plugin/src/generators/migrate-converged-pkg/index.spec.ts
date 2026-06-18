@@ -931,7 +931,10 @@ describe('migrate-converged-pkg generator', () => {
           Object {
             ".": Object {
               "import": "./lib/index.js",
-              "node": "./lib-commonjs/index.js",
+              "node": Object {
+                "default": "./lib-commonjs/index.js",
+                "module": "./lib/index.js",
+              },
               "require": "./lib-commonjs/index.js",
               "style": "./css/index.css",
               "types": "./dist/index.d.ts",
@@ -1089,6 +1092,7 @@ describe('migrate-converged-pkg generator', () => {
           '/**/*.test.tsx',
         ],
         jsc: {
+          baseUrl: '.',
           parser: {
             syntax: 'typescript',
             tsx: true,
@@ -1447,7 +1451,10 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
           Object {
             "import": "./lib/unstable/index.js",
-            "node": "./lib-commonjs/unstable/index.js",
+            "node": Object {
+              "default": "./lib-commonjs/unstable/index.js",
+              "module": "./lib/unstable/index.js",
+            },
             "require": "./lib-commonjs/unstable/index.js",
             "types": "./dist/unstable.d.ts",
           }

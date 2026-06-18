@@ -27,7 +27,10 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
+      "node": {
+        "module": "./lib/index.js",
+        "default": "./lib-commonjs/index.js"
+      },
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },

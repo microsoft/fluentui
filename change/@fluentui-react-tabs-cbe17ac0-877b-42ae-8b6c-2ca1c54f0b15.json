@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths",
+  "packageName": "@fluentui/react-tabs",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
