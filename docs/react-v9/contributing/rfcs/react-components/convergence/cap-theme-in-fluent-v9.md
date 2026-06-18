@@ -4,7 +4,7 @@
 
 _Contributors: (author: Enrico Gianoglio)_
 
-> **Status — request for engineering review.** This RFC proposes making the CAP visual language a part of `@fluentui/react-components`. Phase 1 has been prototyped end-to-end and the bundle-size impact has been measured against live monosize fixtures (see [Bundle-size analysis](#bundle-size-analysis)).
+> **Status — request for engineering review.** This RFC proposes graduating the **CAP visual language** — currently shipped as `@fluentui-contrib/react-cap-theme` — into `@fluentui/react-components`, so consumers can opt in without installing a separate package. The first phase (re-exporting `CAP_STYLE_HOOKS` from the suite) has been prototyped end-to-end and its bundle-size impact has been measured against the suite's existing bundle-size fixtures (see [Bundle-size analysis](#bundle-size-analysis)).
 
 ## Summary
 
