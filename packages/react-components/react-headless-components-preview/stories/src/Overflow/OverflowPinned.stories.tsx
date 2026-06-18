@@ -11,7 +11,7 @@ import styles from './overflow.module.css';
 
 const itemIds = Array.from({ length: 10 }, (_, i) => (i + 1).toString());
 
-const OverflowMenuItem = ({ id, onClick }: { id: string; onClick: () => void }): React.ReactNode => {
+const OverflowMenuItem = ({ id, onClick }: { id: string; onClick: () => void }): React.ReactElement | null => {
   // Only the overflowed (hidden) items are listed in the menu.
   const isVisible = useIsOverflowItemVisible(id);
   return isVisible ? null : (
@@ -26,7 +26,13 @@ const OverflowMenuItem = ({ id, onClick }: { id: string; onClick: () => void }):
  * through a portal but preserves React context, so the overflow hooks inside still read the
  * `Overflow` root's context.
  */
-const OverflowMenu = ({ ids, onItemClick }: { ids: string[]; onItemClick: (id: string) => void }): React.ReactNode => {
+const OverflowMenu = ({
+  ids,
+  onItemClick,
+}: {
+  ids: string[];
+  onItemClick: (id: string) => void;
+}): React.ReactElement | null => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -55,7 +61,7 @@ const OverflowMenu = ({ ids, onItemClick }: { ids: string[]; onItemClick: (id: s
  * An item can be pinned (always visible, never overflows) via the `pinned` prop on `OverflowItem` —
  * useful for selection scenarios. Click items (or menu entries) to toggle their pinned state.
  */
-export const Pinned = (): React.ReactNode => {
+export const Pinned = (): React.ReactElement => {
   const [selected, setSelected] = React.useState<ReadonlySet<string>>(() => new Set(['6']));
 
   const toggle = (id: string) =>

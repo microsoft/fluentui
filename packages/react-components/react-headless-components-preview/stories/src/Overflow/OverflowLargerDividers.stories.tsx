@@ -18,7 +18,7 @@ import {
 
 import styles from './overflow.module.css';
 
-const GroupDivider = ({ groupId }: { groupId: string }): React.ReactNode => (
+const GroupDivider = ({ groupId }: { groupId: string }): React.ReactElement => (
   <OverflowDivider groupId={groupId}>
     <div className={styles.divider} />
   </OverflowDivider>
@@ -26,13 +26,13 @@ const GroupDivider = ({ groupId }: { groupId: string }): React.ReactNode => (
 
 const menuIds = ['1', 'divider-1', '2', 'divider-2', '3', '4', 'divider-3', '5', '6', '7', 'divider-4', '8'];
 
-const OverflowMenuItem = ({ id }: { id: string }): React.ReactNode => {
+const OverflowMenuItem = ({ id }: { id: string }): React.ReactElement | null => {
   // Only the overflowed (hidden) items are listed in the menu.
   const isVisible = useIsOverflowItemVisible(id);
   return isVisible ? null : <MenuItem className={styles.menuItem}>Item {id}</MenuItem>;
 };
 
-const OverflowMenuDivider = ({ groupId }: { groupId: string }): React.ReactNode => {
+const OverflowMenuDivider = ({ groupId }: { groupId: string }): React.ReactElement | null => {
   const groupVisibility = useIsOverflowGroupVisible(groupId);
   return groupVisibility === 'visible' ? null : <MenuDivider className={styles.menuDivider} />;
 };
@@ -43,7 +43,7 @@ const OverflowMenuDivider = ({ groupId }: { groupId: string }): React.ReactNode 
  * `Overflow` root's context. Entries prefixed with `divider-` render a group divider (when that
  * group is overflowing).
  */
-const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
+const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactElement | null => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -76,7 +76,7 @@ const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
  * `OverflowDivider` registers a divider with a `groupId` so its width is included in the overflow
  * calculation. Group dividers are hidden (and rendered in the menu) once their group overflows.
  */
-export const LargerDividers = (): React.ReactNode => (
+export const LargerDividers = (): React.ReactElement => (
   <div className={styles.resizer}>
     <Overflow>
       <div className={styles.container}>

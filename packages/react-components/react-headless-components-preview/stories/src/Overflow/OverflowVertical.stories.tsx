@@ -11,7 +11,7 @@ import styles from './overflow.module.css';
 
 const itemIds = Array.from({ length: 10 }, (_, i) => (i + 1).toString());
 
-const OverflowMenuItem = ({ id }: { id: string }): React.ReactNode => {
+const OverflowMenuItem = ({ id }: { id: string }): React.ReactElement | null => {
   // Only the overflowed (hidden) items are listed in the menu.
   const isVisible = useIsOverflowItemVisible(id);
   return isVisible ? null : <MenuItem className={styles.menuItem}>Item {id}</MenuItem>;
@@ -22,7 +22,7 @@ const OverflowMenuItem = ({ id }: { id: string }): React.ReactNode => {
  * through a portal but preserves React context, so the overflow hooks inside still read the
  * `Overflow` root's context.
  */
-const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
+const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactElement | null => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -50,7 +50,7 @@ const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
 /**
  * Use the `overflowAxis` prop to switch orientation. Drag the dashed box's bottom edge to resize.
  */
-export const Vertical = (): React.ReactNode => (
+export const Vertical = (): React.ReactElement => (
   <div className={styles.resizerVertical}>
     <Overflow overflowAxis="vertical">
       <div className={`${styles.container} ${styles.vertical}`}>

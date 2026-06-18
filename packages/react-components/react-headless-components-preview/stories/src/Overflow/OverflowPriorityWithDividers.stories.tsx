@@ -22,14 +22,14 @@ const GROUPS = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
 
 const menuIds = ['6', 'divider-1', '7', 'divider-2', '4', '5', 'divider-3', '1', '2', '3', 'divider-4', '8'];
 
-const OverflowMenuItem = ({ id }: { id: string }): React.ReactNode => {
+const OverflowMenuItem = ({ id }: { id: string }): React.ReactElement | null => {
   // Only the overflowed (hidden) items are listed in the menu.
   const isVisible = useIsOverflowItemVisible(id);
   return isVisible ? null : <MenuItem className={styles.menuItem}>Item {id}</MenuItem>;
 };
 
 /** In-container divider — hidden once its whole group has overflowed. */
-const ContainerGroupDivider = ({ groupId }: { groupId: number }): React.ReactNode => {
+const ContainerGroupDivider = ({ groupId }: { groupId: number }): React.ReactElement | null => {
   const groupVisibility = useIsOverflowGroupVisible(groupId.toString());
 
   if (groupVisibility === 'hidden') {
@@ -48,7 +48,7 @@ const ContainerGroupDivider = ({ groupId }: { groupId: number }): React.ReactNod
  * calling `useIsOverflowGroupVisible` once per group — the latter would call a hook inside a loop
  * and violate the rules of hooks.
  */
-const MenuGroupDivider = ({ groupId }: { groupId: number }): React.ReactNode => {
+const MenuGroupDivider = ({ groupId }: { groupId: number }): React.ReactElement | null => {
   const { groupVisibility } = useOverflowVisibility();
   const groups = Object.values(GROUPS);
 
@@ -64,7 +64,7 @@ const MenuGroupDivider = ({ groupId }: { groupId: number }): React.ReactNode => 
   return <MenuDivider className={styles.menuDivider} />;
 };
 
-const PriorityOverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
+const PriorityOverflowMenu = ({ ids }: { ids: string[] }): React.ReactElement | null => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -97,7 +97,7 @@ const PriorityOverflowMenu = ({ ids }: { ids: string[] }): React.ReactNode => {
  * Overflow groups respect item `priority`. Managing divider visibility here is non-trivial because
  * dividers can appear both in the container and the menu — read the code carefully before adopting.
  */
-export const PriorityWithDividers = (): React.ReactNode => (
+export const PriorityWithDividers = (): React.ReactElement => (
   <div className={styles.resizer}>
     <Overflow overflowDirection="start" padding={40}>
       <div className={styles.container}>
