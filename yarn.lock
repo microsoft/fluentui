@@ -3030,6 +3030,7 @@ __metadata:
     typescript: "npm:5.7.3"
     typescript-eslint: "npm:8.46.2"
     vite: "npm:6.4.2"
+    web-features: "npm:3.30.0"
     webpack: "npm:5.108.4"
     webpack-bundle-analyzer: "npm:4.10.1"
     webpack-cli: "npm:5.1.4"
@@ -6202,6 +6203,12 @@ __metadata:
 "@fluentui/scripts-utils@npm:*, @fluentui/scripts-utils@workspace:scripts/utils":
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-utils@workspace:scripts/utils"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/scripts-web-features@workspace:scripts/web-features":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/scripts-web-features@workspace:scripts/web-features"
   languageName: unknown
   linkType: soft
 
@@ -31905,6 +31912,13 @@ __metadata:
   dependencies:
     defaults: "npm:^1.0.3"
   checksum: 10c0/5b61ca583a95e2dd85d7078400190efd452e05751a64accb8c06ce4db65d7e0b0cde9917d705e826a2e05cc2548f61efde115ffa374c3e436d04be45c889e5b4
+  languageName: node
+  linkType: hard
+
+"web-features@npm:3.30.0":
+  version: 3.30.0
+  resolution: "web-features@npm:3.30.0"
+  checksum: 10c0/fa4f193af8a55aebc5ca7192abf809994084a51cbb4c608465efb7a4a532f739e046fe6fa902e14e847aee1022462620c820abd8db14c2296e71bcde31647fcc
   languageName: node
   linkType: hard
 
