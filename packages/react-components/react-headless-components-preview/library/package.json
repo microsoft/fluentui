@@ -41,6 +41,7 @@
     "@fluentui/react-message-bar": "^9.7.1",
     "@fluentui/react-teaching-popover": "^9.7.0",
     "@fluentui/react-nav": "^9.4.0",
+    "@fluentui/react-overflow": "^9.8.0",
     "@fluentui/react-persona": "^9.7.4",
     "@fluentui/react-popover": "^9.14.3",
     "@fluentui/react-positioning": "^9.22.2",
@@ -205,6 +206,12 @@
       "node": "./lib-commonjs/nav.js",
       "import": "./lib/nav.js",
       "require": "./lib-commonjs/nav.js"
+    },
+    "./overflow": {
+      "types": "./dist/overflow.d.ts",
+      "node": "./lib-commonjs/overflow.js",
+      "import": "./lib/overflow.js",
+      "require": "./lib-commonjs/overflow.js"
     },
     "./persona": {
       "types": "./dist/persona.d.ts",
