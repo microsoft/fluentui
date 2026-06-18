@@ -10,6 +10,7 @@
     "/**/*.test.tsx"
   ],
   "jsc": {
+    "baseUrl": ".",
     "experimental": {
       "plugins": [["swc-plugin-de-indent-template-literal", {}]]
     },

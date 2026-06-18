@@ -28,19 +28,28 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "node": "./lib-commonjs/index.js",
+      "node": {
+        "module": "./lib/index.js",
+        "default": "./lib-commonjs/index.js"
+      },
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
     "./jsx-dev-runtime": {
       "types": "./dist/jsx-dev-runtime.d.ts",
-      "node": "./lib-commonjs/jsx-dev-runtime.js",
+      "node": {
+        "module": "./lib/jsx-dev-runtime.js",
+        "default": "./lib-commonjs/jsx-dev-runtime.js"
+      },
       "import": "./lib/jsx-dev-runtime.js",
       "require": "./lib-commonjs/jsx-dev-runtime.js"
     },
     "./jsx-runtime": {
       "types": "./dist/jsx-runtime.d.ts",
-      "node": "./lib-commonjs/jsx-runtime.js",
+      "node": {
+        "module": "./lib/jsx-runtime.js",
+        "default": "./lib-commonjs/jsx-runtime.js"
+      },
       "import": "./lib/jsx-runtime.js",
       "require": "./lib-commonjs/jsx-runtime.js"
     },

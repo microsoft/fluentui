@@ -381,6 +381,7 @@ const templates = {
         '/**/*.test.tsx',
       ],
       jsc: {
+        baseUrl: '.',
         parser: {
           syntax: 'typescript',
           tsx: true,
@@ -630,7 +631,13 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
-          ...(packageJson.main ? { node: './lib-commonjs/unstable/index.js' } : null),
+          ...(packageJson.main
+            ? {
+                node: packageJson.module
+                  ? { module: './lib/unstable/index.js', default: './lib-commonjs/unstable/index.js' }
+                  : './lib-commonjs/unstable/index.js',
+              }
+            : null),
           ...(packageJson.module ? { import: './lib/unstable/index.js' } : null),
           require: './lib-commonjs/unstable/index.js',
         },
@@ -685,13 +692,19 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   function setupExportMaps(json: PackageJson) {
+    const commonjs = json.main ? normalizePackageEntryPointPaths(json.main) : null;
+    const esm = json.module ? normalizePackageEntryPointPaths(json.module) : null;
+
     json.exports = {
       '.': {
         types: json.typings,
         ...(json.style ? { style: normalizePackageEntryPointPaths(json.style) } : null),
-        ...(json.main ? { node: normalizePackageEntryPointPaths(json.main) } : null),
-        ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
-        ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
+        // The `module` condition lets ESM-aware bundlers (webpack/rollup/vite) pick the ESM build on
+        // node-targeted builds so they can tree-shake, while bare Node ignores `module` and falls back
+        // to CommonJS (`default`) - keeping SSR resolution single-instance and dual-package-hazard free.
+        ...(commonjs ? { node: esm ? { module: esm, default: commonjs } : commonjs } : null),
+        ...(esm ? { import: esm } : null),
+        ...(commonjs ? { require: commonjs } : null),
       },
       './package.json': './package.json',
     };
