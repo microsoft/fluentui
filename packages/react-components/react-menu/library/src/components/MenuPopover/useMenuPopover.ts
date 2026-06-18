@@ -3,7 +3,11 @@
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useMotionForwardedRef } from '@fluentui/react-motion';
-import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import {
+  useRestoreFocusSource,
+  useTabsterAttributes,
+  useMergedTabsterAttributes_unstable,
+} from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -129,13 +133,23 @@ export const useMenuPopoverBase_unstable = (props: MenuPopoverProps, ref: React.
  */
 export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const restoreFocusSourceAttributes = useRestoreFocusSource();
+
+  // Opt the menu's popover out of tabster's Escape handling. The menu closes itself on
+  // Escape; without this tabster would also act on Escape (e.g. escaping a parent
+  // groupper/modalizer) and move focus away from the trigger instead of restoring it.
+  const ignoreEscapeKeyAttribute = useTabsterAttributes({
+    focusable: { ignoreKeydown: { Escape: true } },
+  });
+
+  const tabsterAttributes = useMergedTabsterAttributes_unstable(restoreFocusSourceAttributes, ignoreEscapeKeyAttribute);
+
   const motionRef = useMotionForwardedRef();
   const baseState = useMenuPopoverBase_unstable(props, ref);
 
   return {
     ...baseState,
     root: {
-      ...restoreFocusSourceAttributes,
+      ...tabsterAttributes,
       ...baseState.root,
       ref: useMergedRefs(baseState.root.ref, motionRef) as React.Ref<HTMLDivElement>,
     },
