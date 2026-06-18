@@ -4,7 +4,7 @@
 
 _Contributors: (author: Enrico Gianoglio)_
 
-> **Status — request for engineering review.** This RFC proposes making the CAP visual language a part of `@fluentui/react-components`. Phase 1 has been prototyped end-to-end and the bundle-size impact has been measured against live monosize fixtures (see [Bundle-size analysis](#bundle-size-analysis)). Phases 2–3 still need owner and timeline commitment from the Fluent v9 team and the `fluentui-contrib` maintainers. **Open questions** for reviewers are collected at the end of the document.
+> **Status — request for engineering review.** This RFC proposes making the CAP visual language a part of `@fluentui/react-components`. Phase 1 has been prototyped end-to-end and the bundle-size impact has been measured against live monosize fixtures (see [Bundle-size analysis](#bundle-size-analysis)).
 
 ## Summary
 
