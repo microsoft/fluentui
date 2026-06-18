@@ -2,6 +2,8 @@ import { Toast, ToastTitle, ToastBody, ToastFooter, Toaster } from '@fluentui/re
 
 import descriptionMd from './ToastDescription.md';
 
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './ToastDefault.stories';
 export { Intent } from './ToastIntent.stories';
 export { Positions } from './ToastPositions.stories';
@@ -29,7 +31,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('Toast')].join('\n'),
       },
     },
   },

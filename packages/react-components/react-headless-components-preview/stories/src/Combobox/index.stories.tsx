@@ -2,6 +2,8 @@ import { Combobox, Listbox, Option, OptionGroup } from '@fluentui/react-headless
 
 import descriptionMd from './ComboboxDescription.md';
 
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './ComboboxDefault.stories';
 export { Controlled } from './ComboboxControlled.stories';
 export { Freeform } from './ComboboxFreeform.stories';
@@ -17,7 +19,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('Combobox')].join('\n'),
       },
     },
   },
