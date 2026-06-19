@@ -11,6 +11,7 @@ describe(`#getDependencies`, () => {
     const deps = await getDependencies(packageName);
 
     // graph traversal order is not deterministic across machines; sort by name for a stable snapshot
+    /** @type {(a: { name: string }, b: { name: string }) => number} */
     const byName = (a, b) => a.name.localeCompare(b.name);
 
     expect([...deps.dependencies].sort(byName)).toMatchInlineSnapshot(`
