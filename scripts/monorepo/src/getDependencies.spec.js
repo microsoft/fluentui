@@ -10,17 +10,15 @@ describe(`#getDependencies`, () => {
   it(`should return package/s dependency tree array for all,devDeps and production dependencies`, async () => {
     const deps = await getDependencies(packageName);
 
-    expect(deps.dependencies).toMatchInlineSnapshot(`
+    // graph traversal order is not deterministic across machines; sort by name for a stable snapshot
+    const byName = (a, b) => a.name.localeCompare(b.name);
+
+    expect([...deps.dependencies].sort(byName)).toMatchInlineSnapshot(`
       Array [
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": true,
-          "name": "react-shared-contexts",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": true,
-          "name": "react-utilities",
+          "isTopLevel": false,
+          "name": "keyboard-keys",
         },
         Object {
           "dependencyType": "dependencies",
@@ -30,12 +28,17 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
+          "name": "react-shared-contexts",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
           "name": "react-theme",
         },
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "keyboard-keys",
+          "isTopLevel": true,
+          "name": "react-utilities",
         },
         Object {
           "dependencyType": "dependencies",
@@ -45,8 +48,18 @@ describe(`#getDependencies`, () => {
       ]
     `);
 
-    expect(deps.devDependencies).toMatchInlineSnapshot(`
+    expect([...deps.devDependencies].sort(byName)).toMatchInlineSnapshot(`
       Array [
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "eslint-plugin",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "eslint-plugin-react-components",
+        },
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": true,
@@ -61,16 +74,6 @@ describe(`#getDependencies`, () => {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
           "name": "scripts-cypress",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "eslint-plugin",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "eslint-plugin-react-components",
         },
       ]
     `);
