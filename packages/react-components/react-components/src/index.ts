@@ -31,7 +31,6 @@ export type {
   FluentProviderSlots,
   FluentProviderState,
 } from '@fluentui/react-provider';
-
 export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
