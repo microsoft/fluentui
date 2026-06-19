@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Thu, 11 Jun 2026 13:26:43 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jun 2026 13:52:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.1)
+
+Fri, 19 Jun 2026 13:52:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.0..@fluentui/react-headless-components-preview_v0.2.1)
+
+### Patches
+
+- fix: export useSkeletonContextValues from Skeleton ([PR #36303](https://github.com/microsoft/fluentui/pull/36303) by dmytrokirpa@microsoft.com)
+- feat: add headless Overflow component ([PR #36305](https://github.com/microsoft/fluentui/pull/36305) by vgenaev@gmail.com)
+- fix: export useRadioGroupContextValues from RadioGroup ([PR #36311](https://github.com/microsoft/fluentui/pull/36311) by dmytrokirpa@microsoft.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.0)
 
