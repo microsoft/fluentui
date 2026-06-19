@@ -32,10 +32,6 @@ export type {
   FluentProviderState,
 } from '@fluentui/react-provider';
 
-// CAP theme overlay — pass to `<FluentProvider customStyleHooks_unstable={CAP_STYLE_HOOKS} />`
-// to opt in to the CAP visual treatment without installing a separate package.
-// See: docs/react-v9/contributing/rfcs/shared/cap-theme-in-fluent-v9.md
-export { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme';
 export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,

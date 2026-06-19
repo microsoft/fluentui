@@ -135,7 +135,6 @@ import { buttonClassNames } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
-import { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme';
 import { Caption1 } from '@fluentui/react-text';
 import { caption1ClassNames } from '@fluentui/react-text';
 import { Caption1Strong } from '@fluentui/react-text';
@@ -2294,8 +2293,6 @@ export { ButtonProps }
 export { ButtonSlots }
 
 export { ButtonState }
-
-export { CAP_STYLE_HOOKS }
 
 export { Caption1 }
 
