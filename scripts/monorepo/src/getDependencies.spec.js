@@ -20,11 +20,6 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
-          "name": "react-theme",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": true,
           "name": "react-utilities",
         },
         Object {
@@ -34,13 +29,18 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "tokens",
+          "isTopLevel": true,
+          "name": "react-theme",
         },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": false,
           "name": "keyboard-keys",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "tokens",
         },
       ]
     `);
@@ -60,17 +60,17 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
+          "name": "scripts-cypress",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
           "name": "eslint-plugin",
         },
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
           "name": "eslint-plugin-react-components",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "scripts-cypress",
         },
       ]
     `);
@@ -82,7 +82,7 @@ describe(`#getDependencies`, () => {
 
     expect(packageInfo.absoluteRootPath).toEqual(expect.stringContaining('packages/react-components/react-text'));
     expect(packageInfo?.dependencies).toEqual(expect.any(Object));
-    expect(packageInfo?.main).toEqual('lib-commonjs/index.js');
+    expect(packageInfo?.main).toEqual('lib-commonjs/index.cjs');
     expect(packageInfo?.module).toEqual('lib/index.js');
 
     const depResultWithoutProjectScope = await getDependencies('react-text');
