@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 12 Jun 2026 04:07:42 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jun 2026 04:05:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.28)
+
+Fri, 19 Jun 2026 04:05:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.27..@fluentui/web-components_v3.0.0-rc.28)
+
+### Changes
+
+- fix anchor positioning for rtl ([PR #36321](https://github.com/microsoft/fluentui/pull/36321) by machi@microsoft.com)
 
 ## [3.0.0-rc.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.27)
 
