@@ -2,10 +2,6 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    // `@fluentui/scripts-cypress` is consumed directly from TS source (no build step) and is
-    // `type: module`, so its barrel re-exports use explicit `.ts` specifiers to resolve under
-    // Node's native ESM loader (e.g. when required from CommonJS cypress configs via `require(esm)`).
-    "allowImportingTsExtensions": true,
     "lib": ["ES2019"],
     "types": ["node", "cypress"]
   },

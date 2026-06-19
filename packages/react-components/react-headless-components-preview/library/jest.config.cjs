@@ -29,5 +29,5 @@ module.exports = {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
+  setupFilesAfterEnv: ['./config/tests.cjs'],
 };
