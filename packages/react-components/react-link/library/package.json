@@ -2,7 +2,7 @@
   "name": "@fluentui/react-link",
   "version": "9.8.2",
   "description": "Fluent UI React Link component",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
@@ -35,20 +35,23 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": {
-        "module": "./lib/index.js",
-        "default": "./lib-commonjs/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
       },
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
-  ]
+  ],
+  "type": "module"
 }

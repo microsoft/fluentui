@@ -276,6 +276,11 @@ function buildWorkspaceProjectConfiguration(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
+    const attwTarget = buildAttwTarget(projectRoot, config);
+    if (attwTarget) {
+      targets.attw = attwTarget;
+    }
+
     let metadata: WorkspaceTargets['metadata'];
 
     if (isReactProject) {
@@ -405,7 +410,11 @@ function buildTestTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
-  if (!existsSync(join(projectRoot, 'jest.config.js')) && !existsSync(join(projectRoot, 'jest.config.ts'))) {
+  if (
+    !existsSync(join(projectRoot, 'jest.config.js')) &&
+    !existsSync(join(projectRoot, 'jest.config.cjs')) &&
+    !existsSync(join(projectRoot, 'jest.config.ts'))
+  ) {
     return null;
   }
 
@@ -426,6 +435,28 @@ function buildTestTarget(
           },
         },
       },
+    },
+  };
+}
+
+function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration | null {
+  // optional, published-library-only types/exports validation. Not part of `build` or CI gates.
+  if (!config.packageJSON.exports) {
+    return null;
+  }
+
+  return {
+    executor: 'nx:run-commands',
+    cache: true,
+    dependsOn: ['build'],
+    options: {
+      cwd: projectRoot,
+      command: `${config.pmc.exec} attw --pack --profile node16`,
+    },
+    inputs: ['default', { externalDependencies: ['@arethetypeswrong/cli'] }],
+    metadata: {
+      description: 'Validate package types & export map with @arethetypeswrong/cli (optional)',
+      technologies: ['typescript'],
     },
   };
 }
@@ -864,7 +895,9 @@ function buildReactIntegrationTesterProjectConfiguration(
       hasTypeCheck: storybookAdjacent || libraryWithStoriesAdj,
       hasE2E: existsSync(join(projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
       hasTest:
-        (existsSync(join(projectRootPath, 'jest.config.js')) || existsSync(join(projectRootPath, 'jest.config.ts'))) &&
+        (existsSync(join(projectRootPath, 'jest.config.js')) ||
+          existsSync(join(projectRootPath, 'jest.config.cjs')) ||
+          existsSync(join(projectRootPath, 'jest.config.ts'))) &&
         !storybookAdjacent,
     };
 
