@@ -4,7 +4,7 @@
 
 _Contributors: (author: Enrico Gianoglio)_
 
-> **Status — request for engineering review.** This RFC proposes graduating the **CAP visual language** — currently shipped as `@fluentui-contrib/react-cap-theme` — into `@fluentui/react-components`, so consumers can opt in without installing a separate package. The first phase (re-exporting `CAP_STYLE_HOOKS` from the suite) has been prototyped end-to-end and its bundle-size impact has been measured against the suite's existing bundle-size fixtures (see [Bundle-size analysis](#bundle-size-analysis)).
+> **Status — request for engineering review.** This RFC proposes graduating the **CAP visual language** — currently shipped as `@fluentui-contrib/react-cap-theme` — into the Fluent v9 monorepo as a new in-repo package, `@fluentui/react-cap-theme`. The remaining decision is how consumers import `CAP_STYLE_HOOKS` (see [Distribution shape](#distribution-shape--considered-alternatives) — three candidates: separate preview package, separate stable package, or suite subpath). A prototype validated the docs-site toggle UX end-to-end and measured the bundle-size impact of an earlier suite-barrel re-export shape (see [Bundle-size analysis](#bundle-size-analysis)).
 
 ## Summary
 
@@ -81,47 +81,22 @@ Because CAP is a styling layer over Fluent components, the direction of change i
 3. Preserve bundle-size invariants for consumers who don't opt in to CAP.
 4. **Position CAP for potential graduation into the default Fluent visual language.** If a future direction is for CAP to _become_ Fluent v9's baseline look (rather than remain an opt-in overlay), having CAP already authored, released, and CI-gated inside `@fluentui/react-components` turns that transition into an easier step than starting from a separate repo: the override hooks already live next to the components they re-skin, the bundle-size and VR baselines are already established against the rest of v9, and the consumer-facing import path does not have to change. The work proposed here is the same work either way; co-location just preserves the optionality.
 
-## Proposal — phased approach
+## Proposal — internalize CAP into the Fluent v9 monorepo
 
-| Phase                             | Goal                                                                                                                                                                                |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Re-export from Fluent v9**   | `@fluentui/react-components` internally depends on `@fluentui-contrib/react-cap-theme` and re-exports `CAP_STYLE_HOOKS`. Products import CAP from Fluent. Docs site shows a toggle. |
-| **2. Move source into Fluent v9** | New `packages/react-components/react-cap-theme/` package in the Fluent monorepo. Contrib package becomes a deprecated shim re-exporting from Fluent.                                |
+Introduce a new sibling package in the Fluent v9 monorepo. **The suite does not take a dependency on `@fluentui-contrib/*`.** The remaining decision — how that package is exposed to consumers — is captured in [Distribution shape](#distribution-shape--considered-alternatives).
 
-### Phase 1 — re-export contrib from Fluent v9
+| Step                            | What lands                                                                                                                                                                                                                                                                                          |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. New in-repo package**      | Source of truth for `CAP_STYLE_HOOKS` lives in `packages/react-components/react-cap-theme/`.                                                                                                                                                                                                        |
+| **2. Move source from contrib** | The content of `@fluentui-contrib/react-cap-theme` is moved into the new in-repo package; the contrib package becomes a deprecated shim that re-exports from whichever Fluent package consumers are directed to. Fluent UI v9 Storybook site exposes the toggle regardless of which shape is chosen |
 
-`@fluentui/react-components` adds `@fluentui-contrib/react-cap-theme` as an internal dependency and re-exports the hooks map from `src/index.ts`:
+### New in-repo package — source layout
 
-```ts
-// packages/react-components/react-components/src/index.ts
-export { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme';
-```
-
-That is the entire Phase 1 change to the public API. Result for the product team:
-
-```bash
-# what they already have
-yarn add @fluentui/react-components
-```
-
-```tsx
-// what they write
-import { FluentProvider, webLightTheme, CAP_STYLE_HOOKS } from '@fluentui/react-components';
-
-<FluentProvider theme={webLightTheme} customStyleHooks_unstable={CAP_STYLE_HOOKS}>
-  <App />
-</FluentProvider>;
-```
-
-The bundle-size cost of this re-export is documented empirically in [Bundle-size analysis](#bundle-size-analysis); the headline result is **0 bytes for tree-shakable named-import consumers**.
-
-### Phase 2 — move source into Fluent v9
-
-Create a new sibling package:
+Folder layout mirrors today's contrib source so the migration is mostly a move:
 
 ```
 packages/react-components/
-  react-cap-theme/                 # new — source of truth post-Phase-2
+  react-cap-theme/                 # new — source of truth
     library/src/
       capStyleHooks.ts             # exports CAP_STYLE_HOOKS
       components/                  # per-component override hooks
@@ -131,16 +106,6 @@ packages/react-components/
         react-card/
         ...
       index.ts
-```
-
-The folder structure mirrors today's contrib source layout.
-
-`@fluentui/react-cap-theme` replaces `@fluentui-contrib/react-cap-theme` as the source. The contrib package becomes a thin re-export shim with a deprecation notice:
-
-```ts
-// fluentui-contrib/packages/react-cap-theme/src/index.ts (post-Phase-2)
-/** @deprecated Import from `@fluentui/react-components` instead. */
-export { CAP_STYLE_HOOKS } from '@fluentui/react-cap-theme';
 ```
 
 ## Distribution shape — considered alternatives
@@ -153,12 +118,14 @@ Three import shapes were considered for shipping `CAP_STYLE_HOOKS` to consumers:
 
 ## Bundle-size analysis
 
-The claim of Phase 1 was verified against the live monosize fixtures of `@fluentui/react-components` by a clean before/after comparison.
+The cost of adding `CAP_STYLE_HOOKS` to the suite barrel was verified against the live monosize fixtures of `@fluentui/react-components` by a clean before/after comparison.
+
+The prototype used `@fluentui-contrib/react-cap-theme` as the source of the re-export because the in-repo `@fluentui/react-cap-theme` package does not exist yet. The numbers below reflect the cost of the **import surface** — what gets pulled into the consumer's bundle when CAP is reachable through the suite barrel and when it is actually used. This is governed by what `monosize` measures (the minified + gzipped consumer bundle), and is independent of where the source code lives in the Fluent monorepo: the in-repo `@fluentui/react-cap-theme` package will resolve to the same per-component override modules at consumer build time as today's contrib package does, so the numbers carry over.
 
 ### Methodology
 
 - **Baseline** captured first on a clean tree by running `yarn nx run react-components:bundle-size --skip-nx-cache` against the 4 existing fixtures.
-- **Phase 1 prototype** was then applied — adding `@fluentui-contrib/react-cap-theme` as a `dependencies` entry in `packages/react-components/react-components/package.json` and a single `export { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme'` line to `src/index.ts` — followed by `yarn install` and a re-run of the same command. `--skip-nx-cache` is required because `package.json` is not in the `bundle-size` target's input list.
+- **Re-export prototype** was then applied — adding `@fluentui-contrib/react-cap-theme` as a `dependencies` entry in `packages/react-components/react-components/package.json` and a single `export { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme'` line to `src/index.ts` — followed by `yarn install` and a re-run of the same command. `--skip-nx-cache` is required because `package.json` is not in the `bundle-size` target's input list.
 - For the actual-usage measurement, a throwaway fixture (`ButtonProviderAndThemeWithCAP.fixture.js`) was added that imports `{ Button, FluentProvider, webLightTheme, CAP_STYLE_HOOKS }` together, alongside the existing `ButtonProviderAndTheme.fixture.js` which imports the same set minus `CAP_STYLE_HOOKS`. The delta between those two fixtures is the cost paid by a consumer who actually opts in to CAP.
 - All measurements use `monosize` + `monosize-bundler-webpack`, which produces a minified bundle per fixture and gzip-sizes it.
 - After the experiment, the package.json, src/index.ts, yarn.lock, auto-generated `etc/react-components.api.md` and the throwaway fixture were reverted/removed (`git checkout --` / `rm`).
@@ -193,7 +160,7 @@ To reproduce the tables above:
 # from repo root, on a clean tree → baseline numbers
 yarn nx run react-components:bundle-size --skip-nx-cache
 
-# apply the 2-line Phase 1 prototype:
+# apply the 2-line re-export prototype (stand-in for the in-repo package):
 #   1. add `"@fluentui-contrib/react-cap-theme": "^0.4.2"` to dependencies of
 #      packages/react-components/react-components/package.json
 #   2. add `export { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme';`
@@ -216,17 +183,16 @@ The goal is to give CAP a single, central place where anyone — designers, part
 
 Proposed UX (subject to docs-site team input — see [open questions](#open-questions-for-engineering-review)):
 
-- A **visual-language toggle** in the existing theme picker toolbar, **separate from the theme dropdown** (which today switches between web / teams / high-contrast / light / dark). Toggle positions: `Default` | `CAP`. Default off.
+- A **visual-language toggle** in the existing theme picker toolbar, **separate from the theme dropdown** (which today switches between web / teams / high-contrast / light / dark). Toggle positions: `Fluent` | `CAP`.
 - Toggle state is read by the docs-site's top-level `<FluentProvider>` wrapper. When `CAP` is selected, the wrapper passes `CAP_STYLE_HOOKS` to `customStyleHooks_unstable`.
 - Every component page renders with the toggle applied, so a consumer evaluating CAP can browse `<Button>`, `<Card>`, `<Menu>`, etc., in CAP without leaving the page. Visual regression of the docs-site against both toggle states should be added to the existing `vr-tests-react-components` matrix to catch CAP regressions.
-- The same toggle is also available in the local Storybook dev environment (`yarn start` on the suite). When a CAP author is implementing or tweaking an override hook, they can switch the story between `Default` and `CAP` in the same browser window — without rebuilding, without spinning up a separate CAP-only preview app, and against the exact local Fluent component code they're editing.
+- The same toggle is also available in the local Storybook dev environment. When a CAP author is implementing or tweaking an override hook, they can switch the story between `Fluent` and `CAP` in the same browser window — without rebuilding, without spinning up a separate CAP-only preview app, and against the exact local Fluent component code they're editing.
 
 A working prototype of this toggle is up for review at [microsoft/fluentui#36308](https://github.com/microsoft/fluentui/pull/36308).
 
 ## Open questions for engineering review
 
-This section lists the decisions the author needs from Fluent v9 engineering, docs-site engineering. Inline answers welcome via PR comment.
+This section lists the decisions the author needs from Fluent v9 engineering.
 
-1. **Skip Phase 1 entirely?** Phase 1 (suite re-exports from contrib while contrib remains the source of truth) is a transitional step that ships zero-install + the docs-site toggle one release earlier, but it's just an intermediate step. Should we collapse Phase 1 and Phase 2 into a single move: introduce `@fluentui/react-cap-theme` directly in the monorepo, suite re-exports `CAP_STYLE_HOOKS` from it, contrib becomes a deprecated shim re-exporting from the new package — all in one Fluent minor?
-2. **Distribution shape — confirm Option A.** Does Fluent v9 engineering agree with the main-barrel re-export (`import { CAP_STYLE_HOOKS } from '@fluentui/react-components'`) over a subpath (`import { CAP_STYLE_HOOKS } from '@fluentui/react-components/cap'`) or a separate preview package (`import { CAP_STYLE_HOOKS } from '@fluentui/react-cap-theme-preview'`)? The bundle-size data argues for Option A, but the trade-off table is ultimately a judgement call about future-proofing — see [Distribution shape — considered alternatives](#distribution-shape--considered-alternatives).
-3. **Docs-site toggle UX.** Does the docs-site team agree with the toolbar-toggle design described above?
+1. **Which distribution shape should the new in-repo package adopt?** See [Distribution shape — considered alternatives](#distribution-shape--considered-alternatives) for the three candidates: `@fluentui/react-cap-theme` (separate stable package), `@fluentui/react-cap-theme-preview` (separate preview package), or `@fluentui/react-components/cap` (suite subpath).
+2. **Docs-site toggle UX.** Does the docs-site team agree with the toolbar-toggle design described above?
