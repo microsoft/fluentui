@@ -21,6 +21,7 @@ export interface TsConfig {
 
 export interface PackageJson {
   bin?: string | Record<string, string>;
+  type?: 'module' | 'commonjs';
   types?: string;
   typings?: string;
   private?: boolean;
@@ -54,8 +55,8 @@ export interface PackageJson {
         types: string;
         style: string;
         node: string | { module: string; default: string };
-        import: string;
-        require: string;
+        import: string | { types: string; default: string };
+        require: string | { types: string; default: string };
       }>
   >;
 }
