@@ -13,6 +13,13 @@ const deterministicPort = 20000 + (hashToInt(projectRoot) % 10000);
 export const baseWebpackConfig: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
+    // Allow ESM-style `.js` import specifiers to resolve to their TS source counterparts.
+    // Required because `@fluentui/scripts-cypress` is `type: module`, which makes webpack
+    // enforce fully-specified imports (e.g. `./mount.js`) when bundling its support/browser files.
+    extensionAlias: {
+      '.js': ['.ts', '.tsx', '.js'],
+      '.jsx': ['.tsx', '.jsx'],
+    },
   },
   mode: 'development',
   devtool: 'eval',
@@ -58,7 +65,7 @@ const cypressWebpackConfig = (): Configuration => {
   baseWebpackConfig.resolve.plugins ??= [];
   baseWebpackConfig.resolve.plugins.push(
     new TsconfigPathsPlugin({
-      configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
+      configFile: path.resolve(import.meta.dirname, '../../../tsconfig.base.json'),
     }),
   );
 
@@ -83,7 +90,7 @@ interface BaseConfig extends Cypress.ConfigOptions {
  * internally prepend the __dirname, making them invalid
  *
  */
-const sharedConfigSupportRootDir = path.join(__dirname, './support');
+const sharedConfigSupportRootDir = path.join(import.meta.dirname, './support');
 const projectSupportDir = path.relative(projectRoot, sharedConfigSupportRootDir);
 
 export const baseConfig = defineConfig({
@@ -106,7 +113,7 @@ export const baseConfig = defineConfig({
   // Screenshots go under <pkg>/cypress/screenshots and can be useful to look at after failures in
   // local headless runs (especially if the failure is specific to headless runs)
   // screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
-  fixturesFolder: path.join(__dirname, './fixtures'),
+  fixturesFolder: path.join(import.meta.dirname, './fixtures'),
 }) as BaseConfig;
 
 /**
