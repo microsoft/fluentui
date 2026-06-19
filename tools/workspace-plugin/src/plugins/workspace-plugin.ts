@@ -901,12 +901,16 @@ function buildReactIntegrationTesterProjectConfiguration(
         !storybookAdjacent,
     };
 
-    const ritConfigPathLocal = join(projectRootPath, 'rit.config.js');
+    // web packages ship as `type: module`, so their CommonJS rit config uses `.cjs`; fall back to `.js`
+    const ritConfigPathLocal = [
+      resolve(projectRootPath, 'rit.config.cjs'),
+      resolve(projectRootPath, 'rit.config.js'),
+    ].find(candidate => existsSync(candidate));
 
-    if (existsSync(ritConfigPathLocal)) {
+    if (ritConfigPathLocal) {
       try {
         type RITConfig = { react: Record<string, { runConfig?: Record<string, { configPath: string }> }> };
-        const loaded = require(resolve(projectRootPath, 'rit.config.js'));
+        const loaded = require(ritConfigPathLocal);
         const rit: RITConfig = loaded?.default ?? loaded;
 
         if (rit && typeof rit === 'object' && rit.react && rit.react[reactVersion]) {
