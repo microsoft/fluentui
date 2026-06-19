@@ -2,13 +2,14 @@
   "name": "@fluentui/react-headless-components-preview",
   "version": "0.2.3",
   "description": "Fluent UI React Headless Components",
-  "main": "lib-commonjs/index.js",
+  "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "lib",
     "lib-commonjs"
   ],
@@ -76,184 +77,204 @@
   },
   "exports": {
     "./accordion": {
-      "types": "./dist/accordion.d.ts",
-      "node": {
-        "module": "./lib/accordion.js",
-        "default": "./lib-commonjs/accordion.js"
+      "import": {
+        "types": "./dist/accordion.d.ts",
+        "default": "./lib/accordion.js"
       },
-      "import": "./lib/accordion.js",
-      "require": "./lib-commonjs/accordion.js"
+      "require": {
+        "types": "./dist/accordion.d.cts",
+        "default": "./lib-commonjs/accordion.cjs"
+      }
     },
     "./avatar": {
-      "types": "./dist/avatar.d.ts",
-      "node": {
-        "module": "./lib/avatar.js",
-        "default": "./lib-commonjs/avatar.js"
+      "import": {
+        "types": "./dist/avatar.d.ts",
+        "default": "./lib/avatar.js"
       },
-      "import": "./lib/avatar.js",
-      "require": "./lib-commonjs/avatar.js"
+      "require": {
+        "types": "./dist/avatar.d.cts",
+        "default": "./lib-commonjs/avatar.cjs"
+      }
     },
     "./badge": {
-      "types": "./dist/badge.d.ts",
-      "node": {
-        "module": "./lib/badge.js",
-        "default": "./lib-commonjs/badge.js"
+      "import": {
+        "types": "./dist/badge.d.ts",
+        "default": "./lib/badge.js"
       },
-      "import": "./lib/badge.js",
-      "require": "./lib-commonjs/badge.js"
+      "require": {
+        "types": "./dist/badge.d.cts",
+        "default": "./lib-commonjs/badge.cjs"
+      }
     },
     "./breadcrumb": {
-      "types": "./dist/breadcrumb.d.ts",
-      "node": {
-        "module": "./lib/breadcrumb.js",
-        "default": "./lib-commonjs/breadcrumb.js"
+      "import": {
+        "types": "./dist/breadcrumb.d.ts",
+        "default": "./lib/breadcrumb.js"
       },
-      "import": "./lib/breadcrumb.js",
-      "require": "./lib-commonjs/breadcrumb.js"
+      "require": {
+        "types": "./dist/breadcrumb.d.cts",
+        "default": "./lib-commonjs/breadcrumb.cjs"
+      }
     },
     "./button": {
-      "types": "./dist/button.d.ts",
-      "node": {
-        "module": "./lib/button.js",
-        "default": "./lib-commonjs/button.js"
+      "import": {
+        "types": "./dist/button.d.ts",
+        "default": "./lib/button.js"
       },
-      "import": "./lib/button.js",
-      "require": "./lib-commonjs/button.js"
+      "require": {
+        "types": "./dist/button.d.cts",
+        "default": "./lib-commonjs/button.cjs"
+      }
     },
     "./card": {
-      "types": "./dist/card.d.ts",
-      "node": {
-        "module": "./lib/card.js",
-        "default": "./lib-commonjs/card.js"
+      "import": {
+        "types": "./dist/card.d.ts",
+        "default": "./lib/card.js"
       },
-      "import": "./lib/card.js",
-      "require": "./lib-commonjs/card.js"
+      "require": {
+        "types": "./dist/card.d.cts",
+        "default": "./lib-commonjs/card.cjs"
+      }
     },
     "./checkbox": {
-      "types": "./dist/checkbox.d.ts",
-      "node": {
-        "module": "./lib/checkbox.js",
-        "default": "./lib-commonjs/checkbox.js"
+      "import": {
+        "types": "./dist/checkbox.d.ts",
+        "default": "./lib/checkbox.js"
       },
-      "import": "./lib/checkbox.js",
-      "require": "./lib-commonjs/checkbox.js"
+      "require": {
+        "types": "./dist/checkbox.d.cts",
+        "default": "./lib-commonjs/checkbox.cjs"
+      }
     },
     "./combobox": {
-      "types": "./dist/combobox.d.ts",
-      "node": {
-        "module": "./lib/combobox.js",
-        "default": "./lib-commonjs/combobox.js"
+      "import": {
+        "types": "./dist/combobox.d.ts",
+        "default": "./lib/combobox.js"
       },
-      "import": "./lib/combobox.js",
-      "require": "./lib-commonjs/combobox.js"
+      "require": {
+        "types": "./dist/combobox.d.cts",
+        "default": "./lib-commonjs/combobox.cjs"
+      }
     },
     "./dialog": {
-      "types": "./dist/dialog.d.ts",
-      "node": {
-        "module": "./lib/dialog.js",
-        "default": "./lib-commonjs/dialog.js"
+      "import": {
+        "types": "./dist/dialog.d.ts",
+        "default": "./lib/dialog.js"
       },
-      "import": "./lib/dialog.js",
-      "require": "./lib-commonjs/dialog.js"
+      "require": {
+        "types": "./dist/dialog.d.cts",
+        "default": "./lib-commonjs/dialog.cjs"
+      }
     },
     "./divider": {
-      "types": "./dist/divider.d.ts",
-      "node": {
-        "module": "./lib/divider.js",
-        "default": "./lib-commonjs/divider.js"
+      "import": {
+        "types": "./dist/divider.d.ts",
+        "default": "./lib/divider.js"
       },
-      "import": "./lib/divider.js",
-      "require": "./lib-commonjs/divider.js"
+      "require": {
+        "types": "./dist/divider.d.cts",
+        "default": "./lib-commonjs/divider.cjs"
+      }
     },
     "./drawer": {
-      "types": "./dist/drawer.d.ts",
-      "node": {
-        "module": "./lib/drawer.js",
-        "default": "./lib-commonjs/drawer.js"
+      "import": {
+        "types": "./dist/drawer.d.ts",
+        "default": "./lib/drawer.js"
       },
-      "import": "./lib/drawer.js",
-      "require": "./lib-commonjs/drawer.js"
+      "require": {
+        "types": "./dist/drawer.d.cts",
+        "default": "./lib-commonjs/drawer.cjs"
+      }
     },
     "./dropdown": {
-      "types": "./dist/dropdown.d.ts",
-      "node": {
-        "module": "./lib/dropdown.js",
-        "default": "./lib-commonjs/dropdown.js"
+      "import": {
+        "types": "./dist/dropdown.d.ts",
+        "default": "./lib/dropdown.js"
       },
-      "import": "./lib/dropdown.js",
-      "require": "./lib-commonjs/dropdown.js"
+      "require": {
+        "types": "./dist/dropdown.d.cts",
+        "default": "./lib-commonjs/dropdown.cjs"
+      }
     },
     "./field": {
-      "types": "./dist/field.d.ts",
-      "node": {
-        "module": "./lib/field.js",
-        "default": "./lib-commonjs/field.js"
+      "import": {
+        "types": "./dist/field.d.ts",
+        "default": "./lib/field.js"
       },
-      "import": "./lib/field.js",
-      "require": "./lib-commonjs/field.js"
+      "require": {
+        "types": "./dist/field.d.cts",
+        "default": "./lib-commonjs/field.cjs"
+      }
     },
     "./image": {
-      "types": "./dist/image.d.ts",
-      "node": {
-        "module": "./lib/image.js",
-        "default": "./lib-commonjs/image.js"
+      "import": {
+        "types": "./dist/image.d.ts",
+        "default": "./lib/image.js"
       },
-      "import": "./lib/image.js",
-      "require": "./lib-commonjs/image.js"
+      "require": {
+        "types": "./dist/image.d.cts",
+        "default": "./lib-commonjs/image.cjs"
+      }
     },
     "./info-label": {
-      "types": "./dist/info-label.d.ts",
-      "node": {
-        "module": "./lib/info-label.js",
-        "default": "./lib-commonjs/info-label.js"
+      "import": {
+        "types": "./dist/info-label.d.ts",
+        "default": "./lib/info-label.js"
       },
-      "import": "./lib/info-label.js",
-      "require": "./lib-commonjs/info-label.js"
+      "require": {
+        "types": "./dist/info-label.d.cts",
+        "default": "./lib-commonjs/info-label.cjs"
+      }
     },
     "./input": {
-      "types": "./dist/input.d.ts",
-      "node": {
-        "module": "./lib/input.js",
-        "default": "./lib-commonjs/input.js"
+      "import": {
+        "types": "./dist/input.d.ts",
+        "default": "./lib/input.js"
       },
-      "import": "./lib/input.js",
-      "require": "./lib-commonjs/input.js"
+      "require": {
+        "types": "./dist/input.d.cts",
+        "default": "./lib-commonjs/input.cjs"
+      }
     },
     "./interaction-tag": {
-      "types": "./dist/interaction-tag.d.ts",
-      "node": {
-        "module": "./lib/interaction-tag.js",
-        "default": "./lib-commonjs/interaction-tag.js"
+      "import": {
+        "types": "./dist/interaction-tag.d.ts",
+        "default": "./lib/interaction-tag.js"
       },
-      "import": "./lib/interaction-tag.js",
-      "require": "./lib-commonjs/interaction-tag.js"
+      "require": {
+        "types": "./dist/interaction-tag.d.cts",
+        "default": "./lib-commonjs/interaction-tag.cjs"
+      }
     },
     "./label": {
-      "types": "./dist/label.d.ts",
-      "node": {
-        "module": "./lib/label.js",
-        "default": "./lib-commonjs/label.js"
+      "import": {
+        "types": "./dist/label.d.ts",
+        "default": "./lib/label.js"
       },
-      "import": "./lib/label.js",
-      "require": "./lib-commonjs/label.js"
+      "require": {
+        "types": "./dist/label.d.cts",
+        "default": "./lib-commonjs/label.cjs"
+      }
     },
     "./link": {
-      "types": "./dist/link.d.ts",
-      "node": {
-        "module": "./lib/link.js",
-        "default": "./lib-commonjs/link.js"
+      "import": {
+        "types": "./dist/link.d.ts",
+        "default": "./lib/link.js"
       },
-      "import": "./lib/link.js",
-      "require": "./lib-commonjs/link.js"
+      "require": {
+        "types": "./dist/link.d.cts",
+        "default": "./lib-commonjs/link.cjs"
+      }
     },
     "./menu": {
-      "types": "./dist/menu.d.ts",
-      "node": {
-        "module": "./lib/menu.js",
-        "default": "./lib-commonjs/menu.js"
+      "import": {
+        "types": "./dist/menu.d.ts",
+        "default": "./lib/menu.js"
       },
-      "import": "./lib/menu.js",
-      "require": "./lib-commonjs/menu.js"
+      "require": {
+        "types": "./dist/menu.d.cts",
+        "default": "./lib-commonjs/menu.cjs"
+      }
     },
     "./menu-button": {
       "types": "./dist/menu-button.d.ts",
@@ -262,22 +283,24 @@
       "require": "./lib-commonjs/menu-button.js"
     },
     "./message-bar": {
-      "types": "./dist/message-bar.d.ts",
-      "node": {
-        "module": "./lib/message-bar.js",
-        "default": "./lib-commonjs/message-bar.js"
+      "import": {
+        "types": "./dist/message-bar.d.ts",
+        "default": "./lib/message-bar.js"
       },
-      "import": "./lib/message-bar.js",
-      "require": "./lib-commonjs/message-bar.js"
+      "require": {
+        "types": "./dist/message-bar.d.cts",
+        "default": "./lib-commonjs/message-bar.cjs"
+      }
     },
     "./nav": {
-      "types": "./dist/nav.d.ts",
-      "node": {
-        "module": "./lib/nav.js",
-        "default": "./lib-commonjs/nav.js"
+      "import": {
+        "types": "./dist/nav.d.ts",
+        "default": "./lib/nav.js"
       },
-      "import": "./lib/nav.js",
-      "require": "./lib-commonjs/nav.js"
+      "require": {
+        "types": "./dist/nav.d.cts",
+        "default": "./lib-commonjs/nav.cjs"
+      }
     },
     "./overflow": {
       "types": "./dist/overflow.d.ts",
@@ -286,220 +309,244 @@
       "require": "./lib-commonjs/overflow.js"
     },
     "./persona": {
-      "types": "./dist/persona.d.ts",
-      "node": {
-        "module": "./lib/persona.js",
-        "default": "./lib-commonjs/persona.js"
+      "import": {
+        "types": "./dist/persona.d.ts",
+        "default": "./lib/persona.js"
       },
-      "import": "./lib/persona.js",
-      "require": "./lib-commonjs/persona.js"
+      "require": {
+        "types": "./dist/persona.d.cts",
+        "default": "./lib-commonjs/persona.cjs"
+      }
     },
     "./popover": {
-      "types": "./dist/popover.d.ts",
-      "node": {
-        "module": "./lib/popover.js",
-        "default": "./lib-commonjs/popover.js"
+      "import": {
+        "types": "./dist/popover.d.ts",
+        "default": "./lib/popover.js"
       },
-      "import": "./lib/popover.js",
-      "require": "./lib-commonjs/popover.js"
+      "require": {
+        "types": "./dist/popover.d.cts",
+        "default": "./lib-commonjs/popover.cjs"
+      }
     },
     "./positioning": {
-      "types": "./dist/positioning.d.ts",
-      "node": {
-        "module": "./lib/positioning.js",
-        "default": "./lib-commonjs/positioning.js"
+      "import": {
+        "types": "./dist/positioning.d.ts",
+        "default": "./lib/positioning.js"
       },
-      "import": "./lib/positioning.js",
-      "require": "./lib-commonjs/positioning.js"
+      "require": {
+        "types": "./dist/positioning.d.cts",
+        "default": "./lib-commonjs/positioning.cjs"
+      }
     },
     "./progress-bar": {
-      "types": "./dist/progress-bar.d.ts",
-      "node": {
-        "module": "./lib/progress-bar.js",
-        "default": "./lib-commonjs/progress-bar.js"
+      "import": {
+        "types": "./dist/progress-bar.d.ts",
+        "default": "./lib/progress-bar.js"
       },
-      "import": "./lib/progress-bar.js",
-      "require": "./lib-commonjs/progress-bar.js"
+      "require": {
+        "types": "./dist/progress-bar.d.cts",
+        "default": "./lib-commonjs/progress-bar.cjs"
+      }
     },
     "./provider": {
-      "types": "./dist/provider.d.ts",
-      "node": {
-        "module": "./lib/provider.js",
-        "default": "./lib-commonjs/provider.js"
+      "import": {
+        "types": "./dist/provider.d.ts",
+        "default": "./lib/provider.js"
       },
-      "import": "./lib/provider.js",
-      "require": "./lib-commonjs/provider.js"
+      "require": {
+        "types": "./dist/provider.d.cts",
+        "default": "./lib-commonjs/provider.cjs"
+      }
     },
     "./radio-group": {
-      "types": "./dist/radio-group.d.ts",
-      "node": {
-        "module": "./lib/radio-group.js",
-        "default": "./lib-commonjs/radio-group.js"
+      "import": {
+        "types": "./dist/radio-group.d.ts",
+        "default": "./lib/radio-group.js"
       },
-      "import": "./lib/radio-group.js",
-      "require": "./lib-commonjs/radio-group.js"
+      "require": {
+        "types": "./dist/radio-group.d.cts",
+        "default": "./lib-commonjs/radio-group.cjs"
+      }
     },
     "./rating": {
-      "types": "./dist/rating.d.ts",
-      "node": {
-        "module": "./lib/rating.js",
-        "default": "./lib-commonjs/rating.js"
+      "import": {
+        "types": "./dist/rating.d.ts",
+        "default": "./lib/rating.js"
       },
-      "import": "./lib/rating.js",
-      "require": "./lib-commonjs/rating.js"
+      "require": {
+        "types": "./dist/rating.d.cts",
+        "default": "./lib-commonjs/rating.cjs"
+      }
     },
     "./rating-display": {
-      "types": "./dist/rating-display.d.ts",
-      "node": {
-        "module": "./lib/rating-display.js",
-        "default": "./lib-commonjs/rating-display.js"
+      "import": {
+        "types": "./dist/rating-display.d.ts",
+        "default": "./lib/rating-display.js"
       },
-      "import": "./lib/rating-display.js",
-      "require": "./lib-commonjs/rating-display.js"
+      "require": {
+        "types": "./dist/rating-display.d.cts",
+        "default": "./lib-commonjs/rating-display.cjs"
+      }
     },
     "./search-box": {
-      "types": "./dist/search-box.d.ts",
-      "node": {
-        "module": "./lib/search-box.js",
-        "default": "./lib-commonjs/search-box.js"
+      "import": {
+        "types": "./dist/search-box.d.ts",
+        "default": "./lib/search-box.js"
       },
-      "import": "./lib/search-box.js",
-      "require": "./lib-commonjs/search-box.js"
+      "require": {
+        "types": "./dist/search-box.d.cts",
+        "default": "./lib-commonjs/search-box.cjs"
+      }
     },
     "./select": {
-      "types": "./dist/select.d.ts",
-      "node": {
-        "module": "./lib/select.js",
-        "default": "./lib-commonjs/select.js"
+      "import": {
+        "types": "./dist/select.d.ts",
+        "default": "./lib/select.js"
       },
-      "import": "./lib/select.js",
-      "require": "./lib-commonjs/select.js"
+      "require": {
+        "types": "./dist/select.d.cts",
+        "default": "./lib-commonjs/select.cjs"
+      }
     },
     "./skeleton": {
-      "types": "./dist/skeleton.d.ts",
-      "node": {
-        "module": "./lib/skeleton.js",
-        "default": "./lib-commonjs/skeleton.js"
+      "import": {
+        "types": "./dist/skeleton.d.ts",
+        "default": "./lib/skeleton.js"
       },
-      "import": "./lib/skeleton.js",
-      "require": "./lib-commonjs/skeleton.js"
+      "require": {
+        "types": "./dist/skeleton.d.cts",
+        "default": "./lib-commonjs/skeleton.cjs"
+      }
     },
     "./slider": {
-      "types": "./dist/slider.d.ts",
-      "node": {
-        "module": "./lib/slider.js",
-        "default": "./lib-commonjs/slider.js"
+      "import": {
+        "types": "./dist/slider.d.ts",
+        "default": "./lib/slider.js"
       },
-      "import": "./lib/slider.js",
-      "require": "./lib-commonjs/slider.js"
+      "require": {
+        "types": "./dist/slider.d.cts",
+        "default": "./lib-commonjs/slider.cjs"
+      }
     },
     "./spin-button": {
-      "types": "./dist/spin-button.d.ts",
-      "node": {
-        "module": "./lib/spin-button.js",
-        "default": "./lib-commonjs/spin-button.js"
+      "import": {
+        "types": "./dist/spin-button.d.ts",
+        "default": "./lib/spin-button.js"
       },
-      "import": "./lib/spin-button.js",
-      "require": "./lib-commonjs/spin-button.js"
+      "require": {
+        "types": "./dist/spin-button.d.cts",
+        "default": "./lib-commonjs/spin-button.cjs"
+      }
     },
     "./spinner": {
-      "types": "./dist/spinner.d.ts",
-      "node": {
-        "module": "./lib/spinner.js",
-        "default": "./lib-commonjs/spinner.js"
+      "import": {
+        "types": "./dist/spinner.d.ts",
+        "default": "./lib/spinner.js"
       },
-      "import": "./lib/spinner.js",
-      "require": "./lib-commonjs/spinner.js"
+      "require": {
+        "types": "./dist/spinner.d.cts",
+        "default": "./lib-commonjs/spinner.cjs"
+      }
     },
     "./switch": {
-      "types": "./dist/switch.d.ts",
-      "node": {
-        "module": "./lib/switch.js",
-        "default": "./lib-commonjs/switch.js"
+      "import": {
+        "types": "./dist/switch.d.ts",
+        "default": "./lib/switch.js"
       },
-      "import": "./lib/switch.js",
-      "require": "./lib-commonjs/switch.js"
+      "require": {
+        "types": "./dist/switch.d.cts",
+        "default": "./lib-commonjs/switch.cjs"
+      }
     },
     "./tab-list": {
-      "types": "./dist/tab-list.d.ts",
-      "node": {
-        "module": "./lib/tab-list.js",
-        "default": "./lib-commonjs/tab-list.js"
+      "import": {
+        "types": "./dist/tab-list.d.ts",
+        "default": "./lib/tab-list.js"
       },
-      "import": "./lib/tab-list.js",
-      "require": "./lib-commonjs/tab-list.js"
+      "require": {
+        "types": "./dist/tab-list.d.cts",
+        "default": "./lib-commonjs/tab-list.cjs"
+      }
     },
     "./tag": {
-      "types": "./dist/tag.d.ts",
-      "node": {
-        "module": "./lib/tag.js",
-        "default": "./lib-commonjs/tag.js"
+      "import": {
+        "types": "./dist/tag.d.ts",
+        "default": "./lib/tag.js"
       },
-      "import": "./lib/tag.js",
-      "require": "./lib-commonjs/tag.js"
+      "require": {
+        "types": "./dist/tag.d.cts",
+        "default": "./lib-commonjs/tag.cjs"
+      }
     },
     "./tag-group": {
-      "types": "./dist/tag-group.d.ts",
-      "node": {
-        "module": "./lib/tag-group.js",
-        "default": "./lib-commonjs/tag-group.js"
+      "import": {
+        "types": "./dist/tag-group.d.ts",
+        "default": "./lib/tag-group.js"
       },
-      "import": "./lib/tag-group.js",
-      "require": "./lib-commonjs/tag-group.js"
+      "require": {
+        "types": "./dist/tag-group.d.cts",
+        "default": "./lib-commonjs/tag-group.cjs"
+      }
     },
     "./teaching-popover": {
-      "types": "./dist/teaching-popover.d.ts",
-      "node": {
-        "module": "./lib/teaching-popover.js",
-        "default": "./lib-commonjs/teaching-popover.js"
+      "import": {
+        "types": "./dist/teaching-popover.d.ts",
+        "default": "./lib/teaching-popover.js"
       },
-      "import": "./lib/teaching-popover.js",
-      "require": "./lib-commonjs/teaching-popover.js"
+      "require": {
+        "types": "./dist/teaching-popover.d.cts",
+        "default": "./lib-commonjs/teaching-popover.cjs"
+      }
     },
     "./textarea": {
-      "types": "./dist/textarea.d.ts",
-      "node": {
-        "module": "./lib/textarea.js",
-        "default": "./lib-commonjs/textarea.js"
+      "import": {
+        "types": "./dist/textarea.d.ts",
+        "default": "./lib/textarea.js"
       },
-      "import": "./lib/textarea.js",
-      "require": "./lib-commonjs/textarea.js"
+      "require": {
+        "types": "./dist/textarea.d.cts",
+        "default": "./lib-commonjs/textarea.cjs"
+      }
     },
     "./toast": {
-      "types": "./dist/toast.d.ts",
-      "node": {
-        "module": "./lib/toast.js",
-        "default": "./lib-commonjs/toast.js"
+      "import": {
+        "types": "./dist/toast.d.ts",
+        "default": "./lib/toast.js"
       },
-      "import": "./lib/toast.js",
-      "require": "./lib-commonjs/toast.js"
+      "require": {
+        "types": "./dist/toast.d.cts",
+        "default": "./lib-commonjs/toast.cjs"
+      }
     },
     "./toggle-button": {
-      "types": "./dist/toggle-button.d.ts",
-      "node": {
-        "module": "./lib/toggle-button.js",
-        "default": "./lib-commonjs/toggle-button.js"
+      "import": {
+        "types": "./dist/toggle-button.d.ts",
+        "default": "./lib/toggle-button.js"
       },
-      "import": "./lib/toggle-button.js",
-      "require": "./lib-commonjs/toggle-button.js"
+      "require": {
+        "types": "./dist/toggle-button.d.cts",
+        "default": "./lib-commonjs/toggle-button.cjs"
+      }
     },
     "./toolbar": {
-      "types": "./dist/toolbar.d.ts",
-      "node": {
-        "module": "./lib/toolbar.js",
-        "default": "./lib-commonjs/toolbar.js"
+      "import": {
+        "types": "./dist/toolbar.d.ts",
+        "default": "./lib/toolbar.js"
       },
-      "import": "./lib/toolbar.js",
-      "require": "./lib-commonjs/toolbar.js"
+      "require": {
+        "types": "./dist/toolbar.d.cts",
+        "default": "./lib-commonjs/toolbar.cjs"
+      }
     },
     "./tooltip": {
-      "types": "./dist/tooltip.d.ts",
-      "node": {
-        "module": "./lib/tooltip.js",
-        "default": "./lib-commonjs/tooltip.js"
+      "import": {
+        "types": "./dist/tooltip.d.ts",
+        "default": "./lib/tooltip.js"
       },
-      "import": "./lib/tooltip.js",
-      "require": "./lib-commonjs/tooltip.js"
+      "require": {
+        "types": "./dist/tooltip.d.cts",
+        "default": "./lib-commonjs/tooltip.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -512,5 +559,6 @@
   "devDependencies": {
     "@fluentui/scripts-cypress": "*",
     "@oddbird/popover-polyfill": "^0.6.1"
-  }
+  },
+  "type": "module"
 }
