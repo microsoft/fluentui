@@ -84,9 +84,9 @@ Because CAP is a styling layer over Fluent components, the direction of change i
 ## Proposal — phased approach
 
 | Phase                             | Goal                                                                                                                                                                                |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **1. Re-export from Fluent v9**   | `@fluentui/react-components` internally depends on `@fluentui-contrib/react-cap-theme` and re-exports `CAP_STYLE_HOOKS`. Products import CAP from Fluent. Docs site shows a toggle. |
-| **2. Move source into Fluent v9** | New `packages/react-components/react-cap-theme/` package in the Fluent monorepo. Contrib package becomes a deprecated shim re-exporting from Fluent.                                |     |
+| **2. Move source into Fluent v9** | New `packages/react-components/react-cap-theme/` package in the Fluent monorepo. Contrib package becomes a deprecated shim re-exporting from Fluent.                                |
 
 ### Phase 1 — re-export contrib from Fluent v9
 
