@@ -33,7 +33,7 @@ export function getMinimumVersions(): Record<string, string | null> {
 
     for (const key of NATIVE_FEATURES) {
       const version = features[key].support[browser];
-      if (version == null) {
+      if (version === null || version === undefined) {
         // Feature never shipped in this browser — exclude it from the "by default" floor.
         continue;
       }
