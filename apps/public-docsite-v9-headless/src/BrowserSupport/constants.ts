@@ -47,7 +47,7 @@ export const FEATURE_DETAILS: Record<ConceptKey, FeatureDetail> = {
     usage:
       'Renders overlays in the top layer with native light-dismiss and stacking, avoiding portals and manual z-index management.',
     fallback:
-      "Components detect support via `CSS.supports('selector(:popover-open)')`. Where the Popover API is unavailable they fall back to `dialog.show()` or inline rendering and log a dev warning recommending a popover polyfill.",
+      "Components detect support via `CSS.supports('selector(:popover-open)')`. Coverage on older browsers needs a polyfill: only non-modal `Dialog` surfaces fall back to `dialog.show()`; `Popover` and `Menu` surfaces render in place and `Tooltip` logs a development warning.",
   },
   dialog: {
     referenceUrl: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog',
@@ -59,16 +59,16 @@ export const FEATURE_DETAILS: Record<ConceptKey, FeatureDetail> = {
   'anchor-positioning': {
     referenceUrl: 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning',
     usage:
-      'Positions overlays relative to their trigger via `anchor-name` / `position-anchor` / `position-area`, with `position-try-fallbacks` for flipping. The properties land in browsers individually — see the matrix below.',
+      'Positions overlays relative to their trigger via `anchor-name` / `position-anchor` / `position-area`, with `position-try-fallbacks` for flipping. The properties land in browsers individually — see the matrix above.',
     fallback:
-      'This is the newest feature and is not yet uniformly Baseline. A JavaScript positioning fallback keeps anchored components usable in browsers without CSS anchor positioning.',
+      'This is the newest feature and is not yet uniformly Baseline. The headless components do not include a JavaScript positioning fallback, so overlays render at their static position on browsers without CSS anchor positioning — add a polyfill to keep them anchored.',
   },
   focusgroup: {
     referenceUrl: 'https://open-ui.org/components/scoped-focusgroup.explainer/',
     usage:
       'Provides roving arrow-key focus navigation via the `focusgroup` attribute, replacing manual keyboard event handlers.',
     fallback:
-      'Not yet available in any browser. The headless components ship the Microsoft `focusgroup` polyfill (`@microsoft/focusgroup-polyfill`, applied globally) so keyboard navigation works today.',
+      'Not yet available in any browser, and the published headless library does not apply a polyfill on your behalf. Add the Microsoft `focusgroup` polyfill (`@microsoft/focusgroup-polyfill`) so keyboard navigation works today.',
     polyfill: 'Microsoft focusgroup polyfill',
   },
 };
