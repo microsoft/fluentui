@@ -1,10 +1,8 @@
 import { browsers, features, MATRIX_ORDER } from '../constants';
 import type { FeatureKey } from '../types';
 
-/** Features that ship natively in at least one browser and gate "works by default". */
 const NATIVE_FEATURES: FeatureKey[] = MATRIX_ORDER;
 
-/** Compare dotted numeric versions (e.g. "15.4" vs "116"). Returns >0 if a > b. */
 export function compareVersions(a: string, b: string): number {
   const pa = a.split('.').map(Number);
   const pb = b.split('.').map(Number);
@@ -18,13 +16,6 @@ export function compareVersions(a: string, b: string): number {
   return 0;
 }
 
-/**
- * Per browser, the minimum version where every natively-shipping feature is supported —
- * i.e. the MAX of each feature's minimum supporting version. Features that never shipped in a
- * browser (e.g. focusgroup, unsupported everywhere) are excluded from that browser's floor and
- * surfaced separately as an "always needs a polyfill" caveat in the docs. A browser whose
- * considered features are all unsupported yields `null`.
- */
 export function getMinimumVersions(): Record<string, string | null> {
   const result: Record<string, string | null> = {};
 
