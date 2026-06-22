@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { BrowserSupportMatrix } from './BrowserSupport/BrowserSupportMatrix';
+
+<Meta title="Overview/Polyfills & fallbacks" />
+
+# Polyfills & fallbacks
+
+To support browsers that lack the underlying web-platform features (see
+[Browser support](?path=/docs/overview-browser-support--docs)), add a polyfill for the feature you
+need. Every component detects support at runtime, so a polyfill takes effect automatically once it is
+loaded. The matrix below shows where each feature is available; the sections after it explain what to
+do for each one.
+
+<BrowserSupportMatrix />
+
+## focusgroup
+
+Roving arrow-key navigation uses the `focusgroup` attribute, which no browser supports natively yet,
+and the published library does not apply a polyfill for you. Add the Microsoft
+[`@microsoft/focusgroup-polyfill`](https://github.com/microsoft/polyfills/tree/main/packages/focusgroup) —
+it is progressive and no-ops once browsers ship native support. Without it, arrow-key navigation does
+not work.
+
+## Popover API
+
+Overlays render in the top layer using the Popover API. On browsers without it, only non-modal
+`Dialog` surfaces fall back to `dialog.show()`; `Popover` and `Menu` surfaces render in place and
+`Tooltip` logs a development warning. For full coverage on older browsers, add a polyfill. Detect
+support and load it before Fluent UI, for example:
+
+```js
+if (!CSS.supports('selector(:popover-open)')) {
+  await import('your-popover-polyfill');
+}
+```
+
+## CSS anchor positioning
+
+Overlays are positioned relative to their trigger with CSS anchor positioning. The headless library
+does **not** include a JavaScript positioning fallback, so without support these overlays render at
+their static position. Add a polyfill and load it before Fluent UI, for example:
+
+```js
+if (!CSS.supports('anchor-name: --x')) {
+  // load your CSS anchor positioning polyfill here, before Fluent UI renders
+}
+```
