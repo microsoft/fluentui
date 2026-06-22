@@ -26,18 +26,19 @@ Sort oldest-first — the guidelines prioritize the longest-waiting issues.
 
 For every issue, you're producing a **recommendation** with these fields:
 
-| Field                  | Possible values                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`     |
-| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`                                  |
-| `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                  |
-| `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                    |
-| `add_labels`           | list of label names to add                                                           |
-| `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged)   |
-| `assignee`             | GitHub login of the area owner (see routing table below)                             |
-| `comment`              | optional message to leave for the author (required if asking for more info)          |
-| `validation_candidate` | `true` / `false` — does this bug warrant a playwright-cli repro check before triage? |
-| `needs_human_followup` | anything you're unsure about — surface it, don't paper over it                       |
+| Field                  | Possible values                                                                                                                                                                         |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `classification`       | `bug`, `feature`, `question`, `a11y`, `needs-repro`, `duplicate`, `not-an-issue`                                                                                                        |
+| `product`              | `v9`, `v8`, `web-components`, `charting`, `unknown`                                                                                                                                     |
+| `is_partner_ask`       | `true` / `false` (see `references/partner-orgs.md`)                                                                                                                                     |
+| `priority_signal`      | `p1`, `normal`, `help-wanted`, `good-first-issue`                                                                                                                                       |
+| `add_labels`           | list of label names to add                                                                                                                                                              |
+| `remove_labels`        | list of label names to remove (always includes `Needs: Triage :mag:` once triaged)                                                                                                      |
+| `assignee`             | GitHub login of the area owner (see routing table below)                                                                                                                                |
+| `project_team`         | `Team` value on the **Fluent UI - Unified** board (#395), e.g. `cxe-prg`; `n/a` for web-components (board #652 has no Team field) — see [Project board routing](#project-board-routing) |
+| `comment`              | optional message to leave for the author (required if asking for more info)                                                                                                             |
+| `validation_candidate` | `true` / `false` — does this bug warrant a playwright-cli repro check before triage?                                                                                                    |
+| `needs_human_followup` | anything you're unsure about — surface it, don't paper over it                                                                                                                          |
 
 Don't invent labels. Every label you recommend must exist in the repo — see `references/triage-labels.md` for the allow-list.
 
@@ -84,6 +85,40 @@ grep -n 'react-skeleton' .github/CODEOWNERS || true
 
 If CODEOWNERS lists a team (e.g., `@microsoft/cxe-prg`), leave `assignee` empty and put the team in `needs_human_followup` — teams can't be assigned on issues via `gh`, so the user will route manually.
 
+## Project board routing
+
+Triaged issues are tracked on GitHub Project boards, and most are **auto-added** by repo automation. Two boards matter for triage:
+
+| Board                        | Project # | Team field?               | What lands here                               |
+| ---------------------------- | --------- | ------------------------- | --------------------------------------------- |
+| **Fluent UI - Unified**      | `395`     | ✅ `Team` (single-select) | React v8/v9 issues                            |
+| **@fluentui Web Components** | `652`     | ❌ none (single-team)     | `web-components` / `Fluent UI WC (v3)` issues |
+
+For React issues on **#395**, set `project_team` to the team that owns the package. Map the package's CODEOWNERS team to a `Team` option:
+
+| CODEOWNERS team / area                | `Team` option on #395                |
+| ------------------------------------- | ------------------------------------ |
+| `@microsoft/cxe-prg`                  | `cxe-prg`                            |
+| `@microsoft/cxe-red`                  | `cxe-red`                            |
+| Accessibility (the "v-a11y board")    | `v-a11y` (in addition to `smhigley`) |
+| Theming / `@microsoft/xc-uxe`         | `xc-uxe`                             |
+| Motion                                | `fluentui-motion`                    |
+| Community-contributed                 | `contributor`                        |
+| web-components (only if also on #395) | `cxe-coastal`                        |
+
+Other options exist (`teams-prg`, `v-build`, `v-migration`, `v-perf`, `v-pm`). When the CODEOWNERS team doesn't obviously map, **don't guess** — check how sibling issues on the same package are tagged on the board, or flag `needs_human_followup`. Refresh the option list any time:
+
+```bash
+gh api graphql -f query='
+{ organization(login:"microsoft"){ projectV2(number:395){
+    field(name:"Team"){ ... on ProjectV2SingleSelectField { options { name } } }
+}}}'
+```
+
+**Web-components issues** route to board **#652**, which has no Team field, so `project_team` is `n/a` — there's nothing to set.
+
+> Automation sets the `Team` for the large majority of #395 items, but a few percent slip through. In Step 5.5 you **verify** the Team and only write it if it's empty or wrong — never blindly overwrite a value automation already set.
+
 ## Priority and partner-ask signals
 
 Every issue goes through the same decision tree regardless of author — that's the default. `Shield: P1` and `Partner Ask` are narrow exceptions, not shortcuts around triage.
@@ -125,7 +160,7 @@ Keep each issue's classification in an in-memory structure (don't write intermed
 
 ### Step 3 — Present recommendations
 
-Produce a compact table the user can scan. One row per issue. Columns: `#`, `classification`, `add labels`, `remove labels`, `assignee`, `priority`, `notes`. Put the `comment` drafts separately below the table, keyed by issue number — comments are long and clutter the table.
+Produce a compact table the user can scan. One row per issue. Columns: `#`, `classification`, `add labels`, `remove labels`, `assignee`, `team`, `priority`, `notes`. Put the `comment` drafts separately below the table, keyed by issue number — comments are long and clutter the table.
 
 If you found duplicates or partner asks, call them out explicitly above the table.
 
@@ -238,9 +273,51 @@ EOF
 )"
 ```
 
+### Step 5.5 — Set the project `Team` field (React issues only)
+
+For each approved React issue, make sure it's on **Fluent UI - Unified (#395)** with the right `Team` (see [Project board routing](#project-board-routing)). Skip web-components issues — board #652 has no Team field, so `project_team` is `n/a`.
+
+First, check whether the issue is already on #395 and whether `Team` is set — don't overwrite a value automation already set correctly:
+
+```bash
+gh api graphql -f query='
+{ repository(owner:"microsoft", name:"fluentui"){ issue(number: <NUM>){
+    projectItems(first: 10){ nodes {
+      id
+      project { number }
+      team: fieldValueByName(name:"Team"){ ... on ProjectV2ItemFieldSingleSelectValue { name } }
+    }}
+}}}'
+```
+
+- If there's **no item for project 395**, add it (captures the new item id in the output):
+
+  ```bash
+  gh project item-add 395 --owner microsoft \
+    --url https://github.com/microsoft/fluentui/issues/<NUM>
+  ```
+
+- If `Team` is **already correct**, do nothing. If it's **empty or wrong**, set it. The project id and `Team` field id are stable; option ids are below (refresh with the routing query if they ever change):
+
+  ```bash
+  # project id:    PVT_kwDOAF3p4s4AD4d_
+  # Team field id: PVTSSF_lADOAF3p4s4AD4d_zgCPFLY
+  # option ids:    cxe-prg=5aacad01      cxe-red=d78a8f20       cxe-coastal=40933abb
+  #                teams-prg=64f7bd9e    v-a11y=4eda3bd1        v-build=82c4d92c
+  #                v-migration=3a22f81f  v-perf=15907658        v-pm=96a8ae0f
+  #                contributor=fe8e8988  xc-uxe=e7e0e0e0        fluentui-motion=207075c9
+  gh project item-edit \
+    --id <PROJECT_ITEM_ID> \
+    --project-id PVT_kwDOAF3p4s4AD4d_ \
+    --field-id PVTSSF_lADOAF3p4s4AD4d_zgCPFLY \
+    --single-select-option-id <OPTION_ID>
+  ```
+
+Print a one-line result per issue (e.g. `#36331 Team=cxe-prg (already set)`). Setting the field needs the `project` token scope; if `gh` reports a scope or permission error, flag it for the user rather than retrying.
+
 ### Step 6 — Summarize
 
-After applying, print: X issues triaged, Y still need human follow-up (list them), Z were skipped. Leave the user with a clear handoff.
+After applying, print: X issues triaged, Y still need human follow-up (list them), Z were skipped. Note any issues whose project `Team` you set (or confirmed already correct) in Step 5.5. Leave the user with a clear handoff.
 
 ## Anti-patterns (don't do these)
 
@@ -248,7 +325,7 @@ After applying, print: X issues triaged, Y still need human follow-up (list them
 - **Don't guess at labels that don't exist.** The allow-list in `references/triage-labels.md` is exhaustive for triage — if a situation calls for a label that isn't there, ask the user.
 - **Don't mark issues as duplicates without linking the original.** A `Resolution: Duplicate` label without a comment pointing to the original is worse than no triage.
 - **Don't remove `Needs: Triage :mag:` on issues you're flagging for human follow-up.** If you can't decide, leave the triage label on so it stays in the queue.
-- **Don't assign a team as if it were a user.** `gh issue edit --add-assignee` only accepts user logins. For team routing, leave the assignee empty and note the team in `needs_human_followup`.
+- **Don't assign a team as if it were a user.** `gh issue edit --add-assignee` only accepts user logins. For team routing, leave the assignee empty and note the team in `needs_human_followup`. (The project board `Team` field is separate — that one you _do_ set, via Step 5.5.)
 - **Don't say "we'll fix this soon" in comments.** The guidelines are explicit: only promise work we're committed to delivering.
 
 ## Reference files
