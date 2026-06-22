@@ -13,7 +13,6 @@ export {
 } from './constants';
 export {
   browserLabel,
-  compareVersions,
   featureLabel,
   formatMonthYear,
   formatYear,
