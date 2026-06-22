@@ -1,27 +1,38 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-import { BrowserSupportMatrix } from './BrowserSupport/BrowserSupportMatrix';
+import { MinimumVersions } from './BrowserSupport/MinimumVersions';
 
 <Meta title="Overview/Browser support" />
 
 # Browser support
 
-Fluent UI Headless components build their overlays on modern web-platform features — the
-**Popover API**, the native **`<dialog>` element**, and **CSS anchor positioning** — instead of
-JavaScript-managed portals and z-index stacks. This keeps overlays in the browser's top layer with
-native light-dismiss, focus handling, and accessibility.
+Fluent UI Headless components build their overlays on modern web-platform features — the **Popover
+API**, the native **`<dialog>` element**, and **CSS anchor positioning** — instead of JavaScript
+portals and z-index stacks. This page tells you which browsers support those features out of the box.
 
-These features are at different stages of [Baseline](https://web.dev/baseline) availability. Every
-component that uses them **detects support at runtime** (via `CSS.supports(...)`) and **degrades
-gracefully** where a feature is missing — falling back to `dialog.show()` or inline rendering and, in
-development, logging a warning that recommends a polyfill.
+## Minimum supported versions
 
-**Reading the matrix:**
+In these browser versions and later, the overlay features work **without a polyfill**:
 
-- **Widely available** — Baseline for 2.5+ years; safe to rely on without a polyfill.
-- **Newly available** — Baseline in the current major browsers; a polyfill may be needed for older versions.
-- **Limited availability** — not yet Baseline; the JavaScript fallback keeps the component usable.
+<MinimumVersions />
 
-To support older browsers, supply a polyfill for the relevant feature where needed.
+Arrow-key navigation uses the **focusgroup** attribute, which no browser supports natively yet — it
+always needs a polyfill. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs).
 
-<BrowserSupportMatrix />
+## What works by default vs. what needs help
+
+- **Supported by default** — current Chrome, Edge, Firefox, and Safari at or above the versions above.
+- **Needs polyfills or fallbacks** — older versions of those browsers, and **focusgroup** in every
+  browser. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs) for per-feature
+  guidance.
+
+## Baseline, briefly
+
+Browser availability is described using [Baseline](https://web.dev/baseline) stages:
+
+- **Limited availability** — the feature has shipped in some browsers but is not yet in all of them.
+- **Newly available** — the feature works in the current version of every major browser.
+- **Widely available** — newly available, plus 2.5 years of support across browsers; safe to rely on.
+
+For per-feature details, see the [Baseline](https://web.dev/baseline) overview and the linked
+[MDN](https://developer.mozilla.org) references on the Polyfills & fallbacks page.
