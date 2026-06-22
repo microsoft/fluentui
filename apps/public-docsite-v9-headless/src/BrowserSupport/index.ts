@@ -13,10 +13,12 @@ export {
 } from './constants';
 export {
   browserLabel,
+  compareVersions,
   featureLabel,
   formatMonthYear,
   formatYear,
   getAvailabilityLevel,
   getBaselineLabel,
+  getMinimumVersions,
   getStatusLabel,
 } from './utils/index';
