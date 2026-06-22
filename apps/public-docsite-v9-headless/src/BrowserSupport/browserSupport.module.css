@@ -164,3 +164,30 @@
   color: inherit;
   text-decoration: underline;
 }
+
+.minVersions {
+  width: auto;
+  border-collapse: collapse;
+  margin: var(--space-4) 0 var(--space-8);
+  font-size: 14px;
+}
+
+.minVersions th,
+.minVersions td {
+  text-align: left;
+  padding: var(--space-2) var(--space-4);
+  border-bottom: var(--stroke-thin) solid var(--border);
+}
+
+.minVersions thead th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+}
+
+.minVersionValue {
+  font-family: var(--font-mono);
+  color: var(--text-soft);
+}
