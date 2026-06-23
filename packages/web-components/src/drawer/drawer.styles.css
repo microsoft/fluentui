@@ -50,30 +50,29 @@
 }
 
 dialog {
-  box-sizing: border-box;
-  z-index: var(--drawer-elevation, 1000);
-  font-size: var(--fontSizeBase300);
-  line-height: var(--lineHeightBase300);
-  font-family: var(--fontFamilyBase);
-  font-weight: var(--fontWeightRegular);
-  color: var(--colorNeutralForeground1);
-  max-width: var(--drawer-width, 592px);
-  max-height: 100vh;
-  height: 100%;
-  margin-inline-start: 0;
-  margin-inline-end: auto;
+  background: var(--colorNeutralBackground1);
+  border-radius: 0;
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
   border-inline-end-color: var(--colorTransparentStroke);
   border-inline-start-color: var(--drawer-separator, var(--colorTransparentStroke));
-  outline: none;
-  top: 0;
-  bottom: 0;
-  width: var(--drawer-width, 592px);
-  border-radius: 0;
-  padding: 0;
-  max-width: var(--drawer-width, 592px);
   box-shadow: var(--shadow64);
-  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
-  background: var(--colorNeutralBackground1);
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  height: 100%;
+  line-height: var(--lineHeightBase300);
+  margin-inline-end: auto;
+  margin-inline-start: 0;
+  max-height: 100vh;
+  max-width: calc(100vw - var(--spacingHorizontalXXL));
+  outline: none;
+  padding: 0;
+  bottom: 0;
+  top: 0;
+  width: var(--drawer-width, 592px);
+  z-index: var(--drawer-elevation, 1000);
 }
 
 dialog::backdrop {
