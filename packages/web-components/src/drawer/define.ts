@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './drawer.definition.js';
+import { Drawer } from './drawer.js';
 
-definition.define(FluentDesignSystem.registry);
+Drawer.define(definition);

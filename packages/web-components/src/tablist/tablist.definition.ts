@@ -1,15 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './tablist.options.js';
-import { Tablist } from './tablist.js';
-import { template } from './tablist.template.js';
 import { styles } from './tablist.styles.js';
+import { template } from './tablist.template.js';
 
 /**
+ * The definition for the `<fluent-tablist>` element.
+ *
  * @public
- * @remarks
- * HTML Element: \<fluent-tablist\>
  */
-export const definition = Tablist.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};
