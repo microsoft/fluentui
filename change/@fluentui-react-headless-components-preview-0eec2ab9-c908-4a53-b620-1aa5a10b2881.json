@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: fix Tooltip, Dialog, Menu, and Popover trigger components",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
