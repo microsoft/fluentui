@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 23 Jun 2026 04:08:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.28",
+      "version": "3.0.0-rc.28",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "ac9ed942ffd511822bb3c4faa33d5d96c7ee339a",
+            "comment": "fix: docsite build target"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jun 2026 04:05:26 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.28",
       "version": "3.0.0-rc.28",
