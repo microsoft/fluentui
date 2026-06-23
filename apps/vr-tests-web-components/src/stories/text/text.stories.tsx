@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
 import { Steps } from 'storywright';
-import { TextDefinition, FluentDesignSystem, colorNeutralBackground6 } from '@fluentui/web-components';
-
-TextDefinition.define(FluentDesignSystem.registry);
+import { colorNeutralBackground6 } from '@fluentui/web-components';
+import '@fluentui/web-components/text/define.js';
 
 export default {
   title: 'Text',
