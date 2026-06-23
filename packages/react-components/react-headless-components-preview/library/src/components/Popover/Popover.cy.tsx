@@ -465,7 +465,7 @@ describe('positioning observer', () => {
       );
     };
 
-    it('should open popover when tooltip-wrapped trigger is hovered', () => {
+    it('should open popover when tooltip-wrapped trigger is clicked', () => {
       mount(<TooltipWrappedPopoverExample />);
       cy.get('#tooltip-wrapped-trigger').should('exist');
       cy.get(surfaceSelector).should('not.exist');
