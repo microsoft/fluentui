@@ -7,6 +7,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
+  agentwork: {
+    extensions: ['work'],
+  },
   aipage: {
     extensions: ['page'],
   },
@@ -263,9 +266,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   copilot: {
     extensions: ['copilot'],
   },
-  cowork: {
-    extensions: ['work'],
-  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
@@ -377,6 +377,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
   },
   pbiapp: {},
+  pbidashboard: {},
+  pbipagereport: {},
+  pbiscorecard: {},
+  pbisemmodel: {},
   pdf: {
     extensions: ['pdf'],
   },
