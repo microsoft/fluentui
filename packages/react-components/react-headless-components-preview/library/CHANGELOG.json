@@ -2,6 +2,33 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Fri, 19 Jun 2026 13:52:23 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "56b12c6b29b2d178b2024c6d530cabc54152f363",
+            "comment": "fix: export useSkeletonContextValues from Skeleton"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6be3f622ab79dae364e89f5d6738d3d977d67698",
+            "comment": "feat: add headless Overflow component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f2b97d787b76fe84e2a18832f61b417b1e198aa8",
+            "comment": "fix: export useRadioGroupContextValues from RadioGroup"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jun 2026 13:26:43 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.2.0",
       "version": "0.2.0",

@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-rc.27",
+  "version": "3.0.0-rc.28",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -91,7 +91,7 @@
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "storybook dev",
     "build-storybook": "yarn analyze && storybook build -o ./dist/storybook --docs",
-    "build-storybook:docsite": "cross-env DEPLOY_PATH=/web-components/ storybook build -o ./dist/storybook --docs",
+    "build-storybook:docsite": "yarn analyze && cross-env DEPLOY_PATH=/web-components/ storybook build -o ./dist/storybook --docs",
     "e2e": "node ./scripts/e2e.js",
     "e2e:local": "node ./scripts/e2e.js --ui"
   },

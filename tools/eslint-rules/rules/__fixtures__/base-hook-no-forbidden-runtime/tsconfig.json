@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "watched-pkg": ["./stubs/watched-pkg/index.ts"],
+      "watched-pkg/*": ["./stubs/watched-pkg/*"],
+      "heavy-runtime": ["./stubs/heavy-runtime/index.ts"],
+      "light-helper": ["./stubs/light-helper/index.ts"],
+      "cyclic-pkg": ["./stubs/cyclic-pkg/index.ts"],
+      "cyclic-heavy-pkg": ["./stubs/cyclic-heavy-pkg/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "stubs/**/*.ts"]
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add useMenuButtonBase hook",
+  "packageName": "@fluentui/react-button",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

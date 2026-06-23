@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add open in new tab action button for canvas - enabled by default",
-  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

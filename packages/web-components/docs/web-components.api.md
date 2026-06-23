@@ -3195,14 +3195,26 @@ export function listboxTemplate<T extends Listbox>(): ElementViewTemplate<T>;
 
 // @public
 export class Menu extends FASTElement {
+    // @internal
+    protected addMenuListListeners(): void;
+    // @internal
+    protected addTriggerListeners(): void;
     closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
+    // @internal
+    protected documentClickHandler: (e: any) => void;
     focusMenuList(): void;
     focusTrigger(): void;
     menuKeydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    protected _menuList?: HTMLElement;
+    // @internal (undocumented)
+    protected _menuListAbortController?: AbortController;
+    // @internal
+    protected _open: boolean;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -3222,6 +3234,10 @@ export class Menu extends FASTElement {
     split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
+    // @internal
+    protected _trigger?: HTMLElement;
+    // @internal (undocumented)
+    protected _triggerAbortController?: AbortController;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
