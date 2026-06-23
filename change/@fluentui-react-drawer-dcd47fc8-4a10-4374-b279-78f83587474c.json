@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-drawer): allow 1px tolerance in scroll-bottom detection so the footer divider hides at >100% zoom",
+  "packageName": "@fluentui/react-drawer",
+  "email": "adam.znamenacek@eway-crm.com",
+  "dependentChangeType": "patch"
+}
