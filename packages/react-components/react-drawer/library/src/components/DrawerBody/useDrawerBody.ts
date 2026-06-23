@@ -16,6 +16,10 @@ import type { DrawerScrollState } from '../../shared/DrawerBase.types';
 import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
+// Allow a 1px tolerance so fractional scroll metrics (browser zoom, display scaling)
+// still resolve to 'bottom' instead of getting stuck at 'middle'
+const SCROLL_BOTTOM_TOLERANCE = 1;
+
 /**
  * Get the current scroll state of the DrawerBody.
  *
@@ -31,7 +35,7 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
     return 'top';
   }
 
-  if (scrollTop + clientHeight === scrollHeight) {
+  if (scrollTop + clientHeight >= scrollHeight - SCROLL_BOTTOM_TOLERANCE) {
     return 'bottom';
   }
 
