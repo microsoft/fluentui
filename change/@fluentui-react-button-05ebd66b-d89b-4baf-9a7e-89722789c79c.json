@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: add hook regression tests for MenuButton",
-  "packageName": "@fluentui/react-button",
-  "email": "viktorgenaev@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,57 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2026 11:10:08 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "6191c3170d3869b23668a0a9ba0442515caddffb",
+            "comment": "refactor(react-calendar): migrate to motion components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.4",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-motion to v9.16.1",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.6",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.26.16",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.26.5",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2026 09:39:46 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.4.2",
       "version": "0.4.2",

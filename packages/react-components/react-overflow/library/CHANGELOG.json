@@ -2,6 +2,59 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2026 11:09:49 GMT",
+      "tag": "@fluentui/react-overflow_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d7cec2eece3668834f65d8f60f60e9b8004664f1",
+            "comment": "fix: make Overflow container strict-mode safe"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "8db58cbadb1a5d54f56d21674cd49e0c449a0bed",
+            "comment": "fix: subscribe overflow hooks directly to the manager snapshot"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "7530c0c22d690b02ec26159b43437f3493d8ed90",
+            "comment": "Expose Overflow use/render/styles hooks, provider and context types for headless consumers"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "23c05d1de3c0bcb9e84e77d534cbc6df33a974a5",
+            "comment": "feat: produce a correct overflow snapshot before the first paint"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.4.0",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.26.5",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2026 09:39:28 GMT",
       "tag": "@fluentui/react-overflow_v9.8.0",
       "version": "9.8.0",

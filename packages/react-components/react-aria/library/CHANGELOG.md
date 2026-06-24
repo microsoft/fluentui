@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Tue, 26 May 2026 09:39:43 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:10:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.17.13)
+
+Wed, 24 Jun 2026 11:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.17.12..@fluentui/react-aria_v9.17.13)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.17.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.17.12)
 

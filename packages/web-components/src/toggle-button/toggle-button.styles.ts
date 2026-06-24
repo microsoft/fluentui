@@ -122,6 +122,9 @@ export const styles = css`
         ${pressedState}:is([appearance='primary'], [appearance='subtle'], [appearance='outline'], [appearance='transparent'])
       ) {
       background: SelectedItem;
+    }
+
+    :host(${pressedState}[appearance='primary']) {
       color: SelectedItemText;
     }
   }

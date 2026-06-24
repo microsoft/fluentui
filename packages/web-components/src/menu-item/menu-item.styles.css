@@ -121,15 +121,20 @@
     position: relative;
   }
 
+  @position-try --inline-inside {
+    inset-inline-start: unset;
+    inset-inline-end: anchor(inside);
+  }
+
   ::slotted([popover]) {
     margin: 0;
     max-height: var(--menu-max-height, auto);
     position: fixed;
     position-anchor: --menu-trigger;
     inset: unset;
-    inset-block-start: anchor(start);
-    inset-inline-start: anchor(end);
-    position-try-fallbacks: flip-inline, block-start, block-end;
+    inset-block-start: anchor(inside);
+    inset-inline-start: anchor(outside);
+    position-try-fallbacks: --inline-inside, flip-block, flip-block --inline-inside;
     z-index: 1;
   }
 

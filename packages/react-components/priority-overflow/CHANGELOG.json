@@ -2,6 +2,35 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2026 11:10:05 GMT",
+      "tag": "@fluentui/priority-overflow_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d7cec2eece3668834f65d8f60f60e9b8004664f1",
+            "comment": "feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "8db58cbadb1a5d54f56d21674cd49e0c449a0bed",
+            "comment": "feat: expose getSnapshot and subscribe on OverflowManager"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "23c05d1de3c0bcb9e84e77d534cbc6df33a974a5",
+            "comment": "fix: recompute overflow eagerly when the overflow menu attaches or detaches"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Apr 2026 14:21:21 GMT",
       "tag": "@fluentui/priority-overflow_v9.3.0",
       "version": "9.3.0",

@@ -1,15 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './spinner.options.js';
-import { Spinner } from './spinner.js';
 import { styles } from './spinner.styles.js';
 import { template } from './spinner.template.js';
 
 /**
+ * The definition for the `<fluent-spinner>` element.
+ *
  * @public
- * @remarks
- * HTML Element: \<fluent-spinner\>
  */
-export const definition = Spinner.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

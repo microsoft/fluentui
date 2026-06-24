@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Tue, 26 May 2026 09:39:49 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.20)
+
+Wed, 24 Jun 2026 11:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.19..@fluentui/react-charts_v9.3.20)
+
+### Patches
+
+- fix: prevent DonutChart from growing infinitely inside an unconstrained ResponsiveContainer ([PR #36276](https://github.com/microsoft/fluentui/pull/36276) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react-button to v9.10.0 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-overflow to v9.9.0 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-popover to v9.14.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.19)
 

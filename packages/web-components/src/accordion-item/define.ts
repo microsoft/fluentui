@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './accordion-item.definition.js';
+import { AccordionItem } from './accordion-item.js';
 
-definition.define(FluentDesignSystem.registry);
+AccordionItem.define(definition);

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Tue, 26 May 2026 09:39:28 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.9.0)
+
+Wed, 24 Jun 2026 11:09:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.8.0..@fluentui/react-overflow_v9.9.0)
+
+### Minor changes
+
+- Expose Overflow use/render/styles hooks, provider and context types for headless consumers ([PR #36304](https://github.com/microsoft/fluentui/pull/36304) by vgenaev@gmail.com)
+- feat: produce a correct overflow snapshot before the first paint ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.4.0 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- fix: make Overflow container strict-mode safe ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+- fix: subscribe overflow hooks directly to the manager snapshot ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
 
 ## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.8.0)
 

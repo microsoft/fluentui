@@ -2,6 +2,97 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2026 11:10:00 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          }
+        ],
+        "minor": [
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "0a59056cac63da6c6030eae3817d4d15bfc9cda0",
+            "comment": "feat: add base hooks/types for headless composition"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.4",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.26.5",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.8.14",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.16",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.17.13",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.17.3",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.9.2",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.18",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.22.3",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.5.3",
+            "commit": "a4b871ca80c1f16f35ab4229def4fe02be7f30ea"
+          }
+        ],
+        "none": [
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "2ef725b6a1dbc4fbf955ad981e0415e12816206d",
+            "comment": "test: add hook regression tests for the TagPicker family"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2026 11:18:57 GMT",
       "tag": "@fluentui/react-tag-picker_v9.8.8",
       "version": "9.8.8",

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Tue, 26 May 2026 09:40:00 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:10:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.117)
+
+Wed, 24 Jun 2026 11:10:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.116..@fluentui/react-infobutton_v9.0.0-beta.117)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.4.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-popover to v9.14.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.0.0-beta.116](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.116)
 

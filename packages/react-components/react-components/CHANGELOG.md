@@ -1,8 +1,171 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 27 May 2026 11:18:57 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.74.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.2)
+
+Wed, 24 Jun 2026 11:09:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.1..@fluentui/react-components_v9.74.2)
+
+### Minor changes
+
+- `@fluentui/react-overflow`
+  - Expose Overflow use/render/styles hooks, provider and context types for headless consumers ([PR #36304](https://github.com/microsoft/fluentui/pull/36304) by vgenaev@gmail.com)
+  - feat: produce a correct overflow snapshot before the first paint ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: add base hooks/types for headless composition ([PR #36260](https://github.com/microsoft/fluentui/pull/36260) by viktorgenaev@microsoft.com)
+- `@fluentui/priority-overflow`
+  - feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported. ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+  - feat: expose getSnapshot and subscribe on OverflowManager ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+- `@fluentui/react-button`
+  - feat: add useMenuButtonBase hook ([PR #36319](https://github.com/microsoft/fluentui/pull/36319) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: Escape in an open Combobox or Dropdown does not trigger tabster actions ([PR #36275](https://github.com/microsoft/fluentui/pull/36275) by sarah.higley@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - fix(Link): add disabled styles for high contrast mode ([PR #36277](https://github.com/microsoft/fluentui/pull/36277) by sarah.higley@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: Escape in an open Menu does not trigger tabster actions ([PR #36313](https://github.com/microsoft/fluentui/pull/36313) by olfedias@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - fix: make Overflow container strict-mode safe ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+  - fix: subscribe overflow hooks directly to the manager snapshot ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+- `@fluentui/react-persona`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - useMergedTabsterAttributes_unstable now supports attributes that change at runtime, including a changing number of attributes ([PR #36266](https://github.com/microsoft/fluentui/pull/36266) by bsunderhus@microsoft.com)
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: recompute overflow eagerly when the overflow menu attaches or detaches ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
+- `@fluentui/react-accordion`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+  - refactor(react-calendar): migrate to motion components ([PR #35666](https://github.com/microsoft/fluentui/pull/35666) by robertpenner@microsoft.com)
+- `@fluentui/react-card`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: prevent DonutChart from growing infinitely inside an unconstrained ResponsiveContainer ([PR #36276](https://github.com/microsoft/fluentui/pull/36276) by kumarkshitij@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
 
 ## [9.74.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.1)
 

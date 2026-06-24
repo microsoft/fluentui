@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: make Overflow container strict-mode safe",
-  "packageName": "@fluentui/react-overflow",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,519 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2026 11:09:39 GMT",
+      "tag": "@fluentui/react-components_v9.74.2",
+      "version": "9.74.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b460b142ebf59fee3512e55dba09ecca74153d55",
+            "comment": "fix: move Field control props to base hooks"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "5405c324f96569c8556e5ab5707ee25cf16b7a0c",
+            "comment": "fix: Escape in an open Combobox or Dropdown does not trigger tabster actions"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "b460b142ebf59fee3512e55dba09ecca74153d55",
+            "comment": "fix: move Field control props to base hooks"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e1bbaa9c2add6cade924b3168c6363a290e96a14",
+            "comment": "fix(Link): add disabled styles for high contrast mode"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "3be466ae71d1a901d1f2938eb600a851df81cbf2",
+            "comment": "fix: Escape in an open Menu does not trigger tabster actions"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d7cec2eece3668834f65d8f60f60e9b8004664f1",
+            "comment": "fix: make Overflow container strict-mode safe"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "8db58cbadb1a5d54f56d21674cd49e0c449a0bed",
+            "comment": "fix: subscribe overflow hooks directly to the manager snapshot"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "b460b142ebf59fee3512e55dba09ecca74153d55",
+            "comment": "fix: move Field control props to base hooks"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "b460b142ebf59fee3512e55dba09ecca74153d55",
+            "comment": "fix: move Field control props to base hooks"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2fa748f31bf941ddf1be8328c375b84e5e9dda28",
+            "comment": "useMergedTabsterAttributes_unstable now supports attributes that change at runtime, including a changing number of attributes"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "23c05d1de3c0bcb9e84e77d534cbc6df33a974a5",
+            "comment": "fix: recompute overflow eagerly when the overflow menu attaches or detaches"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "6191c3170d3869b23668a0a9ba0442515caddffb",
+            "comment": "refactor(react-calendar): migrate to motion components"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5aadcc91029b7eb20e9f12fcb759e045749f51e7",
+            "comment": "fix: prevent DonutChart from growing infinitely inside an unconstrained ResponsiveContainer"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "7530c0c22d690b02ec26159b43437f3493d8ed90",
+            "comment": "Expose Overflow use/render/styles hooks, provider and context types for headless consumers"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "23c05d1de3c0bcb9e84e77d534cbc6df33a974a5",
+            "comment": "feat: produce a correct overflow snapshot before the first paint"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "0a59056cac63da6c6030eae3817d4d15bfc9cda0",
+            "comment": "feat: add base hooks/types for headless composition"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d7cec2eece3668834f65d8f60f60e9b8004664f1",
+            "comment": "feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported."
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "8db58cbadb1a5d54f56d21674cd49e0c449a0bed",
+            "comment": "feat: expose getSnapshot and subscribe on OverflowManager"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "f38ccbd01b24d843ed14dc460e65b2caec79252c",
+            "comment": "feat: add useMenuButtonBase hook"
+          }
+        ],
+        "none": [
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "2ef725b6a1dbc4fbf955ad981e0415e12816206d",
+            "comment": "test: add hook regression tests for the TagPicker family"
+          },
+          {
+            "author": "viktorgenaev@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "186b17d6d99dd6712cbda91a057f05698458dc9e",
+            "comment": "test: add hook regression tests for MenuButton"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "d2375b2452d9b8882ed63d4f4e91d8f537379e27",
+            "comment": "fix: remove redundant use no memo directives, and add justification to valid ones"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 May 2026 11:18:57 GMT",
       "tag": "@fluentui/react-components_v9.74.1",
       "version": "9.74.1",
