@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Fri, 19 Jun 2026 13:52:23 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 14:52:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.2)
+
+Wed, 24 Jun 2026 14:52:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.1..@fluentui/react-headless-components-preview_v0.2.2)
+
+### Patches
+
+- fix: fix Tooltip, Dialog, Menu, and Popover trigger components ([PR #36335](https://github.com/microsoft/fluentui/pull/36335) by dmytrokirpa@microsoft.com)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.1)
 
