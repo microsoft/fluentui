@@ -38,6 +38,7 @@ import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Tag from '@fluentui/react-headless-components-preview/tag';
 import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
+import * as TagPicker from '@fluentui/react-headless-components-preview/tag-picker';
 import * as TeachingPopover from '@fluentui/react-headless-components-preview/teaching-popover';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
 import * as Toast from '@fluentui/react-headless-components-preview/toast';
@@ -86,6 +87,7 @@ console.log({
   TabList,
   Tag,
   TagGroup,
+  TagPicker,
   TeachingPopover,
   Textarea,
   Toast,
