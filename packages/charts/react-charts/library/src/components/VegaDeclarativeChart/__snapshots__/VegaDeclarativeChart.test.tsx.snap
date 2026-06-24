@@ -355,7 +355,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             </g>
             <g>
               <g
-                aria-label="Line 1, line chart with 6 data points."
+                aria-label="Line 1, line with 6 data points."
                 role="listbox"
               >
                 <line
@@ -900,7 +900,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             </g>
             <g>
               <g
-                aria-label="Line 1, line chart with 3 data points."
+                aria-label="Line 1, line with 3 data points."
                 role="listbox"
               >
                 <line
@@ -1354,7 +1354,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             </g>
             <g>
               <g
-                aria-label="Line 1, line chart with 3 data points."
+                aria-label="Line 1, line with 3 data points."
                 role="listbox"
               >
                 <line
@@ -1954,7 +1954,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
             </g>
             <g>
               <g
-                aria-label="Line 1, line chart with 6 data points."
+                aria-label="Line 1, line with 6 data points."
                 role="listbox"
               >
                 <line
@@ -2461,7 +2461,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             />
             <g>
               <g
-                aria-label="Q1, category 1 of 1, with bar series: North, South."
+                aria-label="Q1, category 1 of 1, with 2 bars"
                 role="listbox"
                 transform="translate(-6.888888888888889, 0)"
               >
@@ -3562,7 +3562,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 <text
                   aria-label="Total: 10"
                   class="fui-vsbc__barLabel"
-                  role="option"
+                  role="img"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   transform="translate(1.5, 0)"
@@ -3597,7 +3597,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
                 <text
                   aria-label="Total: 15"
                   class="fui-vsbc__barLabel"
-                  role="option"
+                  role="img"
                   style="direction: ltr; unicode-bidi: isolate;"
                   text-anchor="middle"
                   transform="translate(1.5, 0)"
@@ -3610,7 +3610,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
             </g>
             <g>
               <g
-                aria-label="Line 1, line chart with 2 data points."
+                aria-label="Line 1, line with 2 data points."
                 role="listbox"
               >
                 <line

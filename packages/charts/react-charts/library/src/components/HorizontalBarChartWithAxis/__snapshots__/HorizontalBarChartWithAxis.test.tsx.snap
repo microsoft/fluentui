@@ -330,7 +330,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <g
-            aria-label="5000, bar group 1 of 4."
+            aria-label="5000, bar group 1 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -360,7 +360,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="13000, bar group 2 of 4."
+            aria-label="13000, bar group 2 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -390,7 +390,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="30000, bar group 3 of 4."
+            aria-label="30000, bar group 3 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -420,7 +420,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="50000, bar group 4 of 4."
+            aria-label="50000, bar group 4 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -877,7 +877,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <g
-            aria-label="String One, bar group 1 of 4."
+            aria-label="String One, bar group 1 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -908,7 +908,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="String Two, bar group 2 of 4."
+            aria-label="String Two, bar group 2 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -939,7 +939,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="String Three, bar group 3 of 4."
+            aria-label="String Three, bar group 3 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -970,7 +970,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </text>
           </g>
           <g
-            aria-label="String Four, bar group 4 of 4."
+            aria-label="String Four, bar group 4 of 4, with 1 bars."
             role="listbox"
           >
             <rect
@@ -1378,7 +1378,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="5000, bar group 1 of 4."
+                aria-label="5000, bar group 1 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -1408,7 +1408,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="13000, bar group 2 of 4."
+                aria-label="13000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -1438,7 +1438,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="30000, bar group 3 of 4."
+                aria-label="30000, bar group 3 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -1468,7 +1468,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="50000, bar group 4 of 4."
+                aria-label="50000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -1925,7 +1925,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="5000, bar group 1 of 4."
+              aria-label="5000, bar group 1 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -1955,7 +1955,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="13000, bar group 2 of 4."
+              aria-label="13000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -1985,7 +1985,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="30000, bar group 3 of 4."
+              aria-label="30000, bar group 3 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -2015,7 +2015,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="50000, bar group 4 of 4."
+              aria-label="50000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -2531,7 +2531,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="5000, bar group 1 of 4."
+                aria-label="5000, bar group 1 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -2561,7 +2561,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="13000, bar group 2 of 4."
+                aria-label="13000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -2591,7 +2591,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="30000, bar group 3 of 4."
+                aria-label="30000, bar group 3 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -2621,7 +2621,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="50000, bar group 4 of 4."
+                aria-label="50000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -3078,7 +3078,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="5000, bar group 1 of 4."
+              aria-label="5000, bar group 1 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -3108,7 +3108,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="13000, bar group 2 of 4."
+              aria-label="13000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -3138,7 +3138,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="30000, bar group 3 of 4."
+              aria-label="30000, bar group 3 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -3168,7 +3168,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="50000, bar group 4 of 4."
+              aria-label="50000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -3684,7 +3684,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="5000, bar group 1 of 4."
+                aria-label="5000, bar group 1 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -3714,7 +3714,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="13000, bar group 2 of 4."
+                aria-label="13000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -3744,7 +3744,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="30000, bar group 3 of 4."
+                aria-label="30000, bar group 3 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -3774,7 +3774,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="50000, bar group 4 of 4."
+                aria-label="50000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -4231,7 +4231,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="5000, bar group 1 of 4."
+              aria-label="5000, bar group 1 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -4261,7 +4261,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="13000, bar group 2 of 4."
+              aria-label="13000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -4291,7 +4291,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="30000, bar group 3 of 4."
+              aria-label="30000, bar group 3 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -4321,7 +4321,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="50000, bar group 4 of 4."
+              aria-label="50000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -4894,7 +4894,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="Q1, bar group 1 of 3."
+                aria-label="Q1, bar group 1 of 3, with 3 bars."
                 role="listbox"
               >
                 <rect
@@ -4953,7 +4953,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Q2, bar group 2 of 3."
+                aria-label="Q2, bar group 2 of 3, with 3 bars."
                 role="listbox"
               >
                 <rect
@@ -5012,7 +5012,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Q3, bar group 3 of 3."
+                aria-label="Q3, bar group 3 of 3, with 3 bars."
                 role="listbox"
               >
                 <rect
@@ -5536,7 +5536,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="Q1, bar group 1 of 3."
+              aria-label="Q1, bar group 1 of 3, with 3 bars."
               role="listbox"
             >
               <rect
@@ -5595,7 +5595,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Q2, bar group 2 of 3."
+              aria-label="Q2, bar group 2 of 3, with 3 bars."
               role="listbox"
             >
               <rect
@@ -5654,7 +5654,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Q3, bar group 3 of 3."
+              aria-label="Q3, bar group 3 of 3, with 3 bars."
               role="listbox"
             >
               <rect
@@ -6180,7 +6180,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="5000, bar group 1 of 4."
+                aria-label="5000, bar group 1 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -6198,7 +6198,7 @@ Object {
                 />
               </g>
               <g
-                aria-label="13000, bar group 2 of 4."
+                aria-label="13000, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -6216,7 +6216,7 @@ Object {
                 />
               </g>
               <g
-                aria-label="30000, bar group 3 of 4."
+                aria-label="30000, bar group 3 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -6234,7 +6234,7 @@ Object {
                 />
               </g>
               <g
-                aria-label="50000, bar group 4 of 4."
+                aria-label="50000, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -6586,7 +6586,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="5000, bar group 1 of 4."
+              aria-label="5000, bar group 1 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -6604,7 +6604,7 @@ Object {
               />
             </g>
             <g
-              aria-label="13000, bar group 2 of 4."
+              aria-label="13000, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -6622,7 +6622,7 @@ Object {
               />
             </g>
             <g
-              aria-label="30000, bar group 3 of 4."
+              aria-label="30000, bar group 3 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -6640,7 +6640,7 @@ Object {
               />
             </g>
             <g
-              aria-label="50000, bar group 4 of 4."
+              aria-label="50000, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -7073,7 +7073,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="String One, bar group 1 of 4."
+                aria-label="String One, bar group 1 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -7104,7 +7104,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="String Two, bar group 2 of 4."
+                aria-label="String Two, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -7135,7 +7135,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="String Three, bar group 3 of 4."
+                aria-label="String Three, bar group 3 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -7166,7 +7166,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="String Four, bar group 4 of 4."
+                aria-label="String Four, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -7594,7 +7594,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="String One, bar group 1 of 4."
+              aria-label="String One, bar group 1 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -7625,7 +7625,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="String Two, bar group 2 of 4."
+              aria-label="String Two, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -7656,7 +7656,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="String Three, bar group 3 of 4."
+              aria-label="String Three, bar group 3 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -7687,7 +7687,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="String Four, bar group 4 of 4."
+              aria-label="String Four, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -8150,7 +8150,7 @@ Object {
             </g>
             <g>
               <g
-                aria-label="String One, bar group 1 of 4."
+                aria-label="String One, bar group 1 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -8181,7 +8181,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="String Two, bar group 2 of 4."
+                aria-label="String Two, bar group 2 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -8212,7 +8212,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="String Three, bar group 3 of 4."
+                aria-label="String Three, bar group 3 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -8243,7 +8243,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="String Four, bar group 4 of 4."
+                aria-label="String Four, bar group 4 of 4, with 1 bars."
                 role="listbox"
               >
                 <rect
@@ -8642,7 +8642,7 @@ Object {
           </g>
           <g>
             <g
-              aria-label="String One, bar group 1 of 4."
+              aria-label="String One, bar group 1 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -8673,7 +8673,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="String Two, bar group 2 of 4."
+              aria-label="String Two, bar group 2 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -8704,7 +8704,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="String Three, bar group 3 of 4."
+              aria-label="String Three, bar group 3 of 4, with 1 bars."
               role="listbox"
             >
               <rect
@@ -8735,7 +8735,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="String Four, bar group 4 of 4."
+              aria-label="String Four, bar group 4 of 4, with 1 bars."
               role="listbox"
             >
               <rect

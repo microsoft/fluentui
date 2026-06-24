@@ -636,10 +636,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
-    const legendNames = presentLegends.join(', ');
     const categoryGroupAriaLabel = `${singleSet.xAxisPoint}, category ${singleSet.indexNum + 1} of ${
       _datasetForBars.length
-    }, with bar series: ${legendNames}.`;
+    }, with ${presentLegends.length} bars`;
     return (
       <g
         role="listbox"

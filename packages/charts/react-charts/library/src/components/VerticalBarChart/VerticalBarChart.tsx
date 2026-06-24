@@ -262,7 +262,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     );
 
     return (
-      <g role="listbox" aria-label={`${lineLegendText || 'Line'} data points`}>
+      <g role="listbox" aria-label={`${lineLegendText || 'Line'}, line with ${lineData.length} data points`}>
         {line}
         {dots}
       </g>
@@ -661,7 +661,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={`${point.x}_${index}` as string} role="listbox" aria-label={_getBarsGroupLabel()}>
+        <g key={`${point.x}_${index}` as string}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -723,8 +723,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       return (
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
-          role="listbox"
-          aria-label={_getBarsGroupLabel()}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
         >
           <rect
@@ -784,11 +782,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g
-          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
-          role="listbox"
-          aria-label={_getBarsGroupLabel()}
-        >
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -1192,7 +1186,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       children={(props: ChildProps) => {
         return (
           <>
-            <g>{_bars}</g>
+            <g role="listbox" aria-label={_getBarsGroupLabel()}>
+              {_bars}
+            </g>
             {_isHavingLine &&
               _createLine(
                 props.xScale!,

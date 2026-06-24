@@ -666,7 +666,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       lineSeriesGroups.push(
         <g
           role="listbox"
-          aria-label={`${item}, line chart with ${lineObject[item].length} data points.`}
+          aria-label={`${item}, line with ${lineObject[item].length} data points.`}
           key={`${item}-${index}-lineSeries`}
         >
           {borderForLines}
@@ -1205,7 +1205,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               textAnchor="middle"
               className={classes.barLabel}
               aria-label={`Total: ${barLabel}`}
-              role="option"
+              role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
               style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >

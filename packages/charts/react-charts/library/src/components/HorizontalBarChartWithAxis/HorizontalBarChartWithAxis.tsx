@@ -782,7 +782,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   function _getBarGroupAriaLabel(singleBarData: HorizontalBarChartWithAxisDataPoint[], groupIndex: number): string {
     const yGroupLabel = singleBarData[0]?.y?.toString() || `Group ${groupIndex + 1}`;
-    return `${yGroupLabel}, bar group ${groupIndex + 1} of ${_yAxisLabels.length}.`;
+    return `${yGroupLabel}, bar group ${groupIndex + 1} of ${_yAxisLabels.length}, with ${singleBarData.length} bars.`;
   }
 
   function _renderBarLabel(

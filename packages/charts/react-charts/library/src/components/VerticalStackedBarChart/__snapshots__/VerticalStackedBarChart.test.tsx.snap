@@ -244,7 +244,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 2.5"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -309,7 +309,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 73"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -374,7 +374,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 100"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -387,7 +387,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         </g>
         <g>
           <g
-            aria-label="Supported Builds, line chart with 3 data points."
+            aria-label="Supported Builds, line with 3 data points."
             role="listbox"
           >
             <line
@@ -796,7 +796,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 2.5"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -861,7 +861,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 73"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -926,7 +926,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             <text
               aria-label="Total: 100"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -939,7 +939,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         </g>
         <g>
           <g
-            aria-label="Supported Builds, line chart with 3 data points."
+            aria-label="Supported Builds, line with 3 data points."
             role="listbox"
           >
             <line
@@ -1500,7 +1500,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -1550,7 +1550,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2019,7 +2019,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2069,7 +2069,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2591,7 +2591,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -2641,7 +2641,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -3140,7 +3140,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -3190,7 +3190,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             <text
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
-              role="option"
+              role="img"
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -3203,7 +3203,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         </g>
         <g>
           <g
-            aria-label="Line1, line chart with 2 data points."
+            aria-label="Line1, line with 2 data points."
             role="listbox"
           >
             <line
@@ -4269,7 +4269,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4319,7 +4319,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4786,7 +4786,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -4836,7 +4836,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5303,7 +5303,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5353,7 +5353,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5820,7 +5820,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -5870,7 +5870,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6344,7 +6344,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6394,7 +6394,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6804,7 +6804,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -6852,7 +6852,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7314,7 +7314,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7359,7 +7359,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7903,7 +7903,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -7953,7 +7953,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -8502,7 +8502,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -8552,7 +8552,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -9026,7 +9026,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           <text
             aria-label="Total: 45"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
@@ -9076,7 +9076,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           <text
             aria-label="Total: 50"
             class="fui-vsbc__barLabel"
-            role="option"
+            role="img"
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             transform="translate(-8, 0)"
