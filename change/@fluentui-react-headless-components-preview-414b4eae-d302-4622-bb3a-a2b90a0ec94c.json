@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove floating-ui from bundle by vendoring resolvePositioningShorthand",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

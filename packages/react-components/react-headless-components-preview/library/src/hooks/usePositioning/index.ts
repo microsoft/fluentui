@@ -1,4 +1,4 @@
-export { resolvePositioningShorthand } from '@fluentui/react-positioning';
+export { resolvePositioningShorthand } from './utils';
 export { usePositioning } from './usePositioning';
 export { getPlacementString } from './utils';
 export { POSITIONS, ALIGNMENTS } from './constants';

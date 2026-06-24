@@ -1,7 +1,7 @@
-import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import type { Alignment, Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { LogicalAlignment } from '../types';
 import { ALIGNMENTS, POSITIONS, POSITION_AREA_MAP } from '../constants';
+import { resolvePositioningShorthand } from './resolvePositioningShorthand';
 
 const ALIGN_ALIASES: Record<string, LogicalAlignment> = {
   top: ALIGNMENTS.start,

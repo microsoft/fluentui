@@ -11,7 +11,6 @@ import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-pos
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
-import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 
 export { Alignment }
 
@@ -50,7 +49,8 @@ export const POSITIONS: {
     readonly after: "after";
 };
 
-export { resolvePositioningShorthand }
+// @public (undocumented)
+export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps_2>;
 
 // @public (undocumented)
 export function usePositioning(options: PositioningProps): PositioningReturn;
