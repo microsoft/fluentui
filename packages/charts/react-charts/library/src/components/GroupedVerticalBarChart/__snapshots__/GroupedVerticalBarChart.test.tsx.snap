@@ -209,8 +209,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
         />
         <g>
           <g
-            aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-            role="listbox"
             transform="translate(252.33333333333331, 0)"
           >
             <rect
@@ -261,8 +259,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
           <g
-            aria-label="Meta Data2, category 2 of 3, with 2 bars"
-            role="listbox"
             transform="translate(318.1111111111111, 0)"
           >
             <rect
@@ -313,8 +309,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
           <g
-            aria-label="Single line text , category 3 of 3, with 2 bars"
-            role="listbox"
             transform="translate(383.8888888888889, 0)"
           >
             <rect
@@ -635,8 +629,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
         />
         <g>
           <g
-            aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-            role="listbox"
             transform="translate(252.33333333333331, 0)"
           >
             <rect
@@ -687,8 +679,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
           <g
-            aria-label="Meta Data2, category 2 of 3, with 2 bars"
-            role="listbox"
             transform="translate(318.1111111111111, 0)"
           >
             <rect
@@ -739,8 +729,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
           <g
-            aria-label="Single line text , category 3 of 3, with 2 bars"
-            role="listbox"
             transform="translate(383.8888888888889, 0)"
           >
             <rect
@@ -1068,8 +1056,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         />
         <g>
           <g
-            aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-            role="listbox"
             transform="translate(252.33333333333331, 0)"
           >
             <rect
@@ -1120,8 +1106,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             </text>
           </g>
           <g
-            aria-label="Meta Data2, category 2 of 3, with 2 bars"
-            role="listbox"
             transform="translate(318.1111111111111, 0)"
           >
             <rect
@@ -1172,8 +1156,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             </text>
           </g>
           <g
-            aria-label="Single line text , category 3 of 3, with 2 bars"
-            role="listbox"
             transform="translate(383.8888888888889, 0)"
           >
             <rect
@@ -1566,8 +1548,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -1618,8 +1598,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -1670,8 +1648,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -1990,8 +1966,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -2042,8 +2016,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -2094,8 +2066,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect
@@ -2473,8 +2443,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -2525,8 +2493,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -2577,8 +2543,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -2904,8 +2868,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -2956,8 +2918,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -3008,8 +2968,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect
@@ -3394,8 +3352,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -3446,8 +3402,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -3498,8 +3452,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -3763,8 +3715,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -3815,8 +3765,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -3867,8 +3815,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect
@@ -4191,8 +4137,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -4243,8 +4187,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -4295,8 +4237,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -4615,8 +4555,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -4667,8 +4605,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -4719,8 +4655,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect
@@ -5119,8 +5053,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -5171,8 +5103,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -5223,8 +5153,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -5569,8 +5497,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -5621,8 +5547,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -5673,8 +5597,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect
@@ -6134,8 +6056,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -6186,8 +6106,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -6238,8 +6156,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -6642,8 +6558,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -6694,8 +6608,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -6746,8 +6658,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect
@@ -7132,8 +7042,6 @@ Object {
             />
             <g>
               <g
-                aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(252.33333333333331, 0)"
               >
                 <rect
@@ -7184,8 +7092,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Meta Data2, category 2 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(318.1111111111111, 0)"
               >
                 <rect
@@ -7236,8 +7142,6 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Single line text , category 3 of 3, with 2 bars"
-                role="listbox"
                 transform="translate(383.8888888888889, 0)"
               >
                 <rect
@@ -7556,8 +7460,6 @@ Object {
           />
           <g>
             <g
-              aria-label="Metadata info multi lines text Completed, category 1 of 3, with 2 bars"
-              role="listbox"
               transform="translate(252.33333333333331, 0)"
             >
               <rect
@@ -7608,8 +7510,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Meta Data2, category 2 of 3, with 2 bars"
-              role="listbox"
               transform="translate(318.1111111111111, 0)"
             >
               <rect
@@ -7660,8 +7560,6 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Single line text , category 3 of 3, with 2 bars"
-              role="listbox"
               transform="translate(383.8888888888889, 0)"
             >
               <rect

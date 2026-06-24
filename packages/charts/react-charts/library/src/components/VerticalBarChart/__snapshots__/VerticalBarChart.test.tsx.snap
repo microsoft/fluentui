@@ -411,7 +411,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -981,7 +981,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -1555,7 +1555,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             </g>
           </g>
           <g
-            aria-label="3 series and 3 data points"
+            aria-label="3 series and 3 bars"
             role="listbox"
           >
             <g>
@@ -2137,7 +2137,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -2707,7 +2707,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -3277,7 +3277,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -3657,7 +3657,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
         </g>
         <g
-          aria-label="1 series and 4 data points"
+          aria-label="1 series and 4 bars"
           role="listbox"
         >
           <g
@@ -4241,7 +4241,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -4811,7 +4811,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -5437,7 +5437,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           </g>
         </g>
         <g
-          aria-label="3 series and 3 data points"
+          aria-label="3 series and 3 bars"
           role="listbox"
         >
           <g>
@@ -6040,7 +6040,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -6578,7 +6578,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -7146,7 +7146,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -7714,7 +7714,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -8282,7 +8282,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -8860,7 +8860,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -9354,7 +9354,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -10017,7 +10017,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -10688,7 +10688,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>
@@ -11263,7 +11263,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         </g>
       </g>
       <g
-        aria-label="3 series and 3 data points"
+        aria-label="3 series and 3 bars"
         role="listbox"
       >
         <g>

@@ -1103,7 +1103,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     // Calculate number of unique series and total data points for accessibility label
     const uniqueSeries = new Set(_points.map(point => point.legend)).size;
     const totalDataPoints = _points.length;
-    return `${uniqueSeries} series and ${totalDataPoints} data points`;
+    return `${uniqueSeries} series and ${totalDataPoints} bars`;
   }
 
   function updatePosition(newX: number, newY: number) {

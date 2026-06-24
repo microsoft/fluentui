@@ -636,13 +636,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
-    const categoryGroupAriaLabel = `${singleSet.xAxisPoint}, category ${singleSet.indexNum + 1} of ${
-      _datasetForBars.length
-    }, with ${presentLegends.length} bars`;
     return (
       <g
-        role="listbox"
-        aria-label={categoryGroupAriaLabel}
         key={singleSet.indexNum}
         transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - effectiveGroupWidth) / 2}, 0)`}
       >
@@ -859,7 +854,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
         const dotId = _getDotId(seriesIdx, pointIdx);
         const isLinePointActive = activeLinePoint === point.x || activeLinePoint === dotId;
-
         dotGroup.push(
           <circle
             key={dotId}
@@ -876,7 +870,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
-            role="listbox"
+            role="option"
             aria-label={getAriaLabel(
               {
                 xAxisCalloutData: point.xAxisCalloutData,
@@ -890,10 +884,17 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           />,
         );
       });
+      const dotGroupAriaLabel = `${series.legend || `Line ${seriesIdx + 1}`}, line with ${
+        series.data.length
+      } data points`;
 
       lineBorders.push(<g key={`lineBorderGroup-${seriesIdx}`}>{lineBorderGroup}</g>);
       lines.push(<g key={`lineGroup-${seriesIdx}`}>{lineGroup}</g>);
-      dots.push(<g key={`dotGroup-${seriesIdx}`}>{dotGroup}</g>);
+      dots.push(
+        <g role="listbox" key={`dotGroup-${seriesIdx}`} aria-label={dotGroupAriaLabel}>
+          {dotGroup}
+        </g>,
+      );
     });
 
     return dots.length > 0 ? (
