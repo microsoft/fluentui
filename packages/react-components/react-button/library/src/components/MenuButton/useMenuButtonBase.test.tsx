@@ -9,6 +9,11 @@ describe('useMenuButtonBase_unstable', () => {
     expect(result.current.menuIcon).toBeDefined();
   });
 
+  it('does not ship a default icon in the menuIcon slot', () => {
+    const { result } = renderHook(() => useMenuButtonBase_unstable({}, React.createRef()));
+    expect(result.current.menuIcon?.children).toBeUndefined();
+  });
+
   it('forces aria-expanded to a boolean on root', () => {
     const { result } = renderHook(() => useMenuButtonBase_unstable({ 'aria-expanded': 'true' }, React.createRef()));
     expect(result.current.root['aria-expanded']).toBe(true);

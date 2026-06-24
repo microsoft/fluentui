@@ -10,6 +10,10 @@ import type { MenuButtonBaseProps, MenuButtonBaseState, MenuButtonProps, MenuBut
 /**
  * Base hook for MenuButton.
  *
+ * The `menuIcon` slot is rendered by default but ships no icon of its own, so headless
+ * consumers can provide their own visuals. The styled `useMenuButton_unstable` adds the
+ * default chevron on top of this.
+ *
  * @param props - User provided props to the MenuButton component.
  * @param ref - User provided ref to be passed to the MenuButton component.
  */
@@ -40,9 +44,6 @@ export const useMenuButtonBase_unstable = (
     },
 
     menuIcon: slot.optional(menuIcon, {
-      defaultProps: {
-        children: <ChevronDownRegular />,
-      },
       renderByDefault: true,
       elementType: 'span',
     }),
@@ -61,8 +62,15 @@ export const useMenuButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
   const { size: contextSize } = useButtonContext();
-  const { appearance = 'secondary', shape = 'rounded', size = contextSize ?? 'medium', ...baseProps } = props;
-  const baseState = useMenuButtonBase_unstable(baseProps, ref);
+  const { appearance = 'secondary', menuIcon, shape = 'rounded', size = contextSize ?? 'medium', ...baseProps } = props;
+  const baseState = useMenuButtonBase_unstable(
+    {
+      ...baseProps,
+      // Default the menuIcon to a chevron, while still allowing `menuIcon={null}` to hide it.
+      menuIcon: menuIcon === null ? null : { children: <ChevronDownRegular />, ...slot.resolveShorthand(menuIcon) },
+    },
+    ref,
+  );
 
   return {
     ...baseState,

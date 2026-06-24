@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import '@testing-library/jest-dom';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 import { ButtonContextProvider } from '../../contexts/ButtonContext';
 import type { ButtonContextValue } from '../../contexts/ButtonContext';
 import { useMenuButton_unstable } from './useMenuButton';
@@ -23,6 +24,7 @@ describe('useMenuButton_unstable', () => {
     const { result } = renderHook(() => useMenuButton_unstable({}, React.createRef()));
     expect(result.current.menuIcon).toBeDefined();
     expect(React.isValidElement(result.current.menuIcon?.children)).toBe(true);
+    expect((result.current.menuIcon?.children as React.ReactElement)?.type).toBe(ChevronDownRegular);
   });
 
   it('preserves a user-provided menuIcon over the default chevron', () => {
@@ -31,6 +33,11 @@ describe('useMenuButton_unstable', () => {
       useMenuButton_unstable({ menuIcon: { children: customIcon } }, React.createRef()),
     );
     expect(result.current.menuIcon?.children).toBe(customIcon);
+  });
+
+  it('hides the menuIcon slot when menuIcon is null', () => {
+    const { result } = renderHook(() => useMenuButton_unstable({ menuIcon: null }, React.createRef()));
+    expect(result.current.menuIcon).toBeUndefined();
   });
 
   it('defaults aria-expanded to false when not provided', () => {
