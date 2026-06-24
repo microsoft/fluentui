@@ -1,18 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './label.options.js';
-import { Label } from './label.js';
 import { styles } from './label.styles.js';
 import { template } from './label.template.js';
 
 /**
- * The Fluent Label Element.
- *
+ * The definition for the `<fluent-label>` element.
  *
  * @public
- * @remarks
- * HTML Element: \<fluent-label\>
  */
-export const definition = Label.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

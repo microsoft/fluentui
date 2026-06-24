@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import { definition } from './badge.definition.js';
+import { Badge } from './badge.js';
 
-definition.define(FluentDesignSystem.registry);
+Badge.define(definition);
