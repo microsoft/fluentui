@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Expose Overflow use/render/styles hooks, provider and context types for headless consumers",
-  "packageName": "@fluentui/react-overflow",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

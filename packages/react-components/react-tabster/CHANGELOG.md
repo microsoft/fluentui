@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 26 May 2026 09:39:07 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.16)
+
+Wed, 24 Jun 2026 11:09:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.15..@fluentui/react-tabster_v9.26.16)
+
+### Patches
+
+- useMergedTabsterAttributes_unstable now supports attributes that change at runtime, including a changing number of attributes ([PR #36266](https://github.com/microsoft/fluentui/pull/36266) by bsunderhus@microsoft.com)
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.26.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.15)
 

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Thu, 12 Feb 2026 10:46:12 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:10:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.0)
+
+Wed, 24 Jun 2026 11:10:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.3.0..@fluentui/priority-overflow_v9.4.0)
+
+### Minor changes
+
+- feat: createOverflowManager accepts initialOptions, new setOptions method, observe now returns its cleanup, and the OverflowManagerOptions type is exported. ([PR #36262](https://github.com/microsoft/fluentui/pull/36262) by bsunderhus@microsoft.com)
+- feat: expose getSnapshot and subscribe on OverflowManager ([PR #36263](https://github.com/microsoft/fluentui/pull/36263) by bsunderhus@microsoft.com)
+
+### Patches
+
+- fix: recompute overflow eagerly when the overflow menu attaches or detaches ([PR #36264](https://github.com/microsoft/fluentui/pull/36264) by bsunderhus@microsoft.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.3.0)
 

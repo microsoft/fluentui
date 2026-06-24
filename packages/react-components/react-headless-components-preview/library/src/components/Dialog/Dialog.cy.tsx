@@ -453,4 +453,64 @@ describe('Dialog', () => {
     cy.get('dialog[data-modal-type="modal"]').should('have.length', 1);
     cy.get('dialog[data-modal-type="non-modal"]').should('have.length', 1);
   });
+
+  describe('with Tooltip wrapping DialogTrigger', () => {
+    const TooltipWrappedDialogExample = () => (
+      <Dialog>
+        <Tooltip hideDelay={0} showDelay={0} content="Open dialog to manage settings" relationship="label">
+          <DialogTrigger>
+            <Button id="tooltip-wrapped-trigger">Settings</Button>
+          </DialogTrigger>
+        </Tooltip>
+        <DialogSurface id="dialog-surface-with-tooltip">
+          <DialogBody>
+            <DialogTitle>Settings</DialogTitle>
+            <div>Configure your preferences here.</div>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id="close-after-tooltip">Close</Button>
+              </DialogTrigger>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    );
+
+    it('should open dialog when tooltip-wrapped trigger is clicked', () => {
+      mount(<TooltipWrappedDialogExample />);
+      cy.get('#tooltip-wrapped-trigger').should('exist');
+      cy.get('dialog').should('not.exist');
+      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get('dialog').should('exist');
+      cy.get('#dialog-surface-with-tooltip').should('contain.text', 'Settings');
+    });
+
+    it('should have tooltip accessible on the trigger', () => {
+      mount(<TooltipWrappedDialogExample />);
+      cy.get('#tooltip-wrapped-trigger').should('have.attr', 'aria-label', 'Open dialog to manage settings');
+    });
+
+    it('should close dialog and restore focus to tooltip-wrapped trigger', () => {
+      mount(<TooltipWrappedDialogExample />);
+      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get('dialog').should('exist');
+      cy.get('#close-after-tooltip').click();
+      cy.get('dialog').should('not.exist');
+      cy.get('#tooltip-wrapped-trigger').should('have.focus');
+    });
+
+    it('should handle keyboard interaction (Enter) with tooltip-wrapped trigger', () => {
+      mount(<TooltipWrappedDialogExample />);
+      cy.get('#tooltip-wrapped-trigger').focus().realPress('Enter');
+      cy.get('dialog').should('exist');
+    });
+
+    it('should show tooltip on hover without opening dialog', () => {
+      mount(<TooltipWrappedDialogExample />);
+      cy.get('#tooltip-wrapped-trigger').trigger('pointerover');
+      cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('[role="tooltip"]').should('contain.text', 'Open dialog to manage settings');
+      cy.get('dialog').should('not.exist');
+    });
+  });
 });

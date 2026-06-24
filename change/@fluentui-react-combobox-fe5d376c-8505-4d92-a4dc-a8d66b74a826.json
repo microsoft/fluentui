@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Escape in an open Combobox or Dropdown does not trigger tabster actions",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
