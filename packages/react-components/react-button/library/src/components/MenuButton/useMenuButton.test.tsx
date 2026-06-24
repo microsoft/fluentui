@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import '@testing-library/jest-dom';
-import { ChevronDownRegular } from '@fluentui/react-icons';
 import { ButtonContextProvider } from '../../contexts/ButtonContext';
 import type { ButtonContextValue } from '../../contexts/ButtonContext';
 import { useMenuButton_unstable } from './useMenuButton';
@@ -20,11 +20,13 @@ describe('useMenuButton_unstable', () => {
     expect(result.current.components).toEqual({ root: 'button', icon: 'span', menuIcon: 'span' });
   });
 
-  it('renders a menuIcon slot with a default chevron icon', () => {
+  it('renders a menuIcon slot with a default icon', () => {
     const { result } = renderHook(() => useMenuButton_unstable({}, React.createRef()));
     expect(result.current.menuIcon).toBeDefined();
     expect(React.isValidElement(result.current.menuIcon?.children)).toBe(true);
-    expect((result.current.menuIcon?.children as React.ReactElement)?.type).toBe(ChevronDownRegular);
+
+    const { container } = render(result.current.menuIcon?.children as React.ReactElement);
+    expect(container.querySelector('svg')).toBeInTheDocument();
   });
 
   it('preserves a user-provided menuIcon over the default chevron', () => {

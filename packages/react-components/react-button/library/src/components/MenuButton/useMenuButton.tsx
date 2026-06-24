@@ -66,7 +66,6 @@ export const useMenuButton_unstable = (
   const baseState = useMenuButtonBase_unstable(
     {
       ...baseProps,
-      // Default the menuIcon to a chevron, while still allowing `menuIcon={null}` to hide it.
       menuIcon: menuIcon === null ? null : { children: <ChevronDownRegular />, ...slot.resolveShorthand(menuIcon) },
     },
     ref,
