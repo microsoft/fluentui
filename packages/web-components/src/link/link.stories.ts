@@ -43,6 +43,12 @@ export const Appearance: Story = {
 
 export const Inline: Story = {
   render: renderComponent(html<StoryArgs<FluentLink>>`
+    <style>
+      h4,
+      p {
+        color: var(--colorNeutralForeground1);
+      }
+    </style>
     <fluent-text
       ><p>
         This is an <fluent-link href="#" inline>inline link</fluent-link> used alongside text within the
@@ -64,6 +70,7 @@ export const Wrapping: Story = {
       .max-width {
         display: block;
         width: 250px;
+        color: var(--colorNeutralForeground1);
       }
     </style>
     <p class="max-width">
