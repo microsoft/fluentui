@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: expose getSnapshot and subscribe on OverflowManager",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

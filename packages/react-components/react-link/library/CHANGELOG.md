@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Tue, 26 May 2026 09:39:19 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.8.3)
+
+Wed, 24 Jun 2026 11:09:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.8.2..@fluentui/react-link_v9.8.3)
+
+### Patches
+
+- fix(Link): add disabled styles for high contrast mode ([PR #36277](https://github.com/microsoft/fluentui/pull/36277) by sarah.higley@microsoft.com)
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.8.2)
 

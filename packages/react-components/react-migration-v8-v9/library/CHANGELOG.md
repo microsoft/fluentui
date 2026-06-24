@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Wed, 27 May 2026 11:18:57 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.13)
+
+Wed, 24 Jun 2026 11:09:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.12..@fluentui/react-migration-v8-v9_v9.10.13)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.74.2 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.10.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.12)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "useMergedTabsterAttributes_unstable now supports attributes that change at runtime, including a changing number of attributes",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

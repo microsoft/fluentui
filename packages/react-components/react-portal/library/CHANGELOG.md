@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Tue, 26 May 2026 09:39:31 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.8.14)
+
+Wed, 24 Jun 2026 11:09:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.8.13..@fluentui/react-portal_v9.8.14)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.8.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.8.13)
 

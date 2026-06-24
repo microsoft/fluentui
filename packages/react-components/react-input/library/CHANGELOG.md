@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Tue, 26 May 2026 09:40:01 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.8.4)
+
+Wed, 24 Jun 2026 11:09:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.8.3..@fluentui/react-input_v9.8.4)
+
+### Patches
+
+- fix: move Field control props to base hooks ([PR #36312](https://github.com/microsoft/fluentui/pull/36312) by dmytrokirpa@microsoft.com)
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.5.3 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [9.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.8.3)
 

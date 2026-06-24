@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Tue, 26 May 2026 09:39:22 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jun 2026 11:09:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.3)
+
+Wed, 24 Jun 2026 11:09:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.5.2..@fluentui/react-menu-grid-preview_v0.5.3)
+
+### Patches
+
+- fix: remove redundant use no memo directives, and add justification to valid ones ([PR #36224](https://github.com/microsoft/fluentui/pull/36224) by martinhochel@microsoft.com)
+- Bump @fluentui/react-menu to v9.25.1 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-table to v9.19.17 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-tabster to v9.26.16 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.4 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
+- Bump @fluentui/react-utilities to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/a4b871ca80c1f16f35ab4229def4fe02be7f30ea) by beachball)
 
 ## [0.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.2)
 
