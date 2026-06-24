@@ -2,6 +2,57 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 24 Jun 2026 04:08:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.29",
+      "version": "3.0.0-rc.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "67f015fd523009cd6d794f16fd79bfa873fe068d",
+            "comment": "fix: ensure message bar color is visible in dark mode themes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "251296ae6048ffefa6fe9e9543ba4ed58e711556",
+            "comment": "fix: ensure accordion item content is visible in dark mode'"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2026 04:08:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.28",
+      "version": "3.0.0-rc.28",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "ac9ed942ffd511822bb3c4faa33d5d96c7ee339a",
+            "comment": "fix: docsite build target"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jun 2026 04:05:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.28",
+      "version": "3.0.0-rc.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "077efd908148c03f579d8cc1a3a1ef35353365a7",
+            "comment": "fix anchor positioning for rtl"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jun 2026 04:07:42 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.27",
       "version": "3.0.0-rc.27",
