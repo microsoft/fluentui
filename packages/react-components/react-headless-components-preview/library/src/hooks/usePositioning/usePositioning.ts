@@ -72,9 +72,31 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     if (!effectiveTarget) {
       return;
     }
-    effectiveTarget.style.setProperty('anchor-name', anchorName);
+
+    // `anchor-name` is a comma-separated list. Append this instance's name
+    // instead of overwriting so that multiple positioned popovers can share a
+    // single trigger (e.g. a Tooltip on hover and a Menu on click attached to
+    // the same button) without clobbering each other's anchor. On cleanup we
+    // remove only our own name, preserving any others still in use.
+    const readAnchorNames = () =>
+      effectiveTarget.style
+        .getPropertyValue('anchor-name')
+        .split(',')
+        .map(name => name.trim())
+        .filter(Boolean);
+
+    const names = readAnchorNames();
+    if (!names.includes(anchorName)) {
+      effectiveTarget.style.setProperty('anchor-name', [...names, anchorName].join(', '));
+    }
+
     return () => {
-      effectiveTarget.style.removeProperty('anchor-name');
+      const remaining = readAnchorNames().filter(name => name !== anchorName);
+      if (remaining.length > 0) {
+        effectiveTarget.style.setProperty('anchor-name', remaining.join(', '));
+      } else {
+        effectiveTarget.style.removeProperty('anchor-name');
+      }
     };
   }, [effectiveTarget, anchorName]);
 
