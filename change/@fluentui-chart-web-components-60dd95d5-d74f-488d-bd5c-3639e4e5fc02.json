@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: upgrade to FAST Element v3 and bump build tooling",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
