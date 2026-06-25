@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 25 Jun 2026 04:09:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.30",
+      "version": "3.0.0-rc.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "04cc9d470ec8bd5a9524070f33b93bfa8501cf0a",
+            "comment": "fix: ensure toggle button text is visible in high contrast modes"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "19d82d85bda458b0af3fa4e0814bf3232fc78594",
+            "comment": "refactor: replace compose() with plain definition objects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 04:08:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.29",
       "version": "3.0.0-rc.29",

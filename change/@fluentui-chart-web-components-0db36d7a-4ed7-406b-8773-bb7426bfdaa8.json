@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: replace compose() with plain definition objects",
-  "packageName": "@fluentui/chart-web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Thu, 25 Jun 2026 04:09:26 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.88",
+      "version": "0.0.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "19d82d85bda458b0af3fa4e0814bf3232fc78594",
+            "comment": "refactor: replace compose() with plain definition objects"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.30",
+            "commit": "19d82d85bda458b0af3fa4e0814bf3232fc78594"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 04:08:03 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.87",
       "version": "0.0.87",
