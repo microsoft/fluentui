@@ -245,11 +245,12 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
   return (
     <button
       className={mergeClasses(classNames.navigationButton, disabled && classNames.disabled)}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : undefined}
       onClick={!disabled ? onNavigate : undefined}
       onKeyDown={!disabled ? onKeyDown : undefined}
       type="button"
       title={ariaLabelString}
-      disabled={disabled}
     >
       {direction === CalendarYearNavDirection.Previous ? navigationIcons.upNavigation : navigationIcons.downNavigation}
     </button>
