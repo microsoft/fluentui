@@ -1,6 +1,7 @@
 import { FASTElement, observable } from '@microsoft/fast-element';
 import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
 import { isTreeItem } from '../tree-item/tree-item.options.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
 
 export class BaseTree extends FASTElement {
   /**
@@ -160,7 +161,15 @@ export class BaseTree extends FASTElement {
 
   /** @internal */
   public handleDefaultSlotChange() {
-    this.childTreeItems = this.defaultSlot.assignedElements().filter(el => isTreeItem(el));
+    const assignedElements = this.defaultSlot.assignedElements();
+
+    this.childTreeItems = getUpgradedCustomElements(assignedElements, isTreeItem);
+
+    runAfterPendingDefinitions(assignedElements, isTreeItem, () => {
+      if (this.isConnected) {
+        this.handleDefaultSlotChange();
+      }
+    });
   }
 
   /**
