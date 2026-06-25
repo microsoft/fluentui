@@ -48,6 +48,10 @@
     "./*/define.js": "./dist/esm/*/define.js",
     "./*/define-async.js": "./dist/esm/*/define-async.js",
     "./*/definition.js": "./dist/esm/*/*.definition.js",
+    "./*/definition-async.js": {
+      "types": "./dist/dts/*.definition-async.d.ts",
+      "default": "./dist/esm/*/*.definition-async.js"
+    },
     "./*/options.js": "./dist/esm/*/*.options.js",
     "./*/styles.js": "./dist/esm/*/*.styles.js",
     "./*/styles.css": "./dist/esm/*/*.styles.css",
@@ -109,18 +113,12 @@
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
   "dependencies": {
-    "@fluentui/tokens": "1.0.0-alpha.23",
+    "@fluentui/tokens": "^1.0.0-alpha.23",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0",
-    "@microsoft/fast-html": "^1.0.0-alpha.53",
-    "@microsoft/focusgroup-polyfill": "^1.4.1"
-  },
-  "peerDependenciesMeta": {
-    "@microsoft/fast-html": {
-      "optional": true
-    }
+    "@microsoft/fast-element": "^3.0.0",
+    "@microsoft/focusgroup-polyfill": "^1.5.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
