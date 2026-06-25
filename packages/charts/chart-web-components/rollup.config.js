@@ -6,7 +6,12 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
 import esbuild, { minify } from 'rollup-plugin-esbuild';
-import fastTaggedTemplates from 'rollup-plugin-fast-tagged-templates';
+import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
+import { transformCSSFragment, transformHTMLFragment } from './scripts/transform-fragments';
+
+const parserOptions = {
+  sourceType: 'module',
+};
 
 export default [
   {
@@ -22,14 +27,22 @@ export default [
         plugins: [minify()],
       },
     ],
-    context: 'window',
     plugins: [
       nodeResolve({ browser: true }),
       commonJS(),
       esbuild({
         tsconfig: './tsconfig.lib.json',
       }),
-      fastTaggedTemplates(),
+      transformTaggedTemplate({
+        tagsToProcess: ['css'],
+        transformer: transformCSSFragment,
+        parserOptions,
+      }),
+      transformTaggedTemplate({
+        tagsToProcess: ['html'],
+        transformer: transformHTMLFragment,
+        parserOptions,
+      }),
     ],
   },
 ];
