@@ -224,7 +224,7 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/generator@7.29.1", "@babel/generator@>=7", "@babel/generator@^7.10.3", "@babel/generator@^7.12.13", "@babel/generator@^7.23.0", "@babel/generator@^7.27.5", "@babel/generator@^7.29.0", "@babel/generator@^7.4.4":
+"@babel/generator@7.29.1", "@babel/generator@>=7", "@babel/generator@^7.12.13", "@babel/generator@^7.23.0", "@babel/generator@^7.27.5", "@babel/generator@^7.29.0", "@babel/generator@^7.4.4":
   version "7.29.1"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.29.1.tgz#d09876290111abbb00ef962a7b83a5307fba0d50"
   integrity sha512-qsaF+9Qcm2Qv8SRIMMscAvG4O3lJ0F1GuMo5HR/Bp02LopNgnZBC/EkbevHFeGs4ls/oPz9v+Bsmzbkbe+0dUw==
@@ -393,7 +393,7 @@
     "@babel/template" "^7.28.6"
     "@babel/types" "^7.29.0"
 
-"@babel/parser@7.29.3", "@babel/parser@^7.1.0", "@babel/parser@^7.10.3", "@babel/parser@^7.13.16", "@babel/parser@^7.20.0", "@babel/parser@^7.20.7", "@babel/parser@^7.23.9", "@babel/parser@^7.24.4", "@babel/parser@^7.28.6", "@babel/parser@^7.29.0", "@babel/parser@^7.4.5":
+"@babel/parser@7.29.3", "@babel/parser@^7.1.0", "@babel/parser@^7.13.16", "@babel/parser@^7.20.0", "@babel/parser@^7.20.7", "@babel/parser@^7.23.9", "@babel/parser@^7.24.4", "@babel/parser@^7.28.6", "@babel/parser@^7.29.0", "@babel/parser@^7.4.5":
   version "7.29.3"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.29.3.tgz#116f70a77958307fceac27747573032f8a62f88e"
   integrity sha512-b3ctpQwp+PROvU/cttc4OYl4MzfJUWy6FZg+PMXfzmt/+39iHVF0sDfqay8TQM3JA2EUOyKcFZt75jWriQijsA==
@@ -1333,7 +1333,7 @@
     "@babel/parser" "^7.28.6"
     "@babel/types" "^7.28.6"
 
-"@babel/traverse@7.29.0", "@babel/traverse@>=7", "@babel/traverse@^7.10.3", "@babel/traverse@^7.12.13", "@babel/traverse@^7.16.0", "@babel/traverse@^7.18.9", "@babel/traverse@^7.23.2", "@babel/traverse@^7.27.1", "@babel/traverse@^7.28.3", "@babel/traverse@^7.28.5", "@babel/traverse@^7.28.6", "@babel/traverse@^7.29.0", "@babel/traverse@^7.4.5":
+"@babel/traverse@7.29.0", "@babel/traverse@>=7", "@babel/traverse@^7.12.13", "@babel/traverse@^7.16.0", "@babel/traverse@^7.18.9", "@babel/traverse@^7.23.2", "@babel/traverse@^7.27.1", "@babel/traverse@^7.28.3", "@babel/traverse@^7.28.5", "@babel/traverse@^7.28.6", "@babel/traverse@^7.29.0", "@babel/traverse@^7.4.5":
   version "7.29.0"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.29.0.tgz#f323d05001440253eead3c9c858adbe00b90310a"
   integrity sha512-4HPiQr0X7+waHfyXPZpWPfWL/J7dcN1mx9gL6WdQVMbPnF3+ZhSMs8tCxN7oHddJE9fhNE7+lxdnlyemKfJRuA==
@@ -10373,7 +10373,7 @@ fd-slicer@~1.1.0:
   dependencies:
     pend "~1.2.0"
 
-fdir@^6.4.4, fdir@^6.5.0:
+fdir@^6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/fdir/-/fdir-6.5.0.tgz#ed2ab967a331ade62f18d077dae192684d50d350"
   integrity sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==
@@ -15548,7 +15548,7 @@ nano-staged@0.9.0:
   dependencies:
     picocolors "^1.0.0"
 
-nanoid@^3.3.11, nanoid@^3.3.12:
+nanoid@^3.3.11:
   version "3.3.15"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.15.tgz#36c490fad8c6e86c824c940dfdde999b69ed4316"
   integrity sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==
@@ -17885,10 +17885,10 @@ rollup-plugin-esbuild@6.1.1:
     es-module-lexer "^1.3.1"
     get-tsconfig "^4.7.2"
 
-rollup-plugin-fast-tagged-templates@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-fast-tagged-templates/-/rollup-plugin-fast-tagged-templates-1.0.2.tgz#ec4dae2819516a4e0aafa8478e85d6bc9c3a0654"
-  integrity sha512-faCdx89y6ggN3lcAw1YLlEszde+rcZT/EhiBQZlsqb8017jLJt4+tgZwVo0e4NF/QOa78UEeY+A2NsCj3bf2UA==
+rollup-plugin-fast-tagged-templates@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-fast-tagged-templates/-/rollup-plugin-fast-tagged-templates-1.0.3.tgz#073fbdea12ba28a81b4d0571390876962b5cf3a8"
+  integrity sha512-w4tBv8ULxwkQdKQip8qQTzw2HGec+YFKgVPtrsWnx3jYmx8Yn8mQeGiO3IY7Ti60Uq0/4t80DxNkNtv78pujWQ==
   dependencies:
     estree-walker "^3.0.3"
     html-minifier-terser "^7.2.0"
@@ -17915,15 +17915,6 @@ rollup-plugin-terser@5.3.1:
     rollup-pluginutils "^2.8.2"
     serialize-javascript "^4.0.0"
     terser "^4.6.2"
-
-rollup-plugin-transform-tagged-template@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-transform-tagged-template/-/rollup-plugin-transform-tagged-template-0.0.3.tgz#b18df7931dbc43984a1c81ee2edcc266a9f6844e"
-  integrity sha512-IY8JwVTZxwOqQU1B1lqBAfvj0PXgy60pe480mgfs5CCbwytBMQCSrG1eHnD1o8+JCl+5gHdKK5wNXnFngCHxkw==
-  dependencies:
-    "@babel/generator" "^7.10.3"
-    "@babel/parser" "^7.10.3"
-    "@babel/traverse" "^7.10.3"
 
 rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   version "2.8.2"

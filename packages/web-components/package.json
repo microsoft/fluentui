@@ -109,8 +109,7 @@
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0",
-    "dedent": "^1.2.0",
-    "rollup-plugin-fast-tagged-templates": "^1.0.2"
+    "dedent": "^1.2.0"
   },
   "dependencies": {
     "@fluentui/tokens": "^1.0.0-alpha.23",
