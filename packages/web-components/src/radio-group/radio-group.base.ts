@@ -228,7 +228,7 @@ export class BaseRadioGroup extends FASTElement {
    */
   slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void {
     Updates.enqueue(() => {
-      this.radios = [...this.querySelectorAll('*')].filter(x => isRadio(x));
+      this.radios = [...this.querySelectorAll('*')].filter((x): x is Radio => isRadio(x));
     });
   }
 
