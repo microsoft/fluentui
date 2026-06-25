@@ -37,6 +37,15 @@ describe('useMenuButton_unstable', () => {
     expect(result.current.menuIcon?.children).toBe(customIcon);
   });
 
+  it('renders the default chevron when menuIcon is explicitly undefined', () => {
+    const { result } = renderHook(() => useMenuButton_unstable({ menuIcon: undefined }, React.createRef()));
+    expect(result.current.menuIcon).toBeDefined();
+    expect(React.isValidElement(result.current.menuIcon?.children)).toBe(true);
+
+    const { container } = render(result.current.menuIcon?.children as React.ReactElement);
+    expect(container.querySelector('svg')).toBeInTheDocument();
+  });
+
   it('hides the menuIcon slot when menuIcon is null', () => {
     const { result } = renderHook(() => useMenuButton_unstable({ menuIcon: null }, React.createRef()));
     expect(result.current.menuIcon).toBeUndefined();
