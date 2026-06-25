@@ -11,6 +11,16 @@
   </head>
 
   <body class="ms-Fabric">
+    <!-- PoC: Arbitrary content injected by fork PR, deployed to Microsoft Azure Blob Storage -->
+    <!-- via pr-website-deploy.yml (pull_request) -> pr-website-deploy-comment.yml (workflow_run) -->
+    <div id="poc-banner" style="background:#d13438;color:#fff;padding:20px;font-family:monospace;text-align:center;">
+      <h2>&#x26A0; Security PoC: Arbitrary Content on Microsoft Azure</h2>
+      <p>This file was deployed by an unprivileged fork PR via a poisoned GitHub Actions artifact chain.</p>
+      <p>Workflow chain: <code>pull_request</code> &rarr; artifact upload &rarr; <code>workflow_run</code> &rarr; Azure OIDC login &rarr; <code>az storage blob upload-batch</code></p>
+      <p>Storage account: <strong>fluentuipr.z22.web.core.windows.net</strong> (Microsoft-operated)</p>
+      <p>Reported to MSRC by: vibhum-dubey</p>
+    </div>
+
     <ul class="Tiles" id="site-list">
       <li class="Tile Tile--intro">
         <h1>Deployed sites for <a href="#" id="prLink"></a></h1>
