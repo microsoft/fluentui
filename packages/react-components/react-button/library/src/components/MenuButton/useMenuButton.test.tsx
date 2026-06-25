@@ -5,6 +5,7 @@ import '@testing-library/jest-dom';
 import { ButtonContextProvider } from '../../contexts/ButtonContext';
 import type { ButtonContextValue } from '../../contexts/ButtonContext';
 import { useMenuButton_unstable } from './useMenuButton';
+import { MenuButton } from './MenuButton';
 
 const wrap = (contextValue: ButtonContextValue = {}): React.FC<{ children?: React.ReactNode }> => {
   const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
@@ -21,12 +22,8 @@ describe('useMenuButton_unstable', () => {
   });
 
   it('renders a menuIcon slot with a default icon', () => {
-    const { result } = renderHook(() => useMenuButton_unstable({}, React.createRef()));
-    expect(result.current.menuIcon).toBeDefined();
-    expect(React.isValidElement(result.current.menuIcon?.children)).toBe(true);
-
-    const { container } = render(result.current.menuIcon?.children as React.ReactElement);
-    expect(container.querySelector('svg')).toBeInTheDocument();
+    const result = render(<MenuButton />);
+    expect(result.container.querySelector('svg')).toBeInTheDocument();
   });
 
   it('preserves a user-provided menuIcon over the default chevron', () => {
@@ -38,12 +35,8 @@ describe('useMenuButton_unstable', () => {
   });
 
   it('renders the default chevron when menuIcon is explicitly undefined', () => {
-    const { result } = renderHook(() => useMenuButton_unstable({ menuIcon: undefined }, React.createRef()));
-    expect(result.current.menuIcon).toBeDefined();
-    expect(React.isValidElement(result.current.menuIcon?.children)).toBe(true);
-
-    const { container } = render(result.current.menuIcon?.children as React.ReactElement);
-    expect(container.querySelector('svg')).toBeInTheDocument();
+    const result = render(<MenuButton menuIcon={undefined} />);
+    expect(result.container.querySelector('svg')).toBeInTheDocument();
   });
 
   it('hides the menuIcon slot when menuIcon is null', () => {
