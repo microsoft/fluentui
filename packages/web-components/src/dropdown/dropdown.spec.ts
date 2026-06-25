@@ -602,20 +602,24 @@ test.describe('Dropdown', () => {
 
       await fastPage.setTemplate();
 
+      await element.evaluate((el: Dropdown) => {
+        (el as any).searchTimeoutMs = 100;
+      });
+
       await combobox.focus();
-      await page.keyboard.press('b', { delay: 500 });
+      await combobox.press('b', { delay: 100 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
 
-      await page.keyboard.press('a', { delay: 500 });
+      await combobox.press('a', { delay: 100 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o1');
 
-      await page.keyboard.press('c', { delay: 500 });
+      await combobox.press('c', { delay: 100 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
 
-      await page.keyboard.press('d');
+      await combobox.press('d');
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o5');
     });
@@ -651,19 +655,30 @@ test.describe('Dropdown', () => {
       await fastPage.setTemplate();
 
       await combobox.focus();
-      await page.keyboard.type('bb', { delay: 100 });
+      await combobox.pressSequentially('bb', { delay: 10 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
 
-      await page.waitForTimeout(500);
+      // manually reset the search string and timeout to skip the built-in timeout
+      await element.evaluate(node => {
+        (node as any).searchTimeout = clearTimeout((node as any).searchTimeout);
+        (node as any).searchString = '';
+      });
 
-      await page.keyboard.type('bb', { delay: 100 });
+      await combobox.pressSequentially('bb', { delay: 10 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o3');
 
-      await page.waitForTimeout(500);
+      // manually reset the search string and timeout to skip the built-in timeout
+      await element.evaluate(node => {
+        (node as any).searchTimeout = clearTimeout((node as any).searchTimeout);
+        (node as any).searchString = '';
 
-      await page.keyboard.type('bb', { delay: 600 });
+        // Set the search timeout to a value greater than the delay between key presses to simulate a slow typing speed
+        (node as any).searchTimeoutMs = 0;
+      });
+
+      await element.pressSequentially('bb', { delay: 10 });
 
       await expect(combobox).toHaveAttribute('aria-activedescendant', 'o2');
     });
