@@ -48,10 +48,7 @@
     "./*/define.js": "./dist/esm/*/define.js",
     "./*/define-async.js": "./dist/esm/*/define-async.js",
     "./*/definition.js": "./dist/esm/*/*.definition.js",
-    "./*/definition-async.js": {
-      "types": "./dist/dts/*.definition-async.d.ts",
-      "default": "./dist/esm/*/*.definition-async.js"
-    },
+    "./*/definition-async.js": "./dist/esm/*/*.definition-async.js",
     "./*/options.js": "./dist/esm/*/*.options.js",
     "./*/styles.js": "./dist/esm/*/*.styles.js",
     "./*/styles.css": "./dist/esm/*/*.styles.css",
