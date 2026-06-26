@@ -202,13 +202,13 @@ test.describe('Drawer', () => {
     await expect(content).toBeHidden();
   });
 
-  test.describe('opening focus', () => {
+  test.describe('sets focus when show() is called', () => {
     test.use({
       tagName,
       waitFor: [DrawerBodyTagName, TextInputTagName],
     });
 
-    test('should focus on the element with `autofocus` attribute', async ({ fastPage }) => {
+    test('should focus on the first element with `autofocus` attribute', async ({ fastPage }) => {
       const { element } = fastPage;
       const content = element.locator('#content');
       const input = element.getByTestId('input');
@@ -218,6 +218,7 @@ test.describe('Drawer', () => {
           <${DrawerBodyTagName} id="content">
             <button>before</button>
             <${TextInputTagName} autofocus data-testid="input"></${TextInputTagName}>
+            <${TextInputTagName} autofocus></${TextInputTagName}>
             <button>after</button>
           </${DrawerBodyTagName}>
         `,

@@ -387,7 +387,7 @@ test.describe('Dialog', () => {
     await expect(content).toBeHidden();
   });
 
-  test.describe('opening focus', () => {
+  test.describe('sets focus when show() is called', () => {
     test.use({
       tagName,
       waitFor: [DialogBodyTagName, TablistTagName, TabTagName, TextInputTagName],
@@ -425,7 +425,7 @@ test.describe('Dialog', () => {
       await expect(tablist).toHaveAttribute('activeid', 'tab2');
     });
 
-    test('should focus on itself', async ({ fastPage }) => {
+    test('should focus on itself if no slotted content has `autofocus` attribute', async ({ fastPage }) => {
       const { element } = fastPage;
       const content = element.locator('#content');
 
@@ -447,7 +447,7 @@ test.describe('Dialog', () => {
       await expect(element).toBeFocused();
     });
 
-    test('should focus on the element with `autofocus` attribute', async ({ fastPage }) => {
+    test('should focus on the first element with `autofocus` attribute', async ({ fastPage }) => {
       const { element } = fastPage;
       const content = element.locator('#content');
       const input = element.getByTestId('input');
@@ -457,6 +457,7 @@ test.describe('Dialog', () => {
           <${DialogBodyTagName} id="content">
             <button>before</button>
             <${TextInputTagName} autofocus data-testid="input"></${TextInputTagName}>
+            <${TextInputTagName} autofocus></${TextInputTagName}>
             <button>after</button>
           </${DialogBodyTagName}>
         `,
