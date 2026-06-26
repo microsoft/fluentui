@@ -26,7 +26,8 @@
     "@fluentui/react-spinner": "^9.8.4",
     "@fluentui/react-toast": "^9.8.1",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "@fluentui-contrib/react-cap-theme": "^0.4.2"
   },
   "peerDependencies": {
     "@storybook/addon-docs": "^9.1.17",

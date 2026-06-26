@@ -22,6 +22,8 @@ export const parameters = {
       dirSwitcher: true,
       // headless components don't support theming
       themePicker: false,
+      // CAP visual language only applies to @fluentui/react-components
+      visualLanguagePicker: false,
     },
   },
 };
