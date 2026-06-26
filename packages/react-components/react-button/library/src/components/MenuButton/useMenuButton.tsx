@@ -62,16 +62,17 @@ export const useMenuButton_unstable = (
 ): MenuButtonState => {
   const { size: contextSize } = useButtonContext();
   const { appearance = 'secondary', menuIcon, shape = 'rounded', size = contextSize ?? 'medium', ...baseProps } = props;
-  const baseState = useMenuButtonBase_unstable(
-    {
-      ...baseProps,
-      menuIcon: menuIcon === null ? null : { children: <ChevronDownRegular />, ...slot.resolveShorthand(menuIcon) },
-    },
-    ref,
-  );
+  const baseState = useMenuButtonBase_unstable(baseProps, ref);
 
   return {
     ...baseState,
+    menuIcon: slot.optional(menuIcon, {
+      defaultProps: {
+        children: <ChevronDownRegular />,
+      },
+      renderByDefault: true,
+      elementType: 'span',
+    }),
     appearance,
     shape,
     size,
