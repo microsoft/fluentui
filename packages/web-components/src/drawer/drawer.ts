@@ -202,7 +202,7 @@ export class Drawer extends FASTElement {
       // Using `autofocus` inside a `<dialog>` is implemented inconsistently
       // across browsers, so artificially focusing here. See details:
       // https://codepen.io/marchbox/pen/PwbRmXE
-      (this.querySelector('[autofocus]') as HTMLElement)?.focus();
+      (this.querySelector('[autofocus]') as HTMLElement)?.focus?.();
       this.emitToggle();
     });
   }
