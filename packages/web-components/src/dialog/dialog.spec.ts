@@ -3,6 +3,7 @@ import { expect, test } from '../../test/playwright/index.js';
 import { tagName as DialogBodyTagName } from '../dialog-body/dialog-body.options.js';
 import { tagName as TabTagName } from '../tab/tab.options.js';
 import { tagName as TablistTagName } from '../tablist/tablist.options.js';
+import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
 import type { Dialog } from './dialog.js';
 import { tagName } from './dialog.options.js';
 
@@ -386,10 +387,10 @@ test.describe('Dialog', () => {
     await expect(content).toBeHidden();
   });
 
-  test.describe('opening focus', () => {
+  test.describe('sets focus when show() is called', () => {
     test.use({
       tagName,
-      waitFor: [DialogBodyTagName, TablistTagName, TabTagName],
+      waitFor: [DialogBodyTagName, TablistTagName, TabTagName, TextInputTagName],
     });
 
     test('should not change tablist’s `activeid` attribute', async ({ fastPage }) => {
@@ -422,6 +423,52 @@ test.describe('Dialog', () => {
 
       await expect(content).toBeVisible();
       await expect(tablist).toHaveAttribute('activeid', 'tab2');
+    });
+
+    test('should focus on itself if no slotted content has `autofocus` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DialogBodyTagName} id="content">
+            <button>before</button>
+            <${TextInputTagName}></${TextInputTagName}>
+            <button>after</button>
+          </${DialogBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Dialog) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(element).toBeFocused();
+    });
+
+    test('should focus on the first element with `autofocus` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+      const input = element.getByTestId('input');
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DialogBodyTagName} id="content">
+            <button>before</button>
+            <${TextInputTagName} autofocus data-testid="input"></${TextInputTagName}>
+            <${TextInputTagName} autofocus></${TextInputTagName}>
+            <button>after</button>
+          </${DialogBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Dialog) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(input).toBeFocused();
     });
   });
 });
