@@ -165,6 +165,7 @@ export class Dialog extends FASTElement {
       } else if (this.type === DialogType.nonModal) {
         this.dialog.show();
       }
+      (this.querySelector('[autofocus]') as HTMLElement)?.focus();
       this.emitToggle();
     });
   }

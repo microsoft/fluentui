@@ -199,6 +199,7 @@ export class Drawer extends FASTElement {
       } else {
         this.dialog.showModal();
       }
+      (this.querySelector('[autofocus]') as HTMLElement)?.focus();
       this.emitToggle();
     });
   }
