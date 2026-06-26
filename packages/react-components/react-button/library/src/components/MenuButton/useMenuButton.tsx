@@ -10,6 +10,10 @@ import type { MenuButtonBaseProps, MenuButtonBaseState, MenuButtonProps, MenuBut
 /**
  * Base hook for MenuButton.
  *
+ * The `menuIcon` slot ships no icon of its own and only renders when a consumer
+ * provides one, so headless consumers can supply their own visuals. The styled
+ * `useMenuButton_unstable` adds the default chevron on top of this.
+ *
  * @param props - User provided props to the MenuButton component.
  * @param ref - User provided ref to be passed to the MenuButton component.
  */
@@ -40,10 +44,6 @@ export const useMenuButtonBase_unstable = (
     },
 
     menuIcon: slot.optional(menuIcon, {
-      defaultProps: {
-        children: <ChevronDownRegular />,
-      },
-      renderByDefault: true,
       elementType: 'span',
     }),
   };
@@ -61,11 +61,18 @@ export const useMenuButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
   const { size: contextSize } = useButtonContext();
-  const { appearance = 'secondary', shape = 'rounded', size = contextSize ?? 'medium', ...baseProps } = props;
+  const { appearance = 'secondary', menuIcon, shape = 'rounded', size = contextSize ?? 'medium', ...baseProps } = props;
   const baseState = useMenuButtonBase_unstable(baseProps, ref);
 
   return {
     ...baseState,
+    menuIcon: slot.optional(menuIcon, {
+      defaultProps: {
+        children: <ChevronDownRegular />,
+      },
+      renderByDefault: true,
+      elementType: 'span',
+    }),
     appearance,
     shape,
     size,
