@@ -195,6 +195,12 @@
       "import": "./lib/menu.js",
       "require": "./lib-commonjs/menu.js"
     },
+    "./menu-button": {
+      "types": "./dist/menu-button.d.ts",
+      "node": "./lib-commonjs/menu-button.js",
+      "import": "./lib/menu-button.js",
+      "require": "./lib-commonjs/menu-button.js"
+    },
     "./message-bar": {
       "types": "./dist/message-bar.d.ts",
       "node": "./lib-commonjs/message-bar.js",
