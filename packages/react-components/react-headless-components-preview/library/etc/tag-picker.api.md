@@ -64,8 +64,11 @@ export const renderTagPickerOption: (state: TagPickerOptionState) => JSXElement;
 // @public
 export const renderTagPickerOptionGroup: (state: OptionGroupState) => JSXElement;
 
-// @public (undocumented)
-export const TagPicker: ForwardRefComponent<TagPickerProps>;
+// @public
+export const TagPicker: {
+    (props: TagPickerProps): JSXElement;
+    displayName: string;
+};
 
 // @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
