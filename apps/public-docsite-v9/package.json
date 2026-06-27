@@ -27,6 +27,7 @@
     "@fluentui/react-northstar": "*",
     "@fluentui/react-icons-northstar": "*",
     "@fluentui/react-components": "*",
+    "@fluentui/react-file-type-icons": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",

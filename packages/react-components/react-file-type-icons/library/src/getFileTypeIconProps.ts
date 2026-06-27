@@ -1,0 +1,146 @@
+import { canUseDOM } from '@fluentui/react-utilities';
+import { FileTypeIconMap } from './FileTypeIconMap';
+import type { FileIconType, FileIconTypeInput } from './FileIconType';
+
+let _extensionToIconName: { [key: string]: string };
+let _typeToIconName: { [key: number]: string };
+
+const GENERIC_FILE = 'genericfile';
+
+export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
+export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
+export type ImageFileType = 'svg' | 'png';
+
+export interface IFileTypeIconOptions {
+  /**
+   * The file extension, such as .pptx, for which you need an icon.
+   * For file type icons that are not associated with a file
+   * extension, such as folder, use the type property.
+   */
+  extension?: string;
+  /**
+   * The type of file type icon you need. Use this property for
+   * file type icons that are not associated with a file extension,
+   * such as folder.
+   */
+  type?: FileIconTypeInput;
+  /**
+   * The size of the icon in pixels.
+   * @default 16
+   */
+  size?: FileTypeIconSize;
+  /**
+   * The type of image file to use. Can be svg or png.
+   * @default 'svg'
+   */
+  imageFileType?: ImageFileType;
+}
+
+/**
+ * This function returns properties for a file type icon given the IFileTypeIconOptions.
+ * It accounts for different device pixel ratios. For example,
+ * `getFileTypeIconProps({ extension: 'doc', size: 16, imageFileType: 'png' })`
+ * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
+ * @param options - Options used to resolve the file type icon props.
+ */
+export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
+  // First, obtain the base name of the icon using the extension or type.
+  let iconBaseName: string;
+  const { extension, type, size, imageFileType } = options;
+
+  iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
+  // Next, obtain the suffix using the icon size, user's device pixel ratio, and
+  // preference for svg or png
+  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
+  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
+
+  return { iconName: iconBaseName + suffix, 'aria-label': extension };
+}
+
+export function getFileTypeIconNameFromExtensionOrType(
+  extension: string | undefined,
+  type: FileIconType | undefined,
+): string {
+  if (extension) {
+    if (!_extensionToIconName) {
+      _extensionToIconName = {};
+
+      for (const iconName in FileTypeIconMap) {
+        if (FileTypeIconMap.hasOwnProperty(iconName)) {
+          const extensions = FileTypeIconMap[iconName].extensions;
+
+          if (extensions) {
+            for (let i = 0; i < extensions.length; i++) {
+              _extensionToIconName[extensions[i]] = iconName;
+            }
+          }
+        }
+      }
+    }
+
+    // Strip periods, force lowercase.
+    extension = extension.replace('.', '').toLowerCase();
+    return _extensionToIconName[extension] || GENERIC_FILE;
+  } else if (type) {
+    if (!_typeToIconName) {
+      _typeToIconName = {};
+
+      for (const iconName in FileTypeIconMap) {
+        if (FileTypeIconMap.hasOwnProperty(iconName)) {
+          const types = FileTypeIconMap[iconName].types;
+
+          if (types) {
+            for (let i = 0; i < types.length; i++) {
+              _typeToIconName[types[i]] = iconName;
+            }
+          }
+        }
+      }
+    }
+
+    return _typeToIconName[type] || GENERIC_FILE;
+  }
+
+  return GENERIC_FILE;
+}
+
+export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
+  const { dprDir, ext } = getDevicePixelRatioVariant(size, imageFileType);
+  return size + dprDir + '_' + ext;
+}
+
+/**
+ * Internal helper that returns the device-pixel-ratio directory suffix and image extension to use
+ * for a given icon size + format. Centralizes the DPR branching so URL construction and the
+ * `getFileTypeIconSuffix` string output stay in lock-step.
+ */
+export function getDevicePixelRatioVariant(
+  size: FileTypeIconSize,
+  imageFileType: ImageFileType = 'svg',
+): { dprDir: '' | '_1.5x' | '_2x' | '_3x' | '_4x'; ext: ImageFileType } {
+  const devicePixelRatio: number = canUseDOM() ? globalThis.window.devicePixelRatio : 1;
+  let dprDir: '' | '_1.5x' | '_2x' | '_3x' | '_4x' = '';
+
+  // SVGs scale well, so you can generally use the default image.
+  // 1.5x is a special case where SVGs need a different image.
+  if (imageFileType === 'svg' && devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
+    // Currently missing 1.5x SVGs at size 20, snap to 1x for now
+    if (size !== 20) {
+      dprDir = '_1.5x';
+    }
+  } else if (imageFileType === 'png') {
+    // To look good, PNGs should use a different image for higher device pixel ratios
+    if (devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
+      // Currently missing 1.5x icons for size 20, snap to 2x for now
+      dprDir = size === 20 ? '_2x' : '_1.5x';
+    } else if (devicePixelRatio > 1.5 && devicePixelRatio <= 2) {
+      dprDir = '_2x';
+    } else if (devicePixelRatio > 2 && devicePixelRatio <= 3) {
+      dprDir = '_3x';
+    } else if (devicePixelRatio > 3) {
+      dprDir = '_4x';
+    }
+  }
+
+  return { dprDir, ext: imageFileType };
+}
