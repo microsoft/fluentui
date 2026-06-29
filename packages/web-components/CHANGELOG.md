@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 25 Jun 2026 04:09:26 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2026 04:08:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-rc.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.31)
+
+Mon, 29 Jun 2026 04:08:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.30..@fluentui/web-components_v3.0.0-rc.31)
+
+### Changes
+
+- refactor: migrate async definitions to fast-element v3 declarative API ([PR #36351](https://github.com/microsoft/fluentui/pull/36351) by 863023+radium-v@users.noreply.github.com)
+- fix: set focus on autofocus element when a dialog is open ([PR #36355](https://github.com/microsoft/fluentui/pull/36355) by machi@microsoft.com)
+- fix: update link style to latest treatment ([PR #36352](https://github.com/microsoft/fluentui/pull/36352) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-rc.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.30)
 

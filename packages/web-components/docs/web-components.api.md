@@ -731,6 +731,8 @@ export class BaseField extends FASTElement {
     // (undocumented)
     setValidationStates(): void;
     // @internal
+    protected get slottedInputObserver(): MutationObserver;
+    // @internal
     slottedInputs: SlottableInput[];
     // @internal
     slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;

@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 04:08:42 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.89",
+      "version": "0.0.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "cb3684e3c9df5ebc424960314cdb028ee0499062",
+            "comment": "chore: upgrade to FAST Element v3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-rc.31",
+            "commit": "e6a6fa4d0540c937d1d6a83cbce7932e704c8907"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jun 2026 04:09:26 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.88",
       "version": "0.0.88",
