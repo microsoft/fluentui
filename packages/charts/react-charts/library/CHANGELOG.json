@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 15:15:07 GMT",
+      "tag": "@fluentui/react-charts_v9.3.21",
+      "version": "9.3.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.10.1",
+            "commit": "aedc345f58bc16bb8540615b5afdf3d2d3569db4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:09 GMT",
       "tag": "@fluentui/react-charts_v9.3.20",
       "version": "9.3.20",
