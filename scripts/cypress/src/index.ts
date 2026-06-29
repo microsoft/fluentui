@@ -21,7 +21,7 @@
  *
  * Note: `import.meta.dirname` (used below for self-relative support/fixtures/tsconfig paths) requires
  * the `module` to be `esnext`/`nodenext`. CommonJS consumers that *type-check* this file must therefore
- * set their `tsconfig` `module` accordingly (see `apps/rit-tests-*/tsconfig.cy.json`).
+ * set their `tsconfig` `module` accordingly (see `apps/rit-tests-{v8,v9}/tsconfig.cy.json`).
  *
  * The cleaner long-term fix is to give this package a real dual ESM/CJS build so `main` points at
  * emitted `.js`/`.cjs` and `base.config` can live in its own file again.
