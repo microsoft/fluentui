@@ -1,3 +1,31 @@
+/**
+ * `@fluentui/scripts-cypress` is consumed **directly from TypeScript source** (`main: src/index.ts`,
+ * no build step) and is published as `"type": "module"`.
+ *
+ * Why `type: module`?
+ * Migrated web packages are `type: module`, so their `cypress.config.ts` is loaded by Cypress as ESM
+ * (`import { baseConfig } from '@fluentui/scripts-cypress'`). For that named import to resolve, Cypress
+ * must parse this barrel as ESM — which only happens when the package is `type: module`. As CommonJS,
+ * cjs-module-lexer cannot detect the named exports from `.ts` source and the import fails.
+ *
+ * Why is `baseConfig` defined inline here instead of in a separate `./base.config` module?
+ * This barrel is resolved by three different loaders, each wanting a different relative-import form:
+ *   - Cypress ESM loader (type:module configs) + `tsc` type-check  → `.js`/extensionless map to `.ts`
+ *   - Node's native `require(esm)` (CommonJS `cypress.config.ts` consumers) → needs a REAL file at the
+ *     exact specifier; `./base.config.js` doesn't exist (source is `.ts`) and extensionless is invalid
+ *   - explicit `./base.config.ts` resolves at runtime but leaks `allowImportingTsExtensions` (TS5097)
+ *     into every consumer's type-check
+ * No single specifier satisfies all three, so the config is inlined to remove the relative import
+ * entirely. The only remaining cross-file reference (`mount`) is a type-only `import('./browser/index.js')`
+ * which is erased and never triggers runtime resolution.
+ *
+ * Note: `import.meta.dirname` (used below for self-relative support/fixtures/tsconfig paths) requires
+ * the `module` to be `esnext`/`nodenext`. CommonJS consumers that *type-check* this file must therefore
+ * set their `tsconfig` `module` accordingly (see `apps/rit-tests-*/tsconfig.cy.json`).
+ *
+ * The cleaner long-term fix is to give this package a real dual ESM/CJS build so `main` points at
+ * emitted `.js`/`.cjs` and `base.config` can live in its own file again.
+ */
 import * as crypto from 'crypto';
 import * as path from 'path';
 
