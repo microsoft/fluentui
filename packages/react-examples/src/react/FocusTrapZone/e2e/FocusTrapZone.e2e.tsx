@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
