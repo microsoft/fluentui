@@ -1,7 +1,7 @@
 # Fluent UI Web Components
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://img.shields.io/npm/v/@fluentui/web-components/beta?style=flat-square)](https://www.npmjs.com/package/@fluentui/web-components/v/beta)
+[![npm version](https://img.shields.io/npm/v/@fluentui/web-components?/style=flat-square)](https://www.npmjs.com/package/@fluentui/web-components)
 
 Microsoft's [Fluent UI Web Components](https://github.com/microsoft/fluentui/tree/master/packages/web-components) is designed to help you build web apps using Web Components styled with the [Fluent design language](https://github.com/microsoft/fluentui).
 
@@ -14,42 +14,51 @@ Fluent UI should be installed as a `dependency` of your app.
 **Yarn**
 
 ```sh
-yarn add @fluentui/web-components@beta
+yarn add @fluentui/web-components
 ```
 
 **NPM**
 
 ```sh
-npm i @fluentui/web-components@beta
+npm i @fluentui/web-components
 ```
 
 **pnpm**
 
 ```sh
-pnpm add @fluentui/web-components@beta
+pnpm add @fluentui/web-components
 ```
 
 ### From CDN
 
-A pre-bundled script that contains all APIs needed to use FAST Foundation is available on CDN. You can use this script by adding [`type="module"`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) to the script element and then importing from the CDN.
+A pre-bundled script that contains all APIs needed to use Fluent UI Web Components is available on CDN. You can use this script by adding [`type="module"`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) to the script element and then importing from the CDN.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script type="module" src="https://unpkg.com/@fluentui/web-components@beta"></script>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
   </head>
   <!-- ... -->
 </html>
 ```
 
-The above CDN location points to the latest Beta release of `@fluentui/web-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
+The above CDN location points to the latest release of `@fluentui/web-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
 
 For simplicity, examples throughout the documentation will assume the library has been installed from NPM, but you can always replace the import location with the CDN URL.
 
 ## Setup
 
+### Required Theming
+
 Fluent UI Web Components are styled using tokens in the form of CSS variables. You can use the `setTheme` utility to provide a theme for your website or application.
+
+Available themes:
+
+- `webLightTheme`
+- `webDarkTheme`
+
+Theme implementation:
 
 ```js
 import { setTheme } from '@fluentui/web-components';
@@ -60,31 +69,50 @@ setTheme(webLightTheme);
 
 ## Usage
 
-That's it. You can now use Fluent UI Web Components in your app.
+Each component can be directly imported. The side effect only module will call define and cause it to be set up.
 
-**Importing the defined component:**
+### Defining Components
+
+**Importing a defined component:**
 
 ```js
 import '@fluentui/web-components/button.js';
 ```
 
-**Defining the element yourself using named imports:**
+**Importing all defined components:**
 
 ```js
-import { ButtonDefinition, FluentDesignSystem } from '@fluentui/web-components';
-
-ButtonDefinition.define(FluentDesignSystem.registry);
+import '@fluentui/web-components/web-components.js';
 ```
 
-## Developer Experience
+### Defining Declarative Components
 
-For convenience we have included a [CEM (custom elements manifest)](https://github.com/webcomponents/custom-elements-manifest) at the root of the project.
+Each component provides a declarative `f-template`.
+
+Include an `f-template` on your page, you can find it at
+`'@fluentui/web-components/button/template.html'`.
+
+**Importing a defined component:**
 
 ```js
-import CEM from '@fluentui/custom-elements.json' with { type: 'json' };
+import '@fluentui/web-components/button/define-async.js';
 ```
 
-## Development
+### Hydrating Declarative Components
+
+For more information about including hydratable syntax, we recommend using an integration with [WebUI Framework](https://microsoft.github.io/webui/) project.
+
+[More information about FAST hydration](https://fast.design/docs/3.x/declarative-templates/server-rendering/).
+
+### Custom Elements Manifest
+
+We ship a [CEM (custom elements manifest)](https://github.com/webcomponents/custom-elements-manifest) from the root of the bundle.
+
+```js
+import CEM from '@fluentui/web-components/custom-elements.json' with { type: 'json' };
+```
+
+## Contributing
 
 To start the component development environment, run `yarn start`.
 
@@ -114,14 +142,7 @@ Use the `yarn check:ssr` summary to avoid clobbering intentional SSR-only edits:
 
 Keep generated-file updates scoped to the component you changed. If `yarn check:ssr` reports unrelated stale files, leave them out of your PR and coordinate a dedicated cleanup.
 
-### Known issue with Storybook site hot-reloading during development
-
-Storybook will watch modules for changes and hot-reload the module when necessary. This is usually great but poses a problem when the module being hot-reloaded defines a custom element. A custom element name can only be defined by the `CustomElementsRegistry` once, so reloading a module that defines a custom element will attempt to re-register the custom element name, throwing an error because the name has already been defined. This error will manifest with the following message:
-`Failed to execute 'define' on 'CustomElementRegistry': the name "my-custom-element-name" has already been used with this registry`
-
-This is a known issue and will indicate that you need to refresh the page. We're working on surfacing a more instructive error message for this case.
-
-## Testing
+### Testing
 
 On CI, a static test harness build is first generated by running Vite in build mode. The Playwright tests are then run against the generated harness. To run Playwright tests in this mode, use the command `yarn nx run web-components:e2e`.
 
