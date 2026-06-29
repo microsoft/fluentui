@@ -119,11 +119,8 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
-    ],
-    "tag": "rc"
+      "major"
+    ]
   },
   "customElements": "./custom-elements.json"
 }
