@@ -13,13 +13,6 @@ const deterministicPort = 20000 + (hashToInt(projectRoot) % 10000);
 export const baseWebpackConfig: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
-    // Allow ESM-style `.js` import specifiers to resolve to their TS source counterparts.
-    // Required because `@fluentui/scripts-cypress` is `type: module`, which makes webpack
-    // enforce fully-specified imports (e.g. `./mount.js`) when bundling its support/browser files.
-    extensionAlias: {
-      '.js': ['.ts', '.tsx', '.js'],
-      '.jsx': ['.tsx', '.jsx'],
-    },
   },
   mode: 'development',
   devtool: 'eval',
