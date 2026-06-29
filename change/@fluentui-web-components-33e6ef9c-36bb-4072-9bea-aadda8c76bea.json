@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor: migrate async definitions to fast-element v3 declarative API",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

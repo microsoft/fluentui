@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: update link style to latest treatment",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

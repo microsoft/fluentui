@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: set focus on autofocus element when a dialog is open",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
