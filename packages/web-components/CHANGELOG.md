@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 29 Jun 2026 04:08:41 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2026 22:18:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0)
+
+Mon, 29 Jun 2026 22:18:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-rc.31..@fluentui/web-components_v3.0.0)
+
+### Patches
+
+- Promote @fluentui/web-components to 3.0.0 stable release. ([PR #36356](https://github.com/microsoft/fluentui/pull/36356) by 7559015+janechu@users.noreply.github.com)
 
 ## [3.0.0-rc.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-rc.31)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 22:18:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46be5ff69017aa8c930060023ac80959ce880165",
+            "comment": "Promote @fluentui/web-components to 3.0.0 stable release."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 04:08:41 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.31",
       "version": "3.0.0-rc.31",
