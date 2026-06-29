@@ -3,7 +3,7 @@ import * as path from 'node:path';
 import { baseConfig } from '@fluentui/scripts-cypress';
 import { registerTsPaths } from '@fluentui/scripts-storybook';
 
-const tsConfigPath = path.resolve(import.meta.dirname, '../../tsconfig.base.v8.json');
+const tsConfigPath = path.resolve(__dirname, '../../tsconfig.base.v8.json');
 
 const config = { ...baseConfig };
 

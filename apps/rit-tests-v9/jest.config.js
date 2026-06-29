@@ -11,5 +11,5 @@ module.exports = {
   },
   testEnvironment: 'node',
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.cjs'],
+  setupFilesAfterEnv: ['./config/tests.js'],
 };
