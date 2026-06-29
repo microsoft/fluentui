@@ -15,7 +15,7 @@
           { "module": "es6", "outputPath": "lib" },
           { "module": "commonjs", "outputPath": "lib-commonjs" }
         ],
-        "generateApi": false
+        "generateApi": true
       }
     }
   }
