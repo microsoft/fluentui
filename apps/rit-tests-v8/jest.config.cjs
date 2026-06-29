@@ -7,7 +7,7 @@ const { createV8Config: createConfig } = require('@fluentui/scripts-jest');
 const config = createConfig({
   displayName: 'rit-tests-v8',
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
+  setupFilesAfterEnv: ['./config/tests.cjs'],
   snapshotSerializers: [require.resolve('@fluentui/jest-serializer-merge-styles')],
 });
 

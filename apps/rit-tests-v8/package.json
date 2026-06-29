@@ -1,5 +1,6 @@
 {
   "name": "rit-tests-v8",
+  "type": "module",
   "description": "React Integration Tester application for problematic v8 scenarios",
   "version": "1.0.0",
   "private": true,
