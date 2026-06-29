@@ -45,6 +45,7 @@
     "./utilities.js": "./dist/esm/utils/index.js",
     "./theme/*.js": "./dist/esm/theme/*.js",
     "./*/base.js": "./dist/esm/*/*.base.js",
+    "./*/class.js": "./dist/esm/*/*.js",
     "./*/define.js": "./dist/esm/*/define.js",
     "./*/define-async.js": "./dist/esm/*/define-async.js",
     "./*/definition.js": "./dist/esm/*/*.definition.js",
