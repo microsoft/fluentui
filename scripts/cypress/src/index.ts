@@ -26,6 +26,7 @@
  * The cleaner long-term fix is to give this package a real dual ESM/CJS build so `main` points at
  * emitted `.js`/`.cjs` and `base.config` can live in its own file again.
  */
+
 import * as crypto from 'crypto';
 import * as path from 'path';
 
