@@ -6,17 +6,23 @@
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "browser": "lib/browser/index.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
+      "types": "./dist/index.d.ts",
       "browser": "./lib/browser/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.cjs"
     },
     "./package.json": "./package.json"
   },
-  "files": ["lib", "lib-commonjs", "support", "fixtures"],
+  "files": [
+    "lib",
+    "lib-commonjs",
+    "dist/*.d.ts",
+    "support",
+    "fixtures"
+  ],
   "dependencies": {},
   "devDependencies": {}
 }
