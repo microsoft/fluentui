@@ -390,6 +390,20 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with annotations', () => {
+    const plotlySchema = require('./tests/schema/fluent_hbcwa_annotations_test.json');
+    const result = transformPlotlyJsonToHorizontalBarWithAxisProps(
+      plotlySchema,
+      false,
+      { current: colorMap },
+      'default',
+      true,
+    );
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(3);
+    expect(result).toMatchSnapshot();
+  });
+
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
