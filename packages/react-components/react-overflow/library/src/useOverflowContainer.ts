@@ -57,7 +57,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   const managerRef = React.useRef<OverflowManager | null>(null);
 
   if (managerRef.current === null) {
-    managerRef.current = canUseDOM() ? createOverflowManager(observeOptions) : null;
+    if (canUseDOM()) {
+      managerRef.current = createOverflowManager(observeOptions);
+    }
   }
 
   useIsomorphicLayoutEffect(() => {
