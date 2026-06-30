@@ -47,7 +47,17 @@ export interface PackageJson {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
-  exports?: Record<string, string | Partial<{ types: string; node: string; import: string; require: string }>>;
+  exports?: Record<
+    string,
+    | string
+    | Partial<{
+        types: string;
+        style: string;
+        node: string | { module: string; default: string };
+        import: string;
+        require: string;
+      }>
+  >;
 }
 
 export interface PackageJsonWithBeachball extends PackageJson {
