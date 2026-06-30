@@ -39,7 +39,8 @@ export type LinkContextValue = {
 
 // @public (undocumented)
 export type LinkProps = ComponentProps<LinkSlots> & {
-    appearance?: 'default' | 'subtle';
+    appearance?: 'default' | 'subtle' | 'inverted';
+    bold?: boolean;
     disabled?: boolean;
     disabledFocusable?: boolean;
     inline?: boolean;
@@ -51,7 +52,7 @@ export type LinkSlots = {
 };
 
 // @public (undocumented)
-export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
+export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'bold' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
     backgroundAppearance?: BackgroundAppearanceContextValue;
 };
 
