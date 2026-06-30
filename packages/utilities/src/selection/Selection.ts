@@ -523,16 +523,35 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       return;
     }
 
-    const isRangeSelected = this.isRangeSelected(fromIndex, count);
     const endIndex = fromIndex + count;
 
     if (this.mode === SelectionMode.single && count > 1) {
       return;
     }
 
+    // FIX: Check if all SELECTABLE items in the range are selected
+    let selectableCount = 0;
+    let selectedCount = 0;
+
+    for (let i = fromIndex; i < endIndex; i++) {
+      if (!this._unselectableIndices[i]) {
+        selectableCount++;
+        if (this.isIndexSelected(i)) {
+          selectedCount++;
+        }
+      }
+    }
+
+    // If all selectable items are selected, we should deselect them
+    // Otherwise, we should select them
+    const shouldSelect = selectedCount < selectableCount;
+
     this.setChangeEvents(false);
     for (let i = fromIndex; i < endIndex; i++) {
-      this.setIndexSelected(i, !isRangeSelected, false);
+      // Only toggle selectable items
+      if (!this._unselectableIndices[i]) {
+        this.setIndexSelected(i, shouldSelect, false);
+      }
     }
     this.setChangeEvents(true);
   }
