@@ -685,6 +685,33 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   function setupExportMaps(json: PackageJson) {
+    // Opt-in: a package becomes ESM-first by declaring `"type": "module"` in its package.json. Such
+    // packages get the ESM/CJS conditional export shape (no `node` condition); every other package
+    // keeps the existing CommonJS-first shape below unchanged (this stays a no-op for them).
+    if (json.type === 'module') {
+      const esm = json.module ? normalizePackageEntryPointPaths(json.module) : null;
+      const commonjs = json.main ? normalizePackageEntryPointPaths(json.main) : null;
+      // bare Node `import` resolves to valid ESM (`lib/`), `require` resolves to CommonJS
+      // (`lib-commonjs/*.cjs`). Per-condition `types` point `require` at a `.d.cts` so `node16`/
+      // `nodenext` CJS consumers get a CommonJS-flavoured declaration (keeps `@arethetypeswrong/cli` green).
+      const commonjsCjs = commonjs ? commonjs.replace(/\.js$/, '.cjs') : null;
+      if (commonjsCjs) {
+        json.main = commonjsCjs;
+      }
+      const esmTypes = json.typings;
+      const cjsTypes = json.typings ? json.typings.replace(/\.d\.ts$/, '.d.cts') : undefined;
+      json.exports = {
+        '.': {
+          ...(json.style ? { style: normalizePackageEntryPointPaths(json.style) } : null),
+          ...(esm && esmTypes ? { import: { types: esmTypes, default: esm } } : null),
+          ...(commonjsCjs && cjsTypes ? { require: { types: cjsTypes, default: commonjsCjs } } : null),
+        },
+        './package.json': './package.json',
+      };
+
+      return json;
+    }
+
     json.exports = {
       '.': {
         types: json.typings,
@@ -719,6 +746,8 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     const typesPath = getTypes(json);
     const storybookPath = getStorybookPath(json);
     const amdPath = options.projectConfig.tags?.includes('ships-amd') ? 'lib-amd' : null;
+    // `type: module` packages also ship `.d.cts` declarations for the `require` types condition
+    const cjsTypesPath = json.type === 'module' && typesPath ? typesPath.replace(/\.d\.ts$/, '.d.cts') : null;
     const filesDefinition = [
       rootMarkdownPath,
       mainPath,
@@ -726,6 +755,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       ...(binPath ?? []),
       stylesPath,
       typesPath,
+      cjsTypesPath,
       storybookPath,
       amdPath,
     ]
@@ -970,20 +1000,39 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
   const packageJson = readJson<PackageJson>(tree, options.paths.packageJson);
   packageJson.dependencies = packageJson.dependencies ?? {};
 
+  // ESM-first packages opt in via `"type": "module"`, so their CommonJS jest config + setup must use
+  // the `.cjs` extension. CommonJS (default) packages keep `.js` unchanged.
+  const isEsmFirst = packageJson.type === 'module';
+  const testSetupExtension = isEsmFirst ? 'cjs' : 'js';
+  const jestConfigPath = isEsmFirst ? options.paths.jestConfig.replace(/\.js$/, '.cjs') : options.paths.jestConfig;
+  const resolvedJestSetupFilePath = isEsmFirst ? jestSetupFilePath.replace(/\.js$/, '.cjs') : jestSetupFilePath;
+
   const config = {
     pkgName: options.normalizedPkgName,
     addSnapshotSerializers:
       packageType === 'web' &&
       Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
-    testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
+    testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.${testSetupExtension}`,
     platform: packageType,
     projectConfig: options.projectConfig,
   } as const;
 
-  tree.write(options.paths.jestConfig, templates.jest(config));
+  // drop the legacy `.js` variants when emitting `.cjs` (type:module packages)
+  if (isEsmFirst) {
+    if (tree.exists(options.paths.jestConfig)) {
+      tree.delete(options.paths.jestConfig);
+    }
+    if (tree.exists(jestSetupFilePath) && !tree.exists(resolvedJestSetupFilePath)) {
+      const existingSetup = tree.read(jestSetupFilePath, 'utf-8') as string;
+      tree.write(resolvedJestSetupFilePath, existingSetup);
+      tree.delete(jestSetupFilePath);
+    }
+  }
 
-  if (!tree.exists(jestSetupFilePath)) {
-    tree.write(jestSetupFilePath, templates.jestSetup);
+  tree.write(jestConfigPath, templates.jest(config));
+
+  if (!tree.exists(resolvedJestSetupFilePath)) {
+    tree.write(resolvedJestSetupFilePath, templates.jestSetup);
   }
 
   return tree;
@@ -1075,8 +1124,12 @@ function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
 function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
   // update test TS config
   updateJson(tree, options.paths.tsconfig.test, (json: TsConfig) => {
-    if (tree.exists(options.paths.jestSetupFile)) {
-      const jestSetupFile = tree.read(options.paths.jestSetupFile, 'utf8')!;
+    // ESM-first (type:module) packages emit the jest setup as `.cjs`; fall back to the legacy `.js` path
+    const jestSetupFilePath = [options.paths.jestSetupFile.replace(/\.js$/, '.cjs'), options.paths.jestSetupFile].find(
+      candidate => tree.exists(candidate),
+    );
+    if (jestSetupFilePath) {
+      const jestSetupFile = tree.read(jestSetupFilePath, 'utf8')!;
 
       if (jestSetupFile.includes(`require('@testing-library/jest-dom')`)) {
         json.compilerOptions.types = json.compilerOptions.types ?? [];
