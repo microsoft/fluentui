@@ -1,6 +1,6 @@
 import { mkdir, writeFile, copyFile } from 'node:fs/promises';
 import { writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, join, basename } from 'node:path';
 
 import { globSync } from 'fast-glob';
 import { isMatch } from 'micromatch';
@@ -64,15 +64,33 @@ export async function compileSwc(
     // Create directory folder for new compiled file(s) to live in.
     await mkdir(dirname(compiledFilePath), { recursive: true });
 
-    await writeFile(compiledFilePath, resultCode);
-    await applyTransforms(compiledFilePath, transforms);
+    // If a source map was produced, write it and append a sourceMappingURL comment to the JS output
 
+    let finalCode = resultCode;
     if (result.map) {
       const mapFilePath = `${compiledFilePath}.map`;
+
+      // write the map file
       await writeFile(mapFilePath, result.map);
       await applyTransforms(mapFilePath, transforms);
+
+      // append sourceMappingURL to the JS file (use basename so it's a relative filename)
+      finalCode = addSourceMappingUrl(finalCode, basename(mapFilePath));
     }
+
+    await writeFile(compiledFilePath, finalCode);
+    await applyTransforms(compiledFilePath, transforms);
   }
+}
+
+// NOTE: The SWC CLI adds the sourceMappingURL comment itself. Programmatic @swc/core does not,
+// so we add it here to mirror the CLI behavior. See swc CLI implementation for reference:
+// https://github.com/swc-project/pkgs/blob/main/packages/cli/src/swc/compile.ts#L42-L44
+function addSourceMappingUrl(code: string, sourceMapLocation: string): string {
+  if (!code.includes('sourceMappingURL=')) {
+    return code + '\n//# sourceMappingURL=' + sourceMapLocation;
+  }
+  return code;
 }
 
 type Transform = (filePath: string) => Promise<void>;
