@@ -23,6 +23,17 @@ import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerPro
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 
 /**
+ * Feature detection for the Interest Invokers API (`interestfor` + `interest-delay`),
+ * which lets the platform open a `popover=hint` on hover/focus declaratively, with no JS.
+ * When supported we let the browser drive show/hide and keep the JS handlers below as a
+ * fallback for browsers that don't support it.
+ *
+ * @see https://open-ui.org/components/interest-invokers.explainer/
+ */
+const supportsInterestInvokers = () =>
+  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('interest-delay: 0s');
+
+/**
  * Create the state required to render Tooltip.
  *
  * @param props - props from this instance of Tooltip
@@ -89,9 +100,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   );
 
   const onToggle = useEventCallback((event: Event) => {
-    if ((event as ToggleEvent).newState === 'closed') {
-      setVisible(undefined, { visible: false });
-    }
+    // Keep React state in sync with the native popover regardless of what opened or
+    // closed it — our own JS handlers, the browser's light-dismiss, or (when supported)
+    // an Interest Invoker driving the `popover=hint` declaratively via `interestfor`.
+    setVisible(undefined, { visible: (event as ToggleEvent).newState === 'open' });
   });
 
   // Keep the tooltip in sync with the state when it is changed programmatically.
@@ -105,9 +117,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     el.addEventListener('toggle', onToggle);
 
     try {
-      if (visible) {
+      if (visible && !el.matches(':popover-open')) {
         el.showPopover();
-      } else if (el.matches(':popover-open')) {
+      } else if (!visible && el.matches(':popover-open')) {
         el.hidePopover();
       }
     } catch (error) {
@@ -136,6 +148,12 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const onEnterTrigger = React.useCallback(
     // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+      // When Interest Invokers are supported the browser shows the hint popover on
+      // hover/focus via `interestfor`; skip the JS timer so we don't double-drive it.
+      if (supportsInterestInvokers()) {
+        return;
+      }
+
       if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
         ignoreNextFocusEventRef.current = false;
         return;
@@ -179,6 +197,12 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const onLeaveTrigger = React.useCallback(
     // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+      // When Interest Invokers are supported the browser hides the hint popover when
+      // interest is lost; skip the JS timer so we don't double-drive it.
+      if (supportsInterestInvokers()) {
+        return;
+      }
+
       let delay = state.hideDelay;
 
       if (ev.type === 'blur') {
@@ -248,6 +272,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // eslint-disable-next-line react-hooks/immutability
   state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
+    // Declarative hover/focus intent via the Interest Invokers API. The attribute is
+    // harmlessly ignored where unsupported, and the JS handlers below act as the fallback.
+    // Placed before the child's own props so an author can still override it.
+    interestfor: state.content.id,
     ...child?.props,
     ref: useMergedRefs(
       getReactElementRef<HTMLButtonElement>(child),
