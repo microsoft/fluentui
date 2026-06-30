@@ -124,9 +124,12 @@ const mountCase = (name: string, content: React.ReactNode) => {
 };
 
 const waitForFilmstrip = (name: string) => {
-  return cy.wrap(null, { timeout: 4000 }).should(() => {
+  return cy.wrap(null, { timeout: 8000 }).should(() => {
     expect(paints[name], `${name}: paint recorder did not produce a filmstrip`).to.be.an('array');
-    expect(paints[name].length, `${name}: no paint frames were recorded`).to.be.greaterThan(0);
+    expect(
+      paints[name].length,
+      `${name}: expected ${FRAMES} recorded paint frames before assertion, got ${paints[name].length}`,
+    ).to.be.at.least(FRAMES);
   });
 };
 
