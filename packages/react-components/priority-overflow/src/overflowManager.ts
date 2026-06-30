@@ -48,6 +48,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   const options: Required<OverflowOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
+  const compareItemsCache = new Map<string, number>();
   const listeners = new Set<() => void>();
   let disposeResizeObserver: () => void = () => {
     /* noop */
@@ -66,6 +67,10 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   };
 
   const groupManager = createGroupManager();
+
+  const clearCompareItemsCache = () => {
+    compareItemsCache.clear();
+  };
 
   function compareItems(lt: string | null, rt: string | null): number {
     if (!lt || !rt) {
@@ -93,8 +98,19 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     // Node.DOCUMENT_POSITION_FOLLOWING = 4, Node.DOCUMENT_POSITION_PRECEDING = 2
     const positionStatusBit = options.overflowDirection === 'end' ? 4 : 2;
 
+    const key = `${lt}|${rt}|${positionStatusBit}`;
+    const cached = compareItemsCache.get(key);
+    if (cached !== undefined) {
+      return cached;
+    }
+
     // eslint-disable-next-line no-bitwise
-    return lte.element.compareDocumentPosition(rte.element) & positionStatusBit ? 1 : -1;
+    const result = lte.element.compareDocumentPosition(rte.element) & positionStatusBit ? 1 : -1;
+
+    compareItemsCache.set(key, result);
+    compareItemsCache.set(`${rt}|${lt}|${positionStatusBit}`, -result);
+
+    return result;
   }
 
   function getElementAxisSize(
@@ -196,6 +212,8 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     if (!container) {
       return false;
     }
+
+    clearCompareItemsCache();
     sizeCache.clear();
 
     const availableSize = getClientSize(container) - options.padding;
@@ -263,6 +281,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       (nextOptions.hasHiddenItems && options.hasHiddenItems !== nextOptions.hasHiddenItems);
 
     Object.assign(options, nextOptions);
+    clearCompareItemsCache();
 
     if (shouldTriggerUpdate) {
       forceDispatch = true;
@@ -273,6 +292,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   const observe: OverflowManager['observe'] = (observedContainer, observeOptions) => {
     const { forceUpdate: shouldForceUpdate, ...userOptions } = observeOptions ?? {};
     Object.assign(options, userOptions);
+    clearCompareItemsCache();
 
     Object.values(overflowItems).forEach(item => {
       if (!visibleItemQueue.contains(item.id) && !invisibleItemQueue.contains(item.id)) {
@@ -311,6 +331,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
     Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
     removeOverflowMenu();
+    clearCompareItemsCache();
     sizeCache.clear();
 
     // notify subscribers that the manager is no longer tracking anything
@@ -323,6 +344,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     }
 
     overflowItems[items.id] = items;
+    clearCompareItemsCache();
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
@@ -390,6 +412,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     }
 
     const item = overflowItems[itemId];
+    clearCompareItemsCache();
     visibleItemQueue.remove(itemId);
     invisibleItemQueue.remove(itemId);
 
