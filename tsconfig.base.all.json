@@ -62,6 +62,7 @@
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
+      "@fluentui/cli": ["tools/cli/src/index.ts"],
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
       ],
