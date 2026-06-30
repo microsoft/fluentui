@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: allow theme picker options configuration",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

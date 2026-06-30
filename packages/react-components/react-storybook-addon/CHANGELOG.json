@@ -2,6 +2,21 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Tue, 30 Jun 2026 10:28:26 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "19694317e6746e6ad9a795cfafddd422bad0b0a1",
+            "comment": "feat: allow theme picker options configuration"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jun 2026 18:28:45 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.7.0",
       "version": "0.7.0",
