@@ -130,6 +130,14 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
 
   const getOffsetSize = getElementAxisSize.bind(null, 'offsetWidth', 'offsetHeight');
   const getClientSize = getElementAxisSize.bind(null, 'clientWidth', 'clientHeight');
+  const getCurrentAvailableSize = () => {
+    if (!container) {
+      return 0;
+    }
+
+    const currentSize = options.overflowAxis === 'horizontal' ? container.clientWidth : container.clientHeight;
+    return currentSize - options.padding;
+  };
 
   const invisibleItemQueue = createPriorityQueue<string>((a, b) => -1 * compareItems(a, b));
 
@@ -220,10 +228,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       return false;
     }
 
-    clearCompareItemsCache();
-    sizeCache.clear();
-
-    const availableSize = getClientSize(container) - options.padding;
+    const availableSize = getCurrentAvailableSize();
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
@@ -239,6 +244,9 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     ) {
       return false;
     }
+
+    clearCompareItemsCache();
+    sizeCache.clear();
 
     while (compareItems(invisibleItemQueue.peek(), visibleItemQueue.peek()) > 0) {
       hideItem(); // hide elements whose priority become smaller than the highest priority of the hidden one
