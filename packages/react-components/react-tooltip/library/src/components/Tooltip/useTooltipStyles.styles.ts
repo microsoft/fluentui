@@ -45,6 +45,10 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundStaticInverted,
   },
 
+  brand: {
+    /* Styles provided by consumer via custom hooks */
+  },
+
   arrow: createArrowStyles({ arrowHeight }),
 });
 
@@ -59,6 +63,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
     tooltipClassNames.content,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
+    state.appearance === 'brand' && styles.brand,
     state.visible && styles.visible,
     state.content.className,
   );
