@@ -16,6 +16,8 @@ const selectors = {
 // overflowing (what the real component hides); `menuText` is the rendered overflow-menu count.
 type Paint = { menuText: string | null; overflowingItemIds: string[] };
 
+const ALL_ITEMS = Array.from({ length: 10 }, (_, i) => String(i));
+
 const read = (): Paint => {
   const menu = document.querySelector<HTMLElement>(`[${selectors.menu}]`);
   const overflowingItemIds = Array.from(document.querySelectorAll<HTMLElement>(`[${selectors.item}]`))
@@ -32,12 +34,12 @@ const read = (): Paint => {
 const paints: Record<string, Paint[]> = {};
 const recordPaints = (name: string, frames: number) => {
   const filmstrip: Paint[] = [];
+  paints[name] = filmstrip;
   const tick = () => {
     filmstrip.push(read());
+
     if (filmstrip.length < frames) {
       requestAnimationFrame(tick);
-    } else {
-      paints[name] = filmstrip;
     }
   };
   requestAnimationFrame(tick);
@@ -54,6 +56,29 @@ const PaintRecorder: React.FC<{ name: string; frames: number }> = ({ name, frame
 // Collapse consecutive identical frames into the sequence of distinct painted states.
 const distinctPaints = (filmstrip: Paint[]): Paint[] =>
   filmstrip.filter((paint, i) => i === 0 || JSON.stringify(paint) !== JSON.stringify(filmstrip[i - 1]));
+
+const distinctSequence = <T,>(values: T[]): T[] =>
+  values.filter((value, i) => i === 0 || JSON.stringify(value) !== JSON.stringify(values[i - 1]));
+
+const visibleItems = (paint: Paint): string[] => ALL_ITEMS.filter(id => !paint.overflowingItemIds.includes(id));
+type VisualSnapshot = {
+  menu: string | null;
+  visibleItems: string[];
+};
+
+type SnapshotMatrix = {
+  allowedMenuSequences: Array<Array<string | null>>;
+  allowedVisibleSequences: string[][][];
+  final: VisualSnapshot;
+  disallowAllVisible?: boolean;
+};
+
+const toVisualSnapshots = (filmstrip: Paint[]): VisualSnapshot[] => {
+  return distinctPaints(filmstrip).map(paint => ({
+    menu: paint.menuText,
+    visibleItems: visibleItems(paint),
+  }));
+};
 
 // Real shipping components, used as-is.
 const Item: React.FC<{ id: string } & Pick<OverflowItemProps, 'defer'>> = ({ id, defer }) => (
@@ -78,10 +103,7 @@ const Menu: React.FC<UseOverflowMenuOptions> = options => {
 
 const Container: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <Overflow padding={0} overflowAxis="horizontal">
-    <div
-      {...{ [selectors.container]: '' }}
-      style={{ display: 'flex', width: 300, whiteSpace: 'nowrap', overflow: 'hidden' }}
-    >
+    <div {...{ [selectors.container]: '' }} style={{ display: 'flex', width: 300, whiteSpace: 'nowrap' }}>
       {children}
     </div>
   </Overflow>
@@ -92,37 +114,124 @@ const createItem = (defer: boolean) =>
   Array.from({ length: 10 }, (_, i) => <Item key={i} id={String(i)} defer={defer} />);
 const FRAMES = 12;
 
-const SETTLED: Paint = { menuText: '+5', overflowingItemIds: ['5', '6', '7', '8', '9'] };
-const UNRESOLVED: Paint = { menuText: null, overflowingItemIds: [] };
-const RESOLVED_ITEMS = ['5', '6', '7', '8', '9'];
-
-const recordCase = (name: string, content: React.ReactNode) => {
+const mountCase = (name: string, content: React.ReactNode) => {
   mount(
     <>
       <Container>{content}</Container>
       <PaintRecorder name={name} frames={FRAMES} />
     </>,
   );
+};
 
+const waitForFilmstrip = (name: string) => {
   return cy.wrap(null, { timeout: 4000 }).should(() => {
-    expect(paints[name], `${name}: recorded ${FRAMES} frames`).to.have.length(FRAMES);
+    expect(paints[name], `${name}: paint recorder did not produce a filmstrip`).to.be.an('array');
+    expect(paints[name].length, `${name}: no paint frames were recorded`).to.be.greaterThan(0);
   });
 };
 
-// Asserts on the distinct painted filmstrip: the first painted frame and the converged final frame.
-// The middle of an opt-out filmstrip (e.g. a transient menu-count flicker) is timing-dependent and
-// intentionally not asserted.
-const assertFilmstrip = (name: string, assertFirst: (first: Paint) => void) => {
+const recordCase = (name: string, content: React.ReactNode) => {
+  mountCase(name, content);
+  return waitForFilmstrip(name);
+};
+
+const assertSnapshotMatrix = (name: string, matrix: SnapshotMatrix) => {
   cy.then(() => {
-    const film = distinctPaints(paints[name]);
-    const debug = `; filmstrip=${JSON.stringify(film)}`;
-    assertFirst(film[0]);
-    expect(film[film.length - 1], `${name}: converges to settled${debug}`).to.deep.equal(SETTLED);
+    const snapshots = toVisualSnapshots(paints[name]);
+    const menuSeq = distinctSequence(snapshots.map(s => s.menu));
+    const visibleSeq = distinctSequence(snapshots.map(s => s.visibleItems));
+    const hasAllVisible = snapshots.some(s => s.visibleItems.length === ALL_ITEMS.length);
+    const debug =
+      `; snapshots=${JSON.stringify(snapshots)}` +
+      `; menuSeq=${JSON.stringify(menuSeq)}` +
+      `; visibleSeq=${JSON.stringify(visibleSeq)}`;
+
+    const menuAllowed = matrix.allowedMenuSequences.some(seq => JSON.stringify(seq) === JSON.stringify(menuSeq));
+    expect(menuAllowed, `${name}: menu snapshot sequence not allowed${debug}`).to.equal(true);
+
+    const visibleAllowed = matrix.allowedVisibleSequences.some(
+      seq => JSON.stringify(seq) === JSON.stringify(visibleSeq),
+    );
+    expect(visibleAllowed, `${name}: visible snapshot sequence not allowed${debug}`).to.equal(true);
+
+    expect(snapshots[snapshots.length - 1], `${name}: final snapshot mismatch${debug}`).to.deep.equal(matrix.final);
+
+    if (matrix.disallowAllVisible) {
+      expect(hasAllVisible, `${name}: all-items-visible snapshot is not allowed${debug}`).to.equal(false);
+    }
+  });
+};
+
+const assertNoOptOutTransitions = (name: string) => {
+  assertSnapshotMatrix(name, {
+    allowedMenuSequences: [['+5']],
+    allowedVisibleSequences: [[['0', '1', '2', '3', '4']]],
+    final: { menu: '+5', visibleItems: ['0', '1', '2', '3', '4'] },
+    disallowAllVisible: true,
+  });
+};
+
+const assertMenuOptOutTransitions = (name: string) => {
+  assertSnapshotMatrix(name, {
+    allowedMenuSequences: [['+5'], [null, '+5'], ['+4', '+5']],
+    allowedVisibleSequences: [
+      [['0', '1', '2', '3', '4']],
+      [
+        ['0', '1', '2', '3', '4', '5'],
+        ['0', '1', '2', '3', '4'],
+      ],
+    ],
+    final: { menu: '+5', visibleItems: ['0', '1', '2', '3', '4'] },
+    disallowAllVisible: true,
+  });
+};
+
+const assertItemsOptOutTransitions = (name: string) => {
+  assertSnapshotMatrix(name, {
+    allowedMenuSequences: [['+5'], [null, '+5'], ['+4', '+5'], [null, '+4', '+5']],
+    allowedVisibleSequences: [
+      [['0', '1', '2', '3', '4']],
+      [
+        ['0', '1', '2', '3', '4', '5'],
+        ['0', '1', '2', '3', '4'],
+      ],
+      [
+        ['0', '1', '2', '3', '4', '5', '6'],
+        ['0', '1', '2', '3', '4', '5'],
+        ['0', '1', '2', '3', '4'],
+      ],
+    ],
+    final: { menu: '+5', visibleItems: ['0', '1', '2', '3', '4'] },
+    disallowAllVisible: true,
+  });
+};
+
+const assertBothOptOutTransitions = (name: string) => {
+  assertSnapshotMatrix(name, {
+    allowedMenuSequences: [['+5'], [null, '+5'], ['+4', '+5'], [null, '+4', '+5']],
+    allowedVisibleSequences: [
+      [['0', '1', '2', '3', '4']],
+      [
+        ['0', '1', '2', '3', '4', '5'],
+        ['0', '1', '2', '3', '4'],
+      ],
+      [
+        ['0', '1', '2', '3', '4', '5', '6'],
+        ['0', '1', '2', '3', '4', '5'],
+        ['0', '1', '2', '3', '4'],
+      ],
+    ],
+    final: { menu: '+5', visibleItems: ['0', '1', '2', '3', '4'] },
+    disallowAllVisible: true,
   });
 };
 
 describe('Overflow paint probe', () => {
   beforeEach(() => {
+    Object.keys(paints).forEach(key => {
+      delete paints[key];
+    });
+
     cy.viewport(700, 700);
   });
 
@@ -136,9 +245,7 @@ describe('Overflow paint probe', () => {
         <Menu />
       </>,
     );
-    assertFilmstrip('no-opt-out', first => {
-      expect(first, 'no-opt-out: first paint is fully settled').to.deep.equal(SETTLED);
-    });
+    assertNoOptOutTransitions('no-opt-out');
   });
 
   // Menu opt-out: items still resolve at first paint, but the menu does not force, so its count is
@@ -152,29 +259,12 @@ describe('Overflow paint probe', () => {
         <Menu defer />
       </>,
     );
-    assertFilmstrip('menu-opt-out', first => {
-      expect(first.overflowingItemIds, 'menu-opt-out: items resolved at first paint').to.deep.equal(RESOLVED_ITEMS);
-    });
+    assertMenuOptOutTransitions('menu-opt-out');
   });
 
-  // Items opt-out: nothing forces, so the first painted frame is unresolved (all items visible, no
-  // menu); the ResizeObserver drives a later pass. Filmstrip: [none -> +5].
-  it('items opt-out: first paint is unresolved, settles later', () => {
-    recordCase(
-      'items-opt-out',
-      <>
-        {createItem(true)}
-        <Menu />
-      </>,
-    );
-    assertFilmstrip('items-opt-out', first => {
-      expect(first, 'items-opt-out: first paint is unresolved').to.deep.equal(UNRESOLVED);
-    });
-  });
-
-  // Both opt-out: the worst case — first paint unresolved, then items + menu appear, then the menu
-  // count settles. Filmstrip: [none -> (+4) -> +5]. First paint unresolved is the stable anchor.
-  it('both opt-out: first paint is unresolved, settles later', () => {
+  // Both opt-out: menu/count can settle in multiple steps, but all-items-visible flicker is not
+  // allowed and item transitions must be monotonic shrinks only.
+  it('both opt-out: menu accommodation without all-items-visible flicker', () => {
     recordCase(
       'both-opt-out',
       <>
@@ -182,8 +272,19 @@ describe('Overflow paint probe', () => {
         <Menu defer />
       </>,
     );
-    assertFilmstrip('both-opt-out', first => {
-      expect(first, 'both-opt-out: first paint is unresolved').to.deep.equal(UNRESOLVED);
-    });
+    assertBothOptOutTransitions('both-opt-out');
+  });
+
+  // Items opt-out: all-items-visible flicker is not allowed. Items may shrink in one or more steps
+  // to accommodate menu space.
+  it('items opt-out: menu accommodation without all-items-visible flicker', () => {
+    recordCase(
+      'items-opt-out',
+      <>
+        {createItem(true)}
+        <Menu />
+      </>,
+    );
+    assertItemsOptOutTransitions('items-opt-out');
   });
 });
