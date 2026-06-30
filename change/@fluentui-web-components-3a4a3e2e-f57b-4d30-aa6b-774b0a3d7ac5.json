@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: add missing export for AnchorButtonStyles",
+  "packageName": "@fluentui/web-components",
+  "email": "wes.ngrongsen@gmail.com",
+  "dependentChangeType": "patch"
+}
