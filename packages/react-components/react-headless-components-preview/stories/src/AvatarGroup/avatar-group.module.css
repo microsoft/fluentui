@@ -1,0 +1,168 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+/* ---- The inline group ------------------------------------------------- */
+
+.group {
+  display: inline-flex;
+  align-items: center;
+}
+
+/*
+  Each direct child of the group (an AvatarGroupItem wrapper or the overflow
+  trigger button) overlaps the previous one. The ring lives on the round
+  element itself so overlapping avatars stay visually separated. The popover
+  `<dialog>` is also a direct child when open, so it is excluded from layout.
+*/
+.group > *:not(dialog) {
+  margin-left: -10px;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.group > *:not(dialog):first-child {
+  margin-left: 0;
+}
+
+.group > *:not(dialog):hover {
+  /* Lift the hovered avatar above its neighbours. */
+  position: relative;
+  z-index: 1;
+  transform: translateY(-2px);
+}
+
+.avatar {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  user-select: none;
+  border: 2px solid var(--bg-elev);
+  box-shadow: var(--shadow-1);
+}
+
+.tone1 {
+  background: #4f46e5;
+}
+
+.tone2 {
+  background: #0e7490;
+}
+
+.tone3 {
+  background: #b45309;
+}
+
+.tone4 {
+  background: var(--brand);
+}
+
+/* ---- Overflow trigger ("+N") ----------------------------------------- */
+
+.overflowTrigger {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid var(--bg-elev);
+  box-shadow: var(--shadow-1);
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.overflowTrigger:hover,
+.overflowTrigger[data-open] {
+  background: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.overflowTrigger:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- Overflow popover ------------------------------------------------- */
+
+.surface {
+  box-sizing: border-box;
+  background: var(--bg-elev);
+  border-radius: var(--radius-lg);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-4);
+  padding: var(--space-2);
+  min-width: 224px;
+  max-height: 296px;
+  overflow-y: auto;
+}
+
+.surface:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.overflowList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Each overflowed person renders as a row: avatar + name. */
+.overflowItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.overflowItem:hover {
+  background: var(--surface-muted);
+}
+
+/* Avatars inside the popover don't overlap, so drop the ring + offset. */
+.overflowList .avatar {
+  margin-left: 0;
+  border: 0;
+  box-shadow: none;
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+}
+
+.overflowLabel {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.caption {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
