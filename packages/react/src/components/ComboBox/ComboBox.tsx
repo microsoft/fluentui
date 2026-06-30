@@ -2120,6 +2120,14 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return;
     }
 
+    // While an IME composition is in progress, keys such as Enter are used to
+    // commit/convert the composition and should not trigger ComboBox keyboard
+    // behaviors (for example submitting the pending value). Autofill guards its
+    // own key handling the same way.
+    if ((ev.nativeEvent as any).isComposing) {
+      return;
+    }
+
     let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated

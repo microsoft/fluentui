@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(ComboBox): ignore the Enter key used to commit an IME composition so it no longer submits the pending value",
+  "packageName": "@fluentui/react",
+  "email": "246701683+greymoth-jp@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

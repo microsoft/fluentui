@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../common/isConformant';
 import { useKeytipRef } from '../../Keytips';
 import { SelectableOptionMenuItemType } from '../../SelectableOption';
-import { resetIds } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import type { IComboBox, IComboBoxOption } from './ComboBox.types';
 
@@ -239,6 +239,26 @@ describe('ComboBox', () => {
 
     const options = getAllByRole('option');
     expect(options[options.length - 1].textContent).toEqual('f');
+  });
+
+  it('Does not submit the pending value on Enter while an IME composition is active', () => {
+    const onChange = jest.fn();
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} allowFreeform onChange={onChange} />);
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    onChange.mockClear();
+
+    // An IME dispatches Enter to commit the in-progress composition with
+    // `isComposing` set. ComboBox must ignore it instead of treating it as a
+    // selection, otherwise confirming the composition would also submit the
+    // pending value.
+    fireEvent.keyDown(combobox, { which: KeyCodes.enter, keyCode: KeyCodes.enter, isComposing: true });
+    expect(onChange).not.toHaveBeenCalled();
+
+    // A regular Enter (no composition) still submits the pending value.
+    fireEvent.keyDown(combobox, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
+    expect(onChange).toHaveBeenCalled();
   });
 
   it('Renders a default value with options', () => {
