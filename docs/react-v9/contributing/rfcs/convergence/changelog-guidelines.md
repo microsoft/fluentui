@@ -120,7 +120,7 @@ influences what happens during release.
 ### Pros
 
 - Changelogs are an extra resource for partners during upgrades
-- Easy to see what changed between versions during uprgades
+- Easy to see what changed between versions during upgrades
 - Keep implementation details out of public changelog
 
 ### Cons

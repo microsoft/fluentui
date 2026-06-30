@@ -78,7 +78,7 @@ Below is a comparison table between Fabric 6 and 7:
 
 ### Minor changes
 
-- Add FloatingSuggestions (FloatingPeoplePicker without inheritence) ([`4717372`](https://github.com/OfficeDev/office-ui-fabric-react/commit/47173727698850e1a13820d3ad14a0ac40203f20))
+- Add FloatingSuggestions (FloatingPeoplePicker without inheritance) ([`4717372`](https://github.com/OfficeDev/office-ui-fabric-react/commit/47173727698850e1a13820d3ad14a0ac40203f20))
 - Button: Adding allowDisabledFocus prop and adding @docCategory tags on exports. ([`44be390`](https://github.com/OfficeDev/office-ui-fabric-react/commit/44be390505c024b84f6031eb9f564102736b9fa0))
 - Button: Adding keytips to new Button. ([`c4507e4`](https://github.com/OfficeDev/office-ui-fabric-react/commit/c4507e4bfb50076f51febafb4c6d238465b4c8b6))
 - Button: Adding toggle/checked functionality to Button. ([`65d3dec`](https://github.com/OfficeDev/office-ui-fabric-react/commit/65d3dece099cf1ae247de1d761992f8265e23294))
@@ -87,7 +87,7 @@ Below is a comparison table between Fabric 6 and 7:
 - Button: Making all MenuButton props optional. ([`8d6c7c4`](https://github.com/OfficeDev/office-ui-fabric-react/commit/8d6c7c460cf9f9fa5e7985205fc9b602a678dd7f))
 - Changes to support slots API refactoring. ([`14b1d77`](https://github.com/OfficeDev/office-ui-fabric-react/commit/14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0))
 - Convert foundation components that have state to hooks. ([`5f4051f`](https://github.com/OfficeDev/office-ui-fabric-react/commit/5f4051fd8cad5ebd5f5b88c418093b879efbec9a))
-- SelectedItemsList: Add reworked Selected Items (no inheritence + hooks) ([`69ea4ba`](https://github.com/OfficeDev/office-ui-fabric-react/commit/69ea4ba3a0a3f50ad54e3b187be4dbc7014d7353))
+- SelectedItemsList: Add reworked Selected Items (no inheritance + hooks) ([`69ea4ba`](https://github.com/OfficeDev/office-ui-fabric-react/commit/69ea4ba3a0a3f50ad54e3b187be4dbc7014d7353))
 - SplitButton: Adding ability to use Alt+Down key combination from first focus stop and cleaning up API. ([`3e3bc89`](https://github.com/OfficeDev/office-ui-fabric-react/commit/3e3bc89d8de0580dce51dc285c54010635ba1710))
 - SplitButton: Improving screenreader narration for secondary action and fixing styling in fabric 7 branch. ([`f815723`](https://github.com/OfficeDev/office-ui-fabric-react/commit/f81572376bc29b57a53a34f359b799e1be519844))
 - Support slots API changes. ([`37a5246`](https://github.com/OfficeDev/office-ui-fabric-react/commit/37a52465422d2622d52b7339ac2f9b2f234300da))
@@ -119,7 +119,7 @@ Below is a comparison table between Fabric 6 and 7:
 
 ### Minor changes
 
-- Changin borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius and borderTopRightRadius to be of type ICSSPixelUnitRule, like borderRadius, instead of type string. ([`2faffcc`](https://github.com/OfficeDev/office-ui-fabric-react/commit/2faffcc51ec77341b3f1d796ea8d9e7440ecf0f7))
+- Changing borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius and borderTopRightRadius to be of type ICSSPixelUnitRule, like borderRadius, instead of type string. ([`2faffcc`](https://github.com/OfficeDev/office-ui-fabric-react/commit/2faffcc51ec77341b3f1d796ea8d9e7440ecf0f7))
 
 ## @uifabric/migration
 

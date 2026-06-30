@@ -1088,7 +1088,7 @@ function App() {
   const [visible, setVisible] = useState(false);
   const motion = useMotion(visible);
 
-  const className = mergeClasses(classes.root, classes[motion.state] /* simplied example */);
+  const className = mergeClasses(classes.root, classes[motion.state] /* simplified example */);
 
   return (
     <>

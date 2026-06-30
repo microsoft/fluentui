@@ -168,7 +168,7 @@ This approach significantly improves our current situation:
 
 #### Discarded Solutions
 
-- using `"files"` withing `package.json`
+- using `"files"` within `package.json`
   - doesn't support exclusion patterns
   - non explicit for human (if `files` property is used, some files will be automatically and always shipped)
   - 2 sources of "truth" (`.npmignore` and `files`)
