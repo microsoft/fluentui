@@ -2,6 +2,27 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 15:15:06 GMT",
+      "tag": "@fluentui/react-components_v9.74.3",
+      "version": "9.74.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "6bc2c669469b408e4047927aa3e3fd3f4cc0b728",
+            "comment": "fix: do not expose default icon in base hook"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "5d8f8f0b15eb22cb036d248eb893998613fd22af",
+            "comment": "fix(Calendar): year prev/next buttons don't lose focus when they become disabled"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:09:39 GMT",
       "tag": "@fluentui/react-components_v9.74.2",
       "version": "9.74.2",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-breadcrumb
 
-This log was last generated on Wed, 24 Jun 2026 11:10:07 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2026 15:15:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.4.4)
+
+Mon, 29 Jun 2026 15:15:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.4.3..@fluentui/react-breadcrumb_v9.4.4)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.10.1 ([commit](https://github.com/microsoft/fluentui/commit/aedc345f58bc16bb8540615b5afdf3d2d3569db4) by beachball)
 
 ## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.4.3)
 

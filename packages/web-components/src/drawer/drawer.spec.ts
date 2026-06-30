@@ -1,6 +1,7 @@
 import { expect, test } from '../../test/playwright/index.js';
 import { tagName as DrawerBodyTagName } from '../drawer-body/drawer-body.options.js';
-import { Drawer } from './drawer.js';
+import { tagName as TextInputTagName } from '../text-input/text-input.options.js';
+import type { Drawer } from './drawer.js';
 import { DrawerPosition, DrawerSize, DrawerType, tagName } from './drawer.options.js';
 
 test.describe('Drawer', () => {
@@ -199,5 +200,36 @@ test.describe('Drawer', () => {
     await closeButton.click();
 
     await expect(content).toBeHidden();
+  });
+
+  test.describe('sets focus when show() is called', () => {
+    test.use({
+      tagName,
+      waitFor: [DrawerBodyTagName, TextInputTagName],
+    });
+
+    test('should focus on the first element with `autofocus` attribute', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const content = element.locator('#content');
+      const input = element.getByTestId('input');
+
+      await fastPage.setTemplate({
+        innerHTML: /* html */ `
+          <${DrawerBodyTagName} id="content">
+            <button>before</button>
+            <${TextInputTagName} autofocus data-testid="input"></${TextInputTagName}>
+            <${TextInputTagName} autofocus></${TextInputTagName}>
+            <button>after</button>
+          </${DrawerBodyTagName}>
+        `,
+      });
+
+      await element.evaluate((node: Drawer) => {
+        node.show();
+      });
+
+      await expect(content).toBeVisible();
+      await expect(input).toBeFocused();
+    });
   });
 });

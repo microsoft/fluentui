@@ -1,4 +1,4 @@
-import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
@@ -227,7 +227,9 @@ export class BaseRadioGroup extends FASTElement {
    * @param next - the current slotted radios
    */
   slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void {
-    this.radios = [...this.querySelectorAll('*')].filter(x => isRadio(x)) as Radio[];
+    Updates.enqueue(() => {
+      this.radios = [...this.querySelectorAll('*')].filter((x): x is Radio => isRadio(x));
+    });
   }
 
   /**

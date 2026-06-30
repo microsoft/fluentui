@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-alert",
-  "version": "9.0.0-beta.141",
+  "version": "9.0.0-beta.142",
   "description": "An alert component to display brief messages",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-avatar": "^9.11.3",
-    "@fluentui/react-button": "^9.10.0",
+    "@fluentui/react-button": "^9.10.1",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-tabster": "^9.26.16",
     "@fluentui/react-theme": "^9.2.1",

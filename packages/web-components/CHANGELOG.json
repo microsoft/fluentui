@@ -2,6 +2,48 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 22:18:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46be5ff69017aa8c930060023ac80959ce880165",
+            "comment": "Promote @fluentui/web-components to 3.0.0 stable release."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2026 04:08:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-rc.31",
+      "version": "3.0.0-rc.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "cb3684e3c9df5ebc424960314cdb028ee0499062",
+            "comment": "refactor: migrate async definitions to fast-element v3 declarative API"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e6a6fa4d0540c937d1d6a83cbce7932e704c8907",
+            "comment": "fix: set focus on autofocus element when a dialog is open"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7088c40a57fa36d3ecf957cbc46ba4c852ee2f1d",
+            "comment": "fix: update link style to latest treatment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jun 2026 04:09:26 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.30",
       "version": "3.0.0-rc.30",

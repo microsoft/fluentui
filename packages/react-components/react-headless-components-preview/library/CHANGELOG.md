@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-This log was last generated on Wed, 24 Jun 2026 14:52:03 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2026 18:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.3)
+
+Mon, 29 Jun 2026 18:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.2..@fluentui/react-headless-components-preview_v0.2.3)
+
+### Patches
+
+- feat: add headless MenuButton ([PR #36320](https://github.com/microsoft/fluentui/pull/36320) by vgenaev@gmail.com)
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.2)
 
