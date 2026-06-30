@@ -45,9 +45,11 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
   let forceUpdateOnObserve = false;
-  let lastProcessedAvailableSize: number | undefined;
-  let lastProcessedVisibleTop: string | null = null;
-  let lastProcessedInvisibleTop: string | null = null;
+  let lastProcessed = {
+    availableSize: undefined as number | undefined,
+    visibleTop: null as string | null,
+    invisibleTop: null as string | null,
+  };
   const options: Required<OverflowOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
@@ -75,6 +77,22 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     compareItemsCache.clear();
   };
 
+  const resetLastProcessed = () => {
+    lastProcessed = {
+      availableSize: undefined,
+      visibleTop: null,
+      invisibleTop: null,
+    };
+  };
+
+  const updateLastProcessed = (availableSize: number, visibleTop: string | null, invisibleTop: string | null) => {
+    lastProcessed = {
+      availableSize,
+      visibleTop,
+      invisibleTop,
+    };
+  };
+
   function compareItems(lt: string | null, rt: string | null): number {
     if (!lt || !rt) {
       return 0;
@@ -100,8 +118,8 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
 
     // Node.DOCUMENT_POSITION_FOLLOWING = 4, Node.DOCUMENT_POSITION_PRECEDING = 2
     const positionStatusBit = options.overflowDirection === 'end' ? 4 : 2;
-
     const key = `${lt}|${rt}|${positionStatusBit}`;
+
     const cached = compareItemsCache.get(key);
     if (cached !== undefined) {
       return cached;
@@ -238,9 +256,9 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     // A forced dispatch (item/menu registration, option updates, etc.) still bypasses this guard.
     if (
       !forceDispatch &&
-      lastProcessedAvailableSize === availableSize &&
-      lastProcessedVisibleTop === visibleTop &&
-      lastProcessedInvisibleTop === invisibleTop
+      lastProcessed.availableSize === availableSize &&
+      lastProcessed.visibleTop === visibleTop &&
+      lastProcessed.invisibleTop === invisibleTop
     ) {
       return false;
     }
@@ -248,8 +266,60 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     clearCompareItemsCache();
     sizeCache.clear();
 
+    const groupVisibility = groupManager.groupVisibility();
+    const overflowMenuSize = overflowMenu ? getOffsetSize(overflowMenu) : 0;
+
+    const adjustDividerSize = (groupId: string | undefined, beforeVisibility: OverflowGroupState | undefined) => {
+      if (!groupId || !overflowDividers[groupId]) {
+        return 0;
+      }
+
+      const beforeVisible = beforeVisibility !== 'hidden';
+      const afterVisible = groupVisibility[groupId] !== 'hidden';
+
+      if (beforeVisible === afterVisible) {
+        return 0;
+      }
+
+      return afterVisible
+        ? getOffsetSize(overflowDividers[groupId].element)
+        : -getOffsetSize(overflowDividers[groupId].element);
+    };
+
+    const adjustOverflowMenuSize = (beforeInvisibleCount: number) => {
+      if (!overflowMenu || options.hasHiddenItems) {
+        return 0;
+      }
+
+      const afterInvisibleCount = invisibleItemQueue.size();
+      if (beforeInvisibleCount === 0 && afterInvisibleCount === 1) {
+        return overflowMenuSize;
+      }
+
+      if (beforeInvisibleCount === 1 && afterInvisibleCount === 0) {
+        return -overflowMenuSize;
+      }
+
+      return 0;
+    };
+
+    let occupied = occupiedSize();
+
     while (compareItems(invisibleItemQueue.peek(), visibleItemQueue.peek()) > 0) {
+      const itemId = visibleItemQueue.peek();
+      if (!itemId) {
+        break;
+      }
+
+      const item = overflowItems[itemId];
+      const beforeInvisibleCount = invisibleItemQueue.size();
+      const beforeGroupVisibility = item.groupId ? groupVisibility[item.groupId] : undefined;
+
       hideItem(); // hide elements whose priority become smaller than the highest priority of the hidden one
+
+      occupied -= getOffsetSize(item.element);
+      occupied += adjustOverflowMenuSize(beforeInvisibleCount);
+      occupied += adjustDividerSize(item.groupId, beforeGroupVisibility);
     }
 
     // Run the show/hide step twice - the first step might not be correct if
@@ -257,14 +327,27 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     for (let i = 0; i < 2; i++) {
       // Add items until available width is filled - can result in overflow
       while (
-        (occupiedSize() < availableSize && invisibleItemQueue.size() > 0) ||
+        (occupied < availableSize && invisibleItemQueue.size() > 0) ||
         invisibleItemQueue.size() === 1 // attempt to show the last invisible item hoping it's size does not exceed overflow menu size
       ) {
+        const itemId = invisibleItemQueue.peek();
+        if (!itemId) {
+          break;
+        }
+
+        const item = overflowItems[itemId];
+        const beforeInvisibleCount = invisibleItemQueue.size();
+        const beforeGroupVisibility = item.groupId ? groupVisibility[item.groupId] : undefined;
+
         showItem();
+
+        occupied += getOffsetSize(item.element);
+        occupied += adjustOverflowMenuSize(beforeInvisibleCount);
+        occupied += adjustDividerSize(item.groupId, beforeGroupVisibility);
       }
 
       // Remove items until there's no more overflow
-      while (occupiedSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+      while (occupied > availableSize && visibleItemQueue.size() > options.minimumVisible) {
         const nextItemId = visibleItemQueue.peek();
 
         // Never hide pinned items - they should always remain visible
@@ -272,16 +355,26 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
           break;
         }
 
+        if (!nextItemId) {
+          break;
+        }
+
+        const item = overflowItems[nextItemId];
+        const beforeInvisibleCount = invisibleItemQueue.size();
+        const beforeGroupVisibility = item.groupId ? groupVisibility[item.groupId] : undefined;
+
         hideItem();
+
+        occupied -= getOffsetSize(item.element);
+        occupied += adjustOverflowMenuSize(beforeInvisibleCount);
+        occupied += adjustDividerSize(item.groupId, beforeGroupVisibility);
       }
     }
 
     const nextVisibleTop = visibleItemQueue.peek();
     const nextInvisibleTop = invisibleItemQueue.peek();
 
-    lastProcessedAvailableSize = availableSize;
-    lastProcessedVisibleTop = nextVisibleTop;
-    lastProcessedInvisibleTop = nextInvisibleTop;
+    updateLastProcessed(availableSize, nextVisibleTop, nextInvisibleTop);
 
     // only update when the state of visible/invisible items has changed
     return nextVisibleTop !== visibleTop || nextInvisibleTop !== invisibleTop;
@@ -359,9 +452,7 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     observing = false;
     forceDispatch = true;
     forceUpdateOnObserve = false;
-    lastProcessedAvailableSize = undefined;
-    lastProcessedVisibleTop = null;
-    lastProcessedInvisibleTop = null;
+    resetLastProcessed();
 
     // clear all entries
     Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
@@ -380,10 +471,10 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     }
 
     overflowItems[items.id] = items;
-    clearCompareItemsCache();
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
+      clearCompareItemsCache();
       // Updates to elements might not change the queue tops
       // i.e. new element is enqueued but the top of the queue stays the same
       // force a dispatch on the next batched update
@@ -448,7 +539,9 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     }
 
     const item = overflowItems[itemId];
-    clearCompareItemsCache();
+    if (observing) {
+      clearCompareItemsCache();
+    }
     visibleItemQueue.remove(itemId);
     invisibleItemQueue.remove(itemId);
 
