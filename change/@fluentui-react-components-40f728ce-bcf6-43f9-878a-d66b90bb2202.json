@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: export useTabsterAttributes() hook",
+  "packageName": "@fluentui/react-components",
+  "email": "walterb@microsoft.com",
+  "dependentChangeType": "patch"
+}
