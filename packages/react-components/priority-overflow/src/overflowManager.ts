@@ -138,14 +138,18 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       totalItemSize += getOffsetSize(overflowItems[id].element);
     }
 
-    const totalDividerSize = Object.entries(groupManager.groupVisibility()).reduce(
-      (acc, [id, state]) =>
-        acc + (state !== 'hidden' && overflowDividers[id] ? getOffsetSize(overflowDividers[id].element) : 0),
-      0,
-    );
+    const groupVisibility = groupManager.groupVisibility();
+    let totalDividerSize = 0;
+    for (const id in overflowDividers) {
+      if (groupVisibility[id] !== 'hidden') {
+        totalDividerSize += getOffsetSize(overflowDividers[id].element);
+      }
+    }
+
+    const hasInvisibleItems = invisibleItemQueue.size() > 0;
 
     const overflowMenuSize =
-      (invisibleItemQueue.size() > 0 || options.hasHiddenItems) && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+      (hasInvisibleItems || options.hasHiddenItems) && overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     return totalItemSize + totalDividerSize + overflowMenuSize;
   }
