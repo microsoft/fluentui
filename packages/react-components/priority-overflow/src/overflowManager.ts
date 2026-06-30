@@ -45,6 +45,9 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
   // Initially true to force dispatch on first mount
   let forceDispatch = true;
   let forceUpdateOnObserve = false;
+  let lastProcessedAvailableSize: number | undefined;
+  let lastProcessedVisibleTop: string | null = null;
+  let lastProcessedInvisibleTop: string | null = null;
   const options: Required<OverflowOptions> = { ...DEFAULT_OPTIONS, ...initialOptions };
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
@@ -226,6 +229,17 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     const visibleTop = visibleItemQueue.peek();
     const invisibleTop = invisibleItemQueue.peek();
 
+    // Skip recomputation when available space and queue-top state are unchanged.
+    // A forced dispatch (item/menu registration, option updates, etc.) still bypasses this guard.
+    if (
+      !forceDispatch &&
+      lastProcessedAvailableSize === availableSize &&
+      lastProcessedVisibleTop === visibleTop &&
+      lastProcessedInvisibleTop === invisibleTop
+    ) {
+      return false;
+    }
+
     while (compareItems(invisibleItemQueue.peek(), visibleItemQueue.peek()) > 0) {
       hideItem(); // hide elements whose priority become smaller than the highest priority of the hidden one
     }
@@ -254,8 +268,15 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
       }
     }
 
+    const nextVisibleTop = visibleItemQueue.peek();
+    const nextInvisibleTop = invisibleItemQueue.peek();
+
+    lastProcessedAvailableSize = availableSize;
+    lastProcessedVisibleTop = nextVisibleTop;
+    lastProcessedInvisibleTop = nextInvisibleTop;
+
     // only update when the state of visible/invisible items has changed
-    return visibleItemQueue.peek() !== visibleTop || invisibleItemQueue.peek() !== invisibleTop;
+    return nextVisibleTop !== visibleTop || nextInvisibleTop !== invisibleTop;
   };
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
@@ -330,6 +351,9 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     observing = false;
     forceDispatch = true;
     forceUpdateOnObserve = false;
+    lastProcessedAvailableSize = undefined;
+    lastProcessedVisibleTop = null;
+    lastProcessedInvisibleTop = null;
 
     // clear all entries
     Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
