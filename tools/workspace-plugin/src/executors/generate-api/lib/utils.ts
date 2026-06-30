@@ -8,17 +8,38 @@ import type { PackageJson } from '../../../types';
 import type { NormalizedOptions } from '../executor';
 import { verboseLog } from './shared';
 
-function isTypedEntry(exportValue: unknown): exportValue is { types: string } & Record<string, unknown> {
-  return typeof exportValue === 'object' && exportValue !== null && 'types' in exportValue;
+/**
+ * Resolves the declaration (`.d.ts`) types path from an export entry, supporting both the legacy flat
+ * shape (`{ types }`) and the ESM-first nested shape (`{ import: { types } }`). The `import` condition
+ * always points at the ESM `.d.ts` rollup, which is what api-extractor consumes.
+ */
+function getEntryTypes(exportValue: unknown): string | undefined {
+  if (typeof exportValue !== 'object' || exportValue === null) {
+    return undefined;
+  }
+  const value = exportValue as Record<string, unknown>;
+  if (typeof value.types === 'string') {
+    return value.types;
+  }
+  const importCondition = value.import;
+  if (
+    typeof importCondition === 'object' &&
+    importCondition !== null &&
+    typeof (importCondition as Record<string, unknown>).types === 'string'
+  ) {
+    return (importCondition as Record<string, unknown>).types as string;
+  }
+  return undefined;
+}
+
+function isTypedEntry(exportValue: unknown): exportValue is Record<string, unknown> {
+  return getEntryTypes(exportValue) !== undefined;
 }
 
 /**
  * Checks whether a single export map entry is a wildcard entry with a `types` field.
  */
-function isWildcardTypedEntry(
-  exportKey: string,
-  exportValue: unknown,
-): exportValue is { types: string } & Record<string, unknown> {
+function isWildcardTypedEntry(exportKey: string, exportValue: unknown): exportValue is Record<string, unknown> {
   return exportKey.includes('*') && isTypedEntry(exportValue);
 }
 
@@ -26,10 +47,7 @@ function isWildcardTypedEntry(
  * Checks whether a single export map entry is a named (non-wildcard, non-root) entry with a `types` field.
  * Skips `"."` and `"./package.json"`.
  */
-function isNamedTypedEntry(
-  exportKey: string,
-  exportValue: unknown,
-): exportValue is { types: string } & Record<string, unknown> {
+function isNamedTypedEntry(exportKey: string, exportValue: unknown): exportValue is Record<string, unknown> {
   if (exportKey === '.' || exportKey === './package.json' || exportKey.includes('*')) {
     return false;
   }
@@ -61,7 +79,7 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
   for (const [exportKey, exportValue] of Object.entries(exports)) {
     // Wildcard entries: expand into sub-directories
     if (isWildcardTypedEntry(exportKey, exportValue)) {
-      const pathPrefixes = parseWildcardTypesPattern(exportValue.types);
+      const pathPrefixes = parseWildcardTypesPattern(getEntryTypes(exportValue)!);
       if (!pathPrefixes) {
         continue;
       }
@@ -88,7 +106,7 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
 
     // Named entries: create config directly from types field
     if (isNamedTypedEntry(exportKey, exportValue)) {
-      const parsed = parseNamedTypesPattern(exportValue.types);
+      const parsed = parseNamedTypesPattern(getEntryTypes(exportValue)!);
       if (!parsed) {
         continue;
       }
