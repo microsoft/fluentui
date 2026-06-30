@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use semantic status color tokens for validation icon",
+  "packageName": "@fluentui/react-field",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
