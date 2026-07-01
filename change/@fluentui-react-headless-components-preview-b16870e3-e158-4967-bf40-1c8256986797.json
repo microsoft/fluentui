@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "usePositioning: share anchor-name across positioned popovers so a Tooltip and Menu can attach to one trigger",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "mgodbolt+microsoft@microsoft.com",
+  "dependentChangeType": "patch"
+}
