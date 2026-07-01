@@ -29,7 +29,7 @@ const Scenario = () => {
     <Overflow padding={0} overflowAxis="horizontal">
       <div style={{ width: 1400, display: 'flex', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
         {itemIds.map(id => (
-          <OverflowItem key={id} id={id} defer>
+          <OverflowItem key={id} id={id}>
             <Button style={{ width: 64, flexShrink: 0 }}>{id}</Button>
           </OverflowItem>
         ))}

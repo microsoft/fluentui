@@ -12,7 +12,7 @@ import { createFlatOverflowManager } from '@fluentui/priority-overflow';
 const itemIds = Array.from({ length: 20 }, (_, index) => `item-${index}`);
 
 const OverflowMenu = (): React.ReactElement | null => {
-  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>({ defer: true });
+  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
     return null;
@@ -30,7 +30,7 @@ const Scenario = () => {
     <Overflow padding={64} overflowAxis="horizontal" createManager={createFlatOverflowManager}>
       <div style={{ width: 320, display: 'flex', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
         {itemIds.map(id => (
-          <OverflowItem key={id} id={id} sizeHint={64} defer>
+          <OverflowItem key={id} id={id} sizeHint={64}>
             <Button style={{ width: 64, flexShrink: 0 }}>{id}</Button>
           </OverflowItem>
         ))}
