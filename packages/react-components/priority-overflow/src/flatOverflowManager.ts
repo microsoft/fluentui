@@ -67,11 +67,6 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
   // ---------- helpers ------------------------------------------------------
   const getAxisOffset = (el: HTMLElement) => (options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight);
 
-  const getContainerClient = () => {
-    if (!container) return 0;
-    return (options.overflowAxis === 'horizontal' ? container.clientWidth : container.clientHeight) - options.padding;
-  };
-
   const takeSnapshot = (next: OverflowSnapshot) => {
     snapshot = next;
     for (const l of listeners) l();
@@ -124,16 +119,27 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
     const n = items.length;
     if (n === 0) return false;
 
-    const available = getContainerClient();
+    // Raw container client size without padding subtraction.
+    const rawContainerSize = options.overflowAxis === 'horizontal' ? container.clientWidth : container.clientHeight;
+
     const total = prefixSums[n];
-    const menuSize = overflowMenu ? getAxisOffset(overflowMenu) : 0;
+
+    // Menu reserve: the larger of the currently registered menu element size and
+    // the configured padding.  Using max(menuSize, padding) as the reserve means
+    // that when `padding` is set to the expected overflow-button width (the common
+    // Tabs pattern), the first compute already uses the correct reserved space and
+    // the second pass triggered after the menu element registers is a no-op
+    // (no visibility changes → no extra re-render).
+    const registeredMenuSize = overflowMenu ? getAxisOffset(overflowMenu) : 0;
+    const menuReserve = Math.max(registeredMenuSize, options.padding);
+
     const newVisible: boolean[] = new Array(n);
 
-    if (total <= available && !options.hasHiddenItems) {
-      // All items fit – no overflow.
+    if (total + menuReserve <= rawContainerSize && !options.hasHiddenItems) {
+      // All items fit (accounting for menu reserve) – no overflow.
       newVisible.fill(true);
     } else {
-      const effectiveAvailable = available - menuSize;
+      const effectiveAvailable = rawContainerSize - menuReserve;
 
       if (options.overflowDirection === 'end') {
         // Visible items start from the left; hidden from the right.
@@ -353,7 +359,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
     overflowMenu = el;
     if (observing) {
-      forceDispatch = true;
+      // Do not set forceDispatch: if menuReserve equals padding the first compute
+      // already produced the correct visibility, and a no-op second pass should
+      // not trigger a snapshot update or React re-render.
       update();
     }
   };
@@ -361,7 +369,6 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
     overflowMenu = undefined;
     if (observing) {
-      forceDispatch = true;
       update();
     }
   };
