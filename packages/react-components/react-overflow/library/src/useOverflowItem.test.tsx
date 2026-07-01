@@ -42,6 +42,7 @@ describe('useOverflowItem', () => {
           "id": "test",
           "pinned": undefined,
           "priority": 0,
+          "sizeHint": undefined,
         },
       ]
     `);

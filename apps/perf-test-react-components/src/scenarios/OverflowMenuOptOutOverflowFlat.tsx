@@ -30,7 +30,7 @@ const Scenario = () => {
     <Overflow padding={64} overflowAxis="horizontal" createManager={createFlatOverflowManager}>
       <div style={{ width: 320, display: 'flex', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
         {itemIds.map(id => (
-          <OverflowItem key={id} id={id}>
+          <OverflowItem key={id} id={id} sizeHint={64}>
             <Button style={{ width: 64, flexShrink: 0 }}>{id}</Button>
           </OverflowItem>
         ))}
