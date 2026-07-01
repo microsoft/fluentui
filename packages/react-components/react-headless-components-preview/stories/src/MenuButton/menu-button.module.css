@@ -1,0 +1,90 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+
+.button span {
+  display: inline-flex;
+}
+
+.button:hover,
+.button[aria-expanded='true'],
+.button[data-open] {
+  background: var(--accent-strong);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
+}
+
+.button[data-disabled],
+.button[data-disabled-focusable] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button[data-disabled]:hover,
+.button[data-disabled-focusable]:hover {
+  background: var(--accent);
+}
+
+.button svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.surface {
+  background: var(--bg-elev);
+  border-radius: var(--radius-md);
+  border: var(--stroke-thin) solid var(--border);
+  box-shadow: var(--shadow-3);
+  padding: var(--space-1) 0;
+  min-width: 180px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 6px var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 13.5px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.item:hover,
+.item:focus-visible {
+  background: var(--surface-muted);
+}
+
+.item:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}

@@ -9,8 +9,8 @@ import { CSSDirective } from '@microsoft/fast-element';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
-import { FASTElementDefinition } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
 import { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
 
@@ -31,8 +31,8 @@ export class Accordion extends FASTElement {
     slottedAccordionItemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
 }
 
-// @public (undocumented)
-export const accordionDefinition: FASTElementDefinition<typeof Accordion>;
+// @public
+export const AccordionDefinition: PartialFASTElementDefinition;
 
 // @public
 export const AccordionExpandMode: {
@@ -59,8 +59,8 @@ export class AccordionItem extends BaseAccordionItem {
 export interface AccordionItem extends StartEnd {
 }
 
-// @public (undocumented)
-export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
+// @public
+export const AccordionItemDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -95,20 +95,20 @@ export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const accordionItemStyles: ElementStyles;
+export const AccordionItemStyles: ElementStyles;
 
 // @public
-export const accordionItemTemplate: ElementViewTemplate<AccordionItem>;
+export const AccordionItemTemplate: ElementViewTemplate<AccordionItem>;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const accordionStyles: ElementStyles;
+export const AccordionStyles: ElementStyles;
 
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const accordionTemplate: ElementViewTemplate<Accordion>;
+export const AccordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
@@ -140,8 +140,8 @@ export const AnchorButtonAppearance: {
 // @public
 export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
-// @public (undocumented)
-export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
+// @public
+export const AnchorButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const AnchorButtonShape: {
@@ -267,7 +267,7 @@ export const AvatarColor: {
 export type AvatarColor = ValuesOf<typeof AvatarColor>;
 
 // @public
-export const AvatarDefinition: FASTElementDefinition<typeof Avatar>;
+export const AvatarDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "AvatarNamedColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -390,8 +390,8 @@ export const BadgeColor: {
 // @public
 export type BadgeColor = ValuesOf<typeof BadgeColor>;
 
-// @public (undocumented)
-export const BadgeDefinition: FASTElementDefinition<typeof Badge>;
+// @public
+export const BadgeDefinition: PartialFASTElementDefinition;
 
 // @public
 export const BadgeShape: {
@@ -730,6 +730,8 @@ export class BaseField extends FASTElement {
     setStates(): void;
     // (undocumented)
     setValidationStates(): void;
+    // @internal
+    protected get slottedInputObserver(): MutationObserver;
     // @internal
     slottedInputs: SlottableInput[];
     // @internal
@@ -1160,7 +1162,7 @@ export const ButtonAppearance: {
 export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
 
 // @public
-export const ButtonDefinition: FASTElementDefinition<typeof Button>;
+export const ButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ButtonFormTarget: {
@@ -1226,7 +1228,7 @@ export class Checkbox extends BaseCheckbox {
 }
 
 // @public
-export const CheckboxDefinition: FASTElementDefinition<typeof Checkbox>;
+export const CheckboxDefinition: PartialFASTElementDefinition;
 
 // @public
 export type CheckboxOptions = {
@@ -2371,8 +2373,8 @@ export const CompoundButtonAppearance: {
 // @public
 export type CompoundButtonAppearance = ValuesOf<typeof CompoundButtonAppearance>;
 
-// @public (undocumented)
-export const CompoundButtonDefinition: FASTElementDefinition<typeof CompoundButton>;
+// @public
+export const CompoundButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const CompoundButtonShape: {
@@ -2440,8 +2442,8 @@ export const CounterBadgeColor: {
 // @public
 export type CounterBadgeColor = ValuesOf<typeof CounterBadgeColor>;
 
-// @public (undocumented)
-export const CounterBadgeDefinition: FASTElementDefinition<typeof CounterBadge>;
+// @public
+export const CounterBadgeDefinition: PartialFASTElementDefinition;
 
 // @public
 export const CounterBadgeShape: {
@@ -2534,7 +2536,7 @@ export class DialogBody extends FASTElement {
 }
 
 // @public
-export const DialogBodyDefinition: FASTElementDefinition<typeof DialogBody>;
+export const DialogBodyDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DialogBodyStyles: ElementStyles;
@@ -2543,7 +2545,7 @@ export const DialogBodyStyles: ElementStyles;
 export const DialogBodyTemplate: ElementViewTemplate;
 
 // @public
-export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
+export const DialogDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DialogStyles: ElementStyles;
@@ -2608,7 +2610,7 @@ export const DividerAppearance: {
 export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
 
 // @public
-export const DividerDefinition: FASTElementDefinition<typeof Divider>;
+export const DividerDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DividerOrientation: {
@@ -2676,8 +2678,8 @@ export class DrawerBody extends FASTElement {
     clickHandler(event: PointerEvent): boolean | void;
 }
 
-// @public (undocumented)
-export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+// @public
+export const DrawerBodyDefinition: PartialFASTElementDefinition;
 
 // @public
 export const DrawerBodyStyles: ElementStyles;
@@ -2687,8 +2689,8 @@ export const DrawerBodyStyles: ElementStyles;
 // @public (undocumented)
 export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
 
-// @public (undocumented)
-export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+// @public
+export const DrawerDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -2755,7 +2757,7 @@ export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
 export const dropdownButtonTemplate: ViewTemplate<BaseDropdown, any>;
 
 // @public
-export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+export const DropdownDefinition: PartialFASTElementDefinition;
 
 // @public
 export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
@@ -2818,7 +2820,7 @@ export class DropdownOption extends FASTElement implements Start {
 }
 
 // @public
-export const DropdownOptionDefinition: FASTElementDefinition<typeof DropdownOption>;
+export const DropdownOptionDefinition: PartialFASTElementDefinition;
 
 // @public
 export type DropdownOptionOptions = StartOptions<DropdownOption> & {
@@ -2900,7 +2902,7 @@ export class Field extends BaseField {
 }
 
 // @public
-export const FieldDefinition: FASTElementDefinition<typeof Field>;
+export const FieldDefinition: PartialFASTElementDefinition;
 
 // @public
 export const FieldLabelPosition: {
@@ -2992,7 +2994,7 @@ class Image_2 extends FASTElement {
 export { Image_2 as Image }
 
 // @public
-export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
+export const ImageDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ImageFit: {
@@ -3050,7 +3052,7 @@ export class Label extends FASTElement {
 }
 
 // @public
-export const LabelDefinition: FASTElementDefinition<typeof Label>;
+export const LabelDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "LabelSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -3127,8 +3129,8 @@ export const LinkAppearance: {
 // @public
 export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
 
-// @public (undocumented)
-export const LinkDefinition: FASTElementDefinition<typeof Link>;
+// @public
+export const LinkDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -3182,7 +3184,7 @@ export class Listbox extends FASTElement {
 }
 
 // @public
-export const ListboxDefinition: FASTElementDefinition<typeof Listbox>;
+export const ListboxDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ListboxStyles: ElementStyles;
@@ -3256,8 +3258,8 @@ export const MenuButtonAppearance: {
 // @public
 export type MenuButtonAppearance = ValuesOf<typeof MenuButtonAppearance>;
 
-// @public (undocumented)
-export const MenuButtonDefinition: FASTElementDefinition<typeof MenuButton>;
+// @public
+export const MenuButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const MenuButtonShape: {
@@ -3283,7 +3285,7 @@ export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
 export const MenuButtonTemplate: ElementViewTemplate<MenuButton>;
 
 // @public
-export const MenuDefinition: FASTElementDefinition<typeof Menu>;
+export const MenuDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "MenuItem" because one of its declarations is marked as @internal
@@ -3332,8 +3334,8 @@ export interface MenuItem extends StartEnd {
 // @public (undocumented)
 export type MenuItemColumnCount = 0 | 1 | 2;
 
-// @public (undocumented)
-export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+// @public
+export const MenuItemDefinition: PartialFASTElementDefinition;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
@@ -3367,8 +3369,8 @@ export class MenuList extends BaseMenuList {
     setItems(): void;
 }
 
-// @public (undocumented)
-export const MenuListDefinition: FASTElementDefinition<typeof MenuList>;
+// @public
+export const MenuListDefinition: PartialFASTElementDefinition;
 
 // @public
 export const MenuListStyles: ElementStyles;
@@ -3398,7 +3400,7 @@ export class MessageBar extends FASTElement {
 }
 
 // @public
-export const MessageBarDefinition: FASTElementDefinition<typeof MessageBar>;
+export const MessageBarDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "MessageBarIntent" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -3459,7 +3461,7 @@ export class ProgressBar extends BaseProgressBar {
 }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ProgressBarShape: {
@@ -3516,7 +3518,7 @@ export class Radio extends BaseCheckbox {
 export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focus' | 'setAttribute' | 'getAttribute'>;
 
 // @public
-export const RadioDefinition: FASTElementDefinition<typeof Radio>;
+export const RadioDefinition: PartialFASTElementDefinition;
 
 // @public
 export class RadioGroup extends BaseRadioGroup {
@@ -3527,7 +3529,7 @@ export class RadioGroup extends BaseRadioGroup {
 }
 
 // @public
-export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
+export const RadioGroupDefinition: PartialFASTElementDefinition;
 
 // @public
 export const RadioGroupOrientation: {
@@ -3575,7 +3577,7 @@ export const RatingDisplayColor: {
 export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
 
 // @public
-export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+export const RatingDisplayDefinition: PartialFASTElementDefinition;
 
 // @public
 export const RatingDisplaySize: {
@@ -3745,7 +3747,7 @@ export interface SliderConfiguration {
 }
 
 // @public
-export const SliderDefinition: FASTElementDefinition<typeof Slider>;
+export const SliderDefinition: PartialFASTElementDefinition;
 
 // @public (undocumented)
 export const SliderMode: {
@@ -3877,8 +3879,8 @@ export const SpinnerAppearance: {
 // @public
 export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
 
-// @public (undocumented)
-export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+// @public
+export const SpinnerDefinition: PartialFASTElementDefinition;
 
 // @public
 export const SpinnerSize: {
@@ -3950,7 +3952,7 @@ export class Switch extends BaseCheckbox {
 }
 
 // @public
-export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
+export const SwitchDefinition: PartialFASTElementDefinition;
 
 // @public
 export const SwitchLabelPosition: {
@@ -3998,10 +4000,8 @@ export class Tab extends FASTElement {
 export interface Tab extends StartEnd {
 }
 
-// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
-export const TabDefinition: FASTElementDefinition<typeof Tab>;
+// @public
+export const TabDefinition: PartialFASTElementDefinition;
 
 // @public
 export class Tablist extends BaseTablist {
@@ -4022,8 +4022,8 @@ export const TablistAppearance: {
 // @public
 export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
 
-// @public (undocumented)
-export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+// @public
+export const TablistDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TablistOrientation: {
@@ -4135,7 +4135,7 @@ export const TextAreaAutocomplete: {
 export type TextAreaAutocomplete = ValuesOf<typeof TextAreaAutocomplete>;
 
 // @public
-export const TextAreaDefinition: FASTElementDefinition<typeof TextArea>;
+export const TextAreaDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -4172,7 +4172,7 @@ export const TextAreaStyles: ElementStyles;
 export const TextAreaTemplate: ElementViewTemplate<TextArea>;
 
 // @public
-export const TextDefinition: FASTElementDefinition<typeof Text_2>;
+export const TextDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TextFont: {
@@ -4223,7 +4223,7 @@ export const TextInputControlSize: {
 export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 
 // @public
-export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
+export const TextInputDefinition: PartialFASTElementDefinition;
 
 // @public
 export type TextInputOptions = StartEndOptions<TextInput>;
@@ -4314,8 +4314,8 @@ export const ToggleButtonAppearance: {
 // @public
 export type ToggleButtonAppearance = ValuesOf<typeof ToggleButtonAppearance>;
 
-// @public (undocumented)
-export const ToggleButtonDefinition: FASTElementDefinition<typeof ToggleButton>;
+// @public
+export const ToggleButtonDefinition: PartialFASTElementDefinition;
 
 // @public
 export const ToggleButtonShape: {
@@ -4370,7 +4370,7 @@ export class Tooltip extends FASTElement {
 }
 
 // @public
-export const TooltipDefinition: FASTElementDefinition<typeof Tooltip>;
+export const TooltipDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TooltipPositioningOption: {
@@ -4416,8 +4416,8 @@ export class Tree extends BaseTree {
     updateSizeAndAppearance(): void;
 }
 
-// @public (undocumented)
-export const TreeDefinition: FASTElementDefinition<typeof Tree>;
+// @public
+export const TreeDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -4447,8 +4447,8 @@ export const TreeItemAppearance: {
 // @public (undocumented)
 export type TreeItemAppearance = ValuesOf<typeof TreeItemAppearance>;
 
-// @public (undocumented)
-export const TreeItemDefinition: FASTElementDefinition<typeof TreeItem>;
+// @public
+export const TreeItemDefinition: PartialFASTElementDefinition;
 
 // Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)

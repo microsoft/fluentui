@@ -4,6 +4,7 @@ import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import type { PopoverProps } from './Popover.types';
+import { Tooltip } from '../Tooltip';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
@@ -442,6 +443,75 @@ describe('positioning observer', () => {
       if (win.CSS?.supports?.('anchor-name: --x')) {
         cy.get(surfaceSelector).should('have.attr', 'data-placement', 'above');
       }
+    });
+  });
+
+  describe('with Tooltip wrapping PopoverTrigger', () => {
+    const TooltipWrappedPopoverExample = () => {
+      return (
+        <Popover>
+          <Tooltip
+            hideDelay={0}
+            showDelay={0}
+            content={{ id: 'tooltip-content', children: 'Open popover for more info' }}
+            relationship="label"
+          >
+            <PopoverTrigger disableButtonEnhancement>
+              <button id="tooltip-wrapped-trigger">More Info</button>
+            </PopoverTrigger>
+          </Tooltip>
+          <PopoverSurface>Additional information goes here.</PopoverSurface>
+        </Popover>
+      );
+    };
+
+    it('should open popover when tooltip-wrapped trigger is clicked', () => {
+      mount(<TooltipWrappedPopoverExample />);
+      cy.get('#tooltip-wrapped-trigger').should('exist');
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('#tooltip-wrapped-trigger').trigger('pointerover');
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('[role="tooltip"]').should('contain.text', 'Open popover for more info');
+
+      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get(surfaceSelector).should('be.visible');
+      cy.get('[role="tooltip"]').should('not.exist');
+      cy.get(surfaceSelector).should('contain.text', 'Additional information');
+    });
+
+    it('should have tooltip accessible on the trigger', () => {
+      mount(<TooltipWrappedPopoverExample />);
+      cy.get('#tooltip-wrapped-trigger').should('have.attr', 'aria-label', 'Open popover for more info');
+    });
+
+    it('should have proper ARIA expanded state', () => {
+      mount(<TooltipWrappedPopoverExample />);
+      cy.get('#tooltip-wrapped-trigger').should('have.attr', 'aria-expanded', 'false');
+      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get('#tooltip-wrapped-trigger').should('have.attr', 'aria-expanded', 'true');
+    });
+
+    it('should handle keyboard interaction (Enter) with tooltip-wrapped trigger', () => {
+      mount(<TooltipWrappedPopoverExample />);
+      cy.get('#tooltip-wrapped-trigger').focus().realPress('Enter');
+      cy.get(surfaceSelector).should('be.visible');
+    });
+
+    it('should dismiss on Escape even with tooltip wrapper', () => {
+      mount(<TooltipWrappedPopoverExample />);
+      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get(surfaceSelector).should('be.visible');
+      cy.focused().realPress('Escape');
+      cy.get(surfaceSelector).should('not.exist');
+    });
+
+    it('should show tooltip on hover without opening popover', () => {
+      mount(<TooltipWrappedPopoverExample />);
+      cy.get('#tooltip-wrapped-trigger').trigger('pointerover');
+      cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('[role="tooltip"]').should('contain.text', 'Open popover for more info');
+      cy.get(surfaceSelector).should('not.exist');
     });
   });
 });

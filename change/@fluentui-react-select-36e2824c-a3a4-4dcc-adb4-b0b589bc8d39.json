@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: move Field control props to base hooks",
-  "packageName": "@fluentui/react-select",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './listbox.options.js';
-import { Listbox } from './listbox.js';
 import { styles } from './listbox.styles.js';
 import { template } from './listbox.template.js';
 
 /**
- * The Fluent Listbox Element
+ * The definition for the `<fluent-listbox>` element.
  *
  * @public
- * @remarks
- * HTML Element: `<fluent-listbox>`
  */
-export const definition = Listbox.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};
