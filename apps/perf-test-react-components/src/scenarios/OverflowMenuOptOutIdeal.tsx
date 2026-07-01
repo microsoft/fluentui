@@ -11,7 +11,7 @@ import {
 const itemIds = Array.from({ length: 20 }, (_, index) => `item-${index}`);
 
 const OverflowMenu = (): React.ReactElement | null => {
-  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>({ defer: true });
+  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
     return null;

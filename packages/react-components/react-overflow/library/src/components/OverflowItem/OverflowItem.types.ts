@@ -17,10 +17,6 @@ export type OverflowItemProps = {
    */
   children: React.ReactElement;
   /**
-   * If true, the item will not force an update on the overflow context when it registers/unregisters.
-   */
-  defer?: boolean;
-  /**
    * Optional size hint in pixels for the overflow axis.
    * When provided and used with `createFlatOverflowManager`, the manager will use
    * this value instead of reading `offsetWidth`/`offsetHeight`, eliminating a

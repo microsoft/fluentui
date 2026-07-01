@@ -11,7 +11,7 @@ import {
 const itemIds = Array.from({ length: 20 }, (_, index) => `item-${index}`);
 
 const OverflowMenu = (): React.ReactElement | null => {
-  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>({ defer: true });
+  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
     return null;
@@ -29,7 +29,7 @@ const Scenario = () => {
     <Overflow padding={0} overflowAxis="horizontal">
       <div style={{ width: 1400, display: 'flex', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
         {itemIds.map(id => (
-          <OverflowItem key={id} id={id} defer>
+          <OverflowItem key={id} id={id}>
             <Button style={{ width: 64, flexShrink: 0 }}>{id}</Button>
           </OverflowItem>
         ))}
