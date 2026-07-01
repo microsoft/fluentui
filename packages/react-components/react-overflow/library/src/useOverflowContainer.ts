@@ -27,6 +27,7 @@ import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERF
 export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
   options: Omit<OverflowOptions, 'onUpdateOverflow'>,
+  managerFactory?: (opts: Partial<OverflowOptions>) => OverflowManager,
 ): UseOverflowContainerReturn<TElement> => {
   const {
     overflowAxis = 'horizontal',
@@ -58,7 +59,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   if (managerRef.current === null) {
     if (canUseDOM()) {
-      managerRef.current = createOverflowManager(observeOptions);
+      managerRef.current = (managerFactory ?? createOverflowManager)(observeOptions);
     }
   }
 

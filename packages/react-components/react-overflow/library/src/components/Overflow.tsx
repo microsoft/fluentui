@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import type { OverflowOptions, OnUpdateOverflow, OverflowGroupState } from '@fluentui/priority-overflow';
+import type { OverflowManager } from '@fluentui/priority-overflow';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
@@ -34,6 +35,17 @@ export type OverflowProps = Partial<
   // overflow is not caused by DOM event
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onOverflowChange?: (ev: null, data: OverflowState) => void;
+
+  /**
+   * Optional factory used to create the overflow manager.
+   * When provided, called instead of the default `createOverflowManager`.
+   * All option props (`padding`, `overflowAxis`, etc.) are still applied normally.
+   *
+   * @example
+   * import { createFlatOverflowManager } from '@fluentui/priority-overflow';
+   * <Overflow createManager={createFlatOverflowManager} padding={44} minimumVisible={1} />
+   */
+  createManager?: (options: Partial<OverflowOptions>) => OverflowManager;
 };
 
 /**
@@ -50,6 +62,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     padding,
     onOverflowChange,
     hasHiddenItems,
+    createManager,
   } = props;
 
   const update: OnUpdateOverflow = useEventCallback(() => {
@@ -71,14 +84,18 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     forceUpdateOverflow,
     registerOverflowMenu,
     registerDivider,
-  } = useOverflowContainer(update, {
-    overflowDirection,
-    overflowAxis,
-    padding,
-    minimumVisible,
-    hasHiddenItems,
-    onUpdateItemVisibility: updateVisibilityAttribute,
-  });
+  } = useOverflowContainer(
+    update,
+    {
+      overflowDirection,
+      overflowAxis,
+      padding,
+      minimumVisible,
+      hasHiddenItems,
+      onUpdateItemVisibility: updateVisibilityAttribute,
+    },
+    createManager,
+  );
 
   const child = getTriggerChild<HTMLElement>(children);
   const clonedChild = applyTriggerPropsToChildren(children, {
