@@ -22,6 +22,7 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
     padding,
     onOverflowChange,
     hasHiddenItems,
+    createManager,
   } = props;
 
   const update: OnUpdateOverflow = useEventCallback(() => {
@@ -44,14 +45,18 @@ export const useOverflow_unstable = (props: OverflowProps, ref: React.Ref<HTMLEl
     forceUpdateOverflow,
     registerOverflowMenu,
     registerDivider,
-  } = useOverflowContainer(update, {
-    overflowDirection,
-    overflowAxis,
-    padding,
-    minimumVisible,
-    hasHiddenItems,
-    onUpdateItemVisibility: updateVisibilityAttribute,
-  });
+  } = useOverflowContainer(
+    update,
+    {
+      overflowDirection,
+      overflowAxis,
+      padding,
+      minimumVisible,
+      hasHiddenItems,
+      onUpdateItemVisibility: updateVisibilityAttribute,
+    },
+    createManager,
+  );
 
   const child = getTriggerChild<HTMLElement>(children);
 
