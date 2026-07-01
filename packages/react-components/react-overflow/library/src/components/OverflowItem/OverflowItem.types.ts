@@ -20,6 +20,13 @@ export type OverflowItemProps = {
    * If true, the item will not force an update on the overflow context when it registers/unregisters.
    */
   defer?: boolean;
+  /**
+   * Optional size hint in pixels for the overflow axis.
+   * When provided and used with `createFlatOverflowManager`, the manager will use
+   * this value instead of reading `offsetWidth`/`offsetHeight`, eliminating a
+   * layout read on first compute. Only set when the item has a known, stable size.
+   */
+  sizeHint?: number;
 } & (
   | {
       /**

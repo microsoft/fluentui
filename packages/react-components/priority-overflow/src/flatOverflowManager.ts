@@ -83,7 +83,8 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
 
     for (const item of items) {
       if (!sizeById.has(item.id)) {
-        sizeById.set(item.id, getAxisOffset(item.element));
+        // Use sizeHint when available to avoid a layout read.
+        sizeById.set(item.id, item.sizeHint !== undefined ? item.sizeHint : getAxisOffset(item.element));
       }
     }
 

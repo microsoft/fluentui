@@ -18,9 +18,9 @@ import type { OverflowItemProps } from './OverflowItem.types';
  * Behaves similarly to other `*Trigger` components in Fluent UI React.
  */
 export const OverflowItem = React.forwardRef((props: OverflowItemProps, ref) => {
-  const { id, groupId, priority, pinned, children, defer } = props;
+  const { id, groupId, priority, pinned, children, defer, sizeHint } = props;
 
-  const containerRef = useOverflowItem(id, priority, groupId, pinned, defer);
+  const containerRef = useOverflowItem(id, priority, groupId, pinned, defer, sizeHint);
   const child = getTriggerChild(children);
 
   return applyTriggerPropsToChildren(children, {
