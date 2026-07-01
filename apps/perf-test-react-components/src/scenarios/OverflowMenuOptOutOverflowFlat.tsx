@@ -27,7 +27,7 @@ const OverflowMenu = (): React.ReactElement | null => {
 
 const Scenario = () => {
   return (
-    <Overflow padding={0} overflowAxis="horizontal" createManager={createFlatOverflowManager}>
+    <Overflow padding={64} overflowAxis="horizontal" createManager={createFlatOverflowManager}>
       <div style={{ width: 320, display: 'flex', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
         {itemIds.map(id => (
           <OverflowItem key={id} id={id}>
