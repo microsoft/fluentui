@@ -121,7 +121,7 @@ describe('Overflow paint probe', () => {
     );
     waitForFilmstrip('settled');
     cy.then(() => {
-      const snapshots = toVisualSnapshots(paints['settled']);
+      const snapshots = toVisualSnapshots(paints.settled);
       expect(snapshots, 'filmstrip should have exactly one distinct state').to.have.length(1);
       expect(snapshots[0]).to.deep.equal(SETTLED);
     });

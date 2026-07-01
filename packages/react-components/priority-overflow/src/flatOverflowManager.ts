@@ -69,7 +69,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
 
   const takeSnapshot = (next: OverflowSnapshot) => {
     snapshot = next;
-    for (const l of listeners) l();
+    for (const l of listeners) {
+      l();
+    }
   };
 
   /**
@@ -79,7 +81,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
    * immediately after being made visible by the hook cleanup).
    */
   const ensurePrefixSums = () => {
-    if (!sumsStale) return;
+    if (!sumsStale) {
+      return;
+    }
 
     for (const item of items) {
       if (!sizeById.has(item.id)) {
@@ -104,21 +108,28 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
     let lo = 0;
     let hi = prefixSums.length - 1;
     while (lo < hi) {
-      const mid = (lo + hi + 1) >> 1;
-      if (prefixSums[mid] <= target) lo = mid;
-      else hi = mid - 1;
+      const mid = Math.floor((lo + hi + 1) / 2);
+      if (prefixSums[mid] <= target) {
+        lo = mid;
+      } else {
+        hi = mid - 1;
+      }
     }
     return lo;
   };
 
   // ---------- core compute -------------------------------------------------
   const computeAndApply = (): boolean => {
-    if (!container) return false;
+    if (!container) {
+      return false;
+    }
 
     ensurePrefixSums();
 
     const n = items.length;
-    if (n === 0) return false;
+    if (n === 0) {
+      return false;
+    }
 
     // Raw container client size without padding subtraction.
     const rawContainerSize = options.overflowAxis === 'horizontal' ? container.clientWidth : container.clientHeight;
@@ -144,7 +155,7 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
 
       if (options.overflowDirection === 'end') {
         // Visible items start from the left; hidden from the right.
-        let cutoff = Math.min(Math.max(findCutoff(effectiveAvailable), options.minimumVisible), n);
+        const cutoff = Math.min(Math.max(findCutoff(effectiveAvailable), options.minimumVisible), n);
 
         // Find the first item with elevated priority (the selected tab).
         let priorityIdx = -1;
@@ -162,7 +173,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
           let acc = 0;
           let count = 0;
           for (let i = 0; i < n; i++) {
-            if (i === priorityIdx) continue;
+            if (i === priorityIdx) {
+              continue;
+            }
             const sz = sizeById.get(items[i].id) ?? 0;
             if (acc + sz <= remaining) {
               acc += sz;
@@ -177,11 +190,15 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
               newVisible[i] = true;
             } else {
               newVisible[i] = filled < count;
-              if (filled < count) filled++;
+              if (filled < count) {
+                filled++;
+              }
             }
           }
         } else {
-          for (let i = 0; i < n; i++) newVisible[i] = i < cutoff;
+          for (let i = 0; i < n; i++) {
+            newVisible[i] = i < cutoff;
+          }
         }
       } else {
         // direction='start': visible from the right, hidden from the left.
@@ -213,7 +230,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
           acc = 0;
           fromRight = 0;
           for (let i = n - 1; i >= 0; i--) {
-            if (i === priorityIdx) continue;
+            if (i === priorityIdx) {
+              continue;
+            }
             const sz = sizeById.get(items[i].id) ?? 0;
             if (acc + sz <= remaining) {
               acc += sz;
@@ -223,9 +242,13 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
             }
           }
           const vFrom = n - fromRight;
-          for (let i = 0; i < n; i++) newVisible[i] = i === priorityIdx || i >= vFrom;
+          for (let i = 0; i < n; i++) {
+            newVisible[i] = i === priorityIdx || i >= vFrom;
+          }
         } else {
-          for (let i = 0; i < n; i++) newVisible[i] = i >= visibleFrom;
+          for (let i = 0; i < n; i++) {
+            newVisible[i] = i >= visibleFrom;
+          }
         }
       }
     }
@@ -281,7 +304,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
     observing = true;
 
     disposeResizeObserver = observeResize(container, entries => {
-      if (!entries[0] || !container) return;
+      if (!entries[0] || !container) {
+        return;
+      }
       update();
     });
 
@@ -315,7 +340,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
   };
 
   const addItem: OverflowManager['addItem'] = item => {
-    if (items.some(i => i.id === item.id)) return;
+    if (items.some(i => i.id === item.id)) {
+      return;
+    }
 
     if (!observing) {
       // Initial mount: items register before observe() → insertion order = DOM order.
@@ -325,10 +352,13 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
       let lo = 0;
       let hi = items.length;
       while (lo < hi) {
-        const mid = (lo + hi) >> 1;
+        const mid = Math.floor((lo + hi) / 2);
         // eslint-disable-next-line no-bitwise
-        if (items[mid].element.compareDocumentPosition(item.element) & 4) lo = mid + 1;
-        else hi = mid;
+        if (items[mid].element.compareDocumentPosition(item.element) & 4) {
+          lo = mid + 1;
+        } else {
+          hi = mid;
+        }
       }
       items.splice(lo, 0, item);
     }
@@ -343,7 +373,9 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
 
   const removeItem: OverflowManager['removeItem'] = itemId => {
     const idx = items.findIndex(i => i.id === itemId);
-    if (idx === -1) return;
+    if (idx === -1) {
+      return;
+    }
 
     items.splice(idx, 1);
     // Keep sizeById entry – if the same element is re-registered (priority change)
