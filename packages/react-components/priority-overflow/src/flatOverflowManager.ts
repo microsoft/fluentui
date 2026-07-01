@@ -108,7 +108,8 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
     let lo = 0;
     let hi = prefixSums.length - 1;
     while (lo < hi) {
-      const mid = Math.floor((lo + hi + 1) / 2);
+      // eslint-disable-next-line no-bitwise
+      const mid = (lo + hi + 1) >> 1;
       if (prefixSums[mid] <= target) {
         lo = mid;
       } else {
@@ -352,7 +353,8 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
       let lo = 0;
       let hi = items.length;
       while (lo < hi) {
-        const mid = Math.floor((lo + hi) / 2);
+        // eslint-disable-next-line no-bitwise
+        const mid = (lo + hi) >> 1;
         // eslint-disable-next-line no-bitwise
         if (items[mid].element.compareDocumentPosition(item.element) & 4) {
           lo = mid + 1;
