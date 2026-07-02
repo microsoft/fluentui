@@ -10,8 +10,8 @@ import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { OverflowEventPayload } from '@fluentui/priority-overflow';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
-import type { OverflowManager } from '@fluentui/priority-overflow';
-import type { OverflowOptions } from '@fluentui/priority-overflow';
+import { OverflowManager } from '@fluentui/priority-overflow';
+import { OverflowOptions } from '@fluentui/priority-overflow';
 import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
 
