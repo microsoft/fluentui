@@ -41,9 +41,8 @@ export type OverflowProps = Partial<
    * When provided, called instead of the default `createOverflowManager`.
    * All option props (`padding`, `overflowAxis`, etc.) are still applied normally.
    *
-   * @example
-   * import { createFlatOverflowManager } from '@fluentui/priority-overflow';
-   * <Overflow createManager={createFlatOverflowManager} padding={44} minimumVisible={1} />
+   * Pass `createFlatOverflowManager` from `\@fluentui/priority-overflow` to opt into
+   * the flat manager optimised for simple ungrouped lists (no pinning, no groups).
    */
   createManager?: (options: Partial<OverflowOptions>) => OverflowManager;
 };
