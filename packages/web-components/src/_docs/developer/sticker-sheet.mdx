@@ -542,16 +542,13 @@ export const stickerThemes = {
 
 export const StickerSheet = () => {
   const containerRef = React.useRef(null);
-
-React.useEffect(() => {
-const applyGlobals = globals => {
-const themeKey = globals?.theme || 'web-light';
-const dir = globals?.dir || 'ltr';
-
+  React.useEffect(() => {
+    const applyGlobals = globals => {
+      const themeKey = globals?.theme || 'web-light';
+      const dir = globals?.dir || 'ltr';
       window.Fluent?.setTheme(stickerThemes[themeKey] ?? webLightTheme);
       containerRef.current?.setAttribute('dir', dir);
     };
-
     // Storybook encodes the active globals in the URL (e.g. `globals=theme:web-dark`).
     // Reading them on mount restores the selected theme after a page refresh, when the
     // `globalsUpdated` event doesn't fire.
@@ -569,13 +566,10 @@ const dir = globals?.dir || 'ltr';
         }
         return window.location.search;
       })();
-
       const raw = new URLSearchParams(search).get('globals');
-
       if (!raw) {
         return {};
       }
-
       return Object.fromEntries(
         raw
           .split(/[;,]/)
@@ -583,26 +577,16 @@ const dir = globals?.dir || 'ltr';
           .filter(pair => pair.length === 2),
       );
     };
-
     applyGlobals(parseGlobalsFromUrl());
-
     const channel = window.__STORYBOOK_ADDONS_CHANNEL__;
-
     if (!channel) {
       return undefined;
     }
-
     const handleGlobalsUpdated = ({ globals }) => applyGlobals(globals);
-
     channel.on('globalsUpdated', handleGlobalsUpdated);
-
     return () => channel.off('globalsUpdated', handleGlobalsUpdated);
-
-}, []);
-
-return (
-<div ref={containerRef} className="sb-unstyled" dangerouslySetInnerHTML={{ __html: stickerSheetHTML }} />
-);
+  }, []);
+  return <div ref={containerRef} className="sb-unstyled" dangerouslySetInnerHTML={{ __html: stickerSheetHTML }} />;
 };
 
 <StickerSheet />
