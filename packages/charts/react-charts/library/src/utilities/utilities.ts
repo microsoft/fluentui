@@ -188,7 +188,7 @@ export interface IXAxisParams extends AxisProps {
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
-  tickFormat?: string;
+  tickFormat?: string | ((value: number | Date) => string);
 }
 
 export interface IYAxisParams extends AxisProps {
@@ -288,7 +288,9 @@ export function createNumericXAxis(
       return tickText[_index];
     }
     if (tickParams.tickFormat) {
-      return d3Format(tickParams.tickFormat)(domainValue);
+      return typeof tickParams.tickFormat === 'function'
+        ? tickParams.tickFormat(domainValue)
+        : d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(xAxisValue) === '' ? '' : (formatToLocaleString(xAxisValue, culture) as string);
@@ -503,6 +505,9 @@ export function createDateXAxis(
     }
     if (timeFormatLocale) {
       return formatFn(domainValue);
+    }
+    if (typeof tickParams.tickFormat === 'function') {
+      return tickParams.tickFormat(domainValue);
     }
     if (culture === undefined && tickParams.tickFormat) {
       if (useUTC) {
