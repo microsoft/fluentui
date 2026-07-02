@@ -99,8 +99,13 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
 
     const rawContainerSize = options.overflowAxis === 'horizontal' ? container.clientWidth : container.clientHeight;
     const registeredMenuSize = overflowMenu ? getAxisOffset(overflowMenu) : 0;
-    const menuReserve = Math.max(registeredMenuSize, options.padding);
-    const effectiveAvailable = rawContainerSize - menuReserve;
+
+    // Restore classic manager semantics:
+    // - padding is ALWAYS subtracted (reserves fixed elements like an add-tab button)
+    // - menuSize is ADDITIONALLY subtracted when the overflow menu is registered
+    // This matches: items ≤ containerWidth - padding - menuSize (when overflowing)
+    const available = rawContainerSize - options.padding;
+    const effectiveAvailable = available - registeredMenuSize;
 
     const newVisible: boolean[] = new Array(n);
 
@@ -120,8 +125,8 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
         }
       }
 
-      if (cutoff === n && !options.hasHiddenItems) {
-        // All items fit – no overflow.
+      if (cutoff === n && !options.hasHiddenItems && registeredMenuSize === 0) {
+        // All items fit without overflow menu present – no overflow.
         newVisible.fill(true);
       } else {
         cutoff = Math.min(Math.max(cutoff, options.minimumVisible), n);
@@ -184,7 +189,7 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
         }
       }
 
-      if (fromRight === n && !options.hasHiddenItems) {
+      if (fromRight === n && !options.hasHiddenItems && registeredMenuSize === 0) {
         newVisible.fill(true);
       } else {
         fromRight = Math.min(Math.max(fromRight, options.minimumVisible), n);
