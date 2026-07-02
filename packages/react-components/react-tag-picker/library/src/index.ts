@@ -1,6 +1,13 @@
-export { TagPicker, renderTagPicker_unstable, useTagPicker_unstable, useTagPickerBase_unstable } from './TagPicker';
+export {
+  TagPicker,
+  renderTagPicker_unstable,
+  useTagPicker_unstable,
+  useTagPickerBase_unstable,
+  useTagPickerContextValues,
+} from './TagPicker';
 export type {
   TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerContextValues,
   TagPickerProps,
   TagPickerSlots,
@@ -57,6 +64,7 @@ export {
 } from './TagPickerControl';
 export type {
   TagPickerControlBaseState,
+  TagPickerControlInternalSlots,
   TagPickerControlProps,
   TagPickerControlSlots,
   TagPickerControlState,
