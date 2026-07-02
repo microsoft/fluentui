@@ -268,6 +268,11 @@ export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | '
 };
 
 // @public
+export type TreeItemPersonaLayoutContextValues = {
+    avatar: AvatarContextValue;
+};
+
+// @public
 export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
     avatarSize: AvatarSize;
     buttonContextValue: ButtonContextValue;
@@ -458,6 +463,9 @@ export const useTreeItemLayoutStyles_unstable: (state: TreeItemLayoutState) => T
 
 // @public
 export const useTreeItemPersonaLayout_unstable: (props: TreeItemPersonaLayoutProps, ref: React_2.Ref<HTMLSpanElement>) => TreeItemPersonaLayoutState;
+
+// @public
+export function useTreeItemPersonaLayoutContextValues_unstable(state: TreeItemPersonaLayoutState): TreeItemPersonaLayoutContextValues;
 
 // @public
 export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLayoutState) => TreeItemPersonaLayoutState;
