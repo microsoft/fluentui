@@ -33,6 +33,11 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
 export type LabelSlots = {
   root: Slot<'label'>;
   required?: Slot<'span'>;
+
+  /**
+   * Optional icon rendered alongside the label text, before the label content.
+   */
+  icon?: Slot<'span'>;
 };
 
 /**
