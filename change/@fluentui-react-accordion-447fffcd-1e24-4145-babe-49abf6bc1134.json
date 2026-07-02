@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use empty string for inert attribute instead of boolean in AccordionPanel to prevent React DOM warning",
+  "packageName": "@fluentui/react-accordion",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
