@@ -21,7 +21,8 @@
     "*.md",
     "dist/esm/",
     "dist/*.js",
-    "dist/*.d.ts"
+    "dist/*.d.ts",
+    "dist/*.d.cts"
   ],
   "exports": {
     ".": "./dist/esm/index.js",

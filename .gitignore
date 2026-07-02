@@ -153,3 +153,5 @@ gulp-cache
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 .playwright-cli
+
+_tmp_work

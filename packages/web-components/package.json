@@ -26,6 +26,7 @@
     "dist/esm/",
     "dist/*.js",
     "dist/*.d.ts",
+    "dist/*.d.cts",
     "custom-elements.json"
   ],
   "exports": {

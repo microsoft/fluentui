@@ -1,9 +1,28 @@
 {
   "name": "@fluentui/scripts-cypress",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
-  "main": "src/index.ts",
-  "browser": "src/browser/index.ts",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "browser": "lib/browser/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "browser": "./lib/browser/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "lib-commonjs",
+    "dist/*.d.ts",
+    "support",
+    "fixtures"
+  ],
   "dependencies": {},
   "devDependencies": {}
 }
