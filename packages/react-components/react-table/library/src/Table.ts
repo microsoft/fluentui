@@ -13,4 +13,5 @@ export {
   tableClassNames,
   useTableStyles_unstable,
   useTable_unstable,
+  useTableContextValues_unstable,
 } from './components/Table/index';

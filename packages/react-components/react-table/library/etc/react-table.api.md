@@ -628,6 +628,9 @@ export const useIsInTableHeader: () => boolean;
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
 
 // @public
+export function useTableContextValues_unstable(state: TableState): TableContextValues;
+
+// @public
 export const useTableBody_unstable: (props: TableBodyProps, ref: React_2.Ref<HTMLElement>) => TableBodyState;
 
 // @public
@@ -644,6 +647,9 @@ export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) 
 
 // @public
 export const useTableCellLayout_unstable: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
+
+// @public
+export function useTableCellLayoutContextValues_unstable(state: TableCellLayoutState): TableCellLayoutContextValues;
 
 // @public
 export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) => TableCellLayoutState;
