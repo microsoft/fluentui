@@ -5,7 +5,7 @@ import type { ButtonSlots } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { HamburgerState } from './Hamburger.types';
-import { navItemTokens } from '../sharedNavStyles.styles';
+import { navItemTokens } from '../sharedNavItemTokens';
 
 export const hamburgerClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Hamburger',
