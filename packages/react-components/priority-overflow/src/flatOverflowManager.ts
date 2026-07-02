@@ -40,12 +40,13 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
   // ---------- state --------------------------------------------------------
   /** Items in registration / DOM order. */
   const items: OverflowItemEntry[] = [];
-  /** Size cache: id → offsetWidth|offsetHeight. */
+  /**
+   * Per-item size cache. Items are measured lazily — only as needed by the
+   * greedy scan. Items beyond the visible cutoff are never measured, making
+   * first-compute cost O(K+1) DOM reads where K is the number of visible
+   * items, regardless of total item count N.
+   */
   const sizeById = new Map<string, number>();
-  /** prefixSums[i] = total size of items[0..i-1].  Length = items.length + 1. */
-  let prefixSums: number[] = [0];
-  /** True when prefixSums must be rebuilt before next compute. */
-  let sumsStale = true;
 
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
@@ -75,48 +76,14 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
   };
 
   /**
-   * Rebuild the prefix-sum array from the cached item sizes.
-   * Items not yet in sizeById are measured here (they are visible at this point
-   * because they are added to the array before observe() is called, or
-   * immediately after being made visible by the hook cleanup).
+   * Returns the cached size for an item, measuring it only if not already in
+   * the cache. Uses sizeHint when available to skip the DOM read entirely.
    */
-  const ensurePrefixSums = () => {
-    if (!sumsStale) {
-      return;
+  const getItemSize = (item: OverflowItemEntry): number => {
+    if (!sizeById.has(item.id)) {
+      sizeById.set(item.id, item.sizeHint !== undefined ? item.sizeHint : getAxisOffset(item.element));
     }
-
-    for (const item of items) {
-      if (!sizeById.has(item.id)) {
-        // Use sizeHint when available to avoid a layout read.
-        sizeById.set(item.id, item.sizeHint !== undefined ? item.sizeHint : getAxisOffset(item.element));
-      }
-    }
-
-    prefixSums = [0];
-    for (const item of items) {
-      prefixSums.push(prefixSums[prefixSums.length - 1] + (sizeById.get(item.id) ?? 0));
-    }
-
-    sumsStale = false;
-  };
-
-  /**
-   * Largest K in [0..n] such that prefixSums[K] ≤ target.
-   * Returns 0 when nothing fits.
-   */
-  const findCutoff = (target: number): number => {
-    let lo = 0;
-    let hi = prefixSums.length - 1;
-    while (lo < hi) {
-      // eslint-disable-next-line no-bitwise
-      const mid = (lo + hi + 1) >> 1;
-      if (prefixSums[mid] <= target) {
-        lo = mid;
-      } else {
-        hi = mid - 1;
-      }
-    }
-    return lo;
+    return sizeById.get(item.id)!;
   };
 
   // ---------- core compute -------------------------------------------------
@@ -125,40 +92,41 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
       return false;
     }
 
-    ensurePrefixSums();
-
     const n = items.length;
     if (n === 0) {
       return false;
     }
 
-    // Raw container client size without padding subtraction.
     const rawContainerSize = options.overflowAxis === 'horizontal' ? container.clientWidth : container.clientHeight;
-
-    const total = prefixSums[n];
-
-    // Menu reserve: the larger of the currently registered menu element size and
-    // the configured padding.  Using max(menuSize, padding) as the reserve means
-    // that when `padding` is set to the expected overflow-button width (the common
-    // Tabs pattern), the first compute already uses the correct reserved space and
-    // the second pass triggered after the menu element registers is a no-op
-    // (no visibility changes → no extra re-render).
     const registeredMenuSize = overflowMenu ? getAxisOffset(overflowMenu) : 0;
     const menuReserve = Math.max(registeredMenuSize, options.padding);
+    const effectiveAvailable = rawContainerSize - menuReserve;
 
     const newVisible: boolean[] = new Array(n);
 
-    if (total + menuReserve <= rawContainerSize && !options.hasHiddenItems) {
-      // All items fit (accounting for menu reserve) – no overflow.
-      newVisible.fill(true);
-    } else {
-      const effectiveAvailable = rawContainerSize - menuReserve;
+    if (options.overflowDirection === 'end') {
+      // Greedy scan left-to-right: measure only until the first item that
+      // doesn't fit, then stop. Items beyond that point are never touched.
+      // First-compute cost is O(K+1) reads where K = visible items, not O(N).
+      let acc = 0;
+      let cutoff = 0;
+      for (let i = 0; i < n; i++) {
+        const sz = getItemSize(items[i]);
+        if (acc + sz <= effectiveAvailable) {
+          acc += sz;
+          cutoff++;
+        } else {
+          break;
+        }
+      }
 
-      if (options.overflowDirection === 'end') {
-        // Visible items start from the left; hidden from the right.
-        const cutoff = Math.min(Math.max(findCutoff(effectiveAvailable), options.minimumVisible), n);
+      if (cutoff === n && !options.hasHiddenItems) {
+        // All items fit – no overflow.
+        newVisible.fill(true);
+      } else {
+        cutoff = Math.min(Math.max(cutoff, options.minimumVisible), n);
 
-        // Find the first item with elevated priority (the selected tab).
+        // Find first item with elevated priority (selected tab).
         let priorityIdx = -1;
         for (let i = 0; i < n; i++) {
           if ((items[i].priority ?? 0) > 0) {
@@ -168,18 +136,18 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
         }
 
         if (priorityIdx >= cutoff) {
-          // Selected tab would be hidden – include it and repack from the left.
-          const pSize = sizeById.get(items[priorityIdx].id) ?? 0;
+          // Priority item would be hidden – include it and repack from the left.
+          const pSize = getItemSize(items[priorityIdx]);
           const remaining = effectiveAvailable - pSize;
-          let acc = 0;
+          let racc = 0;
           let count = 0;
           for (let i = 0; i < n; i++) {
             if (i === priorityIdx) {
               continue;
             }
-            const sz = sizeById.get(items[i].id) ?? 0;
-            if (acc + sz <= remaining) {
-              acc += sz;
+            const sz = getItemSize(items[i]);
+            if (racc + sz <= remaining) {
+              racc += sz;
               count++;
             } else {
               break;
@@ -201,19 +169,24 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
             newVisible[i] = i < cutoff;
           }
         }
-      } else {
-        // direction='start': visible from the right, hidden from the left.
-        let acc = 0;
-        let fromRight = 0;
-        for (let i = n - 1; i >= 0; i--) {
-          const sz = sizeById.get(items[i].id) ?? 0;
-          if (acc + sz <= effectiveAvailable) {
-            acc += sz;
-            fromRight++;
-          } else {
-            break;
-          }
+      }
+    } else {
+      // direction='start': greedy scan right-to-left.
+      let acc = 0;
+      let fromRight = 0;
+      for (let i = n - 1; i >= 0; i--) {
+        const sz = getItemSize(items[i]);
+        if (acc + sz <= effectiveAvailable) {
+          acc += sz;
+          fromRight++;
+        } else {
+          break;
         }
+      }
+
+      if (fromRight === n && !options.hasHiddenItems) {
+        newVisible.fill(true);
+      } else {
         fromRight = Math.min(Math.max(fromRight, options.minimumVisible), n);
         const visibleFrom = n - fromRight;
 
@@ -226,7 +199,7 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
         }
 
         if (priorityIdx >= 0 && priorityIdx < visibleFrom) {
-          const pSize = sizeById.get(items[priorityIdx].id) ?? 0;
+          const pSize = getItemSize(items[priorityIdx]);
           const remaining = effectiveAvailable - pSize;
           acc = 0;
           fromRight = 0;
@@ -234,7 +207,7 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
             if (i === priorityIdx) {
               continue;
             }
-            const sz = sizeById.get(items[i].id) ?? 0;
+            const sz = getItemSize(items[i]);
             if (acc + sz <= remaining) {
               acc += sz;
               fromRight++;
@@ -333,8 +306,6 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
 
     items.length = 0;
     sizeById.clear();
-    prefixSums = [0];
-    sumsStale = true;
     prevVisible.clear();
 
     takeSnapshot(EMPTY_SNAPSHOT);
@@ -365,8 +336,6 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
       items.splice(lo, 0, item);
     }
 
-    sumsStale = true;
-
     if (observing) {
       forceDispatch = true;
       update();
@@ -383,7 +352,6 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
     // Keep sizeById entry – if the same element is re-registered (priority change)
     // the cached size is still valid and avoids measuring a display:none element.
     prevVisible.delete(itemId);
-    sumsStale = true;
 
     if (observing) {
       forceDispatch = true;
@@ -412,7 +380,6 @@ export function createFlatOverflowManager(initialOptions: Partial<OverflowOption
     const axisChanging = !!(nextOptions.overflowAxis && options.overflowAxis !== nextOptions.overflowAxis);
     if (axisChanging) {
       sizeById.clear();
-      sumsStale = true;
     }
 
     const shouldUpdate =
