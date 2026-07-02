@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { MinimumVersions } from './BrowserSupport/MinimumVersions';
+
+<Meta title="Overview/Browser support" />
+
+# Browser support
+
+Fluent UI Headless components build their overlays on modern web-platform features — the **Popover
+API**, the native **`<dialog>` element**, and **CSS anchor positioning** — instead of JavaScript
+portals and z-index stacks. This page tells you which browsers support those features out of the box.
+
+## Minimum supported versions
+
+In these browser versions and later, the overlay features work **without a polyfill**:
+
+<MinimumVersions />
+
+Arrow-key navigation uses the **focusgroup** attribute, which no browser supports natively yet — it
+always needs a polyfill. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs).
+
+## What works by default vs. what needs help
+
+- **Supported by default** — current Chrome, Edge, Firefox, and Safari at or above the versions above.
+- **Needs polyfills or fallbacks** — older versions of those browsers, and **focusgroup** in every
+  browser. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs) for per-feature
+  guidance.
+
+## Baseline, briefly
+
+Browser availability is described using [Baseline](https://web.dev/baseline) stages:
+
+- **Limited availability** — the feature has shipped in some browsers but is not yet in all of them.
+- **Newly available** — the feature works in the current version of every major browser.
+- **Widely available** — newly available, plus 2.5 years of support across browsers; safe to rely on.
+
+For per-feature details, see the [Baseline](https://web.dev/baseline) overview and the linked
+[MDN](https://developer.mozilla.org) references on the Polyfills & fallbacks page.
