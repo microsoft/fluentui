@@ -5,6 +5,14 @@ import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-pos
 import type { ComboboxBaseProps } from './ComboboxBase.types';
 import type * as React from 'react';
 
+// Stable module-level constants prevent new object/array references on every render.
+// Without these constants, new references would cause usePositioningConfigFn's useCallback
+// to recreate on every render, which disposes and recreates the position manager, triggering
+// autoSize middleware (resetMaxSize) that temporarily removes height constraints from the listbox
+// and resets scrollTop to 0. See: https://github.com/microsoft/fluentui/issues/35731
+const DEFAULT_FALLBACK_POSITIONS: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
+const DEFAULT_OFFSET = { crossAxis: 0, mainAxis: 2 } as const;
+
 export function useComboboxPositioning(props: ComboboxBaseProps): [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   listboxRef: React.MutableRefObject<any>,
@@ -13,15 +21,12 @@ export function useComboboxPositioning(props: ComboboxBaseProps): [
 ] {
   const { positioning } = props;
 
-  // Set a default set of fallback positions to try if the dropdown does not fit on screen
-  const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
-
   // popper options
   const popperOptions = {
     position: 'below' as const,
     align: 'start' as const,
-    offset: { crossAxis: 0, mainAxis: 2 },
-    fallbackPositions,
+    offset: DEFAULT_OFFSET,
+    fallbackPositions: DEFAULT_FALLBACK_POSITIONS,
     matchTargetSize: 'width' as const,
     autoSize: true,
     ...resolvePositioningShorthand(positioning),
