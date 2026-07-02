@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
+  "apiReport": {
+    "enabled": false
+  },
+  "compiler": {
+    "skipLibCheck": true
+  },
+  "mainEntryPointFilePath": "<projectRoot>/../../../../dist/out-tsc/types/index.d.ts"
+}
