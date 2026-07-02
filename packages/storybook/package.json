@@ -18,10 +18,10 @@
     "lint": "just-scripts lint"
   },
   "dependencies": {
-    "@fluentui/react": "^8.125.6",
+    "@fluentui/react": "^8.125.7",
     "@fluentui/theme": "^2.7.2",
-    "@fluentui/azure-themes": "^8.6.149",
-    "@fluentui/theme-samples": "^8.7.225",
+    "@fluentui/azure-themes": "^8.6.150",
+    "@fluentui/theme-samples": "^8.7.226",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Mon, 11 May 2026 10:02:37 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.1)
+
+Thu, 02 Jul 2026 09:55:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.0..@fluentui/react-file-type-icons_v8.18.1)
+
+### Patches
+
+- Update the file type icon map for the fabric-cdn-prod_20260623.001 drop. ([PR #36336](https://github.com/microsoft/fluentui/pull/36336) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.2 ([commit](https://github.com/microsoft/fluentui/commit/e287a20abcf5146c41ae0a6243c04358fddca40c) by beachball)
 
 ## [8.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.0)
 

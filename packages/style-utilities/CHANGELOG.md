@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Mon, 11 May 2026 10:02:34 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.2)
+
+Thu, 02 Jul 2026 09:55:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.1..@fluentui/style-utilities_v8.15.2)
+
+### Patches
+
+- Update the default Fluent CDN base URL to the fabric-cdn-prod_20260623.001 drop. ([PR #36336](https://github.com/microsoft/fluentui/pull/36336) by caperez@microsoft.com)
 
 ## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.1)
 

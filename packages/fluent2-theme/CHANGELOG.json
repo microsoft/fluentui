@@ -2,6 +2,27 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 09:55:28 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.154",
+      "version": "8.107.154",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "6097519d0a989f9a6f39c52ab5833139b7e244cd",
+            "comment": "fix: fluent2-theme PrimaryButton high contrast focus style"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.125.7",
+            "commit": "e287a20abcf5146c41ae0a6243c04358fddca40c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 10:02:38 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.153",
       "version": "8.107.153",
