@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update the file type icon map for the fabric-cdn-prod_20260623.001 drop.",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
