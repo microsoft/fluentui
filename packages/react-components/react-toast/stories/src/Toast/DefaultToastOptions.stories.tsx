@@ -26,7 +26,7 @@ DefaultToastOptions.parameters = {
     description: {
       story: [
         'Default options for all toasts can be configured on the `Toaster`.',
-        'These options are only defaults and can be overriden using `dispatchToast',
+        'These options are only defaults and can be overridden using `dispatchToast',
       ].join('\n'),
     },
   },
