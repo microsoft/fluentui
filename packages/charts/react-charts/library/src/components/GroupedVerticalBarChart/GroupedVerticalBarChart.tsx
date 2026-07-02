@@ -594,7 +594,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
               tabIndex={_legendHighlighted(pointData.legend) || _noLegendHighlighted() ? 0 : undefined}
-              role="img"
+              role="option"
             />,
           );
 
@@ -854,7 +854,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
         const dotId = _getDotId(seriesIdx, pointIdx);
         const isLinePointActive = activeLinePoint === point.x || activeLinePoint === dotId;
-
         dotGroup.push(
           <circle
             key={dotId}
@@ -871,7 +870,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             tabIndex={shouldHighlight ? 0 : undefined}
             onFocus={e => _onLineFocus(e, series, seriesIdx, pointIdx)}
             onBlur={_onBarLeave}
-            role="img"
+            role="option"
             aria-label={getAriaLabel(
               {
                 xAxisCalloutData: point.xAxisCalloutData,
@@ -885,10 +884,17 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           />,
         );
       });
+      const dotGroupAriaLabel = `${series.legend || `Line ${seriesIdx + 1}`}, line with ${
+        series.data.length
+      } data points`;
 
       lineBorders.push(<g key={`lineBorderGroup-${seriesIdx}`}>{lineBorderGroup}</g>);
       lines.push(<g key={`lineGroup-${seriesIdx}`}>{lineGroup}</g>);
-      dots.push(<g key={`dotGroup-${seriesIdx}`}>{dotGroup}</g>);
+      dots.push(
+        <g role="listbox" key={`dotGroup-${seriesIdx}`} aria-label={dotGroupAriaLabel}>
+          {dotGroup}
+        </g>,
+      );
     });
 
     return dots.length > 0 ? (

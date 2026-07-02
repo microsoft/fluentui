@@ -410,7 +410,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -418,7 +421,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               height="49"
               id="_VBC_bar__r_52_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -443,7 +446,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               height="245"
               id="_VBC_bar__r_52_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -468,7 +471,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               height="147"
               id="_VBC_bar__r_52_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -977,7 +980,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -985,7 +991,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               height="49"
               id="_VBC_bar__r_58_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1010,7 +1016,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               height="245"
               id="_VBC_bar__r_58_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1035,7 +1041,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               height="147"
               id="_VBC_bar__r_58_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -1548,7 +1554,10 @@ exports[`Theme Change Should reflect theme change 1`] = `
               </text>
             </g>
           </g>
-          <g>
+          <g
+            aria-label="3 series and 3 bars"
+            role="listbox"
+          >
             <g>
               <rect
                 aria-label="2020/04/30. First, 10%."
@@ -1556,7 +1565,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 height="49"
                 id="_VBC_bar__r_5f_-0"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="16"
@@ -1581,7 +1590,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 height="245"
                 id="_VBC_bar__r_5f_-1"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="16"
@@ -1606,7 +1615,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 height="147"
                 id="_VBC_bar__r_5f_-2"
                 opacity="1"
-                role="img"
+                role="option"
                 rx="0"
                 tabindex="0"
                 width="16"
@@ -2127,7 +2136,10 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -2135,7 +2147,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               height="49"
               id="_VBC_bar__r_5l_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2160,7 +2172,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               height="245"
               id="_VBC_bar__r_5l_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2185,7 +2197,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               height="147"
               id="_VBC_bar__r_5l_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2694,7 +2706,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -2702,7 +2717,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="49"
               id="_VBC_bar__r_l_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2727,7 +2742,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="245"
               id="_VBC_bar__r_l_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -2752,7 +2767,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="147"
               id="_VBC_bar__r_l_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3261,7 +3276,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -3269,7 +3287,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="49"
               id="_VBC_bar__r_3_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3294,7 +3312,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="245"
               id="_VBC_bar__r_3_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3319,7 +3337,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="147"
               id="_VBC_bar__r_3_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3638,7 +3656,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="1 series and 4 bars"
+          role="listbox"
+        >
           <g
             transform="translate(0, 0)"
           >
@@ -3648,7 +3669,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="245"
               id="_VBC_bar__r_9_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3675,7 +3696,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="175"
               id="_VBC_bar__r_9_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3702,7 +3723,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="133"
               id="_VBC_bar__r_9_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -3729,7 +3750,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               height="196"
               id="_VBC_bar__r_9_-3"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4219,7 +4240,10 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -4227,7 +4251,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               height="24.5"
               id="_VBC_bar__r_r_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4252,7 +4276,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               height="122.5"
               id="_VBC_bar__r_r_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4277,7 +4301,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               height="73.5"
               id="_VBC_bar__r_r_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4786,7 +4810,10 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -4794,7 +4821,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               height="49"
               id="_VBC_bar__r_5r_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4819,7 +4846,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               height="245"
               id="_VBC_bar__r_5r_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -4844,7 +4871,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               height="147"
               id="_VBC_bar__r_5r_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -5409,7 +5436,10 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             </text>
           </g>
         </g>
-        <g>
+        <g
+          aria-label="3 series and 3 bars"
+          role="listbox"
+        >
           <g>
             <rect
               aria-label="2020/04/30. First, 10%."
@@ -5417,7 +5447,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               height="49"
               id="_VBC_bar__r_62_-0"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -5442,7 +5472,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               height="245"
               id="_VBC_bar__r_62_-1"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -5467,7 +5497,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               height="147"
               id="_VBC_bar__r_62_-2"
               opacity="1"
-              role="img"
+              role="option"
               rx="0"
               tabindex="0"
               width="16"
@@ -6009,7 +6039,10 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -6017,7 +6050,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             height="49"
             id="_VBC_bar__r_7n_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6032,7 +6065,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             height="245"
             id="_VBC_bar__r_7n_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6047,7 +6080,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             height="147"
             id="_VBC_bar__r_7n_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6544,7 +6577,10 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -6552,7 +6588,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             height="49"
             id="_VBC_bar__r_7t_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6577,7 +6613,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             height="245"
             id="_VBC_bar__r_7t_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -6602,7 +6638,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             height="147"
             id="_VBC_bar__r_7t_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -7109,7 +7145,10 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -7117,7 +7156,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             height="49"
             id="_VBC_bar__r_83_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="16"
@@ -7142,7 +7181,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             height="245"
             id="_VBC_bar__r_83_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="16"
@@ -7167,7 +7206,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             height="147"
             id="_VBC_bar__r_83_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="3"
             tabindex="0"
             width="16"
@@ -7674,7 +7713,10 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -7682,7 +7724,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             height="49"
             id="_VBC_bar__r_6f_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -7707,7 +7749,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             height="245"
             id="_VBC_bar__r_6f_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -7732,7 +7774,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             height="147"
             id="_VBC_bar__r_6f_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8239,7 +8281,10 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -8247,7 +8292,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             height="49"
             id="_VBC_bar__r_70_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8272,7 +8317,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             height="245"
             id="_VBC_bar__r_70_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8297,7 +8342,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             height="147"
             id="_VBC_bar__r_70_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8814,7 +8859,10 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -8822,7 +8870,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             height="1"
             id="_VBC_bar__r_6l_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8847,7 +8895,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             height="5"
             id="_VBC_bar__r_6l_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -8872,7 +8920,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             height="3"
             id="_VBC_bar__r_6l_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -9305,7 +9353,10 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -9313,7 +9364,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             height="49"
             id="_VBC_bar__r_6q_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             width="16"
             x="56"
@@ -9337,7 +9388,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             height="245"
             id="_VBC_bar__r_6q_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             width="16"
             x="264.46153846153845"
@@ -9361,7 +9412,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             height="147"
             id="_VBC_bar__r_6q_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             width="16"
             x="577.1538461538462"
@@ -9965,7 +10016,10 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -9973,7 +10027,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             height="49"
             id="_VBC_bar__r_75_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -9998,7 +10052,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             height="245"
             id="_VBC_bar__r_75_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10023,7 +10077,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             height="147"
             id="_VBC_bar__r_75_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10633,7 +10687,10 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -10641,7 +10698,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             height="49"
             id="_VBC_bar__r_7b_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10666,7 +10723,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             height="245"
             id="_VBC_bar__r_7b_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -10691,7 +10748,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             height="147"
             id="_VBC_bar__r_7b_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -11205,7 +11262,10 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           </text>
         </g>
       </g>
-      <g>
+      <g
+        aria-label="3 series and 3 bars"
+        role="listbox"
+      >
         <g>
           <rect
             aria-label="2020/04/30. First, 10%."
@@ -11213,7 +11273,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             height="49"
             id="_VBC_bar__r_7h_-0"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -11238,7 +11298,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             height="245"
             id="_VBC_bar__r_7h_-1"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
@@ -11263,7 +11323,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             height="147"
             id="_VBC_bar__r_7h_-2"
             opacity="1"
-            role="img"
+            role="option"
             rx="0"
             tabindex="0"
             width="16"
