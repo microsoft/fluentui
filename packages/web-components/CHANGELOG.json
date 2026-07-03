@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 03 Jul 2026 04:08:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "da54a2c150e0fe31b7a6342f1e2b9a3aaee4baae",
+            "comment": "add sticker sheet page to storybook "
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 22:18:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0",
       "version": "3.0.0",
