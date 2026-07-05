@@ -289,7 +289,7 @@ export function createNumericXAxis(
     }
     if (tickParams.tickFormat) {
       return typeof tickParams.tickFormat === 'function'
-        ? tickParams.tickFormat(domainValue)
+        ? tickParams.tickFormat(typeof domainValue === 'number' ? domainValue : domainValue.valueOf())
         : d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
@@ -500,14 +500,14 @@ export function createDateXAxis(
     if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
       return tickText[_index];
     }
+    if (typeof tickParams.tickFormat === 'function') {
+      return tickParams.tickFormat(domainValue);
+    }
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
     if (timeFormatLocale) {
       return formatFn(domainValue);
-    }
-    if (typeof tickParams.tickFormat === 'function') {
-      return tickParams.tickFormat(domainValue);
     }
     if (culture === undefined && tickParams.tickFormat) {
       if (useUTC) {
