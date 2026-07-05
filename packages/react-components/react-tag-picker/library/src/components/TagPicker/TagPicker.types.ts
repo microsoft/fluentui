@@ -115,7 +115,16 @@ export type TagPickerContextValues = {
 };
 
 /**
- * TagPicker Base Props - omits the floating-ui `positioning` prop; the styled wrapper
- * {@link TagPickerProps} re-introduces it via `usePositioning`.
+ * TagPicker Base Props - omits the presentation-related props that the base hook does not handle:
+ * the floating-ui `positioning` prop (the styled {@link TagPickerProps} re-introduces it via
+ * `usePositioning`) as well as `size`, `appearance` and `inline` (layered on by the styled
+ * {@link useTagPicker_unstable} hook).
  */
-export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning'>;
+export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning' | 'size' | 'appearance' | 'inline'>;
+
+/**
+ * TagPicker Base State - the state produced by the base hook, which does not interact with the
+ * `size`, `appearance` and `inline` props. These are layered on by the styled
+ * {@link useTagPicker_unstable} hook.
+ */
+export type TagPickerBaseState = Omit<TagPickerState, 'size' | 'appearance' | 'inline'>;
