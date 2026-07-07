@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: recover lost v8 release version bumps (pipeline commit-back failed)",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

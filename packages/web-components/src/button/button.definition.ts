@@ -1,17 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './button.options.js';
-import { Button } from './button.js';
 import { styles } from './button.styles.js';
 import { template } from './button.template.js';
 
 /**
- * The definition for the Fluent Button component.
+ * The definition for the `<fluent-button>` element.
  *
  * @public
- * @remarks
- * HTML Element: `<fluent-button>`
  */
-export const definition = Button.compose({
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};

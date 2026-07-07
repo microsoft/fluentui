@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "fluentui react storybook addon",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-aria": "^9.17.13",
-    "@fluentui/react-button": "^9.10.0",
+    "@fluentui/react-button": "^9.10.1",
     "@fluentui/react-menu": "^9.25.1",
     "@fluentui/react-label": "^9.4.3",
     "@fluentui/react-switch": "^9.7.4",

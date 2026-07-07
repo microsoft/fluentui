@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import '@testing-library/jest-dom';
 import { ButtonContextProvider } from '../../contexts/ButtonContext';
 import type { ButtonContextValue } from '../../contexts/ButtonContext';
 import { useMenuButton_unstable } from './useMenuButton';
+import { MenuButton } from './MenuButton';
 
 const wrap = (contextValue: ButtonContextValue = {}): React.FC<{ children?: React.ReactNode }> => {
   const Wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
@@ -19,10 +21,9 @@ describe('useMenuButton_unstable', () => {
     expect(result.current.components).toEqual({ root: 'button', icon: 'span', menuIcon: 'span' });
   });
 
-  it('renders a menuIcon slot with a default chevron icon', () => {
-    const { result } = renderHook(() => useMenuButton_unstable({}, React.createRef()));
-    expect(result.current.menuIcon).toBeDefined();
-    expect(React.isValidElement(result.current.menuIcon?.children)).toBe(true);
+  it('renders a menuIcon slot with a default icon', () => {
+    const result = render(<MenuButton />);
+    expect(result.container.querySelector('svg')).toBeInTheDocument();
   });
 
   it('preserves a user-provided menuIcon over the default chevron', () => {
@@ -31,6 +32,16 @@ describe('useMenuButton_unstable', () => {
       useMenuButton_unstable({ menuIcon: { children: customIcon } }, React.createRef()),
     );
     expect(result.current.menuIcon?.children).toBe(customIcon);
+  });
+
+  it('renders the default chevron when menuIcon is explicitly undefined', () => {
+    const result = render(<MenuButton menuIcon={undefined} />);
+    expect(result.container.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('hides the menuIcon slot when menuIcon is null', () => {
+    const { result } = renderHook(() => useMenuButton_unstable({ menuIcon: null }, React.createRef()));
+    expect(result.current.menuIcon).toBeUndefined();
   });
 
   it('defaults aria-expanded to false when not provided', () => {

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 24 Jun 2026 11:09:39 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2026 15:15:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.74.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.3)
+
+Mon, 29 Jun 2026 15:15:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.2..@fluentui/react-components_v9.74.3)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: do not expose default icon in base hook ([PR #36345](https://github.com/microsoft/fluentui/pull/36345) by vgenaev@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - fix(Calendar): year prev/next buttons don't lose focus when they become disabled ([PR #36343](https://github.com/microsoft/fluentui/pull/36343) by sarah.higley@microsoft.com)
 
 ## [9.74.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.2)
 

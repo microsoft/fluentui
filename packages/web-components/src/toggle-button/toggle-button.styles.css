@@ -356,6 +356,9 @@
         )
     ) {
     background: SelectedItem;
+  }
+
+  :host(:state(pressed)[appearance='primary']) {
     color: SelectedItemText;
   }
 }

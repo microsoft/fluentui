@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 15:15:06 GMT",
+      "tag": "@fluentui/react-button_v9.10.1",
+      "version": "9.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "6bc2c669469b408e4047927aa3e3fd3f4cc0b728",
+            "comment": "fix: do not expose default icon in base hook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:07 GMT",
       "tag": "@fluentui/react-button_v9.10.0",
       "version": "9.10.0",

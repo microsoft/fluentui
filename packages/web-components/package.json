@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-rc.29",
+  "version": "3.0.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -45,9 +45,11 @@
     "./utilities.js": "./dist/esm/utils/index.js",
     "./theme/*.js": "./dist/esm/theme/*.js",
     "./*/base.js": "./dist/esm/*/*.base.js",
+    "./*/class.js": "./dist/esm/*/*.js",
     "./*/define.js": "./dist/esm/*/define.js",
     "./*/define-async.js": "./dist/esm/*/define-async.js",
     "./*/definition.js": "./dist/esm/*/*.definition.js",
+    "./*/definition-async.js": "./dist/esm/*/*.definition-async.js",
     "./*/options.js": "./dist/esm/*/*.options.js",
     "./*/styles.js": "./dist/esm/*/*.styles.js",
     "./*/styles.css": "./dist/esm/*/*.styles.css",
@@ -109,26 +111,17 @@
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
   "dependencies": {
-    "@fluentui/tokens": "1.0.0-alpha.23",
+    "@fluentui/tokens": "^1.0.0-alpha.23",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0",
-    "@microsoft/fast-html": "^1.0.0-alpha.53",
-    "@microsoft/focusgroup-polyfill": "^1.4.1"
-  },
-  "peerDependenciesMeta": {
-    "@microsoft/fast-html": {
-      "optional": true
-    }
+    "@microsoft/fast-element": "^3.0.0",
+    "@microsoft/focusgroup-polyfill": "^1.5.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
-    ],
-    "tag": "rc"
+      "major"
+    ]
   },
   "customElements": "./custom-elements.json"
 }

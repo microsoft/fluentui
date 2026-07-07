@@ -2,6 +2,21 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 15:15:07 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.4.4",
+      "version": "0.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "5d8f8f0b15eb22cb036d248eb893998613fd22af",
+            "comment": "fix(Calendar): year prev/next buttons don't lose focus when they become disabled"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:08 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.4.3",
       "version": "0.4.3",

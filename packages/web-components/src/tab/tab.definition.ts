@@ -1,10 +1,17 @@
+import type { PartialFASTElementDefinition } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { tagName } from './tab.options.js';
-import { Tab } from './tab.js';
-import { template } from './tab.template.js';
 import { styles } from './tab.styles.js';
+import { template } from './tab.template.js';
 
-export const definition = Tab.compose({
+/**
+ * The definition for the `<fluent-tab>` element.
+ *
+ * @public
+ */
+export const definition: PartialFASTElementDefinition = {
   name: tagName,
-  template,
+  registry: FluentDesignSystem.registry,
   styles,
-});
+  template,
+};
