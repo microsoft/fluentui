@@ -6,6 +6,5 @@
     "outDir": "dist",
     "types": ["jest", "node"]
   },
-  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"],
-  "files": ["../../typings/ignore-not-found-export-webpack-plugin/index.d.ts"]
+  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"]
 }
