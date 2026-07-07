@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: selected indocator position in vertical tablist",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
