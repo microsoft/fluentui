@@ -21,7 +21,7 @@ jobs:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
-      id-token: 'write'
+      contents: 'read'
 
     steps:
       - uses: actions/checkout@v6
@@ -36,22 +36,30 @@ jobs:
       - name: Build all packages & create reports (non-PR)
         run: yarn nx run-many -t bundle-size --nxBail
 
-      - name: Login via Azure CLI
-        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
-        with:
-          client-id: ${{ secrets.AZURE_BUNDLESIZE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
       - name: Extract branch name
         run: |
           echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
-      - name: Upload report
+      - name: Prepare report
         run: |
           yarn monosize upload-report --branch=$BRANCH_NAME --commit-sha ${{ github.sha }}
-        env:
-          BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_BUNDLESIZE_SERVICE_CONNECTION_ID }}
+
+      # Resolve the artifact name/path from monosize.config.mjs so they cannot drift
+      # from the value monosize-storage-git uses to read the base report.
+      - name: Resolve report artifact metadata
+        id: report
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const path = require('node:path');
+            const { pathToFileURL } = require('node:url');
+            const moduleUrl = pathToFileURL(path.resolve('.github/scripts/monosize-report-artifact-meta.mjs')).href;
+            const { default: run } = await import(moduleUrl);
+            run({ core });
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ steps.report.outputs.name }}
+          if-no-files-found: error
+          path: ${{ steps.report.outputs.path }}
