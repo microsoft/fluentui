@@ -50,7 +50,6 @@ function usePositioningConfigFn(
     useTransform,
     matchTargetSize,
     shiftToCoverTarget,
-    unstable_updatePositionOnAnimationFrame,
   } = options;
 
   return React.useCallback(
@@ -75,7 +74,6 @@ function usePositioningConfigFn(
           fallbackPositions,
           shiftToCoverTarget,
           position,
-          unstable_updatePositionOnAnimationFrame,
           // eslint-disable-next-line @typescript-eslint/naming-convention
           unstable_disableTether,
         },
@@ -98,7 +96,6 @@ function usePositioningConfigFn(
       fallbackPositions,
       shiftToCoverTarget,
       position,
-      unstable_updatePositionOnAnimationFrame,
       unstable_disableTether,
       configFn,
     ],
@@ -116,7 +113,6 @@ export function usePositioningOptions(options: PositioningOptions): (
   middleware: Middleware[];
   strategy: Strategy;
   disableUpdateOnResize?: boolean;
-  unstable_updatePositionOnAnimationFrame?: boolean;
   useTransform?: boolean;
 } {
   const { dir, targetDocument } = useFluent();
@@ -150,7 +146,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         align,
         fallbackPositions,
         shiftToCoverTarget,
-        unstable_updatePositionOnAnimationFrame,
         // eslint-disable-next-line @typescript-eslint/naming-convention
         unstable_disableTether,
       } = optionsAfterEnhancement;
@@ -190,7 +185,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         strategy: strategy ?? positionFixed ? ('fixed' as const) : ('absolute' as const),
 
         disableUpdateOnResize,
-        unstable_updatePositionOnAnimationFrame,
         useTransform,
       };
     },

@@ -16,6 +16,10 @@ import type {
 import { usePositioningOptions } from './usePositioningOptions';
 import { useCallbackRef, hasAutofocusFilter } from './utils';
 
+type InternalUsePositioningOptions = {
+  updatePositionOnAnimationFrame?: boolean;
+};
+
 /**
  * @internal
  */
@@ -27,6 +31,9 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
   const { enabled = true } = options;
+  const { updatePositionOnAnimationFrame = false } = options as PositioningProps &
+    PositioningOptions &
+    InternalUsePositioningOptions;
   const resolvePositioningOptions = usePositioningOptions(options);
   const updatePositionManager = React.useCallback(() => {
     if (managerRef.current) {
@@ -41,10 +48,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
+        updatePositionOnAnimationFrame,
         ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
     }
-  }, [enabled, resolvePositioningOptions]);
+  }, [enabled, resolvePositioningOptions, updatePositionOnAnimationFrame]);
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
     overrideTargetRef.current = target;
