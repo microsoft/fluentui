@@ -26,7 +26,7 @@ const SCROLL_BOTTOM_TOLERANCE = 1;
  * @internal
  * @param element - HTMLElement to check scroll state of
  */
-const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
+export const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
   if (scrollHeight <= clientHeight) {
     return 'none';
   }

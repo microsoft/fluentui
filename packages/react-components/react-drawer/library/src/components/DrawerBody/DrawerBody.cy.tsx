@@ -84,4 +84,49 @@ describe('DrawerBody', () => {
       // wait for any rAF-based updates and then assert the scrollState
       .then(() => cy.get('#scroll-state').should('have.text', 'bottom'));
   });
+
+  it('treats near-bottom fractional scroll values as bottom', () => {
+    const Example = () => {
+      const context = useDrawerContextValue();
+
+      return (
+        <DrawerProvider value={context}>
+          <div id="scroll-state">{context.scrollState}</div>
+          <DrawerBody id="drawer-body" style={{ height: '200px' }}>
+            Content
+          </DrawerBody>
+        </DrawerProvider>
+      );
+    };
+
+    mountFluent(<Example />);
+
+    cy.get('#drawer-body').then($e => {
+      const element = $e[0] as HTMLDivElement;
+      let mockedScrollTop = 89.4;
+
+      Object.defineProperty(element, 'clientHeight', {
+        value: 100,
+        configurable: true,
+      });
+
+      Object.defineProperty(element, 'scrollHeight', {
+        value: 190,
+        configurable: true,
+      });
+
+      Object.defineProperty(element, 'scrollTop', {
+        configurable: true,
+        get: () => mockedScrollTop,
+        set: value => {
+          mockedScrollTop = value;
+        },
+      });
+
+      mockedScrollTop = 89.4;
+      element.dispatchEvent(new Event('scroll', { bubbles: true }));
+    });
+
+    cy.get('#scroll-state').should('have.text', 'bottom');
+  });
 });
