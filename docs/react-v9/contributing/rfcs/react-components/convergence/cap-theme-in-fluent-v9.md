@@ -66,18 +66,13 @@ That is the entire opt-in surface today.
 Because CAP is a styling layer over Fluent components, the direction of change is one-way:
 
 - Component APIs, slots, state fields, and structural primitives are owned by Fluent v9.
-- A CAP override hook can only re-style slots and consume state that the underlying Fluent component already exposes. When a CAP design requires something the component doesn't expose, the missing piece has to be added in `@fluentui/react-components` first — with the usual API review, change file, and version bump — and CAP then updates its override hook to use it.
+- A CAP override hook can only re-style slots and consume state that the underlying Fluent component already exposes. When a CAP design requires something the component doesn't expose, the missing piece has to be added in `@fluentui/react-components` first — with the usual API review, change file, and version bump — and CAP then updates its override hook to style it.
 - This RFC does not change that direction. It moves CAP closer to Fluent so the Fluent-side changes and the CAP-side follow-ups can be coordinated in the same repo, but Fluent stays the source of truth for component shape and CAP stays a pure consumer of those shapes.
-
-### Consumers
-
-- **Teams (current).** Teams CAP adoption is gated behind a feature flag in Teams: when the flag is enabled, Teams imports `TEAMS_STYLE_HOOKS` from `@fluentui-contrib/react-cap-theme` and passes it to the `customStyleHooks_unstable` prop of `FluentProvider`. `TEAMS_STYLE_HOOKS` itself is authored inside `@fluentui-contrib/react-cap-theme` (not in Teams) — it is layered on top of `CAP_STYLE_HOOKS` so that Teams overrides only the per-component hooks where it needs to differentiate from the CAP base.
-- **SharePoint (current, via wrappers).** SharePoint already integrates CAP, but through a different path than Teams: instead of importing `CAP_STYLE_HOOKS` and passing it to `customStyleHooks_unstable`, SharePoint maintains its own layer of wrapper components that re-export the Fluent v9 components with the CAP look pre-applied. We are planning with the SharePoint team to migrate them off this in-house wrapper layer. Two shapes are on the table: (a) SharePoint consumes Fluent components directly and applies `CAP_STYLE_HOOKS` through `customStyleHooks_unstable` (the Teams pattern), or (b) the wrapper components themselves move into the CAP package and SharePoint imports them from there.
 
 ## Goals
 
 1. Eliminate the `@fluentui-contrib/*` install requirement for CAP consumers.
-2. Make CAP discoverable and try-able from `react.fluentui.dev`.
+2. Make CAP discoverable and try-able from main documentation site in `https://storybooks.fluentui.dev/react`.
 3. Preserve bundle-size invariants for consumers who don't opt in to CAP.
 4. **Position CAP for potential graduation into the default Fluent visual language.** If a future direction is for CAP to _become_ Fluent v9's baseline look (rather than remain an opt-in overlay), having CAP already authored, released, and CI-gated inside `@fluentui/react-components` turns that transition into an easier step than starting from a separate repo: the override hooks already live next to the components they re-skin, the bundle-size and VR baselines are already established against the rest of v9, and the consumer-facing import path does not have to change. The work proposed here is the same work either way; co-location just preserves the optionality.
 
@@ -183,7 +178,7 @@ The goal is to give CAP a single, central place where anyone — designers, part
 
 Proposed UX (subject to docs-site team input — see [open questions](#open-questions-for-engineering-review)):
 
-- A **visual-language toggle** in the existing theme picker toolbar, **separate from the theme dropdown** (which today switches between web / teams / high-contrast / light / dark). Toggle positions: `Fluent` | `CAP`.
+- A **visual-language toggle** added to the existing theme picker toolbar, **separate from the theme dropdown** (which today switches between `webLightTheme`, `webDarkTheme`, `teamsLightTheme`, `teamsDarkTheme`, `teamsLightV21Theme`, `teamsDarkV21Theme`, and `teamsHighContrastTheme`). The toggle switches between `Fluent` and `CAP` and layers on top of whichever base theme is selected in the dropdown.
 - Toggle state is read by the docs-site's top-level `<FluentProvider>` wrapper. When `CAP` is selected, the wrapper passes `CAP_STYLE_HOOKS` to `customStyleHooks_unstable`.
 - Every component page renders with the toggle applied, so a consumer evaluating CAP can browse `<Button>`, `<Card>`, `<Menu>`, etc., in CAP without leaving the page. Visual regression of the docs-site against both toggle states should be added to the existing `vr-tests-react-components` matrix to catch CAP regressions.
 - The same toggle is also available in the local Storybook dev environment. When a CAP author is implementing or tweaking an override hook, they can switch the story between `Fluent` and `CAP` in the same browser window — without rebuilding, without spinning up a separate CAP-only preview app, and against the exact local Fluent component code they're editing.
@@ -192,7 +187,7 @@ A working prototype of this toggle is up for review at [microsoft/fluentui#36308
 
 ## Open questions for engineering review
 
-This section lists the decisions the author needs from Fluent v9 engineering.
+This section lists the open decisions and feedback the author needs from Fluent v9 engineering before this RFC can move forward.
 
 1. **Which distribution shape should the new in-repo package adopt?** See [Distribution shape — considered alternatives](#distribution-shape--considered-alternatives) for the three candidates: `@fluentui/react-cap-theme` (separate stable package), `@fluentui/react-cap-theme-preview` (separate preview package), or `@fluentui/react-components/cap` (suite subpath).
 2. **Docs-site toggle UX.** Does the docs-site team agree with the toolbar-toggle design described above?
