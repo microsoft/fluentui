@@ -171,4 +171,52 @@ describe('createPositionManager', () => {
 
     expect(listener).not.toHaveBeenCalled();
   });
+
+  it('schedules updatePosition on animation frames when enabled', async () => {
+    computePositionMock.mockResolvedValue({
+      x: 10,
+      y: 20,
+      placement: 'bottom',
+      strategy: 'absolute',
+      middlewareData: mockMiddlewareData,
+    });
+
+    const { container, target } = createTestElements();
+    const win = container.ownerDocument.defaultView!;
+    const rafCallbacks: FrameRequestCallback[] = [];
+
+    const requestAnimationFrameSpy = jest.spyOn(win, 'requestAnimationFrame').mockImplementation(callback => {
+      rafCallbacks.push(callback);
+      return rafCallbacks.length;
+    });
+    const cancelAnimationFrameSpy = jest.spyOn(win, 'cancelAnimationFrame').mockImplementation(() => undefined);
+
+    const manager = createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'absolute',
+      middleware: [],
+      placement: 'bottom',
+      disableUpdateOnResize: true,
+      unstable_updatePositionOnAnimationFrame: true,
+    });
+
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrameSpy).toHaveBeenCalled();
+
+    const callback = rafCallbacks.shift();
+    expect(callback).toBeDefined();
+
+    callback?.(16);
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(2);
+
+    manager.dispose();
+    expect(cancelAnimationFrameSpy).toHaveBeenCalled();
+
+    requestAnimationFrameSpy.mockRestore();
+    cancelAnimationFrameSpy.mockRestore();
+  });
 });
