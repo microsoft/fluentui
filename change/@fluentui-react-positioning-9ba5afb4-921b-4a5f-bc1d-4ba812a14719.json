@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixes #35968",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
