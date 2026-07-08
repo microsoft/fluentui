@@ -16,10 +16,6 @@ import type {
 import { usePositioningOptions } from './usePositioningOptions';
 import { useCallbackRef, hasAutofocusFilter } from './utils';
 
-type InternalUsePositioningOptions = {
-  updatePositionOnAnimationFrame?: boolean;
-};
-
 /**
  * @internal
  */
@@ -30,10 +26,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const containerRef = React.useRef<HTMLElement | null>(null);
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
-  const { enabled = true } = options;
-  const { updatePositionOnAnimationFrame = false } = options as PositioningProps &
-    PositioningOptions &
-    InternalUsePositioningOptions;
+  const { enabled = true, updatePositionOnAnimationFrame = false } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
   const updatePositionManager = React.useCallback(() => {
     if (managerRef.current) {
