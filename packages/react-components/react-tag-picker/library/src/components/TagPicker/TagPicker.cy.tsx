@@ -12,6 +12,14 @@ import { TagPickerList } from '../TagPickerList/TagPickerList';
 import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
+import {
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogSurface,
+  DialogTrigger,
+  type DialogProps,
+} from '@fluentui/react-dialog';
 
 import 'cypress-real-events';
 import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
@@ -107,6 +115,107 @@ const TagPickerControlled = ({
 
       <button id="after-button">After</button>
     </div>
+  );
+};
+
+const TagPickerInAnimatedDialog = () => {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [loadedOptions, setLoadedOptions] = React.useState<string[]>([]);
+  const hasLoadedOnceRef = React.useRef(false);
+  const animatedHostRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!dialogOpen) {
+      return;
+    }
+
+    // Simulate dialog surface motion to reproduce stale positioning if not updated after animation.
+    const animation = animatedHostRef.current?.animate(
+      [{ transform: 'translate3d(40px, 21px, 0)' }, { transform: 'translate3d(0, 0, 0)' }],
+      { duration: 250, easing: 'ease-out', fill: 'forwards' },
+    );
+
+    return () => animation?.cancel();
+  }, [dialogOpen]);
+
+  React.useEffect(() => {
+    if (!dialogOpen) {
+      return;
+    }
+
+    if (hasLoadedOnceRef.current) {
+      setLoadedOptions(options);
+      return;
+    }
+
+    setLoadedOptions([]);
+    const timeoutId = setTimeout(() => {
+      hasLoadedOnceRef.current = true;
+      setLoadedOptions(options);
+    }, 350);
+
+    return () => clearTimeout(timeoutId);
+  }, [dialogOpen]);
+
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
+
+    setSelectedOptions(data.selectedOptions);
+  };
+
+  const onOpenChange: DialogProps['onOpenChange'] = (_, data) => setDialogOpen(data.open);
+  const tagPickerOptions = loadedOptions.filter(option => !selectedOptions.includes(option));
+
+  return (
+    <Dialog open={dialogOpen} onOpenChange={onOpenChange}>
+      <DialogTrigger disableButtonEnhancement>
+        <Button data-testid="open-dialog">Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface>
+        <DialogBody>
+          <div ref={animatedHostRef}>
+            <TagPicker
+              onOptionSelect={onOptionSelect}
+              selectedOptions={selectedOptions}
+              open={tagPickerOptions.length > 0}
+            >
+              <TagPickerControl data-testid="dialog-tag-picker-control">
+                <TagPickerGroup>
+                  {selectedOptions.map(option => (
+                    <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+                      {option}
+                    </Tag>
+                  ))}
+                </TagPickerGroup>
+                <TagPickerInput aria-label="Select Employees" />
+              </TagPickerControl>
+              <TagPickerList data-testid="dialog-tag-picker-list">
+                {tagPickerOptions.length > 0 ? (
+                  tagPickerOptions.map(option => (
+                    <TagPickerOption media={<Avatar name={option} color="colorful" />} value={option} key={option}>
+                      {option}
+                    </TagPickerOption>
+                  ))
+                ) : (
+                  <TagPickerOption value="no-options">No options available</TagPickerOption>
+                )}
+              </TagPickerList>
+            </TagPicker>
+          </div>
+
+          <DialogActions>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary" data-testid="close-dialog">
+                Close
+              </Button>
+            </DialogTrigger>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
   );
 };
 
@@ -442,5 +551,34 @@ describe('TagPicker', () => {
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
     cy.get('[data-testid="tag-picker-input"]').realClick();
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+  });
+
+  describe('Dialog integration', () => {
+    it('keeps listbox aligned after dialog reopen during entry animation', () => {
+      mount(<TagPickerInAnimatedDialog />);
+
+      cy.get('[data-testid="open-dialog"]').realClick();
+      cy.get('[data-testid="dialog-tag-picker-list"]').should('be.visible');
+
+      cy.get('[data-testid="close-dialog"]').realClick();
+      cy.get('[data-testid="open-dialog"]').realClick();
+      cy.get('[data-testid="dialog-tag-picker-list"]').should('be.visible');
+
+      // Verify final resting alignment after the motion settles.
+      cy.wait(300);
+
+      cy.get('[data-testid="dialog-tag-picker-control"]').then($control => {
+        const controlRect = $control[0].getBoundingClientRect();
+
+        cy.get('[data-testid="dialog-tag-picker-list"]').then($list => {
+          const listRect = $list[0].getBoundingClientRect();
+          const horizontalOffset = Math.abs(listRect.left - controlRect.left);
+          const verticalOffset = listRect.top - controlRect.bottom;
+
+          expect(horizontalOffset).to.be.lessThan(6);
+          expect(verticalOffset).to.be.within(-2, 12);
+        });
+      });
+    });
   });
 });
