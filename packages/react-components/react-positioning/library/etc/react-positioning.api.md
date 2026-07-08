@@ -96,7 +96,7 @@ export type PositioningImperativeRef = {
 };
 
 // @public
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'updatePositionOnAnimationFrame' | 'shiftToCoverTarget'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }
