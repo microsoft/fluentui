@@ -42,6 +42,11 @@ interface PositionManagerOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
+
+  /**
+   * Continuously updates position on animation frames while mounted.
+   */
+  unstable_updatePositionOnAnimationFrame?: boolean;
 }
 
 /**
@@ -59,6 +64,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
     placement,
     useTransform = true,
     disableUpdateOnResize = false,
+    unstable_updatePositionOnAnimationFrame = false,
   } = options;
   const targetWindow = container.ownerDocument.defaultView;
   if (!target || !container || !targetWindow) {
@@ -84,6 +90,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
       });
 
   let isFirstUpdate = true;
+  let animationFrameId: number | undefined;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
@@ -163,6 +170,17 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
   const updatePosition = debounce(() => forceUpdate());
 
+  const scheduleAnimationFrameUpdate = () => {
+    if (!targetWindow || !unstable_updatePositionOnAnimationFrame || isDestroyed) {
+      return;
+    }
+
+    animationFrameId = targetWindow.requestAnimationFrame(() => {
+      updatePosition();
+      scheduleAnimationFrameUpdate();
+    });
+  };
+
   const dispose = () => {
     isDestroyed = true;
 
@@ -176,6 +194,11 @@ export function createPositionManager(options: PositionManagerOptions): Position
     });
     scrollParents.clear();
 
+    if (targetWindow && animationFrameId !== undefined) {
+      targetWindow.cancelAnimationFrame(animationFrameId);
+      animationFrameId = undefined;
+    }
+
     resizeObserver?.disconnect();
   };
 
@@ -186,6 +209,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
   // Update the position on initialization
   updatePosition();
+  scheduleAnimationFrameUpdate();
 
   return {
     updatePosition,

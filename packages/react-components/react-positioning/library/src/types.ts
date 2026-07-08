@@ -247,6 +247,14 @@ export interface PositioningOptions {
   disableUpdateOnResize?: boolean;
 
   /**
+   * Continuously updates position on each animation frame while mounted.
+   * Useful when target/container coordinates can change due to ancestor transform animations.
+   *
+   * @default false
+   */
+  unstable_updatePositionOnAnimationFrame?: boolean;
+
+  /**
    * When true, the positioned element will shift to cover the target element when there's not enough space.
    * @default false
    */
