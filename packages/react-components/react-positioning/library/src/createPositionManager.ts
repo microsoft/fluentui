@@ -46,7 +46,7 @@ interface PositionManagerOptions {
   /**
    * Continuously updates position on animation frames while mounted.
    */
-  unstable_updatePositionOnAnimationFrame?: boolean;
+  updatePositionOnAnimationFrame?: boolean;
 }
 
 /**
@@ -64,7 +64,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
     placement,
     useTransform = true,
     disableUpdateOnResize = false,
-    unstable_updatePositionOnAnimationFrame = false,
+    updatePositionOnAnimationFrame = false,
   } = options;
   const targetWindow = container.ownerDocument.defaultView;
   if (!target || !container || !targetWindow) {
@@ -171,7 +171,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const updatePosition = debounce(() => forceUpdate());
 
   const scheduleAnimationFrameUpdate = () => {
-    if (!targetWindow || !unstable_updatePositionOnAnimationFrame || isDestroyed) {
+    if (!targetWindow || !updatePositionOnAnimationFrame || isDestroyed) {
       return;
     }
 

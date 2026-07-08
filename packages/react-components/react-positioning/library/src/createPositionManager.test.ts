@@ -199,7 +199,7 @@ describe('createPositionManager', () => {
       middleware: [],
       placement: 'bottom',
       disableUpdateOnResize: true,
-      unstable_updatePositionOnAnimationFrame: true,
+      updatePositionOnAnimationFrame: true,
     });
 
     await flushMicrotasks();
