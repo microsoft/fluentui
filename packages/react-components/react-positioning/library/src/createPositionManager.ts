@@ -42,7 +42,6 @@ interface PositionManagerOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
-
   /**
    * Continuously updates position on animation frames while mounted.
    */
