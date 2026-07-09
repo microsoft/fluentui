@@ -636,8 +636,15 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         }
       }
     });
+
+    const categoryGroupAriaLabel = `${singleSet.xAxisPoint}, category ${singleSet.indexNum + 1} of ${
+      _datasetForBars.length
+    }, with ${presentLegends.length} bars`;
+
     return (
       <g
+        role="listbox"
+        aria-label={categoryGroupAriaLabel}
         key={singleSet.indexNum}
         transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - effectiveGroupWidth) / 2}, 0)`}
       >
