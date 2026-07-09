@@ -278,11 +278,10 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       startingPoint.push(prevPosition);
 
       const xValue = point.horizontalBarChartdata!.x;
-      const placeholderIndex = 1;
       const isLegendSelected: boolean = _legendHighlighted(point.legend) || _noLegendHighlighted();
 
       // Render bar label instead of placeholder bar for absolute-scale variant
-      if (index === placeholderIndex && props.variant === HorizontalBarChartVariant.AbsoluteScale) {
+      if (point.placeHolder && props.variant === HorizontalBarChartVariant.AbsoluteScale) {
         if (props.hideLabels) {
           return <text key={index} />;
         }
@@ -320,15 +319,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
           }
           onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role={index !== placeholderIndex ? 'option' : ''}
-          aria-label={index !== placeholderIndex ? _getAriaLabel(point) : undefined}
+          role={!point.placeHolder ? 'option' : ''}
+          aria-label={!point.placeHolder ? _getAriaLabel(point) : undefined}
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
           opacity={isLegendSelected ? 1 : 0.1}
-          tabIndex={
-            index !== placeholderIndex && (_legendHighlighted(point.legend!) || _noLegendHighlighted()) ? 0 : undefined
-          }
+          tabIndex={!point.placeHolder && (_legendHighlighted(point.legend!) || _noLegendHighlighted()) ? 0 : undefined}
         />
       );
     });
@@ -405,6 +402,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           : points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
         if (isSingleBar) {
           points.chartData![1] = {
+            placeHolder: true,
             legend: '',
             horizontalBarChartdata: {
               x: points.chartData![0].horizontalBarChartdata!.total! - datapoint!,

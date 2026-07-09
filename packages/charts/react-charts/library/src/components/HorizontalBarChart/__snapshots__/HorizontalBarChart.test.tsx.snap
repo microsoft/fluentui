@@ -886,11 +886,13 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
               y="0"
             />
             <rect
+              aria-label="one.two, 90/100."
               class="fui-hbc__barWrapper"
               fill="#a4262c"
               height="12"
               opacity="1"
-              role=""
+              role="option"
+              tabindex="0"
               width="90%"
               x="10%"
               y="0"
@@ -1032,11 +1034,13 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
               y="0"
             />
             <rect
+              aria-label="two.two, 170/200."
               class="fui-hbc__barWrapper"
               fill="#a4262c"
               height="12"
               opacity="1"
-              role=""
+              role="option"
+              tabindex="0"
               width="85%"
               x="15%"
               y="0"
