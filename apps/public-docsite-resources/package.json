@@ -15,9 +15,7 @@
       "types": "./lib/AppDefinition.d.ts",
       "import": "./lib/AppDefinition.js",
       "require": "./lib-commonjs/AppDefinition.js"
-    },
-    "./dist/api": "./dist/api",
-    "./dist/api/references": "./dist/api/references"
+    }
   },
   "sideEffects": [
     "*.global.*",
