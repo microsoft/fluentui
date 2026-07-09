@@ -2461,6 +2461,8 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             />
             <g>
               <g
+                aria-label="Q1, category 1 of 1, with 2 bars"
+                role="listbox"
                 transform="translate(-6.888888888888889, 0)"
               >
                 <rect
