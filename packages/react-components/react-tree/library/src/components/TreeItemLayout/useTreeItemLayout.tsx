@@ -9,6 +9,7 @@ import {
   useEventCallback,
   elementContains,
   useControllableState,
+  useId,
 } from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
 import type {
@@ -65,6 +66,11 @@ export const useTreeItemLayout_unstable = (
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
+
+  // Id of the item content, used to give the selection control an accessible name so that
+  // assistive technologies which target the visible control directly (e.g. Voice Access) can
+  // reach it. See https://aka.ms/MAS4.3.1
+  const mainContentId = useId('fui-TreeItemLayout__main-');
 
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
   // eslint-disable-next-line react-hooks/refs
@@ -233,7 +239,11 @@ export const useTreeItemLayout_unstable = (
       },
     ),
     iconBefore: slot.optional(iconBefore, { elementType: 'div' }),
-    main: slot.always(main, { elementType: 'div' }),
+    main: slot.always(main, {
+      // Only expose an id when there is a selector that needs to reference it for its name.
+      defaultProps: { id: selectionMode !== 'none' ? mainContentId : undefined },
+      elementType: 'div',
+    }),
     iconAfter: slot.optional(iconAfter, { elementType: 'div' }),
     aside: !isActionsVisible ? slot.optional(props.aside, { elementType: 'div' }) : undefined,
     actions,
@@ -243,7 +253,7 @@ export const useTreeItemLayout_unstable = (
       defaultProps: {
         checked,
         tabIndex: -1,
-        'aria-hidden': true,
+        'aria-labelledby': mainContentId,
         ref: selectionRef,
         // casting here to a union between checkbox and radio
         // since ref is not present on the selector signature
