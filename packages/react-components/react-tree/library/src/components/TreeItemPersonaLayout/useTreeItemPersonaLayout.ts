@@ -52,8 +52,6 @@ export const useTreeItemPersonaLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     avatarSize: treeAvatarSize[size],
-    // Preserve the id assigned by useTreeItemLayout so the selector's `aria-labelledby`
-    // (which names the selection control) keeps pointing at the primary content.
     main: slot.always(main, {
       defaultProps: { children, id: treeItemLayoutState.main.id },
       elementType: 'div',

@@ -67,9 +67,6 @@ export const useTreeItemLayout_unstable = (
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
-  // Id of the item content, used to give the selection control an accessible name so that
-  // assistive technologies which target the visible control directly (e.g. Voice Access) can
-  // reach it. See https://aka.ms/MAS4.3.1
   const mainContentId = useId('fui-TreeItemLayout__main-');
 
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
@@ -240,7 +237,6 @@ export const useTreeItemLayout_unstable = (
     ),
     iconBefore: slot.optional(iconBefore, { elementType: 'div' }),
     main: slot.always(main, {
-      // Only expose an id when there is a selector that needs to reference it for its name.
       defaultProps: { id: selectionMode !== 'none' ? mainContentId : undefined },
       elementType: 'div',
     }),

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Tree selection checkbox/radio is now exposed with an accessible name so Voice Access users can select items.",
+  "packageName": "@fluentui/react-tree",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
