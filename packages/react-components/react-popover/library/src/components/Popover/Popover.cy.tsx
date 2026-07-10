@@ -13,7 +13,7 @@ const mount = (element: JSXElement) => {
 };
 
 const popoverTriggerSelector = '[aria-expanded]';
-const popoverContentSelector = '[role="group"]';
+const popoverContentSelector = '.fui-PopoverSurface';
 const popoverInteractiveContentSelector = '[role="dialog"]';
 
 describe('Popover', () => {
