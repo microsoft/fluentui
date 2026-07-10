@@ -262,10 +262,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     );
 
     return (
-      <g role="listbox" aria-label={`${lineLegendText || 'Line'}, line with ${lineData.length} data points`}>
+      <>
         {line}
         {dots}
-      </g>
+      </>
     );
   }
 
