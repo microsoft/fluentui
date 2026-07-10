@@ -7,6 +7,35 @@ import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 import { useMotionForwardedRef } from '@fluentui/react-motion';
 
+type PopoverSurfaceAriaAttributes = Pick<React.HTMLAttributes<HTMLDivElement>, 'role' | 'aria-modal'>;
+
+/**
+ * Returns the ARIA role and modal attributes for a PopoverSurface.
+ *
+ * Extracted as a pure function to allow isolated unit testing of the attribute logic.
+ * - `trapFocus=true` → `role="dialog"` + `aria-modal=true`
+ * - `trapFocus=false` + accessible name present → `role="group"`
+ * - `trapFocus=false` + no accessible name → no role (plain div avoids screen reader
+ *   announcing "contains style group" for unlabelled popovers)
+ */
+export const getPopoverSurfaceAriaAttributes = ({
+  hasAccessibleName,
+  trapFocus,
+}: {
+  hasAccessibleName: boolean;
+  trapFocus: boolean;
+}): PopoverSurfaceAriaAttributes => {
+  if (trapFocus) {
+    return { role: 'dialog', 'aria-modal': true };
+  }
+
+  if (hasAccessibleName) {
+    return { role: 'group' };
+  }
+
+  return {};
+};
+
 /**
  * Create the state required to render PopoverSurface.
  *
@@ -54,8 +83,10 @@ export const usePopoverSurface_unstable = (
         // `contentRef` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, contentRef, motionForwardedRef) as React.Ref<HTMLDivElement>,
-        role: trapFocus ? 'dialog' : 'group',
-        'aria-modal': trapFocus ? true : undefined,
+        ...getPopoverSurfaceAriaAttributes({
+          hasAccessibleName: Boolean(props['aria-label'] || props['aria-labelledby']),
+          trapFocus,
+        }),
         ...modalAttributes,
         ...props,
       }),
