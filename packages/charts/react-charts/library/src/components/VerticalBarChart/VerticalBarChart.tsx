@@ -1189,14 +1189,17 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             <g role="listbox" aria-label={_getBarsGroupLabel()}>
               {_bars}
             </g>
-            {_isHavingLine &&
-              _createLine(
-                props.xScale!,
-                props.yScalePrimary!,
-                props.containerHeight,
-                props.containerWidth,
-                props.yScaleSecondary,
-              )}
+            {_isHavingLine && (
+              <g>
+                {_createLine(
+                  props.xScale!,
+                  props.yScalePrimary!,
+                  props.containerHeight,
+                  props.containerWidth,
+                  props.yScaleSecondary,
+                )}
+              </g>
+            )}
           </>
         );
       }}
