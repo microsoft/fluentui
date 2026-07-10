@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove custom-babe-loader",
-  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
-  "email": "paulmardling@microsoft.com",
-  "dependentChangeType": "patch"
-}

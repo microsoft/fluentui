@@ -12,8 +12,6 @@ const mount = (element: React.ReactElement) => {
 
 // The data attribute the positioning middleware writes when the reference is hidden
 const DATA_POSITIONING_HIDDEN = 'data-popper-reference-hidden';
-// The data attribute the positioning middleware writes when the floating element has escaped clipping
-const DATA_POSITIONING_ESCAPED = 'data-popper-escaped';
 
 describe('Tooltip', () => {
   describe('overflow behavior (regression: #32882)', () => {
