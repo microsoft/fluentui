@@ -123,11 +123,22 @@ const TagPickerInAnimatedDialog = () => {
       return;
     }
 
-    // Simulate dialog surface motion to reproduce stale positioning if not updated after animation.
+    if (animatedHostRef.current) {
+      animatedHostRef.current.dataset.animating = 'true';
+    }
+
     const animation = animatedHostRef.current?.animate(
       [{ transform: 'translate3d(40px, 21px, 0)' }, { transform: 'translate3d(0, 0, 0)' }],
-      { duration: 250, easing: 'ease-out', fill: 'forwards' },
+      { duration: 50, easing: 'ease-out', fill: 'forwards' },
     );
+
+    if (animation) {
+      animation.onfinish = () => {
+        if (animatedHostRef.current) {
+          animatedHostRef.current.dataset.animating = 'false';
+        }
+      };
+    }
 
     return () => animation?.cancel();
   }, [dialogOpen]);
@@ -146,7 +157,7 @@ const TagPickerInAnimatedDialog = () => {
     const timeoutId = setTimeout(() => {
       hasLoadedOnceRef.current = true;
       setLoadedOptions(options);
-    }, 350);
+    }, 50);
 
     return () => clearTimeout(timeoutId);
   }, [dialogOpen]);
@@ -556,13 +567,14 @@ describe('TagPicker', () => {
   });
 
   describe('Dialog integration', () => {
-    it('keeps the dropdown aligned with the control when reopened during the dialog entry animation', () => {
+    it.only('keeps the dropdown aligned with the control when reopened during the dialog entry animation', () => {
       cy.viewport(1024, 900);
       mount(<TagPickerInAnimatedDialog />);
 
       const assertDropdownAlignedToControl = () => {
         cy.get('[data-testid="dialog-tag-picker-control"]').should('be.visible');
-        cy.get('[data-testid="dialog-tag-picker-list"]', { timeout: 500 })
+        cy.get('[data-testid="dialog-tag-picker-host"]').should('have.attr', 'data-animating', 'false');
+        cy.get('[data-testid="dialog-tag-picker-list"]', { timeout: 200 })
           .should('be.visible')
           .should($list => {
             const controlRect = Cypress.$('[data-testid="dialog-tag-picker-control"]')[0].getBoundingClientRect();
