@@ -57,7 +57,7 @@ export const usePopoverSurface_unstable = (
   const size = usePopoverContext_unstable(context => context.size);
   const withArrow = usePopoverContext_unstable(context => context.withArrow);
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
+  const trapFocus = !!usePopoverContext_unstable(context => context.trapFocus);
   const inertTrapFocus = usePopoverContext_unstable(context => context.inertTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
   const motionForwardedRef = useMotionForwardedRef();
