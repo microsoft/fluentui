@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Tree } from './Tree';
 import { TreeItem } from '../TreeItem/TreeItem';
+import { TreeItemLayout } from '../TreeItemLayout/TreeItemLayout';
+import { TreeItemPersonaLayout } from '../TreeItemPersonaLayout/TreeItemPersonaLayout';
 
 describe('Tree', () => {
   isConformant({
@@ -36,5 +38,41 @@ describe('Tree', () => {
     expect(handleOpenChange).toHaveBeenNthCalledWith(1, expect.any(Object), expect.objectContaining({ open: false }));
 
     expect(handleOpenChange).toHaveBeenNthCalledWith(2, expect.any(Object), expect.objectContaining({ open: false }));
+  });
+
+  describe('selection control accessibility', () => {
+    it.each([
+      {
+        case: 'multiselect',
+        selectionMode: 'multiselect',
+        role: 'checkbox',
+        layout: <TreeItemLayout>Item 1</TreeItemLayout>,
+        accessibleName: 'Item 1',
+      },
+      {
+        case: 'single',
+        selectionMode: 'single',
+        role: 'radio',
+        layout: <TreeItemLayout>Item 1</TreeItemLayout>,
+        accessibleName: 'Item 1',
+      },
+      {
+        case: 'TreeItemPersonaLayout',
+        selectionMode: 'multiselect',
+        role: 'checkbox',
+        layout: <TreeItemPersonaLayout>Jane Doe</TreeItemPersonaLayout>,
+        accessibleName: 'Jane Doe',
+      },
+    ] as const)('exposes a named $role selector ($case)', ({ selectionMode, role, layout, accessibleName }) => {
+      render(
+        <Tree aria-label="Tree" selectionMode={selectionMode}>
+          <TreeItem itemType="leaf" value="item1">
+            {layout}
+          </TreeItem>
+        </Tree>,
+      );
+
+      expect(screen.getByRole(role, { name: accessibleName })).toBeTruthy();
+    });
   });
 });
