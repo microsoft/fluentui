@@ -44,15 +44,17 @@ jobs:
       - name: Build packages & create reports
         run: yarn nx affected -t bundle-size --nxBail
 
-      # NOTE: monosize-storage-azure only stores base reports for the default branch (master),
-      # so compare-reports will fail for PRs targeting other branches.
+      # NOTE: base bundle size reports are only produced by the "Bundle size Base" workflow on the
+      # default branch (master), so compare-reports will fail for PRs targeting other branches.
       - name: Skip bundle size comparison notice
         if: ${{ github.event.pull_request.base.ref != 'master' }}
-        run: echo "::warning::Bundle size comparison skipped — monosize-storage-azure only stores base reports for the default branch (master). PR targets '${{ github.event.pull_request.base.ref }}'."
+        run: echo "::warning::Bundle size comparison skipped — base reports are only produced for the default branch (master). PR targets '${{ github.event.pull_request.base.ref }}'."
 
       - name: Compare bundle size with base
         if: ${{ github.event.pull_request.base.ref == 'master' }}
         run: npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output=markdown --quiet > ./monosize-report.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save PR number
         if: ${{ github.event.pull_request.base.ref == 'master' }}
