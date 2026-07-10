@@ -1878,7 +1878,6 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       <div
         class="fui-PopoverSurface"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
@@ -2553,7 +2552,6 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       <div
         class="fui-PopoverSurface"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
-        role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div>
