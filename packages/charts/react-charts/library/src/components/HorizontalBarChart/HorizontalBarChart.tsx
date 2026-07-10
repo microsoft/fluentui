@@ -278,11 +278,10 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       startingPoint.push(prevPosition);
 
       const xValue = point.horizontalBarChartdata!.x;
-      const placeholderIndex = 1;
       const isLegendSelected: boolean = _legendHighlighted(point.legend) || _noLegendHighlighted();
 
       // Render bar label instead of placeholder bar for absolute-scale variant
-      if (index === placeholderIndex && props.variant === HorizontalBarChartVariant.AbsoluteScale) {
+      if (point.placeHolder && props.variant === HorizontalBarChartVariant.AbsoluteScale) {
         if (props.hideLabels) {
           return <text key={index} />;
         }
@@ -320,13 +319,13 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             _showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined
           }
           onFocus={_showToolTipOnSegment && point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
-          role="img"
-          aria-label={_getAriaLabel(point)}
+          role={!point.placeHolder ? 'option' : ''}
+          aria-label={!point.placeHolder ? _getAriaLabel(point) : undefined}
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
           opacity={isLegendSelected ? 1 : 0.1}
-          tabIndex={_legendHighlighted(point.legend!) || _noLegendHighlighted() ? 0 : undefined}
+          tabIndex={!point.placeHolder && (_legendHighlighted(point.legend!) || _noLegendHighlighted()) ? 0 : undefined}
         />
       );
     });
@@ -403,6 +402,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           : points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
         if (isSingleBar) {
           points.chartData![1] = {
+            placeHolder: true,
             legend: '',
             horizontalBarChartdata: {
               x: points.chartData![0].horizontalBarChartdata!.total! - datapoint!,
@@ -417,6 +417,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : _getChartDataText(points!);
         const bars = _createBars(points!);
         const keyVal = _uniqLineText + '_' + index;
+        const barGroupAriaLabel = `bar ${index + 1} of ${data!.length}.`;
         // ToDo - Showtriangle property is per data series. How to account for it in the new stylesheet
         /*         const classes = useHorizontalBarChartStyles(props.styles!, {
           width: props.width,
@@ -440,7 +441,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               {points!.chartData![0].data && _createBenchmark(points!)}
               <svg ref={barChartSvgRef} className={classes.chart} aria-label={points!.chartTitle}>
                 <g
+                  role="listbox"
                   id={keyVal}
+                  aria-label={barGroupAriaLabel}
                   ref={(e: SVGGElement) => {
                     _refCallback(e, points!.chartData![0].legend);
                   }}
