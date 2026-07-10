@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: minify html/css tagged templates in the ESM build so template whitespace no longer renders under non-normal CSS white-space, matching the rollup bundles",
+  "packageName": "@fluentui/web-components",
+  "email": "akshitnassa412@gmail.com",
+  "dependentChangeType": "patch"
+}

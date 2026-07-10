@@ -6,6 +6,8 @@ import { dirname, join } from 'node:path';
 
 import chalk from 'chalk';
 
+import { minifyTaggedTemplates } from './minify-tagged-templates.js';
+
 const SRC = 'src';
 const OUT = 'dist/esm';
 
@@ -34,6 +36,10 @@ async function compile() {
 
   console.log(chalk.blueBright(`compile: running tsc`));
   execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
+
+  console.log(chalk.blueBright(`compile: minifying tagged templates`));
+  const minified = await minifyTaggedTemplates(OUT);
+  console.log(chalk.dim(`compile: minified tagged templates in ${minified} file${minified === 1 ? '' : 's'}`));
 
   console.log(chalk.blueBright(`compile: copying SSR assets`));
   await copySsrAssets();

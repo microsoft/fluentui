@@ -99,6 +99,7 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.10",
+    "@jridgewell/remapping": "^2.3.5",
     "@tensile-perf/web-components": "~0.2.2",
     "@storybook/html": "9.1.17",
     "@storybook/html-vite": "9.1.17",
@@ -106,6 +107,7 @@
     "@wc-toolkit/cem-inheritance": "1.2.2",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
+    "acorn": "^8.17.0",
     "chromedriver": "^125.0.0",
     "dedent": "^1.2.0",
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
