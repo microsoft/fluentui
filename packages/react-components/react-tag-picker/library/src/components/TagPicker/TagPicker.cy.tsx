@@ -567,7 +567,7 @@ describe('TagPicker', () => {
   });
 
   describe('Dialog integration', () => {
-    it.only('keeps the dropdown aligned with the control when reopened during the dialog entry animation', () => {
+    it('keeps the dropdown aligned with the control when reopened during the dialog entry animation', () => {
       cy.viewport(1024, 900);
       mount(<TagPickerInAnimatedDialog />);
 
