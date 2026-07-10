@@ -26,7 +26,7 @@ export const Default = (props: PopoverProps): JSXElement => (
       <Button>Popover trigger</Button>
     </PopoverTrigger>
 
-    <PopoverSurface tabIndex={-1}>
+    <PopoverSurface tabIndex={-1} aria-label="Popover content">
       <ExampleContent />
     </PopoverSurface>
   </Popover>
