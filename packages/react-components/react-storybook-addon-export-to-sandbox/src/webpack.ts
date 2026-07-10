@@ -42,11 +42,7 @@ function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack'
      */
     enforce: 'post',
     use: {
-      /**
-       * Custom babel loader wraps the original babel-loader and fixes the incorrect `inputSourceMap` parameter
-       * that is passed to babel-loader.
-       **/
-      loader: require.resolve('./custom-babel-loader'),
+      loader: require.resolve('babel-loader'),
       options: babelLoaderOptionsUpdater({
         plugins: [plugin],
       }),

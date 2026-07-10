@@ -17,7 +17,7 @@ describe(`webpack`, () => {
         enforce: 'post',
         test: /\.stories\.(jsx?$|tsx?$)/,
         use: {
-          loader: expect.stringContaining('custom-babel-loader'),
+          loader: expect.stringContaining('babel-loader'),
           options: {
             plugins: [
               [
@@ -56,7 +56,7 @@ describe(`webpack`, () => {
         test: /\.stories\.tsx?/,
         include: /foo-stories/,
         use: {
-          loader: expect.stringContaining('custom-babel-loader'),
+          loader: expect.stringContaining('babel-loader'),
           options: {
             plugins: [
               [
@@ -93,7 +93,7 @@ describe(`webpack`, () => {
         enforce: 'post',
         test: /\.stories\.(jsx?$|tsx?$)/,
         use: {
-          loader: expect.stringContaining('custom-babel-loader'),
+          loader: expect.stringContaining('babel-loader'),
           options: {
             plugins: [
               [
