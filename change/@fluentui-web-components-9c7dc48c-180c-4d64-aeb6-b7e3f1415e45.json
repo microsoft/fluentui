@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix focusgroup in tree when focusgroup is natively supported",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
