@@ -36,6 +36,7 @@ export enum FileIconType {
   pbiScorecard = 28,
   pbiSemanticModel = 29,
   pbiReport = 30,
+  wikiPage = 31,
 }
 
 export type FileIconTypeInput =
@@ -68,4 +69,5 @@ export type FileIconTypeInput =
   | 27
   | 28
   | 29
-  | 30;
+  | 30
+  | 31;

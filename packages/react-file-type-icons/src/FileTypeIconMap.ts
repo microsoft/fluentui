@@ -568,6 +568,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   video360: {},
+  wikipage: {},
   vsdx: {
     extensions: ['vdx', 'vsd', 'vsdm', 'vsdx', 'vsw', 'vdw'],
   },
