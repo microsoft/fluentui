@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "types": ["node", "cypress", "cypress-real-events"],
+    "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"]
+  },
+  "include": ["**/*.cy.ts", "**/*.cy.tsx"]
+}

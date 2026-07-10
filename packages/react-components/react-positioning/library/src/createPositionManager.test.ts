@@ -1,7 +1,7 @@
 import { computePosition } from '@floating-ui/dom';
 import type { Placement } from '@floating-ui/dom';
 import { createPositionManager } from './createPositionManager';
-import { POSITIONING_END_EVENT } from './constants';
+import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_HIDDEN, POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent } from './types';
 
 jest.mock('@floating-ui/dom', () => ({
@@ -170,5 +170,110 @@ describe('createPositionManager', () => {
     await flushMicrotasks();
 
     expect(listener).not.toHaveBeenCalled();
+  });
+
+  describe('hide middleware data attributes', () => {
+    it('sets data-popper-reference-hidden when referenceHidden is true', async () => {
+      computePositionMock.mockResolvedValue({
+        x: 0,
+        y: 0,
+        placement: 'bottom',
+        strategy: 'absolute',
+        middlewareData: {
+          ...mockMiddlewareData,
+          hide: { escaped: false, referenceHidden: true },
+        },
+      });
+
+      const { container, target } = createTestElements();
+      createPositionManager({
+        container,
+        target,
+        arrow: null,
+        strategy: 'absolute',
+        middleware: [],
+        placement: 'bottom',
+        disableUpdateOnResize: true,
+      });
+
+      await flushMicrotasks();
+
+      expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(true);
+      expect(container.hasAttribute(DATA_POSITIONING_ESCAPED)).toBe(false);
+    });
+
+    it('removes data-popper-reference-hidden when referenceHidden becomes false', async () => {
+      const { container, target } = createTestElements();
+
+      // First position update: reference is hidden
+      computePositionMock.mockResolvedValueOnce({
+        x: 0,
+        y: 0,
+        placement: 'bottom',
+        strategy: 'absolute',
+        middlewareData: {
+          ...mockMiddlewareData,
+          hide: { escaped: false, referenceHidden: true },
+        },
+      });
+
+      const manager = createPositionManager({
+        container,
+        target,
+        arrow: null,
+        strategy: 'absolute',
+        middleware: [],
+        placement: 'bottom',
+        disableUpdateOnResize: true,
+      });
+
+      await flushMicrotasks();
+      expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(true);
+
+      // Second position update: reference is back in view
+      computePositionMock.mockResolvedValueOnce({
+        x: 0,
+        y: 0,
+        placement: 'bottom',
+        strategy: 'absolute',
+        middlewareData: {
+          ...mockMiddlewareData,
+          hide: { escaped: false, referenceHidden: false },
+        },
+      });
+
+      manager.updatePosition();
+      await flushMicrotasks();
+      expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(false);
+    });
+
+    it('sets data-popper-escaped when escaped is true', async () => {
+      computePositionMock.mockResolvedValue({
+        x: 0,
+        y: 0,
+        placement: 'bottom',
+        strategy: 'absolute',
+        middlewareData: {
+          ...mockMiddlewareData,
+          hide: { escaped: true, referenceHidden: false },
+        },
+      });
+
+      const { container, target } = createTestElements();
+      createPositionManager({
+        container,
+        target,
+        arrow: null,
+        strategy: 'absolute',
+        middleware: [],
+        placement: 'bottom',
+        disableUpdateOnResize: true,
+      });
+
+      await flushMicrotasks();
+
+      expect(container.hasAttribute(DATA_POSITIONING_ESCAPED)).toBe(true);
+      expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(false);
+    });
   });
 });
