@@ -62,8 +62,8 @@ export const stickerSheetHTML = /* html */`
     <h3>Accordion</h3>
   </fluent-text>
   <div class="sticker-row">
-    <fluent-accordion>
-      <fluent-accordion-item>
+    <fluent-accordion expand-mode="single">
+      <fluent-accordion-item expanded>
         <span slot="heading">Accordion header 1</span>
         Accordion panel 1
       </fluent-accordion-item>
@@ -146,7 +146,7 @@ export const stickerSheetHTML = /* html */`
     </fluent-field>
     <fluent-field label-position="after">
       <label slot="label">Mixed</label>
-      <fluent-checkbox slot="input" indeterminate></fluent-checkbox>
+      <fluent-checkbox slot="input" id="sticker-indeterminate-checkbox"></fluent-checkbox>
     </fluent-field>
   </div>
 </section>
@@ -543,6 +543,10 @@ export const stickerThemes = {
 export const StickerSheet = () => {
   const containerRef = React.useRef(null);
   React.useEffect(() => {
+    const indeterminateCheckbox = containerRef.current?.querySelector('#sticker-indeterminate-checkbox');
+    if (indeterminateCheckbox) {
+      indeterminateCheckbox.indeterminate = true;
+    }
     const applyGlobals = globals => {
       const themeKey = globals?.theme || 'web-light';
       const dir = globals?.dir || 'ltr';
