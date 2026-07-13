@@ -51,6 +51,13 @@ yarn create-component                     # Interactive generator
 - Features: `feat/<issue>-<description>`
 - Docs: `docs/<description>`
 
+## Dependabot Review Model
+
+- Dependabot updates are grouped so patch/minor updates are consolidated into fewer PRs per ecosystem.
+- Grouped Dependabot PRs still require normal human review and are not auto-merged.
+- Semver-major updates remain excluded by configuration and require explicit manual handling.
+- Branch protection and required CI checks remain unchanged for these PRs.
+
 ## What NOT to Do
 
 - Don't refactor unrelated code alongside a bug fix
