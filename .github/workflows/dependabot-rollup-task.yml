@@ -6,6 +6,10 @@ on:
     - cron: '0 15 * * 1'
   workflow_dispatch:
     inputs:
+      target_repo:
+        description: Repository to query for Dependabot PRs (owner/repo)
+        required: false
+        default: microsoft/fluentui
       base_branch:
         description: Target base branch
         required: false
@@ -14,6 +18,10 @@ on:
         description: Maximum Dependabot PRs to include in one rollup task
         required: false
         default: '11'
+      dry_run:
+        description: If true, only print candidate output and do not create/update issues
+        required: false
+        default: 'true'
 
 permissions:
   contents: read
@@ -22,12 +30,14 @@ permissions:
 
 jobs:
   create-rollup-task:
-    if: ${{ github.repository_owner == 'microsoft' }}
+    if: ${{ github.repository_owner == 'microsoft' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TARGET_REPO: ${{ inputs.target_repo || 'microsoft/fluentui' }}
       BASE_BRANCH: ${{ inputs.base_branch || 'master' }}
       MAX_PRS: ${{ inputs.max_prs || '11' }}
+      DRY_RUN: ${{ inputs.dry_run || 'true' }}
     steps:
       - name: Build Dependabot rollup task
         id: build-task
@@ -36,7 +46,7 @@ jobs:
           set -euo pipefail
 
           prs_json=$(gh pr list \
-            --repo "$GITHUB_REPOSITORY" \
+            --repo "$TARGET_REPO" \
             --search "is:open author:app/dependabot label:dependencies base:${BASE_BRANCH}" \
             --limit 200 \
             --json number,title,url,updatedAt)
@@ -59,8 +69,10 @@ jobs:
             echo
             echo "This task was generated automatically to keep Dependabot updates reviewable in a capped batch."
             echo
+            echo "- Target repo: ${TARGET_REPO}"
             echo "- Base branch: ${BASE_BRANCH}"
             echo "- Batch size: ${selected_count} (max configured: ${MAX_PRS})"
+            echo "- Dry run: ${DRY_RUN}"
             echo "- Generated at: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             echo
             echo "### Candidate PRs"
@@ -81,8 +93,18 @@ jobs:
           echo "issue_title=$issue_title" >> "$GITHUB_OUTPUT"
           echo "issue_body_file=$issue_body_file" >> "$GITHUB_OUTPUT"
 
+      - name: Dry run summary
+        if: ${{ steps.build-task.outputs.has_work == 'true' && env.DRY_RUN == 'true' }}
+        shell: bash
+        run: |
+          {
+            echo "## Dependabot rollup dry run"
+            echo
+            cat '${{ steps.build-task.outputs.issue_body_file }}'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Create or update rollup task issue
-        if: ${{ steps.build-task.outputs.has_work == 'true' }}
+        if: ${{ steps.build-task.outputs.has_work == 'true' && env.DRY_RUN != 'true' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -91,7 +113,7 @@ jobs:
           issue_body_file='${{ steps.build-task.outputs.issue_body_file }}'
 
           existing_issue_number=$(gh issue list \
-            --repo "$GITHUB_REPOSITORY" \
+            --repo "$TARGET_REPO" \
             --state open \
             --search "in:title \"${issue_title}\"" \
             --json number,title \
@@ -99,12 +121,12 @@ jobs:
 
           if [[ -n "$existing_issue_number" ]]; then
             gh issue edit "$existing_issue_number" \
-              --repo "$GITHUB_REPOSITORY" \
+              --repo "$TARGET_REPO" \
               --body-file "$issue_body_file"
             echo "Updated existing issue #${existing_issue_number}".
           else
             gh issue create \
-              --repo "$GITHUB_REPOSITORY" \
+              --repo "$TARGET_REPO" \
               --title "$issue_title" \
               --body-file "$issue_body_file" \
               --label dependencies

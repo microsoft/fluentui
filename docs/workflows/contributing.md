@@ -60,6 +60,8 @@ yarn create-component                     # Interactive generator
 - A repeatable rollup task is available via the `Dependabot rollup task` workflow:
    - Runs weekly on schedule.
    - Can be triggered manually with `workflow_dispatch`.
+   - Supports `dry_run` so engineers can validate candidate selection without creating or updating issues.
+   - Supports `target_repo` to test candidate generation against a repository before merge.
    - Creates or updates a task issue capped to a configurable batch size (default: 11) with candidate Dependabot PRs and a ready-to-use supersedes block.
 
 ## What NOT to Do
