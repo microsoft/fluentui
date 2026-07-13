@@ -568,7 +568,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   video360: {},
-  wikipage: {},
   vsdx: {
     extensions: ['vdx', 'vsd', 'vsdm', 'vsdx', 'vsw', 'vdw'],
   },
@@ -581,6 +580,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   whiteboard: {
     extensions: ['whiteboard', 'wbtx'],
   },
+  wikipage: {},
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],
   },
