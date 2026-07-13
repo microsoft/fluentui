@@ -35,7 +35,6 @@ describe('Tooltip', () => {
             position: 'relative',
           }}
         >
-          {/* tall content so the container becomes scrollable */}
           <div style={{ height: '400px', paddingTop: '8px' }}>
             <Tooltip content="Overflow tooltip" relationship="label" data-testid="tooltip-content">
               <Button id="trigger">Hover me</Button>
@@ -44,16 +43,9 @@ describe('Tooltip', () => {
         </div>,
       );
 
-      // Hover the trigger to open the tooltip
       cy.get('#trigger').realHover();
-
-      // Wait for the tooltip to become visible (it renders into a portal)
       cy.get('[role="tooltip"]').should('be.visible');
-
-      // Scroll the container until the trigger is out of view
       cy.get('#scroll-container').scrollTo(0, 300);
-
-      // The positioning middleware should now set the referenceHidden attribute
       cy.get('[role="tooltip"]').should('have.attr', DATA_POSITIONING_HIDDEN);
     });
 
@@ -79,11 +71,9 @@ describe('Tooltip', () => {
       cy.get('#trigger').realHover();
       cy.get('[role="tooltip"]').should('be.visible');
 
-      // Scroll away — attribute should appear
       cy.get('#scroll-container').scrollTo(0, 300);
       cy.get('[role="tooltip"]').should('have.attr', DATA_POSITIONING_HIDDEN);
 
-      // Scroll back — attribute should be removed
       cy.get('#scroll-container').scrollTo(0, 0);
       cy.get('[role="tooltip"]').should('not.have.attr', DATA_POSITIONING_HIDDEN);
     });
@@ -111,8 +101,6 @@ describe('Tooltip', () => {
       cy.get('[role="tooltip"]').should('be.visible');
 
       cy.get('#scroll-container').scrollTo(0, 300);
-
-      // The CSS rule `&[data-popper-reference-hidden] { visibility: hidden }` should apply
       cy.get('[role="tooltip"]').should('have.css', 'visibility', 'hidden');
     });
   });
