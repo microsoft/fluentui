@@ -57,6 +57,10 @@ yarn create-component                     # Interactive generator
 - Grouped Dependabot PRs still require normal human review and are not auto-merged.
 - Semver-major updates remain excluded by configuration and require explicit manual handling.
 - Branch protection and required CI checks remain unchanged for these PRs.
+- A repeatable rollup task is available via the `Dependabot rollup task` workflow:
+   - Runs weekly on schedule.
+   - Can be triggered manually with `workflow_dispatch`.
+   - Creates or updates a task issue capped to a configurable batch size (default: 11) with candidate Dependabot PRs and a ready-to-use supersedes block.
 
 ## What NOT to Do
 
