@@ -5,6 +5,7 @@ import { useMenuItem_unstable } from './useMenuItem';
 import { MenuListProvider } from '../../contexts/menuListContext';
 import { MenuProvider } from '../../contexts/menuContext';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
+import { MenuSplitGroupContextProvider } from '../../contexts/menuSplitGroupContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
@@ -51,15 +52,22 @@ function makeWrapper(
     menuList?: Partial<MenuListContextValue>;
     menu?: Partial<MenuContextValue>;
     isSubmenuTrigger?: boolean;
+    inMenuSplitGroup?: boolean;
   } = {},
 ) {
   const menuListValue: MenuListContextValue = { ...defaultMenuListContextValue, ...options.menuList };
   const menuValue: MenuContextValue = { ...defaultMenuContextValue, ...options.menu };
 
+  const splitGroupContextValue = {
+    setMultiline: () => null,
+  };
+
   return ({ children }: { children: React.ReactNode }) => (
     <MenuProvider value={menuValue}>
       <MenuListProvider value={menuListValue}>
-        <MenuTriggerContextProvider value={options.isSubmenuTrigger ?? false}>{children}</MenuTriggerContextProvider>
+        <MenuSplitGroupContextProvider value={options.inMenuSplitGroup ? splitGroupContextValue : undefined}>
+          <MenuTriggerContextProvider value={options.isSubmenuTrigger ?? false}>{children}</MenuTriggerContextProvider>
+        </MenuSplitGroupContextProvider>
       </MenuListProvider>
     </MenuProvider>
   );
@@ -254,6 +262,17 @@ describe('useMenuItem_unstable', () => {
       expect(result.current.icon).toBeDefined();
     });
 
+    it('icon is undefined for a split-group submenu trigger even when hasIcons=true', () => {
+      const ref = React.createRef<ARIAButtonElement<'div'>>();
+
+      const { result } = renderHook(() => useMenuItem_unstable({}, ref), {
+        wrapper: makeWrapper({ menuList: { hasIcons: true }, isSubmenuTrigger: true, inMenuSplitGroup: true }),
+      });
+
+      expect(result.current.hasSubmenu).toBe(true);
+      expect(result.current.icon).toBeUndefined();
+    });
+
     it('checkmark is undefined when hasCheckmarks=false and no checkmark prop', () => {
       const ref = React.createRef<ARIAButtonElement<'div'>>();
 
@@ -272,6 +291,17 @@ describe('useMenuItem_unstable', () => {
       });
 
       expect(result.current.checkmark).toBeDefined();
+    });
+
+    it('checkmark is undefined for a split-group submenu trigger even when hasCheckmarks=true', () => {
+      const ref = React.createRef<ARIAButtonElement<'div'>>();
+
+      const { result } = renderHook(() => useMenuItem_unstable({}, ref), {
+        wrapper: makeWrapper({ menuList: { hasCheckmarks: true }, isSubmenuTrigger: true, inMenuSplitGroup: true }),
+      });
+
+      expect(result.current.hasSubmenu).toBe(true);
+      expect(result.current.checkmark).toBeUndefined();
     });
   });
 });
