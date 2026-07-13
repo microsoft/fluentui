@@ -65,9 +65,15 @@ function makeWrapper(
   return ({ children }: { children: React.ReactNode }) => (
     <MenuProvider value={menuValue}>
       <MenuListProvider value={menuListValue}>
-        <MenuSplitGroupContextProvider value={options.inMenuSplitGroup ? splitGroupContextValue : undefined}>
+        {options.inMenuSplitGroup ? (
+          <MenuSplitGroupContextProvider value={splitGroupContextValue}>
+            <MenuTriggerContextProvider value={options.isSubmenuTrigger ?? false}>
+              {children}
+            </MenuTriggerContextProvider>
+          </MenuSplitGroupContextProvider>
+        ) : (
           <MenuTriggerContextProvider value={options.isSubmenuTrigger ?? false}>{children}</MenuTriggerContextProvider>
-        </MenuSplitGroupContextProvider>
+        )}
       </MenuListProvider>
     </MenuProvider>
   );
