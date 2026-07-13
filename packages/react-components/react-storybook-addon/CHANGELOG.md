@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-storybook-addon
 
-This log was last generated on Tue, 16 Jun 2026 18:28:45 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jun 2026 10:28:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.1)
+
+Tue, 30 Jun 2026 10:28:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon_v0.7.0..@fluentui/react-storybook-addon_v0.7.1)
+
+### Patches
+
+- feat: allow theme picker options configuration ([PR #36358](https://github.com/microsoft/fluentui/pull/36358) by dmytrokirpa@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon_v0.7.0)
 

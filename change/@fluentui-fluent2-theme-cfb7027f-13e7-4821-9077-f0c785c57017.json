@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fluent2-theme PrimaryButton high contrast focus style",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

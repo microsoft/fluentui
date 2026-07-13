@@ -184,8 +184,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     let allBars: JSXElement[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
-      allBars = stackedChartData
-        .map(singleBarData =>
+      allBars = stackedChartData.map((singleBarData, groupIndex) => {
+        const groupBars =
           _yAxisType === YAxisType.NumericAxis
             ? _createNumericBars(
                 containerHeight,
@@ -204,9 +204,18 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
                 singleBarData,
                 xBarScale,
                 yBarScale,
-              ),
-        )
-        .flat();
+              );
+
+        return (
+          <g
+            key={`bar-group-${groupIndex}`}
+            role="listbox"
+            aria-label={_getBarGroupAriaLabel(singleBarData, groupIndex)}
+          >
+            {groupBars}
+          </g>
+        );
+      });
     }
 
     return (_bars = allBars);
@@ -471,7 +480,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onClick={point.onClick}
             onMouseOver={(event: React.MouseEvent<SVGElement, MouseEvent>) => _onBarHover(point, startColor, event)}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, startColor)}
@@ -646,7 +655,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
             aria-label={_getAriaLabel(point)}
-            role="img"
+            role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
             }}
@@ -769,6 +778,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${yValue}. ` + (legend ? `${legend}, ` : '') + `${xValue}.`;
+  }
+
+  function _getBarGroupAriaLabel(singleBarData: HorizontalBarChartWithAxisDataPoint[], groupIndex: number): string {
+    const yGroupLabel = singleBarData[0]?.y?.toString() || `Group ${groupIndex + 1}`;
+    return `${yGroupLabel}, bar group ${groupIndex + 1} of ${_yAxisLabels.length}, with ${singleBarData.length} bars.`;
   }
 
   function _renderBarLabel(

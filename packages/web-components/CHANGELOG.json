@@ -2,6 +2,65 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 07 Jul 2026 04:09:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.1",
+      "version": "3.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "88ae4e37cb305f6666648c8e5df1174cb4c20b34",
+            "comment": "update V2 to V3 migration guide"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a1c768b8f024355b45ee95ecf0ced095328f0636",
+            "comment": "fix minor sticker sheet quirks"
+          }
+        ],
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c54d90587bd155c54ffad658229c7bedfb8c3b7f",
+            "comment": "fix: selected indocator position in vertical tablist"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Jul 2026 04:08:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "da54a2c150e0fe31b7a6342f1e2b9a3aaee4baae",
+            "comment": "add sticker sheet page to storybook "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jun 2026 22:18:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0",
+      "version": "3.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "7559015+janechu@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46be5ff69017aa8c930060023ac80959ce880165",
+            "comment": "Promote @fluentui/web-components to 3.0.0 stable release."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 04:08:41 GMT",
       "tag": "@fluentui/web-components_v3.0.0-rc.31",
       "version": "3.0.0-rc.31",

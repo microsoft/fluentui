@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 09:55:29 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.18.1",
+      "version": "8.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "9c17925ff19574494ad3157a2a9418d03a9a0101",
+            "comment": "Update the file type icon map for the fabric-cdn-prod_20260623.001 drop."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.15.2",
+            "commit": "e287a20abcf5146c41ae0a6243c04358fddca40c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 10:02:37 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.18.0",
       "version": "8.18.0",

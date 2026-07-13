@@ -61,7 +61,10 @@ export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => J
 export const TagPicker: React_2.FC<TagPickerProps>;
 
 // @public
-export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning'>;
+export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning' | 'size' | 'appearance' | 'inline'>;
+
+// @public
+export type TagPickerBaseState = Omit<TagPickerState, 'size' | 'appearance' | 'inline'>;
 
 // @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
@@ -128,6 +131,11 @@ export type TagPickerControlBaseState = DistributiveOmit<TagPickerControlState, 
 
 // @public (undocumented)
 export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots>;
+
+// @public (undocumented)
+export type TagPickerControlInternalSlots = {
+    aside?: NonNullable<Slot<'span'>>;
+};
 
 // @public
 export type TagPickerControlProps = ComponentProps<Partial<TagPickerControlSlots>>;
@@ -285,7 +293,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState
 export const useTagPicker_unstable: (props: TagPickerProps) => TagPickerState;
 
 // @public
-export const useTagPickerBase_unstable: (props: TagPickerBaseProps) => TagPickerState;
+export const useTagPickerBase_unstable: (props: TagPickerBaseProps) => TagPickerBaseState;
 
 // @public
 export const useTagPickerButton_unstable: (props: TagPickerButtonProps, ref: React_2.Ref<HTMLButtonElement>) => TagPickerButtonState;
@@ -298,6 +306,9 @@ export const useTagPickerButtonStyles_unstable: (state: TagPickerButtonState) =>
 
 // @public (undocumented)
 export const useTagPickerContext_unstable: <T>(selector: ContextSelector<TagPickerContextValue, T>) => T;
+
+// @public (undocumented)
+export function useTagPickerContextValues(state: TagPickerState): TagPickerContextValues;
 
 // @public
 export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;

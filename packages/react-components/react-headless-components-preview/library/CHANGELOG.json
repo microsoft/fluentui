@@ -2,6 +2,21 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Mon, 29 Jun 2026 18:34:05 GMT",
+      "tag": "@fluentui/react-headless-components-preview_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "078dec11b67b7bad6d3e4b541246039602d54983",
+            "comment": "feat: add headless MenuButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 14:52:03 GMT",
       "tag": "@fluentui/react-headless-components-preview_v0.2.2",
       "version": "0.2.2",

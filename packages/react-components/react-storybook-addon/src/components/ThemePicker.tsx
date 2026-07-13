@@ -4,9 +4,9 @@ import { ArrowDownIcon } from '@storybook/icons';
 import { useParameter } from 'storybook/manager-api';
 
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { ThemeIds } from '../theme';
-import { themes, defaultTheme } from '../theme';
-import { THEME_ID } from '../constants';
+import type { ThemeIds, Theme } from '../theme';
+import { themes as defaultThemes, defaultTheme } from '../theme';
+import { THEME_ID, THEMES } from '../constants';
 import type { FluentParameters } from '../hooks';
 import { useGlobals } from '../hooks';
 
@@ -19,7 +19,7 @@ export interface ThemeSelectorItem {
 }
 
 function createThemeItems(
-  value: typeof themes,
+  value: Theme[],
   changeTheme: (id: ThemeIds) => void,
   getCurrentTheme: () => ThemeIds,
 ): ThemeSelectorItem[] {
@@ -39,6 +39,7 @@ function createThemeItems(
 export const ThemePicker = (): JSXElement => {
   const [globals, updateGlobals] = useGlobals();
   const fluentTheme: FluentParameters['fluentTheme'] = useParameter('fluentTheme');
+  const themes: Theme[] = useParameter('fluentThemes') ?? globals[THEMES] ?? defaultThemes;
 
   const selectedThemeId = fluentTheme ? fluentTheme : globals[THEME_ID] ?? defaultTheme.id;
   const selectedTheme = themes.find(entry => entry.id === selectedThemeId);
@@ -67,7 +68,7 @@ export const ThemePicker = (): JSXElement => {
         />
       );
     },
-    [selectedThemeId, setTheme],
+    [selectedThemeId, setTheme, themes],
   );
 
   return (

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 09:55:29 GMT",
+      "tag": "@fluentui/react-experiments_v8.16.7",
+      "version": "8.16.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.125.7",
+            "commit": "e287a20abcf5146c41ae0a6243c04358fddca40c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/foundation-legacy to v8.6.7",
+            "commit": "e287a20abcf5146c41ae0a6243c04358fddca40c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.74",
+            "commit": "e287a20abcf5146c41ae0a6243c04358fddca40c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/style-utilities to v8.15.2",
+            "commit": "e287a20abcf5146c41ae0a6243c04358fddca40c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 10:02:38 GMT",
       "tag": "@fluentui/react-experiments_v8.16.6",
       "version": "8.16.6",
