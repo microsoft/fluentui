@@ -45,24 +45,21 @@ yarn create-component                     # Interactive generator
 
 6. **Link issue** — Use `Fixes #<number>` in PR body
 
+## Dependabot Bundling
+
+The repository includes a scheduled and manual Dependabot bundler workflow at [`.github/workflows/dependabot-pr-bundler.yml`](../../.github/workflows/dependabot-pr-bundler.yml). It groups the oldest open Dependabot PRs for the selected base branch, merges the compatible ones into a draft bundle PR, and runs the repo's affected validation before opening the PR.
+
+Useful inputs when triggering it manually:
+
+- `base_branch` — branch to bundle against, defaults to `master`
+- `max_prs` — maximum number of Dependabot PRs to consider, defaults to `11`
+- `dry_run` — prints the candidate bundle without creating a PR
+
 ## Branch Naming
 
 - Bug fixes: `fix/<issue>-<description>`
 - Features: `feat/<issue>-<description>`
 - Docs: `docs/<description>`
-
-## Dependabot Review Model
-
-- Dependabot updates are grouped so patch/minor updates are consolidated into fewer PRs per ecosystem.
-- Grouped Dependabot PRs still require normal human review and are not auto-merged.
-- Semver-major updates remain excluded by configuration and require explicit manual handling.
-- Branch protection and required CI checks remain unchanged for these PRs.
-- A repeatable rollup task is available via the `Dependabot rollup task` workflow:
-  - Runs weekly on schedule.
-  - Can be triggered manually with `workflow_dispatch`.
-  - Supports `dry_run` so engineers can validate candidate selection without creating or updating issues.
-  - Supports `target_repo` to test candidate generation against a repository before merge.
-  - Creates or updates a task issue capped to a configurable batch size (default: 11) with candidate Dependabot PRs and a ready-to-use supersedes block.
 
 ## What NOT to Do
 
