@@ -5,6 +5,9 @@
 ```ts
 
 import type { AtomMotion } from '@fluentui/react-motion';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { MotionComponent } from '@fluentui/react-motion';
+import type { MotionComponentProps } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
 import type { PresenceComponentProps } from '@fluentui/react-motion';
 import type { PresenceDirection } from '@fluentui/react-motion';
@@ -60,6 +63,19 @@ export const Fade: PresenceComponent<FadeParams>;
 
 // @public
 export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
+
+// @public
+export const fadeAtom2: ({ duration, easing, delay, fill, fromOpacity, toOpacity, }: FadeAtom2Params) => AtomMotion;
+
+// @public (undocumented)
+export type FadeAtom2Params = {
+    duration: number;
+    easing?: EffectTiming['easing'];
+    delay?: EffectTiming['delay'];
+    fill?: FillMode;
+    fromOpacity?: number;
+    toOpacity?: number;
+};
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
@@ -130,6 +146,54 @@ export interface SequenceProps {
 
 // @public
 export const Slide: PresenceComponent<SlideParams>;
+
+// @public
+export const Slide2: Slide2Component;
+
+// @public (undocumented)
+export type Slide2Component = {
+    (props: PresenceComponentProps & Slide2Params): JSXElement | null;
+    In: MotionComponent<Slide2InParams>;
+    Out: MotionComponent<Slide2OutParams>;
+};
+
+// @public (undocumented)
+export type Slide2InParams = AnimateOpacity & {
+    duration?: number;
+    easing?: string;
+    delay?: EffectTiming['delay'];
+    fromX?: string;
+    fromY?: string;
+    restX?: string;
+    restY?: string;
+};
+
+// @public (undocumented)
+export type Slide2InProps = MotionComponentProps & Slide2InParams;
+
+// @public (undocumented)
+export type Slide2OutParams = AnimateOpacity & {
+    duration?: number;
+    easing?: string;
+    delay?: EffectTiming['delay'];
+    restX?: string;
+    restY?: string;
+    toX?: string;
+    toY?: string;
+};
+
+// @public (undocumented)
+export type Slide2OutProps = MotionComponentProps & Slide2OutParams;
+
+// @public (undocumented)
+export type Slide2Params = BasePresenceParams & AnimateOpacity & {
+    fromX?: string;
+    fromY?: string;
+    restX?: string;
+    restY?: string;
+    toX?: string;
+    toY?: string;
+};
 
 // @public
 export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;

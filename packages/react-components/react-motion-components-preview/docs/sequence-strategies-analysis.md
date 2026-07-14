@@ -192,9 +192,9 @@ The exact first prototype should be as small as:
 
 ```ts
 createSequenceFromAtoms([
-  slideAtom({ fromX: '-20px', duration: 200 }),
+  slideAtom2({ fromX: '-20px', duration: 200 }),
   { kind: 'hold', durationMs: 400 },
-  fadeAtom({ duration: 150 }),
+  fadeAtom2({ duration: 150 }),
 ]);
 ```
 
@@ -219,7 +219,7 @@ declare function createSequenceFromAtoms(
 
 A sequence is a higher-order motion definition assembled from lower-level atoms. Internally that is molecule-like composition, but the public API need not introduce or require the word “molecule.”
 
-Preview atoms may need to be rewritten before this factory is pleasant to use. The current slide experiments are presence-centric and encode `enter`/`exit` direction. A neutral sequence atom should instead describe explicit `from` and `to` endpoints; presence can choose direction while a sequence can place the same neutral definition anywhere.
+The preview `Slide2` prototype separates presence policy from directed one-way motions without changing the existing `Slide` API. `Slide2` presence follows `from → rest → to` (with `to` defaulting to `from` for symmetric transitions), `Slide2.In` follows `from → rest`, and `Slide2.Out` follows `rest → to`. The neutral sequence atom below describes explicit `from` and `to` endpoints; presence chooses direction while a sequence can place the same neutral definition anywhere.
 
 One possible refactor is to make timing and directed endpoints the complete atom contract:
 
@@ -231,14 +231,14 @@ type AtomTimingParams = {
   readonly fill?: FillMode;
 };
 
-type SlideAtomParams = AtomTimingParams & {
+type SlideAtom2Params = AtomTimingParams & {
   readonly fromX?: string;
   readonly fromY?: string;
   readonly toX?: string;
   readonly toY?: string;
 };
 
-export function slideAtom({
+export function slideAtom2({
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,
@@ -247,7 +247,7 @@ export function slideAtom({
   fromY = '0px',
   toX = '0px',
   toY = '0px',
-}: SlideAtomParams): AtomMotion {
+}: SlideAtom2Params): AtomMotion {
   return {
     keyframes: [{ translate: `${fromX} ${fromY}` }, { translate: `${toX} ${toY}` }],
     duration,
@@ -257,19 +257,19 @@ export function slideAtom({
   };
 }
 
-type FadeAtomParams = AtomTimingParams & {
+type FadeAtom2Params = AtomTimingParams & {
   readonly fromOpacity?: number;
   readonly toOpacity?: number;
 };
 
-export function fadeAtom({
+export function fadeAtom2({
   duration,
   easing = motionTokens.curveLinear,
   delay = 0,
   fill,
   fromOpacity = 0,
   toOpacity = 1,
-}: FadeAtomParams): AtomMotion {
+}: FadeAtom2Params): AtomMotion {
   return {
     keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
     duration,
@@ -282,28 +282,31 @@ export function fadeAtom({
 
 There is no `direction` branch and no mutation through `keyframes.reverse()`. Each atom says exactly which value change it performs. A standalone atom can omit `fill` and inherit the motion runtime's forward-fill default. Callers that need pre-delay state, including presence, request it explicitly.
 
-The existing presence component then becomes the policy layer that constructs atoms in each direction:
+The implemented `Slide2` presence model is the policy layer that constructs atoms in each direction:
 
 ```ts
-const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
+const slide2PresenceFn: PresenceMotionFn<Slide2Params> = ({
+  element,
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveDecelerateMid,
   delay = 0,
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMid,
   exitDelay = delay,
-  outX = '0px',
-  outY = '0px',
-  inX = '0px',
-  inY = '0px',
+  fromX = '0px',
+  fromY = '0px',
+  restX = '0px',
+  restY = '0px',
+  toX = fromX,
+  toY = fromY,
   animateOpacity = true,
 }) => {
   const enter: AtomMotion[] = [
-    slideAtom({
-      fromX: outX,
-      fromY: outY,
-      toX: inX,
-      toY: inY,
+    slideAtom2({
+      fromX,
+      fromY,
+      toX: restX,
+      toY: restY,
       duration,
       easing,
       delay,
@@ -311,11 +314,11 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
     }),
   ];
   const exit: AtomMotion[] = [
-    slideAtom({
-      fromX: inX,
-      fromY: inY,
-      toX: outX,
-      toY: outY,
+    slideAtom2({
+      fromX: restX,
+      fromY: restY,
+      toX,
+      toY,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
@@ -324,9 +327,9 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   ];
 
   if (animateOpacity) {
-    enter.push(fadeAtom({ fromOpacity: 0, toOpacity: 1, duration, easing, delay, fill: 'both' }));
+    enter.push(fadeAtom2({ fromOpacity: 0, toOpacity: 1, duration, easing, delay, fill: 'both' }));
     exit.push(
-      fadeAtom({
+      fadeAtom2({
         fromOpacity: 1,
         toOpacity: 0,
         duration: exitDuration,
@@ -340,16 +343,16 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   return { enter, exit };
 };
 
-export const Slide = createPresenceComponent(slidePresenceFn);
+export const Slide2 = createPresenceComponent(slide2PresenceFn);
 ```
 
 The sequence author uses the same atoms directly, without presence terminology:
 
 ```tsx
 const CardSequence = createSequenceFromAtoms([
-  slideAtom({ fromX: '-20px', toX: '0px', duration: 200 }),
+  slideAtom2({ fromX: '-20px', toX: '0px', duration: 200 }),
   { kind: 'hold', durationMs: 400 },
-  fadeAtom({ fromOpacity: 1, toOpacity: 0, duration: 150 }),
+  fadeAtom2({ fromOpacity: 1, toOpacity: 0, duration: 150 }),
 ]);
 
 <CardSequence>

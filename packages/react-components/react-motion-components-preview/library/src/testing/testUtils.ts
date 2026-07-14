@@ -1,9 +1,35 @@
 'use client';
 
-import type { MotionParam, PresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
+import type {
+  AtomMotionFn,
+  MotionComponent,
+  MotionParam,
+  PresenceComponent,
+  PresenceComponentProps,
+  PresenceMotionFn,
+} from '@fluentui/react-motion';
+
+type PresenceDefinitionComponent<MotionParams extends Record<string, MotionParam>> =
+  | PresenceComponent<MotionParams>
+  | ((props: PresenceComponentProps & MotionParams) => unknown);
+
+export function getMotionFunction<MotionParams extends Record<string, MotionParam>>(
+  component: MotionComponent<MotionParams>,
+): AtomMotionFn<MotionParams> | null {
+  const symbols = Object.getOwnPropertySymbols(component);
+
+  for (const symbol of symbols) {
+    if (symbol.toString() === 'Symbol(MOTION_DEFINITION)') {
+      // @ts-expect-error symbol can't be used as an index there, type casting is also not possible
+      return component[symbol];
+    }
+  }
+
+  return null;
+}
 
 export function getPresenceMotionFunction<MotionParams extends Record<string, MotionParam>>(
-  component: PresenceComponent<MotionParams>,
+  component: PresenceDefinitionComponent<MotionParams>,
 ): PresenceMotionFn<MotionParams> | null {
   const symbols = Object.getOwnPropertySymbols(component);
 

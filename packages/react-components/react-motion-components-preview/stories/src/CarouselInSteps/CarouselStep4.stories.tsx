@@ -284,18 +284,15 @@ export const CarouselStep4 = () => {
     </Sequence>
   );
 
-  const SlideABTransition: React.FC<{ contentA: JSXElement; contentB: JSXElement }> = ({
-    contentA,
-    contentB,
-  }) => (
-<Sequence>
-  <Slide.Out fromY="100px" duration={400} easing={motionTokens.curveAccelerateMin}>
-    {contentA}
-  </Slide.Out>
-  <Slide.In fromY="-100px" duration={400} easing={motionTokens.curveDecelerateMin}>
-    {contentB}
-  </Slide.In>
-</Sequence>
+  const SlideABTransition: React.FC<{ contentA: JSXElement; contentB: JSXElement }> = ({ contentA, contentB }) => (
+    <Sequence>
+      <Slide.Out fromY="100px" duration={400} easing={motionTokens.curveAccelerateMin}>
+        {contentA}
+      </Slide.Out>
+      <Slide.In fromY="-100px" duration={400} easing={motionTokens.curveDecelerateMin}>
+        {contentB}
+      </Slide.In>
+    </Sequence>
   );
 
   const sceneA = (
