@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -31,6 +32,12 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
 // @public
 export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
+
+// @public
+export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>): StateMotionComponent<State, Event>;
+
+// @public
+export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>, options?: StateMotionControllerOptions<State>): StateMotionController<State, Event>;
 
 // @public (undocumented)
 export const curves: {
@@ -204,11 +211,92 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
     }>;
 };
 
+// @public
+export type StateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>> = ForwardRefComponent<StateMotionComponentProps<State, Event>>;
+
+// @public
+export type StateMotionComponentProps<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    children: JSXElement;
+    controller: StateMotionController<State, Event>;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+    onMotionStart?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
+    onMotionFinish?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
+    onMotionCancel?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
+};
+
+// @public
+export type StateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    readonly definition: StateMotionDefinition<State, Event>;
+    getSnapshot(): StateMotionSnapshot<State, Event>;
+    send(event: Event): boolean;
+    subscribe(listener: () => void): () => void;
+};
+
+// @public
+export type StateMotionControllerOptions<State extends string> = {
+    initialState?: State;
+};
+
+// @public
+export type StateMotionDefinition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    initialState: State;
+    states: Record<State, StateMotionNode<State, Event>>;
+};
+
+// @public
+export type StateMotionEvent<Type extends PropertyKey = string> = {
+    type: Type;
+};
+
+// @public
+export type StateMotionNode<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    keyframe: Keyframe;
+    on?: {
+        [Type in Event['type']]?: StateMotionTransition<State, Extract<Event, {
+            type: Type;
+        }>>;
+    };
+};
+
+// @public
+export type StateMotionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    state: State;
+    transition: StateMotionTransitionSnapshot<State, Event> | undefined;
+};
+
+// @public
+export type StateMotionTransition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    target: State;
+    motion?: AtomMotion | AtomMotion[] | StateMotionTransitionMotionFn<State, Event>;
+};
+
+// @public
+export type StateMotionTransitionMotionFn<State extends string, Event extends StateMotionEvent<PropertyKey>> = (params: StateMotionTransitionMotionFnParams<State, Event>) => AtomMotion | AtomMotion[];
+
+// @public
+export type StateMotionTransitionMotionFnParams<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    element: HTMLElement;
+    event: Event;
+    source: StateMotionNode<State, Event>;
+    target: StateMotionNode<State, Event>;
+};
+
+// @public
+export type StateMotionTransitionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    id: number;
+    source: State;
+    target: State;
+    event: Event;
+};
+
 // @internal
 export function useMotionForwardedRef(): React_2.Ref<HTMLElement> | undefined;
 
 // @public (undocumented)
 export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;
+
+// @public
+export function useStateMotion<State extends string, Event extends StateMotionEvent<PropertyKey>>(controller: StateMotionController<State, Event>): StateMotionSnapshot<State, Event>;
 
 // (No @packageDocumentation comment for this package)
 

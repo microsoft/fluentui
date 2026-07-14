@@ -1913,9 +1913,12 @@ export {
   createMotionComponentVariant,
   createPresenceComponent,
   createPresenceComponentVariant,
+  createStateMotionComponent,
+  createStateMotionController,
   motionSlot,
   presenceMotionSlot,
   PresenceGroup,
+  useStateMotion,
 } from '@fluentui/react-motion';
 export type {
   AtomMotion,
@@ -1928,6 +1931,18 @@ export type {
   PresenceMotionFn,
   PresenceMotionSlotProps,
   PresenceComponentProps,
+  StateMotionComponent,
+  StateMotionComponentProps,
+  StateMotionController,
+  StateMotionControllerOptions,
+  StateMotionDefinition,
+  StateMotionEvent,
+  StateMotionNode,
+  StateMotionSnapshot,
+  StateMotionTransition,
+  StateMotionTransitionMotionFn,
+  StateMotionTransitionMotionFnParams,
+  StateMotionTransitionSnapshot,
 } from '@fluentui/react-motion';
 
 export {

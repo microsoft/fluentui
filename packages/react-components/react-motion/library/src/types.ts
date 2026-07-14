@@ -44,3 +44,64 @@ export type MotionImperativeRef = {
   /** Sets the state of the animation to running or paused. */
   setPlayState: (state: 'running' | 'paused') => void;
 };
+
+/** An event accepted by a state motion graph. */
+export type StateMotionEvent<Type extends PropertyKey = string> = { type: Type };
+
+/** A named resting state in a state motion graph. */
+export type StateMotionNode<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  /** The visual values associated with the resting state. */
+  keyframe: Keyframe;
+
+  /** Event-driven transitions available from this state. */
+  on?: {
+    [Type in Event['type']]?: StateMotionTransition<State, Extract<Event, { type: Type }>>;
+  };
+};
+
+/** A transition to another named state, optionally with a custom motion. */
+export type StateMotionTransition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  target: State;
+  motion?: AtomMotion | AtomMotion[] | StateMotionTransitionMotionFn<State, Event>;
+};
+
+/** Runtime values available when a transition resolves its motion. */
+export type StateMotionTransitionMotionFnParams<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  element: HTMLElement;
+  event: Event;
+  source: StateMotionNode<State, Event>;
+  target: StateMotionNode<State, Event>;
+};
+
+/** Creates the motion for a selected state transition. */
+export type StateMotionTransitionMotionFn<State extends string, Event extends StateMotionEvent<PropertyKey>> = (
+  params: StateMotionTransitionMotionFnParams<State, Event>,
+) => AtomMotion | AtomMotion[];
+
+/** A deterministic flat graph of named motion states and event-driven transitions. */
+export type StateMotionDefinition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  initialState: State;
+  states: Record<State, StateMotionNode<State, Event>>;
+};
+
+/** The edge selected by the most recently accepted event. */
+export type StateMotionTransitionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  id: number;
+  source: State;
+  target: State;
+  event: Event;
+};
+
+/** The current logical state and most recently selected edge. */
+export type StateMotionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  state: State;
+  transition: StateMotionTransitionSnapshot<State, Event> | undefined;
+};
+
+/** An event-driven controller for a flat state motion graph. */
+export type StateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+  readonly definition: StateMotionDefinition<State, Event>;
+  getSnapshot(): StateMotionSnapshot<State, Event>;
+  send(event: Event): boolean;
+  subscribe(listener: () => void): () => void;
+};
