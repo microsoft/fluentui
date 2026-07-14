@@ -65,6 +65,54 @@ function createPr(title, body, bundleBranch) {
   ]);
 }
 
+function parseVersion(versionText) {
+  const normalized = versionText.trim().replace(/^v/, '');
+  const match = normalized.match(/^(\d+)\.(\d+)\.(\d+)$/);
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    major: Number.parseInt(match[1], 10),
+    minor: Number.parseInt(match[2], 10),
+    patch: Number.parseInt(match[3], 10),
+  };
+}
+
+function classifyUpdate(prTitle) {
+  const match = prTitle.match(/\sfrom\s([^\s]+)\s+to\s([^\s]+)$/i);
+
+  if (!match) {
+    return { allowed: false, reason: 'unparseable update title' };
+  }
+
+  const from = parseVersion(match[1]);
+  const to = parseVersion(match[2]);
+
+  if (!from || !to) {
+    return { allowed: false, reason: 'non-semver update' };
+  }
+
+  if (to.major !== from.major) {
+    return { allowed: false, reason: 'semver-major update' };
+  }
+
+  if (to.minor < from.minor || (to.minor === from.minor && to.patch < from.patch)) {
+    return { allowed: false, reason: 'non-increasing version' };
+  }
+
+  if (to.minor > from.minor) {
+    return { allowed: true, kind: 'minor' };
+  }
+
+  if (to.patch > from.patch) {
+    return { allowed: true, kind: 'patch' };
+  }
+
+  return { allowed: false, reason: 'no version change' };
+}
+
 const openPrs = JSON.parse(
   run('gh', [
     'pr',
@@ -80,7 +128,20 @@ const openPrs = JSON.parse(
   ]),
 ).filter(pr => pr.baseRefName === baseBranch);
 
-const selectedPrs = openPrs
+const excludedPrs = [];
+
+const eligiblePrs = openPrs.filter(pr => {
+  const update = classifyUpdate(pr.title);
+
+  if (update.allowed) {
+    return true;
+  }
+
+  excludedPrs.push({ pr, reason: update.reason });
+  return false;
+});
+
+const selectedPrs = eligiblePrs
   .sort((left, right) => new Date(left.updatedAt) - new Date(right.updatedAt))
   .slice(0, maxPrs);
 
@@ -89,8 +150,20 @@ writeSummary('');
 writeSummary(`- Base branch: \`${baseBranch}\``);
 writeSummary(`- Max PRs: \`${maxPrs}\``);
 writeSummary(`- Dry run: \`${dryRun}\``);
+writeSummary(`- Eligible PRs: \`${eligiblePrs.length}\``);
+writeSummary(`- Excluded PRs: \`${excludedPrs.length}\``);
 writeSummary(`- Selected PRs: \`${selectedPrs.length}\``);
 writeSummary('');
+
+if (excludedPrs.length > 0) {
+  writeSummary('Excluded PRs:');
+
+  for (const excluded of excludedPrs) {
+    writeSummary(`- #${excluded.pr.number} ${excluded.pr.title} (${excluded.reason})`);
+  }
+
+  writeSummary('');
+}
 
 if (selectedPrs.length === 0) {
   writeSummary('No open Dependabot PRs were found for the selected base branch.');

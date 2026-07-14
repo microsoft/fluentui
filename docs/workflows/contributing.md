@@ -60,7 +60,9 @@ This flow is intentionally lightweight and based on team practice rather than st
 
 ## Dependabot Bundling
 
-The repository includes a scheduled and manual Dependabot bundler workflow at [`.github/workflows/dependabot-pr-bundler.yml`](../../.github/workflows/dependabot-pr-bundler.yml). It groups the oldest open Dependabot PRs for the selected base branch, merges the compatible ones into a draft bundle PR, and runs the repo's affected validation before opening the PR.
+The repository includes a scheduled and manual Dependabot bundler workflow at [`.github/workflows/dependabot-pr-bundler.yml`](../../.github/workflows/dependabot-pr-bundler.yml). It groups the oldest open Dependabot PRs for the selected base branch, merges compatible semver patch/minor updates into a draft bundle PR, and runs the repo's affected validation before opening the PR.
+
+Semver-major and non-semver updates are intentionally excluded from automatic bundling and remain manual review items.
 
 Useful inputs when triggering it manually:
 
