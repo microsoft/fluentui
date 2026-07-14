@@ -1,10 +1,10 @@
 import type { AtomMotion, AtomMotionFn, PresenceMotionFn } from '@fluentui/react-motion';
-import { createMotionComponent, createPresenceComponent, motionTokens } from '@fluentui/react-motion';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { fadeAtom2 } from '../../atoms/fade-atom2';
 import { slideAtom2 } from '../../atoms/slide-atom2';
-import type { Slide2Component, Slide2InParams, Slide2OutParams, Slide2Params } from './slide2-types';
+import type { Slide2Params } from './slide2-types';
 
-const slide2InMotionFn: AtomMotionFn<Slide2InParams> = ({
+const slide2InMotionFn: AtomMotionFn<Slide2Params> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveDecelerateMid,
   delay = 0,
@@ -34,7 +34,7 @@ const slide2InMotionFn: AtomMotionFn<Slide2InParams> = ({
   return atoms;
 };
 
-const slide2OutMotionFn: AtomMotionFn<Slide2OutParams> = ({
+const slide2OutMotionFn: AtomMotionFn<Slide2Params> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveAccelerateMid,
   delay = 0,
@@ -114,15 +114,8 @@ const slide2PresenceFn: PresenceMotionFn<Slide2Params> = ({
   }),
 });
 
-const Slide2In = createMotionComponent(slide2InMotionFn);
-const Slide2Out = createMotionComponent(slide2OutMotionFn);
-const Slide2Presence = createPresenceComponent(slide2PresenceFn);
-
 /**
  * A prototype presence component that follows `from → rest → to`.
  * `Slide2.In` performs `from → rest`; `Slide2.Out` performs `rest → to`.
  */
-export const Slide2 = Object.assign(Slide2Presence, {
-  In: Slide2In,
-  Out: Slide2Out,
-}) as Slide2Component;
+export const Slide2 = createPresenceComponent(slide2PresenceFn);
