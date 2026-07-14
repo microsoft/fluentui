@@ -253,7 +253,7 @@ export function slideAtom({
     duration,
     easing,
     delay,
-    fill,
+    ...(fill === undefined ? {} : { fill }),
   };
 }
 
@@ -275,7 +275,7 @@ export function fadeAtom({
     duration,
     easing,
     delay,
-    fill,
+    ...(fill === undefined ? {} : { fill }),
   };
 }
 ```

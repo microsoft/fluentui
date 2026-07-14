@@ -27,4 +27,5 @@ export { fadeAtom } from './atoms/fade-atom';
 export { rotateAtom } from './atoms/rotate-atom';
 export { scaleAtom } from './atoms/scale-atom';
 export { slideAtom } from './atoms/slide-atom';
+export { slideAtom2, type SlideAtom2Params } from './atoms/slide-atom2';
 // TODO: consider whether to export some or all collapse atoms

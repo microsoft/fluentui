@@ -1,8 +1,10 @@
 'use client';
 
-import type { PresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
+import type { MotionParam, PresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
 
-function getPresenceMotionFunction(component: PresenceComponent): PresenceMotionFn | null {
+export function getPresenceMotionFunction<MotionParams extends Record<string, MotionParam>>(
+  component: PresenceComponent<MotionParams>,
+): PresenceMotionFn<MotionParams> | null {
   const symbols = Object.getOwnPropertySymbols(component);
 
   for (const symbol of symbols) {
