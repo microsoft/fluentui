@@ -3,12 +3,10 @@ import { Popover } from './Popover';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { usePopover_unstable } from './usePopover';
 import { isConformant } from '../../testing/isConformant';
+import { nonInteractiveContentWarning } from './constants';
 import type { PopoverProps } from './Popover.types';
 
 describe('Popover', () => {
-  const nonInteractiveContentWarning =
-    'Non-modal Popover with non-interactive content may not be announced by screen readers because focus remains on the trigger. Consider using Tooltip for informational content, or make the Popover content focusable if user interaction is expected.';
-
   isConformant({
     Component: Popover,
     displayName: 'Popover',

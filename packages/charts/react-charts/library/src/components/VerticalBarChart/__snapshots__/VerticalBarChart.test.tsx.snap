@@ -4983,6 +4983,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       <div
         class="fui-PopoverSurface"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div
@@ -5608,6 +5609,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       <div
         class="fui-PopoverSurface"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div>

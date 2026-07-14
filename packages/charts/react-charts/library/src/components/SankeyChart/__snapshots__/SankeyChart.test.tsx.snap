@@ -11596,6 +11596,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <div
         class="fui-PopoverSurface"
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
         style="position: fixed; left: 0px; top: 0px; margin: 0px;"
       >
         <div

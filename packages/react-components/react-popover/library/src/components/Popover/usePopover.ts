@@ -20,7 +20,7 @@ import {
 import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
-import { popoverSurfaceBorderRadius } from './constants';
+import { nonInteractiveContentWarning, popoverSurfaceBorderRadius } from './constants';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import { PopoverSurfaceMotion } from './PopoverSurfaceMotion';
 
@@ -195,9 +195,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     }
 
     // eslint-disable-next-line no-console
-    console.warn(
-      'Non-modal Popover with non-interactive content may not be announced by screen readers because focus remains on the trigger. Consider using Tooltip for informational content, or make the Popover content focusable if user interaction is expected.',
-    );
+    console.warn(nonInteractiveContentWarning);
     hasWarnedForNonFocusableContent.current = true;
   }, [findFirstFocusable, open, positioningRefs.contentRef]);
 
