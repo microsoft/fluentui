@@ -45,6 +45,19 @@ yarn create-component                     # Interactive generator
 
 6. **Link issue** — Use `Fixes #<number>` in PR body
 
+## Draft PR Flow
+
+When you are still actively iterating, open the PR as **Draft**. This helps avoid unnecessary review notifications while work is still in progress.
+
+Move a PR to **Ready for review** when both are true:
+
+1. You are done with the implementation for that PR scope.
+2. The pipeline is green (required CI checks pass).
+
+If you are working through multiple related tasks, it is fine to keep several PRs in draft and only mark each one ready when it meets the criteria above.
+
+This flow is intentionally lightweight and based on team practice rather than strict gatekeeping.
+
 ## Dependabot Bundling
 
 The repository includes a scheduled and manual Dependabot bundler workflow at [`.github/workflows/dependabot-pr-bundler.yml`](../../.github/workflows/dependabot-pr-bundler.yml). It groups the oldest open Dependabot PRs for the selected base branch, merges the compatible ones into a draft bundle PR, and runs the repo's affected validation before opening the PR.
