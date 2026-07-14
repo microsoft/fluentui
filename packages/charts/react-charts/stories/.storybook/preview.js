@@ -6,7 +6,7 @@ export const decorators = [...rootPreview.decorators];
 /** @type {typeof rootPreview.parameters} */
 export const parameters = {
   ...rootPreview.parameters,
-  reactStorybookAddon: { docs: process.env.DOCS_MODE !== 'false' },
+  reactStorybookAddon: { docs: true },
 };
 
 export const tags = ['autodocs'];
