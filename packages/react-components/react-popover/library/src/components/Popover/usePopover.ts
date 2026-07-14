@@ -35,6 +35,7 @@ import { PopoverSurfaceMotion } from './PopoverSurfaceMotion';
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
   const { targetDocument } = useFluent();
+  const hasWarnedForNonFocusableContent = React.useRef(false);
 
   const positioning = resolvePositioningShorthand(props.positioning);
   const handlePositionEnd = usePositioningSlideDirection({
@@ -182,6 +183,24 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     }
   }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'production' || hasWarnedForNonFocusableContent.current || !open) {
+      return;
+    }
+
+    const contentElement = positioningRefs.contentRef.current;
+
+    if (!contentElement || hasFocusableContent(contentElement)) {
+      return;
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Non-modal Popover with non-interactive content may not be announced by screen readers because focus remains on the trigger. Consider using Tooltip for informational content, or make the Popover content focusable if user interaction is expected.',
+    );
+    hasWarnedForNonFocusableContent.current = true;
+  }, [findFirstFocusable, open, positioningRefs.contentRef]);
+
   return {
     components: {
       surfaceMotion: PopoverSurfaceMotion,
@@ -208,6 +227,13 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     }),
   };
 };
+
+function hasFocusableContent(contentElement: HTMLElement): boolean {
+  const focusableSelector =
+    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  return contentElement.matches(focusableSelector) || contentElement.querySelector(focusableSelector) !== null;
+}
 
 /**
  * Creates and manages the Popover open state

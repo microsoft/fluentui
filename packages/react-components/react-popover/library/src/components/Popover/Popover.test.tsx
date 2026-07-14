@@ -6,6 +6,9 @@ import { isConformant } from '../../testing/isConformant';
 import type { PopoverProps } from './Popover.types';
 
 describe('Popover', () => {
+  const nonInteractiveContentWarning =
+    'Non-modal Popover with non-interactive content may not be announced by screen readers because focus remains on the trigger. Consider using Tooltip for informational content, or make the Popover content focusable if user interaction is expected.';
+
   isConformant({
     Component: Popover,
     displayName: 'Popover',
@@ -214,6 +217,93 @@ describe('Popover', () => {
 
       document.body.removeChild(triggerButton);
       document.body.removeChild(popoverContent);
+    });
+  });
+
+  describe('dev warning for non-focusable content', () => {
+    let warnSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    });
+
+    afterEach(() => {
+      warnSpy.mockRestore();
+    });
+
+    it('warns when popover opens without focusable content', () => {
+      const content = document.createElement('div');
+      content.textContent = 'Static content';
+
+      const { result, rerender } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            children: <div />,
+          }),
+        { initialProps: { open: false } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = content;
+      });
+
+      rerender({ open: true });
+
+      expect(warnSpy).toHaveBeenCalledWith(nonInteractiveContentWarning);
+    });
+
+    it('does not warn when popover opens with focusable content', () => {
+      const content = document.createElement('div');
+      const button = document.createElement('button');
+      button.textContent = 'Focusable';
+      content.appendChild(button);
+      document.body.appendChild(content);
+
+      const { result, rerender } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            children: <div />,
+          }),
+        { initialProps: { open: false } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = content;
+      });
+
+      rerender({ open: true });
+
+      expect(warnSpy).not.toHaveBeenCalledWith(nonInteractiveContentWarning);
+
+      document.body.removeChild(content);
+    });
+
+    it('warns only once per popover instance', () => {
+      const content = document.createElement('div');
+      content.textContent = 'Static content';
+
+      const { result, rerender } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            children: <div />,
+          }),
+        { initialProps: { open: false } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = content;
+      });
+
+      rerender({ open: true });
+      rerender({ open: false });
+      rerender({ open: true });
+
+      const matchingWarnings = warnSpy.mock.calls.filter(call => call[0] === nonInteractiveContentWarning);
+
+      expect(matchingWarnings).toHaveLength(1);
     });
   });
 });
