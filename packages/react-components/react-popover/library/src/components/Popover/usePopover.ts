@@ -184,19 +184,21 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   React.useEffect(() => {
-    if (process.env.NODE_ENV === 'production' || hasWarnedForNonFocusableContent.current || !open) {
-      return;
+    if (process.env.NODE_ENV !== 'production') {
+      if (hasWarnedForNonFocusableContent.current || !open) {
+        return;
+      }
+
+      const contentElement = positioningRefs.contentRef.current;
+
+      if (!contentElement || hasFocusableContent(contentElement)) {
+        return;
+      }
+
+      // eslint-disable-next-line no-console
+      console.warn(nonInteractiveContentWarning);
+      hasWarnedForNonFocusableContent.current = true;
     }
-
-    const contentElement = positioningRefs.contentRef.current;
-
-    if (!contentElement || hasFocusableContent(contentElement)) {
-      return;
-    }
-
-    // eslint-disable-next-line no-console
-    console.warn(nonInteractiveContentWarning);
-    hasWarnedForNonFocusableContent.current = true;
   }, [findFirstFocusable, open, positioningRefs.contentRef]);
 
   return {
