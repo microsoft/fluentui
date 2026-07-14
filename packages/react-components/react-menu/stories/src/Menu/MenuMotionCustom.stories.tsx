@@ -16,7 +16,7 @@ const FadeInBlurOut = createPresenceComponent({
   enter: fadeAtom({ direction: 'enter', duration: 500 }),
   exit: [
     fadeAtom({ direction: 'exit', duration: 500 }),
-    blurAtom({ direction: 'exit', duration: 500, easing: motionTokens.curveEasyEase }),
+    blurAtom({ duration: 500, easing: motionTokens.curveEasyEase, fromRadius: '0px', toRadius: '10px' }),
   ],
 });
 
