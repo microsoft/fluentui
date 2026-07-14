@@ -12,7 +12,6 @@ type PopoverSurfaceAriaAttributes = Pick<React.HTMLAttributes<HTMLDivElement>, '
 /**
  * Returns the ARIA role and modal attributes for a PopoverSurface.
  *
- * Extracted as a pure function to allow isolated unit testing of the attribute logic.
  * - `trapFocus=true` → `role="dialog"` + `aria-modal=true`
  * - `trapFocus=false` + accessible name present → `role="group"`
  * - `trapFocus=false` + no accessible name → no role (plain div avoids screen reader

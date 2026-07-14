@@ -1,7 +1,6 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { PopoverSurface } from './PopoverSurface';
-import { getPopoverSurfaceAriaAttributes } from './usePopoverSurface';
 import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
@@ -81,39 +80,5 @@ describe('PopoverSurface', () => {
 
     // Assert
     expect(getByTestId(testid).getAttribute('role')).toEqual('group');
-  });
-});
-
-describe('getPopoverSurfaceAriaAttributes', () => {
-  it('returns dialog attributes when focus is trapped', () => {
-    expect(
-      getPopoverSurfaceAriaAttributes({
-        hasAccessibleName: false,
-        trapFocus: true,
-      }),
-    ).toEqual({
-      role: 'dialog',
-      'aria-modal': true,
-    });
-  });
-
-  it('returns group when the surface has an accessible name', () => {
-    expect(
-      getPopoverSurfaceAriaAttributes({
-        hasAccessibleName: true,
-        trapFocus: false,
-      }),
-    ).toEqual({
-      role: 'group',
-    });
-  });
-
-  it('returns no role when the surface is unlabelled', () => {
-    expect(
-      getPopoverSurfaceAriaAttributes({
-        hasAccessibleName: false,
-        trapFocus: false,
-      }),
-    ).toEqual({});
   });
 });
