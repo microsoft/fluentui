@@ -1,9 +1,9 @@
 import type { AtomMotionFn, PresenceMotionFn } from '@fluentui/react-motion';
-import { createMotionComponent, createPresenceComponent, motionTokens } from '@fluentui/react-motion';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { fadeAtom2 } from '../../atoms/fade-atom2';
-import type { Fade2Component, Fade2InParams, Fade2OutParams, Fade2Params } from './fade2-types';
+import type { Fade2Params } from './fade2-types';
 
-const fade2InMotionFn: AtomMotionFn<Fade2InParams> = ({
+const fade2InMotionFn: AtomMotionFn<Fade2Params> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEase,
   delay = 0,
@@ -19,7 +19,7 @@ const fade2InMotionFn: AtomMotionFn<Fade2InParams> = ({
     toOpacity: restOpacity,
   });
 
-const fade2OutMotionFn: AtomMotionFn<Fade2OutParams> = ({
+const fade2OutMotionFn: AtomMotionFn<Fade2Params> = ({
   duration = motionTokens.durationNormal,
   easing = motionTokens.curveEasyEase,
   delay = 0,
@@ -66,15 +66,8 @@ const fade2PresenceFn: PresenceMotionFn<Fade2Params> = ({
   }),
 });
 
-const Fade2In = createMotionComponent(fade2InMotionFn);
-const Fade2Out = createMotionComponent(fade2OutMotionFn);
-const Fade2Presence = createPresenceComponent(fade2PresenceFn);
-
 /**
  * A prototype presence component that follows `from → rest → to` opacity states.
  * `Fade2.In` performs `from → rest`; `Fade2.Out` performs `rest → to`.
  */
-export const Fade2 = Object.assign(Fade2Presence, {
-  In: Fade2In,
-  Out: Fade2Out,
-}) as Fade2Component;
+export const Fade2 = createPresenceComponent(fade2PresenceFn);
