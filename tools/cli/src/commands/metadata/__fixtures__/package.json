@@ -1,0 +1,5 @@
+{
+  "name": "@fluentui/sample-button",
+  "version": "1.0.0",
+  "types": "./sample-button.d.ts"
+}
