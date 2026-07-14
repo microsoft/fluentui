@@ -13,9 +13,9 @@ The current experiment contains three useful but different API shapes: direct JS
 
 These domains should share timing and motion-description primitives, but not one undifferentiated public authoring API. Presence should remain a third, lifecycle-oriented API.
 
-The recommended next prototype is a **POJO-first single-target sequence definition** passed to a factory that returns a React component. The definition should be serializable, validated before playback, and independent of React. The component adapter should bind the definition to exactly one persistent child element. A separate layered timeline API can later reuse the same internal clips, timing placements, target keys, and event markers.
+The recommended next prototype is an **atom-array-first single-target sequence factory**. Fluent's existing atoms already return mostly-POJO `AtomMotion` values, so the shortest evolutionary path is to sequence those values directly and add a small set of non-animation items such as `hold`. The factory should return a React component that binds the resulting sequence to exactly one persistent child element.
 
-This is an evolutionary recommendation, not a public-API commitment: retain the JSX experiment while measuring it, prototype the POJO compiler and persistent-node adapter behind an experimental factory, and defer a public multi-layer timeline until production use cases justify it.
+This makes a sequence a higher-order motion definition assembled from atoms rather than a list of React wrappers. It does not require Fluent to call the result a “molecule.” Strict JSON serialization, registries, stable authored IDs, markers, and absolute placement can be layered on if product requirements emerge; they should not burden the first API. A separate layered timeline API can later reuse atom lowering and clock infrastructure without turning the simple sequence factory into an After Effects composition model.
 
 ## Reading rules
 
@@ -26,18 +26,18 @@ Penner sources are comparative primary sources, not proposed Fluent UI dependenc
 
 ## Vocabulary and taxonomy
 
-| Term                | Definition                                                                                                   |
-| ------------------- | ------------------------------------------------------------------------------------------------------------ |
-| **Target**          | Persistent identity receiving animated values. Portable data uses an opaque key rather than a DOM reference. |
-| **Channel**         | One animatable quantity of a target, such as opacity, translation, scale, or rotation.                       |
-| **Keyframe**        | A value anchor at a time or normalized offset.                                                               |
-| **Segment**         | The interval between adjacent keyframes on a channel. Easing applies to the outgoing segment.                |
-| **Motion clip**     | A bounded motion description with channels/keyframes and timing.                                             |
-| **Step**            | A single-target authoring item: motion clip, hold, or event marker, with a stable authored ID.               |
-| **Hold**            | Time during which prior resolved state remains unchanged. It is data, not absence.                           |
-| **Placement**       | Serial placement after the prior item or placement at an absolute time.                                      |
-| **Iteration**       | Repetition of an explicitly scoped span: whole sequence, clip, layer, or channel.                            |
-| **Runtime adapter** | Code binding portable data to React/WAAPI targets, refs, clocks, cancellation, and callbacks.                |
+| Term                | Definition                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------------- |
+| **Target**          | Persistent identity receiving animated values. The sequence target is its one bound React child.    |
+| **Channel**         | One animatable quantity of a target, such as opacity, translation, scale, or rotation.              |
+| **Keyframe**        | A value anchor at a time or normalized offset.                                                      |
+| **Segment**         | The interval between adjacent keyframes on a channel. Easing applies to the outgoing segment.       |
+| **Motion clip**     | A bounded motion description with channels/keyframes and timing.                                    |
+| **Sequence item**   | One `AtomMotion` or explicit hold in a serial, single-target array.                                 |
+| **Hold**            | Time during which prior resolved state remains unchanged. It is data, not absence.                  |
+| **Placement**       | Serial placement after the prior item or placement at an absolute time.                             |
+| **Iteration**       | Repetition of an explicitly scoped span: whole sequence, clip, layer, or channel.                   |
+| **Runtime adapter** | Code binding a motion definition to React/WAAPI targets, refs, clocks, cancellation, and callbacks. |
 
 Penner's motion-format code usefully separates opaque targets, channels/keyframes, and clock-driven playback. See its [`Composition → Layer → Channel` types](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/composition/layers.ts), [channel/keyframe types](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/composition/channels.ts), and accepted [format/engine split](https://github.com/robertpenner/penner/blob/main/docs/decisions/motion-format-engine-split.md).
 
@@ -112,7 +112,7 @@ const TitleSequence = createSequenceComponent({
 <TitleSequence>{titleA}</TitleSequence>;
 ```
 
-**Strengths:** content is supplied once, patterns are reusable, and a future data-first factory can preserve the useful “define, then render” workflow.
+**Strengths:** content is supplied once, patterns are reusable, and an atom-array factory can preserve the useful “define, then render” workflow.
 
 **Verified limits:** the captured “definition” is live React values; `MotionEntry` uses `React.ComponentType<any>`; omitted keys fall back to array positions; the returned component does not expose outer sequence iteration/common props/completion; callback composition is unspecified when an entry already has `onMotionFinish`; and there is no validation phase. Each step is still realized as a different current React component.
 
@@ -152,11 +152,11 @@ Zero, negative, fractional, `NaN`, dynamic updates, duplicate completion, and re
 
 ### Hold timing
 
-**Current fact.** [`Hold`](../library/src/choreography/Sequence/Sequence.tsx) renders children unchanged and schedules completion through `useTimeout()`. Its effect reschedules when `duration` or callback dependencies change. That is not inherently a bug; desired mid-hold updates simply need a contract. A portable hold should eventually compile to timeline state rather than necessarily remaining a timer component.
+**Current fact.** [`Hold`](../library/src/choreography/Sequence/Sequence.tsx) renders children unchanged and schedules completion through `useTimeout()`. Its effect reschedules when `duration` or callback dependencies change. That is not inherently a bug; desired mid-hold updates simply need a contract. An atom-sequence hold should compile to preserved timeline state rather than necessarily remaining a timer component.
 
 ### Keys
 
-**Current fact.** The JSX factory uses authored element keys or array indices. Prefixing an index with `"motion-"` would still be positional and would not create stable identity. A data-first design should require explicit step IDs.
+**Current fact.** The JSX factory uses authored element keys or array indices. Prefixing an index with `"motion-"` would still be positional and would not create stable React identity. The proposed immutable atom array can intentionally use indices for scheduling and diagnostics; stable authored IDs are a separate persisted-format concern.
 
 ### `Scene`
 
@@ -172,117 +172,210 @@ Zero, negative, fractional, `NaN`, dynamic updates, duplicate completion, and re
 
 ---
 
-## Primary proposal: POJO-first single-target sequence factory
+## Primary proposal: atom-array-first single-target sequence factory
 
 Everything in this section is a **proposal**.
 
 ### Goals and boundaries
 
-1. Plain data—not React elements or component constructors—is the source of truth.
-2. Registered motion references and literal keyframes can survive JSON serialization.
-3. Stable authored IDs survive insertion, reordering, diagnostics, telemetry, and editor round-trips.
-4. One React child is bound once and remains the same target through every step.
-5. Serial timing stays concise while absolute placement and overlap remain possible.
-6. Holds and event markers are explicit union members.
-7. Functions, refs, clocks, and DOM objects stay in the runtime adapter.
-8. Reduced motion is defined at sequence scope, including holds and iteration.
-9. Validation returns step-addressable diagnostics before playback.
+1. Existing `AtomMotion` values are the primary motion items; do not invent registry references before they are needed.
+2. A small `SequenceHold` union member represents elapsed time without a new animation.
+3. Array order defines a serial, single-target schedule.
+4. One React child is bound once and remains the same DOM target through every item and iteration.
+5. The compiler validates and normalizes atoms before handing them to existing motion infrastructure.
+6. Reduced motion is defined at whole-sequence scope, including holds and iteration.
+7. Multi-target choreography and presence remain separate APIs.
 
-### Concrete data sketch
+### Public authoring shape
+
+The exact first prototype should be as small as:
 
 ```ts
-type SequenceStepId = string;
-type MotionRefId = string;
-type SequenceEventName = string;
+createSequenceFromAtoms([
+  slideAtom({ fromX: '-20px', duration: 200 }),
+  { kind: 'hold', durationMs: 400 },
+  fadeAtom({ duration: 150 }),
+]);
+```
 
-type StepPlacement =
-  | { readonly mode: 'afterPrevious'; readonly offsetMs?: number }
-  | { readonly mode: 'at'; readonly timeMs: number };
-
-type SerializableMotion =
-  | {
-      readonly kind: 'motionRef';
-      readonly motionId: MotionRefId;
-      readonly params?: Readonly<Record<string, boolean | number | string>>;
-    }
-  | {
-      readonly kind: 'keyframes';
-      readonly keyframes: readonly Readonly<Record<string, boolean | number | string | null>>[];
-      readonly easing?: string;
-    };
-
-interface StepBase {
-  readonly id: SequenceStepId;
-  readonly placement?: StepPlacement; // default: afterPrevious
-}
-
-interface AnimateStep extends StepBase {
-  readonly kind: 'animate';
-  readonly durationMs: number;
-  readonly motion: SerializableMotion;
-  readonly channels?: readonly string[];
-  readonly emit?: readonly SequenceEventName[];
-}
-
-interface HoldStep extends StepBase {
+```ts
+type SequenceHold = {
   readonly kind: 'hold';
   readonly durationMs: number;
-  readonly emit?: readonly SequenceEventName[];
-}
+};
 
-interface EventStep extends StepBase {
-  readonly kind: 'event';
-  readonly event: SequenceEventName;
-}
+type SequenceItem = AtomMotion | SequenceHold;
 
-type MotionSequenceStep = AnimateStep | HoldStep | EventStep;
-
-interface MotionSequenceDefinition {
-  readonly schemaVersion: 1;
-  readonly kind: 'singleTargetSequence';
-  readonly id: string;
-  readonly steps: readonly MotionSequenceStep[];
-  readonly playback?: {
+declare function createSequenceFromAtoms(
+  items: readonly SequenceItem[],
+  options?: {
     readonly iterations?: number;
-    readonly direction?: 'normal' | 'reverse' | 'alternate';
+    readonly reducedMotion?: 'finishImmediately' | 'preserveEssential';
+  },
+): ForwardRefComponent<MotionComponentProps>;
+```
+
+`AtomMotion` is already mostly a POJO: it carries keyframes, timing, and an optional reduced-motion override. Atom factories can still derive an `AtomMotion` from props and, where supported, a live element. That runtime edge means atoms are not necessarily JSON, but it does not prevent direct atom values from being the simplest useful sequence input.
+
+A sequence is a higher-order motion definition assembled from lower-level atoms. Internally that is molecule-like composition, but the public API need not introduce or require the word “molecule.”
+
+Preview atoms may need to be rewritten before this factory is pleasant to use. The current slide experiments are presence-centric and encode `enter`/`exit` direction. A neutral sequence atom should instead describe explicit `from` and `to` endpoints; presence can choose direction while a sequence can place the same neutral definition anywhere.
+
+One possible refactor is to make timing and directed endpoints the complete atom contract:
+
+```ts
+type AtomTimingParams = {
+  readonly duration: number;
+  readonly easing?: string;
+  readonly delay?: number;
+  readonly fill?: FillMode;
+};
+
+type SlideAtomParams = AtomTimingParams & {
+  readonly fromX?: string;
+  readonly fromY?: string;
+  readonly toX?: string;
+  readonly toY?: string;
+};
+
+export function slideAtom({
+  duration,
+  easing = motionTokens.curveLinear,
+  delay = 0,
+  fill,
+  fromX = '0px',
+  fromY = '0px',
+  toX = '0px',
+  toY = '0px',
+}: SlideAtomParams): AtomMotion {
+  return {
+    keyframes: [{ translate: `${fromX} ${fromY}` }, { translate: `${toX} ${toY}` }],
+    duration,
+    easing,
+    delay,
+    fill,
   };
-  readonly reducedMotion?: {
-    readonly mode: 'finishImmediately' | 'preserveEssential';
-    readonly essentialStepIds?: readonly SequenceStepId[];
+}
+
+type FadeAtomParams = AtomTimingParams & {
+  readonly fromOpacity?: number;
+  readonly toOpacity?: number;
+};
+
+export function fadeAtom({
+  duration,
+  easing = motionTokens.curveLinear,
+  delay = 0,
+  fill,
+  fromOpacity = 0,
+  toOpacity = 1,
+}: FadeAtomParams): AtomMotion {
+  return {
+    keyframes: [{ opacity: fromOpacity }, { opacity: toOpacity }],
+    duration,
+    easing,
+    delay,
+    fill,
   };
 }
 ```
 
-The public schema should be narrower than all of `KeyframeEffectOptions`: admit only fields whose validation, serialization, cross-browser behavior, and reduced-motion semantics Fluent UI is willing to own. The compiled internal form can be richer.
+There is no `direction` branch and no mutation through `keyframes.reverse()`. Each atom says exactly which value change it performs. A standalone atom can omit `fill` and inherit the motion runtime's forward-fill default. Callers that need pre-delay state, including presence, request it explicitly.
 
-Discriminated unions make handling exhaustive. A hold is not “an atom with duration but no keyframes,” and an event cannot accidentally acquire animation options. Promise waits and arbitrary predicates should remain runtime orchestration: they make total duration unknowable and serialization misleading.
+The existing presence component then becomes the policy layer that constructs atoms in each direction:
 
-### Stable step identity
+```ts
+const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
+  duration = motionTokens.durationNormal,
+  easing = motionTokens.curveDecelerateMid,
+  delay = 0,
+  exitDuration = duration,
+  exitEasing = motionTokens.curveAccelerateMid,
+  exitDelay = delay,
+  outX = '0px',
+  outY = '0px',
+  inX = '0px',
+  inY = '0px',
+  animateOpacity = true,
+}) => {
+  const enter: AtomMotion[] = [
+    slideAtom({
+      fromX: outX,
+      fromY: outY,
+      toX: inX,
+      toY: inY,
+      duration,
+      easing,
+      delay,
+      fill: 'both',
+    }),
+  ];
+  const exit: AtomMotion[] = [
+    slideAtom({
+      fromX: inX,
+      fromY: inY,
+      toX: outX,
+      toY: outY,
+      duration: exitDuration,
+      easing: exitEasing,
+      delay: exitDelay,
+      fill: 'both',
+    }),
+  ];
 
-Every sequence and step should require an authored ID. Array indices cannot reliably support:
+  if (animateOpacity) {
+    enter.push(fadeAtom({ fromOpacity: 0, toOpacity: 1, duration, easing, delay, fill: 'both' }));
+    exit.push(
+      fadeAtom({
+        fromOpacity: 1,
+        toOpacity: 0,
+        duration: exitDuration,
+        easing: exitEasing,
+        delay: exitDelay,
+        fill: 'both',
+      }),
+    );
+  }
 
-- patching after insertion/reordering;
-- diagnostics such as `steps["settle"].durationMs`;
-- event/telemetry correlation;
-- schema migration;
-- reduced-motion selection;
-- deterministic ties among simultaneous markers.
+  return { enter, exit };
+};
 
-Validation must reject duplicate IDs. A development helper may generate IDs for a literal, but persisted definitions should contain resolved IDs.
+export const Slide = createPresenceComponent(slidePresenceFn);
+```
 
-### Persistent target identity
-
-A single-target definition should not repeat a target key on every step. The factory's child binding supplies it:
+The sequence author uses the same atoms directly, without presence terminology:
 
 ```tsx
-const CardSequence = createMotionSequenceComponent(cardSequence, { motionRegistry });
+const CardSequence = createSequenceFromAtoms([
+  slideAtom({ fromX: '-20px', toX: '0px', duration: 200 }),
+  { kind: 'hold', durationMs: 400 },
+  fadeAtom({ fromOpacity: 1, toOpacity: 0, duration: 150 }),
+]);
 
-<CardSequence onSequenceEvent={handleSequenceEvent}>
+<CardSequence>
   <Card />
 </CardSequence>;
 ```
 
-The adapter resolves one element, composes refs, and keeps that element mounted. Steps operate on animation effects/handles rather than alternate React wrappers.
+This also clarifies ownership of defaults. Atoms own neutral value defaults and keyframe construction. Presence owns enter/exit endpoint ordering and pre-delay visibility. The sequence compiler owns serial placement and fill normalization across item boundaries.
+
+### Stable step identity
+
+The runtime prototype can address items by array index. Diagnostics such as `items[1].durationMs` are deterministic for an immutable factory input and avoid making every inline atom carry authoring metadata. Stable authored IDs become useful only if definitions are persisted, patched, or edited out of process; they belong to that optional later format.
+
+### Persistent target identity
+
+A single-target sequence binds exactly one child and preserves that child's DOM identity:
+
+```tsx
+const CardSequence = createSequenceFromAtoms(items);
+
+<CardSequence>
+  <Card />
+</CardSequence>;
+```
+
+The adapter resolves the element once, composes refs, and keeps the same node mounted. Items change animation state; they do not select alternate React wrappers or switch child subtrees. This is the defining difference from the current JSX `<Sequence>` experiment and protects focus, selection, uncontrolled state, and descendant state.
 
 A multi-target timeline instead needs explicit opaque identity:
 
@@ -294,89 +387,40 @@ interface TimelineLayer {
 }
 ```
 
-The runtime separately binds target keys to elements or component adapters. Portable data must not contain `HTMLElement`, React refs, selector closures, or component constructors.
+That explicit target binding belongs to a separate future timeline host, not this factory.
 
-### Serial, absolute, and overlapping timing
+### Serial timing and explicit future parallelism
 
-`afterPrevious` advances a serial cursor; signed `offsetMs` permits a gap or overlap relative to the prior end. `at` places an item at absolute master time. Compilation resolves every step to `[startMs, endMs]` and uses `(startMs, authored order, id)` for deterministic ties.
+At the top level, the new array means **serial**: each item starts at the cursor left by the previous item. This intentionally differs from existing `createMotionComponent()` atom arrays, where atoms run **concurrently** on one target.
 
 ```ts
-const cardSequence: MotionSequenceDefinition = {
-  schemaVersion: 1,
-  kind: 'singleTargetSequence',
-  id: 'card-intro',
-  steps: [
-    {
-      id: 'enter',
-      kind: 'animate',
-      durationMs: 240,
-      motion: { kind: 'motionRef', motionId: 'slide-fade-in', params: { fromY: 12 } },
-      channels: ['translateY', 'opacity'],
-      emit: ['entered'],
-    },
-    { id: 'read', kind: 'hold', durationMs: 800 },
-    {
-      id: 'settle-scale',
-      kind: 'animate',
-      placement: { mode: 'afterPrevious', offsetMs: -80 },
-      durationMs: 180,
-      motion: { kind: 'motionRef', motionId: 'scale-to-one' },
-      channels: ['scale'],
-    },
-    {
-      id: 'ready-marker',
-      kind: 'event',
-      placement: { mode: 'at', timeMs: 960 },
-      event: 'ready',
-    },
-  ],
+type SequenceParallel = {
+  readonly kind: 'parallel';
+  readonly atoms: readonly AtomMotion[];
 };
 ```
 
-Different-channel overlap is straightforward. Same-target, same-channel overlap is not. The first prototype should reject it unless an explicit composition mode (`replace`, `add`, or `accumulate`) exists. Silent last-write-wins makes output depend on lowering details. Registry entries should declare channels; unknown channels conservatively conflict with all channels.
+Do not overload nested or top-level arrays with both meanings. If future evidence requires parallel work inside a serial sequence, add the explicit `{ kind: 'parallel', atoms: [...] }` item. Absolute placement, overlap, and channel-conflict policy are not required for the first prototype; multi-target overlap belongs to the timeline domain.
 
 ### Holds
 
-Hold means “preserve state at this interval's start.” It should compile to timeline/keyframe state rather than necessarily to a JavaScript timer, enabling seek, reverse, reduction, and clock alignment.
+`{ kind: 'hold', durationMs }` advances the serial cursor while preserving the resolved visual state produced by prior items. It is not an empty gap and should not restore underlying styles during its interval.
 
 Penner's implemented `CompositionSequence` is useful evidence: `composition` and `hold` are discriminated items; its builder computes `startMs`/`endMs`; its evaluator freezes the previous clip's terminal value; and lowering emits an equal-valued trailing keyframe. It rejects a leading hold because no prior composition state exists. See [sequence types/builder](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/composition/sequence.ts), [evaluation tests](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/evaluate.test.ts), and [lowering tests](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/lowerCompositionToEffects.test.ts).
 
-Fluent should not copy that restriction blindly. An initial single-target hold could mean “leave the child's current style unchanged,” but computed/inline/snapshot semantics must be specified.
+Fluent should not copy the leading-hold restriction blindly. A leading hold can simply leave the child's current style unchanged. The compiler does need an explicit snapshot rule for computed versus inline state.
 
-### Serialization boundary, events, and callbacks
+### Optional persisted-format layer
 
-Portable data contains event names, not functions. The adapter owns handlers:
+JSON portability is not the first public API's constraint. Registries, stable sequence and step IDs, event markers, schema versions, migration, and primitive-only parameters are all reasonable later requirements for saved presets or editor interchange. If those use cases arrive, define a persisted format that resolves into `SequenceItem[]`; do not make every in-code atom sequence pay that complexity up front.
 
-```ts
-interface MotionSequenceComponentProps {
-  children: React.ReactElement;
-  onSequenceEvent?: (
-    event: null,
-    data: { sequenceId: string; stepId: string; name: string; iteration: number },
-  ) => void;
-  onMotionFinish?: (event: null) => void;
-  onMotionCancel?: (event: null) => void;
-}
-```
-
-The contract must define start-vs-end events, simultaneous ordering, seek/reverse replay, cancellation, reduced-motion delivery, and exception isolation.
-
-Runtime-dependent motions cross a registry boundary:
-
-```ts
-interface MotionRegistryEntry {
-  readonly channels: readonly string[];
-  resolve(params: Readonly<Record<string, boolean | number | string>>): AtomMotion | readonly AtomMotion[];
-}
-```
-
-The registry is nonserializable code. `motionId` and primitive params are portable. Unknown IDs fail validation before playback. This follows the useful Penner stance that [`SerializedKfxKeyframeEffect`](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/data/protocol.ts) is primary while function-bearing compiled/runtime forms do not cross the wire.
+Callbacks remain React adapter concerns. Whole-sequence finish and cancel callbacks are sufficient initially. Step events, marker replay under seek/reverse, and telemetry IDs should be added only with a concrete lifecycle contract.
 
 ### Iteration
 
-Initial semantics should be whole-sequence and WAAPI-like: default `1`; accept only specified positive finite values and `Infinity`; decide fractional support explicitly; never finish an uncancelled infinite run; include documented iteration numbering in events; and do not synthesize completion on cancellation.
+Iteration applies to the **whole sequence**, not independently to each atom. Initial semantics should be WAAPI-like: default `1`; validate finite positive counts and `Infinity`; decide fractional support explicitly; never report finish for an uncancelled infinite run; and do not synthesize completion on cancellation.
 
-Per-step/per-channel cycling is a separate axis. Penner's accepted looping decision likewise distinguishes whole-composition repetition from per-channel cycles. See [Looping via a Uniform Hold-Keyframe Model](https://github.com/robertpenner/penner/blob/main/docs/decisions/whole-composition-looping-via-hold-keyframe.md).
+Per-atom or per-channel cycling is a separate axis. Penner's accepted looping decision likewise distinguishes whole-composition repetition from per-channel cycles. See [Looping via a Uniform Hold-Keyframe Model](https://github.com/robertpenner/penner/blob/main/docs/decisions/whole-composition-looping-via-hold-keyframe.md).
 
 ### Validation and compilation
 
@@ -384,38 +428,40 @@ Per-step/per-channel cycling is a separate axis. Penner's accepted looping decis
 type SequenceDiagnostic = {
   readonly code: string;
   readonly severity: 'error' | 'warning';
-  readonly stepId?: string;
+  readonly itemIndex?: number;
   readonly message: string;
 };
 
 type CompiledMotionSequence = {
-  readonly id: string;
   readonly durationMs: number;
-  readonly steps: readonly {
-    readonly id: string;
+  readonly items: readonly {
+    readonly itemIndex: number;
     readonly startMs: number;
     readonly endMs: number;
-    readonly kind: MotionSequenceStep['kind'];
+    readonly kind: 'atom' | 'hold';
   }[];
 };
 
 function compileMotionSequence(
-  definition: MotionSequenceDefinition,
-  registry: MotionRegistry,
+  items: readonly SequenceItem[],
 ): { ok: true; value: CompiledMotionSequence } | { ok: false; diagnostics: readonly SequenceDiagnostic[] };
 ```
 
-Minimum validation covers schema version/kind; nonempty unique IDs; finite non-negative times/durations; iteration values; known registry references; serializable params/keyframes; arithmetic overflow; per-channel overlap; supported easing; valid reduced-motion references; and deterministic event ties. Return structured diagnostics rather than silently clamping authoring input.
+The compiler walks array indices in order, validates each atom's keyframes/timing and each hold's finite non-negative duration, and advances one serial cursor. Diagnostics use `itemIndex`; no registry lookup or authored ID is necessary. It should reject arithmetic overflow and unsupported timing rather than silently clamp.
+
+Compilation must also normalize fill behavior. Once atoms are delayed onto a shared schedule, an atom with `fill: 'backwards'` or `'both'` can apply its initial keyframe before its turn and clobber the state left by prior items. Lowering must prevent future items from writing early while ensuring completed items retain the state needed by a following hold or atom. This normalization is a sequence invariant, not an atom-authoring burden.
 
 ### React factory and execution strategies
 
-The factory should return a `ForwardRefComponent`, safely merge the child's ref, use Fluent's target-document infrastructure, and drive one child element. It may compile to:
+The factory should return a `ForwardRefComponent`, safely merge the child's ref, use Fluent's target-document infrastructure, and drive one persistent child. The React adapter should reuse the existing motion stack—behavior context, reduced-motion resolution, `useAnimateAtoms`, WAAPI handle/cancellation behavior, and `replayKey` conventions—rather than introduce a parallel runtime.
+
+The compiler may lower to:
 
 1. one native WAAPI effect when clips flatten cleanly;
 2. coordinated WAAPI animations on one element for independent channels;
-3. a small master-clock runner when markers or unsupported placement demand it.
+3. a small serial runner if native flattening cannot preserve atom semantics.
 
-The authoring model should not reveal which strategy was selected. Portable source data is primary; compiled/runtime objects are derived and disposable.
+The authoring model should not reveal which strategy was selected. The atom array is source input; compiled/runtime objects are derived and disposable.
 
 ### Accessibility and reduced motion
 
@@ -424,28 +470,14 @@ Persistent identity can preserve focus, selection, uncontrolled state, live-regi
 Recommended default under reduced motion:
 
 1. resolve the intended final visual state immediately or near-immediately;
-2. preserve semantic event order without decorative elapsed delays;
+2. preserve whole-sequence completion semantics without decorative elapsed delays;
 3. suppress infinite repetition;
-4. allow explicitly essential steps to provide reduced alternatives;
+4. allow explicitly essential atoms to provide reduced alternatives;
 5. do not require duplication of the entire sequence.
 
-The current atom-level 1 ms fallback is a base, but sequence scope must also collapse holds and repeated events.
+The current atom-level 1 ms fallback is a base, but sequence scope must also collapse holds and suppress infinite iteration.
 
 ## Additional strategy proposals
-
-### Atom-array input adapter
-
-An atom array is more programmatic than JSX and aligns with Fluent's low-level layer:
-
-```tsx
-const CardSequence = createSequenceFromAtoms([
-  slideAtom({ fromX: '-20px', duration: 200 }),
-  { kind: 'hold', durationMs: 400 },
-  fadeAtom({ duration: 150 }),
-]);
-```
-
-Raw atoms alone do not provide stable IDs, portable function boundaries, target identity, markers, absolute placement, or validation. Treat this as input to the POJO IR, not a second equal model. Do not claim every atom is serializable: atom functions may receive a live element.
 
 ### One precompiled WAAPI effect
 
@@ -470,15 +502,15 @@ This is the eventual shape for After Effects-like choreography if opaque target 
 
 ## One schema or layered APIs?
 
-A universal schema could put `target` on every step and represent one-target sequences as one-layer timelines. That yields one validator but forces simple enter-hold-exit use cases to understand registries, layer identity, stacking, and conflict semantics. Presence still does not fit because mounting is not merely a channel.
+A universal schema could put `target` on every step and represent one-target sequences as one-layer timelines. That would force simple enter-hold-exit use cases to understand persisted schemas, registries, layer identity, stacking, and conflict semantics. Presence still does not fit because mounting is not merely a channel.
 
-Completely unrelated schemas avoid that complexity but duplicate clips, easing, placement, event markers, validation, and lowering.
+Completely unrelated implementations avoid that complexity but duplicate atom lowering, timing validation, reduced-motion transforms, and playback infrastructure.
 
 ### Recommendation: focused APIs over a shared internal IR
 
 Use three public contracts:
 
-1. `MotionSequenceDefinition` — one factory-bound target;
+1. `createSequenceFromAtoms()` — a serial atom/hold array bound to one child target;
 2. `MotionTimelineDefinition` — explicit layers/targets and a separate host;
 3. existing presence definitions/components — visibility lifecycle.
 
@@ -491,47 +523,46 @@ interface ScheduledMotionIR {
     readonly target: string;
     readonly clips: readonly CompiledPlacedClip[];
   }[];
-  readonly events: readonly CompiledEventMarker[];
 }
 ```
 
-A sequence lowers with an implicit `"$child"` target; a timeline supplies explicit keys. Both reuse motion clips, timing resolution, conflict diagnostics, event ordering, and reduced-motion transforms without forcing one public mental model.
+An atom sequence lowers with an implicit `"$child"` target; a timeline supplies explicit keys. Both can eventually reuse atom lowering, timing resolution, conflict diagnostics, and reduced-motion transforms without forcing one public mental model or one public schema.
 
 ## How Penner informs—but does not dictate—the design
 
 ### Adopt these lessons
 
-1. **POJO-first source of truth.** Serialized data is primary; live compiled objects are derived caches. See the [format/engine decision](https://github.com/robertpenner/penner/blob/main/docs/decisions/motion-format-engine-split.md).
-2. **Data/runtime separation.** Definition, validation, normalization, and lowering should not own the playback clock.
-3. **Opaque target identity.** Data names targets; adapters resolve them.
-4. **Layer/channel structure.** Multi-target authoring needs per-target grouping and per-channel timing.
-5. **Hybrid timing.** Real durations define spans while normalized offsets preserve reusable motion shape; both appear in Penner's [channel types](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/composition/channels.ts).
+1. **Derived runtime forms.** Atom arrays can compile into disposable schedules/effects rather than exposing playback machinery. Penner applies the same principle to serialized definitions and compiled caches; see the [format/engine decision](https://github.com/robertpenner/penner/blob/main/docs/decisions/motion-format-engine-split.md).
+2. **Definition/runtime separation.** Validation, fill normalization, and lowering should not own React lifetime or the playback clock.
+3. **Persistent target identity.** A sequence has one implicit child target; a later multi-target format needs opaque target keys resolved by adapters.
+4. **Layer/channel structure belongs to timelines.** Multi-target authoring needs per-target grouping and per-channel timing, but the first atom sequence does not.
+5. **Hybrid timing is a later timeline concern.** Real durations define spans while normalized offsets preserve reusable motion shape; both appear in Penner's [channel types](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/language/composition/channels.ts).
 6. **Holds are stateful data**, not empty timeout gaps.
-7. **Boundary validation.** Penner builders reject invalid timing, and worker envelopes use discriminated unions and runtime guards. See [protocol source](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/data/protocol.ts) and [tests](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/data/protocol.test.ts).
-8. **Sequence and concurrence are distinct axes.** Same-target temporal concatenation is not all choreography. See [Composition Book II](https://github.com/robertpenner/penner/blob/main/packages/elements-of-motion/3-composition/books/book-2-the-three-combinations.md).
-9. **Continuity belongs at seams.** Adjacent clips may need $C^0$ value agreement; $C^1$ velocity agreement is stronger and not free.
+7. **Boundary validation.** Penner builders reject invalid timing; Fluent's first compiler should similarly report item-indexed diagnostics. See [protocol source](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/data/protocol.ts) and [tests](https://github.com/robertpenner/penner/blob/main/packages/motion-format/src/data/protocol.test.ts).
+8. **Sequence and concurrence are distinct axes.** This supports serial top-level items and a future explicit `parallel` item rather than ambiguous arrays. See [Composition Book II](https://github.com/robertpenner/penner/blob/main/packages/elements-of-motion/3-composition/books/book-2-the-three-combinations.md).
+9. **Continuity belongs at seams.** Adjacent atoms may need $C^0$ value agreement; $C^1$ velocity agreement is stronger and not free.
 
 ### Do not copy these blindly
 
 1. Penner `Composition` is an editor/codegen model with paths, contributors, modifiers, arbitrary channels, and heterogeneous adapters—far more than a React factory needs.
-2. Its current `CompositionSequence` serially sequences whole compositions and holds; it is not a ready-made overlapping Fluent step model.
+2. Its current `CompositionSequence` serially sequences whole compositions and holds; it is evidence for cursor and hold semantics, not a ready-made Fluent atom API.
 3. Its evaluator/backends serve DOM, workers, Canvas, SDF, and code generation. Fluent's first adapter can be React + WAAPI focused.
-4. Parts of Penner's in-memory model permit functions with documented resolver boundaries. Fluent should begin with a narrow serializable subset.
+4. Penner needs persistence, workers, and editor interchange. Fluent should not require a serializable registry format until a product use case needs one.
 5. Penner's “voice/concurrence/superposition” vocabulary is precise theory; Fluent can expose approachable target/channel/layer terminology while preserving the distinctions.
 6. React presence owns mount/unmount and interruptible visibility, which cannot be reduced to value channels alone.
 
 ## Decision matrix
 
-| Approach                | Persistent target     | Portable data               | Serial ergonomics | Absolute overlap | Multiple targets       | Presence lifecycle | Cost        | Role                       |
-| ----------------------- | --------------------- | --------------------------- | ----------------- | ---------------- | ---------------------- | ------------------ | ----------- | -------------------------- |
-| Direct JSX `<Sequence>` | Unproven              | No                          | High              | Low              | Subtree switching only | Low                | Low         | Exploration/escape hatch   |
-| Current JSX factory     | Unproven              | No                          | High              | Low              | No                     | Low                | Low         | Compatibility experiment   |
-| POJO-first factory      | Yes by contract       | High with registry boundary | High              | Medium/high      | No publicly            | Low                | Medium      | **Primary next prototype** |
-| Atom-array adapter      | Possible              | Medium                      | High              | Medium           | No                     | Low                | Medium      | Input adapter              |
-| Flattened WAAPI effect  | Yes                   | High after lowering         | Compiler target   | Medium           | No                     | Low                | Medium      | Execution strategy         |
-| Hook/controller         | Yes                   | Definition can be           | Medium            | High             | One per hook           | Low                | Medium      | Runtime/power-user seam    |
-| Multi-layer host        | Yes per binding       | High                        | Medium            | High             | High                   | Low                | Very high   | Separate later prototype   |
-| Existing presence       | Usually while mounted | Partly data-shaped          | Low for 3+ steps  | Low              | One target             | **High**           | Established | Visibility lifecycle       |
+| Approach                           | Persistent target     | JSON portable | Serial ergonomics | Absolute overlap | Multiple targets       | Presence lifecycle | Cost        | Role                       |
+| ---------------------------------- | --------------------- | ------------- | ----------------- | ---------------- | ---------------------- | ------------------ | ----------- | -------------------------- |
+| Direct JSX `<Sequence>`            | Unproven              | No            | High              | Low              | Subtree switching only | Low                | Low         | Exploration/escape hatch   |
+| Current JSX factory                | Unproven              | No            | High              | Low              | No                     | Low                | Low         | Compatibility experiment   |
+| Atom-array sequence factory        | **Yes by contract**   | Not required  | **High**          | Low initially    | No                     | Low                | Low/medium  | **Primary next prototype** |
+| Optional persisted-format resolver | Yes after resolution  | **High**      | Medium            | Format-dependent | No or later            | Low                | Medium/high | Later product layer        |
+| Flattened WAAPI effect             | Yes                   | Derived only  | Compiler target   | Medium           | No                     | Low                | Medium      | Execution strategy         |
+| Hook/controller                    | Yes                   | Input can be  | Medium            | Future           | One per hook           | Low                | Medium      | Runtime/power-user seam    |
+| Multi-layer host                   | Yes per binding       | High          | Medium            | High             | **High**               | Low                | Very high   | Separate later prototype   |
+| Existing presence                  | Usually while mounted | Partial       | Low for 3+ steps  | Low              | One target             | **High**           | Established | Visibility lifecycle       |
 
 No benchmark supports relative performance stars from the old document; they have been removed.
 
@@ -539,15 +570,15 @@ No benchmark supports relative performance stars from the old document; they hav
 
 | Use case                                            | Direction                             | Reason                                         |
 | --------------------------------------------------- | ------------------------------------- | ---------------------------------------------- |
-| Enter → hold → exit on one card without state reset | POJO-first factory                    | One persistent child, reusable data            |
+| Enter → hold → exit on one card without state reset | Atom-array sequence factory           | One persistent child, direct existing atoms    |
 | Replay one effect on the same node                  | Existing motion component `replayKey` | Already promises DOM continuity                |
 | Show/hide dialog or toast with optional unmount     | Existing presence component           | Visibility is the source of truth              |
 | Slideshow with different content per phase          | Direct JSX or purpose-built carousel  | Replacement is intentional                     |
 | Title plus photos with overlap/stagger              | Multi-layer timeline prototype        | Several targets share one clock                |
-| Programmatically generated sequence                 | POJO builder                          | Validation and stable IDs                      |
-| Persist/export a preset                             | POJO + registry IDs                   | React values/functions are not portable        |
+| Programmatically generated sequence                 | Atom-array sequence factory           | Arrays are easy to construct and validate      |
+| Persist/export a preset                             | Later persisted format + resolver     | Stable IDs/registries belong at this boundary  |
 | Dynamic conditional control flow                    | Hook/controller or React state        | Do not pretend duration is statically portable |
-| Simultaneous properties on one element              | POJO absolute placements              | One target; per-channel conflict checking      |
+| Simultaneous properties on one element              | Existing concurrent atom array        | Already supported by motion components         |
 
 ## Evolution path
 
@@ -559,28 +590,28 @@ No benchmark supports relative performance stars from the old document; they hav
 
 ### Phase 1: pure compiler
 
-- Implement types, validation, schedule resolution, diagnostics, and JSON round-trip tests.
-- Cover `animate`, `hold`, and `event`.
-- Start with serial placement but compile to absolute intervals.
+- Implement `SequenceItem`, index-based validation, serial cursor resolution, fill normalization, and diagnostics.
+- Cover direct `AtomMotion` values and `SequenceHold` only.
+- Compile serial input to absolute intervals without defining a public persisted schema.
 - Keep it experimental and non-public.
 
 ### Phase 2: persistent-target adapter
 
-- Add a new experimental factory beside—not overloaded onto—the JSX factory.
+- Add experimental `createSequenceFromAtoms()` beside—not overloaded onto—the JSX factory.
 - Bind one element and verify identity/focus through steps and iterations.
 - Reuse behavior context, Fluent target-document access, atom reduction, and WAAPI handles.
 - Compare flattened-effect and coordinated-effect execution.
 
 ### Phase 3: compatibility
 
-- Convert only recognized motion definitions into the new IR, or offer explicit `fromAtoms()` input.
-- Warn when closures/React elements make a definition nonportable.
+- Rewrite presence-centric preview atoms toward neutral `from`/`to` endpoints where sequence reuse requires it.
+- Consider an explicit `parallel` sequence item only if same-target concurrent phases are needed.
 - Retain direct JSX for intentional subtree switching, potentially under a more precise name.
 
-### Phase 4: overlap and controls
+### Phase 4: controls and optional persisted features
 
-- Add absolute/negative-relative placement and channel conflict diagnostics.
-- Add pause/play/seek/reverse only after event semantics are deterministic.
+- Add pause/play/seek/reverse only after hold, cancellation, and whole-sequence iteration semantics are deterministic.
+- Add a persisted-format resolver, stable IDs, registries, or events only for demonstrated product requirements.
 - Decide fractional iteration and dynamic-definition updates from prototype evidence.
 
 ### Phase 5: choreography exploration
@@ -601,36 +632,37 @@ No benchmark supports relative performance stars from the old document; they hav
 
 ### Timing, holds, and continuity
 
-1. Are zero-duration and simultaneous-marker schedules deterministic?
+1. Are zero-duration items deterministic?
 2. Does hold preserve the computed terminal state exactly?
 3. What does a leading hold preserve: no write, inline style, or computed style?
-4. How do transform subchannels overlap without clobbering `transform`?
-5. Are same-channel overlaps rejected, composed, or prioritized?
-6. Can literal-keyframe $C^0$ mismatches be diagnosed?
+4. Does normalized fill prevent delayed atoms from writing before their serial turn?
+5. Does an atom's terminal state survive until the next atom begins?
+6. Can adjacent-atom $C^0$ mismatches be diagnosed?
 7. Is $C^1$ only documented/diagnosed, or ever repaired?
 
-### Events and lifecycle
+### Lifecycle and optional events
 
-1. Exactly when do start, marker, step-end, finish, and cancel fire?
+1. Exactly when do whole-sequence start, finish, and cancel fire?
 2. What if a handler synchronously unmounts/restarts the runner?
 3. Are duplicate native finishes idempotent?
-4. Does seek/reverse replay markers?
-5. Which events survive reduced-motion collapse?
+4. Does `replayKey` restart without replacing the target node?
+5. What demonstrated use case would justify item events or markers?
 
 ### Iteration
 
 1. Are `0`, negative, fractional, `NaN`, and `Infinity` accepted?
 2. Is count snapshotted or reactive?
 3. Does the boundary restore initial state without a flash or remount?
-4. Do markers emit per iteration, and how does alternate direction affect them?
+4. Does each iteration restart the entire atom/hold schedule, and how does alternate direction affect it?
 5. Are infinite loops suppressed under reduced motion?
 
-### Validation and serialization
+### Validation and optional persistence
 
-1. Does JSON round-trip preserve definitions?
-2. Do duplicate IDs, unknown refs, invalid easing, nonfinite timing, and unsupported values yield stable diagnostic codes?
-3. Can schema and registry versions reject/migrate without React?
-4. Can one compiled definition safely serve many mounted instances?
+1. Do invalid atoms, invalid holds, nonfinite timing, and unsupported values yield stable item-indexed diagnostic codes?
+2. Does fill normalization prevent delayed future atoms from clobbering prior state?
+3. Can one compiled atom array safely serve many mounted instances?
+4. What concrete use case would justify a JSON schema, stable IDs, registry versions, or migration?
+5. If a persisted format is added later, does its resolver produce the same `SequenceItem[]` semantics as direct authoring?
 
 ### Accessibility
 
@@ -651,11 +683,11 @@ No benchmark supports relative performance stars from the old document; they hav
 
 ## Recommendation
 
-Prototype a **POJO-first single-target sequence factory** and make persistent target identity its defining contract. Compile serial sugar to absolute intervals; keep callbacks, refs, registries, and clocks in the adapter; model holds/events explicitly; validate before playback; and define reduced motion at sequence scope.
+Prototype an **atom-array-first single-target sequence factory** and make persistent target identity its defining contract. Accept `SequenceItem = AtomMotion | SequenceHold`, interpret the top-level array serially, compile by array index, normalize fill, preserve prior state through holds, and define iteration and reduced motion at whole-sequence scope. Reuse the existing React motion infrastructure.
 
-Do not make the current JSX factory the long-term source of truth, though preserve its “define once, pass one child” ergonomics. Keep direct JSX for intentional content switching. Do not unify sequence, multi-target timeline, and presence into one public schema: use focused APIs over a shared scheduled-motion IR.
+Do not make the current JSX factory the long-term source of truth, though preserve its “define once, pass one child” ergonomics. Keep direct JSX for intentional content switching. Keep multi-target timelines and presence separate. Treat JSON portability, registries, stable IDs, events, and a persisted schema as optional later layers rather than prerequisites for the first API.
 
-Use Penner as evidence for POJO-first data, target/channel structure, holds, validation, lowering, and the data/runtime seam—not as a model to copy wholesale.
+Use Penner as evidence for serial cursor semantics, stateful holds, iteration scope, validation, lowering, and the definition/runtime seam—not as a registry-heavy API to copy wholesale.
 
 ## Sources examined
 
