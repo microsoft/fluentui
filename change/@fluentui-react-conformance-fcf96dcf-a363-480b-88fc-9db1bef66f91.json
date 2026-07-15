@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "adds component-calls-custom-style-hook conformance test; enables pilot usage in button, card, and menu item link",
+  "packageName": "@fluentui/react-conformance",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
