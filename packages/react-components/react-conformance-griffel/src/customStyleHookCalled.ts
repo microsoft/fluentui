@@ -20,8 +20,8 @@ export type CustomStyleHookCalledTestOptions = {
  */
 async function getReactComponent(
   componentPath: string,
-  testInfo: IsConformantOptions<unknown>,
-): Promise<IsConformantOptions<unknown>['Component']> {
+  testInfo: IsConformantOptions,
+): Promise<IsConformantOptions['Component']> {
   const componentModule = await import(componentPath);
 
   if (testInfo.useDefaultExport) {
@@ -35,7 +35,7 @@ async function getReactComponent(
  * Ensures that components call useCustomStyleHook_unstable with an expected hook name
  * and then invoke the returned hook with component state.
  */
-export const customStyleHookCalled: BaseConformanceTest<unknown> = testInfo => {
+export const customStyleHookCalled: BaseConformanceTest = testInfo => {
   const testOptions = testInfo.testOptions as
     | (TestOptions & { [CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]?: CustomStyleHookCalledTestOptions })
     | undefined;
