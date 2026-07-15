@@ -13,7 +13,7 @@ export type CustomStyleHookCalledTestOptions = {
 };
 
 // @public (undocumented)
-export const customStyleHookTests: TestObject<unknown>;
+export const customStyleHookTests: TestObject;
 
 // @public (undocumented)
 const makeStylesTests: TestObject;

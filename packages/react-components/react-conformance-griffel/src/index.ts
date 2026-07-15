@@ -6,7 +6,7 @@ const makeStylesTests: TestObject = {
   [OVERRIDES_WIN_TEST_NAME]: overridesWin,
 };
 
-export const customStyleHookTests: TestObject<unknown> = {
+export const customStyleHookTests: TestObject = {
   [CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]: customStyleHookCalled,
 };
 
