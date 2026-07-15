@@ -215,7 +215,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'stretch',
     gap: tokens.spacingVerticalL,
-    width: 'min(100%, 560px)',
+    width: 'min(100%, 720px)',
   },
   header: {
     display: 'flex',
@@ -237,7 +237,7 @@ const useStyles = makeStyles({
     alignItems: 'stretch',
   },
   slot: {
-    minHeight: '132px',
+    minHeight: '164px',
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
@@ -338,16 +338,22 @@ const useStyles = makeStyles({
       whiteSpace: 'nowrap',
     },
   },
+  graphViewport: {
+    width: '100%',
+    overflowX: 'auto',
+  },
   graph: {
     display: 'block',
     width: '100%',
+    minWidth: '680px',
     height: 'auto',
-    overflow: 'visible',
+    borderRadius: tokens.borderRadiusMedium,
+    backgroundColor: tokens.colorNeutralBackground2,
   },
   edge: {
     fill: 'none',
-    stroke: tokens.colorNeutralStroke1,
-    strokeWidth: tokens.strokeWidthThin,
+    stroke: tokens.colorNeutralForeground3,
+    strokeWidth: tokens.strokeWidthThick,
     vectorEffect: 'non-scaling-stroke',
   },
   eventEdge: {
@@ -355,36 +361,44 @@ const useStyles = makeStyles({
   },
   edgeProgress: {
     fill: 'none',
-    stroke: tokens.colorBrandStroke1,
-    strokeWidth: tokens.strokeWidthThick,
+    stroke: tokens.colorBrandForeground1,
+    strokeWidth: tokens.strokeWidthThicker,
     strokeLinecap: 'round',
     strokeDasharray: '1',
     strokeDashoffset: '1',
     vectorEffect: 'non-scaling-stroke',
   },
   arrow: {
-    fill: tokens.colorNeutralStroke1,
+    fill: tokens.colorNeutralForeground3,
   },
   edgeLabel: {
-    fill: tokens.colorNeutralForeground3,
+    fill: tokens.colorNeutralForeground2,
+    stroke: tokens.colorNeutralBackground2,
+    strokeWidth: '6px',
+    strokeLinejoin: 'round',
+    paintOrder: 'stroke',
     fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
   },
   node: {
     fill: tokens.colorNeutralBackground1,
-    stroke: tokens.colorNeutralStroke1,
-    strokeWidth: tokens.strokeWidthThin,
+    stroke: tokens.colorNeutralForeground3,
+    strokeWidth: tokens.strokeWidthThick,
     vectorEffect: 'non-scaling-stroke',
   },
   nodeActive: {
-    fill: tokens.colorBrandBackground2,
-    stroke: tokens.colorBrandStroke1,
+    fill: tokens.colorBrandBackground,
+    stroke: tokens.colorBrandForeground1,
   },
   nodeLabel: {
     fill: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
+    fontSize: tokens.fontSizeBase400,
     fontWeight: tokens.fontWeightSemibold,
+  },
+  nodeLabelActive: {
+    fill: tokens.colorNeutralForegroundOnBrand,
   },
 });
 
@@ -576,76 +590,78 @@ export const StateMotionCardTransfer = (): JSXElement => {
         </CardMotion>
       </div>
 
-      <svg
-        className={styles.graph}
-        viewBox="0 0 810 330"
-        role="img"
-        aria-labelledby="card-transfer-title card-transfer-description"
-      >
-        <title id="card-transfer-title">Card transfer state graph</title>
-        <desc id="card-transfer-description">
-          Stable and active states connected by a forward cycle. The active animation fills as it progresses.
-        </desc>
-        <defs>
-          <marker id={markerId} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
-            <path className={styles.arrow} d="M 0 0 L 8 4 L 0 8 Z" />
-          </marker>
-        </defs>
+      <div className={styles.graphViewport}>
+        <svg
+          className={styles.graph}
+          viewBox="0 0 810 330"
+          role="img"
+          aria-labelledby="card-transfer-title card-transfer-description"
+        >
+          <title id="card-transfer-title">Card transfer state graph</title>
+          <desc id="card-transfer-description">
+            Stable and active states connected by a forward cycle. The active animation fills as it progresses.
+          </desc>
+          <defs>
+            <marker id={markerId} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path className={styles.arrow} d="M 0 0 L 8 4 L 0 8 Z" />
+            </marker>
+          </defs>
 
-        {eventEdges.map(edge => (
-          <React.Fragment key={edge.event}>
+          {eventEdges.map(edge => (
+            <React.Fragment key={edge.event}>
+              <path
+                className={mergeClasses(styles.edge, styles.eventEdge)}
+                d={edge.path}
+                markerEnd={`url(#${markerId})`}
+              />
+              <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
+                {edge.event}
+              </text>
+            </React.Fragment>
+          ))}
+
+          {graphEdges.map(edge => (
+            <React.Fragment key={edge.event}>
+              <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
+              <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
+                finish
+              </text>
+            </React.Fragment>
+          ))}
+
+          <GraphMotion completeAnimation={false} controller={controller}>
             <path
-              className={mergeClasses(styles.edge, styles.eventEdge)}
-              d={edge.path}
-              markerEnd={`url(#${markerId})`}
+              className={styles.edgeProgress}
+              d={activeEdge.path}
+              pathLength={1}
+              visibility={snapshot.animation ? 'visible' : 'hidden'}
+              aria-hidden="true"
             />
-            <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
-              {edge.event}
-            </text>
-          </React.Fragment>
-        ))}
+          </GraphMotion>
 
-        {graphEdges.map(edge => (
-          <React.Fragment key={edge.event}>
-            <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
-            <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
-              finish
-            </text>
-          </React.Fragment>
-        ))}
-
-        <GraphMotion completeAnimation={false} controller={controller}>
-          <path
-            className={styles.edgeProgress}
-            d={activeEdge.path}
-            pathLength={1}
-            visibility={snapshot.animation ? 'visible' : 'hidden'}
-            aria-hidden="true"
-          />
-        </GraphMotion>
-
-        {graphNodes.map(node => (
-          <React.Fragment key={node.id}>
-            <rect
-              className={mergeClasses(styles.node, activeNode === node.id && styles.nodeActive)}
-              x={node.x}
-              y={node.y}
-              width="110"
-              height="48"
-              rx={tokens.borderRadiusMedium}
-            />
-            <text
-              className={styles.nodeLabel}
-              x={node.x + 55}
-              y={node.y + 24}
-              textAnchor="middle"
-              dominantBaseline="middle"
-            >
-              {node.id}
-            </text>
-          </React.Fragment>
-        ))}
-      </svg>
+          {graphNodes.map(node => (
+            <React.Fragment key={node.id}>
+              <rect
+                className={mergeClasses(styles.node, activeNode === node.id && styles.nodeActive)}
+                x={node.x}
+                y={node.y}
+                width="110"
+                height="48"
+                rx={tokens.borderRadiusMedium}
+              />
+              <text
+                className={mergeClasses(styles.nodeLabel, activeNode === node.id && styles.nodeLabelActive)}
+                x={node.x + 55}
+                y={node.y + 24}
+                textAnchor="middle"
+                dominantBaseline="middle"
+              >
+                {node.id}
+              </text>
+            </React.Fragment>
+          ))}
+        </svg>
+      </div>
     </div>
   );
 };
