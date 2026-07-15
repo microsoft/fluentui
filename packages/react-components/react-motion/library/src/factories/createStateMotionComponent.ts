@@ -20,6 +20,7 @@ import type {
   StateMotionKeyframe,
   StateMotionMachineDefinition,
   StateMotionSkin,
+  StateMotionStateKeyframe,
   StateMotionStateName,
   StateMotionTransition,
   StateMotionTransitionMotion,
@@ -28,7 +29,11 @@ import type {
 import { useChildElement } from '../utils/useChildElement';
 
 /** Props for a component created by createStateMotionComponent. */
-export type StateMotionComponentProps<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+export type StateMotionComponentProps<
+  State extends string,
+  Event extends StateMotionEvent<PropertyKey>,
+  Context = undefined,
+> = {
   /** A React element that will receive the motion effects. */
   children: JSXElement;
 
@@ -49,13 +54,23 @@ export type StateMotionComponentProps<State extends string, Event extends StateM
   /** Called when a selected edge is cancelled. */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
   onMotionCancel?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
-};
+} & ([Context] extends [undefined]
+  ? { context?: never }
+  : {
+      /** Values used to resolve context-aware state keyframes. */
+      context: Context;
+    });
 
 /** A React component that animates one target element along a state motion graph. */
 export type StateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-> = ForwardRefComponent<StateMotionComponentProps<State, Event>>;
+  Context = undefined,
+> = ForwardRefComponent<StateMotionComponentProps<State, Event, Context>>;
+
+function resolveStateKeyframe<Context>(keyframe: StateMotionStateKeyframe<Context>, context: Context): Keyframe {
+  return typeof keyframe === 'function' ? keyframe({ context }) : keyframe;
+}
 
 function resolveKeyframes(keyframes: readonly StateMotionKeyframe[], target: Keyframe): Keyframe[] {
   return keyframes.map(keyframe => {
@@ -98,15 +113,27 @@ export function createStateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
   Transition extends string,
+  Context,
+>(
+  definition: StateMotionMachineDefinition<State, Event, Transition>,
+  skin: StateMotionSkin<State, Transition, Context>,
+): StateMotionComponent<State, Event, Context>;
+export function createStateMotionComponent<
+  State extends string,
+  Event extends StateMotionEvent<PropertyKey>,
+  Transition extends string,
+  Context,
 >(
   definition: StateMotionDefinition<State, Event> | StateMotionMachineDefinition<State, Event, Transition>,
-  skin?: StateMotionSkin<State, Transition>,
-): StateMotionComponent<State, Event> {
-  const getStateKeyframe = (state: StateMotionStateName<State>): Keyframe =>
-    skin?.states[state] ?? (definition as StateMotionDefinition<State, Event>).states[state].keyframe;
+  skin?: StateMotionSkin<State, Transition, Context>,
+): StateMotionComponent<State, Event, Context> {
+  const getStateKeyframe = (state: StateMotionStateName<State>, context: Context): Keyframe =>
+    skin
+      ? resolveStateKeyframe(skin.states[state], context)
+      : (definition as StateMotionDefinition<State, Event>).states[state].keyframe;
 
-  return React.forwardRef<HTMLElement, StateMotionComponentProps<State, Event>>((props, ref) => {
-    const { children, controller, imperativeRef, onMotionStart, onMotionFinish, onMotionCancel } = props;
+  return React.forwardRef<HTMLElement, StateMotionComponentProps<State, Event, Context>>((props, ref) => {
+    const { children, context, controller, imperativeRef, onMotionStart, onMotionFinish, onMotionCancel } = props;
     const snapshot = useStateMotion(controller);
     const playbackRef = React.useRef({ controller, transitionId: snapshot.transition?.id });
     const [child, childRef] = useChildElement(children, true, ref);
@@ -140,14 +167,14 @@ export function createStateMotionComponent<
         playbackRef.current.controller !== controller || playbackRef.current.transitionId === selected?.id;
       if (!selected || isHistoricalTransition) {
         playbackRef.current = { controller, transitionId: selected?.id };
-        Object.assign(element.style, getStateKeyframe(snapshot.state));
+        Object.assign(element.style, getStateKeyframe(snapshot.state, context as Context));
         return;
       }
 
       playbackRef.current = { controller, transitionId: selected.id };
 
       const source = definition.states[selected.source];
-      const targetKeyframe = getStateKeyframe(selected.target);
+      const targetKeyframe = getStateKeyframe(selected.target, context as Context);
       const transitions = source.on as
         | Partial<Record<Event['type'], StateMotionTransition<State, Event> | { id: Transition; target: State }>>
         | undefined;
@@ -203,6 +230,7 @@ export function createStateMotionComponent<
     }, [
       animateAtoms,
       childRef,
+      context,
       controller,
       handleMotionCancel,
       handleMotionFinish,
@@ -214,5 +242,5 @@ export function createStateMotionComponent<
     ]);
 
     return child;
-  });
+  }) as StateMotionComponent<State, Event, Context>;
 }

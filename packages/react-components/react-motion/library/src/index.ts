@@ -52,6 +52,7 @@ export type {
   StateMotionNode,
   StateMotionSkin,
   StateMotionSnapshot,
+  StateMotionStateKeyframe,
   StateMotionStateName,
   StateMotionTransition,
   StateMotionTransitionMotion,

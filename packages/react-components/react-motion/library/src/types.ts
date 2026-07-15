@@ -144,9 +144,12 @@ export type StateMotionTransitionMotion = Omit<AtomMotion, 'keyframes' | 'reduce
   };
 };
 
+/** Resolves a state's resting keyframe from caller-provided context. */
+export type StateMotionStateKeyframe<Context = undefined> = Keyframe | ((params: { context: Context }) => Keyframe);
+
 /** Resting state presentation and directed edge programs for a state motion machine. */
-export type StateMotionSkin<State extends string, Transition extends string> = {
-  states: Record<StateMotionStateName<State>, Keyframe>;
+export type StateMotionSkin<State extends string, Transition extends string, Context = undefined> = {
+  states: Record<StateMotionStateName<State>, StateMotionStateKeyframe<Context>>;
   transitions?: Partial<Record<Transition, StateMotionTransitionMotion | readonly StateMotionTransitionMotion[]>>;
 };
 

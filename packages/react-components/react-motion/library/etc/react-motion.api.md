@@ -39,6 +39,9 @@ export function createStateMotionComponent<State extends string, Event extends S
 // @public (undocumented)
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>, Transition extends string>(definition: StateMotionMachineDefinition<State, Event, Transition>, skin: StateMotionSkin<State, Transition>): StateMotionComponent<State, Event>;
 
+// @public (undocumented)
+export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>, Transition extends string, Context>(definition: StateMotionMachineDefinition<State, Event, Transition>, skin: StateMotionSkin<State, Transition, Context>): StateMotionComponent<State, Event, Context>;
+
 // @public
 export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>, options?: StateMotionControllerOptions<State>): StateMotionController<State, Event>;
 
@@ -218,17 +221,21 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
 };
 
 // @public
-export type StateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>> = ForwardRefComponent<StateMotionComponentProps<State, Event>>;
+export type StateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>, Context = undefined> = ForwardRefComponent<StateMotionComponentProps<State, Event, Context>>;
 
 // @public
-export type StateMotionComponentProps<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+export type StateMotionComponentProps<State extends string, Event extends StateMotionEvent<PropertyKey>, Context = undefined> = {
     children: JSXElement;
     controller: StateMotionController<State, Event>;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionStart?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
     onMotionFinish?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
     onMotionCancel?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
-};
+} & ([Context] extends [undefined] ? {
+    context?: never;
+} : {
+    context: Context;
+});
 
 // @public
 export type StateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
@@ -304,8 +311,8 @@ export type StateMotionNode<State extends string, Event extends StateMotionEvent
 };
 
 // @public
-export type StateMotionSkin<State extends string, Transition extends string> = {
-    states: Record<StateMotionStateName<State>, Keyframe>;
+export type StateMotionSkin<State extends string, Transition extends string, Context = undefined> = {
+    states: Record<StateMotionStateName<State>, StateMotionStateKeyframe<Context>>;
     transitions?: Partial<Record<Transition, StateMotionTransitionMotion | readonly StateMotionTransitionMotion[]>>;
 };
 
@@ -314,6 +321,11 @@ export type StateMotionSnapshot<State extends string, Event extends StateMotionE
     state: StateMotionStateName<State>;
     transition: StateMotionTransitionSnapshot<State, Event> | undefined;
 };
+
+// @public
+export type StateMotionStateKeyframe<Context = undefined> = Keyframe | ((params: {
+    context: Context;
+}) => Keyframe);
 
 // @public
 export type StateMotionStateName<State extends string> = State extends 'target' ? never : State;

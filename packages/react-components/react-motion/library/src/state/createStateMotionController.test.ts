@@ -47,38 +47,16 @@ describe('createStateMotionController', () => {
     });
   });
 
-  it('commits every state in a reversible transition sequence', () => {
-    type CardState = 'originRest' | 'originLifted' | 'destinationLifted' | 'destinationRest';
-    type CardEvent =
-      | { type: 'LIFT_FROM_ORIGIN' }
-      | { type: 'TRANSFER_TO_DESTINATION' }
-      | { type: 'DROP_AT_DESTINATION' }
-      | { type: 'LIFT_FROM_DESTINATION' }
-      | { type: 'TRANSFER_TO_ORIGIN' }
-      | { type: 'DROP_AT_ORIGIN' };
+  it('commits every state across repeated transfer cycles', () => {
+    type CardState = 'dropped' | 'lifted' | 'transferred';
+    type CardEvent = { type: 'LIFT' } | { type: 'TRANSFER' } | { type: 'DROP' };
 
     const cardDefinition: StateMotionDefinition<CardState, CardEvent> = {
-      initialState: 'originRest',
+      initialState: 'dropped',
       states: {
-        originRest: { keyframe: {}, on: { LIFT_FROM_ORIGIN: { target: 'originLifted' } } },
-        originLifted: {
-          keyframe: {},
-          on: {
-            TRANSFER_TO_DESTINATION: { target: 'destinationLifted' },
-            DROP_AT_ORIGIN: { target: 'originRest' },
-          },
-        },
-        destinationLifted: {
-          keyframe: {},
-          on: {
-            DROP_AT_DESTINATION: { target: 'destinationRest' },
-            TRANSFER_TO_ORIGIN: { target: 'originLifted' },
-          },
-        },
-        destinationRest: {
-          keyframe: {},
-          on: { LIFT_FROM_DESTINATION: { target: 'destinationLifted' } },
-        },
+        dropped: { keyframe: {}, on: { LIFT: { target: 'lifted' } } },
+        lifted: { keyframe: {}, on: { TRANSFER: { target: 'transferred' } } },
+        transferred: { keyframe: {}, on: { DROP: { target: 'dropped' } } },
       },
     };
     const controller = createStateMotionController(cardDefinition);
@@ -86,51 +64,31 @@ describe('createStateMotionController', () => {
     controller.subscribe(() => snapshots.push(controller.getSnapshot()));
 
     const events: CardEvent[] = [
-      { type: 'LIFT_FROM_ORIGIN' },
-      { type: 'TRANSFER_TO_DESTINATION' },
-      { type: 'DROP_AT_DESTINATION' },
-      { type: 'LIFT_FROM_DESTINATION' },
-      { type: 'TRANSFER_TO_ORIGIN' },
-      { type: 'DROP_AT_ORIGIN' },
+      { type: 'LIFT' },
+      { type: 'TRANSFER' },
+      { type: 'DROP' },
+      { type: 'LIFT' },
+      { type: 'TRANSFER' },
+      { type: 'DROP' },
     ];
     events.forEach(event => expect(controller.send(event)).toBe(true));
 
     expect(snapshots.map(snapshot => snapshot.state)).toEqual([
-      'originRest',
-      'originLifted',
-      'destinationLifted',
-      'destinationRest',
-      'destinationLifted',
-      'originLifted',
-      'originRest',
+      'dropped',
+      'lifted',
+      'transferred',
+      'dropped',
+      'lifted',
+      'transferred',
+      'dropped',
     ]);
     expect(snapshots.slice(1).map(snapshot => snapshot.transition)).toEqual([
-      { id: 1, source: 'originRest', target: 'originLifted', event: { type: 'LIFT_FROM_ORIGIN' } },
-      {
-        id: 2,
-        source: 'originLifted',
-        target: 'destinationLifted',
-        event: { type: 'TRANSFER_TO_DESTINATION' },
-      },
-      {
-        id: 3,
-        source: 'destinationLifted',
-        target: 'destinationRest',
-        event: { type: 'DROP_AT_DESTINATION' },
-      },
-      {
-        id: 4,
-        source: 'destinationRest',
-        target: 'destinationLifted',
-        event: { type: 'LIFT_FROM_DESTINATION' },
-      },
-      {
-        id: 5,
-        source: 'destinationLifted',
-        target: 'originLifted',
-        event: { type: 'TRANSFER_TO_ORIGIN' },
-      },
-      { id: 6, source: 'originLifted', target: 'originRest', event: { type: 'DROP_AT_ORIGIN' } },
+      { id: 1, source: 'dropped', target: 'lifted', event: { type: 'LIFT' } },
+      { id: 2, source: 'lifted', target: 'transferred', event: { type: 'TRANSFER' } },
+      { id: 3, source: 'transferred', target: 'dropped', event: { type: 'DROP' } },
+      { id: 4, source: 'dropped', target: 'lifted', event: { type: 'LIFT' } },
+      { id: 5, source: 'lifted', target: 'transferred', event: { type: 'TRANSFER' } },
+      { id: 6, source: 'transferred', target: 'dropped', event: { type: 'DROP' } },
     ]);
   });
 

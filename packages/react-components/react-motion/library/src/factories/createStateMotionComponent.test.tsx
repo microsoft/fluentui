@@ -169,24 +169,85 @@ describe('createStateMotionComponent', () => {
     delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
   });
 
-  it('preserves the current presentation between consecutive state changes', () => {
-    type State = 'originRest' | 'originLifted' | 'destinationLifted';
-    type Event = { type: 'LIFT' } | { type: 'TRANSFER' };
-    type Transition = 'lifting' | 'transferring';
+  it('resolves state keyframes from the current context', () => {
+    type State = 'dropped' | 'lifted' | 'transferred';
+    type Event = { type: 'LIFT' } | { type: 'TRANSFER' } | { type: 'DROP' };
+    type Transition = 'lifting' | 'transferring' | 'dropping';
+    type Route = { originX: number; destinationX: number };
 
     const machine: StateMotionMachineDefinition<State, Event, Transition> = {
-      initialState: 'originRest',
+      initialState: 'dropped',
       states: {
-        originRest: { on: { LIFT: { id: 'lifting', target: 'originLifted' } } },
-        originLifted: { on: { TRANSFER: { id: 'transferring', target: 'destinationLifted' } } },
-        destinationLifted: {},
+        dropped: { on: { LIFT: { id: 'lifting', target: 'lifted' } } },
+        lifted: { on: { TRANSFER: { id: 'transferring', target: 'transferred' } } },
+        transferred: { on: { DROP: { id: 'dropping', target: 'dropped' } } },
       },
     };
     const skin = {
       states: {
-        originRest: { transform: 'translate(0, 0)' },
-        originLifted: { transform: 'translate(0, -20px)' },
-        destinationLifted: { transform: 'translate(100px, -20px)' },
+        dropped: ({ context }: { context: Route }) => ({ transform: `translate(${context.originX}px, 0)` }),
+        lifted: ({ context }: { context: Route }) => ({ transform: `translate(${context.originX}px, -20px)` }),
+        transferred: ({ context }: { context: Route }) => ({
+          transform: `translate(${context.destinationX}px, -20px)`,
+        }),
+      },
+      transitions: {
+        lifting: { keyframes: [{ state: 'current' }, { state: 'target' }] },
+        transferring: { keyframes: [{ state: 'current' }, { state: 'target' }] },
+        dropping: { keyframes: [{ state: 'current' }, { state: 'target' }] },
+      },
+    } satisfies StateMotionSkin<State, Transition, Route>;
+    const animation = { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() } as unknown as Animation;
+    const animate = jest.fn(() => animation);
+    Object.defineProperty(HTMLElement.prototype, 'animate', { configurable: true, value: animate });
+    const controller = createStateMotionController(machine);
+    const StateMotion = createStateMotionComponent(machine, skin);
+    const outboundRoute = { originX: 0, destinationX: 100 };
+    const returnRoute = { originX: 100, destinationX: 0 };
+    const { getByTestId, rerender } = render(
+      <StateMotion context={outboundRoute} controller={controller}>
+        <div data-testid="target" />
+      </StateMotion>,
+    );
+
+    expect(getByTestId('target')).toHaveStyle({ transform: 'translate(0px, 0)' });
+    act(() => controller.send({ type: 'LIFT' }));
+    act(() => controller.send({ type: 'TRANSFER' }));
+    act(() => {
+      rerender(
+        <StateMotion context={returnRoute} controller={controller}>
+          <div data-testid="target" />
+        </StateMotion>,
+      );
+      controller.send({ type: 'DROP' });
+    });
+
+    expect(controller.getSnapshot().state).toBe('dropped');
+    expect(animate).toHaveBeenNthCalledWith(1, [{}, { transform: 'translate(0px, -20px)' }], expect.anything());
+    expect(animate).toHaveBeenNthCalledWith(2, [{}, { transform: 'translate(100px, -20px)' }], expect.anything());
+    expect(animate).toHaveBeenNthCalledWith(3, [{}, { transform: 'translate(100px, 0)' }], expect.anything());
+
+    delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
+  });
+
+  it('preserves the current presentation between consecutive state changes', () => {
+    type State = 'dropped' | 'lifted' | 'transferred';
+    type Event = { type: 'LIFT' } | { type: 'TRANSFER' };
+    type Transition = 'lifting' | 'transferring';
+
+    const machine: StateMotionMachineDefinition<State, Event, Transition> = {
+      initialState: 'dropped',
+      states: {
+        dropped: { on: { LIFT: { id: 'lifting', target: 'lifted' } } },
+        lifted: { on: { TRANSFER: { id: 'transferring', target: 'transferred' } } },
+        transferred: {},
+      },
+    };
+    const skin = {
+      states: {
+        dropped: { transform: 'translate(0, 0)' },
+        lifted: { transform: 'translate(0, -20px)' },
+        transferred: { transform: 'translate(100px, -20px)' },
       },
       transitions: {
         lifting: { keyframes: [{ state: 'current' }, { state: 'target' }], duration: 200 },
@@ -217,7 +278,7 @@ describe('createStateMotionComponent', () => {
       controller.send({ type: 'TRANSFER' });
     });
 
-    expect(controller.getSnapshot().state).toBe('destinationLifted');
+    expect(controller.getSnapshot().state).toBe('transferred');
     expect(animate).toHaveBeenNthCalledWith(
       1,
       [{}, { transform: 'translate(0, -20px)' }],
