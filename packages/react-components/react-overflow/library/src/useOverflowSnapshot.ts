@@ -18,9 +18,7 @@ export function useOverflowSnapshot<Selected>(selector: (snapshot: OverflowSnaps
 
   useIsomorphicLayoutEffect(() => {
     const checkForUpdates = () => setSelected(select(getSnapshot()));
-
     checkForUpdates();
-
     return subscribe(checkForUpdates);
   }, [subscribe, getSnapshot, select]);
 
