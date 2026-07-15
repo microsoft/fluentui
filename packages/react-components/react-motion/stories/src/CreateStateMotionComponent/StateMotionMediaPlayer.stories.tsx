@@ -7,38 +7,60 @@ import {
   tokens,
   useStateMotion,
   type JSXElement,
+  type StateMotionAnimation,
   type StateMotionMachineDefinition,
   type StateMotionSkin,
-  type StateMotionTransitionMotion,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-type PlayerState = 'stopped' | 'playing' | 'paused';
+type PlayerState =
+  | 'stopped'
+  | 'startingPlayback'
+  | 'playing'
+  | 'pausingPlayback'
+  | 'paused'
+  | 'resumingPlayback'
+  | 'stoppingFromPlaying'
+  | 'stoppingFromPaused';
 type PlayerEvent = { type: 'PLAY' } | { type: 'PAUSE' } | { type: 'STOP' };
-type PlayerTransition = 'startPlayback' | 'pausePlayback' | 'resumePlayback' | 'stopFromPlaying' | 'stopFromPaused';
+type PlayerAnimation = 'startPlayback' | 'pausePlayback' | 'resumePlayback' | 'stopFromPlaying' | 'stopFromPaused';
 
-const playerMachine: StateMotionMachineDefinition<PlayerState, PlayerEvent, PlayerTransition> = {
+const playerMachine: StateMotionMachineDefinition<PlayerState, PlayerEvent, PlayerAnimation> = {
   initialState: 'stopped',
   states: {
     stopped: {
-      on: { PLAY: { id: 'startPlayback', target: 'playing' } },
+      on: { PLAY: { target: 'startingPlayback' } },
+    },
+    startingPlayback: {
+      animation: { id: 'startPlayback', target: 'playing' },
+      on: { STOP: { target: 'stoppingFromPlaying' } },
     },
     playing: {
       on: {
-        PAUSE: { id: 'pausePlayback', target: 'paused' },
-        STOP: { id: 'stopFromPlaying', target: 'stopped' },
+        PAUSE: { target: 'pausingPlayback' },
+        STOP: { target: 'stoppingFromPlaying' },
       },
+    },
+    pausingPlayback: {
+      animation: { id: 'pausePlayback', target: 'paused' },
+      on: { PLAY: { target: 'resumingPlayback' }, STOP: { target: 'stoppingFromPlaying' } },
     },
     paused: {
       on: {
-        PLAY: { id: 'resumePlayback', target: 'playing' },
-        STOP: { id: 'stopFromPaused', target: 'stopped' },
+        PLAY: { target: 'resumingPlayback' },
+        STOP: { target: 'stoppingFromPaused' },
       },
     },
+    resumingPlayback: {
+      animation: { id: 'resumePlayback', target: 'playing' },
+      on: { PAUSE: { target: 'pausingPlayback' }, STOP: { target: 'stoppingFromPlaying' } },
+    },
+    stoppingFromPlaying: { animation: { id: 'stopFromPlaying', target: 'stopped' } },
+    stoppingFromPaused: { animation: { id: 'stopFromPaused', target: 'stopped' } },
   },
 };
 
-const stopMotion: StateMotionTransitionMotion = {
+const stopMotion: StateMotionAnimation = {
   keyframes: [
     { state: 'current' },
     {
@@ -55,10 +77,15 @@ const stopMotion: StateMotionTransitionMotion = {
 const playerSkin = {
   states: {
     stopped: { opacity: 0.6, transform: 'translateX(0) scale(0.9)' },
+    startingPlayback: { opacity: 1, transform: `translateX(${tokens.spacingHorizontalXXL}) scale(1)` },
     playing: { opacity: 1, transform: `translateX(${tokens.spacingHorizontalXXL}) scale(1)` },
+    pausingPlayback: { opacity: 0.8, transform: `translateX(${tokens.spacingHorizontalL}) scale(0.95)` },
     paused: { opacity: 0.8, transform: `translateX(${tokens.spacingHorizontalL}) scale(0.95)` },
+    resumingPlayback: { opacity: 1, transform: `translateX(${tokens.spacingHorizontalXXL}) scale(1)` },
+    stoppingFromPlaying: { opacity: 0.6, transform: 'translateX(0) scale(0.9)' },
+    stoppingFromPaused: { opacity: 0.6, transform: 'translateX(0) scale(0.9)' },
   },
-  transitions: {
+  animations: {
     startPlayback: {
       keyframes: [
         { state: 'current' },
@@ -101,7 +128,7 @@ const playerSkin = {
     stopFromPlaying: stopMotion,
     stopFromPaused: stopMotion,
   },
-} satisfies StateMotionSkin<PlayerState, PlayerTransition>;
+} satisfies StateMotionSkin<PlayerState, PlayerAnimation>;
 
 const PlayerMotion = createStateMotionComponent(playerMachine, playerSkin);
 
@@ -119,17 +146,18 @@ export const StateMotionMediaPlayer = (): JSXElement => {
   const classes = useStyles();
   const [controller] = React.useState(() => createStateMotionController(playerMachine));
   const snapshot = useStateMotion(controller);
+  const availableEvents = playerMachine.states[snapshot.state].on;
 
   return (
     <div className={classes.root}>
       <div className={classes.controls}>
-        <Button disabled={snapshot.state === 'playing'} onClick={() => controller.send({ type: 'PLAY' })}>
+        <Button disabled={!availableEvents?.PLAY} onClick={() => controller.send({ type: 'PLAY' })}>
           Play
         </Button>
-        <Button disabled={snapshot.state !== 'playing'} onClick={() => controller.send({ type: 'PAUSE' })}>
+        <Button disabled={!availableEvents?.PAUSE} onClick={() => controller.send({ type: 'PAUSE' })}>
           Pause
         </Button>
-        <Button disabled={snapshot.state === 'stopped'} onClick={() => controller.send({ type: 'STOP' })}>
+        <Button disabled={!availableEvents?.STOP} onClick={() => controller.send({ type: 'STOP' })}>
           Stop
         </Button>
       </div>

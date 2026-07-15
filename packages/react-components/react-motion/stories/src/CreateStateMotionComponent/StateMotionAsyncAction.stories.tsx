@@ -77,7 +77,7 @@ export const StateMotionAsyncAction = (): JSXElement => {
         <Button onClick={() => controller.send({ type: 'RESET' })}>Reset</Button>
       </div>
       <div>
-        State: {snapshot.state}; last event: {snapshot.transition?.event.type ?? 'none'}
+        State: {snapshot.state}; last animated event: {snapshot.animation?.event.type ?? 'none'}
       </div>
       <ActionMotion controller={controller}>
         <div className={classes.target}>Async action</div>

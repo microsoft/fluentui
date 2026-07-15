@@ -14,58 +14,91 @@ import {
   type StateMotionSkin,
   useStateMotion,
 } from '@fluentui/react-components';
-import { DocumentRegular, ReplayFilled } from '@fluentui/react-icons';
+import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-type CardState = 'dropped' | 'lifted' | 'transferred';
+type CardState = 'dropped' | 'lifting' | 'lifted' | 'transferring' | 'transferred' | 'dropping';
 type CardEvent = { type: 'LIFT' } | { type: 'TRANSFER' } | { type: 'DROP' };
-type CardTransition = 'lifting' | 'transferring' | 'dropping';
-type Placement = 'start' | 'end';
+type CardAnimation = 'lifting' | 'transferring' | 'dropping';
+type Placement = 'start' | 'middle' | 'end';
 type CardRoute = { origin: Placement; destination: Placement };
+type RunMode = 'idle' | 'replay' | 'destination';
 
-const travelDistance = `calc(100% + ${tokens.spacingHorizontalM})`;
 const liftedDistance = `calc(-1 * ${tokens.spacingVerticalL})`;
 const liftDuration = motionTokens.durationSlower * 2;
 const transferDuration = motionTokens.durationUltraSlow * 4;
 const dropDuration = motionTokens.durationUltraSlow * 2;
-const initialRoute: CardRoute = { origin: 'start', destination: 'end' };
+const initialRoute: CardRoute = { origin: 'start', destination: 'middle' };
 
-const getPlacementX = (placement: Placement): string => (placement === 'start' ? '0' : travelDistance);
-const reverseRoute = ({ origin, destination }: CardRoute): CardRoute => ({ origin: destination, destination: origin });
+const getPlacementX = (placement: Placement): string => {
+  if (placement === 'middle') {
+    return `calc(100% + ${tokens.spacingHorizontalM})`;
+  }
+  if (placement === 'end') {
+    return `calc(200% + 2 * ${tokens.spacingHorizontalM})`;
+  }
+  return '0';
+};
+const getNextPlacement = (placement: Placement): Placement =>
+  placement === 'start' ? 'middle' : placement === 'middle' ? 'end' : 'start';
+const advanceRoute = ({ destination }: CardRoute): CardRoute => ({
+  origin: destination,
+  destination: getNextPlacement(destination),
+});
 
-const cardMachine: StateMotionMachineDefinition<CardState, CardEvent, CardTransition> = {
+const cardMachine: StateMotionMachineDefinition<CardState, CardEvent, CardAnimation> = {
   initialState: 'dropped',
   states: {
     dropped: {
-      on: { LIFT: { id: 'lifting', target: 'lifted' } },
+      on: { LIFT: { target: 'lifting' } },
+    },
+    lifting: {
+      animation: { id: 'lifting', target: 'lifted' },
+      on: { DROP: { target: 'dropping' } },
     },
     lifted: {
-      on: { TRANSFER: { id: 'transferring', target: 'transferred' } },
+      on: {
+        TRANSFER: { target: 'transferring' },
+        DROP: { target: 'dropping' },
+      },
+    },
+    transferring: {
+      animation: { id: 'transferring', target: 'transferred' },
+      on: { DROP: { target: 'dropping' } },
     },
     transferred: {
-      on: { DROP: { id: 'dropping', target: 'dropped' } },
+      on: { DROP: { target: 'dropping' } },
+    },
+    dropping: {
+      animation: { id: 'dropping', target: 'dropped' },
+      on: { LIFT: { target: 'lifting' } },
     },
   },
 };
 
+const getDroppedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
+  transform: `translateX(${getPlacementX(context.origin)}) translateY(0) rotate(0deg) scale(1)`,
+  boxShadow: tokens.shadow2,
+});
+const getLiftedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
+  transform: `translateX(${getPlacementX(context.origin)}) translateY(${liftedDistance}) rotate(-1deg) scale(1.04)`,
+  boxShadow: tokens.shadow16,
+});
+const getTransferredKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
+  transform: `translateX(${getPlacementX(context.destination)}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
+  boxShadow: tokens.shadow16,
+});
+
 const cardSkin = {
   states: {
-    dropped: ({ context }: { context: CardRoute }) => ({
-      transform: `translateX(${getPlacementX(context.origin)}) translateY(0) rotate(0deg) scale(1)`,
-      boxShadow: tokens.shadow2,
-    }),
-    lifted: ({ context }: { context: CardRoute }) => ({
-      transform: `translateX(${getPlacementX(context.origin)}) translateY(${liftedDistance}) rotate(-1deg) scale(1.04)`,
-      boxShadow: tokens.shadow16,
-    }),
-    transferred: ({ context }: { context: CardRoute }) => ({
-      transform: `translateX(${getPlacementX(
-        context.destination,
-      )}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
-      boxShadow: tokens.shadow16,
-    }),
+    dropped: getDroppedKeyframe,
+    lifting: getLiftedKeyframe,
+    lifted: getLiftedKeyframe,
+    transferring: getTransferredKeyframe,
+    transferred: getTransferredKeyframe,
+    dropping: getDroppedKeyframe,
   },
-  transitions: {
+  animations: {
     lifting: {
       keyframes: [{ state: 'current' }, { offset: 0.28, boxShadow: tokens.shadow16 }, { state: 'target' }],
       duration: liftDuration,
@@ -82,15 +115,18 @@ const cardSkin = {
       easing: motionTokens.curveDecelerateMid,
     },
   },
-} satisfies StateMotionSkin<CardState, CardTransition, CardRoute>;
+} satisfies StateMotionSkin<CardState, CardAnimation, CardRoute>;
 
 const graphSkin = {
   states: {
     dropped: { strokeDashoffset: 0 },
+    lifting: { strokeDashoffset: 0 },
     lifted: { strokeDashoffset: 0 },
+    transferring: { strokeDashoffset: 0 },
     transferred: { strokeDashoffset: 0 },
+    dropping: { strokeDashoffset: 0 },
   },
-  transitions: {
+  animations: {
     lifting: {
       keyframes: [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
       duration: liftDuration,
@@ -107,7 +143,7 @@ const graphSkin = {
       easing: 'linear',
     },
   },
-} satisfies StateMotionSkin<CardState, CardTransition>;
+} satisfies StateMotionSkin<CardState, CardAnimation>;
 
 const sequence: CardEvent[] = [
   { type: 'LIFT' },
@@ -118,18 +154,12 @@ const sequence: CardEvent[] = [
   { type: 'DROP' },
 ];
 
-const durationByEvent: Record<CardEvent['type'], number> = {
-  LIFT: liftDuration,
-  TRANSFER: transferDuration,
-  DROP: dropDuration,
-};
-
-const CardMotion = createStateMotionComponent<CardState, CardEvent, CardTransition, CardRoute>(cardMachine, cardSkin);
+const CardMotion = createStateMotionComponent<CardState, CardEvent, CardAnimation, CardRoute>(cardMachine, cardSkin);
 const GraphMotion = createStateMotionComponent(cardMachine, graphSkin);
 
 type GraphEdge = {
   event: CardEvent['type'];
-  transition: CardTransition;
+  animation: CardAnimation;
   path: string;
   labelX: number;
   labelY: number;
@@ -138,32 +168,41 @@ type GraphEdge = {
 const graphEdges: GraphEdge[] = [
   {
     event: 'LIFT',
-    transition: 'lifting',
-    path: 'M 170 116 C 205 72 235 72 270 116',
-    labelX: 220,
-    labelY: 64,
+    animation: 'lifting',
+    path: 'M 260 204 C 282 164 304 122 335 88',
+    labelX: 300,
+    labelY: 142,
   },
   {
     event: 'TRANSFER',
-    transition: 'transferring',
-    path: 'M 420 116 C 455 72 485 72 520 116',
-    labelX: 470,
-    labelY: 64,
+    animation: 'transferring',
+    path: 'M 520 204 C 542 164 564 122 595 88',
+    labelX: 560,
+    labelY: 142,
   },
   {
     event: 'DROP',
-    transition: 'dropping',
-    path: 'M 595 166 C 560 236 180 236 95 166',
-    labelX: 345,
-    labelY: 232,
+    animation: 'dropping',
+    path: 'M 725 228 C 590 318 205 318 75 88',
+    labelX: 400,
+    labelY: 304,
   },
 ];
 
-const graphNodes: Array<{ id: CardState; x: number }> = [
-  { id: 'dropped', x: 20 },
-  { id: 'lifted', x: 270 },
-  { id: 'transferred', x: 520 },
+const graphNodes: Array<{ id: CardState; x: number; y: number }> = [
+  { id: 'dropped', x: 20, y: 40 },
+  { id: 'lifting', x: 150, y: 180 },
+  { id: 'lifted', x: 280, y: 40 },
+  { id: 'transferring', x: 410, y: 180 },
+  { id: 'transferred', x: 540, y: 40 },
+  { id: 'dropping', x: 670, y: 180 },
 ];
+
+const eventEdges = [
+  { event: 'LIFT', path: 'M 130 64 C 144 106 150 145 176 180', labelX: 140, labelY: 124 },
+  { event: 'TRANSFER', path: 'M 390 64 C 404 106 410 145 436 180', labelX: 400, labelY: 124 },
+  { event: 'DROP', path: 'M 650 64 C 664 106 670 145 696 180', labelX: 660, labelY: 124 },
+] as const;
 
 const edgeByEvent = Object.fromEntries(graphEdges.map(edge => [edge.event, edge])) as Record<
   CardEvent['type'],
@@ -185,10 +224,15 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     gap: tokens.spacingHorizontalM,
   },
+  controls: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: tokens.spacingHorizontalXS,
+  },
   stage: {
     position: 'relative',
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
     gap: tokens.spacingHorizontalM,
     alignItems: 'stretch',
   },
@@ -219,6 +263,8 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground2,
     color: tokens.colorNeutralForeground3,
+    fontFamily: tokens.fontFamilyBase,
+    cursor: 'default',
     transitionProperty: 'background-color, border-color, color',
     transitionDuration: `${motionTokens.durationFast}ms`,
   },
@@ -237,18 +283,27 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorNeutralForeground1,
   },
+  slotInteractive: {
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2Hover,
+    },
+  },
   card: {
     position: 'absolute',
     zIndex: 1,
     top: tokens.spacingVerticalL,
     left: 0,
-    width: `calc((100% - ${tokens.spacingHorizontalM}) / 2)`,
+    width: `calc((100% - 2 * ${tokens.spacingHorizontalM}) / 3)`,
     minWidth: 0,
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
-    padding: tokens.spacingVerticalM,
+    paddingTop: tokens.spacingVerticalS,
+    paddingRight: tokens.spacingHorizontalS,
+    paddingBottom: tokens.spacingVerticalS,
+    paddingLeft: tokens.spacingHorizontalS,
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
     pointerEvents: 'none',
@@ -273,9 +328,15 @@ const useStyles = makeStyles({
   },
   cardMetadataRow: {
     color: tokens.colorNeutralForeground3,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
+    lineHeight: tokens.lineHeightBase100,
+    '& strong': {
+      display: 'block',
+      overflow: 'hidden',
+      color: tokens.colorNeutralForeground1,
+      fontSize: tokens.fontSizeBase100,
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    },
   },
   graph: {
     display: 'block',
@@ -288,6 +349,9 @@ const useStyles = makeStyles({
     stroke: tokens.colorNeutralStroke1,
     strokeWidth: tokens.strokeWidthThin,
     vectorEffect: 'non-scaling-stroke',
+  },
+  eventEdge: {
+    strokeDasharray: `${tokens.spacingHorizontalXS} ${tokens.spacingHorizontalXS}`,
   },
   edgeProgress: {
     fill: 'none',
@@ -329,74 +393,164 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const [controller] = React.useState(() => createStateMotionController(cardMachine));
   const snapshot = useStateMotion(controller);
   const [route, setRoute] = React.useState(initialRoute);
-  const [isRunning, setIsRunning] = React.useState(false);
+  const [runMode, setRunMode] = React.useState<RunMode>('idle');
+  const [hoveredPlacement, setHoveredPlacement] = React.useState<Placement | undefined>(undefined);
+  const routeRef = React.useRef(initialRoute);
+  const runModeRef = React.useRef<RunMode>('idle');
+  const destinationRef = React.useRef<Placement | undefined>(undefined);
   const sequenceIndexRef = React.useRef(0);
+
+  const updateRunMode = React.useCallback((mode: RunMode) => {
+    runModeRef.current = mode;
+    setRunMode(mode);
+  }, []);
+
+  const updateDestination = React.useCallback((destination: Placement) => {
+    const nextRoute = { ...routeRef.current, destination };
+    routeRef.current = nextRoute;
+    setRoute(nextRoute);
+  }, []);
+
+  const sendEvent = React.useCallback(
+    (event: CardEvent, fromAutomation = false) => {
+      if (!fromAutomation) {
+        destinationRef.current = undefined;
+        updateRunMode('idle');
+      }
+      if (
+        event.type === 'DROP' &&
+        (controller.getSnapshot().state === 'transferred' || controller.getSnapshot().state === 'transferring')
+      ) {
+        const nextRoute = advanceRoute(routeRef.current);
+        routeRef.current = nextRoute;
+        setRoute(nextRoute);
+      }
+      controller.send(event);
+    },
+    [controller, updateRunMode],
+  );
 
   const startSequence = React.useCallback(() => {
     sequenceIndexRef.current = 0;
-    setIsRunning(true);
-    controller.send(sequence[0]);
-  }, [controller]);
+    destinationRef.current = undefined;
+    updateRunMode('replay');
+    sendEvent(sequence[0], true);
+  }, [sendEvent, updateRunMode]);
+
+  const continueToDestination = React.useCallback(
+    (destination: Placement) => {
+      const state = controller.getSnapshot().state;
+      if (state === 'dropped') {
+        if (routeRef.current.origin === destination) {
+          destinationRef.current = undefined;
+          updateRunMode('idle');
+        } else {
+          updateDestination(destination);
+          sendEvent({ type: 'LIFT' }, true);
+        }
+      } else if (state === 'lifted') {
+        updateDestination(destination);
+        sendEvent({ type: 'TRANSFER' }, true);
+      } else if (state === 'transferred') {
+        sendEvent({ type: 'DROP' }, true);
+      }
+    },
+    [controller, sendEvent, updateDestination, updateRunMode],
+  );
+
+  const transferToDestination = React.useCallback(
+    (destination: Placement) => {
+      destinationRef.current = destination;
+      updateRunMode('destination');
+      const state = controller.getSnapshot().state;
+      if (state === 'dropped' || state === 'lifting' || state === 'lifted') {
+        updateDestination(destination);
+      }
+      continueToDestination(destination);
+    },
+    [continueToDestination, controller, updateDestination, updateRunMode],
+  );
 
   React.useEffect(() => {
     startSequence();
   }, [startSequence]);
 
-  React.useEffect(() => {
-    const transition = snapshot.transition;
-    if (!isRunning || !transition) {
+  const handleMotionFinish = React.useCallback(() => {
+    if (runModeRef.current === 'destination' && destinationRef.current) {
+      continueToDestination(destinationRef.current);
+      return;
+    }
+    if (runModeRef.current !== 'replay') {
       return;
     }
 
-    const timeout = globalThis.setTimeout(() => {
-      const nextIndex = sequenceIndexRef.current + 1;
-      const followingEvent = sequence[nextIndex];
-      if (followingEvent) {
-        if (followingEvent.type === 'DROP') {
-          setRoute(currentRoute => reverseRoute(currentRoute));
-        }
-        sequenceIndexRef.current = nextIndex;
-        controller.send(followingEvent);
-      } else {
-        setIsRunning(false);
-      }
-    }, durationByEvent[transition.event.type]);
+    const nextIndex = sequenceIndexRef.current + 1;
+    const followingEvent = sequence[nextIndex];
+    if (followingEvent) {
+      sequenceIndexRef.current = nextIndex;
+      sendEvent(followingEvent, true);
+    } else {
+      updateRunMode('idle');
+    }
+  }, [continueToDestination, sendEvent, updateRunMode]);
 
-    return () => globalThis.clearTimeout(timeout);
-  }, [controller, isRunning, snapshot.transition]);
-
-  const activeEdge = snapshot.transition ? edgeByEvent[snapshot.transition.event.type] : graphEdges[0];
+  const activeEdge = snapshot.animation ? edgeByEvent[snapshot.animation.event.type] : graphEdges[0];
   const activeNode = snapshot.state;
-  const activePlacement = activeNode === 'transferred' ? route.destination : route.origin;
+  const activePlacement =
+    activeNode === 'transferred' || activeNode === 'transferring' ? route.destination : route.origin;
+  const availableEvents = cardMachine.states[activeNode].on;
   const markerId = 'card-transfer-arrow';
 
   return (
     <div className={styles.root}>
       <div className={styles.header}>
         <Text weight="semibold">Card transfer</Text>
-        <Button icon={<ReplayFilled />} disabled={isRunning} onClick={startSequence}>
-          Replay
-        </Button>
+        <div className={styles.controls}>
+          {(['LIFT', 'TRANSFER', 'DROP'] as const).map(eventType => (
+            <Button
+              key={eventType}
+              disabled={!availableEvents?.[eventType]}
+              onClick={() => sendEvent({ type: eventType })}
+              size="small"
+            >
+              {eventType[0] + eventType.slice(1).toLowerCase()}
+            </Button>
+          ))}
+          <Button icon={<ReplayFilled />} disabled={runMode === 'replay'} onClick={startSequence} size="small">
+            Replay
+          </Button>
+        </div>
       </div>
 
       <div className={styles.stage}>
-        {(['start', 'end'] as const).map(placement => (
-          <div
+        {(['start', 'middle', 'end'] as const).map(placement => (
+          <button
             key={placement}
-            className={mergeClasses(styles.slot, activePlacement === placement && styles.slotActive)}
+            type="button"
+            className={mergeClasses(
+              styles.slot,
+              activePlacement === placement && styles.slotActive,
+              route.origin !== placement && styles.slotInteractive,
+            )}
+            disabled={route.origin === placement}
+            aria-label={route.origin === placement ? `${placement} origin` : `Transfer card to ${placement}`}
+            onBlur={() => setHoveredPlacement(undefined)}
+            onClick={() => transferToDestination(placement)}
+            onFocus={() => setHoveredPlacement(placement)}
+            onMouseEnter={() => setHoveredPlacement(placement)}
+            onMouseLeave={() => setHoveredPlacement(undefined)}
           >
             <Caption1
               className={mergeClasses(styles.slotState, activePlacement === placement && styles.slotStateActive)}
             >
-              {route.origin === placement ? 'origin' : 'destination'}
+              {route.origin === placement ? 'origin' : hoveredPlacement === placement ? 'destination' : 'available'}
             </Caption1>
-          </div>
+          </button>
         ))}
 
-        <CardMotion context={route} controller={controller}>
+        <CardMotion context={route} controller={controller} onMotionFinish={handleMotionFinish}>
           <Card className={styles.card} appearance="filled">
             <div className={styles.cardTitle}>
-              <DocumentRegular aria-hidden="true" />
               <Text className={styles.cardText} weight="semibold">
                 Motion spec
               </Text>
@@ -406,7 +560,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
                 State: <strong>{activeNode}</strong>
               </Caption1>
               <Caption1 className={styles.cardMetadataRow}>
-                Transition: <strong>{isRunning ? activeEdge.transition : 'none'}</strong>
+                Animation: <strong>{snapshot.animation ? activeEdge.animation : 'none'}</strong>
               </Caption1>
             </div>
           </Card>
@@ -415,13 +569,13 @@ export const StateMotionCardTransfer = (): JSXElement => {
 
       <svg
         className={styles.graph}
-        viewBox="0 0 810 250"
+        viewBox="0 0 810 330"
         role="img"
         aria-labelledby="card-transfer-title card-transfer-description"
       >
         <title id="card-transfer-title">Card transfer state graph</title>
         <desc id="card-transfer-description">
-          Three states connected by a forward cycle. The active transition fills as its animation progresses.
+          Stable and active states connected by a forward cycle. The active animation fills as it progresses.
         </desc>
         <defs>
           <marker id={markerId} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
@@ -429,21 +583,34 @@ export const StateMotionCardTransfer = (): JSXElement => {
           </marker>
         </defs>
 
-        {graphEdges.map(edge => (
+        {eventEdges.map(edge => (
           <React.Fragment key={edge.event}>
-            <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
+            <path
+              className={mergeClasses(styles.edge, styles.eventEdge)}
+              d={edge.path}
+              markerEnd={`url(#${markerId})`}
+            />
             <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
-              {edge.transition}
+              {edge.event}
             </text>
           </React.Fragment>
         ))}
 
-        <GraphMotion controller={controller}>
+        {graphEdges.map(edge => (
+          <React.Fragment key={edge.event}>
+            <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
+            <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
+              finish
+            </text>
+          </React.Fragment>
+        ))}
+
+        <GraphMotion completeAnimation={false} controller={controller}>
           <path
             className={styles.edgeProgress}
             d={activeEdge.path}
             pathLength={1}
-            visibility={isRunning ? 'visible' : 'hidden'}
+            visibility={snapshot.animation ? 'visible' : 'hidden'}
             aria-hidden="true"
           />
         </GraphMotion>
@@ -453,12 +620,18 @@ export const StateMotionCardTransfer = (): JSXElement => {
             <rect
               className={mergeClasses(styles.node, activeNode === node.id && styles.nodeActive)}
               x={node.x}
-              y="110"
-              width="150"
-              height="56"
+              y={node.y}
+              width="110"
+              height="48"
               rx={tokens.borderRadiusMedium}
             />
-            <text className={styles.nodeLabel} x={node.x + 75} y="138" textAnchor="middle" dominantBaseline="middle">
+            <text
+              className={styles.nodeLabel}
+              x={node.x + 55}
+              y={node.y + 24}
+              textAnchor="middle"
+              dominantBaseline="middle"
+            >
               {node.id}
             </text>
           </React.Fragment>
