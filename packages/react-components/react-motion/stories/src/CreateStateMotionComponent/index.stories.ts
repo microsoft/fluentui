@@ -5,6 +5,7 @@ import { StateMotionPresence } from './StateMotionPresence.stories';
 
 export { StateMotionPresence as Presence } from './StateMotionPresence.stories';
 export { StateMotionMediaPlayer as MediaPlayer } from './StateMotionMediaPlayer.stories';
+export { StateMotionCardTransfer as CardTransfer } from './StateMotionCardTransfer.stories';
 export { StateMotionAsyncAction as AsyncAction } from './StateMotionAsyncAction.stories';
 
 export default {
