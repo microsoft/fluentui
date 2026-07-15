@@ -395,6 +395,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const [route, setRoute] = React.useState(initialRoute);
   const [runMode, setRunMode] = React.useState<RunMode>('idle');
   const [hoveredPlacement, setHoveredPlacement] = React.useState<Placement | undefined>(undefined);
+  const [requestedDestination, setRequestedDestination] = React.useState<Placement | undefined>(undefined);
   const routeRef = React.useRef(initialRoute);
   const runModeRef = React.useRef<RunMode>('idle');
   const destinationRef = React.useRef<Placement | undefined>(undefined);
@@ -415,6 +416,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
     (event: CardEvent, fromAutomation = false) => {
       if (!fromAutomation) {
         destinationRef.current = undefined;
+        setRequestedDestination(undefined);
         updateRunMode('idle');
       }
       if (
@@ -433,6 +435,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const startSequence = React.useCallback(() => {
     sequenceIndexRef.current = 0;
     destinationRef.current = undefined;
+    setRequestedDestination(undefined);
     updateRunMode('replay');
     sendEvent(sequence[0], true);
   }, [sendEvent, updateRunMode]);
@@ -443,6 +446,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       if (state === 'dropped') {
         if (routeRef.current.origin === destination) {
           destinationRef.current = undefined;
+          setRequestedDestination(undefined);
           updateRunMode('idle');
         } else {
           updateDestination(destination);
@@ -461,6 +465,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const transferToDestination = React.useCallback(
     (destination: Placement) => {
       destinationRef.current = destination;
+      setRequestedDestination(destination);
       updateRunMode('destination');
       const state = controller.getSnapshot().state;
       if (state === 'dropped' || state === 'lifting' || state === 'lifted') {
@@ -543,7 +548,11 @@ export const StateMotionCardTransfer = (): JSXElement => {
             <Caption1
               className={mergeClasses(styles.slotState, activePlacement === placement && styles.slotStateActive)}
             >
-              {route.origin === placement ? 'origin' : hoveredPlacement === placement ? 'destination' : 'available'}
+              {route.origin === placement
+                ? 'origin'
+                : hoveredPlacement === placement || requestedDestination === placement
+                ? 'destination'
+                : 'available'}
             </Caption1>
           </button>
         ))}
