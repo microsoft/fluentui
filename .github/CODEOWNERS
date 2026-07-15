@@ -248,7 +248,7 @@ packages/react-components/react-switch/library @microsoft/cxe-prg @ValentinaKozl
 packages/react-components/react-switch/stories @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-tabs/library @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-tabs/stories @microsoft/cxe-prg @dmytrokirpa
-packages/react-components/react-text/library @microsoft/cxe-prg @maifnramev
+packages/react-components/react-text/library @microsoft/cxe-prg
 packages/react-components/react-text/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-textarea/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-textarea/stories @microsoft/cxe-prg @mainframev
