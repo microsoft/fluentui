@@ -17,23 +17,11 @@ export function useOverflowSnapshot<Selected>(selector: (snapshot: OverflowSnaps
   const [selected, setSelected] = React.useState(() => selector(getSnapshot()));
 
   useIsomorphicLayoutEffect(() => {
-    let isMounted = true;
-    const checkForUpdates = () => {
-      if (!isMounted) {
-        return;
-      }
-
-      setSelected(select(getSnapshot()));
-    };
+    const checkForUpdates = () => setSelected(select(getSnapshot()));
 
     checkForUpdates();
 
-    const unsubscribe = subscribe(checkForUpdates);
-
-    return () => {
-      isMounted = false;
-      unsubscribe();
-    };
+    return subscribe(checkForUpdates);
   }, [subscribe, getSnapshot, select]);
 
   return selected;
