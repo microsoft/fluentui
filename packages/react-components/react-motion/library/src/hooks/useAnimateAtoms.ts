@@ -60,6 +60,15 @@ function createHandle(animations: Animation[]): AnimationHandle {
         animation.cancel();
       });
     },
+    commitStyles: () => {
+      animations.forEach(animation => {
+        try {
+          animation.commitStyles?.();
+        } catch {
+          // Some browsers throw when an animation is no longer replaceable.
+        }
+      });
+    },
     pause: () => {
       animations.forEach(animation => {
         animation.pause();
@@ -200,6 +209,9 @@ function useAnimateAtomsInTestEnvironment() {
         },
 
         cancel() {
+          /* no-op */
+        },
+        commitStyles() {
           /* no-op */
         },
         pause() {

@@ -17,7 +17,12 @@ import type {
   StateMotionController,
   StateMotionDefinition,
   StateMotionEvent,
+  StateMotionKeyframe,
+  StateMotionMachineDefinition,
+  StateMotionSkin,
+  StateMotionStateName,
   StateMotionTransition,
+  StateMotionTransitionMotion,
   StateMotionTransitionSnapshot,
 } from '../types';
 import { useChildElement } from '../utils/useChildElement';
@@ -52,10 +57,54 @@ export type StateMotionComponent<
   Event extends StateMotionEvent<PropertyKey>,
 > = ForwardRefComponent<StateMotionComponentProps<State, Event>>;
 
+function resolveKeyframes(keyframes: readonly StateMotionKeyframe[], target: Keyframe): Keyframe[] {
+  return keyframes.map(keyframe => {
+    if ('state' in keyframe) {
+      return keyframe.state === 'target' ? target : {};
+    }
+
+    return keyframe;
+  });
+}
+
+function resolveTransitionMotion(motion: StateMotionTransitionMotion, target: Keyframe): AtomMotion {
+  return {
+    ...motion,
+    keyframes: resolveKeyframes(motion.keyframes, target),
+    reducedMotion: motion.reducedMotion
+      ? {
+          ...motion.reducedMotion,
+          keyframes: motion.reducedMotion.keyframes
+            ? resolveKeyframes(motion.reducedMotion.keyframes, target)
+            : undefined,
+        }
+      : undefined,
+  };
+}
+
 /** Creates a React component that animates one target element along a flat, event-driven state graph. */
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>>(
   definition: StateMotionDefinition<State, Event>,
+): StateMotionComponent<State, Event>;
+export function createStateMotionComponent<
+  State extends string,
+  Event extends StateMotionEvent<PropertyKey>,
+  Transition extends string,
+>(
+  definition: StateMotionMachineDefinition<State, Event, Transition>,
+  skin: StateMotionSkin<State, Transition>,
+): StateMotionComponent<State, Event>;
+export function createStateMotionComponent<
+  State extends string,
+  Event extends StateMotionEvent<PropertyKey>,
+  Transition extends string,
+>(
+  definition: StateMotionDefinition<State, Event> | StateMotionMachineDefinition<State, Event, Transition>,
+  skin?: StateMotionSkin<State, Transition>,
 ): StateMotionComponent<State, Event> {
+  const getStateKeyframe = (state: StateMotionStateName<State>): Keyframe =>
+    skin?.states[state] ?? (definition as StateMotionDefinition<State, Event>).states[state].keyframe;
+
   return React.forwardRef<HTMLElement, StateMotionComponentProps<State, Event>>((props, ref) => {
     const { children, controller, imperativeRef, onMotionStart, onMotionFinish, onMotionCancel } = props;
     const snapshot = useStateMotion(controller);
@@ -91,31 +140,50 @@ export function createStateMotionComponent<State extends string, Event extends S
         playbackRef.current.controller !== controller || playbackRef.current.transitionId === selected?.id;
       if (!selected || isHistoricalTransition) {
         playbackRef.current = { controller, transitionId: selected?.id };
-        Object.assign(element.style, controller.definition.states[snapshot.state].keyframe);
+        Object.assign(element.style, getStateKeyframe(snapshot.state));
         return;
       }
 
       playbackRef.current = { controller, transitionId: selected.id };
 
-      const source = controller.definition.states[selected.source];
-      const target = controller.definition.states[selected.target];
-      const transitions = source.on as Partial<Record<Event['type'], StateMotionTransition<State, Event>>> | undefined;
+      const source = definition.states[selected.source];
+      const targetKeyframe = getStateKeyframe(selected.target);
+      const transitions = source.on as
+        | Partial<Record<Event['type'], StateMotionTransition<State, Event> | { id: Transition; target: State }>>
+        | undefined;
       const edge = transitions?.[selected.event.type as Event['type']];
       if (!edge) {
         return;
       }
 
-      const motion: AtomMotion | AtomMotion[] =
-        typeof edge.motion === 'function'
-          ? edge.motion({ element, event: selected.event, source, target })
-          : edge.motion ?? { keyframes: [target.keyframe] };
+      let motion: AtomMotion | AtomMotion[];
+      if (skin && 'id' in edge) {
+        const transitionMotion = skin.transitions?.[edge.id];
+        motion = transitionMotion
+          ? Array.isArray(transitionMotion)
+            ? transitionMotion.map(value => resolveTransitionMotion(value, targetKeyframe))
+            : resolveTransitionMotion(transitionMotion as StateMotionTransitionMotion, targetKeyframe)
+          : { keyframes: [targetKeyframe] };
+      } else {
+        const stateEdge = edge as StateMotionTransition<State, Event>;
+        const target = (definition as StateMotionDefinition<State, Event>).states[selected.target];
+        motion =
+          typeof stateEdge.motion === 'function'
+            ? stateEdge.motion({
+                element,
+                event: selected.event,
+                source: source as StateMotionDefinition<State, Event>['states'][StateMotionStateName<State>],
+                target,
+              })
+            : stateEdge.motion ?? { keyframes: [targetKeyframe] };
+      }
 
       handleMotionStart(selected);
       const handle: AnimationHandle = animateAtoms(element, motion, { isReducedMotion: isReducedMotion() });
       handleRef.current = handle;
       handle.setMotionEndCallbacks(
         () => {
-          Object.assign(element.style, target.keyframe);
+          Object.assign(element.style, targetKeyframe);
           handleMotionFinish(selected);
         },
         () => handleMotionCancel(selected),
@@ -126,6 +194,7 @@ export function createStateMotionComponent<State extends string, Event extends S
       }
 
       return () => {
+        handle.commitStyles();
         handle.cancel();
         if (handleRef.current === handle) {
           handleRef.current = undefined;

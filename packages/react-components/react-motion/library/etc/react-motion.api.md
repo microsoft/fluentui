@@ -36,8 +36,14 @@ export function createPresenceComponentVariant<MotionParams extends Record<strin
 // @public
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>): StateMotionComponent<State, Event>;
 
+// @public (undocumented)
+export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>, Transition extends string>(definition: StateMotionMachineDefinition<State, Event, Transition>, skin: StateMotionSkin<State, Transition>): StateMotionComponent<State, Event>;
+
 // @public
 export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>, options?: StateMotionControllerOptions<State>): StateMotionController<State, Event>;
+
+// @public (undocumented)
+export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>, Transition extends string>(definition: StateMotionMachineDefinition<State, Event, Transition>, options?: StateMotionControllerOptions<State>): StateMotionController<State, Event>;
 
 // @public (undocumented)
 export const curves: {
@@ -226,7 +232,7 @@ export type StateMotionComponentProps<State extends string, Event extends StateM
 
 // @public
 export type StateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
-    readonly definition: StateMotionDefinition<State, Event>;
+    readonly definition: StateMotionGraphDefinition<State, Event>;
     getSnapshot(): StateMotionSnapshot<State, Event>;
     send(event: Event): boolean;
     subscribe(listener: () => void): () => void;
@@ -234,18 +240,57 @@ export type StateMotionController<State extends string, Event extends StateMotio
 
 // @public
 export type StateMotionControllerOptions<State extends string> = {
-    initialState?: State;
+    initialState?: StateMotionStateName<State>;
 };
 
 // @public
 export type StateMotionDefinition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
-    initialState: State;
-    states: Record<State, StateMotionNode<State, Event>>;
+    initialState: StateMotionStateName<State>;
+    states: Record<StateMotionStateName<State>, StateMotionNode<State, Event>>;
 };
 
 // @public
 export type StateMotionEvent<Type extends PropertyKey = string> = {
     type: Type;
+};
+
+// @public
+export type StateMotionGraphDefinition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+    initialState: StateMotionStateName<State>;
+    states: Record<StateMotionStateName<State>, {
+        on?: {
+            [Type in Event['type']]?: {
+                target: StateMotionStateName<State>;
+            };
+        };
+    }>;
+};
+
+// @public
+export type StateMotionKeyframe = Keyframe | StateMotionKeyframeReference;
+
+// @public
+export type StateMotionKeyframeReference = {
+    state: 'current' | 'target';
+};
+
+// @public
+export type StateMotionMachineDefinition<State extends string, Event extends StateMotionEvent<PropertyKey>, Transition extends string> = {
+    initialState: StateMotionStateName<State>;
+    states: Record<StateMotionStateName<State>, StateMotionMachineNode<State, Event, Transition>>;
+};
+
+// @public
+export type StateMotionMachineNode<State extends string, Event extends StateMotionEvent<PropertyKey>, Transition extends string> = {
+    on?: {
+        [Type in Event['type']]?: StateMotionMachineTransition<State, Transition>;
+    };
+};
+
+// @public
+export type StateMotionMachineTransition<State extends string, Transition extends string> = {
+    id: Transition;
+    target: StateMotionStateName<State>;
 };
 
 // @public
@@ -259,15 +304,32 @@ export type StateMotionNode<State extends string, Event extends StateMotionEvent
 };
 
 // @public
+export type StateMotionSkin<State extends string, Transition extends string> = {
+    states: Record<StateMotionStateName<State>, Keyframe>;
+    transitions?: Partial<Record<Transition, StateMotionTransitionMotion | readonly StateMotionTransitionMotion[]>>;
+};
+
+// @public
 export type StateMotionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
-    state: State;
+    state: StateMotionStateName<State>;
     transition: StateMotionTransitionSnapshot<State, Event> | undefined;
 };
 
 // @public
+export type StateMotionStateName<State extends string> = State extends 'target' ? never : State;
+
+// @public
 export type StateMotionTransition<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
-    target: State;
+    target: StateMotionStateName<State>;
     motion?: AtomMotion | AtomMotion[] | StateMotionTransitionMotionFn<State, Event>;
+};
+
+// @public
+export type StateMotionTransitionMotion = Omit<AtomMotion, 'keyframes' | 'reducedMotion'> & {
+    keyframes: readonly StateMotionKeyframe[];
+    reducedMotion?: Omit<NonNullable<AtomMotion['reducedMotion']>, 'keyframes'> & {
+        keyframes?: readonly StateMotionKeyframe[];
+    };
 };
 
 // @public
@@ -284,8 +346,8 @@ export type StateMotionTransitionMotionFnParams<State extends string, Event exte
 // @public
 export type StateMotionTransitionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
     id: number;
-    source: State;
-    target: State;
+    source: StateMotionStateName<State>;
+    target: StateMotionStateName<State>;
     event: Event;
 };
 
