@@ -27,6 +27,12 @@ export interface TestOptions {
     /** Prefix for the classname, if not `fui-` */
     prefix?: string;
   };
+  'component-calls-custom-style-hook'?: {
+    /** Hook name to assert. Defaults to use<displayName>Styles_unstable. */
+    hookName?: string;
+    /** Expected custom style hook call count per component render, defaults to 1. */
+    callCount?: number;
+  };
 }
 
 export interface IsConformantOptions<TProps = {}> {
