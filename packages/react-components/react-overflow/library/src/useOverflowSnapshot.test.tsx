@@ -18,7 +18,7 @@ describe('useOverflowSnapshot', () => {
       return unsubscribe;
     });
 
-    function Wrapper(props: { children?: React.ReactNode }) {
+    function wrapper(props: { children?: React.ReactNode }) {
       return (
         <OverflowContext.Provider
           value={
@@ -34,7 +34,7 @@ describe('useOverflowSnapshot', () => {
     }
 
     const { unmount } = renderHook(() => useOverflowSnapshot(snapshot => snapshot.invisibleItemCount), {
-      wrapper: Wrapper,
+      wrapper,
     });
 
     expect(getSnapshot).toHaveBeenCalledTimes(2);
