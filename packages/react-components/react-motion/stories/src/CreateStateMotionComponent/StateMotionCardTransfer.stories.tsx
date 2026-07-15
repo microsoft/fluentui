@@ -10,16 +10,17 @@ import {
   createStateMotionComponent,
   createStateMotionController,
   type JSXElement,
-  type StateMotionMachineDefinition,
+  type StateMotionAnimation,
+  type StateMotionAnimationSnapshot,
   type StateMotionSkin,
   useStateMotion,
 } from '@fluentui/react-components';
 import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-type CardState = 'dropped' | 'lifting' | 'lifted' | 'transferring' | 'transferred' | 'dropping';
-type CardEvent = { type: 'LIFT' } | { type: 'TRANSFER' } | { type: 'DROP' };
-type CardAnimation = 'lifting' | 'transferring' | 'dropping';
+import { baseTransferEasing, InterruptibleScalar } from './createInterruptibleScalar';
+import { cardMachine, type CardAnimation, type CardEvent, type CardState } from './StateMotionCardTransfer.machine';
+
 type Placement = 'start' | 'middle' | 'end';
 type CardRoute = { origin: Placement; destination: Placement };
 type RunMode = 'idle' | 'replay' | 'destination';
@@ -41,40 +42,12 @@ const getPlacementX = (placement: Placement): string => {
 };
 const getNextPlacement = (placement: Placement): Placement =>
   placement === 'start' ? 'middle' : placement === 'middle' ? 'end' : 'start';
+const getPlacementIndex = (placement: Placement): number =>
+  placement === 'start' ? 0 : placement === 'middle' ? 1 : 2;
 const advanceRoute = ({ destination }: CardRoute): CardRoute => ({
   origin: destination,
   destination: getNextPlacement(destination),
 });
-
-const cardMachine: StateMotionMachineDefinition<CardState, CardEvent, CardAnimation> = {
-  initialState: 'dropped',
-  states: {
-    dropped: {
-      on: { LIFT: { target: 'lifting' } },
-    },
-    lifting: {
-      animation: { id: 'lifting', target: 'lifted' },
-      on: { DROP: { target: 'dropping' } },
-    },
-    lifted: {
-      on: {
-        TRANSFER: { target: 'transferring' },
-        DROP: { target: 'dropping' },
-      },
-    },
-    transferring: {
-      animation: { id: 'transferring', target: 'transferred' },
-      on: { DROP: { target: 'dropping' } },
-    },
-    transferred: {
-      on: { DROP: { target: 'dropping' } },
-    },
-    dropping: {
-      animation: { id: 'dropping', target: 'dropped' },
-      on: { LIFT: { target: 'lifting' } },
-    },
-  },
-};
 
 const getDroppedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
   transform: `translateX(${getPlacementX(context.origin)}) translateY(0) rotate(0deg) scale(1)`,
@@ -89,33 +62,30 @@ const getTransferredKeyframe = ({ context }: { context: CardRoute }): Keyframe =
   boxShadow: tokens.shadow16,
 });
 
-const cardSkin = {
-  states: {
-    dropped: getDroppedKeyframe,
-    lifting: getLiftedKeyframe,
-    lifted: getLiftedKeyframe,
-    transferring: getTransferredKeyframe,
-    transferred: getTransferredKeyframe,
-    dropping: getDroppedKeyframe,
-  },
-  animations: {
-    lifting: {
-      keyframes: [{ state: 'current' }, { offset: 0.28, boxShadow: tokens.shadow16 }, { state: 'target' }],
-      duration: liftDuration,
-      easing: motionTokens.curveDecelerateMid,
+const createCardSkin = (transferring: StateMotionAnimation) =>
+  ({
+    states: {
+      dropped: getDroppedKeyframe,
+      lifting: getLiftedKeyframe,
+      lifted: getLiftedKeyframe,
+      transferring: getTransferredKeyframe,
+      transferred: getTransferredKeyframe,
+      dropping: getDroppedKeyframe,
     },
-    transferring: {
-      keyframes: [{ state: 'current' }, { state: 'target' }],
-      duration: transferDuration,
-      easing: motionTokens.curveEasyEase,
+    animations: {
+      lifting: {
+        keyframes: [{ state: 'current' }, { offset: 0.28, boxShadow: tokens.shadow16 }, { state: 'target' }],
+        duration: liftDuration,
+        easing: motionTokens.curveDecelerateMid,
+      },
+      transferring,
+      dropping: {
+        keyframes: [{ state: 'current' }, { offset: 0.58, boxShadow: tokens.shadow2 }, { state: 'target' }],
+        duration: dropDuration,
+        easing: motionTokens.curveDecelerateMid,
+      },
     },
-    dropping: {
-      keyframes: [{ state: 'current' }, { offset: 0.58, boxShadow: tokens.shadow2 }, { state: 'target' }],
-      duration: dropDuration,
-      easing: motionTokens.curveDecelerateMid,
-    },
-  },
-} satisfies StateMotionSkin<CardState, CardAnimation, CardRoute>;
+  } satisfies StateMotionSkin<CardState, CardAnimation, CardRoute>);
 
 const graphSkin = {
   states: {
@@ -154,11 +124,10 @@ const sequence: CardEvent[] = [
   { type: 'DROP' },
 ];
 
-const CardMotion = createStateMotionComponent<CardState, CardEvent, CardAnimation, CardRoute>(cardMachine, cardSkin);
 const GraphMotion = createStateMotionComponent(cardMachine, graphSkin);
 
 type GraphEdge = {
-  event: CardEvent['type'];
+  event: Exclude<CardEvent['type'], 'RETARGET'>;
   animation: CardAnimation;
   path: string;
   labelX: number;
@@ -201,13 +170,14 @@ const graphNodes: Array<{ id: CardState; x: number; y: number }> = [
 const eventEdges = [
   { event: 'LIFT', path: 'M 130 64 C 144 106 150 145 176 180', labelX: 140, labelY: 124 },
   { event: 'TRANSFER', path: 'M 390 64 C 404 106 410 145 436 180', labelX: 400, labelY: 124 },
+  { event: 'RETARGET', path: 'M 438 228 C 420 270 510 270 492 228', labelX: 465, labelY: 274 },
   { event: 'DROP', path: 'M 650 64 C 664 106 670 145 696 180', labelX: 660, labelY: 124 },
 ] as const;
 
-const edgeByEvent = Object.fromEntries(graphEdges.map(edge => [edge.event, edge])) as Record<
-  CardEvent['type'],
-  GraphEdge
->;
+const edgeByEvent = {
+  ...Object.fromEntries(graphEdges.map(edge => [edge.event, edge])),
+  RETARGET: graphEdges[1],
+} as Record<CardEvent['type'], GraphEdge>;
 
 const useStyles = makeStyles({
   root: {
@@ -414,6 +384,22 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const runModeRef = React.useRef<RunMode>('idle');
   const destinationRef = React.useRef<Placement | undefined>(undefined);
   const sequenceIndexRef = React.useRef(0);
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  const retargetKeyframeRef = React.useRef<Keyframe | undefined>(undefined);
+  const [transferAnimation] = React.useState<StateMotionAnimation>(() => ({
+    keyframes: [{ state: 'current' }, { state: 'target' }],
+    duration: transferDuration,
+    easing: baseTransferEasing.easing,
+  }));
+  const [transferMotion] = React.useState(
+    () => new InterruptibleScalar(getPlacementIndex(initialRoute.origin), () => transferDuration),
+  );
+  const [CardMotion] = React.useState(() =>
+    createStateMotionComponent<CardState, CardEvent, CardAnimation, CardRoute>(
+      cardMachine,
+      createCardSkin(transferAnimation),
+    ),
+  );
 
   const updateRunMode = React.useCallback((mode: RunMode) => {
     runModeRef.current = mode;
@@ -426,12 +412,34 @@ export const StateMotionCardTransfer = (): JSXElement => {
     setRoute(nextRoute);
   }, []);
 
+  const prepareTransfer = React.useCallback(
+    (destination: Placement, interrupt: boolean) => {
+      if (!interrupt) {
+        transferMotion.reset(getPlacementIndex(routeRef.current.origin));
+      }
+
+      const segment = transferMotion.moveTo(getPlacementIndex(destination), globalThis.performance.now());
+      transferAnimation.keyframes = interrupt
+        ? [retargetKeyframeRef.current ?? { state: 'current' }, { state: 'target' }]
+        : [{ state: 'current' }, { state: 'target' }];
+      transferAnimation.duration = segment.duration;
+      transferAnimation.easing = segment.easing.easing;
+      retargetKeyframeRef.current = undefined;
+    },
+    [transferAnimation, transferMotion],
+  );
+
   const sendEvent = React.useCallback(
     (event: CardEvent, fromAutomation = false) => {
       if (!fromAutomation) {
         destinationRef.current = undefined;
         setRequestedDestination(undefined);
         updateRunMode('idle');
+      }
+      if (event.type === 'TRANSFER') {
+        prepareTransfer(routeRef.current.destination, false);
+      } else if (event.type === 'RETARGET') {
+        prepareTransfer(routeRef.current.destination, true);
       }
       if (
         event.type === 'DROP' &&
@@ -443,7 +451,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       }
       controller.send(event);
     },
-    [controller, updateRunMode],
+    [controller, prepareTransfer, updateRunMode],
   );
 
   const startSequence = React.useCallback(() => {
@@ -469,6 +477,9 @@ export const StateMotionCardTransfer = (): JSXElement => {
       } else if (state === 'lifted') {
         updateDestination(destination);
         sendEvent({ type: 'TRANSFER' }, true);
+      } else if (state === 'transferring' && routeRef.current.destination !== destination) {
+        updateDestination(destination);
+        sendEvent({ type: 'RETARGET' }, true);
       } else if (state === 'transferred') {
         sendEvent({ type: 'DROP' }, true);
       }
@@ -482,6 +493,16 @@ export const StateMotionCardTransfer = (): JSXElement => {
       setRequestedDestination(destination);
       updateRunMode('destination');
       const state = controller.getSnapshot().state;
+      if (state === 'transferring') {
+        const element = cardRef.current;
+        const computedStyle = element?.ownerDocument.defaultView?.getComputedStyle(element);
+        if (computedStyle) {
+          retargetKeyframeRef.current = {
+            transform: computedStyle.transform,
+            boxShadow: computedStyle.boxShadow,
+          };
+        }
+      }
       if (state === 'dropped' || state === 'lifting' || state === 'lifted') {
         updateDestination(destination);
       }
@@ -490,33 +511,35 @@ export const StateMotionCardTransfer = (): JSXElement => {
     [continueToDestination, controller, updateDestination, updateRunMode],
   );
 
-  React.useEffect(() => {
-    startSequence();
-  }, [startSequence]);
+  const handleMotionFinish = React.useCallback(
+    (_ev: null, animation: StateMotionAnimationSnapshot<CardState, CardEvent>) => {
+      if (animation.source === 'transferring') {
+        transferMotion.complete();
+      }
+      if (runModeRef.current === 'destination' && destinationRef.current) {
+        continueToDestination(destinationRef.current);
+        return;
+      }
+      if (runModeRef.current !== 'replay') {
+        return;
+      }
 
-  const handleMotionFinish = React.useCallback(() => {
-    if (runModeRef.current === 'destination' && destinationRef.current) {
-      continueToDestination(destinationRef.current);
-      return;
-    }
-    if (runModeRef.current !== 'replay') {
-      return;
-    }
-
-    const nextIndex = sequenceIndexRef.current + 1;
-    const followingEvent = sequence[nextIndex];
-    if (followingEvent) {
-      sequenceIndexRef.current = nextIndex;
-      sendEvent(followingEvent, true);
-    } else {
-      updateRunMode('idle');
-    }
-  }, [continueToDestination, sendEvent, updateRunMode]);
+      const nextIndex = sequenceIndexRef.current + 1;
+      const followingEvent = sequence[nextIndex];
+      if (followingEvent) {
+        sequenceIndexRef.current = nextIndex;
+        sendEvent(followingEvent, true);
+      } else {
+        updateRunMode('idle');
+      }
+    },
+    [continueToDestination, sendEvent, transferMotion, updateRunMode],
+  );
 
   const activeEdge = snapshot.animation ? edgeByEvent[snapshot.animation.event.type] : graphEdges[0];
   const activeNode = snapshot.state;
-  const activePlacement =
-    activeNode === 'transferred' || activeNode === 'transferring' ? route.destination : route.origin;
+  const occupiedPlacement =
+    activeNode === 'dropped' || activeNode === 'lifting' || activeNode === 'dropping' ? route.origin : undefined;
   const availableEvents = cardMachine.states[activeNode].on;
   const markerId = 'card-transfer-arrow';
 
@@ -548,11 +571,11 @@ export const StateMotionCardTransfer = (): JSXElement => {
             type="button"
             className={mergeClasses(
               styles.slot,
-              activePlacement === placement && styles.slotActive,
-              route.origin !== placement && styles.slotInteractive,
+              occupiedPlacement === placement && styles.slotActive,
+              occupiedPlacement !== placement && styles.slotInteractive,
             )}
-            disabled={route.origin === placement}
-            aria-label={route.origin === placement ? `${placement} origin` : `Transfer card to ${placement}`}
+            disabled={occupiedPlacement === placement}
+            aria-label={occupiedPlacement === placement ? `${placement} origin` : `Transfer card to ${placement}`}
             onBlur={() => setHoveredPlacement(undefined)}
             onClick={() => transferToDestination(placement)}
             onFocus={() => setHoveredPlacement(placement)}
@@ -560,9 +583,9 @@ export const StateMotionCardTransfer = (): JSXElement => {
             onMouseLeave={() => setHoveredPlacement(undefined)}
           >
             <Caption1
-              className={mergeClasses(styles.slotState, activePlacement === placement && styles.slotStateActive)}
+              className={mergeClasses(styles.slotState, occupiedPlacement === placement && styles.slotStateActive)}
             >
-              {route.origin === placement
+              {occupiedPlacement === placement
                 ? 'origin'
                 : hoveredPlacement === placement || requestedDestination === placement
                 ? 'destination'
@@ -572,7 +595,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
         ))}
 
         <CardMotion context={route} controller={controller} onMotionFinish={handleMotionFinish}>
-          <Card className={styles.card} appearance="filled">
+          <Card ref={cardRef} className={styles.card} appearance="filled">
             <div className={styles.cardTitle}>
               <Text className={styles.cardText} weight="semibold">
                 Motion spec

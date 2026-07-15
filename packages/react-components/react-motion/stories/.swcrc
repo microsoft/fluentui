@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "exclude": ["/**/*.test.ts", "/**/*.test.tsx"],
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "externalHelpers": true,
+    "transform": {
+      "react": {
+        "runtime": "classic",
+        "useSpread": true
+      }
+    },
+    "target": "es2019"
+  },
+  "minify": false,
+  "sourceMaps": true
+}
