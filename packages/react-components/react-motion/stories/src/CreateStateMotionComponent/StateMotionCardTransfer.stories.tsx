@@ -226,14 +226,6 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     gap: tokens.spacingHorizontalM,
   },
-  status: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXXS,
-  },
-  transitionStatus: {
-    color: tokens.colorNeutralForeground3,
-  },
   stage: {
     position: 'relative',
     display: 'grid',
@@ -314,7 +306,13 @@ const useStyles = makeStyles({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
-  cardCaption: {
+  cardMetadata: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalXXS,
+    minWidth: 0,
+  },
+  cardMetadataRow: {
     color: tokens.colorNeutralForeground3,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -407,12 +405,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <div className={styles.status} aria-live="polite">
-          <Text weight="semibold">Card transfer</Text>
-          <Caption1 className={styles.transitionStatus}>
-            {isRunning ? `Transition: ${activeEdge.transition}` : 'Sequence complete'}
-          </Caption1>
-        </div>
+        <Text weight="semibold">Card transfer</Text>
         <Button icon={<ReplayFilled />} disabled={isRunning} onClick={startSequence}>
           Replay
         </Button>
@@ -443,7 +436,14 @@ export const StateMotionCardTransfer = (): JSXElement => {
                 Motion spec
               </Text>
             </div>
-            <Caption1 className={styles.cardCaption}>Ready for review</Caption1>
+            <div className={styles.cardMetadata} aria-live="polite">
+              <Caption1 className={styles.cardMetadataRow}>
+                State: <strong>{activeNode}</strong>
+              </Caption1>
+              <Caption1 className={styles.cardMetadataRow}>
+                Transition: <strong>{isRunning ? activeEdge.transition : 'none'}</strong>
+              </Caption1>
+            </div>
           </Card>
         </CardMotion>
       </div>
