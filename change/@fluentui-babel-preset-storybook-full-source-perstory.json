@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in `storyGranularity: 'story'` mode that emits a per-story sliced `fullSource` for files with multiple story exports",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
