@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add custom style hook conformance test and pilot coverage",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
