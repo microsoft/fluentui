@@ -17,64 +17,53 @@ import {
 import { DocumentRegular, ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-type CardState = 'originRest' | 'originLifted' | 'destinationLifted' | 'destinationRest';
-type CardEvent =
-  | { type: 'LIFT_FROM_ORIGIN' }
-  | { type: 'TRANSFER_TO_DESTINATION' }
-  | { type: 'DROP_AT_DESTINATION' }
-  | { type: 'LIFT_FROM_DESTINATION' }
-  | { type: 'TRANSFER_TO_ORIGIN' }
-  | { type: 'DROP_AT_ORIGIN' };
+type CardState = 'dropped' | 'lifted' | 'transferred';
+type CardEvent = { type: 'LIFT' } | { type: 'TRANSFER' } | { type: 'DROP' };
 type CardTransition = 'lifting' | 'transferring' | 'dropping';
+type Placement = 'start' | 'end';
+type CardRoute = { origin: Placement; destination: Placement };
 
 const travelDistance = `calc(100% + ${tokens.spacingHorizontalM})`;
 const liftedDistance = `calc(-1 * ${tokens.spacingVerticalL})`;
 const liftDuration = motionTokens.durationSlower * 2;
 const transferDuration = motionTokens.durationUltraSlow * 4;
 const dropDuration = motionTokens.durationUltraSlow * 2;
+const initialRoute: CardRoute = { origin: 'start', destination: 'end' };
+
+const getPlacementX = (placement: Placement): string => (placement === 'start' ? '0' : travelDistance);
+const reverseRoute = ({ origin, destination }: CardRoute): CardRoute => ({ origin: destination, destination: origin });
 
 const cardMachine: StateMotionMachineDefinition<CardState, CardEvent, CardTransition> = {
-  initialState: 'originRest',
+  initialState: 'dropped',
   states: {
-    originRest: {
-      on: { LIFT_FROM_ORIGIN: { id: 'lifting', target: 'originLifted' } },
+    dropped: {
+      on: { LIFT: { id: 'lifting', target: 'lifted' } },
     },
-    originLifted: {
-      on: {
-        TRANSFER_TO_DESTINATION: { id: 'transferring', target: 'destinationLifted' },
-        DROP_AT_ORIGIN: { id: 'dropping', target: 'originRest' },
-      },
+    lifted: {
+      on: { TRANSFER: { id: 'transferring', target: 'transferred' } },
     },
-    destinationLifted: {
-      on: {
-        DROP_AT_DESTINATION: { id: 'dropping', target: 'destinationRest' },
-        TRANSFER_TO_ORIGIN: { id: 'transferring', target: 'originLifted' },
-      },
-    },
-    destinationRest: {
-      on: { LIFT_FROM_DESTINATION: { id: 'lifting', target: 'destinationLifted' } },
+    transferred: {
+      on: { DROP: { id: 'dropping', target: 'dropped' } },
     },
   },
 };
 
 const cardSkin = {
   states: {
-    originRest: {
-      transform: 'translateX(0) translateY(0) rotate(0deg) scale(1)',
+    dropped: ({ context }: { context: CardRoute }) => ({
+      transform: `translateX(${getPlacementX(context.origin)}) translateY(0) rotate(0deg) scale(1)`,
       boxShadow: tokens.shadow2,
-    },
-    originLifted: {
-      transform: `translateX(0) translateY(${liftedDistance}) rotate(-1deg) scale(1.04)`,
+    }),
+    lifted: ({ context }: { context: CardRoute }) => ({
+      transform: `translateX(${getPlacementX(context.origin)}) translateY(${liftedDistance}) rotate(-1deg) scale(1.04)`,
       boxShadow: tokens.shadow16,
-    },
-    destinationLifted: {
-      transform: `translateX(${travelDistance}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
+    }),
+    transferred: ({ context }: { context: CardRoute }) => ({
+      transform: `translateX(${getPlacementX(
+        context.destination,
+      )}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
       boxShadow: tokens.shadow16,
-    },
-    destinationRest: {
-      transform: `translateX(${travelDistance}) translateY(0) rotate(0deg) scale(1)`,
-      boxShadow: tokens.shadow2,
-    },
+    }),
   },
   transitions: {
     lifting: {
@@ -93,14 +82,13 @@ const cardSkin = {
       easing: motionTokens.curveDecelerateMid,
     },
   },
-} satisfies StateMotionSkin<CardState, CardTransition>;
+} satisfies StateMotionSkin<CardState, CardTransition, CardRoute>;
 
 const graphSkin = {
   states: {
-    originRest: { strokeDashoffset: 0 },
-    originLifted: { strokeDashoffset: 0 },
-    destinationLifted: { strokeDashoffset: 0 },
-    destinationRest: { strokeDashoffset: 0 },
+    dropped: { strokeDashoffset: 0 },
+    lifted: { strokeDashoffset: 0 },
+    transferred: { strokeDashoffset: 0 },
   },
   transitions: {
     lifting: {
@@ -121,24 +109,22 @@ const graphSkin = {
   },
 } satisfies StateMotionSkin<CardState, CardTransition>;
 
-const nextEvent: Partial<Record<CardEvent['type'], CardEvent>> = {
-  LIFT_FROM_ORIGIN: { type: 'TRANSFER_TO_DESTINATION' },
-  TRANSFER_TO_DESTINATION: { type: 'DROP_AT_DESTINATION' },
-  DROP_AT_DESTINATION: { type: 'LIFT_FROM_DESTINATION' },
-  LIFT_FROM_DESTINATION: { type: 'TRANSFER_TO_ORIGIN' },
-  TRANSFER_TO_ORIGIN: { type: 'DROP_AT_ORIGIN' },
-};
+const sequence: CardEvent[] = [
+  { type: 'LIFT' },
+  { type: 'TRANSFER' },
+  { type: 'DROP' },
+  { type: 'LIFT' },
+  { type: 'TRANSFER' },
+  { type: 'DROP' },
+];
 
 const durationByEvent: Record<CardEvent['type'], number> = {
-  LIFT_FROM_ORIGIN: liftDuration,
-  TRANSFER_TO_DESTINATION: transferDuration,
-  DROP_AT_DESTINATION: dropDuration,
-  LIFT_FROM_DESTINATION: liftDuration,
-  TRANSFER_TO_ORIGIN: transferDuration,
-  DROP_AT_ORIGIN: dropDuration,
+  LIFT: liftDuration,
+  TRANSFER: transferDuration,
+  DROP: dropDuration,
 };
 
-const CardMotion = createStateMotionComponent(cardMachine, cardSkin);
+const CardMotion = createStateMotionComponent<CardState, CardEvent, CardTransition, CardRoute>(cardMachine, cardSkin);
 const GraphMotion = createStateMotionComponent(cardMachine, graphSkin);
 
 type GraphEdge = {
@@ -151,59 +137,32 @@ type GraphEdge = {
 
 const graphEdges: GraphEdge[] = [
   {
-    event: 'LIFT_FROM_ORIGIN',
+    event: 'LIFT',
     transition: 'lifting',
-    path: 'M 170 116 C 192 78 218 78 240 116',
-    labelX: 205,
-    labelY: 70,
+    path: 'M 170 116 C 205 72 235 72 270 116',
+    labelX: 220,
+    labelY: 64,
   },
   {
-    event: 'DROP_AT_ORIGIN',
-    transition: 'dropping',
-    path: 'M 240 160 C 218 198 192 198 170 160',
-    labelX: 205,
-    labelY: 214,
-  },
-  {
-    event: 'TRANSFER_TO_DESTINATION',
+    event: 'TRANSFER',
     transition: 'transferring',
-    path: 'M 370 116 C 392 78 418 78 440 116',
-    labelX: 405,
-    labelY: 70,
+    path: 'M 420 116 C 455 72 485 72 520 116',
+    labelX: 470,
+    labelY: 64,
   },
   {
-    event: 'TRANSFER_TO_ORIGIN',
-    transition: 'transferring',
-    path: 'M 440 160 C 418 198 392 198 370 160',
-    labelX: 405,
-    labelY: 214,
-  },
-  {
-    event: 'DROP_AT_DESTINATION',
+    event: 'DROP',
     transition: 'dropping',
-    path: 'M 570 116 C 592 78 618 78 640 116',
-    labelX: 605,
-    labelY: 70,
-  },
-  {
-    event: 'LIFT_FROM_DESTINATION',
-    transition: 'lifting',
-    path: 'M 640 160 C 618 198 592 198 570 160',
-    labelX: 605,
-    labelY: 214,
+    path: 'M 595 166 C 560 236 180 236 95 166',
+    labelX: 345,
+    labelY: 232,
   },
 ];
 
 const graphNodes: Array<{ id: CardState; x: number }> = [
-  { id: 'originRest', x: 20 },
-  { id: 'originLifted', x: 240 },
-  { id: 'destinationLifted', x: 440 },
-  { id: 'destinationRest', x: 640 },
-];
-
-const stageStates: CardState[][] = [
-  ['originRest', 'originLifted'],
-  ['destinationLifted', 'destinationRest'],
+  { id: 'dropped', x: 20 },
+  { id: 'lifted', x: 270 },
+  { id: 'transferred', x: 520 },
 ];
 
 const edgeByEvent = Object.fromEntries(graphEdges.map(edge => [edge.event, edge])) as Record<
@@ -369,11 +328,14 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const styles = useStyles();
   const [controller] = React.useState(() => createStateMotionController(cardMachine));
   const snapshot = useStateMotion(controller);
+  const [route, setRoute] = React.useState(initialRoute);
   const [isRunning, setIsRunning] = React.useState(false);
+  const sequenceIndexRef = React.useRef(0);
 
   const startSequence = React.useCallback(() => {
+    sequenceIndexRef.current = 0;
     setIsRunning(true);
-    controller.send({ type: 'LIFT_FROM_ORIGIN' });
+    controller.send(sequence[0]);
   }, [controller]);
 
   React.useEffect(() => {
@@ -387,8 +349,13 @@ export const StateMotionCardTransfer = (): JSXElement => {
     }
 
     const timeout = globalThis.setTimeout(() => {
-      const followingEvent = nextEvent[transition.event.type];
+      const nextIndex = sequenceIndexRef.current + 1;
+      const followingEvent = sequence[nextIndex];
       if (followingEvent) {
+        if (followingEvent.type === 'DROP') {
+          setRoute(currentRoute => reverseRoute(currentRoute));
+        }
+        sequenceIndexRef.current = nextIndex;
         controller.send(followingEvent);
       } else {
         setIsRunning(false);
@@ -400,6 +367,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
 
   const activeEdge = snapshot.transition ? edgeByEvent[snapshot.transition.event.type] : graphEdges[0];
   const activeNode = snapshot.state;
+  const activePlacement = activeNode === 'transferred' ? route.destination : route.origin;
   const markerId = 'card-transfer-arrow';
 
   return (
@@ -412,23 +380,20 @@ export const StateMotionCardTransfer = (): JSXElement => {
       </div>
 
       <div className={styles.stage}>
-        {stageStates.map(states => (
+        {(['start', 'end'] as const).map(placement => (
           <div
-            key={states.join('-')}
-            className={mergeClasses(styles.slot, states.includes(activeNode) && styles.slotActive)}
+            key={placement}
+            className={mergeClasses(styles.slot, activePlacement === placement && styles.slotActive)}
           >
-            {states.map(state => (
-              <Caption1
-                key={state}
-                className={mergeClasses(styles.slotState, activeNode === state && styles.slotStateActive)}
-              >
-                {state}
-              </Caption1>
-            ))}
+            <Caption1
+              className={mergeClasses(styles.slotState, activePlacement === placement && styles.slotStateActive)}
+            >
+              {route.origin === placement ? 'origin' : 'destination'}
+            </Caption1>
           </div>
         ))}
 
-        <CardMotion controller={controller}>
+        <CardMotion context={route} controller={controller}>
           <Card className={styles.card} appearance="filled">
             <div className={styles.cardTitle}>
               <DocumentRegular aria-hidden="true" />
@@ -456,7 +421,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       >
         <title id="card-transfer-title">Card transfer state graph</title>
         <desc id="card-transfer-description">
-          Four states connected by six named transitions. The active transition fills as its animation progresses.
+          Three states connected by a forward cycle. The active transition fills as its animation progresses.
         </desc>
         <defs>
           <marker id={markerId} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">

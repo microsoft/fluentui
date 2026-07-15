@@ -4,6 +4,8 @@ The graph is deliberately smaller than a general statechart: states are flat, ea
 
 Each state defines its canonical resting keyframe. An edge can omit `motion` to animate directly between its source and target keyframes, provide an `AtomMotion`, or use a function to derive motion from a typed event payload.
 
+Machine skins can also resolve state keyframes from a typed `context` prop. This keeps reusable machine states independent from layout-specific values such as an origin and destination, while the skin maps the current context to concrete presentation values.
+
 The state name `target` is reserved because `{ state: 'target' }` refers to the selected edge's destination keyframe in transition motion definitions.
 
 The controller commits every accepted event synchronously. If several events occur before React commits, the component animates the latest selected edge from the element's current presentation; this matches React's normal batching behavior while preserving the full logical state progression in the controller.
