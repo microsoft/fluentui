@@ -40,12 +40,15 @@ export type {
   PresenceDirection,
   MotionImperativeRef,
   MotionParam,
+  StateMotionAnimation,
+  StateMotionAnimationSnapshot,
   StateMotionController,
   StateMotionDefinition,
   StateMotionEvent,
   StateMotionGraphDefinition,
   StateMotionKeyframe,
   StateMotionKeyframeReference,
+  StateMotionMachineAnimation,
   StateMotionMachineDefinition,
   StateMotionMachineNode,
   StateMotionMachineTransition,
@@ -55,10 +58,8 @@ export type {
   StateMotionStateKeyframe,
   StateMotionStateName,
   StateMotionTransition,
-  StateMotionTransitionMotion,
   StateMotionTransitionMotionFn,
   StateMotionTransitionMotionFnParams,
-  StateMotionTransitionSnapshot,
 } from './types';
 
 export { MotionBehaviourProvider } from './contexts/MotionBehaviourContext';

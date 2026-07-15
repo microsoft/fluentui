@@ -90,9 +90,14 @@ export type StateMotionDefinition<State extends string, Event extends StateMotio
   states: Record<StateMotionStateName<State>, StateMotionNode<State, Event>>;
 };
 
-/** A transition in a state motion machine, identified independently from its motion treatment. */
-export type StateMotionMachineTransition<State extends string, Transition extends string> = {
-  id: Transition;
+/** An instantaneous event-driven transition in a state motion machine. */
+export type StateMotionMachineTransition<State extends string> = {
+  target: StateMotionStateName<State>;
+};
+
+/** A timed animation that begins when its state is entered. */
+export type StateMotionMachineAnimation<State extends string, Animation extends string> = {
+  id: Animation;
   target: StateMotionStateName<State>;
 };
 
@@ -100,10 +105,11 @@ export type StateMotionMachineTransition<State extends string, Transition extend
 export type StateMotionMachineNode<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-  Transition extends string,
+  Animation extends string,
 > = {
+  animation?: StateMotionMachineAnimation<State, Animation>;
   on?: {
-    [Type in Event['type']]?: StateMotionMachineTransition<State, Transition>;
+    [Type in Event['type']]?: StateMotionMachineTransition<State>;
   };
 };
 
@@ -111,10 +117,10 @@ export type StateMotionMachineNode<
 export type StateMotionMachineDefinition<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-  Transition extends string,
+  Animation extends string,
 > = {
   initialState: StateMotionStateName<State>;
-  states: Record<StateMotionStateName<State>, StateMotionMachineNode<State, Event, Transition>>;
+  states: Record<StateMotionStateName<State>, StateMotionMachineNode<State, Event, Animation>>;
 };
 
 /** The topology required by a state motion controller. */
@@ -123,6 +129,7 @@ export type StateMotionGraphDefinition<State extends string, Event extends State
   states: Record<
     StateMotionStateName<State>,
     {
+      animation?: { target: StateMotionStateName<State> };
       on?: {
         [Type in Event['type']]?: { target: StateMotionStateName<State> };
       };
@@ -136,8 +143,8 @@ export type StateMotionKeyframeReference = { state: 'current' | 'target' };
 /** A concrete transition keyframe or a symbolic endpoint reference. */
 export type StateMotionKeyframe = Keyframe | StateMotionKeyframeReference;
 
-/** A multi-keyframe edge program in a state motion skin. */
-export type StateMotionTransitionMotion = Omit<AtomMotion, 'keyframes' | 'reducedMotion'> & {
+/** A multi-keyframe animation program in a state motion skin. */
+export type StateMotionAnimation = Omit<AtomMotion, 'keyframes' | 'reducedMotion'> & {
   keyframes: readonly StateMotionKeyframe[];
   reducedMotion?: Omit<NonNullable<AtomMotion['reducedMotion']>, 'keyframes'> & {
     keyframes?: readonly StateMotionKeyframe[];
@@ -147,29 +154,31 @@ export type StateMotionTransitionMotion = Omit<AtomMotion, 'keyframes' | 'reduce
 /** Resolves a state's resting keyframe from caller-provided context. */
 export type StateMotionStateKeyframe<Context = undefined> = Keyframe | ((params: { context: Context }) => Keyframe);
 
-/** Resting state presentation and directed edge programs for a state motion machine. */
-export type StateMotionSkin<State extends string, Transition extends string, Context = undefined> = {
+/** State presentation and animation programs for a state motion machine. */
+export type StateMotionSkin<State extends string, Animation extends string, Context = undefined> = {
   states: Record<StateMotionStateName<State>, StateMotionStateKeyframe<Context>>;
-  transitions?: Partial<Record<Transition, StateMotionTransitionMotion | readonly StateMotionTransitionMotion[]>>;
+  animations?: Partial<Record<Animation, StateMotionAnimation | readonly StateMotionAnimation[]>>;
 };
 
-/** The edge selected by the most recently accepted event. */
-export type StateMotionTransitionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
+/** The animation started by the most recently accepted event. */
+export type StateMotionAnimationSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
   id: number;
   source: StateMotionStateName<State>;
   target: StateMotionStateName<State>;
   event: Event;
 };
 
-/** The current logical state and most recently selected edge. */
+/** The current logical state and active animation. */
 export type StateMotionSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
   state: StateMotionStateName<State>;
-  transition: StateMotionTransitionSnapshot<State, Event> | undefined;
+  animation: StateMotionAnimationSnapshot<State, Event> | undefined;
 };
 
 /** An event-driven controller for a flat state motion graph. */
 export type StateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
   readonly definition: StateMotionGraphDefinition<State, Event>;
+  /** Commits the target of the matching active animation. */
+  completeAnimation(animationId: number): boolean;
   getSnapshot(): StateMotionSnapshot<State, Event>;
   send(event: Event): boolean;
   subscribe(listener: () => void): () => void;

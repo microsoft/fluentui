@@ -14,6 +14,8 @@ import type {
   AnimationHandle,
   AtomMotion,
   MotionImperativeRef,
+  StateMotionAnimation,
+  StateMotionAnimationSnapshot,
   StateMotionController,
   StateMotionDefinition,
   StateMotionEvent,
@@ -23,8 +25,6 @@ import type {
   StateMotionStateKeyframe,
   StateMotionStateName,
   StateMotionTransition,
-  StateMotionTransitionMotion,
-  StateMotionTransitionSnapshot,
 } from '../types';
 import { useChildElement } from '../utils/useChildElement';
 
@@ -43,17 +43,20 @@ export type StateMotionComponentProps<
   /** Provides imperative playback controls for the active animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
 
-  /** Called when a selected edge starts animating. */
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
-  onMotionStart?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
+  /** Whether this component commits the target when an animation finishes. @default true */
+  completeAnimation?: boolean;
 
-  /** Called when a selected edge finishes animating. */
+  /** Called when an animation starts. */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
-  onMotionFinish?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
+  onMotionStart?: (ev: null, data: StateMotionAnimationSnapshot<State, Event>) => void;
 
-  /** Called when a selected edge is cancelled. */
+  /** Called when an animation finishes. */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
-  onMotionCancel?: (ev: null, data: StateMotionTransitionSnapshot<State, Event>) => void;
+  onMotionFinish?: (ev: null, data: StateMotionAnimationSnapshot<State, Event>) => void;
+
+  /** Called when an animation is cancelled. */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionCancel?: (ev: null, data: StateMotionAnimationSnapshot<State, Event>) => void;
 } & ([Context] extends [undefined]
   ? { context?: never }
   : {
@@ -82,7 +85,7 @@ function resolveKeyframes(keyframes: readonly StateMotionKeyframe[], target: Key
   });
 }
 
-function resolveTransitionMotion(motion: StateMotionTransitionMotion, target: Keyframe): AtomMotion {
+function resolveAnimation(motion: StateMotionAnimation, target: Keyframe): AtomMotion {
   return {
     ...motion,
     keyframes: resolveKeyframes(motion.keyframes, target),
@@ -104,28 +107,28 @@ export function createStateMotionComponent<State extends string, Event extends S
 export function createStateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-  Transition extends string,
+  Animation extends string,
 >(
-  definition: StateMotionMachineDefinition<State, Event, Transition>,
-  skin: StateMotionSkin<State, Transition>,
+  definition: StateMotionMachineDefinition<State, Event, Animation>,
+  skin: StateMotionSkin<State, Animation>,
 ): StateMotionComponent<State, Event>;
 export function createStateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-  Transition extends string,
+  Animation extends string,
   Context,
 >(
-  definition: StateMotionMachineDefinition<State, Event, Transition>,
-  skin: StateMotionSkin<State, Transition, Context>,
+  definition: StateMotionMachineDefinition<State, Event, Animation>,
+  skin: StateMotionSkin<State, Animation, Context>,
 ): StateMotionComponent<State, Event, Context>;
 export function createStateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-  Transition extends string,
+  Animation extends string,
   Context,
 >(
-  definition: StateMotionDefinition<State, Event> | StateMotionMachineDefinition<State, Event, Transition>,
-  skin?: StateMotionSkin<State, Transition, Context>,
+  definition: StateMotionDefinition<State, Event> | StateMotionMachineDefinition<State, Event, Animation>,
+  skin?: StateMotionSkin<State, Animation, Context>,
 ): StateMotionComponent<State, Event, Context> {
   const getStateKeyframe = (state: StateMotionStateName<State>, context: Context): Keyframe =>
     skin
@@ -133,23 +136,32 @@ export function createStateMotionComponent<
       : (definition as StateMotionDefinition<State, Event>).states[state].keyframe;
 
   return React.forwardRef<HTMLElement, StateMotionComponentProps<State, Event, Context>>((props, ref) => {
-    const { children, context, controller, imperativeRef, onMotionStart, onMotionFinish, onMotionCancel } = props;
+    const {
+      children,
+      completeAnimation = true,
+      context,
+      controller,
+      imperativeRef,
+      onMotionStart,
+      onMotionFinish,
+      onMotionCancel,
+    } = props;
     const snapshot = useStateMotion(controller);
-    const playbackRef = React.useRef({ controller, transitionId: snapshot.transition?.id });
+    const playbackRef = React.useRef({ controller, animationId: snapshot.animation?.id });
     const [child, childRef] = useChildElement(children, true, ref);
     const animateAtoms = useAnimateAtoms();
     const isReducedMotion = useIsReducedMotion();
     const handleRef = useMotionImperativeRef(imperativeRef);
     const skipMotions = useMotionBehaviourContext() === 'skip';
 
-    const handleMotionStart = useEventCallback((transition: StateMotionTransitionSnapshot<State, Event>) => {
-      onMotionStart?.(null, transition);
+    const handleMotionStart = useEventCallback((animation: StateMotionAnimationSnapshot<State, Event>) => {
+      onMotionStart?.(null, animation);
     });
-    const handleMotionFinish = useEventCallback((transition: StateMotionTransitionSnapshot<State, Event>) => {
-      onMotionFinish?.(null, transition);
+    const handleMotionFinish = useEventCallback((animation: StateMotionAnimationSnapshot<State, Event>) => {
+      onMotionFinish?.(null, animation);
     });
-    const handleMotionCancel = useEventCallback((transition: StateMotionTransitionSnapshot<State, Event>) => {
-      onMotionCancel?.(null, transition);
+    const handleMotionCancel = useEventCallback((animation: StateMotionAnimationSnapshot<State, Event>) => {
+      onMotionCancel?.(null, animation);
     });
 
     useIsomorphicLayoutEffect(() => {
@@ -162,58 +174,71 @@ export function createStateMotionComponent<
         throw new Error('createStateMotionComponent: The controller must be created from the same definition.');
       }
 
-      const selected = snapshot.transition;
-      const isHistoricalTransition =
-        playbackRef.current.controller !== controller || playbackRef.current.transitionId === selected?.id;
-      if (!selected || isHistoricalTransition) {
-        playbackRef.current = { controller, transitionId: selected?.id };
+      const animation = snapshot.animation;
+      const isHistoricalAnimation =
+        playbackRef.current.controller !== controller || playbackRef.current.animationId === animation?.id;
+      if (!animation || isHistoricalAnimation) {
+        playbackRef.current = { controller, animationId: animation?.id };
         Object.assign(element.style, getStateKeyframe(snapshot.state, context as Context));
         return;
       }
 
-      playbackRef.current = { controller, transitionId: selected.id };
+      playbackRef.current = { controller, animationId: animation.id };
 
-      const source = definition.states[selected.source];
-      const targetKeyframe = getStateKeyframe(selected.target, context as Context);
-      const transitions = source.on as
-        | Partial<Record<Event['type'], StateMotionTransition<State, Event> | { id: Transition; target: State }>>
-        | undefined;
-      const edge = transitions?.[selected.event.type as Event['type']];
-      if (!edge) {
-        return;
-      }
+      const source = definition.states[animation.source];
+      const targetKeyframe = getStateKeyframe(animation.target, context as Context);
+      const requiresCompletion = snapshot.state !== animation.target;
 
       let motion: AtomMotion | AtomMotion[];
-      if (skin && 'id' in edge) {
-        const transitionMotion = skin.transitions?.[edge.id];
-        motion = transitionMotion
-          ? Array.isArray(transitionMotion)
-            ? transitionMotion.map(value => resolveTransitionMotion(value, targetKeyframe))
-            : resolveTransitionMotion(transitionMotion as StateMotionTransitionMotion, targetKeyframe)
+      if (skin) {
+        const animationDefinition = (
+          source as StateMotionMachineDefinition<State, Event, Animation>['states'][StateMotionStateName<State>]
+        ).animation;
+        const animationMotion = animationDefinition && skin.animations?.[animationDefinition.id];
+        motion = animationMotion
+          ? Array.isArray(animationMotion)
+            ? animationMotion.map(value => resolveAnimation(value, targetKeyframe))
+            : resolveAnimation(animationMotion as StateMotionAnimation, targetKeyframe)
           : { keyframes: [targetKeyframe] };
       } else {
-        const stateEdge = edge as StateMotionTransition<State, Event>;
-        const target = (definition as StateMotionDefinition<State, Event>).states[selected.target];
+        const transitions = source.on as
+          | Partial<Record<Event['type'], StateMotionTransition<State, Event>>>
+          | undefined;
+        const stateTransition = transitions?.[animation.event.type as Event['type']];
+        if (!stateTransition) {
+          return;
+        }
+        const target = (definition as StateMotionDefinition<State, Event>).states[animation.target];
         motion =
-          typeof stateEdge.motion === 'function'
-            ? stateEdge.motion({
+          typeof stateTransition.motion === 'function'
+            ? stateTransition.motion({
                 element,
-                event: selected.event,
+                event: animation.event,
                 source: source as StateMotionDefinition<State, Event>['states'][StateMotionStateName<State>],
                 target,
               })
-            : stateEdge.motion ?? { keyframes: [targetKeyframe] };
+            : stateTransition.motion ?? { keyframes: [targetKeyframe] };
       }
 
-      handleMotionStart(selected);
+      handleMotionStart(animation);
       const handle: AnimationHandle = animateAtoms(element, motion, { isReducedMotion: isReducedMotion() });
       handleRef.current = handle;
       handle.setMotionEndCallbacks(
         () => {
+          const currentSnapshot = controller.getSnapshot();
+          const isCurrentAnimation = currentSnapshot.animation?.id === animation.id;
+          const wasCompleted = !currentSnapshot.animation && currentSnapshot.state === animation.target;
+          if (!isCurrentAnimation && !wasCompleted) {
+            return;
+          }
+          if (requiresCompletion && completeAnimation && !controller.completeAnimation(animation.id)) {
+            return;
+          }
+
           Object.assign(element.style, targetKeyframe);
-          handleMotionFinish(selected);
+          handleMotionFinish(animation);
         },
-        () => handleMotionCancel(selected),
+        () => handleMotionCancel(animation),
       );
 
       if (skipMotions) {
@@ -230,6 +255,7 @@ export function createStateMotionComponent<
     }, [
       animateAtoms,
       childRef,
+      completeAnimation,
       context,
       controller,
       handleMotionCancel,

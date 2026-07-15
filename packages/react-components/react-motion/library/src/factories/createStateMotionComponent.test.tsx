@@ -108,16 +108,16 @@ describe('createStateMotionComponent', () => {
     ).toThrow('The controller must be created from the same definition');
   });
 
-  it('resolves state references in a multi-keyframe transition skin', () => {
+  it('resolves state references in a multi-keyframe animation skin', () => {
     type State = 'stopped' | 'playing';
     type Event = { type: 'PLAY' };
-    type Transition = 'startPlayback';
+    type Animation = 'startPlayback';
 
-    const machine: StateMotionMachineDefinition<State, Event, Transition> = {
+    const machine: StateMotionMachineDefinition<State, Event, Animation> = {
       initialState: 'stopped',
       states: {
-        stopped: { on: { PLAY: { id: 'startPlayback', target: 'playing' } } },
-        playing: {},
+        stopped: { on: { PLAY: { target: 'playing' } } },
+        playing: { animation: { id: 'startPlayback', target: 'playing' } },
       },
     };
     const skin = {
@@ -125,7 +125,7 @@ describe('createStateMotionComponent', () => {
         stopped: { opacity: 0.6, transform: 'translateX(0) scale(0.9)' },
         playing: { opacity: 1, transform: 'translateX(48px) scale(1)' },
       },
-      transitions: {
+      animations: {
         startPlayback: {
           keyframes: [
             { state: 'current' },
@@ -135,7 +135,7 @@ describe('createStateMotionComponent', () => {
           duration: 300,
         },
       },
-    } satisfies StateMotionSkin<State, Transition>;
+    } satisfies StateMotionSkin<State, Animation>;
     const controller = createStateMotionController(machine);
     const StateMotion = createStateMotionComponent(machine, skin);
     const animation = {
@@ -172,15 +172,15 @@ describe('createStateMotionComponent', () => {
   it('resolves state keyframes from the current context', () => {
     type State = 'dropped' | 'lifted' | 'transferred';
     type Event = { type: 'LIFT' } | { type: 'TRANSFER' } | { type: 'DROP' };
-    type Transition = 'lifting' | 'transferring' | 'dropping';
+    type Animation = 'lifting' | 'transferring' | 'dropping';
     type Route = { originX: number; destinationX: number };
 
-    const machine: StateMotionMachineDefinition<State, Event, Transition> = {
+    const machine: StateMotionMachineDefinition<State, Event, Animation> = {
       initialState: 'dropped',
       states: {
-        dropped: { on: { LIFT: { id: 'lifting', target: 'lifted' } } },
-        lifted: { on: { TRANSFER: { id: 'transferring', target: 'transferred' } } },
-        transferred: { on: { DROP: { id: 'dropping', target: 'dropped' } } },
+        dropped: { animation: { id: 'dropping', target: 'dropped' }, on: { LIFT: { target: 'lifted' } } },
+        lifted: { animation: { id: 'lifting', target: 'lifted' }, on: { TRANSFER: { target: 'transferred' } } },
+        transferred: { animation: { id: 'transferring', target: 'transferred' }, on: { DROP: { target: 'dropped' } } },
       },
     };
     const skin = {
@@ -191,12 +191,12 @@ describe('createStateMotionComponent', () => {
           transform: `translate(${context.destinationX}px, -20px)`,
         }),
       },
-      transitions: {
+      animations: {
         lifting: { keyframes: [{ state: 'current' }, { state: 'target' }] },
         transferring: { keyframes: [{ state: 'current' }, { state: 'target' }] },
         dropping: { keyframes: [{ state: 'current' }, { state: 'target' }] },
       },
-    } satisfies StateMotionSkin<State, Transition, Route>;
+    } satisfies StateMotionSkin<State, Animation, Route>;
     const animation = { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() } as unknown as Animation;
     const animate = jest.fn(() => animation);
     Object.defineProperty(HTMLElement.prototype, 'animate', { configurable: true, value: animate });
@@ -230,17 +230,140 @@ describe('createStateMotionComponent', () => {
     delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
   });
 
+  it('completes only the current motion after an interruption', async () => {
+    type State = 'dropped' | 'lifting' | 'lifted' | 'dropping';
+    type Event = { type: 'LIFT' } | { type: 'DROP' };
+    type Animation = 'lifting' | 'dropping';
+
+    const machine: StateMotionMachineDefinition<State, Event, Animation> = {
+      initialState: 'dropped',
+      states: {
+        dropped: { on: { LIFT: { target: 'lifting' } } },
+        lifting: { animation: { id: 'lifting', target: 'lifted' }, on: { DROP: { target: 'dropping' } } },
+        lifted: { on: { DROP: { target: 'dropping' } } },
+        dropping: { animation: { id: 'dropping', target: 'dropped' } },
+      },
+    };
+    const skin = {
+      states: {
+        dropped: { transform: 'translateY(0)' },
+        lifting: { transform: 'translateY(0)' },
+        lifted: { transform: 'translateY(-20px)' },
+        dropping: { transform: 'translateY(-20px)' },
+      },
+      animations: {
+        lifting: { keyframes: [{ state: 'current' }, { state: 'target' }] },
+        dropping: { keyframes: [{ state: 'current' }, { state: 'target' }] },
+      },
+    } satisfies StateMotionSkin<State, Animation>;
+    const animations = [
+      { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() },
+      { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() },
+    ] as unknown as Animation[];
+    const animate = jest
+      .fn<Animation, [Keyframe[], KeyframeAnimationOptions]>()
+      .mockReturnValueOnce(animations[0])
+      .mockReturnValueOnce(animations[1]);
+    Object.defineProperty(HTMLElement.prototype, 'animate', { configurable: true, value: animate });
+    const controller = createStateMotionController(machine);
+    const StateMotion = createStateMotionComponent(machine, skin);
+    const onMotionFinish = jest.fn();
+    const { getByTestId } = render(
+      <StateMotion controller={controller} onMotionFinish={onMotionFinish}>
+        <div data-testid="target" />
+      </StateMotion>,
+    );
+
+    act(() => controller.send({ type: 'LIFT' }));
+    expect(controller.getSnapshot().state).toBe('lifting');
+    act(() => controller.send({ type: 'DROP' }));
+    expect(controller.getSnapshot().state).toBe('dropping');
+
+    await act(async () => {
+      animations[0].onfinish?.(null as unknown as AnimationPlaybackEvent);
+      await Promise.resolve();
+    });
+    expect(controller.getSnapshot().state).toBe('dropping');
+    expect(getByTestId('target')).not.toHaveStyle({ transform: 'translateY(-20px)' });
+    expect(onMotionFinish).not.toHaveBeenCalled();
+
+    await act(async () => {
+      animations[1].onfinish?.(null as unknown as AnimationPlaybackEvent);
+      await Promise.resolve();
+    });
+    expect(controller.getSnapshot()).toEqual({ state: 'dropped', animation: undefined });
+    expect(getByTestId('target')).toHaveStyle({ transform: 'translateY(0)' });
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
+
+    delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
+  });
+
+  it('allows a passive renderer to observe an animation without completing it', async () => {
+    type State = 'idle' | 'moving' | 'moved';
+    type Event = { type: 'MOVE' };
+    type Animation = 'moving';
+
+    const machine: StateMotionMachineDefinition<State, Event, Animation> = {
+      initialState: 'idle',
+      states: {
+        idle: { on: { MOVE: { target: 'moving' } } },
+        moving: { animation: { id: 'moving', target: 'moved' } },
+        moved: {},
+      },
+    };
+    const skin = {
+      states: { idle: { opacity: 0 }, moving: { opacity: 0 }, moved: { opacity: 1 } },
+      animations: { moving: { keyframes: [{ state: 'current' }, { state: 'target' }] } },
+    } satisfies StateMotionSkin<State, Animation>;
+    const animations = [
+      { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() },
+      { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() },
+    ] as unknown as Animation[];
+    const animate = jest
+      .fn<Animation, [Keyframe[], KeyframeAnimationOptions]>()
+      .mockReturnValueOnce(animations[0])
+      .mockReturnValueOnce(animations[1]);
+    Object.defineProperty(HTMLElement.prototype, 'animate', { configurable: true, value: animate });
+    const controller = createStateMotionController(machine);
+    const StateMotion = createStateMotionComponent(machine, skin);
+    render(
+      <>
+        <StateMotion controller={controller}>
+          <div />
+        </StateMotion>
+        <StateMotion completeAnimation={false} controller={controller}>
+          <div />
+        </StateMotion>
+      </>,
+    );
+
+    act(() => controller.send({ type: 'MOVE' }));
+    await act(async () => {
+      animations[1].onfinish?.(null as unknown as AnimationPlaybackEvent);
+      await Promise.resolve();
+    });
+    expect(controller.getSnapshot().state).toBe('moving');
+
+    await act(async () => {
+      animations[0].onfinish?.(null as unknown as AnimationPlaybackEvent);
+      await Promise.resolve();
+    });
+    expect(controller.getSnapshot()).toEqual({ state: 'moved', animation: undefined });
+
+    delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
+  });
+
   it('preserves the current presentation between consecutive state changes', () => {
     type State = 'dropped' | 'lifted' | 'transferred';
     type Event = { type: 'LIFT' } | { type: 'TRANSFER' };
-    type Transition = 'lifting' | 'transferring';
+    type Animation = 'lifting' | 'transferring';
 
-    const machine: StateMotionMachineDefinition<State, Event, Transition> = {
+    const machine: StateMotionMachineDefinition<State, Event, Animation> = {
       initialState: 'dropped',
       states: {
-        dropped: { on: { LIFT: { id: 'lifting', target: 'lifted' } } },
-        lifted: { on: { TRANSFER: { id: 'transferring', target: 'transferred' } } },
-        transferred: {},
+        dropped: { on: { LIFT: { target: 'lifted' } } },
+        lifted: { animation: { id: 'lifting', target: 'lifted' }, on: { TRANSFER: { target: 'transferred' } } },
+        transferred: { animation: { id: 'transferring', target: 'transferred' } },
       },
     };
     const skin = {
@@ -249,11 +372,11 @@ describe('createStateMotionComponent', () => {
         lifted: { transform: 'translate(0, -20px)' },
         transferred: { transform: 'translate(100px, -20px)' },
       },
-      transitions: {
+      animations: {
         lifting: { keyframes: [{ state: 'current' }, { state: 'target' }], duration: 200 },
         transferring: { keyframes: [{ state: 'current' }, { state: 'target' }], duration: 400 },
       },
-    } satisfies StateMotionSkin<State, Transition>;
+    } satisfies StateMotionSkin<State, Animation>;
     const animations = [
       { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() },
       { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() },

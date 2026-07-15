@@ -1929,6 +1929,8 @@ export type {
   PresenceComponent,
   PresenceMotion,
   PresenceMotionFn,
+  StateMotionAnimation,
+  StateMotionAnimationSnapshot,
   PresenceMotionSlotProps,
   PresenceComponentProps,
   StateMotionComponent,
@@ -1940,6 +1942,7 @@ export type {
   StateMotionGraphDefinition,
   StateMotionKeyframe,
   StateMotionKeyframeReference,
+  StateMotionMachineAnimation,
   StateMotionMachineDefinition,
   StateMotionMachineNode,
   StateMotionMachineTransition,
@@ -1947,10 +1950,8 @@ export type {
   StateMotionSkin,
   StateMotionSnapshot,
   StateMotionTransition,
-  StateMotionTransitionMotion,
   StateMotionTransitionMotionFn,
   StateMotionTransitionMotionFnParams,
-  StateMotionTransitionSnapshot,
 } from '@fluentui/react-motion';
 
 export {

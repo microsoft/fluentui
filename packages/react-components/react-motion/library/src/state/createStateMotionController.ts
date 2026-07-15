@@ -17,7 +17,8 @@ export type StateMotionControllerOptions<State extends string> = {
 /**
  * Creates an event-driven controller for a flat state motion graph.
  *
- * The controller commits a transition's target synchronously. Animation is a separate effect of the selected edge.
+ * Event transitions commit synchronously. A state can start an animation whose target is committed with
+ * `completeAnimation()`.
  */
 export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>>(
   definition: StateMotionDefinition<State, Event>,
@@ -26,46 +27,59 @@ export function createStateMotionController<State extends string, Event extends 
 export function createStateMotionController<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
-  Transition extends string,
+  Animation extends string,
 >(
-  definition: StateMotionMachineDefinition<State, Event, Transition>,
+  definition: StateMotionMachineDefinition<State, Event, Animation>,
   options?: StateMotionControllerOptions<State>,
 ): StateMotionController<State, Event>;
 export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>>(
   definition: StateMotionGraphDefinition<State, Event>,
   options: StateMotionControllerOptions<State> = {},
 ): StateMotionController<State, Event> {
-  const hasReservedTransitionTarget = (Object.keys(definition.states) as StateMotionStateName<State>[]).some(
-    stateName => {
-      const transitions = definition.states[stateName].on;
+  const hasReservedStateTarget = (Object.keys(definition.states) as StateMotionStateName<State>[]).some(stateName => {
+    const node = definition.states[stateName];
+    const transitions = node.on;
 
-      return Reflect.ownKeys(transitions ?? {}).some(
+    return (
+      node.animation?.target === 'target' ||
+      Reflect.ownKeys(transitions ?? {}).some(
         eventType => transitions?.[eventType as Event['type']]?.target === 'target',
-      );
-    },
-  );
+      )
+    );
+  });
 
   if (
     definition.initialState === 'target' ||
     options.initialState === 'target' ||
     Object.prototype.hasOwnProperty.call(definition.states, 'target') ||
-    hasReservedTransitionTarget
+    hasReservedStateTarget
   ) {
     throw new Error('createStateMotionController: "target" is reserved and cannot be used as a state name.');
   }
 
-  let transitionId = 0;
+  let animationId = 0;
   let snapshot: StateMotionSnapshot<State, Event> = {
     state: options.initialState ?? definition.initialState,
-    transition: undefined,
+    animation: undefined,
   };
   const listeners = new Set<() => void>();
 
   return {
     definition,
+    completeAnimation: id => {
+      const animation = snapshot.animation;
+      if (!animation || animation.id !== id || snapshot.state === animation.target) {
+        return false;
+      }
+
+      snapshot = { state: animation.target, animation: undefined };
+      listeners.forEach(listener => listener());
+      return true;
+    },
     getSnapshot: () => snapshot,
     send: event => {
       const source = snapshot.state;
+      const sourceNode = definition.states[source];
       const transitions = definition.states[source].on as
         | Partial<Record<Event['type'], { target: StateMotionStateName<State> }>>
         | undefined;
@@ -75,14 +89,18 @@ export function createStateMotionController<State extends string, Event extends 
         return false;
       }
 
+      const state = transition.target;
+      const enteredNode = definition.states[state];
+      const stateAnimation = enteredNode.animation;
+      const isVisualDefinition = 'keyframe' in sourceNode;
+
       snapshot = {
-        state: transition.target,
-        transition: {
-          id: ++transitionId,
-          source,
-          target: transition.target,
-          event,
-        },
+        state,
+        animation: stateAnimation
+          ? { id: ++animationId, source: state, target: stateAnimation.target, event }
+          : isVisualDefinition
+          ? { id: ++animationId, source, target: state, event }
+          : undefined,
       };
 
       listeners.forEach(listener => listener());
