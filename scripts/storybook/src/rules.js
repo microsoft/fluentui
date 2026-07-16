@@ -100,10 +100,6 @@ const swcRule = {
     {
       loader: 'swc-loader',
       options: {
-        // Parse the source map to an object so subsequent loaders (e.g. babel-loader) receive
-        // an object rather than the raw JSON string that @swc/core outputs.
-        // Without this, babel-loader throws: "Error: .inputSourceMap must be a boolean, object, or undefined"
-        parseMap: true,
         jsc: {
           target: 'es2019',
           parser: {

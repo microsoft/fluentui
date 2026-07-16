@@ -37,13 +37,14 @@ function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack'
     test: /\.stories\.(jsx?$|tsx?$)/,
     ...webpackRule,
     /**
-     * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
-     * while we can use Array.prototype.unshift to "override" the indexes this approach is more declarative without additional hacks.
+     * Run before transpilers so this loader receives the original story source and does not depend on
+     * the format of sourcemaps emitted by subsequent loaders.
      */
-    enforce: 'post',
+    enforce: 'pre',
     use: {
       loader: require.resolve('babel-loader'),
       options: babelLoaderOptionsUpdater({
+        parserOpts: { plugins: ['typescript', 'jsx'] },
         plugins: [plugin],
       }),
     },
