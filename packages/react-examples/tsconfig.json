@@ -24,5 +24,6 @@
       "@fluentui/react-examples": ["./src"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.e2e.ts", "src/**/*.e2e.tsx"]
 }

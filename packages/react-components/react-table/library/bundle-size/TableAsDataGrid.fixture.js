@@ -11,7 +11,7 @@ import {
   useTableFeatures,
   useTableSelection,
   useTableSort,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-table';
 
 console.log(
@@ -27,7 +27,7 @@ console.log(
   useTableFeatures,
   useTableSelection,
   useTableSort,
-  createColumn,
+  createTableColumn,
 );
 
 export default {

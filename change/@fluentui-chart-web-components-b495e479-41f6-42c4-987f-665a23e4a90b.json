@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Ship `dist/*.d.cts` declarations so node16/nodenext CommonJS consumers get a matching declaration",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

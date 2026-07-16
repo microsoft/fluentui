@@ -413,7 +413,11 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`jest config updates`, () => {
     function getProjectJestConfig(projectConfig: ReadProjectConfiguration) {
-      return tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
+      // web packages emit `.cjs` (type:module); fall back to legacy `.js`
+      return (
+        tree.read(`${projectConfig.root}/jest.config.cjs`)?.toString('utf-8') ??
+        tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8')
+      );
     }
 
     it(`should setup new local jest config which extends from root `, async () => {
@@ -447,7 +451,7 @@ describe('migrate-converged-pkg generator', () => {
             ],
           },
           coverageDirectory: './coverage',
-          setupFilesAfterEnv: ['./config/tests.js'],
+          setupFilesAfterEnv: ['./config/tests.cjs'],
           snapshotSerializers: ['@griffel/jest-serializer'],
         };
         "
@@ -479,12 +483,14 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should create local ./config/tests.js file if missing that is used for "setupFilesAfterEnv"`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      const jestSetupFilePath = `${projectConfig.root}/config/tests.js`;
+      // web packages emit the setup file as `.cjs` (type:module)
+      const legacyJestSetupFilePath = `${projectConfig.root}/config/tests.js`;
+      const jestSetupFilePath = `${projectConfig.root}/config/tests.cjs`;
       function getJestSetupFile() {
         return tree.read(jestSetupFilePath)?.toString('utf-8');
       }
 
-      tree.delete(jestSetupFilePath);
+      tree.delete(legacyJestSetupFilePath);
       expect(tree.exists(jestSetupFilePath)).toBeFalsy();
 
       await generator(tree, options);
@@ -930,15 +936,33 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports).toMatchInlineSnapshot(`
           Object {
             ".": Object {
-              "import": "./lib/index.js",
-              "node": "./lib-commonjs/index.js",
-              "require": "./lib-commonjs/index.js",
+              "import": Object {
+                "default": "./lib/index.js",
+                "types": "./dist/index.d.ts",
+              },
+              "require": Object {
+                "default": "./lib-commonjs/index.cjs",
+                "types": "./dist/index.d.cts",
+              },
               "style": "./css/index.css",
-              "types": "./dist/index.d.ts",
             },
             "./package.json": "./package.json",
           }
         `);
+      });
+
+      it(`should set type:module and a .cjs main for web packages`, async () => {
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+          jsonUpdates: { module: './lib/index.js' },
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect(pkgJson.type).toBe('module');
+        expect(pkgJson.main).toBe('./lib-commonjs/index.cjs');
+        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toBeUndefined();
       });
 
       it(`should update exports map based on main,module fields`, async () => {
@@ -989,6 +1013,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.files).toMatchInlineSnapshot(`
         Array [
           "*.md",
+          "dist/*.d.cts",
           "dist/*.d.ts",
           "lib-commonjs",
         ]
@@ -1089,6 +1114,7 @@ describe('migrate-converged-pkg generator', () => {
           '/**/*.test.tsx',
         ],
         jsc: {
+          baseUrl: '.',
           parser: {
             syntax: 'typescript',
             tsx: true,
@@ -1447,7 +1473,10 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
           Object {
             "import": "./lib/unstable/index.js",
-            "node": "./lib-commonjs/unstable/index.js",
+            "node": Object {
+              "default": "./lib-commonjs/unstable/index.js",
+              "module": "./lib/unstable/index.js",
+            },
             "require": "./lib-commonjs/unstable/index.js",
             "types": "./dist/unstable.d.ts",
           }

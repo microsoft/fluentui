@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Ship `dist/*.d.cts` declarations for node16/nodenext CommonJS consumers and use a namespace import for the now ESM-only `@fluentui/tokens`",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
