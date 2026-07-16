@@ -1,7 +1,7 @@
 {
-  "type": "patch",
-  "comment": "update react-menu tsconfig.cy.json",
+  "type": "none",
+  "comment": "test: add regression tests for split-group submenu trigger alignment icons",
   "packageName": "@fluentui/react-menu",
   "email": "paulmardling@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
