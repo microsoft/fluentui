@@ -1,9 +1,3 @@
-/* eslint-disable jsdoc/check-tag-names */
-/** @jest-environment node */
-
-import { spawnSync } from 'node:child_process';
-import * as path from 'node:path';
-
 import { PresetConfig } from './public-types';
 import { webpack, WebpackFinalOptions } from './webpack';
 describe(`webpack`, () => {
@@ -114,15 +108,5 @@ describe(`webpack`, () => {
         },
       },
     ]);
-  });
-
-  it(`should compile typed stories after a default swc-loader with sourcemaps`, () => {
-    const result = spawnSync(process.execPath, [path.join(__dirname, '../config/tests/webpack-integration.cjs')], {
-      encoding: 'utf8',
-    });
-
-    if (result.status !== 0) {
-      throw new Error([result.stdout, result.stderr].filter(Boolean).join('\n'));
-    }
   });
 });

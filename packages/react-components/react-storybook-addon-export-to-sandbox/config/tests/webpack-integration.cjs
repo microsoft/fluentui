@@ -2,22 +2,9 @@ const assert = require('node:assert');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const swc = require('@swc/core');
 const webpackCompiler = require('webpack');
 
-process.env.BABEL_PRESET_FULL_SOURCE_DEV = 'true';
-
-require.extensions['.ts'] = (module, filename) => {
-  const { code } = swc.transformSync(fs.readFileSync(filename, 'utf8'), {
-    filename,
-    swcrc: false,
-    jsc: { parser: { syntax: 'typescript' }, target: 'es2021' },
-    module: { type: 'commonjs' },
-  });
-  module._compile(code, filename);
-};
-
-const { webpack } = require('../../src/webpack.ts');
+const { webpack } = require('../../lib-commonjs/webpack.js');
 
 async function main() {
   const outputPath = fs.mkdtempSync(path.join(os.tmpdir(), 'export-to-sandbox-webpack-'));
