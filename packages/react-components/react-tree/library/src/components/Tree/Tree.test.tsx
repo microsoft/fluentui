@@ -74,5 +74,62 @@ describe('Tree', () => {
 
       expect(screen.getByRole(role, { name: accessibleName })).toBeTruthy();
     });
+
+    it.each([
+      {
+        case: 'TreeItemLayout',
+        layout: <TreeItemLayout main={{ id: 'custom-main' }}>Item 1</TreeItemLayout>,
+        mainId: 'custom-main',
+        accessibleName: 'Item 1',
+      },
+      {
+        case: 'TreeItemPersonaLayout',
+        layout: <TreeItemPersonaLayout main={{ id: 'custom-persona-main' }}>Jane Doe</TreeItemPersonaLayout>,
+        mainId: 'custom-persona-main',
+        accessibleName: 'Jane Doe',
+      },
+    ] as const)('preserves a consumer-provided main ID ($case)', ({ layout, mainId, accessibleName }) => {
+      render(
+        <Tree aria-label="Tree" selectionMode="multiselect">
+          <TreeItem itemType="leaf" value="item1">
+            {layout}
+          </TreeItem>
+        </Tree>,
+      );
+
+      expect(screen.getByRole('checkbox', { name: accessibleName }).getAttribute('aria-labelledby')).toBe(mainId);
+      expect(document.getElementById(mainId)?.textContent).toBe(accessibleName);
+    });
+
+    it('preserves a consumer-provided selector aria-label', () => {
+      render(
+        <Tree aria-label="Tree" selectionMode="multiselect">
+          <TreeItem itemType="leaf" value="item1">
+            <TreeItemLayout selector={{ 'aria-label': 'Custom selector label' }}>Item 1</TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+
+      const selector = screen.getByRole('checkbox', { name: 'Custom selector label' });
+      expect(selector.getAttribute('aria-label')).toBe('Custom selector label');
+      expect(selector.hasAttribute('aria-labelledby')).toBe(false);
+    });
+
+    it('preserves a consumer-provided selector aria-labelledby', () => {
+      render(
+        <>
+          <span id="external-selector-label">External selector label</span>
+          <Tree aria-label="Tree" selectionMode="multiselect">
+            <TreeItem itemType="leaf" value="item1">
+              <TreeItemLayout selector={{ 'aria-labelledby': 'external-selector-label' }}>Item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </>,
+      );
+
+      expect(screen.getByRole('checkbox', { name: 'External selector label' }).getAttribute('aria-labelledby')).toBe(
+        'external-selector-label',
+      );
+    });
   });
 });

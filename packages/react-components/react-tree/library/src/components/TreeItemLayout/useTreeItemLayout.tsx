@@ -67,7 +67,27 @@ export const useTreeItemLayout_unstable = (
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
-  const mainContentId = useId('fui-TreeItemLayout__main-');
+  const mainSlot = slot.always(main, { elementType: 'div' });
+  const mainContentId = useId('fui-TreeItemLayout__main-', mainSlot.id);
+
+  const selector = slot.optional(props.selector, {
+    renderByDefault: selectionMode !== 'none',
+    defaultProps: {
+      checked,
+      tabIndex: -1,
+      ref: selectionRef,
+      // casting here to a union between checkbox and radio
+      // since ref is not present on the selector signature
+      // FIXME: look into Slot type to see if we can make this work
+    } as CheckboxProps | RadioProps,
+    elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+  });
+  if (selector) {
+    mainSlot.id = mainContentId;
+    if (!selector['aria-label'] && !selector['aria-labelledby']) {
+      selector['aria-labelledby'] = mainContentId;
+    }
+  }
 
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
   // eslint-disable-next-line react-hooks/refs
@@ -236,29 +256,12 @@ export const useTreeItemLayout_unstable = (
       },
     ),
     iconBefore: slot.optional(iconBefore, { elementType: 'div' }),
-    main: slot.always(main, {
-      defaultProps: { id: selectionMode !== 'none' ? mainContentId : undefined },
-      elementType: 'div',
-    }),
+    main: mainSlot,
     iconAfter: slot.optional(iconAfter, { elementType: 'div' }),
     aside: !isActionsVisible ? slot.optional(props.aside, { elementType: 'div' }) : undefined,
     actions,
     expandIcon,
-    selector: slot.optional(props.selector, {
-      renderByDefault: selectionMode !== 'none',
-      defaultProps: {
-        checked,
-        tabIndex: -1,
-        'aria-labelledby': mainContentId,
-        ref: selectionRef,
-        // casting here to a union between checkbox and radio
-        // since ref is not present on the selector signature
-        // FIXME: look into Slot type to see if we can make this work
-      } as CheckboxProps | RadioProps,
-      elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<
-        CheckboxProps | RadioProps
-      >,
-    }),
+    selector,
   };
 };
 
