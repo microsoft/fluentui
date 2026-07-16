@@ -10,6 +10,13 @@
     "types": ["static-assets", "environment", "node"],
     "module": "CommonJS"
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "src/index.dev.d.ts"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "src/index.dev.d.ts",
+    "**/__fixtures__/**"
+  ],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
