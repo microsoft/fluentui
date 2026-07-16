@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import type { ButtonProps } from '@fluentui/react-button';
 const meta = {
   title: 'Card',
   component: Button,
@@ -9,17 +8,9 @@ export default meta;
 
 // --- Custom components with TypeScript types ---
 
-type CardProps = {
-  title: string;
-  children: React.ReactNode;
-};
-const Card: React.FC<CardProps> = ({ title, children }) =>
+const Card = ({ title, children }) =>
   /*#__PURE__*/ React.createElement('section', null, /*#__PURE__*/ React.createElement('h3', null, title), children);
-interface ActionProps {
-  label: string;
-  appearance?: ButtonProps['appearance'];
-}
-const Action: React.FC<ActionProps> = ({ label, appearance }) =>
+const Action = ({ label, appearance }) =>
   /*#__PURE__*/ React.createElement(
     Button,
     {

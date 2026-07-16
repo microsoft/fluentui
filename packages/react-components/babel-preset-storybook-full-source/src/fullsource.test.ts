@@ -45,10 +45,10 @@ pluginTester({
 // Per-story granularity: each story export gets its own sliced `fullSource`.
 pluginTester({
   babelOptions: {
-    presets: ['@babel/preset-react'],
-    // Parse TS syntax without stripping types — the preset is pass-through and
-    // must not remove types from the emitted module (only JSX is compiled here).
-    parserOpts: { plugins: ['jsx', 'typescript'] },
+    // Compile the fixtures like a real Storybook build (JSX + TS stripped). Type
+    // preservation is asserted on the emitted `fullSource` strings, which come
+    // from the plugin's own transform and keep types.
+    presets: ['@babel/preset-react', '@babel/preset-typescript'],
   },
   fixtures: path.join(__dirname, '__fixtures__/storybook-stories-fullsource-per-story'),
   pluginOptions: {
