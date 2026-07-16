@@ -30,7 +30,6 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
   const granularity = options.storyGranularity ?? 'file';
 
   let storyName: string;
-  let parametersAssignment: Babel.NodePath<Babel.types.AssignmentExpression> | undefined;
   // All component-like story exports in document order (used by 'story' mode).
   let storyNames: string[] = [];
   // Story names that already have a `<Story>.parameters = …` assignment.
@@ -146,15 +145,11 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           path.node.left.property.name === 'parameters'
         ) {
           storiesWithParameters.add(path.node.left.object.name);
-          if (path.node.left.object.name === storyName) {
-            parametersAssignment = path;
-          }
         }
       },
       Program: {
         enter() {
           storyName = '';
-          parametersAssignment = undefined;
           storyNames = [];
           storiesWithParameters.clear();
         },
@@ -168,6 +163,37 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
             cssModulesEnabled && cssModulesConfig?.tokensFilePath
               ? fs.readFileSync(cssModulesConfig.tokensFilePath, 'utf-8')
               : undefined;
+          // Auto-detected CSS module imports are file-level (identical for every
+          // story), so collect them once and reuse for each emitted story.
+          const cssModules = cssModulesEnabled ? collectCssModuleImports(path, t, state.filename) : [];
+
+          // Runs the shared modify-imports + prettier pipeline over a source string.
+          const buildFullSource = (source: string): string => {
+            const transformed = babel.transformSync(source, {
+              ...state.file.opts,
+              compact: false,
+              retainLines: true,
+              comments: false,
+              plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
+            })?.code;
+
+            return prettier.format(transformed ?? '', { parser: 'babel-ts' });
+          };
+
+          // Emits `<Story>.parameters` (when missing), `.fullSource` and, when
+          // enabled, `.cssModuleSources` for a single story.
+          const emitStorySource = (currentStory: string, code: string): void => {
+            if (!storiesWithParameters.has(currentStory)) {
+              path.pushContainer('body', createStoryParametersAssignmentExpression(currentStory));
+              storiesWithParameters.add(currentStory);
+            }
+
+            path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, code));
+
+            if (cssModulesEnabled && (cssModules.length > 0 || tokensSource)) {
+              path.pushContainer('body', createCssModuleSourcesAssignment(currentStory, { cssModules, tokensSource }));
+            }
+          };
 
           if (granularity === 'story') {
             for (const currentStory of storyNames) {
@@ -180,32 +206,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
                 continue;
               }
 
-              const transformedStory = babel.transformSync(sliced, {
-                ...state.file.opts,
-                compact: false,
-                retainLines: true,
-                comments: false,
-                plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
-              })?.code;
-
-              const storyCode = prettier.format(transformedStory ?? '', { parser: 'babel-ts' });
-
-              if (!storiesWithParameters.has(currentStory)) {
-                path.pushContainer('body', createStoryParametersAssignmentExpression(currentStory));
-                storiesWithParameters.add(currentStory);
-              }
-
-              path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, storyCode));
-
-              if (cssModulesEnabled) {
-                const cssModules = collectCssModuleImports(path, t, state.filename);
-                if (cssModules.length > 0 || tokensSource) {
-                  path.pushContainer(
-                    'body',
-                    createCssModuleSourcesAssignment(currentStory, { cssModules, tokensSource }),
-                  );
-                }
-              }
+              emitStorySource(currentStory, buildFullSource(sliced));
             }
 
             return;
@@ -216,31 +217,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
             return;
           }
 
-          const transformedCode = babel.transformSync(fileContents, {
-            ...state.file.opts,
-            compact: false,
-            retainLines: true,
-            comments: false,
-            plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
-          })?.code;
-
-          const code = prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
-
-          if (!parametersAssignment) {
-            path.pushContainer('body', createStoryParametersAssignmentExpression(storyName));
-          }
-
-          path.pushContainer('body', createFullSourceAssignmentExpression(storyName, code));
-
-          // Auto-detect CSS module imports and inject their source as parameters.
-          // This removes the need for manual `?raw` imports + `withCssModuleSource()` calls.
-          if (cssModulesEnabled) {
-            const cssModules = collectCssModuleImports(path, t, state.filename);
-
-            if (cssModules.length > 0 || tokensSource) {
-              path.pushContainer('body', createCssModuleSourcesAssignment(storyName, { cssModules, tokensSource }));
-            }
-          }
+          emitStorySource(storyName, buildFullSource(fileContents));
         },
       },
     },
