@@ -49,6 +49,37 @@ describe(`workspace-plugin`, () => {
     expect(getTargetsNames(results)).toEqual(['clean', 'format', 'type-check']);
   });
 
+  it('should add the test target when a jest.config.cjs (type:module) exists', async () => {
+    await tempFs.createFiles({
+      'proj/project.json': serializeJson({}),
+      'proj/package.json': serializeJson({ type: 'module' }),
+      'proj/jest.config.cjs': 'module.exports = {}',
+    });
+    const results = await createNodesFunction(['proj/project.json'], options, context);
+
+    expect(getTargetsNames(results)).toContain('test');
+  });
+
+  it('should add an optional attw target only when package.json declares exports', async () => {
+    await tempFs.createFiles({
+      'with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'with-exports/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+      'no-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'no-exports/package.json': serializeJson({}),
+    });
+
+    const withExports = await createNodesFunction(['with-exports/project.json'], options, context);
+    const noExports = await createNodesFunction(['no-exports/project.json'], options, context);
+
+    expect(getTargetsNames(withExports, 'with-exports')).toContain('attw');
+    expect(getTargets(withExports, 'with-exports')?.attw).toMatchObject({
+      executor: 'nx:run-commands',
+      dependsOn: ['build'],
+      options: { cwd: 'with-exports', command: expect.stringContaining('attw --pack --profile node16') },
+    });
+    expect(getTargetsNames(noExports, 'no-exports')).not.toContain('attw');
+  });
+
   it('should add lint,test task only if configuration exists', async () => {
     await tempFs.createFiles({
       'proj/project.json': serializeJson({}),

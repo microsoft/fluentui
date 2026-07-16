@@ -32,6 +32,7 @@
   "devDependencies": {
     "@actions/core": "1.9.1",
     "@actions/github": "5.0.3",
+    "@arethetypeswrong/cli": "0.18.3",
     "@babel/core": "7.29.0",
     "@babel/generator": "7.29.1",
     "@babel/parser": "7.29.3",
