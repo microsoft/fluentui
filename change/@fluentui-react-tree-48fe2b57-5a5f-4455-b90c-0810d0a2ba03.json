@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Tree selection checkbox/radio is now exposed with an accessible name so Voice Access users can select items.",
+  "comment": "fix: add accessible names to Tree selection controls",
   "packageName": "@fluentui/react-tree",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"
