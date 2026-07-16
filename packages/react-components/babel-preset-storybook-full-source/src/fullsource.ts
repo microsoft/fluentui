@@ -183,6 +183,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
               const transformedStory = babel.transformSync(sliced, {
                 ...state.file.opts,
                 compact: false,
+                retainLines: true,
                 comments: false,
                 plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
               })?.code;

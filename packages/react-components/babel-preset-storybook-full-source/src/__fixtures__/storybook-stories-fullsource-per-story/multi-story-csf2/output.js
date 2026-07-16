@@ -30,7 +30,7 @@ export const Secondary = () =>
   );
 Primary.parameters = {};
 Primary.parameters.fullSource =
-  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nconst Wrapper = ({ children }) => <div className="wrapper">{children}</div>;\nexport const Primary = () => (\n  <Wrapper>\n    <Button appearance="primary">Primary</Button>\n  </Wrapper>\n);\n';
+  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\nconst Wrapper = ({ children }) => <div className="wrapper">{children}</div>;\n\nexport const Primary = () => (\n  <Wrapper>\n    <Button appearance="primary">Primary</Button>\n  </Wrapper>\n);\n';
 Secondary.parameters = {};
 Secondary.parameters.fullSource =
-  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const Secondary = () => (\n  <Button appearance="secondary">Secondary</Button>\n);\n';
+  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\nexport const Secondary = () => (\n  <Button appearance="secondary">Secondary</Button>\n);\n';

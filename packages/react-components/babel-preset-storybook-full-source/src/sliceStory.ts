@@ -34,31 +34,35 @@ export interface SliceStoryOptions {
  * (e.g. render-less story without a resolvable meta `component`).
  */
 export function sliceStorySource(babel: typeof Babel, source: string, options: SliceStoryOptions): string | null {
-  let sliced: string | null = null;
+  const context = { handled: false };
 
-  babel.transformSync(source, {
+  const result = babel.transformSync(source, {
     configFile: false,
     babelrc: false,
     filename: options.filename,
-    code: false,
+    code: true,
     ast: false,
+    // Mutate the original AST in place and print with `retainLines` (mirroring
+    // `file` granularity) so retained nodes keep their authored formatting and
+    // the downstream prettier output matches — avoiding cosmetic churn.
+    retainLines: true,
+    // Preserve comments so the sliced source matches `file` granularity output
+    // (comment stripping, if any, happens in the shared downstream pass).
+    comments: true,
+    compact: false,
     parserOpts: {
       plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread'],
     },
-    plugins: [
-      createSliceStoryPlugin(babel, options, code => {
-        sliced = code;
-      }),
-    ],
+    plugins: [createSliceStoryPlugin(babel, options, context)],
   });
 
-  return sliced;
+  return context.handled ? result?.code ?? null : null;
 }
 
 function createSliceStoryPlugin(
   babel: typeof Babel,
   options: SliceStoryOptions,
-  onResult: (code: string) => void,
+  context: { handled: boolean },
 ): Babel.PluginObj {
   const { types: t } = babel;
   const { targetStory } = options;
@@ -76,9 +80,13 @@ function createSliceStoryPlugin(
         let targetPath: Babel.NodePath<Babel.types.ExportNamedDeclaration> | undefined;
         // Map of `const X = {…}` initializers (exported or not) for spread resolution.
         const objectConstsByName = new Map<string, Babel.types.ObjectExpression>();
+        // Map of local type declarations (`type`/`interface`/`enum`) by name, used
+        // to resolve type references (babel scope bindings don't track type-only decls).
+        const typeDeclsByName = new Map<string, Babel.NodePath>();
 
         for (const statementPath of body) {
           collectObjectConst(t, statementPath, objectConstsByName);
+          collectTypeDecl(t, statementPath, typeDeclsByName);
 
           if (statementPath.isExportDefaultDeclaration()) {
             const resolved = resolveMetaObject(t, statementPath.node.declaration, body);
@@ -114,14 +122,19 @@ function createSliceStoryPlugin(
           return;
         }
 
-        targetPath.replaceWith(normalized);
+        // Replace only when normalization produced a NEW node (CSF3 transforms).
+        // For CSF2 the original node is kept in place so `retainLines` preserves
+        // its authored source formatting.
+        if (normalized !== targetPath.node) {
+          targetPath.replaceWith(normalized);
+        }
 
         // Rebuild bindings so references introduced by normalization (args,
         // the meta component) resolve correctly during reachability analysis.
         path.scope.crawl();
 
         // --- Reachability from the normalized story --------------------------
-        const neededBindings = collectReachableBindings(path, targetPath);
+        const neededBindings = collectReachableBindings(path, targetPath, typeDeclsByName);
 
         // --- Prune the program body -----------------------------------------
         for (const statementPath of path.get('body')) {
@@ -166,8 +179,7 @@ function createSliceStoryPlugin(
           }
         }
 
-        onResult(generate(babel, path.node));
-        path.stop();
+        context.handled = true;
       },
     },
   };
@@ -291,12 +303,18 @@ function normalizeStory(
     return null;
   }
 
-  const storyName = declarator.id.name;
+  const id = declarator.id;
+  const storyName = id.name;
   const init = unwrapExpression(t, declarator.init);
 
   // CSF2 function story: `export const X = () => <…/>` — already renderable.
+  // Keep the original node so `retainLines` preserves its authored formatting;
+  // only drop a story-type annotation whose type import gets pruned.
   if (t.isArrowFunctionExpression(init) || t.isFunctionExpression(init)) {
-    return buildFunctionStoryExport(t, storyName, init);
+    if (id.typeAnnotation) {
+      id.typeAnnotation = null;
+    }
+    return node;
   }
 
   // CSF3 object story.
@@ -459,7 +477,9 @@ function mergeArgs(
   add(storyArgs?.properties ?? []);
 
   const properties = order.map(entry => (entry.kind === 'key' ? byKey.get(entry.key)! : entry.node));
-  return t.objectExpression(properties);
+  // Strip source locations so the synthesized object formats cleanly under
+  // `retainLines` instead of inheriting the (mismatched) lines of merged props.
+  return t.objectExpression(properties.map(property => t.cloneNode(property, true, true)));
 }
 
 /** Records `const X = {…}` / `export const X = {…}` initializers for spread resolution. */
@@ -479,6 +499,21 @@ function collectObjectConst(
         target.set(declarator.id.name, init);
       }
     }
+  }
+}
+
+/** Records local `type`/`interface`/`enum` declarations by name for type-reference resolution. */
+function collectTypeDecl(
+  t: typeof Babel.types,
+  statementPath: Babel.NodePath,
+  target: Map<string, Babel.NodePath>,
+): void {
+  if (statementPath.isTSTypeAliasDeclaration() && t.isIdentifier(statementPath.node.id)) {
+    target.set(statementPath.node.id.name, statementPath);
+  } else if (statementPath.isTSInterfaceDeclaration() && t.isIdentifier(statementPath.node.id)) {
+    target.set(statementPath.node.id.name, statementPath);
+  } else if (statementPath.isTSEnumDeclaration() && t.isIdentifier(statementPath.node.id)) {
+    target.set(statementPath.node.id.name, statementPath);
   }
 }
 
@@ -519,29 +554,60 @@ function flattenObjectExpression(
 function collectReachableBindings(
   programPath: Babel.NodePath<Babel.types.Program>,
   targetPath: Babel.NodePath<Babel.types.ExportNamedDeclaration>,
+  typeDeclsByName: Map<string, Babel.NodePath>,
 ): Set<Babel.NodePath> {
   const needed = new Set<Babel.NodePath>();
   const worklist: Array<Babel.NodePath> = [targetPath];
+
+  const consider = (name: string, atPath: Babel.NodePath) => {
+    const binding = atPath.scope.getBinding(name);
+    // Prefer a module-level value/import binding; fall back to a local type decl
+    // (type aliases/interfaces are not tracked by babel's scope bindings).
+    let bindingPath: Babel.NodePath | undefined;
+    if (binding && binding.scope === programPath.scope) {
+      bindingPath = binding.path;
+    } else if (!binding && typeDeclsByName.has(name)) {
+      bindingPath = typeDeclsByName.get(name);
+    }
+    if (!bindingPath || needed.has(bindingPath)) {
+      return;
+    }
+    needed.add(bindingPath);
+    worklist.push(bindingPath);
+  };
+
+  // Resolve the leftmost identifier of a (possibly qualified) type name.
+  const leftmostName = (node: Babel.types.Node | null | undefined): Babel.types.Identifier | undefined => {
+    let current = node;
+    while (current && current.type === 'TSQualifiedName') {
+      current = (current as Babel.types.TSQualifiedName).left;
+    }
+    return current && current.type === 'Identifier' ? (current as Babel.types.Identifier) : undefined;
+  };
 
   while (worklist.length > 0) {
     const current = worklist.pop()!;
     current.traverse({
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ReferencedIdentifier(idPath) {
-        const binding = idPath.scope.getBinding(idPath.node.name);
-        if (!binding) {
-          return;
+        consider(idPath.node.name, idPath);
+      },
+      // Follow type references (annotations, generics) so type aliases /
+      // interfaces / `import type` used by reachable code are not pruned.
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      TSTypeReference(typePath) {
+        const id = leftmostName(typePath.node.typeName);
+        if (id) {
+          consider(id.name, typePath);
         }
-        // Only module-level bindings are candidates for inclusion.
-        if (binding.scope !== programPath.scope) {
-          return;
+      },
+      // Follow `typeof X` type queries.
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      TSTypeQuery(queryPath) {
+        const id = leftmostName(queryPath.node.exprName as Babel.types.Node);
+        if (id) {
+          consider(id.name, queryPath);
         }
-        const bindingPath = binding.path;
-        if (needed.has(bindingPath)) {
-          return;
-        }
-        needed.add(bindingPath);
-        worklist.push(bindingPath);
       },
     });
   }
@@ -624,23 +690,6 @@ function isStoryAnnotationAssignment(t: typeof Babel.types, statementPath: Babel
     t.isMemberExpression(expression.left) &&
     t.isIdentifier(expression.left.object)
   );
-}
-
-/** Generates source code from an AST node. */
-function generate(babel: typeof Babel, node: Babel.types.Node): string {
-  const result = babel.transformFromAstSync(
-    babel.types.file(babel.types.program((node as Babel.types.Program).body)),
-    undefined,
-    {
-      configFile: false,
-      babelrc: false,
-      code: true,
-      ast: false,
-      comments: false,
-      generatorOpts: { retainLines: false, compact: false },
-    },
-  );
-  return result?.code ?? '';
 }
 
 /** Checks if the name is component-like (starts with an uppercase letter). */

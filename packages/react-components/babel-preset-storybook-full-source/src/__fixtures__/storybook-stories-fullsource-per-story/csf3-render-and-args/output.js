@@ -37,7 +37,7 @@ Default.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const Default = () => <Button>Default</Button>;\n';
 WithArgs.parameters = {};
 WithArgs.parameters.fullSource =
-  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const WithArgs = () => {\n  const args = {\n    appearance: "outline",\n  };\n  return <Button {...args}>With args</Button>;\n};\n';
+  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const WithArgs = () => {\n  const args = { appearance: "outline" };\n  return <Button {...args}>With args</Button>;\n};\n';
 ArgsOnly.parameters = {};
 ArgsOnly.parameters.fullSource =
-  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const ArgsOnly = () => {\n  const args = {\n    appearance: "primary",\n    children: "Args only",\n  };\n  return <Button {...args} />;\n};\n';
+  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const ArgsOnly = () => {\n  const args = { appearance: "primary", children: "Args only" };\n  return <Button {...args} />;\n};\n';
