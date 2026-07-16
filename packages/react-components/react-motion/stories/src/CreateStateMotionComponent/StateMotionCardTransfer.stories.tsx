@@ -322,7 +322,7 @@ const useStyles = makeStyles({
   },
   edge: {
     fill: 'none',
-    stroke: tokens.colorNeutralForeground3,
+    stroke: tokens.colorNeutralStroke1,
     strokeWidth: tokens.strokeWidthThick,
     vectorEffect: 'non-scaling-stroke',
   },
@@ -336,10 +336,11 @@ const useStyles = makeStyles({
     strokeLinecap: 'round',
     strokeDasharray: '1',
     strokeDashoffset: '1',
+    opacity: 1,
     vectorEffect: 'non-scaling-stroke',
   },
   arrow: {
-    fill: tokens.colorNeutralForeground3,
+    fill: tokens.colorNeutralStroke1,
   },
   edgeLabel: {
     fill: tokens.colorNeutralForeground2,
@@ -632,11 +633,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
 
           {eventEdges.map(edge => (
             <React.Fragment key={edge.event}>
-              <path
-                className={mergeClasses(styles.edge, styles.eventEdge)}
-                d={edge.path}
-                markerEnd={`url(#${markerId})`}
-              />
+              <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
               <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
                 {edge.event}
               </text>
@@ -645,7 +642,11 @@ export const StateMotionCardTransfer = (): JSXElement => {
 
           {graphEdges.map(edge => (
             <React.Fragment key={edge.event}>
-              <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
+              <path
+                className={mergeClasses(styles.edge, styles.eventEdge)}
+                d={edge.path}
+                markerEnd={`url(#${markerId})`}
+              />
               <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
                 finish
               </text>
