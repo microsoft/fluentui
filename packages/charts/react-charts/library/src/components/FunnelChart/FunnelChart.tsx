@@ -260,7 +260,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           opacity={opacity}
           {...eventHandlers}
           tabIndex={tabIndex}
-          role="img"
+          role="option"
           aria-label={_getAriaLabel(data)}
         />
         {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
@@ -469,6 +469,9 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const funnelWidth = width * 0.8;
   const funnelOffsetX = (width - funnelWidth) / 2;
   const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
+  const segmentCount = isStacked
+    ? props.data.reduce((count, stage) => count + (stage.subValues?.length ?? 0), 0)
+    : props.data.length;
 
   return !_isChartEmpty() ? (
     <div ref={chartContainerRef} className={classes.root} style={{ width, height }}>
@@ -491,6 +494,9 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           />
         )}
         <g
+          role="listbox"
+          aria-label={`Funnel chart with ${segmentCount} segments`}
+          {...arrowAttributes}
           transform={
             isRTL
               ? `translate(${funnelOffsetX + funnelWidth}, ${funnelMarginTop}) scale(-1,1)`

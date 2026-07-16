@@ -271,7 +271,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             onBlur={_handleBlur}
             onMouseEnter={e => _handleMouseOver(e, 'Needle', needleId)}
             onMouseMove={e => _handleMouseOver(e, 'Needle', needleId)}
-            role="img"
+            role="option"
             aria-label={
               'Current value: ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)
             }
@@ -596,7 +596,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             aria-label={_getChartTitle()}
             onMouseLeave={_handleMouseOut}
           >
-            <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
+            <g
+              transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}
+              role="listbox"
+              aria-label={`Gauge chart with ${_segments.length} segments`}
+            >
               {props.chartTitle && (
                 <ChartTitle
                   title={props.chartTitle}
@@ -648,7 +652,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                           ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
                           ...segment.accessibilityData,
                         },
-                        'img',
+                        'option',
                         true,
                       )}
                       onFocus={e => _handleFocus(e, segment.legend, arcId)}

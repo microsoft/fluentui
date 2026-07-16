@@ -150,7 +150,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           opacity={opacity}
           onClick={props.data?.data.onClick}
           aria-label={_getAriaLabel()}
-          role="img"
+          role="option"
         />
         {_renderArcLabel(classes.arcLabel)}
       </g>

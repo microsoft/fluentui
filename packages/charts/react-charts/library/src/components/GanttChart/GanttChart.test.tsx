@@ -152,6 +152,14 @@ describe('GanttChart rendering and behavior tests', () => {
 });
 
 describe('GanttChart interaction and accessibility tests', () => {
+  it('should provide a dynamic label for the list of bars', () => {
+    render(<GanttChart data={ganttData} />);
+
+    const barList = screen.getByRole('listbox', { name: `Gantt chart with ${ganttData.length} bars` });
+    expect(barList).toBeInTheDocument();
+    expect(screen.getAllByRole('option')).toHaveLength(ganttData.length);
+  });
+
   it.skip('should display full y-axis tick label on hover when showYAxisLablesTooltip is true', async () => {
     render(<GanttChart data={ganttDataWithLongY} showYAxisLablesTooltip={true} />);
     expect(screen.queryByText('Site Preparation')).toBeNull();
