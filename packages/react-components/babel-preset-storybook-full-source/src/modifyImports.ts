@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import { BabelPluginOptions } from './types';
 
 interface PluginState extends Babel.PluginPass {
-  imports: Record<string, { value: string[]; type: string[] }>;
+  imports: Record<string, string[]>;
 }
 
 export const PLUGIN_NAME = 'storybook-stories-modifyImports';
@@ -30,26 +30,20 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
     },
     pre() {
       this.imports = Object.keys(importMappings).reduce((acc, cur) => {
-        acc[importMappings[cur].replace] = { value: [], type: [] };
+        acc[importMappings[cur].replace] = [];
         return acc;
       }, {} as PluginState['imports']);
     },
     visitor: {
       Program: {
         exit(path, pluginState) {
-          Object.entries(pluginState.imports).forEach(([depName, { value, type }]) => {
-            // Emit a `import type { … }` declaration first so type-only imports
-            // keep their `type` modifier (required under `verbatimModuleSyntax`).
-            if (type.length) {
-              const typeSpecifiers = type.map(name => t.importSpecifier(t.identifier(name), t.identifier(name)));
-              const typeDeclaration = t.importDeclaration(typeSpecifiers, t.stringLiteral(depName));
-              typeDeclaration.importKind = 'type';
-              path.node.body.unshift(typeDeclaration);
-            }
+          Object.entries(pluginState.imports).forEach(([depName, importSpecifiers]) => {
+            const specifiers = importSpecifiers.map(importSpecifier =>
+              t.importSpecifier(t.identifier(importSpecifier), t.identifier(importSpecifier)),
+            );
 
-            if (value.length) {
-              const valueSpecifiers = value.map(name => t.importSpecifier(t.identifier(name), t.identifier(name)));
-              path.node.body.unshift(t.importDeclaration(valueSpecifiers, t.stringLiteral(depName)));
+            if (specifiers.length) {
+              path.node.body.unshift(t.importDeclaration(specifiers, t.stringLiteral(depName)));
             }
           });
         },
@@ -97,17 +91,13 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
         }
 
         if (t.isLiteral(path.node.source) && importMappings[importSource.value]) {
-          const declarationIsTypeOnly = path.node.importKind === 'type';
-          const target = pluginState.imports[importMappings[importSource.value].replace];
-
           path.node.specifiers.forEach(specifier => {
             if (
               t.isImportSpecifier(specifier) &&
               t.isIdentifier(specifier.imported) &&
               t.isIdentifier(specifier.local)
             ) {
-              const isTypeOnly = declarationIsTypeOnly || specifier.importKind === 'type';
-              (isTypeOnly ? target.type : target.value).push(specifier.imported.name);
+              pluginState.imports[importMappings[importSource.value].replace].push(specifier.imported.name);
             }
           });
 
