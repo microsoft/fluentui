@@ -1,13 +1,6 @@
 import * as React from 'react';
-import { Button, makeStyles } from '@fluentui/react-button';
+import { Button } from '@fluentui/react-button';
 import { Spinner } from '@fluentui/react-menu';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    gap: '8px',
-  },
-});
 
 const meta = {
   title: 'Button',
@@ -16,32 +9,26 @@ const meta = {
 
 export default meta;
 
-// Uses `useStyles` + `Button` — must NOT include `Spinner`.
-export const Primary = {
-  render: () => {
-    const styles = useStyles();
-    return (
-      <div className={styles.root}>
-        <Button appearance="primary">Primary</Button>
-      </div>
-    );
-  },
+// A module-scoped standard React component, used by the `Group` story only.
+const ButtonRow = () => (
+  <>
+    <Button>One</Button>
+    <Button>Two</Button>
+  </>
+);
+
+// Function-form story using imported `Button` only — `meta.component` (Button)
+// must not leak `Spinner` into other slices.
+export const Primary = () => {
+  return <Button appearance="primary">Primary</Button>;
 };
 
-// Uses `Spinner` only — must NOT include `useStyles`/`makeStyles`/`Button`.
-export const Loading = {
-  render: () => <Spinner label="Loading" />,
+// Function-form story using imported `Spinner` only — must NOT include `Button`/`ButtonRow`.
+export const Loading = () => {
+  return <Spinner label="Loading" />;
 };
 
-// Uses everything — the full slice.
-export const Group = {
-  render: () => {
-    const styles = useStyles();
-    return (
-      <div className={styles.root}>
-        <Button>One</Button>
-        <Spinner label="Loading" />
-      </div>
-    );
-  },
+// Function-form story using the module-scoped `ButtonRow` component — must NOT include `Spinner`.
+export const Group = () => {
+  return <ButtonRow />;
 };
