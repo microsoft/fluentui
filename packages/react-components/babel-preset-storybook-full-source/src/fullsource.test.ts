@@ -45,7 +45,7 @@ pluginTester({
 // Per-story granularity: each story export gets its own sliced `fullSource`.
 pluginTester({
   babelOptions: {
-    presets: ['@babel/preset-react'],
+    presets: ['@babel/preset-react', '@babel/preset-typescript'],
   },
   fixtures: path.join(__dirname, '__fixtures__/storybook-stories-fullsource-per-story'),
   pluginOptions: {
