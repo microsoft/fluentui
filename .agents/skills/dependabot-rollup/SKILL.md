@@ -55,7 +55,7 @@ Do not rely on the `dependencies` label: repositories may customize or omit it.
 
 ### Step 3 - Classify candidates
 
-Parse the final `from <version> to <version>` segment of each PR title. Normalize a leading `v` and accept only strict three-part numeric versions (`major.minor.patch`).
+Parse each title as `bump <dependency> from <version> to <version>`. Use the parsed dependency name as the deduplication key. Normalize a leading `v` in versions and accept only strict three-part numeric versions (`major.minor.patch`).
 
 Classify an update as eligible only when:
 
@@ -70,7 +70,9 @@ Exclude and report:
 - Non-semver or unparseable updates, including action tags such as date-based releases.
 - Downgrades and updates with no version change.
 
-Sort eligible PRs by `updatedAt`, oldest first, and select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names.
+Before applying the batch limit, group eligible PRs by dependency. For each dependency, retain the PR with the highest target version. If target versions are equal, retain the most recently updated PR. Report every other PR in the group as superseded, including the retained PR number and target version.
+
+Sort the deduplicated candidates by `updatedAt`, oldest first, and select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
 
 ### Step 4 - Present the dry-run plan
 
@@ -83,6 +85,7 @@ Show a compact report before doing anything else:
 - Base: master
 - Eligible: 0
 - Excluded: 0
+- Superseded: 0
 - Selected: 0 of 11 maximum
 
 | PR   | Update                 | Kind  | Last updated |
@@ -94,6 +97,12 @@ Show a compact report before doing anything else:
 | PR   | Reason              |
 | ---- | ------------------- |
 | #456 | semver-major update |
+
+### Superseded
+
+| PR   | Dependency | Superseded by | Reason                     |
+| ---- | ---------- | ------------- | -------------------------- |
+| #789 | package    | #790          | newer target version 1.2.0 |
 ```
 
 If there are no selected PRs, stop after reporting that result. Otherwise ask the user to approve all candidates, approve specific PR numbers, edit the batch, or cancel. Do not treat the initial skill invocation as mutation approval.
@@ -176,7 +185,7 @@ git worktree remove "$ROLLUP_DIR"
 Report:
 
 - Candidate, excluded, merged, and skipped counts.
-- Exclusion and skip reasons.
+- Exclusion, superseded, and skip reasons.
 - Validation commands and outcome.
 - Draft PR URL when one was created.
 - Temporary worktree path when retained for investigation.
@@ -188,6 +197,7 @@ Report:
 - Never run on a schedule or add a GitHub Actions workflow.
 - Never request or print a GitHub token; use the user's existing `gh` authentication.
 - Never include semver-major, non-semver, downgrade, or unparseable updates.
+- Never include more than one PR for the same dependency in a proposed rollup.
 - Never mutate the user's current working tree.
 - Never auto-resolve merge conflicts or bypass failed validation.
 - Never create failure-tracking issues or close source Dependabot PRs.
