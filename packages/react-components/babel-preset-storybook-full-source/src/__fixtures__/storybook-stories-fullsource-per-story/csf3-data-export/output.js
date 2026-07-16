@@ -18,4 +18,4 @@ export const BrandColors = {
 };
 Default.parameters = {};
 Default.parameters.fullSource =
-  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\n// Genuine story \u2014 should get a sliced fullSource.\nexport const Default = () => <Button>Default</Button>;\n\n// Capitalized data export (not a story) \u2014 must NOT be turned into a fake story.\n';
+  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\n// Genuine story \u2014 should get a sliced fullSource.\nexport const Default = () => <Button>Default</Button>;\n';

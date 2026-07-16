@@ -136,6 +136,25 @@ function createSliceStoryPlugin(
         // --- Reachability from the normalized story --------------------------
         const neededBindings = collectReachableBindings(path, targetPath, typeDeclsByName);
 
+        // Map each comment to the node it leads, so comments belonging to removed
+        // nodes (e.g. sibling stories) can be dropped instead of leaking onto
+        // retained neighbours (comments are shared as leading/trailing).
+        const commentOwner = new Map<Babel.types.Comment, Babel.types.Node>();
+        path.traverse({
+          enter(nodePath) {
+            for (const comment of nodePath.node.leadingComments ?? []) {
+              if (!commentOwner.has(comment)) {
+                commentOwner.set(comment, nodePath.node);
+              }
+            }
+          },
+        });
+        const removedNodes = new Set<Babel.types.Node>();
+        const remove = (statementPath: Babel.NodePath) => {
+          removedNodes.add(statementPath.node);
+          statementPath.remove();
+        };
+
         // --- Prune the program body -----------------------------------------
         for (const statementPath of path.get('body')) {
           if (statementPath.node === targetPath.node) {
@@ -148,35 +167,49 @@ function createSliceStoryPlugin(
           }
 
           if (statementPath.isExportDefaultDeclaration()) {
-            statementPath.remove();
+            remove(statementPath);
             continue;
           }
 
           // Remove the `const meta = {…}` declaration backing the default export.
           if (metaLocalName && isDeclarationOf(t, statementPath, metaLocalName)) {
-            statementPath.remove();
+            remove(statementPath);
             continue;
           }
 
           // Remove sibling story exports.
           if (statementPath.isExportNamedDeclaration()) {
-            statementPath.remove();
+            remove(statementPath);
             continue;
           }
 
           // Remove CSF2 story annotations (`Story.parameters = …`, `Story.args = …`).
           if (isStoryAnnotationAssignment(t, statementPath)) {
-            statementPath.remove();
+            remove(statementPath);
             continue;
           }
 
           // Keep only declarations reachable from the target story.
           if (isModuleLevelDeclaration(t, statementPath)) {
             if (!isDeclarationReachable(statementPath, neededBindings)) {
-              statementPath.remove();
+              remove(statementPath);
             }
             continue;
           }
+        }
+
+        // Drop comments that belonged to removed nodes but linger on retained ones.
+        if (removedNodes.size > 0) {
+          const keep = (comments: readonly Babel.types.Comment[] | null | undefined) =>
+            comments ? comments.filter(c => !removedNodes.has(commentOwner.get(c) as Babel.types.Node)) : comments;
+          path.traverse({
+            enter(nodePath) {
+              const node = nodePath.node;
+              node.leadingComments = keep(node.leadingComments) as Babel.types.Comment[] | null;
+              node.trailingComments = keep(node.trailingComments) as Babel.types.Comment[] | null;
+              node.innerComments = keep(node.innerComments) as Babel.types.Comment[] | null;
+            },
+          });
         }
 
         context.handled = true;
