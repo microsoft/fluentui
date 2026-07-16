@@ -14,7 +14,10 @@ export function useMessageBarReflow(enabled: boolean = false): {
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
   const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
-  const prevInlineSizeRef = React.useRef(-1);
+
+  // Width required to fit the single line layout, recorded when we switch to the reflowed layout.
+  // Used to switch back to single line only once there is enough room, avoiding flicker during resize.
+  const singleLineWidthRef = React.useRef(Number.POSITIVE_INFINITY);
 
   const handleResize: ResizeObserverCallback = React.useCallback(
     entries => {
@@ -47,21 +50,21 @@ export function useMessageBarReflow(enabled: boolean = false): {
 
       let nextReflowing: boolean | undefined;
 
-      // No easy way to really determine when the single line layout will fit
-      // Just keep try to set single line layout as long as the size is growing
-      // Will cause flickering when size is being adjusted gradually (i.e. drag) - but this should not be a common case
+      // Switching between layouts is driven by a recorded threshold.
+      // Only switch back to the single line layout once there is enough room to fit it.
       if (reflowingRef.current) {
-        if (prevInlineSizeRef.current < inlineSize) {
+        if (inlineSize >= singleLineWidthRef.current) {
           nextReflowing = false;
         }
       } else {
         const scrollWidth = target.scrollWidth;
         if (inlineSize < scrollWidth) {
           nextReflowing = true;
+          // Record the width required to fit the single line layout so we know when it's safe to switch back.
+          singleLineWidthRef.current = scrollWidth;
         }
       }
 
-      prevInlineSizeRef.current = inlineSize;
       if (typeof nextReflowing !== 'undefined' && reflowingRef.current !== nextReflowing) {
         reflowingRef.current = nextReflowing;
         forceUpdate();
