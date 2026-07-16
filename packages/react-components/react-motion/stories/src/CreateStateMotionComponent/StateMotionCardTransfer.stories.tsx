@@ -27,8 +27,9 @@ type RunMode = 'idle' | 'replay' | 'destination';
 
 const liftedDistance = `calc(-1 * ${tokens.spacingVerticalL})`;
 const liftDuration = motionTokens.durationSlower * 2;
-const transferDuration = motionTokens.durationUltraSlow * 4;
-const dropDuration = motionTokens.durationUltraSlow * 2;
+const transferDuration = motionTokens.durationUltraSlow * 2;
+const dropDuration = motionTokens.durationUltraSlow;
+const backEaseOut = 'cubic-bezier(.33, 2, .67, 1)';
 const initialRoute: CardRoute = { origin: 'start', destination: 'middle' };
 
 const getPlacementX = (placement: Placement): string => {
@@ -82,7 +83,7 @@ const createCardSkin = (transferring: StateMotionAnimation) =>
       dropping: {
         keyframes: [{ state: 'current' }, { offset: 0.58, boxShadow: tokens.shadow2 }, { state: 'target' }],
         duration: dropDuration,
-        easing: motionTokens.curveDecelerateMid,
+        easing: backEaseOut,
       },
     },
   } satisfies StateMotionSkin<CardState, CardAnimation, CardRoute>);

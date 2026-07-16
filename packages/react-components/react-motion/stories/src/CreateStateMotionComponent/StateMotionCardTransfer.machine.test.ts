@@ -123,6 +123,7 @@ describe('InterruptibleScalar', () => {
     expect(segment.target).toBe(2);
     expect(segment.easing.easing).toMatch(/^linear\(/);
     expect(motion.valueAt(0)).toBe(0);
+    expect(motion.valueAt(duration * 0.8)).toBeGreaterThan(2);
     expect(motion.valueAt(duration)).toBe(2);
   });
 

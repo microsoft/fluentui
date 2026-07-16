@@ -29,9 +29,19 @@ const createEasing = (easingFn: ScalarEasing['easingFn'], velocityFn: ScalarEasi
   velocityFn,
 });
 
+// const backOvershoot = 1.70158; // 10% overshoot
+const backOvershoot = 1.4;
+const backEaseOut = (time: number): number => {
+  if (time === 0 || time === 1) {
+    return time;
+  }
+
+  return 1 + (backOvershoot + 1) * (time - 1) ** 3 + backOvershoot * (time - 1) ** 2;
+};
+
 export const baseTransferEasing = createEasing(
-  time => time * time * (3 - 2 * time),
-  time => 6 * time * (1 - time),
+  backEaseOut,
+  time => 3 * (backOvershoot + 1) * (time - 1) ** 2 + 2 * backOvershoot * (time - 1),
 );
 
 const createInterruptEasing = (initialVelocity: number): ScalarEasing => {
