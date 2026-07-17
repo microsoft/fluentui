@@ -18,7 +18,9 @@ const ExampleContent = () => {
   const styles = useContentStyles();
   return (
     <div className={styles.root}>
-      <h3 className={styles.header}>Popover content</h3>
+      <h3 id="popover-heading" className={styles.header}>
+        Popover content
+      </h3>
 
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper, nulla at pretium pulvinar, erat nibh
@@ -81,7 +83,7 @@ export const WithArrowAutosize = (): JSXElement => (
     </PopoverTrigger>
 
     {/* 1. Reset the overflow behavior on `PopoverSurface` to avoid clipping of arrow */}
-    <PopoverSurface tabIndex={-1} style={{ overflow: 'visible', padding: 0 }}>
+    <PopoverSurface tabIndex={-1} aria-labelledby="popover-heading" style={{ overflow: 'visible', padding: 0 }}>
       {/* 2. Set the height of the popover content to 100% to fill the available space and allow scrolling */}
       <ExampleContent />
     </PopoverSurface>
