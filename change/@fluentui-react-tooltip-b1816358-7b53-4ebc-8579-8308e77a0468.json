@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "remove custom-babel-loader",
+  "comment": "tooltip appears outside of overflow",
   "packageName": "@fluentui/react-tooltip",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"
