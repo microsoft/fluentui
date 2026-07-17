@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: sort package.json dependencies (Yarn Modern normalization)",
+  "comment": "chore: sort package.json dependencies",
   "packageName": "@fluentui/react-rating",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "none"
