@@ -26,7 +26,7 @@ function checkPackageManager() {
 
   const yarnInfo = detectYarnInstallation();
 
-  if (!yarnInfo.exists || !isSupportedYarnVersion(yarnInfo.version)) {
+  if (!yarnInfo.exists) {
     console.log(Strings.installYarn);
     process.exit(1);
   }
@@ -47,10 +47,4 @@ function detectYarnInstallation() {
   return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
 
-/** @param {string} version */
-function isSupportedYarnVersion(version) {
-  return Number.parseInt(version, 10) === 4;
-}
-
 exports.checkPackageManager = checkPackageManager;
-exports.isSupportedYarnVersion = isSupportedYarnVersion;
