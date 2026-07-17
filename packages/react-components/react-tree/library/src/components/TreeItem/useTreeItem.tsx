@@ -120,7 +120,13 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromActions() || isEventFromSubtree() || isEventFromSelection()) {
       return;
     } else if (!isEventFromExpandIcon) {
-      onClick?.(event);
+      if (typeof onClick === 'function') {
+        onClick(event);
+      }
+      // if onClick is not defined and the treeitem is selectable, then we should toggle the selection state on click
+      else if (selectionMode !== 'none') {
+        selectionRef.current?.click();
+      }
     }
     if (event.isDefaultPrevented()) {
       return;

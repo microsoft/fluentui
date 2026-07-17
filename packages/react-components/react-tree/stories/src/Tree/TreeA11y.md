@@ -1,5 +1,7 @@
 ## Accessibility
 
+WARNING: Trees have many sometimes blocking accessibility issues across platforms and input modalities. Avoid using the component if at all possible.
+
 Here are some accessibility edge cases scenarios we identified and users should keep in mind while using the `Tree` components.
 
 NVDA
@@ -14,10 +16,11 @@ VoiceOver/Chromium
 
 VoiceOver
 
-1. [Bug 8223307](https://office.visualstudio.com/APEX/_workitems/edit/8223307): VoiceOver doesn't narrate level of tree
-2. [Bug 8223375](https://office.visualstudio.com/APEX/_workitems/edit/8223375): VoiceOver doesn't list tree/table in the rotor
+1. Not an external bug, but VoiceOver will not handle multiple actions (e.g. selection + a primary action, or a primary action + expand/collapse) on a single leaf node. This is down to how controls fundamentally work -- multiple actions on a single control are not accessible.
+2. [Bug 8223307](https://office.visualstudio.com/APEX/_workitems/edit/8223307): VoiceOver doesn't narrate level of tree
+3. [Bug 8223375](https://office.visualstudio.com/APEX/_workitems/edit/8223375): VoiceOver doesn't list tree/table in the rotor
    iOS
-3. [Bug 8232232](https://office.visualstudio.com/APEX/_workitems/edit/8232232): iOS : VoiceOver - Select tree with checkboxes - no narration of ticket/unticked state
+4. [Bug 8232232](https://office.visualstudio.com/APEX/_workitems/edit/8232232): iOS : VoiceOver - Select tree with checkboxes - no narration of ticket/unticked state
 
 JAWS
 
@@ -30,3 +33,7 @@ Narrator
 1. [Bug 45975192](https://microsoft.visualstudio.com/OS/_workitems/edit/45975192): Single select tree - narration aria-selected makes verbosity with redundant "selected"
 2. [Bug 46020629](https://microsoft.visualstudio.com/OS/_workitems/edit/46020629): Select tree with checkboxes - no narration of checked state
 3. [Bug 46020726](https://microsoft.visualstudio.com/OS/_workitems/edit/46020726): Select tree with checkboxes - no able to toggle check state with space in scan mode
+
+Voice Control and mobile screen readers (VoiceOver on iOS and Talkback)
+
+Not an external bug, but all voice control softwares as well as mobile screen readers will not handle multiple actions (e.g. selection + a primary action, or a primary action + expand/collapse) on a single leaf node. This is down to how controls fundamentally work -- multiple actions on a single control are not accessible.
