@@ -1,6 +1,6 @@
 ## Accessibility
 
-WARNING: Trees have many sometimes blocking accessibility issues across platforms and input modalities. Avoid using the component if at all possible.
+WARNING: Trees have many sometimes blocking accessibility issues across platforms and input modalities. Avoid using the component if possible.
 
 Here are some accessibility edge cases scenarios we identified and users should keep in mind while using the `Tree` components.
 
@@ -37,3 +37,5 @@ Narrator
 Voice Control and mobile screen readers (VoiceOver on iOS and Talkback)
 
 Not an external bug, but all voice control softwares as well as mobile screen readers will not handle multiple actions (e.g. selection + a primary action, or a primary action + expand/collapse) on a single leaf node. This is down to how controls fundamentally work -- multiple actions on a single control are not accessible.
+
+Trees also do not work with macOS voice control on chromium browsers at all. Similarly, VoiceOver on macOS has numerous quirks when interacting with trees.
