@@ -99,7 +99,11 @@ extends:
                   yarn nx g @fluentui/workspace-plugin:version-bump --name react-headless-components-preview --explicitVersion "${NEW_VERSION}"
                   git add .
                   git commit -m "bump experimental headless versions to ${NEW_VERSION}"
-                  yarn change --type prerelease --message "Release ${NEW_VERSION}" --dependent-change-type "prerelease"
+                  # Scope change-file generation to the headless beachball config. Without --config,
+                  # `yarn change` tries to create change files for EVERY package changed vs master
+                  # (the whole feature branch), and aborts on packages that disallow `prerelease` -
+                  # producing zero change files and a "Nothing to bump, skipping publish!".
+                  yarn change --config scripts/beachball/src/release-headless.config.js --type prerelease --message "Release ${NEW_VERSION}" --dependent-change-type "prerelease"
                 displayName: 'Bump and commit experimental headless versions'
 
               - script: |

@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2026 14:10:40 GMT",
+      "tag": "@fluentui/priority-overflow_v9.4.1",
+      "version": "9.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "cbee28ba42d268404e9b9663a6a3a33e205c66d1",
+            "comment": "fix: avoid overflow snapshot updates after unmount"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:05 GMT",
       "tag": "@fluentui/priority-overflow_v9.4.0",
       "version": "9.4.0",

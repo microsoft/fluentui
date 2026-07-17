@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Wed, 24 Jun 2026 11:10:05 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.1)
+
+Wed, 15 Jul 2026 14:10:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.4.0..@fluentui/priority-overflow_v9.4.1)
+
+### Patches
+
+- fix: avoid overflow snapshot updates after unmount ([PR #36401](https://github.com/microsoft/fluentui/pull/36401) by bernardo.sunderhus@gmail.com)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.0)
 

@@ -41,7 +41,7 @@
     "@fluentui/react-message-bar": "^9.7.3",
     "@fluentui/react-teaching-popover": "^9.7.2",
     "@fluentui/react-nav": "^9.4.2",
-    "@fluentui/react-overflow": "^9.9.0",
+    "@fluentui/react-overflow": "^9.9.1",
     "@fluentui/react-persona": "^9.7.5",
     "@fluentui/react-popover": "^9.14.4",
     "@fluentui/react-positioning": "^9.22.3",

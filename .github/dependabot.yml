@@ -5,6 +5,13 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      github-actions-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
 
   # npm dependencies - weekly updates for devDependencies
   - package-ecosystem: 'npm'
@@ -19,6 +26,13 @@ updates:
       # Ignore major version bumps for all npm dependencies in weekly updates
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
+    groups:
+      npm-dev-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
     # Note: Security updates for known vulnerabilities are handled automatically by GitHub
     # and will create PRs regardless of the ignore rules above
 
@@ -36,3 +50,10 @@ updates:
     ignore:
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
+    groups:
+      npm-prod-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
