@@ -191,7 +191,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
       const contentElement = positioningRefs.contentRef.current;
 
-      if (!contentElement || hasFocusableContent(contentElement)) {
+      if (!contentElement || findFirstFocusable(contentElement)) {
         return;
       }
 
@@ -229,13 +229,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     }),
   };
 };
-
-function hasFocusableContent(contentElement: HTMLElement): boolean {
-  const focusableSelector =
-    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
-  return contentElement.matches(focusableSelector) || contentElement.querySelector(focusableSelector) !== null;
-}
 
 /**
  * Creates and manages the Popover open state
