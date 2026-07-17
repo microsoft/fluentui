@@ -7,10 +7,10 @@ const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER
 const Strings = {
   useYarnInstead: `
 - This repository uses Yarn as its package manager.
-- Please install the latest version of Yarn@4 by enabling corepack: "corepack enable" or by running "npm install -g yarn"
+- Enable Corepack by running "corepack enable", then rerun the Yarn command.
 - More information: https://yarnpkg.com/getting-started/install
 `,
-  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest version of Yarn@4 by enabling corepack: "corepack enable" or by running "npm install -g yarn".
+  installYarn: `Yarn 4 is not available in your PATH. Enable Corepack by running "corepack enable", then rerun the Yarn command.
 More information: https://yarnpkg.com/getting-started/install
 `,
 };
@@ -26,7 +26,7 @@ function checkPackageManager() {
 
   const yarnInfo = detectYarnInstallation();
 
-  if (!yarnInfo.exists) {
+  if (!yarnInfo.exists || !isSupportedYarnVersion(yarnInfo.version)) {
     console.log(Strings.installYarn);
     process.exit(1);
   }
@@ -47,4 +47,10 @@ function detectYarnInstallation() {
   return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
 
+/** @param {string} version */
+function isSupportedYarnVersion(version) {
+  return Number.parseInt(version, 10) === 4;
+}
+
 exports.checkPackageManager = checkPackageManager;
+exports.isSupportedYarnVersion = isSupportedYarnVersion;
