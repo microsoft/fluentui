@@ -46,7 +46,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
   function _handleHover(
     data: FunnelChartDataPoint,
-    mouseEvent: React.MouseEvent<SVGElement>,
+    mouseEvent: React.MouseEvent<Element>,
     targetElement?: HTMLElement | null,
   ) {
     mouseEvent?.persist();
@@ -57,7 +57,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
   function _handleFocus(
     data: FunnelChartDataPoint,
-    focusEvent: React.FocusEvent<SVGPathElement>,
+    focusEvent: React.FocusEvent<HTMLAnchorElement>,
     targetElement?: HTMLElement | null,
   ) {
     focusEvent?.persist();
@@ -69,7 +69,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   function _handleStackedHover(
     stage: string,
     subValue: { category: string; value: number; color: string },
-    mouseEvent: React.MouseEvent<SVGElement>,
+    mouseEvent: React.MouseEvent<Element>,
     targetElement?: HTMLElement | null,
   ) {
     mouseEvent?.persist();
@@ -86,7 +86,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   function _handleStackedFocus(
     stage: string,
     subValue: { category: string; value: number; color: string },
-    focusEvent: React.FocusEvent<SVGPathElement>,
+    focusEvent: React.FocusEvent<HTMLAnchorElement>,
     targetElement?: HTMLElement | null,
   ) {
     focusEvent?.persist();
@@ -153,35 +153,35 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   function _getEventHandlerProps(
     data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
     opacity?: number,
-    segmentId?: string,
   ) {
-    const targetElement = document.getElementById(segmentId!);
     if ('subValue' in data) {
       return {
-        culture: props.culture,
         onMouseOver:
           opacity == 1
-            ? (event: React.MouseEvent<SVGElement>) =>
-                _handleStackedHover(data.stage, data.subValue, event, targetElement)
+            ? (event: React.MouseEvent<HTMLAnchorElement>) =>
+                _handleStackedHover(data.stage, data.subValue, event, event.currentTarget)
             : undefined,
         onMouseMove:
           opacity == 1
-            ? (event: React.MouseEvent<SVGElement>) =>
-                _handleStackedHover(data.stage, data.subValue, event, targetElement)
+            ? (event: React.MouseEvent<HTMLAnchorElement>) =>
+                _handleStackedHover(data.stage, data.subValue, event, event.currentTarget)
             : undefined,
-        onFocus: (event: React.FocusEvent<SVGPathElement>) =>
-          _handleStackedFocus(data.stage, data.subValue, event, targetElement),
+        onFocus: (event: React.FocusEvent<HTMLAnchorElement>) =>
+          _handleStackedFocus(data.stage, data.subValue, event, event.currentTarget),
         onBlur: () => _handleMouseOut(),
         onMouseOut: () => _handleMouseOut(),
       };
     } else {
       return {
-        culture: props.culture,
         onMouseOver:
-          opacity == 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event, targetElement) : undefined,
+          opacity == 1
+            ? (event: React.MouseEvent<HTMLAnchorElement>) => _handleHover(data, event, event.currentTarget)
+            : undefined,
         onMouseMove:
-          opacity == 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event, targetElement) : undefined,
-        onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleFocus(data, event, targetElement),
+          opacity == 1
+            ? (event: React.MouseEvent<HTMLAnchorElement>) => _handleHover(data, event, event.currentTarget)
+            : undefined,
+        onFocus: (event: React.FocusEvent<HTMLAnchorElement>) => _handleFocus(data, event, event.currentTarget),
         onBlur: () => _handleMouseOut(),
         onMouseOut: () => _handleMouseOut(),
       };
@@ -249,22 +249,21 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     tabIndex?: number;
   }) {
     const segmentId = `funnel-segment-${key}`;
-    const eventHandlers = _getEventHandlerProps(data, opacity, segmentId);
+    const eventHandlers = _getEventHandlerProps(data, opacity);
     const textColor = getContrastTextColor(fill);
     return (
-      <g key={key}>
-        <path
-          id={segmentId}
-          d={pathD}
-          fill={fill}
-          opacity={opacity}
-          {...eventHandlers}
-          tabIndex={tabIndex}
-          role="option"
-          aria-label={_getAriaLabel(data)}
-        />
-        {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
-      </g>
+      <a
+        key={key}
+        href={`#${segmentId}`}
+        {...eventHandlers}
+        onClick={event => event.preventDefault()}
+        tabIndex={tabIndex}
+        role="option"
+        aria-label={_getAriaLabel(data)}
+      >
+        <path id={segmentId} d={pathD} fill={fill} opacity={opacity} aria-hidden={true} />
+        {textProps && <g aria-hidden={true}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
+      </a>
     );
   }
 
@@ -281,14 +280,16 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
 
       const { pathD, textX, textY, availableWidth } = geometryProps;
       const minTextWidth = 16;
-      const eventHandlerProps = _getEventHandlerProps(d);
       const textProps = getSegmentTextProps({
         availableWidth,
         minTextWidth,
         textX,
         textY,
         value: d.value!,
-        ...eventHandlerProps,
+        culture: props.culture,
+        onMouseOver: undefined,
+        onMouseMove: undefined,
+        onMouseOut: undefined,
       });
 
       return _renderFunnelSegment({
@@ -342,14 +343,16 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           });
 
     const minTextWidth = 16;
-    const eventHandlerProps = _getEventHandlerProps({ stage: stage.stage as string, subValue });
     const textProps = getSegmentTextProps({
       availableWidth: geom.availableWidth,
       minTextWidth,
       textX: geom.textX,
       textY: geom.textY,
       value: subValue.value,
-      ...eventHandlerProps,
+      culture: props.culture,
+      onMouseOver: undefined,
+      onMouseMove: undefined,
+      onMouseOut: undefined,
     });
 
     return _renderFunnelSegment({
