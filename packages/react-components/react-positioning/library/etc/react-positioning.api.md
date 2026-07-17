@@ -64,6 +64,16 @@ export type OffsetObject = {
 // @public (undocumented)
 export type OffsetShorthand = number;
 
+// @public
+export type OnPositioningEndEvent = CustomEvent<OnPositioningEndEventDetail>;
+
+// @public
+export type OnPositioningEndEventDetail = {
+    placement: PositioningPlacement;
+    escaped: boolean;
+    referenceHidden: boolean;
+};
+
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
 
@@ -94,6 +104,9 @@ export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: TargetElement | null) => void;
 };
+
+// @public
+export type PositioningPlacement = 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
 
 // @public
 export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
