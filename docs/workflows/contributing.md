@@ -1,5 +1,16 @@
 # Contributing Workflow
 
+## Prerequisites
+
+This repository uses Yarn 4 through Corepack. Enable Corepack before installing dependencies:
+
+```bash
+corepack enable
+yarn --version
+```
+
+The Yarn version is pinned by the root `packageManager` field and `.yarnrc.yml`.
+
 ## Development Commands
 
 ```bash
