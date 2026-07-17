@@ -5,6 +5,21 @@ import { usePopover_unstable } from './usePopover';
 import { isConformant } from '../../testing/isConformant';
 import type { PopoverProps } from './Popover.types';
 
+// useFocusFinders requires tabster to be initialized on the document (via FluentProvider),
+// which does not happen in unit tests. Mock it with a real DOM-based implementation
+// so findFirstFocusable works correctly in jsdom.
+jest.mock('@fluentui/react-tabster', () => {
+  const FOCUSABLE_SELECTOR =
+    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  return {
+    ...jest.requireActual('@fluentui/react-tabster'),
+    useFocusFinders: () => ({
+      findFirstFocusable: (container: HTMLElement | null) =>
+        container?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR) ?? undefined,
+    }),
+  };
+});
+
 describe('Popover', () => {
   isConformant({
     Component: Popover,
