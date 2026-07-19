@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import path from 'path';
 import { shEcho, TempPaths } from './utils';
 
 /**
@@ -8,13 +9,19 @@ import { shEcho, TempPaths } from './utils';
  * @param templateSpec Template name or `file:...` path
  */
 export async function prepareCreateReactApp(tempPaths: TempPaths, templateSpec: string): Promise<void> {
+  const tempUtilProjectPath = path.join(tempPaths.root, 'util');
+
   if (fs.existsSync(tempPaths.testApp)) {
     fs.removeSync(tempPaths.testApp);
   }
 
-  const npmUserAgent = `npm/${process.version} node/${process.version}`;
-  await shEcho(
-    `npm_config_user_agent="${npmUserAgent}" npx create-react-app ${tempPaths.testApp} --template ${templateSpec}`,
-    tempPaths.root,
-  );
+  fs.mkdirSync(tempUtilProjectPath);
+  fs.writeJsonSync(path.join(tempUtilProjectPath, 'package.json'), { private: true });
+
+  try {
+    await shEcho(`yarn add create-react-app`, tempUtilProjectPath);
+    await shEcho(`yarn create-react-app ${tempPaths.testApp} --template ${templateSpec}`, tempUtilProjectPath);
+  } finally {
+    fs.removeSync(tempUtilProjectPath);
+  }
 }

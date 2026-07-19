@@ -51,6 +51,7 @@ export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
     const globalConfig: Pick<TaskBuilderConfig, 'pmc'> = {
       pmc: {
         ...pmc,
+        // Generated targets use binaries installed in the root workspace.
         exec: 'yarn run -T',
       },
     };
