@@ -2690,7 +2690,7 @@ __metadata:
     "@griffel/eslint-plugin": "npm:^2.0.0"
     "@nx/eslint-plugin": "npm:21.6.10"
     "@rnx-kit/eslint-plugin": "npm:^0.8.4"
-    "@typescript-eslint/eslint-plugin": "patch:@typescript-eslint/eslint-plugin@npm%3A8.46.2#~/.yarn/patches/@typescript-eslint-eslint-plugin-npm-8.46.2-596a5e990a.patch"
+    "@typescript-eslint/eslint-plugin": "npm:8.46.2"
     "@typescript-eslint/type-utils": "npm:^8.46.2"
     "@typescript-eslint/utils": "npm:^8.46.2"
     eslint-config-airbnb-extended: "npm:2.1.2"
@@ -2871,7 +2871,7 @@ __metadata:
     "@types/webpack-hot-middleware": "npm:2.25.9"
     "@types/yargs": "npm:13.0.11"
     "@types/yargs-unparser": "npm:2.0.1"
-    "@typescript-eslint/eslint-plugin": "patch:@typescript-eslint/eslint-plugin@npm%3A8.46.2#~/.yarn/patches/@typescript-eslint-eslint-plugin-npm-8.46.2-596a5e990a.patch"
+    "@typescript-eslint/eslint-plugin": "npm:8.46.2"
     "@typescript-eslint/rule-tester": "npm:^8.46.2"
     autoprefixer: "npm:10.2.1"
     babel-jest: "npm:30.4.1"
@@ -11125,27 +11125,6 @@ __metadata:
     eslint: ^8.57.0 || ^9.0.0
     typescript: ">=4.8.4 <6.0.0"
   checksum: 10c0/24d1257bd023525754dc130e99bad1404c46f997729a060e3764b7f80dd43edcc43767b60fd89244cba82157918609e3922e408d0f7be4223e2056c1447fb387
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/eslint-plugin@patch:@typescript-eslint/eslint-plugin@npm%3A8.46.2#~/.yarn/patches/@typescript-eslint-eslint-plugin-npm-8.46.2-596a5e990a.patch":
-  version: 8.46.2
-  resolution: "@typescript-eslint/eslint-plugin@patch:@typescript-eslint/eslint-plugin@npm%3A8.46.2#~/.yarn/patches/@typescript-eslint-eslint-plugin-npm-8.46.2-596a5e990a.patch::version=8.46.2&hash=239730"
-  dependencies:
-    "@eslint-community/regexpp": "npm:^4.10.0"
-    "@typescript-eslint/scope-manager": "npm:8.46.2"
-    "@typescript-eslint/type-utils": "npm:8.46.2"
-    "@typescript-eslint/utils": "npm:8.46.2"
-    "@typescript-eslint/visitor-keys": "npm:8.46.2"
-    graphemer: "npm:^1.4.0"
-    ignore: "npm:^7.0.0"
-    natural-compare: "npm:^1.4.0"
-    ts-api-utils: "npm:^2.1.0"
-  peerDependencies:
-    "@typescript-eslint/parser": ^8.46.2
-    eslint: ^8.57.0 || ^9.0.0
-    typescript: ">=4.8.4 <6.0.0"
-  checksum: 10c0/0f127f1ed0105a328508255e656c56fee1fbe69f1fb89edf37fefcc2abd41cabfae6f101d6986e557113582a367e1e7b11374b6fe444feec60538f6f963654d6
   languageName: node
   linkType: hard
 

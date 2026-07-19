@@ -14,7 +14,7 @@
     "@griffel/eslint-plugin": "^2.0.0",
     "@nx/eslint-plugin": "21.6.10",
     "@rnx-kit/eslint-plugin": "^0.8.4",
-    "@typescript-eslint/eslint-plugin": "patch:@typescript-eslint/eslint-plugin@npm%3A8.46.2#~/.yarn/patches/@typescript-eslint-eslint-plugin-npm-8.46.2-596a5e990a.patch",
+    "@typescript-eslint/eslint-plugin": "8.46.2",
     "@typescript-eslint/type-utils": "^8.46.2",
     "@typescript-eslint/utils": "^8.46.2",
     "eslint-config-airbnb-extended": "2.1.2",
