@@ -15490,13 +15490,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-format@npm:1 - 3, d3-format@npm:^3.0.0":
-  version: 3.1.2
-  resolution: "d3-format@npm:3.1.2"
-  checksum: 10c0/0de452ae07585238e7f01607a7e0066665c34609652188b6ac7dc9f424f69465a425e07d16d79bd0e5955202ac7f241c66d0c76f68a79fc6f4857c94cf420652
-  languageName: node
-  linkType: hard
-
 "d3-format@npm:3.1.0":
   version: 3.1.0
   resolution: "d3-format@npm:3.1.0"
