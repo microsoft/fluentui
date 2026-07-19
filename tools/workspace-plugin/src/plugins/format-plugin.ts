@@ -53,7 +53,7 @@ function createNodesInternal(
   const config = {
     pmc: {
       ...pmc,
-      exec: 'yarn run -TB',
+      exec: 'yarn run -T',
     },
   };
 

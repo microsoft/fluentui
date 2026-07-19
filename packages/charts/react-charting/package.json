@@ -32,7 +32,7 @@
     "@fluentui/react-focus": "^8.10.7",
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/theme-samples": "^8.7.226",
-    "@microsoft/load-themed-styles": "1.10.26",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "^3.0.0",
     "@types/d3-axis": "^3.0.0",
     "@types/d3-color": "^3.0.0",

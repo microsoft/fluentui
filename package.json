@@ -28,7 +28,7 @@
     "generate": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/generate-ui",
     "clean": "nx run-many -t clean --verbose",
     "reset-workspace": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/reset-workspace.ts",
-    "test-ssr": "node node_modules/@fluentui/scripts-test-ssr/bin/test-ssr.js"
+    "test-ssr": "yarn exec test-ssr"
   },
   "devDependencies": {
     "@actions/core": "1.9.1",
@@ -63,6 +63,7 @@
     "@fluentui/react-compiler-analyzer": "0.0.0-experimental.rc-analyzer.20260526-7c5862ce36.0",
     "@fluentui/react-icons": "^2.0.306",
     "@fluentui/react-integration-tester": "*",
+    "@fluentui/scripts-test-ssr": "*",
     "@griffel/babel-preset": "1.5.8",
     "@griffel/eslint-plugin": "^2.0.0",
     "@griffel/jest-serializer": "1.1.24",
@@ -302,7 +303,7 @@
     "storywright": "patch:storywright@npm%3A0.0.27-storybook7.14#~/.yarn/patches/storywright-npm-0.0.27-storybook7.14-bfcc4eb382.patch",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
-    "swc-loader": "0.2.7",
+    "swc-loader": "0.2.6",
     "swc-plugin-de-indent-template-literal": "1.5.0",
     "syncpack": "10.6.1",
     "terser": "5.39.1",
@@ -359,31 +360,27 @@
     "@phenomnomnominal/tsquery": "6.1.3",
     "@types/jest-axe/axe-core": "4.7.2",
     "basic-ftp": "^5.2.0",
-    "braces": "3.0.3",
+    "@cypress/request/qs": "^6.14.2",
+    "@tensile-perf/runner/express": "^4.22.1",
+    "body-parser/qs": "^6.14.2",
     "esbuild": "0.25.0",
-    "express": "4.22.1",
     "handlebars": "^4.7.9",
+    "just-scripts-utils/tar": "^7.5.8",
     "micromatch": "4.0.8",
+    "micromatch/braces": "^3.0.3",
     "nx/minimatch": "^9.0.7",
     "playwright": "1.56.1",
     "prettier": "2.8.8",
     "prismjs": "1.30.0",
     "puppeteer": "24.42.0",
-    "qs": "6.14.2",
     "shell-quote": "^1.8.2",
-    "swc-loader": "^0.2.7",
+    "swc-loader": "0.2.6",
     "syncpack/minimatch": "^9.0.7",
-    "tar": "^7.5.8",
     "tar-fs": "2.1.4",
     "ws": "8.17.1"
   },
   "nx": {
     "includedScripts": []
   },
-  "packageManager": "yarn@4.12.0",
-  "dependenciesMeta": {
-    "edgedriver@5.2.1": {
-      "built": false
-    }
-  }
+  "packageManager": "yarn@4.12.0"
 }

@@ -46,7 +46,7 @@ async function performTest() {
 
     await shEcho(`yarn --version`);
     await shEcho(`yarn run -T tsc --version`);
-    await shEcho(`yarn run -T tsc --version`, tempPaths.testApp);
+    await shEcho(`yarn run tsc --version`, tempPaths.testApp);
   } catch (err) {
     console.error('Something went wrong setting up the test:');
     console.error(err instanceof Error ? err?.stack : err);
@@ -54,7 +54,7 @@ async function performTest() {
   }
 
   try {
-    await shEcho(`yarn run -T tsc --noEmit`, tempPaths.testApp);
+    await shEcho(`yarn run tsc --noEmit`, tempPaths.testApp);
     logger(`✔️ Example project was successfully built with typescript@${tsVersion}`);
     process.exit(0);
   } catch (e) {

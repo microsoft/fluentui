@@ -7,10 +7,11 @@ const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER
 const Strings = {
   useYarnInstead: `
 - This repository uses Yarn as its package manager.
+- Corepack provides the Yarn launcher; the repository pins the Yarn version.
 - Enable Corepack by running "corepack enable", then rerun the Yarn command.
 - More information: https://yarnpkg.com/getting-started/install
 `,
-  installYarn: `Yarn 4 is not available in your PATH. Enable Corepack by running "corepack enable", then rerun the Yarn command.
+  installYarn: `The Yarn launcher is not available in your PATH. Enable Corepack by running "corepack enable", then rerun the Yarn command.
 More information: https://yarnpkg.com/getting-started/install
 `,
 };
