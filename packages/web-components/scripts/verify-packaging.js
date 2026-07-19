@@ -6,13 +6,16 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
+import { glob, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { parse } from 'acorn';
 import micromatch from 'micromatch';
+import fastTaggedTemplates from 'rollup-plugin-fast-tagged-templates';
 
-main();
+await main();
 
-function main() {
+async function main() {
   /**
    * @see https://docs.npmjs.com/cli/v10/commands/npm-publish#files-included-in-package
    */
@@ -29,6 +32,36 @@ function main() {
   const nonProdAssets = ['assets/', 'docs/*', 'temp/*', 'bundle-size/*', '.storybook/*', 'stories/*'];
 
   verifyPackaging({ alwaysPublishedFiles, nonProdAssets, rootConfigFiles });
+  await verifyTaggedTemplatesAreMinified();
+}
+
+/**
+ * The shipped ESM build must not contain readable whitespace inside `html` and `css` tagged
+ * template literals: whitespace-only text nodes in templates become visible when a consumer
+ * sets a non-`normal` CSS `white-space`, and the rollup bundles already ship these templates
+ * minified via rollup-plugin-fast-tagged-templates. Asserting that the same transform is a
+ * no-op over `dist/esm` guarantees the ESM and bundle builds stay behaviorally identical.
+ * @see https://github.com/microsoft/fluentui/issues/36298
+ */
+async function verifyTaggedTemplatesAreMinified() {
+  const esmRoot = path.join(import.meta.dirname, '../dist/esm');
+  const plugin = fastTaggedTemplates();
+  const pluginContext = { parse: code => parse(code, { ecmaVersion: 'latest', sourceType: 'module' }) };
+
+  const unminified = [];
+  for await (const file of glob('**/*.js', { cwd: esmRoot })) {
+    const code = await readFile(path.join(esmRoot, file), 'utf-8');
+    const result = await plugin.transform.call(pluginContext, code, file);
+    if (result && result.code !== code) {
+      unminified.push(file);
+    }
+  }
+
+  assert.deepEqual(
+    unminified,
+    [],
+    'ships esm with minified tagged templates (dist/esm files listed above still contain template whitespace)',
+  );
 }
 
 /**
