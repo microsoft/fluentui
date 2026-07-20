@@ -45,7 +45,7 @@ async function performTest() {
     await shEcho(`which yarn`);
 
     await shEcho(`yarn --version`);
-    await shEcho(`yarn run -T tsc --version`);
+    await shEcho(`yarn run tsc --version`);
     await shEcho(`yarn run tsc --version`, tempPaths.testApp);
   } catch (err) {
     console.error('Something went wrong setting up the test:');
