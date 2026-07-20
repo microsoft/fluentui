@@ -4,7 +4,10 @@
     "isolatedModules": false,
     "types": ["node", "cypress", "cypress-real-events"],
     "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
-    "lib": ["ES2019", "dom"]
+    "lib": ["ES2019", "dom"],
+    "paths": {
+      "@fluentui/react-menu": ["src/index.ts"]
+    }
   },
   "include": ["**/*.cy.ts", "**/*.cy.tsx"]
 }
