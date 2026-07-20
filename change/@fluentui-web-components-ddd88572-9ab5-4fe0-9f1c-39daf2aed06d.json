@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(web-components): display selected values in multiple comboboxes",
+  "packageName": "@fluentui/web-components",
+  "email": "2241678935@qq.com",
+  "dependentChangeType": "patch"
+}

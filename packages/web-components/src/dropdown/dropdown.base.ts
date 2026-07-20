@@ -142,7 +142,7 @@ export class BaseDropdown extends FASTElement {
    */
   @volatile
   public get displayValue(): string {
-    if (!this.$fastController.isConnected || !this.control || (this.isCombobox && this.multiple)) {
+    if (!this.$fastController.isConnected || !this.control) {
       toggleState(this.elementInternals, 'placeholder-shown', false);
       return '';
     }

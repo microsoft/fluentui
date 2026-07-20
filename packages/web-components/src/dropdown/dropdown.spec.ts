@@ -455,6 +455,22 @@ test.describe('Dropdown', () => {
       await expect(input).toHaveValue('Kiwi');
     });
 
+    test('should display all selected options when configured as a multiple combobox', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const input = element.locator('input');
+      const appleOption = element.locator(`${OptionTagName}[value=apple]`);
+      const bananaOption = element.locator(`${OptionTagName}[value=banana]`);
+
+      await fastPage.setTemplate({ attributes: { type: 'combobox', multiple: true } });
+
+      await input.click();
+      await appleOption.click();
+      await bananaOption.click();
+
+      await expect(input).toHaveValue(/Apple/);
+      await expect(input).toHaveValue(/Banana/);
+    });
+
     test('should emit a `change` event when the value changes and the control loses focus via blur', async ({
       fastPage,
       page,
