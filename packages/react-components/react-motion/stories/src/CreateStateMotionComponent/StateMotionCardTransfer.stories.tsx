@@ -18,6 +18,7 @@ import {
 import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
+import { createDragPresentation, createDropAnimation } from './createDragMotion';
 import { estimateVelocity, smoothVelocity, type PositionSample } from './createDragVelocity';
 import { baseTransferEasing, InterruptibleScalar } from './createInterruptibleScalar';
 import { cardMachine, type CardAnimation, type CardEvent, type CardState } from './StateMotionCardTransfer.machine';
@@ -44,7 +45,6 @@ const liftedDistance = `calc(-1 * ${tokens.spacingVerticalL})`;
 const liftDuration = motionTokens.durationSlower * 2;
 const transferDuration = motionTokens.durationUltraSlow * 2;
 const dropDuration = motionTokens.durationUltraSlow;
-const backEaseOut = 'cubic-bezier(.33, 2, .67, 1)';
 const initialRoute: CardRoute = { origin: 'topStart', destination: 'topMiddle' };
 const placements = ['topStart', 'topMiddle', 'topEnd', 'bottomStart', 'bottomMiddle', 'bottomEnd'] as const;
 const placementLabels: Record<Placement, string> = {
@@ -102,6 +102,8 @@ const getDroppedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
   transform: `translateX(${getPlacementX(context.origin)}) translateY(${getPlacementY(
     context.origin,
   )}) rotate(0deg) scale(1)`,
+  translate: '0px 0px',
+  rotate: '0deg',
   boxShadow: tokens.shadow2,
 });
 const getLiftedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
@@ -116,8 +118,10 @@ const getTransferredKeyframe = ({ context }: { context: CardRoute }): Keyframe =
   )}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
   boxShadow: tokens.shadow16,
 });
+const getDropSettledTransform = ({ context }: { context: CardRoute }): string =>
+  `translateX(${getPlacementX(context.origin)}) translateY(${getPlacementY(context.origin)}) rotate(-1deg) scale(1.04)`;
 
-const createCardSkin = (transferring: StateMotionAnimation) =>
+const createCardSkin = (transferring: StateMotionAnimation, dropping: StateMotionAnimation) =>
   ({
     states: {
       dropped: getDroppedKeyframe,
@@ -136,11 +140,7 @@ const createCardSkin = (transferring: StateMotionAnimation) =>
         easing: motionTokens.curveDecelerateMid,
       },
       transferring,
-      dropping: {
-        keyframes: [{ state: 'current' }, { offset: 0.58, boxShadow: tokens.shadow2 }, { state: 'target' }],
-        duration: dropDuration,
-        easing: backEaseOut,
-      },
+      dropping,
     },
   } satisfies StateMotionSkin<CardState, CardAnimation, CardRoute>);
 
@@ -334,19 +334,12 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Hover,
     },
   },
-  motionCard: {
+  card: {
     position: 'absolute',
     zIndex: 1,
     top: tokens.spacingVerticalL,
     left: 0,
     width: `calc((100% - 2 * ${tokens.spacingHorizontalM}) / 3)`,
-    minWidth: 0,
-    boxSizing: 'border-box',
-    borderRadius: tokens.borderRadiusMedium,
-    willChange: 'transform',
-  },
-  card: {
-    width: '100%',
     minWidth: 0,
     boxSizing: 'border-box',
     display: 'flex',
@@ -361,7 +354,7 @@ const useStyles = makeStyles({
     cursor: 'grab',
     touchAction: 'none',
     userSelect: 'none',
-    willChange: 'transform',
+    willChange: 'transform, translate, rotate, box-shadow',
   },
   cardDragging: {
     cursor: 'grabbing',
@@ -457,7 +450,6 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const destinationRef = React.useRef<Placement | undefined>(undefined);
   const sequenceIndexRef = React.useRef(0);
   const stageRef = React.useRef<HTMLDivElement>(null);
-  const motionCardRef = React.useRef<HTMLDivElement>(null);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const slotRefs = React.useRef<Partial<Record<Placement, HTMLButtonElement>>>({});
   const dragSessionRef = React.useRef<DragSession | undefined>(undefined);
@@ -471,15 +463,28 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const [transferMotion] = React.useState(
     () => new InterruptibleScalar(getPlacementIndex(initialRoute.origin), () => transferDuration),
   );
+  const [dropAnimation] = React.useState<StateMotionAnimation>(() =>
+    createDropAnimation(
+      {},
+      {
+        destinationTransform: getDropSettledTransform({ context: initialRoute }),
+        liftedShadow: tokens.shadow16,
+        duration: dropDuration,
+        settleOffset: 0.6,
+        settleEasing: motionTokens.curveDecelerateMid,
+        dropEasing: motionTokens.curveDecelerateMid,
+      },
+    ),
+  );
   const [CardMotion] = React.useState(() =>
     createStateMotionComponent<CardState, CardEvent, CardAnimation, CardRoute>(
       cardMachine,
-      createCardSkin(transferAnimation),
+      createCardSkin(transferAnimation, dropAnimation),
     ),
   );
 
   const updateRowOffset = React.useCallback(() => {
-    const motionCard = motionCardRef.current;
+    const motionCard = cardRef.current;
     const topSlot = slotRefs.current.topStart;
     const bottomSlot = slotRefs.current.bottomStart;
     if (motionCard && topSlot && bottomSlot) {
@@ -538,6 +543,38 @@ export const StateMotionCardTransfer = (): JSXElement => {
     [transferAnimation, transferMotion],
   );
 
+  const prepareDrop = React.useCallback(
+    (nextRoute: CardRoute, targetWindow?: Window) => {
+      const card = cardRef.current;
+      const view = targetWindow ?? card?.ownerDocument.defaultView;
+      if (!card || !view) {
+        return;
+      }
+
+      const computedStyle = view.getComputedStyle(card);
+      const nextAnimation = createDropAnimation(
+        {
+          transform: computedStyle.transform,
+          translate: computedStyle.translate,
+          rotate: computedStyle.rotate,
+          boxShadow: computedStyle.boxShadow,
+        },
+        {
+          destinationTransform: getDropSettledTransform({ context: nextRoute }),
+          liftedShadow: tokens.shadow16,
+          duration: dropDuration,
+          settleOffset: 0.6,
+          settleEasing: motionTokens.curveDecelerateMid,
+          dropEasing: motionTokens.curveDecelerateMid,
+        },
+      );
+      dropAnimation.keyframes = nextAnimation.keyframes;
+      dropAnimation.duration = nextAnimation.duration;
+      dropAnimation.easing = nextAnimation.easing;
+    },
+    [dropAnimation],
+  );
+
   const sendEvent = React.useCallback(
     (event: CardEvent, fromAutomation = false) => {
       if (!fromAutomation) {
@@ -550,17 +587,21 @@ export const StateMotionCardTransfer = (): JSXElement => {
       } else if (event.type === 'RETARGET') {
         prepareTransfer(routeRef.current.destination, true);
       }
+      let nextRoute = routeRef.current;
       if (
         event.type === 'DROP' &&
         (controller.getSnapshot().state === 'transferred' || controller.getSnapshot().state === 'transferring')
       ) {
-        const nextRoute = advanceRoute(routeRef.current);
+        nextRoute = advanceRoute(routeRef.current);
         routeRef.current = nextRoute;
         setRoute(nextRoute);
       }
+      if (event.type === 'DROP') {
+        prepareDrop(nextRoute);
+      }
       controller.send(event);
     },
-    [controller, prepareTransfer, updateRunMode],
+    [controller, prepareDrop, prepareTransfer, updateRunMode],
   );
 
   const startSequence = React.useCallback(() => {
@@ -603,7 +644,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       updateRunMode('destination');
       const state = controller.getSnapshot().state;
       if (state === 'transferring') {
-        const element = motionCardRef.current;
+        const element = cardRef.current;
         const computedStyle = element?.ownerDocument.defaultView?.getComputedStyle(element);
         if (computedStyle) {
           retargetKeyframeRef.current = {
@@ -646,19 +687,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       session.targetWindow.cancelAnimationFrame(session.frameId);
       const destination = cancelled ? session.origin : getClosestPlacement(session);
       const nextRoute = { origin: destination, destination: getNextPlacement(destination) };
-      const card = cardRef.current;
-      if (card) {
-        const startTransform = card.style.transform;
-        const duration = session.targetWindow.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : dropDuration;
-        const settleAnimation = card.animate(
-          [{ transform: startTransform }, { transform: 'translate3d(0, 0, 0) rotate(0deg)' }],
-          { duration, easing: backEaseOut, fill: 'forwards' },
-        );
-        settleAnimation.addEventListener('finish', () => {
-          card.style.transform = '';
-          settleAnimation.cancel();
-        });
-      }
+      prepareDrop(nextRoute, session.targetWindow);
       dragSessionRef.current = undefined;
       dragDestinationRef.current = undefined;
       routeRef.current = nextRoute;
@@ -666,7 +695,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       setRequestedDestination(undefined);
       sendEvent({ type: cancelled ? 'CANCEL' : 'RELEASE' });
     },
-    [sendEvent],
+    [prepareDrop, sendEvent],
   );
 
   const handlePointerDown = React.useCallback(
@@ -738,7 +767,10 @@ export const StateMotionCardTransfer = (): JSXElement => {
           Math.max(activeSession.smoothedVelocityX * rotationPerVelocity, -maximumRotation),
           maximumRotation,
         );
-        element.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) rotate(${rotation}deg)`;
+        Object.assign(
+          element.style,
+          createDragPresentation({ offsetX, offsetY, rotation, boxShadow: tokens.shadow16 }),
+        );
 
         const destination = getClosestPlacement(activeSession);
         if (dragDestinationRef.current !== destination) {
@@ -869,28 +901,26 @@ export const StateMotionCardTransfer = (): JSXElement => {
         ))}
 
         <CardMotion context={route} controller={controller} onMotionFinish={handleMotionFinish}>
-          <div ref={motionCardRef} className={styles.motionCard}>
-            <Card
-              ref={cardRef}
-              className={mergeClasses(
-                styles.card,
-                (activeNode === 'pickingUp' || activeNode === 'dragging') && styles.cardDragging,
-              )}
-              appearance="filled"
-              onLostPointerCapture={handlePointerCancel}
-              onPointerCancel={handlePointerCancel}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-            >
-              <Text className={styles.cardTitle} weight="semibold">
-                State: {activeNode}
-              </Text>
-              <Caption1 className={styles.cardSubtitle} aria-live="polite">
-                Animation: {snapshot.animation ? activeEdge.animation : 'none'}
-              </Caption1>
-            </Card>
-          </div>
+          <Card
+            ref={cardRef}
+            className={mergeClasses(
+              styles.card,
+              (activeNode === 'pickingUp' || activeNode === 'dragging') && styles.cardDragging,
+            )}
+            appearance="filled"
+            onLostPointerCapture={handlePointerCancel}
+            onPointerCancel={handlePointerCancel}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+          >
+            <Text className={styles.cardTitle} weight="semibold">
+              State: {activeNode}
+            </Text>
+            <Caption1 className={styles.cardSubtitle} aria-live="polite">
+              Animation: {snapshot.animation ? activeEdge.animation : 'none'}
+            </Caption1>
+          </Card>
         </CardMotion>
       </div>
 
