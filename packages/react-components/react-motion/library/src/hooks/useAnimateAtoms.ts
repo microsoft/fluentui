@@ -22,6 +22,9 @@ const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
  * @param animations
  */
 function createHandle(animations: Animation[]): AnimationHandle {
+  let callbackGeneration = 0;
+  let disposed = false;
+
   return {
     set playbackRate(rate: number) {
       animations.forEach(animation => {
@@ -32,27 +35,19 @@ function createHandle(animations: Animation[]): AnimationHandle {
       // Heads up!
       // This could use "Animation:finished", but it's causing a memory leak in Chromium.
       // See: https://issues.chromium.org/u/2/issues/383016426
-      const finishedAnimations = new Set<Animation>();
+      if (disposed) {
+        return;
+      }
+
+      const generation = ++callbackGeneration;
+      const finishedAnimations = new Set(animations.filter(animation => animation.playState === 'finished'));
       let settled = false;
-      let playStateTimeout: ReturnType<typeof globalThis.setTimeout> | undefined;
       const settle = (callback: () => void) => {
-        if (settled) {
+        if (settled || generation !== callbackGeneration) {
           return;
         }
         settled = true;
-        if (playStateTimeout !== undefined) {
-          globalThis.clearTimeout(playStateTimeout);
-        }
         callback();
-      };
-      const checkPlayState = () => {
-        if (animations.every(animation => animation.playState === 'finished')) {
-          settle(onfinish);
-        } else if (animations.some(animation => animation.playState === 'idle')) {
-          settle(oncancel);
-        } else {
-          playStateTimeout = globalThis.setTimeout(checkPlayState, 100);
-        }
       };
 
       animations.forEach(animation => {
@@ -64,13 +59,26 @@ function createHandle(animations: Animation[]): AnimationHandle {
         };
         animation.oncancel = () => settle(oncancel);
       });
-      playStateTimeout = globalThis.setTimeout(checkPlayState, 100);
+
+      if (animations.length === 0) {
+        Promise.resolve().then(() => settle(onfinish));
+      } else if (finishedAnimations.size === animations.length) {
+        settle(onfinish);
+      } else if (animations.some(animation => animation.playState === 'idle')) {
+        settle(oncancel);
+      }
     },
     isRunning() {
       return animations.some(animation => isAnimationRunning(animation));
     },
 
     dispose: () => {
+      disposed = true;
+      callbackGeneration++;
+      animations.forEach(animation => {
+        animation.onfinish = null;
+        animation.oncancel = null;
+      });
       animations.length = 0;
     },
 
