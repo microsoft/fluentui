@@ -27,8 +27,7 @@
     "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
     "generate": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/generate-ui",
     "clean": "nx run-many -t clean --verbose",
-    "reset-workspace": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/reset-workspace.ts",
-    "test-ssr": "yarn exec test-ssr"
+    "reset-workspace": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/reset-workspace.ts"
   },
   "devDependencies": {
     "@actions/core": "1.9.1",
@@ -64,6 +63,7 @@
     "@fluentui/react-icons": "^2.0.306",
     "@fluentui/react-integration-tester": "*",
     "@fluentui/scripts-test-ssr": "*",
+    "@fluentui/storybook-llms-extractor": "*",
     "@griffel/babel-preset": "1.5.8",
     "@griffel/eslint-plugin": "^2.0.0",
     "@griffel/jest-serializer": "1.1.24",
