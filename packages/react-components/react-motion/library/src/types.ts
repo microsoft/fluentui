@@ -163,6 +163,7 @@ export type StateMotionSkin<State extends string, Animation extends string, Cont
 /** The animation started by the most recently accepted event. */
 export type StateMotionAnimationSnapshot<State extends string, Event extends StateMotionEvent<PropertyKey>> = {
   id: number;
+  /** The logical state before the event was accepted. */
   source: StateMotionStateName<State>;
   target: StateMotionStateName<State>;
   event: Event;

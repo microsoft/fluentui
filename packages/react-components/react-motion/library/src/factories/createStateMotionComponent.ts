@@ -104,6 +104,7 @@ function resolveAnimation(motion: StateMotionAnimation, target: Keyframe): AtomM
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>>(
   definition: StateMotionDefinition<State, Event>,
 ): StateMotionComponent<State, Event>;
+/** Creates a React component that renders a state motion machine with a presentation skin. */
 export function createStateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
@@ -112,6 +113,7 @@ export function createStateMotionComponent<
   definition: StateMotionMachineDefinition<State, Event, Animation>,
   skin: StateMotionSkin<State, Animation>,
 ): StateMotionComponent<State, Event>;
+/** Creates a React component that renders a state motion machine with a context-aware presentation skin. */
 export function createStateMotionComponent<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
@@ -153,6 +155,7 @@ export function createStateMotionComponent<
     const isReducedMotion = useIsReducedMotion();
     const handleRef = useMotionImperativeRef(imperativeRef);
     const skipMotions = useMotionBehaviourContext() === 'skip';
+    const contextRef = React.useRef(context);
 
     const handleMotionStart = useEventCallback((animation: StateMotionAnimationSnapshot<State, Event>) => {
       onMotionStart?.(null, animation);
@@ -162,6 +165,10 @@ export function createStateMotionComponent<
     });
     const handleMotionCancel = useEventCallback((animation: StateMotionAnimationSnapshot<State, Event>) => {
       onMotionCancel?.(null, animation);
+    });
+
+    useIsomorphicLayoutEffect(() => {
+      contextRef.current = context;
     });
 
     useIsomorphicLayoutEffect(() => {
@@ -179,14 +186,14 @@ export function createStateMotionComponent<
         playbackRef.current.controller !== controller || playbackRef.current.animationId === animation?.id;
       if (!animation || isHistoricalAnimation) {
         playbackRef.current = { controller, animationId: animation?.id };
-        Object.assign(element.style, getStateKeyframe(snapshot.state, context as Context));
+        Object.assign(element.style, getStateKeyframe(snapshot.state, contextRef.current as Context));
         return;
       }
 
       playbackRef.current = { controller, animationId: animation.id };
 
-      const source = definition.states[animation.source];
-      const targetKeyframe = getStateKeyframe(animation.target, context as Context);
+      const source = definition.states[skin ? snapshot.state : animation.source];
+      const targetKeyframe = getStateKeyframe(animation.target, contextRef.current as Context);
       const requiresCompletion = snapshot.state !== animation.target;
 
       let motion: AtomMotion | AtomMotion[];
@@ -248,6 +255,7 @@ export function createStateMotionComponent<
       return () => {
         handle.commitStyles();
         handle.cancel();
+        handle.dispose();
         if (handleRef.current === handle) {
           handleRef.current = undefined;
         }
@@ -256,7 +264,6 @@ export function createStateMotionComponent<
       animateAtoms,
       childRef,
       completeAnimation,
-      context,
       controller,
       handleMotionCancel,
       handleMotionFinish,

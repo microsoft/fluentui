@@ -36,16 +36,16 @@ export function createPresenceComponentVariant<MotionParams extends Record<strin
 // @public
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>): StateMotionComponent<State, Event>;
 
-// @public (undocumented)
+// @public
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>, Animation extends string>(definition: StateMotionMachineDefinition<State, Event, Animation>, skin: StateMotionSkin<State, Animation>): StateMotionComponent<State, Event>;
 
-// @public (undocumented)
+// @public
 export function createStateMotionComponent<State extends string, Event extends StateMotionEvent<PropertyKey>, Animation extends string, Context>(definition: StateMotionMachineDefinition<State, Event, Animation>, skin: StateMotionSkin<State, Animation, Context>): StateMotionComponent<State, Event, Context>;
 
 // @public
 export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>>(definition: StateMotionDefinition<State, Event>, options?: StateMotionControllerOptions<State>): StateMotionController<State, Event>;
 
-// @public (undocumented)
+// @public
 export function createStateMotionController<State extends string, Event extends StateMotionEvent<PropertyKey>, Animation extends string>(definition: StateMotionMachineDefinition<State, Event, Animation>, options?: StateMotionControllerOptions<State>): StateMotionController<State, Event>;
 
 // @public (undocumented)

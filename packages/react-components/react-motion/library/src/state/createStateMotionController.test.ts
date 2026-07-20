@@ -111,13 +111,13 @@ describe('createStateMotionController', () => {
     expect(controller.send({ type: 'LIFT' })).toBe(true);
     expect(controller.getSnapshot()).toEqual({
       state: 'lifting',
-      animation: { id: 1, source: 'lifting', target: 'lifted', event: { type: 'LIFT' } },
+      animation: { id: 1, source: 'dropped', target: 'lifted', event: { type: 'LIFT' } },
     });
 
     expect(controller.send({ type: 'DROP' })).toBe(true);
     expect(controller.getSnapshot()).toEqual({
       state: 'dropping',
-      animation: { id: 2, source: 'dropping', target: 'dropped', event: { type: 'DROP' } },
+      animation: { id: 2, source: 'lifting', target: 'dropped', event: { type: 'DROP' } },
     });
 
     expect(controller.completeAnimation(1)).toBe(false);
@@ -149,7 +149,7 @@ describe('createStateMotionController', () => {
     expect(controller.send({ type: 'DROP' })).toBe(true);
     expect(controller.getSnapshot()).toEqual({
       state: 'dropping',
-      animation: { id: 2, source: 'dropping', target: 'dropped', event: { type: 'DROP' } },
+      animation: { id: 2, source: 'lifted', target: 'dropped', event: { type: 'DROP' } },
     });
   });
 

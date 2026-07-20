@@ -24,6 +24,7 @@ export function createStateMotionController<State extends string, Event extends 
   definition: StateMotionDefinition<State, Event>,
   options?: StateMotionControllerOptions<State>,
 ): StateMotionController<State, Event>;
+/** Creates an event-driven controller for a state motion machine. */
 export function createStateMotionController<
   State extends string,
   Event extends StateMotionEvent<PropertyKey>,
@@ -97,7 +98,7 @@ export function createStateMotionController<State extends string, Event extends 
       snapshot = {
         state,
         animation: stateAnimation
-          ? { id: ++animationId, source: state, target: stateAnimation.target, event }
+          ? { id: ++animationId, source, target: stateAnimation.target, event }
           : isVisualDefinition
           ? { id: ++animationId, source, target: state, event }
           : undefined,

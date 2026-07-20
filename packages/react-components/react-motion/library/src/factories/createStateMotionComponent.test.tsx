@@ -230,6 +230,93 @@ describe('createStateMotionComponent', () => {
     delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
   });
 
+  it('does not restart an active animation when context identity changes', () => {
+    type State = 'idle' | 'moving' | 'moved';
+    type Event = { type: 'MOVE' };
+    type AnimationId = 'moving';
+    type Context = { offset: number };
+
+    const machine: StateMotionMachineDefinition<State, Event, AnimationId> = {
+      initialState: 'idle',
+      states: {
+        idle: { on: { MOVE: { target: 'moving' } } },
+        moving: { animation: { id: 'moving', target: 'moved' } },
+        moved: {},
+      },
+    };
+    const skin = {
+      states: {
+        idle: { transform: 'translateX(0)' },
+        moving: { transform: 'translateX(0)' },
+        moved: ({ context }: { context: Context }) => ({ transform: `translateX(${context.offset}px)` }),
+      },
+      animations: { moving: { keyframes: [{ state: 'current' }, { state: 'target' }] } },
+    } satisfies StateMotionSkin<State, AnimationId, Context>;
+    const animation = { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() } as unknown as Animation;
+    const animate = jest.fn(() => animation);
+    Object.defineProperty(HTMLElement.prototype, 'animate', { configurable: true, value: animate });
+    const controller = createStateMotionController(machine);
+    const StateMotion = createStateMotionComponent(machine, skin);
+    const { rerender } = render(
+      <StateMotion context={{ offset: 10 }} controller={controller}>
+        <div />
+      </StateMotion>,
+    );
+
+    act(() => controller.send({ type: 'MOVE' }));
+    rerender(
+      <StateMotion context={{ offset: 10 }} controller={controller}>
+        <div />
+      </StateMotion>,
+    );
+
+    expect(animate).toHaveBeenCalledTimes(1);
+    expect(animation.cancel).not.toHaveBeenCalled();
+
+    delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
+  });
+
+  it('disposes the active animation handle on unmount', async () => {
+    type State = 'idle' | 'moving' | 'moved';
+    type Event = { type: 'MOVE' };
+    type AnimationId = 'moving';
+
+    const machine: StateMotionMachineDefinition<State, Event, AnimationId> = {
+      initialState: 'idle',
+      states: {
+        idle: { on: { MOVE: { target: 'moving' } } },
+        moving: { animation: { id: 'moving', target: 'moved' } },
+        moved: {},
+      },
+    };
+    const skin = {
+      states: { idle: { opacity: 0 }, moving: { opacity: 0 }, moved: { opacity: 1 } },
+      animations: { moving: { keyframes: [{ state: 'current' }, { state: 'target' }] } },
+    } satisfies StateMotionSkin<State, AnimationId>;
+    const animation = { cancel: jest.fn(), commitStyles: jest.fn(), persist: jest.fn() } as unknown as Animation;
+    Object.defineProperty(HTMLElement.prototype, 'animate', { configurable: true, value: () => animation });
+    const controller = createStateMotionController(machine);
+    const StateMotion = createStateMotionComponent(machine, skin);
+    const onMotionFinish = jest.fn();
+    const { unmount } = render(
+      <StateMotion controller={controller} onMotionFinish={onMotionFinish}>
+        <div />
+      </StateMotion>,
+    );
+
+    act(() => controller.send({ type: 'MOVE' }));
+    unmount();
+    await act(async () => {
+      animation.onfinish?.(null as unknown as AnimationPlaybackEvent);
+      await Promise.resolve();
+    });
+
+    expect(controller.getSnapshot().state).toBe('moving');
+    expect(onMotionFinish).not.toHaveBeenCalled();
+
+    delete (HTMLElement.prototype as Partial<HTMLElement>).animate;
+  });
+
   it('completes only the current motion after an interruption', async () => {
     type State = 'dropped' | 'lifting' | 'lifted' | 'dropping';
     type Event = { type: 'LIFT' } | { type: 'DROP' };
