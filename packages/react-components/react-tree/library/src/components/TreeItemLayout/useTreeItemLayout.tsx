@@ -67,31 +67,29 @@ export const useTreeItemLayout_unstable = (
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
-  const mainSlot = slot.always(main, { elementType: 'div' });
-  const mainContentId = useId('fui-TreeItemLayout__main-', mainSlot.id);
-  mainSlot.id = mainContentId;
+  const mainSlot = slot.always(main, {
+    defaultProps: { id: useId('fui-TreeItemLayout__main-') },
+    elementType: 'div',
+  });
 
-  const selectorDefaultProps: CheckboxProps | RadioProps = {
-    checked,
-    tabIndex: -1,
-    ref: selectionRef,
-    // casting here to a union between checkbox and radio
-    // since ref is not present on the selector signature
-    // FIXME: look into Slot type to see if we can make this work
-  };
-
-  // Only set aria-labelledby if the consumer didn't provide aria-label or aria-labelledby
+  // Link the selector to the main content unless the consumer provided aria-label or aria-labelledby
   const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
-  if (!selectorShorthand?.['aria-label'] && !selectorShorthand?.['aria-labelledby']) {
-    selectorDefaultProps['aria-labelledby'] = mainContentId;
-  }
+  const selectorAriaLabelledBy =
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainSlot.id;
 
   const selector = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
-    defaultProps: selectorDefaultProps,
+    defaultProps: {
+      checked,
+      tabIndex: -1,
+      ref: selectionRef,
+      'aria-labelledby': selectorAriaLabelledBy,
+      // casting here to a union between checkbox and radio
+      // since ref is not present on the selector signature
+      // FIXME: look into Slot type to see if we can make this work
+    } as CheckboxProps | RadioProps,
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
-
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
   // eslint-disable-next-line react-hooks/refs
   assertIsRefObject(treeItemRef);
