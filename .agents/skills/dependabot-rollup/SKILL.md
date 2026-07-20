@@ -144,7 +144,7 @@ Never resolve dependency conflicts automatically. If no PRs merge successfully, 
 Run validation from the temporary worktree through the repository's Nx workflow:
 
 ```bash
-yarn --cwd "$ROLLUP_DIR" install --frozen-lockfile
+yarn --cwd "$ROLLUP_DIR" install --immutable
 yarn --cwd "$ROLLUP_DIR" nx affected \
   -t build test lint type-check \
   --nxBail \
