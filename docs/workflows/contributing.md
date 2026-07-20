@@ -1,17 +1,5 @@
 # Contributing Workflow
 
-## Prerequisites
-
-Corepack provides the `yarn` launcher, while this repository pins the Yarn 4 implementation. Enable Corepack before
-installing dependencies:
-
-```bash
-corepack enable
-yarn --version
-```
-
-The Yarn version is pinned by the root `packageManager` field and the `yarnPath` setting in `.yarnrc.yml`.
-
 ## Development Commands
 
 ```bash
