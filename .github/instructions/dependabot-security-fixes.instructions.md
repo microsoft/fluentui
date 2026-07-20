@@ -35,7 +35,7 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 ```json
 {
   "resolutions": {
-    "**/vulnerable-package": "^secure-version"
+    "vulnerable-package": "^secure-version"
   }
 }
 ```
@@ -44,7 +44,7 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 
 The following resolutions are maintained for security purposes:
 
-- `**/tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
+- `tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
 
 ## Troubleshooting
 
