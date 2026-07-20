@@ -165,18 +165,16 @@ export const useTreeItemLayout_unstable = (
     [setIsActionsVisible, onActionVisibilityChange, treeItemRef, isNavigatingWithKeyboard, targetDocument],
   );
 
+  const expandIconRefs = useMergedRefs(expandIconRef);
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
     defaultProps: {
       children: <TreeItemChevron />,
       'aria-hidden': true,
+      ref: expandIconRefs,
     },
     elementType: 'div',
   });
-  const expandIconRefs = useMergedRefs(expandIcon?.ref, expandIconRef);
-  if (expandIcon) {
-    expandIcon.ref = expandIconRefs;
-  }
   const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
 
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
