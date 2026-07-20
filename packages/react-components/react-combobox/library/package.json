@@ -12,8 +12,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-aria": "^9.17.13",
     "@fluentui/keyboard-keys": "^9.0.8",
+    "@fluentui/react-aria": "^9.17.13",
     "@fluentui/react-context-selector": "^9.2.18",
     "@fluentui/react-field": "^9.5.3",
     "@fluentui/react-icons": "^2.0.245",
