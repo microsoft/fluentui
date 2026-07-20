@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "omit role=group from PopoverSurface when no accessible name is provided, fixing Narrator announcing contains style group on non-modal popovers",
+  "comment": "fix: omit group role from PopoverSurface when no accessible name is provided",
   "packageName": "@fluentui/react-popover",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"
