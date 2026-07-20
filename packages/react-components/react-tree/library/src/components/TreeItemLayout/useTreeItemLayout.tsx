@@ -178,16 +178,7 @@ export const useTreeItemLayout_unstable = (
     expandIcon.ref = expandIconRefs;
   }
   const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
-  const actions = isActionsVisible
-    ? slot.optional(props.actions, {
-        defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
-        elementType: 'div',
-      })
-    : undefined;
-  delete actions?.visible;
-  delete actions?.onVisibilityChange;
 
-  const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
       props.actions.onBlur?.(event);
@@ -200,10 +191,19 @@ export const useTreeItemLayout_unstable = (
     } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
     setIsActionsVisible(isRelatedTargetFromActions);
   });
-  if (actions) {
-    actions.ref = actionsRefs;
-    actions.onBlur = handleActionsBlur;
-  }
+
+  const actionsRefs = useMergedRefs(actionsRef, actionsRefInternal);
+  const actions = isActionsVisible
+    ? slot.optional(props.actions, {
+        defaultProps: {
+          ...arrowNavigationProps,
+          role: 'toolbar',
+          ref: actionsRefs,
+          onBlur: handleActionsBlur,
+        },
+        elementType: 'div',
+      })
+    : undefined;
 
   const hasActions = Boolean(props.actions);
 
