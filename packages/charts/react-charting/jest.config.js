@@ -37,7 +37,6 @@ function getEsmOnlyPackagesToCjsMapping() {
     'd3-hierarchy',
     'd3-selection',
     'd3-format',
-    'd3-time-format',
   ];
 
   /**
