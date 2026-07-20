@@ -18,48 +18,102 @@ import {
 import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
+import { estimateVelocity, smoothVelocity, type PositionSample } from './createDragVelocity';
 import { baseTransferEasing, InterruptibleScalar } from './createInterruptibleScalar';
 import { cardMachine, type CardAnimation, type CardEvent, type CardState } from './StateMotionCardTransfer.machine';
 
-type Placement = 'start' | 'middle' | 'end';
+type Placement = 'topStart' | 'topMiddle' | 'topEnd' | 'bottomStart' | 'bottomMiddle' | 'bottomEnd';
 type CardRoute = { origin: Placement; destination: Placement };
 type RunMode = 'idle' | 'replay' | 'destination';
+type Point = { x: number; y: number };
+type DragSession = {
+  pointerId: number;
+  origin: Placement;
+  startPointer: Point;
+  latestPointer: Point;
+  startCardCenter: Point;
+  slotCenters: Record<Placement, Point>;
+  samples: PositionSample[];
+  smoothedVelocityX: number;
+  previousFrameTime: number;
+  frameId: number;
+  targetWindow: Window;
+};
 
 const liftedDistance = `calc(-1 * ${tokens.spacingVerticalL})`;
 const liftDuration = motionTokens.durationSlower * 2;
 const transferDuration = motionTokens.durationUltraSlow * 2;
 const dropDuration = motionTokens.durationUltraSlow;
 const backEaseOut = 'cubic-bezier(.33, 2, .67, 1)';
-const initialRoute: CardRoute = { origin: 'start', destination: 'middle' };
+const initialRoute: CardRoute = { origin: 'topStart', destination: 'topMiddle' };
+const placements = ['topStart', 'topMiddle', 'topEnd', 'bottomStart', 'bottomMiddle', 'bottomEnd'] as const;
+const placementLabels: Record<Placement, string> = {
+  topStart: 'top start',
+  topMiddle: 'top middle',
+  topEnd: 'top end',
+  bottomStart: 'bottom start',
+  bottomMiddle: 'bottom middle',
+  bottomEnd: 'bottom end',
+};
+const velocitySampleWindow = 80;
+const velocitySmoothingTime = 40;
+const rotationPerVelocity = 0.006;
+const maximumRotation = 7;
 
 const getPlacementX = (placement: Placement): string => {
-  if (placement === 'middle') {
+  if (placement === 'topMiddle' || placement === 'bottomMiddle') {
     return `calc(100% + ${tokens.spacingHorizontalM})`;
   }
-  if (placement === 'end') {
+  if (placement === 'topEnd' || placement === 'bottomEnd') {
     return `calc(200% + 2 * ${tokens.spacingHorizontalM})`;
   }
   return '0';
 };
+const getPlacementY = (placement: Placement): string =>
+  placement.startsWith('bottom') ? 'var(--card-transfer-row-offset, 0px)' : '0px';
 const getNextPlacement = (placement: Placement): Placement =>
-  placement === 'start' ? 'middle' : placement === 'middle' ? 'end' : 'start';
-const getPlacementIndex = (placement: Placement): number =>
-  placement === 'start' ? 0 : placement === 'middle' ? 1 : 2;
+  placements[(placements.indexOf(placement) + 1) % placements.length];
+const getPlacementIndex = (placement: Placement): number => placements.indexOf(placement);
 const advanceRoute = ({ destination }: CardRoute): CardRoute => ({
   origin: destination,
   destination: getNextPlacement(destination),
 });
+const getClosestPlacement = (session: DragSession): Placement => {
+  const cardCenter = {
+    x: session.startCardCenter.x + session.latestPointer.x - session.startPointer.x,
+    y: session.startCardCenter.y + session.latestPointer.y - session.startPointer.y,
+  };
+  let closestPlacement: Placement = session.origin;
+  let closestDistance = Number.POSITIVE_INFINITY;
+
+  for (const placement of placements) {
+    const center = session.slotCenters[placement];
+    const distance = Math.hypot(cardCenter.x - center.x, cardCenter.y - center.y);
+    if (distance < closestDistance) {
+      closestPlacement = placement;
+      closestDistance = distance;
+    }
+  }
+
+  return closestPlacement;
+};
 
 const getDroppedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
-  transform: `translateX(${getPlacementX(context.origin)}) translateY(0) rotate(0deg) scale(1)`,
+  transform: `translateX(${getPlacementX(context.origin)}) translateY(${getPlacementY(
+    context.origin,
+  )}) rotate(0deg) scale(1)`,
   boxShadow: tokens.shadow2,
 });
 const getLiftedKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
-  transform: `translateX(${getPlacementX(context.origin)}) translateY(${liftedDistance}) rotate(-1deg) scale(1.04)`,
+  transform: `translateX(${getPlacementX(context.origin)}) translateY(${getPlacementY(
+    context.origin,
+  )}) translateY(${liftedDistance}) rotate(-1deg) scale(1.04)`,
   boxShadow: tokens.shadow16,
 });
 const getTransferredKeyframe = ({ context }: { context: CardRoute }): Keyframe => ({
-  transform: `translateX(${getPlacementX(context.destination)}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
+  transform: `translateX(${getPlacementX(context.destination)}) translateY(${getPlacementY(
+    context.destination,
+  )}) translateY(${liftedDistance}) rotate(1deg) scale(1.04)`,
   boxShadow: tokens.shadow16,
 });
 
@@ -71,6 +125,8 @@ const createCardSkin = (transferring: StateMotionAnimation) =>
       lifted: getLiftedKeyframe,
       transferring: getTransferredKeyframe,
       transferred: getTransferredKeyframe,
+      pickingUp: getLiftedKeyframe,
+      dragging: getLiftedKeyframe,
       dropping: getDroppedKeyframe,
     },
     animations: {
@@ -95,6 +151,8 @@ const graphSkin = {
     lifted: { strokeDashoffset: 0 },
     transferring: { strokeDashoffset: 0 },
     transferred: { strokeDashoffset: 0 },
+    pickingUp: { strokeDashoffset: 0 },
+    dragging: { strokeDashoffset: 0 },
     dropping: { strokeDashoffset: 0 },
   },
   animations: {
@@ -128,7 +186,7 @@ const sequence: CardEvent[] = [
 const GraphMotion = createStateMotionComponent(cardMachine, graphSkin);
 
 type GraphEdge = {
-  event: Exclude<CardEvent['type'], 'RETARGET'>;
+  event: 'LIFT' | 'TRANSFER' | 'DROP' | 'GRAB';
   animation: CardAnimation;
   path: string;
   labelX: number;
@@ -153,9 +211,16 @@ const graphEdges: GraphEdge[] = [
   {
     event: 'DROP',
     animation: 'dropping',
-    path: 'M 725 228 C 590 318 205 318 75 88',
+    path: 'M 725 180 C 735 4 150 4 75 40',
     labelX: 400,
-    labelY: 304,
+    labelY: 20,
+  },
+  {
+    event: 'GRAB',
+    animation: 'lifting',
+    path: 'M 130 284 C 145 284 160 284 175 284',
+    labelX: 152,
+    labelY: 274,
   },
 ];
 
@@ -166,6 +231,8 @@ const graphNodes: Array<{ id: CardState; x: number; y: number }> = [
   { id: 'transferring', x: 410, y: 180 },
   { id: 'transferred', x: 540, y: 40 },
   { id: 'dropping', x: 670, y: 180 },
+  { id: 'pickingUp', x: 20, y: 260 },
+  { id: 'dragging', x: 175, y: 260 },
 ];
 
 const eventEdges = [
@@ -173,12 +240,19 @@ const eventEdges = [
   { event: 'TRANSFER', path: 'M 390 64 C 404 106 410 145 436 180', labelX: 400, labelY: 124 },
   { event: 'RETARGET', path: 'M 438 228 C 420 270 510 270 492 228', labelX: 465, labelY: 274 },
   { event: 'DROP', path: 'M 650 64 C 664 106 670 145 696 180', labelX: 660, labelY: 124 },
+  { event: 'GRAB', path: 'M 75 88 C 45 140 45 208 75 260', labelX: 48, labelY: 176 },
+  { event: 'RELEASE / CANCEL', path: 'M 285 284 C 410 360 610 350 725 228', labelX: 485, labelY: 348 },
 ] as const;
 
-const edgeByEvent = {
-  ...Object.fromEntries(graphEdges.map(edge => [edge.event, edge])),
+const edgeByEvent: Record<CardEvent['type'], GraphEdge> = {
+  LIFT: graphEdges[0],
+  TRANSFER: graphEdges[1],
   RETARGET: graphEdges[1],
-} as Record<CardEvent['type'], GraphEdge>;
+  DROP: graphEdges[2],
+  GRAB: graphEdges[3],
+  RELEASE: graphEdges[2],
+  CANCEL: graphEdges[2],
+};
 
 const useStyles = makeStyles({
   root: {
@@ -260,12 +334,19 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Hover,
     },
   },
-  card: {
+  motionCard: {
     position: 'absolute',
     zIndex: 1,
     top: tokens.spacingVerticalL,
     left: 0,
     width: `calc((100% - 2 * ${tokens.spacingHorizontalM}) / 3)`,
+    minWidth: 0,
+    boxSizing: 'border-box',
+    borderRadius: tokens.borderRadiusMedium,
+    willChange: 'transform',
+  },
+  card: {
+    width: '100%',
     minWidth: 0,
     boxSizing: 'border-box',
     display: 'flex',
@@ -277,37 +358,26 @@ const useStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalS,
     borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
-    pointerEvents: 'none',
+    cursor: 'grab',
+    touchAction: 'none',
+    userSelect: 'none',
     willChange: 'transform',
   },
-  cardTitle: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: tokens.spacingHorizontalXS,
-    minWidth: 0,
+  cardDragging: {
+    cursor: 'grabbing',
+    userSelect: 'none',
   },
-  cardText: {
+  cardTitle: {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
-  cardMetadata: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.spacingVerticalXXS,
-    minWidth: 0,
-  },
-  cardMetadataRow: {
+  cardSubtitle: {
+    overflow: 'hidden',
     color: tokens.colorNeutralForeground3,
     lineHeight: tokens.lineHeightBase100,
-    '& strong': {
-      display: 'block',
-      overflow: 'hidden',
-      color: tokens.colorNeutralForeground1,
-      fontSize: tokens.fontSizeBase100,
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-    },
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   graphViewport: {
     width: '100%',
@@ -386,7 +456,12 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const runModeRef = React.useRef<RunMode>('idle');
   const destinationRef = React.useRef<Placement | undefined>(undefined);
   const sequenceIndexRef = React.useRef(0);
+  const stageRef = React.useRef<HTMLDivElement>(null);
+  const motionCardRef = React.useRef<HTMLDivElement>(null);
   const cardRef = React.useRef<HTMLDivElement>(null);
+  const slotRefs = React.useRef<Partial<Record<Placement, HTMLButtonElement>>>({});
+  const dragSessionRef = React.useRef<DragSession | undefined>(undefined);
+  const dragDestinationRef = React.useRef<Placement | undefined>(undefined);
   const retargetKeyframeRef = React.useRef<Keyframe | undefined>(undefined);
   const [transferAnimation] = React.useState<StateMotionAnimation>(() => ({
     keyframes: [{ state: 'current' }, { state: 'target' }],
@@ -401,6 +476,38 @@ export const StateMotionCardTransfer = (): JSXElement => {
       cardMachine,
       createCardSkin(transferAnimation),
     ),
+  );
+
+  const updateRowOffset = React.useCallback(() => {
+    const motionCard = motionCardRef.current;
+    const topSlot = slotRefs.current.topStart;
+    const bottomSlot = slotRefs.current.bottomStart;
+    if (motionCard && topSlot && bottomSlot) {
+      motionCard.style.setProperty('--card-transfer-row-offset', `${bottomSlot.offsetTop - topSlot.offsetTop}px`);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const stage = stageRef.current;
+    const targetWindow = stage?.ownerDocument.defaultView;
+    if (!stage || !targetWindow) {
+      return;
+    }
+
+    updateRowOffset();
+    const resizeObserver = new targetWindow.ResizeObserver(updateRowOffset);
+    resizeObserver.observe(stage);
+    return () => resizeObserver.disconnect();
+  }, [updateRowOffset]);
+
+  React.useEffect(
+    () => () => {
+      const session = dragSessionRef.current;
+      if (session) {
+        session.targetWindow.cancelAnimationFrame(session.frameId);
+      }
+    },
+    [],
   );
 
   const updateRunMode = React.useCallback((mode: RunMode) => {
@@ -496,7 +603,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
       updateRunMode('destination');
       const state = controller.getSnapshot().state;
       if (state === 'transferring') {
-        const element = cardRef.current;
+        const element = motionCardRef.current;
         const computedStyle = element?.ownerDocument.defaultView?.getComputedStyle(element);
         if (computedStyle) {
           retargetKeyframeRef.current = {
@@ -511,6 +618,157 @@ export const StateMotionCardTransfer = (): JSXElement => {
       continueToDestination(destination);
     },
     [continueToDestination, controller, updateDestination, updateRunMode],
+  );
+
+  const updateDragSession = React.useCallback((event: PointerEvent) => {
+    const session = dragSessionRef.current;
+    if (!session || session.pointerId !== event.pointerId) {
+      return;
+    }
+
+    session.latestPointer = { x: event.clientX, y: event.clientY };
+    const coalescedEvents = event.getCoalescedEvents?.() ?? [];
+    const pointerEvents = coalescedEvents.length > 0 ? coalescedEvents : [event];
+    for (const pointerEvent of pointerEvents) {
+      session.samples.push({ position: pointerEvent.clientX, time: pointerEvent.timeStamp });
+    }
+    const sampleCutoff = event.timeStamp - velocitySampleWindow * 2;
+    session.samples = session.samples.filter(sample => sample.time >= sampleCutoff);
+  }, []);
+
+  const finishDrag = React.useCallback(
+    (pointerId: number, cancelled: boolean) => {
+      const session = dragSessionRef.current;
+      if (!session || session.pointerId !== pointerId) {
+        return;
+      }
+
+      session.targetWindow.cancelAnimationFrame(session.frameId);
+      const destination = cancelled ? session.origin : getClosestPlacement(session);
+      const nextRoute = { origin: destination, destination: getNextPlacement(destination) };
+      const card = cardRef.current;
+      if (card) {
+        const startTransform = card.style.transform;
+        const duration = session.targetWindow.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : dropDuration;
+        const settleAnimation = card.animate(
+          [{ transform: startTransform }, { transform: 'translate3d(0, 0, 0) rotate(0deg)' }],
+          { duration, easing: backEaseOut, fill: 'forwards' },
+        );
+        settleAnimation.addEventListener('finish', () => {
+          card.style.transform = '';
+          settleAnimation.cancel();
+        });
+      }
+      dragSessionRef.current = undefined;
+      dragDestinationRef.current = undefined;
+      routeRef.current = nextRoute;
+      setRoute(nextRoute);
+      setRequestedDestination(undefined);
+      sendEvent({ type: cancelled ? 'CANCEL' : 'RELEASE' });
+    },
+    [sendEvent],
+  );
+
+  const handlePointerDown = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      if (event.button !== 0 || controller.getSnapshot().state !== 'dropped') {
+        return;
+      }
+
+      const targetWindow = event.currentTarget.ownerDocument.defaultView;
+      if (!targetWindow) {
+        return;
+      }
+      updateRowOffset();
+
+      const slotCenters: Partial<Record<Placement, Point>> = {};
+      for (const placement of placements) {
+        const slotElement = slotRefs.current[placement];
+        if (!slotElement) {
+          return;
+        }
+        const slotRect = slotElement.getBoundingClientRect();
+        slotCenters[placement] = {
+          x: slotRect.left + slotRect.width / 2,
+          y: slotRect.top + slotRect.height / 2,
+        };
+      }
+
+      event.preventDefault();
+      event.currentTarget.setPointerCapture(event.pointerId);
+      const cardRect = event.currentTarget.getBoundingClientRect();
+      const session: DragSession = {
+        pointerId: event.pointerId,
+        origin: routeRef.current.origin,
+        startPointer: { x: event.clientX, y: event.clientY },
+        latestPointer: { x: event.clientX, y: event.clientY },
+        startCardCenter: { x: cardRect.left + cardRect.width / 2, y: cardRect.top + cardRect.height / 2 },
+        slotCenters: slotCenters as Record<Placement, Point>,
+        samples: [{ position: event.clientX, time: event.timeStamp }],
+        smoothedVelocityX: 0,
+        previousFrameTime: event.timeStamp,
+        frameId: 0,
+        targetWindow,
+      };
+      dragSessionRef.current = session;
+      sendEvent({ type: 'GRAB' });
+      dragDestinationRef.current = session.origin;
+      setRequestedDestination(session.origin);
+
+      const drawFrame = (now: number) => {
+        const activeSession = dragSessionRef.current;
+        const element = cardRef.current;
+        if (!activeSession || activeSession.pointerId !== event.pointerId || !element) {
+          return;
+        }
+
+        const elapsed = Math.max(0, now - activeSession.previousFrameTime);
+        const velocityX = estimateVelocity(activeSession.samples, now, velocitySampleWindow);
+        activeSession.smoothedVelocityX = smoothVelocity(
+          activeSession.smoothedVelocityX,
+          velocityX,
+          elapsed,
+          velocitySmoothingTime,
+        );
+        activeSession.previousFrameTime = now;
+
+        const offsetX = activeSession.latestPointer.x - activeSession.startPointer.x;
+        const offsetY = activeSession.latestPointer.y - activeSession.startPointer.y;
+        const rotation = Math.min(
+          Math.max(activeSession.smoothedVelocityX * rotationPerVelocity, -maximumRotation),
+          maximumRotation,
+        );
+        element.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) rotate(${rotation}deg)`;
+
+        const destination = getClosestPlacement(activeSession);
+        if (dragDestinationRef.current !== destination) {
+          dragDestinationRef.current = destination;
+          setRequestedDestination(destination);
+        }
+        activeSession.frameId = targetWindow.requestAnimationFrame(drawFrame);
+      };
+
+      session.frameId = targetWindow.requestAnimationFrame(drawFrame);
+    },
+    [controller, sendEvent, updateRowOffset],
+  );
+
+  const handlePointerMove = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => updateDragSession(event.nativeEvent),
+    [updateDragSession],
+  );
+
+  const handlePointerUp = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      updateDragSession(event.nativeEvent);
+      finishDrag(event.pointerId, false);
+    },
+    [finishDrag, updateDragSession],
+  );
+
+  const handlePointerCancel = React.useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => finishDrag(event.pointerId, true),
+    [finishDrag],
   );
 
   const handleMotionFinish = React.useCallback(
@@ -541,7 +799,9 @@ export const StateMotionCardTransfer = (): JSXElement => {
   const activeEdge = snapshot.animation ? edgeByEvent[snapshot.animation.event.type] : graphEdges[0];
   const activeNode = snapshot.state;
   const occupiedPlacement =
-    activeNode === 'dropped' || activeNode === 'lifting' || activeNode === 'dropping' ? route.origin : undefined;
+    activeNode === 'dropped' || activeNode === 'lifting' || activeNode === 'pickingUp' || activeNode === 'dropping'
+      ? route.origin
+      : undefined;
   const availableEvents = cardMachine.states[activeNode].on;
   const markerId = 'card-transfer-arrow';
 
@@ -560,16 +820,24 @@ export const StateMotionCardTransfer = (): JSXElement => {
               {eventType[0] + eventType.slice(1).toLowerCase()}
             </Button>
           ))}
-          <Button icon={<ReplayFilled />} disabled={runMode === 'replay'} onClick={startSequence} size="small">
+          <Button
+            icon={<ReplayFilled />}
+            disabled={runMode === 'replay' || activeNode === 'dragging'}
+            onClick={startSequence}
+            size="small"
+          >
             Replay
           </Button>
         </div>
       </div>
 
-      <div className={styles.stage}>
-        {(['start', 'middle', 'end'] as const).map(placement => (
+      <div ref={stageRef} className={styles.stage}>
+        {placements.map(placement => (
           <button
             key={placement}
+            ref={element => {
+              slotRefs.current[placement] = element ?? undefined;
+            }}
             type="button"
             className={mergeClasses(
               styles.slot,
@@ -577,7 +845,11 @@ export const StateMotionCardTransfer = (): JSXElement => {
               occupiedPlacement !== placement && styles.slotInteractive,
             )}
             disabled={occupiedPlacement === placement}
-            aria-label={occupiedPlacement === placement ? `${placement} origin` : `Transfer card to ${placement}`}
+            aria-label={
+              occupiedPlacement === placement
+                ? `${placementLabels[placement]} origin`
+                : `Transfer card to ${placementLabels[placement]}`
+            }
             onBlur={() => setHoveredPlacement(undefined)}
             onClick={() => transferToDestination(placement)}
             onFocus={() => setHoveredPlacement(placement)}
@@ -597,28 +869,35 @@ export const StateMotionCardTransfer = (): JSXElement => {
         ))}
 
         <CardMotion context={route} controller={controller} onMotionFinish={handleMotionFinish}>
-          <Card ref={cardRef} className={styles.card} appearance="filled">
-            <div className={styles.cardTitle}>
-              <Text className={styles.cardText} weight="semibold">
-                Motion spec
+          <div ref={motionCardRef} className={styles.motionCard}>
+            <Card
+              ref={cardRef}
+              className={mergeClasses(
+                styles.card,
+                (activeNode === 'pickingUp' || activeNode === 'dragging') && styles.cardDragging,
+              )}
+              appearance="filled"
+              onLostPointerCapture={handlePointerCancel}
+              onPointerCancel={handlePointerCancel}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+            >
+              <Text className={styles.cardTitle} weight="semibold">
+                State: {activeNode}
               </Text>
-            </div>
-            <div className={styles.cardMetadata} aria-live="polite">
-              <Caption1 className={styles.cardMetadataRow}>
-                State: <strong>{activeNode}</strong>
+              <Caption1 className={styles.cardSubtitle} aria-live="polite">
+                Animation: {snapshot.animation ? activeEdge.animation : 'none'}
               </Caption1>
-              <Caption1 className={styles.cardMetadataRow}>
-                Animation: <strong>{snapshot.animation ? activeEdge.animation : 'none'}</strong>
-              </Caption1>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </CardMotion>
       </div>
 
       <div className={styles.graphViewport}>
         <svg
           className={styles.graph}
-          viewBox="0 0 810 330"
+          viewBox="0 0 810 390"
           role="img"
           aria-labelledby="card-transfer-title card-transfer-description"
         >

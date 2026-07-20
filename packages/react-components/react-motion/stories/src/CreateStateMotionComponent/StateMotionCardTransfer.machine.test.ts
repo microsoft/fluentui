@@ -3,20 +3,23 @@ import { createStateMotionController } from '../../../library/src/state/createSt
 import { InterruptibleScalar } from './createInterruptibleScalar';
 import { cardMachine, type CardEvent, type CardState } from './StateMotionCardTransfer.machine';
 
-const eventTypes: CardEvent['type'][] = ['LIFT', 'TRANSFER', 'RETARGET', 'DROP'];
+const eventTypes: CardEvent['type'][] = ['LIFT', 'TRANSFER', 'RETARGET', 'DROP', 'GRAB', 'RELEASE', 'CANCEL'];
 
 const legalTransitions: Record<CardState, Partial<Record<CardEvent['type'], CardState>>> = {
-  dropped: { LIFT: 'lifting' },
+  dropped: { LIFT: 'lifting', GRAB: 'pickingUp' },
   lifting: { DROP: 'dropping' },
   lifted: { TRANSFER: 'transferring', DROP: 'dropping' },
   transferring: { RETARGET: 'transferring', DROP: 'dropping' },
   transferred: { DROP: 'dropping' },
+  pickingUp: { RELEASE: 'dropping', CANCEL: 'dropping' },
+  dragging: { RELEASE: 'dropping', CANCEL: 'dropping' },
   dropping: { LIFT: 'lifting' },
 };
 
 const animationTargets: Partial<Record<CardState, CardState>> = {
   lifting: 'lifted',
   transferring: 'transferred',
+  pickingUp: 'dragging',
   dropping: 'dropped',
 };
 
@@ -48,7 +51,7 @@ describe('cardMachine', () => {
           animation: animationTargets[expectedState]
             ? {
                 id: 1,
-                source: expectedState,
+                source,
                 target: animationTargets[expectedState],
                 event: { type: eventType },
               }
@@ -72,6 +75,41 @@ describe('cardMachine', () => {
     expect(controller.send({ type: 'DROP' })).toBe(true);
     expect(controller.completeAnimation(3)).toBe(true);
     expect(controller.getSnapshot()).toEqual({ state: 'dropped', animation: undefined });
+  });
+
+  it('lifts into dragging after the card is grabbed', () => {
+    const controller = createStateMotionController(cardMachine);
+
+    expect(controller.send({ type: 'GRAB' })).toBe(true);
+    expect(controller.getSnapshot()).toEqual({
+      state: 'pickingUp',
+      animation: { id: 1, source: 'dropped', target: 'dragging', event: { type: 'GRAB' } },
+    });
+    expect(controller.completeAnimation(1)).toBe(true);
+    expect(controller.getSnapshot()).toEqual({ state: 'dragging', animation: undefined });
+  });
+
+  it.each(['RELEASE', 'CANCEL'] as const)('can end a pickup early through %s', eventType => {
+    const controller = createStateMotionController(cardMachine);
+    controller.send({ type: 'GRAB' });
+
+    expect(controller.send({ type: eventType })).toBe(true);
+    expect(controller.getSnapshot()).toEqual({
+      state: 'dropping',
+      animation: { id: 2, source: 'pickingUp', target: 'dropped', event: { type: eventType } },
+    });
+    expect(controller.completeAnimation(1)).toBe(false);
+    expect(controller.completeAnimation(2)).toBe(true);
+  });
+
+  it.each(['RELEASE', 'CANCEL'] as const)('drops from dragging through %s', eventType => {
+    const controller = createStateMotionController(cardMachine, { initialState: 'dragging' });
+
+    expect(controller.send({ type: eventType })).toBe(true);
+    expect(controller.getSnapshot()).toEqual({
+      state: 'dropping',
+      animation: { id: 1, source: 'dragging', target: 'dropped', event: { type: eventType } },
+    });
   });
 
   it('assigns a new identity to every mid-flight retarget and ignores stale completions', () => {
