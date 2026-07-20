@@ -69,25 +69,28 @@ export const useTreeItemLayout_unstable = (
 
   const mainSlot = slot.always(main, { elementType: 'div' });
   const mainContentId = useId('fui-TreeItemLayout__main-', mainSlot.id);
+  mainSlot.id = mainContentId;
+
+  const selectorDefaultProps: CheckboxProps | RadioProps = {
+    checked,
+    tabIndex: -1,
+    ref: selectionRef,
+    // casting here to a union between checkbox and radio
+    // since ref is not present on the selector signature
+    // FIXME: look into Slot type to see if we can make this work
+  };
+
+  // Only set aria-labelledby if the consumer didn't provide aria-label or aria-labelledby
+  const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
+  if (!selectorShorthand?.['aria-label'] && !selectorShorthand?.['aria-labelledby']) {
+    selectorDefaultProps['aria-labelledby'] = mainContentId;
+  }
 
   const selector = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
-    defaultProps: {
-      checked,
-      tabIndex: -1,
-      ref: selectionRef,
-      // casting here to a union between checkbox and radio
-      // since ref is not present on the selector signature
-      // FIXME: look into Slot type to see if we can make this work
-    } as CheckboxProps | RadioProps,
+    defaultProps: selectorDefaultProps,
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
-  if (selector) {
-    mainSlot.id = mainContentId;
-    if (!selector['aria-label'] && !selector['aria-labelledby']) {
-      selector['aria-labelledby'] = mainContentId;
-    }
-  }
 
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
   // eslint-disable-next-line react-hooks/refs
