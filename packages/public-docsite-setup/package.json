@@ -20,7 +20,7 @@
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",
     "just": "yarn run -T just-scripts",
-    "lint": "yarn run -T just-scripts lint && eslint ./bin/*.js ./scripts/*.js"
+    "lint": "yarn run -T just-scripts lint && yarn run -T eslint ./bin/*.js ./scripts/*.js"
   },
   "license": "MIT"
 }

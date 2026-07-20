@@ -32,7 +32,7 @@
     "build": "yarn run -T just-scripts build",
     "prebundle": "yarn build",
     "bundle": "yarn run -T just-scripts bundle",
-    "lint": "eslint --ext .js,.ts,.tsx ./src",
+    "lint": "yarn run -T eslint --ext .js,.ts,.tsx ./src",
     "just": "yarn run -T just-scripts",
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",

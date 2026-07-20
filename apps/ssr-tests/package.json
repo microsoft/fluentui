@@ -4,7 +4,7 @@
   "description": "Server-side rendering tests for @fluentui/react.",
   "private": true,
   "scripts": {
-    "type-check": "tsc -p . --noEmit --baseUrl .",
+    "type-check": "yarn run -T tsc -p . --noEmit --baseUrl .",
     "bundle": "yarn run -T just-scripts bundle",
     "test-ssr": "yarn run -T just-scripts test"
   },

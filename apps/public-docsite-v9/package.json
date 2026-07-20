@@ -14,9 +14,9 @@
     "lint": "yarn run -T just-scripts lint",
     "type-check": "yarn run -T just-scripts type-check",
     "start": "yarn storybook:docs",
-    "storybook": "storybook dev --port 3000",
+    "storybook": "yarn run -T storybook dev --port 3000",
     "storybook:docs": "yarn storybook --docs",
-    "test": "jest --passWithNoTests"
+    "test": "yarn run -T jest --passWithNoTests"
   },
   "dependencies": {
     "@fluentui/react": "*",
