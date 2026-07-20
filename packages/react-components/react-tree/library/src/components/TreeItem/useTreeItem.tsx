@@ -123,8 +123,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       if (typeof onClick === 'function') {
         onClick(event);
       }
-      // if onClick is not defined and the treeitem is selectable, then we should toggle the selection state on click
-      else if (selectionMode !== 'none') {
+      // if onClick is not defined and this is not an expand/collapse node and the treeitem is selectable,
+      // then we should toggle the selection state on click
+      else if (selectionMode !== 'none' && itemType === 'leaf') {
         selectionRef.current?.click();
       }
     }
