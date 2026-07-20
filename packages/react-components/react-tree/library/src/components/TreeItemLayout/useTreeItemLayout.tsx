@@ -67,15 +67,13 @@ export const useTreeItemLayout_unstable = (
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
-  const mainSlot = slot.always(main, {
-    defaultProps: { id: useId('fui-TreeItemLayout__main-') },
-    elementType: 'div',
-  });
+  const mainShorthand = isResolvedShorthand(main) ? main : undefined;
+  const mainContentId = useId('fui-TreeItemLayout__main-', mainShorthand?.id);
 
   // Link the selector to the main content unless the consumer provided aria-label or aria-labelledby
   const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
   const selectorAriaLabelledBy =
-    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainSlot.id;
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainContentId;
 
   const selector = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
@@ -90,6 +88,11 @@ export const useTreeItemLayout_unstable = (
     } as CheckboxProps | RadioProps,
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
+  const mainSlot = slot.always(main, {
+    defaultProps: { id: selector ? mainContentId : undefined },
+    elementType: 'div',
+  });
+
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
   // eslint-disable-next-line react-hooks/refs
   assertIsRefObject(treeItemRef);
