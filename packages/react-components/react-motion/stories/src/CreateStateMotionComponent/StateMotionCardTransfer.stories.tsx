@@ -18,7 +18,7 @@ import {
 import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-import { createDragPresentation, createDropAnimation } from './createDragMotion';
+import { applyDragPresentation, createDropAnimation, releaseDragPresentation } from './createDragMotion';
 import { estimateVelocity, smoothVelocity, type PositionSample } from './createDragVelocity';
 import { baseTransferEasing, InterruptibleScalar } from './createInterruptibleScalar';
 import { cardMachine, type CardAnimation, type CardEvent, type CardState } from './StateMotionCardTransfer.machine';
@@ -59,6 +59,7 @@ const velocitySampleWindow = 80;
 const velocitySmoothingTime = 40;
 const rotationPerVelocity = 0.006;
 const maximumRotation = 7;
+const showOnlyDraggingFlowGraph = true;
 
 const getPlacementX = (placement: Placement): string => {
   if (placement === 'topMiddle' || placement === 'bottomMiddle') {
@@ -244,6 +245,40 @@ const eventEdges = [
   { event: 'RELEASE / CANCEL', path: 'M 285 284 C 410 360 610 350 725 228', labelX: 485, labelY: 348 },
 ] as const;
 
+const dragGraphNodes: Array<{ id: CardState; x: number; y: number }> = [
+  { id: 'dropped', x: 60, y: 40 },
+  { id: 'pickingUp', x: 470, y: 40 },
+  { id: 'dragging', x: 470, y: 212 },
+  { id: 'dropping', x: 60, y: 212 },
+];
+
+const dragEventEdges = [
+  { event: 'GRAB', path: 'M 170 64 C 270 64 370 64 470 64', labelX: 320, labelY: 52 },
+  { event: 'RELEASE / CANCEL', path: 'M 470 236 C 370 236 270 236 170 236', labelX: 320, labelY: 264 },
+] as const;
+
+const dragGraphEdges: GraphEdge[] = [
+  {
+    event: 'GRAB',
+    animation: 'lifting',
+    path: 'M 525 88 C 525 129 525 171 525 212',
+    labelX: 554,
+    labelY: 153,
+  },
+  {
+    event: 'DROP',
+    animation: 'dropping',
+    path: 'M 115 212 C 115 171 115 129 115 88',
+    labelX: 86,
+    labelY: 153,
+  },
+];
+
+const visibleGraphNodes = showOnlyDraggingFlowGraph ? dragGraphNodes : graphNodes;
+const visibleEventEdges = showOnlyDraggingFlowGraph ? dragEventEdges : eventEdges;
+const visibleGraphEdges = showOnlyDraggingFlowGraph ? dragGraphEdges : graphEdges;
+const graphViewBox = showOnlyDraggingFlowGraph ? '0 0 640 300' : '0 0 810 390';
+
 const edgeByEvent: Record<CardEvent['type'], GraphEdge> = {
   LIFT: graphEdges[0],
   TRANSFER: graphEdges[1],
@@ -320,6 +355,9 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     fontWeight: tokens.fontWeightSemibold,
   },
+  slotStateDestination: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
   slotActive: {
     borderTopColor: tokens.colorBrandStroke1,
     borderRightColor: tokens.colorBrandStroke1,
@@ -327,6 +365,9 @@ const useStyles = makeStyles({
     borderLeftColor: tokens.colorBrandStroke1,
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorNeutralForeground1,
+  },
+  slotDestination: {
+    backgroundColor: tokens.colorBrandBackground2,
   },
   slotInteractive: {
     cursor: 'pointer',
@@ -472,7 +513,6 @@ export const StateMotionCardTransfer = (): JSXElement => {
         duration: dropDuration,
         settleOffset: 0.6,
         settleEasing: motionTokens.curveDecelerateMid,
-        dropEasing: motionTokens.curveDecelerateMid,
       },
     ),
   );
@@ -565,12 +605,12 @@ export const StateMotionCardTransfer = (): JSXElement => {
           duration: dropDuration,
           settleOffset: 0.6,
           settleEasing: motionTokens.curveDecelerateMid,
-          dropEasing: motionTokens.curveDecelerateMid,
         },
       );
       dropAnimation.keyframes = nextAnimation.keyframes;
       dropAnimation.duration = nextAnimation.duration;
       dropAnimation.easing = nextAnimation.easing;
+      releaseDragPresentation(card.style);
     },
     [dropAnimation],
   );
@@ -767,10 +807,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
           Math.max(activeSession.smoothedVelocityX * rotationPerVelocity, -maximumRotation),
           maximumRotation,
         );
-        Object.assign(
-          element.style,
-          createDragPresentation({ offsetX, offsetY, rotation, boxShadow: tokens.shadow16 }),
-        );
+        applyDragPresentation(element.style, { offsetX, offsetY, rotation, boxShadow: tokens.shadow16 });
 
         const destination = getClosestPlacement(activeSession);
         if (dragDestinationRef.current !== destination) {
@@ -829,6 +866,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
   );
 
   const activeEdge = snapshot.animation ? edgeByEvent[snapshot.animation.event.type] : graphEdges[0];
+  const activeGraphEdge = visibleGraphEdges.find(edge => edge.event === activeEdge.event);
   const activeNode = snapshot.state;
   const occupiedPlacement =
     activeNode === 'dropped' || activeNode === 'lifting' || activeNode === 'pickingUp' || activeNode === 'dropping'
@@ -864,41 +902,47 @@ export const StateMotionCardTransfer = (): JSXElement => {
       </div>
 
       <div ref={stageRef} className={styles.stage}>
-        {placements.map(placement => (
-          <button
-            key={placement}
-            ref={element => {
-              slotRefs.current[placement] = element ?? undefined;
-            }}
-            type="button"
-            className={mergeClasses(
-              styles.slot,
-              occupiedPlacement === placement && styles.slotActive,
-              occupiedPlacement !== placement && styles.slotInteractive,
-            )}
-            disabled={occupiedPlacement === placement}
-            aria-label={
-              occupiedPlacement === placement
-                ? `${placementLabels[placement]} origin`
-                : `Transfer card to ${placementLabels[placement]}`
-            }
-            onBlur={() => setHoveredPlacement(undefined)}
-            onClick={() => transferToDestination(placement)}
-            onFocus={() => setHoveredPlacement(placement)}
-            onMouseEnter={() => setHoveredPlacement(placement)}
-            onMouseLeave={() => setHoveredPlacement(undefined)}
-          >
-            <Caption1
-              className={mergeClasses(styles.slotState, occupiedPlacement === placement && styles.slotStateActive)}
+        {placements.map(placement => {
+          const isDestination =
+            occupiedPlacement !== placement && (hoveredPlacement === placement || requestedDestination === placement);
+
+          return (
+            <button
+              key={placement}
+              ref={element => {
+                slotRefs.current[placement] = element ?? undefined;
+              }}
+              type="button"
+              className={mergeClasses(
+                styles.slot,
+                occupiedPlacement === placement && styles.slotActive,
+                occupiedPlacement !== placement && styles.slotInteractive,
+                isDestination && styles.slotDestination,
+              )}
+              disabled={occupiedPlacement === placement}
+              aria-label={
+                occupiedPlacement === placement
+                  ? `${placementLabels[placement]} origin`
+                  : `Transfer card to ${placementLabels[placement]}`
+              }
+              onBlur={() => setHoveredPlacement(undefined)}
+              onClick={() => transferToDestination(placement)}
+              onFocus={() => setHoveredPlacement(placement)}
+              onMouseEnter={() => setHoveredPlacement(placement)}
+              onMouseLeave={() => setHoveredPlacement(undefined)}
             >
-              {occupiedPlacement === placement
-                ? 'origin'
-                : hoveredPlacement === placement || requestedDestination === placement
-                ? 'destination'
-                : 'available'}
-            </Caption1>
-          </button>
-        ))}
+              <Caption1
+                className={mergeClasses(
+                  styles.slotState,
+                  occupiedPlacement === placement && styles.slotStateActive,
+                  isDestination && styles.slotStateDestination,
+                )}
+              >
+                {occupiedPlacement === placement ? 'origin' : isDestination ? 'destination' : 'available'}
+              </Caption1>
+            </button>
+          );
+        })}
 
         <CardMotion context={route} controller={controller} onMotionFinish={handleMotionFinish}>
           <Card
@@ -927,13 +971,17 @@ export const StateMotionCardTransfer = (): JSXElement => {
       <div className={styles.graphViewport}>
         <svg
           className={styles.graph}
-          viewBox="0 0 810 390"
+          viewBox={graphViewBox}
           role="img"
           aria-labelledby="card-transfer-title card-transfer-description"
         >
-          <title id="card-transfer-title">Card transfer state graph</title>
+          <title id="card-transfer-title">
+            {showOnlyDraggingFlowGraph ? 'Card drag state graph' : 'Card transfer state graph'}
+          </title>
           <desc id="card-transfer-description">
-            Stable and active states connected by a forward cycle. The active animation fills as it progresses.
+            {showOnlyDraggingFlowGraph
+              ? 'The states and transitions used to pick up, drag, and drop the card.'
+              : 'Stable and active states connected by a forward cycle. The active animation fills as it progresses.'}
           </desc>
           <defs>
             <marker id={markerId} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
@@ -941,7 +989,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
             </marker>
           </defs>
 
-          {eventEdges.map(edge => (
+          {visibleEventEdges.map(edge => (
             <React.Fragment key={edge.event}>
               <path className={styles.edge} d={edge.path} markerEnd={`url(#${markerId})`} />
               <text className={styles.edgeLabel} x={edge.labelX} y={edge.labelY} textAnchor="middle">
@@ -950,7 +998,7 @@ export const StateMotionCardTransfer = (): JSXElement => {
             </React.Fragment>
           ))}
 
-          {graphEdges.map(edge => (
+          {visibleGraphEdges.map(edge => (
             <React.Fragment key={edge.event}>
               <path
                 className={mergeClasses(styles.edge, styles.eventEdge)}
@@ -966,14 +1014,14 @@ export const StateMotionCardTransfer = (): JSXElement => {
           <GraphMotion completeAnimation={false} controller={controller}>
             <path
               className={styles.edgeProgress}
-              d={activeEdge.path}
+              d={activeGraphEdge?.path ?? activeEdge.path}
               pathLength={1}
-              visibility={snapshot.animation ? 'visible' : 'hidden'}
+              visibility={snapshot.animation && activeGraphEdge ? 'visible' : 'hidden'}
               aria-hidden="true"
             />
           </GraphMotion>
 
-          {graphNodes.map(node => (
+          {visibleGraphNodes.map(node => (
             <React.Fragment key={node.id}>
               <rect
                 className={mergeClasses(styles.node, activeNode === node.id && styles.nodeActive)}

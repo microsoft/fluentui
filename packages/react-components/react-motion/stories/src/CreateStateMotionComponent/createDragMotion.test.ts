@@ -1,4 +1,10 @@
-import { createDragPresentation, createDropAnimation } from './createDragMotion';
+import {
+  applyDragPresentation,
+  createDragPresentation,
+  createDropAnimation,
+  dropScaleEasing,
+  releaseDragPresentation,
+} from './createDragMotion';
 
 describe('createDragPresentation', () => {
   it('keeps the lifted shadow on the same translated presentation as the card', () => {
@@ -15,10 +21,45 @@ describe('createDragPresentation', () => {
       boxShadow: 'lifted-shadow',
     });
   });
+
+  it('keeps pointer translation and rotation above the pickup animation until release', () => {
+    const priorities = new Map<string, string>();
+    const style = {
+      translate: '',
+      rotate: '',
+      boxShadow: '',
+      setProperty(property: string, value: string | null, priority = '') {
+        if (property === 'translate' || property === 'rotate' || property === 'boxShadow') {
+          this[property] = value ?? '';
+        }
+        priorities.set(property, priority);
+      },
+      getPropertyPriority: (property: string) => priorities.get(property) ?? '',
+    };
+
+    applyDragPresentation(style, {
+      offsetX: 240,
+      offsetY: 120,
+      rotation: 6,
+      boxShadow: 'lifted-shadow',
+    });
+
+    expect(style.getPropertyPriority('translate')).toBe('important');
+    expect(style.getPropertyPriority('rotate')).toBe('important');
+
+    releaseDragPresentation(style);
+
+    expect(style.translate).toBe('240px 120px');
+    expect(style.rotate).toBe('6deg');
+    expect(style.getPropertyPriority('translate')).toBe('');
+    expect(style.getPropertyPriority('rotate')).toBe('');
+  });
 });
 
 describe('createDropAnimation', () => {
-  it('sequences one complete visual snapshot into the resting state', () => {
+  it('aligns position without overshoot before Back-easing the scale into rest', () => {
+    expect(dropScaleEasing).toBe('cubic-bezier(.33, 2.632, .67, 1)');
+
     expect(
       createDropAnimation(
         {
@@ -33,7 +74,6 @@ describe('createDropAnimation', () => {
           duration: 200,
           settleOffset: 0.6,
           settleEasing: 'settle-easing',
-          dropEasing: 'drop-easing',
         },
       ),
     ).toEqual({
@@ -51,7 +91,7 @@ describe('createDropAnimation', () => {
           rotate: '0deg',
           boxShadow: 'lifted-shadow',
           offset: 0.6,
-          easing: 'drop-easing',
+          easing: dropScaleEasing,
         },
         { state: 'target' },
       ],

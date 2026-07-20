@@ -7,13 +7,19 @@ type DragPresentationOptions = {
   boxShadow: string;
 };
 
+type DragPresentationStyle = Pick<
+  CSSStyleDeclaration,
+  'translate' | 'rotate' | 'boxShadow' | 'setProperty' | 'getPropertyPriority'
+>;
+
 type DropAnimationOptions = Pick<StateMotionAnimation, 'duration'> & {
   destinationTransform: string;
   liftedShadow: string;
   settleOffset: number;
   settleEasing: string;
-  dropEasing: string;
 };
+
+export const dropScaleEasing = 'cubic-bezier(.33, 2.632, .67, 1)';
 
 export const createDragPresentation = ({
   offsetX,
@@ -26,9 +32,24 @@ export const createDragPresentation = ({
   boxShadow,
 });
 
+export const applyDragPresentation = (style: DragPresentationStyle, options: DragPresentationOptions): void => {
+  const presentation = createDragPresentation(options);
+  style.setProperty('translate', String(presentation.translate), 'important');
+  style.setProperty('rotate', String(presentation.rotate), 'important');
+  style.boxShadow = String(presentation.boxShadow);
+};
+
+export const releaseDragPresentation = (style: DragPresentationStyle): void => {
+  for (const property of ['translate', 'rotate'] as const) {
+    if (style.getPropertyPriority(property) === 'important') {
+      style.setProperty(property, style[property]);
+    }
+  }
+};
+
 export const createDropAnimation = (
   current: Keyframe,
-  { destinationTransform, liftedShadow, duration, settleOffset, settleEasing, dropEasing }: DropAnimationOptions,
+  { destinationTransform, liftedShadow, duration, settleOffset, settleEasing }: DropAnimationOptions,
 ): StateMotionAnimation => ({
   keyframes: [
     { ...current, easing: settleEasing },
@@ -38,7 +59,7 @@ export const createDropAnimation = (
       rotate: '0deg',
       boxShadow: liftedShadow,
       offset: settleOffset,
-      easing: dropEasing,
+      easing: dropScaleEasing,
     },
     { state: 'target' },
   ],
