@@ -1,10 +1,8 @@
 import { join, resolve } from 'node:path';
 import baseConfig from '<%= relativePathToProjectRoot %>/<%= cypress.pathToProjectConfig %>';
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI)
 const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
-const workspaceRoot = resolve(join(__dirname, '<%= relativePathToWorkspaceRoot %>'));
 
 const config = { ...baseConfig };
 
@@ -13,25 +11,9 @@ const specs = [
 ];
 
 config.component.specPattern = specs;
-
-const baseWebpackConfig = config.component.devServer.webpackConfig;
-baseWebpackConfig.resolve ??= {};
-baseWebpackConfig.resolve.plugins ??= [];
-
-// Remove the broken TsconfigPathsPlugin from baseConfig (it has relative paths invalid in RIT context)
-baseWebpackConfig.resolve.plugins = baseWebpackConfig.resolve.plugins?.filter(
-  (plugin) => !(plugin instanceof TsconfigPathsPlugin)
-) ?? [];
-
-// Add corrected TsconfigPathsPlugin with absolute workspace root path
-baseWebpackConfig.resolve.plugins.push(
-  new TsconfigPathsPlugin({
-    configFile: resolve(workspaceRoot, 'tsconfig.base.json'),
-  })
-);
-
-baseWebpackConfig.resolve.alias = {
-  ...baseWebpackConfig.resolve.alias,
+config.component.devServer.webpackConfig.resolve ??= {};
+config.component.devServer.webpackConfig.resolve.alias = {
+  ...config.component.devServer.webpackConfig.resolve.alias,
   '@cypress/react': resolve(usedNodeModulesPath, './@cypress/react'),
   '@types/react': resolve(usedNodeModulesPath, './@types/react'),
   '@types/react-dom': resolve(usedNodeModulesPath, './@types/react-dom'),
