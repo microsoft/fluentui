@@ -22,11 +22,11 @@ function createElementMock() {
     persist: jest.fn(),
     finish: finishMock,
 
-    set onfinish(fn: () => void) {
-      fn();
+    set onfinish(fn: (() => void) | null) {
+      fn?.();
     },
-    set oncancel(fn: () => void) {
-      fn();
+    set oncancel(fn: (() => void) | null) {
+      fn?.();
     },
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {

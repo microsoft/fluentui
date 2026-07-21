@@ -22,6 +22,9 @@ const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
  * @param animations
  */
 function createHandle(animations: Animation[]): AnimationHandle {
+  let callbackGeneration = 0;
+  let disposed = false;
+
   return {
     set playbackRate(rate: number) {
       animations.forEach(animation => {
@@ -32,32 +35,65 @@ function createHandle(animations: Animation[]): AnimationHandle {
       // Heads up!
       // This could use "Animation:finished", but it's causing a memory leak in Chromium.
       // See: https://issues.chromium.org/u/2/issues/383016426
-      const promises = animations.map(animation => {
-        return new Promise<void>((resolve, reject) => {
-          animation.onfinish = () => resolve();
-          animation.oncancel = () => reject();
-        });
+      if (disposed) {
+        return;
+      }
+
+      const generation = ++callbackGeneration;
+      const finishedAnimations = new Set(animations.filter(animation => animation.playState === 'finished'));
+      let settled = false;
+      const settle = (callback: () => void) => {
+        if (settled || generation !== callbackGeneration) {
+          return;
+        }
+        settled = true;
+        callback();
+      };
+
+      animations.forEach(animation => {
+        animation.onfinish = () => {
+          finishedAnimations.add(animation);
+          if (finishedAnimations.size === animations.length) {
+            settle(onfinish);
+          }
+        };
+        animation.oncancel = () => settle(oncancel);
       });
 
-      Promise.all(promises)
-        .then(() => {
-          onfinish();
-        })
-        .catch(() => {
-          oncancel();
-        });
+      if (animations.length === 0) {
+        Promise.resolve().then(() => settle(onfinish));
+      } else if (finishedAnimations.size === animations.length) {
+        settle(onfinish);
+      } else if (animations.some(animation => animation.playState === 'idle')) {
+        settle(oncancel);
+      }
     },
     isRunning() {
       return animations.some(animation => isAnimationRunning(animation));
     },
 
     dispose: () => {
+      disposed = true;
+      callbackGeneration++;
+      animations.forEach(animation => {
+        animation.onfinish = null;
+        animation.oncancel = null;
+      });
       animations.length = 0;
     },
 
     cancel: () => {
       animations.forEach(animation => {
         animation.cancel();
+      });
+    },
+    commitStyles: () => {
+      animations.forEach(animation => {
+        try {
+          animation.commitStyles?.();
+        } catch {
+          // Some browsers throw when an animation is no longer replaceable.
+        }
       });
     },
     pause: () => {
@@ -200,6 +236,9 @@ function useAnimateAtomsInTestEnvironment() {
         },
 
         cancel() {
+          /* no-op */
+        },
+        commitStyles() {
           /* no-op */
         },
         pause() {
