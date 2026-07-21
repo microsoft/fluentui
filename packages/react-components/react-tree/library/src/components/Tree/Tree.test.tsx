@@ -114,12 +114,12 @@ describe('Tree', () => {
 
       const selector = screen.getByRole('checkbox', { name: 'Item 1' });
       const mainId = selector.getAttribute('aria-labelledby');
-      const main = document.getElementById('custom-layout');
+      const layout = document.getElementById('custom-layout');
+      const main = document.getElementById('lower-priority-main-id');
 
-      expect(mainId).toBe('custom-layout');
+      expect(layout?.classList.contains('fui-TreeItemLayout')).toBe(true);
+      expect(mainId).toBe('lower-priority-main-id');
       expect(main?.classList.contains('fui-TreeItemLayout__main')).toBe(true);
-      expect(document.querySelectorAll('#custom-layout')).toHaveLength(1);
-      expect(document.getElementById('lower-priority-main-id')).toBeNull();
     });
 
     it('preserves a consumer-provided selector aria-label', () => {

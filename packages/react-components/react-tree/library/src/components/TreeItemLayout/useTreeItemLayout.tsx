@@ -39,7 +39,7 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { main, iconAfter, iconBefore, id, ...rootProps } = props;
+  const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
@@ -68,8 +68,7 @@ export const useTreeItemLayout_unstable = (
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
 
   const mainShorthand = isResolvedShorthand(main) ? main : undefined;
-  const mainContentId = useId('fui-TreeItemLayout__main-', id ?? mainShorthand?.id);
-  const mainWithResolvedId = id && mainShorthand ? { ...mainShorthand, id: mainContentId } : main;
+  const mainContentId = useId('fui-TreeItemLayout__main-', mainShorthand?.id);
 
   // Link the selector to the main content unless the consumer provided an accessible name
   const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
@@ -89,8 +88,8 @@ export const useTreeItemLayout_unstable = (
     } as CheckboxProps | RadioProps,
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
-  const mainSlot = slot.always(mainWithResolvedId, {
-    defaultProps: { id: selector || id ? mainContentId : undefined },
+  const mainSlot = slot.always(main, {
+    defaultProps: { id: selector ? mainContentId : undefined },
     elementType: 'div',
   });
 
@@ -248,7 +247,7 @@ export const useTreeItemLayout_unstable = (
     buttonContextValue: { size: 'small' },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ...rootProps,
+        ...props,
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
