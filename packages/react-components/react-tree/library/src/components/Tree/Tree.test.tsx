@@ -105,18 +105,21 @@ describe('Tree', () => {
       render(
         <Tree aria-label="Tree" selectionMode="multiselect">
           <TreeItem itemType="leaf" value="item1">
-            <TreeItemLayout id="custom-layout">Item 1</TreeItemLayout>
+            <TreeItemLayout id="custom-layout" main={{ id: 'lower-priority-main-id' }}>
+              Item 1
+            </TreeItemLayout>
           </TreeItem>
         </Tree>,
       );
 
-      const layout = document.getElementById('custom-layout');
       const selector = screen.getByRole('checkbox', { name: 'Item 1' });
       const mainId = selector.getAttribute('aria-labelledby');
+      const main = document.getElementById('custom-layout');
 
-      expect(layout?.classList.contains('fui-TreeItemLayout')).toBe(true);
       expect(mainId).toBe('custom-layout');
+      expect(main?.classList.contains('fui-TreeItemLayout__main')).toBe(true);
       expect(document.querySelectorAll('#custom-layout')).toHaveLength(1);
+      expect(document.getElementById('lower-priority-main-id')).toBeNull();
     });
 
     it('preserves a consumer-provided selector aria-label', () => {
