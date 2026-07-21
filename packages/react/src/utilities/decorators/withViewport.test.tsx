@@ -5,12 +5,12 @@ import { withViewport } from './withViewport';
 import type { IViewport, IWithViewportProps } from './withViewport';
 import type { JSXElement } from '@fluentui/utilities';
 
-interface TestComponentProps extends IWithViewportProps {
+interface ITestComponentProps extends IWithViewportProps {
   renderId: number;
   viewport?: IViewport;
 }
 
-class TestComponent extends React.Component<TestComponentProps> {
+class TestComponent extends React.Component<ITestComponentProps> {
   public render(): JSXElement {
     return <div>{this.props.renderId}</div>;
   }
@@ -18,13 +18,13 @@ class TestComponent extends React.Component<TestComponentProps> {
 
 const ViewportComponent = withViewport(TestComponent);
 
-interface ResizeObserverInstanceMock {
+interface IResizeObserverInstanceMock {
   observe: jest.Mock;
   disconnect: jest.Mock;
 }
 
 function createResizeObserverMock() {
-  const instances: ResizeObserverInstanceMock[] = [];
+  const instances: IResizeObserverInstanceMock[] = [];
   const constructor = jest.fn().mockImplementation(() => {
     const instance = {
       observe: jest.fn(),
