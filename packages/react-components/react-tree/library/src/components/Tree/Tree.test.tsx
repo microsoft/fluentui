@@ -101,6 +101,24 @@ describe('Tree', () => {
       expect(document.getElementById(mainId)?.textContent).toBe(accessibleName);
     });
 
+    it('preserves a consumer-provided layout ID', () => {
+      render(
+        <Tree aria-label="Tree" selectionMode="multiselect">
+          <TreeItem itemType="leaf" value="item1">
+            <TreeItemLayout id="custom-layout">Item 1</TreeItemLayout>
+          </TreeItem>
+        </Tree>,
+      );
+
+      const layout = document.getElementById('custom-layout');
+      const selector = screen.getByRole('checkbox', { name: 'Item 1' });
+      const mainId = selector.getAttribute('aria-labelledby');
+
+      expect(layout?.classList.contains('fui-TreeItemLayout')).toBe(true);
+      expect(mainId).not.toBe('custom-layout');
+      expect(document.getElementById(mainId ?? '')?.textContent).toBe('Item 1');
+    });
+
     it('preserves a consumer-provided selector aria-label', () => {
       render(
         <Tree aria-label="Tree" selectionMode="multiselect">
