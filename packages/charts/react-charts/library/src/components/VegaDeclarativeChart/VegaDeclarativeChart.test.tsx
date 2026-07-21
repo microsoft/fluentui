@@ -1246,6 +1246,43 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
 });
 
 describe('VegaDeclarativeChart - Security', () => {
+  it('renders grouped chart data with special keys without prototype pollution', () => {
+    const prototype = Object.prototype as Record<string, unknown>;
+    const probeKey = '__fluentuiPrototypePollutionProbe';
+    delete prototype[probeKey];
+
+    const maliciousSpec: VegaLiteSpec = {
+      mark: 'bar',
+      data: {
+        values: [
+          { category: '__proto__', value: 1, series: probeKey },
+          { category: 'constructor', value: 2, series: '__proto__' },
+          { category: 'prototype', value: 3, series: 'constructor' },
+        ],
+      },
+      encoding: {
+        x: { field: 'category', type: 'nominal' },
+        y: { field: 'value', type: 'quantitative' },
+        color: { field: 'series', type: 'nominal' },
+        xOffset: { field: 'series' },
+      },
+    };
+
+    try {
+      const { getAllByRole } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: maliciousSpec }} />);
+
+      expect(Object.prototype.hasOwnProperty.call(prototype, probeKey)).toBe(false);
+      for (const legend of [probeKey, '__proto__', 'constructor']) {
+        const legendButton = getAllByRole('option').find(button => button.textContent === legend);
+        const colorSwatch = legendButton?.querySelector<HTMLElement>('[style*="background-color"]');
+
+        expect(colorSwatch?.style.backgroundColor).toBeTruthy();
+      }
+    } finally {
+      delete prototype[probeKey];
+    }
+  });
+
   it('blocks malicious calculate expression (MSRC PoC: globalThis assignment)', () => {
     // Exact payload from the MSRC vulnerability report
     const maliciousSpec: VegaLiteSpec = {

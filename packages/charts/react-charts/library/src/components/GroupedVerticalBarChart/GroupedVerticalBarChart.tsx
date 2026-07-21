@@ -49,6 +49,7 @@ import type {
 import { CartesianChart, Legends, getColorFromToken } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import { useImageExport } from '../../utilities/hooks';
+import { createSafeRecord } from '../../utilities/createSafeRecord';
 import { isInvalidValue } from '@fluentui/chart-utilities';
 
 type NumericScale = ScaleLinear<number, number>;
@@ -95,7 +96,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _xAxisOuterPadding: number = 0;
   let _barLegends: string[] = [];
   let _lineLegends: string[] = [];
-  let _legendColorMap: Record<string, [string, string]> = {};
+  let _legendColorMap = createSafeRecord<[string, string]>();
   const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
   const _rectRef = React.useRef<SVGRectElement>(null);
@@ -141,7 +142,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, YValueHover[]> = {};
+    const linePointsByX = createSafeRecord<YValueHover[]>();
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -160,8 +161,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
     barData.forEach((point: GroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = createSafeRecord<unknown>();
+      const legendToBarPoint = createSafeRecord<GVBarChartSeriesPoint>();
 
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
@@ -265,7 +266,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _processDataV2 = (dataV2: (BarSeries<string, number> | LineSeries<string, number>)[]) => {
-    const barPointsByX: Record<string, GroupedVerticalBarChartData> = {};
+    const barPointsByX = createSafeRecord<GroupedVerticalBarChartData>();
     const lineData: GVBCLineSeries[] = [];
 
     dataV2.forEach(series => {
@@ -303,7 +304,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       ({ barData, lineData } = _processDataV2(props.dataV2));
     }
 
-    _legendColorMap = {};
+    _legendColorMap = createSafeRecord<[string, string]>();
     let colorIndex = 0;
 
     return {
@@ -360,7 +361,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _mapCategoryToValues = (barData: GroupedVerticalBarChartData[], lineData: GVBCLineSeries[]) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = createSafeRecord<number[]>();
     barData.forEach(point => {
       if (!categoryToValues[point.name]) {
         categoryToValues[point.name] = [];

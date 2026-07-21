@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Safely handle schema-derived keys when transforming Vega chart data.",
+  "packageName": "@fluentui/react-charts",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

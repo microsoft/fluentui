@@ -41,6 +41,7 @@ import type {
   ScatterPolarSeries,
   LineChartLineOptions,
 } from '../../types/index';
+import { createSafeRecord } from '../../utilities/createSafeRecord';
 import type { ColorFillBarsProps } from '../LineChart/index';
 import type { Legend, LegendsProps } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
@@ -2396,7 +2397,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
   // Group data by x value, then by color (stack)
-  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
+  const mapXToDataPoints = createSafeRecord<VerticalStackedChartProps>();
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2757,7 +2758,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
   const { colorScheme, colorRange } = extractColorConfig(encoding);
 
   // Group data by x value (name), then by color (series)
-  const groupedData: { [key: string]: { [legend: string]: number } } = {};
+  const groupedData = createSafeRecord<Record<string, number>>();
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
@@ -2774,7 +2775,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
     const legend = String(groupValue);
 
     if (!groupedData[xKey]) {
-      groupedData[xKey] = {};
+      groupedData[xKey] = createSafeRecord<number>();
     }
 
     groupedData[xKey][legend] = yValue;
@@ -3105,7 +3106,7 @@ export function transformVegaLiteToScatterChartProps(
   }
 
   // Group data by series (color encoding)
-  const groupedData: Record<string, Array<Record<string, unknown>>> = {};
+  const groupedData = createSafeRecord<Array<Record<string, unknown>>>();
 
   dataValues.forEach(row => {
     const seriesName = colorField && row[colorField] !== undefined ? String(row[colorField]) : 'default';

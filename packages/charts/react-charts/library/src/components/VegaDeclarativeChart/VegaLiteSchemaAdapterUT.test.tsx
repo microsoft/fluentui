@@ -3,6 +3,9 @@ import {
   transformVegaLiteToVerticalBarChartProps,
   transformVegaLiteToHistogramProps,
   transformVegaLiteToPolarChartProps,
+  transformVegaLiteToGroupedVerticalBarChartProps,
+  transformVegaLiteToVerticalStackedBarChartProps,
+  transformVegaLiteToScatterChartProps,
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
@@ -1456,6 +1459,119 @@ describe('VegaLiteSchemaAdapter', () => {
 
       expect(pointA?.y).toBe(20); // (10 + 20 + 30) / 3
       expect(pointB?.y).toBe(20); // (15 + 25) / 2
+    });
+  });
+
+  describe('Special Key Security', () => {
+    test('does not mutate Object.prototype for special category keys', () => {
+      const prototype = Object.prototype as Record<string, unknown>;
+      const probeKey = '__fluentuiPrototypePollutionProbe';
+      delete prototype[probeKey];
+
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { category: '__proto__', value: 1, series: probeKey },
+            { category: 'constructor', value: 2, series: '__proto__' },
+            { category: 'prototype', value: 3, series: 'constructor' },
+          ],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+          xOffset: { field: 'series' },
+        },
+      };
+
+      try {
+        const props = transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: colorMap }, false);
+
+        expect(Object.prototype.hasOwnProperty.call(prototype, probeKey)).toBe(false);
+        expect(props.data).toEqual([
+          {
+            name: '__proto__',
+            series: [
+              expect.objectContaining({
+                key: probeKey,
+                legend: probeKey,
+                data: 1,
+              }),
+            ],
+          },
+          {
+            name: 'constructor',
+            series: [
+              expect.objectContaining({
+                key: '__proto__',
+                legend: '__proto__',
+                data: 2,
+              }),
+            ],
+          },
+          {
+            name: 'prototype',
+            series: [
+              expect.objectContaining({
+                key: 'constructor',
+                legend: 'constructor',
+                data: 3,
+              }),
+            ],
+          },
+        ]);
+      } finally {
+        delete prototype[probeKey];
+      }
+    });
+
+    test('handles special category keys in stacked bar data', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { category: '__proto__', value: 1, series: 'A' },
+            { category: 'constructor', value: 2, series: 'B' },
+          ],
+        },
+        encoding: {
+          x: { field: 'category', type: 'nominal' },
+          y: { field: 'value', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+        },
+      };
+
+      const props = transformVegaLiteToVerticalStackedBarChartProps(spec, { current: colorMap }, false);
+
+      expect(props.data).toEqual([
+        expect.objectContaining({ xAxisPoint: '__proto__' }),
+        expect.objectContaining({ xAxisPoint: 'constructor' }),
+      ]);
+    });
+
+    test('handles special series keys in scatter data', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'point',
+        data: {
+          values: [
+            { x: 1, y: 2, series: '__proto__' },
+            { x: 3, y: 4, series: 'constructor' },
+          ],
+        },
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+          color: { field: 'series', type: 'nominal' },
+        },
+      };
+
+      const props = transformVegaLiteToScatterChartProps(spec, { current: colorMap }, false);
+
+      expect(props.data.scatterChartData).toEqual([
+        expect.objectContaining({ legend: '__proto__' }),
+        expect.objectContaining({ legend: 'constructor' }),
+      ]);
     });
   });
 });
