@@ -405,13 +405,13 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &[aria-selected=true] {
+          &[aria-checked=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
           }
-          &:hover[aria-selected=true] {
+          &:hover[aria-checked=true] {
             background-color: transparent;
             color: #0078d4;
           }
@@ -525,13 +525,13 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &[aria-selected=true] {
+          &[aria-checked=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
           }
-          &:hover[aria-selected=true] {
+          &:hover[aria-checked=true] {
             background-color: transparent;
             color: #0078d4;
           }
@@ -645,13 +645,13 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &[aria-selected=true] {
+          &[aria-checked=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
           }
-          &:hover[aria-selected=true] {
+          &:hover[aria-checked=true] {
             background-color: transparent;
             color: #0078d4;
           }
@@ -765,13 +765,13 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &[aria-selected=true] {
+          &[aria-checked=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
           }
-          &:hover[aria-selected=true] {
+          &:hover[aria-checked=true] {
             background-color: transparent;
             color: #0078d4;
           }
@@ -885,13 +885,13 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &[aria-selected=true] {
+          &[aria-checked=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
           }
-          &:hover[aria-selected=true] {
+          &:hover[aria-checked=true] {
             background-color: transparent;
             color: #0078d4;
           }
