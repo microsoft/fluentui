@@ -413,6 +413,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             (!allowFreeform && !allowFreeInput) ||
             text !== prevProps.text)))
     ) {
+      // Reset the flag before calling _onFocus to prevent duplicate calls on subsequent renders.
+      // Without this reset, screen readers (e.g. Narrator) may announce the selected value twice
+      // when the user navigates back to the combobox after a previous keyboard interaction.
+      this._focusInputAfterClose = false;
       this._onFocus();
     }
 
