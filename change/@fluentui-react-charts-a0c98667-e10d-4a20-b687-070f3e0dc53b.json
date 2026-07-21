@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Add support for react 19",
+  "packageName": "@fluentui/react-charts",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
