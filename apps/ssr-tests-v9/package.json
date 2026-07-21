@@ -12,8 +12,8 @@
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",
     "lint": "yarn run -T just-scripts lint",
-    "storybook": "storybook dev",
-    "test": "jest --passWithNoTests",
+    "storybook": "yarn run -T storybook dev",
+    "test": "yarn run -T jest --passWithNoTests",
     "type-check": "yarn run -T just-scripts type-check",
     "test-ssr": "yarn run -T test-ssr \"./src/stories/**/*.stories.tsx\""
   },

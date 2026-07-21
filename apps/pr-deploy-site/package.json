@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "yarn run -T just-scripts clean",
     "generate:site": "yarn run -T just-scripts generate:site",
-    "lint": "eslint --cache .",
-    "type-check": "tsc -p . --noEmit"
+    "lint": "yarn run -T eslint --cache .",
+    "type-check": "yarn run -T tsc -p . --noEmit"
   },
   "license": "MIT"
 }

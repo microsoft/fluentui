@@ -19,7 +19,7 @@
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",
     "start": "yarn run -T just-scripts dev",
-    "type-check": "tsc -p . --noEmit --baseUrl ."
+    "type-check": "yarn run -T tsc -p . --noEmit --baseUrl ."
   },
   "license": "MIT",
   "devDependencies": {

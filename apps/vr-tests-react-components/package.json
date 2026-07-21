@@ -4,14 +4,14 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build-storybook": "storybook build -o dist/storybook",
+    "build-storybook": "yarn run -T storybook build -o dist/storybook",
     "clean": "yarn run -T just-scripts clean",
-    "format": "prettier . -w --ignore-path ../../.prettierignore",
+    "format": "yarn run -T prettier . -w --ignore-path ../../.prettierignore",
     "lint": "yarn run -T just-scripts lint",
-    "start": "storybook dev",
+    "start": "yarn run -T storybook dev",
     "test": "yarn run -T just-scripts test",
-    "type-check": "tsc -p . --noEmit --baseUrl .",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
+    "type-check": "yarn run -T tsc -p . --noEmit --baseUrl .",
+    "test-vr": "yarn run -T storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
   },
   "dependencies": {
     "@fluentui/react-accordion": "*",

@@ -103,7 +103,7 @@ jobs:
           cache: 'yarn'
           node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: React Compiler analysis (affected)
         run: |
