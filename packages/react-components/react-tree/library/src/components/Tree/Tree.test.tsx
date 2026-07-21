@@ -115,8 +115,8 @@ describe('Tree', () => {
       const mainId = selector.getAttribute('aria-labelledby');
 
       expect(layout?.classList.contains('fui-TreeItemLayout')).toBe(true);
-      expect(mainId).not.toBe('custom-layout');
-      expect(document.getElementById(mainId ?? '')?.textContent).toBe('Item 1');
+      expect(mainId).toBe('custom-layout');
+      expect(document.querySelectorAll('#custom-layout')).toHaveLength(1);
     });
 
     it('preserves a consumer-provided selector aria-label', () => {

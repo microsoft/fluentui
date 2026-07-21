@@ -69,11 +69,12 @@ export const useTreeItemLayout_unstable = (
 
   const mainShorthand = isResolvedShorthand(main) ? main : undefined;
   const mainContentId = useId('fui-TreeItemLayout__main-', mainShorthand?.id);
+  const selectorLabelId = props.id ?? mainContentId;
 
-  // Link the selector to the main content unless the consumer provided aria-label or aria-labelledby
+  // Link the selector to the layout ID or main content unless the consumer provided an accessible name
   const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
   const selectorAriaLabelledBy =
-    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainContentId;
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : selectorLabelId;
 
   const selector = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
@@ -89,7 +90,7 @@ export const useTreeItemLayout_unstable = (
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
   const mainSlot = slot.always(main, {
-    defaultProps: { id: selector ? mainContentId : undefined },
+    defaultProps: { id: selector && !props.id ? mainContentId : undefined },
     elementType: 'div',
   });
 
