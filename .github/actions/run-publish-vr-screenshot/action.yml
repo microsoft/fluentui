@@ -50,7 +50,7 @@ runs:
         isPR=${{ github.event_name == 'pull_request' }}
         echo "isPR=$isPR" >> $GITHUB_ENV
         if [[ $isPR == true ]]; then
-          packageAffected=$(npm run --silent check:affected -- --project ${{ inputs.vrTestPackageName }})
+          packageAffected=$(yarn check:affected --project ${{ inputs.vrTestPackageName }})
           if [[ $packageAffected == false ]]; then
             echo "In PR pipeline but NOT affecting test package. Skipping test run"
             echo "vrTestSkip=yes" >> $GITHUB_ENV
