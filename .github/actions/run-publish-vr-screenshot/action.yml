@@ -50,6 +50,16 @@ runs:
         isPR=${{ github.event_name == 'pull_request' }}
         echo "isPR=$isPR" >> $GITHUB_ENV
         if [[ $isPR == true ]]; then
+          cleanup_yarn_log_filters() {
+            local exit_code=$?
+            if ! yarn config unset logFilters; then
+              echo "Failed to restore Yarn log filters" >&2
+              exit 1
+            fi
+            exit "$exit_code"
+          }
+          yarn config set logFilters --json '[{"pattern":"*","level":"discard"}]'
+          trap cleanup_yarn_log_filters EXIT
           packageAffected=$(yarn check:affected --project ${{ inputs.vrTestPackageName }})
           if [[ $packageAffected == false ]]; then
             echo "In PR pipeline but NOT affecting test package. Skipping test run"

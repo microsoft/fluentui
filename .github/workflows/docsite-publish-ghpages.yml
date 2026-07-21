@@ -37,6 +37,16 @@ jobs:
       - name: Affected Deployable Storybooks
         id: affected_storybooks_count
         run: |
+          cleanup_yarn_log_filters() {
+            local exit_code=$?
+            if ! yarn config unset logFilters; then
+              echo "Failed to restore Yarn log filters" >&2
+              exit 1
+            fi
+            exit "$exit_code"
+          }
+          yarn config set logFilters --json '[{"pattern":"*","level":"discard"}]'
+          trap cleanup_yarn_log_filters EXIT
           affected_count=$(yarn nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
           echo "value=$affected_count" >> $GITHUB_OUTPUT
 
