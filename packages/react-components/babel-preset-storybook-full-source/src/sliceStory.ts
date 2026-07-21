@@ -437,9 +437,22 @@ function buildRenderFunction(
     return t.arrowFunctionExpression([], body);
   }
 
-  const argsDeclaration = t.variableDeclaration('const', [
-    t.variableDeclarator(argsParam as Babel.types.LVal, mergedArgs ?? t.objectExpression([])),
-  ]);
+  // Unwrap defaulted (`args = {}`) and rest (`...args`) params to a valid LVal;
+  // using the raw node as a declarator id would emit invalid syntax
+  // (`const args = {} = …` / `const ...args = …`).
+  const argsId = t.isAssignmentPattern(argsParam)
+    ? argsParam.left
+    : t.isRestElement(argsParam)
+    ? argsParam.argument
+    : argsParam;
+
+  // Precedence for the local `args`: merged meta/story args win; otherwise fall
+  // back to the param's default (`args = <default>`) so the author's intended
+  // sample value is preserved; otherwise an empty object.
+  const argsDefault = t.isAssignmentPattern(argsParam) ? argsParam.right : undefined;
+  const argsInit = mergedArgs ?? argsDefault ?? t.objectExpression([]);
+
+  const argsDeclaration = t.variableDeclaration('const', [t.variableDeclarator(argsId as Babel.types.LVal, argsInit)]);
 
   const statements: Babel.types.Statement[] = [argsDeclaration];
   if (t.isBlockStatement(body)) {
@@ -712,7 +725,13 @@ function isDeclarationReachable(statementPath: Babel.NodePath, needed: Set<Babel
   return false;
 }
 
-/** Whether the statement is a CSF2 story annotation assignment (`Story.x = …`). */
+/**
+ * Whether the statement is a CSF2 story annotation assignment (`Story.x = …`).
+ *
+ * Only assignments to known CSF annotation fields on a component-like (story)
+ * identifier match, so unrelated helper setup such as `Card.displayName = …` or
+ * `config.foo = …` is preserved in the sliced example.
+ */
 function isStoryAnnotationAssignment(t: typeof Babel.types, statementPath: Babel.NodePath): boolean {
   if (!statementPath.isExpressionStatement()) {
     return false;
@@ -721,7 +740,11 @@ function isStoryAnnotationAssignment(t: typeof Babel.types, statementPath: Babel
   return (
     t.isAssignmentExpression(expression) &&
     t.isMemberExpression(expression.left) &&
-    t.isIdentifier(expression.left.object)
+    !expression.left.computed &&
+    t.isIdentifier(expression.left.object) &&
+    isComponentLikeName(expression.left.object.name) &&
+    t.isIdentifier(expression.left.property) &&
+    CSF_STORY_FIELDS.has(expression.left.property.name)
   );
 }
 
