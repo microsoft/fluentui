@@ -10,7 +10,7 @@ This instruction guide explains how Dependabot automation works for security fix
 
 Dependabot is configured to automatically create pull requests for:
 
-1. **Security updates** - Advisory-driven updates handled independently by GitHub
+1. **Security updates** - Advisory-driven updates grouped into consolidated npm pull requests
 2. **npm dependencies** - Weekly minor and patch updates grouped by dependency type
 3. **GitHub Actions** - Weekly updates for workflow dependencies
 
@@ -21,13 +21,13 @@ The Dependabot configuration is defined in `.github/dependabot.yml`:
 - **Production dependencies**: Weekly minor and patch version updates
 - **Development dependencies**: Weekly minor and patch version updates
 - **GitHub Actions**: Weekly updates
-- **Security updates**: Managed independently by GitHub and not limited by the version update schedule
+- **Security updates**: Grouped separately and not limited by the version update schedule
 
 ## Security Vulnerability Resolution
 
 ### Automatic Security Updates
 
-GitHub's automatic security updates work independently of the Dependabot configuration and will create PRs for known vulnerabilities even if they require major version bumps.
+GitHub triggers automatic security updates independently of the configured version update schedule. The Dependabot configuration groups eligible npm security updates into consolidated pull requests, including fixes that require major version bumps.
 
 ### Manual Resolution via Yarn Resolutions
 

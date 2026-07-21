@@ -25,6 +25,10 @@ updates:
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
     groups:
+      npm-security-updates:
+        applies-to: security-updates
+        patterns:
+          - '*'
       npm-dev-minor-patch:
         dependency-type: 'development'
         patterns:
@@ -40,4 +44,4 @@ updates:
           - 'minor'
           - 'patch'
     # Security updates for known vulnerabilities are handled automatically by GitHub
-    # and are not limited by the version update schedule or ignore rules above
+    # and grouped independently of the weekly version update schedule
