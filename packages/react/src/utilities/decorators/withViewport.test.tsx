@@ -12,7 +12,7 @@ interface ITestComponentProps extends IWithViewportProps {
 
 class TestComponent extends React.Component<ITestComponentProps> {
   public render(): JSXElement {
-    return <div>{this.props.renderId}</div>;
+    return <div data-viewport-width={this.props.viewport?.width}>{this.props.renderId}</div>;
   }
 }
 
@@ -90,12 +90,24 @@ describe('withViewport', () => {
       expect(mainResizeObserver.constructor).toHaveBeenCalledTimes(1);
       expect(mainResizeObserver.instances[0].disconnect).not.toHaveBeenCalled();
 
+      jest.spyOn(viewportRoot, 'getBoundingClientRect').mockReturnValue({
+        bottom: 100,
+        height: 100,
+        left: 0,
+        right: 712,
+        top: 0,
+        width: 712,
+        x: 0,
+        y: 0,
+        toJSON: () => undefined,
+      });
       frameDocument.body.appendChild(viewportRoot);
       rerender(<ViewportComponent renderId={2} />);
 
       expect(mainResizeObserver.instances[0].disconnect).toHaveBeenCalledTimes(1);
       expect(frameResizeObserver.constructor).toHaveBeenCalledTimes(1);
       expect(frameResizeObserver.instances[0].observe).toHaveBeenCalledWith(viewportRoot);
+      expect(frameDocument.querySelector('[data-viewport-width]')?.getAttribute('data-viewport-width')).toBe('712');
     } finally {
       container.appendChild(viewportRoot);
       unmount();
