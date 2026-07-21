@@ -43,5 +43,3 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
-    # Security updates for known vulnerabilities are handled automatically by GitHub
-    # and grouped independently of the weekly version update schedule
