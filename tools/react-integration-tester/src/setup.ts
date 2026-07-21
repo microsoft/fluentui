@@ -501,6 +501,14 @@ export async function setup(
       metadata.tmpl,
       join(projectPath, 'tsconfig.cy.json'),
     );
+
+    const workspaceTsConfigBasePath = join(workspaceRoot, 'tsconfig.base.json');
+    if (existsSync(workspaceTsConfigBasePath)) {
+      // Provide a local tsconfig.base.json so relative TsconfigPathsPlugin lookups keep working in RIT context.
+      writeJsonFile(join(projectPath, 'tsconfig.base.json'), {
+        extends: relative(projectPath, workspaceTsConfigBasePath).replace(/\\/g, '/'),
+      });
+    }
   }
 
   // 4) Create package.json for test project including npm scripts
