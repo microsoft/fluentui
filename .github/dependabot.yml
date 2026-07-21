@@ -13,13 +13,11 @@ updates:
           - 'minor'
           - 'patch'
 
-  # npm dependencies - weekly updates for devDependencies
+  # npm dependencies - weekly minor and patch updates grouped by dependency type
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
-    allow:
-      - dependency-type: 'development'
     open-pull-requests-limit: 6
     versioning-strategy: increase
     ignore:
@@ -28,32 +26,18 @@ updates:
         update-types: ['version-update:semver-major']
     groups:
       npm-dev-minor-patch:
+        dependency-type: 'development'
         patterns:
           - '*'
         update-types:
           - 'minor'
           - 'patch'
-    # Note: Security updates for known vulnerabilities are handled automatically by GitHub
-    # and will create PRs regardless of the ignore rules above
-
-  # Additional configuration for production dependencies security updates
-  # This ensures production dependencies get security updates more frequently
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'daily'
-    allow:
-      - dependency-type: 'production'
-    open-pull-requests-limit: 3
-    versioning-strategy: increase
-    # Only create PRs for security updates and minor/patch versions
-    ignore:
-      - dependency-name: '*'
-        update-types: ['version-update:semver-major']
-    groups:
       npm-prod-minor-patch:
+        dependency-type: 'production'
         patterns:
           - '*'
         update-types:
           - 'minor'
           - 'patch'
+    # Security updates for known vulnerabilities are handled automatically by GitHub
+    # and are not limited by the version update schedule or ignore rules above

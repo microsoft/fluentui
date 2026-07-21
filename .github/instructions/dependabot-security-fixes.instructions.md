@@ -10,17 +10,18 @@ This instruction guide explains how Dependabot automation works for security fix
 
 Dependabot is configured to automatically create pull requests for:
 
-1. **Security updates** - Daily scanning for vulnerable production dependencies
-2. **Development dependencies** - Weekly updates for devDependencies
+1. **Security updates** - Advisory-driven updates handled independently by GitHub
+2. **npm dependencies** - Weekly minor and patch updates grouped by dependency type
 3. **GitHub Actions** - Weekly updates for workflow dependencies
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **Production dependencies**: Daily security updates with higher priority
-- **Development dependencies**: Weekly updates, excluding major version bumps
+- **Production dependencies**: Weekly minor and patch version updates
+- **Development dependencies**: Weekly minor and patch version updates
 - **GitHub Actions**: Weekly updates
+- **Security updates**: Managed independently by GitHub and not limited by the version update schedule
 
 ## Security Vulnerability Resolution
 
