@@ -94,7 +94,6 @@ describe('createPositionManager', () => {
   });
 
   it('dispatches event with computed placement when middleware changes it', async () => {
-    // Request 'top' but middleware flips to 'bottom'
     computePositionMock.mockResolvedValue({
       x: 10,
       y: 20,
@@ -127,7 +126,6 @@ describe('createPositionManager', () => {
   });
 
   it('does not dispatch event after dispose', async () => {
-    // Use a deferred promise so we can control when computePosition resolves
     let resolveCompute!: (value: Awaited<ReturnType<typeof computePosition>>) => void;
 
     computePositionMock.mockImplementation(
@@ -151,13 +149,10 @@ describe('createPositionManager', () => {
       disableUpdateOnResize: true,
     });
 
-    // Let debounce microtask fire so computePosition is called
     await flushMicrotasks();
 
-    // Dispose before the promise resolves
     manager.dispose();
 
-    // Now resolve the pending computePosition
     resolveCompute({
       x: 10,
       y: 20,
@@ -166,7 +161,6 @@ describe('createPositionManager', () => {
       middlewareData: mockMiddlewareData,
     });
 
-    // Allow the .then() to run
     await flushMicrotasks();
 
     expect(listener).not.toHaveBeenCalled();
@@ -205,7 +199,6 @@ describe('createPositionManager', () => {
     it('removes data-popper-reference-hidden when referenceHidden becomes false', async () => {
       const { container, target } = createTestElements();
 
-      // First position update: reference is hidden
       computePositionMock.mockResolvedValueOnce({
         x: 0,
         y: 0,
@@ -230,7 +223,6 @@ describe('createPositionManager', () => {
       await flushMicrotasks();
       expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(true);
 
-      // Second position update: reference is back in view
       computePositionMock.mockResolvedValueOnce({
         x: 0,
         y: 0,

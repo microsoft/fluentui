@@ -2,13 +2,6 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Tooltip } from '@fluentui/react-components';
 
-/**
- * A tooltip whose trigger is inside an `overflow: hidden` container.
- * When the trigger is scrolled out of view, the tooltip should become hidden
- * (via `data-popper-reference-hidden` set by the positioning middleware).
- *
- * Regression story for https://github.com/microsoft/fluentui/issues/32882
- */
 export const OverflowHidden = (): JSXElement => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start' }}>
@@ -39,11 +32,8 @@ export const OverflowHidden = (): JSXElement => {
 OverflowHidden.parameters = {
   docs: {
     description: {
-      story: `When a tooltip trigger is inside an \`overflow: hidden\` container and the trigger scrolls out
-of view, the tooltip must be hidden rather than appearing outside the overflow boundary.
-
-The positioning middleware sets \`data-popper-reference-hidden\` on the tooltip element when the trigger
-is clipped by its scroll container. The Tooltip styles respond to this attribute with \`visibility: hidden\`.`,
+      story:
+        'When a tooltip trigger scrolls out of an overflow container, the tooltip should hide instead of rendering outside the clipped boundary.',
     },
   },
 };

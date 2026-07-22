@@ -38,11 +38,6 @@ const useStyles = makeStyles({
 
   visible: {
     display: 'block',
-
-    // Hide when the trigger has scrolled out of view (referenceHidden) or when
-    // the tooltip itself has overflowed its clipping boundary (escaped).
-    // The positioning middleware writes these data attributes automatically.
-    // See https://github.com/microsoft/fluentui/issues/32882
     '&[data-popper-reference-hidden]': {
       visibility: 'hidden',
       pointerEvents: 'none',

@@ -10,20 +10,10 @@ const mount = (element: React.ReactElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-// The data attribute the positioning middleware writes when the reference is hidden
 const DATA_POSITIONING_HIDDEN = 'data-popper-reference-hidden';
 
 describe('Tooltip', () => {
   describe('overflow behavior (regression: #32882)', () => {
-    /**
-     * Renders a tooltip trigger inside an overflow:hidden container tall enough
-     * to scroll the trigger out of view, then verifies the tooltip content element
-     * gets `data-popper-reference-hidden` set once scrolled, and loses it once
-     * scrolled back.
-     *
-     * This is the E2E complement to the unit tests in createPositionManager.test.ts
-     * and the CSS fix in useTooltipStyles.styles.ts.
-     */
     it('sets data-popper-reference-hidden on the tooltip when the trigger scrolls out of view', () => {
       mount(
         <div
