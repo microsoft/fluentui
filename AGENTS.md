@@ -101,7 +101,7 @@ state.root.className = mergeClasses(
 | `visual-test`       | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli |
 | `review-pr`         | `/review-pr #123`    | Review a PR with confidence scoring and category checks    |
 | `triage-issues`     | `/triage-issues`     | Walk the Needs-Triage queue and recommend labels/assignee  |
-| `dependabot-rollup` | `/dependabot-rollup` | Dry-run and optionally roll up Dependabot patch/minor PRs  |
+| `dependabot-rollup` | `/dependabot-rollup` | Roll up at most 11 Dependabot patch/minor PRs              |
 
 ## Package Layout
 
