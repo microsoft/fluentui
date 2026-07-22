@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add headless TagPicker",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",

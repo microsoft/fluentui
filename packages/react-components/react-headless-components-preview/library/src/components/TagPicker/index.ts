@@ -1,7 +1,7 @@
 export { TagPicker } from './TagPicker';
 export { renderTagPicker } from './renderTagPicker';
 export { useTagPicker } from './useTagPicker';
-export { useTagPickerContextValues } from './useTagPickerContextValues';
+export { useTagPickerContextValues } from '@fluentui/react-tag-picker';
 export type {
   TagPickerProps,
   TagPickerSlots,

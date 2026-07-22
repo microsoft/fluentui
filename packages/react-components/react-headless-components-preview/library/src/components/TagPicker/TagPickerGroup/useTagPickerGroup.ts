@@ -28,7 +28,11 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
       dismissible: true,
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
         props.onKeyDown?.(event);
-        if (isHTMLElement(event.target) && event.key === ArrowRight) {
+        if (
+          isHTMLElement(event.target) &&
+          event.key === ArrowRight &&
+          isLastFocusableTag(event.currentTarget, event.target)
+        ) {
           triggerRef.current?.focus();
         }
       }),
@@ -55,3 +59,8 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
 
   return { ...state, hasSelectedOptions };
 };
+
+function isLastFocusableTag(container: HTMLElement, target: HTMLElement): boolean {
+  const focusableTags = container.querySelectorAll<HTMLElement>('button, [tabindex]');
+  return focusableTags[focusableTags.length - 1] === target;
+}

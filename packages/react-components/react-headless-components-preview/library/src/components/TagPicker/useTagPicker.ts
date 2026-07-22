@@ -7,29 +7,32 @@ import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import type { PositioningShorthandValue } from '../../positioning';
 import type { TagPickerProps, TagPickerState } from './TagPicker.types';
 
+// Mirror the styled TagPicker defaults while allowing props.positioning to override the full configuration.
 const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
 
 /**
  * Returns the state for a headless TagPicker.
  */
 export const useTagPicker = (props: TagPickerProps): TagPickerState => {
+  const { positioning, ...baseProps } = props;
   const { targetRef, containerRef } = usePositioning({
     position: 'below',
     align: 'start',
     offset: { crossAxis: 0, mainAxis: 2 },
     fallbackPositions,
     matchTargetSize: 'width',
-    ...resolvePositioningShorthand(props.positioning),
+    ...resolvePositioningShorthand(positioning),
   });
 
-  const baseState = useTagPickerBase_unstable({ ...props, inline: true });
+  const baseState = useTagPickerBase_unstable(baseProps);
 
-  // `usePositioning` exposes callback refs (`RefCallback<HTMLElement>`), whereas the base TagPicker
-  // context types `targetRef`/`popoverRef` as `RefObject<HTMLDivElement | null>`. Both are valid
-  // `ref` values for the elements they're attached to, so the cast only bridges that type-level
-  // shape difference (callback ref vs object ref).
   return {
     ...baseState,
+    appearance: 'outline',
+    inline: true,
+    size: 'medium',
+    // The headless positioning hook exposes callback refs, while TagPicker context currently
+    // models these refs as RefObjects. Both are valid React refs for the rendered div elements.
     targetRef: targetRef as unknown as TagPickerState['targetRef'],
     popoverRef: useMergedRefs(baseState.popoverRef, containerRef) as unknown as TagPickerState['popoverRef'],
   };

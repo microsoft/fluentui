@@ -1,15 +1,10 @@
-import type { Slot } from '@fluentui/react-utilities';
 import type { TagPickerControlBaseState } from '@fluentui/react-tag-picker';
 
-export type { TagPickerControlProps, TagPickerControlSlots } from '@fluentui/react-tag-picker';
-
-/**
- * Internal slot rendered by `renderTagPickerControl` to host the expand icon and
- * secondary action.
- */
-export type TagPickerControlInternalSlots = {
-  aside?: NonNullable<Slot<'span'>>;
-};
+export type {
+  TagPickerControlInternalSlots,
+  TagPickerControlProps,
+  TagPickerControlSlots,
+} from '@fluentui/react-tag-picker';
 
 /**
  * State used in rendering the headless TagPickerControl.

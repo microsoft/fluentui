@@ -1,4 +1,5 @@
-import type { TagPickerProps as TagPickerPropsBase } from '@fluentui/react-tag-picker';
+import type { TagPickerBaseProps } from '@fluentui/react-tag-picker';
+import type { PositioningShorthand } from '../../positioning';
 
 export type {
   TagPickerState,
@@ -9,4 +10,9 @@ export type {
   TagPickerOnOptionSelectData,
 } from '@fluentui/react-tag-picker';
 
-export type TagPickerProps = Omit<TagPickerPropsBase, 'inline' | 'size' | 'appearance' | 'mountNode'>;
+export type TagPickerProps = TagPickerBaseProps & {
+  /**
+   * Configures the native CSS anchor positioning used by the headless popup.
+   */
+  positioning?: PositioningShorthand;
+};

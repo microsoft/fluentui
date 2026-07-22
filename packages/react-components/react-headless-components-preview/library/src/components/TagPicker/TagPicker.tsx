@@ -1,10 +1,10 @@
 'use client';
 
 import type { JSXElement } from '@fluentui/react-utilities';
+import { useTagPickerContextValues } from '@fluentui/react-tag-picker';
 
 import { useTagPicker } from './useTagPicker';
 import { renderTagPicker } from './renderTagPicker';
-import { useTagPickerContextValues } from './useTagPickerContextValues';
 import type { TagPickerProps } from './TagPicker.types';
 
 /**

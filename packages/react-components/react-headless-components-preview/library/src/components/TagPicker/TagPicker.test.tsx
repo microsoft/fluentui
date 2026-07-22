@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { TagPicker } from './TagPicker';
+import type { TagPickerProps } from './TagPicker.types';
 import { TagPickerControl } from './TagPickerControl';
 import { TagPickerGroup } from './TagPickerGroup';
 import { TagPickerInput } from './TagPickerInput';
@@ -9,14 +10,14 @@ import { TagPickerOption } from './TagPickerOption';
 import { optionClassNames } from '@fluentui/react-combobox';
 import { Tag } from '../Tag';
 
-const renderTagPicker = (props: { selectedOptions?: string[]; disabled?: boolean } = {}) => {
-  const { selectedOptions = [], disabled } = props;
+const renderTagPicker = (props: Pick<TagPickerProps, 'disabled' | 'positioning' | 'selectedOptions'> = {}) => {
+  const { selectedOptions = [], ...tagPickerProps } = props;
   return render(
-    <TagPicker open disabled={disabled} selectedOptions={selectedOptions}>
+    <TagPicker open selectedOptions={selectedOptions} {...tagPickerProps}>
       <TagPickerControl>
         <TagPickerGroup aria-label="Selected animals">
           {selectedOptions.map(option => (
-            <Tag key={option} value={option}>
+            <Tag data-testid={`tag-${option}`} key={option} value={option}>
               {option}
             </Tag>
           ))}
@@ -63,6 +64,7 @@ describe('TagPicker', () => {
 
     const group = getByRole('listbox', { name: 'Selected animals' });
     expect(group).toHaveAttribute('focusgroup', 'toolbar inline wrap');
+    expect(group).not.toHaveAttribute('data-tabster');
     expect(group).toHaveTextContent('Dog');
   });
 
@@ -76,5 +78,40 @@ describe('TagPicker', () => {
     const { getByRole } = renderTagPicker({ disabled: true });
 
     expect(getByRole('combobox')).toBeDisabled();
+  });
+
+  it.each(['ArrowLeft', 'Backspace'])('moves focus to the last tag on %s at the start of the input', key => {
+    const { getByRole, getByTestId } = renderTagPicker({ selectedOptions: ['Cat', 'Dog'] });
+    const input = getByRole('combobox') as HTMLInputElement;
+
+    act(() => input.focus());
+    input.setSelectionRange(0, 0);
+    fireEvent.keyDown(input, { key });
+
+    expect(getByTestId('tag-Dog')).toHaveFocus();
+  });
+
+  it('keeps focus in the input when Backspace is pressed away from the start', () => {
+    const { getByRole, getByTestId } = renderTagPicker({ selectedOptions: ['Dog'] });
+    const input = getByRole('combobox') as HTMLInputElement;
+
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'Cat' } });
+    input.setSelectionRange(2, 2);
+    fireEvent.keyDown(input, { key: 'Backspace' });
+
+    expect(input).toHaveFocus();
+    expect(getByTestId('tag-Dog')).not.toHaveFocus();
+  });
+
+  it('allows consumer positioning to override the default placement and fallback positions', () => {
+    const { getByRole } = renderTagPicker({
+      positioning: { position: 'above', align: 'end', fallbackPositions: ['below'] },
+    });
+    const listbox = getByRole('listbox');
+
+    expect(listbox).toHaveAttribute('data-placement', 'above-end');
+    expect(listbox).toHaveStyle({ positionArea: 'block-start span-inline-start' });
+    expect(listbox).toHaveStyle({ positionTryFallbacks: 'block-end' });
   });
 });

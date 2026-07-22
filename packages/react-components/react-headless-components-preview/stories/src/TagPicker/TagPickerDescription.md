@@ -15,9 +15,9 @@ It wraps the base hooks exported by `@fluentui/react-tag-picker` (`useTagPickerB
 
 ### Positioning
 
-The base hook omits floating-ui positioning. Pass the `inline` prop (as these stories do) to render
-the popover in DOM order and position it with CSS, or compose your own positioning around the
-`TagPickerList`.
+The headless TagPicker renders its native popover in DOM order and positions it with the package's
+CSS anchor-based `usePositioning` hook. Use the `positioning` prop to override placement, alignment,
+offset, fallback positions, or target-size matching; consumers do not need to pass an `inline` prop.
 
 ### Keyboard navigation requires a focusgroup polyfill
 
