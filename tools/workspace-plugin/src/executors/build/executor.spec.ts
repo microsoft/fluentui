@@ -209,7 +209,7 @@ describe('Build Executor', () => {
       "
     `);
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8')).toMatchInlineSnapshot(
-      `"{\\"version\\":3,\\"sources\\":[\\"../src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
+      `"{\\"version\\":3,\\"sources\\":[\\"src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
     );
 
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
@@ -319,34 +319,34 @@ describe('Build Executor', () => {
       // assert raw styles content matches the original SWC-compiled styles (before Griffel transformation)
       // =====================
       expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js'), 'utf-8')).toMatchInlineSnapshot(`
-      "import { makeStyles } from '@griffel/react';
-      export const useStyles = makeStyles({
-          root: {
-              color: 'red'
-          }
-      });
-      "
-    `);
+        "import { makeStyles } from '@griffel/react';
+        export const useStyles = makeStyles({
+            root: {
+                color: 'red'
+            }
+        });
+        "
+      `);
       expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js'), 'utf-8'))
         .toMatchInlineSnapshot(`
-      "\\"use strict\\";
-      Object.defineProperty(exports, \\"__esModule\\", {
-          value: true
-      });
-      Object.defineProperty(exports, \\"useStyles\\", {
-          enumerable: true,
-          get: function() {
-              return useStyles;
-          }
-      });
-      const _react = require(\\"@griffel/react\\");
-      const useStyles = (0, _react.makeStyles)({
-          root: {
-              color: 'red'
-          }
-      });
-      "
-    `);
+        "\\"use strict\\";
+        Object.defineProperty(exports, \\"__esModule\\", {
+            value: true
+        });
+        Object.defineProperty(exports, \\"useStyles\\", {
+            enumerable: true,
+            get: function() {
+                return useStyles;
+            }
+        });
+        const _react = require(\\"@griffel/react\\");
+        const useStyles = (0, _react.makeStyles)({
+            root: {
+                color: 'red'
+            }
+        });
+        "
+      `);
 
       // =====================
       // showcase that babel transformation creates invalid source map - which differs with raw styles source maps produced by SWC-compiled source maps (before Griffel transformation)

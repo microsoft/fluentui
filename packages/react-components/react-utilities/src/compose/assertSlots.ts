@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { deIndent } from '../utils/deIndent';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
 import type { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
@@ -49,7 +50,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
           elementType: typedState.components[slotName] as React.ComponentType<{}>,
         }) as ComponentState<Slots>[keyof ComponentState<Slots>];
         // eslint-disable-next-line no-console
-        console.warn(/** #__DE-INDENT__ */ `
+        console.warn(deIndent`
           @fluentui/react-utilities [${assertSlots.name}]:
           "state.${slotName}" is not a slot!
           Be sure to create slots properly by using "slot.always" or "slot.optional".
@@ -63,7 +64,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
           // eslint-disable-next-line @typescript-eslint/no-deprecated
           slotElement[SLOT_ELEMENT_TYPE_SYMBOL] = typedState.components[slotName] as React.ComponentType<{}>;
           // eslint-disable-next-line no-console
-          console.warn(/** #__DE-INDENT__ */ `
+          console.warn(deIndent`
             @fluentui/react-utilities [${assertSlots.name}]:
             "state.${slotName}" element type differs from "state.components.${slotName}",
             ${elementType} !== ${

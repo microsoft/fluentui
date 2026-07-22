@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
+  deIndent,
   getIntrinsicElementProps,
   useId,
   useEventCallback,
@@ -81,7 +82,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
       if (treeItemRef.current?.querySelector(`.${treeClassNames.root}`)) {
         // eslint-disable-next-line no-console
-        console.error(/** #__DE-INDENT__ */ `
+        console.error(deIndent`
           @fluentui/react-tree [useTreeItem]:
           <TreeItem> should be declared inside a <Tree> component.
         `);
@@ -358,7 +359,7 @@ function warnIfNoProperPropsFlatTreeItem(
       (props.parentValue === undefined && props['aria-level'] !== 1)
     ) {
       // eslint-disable-next-line no-console
-      console.error(/** #__DE-INDENT__ */ `
+      console.error(deIndent`
         @fluentui/react-tree [${useTreeItem_unstable.name}]:
         A flat treeitem must have "aria-posinset", "aria-setsize", "aria-level"
         and "parentValue" (if "aria-level" > 1) to ensure a11y and navigation.

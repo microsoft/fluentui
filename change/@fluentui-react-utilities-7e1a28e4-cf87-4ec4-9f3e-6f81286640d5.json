@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: export deIndent template literal utility",
+  "packageName": "@fluentui/react-utilities",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

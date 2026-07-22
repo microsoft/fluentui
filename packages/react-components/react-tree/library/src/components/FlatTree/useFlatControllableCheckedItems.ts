@@ -1,6 +1,6 @@
 'use client';
 
-import { useControllableState } from '@fluentui/react-utilities';
+import { deIndent, useControllableState } from '@fluentui/react-utilities';
 import type { TreeItemValue } from '../../TreeItem';
 import { ImmutableMap } from '../../utils/ImmutableMap';
 import * as React from 'react';
@@ -36,7 +36,7 @@ export function createNextFlatCheckedItems(
   if (!treeItem) {
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line no-console
-      console.error(/* #__DE-INDENT__ */ `
+      console.error(deIndent`
         @fluentui/react-tree [useHeadlessFlatTree]:
         Tree item ${data.value} not found.
       `);

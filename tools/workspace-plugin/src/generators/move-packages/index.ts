@@ -10,7 +10,7 @@ import {
   readProjectConfiguration,
   readNxJson,
 } from '@nx/devkit';
-import { moveGenerator } from '@nx/workspace/generators';
+import { moveGenerator } from '@nx/workspace/src/generators/move/move';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
 
 import { MovePackagesGeneratorSchema } from './schema';

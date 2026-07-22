@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { deIndent } from '../utils/deIndent';
 
 /**
  * @internal
@@ -48,7 +49,7 @@ export const useControllableState = <State>(
   if (process.env.NODE_ENV !== 'production') {
     if (options.state !== undefined && options.defaultState !== undefined) {
       // eslint-disable-next-line no-console
-      console.error(/** #__DE-INDENT__ */ `
+      console.error(deIndent`
       @fluentui/react-utilities [useControllableState]:
       A component must be either controlled or uncontrolled (specify either the state or the defaultState, but not both).
       Decide between using a controlled or uncontrolled component and remove one of this props.
@@ -108,7 +109,7 @@ const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is 
         const undefinedWarning = isControlled ? 'defined to an undefined' : 'undefined to a defined';
 
         // eslint-disable-next-line no-console
-        console.error(/** #__DE-INDENT__ */ `
+        console.error(deIndent`
           @fluentui/react-utilities [useControllableState]:
           A component is changing ${controlWarning}. This is likely caused by the value changing from ${undefinedWarning} value, which should not happen.
           Decide between using a controlled or uncontrolled input element for the lifetime of the component.

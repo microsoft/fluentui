@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { readFileSync } from 'node:fs';
+const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
 // Reading the SWC compilation config and remove the "exclude"
@@ -17,7 +17,7 @@ if (swcJestConfig.swcrc === undefined) {
 // jest needs EsModule Interop to find the default exported setup/teardown functions
 // swcJestConfig.module.noInterop = false;
 
-export default {
+module.exports = {
   displayName: 'visual-regression-utilities',
   preset: '../../jest.preset.js',
   transform: {

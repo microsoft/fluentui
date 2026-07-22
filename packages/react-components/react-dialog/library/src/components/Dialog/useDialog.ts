@@ -5,7 +5,7 @@ import * as React from 'react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { presenceMotionSlot } from '@fluentui/react-motion';
-import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
+import { deIndent, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 
 import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
@@ -89,7 +89,7 @@ function childrenToTriggerAndContent(
   if (process.env.NODE_ENV !== 'production') {
     if (childrenArray.length !== 1 && childrenArray.length !== 2) {
       // eslint-disable-next-line no-console
-      console.warn(/* #__DE-INDENT__ */ `
+      console.warn(deIndent`
         @fluentui/react-dialog [useDialog]:
         Dialog must contain at least one child <DialogSurface/>,
         and at most two children <DialogTrigger/> <DialogSurface/> (in this order).

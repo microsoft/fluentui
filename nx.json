@@ -192,5 +192,5 @@
       ]
     }
   ],
-  "useLegacyCache": true
+  "analytics": false
 }

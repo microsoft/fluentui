@@ -1,6 +1,6 @@
 'use client';
 
-import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { deIndent, getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
 import { Collapse } from '@fluentui/react-motion-components-preview';
@@ -116,7 +116,7 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console
-      console.warn(/* #__DE-INDENT__ */ `
+      console.warn(deIndent`
         @fluentui/react-tree [useRootTree]:
         Tree must have either a \`aria-label\` or \`aria-labelledby\` property defined
       `);

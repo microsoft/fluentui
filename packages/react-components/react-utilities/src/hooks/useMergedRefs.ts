@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { deIndent } from '../utils/deIndent';
 
 /**
  * A Ref function which can be treated like a ref object in that it has an attached
@@ -26,7 +27,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObje
       for (const ref of refs) {
         if (typeof ref === 'string' && process.env.NODE_ENV !== 'production') {
           // eslint-disable-next-line no-console
-          console.error(/** #__DE-INDENT__ */ `
+          console.error(deIndent`
             @fluentui/react-utilities [useMergedRefs]:
             This hook does not support the usage of string refs. Please use React.useRef instead.
 

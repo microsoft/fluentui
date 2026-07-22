@@ -12,7 +12,7 @@
   "dependencies": {
     "@eslint/compat": "1.3.0",
     "@griffel/eslint-plugin": "^2.0.0",
-    "@nx/eslint-plugin": "21.6.10",
+    "@nx/eslint-plugin": "22.7.7",
     "@rnx-kit/eslint-plugin": "^0.8.4",
     "@typescript-eslint/eslint-plugin": "8.46.2",
     "@typescript-eslint/type-utils": "^8.46.2",
