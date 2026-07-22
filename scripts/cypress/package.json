@@ -3,7 +3,5 @@
   "version": "0.0.1",
   "private": true,
   "main": "src/index.ts",
-  "browser": "src/browser/index.ts",
-  "dependencies": {},
-  "devDependencies": {}
+  "browser": "src/browser/index.ts"
 }

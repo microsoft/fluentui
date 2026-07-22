@@ -4,9 +4,8 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "@fluentui/scripts-utils": "*",
     "@fluentui/scripts-monorepo": "*",
-    "@fluentui/scripts-prettier": "*"
-  },
-  "devDependencies": {}
+    "@fluentui/scripts-prettier": "*",
+    "@fluentui/scripts-utils": "*"
+  }
 }
