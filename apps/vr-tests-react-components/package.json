@@ -11,7 +11,7 @@
     "start": "yarn run -T storybook dev",
     "test": "yarn run -T just-scripts test",
     "type-check": "yarn run -T tsc -p . --noEmit --baseUrl .",
-    "test-vr": "yarn run -T storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
+    "test-vr": "yarn run -T storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters ${STORYWRIGHT_EXCLUDE_PATTERNS_V9:+--excludePatterns \"$STORYWRIGHT_EXCLUDE_PATTERNS_V9\"}"
   },
   "dependencies": {
     "@fluentui/react-accordion": "*",

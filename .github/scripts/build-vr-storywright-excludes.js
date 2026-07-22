@@ -5,16 +5,53 @@ const { readdirSync, readFileSync, statSync } = require('node:fs');
 const { join } = require('node:path');
 
 const REPO_ROOT = process.cwd();
-const STORIES_ROOT = join(REPO_ROOT, 'apps/vr-tests-react-components/src/stories');
-
-const aliasTokensByPackage = {
-  'react-table': ['DataGrid'],
-  'react-datepicker-compat': ['DatePicker', 'Datepicker'],
-  'react-calendar-compat': ['Calendar'],
-  'react-timepicker-compat': ['TimePicker', 'Timepicker'],
-  'react-message-bar': ['MessageBar'],
-  'react-infolabel': ['InfoLabel'],
-  'react-spinbutton': ['SpinButton'],
+const SUITE_CONFIG = {
+  'vr-tests-react-components': {
+    storiesRoot: 'apps/vr-tests-react-components/src/stories',
+    storyFilePattern: /\.stories\.(ts|tsx|js|jsx|mjs)$/,
+    changedMatchers: [/^packages\/react-components\/(react-[^/]+)\//],
+    aliasTokensByPackage: {
+      'react-table': ['DataGrid'],
+      'react-datepicker-compat': ['DatePicker', 'Datepicker'],
+      'react-calendar-compat': ['Calendar'],
+      'react-timepicker-compat': ['TimePicker', 'Timepicker'],
+      'react-message-bar': ['MessageBar'],
+      'react-infolabel': ['InfoLabel'],
+      'react-spinbutton': ['SpinButton'],
+    },
+  },
+  'vr-tests': {
+    storiesRoot: 'apps/vr-tests/src/stories',
+    storyFilePattern: /\.stories\.(ts|tsx|js|jsx|mjs)$/,
+    changedMatchers: [
+      /^packages\/react\/src\/components\/([^/]+)\//,
+      /^packages\/react-experiments\/src\/components\/([^/]+)\//,
+      /^packages\/charts\/[^/]+\/src\/components\/([^/]+)\//,
+      /^packages\/react\/([^/]+)\//,
+      /^packages\/react-experiments\/([^/]+)\//,
+      /^packages\/charts\/([^/]+)\//,
+    ],
+    aliasTokensByPackage: {
+      charting: ['Chart', 'Charts'],
+      piechart: ['PieChart'],
+      sparklinechart: ['SparklineChart'],
+    },
+  },
+  'vr-tests-web-components': {
+    storiesRoot: 'apps/vr-tests-web-components/src/stories',
+    storyFilePattern: /\.stories\.(ts|tsx|js|jsx|mjs)$/,
+    changedMatchers: [
+      /^packages\/web-components\/src\/([^/]+)\//,
+      /^packages\/web-components\/src\/components\/([^/]+)\//,
+      /^packages\/web-components\/([^/]+)\//,
+    ],
+    aliasTokensByPackage: {
+      menulist: ['MenuList'],
+      textinput: ['TextInput'],
+      progressbar: ['ProgressBar'],
+      radiogroup: ['RadioGroup'],
+    },
+  },
 };
 
 function isDebugEnabled(args) {
@@ -57,7 +94,7 @@ function parseArgs(argv) {
   return args;
 }
 
-function listStoryFiles(dir) {
+function listStoryFiles(dir, storyFilePattern) {
   const result = [];
   for (const entry of readdirSync(dir)) {
     const fullPath = join(dir, entry);
@@ -67,7 +104,7 @@ function listStoryFiles(dir) {
       continue;
     }
 
-    if (entry.endsWith('.stories.tsx')) {
+    if (storyFilePattern.test(entry)) {
       result.push(fullPath);
     }
   }
@@ -85,7 +122,7 @@ function normalize(value) {
   return value.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-function packageToTokens(packageName) {
+function packageToTokens(packageName, aliasTokensByPackage) {
   const shortName = packageName.replace('@fluentui/', '');
   const base = shortName.replace(/^react-/, '');
   const baseToken = base
@@ -94,8 +131,21 @@ function packageToTokens(packageName) {
     .map(chunk => chunk.charAt(0).toUpperCase() + chunk.slice(1))
     .join('');
 
-  const aliases = aliasTokensByPackage[shortName] ?? [];
+  const aliases = aliasTokensByPackage[shortName] ?? aliasTokensByPackage[normalize(baseToken)] ?? [];
   return [baseToken, ...aliases].filter(Boolean);
+}
+
+function toIdentifierTokens(value) {
+  const raw = value
+    .replace(/\.[^.]+$/, '')
+    .replace(/[\\/]+/g, '-')
+    .split('-')
+    .flatMap(part => part.match(/[A-Z]?[a-z]+|[A-Z]+(?![a-z])|[0-9]+/g) ?? [])
+    .map(token => token.trim())
+    .filter(Boolean);
+
+  const pascal = raw.map(token => token.charAt(0).toUpperCase() + token.slice(1).toLowerCase()).join('');
+  return [...new Set([pascal, ...raw])];
 }
 
 function escapeRegex(value) {
@@ -115,13 +165,16 @@ function getChangedFiles(base, head) {
     .filter(Boolean);
 }
 
-function getChangedPackages(changedFiles) {
+function getChangedPackages(changedFiles, changedMatchers) {
   const result = new Set();
 
   for (const file of changedFiles) {
-    const match = file.match(/^packages\/react-components\/(react-[^/]+)\//);
-    if (match) {
-      result.add(match[1]);
+    for (const matcher of changedMatchers) {
+      const match = file.match(matcher);
+      if (match?.[1]) {
+        result.add(match[1]);
+        break;
+      }
     }
   }
 
@@ -141,11 +194,24 @@ function writeGithubOutput(name, value) {
 function main() {
   const args = parseArgs(process.argv);
   const debug = isDebugEnabled(args);
+  const suite = args.suite || 'vr-tests-react-components';
+  const suiteConfig = SUITE_CONFIG[suite];
   const base = args.base || process.env.NX_BASE;
   const head = args.head || process.env.NX_HEAD;
 
+  if (!suiteConfig) {
+    console.log(`Unknown suite '${suite}'. Falling back to full VR run.`);
+    writeGithubOutput('exclude_patterns', '');
+    process.exitCode = 0;
+    return;
+  }
+
+  const storiesRoot = join(REPO_ROOT, suiteConfig.storiesRoot);
+
+  debugLog(debug, 'Suite:', suite);
   debugLog(debug, 'Base SHA:', base || '(missing)');
   debugLog(debug, 'Head SHA:', head || '(default HEAD)');
+  debugLog(debug, 'Stories root:', storiesRoot);
 
   if (!base) {
     console.log('No base SHA found. Falling back to full VR run.');
@@ -160,25 +226,29 @@ function main() {
     debugLog(debug, 'Changed files sample:', changedFiles.slice(0, 20).join(', '));
   }
 
-  const changedPackages = getChangedPackages(changedFiles);
+  const changedPackages = getChangedPackages(changedFiles, suiteConfig.changedMatchers);
   debugLog(debug, 'Changed package candidates:', [...changedPackages].join(', ') || '(none)');
 
   if (!changedPackages.size) {
-    console.log('No react-components package changes detected. Falling back to full VR run.');
-    debugLog(debug, 'Reason: changed files did not match packages/react-components/react-* paths');
+    console.log(`No relevant package changes detected for suite '${suite}'. Falling back to full VR run.`);
+    debugLog(debug, 'Reason: changed files did not match suite-specific changed path patterns');
     writeGithubOutput('exclude_patterns', '');
     return;
   }
 
   const selectedTokens = new Set();
   for (const pkg of changedPackages) {
-    for (const token of packageToTokens(pkg)) {
+    for (const token of packageToTokens(pkg, suiteConfig.aliasTokensByPackage)) {
+      selectedTokens.add(normalize(token));
+    }
+
+    for (const token of toIdentifierTokens(pkg)) {
       selectedTokens.add(normalize(token));
     }
   }
   debugLog(debug, 'Selected normalized tokens:', [...selectedTokens].join(', ') || '(none)');
 
-  const files = listStoryFiles(STORIES_ROOT);
+  const files = listStoryFiles(storiesRoot, suiteConfig.storyFilePattern);
   debugLog(debug, 'Story files discovered:', files.length);
   const allTitles = new Set();
   for (const file of files) {
@@ -208,7 +278,7 @@ function main() {
     .map(title => `^${escapeRegex(title)}\\.`);
 
   const value = excludedPatterns.join(',');
-  console.log(`Selective v9 VR enabled. Included titles: ${includedTitles.length}/${allTitles.size}`);
+  console.log(`Selective VR enabled for '${suite}'. Included titles: ${includedTitles.length}/${allTitles.size}`);
   debugLog(debug, 'Included titles sample:', includedTitles.slice(0, 20).join(' | '));
   debugLog(debug, 'Excluded regex count:', excludedPatterns.length);
   debugLog(debug, 'Excluded regex sample:', excludedPatterns.slice(0, 20).join(' | '));

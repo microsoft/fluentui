@@ -10,7 +10,7 @@
     "lint": "yarn run -T eslint src --ext .ts,.tsx",
     "start": "yarn run -T storybook dev",
     "type-check": "yarn run -T tsc -p . --baseUrl . --noEmit",
-    "test-vr": "yarn run -T storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
+    "test-vr": "yarn run -T storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError ${STORYWRIGHT_EXCLUDE_PATTERNS_WC:+--excludePatterns \"$STORYWRIGHT_EXCLUDE_PATTERNS_WC\"}"
   },
   "dependencies": {
     "@fluentui/tokens": ">=1.0.0-alpha",
