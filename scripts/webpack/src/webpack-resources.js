@@ -332,6 +332,7 @@ function getPlugins(bundleName, isProduction, profile) {
 
   if (isProduction && profile) {
     plugins.push(
+      // @ts-ignore - BundleAnalyzerPlugin types have nested webpack types incompatible with project webpack types
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',
