@@ -98,7 +98,7 @@ describe('TagPicker', () => {
     cy.get('[aria-label="Selected animals"]')
       .should('have.attr', 'focusgroup', 'toolbar inline wrap')
       .and('not.have.attr', 'data-tabster');
-    cy.get('[data-testid="tag-Cat"]').focus().realPress('ArrowRight');
+    cy.get('[data-testid="tag-Cat"]').should('have.attr', 'tabindex', '0').focus().realPress('ArrowRight');
     cy.get('[data-testid="tag-Dog"]').should('be.focused');
     cy.get('[data-testid="tag-Dog"]').realPress('ArrowRight');
     cy.get(input).should('be.focused');
