@@ -14,6 +14,7 @@ export const useTagPicker = (props: TagPickerProps): TagPickerState => {
   const { targetRef, containerRef } = usePositioning(resolvePositioningShorthand(positioning));
 
   const baseState = useTagPickerBase_unstable(baseProps);
+  const targetRefWithCurrent = useMergedRefs<HTMLDivElement>(targetRef);
   const popoverRef = useMergedRefs<HTMLDivElement>(baseState.popoverRef, containerRef);
 
   return {
@@ -23,7 +24,7 @@ export const useTagPicker = (props: TagPickerProps): TagPickerState => {
     appearance: 'outline',
     inline: true,
     size: 'medium',
-    targetRef: targetRef as unknown as TagPickerState['targetRef'],
+    targetRef: targetRefWithCurrent,
     popoverRef,
   };
 };

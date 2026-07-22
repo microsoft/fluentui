@@ -108,8 +108,7 @@ Filtering.parameters = {
   docs: {
     description: {
       story:
-        'The `useTagPickerFilter` hook filters options by the typed query. Pass a custom `renderOption` so it ' +
-        'renders the headless `Option` (its default renders the styled `TagPickerOption`).',
+        'The `useTagPickerFilter` hook filters options by the typed query and renders headless options by default.',
     },
   },
 };

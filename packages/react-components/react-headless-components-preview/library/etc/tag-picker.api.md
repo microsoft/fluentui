@@ -43,7 +43,6 @@ import { TagPickerSlots } from '@fluentui/react-tag-picker';
 import { TagPickerState } from '@fluentui/react-tag-picker';
 import { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerContextValues } from '@fluentui/react-tag-picker';
-import { useTagPickerFilter } from '@fluentui/react-tag-picker';
 
 export { renderTagPicker }
 
@@ -220,7 +219,8 @@ export { useTagPickerContextValues }
 // @public
 export const useTagPickerControl: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;
 
-export { useTagPickerFilter }
+// @public (undocumented)
+export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSXElement[];
 
 // @public
 export const useTagPickerGroup: (props: TagPickerGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupState;

@@ -2,6 +2,7 @@ export {
   TagPicker,
   renderTagPicker,
   useTagPicker,
+  useTagPickerFilter,
   useTagPickerContextValues,
   TagPickerControl,
   renderTagPickerControl,
@@ -56,8 +57,6 @@ export type {
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
 } from './components/TagPicker';
-
-export { useTagPickerFilter } from '@fluentui/react-tag-picker';
 
 export { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 export type { TagPickerContextValue } from '@fluentui/react-tag-picker';
