@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { PositioningImperativeRef } from '@fluentui/react-components';
+import type { PositioningImperativeRef, OnPositioningEndEvent } from '@fluentui/react-components';
+
 import {
   useId,
   Text,
@@ -9,7 +10,6 @@ import {
   Button,
   PopoverTrigger,
   PopoverSurface,
-  type OnPositioningEndEvent,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
