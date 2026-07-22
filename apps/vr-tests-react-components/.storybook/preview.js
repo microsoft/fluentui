@@ -17,27 +17,14 @@ const waitForVrtAssets = async () => {
     return;
   }
 
+  // Keep readiness checks lightweight to avoid inflating total VRT runtime.
+  const timeout = new Promise(resolve => setTimeout(resolve, 300));
+
   try {
-    await document.fonts?.ready;
+    await Promise.race([document.fonts?.ready, timeout]);
   } catch {
-    // Ignore font readiness failures and fall back to image/frame waits.
+    // Best-effort readiness only; continue quickly on failures.
   }
-
-  const pendingImages = Array.from(document.images).filter(image => !image.complete);
-  await Promise.all(
-    pendingImages.map(
-      image =>
-        new Promise(resolve => {
-          if (image.complete) {
-            resolve();
-            return;
-          }
-
-          image.addEventListener('load', () => resolve(), { once: true });
-          image.addEventListener('error', () => resolve(), { once: true });
-        }),
-    ),
-  );
 
   await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 };

@@ -48,7 +48,7 @@ index 4da7d8cbf7cb295f35694646dbb7e1918026f802..860d58e1259ff687ba26dfac6a8f5db8
 +                switch (_a.label) {
 +                    case 0: return [4 /*yield*/, this.page.evaluate(function () {
 +                            var vrtWindow = window;
-+                            var deadline = Date.now() + 5000;
++                            var deadline = Date.now() + 750;
 +                            var waitForFrame = function () {
 +                                return new Promise(function (resolve) {
 +                                    requestAnimationFrame(function () { return resolve(void 0); });
