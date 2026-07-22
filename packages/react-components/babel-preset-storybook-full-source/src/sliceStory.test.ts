@@ -105,6 +105,64 @@ describe('sliceStorySource', () => {
     });
   });
 
+  describe('CSF3 render method shorthand', () => {
+    it('normalizes a render method shorthand without args', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const meta = { title: 'Button', component: Button };`,
+        `export default meta;`,
+        ``,
+        `export const Base = {`,
+        `  render() {`,
+        `    return <Button appearance="primary">Base</Button>;`,
+        `  },`,
+        `};`,
+      ].join('\n');
+
+      const sliced = slice(source, 'Base');
+
+      expect(format(sliced)).toMatchInlineSnapshot(`
+        "import * as React from \\"react\\";
+        import { Button } from \\"@fluentui/react-button\\";
+        export const Base = () => {
+          return <Button appearance=\\"primary\\">Base</Button>;
+        };
+        "
+      `);
+    });
+
+    it('normalizes a render method shorthand with an args parameter', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const meta = { title: 'Button', component: Button, args: { appearance: 'primary' } };`,
+        `export default meta;`,
+        ``,
+        `export const WithArgs = {`,
+        `  args: { children: 'Hi' },`,
+        `  render(args) {`,
+        `    return <Button {...args} />;`,
+        `  },`,
+        `};`,
+      ].join('\n');
+
+      const sliced = slice(source, 'WithArgs');
+
+      expect(format(sliced)).toMatchInlineSnapshot(`
+        "import * as React from \\"react\\";
+        import { Button } from \\"@fluentui/react-button\\";
+        export const WithArgs = () => {
+          const args = { appearance: \\"primary\\", children: \\"Hi\\" };
+          return <Button {...args} />;
+        };
+        "
+      `);
+    });
+  });
+
   describe('module-level member assignment pruning', () => {
     it('keeps non-CSF member assignments on reachable helpers (e.g. `Card.displayName`)', () => {
       const source = [

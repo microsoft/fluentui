@@ -305,6 +305,30 @@ function getObjectProperty(
   return undefined;
 }
 
+/**
+ * Returns the story's `render` as a function expression, supporting both the
+ * property form (`render: (args) => …` / `render: function () {…}`) and the ES
+ * method shorthand (`render(args) {…}`). Method shorthands are converted to an
+ * equivalent function expression so downstream normalization is uniform.
+ */
+function getRenderFunction(
+  t: typeof Babel.types,
+  object: Babel.types.ObjectExpression,
+): Babel.types.ArrowFunctionExpression | Babel.types.FunctionExpression | undefined {
+  for (const property of object.properties) {
+    if (t.isObjectMethod(property) && !property.computed) {
+      const key = property.key;
+      const name = t.isIdentifier(key) ? key.name : t.isStringLiteral(key) ? key.value : undefined;
+      if (name === 'render') {
+        return t.functionExpression(null, property.params, property.body, property.generator, property.async);
+      }
+    }
+  }
+
+  const value = getObjectProperty(t, object, 'render');
+  return value && (t.isArrowFunctionExpression(value) || t.isFunctionExpression(value)) ? value : undefined;
+}
+
 interface NormalizeContext {
   metaArgs?: Babel.types.ObjectExpression;
   metaComponentName?: string;
@@ -353,12 +377,12 @@ function normalizeStory(
   // CSF3 object story.
   if (t.isObjectExpression(init)) {
     const flattened = flattenObjectExpression(t, init, context.objectConstsByName, new Set());
-    const renderProp = getObjectProperty(t, flattened, 'render');
+    const renderFn = getRenderFunction(t, flattened);
     const storyArgs = getObjectProperty(t, flattened, 'args');
     const mergedArgs = mergeArgs(t, context.metaArgs, t.isObjectExpression(storyArgs) ? storyArgs : undefined);
 
-    if (renderProp && (t.isArrowFunctionExpression(renderProp) || t.isFunctionExpression(renderProp))) {
-      const fn = buildRenderFunction(t, renderProp, mergedArgs);
+    if (renderFn) {
+      const fn = buildRenderFunction(t, renderFn, mergedArgs);
       return buildFunctionStoryExport(t, storyName, fn);
     }
 
