@@ -2,7 +2,6 @@ import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { customStyleHookTests } from '@fluentui/react-conformance-griffel';
 
 import { isConformant } from '../../testing/isConformant';
 
@@ -14,7 +13,6 @@ describe('Card', () => {
   isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
-    extraTests: customStyleHookTests,
     testOptions: {
       'component-calls-custom-style-hook': {},
       'has-static-classnames': [

@@ -8,12 +8,8 @@ import { TestObject } from '@fluentui/react-conformance';
 
 // @public (undocumented)
 export type CustomStyleHookCalledTestOptions = {
-    hookName?: string;
     callCount?: number;
 };
-
-// @public (undocumented)
-export const customStyleHookTests: TestObject;
 
 // @public (undocumented)
 const makeStylesTests: TestObject;

@@ -5,15 +5,16 @@ const CUSTOM_STYLE_HOOK_PROP = 'useCustomStyleHook_unstable' as const;
 
 export type CustomStyleHookCalledTestOptions = {
   /**
-   * Hook name to assert. Defaults to `use<displayName>Styles_unstable`.
-   */
-  hookName?: string;
-
-  /**
    * Defines number of expected custom style hook invocations per component render. Defaults to 1.
    */
   callCount?: number;
 };
+
+declare module '@fluentui/react-conformance' {
+  interface TestOptions {
+    [CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]?: CustomStyleHookCalledTestOptions;
+  }
+}
 
 /**
  * Requires a component from a file path, required for proper mocking.
@@ -36,9 +37,7 @@ async function getReactComponent(
  * and then invoke the returned hook with component state.
  */
 export const customStyleHookCalled: BaseConformanceTest = testInfo => {
-  const testOptions = testInfo.testOptions as
-    | (TestOptions & { [CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]?: CustomStyleHookCalledTestOptions })
-    | undefined;
+  const testOptions = testInfo.testOptions as TestOptions | undefined;
 
   let container: HTMLElement | null = null;
   const customStyleHook = jest.fn();
@@ -77,8 +76,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
     const Component = await getReactComponent(testInfo.componentPath, testInfo);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const element = React.createElement(Component, { ...testInfo.requiredProps } as any);
-    const expectedHookName =
-      testOptions?.[CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]?.hookName ?? `use${testInfo.displayName}Styles_unstable`;
+    const expectedHookName = `use${testInfo.displayName}Styles_unstable`;
 
     const { unmount } = await render(element, container as HTMLElement);
 
