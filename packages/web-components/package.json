@@ -106,7 +106,7 @@
     "@wc-toolkit/cem-validator": "1.0.3",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
-    "chromedriver": "^125.0.0",
+    "chromedriver": "^151.0.0",
     "dedent": "^1.2.0",
     "rollup-plugin-fast-tagged-templates": "^1.0.2"
   },
