@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PositioningImperativeRef, OnPositioningEndEvent } from '@fluentui/react-components';
+import type { PositioningImperativeRef, PositioningProps } from '@fluentui/react-components';
 
 import {
   useId,
@@ -11,6 +11,9 @@ import {
   PopoverTrigger,
   PopoverSurface,
 } from '@fluentui/react-components';
+
+// Derive the event type from PositioningProps instead of importing directly
+type OnPositioningEndEvent = Parameters<Exclude<PositioningProps['onPositioningEnd'], undefined>>[0];
 
 const useStyles = makeStyles({
   root: {
