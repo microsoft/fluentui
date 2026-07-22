@@ -21,7 +21,7 @@ jobs:
     name: Upload VRT Baseline
     runs-on: macos-14-xlarge
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
