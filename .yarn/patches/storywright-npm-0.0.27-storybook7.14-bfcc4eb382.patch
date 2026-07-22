@@ -34,6 +34,82 @@ index 0fcde0cc83195b726c6149364896211c8074a159..42ce76c156ea2d5fb03cda623066fe50
 \ No newline at end of file
 +{"version":3,"file":"GetStoriesV2.js","sourceRoot":"","sources":["../../src/StoryWrightProcessor/GetStoriesV2.js"],"names":[],"mappings":"AAAA,YAAY;AAEZ,mBAAmB,EAAE,CAAC;AAEtB,SAAS,mBAAmB;IAC1B,OAAO,cAAc,EAAE,CAAC,IAAI,CAAC,UAAC,OAAO;;QACnC;;WAEG;QACH,IAAM,gBAAgB,GAAG,EAAE,CAAC;QAC5B;;WAEG;QACH,IAAM,MAAM,GAAG,EAAE,CAAC;QAClB,KAAkB,UAAsB,EAAtB,KAAA,MAAM,CAAC,MAAM,CAAC,OAAO,CAAC,EAAtB,cAAsB,EAAtB,IAAsB,EAAE;YAArC,IAAI,KAAK,SAAA;YACZ,IAAI;gBACF,IAAM,KAAK,eAAG,KAAK,CAAC,UAAU,0CAAE,WAAW,0CAAE,KAAK,CAAC;gBACnD,IAAI,KAAK,CAAC,OAAO,CAAC,KAAK,CAAC,EAAE;oBACxB,KAAK,CAAC,KAAK,GAAG,KAAK,CAAC;iBACrB;aACF;YAAC,OAAO,EAAE,EAAE;gBACX,MAAM,CAAC,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC;gBACzB,OAAO,CAAC,KAAK,CAAC,oCAAoC,GAAG,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC;gBAClE,OAAO,CAAC,KAAK,CAAC,EAAE,CAAC,CAAC;aACnB;YAED,gBAAgB,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;SAC9B;QAED,OAAO,EAAE,gBAAgB,kBAAA,EAAE,MAAM,QAAA,EAAE,CAAC;IACtC,CAAC,CAAC,CAAC;AACL,CAAC;AAED;;;GAGG;AACH,SAAS,cAAc;IACrB,OAAO,MAAM,CAAC,uBAAuB,CAAC,CAAC,OAAO,EAAE,CAAC;AACnD,CAAC"}
 \ No newline at end of file
+diff --git a/lib/StoryWrightProcessor/PlayWrightExecutor.js b/lib/StoryWrightProcessor/PlayWrightExecutor.js
+index 4da7d8cbf7cb295f35694646dbb7e1918026f802..860d58e1259ff687ba26dfac6a8f5db8f5d87f9f 100644
+--- a/lib/StoryWrightProcessor/PlayWrightExecutor.js
++++ b/lib/StoryWrightProcessor/PlayWrightExecutor.js
+@@ -467,6 +467,33 @@ var PlayWrightExecutor = /** @class */ (function () {
+     PlayWrightExecutor.prototype.delay = function (ms) {
+         return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+     };
++    PlayWrightExecutor.prototype.waitForRenderStability = function () {
++        return __awaiter(this, void 0, void 0, function () {
++            return __generator(this, function (_a) {
++                switch (_a.label) {
++                    case 0: return [4 /*yield*/, this.page.evaluate(function () {
++                            var vrtWindow = window;
++                            var deadline = Date.now() + 5000;
++                            var waitForFrame = function () {
++                                return new Promise(function (resolve) {
++                                    requestAnimationFrame(function () { return resolve(void 0); });
++                                });
++                            };
++                            var waitForReady = function () {
++                                if (vrtWindow.__fluentVrtReady__ === true || Date.now() >= deadline) {
++                                    return Promise.resolve();
++                                }
++                                return waitForFrame().then(waitForReady);
++                            };
++                            return waitForReady();
++                        })];
++                    case 1:
++                        _a.sent();
++                        return [2 /*return*/];
++                }
++            });
++        });
++    };
+     PlayWrightExecutor.prototype.checkIfPageIsBusy = function (screenshotPath) {
+         return __awaiter(this, void 0, void 0, function () {
+             var timeout, isBusy, busy;
+@@ -474,28 +501,31 @@ var PlayWrightExecutor = /** @class */ (function () {
+                 switch (_a.label) {
+                     case 0:
+                         timeout = Date.now() + 5000;
+-                        _a.label = 1;
++                        return [4 /*yield*/, this.waitForRenderStability()];
+                     case 1:
++                        _a.sent();
++                        _a.label = 2;
++                    case 2:
+                     // Add a default wait for 1sec for css rendring, click or hover activities.
+                     // Ideally the test should be authored in such a way that it should wait for element to be visible and then take screenshot but that gets missed out in most test cases.
+                     // Also on hover activities where just some background changes its difficult for test author to write such waiting mechanism hence adding default 1 second wait.
+                     return [4 /*yield*/, this.delay(this.options.waitTimeScreenshot)];
+-                    case 2:
++                    case 3:
+                         // Add a default wait for 1sec for css rendring, click or hover activities.
+                         // Ideally the test should be authored in such a way that it should wait for element to be visible and then take screenshot but that gets missed out in most test cases.
+                         // Also on hover activities where just some background changes its difficult for test author to write such waiting mechanism hence adding default 1 second wait.
+                         _a.sent();
+                         return [4 /*yield*/, this.isPageBusy()];
+-                    case 3:
++                    case 4:
+                         busy = _a.sent();
+                         isBusy =
+                             busy.pendingTimeouts + busy.pendingNetworkMap.size + busy.pendingDom >
+                                 0;
+-                        _a.label = 4;
+-                    case 4:
+-                        if (isBusy && Date.now() < timeout) return [3 /*break*/, 1];
+                         _a.label = 5;
+                     case 5:
++                        if (isBusy && Date.now() < timeout) return [3 /*break*/, 2];
++                        _a.label = 6;
++                    case 6:
+                         if (isBusy) {
+                             if (busy.pendingTimeouts > 0) {
+                                 console.log("E2223 : Page busy. Pending timeouts for " + this.page.url() + " Path = " + screenshotPath);
 diff --git a/lib/StoryWrightProcessor/StoryWrightProcessor.js b/lib/StoryWrightProcessor/StoryWrightProcessor.js
 index fe2ab31f610fe66156899fb4061f1eb1e672194d..03bc5103a262c6c43e0b91bfb6d73def9a9a8989 100644
 --- a/lib/StoryWrightProcessor/StoryWrightProcessor.js
