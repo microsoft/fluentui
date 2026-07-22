@@ -2280,7 +2280,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
     style="margin-top: -36px;"
   >
     <div
-      aria-label="Chart legends"
+      aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"

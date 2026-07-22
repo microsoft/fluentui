@@ -2099,7 +2099,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Chart legends"
+        aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -2671,7 +2671,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Chart legends"
+        aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -3263,7 +3263,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Chart legends"
+        aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -5916,7 +5916,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     class="fui-cart__legendContainer"
   >
     <div
-      aria-label="Chart legends"
+      aria-label="Legends"
       aria-multiselectable="false"
       class="fui-legend__root"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"

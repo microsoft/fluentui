@@ -15442,7 +15442,7 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -16309,7 +16309,7 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"

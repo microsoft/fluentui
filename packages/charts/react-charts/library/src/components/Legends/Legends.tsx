@@ -141,7 +141,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           {...arrowAttributes}
           {...(allowFocusOnLegends && {
             role: 'listbox',
-            'aria-label': 'Chart legends',
+            'aria-label': 'Legends',
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
