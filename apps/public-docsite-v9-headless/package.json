@@ -4,13 +4,13 @@
   "private": true,
   "description": "Fluent UI React Headless Components Preview documentation",
   "scripts": {
-    "build-storybook": "storybook build -o ./dist/storybook --docs",
-    "build-storybook:docsite": "cross-env DEPLOY_PATH=/headless/ storybook build -o ./dist/storybook --docs",
+    "build-storybook": "yarn run -T storybook build -o ./dist/storybook --docs",
+    "build-storybook:docsite": "yarn run -T cross-env DEPLOY_PATH=/headless/ storybook build -o ./dist/storybook --docs",
     "postbuild-storybook": "yarn generate-llms-docs",
     "postbuild-storybook:docsite": "yarn postbuild-storybook",
-    "generate-llms-docs": "yarn storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/headless/\" --summaryTitle \"Fluent UI React Headless Components\" --summaryDescription \"Fluent UI React headless components provide unstyled, accessible component primitives that can be styled with any CSS approach.\"",
+    "generate-llms-docs": "yarn run -T storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/headless/\" --summaryTitle \"Fluent UI React Headless Components\" --summaryDescription \"Fluent UI React headless components provide unstyled, accessible component primitives that can be styled with any CSS approach.\"",
     "start": "yarn storybook:docs",
-    "storybook": "storybook dev --port 3000",
+    "storybook": "yarn run -T storybook dev --port 3000",
     "storybook:docs": "yarn storybook --docs"
   },
   "dependencies": {

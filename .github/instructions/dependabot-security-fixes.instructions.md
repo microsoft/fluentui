@@ -35,7 +35,7 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 ```json
 {
   "resolutions": {
-    "**/vulnerable-package": "^secure-version"
+    "vulnerable-package": "^secure-version"
   }
 }
 ```
@@ -44,7 +44,7 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 
 The following resolutions are maintained for security purposes:
 
-- `**/tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
+- `tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
 
 ## Troubleshooting
 
@@ -57,11 +57,11 @@ The following resolutions are maintained for security purposes:
 
 ### Manual Security Fix Process
 
-1. Run `yarn audit --level ${SEVERITY}` to identify vulnerabilities (where SEVERITY can be: low, moderate, high, critical)
+1. Run `yarn npm audit --severity ${SEVERITY}` to identify vulnerabilities (where SEVERITY can be: low, moderate, high, critical)
 2. Check if Yarn resolutions are blocking updates
 3. Update resolutions to secure versions
 4. Run `yarn install` to update yarn.lock
-5. Verify fixes with `yarn audit --level ${SEVERITY}`
+5. Verify fixes with `yarn npm audit --severity ${SEVERITY}`
 6. Test that builds still work
 
 ## Testing Security Fixes
@@ -70,7 +70,7 @@ After making changes:
 
 ```bash
 # Check for remaining vulnerabilities at specified severity level
-yarn audit --level ${SEVERITY}
+yarn npm audit --severity ${SEVERITY}
 
 # Verify builds still work
 yarn nx run workspace-plugin:build
