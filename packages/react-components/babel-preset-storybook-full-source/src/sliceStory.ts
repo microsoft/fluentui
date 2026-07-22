@@ -109,11 +109,13 @@ function createSliceStoryPlugin(
 
         const metaComponentName = metaObject ? getMetaComponentName(t, metaObject) : undefined;
         const metaArgs = metaObject ? getObjectProperty(t, metaObject, 'args') : undefined;
+        const metaRender = metaObject ? getRenderFunction(t, metaObject) : undefined;
 
         // --- Normalize the target story into a renderable function ----------
         const normalized = normalizeStory(t, targetPath.node, {
           metaArgs: metaArgs && t.isObjectExpression(metaArgs) ? metaArgs : undefined,
           metaComponentName,
+          metaRender,
           objectConstsByName,
         });
 
@@ -332,6 +334,7 @@ function getRenderFunction(
 interface NormalizeContext {
   metaArgs?: Babel.types.ObjectExpression;
   metaComponentName?: string;
+  metaRender?: Babel.types.ArrowFunctionExpression | Babel.types.FunctionExpression;
   objectConstsByName: Map<string, Babel.types.ObjectExpression>;
 }
 
@@ -386,13 +389,21 @@ function normalizeStory(
       return buildFunctionStoryExport(t, storyName, fn);
     }
 
-    // Render-less args-only story: synthesize `<Component {...args} />`.
+    // Render-less story: prefer the meta-level `render` (Storybook renders such
+    // stories through it), falling back to synthesizing `<Component {...args} />`.
     // Only do this for genuine story objects (empty, or containing only known
     // CSF fields) so arbitrary capitalized data exports are not turned into
     // fake stories.
-    if (context.metaComponentName && isStoryShapedObject(t, flattened)) {
-      const fn = buildSynthesizedFunction(t, context.metaComponentName, mergedArgs);
-      return buildFunctionStoryExport(t, storyName, fn);
+    if (isStoryShapedObject(t, flattened)) {
+      if (context.metaRender) {
+        const fn = buildRenderFunction(t, context.metaRender, mergedArgs);
+        return buildFunctionStoryExport(t, storyName, fn);
+      }
+
+      if (context.metaComponentName) {
+        const fn = buildSynthesizedFunction(t, context.metaComponentName, mergedArgs);
+        return buildFunctionStoryExport(t, storyName, fn);
+      }
     }
   }
 

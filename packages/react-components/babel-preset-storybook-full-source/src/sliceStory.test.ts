@@ -163,6 +163,101 @@ describe('sliceStorySource', () => {
     });
   });
 
+  describe('meta-level render fallback', () => {
+    it('uses the meta render for a render-less story (arrow form)', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const meta = {`,
+        `  title: 'Button',`,
+        `  component: Button,`,
+        `  render: args => <Button {...args}>Meta</Button>,`,
+        `};`,
+        `export default meta;`,
+        ``,
+        `export const Basic = {`,
+        `  args: { appearance: 'primary' },`,
+        `};`,
+      ].join('\n');
+
+      const sliced = slice(source, 'Basic');
+
+      expect(format(sliced)).toMatchInlineSnapshot(`
+        "import * as React from \\"react\\";
+        import { Button } from \\"@fluentui/react-button\\";
+        export const Basic = () => {
+          const args = { appearance: \\"primary\\" };
+          return <Button {...args}>Meta</Button>;
+        };
+        "
+      `);
+    });
+
+    it('uses the meta render for a render-less story (method shorthand)', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const meta = {`,
+        `  title: 'Button',`,
+        `  component: Button,`,
+        `  render(args) {`,
+        `    return <Button {...args}>Meta</Button>;`,
+        `  },`,
+        `};`,
+        `export default meta;`,
+        ``,
+        `export const Basic = {`,
+        `  args: { appearance: 'primary' },`,
+        `};`,
+      ].join('\n');
+
+      const sliced = slice(source, 'Basic');
+
+      expect(format(sliced)).toMatchInlineSnapshot(`
+        "import * as React from \\"react\\";
+        import { Button } from \\"@fluentui/react-button\\";
+        export const Basic = () => {
+          const args = { appearance: \\"primary\\" };
+          return <Button {...args}>Meta</Button>;
+        };
+        "
+      `);
+    });
+
+    it('prefers a story-level render over the meta render', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const meta = {`,
+        `  title: 'Button',`,
+        `  component: Button,`,
+        `  render: args => <Button {...args}>Meta</Button>,`,
+        `};`,
+        `export default meta;`,
+        ``,
+        `export const Custom = {`,
+        `  args: { appearance: 'primary' },`,
+        `  render: args => <Button {...args}>Story</Button>,`,
+        `};`,
+      ].join('\n');
+
+      const sliced = slice(source, 'Custom');
+
+      expect(format(sliced)).toMatchInlineSnapshot(`
+        "import * as React from \\"react\\";
+        import { Button } from \\"@fluentui/react-button\\";
+        export const Custom = () => {
+          const args = { appearance: \\"primary\\" };
+          return <Button {...args}>Story</Button>;
+        };
+        "
+      `);
+    });
+  });
+
   describe('module-level member assignment pruning', () => {
     it('keeps non-CSF member assignments on reachable helpers (e.g. `Card.displayName`)', () => {
       const source = [
