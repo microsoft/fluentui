@@ -5,15 +5,16 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type { RatingBaseProps } from '@fluentui/react-rating';
-import { RatingBaseState } from '@fluentui/react-rating';
-import { RatingContextValues } from '@fluentui/react-rating';
+import type { RatingBaseState } from '@fluentui/react-rating';
+import type { RatingContextValues as RatingContextValues_2 } from '@fluentui/react-rating';
 import type { RatingItemBaseProps } from '@fluentui/react-rating';
-import { RatingItemBaseState } from '@fluentui/react-rating';
+import type { RatingItemBaseState } from '@fluentui/react-rating';
 import { RatingItemSlots as RatingItemSlots_2 } from '@fluentui/react-rating';
 import type { RatingSlots as RatingSlots_2 } from '@fluentui/react-rating';
 import * as React_2 from 'react';
+import { renderRating_unstable as renderRating } from '@fluentui/react-rating';
+import { renderRatingItem_unstable as renderRatingItem } from '@fluentui/react-rating';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
@@ -49,17 +50,15 @@ export type RatingSlots = RatingSlots_2;
 // @public
 export type RatingState = RatingBaseState;
 
-// @public
-export const renderRating: (state: RatingBaseState, contextValues: RatingContextValues) => JSXElement;
+export { renderRating }
 
-// @public
-export const renderRatingItem: (state: RatingItemBaseState) => JSXElement;
+export { renderRatingItem }
 
 // @public
 export const useRating: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
 
 // @public (undocumented)
-export const useRatingContextValues: (state: RatingState) => RatingContextValues_2;
+export const useRatingContextValues: (state: RatingState) => RatingContextValues;
 
 // @public
 export const useRatingItem: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
