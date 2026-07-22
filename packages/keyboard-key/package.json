@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "bundle-size": "monosize measure",
+    "bundle-size": "yarn run -T monosize measure",
     "build": "yarn run -T just-scripts build",
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: Yarn 4 workspace command resolution",
+  "packageName": "@fluentui/react-icons-mdl2",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
