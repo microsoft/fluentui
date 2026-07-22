@@ -22,12 +22,15 @@ jobs:
           files: |
             yarn.lock
 
+      - run: yarn install --immutable
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+
       - name: Check package duplicates
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
           echo "yarn.lock changed! Verifying package deduplication ..."
 
-          yarn run dedupe --list --fail
+          yarn run dedupe --check --json
 
           if [[ $? -ne 0 ]]; then
             echo "Your changes introduced package duplication 🚨"

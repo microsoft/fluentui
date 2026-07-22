@@ -46,7 +46,7 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Workspace lint
         run: |
@@ -103,7 +103,7 @@ jobs:
           cache: 'yarn'
           node-version: '22'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: React Compiler analysis (affected)
         run: |
@@ -130,7 +130,8 @@ jobs:
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
       - run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
+      - run: |
           yarn rit --react 17 --install-deps
           yarn rit --react 18 --install-deps
 
@@ -186,7 +187,7 @@ jobs:
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Install Playwright dependencies
         run: yarn playwright install --with-deps
