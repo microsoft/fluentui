@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.29.6",
     "@babel/generator": "^7.12.13",
     "@babel/helper-plugin-utils": "^7.12.13",
     "@babel/template": "^7.12.13",
