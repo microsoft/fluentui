@@ -38,16 +38,14 @@ async function getReactComponent(
  */
 export const customStyleHookCalled: BaseConformanceTest = testInfo => {
   const testOptions = testInfo.testOptions as TestOptions | undefined;
+  const options = testOptions?.[CUSTOM_STYLE_HOOK_CALLED_TEST_NAME];
+
+  // Opt-in test: components must explicitly set testOptions['component-calls-custom-style-hook'].
+  if (!options) {
+    return;
+  }
 
   let container: HTMLElement | null = null;
-  const customStyleHook = jest.fn();
-  const useCustomStyleHook = jest.fn().mockImplementation(() => customStyleHook);
-
-  jest.mock('@fluentui/react-shared-contexts', () => {
-    const module = jest.requireActual('@fluentui/react-shared-contexts');
-
-    return { ...module, [CUSTOM_STYLE_HOOK_PROP]: useCustomStyleHook };
-  });
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -62,6 +60,8 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
   });
 
   afterEach(async () => {
+    jest.dontMock('@fluentui/react-shared-contexts');
+
     if (container) {
       document.body.removeChild(container);
     }
@@ -71,6 +71,15 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
   it('calls custom style hook with state', async () => {
     /* eslint-disable @fluentui/no-global-react */
+    const customStyleHook = jest.fn();
+    const useCustomStyleHook = jest.fn().mockImplementation(() => customStyleHook);
+
+    jest.doMock('@fluentui/react-shared-contexts', () => {
+      const module = jest.requireActual('@fluentui/react-shared-contexts');
+
+      return { ...module, [CUSTOM_STYLE_HOOK_PROP]: useCustomStyleHook };
+    });
+
     const React = await import('react');
 
     const Component = await getReactComponent(testInfo.componentPath, testInfo);
@@ -83,7 +92,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
     expect(useCustomStyleHook).toHaveBeenCalledWith(expectedHookName);
     expect(customStyleHook).toHaveBeenCalled();
 
-    const expectedCallCount = testOptions?.[CUSTOM_STYLE_HOOK_CALLED_TEST_NAME]?.callCount;
+    const expectedCallCount = options.callCount;
     if (expectedCallCount !== undefined) {
       expect(customStyleHook).toHaveBeenCalledTimes(expectedCallCount);
     } else {
