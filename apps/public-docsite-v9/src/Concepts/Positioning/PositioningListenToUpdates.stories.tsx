@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { PositioningImperativeRef, OnPositioningEndEvent } from '@fluentui/react-components';
 
-
 import {
   useId,
   Text,
