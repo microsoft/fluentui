@@ -379,7 +379,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -809,7 +809,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1260,7 +1260,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1748,7 +1748,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -2176,7 +2176,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -4381,7 +4381,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -4809,7 +4809,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -5317,7 +5317,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -5771,7 +5771,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -6340,7 +6340,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -6852,7 +6852,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -7346,7 +7346,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -7774,7 +7774,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"

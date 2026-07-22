@@ -467,7 +467,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1023,7 +1023,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1584,7 +1584,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -3840,7 +3840,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -4361,7 +4361,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -4882,7 +4882,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -5403,7 +5403,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -6906,7 +6906,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -7417,7 +7417,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -8015,7 +8015,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -8618,7 +8618,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -9146,7 +9146,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"

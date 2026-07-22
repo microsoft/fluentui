@@ -793,7 +793,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1656,7 +1656,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2631,7 +2631,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -3494,7 +3494,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -4913,7 +4913,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -5774,7 +5774,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -6694,7 +6694,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -7555,7 +7555,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -8475,7 +8475,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -9336,7 +9336,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -9886,7 +9886,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -10377,7 +10377,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -11297,7 +11297,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -12158,7 +12158,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -13078,7 +13078,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -13939,7 +13939,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -14302,7 +14302,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -14568,7 +14568,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -18868,7 +18868,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -19729,7 +19729,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -20719,7 +20719,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -21655,7 +21655,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -22650,7 +22650,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -23588,7 +23588,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -24515,7 +24515,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -25376,7 +25376,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -26196,7 +26196,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -26964,7 +26964,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"

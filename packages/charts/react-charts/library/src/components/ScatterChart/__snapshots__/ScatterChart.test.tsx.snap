@@ -417,7 +417,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"

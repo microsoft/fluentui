@@ -234,7 +234,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -512,7 +512,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -847,7 +847,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -1123,7 +1123,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -1957,7 +1957,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -2235,7 +2235,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -2572,7 +2572,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -2850,7 +2850,7 @@ Object {
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -3191,7 +3191,7 @@ Object {
                 style="text-align: unset;"
               >
                 <div
-                  aria-label="Chart legends"
+                  aria-label="legends"
                   aria-multiselectable="false"
                   role="listbox"
                   style="display: contents;"
@@ -3474,7 +3474,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -3815,7 +3815,7 @@ Object {
                 style="text-align: unset;"
               >
                 <div
-                  aria-label="Chart legends"
+                  aria-label="legends"
                   aria-multiselectable="false"
                   role="listbox"
                   style="display: contents;"
@@ -4097,7 +4097,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -4420,7 +4420,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -4698,7 +4698,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"

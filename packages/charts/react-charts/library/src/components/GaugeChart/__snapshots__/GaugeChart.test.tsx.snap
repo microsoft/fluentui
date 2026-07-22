@@ -131,7 +131,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -420,7 +420,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -617,7 +617,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -816,7 +816,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1120,7 +1120,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1317,7 +1317,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1514,7 +1514,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1818,7 +1818,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2144,7 +2144,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2341,7 +2341,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2538,7 +2538,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2735,7 +2735,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2917,7 +2917,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -3111,7 +3111,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -3677,7 +3677,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -3891,7 +3891,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -4133,7 +4133,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -4316,7 +4316,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -4573,7 +4573,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -4828,7 +4828,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -5082,7 +5082,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -5296,7 +5296,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -5564,7 +5564,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -5811,7 +5811,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -6060,7 +6060,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -6257,7 +6257,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"

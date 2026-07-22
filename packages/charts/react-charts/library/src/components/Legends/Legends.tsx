@@ -116,7 +116,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
               <div
                 {...(allowFocusOnLegends && {
                   role: 'listbox',
-                  'aria-label': 'Chart legends',
+                  'aria-label': 'legends',
                   'aria-multiselectable': canSelectMultipleLegends,
                 })}
                 style={{ display: 'contents' }}

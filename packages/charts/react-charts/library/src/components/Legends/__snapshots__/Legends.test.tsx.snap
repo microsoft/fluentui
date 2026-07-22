@@ -14,7 +14,7 @@ Object {
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -357,7 +357,7 @@ Object {
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -753,7 +753,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
     style="text-align: unset;"
   >
     <div
-      aria-label="Chart legends"
+      aria-label="legends"
       aria-multiselectable="false"
       role="listbox"
       style="display: contents;"
@@ -1096,7 +1096,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
     style="text-align: unset;"
   >
     <div
-      aria-label="Chart legends"
+      aria-label="legends"
       aria-multiselectable="false"
       role="listbox"
       style="display: contents;"
@@ -1439,7 +1439,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
     style="text-align: unset;"
   >
     <div
-      aria-label="Chart legends"
+      aria-label="legends"
       aria-multiselectable="true"
       role="listbox"
       style="display: contents;"
@@ -1782,7 +1782,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
     style="text-align: unset;"
   >
     <div
-      aria-label="Chart legends"
+      aria-label="legends"
       aria-multiselectable="false"
       role="listbox"
       style="display: contents;"

@@ -507,7 +507,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -984,7 +984,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -1442,7 +1442,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -2140,7 +2140,7 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -2272,7 +2272,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -2547,7 +2547,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -3690,7 +3690,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -5185,7 +5185,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -5516,7 +5516,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"
@@ -5862,7 +5862,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="true"
                 role="listbox"
                 style="display: contents;"

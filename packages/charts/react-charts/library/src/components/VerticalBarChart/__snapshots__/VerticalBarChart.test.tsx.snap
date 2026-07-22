@@ -504,7 +504,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1078,7 +1078,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1656,7 +1656,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -2242,7 +2242,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -2816,7 +2816,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -3390,7 +3390,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -3807,7 +3807,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -4362,7 +4362,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -6135,7 +6135,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -6707,7 +6707,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -7279,7 +7279,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -7851,7 +7851,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -9492,7 +9492,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -10162,7 +10162,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -10837,7 +10837,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -11416,7 +11416,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         style="text-align: unset;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"

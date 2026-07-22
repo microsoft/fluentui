@@ -96,7 +96,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           style="text-align: center;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -266,7 +266,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -479,7 +479,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -703,7 +703,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -967,7 +967,7 @@ Object {
               style="text-align: center;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -1191,7 +1191,7 @@ Object {
             style="text-align: center;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -1408,7 +1408,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -1602,7 +1602,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -1796,7 +1796,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -1960,7 +1960,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -2124,7 +2124,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -2521,7 +2521,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
@@ -2685,7 +2685,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         style="text-align: center;"
       >
         <div
-          aria-label="Chart legends"
+          aria-label="legends"
           aria-multiselectable="false"
           role="listbox"
           style="display: contents;"
