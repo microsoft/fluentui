@@ -22,18 +22,21 @@ export const OverflowMenu: React.FC<{
   const menuList = [];
   for (let i = remainingItemsCount; i < itemIds.length; i++) {
     const buttonElement = items[i];
+    const buttonProps = buttonElement.props;
     menuList.push(
       <MenuItem
         tabIndex={-1}
         key={i}
+        aria-label={buttonProps['aria-label']}
         onClick={e => {
-          const button = buttonElement.props;
-          if (button.onClick) {
-            button.onClick(e);
-          }
+          buttonProps.onClick?.(e);
         }}
+        onMouseOver={buttonProps.onMouseOver}
+        onMouseOut={buttonProps.onMouseOut}
+        onFocus={buttonProps.onFocus}
+        onBlur={buttonProps.onBlur}
       >
-        {buttonElement}
+        {buttonProps.children}
       </MenuItem>,
     );
   }

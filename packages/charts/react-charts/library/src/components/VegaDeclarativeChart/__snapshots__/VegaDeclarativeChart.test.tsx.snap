@@ -499,73 +499,77 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="North"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="North"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  North
-                </div>
-              </button>
-              <button
-                aria-label="South"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    North
+                  </div>
+                </button>
+                <button
+                  aria-label="South"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  South
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 4px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    South
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 4px; background-color: rgb(42, 160, 164); border-color: rgb(42, 160, 164); --rect-content-high-contrast: linear-gradient(to right, #2aa0a4, #2aa0a4);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -972,54 +976,58 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="A"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="A"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  A
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    A
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1426,54 +1434,58 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Bar"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Bar"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  Bar
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Bar
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2120,54 +2132,58 @@ exports[`VegaDeclarativeChart - Bar+Line Combo Rendering Bar + Line Combinations
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Bar"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: lightblue; --rect-borderColor: lightblue;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: lightblue; border-color: lightblue; --rect-content-high-contrast: linear-gradient(to right, lightblue, lightblue);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Bar"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: lightblue; --rect-borderColor: lightblue;"
+                  type="button"
                 >
-                  Bar
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: red; --rect-borderColor: red;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 4px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: lightblue; border-color: lightblue; --rect-content-high-contrast: linear-gradient(to right, lightblue, lightblue);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Bar
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: red; --rect-borderColor: red;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 4px; background-color: red; border-color: red; --rect-content-high-contrast: linear-gradient(to right, red, red);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2248,54 +2264,58 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           class="fui-donut__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="A"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="A"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  A
-                </div>
-              </button>
-              <button
-                aria-label="B"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    A
+                  </div>
+                </button>
+                <button
+                  aria-label="B"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  B
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    B
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2519,54 +2539,58 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="North"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="North"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  North
-                </div>
-              </button>
-              <button
-                aria-label="South"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    North
+                  </div>
+                </button>
+                <button
+                  aria-label="South"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  South
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    South
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3658,54 +3682,58 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Bar"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Bar"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  Bar
-                </div>
-              </button>
-              <button
-                aria-label="Line 1"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Bar
+                  </div>
+                </button>
+                <button
+                  aria-label="Line 1"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Line 1
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 4px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Line 1
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5149,106 +5177,110 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Normal"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                <button
+                  aria-label="Normal"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #ff7f0e; --rect-borderColor: #ff7f0e;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#ff7f0e"
-                    stroke="#ff7f0e"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#ff7f0e"
+                      stroke="#ff7f0e"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Normal
+                  </div>
+                </button>
+                <button
+                  aria-label="Overweight"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #2ca02c; --rect-borderColor: #2ca02c;"
+                  type="button"
                 >
-                  Normal
-                </div>
-              </button>
-              <button
-                aria-label="Overweight"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #2ca02c; --rect-borderColor: #2ca02c;"
-                type="button"
-              >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#2ca02c"
+                      stroke="#2ca02c"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Overweight
+                  </div>
+                </button>
+                <button
+                  aria-label="Underweight"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #d62728; --rect-borderColor: #d62728;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#2ca02c"
-                    stroke="#2ca02c"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
-                >
-                  Overweight
-                </div>
-              </button>
-              <button
-                aria-label="Underweight"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #d62728; --rect-borderColor: #d62728;"
-                type="button"
-              >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
-                >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#d62728"
-                    stroke="#d62728"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
-                >
-                  Underweight
-                </div>
-              </button>
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#d62728"
+                      stroke="#d62728"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Underweight
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5476,106 +5508,110 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="A"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                <button
+                  aria-label="A"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#637cef"
-                    stroke="#637cef"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#637cef"
+                      stroke="#637cef"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    A
+                  </div>
+                </button>
+                <button
+                  aria-label="B"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  A
-                </div>
-              </button>
-              <button
-                aria-label="B"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#e3008c"
+                      stroke="#e3008c"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    B
+                  </div>
+                </button>
+                <button
+                  aria-label="C"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#e3008c"
-                    stroke="#e3008c"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
-                >
-                  B
-                </div>
-              </button>
-              <button
-                aria-label="C"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #2aa0a4; --rect-borderColor: #2aa0a4;"
-                type="button"
-              >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
-                >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#2aa0a4"
-                    stroke="#2aa0a4"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
-                >
-                  C
-                </div>
-              </button>
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#2aa0a4"
+                      stroke="#2aa0a4"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    C
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5818,76 +5854,80 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="true"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Normal"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
+                <button
+                  aria-label="Normal"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#637cef"
-                    stroke="#637cef"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#637cef"
+                      stroke="#637cef"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Normal
+                  </div>
+                </button>
+                <button
+                  aria-label="Overweight"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  Normal
-                </div>
-              </button>
-              <button
-                aria-label="Overweight"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <svg
-                  class="fui-legend__shape"
-                  height="14"
-                  style="width: 14px; height: 14px;"
-                  transform="rotate(0, 0, 0)"
-                  viewBox="-1 -1 14 14"
-                  width="14"
-                >
-                  <path
-                    d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
-                    fill="#e3008c"
-                    stroke="#e3008c"
-                    stroke-width="2"
-                  />
-                </svg>
-                <div
-                  class="fui-legend__text"
-                >
-                  Overweight
-                </div>
-              </button>
+                  <svg
+                    class="fui-legend__shape"
+                    height="14"
+                    style="width: 14px; height: 14px;"
+                    transform="rotate(0, 0, 0)"
+                    viewBox="-1 -1 14 14"
+                    width="14"
+                  >
+                    <path
+                      d="M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6"
+                      fill="#e3008c"
+                      stroke="#e3008c"
+                      stroke-width="2"
+                    />
+                  </svg>
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Overweight
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

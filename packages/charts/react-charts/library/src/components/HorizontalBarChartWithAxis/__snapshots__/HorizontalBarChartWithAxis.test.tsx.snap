@@ -456,92 +456,96 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Oranges"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
+          <div
+            aria-label="Chart legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Oranges"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              type="button"
             >
-              Oranges
-            </div>
-          </button>
-          <button
-            aria-label="Grapes"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Oranges
+              </div>
+            </button>
+            <button
+              aria-label="Grapes"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+              type="button"
             >
-              Grapes
-            </div>
-          </button>
-          <button
-            aria-label="Apples"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Grapes
+              </div>
+            </button>
+            <button
+              aria-label="Apples"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+              type="button"
             >
-              Apples
-            </div>
-          </button>
-          <button
-            aria-label="Bananas"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Apples
+              </div>
+            </button>
+            <button
+              aria-label="Bananas"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              type="button"
             >
-              Bananas
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Bananas
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1007,35 +1011,39 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
+          <div
+            aria-label="Chart legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="undefined"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              type="button"
             >
-              undefined
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                undefined
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1504,92 +1512,96 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Oranges"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Oranges"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                  type="button"
                 >
-                  Oranges
-                </div>
-              </button>
-              <button
-                aria-label="Grapes"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Oranges
+                  </div>
+                </button>
+                <button
+                  aria-label="Grapes"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+                  type="button"
                 >
-                  Grapes
-                </div>
-              </button>
-              <button
-                aria-label="Apples"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Grapes
+                  </div>
+                </button>
+                <button
+                  aria-label="Apples"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+                  type="button"
                 >
-                  Apples
-                </div>
-              </button>
-              <button
-                aria-label="Bananas"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Apples
+                  </div>
+                </button>
+                <button
+                  aria-label="Bananas"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                  type="button"
                 >
-                  Bananas
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Bananas
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2051,92 +2063,96 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Oranges"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Oranges"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                type="button"
               >
-                Oranges
-              </div>
-            </button>
-            <button
-              aria-label="Grapes"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Oranges
+                </div>
+              </button>
+              <button
+                aria-label="Grapes"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+                type="button"
               >
-                Grapes
-              </div>
-            </button>
-            <button
-              aria-label="Apples"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Grapes
+                </div>
+              </button>
+              <button
+                aria-label="Apples"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+                type="button"
               >
-                Apples
-              </div>
-            </button>
-            <button
-              aria-label="Bananas"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Apples
+                </div>
+              </button>
+              <button
+                aria-label="Bananas"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                type="button"
               >
-                Bananas
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Bananas
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -2657,92 +2673,96 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Oranges"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Oranges"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                  type="button"
                 >
-                  Oranges
-                </div>
-              </button>
-              <button
-                aria-label="Grapes"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Oranges
+                  </div>
+                </button>
+                <button
+                  aria-label="Grapes"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+                  type="button"
                 >
-                  Grapes
-                </div>
-              </button>
-              <button
-                aria-label="Apples"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Grapes
+                  </div>
+                </button>
+                <button
+                  aria-label="Apples"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+                  type="button"
                 >
-                  Apples
-                </div>
-              </button>
-              <button
-                aria-label="Bananas"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Apples
+                  </div>
+                </button>
+                <button
+                  aria-label="Bananas"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                  type="button"
                 >
-                  Bananas
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Bananas
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3204,92 +3224,96 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Oranges"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Oranges"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                type="button"
               >
-                Oranges
-              </div>
-            </button>
-            <button
-              aria-label="Grapes"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Oranges
+                </div>
+              </button>
+              <button
+                aria-label="Grapes"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+                type="button"
               >
-                Grapes
-              </div>
-            </button>
-            <button
-              aria-label="Apples"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Grapes
+                </div>
+              </button>
+              <button
+                aria-label="Apples"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+                type="button"
               >
-                Apples
-              </div>
-            </button>
-            <button
-              aria-label="Bananas"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Apples
+                </div>
+              </button>
+              <button
+                aria-label="Bananas"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                type="button"
               >
-                Bananas
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Bananas
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -3810,92 +3834,96 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Oranges"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Oranges"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                  type="button"
                 >
-                  Oranges
-                </div>
-              </button>
-              <button
-                aria-label="Grapes"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Oranges
+                  </div>
+                </button>
+                <button
+                  aria-label="Grapes"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+                  type="button"
                 >
-                  Grapes
-                </div>
-              </button>
-              <button
-                aria-label="Apples"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Grapes
+                  </div>
+                </button>
+                <button
+                  aria-label="Apples"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+                  type="button"
                 >
-                  Apples
-                </div>
-              </button>
-              <button
-                aria-label="Bananas"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Apples
+                  </div>
+                </button>
+                <button
+                  aria-label="Bananas"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                  type="button"
                 >
-                  Bananas
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Bananas
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -4357,92 +4385,96 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Oranges"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Oranges"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                type="button"
               >
-                Oranges
-              </div>
-            </button>
-            <button
-              aria-label="Grapes"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Oranges
+                </div>
+              </button>
+              <button
+                aria-label="Grapes"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+                type="button"
               >
-                Grapes
-              </div>
-            </button>
-            <button
-              aria-label="Apples"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Grapes
+                </div>
+              </button>
+              <button
+                aria-label="Apples"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+                type="button"
               >
-                Apples
-              </div>
-            </button>
-            <button
-              aria-label="Bananas"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Apples
+                </div>
+              </button>
+              <button
+                aria-label="Bananas"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                type="button"
               >
-                Bananas
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Bananas
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -5077,73 +5109,77 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Product A"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Product A"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                  type="button"
                 >
-                  Product A
-                </div>
-              </button>
-              <button
-                aria-label="Product B"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #ff8c00; --rect-borderColor: #ff8c00;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Product A
+                  </div>
+                </button>
+                <button
+                  aria-label="Product B"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #ff8c00; --rect-borderColor: #ff8c00;"
+                  type="button"
                 >
-                  Product B
-                </div>
-              </button>
-              <button
-                aria-label="Product C"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Product B
+                  </div>
+                </button>
+                <button
+                  aria-label="Product C"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Product C
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Product C
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5719,73 +5755,77 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Product A"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Product A"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+                type="button"
               >
-                Product A
-              </div>
-            </button>
-            <button
-              aria-label="Product B"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #ff8c00; --rect-borderColor: #ff8c00;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Product A
+                </div>
+              </button>
+              <button
+                aria-label="Product B"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #ff8c00; --rect-borderColor: #ff8c00;"
+                type="button"
               >
-                Product B
-              </div>
-            </button>
-            <button
-              aria-label="Product C"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Product B
+                </div>
+              </button>
+              <button
+                aria-label="Product C"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Product C
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Product C
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -7203,35 +7243,39 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="undefined"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                  type="button"
                 >
-                  undefined
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    undefined
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -7724,35 +7768,39 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="undefined"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                type="button"
               >
-                undefined
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  undefined
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -8280,35 +8328,39 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="undefined"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="undefined"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                  type="button"
                 >
-                  undefined
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    undefined
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -8772,35 +8824,39 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="undefined"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="undefined"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+                type="button"
               >
-                undefined
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  undefined
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

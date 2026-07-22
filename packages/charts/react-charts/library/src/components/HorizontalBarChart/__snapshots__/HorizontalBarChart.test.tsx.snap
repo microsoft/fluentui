@@ -909,7 +909,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
       class="fui-hbc__legendContainer"
     >
       <div
-        aria-label="Legends"
+        aria-label="Chart legends"
         aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
@@ -1057,7 +1057,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
       class="fui-hbc__legendContainer"
     >
       <div
-        aria-label="Legends"
+        aria-label="Chart legends"
         aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
