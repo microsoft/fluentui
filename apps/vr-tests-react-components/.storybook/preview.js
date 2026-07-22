@@ -1,7 +1,10 @@
 // @ts-check
 
-import React from 'react';
+const React = require('react');
 
+/**
+ * @param {boolean} ready
+ */
 const setVrtReady = ready => {
   if (typeof window !== 'undefined') {
     window.__fluentVrtReady__ = ready;
@@ -29,6 +32,10 @@ const waitForVrtAssets = async () => {
   await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 };
 
+/**
+ * VRT readiness observer component
+ * @param {{ Story: Function; storyId: string }} props
+ */
 const VrtReadyObserver = ({ Story, storyId }) => {
   React.useEffect(() => {
     let cancelled = false;
@@ -52,7 +59,16 @@ const VrtReadyObserver = ({ Story, storyId }) => {
 
 setVrtReady(false);
 
-export const decorators = [(Story, context) => React.createElement(VrtReadyObserver, { Story, storyId: context.id })];
+/**
+ * @type {Array<Function>}
+ */
+export const decorators = [
+  /**
+   * @param {Function} Story
+   * @param {{ id: string }} context
+   */
+  (Story, context) => React.createElement(VrtReadyObserver, { Story, storyId: context.id }),
+];
 
 /** @type {import("@fluentui/react-storybook-addon").FluentParameters} */
 export const parameters = {
