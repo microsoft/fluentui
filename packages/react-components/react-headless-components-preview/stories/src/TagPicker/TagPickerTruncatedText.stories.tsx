@@ -12,7 +12,7 @@ import { Tag } from '@fluentui/react-headless-components-preview/tag';
 import { DismissRegular } from '@fluentui/react-icons';
 
 import styles from './tag-picker.module.css';
-import { Media } from './utils';
+import { Media, tagPickerPositioning } from './utils';
 
 type Option = { value: string; fixedWidth?: boolean };
 
@@ -43,7 +43,11 @@ export const TruncatedText = (): React.ReactNode => {
       <label className={styles.label} id="tag-picker-truncated-label">
         Select employees
       </label>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions.map(option => option.value)}>
+      <TagPicker
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions.map(option => option.value)}
+      >
         <TagPickerControl className={styles.control}>
           <TagPickerGroup className={styles.group} aria-label="Selected employees">
             {selectedOptions.map(option => (

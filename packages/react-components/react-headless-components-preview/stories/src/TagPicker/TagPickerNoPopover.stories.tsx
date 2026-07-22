@@ -8,7 +8,7 @@ import {
 import type { TagPickerProps } from '@fluentui/react-headless-components-preview/tag-picker';
 
 import styles from './tag-picker.module.css';
-import { SelectedTag } from './utils';
+import { SelectedTag, tagPickerPositioning } from './utils';
 
 export const NoPopover = (): React.ReactNode => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
@@ -32,7 +32,12 @@ export const NoPopover = (): React.ReactNode => {
       <label className={styles.label} id="tag-picker-nopopover-label">
         Add employees
       </label>
-      <TagPicker noPopover onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker
+        noPopover
+        positioning={tagPickerPositioning}
+        onOptionSelect={onOptionSelect}
+        selectedOptions={selectedOptions}
+      >
         <TagPickerControl className={styles.control}>
           <TagPickerGroup className={styles.group} aria-label="Selected employees">
             {selectedOptions.map(option => (

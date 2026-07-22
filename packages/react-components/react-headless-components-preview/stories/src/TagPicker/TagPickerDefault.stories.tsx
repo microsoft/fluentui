@@ -12,7 +12,7 @@ import { Tag } from '@fluentui/react-headless-components-preview/tag';
 import { DismissRegular } from '@fluentui/react-icons';
 
 import styles from './tag-picker.module.css';
-import { Media } from './utils';
+import { Media, tagPickerPositioning } from './utils';
 
 const options = [
   'John Doe',
@@ -39,7 +39,7 @@ export const Default = (): React.ReactNode => {
       <label className={styles.label} id="tag-picker-default-label">
         Select employees
       </label>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker positioning={tagPickerPositioning} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl className={styles.control}>
           <TagPickerGroup className={styles.group} aria-label="Selected employees">
             {selectedOptions.map(option => (

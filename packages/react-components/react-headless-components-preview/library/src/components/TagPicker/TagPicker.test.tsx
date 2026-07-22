@@ -10,7 +10,7 @@ import { TagPickerOption } from './TagPickerOption';
 import { optionClassNames } from '@fluentui/react-combobox';
 import { Tag } from '../Tag';
 
-const renderTagPicker = (props: Pick<TagPickerProps, 'disabled' | 'positioning' | 'selectedOptions'> = {}) => {
+const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'positioning' | 'selectedOptions'>> = {}) => {
   const { selectedOptions = [], ...tagPickerProps } = props;
   return render(
     <TagPicker open selectedOptions={selectedOptions} {...tagPickerProps}>
@@ -104,7 +104,7 @@ describe('TagPicker', () => {
     expect(getByTestId('tag-Dog')).not.toHaveFocus();
   });
 
-  it('allows consumer positioning to override the default placement and fallback positions', () => {
+  it('uses only the consumer positioning configuration', () => {
     const { getByRole } = renderTagPicker({
       positioning: { position: 'above', align: 'end', fallbackPositions: ['below'] },
     });
@@ -113,5 +113,12 @@ describe('TagPicker', () => {
     expect(listbox).toHaveAttribute('data-placement', 'above-end');
     expect(listbox).toHaveStyle({ positionArea: 'block-start span-inline-start' });
     expect(listbox).toHaveStyle({ positionTryFallbacks: 'block-end' });
+    expect(listbox).not.toHaveStyle({ width: 'anchor-size(width)' });
+  });
+
+  it('does not apply a TagPicker-specific offset when positioning is omitted', () => {
+    const { getByRole } = renderTagPicker();
+
+    expect(getByRole('listbox')).toHaveStyle({ margin: '0px' });
   });
 });

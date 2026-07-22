@@ -10,14 +10,8 @@ import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOpti
 /**
  * Returns the state for a headless TagPickerOption.
  *
- * Wraps the headless {@link useOption} and:
- * - tags the root with `optionClassNames.root` so the TagPicker root (reusing
- *   `useTagPickerBase_unstable`) can navigate the options with the arrow keys, which it does by
- *   matching that class; and
- * - adds optional `media` and `secondaryContent` slots, mirroring the styled `TagPickerOption`.
  */
 export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<HTMLElement>): TagPickerOptionState => {
-  // Keep media/secondaryContent off the underlying option props so they aren't spread onto the root.
   const { media, secondaryContent, ...optionProps } = props;
   const optionState = useOption(optionProps, ref);
 

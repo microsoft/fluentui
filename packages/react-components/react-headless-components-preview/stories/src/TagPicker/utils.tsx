@@ -2,6 +2,7 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { TagPickerOption } from '@fluentui/react-headless-components-preview/tag-picker';
+import type { TagPickerProps } from '@fluentui/react-headless-components-preview/tag-picker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Tag } from '@fluentui/react-headless-components-preview/tag';
 import type { TagProps } from '@fluentui/react-headless-components-preview/tag';
@@ -10,6 +11,14 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { DismissRegular } from '@fluentui/react-icons';
 
 import styles from './tag-picker.module.css';
+
+export const tagPickerPositioning: TagPickerProps['positioning'] = {
+  position: 'below',
+  align: 'start',
+  offset: { crossAxis: 0, mainAxis: 2 },
+  fallbackPositions: ['above', 'after', 'after-top', 'before', 'before-top'],
+  matchTargetSize: 'width',
+};
 
 /** Returns up to two uppercase initials from a person's name. */
 export const getInitials = (name: string): string =>

@@ -11,8 +11,5 @@ export type {
 } from '@fluentui/react-tag-picker';
 
 export type TagPickerProps = TagPickerBaseProps & {
-  /**
-   * Configures the native CSS anchor positioning used by the headless popup.
-   */
   positioning?: PositioningShorthand;
 };

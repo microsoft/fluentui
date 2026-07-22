@@ -8,8 +8,7 @@ import { renderTagPickerOption } from './renderTagPickerOption';
 import type { TagPickerOptionProps } from './TagPickerOption.types';
 
 /**
- * An option within a TagPickerList. Behaves like the headless `Option`, but is marked so the
- * TagPicker's active-descendant controller can navigate it with the arrow keys.
+ * An option within a TagPickerList.
  */
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerOption(props, ref);

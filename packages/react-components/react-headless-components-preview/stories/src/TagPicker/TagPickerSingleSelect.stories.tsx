@@ -9,7 +9,7 @@ import {
 import type { TagPickerProps } from '@fluentui/react-headless-components-preview/tag-picker';
 
 import styles from './tag-picker.module.css';
-import { PersonOption, SelectedTag } from './utils';
+import { PersonOption, SelectedTag, tagPickerPositioning } from './utils';
 
 const options = [
   'John Doe',
@@ -34,7 +34,7 @@ export const SingleSelect = (): React.ReactNode => {
       <label className={styles.label} id="tag-picker-singleselect-label">
         Select an employee
       </label>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker positioning={tagPickerPositioning} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl className={styles.control}>
           {selectedOption && (
             <TagPickerGroup className={styles.group} aria-label="Selected employee">

@@ -30,6 +30,7 @@ const TagPickerFixture = ({ defaultOpen, defaultSelectedOptions = [], noPopover 
       <TagPicker
         defaultOpen={defaultOpen}
         noPopover={noPopover}
+        positioning={{ position: 'below', align: 'start', matchTargetSize: 'width' }}
         selectedOptions={selectedOptions}
         onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
       >

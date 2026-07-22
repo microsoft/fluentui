@@ -57,9 +57,7 @@ export type {
   TagPickerOptionGroupState,
 } from './components/TagPicker';
 
-// Re-exported from the styled package so consumers can filter options by the input value.
 export { useTagPickerFilter } from '@fluentui/react-tag-picker';
 
-// Re-exported so consumers can read TagPicker state when composing custom triggers/inputs.
 export { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 export type { TagPickerContextValue } from '@fluentui/react-tag-picker';
