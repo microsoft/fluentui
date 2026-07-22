@@ -30,18 +30,14 @@ const waitForVrtAssets = async () => {
 };
 
 const VrtReadyObserver = ({ Story, storyId }) => {
-  const [isReady, setIsReady] = React.useState(false);
-
   React.useEffect(() => {
     let cancelled = false;
 
     setVrtReady(false);
-    setIsReady(false);
 
     void waitForVrtAssets().then(() => {
       if (!cancelled) {
         setVrtReady(true);
-        setIsReady(true);
       }
     });
 
@@ -50,10 +46,6 @@ const VrtReadyObserver = ({ Story, storyId }) => {
       setVrtReady(false);
     };
   }, [storyId]);
-
-  if (!isReady) {
-    return React.createElement(React.Fragment, null);
-  }
 
   return React.createElement(React.Fragment, null, Story());
 };

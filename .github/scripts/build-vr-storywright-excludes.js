@@ -100,7 +100,7 @@ function listStoryFiles(dir, storyFilePattern) {
     const fullPath = join(dir, entry);
     const info = statSync(fullPath);
     if (info.isDirectory()) {
-      result.push(...listStoryFiles(fullPath));
+      result.push(...listStoryFiles(fullPath, storyFilePattern));
       continue;
     }
 
