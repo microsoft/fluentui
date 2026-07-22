@@ -14,7 +14,7 @@ describe('Card', () => {
     Component: Card,
     displayName: 'Card',
     testOptions: {
-      'component-calls-custom-style-hook': {},
+      'component-calls-custom-style-hook': { callCount: 1 },
       'has-static-classnames': [
         {
           props: {
