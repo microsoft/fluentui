@@ -5,12 +5,12 @@
 ```ts
 
 import type { FieldBaseProps } from '@fluentui/react-field';
-import { FieldBaseState } from '@fluentui/react-field';
-import { FieldContextValues } from '@fluentui/react-field';
+import type { FieldBaseState } from '@fluentui/react-field';
+import type { FieldContextValues as FieldContextValues_2 } from '@fluentui/react-field';
 import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderField_unstable as renderField } from '@fluentui/react-field';
 
 // @public
 export const Field: ForwardRefComponent<FieldProps>;
@@ -28,14 +28,13 @@ export type FieldState = FieldBaseState & {
     };
 };
 
-// @public
-export const renderField: (state: FieldBaseState, contextValues: FieldContextValues) => JSXElement;
+export { renderField }
 
 // @public
 export const useField: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public
-export const useFieldContextValues: (state: FieldState) => FieldContextValues_2;
+export const useFieldContextValues: (state: FieldState) => FieldContextValues;
 
 // (No @packageDocumentation comment for this package)
 

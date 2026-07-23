@@ -5,7 +5,7 @@
 ```ts
 
 import type { CardBaseProps } from '@fluentui/react-card';
-import { CardBaseState } from '@fluentui/react-card';
+import type { CardBaseState } from '@fluentui/react-card';
 import { CardContextValue as CardContextValue_2 } from '@fluentui/react-card';
 import type { CardFooterBaseProps } from '@fluentui/react-card';
 import { CardFooterBaseState } from '@fluentui/react-card';
@@ -21,6 +21,7 @@ import type { CardSlots as CardSlots_2 } from '@fluentui/react-card';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderCard_unstable as renderCard } from '@fluentui/react-card';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
@@ -80,8 +81,7 @@ export type CardState = CardBaseState & {
     };
 };
 
-// @public
-export const renderCard: (state: CardBaseState, cardContextValue: CardContextValue_2) => JSXElement;
+export { renderCard }
 
 // @public
 export const renderCardFooter: (state: CardFooterBaseState) => JSXElement;

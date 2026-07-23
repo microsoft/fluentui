@@ -9,18 +9,21 @@ import type { BaseComboboxState } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
-import { ListboxContextValues as ListboxContextValues_2 } from '@fluentui/react-combobox';
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { ListboxContextValues as ListboxContextValues_2 } from '@fluentui/react-combobox';
 import type { ListboxProps as ListboxProps_2 } from '@fluentui/react-combobox';
 import type { ListboxSlots as ListboxSlots_2 } from '@fluentui/react-combobox';
-import { ListboxState as ListboxState_2 } from '@fluentui/react-combobox';
+import type { ListboxState as ListboxState_2 } from '@fluentui/react-combobox';
 import type { OptionGroupProps as OptionGroupProps_2 } from '@fluentui/react-combobox';
 import type { OptionGroupSlots as OptionGroupSlots_2 } from '@fluentui/react-combobox';
-import { OptionGroupState as OptionGroupState_2 } from '@fluentui/react-combobox';
+import type { OptionGroupState as OptionGroupState_2 } from '@fluentui/react-combobox';
 import type { OptionProps as OptionProps_2 } from '@fluentui/react-combobox';
 import type { OptionSlots as OptionSlots_2 } from '@fluentui/react-combobox';
-import { OptionState as OptionState_2 } from '@fluentui/react-combobox';
+import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import type * as React_2 from 'react';
+import { renderListbox_unstable as renderListbox } from '@fluentui/react-combobox';
+import { renderOption_unstable as renderOption } from '@fluentui/react-combobox';
+import { renderOptionGroup_unstable as renderOptionGroup } from '@fluentui/react-combobox';
 
 // @public (undocumented)
 export const Combobox: ForwardRefComponent<ComboboxProps>;
@@ -87,14 +90,11 @@ export type OptionState = OptionState_2 & {
 // @public (undocumented)
 export const renderCombobox: (state: ComboboxState, contextValues: ComboboxContextValues) => JSXElement;
 
-// @public
-export const renderListbox: (state: ListboxState_2, contextValues: ListboxContextValues_2) => JSXElement;
+export { renderListbox }
 
-// @public
-export const renderOption: (state: OptionState_2) => JSXElement;
+export { renderOption }
 
-// @public
-export const renderOptionGroup: (state: OptionGroupState_2) => JSXElement;
+export { renderOptionGroup }
 
 // @public (undocumented)
 export const useCombobox: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;

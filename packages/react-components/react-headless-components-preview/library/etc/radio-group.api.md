@@ -6,16 +6,17 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type { RadioBaseProps } from '@fluentui/react-radio';
-import { RadioBaseState } from '@fluentui/react-radio';
+import type { RadioBaseState } from '@fluentui/react-radio';
 import type { RadioGroupBaseProps } from '@fluentui/react-radio';
-import { RadioGroupBaseState } from '@fluentui/react-radio';
-import { RadioGroupContextValues } from '@fluentui/react-radio';
+import type { RadioGroupBaseState } from '@fluentui/react-radio';
+import type { RadioGroupContextValues as RadioGroupContextValues_2 } from '@fluentui/react-radio';
 import type { RadioGroupSlots as RadioGroupSlots_2 } from '@fluentui/react-radio';
 import { RadioOnChangeData } from '@fluentui/react-radio';
 import { RadioSlots as RadioSlots_2 } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { renderRadio_unstable as renderRadio } from '@fluentui/react-radio';
+import { renderRadioGroup_unstable as renderRadioGroup } from '@fluentui/react-radio';
 
 // @public
 export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots_2>, "input">, "onChange" | "size"> & {
@@ -50,11 +51,9 @@ export type RadioState = RadioBaseState & {
     };
 };
 
-// @public
-export const renderRadio: (state: RadioBaseState) => JSXElement;
+export { renderRadio }
 
-// @public
-export const renderRadioGroup: (state: RadioGroupBaseState, contextValues: RadioGroupContextValues) => JSXElement;
+export { renderRadioGroup }
 
 // @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
@@ -63,7 +62,7 @@ export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) =
 export const useRadioGroup: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
 
 // @public (undocumented)
-export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues_2;
+export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;
 
 // (No @packageDocumentation comment for this package)
 
