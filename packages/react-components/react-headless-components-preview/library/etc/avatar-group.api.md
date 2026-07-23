@@ -4,26 +4,28 @@
 
 ```ts
 
-import type { AvatarGroupBaseProps } from '@fluentui/react-avatar';
-import { AvatarGroupBaseState } from '@fluentui/react-avatar';
-import type { AvatarGroupContextValue } from '@fluentui/react-avatar';
+import { AvatarGroupContextValue } from '@fluentui/react-avatar';
 import { AvatarGroupContextValues } from '@fluentui/react-avatar';
-import type { AvatarGroupItemBaseProps } from '@fluentui/react-avatar';
-import { AvatarGroupItemBaseState } from '@fluentui/react-avatar';
-import type { AvatarGroupItemSlots as AvatarGroupItemSlots_2 } from '@fluentui/react-avatar';
+import { AvatarGroupItemBaseProps as AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
 import type { AvatarGroupProps as AvatarGroupProps_2 } from '@fluentui/react-avatar';
-import type { AvatarGroupSlots as AvatarGroupSlots_2 } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupBaseState as AvatarGroupState } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
+import { renderAvatarGroup_unstable as renderAvatarGroup } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable as renderAvatarGroupItem } from '@fluentui/react-avatar';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
@@ -36,14 +38,11 @@ export { AvatarGroupContextValues }
 // @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 
-// @public
-export type AvatarGroupItemProps = AvatarGroupItemBaseProps;
+export { AvatarGroupItemProps }
 
-// @public
-export type AvatarGroupItemSlots = AvatarGroupItemSlots_2;
+export { AvatarGroupItemSlots }
 
-// @public
-export type AvatarGroupItemState = AvatarGroupItemBaseState;
+export { AvatarGroupItemState }
 
 // @public
 export const AvatarGroupPopover: {
@@ -75,14 +74,11 @@ export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & 
     popover: AvatarGroupPopoverPopoverProps;
 };
 
-// @public
-export type AvatarGroupProps = AvatarGroupBaseProps;
+export { AvatarGroupProps }
 
-// @public
-export type AvatarGroupSlots = AvatarGroupSlots_2;
+export { AvatarGroupSlots }
 
-// @public
-export type AvatarGroupState = AvatarGroupBaseState;
+export { AvatarGroupState }
 
 export { PartitionAvatarGroupItems }
 
@@ -90,11 +86,9 @@ export { partitionAvatarGroupItems }
 
 export { PartitionAvatarGroupItemsOptions }
 
-// @public
-export const renderAvatarGroup: (state: AvatarGroupBaseState, contextValues: AvatarGroupContextValues) => JSXElement;
+export { renderAvatarGroup }
 
-// @public
-export const renderAvatarGroupItem: (state: AvatarGroupItemBaseState) => JSXElement;
+export { renderAvatarGroupItem }
 
 // @public
 export const renderAvatarGroupPopover: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSXElement;

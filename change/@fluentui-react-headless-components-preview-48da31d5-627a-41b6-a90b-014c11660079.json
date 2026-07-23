@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat(react-headless-components-preview): add AvatarGroup, AvatarGroupItem, and AvatarGroupPopover components",
+  "type": "patch",
+  "comment": "feat: add AvatarGroup, AvatarGroupItem, and AvatarGroupPopover components",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

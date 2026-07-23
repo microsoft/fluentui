@@ -1,28 +1,7 @@
-import type {
-  AvatarGroupBaseProps,
-  AvatarGroupBaseState,
+export type {
+  AvatarGroupBaseProps as AvatarGroupProps,
+  AvatarGroupBaseState as AvatarGroupState,
   AvatarGroupContextValue,
   AvatarGroupContextValues,
-  AvatarGroupSlots as AvatarGroupBaseSlots,
+  AvatarGroupSlots,
 } from '@fluentui/react-avatar';
-
-/**
- * AvatarGroup component slots
- */
-export type AvatarGroupSlots = AvatarGroupBaseSlots;
-
-/**
- * AvatarGroup component props
- *
- * Mirrors the design-agnostic base props from `@fluentui/react-avatar`. The
- * styling-only `size` prop is intentionally omitted — headless components don't
- * own presentation.
- */
-export type AvatarGroupProps = AvatarGroupBaseProps;
-
-/**
- * AvatarGroup component state
- */
-export type AvatarGroupState = AvatarGroupBaseState;
-
-export type { AvatarGroupContextValue, AvatarGroupContextValues };
