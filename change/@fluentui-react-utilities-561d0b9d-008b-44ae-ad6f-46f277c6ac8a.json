@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "add deIntent helper utility method",
+  "packageName": "@fluentui/react-utilities",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "none"
+}
