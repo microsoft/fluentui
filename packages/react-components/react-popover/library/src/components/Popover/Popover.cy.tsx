@@ -537,6 +537,31 @@ describe('Popover', () => {
         cy.get(popoverInteractiveContentSelector).should('be.visible');
       });
 
+      it('should not close when focus moves outside but was never inside the popover', () => {
+        // Opening the popover does not steal focus (unstable_disableAutoFocus), so focus stays on
+        // the external input. A programmatic re-focus of it must not dismiss the popover.
+        mount(
+          <>
+            <input id="outside" aria-label="external input" />
+            <Popover trapFocus unstable_disableAutoFocus>
+              <PopoverTrigger disableButtonEnhancement>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface>
+                <button>Inside</button>
+              </PopoverSurface>
+            </Popover>
+          </>,
+        );
+
+        cy.get('#outside').focus();
+        cy.get(popoverTriggerSelector).click();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+        // Re-focus the external element (focus never entered the popover).
+        cy.get('#outside').focus();
+        cy.get(popoverInteractiveContentSelector).should('be.visible');
+      });
+
       it('should not close when focus moves to the trigger', () => {
         mount(
           <Popover trapFocus>

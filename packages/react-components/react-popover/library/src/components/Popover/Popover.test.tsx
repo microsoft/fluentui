@@ -40,7 +40,7 @@ describe('Popover', () => {
   });
 
   describe('close on focus outside', () => {
-    it('should close when trapFocus is enabled and focus moves outside', () => {
+    it('should close when trapFocus is enabled and focus moves from inside to outside', () => {
       const onOpenChange = jest.fn();
       const outsideButton = document.createElement('button');
       const popoverContent = document.createElement('div');
@@ -63,6 +63,12 @@ describe('Popover', () => {
         (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
       });
 
+      // Focus first enters the popover content...
+      act(() => {
+        popoverContent.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      // ...and is then moved outside, which should dismiss the popover.
       act(() => {
         outsideButton.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
       });
@@ -70,6 +76,41 @@ describe('Popover', () => {
       expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), { open: false });
 
       document.body.removeChild(outsideButton);
+      document.body.removeChild(popoverContent);
+    });
+
+    it('should not close when focus moves outside but was never inside the popover', () => {
+      // Focus stays on an external element the whole time and is programmatically re-focused.
+      // Since focus never entered the popover, this outside -> outside change must not dismiss it.
+      const onOpenChange = jest.fn();
+      const externalInput = document.createElement('input');
+      const popoverContent = document.createElement('div');
+      document.body.appendChild(externalInput);
+      document.body.appendChild(popoverContent);
+
+      const { result } = renderHook(
+        ({ open }) =>
+          usePopover_unstable({
+            open,
+            trapFocus: true,
+            onOpenChange,
+            children: <div />,
+          }),
+        { initialProps: { open: true } },
+      );
+
+      act(() => {
+        (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      // Focus lands outside the popover (and was never inside it).
+      act(() => {
+        externalInput.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      });
+
+      expect(onOpenChange).not.toHaveBeenCalled();
+
+      document.body.removeChild(externalInput);
       document.body.removeChild(popoverContent);
     });
 
@@ -119,7 +160,7 @@ describe('Popover', () => {
       document.body.removeChild(outsideButton);
     });
 
-    it('should also close when inertTrapFocus is enabled and focus moves to a page element outside', () => {
+    it('should also close when inertTrapFocus is enabled and focus moves from inside to a page element outside', () => {
       const onOpenChange = jest.fn();
       const outsideButton = document.createElement('button');
       const popoverContent = document.createElement('div');
@@ -138,6 +179,10 @@ describe('Popover', () => {
 
       act(() => {
         (result.current.contentRef as React.RefObject<HTMLElement | null>).current = popoverContent;
+      });
+
+      act(() => {
+        popoverContent.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
       });
 
       act(() => {
