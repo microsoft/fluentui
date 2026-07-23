@@ -26,7 +26,7 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
     mouseLeaveDelay,
     positioning,
     withArrow,
-    trapFocus = true,
+    trapFocus,
   } = props;
 
   const baseState = useAvatarGroupPopoverBase_unstable(props as unknown as AvatarGroupPopoverBaseProps);
