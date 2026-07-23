@@ -53,7 +53,7 @@ describe('usePositioningSlideDirection', () => {
 
     act(() => {
       const event: OnPositioningEndEvent = new CustomEvent('positioningend', {
-        detail: { placement: 'bottom' },
+        detail: { placement: 'bottom', escaped: false, referenceHidden: false },
       });
       Object.defineProperty(event, 'target', { value: element });
       result.current(event);
@@ -76,7 +76,7 @@ describe('usePositioningSlideDirection', () => {
 
     act(() => {
       const event: OnPositioningEndEvent = new CustomEvent('positioningend', {
-        detail: { placement: 'right-start' },
+        detail: { placement: 'right-start', escaped: false, referenceHidden: false },
       });
       Object.defineProperty(event, 'target', { value: element });
       result.current(event);
@@ -101,7 +101,7 @@ describe('usePositioningSlideDirection', () => {
 
     act(() => {
       const event: OnPositioningEndEvent = new CustomEvent('positioningend', {
-        detail: { placement: 'top' },
+        detail: { placement: 'top', escaped: false, referenceHidden: false },
       });
       // CustomEvent doesn't set target automatically, so we dispatch it from element
       Object.defineProperty(event, 'target', { value: element });

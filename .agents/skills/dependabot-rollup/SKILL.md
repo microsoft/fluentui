@@ -1,7 +1,7 @@
 ---
 name: dependabot-rollup
 description: >-
-  Review and optionally combine open Dependabot patch and minor pull requests into a validated draft rollup PR. Use this skill to test Dependabot bundling locally or in a cloud agent without adding a scheduled GitHub Actions workflow. Always presents a dry-run plan and requires explicit approval before changing branches or GitHub pull requests.
+  Review and optionally combine at most 11 open Dependabot patch and minor pull requests into a validated draft rollup PR. Use this skill to test Dependabot bundling locally or in a cloud agent without adding a scheduled GitHub Actions workflow. Always presents a dry-run plan and requires explicit approval before changing branches or GitHub pull requests.
 disable-model-invocation: true
 argument-hint: '[--repo owner/repo] [--base branch] [--max count] [--push-remote remote]'
 allowed-tools: Bash Read Grep Glob
@@ -17,10 +17,10 @@ Build a reviewable rollup of compatible Dependabot updates without scheduled aut
 | --------------- | ---------------------------------- | --------------------------------------------- |
 | `--repo`        | `microsoft/fluentui`               | Repository containing the Dependabot PRs      |
 | `--base`        | `master`                           | Base branch for discovery and the rollup      |
-| `--max`         | `11`                               | Maximum eligible PRs in one proposed rollup   |
+| `--max`         | `11`                               | Eligible PR limit, from 1 through 11          |
 | `--push-remote` | Current branch's configured remote | Writable fork remote used only after approval |
 
-Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a non-positive integer for `--max`, an unknown Git remote, or unknown arguments instead of guessing.
+Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a `--max` value that is not an integer from 1 through 11, an unknown Git remote, or unknown arguments instead of guessing. The value 11 is an absolute ceiling, not only the default.
 
 ## Workflow
 
@@ -197,6 +197,7 @@ Report:
 - Never run on a schedule or add a GitHub Actions workflow.
 - Never request or print a GitHub token; use the user's existing `gh` authentication.
 - Never include semver-major, non-semver, downgrade, or unparseable updates.
+- Never propose, merge, or publish a rollup containing more than 11 updates.
 - Never include more than one PR for the same dependency in a proposed rollup.
 - Never mutate the user's current working tree.
 - Never auto-resolve merge conflicts or bypass failed validation.
