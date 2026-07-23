@@ -2,7 +2,7 @@
 // Cross-platform wrapper for storywright VR runs.
 //
 // Usage:
-//   node run-storywright.js <EXCLUDE_ENV_VAR> -- [storywright args...]
+//   node run-storywright.js <EXCLUDE_ENV_VAR> [--] [storywright args...]
 //
 // If <EXCLUDE_ENV_VAR> is set in the environment, --excludePatterns <value>
 // is appended to the storywright args. This replaces the POSIX-only
@@ -16,7 +16,7 @@ const argv = process.argv.slice(2);
 const separatorIdx = argv.indexOf('--');
 
 const envVarName = argv[0];
-const storyWrightArgs = separatorIdx >= 0 ? argv.slice(separatorIdx + 1) : [];
+const storyWrightArgs = separatorIdx >= 0 ? argv.slice(separatorIdx + 1) : argv.slice(1);
 
 const excludePatterns = envVarName ? process.env[envVarName] : undefined;
 if (excludePatterns) {

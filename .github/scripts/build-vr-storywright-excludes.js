@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { execSync } = require('node:child_process');
+const { execFileSync } = require('node:child_process');
 const { readdirSync, readFileSync, statSync } = require('node:fs');
 const { join } = require('node:path');
 
@@ -155,7 +155,7 @@ function escapeRegex(value) {
 function getChangedFiles(base, head) {
   try {
     const diffRange = head ? `${base}...${head}` : `${base}...HEAD`;
-    const output = execSync(`git diff --name-only ${diffRange}`, {
+    const output = execFileSync('git', ['diff', '--name-only', diffRange, '--'], {
       cwd: REPO_ROOT,
       encoding: 'utf8',
     });

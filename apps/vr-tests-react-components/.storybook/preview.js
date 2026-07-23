@@ -24,9 +24,27 @@ const waitForVrtAssets = async () => {
   const timeout = new Promise(resolve => setTimeout(resolve, 300));
 
   try {
+    const imagesReady = Promise.all(
+      Array.from(document.images).map(image => {
+        if (image.complete) {
+          return Promise.resolve();
+        }
+
+        return new Promise(resolve => {
+          const onSettled = () => {
+            image.removeEventListener('load', onSettled);
+            image.removeEventListener('error', onSettled);
+            resolve(undefined);
+          };
+
+          image.addEventListener('load', onSettled);
+          image.addEventListener('error', onSettled);
+        });
+      }),
+    );
     const fontsReady = document.fonts?.ready;
     if (fontsReady) {
-      await Promise.race([fontsReady, timeout]);
+      await Promise.race([Promise.all([fontsReady, imagesReady]), timeout]);
     } else {
       await timeout;
     }
