@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2026 14:10:41 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "65db820de531aa7ec14bb33644cd93162722af30",
+            "comment": "feat: export useTagPickerContextValues and TagPickerControlInternalSlots for headless composition"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jun 2026 11:10:00 GMT",
       "tag": "@fluentui/react-tag-picker_v9.9.0",
       "version": "9.9.0",

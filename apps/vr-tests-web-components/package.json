@@ -5,20 +5,20 @@
   "description": "Visual regression tests for @fluentui/web-components",
   "type": "module",
   "scripts": {
-    "build-storybook": "storybook build -o dist/storybook",
-    "format": "prettier . -w --ignore-path ../../.prettierignore",
-    "lint": "eslint src --ext .ts,.tsx",
-    "start": "storybook dev",
-    "type-check": "tsc -p . --baseUrl . --noEmit",
-    "test-vr": "storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
+    "build-storybook": "yarn run -T storybook build -o dist/storybook",
+    "format": "yarn run -T prettier . -w --ignore-path ../../.prettierignore",
+    "lint": "yarn run -T eslint src --ext .ts,.tsx",
+    "start": "yarn run -T storybook dev",
+    "type-check": "yarn run -T tsc -p . --baseUrl . --noEmit",
+    "test-vr": "yarn run -T storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
   },
   "dependencies": {
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "html-react-parser": "4.0.0",
     "@fluentui/tokens": ">=1.0.0-alpha",
     "@fluentui/web-components": "*",
     "@microsoft/fast-element": "^3.0.0",
+    "html-react-parser": "4.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tslib": "^2.1.0"
   }
 }

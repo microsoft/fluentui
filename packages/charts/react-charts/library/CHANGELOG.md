@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Mon, 29 Jun 2026 15:15:07 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.22)
+
+Wed, 15 Jul 2026 14:10:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.21..@fluentui/react-charts_v9.3.22)
+
+### Patches
+
+- Accessibility bug fixes ([PR #36292](https://github.com/microsoft/fluentui/pull/36292) by 132879294+v-baambati@users.noreply.github.com)
+- Bump @fluentui/react-overflow to v9.9.1 ([PR #36401](https://github.com/microsoft/fluentui/pull/36401) by beachball)
 
 ## [9.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.21)
 

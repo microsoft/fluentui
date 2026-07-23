@@ -1,5 +1,47 @@
 // @ts-check
 
+const { existsSync, readFileSync } = require('node:fs');
+const { dirname, join } = require('node:path');
+
+const findPackageRoot = (libraryName, resolveFrom = __dirname) => {
+  let packageRoot = dirname(require.resolve(libraryName, { paths: [resolveFrom] }));
+
+  while (packageRoot !== dirname(packageRoot)) {
+    const packageJsonPath = join(packageRoot, 'package.json');
+
+    if (existsSync(packageJsonPath) && JSON.parse(readFileSync(packageJsonPath, 'utf8')).name === libraryName) {
+      return packageRoot;
+    }
+
+    packageRoot = dirname(packageRoot);
+  }
+
+  throw new Error(`Could not resolve package root for ${libraryName}`);
+};
+
+const createD3LibMappingToCommonJs = libraryName => {
+  // d3-shape must use its matching d3-path version.
+  const resolveFrom = libraryName === 'd3-path' ? findPackageRoot('d3-shape') : __dirname;
+
+  return join(findPackageRoot(libraryName, resolveFrom), 'dist', `${libraryName}.js`);
+};
+
+const d3Libs = [
+  'd3-scale',
+  'd3-shape',
+  'd3-path',
+  'd3-array',
+  'd3-axis',
+  'd3-selection',
+  'd3-format',
+  'd3-time',
+  'd3-time-format',
+  'd3-interpolate',
+  'd3-color',
+  'd3-hierarchy',
+  'd3-sankey',
+];
+
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
@@ -18,17 +60,7 @@ module.exports = {
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@griffel/jest-serializer'],
-  moduleNameMapper: {
-    '^d3-scale$': '<rootDir>/../../../../node_modules/d3-scale/dist/d3-scale.js',
-    '^d3-shape$': '<rootDir>/../../../../node_modules/d3-shape/dist/d3-shape.js',
-    '^d3-path$': '<rootDir>/../../../../node_modules/d3-path/dist/d3-path.js',
-    '^d3-array$': '<rootDir>/../../../../node_modules/d3-array/dist/d3-array.js',
-    '^d3-axis$': '<rootDir>/../../../../node_modules/d3-axis/dist/d3-axis.js',
-    '^d3-selection$': '<rootDir>/../../../../node_modules/d3-selection/dist/d3-selection.js',
-    '^d3-format$': '<rootDir>/../../../../node_modules/d3-format/dist/d3-format.js',
-    '^d3-time$': '<rootDir>/../../../../node_modules/d3-time/dist/d3-time.js',
-    '^d3-interpolate$': '<rootDir>/../../../../node_modules/d3-interpolate/dist/d3-interpolate.js',
-    '^d3-color$': '<rootDir>/../../../../node_modules/d3-color/dist/d3-color.js',
-    '^d3-hierarchy$': '<rootDir>/../../../../node_modules/d3-hierarchy/dist/d3-hierarchy.js',
-  },
+  moduleNameMapper: Object.fromEntries(
+    d3Libs.map(libraryName => [`^${libraryName}$`, createD3LibMappingToCommonJs(libraryName)]),
+  ),
 };

@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2026 14:10:40 GMT",
+      "tag": "@fluentui/react-components_v9.74.4",
+      "version": "9.74.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "cbee28ba42d268404e9b9663a6a3a33e205c66d1",
+            "comment": "fix: avoid overflow snapshot updates after unmount"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e75edae32b44d1733e392f420e5dd2d6fa8bfa0d",
+            "comment": "Accessibility bug fixes"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "f03f1e4e00455a54ab180a218962a7ae685e3b9b",
+            "comment": "fix: align @fluentui/fluent2-theme and @fluentui/react dependency ranges with republished v8 versions"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "65db820de531aa7ec14bb33644cd93162722af30",
+            "comment": "feat: export useTagPickerContextValues and TagPickerControlInternalSlots for headless composition"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:06 GMT",
       "tag": "@fluentui/react-components_v9.74.3",
       "version": "9.74.3",

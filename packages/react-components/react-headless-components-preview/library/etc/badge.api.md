@@ -5,11 +5,11 @@
 ```ts
 
 import type { BadgeBaseProps } from '@fluentui/react-badge';
-import { BadgeBaseState } from '@fluentui/react-badge';
+import type { BadgeBaseState } from '@fluentui/react-badge';
 import type { BadgeSlots as BadgeSlots_2 } from '@fluentui/react-badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderBadge_unstable as renderBadge } from '@fluentui/react-badge';
 
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
@@ -27,8 +27,7 @@ export type BadgeState = BadgeBaseState & {
     };
 };
 
-// @public
-export const renderBadge: (state: BadgeBaseState) => JSXElement;
+export { renderBadge }
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLDivElement>) => BadgeState;
