@@ -38,6 +38,18 @@ describe('AvatarGroupPopover', () => {
     expect(getByRole('button')).toHaveTextContent('99+');
   });
 
+  it('renders default trigger content when indicator is icon', () => {
+    const { getByRole } = render(
+      <AvatarGroup>
+        <AvatarGroupPopover indicator="icon">
+          <AvatarGroupItem name="Jane Smith" />
+        </AvatarGroupPopover>
+      </AvatarGroup>,
+    );
+
+    expect(getByRole('button')).toHaveTextContent('...');
+  });
+
   it('keeps the overflow content hidden until the trigger is clicked', () => {
     const { getByRole, getAllByRole, queryByText } = renderOverflow();
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useControllableState } from '@fluentui/react-utilities';
 import { useAvatarGroupPopoverBase_unstable } from '@fluentui/react-avatar';
 import type { AvatarGroupPopoverBaseProps } from '@fluentui/react-avatar';
 
@@ -31,18 +31,32 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
 
   const baseState = useAvatarGroupPopoverBase_unstable(props as unknown as AvatarGroupPopoverBaseProps);
 
+  const [popoverOpen, setPopoverOpen] = useControllableState({
+    state: open,
+    defaultState: defaultOpen,
+    initialState: false,
+  });
+
+  const triggerButton = baseState.triggerButton;
+  if (baseState.layout !== 'pie' && baseState.indicator === 'icon' && triggerButton.children == null) {
+    // eslint-disable-next-line react-hooks/immutability
+    triggerButton.children = '...';
+  }
+
+  const handleOpenChange = mergeCallbacks(onOpenChange, (_event, data) => setPopoverOpen(data.open));
+
   return {
     count: baseState.count,
     indicator: baseState.indicator,
     layout: baseState.layout,
-    popoverOpen: baseState.popoverOpen,
+    popoverOpen,
 
     components: {
       triggerButton: 'button',
       content: 'ul',
       popoverSurface: PopoverSurface,
     },
-    triggerButton: baseState.triggerButton,
+    triggerButton,
     content: baseState.content,
     popoverSurface: slot.always(props.popoverSurface, {
       defaultProps: { 'aria-label': 'Overflow', tabIndex: 0 },
@@ -50,9 +64,8 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
     }),
 
     popover: {
-      open,
-      defaultOpen,
-      onOpenChange,
+      open: popoverOpen,
+      onOpenChange: handleOpenChange,
       openOnHover,
       openOnContext,
       mouseLeaveDelay,
