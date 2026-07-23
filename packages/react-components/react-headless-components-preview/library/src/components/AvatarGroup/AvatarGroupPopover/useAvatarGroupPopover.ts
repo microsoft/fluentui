@@ -38,6 +38,8 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
   });
 
   const triggerButton = baseState.triggerButton;
+
+  // eslint-disable-next-line eqeqeq
   if (baseState.layout !== 'pie' && baseState.indicator === 'icon' && triggerButton.children == null) {
     // eslint-disable-next-line react-hooks/immutability
     triggerButton.children = '...';
