@@ -21,7 +21,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "options": {
-        "command": "node packages/react-components/react-storybook-addon-export-to-sandbox/config/tests/webpack-integration.cjs"
+        "cwd": "{projectRoot}",
+        "command": "node __tests__/webpack-integration.cjs"
       }
     }
   }

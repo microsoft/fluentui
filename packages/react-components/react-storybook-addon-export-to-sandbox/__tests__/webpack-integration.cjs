@@ -4,7 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 const webpackCompiler = require('webpack');
 
-const { webpack } = require('../../lib-commonjs/webpack.js');
+const { webpack } = require('../lib-commonjs/webpack.js');
 
 async function main() {
   const outputPath = fs.mkdtempSync(path.join(os.tmpdir(), 'export-to-sandbox-webpack-'));
