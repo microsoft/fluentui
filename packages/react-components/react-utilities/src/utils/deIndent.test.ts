@@ -8,6 +8,14 @@ describe('deIndent', () => {
     `).toBe('first line\nsecond line');
   });
 
+  it('removes common indentation when the first content line is an interpolation', () => {
+    const value = 'first';
+    expect(deIndent`
+       ${value}
+       second
+     `).toBe('first\nsecond');
+  });
+
   it('preserves interpolated values', () => {
     const value = 'second';
 
