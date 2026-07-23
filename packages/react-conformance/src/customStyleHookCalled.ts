@@ -108,7 +108,15 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
  * Utility to render React elements that works with both React 17 and React 18
  */
 async function render(element: React.ReactElement, container: HTMLElement) {
-  const { act } = await import('react-dom/test-utils');
+  const React = await import('react');
+  type Act = (callback: () => void) => void;
+  let act: Act = (React as { act?: Act }).act as Act;
+
+  if (!act) {
+    const ReactDOMTestUtils = (await import('react-dom/test-utils')) as unknown as { act: Act };
+    act = ReactDOMTestUtils.act;
+  }
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore - ReactDOMClient is not available in React 17
   const ReactDOMClient = await import('react-dom/client').catch(() => null);

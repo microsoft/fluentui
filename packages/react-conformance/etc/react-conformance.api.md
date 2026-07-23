@@ -50,7 +50,6 @@ export interface TestObject<TProps = {}> {
 
 // @public
 export interface TestOptions {
-    // (undocumented)
     'component-calls-custom-style-hook'?: {
         callCount?: number;
     };
