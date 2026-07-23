@@ -1,5 +1,5 @@
 /**
- * Removes the common leading indentation from a template literal.
+ * Removes common leading indentation from a template literal, and trims the surrounding leading/trailing newlines.
  */
 export function deIndent(strings: TemplateStringsArray, ...values: unknown[]): string {
   // Try to detect the indentation used in the first content line. This needs to work even if that line starts
