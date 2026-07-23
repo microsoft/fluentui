@@ -33,6 +33,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
   describe(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, () => {
     let container: HTMLElement | null = null;
+    let createdContainer = false;
 
     beforeEach(() => {
       jest.clearAllMocks();
@@ -40,20 +41,23 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
       if (testInfo.renderOptions?.container) {
         container = testInfo.renderOptions.container;
+        createdContainer = false;
       } else {
         container = document.createElement('div');
         document.body.appendChild(container);
+        createdContainer = true;
       }
     });
 
     afterEach(async () => {
       jest.dontMock('@fluentui/react-shared-contexts');
 
-      if (container) {
-        document.body.removeChild(container);
+      if (createdContainer && container?.parentNode) {
+        container.parentNode.removeChild(container);
       }
 
       container = null;
+      createdContainer = false;
     });
 
     it('calls custom style hook with state', async () => {
@@ -70,8 +74,14 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       const React = await import('react');
 
       const Component = await getReactComponent(testInfo.componentPath, testInfo);
+      const Wrapper = testInfo.renderOptions?.wrapper;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const element = React.createElement(Component, { ...testInfo.requiredProps } as any);
+      let element = React.createElement(Component, { ...testInfo.requiredProps } as any);
+
+      if (Wrapper) {
+        element = React.createElement(Wrapper, null, element);
+      }
+
       const expectedHookName = `use${testInfo.displayName}Styles_unstable`;
 
       const { unmount } = await render(element, container as HTMLElement);
