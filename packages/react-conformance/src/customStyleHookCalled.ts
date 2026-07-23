@@ -11,12 +11,19 @@ async function getReactComponent(
   testInfo: IsConformantOptions,
 ): Promise<IsConformantOptions['Component']> {
   const componentModule = await import(componentPath);
+  const component = testInfo.useDefaultExport ? componentModule.default : componentModule[testInfo.displayName];
 
-  if (testInfo.useDefaultExport) {
-    return componentModule.default;
+  if (!component) {
+    const expectedExport = testInfo.useDefaultExport ? 'default' : testInfo.displayName;
+    const availableExports = Object.keys(componentModule).join(', ');
+
+    throw new Error(
+      `Unable to resolve component export "${expectedExport}" from "${componentPath}". ` +
+        `Available exports: ${availableExports || '(none)'}. Check componentPath, displayName, and useDefaultExport.`,
+    );
   }
 
-  return componentModule[testInfo.displayName];
+  return component;
 }
 
 /**
@@ -135,8 +142,14 @@ async function render(element: React.ReactElement, container: HTMLElement) {
     };
   } else {
     const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
-    ReactDOM.render(element, container);
-    unmount = () => ReactDOM.unmountComponentAtNode(container);
+    act(() => {
+      ReactDOM.render(element, container);
+    });
+    unmount = () => {
+      act(() => {
+        ReactDOM.unmountComponentAtNode(container);
+      });
+    };
   }
 
   return { container, unmount };
