@@ -11,7 +11,7 @@
     "lint": "yarn run -T just-scripts lint",
     "start": "yarn run -T storybook dev -p 3000",
     "type-check": "yarn run -T tsc -p . --noEmit --baseUrl .",
-    "test-vr": "node ../../.github/scripts/run-storywright.js STORYWRIGHT_EXCLUDE_PATTERNS_V8 -- --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
+    "test-vr": "yarn run -T storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
   },
   "dependencies": {
     "@fluentui/example-data": "*",

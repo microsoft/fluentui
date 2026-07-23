@@ -43,36 +43,6 @@ jobs:
       - run: yarn install --immutable
       - run: yarn playwright install --with-deps
 
-      - name: Build selective v9 VR exclude patterns
-        id: v9_vr_filter
-        run: |
-          node .github/scripts/build-vr-storywright-excludes.js \
-            --suite "vr-tests-react-components" \
-            --base "$NX_BASE" \
-            --head "$NX_HEAD"
-
-      - name: Build selective v8 VR exclude patterns
-        id: v8_vr_filter
-        run: |
-          node .github/scripts/build-vr-storywright-excludes.js \
-            --suite "vr-tests" \
-            --base "$NX_BASE" \
-            --head "$NX_HEAD"
-
-      - name: Build selective web-components VR exclude patterns
-        id: wc_vr_filter
-        run: |
-          node .github/scripts/build-vr-storywright-excludes.js \
-            --suite "vr-tests-web-components" \
-            --base "$NX_BASE" \
-            --head "$NX_HEAD"
-
-      - name: Export selective VR filters
-        run: |
-          echo "STORYWRIGHT_EXCLUDE_PATTERNS_V9=${{ steps.v9_vr_filter.outputs.exclude_patterns }}" >> "$GITHUB_ENV"
-          echo "STORYWRIGHT_EXCLUDE_PATTERNS_V8=${{ steps.v8_vr_filter.outputs.exclude_patterns }}" >> "$GITHUB_ENV"
-          echo "STORYWRIGHT_EXCLUDE_PATTERNS_WC=${{ steps.wc_vr_filter.outputs.exclude_patterns }}" >> "$GITHUB_ENV"
-
       - name: Run VR tests (generate screenshots)
         run: yarn nx affected -t test-vr --nxBail
 

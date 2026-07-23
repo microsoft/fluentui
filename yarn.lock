@@ -29347,7 +29347,7 @@ __metadata:
 
 "storywright@patch:storywright@npm%3A0.0.27-storybook7.14#~/.yarn/patches/storywright-npm-0.0.27-storybook7.14-bfcc4eb382.patch":
   version: 0.0.27-storybook7.14
-  resolution: "storywright@patch:storywright@npm%3A0.0.27-storybook7.14#~/.yarn/patches/storywright-npm-0.0.27-storybook7.14-bfcc4eb382.patch::version=0.0.27-storybook7.14&hash=362783"
+  resolution: "storywright@patch:storywright@npm%3A0.0.27-storybook7.14#~/.yarn/patches/storywright-npm-0.0.27-storybook7.14-bfcc4eb382.patch::version=0.0.27-storybook7.14&hash=5f7c72"
   dependencies:
     playwright: "npm:^1.34.3"
     prop-types: "npm:^15.6.0"
@@ -29357,7 +29357,7 @@ __metadata:
     react: ^18.0.0 || ^17.0.0 || ^16.0.0
   bin:
     storywright: bin/storywright.js
-  checksum: 10c0/29b40422034c6a5872e7c4006800bd20806fbfdcdde78082ab366b47e677839440f266079f0687acc32ae285d57334da7ae163fda9684a4815e7dead39968082
+  checksum: 10c0/3b4b3f981a247a6dcf8014b5d7c2628950613bf7fba74751db322358b9fe78fc2f473bd162aa57f96d5074619d0a35191c4af63340d6d528f8be1c16b2b881fc
   languageName: node
   linkType: hard
 
