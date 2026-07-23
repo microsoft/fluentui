@@ -43,7 +43,7 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
-import { userInvalidState } from '../styles/states/index.js';
+import { nativeDisabledState, userInvalidState } from '../styles/states/index.js';
 
 /**
  * Styles for the TextArea component.
@@ -126,15 +126,15 @@ export const styles: ElementStyles = css`
     --control-padding-inline: ${spacingHorizontalSNudge};
   }
 
-  :host([resize='both']:not(:disabled)) {
+  :host([resize='both']:not(${nativeDisabledState})) {
     --resize: both;
   }
 
-  :host([resize='horizontal']:not(:disabled)) {
+  :host([resize='horizontal']:not(${nativeDisabledState})) {
     --resize: horizontal;
   }
 
-  :host([resize='vertical']:not(:disabled)) {
+  :host([resize='vertical']:not(${nativeDisabledState})) {
     --resize: vertical;
   }
 
@@ -164,7 +164,7 @@ export const styles: ElementStyles = css`
     --border-block-end-color: ${colorPaletteRedBorder2};
   }
 
-  :host(:disabled) {
+  :host(${nativeDisabledState}) {
     --color: ${colorNeutralForegroundDisabled};
     --background-color: ${colorTransparentBackground};
     --border-color: ${colorNeutralStrokeDisabled};
@@ -222,7 +222,7 @@ export const styles: ElementStyles = css`
   }
 
   :host([readonly]) .root::after,
-  :host(:disabled) .root::after {
+  :host(${nativeDisabledState}) .root::after {
     content: none;
   }
 
@@ -301,7 +301,7 @@ export const styles: ElementStyles = css`
       --border-block-end-color: Highlight;
     }
 
-    :host(:disabled) {
+    :host(${nativeDisabledState}) {
       --color: GrayText;
       --border-color: GrayText;
       --border-block-end-color: GrayText;
