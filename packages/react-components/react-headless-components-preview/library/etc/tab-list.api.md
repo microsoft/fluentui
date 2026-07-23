@@ -5,22 +5,21 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderTab_unstable as renderTab } from '@fluentui/react-tabs';
+import { renderTabList_unstable as renderTabList } from '@fluentui/react-tabs';
 import type { TabBaseProps } from '@fluentui/react-tabs';
-import { TabBaseState } from '@fluentui/react-tabs';
+import type { TabBaseState } from '@fluentui/react-tabs';
 import type { TabListBaseProps } from '@fluentui/react-tabs';
-import { TabListBaseState } from '@fluentui/react-tabs';
-import { TabListContextValues } from '@fluentui/react-tabs';
+import type { TabListBaseState } from '@fluentui/react-tabs';
+import type { TabListContextValues as TabListContextValues_2 } from '@fluentui/react-tabs';
 import type { TabListSlots as TabListSlots_2 } from '@fluentui/react-tabs';
 import { TabSlots } from '@fluentui/react-tabs';
 import { TabValue } from '@fluentui/react-tabs';
 
-// @public
-export const renderTab: (state: TabBaseState) => JSXElement;
+export { renderTab }
 
-// @public
-export const renderTabList: (state: TabListBaseState, contextValues: TabListContextValues) => JSXElement;
+export { renderTabList }
 
 // @public
 export const Tab: ForwardRefComponent<TabProps>;
@@ -65,7 +64,7 @@ export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabStat
 export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
 
 // @public (undocumented)
-export const useTabListContextValues: (state: TabListState) => TabListContextValues_2;
+export const useTabListContextValues: (state: TabListState) => TabListContextValues;
 
 // (No @packageDocumentation comment for this package)
 
