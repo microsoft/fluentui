@@ -24,7 +24,12 @@ const waitForVrtAssets = async () => {
   const timeout = new Promise(resolve => setTimeout(resolve, 300));
 
   try {
-    await Promise.race([document.fonts?.ready, timeout]);
+    const fontsReady = document.fonts?.ready;
+    if (fontsReady) {
+      await Promise.race([fontsReady, timeout]);
+    } else {
+      await timeout;
+    }
   } catch {
     // Best-effort readiness only; continue quickly on failures.
   }
