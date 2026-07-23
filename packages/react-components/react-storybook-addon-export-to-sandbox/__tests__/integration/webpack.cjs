@@ -4,7 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 const webpackCompiler = require('webpack');
 
-const { webpack } = require('../lib-commonjs/webpack.js');
+const { webpack } = require('../../lib-commonjs/webpack.js');
 
 async function main() {
   const outputPath = fs.mkdtempSync(path.join(os.tmpdir(), 'export-to-sandbox-webpack-'));
@@ -12,7 +12,7 @@ async function main() {
     {
       mode: 'development',
       devtool: 'source-map',
-      context: path.join(__dirname, 'fixtures'),
+      context: path.join(__dirname, '../fixtures'),
       entry: './Example.stories.tsx',
       output: { path: outputPath, filename: 'bundle.js' },
       module: {
