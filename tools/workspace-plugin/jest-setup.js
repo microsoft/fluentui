@@ -1,6 +1,9 @@
 // @see https://github.com/nrwl/nx/issues/23435#issuecomment-2152900336
 
 module.exports = () => {
+  process.env.CI = 'false';
+  delete process.env.__FORCE_API_MD_UPDATE__;
+
   /**
    * When the daemon is enabled during unit tests,
    * and the daemon is already running, the daemon-client.ts
