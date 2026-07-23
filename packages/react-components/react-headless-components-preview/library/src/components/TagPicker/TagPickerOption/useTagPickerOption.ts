@@ -32,10 +32,10 @@ export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<H
     components: {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       ...optionState.components,
-      media: 'span',
+      media: 'div',
       secondaryContent: 'span',
     },
-    media: slot.optional(media, { elementType: 'span' }),
+    media: slot.optional(media, { elementType: 'div' }),
     secondaryContent: slot.optional(secondaryContent, { elementType: 'span' }),
   };
 };

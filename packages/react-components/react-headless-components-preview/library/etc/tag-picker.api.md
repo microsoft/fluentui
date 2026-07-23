@@ -18,10 +18,13 @@ import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 import { renderTagPicker_unstable as renderTagPicker } from '@fluentui/react-tag-picker';
+import { renderTagPickerButton_unstable as renderTagPickerButton } from '@fluentui/react-tag-picker';
+import { renderTagPickerControl_unstable as renderTagPickerControl } from '@fluentui/react-tag-picker';
+import { renderTagPickerGroup_unstable as renderTagPickerGroup } from '@fluentui/react-tag-picker';
+import { renderTagPickerInput_unstable as renderTagPickerInput } from '@fluentui/react-tag-picker';
 import { renderTagPickerList_unstable as renderTagPickerList } from '@fluentui/react-tag-picker';
+import { renderTagPickerOption_unstable as renderTagPickerOption } from '@fluentui/react-tag-picker';
 import type { Slot } from '@fluentui/react-utilities';
-import type { TagGroupBaseState } from '@fluentui/react-tags';
-import type { TagGroupContextValues } from '@fluentui/react-tags';
 import type { TagPickerBaseProps } from '@fluentui/react-tag-picker';
 import type { TagPickerButtonBaseState } from '@fluentui/react-tag-picker';
 import { TagPickerButtonBaseProps as TagPickerButtonProps } from '@fluentui/react-tag-picker';
@@ -32,6 +35,7 @@ import type { TagPickerControlBaseState } from '@fluentui/react-tag-picker';
 import { TagPickerControlInternalSlots } from '@fluentui/react-tag-picker';
 import { TagPickerControlProps } from '@fluentui/react-tag-picker';
 import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
+import type { TagPickerGroupBaseState } from '@fluentui/react-tag-picker';
 import type { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
 import type { TagPickerInputBaseState } from '@fluentui/react-tag-picker';
 import { TagPickerInputBaseProps as TagPickerInputProps } from '@fluentui/react-tag-picker';
@@ -46,22 +50,17 @@ import { useTagPickerContextValues } from '@fluentui/react-tag-picker';
 
 export { renderTagPicker }
 
-// @public (undocumented)
-export const renderTagPickerButton: (state: TagPickerButtonState) => JSXElement;
+export { renderTagPickerButton }
 
-// @public
-export const renderTagPickerControl: (state: TagPickerControlState) => JSXElement;
+export { renderTagPickerControl }
 
-// @public
-export const renderTagPickerGroup: (state: TagPickerGroupState, contextValues: TagGroupContextValues) => JSXElement | null;
+export { renderTagPickerGroup }
 
-// @public
-export const renderTagPickerInput: (state: TagPickerInputState) => JSXElement;
+export { renderTagPickerInput }
 
 export { renderTagPickerList }
 
-// @public (undocumented)
-export const renderTagPickerOption: (state: TagPickerOptionState) => JSXElement;
+export { renderTagPickerOption }
 
 // @public
 export const renderTagPickerOptionGroup: (state: OptionGroupState) => JSXElement;
@@ -116,8 +115,7 @@ export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots>;
 export { TagPickerGroupSlots }
 
 // @public
-export type TagPickerGroupState = TagGroupBaseState & {
-    hasSelectedOptions: boolean;
+export type TagPickerGroupState = TagPickerGroupBaseState & {
     root: {
         focusgroup?: string;
         'data-disabled'?: string;
@@ -175,25 +173,18 @@ export type TagPickerOptionGroupState = OptionGroupState;
 
 // @public
 export type TagPickerOptionProps = OptionProps & {
-    media?: Slot<'span'>;
+    media?: Slot<'div'>;
     secondaryContent?: Slot<'span'>;
 };
 
 // @public (undocumented)
 export type TagPickerOptionSlots = OptionSlots & {
-    media?: Slot<'span'>;
+    media?: Slot<'div'>;
     secondaryContent?: Slot<'span'>;
 };
 
 // @public
-export type TagPickerOptionState = OptionState & {
-    components: OptionState['components'] & {
-        media: 'span';
-        secondaryContent: 'span';
-    };
-    media?: Slot<'span'>;
-    secondaryContent?: Slot<'span'>;
-};
+export type TagPickerOptionState = OptionState & ComponentState<TagPickerOptionSlots>;
 
 // @public (undocumented)
 export type TagPickerProps = TagPickerBaseProps & {
