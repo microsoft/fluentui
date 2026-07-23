@@ -209,7 +209,7 @@ describe('Build Executor', () => {
       "
     `);
     const sourceMap = JSON.parse(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8'));
-    sourceMap.sourcesContent = sourceMap.sourcesContent.map((content: string) => content.replaceAll('\r\n', '\n'));
+    sourceMap.sourcesContent = sourceMap.sourcesContent.map((content: string) => content.replace(/\r\n/g, '\n'));
     expect(JSON.stringify(sourceMap)).toMatchInlineSnapshot(
       `"{\\"version\\":3,\\"sources\\":[\\"src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
     );
