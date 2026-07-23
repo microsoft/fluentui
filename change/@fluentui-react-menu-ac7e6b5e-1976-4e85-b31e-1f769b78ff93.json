@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "test: add regression tests for split-group submenu trigger alignment icons",
+  "packageName": "@fluentui/react-menu",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "none"
+}

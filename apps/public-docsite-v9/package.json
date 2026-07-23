@@ -36,7 +36,7 @@
     "@fluentui/recipes": "*",
     "@fluentui/theme-designer": "*",
     "@griffel/react": "^1.5.32",
-    "@microsoft/applicationinsights-web": "^3",
+    "@microsoft/applicationinsights-web": "^3.4.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^5.7.2",
