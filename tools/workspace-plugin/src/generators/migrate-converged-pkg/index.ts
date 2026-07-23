@@ -1137,7 +1137,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
   const rootBabelConfigPath = shouldAddGriffelPreset
-    ? path.relative(options.projectConfig.root, '.babelrc-v9.json')
+    ? path.posix.relative(options.projectConfig.root, '.babelrc-v9.json')
     : undefined;
   const config = templates.babelConfig({ platform: packageType, rootBabelConfigPath });
 
