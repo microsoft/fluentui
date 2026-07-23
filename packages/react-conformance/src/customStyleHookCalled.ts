@@ -33,11 +33,6 @@ async function getReactComponent(
 export const customStyleHookCalled: BaseConformanceTest = testInfo => {
   const options = testInfo.testOptions?.[CUSTOM_STYLE_HOOK_CALLED_TEST_NAME];
 
-  // Opt-in test: components must explicitly set testOptions['component-calls-custom-style-hook'].
-  if (!options) {
-    return;
-  }
-
   describe(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, () => {
     let container: HTMLElement | null = null;
     let createdContainer = false;
@@ -96,7 +91,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       expect(useCustomStyleHook).toHaveBeenCalledWith(expectedHookName);
       expect(customStyleHook).toHaveBeenCalled();
 
-      const expectedCallCount = options.callCount;
+      const expectedCallCount = options?.callCount;
       if (expectedCallCount !== undefined) {
         expect(customStyleHook).toHaveBeenCalledTimes(expectedCallCount);
       } else {

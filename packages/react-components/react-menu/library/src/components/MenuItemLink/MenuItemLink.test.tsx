@@ -13,7 +13,6 @@ describe('MenuItemLink', () => {
     Component: MenuItemLink,
     displayName: 'MenuItemLink',
     testOptions: {
-      'component-calls-custom-style-hook': { callCount: 1 },
       'has-static-classnames': [
         {
           props: {

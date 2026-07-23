@@ -9,7 +9,7 @@ import { render } from '@testing-library/react';
  */
 export interface TestOptions {
   /**
-   * Opt-in options for the custom style hook conformance assertion.
+   * Optional assertion overrides for the custom style hook conformance test.
    */
   'component-calls-custom-style-hook'?: {
     /** Expected custom style hook call count per component render. When omitted, asserts the hook is called at least once. */
