@@ -55,7 +55,7 @@ index 4da7d8cbf7cb295f35694646dbb7e1918026f802..860d58e1259ff687ba26dfac6a8f5db8
 +                                });
 +                            };
 +                            var waitForReady = function () {
-+                                if (vrtWindow.__fluentVrtReady__ === true || Date.now() >= deadline) {
++                                if (vrtWindow.__fluentVrtReady__ !== false || Date.now() >= deadline) {
 +                                    return Promise.resolve();
 +                                }
 +                                return waitForFrame().then(waitForReady);

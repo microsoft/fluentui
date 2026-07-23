@@ -153,16 +153,20 @@ function escapeRegex(value) {
 }
 
 function getChangedFiles(base, head) {
-  const diffRange = head ? `${base}...${head}` : `${base}...HEAD`;
-  const output = execSync(`git diff --name-only ${diffRange}`, {
-    cwd: REPO_ROOT,
-    encoding: 'utf8',
-  });
+  try {
+    const diffRange = head ? `${base}...${head}` : `${base}...HEAD`;
+    const output = execSync(`git diff --name-only ${diffRange}`, {
+      cwd: REPO_ROOT,
+      encoding: 'utf8',
+    });
 
-  return output
-    .split('\n')
-    .map(line => line.trim())
-    .filter(Boolean);
+    return output
+      .split('\n')
+      .map(line => line.trim())
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
 }
 
 function getChangedPackages(changedFiles, changedMatchers) {
