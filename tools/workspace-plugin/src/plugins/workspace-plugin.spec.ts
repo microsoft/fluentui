@@ -33,8 +33,8 @@ describe(`workspace-plugin`, () => {
 
   afterEach(() => {
     jest.resetModules();
-    tempFs.cleanup();
     process.chdir(cwd);
+    tempFs.cleanup();
   });
 
   it('should create nodes with clean,format targets for any project', async () => {

@@ -3,6 +3,7 @@
 module.exports = () => {
   process.env.CI = 'false';
   delete process.env.__FORCE_API_MD_UPDATE__;
+  delete process.env.__FORCE_SNAPSHOT_UPDATE__;
 
   /**
    * When the daemon is enabled during unit tests,

@@ -32,8 +32,8 @@ describe(`clean-plugin`, () => {
 
   afterEach(() => {
     jest.resetModules();
-    tempFs.cleanup();
     process.chdir(cwd);
+    tempFs.cleanup();
   });
 
   it('should create nodes', async () => {
