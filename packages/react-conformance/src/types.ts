@@ -8,8 +8,11 @@ import { render } from '@testing-library/react';
  * Individual test options
  */
 export interface TestOptions {
+  /**
+   * Opt-in options for the custom style hook conformance assertion.
+   */
   'component-calls-custom-style-hook'?: {
-    /** Expected custom style hook call count per component render, defaults to 1. */
+    /** Expected custom style hook call count per component render. When omitted, asserts the hook is called at least once. */
     callCount?: number;
   };
   'consistent-callback-names'?: {

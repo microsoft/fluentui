@@ -33,6 +33,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
   describe(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME, () => {
     let container: HTMLElement | null = null;
+    let createdContainer = false;
 
     beforeEach(() => {
       jest.clearAllMocks();
@@ -40,20 +41,23 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
       if (testInfo.renderOptions?.container) {
         container = testInfo.renderOptions.container;
+        createdContainer = false;
       } else {
         container = document.createElement('div');
         document.body.appendChild(container);
+        createdContainer = true;
       }
     });
 
     afterEach(async () => {
       jest.dontMock('@fluentui/react-shared-contexts');
 
-      if (container) {
-        document.body.removeChild(container);
+      if (createdContainer && container?.parentNode) {
+        container.parentNode.removeChild(container);
       }
 
       container = null;
+      createdContainer = false;
     });
 
     it('calls custom style hook with state', async () => {
@@ -70,8 +74,14 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       const React = await import('react');
 
       const Component = await getReactComponent(testInfo.componentPath, testInfo);
+      const Wrapper = testInfo.renderOptions?.wrapper;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const element = React.createElement(Component, { ...testInfo.requiredProps } as any);
+      let element = React.createElement(Component, { ...testInfo.requiredProps } as any);
+
+      if (Wrapper) {
+        element = React.createElement(Wrapper, null, element);
+      }
+
       const expectedHookName = `use${testInfo.displayName}Styles_unstable`;
 
       const { unmount } = await render(element, container as HTMLElement);
@@ -98,7 +108,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
  * Utility to render React elements that works with both React 17 and React 18
  */
 async function render(element: React.ReactElement, container: HTMLElement) {
-  const React = await import('react');
+  const { act } = await import('react-dom/test-utils');
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore - ReactDOMClient is not available in React 17
   const ReactDOMClient = await import('react-dom/client').catch(() => null);
@@ -107,15 +117,11 @@ async function render(element: React.ReactElement, container: HTMLElement) {
 
   if (ReactDOMClient && 'createRoot' in ReactDOMClient) {
     const root = ReactDOMClient.createRoot(container);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore - act doesn't exist on react in React 17
-    React.act(() => {
+    act(() => {
       root.render(element);
     });
     unmount = () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - act doesn't exist on react in React 17
-      React.act(() => {
+      act(() => {
         root.unmount();
       });
     };
