@@ -7,7 +7,7 @@ export type { IKeyframes } from './IKeyframes';
 export type { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export type { DeepPartial } from './DeepPartial';
+export type { DeepPartial, DeepPartialV2 } from './DeepPartial';
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, IStyleSetBase, Omit } from './IStyleSet';
