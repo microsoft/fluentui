@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: allow a function for the cartesian tickFormat so the numeric value axis can render a literal % or route through an app/i18n formatter (string behavior unchanged)",
+  "packageName": "@fluentui/react-charts",
+  "email": "michael@xerilium.com",
+  "dependentChangeType": "patch"
+}
