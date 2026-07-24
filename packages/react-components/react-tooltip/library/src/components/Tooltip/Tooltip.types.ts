@@ -133,6 +133,11 @@ export type TooltipState = ComponentState<TooltipSlots> &
     children?: JSXElement | null;
 
     /**
+     * Whether positioning has determined that the tooltip or its target is outside its clipping boundary.
+     */
+    positioningHidden: boolean;
+
+    /**
      * Whether the tooltip should be rendered to the DOM.
      */
     shouldRenderTooltip?: boolean;

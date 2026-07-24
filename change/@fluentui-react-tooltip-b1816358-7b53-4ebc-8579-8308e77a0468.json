@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix Tooltip visibility when its trigger scrolls out of an overflow container.",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
