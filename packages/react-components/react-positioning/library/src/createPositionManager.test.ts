@@ -205,4 +205,107 @@ describe('createPositionManager', () => {
 
     expect(listener).not.toHaveBeenCalled();
   });
+
+  it('ignores stale computePosition results when updates resolve out of order', async () => {
+    const pendingResolves: Array<(value: Awaited<ReturnType<typeof computePosition>>) => void> = [];
+
+    computePositionMock.mockImplementation(
+      () =>
+        new Promise(resolve => {
+          pendingResolves.push(resolve);
+        }),
+    );
+
+    const { container, target } = createTestElements();
+    const listener = jest.fn();
+    container.addEventListener(POSITIONING_END_EVENT, listener);
+
+    const manager = createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'absolute',
+      middleware: [],
+      placement: 'bottom',
+      disableUpdateOnResize: true,
+    });
+
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+    manager.updatePosition();
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(2);
+
+    pendingResolves[1]({
+      x: 20,
+      y: 30,
+      placement: 'right',
+      strategy: 'absolute',
+      middlewareData: mockMiddlewareData,
+    });
+    await flushMicrotasks();
+
+    pendingResolves[0]({
+      x: 10,
+      y: 15,
+      placement: 'top',
+      strategy: 'absolute',
+      middlewareData: mockMiddlewareData,
+    });
+    await flushMicrotasks();
+
+    expect(listener).toHaveBeenCalledTimes(1);
+
+    const event: OnPositioningEndEvent = listener.mock.calls[0][0];
+    expect(event.detail).toMatchObject({ placement: 'right' });
+  });
+
+  it('schedules updatePosition on animation frames when enabled', async () => {
+    computePositionMock.mockResolvedValue({
+      x: 10,
+      y: 20,
+      placement: 'bottom',
+      strategy: 'absolute',
+      middlewareData: mockMiddlewareData,
+    });
+
+    const { container, target } = createTestElements();
+    const win = container.ownerDocument.defaultView!;
+    const rafCallbacks: FrameRequestCallback[] = [];
+
+    const requestAnimationFrameSpy = jest.spyOn(win, 'requestAnimationFrame').mockImplementation(callback => {
+      rafCallbacks.push(callback);
+      return rafCallbacks.length;
+    });
+    const cancelAnimationFrameSpy = jest.spyOn(win, 'cancelAnimationFrame').mockImplementation(() => undefined);
+
+    const manager = createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'absolute',
+      middleware: [],
+      placement: 'bottom',
+      disableUpdateOnResize: true,
+      updatePositionOnAnimationFrame: true,
+    });
+
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrameSpy).toHaveBeenCalled();
+
+    const callback = rafCallbacks.shift();
+    expect(callback).toBeDefined();
+
+    callback?.(16);
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(2);
+
+    manager.dispose();
+    expect(cancelAnimationFrameSpy).toHaveBeenCalled();
+
+    requestAnimationFrameSpy.mockRestore();
+    cancelAnimationFrameSpy.mockRestore();
+  });
 });

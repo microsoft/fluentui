@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added updatePositionOnAnimationFrame option to continuously refresh placement during animations/motion (fixes #35968)",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

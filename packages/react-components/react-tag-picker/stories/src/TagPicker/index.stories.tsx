@@ -25,6 +25,7 @@ export { TruncatedText } from './TagPickerTruncatedText.stories';
 export { SingleSelect } from './TagPickerSingleSelect.stories';
 export { NoPopover } from './TagPickerNoPopover.stories';
 export { SingleLine } from './TagPickerSingleLine.stories';
+export { DialogWithTagPicker } from './TagPickerDialogRepositioning.stories';
 
 export default {
   title: 'Components/TagPicker',

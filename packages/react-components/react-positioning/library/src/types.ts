@@ -259,6 +259,14 @@ export interface PositioningOptions {
   disableUpdateOnResize?: boolean;
 
   /**
+   * Continuously updates position on animation frames while the positioned element is mounted.
+   * Useful when the target can move due to ancestor animations that do not trigger scroll or resize observers.
+   *
+   * @default false
+   */
+  updatePositionOnAnimationFrame?: boolean;
+
+  /**
    * When true, the positioned element will shift to cover the target element when there's not enough space.
    * @default false
    */
@@ -287,6 +295,7 @@ export interface PositioningProps
     | 'matchTargetSize'
     | 'onPositioningEnd'
     | 'disableUpdateOnResize'
+    | 'updatePositionOnAnimationFrame'
     | 'shiftToCoverTarget'
   > {
   /** An imperative handle to Popper methods. */

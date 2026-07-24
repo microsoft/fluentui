@@ -128,6 +128,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     offset: { crossAxis: 0, mainAxis: 2 },
     fallbackPositions,
     matchTargetSize: 'width' as const,
+    updatePositionOnAnimationFrame: true,
     ...resolvePositioningShorthand(positioning),
   });
 

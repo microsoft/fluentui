@@ -26,7 +26,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const containerRef = React.useRef<HTMLElement | null>(null);
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
-  const { enabled = true } = options;
+  const { enabled = true, updatePositionOnAnimationFrame = false } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
   const updatePositionManager = React.useCallback(() => {
     if (managerRef.current) {
@@ -41,10 +41,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
+        updatePositionOnAnimationFrame,
         ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
     }
-  }, [enabled, resolvePositioningOptions]);
+  }, [enabled, resolvePositioningOptions, updatePositionOnAnimationFrame]);
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
     overrideTargetRef.current = target;
