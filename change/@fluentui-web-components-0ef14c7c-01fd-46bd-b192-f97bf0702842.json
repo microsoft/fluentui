@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Remove the default 520px max-width on MessageBar content (matching React v9) and add the `--message-bar-content-max-width` CSS custom property to optionally re-introduce a cap",
+  "packageName": "@fluentui/web-components",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

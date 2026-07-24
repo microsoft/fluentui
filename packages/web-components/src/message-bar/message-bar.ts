@@ -11,6 +11,7 @@ import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-b
  * @slot icon - Content that can be provided for the leading icon
  * @slot - The default slot for the content
  * @fires { CustomEvent } dismiss - Fired when the message bar is dismissed.
+ * @cssproperty --message-bar-content-max-width - Sets a max-width on the message content. Defaults to `none` (no cap); set a length to constrain it (e.g., 520px).
  * @public
  */
 export class MessageBar extends FASTElement {

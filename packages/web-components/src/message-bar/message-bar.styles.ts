@@ -75,7 +75,7 @@ export const styles: ElementStyles = css`
 
   .content {
     grid-area: body;
-    max-width: 520px;
+    max-width: var(--message-bar-content-max-width, none);
     padding-block: ${spacingVerticalMNudge};
     padding-inline: 0;
   }

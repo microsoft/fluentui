@@ -95,4 +95,28 @@ test.describe('Message Bar', () => {
 
     await expect(didDismiss).resolves.toBe(true);
   });
+
+  test('should not cap the content width by default', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const content = element.locator('.content');
+
+    await fastPage.setTemplate();
+
+    await expect(content).toHaveCSS('max-width', 'none');
+  });
+
+  test('should cap the content width when the `--message-bar-content-max-width` custom property is set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const content = element.locator('.content');
+
+    await fastPage.setTemplate();
+
+    await element.evaluate((node: MessageBar) => {
+      node.style.setProperty('--message-bar-content-max-width', '300px');
+    });
+
+    await expect(content).toHaveCSS('max-width', '300px');
+  });
 });
