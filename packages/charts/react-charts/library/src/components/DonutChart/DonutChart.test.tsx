@@ -62,6 +62,15 @@ describe('Donut chart interactions', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('Should describe the number of rendered slices', () => {
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
+
+    expect(container.querySelector('[role="listbox"]')).toHaveAttribute(
+      'aria-label',
+      `Pie chart with ${chartPointsDC.length} slices`,
+    );
+  });
+
   test('Should show callout on focus', () => {
     // Arrange
     const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);

@@ -770,7 +770,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               fillOpacity={_getOpacityStream(singleLink)}
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
           </g>
         );
@@ -818,7 +818,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               opacity="1"
               tabIndex={0}
               aria-label={aria}
-              role="img"
+              role="option"
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classes.nodeTextContainer}>
@@ -1148,7 +1148,14 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         in a non-sequential and erratic manner within a 2D grid.
         */}
         <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
-          <svg width={width} height={height} id={_chartId} className={classes.chart}>
+          <svg
+            width={width}
+            height={height}
+            id={_chartId}
+            className={classes.chart}
+            role="listbox"
+            aria-label={`Sankey chart with ${nodes.length} nodes and ${links.length} links`}
+          >
             {!props.hideLegend && props.data.chartTitle && (
               <ChartTitle
                 title={props.data.chartTitle}

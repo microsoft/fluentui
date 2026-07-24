@@ -214,7 +214,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             rectElement = (
               <g
                 key={id}
-                role="img"
+                role="option"
                 aria-label={_getAriaLabel(dataPointObject)}
                 tabIndex={_legendHighlighted(dataPointObject.legend) || _noLegendHighlighted() ? 0 : -1}
                 fillOpacity={_getOpacity(dataPointObject.legend)}
@@ -257,7 +257,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             rectElement = (
               <g
                 key={id}
-                role="img"
+                role="option"
                 aria-label={_getAriaLabel(dataPointObject)}
                 tabIndex={_noLegendHighlighted() ? 0 : -1}
                 transform={`translate(${_xAxisScale.current(dataPointObject.x)}, ${_yAxisScale.current(
@@ -279,7 +279,11 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
           rectangles.push(rectElement);
         });
       });
-      return <g {...arrowNavigationAttributes}>{rectangles}</g>;
+      return (
+        <g role="listbox" aria-label={`Heat map chart with ${rectangles.length} cells`} {...arrowNavigationAttributes}>
+          {rectangles}
+        </g>
+      );
     };
     /**
      * when the legend is hovered we need to highlight

@@ -473,7 +473,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                 opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
                 fill={_getPointFill(seriesColor, circleId, j, false)}
                 stroke={seriesColor}
-                role="img"
+                role="option"
                 aria-label={_getAriaLabel(i, j)}
                 tabIndex={isLegendSelected ? 0 : undefined}
               />
@@ -759,7 +759,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                 visibility={'hidden'}
                 strokeDasharray={'5,5'}
               />
-              <g>{renderSeries}</g>
+              <g role="listbox" aria-label={`Scatter chart with ${renderSeries.length} regions`}>
+                {renderSeries}
+              </g>
             </g>
           </>
         );
