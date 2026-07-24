@@ -13,6 +13,7 @@ export const renderLabel_unstable = (state: LabelBaseState): JSXElement => {
 
   return (
     <state.root>
+      {state.icon && <state.icon />}
       {state.root.children}
       {state.required && <state.required />}
     </state.root>
