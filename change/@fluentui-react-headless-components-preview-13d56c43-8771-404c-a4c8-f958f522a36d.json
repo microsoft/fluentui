@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix the headless Tooltip state type after adding positioning visibility state.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

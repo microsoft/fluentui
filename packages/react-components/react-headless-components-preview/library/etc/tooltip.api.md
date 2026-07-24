@@ -28,7 +28,7 @@ export type TooltipProps = Omit<TooltipBaseProps, 'mountNode'>;
 export { TooltipSlots }
 
 // @public
-export type TooltipState = Omit<TooltipBaseState, 'mountNode'>;
+export type TooltipState = Omit<TooltipBaseState, 'mountNode' | 'positioningHidden'>;
 
 export { TooltipTriggerProps }
 
