@@ -1,0 +1,9 @@
+{
+  "name": "@fluentui/web-features-generator",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/generate.js",
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*"
+  }
+}
