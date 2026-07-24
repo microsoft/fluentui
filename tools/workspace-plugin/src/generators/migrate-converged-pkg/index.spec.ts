@@ -495,6 +495,25 @@ describe('migrate-converged-pkg generator', () => {
         "
       `);
     });
+
+    it(`emits the CommonJS jest config + setup as .cjs when the package opts into "type": "module"`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+        json.type = 'module';
+        return json;
+      });
+
+      await generator(tree, options);
+
+      // legacy `.js` variants are replaced by `.cjs` so Node parses them as CommonJS under type:module
+      expect(tree.exists(`${projectConfig.root}/jest.config.js`)).toBeFalsy();
+      expect(tree.exists(`${projectConfig.root}/jest.config.cjs`)).toBeTruthy();
+      expect(tree.exists(`${projectConfig.root}/config/tests.js`)).toBeFalsy();
+      expect(tree.exists(`${projectConfig.root}/config/tests.cjs`)).toBeTruthy();
+      expect(tree.read(`${projectConfig.root}/jest.config.cjs`, 'utf-8')).toContain(
+        `setupFilesAfterEnv: ['./config/tests.cjs']`,
+      );
+    });
   });
 
   describe(`storybook updates`, () => {
@@ -950,6 +969,58 @@ describe('migrate-converged-pkg generator', () => {
 
         const pkgJson = getPackageJson();
         expect((pkgJson.exports?.['.'] as { import?: string }).import).toBe(undefined);
+      });
+
+      it(`opts a package into the ESM-first shape when it declares "type": "module"`, async () => {
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+          jsonUpdates: {
+            type: 'module',
+            main: './lib-commonjs/index.js',
+            module: './lib/index.js',
+            style: './css/index.css',
+          },
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect(pkgJson.type).toBe('module');
+        // CommonJS entry switches to `.cjs` so Node parses it correctly under `type: module`
+        expect(pkgJson.main).toBe('./lib-commonjs/index.cjs');
+        // no `node` condition; `import`/`require` carry their own per-condition `types`
+        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toBeUndefined();
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+          Object {
+            ".": Object {
+              "import": Object {
+                "default": "./lib/index.js",
+                "types": "./dist/index.d.ts",
+              },
+              "require": Object {
+                "default": "./lib-commonjs/index.cjs",
+                "types": "./dist/index.d.cts",
+              },
+              "style": "./css/index.css",
+            },
+            "./package.json": "./package.json",
+          }
+        `);
+      });
+
+      it(`keeps CommonJS packages on the legacy shape (no opt-in)`, async () => {
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+          jsonUpdates: { module: './lib/index.js' },
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect(pkgJson.type).toBeUndefined();
+        // CommonJS entry is not rewritten to `.cjs`
+        expect(pkgJson.main).not.toMatch(/\.cjs$/);
+        expect((pkgJson.exports?.['.'] as { node?: unknown }).node).toBe('./lib-commonjs/index.js');
       });
     });
 
