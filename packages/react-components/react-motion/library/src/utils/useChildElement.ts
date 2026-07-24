@@ -20,6 +20,7 @@ const CHILD_ERROR_MESSAGE = [
 export function useChildElement(
   children: JSXElement,
   mounted: boolean = true,
+  forwardedRef?: React.Ref<HTMLElement>,
 ): [JSXElement, React.RefObject<HTMLElement | null>] {
   const childRef = React.useRef<HTMLElement>(null);
 
@@ -38,7 +39,7 @@ export function useChildElement(
     if (React.isValidElement(child)) {
       return [
         React.cloneElement(child as React.ReactElement<{ ref: React.Ref<HTMLElement> }>, {
-          ref: useMergedRefs(childRef, getReactElementRef(child)),
+          ref: useMergedRefs(childRef, getReactElementRef(child), forwardedRef),
         }),
         childRef,
       ];

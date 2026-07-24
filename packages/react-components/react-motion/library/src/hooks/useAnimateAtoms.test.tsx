@@ -40,6 +40,27 @@ describe('useAnimateAtoms', () => {
     expect(result.current).toBeInstanceOf(Function);
   });
 
+  it('finishes when the animation reaches finished play state without firing onfinish', async () => {
+    jest.useFakeTimers();
+    const animation = {
+      persist: jest.fn(),
+      playState: 'running',
+    } as unknown as Animation;
+    const element = { animate: jest.fn().mockReturnValue(animation) } as unknown as HTMLElement;
+    const onfinish = jest.fn();
+    const { result } = renderHook(() => useAnimateAtoms());
+    const handle = result.current(element, { keyframes: DEFAULT_KEYFRAMES }, { isReducedMotion: false });
+
+    handle.setMotionEndCallbacks(onfinish, jest.fn());
+    Object.defineProperty(animation, 'playState', { configurable: true, value: 'finished' });
+    jest.runOnlyPendingTimers();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(onfinish).toHaveBeenCalledTimes(1);
+    jest.useRealTimers();
+  });
+
   describe('reduce motion', () => {
     it('calls ".animate()" with regular motion', () => {
       const { result } = renderHook(() => useAnimateAtoms());

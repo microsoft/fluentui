@@ -68,7 +68,8 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
     name: '@storybook/react-webpack5',
     options: {
       builder: {
-        lazyCompilation: true,
+        // Webpack's lazy compilation backend uses an unforwarded random port in Codespaces.
+        lazyCompilation: process.env.CODESPACES !== 'true',
       },
     },
   },
