@@ -72,13 +72,14 @@ export const FadeSnappy: PresenceComponent<FadeParams>;
 export const Rotate: PresenceComponent<RotateParams>;
 
 // @public
-export const rotateAtom: ({ direction, duration, easing, delay, axis, outAngle, inAngle, }: RotateAtomParams) => AtomMotion;
+export const rotateAtom: ({ duration, easing, delay, axis, fromAngle, toAngle, }: RotateAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type RotateParams = BasePresenceParams & AnimateOpacity & {
     axis?: Axis3D;
-    outAngle?: number;
-    inAngle?: number;
+    fromAngle?: number;
+    restAngle?: number;
+    toAngle?: number;
 };
 
 // @public
