@@ -20,6 +20,7 @@ describe('MenuTrigger', () => {
       'component-has-static-classnames-object',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
+      'component-calls-custom-style-hook',
     ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',

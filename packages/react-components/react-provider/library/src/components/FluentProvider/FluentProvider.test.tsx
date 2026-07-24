@@ -23,7 +23,7 @@ describe('FluentProvider', () => {
   });
 
   isConformant({
-    disabledTests: ['component-handles-classname'],
+    disabledTests: ['component-handles-classname', 'component-calls-custom-style-hook'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
   });

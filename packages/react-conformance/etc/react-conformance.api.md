@@ -50,6 +50,9 @@ export interface TestObject<TProps = {}> {
 
 // @public
 export interface TestOptions {
+    'component-calls-custom-style-hook'?: {
+        callCount?: number;
+    };
     // (undocumented)
     'component-has-static-classname'?: {
         prefix?: string;

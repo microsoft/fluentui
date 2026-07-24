@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add custom style hook conformance test in react-conformance and pilot coverage",
+  "packageName": "@fluentui/react-conformance",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
