@@ -84,7 +84,12 @@ export {
   useTagPickerGroupStyles_unstable,
   useTagPickerGroup_unstable,
 } from './TagPickerGroup';
-export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup';
+export type {
+  TagPickerGroupBaseState,
+  TagPickerGroupProps,
+  TagPickerGroupSlots,
+  TagPickerGroupState,
+} from './TagPickerGroup';
 
 export {
   TagPickerOptionGroup,
