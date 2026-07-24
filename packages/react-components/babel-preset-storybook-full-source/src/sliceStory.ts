@@ -157,6 +157,12 @@ function createSliceStoryPlugin(
           statementPath.remove();
         };
 
+        // Names of module-level declarations / import specifiers removed during
+        // pruning. Any surviving statement that still references one of these is
+        // dangling and must be dropped too (otherwise the sample throws a
+        // ReferenceError).
+        const prunedNames = new Set<string>();
+
         // --- Prune the program body -----------------------------------------
         for (const statementPath of path.get('body')) {
           if (statementPath.node === targetPath.node) {
@@ -164,7 +170,7 @@ function createSliceStoryPlugin(
           }
 
           if (statementPath.isImportDeclaration()) {
-            pruneImportDeclaration(t, statementPath, neededBindings);
+            pruneImportDeclaration(t, statementPath, neededBindings, prunedNames);
             continue;
           }
 
@@ -194,9 +200,28 @@ function createSliceStoryPlugin(
           // Keep only declarations reachable from the target story.
           if (isModuleLevelDeclaration(t, statementPath)) {
             if (!isDeclarationReachable(statementPath, neededBindings)) {
+              for (const name of collectDeclaredNames(t, statementPath)) {
+                prunedNames.add(name);
+              }
               remove(statementPath);
             }
             continue;
+          }
+        }
+
+        // --- Drop statements left dangling by pruned declarations/imports ----
+        // e.g. `Card.displayName = …` / `counter = 5` whose `Card` / `counter`
+        // declaration was pruned above. References to globals (`Object`, …) and
+        // surviving bindings are untouched, since `prunedNames` only holds names
+        // we actually removed.
+        if (prunedNames.size > 0) {
+          for (const statementPath of path.get('body')) {
+            if (statementPath.node === targetPath.node || statementPath.isImportDeclaration()) {
+              continue;
+            }
+            if (statementReferencesPrunedName(t, statementPath, prunedNames)) {
+              remove(statementPath);
+            }
           }
         }
 
@@ -701,6 +726,7 @@ function pruneImportDeclaration(
   t: typeof Babel.types,
   importPath: Babel.NodePath<Babel.types.ImportDeclaration>,
   needed: Set<Babel.NodePath>,
+  prunedNames: Set<string>,
 ): void {
   const specifiers = importPath.get('specifiers');
 
@@ -719,6 +745,7 @@ function pruneImportDeclaration(
     if (needed.has(specifierPath)) {
       kept++;
     } else {
+      prunedNames.add(specifierPath.node.local.name);
       specifierPath.remove();
     }
   }
@@ -726,6 +753,50 @@ function pruneImportDeclaration(
   if (kept === 0) {
     importPath.remove();
   }
+}
+
+/** Collects the local identifier names a module-level declaration introduces. */
+function collectDeclaredNames(t: typeof Babel.types, statementPath: Babel.NodePath): string[] {
+  if (statementPath.isVariableDeclaration()) {
+    return statementPath.node.declarations
+      .map(d => (t.isIdentifier(d.id) ? d.id.name : undefined))
+      .filter((name): name is string => name !== undefined);
+  }
+  if (statementPath.isFunctionDeclaration() || statementPath.isClassDeclaration()) {
+    return statementPath.node.id ? [statementPath.node.id.name] : [];
+  }
+  return [];
+}
+
+/**
+ * Whether a statement references any pruned name in a value position — either a
+ * read (`ReferencedIdentifier`, e.g. the object of `Card.displayName = …`) or a
+ * write target (`counter = 5`, `counter++`). Property keys and other non-value
+ * positions are ignored.
+ */
+function statementReferencesPrunedName(
+  t: typeof Babel.types,
+  statementPath: Babel.NodePath,
+  prunedNames: Set<string>,
+): boolean {
+  let found = false;
+  statementPath.traverse({
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    Identifier(idPath) {
+      if (found || !prunedNames.has(idPath.node.name)) {
+        return;
+      }
+      const node = idPath.node;
+      const parent = idPath.parent;
+      const isWriteTarget =
+        (t.isAssignmentExpression(parent) && parent.left === node) ||
+        (t.isUpdateExpression(parent) && parent.argument === node);
+      if (idPath.isReferencedIdentifier() || isWriteTarget) {
+        found = true;
+      }
+    },
+  });
+  return found;
 }
 
 /** Whether the statement declares the given local identifier name. */

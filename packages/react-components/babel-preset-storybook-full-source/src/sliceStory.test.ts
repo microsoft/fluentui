@@ -317,4 +317,87 @@ describe('sliceStorySource', () => {
       expect(sliced).not.toContain('Basic.args');
     });
   });
+
+  describe('dangling reference pruning', () => {
+    it('drops a member assignment when its target declaration is pruned', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const Card = props => <div {...props} />;`,
+        `Card.displayName = 'Card';`,
+        ``,
+        `const meta = { title: 'X', component: Button };`,
+        `export default meta;`,
+        ``,
+        `export const UsesCard = () => <Card>hi</Card>;`,
+        `export const NoCard = () => <Button>hi</Button>;`,
+      ].join('\n');
+
+      const sliced = slice(source, 'NoCard');
+
+      // `Card` is unreachable → pruned; the dangling `Card.displayName = …`
+      // assignment must be pruned too (otherwise ReferenceError).
+      expect(sliced).not.toContain('displayName');
+      expect(sliced).not.toContain('<div');
+    });
+
+    it('keeps a member assignment when its target declaration survives', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const Card = props => <div {...props} />;`,
+        `Card.displayName = 'Card';`,
+        ``,
+        `const meta = { title: 'X', component: Button };`,
+        `export default meta;`,
+        ``,
+        `export const UsesCard = () => <Card>hi</Card>;`,
+        `export const NoCard = () => <Button>hi</Button>;`,
+      ].join('\n');
+
+      const sliced = slice(source, 'UsesCard');
+
+      expect(sliced).toContain(`Card.displayName = 'Card'`);
+    });
+
+    it('drops an identifier re-assignment when its declaration is pruned', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `let counter = 0;`,
+        `counter = 5;`,
+        ``,
+        `const meta = { title: 'X', component: Button };`,
+        `export default meta;`,
+        ``,
+        `export const Basic = () => <Button>hi</Button>;`,
+      ].join('\n');
+
+      const sliced = slice(source, 'Basic');
+
+      expect(sliced).not.toContain('counter');
+    });
+
+    it('keeps a side-effect statement referencing a global and a surviving binding', () => {
+      const source = [
+        `import * as React from 'react';`,
+        `import { Button } from '@fluentui/react-button';`,
+        ``,
+        `const palette = { brand: 'blue' };`,
+        `Object.freeze(palette);`,
+        ``,
+        `const meta = { title: 'X', component: Button };`,
+        `export default meta;`,
+        ``,
+        `export const Basic = () => <Button style={{ color: palette.brand }}>hi</Button>;`,
+      ].join('\n');
+
+      const sliced = slice(source, 'Basic');
+
+      expect(sliced).toContain('Object.freeze(palette)');
+    });
+  });
 });
