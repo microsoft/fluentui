@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import type { PositioningProps } from '@fluentui/react-positioning';
 import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
@@ -26,6 +27,8 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { useTooltipTimeout } from './private/useTooltipTimeout';
 import { Escape } from '@fluentui/keyboard-keys';
 
+type OnPositioningEndEvent = Parameters<Exclude<PositioningProps['onPositioningEnd'], undefined>>[0];
+
 /**
  * Create the state required to render Tooltip.
  *
@@ -40,6 +43,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   const { targetDocument } = useFluent();
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
+  const [positioningHidden, setPositioningHidden] = React.useState(false);
 
   const {
     children,
@@ -60,6 +64,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     hideDelay,
     relationship,
     visible,
+    positioningHidden,
     shouldRenderTooltip: visible,
     mountNode,
     // Slots
@@ -76,13 +81,22 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
   state.content.id = useId('tooltip-', state.content.id);
 
+  const resolvedPositioning = resolvePositioningShorthand(state.positioning);
+  const onPositioningEnd = useEventCallback((event: OnPositioningEndEvent) => {
+    const { escaped, referenceHidden } = event.detail;
+
+    setPositioningHidden(escaped || referenceHidden);
+    resolvedPositioning.onPositioningEnd?.(event);
+  });
+
   const positioningOptions = {
     enabled: state.visible,
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
     align: 'center' as const,
     offset: 4,
-    ...resolvePositioningShorthand(state.positioning),
+    ...resolvedPositioning,
+    onPositioningEnd,
   };
 
   if (state.withArrow) {

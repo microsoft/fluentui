@@ -1,25 +1,44 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, Tooltip } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, Tooltip } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalS,
+    alignItems: 'flex-start',
+  },
+  description: {
+    margin: 0,
+    fontSize: tokens.fontSizeBase300,
+  },
+  scrollContainer: {
+    height: '120px',
+    width: '240px',
+    overflow: 'hidden scroll',
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    position: 'relative',
+  },
+  content: {
+    height: '300px',
+    paddingTop: tokens.spacingVerticalS,
+    paddingLeft: tokens.spacingHorizontalS,
+  },
+});
 
 export const OverflowHidden = (): JSXElement => {
+  const styles = useStyles();
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start' }}>
-      <p style={{ margin: 0, fontSize: '14px' }}>
+    <div className={styles.root}>
+      <p className={styles.description}>
         Scroll the box below. The tooltip should disappear when the button scrolls out of view, not follow it outside
         the container boundary.
       </p>
-      <div
-        style={{
-          height: '120px',
-          width: '240px',
-          overflow: 'hidden scroll',
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          position: 'relative',
-        }}
-      >
-        <div style={{ height: '300px', paddingTop: '8px', paddingLeft: '8px' }}>
+      <div className={styles.scrollContainer}>
+        <div className={styles.content}>
           <Tooltip content="I should hide when scrolled out of view" relationship="label">
             <Button>Hover me, then scroll</Button>
           </Tooltip>
