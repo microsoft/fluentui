@@ -8,7 +8,8 @@ export const MotionDisabled = (): JSXElement => (
       <Button>Open popover</Button>
     </PopoverTrigger>
 
-    <PopoverSurface tabIndex={-1}>
+    {/* Use this labelling technique for very short popovers. Otherwise label by the heading if setting focus to the popover surface. */}
+    <PopoverSurface tabIndex={-1} id="popover-surface" aria-labelledby="popover-surface">
       <h3 style={{ marginTop: 0 }}>Popover content</h3>
       <p>This popover has motion disabled</p>
     </PopoverSurface>
