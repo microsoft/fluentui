@@ -17,12 +17,18 @@ import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
+ * Treat values within 1px of the scroll height as "bottom" to account for
+ * fractional scroll measurements caused by browser zoom and display scaling.
+ */
+const SCROLL_BOTTOM_TOLERANCE = 1;
+
+/**
  * Get the current scroll state of the DrawerBody.
  *
  * @internal
  * @param element - HTMLElement to check scroll state of
  */
-const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
+export const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
   if (scrollHeight <= clientHeight) {
     return 'none';
   }
@@ -31,7 +37,9 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
     return 'top';
   }
 
-  if (scrollTop + clientHeight === scrollHeight) {
+  const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+
+  if (distanceFromBottom <= SCROLL_BOTTOM_TOLERANCE) {
     return 'bottom';
   }
 
