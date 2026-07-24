@@ -34,7 +34,6 @@ export interface FeatureDetail {
   referenceUrl: string;
   usage: string;
   fallback: string;
-  polyfill?: string;
 }
 
 export type AvailabilityLevel = 'widely' | 'newly' | 'limited';

@@ -1,48 +1,64 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-import { BrowserSupportMatrix } from './BrowserSupport/BrowserSupportMatrix';
-
 <Meta title="Overview/Polyfills & fallbacks" />
 
 # Polyfills & fallbacks
 
 To support browsers that lack the underlying web-platform features (see
 [Browser support](?path=/docs/overview-browser-support--docs)), add a polyfill for the feature you
-need. Every component detects support at runtime, so a polyfill takes effect automatically once it is
-loaded. The matrix below shows where each feature is available; the sections after it explain what to
-do for each one.
+need. Load polyfills before Fluent UI Headless renders so the required APIs are available to the
+components. The browser support matrix shows where each feature is available; the sections below
+explain what to do when a capability is missing.
 
-<BrowserSupportMatrix />
+## Supporting Older Browsers
+
+Products that support browsers without native CSS anchor positioning need to decide what placement
+experience to provide. Fluent UI Headless leaves that tradeoff to the consuming product:
+
+1. **Load a polyfill only where needed.** Check for native support before downloading an
+   anchor-positioning polyfill. This keeps the common path lean and requires little application code,
+   although a polyfill may implement only part of the positioning behavior listed in the
+   [browser support matrix](?path=/docs/overview-browser-support--docs#detailed-feature-support).
+2. **Use product-owned positioning logic.** When `CSS.supports('anchor-name', '--x')` returns `false`,
+   hand the layer to a measurement-based positioner. This adds implementation work, but lets the
+   product control placement, flipping, and collision handling.
+3. **Allow static placement.** Keep the native fallback behavior: the surface opens, but it may appear
+   at its document position rather than beside the trigger. Products aimed primarily at browsers with
+   native support may find this sufficient.
+
+Base the decision on the browser capabilities present at runtime rather than a browser identity list.
 
 ## focusgroup
 
-Roving arrow-key navigation uses the `focusgroup` attribute, which no browser supports natively yet,
-and the published library does not apply a polyfill for you. Add the Microsoft
+Roving arrow-key navigation uses the
+[`focusgroup` attribute](https://open-ui.org/components/scoped-focusgroup.explainer/), which no
+browser supports natively yet, and the published library does not apply a polyfill for you. Add the Microsoft
 [`@microsoft/focusgroup-polyfill`](https://github.com/microsoft/polyfills/tree/main/packages/focusgroup) —
 it is progressive and no-ops once browsers ship native support. Without it, arrow-key navigation does
 not work.
 
 ## Popover API
 
-Overlays render in the top layer using the Popover API. On browsers without it, only non-modal
-`Dialog` surfaces fall back to `dialog.show()`; `Popover` and `Menu` surfaces render in place and
-`Tooltip` logs a development warning. For full coverage on older browsers, add a polyfill. Detect
-support and load it before Fluent UI, for example:
+Overlays render in the top layer using the
+[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API). On browsers without it,
+only non-modal `Dialog` surfaces fall back to `dialog.show()`; `Popover` and `Menu` surfaces render in
+place and `Tooltip` logs a development warning. For full coverage on older browsers, add a polyfill.
+Detect support and load it before Fluent UI, for example:
 
 ```js
-if (!CSS.supports('selector(:popover-open)')) {
+const hasPopover = typeof HTMLElement !== 'undefined' && typeof HTMLElement.prototype.showPopover === 'function';
+
+if (!hasPopover) {
   await import('your-popover-polyfill');
 }
 ```
 
 ## CSS anchor positioning
 
-Overlays are positioned relative to their trigger with CSS anchor positioning. The headless library
-does **not** include a JavaScript positioning fallback, so without support these overlays render at
-their static position. Add a polyfill and load it before Fluent UI, for example:
-
-```js
-if (!CSS.supports('anchor-name: --x')) {
-  // load your CSS anchor positioning polyfill here, before Fluent UI renders
-}
-```
+Overlays are positioned relative to their trigger with
+[CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning).
+The headless library does **not** include a JavaScript positioning fallback, so without support these
+overlays render at their static position. Use the feature detection and fallback options above, and
+load any polyfill before Fluent UI Headless renders. Consult the
+[browser support matrix](?path=/docs/overview-browser-support--docs#detailed-feature-support) for the
+individual CSS properties Fluent UI Headless uses.

@@ -7,22 +7,14 @@ import {
   featureLabel,
   MATRIX_ORDER,
   CONCEPT_ORDER,
-  FEATURE_DETAILS,
   COMPONENT_FEATURES,
-  MDN_LINKS,
-  getAvailabilityLevel,
-  getStatusLabel,
+  FEATURE_DETAILS,
+  REFERENCE_LINKS,
+  getBaselineStatus,
   generatedFrom,
   WEB_FEATURES_URL,
-  type AvailabilityLevel,
 } from '.';
 import styles from './browserSupport.module.css';
-
-const AVAILABILITY_TEXT: Record<AvailabilityLevel, string> = {
-  widely: 'Widely available',
-  newly: 'Newly available',
-  limited: 'Limited availability',
-};
 
 /** All tracked components, sorted, for the component → feature matrix rows. */
 const ALL_COMPONENTS = Object.keys(COMPONENT_FEATURES).sort();
@@ -33,7 +25,8 @@ function renderRichText(text: string): React.ReactNode {
     if (index % 2 === 0) {
       return part;
     }
-    const href = MDN_LINKS[part];
+
+    const href = REFERENCE_LINKS[part];
     if (href) {
       return (
         <a key={index} className={styles.codeLink} href={href} target="_blank" rel="noreferrer">
@@ -41,6 +34,7 @@ function renderRichText(text: string): React.ReactNode {
         </a>
       );
     }
+
     return (
       <code key={index} className={styles.code}>
         {part}
@@ -68,13 +62,13 @@ export const BrowserSupportMatrix = (): React.ReactNode => {
         <tbody>
           {MATRIX_ORDER.map(key => {
             const feature = features[key];
-            const level = getAvailabilityLevel(feature);
+            const status = getBaselineStatus(key);
             return (
               <tr key={key}>
                 <th scope="row">{featureLabel(key)}</th>
                 <td>
-                  <span className={`${styles.badge} ${styles[level]}`}>{AVAILABILITY_TEXT[level]}</span>
-                  <div className={styles.since}>{getStatusLabel(key)}</div>
+                  <span className={`${styles.badge} ${styles[status.level]}`}>{status.availabilityLabel}</span>
+                  <div className={styles.since}>{status.detailLabel}</div>
                 </td>
                 {browsers.map(browser => {
                   const version = feature.support[browser];

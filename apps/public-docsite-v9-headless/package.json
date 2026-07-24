@@ -9,7 +9,7 @@
     "postbuild-storybook": "yarn generate-llms-docs",
     "postbuild-storybook:docsite": "yarn postbuild-storybook",
     "generate-llms-docs": "yarn run -T storybook-llms-extractor --distPath ./dist/storybook --summaryBaseUrl \"https://storybooks.fluentui.dev/headless/\" --summaryTitle \"Fluent UI React Headless Components\" --summaryDescription \"Fluent UI React headless components provide unstyled, accessible component primitives that can be styled with any CSS approach.\"",
-    "generate-browser-support": "node -r ../../scripts/ts-node/src/register ../../scripts/web-features/src/generate.ts --output src/BrowserSupport/browser-support-data.generated.json --features popover,dialog,focusgroup,anchor-positioning=css.properties.anchor-name,anchor-name=anchor-positioning::css.properties.anchor-name,position-area=anchor-positioning::css.properties.position-area,position-try-fallbacks=anchor-positioning::css.properties.position-try-fallbacks,anchor-center=anchor-positioning::css.properties.place-self.anchor-center",
+    "generate-browser-support": "node -r ../../scripts/ts-node/src/register ../../tools/web-features/src/generate.ts --output src/BrowserSupport/browser-support-data.generated.json --features popover,dialog,focusgroup,anchor-positioning=css.properties.anchor-name,anchor-name=anchor-positioning::css.properties.anchor-name,position-area=anchor-positioning::css.properties.position-area,position-try-fallbacks=anchor-positioning::css.properties.position-try-fallbacks,anchor-center=anchor-positioning::css.properties.place-self.anchor-center",
     "start": "yarn storybook:docs",
     "storybook": "yarn run -T storybook dev --port 3000",
     "storybook:docs": "yarn storybook --docs"

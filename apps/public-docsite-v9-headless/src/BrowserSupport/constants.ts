@@ -26,7 +26,7 @@ export const MATRIX_ORDER: FeatureKey[] = [
   'focusgroup',
 ];
 
-/** Concept-level features for the usage cards, the components table, and per-component notices. */
+/** Concept-level features for the components table and per-component notices. */
 export const CONCEPT_ORDER: ConceptKey[] = ['popover', 'dialog', 'anchor-positioning', 'focusgroup'];
 
 /** Hand-maintained display label for every feature/property (matrix + notices). */
@@ -47,7 +47,7 @@ export const FEATURE_DETAILS: Record<ConceptKey, FeatureDetail> = {
     usage:
       'Renders overlays in the top layer with native light-dismiss and stacking, avoiding portals and manual z-index management.',
     fallback:
-      "Components detect support via `CSS.supports('selector(:popover-open)')`. Coverage on older browsers needs a polyfill: only non-modal `Dialog` surfaces fall back to `dialog.show()`; `Popover` and `Menu` surfaces render in place and `Tooltip` logs a development warning.",
+      'Only non-modal `Dialog` surfaces fall back to `dialog.show()` when the Popover API is missing. `Popover` and `Menu` surfaces render in place, while `Tooltip` logs a development warning.',
   },
   dialog: {
     referenceUrl: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog',
@@ -61,15 +61,14 @@ export const FEATURE_DETAILS: Record<ConceptKey, FeatureDetail> = {
     usage:
       'Positions overlays relative to their trigger via `anchor-name` / `position-anchor` / `position-area`, with `position-try-fallbacks` for flipping. The properties land in browsers individually — see the matrix above.',
     fallback:
-      'This is the newest feature and is not yet uniformly Baseline. The headless components do not include a JavaScript positioning fallback, so overlays render at their static position on browsers without CSS anchor positioning — add a polyfill to keep them anchored.',
+      'The headless components do not include a JavaScript positioning fallback, so overlays render at their static position on browsers without CSS anchor positioning. Add a polyfill to keep them anchored.',
   },
   focusgroup: {
     referenceUrl: 'https://open-ui.org/components/scoped-focusgroup.explainer/',
     usage:
       'Provides roving arrow-key focus navigation via the `focusgroup` attribute, replacing manual keyboard event handlers.',
     fallback:
-      'Not yet available in any browser, and the published headless library does not apply a polyfill on your behalf. Add the Microsoft `focusgroup` polyfill (`@microsoft/focusgroup-polyfill`) so keyboard navigation works today.',
-    polyfill: 'Microsoft focusgroup polyfill',
+      'No browser supports it natively yet, and the published headless library does not apply a polyfill on your behalf. Add `@microsoft/focusgroup-polyfill` so keyboard navigation works today.',
   },
 };
 
@@ -96,25 +95,10 @@ export const BROWSER_LABELS: Record<string, string> = {
   safari: 'Safari',
 };
 
-/** MDN reference for individual CSS properties/values mentioned in the usage copy (inline code → link). */
-export const MDN_LINKS: Record<string, string> = {
+export const REFERENCE_LINKS: Record<string, string> = {
+  '@microsoft/focusgroup-polyfill': 'https://github.com/microsoft/polyfills/tree/main/packages/focusgroup',
   'anchor-name': 'https://developer.mozilla.org/en-US/docs/Web/CSS/anchor-name',
   'position-anchor': 'https://developer.mozilla.org/en-US/docs/Web/CSS/position-anchor',
   'position-area': 'https://developer.mozilla.org/en-US/docs/Web/CSS/position-area',
   'position-try-fallbacks': 'https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks',
 };
-
-export const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];

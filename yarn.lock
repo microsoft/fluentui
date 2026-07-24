@@ -2682,7 +2682,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/eslint-plugin@workspace:packages/eslint-plugin":
+"@fluentui/eslint-plugin@npm:*, @fluentui/eslint-plugin@workspace:packages/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@fluentui/eslint-plugin@workspace:packages/eslint-plugin"
   dependencies:
@@ -6206,12 +6206,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/scripts-web-features@workspace:scripts/web-features":
-  version: 0.0.0-use.local
-  resolution: "@fluentui/scripts-web-features@workspace:scripts/web-features"
-  languageName: unknown
-  linkType: soft
-
 "@fluentui/scripts-webpack@workspace:scripts/webpack":
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-webpack@workspace:scripts/webpack"
@@ -6598,6 +6592,14 @@ __metadata:
   peerDependencies:
     "@microsoft/fast-element": ^3.0.0
     "@microsoft/focusgroup-polyfill": ^1.5.0
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/web-features-generator@workspace:tools/web-features":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/web-features-generator@workspace:tools/web-features"
+  dependencies:
+    "@fluentui/eslint-plugin": "npm:*"
   languageName: unknown
   linkType: soft
 

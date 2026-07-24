@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
+import { BrowserSupportMatrix } from './BrowserSupport/BrowserSupportMatrix';
 import { MinimumVersions } from './BrowserSupport/MinimumVersions';
 
 <Meta title="Overview/Browser support" />
@@ -10,21 +11,27 @@ Fluent UI Headless components build their overlays on modern web-platform featur
 API**, the native **`<dialog>` element**, and **CSS anchor positioning** — instead of JavaScript
 portals and z-index stacks. This page tells you which browsers support those features out of the box.
 
+Fluent UI Headless does not own the browser traffic of the products that use it. An internal tool and
+a public website may need different compatibility targets. Use the generated data below with your
+product's browser usage to decide which fallbacks are necessary.
+
 ## Minimum supported versions
 
-In these browser versions and later, the overlay features work **without a polyfill**:
+The generated table below shows the minimum browser versions where the native overlay features
+work **without a polyfill**:
 
 <MinimumVersions />
 
-Arrow-key navigation uses the **focusgroup** attribute, which no browser supports natively yet — it
-always needs a polyfill. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs).
+The `focusgroup` attribute is excluded from this native browser floor because no browser supports it
+yet. Components that use arrow-key navigation require the consumer-provided
+[`@microsoft/focusgroup-polyfill`](https://github.com/microsoft/polyfills/tree/main/packages/focusgroup).
 
-## What works by default vs. what needs help
+## Detailed feature support
 
-- **Supported by default** — current Chrome, Edge, Firefox, and Safari at or above the versions above.
-- **Needs polyfills or fallbacks** — older versions of those browsers, and **focusgroup** in every
-  browser. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs) for per-feature
-  guidance.
+Use this generated matrix to see the Baseline status and minimum browser version for each capability,
+plus which components depend on it.
+
+<BrowserSupportMatrix />
 
 ## Baseline, briefly
 
@@ -34,5 +41,6 @@ Browser availability is described using [Baseline](https://web.dev/baseline) sta
 - **Newly available** — the feature works in the current version of every major browser.
 - **Widely available** — newly available, plus 2.5 years of support across browsers; safe to rely on.
 
-For per-feature details, see the [Baseline](https://web.dev/baseline) overview and the linked
-[MDN](https://developer.mozilla.org) references on the Polyfills & fallbacks page.
+For more about the availability stages, see the [Baseline](https://web.dev/baseline) overview. For
+ways to support browsers that lack a required capability, see
+[Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs).

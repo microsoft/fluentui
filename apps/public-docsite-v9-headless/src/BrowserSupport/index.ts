@@ -8,16 +8,8 @@ export {
   features,
   generatedFrom,
   MATRIX_ORDER,
-  MDN_LINKS,
+  REFERENCE_LINKS,
   WEB_FEATURES_URL,
 } from './constants';
-export {
-  browserLabel,
-  featureLabel,
-  formatMonthYear,
-  formatYear,
-  getAvailabilityLevel,
-  getBaselineLabel,
-  getMinimumVersions,
-  getStatusLabel,
-} from './utils/index';
+export { getMinimumVersions } from './getMinimumVersions';
+export { browserLabel, featureLabel, getBaselineStatus } from './utils';

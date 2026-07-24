@@ -1,5 +1,5 @@
-import { browsers, features, MATRIX_ORDER } from '../constants';
-import type { FeatureKey } from '../types';
+import { browsers, features, MATRIX_ORDER } from './constants';
+import type { FeatureKey } from './types';
 
 const NATIVE_FEATURES: FeatureKey[] = MATRIX_ORDER;
 
