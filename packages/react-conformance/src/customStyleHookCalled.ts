@@ -112,38 +112,52 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 async function render(element: React.ReactElement, container: HTMLElement) {
   const React = await import('react');
   type Act = (callback: () => void) => void;
-  let act: Act = (React as { act?: Act }).act as Act;
-
-  if (!act) {
-    const ReactDOMTestUtils = (await import('react-dom/test-utils')) as unknown as { act: Act };
-    act = ReactDOMTestUtils.act;
-  }
+  // React.act is available in React 18.3+. For earlier React 18 versions we fall
+  // back to react-dom/test-utils.act. For React 17 we intentionally skip act
+  // entirely: renders are synchronous so hook assertions work without it, and
+  // react-dom/test-utils in the integration-test workspace may resolve to a
+  // React 18 build that internally calls React.act (which is absent in React 17).
+  let act: Act | undefined = (React as { act?: Act }).act ?? undefined;
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore - ReactDOMClient is not available in React 17
   const ReactDOMClient = await import('react-dom/client').catch(() => null);
+  const isReact18 = ReactDOMClient != null && 'createRoot' in ReactDOMClient;
+
+  if (!act && isReact18) {
+    // React 18.0-18.2: act was not yet on the React namespace; use the one from
+    // react-dom/test-utils, which is safe here because react-dom matches React 18.
+    const ReactDOMTestUtils = (await import('react-dom/test-utils')) as unknown as { act: Act };
+    act = ReactDOMTestUtils.act;
+  }
 
   let unmount: () => void;
 
-  if (ReactDOMClient && 'createRoot' in ReactDOMClient) {
+  if (isReact18) {
     const root = ReactDOMClient.createRoot(container);
-    act(() => {
-      root.render(element);
-    });
-    unmount = () => {
+    if (act) {
       act(() => {
-        root.unmount();
+        root.render(element);
       });
+    } else {
+      root.render(element);
+    }
+    unmount = () => {
+      if (act) {
+        act(() => {
+          root.unmount();
+        });
+      } else {
+        root.unmount();
+      }
     };
   } else {
+    // React 17 legacy path: render synchronously without act to avoid
+    // react-dom/test-utils version mismatch in integration-test environments.
     const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
-    act(() => {
-      ReactDOM.render(element, container);
-    });
+    ReactDOM.render(element, container);
     unmount = () => {
-      act(() => {
-        ReactDOM.unmountComponentAtNode(container);
-      });
+      ReactDOM.unmountComponentAtNode(container);
     };
   }
 
