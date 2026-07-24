@@ -401,7 +401,7 @@ const templates = {
     };
   },
   // why not inline template ? this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-  justConfig: getTemplate(joinPathFragments(__dirname, 'files/just-config.ts__tmpl__'), {}),
+  justConfig: getTemplate(path.join(__dirname, 'files/just-config.ts__tmpl__'), {}),
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -1137,7 +1137,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
   const rootBabelConfigPath = shouldAddGriffelPreset
-    ? path.relative(options.projectConfig.root, '.babelrc-v9.json')
+    ? path.posix.relative(options.projectConfig.root, '.babelrc-v9.json')
     : undefined;
   const config = templates.babelConfig({ platform: packageType, rootBabelConfigPath });
 

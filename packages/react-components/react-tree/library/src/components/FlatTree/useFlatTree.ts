@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
 import type { FlatTreeProps, FlatTreeState } from './FlatTree.types';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { deIndent, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { useSubtree } from '../../hooks/useSubtree';
 import { ImmutableSet } from '../../utils/ImmutableSet';
@@ -46,7 +46,7 @@ function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Fla
 
 function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {
   if (process.env.NODE_ENV === 'development') {
-    throw new Error(/* #__DE-INDENT__ */ `
+    throw new Error(deIndent`
       @fluentui/react-tree [useFlatTree]:
       Subtrees are not allowed in a FlatTree!
       You cannot use a <FlatTree> component inside of another <FlatTree> nor a <Tree> component!

@@ -1,6 +1,7 @@
 import { type ExecutorContext, logger } from '@nx/devkit';
 import { readJsonFile } from '@nx/devkit';
 import fs from 'node:fs';
+import { join } from 'node:path';
 // @ts-expect-error - artificially added to mock promisify
 import { __asyncExecMock } from 'node:util';
 
@@ -61,8 +62,8 @@ describe('TypeCheck Executor', () => {
   it('should fail if project root tsconfig.json is missing', async () => {
     const output = await executor(options, mockContext);
     expect(output.success).toBe(false);
-    expect(loggerErrorSpy.mock.calls.flat()[0]).toMatchInlineSnapshot(
-      `"Cannot find tsconfig.json at \\"/root/libs/my-lib/tsconfig.json\\""`,
+    expect(loggerErrorSpy.mock.calls.flat()[0]).toBe(
+      `Cannot find tsconfig.json at "${join(mockContext.root, 'libs/my-lib/tsconfig.json')}"`,
     );
   });
 
@@ -77,8 +78,14 @@ describe('TypeCheck Executor', () => {
     const output = await executor(options, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl /root/libs/my-lib',
-      'tsc -p /root/libs/my-lib/tsconfig.spec.json --pretty --noEmit --baseUrl /root/libs/my-lib',
+      `tsc -p ${join(mockContext.root, 'libs/my-lib/tsconfig.lib.json')} --pretty --noEmit --baseUrl ${join(
+        mockContext.root,
+        'libs/my-lib',
+      )}`,
+      `tsc -p ${join(mockContext.root, 'libs/my-lib/tsconfig.spec.json')} --pretty --noEmit --baseUrl ${join(
+        mockContext.root,
+        'libs/my-lib',
+      )}`,
     ]);
 
     expect(output.success).toBe(true);
@@ -95,7 +102,10 @@ describe('TypeCheck Executor', () => {
     const output = await executor({ ...options, excludeProject: { spec: true, e2e: false } }, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl /root/libs/my-lib',
+      `tsc -p ${join(mockContext.root, 'libs/my-lib/tsconfig.lib.json')} --pretty --noEmit --baseUrl ${join(
+        mockContext.root,
+        'libs/my-lib',
+      )}`,
     ]);
 
     expect(output.success).toBe(true);

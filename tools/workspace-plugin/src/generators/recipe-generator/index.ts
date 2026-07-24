@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 import { Tree, formatFiles, generateFiles, joinPathFragments } from '@nx/devkit';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 import { getProjectConfig } from '../../utils';
@@ -7,7 +8,7 @@ export default async function (tree: Tree, schema: RecipeGeneratorGeneratorSchem
 
   const { recipesRoot, ...normalizedOptions } = normalizeOptions(tree, validatedSchema);
 
-  generateFiles(tree, joinPathFragments(__dirname, 'files'), recipesRoot, normalizedOptions);
+  generateFiles(tree, join(__dirname, 'files'), recipesRoot, normalizedOptions);
 
   await formatFiles(tree);
 }

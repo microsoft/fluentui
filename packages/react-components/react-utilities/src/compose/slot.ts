@@ -7,6 +7,7 @@ import type {
 } from './types';
 import * as React from 'react';
 import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { deIndent } from '../utils/deIndent';
 import type { JSXIntrinsicElementKeys } from '../utils/types';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
@@ -94,7 +95,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
   if (value && typeof value !== 'object' && process.env.NODE_ENV !== 'production') {
     // TODO: would be nice to have a link to slot documentation in this error message
     // eslint-disable-next-line no-console
-    console.error(/** #__DE-INDENT__ */ `
+    console.error(deIndent`
       @fluentui/react-utilities [slot.${resolveShorthand.name}]:
       A slot got an invalid value "${value}" (${typeof value}).
       A valid value for a slot is a slot shorthand or slot properties object.

@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { deIndent } from '@fluentui/react-utilities';
 
 export function warnIfElementTypeIsInvalid(type: React.ElementType): void {
   if (
@@ -9,13 +10,13 @@ export function warnIfElementTypeIsInvalid(type: React.ElementType): void {
     type['$$typeof'] === undefined
   ) {
     // eslint-disable-next-line no-console
-    console.error(/** #__DE-INDENT__ */ `
-        @fluentui/react-jsx-runtime:
-        Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: ${type}.
+    console.error(deIndent`
+      @fluentui/react-jsx-runtime:
+      Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: ${type}.
 
-        If this happened in a slot of Fluent UI component, you might be facing package resolution issues.
-        Please make sure you don't have multiple versions of "@fluentui/react-utilities" installed in your dependencies or sub-dependencies.
-        You can check this by searching up for matching entries in a lockfile produced by your package manager (yarn.lock, pnpm-lock.yaml or package-lock.json).
-      `);
+      If this happened in a slot of Fluent UI component, you might be facing package resolution issues.
+      Please make sure you don't have multiple versions of "@fluentui/react-utilities" installed in your dependencies or sub-dependencies.
+      You can check this by searching up for matching entries in a lockfile produced by your package manager (yarn.lock, pnpm-lock.yaml or package-lock.json).
+    `);
   }
 }

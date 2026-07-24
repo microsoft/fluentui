@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { deIndent } from '@fluentui/react-utilities';
 import type { DialogSurfaceElement } from '../DialogSurface';
 import type { DialogModalType } from '../Dialog';
 
@@ -28,7 +29,7 @@ export function useFocusFirstElement(
       dialogRef.current?.focus(); // https://github.com/microsoft/fluentui/issues/25150
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
-        console.warn(/** #__DE-INDENT__ */ `
+        console.warn(deIndent`
           @fluentui/react-dialog [useFocusFirstElement]:
           A Dialog should have at least one focusable element inside DialogSurface.
           Please add at least a close button either on \`DialogTitle\` action slot or inside \`DialogActions\`

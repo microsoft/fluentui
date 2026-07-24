@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { canUseDOM } from './canUseDOM';
+import { deIndent } from '../utils/deIndent';
 
 /**
  * To support SSR, the auto incrementing id counter is stored in a context. This allows it to be reset on every request
@@ -56,7 +57,7 @@ export function useIsSSR(): boolean {
   if (process.env.NODE_ENV !== 'production') {
     if (!isInSSRContext && !canUseDOM()) {
       // eslint-disable-next-line no-console
-      console.error(/** #__DE-INDENT__ */ `
+      console.error(deIndent`
         @fluentui/react-components [${useIsSSR.name}]:
         When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are generated between the client and server.
 

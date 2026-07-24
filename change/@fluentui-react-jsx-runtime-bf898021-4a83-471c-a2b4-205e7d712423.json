@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: preserve diagnostic formatting without the SWC de-indent plugin",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "none"
+}
