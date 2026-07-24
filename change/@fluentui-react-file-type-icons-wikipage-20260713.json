@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add the wikiPage file type icon mapping.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
