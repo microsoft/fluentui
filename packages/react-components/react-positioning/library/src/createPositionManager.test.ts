@@ -172,6 +172,61 @@ describe('createPositionManager', () => {
     expect(listener).not.toHaveBeenCalled();
   });
 
+  it('ignores stale computePosition results when updates resolve out of order', async () => {
+    const pendingResolves: Array<(value: Awaited<ReturnType<typeof computePosition>>) => void> = [];
+
+    computePositionMock.mockImplementation(
+      () =>
+        new Promise(resolve => {
+          pendingResolves.push(resolve);
+        }),
+    );
+
+    const { container, target } = createTestElements();
+    const listener = jest.fn();
+    container.addEventListener(POSITIONING_END_EVENT, listener);
+
+    const manager = createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'absolute',
+      middleware: [],
+      placement: 'bottom',
+      disableUpdateOnResize: true,
+    });
+
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(1);
+
+    manager.updatePosition();
+    await flushMicrotasks();
+    expect(computePositionMock).toHaveBeenCalledTimes(2);
+
+    pendingResolves[1]({
+      x: 20,
+      y: 30,
+      placement: 'right',
+      strategy: 'absolute',
+      middlewareData: mockMiddlewareData,
+    });
+    await flushMicrotasks();
+
+    pendingResolves[0]({
+      x: 10,
+      y: 15,
+      placement: 'top',
+      strategy: 'absolute',
+      middlewareData: mockMiddlewareData,
+    });
+    await flushMicrotasks();
+
+    expect(listener).toHaveBeenCalledTimes(1);
+
+    const event: OnPositioningEndEvent = listener.mock.calls[0][0];
+    expect(event.detail).toEqual({ placement: 'right' });
+  });
+
   it('schedules updatePosition on animation frames when enabled', async () => {
     computePositionMock.mockResolvedValue({
       x: 10,

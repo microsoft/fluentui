@@ -90,6 +90,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
   let isFirstUpdate = true;
   let animationFrameId: number | undefined;
+  let latestUpdateId = 0;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
@@ -122,11 +123,13 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     Object.assign(container.style, { position: strategy });
+    const updateId = ++latestUpdateId;
+
     computePosition(target, container, { placement, middleware, strategy })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
-        // Promise can still resolve after destruction
-        // early return to avoid applying outdated position
-        if (isDestroyed) {
+        // Promise can still resolve after destruction or after a newer update has started.
+        // Only the latest in-flight result should be applied.
+        if (isDestroyed || updateId !== latestUpdateId) {
           return;
         }
 
