@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: export useTableContextValues_unstable and useTableCellLayoutContextValues_unstable",
+  "packageName": "@fluentui/react-table",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

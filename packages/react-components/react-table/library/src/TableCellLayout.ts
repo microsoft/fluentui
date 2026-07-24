@@ -10,4 +10,5 @@ export {
   tableCellLayoutClassNames,
   useTableCellLayoutStyles_unstable,
   useTableCellLayout_unstable,
+  useTableCellLayoutContextValues_unstable,
 } from './components/TableCellLayout/index';
