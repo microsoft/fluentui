@@ -16,6 +16,7 @@
     "@fluentui/react-avatar": "*",
     "@fluentui/react-button": "*",
     "@fluentui/react-components": "*",
+    "@fluentui/priority-overflow": "*",
     "@fluentui/react-field": "*",
     "@fluentui/react-persona": "*",
     "@fluentui/react-provider": "*",
