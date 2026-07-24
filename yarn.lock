@@ -4311,6 +4311,7 @@ __metadata:
     "@fluentui/react-switch": "npm:^9.7.4"
     "@fluentui/react-tabs": "npm:^9.12.3"
     "@fluentui/react-tabster": "npm:^9.26.16"
+    "@fluentui/react-tag-picker": "npm:^9.10.0"
     "@fluentui/react-tags": "npm:^9.9.2"
     "@fluentui/react-teaching-popover": "npm:^9.7.2"
     "@fluentui/react-textarea": "npm:^9.7.4"
