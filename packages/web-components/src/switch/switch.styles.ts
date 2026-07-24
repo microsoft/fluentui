@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState } from '../styles/states/index.js';
+import { checkedState, nativeDisabledState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
@@ -57,7 +57,7 @@ export const styles = css`
   :host(:active) {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host(:disabled),
+  :host(${nativeDisabledState}),
   :host([readonly]) {
     border: 1px solid ${colorNeutralStrokeDisabled};
     background-color: none;
@@ -75,7 +75,7 @@ export const styles = css`
     background: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandBackgroundPressed};
   }
-  :host(${checkedState}:disabled) {
+  :host(${checkedState}${nativeDisabledState}) {
     background: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
@@ -105,11 +105,11 @@ export const styles = css`
   :host(:active) .checked-indicator {
     background-color: ${colorNeutralForeground3Pressed};
   }
-  :host(:disabled) .checked-indicator,
+  :host(${nativeDisabledState}) .checked-indicator,
   :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  :host(${checkedState}:disabled) .checked-indicator {
+  :host(${checkedState}${nativeDisabledState}) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
 
@@ -144,8 +144,8 @@ export const styles = css`
     :host(${checkedState}:active) .checked-indicator {
       background-color: ButtonFace;
     }
-    :host(:disabled) .checked-indicator,
-    :host(${checkedState}:disabled) .checked-indicator {
+    :host(${nativeDisabledState}) .checked-indicator,
+    :host(${checkedState}${nativeDisabledState}) .checked-indicator {
       background-color: GrayText;
     }
   }

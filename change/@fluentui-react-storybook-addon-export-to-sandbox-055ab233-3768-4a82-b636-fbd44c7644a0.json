@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: run the story source transform before transpilation and remove the custom Babel loader",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
