@@ -46,7 +46,7 @@
   color: var(--colorNeutralForeground2Pressed);
 }
 
-:host(:disabled) {
+:host(:is([disabled], :disabled)) {
   background-color: var(--colorNeutralBackground1);
   color: var(--colorNeutralForegroundDisabled);
   cursor: default;
@@ -92,11 +92,11 @@ slot[name='checked-indicator'] > *,
   fill: var(--colorNeutralForegroundInverted);
 }
 
-:host(:disabled:state(multiple)) .checkmark-12-regular {
+:host(:is([disabled], :disabled):state(multiple)) .checkmark-12-regular {
   border-color: var(--colorNeutralStrokeDisabled);
 }
 
-:host(:disabled:state(multiple):state(selected)) .checkmark-12-regular {
+:host(:is([disabled], :disabled):state(multiple):state(selected)) .checkmark-12-regular {
   background-color: var(--colorNeutralBackgroundDisabled);
 }
 
@@ -128,7 +128,7 @@ slot[name='checked-indicator'] > *,
 }
 
 @media (forced-colors: active) {
-  :host(:disabled) {
+  :host(:is([disabled], :disabled)) {
     color: GrayText;
   }
 }

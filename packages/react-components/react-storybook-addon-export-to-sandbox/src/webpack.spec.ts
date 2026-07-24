@@ -14,11 +14,12 @@ describe(`webpack`, () => {
 
     expect(actual.module?.rules).toEqual([
       {
-        enforce: 'post',
+        enforce: 'pre',
         test: /\.stories\.(jsx?$|tsx?$)/,
         use: {
-          loader: expect.stringContaining('custom-babel-loader'),
+          loader: expect.stringContaining('babel-loader'),
           options: {
+            parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
@@ -52,12 +53,13 @@ describe(`webpack`, () => {
 
     expect(actual.module?.rules).toEqual([
       {
-        enforce: 'post',
+        enforce: 'pre',
         test: /\.stories\.tsx?/,
         include: /foo-stories/,
         use: {
-          loader: expect.stringContaining('custom-babel-loader'),
+          loader: expect.stringContaining('babel-loader'),
           options: {
+            parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
@@ -90,11 +92,12 @@ describe(`webpack`, () => {
 
     expect(actual.module?.rules).toEqual([
       {
-        enforce: 'post',
+        enforce: 'pre',
         test: /\.stories\.(jsx?$|tsx?$)/,
         use: {
-          loader: expect.stringContaining('custom-babel-loader'),
+          loader: expect.stringContaining('babel-loader'),
           options: {
+            parserOpts: { plugins: ['typescript', 'jsx'] },
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),

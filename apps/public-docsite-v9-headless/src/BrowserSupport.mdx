@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { BrowserSupportMatrix } from './BrowserSupport/BrowserSupportMatrix';
+import { MinimumVersions } from './BrowserSupport/MinimumVersions';
+
+<Meta title="Overview/Browser support" />
+
+# Browser support
+
+Fluent UI Headless components build their overlays on modern web-platform features — the **Popover
+API**, the native **`<dialog>` element**, and **CSS anchor positioning** — instead of JavaScript
+portals and z-index stacks. This page tells you which browsers support those features out of the box.
+
+Fluent UI Headless does not own the browser traffic of the products that use it. An internal tool and
+a public website may need different compatibility targets. Use the generated data below with your
+product's browser usage to decide which fallbacks are necessary.
+
+## Minimum supported versions
+
+The generated table below shows the minimum browser versions where the native overlay features
+work **without a polyfill**:
+
+<MinimumVersions />
+
+The `focusgroup` attribute is excluded from this native browser floor because no browser supports it
+yet. Components that use arrow-key navigation require the consumer-provided
+[`@microsoft/focusgroup-polyfill`](https://github.com/microsoft/polyfills/tree/main/packages/focusgroup).
+
+## Detailed feature support
+
+Use this generated matrix to see the Baseline status and minimum browser version for each capability,
+plus which components depend on it.
+
+<BrowserSupportMatrix />
+
+## Baseline, briefly
+
+Browser availability is described using [Baseline](https://web.dev/baseline) stages:
+
+- **Limited availability** — the feature has shipped in some browsers but is not yet in all of them.
+- **Newly available** — the feature works in the current version of every major browser.
+- **Widely available** — newly available, plus 2.5 years of support across browsers; safe to rely on.
+
+For more about the availability stages, see the [Baseline](https://web.dev/baseline) overview. For
+ways to support browsers that lack a required capability, see
+[Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs).
