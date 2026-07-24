@@ -34,6 +34,47 @@ describe('usePositioning', () => {
     expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
   });
 
+  it('appends to anchor-name so multiple instances can share one trigger', () => {
+    // Two popovers (e.g. a Tooltip and a Menu) attached to the same trigger.
+    const first = mountHook();
+    const second = mountHook();
+    const node = document.createElement('div');
+
+    act(() => {
+      first.current.targetRef(node);
+      second.current.targetRef(node);
+    });
+
+    const names = node.style
+      .getPropertyValue('anchor-name')
+      .split(',')
+      .map(name => name.trim())
+      .filter(Boolean);
+
+    // Both instances contribute their own anchor name; neither clobbers the other.
+    expect(names).toHaveLength(2);
+    expect(names[0]).not.toBe(names[1]);
+    names.forEach(name => expect(name).toMatch(/^--popover-anchor-/));
+  });
+
+  it('preserves a pre-existing author-set anchor-name', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+    node.style.setProperty('anchor-name', '--app-anchor');
+
+    act(() => {
+      result.current.targetRef(node);
+    });
+
+    const names = node.style
+      .getPropertyValue('anchor-name')
+      .split(',')
+      .map(name => name.trim());
+
+    expect(names).toContain('--app-anchor');
+    expect(names.some(name => /^--popover-anchor-/.test(name))).toBe(true);
+  });
+
   it('containerRef writes position-anchor and position-area matching the props', () => {
     const result = mountHook({ position: 'below', align: 'start' });
     const node = document.createElement('div');
