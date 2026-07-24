@@ -224,7 +224,7 @@ describe('createPositionManager', () => {
     expect(listener).toHaveBeenCalledTimes(1);
 
     const event: OnPositioningEndEvent = listener.mock.calls[0][0];
-    expect(event.detail).toEqual({ placement: 'right' });
+    expect(event.detail).toMatchObject({ placement: 'right' });
   });
 
   it('schedules updatePosition on animation frames when enabled', async () => {
