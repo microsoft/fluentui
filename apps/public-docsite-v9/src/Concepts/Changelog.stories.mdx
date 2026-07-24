@@ -1,0 +1,9 @@
+import { Meta } from '@storybook/addon-docs';
+import { ChangelogRenderer } from '../components/ChangelogRenderer';
+import Changelog from '../../../../packages/react-components/react-components/CHANGELOG.md?raw';
+
+<Meta title="Concepts/Changelog" parameters={{ docs: { toc: { headingSelector: 'h2' } } }} />
+
+# Changelog for @fluentui/react-components
+
+<ChangelogRenderer changelog={Changelog} />
