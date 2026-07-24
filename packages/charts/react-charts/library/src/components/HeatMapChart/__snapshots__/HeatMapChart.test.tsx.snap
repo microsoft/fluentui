@@ -226,54 +226,58 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
                 >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
                 >
-                  Nasty
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -500,54 +504,58 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Execllent (0-200)"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Execllent (0-200)"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                type="button"
               >
-                Execllent (0-200)
-              </div>
-            </button>
-            <button
-              aria-label="Nasty"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Execllent (0-200)
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                type="button"
               >
-                Nasty
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -831,54 +839,58 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Excellent"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 203, 169); --rect-borderColor: rgb(255, 203, 169);"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(255, 203, 169); border-color: rgb(255, 203, 169); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Excellent"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 203, 169); --rect-borderColor: rgb(255, 203, 169);"
+                  type="button"
                 >
-                  Excellent
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 213, 135); --rect-borderColor: rgb(255, 213, 135);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(255, 213, 135); border-color: rgb(255, 213, 135); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(255, 203, 169); border-color: rgb(255, 203, 169); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Excellent
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 213, 135); --rect-borderColor: rgb(255, 213, 135);"
+                  type="button"
                 >
-                  Nasty
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(255, 213, 135); border-color: rgb(255, 213, 135); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1103,54 +1115,58 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Excellent"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 203, 169); --rect-borderColor: rgb(255, 203, 169);"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(255, 203, 169); border-color: rgb(255, 203, 169); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Excellent"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 203, 169); --rect-borderColor: rgb(255, 203, 169);"
+                type="button"
               >
-                Excellent
-              </div>
-            </button>
-            <button
-              aria-label="Nasty"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 213, 135); --rect-borderColor: rgb(255, 213, 135);"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(255, 213, 135); border-color: rgb(255, 213, 135); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(255, 203, 169); border-color: rgb(255, 203, 169); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Excellent
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 213, 135); --rect-borderColor: rgb(255, 213, 135);"
+                type="button"
               >
-                Nasty
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(255, 213, 135); border-color: rgb(255, 213, 135); --rect-content-high-contrast: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1933,54 +1949,58 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
                 >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
                 >
-                  Nasty
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2207,54 +2227,58 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Execllent (0-200)"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Execllent (0-200)"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                type="button"
               >
-                Execllent (0-200)
-              </div>
-            </button>
-            <button
-              aria-label="Nasty"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Execllent (0-200)
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                type="button"
               >
-                Nasty
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -2540,54 +2564,58 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
                 >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
                 >
-                  Nasty
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2814,54 +2842,58 @@ Object {
         class="fui-cart__legendContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: unset;"
           >
-            <button
-              aria-label="Execllent (0-200)"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-              type="button"
+            <div
+              aria-label="Chart legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Execllent (0-200)"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                type="button"
               >
-                Execllent (0-200)
-              </div>
-            </button>
-            <button
-              aria-label="Nasty"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Execllent (0-200)
+                </div>
+              </button>
+              <button
+                aria-label="Nasty"
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                type="button"
               >
-                Nasty
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Nasty
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -3151,54 +3183,58 @@ Object {
             class="fui-cart__legendContainer"
           >
             <div
-              aria-label="Legends"
-              aria-multiselectable="false"
               class="fui-legend__root"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <div
                 class="fui-Overflow fui-legend__resizableArea"
                 style="text-align: unset;"
               >
-                <button
-                  aria-label="Execllent (0-200)"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                  type="button"
+                <div
+                  aria-label="Chart legends"
+                  aria-multiselectable="false"
+                  role="listbox"
+                  style="display: contents;"
                 >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                  />
-                  <div
-                    class="fui-legend__text"
+                  <button
+                    aria-label="Execllent (0-200)"
+                    aria-selected="false"
+                    class="fui-Button fui-legend__legend"
+                    data-overflow-item=""
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                    type="button"
                   >
-                    Execllent (0-200)
-                  </div>
-                </button>
-                <button
-                  aria-label="Nasty"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                  type="button"
-                >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                  />
-                  <div
-                    class="fui-legend__text"
+                    <div
+                      class="fui-legend__rect"
+                      style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                    />
+                    <div
+                      class="fui-legend__text"
+                    >
+                      Execllent (0-200)
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Nasty"
+                    aria-selected="false"
+                    class="fui-Button fui-legend__legend"
+                    data-overflow-item=""
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                    type="button"
                   >
-                    Nasty
-                  </div>
-                </button>
+                    <div
+                      class="fui-legend__rect"
+                      style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                    />
+                    <div
+                      class="fui-legend__text"
+                    >
+                      Nasty
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -3430,54 +3466,58 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
                 >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
                 >
-                  Nasty
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3767,54 +3807,58 @@ Object {
             class="fui-cart__legendContainer"
           >
             <div
-              aria-label="Legends"
-              aria-multiselectable="false"
               class="fui-legend__root"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-              role="listbox"
             >
               <div
                 class="fui-Overflow fui-legend__resizableArea"
                 style="text-align: unset;"
               >
-                <button
-                  aria-label="Execllent (0-200)"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                  type="button"
+                <div
+                  aria-label="Chart legends"
+                  aria-multiselectable="false"
+                  role="listbox"
+                  style="display: contents;"
                 >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                  />
-                  <div
-                    class="fui-legend__text"
+                  <button
+                    aria-label="Execllent (0-200)"
+                    aria-selected="false"
+                    class="fui-Button fui-legend__legend"
+                    data-overflow-item=""
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                    type="button"
                   >
-                    Execllent (0-200)
-                  </div>
-                </button>
-                <button
-                  aria-label="Nasty"
-                  aria-selected="false"
-                  class="fui-Button fui-legend__legend"
-                  data-overflow-item=""
-                  role="option"
-                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                  type="button"
-                >
-                  <div
-                    class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                  />
-                  <div
-                    class="fui-legend__text"
+                    <div
+                      class="fui-legend__rect"
+                      style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                    />
+                    <div
+                      class="fui-legend__text"
+                    >
+                      Execllent (0-200)
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Nasty"
+                    aria-selected="false"
+                    class="fui-Button fui-legend__legend"
+                    data-overflow-item=""
+                    role="option"
+                    style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                    type="button"
                   >
-                    Nasty
-                  </div>
-                </button>
+                    <div
+                      class="fui-legend__rect"
+                      style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                    />
+                    <div
+                      class="fui-legend__text"
+                    >
+                      Nasty
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -4045,54 +4089,58 @@ Object {
           class="fui-cart__legendContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: unset;"
             >
-              <button
-                aria-label="Execllent (0-200)"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-                type="button"
+              <div
+                aria-label="Chart legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Execllent (0-200)"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+                  type="button"
                 >
-                  Execllent (0-200)
-                </div>
-              </button>
-              <button
-                aria-label="Nasty"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Execllent (0-200)
+                  </div>
+                </button>
+                <button
+                  aria-label="Nasty"
+                  aria-selected="false"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+                  type="button"
                 >
-                  Nasty
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Nasty
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -4364,54 +4412,58 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Excellent"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-            type="button"
+          <div
+            aria-label="Chart legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Excellent"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+              type="button"
             >
-              Excellent
-            </div>
-          </button>
-          <button
-            aria-label="Nasty"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Excellent
+              </div>
+            </button>
+            <button
+              aria-label="Nasty"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+              type="button"
             >
-              Nasty
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Nasty
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -4638,54 +4690,58 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       class="fui-cart__legendContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: unset;"
         >
-          <button
-            aria-label="Excellent"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
-            type="button"
+          <div
+            aria-label="Chart legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Excellent"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
+              type="button"
             >
-              Excellent
-            </div>
-          </button>
-          <button
-            aria-label="Nasty"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(144, 180, 215); border-color: rgb(144, 180, 215); --rect-content-high-contrast: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Excellent
+              </div>
+            </button>
+            <button
+              aria-label="Nasty"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
+              type="button"
             >
-              Nasty
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(115, 144, 200); border-color: rgb(115, 144, 200); --rect-content-high-contrast: linear-gradient(to right, rgb(115, 144, 200), rgb(115, 144, 200));"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Nasty
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

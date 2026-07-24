@@ -110,24 +110,23 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     function renderLegends(): JSXElement {
       return (
-        <div
-          {...focusAttributes}
-          {...arrowAttributes}
-          {...(allowFocusOnLegends && {
-            role: 'listbox',
-            'aria-label': 'Legends',
-            'aria-multiselectable': canSelectMultipleLegends,
-          })}
-          className={classes.root}
-          ref={_rootElem}
-        >
+        <div {...focusAttributes} {...arrowAttributes} className={classes.root} ref={_rootElem}>
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
-              {dataToRender.map((item, id) => (
-                <OverflowItem key={id} id={id.toString()}>
-                  {_renderButton(item)}
-                </OverflowItem>
-              ))}
+              <div
+                {...(allowFocusOnLegends && {
+                  role: 'listbox',
+                  'aria-label': 'Chart legends',
+                  'aria-multiselectable': canSelectMultipleLegends,
+                })}
+                style={{ display: 'contents' }}
+              >
+                {dataToRender.map((item, id) => (
+                  <OverflowItem key={id} id={id.toString()}>
+                    {_renderButton(item)}
+                  </OverflowItem>
+                ))}
+              </div>
               <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
             </div>
           </Overflow>
