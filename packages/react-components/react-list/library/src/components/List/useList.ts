@@ -31,7 +31,7 @@ export const useList_unstable = (
 ): ListState => {
   const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
 
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
