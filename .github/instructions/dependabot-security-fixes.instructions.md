@@ -10,23 +10,28 @@ This instruction guide explains how Dependabot automation works for security fix
 
 Dependabot is configured to automatically create pull requests for:
 
-1. **Security updates** - Daily scanning for vulnerable production dependencies
-2. **Development dependencies** - Weekly updates for devDependencies
+1. **Security updates** - Advisory-driven npm pull requests created independently for each update
+2. **npm dependencies** - Weekly minor and patch version updates created as individual pull requests
 3. **GitHub Actions** - Weekly updates for workflow dependencies
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **Production dependencies**: Daily security updates with higher priority
-- **Development dependencies**: Weekly updates, excluding major version bumps
+- **npm dependencies**: Weekly minor and patch version updates as individual pull requests
 - **GitHub Actions**: Weekly updates
+- **Security updates**: Individual pull requests not limited by the version update schedule
+- **Rollups**: Maintainers can use `/dependabot-rollup` to combine at most 11 eligible non-major updates
+
+The repository's Advanced Security **Grouped security updates** setting must remain disabled. Dependabot does not support a maximum dependency count for automatic groups, so enabling that setting would bypass the 11-update rollup limit.
+
+The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a pull request or change Dependabot's separate security-update pull request limit.
 
 ## Security Vulnerability Resolution
 
 ### Automatic Security Updates
 
-GitHub's automatic security updates work independently of the Dependabot configuration and will create PRs for known vulnerabilities even if they require major version bumps.
+GitHub triggers automatic security updates independently of the configured version update schedule. Each npm security update remains a separate pull request. Major security remediations are never included in `/dependabot-rollup`, so compatibility work stays isolated for focused review.
 
 ### Manual Resolution via Yarn Resolutions
 
@@ -35,7 +40,7 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 ```json
 {
   "resolutions": {
-    "**/vulnerable-package": "^secure-version"
+    "vulnerable-package": "^secure-version"
   }
 }
 ```
@@ -44,7 +49,7 @@ For complex monorepo scenarios where automatic updates fail, security vulnerabil
 
 The following resolutions are maintained for security purposes:
 
-- `**/tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
+- `tar-fs`: `^2.1.3` - Fixes directory traversal vulnerability
 
 ## Troubleshooting
 
@@ -57,11 +62,11 @@ The following resolutions are maintained for security purposes:
 
 ### Manual Security Fix Process
 
-1. Run `yarn audit --level ${SEVERITY}` to identify vulnerabilities (where SEVERITY can be: low, moderate, high, critical)
+1. Run `yarn npm audit --severity ${SEVERITY}` to identify vulnerabilities (where SEVERITY can be: low, moderate, high, critical)
 2. Check if Yarn resolutions are blocking updates
 3. Update resolutions to secure versions
 4. Run `yarn install` to update yarn.lock
-5. Verify fixes with `yarn audit --level ${SEVERITY}`
+5. Verify fixes with `yarn npm audit --severity ${SEVERITY}`
 6. Test that builds still work
 
 ## Testing Security Fixes
@@ -70,7 +75,7 @@ After making changes:
 
 ```bash
 # Check for remaining vulnerabilities at specified severity level
-yarn audit --level ${SEVERITY}
+yarn npm audit --severity ${SEVERITY}
 
 # Verify builds still work
 yarn nx run workspace-plugin:build

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add accessible names to Tree selection controls",
+  "packageName": "@fluentui/react-tree",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

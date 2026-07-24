@@ -90,7 +90,7 @@ describe('createPositionManager', () => {
 
     expect(event).toBeInstanceOf(CustomEvent);
     expect(event.type).toBe(POSITIONING_END_EVENT);
-    expect(event.detail).toEqual({ placement });
+    expect(event.detail).toEqual({ placement, escaped: false, referenceHidden: false });
   });
 
   it('dispatches event with computed placement when middleware changes it', async () => {
@@ -123,6 +123,40 @@ describe('createPositionManager', () => {
     const event: OnPositioningEndEvent = listener.mock.calls[0][0];
 
     expect(event.detail.placement).toBe('bottom');
+    expect(event.detail.escaped).toBe(false);
+    expect(event.detail.referenceHidden).toBe(false);
+  });
+
+  it('dispatches event with hide middleware visibility flags', async () => {
+    computePositionMock.mockResolvedValue({
+      x: 10,
+      y: 20,
+      placement: 'bottom',
+      strategy: 'absolute',
+      middlewareData: {
+        ...mockMiddlewareData,
+        hide: { escaped: true, referenceHidden: true },
+      },
+    });
+
+    const { container, target } = createTestElements();
+    const listener = jest.fn();
+    container.addEventListener(POSITIONING_END_EVENT, listener);
+
+    createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'absolute',
+      middleware: [],
+      placement: 'bottom',
+      disableUpdateOnResize: true,
+    });
+
+    await flushMicrotasks();
+
+    const event: OnPositioningEndEvent = listener.mock.calls[0][0];
+    expect(event.detail).toEqual({ placement: 'bottom', escaped: true, referenceHidden: true });
   });
 
   it('does not dispatch event after dispose', async () => {

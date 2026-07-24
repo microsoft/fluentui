@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tag-picker
 
-This log was last generated on Wed, 24 Jun 2026 11:10:00 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2026 14:10:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.0)
+
+Wed, 15 Jul 2026 14:10:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.9.0..@fluentui/react-tag-picker_v9.10.0)
+
+### Minor changes
+
+- feat: export useTagPickerContextValues and TagPickerControlInternalSlots for headless composition ([PR #36353](https://github.com/microsoft/fluentui/pull/36353) by vgenaev@gmail.com)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.9.0)
 
