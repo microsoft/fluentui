@@ -91,11 +91,13 @@ export {
   renderTreeItemPersonaLayout_unstable,
   useTreeItemPersonaLayoutStyles_unstable,
   useTreeItemPersonaLayout_unstable,
+  useTreeItemPersonaLayoutContextValues_unstable,
 } from './TreeItemPersonaLayout';
 export type {
   TreeItemPersonaLayoutProps,
   TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutState,
+  TreeItemPersonaLayoutContextValues,
 } from './TreeItemPersonaLayout';
 
 export { flattenTree_unstable } from './utils/flattenTree';

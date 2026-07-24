@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Export useTreeItemPersonaLayoutContextValues_unstable and TreeItemPersonaLayoutContextValues from @fluentui/react-tree",
+  "packageName": "@fluentui/react-tree",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2026-04-26T20:21:03.202Z"
+}
