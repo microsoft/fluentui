@@ -5,7 +5,7 @@
 ```ts
 
 import type { BreadcrumbBaseProps } from '@fluentui/react-breadcrumb';
-import { BreadcrumbBaseState } from '@fluentui/react-breadcrumb';
+import type { BreadcrumbBaseState } from '@fluentui/react-breadcrumb';
 import type { BreadcrumbButtonBaseProps } from '@fluentui/react-breadcrumb';
 import type { BreadcrumbButtonBaseState } from '@fluentui/react-breadcrumb';
 import type { BreadcrumbButtonSlots as BreadcrumbButtonSlots_2 } from '@fluentui/react-breadcrumb';
@@ -20,6 +20,7 @@ import type { BreadcrumbSlots as BreadcrumbSlots_2 } from '@fluentui/react-bread
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderBreadcrumb_unstable as renderBreadcrumb } from '@fluentui/react-breadcrumb';
 
 // @public
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
@@ -76,8 +77,7 @@ export type BreadcrumbSlots = BreadcrumbSlots_2;
 // @public
 export type BreadcrumbState = BreadcrumbBaseState;
 
-// @public
-export const renderBreadcrumb: (state: BreadcrumbBaseState, contextValues: BreadcrumbContextValues_2) => JSXElement;
+export { renderBreadcrumb }
 
 // @public
 export const renderBreadcrumbButton: (state: BreadcrumbButtonState) => JSXElement;

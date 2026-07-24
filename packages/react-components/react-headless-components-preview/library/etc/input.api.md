@@ -6,10 +6,10 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InputBaseProps } from '@fluentui/react-input';
-import { InputBaseState } from '@fluentui/react-input';
+import type { InputBaseState } from '@fluentui/react-input';
 import type { InputSlots as InputSlots_2 } from '@fluentui/react-input';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderInput_unstable as renderInput } from '@fluentui/react-input';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -27,8 +27,7 @@ export type InputState = InputBaseState & {
     };
 };
 
-// @public
-export const renderInput: (state: InputBaseState) => JSXElement;
+export { renderInput }
 
 // @public
 export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;
