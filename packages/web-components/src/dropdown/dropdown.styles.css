@@ -175,18 +175,18 @@
   --control-border-color: var(--colorTransparentStroke);
 }
 
-:host(:disabled),
-:host(:disabled) ::slotted(:where(button, input)) {
+:host(:is([disabled], :disabled)),
+:host(:is([disabled], :disabled)) ::slotted(:where(button, input)) {
   cursor: not-allowed;
 }
 
-:host(:disabled) .control::before,
-:host(:disabled) .control::after {
+:host(:is([disabled], :disabled)) .control::before,
+:host(:is([disabled], :disabled)) .control::after {
   content: none;
 }
 
-:host(:disabled) .control:is(*, :active, :hover),
-:host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+:host(:is([disabled], :disabled)) .control:is(*, :active, :hover),
+:host(:is([disabled], :disabled)) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
   --control-border-color: var(--colorNeutralStrokeDisabled);
   background-color: var(--colorNeutralBackgroundDisabled);
   color: var(--colorNeutralForegroundDisabled);
@@ -213,10 +213,10 @@
 }
 
 @media (forced-colors: active) {
-  :host(:disabled) .control {
+  :host(:is([disabled], :disabled)) .control {
     border-color: GrayText;
   }
-  :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+  :host(:is([disabled], :disabled)) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
     color: GrayText;
   }
 }

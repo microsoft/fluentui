@@ -37,12 +37,12 @@
   --rail-color: var(--colorCompoundBrandBackgroundPressed);
 }
 
-:host(:disabled) {
+:host(:is([disabled], :disabled)) {
   --rail-color: var(--colorNeutralForegroundDisabled);
   --track-color: var(--colorNeutralBackgroundDisabled);
 }
 
-:host(:not(:disabled)) {
+:host(:not(:is([disabled], :disabled))) {
   cursor: pointer;
 }
 
