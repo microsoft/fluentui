@@ -4,6 +4,7 @@ import type { AvatarGroupProps } from '@fluentui/react-avatar';
 
 import type { PopoverProps } from '../../Popover/Popover.types';
 import type { PopoverSurface } from '../../Popover/PopoverSurface/PopoverSurface';
+import type { Tooltip } from '../../Tooltip/Tooltip';
 
 /**
  * Subset of the headless {@link PopoverProps} forwarded to the underlying
@@ -27,6 +28,11 @@ export type AvatarGroupPopoverSlots = {
    * Button that triggers the Popover.
    */
   triggerButton: NonNullable<Slot<'button'>>;
+
+  /**
+   * Tooltip slot for the trigger button.
+   */
+  tooltip: NonNullable<Slot<typeof Tooltip>>;
 
   /**
    * List that contains the overflowed AvatarGroupItems.

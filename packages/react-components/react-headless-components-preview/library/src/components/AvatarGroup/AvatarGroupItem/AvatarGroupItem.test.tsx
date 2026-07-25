@@ -1,20 +1,26 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { isConformant } from '../../../testing/isConformant';
 import { AvatarGroup } from '../AvatarGroup';
 import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
 import { AvatarGroupItem } from './AvatarGroupItem';
 
 describe('AvatarGroupItem', () => {
+  isConformant({
+    Component: AvatarGroupItem,
+    displayName: 'AvatarGroupItem',
+    disabledTests: ['has-top-level-file-extra', 'component-has-root-ref'],
+  });
+
   it('renders the headless Avatar with computed initials', () => {
-    const { getByRole } = render(
+    render(
       <AvatarGroup>
         <AvatarGroupItem name="John Doe" />
       </AvatarGroup>,
     );
 
-    const avatar = getByRole('img');
-    expect(avatar).toHaveAttribute('aria-label', 'John Doe');
-    expect(avatar).toHaveTextContent('JD');
+    expect(screen.getByRole('img', { name: 'John Doe' })).toBeInTheDocument();
+    expect(screen.getByRole('img')).toHaveTextContent('JD');
   });
 
   it('renders as a non-overflow item (div) by default', () => {
@@ -29,7 +35,7 @@ describe('AvatarGroupItem', () => {
   });
 
   it('renders as an overflow item (li) with a name label inside the popover', () => {
-    const { getByRole, getByText } = render(
+    render(
       <AvatarGroup>
         <AvatarGroupPopover defaultOpen>
           <AvatarGroupItem name="Jane Smith" />
@@ -37,10 +43,10 @@ describe('AvatarGroupItem', () => {
       </AvatarGroup>,
     );
 
-    const listItem = getByRole('listitem', { hidden: true });
+    const listItem = screen.getByRole('listitem', { hidden: true });
     expect(listItem.tagName).toBe('LI');
     // The overflow label echoes the avatar name and is hidden from AT (avatar already labels it).
-    const label = getByText('Jane Smith');
+    const label = screen.getByText('Jane Smith');
     expect(label).toHaveAttribute('aria-hidden', 'true');
   });
 });

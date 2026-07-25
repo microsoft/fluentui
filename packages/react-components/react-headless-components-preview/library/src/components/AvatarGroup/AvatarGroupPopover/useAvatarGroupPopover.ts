@@ -5,6 +5,7 @@ import { useAvatarGroupPopoverBase_unstable } from '@fluentui/react-avatar';
 import type { AvatarGroupPopoverBaseProps } from '@fluentui/react-avatar';
 
 import { PopoverSurface } from '../../Popover/PopoverSurface/PopoverSurface';
+import { Tooltip } from '../../Tooltip/Tooltip';
 import type { AvatarGroupPopoverProps, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 
 /**
@@ -55,10 +56,12 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
 
     components: {
       triggerButton: 'button',
+      tooltip: Tooltip,
       content: 'ul',
       popoverSurface: PopoverSurface,
     },
     triggerButton,
+    tooltip: baseState.tooltip,
     content: baseState.content,
     popoverSurface: slot.always(props.popoverSurface, {
       defaultProps: { 'aria-label': 'Overflow', tabIndex: 0 },

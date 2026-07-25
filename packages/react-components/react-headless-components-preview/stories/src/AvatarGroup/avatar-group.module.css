@@ -186,6 +186,18 @@
   transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
 }
 
+.tooltip {
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
+  border: none;
+  max-width: 240px;
+}
+
 .overflowTrigger:hover,
 .overflowTrigger[data-open] {
   background: var(--surface-muted);

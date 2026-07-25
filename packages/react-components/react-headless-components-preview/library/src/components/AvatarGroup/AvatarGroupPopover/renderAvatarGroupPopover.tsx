@@ -25,9 +25,11 @@ export const renderAvatarGroupPopover = (
 
   return (
     <Popover {...state.popover}>
-      <PopoverTrigger disableButtonEnhancement>
-        <state.triggerButton />
-      </PopoverTrigger>
+      <state.tooltip>
+        <PopoverTrigger disableButtonEnhancement>
+          <state.triggerButton />
+        </PopoverTrigger>
+      </state.tooltip>
       <state.popoverSurface>
         <AvatarGroupProvider value={contextValues.avatarGroup}>
           <state.content />

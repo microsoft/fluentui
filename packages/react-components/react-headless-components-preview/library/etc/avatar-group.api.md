@@ -6,7 +6,7 @@
 
 import { AvatarGroupContextValue } from '@fluentui/react-avatar';
 import { AvatarGroupContextValues } from '@fluentui/react-avatar';
-import { AvatarGroupItemBaseProps as AvatarGroupItemProps } from '@fluentui/react-avatar';
+import type { AvatarGroupItemBaseProps } from '@fluentui/react-avatar';
 import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
 import { AvatarGroupItemBaseState as AvatarGroupItemState } from '@fluentui/react-avatar';
 import { AvatarGroupBaseProps as AvatarGroupProps } from '@fluentui/react-avatar';
@@ -27,6 +27,7 @@ import type * as React_2 from 'react';
 import { renderAvatarGroup_unstable as renderAvatarGroup } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable as renderAvatarGroupItem } from '@fluentui/react-avatar';
 import type { Slot } from '@fluentui/react-utilities';
+import type { TooltipBaseProps } from '@fluentui/react-tooltip';
 
 // @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
@@ -38,7 +39,8 @@ export { AvatarGroupContextValues }
 // @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 
-export { AvatarGroupItemProps }
+// @public
+export type AvatarGroupItemProps = Omit<AvatarGroupItemBaseProps, 'color' | 'idForColor'>;
 
 export { AvatarGroupItemSlots }
 
@@ -63,6 +65,7 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
 // @public (undocumented)
 export type AvatarGroupPopoverSlots = {
     triggerButton: NonNullable<Slot<'button'>>;
+    tooltip: NonNullable<Slot<typeof Tooltip>>;
     content: NonNullable<Slot<'ul'>>;
     popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };

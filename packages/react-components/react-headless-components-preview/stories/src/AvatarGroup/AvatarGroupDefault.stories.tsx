@@ -47,6 +47,7 @@ export const Default = (): React.ReactNode => {
               triggerButton={{ className: [styles.overflowTrigger, styles.overflowTriggerSpread].join(' ') }}
               content={{ className: styles.overflowList }}
               popoverSurface={{ className: styles.surface }}
+              tooltip={{ content: { className: styles.tooltip }, relationship: 'label' }}
             >
               {spreadPartitionedItems.overflowItems.map((name, i) => (
                 <AvatarGroupItem
@@ -78,6 +79,7 @@ export const Default = (): React.ReactNode => {
               triggerButton={{ className: [styles.overflowTrigger, styles.overflowTriggerStack].join(' ') }}
               content={{ className: styles.overflowList }}
               popoverSurface={{ className: styles.surface }}
+              tooltip={{ content: { className: styles.tooltip }, relationship: 'label' }}
             >
               {spreadPartitionedItems.overflowItems.map((name, i) => (
                 <AvatarGroupItem
