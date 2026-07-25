@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -162,7 +162,8 @@ export const useDropdownBase_unstable = (
  * @param ref - reference to root HTMLElement of Dropdown
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
-  const { appearance = 'outline', size = 'medium', ...baseProps } = props;
+  const fieldContext = useFieldContext_unstable();
+  const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useDropdownBase_unstable(baseProps, ref);
 
   if (baseState.clearButton) {
