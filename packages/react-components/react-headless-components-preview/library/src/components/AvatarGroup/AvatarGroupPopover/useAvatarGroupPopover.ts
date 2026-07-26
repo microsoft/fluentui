@@ -61,7 +61,10 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
       popoverSurface: PopoverSurface,
     },
     triggerButton,
-    tooltip: baseState.tooltip,
+    tooltip: slot.always(props.tooltip, {
+      defaultProps: baseState.tooltip,
+      elementType: Tooltip,
+    }),
     content: baseState.content,
     popoverSurface: slot.always(props.popoverSurface, {
       defaultProps: { 'aria-label': 'Overflow', tabIndex: 0 },
