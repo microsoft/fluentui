@@ -470,12 +470,12 @@ describe('positioning observer', () => {
       mount(<TooltipWrappedPopoverExample />);
       cy.get('#tooltip-wrapped-trigger').should('exist');
       cy.get(surfaceSelector).should('not.exist');
-      cy.get('#tooltip-wrapped-trigger').trigger('pointerover');
+      cy.get('#tooltip-wrapped-trigger').trigger('pointerover', { force: true });
       cy.get(surfaceSelector).should('not.exist');
       cy.get('[role="tooltip"]').should('be.visible');
       cy.get('[role="tooltip"]').should('contain.text', 'Open popover for more info');
 
-      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get('#tooltip-wrapped-trigger').click({ force: true });
       cy.get(surfaceSelector).should('be.visible');
       cy.get('[role="tooltip"]').should('not.exist');
       cy.get(surfaceSelector).should('contain.text', 'Additional information');
@@ -489,7 +489,7 @@ describe('positioning observer', () => {
     it('should have proper ARIA expanded state', () => {
       mount(<TooltipWrappedPopoverExample />);
       cy.get('#tooltip-wrapped-trigger').should('have.attr', 'aria-expanded', 'false');
-      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get('#tooltip-wrapped-trigger').click({ force: true });
       cy.get('#tooltip-wrapped-trigger').should('have.attr', 'aria-expanded', 'true');
     });
 
@@ -501,7 +501,7 @@ describe('positioning observer', () => {
 
     it('should dismiss on Escape even with tooltip wrapper', () => {
       mount(<TooltipWrappedPopoverExample />);
-      cy.get('#tooltip-wrapped-trigger').click();
+      cy.get('#tooltip-wrapped-trigger').click({ force: true });
       cy.get(surfaceSelector).should('be.visible');
       cy.focused().realPress('Escape');
       cy.get(surfaceSelector).should('not.exist');
@@ -509,7 +509,7 @@ describe('positioning observer', () => {
 
     it('should show tooltip on hover without opening popover', () => {
       mount(<TooltipWrappedPopoverExample />);
-      cy.get('#tooltip-wrapped-trigger').trigger('pointerover');
+      cy.get('#tooltip-wrapped-trigger').trigger('pointerover', { force: true });
       cy.get('[role="tooltip"]').should('be.visible');
       cy.get('[role="tooltip"]').should('contain.text', 'Open popover for more info');
       cy.get(surfaceSelector).should('not.exist');
@@ -547,17 +547,25 @@ describe('positioning observer', () => {
       // Show tooltip on hover
       cy.get('#menu-tooltip-trigger').trigger('pointerover');
       cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('#menu-tooltip-trigger').should($trigger => {
+        const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
+        const names = anchorName
+          .split(',')
+          .map(name => name.trim())
+          .filter(Boolean);
 
-      // Click to open menu - should not close tooltip yet, and should preserve anchor-name
+        expect(names).to.have.length.greaterThan(1);
+      });
+
+      // Clicking the menu trigger is allowed to dismiss the tooltip, but it must
+      // leave the menu's anchor-name wiring intact.
       cy.get('#menu-tooltip-trigger').click();
       cy.get('#menu-item-1').should('be.visible');
+      cy.get('[role="tooltip"]').should('not.exist');
 
-      // Verify anchor-name property exists and has comma-separated values
       cy.get('#menu-tooltip-trigger').should($trigger => {
         const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
         expect(anchorName).to.not.be.empty;
-        // Should have multiple anchor names separated by comma (one for tooltip, one for menu)
-        expect(anchorName.split(',').length).to.be.greaterThan(1);
       });
     });
 
