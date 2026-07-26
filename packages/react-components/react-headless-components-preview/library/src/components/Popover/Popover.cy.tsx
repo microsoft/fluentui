@@ -5,6 +5,7 @@ import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import type { PopoverProps } from './Popover.types';
 import { Tooltip } from '../Tooltip';
+import { Menu, MenuPopover, MenuList, MenuItem, MenuTrigger } from '../Menu';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 
@@ -512,6 +513,88 @@ describe('positioning observer', () => {
       cy.get('[role="tooltip"]').should('be.visible');
       cy.get('[role="tooltip"]').should('contain.text', 'Open popover for more info');
       cy.get(surfaceSelector).should('not.exist');
+    });
+  });
+
+  describe('Menu and Tooltip on same trigger (anchor-name sharing)', () => {
+    const MenuWithTooltipExample = () => {
+      return (
+        <Tooltip
+          hideDelay={0}
+          showDelay={0}
+          content={{ id: 'menu-tooltip-content', children: 'Click for options' }}
+          relationship="label"
+        >
+          <Menu>
+            <MenuTrigger disableButtonEnhancement>
+              <button id="menu-tooltip-trigger">Options</button>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem id="menu-item-1">New</MenuItem>
+                <MenuItem id="menu-item-2">Open</MenuItem>
+                <MenuItem id="menu-item-3">Save</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </Tooltip>
+      );
+    };
+
+    it('should not clobber anchor-name when both Menu and Tooltip target the same trigger', () => {
+      mount(<MenuWithTooltipExample />);
+
+      // Show tooltip on hover
+      cy.get('#menu-tooltip-trigger').trigger('pointerover');
+      cy.get('[role="tooltip"]').should('be.visible');
+
+      // Click to open menu - should not close tooltip yet, and should preserve anchor-name
+      cy.get('#menu-tooltip-trigger').click();
+      cy.get('#menu-item-1').should('be.visible');
+
+      // Verify anchor-name property exists and has comma-separated values
+      cy.get('#menu-tooltip-trigger').should($trigger => {
+        const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
+        expect(anchorName).to.not.be.empty;
+        // Should have multiple anchor names separated by comma (one for tooltip, one for menu)
+        expect(anchorName.split(',').length).to.be.greaterThan(1);
+      });
+    });
+
+    it('should show tooltip and open menu independently', () => {
+      mount(<MenuWithTooltipExample />);
+
+      // Hover to show tooltip
+      cy.get('#menu-tooltip-trigger').trigger('pointerover');
+      cy.get('[role="tooltip"]').should('be.visible');
+      cy.get('#menu-item-1').should('not.exist');
+
+      // Click to open menu
+      cy.get('#menu-tooltip-trigger').click();
+      cy.get('#menu-item-1').should('be.visible');
+      cy.get('[role="tooltip"]').should('not.exist');
+
+      // Close menu with Escape
+      cy.focused().realPress('Escape');
+      cy.get('#menu-item-1').should('not.exist');
+    });
+
+    it('should properly clean up anchor-name on unmount', () => {
+      mount(<MenuWithTooltipExample />);
+
+      // Open menu to set anchor-name
+      cy.get('#menu-tooltip-trigger').click();
+      cy.get('#menu-item-1').should('be.visible');
+
+      // Verify anchor-name was set
+      cy.get('#menu-tooltip-trigger').should($trigger => {
+        const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
+        expect(anchorName).to.not.be.empty;
+      });
+
+      // Close menu
+      cy.focused().realPress('Escape');
+      cy.get('#menu-item-1').should('not.exist');
     });
   });
 });
