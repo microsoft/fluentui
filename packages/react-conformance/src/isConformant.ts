@@ -5,7 +5,6 @@ import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 import { createTsProgram } from './utils/createTsProgram';
 import { getComponentDoc } from './utils/getComponentDoc';
-import { CUSTOM_STYLE_HOOK_CALLED_TEST_NAME } from './customStyleHookCalled';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
@@ -13,6 +12,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
   const {
     componentPath,
     displayName,
+    disabledTests = [],
     extraTests,
     tsConfig,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -24,7 +24,6 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
     configDir: tsConfig?.configDir ?? tsconfigDir,
     configName: tsConfig?.configName,
   };
-  const effectiveDisabledTests = getEffectiveDisabledTests(componentPath, mergedOptions.disabledTests);
 
   describe('isConformant', () => {
     if (!fs.existsSync(componentPath)) {
@@ -45,7 +44,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
       const componentInfo = mainComponents[0];
 
       for (const test of Object.keys(defaultTests)) {
-        if (!effectiveDisabledTests.includes(test)) {
+        if (!disabledTests.includes(test)) {
           defaultTests[test as keyof DefaultTestObject](mergedOptions, componentInfo, tsProgram);
         }
       }
@@ -53,7 +52,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
       if (extraTests) {
         describe('extraTests', () => {
           for (const test of Object.keys(extraTests)) {
-            if (!effectiveDisabledTests.includes(test)) {
+            if (!disabledTests.includes(test)) {
               extraTests[test](mergedOptions, componentInfo, tsProgram);
             }
           }
@@ -76,11 +75,10 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
  * @param mergedOptions
  */
 function runNonTypeTests(mergedOptions: IsConformantOptions) {
-  const { extraTests } = mergedOptions;
-  const effectiveDisabledTests = getEffectiveDisabledTests(mergedOptions.componentPath, mergedOptions.disabledTests);
+  const { disabledTests = [], extraTests } = mergedOptions;
 
   for (const test of Object.keys(defaultTests)) {
-    if (!effectiveDisabledTests.includes(test)) {
+    if (!disabledTests.includes(test)) {
       const func = defaultTests[test as keyof DefaultTestObject];
       if (isNonTypeTest(func)) {
         func(mergedOptions);
@@ -91,7 +89,7 @@ function runNonTypeTests(mergedOptions: IsConformantOptions) {
   if (extraTests) {
     describe('extraTests', () => {
       for (const test of Object.keys(extraTests)) {
-        if (!effectiveDisabledTests.includes(test)) {
+        if (!disabledTests.includes(test)) {
           const func = extraTests[test];
           if (isNonTypeTest(func)) {
             func(mergedOptions);
@@ -107,20 +105,4 @@ function runNonTypeTests(mergedOptions: IsConformantOptions) {
  */
 function isNonTypeTest<TProps = {}>(func: ConformanceTest<TProps>): func is BaseConformanceTest<TProps> {
   return func.length === 1;
-}
-
-function getEffectiveDisabledTests(componentPath: string | undefined, disabledTests: string[] | undefined) {
-  const currentDisabledTests = disabledTests ?? [];
-  const isV9Path = componentPath?.includes('/packages/react-components/');
-  const isHeadlessPath = componentPath?.includes('/packages/react-components/react-headless-');
-
-  if (isV9Path && !isHeadlessPath) {
-    return currentDisabledTests;
-  }
-
-  if (currentDisabledTests.includes(CUSTOM_STYLE_HOOK_CALLED_TEST_NAME)) {
-    return currentDisabledTests;
-  }
-
-  return [...currentDisabledTests, CUSTOM_STYLE_HOOK_CALLED_TEST_NAME];
 }

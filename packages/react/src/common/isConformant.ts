@@ -1,6 +1,8 @@
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 
+const CUSTOM_STYLE_HOOK_CALLED_TEST_NAME = 'component-calls-custom-style-hook';
+
 export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
 ): void {
@@ -16,6 +18,7 @@ export function isConformant<TProps = {}>(
       'consistent-callback-names',
       'consistent-callback-args',
       'component-has-static-classnames-object',
+      CUSTOM_STYLE_HOOK_CALLED_TEST_NAME,
     ],
     componentPath: require.main?.filename.replace('.test', ''),
   };
