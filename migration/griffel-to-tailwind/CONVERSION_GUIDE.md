@@ -69,7 +69,7 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - First line always `@reference '#theme';` — confirmed working via the package
   `imports` field (`"#theme": "@fluentui/react-tailwind-theme/css/index.css"`, copy
   react-divider's package.json entry). Tailwind's own resolver handles it.
-- **Repeat the full `@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;`
+- **Repeat the full `@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;`
   statement at the top of every module** (after `@reference`). `@reference` emits
   nothing, so without it first-appearance order decides layer ranking per-document —
   a load-order hazard. Re-declaring an identical order is a no-op (CSS Cascade 5),

@@ -536,6 +536,13 @@
       "stylesFiles": 2,
       "storiesCovered": null,
       "notes": ""
+    },
+    "react-tailwind-theme": {
+      "status": "validated",
+      "stylesFiles": 0,
+      "storiesCovered": null,
+      "notes": "Unified layer family (D2/D13 amendment): Tailwind layers retired, folded into fui.*; re-validated 572/572 VR pairs pixel-identical after re-layering."
     }
-  }
+  },
+  "layerFamily": "fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities"
 }

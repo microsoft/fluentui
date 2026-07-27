@@ -10,7 +10,7 @@
  * statement never re-orders an already-created layer), so this is safe to repeat and
  * makes each module self-sufficient.
  */
-@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;
+@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;
 
 /*
  * Layer assignment mirrors the mergeClasses ARGUMENT order of

@@ -12,10 +12,23 @@
  * - The ONLY nyt-games theme carry-over is --base-scale (user requirement).
  */
 
-@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;
+/*
+ * ONE layer family (settled with user 2026-07-27): Tailwind's own layers are retired
+ * and folded into `fui.*` so consumers learn a single system. Mapping:
+ *   tailwind `theme`      → fui.theme      (the @theme custom-property emission)
+ *   tailwind `base`       → (excluded — no preflight in a component library; if ever
+ *                            needed, the sanctioned slot is layer(fui.reset))
+ *   tailwind `components` → retired (Tailwind v4 emits nothing into it; the components
+ *                            tier here is fui.base/variant/state/override)
+ *   tailwind `utilities`  → fui.utilities  (top of the family: utilities beat component
+ *                            styles by design, but still lose to unlayered consumer CSS)
+ * Verified caller-side: tailwindcss/utilities.css is a bare `@tailwind utilities;` with
+ * no layer name — cascade layers are assigned only by these import modifiers.
+ */
+@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;
 
-@import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'tailwindcss/theme.css' layer(fui.theme);
+@import 'tailwindcss/utilities.css' layer(fui.utilities);
 
 @import './variants.css';
 @import './utilities.css';

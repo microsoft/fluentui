@@ -237,3 +237,23 @@ Facts for Phase 1.5 packaging (validated 2026-07-27):
   declared before their `utilities` layer — one line, e.g. `@layer fui.reset, fui.base,
 fui.variant, fui.state, fui.override;` before `@import 'tailwindcss'` (layer order is
   first-appearance). Document in the PR.
+
+## D2/D13 amendment — unified layer family (settled with user 2026-07-27)
+
+Tailwind's own cascade layers are RETIRED; one family only:
+
+```css
+@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;
+```
+
+Mapping from Tailwind's conventional layers: theme → fui.theme; base (preflight) →
+excluded (sanctioned slot layer(fui.reset) if ever needed); components → retired
+(Tailwind v4 emits nothing into it — verified: tailwindcss/index.css declares it but
+contains no @layer components block); utilities → fui.utilities (top of family — beats
+component styles by design, loses to unlayered consumer CSS).
+
+Feasibility verified first-party: tailwindcss/utilities.css is a bare '@tailwind
+utilities;' with NO layer name — cascade layers are assigned exclusively by the
+caller's layer(...) import modifiers, so redirection is supported, not a hack.
+Consumer guidance simplifies to positioning ONE root layer name (fui).
+Re-validated: all 5 VR sets pixel-identical after the re-layering (see ledger).
