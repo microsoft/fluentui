@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-button": "^9.10.1",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.334",
     "@fluentui/react-jsx-runtime": "^9.4.4",
     "@fluentui/react-link": "^9.8.3",
     "@fluentui/react-motion": "^9.16.1",

@@ -13,7 +13,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.17.13",
     "@fluentui/react-button": "^9.10.1",
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.334",
     "@fluentui/react-label": "^9.4.3",
     "@fluentui/react-link": "^9.8.3",
     "@fluentui/react-menu": "^9.25.1",

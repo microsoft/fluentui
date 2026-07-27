@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-icons": "^2.0.334",
     "@fluentui/react-jsx-runtime": "^9.4.4",
     "@fluentui/react-shared-contexts": "^9.26.2",
     "@fluentui/react-tabster": "^9.26.16",

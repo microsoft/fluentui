@@ -60,7 +60,7 @@
     "@eslint/js": "9.26.0",
     "@floating-ui/dom": "1.6.12",
     "@fluentui/react-compiler-analyzer": "0.0.0-experimental.rc-analyzer.20260526-7c5862ce36.0",
-    "@fluentui/react-icons": "^2.0.306",
+    "@fluentui/react-icons": "^2.0.334",
     "@fluentui/react-integration-tester": "*",
     "@fluentui/scripts-test-ssr": "*",
     "@fluentui/storybook-llms-extractor": "*",
