@@ -82,10 +82,10 @@
       "notes": ""
     },
     "react-badge": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": "usePresenceBadgeStyles uses !important x7 - semantics invert under @layer; pilot #2 | BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "usePresenceBadgeStyles uses !important x7 - semantics invert under @layer; pilot #2 | BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-breadcrumb": {
       "status": "needs-conversion",
@@ -202,10 +202,10 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-image": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
-      "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "storiesCovered": 7,
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted). Converted: Image.module.css + clsx hook. All 5 props are LOOK props -> module classes; ZERO data-attributes, ZERO new custom variants (bordered/shadow/block compose with nothing, so classes beat inventing catalog entries). Empty Griffel slices square/default deliberately unauthored -> styles.square/styles.default === undefined. One value-level RTL flip (fit=none object-position left top -> right top) under @variant rtl. Tests 20/20 (snapshot byte-identical, no data-* additions). Build green; dist/styles.css 2475B starts with canonical @layer stmt; zero dangling .module.css specifiers; styles.raw.js deleted. Fidelity audit: all 26 compiled Griffel atomics / 30 declarations reproduced. Matrix probe: 960/960 prop combos class-identical to mergeClasses arg order. VR NOT RUN (brief forbade storybook rebuild) -> not yet validated."
     },
     "react-infolabel": {
       "status": "needs-conversion",
@@ -214,10 +214,10 @@
       "notes": ""
     },
     "react-input": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-jsx-runtime": {
       "status": "no-styles",
@@ -226,16 +226,16 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-label": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-link": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-list": {
       "status": "needs-conversion",
@@ -334,10 +334,10 @@
       "notes": "Style factories (createArrowStyles/createSlideStyles, :global+@noflip) + runtime middlewares (port unchanged)"
     },
     "react-progress": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-provider": {
       "status": "validated",
@@ -376,10 +376,10 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-skeleton": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "Wave keyframes RTL-flipped by Griffel; needs @variant rtl keyframe twin | BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "Wave keyframes RTL-flipped by Griffel; needs @variant rtl keyframe twin | BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-slider": {
       "status": "special",
@@ -394,10 +394,10 @@
       "notes": ""
     },
     "react-spinner": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-storybook-addon": {
       "status": "no-styles",
@@ -418,10 +418,10 @@
       "notes": ""
     },
     "react-switch": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 (2026-07-27). build+test+lint green, dist/styles.css emitted, no snapshots in package. VR NOT run (out of worker scope) -> 'converted', not 'validated'. First createFocusOutlineStyle conversion: validated the shared fui-focus-outline utility and FIXED focus-within-fui, which was missing the ':focus-within' half of react-tabster's compiled selector. label slot + the input's '~ label' rules are at fui.components.l2 (styles applied over @fluentui/react-label's hook output); pixel-correct only once react-label's own conversion lands, since unlayered Griffel currently beats l2. Added catalog: not-checked, with-label/label-above/label-after/label-before, disabled-control/enabled-control. Deliberately did NOT widen shared disabled/enabled with [aria-disabled='true'] - would have restyled every disabledFocusable Link."
     },
     "react-table": {
       "status": "needs-conversion",
@@ -466,10 +466,10 @@
       "notes": ""
     },
     "react-textarea": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
+      "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-theme": {
       "status": "no-styles",

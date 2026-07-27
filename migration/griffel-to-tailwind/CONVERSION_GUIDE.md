@@ -107,6 +107,12 @@ Dialect rules (from nyt-games + Fluent adaptations):
   These citations (and any mergeClasses mentions in hook comments) are TRANSITIONAL
   review aids — the Phase 3 documentation audit (RUNBOOK) decides their fate once the
   mechanism they reference is gone.
+- **Scale-prop rule (batch-1 lesson):** small ENUM scales (small/medium/large…) get
+  catalog variants; dense NUMERIC scales (SkeletonItem 8–128) use direct
+  `&:where([data-size='16'])` attribute selectors in the module — the catalog rule
+  bans variant DEFINITIONS in modules, not attribute selectors. Do not add
+  single-consumer numeric variants to the shared catalog (skeleton's 21 entries are
+  grandfathered pending cleanup).
 - Boolean-ish state pairs: prefer ONE presence attribute plus a `:where(:not(...))`
   complement variant (e.g. `empty` / `not-empty`) over two attributes.
 

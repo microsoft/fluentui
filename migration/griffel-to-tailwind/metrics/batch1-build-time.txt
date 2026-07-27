@@ -1,0 +1,7 @@
+date: 2026-07-27
+command: nx run-many -t build --projects=tag:vNext --skip-nx-cache --parallel=3 (baseline-identical)
+elapsed_seconds: 178
+baseline_seconds: 182
+delta: -4s (-2.2%, single run each - within noise; structural indicator below)
+griffel_aot_packages: 50 (baseline: 62) - 12 packages fully out of the Griffel pipeline
+exit_code: 0 (91 projects green)
