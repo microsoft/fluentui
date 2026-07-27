@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-07-27",
-  "phase": "1-pilot",
+  "phase": "1.5-shipping-infra",
   "branch": "styling/tailwind-css-modules",
   "statusValues": [
     "pending-triage",

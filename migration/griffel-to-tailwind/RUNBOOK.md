@@ -32,7 +32,7 @@ conversation memory).
 
 ## Ledger contract (`ledger.json`)
 
-- `phase`: `0-infrastructure` | `1-pilot` | `2-mass-conversion` | `3-integration` | `4-report`
+- `phase`: `0-infrastructure` | `1-pilot` | `1.5-shipping-infra` | `2-mass-conversion` | `3-integration` | `4-report`
 - Package `status` lifecycle:
   `pending-triage → (no-styles | needs-conversion | special) → converting → converted →
 validated → done`, with `blocked` as an escape hatch (always fill `notes`).
@@ -82,7 +82,7 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
         additions (script-verified)
   - [x] jest.preset.js repo-wide css-module mapper (proven necessary: any suite
         rendering FluentProvider needs it); serializer whole-string bug fixed
-- [ ] Present expanded pilot results to user for sign-off ← **GATE**
+- [x] Expanded pilot signed off by user 2026-07-27 ("ready for the next phase… go for it")
 - [ ] Convert `react-badge` (enum-heavy: appearance × color × size × shape;
       `!important` inversion design — see ledger note) — after sign-off
 - [x] Cookbook updated with pilot lessons (layer statement per module, AOT-output-first,
