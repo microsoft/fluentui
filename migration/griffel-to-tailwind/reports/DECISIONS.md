@@ -257,3 +257,42 @@ utilities;' with NO layer name — cascade layers are assigned exclusively by th
 caller's layer(...) import modifiers, so redirection is supported, not a hack.
 Consumer guidance simplifies to positioning ONE root layer name (fui).
 Re-validated: all 5 VR sets pixel-identical after the re-layering (see ledger).
+
+## D2/D13 amendment 2 — implementation-altitude levels (settled with user 2026-07-27)
+
+The family gains the nyt-games numbered-level dimension — **altitude** (who is styling)
+orthogonal to the intra-component slices (what stage of one component's cascade):
+
+```css
+@layer fui.theme,
+  fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override,
+  fui.l2, fui.l3, fui.l4, fui.l5,
+  fui.utilities;
+```
+
+- `fui.l1.*` — base library components; the five slices encode mergeClasses argument
+  order (unchanged semantics, now nested under l1).
+- `fui.l2` — **library compositions**: styles a component applies to elements whose base
+  styles come from ANOTHER component's hook (Menu styling its buttons, ToggleButton's
+  additions over Button's root, SplitButton over children). Inner slices (`fui.l2.state`
+  etc.) spring into existence on use. Conversion rule: _own slots → l1 slices; anything
+  applied over another component's hook output → l2._ This replaces the load-order
+  nondeterminism that would otherwise decide converted-vs-converted composition.
+- `fui.l3` — application-global overrides (a consumer design system atop Fluent).
+- `fui.l4` — application implementation/page/feature-specific styling.
+- `fui.l5` — headroom for bespoke depth.
+- `fui.utilities` — inline utility classes, top of family; unlayered CSS still beats all.
+
+Cascade-layer comparison happens at the highest differing level, so anything in l2 beats
+everything in l1 regardless of slice, specificity (all `:where()`-flat anyway), or
+source order — each altitude overrides the one below in a guaranteed manner.
+
+**Custom-variant/utility hardcoding check (user request): NOT hardcoded.** Empirical
+probe (.scratch/layer-probe): with `@import 'tailwindcss/utilities.css'
+layer(fui.utilities)`, source-scanned built-in utilities (`p-4`, `flex`), a custom
+`@utility myring`, and custom-variant compositions (`checked:flex`, `checked:myring`,
+`hover:myring`) ALL emit inside `@layer fui.utilities`; the output contains no
+`utilities`-named layer at all. (The remembered constraint is Tailwind v3's
+`@layer utilities` directive requirement for variant-composable custom classes — v4's
+`@utility` has no fixed cascade-layer location.)
+Re-validated post-restructure: all VR sets pixel-identical (see ledger).

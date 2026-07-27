@@ -10,7 +10,7 @@
  * statement never re-orders an already-created layer), so this is safe to repeat and
  * makes each module self-sufficient.
  */
-@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;
+@layer fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities;
 
 /*
  * Layer assignment mirrors the mergeClasses ARGUMENT order of useButtonStyles_unstable,
@@ -19,55 +19,55 @@
  *   #  mergeClasses argument                         → target
  *   ------------------------------------------------------------------------------
  *   1  buttonClassNames.root                         → static class (JS)
- *   2  useRootBaseClassName            (makeReset)   → fui.reset
- *   3  rootStyles[appearance]                        → fui.variant   (.outline/.primary/…)
- *   4  rootStyles[size]                              → fui.state     (data-size)
- *   5  rootStyles.smallWithIcon                      → fui.override  (data-size + data-icon-position)
- *   6  rootStyles.largeWithIcon                      → fui.override  (idem)
- *   7  rootStyles[shape]                             → fui.override  (.circular/.square)
- *   8  rootDisabledStyles.base                       → fui.state     (disabled-any)
- *   9  rootDisabledStyles.highContrast               → fui.state     (disabled-any + forced-colors)
- *  10  rootDisabledStyles[appearance]                → fui.state     (.appearance + disabled-any)
- *  11  rootFocusStyles.primary                       → fui.state     (.primary + focus-visible-fui)
- *  12  rootFocusStyles[size]                         → fui.state     (data-size + focus-visible-fui)
- *  13  rootFocusStyles[shape]                        → fui.override  (.circular/.square + focus-visible-fui)
- *  14  rootIconOnlyStyles[size]                      → fui.override  (data-icon-only, LAST)
+ *   2  useRootBaseClassName            (makeReset)   → fui.l1.reset
+ *   3  rootStyles[appearance]                        → fui.l1.variant   (.outline/.primary/…)
+ *   4  rootStyles[size]                              → fui.l1.state     (data-size)
+ *   5  rootStyles.smallWithIcon                      → fui.l1.override  (data-size + data-icon-position)
+ *   6  rootStyles.largeWithIcon                      → fui.l1.override  (idem)
+ *   7  rootStyles[shape]                             → fui.l1.override  (.circular/.square)
+ *   8  rootDisabledStyles.base                       → fui.l1.state     (disabled-any)
+ *   9  rootDisabledStyles.highContrast               → fui.l1.state     (disabled-any + forced-colors)
+ *  10  rootDisabledStyles[appearance]                → fui.l1.state     (.appearance + disabled-any)
+ *  11  rootFocusStyles.primary                       → fui.l1.state     (.primary + focus-visible-fui)
+ *  12  rootFocusStyles[size]                         → fui.l1.state     (data-size + focus-visible-fui)
+ *  13  rootFocusStyles[shape]                        → fui.l1.override  (.circular/.square + focus-visible-fui)
+ *  14  rootIconOnlyStyles[size]                      → fui.l1.override  (data-icon-only, LAST)
  *  15  consumer className                            → unlayered (always wins)
  *
  * `icon` slot:
  *
  *   1  buttonClassNames.icon                         → static class (JS)
- *   2  useIconBaseClassName            (makeReset)   → fui.reset
- *   3  iconStyles[iconPosition], gated on children   → fui.base
- *   4  iconStyles[size]                              → fui.state
+ *   2  useIconBaseClassName            (makeReset)   → fui.l1.reset
+ *   3  iconStyles[iconPosition], gated on children   → fui.l1.base
+ *   4  iconStyles[size]                              → fui.l1.state
  *   5  consumer className                            → unlayered
  *
  * ── The two KNOWN inversions (risk-analysis.md §1a) ─────────────────────────────────
  * `circular`(L284)/`square`(L288) are DECLARED before `small`(L291)/`large`(L307), but
  * `rootStyles[shape]` is APPLIED after `rootStyles[size]`; all four set `border-radius`.
  * Source-ordered CSS would render a circular small Button with `borderRadiusMedium`.
- * Shape therefore lands in `fui.override` and size in `fui.state` — arg order wins.
+ * Shape therefore lands in `fui.l1.override` and size in `fui.l1.state` — arg order wins.
  * The identical inversion repeats in `useRootFocusStyles` (circular/square L466/L470 vs
  * small/large L495/L499, all `border-radius` under `[data-fui-focus-visible]`) and is
- * resolved the same way (#12 fui.state, #13 fui.override).
+ * resolved the same way (#12 fui.l1.state, #13 fui.l1.override).
  *
  * ── Non-inverted cross-layer moves (verified disjoint against the compiled atomics in
  *    lib-commonjs/components/Button/useButtonStyles.styles.js) ────────────────────────
  * #3 appearance lands in an EARLIER layer than #4 size even though it is an earlier
  * argument — appearance only sets background/border-*-color/color, size only sets
  * min-width/padding/border-radius/font-*, so the two sets never meet.
- * #7 shape (fui.override) now outranks #8-#12 (fui.state): shape sets `border-radius`
+ * #7 shape (fui.l1.override) now outranks #8-#12 (fui.l1.state): shape sets `border-radius`
  * only, those set colors/cursor/box-shadow — also disjoint.
- * #5/#6 withIcon (fui.override) outrank #8-#12 for the same reason (padding only).
+ * #5/#6 withIcon (fui.l1.override) outrank #8-#12 for the same reason (padding only).
  *
  * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
  * #14 icon-only `padding` must beat both #4 size `padding` and #5/#6 withIcon
  * `padding-block`. Griffel achieved this because the later `padding` shorthand carries
  * priority -1 and its sentinel keys DELETE the earlier longhand classes; here it is
- * ordinary cascade — icon-only is written LAST inside fui.override.
+ * ordinary cascade — icon-only is written LAST inside fui.l1.override.
  */
 
-@layer fui.reset {
+@layer fui.l1.reset {
   /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply box-border m-0 inline-flex items-center justify-center overflow-hidden no-underline align-middle;
@@ -161,7 +161,7 @@
   }
 }
 
-@layer fui.base {
+@layer fui.l1.base {
   /*
    * from useIconStyles.before / .after — icon slot arg #3, gated on `!!root.children`.
    * The gate rides the root's `data-childless` (same attribute Divider introduced), and
@@ -187,7 +187,7 @@
   }
 }
 
-@layer fui.variant {
+@layer fui.l1.variant {
   /*
    * Appearance variations — arg #3. `shorthands.borderColor(x)` is expanded to the four
    * physical longhands the compiler emits (`g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`); the
@@ -395,13 +395,13 @@
   }
 }
 
-@layer fui.state {
+@layer fui.l1.state {
   .root {
     /*
      * Size variations — arg #4. `medium` is the compiled `{}` slice ("defined in base
      * styles"), so only small/large have rules. `padding: 3px var(--spacingHorizontalS)`
      * is expanded to block/inline longhands so the later `padding-block` overrides in
-     * fui.override compose predictably.
+     * fui.l1.override compose predictably.
      */
 
     /* from useRootStyles.small */
@@ -708,7 +708,7 @@
   }
 }
 
-@layer fui.override {
+@layer fui.l1.override {
   .root {
     /*
      * from useRootStyles.smallWithIcon / .largeWithIcon — args #5/#6. These override the

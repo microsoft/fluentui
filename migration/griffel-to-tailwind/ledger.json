@@ -541,8 +541,8 @@
       "status": "validated",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "Unified layer family (D2/D13 amendment): Tailwind layers retired, folded into fui.*; re-validated 572/572 VR pairs pixel-identical after re-layering."
+      "notes": "Layer family final (D2 amendments 1+2): single fui.* family with altitude levels — l1.slices (base components), l2 (library compositions), l3-l5 (consumer space), fui.utilities top. Custom-variant/utility layer redirect empirically proven not hardcoded. Re-validated 572/572 VR pairs after each restructure."
     }
   },
-  "layerFamily": "fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities"
+  "layerFamily": "fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities"
 }

@@ -17,15 +17,15 @@
  * and folded into `fui.*` so consumers learn a single system. Mapping:
  *   tailwind `theme`      → fui.theme      (the @theme custom-property emission)
  *   tailwind `base`       → (excluded — no preflight in a component library; if ever
- *                            needed, the sanctioned slot is layer(fui.reset))
+ *                            needed, the sanctioned slot is layer(fui.l1.reset))
  *   tailwind `components` → retired (Tailwind v4 emits nothing into it; the components
- *                            tier here is fui.base/variant/state/override)
+ *                            tier here is fui.l1.base/variant/state/override)
  *   tailwind `utilities`  → fui.utilities  (top of the family: utilities beat component
  *                            styles by design, but still lose to unlayered consumer CSS)
  * Verified caller-side: tailwindcss/utilities.css is a bare `@tailwind utilities;` with
  * no layer name — cascade layers are assigned only by these import modifiers.
  */
-@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;
+@layer fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities;
 
 @import 'tailwindcss/theme.css' layer(fui.theme);
 @import 'tailwindcss/utilities.css' layer(fui.utilities);

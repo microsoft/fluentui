@@ -10,7 +10,7 @@
  * statement never re-orders an already-created layer), so this is safe to repeat and
  * makes each module self-sufficient.
  */
-@layer fui.theme, fui.reset, fui.base, fui.variant, fui.state, fui.override, fui.utilities;
+@layer fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities;
 
 /*
  * Layer assignment mirrors the mergeClasses ARGUMENT order of
@@ -21,11 +21,11 @@
  *                                     ONLY `--token: value` declarations, written into a
  *                                     <style> tag by useFluentProviderThemeStyleTag.
  *                                     Never authored in CSS — the name is dynamic.
- *   3 useStyles.root                → fui.base  (the only makeStyles slice)
+ *   3 useStyles.root                → fui.l1.base  (the only makeStyles slice)
  *   4 consumer className            → unlayered (always wins)
  *
  * Only one makeStyles slice exists, so there are no intra-component inversions to
- * replicate — everything lands in `fui.base`.
+ * replicate — everything lands in `fui.l1.base`.
  *
  * SCOPE NOTE: this class is applied to the provider root element AND, when
  * `applyStylesToPortals` is true (the default), to every portal mount node —
@@ -35,7 +35,7 @@
  * Griffel atomics, because what is threaded is the className STRING.
  */
 
-@layer fui.base {
+@layer fui.l1.base {
   /* from useStyles.root */
   .root {
     /*
