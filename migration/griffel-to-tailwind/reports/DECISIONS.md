@@ -207,3 +207,33 @@ theme layer + tabster focus utilities first, then leaf packages by ascending sty
 count, compound components later (menu/table/tree last among leaves), suite package +
 storybook/test infra in Phase 3. `react-motion` needs no conversion (Web Animations API,
 zero Griffel — risk-analysis).
+
+## D13 — Theme emission ownership: one root artifact, never per-package (settled with user 2026-07-27)
+
+The nyt-games consumption model applies verbatim: the **document root imports the theme
+CSS exactly once** (storybook: `.storybook/tailwind-theme.css`; consumers: the theme
+package's emitted CSS, or a suite-level convenience stylesheet that includes it);
+component packages' compiled `dist/styles.css` contain **only** component rules and
+must never embed the theme emission. Modules only ever `@reference` (compile-time,
+emits nothing) — validated against the built VR storybook: `--base-scale:` declarations
+appear in exactly one webpack module (main bundle) with three converted packages loaded;
+zero in any component chunk.
+
+Facts for Phase 1.5 packaging (validated 2026-07-27):
+
+- **Tailwind v4 rewrites the repeated `@layer` order statement during module
+  compilation** (Divider's `@layer fui.reset, …, fui.override;` compiled to
+  `@layer fui.reset;` + blocks in file order). Single-module order survives only
+  because the cookbook mandates canonical block order in-file. The CSS-emission build
+  step MUST prepend the canonical full order statement verbatim to every package's
+  `dist/styles.css` — do not rely on Tailwind preserving it.
+- Bundle-text duplication of a module's CSS across lazy chunks (observed: Divider's
+  text in two storybook chunks) is a chunking artifact — webpack's module registry
+  executes it once; runtime injection is single. Irrelevant for consumers, who receive
+  one static per-package stylesheet.
+- Consumer integration notes: (a) non-Tailwind consumers override via unlayered CSS,
+  which beats all `fui.*` layers — no setup needed; (b) Tailwind-using consumers who
+  want nyt-games semantics (their utilities beat Fluent styles) must ensure `fui` is
+  declared before their `utilities` layer — one line, e.g. `@layer fui.reset, fui.base,
+fui.variant, fui.state, fui.override;` before `@import 'tailwindcss'` (layer order is
+  first-appearance). Document in the PR.

@@ -94,8 +94,10 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
 - [ ] Package build emits compiled CSS: PostCSS/Tailwind step in the build →
       `dist/styles.css` + class-map JS in `lib`/`lib-commonjs` (today the build exits 0
       but ships dangling `.module.css` imports and zero CSS — verified in pilot);
-      update `files`/`exports`; decide theme-layer production emission (per-package
-      duplicated vs suite-owned — open question)
+      update `files`/`exports`; theme emission is a standalone root artifact imported
+      once per document, NEVER embedded per-package (D13, settled with user); the
+      emission step MUST prepend the canonical @layer order statement verbatim
+      (Tailwind v4 rewrites it during module compilation — D13)
 - [ ] Gate off Griffel AOT + `*.styles.raw.js` generation for converted packages
       (both still run on the Griffel-free divider — dead work + install-size noise)
 - [ ] `classname-overrides-win` replacement conformance test (D9) — pilot only disables
