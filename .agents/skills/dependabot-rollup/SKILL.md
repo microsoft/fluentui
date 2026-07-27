@@ -72,6 +72,12 @@ Exclude and report:
 
 Before applying the batch limit, group eligible PRs by dependency. For each dependency, retain the PR with the highest target version. If target versions are equal, retain the most recently updated PR. Report every other PR in the group as superseded, including the retained PR number and target version.
 
+Check each retained candidate against the dependency versions currently declared on `BASE_BRANCH` before applying the batch limit. Inspect only the `package.json` files changed by that PR and parse them as JSON; do not infer versions with text matching. Ignore range operators when comparing the declared semantic version with the target version.
+
+- Exclude the candidate as obsolete when the dependency was removed from every changed manifest or every current declaration is equal to or newer than the target.
+- Exclude and report the candidate as ambiguous when changed manifests contain conflicting current versions that cannot be compared safely.
+- Keep lockfile-only updates eligible because they have no direct manifest declaration to compare.
+
 Sort the deduplicated candidates by `updatedAt`, oldest first, then by PR number ascending when timestamps are equal. Select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
 
 ### Step 4 - Present the dry-run plan
@@ -111,6 +117,8 @@ If there are no selected PRs, stop after reporting that result. Otherwise ask th
 
 Run this step only after explicit approval. Use only the approved PR numbers, even if new candidates appear after the dry run.
 
+Immediately before merging each approved PR, repeat the base-version check against the current rollup branch. Skip the PR as obsolete if another merged update made its target unnecessary or removed its dependency. This preflight is required even when Git predicts a clean merge; never allow a stale PR to downgrade or reintroduce a dependency.
+
 Fetch the target base, record its SHA, and create a uniquely named temporary worktree and branch:
 
 ```bash
@@ -145,7 +153,7 @@ Resolve the conflict only when every unmerged file is a `package.json` file or t
 
 ```bash
 git -C "$ROLLUP_DIR" diff --name-only --diff-filter=U -- yarn.lock | grep -q . && \
-  git -C "$ROLLUP_DIR" checkout --ours yarn.lock
+  git -C "$ROLLUP_DIR" restore --source=HEAD --staged --worktree yarn.lock
 yarn --cwd "$ROLLUP_DIR" install
 ```
 
