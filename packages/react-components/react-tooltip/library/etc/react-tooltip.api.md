@@ -55,7 +55,7 @@ export type TooltipSlots = {
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mountNode' | 'relationship'> & Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
     children?: JSXElement | null;
-    positioningHidden: boolean;
+    positioningHidden?: boolean;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
