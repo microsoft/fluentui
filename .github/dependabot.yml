@@ -13,7 +13,7 @@ updates:
           - 'minor'
           - 'patch'
 
-  # npm dependencies - weekly minor and patch updates grouped by dependency type
+  # npm dependencies - weekly minor and patch updates
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
@@ -21,25 +21,6 @@ updates:
     open-pull-requests-limit: 6
     versioning-strategy: increase
     ignore:
-      # Ignore major version bumps for all npm dependencies in weekly updates
+      # Ignore major version bumps for scheduled npm version updates
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
-    groups:
-      npm-security-updates:
-        applies-to: security-updates
-        patterns:
-          - '*'
-      npm-dev-minor-patch:
-        dependency-type: 'development'
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'
-      npm-prod-minor-patch:
-        dependency-type: 'production'
-        patterns:
-          - '*'
-        update-types:
-          - 'minor'
-          - 'patch'

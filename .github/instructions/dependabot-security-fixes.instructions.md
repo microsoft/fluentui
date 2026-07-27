@@ -10,24 +10,28 @@ This instruction guide explains how Dependabot automation works for security fix
 
 Dependabot is configured to automatically create pull requests for:
 
-1. **Security updates** - Advisory-driven updates grouped into consolidated npm pull requests
-2. **npm dependencies** - Weekly minor and patch updates grouped by dependency type
+1. **Security updates** - Advisory-driven npm pull requests created independently for each update
+2. **npm dependencies** - Weekly minor and patch version updates created as individual pull requests
 3. **GitHub Actions** - Weekly updates for workflow dependencies
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **Production dependencies**: Weekly minor and patch version updates
-- **Development dependencies**: Weekly minor and patch version updates
+- **npm dependencies**: Weekly minor and patch version updates as individual pull requests
 - **GitHub Actions**: Weekly updates
-- **Security updates**: Grouped separately and not limited by the version update schedule
+- **Security updates**: Individual pull requests not limited by the version update schedule
+- **Rollups**: Maintainers can use `/dependabot-rollup` to combine at most 11 eligible non-major updates
+
+The repository's Advanced Security **Grouped security updates** setting must remain disabled. Dependabot does not support a maximum dependency count for automatic groups, so enabling that setting would bypass the 11-update rollup limit.
+
+The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a pull request or change Dependabot's separate security-update pull request limit.
 
 ## Security Vulnerability Resolution
 
 ### Automatic Security Updates
 
-GitHub triggers automatic security updates independently of the configured version update schedule. The Dependabot configuration groups eligible npm security updates into consolidated pull requests, including fixes that require major version bumps.
+GitHub triggers automatic security updates independently of the configured version update schedule. Each npm security update remains a separate pull request. Major security remediations are never included in `/dependabot-rollup`, so compatibility work stays isolated for focused review.
 
 ### Manual Resolution via Yarn Resolutions
 
