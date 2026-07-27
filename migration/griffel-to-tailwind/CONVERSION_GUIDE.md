@@ -4,6 +4,12 @@ Read `reports/DECISIONS.md` first — this guide implements those decisions. Rea
 `reports/nyt-games-conventions.md` for the authoring dialect. When this guide and a
 research report disagree with the actual code, the code wins — report the discrepancy.
 
+**Worked example (pilot-validated, 31/31 VR pixel-clean at zero tolerance):**
+`packages/react-components/react-divider/library/src/components/Divider/` —
+`Divider.module.css` + `useDividerStyles.styles.ts`. Copy its patterns: the in-file
+mergeClasses→layer mapping comment, the repeated `@layer` statement, the
+data-attribute typing, the `'use client'` suppression form, jest wiring.
+
 ## Per-package conversion recipe
 
 For each component in `packages/react-components/<pkg>/library/src/components/<X>/`:
@@ -24,6 +30,12 @@ Open `use<X>Styles.styles.ts`. Build a mapping table before writing any CSS:
 declaration order. When two slices set the same property, the later argument must land in
 a later layer (or later in the same layer). The risk report lists 23 known inversions —
 check whether your component is one of them (`reports/risk-analysis.md`).
+
+**Read the compiled AOT output first:** `lib-commonjs/**/*.styles.js` (build the package
+once on the pre-conversion commit if absent) contains the compiled atomics with explicit
+`[ltr, rtl]` class pairs. It turns RTL mapping from inference into a lookup and settles
+value-normalization questions (e.g. stray-semicolon literals) definitively. Reproduce the
+COMPILED values, not your reading of the source.
 
 ### 2. Author `<X>.module.css`
 
@@ -54,8 +66,14 @@ check whether your component is one of them (`reports/risk-analysis.md`).
 
 Dialect rules (from nyt-games + Fluent adaptations):
 
-- First line always `@reference '#theme';` (resolution wired by the build; see theme
-  package README).
+- First line always `@reference '#theme';` — confirmed working via the package
+  `imports` field (`"#theme": "@fluentui/react-tailwind-theme/css/index.css"`, copy
+  react-divider's package.json entry). Tailwind's own resolver handles it.
+- **Repeat the full `@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;`
+  statement at the top of every module** (after `@reference`). `@reference` emits
+  nothing, so without it first-appearance order decides layer ranking per-document —
+  a load-order hazard. Re-declaring an identical order is a no-op (CSS Cascade 5),
+  so repetition is safe and makes each module self-sufficient.
 - Tokens: literal `var(--tokenName)` — never re-declare them, never put them in `@theme`.
 - Numeric px values from Griffel: use Tailwind spacing utilities (`p-12` = 12px-reading,
   rem-computed) **only** for pixel literals; token-derived values stay `var()`.
@@ -76,11 +94,20 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - Focus rings: `@apply` the shared focus-ring utility; never hand-copy the ring CSS.
 - Keep a comment trail: each rule block cites the source slice name it replaces
   (`/* from useBaseStyles.base */`) — reviewers diff against the Griffel file.
+- Boolean-ish state pairs: prefer ONE presence attribute plus a `:where(:not(...))`
+  complement variant (e.g. `childless` / `with-children`) over two attributes.
 
 ### 3. Rewrite `use<X>Styles.styles.ts`
 
-- Keep the file name, export names, and `'use client'` (harmless for CSS Modules;
-  cleanup happens Phase 3).
+- Keep the file name, export names, and `'use client'`. The repo's
+  `enforce-use-client` lint rule now flags the directive as unnecessary — suppress with
+  a TRAILING `eslint-disable-line` (a leading block pushes the directive off line 1 of
+  emitted output) plus the rationale comment; copy react-divider's form verbatim.
+  Dropping directives is a single Phase 3 sweep, not a per-conversion change.
+- Set data-attributes on the slot via a local `<X>RootDataAttributes` type cast —
+  public `.types.ts` files stay untouched. Presence flags are written `flag || undefined`
+  (React omits `undefined`; `false` would render `data-x="false"` and still match
+  `[data-x]`).
 - `import { clsx } from 'clsx'` replaces `mergeClasses`; `import styles from
 './<X>.module.css'`.
 - Class composition: `clsx(xClassNames.slot, styles.slot, styles[enumProp]…,
@@ -111,8 +138,27 @@ state.slot.className)` — static class first, consumer className last. The
    (`migration/griffel-to-tailwind/validation/README.md` for exact commands). Every
    story × theme × RTL must pass tolerance. Adjudicate any diff: antialiasing-level noise
    → tolerated by threshold; anything structural → fix before proceeding.
-4. Report back (structured): files changed, mapping table, inversions encountered,
-   data-attributes added, diffs adjudicated, anything that didn't fit this cookbook.
+4. **VR blind spots:** enumerate prop combinations no VR story exercises (compare the
+   component's prop matrix against its stories) and verify each with a computed-style
+   probe against the built storybook (the pilot's vertical+childless path was invisible
+   to all 31 screenshots). Include the probe results in your report.
+5. Report back (structured): files changed, mapping table, inversions encountered,
+   data-attributes added, diffs adjudicated, blind-spot probes, anything that didn't
+   fit this cookbook.
+
+## Toolchain traps (already wired in the VR storybook; relevant if you touch configs)
+
+- The theme layer must be EMITTED once per document for `--base-scale` to exist:
+  `@import '@fluentui/react-tailwind-theme' source(none);` (271 B). Without it every
+  numeric spacing utility silently computes to **0px** (`@reference` emits nothing).
+  Never omit `source(none)` — omitting it scans the theme package and dumps ~16 KB of
+  auto-detected utilities into `@layer utilities`, which outranks all `fui.*` layers.
+- postcss-loader@4 must receive the Tailwind plugin **already invoked**:
+  `plugins: [require('@tailwindcss/postcss')()]` — the string / `[name, opts]` forms
+  hand PostCSS an uninvoked creator and fail cryptically.
+- Storybook's implicit `.css` rule has no `modules` option and would swallow
+  `.module.css` as global CSS (empty class map) — narrow it with `exclude`, never
+  replace it; keep `griffelRule` until Phase 3.
 
 ## Known special cases (route to `special`, not batch conversion)
 

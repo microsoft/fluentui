@@ -52,9 +52,8 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
 - [x] `CONVERSION_GUIDE.md` cookbook completed (worked example lands with the pilot)
 - [x] Shared theme layer created (`packages/react-components/react-tailwind-theme` —
       fui.\* layer order, variant catalog, `--base-scale`; no preflight, palette zeroed)
-- [ ] Tailwind v4 + CSS Modules build wiring for one package + its storybook proven
-      (pilot scope: storybook/webpack + jest only; the package-build CSS emission into
-      `dist/styles.css` per DECISIONS D1 is a Phase 1.5 gate before mass conversion)
+- [x] Tailwind v4 + CSS Modules wiring proven in the VR storybook + jest (pilot);
+      package-build CSS emission is Phase 1.5 below
 - [x] Validation harness written (`validation/` — capture.mjs/diff.mjs/README); proven
       during pilot baseline capture
 - [ ] Baseline metrics captured (`metrics/baseline/` — build time, monosize bundle sizes,
@@ -63,12 +62,32 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
 
 ### Phase 1 — Pilot (user validates the process here)
 
-- [ ] Convert `react-divider` (1 component; real CSS complexity: ::before/::after rules,
-      vertical/horizontal, inset, alignContent) — full pipeline: convert → build → unit
-      tests → screenshot diff vs. baseline → metrics for the package
-- [ ] Present pilot results to user for sign-off before mass conversion
-- [ ] Convert `react-badge` second (enum-heavy: appearance × color × size × shape)
-- [ ] Cookbook updated with lessons learned; `workflows/convert-batch.js` finalized
+- [x] Convert `react-divider` — DONE 2026-07-27: VR 31/31 pixel-identical at zero
+      tolerance (independently re-verified), tests 32/32, lint + type-check clean,
+      snapshot diffs additive-only (data-\* attributes). Worked example referenced from
+      CONVERSION_GUIDE.
+- [ ] Present pilot results to user for sign-off before mass conversion ← **HERE**
+- [ ] Convert `react-badge` second (enum-heavy: appearance × color × size × shape;
+      `!important` inversion design — see ledger note)
+- [x] Cookbook updated with pilot lessons (layer statement per module, AOT-output-first,
+      'use client' policy, toolchain traps, VR blind-spot probes)
+- [ ] `workflows/convert-batch.js` finalized after badge validates the multi-package flow
+
+### Phase 1.5 — Shipping & test infra (gate before mass conversion)
+
+- [ ] Package build emits compiled CSS: PostCSS/Tailwind step in the build →
+      `dist/styles.css` + class-map JS in `lib`/`lib-commonjs` (today the build exits 0
+      but ships dangling `.module.css` imports and zero CSS — verified in pilot);
+      update `files`/`exports`; decide theme-layer production emission (per-package
+      duplicated vs suite-owned — open question)
+- [ ] Gate off Griffel AOT + `*.styles.raw.js` generation for converted packages
+      (both still run on the Griffel-free divider — dead work + install-size noise)
+- [ ] `classname-overrides-win` replacement conformance test (D9) — pilot only disables
+      the Griffel one
+- [ ] Repo-wide `jest.preset.js` css-module mapper + serializer (pilot wired
+      react-divider's config only; shared impl already at `scripts/jest/src/css-modules/`)
+- [ ] monosize `assetTypes: ['js','css']` + webpack `experiments.css` fix (D10) so the
+      after-leg counts CSS honestly
 
 ### Phase 2 — Mass conversion (ledger-driven loop)
 

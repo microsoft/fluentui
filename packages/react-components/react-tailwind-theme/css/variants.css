@@ -15,6 +15,11 @@
 @custom-variant vertical (&:where([data-orientation='vertical']));
 @custom-variant horizontal (&:where([data-orientation='horizontal']));
 
+/* content alignment along the main axis (Divider, …) */
+@custom-variant align-content-start (&:where([data-align-content='start']));
+@custom-variant align-content-center (&:where([data-align-content='center']));
+@custom-variant align-content-end (&:where([data-align-content='end']));
+
 /* generic states (native + data- fallbacks) */
 @custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
 @custom-variant enabled (&:where(:not([disabled], [data-disabled], :disabled)));
@@ -30,6 +35,9 @@
 @custom-variant placeholder-shown (&:where([data-placeholder], :placeholder-shown));
 @custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
 
+/* spacing opt-ins (Divider inset, …) — presence attributes, written as `|| undefined` */
+@custom-variant inset (&:where([data-inset]));
+
 /* interaction */
 @custom-variant hover (&:where(:hover));
 @custom-variant focus (&:where(:focus));
@@ -44,8 +52,9 @@
 @custom-variant focus-visible-fui (&:where([data-fui-focus-visible]));
 @custom-variant focus-within-fui (&:where([data-fui-focus-within]));
 
-/* content presence (Divider childless, empty slots) */
+/* content presence (Divider childless, empty slots) — exact complements */
 @custom-variant childless (&:where([data-childless]));
+@custom-variant with-children (&:where(:not([data-childless])));
 
 /* forced colors / high contrast */
 @custom-variant forced-colors {

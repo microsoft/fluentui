@@ -1,0 +1,18 @@
+/*
+ * Emits the shared Tailwind theme layer ONCE for the VR storybook document.
+ *
+ * Component `*.module.css` files open with `@reference '#theme'`, which makes the
+ * theme's variables/variants/utilities available for `@apply` + `@variant` but emits
+ * NOTHING. The compiled utilities therefore reference `var(--spacing, calc(1px *
+ * var(--base-scale)))`, and `--base-scale` has to exist at `:root` or every numeric
+ * spacing utility is invalid at computed-value time (verified: min-width resolves to
+ * 0px without it, 8px with it).
+ *
+ * `source(none)` disables Tailwind's automatic content detection, so this emits only
+ * the `@theme` custom properties (~271 bytes) — no preflight, no utility classes, and
+ * therefore zero rendering impact on unconverted packages' VR baselines.
+ *
+ * Phase 1.5 note: when packages start shipping `dist/styles.css`, this emission moves
+ * into the published theme/suite stylesheet and this file goes away.
+ */
+@import '@fluentui/react-tailwind-theme' source(none);

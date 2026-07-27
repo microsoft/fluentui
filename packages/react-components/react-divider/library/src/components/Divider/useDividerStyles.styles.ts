@@ -1,290 +1,68 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { DividerSlots, DividerState } from './Divider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './Divider.module.css';
 
 export const dividerClassNames: SlotClassNames<DividerSlots> = {
   root: 'fui-Divider',
   wrapper: 'fui-Divider__wrapper',
 };
 
-const contentSpacing = '12px';
-const insetSpacing = '12px';
-const maxStartEndLength = '8px';
-const minStartEndLength = '8px;';
-
-const useBaseStyles = makeStyles({
-  // Base styles
-  base: {
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'row',
-    flexGrow: 1,
-    position: 'relative',
-
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
-    lineHeight: tokens.lineHeightBase200,
-    textAlign: 'center',
-
-    '::before': {
-      boxSizing: 'border-box',
-      display: 'flex',
-      flexGrow: 1,
-    },
-
-    '::after': {
-      boxSizing: 'border-box',
-      display: 'flex',
-      flexGrow: 1,
-    },
-  },
-
-  // Childless styles
-  childless: {
-    '::before': {
-      marginBottom: 0,
-      marginRight: 0,
-    },
-
-    '::after': {
-      marginLeft: 0,
-      marginTop: 0,
-    },
-  },
-
-  // Alignment variations
-  start: {
-    '::after': {
-      content: '""',
-    },
-  },
-  center: {
-    '::before': {
-      content: '""',
-    },
-    '::after': {
-      content: '""',
-    },
-  },
-  end: {
-    '::before': {
-      content: '""',
-    },
-  },
-
-  // Appearance variations
-  brand: {
-    color: tokens.colorBrandForeground1,
-
-    '::before': {
-      ...shorthands.borderColor(tokens.colorBrandStroke1),
-    },
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorBrandStroke1),
-    },
-  },
-  default: {
-    color: tokens.colorNeutralForeground2,
-
-    '::before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke2),
-    },
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke2),
-    },
-  },
-  subtle: {
-    color: tokens.colorNeutralForeground3,
-
-    '::before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke3),
-    },
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke3),
-    },
-  },
-  strong: {
-    color: tokens.colorNeutralForeground1,
-
-    '::before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    },
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    },
-  },
-});
-
-const useHorizontalStyles = makeStyles({
-  // Base styles
-  base: {
-    width: '100%',
-
-    '::before': {
-      borderTopStyle: 'solid',
-      borderTopWidth: tokens.strokeWidthThin,
-      minWidth: minStartEndLength,
-    },
-
-    '::after': {
-      borderTopStyle: 'solid',
-      borderTopWidth: tokens.strokeWidthThin,
-      minWidth: minStartEndLength,
-    },
-  },
-
-  // Inset styles
-  inset: {
-    paddingLeft: insetSpacing,
-    paddingRight: insetSpacing,
-  },
-
-  // Alignment variations
-  start: {
-    textAlign: 'left',
-
-    '::before': {
-      content: '""',
-      marginRight: contentSpacing,
-      maxWidth: maxStartEndLength,
-    },
-
-    '::after': {
-      marginLeft: contentSpacing,
-    },
-  },
-  center: {
-    textAlign: 'center',
-
-    '::before': {
-      marginRight: contentSpacing,
-    },
-    '::after': {
-      marginLeft: contentSpacing,
-    },
-  },
-  end: {
-    textAlign: 'right',
-
-    '::before': {
-      marginRight: contentSpacing,
-    },
-    '::after': {
-      content: '""',
-      marginLeft: contentSpacing,
-      maxWidth: maxStartEndLength,
-    },
-  },
-});
-
-const useVerticalStyles = makeStyles({
-  // Base styles
-  base: {
-    flexDirection: 'column',
-    minHeight: '20px',
-
-    '::before': {
-      borderRightStyle: 'solid',
-      borderRightWidth: tokens.strokeWidthThin,
-      minHeight: minStartEndLength,
-    },
-
-    '::after': {
-      borderRightStyle: 'solid',
-      borderRightWidth: tokens.strokeWidthThin,
-      minHeight: minStartEndLength,
-    },
-  },
-
-  // Inset styles
-  inset: {
-    marginTop: insetSpacing,
-    marginBottom: insetSpacing,
-  },
-
-  // With children styles
-  withChildren: {
-    minHeight: '84px',
-  },
-
-  // Alignment variations
-  start: {
-    '::before': {
-      content: '""',
-      marginBottom: contentSpacing,
-      maxHeight: maxStartEndLength,
-    },
-
-    '::after': {
-      marginTop: contentSpacing,
-    },
-  },
-  center: {
-    '::before': {
-      marginBottom: contentSpacing,
-    },
-    '::after': {
-      marginTop: contentSpacing,
-    },
-  },
-  end: {
-    '::before': {
-      marginBottom: contentSpacing,
-    },
-    '::after': {
-      content: '""',
-      marginTop: contentSpacing,
-      maxHeight: maxStartEndLength,
-    },
-  },
-});
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `data-inset` / `data-childless` are *presence* selectors, so the flags are written as
+ * `flag || undefined` — React omits an attribute whose value is `undefined`, whereas
+ * `false` would render `data-inset="false"` and still match `[data-inset]`.
+ */
+type DividerRootDataAttributes = {
+  'data-orientation': 'horizontal' | 'vertical';
+  'data-align-content': DividerState['alignContent'];
+  'data-inset'?: true;
+  'data-childless'?: true;
+};
 
 export const useDividerStyles_unstable = (state: DividerState): DividerState => {
-  const baseStyles = useBaseStyles();
-  const horizontalStyles = useHorizontalStyles();
-  const verticalStyles = useVerticalStyles();
-
   const { alignContent, appearance, inset, vertical } = state;
+  const isChildless = state.root.children === undefined;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as DividerState['root'] & DividerRootDataAttributes;
+
+  root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
+  root['data-align-content'] = alignContent;
+  root['data-inset'] = inset || undefined;
+  root['data-childless'] = isChildless || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Divider.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back
+  // to the mergeClasses() argument order this replaces.
+  state.root.className = clsx(
     dividerClassNames.root,
-
-    // Base styles
-    baseStyles.base,
-    baseStyles[alignContent],
-    appearance && baseStyles[appearance],
-
-    // Horizontal styles
-    !vertical && horizontalStyles.base,
-    !vertical && inset && horizontalStyles.inset,
-    !vertical && horizontalStyles[alignContent],
-
-    // Vertical styles
-    vertical && verticalStyles.base,
-    vertical && inset && verticalStyles.inset,
-    vertical && verticalStyles[alignContent],
-    vertical && state.root.children !== undefined && verticalStyles.withChildren,
-
-    // Childless styles
-    state.root.children === undefined && baseStyles.childless,
-
-    // User provided class name
+    styles.root,
+    appearance && styles[appearance],
     state.root.className,
   );
 
   if (state.wrapper) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.wrapper.className = mergeClasses(dividerClassNames.wrapper, state.wrapper.className);
+    state.wrapper.className = clsx(dividerClassNames.wrapper, state.wrapper.className);
   }
 
   return state;
