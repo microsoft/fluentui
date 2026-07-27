@@ -104,6 +104,14 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
       the Griffel one
 - [ ] Repo-wide `jest.preset.js` css-module mapper + serializer (pilot wired
       react-divider's config only; shared impl already at `scripts/jest/src/css-modules/`)
+- [ ] Generated token registration (user-settled 2026-07-27): `tokens.css` in
+      react-tailwind-theme with `@theme inline` mapping all 459 Fluent tokens to
+      Tailwind namespaces (bg-/text-/border-neutral-background-1 etc., camelCase to
+      kebab), generated from @fluentui/tokens at build time (web-components
+      design-tokens precedent). MUST be `@theme inline` - a naive @theme alias
+      freezes var() resolution at :root and breaks provider theming (probe:
+      .scratch/layer-probe/entry2.css). Settle alias-emission suppression + spacing
+      namespace at build time.
 - [ ] monosize `assetTypes: ['js','css']` + webpack `experiments.css` fix (D10) so the
       after-leg counts CSS honestly
 
