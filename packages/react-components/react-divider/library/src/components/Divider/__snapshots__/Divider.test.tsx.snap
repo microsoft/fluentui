@@ -23,7 +23,7 @@ exports[`Divider renders a default divider 1`] = `
   aria-orientation="horizontal"
   class="fui-Divider"
   data-align-content="center"
-  data-childless="true"
+  data-empty="true"
   data-orientation="horizontal"
   role="separator"
 />
@@ -35,7 +35,7 @@ exports[`Divider renders a divider with a different color 1`] = `
   class="fui-Divider"
   color="#FF00FF"
   data-align-content="center"
-  data-childless="true"
+  data-empty="true"
   data-orientation="horizontal"
   role="separator"
 />
@@ -138,7 +138,7 @@ exports[`Divider renders a vertical divider 1`] = `
   aria-orientation="vertical"
   class="fui-Divider"
   data-align-content="center"
-  data-childless="true"
+  data-empty="true"
   data-orientation="vertical"
   role="separator"
 />

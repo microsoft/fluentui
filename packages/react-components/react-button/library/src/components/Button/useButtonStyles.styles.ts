@@ -42,7 +42,7 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
  * branch on (`icon && size === 'small'`). That is why the icon slot itself carries no
  * data attributes: both its placement and its scale are selected from the root.
  *
- * `data-childless` mirrors `!state.root.children`, the guard on the icon's margin
+ * `data-empty` mirrors `!state.root.children`, the guard on the icon's margin
  * (`!!state.root.children && iconStyles[iconPosition]`). Same attribute the react-divider
  * pilot introduced.
  */
@@ -52,7 +52,7 @@ type ButtonRootDataAttributes = {
   'data-icon-only'?: true;
   'data-disabled'?: true;
   'data-disabled-focusable'?: true;
-  'data-childless'?: true;
+  'data-empty'?: true;
 };
 
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
@@ -65,7 +65,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   root['data-icon-only'] = iconOnly || undefined;
   root['data-disabled'] = disabled || undefined;
   root['data-disabled-focusable'] = disabledFocusable || undefined;
-  root['data-childless'] = !state.root.children || undefined;
+  root['data-empty'] = !state.root.children || undefined;
 
   // Static `fui-*` class first (conformance contract), consumer className last.
   // Cascade priority is decided by the `@layer fui.*` order in Button.module.css, not by

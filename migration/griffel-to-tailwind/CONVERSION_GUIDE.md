@@ -105,7 +105,7 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - Keep a comment trail: each rule block cites the source slice name it replaces
   (`/* from useBaseStyles.base */`) — reviewers diff against the Griffel file.
 - Boolean-ish state pairs: prefer ONE presence attribute plus a `:where(:not(...))`
-  complement variant (e.g. `childless` / `with-children`) over two attributes.
+  complement variant (e.g. `empty` / `not-empty`) over two attributes.
 
 ### 3. Rewrite `use<X>Styles.styles.ts`
 
@@ -150,7 +150,7 @@ state.slot.className)` — static class first, consumer className last. The
    → tolerated by threshold; anything structural → fix before proceeding.
 4. **VR blind spots:** enumerate prop combinations no VR story exercises (compare the
    component's prop matrix against its stories) and verify each with a computed-style
-   probe against the built storybook (the pilot's vertical+childless path was invisible
+   probe against the built storybook (the pilot's vertical+empty path was invisible
    to all 31 screenshots). Include the probe results in your report.
 5. Report back (structured): files changed, mapping table, inversions encountered,
    data-attributes added, diffs adjudicated, blind-spot probes, anything that didn't

@@ -86,9 +86,15 @@
 @custom-variant focus-visible-fui (&:where([data-fui-focus-visible]));
 @custom-variant focus-within-fui (&:where([data-fui-focus-within]));
 
-/* content presence (Divider childless, empty slots) — exact complements */
-@custom-variant childless (&:where([data-childless]));
-@custom-variant with-children (&:where(:not([data-childless])));
+/*
+ * Content presence — named for alignment with the CSS-native :empty selector
+ * (nyt-games catalog; user-settled 2026-07-27, replacing the pilot's 'childless').
+ * data-empty mirrors 'no JSX children' from the styles hook — the DOM may still
+ * contain slot elements (an icon-only Button root is data-empty but not :empty),
+ * which is why the attribute leads and :empty is the unstamped-element fallback.
+ */
+@custom-variant empty (&:where([data-empty], :empty));
+@custom-variant not-empty (&:where(:not([data-empty], :empty)));
 
 /* forced colors / high contrast */
 @custom-variant forced-colors {

@@ -164,14 +164,14 @@
 @layer fui.components.l1 {
   /*
    * from useIconStyles.before / .after — icon slot arg #3, gated on `!!root.children`.
-   * The gate rides the root's `data-childless` (same attribute Divider introduced), and
+   * The gate rides the root's `data-empty` (same attribute Divider introduced), and
    * the placement rides the root's `data-icon-position`, so the icon slot itself needs
    * no data attributes. marginRight/marginLeft → logical inline properties: the compiled
    * atomics are an [ltr, rtl] pair (`t21cq0: ["f1nizpg2","f1a695kz"]` →
    * `margin-right` / `margin-left`), i.e. a pure property flip.
    */
   .root {
-    @variant with-children {
+    @variant not-empty {
       @variant icon-before {
         & .icon {
           margin-inline-end: var(--fui-Button__icon--spacing);

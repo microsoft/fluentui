@@ -28,7 +28,7 @@ export const dividerClassNames: SlotClassNames<DividerSlots> = {
  * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
  * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
  *
- * `data-inset` / `data-childless` are *presence* selectors, so the flags are written as
+ * `data-inset` / `data-empty` are *presence* selectors, so the flags are written as
  * `flag || undefined` — React omits an attribute whose value is `undefined`, whereas
  * `false` would render `data-inset="false"` and still match `[data-inset]`.
  */
@@ -36,19 +36,19 @@ type DividerRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';
   'data-align-content': DividerState['alignContent'];
   'data-inset'?: true;
-  'data-childless'?: true;
+  'data-empty'?: true;
 };
 
 export const useDividerStyles_unstable = (state: DividerState): DividerState => {
   const { alignContent, appearance, inset, vertical } = state;
-  const isChildless = state.root.children === undefined;
+  const isEmpty = state.root.children === undefined;
 
   const root = state.root as DividerState['root'] & DividerRootDataAttributes;
 
   root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
   root['data-align-content'] = alignContent;
   root['data-inset'] = inset || undefined;
-  root['data-childless'] = isChildless || undefined;
+  root['data-empty'] = isEmpty || undefined;
 
   // Static `fui-*` class first (conformance contract), consumer className last.
   // Cascade priority is decided by the `@layer fui.*` order in Divider.module.css,

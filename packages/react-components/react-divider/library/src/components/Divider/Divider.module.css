@@ -26,8 +26,8 @@
  *   8 useVerticalStyles.base      → fui.components.l1   (data-orientation="vertical")
  *   9 useVerticalStyles.inset     → fui.components.l1  (data-inset)
  *  10 useVerticalStyles[align]    → fui.components.l1
- *  11 useVerticalStyles.withChild → fui.components.l1   (:not([data-childless]))
- *  12 useBaseStyles.childless     → fui.components.l1  (data-childless)
+ *  11 useVerticalStyles.withChild → fui.components.l1   (:not([data-empty]))
+ *  12 useBaseStyles.empty     → fui.components.l1  (data-empty)
  *  13 consumer className          → unlayered (always wins)
  *
  * Arg 4 (appearance) is written later in the file (so ranks higher) than args 5/7/8/10/11 even though it is an
@@ -181,7 +181,7 @@
       }
 
       /* from useVerticalStyles.withChildren — must beat .base min-height:20px above */
-      @variant with-children {
+      @variant not-empty {
         @apply min-h-84;
       }
     }
@@ -259,11 +259,11 @@
     }
 
     /*
-     * from useBaseStyles.childless — zeroes exactly the four alignment margins above.
+     * from useBaseStyles.empty — zeroes exactly the four alignment margins above.
      * Applied LAST in mergeClasses, hence fui.components.l1 (after the fui.components.l1 alignment
      * blocks) rather than alongside them.
      */
-    @variant childless {
+    @variant empty {
       &::before {
         @apply mb-0 me-0;
       }
