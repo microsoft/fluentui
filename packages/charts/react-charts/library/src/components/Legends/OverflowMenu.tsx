@@ -32,27 +32,18 @@ export const OverflowMenu: React.FC<{
         key={i}
         name="legends"
         value={value}
-        // Position within the full legend list (visible + overflow), so counts stay consistent whether a
-        // legend is shown in the listbox or the overflow menu: "index of total".
+        // Full-list position so counts match the listbox.
         aria-setsize={itemIds.length}
         aria-posinset={i + 1}
-        // Suppress the checkmark slot so the row layout matches the plain menu item; selection is still
-        // announced via aria-checked (role="menuitemcheckbox") and shown visually by the legend swatch color.
+        // Hide the checkmark so the row matches the listbox legend; selection is conveyed via aria-checked.
         checkmark={null}
         onClick={e => buttonElement.props.onClick?.(e)}
-        // The item content is a non-interactive div that is smaller than the MenuItem, so wire hover and
-        // focus on the MenuItemCheckbox itself to the legend's handlers (exposed as onMouseOver/onMouseOut
-        // and onFocus/onBlur). This highlights the matching series and updates the legend swatch color
-        // across the item's full area.
+        // The content is smaller than the row, so handle hover/focus on the item to cover its full area.
         onMouseEnter={() => buttonElement.props.onMouseOver?.()}
         onMouseLeave={() => buttonElement.props.onMouseOut?.()}
         onFocus={() => buttonElement.props.onFocus?.()}
         onBlur={() => buttonElement.props.onBlur?.()}
       >
-        {/*
-          Render the legend content without its own interaction handlers so the MenuItemCheckbox is the
-          single interactive control and handles click/hover/focus across its full area (not just the div).
-        */}
         {React.cloneElement(buttonElement, {
           onClick: undefined,
           onMouseOver: undefined,

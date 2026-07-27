@@ -114,10 +114,9 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
               {/*
-                The listbox only wraps the selectable legend options. The overflow menu trigger is kept as a
-                sibling (outside the listbox) so it is not treated as a listbox child, since a menu button
-                (role="button" with aria-haspopup/aria-expanded) is not a valid listbox child.
-                `display: contents` keeps the options as direct flex participants so overflow measurement is unaffected.
+                Only the selectable options belong to the listbox; the overflow trigger stays a sibling so a
+                menu button is not treated as a listbox child. `display: contents` keeps the options as direct
+                flex participants so overflow measurement is unaffected.
               */}
               <div
                 {...(allowFocusOnLegends && {
@@ -309,9 +308,8 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           </div>
         </>
       );
-      // Props shared by the interactive listbox Button and the presentational overflow-menu div.
-      // Hover/focus handlers are included so OverflowMenu can wire them onto the MenuItem for the
-      // non-interactive div (which can't receive focus itself).
+      // Shared by the listbox Button and the overflow div. Hover/focus handlers are included so the overflow
+      // menu can forward them to its item (the div itself never receives focus).
       const commonProps: React.HTMLAttributes<HTMLElement> = {
         className: classes.legend,
         onClick: onClickHandler,
@@ -322,11 +320,9 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         style: legendStyle,
       };
       if (isOverflowItem) {
-        // Rendered inside a MenuItem, which is the interactive control. Keep this content non-interactive
-        // (a presentational div rather than a Button) so the menu row isn't a nested/duplicate clickable
-        // element. onClick is exposed as a prop so OverflowMenu can wire it onto the MenuItem instead.
-        // A plain div defaults to display:block, so lay the swatch and label out inline like the Button did.
-        // data-selected / data-title are read by OverflowMenu to drive the MenuItemCheckbox checked state.
+        // In the overflow menu the item itself is interactive, so keep this content a non-interactive div to
+        // avoid nested clickable elements. display:flex lays the swatch and label out inline (a bare div would
+        // stack them). data-selected / data-title are read by the overflow menu to drive its checked state.
         return (
           <div
             key={index}
@@ -345,8 +341,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-selected': !!selectedLegends[legend.title],
             role: 'option',
             'aria-label': `${legend.title}`,
-            // setsize is the total number of legends and posinset is the legend's actual index in the full
-            // list, so counts stay consistent whether a legend is shown in the listbox or the overflow menu.
+            // Full-list position so counts match the overflow menu.
             'aria-setsize': props.legends.length,
             'aria-posinset': (index ?? 0) + 1,
           })}
