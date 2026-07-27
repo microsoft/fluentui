@@ -1,0 +1,541 @@
+{
+  "version": 1,
+  "updated": "2026-07-26",
+  "phase": "0-infrastructure",
+  "branch": "styling/tailwind-css-modules",
+  "statusValues": [
+    "pending-triage",
+    "no-styles",
+    "needs-conversion",
+    "special",
+    "converting",
+    "converted",
+    "validated",
+    "blocked",
+    "done"
+  ],
+  "packages": {
+    "babel-preset-global-context": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "babel-preset-storybook-full-source": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "component-selector-preview": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "deprecated": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "eslint-plugin-react-components": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "global-context": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "keyboard-keys": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "priority-overflow": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-accordion": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-aria": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-avatar": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-badge": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-breadcrumb": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-button": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-calendar-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-card": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-carousel": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-checkbox": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-color-picker": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-colorpicker-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-combobox": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-components": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-conformance-griffel": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-context-selector": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-datepicker-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-dialog": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-divider": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-drawer": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-field": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-headless-components-preview": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-icons-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-image": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-infolabel": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-input": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-jsx-runtime": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-label": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-link": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-list": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-menu": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-menu-grid-preview": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-message-bar": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-migration-v0-v9": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-migration-v8-v9": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-motion": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-motion-components-preview": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-nav": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-overflow": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-persona": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-popover": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-portal": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-portal-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-portal-compat-context": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-positioning": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-progress": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-provider": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-radio": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-rating": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-search": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-select": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-shared-contexts": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-skeleton": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-slider": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-spinbutton": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-spinner": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-storybook-addon": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-storybook-addon-export-to-sandbox": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-swatch-picker": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-switch": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-table": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-tabs": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-tabster": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-tag-picker": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-tags": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-teaching-popover": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-text": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-textarea": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-theme": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-theme-sass": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-timepicker-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-toast": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-toolbar": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-tooltip": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-tree": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-utilities": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "react-utilities-compat": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "recipes": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    },
+    "theme-designer": {
+      "status": "pending-triage",
+      "stylesFiles": null,
+      "storiesCovered": null,
+      "notes": ""
+    }
+  }
+}
