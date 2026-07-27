@@ -1,7 +1,7 @@
 ---
 name: dependabot-rollup
 description: >-
-  Review and optionally combine at most 11 open Dependabot patch and minor pull requests into a validated draft rollup PR. Use this skill to test Dependabot bundling locally or in a cloud agent without adding a scheduled GitHub Actions workflow. Always presents a dry-run plan and requires explicit approval before changing branches or GitHub pull requests.
+  Review and optionally combine at most 11 open individual Dependabot patch and minor pull requests into a validated draft rollup PR. Use this skill as a local or cloud-agent fallback to native Dependabot groups without adding a custom scheduled GitHub Actions workflow. Always presents a dry-run plan and requires explicit approval before changing branches or GitHub pull requests.
 disable-model-invocation: true
 argument-hint: '[--repo owner/repo] [--base branch] [--max count] [--push-remote remote]'
 allowed-tools: Bash Read Grep Glob
@@ -9,7 +9,7 @@ allowed-tools: Bash Read Grep Glob
 
 # Dependabot Rollup
 
-Build a reviewable rollup of compatible Dependabot updates without scheduled automation. The default operation is read-only: discover candidates, classify them, and present a plan. Never create a branch, merge commits, push, close pull requests, or open a rollup PR until the user explicitly approves the proposed candidates.
+Build a reviewable manual rollup of compatible individual Dependabot updates as a fallback to the repository's native Dependabot groups. The default operation is read-only: discover candidates, classify them, and present a plan. Never create a branch, merge commits, push, close pull requests, or open a rollup PR until the user explicitly approves the proposed candidates.
 
 ## Defaults
 
@@ -48,12 +48,14 @@ gh pr list \
   --app dependabot \
   --base "$BASE_BRANCH" \
   --limit 200 \
-  --json number,title,url,updatedAt,baseRefName
+  --json number,title,url,updatedAt,baseRefName,headRefName
 ```
 
 Do not rely on the `dependencies` label: repositories may customize or omit it.
 
 ### Step 3 - Classify candidates
+
+Before parsing individual updates, detect native grouped PRs by either a title in the form `Bump the <group> group ...` or a `headRefName` containing one of the configured group identifiers: `github-actions-minor-patch`, `github-actions-security`, `production-dependencies`, `development-dependencies`, or `security-dependencies`. Exclude and report these PRs as `already grouped by Dependabot`; never place one rollup inside another.
 
 Parse each title as `bump <dependency> from <version> to <version>`. Use the parsed dependency name as the deduplication key. Normalize a leading `v` in versions and accept only strict three-part numeric versions (`major.minor.patch`).
 
@@ -67,6 +69,7 @@ Classify an update as eligible only when:
 Exclude and report:
 
 - Semver-major updates.
+- PRs already grouped by Dependabot.
 - Non-semver or unparseable updates, including action tags such as date-based releases.
 - Downgrades and updates with no version change.
 
@@ -78,7 +81,7 @@ Check each retained candidate against the dependency versions currently declared
 - Exclude and report the candidate as ambiguous when changed manifests contain conflicting current versions that cannot be compared safely.
 - Keep lockfile-only updates eligible because they have no direct manifest declaration to compare.
 
-Sort the deduplicated candidates by `updatedAt`, oldest first, then by PR number ascending when timestamps are equal. Select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
+Sort the deduplicated candidates by `updatedAt`, oldest first, then by PR number ascending when timestamps are equal. Select at most `MAX_PRS` candidates. Apart from detecting configured native group identifiers, do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
 
 ### Step 4 - Present the dry-run plan
 
@@ -231,6 +234,7 @@ Report:
 - Obtain a second confirmation before pushing or opening a draft PR.
 - Never run on a schedule or add a GitHub Actions workflow.
 - Never request or print a GitHub token; use the user's existing `gh` authentication.
+- Never include a PR already grouped by Dependabot.
 - Never include semver-major, non-semver, downgrade, or unparseable updates.
 - Never propose, merge, or publish a rollup containing more than 11 updates.
 - Never include more than one PR for the same dependency in a proposed rollup.
