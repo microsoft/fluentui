@@ -72,7 +72,7 @@ Exclude and report:
 
 Before applying the batch limit, group eligible PRs by dependency. For each dependency, retain the PR with the highest target version. If target versions are equal, retain the most recently updated PR. Report every other PR in the group as superseded, including the retained PR number and target version.
 
-Sort the deduplicated candidates by `updatedAt`, newest first, then by PR number descending when timestamps are equal. Select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
+Sort the deduplicated candidates by `updatedAt`, oldest first, then by PR number ascending when timestamps are equal. Select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
 
 ### Step 4 - Present the dry-run plan
 
