@@ -133,6 +133,11 @@ Repeat until no `needs-conversion` remain:
 - [ ] `react-components` suite package builds; storybook (public-docsite-v9) builds
 - [ ] Full VR pass across all packages; SSR tests (apps/ssr-tests-v9) green
 - [ ] Conformance + unit test suites green repo-wide; snapshot tests updated intentionally
+- [ ] **Remove the state-mutation builder pattern (D14, user-committed):** pure
+      non-mutating hooks (spread-composed state/slot returns) across base hooks,
+      all styles hooks, render pipeline; redesign customStyleHooks_unstable to
+      functional form; enable react-hooks/immutability repo-wide with ZERO disables;
+      verify slot-symbol metadata survives spread; full VR re-validation
 - [ ] Remove Griffel deps where no longer used; dependency graph clean
 
 ### Phase 4 — Report + PR

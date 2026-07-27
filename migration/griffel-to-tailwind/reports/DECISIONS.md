@@ -360,3 +360,32 @@ Tailwind-default naming, since Tailwind is the adopted styling paradigm. Final f
 reproducing Griffel's reset-bucket subordination — and is the sanctioned preflight slot
 for apps. This is a name-for-name structural mirror of the nyt-games family
 (`theme, base, components, components.l1–l5, utilities`) under the `fui` root.
+
+## D14 — State-mutation builder pattern is REMOVED in Phase 3 (settled with user 2026-07-27)
+
+**Committed, not a candidate.** The v9 pipeline's in-place mutation of the render-local
+`state` object (`state.root.className = …`, data-attribute assignment, the pattern every
+styles hook inherited from Griffel-era code complete with `react-hooks/immutability`
+eslint disables) is replaced with a non-mutating pattern: hooks return new state/slot
+objects composed by spread. User: "this mutation pattern is gone… it's not how React
+standards are."
+
+**Sequencing (why Phase 3, not per-conversion):** three seams depend on shared-object
+mutation until the whole tree converts —
+
+1. Sibling composition: ToggleButton/CompoundButton/MenuButton write onto
+   `state.root.className` then call `useButtonStyles_unstable(state)`; mixed-mode
+   (342/342 VR net) requires the shared object until the family is converted.
+2. `customStyleHooks_unstable`: consumer hooks mutate the state they receive — the
+   contract redesigns to a functional form in the same breaking scope D7-revision
+   already opened.
+3. Public hook signatures (`useXStyles_unstable(state): state`) and their documented
+   recomposition patterns.
+
+**During Phases 1–2 conversions PRESERVE the mutation contract** (cookbook §3) — the
+pixel/behavior-identical guarantee depends on not changing composition semantics
+mid-stream. Phase 3 executes the sweep: define the pure-builder contract, convert base +
+styles hooks + render pipeline, redesign customStyleHooks, turn `react-hooks/immutability`
+enforcement ON repo-wide (zero disables — the lint rule becomes the regression guard),
+full VR re-validation. Verify slot-object spread preserves the compose machinery's
+symbol-keyed metadata at implementation time.

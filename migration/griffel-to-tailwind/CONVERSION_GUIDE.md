@@ -128,6 +128,11 @@ state.slot.className)` — static class first, consumer className last. The
   the headless preview's attribute names where one exists
   (`reports/headless-precedent.md` lists all 25). New names only when no precedent.
 - Delete no exports. `useXStyles_unstable` signature unchanged.
+- **Keep the state-mutation pattern during conversion** (`state.root.className = …`,
+  attribute assignment) even though it violates React immutability norms — the
+  mixed-mode sibling seam and customStyleHooks contract depend on the shared object.
+  Its removal is a committed, single Phase 3 sweep (DECISIONS D14); do NOT convert
+  individual hooks to immutable returns.
 
 ### 4. Package plumbing (once per package)
 
