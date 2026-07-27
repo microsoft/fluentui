@@ -904,6 +904,8 @@ export class BaseTablist extends FASTElement {
     // @internal
     elementInternals: ElementInternals;
     // @internal (undocumented)
+    handleClick(event: PointerEvent): void;
+    // @internal (undocumented)
     handleFocusIn(event: FocusEvent): void;
     orientation: TablistOrientation;
     // (undocumented)
