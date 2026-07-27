@@ -2,7 +2,7 @@ import { normalizeFeature, parseFeatureToken, pickBrowsers, splitCsv } from './g
 
 type AllFeatures = Parameters<typeof normalizeFeature>[2];
 
-jest.mock('web-features', () => ({ features: {} }));
+jest.mock('web-features', () => ({ features: {} }), { virtual: true });
 
 describe('parseFeatureToken', () => {
   it('parses a plain top-level key', () => {

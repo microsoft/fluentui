@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react';
+
 import type { BaseConformanceTest, IsConformantOptions } from './types';
 
 export const CUSTOM_STYLE_HOOK_CALLED_TEST_NAME = 'component-calls-custom-style-hook';
@@ -98,17 +100,58 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
   });
 };
 
-async function renderWithReactDOM(element: React.ReactElement, container: HTMLElement) {
-  const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
+async function renderWithReactDOM(element: ReactElement, container: HTMLElement) {
+  const ReactModule = await import('react');
+  let act = ReactModule.act;
 
-  ReactDOM.render(element, container);
+  if (!act) {
+    // react-dom/test-utils is required for older React runtimes used in RIT.
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    act = (await import('react-dom/test-utils')).act;
+  }
 
-  return {
-    unmount: () => ReactDOM.unmountComponentAtNode(container),
-  };
+  try {
+    const ReactDOMClient = await import('react-dom/client');
+    const root = ReactDOMClient.createRoot(container);
+
+    await act(async () => {
+      root.render(element);
+    });
+
+    return {
+      unmount: () =>
+        act(() => {
+          root.unmount();
+        }),
+    };
+  } catch {
+    const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacyModule;
+    const legacyReactDOM = getLegacyReactDOM(ReactDOM);
+
+    await act(async () => {
+      legacyReactDOM.render(element, container);
+    });
+
+    return {
+      unmount: () =>
+        act(() => {
+          legacyReactDOM.unmountComponentAtNode(container);
+        }),
+    };
+  }
 }
 
+function getLegacyReactDOM(module: ReactDOMLegacyModule): ReactDOMLegacy {
+  if ('render' in module) {
+    return module as ReactDOMLegacy;
+  }
+
+  return module.default;
+}
+
+declare type ReactDOMLegacyModule = ReactDOMLegacy | { default: ReactDOMLegacy };
+
 declare interface ReactDOMLegacy {
-  render(element: React.ReactElement, container: Element | DocumentFragment | null): void;
+  render(element: ReactElement, container: Element | DocumentFragment | null): void;
   unmountComponentAtNode(container: Element | DocumentFragment | null): void;
 }
