@@ -12,6 +12,12 @@ import * as ts from 'typescript';
 // @public (undocumented)
 export type BaseConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>) => void;
 
+// @public
+export const CLASSNAME_OVERRIDES_WIN_TEST_NAME = "classname-overrides-win";
+
+// @public
+export function classNameOverridesWin<TProps = {}>(testInfo: IsConformantOptions<TProps>): void;
+
 // @public (undocumented)
 export type ConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void;
 

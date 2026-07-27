@@ -6,7 +6,7 @@ import { render, act } from '@testing-library/react';
 import { IsConformantOptions, DefaultTestObject } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
-import { getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
+import { getPackagePath, getCallbackArguments, getTargetElement, validateCallbackArguments } from './utils/index';
 
 /**
  * TODO - TS 4.5 introduces strict catch `err` callback handling - opting out for sake of smoother ts 4.5 upgrade
@@ -15,19 +15,6 @@ import { getPackagePath, getCallbackArguments, validateCallbackArguments } from 
 type OptOutStrictCatchTypes = any;
 
 const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
-
-/**
- * Find the target element where the attribute is applied using either `getTargetElement`,
- * or the first child of the container.
- */
-function getTargetElement(
-  testInfo: IsConformantOptions,
-  ...[result, attr]: Parameters<Required<IsConformantOptions>['getTargetElement']>
-) {
-  return testInfo.getTargetElement
-    ? testInfo.getTargetElement(result, attr)
-    : (result.container.firstElementChild as HTMLElement);
-}
 
 export const defaultTests: DefaultTestObject = {
   /** Component file exports a valid React element type  */

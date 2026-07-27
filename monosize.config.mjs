@@ -33,8 +33,30 @@ const config = {
       'react-dom': 'ReactDOM',
       'react/compiler-runtime': 'ReactCompilerRuntime',
     };
+
+    // Converted packages' generated ESM class-map modules (e.g.
+    // `lib/components/X/X.module.css.js`) import the package's compiled
+    // `dist/styles.css` as a side effect. Webpack has no loader for `.css` by
+    // default and fails with "You may need an appropriate loader" — enable
+    // webpack's native CSS support (stable since webpack 5.72) so `.css`
+    // imports are parsed without adding `css-loader`/`mini-css-extract` as
+    // deps. Emit the CSS beside the fixture's `index.js` (same filename
+    // pattern, `.css` instead of `.js`) so it lands in the same directory
+    // `monosize measure` scans non-recursively for allow-listed asset types.
+    config.experiments = {
+      ...config.experiments,
+      css: true,
+    };
+    config.output = {
+      ...config.output,
+      cssFilename: (config.output?.filename ?? '[name].css').replace(/\.js$/, '.css'),
+    };
+
     return config;
   }),
+  // 'css' added so package-emitted stylesheets are counted; previously CSS
+  // was invisible to monosize (default assetTypes is ['js'] only).
+  assetTypes: ['js', 'css'],
   reportResolvers: {
     packageName: async packageRoot => {
       const packageJson = await fs.promises.readFile(path.join(packageRoot, 'package.json'), 'utf-8');

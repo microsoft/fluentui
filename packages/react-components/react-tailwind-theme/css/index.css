@@ -6,9 +6,12 @@
  * - NO preflight: a component library must not ship global resets. Only Tailwind's
  *   theme + utilities are imported; utilities reach consumers exclusively inlined
  *   through `@apply` in component modules.
- * - Fluent design tokens are NOT registered in `@theme`: FluentProvider writes them as
- *   scoped CSS custom properties at runtime (per-provider theming, nested providers).
- *   Component CSS consumes them as literal var(--tokenName). DECISIONS.md D4.
+ * - Fluent design tokens are registered with `@theme inline` (./tokens.css, generated),
+ *   which substitutes `var(--tokenName)` INTO each utility rather than aliasing it at
+ *   `:root`. FluentProvider still owns the values — they stay scoped CSS custom
+ *   properties resolved per-element, so per-provider and nested-provider theming are
+ *   unchanged. A plain (non-inline) `@theme` alias would freeze resolution at `:root`
+ *   and is FORBIDDEN. Literal `var(--tokenName)` remains valid everywhere.
  * - The ONLY nyt-games theme carry-over is --base-scale (user requirement).
  */
 
@@ -58,6 +61,9 @@
    * Zero out Tailwind's default palette/typography so a stray `text-red-500` or
    * `font-sans` fails the build instead of silently diverging from Fluent tokens.
    * Structural utilities (flex, grid, items-*, overflow-*, …) remain available.
+   *
+   * `initial` clears whatever is registered at THIS point in the theme resolution, so
+   * ./tokens.css must be imported AFTER this block — see the note on the import below.
    */
   --color-*: initial;
   --font-*: initial;
@@ -72,3 +78,18 @@
   --blur-*: initial;
   --animate-*: initial;
 }
+
+/*
+ * Fluent design tokens as Tailwind namespaces — GENERATED, do not edit by hand:
+ *   node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js
+ *
+ * Gives every Fluent token a utility name (`bg-neutral-background-1`, `text-base-300`,
+ * `shadow-8`, `rounded-medium`, `leading-base-300`, `ease-easy-ease`, `duration-normal`,
+ * `z-popup`, …) that compiles to a DIRECT `var(--fluentToken)` reference via
+ * `@theme inline`. Literal `var(--tokenName)` authoring stays valid and unchanged.
+ *
+ * ORDER IS LOAD-BEARING: this import must stay AFTER the `@theme static` block above.
+ * Placed before it, `--color-*: initial` (and friends) wipe every registration and the
+ * utilities silently stop compiling — probe-verified, not theoretical.
+ */
+@import './tokens.css';

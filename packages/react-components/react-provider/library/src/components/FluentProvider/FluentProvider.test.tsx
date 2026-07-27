@@ -1,3 +1,4 @@
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
@@ -26,6 +27,18 @@ describe('FluentProvider', () => {
     disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // This package never registered `@fluentui/react-conformance-griffel`, so there is no
+    // `make-styles-overrides-win` to disable here — but the contract it guards still needs
+    // covering now that useFluentProviderStyles.styles.ts composes with clsx instead of
+    // mergeClasses (DECISIONS.md D9).
+    //
+    // This is enabled even though `component-handles-classname` above is disabled: that
+    // test compares class names across three separate renders, and FluentProvider's
+    // `state.themeClassName` embeds a `useId()` counter that differs per render.
+    // `classname-overrides-win` renders once and only asserts ordering within that one
+    // class attribute, so the unstable id is not a factor.
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   afterEach(() => {

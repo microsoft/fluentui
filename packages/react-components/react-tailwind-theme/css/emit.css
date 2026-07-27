@@ -1,0 +1,19 @@
+/*
+ * The EMISSION entry for the shared theme layer (DECISIONS.md D13).
+ *
+ * `css/index.css` is the `@reference '#theme'` target: component `*.module.css` files
+ * reference it to get the layer order, `@theme` variables, custom variants and focus
+ * utilities — and `@reference` emits NOTHING, which is exactly why component packages'
+ * compiled `dist/styles.css` contain zero theme declarations.
+ *
+ * Something still has to emit those declarations once per document, or every numeric
+ * spacing utility resolves against a missing `--base-scale` and computes to 0px. That is
+ * this file: compiled by `build.js` into the standalone plain-CSS root artifact
+ * (`dist/styles.css`) which the consuming document imports exactly once — never bundled
+ * into a component package.
+ *
+ * `source(none)` is mandatory. Without it Tailwind auto-detects content, scans this
+ * package, and dumps its findings into the utilities layer, which outranks every
+ * `fui.components.*` layer (CONVERSION_GUIDE.md "Toolchain traps").
+ */
+@import './index.css' source(none);

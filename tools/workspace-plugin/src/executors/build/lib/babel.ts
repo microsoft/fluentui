@@ -17,14 +17,57 @@ import { compileSwc } from './swc';
 
 const EOL_REGEX = /\r?\n/g;
 
+/**
+ * A `@griffel/*` module specifier in an `import` / `require`, e.g. `from '@griffel/react'`.
+ *
+ * Anchored on the quotes so prose mentioning Griffel (every converted `*.styles.ts` carries
+ * a migration note) does not count. False positives are the safe direction anyway: they
+ * only keep the pre-existing AOT behaviour for a file.
+ */
+const GRIFFEL_SPECIFIER_REGEX = /['"]@griffel\/[^'"]*['"]/;
+
 function addSourceMappingUrl(code: string, sourceMapLocation: string): string {
   // Babel keeps stripping this comment, even when correct option is set. Adding manually.
   return code + '\n//# sourceMappingURL=' + sourceMapLocation;
 }
 
-export function hasStylesFilesToProcess(normalizedOptions: NormalizedOptions) {
+async function importsGriffel(filePath: string): Promise<boolean> {
+  try {
+    const contents = await readFile(filePath);
+    return GRIFFEL_SPECIFIER_REGEX.test(contents.toString());
+  } catch {
+    // A file the transform pipeline expected but cannot read is not our problem to report
+    // here — treat it as "not Griffel" and let the surrounding step fail loudly if it cares.
+    return false;
+  }
+}
+
+/**
+ * Whether this package needs the Griffel AOT pipeline.
+ *
+ * The `*.styles.ts` FILE NAME is the v9 convention for a styles module, but it says nothing
+ * about Griffel: a package converted to Tailwind + CSS Modules
+ * (migration/griffel-to-tailwind) keeps the same file names while importing `clsx` and a
+ * `*.module.css` instead. Keying purely on the name made the whole AOT pipeline — the babel
+ * pass AND the `lib` → `lib-commonjs` re-transpile it forces — run on Griffel-free packages,
+ * plus `*.styles.raw.js` copies that nothing imports.
+ *
+ * So the gate is per-PACKAGE (this decides the whole compile pipeline) and asks the real
+ * question: does any styles file actually import `@griffel/*`? Mixed packages — react-button
+ * has one converted styles file and four Griffel ones — still take the AOT path; the
+ * per-FILE gates in {@link babel} and {@link createStyleRawOutput} skip the converted files
+ * inside it. Packages with no converted files evaluate identically to before.
+ */
+export async function hasGriffelStylesFilesToProcess(normalizedOptions: NormalizedOptions): Promise<boolean> {
   const files = globSync('**/*.styles.ts', { cwd: normalizedOptions.absoluteSourceRoot });
-  return files.length > 0;
+
+  for (const fileName of files) {
+    if (await importsGriffel(join(normalizedOptions.absoluteSourceRoot, fileName))) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
@@ -77,7 +120,18 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
 
 async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number], normalizedOptions: NormalizedOptions) {
   const filesRoot = join(normalizedOptions.absoluteProjectRoot, esmModuleOutput.outputPath);
-  const files = globSync('**/*.styles.js', { cwd: filesRoot });
+  const candidates = globSync('**/*.styles.js', { cwd: filesRoot });
+
+  // Per-file gate inside a mixed package: babel is a no-op on a converted styles file
+  // (the transform would return the input unchanged and hit the `resultCode === sourceCode`
+  // skip below), but it still costs a parse and inflates the AOT file count the migration
+  // metrics track (`grep 'Processing griffel AOT' build.log` — DECISIONS.md D10).
+  const files: string[] = [];
+  for (const fileName of candidates) {
+    if (await importsGriffel(join(filesRoot, fileName))) {
+      files.push(fileName);
+    }
+  }
 
   if (files.length === 0) {
     return;
@@ -132,11 +186,28 @@ async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number],
  *
  * Creates a raw styles output file if the original file is a Griffel styles file and the enableGriffelRawStyles option is true.
  * The raw styles file is created by copying the original file and renaming it with a .raw suffix.
+ *
+ * The `.styles.` name check alone is not enough: a converted (Tailwind + CSS Modules) styles
+ * file keeps the name but holds no Griffel styles, so the copy is pure install-size noise —
+ * `*.styles.raw.js` is imported by nothing (719,570 B repo-wide at baseline, DECISIONS.md
+ * D10). The Griffel check is therefore per-file.
+ *
+ * `applyTransforms` runs this for the emitted `.js` AND its `.js.map`. The map's contents are
+ * not a reliable place to look for an import specifier, so the decision is always taken from
+ * the `.js` file — keeping the `.raw.js` / `.raw.js.map` pair intact for Griffel files.
  */
 async function createStyleRawOutput(filePath: string): Promise<void> {
   if (!filePath.includes('.styles.')) {
     return;
   }
+
+  const codeFilePath = filePath.endsWith('.map') ? filePath.slice(0, -'.map'.length) : filePath;
+
+  if (!(await importsGriffel(codeFilePath))) {
+    logger.verbose(`raw-style: skipped ${filePath} (no @griffel import)`);
+    return;
+  }
+
   const rawFilePath = filePath.replace('.styles.', '.styles.raw.');
   await copyFile(filePath, rawFilePath);
   logger.verbose(`raw-style: created ${rawFilePath}`);

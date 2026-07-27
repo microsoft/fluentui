@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { Divider } from './Divider';
@@ -18,8 +19,9 @@ describe('Divider', () => {
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
-    // Replaced repo-wide by a `classname-overrides-win` conformance test in a later phase.
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     disabledTests: ['make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       'has-static-classnames': [
         {

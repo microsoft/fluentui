@@ -140,7 +140,20 @@ state.slot.className)` — static class first, consumer className last. The
 ### 4. Package plumbing (once per package)
 
 - `package.json`: `"sideEffects": ["**/*.css"]` (was `false` — this is a BLOCKER-level
-  correctness change); add `"./styles.css"` export once build emits it.
+  correctness change); add `"./styles.css": "./dist/styles.css"` to `exports` and
+  `"dist/styles.css"` to `files` (precedent: `@fluentui/react-storybook-addon`). All three
+  are manual, one-time, per-package edits — nothing else about CSS packaging is.
+- CSS emission itself is **automatic** (Phase 1.5, `workspace-plugin:build`): any package
+  with `src/**/*.module.css` gets its modules compiled to an aggregated `dist/styles.css`
+  (canonical `@layer` statement prepended verbatim) plus a generated
+  `<Name>.module.css.js` class map in every module output, with the emitted
+  `'./<Name>.module.css'` specifiers repointed at it. Do not hand-write class maps, do not
+  import `dist/styles.css` from component source, and do not add the theme emission to a
+  component package — the ESM class map carries the side-effect import, the CJS one
+  deliberately does not (node cannot require CSS).
+- The theme root artifact is built separately:
+  `node packages/react-components/react-tailwind-theme/build.js` (also wired as that
+  package's `build` script, so `^build` runs it). Consumers import it once per document.
 - Jest: covered by shared `jest.preset.js` mapper + serializer (Phase 0 infra). Add
   `disabledTests: ['make-styles-overrides-win']` + the replacement conformance test in
   the package's `isConformant` wrapper.

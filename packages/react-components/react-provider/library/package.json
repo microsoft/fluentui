@@ -44,11 +44,13 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
   },
   "files": [
     "*.md",
     "dist/*.d.ts",
+    "dist/styles.css",
     "lib",
     "lib-commonjs"
   ],
