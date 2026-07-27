@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-07-27",
-  "phase": "1.5-shipping-infra",
+  "phase": "2-mass-conversion",
   "branch": "styling/tailwind-css-modules",
   "statusValues": [
     "pending-triage",
@@ -82,10 +82,10 @@
       "notes": ""
     },
     "react-badge": {
-      "status": "special",
+      "status": "converting",
       "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": "usePresenceBadgeStyles uses !important x7 - semantics invert under @layer; pilot #2"
+      "notes": "usePresenceBadgeStyles uses !important x7 - semantics invert under @layer; pilot #2 | BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-breadcrumb": {
       "status": "needs-conversion",
@@ -202,10 +202,10 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-image": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-infolabel": {
       "status": "needs-conversion",
@@ -214,10 +214,10 @@
       "notes": ""
     },
     "react-input": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-jsx-runtime": {
       "status": "no-styles",
@@ -226,16 +226,16 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-label": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-link": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-list": {
       "status": "needs-conversion",
@@ -334,10 +334,10 @@
       "notes": "Style factories (createArrowStyles/createSlideStyles, :global+@noflip) + runtime middlewares (port unchanged)"
     },
     "react-progress": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-provider": {
       "status": "validated",
@@ -376,10 +376,10 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-skeleton": {
-      "status": "special",
+      "status": "converting",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "Wave keyframes RTL-flipped by Griffel; needs @variant rtl keyframe twin"
+      "notes": "Wave keyframes RTL-flipped by Griffel; needs @variant rtl keyframe twin | BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-slider": {
       "status": "special",
@@ -394,10 +394,10 @@
       "notes": ""
     },
     "react-spinner": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-storybook-addon": {
       "status": "no-styles",
@@ -418,10 +418,10 @@
       "notes": ""
     },
     "react-switch": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-table": {
       "status": "needs-conversion",
@@ -466,10 +466,10 @@
       "notes": ""
     },
     "react-textarea": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-1 (2026-07-27, 10 lowest-level leaves)"
     },
     "react-theme": {
       "status": "no-styles",
