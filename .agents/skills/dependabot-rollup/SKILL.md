@@ -72,7 +72,7 @@ Exclude and report:
 
 Before applying the batch limit, group eligible PRs by dependency. For each dependency, retain the PR with the highest target version. If target versions are equal, retain the most recently updated PR. Report every other PR in the group as superseded, including the retained PR number and target version.
 
-Sort the deduplicated candidates by `updatedAt`, oldest first, and select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
+Sort the deduplicated candidates by `updatedAt`, newest first, then by PR number descending when timestamps are equal. Select at most `MAX_PRS` candidates. Do not infer eligibility from labels or branch names. Do not include superseded PRs in the eligible or selected counts.
 
 ### Step 4 - Present the dry-run plan
 
@@ -131,13 +131,34 @@ git -C "$ROLLUP_DIR" fetch "$TARGET_URL" "pull/$PR_NUMBER/head"
 git -C "$ROLLUP_DIR" merge --no-ff --no-edit FETCH_HEAD
 ```
 
-If a merge conflicts, abort that merge, report the PR as skipped, and continue with the remaining approved PRs:
+Dependency rollups commonly conflict because several PRs modify the same manifests and lockfile. If a merge conflicts, list the unmerged files:
+
+```bash
+git -C "$ROLLUP_DIR" diff --name-only --diff-filter=U
+```
+
+Resolve the conflict only when every unmerged file is a `package.json` file or the root `yarn.lock`:
+
+1. For each conflicted `package.json`, preserve the current rollup branch content and apply only the approved dependency's target version from the PR title. Preserve the existing range operator. If the current version is already equal to or newer than the target, abort the merge and report the PR as obsolete.
+2. Reject ambiguous manifest changes. Do not copy the PR's entire stale manifest or select all of either side of a conflict.
+3. If `yarn.lock` is conflicted, restore its current rollup branch version. Regenerate it from the resolved manifests instead of manually editing lockfile conflict markers:
+
+```bash
+git -C "$ROLLUP_DIR" diff --name-only --diff-filter=U -- yarn.lock | grep -q . && \
+  git -C "$ROLLUP_DIR" checkout --ours yarn.lock
+yarn --cwd "$ROLLUP_DIR" install
+```
+
+4. Stage the resolved manifests and lockfile, then inspect the staged diff against the merge's first parent. It must contain only the approved dependency update and lockfile changes derived from it.
+5. Complete the merge with `git -C "$ROLLUP_DIR" commit --no-edit` and report the PR as merged with resolved dependency conflicts.
+
+If any conflict is outside dependency manifests and the root lockfile, the intended version change is unclear, lockfile generation fails, or the reviewed diff contains unrelated stale changes, abort that merge, report the PR as skipped with the specific reason, and continue with the remaining approved PRs:
 
 ```bash
 git -C "$ROLLUP_DIR" merge --abort
 ```
 
-Never resolve dependency conflicts automatically. If no PRs merge successfully, report the result, remove the temporary worktree, and stop without creating an issue or PR.
+If no PRs merge successfully, report the result, keep the temporary worktree available for inspection, and stop without creating an issue or PR.
 
 ### Step 6 - Validate the rollup
 
@@ -200,5 +221,6 @@ Report:
 - Never propose, merge, or publish a rollup containing more than 11 updates.
 - Never include more than one PR for the same dependency in a proposed rollup.
 - Never mutate the user's current working tree.
-- Never auto-resolve merge conflicts or bypass failed validation.
+- Never resolve conflicts by blindly choosing an entire side. Resolve only reviewed dependency manifest and lockfile conflicts as described above.
+- Never bypass failed validation.
 - Never create failure-tracking issues or close source Dependabot PRs.
