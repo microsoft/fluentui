@@ -102,7 +102,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSXElement[] = [];
     dataToRender.map((legend, index) => {
-      const hoverCardElement = _renderButton(legend, index);
+      const hoverCardElement = _renderButton(legend, index, true);
       overflowHoverCardLegends.push(hoverCardElement);
     });
     const overflowString = props.overflowText ? props.overflowText : 'more';
@@ -110,24 +110,30 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     function renderLegends(): JSXElement {
       return (
-        <div {...focusAttributes} {...arrowAttributes} className={classes.root} ref={_rootElem}>
+        <div
+          {...focusAttributes}
+          {...arrowAttributes}
+          {...(allowFocusOnLegends && {
+            role: 'listbox',
+            'aria-label': 'Legends',
+            'aria-multiselectable': canSelectMultipleLegends,
+          })}
+          className={classes.root}
+          ref={_rootElem}
+        >
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
-              <div
-                {...(allowFocusOnLegends && {
-                  role: 'listbox',
-                  'aria-label': 'Chart legends',
-                  'aria-multiselectable': canSelectMultipleLegends,
-                })}
-                style={{ display: 'contents' }}
-              >
-                {dataToRender.map((item, id) => (
-                  <OverflowItem key={id} id={id.toString()}>
-                    {_renderButton(item)}
-                  </OverflowItem>
-                ))}
-              </div>
-              <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
+              {dataToRender.map((item, id) => (
+                <OverflowItem key={id} id={id.toString()}>
+                  {_renderButton(item)}
+                </OverflowItem>
+              ))}
+              <OverflowMenu
+                itemIds={itemIds}
+                title={`${overflowString}`}
+                items={overflowHoverCardLegends}
+                allowFocusOnLegends={allowFocusOnLegends}
+              />
             </div>
           </Overflow>
         </div>
@@ -261,7 +267,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function _renderButton(data: any, index?: number) {
+    function _renderButton(data: any, index?: number, overflow?: boolean) {
       const { allowFocusOnLegends = true } = props;
       const legend: Legend = {
         title: data.title,
@@ -287,13 +293,15 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
       const shape = _getShape(legend, color);
       return (
         <Button
-          {...(allowFocusOnLegends && {
-            'aria-selected': !!selectedLegends[legend.title],
-            role: 'option',
-            'aria-label': `${legend.title}`,
-            'aria-setsize': data['aria-setsize'],
-            'aria-posinset': data['aria-posinset'],
-          })}
+          {...(allowFocusOnLegends &&
+            !overflow && {
+              'aria-selected': !!selectedLegends[legend.title],
+              role: 'option',
+              'aria-label': `${legend.title}`,
+              'aria-setsize': data['aria-setsize'],
+              'aria-posinset': data['aria-posinset'],
+            })}
+          {...(allowFocusOnLegends && overflow && { 'aria-label': `${legend.title}` })}
           {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
           key={index}
           className={classes.legend}
