@@ -10,27 +10,27 @@
  * statement never re-orders an already-created layer), so this is safe to repeat and
  * makes each module self-sufficient.
  */
-@layer fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities;
+@layer fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
  * Layer assignment mirrors the mergeClasses ARGUMENT order of
  * useDividerStyles_unstable, not source declaration order:
  *
  *   1 dividerClassNames.root      → static class (JS)
- *   2 useBaseStyles.base          → fui.l1.base
- *   3 useBaseStyles[alignContent] → fui.l1.base   (data-align-content)
- *   4 useBaseStyles[appearance]   → fui.l1.variant
- *   5 useHorizontalStyles.base    → fui.l1.base   (data-orientation="horizontal")
- *   6 useHorizontalStyles.inset   → fui.l1.state  (data-inset)
- *   7 useHorizontalStyles[align]  → fui.l1.base
- *   8 useVerticalStyles.base      → fui.l1.base   (data-orientation="vertical")
- *   9 useVerticalStyles.inset     → fui.l1.state  (data-inset)
- *  10 useVerticalStyles[align]    → fui.l1.base
- *  11 useVerticalStyles.withChild → fui.l1.base   (:not([data-childless]))
- *  12 useBaseStyles.childless     → fui.l1.state  (data-childless)
+ *   2 useBaseStyles.base          → fui.components.l1
+ *   3 useBaseStyles[alignContent] → fui.components.l1   (data-align-content)
+ *   4 useBaseStyles[appearance]   → fui.components.l1
+ *   5 useHorizontalStyles.base    → fui.components.l1   (data-orientation="horizontal")
+ *   6 useHorizontalStyles.inset   → fui.components.l1  (data-inset)
+ *   7 useHorizontalStyles[align]  → fui.components.l1
+ *   8 useVerticalStyles.base      → fui.components.l1   (data-orientation="vertical")
+ *   9 useVerticalStyles.inset     → fui.components.l1  (data-inset)
+ *  10 useVerticalStyles[align]    → fui.components.l1
+ *  11 useVerticalStyles.withChild → fui.components.l1   (:not([data-childless]))
+ *  12 useBaseStyles.childless     → fui.components.l1  (data-childless)
  *  13 consumer className          → unlayered (always wins)
  *
- * Arg 4 (appearance) lands in a LATER layer than args 5/7/8/10/11 even though it is an
+ * Arg 4 (appearance) is written later in the file (so ranks higher) than args 5/7/8/10/11 even though it is an
  * earlier mergeClasses argument. That is safe here and only here: appearance sets
  * `color` + the four `border-*-color` longhands, while the orientation slices set
  * border STYLE/WIDTH and min/max sizing — the two sets are disjoint, so no override is
@@ -38,7 +38,7 @@
  * lib-commonjs/components/Divider/useDividerStyles.styles.js.
  */
 
-@layer fui.l1.base {
+@layer fui.components.l1 {
   /* from useBaseStyles.base */
   .root {
     @apply relative box-border flex flex-row grow items-center text-center;
@@ -188,7 +188,7 @@
   }
 }
 
-@layer fui.l1.variant {
+@layer fui.components.l1 {
   /* from useBaseStyles.brand — shorthands.borderColor() expanded to four longhands */
   .brand {
     color: var(--colorBrandForeground1);
@@ -242,7 +242,7 @@
   }
 }
 
-@layer fui.l1.state {
+@layer fui.components.l1 {
   .root {
     /* from useHorizontalStyles.inset — paddingLeft/Right → padding-inline */
     @variant horizontal {
@@ -260,7 +260,7 @@
 
     /*
      * from useBaseStyles.childless — zeroes exactly the four alignment margins above.
-     * Applied LAST in mergeClasses, hence fui.l1.state (after the fui.l1.base alignment
+     * Applied LAST in mergeClasses, hence fui.components.l1 (after the fui.components.l1 alignment
      * blocks) rather than alongside them.
      */
     @variant childless {

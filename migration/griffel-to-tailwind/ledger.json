@@ -541,8 +541,8 @@
       "status": "validated",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "Layer family final (D2 amendments 1+2): single fui.* family with altitude levels — l1.slices (base components), l2 (library compositions), l3-l5 (consumer space), fui.utilities top. Custom-variant/utility layer redirect empirically proven not hardcoded. Re-validated 572/572 VR pairs after each restructure."
+      "notes": "FINAL layer family (D2 amendment 3): nyt-games structure under fui root - levelless reset, numbered levels under fui.components, slices removed (in-file order = argument order). Re-validated 572/572 VR pairs pixel-identical."
     }
   },
-  "layerFamily": "fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities"
+  "layerFamily": "fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities"
 }

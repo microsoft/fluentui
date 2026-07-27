@@ -18,26 +18,28 @@ For each component in `packages/react-components/<pkg>/library/src/components/<X
 
 Open `use<X>Styles.styles.ts`. Build a mapping table before writing any CSS:
 
-| makeStyles slice                                | mergeClasses position | → target                                       |
-| ----------------------------------------------- | --------------------- | ---------------------------------------------- |
-| `makeResetStyles` base                          | first                 | `@layer fui.l1.reset` rule on the slot class   |
-| base slice                                      | early                 | `@layer fui.l1.base`                           |
-| enum slices (appearance/shape/color)            | middle                | module classes in `fui.l1.variant`             |
-| size/state conditionals                         | middle/late           | `data-*` + `@variant` blocks in `fui.l1.state` |
-| slices that override earlier slices' properties | late                  | `fui.l1.override`                              |
+| makeStyles slice       | mergeClasses position | → target                                             |
+| ---------------------- | --------------------- | ---------------------------------------------------- |
+| `makeResetStyles` base | first                 | `@layer fui.reset` (levelless — loses to all levels) |
+| every other slice      | in argument order     | `@layer fui.components.l1`, blocks in that order     |
 
-**Order rule (critical):** replicate the `mergeClasses` **argument order**, not the source
-declaration order. When two slices set the same property, the later argument must land in
-a later layer (or later in the same layer). The risk report lists 23 known inversions —
-check whether your component is one of them (`reports/risk-analysis.md`).
+**Order rule (critical):** within a level, the winner between equal-specificity rules is
+**in-file source order** (all selectors are `:where()`-flat). Author the `fui.components.l1`
+blocks in `mergeClasses` **argument order**, not source-declaration order — when two
+slices set the same property, the later argument's rule must appear later in the file.
+The risk report lists 23 known inversions where argument order contradicts declaration
+order — check whether your component is one of them (`reports/risk-analysis.md`). Because
+winners are encoded in file position, never reorder blocks during refactors without
+re-running VR.
 
-**Altitude rule (critical, D2 amendment 2):** the five slices above are all `fui.l1.*` —
-they express ONE component's own cascade. Styles your component applies to elements whose
-base styles come from ANOTHER component's hook (composition: Menu over its buttons,
-ToggleButton over Button's root, SplitButton over children) go to **`fui.l2`** (inner
-slices like `fui.l2.state` as needed) — never to l1, where the winner would be decided by
-stylesheet load order. `fui.l3`–`fui.l5` are consumer space (app-global, page, bespoke);
-never author into them from library code.
+**Altitude rule (critical, D2 amendments):** `fui.components.l1` expresses ONE
+component's own cascade. Styles your component applies to elements whose base styles come
+from ANOTHER component's hook (composition: Menu over its buttons, ToggleButton over
+Button's root, SplitButton over children) go to **`fui.components.l2`** — never to l1,
+where the winner would be decided by stylesheet load order. `l3`–`l5` are consumer space
+(app-global, page, bespoke); never author into them from library code. Rules written
+directly into a parent layer (`fui.components`) beat all its sublayers (probe-verified) —
+library code never does this.
 
 **Read the compiled AOT output first:** `lib-commonjs/**/*.styles.js` (build the package
 once on the pre-conversion commit if absent) contains the compiled atomics with explicit
@@ -50,11 +52,11 @@ COMPILED values, not your reading of the source.
 ```css
 @reference '#theme';
 
-@layer fui.l1.reset {
+@layer fui.reset {
   .root { /* makeResetStyles content */ }
 }
 
-@layer fui.l1.base {
+@layer fui.components.l1 {
   .root {
     @apply flex items-center;                 /* Tailwind utilities where 1:1 */
     font-family: var(--fontFamilyBase);       /* tokens stay literal var() */
@@ -66,7 +68,7 @@ COMPILED values, not your reading of the source.
   }
 }
 
-@layer fui.l1.variant {
+@layer fui.components.l1 {
   .brand { color: var(--colorBrandForeground1); }
   .subtle { … }
 }
@@ -77,7 +79,7 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - First line always `@reference '#theme';` — confirmed working via the package
   `imports` field (`"#theme": "@fluentui/react-tailwind-theme/css/index.css"`, copy
   react-divider's package.json entry). Tailwind's own resolver handles it.
-- **Repeat the full `@layer fui.theme, fui.l1.reset, fui.l1.base, fui.l1.variant, fui.l1.state, fui.l1.override, fui.l2, fui.l3, fui.l4, fui.l5, fui.utilities;`
+- **Repeat the full `@layer fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;`
   statement at the top of every module** (after `@reference`). `@reference` emits
   nothing, so without it first-appearance order decides layer ranking per-document —
   a load-order hazard. Re-declaring an identical order is a no-op (CSS Cascade 5),

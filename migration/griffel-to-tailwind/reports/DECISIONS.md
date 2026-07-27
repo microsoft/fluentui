@@ -321,3 +321,27 @@ conversion. That is fidelity extraction — the argument order is the only recor
 slice wins each property conflict, and pixel-identity requires the same winners after the
 cascade takes over. Workers translate it into layer assignments once (the module-header
 mapping table), then the mechanism is gone.
+
+## D2 amendment 3 — FINAL layer family: the nyt-games structure (settled with user 2026-07-27)
+
+Supersedes amendments 1–2's slice layers. The family is a direct copy of the nyt-games
+structure under the `fui` root:
+
+```css
+@layer fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+```
+
+- The `reset/base/variant/state/override` slice layers are REMOVED. Within a level,
+  winner order = **in-file source order** (all selectors `:where()`-flat); modules author
+  their `fui.components.l1` blocks in mergeClasses argument order.
+- `fui.reset` is **levelless** (the nyt-games `base` slot): hosts makeResetStyles output,
+  losing to every component level — reproducing Griffel's reset-bucket subordination.
+  Also the sanctioned preflight slot for apps; the library ships no global resets.
+- Altitude semantics unchanged: l1 base components, l2 library compositions, l3–l5
+  consumer space, `fui.utilities` top, unlayered consumer CSS above all.
+- Probe-verified (.scratch/layer-probe/parent-vs-sublayer.mjs, Chromium): rules directly
+  in a parent layer beat ALL its sublayers (implicit-last), and sublayers order by
+  declaration. Casual `@layer fui.components.l3 { … }`-style use therefore beats nothing
+  above it and everything structured below it; library code never authors parent-direct.
+- Consequence of dropping slices: winners are encoded in file position — module refactors
+  that reorder blocks require VR re-runs (cookbook order rule).
