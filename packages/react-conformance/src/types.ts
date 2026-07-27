@@ -8,13 +8,6 @@ import { render } from '@testing-library/react';
  * Individual test options
  */
 export interface TestOptions {
-  /**
-   * Optional assertion overrides for the custom style hook conformance test.
-   */
-  'component-calls-custom-style-hook'?: {
-    /** Expected custom style hook call count per component render. When omitted, asserts the hook is called at least once. */
-    callCount?: number;
-  };
   'consistent-callback-names'?: {
     ignoreProps?: string[];
   };
@@ -149,5 +142,4 @@ export interface DefaultTestObject<TProps = {}> {
    */
   'consistent-callback-args': ConformanceTest<TProps>;
   'primary-slot-gets-native-props': BaseConformanceTest<TProps>;
-  'component-calls-custom-style-hook': BaseConformanceTest<TProps>;
 }

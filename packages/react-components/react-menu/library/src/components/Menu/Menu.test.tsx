@@ -21,7 +21,6 @@ describe('Menu', () => {
       'component-has-static-classnames-object',
       // Menu does not have own styles
       'make-styles-overrides-win',
-      'component-calls-custom-style-hook',
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
       'consistent-callback-args',
