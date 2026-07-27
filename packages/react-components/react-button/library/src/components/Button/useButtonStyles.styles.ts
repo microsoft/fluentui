@@ -1,605 +1,93 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
+
+import styles from './Button.module.css';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
 
-const iconSpacingVar = '--fui-Button__icon--spacing';
-
-const buttonSpacingSmall = '3px';
-const buttonSpacingSmallWithIcon = '1px';
-const buttonSpacingMedium = '5px';
-const buttonSpacingLarge = '8px';
-const buttonSpacingLargeWithIcon = '7px';
-
-/* Firefox has box shadow sizing issue at some zoom levels
- * this will ensure the inset boxShadow is always uniform
- * without affecting other browser platforms
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Names follow the
+ * headless preview's vocabulary (`data-disabled`, `data-disabled-focusable`,
+ * `data-icon-only` are the three that `react-headless-components-preview`'s own
+ * `useButton` already stamps — reports/headless-precedent.md).
+ *
+ * Presence flags are written `flag || undefined`: React omits an attribute whose value is
+ * `undefined`, whereas `false` would render `data-icon-only="false"` and still match
+ * `[data-icon-only]`. (The headless preview writes `''` instead of `true` via
+ * `stringifyDataAttribute`; both forms match a presence selector — this file follows the
+ * `|| undefined` form the react-divider pilot established.)
+ *
+ * `data-icon-position` is written ONLY when the icon slot exists, so its *presence*
+ * doubles as the "has an icon" signal that `rootStyles.smallWithIcon` / `.largeWithIcon`
+ * branch on (`icon && size === 'small'`). That is why the icon slot itself carries no
+ * data attributes: both its placement and its scale are selected from the root.
+ *
+ * `data-childless` mirrors `!state.root.children`, the guard on the icon's margin
+ * (`!!state.root.children && iconStyles[iconPosition]`). Same attribute the react-divider
+ * pilot introduced.
  */
-const boxShadowStrokeWidthThinMoz = `calc(${tokens.strokeWidthThin} + 0.25px)`;
-
-const useRootBaseClassName = makeResetStyles({
-  alignItems: 'center',
-  boxSizing: 'border-box',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  textDecorationLine: 'none',
-  verticalAlign: 'middle',
-
-  margin: 0,
-  overflow: 'hidden',
-
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-
-  fontFamily: tokens.fontFamilyBase,
-  outlineStyle: 'none',
-
-  ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
-    color: tokens.colorNeutralForeground1Hover,
-
-    cursor: 'pointer',
-  },
-
-  ':hover:active,:active:focus-visible': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    borderColor: tokens.colorNeutralStroke1Pressed,
-    color: tokens.colorNeutralForeground1Pressed,
-
-    outlineStyle: 'none',
-  },
-
-  padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
-  minWidth: '96px',
-  borderRadius: tokens.borderRadiusMedium,
-
-  fontSize: tokens.fontSizeBase300,
-  fontWeight: tokens.fontWeightSemibold,
-  lineHeight: tokens.lineHeightBase300,
-
-  // Transition styles
-
-  transitionDuration: tokens.durationFaster,
-  transitionProperty: 'background, border, color',
-  transitionTimingFunction: tokens.curveEasyEase,
-
-  '@media screen and (prefers-reduced-motion: reduce)': {
-    transitionDuration: '0.01ms',
-  },
-
-  // High contrast styles
-
-  '@media (forced-colors: active)': {
-    ':focus': {
-      borderColor: 'ButtonText',
-    },
-
-    ':hover': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
-    },
-  },
-
-  // Focus styles
-
-  ...createCustomFocusIndicatorStyle({
-    borderColor: tokens.colorStrokeFocus2,
-    borderRadius: tokens.borderRadiusMedium,
-    borderWidth: '1px',
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
-      inset
-    `,
-    zIndex: 1,
-  }),
-
-  // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
-  '@supports (-moz-appearance:button)': {
-    ...createCustomFocusIndicatorStyle({
-      boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
-      inset
-    `,
-    }),
-  },
-});
-
-const useIconBaseClassName = makeResetStyles({
-  alignItems: 'center',
-  display: 'inline-flex',
-  justifyContent: 'center',
-
-  fontSize: '20px',
-  height: '20px',
-  width: '20px',
-
-  [iconSpacingVar]: tokens.spacingHorizontalSNudge,
-});
-
-const useRootStyles = makeStyles({
-  // Appearance variations
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-    },
-  },
-  primary: {
-    backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
-
-    ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-      ...shorthands.borderColor('HighlightText'),
-      color: 'HighlightText',
-      forcedColorAdjust: 'none',
-
-      ':hover': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
-      },
-
-      ':hover:active,:active:focus-visible': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
-      },
-    },
-  },
-  secondary: {
-    /* The secondary styles are exactly the same as the base styles. */
-  },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
-      },
-    },
-
-    '@media (forced-colors: active)': {
-      ':hover': {
-        color: 'Highlight',
-
-        [`& .${buttonClassNames.icon}`]: {
-          color: 'Highlight',
-        },
-      },
-      ':hover:active,:active:focus-visible': {
-        color: 'Highlight',
-
-        [`& .${buttonClassNames.icon}`]: {
-          color: 'Highlight',
-        },
-      },
-    },
-  },
-  transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-
-    '@media (forced-colors: active)': {
-      ':hover': {
-        backgroundColor: tokens.colorTransparentBackground,
-        color: 'Highlight',
-      },
-      ':hover:active,:active:focus-visible': {
-        backgroundColor: tokens.colorTransparentBackground,
-        color: 'Highlight',
-      },
-    },
-  },
-
-  // Shape variations
-  circular: { borderRadius: tokens.borderRadiusCircular },
-  rounded: {
-    /* The borderRadius rounded styles are handled in the size variations */
-  },
-  square: { borderRadius: tokens.borderRadiusNone },
-
-  // Size variations
-  small: {
-    minWidth: '64px',
-    padding: `${buttonSpacingSmall} ${tokens.spacingHorizontalS}`,
-    borderRadius: tokens.borderRadiusMedium,
-
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
-    lineHeight: tokens.lineHeightBase200,
-  },
-  smallWithIcon: {
-    paddingBottom: buttonSpacingSmallWithIcon,
-    paddingTop: buttonSpacingSmallWithIcon,
-  },
-  medium: {
-    /* defined in base styles */
-  },
-  large: {
-    minWidth: '96px',
-    padding: `${buttonSpacingLarge} ${tokens.spacingHorizontalL}`,
-    borderRadius: tokens.borderRadiusMedium,
-
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-    lineHeight: tokens.lineHeightBase400,
-  },
-  largeWithIcon: {
-    paddingBottom: buttonSpacingLargeWithIcon,
-    paddingTop: buttonSpacingLargeWithIcon,
-  },
-});
-
-const useRootDisabledStyles = makeStyles({
-  // Base styles
-  base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
-
-    cursor: 'not-allowed',
-    [`& .${buttonClassNames.icon}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
-
-      cursor: 'not-allowed',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
-
-      cursor: 'not-allowed',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
-  },
-
-  // High contrast styles
-  highContrast: {
-    '@media (forced-colors: active)': {
-      backgroundColor: 'ButtonFace',
-      ...shorthands.borderColor('GrayText'),
-      color: 'GrayText',
-
-      [`& .${buttonClassNames.icon}`]: {
-        color: 'GrayText',
-      },
-
-      ':focus': {
-        ...shorthands.borderColor('GrayText'),
-      },
-
-      ':hover': {
-        backgroundColor: 'ButtonFace',
-        ...shorthands.borderColor('GrayText'),
-        color: 'GrayText',
-
-        [`& .${buttonClassNames.icon}`]: {
-          color: 'GrayText',
-        },
-      },
-
-      ':hover:active,:active:focus-visible': {
-        backgroundColor: 'ButtonFace',
-        ...shorthands.borderColor('GrayText'),
-        color: 'GrayText',
-
-        [`& .${buttonClassNames.icon}`]: {
-          color: 'GrayText',
-        },
-      },
-    },
-  },
-
-  // Appearance variations
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorTransparentBackground,
-    },
-  },
-  primary: {
-    ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      ...shorthands.borderColor('transparent'),
-    },
-
-    ':hover:active,:active:focus-visible': {
-      ...shorthands.borderColor('transparent'),
-    },
-  },
-  secondary: {
-    /* The secondary styles are exactly the same as the base styles. */
-  },
-  subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-    },
-  },
-  transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-    },
-
-    ':hover:active,:active:focus-visible': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-    },
-  },
-});
-
-const useRootFocusStyles = makeStyles({
-  // Shape variations
-  circular: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
-  rounded: {
-    /* The rounded styles are exactly the same as the base styles. */
-  },
-  square: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
-
-  // Primary styles
-  primary: {
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorStrokeFocus2),
-      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
-      ':hover': {
-        boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
-        ...shorthands.borderColor(tokens.colorStrokeFocus2),
-      },
-    }),
-
-    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
-    '@supports (-moz-appearance:button)': {
-      ...createCustomFocusIndicatorStyle({
-        boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
-        ':hover': {
-          boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset`,
-        },
-      }),
-    },
-  },
-
-  // Size variations
-  small: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusSmall }),
-  medium: {
-    /* defined in base styles */
-  },
-  large: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusLarge }),
-});
-
-const useRootIconOnlyStyles = makeStyles({
-  // Size variations
-  small: {
-    padding: buttonSpacingSmallWithIcon,
-
-    minWidth: '24px',
-    maxWidth: '24px',
-  },
-  medium: {
-    padding: buttonSpacingMedium,
-
-    minWidth: '32px',
-    maxWidth: '32px',
-  },
-  large: {
-    padding: buttonSpacingLargeWithIcon,
-
-    minWidth: '40px',
-    maxWidth: '40px',
-  },
-});
-
-const useIconStyles = makeStyles({
-  // Size variations
-  small: {
-    fontSize: '20px',
-    height: '20px',
-    width: '20px',
-
-    [iconSpacingVar]: tokens.spacingHorizontalXS,
-  },
-  medium: {
-    /* defined in base styles */
-  },
-  large: {
-    fontSize: '24px',
-    height: '24px',
-    width: '24px',
-
-    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
-  },
-
-  // Icon position variations
-  before: {
-    marginRight: `var(${iconSpacingVar})`,
-  },
-  after: {
-    marginLeft: `var(${iconSpacingVar})`,
-  },
-});
+type ButtonRootDataAttributes = {
+  'data-size': ButtonState['size'];
+  'data-icon-position'?: ButtonState['iconPosition'];
+  'data-icon-only'?: true;
+  'data-disabled'?: true;
+  'data-disabled-focusable'?: true;
+  'data-childless'?: true;
+};
 
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
-  const rootBaseClassName = useRootBaseClassName();
-  const iconBaseClassName = useIconBaseClassName();
-
-  const rootStyles = useRootStyles();
-  const rootDisabledStyles = useRootDisabledStyles();
-  const rootFocusStyles = useRootFocusStyles();
-  const rootIconOnlyStyles = useRootIconOnlyStyles();
-  const iconStyles = useIconStyles();
-
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as ButtonState['root'] & ButtonRootDataAttributes;
+
+  root['data-size'] = size;
+  root['data-icon-position'] = icon ? iconPosition : undefined;
+  root['data-icon-only'] = iconOnly || undefined;
+  root['data-disabled'] = disabled || undefined;
+  root['data-disabled-focusable'] = disabledFocusable || undefined;
+  root['data-childless'] = !state.root.children || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Button.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including the two shape-vs-size
+  // `border-radius` inversions.
+  //
+  // `state.root.className` is also how ToggleButton/CompoundButton/MenuButton/SplitButton
+  // reach this slot: each of them runs its own `mergeClasses(...)` FIRST and calls
+  // `useButtonStyles_unstable` LAST, so their (unlayered) Griffel atomics arrive here as
+  // the trailing argument and keep beating these layered rules — the same winner
+  // mergeClasses produced when their string was its last argument.
+  state.root.className = clsx(
     buttonClassNames.root,
-    rootBaseClassName,
-
-    appearance && rootStyles[appearance],
-
-    rootStyles[size],
-    icon && size === 'small' && rootStyles.smallWithIcon,
-    icon && size === 'large' && rootStyles.largeWithIcon,
-    rootStyles[shape],
-
-    // Disabled styles
-    (disabled || disabledFocusable) && rootDisabledStyles.base,
-    (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
-    appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
-
-    // Focus styles
-    appearance === 'primary' && rootFocusStyles.primary,
-    rootFocusStyles[size],
-    rootFocusStyles[shape],
-
-    // Icon-only styles
-    iconOnly && rootIconOnlyStyles[size],
-
-    // User provided class name
+    styles.root,
+    appearance && styles[appearance],
+    styles[shape],
     state.root.className,
   );
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(
-      buttonClassNames.icon,
-      iconBaseClassName,
-      !!state.root.children && iconStyles[iconPosition],
-      iconStyles[size],
-      state.icon.className,
-    );
+    state.icon.className = clsx(buttonClassNames.icon, styles.icon, state.icon.className);
   }
 
   return state;

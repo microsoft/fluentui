@@ -10,6 +10,18 @@ describe('Button', () => {
   isConformant({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // Replaced repo-wide by a `classname-overrides-win` conformance test in a later phase.
+    //
+    // Deliberately NOT disabled for ToggleButton/CompoundButton/MenuButton/SplitButton:
+    // those still call mergeClasses with the consumer className last before delegating to
+    // useButtonStyles_unstable, so the test keeps observing a real call for them.
+    disabledTests: ['make-styles-overrides-win'],
     testOptions: {
       'has-static-classnames': [
         {

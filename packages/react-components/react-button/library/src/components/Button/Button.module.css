@@ -1,0 +1,776 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useButtonStyles_unstable,
+ * not source declaration order. `root` slot:
+ *
+ *   #  mergeClasses argument                         → target
+ *   ------------------------------------------------------------------------------
+ *   1  buttonClassNames.root                         → static class (JS)
+ *   2  useRootBaseClassName            (makeReset)   → fui.reset
+ *   3  rootStyles[appearance]                        → fui.variant   (.outline/.primary/…)
+ *   4  rootStyles[size]                              → fui.state     (data-size)
+ *   5  rootStyles.smallWithIcon                      → fui.override  (data-size + data-icon-position)
+ *   6  rootStyles.largeWithIcon                      → fui.override  (idem)
+ *   7  rootStyles[shape]                             → fui.override  (.circular/.square)
+ *   8  rootDisabledStyles.base                       → fui.state     (disabled-any)
+ *   9  rootDisabledStyles.highContrast               → fui.state     (disabled-any + forced-colors)
+ *  10  rootDisabledStyles[appearance]                → fui.state     (.appearance + disabled-any)
+ *  11  rootFocusStyles.primary                       → fui.state     (.primary + focus-visible-fui)
+ *  12  rootFocusStyles[size]                         → fui.state     (data-size + focus-visible-fui)
+ *  13  rootFocusStyles[shape]                        → fui.override  (.circular/.square + focus-visible-fui)
+ *  14  rootIconOnlyStyles[size]                      → fui.override  (data-icon-only, LAST)
+ *  15  consumer className                            → unlayered (always wins)
+ *
+ * `icon` slot:
+ *
+ *   1  buttonClassNames.icon                         → static class (JS)
+ *   2  useIconBaseClassName            (makeReset)   → fui.reset
+ *   3  iconStyles[iconPosition], gated on children   → fui.base
+ *   4  iconStyles[size]                              → fui.state
+ *   5  consumer className                            → unlayered
+ *
+ * ── The two KNOWN inversions (risk-analysis.md §1a) ─────────────────────────────────
+ * `circular`(L284)/`square`(L288) are DECLARED before `small`(L291)/`large`(L307), but
+ * `rootStyles[shape]` is APPLIED after `rootStyles[size]`; all four set `border-radius`.
+ * Source-ordered CSS would render a circular small Button with `borderRadiusMedium`.
+ * Shape therefore lands in `fui.override` and size in `fui.state` — arg order wins.
+ * The identical inversion repeats in `useRootFocusStyles` (circular/square L466/L470 vs
+ * small/large L495/L499, all `border-radius` under `[data-fui-focus-visible]`) and is
+ * resolved the same way (#12 fui.state, #13 fui.override).
+ *
+ * ── Non-inverted cross-layer moves (verified disjoint against the compiled atomics in
+ *    lib-commonjs/components/Button/useButtonStyles.styles.js) ────────────────────────
+ * #3 appearance lands in an EARLIER layer than #4 size even though it is an earlier
+ * argument — appearance only sets background/border-*-color/color, size only sets
+ * min-width/padding/border-radius/font-*, so the two sets never meet.
+ * #7 shape (fui.override) now outranks #8-#12 (fui.state): shape sets `border-radius`
+ * only, those set colors/cursor/box-shadow — also disjoint.
+ * #5/#6 withIcon (fui.override) outrank #8-#12 for the same reason (padding only).
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * #14 icon-only `padding` must beat both #4 size `padding` and #5/#6 withIcon
+ * `padding-block`. Griffel achieved this because the later `padding` shorthand carries
+ * priority -1 and its sentinel keys DELETE the earlier longhand classes; here it is
+ * ordinary cascade — icon-only is written LAST inside fui.override.
+ */
+
+@layer fui.reset {
+  /* from useRootBaseClassName (makeResetStyles) */
+  .root {
+    @apply box-border m-0 inline-flex items-center justify-center overflow-hidden no-underline align-middle;
+    @apply min-w-96 py-5;
+
+    padding-inline: var(--spacingHorizontalM);
+
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-radius: var(--borderRadiusMedium);
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+
+    outline-style: none;
+
+    transition-duration: var(--durationFaster);
+    transition-property: background, border, color;
+    transition-timing-function: var(--curveEasyEase);
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      border-color: var(--colorNeutralStroke1Hover);
+      color: var(--colorNeutralForeground1Hover);
+
+      cursor: pointer;
+    }
+
+    @variant hover-active {
+      background-color: var(--colorNeutralBackground1Pressed);
+      border-color: var(--colorNeutralStroke1Pressed);
+      color: var(--colorNeutralForeground1Pressed);
+
+      outline-style: none;
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition-duration: 0.01ms;
+    }
+
+    /* High contrast styles */
+    @variant forced-colors {
+      @variant focus {
+        border-color: ButtonText;
+      }
+
+      @variant hover {
+        background-color: HighlightText;
+        border-color: Highlight;
+        color: Highlight;
+        forced-color-adjust: none;
+      }
+
+      @variant hover-active {
+        background-color: HighlightText;
+        border-color: Highlight;
+        color: Highlight;
+        forced-color-adjust: none;
+      }
+    }
+
+    /*
+     * Focus styles — from createCustomFocusIndicatorStyle({ borderColor, borderRadius,
+     * borderWidth: '1px', outline, boxShadow, zIndex }). The shared `fui-focus-ring`
+     * utility carries those exact declarations; the selector stays here.
+     */
+    @variant focus-visible-fui {
+      @apply fui-focus-ring;
+    }
+
+    /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible-fui {
+        box-shadow: 0 0 0 calc(var(--strokeWidthThin) + 0.25px) var(--colorStrokeFocus2) inset;
+      }
+    }
+  }
+
+  /* from useIconBaseClassName (makeResetStyles) */
+  .icon {
+    @apply inline-flex items-center justify-center size-20;
+
+    /* `--base-scale` keeps the glyph and its 20px box scaling together (D4); at the
+       default 16px root this is exactly `font-size: 20px`, the compiled value. */
+    font-size: calc(20px * var(--base-scale));
+
+    --fui-Button__icon--spacing: var(--spacingHorizontalSNudge);
+  }
+}
+
+@layer fui.base {
+  /*
+   * from useIconStyles.before / .after — icon slot arg #3, gated on `!!root.children`.
+   * The gate rides the root's `data-childless` (same attribute Divider introduced), and
+   * the placement rides the root's `data-icon-position`, so the icon slot itself needs
+   * no data attributes. marginRight/marginLeft → logical inline properties: the compiled
+   * atomics are an [ltr, rtl] pair (`t21cq0: ["f1nizpg2","f1a695kz"]` →
+   * `margin-right` / `margin-left`), i.e. a pure property flip.
+   */
+  .root {
+    @variant with-children {
+      @variant icon-before {
+        & .icon {
+          margin-inline-end: var(--fui-Button__icon--spacing);
+        }
+      }
+
+      @variant icon-after {
+        & .icon {
+          margin-inline-start: var(--fui-Button__icon--spacing);
+        }
+      }
+    }
+  }
+}
+
+@layer fui.variant {
+  /*
+   * Appearance variations — arg #3. `shorthands.borderColor(x)` is expanded to the four
+   * physical longhands the compiler emits (`g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`); the
+   * ltr/rtl pair only swaps left↔right and both carry the same value, so the flip is a
+   * visual no-op and physical longhands are exact.
+   *
+   * `secondary` has no rule: the Griffel slice is `{}` ("exactly the same as the base
+   * styles"), so `styles.secondary` is intentionally undefined and clsx drops it —
+   * matching Griffel's empty class string today.
+   */
+
+  /* from useRootStyles.outline */
+  .outline {
+    background-color: var(--colorTransparentBackground);
+
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+    }
+
+    @variant hover-active {
+      background-color: var(--colorTransparentBackgroundPressed);
+    }
+  }
+
+  /* from useRootStyles.primary */
+  .primary {
+    background-color: var(--colorBrandBackground);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+
+    @variant hover {
+      background-color: var(--colorBrandBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant hover-active {
+      background-color: var(--colorBrandBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant forced-colors {
+      background-color: Highlight;
+      border-top-color: HighlightText;
+      border-right-color: HighlightText;
+      border-bottom-color: HighlightText;
+      border-left-color: HighlightText;
+      color: HighlightText;
+      forced-color-adjust: none;
+
+      @variant hover {
+        background-color: HighlightText;
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+
+      @variant hover-active {
+        background-color: HighlightText;
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+    }
+  }
+
+  /* from useRootStyles.subtle */
+  .subtle {
+    background-color: var(--colorSubtleBackground);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForeground2);
+
+    @variant hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2Hover);
+
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+
+      & :global(.fui-Button__icon) {
+        color: var(--colorNeutralForeground2BrandHover);
+      }
+    }
+
+    @variant hover-active {
+      background-color: var(--colorSubtleBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2Pressed);
+
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+
+      & :global(.fui-Button__icon) {
+        color: var(--colorNeutralForeground2BrandPressed);
+      }
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        color: Highlight;
+
+        & :global(.fui-Button__icon) {
+          color: Highlight;
+        }
+      }
+
+      @variant hover-active {
+        color: Highlight;
+
+        & :global(.fui-Button__icon) {
+          color: Highlight;
+        }
+      }
+    }
+  }
+
+  /* from useRootStyles.transparent */
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForeground2);
+
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2BrandHover);
+
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+
+    @variant hover-active {
+      background-color: var(--colorTransparentBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2BrandPressed);
+
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        background-color: var(--colorTransparentBackground);
+        color: Highlight;
+      }
+
+      @variant hover-active {
+        background-color: var(--colorTransparentBackground);
+        color: Highlight;
+      }
+    }
+  }
+}
+
+@layer fui.state {
+  .root {
+    /*
+     * Size variations — arg #4. `medium` is the compiled `{}` slice ("defined in base
+     * styles"), so only small/large have rules. `padding: 3px var(--spacingHorizontalS)`
+     * is expanded to block/inline longhands so the later `padding-block` overrides in
+     * fui.override compose predictably.
+     */
+
+    /* from useRootStyles.small */
+    @variant size-small {
+      @apply min-w-64 py-3;
+
+      padding-inline: var(--spacingHorizontalS);
+      border-radius: var(--borderRadiusMedium);
+
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+
+    /* from useRootStyles.large */
+    @variant size-large {
+      @apply min-w-96 py-8;
+
+      padding-inline: var(--spacingHorizontalL);
+      border-radius: var(--borderRadiusMedium);
+
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightSemibold);
+      line-height: var(--lineHeightBase400);
+    }
+
+    /* from useIconStyles.small — icon slot arg #4, keyed off the root's data-size */
+    @variant size-small {
+      & .icon {
+        @apply size-20;
+
+        font-size: calc(20px * var(--base-scale));
+
+        --fui-Button__icon--spacing: var(--spacingHorizontalXS);
+      }
+    }
+
+    /* from useIconStyles.large */
+    @variant size-large {
+      & .icon {
+        @apply size-24;
+
+        font-size: calc(24px * var(--base-scale));
+
+        --fui-Button__icon--spacing: var(--spacingHorizontalSNudge);
+      }
+    }
+
+    /*
+     * from useRootDisabledStyles.base — arg #8. Applied for `disabled ||
+     * disabledFocusable`; see the `disabled-any` variant for why native `:disabled`
+     * alone is not enough.
+     */
+    @variant disabled-any {
+      background-color: var(--colorNeutralBackgroundDisabled);
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+      color: var(--colorNeutralForegroundDisabled);
+
+      cursor: not-allowed;
+
+      & :global(.fui-Button__icon) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+
+      @variant hover {
+        background-color: var(--colorNeutralBackgroundDisabled);
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+        color: var(--colorNeutralForegroundDisabled);
+
+        cursor: not-allowed;
+
+        & :global(.fui-Icon-filled) {
+          display: none;
+        }
+
+        & :global(.fui-Icon-regular) {
+          display: inline;
+        }
+
+        & :global(.fui-Button__icon) {
+          color: var(--colorNeutralForegroundDisabled);
+        }
+      }
+
+      @variant hover-active {
+        background-color: var(--colorNeutralBackgroundDisabled);
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+        color: var(--colorNeutralForegroundDisabled);
+
+        cursor: not-allowed;
+
+        & :global(.fui-Icon-filled) {
+          display: none;
+        }
+
+        & :global(.fui-Icon-regular) {
+          display: inline;
+        }
+
+        & :global(.fui-Button__icon) {
+          color: var(--colorNeutralForegroundDisabled);
+        }
+      }
+
+      /* from useRootDisabledStyles.highContrast — arg #9 */
+      @variant forced-colors {
+        background-color: ButtonFace;
+        border-top-color: GrayText;
+        border-right-color: GrayText;
+        border-bottom-color: GrayText;
+        border-left-color: GrayText;
+        color: GrayText;
+
+        & :global(.fui-Button__icon) {
+          color: GrayText;
+        }
+
+        @variant focus {
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+        }
+
+        @variant hover {
+          background-color: ButtonFace;
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+          color: GrayText;
+
+          & :global(.fui-Button__icon) {
+            color: GrayText;
+          }
+        }
+
+        @variant hover-active {
+          background-color: ButtonFace;
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+          color: GrayText;
+
+          & :global(.fui-Button__icon) {
+            color: GrayText;
+          }
+        }
+      }
+    }
+
+    /* from useRootFocusStyles.small / .large — arg #12 */
+    @variant focus-visible-fui {
+      @variant size-small {
+        border-radius: var(--borderRadiusSmall);
+      }
+
+      @variant size-large {
+        border-radius: var(--borderRadiusLarge);
+      }
+    }
+  }
+
+  /*
+   * Appearance-specific disabled overrides — arg #10, written AFTER the shared
+   * `.root` disabled block above so they win the equal-specificity tie inside this
+   * layer, exactly as mergeClasses arg #10 beats arg #8.
+   */
+
+  /* from useRootDisabledStyles.outline */
+  .outline {
+    @variant disabled-any {
+      background-color: var(--colorTransparentBackground);
+
+      @variant hover {
+        background-color: var(--colorTransparentBackground);
+      }
+
+      @variant hover-active {
+        background-color: var(--colorTransparentBackground);
+      }
+    }
+  }
+
+  /* from useRootDisabledStyles.primary */
+  .primary {
+    @variant disabled-any {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      @variant hover {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      @variant hover-active {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+
+    /*
+     * from useRootFocusStyles.primary — arg #11. Applied only for
+     * `appearance === 'primary'`, i.e. exactly when this class is on the element.
+     */
+    @variant focus-visible-fui {
+      border-top-color: var(--colorStrokeFocus2);
+      border-right-color: var(--colorStrokeFocus2);
+      border-bottom-color: var(--colorStrokeFocus2);
+      border-left-color: var(--colorStrokeFocus2);
+      box-shadow: var(--shadow2), 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset,
+        0 0 0 var(--strokeWidthThick) var(--colorNeutralForegroundOnBrand) inset;
+
+      @variant hover {
+        border-top-color: var(--colorStrokeFocus2);
+        border-right-color: var(--colorStrokeFocus2);
+        border-bottom-color: var(--colorStrokeFocus2);
+        border-left-color: var(--colorStrokeFocus2);
+        box-shadow: var(--shadow2), 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset;
+      }
+    }
+
+    /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
+    @supports (-moz-appearance: button) {
+      @variant focus-visible-fui {
+        box-shadow: var(--shadow2), 0 0 0 calc(var(--strokeWidthThin) + 0.25px) var(--colorStrokeFocus2) inset,
+          0 0 0 var(--strokeWidthThick) var(--colorNeutralForegroundOnBrand) inset;
+
+        @variant hover {
+          box-shadow: var(--shadow2), 0 0 0 calc(var(--strokeWidthThin) + 0.25px) var(--colorStrokeFocus2) inset;
+        }
+      }
+    }
+  }
+
+  /* from useRootDisabledStyles.subtle */
+  .subtle {
+    @variant disabled-any {
+      background-color: var(--colorTransparentBackground);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      @variant hover {
+        background-color: var(--colorTransparentBackground);
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      @variant hover-active {
+        background-color: var(--colorTransparentBackground);
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+  }
+
+  /* from useRootDisabledStyles.transparent */
+  .transparent {
+    @variant disabled-any {
+      background-color: var(--colorTransparentBackground);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+
+      @variant hover {
+        background-color: var(--colorTransparentBackground);
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      @variant hover-active {
+        background-color: var(--colorTransparentBackground);
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+  }
+}
+
+@layer fui.override {
+  .root {
+    /*
+     * from useRootStyles.smallWithIcon / .largeWithIcon — args #5/#6. These override the
+     * `padding-block` set by arg #4 above, so they must land in a later layer.
+     * `with-icon` is the presence of `data-icon-position`, which the styles hook only
+     * writes when the icon slot exists — the CSS mirror of the `icon &&` guard.
+     */
+    @variant with-icon {
+      @variant size-small {
+        @apply py-1;
+      }
+
+      @variant size-large {
+        @apply py-7;
+      }
+    }
+  }
+
+  /*
+   * Shape variations — arg #7 (and arg #13 for the focus ring). INVERSION: declared
+   * before the sizes in the Griffel source but applied after them, and both set
+   * `border-radius`. `rounded` has no rule (the Griffel slice is `{}`; its radius comes
+   * from the base/size styles), so `styles.rounded` is intentionally undefined.
+   */
+
+  /* from useRootStyles.circular + useRootFocusStyles.circular */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusCircular);
+    }
+  }
+
+  /* from useRootStyles.square + useRootFocusStyles.square */
+  .square {
+    border-radius: var(--borderRadiusNone);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusNone);
+    }
+  }
+
+  /*
+   * from useRootIconOnlyStyles — arg #14, the LAST style argument, hence the last rule
+   * in the last layer. `padding: Npx` replaces every side, beating both the size padding
+   * (#4) and the withIcon padding-block (#5/#6); min/max-width beat the size min-width
+   * (#4) and the base 96px (#2).
+   */
+  .root {
+    @variant icon-only {
+      @variant size-small {
+        @apply p-1 min-w-24 max-w-24;
+      }
+
+      @variant size-medium {
+        @apply p-5 min-w-32 max-w-32;
+      }
+
+      @variant size-large {
+        @apply p-7 min-w-40 max-w-40;
+      }
+    }
+  }
+}

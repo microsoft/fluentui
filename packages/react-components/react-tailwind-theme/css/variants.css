@@ -35,6 +35,20 @@
 @custom-variant placeholder-shown (&:where([data-placeholder], :placeholder-shown));
 @custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
 
+/*
+ * scale (Button, Badge, Avatar, Spinner, …) — `size` is a scale prop, not a look prop,
+ * so it rides a data-attribute rather than a module class (DECISIONS.md D3).
+ */
+@custom-variant size-small (&:where([data-size='small']));
+@custom-variant size-medium (&:where([data-size='medium']));
+@custom-variant size-large (&:where([data-size='large']));
+
+/* icon slot presence/placement (Button family, …) */
+@custom-variant icon-only (&:where([data-icon-only]));
+@custom-variant with-icon (&:where([data-icon-position]));
+@custom-variant icon-before (&:where([data-icon-position='before']));
+@custom-variant icon-after (&:where([data-icon-position='after']));
+
 /* spacing opt-ins (Divider inset, …) — presence attributes, written as `|| undefined` */
 @custom-variant inset (&:where([data-inset]));
 
@@ -42,6 +56,26 @@
 @custom-variant hover (&:where(:hover));
 @custom-variant focus (&:where(:focus));
 @custom-variant focus-within (&:where(:focus-within));
+
+/*
+ * Griffel's authored "pressed" compound — `:hover:active,:active:focus-visible` — used
+ * verbatim by Button/ToggleButton/MenuButton/SplitButton and many other v9 styles files.
+ * Kept distinct from `pressed` above, which is the headless-preview vocabulary
+ * (`[data-pressed], :active`); converting a styled component must reproduce the compiled
+ * selector, not the headless one. Note the `:focus-visible` here is the NATIVE
+ * pseudo-class, not keyborg's attribute — that is what Griffel emitted.
+ */
+@custom-variant hover-active (&:where(:hover:active, :active:focus-visible));
+
+/*
+ * `disabled || disabledFocusable` — the condition v9 components actually branch on.
+ * A disabled-but-focusable control renders NO `disabled` attribute (react-aria's
+ * `useARIAButtonProps` sets `disabled: disabled && !disabledFocusable` and
+ * `aria-disabled: true`), and an `<a>`/`<div>`-rendered button drops `disabled`
+ * entirely — so neither `:disabled` nor `[disabled]` alone reproduces the JS condition.
+ */
+@custom-variant disabled-focusable (&:where([data-disabled-focusable]));
+@custom-variant disabled-any (&:where([disabled], [data-disabled], :disabled, [data-disabled-focusable]));
 
 /*
  * Focus visibility — Fluent uses keyborg (react-tabster), which sets

@@ -94,10 +94,10 @@
       "notes": ""
     },
     "react-button": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 5,
-      "storiesCovered": null,
-      "notes": "PILOT #2 (user-requested expansion): Button component only; ToggleButton/CompoundButton/MenuButton/SplitButton stay Griffel and compose the converted useButtonStyles_unstable hook (mixed-mode regression net, 116 VR stories). Focus-ring shared utility lands in react-tailwind-theme."
+      "storiesCovered": 129,
+      "notes": "PILOT #2: Button component converted+validated (VR 129/129 zero-tolerance incl hover/pressed; mixed-mode net ToggleButton/CompoundButton/MenuButton/SplitButton 342/342 clean; tests 202/202). Siblings still Griffel by design - convert in Phase 2. Shared focus-ring utilities landed in react-tailwind-theme. Charts snapshots: +593 additive data-* lines, verified zero removals."
     },
     "react-calendar-compat": {
       "status": "needs-conversion",
@@ -340,10 +340,10 @@
       "notes": ""
     },
     "react-provider": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "PILOT #2b (user-requested expansion): useFluentProviderStyles root styles only (base typography/color; portal themeClassName threading verified). Theme style tag / renderer / portal code untouched. Still special for Phase 2 remainder."
+      "notes": "PILOT #2b: root styles (base typography/color) converted+validated (Text 6/6, Menu ~30 portal stories clean, Divider regression 31/31; portal themeClassName + portal-compat regex empirically verified identical). Theme style tag / renderer / dir handling untouched - still special for Phase 2/3 remainder. Non-component styles inventory: reports/pilot-provider-inventory.md (makeStaticStyles: zero product usage)."
     },
     "react-radio": {
       "status": "needs-conversion",

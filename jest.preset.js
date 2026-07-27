@@ -27,6 +27,30 @@ const reactDepsPaths = {
 };
 
 /**
+ * Griffel → Tailwind + CSS Modules migration (DECISIONS.md D9).
+ *
+ * `@fluentui/react-provider` is converted, and jest resolves `@fluentui/*` to SOURCE via
+ * the tsconfig path aliases above — so any suite that renders a `FluentProvider`
+ * (i.e. most v9 suites) now transitively evaluates
+ * `import styles from './FluentProvider.module.css'`. Without a mapper those suites fail
+ * to *run*, so the mapper has to be repo-wide rather than per-package.
+ *
+ * Resolved by path (not via `require('@fluentui/scripts-jest')`) to keep this file free
+ * of workspace requires: scripts/jest pulls in @fluentui/scripts-monorepo, which walks
+ * the repo on load.
+ *
+ * Caveat that motivates the per-package copies: Jest MERGES `moduleNameMapper` from a
+ * preset, but a project-level `snapshotSerializers` REPLACES the preset's array. 85
+ * jest.config.js files declare their own `snapshotSerializers`, so the serializer below
+ * only reaches the configs that don't — every other converted/affected package must list
+ * `cssModules.snapshotSerializer` itself.
+ */
+const cssModulesJest = {
+  moduleNameMapperTarget: require.resolve('./scripts/jest/src/css-modules/proxy.js'),
+  snapshotSerializer: require.resolve('./scripts/jest/src/css-modules/serializer.js'),
+};
+
+/**
  * @type {import('@jest/types').Config.InitialOptions}
  */
 const baseConfig = {
@@ -37,7 +61,12 @@ const baseConfig = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   testEnvironment: 'jsdom',
-  moduleNameMapper: { ...tsPathAliases, ...reactDepsPaths },
+  moduleNameMapper: {
+    ...tsPathAliases,
+    ...reactDepsPaths,
+    '\\.module\\.css$': cssModulesJest.moduleNameMapperTarget,
+  },
+  snapshotSerializers: [cssModulesJest.snapshotSerializer],
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],

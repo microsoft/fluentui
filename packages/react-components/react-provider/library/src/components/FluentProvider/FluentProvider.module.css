@@ -1,0 +1,58 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useFluentProviderStyles_unstable, not source declaration order:
+ *
+ *   1 fluentProviderClassNames.root → static class (JS)
+ *   2 state.themeClassName          → runtime `fui-FluentProvider<useId>` class; carries
+ *                                     ONLY `--token: value` declarations, written into a
+ *                                     <style> tag by useFluentProviderThemeStyleTag.
+ *                                     Never authored in CSS — the name is dynamic.
+ *   3 useStyles.root                → fui.base  (the only makeStyles slice)
+ *   4 consumer className            → unlayered (always wins)
+ *
+ * Only one makeStyles slice exists, so there are no intra-component inversions to
+ * replicate — everything lands in `fui.base`.
+ *
+ * SCOPE NOTE: this class is applied to the provider root element AND, when
+ * `applyStylesToPortals` is true (the default), to every portal mount node —
+ * useFluentProviderContextValues.ts publishes `root.className` as `themeClassName`, and
+ * react-portal's usePortalMountNode.ts puts that string on the mount node. Portals
+ * therefore keep inheriting this base typography/colour exactly as they did with the
+ * Griffel atomics, because what is threaded is the className STRING.
+ */
+
+@layer fui.base {
+  /* from useStyles.root */
+  .root {
+    /*
+     * Griffel compiled `textAlign: 'left'` to an [ltr, rtl] class pair
+     * (`.f1o700av{text-align:left}` / `.fes3tcz{text-align:right}` — see
+     * lib-commonjs/components/FluentProvider/useFluentProviderStyles.styles.js). The
+     * logical value `start` reproduces both sides in one declaration (DECISIONS.md D5).
+     */
+    @apply text-start;
+
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+
+    /* from `...typographyStyles.body1` (@fluentui/react-theme) */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}

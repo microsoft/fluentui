@@ -69,13 +69,30 @@ describe('FluentProvider', () => {
     expect(container.querySelector('style')).toBeNull();
   });
 
+  /*
+   * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+   *
+   * These cases used to also assert `toHaveStyle({ textAlign: 'left' | 'right' })`.
+   * That worked because Griffel INJECTED its atomic rules into the jsdom document at
+   * runtime (`.f1o700av{text-align:left}` / `.fes3tcz{text-align:right}` — the compiled
+   * [ltr, rtl] pair), so `getComputedStyle` could resolve them.
+   *
+   * FluentProvider.module.css now expresses the same thing as a single logical
+   * declaration, `text-align: start` (DECISIONS.md D5), and jest maps `*.module.css` to a
+   * class-name proxy — no stylesheet is loaded, so there is nothing for
+   * `getComputedStyle` to resolve and the assertion is not expressible here.
+   *
+   * The `dir` attribute assertions below are the part that still carries signal, and they
+   * matter MORE after the migration: logical properties resolve against the DOM's computed
+   * direction, so this attribute is now the actual input to the styling. The rendered
+   * `text-align` itself is covered by the RTL visual-regression stories.
+   */
   describe('applies "dir" attribute', () => {
     it('ltr', () => {
       const { getByText } = render(<FluentProvider dir="ltr">Test</FluentProvider>);
       const element = getByText('Test');
 
       expect(element).toHaveAttribute('dir', 'ltr');
-      expect(element).toHaveStyle({ textAlign: 'left' });
     });
 
     it('rtl', () => {
@@ -83,7 +100,6 @@ describe('FluentProvider', () => {
       const element = getByText('Test');
 
       expect(element).toHaveAttribute('dir', 'rtl');
-      expect(element).toHaveStyle({ textAlign: 'right' });
     });
   });
 });

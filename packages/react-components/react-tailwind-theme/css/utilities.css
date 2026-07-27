@@ -1,0 +1,157 @@
+/**
+ * Shared focus-ring utilities — the CSS replacement for react-tabster's Griffel focus
+ * factories (DECISIONS.md D6). The JS helpers (`createFocusOutlineStyle`,
+ * `createCustomFocusIndicatorStyle`) stay exported until the Phase 3 cleanup; converted
+ * packages `@apply` these instead.
+ *
+ * These are `@utility` (not plain classes) so component modules can `@apply` them INSIDE
+ * their own `@layer fui.*` blocks: `@apply` inlines a utility's declarations at the call
+ * site, so nothing is ever emitted into Tailwind's `@layer utilities` — which would
+ * outrank every `fui.*` layer (see CONVERSION_GUIDE.md "Toolchain traps").
+ *
+ * ── Selector ────────────────────────────────────────────────────────────────────────
+ * These utilities carry DECLARATIONS ONLY. The selector stays with the caller, which
+ * must wrap them in the shared `focus-visible-fui` / `focus-within-fui` variants
+ * (`[data-fui-focus-visible]` / `[data-fui-focus-within]`, still written by keyborg).
+ * That split is deliberate: `createCustomFocusIndicatorStyle`'s `customizeSelector`
+ * option (4 call sites) has no CSS equivalent, so the selector must stay authorable.
+ *
+ * ── Parameterisation ────────────────────────────────────────────────────────────────
+ * The compiled Griffel output differs per component only in the values react-tabster's
+ * options expose (`outlineRadius`, `outlineColor`, `outlineWidth`, `outlineOffset`).
+ * Those become CSS custom properties here, each registered with `@property … inherits:
+ * false` so a knob set on one button can NEVER leak into a nested one (SplitButton
+ * renders a Button inside a Button). With every knob unset the `var()` fallbacks
+ * reproduce the compiled defaults exactly — see the byte-comparisons below.
+ */
+
+/* Knobs. `syntax: '*'` with no `initial-value` gives the guaranteed-invalid initial
+   value, so an unset knob always resolves to the `var()` fallback; `inherits: false`
+   stops any knob from reaching descendants. */
+@property --fui-focus-outline-width {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-outline-color {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-outline-radius {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-outline-offset {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-ring-color {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-ring-radius {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-ring-width {
+  syntax: '*';
+  inherits: false;
+}
+@property --fui-focus-ring-inset-width {
+  syntax: '*';
+  inherits: false;
+}
+
+/**
+ * `fui-focus-outline` — the DEFAULT ring produced by
+ * `createFocusOutlineStyle()` (react-tabster/src/focus/createFocusOutlineStyle.ts):
+ * a `::after` pseudo-element inset by the outline width.
+ *
+ * Byte-comparison against a compiled AOT consumer
+ * (react-accordion/library/lib-commonjs/components/AccordionHeader/
+ *  useAccordionHeaderStyles.styles.js:245-268, 341-353):
+ *
+ *   [data-fui-focus-visible]{border-{top,right,left,bottom}-color:transparent}
+ *   [data-fui-focus-visible]::after{content:""}
+ *   [data-fui-focus-visible]::after{position:absolute}
+ *   [data-fui-focus-visible]::after{pointer-events:none}
+ *   [data-fui-focus-visible]::after{z-index:1}
+ *   [data-fui-focus-visible]::after{border:2px solid var(--colorStrokeFocus2)}
+ *   [data-fui-focus-visible]::after{border-radius:var(--borderRadiusMedium)}
+ *   [data-fui-focus-visible]::after{top:calc(2px * -1)}      (right/left/bottom idem)
+ *   @media (forced-colors: active){…::after{border-{top,left,right,bottom}-color:Highlight}}
+ *
+ * The hardcoded `2px` is react-tabster's own FIXME ("tokens.strokeWidthThick causes some
+ * weird bugs") — it is reproduced verbatim, NOT "fixed" to a token (DECISIONS.md D6).
+ *
+ * `createFocusOutlineStyle` also emits `:focus{outline-style:none}` and
+ * `:focus-visible{outline-style:none}`. Those sit OUTSIDE the focus-visible selector, so
+ * they stay with the caller (Button already sets `outline-style: none` in its base).
+ *
+ * NOT exercised by any converted package yet — Button uses `fui-focus-ring` below. The
+ * first `createFocusOutlineStyle` conversion validates this one against its own AOT
+ * output before trusting it.
+ */
+@utility fui-focus-outline {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  &::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    border: var(--fui-focus-outline-width, 2px) solid var(--fui-focus-outline-color, var(--colorStrokeFocus2));
+    border-radius: var(--fui-focus-outline-radius, var(--borderRadiusMedium));
+
+    /* `getOutlinePosition()`: `calc(<width> * -1)` with no offset, else
+       `calc(0px - <width> - <offset>)`. Both branches collapse into one expression
+       because an unset `--fui-focus-outline-offset` falls back to `0px`. */
+    top: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    right: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    bottom: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+    left: calc(0px - var(--fui-focus-outline-width, 2px) - var(--fui-focus-outline-offset, 0px));
+  }
+
+  @media (forced-colors: active) {
+    &::after {
+      border-top-color: Highlight;
+      border-right-color: Highlight;
+      border-bottom-color: Highlight;
+      border-left-color: Highlight;
+    }
+  }
+}
+
+/**
+ * `fui-focus-ring` — the Button-family indicator: no pseudo-element, the ring is drawn
+ * with the element's own border plus an inset `box-shadow`. Produced by
+ * `createCustomFocusIndicatorStyle({...})` with Button's option object.
+ *
+ * Byte-comparison against the compiled AOT output
+ * (react-button/library/lib-commonjs/components/Button/useButtonStyles.styles.js:41):
+ *
+ *   .r1f29ykk[data-fui-focus-visible]{
+ *     border-color:var(--colorStrokeFocus2);
+ *     border-radius:var(--borderRadiusMedium);
+ *     border-width:1px;
+ *     outline:var(--strokeWidthThick) solid var(--colorTransparentStroke);
+ *     box-shadow:0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset;
+ *     z-index:1;
+ *   }
+ *
+ * With all four knobs unset every declaration below computes to exactly that. The
+ * declaration ORDER is preserved too, which matters for `border-color` vs `border-width`
+ * against the `border:` shorthand a caller's base rule may set in a lower layer.
+ */
+@utility fui-focus-ring {
+  border-color: var(--fui-focus-ring-color, var(--colorStrokeFocus2));
+  border-radius: var(--fui-focus-ring-radius, var(--borderRadiusMedium));
+  border-width: var(--fui-focus-ring-width, 1px);
+  outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+  box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--strokeWidthThin))
+    var(--fui-focus-ring-color, var(--colorStrokeFocus2)) inset;
+  z-index: 1;
+}

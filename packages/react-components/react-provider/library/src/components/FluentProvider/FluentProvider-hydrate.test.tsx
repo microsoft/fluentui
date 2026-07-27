@@ -67,12 +67,19 @@ describe('FluentProvider (hydration)', () => {
 
     expect(logErrorSpy).toHaveBeenCalledTimes(0);
 
+    /*
+     * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+     * The `<style data-make-styles-bucket="d" data-priority="0" />` element that used to
+     * lead this snapshot was Griffel's runtime bucket, created when FluentProvider's
+     * `makeStyles` atomics were injected. FluentProvider no longer has any Griffel styles,
+     * so no bucket is created — the expected outcome of the conversion, and the reason
+     * `logErrorSpy` above still records zero hydration errors.
+     *
+     * The remaining `<style id="fui-FluentProvider1">` is the THEME rule tag written by
+     * useFluentProviderThemeStyleTag, which the migration deliberately leaves untouched.
+     */
     expect(document.head).toMatchInlineSnapshot(`
       <head>
-        <style
-          data-make-styles-bucket="d"
-          data-priority="0"
-        />
         <style
           id="fui-FluentProvider1"
         >

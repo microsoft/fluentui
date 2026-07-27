@@ -3,6 +3,8 @@
 const { existsSync, readFileSync } = require('node:fs');
 const { dirname, join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 const findPackageRoot = (libraryName, resolveFrom = __dirname) => {
   let packageRoot = dirname(require.resolve(libraryName, { paths: [resolveFrom] }));
 
@@ -59,7 +61,14 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * `cssModules.snapshotSerializer` is required here (not just in `jest.preset.js`)
+   * because a project-level `snapshotSerializers` REPLACES the preset's array in Jest's
+   * config normalisation. These suites snapshot a rendered `FluentProvider`, which is
+   * converted to CSS Modules — without the serializer its generated `fuicm-*` class would
+   * churn every snapshot on every style edit (DECISIONS.md D9).
+   */
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
   moduleNameMapper: Object.fromEntries(
     d3Libs.map(libraryName => [`^${libraryName}$`, createD3LibMappingToCommonJs(libraryName)]),
   ),

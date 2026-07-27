@@ -18,6 +18,7 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @import './variants.css';
+@import './utilities.css';
 
 @theme static {
   --base-scale: calc(1rem / 16px);
