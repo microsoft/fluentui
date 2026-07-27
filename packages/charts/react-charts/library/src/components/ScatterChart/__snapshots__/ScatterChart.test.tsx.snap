@@ -424,7 +424,9 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
           >
             <button
               aria-label="Region 1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -443,7 +445,9 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
             </button>
             <button
               aria-label="Region 2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"

@@ -129,7 +129,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
               >
                 {dataToRender.map((item, id) => (
                   <OverflowItem key={id} id={id.toString()}>
-                    {_renderButton(item)}
+                    {_renderButton(item, id)}
                   </OverflowItem>
                 ))}
               </div>
@@ -155,12 +155,12 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           ref={_rootElem}
         >
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
-            {dataToRender.map(item => (
+            {dataToRender.map((item, id) => (
               <div
                 className={mergeClasses(classes.legendContainer, item.legendAnnotation && classes.annotation)}
                 key={item.key}
               >
-                {_renderButton(item)}
+                {_renderButton(item, id)}
                 {item.legendAnnotation && <div>{item.legendAnnotation()}</div>}
               </div>
             ))}
@@ -326,8 +326,15 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         // (a presentational div rather than a Button) so the menu row isn't a nested/duplicate clickable
         // element. onClick is exposed as a prop so OverflowMenu can wire it onto the MenuItem instead.
         // A plain div defaults to display:block, so lay the swatch and label out inline like the Button did.
+        // data-selected / data-title are read by OverflowMenu to drive the MenuItemCheckbox checked state.
         return (
-          <div key={index} {...commonProps} style={{ ...legendStyle, display: 'flex', alignItems: 'center' }}>
+          <div
+            key={index}
+            {...commonProps}
+            data-selected={!!selectedLegends[legend.title]}
+            data-title={legend.title}
+            style={{ ...legendStyle, display: 'flex', alignItems: 'center' }}
+          >
             {legendContent}
           </div>
         );
@@ -338,8 +345,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-selected': !!selectedLegends[legend.title],
             role: 'option',
             'aria-label': `${legend.title}`,
-            'aria-setsize': data['aria-setsize'],
-            'aria-posinset': data['aria-posinset'],
+            // setsize is the total number of legends and posinset is the legend's actual index in the full
+            // list, so counts stay consistent whether a legend is shown in the listbox or the overflow menu.
+            'aria-setsize': props.legends.length,
+            'aria-posinset': (index ?? 0) + 1,
           })}
           {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
           key={index}

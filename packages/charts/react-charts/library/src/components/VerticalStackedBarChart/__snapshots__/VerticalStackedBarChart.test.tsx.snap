@@ -474,7 +474,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -493,7 +495,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </button>
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -512,7 +516,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </button>
             <button
               aria-label="Metadata3"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -531,7 +537,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </button>
             <button
               aria-label="Supported Builds"
+              aria-posinset="4"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1030,7 +1038,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1049,7 +1059,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </button>
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1068,7 +1080,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </button>
             <button
               aria-label="Metadata3"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1087,7 +1101,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             </button>
             <button
               aria-label="Supported Builds"
+              aria-posinset="4"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1591,7 +1607,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1610,7 +1628,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             </button>
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -2115,7 +2135,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -2137,7 +2159,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -2687,7 +2711,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -2709,7 +2735,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -3279,7 +3307,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata1"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -3301,7 +3331,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Metadata2"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -3323,7 +3355,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <button
               aria-label="Line1"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="3"
               class="fui-Button fui-legend__legend"
               role="option"
               style="--rect-height: 4px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
@@ -3847,7 +3881,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -3866,7 +3902,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -4368,7 +4406,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -4387,7 +4427,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -4889,7 +4931,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -4908,7 +4952,9 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -5410,7 +5456,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -5429,7 +5477,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -5932,7 +5982,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -5954,7 +6006,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         >
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -6913,7 +6967,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -6932,7 +6988,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -7424,7 +7482,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -7443,7 +7503,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -8022,7 +8084,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -8041,7 +8105,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -8625,7 +8691,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -8644,7 +8712,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -9153,7 +9223,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         >
           <button
             aria-label="Metadata1"
+            aria-posinset="1"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
@@ -9172,7 +9244,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           </button>
           <button
             aria-label="Metadata2"
+            aria-posinset="2"
             aria-selected="false"
+            aria-setsize="2"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"

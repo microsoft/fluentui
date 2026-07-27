@@ -471,7 +471,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <button
               aria-label="Oranges"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -490,7 +492,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </button>
             <button
               aria-label="Grapes"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -509,7 +513,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </button>
             <button
               aria-label="Apples"
+              aria-posinset="3"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -528,7 +534,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             </button>
             <button
               aria-label="Bananas"
+              aria-posinset="4"
               aria-selected="false"
+              aria-setsize="4"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1026,7 +1034,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <button
               aria-label="undefined"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="1"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -1527,7 +1537,9 @@ Object {
               >
                 <button
                   aria-label="Oranges"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -1546,7 +1558,9 @@ Object {
                 </button>
                 <button
                   aria-label="Grapes"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -1565,7 +1579,9 @@ Object {
                 </button>
                 <button
                   aria-label="Apples"
+                  aria-posinset="3"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -1584,7 +1600,9 @@ Object {
                 </button>
                 <button
                   aria-label="Bananas"
+                  aria-posinset="4"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2078,7 +2096,9 @@ Object {
             >
               <button
                 aria-label="Oranges"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2097,7 +2117,9 @@ Object {
               </button>
               <button
                 aria-label="Grapes"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2116,7 +2138,9 @@ Object {
               </button>
               <button
                 aria-label="Apples"
+                aria-posinset="3"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2135,7 +2159,9 @@ Object {
               </button>
               <button
                 aria-label="Bananas"
+                aria-posinset="4"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2688,7 +2714,9 @@ Object {
               >
                 <button
                   aria-label="Oranges"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2707,7 +2735,9 @@ Object {
                 </button>
                 <button
                   aria-label="Grapes"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2726,7 +2756,9 @@ Object {
                 </button>
                 <button
                   aria-label="Apples"
+                  aria-posinset="3"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2745,7 +2777,9 @@ Object {
                 </button>
                 <button
                   aria-label="Bananas"
+                  aria-posinset="4"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -3239,7 +3273,9 @@ Object {
             >
               <button
                 aria-label="Oranges"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -3258,7 +3294,9 @@ Object {
               </button>
               <button
                 aria-label="Grapes"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -3277,7 +3315,9 @@ Object {
               </button>
               <button
                 aria-label="Apples"
+                aria-posinset="3"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -3296,7 +3336,9 @@ Object {
               </button>
               <button
                 aria-label="Bananas"
+                aria-posinset="4"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -3849,7 +3891,9 @@ Object {
               >
                 <button
                   aria-label="Oranges"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -3868,7 +3912,9 @@ Object {
                 </button>
                 <button
                   aria-label="Grapes"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -3887,7 +3933,9 @@ Object {
                 </button>
                 <button
                   aria-label="Apples"
+                  aria-posinset="3"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -3906,7 +3954,9 @@ Object {
                 </button>
                 <button
                   aria-label="Bananas"
+                  aria-posinset="4"
                   aria-selected="false"
+                  aria-setsize="4"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -4400,7 +4450,9 @@ Object {
             >
               <button
                 aria-label="Oranges"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -4419,7 +4471,9 @@ Object {
               </button>
               <button
                 aria-label="Grapes"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -4438,7 +4492,9 @@ Object {
               </button>
               <button
                 aria-label="Apples"
+                aria-posinset="3"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -4457,7 +4513,9 @@ Object {
               </button>
               <button
                 aria-label="Bananas"
+                aria-posinset="4"
                 aria-selected="false"
+                aria-setsize="4"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -5124,7 +5182,9 @@ Object {
               >
                 <button
                   aria-label="Product A"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="3"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -5143,7 +5203,9 @@ Object {
                 </button>
                 <button
                   aria-label="Product B"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="3"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -5162,7 +5224,9 @@ Object {
                 </button>
                 <button
                   aria-label="Product C"
+                  aria-posinset="3"
                   aria-selected="false"
+                  aria-setsize="3"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -5770,7 +5834,9 @@ Object {
             >
               <button
                 aria-label="Product A"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="3"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -5789,7 +5855,9 @@ Object {
               </button>
               <button
                 aria-label="Product B"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="3"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -5808,7 +5876,9 @@ Object {
               </button>
               <button
                 aria-label="Product C"
+                aria-posinset="3"
                 aria-selected="false"
+                aria-setsize="3"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -7258,7 +7328,9 @@ Object {
               >
                 <button
                   aria-label="undefined"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="1"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -7783,7 +7855,9 @@ Object {
             >
               <button
                 aria-label="undefined"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="1"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -8343,7 +8417,9 @@ Object {
               >
                 <button
                   aria-label="undefined"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="1"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -8839,7 +8915,9 @@ Object {
             >
               <button
                 aria-label="undefined"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="1"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"

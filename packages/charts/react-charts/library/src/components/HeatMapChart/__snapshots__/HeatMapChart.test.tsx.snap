@@ -241,7 +241,9 @@ Object {
               >
                 <button
                   aria-label="Execllent (0-200)"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -260,7 +262,9 @@ Object {
                 </button>
                 <button
                   aria-label="Nasty"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -519,7 +523,9 @@ Object {
             >
               <button
                 aria-label="Execllent (0-200)"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -538,7 +544,9 @@ Object {
               </button>
               <button
                 aria-label="Nasty"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -854,7 +862,9 @@ Object {
               >
                 <button
                   aria-label="Excellent"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -873,7 +883,9 @@ Object {
                 </button>
                 <button
                   aria-label="Nasty"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -1130,7 +1142,9 @@ Object {
             >
               <button
                 aria-label="Excellent"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -1149,7 +1163,9 @@ Object {
               </button>
               <button
                 aria-label="Nasty"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -1964,7 +1980,9 @@ Object {
               >
                 <button
                   aria-label="Execllent (0-200)"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -1983,7 +2001,9 @@ Object {
                 </button>
                 <button
                   aria-label="Nasty"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2242,7 +2262,9 @@ Object {
             >
               <button
                 aria-label="Execllent (0-200)"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2261,7 +2283,9 @@ Object {
               </button>
               <button
                 aria-label="Nasty"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2579,7 +2603,9 @@ Object {
               >
                 <button
                   aria-label="Execllent (0-200)"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2598,7 +2624,9 @@ Object {
                 </button>
                 <button
                   aria-label="Nasty"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -2857,7 +2885,9 @@ Object {
             >
               <button
                 aria-label="Execllent (0-200)"
+                aria-posinset="1"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -2876,7 +2906,9 @@ Object {
               </button>
               <button
                 aria-label="Nasty"
+                aria-posinset="2"
                 aria-selected="false"
+                aria-setsize="2"
                 class="fui-Button fui-legend__legend"
                 data-overflow-item=""
                 role="option"
@@ -3198,7 +3230,9 @@ Object {
                 >
                   <button
                     aria-label="Execllent (0-200)"
+                    aria-posinset="1"
                     aria-selected="false"
+                    aria-setsize="2"
                     class="fui-Button fui-legend__legend"
                     data-overflow-item=""
                     role="option"
@@ -3217,7 +3251,9 @@ Object {
                   </button>
                   <button
                     aria-label="Nasty"
+                    aria-posinset="2"
                     aria-selected="false"
+                    aria-setsize="2"
                     class="fui-Button fui-legend__legend"
                     data-overflow-item=""
                     role="option"
@@ -3481,7 +3517,9 @@ Object {
               >
                 <button
                   aria-label="Execllent (0-200)"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -3500,7 +3538,9 @@ Object {
                 </button>
                 <button
                   aria-label="Nasty"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -3822,7 +3862,9 @@ Object {
                 >
                   <button
                     aria-label="Execllent (0-200)"
+                    aria-posinset="1"
                     aria-selected="false"
+                    aria-setsize="2"
                     class="fui-Button fui-legend__legend"
                     data-overflow-item=""
                     role="option"
@@ -3841,7 +3883,9 @@ Object {
                   </button>
                   <button
                     aria-label="Nasty"
+                    aria-posinset="2"
                     aria-selected="false"
+                    aria-setsize="2"
                     class="fui-Button fui-legend__legend"
                     data-overflow-item=""
                     role="option"
@@ -4104,7 +4148,9 @@ Object {
               >
                 <button
                   aria-label="Execllent (0-200)"
+                  aria-posinset="1"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -4123,7 +4169,9 @@ Object {
                 </button>
                 <button
                   aria-label="Nasty"
+                  aria-posinset="2"
                   aria-selected="false"
+                  aria-setsize="2"
                   class="fui-Button fui-legend__legend"
                   data-overflow-item=""
                   role="option"
@@ -4427,7 +4475,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           >
             <button
               aria-label="Excellent"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -4446,7 +4496,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             </button>
             <button
               aria-label="Nasty"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -4705,7 +4757,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           >
             <button
               aria-label="Excellent"
+              aria-posinset="1"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
@@ -4724,7 +4778,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             </button>
             <button
               aria-label="Nasty"
+              aria-posinset="2"
               aria-selected="false"
+              aria-setsize="2"
               class="fui-Button fui-legend__legend"
               data-overflow-item=""
               role="option"
