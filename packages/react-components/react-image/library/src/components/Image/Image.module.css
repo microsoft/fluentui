@@ -1,0 +1,162 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useImageStyles_unstable,
+ * not source declaration order. Image has a single slot (`root`):
+ *
+ *   #  mergeClasses argument                  → target
+ *   ---------------------------------------------------------------------------------
+ *   1  imageClassNames.root                   → static class (JS)
+ *   2  styles.base                            → fui.components.l1  (.root)
+ *   3  styles.block        (state.block)      → fui.components.l1  (.block)
+ *   4  styles.bordered     (state.bordered)   → fui.components.l1  (.bordered)
+ *   5  styles.shadow       (state.shadow)     → fui.components.l1  (.shadow)
+ *   6  styles[state.fit]                      → fui.components.l1  (.center/.contain/.cover/.none)
+ *   7  styles.fitFill      (computed)         → fui.components.l1  (.fitFill)
+ *   8  styles[state.shape]                    → fui.components.l1  (.circular/.rounded)
+ *   9  consumer className                     → unlayered (always wins)
+ *
+ * There is no `makeResetStyles` in this component, so `fui.base` stays empty here.
+ *
+ * Every prop Image styles is a LOOK prop (block/bordered/shadow are boolean visual
+ * modifiers; fit/shape are enums), and none of them composes with another selector —
+ * each is a standalone, self-contained rule block. They are therefore module classes
+ * per DECISIONS.md D3, and this component adds NO data attributes and NO entries to the
+ * shared `@custom-variant` catalog. (Contrast the react-divider pilot, where `inset`
+ * became `data-inset` because its rules had to nest inside the orientation variants.)
+ *
+ * Two Griffel slices are EMPTY — `square: {}` and `default: {}`, both annotated in the
+ * source as "exactly the same as the base styles". They are deliberately NOT authored
+ * here: `styles.square` / `styles.default` then resolve to `undefined` and clsx drops
+ * them, which is exactly what Griffel's empty slices did.
+ *
+ * ── Ordering that IS load-bearing ──────────────────────────────────────────────────
+ * #8 shape's `border-radius` must beat #2 base's `border-radius:var(--borderRadiusNone)`.
+ * Declaration order in the Griffel source agrees with argument order here (base L14
+ * before circular L29 / rounded L30), so this is not an inversion — but the winner is
+ * now encoded purely in file position, so `.circular` / `.rounded` must stay LAST.
+ *
+ * ── The one declaration-order inversion, and why it is benign ──────────────────────
+ * `block` is DECLARED last in the Griffel source (L69) yet APPLIED third; `fitFill` is
+ * declared earlier (L63) yet applied seventh. The only property they share is
+ * `width: 100%` — the identical value — so no order changes a computed pixel. Griffel
+ * in fact compiled both to the SAME atomic class (`a9b677: "fly5x3f"`). File order below
+ * follows argument order regardless, so the mapping needs no exception.
+ *
+ * ── RTL ────────────────────────────────────────────────────────────────────────────
+ * Exactly one value-level flip exists in the compiled atomics
+ * (lib-commonjs/components/Image/useImageStyles.styles.js): `.none`'s `object-position`
+ * pair ["object-position:left top", "object-position:right top"]. `object-position`
+ * takes physical <position> keywords and has no logical equivalent, so it is duplicated
+ * under `@variant rtl` (DECISIONS.md D5).
+ *
+ * Every other ltr/rtl pair Griffel emitted for this component is property-level only and
+ * carries the SAME value on both sides (`shorthands.borderColor` / `borderStyle` /
+ * `borderWidth` expand to four longhands whose right/left members are swapped but
+ * identical in value), so the physical longhands below render byte-identical in both
+ * directions — the same treatment the react-divider pilot gave `shorthands.borderColor`.
+ * `box-shadow: var(--shadow4)` is likewise unflipped by Griffel (single atomic): the
+ * token value is opaque to rtl-css-js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.base */
+  .root {
+    @apply box-border inline-block;
+
+    /* shorthands.borderColor() — expanded to the four longhands Griffel compiled */
+    border-top-color: var(--colorNeutralStroke1);
+    border-right-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-left-color: var(--colorNeutralStroke1);
+
+    /*
+     * Kept as the `border-radius` shorthand because that is what Griffel compiled
+     * (`.f1fabniw{border-radius:var(--borderRadiusNone);}`) and because no rule anywhere
+     * in this component sets a corner longhand — so there is no shorthand-vs-longhand
+     * priority for the cascade to get wrong. `.circular` / `.rounded` below override it
+     * by file position.
+     */
+    border-radius: var(--borderRadiusNone);
+  }
+
+  /* from useStyles.block */
+  .block {
+    @apply w-full;
+  }
+
+  /* from useStyles.bordered — shorthands.borderStyle/borderWidth expanded to longhands */
+  .bordered {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+
+    border-top-width: var(--strokeWidthThin);
+    border-right-width: var(--strokeWidthThin);
+    border-bottom-width: var(--strokeWidthThin);
+    border-left-width: var(--strokeWidthThin);
+  }
+
+  /* from useStyles.shadow */
+  .shadow {
+    box-shadow: var(--shadow4);
+  }
+
+  /*
+   * from useStyles.center / .contain / .cover / .none — the `fit` enum.
+   * `default` is an empty Griffel slice and is intentionally absent (see header).
+   */
+  .center {
+    @apply object-none object-center;
+  }
+
+  .contain {
+    @apply object-contain object-center;
+  }
+
+  .cover {
+    @apply object-cover object-center;
+  }
+
+  .none {
+    @apply object-none;
+
+    /* value-level RTL flip — Griffel emitted ["left top", "right top"] */
+    object-position: left top;
+
+    @variant rtl {
+      object-position: right top;
+    }
+  }
+
+  /* from useStyles.fitFill — applied when `fit` is set but no explicit height/width is */
+  .fitFill {
+    @apply h-full w-full;
+  }
+
+  /*
+   * from useStyles.circular / .rounded — the `shape` enum, LAST in mergeClasses and so
+   * last in this file: its `border-radius` must beat `.root`'s. `square` is an empty
+   * Griffel slice and is intentionally absent (see header).
+   */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+}

@@ -1,0 +1,60 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ALTITUDE: fui.components.l2, not l1 (DECISIONS.md D2 amendment 2).
+ *
+ * `useCounterBadgeStyles_unstable` sets `state.root.className` FIRST and then hands the
+ * whole state to `useBadgeStyles_unstable`, which composes its own classes ahead of that
+ * accumulated string. The effective mergeClasses argument order is therefore:
+ *
+ *   1 badgeClassNames.root, Badge reset, Badge size/shape/appearance slices   (Badge hook)
+ *   2 counterBadgeClassNames.root                        → static class (JS)
+ *   3 useStyles.dot                                      → fui.components.l2
+ *   4 useStyles.hide                                     → fui.components.l2
+ *   5 consumer className                                 → unlayered (always wins)
+ *
+ * i.e. these two slices are applied OVER another component's hook output — the
+ * ToggleButton-over-Button case — so they belong to the composition altitude. This is
+ * load-bearing, not bookkeeping: `dot` must beat Badge's own `size` slices
+ * (`<CounterBadge dot size="large" />` is 6×6, not 24×24) and `hide` must beat the Badge
+ * reset's `display: inline-flex`. In l1 the winner would depend on which module's rules
+ * happen to be emitted first; in l2 it is guaranteed, because a cascade-layer comparison
+ * resolves at the highest differing level.
+ *
+ * Within l2 the two blocks stay in argument order, though they never collide: `dot` sets
+ * sizing/padding and `hide` sets `display`.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.dot — collapses the badge to a bare 6px dot. `min-width: auto` undoes
+   * the reset's `min-width: 20px` (and any size slice's), and `padding: '0'` is expanded
+   * to longhands to match how the Badge module writes the padding it overrides.
+   */
+  .dot {
+    @apply size-6;
+
+    min-width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+
+  /* from useStyles.hide — no children and not a dot, so there is nothing to show. */
+  .hide {
+    @apply hidden;
+  }
+}

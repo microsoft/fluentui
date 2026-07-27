@@ -1,0 +1,114 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useLabelStyles_unstable,
+ * not source declaration order. Label has no makeResetStyles, so nothing lands in
+ * `fui.base`, and it composes no other component's hook output, so nothing lands in
+ * `fui.components.l2`.
+ *
+ * root slot:
+ *   1 labelClassNames.root  → static class (JS)
+ *   2 useStyles.root        → fui.components.l1
+ *   3 useStyles.disabled    → fui.components.l1   (data-disabled)
+ *   4 useStyles[size]       → fui.components.l1   (data-size)
+ *   5 useStyles.semibold    → fui.components.l1   (.semibold module class)
+ *   6 consumer className    → unlayered (always wins)
+ *
+ * required slot:
+ *   1 labelClassNames.required → static class (JS)
+ *   2 useStyles.required       → fui.components.l1
+ *   3 useStyles.disabled       → fui.components.l1   (data-disabled)
+ *   4 consumer className       → unlayered (always wins)
+ *
+ * `useStyles.disabled` is ONE Griffel slice that mergeClasses applies to BOTH slots, so
+ * both slots carry `data-disabled` and each gets its own rule block below. On both slots
+ * it is argument #3 — after that slot's own base — and it overrides `color` on both, so
+ * its block must (and does) follow both base blocks in file order.
+ *
+ * No inversions: `useStyles.large` (arg #4) and `useStyles.semibold` (arg #5) both set
+ * `font-weight: var(--fontWeightSemibold)` and compile to the SAME Griffel atomic
+ * (`fl43uef`), so their relative order cannot change a rendered value.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Label/useLabelStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root */
+  .root {
+    font-family: var(--fontFamilyBase);
+    color: var(--colorNeutralForeground1);
+  }
+
+  /* from useStyles.required — paddingLeft → padding-inline-start (the file's only RTL flip) */
+  .required {
+    color: var(--colorPaletteRedForeground3);
+    padding-inline-start: var(--spacingHorizontalXS);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.disabled — the same slice mergeClasses applies to both slots */
+  .root {
+    @variant disabled {
+      color: var(--colorNeutralForegroundDisabled);
+
+      @variant forced-colors {
+        color: GrayText;
+      }
+    }
+  }
+
+  /* from useStyles.disabled — required slot */
+  .required {
+    @variant disabled {
+      color: var(--colorNeutralForegroundDisabled);
+
+      @variant forced-colors {
+        color: GrayText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /* from useStyles.small */
+    @variant size-small {
+      font-size: var(--fontSizeBase200);
+      line-height: var(--lineHeightBase200);
+    }
+
+    /* from useStyles.medium */
+    @variant size-medium {
+      font-size: var(--fontSizeBase300);
+      line-height: var(--lineHeightBase300);
+    }
+
+    /* from useStyles.large */
+    @variant size-large {
+      font-size: var(--fontSizeBase400);
+      line-height: var(--lineHeightBase400);
+      font-weight: var(--fontWeightSemibold);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.semibold */
+  .semibold {
+    font-weight: var(--fontWeightSemibold);
+  }
+}

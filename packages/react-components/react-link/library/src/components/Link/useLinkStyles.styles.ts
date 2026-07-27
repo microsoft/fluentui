@@ -1,145 +1,81 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { LinkSlots, LinkState } from './Link.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './Link.module.css';
 
 export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',
 };
 
-const useStyles = makeStyles({
-  focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: tokens.colorStrokeFocus2,
-    textDecorationLine: 'underline',
-    textDecorationStyle: 'double',
-    outlineStyle: 'none',
-  }),
-  // Common styles.
-  root: {
-    ':focus-visible': {
-      outlineStyle: 'none',
-    },
-    backgroundColor: 'transparent',
-    boxSizing: 'border-box',
-    color: tokens.colorBrandForegroundLink,
-    cursor: 'pointer',
-    display: 'inline',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
-    margin: '0',
-    padding: '0',
-    overflow: 'inherit',
-    textAlign: 'left',
-    textDecorationLine: 'none',
-    textDecorationThickness: tokens.strokeWidthThin,
-    textOverflow: 'inherit',
-    userSelect: 'text',
-
-    ':hover': {
-      textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkHover,
-    },
-
-    ':active': {
-      textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkPressed,
-    },
-  },
-  // Overrides when the Link renders as a button.
-  button: {
-    ...shorthands.borderStyle('none'),
-  },
-  // Overrides when an href is present so the Link renders as an anchor.
-  href: {
-    fontSize: 'inherit',
-  },
-  // Overrides when the Link appears subtle.
-  subtle: {
-    color: tokens.colorNeutralForeground2Link,
-
-    ':hover': {
-      textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2LinkHover,
-    },
-
-    ':active': {
-      textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2LinkPressed,
-    },
-  },
-  // Overrides when the Link is rendered inline within text.
-  inline: {
-    textDecorationLine: 'underline',
-  },
-  // Overrides when the Link is disabled.
-  disabled: {
-    textDecorationLine: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'not-allowed',
-
-    ':hover': {
-      textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    ':active': {
-      textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    // There is no native disabled state for links, so we need to explicitly style the disabled state for high contrast mode.
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-
-      ':hover': {
-        color: 'GrayText',
-      },
-
-      ':active': {
-        color: 'GrayText',
-      },
-    },
-  },
-  inverted: {
-    color: tokens.colorBrandForegroundInverted,
-    ':hover': {
-      color: tokens.colorBrandForegroundInverted,
-    },
-    ':active': {
-      color: tokens.colorBrandForegroundInverted,
-    },
-  },
-  brand: {
-    color: tokens.colorNeutralForegroundInvertedLink,
-    ':hover': {
-      color: tokens.colorNeutralForegroundInvertedLinkHover,
-    },
-    ':active': {
-      color: tokens.colorNeutralForegroundInvertedLinkPressed,
-    },
-  },
-});
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * Both are *presence* selectors, so the flags are written `flag || undefined` — React
+ * omits an attribute whose value is `undefined`, whereas `false` would render
+ * `data-inline="false"` and still match `[data-inline]`.
+ *
+ * `data-disabled` is the headless preview's own name for this exact value: its `useLink`
+ * writes `data-disabled` from `state.disabled` too (reports/headless-precedent.md). By
+ * the time this hook runs, `useLinkState_unstable` has already widened `state.disabled`
+ * to `disabled || disabledFocusable`, which is the condition the Griffel
+ * `disabled && styles.disabled` argument branched on — so no separate
+ * `data-disabled-focusable` attribute is needed here (nothing in Link.module.css
+ * distinguishes the two, unlike Button).
+ *
+ * `data-inline` is new (no headless precedent); it follows the react-divider pilot's
+ * `data-inset` shape — a boolean styling opt-in expressed as a presence attribute.
+ *
+ * `as`/`href` stay JS-side class lookups (`styles.href`, `styles.button`) rather than
+ * attributes: they select on the rendered element type, which is not component state and
+ * has no data-attribute precedent.
+ */
+type LinkRootDataAttributes = {
+  'data-disabled'?: true;
+  'data-inline'?: true;
+};
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
-  const styles = useStyles();
   const { appearance, disabled, inline, root, backgroundAppearance } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const rootWithData = state.root as LinkState['root'] & LinkRootDataAttributes;
+
+  rootWithData['data-disabled'] = disabled || undefined;
+  rootWithData['data-inline'] = inline || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order — and, within
+  // `fui.components.l1`, by block order — in Link.module.css, not by the order of these
+  // arguments. See that file's header for the mapping back to the mergeClasses()
+  // argument order this replaces, including the documented disabled-vs-inverted/brand
+  // `color` inversion.
+  //
+  // `appearance` keeps its literal `=== 'subtle'` test rather than a `styles[appearance]`
+  // lookup: the Griffel source has no `default` slice at all (the base styles ARE the
+  // default appearance), so there is no class to look up for it.
+  state.root.className = clsx(
     linkClassNames.root,
     styles.root,
-    styles.focusIndicator,
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
-    backgroundAppearance === 'inverted' && styles.inverted,
-    backgroundAppearance === 'brand' && styles.brand,
-    inline && styles.inline,
-    disabled && styles.disabled,
+    backgroundAppearance && styles[backgroundAppearance],
     state.root.className,
   );
 

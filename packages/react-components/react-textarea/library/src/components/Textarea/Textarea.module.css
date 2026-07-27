@@ -1,0 +1,422 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTextareaStyles_unstable,
+ * not source declaration order. Textarea has NO `makeResetStyles` slice, so `fui.base`
+ * stays empty for this component and everything lands in `fui.components.l1`.
+ *
+ * `root` slot (a <span> wrapper — it exists only to host the focus underline):
+ *
+ *   #  mergeClasses argument                        → target
+ *   ---------------------------------------------------------------------------------
+ *   1  textareaClassNames.root                      → static class (JS)
+ *   2  useRootStyles.base                           → .root
+ *   3  disabled && .disabled                        → .root + `disabled`   (data-disabled)
+ *   4  !disabled && filled && .filled               → .filled              (JS-gated)
+ *   5  !disabled && .[appearance]                   → .outline / .filled-*  (JS-gated)
+ *   6  !disabled && .interactive                    → .root + `enabled`
+ *   7  !disabled && outline && .outlineInteractive  → .outline, 2nd block
+ *   8  !disabled && invalid && .invalid             → .root + `invalid`    (data-invalid)
+ *   9  consumer className                           → unlayered (always wins)
+ *
+ * `textarea` slot:
+ *
+ *   1  textareaClassNames.textarea                  → static class (JS)
+ *   2  useTextareaStyles.base                       → .textarea
+ *   3  useTextareaStyles[size]                      → .textarea + `size-*` (data-size)
+ *   4  useTextareaResizeStyles[resize]              → .none/.both/.horizontal/.vertical
+ *   5  disabled && useTextareaStyles.disabled       → .textarea + `disabled` (native attr)
+ *   6  consumer className                           → unlayered
+ *
+ * ── `!disabled` gating ──────────────────────────────────────────────────────────────
+ * Args 4/5/7 keep the JS gate Griffel used (the class is simply not applied). Args 6/8
+ * ride the root's `data-disabled` / `data-invalid` presence attributes instead, per D3
+ * (state props → data-attributes). `data-invalid` is written as `!disabled && invalid`,
+ * so a disabled+invalid Textarea gets no red border — exactly the arg-8 condition.
+ *
+ * ── Griffel BUCKET order beats source order INSIDE a slice ──────────────────────────
+ * Within one makeStyles slice the winner is not source order but Griffel's style-bucket
+ * ordering: d < w(:focus-within) < f < i < h(:hover) < a(:active) < … < m(@media).
+ * `useRootStyles.outlineInteractive` declares `:hover`, `:active`, `:focus-within` in
+ * that order but the buckets rank them `:focus-within` → `:hover` → `:active`, so this
+ * file writes those three blocks in BUCKET order. Verified against the compiled atomics
+ * in lib-commonjs/components/Textarea/useTextareaStyles.styles.js (`w`/`h`/`a` arrays).
+ * Same rule puts every `@media (prefers-reduced-motion)` / `(forced-colors)` block after
+ * the declarations it overrides (bucket `m` sorts last).
+ *
+ * ── `.invalid` selector simplification ──────────────────────────────────────────────
+ * Griffel emits `:not(:focus-within),:hover:not(:focus-within)`. The second selector is a
+ * strict subset of the first; it exists only to raise specificity to (0,3,0) so the rule
+ * beats `.outlineInteractive`'s (0,2,0) `:hover` border. Here every selector is
+ * `:where()`-flat and the winner is file position, so the plain `not-focus-within`
+ * variant is exact — and it is written LAST, matching mergeClasses arg #8.
+ */
+
+@layer fui.components.l1 {
+  /* from useRootStyles.base */
+  .root {
+    @apply relative m-0 box-border inline-flex align-top;
+
+    /* Padding so the focus indicator does not overlap the resize handle; matches the
+       focus indicator size. `padding: 0 0 <thick> 0` expanded to longhands. */
+    padding-block-start: 0;
+    padding-block-end: var(--strokeWidthThick);
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+
+    border-radius: var(--borderRadiusMedium);
+
+    /* from useRootStyles.disabled — arg #3 */
+    @variant disabled {
+      background-color: var(--colorTransparentBackground);
+
+      border-width: var(--strokeWidthThin);
+      border-style: solid;
+      border-color: var(--colorNeutralStrokeDisabled);
+
+      /* shorthands.borderColor('GrayText') → four longhands; the compiled [ltr, rtl]
+         pair only swaps left↔right and carries the same value, so the flip is a no-op. */
+      @variant forced-colors {
+        border-top-color: GrayText;
+        border-right-color: GrayText;
+        border-bottom-color: GrayText;
+        border-left-color: GrayText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles.filled — arg #4, applied for every `filled*` appearance. The two
+   * `*-shadow` appearances re-set `border-color` in arg #5 below (to the SAME
+   * `--colorTransparentStrokeInteractive` these hover/focus rules use), which is why
+   * Griffel's arg-order override of the `border` shorthand is a visual no-op here.
+   *
+   * Griffel authors one compound rule (`:hover,:focus-within`); two variant blocks with
+   * identical declarations are exactly equivalent and use only catalog variants.
+   */
+  .filled {
+    border-width: var(--strokeWidthThin);
+    border-style: solid;
+    border-color: var(--colorTransparentStroke);
+
+    @variant hover {
+      border-top-color: var(--colorTransparentStrokeInteractive);
+      border-right-color: var(--colorTransparentStrokeInteractive);
+      border-bottom-color: var(--colorTransparentStrokeInteractive);
+      border-left-color: var(--colorTransparentStrokeInteractive);
+    }
+
+    @variant focus-within {
+      border-top-color: var(--colorTransparentStrokeInteractive);
+      border-right-color: var(--colorTransparentStrokeInteractive);
+      border-bottom-color: var(--colorTransparentStrokeInteractive);
+      border-left-color: var(--colorTransparentStrokeInteractive);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* Appearance variations — arg #5. */
+
+  /* from useRootStyles['filled-darker'] */
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  /* from useRootStyles['filled-lighter'] */
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  /* from useRootStyles['filled-darker-shadow'] (deprecated appearance) */
+  .filled-darker-shadow {
+    background-color: var(--colorNeutralBackground3);
+
+    border-width: var(--strokeWidthThin);
+    border-style: solid;
+    border-color: var(--colorTransparentStrokeInteractive);
+
+    box-shadow: var(--shadow2);
+  }
+
+  /* from useRootStyles['filled-lighter-shadow'] (deprecated appearance) */
+  .filled-lighter-shadow {
+    background-color: var(--colorNeutralBackground1);
+
+    border-width: var(--strokeWidthThin);
+    border-style: solid;
+    border-color: var(--colorTransparentStrokeInteractive);
+
+    box-shadow: var(--shadow2);
+  }
+
+  /* from useRootStyles.outline */
+  .outline {
+    background-color: var(--colorNeutralBackground1);
+
+    border-width: var(--strokeWidthThin);
+    border-style: solid;
+    border-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * from useRootStyles.interactive — arg #6, gated on `!disabled` (the `enabled`
+     * variant reads the root's `data-disabled` presence attribute).
+     *
+     * The whole focus affordance is this `::after` bar: a flat 2px bottom border that
+     * scales in on focus. It is NOT a react-tabster focus indicator — this package
+     * imports no tabster helper and the compiled atomics contain no
+     * `[data-fui-focus-visible]` selector, so the shared `fui-focus-ring` /
+     * `fui-focus-outline` utilities (D6) do not apply here.
+     */
+    @variant enabled {
+      &::after {
+        @apply absolute box-border;
+
+        content: '';
+
+        /* left/right → logical; the compiled [ltr, rtl] pair carries -1px both ways. */
+        @apply -start-1 -end-1 -bottom-1;
+
+        /* Maintaining the correct corner radius: the whole border-radius is used as the
+           height and only the bottom corners get radii, so the radius is not reduced to
+           fit. max() keeps the bar visible even at --borderRadiusMedium: 0. */
+        height: max(var(--strokeWidthThick), var(--borderRadiusMedium));
+
+        /* borderBottomLeft/RightRadius → logical block-end corners (compiled [ltr, rtl]
+           pair, same value both ways). */
+        border-end-start-radius: var(--borderRadiusMedium);
+        border-end-end-radius: var(--borderRadiusMedium);
+
+        /* Flat 2px border: borderBottom alone would leave little "horns" on the ends;
+           the clipPath trims them. `inset()` right/left are both 0 → no RTL flip. */
+        border-bottom-width: var(--strokeWidthThick);
+        border-bottom-style: solid;
+        border-bottom-color: var(--colorCompoundBrandStroke);
+        clip-path: inset(calc(100% - var(--strokeWidthThick)) 0 0 0);
+
+        /* Animation for focus OUT. `transition-delay: var(--curveAccelerateMid)` is a
+           curve token used as a delay — reproduced verbatim from the compiled output. */
+        transform: scaleX(0);
+        transition-property: transform;
+        transition-duration: var(--durationUltraFast);
+        transition-delay: var(--curveAccelerateMid);
+
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition-duration: 0.01ms;
+          transition-delay: 0.01ms;
+        }
+      }
+
+      @variant focus-within {
+        outline-width: var(--strokeWidthThick);
+        outline-style: solid;
+        outline-color: transparent;
+
+        /* Animation for focus IN */
+        &::after {
+          transform: scaleX(1);
+          transition-property: transform;
+          transition-duration: var(--durationNormal);
+          transition-delay: var(--curveDecelerateMid);
+
+          @media screen and (prefers-reduced-motion: reduce) {
+            transition-duration: 0.01ms;
+            transition-delay: 0.01ms;
+          }
+        }
+
+        /* The user clicks the field again while it is already focused */
+        @variant active {
+          &::after {
+            border-bottom-color: var(--colorCompoundBrandStrokePressed);
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles.outlineInteractive — arg #7. `.outline` is only applied when
+   * `!disabled`, so this block needs no `enabled` gate; it is a second `.outline` block
+   * because arg #6 (interactive, above) sits between it and arg #5.
+   *
+   * Written in Griffel BUCKET order (`w` → `h` → `a`), which INVERTS the source order
+   * (`:hover`, `:active`, `:focus-within`): a hovered-and-focused Textarea shows the
+   * hover border, and pressing it shows the pressed border.
+   */
+  .outline {
+    @variant focus-within {
+      border-width: var(--strokeWidthThin);
+      border-style: solid;
+      border-color: var(--colorNeutralStroke1Pressed);
+      border-bottom-color: var(--colorCompoundBrandStroke);
+    }
+
+    @variant hover {
+      border-width: var(--strokeWidthThin);
+      border-style: solid;
+      border-color: var(--colorNeutralStroke1Hover);
+      border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+    }
+
+    @variant active {
+      border-width: var(--strokeWidthThin);
+      border-style: solid;
+      border-color: var(--colorNeutralStroke1Pressed);
+      border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * from useRootStyles.invalid — arg #8, the LAST style argument, hence the last rule
+     * in the layer. shorthands.borderColor() expanded to four longhands (the compiled
+     * [ltr, rtl] pair swaps left↔right with the same value).
+     */
+    @variant invalid {
+      @variant not-focus-within {
+        border-top-color: var(--colorPaletteRedBorder2);
+        border-right-color: var(--colorPaletteRedBorder2);
+        border-bottom-color: var(--colorPaletteRedBorder2);
+        border-left-color: var(--colorPaletteRedBorder2);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useTextareaStyles.base — textarea slot arg #2 */
+  .textarea {
+    @apply m-0 box-border grow h-full;
+
+    /* shorthands.borderStyle('none') → four longhands; the compiled [ltr, rtl] pair
+       swaps left↔right, so the inline sides use logical properties. */
+    border-block-start-style: none;
+    border-inline-end-style: none;
+    border-block-end-style: none;
+    border-inline-start-style: none;
+
+    background-color: transparent;
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+
+    /* disable the default browser outline */
+    outline-style: none;
+
+    &::placeholder {
+      color: var(--colorNeutralForeground4);
+      opacity: 1;
+    }
+
+    /*
+     * Size variations — arg #3. The padding adds both content and regular padding (per
+     * design spec) because the resize handle is not affected by the root's padding.
+     * `size` is a scale prop, so it rides `data-size` rather than a class (D3).
+     */
+
+    /* from useTextareaStyles.small + typographyStyles.caption1 */
+    @variant size-small {
+      @apply min-h-40 max-h-200;
+
+      padding-block: var(--spacingVerticalXS);
+      padding-inline: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+
+    /* from useTextareaStyles.medium + typographyStyles.body1 */
+    @variant size-medium {
+      @apply min-h-52 max-h-260;
+
+      padding-block: var(--spacingVerticalSNudge);
+      padding-inline: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+    }
+
+    /* from useTextareaStyles.large + typographyStyles.body2 */
+    @variant size-large {
+      @apply min-h-64 max-h-320;
+
+      padding-block: var(--spacingVerticalS);
+      padding-inline: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase400);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useTextareaResizeStyles — textarea slot arg #4. `resize` is an enum look/
+   * structural prop, so it is a `styles[resize]` class lookup (D3) and the class names
+   * are the prop values. `.horizontal` / `.vertical` here are RESIZE directions and are
+   * unrelated to the shared `horizontal` / `vertical` orientation variants; both are
+   * module-local, so nothing collides.
+   */
+  .none {
+    resize: none;
+  }
+
+  .both {
+    resize: both;
+  }
+
+  .horizontal {
+    resize: horizontal;
+  }
+
+  .vertical {
+    resize: vertical;
+  }
+}
+
+@layer fui.components.l1 {
+  .textarea {
+    /*
+     * from useTextareaStyles.disabled — arg #5, written after the base/size blocks so it
+     * wins `color` and the placeholder colour. The `disabled` variant matches the NATIVE
+     * `disabled` attribute the textarea slot already carries.
+     */
+    @variant disabled {
+      color: var(--colorNeutralForegroundDisabled);
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+  }
+}

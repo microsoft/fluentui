@@ -1,10 +1,24 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
 import type { PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
+
+import styles from './PresenceBadge.module.css';
 
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
   root: 'fui-PresenceBadge',
@@ -19,124 +33,62 @@ const getIsBusy = (status: PresenceBadgeStatus): boolean => {
   return false;
 };
 
-const useRootClassName = makeResetStyles({
-  display: 'inline-flex',
-  boxSizing: 'border-box',
-  alignItems: 'center',
-  justifyContent: 'center',
-
-  borderRadius: tokens.borderRadiusCircular,
-  backgroundColor: tokens.colorNeutralBackground1,
-
-  // The background color bleeds around the edge of the icon due to antialiasing on the svg and element background.
-  // Since all presence icons have a border around the edge that is at least 1px wide*, we can inset the background
-  // using padding and backgroundClip. The icon has margin: -1px to account for the padding.
-  // (* except size="tiny", where backgroundClip is unset)
-  padding: '1px',
-  backgroundClip: 'content-box',
-});
-
-const useIconClassName = makeResetStyles({
-  display: 'flex',
-  margin: '-1px',
-});
-
-const useStyles = makeStyles({
-  statusBusy: {
-    color: tokens.colorPaletteRedBackground3,
-  },
-  statusAway: {
-    color: tokens.colorPaletteMarigoldBackground3,
-  },
-  statusAvailable: {
-    color: tokens.colorPaletteLightGreenForeground3,
-  },
-  statusOffline: {
-    color: tokens.colorNeutralForeground3,
-  },
-  statusOutOfOffice: {
-    color: tokens.colorPaletteBerryForeground3,
-  },
-  statusUnknown: {
-    color: tokens.colorNeutralForeground3,
-  },
-  outOfOffice: {
-    color: tokens.colorNeutralBackground1,
-  },
-  outOfOfficeAvailable: {
-    color: tokens.colorPaletteLightGreenForeground3,
-  },
-  outOfOfficeBusy: {
-    color: tokens.colorPaletteRedBackground3,
-  },
-  outOfOfficeUnknown: {
-    color: tokens.colorNeutralForeground3,
-  },
-
-  // Icons are not resizeable, and these sizes are currently missing
-  // use `!important` to size the currently available icons to the missing ones
-  //
-  tiny: {
-    aspectRatio: '1',
-    width: '6px',
-    backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
-    '& svg': {
-      width: '6px !important',
-      height: '6px !important',
-    },
-  },
-  large: {
-    aspectRatio: '1',
-    width: '20px',
-    '& svg': {
-      width: '20px !important',
-      height: '20px !important',
-    },
-  },
-  extraLarge: {
-    aspectRatio: '1',
-    width: '28px',
-    '& svg': {
-      width: '28px !important',
-      height: '28px !important',
-    },
-  },
-});
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * Only `size` rides an attribute. `status` and `outOfOffice` stay module-class branches:
+ * the eleven colour slices they select between are resolved by mergeClasses ARGUMENT
+ * order, including one slice that is deliberately applied twice at two different ranks
+ * (see the INVERSION note in PresenceBadge.module.css). Keeping them as classes preserves
+ * that ordering as plain file order and keeps the slice mapping 1:1; expressing it with
+ * data-attributes would push five bespoke compound selectors, used by this component
+ * alone, into the shared catalog.
+ */
+type PresenceBadgeRootDataAttributes = {
+  'data-size': PresenceBadgeState['size'];
+};
 
 /**
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
-  const rootClassName = useRootClassName();
-  const iconClassName = useIconClassName();
-  const styles = useStyles();
-  const isBusy = getIsBusy(state.status);
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const { outOfOffice, size, status } = state;
+  const isBusy = getIsBusy(status);
+
+  const root = state.root as PresenceBadgeState['root'] & PresenceBadgeRootDataAttributes;
+
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in PresenceBadge.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to
+  // the mergeClasses() argument order this replaces, the arg-12 inversion, and the
+  // probe-verified removal of the six `!important` declarations.
+  //
+  // The conditions below are byte-for-byte the ones Griffel used; only `styles.tiny` /
+  // `.large` / `.extraLarge` moved out of JS and onto the `data-size` attribute above.
+  state.root.className = clsx(
     presenceBadgeClassNames.root,
-    rootClassName,
+    styles.root,
     isBusy && styles.statusBusy,
-    state.status === 'away' && styles.statusAway,
-    state.status === 'available' && styles.statusAvailable,
-    state.status === 'offline' && styles.statusOffline,
-    state.status === 'out-of-office' && styles.statusOutOfOffice,
-    state.status === 'unknown' && styles.statusUnknown,
-    state.outOfOffice && styles.outOfOffice,
-    state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
-    state.outOfOffice && isBusy && styles.outOfOfficeBusy,
-    state.outOfOffice &&
-      (state.status === 'out-of-office' || state.status === 'away' || state.status === 'offline') &&
-      styles.statusOutOfOffice,
-    state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
-    state.size === 'tiny' && styles.tiny,
-    state.size === 'large' && styles.large,
-    state.size === 'extra-large' && styles.extraLarge,
+    status === 'away' && styles.statusAway,
+    status === 'available' && styles.statusAvailable,
+    status === 'offline' && styles.statusOffline,
+    status === 'out-of-office' && styles.statusOutOfOffice,
+    status === 'unknown' && styles.statusUnknown,
+    outOfOffice && styles.outOfOffice,
+    outOfOffice && status === 'available' && styles.outOfOfficeAvailable,
+    outOfOffice && isBusy && styles.outOfOfficeBusy,
+    outOfOffice &&
+      (status === 'out-of-office' || status === 'away' || status === 'offline') &&
+      styles.outOfOfficeStatus,
+    outOfOffice && status === 'unknown' && styles.outOfOfficeUnknown,
     state.root.className,
   );
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(presenceBadgeClassNames.icon, iconClassName, state.icon.className);
+    state.icon.className = clsx(presenceBadgeClassNames.icon, styles.icon, state.icon.className);
   }
 
   return state;

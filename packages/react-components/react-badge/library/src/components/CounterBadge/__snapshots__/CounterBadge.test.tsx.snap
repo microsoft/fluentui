@@ -3,5 +3,7 @@
 exports[`CounterBadge renders a default state 1`] = `
 <div
   class="fui-Badge fui-CounterBadge"
+  data-empty="true"
+  data-size="medium"
 />
 `;

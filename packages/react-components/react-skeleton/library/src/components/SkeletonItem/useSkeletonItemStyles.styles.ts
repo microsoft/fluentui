@@ -1,156 +1,44 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SkeletonItemSlots, SkeletonItemState } from './SkeletonItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+
+import styles from './SkeletonItem.module.css';
 
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
   root: 'fui-SkeletonItem',
 };
 
-const skeletonWaveAnimation = {
-  to: {
-    transform: 'translate(100%)',
-  },
-};
-
-const skeletonPulseAnimation = {
-  '0%': {
-    opacity: '1',
-  },
-  '50%': {
-    opacity: '0.4',
-  },
-  '100%': {
-    opacity: '1',
-  },
-};
-
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `size` is the one prop that rides an attribute rather than a module class: it is a
+ * scale prop, not a look prop (DECISIONS.md D3), and the catalog's `data-size` gains this
+ * component's numeric scale (`size-8` … `size-128`) next to Button's `size-small|medium|
+ * large`. `animation`, `appearance` and `shape` are look props and stay class lookups.
+ *
+ * `size` is always defined on the state (`useSkeletonItem_unstable` defaults it to the
+ * context value or `16`), so the attribute is unconditional — no `|| undefined` presence
+ * form is needed here.
  */
-const useStyles = makeStyles({
-  root: {
-    position: 'relative',
-    overflow: 'hidden',
-
-    '::after': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      inset: '0',
-      animationIterationCount: 'infinite',
-      animationDuration: '3s',
-      animationTimingFunction: 'ease-in-out',
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
-      },
-    },
-  },
-  wave: {
-    backgroundColor: tokens.colorNeutralStencil1,
-
-    '::after': {
-      animationName: skeletonWaveAnimation,
-      backgroundImage: `linear-gradient(
-        to right,
-        ${tokens.colorNeutralStencil1} 0%,
-        ${tokens.colorNeutralStencil2} 50%,
-        ${tokens.colorNeutralStencil1} 100%)`,
-      transform: 'translate(-100%)',
-
-      '@media screen and (forced-colors: active)': {
-        backgroundColor: 'WindowText',
-      },
-    },
-  },
-  pulse: {
-    '::after': {
-      animationName: skeletonPulseAnimation,
-      animationDuration: '1s',
-      backgroundColor: tokens.colorNeutralStencil1,
-    },
-  },
-  translucent: {
-    backgroundColor: tokens.colorNeutralStencil1Alpha,
-
-    '::after': {
-      backgroundImage: `linear-gradient(
-      to right,
-      transparent 0%,
-      ${tokens.colorNeutralStencil1Alpha} 50%,
-      transparent 100%)`,
-    },
-  },
-  translucentPulse: {
-    backgroundColor: 'none',
-
-    '::after': {
-      backgroundColor: tokens.colorNeutralStencil1Alpha,
-    },
-  },
-  blockStyling: {
-    display: 'block',
-  },
-});
-
-const useRectangleStyles = makeStyles({
-  root: {
-    width: '100%',
-    borderRadius: '4px',
-  },
-  8: { height: '8px' },
-  12: { height: '12px' },
-  14: { height: '14px' },
-  16: { height: '16px' },
-  20: { height: '20px' },
-  22: { height: '22px' },
-  24: { height: '24px' },
-  28: { height: '28px' },
-  32: { height: '32px' },
-  36: { height: '36px' },
-  40: { height: '40px' },
-  48: { height: '48px' },
-  52: { height: '52px' },
-  56: { height: '56px' },
-  64: { height: '64px' },
-  72: { height: '72px' },
-  92: { height: '92px' },
-  96: { height: '96px' },
-  120: { height: '120px' },
-  128: { height: '128px' },
-});
-
-const useSizeStyles = makeStyles({
-  8: { width: '8px', height: '8px' },
-  12: { width: '12px', height: '12px' },
-  14: { width: '14px', height: '14px' },
-  16: { width: '16px', height: '16px' },
-  20: { width: '20px', height: '20px' },
-  22: { width: '22px', height: '22px' },
-  24: { width: '24px', height: '24px' },
-  28: { width: '28px', height: '28px' },
-  32: { width: '32px', height: '32px' },
-  36: { width: '36px', height: '36px' },
-  40: { width: '40px', height: '40px' },
-  48: { width: '48px', height: '48px' },
-  52: { width: '52px', height: '52px' },
-  56: { width: '56px', height: '56px' },
-  64: { width: '64px', height: '64px' },
-  72: { width: '72px', height: '72px' },
-  92: { width: '92px', height: '92px' },
-  96: { width: '96px', height: '96px' },
-  120: { width: '120px', height: '120px' },
-  128: { width: '128px', height: '128px' },
-});
-
-const useCircleSizeStyles = makeStyles({
-  root: {
-    borderRadius: '50%',
-  },
-});
+type SkeletonItemRootDataAttributes = {
+  'data-size': SkeletonItemState['size'];
+};
 
 /**
  * Apply styling to the SkeletonItem slots based on the state
@@ -158,25 +46,32 @@ const useCircleSizeStyles = makeStyles({
 export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): SkeletonItemState => {
   const { animation, appearance, size, shape } = state;
 
-  const rootStyles = useStyles();
-  const rectStyles = useRectangleStyles();
-  const sizeStyles = useSizeStyles();
-  const circleStyles = useCircleSizeStyles();
+  const root = state.root as SkeletonItemState['root'] & SkeletonItemRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in SkeletonItem.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to
+  // the mergeClasses() argument order this replaces, including the media-query bucket
+  // rule that keeps `prefers-reduced-motion` beating the pulse animation duration.
+  //
+  // `styles[animation]` covers the mutually exclusive `wave` / `pulse` slices in one
+  // lookup. `styles[appearance]` resolves to `undefined` for `opaque` — that slice does
+  // not exist in Griffel either, and clsx drops the falsy argument exactly as
+  // mergeClasses dropped the `false` one.
+  //
+  // The `react-hooks/immutability` disables the Griffel version carried are gone: the rule
+  // no longer reports here, and the state-mutation pattern itself stays until the Phase 3
+  // sweep (DECISIONS.md D14) — only the now-unused directives were dropped.
+  state.root.className = clsx(
     skeletonItemClassNames.root,
-    rootStyles.root,
-    state.root.as === 'span' && rootStyles.blockStyling,
-    animation === 'wave' && rootStyles.wave,
-    animation === 'pulse' && rootStyles.pulse,
-    appearance === 'translucent' && rootStyles.translucent,
-    animation === 'pulse' && appearance === 'translucent' && rootStyles.translucentPulse,
-    shape === 'rectangle' && rectStyles.root,
-    shape === 'rectangle' && rectStyles[size],
-    shape === 'square' && sizeStyles[size],
-    shape === 'circle' && circleStyles.root,
-    shape === 'circle' && sizeStyles[size],
+    styles.root,
+    state.root.as === 'span' && styles.blockStyling,
+    styles[animation],
+    styles[appearance],
+    animation === 'pulse' && appearance === 'translucent' && styles.translucentPulse,
+    styles[shape],
     state.root.className,
   );
 

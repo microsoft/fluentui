@@ -1,9 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TextareaSlots, TextareaState } from './Textarea.types';
+
+import styles from './Textarea.module.css';
 
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   root: 'fui-Textarea',
@@ -11,210 +25,31 @@ export const textareaClassNames: SlotClassNames<TextareaSlots> = {
 };
 
 /**
- * Styles for the root(wrapper) slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * Both are *presence* selectors, so the flags are written as `flag || undefined` — React
+ * omits an attribute whose value is `undefined`, whereas `false` would render
+ * `data-disabled="false"` and still match `[data-disabled]`.
+ *
+ * The root is a plain `<span>` wrapper: it carries neither the native `disabled` attribute
+ * nor `aria-invalid` (both live on the `textarea` slot), so the two conditions the Griffel
+ * hook branched on have to be mirrored onto it explicitly. `data-disabled` also drives the
+ * `enabled` variant that gates the focus-underline block (`!disabled &&
+ * rootStyles.interactive`).
  */
-const useRootStyles = makeStyles({
-  base: {
-    display: 'inline-flex',
-    boxSizing: 'border-box',
-    position: 'relative',
-    // Padding needed so the focus indicator does not overlap the resize handle, this should match focus indicator size.
-    padding: `0 0 ${tokens.strokeWidthThick} 0`,
-    margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
-    verticalAlign: 'top',
-  },
-
-  disabled: {
-    backgroundColor: tokens.colorTransparentBackground,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeDisabled}`,
-
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
-    },
-  },
-
-  interactive: {
-    // This is all for the bottom focus border.
-    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    '::after': {
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      left: '-1px',
-      bottom: '-1px',
-      right: '-1px',
-
-      // Maintaining the correct corner radius:
-      // Use the whole border-radius as the height and only put radii on the bottom corners.
-      // (Otherwise the radius would be automatically reduced to fit available space.)
-      // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-      height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
-
-      // Flat 2px border:
-      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
-      // (This could be done without trimming using `background: linear-gradient(...)`, but using
-      // borderBottom makes it easier for people to override the color if needed.)
-      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
-      clipPath: `inset(calc(100% - ${tokens.strokeWidthThick}) 0 0 0)`,
-
-      // Animation for focus OUT
-      transform: 'scaleX(0)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within::after': {
-      // Animation for focus IN
-      transform: 'scaleX(1)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within:active::after': {
-      // This is if the user clicks the field again while it's already focused
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
-    },
-    ':focus-within': {
-      outlineWidth: tokens.strokeWidthThick,
-      outlineStyle: 'solid',
-      outlineColor: 'transparent',
-    },
-  },
-
-  filled: {
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
-    ':hover,:focus-within': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-  },
-  'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
-  },
-  'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-  'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
-    boxShadow: tokens.shadow2,
-  },
-  'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
-    boxShadow: tokens.shadow2,
-  },
-
-  outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
-  },
-  outlineInteractive: {
-    ':hover': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Hover}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    },
-
-    ':active': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-
-    ':focus-within': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
-      borderBottomColor: tokens.colorCompoundBrandStroke,
-    },
-  },
-
-  invalid: {
-    ':not(:focus-within),:hover:not(:focus-within)': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
-    },
-  },
-});
+type TextareaRootDataAttributes = {
+  'data-disabled'?: true;
+  'data-invalid'?: true;
+};
 
 /**
- * Styles for the textarea slot
+ * `size` is a scale prop, so it rides a data-attribute rather than a module class (D3).
+ * It is stamped on the `textarea` slot because that is the slot its styles apply to.
  */
-const useTextareaStyles = makeStyles({
-  base: {
-    ...shorthands.borderStyle('none'),
-    margin: '0',
-    backgroundColor: 'transparent',
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
-    flexGrow: 1,
-    fontFamily: tokens.fontFamilyBase,
-    height: '100%',
-
-    '::placeholder': {
-      color: tokens.colorNeutralForeground4,
-      opacity: 1,
-    },
-
-    outlineStyle: 'none', // disable default browser outline
-  },
-
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'not-allowed',
-    '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-  },
-
-  // The padding style adds both content and regular padding (from design spec), this is because the handle is not
-  // affected by changing the padding of the root.
-  small: {
-    minHeight: '40px',
-    padding: `${tokens.spacingVerticalXS} calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
-    maxHeight: '200px',
-    ...typographyStyles.caption1,
-  },
-  medium: {
-    minHeight: '52px',
-    padding: `${tokens.spacingVerticalSNudge} calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-    maxHeight: '260px',
-    ...typographyStyles.body1,
-  },
-  large: {
-    minHeight: '64px',
-    padding: `${tokens.spacingVerticalS} calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
-    maxHeight: '320px',
-    ...typographyStyles.body2,
-  },
-});
-
-/**
- * Styles for the textarea's resize property
- */
-const useTextareaResizeStyles = makeStyles({
-  none: {
-    resize: 'none',
-  },
-  both: {
-    resize: 'both',
-  },
-  horizontal: {
-    resize: 'horizontal',
-  },
-  vertical: {
-    resize: 'vertical',
-  },
-});
+type TextareaDataAttributes = {
+  'data-size': TextareaState['size'];
+};
 
 /**
  * Apply styling to the Textarea slots based on the state
@@ -225,29 +60,33 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
   const invalid = `${state.textarea['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
-  const rootStyles = useRootStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as TextareaState['root'] & TextareaRootDataAttributes;
+  const textarea = state.textarea as TextareaState['textarea'] & TextareaDataAttributes;
+
+  root['data-disabled'] = disabled || undefined;
+  // `!disabled &&` mirrors the arg-#8 condition: a disabled Textarea never gets the
+  // invalid border, even with aria-invalid set.
+  root['data-invalid'] = (!disabled && invalid) || undefined;
+
+  textarea['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Textarea.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including the `outlineInteractive`
+  // bucket-order inversion.
+  state.root.className = clsx(
     textareaClassNames.root,
-    rootStyles.base,
-    disabled && rootStyles.disabled,
-    !disabled && filled && rootStyles.filled,
-    !disabled && rootStyles[appearance],
-    !disabled && rootStyles.interactive,
-    !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
-    !disabled && invalid && rootStyles.invalid,
+    styles.root,
+    !disabled && filled && styles.filled,
+    !disabled && styles[appearance],
     state.root.className,
   );
 
-  const textareaStyles = useTextareaStyles();
-  const textareaResizeStyles = useTextareaResizeStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.textarea.className = mergeClasses(
+  state.textarea.className = clsx(
     textareaClassNames.textarea,
-    textareaStyles.base,
-    textareaStyles[size],
-    textareaResizeStyles[resize],
-    disabled && textareaStyles.disabled,
+    styles.textarea,
+    styles[resize],
     state.textarea.className,
   );
 

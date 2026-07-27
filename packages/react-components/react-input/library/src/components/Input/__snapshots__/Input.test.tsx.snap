@@ -4,6 +4,7 @@ exports[`Input renders a default state 1`] = `
 <div>
   <span
     class="fui-Input"
+    data-size="medium"
   >
     <input
       class="fui-Input__input"

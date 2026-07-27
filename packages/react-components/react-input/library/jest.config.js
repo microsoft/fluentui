@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,18 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * the serializer strips those generated names from snapshots, exactly as
+   * `@griffel/jest-serializer` did for Griffel atomics. Both move into the repo-wide
+   * `jest.preset.js` once more packages convert (DECISIONS.md D9).
+   *
+   * `@griffel/jest-serializer` is dropped rather than kept alongside (as react-button
+   * does): Input is this package's only component and it no longer renders any atomics.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: [cssModules.snapshotSerializer],
 };

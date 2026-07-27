@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { RenderResult } from '@testing-library/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Field } from '@fluentui/react-field';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { Textarea } from './Textarea';
 import { isConformant } from '../../testing/isConformant';
 
@@ -23,6 +24,15 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+    // it was called with the consumer className last; this component now composes with
+    // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+    // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
+    // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       'consistent-callback-args': {
         legacyCallbacks: ['onChange'],

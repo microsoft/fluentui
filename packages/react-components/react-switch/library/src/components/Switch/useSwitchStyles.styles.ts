@@ -1,10 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
+
+import styles from './Switch.module.css';
 
 export const switchClassNames: SlotClassNames<SwitchSlots> = {
   root: 'fui-Switch',
@@ -18,323 +31,60 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
  */
 export const switchClassName = switchClassNames.root;
 
-// Thumb and track sizes used by the component.
-const spaceBetweenThumbAndTrack = 2;
-// Medium size dimensions
-const trackHeightMedium = 20;
-const trackWidthMedium = 40;
-const thumbSizeMedium = trackHeightMedium - spaceBetweenThumbAndTrack;
-// Small size dimensions (from design mockup)
-const trackHeightSmall = 16;
-const trackWidthSmall = 32;
-const thumbSizeSmall = trackHeightSmall - spaceBetweenThumbAndTrack;
-
-const useRootBaseClassName = makeResetStyles({
-  alignItems: 'flex-start',
-  boxSizing: 'border-box',
-  display: 'inline-flex',
-  position: 'relative',
-
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
-});
-
-const useRootStyles = makeStyles({
-  vertical: {
-    flexDirection: 'column',
-  },
-});
-
-const useIndicatorBaseClassName = makeResetStyles({
-  borderRadius: tokens.borderRadiusCircular,
-  border: '1px solid',
-  lineHeight: 0,
-  boxSizing: 'border-box',
-  fill: 'currentColor',
-  flexShrink: 0,
-  fontSize: `${thumbSizeMedium}px`,
-  height: `${trackHeightMedium}px`,
-  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
-  pointerEvents: 'none',
-  transitionDuration: tokens.durationNormal,
-  transitionTimingFunction: tokens.curveEasyEase,
-  transitionProperty: 'background, border, color',
-  width: `${trackWidthMedium}px`,
-
-  '@media screen and (prefers-reduced-motion: reduce)': {
-    transitionDuration: '0.01ms',
-  },
-
-  '@media (forced-colors: active)': {
-    color: 'CanvasText',
-    '> i': {
-      forcedColorAdjust: 'none',
-    },
-  },
-
-  '> *': {
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
-    transitionProperty: 'transform',
-
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.01ms',
-    },
-  },
-});
-
-const useIndicatorStyles = makeStyles({
-  labelAbove: {
-    marginTop: 0,
-  },
-  sizeSmall: {
-    fontSize: `${thumbSizeSmall}px`,
-    height: `${trackHeightSmall}px`,
-    width: `${trackWidthSmall}px`,
-  },
-});
-
-const useInputBaseClassName = makeResetStyles({
-  boxSizing: 'border-box',
-  cursor: 'pointer',
-  height: '100%',
-  margin: 0,
-  opacity: 0,
-  position: 'absolute',
-
-  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
-  // This is done so that clicking on that "empty space" still toggles the switch.
-  width: `calc(${trackWidthMedium}px + 2 * ${tokens.spacingHorizontalS})`,
-
-  // Checked (both enabled and disabled)
-  ':checked': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      '> *': {
-        transform: `translateX(${trackWidthMedium - thumbSizeMedium - spaceBetweenThumbAndTrack}px)`,
-      },
-    },
-  },
-
-  // Disabled (both checked and unchecked)
-  ':disabled, &[aria-disabled="true"]': {
-    cursor: 'default',
-
-    [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    [`& ~ .${switchClassNames.label}`]: {
-      cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-  },
-
-  // Enabled and unchecked
-  ':enabled:not(:checked):not([aria-disabled="true"])': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralStrokeAccessible,
-      borderColor: tokens.colorNeutralStrokeAccessible,
-    },
-
-    [`& ~ .${switchClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
-    },
-
-    ':hover': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessibleHover,
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
-    },
-
-    ':hover:active': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessiblePressed,
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
-      },
-    },
-  },
-
-  // Enabled and checked
-  ':enabled:checked:not([aria-disabled="true"])': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorTransparentStroke,
-    },
-
-    ':hover': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorTransparentStrokeInteractive,
-      },
-    },
-
-    ':hover:active': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorTransparentStrokeInteractive,
-      },
-    },
-  },
-
-  // Disabled and unchecked
-  ':disabled:not(:checked), &[aria-disabled="true"]:not(:checked)': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-    },
-  },
-
-  // Disabled and checked
-  ':disabled:checked, &[aria-disabled="true"]:checked': {
-    [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      borderColor: tokens.colorTransparentStrokeDisabled,
-    },
-  },
-
-  '@media (forced-colors: active)': {
-    ':disabled, &[aria-disabled="true"]': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        color: 'GrayText',
-        borderColor: 'GrayText',
-      },
-
-      [`& ~ .${switchClassNames.label}`]: {
-        color: 'GrayText',
-      },
-    },
-    ':hover': {
-      color: 'CanvasText',
-    },
-    ':hover:active': {
-      color: 'CanvasText',
-    },
-    ':enabled:checked:not([aria-disabled="true"])': {
-      ':hover': {
-        [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: 'Highlight',
-          color: 'Canvas',
-        },
-      },
-      ':hover:active': {
-        [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: 'Highlight',
-          color: 'Canvas',
-        },
-      },
-      [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: 'Highlight',
-        color: 'Canvas',
-      },
-    },
-  },
-});
-
-const useInputStyles = makeStyles({
-  before: {
-    right: 0,
-    top: 0,
-  },
-  after: {
-    left: 0,
-    top: 0,
-  },
-  above: {
-    bottom: 0,
-    height: `calc(${trackHeightMedium}px + ${tokens.spacingVerticalS})`,
-    width: '100%',
-  },
-  sizeSmall: {
-    width: `calc(${trackWidthSmall}px + 2 * ${tokens.spacingHorizontalS})`,
-    ':checked': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        '> *': {
-          transform: `translateX(${trackWidthSmall - thumbSizeSmall - spaceBetweenThumbAndTrack}px)`,
-        },
-      },
-    },
-  },
-});
-
-// Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
-const useLabelStyles = makeStyles({
-  base: {
-    cursor: 'pointer',
-
-    // Use a (negative) margin to account for the difference between the track's height and the label's line height.
-    // This prevents the label from expanding the height of the switch, but preserves line height if the label wraps.
-    marginBottom: `calc((${trackHeightMedium}px - ${tokens.lineHeightBase300}) / 2)`,
-    marginTop: `calc((${trackHeightMedium}px - ${tokens.lineHeightBase300}) / 2)`,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-  },
-  sizeSmall: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    marginBottom: `calc((${trackHeightSmall}px - ${tokens.lineHeightBase200}) / 2)`,
-    marginTop: `calc((${trackHeightSmall}px - ${tokens.lineHeightBase200}) / 2)`,
-  },
-  above: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
-    width: '100%',
-  },
-  after: {
-    paddingLeft: tokens.spacingHorizontalXS,
-  },
-  before: {
-    paddingRight: tokens.spacingHorizontalXS,
-  },
-});
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
+ * the headless preview's vocabulary (reports/headless-precedent.md).
+ *
+ * All three live on the ROOT even though they select styles for the indicator, input and
+ * label slots: those slots are the root's children, so one stamp drives every descendant
+ * rule (same approach as react-button's `data-size` → `.root … & .icon`).
+ *
+ * `data-orientation` vs `data-label-position` — the two are NOT redundant, they encode the
+ * two different gates the Griffel hook used:
+ *   • `rootStyles.vertical` is applied for `labelPosition === 'above'` with NO label gate,
+ *     so its selector must match even when the Switch has no label → `data-orientation`,
+ *     always stamped, reusing the catalog's existing `vertical` / `horizontal` pair.
+ *   • `indicatorStyles.labelAbove`, `inputStyles[labelPosition]` and `labelStyles[...]`
+ *     are all gated on `label && …`, so they ride `data-label-position`, which is written
+ *     ONLY when the label slot exists. Its presence carries the `label &&` half of the
+ *     condition and its value carries the position — exactly how react-button's
+ *     `data-icon-position` encodes `icon && iconPosition`.
+ * Hence `data-label-position` is optional and written `label ? labelPosition : undefined`:
+ * React omits an attribute whose value is `undefined`.
+ */
+type SwitchRootDataAttributes = {
+  'data-orientation': 'horizontal' | 'vertical';
+  'data-size': SwitchState['size'];
+  'data-label-position'?: SwitchState['labelPosition'];
+};
 
 /**
  * Apply styling to the Switch slots based on the state
  */
 export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
-  const rootBaseClassName = useRootBaseClassName();
-  const rootStyles = useRootStyles();
-  const indicatorBaseClassName = useIndicatorBaseClassName();
-  const indicatorStyles = useIndicatorStyles();
-  const inputBaseClassName = useInputBaseClassName();
-  const inputStyles = useInputStyles();
-  const labelStyles = useLabelStyles();
-
   const { label, labelPosition, size } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    switchClassNames.root,
-    rootBaseClassName,
-    labelPosition === 'above' && rootStyles.vertical,
-    state.root.className,
-  );
+  const root = state.root as SwitchState['root'] & SwitchRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.indicator.className = mergeClasses(
-    switchClassNames.indicator,
-    indicatorBaseClassName,
-    label && labelPosition === 'above' && indicatorStyles.labelAbove,
-    size === 'small' && indicatorStyles.sizeSmall,
-    state.indicator.className,
-  );
+  root['data-orientation'] = labelPosition === 'above' ? 'vertical' : 'horizontal';
+  root['data-size'] = size;
+  root['data-label-position'] = label ? labelPosition : undefined;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = mergeClasses(
-    switchClassNames.input,
-    inputBaseClassName,
-    label && inputStyles[labelPosition],
-    size === 'small' && inputStyles.sizeSmall,
-    state.input.className,
-  );
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Switch.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including why the `label` slot's rules
+  // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
+  // own hook output).
+  state.root.className = clsx(switchClassNames.root, styles.root, state.root.className);
+
+  state.indicator.className = clsx(switchClassNames.indicator, styles.indicator, state.indicator.className);
+
+  state.input.className = clsx(switchClassNames.input, styles.input, state.input.className);
 
   if (state.label) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.label.className = mergeClasses(
-      switchClassNames.label,
-      labelStyles.base,
-      labelStyles[labelPosition],
-      size === 'small' && labelStyles.sizeSmall,
-      state.label.className,
-    );
+    state.label.className = clsx(switchClassNames.label, styles.label, state.label.className);
   }
 
   return state;

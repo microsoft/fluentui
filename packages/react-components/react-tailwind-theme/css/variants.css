@@ -24,6 +24,7 @@
 @custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
 @custom-variant enabled (&:where(:not([disabled], [data-disabled], :disabled)));
 @custom-variant checked (&:where([data-checked], :checked));
+@custom-variant not-checked (&:where(:not([data-checked], :checked)));
 @custom-variant selected (&:where([data-selected], [aria-selected='true']));
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
 @custom-variant open (&:where([open], [data-open], :open));
@@ -39,9 +40,64 @@
  * scale (Button, Badge, Avatar, Spinner, …) — `size` is a scale prop, not a look prop,
  * so it rides a data-attribute rather than a module class (DECISIONS.md D3).
  */
+@custom-variant size-extra-tiny (&:where([data-size='extra-tiny']));
+@custom-variant size-tiny (&:where([data-size='tiny']));
+@custom-variant size-extra-small (&:where([data-size='extra-small']));
 @custom-variant size-small (&:where([data-size='small']));
 @custom-variant size-medium (&:where([data-size='medium']));
 @custom-variant size-large (&:where([data-size='large']));
+@custom-variant size-extra-large (&:where([data-size='extra-large']));
+@custom-variant size-huge (&:where([data-size='huge']));
+
+/*
+ * Threshold form of the scale above — "at or below `small`". Badge's `smallToTiny`
+ * (`size === 'small' || 'extra-small' || 'tiny'`) gates two slices: the caption2Strong
+ * typography step and the `rounded` shape's smaller corner radius. Expressed as ONE
+ * variant rather than three duplicated blocks so the slice keeps its 1:1 mapping back to
+ * the Griffel source. Generalises safely: a component whose scale stops at `small` still
+ * matches only `size-small`.
+ */
+@custom-variant size-small-or-below (
+  &:where([data-size='small'], [data-size='extra-small'], [data-size='tiny'])
+);
+
+/*
+ * Numeric scale — the SAME `data-size` attribute carrying a pixel-valued scale instead of
+ * a t-shirt one. Introduced by SkeletonItem, whose `SkeletonItemSize` union is exactly
+ * this set (react-skeleton/library/src/components/Skeleton/Skeleton.types.ts); Avatar and
+ * Persona use subsets of the same numbers. A component uses only the names it needs —
+ * an unreferenced variant emits nothing.
+ */
+@custom-variant size-8 (&:where([data-size='8']));
+@custom-variant size-12 (&:where([data-size='12']));
+@custom-variant size-14 (&:where([data-size='14']));
+@custom-variant size-16 (&:where([data-size='16']));
+@custom-variant size-20 (&:where([data-size='20']));
+@custom-variant size-22 (&:where([data-size='22']));
+@custom-variant size-24 (&:where([data-size='24']));
+@custom-variant size-28 (&:where([data-size='28']));
+@custom-variant size-32 (&:where([data-size='32']));
+@custom-variant size-36 (&:where([data-size='36']));
+@custom-variant size-40 (&:where([data-size='40']));
+@custom-variant size-48 (&:where([data-size='48']));
+@custom-variant size-52 (&:where([data-size='52']));
+@custom-variant size-56 (&:where([data-size='56']));
+@custom-variant size-64 (&:where([data-size='64']));
+@custom-variant size-72 (&:where([data-size='72']));
+@custom-variant size-92 (&:where([data-size='92']));
+@custom-variant size-96 (&:where([data-size='96']));
+@custom-variant size-120 (&:where([data-size='120']));
+@custom-variant size-128 (&:where([data-size='128']));
+
+/*
+ * ProgressBar's scale prop is `thickness`, not `size` — its props type explicitly
+ * `Omit`s `size`, so reusing `data-size` would name an attribute the component does not
+ * have. No nyt-games or headless-preview precedent exists for it (reports/
+ * nyt-games-conventions.md, reports/headless-precedent.md), so the name is invented from
+ * the public prop.
+ */
+@custom-variant thickness-medium (&:where([data-thickness='medium']));
+@custom-variant thickness-large (&:where([data-thickness='large']));
 
 /* icon slot presence/placement (Button family, …) */
 @custom-variant icon-only (&:where([data-icon-only]));
@@ -49,13 +105,90 @@
 @custom-variant icon-before (&:where([data-icon-position='before']));
 @custom-variant icon-after (&:where([data-icon-position='after']));
 
+/*
+ * label slot presence/placement (Switch, Checkbox, Radio, …) — the same shape as the icon
+ * block above. `data-label-position` is one of the headless preview's 25 attribute names
+ * (reports/headless-precedent.md) and is stamped ONLY when the label slot exists, so its
+ * presence doubles as the "has a label" signal every one of these slices is gated on
+ * (`label && labelStyles[labelPosition]`). A component whose layout also depends on
+ * `labelPosition` WITHOUT that gate (react-switch's root flex-direction) uses
+ * `data-orientation` / `@variant vertical` instead, which is always stamped.
+ *
+ * The three values here are react-switch's union (`'above' | 'after' | 'before'`). The
+ * rest of the family uses subsets plus one more value: Checkbox is `'before' | 'after'`,
+ * Radio is `'after' | 'below'` — so converting Radio adds a `label-below` entry here.
+ */
+@custom-variant with-label (&:where([data-label-position]));
+@custom-variant label-above (&:where([data-label-position='above']));
+@custom-variant label-after (&:where([data-label-position='after']));
+@custom-variant label-before (&:where([data-label-position='before']));
+
 /* spacing opt-ins (Divider inset, …) — presence attributes, written as `|| undefined` */
 @custom-variant inset (&:where([data-inset]));
+
+/*
+ * Link's `inline` boolean — "this link sits inside a run of text", which underlines it at
+ * rest. No headless-preview precedent exists for the name, so it follows the react-divider
+ * pilot's `data-inset` shape: a boolean styling opt-in as a presence attribute.
+ * NOTE for module authors: `inline` is also the name of Tailwind's `display: inline`
+ * utility. `@variant inline { … }` and `@apply inline` live in different registries and do
+ * not collide, but Link.module.css writes `display: inline` longhand anyway for clarity.
+ */
+@custom-variant inline (&:where([data-inline]));
+
+/*
+ * Adornment-slot presence (Input contentBefore/contentAfter, and the same pair on
+ * Textarea/Select/SpinButton/Combobox). Presence attributes on the ROOT, written as
+ * `|| undefined`: the styles hook branches on `state.contentBefore && …`, and both the
+ * root's own padding and the inner input's padding key off it, so the flag has to be
+ * readable from the root for descendant selectors.
+ */
+@custom-variant content-before (&:where([data-content-before]));
+@custom-variant content-after (&:where([data-content-after]));
 
 /* interaction */
 @custom-variant hover (&:where(:hover));
 @custom-variant focus (&:where(:focus));
 @custom-variant focus-within (&:where(:focus-within));
+
+/*
+ * UNION compounds — the `-or-` in the name is load-bearing. `hover-active` below is an
+ * INTERSECTION (`:hover:active`); these are selector lists. The Griffel sources spell
+ * them `':hover,:focus-within'` / `':active,:focus-within'` with the comment "DO NOT add
+ * a space between the selectors! It changes the behavior of make-styles" — i.e. one slice
+ * whose declarations apply in either state. They recur across the whole input family
+ * (Input, Textarea, Select, SpinButton, Combobox root borders).
+ */
+@custom-variant hover-or-focus-within (&:where(:hover, :focus-within));
+@custom-variant active-or-focus-within (&:where(:active, :focus-within));
+
+/*
+ * `:not(:focus-within)` complement — the "field is not focused" guard v9 field controls
+ * use to hold their invalid/rest border while the focus indicator owns the focused look.
+ *
+ * ⚠ CONVERSION TRAP (found by react-input's A/B probe; applies to Textarea/Select too).
+ * Griffel authors that slice as `':not(:focus-within),:hover:not(:focus-within)'`. The
+ * second term IS a strict subset of the first, so it adds nothing to MATCHING — but it is
+ * not redundant, it is a SPECIFICITY HACK. Griffel's atomics are not `:where()`-wrapped:
+ * `.x:hover:not(:focus-within)` scores (0,3,0) and therefore outranks the hover-bucket
+ * atomics at (0,2,0), letting a `d`-bucket rule beat the `h` bucket. `.x:not(:focus-within)`
+ * scores only (0,2,0) and correctly LOSES to `:active` at (0,2,0) on bucket order.
+ *
+ * `:where()` flattens both to (0,1,0) and the asymmetry disappears, so a converted module
+ * must SPLIT the slice: the plain branch goes before the module's hover/active blocks, and
+ * a `@variant hover { @variant not-focus-within { … } }` restatement goes after them.
+ * Collapsing them into one block silently changes the invalid-plus-hover border.
+ * Worked example: Input.module.css, "useRootStyles.invalid, SECOND branch".
+ */
+@custom-variant not-focus-within (&:where(:not(:focus-within)));
+
+/*
+ * Bare `:active`, distinct from `pressed` above: several v9 styles files (Textarea's
+ * `outlineInteractive`, Input, Select, …) author a plain `:active` rule, and a converted
+ * component must reproduce the COMPILED selector — `pressed` additionally matches
+ * `[data-pressed]`, which Griffel never emitted for these.
+ */
+@custom-variant active (&:where(:active));
 
 /*
  * Griffel's authored "pressed" compound — `:hover:active,:active:focus-visible` — used
@@ -78,13 +211,54 @@
 @custom-variant disabled-any (&:where([disabled], [data-disabled], :disabled, [data-disabled-focusable]));
 
 /*
+ * The form-CONTROL disabled compound: `':disabled, &[aria-disabled=\"true\"]'` and its
+ * complement `':enabled:not([aria-disabled=\"true\"])'`, authored verbatim by
+ * react-switch's hidden-`<input>` reset. As of that conversion this is the ONLY styles
+ * file in the repo that spells the selector this way (verified by grep over every
+ * `packages/react-components/*​/library/src/components/*​/*.styles.ts`), but the shape
+ * generalises to the rest of the hidden-input family (Checkbox, Radio) when they convert:
+ * the control renders `aria-disabled` instead of `disabled` when it must stay focusable,
+ * so neither `:disabled` nor `[disabled]` alone reproduces the compiled selector.
+ *
+ * This is a SEPARATE entry rather than a widening of `disabled`/`enabled` above, and that
+ * separation is load-bearing: react-link renders `aria-disabled` for
+ * `disabled || disabledFocusable` (useLinkState.ts) while its Griffel hook gates the
+ * disabled slice on `disabled` alone (`disabled && styles.disabled`). Folding
+ * `[aria-disabled='true']` into the generic `disabled` variant would newly apply disabled
+ * styling to every `disabledFocusable` Link. Likewise `disabled-any` stays untouched:
+ * Button's condition is `disabled || disabledFocusable`, already carried by
+ * `[data-disabled-focusable]`.
+ */
+@custom-variant disabled-control (&:where([disabled], [data-disabled], :disabled, [aria-disabled='true']));
+@custom-variant enabled-control (&:where(:not([disabled], [data-disabled], :disabled, [aria-disabled='true'])));
+
+/*
  * Focus visibility — Fluent uses keyborg (react-tabster), which sets
  * data-fui-focus-visible / data-fui-focus-within. These attributes are the visual
  * contract (VR stories script them directly); native :focus-visible is intentionally
  * NOT part of these variants (DECISIONS.md D6).
+ *
+ * The two are NOT symmetric, and the asymmetry is react-tabster's, not ours:
+ * `createCustomFocusIndicatorStyle`'s `createBaseSelector` returns `&[data-fui-focus-visible]`
+ * for selector 'focus' but `&[data-fui-focus-within]:focus-within` for selector
+ * 'focus-within' (react-tabster/src/focus/createCustomFocusIndicatorStyle.ts:69-76).
+ * Confirmed in compiled AOT output — react-switch's root reset emits
+ * `.r2i81i2[data-fui-focus-within]:focus-within::after{…}`. The native pseudo-class must
+ * stay in the variant: keyborg leaves `data-fui-focus-within` on the element after focus
+ * moves away, so the attribute alone would keep the ring painted.
  */
 @custom-variant focus-visible-fui (&:where([data-fui-focus-visible]));
-@custom-variant focus-within-fui (&:where([data-fui-focus-within]));
+@custom-variant focus-within-fui (&:where([data-fui-focus-within]:focus-within));
+
+/*
+ * The NATIVE `:focus-visible` pseudo-class, deliberately separate from the keyborg pair
+ * above. Several v9 styles files author a plain `':focus-visible'` rule alongside their
+ * keyborg indicator — Link's base slice does exactly this
+ * (`.f2hkw1w:focus-visible{outline-style:none}` in its compiled AOT output) — so the two
+ * selectors must stay independently addressable. Overrides Tailwind's built-in variant of
+ * the same name only to add the `:where()` wrapper every catalog entry carries.
+ */
+@custom-variant focus-visible (&:where(:focus-visible));
 
 /*
  * Content presence — named for alignment with the CSS-native :empty selector

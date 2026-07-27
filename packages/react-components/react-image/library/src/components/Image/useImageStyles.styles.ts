@@ -1,94 +1,58 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { ImageSlots, ImageState } from './Image.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './Image.module.css';
 
 export const imageClassNames: SlotClassNames<ImageSlots> = {
   root: 'fui-Image',
 };
 
-const useStyles = makeStyles({
-  // Base styles
-  base: {
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    borderRadius: tokens.borderRadiusNone,
-
-    boxSizing: 'border-box',
-    display: 'inline-block',
-  },
-
-  // Bordered styles
-  bordered: {
-    ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
-  },
-
-  // Shape variations
-  circular: { borderRadius: tokens.borderRadiusCircular },
-  rounded: { borderRadius: tokens.borderRadiusMedium },
-  square: {
-    /* The square styles are exactly the same as the base styles. */
-  },
-
-  // Shadow styles
-  shadow: {
-    boxShadow: tokens.shadow4,
-  },
-
-  // Fit variations
-  center: {
-    objectFit: 'none',
-    objectPosition: 'center',
-  },
-  contain: {
-    objectFit: 'contain',
-    objectPosition: 'center',
-  },
-  default: {
-    /* The default styles are exactly the same as the base styles. */
-  },
-  cover: {
-    objectFit: 'cover',
-    objectPosition: 'center',
-  },
-  none: {
-    objectFit: 'none',
-    objectPosition: 'left top',
-  },
-
-  // When no explicit height/width props are provided, apply full-size
-  // sizing so fit modes behave as intended (object-fit fills the element).
-  fitFill: {
-    height: '100%',
-    width: '100%',
-  },
-
-  // Block styles
-  block: {
-    width: '100%',
-  },
-});
-
 export const useImageStyles_unstable = (state: ImageState): ImageState => {
-  const styles = useStyles();
+  const { block, bordered, fit, shadow, shape } = state;
 
   const { height, width } = state.root;
   // eslint-disable-next-line eqeqeq
   const hasExplicitSize = height != null || width != null;
-  const shouldApplyFitFill = state.fit !== 'default' && !hasExplicitSize;
+  const shouldApplyFitFill = fit !== 'default' && !hasExplicitSize;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Image.module.css and by
+  // block order within it, not by the order of these arguments — see that file's header
+  // for the mapping back to the mergeClasses() argument order this replaces.
+  //
+  // `styles[fit]` is undefined for fit="default" and `styles[shape]` is undefined for
+  // shape="square": both are empty `{}` slices in the Griffel original, so the module
+  // deliberately declares no rule for them and clsx drops the undefined entries.
+  //
+  // The state mutation below is preserved deliberately (DECISIONS.md D14 defers the
+  // pure-builder rewrite to a single Phase 3 sweep). The Griffel original's
+  // `eslint-disable-next-line react-hooks/immutability` is dropped because the rule no
+  // longer reports here — same as the react-divider and react-button conversions.
+  state.root.className = clsx(
     imageClassNames.root,
-    styles.base,
-    state.block && styles.block,
-    state.bordered && styles.bordered,
-    state.shadow && styles.shadow,
-    styles[state.fit],
+    styles.root,
+    block && styles.block,
+    bordered && styles.bordered,
+    shadow && styles.shadow,
+    styles[fit],
     shouldApplyFitFill && styles.fitFill,
-    styles[state.shape],
+    styles[shape],
     state.root.className,
   );
 

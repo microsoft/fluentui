@@ -1,0 +1,522 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useBadgeStyles_unstable,
+ * not source declaration order.
+ *
+ * root slot:
+ *   1 badgeClassNames.root                 → static class (JS)
+ *   2 useRootClassName (makeResetStyles)   → fui.base
+ *   3 useRootStyles.fontSmallToTiny        → fui.components.l1   (size-small-or-below)
+ *   4 useRootStyles[size]                  → fui.components.l1   (data-size)
+ *   5 useRootStyles[shape]                 → fui.components.l1   (.square / .rounded)
+ *   6 useRootStyles.roundedSmallToTiny     → fui.components.l1   (nested in .rounded)
+ *   7 useRootStyles.borderGhost            → fui.components.l1   (.borderGhost)
+ *   8 useRootStyles[appearance]            → fui.components.l1   (.outline)
+ *   9 useRootStyles[`${appearance}-${color}`] → fui.components.l1
+ *  10 consumer className                   → unlayered (always wins)
+ *
+ * icon slot:
+ *   1 badgeClassNames.icon                 → static class (JS)
+ *   2 useIconRootClassName (makeResetStyles) → fui.base
+ *   3 useIconStyles.beforeText/.afterText/.beforeTextXL/.afterTextXL
+ *                                          → fui.components.l1   (selected from the ROOT
+ *                                            via data-empty + data-icon-position + data-size,
+ *                                            so the icon slot carries no data attributes)
+ *   4 useIconStyles[size]                  → fui.components.l1   (also root-selected)
+ *   5 consumer className                   → unlayered
+ *
+ * NO inversions: within the root the conflicting properties are
+ *   font-size/line-height  (#3 loses to #4 for tiny/extra-small — #4 is written later),
+ *   border-radius          (#5 loses to #6 — #6 is nested after #5's declaration), and
+ *   border-*-color         (#8 loses to #9 — #9 is a later block).
+ * Every one of those winners is the LATER mergeClasses argument, so argument order and
+ * file order agree. Verified against the compiled atomics in
+ * lib-commonjs/components/Badge/useBadgeStyles.styles.js.
+ *
+ * Slices whose Griffel body is `{}` (medium, circular, filled, ghost, tint) get NO rule —
+ * `styles.medium` etc. stay undefined and clsx drops them, matching the empty class
+ * string Griffel produces today.
+ */
+
+@layer fui.base {
+  /*
+   * from useRootClassName (makeResetStyles). `...typographyStyles.caption1Strong` is
+   * spelled out as the four declarations the compiler emitted.
+   *
+   * `borderColor` is expanded to the four physical longhands because the appearance
+   * slices below override individual sides; the compiled ltr/rtl atomic pairs only swap
+   * left↔right while carrying the same value, so physical longhands are exact.
+   */
+  .root {
+    @apply relative inline-flex box-border items-center justify-center h-20 min-w-20;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+    padding-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+
+    border-radius: var(--borderRadiusCircular);
+
+    /* transparent stroke rather than no border, so the edge survives high contrast */
+    border-top-color: var(--colorTransparentStroke);
+    border-right-color: var(--colorTransparentStroke);
+    border-bottom-color: var(--colorTransparentStroke);
+    border-left-color: var(--colorTransparentStroke);
+
+    /*
+     * The border lives on ::after so it never affects layout — padding and size stay
+     * identical with or without it. The compiled rtl atomic only swaps `left`/`right`,
+     * both `0`, so the inline sides become logical.
+     */
+    &::after {
+      @apply absolute;
+
+      content: '';
+      top: 0;
+      bottom: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      border-style: solid;
+      border-color: inherit;
+      border-width: var(--strokeWidthThin);
+      border-radius: inherit;
+    }
+  }
+
+  /*
+   * from useIconRootClassName (makeResetStyles) — a negative inline margin that cancels
+   * the extra text padding the root adds. `margin: 0 calc(…)` expanded to longhands;
+   * the inline pair is symmetric, so it is written logical.
+   */
+  .icon {
+    @apply flex;
+
+    line-height: 1;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-inline-start: calc(-1 * var(--spacingHorizontalXXS));
+    margin-inline-end: calc(-1 * var(--spacingHorizontalXXS));
+
+    /* px literal → `--base-scale` (D4); exactly 12px at the default 16px root. */
+    font-size: calc(12px * var(--base-scale));
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * arg #3 — from useRootStyles.fontSmallToTiny (`...typographyStyles.caption2Strong`).
+     * font-family and font-weight repeat the reset's values verbatim; only font-size and
+     * line-height actually step down, and for tiny/extra-small even those are replaced by
+     * arg #4 below.
+     */
+    @variant size-small-or-below {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase100);
+      font-weight: var(--fontWeightSemibold);
+      line-height: var(--lineHeightBase100);
+    }
+
+    /* arg #4 — from useRootStyles[size]. `medium` is `{}` (all of it set by the reset). */
+
+    @variant size-tiny {
+      @apply size-6;
+
+      font-size: calc(4px * var(--base-scale));
+      line-height: calc(4px * var(--base-scale));
+      min-width: unset;
+      padding-top: unset;
+      padding-bottom: unset;
+      padding-inline-start: unset;
+      padding-inline-end: unset;
+    }
+
+    @variant size-extra-small {
+      @apply size-10;
+
+      font-size: calc(6px * var(--base-scale));
+      line-height: calc(6px * var(--base-scale));
+      min-width: unset;
+      padding-top: unset;
+      padding-bottom: unset;
+      padding-inline-start: unset;
+      padding-inline-end: unset;
+    }
+
+    @variant size-small {
+      @apply h-16 min-w-16;
+
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-inline-start: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+      padding-inline-end: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+    }
+
+    @variant size-large {
+      @apply h-24 min-w-24;
+
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+      padding-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+    }
+
+    @variant size-extra-large {
+      @apply h-32 min-w-32;
+
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-inline-start: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+      padding-inline-end: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #5 — from useRootStyles[shape]. `circular` is `{}` (set by the reset). */
+
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+
+    /*
+     * arg #6 — from useRootStyles.roundedSmallToTiny (`shape === 'rounded' && smallToTiny`).
+     * Nested here rather than given its own class: a nested rule is emitted after the
+     * parent's own declarations, which is exactly the later-argument win mergeClasses
+     * produced.
+     */
+    @variant size-small-or-below {
+      border-radius: var(--borderRadiusSmall);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #7 — from useRootStyles.borderGhost (`appearance === 'ghost'`). Kept as its own
+   * class instead of folded into `.ghost` so the empty `ghost` slice stays undefined and
+   * the argument mapping above stays 1:1.
+   */
+  .borderGhost {
+    &::after {
+      @apply hidden;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg #8 — from useRootStyles[appearance]. `filled`, `ghost` and `tint` are `{}`
+   * ("no shared colors between … appearances"), so only `outline` has a rule.
+   * `shorthands.borderColor('currentColor')` → the four physical longhands the compiler
+   * emits (`g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`); the ltr/rtl pair only swaps left↔right
+   * with an identical value, so the flip is a visual no-op.
+   */
+  .outline {
+    border-top-color: currentColor;
+    border-right-color: currentColor;
+    border-bottom-color: currentColor;
+    border-left-color: currentColor;
+  }
+}
+
+@layer fui.components.l1 {
+  /* arg #9 — from useRootStyles[`${appearance}-${color}`]; beats arg #8's border colors. */
+
+  .filled-brand {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .filled-danger {
+    background-color: var(--colorPaletteRedBackground3);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .filled-important {
+    background-color: var(--colorNeutralForeground1);
+    color: var(--colorNeutralBackground1);
+  }
+
+  .filled-informative {
+    background-color: var(--colorNeutralBackground5);
+    color: var(--colorNeutralForeground3);
+  }
+
+  .filled-severe {
+    background-color: var(--colorPaletteDarkOrangeBackground3);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .filled-subtle {
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+  }
+
+  .filled-success {
+    background-color: var(--colorPaletteGreenBackground3);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .filled-warning {
+    background-color: var(--colorPaletteYellowBackground3);
+    color: var(--colorNeutralForeground1Static);
+  }
+
+  .ghost-brand {
+    color: var(--colorBrandForeground1);
+  }
+
+  .ghost-danger {
+    color: var(--colorPaletteRedForeground3);
+  }
+
+  .ghost-important {
+    color: var(--colorNeutralForeground1);
+  }
+
+  .ghost-informative {
+    color: var(--colorNeutralForeground3);
+  }
+
+  .ghost-severe {
+    color: var(--colorPaletteDarkOrangeForeground3);
+  }
+
+  .ghost-subtle {
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+
+  .ghost-success {
+    color: var(--colorPaletteGreenForeground3);
+  }
+
+  .ghost-warning {
+    color: var(--colorPaletteYellowForeground2);
+  }
+
+  .outline-brand {
+    color: var(--colorBrandForeground1);
+  }
+
+  .outline-danger {
+    color: var(--colorPaletteRedForeground3);
+    border-top-color: var(--colorPaletteRedBorder2);
+    border-right-color: var(--colorPaletteRedBorder2);
+    border-bottom-color: var(--colorPaletteRedBorder2);
+    border-left-color: var(--colorPaletteRedBorder2);
+  }
+
+  .outline-important {
+    color: var(--colorNeutralForeground3);
+    border-top-color: var(--colorNeutralStrokeAccessible);
+    border-right-color: var(--colorNeutralStrokeAccessible);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-left-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  .outline-informative {
+    color: var(--colorNeutralForeground3);
+    border-top-color: var(--colorNeutralStroke2);
+    border-right-color: var(--colorNeutralStroke2);
+    border-bottom-color: var(--colorNeutralStroke2);
+    border-left-color: var(--colorNeutralStroke2);
+  }
+
+  .outline-severe {
+    color: var(--colorPaletteDarkOrangeForeground3);
+  }
+
+  .outline-subtle {
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+
+  .outline-success {
+    color: var(--colorPaletteGreenForeground3);
+    border-top-color: var(--colorPaletteGreenBorder2);
+    border-right-color: var(--colorPaletteGreenBorder2);
+    border-bottom-color: var(--colorPaletteGreenBorder2);
+    border-left-color: var(--colorPaletteGreenBorder2);
+  }
+
+  .outline-warning {
+    color: var(--colorPaletteYellowForeground2);
+  }
+
+  .tint-brand {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorBrandForeground2);
+    border-top-color: var(--colorBrandStroke2);
+    border-right-color: var(--colorBrandStroke2);
+    border-bottom-color: var(--colorBrandStroke2);
+    border-left-color: var(--colorBrandStroke2);
+  }
+
+  .tint-danger {
+    background-color: var(--colorPaletteRedBackground1);
+    color: var(--colorPaletteRedForeground1);
+    border-top-color: var(--colorPaletteRedBorder1);
+    border-right-color: var(--colorPaletteRedBorder1);
+    border-bottom-color: var(--colorPaletteRedBorder1);
+    border-left-color: var(--colorPaletteRedBorder1);
+  }
+
+  .tint-important {
+    background-color: var(--colorNeutralForeground3);
+    color: var(--colorNeutralBackground1);
+    border-top-color: var(--colorTransparentStroke);
+    border-right-color: var(--colorTransparentStroke);
+    border-bottom-color: var(--colorTransparentStroke);
+    border-left-color: var(--colorTransparentStroke);
+  }
+
+  .tint-informative {
+    background-color: var(--colorNeutralBackground4);
+    color: var(--colorNeutralForeground3);
+    border-top-color: var(--colorNeutralStroke2);
+    border-right-color: var(--colorNeutralStroke2);
+    border-bottom-color: var(--colorNeutralStroke2);
+    border-left-color: var(--colorNeutralStroke2);
+  }
+
+  .tint-severe {
+    background-color: var(--colorPaletteDarkOrangeBackground1);
+    color: var(--colorPaletteDarkOrangeForeground1);
+    border-top-color: var(--colorPaletteDarkOrangeBorder1);
+    border-right-color: var(--colorPaletteDarkOrangeBorder1);
+    border-bottom-color: var(--colorPaletteDarkOrangeBorder1);
+    border-left-color: var(--colorPaletteDarkOrangeBorder1);
+  }
+
+  .tint-subtle {
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground3);
+    border-top-color: var(--colorNeutralStroke2);
+    border-right-color: var(--colorNeutralStroke2);
+    border-bottom-color: var(--colorNeutralStroke2);
+    border-left-color: var(--colorNeutralStroke2);
+  }
+
+  .tint-success {
+    background-color: var(--colorPaletteGreenBackground1);
+    color: var(--colorPaletteGreenForeground1);
+    border-top-color: var(--colorPaletteGreenBorder1);
+    border-right-color: var(--colorPaletteGreenBorder1);
+    border-bottom-color: var(--colorPaletteGreenBorder1);
+    border-left-color: var(--colorPaletteGreenBorder1);
+  }
+
+  .tint-warning {
+    background-color: var(--colorPaletteYellowBackground1);
+    color: var(--colorPaletteYellowForeground1);
+    border-top-color: var(--colorPaletteYellowBorder1);
+    border-right-color: var(--colorPaletteYellowBorder1);
+    border-bottom-color: var(--colorPaletteYellowBorder1);
+    border-left-color: var(--colorPaletteYellowBorder1);
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * icon arg #3 — from useIconStyles.beforeText / .afterText / .beforeTextXL /
+     * .afterTextXL. Griffel gates these on
+     * `React.Children.toArray(state.root.children).length > 0` (deliberately NOT
+     * `!!children`, so a literal `0` still counts as text); that gate rides the root's
+     * `data-empty`, the placement rides `data-icon-position`, and the extra-large step
+     * rides `data-size` — so the icon slot itself needs no data attributes.
+     *
+     * marginRight/marginLeft → logical inline properties: the compiled atomics are
+     * [ltr, rtl] pairs (`t21cq0: ["f1t8l4o1","f11juvx6"]` → margin-right / margin-left),
+     * i.e. a pure property flip.
+     *
+     * The extra-large step is written after the default one instead of negating it;
+     * both selectors are `:where()`-flat and equal-specificity, so file order decides —
+     * the same winner the mutually-exclusive Griffel branch produced.
+     */
+    @variant not-empty {
+      @variant icon-before {
+        & .icon {
+          margin-inline-end: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+        }
+      }
+
+      @variant icon-after {
+        & .icon {
+          margin-inline-start: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+        }
+      }
+
+      @variant size-extra-large {
+        @variant icon-before {
+          & .icon {
+            margin-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+          }
+        }
+
+        @variant icon-after {
+          & .icon {
+            margin-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+          }
+        }
+      }
+    }
+
+    /*
+     * icon arg #4 — from useIconStyles[size]. `medium` is `{}`; `small` repeats the
+     * reset's 12px and is emitted anyway so the slice mapping stays 1:1.
+     */
+
+    @variant size-tiny {
+      & .icon {
+        font-size: calc(6px * var(--base-scale));
+      }
+    }
+
+    @variant size-extra-small {
+      & .icon {
+        font-size: calc(10px * var(--base-scale));
+      }
+    }
+
+    @variant size-small {
+      & .icon {
+        font-size: calc(12px * var(--base-scale));
+      }
+    }
+
+    @variant size-large {
+      & .icon {
+        font-size: calc(16px * var(--base-scale));
+      }
+    }
+
+    @variant size-extra-large {
+      & .icon {
+        font-size: calc(20px * var(--base-scale));
+      }
+    }
+  }
+}

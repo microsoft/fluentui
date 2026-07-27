@@ -4,6 +4,7 @@ exports[`PresenceBadge renders a default state 1`] = `
 <div
   aria-label="available"
   class="fui-PresenceBadge"
+  data-size="medium"
   role="img"
 >
   <span

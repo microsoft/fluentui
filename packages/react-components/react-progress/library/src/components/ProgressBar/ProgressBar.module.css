@@ -1,0 +1,183 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useProgressBarStyles_unstable, not source declaration order.
+ *
+ * `root` slot:
+ *
+ *   #  mergeClasses argument            → target
+ *   ---------------------------------------------------------------------------------
+ *   1  progressBarClassNames.root       → static class (JS)
+ *   2  useRootStyles.root               → fui.components.l1
+ *   3  useRootStyles[shape]             → fui.components.l1  (.rounded / .square)
+ *   4  useRootStyles[thickness]         → fui.components.l1  (data-thickness)
+ *   5  consumer className               → unlayered (always wins)
+ *
+ * `bar` slot:
+ *
+ *   #  mergeClasses argument            → target
+ *   ---------------------------------------------------------------------------------
+ *   1  progressBarClassNames.bar        → static class (JS)
+ *   2  useBarStyles.base                → fui.components.l1
+ *   3  useBarStyles.brand               → fui.components.l1  (see "color" note below)
+ *   4  useBarStyles.indeterminate       → fui.components.l1  (data-indeterminate)
+ *   5  useBarStyles.nonZeroDeterminate  → fui.components.l1  (.nonZeroDeterminate)
+ *   6  useBarStyles[color]              → fui.components.l1  (.brand/.error/…)
+ *   7  consumer className               → unlayered (always wins)
+ *
+ * ── ProgressBar has NO makeResetStyles, so `fui.base` stays empty ───────────────────
+ *
+ * ── "color": args 3 and 6 collapse to ONE class ────────────────────────────────────
+ * Griffel applied `barStyles.brand` unconditionally (#3) and `barStyles[color]` only for
+ * a determinate bar (#6, gated on `value !== undefined`); when both landed, #6 won the
+ * `background-color`. The hook therefore resolves the winner in JS
+ * (`determinate && color ? color : 'brand'`) and emits a single class, which is
+ * byte-identical in effect and avoids rendering `brand` twice on the default
+ * `<ProgressBar value={…} />`. Consequence worth stating: an INDETERMINATE bar ignores
+ * `color` entirely and stays brand — pre-existing behaviour, reproduced deliberately.
+ * Because that single class sits at #6, its block is written after #4/#5 below.
+ *
+ * ── Non-inverted cross-position moves (verified disjoint against the compiled atomics
+ *    in lib-commonjs/components/ProgressBar/useProgressBarStyles.styles.js) ──────────
+ * #4 `indeterminate` and #5 `nonZeroDeterminate` are mutually exclusive (`value`
+ * undefined vs. defined), so they never compete. Neither sets `background-color`, so the
+ * color block after them cannot invert anything: indeterminate sets `max-width` /
+ * `position` / `background-image`, nonZeroDeterminate sets `transition-*` only.
+ *
+ * ── Ordering that IS load-bearing (the one real inversion) ─────────────────────────
+ * `useBarStyles.base` declares BOTH `border-radius`/`height` and a
+ * `@media screen and (forced-colors: active)` rule. Griffel emits its media bucket (`m`)
+ * AFTER the default bucket (`d`), so that rule's `background-color: Highlight` beats all
+ * four color atomics even though `base` is an EARLIER mergeClasses argument. Plain source
+ * order would hand high contrast to `.error`/`.warning`/`.success`. The forced-colors
+ * block is therefore split out and written LAST in this file. The same bucket rule
+ * applies to `.root`'s forced-colors `CanvasText` and to `indeterminate`'s
+ * reduced-motion `max-width`, but both of those only override a declaration from their
+ * own slice, so nesting them in place already reproduces the winner.
+ */
+
+@layer fui.components.l1 {
+  /* from useRootStyles.root */
+  .root {
+    @apply block w-full overflow-hidden;
+
+    background-color: var(--colorNeutralBackground6);
+
+    /* Griffel bucket `m` wins over `d` — beats the background-color above. */
+    @variant forced-colors {
+      background-color: CanvasText;
+    }
+  }
+
+  /* from useRootStyles.rounded / .square — `shape` is a look prop → module class (D3) */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  /* from useRootStyles.medium / .large — `thickness` is a scale prop → data-attribute (D3) */
+  .root {
+    @variant thickness-medium {
+      @apply h-2;
+    }
+
+    @variant thickness-large {
+      @apply h-4;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useBarStyles.base — the forced-colors half is split out to the last block */
+  .bar {
+    @apply h-full;
+
+    border-radius: inherit;
+
+    /* from useBarStyles.indeterminate — applied when `value === undefined` */
+    @variant indeterminate {
+      @apply relative;
+
+      max-width: 33%;
+
+      background-image: linear-gradient(
+        to right,
+        var(--colorNeutralBackground6) 0%,
+        var(--colorTransparentBackground) 50%,
+        var(--colorNeutralBackground6) 100%
+      );
+
+      /* Value-level RTL flip (D5): a gradient direction cannot be expressed logically.
+         Mirrors the `f1u5hf6c` twin Griffel emitted next to `fpo0yib`. */
+      @variant rtl {
+        background-image: linear-gradient(
+          to left,
+          var(--colorNeutralBackground6) 0%,
+          var(--colorTransparentBackground) 50%,
+          var(--colorNeutralBackground6) 100%
+        );
+      }
+
+      /* Reduced motion: the bar is sized here and ProgressBarIndeterminateMotion pulses
+         opacity instead of sliding. Griffel bucket `m` beats the 33% above. */
+      @media screen and (prefers-reduced-motion: reduce) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  /* from useBarStyles.nonZeroDeterminate — a near-zero value must not animate its reset */
+  .nonZeroDeterminate {
+    transition-property: width;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useBarStyles.brand / .error / .warning / .success — `color` is a look prop (D3) */
+  .brand {
+    background-color: var(--colorCompoundBrandBackground);
+  }
+
+  .error {
+    background-color: var(--colorPaletteRedBackground3);
+  }
+
+  .warning {
+    background-color: var(--colorPaletteDarkOrangeBackground3);
+  }
+
+  .success {
+    background-color: var(--colorPaletteGreenBackground3);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useBarStyles.base (high contrast half) — written LAST on purpose.
+   * See the "one real inversion" note in the header: Griffel's media bucket outranks its
+   * default bucket, so this beats every color class above regardless of argument order.
+   */
+  .bar {
+    @variant forced-colors {
+      background-color: Highlight;
+    }
+  }
+}

@@ -1,0 +1,648 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useInputStyles_unstable,
+ * not source declaration order. `root` slot:
+ *
+ *   #  mergeClasses argument                              bucket  → target
+ *   ---------------------------------------------------------------------------------
+ *   1  inputClassNames.root                               —       → static class (JS)
+ *   2  useRootClassName                     (makeReset)   r       → fui.base
+ *   3  rootStyles[size]                                   d       → l1  (data-size)
+ *   4  rootStyles[`${size}WithContentBefore`]             d       → l1  (data-content-before)
+ *   5  rootStyles[`${size}WithContentAfter`]              d       → l1  (data-content-after)
+ *   6  rootStyles[appearance]                             d       → l1  (.underline/.filled-…)
+ *   7  rootStyles.outlineInteractive     (!disabled)      h + a   → l1  (.outline)
+ *   8  rootStyles.underlineInteractive   (!disabled)      d/h/a   → l1  (.underline)
+ *   9  rootStyles.filledInteractive      (!disabled)      h       → l1  (.filled)
+ *  10  rootStyles.filled                                  d       → l1  (.filled)
+ *  11  rootStyles.invalid                (!disabled)      d       → l1  (data-invalid)
+ *  12  rootStyles.disabled                                d/w/m   → l1  (data-disabled)
+ *  13  consumer className                                 —       → unlayered (always wins)
+ *
+ * `input` slot:
+ *
+ *   1  inputClassNames.input                              —       → static class (JS)
+ *   2  useInputClassName                    (makeReset)   r       → fui.base
+ *   3  inputStyles[size]                                  d       → l1  (data-size)
+ *   4  inputStyles[`${size}WithContentBefore`]            d       → l1  (data-content-before)
+ *   5  inputStyles[`${size}WithContentAfter`]             d       → l1  (data-content-after)
+ *   6  inputStyles.disabled                               d       → l1  (native :disabled)
+ *   7  consumer className                                 —       → unlayered
+ *
+ * `contentBefore` / `contentAfter` slots (identical class list, one `.content` class):
+ *
+ *   1  inputClassNames.contentBefore|contentAfter         —       → static class (JS)
+ *   2  useContentClassName                  (makeReset)   r       → fui.base
+ *   3  contentStyles.disabled                             d       → l1
+ *   4  contentStyles[size]                                d       → l1
+ *   5  consumer className                                 —       → unlayered
+ *
+ * ── The ORDER RULE for this component is Griffel's BUCKET order, not argument order ──
+ * mergeClasses argument order only decides conflicts between atomics that share a
+ * property KEY (it deletes the earlier class). Every conflict below is between DIFFERENT
+ * keys — the same property reached through different selectors — and Griffel resolves
+ * those by STYLE BUCKET (`d` default < `w` focus-within < `h` hover < `a` active < `m`
+ * media), which no argument order can express. Verified against the compiled atomics in
+ * lib-commonjs/components/Input/useInputStyles.styles.js, whose `d`/`h`/`a`/`m` arrays
+ * are the emission order.
+ *
+ * INVERSION 1 (bucket order): #9 `filledInteractive` (bucket `h`) is an EARLIER
+ * mergeClasses argument than #10 `filled` (bucket `d`) and #11 `invalid` (bucket `d`),
+ * yet Griffel emits it LAST — a hovered filled Input shows `colorTransparentStrokeInteractive`,
+ * not `colorTransparentStroke`. The `h`/`a` rules of args #7/#8/#9 are therefore collected
+ * in one trailing "interactive" section below, after #10/#11/#12. Reordering those blocks
+ * silently changes which border color wins on hover.
+ *
+ * INVERSION 2 (specificity): #11 `invalid` is authored with TWO selector branches, and
+ * they land on opposite sides of that interactive section — its `:hover:not(:focus-within)`
+ * branch carries enough specificity in raw Griffel to outrank the `h` bucket, while its
+ * plain `:not(:focus-within)` branch does not and loses to `:active`. `:where()` erases
+ * the difference, so the slice is SPLIT into two blocks below. Full reasoning is at the
+ * second block; both were confirmed by an A/B computed-style probe against the real
+ * Griffel stylesheet (3456 scenarios: size × appearance × disabled × invalid ×
+ * contentBefore × contentAfter × interaction state × dir).
+ *
+ * Non-inverted, verified disjoint against the same compiled output:
+ * #6 appearance sets background-color / border-*-STYLE / box-shadow; #10 `filled` sets
+ * border-*-COLOR — the two never meet, so `.filled`'s `d` block may sit after them.
+ * #12 disabled shares argument order AND declaration order with #10/#11 (and reuses
+ * #10's property keys outright: `g2u3we`/`h3c5rm`/`B9xav0g`/`zhjwy3`), so file order
+ * reproduces both mechanisms at once.
+ */
+
+@layer fui.base {
+  /*
+   * from useRootClassName (makeResetStyles).
+   *
+   * `border: 1px solid …` is expanded to longhands because the very next declaration
+   * overrides one side, and because #10/#11/#12 each override a subset of the colors.
+   * The compiled RTL twin (`.r9sxh5`) only swaps left↔right on declarations whose two
+   * values are equal, so this slot has NO value-level flip — logical properties are
+   * exact.
+   */
+  .root {
+    @apply relative box-border inline-flex flex-nowrap items-center align-middle min-h-32;
+
+    gap: var(--spacingHorizontalXXS);
+
+    /* used for all but the underline appearance */
+    border-radius: var(--borderRadiusMedium);
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    /* appearance: outline (default) */
+    background-color: var(--colorNeutralBackground1);
+
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: var(--colorNeutralStroke1);
+    border-right-color: var(--colorNeutralStroke1);
+    border-left-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+
+    /*
+     * The bottom focus underline. Flat 2px all the way across, matching the radius of
+     * the field's bottom corners.
+     *
+     * The three `2px` literals below are ONE measurement expressed three ways and must
+     * stay in lockstep: the `max()` floor keeps the underline visible even if a theme
+     * sets `--borderRadiusMedium` to 0; `border-bottom-width` draws it; `clip-path`
+     * trims the "horns" `border-bottom` would otherwise leave on the ends. They stay
+     * unscaled literals (no `--base-scale`) precisely because they must agree with each
+     * other and with `--borderRadiusMedium`, which is an unscaled token.
+     */
+    &::after {
+      @apply absolute box-border;
+
+      content: '';
+
+      /* compiled: ltr `left:-1px;right:-1px`, rtl `right:-1px;left:-1px` — equal values */
+      inset-inline: -1px;
+      bottom: -1px;
+
+      /* Use the whole border-radius as the height and only put radii on the bottom
+         corners, otherwise the radius is auto-reduced to fit the available space. */
+      height: max(2px, var(--borderRadiusMedium));
+      border-end-start-radius: var(--borderRadiusMedium);
+      border-end-end-radius: var(--borderRadiusMedium);
+
+      /* longhands: `:focus-within:active` below overrides the color alone */
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      border-bottom-color: var(--colorCompoundBrandStroke);
+
+      clip-path: inset(calc(100% - 2px) 0 0 0);
+
+      /* Animation for focus OUT */
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--durationUltraFast);
+
+      /* Curve token used as a delay — reproduced from the compiled output verbatim. */
+      transition-delay: var(--curveAccelerateMid);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+        transition-delay: 0.01ms;
+      }
+    }
+
+    @variant focus-within {
+      /* Animation for focus IN */
+      &::after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--durationNormal);
+        transition-delay: var(--curveDecelerateMid);
+
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition-duration: 0.01ms;
+          transition-delay: 0.01ms;
+        }
+      }
+
+      /* clicking the field again while it is already focused */
+      @variant active {
+        &::after {
+          border-bottom-color: var(--colorCompoundBrandStrokePressed);
+        }
+      }
+
+      outline-width: 2px;
+      outline-style: solid;
+      outline-color: transparent;
+    }
+  }
+
+  /* from useInputClassName (makeResetStyles) */
+  .input {
+    @apply box-border grow self-stretch min-w-0;
+
+    /* the input itself never has a border — the root draws it */
+    border-style: none;
+
+    padding-block: 0;
+    padding-inline: var(--spacingHorizontalM);
+
+    color: var(--colorNeutralForeground1);
+
+    /* literal `transparent` (not a theme token) so the root's color always shows through */
+    background-color: transparent;
+
+    /* disable the default browser outline */
+    outline-style: none;
+
+    /* inherit typography from the root */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
+    /*
+     * Griffel autoprefixes to `::-webkit-input-placeholder` / `::-moz-placeholder` /
+     * `::placeholder`. Only the unprefixed form is emitted here — the legacy aliases
+     * predate the repo's baseline browsers, and an unsupported pseudo-element would
+     * invalidate the whole rule if they were merged into one selector list.
+     */
+    &::placeholder {
+      color: var(--colorNeutralForeground4);
+      opacity: 1; /* browser style override */
+    }
+  }
+
+  /* from useContentClassName (makeResetStyles) — shared by contentBefore + contentAfter */
+  .content {
+    @apply box-border flex;
+
+    color: var(--colorNeutralForeground3); /* "icon color" in the design spec */
+
+    /*
+     * Special case for icons (the common case) so they centre vertically. size: medium.
+     * `--base-scale` keeps the glyph scaling with the root font size (D4); at the
+     * default 16px root this is exactly `font-size: 20px`, the compiled value.
+     */
+    & > svg {
+      font-size: calc(20px * var(--base-scale));
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /* from useRootStyles.small — arg #3. `medium` is the compiled `{}` slice, so
+       `styles.medium` does not exist and its values stay in the reset above. */
+    @variant size-small {
+      @apply min-h-24;
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+
+    /* from useRootStyles.large — arg #3 */
+    @variant size-large {
+      @apply min-h-40;
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase400);
+      gap: var(--spacingHorizontalSNudge);
+    }
+
+    /*
+     * from useRootStyles.{small,medium,large}WithContentBefore / …WithContentAfter —
+     * args #4/#5. With no adornment the INPUT carries the combined padding to widen its
+     * hit target; with one, the root and the input each take their own share.
+     * paddingLeft/Right are a pure `[ltr, rtl]` property flip in the compiled atomics
+     * (`uwmqm3: ["fk8j09s","fdw0yi8"]`) → logical inline properties.
+     */
+    @variant content-before {
+      @variant size-small {
+        padding-inline-start: var(--spacingHorizontalSNudge);
+      }
+
+      @variant size-medium {
+        padding-inline-start: var(--spacingHorizontalMNudge);
+      }
+
+      @variant size-large {
+        padding-inline-start: var(--spacingHorizontalM);
+      }
+    }
+
+    @variant content-after {
+      @variant size-small {
+        padding-inline-end: var(--spacingHorizontalSNudge);
+      }
+
+      @variant size-medium {
+        padding-inline-end: var(--spacingHorizontalMNudge);
+      }
+
+      @variant size-large {
+        padding-inline-end: var(--spacingHorizontalM);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * Appearance look classes — arg #6, the `d`-bucket half. `outline` is the compiled `{}`
+   * slice (its values live in the reset), so `.outline` further down carries ONLY arg #7's
+   * interactive rules.
+   */
+
+  /* from useRootStyles.underline */
+  .underline {
+    background-color: var(--colorTransparentBackground);
+
+    /* corners look strange if rounded */
+    border-radius: 0;
+
+    /* the reset draws all four borders; the underline keeps only the bottom one.
+       The compiled right/left pair carries the same value, so the flip is a no-op —
+       logical properties are exact. */
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
+
+    /* make the focus underline span the full width of the bottom border */
+    &::after {
+      inset-inline: 0;
+    }
+  }
+
+  /* from useRootStyles['filled-darker'] */
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  /* from useRootStyles['filled-lighter'] */
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  /* from useRootStyles['filled-darker-shadow'] — deprecated appearance */
+  .filled-darker-shadow {
+    background-color: var(--colorNeutralBackground3);
+    box-shadow: var(--shadow2);
+  }
+
+  /* from useRootStyles['filled-lighter-shadow'] — deprecated appearance */
+  .filled-lighter-shadow {
+    background-color: var(--colorNeutralBackground1);
+    box-shadow: var(--shadow2);
+  }
+
+  /*
+   * from useRootStyles.filled — arg #10, applied for every `filled-*` appearance.
+   * `shorthands.borderColor()` expanded to the four longhands the compiler emits.
+   */
+  .filled {
+    border-top-color: var(--colorTransparentStroke);
+    border-right-color: var(--colorTransparentStroke);
+    border-bottom-color: var(--colorTransparentStroke);
+    border-left-color: var(--colorTransparentStroke);
+  }
+
+  .root {
+    /*
+     * from useRootStyles.invalid — arg #11, applied when `!disabled && aria-invalid`,
+     * FIRST of its two selector branches (`:not(:focus-within)`).
+     *
+     * Written AFTER `.filled` so it wins the equal-specificity tie, exactly as
+     * mergeClasses arg #11 beats arg #10 (both bucket `d`, `invalid` declared later),
+     * and BEFORE the interactive section so the `:active` rules still beat it — see the
+     * split-invalid note down there for why this branch must lose to `:active`.
+     */
+    @variant enabled {
+      @variant invalid {
+        @variant not-focus-within {
+          border-top-color: var(--colorPaletteRedBorder2);
+          border-right-color: var(--colorPaletteRedBorder2);
+          border-bottom-color: var(--colorPaletteRedBorder2);
+          border-left-color: var(--colorPaletteRedBorder2);
+        }
+      }
+    }
+
+    /* from useRootStyles.disabled — arg #12, the last style argument. */
+    @variant disabled {
+      cursor: not-allowed;
+      background-color: var(--colorTransparentBackground);
+
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+
+      /* remove the focus underline */
+      &::after {
+        content: unset;
+      }
+
+      /* remove the focus outline the reset sets */
+      @variant focus-within {
+        outline-style: none;
+      }
+
+      @variant forced-colors {
+        border-top-color: GrayText;
+        border-right-color: GrayText;
+        border-bottom-color: GrayText;
+        border-left-color: GrayText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── Interactive borders — args #7/#8/#9, Griffel buckets `h` and `a` ────────────────
+   * These are EARLIER mergeClasses arguments than #10/#11/#12 above but Griffel emits
+   * them later (bucket order `d` < `h` < `a`), so they are written last inside this
+   * layer. See the inversion note in the header: moving any of these blocks above
+   * `.filled` / `invalid` / `disabled` changes which border color a hovered Input shows.
+   *
+   * The `!disabled &&` half of each guard becomes `@variant enabled` — the root carries
+   * `data-disabled` whenever the inner `<input>` is disabled. The three appearance
+   * classes are mutually exclusive, so no two of these blocks are ever on one element.
+   */
+
+  /* from useRootStyles.outlineInteractive — arg #7 (appearance === 'outline') */
+  .outline {
+    @variant enabled {
+      @variant hover {
+        border-top-color: var(--colorNeutralStroke1Hover);
+        border-right-color: var(--colorNeutralStroke1Hover);
+        border-left-color: var(--colorNeutralStroke1Hover);
+        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+      }
+
+      @variant active-or-focus-within {
+        border-top-color: var(--colorNeutralStroke1Pressed);
+        border-right-color: var(--colorNeutralStroke1Pressed);
+        border-left-color: var(--colorNeutralStroke1Pressed);
+        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+      }
+    }
+  }
+
+  /* from useRootStyles.underlineInteractive — arg #8 (appearance === 'underline') */
+  .underline {
+    @variant enabled {
+      @variant hover {
+        border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+      }
+
+      @variant active-or-focus-within {
+        border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+      }
+
+      /* remove the rounded corners from the focus underline. This one declaration is
+         bucket `d`, but only the reset (fui.base) sets those corners, so its position
+         among the interactive rules is inert. */
+      &::after {
+        border-radius: 0;
+      }
+    }
+  }
+
+  /* from useRootStyles.filledInteractive — arg #9 (appearance starts with 'filled') */
+  .filled {
+    @variant enabled {
+      /* also handles the pressed border color (`:active` is a subset of `:focus-within`
+         here, since the field always contains a focusable input) */
+      @variant hover-or-focus-within {
+        border-top-color: var(--colorTransparentStrokeInteractive);
+        border-right-color: var(--colorTransparentStrokeInteractive);
+        border-bottom-color: var(--colorTransparentStrokeInteractive);
+        border-left-color: var(--colorTransparentStrokeInteractive);
+      }
+    }
+  }
+
+  /*
+   * ── useRootStyles.invalid, SECOND branch — arg #11, split from the block above ──────
+   * Griffel authors the slice as `':not(:focus-within),:hover:not(:focus-within)'`. The
+   * second term looks redundant (it is a strict subset of the first) and it is redundant
+   * for MATCHING — but not for WINNING. Griffel's atomics are not `:where()`-wrapped, so
+   * `.fs4k3qj:hover:not(:focus-within)` scores (0,3,0) while the hover-bucket atomics
+   * (`.fvcxoqz:hover`, `.ftmjh5b:hover,…`) score (0,2,0): the doubled selector is a
+   * SPECIFICITY HACK that lets a `d`-bucket rule outrank the `h` bucket. `:where()`
+   * flattens all of them to (0,1,0) and the hack evaporates, so the branch is restated
+   * here — after the interactive section — where file order reproduces the same winner.
+   *
+   * Caught by the A/B computed-style probe, not by reading the source: every
+   * `invalid` + `:hover` + `:not(:focus-within)` combination rendered the interactive
+   * border instead of `colorPaletteRedBorder2`.
+   *
+   * The first branch deliberately stays ABOVE the interactive section, because it does
+   * NOT carry the extra specificity: `.fs4k3qj:not(:focus-within)` is (0,2,0), the same
+   * as `.f8vnjqi:active`, so Griffel's bucket order (`a` after `d`) makes the PRESSED
+   * border win while the field is `:active` but not hovered. Merging the two branches
+   * into one block here would wrongly hand that case to the red border.
+   */
+  .root {
+    @variant enabled {
+      @variant invalid {
+        @variant hover {
+          @variant not-focus-within {
+            border-top-color: var(--colorPaletteRedBorder2);
+            border-right-color: var(--colorPaletteRedBorder2);
+            border-bottom-color: var(--colorPaletteRedBorder2);
+            border-left-color: var(--colorPaletteRedBorder2);
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── `input` slot ───────────────────────────────────────────────────────────────────
+   * `data-size` and the two adornment flags live on the ROOT (the headless preview's
+   * convention — every data attribute on the root slot), so the size- and adornment-
+   * driven padding reaches the input through a descendant selector, the same shape
+   * react-button uses for its icon slot.
+   */
+  .root {
+    /* from useInputElementStyles.small / .large — arg #3. `medium` is the compiled `{}`
+       slice; the combined medium padding is in the reset. */
+    @variant size-small {
+      & .input {
+        padding-inline: var(--spacingHorizontalS);
+      }
+    }
+
+    @variant size-large {
+      & .input {
+        padding-inline: calc(var(--spacingHorizontalM) + var(--spacingHorizontalSNudge));
+      }
+    }
+
+    /* from useInputElementStyles.{size}WithContentBefore / …WithContentAfter — args
+       #4/#5. These override one side of the `padding-inline` set just above, which is
+       why they are written after it. */
+    @variant content-before {
+      @variant size-small {
+        & .input {
+          padding-inline-start: var(--spacingHorizontalXXS);
+        }
+      }
+
+      @variant size-medium {
+        & .input {
+          padding-inline-start: var(--spacingHorizontalXXS);
+        }
+      }
+
+      @variant size-large {
+        & .input {
+          padding-inline-start: var(--spacingHorizontalSNudge);
+        }
+      }
+    }
+
+    @variant content-after {
+      @variant size-small {
+        & .input {
+          padding-inline-end: var(--spacingHorizontalXXS);
+        }
+      }
+
+      @variant size-medium {
+        & .input {
+          padding-inline-end: var(--spacingHorizontalXXS);
+        }
+      }
+
+      @variant size-large {
+        & .input {
+          padding-inline-end: var(--spacingHorizontalSNudge);
+        }
+      }
+    }
+  }
+
+  /*
+   * from useInputElementStyles.disabled — arg #6.
+   *
+   * Driven from the ROOT's `data-disabled` rather than the input's own native
+   * `:disabled`, even though this slot IS the `<input>`. The shared `disabled` variant is
+   * a UNION of several disabled signals and grows as packages convert; the root attribute
+   * mirrors `state.input.disabled` exactly, which is the single condition this slice
+   * branched on. Keying off the union would let a signal Griffel ignored (an
+   * `aria-disabled` forwarded to the input, say) grey out the text while leaving the root
+   * border untouched — a half-disabled field Griffel never rendered.
+   */
+  .root {
+    @variant disabled {
+      & .input {
+        color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--colorTransparentBackground);
+        cursor: not-allowed;
+
+        &::placeholder {
+          color: var(--colorNeutralForegroundDisabled);
+        }
+      }
+    }
+  }
+
+  /*
+   * ── `contentBefore` / `contentAfter` slots ─────────────────────────────────────────
+   * Both slots receive the identical class list, so one `.content` class covers them —
+   * the same way Griffel handed both the same atomics. Disabled (arg #3) and size
+   * (arg #4) are disjoint (`color` vs the icon's `font-size`), so their relative order
+   * carries no winner.
+   */
+  .root {
+    /* from useContentStyles.disabled */
+    @variant disabled {
+      & .content {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+
+    /* from useContentStyles.small / .large — keeps resizable icons at the right size.
+       `medium` is the compiled `{}` slice; its 20px is in the reset. */
+    @variant size-small {
+      & .content > svg {
+        font-size: calc(16px * var(--base-scale));
+      }
+    }
+
+    @variant size-large {
+      & .content > svg {
+        font-size: calc(24px * var(--base-scale));
+      }
+    }
+  }
+}
