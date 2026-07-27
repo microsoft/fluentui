@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/display.js';
+import { checkedState, disabledState, submenuState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandForeground1Pressed,
@@ -20,7 +20,7 @@ import {
   lineHeightBase200,
   lineHeightBase300,
 } from '../theme/design-tokens.js';
-import { checkedState, disabledState, submenuState } from '../styles/states/index.js';
+import { display } from '../utils/display.js';
 
 /** MenuItem styles
  * @public
@@ -29,21 +29,16 @@ export const styles = css`
   ${display('grid')}
 
   :host {
-    --indent: 0;
     align-items: center;
     background: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
     color: ${colorNeutralForeground2};
-    contain: layout;
     cursor: pointer;
-    /* Prevent shrinking of MenuItems when max-height is applied to MenuList */
-    flex-shrink: 0;
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
-    grid-gap: 4px;
-    grid-template-columns: 20px 20px auto 20px;
+    grid-template-columns: subgrid;
     height: 32px;
     overflow: visible;
-    padding: 0 10px;
   }
 
   :host(:hover) {
@@ -95,46 +90,29 @@ export const styles = css`
     white-space: nowrap;
   }
 
-  :host([data-indent='1']) {
-    --indent: 1;
-  }
-
-  :host([data-indent='2']) {
-    --indent: 2;
-    grid-template-columns: 20px 20px auto auto;
-  }
-
-  :host(${submenuState}) {
-    grid-template-columns: 20px auto auto 20px;
-  }
-
-  :host([data-indent='2']${submenuState}) {
-    grid-template-columns: 20px 20px auto auto 20px;
-  }
-
   .indicator,
   ::slotted([slot='indicator']) {
-    grid-column: 1 / span 1;
+    grid-column: 2 / span 1;
     width: 20px;
   }
 
   ::slotted([slot='start']) {
     display: inline-flex;
-    grid-column: calc(var(--indent)) / span 1;
+    grid-column: 3 / span 1;
   }
 
   .content {
-    grid-column: calc(var(--indent) + 1) / span 1;
+    grid-column: 4 / span 1;
   }
 
   ::slotted([slot='end']) {
-    grid-column: calc(var(--indent) + 2) / span 1;
+    grid-column: 5 / span 1;
     justify-self: end;
   }
 
   .submenu-glyph,
   ::slotted([slot='submenu-glyph']) {
-    grid-column: -2 / span 1;
+    grid-column: 6 / span 1;
     justify-self: end;
   }
 
