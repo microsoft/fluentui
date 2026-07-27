@@ -1,0 +1,7 @@
+date: 2026-07-27 (post batch-1; gz, monosize js+css combined per D10)
+Badge:          7352 -> 5680   (-22.7%)
+CounterBadge:   7610 -> 5878   (-22.8%)
+PresenceBadge:  8292 -> 10474  (+26.3%)  <- per-package CSS aggregation cost; own JS share small (react-icons dominates, external per D11)
+Suite Button+Provider+theme: 19002 -> 15765 (-17.0%)
+Suite 6-component:           68049 -> 65980 (-3.0%)
+Suite ENTIRE LIBRARY:       326152 -> 319145 (-2.1%) at 13/87 packages converted (smallest style payloads first)

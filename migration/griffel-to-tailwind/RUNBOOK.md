@@ -128,6 +128,14 @@ Repeat until no `needs-conversion` remain:
 5. `special` packages (runtime-value styles, portals, motion) get individual Opus
    deep-dives, not batch treatment.
 
+### Packaging refinement candidate (recorded 2026-07-27, batch-1 finding)
+
+- Per-COMPONENT CSS emission + per-component side-effect imports (vs D1 per-package
+  aggregation): PresenceBadge fixture +26.3% gz because every import pays the whole
+  package stylesheet while its own JS share is small (react-icons dominates). Suite-
+  level usage washes this out; single-component micro-bundles pay. Decide before or
+  during Phase 3; requires only emission-step changes, no authoring changes.
+
 ### Phase 3 — Integration
 
 - [ ] `react-components` suite package builds; storybook (public-docsite-v9) builds
