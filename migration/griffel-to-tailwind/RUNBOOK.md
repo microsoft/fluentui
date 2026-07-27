@@ -138,6 +138,17 @@ Repeat until no `needs-conversion` remain:
       all styles hooks, render pipeline; redesign customStyleHooks_unstable to
       functional form; enable react-hooks/immutability repo-wide with ZERO disables;
       verify slot-symbol metadata survives spread; full VR re-validation
+- [ ] **Documentation audit (user-added 2026-07-27):** re-check ALL docs — inline and
+      external — and validate they are updated and still correct post-migration.
+      Inline: code comments/JSDoc across converted packages (the mergeClasses
+      references in module headers and hooks are TRANSITIONAL — accurate today as
+      mixed-mode/provenance notes, stale the day the mechanism is gone; decide
+      keep-as-history vs rewrite vs delete per site). External: docsite MDX styling/
+      customization guides that teach makeStyles/mergeClasses, READMEs, RFCs
+      (styles-handbook.md), migration guides, storybook descriptions, headless
+      preview GettingStarted. Method: sweep greps for mergeClasses|makeStyles|
+      Griffel|shorthands across comments+docs, classify every hit, verify doc code
+      samples against the converted API.
 - [ ] Remove Griffel deps where no longer used; dependency graph clean
 
 ### Phase 4 — Report + PR

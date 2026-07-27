@@ -104,6 +104,9 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - Focus rings: `@apply` the shared focus-ring utility; never hand-copy the ring CSS.
 - Keep a comment trail: each rule block cites the source slice name it replaces
   (`/* from useBaseStyles.base */`) — reviewers diff against the Griffel file.
+  These citations (and any mergeClasses mentions in hook comments) are TRANSITIONAL
+  review aids — the Phase 3 documentation audit (RUNBOOK) decides their fate once the
+  mechanism they reference is gone.
 - Boolean-ish state pairs: prefer ONE presence attribute plus a `:where(:not(...))`
   complement variant (e.g. `empty` / `not-empty`) over two attributes.
 
