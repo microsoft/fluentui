@@ -66,9 +66,20 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
       tolerance (independently re-verified), tests 32/32, lint + type-check clean,
       snapshot diffs additive-only (data-\* attributes). Worked example referenced from
       CONVERSION_GUIDE.
-- [ ] Present pilot results to user for sign-off before mass conversion ← **HERE**
-- [ ] Convert `react-badge` second (enum-heavy: appearance × color × size × shape;
-      `!important` inversion design — see ledger note)
+- [ ] **Expanded pilot (user-requested 2026-07-27, before their evaluation):**
+  - [ ] Convert `Button` (react-button, Button component only — siblings stay Griffel
+        and compose the converted hook; shared focus-ring utility lands in
+        react-tailwind-theme; known size/shape borderRadius inversion)
+  - [ ] Convert FluentProvider root styles (native-element base typography/color;
+        portal themeClassName threading verified; theme tag/renderer untouched)
+  - [ ] Inventory ALL non-component styles in storybooks (makeStaticStyles sweep,
+        harness styles, docs styles) — deliverable table in reports/
+  - [ ] Validate 5 VR sets: Button (43), ToggleButton/CompoundButton/MenuButton/
+        SplitButton mixed-mode net (116), Text (6), Menu incl. portals (~30),
+        Divider regression (31)
+- [ ] Present expanded pilot results to user for sign-off ← **GATE**
+- [ ] Convert `react-badge` (enum-heavy: appearance × color × size × shape;
+      `!important` inversion design — see ledger note) — after sign-off
 - [x] Cookbook updated with pilot lessons (layer statement per module, AOT-output-first,
       'use client' policy, toolchain traps, VR blind-spot probes)
 - [ ] `workflows/convert-batch.js` finalized after badge validates the multi-package flow

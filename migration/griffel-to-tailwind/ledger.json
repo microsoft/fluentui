@@ -94,10 +94,10 @@
       "notes": ""
     },
     "react-button": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 5,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "PILOT #2 (user-requested expansion): Button component only; ToggleButton/CompoundButton/MenuButton/SplitButton stay Griffel and compose the converted useButtonStyles_unstable hook (mixed-mode regression net, 116 VR stories). Focus-ring shared utility lands in react-tailwind-theme."
     },
     "react-calendar-compat": {
       "status": "needs-conversion",
@@ -340,10 +340,10 @@
       "notes": ""
     },
     "react-provider": {
-      "status": "special",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "FluentProvider: theme style tag, renderer context, CSP nonce, portal theme class (D11)"
+      "notes": "PILOT #2b (user-requested expansion): useFluentProviderStyles root styles only (base typography/color; portal themeClassName threading verified). Theme style tag / renderer / portal code untouched. Still special for Phase 2 remainder."
     },
     "react-radio": {
       "status": "needs-conversion",
