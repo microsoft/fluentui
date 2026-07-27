@@ -36,10 +36,16 @@ updates:
         dependency-type: 'production'
         patterns:
           - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
       development-dependencies:
         dependency-type: 'development'
         patterns:
           - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
       security-dependencies:
         applies-to: security-updates
         patterns:
