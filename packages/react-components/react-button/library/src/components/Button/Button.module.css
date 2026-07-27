@@ -10,7 +10,7 @@
  * statement never re-orders an already-created layer), so this is safe to repeat and
  * makes each module self-sufficient.
  */
-@layer fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 /*
  * Layer assignment mirrors the mergeClasses ARGUMENT order of useButtonStyles_unstable,
@@ -19,7 +19,7 @@
  *   #  mergeClasses argument                         → target
  *   ------------------------------------------------------------------------------
  *   1  buttonClassNames.root                         → static class (JS)
- *   2  useRootBaseClassName            (makeReset)   → fui.reset
+ *   2  useRootBaseClassName            (makeReset)   → fui.base
  *   3  rootStyles[appearance]                        → fui.components.l1   (.outline/.primary/…)
  *   4  rootStyles[size]                              → fui.components.l1     (data-size)
  *   5  rootStyles.smallWithIcon                      → fui.components.l1  (data-size + data-icon-position)
@@ -37,7 +37,7 @@
  * `icon` slot:
  *
  *   1  buttonClassNames.icon                         → static class (JS)
- *   2  useIconBaseClassName            (makeReset)   → fui.reset
+ *   2  useIconBaseClassName            (makeReset)   → fui.base
  *   3  iconStyles[iconPosition], gated on children   → fui.components.l1
  *   4  iconStyles[size]                              → fui.components.l1
  *   5  consumer className                            → unlayered
@@ -67,7 +67,7 @@
  * ordinary cascade — icon-only is written LAST inside fui.components.l1.
  */
 
-@layer fui.reset {
+@layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) */
   .root {
     @apply box-border m-0 inline-flex items-center justify-center overflow-hidden no-underline align-middle;

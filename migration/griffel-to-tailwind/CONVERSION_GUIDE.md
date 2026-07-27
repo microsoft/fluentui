@@ -18,10 +18,10 @@ For each component in `packages/react-components/<pkg>/library/src/components/<X
 
 Open `use<X>Styles.styles.ts`. Build a mapping table before writing any CSS:
 
-| makeStyles slice       | mergeClasses position | → target                                             |
-| ---------------------- | --------------------- | ---------------------------------------------------- |
-| `makeResetStyles` base | first                 | `@layer fui.reset` (levelless — loses to all levels) |
-| every other slice      | in argument order     | `@layer fui.components.l1`, blocks in that order     |
+| makeStyles slice       | mergeClasses position | → target                                            |
+| ---------------------- | --------------------- | --------------------------------------------------- |
+| `makeResetStyles` base | first                 | `@layer fui.base` (levelless — loses to all levels) |
+| every other slice      | in argument order     | `@layer fui.components.l1`, blocks in that order    |
 
 **Order rule (critical):** within a level, the winner between equal-specificity rules is
 **in-file source order** (all selectors are `:where()`-flat). Author the `fui.components.l1`
@@ -52,7 +52,7 @@ COMPILED values, not your reading of the source.
 ```css
 @reference '#theme';
 
-@layer fui.reset {
+@layer fui.base {
   .root { /* makeResetStyles content */ }
 }
 
@@ -79,7 +79,7 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - First line always `@reference '#theme';` — confirmed working via the package
   `imports` field (`"#theme": "@fluentui/react-tailwind-theme/css/index.css"`, copy
   react-divider's package.json entry). Tailwind's own resolver handles it.
-- **Repeat the full `@layer fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;`
+- **Repeat the full `@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;`
   statement at the top of every module** (after `@reference`). `@reference` emits
   nothing, so without it first-appearance order decides layer ranking per-document —
   a load-order hazard. Re-declaring an identical order is a no-op (CSS Cascade 5),

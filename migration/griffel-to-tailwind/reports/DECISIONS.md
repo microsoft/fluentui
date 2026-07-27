@@ -344,4 +344,19 @@ structure under the `fui` root:
   declaration. Casual `@layer fui.components.l3 { … }`-style use therefore beats nothing
   above it and everything structured below it; library code never authors parent-direct.
 - Consequence of dropping slices: winners are encoded in file position — module refactors
-  that reorder blocks require VR re-runs (cookbook order rule).
+  that reorder blocks require VR re-runs (cookbook order rule). Sublayers remain an
+  available corrective if a module ever genuinely needs out-of-file-order winners
+  (user-noted); file order is the default, not a constraint of the platform.
+
+## D2 amendment 4 — `fui.reset` renamed to `fui.base` (settled with user 2026-07-27)
+
+Tailwind-default naming, since Tailwind is the adopted styling paradigm. Final family:
+
+```css
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+```
+
+`fui.base` (levelless) hosts makeResetStyles output — below all component levels,
+reproducing Griffel's reset-bucket subordination — and is the sanctioned preflight slot
+for apps. This is a name-for-name structural mirror of the nyt-games family
+(`theme, base, components, components.l1–l5, utilities`) under the `fui` root.

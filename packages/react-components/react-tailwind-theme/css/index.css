@@ -16,7 +16,7 @@
  * ONE layer family (settled with user 2026-07-27): the nyt-games layer structure,
  * carried under the `fui` root. Mapping from nyt-games / Tailwind conventions:
  *   nyt `theme`         → fui.theme        (the @theme custom-property emission)
- *   nyt `base`          → fui.reset        (levelless; hosts makeResetStyles output —
+ *   nyt `base`          → fui.base        (levelless; hosts makeResetStyles output —
  *                          Griffel's reset bucket lost to everything, so this layer
  *                          sits below all component levels. Also the sanctioned slot
  *                          for preflight if an app ever wants it; the library itself
@@ -35,7 +35,7 @@
  * no layer name — cascade layers are assigned only by these import modifiers. Tailwind
  * v4's own `components` layer receives no emissions (probe-verified).
  */
-@layer fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
 
 @import 'tailwindcss/theme.css' layer(fui.theme);
 @import 'tailwindcss/utilities.css' layer(fui.utilities);

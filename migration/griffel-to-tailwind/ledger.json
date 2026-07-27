@@ -541,8 +541,8 @@
       "status": "validated",
       "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": "FINAL layer family (D2 amendment 3): nyt-games structure under fui root - levelless reset, numbered levels under fui.components, slices removed (in-file order = argument order). Re-validated 572/572 VR pairs pixel-identical."
+      "notes": "FINAL layer family (D2 amendments 3+4): name-for-name nyt-games mirror under fui root - fui.base levelless (makeResetStyles + preflight slot), numbered levels under fui.components (l1 components / l2 compositions / l3-l5 consumer), fui.utilities top. In-file order = winner order within a level; sublayers available as corrective. Re-validated 572/572 VR pairs."
     }
   },
-  "layerFamily": "fui.theme, fui.reset, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities"
+  "layerFamily": "fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities"
 }
