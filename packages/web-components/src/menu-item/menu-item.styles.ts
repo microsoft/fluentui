@@ -26,7 +26,7 @@ import { display } from '../utils/display.js';
  * @public
  */
 export const styles = css`
-  ${display('grid')}
+  ${display('flex')}
 
   :host {
     align-items: center;
@@ -36,9 +36,19 @@ export const styles = css`
     color: ${colorNeutralForeground2};
     cursor: pointer;
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
-    grid-template-columns: subgrid;
+    gap: 4px;
     height: 32px;
     overflow: visible;
+    padding-inline: 10px;
+  }
+
+  @supports (grid-template-columns: subgrid) {
+    :host {
+      display: grid;
+      gap: 0;
+      grid-template-columns: subgrid;
+      padding-inline: unset;
+    }
   }
 
   :host(:hover) {
