@@ -24,16 +24,28 @@ export const OverflowMenu: React.FC<{
     const buttonElement = items[i];
     menuList.push(
       <MenuItem
-        tabIndex={-1}
         key={i}
-        onClick={e => {
-          const button = buttonElement.props;
-          if (button.onClick) {
-            button.onClick(e);
-          }
-        }}
+        onClick={e => buttonElement.props.onClick?.(e)}
+        // The item content is a non-interactive div that is smaller than the MenuItem, so wire hover and
+        // focus on the MenuItem itself to the legend's handlers (exposed as onMouseOver/onMouseOut and
+        // onFocus/onBlur). This restores the master behaviour where hovering/focusing a menu item
+        // highlights the matching series and updates the legend swatch color across the item's full area.
+        onMouseEnter={() => buttonElement.props.onMouseOver?.()}
+        onMouseLeave={() => buttonElement.props.onMouseOut?.()}
+        onFocus={() => buttonElement.props.onFocus?.()}
+        onBlur={() => buttonElement.props.onBlur?.()}
       >
-        {buttonElement}
+        {/*
+          Render the legend content without its own interaction handlers so the MenuItem is the single
+          interactive control and handles click/hover/focus across its full area (not just the smaller div).
+        */}
+        {React.cloneElement(buttonElement, {
+          onClick: undefined,
+          onMouseOver: undefined,
+          onMouseOut: undefined,
+          onFocus: undefined,
+          onBlur: undefined,
+        })}
       </MenuItem>,
     );
   }

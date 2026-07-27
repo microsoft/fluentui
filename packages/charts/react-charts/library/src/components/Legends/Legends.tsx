@@ -283,8 +283,8 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         opacity: data.opacity,
       };
       const color = _getColor(legend.title, legend.color);
-      const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-        _onClick(legend, event);
+      const onClickHandler = (event: React.MouseEvent<HTMLElement>) => {
+        _onClick(legend, event as React.MouseEvent<HTMLButtonElement>);
       };
       const onHoverHandler = () => {
         _onHoverOverLegend(legend);
@@ -293,6 +293,45 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         _onLeave(legend);
       };
       const shape = _getShape(legend, color);
+      const legendStyle = {
+        '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
+        '--rect-backgroundColor': legend.stripePattern ? '' : color,
+        '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
+        '--rect-content': legend.stripePattern
+          ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
+          : '',
+      } as React.CSSProperties;
+      const legendContent = (
+        <>
+          {shape}
+          <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
+            {legend.title}
+          </div>
+        </>
+      );
+      // Props shared by the interactive listbox Button and the presentational overflow-menu div.
+      // Hover/focus handlers are included so OverflowMenu can wire them onto the MenuItem for the
+      // non-interactive div (which can't receive focus itself).
+      const commonProps: React.HTMLAttributes<HTMLElement> = {
+        className: classes.legend,
+        onClick: onClickHandler,
+        onMouseOver: onHoverHandler,
+        onMouseOut: onMouseOut,
+        onFocus: onHoverHandler,
+        onBlur: onMouseOut,
+        style: legendStyle,
+      };
+      if (isOverflowItem) {
+        // Rendered inside a MenuItem, which is the interactive control. Keep this content non-interactive
+        // (a presentational div rather than a Button) so the menu row isn't a nested/duplicate clickable
+        // element. onClick is exposed as a prop so OverflowMenu can wire it onto the MenuItem instead.
+        // A plain div defaults to display:block, so lay the swatch and label out inline like the Button did.
+        return (
+          <div key={index} {...commonProps} style={{ ...legendStyle, display: 'flex', alignItems: 'center' }}>
+            {legendContent}
+          </div>
+        );
+      }
       return (
         <Button
           {...(showListboxOption && {
@@ -304,27 +343,11 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           })}
           {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
           key={index}
-          className={classes.legend}
-          onClick={onClickHandler}
-          onMouseOver={onHoverHandler}
-          onMouseOut={onMouseOut}
-          onFocus={onHoverHandler}
-          onBlur={onMouseOut}
+          {...commonProps}
           appearance={'outline'}
           size="small"
-          style={{
-            '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
-            '--rect-backgroundColor': legend.stripePattern ? '' : color,
-            '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
-            '--rect-content': legend.stripePattern
-              ? `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
-              : '',
-          }}
         >
-          {shape}
-          <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
-            {legend.title}
-          </div>
+          {legendContent}
         </Button>
       );
     }
