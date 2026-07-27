@@ -355,7 +355,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1023,7 +1023,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1448,7 +1448,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -1877,7 +1877,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             style="text-align: unset;"
           >
             <div
-              aria-label="Chart legends"
+              aria-label="Legends"
               aria-multiselectable="false"
               role="listbox"
               style="display: contents;"
@@ -2309,7 +2309,7 @@ Object {
                 style="text-align: unset;"
               >
                 <div
-                  aria-label="Chart legends"
+                  aria-label="Legends"
                   aria-multiselectable="false"
                   role="listbox"
                   style="display: contents;"
@@ -2736,7 +2736,7 @@ Object {
               style="text-align: unset;"
             >
               <div
-                aria-label="Chart legends"
+                aria-label="Legends"
                 aria-multiselectable="false"
                 role="listbox"
                 style="display: contents;"
@@ -3356,7 +3356,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -3876,7 +3876,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -4301,7 +4301,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -4726,7 +4726,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"
@@ -5442,7 +5442,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           style="text-align: unset;"
         >
           <div
-            aria-label="Chart legends"
+            aria-label="Legends"
             aria-multiselectable="false"
             role="listbox"
             style="display: contents;"

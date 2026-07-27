@@ -110,30 +110,30 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     function renderLegends(): JSXElement {
       return (
-        <div
-          {...focusAttributes}
-          {...arrowAttributes}
-          {...(allowFocusOnLegends && {
-            role: 'listbox',
-            'aria-label': 'Legends',
-            'aria-multiselectable': canSelectMultipleLegends,
-          })}
-          className={classes.root}
-          ref={_rootElem}
-        >
+        <div {...focusAttributes} {...arrowAttributes} className={classes.root} ref={_rootElem}>
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
-              {dataToRender.map((item, id) => (
-                <OverflowItem key={id} id={id.toString()}>
-                  {_renderButton(item)}
-                </OverflowItem>
-              ))}
-              <OverflowMenu
-                itemIds={itemIds}
-                title={`${overflowString}`}
-                items={overflowHoverCardLegends}
-                allowFocusOnLegends={allowFocusOnLegends}
-              />
+              {/*
+                The listbox only wraps the selectable legend options. The overflow menu trigger is kept as a
+                sibling (outside the listbox) so it is not treated as a listbox child, since a menu button
+                (role="button" with aria-haspopup/aria-expanded) is not a valid listbox child.
+                `display: contents` keeps the options as direct flex participants so overflow measurement is unaffected.
+              */}
+              <div
+                {...(allowFocusOnLegends && {
+                  role: 'listbox',
+                  'aria-label': 'Legends',
+                  'aria-multiselectable': canSelectMultipleLegends,
+                })}
+                style={{ display: 'contents' }}
+              >
+                {dataToRender.map((item, id) => (
+                  <OverflowItem key={id} id={id.toString()}>
+                    {_renderButton(item)}
+                  </OverflowItem>
+                ))}
+              </div>
+              <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
             </div>
           </Overflow>
         </div>
@@ -267,8 +267,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function _renderButton(data: any, index?: number, overflow?: boolean) {
+    function _renderButton(data: any, index?: number, isOverflowItem?: boolean) {
       const { allowFocusOnLegends = true } = props;
+      // Overflow legends are rendered inside a menu, not the listbox, so they must not carry `option` semantics.
+      const showListboxOption = allowFocusOnLegends && !isOverflowItem;
       const legend: Legend = {
         title: data.title,
         color: data.color,
@@ -293,15 +295,13 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
       const shape = _getShape(legend, color);
       return (
         <Button
-          {...(allowFocusOnLegends &&
-            !overflow && {
-              'aria-selected': !!selectedLegends[legend.title],
-              role: 'option',
-              'aria-label': `${legend.title}`,
-              'aria-setsize': data['aria-setsize'],
-              'aria-posinset': data['aria-posinset'],
-            })}
-          {...(allowFocusOnLegends && overflow && { 'aria-label': `${legend.title}` })}
+          {...(showListboxOption && {
+            'aria-selected': !!selectedLegends[legend.title],
+            role: 'option',
+            'aria-label': `${legend.title}`,
+            'aria-setsize': data['aria-setsize'],
+            'aria-posinset': data['aria-posinset'],
+          })}
           {...(data.nativeButtonProps && { ...data.nativeButtonProps })}
           key={index}
           className={classes.legend}
