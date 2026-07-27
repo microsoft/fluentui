@@ -84,7 +84,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
       const expectedHookName = `use${testInfo.displayName}Styles_unstable`;
 
-      const { unmount } = await render(element, container as HTMLElement);
+      const { unmount } = await renderWithReactDOM(element, container as HTMLElement);
 
       expect(useCustomStyleHook).toHaveBeenCalledWith(expectedHookName);
       expect(customStyleHook).toHaveBeenCalled();
@@ -98,48 +98,14 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
   });
 };
 
-/**
- * Utility to render React elements that works with both React 17 and React 18
- */
-async function render(element: React.ReactElement, container: HTMLElement) {
-  const React = await import('react');
-  type Act = (callback: () => void) => void;
-  let act: Act = (React as { act?: Act }).act as Act;
+async function renderWithReactDOM(element: React.ReactElement, container: HTMLElement) {
+  const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
 
-  if (!act) {
-    const ReactDOMTestUtils = (await import('react-dom/test-utils')) as unknown as { act: Act };
-    act = ReactDOMTestUtils.act;
-  }
+  ReactDOM.render(element, container);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore - ReactDOMClient is not available in React 17
-  const ReactDOMClient = await import('react-dom/client').catch(() => null);
-
-  let unmount: () => void;
-
-  if (ReactDOMClient && 'createRoot' in ReactDOMClient) {
-    const root = ReactDOMClient.createRoot(container);
-    act(() => {
-      root.render(element);
-    });
-    unmount = () => {
-      act(() => {
-        root.unmount();
-      });
-    };
-  } else {
-    const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacy;
-    act(() => {
-      ReactDOM.render(element, container);
-    });
-    unmount = () => {
-      act(() => {
-        ReactDOM.unmountComponentAtNode(container);
-      });
-    };
-  }
-
-  return { container, unmount };
+  return {
+    unmount: () => ReactDOM.unmountComponentAtNode(container),
+  };
 }
 
 declare interface ReactDOMLegacy {
