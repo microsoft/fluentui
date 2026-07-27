@@ -35,7 +35,7 @@ git remote -v
 
 Unless `--push-remote` was provided, resolve `PUSH_REMOTE` from `remote.pushDefault`, then the current branch's configured remote. If neither is set, ask the user to select a writable remote before any publish step. Do not assume `origin` is writable.
 
-Do not require a clean current working tree. Approved rollups must use a temporary Git worktree so unrelated local changes remain untouched.
+Before changing branches, require a clean working tree and a named current branch. If the checkout is dirty or detached, stop and ask the user to commit, stash, or select a suitable checkout. Record the current branch as `START_BRANCH` so it can be restored after the rollup is published or cancelled.
 
 ### Step 2 - Discover open Dependabot PRs
 
@@ -113,36 +113,37 @@ Show a compact report before doing anything else:
 
 If there are no selected PRs, stop after reporting that result. Otherwise ask the user to approve all candidates, approve specific PR numbers, edit the batch, or cancel. Do not treat the initial skill invocation as mutation approval.
 
-### Step 5 - Create an isolated rollup
+### Step 5 - Create the rollup branch
 
 Run this step only after explicit approval. Use only the approved PR numbers, even if new candidates appear after the dry run.
 
 Immediately before merging each approved PR, repeat the base-version check against the current rollup branch. Skip the PR as obsolete if another merged update made its target unnecessary or removed its dependency. This preflight is required even when Git predicts a clean merge; never allow a stale PR to downgrade or reintroduce a dependency.
 
-Fetch the target base, record its SHA, and create a uniquely named temporary worktree and branch:
+Fetch the target base, record its SHA, and create a uniquely named branch in the current checkout. The rollup pull request will target `BASE_BRANCH`; never commit directly to the base branch:
 
 ```bash
 TARGET_URL="https://github.com/${REPO}.git"
 ROLLUP_BRANCH="dependabot-rollup/$(date -u +%Y%m%d-%H%M%S)"
-ROLLUP_DIR="$(mktemp -d)/fluentui-dependabot-rollup"
+START_BRANCH="$(git branch --show-current)"
 
+test -n "$START_BRANCH"
+test -z "$(git status --porcelain)"
 git fetch "$TARGET_URL" "$BASE_BRANCH"
 BASE_SHA="$(git rev-parse FETCH_HEAD)"
-git worktree add --detach "$ROLLUP_DIR" "$BASE_SHA"
-git -C "$ROLLUP_DIR" switch -c "$ROLLUP_BRANCH"
+git switch -c "$ROLLUP_BRANCH" "$BASE_SHA"
 ```
 
 For each approved PR, fetch and merge its head in the order shown in the plan:
 
 ```bash
-git -C "$ROLLUP_DIR" fetch "$TARGET_URL" "pull/$PR_NUMBER/head"
-git -C "$ROLLUP_DIR" merge --no-ff --no-edit FETCH_HEAD
+git fetch "$TARGET_URL" "pull/$PR_NUMBER/head"
+git merge --no-ff --no-edit FETCH_HEAD
 ```
 
 Dependency rollups commonly conflict because several PRs modify the same manifests and lockfile. If a merge conflicts, list the unmerged files:
 
 ```bash
-git -C "$ROLLUP_DIR" diff --name-only --diff-filter=U
+git diff --name-only --diff-filter=U
 ```
 
 Resolve the conflict only when every unmerged file is a `package.json` file or the root `yarn.lock`:
@@ -152,36 +153,41 @@ Resolve the conflict only when every unmerged file is a `package.json` file or t
 3. If `yarn.lock` is conflicted, restore its current rollup branch version. Regenerate it from the resolved manifests instead of manually editing lockfile conflict markers:
 
 ```bash
-git -C "$ROLLUP_DIR" diff --name-only --diff-filter=U -- yarn.lock | grep -q . && \
-  git -C "$ROLLUP_DIR" restore --source=HEAD --staged --worktree yarn.lock
-yarn --cwd "$ROLLUP_DIR" install
+git diff --name-only --diff-filter=U -- yarn.lock | grep -q . && \
+  git checkout HEAD -- yarn.lock
+yarn install
 ```
 
 4. Stage the resolved manifests and lockfile, then inspect the staged diff against the merge's first parent. It must contain only the approved dependency update and lockfile changes derived from it.
-5. Complete the merge with `git -C "$ROLLUP_DIR" commit --no-edit` and report the PR as merged with resolved dependency conflicts.
+5. Complete the merge with `git commit --no-edit` and report the PR as merged with resolved dependency conflicts.
 
 If any conflict is outside dependency manifests and the root lockfile, the intended version change is unclear, lockfile generation fails, or the reviewed diff contains unrelated stale changes, abort that merge, report the PR as skipped with the specific reason, and continue with the remaining approved PRs:
 
 ```bash
-git -C "$ROLLUP_DIR" merge --abort
+git merge --abort
 ```
 
-If no PRs merge successfully, report the result, keep the temporary worktree available for inspection, and stop without creating an issue or PR.
+If no PRs merge successfully, report the result, switch back to `START_BRANCH`, delete the empty rollup branch, and stop without creating an issue or PR:
+
+```bash
+git switch "$START_BRANCH"
+git branch -D "$ROLLUP_BRANCH"
+```
 
 ### Step 6 - Validate the rollup
 
-Run validation from the temporary worktree through the repository's Nx workflow:
+Run validation from the rollup branch through the repository's Nx workflow:
 
 ```bash
-yarn --cwd "$ROLLUP_DIR" install --immutable
-yarn --cwd "$ROLLUP_DIR" nx affected \
+yarn install --immutable
+yarn nx affected \
   -t build test lint type-check \
   --nxBail \
   --base="$BASE_SHA" \
   --head=HEAD
 ```
 
-If installation or validation fails, report the failing command and keep the worktree available for inspection. Do not push the branch, open a PR, or create a tracking issue.
+If installation or validation fails, report the failing command and leave the rollup branch checked out for inspection. Do not push the branch, open a PR, or create a tracking issue.
 
 ### Step 7 - Publish only after validation
 
@@ -191,7 +197,7 @@ After validation succeeds, summarize the merged and skipped PRs and ask for expl
 PUSH_REPO="$(gh repo view "$(git remote get-url "$PUSH_REMOTE")" --json nameWithOwner --jq .nameWithOwner)"
 PUSH_OWNER="${PUSH_REPO%%/*}"
 
-git -C "$ROLLUP_DIR" push "$PUSH_REMOTE" "$ROLLUP_BRANCH"
+git push "$PUSH_REMOTE" "$ROLLUP_BRANCH"
 gh pr create \
   --repo "$REPO" \
   --base "$BASE_BRANCH" \
@@ -203,12 +209,12 @@ gh pr create \
 
 The PR body must list merged PRs, skipped PRs with reasons, and the exact validation commands. Do not close or modify the original Dependabot PRs automatically.
 
-### Step 8 - Clean up and report
+### Step 8 - Restore the starting branch and report
 
-After publishing, or when the user declines publication, remove the temporary worktree unless the user asks to keep it:
+After publishing, or when the user declines publication, return to the starting branch only when the rollup branch is clean and no merge is in progress. Keep the local rollup branch for PR follow-up:
 
 ```bash
-git worktree remove "$ROLLUP_DIR"
+git switch "$START_BRANCH"
 ```
 
 Report:
@@ -217,7 +223,7 @@ Report:
 - Exclusion, superseded, and skip reasons.
 - Validation commands and outcome.
 - Draft PR URL when one was created.
-- Temporary worktree path when retained for investigation.
+- Local rollup branch name when retained for investigation or PR follow-up.
 
 ## Guardrails
 
@@ -228,7 +234,7 @@ Report:
 - Never include semver-major, non-semver, downgrade, or unparseable updates.
 - Never propose, merge, or publish a rollup containing more than 11 updates.
 - Never include more than one PR for the same dependency in a proposed rollup.
-- Never mutate the user's current working tree.
+- Never change branches or files before approval, and never proceed from a dirty or detached checkout.
 - Never resolve conflicts by blindly choosing an entire side. Resolve only reviewed dependency manifest and lockfile conflicts as described above.
 - Never bypass failed validation.
 - Never create failure-tracking issues or close source Dependabot PRs.
