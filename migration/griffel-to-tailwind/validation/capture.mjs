@@ -40,14 +40,17 @@ fs.mkdirSync(out, { recursive: true });
 
 // Negative lookahead: exclude every story whose "kind.name" does NOT start with filter.
 const excludePattern = `^(?!${filter})`;
-const swBin = path.resolve('node_modules', '.bin', process.platform === 'win32' ? 'storywright.cmd' : 'storywright');
+// Invoke the JS entry directly — .cmd shims route through cmd.exe, which mangles
+// regex metacharacters (^, parens) in arguments.
+const swMain = path.resolve('node_modules', 'storywright', 'bin', 'storywright.js');
 
 console.log(`[capture] filter=/${filter}/ url=${url} out=${out}`);
 const started = Date.now();
 try {
   execFileSync(
-    swBin,
+    process.execPath,
     [
+      swMain,
       '--browsers', 'chromium',
       '--url', url,
       '--destpath', out,
@@ -58,7 +61,7 @@ try {
       '--bailOnStoriesError',
       '--stepsApi', 'parameters',
     ],
-    { stdio: 'inherit', shell: process.platform === 'win32' },
+    { stdio: 'inherit' },
   );
 } catch (err) {
   console.error(`[capture] storywright failed: ${err.message}`);

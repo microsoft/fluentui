@@ -50,9 +50,13 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
 - [x] `reports/DECISIONS.md` written (D1–D12; includes CSS shipping, layers, variants,
       className compat, RTL, focus, tests, metrics, out-of-scope)
 - [x] `CONVERSION_GUIDE.md` cookbook completed (worked example lands with the pilot)
-- [ ] Shared theme layer created (Fluent tokens bridge + `--base-scale` + custom variants)
+- [x] Shared theme layer created (`packages/react-components/react-tailwind-theme` —
+      fui.\* layer order, variant catalog, `--base-scale`; no preflight, palette zeroed)
 - [ ] Tailwind v4 + CSS Modules build wiring for one package + its storybook proven
-- [ ] Validation harness working (`validation/` — see its README once written)
+      (pilot scope: storybook/webpack + jest only; the package-build CSS emission into
+      `dist/styles.css` per DECISIONS D1 is a Phase 1.5 gate before mass conversion)
+- [x] Validation harness written (`validation/` — capture.mjs/diff.mjs/README); proven
+      during pilot baseline capture
 - [ ] Baseline metrics captured (`metrics/baseline/` — build time, monosize bundle sizes,
       docsite bundle) **before any component code changes**
 - [x] Ledger triage: 49 needs-conversion / 14 special / 24 no-styles (247 styles files)
