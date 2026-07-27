@@ -89,22 +89,22 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
       'use client' policy, toolchain traps, VR blind-spot probes)
 - [ ] `workflows/convert-batch.js` finalized after badge validates the multi-package flow
 
-### Phase 1.5 — Shipping & test infra (gate before mass conversion)
+### Phase 1.5 — Shipping & test infra — COMPLETE 2026-07-27 (wf_b6b62013-472; VR 572/572, consumer smoke green, monosize -48/-50% gz on Button/Divider)
 
-- [ ] Package build emits compiled CSS: PostCSS/Tailwind step in the build →
+- [x] Package build emits compiled CSS: PostCSS/Tailwind step in the build →
       `dist/styles.css` + class-map JS in `lib`/`lib-commonjs` (today the build exits 0
       but ships dangling `.module.css` imports and zero CSS — verified in pilot);
       update `files`/`exports`; theme emission is a standalone root artifact imported
       once per document, NEVER embedded per-package (D13, settled with user); the
       emission step MUST prepend the canonical @layer order statement verbatim
       (Tailwind v4 rewrites it during module compilation — D13)
-- [ ] Gate off Griffel AOT + `*.styles.raw.js` generation for converted packages
+- [x] Gate off Griffel AOT + `*.styles.raw.js` generation for converted packages
       (both still run on the Griffel-free divider — dead work + install-size noise)
-- [ ] `classname-overrides-win` replacement conformance test (D9) — pilot only disables
+- [x] `classname-overrides-win` replacement conformance test (D9) — pilot only disables
       the Griffel one
-- [ ] Repo-wide `jest.preset.js` css-module mapper + serializer (pilot wired
+- [x] Repo-wide `jest.preset.js` css-module mapper + serializer (pilot wired
       react-divider's config only; shared impl already at `scripts/jest/src/css-modules/`)
-- [ ] Generated token registration (user-settled 2026-07-27): `tokens.css` in
+- [x] Generated token registration (user-settled 2026-07-27): `tokens.css` in
       react-tailwind-theme with `@theme inline` mapping all 459 Fluent tokens to
       Tailwind namespaces (bg-/text-/border-neutral-background-1 etc., camelCase to
       kebab), generated from @fluentui/tokens at build time (web-components
@@ -112,7 +112,7 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
       freezes var() resolution at :root and breaks provider theming (probe:
       .scratch/layer-probe/entry2.css). Settle alias-emission suppression + spacing
       namespace at build time.
-- [ ] monosize `assetTypes: ['js','css']` + webpack `experiments.css` fix (D10) so the
+- [x] monosize `assetTypes: ['js','css']` + webpack `experiments.css` fix (D10) so the
       after-leg counts CSS honestly
 
 ### Phase 2 — Mass conversion (ledger-driven loop)
