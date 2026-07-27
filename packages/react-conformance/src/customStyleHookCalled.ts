@@ -39,7 +39,6 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
     beforeEach(() => {
       jest.clearAllMocks();
-      jest.resetModules();
 
       if (testInfo.renderOptions?.container) {
         container = testInfo.renderOptions.container;
@@ -66,27 +65,31 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       /* eslint-disable @fluentui/no-global-react */
       const customStyleHook = jest.fn();
       const useCustomStyleHook = jest.fn().mockImplementation(() => customStyleHook);
+      let unmount: (() => void) | undefined;
 
-      jest.doMock('@fluentui/react-shared-contexts', () => {
-        const module = jest.requireActual('@fluentui/react-shared-contexts');
+      await jest.isolateModulesAsync(async () => {
+        jest.doMock('@fluentui/react-shared-contexts', () => {
+          const module = jest.requireActual('@fluentui/react-shared-contexts');
 
-        return { ...module, [CUSTOM_STYLE_HOOK_PROP]: useCustomStyleHook };
+          return { ...module, [CUSTOM_STYLE_HOOK_PROP]: useCustomStyleHook };
+        });
+
+        const React = await import('react');
+
+        const Component = await getReactComponent(testInfo.componentPath, testInfo);
+        const Wrapper = testInfo.renderOptions?.wrapper;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let element = React.createElement(Component, { ...testInfo.requiredProps } as any);
+
+        if (Wrapper) {
+          element = React.createElement(Wrapper, null, element);
+        }
+
+        const result = await renderWithReactDOM(element, container as HTMLElement);
+        unmount = result.unmount;
       });
 
-      const React = await import('react');
-
-      const Component = await getReactComponent(testInfo.componentPath, testInfo);
-      const Wrapper = testInfo.renderOptions?.wrapper;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      let element = React.createElement(Component, { ...testInfo.requiredProps } as any);
-
-      if (Wrapper) {
-        element = React.createElement(Wrapper, null, element);
-      }
-
       const expectedHookName = `use${testInfo.displayName}Styles_unstable`;
-
-      const { unmount } = await renderWithReactDOM(element, container as HTMLElement);
 
       expect(useCustomStyleHook).toHaveBeenCalledWith(expectedHookName);
       expect(customStyleHook).toHaveBeenCalled();
@@ -95,7 +98,7 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
       // Verify that the hook receives a state-like object.
       expect(customStyleHook.mock.calls[0][0]).toEqual(expect.objectContaining({ components: expect.any(Object) }));
 
-      unmount();
+      unmount?.();
     });
   });
 };
