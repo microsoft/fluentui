@@ -11,6 +11,8 @@ import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderField_unstable as renderField } from '@fluentui/react-field';
+import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
+import { useFieldControlProps_unstable as useFieldControlProps } from '@fluentui/react-field';
 
 // @public
 export const Field: ForwardRefComponent<FieldProps>;
@@ -33,8 +35,12 @@ export { renderField }
 // @public
 export const useField: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
+export { useFieldContext }
+
 // @public
 export const useFieldContextValues: (state: FieldState) => FieldContextValues;
+
+export { useFieldControlProps }
 
 // (No @packageDocumentation comment for this package)
 
