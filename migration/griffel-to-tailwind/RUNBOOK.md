@@ -45,18 +45,17 @@ validated → done`, with `blocked` as an escape hatch (always fill `notes`).
 ### Phase 0 — Infrastructure (current)
 
 - [x] Branch + scaffolding + ledger seeded (87 packages, pending-triage)
-- [ ] Research reports saved to `reports/` (7 areas: nyt-games conventions, Griffel
+- [x] Research reports saved to `reports/` (7 areas: nyt-games conventions, Griffel
       inventory, theming, storybook/VR, build/metrics, headless precedent, risks)
-- [ ] `reports/DECISIONS.md` written: CSS shipping mechanism, layer scheme, variant
-      catalog location, className-override compat strategy, RTL strategy (logical
-      properties), focus-indicator strategy
-- [ ] `CONVERSION_GUIDE.md` cookbook completed (with a worked example)
+- [x] `reports/DECISIONS.md` written (D1–D12; includes CSS shipping, layers, variants,
+      className compat, RTL, focus, tests, metrics, out-of-scope)
+- [x] `CONVERSION_GUIDE.md` cookbook completed (worked example lands with the pilot)
 - [ ] Shared theme layer created (Fluent tokens bridge + `--base-scale` + custom variants)
 - [ ] Tailwind v4 + CSS Modules build wiring for one package + its storybook proven
 - [ ] Validation harness working (`validation/` — see its README once written)
 - [ ] Baseline metrics captured (`metrics/baseline/` — build time, monosize bundle sizes,
       docsite bundle) **before any component code changes**
-- [ ] Ledger triage: every package classified via Griffel inventory report
+- [x] Ledger triage: 49 needs-conversion / 14 special / 24 no-styles (247 styles files)
 
 ### Phase 1 — Pilot (user validates the process here)
 

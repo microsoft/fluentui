@@ -16,524 +16,524 @@
   ],
   "packages": {
     "babel-preset-global-context": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "babel-preset-storybook-full-source": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "component-selector-preview": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "deprecated": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "eslint-plugin-react-components": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "global-context": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "keyboard-keys": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "priority-overflow": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-accordion": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 4,
       "storiesCovered": null,
       "notes": ""
     },
     "react-aria": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-avatar": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 4,
       "storiesCovered": null,
       "notes": ""
     },
     "react-badge": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "usePresenceBadgeStyles uses !important x7 - semantics invert under @layer; pilot #2"
     },
     "react-breadcrumb": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 4,
       "storiesCovered": null,
       "notes": ""
     },
     "react-button": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 5,
       "storiesCovered": null,
       "notes": ""
     },
     "react-calendar-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 7,
       "storiesCovered": null,
       "notes": ""
     },
     "react-card": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 4,
       "storiesCovered": null,
       "notes": ""
     },
     "react-carousel": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 10,
       "storiesCovered": null,
       "notes": ""
     },
     "react-checkbox": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-color-picker": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Runtime drag-position CSS vars port unchanged; static parts convert"
     },
     "react-colorpicker-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-combobox": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 5,
       "storiesCovered": null,
       "notes": ""
     },
     "react-components": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Suite package: 12 Griffel re-exports, 180 hooks re-exported; converts in Phase 3"
     },
     "react-conformance-griffel": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Test-infra package: mergeClasses conformance matchers; replacement test needed (D9)"
     },
     "react-context-selector": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-datepicker-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-dialog": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 6,
       "storiesCovered": null,
       "notes": ""
     },
     "react-divider": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "PILOT #1 (user sign-off gate)"
     },
     "react-drawer": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 10,
       "storiesCovered": null,
       "notes": ""
     },
     "react-field": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-headless-components-preview": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-icons-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-image": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-infolabel": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 2,
       "storiesCovered": null,
       "notes": ""
     },
     "react-input": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-jsx-runtime": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-label": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-link": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-list": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 2,
       "storiesCovered": null,
       "notes": ""
     },
     "react-menu": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 12,
       "storiesCovered": null,
       "notes": ""
     },
     "react-menu-grid-preview": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 6,
       "storiesCovered": null,
       "notes": ""
     },
     "react-message-bar": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 5,
       "storiesCovered": null,
       "notes": ""
     },
     "react-migration-v0-v9": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 14,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "14 styles files + v0 compat; Attachment runtime width"
     },
     "react-migration-v8-v9": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Mixes v8 IStyle + Griffel; v8 merge-styles layering seam (D11)"
     },
     "react-motion": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Web Animations API, zero Griffel - no conversion needed"
     },
     "react-motion-components-preview": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-nav": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 16,
       "storiesCovered": null,
       "notes": ""
     },
     "react-overflow": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-persona": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-popover": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-portal": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-portal-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "v8 interop; regex-couples to provider className"
     },
     "react-portal-compat-context": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-positioning": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Style factories (createArrowStyles/createSlideStyles, :global+@noflip) + runtime middlewares (port unchanged)"
     },
     "react-progress": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-provider": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "FluentProvider: theme style tag, renderer context, CSP nonce, portal theme class (D11)"
     },
     "react-radio": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 2,
       "storiesCovered": null,
       "notes": ""
     },
     "react-rating": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 3,
       "storiesCovered": null,
       "notes": ""
     },
     "react-search": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-select": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-shared-contexts": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-skeleton": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Wave keyframes RTL-flipped by Griffel; needs @variant rtl keyframe twin"
     },
     "react-slider": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Runtime CSS vars (--fui-Slider--progress/direction) port unchanged; static parts convert"
     },
     "react-spinbutton": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-spinner": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-storybook-addon": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-storybook-addon-export-to-sandbox": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-swatch-picker": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 5,
       "storiesCovered": null,
       "notes": ""
     },
     "react-switch": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-table": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 17,
       "storiesCovered": null,
       "notes": ""
     },
     "react-tabs": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Animated indicator uses measured rects (rAF) - runtime part ports unchanged"
     },
     "react-tabster": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Defines Griffel focus-ring factories (createFocusOutlineStyle/createCustomFocusIndicatorStyle) used by 46 styles files; convert to shared CSS utilities FIRST (D6)"
     },
     "react-tag-picker": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "special",
+      "stylesFiles": 7,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "ResizeObserver-driven widths port unchanged"
     },
     "react-tags": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 5,
       "storiesCovered": null,
       "notes": ""
     },
     "react-teaching-popover": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 12,
       "storiesCovered": null,
       "notes": ""
     },
     "react-text": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 18,
       "storiesCovered": null,
       "notes": ""
     },
     "react-textarea": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-theme": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-theme-sass": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-timepicker-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-toast": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 8,
       "storiesCovered": null,
       "notes": ""
     },
     "react-toolbar": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 6,
       "storiesCovered": null,
       "notes": ""
     },
     "react-tooltip": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 1,
       "storiesCovered": null,
       "notes": ""
     },
     "react-tree": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 5,
       "storiesCovered": null,
       "notes": ""
     },
     "react-utilities": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-utilities-compat": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "no-styles",
+      "stylesFiles": 0,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "recipes": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 2,
       "storiesCovered": null,
       "notes": ""
     },
     "theme-designer": {
-      "status": "pending-triage",
-      "stylesFiles": null,
+      "status": "needs-conversion",
+      "stylesFiles": 2,
       "storiesCovered": null,
       "notes": ""
     }
