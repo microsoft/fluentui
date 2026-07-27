@@ -1,0 +1,55 @@
+/**
+ * Custom variant catalog — the single place state selectors are defined.
+ * Every variant is `:where()`-wrapped: zero added specificity, cascade decided by
+ * @layer order alone (DECISIONS.md D2). Names follow the headless-preview
+ * data-attribute vocabulary where one exists (reports/headless-precedent.md).
+ *
+ * Grow this catalog as packages convert; never define variants in component modules.
+ */
+
+/* direction — computed direction, correct under nesting (DECISIONS.md D5) */
+@custom-variant rtl (&:where(:dir(rtl)));
+@custom-variant ltr (&:where(:dir(ltr)));
+
+/* orientation (Divider, Slider, Tabs, Toolbar, …) */
+@custom-variant vertical (&:where([data-orientation='vertical']));
+@custom-variant horizontal (&:where([data-orientation='horizontal']));
+
+/* generic states (native + data- fallbacks) */
+@custom-variant disabled (&:where([disabled], [data-disabled], :disabled));
+@custom-variant enabled (&:where(:not([disabled], [data-disabled], :disabled)));
+@custom-variant checked (&:where([data-checked], :checked));
+@custom-variant selected (&:where([data-selected], [aria-selected='true']));
+@custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));
+@custom-variant open (&:where([open], [data-open], :open));
+@custom-variant expanded (&:where([data-expanded], [aria-expanded='true']));
+@custom-variant pressed (&:where([data-pressed], :active));
+@custom-variant invalid (&:where([data-invalid], :invalid, [aria-invalid='true']));
+@custom-variant required (&:where([required], [data-required], :required));
+@custom-variant read-only (&:where([readonly], [data-readonly], :read-only));
+@custom-variant placeholder-shown (&:where([data-placeholder], :placeholder-shown));
+@custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
+
+/* interaction */
+@custom-variant hover (&:where(:hover));
+@custom-variant focus (&:where(:focus));
+@custom-variant focus-within (&:where(:focus-within));
+
+/*
+ * Focus visibility — Fluent uses keyborg (react-tabster), which sets
+ * data-fui-focus-visible / data-fui-focus-within. These attributes are the visual
+ * contract (VR stories script them directly); native :focus-visible is intentionally
+ * NOT part of these variants (DECISIONS.md D6).
+ */
+@custom-variant focus-visible-fui (&:where([data-fui-focus-visible]));
+@custom-variant focus-within-fui (&:where([data-fui-focus-within]));
+
+/* content presence (Divider childless, empty slots) */
+@custom-variant childless (&:where([data-childless]));
+
+/* forced colors / high contrast */
+@custom-variant forced-colors {
+  @media (forced-colors: active) {
+    @slot;
+  }
+}

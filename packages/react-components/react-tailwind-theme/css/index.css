@@ -1,0 +1,50 @@
+/**
+ * @fluentui/react-tailwind-theme — the `#theme` reference target for component
+ * `*.module.css` files (see migration/griffel-to-tailwind/CONVERSION_GUIDE.md).
+ *
+ * Library constraints (differ deliberately from an app-level Tailwind setup):
+ * - NO preflight: a component library must not ship global resets. Only Tailwind's
+ *   theme + utilities are imported; utilities reach consumers exclusively inlined
+ *   through `@apply` in component modules.
+ * - Fluent design tokens are NOT registered in `@theme`: FluentProvider writes them as
+ *   scoped CSS custom properties at runtime (per-provider theming, nested providers).
+ *   Component CSS consumes them as literal var(--tokenName). DECISIONS.md D4.
+ * - The ONLY nyt-games theme carry-over is --base-scale (user requirement).
+ */
+
+@layer fui.reset, fui.base, fui.variant, fui.state, fui.override;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@import './variants.css';
+
+@theme static {
+  --base-scale: calc(1rem / 16px);
+
+  /*
+   * Every numeric spacing/sizing utility (p-12, gap-8, w-64, …) reads as px but
+   * computes to rem via --base-scale: identical pixels at the default 16px root,
+   * scaling with user font-size preferences (intentional accessibility deviation).
+   */
+  --spacing-*: initial;
+  --spacing: calc(1px * var(--base-scale));
+
+  /*
+   * Zero out Tailwind's default palette/typography so a stray `text-red-500` or
+   * `font-sans` fails the build instead of silently diverging from Fluent tokens.
+   * Structural utilities (flex, grid, items-*, overflow-*, …) remain available.
+   */
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --font-weight-*: initial;
+  --tracking-*: initial;
+  --leading-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --blur-*: initial;
+  --animate-*: initial;
+}

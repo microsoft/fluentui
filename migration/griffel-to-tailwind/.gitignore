@@ -1,0 +1,6 @@
+validation/baseline/
+validation/candidate/
+validation/*-diff/
+metrics/*/build-vnext.log
+metrics/*/storybook-build.log
+metrics/*/monosize.log

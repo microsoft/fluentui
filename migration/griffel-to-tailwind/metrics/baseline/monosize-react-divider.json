@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Divider",
+    "path": "bundle-size/Divider.fixture.js",
+    "minifiedSize": 15077,
+    "gzippedSize": 5398,
+    "assets": { "js": { "minifiedSize": 15077, "gzippedSize": 5398 } }
+  }
+]
