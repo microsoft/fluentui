@@ -296,3 +296,28 @@ layer(fui.utilities)`, source-scanned built-in utilities (`p-4`, `flex`), a cust
 `@layer utilities` directive requirement for variant-composable custom classes — v4's
 `@utility` has no fixed cascade-layer location.)
 Re-validated post-restructure: all VR sets pixel-identical (see ledger).
+
+## D7 revision — mergeClasses is not a compatibility target (settled with user 2026-07-27)
+
+The Griffel runtime winner-selection machinery (sequence hashes, DEFINITION_LOOKUP_TABLE,
+property-map merge, per-property class deletion) is being **removed, not emulated**.
+Converted components compose class names with plain `clsx`; class names are inert
+identifiers; ALL property-conflict resolution belongs to the cascade via the `fui.*`
+layer family. No dedup exists or is needed — elements may carry multiple classes that
+set the same property, and the layer order decides the winner.
+
+Scope changes vs. original D7:
+
+- Griffel symbol re-exports (`mergeClasses`, `makeStyles`, renderer APIs, …) and
+  mergeClasses-defined extension contracts are **part of this migration's breaking
+  change**, not deferred to a later major. `customStyleHooks_unstable` keeps working
+  mechanically (string-based), but its override semantics are cascade semantics now.
+- The `classname-overrides-win` replacement conformance test asserts the cascade-native
+  contract (consumer className present; consumer CSS wins via unlayered-beats-layered),
+  not call-order.
+
+Unchanged and NOT compatibility: reading the OLD mergeClasses **argument order** during
+conversion. That is fidelity extraction — the argument order is the only record of which
+slice wins each property conflict, and pixel-identity requires the same winners after the
+cascade takes over. Workers translate it into layer assignments once (the module-header
+mapping table), then the mechanism is gone.
