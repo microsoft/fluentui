@@ -1,0 +1,364 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useBreadcrumbButtonStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *
+ *   #  mergeClasses argument                          → target
+ *   ------------------------------------------------------------------------------------
+ *   1  breadcrumbButtonClassNames.root                → static class (JS)
+ *   2  styles[size]                                   → fui.components.l2  (data-size)
+ *   3  styles.root                                    → fui.components.l2
+ *   4  current && currentSizeMap[size]                → fui.components.l2  (data-current + data-size)
+ *   5  current && styles.current                      → fui.components.l2  (data-current)
+ *                                                       + one UNLAYERED block (see below)
+ *   6  state.root.className                           → unlayered (always wins)
+ *
+ * `icon` slot
+ *
+ *   1  iconStyles.base                                → fui.components.l2  .icon
+ *   2  iconStyles[size]                               → fui.components.l2  (data-size, read off the root)
+ *   3  state.icon.className                           → unlayered
+ *
+ * (`breadcrumbButtonClassNames.icon` is exported but NEVER applied by the Griffel hook —
+ * the icon slot renders with `fui-Button__icon` only. Reproduced as-is; adding it would
+ * change the public DOM.)
+ *
+ * ── ALTITUDE: every block here is l2, none is l1 (DECISIONS.md D2 amendment 2) ────────
+ * BreadcrumbButton has no elements of its own. `useBreadcrumbButtonStyles_unstable` ends by
+ * calling `useButtonStyles_unstable(state)`, so BOTH slots are react-button's: the root is
+ * Button's root and the icon is Button's `icon` slot, each already carrying that package's
+ * `fui.base` reset and `fui.components.l1` rules. Everything this component layers on top of
+ * another component's hook output belongs in `fui.components.l2` — in l1 the winner between
+ * Breadcrumb and Button would be decided by stylesheet load order.
+ *
+ * This is load-bearing on every slot, not bookkeeping:
+ *   • root `min-width: unset` (#3) must beat Button's base `min-width: 96px` and its
+ *     `size-small` `min-width: 64px`.
+ *   • root `height`/`padding`/typography (#2) must beat Button's own size padding and font.
+ *   • `current` (#5) must beat Button's `subtle` hover/pressed colours and its icon colour.
+ *   • icon `font-size`/`height`/`width` (#1) must beat Button's icon-slot `size-20` box.
+ * mergeClasses produced those winners because BreadcrumbButton's classes were Button's LAST
+ * argument (`useButtonStyles_unstable` merges the incoming className last, i.e. after its
+ * own); l2 over l1 reproduces it deterministically.
+ *
+ * ── Argument order vs declaration order ─────────────────────────────────────────────
+ * `styles.root` is DECLARED before the size slices but APPLIED after them (arg #3 vs #2).
+ * The two sets are disjoint (`min-width`/`text-wrap` vs `height`/`padding`/font-\*), so the
+ * inversion is inert — the blocks are still written in ARGUMENT order below, per the
+ * cookbook, so a later property collision cannot silently pick the wrong winner.
+ * `currentSizeMap` (#4) DOES collide with the size slices (#2) on `font-weight`, and its
+ * block is written after them.
+ *
+ * ── Spacing and pixel literals (DECISIONS.md D4) ────────────────────────────────────
+ * `padding` reads `tokens.spacingHorizontalSNudge` / `spacingHorizontalS`, so it is authored
+ * with the NAMED spacing utilities; raw `var(--spacingHorizontal*)` is forbidden in modules
+ * (it is the one form that does not ride `--base-scale`). The control heights (24/32/40) and
+ * the icon box sizes (12/16/20) are raw px literals and take numeric utilities /
+ * `calc(<n>px * var(--base-scale))`, exactly as react-switch's track geometry does.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled atomics carry exactly one `[ltr, rtl]` pair — the icon's
+ * `t21cq0: ["fm0x6gh", "fbyavb5"]` = `margin-right` / `margin-left`. Identical value on both
+ * sides, i.e. a pure PROPERTY flip, so it becomes the logical `margin-inline-end` and needs
+ * no `@variant rtl` twin. Nothing else in this component is direction-sensitive.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/BreadcrumbButton/useBreadcrumbButtonStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.small / .medium / .large — root arg #2. `size` is a scale prop, so it
+   * rides `data-size` rather than a module class (DECISIONS.md D3); react-button's own hook
+   * stamps that attribute on this very element (see the styles hook).
+   *
+   * `padding: <token>` is expanded to the four longhands the cookbook requires: Button sets
+   * its own padding as four longhands one layer down, and CSS has no equivalent of Griffel's
+   * shorthand-beats-longhand priority. NOTE the Griffel source uses a HORIZONTAL spacing
+   * token on BOTH axes (`padding: tokens.spacingHorizontalSNudge`), which the named
+   * utilities keep visible: the block-axis pair is `pt-/pb-HORIZONTAL-…`, not the vertical
+   * token the axis rule would otherwise pick. Reproduced verbatim rather than "fixed"
+   * (same call react-infolabel's `size-large` padding documents).
+   *
+   * `typographyStyles.caption1` / `.body1` / `.body2` expand to the four `font-*` /
+   * `line-height` declarations the compiler emitted; all three carry
+   * `font-weight: var(--fontWeightRegular)` (`figsok6`), including `large` — `body2` is NOT
+   * semibold. The `current` overrides below are the only semibold path.
+   */
+  .root {
+    @variant size-small {
+      @apply h-24 pt-horizontal-s-nudge pb-horizontal-s-nudge ps-horizontal-s-nudge pe-horizontal-s-nudge;
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+
+    @variant size-medium {
+      @apply h-32 pt-horizontal-s-nudge pb-horizontal-s-nudge ps-horizontal-s-nudge pe-horizontal-s-nudge;
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+    }
+
+    @variant size-large {
+      @apply h-40 pt-horizontal-s pb-horizontal-s ps-horizontal-s pe-horizontal-s;
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase400);
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.root — root arg #3. `min-width: unset` stays a literal: Tailwind has no
+   * `unset` step in the width scale, and the keyword is the point (it releases Button's
+   * 96px/64px floor so a breadcrumb entry is only as wide as its label).
+   */
+  .root {
+    @apply text-nowrap;
+
+    min-width: unset;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.currentSmall / .currentMedium / .currentLarge — root arg #4, applied as
+   * `current && currentSizeMap[size]`. Written AFTER the size blocks above because
+   * `typographyStyles.caption1Strong` / `.body1Strong` / `.subtitle2` re-set `font-weight`
+   * (semibold, `fl43uef`) over arg #2's regular. Every other declaration in these three
+   * slices is identical to its arg #2 counterpart; reproduced in full rather than reduced to
+   * the delta, so each block still diffs 1:1 against its typography ramp.
+   *
+   * `current` is a boolean state prop → the presence attribute `data-current`
+   * (catalog `@variant current`). See the styles hook for why the attribute is stamped from
+   * `state.current` rather than read off `aria-current`.
+   */
+  .root {
+    @variant current {
+      @variant size-small {
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase200);
+        font-weight: var(--fontWeightSemibold);
+        line-height: var(--lineHeightBase200);
+      }
+
+      @variant size-medium {
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightSemibold);
+        line-height: var(--lineHeightBase300);
+      }
+
+      @variant size-large {
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase400);
+        font-weight: var(--fontWeightSemibold);
+        line-height: var(--lineHeightBase400);
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.current — root arg #5, the LAYERED half. A current breadcrumb entry is
+   * the page you are already on, so it neutralises Button's `subtle` interaction feedback:
+   * the same three declarations (`defaultButtonStyles`) plus `.fui-Button__icon { color:
+   * unset }` are applied in all three states the Griffel slice lists.
+   *
+   * ── Which selectors, and why they are not the catalog's compounds ────────────────
+   * The compiled atomics are `:hover`, `:hover:active` and `:disabled`.
+   *   • `:hover:active` is authored as a nested `@variant active` inside `@variant hover`
+   *     rather than the shared `hover-active` variant: that one ALSO matches
+   *     `:active:focus-visible`, which Griffel never emitted here (same call
+   *     react-infolabel's InfoButton makes).
+   *   • …and it is then COLLAPSED into the `@variant hover` block, because `:hover:active`
+   *     is a strict SUBSET of `:hover` and the two branches carry byte-identical
+   *     declarations. Under `:where()` flattening one block reproduces both (the InfoButton
+   *     `highContrast` precedent; contrast the `not-focus-within` trap in variants.css,
+   *     where the branches differed and the slice had to be SPLIT).
+   *   • `:disabled` uses the catalog `@variant disabled`, which is
+   *     `[disabled], [data-disabled], :disabled`. That is marginally WIDER than the compiled
+   *     `:disabled`: react-button's hook stamps `data-disabled` from `state.disabled`, so a
+   *     `<BreadcrumbButton href … current disabled />` — an `<a>`, which carries no native
+   *     `disabled` — now matches where the Griffel atomic did not. The declarations it
+   *     applies are the `current` look either way; accepted deliberately rather than
+   *     hand-writing a bare `:disabled` selector against the catalog rule.
+   *
+   * `:global(.fui-Button__icon)` is react-button's OWN slot class on react-button's own
+   * element — converted, so it stays LAYERED, and l2 is what makes it beat that package's
+   * `subtle` hover/pressed icon colours in l1. The `.fui-Icon-filled` / `.fui-Icon-regular`
+   * halves of this same slice are a different story entirely: see the UNLAYERED block at the
+   * bottom of this file.
+   */
+  .root {
+    @variant current {
+      @variant hover {
+        background-color: var(--colorTransparentBackground);
+        color: var(--colorNeutralForeground2);
+        cursor: auto;
+
+        & :global(.fui-Button__icon) {
+          color: unset;
+        }
+      }
+
+      @variant disabled {
+        background-color: var(--colorTransparentBackground);
+        color: var(--colorNeutralForeground2);
+        cursor: auto;
+
+        & :global(.fui-Button__icon) {
+          color: unset;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useIconStyles.base — icon arg #1. The two `--fui-Breadcrumb--icon-*` custom
+   * properties are set by the size block below; this slice only READS them, which is why the
+   * lengths here stay `var()` references rather than utilities.
+   *
+   * `margin-right` compiled as the `[ltr, rtl]` pair `fm0x6gh` / `fbyavb5` (a pure property
+   * flip), so it becomes the logical `margin-inline-end`, carrying the named utility for
+   * `tokens.spacingHorizontalXS`.
+   */
+  .icon {
+    @apply me-horizontal-xs;
+
+    font-size: var(--fui-Breadcrumb--icon-size);
+    height: var(--fui-Breadcrumb--icon-size);
+    line-height: var(--fui-Breadcrumb--icon-line-height);
+    width: var(--fui-Breadcrumb--icon-size);
+  }
+
+  /*
+   * from useIconStyles.small / .medium / .large — icon arg #2. Keyed off the ROOT's
+   * `data-size` (react-button stamps it there), exactly as react-button's own icon-size
+   * rules are: the icon slot itself carries no data attributes.
+   *
+   * No utility can assign a custom property, so the sizes take D4's literal form —
+   * `calc(<n>px * var(--base-scale))` is what a numeric utility would emit, so these scale
+   * with the rest of the system. The line heights are ordinary tokens and stay literal
+   * `var()`; note the ramp is Base200 / Base400 / Base600, NOT the root's 200/300/400.
+   */
+  .root {
+    @variant size-small {
+      & .icon {
+        --fui-Breadcrumb--icon-size: calc(12px * var(--base-scale));
+        --fui-Breadcrumb--icon-line-height: var(--lineHeightBase200);
+      }
+    }
+
+    @variant size-medium {
+      & .icon {
+        --fui-Breadcrumb--icon-size: calc(16px * var(--base-scale));
+        --fui-Breadcrumb--icon-line-height: var(--lineHeightBase400);
+      }
+    }
+
+    @variant size-large {
+      & .icon {
+        --fui-Breadcrumb--icon-size: calc(20px * var(--base-scale));
+        --fui-Breadcrumb--icon-line-height: var(--lineHeightBase600);
+      }
+    }
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED (D2 amendment 5) ─────────────────────────────────
+ *
+ * These rules — the `.fui-Icon-filled` / `.fui-Icon-regular` halves of `useStyles.current`
+ * (arg #5) — style ANOTHER package's elements: the two `<svg>`s that
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside the icon slot. react-icons is not
+ * converted (D11 keeps it on Griffel permanently), so it styles those same two elements with
+ * Griffel atomics, and Griffel injects UNLAYERED:
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
+ *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
+ *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ *
+ * In the CSS cascade an UNLAYERED normal author declaration outranks EVERY `@layer` — that
+ * comparison happens BEFORE specificity is consulted. Inside `@layer fui.components.l2`
+ * these rules could never beat `.fjseox`, no matter how much more specific they are; the
+ * compiled Griffel atomics (`.fi9vkhg:disabled .fui-Icon-filled`, 0-3-0) won on specificity,
+ * and reproducing that requires being unlayered too. Full evidence — CDP matched-rules
+ * readout of the identical defect — in reports/DECISIONS.md "D2 amendment 5" and at the
+ * bottom of react-button's Button.module.css.
+ *
+ * ── The specificity bump is load-bearing, and is NOT the usual flat form ─────────────
+ * This is the first converted component that BOTH composes a converted component and swaps
+ * icons, so it is the first place where two UNLAYERED Fluent rules contend on the same
+ * element for the same property:
+ *
+ *   react-button `.subtle` (BreadcrumbButton's appearance) hover + pressed
+ *       → .fui-Icon-filled { display: inline }   (swap TO the filled glyph)
+ *   this component's `current` hover
+ *       → .fui-Icon-filled { display: none    }   (a current entry never swaps)
+ *
+ * Both are unlayered, so `@layer` cannot arbitrate, and in the flat `:where()` form both
+ * score 0-2-0 — leaving CROSS-STYLESHEET load order as the only tiebreak, i.e. an
+ * undefined winner. Griffel had a definite winner: BreadcrumbButton's classes are Button's
+ * LAST mergeClasses argument, so its atomic survived the dedupe. Compounding this
+ * component's own static class (`:global(.fui-BreadcrumbButton)`, which the styles hook
+ * always writes) onto the module class restores that winner deterministically at 0-3-0 vs
+ * Button's 0-2-0 — no matter which package's `dist/styles.css` the document loads first.
+ *
+ * Everything that styles this component's own state on react-button's OWN elements stays
+ * layered above, including `:global(.fui-Button__icon)`: nothing unlayered competes for it,
+ * so l2-over-l1 already decides that one.
+ *
+ * Ordering inside this block: the three Griffel states (`:hover`, `:hover:active`,
+ * `:disabled`) carry IDENTICAL declarations, so file position is inert here — `:hover:active`
+ * is collapsed into `@variant hover` for the same reason as the layered block above.
+ */
+.root:global(.fui-BreadcrumbButton) {
+  @variant current {
+    @variant hover {
+      & :global(.fui-Icon-filled) {
+        display: none;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: inline;
+      }
+    }
+
+    @variant disabled {
+      & :global(.fui-Icon-filled) {
+        display: none;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: inline;
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useBreadcrumbDividerStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *   1 breadcrumbDividerClassNames.root               → static class (JS)
+ *   2 useStyles                   (makeResetStyles)  → fui.base           .root
+ *   3 useIconStyles[size]                            → fui.components.l1  (data-size)
+ *   4 consumer className                             → unlayered (always wins)
+ *
+ * ── Altitude: l1, not l2 (DECISIONS.md D2 amendment 2) ──────────────────────────────
+ * The root `<li>` is this component's own element. The chevron inside it is a
+ * `@fluentui/react-icons` `<svg>`, but nothing here selects that element: `font-size` is set
+ * on the `<li>` and the glyph picks it up through INHERITANCE, which no `@layer` can affect
+ * (react-icons' own unlayered atomics set `display`, never `font-size`). So this module
+ * needs neither `fui.components.l2` nor the unlayered treatment D2 amendment 5 requires for
+ * rules that SELECT another package's elements — see BreadcrumbButton.module.css for the
+ * case that does.
+ *
+ * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
+ * The three font sizes are raw px literals in the Griffel source (12/16/20), not spacing
+ * tokens, so they ride `--base-scale` as `calc(<n>px * var(--base-scale))` — the same form
+ * react-button's icon slot uses. At the default 16px root each computes to the compiled
+ * pixel value.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * No `[ltr, rtl]` pair exists in the compiled output. The divider DOES mirror in RTL, but in
+ * JS, not CSS: `useBreadcrumbDivider_unstable` swaps `<ChevronRightRegular />` for
+ * `<ChevronLeftRegular />` off `useFluent().dir`. That is component logic and is left alone.
+ */
+
+@layer fui.base {
+  /* from useStyles (makeResetStyles) */
+  .root {
+    @apply flex;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useIconStyles[size] — arg #3. `size` is a scale prop, so it rides `data-size`
+   * rather than a module class (DECISIONS.md D3). The Griffel hook defaults it in the
+   * destructure (`const { size = 'medium' } = state`); the converted hook stamps the
+   * defaulted value, so `medium` needs a rule here rather than being the implicit fallback.
+   */
+  .root {
+    @variant size-small {
+      font-size: calc(12px * var(--base-scale));
+    }
+
+    @variant size-medium {
+      font-size: calc(16px * var(--base-scale));
+    }
+
+    @variant size-large {
+      font-size: calc(20px * var(--base-scale));
+    }
+  }
+}

@@ -1,42 +1,57 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
-import type { BreadcrumbDividerSlots, BreadcrumbDividerState } from './BreadcrumbDivider.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { BreadcrumbDividerSlots, BreadcrumbDividerState } from './BreadcrumbDivider.types';
+
+import styles from './BreadcrumbDivider.module.css';
 
 export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots> = {
   root: 'fui-BreadcrumbDivider',
 };
 
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `size` is a scale prop, so it rides `data-size` rather than a module class
+ * (DECISIONS.md D3) — the same attribute react-button/react-badge/react-avatar stamp.
+ * `BreadcrumbDividerState['size']` is optional (it is injected from BreadcrumbContext by
+ * the full hook, and the base hook omits it), so the `= 'medium'` default the Griffel hook
+ * applied in its destructure is preserved here and the DEFAULTED value is what gets stamped.
  */
-const useStyles = makeResetStyles({
-  display: 'flex',
-});
-
-const useIconStyles = makeStyles({
-  small: {
-    fontSize: '12px',
-  },
-  medium: {
-    fontSize: '16px',
-  },
-  large: {
-    fontSize: '20px',
-  },
-});
+type BreadcrumbDividerRootDataAttributes = {
+  'data-size': NonNullable<BreadcrumbDividerState['size']>;
+};
 
 /**
  * Apply styling to the BreadcrumbDivider slots based on the state
  */
 export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerState): BreadcrumbDividerState => {
-  const styles = useStyles();
-  const iconStyles = useIconStyles();
   const { size = 'medium' } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(breadcrumbDividerClassNames.root, styles, iconStyles[size], state.root.className);
+  const root = state.root as BreadcrumbDividerState['root'] & BreadcrumbDividerRootDataAttributes;
+
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbDivider.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  state.root.className = clsx(breadcrumbDividerClassNames.root, styles.root, state.root.className);
 
   return state;
 };

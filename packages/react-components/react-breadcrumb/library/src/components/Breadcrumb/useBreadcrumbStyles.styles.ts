@@ -1,32 +1,46 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, mergeClasses } from '@griffel/react';
-import type { BreadcrumbSlots, BreadcrumbState } from './Breadcrumb.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { BreadcrumbSlots, BreadcrumbState } from './Breadcrumb.types';
+
+import styles from './Breadcrumb.module.css';
 
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots> = {
   root: 'fui-Breadcrumb',
   list: 'fui-Breadcrumb__list',
 };
 
-const useListClassName = makeResetStyles({
-  listStyleType: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  margin: 0,
-  padding: 0,
-});
-
 /**
  * Apply styling to the Breadcrumb slots based on the state
  */
 export const useBreadcrumbStyles_unstable = (state: BreadcrumbState): BreadcrumbState => {
-  const listBaseClassName = useListClassName();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(breadcrumbClassNames.root, state.root.className);
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Breadcrumb.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  //
+  // The root slot has no styles of its own: the Griffel hook merged only the static class,
+  // so there is no `styles.root` to apply and no data attribute to stamp. `size` lives on
+  // BreadcrumbContext and is read by the child components' own styles hooks.
+  state.root.className = clsx(breadcrumbClassNames.root, state.root.className);
+
   if (state.list) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.list.className = mergeClasses(listBaseClassName, breadcrumbClassNames.list, state.list.className);
+    state.list.className = clsx(breadcrumbClassNames.list, styles.list, state.list.className);
   }
+
   return state;
 };

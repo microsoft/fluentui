@@ -1,0 +1,57 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useBreadcrumbStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot — carries NO styles at all:
+ *   1 breadcrumbClassNames.root                      → static class (JS)
+ *   2 consumer className                             → unlayered (always wins)
+ *
+ * `list` slot
+ *   1 useListClassName            (makeResetStyles)  → fui.base           .list
+ *   2 breadcrumbClassNames.list                      → static class (JS)
+ *   3 consumer className                             → unlayered
+ *
+ * The static class was the SECOND mergeClasses argument here; the converted hook writes it
+ * first, per the cookbook's `clsx(xClassNames.slot, styles.slot, …)` composition rule.
+ * That reorders the emitted `class=` string only — neither class carries declarations that
+ * compete (`fui-Breadcrumb__list` is a naming contract, not a styled selector).
+ *
+ * Nothing here sits over another component's hook output (`<nav>` and `<ol>` are this
+ * component's own elements), so `fui.components.l1` / `.l2` are unused.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * `makeResetStyles` compiled to a single class (`.rc5rb6b`, no `[ltr, rtl]` pair) and the
+ * reset contains no direction-sensitive property, so no `@variant rtl` twin is needed.
+ */
+
+@layer fui.base {
+  /* from useListClassName (makeResetStyles) */
+  .list {
+    @apply list-none flex items-center;
+
+    /*
+     * `margin: 0` / `padding: 0` are reproduced as the compiled SHORTHANDS, not expanded:
+     * `makeResetStyles` does not atomize, so `.rc5rb6b` really does carry
+     * `margin:0;padding:0` (compare the makeStyles slices elsewhere, where the compiler
+     * emitted longhands and the cookbook's expand rule applies). Left as literal `0` rather
+     * than `m-0`/`p-0`: zero has nothing for `--base-scale` to scale, so the utility would
+     * be pure indirection — the same call react-infolabel's reset documents.
+     */
+    margin: 0;
+    padding: 0;
+  }
+}

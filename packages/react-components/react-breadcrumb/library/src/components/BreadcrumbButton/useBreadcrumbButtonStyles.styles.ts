@@ -1,11 +1,29 @@
 'use client';
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * the other three converted styles files in this package carry an
+ * `enforce-use-client` suppression, because a converted hook normally calls no React hook
+ * and no RSC-unsafe function once `makeStyles` is gone. This one is the exception and needs
+ * NO suppression: it still calls `useButtonStyles_unstable`, so the directive is genuinely
+ * required and the rule does not flag it. (Adding the suppression anyway trips
+ * `--report-unused-disable-directives`.)
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useButtonStyles_unstable, buttonClassNames } from '@fluentui/react-button';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
+import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
+
+/*
+ * `@fluentui/react-button` is imported ABOVE this module, deliberately. The generated ESM
+ * class map for a `*.module.css` carries a side-effect import of its package's
+ * `dist/styles.css`, so import order here is also stylesheet order: react-button's sheet is
+ * evaluated first and this package's second. Every rule in BreadcrumbButton.module.css is
+ * layered (`fui.components.l2`) or specificity-pinned, so nothing DEPENDS on that order —
+ * but keeping it matching the composition direction costs nothing.
+ */
+import styles from './BreadcrumbButton.module.css';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -16,121 +34,71 @@ export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> =
 };
 
 /**
- * CSS variable names used internally for styling in the Breadcrumb.
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * Only ONE attribute is stamped here. `data-size` — which this component's rules read on
+ * both slots — is written by `useButtonStyles_unstable`, called unconditionally at the end
+ * of this hook: `size` is a single field on the shared state object, so Button stamps
+ * exactly the value the Griffel `styles[state.size]` lookups used. Stamping it again here
+ * would be a redundant write of an identical value.
+ *
+ * `data-current` mirrors `state.current`, the boolean the Griffel hook branched on, and is
+ * written `current || undefined` (React omits an attribute whose value is `undefined`;
+ * `false` would render `data-current="false"` and still match `[data-current]`).
+ *
+ * It is deliberately NOT read off `aria-current`. The catalog's `current` variant also
+ * matches `[aria-current]:not([aria-current='false'])`, and this component lets a consumer
+ * set that attribute directly (`...rest` overrides the computed value in
+ * `useBreadcrumbButtonBase_unstable`) — so an `aria-current` passed WITHOUT `current` would
+ * newly pick up the current styling. Stamping the boolean keeps the common path exact; the
+ * residual aria-only widening is inherited from the shared variant and accepted rather than
+ * hand-writing a bespoke selector. (Same reasoning react-infolabel used to prefer
+ * `data-open` over PopoverTrigger's consumer-overridable `aria-expanded`.)
  */
-const breadcrumbCSSVars = {
-  breadcrumbIconSizeVar: '--fui-Breadcrumb--icon-size',
-  breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
+type BreadcrumbButtonRootDataAttributes = {
+  'data-current'?: true;
 };
-
-const useIconStyles = makeStyles({
-  base: {
-    fontSize: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
-    width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    marginRight: tokens.spacingHorizontalXS,
-  },
-  small: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
-  },
-  medium: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
-  },
-  large: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
-  },
-});
-
-const defaultButtonStyles = {
-  backgroundColor: tokens.colorTransparentBackground,
-  color: tokens.colorNeutralForeground2,
-  cursor: 'auto',
-};
-
-const currentIconStyles = {
-  ...defaultButtonStyles,
-  [`& .${buttonClassNames.icon}`]: {
-    color: 'unset',
-  },
-  [`& .${iconFilledClassName}`]: {
-    display: 'none',
-  },
-  [`& .${iconRegularClassName}`]: {
-    display: 'inline',
-  },
-};
-
-const useStyles = makeStyles({
-  root: {
-    minWidth: 'unset',
-    textWrap: 'nowrap',
-  },
-  small: {
-    height: '24px',
-    ...typographyStyles.caption1,
-    padding: tokens.spacingHorizontalSNudge,
-  },
-  medium: {
-    height: '32px',
-    ...typographyStyles.body1,
-    padding: tokens.spacingHorizontalSNudge,
-  },
-  large: {
-    height: '40px',
-    ...typographyStyles.body2,
-    padding: tokens.spacingHorizontalS,
-  },
-  current: {
-    ':hover': {
-      ...currentIconStyles,
-    },
-    ':hover:active': {
-      ...currentIconStyles,
-    },
-    ':disabled': {
-      ...currentIconStyles,
-    },
-  },
-  currentSmall: {
-    ...typographyStyles.caption1Strong,
-  },
-  currentMedium: {
-    ...typographyStyles.body1Strong,
-  },
-  currentLarge: {
-    ...typographyStyles.subtitle2,
-  },
-});
 
 /**
  * Apply styling to the BreadcrumbButton slots based on the state
  */
 export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
-  const styles = useStyles();
-  const iconStyles = useIconStyles();
+  const { current } = state;
 
-  const currentSizeMap = {
-    small: styles.currentSmall,
-    medium: styles.currentMedium,
-    large: styles.currentLarge,
-  };
+  const root = state.root as BreadcrumbButtonState['root'] & BreadcrumbButtonRootDataAttributes;
+
+  /*
+   * The `react-hooks/immutability` suppressions below are carried over from the Griffel
+   * version of this file, unchanged. The state-mutation pattern is KEPT during conversion
+   * (CONVERSION_GUIDE §3 / DECISIONS.md D14): the mixed-mode sibling seam and the
+   * customStyleHooks contract both depend on the shared object, and its removal is a single
+   * committed Phase 3 sweep rather than a per-conversion change. Note this file is the only
+   * converted styles hook in the package that still trips the rule — the other three no
+   * longer call any hook, so eslint no longer treats them as hooks at all.
+   */
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    breadcrumbButtonClassNames.root,
-    styles[state.size],
-    styles.root,
-    state.current && currentSizeMap[state.size],
-    state.current && styles.current,
-    state.root.className,
-  );
+  root['data-current'] = current || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbButton.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including why EVERY block sits at altitude
+  // `fui.components.l2` (both slots are react-button's elements) and why the icon swap has
+  // to be unlayered.
+  //
+  // `state.root.className` is what `useButtonStyles_unstable` receives as its own LAST
+  // argument below, so this string still arrives after react-button's classes — exactly as
+  // it did under mergeClasses.
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.className = clsx(breadcrumbButtonClassNames.root, styles.root, state.root.className);
 
   if (state.icon) {
+    // NOTE: `breadcrumbButtonClassNames.icon` is intentionally not applied — the Griffel
+    // hook never merged it either, so the icon slot renders with react-button's
+    // `fui-Button__icon` alone. The export stays part of the package's public API.
     // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+    state.icon.className = clsx(styles.icon, state.icon.className);
   }
 
   useButtonStyles_unstable(state);
