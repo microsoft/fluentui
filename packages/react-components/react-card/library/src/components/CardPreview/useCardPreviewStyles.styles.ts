@@ -31,12 +31,14 @@ export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots> = {
  * Apply styling to the CardPreview slots based on the state.
  */
 export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPreviewState => {
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this preview's state, because `styles.root` is hashed and unaddressable from
-  // outside this file. Read it as `@variant group-…/fui-card-preview { … }`
-  // (DECISIONS.md D15). Only the root slot carries a marker; `logo` does not.
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this preview's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Read it as
+  // `@variant group-…/fui-card-preview { … }` (DECISIONS.md D15). Only the root slot carries
+  // a marker; `logo` does not.
   //
   // Cascade priority is decided by the `@layer fui.*` order in CardPreview.module.css and
   // by block order within it, not by the order of these arguments — see that file's header
@@ -44,7 +46,7 @@ export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPrev
   //
   // The state mutation below is preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
-  state.root.className = clsx('group/fui-card-preview', cardPreviewClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(cardPreviewClassNames.root, 'group/fui-card-preview', styles.root, state.root.className);
 
   if (state.logo) {
     state.logo.className = clsx(cardPreviewClassNames.logo, styles.logo, state.logo.className);

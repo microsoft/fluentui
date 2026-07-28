@@ -114,13 +114,15 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   root['data-selected'] = state.selected || undefined;
   root['data-disabled'] = state.disabled || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this Card's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. Card is the best zero-cost demonstration of the capability: its full state
-  // (`data-selected`, `data-disabled`, `data-interactive`, `data-orientation`, `data-size`)
-  // is already stamped on this very element, so a descendant can read all of it today as
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Card's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Card is the best zero-cost
+  // demonstration of the capability: its full state (`data-selected`, `data-disabled`,
+  // `data-interactive`, `data-orientation`, `data-size`) is already stamped on this very
+  // element, so a descendant can read all of it today as
   // `@variant group-selected/fui-card { … }` with no mirroring (DECISIONS.md D15).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Card.module.css and by
@@ -133,8 +135,8 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   // deliberately: DECISIONS.md D14 defers the pure-builder rewrite to a single Phase 3
   // sweep.
   state.root.className = clsx(
-    'group/fui-card',
     cardClassNames.root,
+    'group/fui-card',
     styles.root,
     appearanceClassNames[state.appearance],
     focusedClassName,

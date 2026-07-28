@@ -3,7 +3,7 @@
 exports[`CardFooter renders a default state 1`] = `
 <div>
   <div
-    class="group/fui-card-footer fui-CardFooter"
+    class="fui-CardFooter group/fui-card-footer"
   >
     Default CardFooter
     <div

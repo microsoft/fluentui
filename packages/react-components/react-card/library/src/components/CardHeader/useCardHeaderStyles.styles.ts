@@ -74,21 +74,28 @@ export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeader
   // by block order within it, not by the order of these arguments — see that file's header
   // for the mapping back to the mergeClasses() argument order this replaces, including why
   // the action slot's forced-colors Button/Link rules sit at `fui.components.l2`.
-  const getSlotStyles = (slotName: keyof CardHeaderSlots): string =>
-    clsx(cardHeaderClassNames[slotName], styles[slotName], boxModelStyles[slotName], state[slotName]?.className);
+  const getSlotStyles = (slotName: keyof CardHeaderSlots, groupMarker?: string): string =>
+    clsx(
+      cardHeaderClassNames[slotName],
+      groupMarker,
+      styles[slotName],
+      boxModelStyles[slotName],
+      state[slotName]?.className,
+    );
 
   // The state mutations below are preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
   //
-  // The named group marker is prepended to the ROOT slot only, so it lands FIRST in the
-  // emitted class string exactly as it does in every other converted hook. It is written
-  // outside `getSlotStyles` rather than as a branch inside it because only this one slot
-  // gets a marker: a group cannot style itself, so a marker on `image` / `header` /
-  // `description` / `action` would serve nothing but those slots' own descendants. The
-  // marker is a literal, unhashed, GLOBAL token — the only handle by which another module
-  // can style an element from this header's state, since `styles.*` is hashed and
-  // unaddressable from outside this file (DECISIONS.md D15).
-  state.root.className = clsx('group/fui-card-header', getSlotStyles('root'));
+  // The named group marker is passed for the ROOT slot only, so it lands directly after
+  // the static `fui-*` class — never at `classList[0]` — exactly as it does in every
+  // other converted hook (DECISIONS.md D15.1). It is written outside `getSlotStyles`
+  // rather than as a branch inside it because only this one slot gets a marker: a group
+  // cannot style itself, so a marker on `image` / `header` / `description` / `action`
+  // would serve nothing but those slots' own descendants. The marker is a literal,
+  // unhashed, GLOBAL token — the only handle by which another module can style an element
+  // from this header's state, since `styles.*` is hashed and unaddressable from outside
+  // this file (DECISIONS.md D15).
+  state.root.className = getSlotStyles('root', 'group/fui-card-header');
 
   if (state.image) {
     state.image.className = getSlotStyles('image');
