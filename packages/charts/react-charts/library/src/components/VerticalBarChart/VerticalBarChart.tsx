@@ -673,7 +673,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
-            aria-label={_getAriaLabel(point, index)}
+            aria-label={_getAriaLabel(point)}
             role="option"
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
@@ -731,7 +731,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             height={adjustedBarHeight}
-            aria-label={_getAriaLabel(point, index)}
+            aria-label={_getAriaLabel(point)}
             role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
@@ -795,7 +795,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
-            aria-label={_getAriaLabel(point, index)}
+            aria-label={_getAriaLabel(point)}
             role="option"
             onMouseLeave={_onBarLeave}
             onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
@@ -919,7 +919,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
-  function _getAriaLabel(point: VerticalBarChartDataPoint, barIndex: number): string {
+  function _getAriaLabel(point: VerticalBarChartDataPoint): string {
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
@@ -929,14 +929,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const yValue = point.yAxisCalloutData || point.y;
     const lineLegend = props.lineLegendText || 'Line';
     const lineYValue = point.lineData?.yAxisCalloutData || point.lineData?.y;
-    const position = `${barIndex + 1} of ${_points.length} bars. `;
     return (
-      position +
-      (point.callOutAccessibilityData?.ariaLabel ||
-        `${xValue}. ` +
-          (legend ? `${legend}, ` : '') +
-          `${yValue}.` +
-          (typeof lineYValue !== 'undefined' ? ` ${lineLegend}, ${lineYValue}.` : ''))
+      point.callOutAccessibilityData?.ariaLabel ||
+      `${xValue}. ` +
+        (legend ? `${legend}, ` : '') +
+        `${yValue}.` +
+        (typeof lineYValue !== 'undefined' ? ` ${lineLegend}, ${lineYValue}.` : '')
     );
   }
 
@@ -1101,13 +1099,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return categoryToValues;
   }
 
-  function _getRenderedBarCount(): number {
-    const yReferencePoint = _yMax < 0 ? _yMax : 0;
-    return _points.filter(point => point.y !== yReferencePoint).length;
-  }
-
-  function _getRenderedLinePointCount(): number {
-    return _points.filter(point => point.lineData?.y).length;
+  function _getBarsGroupLabel(): string {
+    // Calculate number of unique series and total data points for accessibility label
+    const uniqueSeries = new Set(_points.map(point => point.legend)).size;
+    const totalDataPoints = _points.length;
+    return `${uniqueSeries} series and ${totalDataPoints} bars`;
   }
 
   function updatePosition(newX: number, newY: number) {
@@ -1190,11 +1186,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       children={(props: ChildProps) => {
         return (
           <>
-            <g role="listbox" aria-label={`Vertical bar chart with ${_getRenderedBarCount()} bars`}>
+            <g role="listbox" aria-label={_getBarsGroupLabel()}>
               {_bars}
             </g>
             {_isHavingLine && (
-              <g role="listbox" aria-label={`Vertical bar chart Line with ${_getRenderedLinePointCount()} points`}>
+              <g>
                 {_createLine(
                   props.xScale!,
                   props.yScalePrimary!,
