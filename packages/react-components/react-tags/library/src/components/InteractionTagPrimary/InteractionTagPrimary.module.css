@@ -24,17 +24,17 @@
  *                                                                        .rounded/.circular
  *   3  shape === 'circular' && !hasSecondaryAction
  *        && useRootCircularContrastStyles.withoutSecondaryAction
- *                                                             → l1 .circularWithoutSecondaryAction
+ *                                                             → l1 .circular-without-secondary-action
  *   4  disabled ? useRootDisabledAppearances[appearance]
  *                : useRootStyles[appearance]                  → l1 .filled/.outline/.brand
- *                                                                  .filledDisabled/…
+ *                                                                  .filled-disabled/…
  *   5  selected && !disabled && useRootStyles.selected        → l1 .selected
  *   6  useRootStyles[size]                                    → l1 (data-size)
- *   7  !media && !icon && useRootWithoutMediaStyles[size]     → l1 .withoutMedia
+ *   7  !media && !icon && useRootWithoutMediaStyles[size]     → l1 .without-media
  *   8  hasSecondaryAction && useRootWithSecondaryActionStyles.base
- *                                                             → l1 .withSecondaryAction
+ *                                                             → l1 .with-secondary-action
  *   9  hasSecondaryAction && useRootWithSecondaryActionStyles[size]
- *                                                             → l1 .withSecondaryAction
+ *                                                             → l1 .with-secondary-action
  *                                                                  (data-size)
  *  10  consumer className                                     → unlayered (always wins)
  *
@@ -62,7 +62,7 @@
  * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
  * Selectors are `:where()`-flat (`@variant` compounds add 0 specificity), so within the
  * layer file position decides.
- * • #9 `.withSecondaryAction`'s `padding-inline-end` must beat #6's — its block is written
+ * • #9 `.with-secondary-action`'s `padding-inline-end` must beat #6's — its block is written
  *   after the `.root` size block.
  * • #8's `border-{start,end}-end-radius` must beat #2's `border-radius` shorthand (it does,
  *   across layers: l1 over fui.base) and its forced-colors `::before` corner must beat #3's
@@ -187,7 +187,7 @@
    * high-contrast `::before` outline on the trailing side when there is no Secondary
    * button to draw it.
    */
-  .circularWithoutSecondaryAction {
+  .circular-without-secondary-action {
     @media (forced-colors: active) {
       position: relative;
 
@@ -293,8 +293,8 @@
    * from useRootDisabledAppearances[appearance] — arg #4, the DISABLED branch. `filled`
    * and `brand` compile to the identical atomic set, so they share one rule.
    */
-  .filledDisabled,
-  .brandDisabled {
+  .filled-disabled,
+  .brand-disabled {
     cursor: not-allowed;
     background-color: var(--colorNeutralBackgroundDisabled);
     color: var(--colorNeutralForegroundDisabled);
@@ -305,7 +305,7 @@
     border-inline-start-color: var(--colorTransparentStrokeDisabled);
   }
 
-  .outlineDisabled {
+  .outline-disabled {
     cursor: not-allowed;
     background-color: var(--colorSubtleBackground);
     color: var(--colorNeutralForegroundDisabled);
@@ -404,7 +404,7 @@
 
 @layer fui.components.l1 {
   /* from useRootWithoutMediaStyles[size] — arg #7 */
-  .withoutMedia {
+  .without-media {
     @variant size-medium {
       @apply ps-7;
     }
@@ -424,7 +424,7 @@
    * from useRootWithSecondaryActionStyles.base (arg #8) and [size] (arg #9). Written after
    * the `.root` size block above because #9's `padding-inline-end` must beat #6's.
    */
-  .withSecondaryAction {
+  .with-secondary-action {
     /* the trailing side butts up against the Secondary button: square it off and drop the
        shared edge */
     border-start-end-radius: var(--borderRadiusNone);

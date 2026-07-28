@@ -24,11 +24,11 @@
  *                                                                      / .circular
  *   3  disabled ? rootDisabledStyles[appearance]            → fui.components.l1
  *                : rootStyles[appearance]                     .filled/.outline/.brand
- *                                                             .filledDisabled/…
+ *                                                             .filled-disabled/…
  *   4  selected && !disabled && rootStyles.selected         → fui.components.l1  .selected
  *   5  rootStyles[size]                                     → fui.components.l1  (data-size)
- *   6  !media && !icon && rootWithoutMediaStyles[size]      → fui.components.l1  .withoutMedia
- *   7  !dismissIcon && rootWithoutDismissStyles[size]       → fui.components.l1  .withoutDismiss
+ *   6  !media && !icon && rootWithoutMediaStyles[size]      → fui.components.l1  .without-media
+ *   7  !dismissIcon && rootWithoutDismissStyles[size]       → fui.components.l1  .without-dismiss
  *   8  consumer className                                   → unlayered (always wins)
  *
  * `media` slot      1 static · 2 mediaStyles.base + 3 mediaStyles[size]        → l1 `.media`
@@ -38,7 +38,7 @@
  * `dismissIcon`     1 static · 2 base · 3 [size] · 4 !disabled && [appearance]
  *                                     · 5 selected && !disabled && .selected   → l1
  *
- * ── The four SHARED slot blocks (`.media`, `.icon`, `.primaryText`, `.secondaryText`) ──
+ * ── The four SHARED slot blocks (`.media`, `.icon`, `.primary-text`, `.secondary-text`) ──
  * `media`, `icon`, `primaryText` and `secondaryText` are rendered by InteractionTagPrimary
  * as well as by Tag — in Griffel through the four hooks useTagStyles.styles.ts exports
  * (`useIconStyles`, `useMediaStyles`, `usePrimaryTextStyles`,
@@ -78,11 +78,11 @@
  *   appearance blocks.
  * • #5 size (height) and #6/#7 (padding-inline-start/end) are disjoint from each other
  *   and from #3/#4; blocks are written in argument order regardless.
- * • `.primaryTextWithSecondaryText` re-sets the font-size/line-height that
- *   `.primaryText`'s `data-size` rules set (caption1 over body1 at `size="medium"`) →
+ * • `.primary-text-with-secondary-text` re-sets the font-size/line-height that
+ *   `.primary-text`'s `data-size` rules set (caption1 over body1 at `size="medium"`) →
  *   written after them, matching arg #4 over arg #3.
- * • `.dismissIcon`'s forced-colors `:hover`/`:active` colours are written LAST, after
- *   `.dismissIconInteractive` and `.dismissIconSelected`. They are the `m` bucket of the
+ * • `.dismiss-icon`'s forced-colors `:hover`/`:active` colours are written LAST, after
+ *   `.dismiss-icon-interactive` and `.dismiss-icon-selected`. They are the `m` bucket of the
  *   BASE slice (arg #2) while those two are `h`/`a` buckets of args #4/#5 — and Griffel's
  *   `m` bucket outranks `h`/`a`, so a hovered dismiss icon in forced colors must resolve
  *   to `Highlight`, not to colorCompoundBrandForeground1Hover. Block order is Griffel
@@ -194,7 +194,7 @@
   }
 
   /* from useSecondaryTextBaseClassName (makeResetStyles) — secondaryText arg #2 */
-  .secondaryText {
+  .secondary-text {
     grid-area: secondary;
 
     @apply whitespace-nowrap px-horizontal-xxs;
@@ -235,8 +235,8 @@
    * and `brand` compile to the identical atomic set, so they share one rule rather than
    * being duplicated.
    */
-  .filledDisabled,
-  .brandDisabled {
+  .filled-disabled,
+  .brand-disabled {
     cursor: not-allowed;
     background-color: var(--colorNeutralBackgroundDisabled);
     color: var(--colorNeutralForegroundDisabled);
@@ -247,7 +247,7 @@
     border-inline-start-color: var(--colorTransparentStrokeDisabled);
   }
 
-  .outlineDisabled {
+  .outline-disabled {
     cursor: not-allowed;
     background-color: var(--colorSubtleBackground);
     color: var(--colorNeutralForegroundDisabled);
@@ -327,7 +327,7 @@
    * from useRootWithoutMediaStyles[size] — root arg #6, applied when the Tag has neither
    * a media nor an icon slot.
    */
-  .withoutMedia {
+  .without-media {
     @variant size-medium {
       @apply ps-7;
     }
@@ -342,7 +342,7 @@
   }
 
   /* from useRootWithoutDismissStyles[size] — root arg #7 */
-  .withoutDismiss {
+  .without-dismiss {
     @variant size-medium {
       @apply pe-7;
     }
@@ -409,7 +409,7 @@
   }
 
   /* from usePrimaryTextStyles.base (arg #2) + usePrimaryTextStyles[size] (arg #3) */
-  .primaryText {
+  .primary-text {
     @apply whitespace-nowrap px-horizontal-xxs;
 
     /* typographyStyles.body1 */
@@ -441,7 +441,7 @@
    * arg #4. Written after the `data-size` block above: `withSecondaryText` must re-set
    * caption1 over `size-medium`'s body1.
    */
-  .primaryTextWithoutSecondaryText {
+  .primary-text-without-secondary-text {
     grid-column-start: primary;
     grid-row-start: primary;
     grid-row-end: secondary;
@@ -452,7 +452,7 @@
     @apply pb-horizontal-xxs;
   }
 
-  .primaryTextWithSecondaryText {
+  .primary-text-with-secondary-text {
     grid-area: primary;
 
     /* typographyStyles.caption1 */
@@ -470,7 +470,7 @@
 @layer fui.components.l1 {
   /* from useDismissIconStyles.base — dismissIcon arg #2, the `d` bucket half. The `m`
      bucket half (forced colors) is split out at the BOTTOM of this layer; see the header. */
-  .dismissIcon {
+  .dismiss-icon {
     grid-area: dismissIcon;
 
     @apply flex;
@@ -501,7 +501,7 @@
    * (`f8491dx` / `f3ymbdj` / `fryz5bw`), so they collapse into one class that the hook
    * applies for any appearance when the Tag is enabled.
    */
-  .dismissIconInteractive {
+  .dismiss-icon-interactive {
     @variant hover {
       cursor: pointer;
       color: var(--colorCompoundBrandForeground1Hover);
@@ -513,7 +513,7 @@
   }
 
   /* from useDismissIconStyles.selected — dismissIcon arg #5; beats the block above */
-  .dismissIconSelected {
+  .dismiss-icon-selected {
     @variant hover {
       color: var(--colorNeutralForegroundOnBrand);
     }
@@ -528,7 +528,7 @@
    * Griffel's `m` bucket outranks its `h`/`a` buckets, so these must beat both blocks
    * above even though they come from an EARLIER mergeClasses argument.
    */
-  .dismissIcon {
+  .dismiss-icon {
     @variant forced-colors {
       @variant hover {
         color: Highlight;

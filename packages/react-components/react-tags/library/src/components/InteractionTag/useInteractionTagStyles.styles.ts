@@ -45,11 +45,25 @@ export const useInteractionTagStyles_unstable = (state: InteractionTagState): In
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this InteractionTag's state, because `styles.root` is hashed and
+  // unaddressable from outside this file. This is the strongest nesting case in the
+  // package: InteractionTagPrimary and InteractionTagSecondary are separate components
+  // rendered INSIDE this root, so they can now read it as
+  // `@variant group-hover/fui-interaction-tag { … }` (DECISIONS.md D15).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in InteractionTag.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(interactionTagClassNames.root, styles.root, styles[shape], state.root.className);
+  state.root.className = clsx(
+    'group/fui-interaction-tag',
+    interactionTagClassNames.root,
+    styles.root,
+    styles[shape],
+    state.root.className,
+  );
 
   return state;
 };

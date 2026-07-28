@@ -67,10 +67,12 @@ type TagSizeDataAttributes = {
 export const tagSharedSlotStyles = {
   media: styles.media,
   icon: styles.icon,
-  primaryText: styles.primaryText,
-  primaryTextWithSecondaryText: styles.primaryTextWithSecondaryText,
-  primaryTextWithoutSecondaryText: styles.primaryTextWithoutSecondaryText,
-  secondaryText: styles.secondaryText,
+  // KEYS stay camelCase — this is a TypeScript API consumed by InteractionTagPrimary, not a
+  // set of CSS class names. Only the VALUES follow the module's lowercase-kebab locals.
+  primaryText: styles['primary-text'],
+  primaryTextWithSecondaryText: styles['primary-text-with-secondary-text'],
+  primaryTextWithoutSecondaryText: styles['primary-text-without-secondary-text'],
+  secondaryText: styles['secondary-text'],
 };
 
 /**
@@ -103,21 +105,31 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this Tag's state, because `styles.root` is hashed and unaddressable from
+  // outside this file. `data-size` is already stamped on this very element above, so
+  // `@variant group-size-small/fui-tag { … }` works as-is (DECISIONS.md D15, Tier 0 — no
+  // state mirrors needed).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Tag.module.css, not by the
   // order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   state.root.className = clsx(
+    'group/fui-tag',
     tagClassNames.root,
 
     styles.root,
     styles[shape],
 
-    disabled ? styles[`${appearance}Disabled`] : styles[appearance],
+    // `appearance` is one lowercase word (`filled` | `outline` | `brand`), so the module's
+    // lowercase-kebab locals are still reachable by interpolation: `filled-disabled` etc.
+    disabled ? styles[`${appearance}-disabled`] : styles[appearance],
     selected && !disabled && styles.selected,
 
-    !state.media && !state.icon && styles.withoutMedia,
-    !state.dismissIcon && styles.withoutDismiss,
+    !state.media && !state.icon && styles['without-media'],
+    !state.dismissIcon && styles['without-dismiss'],
 
     state.root.className,
   );
@@ -141,9 +153,9 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
     state.primaryText.className = clsx(
       tagClassNames.primaryText,
 
-      styles.primaryText,
+      styles['primary-text'],
 
-      state.secondaryText ? styles.primaryTextWithSecondaryText : styles.primaryTextWithoutSecondaryText,
+      state.secondaryText ? styles['primary-text-with-secondary-text'] : styles['primary-text-without-secondary-text'],
 
       state.primaryText.className,
     );
@@ -151,7 +163,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   if (state.secondaryText) {
     state.secondaryText.className = clsx(
       tagClassNames.secondaryText,
-      styles.secondaryText,
+      styles['secondary-text'],
       state.secondaryText.className,
     );
   }
@@ -161,9 +173,9 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
     state.dismissIcon.className = clsx(
       tagClassNames.dismissIcon,
-      styles.dismissIcon,
-      !disabled && styles.dismissIconInteractive,
-      selected && !disabled && styles.dismissIconSelected,
+      styles['dismiss-icon'],
+      !disabled && styles['dismiss-icon-interactive'],
+      selected && !disabled && styles['dismiss-icon-selected'],
       state.dismissIcon.className,
     );
   }

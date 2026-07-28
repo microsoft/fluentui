@@ -207,8 +207,8 @@
    * from useRootDisabledStyles[appearance] — arg #3, the DISABLED branch. `filled` and
    * `brand` compile to the identical atomic set, so they share one rule.
    */
-  .filledDisabled,
-  .brandDisabled {
+  .filled-disabled,
+  .brand-disabled {
     cursor: not-allowed;
     background-color: var(--colorNeutralBackgroundDisabled);
     color: var(--colorNeutralForegroundDisabled);
@@ -220,7 +220,7 @@
     border-inline-start-color: var(--colorNeutralStrokeDisabled);
   }
 
-  .outlineDisabled {
+  .outline-disabled {
     cursor: not-allowed;
     background-color: var(--colorSubtleBackground);
     color: var(--colorNeutralForegroundDisabled);
