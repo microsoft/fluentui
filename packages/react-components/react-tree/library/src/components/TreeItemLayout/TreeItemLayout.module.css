@@ -1,0 +1,315 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useTreeItemLayoutStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *   1 treeItemLayoutClassNames.root         → static class (JS)
+ *   2 useRootBaseStyles      (makeReset)    → fui.base           .root
+ *   3 useRootStyles[appearance]             → fui.components.l1  .subtle-alpha / .transparent
+ *   4 useRootStyles[size]                   → fui.components.l1  (data-size)
+ *   5 useRootStyles[itemType]               → fui.components.l1  .leaf / .branch
+ *   6 consumer className                    → unlayered (always wins)
+ *
+ * `main` slot          1 static · 2 useMainBaseStyles      (makeReset) → fui.base .main
+ * `expandIcon` slot    1 static · 2 useExpandIconBaseStyles(makeReset) → fui.base .expandIcon
+ * `actions` slot       1 static · 2 useActionsBaseStyles   (makeReset) → fui.base .actions
+ * `aside` slot         1 static · 2 useAsideBaseStyles     (makeReset) → fui.base .aside
+ * `selector` slot      1 static only — the hook applies no styles to it (it renders
+ *                      @fluentui/react-checkbox's <Checkbox> or react-radio's <Radio>;
+ *                      nothing is layered over them, so no altitude question arises)
+ * `iconBefore` slot    1 static · 2 useIconBaseStyles (makeReset) → fui.base .icon
+ *                                · 3 useIconBeforeStyles[size]     → fui.components.l1
+ * `iconAfter` slot     1 static · 2 useIconBaseStyles (makeReset) → fui.base .icon
+ *                                · 3 useIconAfterStyles[size]      → fui.components.l1
+ *
+ * ── DECLARATION ORDER ≠ ARGUMENT ORDER (cookbook §1 "Order rule") ────────────────────
+ * `useRootStyles` DECLARES leaf, branch, medium, small, subtle, subtle-alpha, transparent
+ * but the hook APPLIES appearance → size → itemType. The l1 blocks below follow the
+ * ARGUMENT order. No two of the three slices touch the same property today (appearance =
+ * background-color, size = min-height + typography, itemType = padding-inline-start), so
+ * this inversion is currently inert — it is honoured anyway because file position is what
+ * encodes the winner, and a future slice would silently pick the wrong one.
+ *
+ * Note the sibling component disagrees: `useTreeItemPersonaLayoutStyles_unstable` applies
+ * itemType → appearance → size. Each module reproduces its OWN hook's order.
+ *
+ * ── Altitude ────────────────────────────────────────────────────────────────────────
+ * Every element styled here is TreeItemLayout's own slot, so `fui.components.l2` is
+ * unused. The root's `:hover` / `:active` rules reach the expand-icon slot through a
+ * descendant selector, but that element is this component's own — the Griffel source
+ * used the static `.fui-TreeItemLayout__expandIcon` class (with a `TODO: stop using …
+ * for styling`); the module class selects the identical element and is scoped, so the
+ * TODO gets marginally closer to done. TreeItemLayout roots never nest inside one another
+ * (a TreeItem renders its subtree as a SIBLING of its layout), so the descendant form is
+ * safe, exactly as it was under Griffel.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * • Base `:hover` is written BEFORE base `:active`, reproducing the compiled reset's
+ *   emission order. Both flatten to 0-2-0 under `:where()`, so file position decides, and
+ *   `:active` must win while a pointer is held down. (The sibling PersonaLayout reset
+ *   emits them the other way round and therefore keeps the opposite winner — see that
+ *   module's header. The asymmetry is upstream's, and is preserved rather than fixed.)
+ * • Inside each appearance block, `:hover` is written before `:active` — Griffel resolved
+ *   these through its `h`-before-`a` bucket order, which `:where()` flattening turns into
+ *   pure file position.
+ * • `small`'s `min-height: 24px` beats the base reset's `32px` by layer (l1 over
+ *   fui.base), reproducing Griffel's `d`-bucket-after-reset-bucket winner.
+ * • `transparent`'s unconditional `background-color` sits in l1 while the base reset's
+ *   `:hover` background sits in fui.base, i.e. the layer inverts Griffel's specificity
+ *   winner — which is why `transparent` re-declares its own `:hover` / `:active`
+ *   backgrounds in the same l1 block. It always did; the pair is what makes the layered
+ *   result identical to the compiled one.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` pair in the compiled output is a pure PROPERTY flip and becomes a
+ * logical property — there is no value-level flip anywhere, so no `@variant rtl` block:
+ *   useRootStyles.leaf / .branch      padding-left  ↔ padding-right  → padding-inline-start
+ *   useIconBeforeStyles[size]         padding-right ↔ padding-left   → padding-inline-end
+ *   useIconAfterStyles[size]          padding-left  ↔ padding-right  → padding-inline-start
+ *   useActionsBaseStyles              margin-left   ↔ margin-right   → margin-inline-start
+ *   useAsideBaseStyles                margin-left   ↔ margin-right   → margin-inline-start
+ * The remaining resets compile with a `null` rtl class.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
+ * spacing utility. Bare `0` literals inside a `padding` shorthand stay literal `0` (zero
+ * has nothing for `--base-scale` to scale — same call InfoButton.module.css documents).
+ * `spacingHorizontalXXL` appears inside a `calc()`, where no utility can reach, so it is
+ * written as the token's canonical `24px * var(--base-scale)` — raw
+ * `var(--spacingHorizontalXXL)` is forbidden because it is the one form that would not
+ * scale with the rest.
+ *
+ * Pixel literals (32/24 px min-height, 24px min-width) stay pixel literals and ride
+ * `--base-scale` through the numeric utilities (`min-h-32`, `min-h-24`, `min-w-24`).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TreeItemLayout/useTreeItemLayoutStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseStyles (makeResetStyles) — root arg #2 */
+  .root {
+    @apply box-border flex min-h-32 items-center;
+
+    /* inert on TreeItem's flex root; reproduced verbatim from the compiled reset */
+    grid-area: layout;
+
+    @variant hover {
+      color: var(--colorNeutralForeground2Hover);
+      background-color: var(--colorSubtleBackgroundHover);
+
+      & .expandIcon {
+        color: var(--colorNeutralForeground3Hover);
+      }
+    }
+
+    @variant active {
+      color: var(--colorNeutralForeground2Pressed);
+      background-color: var(--colorSubtleBackgroundPressed);
+
+      & .expandIcon {
+        color: var(--colorNeutralForeground3Pressed);
+      }
+    }
+  }
+
+  /* from useMainBaseStyles (makeResetStyles) — main arg #2 */
+  .main {
+    /* `padding: 0 var(--spacingHorizontalXXS)` expanded to longhands (cookbook §2) */
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @apply ps-horizontal-xxs pe-horizontal-xxs;
+  }
+
+  /* from useExpandIconBaseStyles (makeResetStyles) — expandIcon arg #2 */
+  .expandIcon {
+    @apply box-border flex min-w-24 items-center justify-center;
+
+    color: var(--colorNeutralForeground3);
+
+    /* literal, not `flex-none`: that utility compiles to `flex: none`, the compiled
+       Griffel reset is `flex: 0 0 auto`. Same computed value, fewer questions. */
+    flex: 0 0 auto;
+
+    /* `padding: var(--spacingVerticalXS) 0` expanded to longhands (cookbook §2) */
+    @apply pt-vertical-xs pb-vertical-xs;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* from useIconBaseStyles (makeResetStyles) — shared by iconBefore arg #2 and
+     iconAfter arg #2 (one Griffel reset class, one module class) */
+  .icon {
+    @apply flex items-center;
+
+    color: var(--colorNeutralForeground2);
+    line-height: var(--lineHeightBase500);
+    font-size: var(--fontSizeBase500);
+  }
+
+  /* from useActionsBaseStyles (makeResetStyles) — actions arg #2 */
+  .actions {
+    @apply relative ms-auto flex;
+
+    z-index: 1;
+    grid-area: aside;
+
+    /* `padding: 0 var(--spacingHorizontalS)` expanded to longhands (cookbook §2) */
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @apply ps-horizontal-s pe-horizontal-s;
+  }
+
+  /* from useAsideBaseStyles (makeResetStyles) — aside arg #2 */
+  .aside {
+    @apply ms-auto flex items-center gap-horizontal-xs;
+
+    z-index: 0;
+    grid-area: aside;
+
+    /* `padding: 0 var(--spacingHorizontalM)` expanded to longhands (cookbook §2) */
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @apply ps-horizontal-m pe-horizontal-m;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles[appearance] — root arg #3.
+   *
+   * `subtle` is `{}` in the Griffel source ("no shared colors between appearances"), so
+   * it gets no block: `styles['subtle']` is then `undefined` and clsx drops it, matching
+   * the empty class string Griffel produces today.
+   *
+   * Appearance stays a module CLASS rather than a `data-appearance` attribute: no shared
+   * `@custom-variant` exists for these three values and none may be added from a
+   * component package, which is the same line react-badge and react-button drew
+   * (`styles[appearance]`, `styles[shape]`) while `size` — which DOES have catalog
+   * variants — rides a data attribute below.
+   */
+  .subtle-alpha {
+    @variant hover {
+      background-color: var(--colorSubtleBackgroundLightAlphaHover);
+    }
+
+    @variant active {
+      background-color: var(--colorSubtleBackgroundLightAlphaPressed);
+    }
+  }
+
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+    }
+
+    @variant active {
+      background-color: var(--colorTransparentBackgroundPressed);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles[size] — root arg #4. `size` comes from TreeContext (default
+   * `medium`), not from a TreeItemLayout prop, and is stamped on the ROOT as `data-size`
+   * so the same attribute also drives the icon slices below (the react-button /
+   * react-switch pattern: one stamp, descendant rules).
+   *
+   * Both branches re-state `font-family` and `font-weight` because both Griffel slices
+   * spread a full `typographyStyles.*` object (body1 / caption1).
+   */
+  .root {
+    @variant size-medium {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+    }
+
+    @variant size-small {
+      @apply min-h-24;
+
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles[itemType] — root arg #5. `itemType` comes from TreeItemContext
+   * (default `leaf`); like `appearance` it has no catalog variant, so it is a module
+   * class.
+   *
+   * `--fluent-TreeItem--level` is set by TreeItem's own module (`.level1` … `.level10`)
+   * or by its inline-style fallback for levels > 10; the `, 1` fallback here reproduces
+   * the compiled atomic for a layout rendered outside a TreeItem.
+   *
+   * The 24px term is `spacingHorizontalXXL` written as a base-scale literal: no utility
+   * can express a term inside `calc()`, and the raw token `var()` would be the one length
+   * here that does not scale (D4 amendment).
+   */
+  .leaf {
+    padding-inline-start: calc(var(--fluent-TreeItem--level, 1) * 24px * var(--base-scale));
+  }
+
+  .branch {
+    padding-inline-start: calc((var(--fluent-TreeItem--level, 1) - 1) * 24px * var(--base-scale));
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useIconBeforeStyles[size] (iconBefore arg #3) and useIconAfterStyles[size]
+   * (iconAfter arg #3). Both read the root's `data-size`; neither collides with anything
+   * in the root blocks above, so their position within l1 is free — they are grouped last
+   * to keep the root's three-slice sequence readable.
+   *
+   * The compiled atomics are [ltr, rtl] property flips (`padding-right`/`padding-left`
+   * for iconBefore, the mirror for iconAfter), so both become logical properties.
+   */
+  .root {
+    @variant size-medium {
+      & .iconBefore {
+        @apply pe-horizontal-xs;
+      }
+
+      & .iconAfter {
+        @apply ps-horizontal-xs;
+      }
+    }
+
+    @variant size-small {
+      & .iconBefore {
+        @apply pe-horizontal-xxs;
+      }
+
+      & .iconAfter {
+        @apply ps-horizontal-xxs;
+      }
+    }
+  }
+}

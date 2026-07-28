@@ -1,0 +1,52 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useFlatTreeStyles_unstable.
+ *
+ * `root` slot
+ *   1 flatTreeClassNames.root              → static class (JS)
+ *   2 useBaseStyles       (makeReset)      → fui.base           .root
+ *   3 consumer className                   → unlayered (always wins)
+ *
+ * FlatTree has no `makeStyles` slices at all, so `fui.components.l1` is unused; it styles
+ * only its own `<div role="tree">`, so `fui.components.l2` is unused too.
+ *
+ * ── Deliberately NOT shared with Tree.module.css ────────────────────────────────────
+ * The reset body is byte-identical to Tree's (Griffel deduped them onto the same hash,
+ * `__resetStyles("rnv2ez3", null, …)` in BOTH compiled files). It is duplicated here
+ * rather than imported because a CSS module's class map is per-file: sharing would make
+ * the two components emit the same generated class name and couple their cascade
+ * positions, and the aggregated `dist/styles.css` de-duplicates identical declarations
+ * at build time anyway.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Compiled with a `null` rtl class — nothing to flip.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * `row-gap` was read from `tokens.spacingVerticalXXS` → the named `gap-y-vertical-xxs`
+ * utility. Raw `var(--spacingVerticalXXS)` is forbidden in modules: it is the one
+ * authoring form that does not ride `--base-scale`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/FlatTree/useFlatTreeStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useBaseStyles (makeResetStyles) — root arg #2 */
+  .root {
+    /* `row-gap` is the block axis → the vertical spacing token's `gap-y-*` utility */
+    @apply flex flex-col gap-y-vertical-xxs;
+  }
+}

@@ -1,0 +1,185 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTreeItemStyles_unstable.
+ *
+ * `root` slot
+ *   1 treeItemClassNames.root                → static class (JS)
+ *   2 useBaseStyles       (makeReset)        → fui.base           .root   — EXCEPT the
+ *                                              createCustomFocusIndicatorStyle rules,
+ *                                              which go to fui.components.l2 (altitude,
+ *                                              below)
+ *   3 useStyles[`level${level}`] (1…10)      → fui.components.l1  .level1 … .level10
+ *   4 consumer className                     → unlayered (always wins)
+ *
+ * ── ALTITUDE: the focus indicator is l2, not fui.base (DECISIONS.md D2 amendment 2) ──
+ * `createCustomFocusIndicatorStyle`'s `customizeSelector` retargets the rule from the
+ * TreeItem root onto its LAYOUT CHILD:
+ *
+ *   .r15xhw3a[data-fui-focus-visible] > .fui-TreeItemLayout,
+ *   .r15xhw3a[data-fui-focus-visible] > .fui-TreeItemPersonaLayout { … }
+ *
+ * Those two elements' base rules come from `useTreeItemLayoutStyles_unstable` /
+ * `useTreeItemPersonaLayoutStyles_unstable` — a DIFFERENT component's hook, both now
+ * converted — so the rules belong at `fui.components.l2`. In `fui.base` (or l1) the
+ * winner between TreeItem and the layout components would be decided by stylesheet load
+ * order; l2 over l1 makes it deterministic. Nothing collides on a property today
+ * (neither layout module sets `border-radius` or any `outline-*`), so this is structural
+ * rather than a bug fix — but it is exactly the seam D2 amendment 2 exists for.
+ *
+ * The `:focus` / `:focus-visible` `outline-style: none` pair stays in `fui.base`: those
+ * sit on the root itself, outside `customizeSelector`'s reach, and only undo the browser
+ * default.
+ *
+ * Both layout classes are the OTHER components' static `fui-*` names, so they are written
+ * `:global(…)` (cookbook §2). They are NOT unlayered: D2 amendment 5 applies only when
+ * the styled element is owned by an EXTERNAL or still-Griffel package, and both layouts
+ * convert in this same batch. Grepped for `fui-Icon-filled` / `fui-Icon-regular` across
+ * the package — no hits: `TreeItemChevron` renders a plain `ChevronRight12Regular`, not a
+ * `bundleIcon()` pair, and rotates it with an inline `style`, so there is no icon-swap
+ * contention anywhere in react-tree.
+ *
+ * ── `level` stays a module CLASS, not a data attribute ──────────────────────────────
+ * Griffel emitted ten single-declaration atomics whose only content is the indentation
+ * custom property, and the hook keeps the `level > 10` inline-`style` fallback that
+ * `TreeItem.test.tsx` asserts on (levels ≤ 10 must have NO inline
+ * `--fluent-TreeItem--level`). Ten `.levelN` blocks reproduce that 1:1 with no invented
+ * attribute and no DOM change; the cookbook's numeric-scale rule (`data-size='16'`-style
+ * in-module attribute selectors) is about scales that also need a shared VARIANT, which
+ * this one does not.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The reset compiles as an [ltr, rtl] pair (`r15xhw3a` / `r2f6k57`) differing in exactly
+ * one declaration — `padding-right` vs `padding-left` — i.e. a pure PROPERTY flip, so it
+ * becomes `padding-inline-end`. The level atomics and the focus indicator carry no flip.
+ *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * The single spacing value was read from `tokens.spacingHorizontalNone` → the named
+ * `pe-horizontal-none` utility (a token read, unlike a bare `0` literal, which stays
+ * literal — see InfoButton.module.css). The focus ring's `2px` is react-tabster's own
+ * FIXME and is reproduced verbatim, NOT "fixed" to a stroke width (DECISIONS.md D6).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/TreeItem/useTreeItemStyles.styles.js.
+ */
+
+@layer fui.base {
+  /*
+   * from useBaseStyles (makeResetStyles) — root arg #2, minus the
+   * createCustomFocusIndicatorStyle rules (see the ALTITUDE note above).
+   */
+  .root {
+    @apply relative box-border flex cursor-pointer flex-col pe-horizontal-none;
+
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+
+    /* createCustomFocusIndicatorStyle draws its own ring, so the browser default is
+       removed here. Both rules are reproduced even though `:focus-visible` is a strict
+       subset of `:focus` — the compiled sheet emits both. */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.level1 … level10 — root arg #3. Each slice sets nothing but the
+   * indentation custom property that TreeItemLayout / TreeItemPersonaLayout read in their
+   * `leaf` / `branch` padding. Levels > 10 are handled by the hook's inline-style
+   * fallback instead, so no eleventh block exists.
+   */
+  .level1 {
+    --fluent-TreeItem--level: 1;
+  }
+
+  .level2 {
+    --fluent-TreeItem--level: 2;
+  }
+
+  .level3 {
+    --fluent-TreeItem--level: 3;
+  }
+
+  .level4 {
+    --fluent-TreeItem--level: 4;
+  }
+
+  .level5 {
+    --fluent-TreeItem--level: 5;
+  }
+
+  .level6 {
+    --fluent-TreeItem--level: 6;
+  }
+
+  .level7 {
+    --fluent-TreeItem--level: 7;
+  }
+
+  .level8 {
+    --fluent-TreeItem--level: 8;
+  }
+
+  .level9 {
+    --fluent-TreeItem--level: 9;
+  }
+
+  .level10 {
+    --fluent-TreeItem--level: 10;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useBaseStyles' createCustomFocusIndicatorStyle({ borderRadius, outlineColor,
+   * outlineRadius, outlineWidth, outlineStyle }, { customizeSelector }) — still root
+   * arg #2, hoisted out of fui.base because its subject elements belong to
+   * TreeItemLayout / TreeItemPersonaLayout (see the ALTITUDE note in the file header).
+   *
+   * The shared `fui-focus-outline` / `fui-focus-ring` utilities are deliberately NOT
+   * used: both model the DEFAULT indicator shapes (a `::after` pseudo-element and the
+   * border+box-shadow Button ring). This call site asks for neither — it paints a real
+   * `outline` on a CHILD element — so the five declarations are authored directly, which
+   * is the "selector stays authorable" case react-tailwind-theme/css/utilities.css calls
+   * out for `customizeSelector`.
+   */
+  .root {
+    @variant focus-visible-fui {
+      & > :global(.fui-TreeItemLayout),
+      & > :global(.fui-TreeItemPersonaLayout) {
+        border-radius: var(--borderRadiusMedium);
+        outline-color: var(--colorStrokeFocus2);
+
+        /* `outline-radius` is not a real CSS property — react-tabster passes its
+           `outlineRadius` option straight through and Griffel compiles it verbatim
+           (see the compiled atomic). It has never had any effect; it is reproduced
+           rather than silently dropped so this block stays a byte-for-byte mirror of
+           the AOT output, and its removal belongs to the Phase 3 tabster cleanup. */
+        outline-radius: var(--borderRadiusMedium);
+
+        /* react-tabster's own FIXME ("tokens.strokeWidthThick causes some weird bugs") —
+           reproduced verbatim, not "fixed" to a stroke width (DECISIONS.md D6). */
+        outline-width: 2px;
+        outline-style: solid;
+      }
+    }
+  }
+}

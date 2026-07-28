@@ -4,6 +4,7 @@ exports[`TreeItemLayout renders a default state 1`] = `
 <div>
   <div
     class="fui-TreeItemLayout"
+    data-size="medium"
   >
     <div
       class="fui-TreeItemLayout__main"

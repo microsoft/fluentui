@@ -4,6 +4,7 @@ exports[`TreeItemPersonaLayout renders a default state 1`] = `
 <div>
   <div
     class="fui-TreeItemPersonaLayout"
+    data-size="medium"
   >
     <div
       class="fui-TreeItemPersonaLayout__media"
