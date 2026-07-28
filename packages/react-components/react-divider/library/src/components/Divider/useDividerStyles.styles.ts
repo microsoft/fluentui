@@ -50,11 +50,20 @@ export const useDividerStyles_unstable = (state: DividerState): DividerState => 
   root['data-inset'] = inset || undefined;
   root['data-empty'] = isEmpty || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this Divider's state, because `styles.root` is hashed and unaddressable
+  // from outside this file. Divider needs no state mirrors: `data-orientation`,
+  // `data-align-content`, `data-inset` and `data-empty` are already stamped on this very
+  // element above, so `@variant group-vertical/fui-divider`, `group-inset/fui-divider` etc.
+  // work as-is (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Divider.module.css,
   // not by the order of these arguments — see that file's header for the mapping back
   // to the mergeClasses() argument order this replaces.
   state.root.className = clsx(
+    'group/fui-divider',
     dividerClassNames.root,
     styles.root,
     appearance && styles[appearance],
