@@ -27,6 +27,13 @@ export interface TestOptions {
     /** Prefix for the classname, if not `fui-` */
     prefix?: string;
   };
+  'has-group-marker'?: {
+    /**
+     * The Tailwind named-group marker the component's outermost slot is expected to stamp,
+     * if not `group/fui-<displayName in lowercase-kebab>` (DECISIONS.md D15.1).
+     */
+    marker?: string;
+  };
 }
 
 export interface IsConformantOptions<TProps = {}> {
