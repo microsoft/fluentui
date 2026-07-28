@@ -24,44 +24,44 @@
  * root slot
  *   1 personaClassNames.root                             → static class (JS)
  *   2 useRootClassName (makeResetStyles)                 → fui.base            `.root`
- *   3 alignBeforeAfterCenter && useStyles.beforeAfterCenter → fui.components.l1 `.beforeAfterCenter`
+ *   3 alignBeforeAfterCenter && useStyles.beforeAfterCenter → fui.components.l1 `.before-after-center`
  *   4 useStyles[textPosition]                            → fui.components.l1   `.root` @variant text-position-*
  *   5 consumer className                                 → unlayered (always wins)
  *
  * avatar slot (l2 — over Avatar's own hook output)
  *   1 personaClassNames.avatar                           → static class (JS)
  *   2 textPosition !== 'below' && useStyles.media        → l2 `.media`
- *   3 alignBeforeAfterCenter && useStyles.mediaBeforeAfterCenter → l2 `.mediaBeforeAfterCenter`
+ *   3 alignBeforeAfterCenter && useStyles.mediaBeforeAfterCenter → l2 `.media-before-after-center`
  *   4 useStyles[textAlignment]                           → l2 `.start` / `.center`
  *   5 useAvatarSpacingStyles[size]                       → HOISTED to the root, see below
- *   6 useAvatarSpacingStyles[textPosition]               → l2 `.spacingAfter/Below/Before`
+ *   6 useAvatarSpacingStyles[textPosition]               → l2 `.spacing-after/-below/-before`
  *   7 consumer className                                 → unlayered
  *
  * presence slot (l2 — over PresenceBadge's own hook output)
  *   1 personaClassNames.presence                         → static class (JS)
  *   2–4 as avatar
- *   5 usePresenceSpacingStyles[size]                     → root hoist + l2 `.presenceSpacingSNudge`
- *   6 usePresenceSpacingStyles[textPosition]             → l2 `.spacingAfter/Below/Before`
+ *   5 usePresenceSpacingStyles[size]                     → root hoist + l2 `.presence-spacing-s-nudge`
+ *   6 usePresenceSpacingStyles[textPosition]             → l2 `.spacing-after/-below/-before`
  *   7 textPosition === 'after'  && alignToPrimary && useStyles.afterAlignToPrimary
- *                                                        → l2 `.presenceAfterAlignToPrimary`
+ *                                                        → l2 `.presence-after-align-to-primary`
  *   8 textPosition === 'before' && alignToPrimary && useStyles.beforeAlignToPrimary
- *                                                        → l2 `.presenceBeforeAlignToPrimary`
+ *                                                        → l2 `.presence-before-align-to-primary`
  *   9 consumer className                                 → unlayered
  *
  * primaryText slot
  *   1 personaClassNames.primaryText                      → static class (JS)
  *   2 alignBeforeAfterCenter && useStyles.primary        → fui.components.l1 `.primary`
  *   3 primaryTextClassName = usePrimaryTextBaseClassName (makeResetStyles → fui.base
- *     `.primaryTextBase`) + useTextStyles.caption1|.subtitle2 (l1) +
- *     useTextStyles.before|afterAlignToPrimary (l1 `.textBefore|AfterAlignToPrimary`)
+ *     `.primary-text-base`) + useTextStyles.caption1|.subtitle2 (l1) +
+ *     useTextStyles.before|afterAlignToPrimary (l1 `.text-before-/after-align-to-primary`)
  *   4 consumer className                                 → unlayered
  *
  * secondaryText slot
  *   1 personaClassNames.secondaryText                    → static class (JS)
  *   2 alignBeforeAfterCenter && useStyles.secondary      → l1 `.secondary`
  *   3 optionalTextClassName = useOptionalTextBaseClassName (makeResetStyles → fui.base
- *     `.optionalTextBase`) + useTextStyles.body1 (l1) + alignToPrimary (l1)
- *   4 useStyles.secondLineSpacing                        → l1 `.secondLineSpacing`
+ *     `.optional-text-base`) + useTextStyles.body1 (l1) + alignToPrimary (l1)
+ *   4 useStyles.secondLineSpacing                        → l1 `.second-line-spacing`
  *   5 consumer className                                 → unlayered
  *
  * tertiaryText / quaternaryText slots — as secondaryText without arg 4.
@@ -72,14 +72,14 @@
  *   • root reset (`justify-items`, `grid-template-columns`, `grid-auto-flow`) loses to the
  *     `before`/`below` slices — reset bucket `r` loses to bucket `d` in Griffel, and
  *     `fui.base` loses to `fui.components.l1` here.
- *   • `.media` (`grid-row-start: span 5`) loses to `.mediaBeforeAfterCenter` (`span 6`) and
- *     both lose to `.presence*AlignToPrimary` (`unset`) — argument order == file order.
- *   • `.start`/`.center` (`align-self`) lose to `.presence*AlignToPrimary`
+ *   • `.media` (`grid-row-start: span 5`) loses to `.media-before-after-center` (`span 6`) and
+ *     both lose to `.presence-*-align-to-primary` (`unset`) — argument order == file order.
+ *   • `.start`/`.center` (`align-self`) lose to `.presence-*-align-to-primary`
  *     (`align-self: center`) — argument order == file order.
  *   • the two text resets carry body1/caption1 typography and lose to the l1 typography
  *     slices (`.caption1`/`.subtitle2`/`.body1`) — same base-vs-level relationship.
- * `.beforeAfterCenter` (grid-template-rows) is disjoint from the textPosition slices, and
- * `.secondLineSpacing` (margin-top) is disjoint from everything on its slot; both are
+ * `.before-after-center` (grid-template-rows) is disjoint from the textPosition slices, and
+ * `.second-line-spacing` (margin-top) is disjoint from everything on its slot; both are
  * nevertheless written in argument order.
  *
  * RTL: the compiled output contains exactly two `[ltr, rtl]` pairs — `margin-right` ↔
@@ -104,7 +104,7 @@
 
   /* from usePrimaryTextBaseClassName (makeResetStyles) — compiled `.rvj41k9`,
      `...typographyStyles.body1` expanded to the four longhands it compiles to */
-  .primaryTextBase {
+  .primary-text-base {
     @apply block;
 
     color: var(--colorNeutralForeground1);
@@ -116,7 +116,7 @@
 
   /* from useOptionalTextBaseClassName (makeResetStyles) — compiled `.rp1pf9e`,
      `...typographyStyles.caption1` expanded */
-  .optionalTextBase {
+  .optional-text-base {
     @apply block;
 
     color: var(--colorNeutralForeground2);
@@ -132,7 +132,7 @@
    * from useStyles.beforeAfterCenter (root arg 3) — the named-line template that keeps the
    * coin centred when it is taller than the stack of text lines.
    */
-  .beforeAfterCenter {
+  .before-after-center {
     grid-template-rows: 1fr [primary] max-content [secondary] max-content [tertiary] max-content [quaternary] max-content 1fr;
   }
 
@@ -208,7 +208,7 @@
 
   /*
    * from useStyles.primary/.secondary/.tertiary/.quaternary (text slots arg 2) — the named
-   * rows of `.beforeAfterCenter`'s template. Only applied when that template is active.
+   * rows of `.before-after-center`'s template. Only applied when that template is active.
    */
   .primary {
     grid-row-start: primary;
@@ -252,13 +252,13 @@
   /*
    * from useTextStyles.beforeAlignToPrimary/.afterAlignToPrimary — the text half of the
    * `alignToPrimary` pair. Prefixed `text` because useStyles carries two same-named slices
-   * for the presence slot with the OPPOSITE grid edge (see `.presence*AlignToPrimary`).
+   * for the presence slot with the OPPOSITE grid edge (see `.presence-*-align-to-primary`).
    */
-  .textBeforeAlignToPrimary {
+  .text-before-align-to-primary {
     grid-column-end: middle;
   }
 
-  .textAfterAlignToPrimary {
+  .text-after-align-to-primary {
     grid-column-start: middle;
   }
 
@@ -266,7 +266,7 @@
      a block-direction margin Griffel did not flip. The -2px literal matches the XXS spacing
      step, so it takes the named vertical utility (block axis) rather than numeric `-mt-2`;
      both compile to `calc(2px * var(--base-scale)) * -1`. */
-  .secondLineSpacing {
+  .second-line-spacing {
     @apply -mt-vertical-xxs;
   }
 }
@@ -287,7 +287,7 @@
 
   /* from useStyles.mediaBeforeAfterCenter (arg 3) — one more row for the centring template.
      Must beat `.media` above; argument order == file order. */
-  .mediaBeforeAfterCenter {
+  .media-before-after-center {
     grid-row-start: span 6;
   }
 
@@ -311,7 +311,7 @@
    * Literal `calc()` form for the same reason as the size block above — custom properties
    * have no spacing utility.
    */
-  .presenceSpacingSNudge {
+  .presence-spacing-s-nudge {
     --fui-Persona__avatar--spacing: calc(6px * var(--base-scale)); /* spacingHorizontalSNudge */
   }
 
@@ -320,15 +320,15 @@
    * the text, in whichever direction the text sits. `margin-right`/`margin-left` are the
    * component's only RTL-flipped properties, so they become logical.
    */
-  .spacingAfter {
+  .spacing-after {
     margin-inline-end: var(--fui-Persona__avatar--spacing);
   }
 
-  .spacingBelow {
+  .spacing-below {
     margin-bottom: var(--fui-Persona__avatar--spacing);
   }
 
-  .spacingBefore {
+  .spacing-before {
     margin-inline-start: var(--fui-Persona__avatar--spacing);
   }
 
@@ -338,13 +338,13 @@
    * cancels `.media`'s row span and `.start`'s `align-self`. Written last inside l2 for
    * exactly that reason.
    */
-  .presenceAfterAlignToPrimary {
+  .presence-after-align-to-primary {
     align-self: center;
     grid-row-start: unset;
     grid-column-end: middle;
   }
 
-  .presenceBeforeAlignToPrimary {
+  .presence-before-align-to-primary {
     align-self: center;
     grid-row-start: unset;
     grid-column-start: middle;

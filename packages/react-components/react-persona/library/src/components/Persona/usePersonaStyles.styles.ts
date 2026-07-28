@@ -59,14 +59,14 @@ type PersonaRootDataAttributes = {
  * `{ ...avatarSpacingStyles, ...usePresenceSpacingStyles() }`.
  */
 const avatarSpacingStyles: Record<string, string | undefined> = {
-  after: styles.spacingAfter,
-  below: styles.spacingBelow,
-  before: styles.spacingBefore,
+  after: styles['spacing-after'],
+  below: styles['spacing-below'],
+  before: styles['spacing-before'],
 };
 
 const presenceSpacingStyles: Record<string, string | undefined> = {
   ...avatarSpacingStyles,
-  small: styles.presenceSpacingSNudge,
+  small: styles['presence-spacing-s-nudge'],
 };
 
 /**
@@ -84,15 +84,27 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   root['data-size'] = size;
   root['data-text-position'] = textPosition;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Persona's state, because `styles.root` is hashed and unaddressable from
+  // outside this file (DECISIONS.md D15).
+  //
+  // It matters more here than for most components: Persona's `avatar` and `presence` slots
+  // ARE other components' roots (an `<Avatar>`, a `<PresenceBadge>`), so `group/fui-persona`
+  // is exactly the handle a future Avatar or Badge module would need to react to Persona's
+  // `data-size` / `data-text-position` — the pair this hook already stamps on this element,
+  // which is why no state mirror is required (D15.6, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Persona.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, and for why the avatar/presence rules sit
   // in `fui.components.l2`.
   state.root.className = clsx(
+    'group/fui-persona',
     personaClassNames.root,
     styles.root,
-    alignBeforeAfterCenter && styles.beforeAfterCenter,
+    alignBeforeAfterCenter && styles['before-after-center'],
     state.root.className,
   );
 
@@ -100,7 +112,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
     state.avatar.className = clsx(
       personaClassNames.avatar,
       textPosition !== 'below' && styles.media,
-      alignBeforeAfterCenter && styles.mediaBeforeAfterCenter,
+      alignBeforeAfterCenter && styles['media-before-after-center'],
       styles[textAlignment],
       avatarSpacingStyles[textPosition],
       state.avatar.className,
@@ -111,12 +123,12 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
     state.presence.className = clsx(
       personaClassNames.presence,
       textPosition !== 'below' && styles.media,
-      alignBeforeAfterCenter && styles.mediaBeforeAfterCenter,
+      alignBeforeAfterCenter && styles['media-before-after-center'],
       styles[textAlignment],
       presenceSpacingStyles[size],
       presenceSpacingStyles[textPosition],
-      textPosition === 'after' && alignToPrimary && styles.presenceAfterAlignToPrimary,
-      textPosition === 'before' && alignToPrimary && styles.presenceBeforeAlignToPrimary,
+      textPosition === 'after' && alignToPrimary && styles['presence-after-align-to-primary'],
+      textPosition === 'before' && alignToPrimary && styles['presence-before-align-to-primary'],
       state.presence.className,
     );
   }
@@ -135,7 +147,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
       personaClassNames.secondaryText,
       alignBeforeAfterCenter && styles.secondary,
       optionalTextClassName,
-      styles.secondLineSpacing,
+      styles['second-line-spacing'],
       state.secondaryText.className,
     );
   }
@@ -191,9 +203,9 @@ const getTextClassNames = (
 
     if (alignToPrimary) {
       if (textPosition === 'before') {
-        alignToPrimaryClassName = styles.textBeforeAlignToPrimary;
+        alignToPrimaryClassName = styles['text-before-align-to-primary'];
       } else if (textPosition === 'after') {
-        alignToPrimaryClassName = styles.textAfterAlignToPrimary;
+        alignToPrimaryClassName = styles['text-after-align-to-primary'];
       }
     }
   } else {
@@ -205,9 +217,9 @@ const getTextClassNames = (
   }
 
   return {
-    primaryTextClassName: clsx(styles.primaryTextBase, primaryTextSize, alignToPrimaryClassName),
+    primaryTextClassName: clsx(styles['primary-text-base'], primaryTextSize, alignToPrimaryClassName),
     optionalTextClassName: clsx(
-      styles.optionalTextBase,
+      styles['optional-text-base'],
       !presenceOnly && size === 'huge' && styles.body1,
       alignToPrimaryClassName,
     ),
