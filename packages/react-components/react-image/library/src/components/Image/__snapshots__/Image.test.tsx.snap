@@ -4,7 +4,7 @@ exports[`Image renders a default state 1`] = `
 <div>
   <img
     alt="Non-existent image"
-    class="group/fui-image fui-Image"
+    class="fui-Image group/fui-image"
     src="image.png"
   />
 </div>
