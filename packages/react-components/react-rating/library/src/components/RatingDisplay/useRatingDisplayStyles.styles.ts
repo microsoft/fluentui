@@ -53,11 +53,23 @@ export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): Rati
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this RatingDisplay's state, because `styles.root` is hashed and
+  // unaddressable from outside this file. `data-size` is already stamped on this very
+  // element above, so `@variant group-size-large/fui-rating-display { … }` works as-is
+  // (DECISIONS.md D15, Tier 0 — no state mirrors needed).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in RatingDisplay.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(ratingDisplayClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(
+    'group/fui-rating-display',
+    ratingDisplayClassNames.root,
+    styles.root,
+    state.root.className,
+  );
 
   if (state.valueText) {
     state.valueText.className = clsx(

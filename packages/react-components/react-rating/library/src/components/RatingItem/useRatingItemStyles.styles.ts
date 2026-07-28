@@ -53,18 +53,25 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this RatingItem's state, because `styles.root` is hashed and unaddressable
+  // from outside this file. `data-size` is already stamped on this very element above, so
+  // `@variant group-size-large/fui-rating-item { … }` works as-is (DECISIONS.md D15,
+  // Tier 0 — no state mirrors needed).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in RatingItem.module.css, not
   // by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why `useIndicatorStyles.filled`
   // is split across two blocks there.
-  state.root.className = clsx(ratingItemClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-rating-item', ratingItemClassNames.root, styles.root, state.root.className);
 
   if (state.halfValueInput) {
     state.halfValueInput.className = clsx(
       ratingItemClassNames.halfValueInput,
       styles.input,
-      styles.inputLowerHalf,
+      styles['input-lower-half'],
       state.halfValueInput.className,
     );
   }
@@ -73,7 +80,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.fullValueInput.className = clsx(
       ratingItemClassNames.fullValueInput,
       styles.input,
-      state.halfValueInput && styles.inputUpperHalf,
+      state.halfValueInput && styles['input-upper-half'],
       state.fullValueInput.className,
     );
   }
@@ -83,9 +90,9 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       ratingItemClassNames.unselectedIcon,
       styles.icon,
       appearance === 'filled' && styles.filled,
-      color === 'brand' && (appearance === 'filled' ? styles.brandFilled : styles.brand),
-      color === 'marigold' && (appearance === 'filled' ? styles.marigoldFilled : styles.marigold),
-      iconFillWidth === 0.5 && styles.iconUpperHalf,
+      color === 'brand' && (appearance === 'filled' ? styles['brand-filled'] : styles.brand),
+      color === 'marigold' && (appearance === 'filled' ? styles['marigold-filled'] : styles.marigold),
+      iconFillWidth === 0.5 && styles['icon-upper-half'],
       state.unselectedIcon.className,
     );
   }
@@ -96,7 +103,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       styles.icon,
       color === 'brand' && styles.brand,
       color === 'marigold' && styles.marigold,
-      iconFillWidth === 0.5 && styles.iconLowerHalf,
+      iconFillWidth === 0.5 && styles['icon-lower-half'],
       state.selectedIcon.className,
     );
   }

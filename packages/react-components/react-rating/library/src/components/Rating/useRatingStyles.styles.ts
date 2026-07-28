@@ -27,11 +27,17 @@ export const ratingClassNames: SlotClassNames<RatingSlots> = {
  * Apply styling to the Rating slots based on the state
  */
 export const useRatingStyles_unstable = (state: RatingState): RatingState => {
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this Rating's state, because `styles.root` is hashed and unaddressable
+  // from outside this file. Read it as `@variant group-hover/fui-rating { … }`
+  // (DECISIONS.md D15).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Rating.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx(ratingClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-rating', ratingClassNames.root, styles.root, state.root.className);
 
   return state;
 };

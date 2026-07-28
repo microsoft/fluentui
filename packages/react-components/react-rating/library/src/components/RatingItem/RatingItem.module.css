@@ -25,13 +25,13 @@
  * `halfValueInput` slot
  *   1 ratingItemClassNames.halfValueInput                  → static class (JS)
  *   2 useInputBaseClassName     (makeReset)                → fui.base           .input
- *   3 useInputStyles.lowerHalf                             → fui.components.l1  .inputLowerHalf
+ *   3 useInputStyles.lowerHalf                             → fui.components.l1  .input-lower-half
  *   4 consumer className                                   → unlayered
  *
  * `fullValueInput` slot
  *   1 ratingItemClassNames.fullValueInput                  → static class (JS)
  *   2 useInputBaseClassName     (makeReset)                → fui.base           .input
- *   3 useInputStyles.upperHalf  (halfValueInput rendered)  → fui.components.l1  .inputUpperHalf
+ *   3 useInputStyles.upperHalf  (halfValueInput rendered)  → fui.components.l1  .input-upper-half
  *   4 consumer className                                   → unlayered
  *
  * `unselectedIcon` slot
@@ -40,7 +40,7 @@
  *   3 useIndicatorStyles.filled       (appearance)         → fui.components.l1  .filled
  *   4 useIndicatorStyles.brand|brandFilled       (color)   → fui.components.l1
  *   5 useIndicatorStyles.marigold|marigoldFilled (color)   → fui.components.l1
- *   6 useIndicatorStyles.upperHalf (iconFillWidth === 0.5) → fui.components.l1  .iconUpperHalf
+ *   6 useIndicatorStyles.upperHalf (iconFillWidth === 0.5) → fui.components.l1  .icon-upper-half
  *   7 consumer className                                   → unlayered
  *
  * `selectedIcon` slot
@@ -48,7 +48,7 @@
  *   2 useIndicatorBaseClassName (makeReset)                → fui.base           .icon
  *   3 useIndicatorStyles.brand    (color === 'brand')      → fui.components.l1
  *   4 useIndicatorStyles.marigold (color === 'marigold')   → fui.components.l1
- *   5 useIndicatorStyles.lowerHalf (iconFillWidth === 0.5) → fui.components.l1  .iconLowerHalf
+ *   5 useIndicatorStyles.lowerHalf (iconFillWidth === 0.5) → fui.components.l1  .icon-lower-half
  *   6 consumer className                                   → unlayered
  *
  * ── Altitude: everything is l1 (no l2) ──────────────────────────────────────────────
@@ -58,7 +58,7 @@
  * DECISIONS.md D2 amendment 2 does not apply and no block belongs in fui.components.l2.
  *
  * ── The `& > svg` rule and D2 amendment 5 ───────────────────────────────────────────
- * `.iconLowerHalf > svg` is the one selector in this package whose SUBJECT element is
+ * `.icon-lower-half > svg` is the one selector in this package whose SUBJECT element is
  * owned by another package: the glyph inside the icon slot is
  * `@fluentui/react-icons`' `<svg>` (the `iconFilled` / `iconOutline` context elements).
  * It stays LAYERED, because the amendment's failure mode needs an unlayered Griffel
@@ -74,7 +74,7 @@
  *
  * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
  * • `.filled` sets `color: var(--colorNeutralBackground6)` and must LOSE to
- *   `.brandFilled` / `.marigoldFilled` (unselectedIcon args #4/#5), so its block is
+ *   `.brand-filled` / `.marigold-filled` (unselectedIcon args #4/#5), so its block is
  *   written first.
  * • …but `.filled`'s forced-colors declarations must WIN over those same two. Griffel
  *   put them in the `m` bucket, and `styleBucketOrdering`
@@ -87,8 +87,8 @@
  *   declarations and re-stated after the colour blocks. Collapsing the two halves back
  *   into one block would paint a brand/marigold RatingDisplay's unselected stars with
  *   their brand colour in High Contrast instead of `Canvas`.
- * • Everything else is conflict-free: `.inputLowerHalf`/`.inputUpperHalf` and
- *   `.iconLowerHalf`/`.iconUpperHalf` are mutually exclusive per element, and the
+ * • Everything else is conflict-free: `.input-lower-half`/`.input-upper-half` and
+ *   `.icon-lower-half`/`.icon-upper-half` are mutually exclusive per element, and the
  *   `data-size` blocks touch only font-size/width/height.
  *
  * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
@@ -222,7 +222,7 @@
    * from useInputStyles.lowerHalf — halfValueInput arg #3. Clips the half-star input to
    * the leading half of the item.
    */
-  .inputLowerHalf {
+  .input-lower-half {
     inset-inline-end: 50%;
   }
 
@@ -231,7 +231,7 @@
    * halfValueInput is also rendered (step === 0.5); otherwise the full-value input keeps
    * the reset's full-width box.
    */
-  .inputUpperHalf {
+  .input-upper-half {
     inset-inline-start: 50%;
   }
 }
@@ -256,7 +256,7 @@
   }
 
   /* from useIndicatorStyles.brandFilled — unselectedIcon arg #4, filled branch */
-  .brandFilled {
+  .brand-filled {
     color: var(--colorBrandBackground2);
   }
 
@@ -266,13 +266,13 @@
   }
 
   /* from useIndicatorStyles.marigoldFilled — unselectedIcon arg #5, filled branch */
-  .marigoldFilled {
+  .marigold-filled {
     color: var(--colorPaletteMarigoldBackground2);
   }
 
   /*
    * from useIndicatorStyles.filled, forced-colors half — SPLIT out of the block above and
-   * restated here so it keeps beating `.brandFilled` / `.marigoldFilled`, exactly as
+   * restated here so it keeps beating `.brand-filled` / `.marigold-filled`, exactly as
    * Griffel's `m` bucket did by sorting after `d`. See the ordering note in the header.
    */
   .filled {
@@ -289,7 +289,7 @@
    * clipped to the trailing half and pulled back by its own half-width so the two halves
    * line up into one star.
    */
-  .iconUpperHalf {
+  .icon-upper-half {
     inset-inline-start: 50%;
     margin-inline-start: -50%;
   }
@@ -300,7 +300,7 @@
    * (written as the compiled longhand triple rather than `flex-none`, which emits the
    * `flex: none` keyword).
    */
-  .iconLowerHalf {
+  .icon-lower-half {
     inset-inline-end: 50%;
 
     & > svg {
