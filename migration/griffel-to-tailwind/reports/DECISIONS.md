@@ -993,3 +993,158 @@ Concretely:
 - General authoring rule: do NOT add `data-*` mirrors where a native selector
   already expresses the state at the element that needs it. Mirror only where
   the styling target (e.g. the group element) cannot reach the native state.
+
+## D16 — BEM statics removed; the group marker is the sole public identity class
+
+Executes the end-state contract recorded in D15.7. Inventory and per-edge specs:
+`reports/statics-removal-design.md`.
+
+> **Landing status.** This record is settled and complete; the sweep it governs lands in phases.
+> **Foundations A (landed):** the `component-has-group-marker` conformance test (D16.2/D16.6) and
+> the `fuiSelector()` helper (D16.5), both additive and both inert until the sweep uses them.
+> **Not yet landed:** every removal. Until a package is swept it still renders its statics, still
+> exports full `SlotClassNames`, and still leads its `clsx()` with the static class exactly as
+> D15.1/D15.7 describe. Read the composition shape in D16.2 as the shape a package has AFTER its
+> sweep, not as a licence to drop statics ahead of it.
+
+### D16.1 — What is removed
+
+All 184 `fui-X` / `fui-X__slot` strings owned by the 34 converted packages stop being rendered.
+The public styling contract is: **per-slot `className` props** (typed overrides) +
+**`group/fui-<component-kebab>` as the sole public identity class** + **`data-*` state variants**
+
+- **the `@layer fui.*` system**. There is no public class-name handle on component internals.
+
+**One exception, and it is not a BEM static.** `react-provider` keeps rendering
+`fui-FluentProvider<useId>` — the runtime class hosting the 459 `--token` custom properties. The
+bare `fui-FluentProvider` static is removed; the runtime theme class is not a slot class and is
+load-bearing for `react-portal-compat`'s v8 interop.
+
+### D16.2 — The D15.1 invariant, restated as the sweep's acceptance criterion
+
+> **Every emitted class string containing a `group/…` or `peer/…` token must have a non-marker,
+> selector-safe token at index 0.**
+
+Before this phase the static class satisfied it incidentally. It is now satisfied **explicitly**
+by the hashed CSS-Modules class, which is always present and always selector-safe. All 65
+marker-bearing `clsx()` calls read:
+
+```ts
+clsx(styles.root, 'group/fui-<kebab>', …conditional module classes…, state.root.className)
+```
+
+**Six roots had no unconditional module class** and could not satisfy this by reordering alone —
+Accordion, AccordionItem, Breadcrumb, MessageBarGroup, CounterBadge, Skeleton. Each receives an
+**empty identity-only `.root {}` local** in its module, added _before_ the statics were removed.
+The rule for all future work: a slot that would emit the marker alone gets a leading
+selector-safe token added first; the marker is never promoted to `classList[0]` on the grounds
+that it is now the only identity class. Enforced twice — by `component-has-group-marker` in
+`react-conformance` (asserts `classList[0]` does not match `/^(group|peer)\//`, on all 83 call
+sites) and by the compile-time assertion in
+`tools/workspace-plugin/…/css-modules.spec.ts`. Both are required, because the failure is a
+jsdom-only render-time throw that VR cannot see.
+
+### D16.3 — Cross-package styling: markers for roots, JS slot composition for sub-slots
+
+A rule in package A that styles an element owned by package B resolves one of two ways, and the
+choice is determined by whether A holds B's slot object:
+
+- **Root of a component A does not render** (a consumer-composed child) → select
+  `:global(.group\/fui-<b>)`. Structural pseudo-classes and `:not()` compose unchanged, and
+  specificity is preserved (class-for-class).
+- **Sub-slot of a component A renders itself** → **compose the class in JS through the wrapping
+  hook**, then read the owner's state via a `group-*` variant. This removes the coupling rather
+  than renaming it: no global handle on B's internals survives.
+
+Worked cases: `react-toolbar` ToolbarButton passes its own `icon` class into Button's slot and
+styles it with `@variant group-vertical/fui-toolbar-button`; `react-breadcrumb` BreadcrumbButton
+does the same for Button's icon; `react-list` ListItem passes an `indicator` slot override into
+the Checkbox it constructs in `useListItem.tsx`. **No package gained a `data-*` attribute to
+expose a sub-slot.** That mechanism is documented as available and was not needed.
+
+`react-spinbutton`'s internal `fui-SpinButton__button_active` — never exported — becomes
+`data-spin-active`, so that after this phase a `fui-`-prefixed class in rendered DOM means
+"public identity" without exception.
+
+### D16.4 — Specificity compounds must become marker compounds
+
+`BreadcrumbButton.module.css` compounds its own static onto its module class
+(`.root:global(.fui-BreadcrumbButton)`) inside an **unlayered** rule, to win a 0-2-0 tie against
+react-button's unlayered icon-swap rules that `@layer` cannot arbitrate. Deleting the static
+silently drops it to a tie decided by stylesheet load order. It compounds the **marker** instead
+(`.root:global(.group\/fui-breadcrumb-button)`), same 0-3-0. Gate: `\.[a-z-]+:global\(\.fui-`
+must have zero hits.
+
+### D16.5 — Export policy: constants retained, `root` re-pointed, slot keys removed
+
+The 87 `*ClassNames` exports are **kept**, their type narrowed from `SlotClassNames<XSlots>` to
+`{ root: string }`, and `root` re-pointed to the group marker.
+
+Deleting them was rejected because `fluentProviderClassNames.root` has two non-styling roles —
+the `useId` prefix that mints the theme class
+(`useFluentProviderThemeStyleTag.ts:58`) and the seed of `react-portal-compat`'s extraction regex
+(`PortalCompatProvider.tsx:10`). Deprecated stubs holding the _old strings_ were rejected as the
+worst option available: consumers keep compiling and silently select nothing, moving the breakage
+from build time into their visual regressions.
+
+Removing the slot keys is what makes the policy honest: `buttonClassNames.icon` becomes a
+TypeScript error on the exact line that would otherwise have gone quiet. `buttonClassNames.root`
+keeps selecting the right element.
+
+**Escaping is part of the contract.** `'.' + 'group/fui-button'` is an invalid _selector_ (the
+token itself is fine). `fuiSelector(identityClass)` ships alongside the constants and every
+in-repo selector site uses it. Consumers doing `` `.${x.root}` `` must adopt it — this is the one
+migration step the type system cannot force, so it leads the changelog entry.
+
+> **Implementation note (Foundations A, landed).** The helper lives in
+> `packages/react-components/react-utilities/src/utils/fuiSelector.ts` and is re-exported from
+> `@fluentui/react-utilities` and `@fluentui/react-components` — one implementation, shipped on
+> the same public surface as the constants, rather than 33 per-package copies. It escapes **every** > `/` in the token, not only the first: a marker only ever holds one, but a global replace has no
+> failure mode and a first-only replace does.
+
+### D16.6 — Conformance
+
+`component-has-static-classnames-object` is **deleted** from the default set, not disabled: its
+three sub-tests hard-code the `fui-<Component>__<slot>` format
+(`defaultTests.tsx:244–245, 265–288`) and would fail under any policy. It is re-exported as an
+opt-in `extraTests` entry, `hasStaticClassNames`, which the 19 `needs-conversion` and 11
+`special` packages take, so their coverage is preserved rather than dropped.
+`component-has-group-marker` replaces it for converted packages.
+
+`component-handles-classname` and `component-preserves-default-classname` are unaffected and get
+stronger — the defaults they protect are now `fuicm-…` + the marker.
+
+> **Implementation note (Foundations A, landed).** `component-has-group-marker` exists now, in
+> `packages/react-conformance/src/componentHasGroupMarker.tsx`, exported as
+> `componentHasGroupMarker` + `COMPONENT_HAS_GROUP_MARKER_TEST_NAME`, with the
+> `testOptions['has-group-marker'].marker` escape hatch. It is deliberately **not** in
+> `defaultTests` yet, for the same reason `classname-overrides-win` is not: while the statics are
+> still published, only converted packages stamp a marker, so a default-set entry would fail the
+> 30 unconverted packages for a contract they are not yet under. Registering it in `defaultTests`
+> and deleting `component-has-static-classnames-object` are the same one-line pair, and they land
+> together with the removal sweep. Nothing about the deletion half of this clause has happened.
+
+### D16.7 — Text presets: an accepted loss of public identity
+
+The 17 typography presets share `group/fui-text` (a `<Body1>` IS a `<Text>`), so removing
+`fui-Body1` … `fui-Title3` leaves them with **no** public identity class. Accepted, deliberately:
+presets are a shorthand for `<Text font size weight>`, they hold no state a descendant could read,
+and 17 new tokens in Tailwind's flat global group namespace would buy nothing D15.1 says a marker
+is for. This is the only place in the phase where public identity is lost rather than renamed,
+and it is recorded here so it is never mistaken for an oversight.
+
+### D16.8 — Snapshots and VR
+
+67 snapshot files change (883 tokens): 41 inside converted packages, 26 inside dependents —
+`packages/charts/react-charts` alone is 16 files / 695 tokens, all passive rendered DOM with no
+selectors. 25 further test files carry hand-written inline `class="fui-…"` assertions and are not
+`-u`-regenerable (react-text 18, react-breadcrumb 4, react-provider 2, react-tooltip 1).
+
+`scripts/jest/src/css-modules/serializer.js` is **unchanged**: it strips `fuicm-*` and preserves
+`group/fui-*` by design (D15.8). A converted snapshot after this phase reads
+`class="group/fui-divider"` — the public contract, exactly.
+
+**VR stays 34/34 at zero tolerance. Every rewritten selector is class-for-class and
+layer-for-layer identical, so any pixel diff is a bug, not a baseline** — with one named
+exception to watch: react-button's ten icon rules move from a descendant selector to a
+`group-*`-scoped one (D16.3), which is the only structural selector change in the phase.

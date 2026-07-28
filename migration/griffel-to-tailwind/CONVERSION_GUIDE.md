@@ -41,6 +41,12 @@ where the winner would be decided by stylesheet load order. `l3`–`l5` are cons
 directly into a parent layer (`fui.components`) beat all its sublayers (probe-verified) —
 library code never does this.
 
+**Record every `` [`& .${xClassNames.slot}`] `` selector in the source before you author the
+module.** Under D16 these do not survive as selectors: root-targeting ones become group markers,
+sub-slot ones become JS slot composition (§3d). Decide which each one is while you still have
+the Griffel file open — retrofitting the decision after the CSS is written means rewriting both
+the module and the hook.
+
 **Read the compiled AOT output first:** `lib-commonjs/**/*.styles.js` (build the package
 once on the pre-conversion commit if absent) contains the compiled atomics with explicit
 `[ltr, rtl]` class pairs. It turns RTL mapping from inference into a lookup and settles
@@ -258,26 +264,69 @@ state.slot.className)` — static class first, consumer className last. The
   Its removal is a committed, single Phase 3 sweep (DECISIONS D14); do NOT convert
   individual hooks to immutable returns.
 
-### 3b. Named groups (DECISIONS D15)
+### 3b. Named groups (DECISIONS D15 / D16)
 
 #### Stamp the marker
 
 The component's OUTERMOST slot gets an unhashed group marker as the SECOND `clsx` argument,
-immediately AFTER that slot's static class:
+immediately after a token that is guaranteed present and guaranteed selector-safe:
 
 ```ts
 state.root.className = clsx(
-  switchClassNames.root, // static class (conformance contract) — stays FIRST
-  'group/fui-switch', // named group marker — literal, unhashed, GLOBAL
-  styles.root, // hashed CSS-Modules class
+  styles.root, // ALWAYS first — hashed, unconditional, selector-safe (D16.2)
+  'group/fui-switch', // named group marker — literal, unhashed, GLOBAL; never index 0
+  state.checked && styles.checked, // …conditional module classes…
   state.root.className, // consumer override — always last
 );
 ```
+
+**If the root has no unconditional `styles.*`, add an empty `.root {}` local to the module
+before writing this call. Do not lead with the marker.** A conditional class is not a lead
+token — `clsx` drops it on the render where the condition is false, and that is the render that
+throws. The empty local is an identity-only class, is one line, and is the shape D16.2 mandates
+for all six roots that hit this:
+
+```css
+/* Breadcrumb.module.css */
+@layer fui.components.l1 {
+  /* Identity-only local. Breadcrumb's root has no declarations of its own; this class exists
+     so the root always emits a selector-safe leading token ahead of the group marker
+     (DECISIONS.md D15.1 / D16.2). Do not delete because it looks empty. */
+  .root {
+  }
+}
+```
+
+> **Transitional, until this package's statics are removed (D16, "Landing status").** While a
+> package still publishes its BEM statics, the static class stays the FIRST `clsx` argument and
+> the marker sits immediately after it —
+> `clsx(switchClassNames.root, 'group/fui-switch', styles.root, …, state.root.className)`. It is
+> what satisfies the index-0 invariant today, `component-has-static-classnames-object` still
+> asserts it, and the `xClassNames` objects remain untouchable API (§3). The shape above is what
+> that call becomes when the package is swept; adopt it then, not before. Either way, the
+> invariant below is the part that must hold at every point in between.
 
 **Invariant: the marker must NEVER be the first class token in the emitted string.** This is a
 hard requirement, not a style preference — see the "why" below. Argument order carries no
 cascade meaning in this system (the `@layer` order decides every tie), so position is otherwise
 free; spend that freedom on keeping the marker off index 0.
+
+Machine-checked by `component-has-group-marker` in `@fluentui/react-conformance` (asserts
+`classList[0]` does not match `/^(group|peer)\//`, plus that the slot carries exactly one
+marker and that it is the one named for the component). Opt in per component while the statics
+are still published:
+
+```ts
+import { COMPONENT_HAS_GROUP_MARKER_TEST_NAME, componentHasGroupMarker } from '@fluentui/react-conformance';
+
+isConformant({
+  Component: Divider,
+  displayName: 'Divider',
+  extraTests: { [COMPONENT_HAS_GROUP_MARKER_TEST_NAME]: componentHasGroupMarker },
+  // only when the marker is not derivable from displayName:
+  // testOptions: { 'has-group-marker': { marker: 'group/fui-tooltip' } },
+});
+```
 
 The name is `'group/fui-' + <the component's own name, lowercase-kebab>` —
 `group/fui-switch`, `group/fui-message-bar`, `group/fui-accordion-header`. Written as a
@@ -371,6 +420,91 @@ The `fuicm-` prefix is a hard contract with the jest snapshot serializer. The `g
 marker is deliberately NOT prefixed and therefore NOT stripped: it is public DOM surface and
 belongs in the snapshot beside `fui-*`.
 
+### 3d. Styling another package's element (DECISIONS D16.3)
+
+A CSS-Modules class is hashed and unaddressable from another module, and under D16 there is no
+public class-name handle on any component's internals. So when your rule needs to style an
+element another package owns, pick the mechanism by **whether your hook holds that element's
+slot object** — not by which is easier to write.
+
+| Mechanism                                        | Applies when                                                                                                            | Cost                                          |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **M1 — group marker** (`:global(.group\/fui-x)`) | the target is a **component root** rendered as a _child_ by the consumer, so your package never holds its slot object   | free; the marker already exists               |
+| **M2 — JS slot-className composition**           | the target is a **sub-slot** of a component your package **renders itself** (you own the slot object or the slot props) | one extra module class; no new public surface |
+| **M3 — owning-package data attribute**           | M2 impossible: sub-slot of a component rendered as a consumer-supplied child                                            | adds public DOM surface — **last resort**     |
+
+**Flat rule: root → marker; sub-slot → JS slot composition; data attribute only when the
+wrapping component does not render the slot.** M3 has no in-repo case; if you think you have
+one, say so in your report rather than inventing the attribute.
+
+M1 is a straight substitution — a root's marker is exactly as addressable as its static was.
+Structural pseudo-classes survive unchanged (`:first-of-type`, `:last-of-type`, `:not([…])` are
+element-relative, not class-relative), and specificity is preserved because both the static and
+the marker are single class selectors.
+
+```css
+/* Card.module.css — CardHeader/CardFooter are siblings the CONSUMER composes as children,
+   so useCardStyles_unstable never sees their slot objects and M2 is unavailable. */
+& > :global(.group\/fui-card-header),
+& > :global(.group\/fui-card-footer) {
+  flex-shrink: 0;
+}
+```
+
+**Own sub-slot compounded with a foreign root**: the own half goes local (hashed), the foreign
+half goes marker — `& > .floating-action + :global(.group\/fui-card-preview)`.
+
+**M2 worked example — ToolbarButton over react-button's `icon`.** `useToolbarButtonStyles`
+renders `<Button>` and holds `state.icon`, the same slot object `useButtonStyles_unstable` will
+decorate a moment later, so the coupling can be removed instead of renamed:
+
+```ts
+// useToolbarButtonStyles.styles.ts, BEFORE the useButtonStyles_unstable(state) call
+state.root.className = clsx(styles.root, 'group/fui-toolbar-button', state.root.className);
+if (state.icon) {
+  state.icon.className = clsx(styles.icon, state.icon.className);
+}
+useButtonStyles_unstable(state);
+```
+
+```css
+/* ToolbarButton.module.css — the `vertical` state lives on the root, which carries the marker */
+@layer fui.components.l2 {
+  .icon {
+    @variant group-vertical/fui-toolbar-button {
+      font-size: calc(24px * var(--base-scale));
+    }
+  }
+}
+```
+
+Altitude is `fui.components.l2` — you are styling over another component's output (D2 amendment
+2). `state.icon` is optional, hence the guard.
+
+**M2 worked example — ListItem over react-checkbox's `indicator`.** `useListItem.tsx` builds the
+checkmark slot itself with `slot.optional(props.checkmark, { elementType: Checkbox })`, so it
+controls the props handed to `<Checkbox>` and can pass an `indicator` override. Use
+`slot.always(...)` with `defaultProps` — a raw assignment would REPLACE a consumer-supplied
+`indicator` slot instead of merging with it:
+
+```ts
+if (state.checkmark) {
+  state.checkmark.className = clsx(styles.checkmark, state.checkmark.className);
+  state.checkmark.indicator = slot.always(state.checkmark.indicator, {
+    defaultProps: { className: styles['checkmark-indicator'] },
+    elementType: 'div',
+  });
+}
+```
+
+Add a regression test asserting a consumer's `checkmark={{ indicator: { className: 'x' } }}`
+keeps `x`.
+
+**Selector strings in JS/cypress/VR code use `fuiSelector()`.** `'.' + 'group/fui-button'` is an
+invalid selector — the `/` is legal in a class _token_ but terminates the name in a _selector_.
+`fuiSelector` (from `@fluentui/react-utilities`, re-exported by `@fluentui/react-components`)
+escapes it. Token-taking APIs (`classList.contains`, `getElementsByClassName`) need no escaping.
+
 ### 4. Package plumbing (once per package)
 
 - `package.json`: `"sideEffects": ["**/*.css"]` (was `false` — this is a BLOCKER-level
@@ -439,8 +573,37 @@ belongs in the snapshot beside `fui-*`.
   under `@variant rtl` where the body was flippable (Skeleton wave!).
 - `react-tabster`, `react-positioning`, `react-provider`, `react-portal-compat`,
   `react-migration-v8-v9`, suite package `react-components`: individually planned.
+- **A root with no unconditional module class** (Accordion, AccordionItem, Breadcrumb,
+  MessageBarGroup, CounterBadge, Skeleton): mint an empty identity-only `.root {}` local and
+  lead with it, so the marker is never `classList[0]` (§3b, D16.2). Do not reorder around a
+  conditional class.
+- **A slot whose only library token is the static** (CounterBadge `icon`, Divider `wrapper`,
+  SearchBox `contentBefore`, TreeItemPersonaLayout `selector`): **delete the assignment
+  entirely**, and the enclosing `if (state.x)` when it becomes empty. What is left is
+  `clsx(state.x.className)` — an identity on the consumer's own string, i.e. dead code implying
+  the hook styles a slot it does not.
+- **An UNLAYERED rule that compounds the static onto its own module class for specificity**
+  (`.root:global(.fui-BreadcrumbButton)`, BreadcrumbButton): compound the **marker**, never
+  nothing. It is unlayered on purpose — it competes with react-button's unlayered icon swaps,
+  which `@layer` cannot arbitrate — so dropping the static drops 0-3-0 to a 0-2-0 tie decided by
+  stylesheet load order. This is the one place naive removal changes rendered pixels.
 
 ## Definition of done (per package)
 
 Ledger `validated`: build + tests green, VR diff clean, no `@griffel` import remains in
 `library/src` (unless whitelisted in ledger notes), `sideEffects` updated, report filed.
+
+**Statics-removal gates (D16, per package once its sweep lands).** Run from the package root;
+each must return nothing.
+
+1. `` grep -rnE "['\"\`]fui-" src/ `` — no static class literals remain outside a retained identity
+   constant. **Match all three quote characters.** `react-field` declares its five statics with
+   BACKTICKS (`useFieldStyles.styles.ts:22–28`), so a single-quote-only scan reports it as having
+   none and the codemod silently skips it.
+2. `grep -rn ":global(\.fui-" src/` — no selector targets a static. Excluding `fui-Icon-*`, which
+   is owned by `@fluentui/react-icons` and out of scope (D11 keeps that package on Griffel).
+3. `grep -rEn "\.[a-z-]+:global\(\.fui-" src/` — no specificity compound still keys on a static
+   (the BreadcrumbButton shape above).
+4. Every marker-bearing `clsx()` has an unconditional `styles.*` as its FIRST argument. Gates 1–3
+   are greps; this one is the `component-has-group-marker` conformance test (§3b) — it is a
+   runtime assertion because "unconditional" is not a property a grep can see.
