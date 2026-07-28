@@ -159,7 +159,22 @@
 
     transition-duration: var(--durationNormal);
     transition-timing-function: var(--curveEasyEase);
-    transition-property: background, border, color;
+    /*
+     * Longhands only. `background, border, color` is not 3 properties: per CSS Transitions
+     * L1 a shorthand in `transition-property` expands to every longhand it covers, so that
+     * list is 21 (8 `background-*` + 12 `border-*` + 1). Only these 6 change — every
+     * `.input ~ .indicator` rule below sets `background-color` / `border-color` / `color`
+     * and nothing else, and the reset's `border: 1px solid` above is never re-declared.
+     * `border-radius` / `height` / `width` change only with `data-size`, which is a prop
+     * change rather than a transitioned state and was not in Griffel's list either.
+     * See reports/transition-audit.md §2.3.
+     *
+     * Safe to expand here because `transition-duration` and `transition-timing-function` are
+     * SINGLE-valued, so they apply to every entry — no positional-list realignment (that is
+     * the Avatar trap, §2.1, which is why Avatar's `margin` deliberately stays a shorthand).
+     */
+    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
+      color;
 
     @media screen and (prefers-reduced-motion: reduce) {
       transition-duration: 0.01ms;
