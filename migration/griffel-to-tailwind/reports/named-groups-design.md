@@ -32,6 +32,12 @@ root widens invalidation. Named groups buy a **capability**, at a small measured
 A literal, unhashed string, always the **first** `clsx` argument, on the component's **root**
 element — the same element that carries the hashed root class and the `data-*` state attributes.
 
+> **NOTE (2026-07-28):** this section describes what nyt-games does. Fluent adopted the marker
+> but NOT the first-argument placement — see DECISIONS D15.1, amended: Fluent's marker is the
+> **second** argument, immediately after the slot's static class, because a `group/…` token at
+> `classList[0]` crashes jsdom's nwsapi `:scope` polyfill. nyt-games is an application and never
+> hit this.
+
 ```tsx
 // src/components/button/index.tsx:25-33
 className={clsx(
@@ -195,17 +201,23 @@ Probe evidence that `fui-Switch` is a legal Tailwind group name (`.scratch/group
 
 ### 2.2 Which element carries it
 
-**The root slot, first `clsx` argument, on every converted component.** Exactly nyt-games'
-position.
+**The root slot, second `clsx` argument, on every converted component** — immediately after the
+slot's static class.
 
 ```ts
 state.root.className = clsx(
+  switchClassNames.root, // static class (conformance contract) — stays FIRST
   'group/fui-Switch', // ← NEW: named group marker (unhashed, global)
-  switchClassNames.root, // static class (conformance contract)
   styles.root, // hashed module class
   state.root.className, // consumer override, always last
 );
 ```
+
+> **SUPERSEDED PROPOSAL (2026-07-28).** This report originally proposed the first argument,
+> matching nyt-games. Shipped placement is the SECOND argument and the binding rule is that the
+> marker must never be the first class token: jsdom's nwsapi `:scope` polyfill builds its
+> reference from `escape(classList[0])`, and the `/` mangles into an invalid selector, throwing
+> at render. See DECISIONS D15.1 for the full record.
 
 Non-root slots get **no** group marker. Two reasons:
 
@@ -581,8 +593,9 @@ Expectations:
 > ### D15 — Named groups: every converted component root carries `group/fui-<Name>`
 >
 > **Decision.** Every converted component stamps an unhashed, global Tailwind group marker
-> `group/<static class of the outermost slot>` (e.g. `group/fui-Switch`) as the FIRST argument of
-> that slot's `clsx(…)`, immediately before the static `fui-*` class. No other slot carries a
+> `group/<static class of the outermost slot>` (e.g. `group/fui-Switch`) as the SECOND argument of
+> that slot's `clsx(…)`, immediately after the static `fui-*` class — and NEVER as the first class
+> token, which breaks jsdom's nwsapi `:scope` polyfill. No other slot carries a
 > marker. The outermost slot is `root` for 32 of the 33 converted packages; `react-tooltip` has no
 > `root` slot at all and uses `content` (`group/fui-Tooltip__content`).
 >
@@ -642,12 +655,13 @@ Expectations:
 >
 > ### N.1 Stamp the marker
 >
-> Every component root gets an unhashed group marker as the FIRST `clsx` argument:
+> Every component root gets an unhashed group marker as the SECOND `clsx` argument, immediately
+> after the slot's static class. It must NEVER be the first class token:
 >
 > ```ts
 > state.root.className = clsx(
+>   switchClassNames.root, // static class (conformance contract) — stays FIRST
 >   'group/fui-Switch', // named group marker — literal, unhashed, global
->   switchClassNames.root, // static class (conformance contract)
 >   styles.root, // hashed CSS-Modules class
 >   state.root.className, // consumer override — always last
 > );

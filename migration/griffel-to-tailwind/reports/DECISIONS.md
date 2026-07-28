@@ -709,16 +709,43 @@ overrides that report wherever the two differ** — the report proposed PascalCa
 ### D15.1 — Every converted component stamps `group/fui-<component-kebab>`
 
 **Decision.** The component's outermost slot carries an unhashed, global Tailwind group marker
-as the FIRST argument of its `clsx(…)`, immediately before the static `fui-*` class:
+as the SECOND argument of its `clsx(…)`, immediately AFTER the static `fui-*` class:
 
 ```ts
 state.root.className = clsx(
+  switchClassNames.root, // static class (conformance contract) — stays FIRST
   'group/fui-switch', // named group marker — literal, unhashed, GLOBAL
-  switchClassNames.root, // static class (conformance contract)
   styles.root, // hashed CSS-Modules class
   state.root.className, // consumer override — always last
 );
 ```
+
+> **AMENDED 2026-07-28 (placement).** This clause originally specified the marker as the FIRST
+> argument. It is now the SECOND, and the governing rule is stated negatively because that is the
+> part which must survive future refactors:
+>
+> **The marker must NEVER be the first class token of the emitted class string.**
+>
+> **Why.** jsdom does not implement `:scope` natively; it polyfills through nwsapi. nwsapi's
+> `makeref()` resolves a `:scope`-bearing selector by synthesising an anchor from the element via
+> `escape(element.classList[0])`. The `/` in `group/fui-<kebab>` passes through that escaping
+> intact, so the synthesised anchor lands in the selector as an invalid production — observed as
+> `div#a.group,,fui-list-item…` — and the query throws. Every component render that evaluates a
+> `:scope` selector under jsdom then fails with a render-time `AggregateError`.
+>
+> **Evidence.** react-list's 4 composite-navigation tests failed exactly this way (render-time
+> throws, never reaching a snapshot assertion); react-tree carried the identical latent shape and
+> would have failed the moment a `:scope` query was introduced. Any consumer app testing under
+> jsdom + `:scope` hits it too. Real browsers implement `:scope` natively and are unaffected, so
+> this is a test-tier-only defect with a production-shaped blast radius for consumers.
+>
+> **Why position is free to spend.** `clsx` argument order carries NO cascade meaning in this
+> system — `@layer` order decides every tie (D2). Moving the marker one slot right is therefore
+> semantically inert at the CSS level and costs nothing but snapshot churn.
+>
+> **Rejected alternatives.** Escaping/renaming the marker would break the public contract in
+> D15.8; patching the jest serializer would hide a public class from snapshots and would not help
+> consumer apps at all. The positional fix is total and free.
 
 **The name is the component's own name, lowercase-kebab, `fui-` namespaced.** Not the static
 class verbatim: `group/fui-switch`, `group/fui-message-bar`, `group/fui-accordion-header`,
@@ -911,7 +938,20 @@ The settled end-state contract, for the follow-on phase:
 > component internals.
 
 Recorded here so the intermediate state is legible: during this phase a converted root carries
-BOTH `group/fui-switch` and `fui-Switch`, which is redundant by design and temporary.
+BOTH `fui-Switch` and `group/fui-switch`, which is redundant by design and temporary.
+
+> **BLOCKING CONSTRAINT ON THAT FOLLOW-ON PHASE (added 2026-07-28).** The D15.1 invariant — the
+> marker must never be the first class token — is currently satisfied _because_ the static class
+> sits in front of it. Removing the statics naively would put the marker back at `classList[0]`
+> and reintroduce the nwsapi/`:scope` breakage repo-wide, this time with no static class left to
+> hide behind.
+>
+> The statics-removal sweep MUST therefore preserve the invariant explicitly: keep the marker
+> ordered after whatever token becomes the slot's primary class (the hashed `fuicm-*` module
+> class is the natural successor, since it is always present and always selector-safe). Do not
+> treat "the marker is now the only identity class" as licence to make it the first one. If a
+> slot would genuinely emit the marker alone, that slot needs a leading selector-safe token
+> added before the sweep lands, not after.
 
 ### D15.8 — Snapshots and VR
 
@@ -919,8 +959,11 @@ The marker is deliberately NOT `fuicm-`-prefixed — that is the entire point �
 serializer does not strip it and it appears in snapshots beside `fui-*`:
 
 ```
-class="group/fui-switch fui-Switch"
+class="fui-Switch group/fui-switch"
 ```
+
+(The static class leads and the marker follows — the D15.1 placement invariant. Snapshots taken
+before the 2026-07-28 amendment show the two tokens in the opposite order.)
 
 **Correct, and to be kept.** The marker is public DOM surface; hiding it would hide a public
 contract. Do not extend the serializer.

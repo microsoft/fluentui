@@ -48,8 +48,8 @@ describe('compileCssModuleSource', () => {
     it('leaves the compiled marker unhashed and globally addressable', async () => {
       const { css } = await compile();
 
-      // The literal the JSX writes — `clsx('group/fui-switch', …)` — escaped the way
-      // Tailwind emits it in a selector.
+      // The literal the JSX writes — `clsx(switchClassNames.root, 'group/fui-switch', …)` —
+      // escaped the way Tailwind emits it in a selector.
       expect(css).toContain('.group\\/fui-switch');
     });
 

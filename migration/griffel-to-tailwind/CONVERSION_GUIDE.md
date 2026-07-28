@@ -262,16 +262,22 @@ state.slot.className)` — static class first, consumer className last. The
 
 #### Stamp the marker
 
-The component's OUTERMOST slot gets an unhashed group marker as the FIRST `clsx` argument:
+The component's OUTERMOST slot gets an unhashed group marker as the SECOND `clsx` argument,
+immediately AFTER that slot's static class:
 
 ```ts
 state.root.className = clsx(
+  switchClassNames.root, // static class (conformance contract) — stays FIRST
   'group/fui-switch', // named group marker — literal, unhashed, GLOBAL
-  switchClassNames.root, // static class (conformance contract)
   styles.root, // hashed CSS-Modules class
   state.root.className, // consumer override — always last
 );
 ```
+
+**Invariant: the marker must NEVER be the first class token in the emitted string.** This is a
+hard requirement, not a style preference — see the "why" below. Argument order carries no
+cascade meaning in this system (the `@layer` order decides every tie), so position is otherwise
+free; spend that freedom on keeping the marker off index 0.
 
 The name is `'group/fui-' + <the component's own name, lowercase-kebab>` —
 `group/fui-switch`, `group/fui-message-bar`, `group/fui-accordion-header`. Written as a
@@ -286,6 +292,27 @@ still named for the component — `group/fui-tooltip`, not `group/fui-tooltip__c
 **No other slot gets a marker.** Sub-components already have their own roots, so the
 hierarchy nests for free, and a group cannot style itself: the compiled selector is
 `.child:is(:where(.group…) *)` and the descendant combinator excludes the group element.
+
+#### Why the marker must not be `classList[0]`
+
+jsdom has no native `:scope` support and polyfills it through nwsapi. nwsapi's `makeref()`
+rewrites a `:scope`-bearing selector into a concrete reference by building an id/class anchor
+from the element — and it reaches for `escape(element.classList[0])`. The `/` in
+`group/fui-<kebab>` survives that escaping unchanged, so the generated anchor is spliced into
+an invalid selector (e.g. `div#a.group,,fui-list-item…`), and the whole query throws. Any test
+or consumer app that renders a converted component under jsdom and evaluates a `:scope`
+selector against it takes a render-time `AggregateError`.
+
+This is not theoretical: it is exactly what broke react-list's composite-navigation tests
+(4 failures, all render-time throws, no snapshot involved), and react-tree carried the same
+latent shape. Real browsers implement `:scope` natively and are unaffected — which is why this
+only ever surfaced in the jsdom test tier.
+
+Keeping any ordinary static class at index 0 defuses it completely: nwsapi anchors on a
+selector-safe token and never sees the `/`.
+
+**Do not "fix" this by escaping the marker or by patching the serializer.** The marker's literal
+form is the public contract (D15.8); the cheap, total fix is positional.
 
 #### Read a parent's state
 
