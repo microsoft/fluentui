@@ -104,6 +104,9 @@ export {
 } from '@fluentui/react-shared-contexts';
 export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
+  // fuiSelector turns an identity class (`<x>ClassNames.root`) into a valid selector, escaping
+  // the `/` in the group marker. Shipped alongside the constants it exists for — DECISIONS D16.5.
+  fuiSelector,
   // getNativeElementProps is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,

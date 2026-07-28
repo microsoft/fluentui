@@ -460,6 +460,7 @@ import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { fuiSelector } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
@@ -2943,6 +2944,8 @@ export { FontSizeTokens }
 export { FontWeightTokens }
 
 export { ForwardRefComponent }
+
+export { fuiSelector }
 
 export { getIntrinsicElementProps }
 
