@@ -16,13 +16,42 @@
  * Layer assignment mirrors the mergeClasses ARGUMENT order of useSkeletonStyles_unstable,
  * not source declaration order:
  *
- *   1 skeletonClassNames.root  → static class (JS)
- *   2 useStyles.blockStyling   → fui.components.l1   (only when rendered `as="span"`)
- *   3 consumer className       → unlayered (always wins)
+ *   1 useStyles.root (identity-only) → fui.components.l1
+ *   2 skeletonClassNames.root        → static class (JS)
+ *   3 useStyles.blockStyling         → fui.components.l1   (only when rendered `as="span"`)
+ *   4 consumer className             → unlayered (always wins)
  *
- * Skeleton has no `makeResetStyles`, so nothing lands in `fui.base`, and its single slice
- * has no ordering interactions to preserve.
+ * Skeleton has no `makeResetStyles`, so nothing lands in `fui.base`, and its single styled
+ * slice has no ordering interactions to preserve.
  */
+
+/*
+ * IDENTITY-ONLY local (DECISIONS.md D15.1; statics-removal design §4b). Skeleton's only
+ * styled slice, `.block-styling`, is CONDITIONAL (`as="span"`, and the root defaults to a
+ * `div`), so on the default render the root's own contribution is just the static
+ * `fui-Skeleton` and the group marker. `useSkeletonStyles_unstable` leads its `clsx()` with
+ * this class so the root ALWAYS carries a hashed, selector-safe token at `classList[0]`:
+ * nwsapi's `:scope` polyfill builds its anchor from `escape(element.classList[0])`, and the
+ * `/` in `group/fui-skeleton` survives that escaping, yielding an invalid selector and a
+ * render-time AggregateError under jsdom. The static class is what keeps the marker off
+ * index 0 today; this local is what keeps the invariant true once the statics are removed.
+ * Do not delete it because it looks like it does nothing.
+ *
+ * WHY IT IS NOT A LITERALLY EMPTY RULE. The design specified `.root {}` on the premise that
+ * `postcss-modules` exports the name even with an empty body. It does not survive this
+ * pipeline: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+ * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
+ * every declaration-less rule — layered, unlayered or comment-only — so the class would
+ * never reach the class map and `styles.root` would be `undefined`, silently putting the
+ * marker at index 0. Measured on Tailwind v4.3.3. `--fui-skeleton-identity: initial` is the minimal
+ * body that survives: a custom property set to `initial` is guaranteed-invalid, so it
+ * renders nothing and any `var(--fui-skeleton-identity, X)` still resolves to `X`.
+ */
+@layer fui.components.l1 {
+  .root {
+    --fui-skeleton-identity: initial;
+  }
+}
 
 @layer fui.components.l1 {
   /*
