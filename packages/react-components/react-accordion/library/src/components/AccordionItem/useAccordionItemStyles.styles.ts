@@ -9,9 +9,11 @@ export const accordionItemClassNames: SlotClassNames<AccordionItemSlots> = {
 /*
  * AccordionItem has no styles of its own — the hook only stamps the static `fui-*` class.
  * There is therefore no `AccordionItem.module.css`; `clsx` replaces `mergeClasses` purely
- * to drop the `@griffel/react` runtime import (Griffel → Tailwind + CSS Modules
- * migration, migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3). Named group marker
- * first, then the static class (conformance contract), consumer className last.
+ * to drop the `@griffel/react` runtime import (Griffel → Tailwind + CSS Modules migration,
+ * migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3). Static class first (conformance
+ * contract), then the named group marker, consumer className last — the marker must never
+ * be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md
+ * D15.1).
  *
  * The `group/fui-accordion-item` marker is a literal, unhashed, GLOBAL token
  * (DECISIONS.md D15) — the handle by which AccordionHeader's or AccordionPanel's module can
@@ -24,7 +26,7 @@ export const accordionItemClassNames: SlotClassNames<AccordionItemSlots> = {
  * diff on a pure styling change.
  */
 export const useAccordionItemStyles_unstable = (state: AccordionItemState): AccordionItemState => {
-  state.root.className = clsx('group/fui-accordion-item', accordionItemClassNames.root, state.root.className);
+  state.root.className = clsx(accordionItemClassNames.root, 'group/fui-accordion-item', state.root.className);
 
   return state;
 };

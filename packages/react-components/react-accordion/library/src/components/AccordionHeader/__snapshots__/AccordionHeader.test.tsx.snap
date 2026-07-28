@@ -2,7 +2,7 @@
 
 exports[`AccordionHeader renders a default state 1`] = `
 <div
-  class="group/fui-accordion-header fui-AccordionHeader"
+  class="fui-AccordionHeader group/fui-accordion-header"
   data-expand-icon-position="start"
   data-size="medium"
 >
@@ -38,7 +38,7 @@ exports[`AccordionHeader renders a default state 1`] = `
 
 exports[`AccordionHeader renders when expandIcon is null 1`] = `
 <div
-  class="group/fui-accordion-header fui-AccordionHeader"
+  class="fui-AccordionHeader group/fui-accordion-header"
   data-expand-icon-position="start"
   data-size="medium"
 >

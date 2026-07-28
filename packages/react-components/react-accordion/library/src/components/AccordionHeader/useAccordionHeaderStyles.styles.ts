@@ -70,20 +70,22 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): 
   root['data-disabled'] = disabled || undefined;
   root['data-icon'] = Boolean(state.icon) || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this header's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. Read it as `@variant group-disabled/fui-accordion-header { … }`
-  // (DECISIONS.md D15). Only the root slot carries a marker: a group cannot style itself, so
-  // one on `button` or `expandIcon` would only serve those slots' own descendants.
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this header's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Read it as
+  // `@variant group-disabled/fui-accordion-header { … }` (DECISIONS.md D15). Only the root
+  // slot carries a marker: a group cannot style itself, so one on `button` or `expandIcon`
+  // would only serve those slots' own descendants.
   //
   // Cascade priority is decided by the `@layer fui.*` order in AccordionHeader.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
   state.root.className = clsx(
-    'group/fui-accordion-header',
     accordionHeaderClassNames.root,
+    'group/fui-accordion-header',
     styles.root,
     state.root.className,
   );
