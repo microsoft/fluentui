@@ -45,7 +45,7 @@
  * This is load-bearing in both directions, not bookkeeping:
  *   - `.label { color: inherit }` must beat Label's own
  *     `.root { color: var(--colorNeutralForeground1) }`;
- *   - `.infoButton { vertical-align: top }` must beat InfoButton's
+ *   - `.info-button { vertical-align: top }` must beat InfoButton's
  *     `vertical-align: middle`, and the negative margins must beat its `margin: 0`
  *     (expanded to four longhands there).
  *
@@ -59,7 +59,7 @@
  * react-spinner conversion used for its Label slot.
  *
  * The resulting descendant selector is 0-2-0 rather than the usual 0-1-0; inert here,
- * because it and the `.infoButton` block it overrides sit in the same layer with the
+ * because it and the `.info-button` block it overrides sit in the same layer with the
  * higher-specificity rule written second — the winner is the same either way.
  *
  * ── One altitude-induced inversion, corrected in place ──────────────────────────────
@@ -112,7 +112,7 @@
   }
 
   /* from useInfoButtonStyles.base — infoButton slot arg #2 */
-  .infoButton {
+  .info-button {
     vertical-align: top;
 
     /* Negative margin to align with the text. Griffel wrote
@@ -131,7 +131,7 @@
    */
   .root {
     @variant size-large {
-      & .infoButton {
+      & .info-button {
         margin-top: -1px;
         margin-bottom: -1px;
       }

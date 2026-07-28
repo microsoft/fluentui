@@ -94,12 +94,22 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
     state.info.className,
   );
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this InfoButton's state, because `styles.root` is hashed and unaddressable from
+  // outside this file (DECISIONS.md D15).
+  //
+  // InfoButton needs no state mirrors: `data-size` and `data-open` are stamped on this very
+  // element above, so `@variant group-open/fui-info-button` etc. work as-is (D15.6, Tier 0).
+  // The marker rides the `root` slot only — the `info` slot is the still-Griffel
+  // PopoverSurface (see the header above) and gets nothing.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in InfoButton.module.css, not
   // by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(infoButtonClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-info-button', infoButtonClassNames.root, styles.root, state.root.className);
 
   return state;
 };
