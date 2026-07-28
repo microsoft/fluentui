@@ -3,7 +3,7 @@
 exports[`Link when rendered as a button renders correctly 1`] = `
 <div>
   <button
-    class="group/fui-link fui-Link"
+    class="fui-Link group/fui-link"
     type="button"
   >
     This is a link
@@ -14,7 +14,7 @@ exports[`Link when rendered as a button renders correctly 1`] = `
 exports[`Link when rendered as an anchor renders correctly 1`] = `
 <div>
   <a
-    class="group/fui-link fui-Link"
+    class="fui-Link group/fui-link"
     href="https://www.bing.com"
     tabindex="0"
   >
