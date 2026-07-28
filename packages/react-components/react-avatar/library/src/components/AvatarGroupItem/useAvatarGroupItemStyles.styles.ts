@@ -52,11 +52,12 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   // eslint-disable-next-line react-hooks/immutability -- state-mutation builder, preserved per D14
   root['data-size'] = size;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this AvatarGroupItem's state, because `styles.root` is hashed and unaddressable
-  // from outside this file (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this AvatarGroupItem's state, because
+  // `styles.root` is hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // AvatarGroupItem needs no state mirrors: `data-size` is stamped on this very element
   // above, so `@variant group-*/fui-avatar-group-item` reads it as-is (D15.6, Tier 0). The
@@ -74,8 +75,8 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    'group/fui-avatar-group-item',
     avatarGroupItemClassNames.root,
+    'group/fui-avatar-group-item',
     styles.root,
     !isOverflowItem && styles['non-overflow-item'],
     !isOverflowItem && groupChildClassName,

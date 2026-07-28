@@ -91,11 +91,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   root['data-active-appearance'] = isActive ? activeAppearance : undefined;
   /* eslint-enable react-hooks/immutability */
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this Avatar's state, because `styles.root` is hashed and unaddressable from outside
-  // this file (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Avatar's state, because `styles.root` is
+  // hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // Avatar needs no state mirrors: `data-size`, `data-active` and `data-active-appearance`
   // are stamped on this very element above, so `@variant group-*/fui-avatar` reads them
@@ -111,8 +112,8 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    'group/fui-avatar',
     avatarClassNames.root,
+    'group/fui-avatar',
     styles.root,
     size !== 32 && sizeStyles[size],
     state.badge && styles['badge-align'],
