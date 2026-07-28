@@ -1,9 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { FieldSlots, FieldState } from './Field.types';
+
+import styles from './Field.module.css';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
@@ -13,111 +27,39 @@ export const fieldClassNames: SlotClassNames<FieldSlots> = {
   hint: `fui-Field__hint`,
 };
 
-// Size of the icon in the validation message
-const iconSize = '12px';
+/**
+ * Data attributes rendered on the ROOT slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
+ * the headless preview's vocabulary (reports/headless-precedent.md) and both already
+ * existed in the catalog — this conversion adds no new variant.
+ *
+ * They live on the root even though every rule they select styles the `label` slot: the
+ * label is the root's child, so one stamp drives all the descendant rules (same approach
+ * as react-switch's `data-size` → `.root … & .label`).
+ *
+ * `data-size` must NOT be stamped on the label slot itself. That element is the <Label>
+ * from `@fluentui/react-label`, whose own styles hook writes `data-size` from the
+ * label's OWN `size` prop — a consumer may override it (`<Field size="medium"
+ * label={{ size: 'small' }} />`) while Field's label rules must keep reading Field's
+ * `size`, exactly as the Griffel hook did.
+ */
+type FieldRootDataAttributes = {
+  'data-orientation': FieldState['orientation'];
+  'data-size': FieldState['size'];
+};
 
 /**
- * Styles for the root slot
+ * `validationState` selects a colour and nothing else — the same shape as ProgressBar's
+ * `color` — so it rides module classes rather than a data-attribute (DECISIONS.md D3).
+ * This map preserves the Griffel hook's `validationMessageIconStyles[validationState]`
+ * lookup, including the `none` branch that resolves to no class at all.
  */
-const useRootStyles = makeStyles({
-  base: {
-    display: 'grid',
-  },
-
-  // In horizontal layout, the field is a grid with the label taking up the entire first column.
-  // The last row is slack space in case the label is taller than the rest of the content.
-  horizontal: {
-    gridTemplateColumns: '33% 1fr',
-    gridTemplateRows: 'auto auto auto 1fr',
-  },
-
-  // In horizontal layout without a label, replace the label's column with padding.
-  // This lets grid auto-flow properly place the other children, and keeps fields with and without labels aligned.
-  horizontalNoLabel: {
-    paddingLeft: '33%',
-    gridTemplateColumns: '1fr',
-  },
-});
-
-const useLabelStyles = makeStyles({
-  base: {
-    maxWidth: 'max-content',
-    maxHeight: 'max-content',
-  },
-
-  vertical: {
-    paddingTop: tokens.spacingVerticalXXS,
-    paddingBottom: tokens.spacingVerticalXXS,
-    marginBottom: tokens.spacingVerticalXXS,
-  },
-
-  verticalLarge: {
-    paddingTop: '1px',
-    paddingBottom: '1px',
-    marginBottom: tokens.spacingVerticalXS,
-  },
-
-  horizontal: {
-    paddingTop: tokens.spacingVerticalSNudge,
-    paddingBottom: tokens.spacingVerticalSNudge,
-    marginRight: tokens.spacingHorizontalM,
-    gridRowStart: '1',
-    gridRowEnd: '-1',
-  },
-
-  horizontalSmall: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
-  },
-
-  horizontalLarge: {
-    // To align the label text with the Input text, it should be centered within the 40px height of the Input.
-    // This is (40px - lineHeightBase400) / 2 = 9px. Hardcoded since there is no 9px padding token.
-    paddingTop: '9px',
-    paddingBottom: '9px',
-  },
-});
-
-const useSecondaryTextBaseClassName = makeResetStyles({
-  marginTop: tokens.spacingVerticalXXS,
-  color: tokens.colorNeutralForeground3,
-  ...typographyStyles.caption1,
-});
-
-const useSecondaryTextStyles = makeStyles({
-  error: {
-    color: tokens.colorPaletteRedForeground1,
-  },
-
-  withIcon: {
-    // Add a gutter for the icon, to allow multiple lines of text to line up to the right of the icon.
-    paddingLeft: `calc(${iconSize} + ${tokens.spacingHorizontalXS})`,
-  },
-});
-
-const useValidationMessageIconBaseClassName = makeResetStyles({
-  display: 'inline-block',
-  fontSize: iconSize,
-  // Negative left margin puts the icon in the gutter of the validation message div's withIcon style.
-  marginLeft: `calc(-${iconSize} - ${tokens.spacingHorizontalXS})`,
-  marginRight: tokens.spacingHorizontalXS,
-  // Line height of 0 prevents the verticalAlign from affecting the line height of the text.
-  lineHeight: '0',
-  // Negative verticalAlign shifts the inline icon down to align with the text (effectively top padding).
-  verticalAlign: '-1px',
-});
-
-const useValidationMessageIconStyles = makeStyles({
-  error: {
-    color: tokens.colorPaletteRedForeground1,
-  },
-  warning: {
-    color: tokens.colorPaletteDarkOrangeForeground1,
-  },
-  success: {
-    color: tokens.colorPaletteGreenForeground1,
-  },
-});
+const validationMessageIconStyles = {
+  error: styles.validationMessageIconError,
+  warning: styles.validationMessageIconWarning,
+  success: styles.validationMessageIconSuccess,
+  none: undefined,
+} as const;
 
 /**
  * Apply styling to the Field slots based on the state
@@ -126,59 +68,49 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   const { validationState, size } = state;
   const horizontal = state.orientation === 'horizontal';
 
-  const rootStyles = useRootStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as FieldState['root'] & FieldRootDataAttributes;
+
+  root['data-orientation'] = state.orientation;
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Field.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including why the `label` slot's rules
+  // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
+  // own hook output).
+  state.root.className = clsx(
     fieldClassNames.root,
-    rootStyles.base,
-    horizontal && rootStyles.horizontal,
-    horizontal && !state.label && rootStyles.horizontalNoLabel,
+    styles.root,
+    horizontal && !state.label && styles.horizontalNoLabel,
     state.root.className,
   );
 
-  const labelStyles = useLabelStyles();
   if (state.label) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.label.className = mergeClasses(
-      fieldClassNames.label,
-      labelStyles.base,
-      horizontal && labelStyles.horizontal,
-      horizontal && size === 'small' && labelStyles.horizontalSmall,
-      horizontal && size === 'large' && labelStyles.horizontalLarge,
-      !horizontal && labelStyles.vertical,
-      !horizontal && size === 'large' && labelStyles.verticalLarge,
-      state.label.className,
-    );
+    state.label.className = clsx(fieldClassNames.label, styles.label, state.label.className);
   }
 
-  const validationMessageIconBaseClassName = useValidationMessageIconBaseClassName();
-  const validationMessageIconStyles = useValidationMessageIconStyles();
   if (state.validationMessageIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.validationMessageIcon.className = mergeClasses(
+    state.validationMessageIcon.className = clsx(
       fieldClassNames.validationMessageIcon,
-      validationMessageIconBaseClassName,
-      validationState !== 'none' && validationMessageIconStyles[validationState],
+      styles.validationMessageIcon,
+      validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
     );
   }
 
-  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
-  const secondaryTextStyles = useSecondaryTextStyles();
   if (state.validationMessage) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.validationMessage.className = mergeClasses(
+    state.validationMessage.className = clsx(
       fieldClassNames.validationMessage,
-      secondaryTextBaseClassName,
-      validationState === 'error' && secondaryTextStyles.error,
-      !!state.validationMessageIcon && secondaryTextStyles.withIcon,
+      styles.secondaryText,
+      validationState === 'error' && styles.secondaryTextError,
+      !!state.validationMessageIcon && styles.secondaryTextWithIcon,
       state.validationMessage.className,
     );
   }
 
   if (state.hint) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextBaseClassName, state.hint.className);
+    state.hint.className = clsx(fieldClassNames.hint, styles.secondaryText, state.hint.className);
   }
 
   return state;
