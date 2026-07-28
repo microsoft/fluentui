@@ -49,11 +49,22 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
 
   content['data-open'] = state.visible || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token — the only
+  // handle by which another module can style an element from this Tooltip's state, because
+  // `styles.content` is hashed and unaddressable from outside this file (DECISIONS.md D15).
+  //
+  // It goes on `content` rather than a root because Tooltip HAS no root slot:
+  // `tooltipClassNames` declares `content` alone, the tooltip renders into a portal, and the
+  // content element is therefore its outermost node — it is also the element that carries
+  // `data-open`, which is the state a descendant would want to read. The marker still uses
+  // the component's own name (`group/fui-tooltip`), not the slot's static class.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Tooltip.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   state.content.className = clsx(
+    'group/fui-tooltip',
     tooltipClassNames.content,
     styles.content,
     state.appearance === 'inverted' && styles.inverted,
