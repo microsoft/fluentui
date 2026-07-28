@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update readme to reference correct yarn page link",
+  "packageName": "@fluentui/babel-preset-global-context",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

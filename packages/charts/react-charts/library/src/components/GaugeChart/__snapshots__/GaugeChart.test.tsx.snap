@@ -123,73 +123,83 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Low Risk"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Low Risk
+                </div>
+              </button>
+              <button
+                aria-label="Medium Risk"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Medium Risk
+                </div>
+              </button>
+              <button
+                aria-label="High Risk"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                High Risk
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  High Risk
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -202,7 +212,9 @@ exports[`Gauge bar chart re-rendering Should re-render the Gauge chart with data
 Array [
   <button
     aria-label="Low Risk"
+    aria-posinset="1"
     aria-selected="false"
+    aria-setsize="3"
     class="fui-Button fui-legend__legend"
     data-overflow-item=""
     data-overflowing=""
@@ -222,7 +234,9 @@ Array [
   </button>,
   <button
     aria-label="Medium Risk"
+    aria-posinset="2"
     aria-selected="false"
+    aria-setsize="3"
     class="fui-Button fui-legend__legend"
     data-overflow-item=""
     data-overflowing=""
@@ -242,7 +256,9 @@ Array [
   </button>,
   <button
     aria-label="High Risk"
+    aria-posinset="3"
     aria-selected="false"
+    aria-setsize="3"
     class="fui-Button fui-legend__legend"
     data-overflow-item=""
     data-overflowing=""
@@ -408,75 +424,85 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="true"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="true"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
-            />
-            <div
-              class="fui-legend__text"
-              style="opacity: 0.67;"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
-            />
-            <div
-              class="fui-legend__text"
-              style="opacity: 0.67;"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              />
+              <div
+                class="fui-legend__text"
+                style="opacity: 0.67;"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              />
+              <div
+                class="fui-legend__text"
+                style="opacity: 0.67;"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -601,75 +627,85 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
-            />
-            <div
-              class="fui-legend__text"
-              style="opacity: 0.67;"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
-            />
-            <div
-              class="fui-legend__text"
-              style="opacity: 0.67;"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              />
+              <div
+                class="fui-legend__text"
+                style="opacity: 0.67;"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: var(--colorNeutralBackground1); --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: var(--colorNeutralBackground1); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, var(--colorNeutralBackground1), var(--colorNeutralBackground1)); --rect-opacity-high-contrast: 0.6;"
+              />
+              <div
+                class="fui-legend__text"
+                style="opacity: 0.67;"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -796,73 +832,83 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1096,73 +1142,83 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1289,73 +1345,83 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1482,73 +1548,83 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1782,73 +1858,83 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2104,73 +2190,83 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2297,73 +2393,83 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2490,73 +2596,83 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2683,73 +2799,83 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2861,73 +2987,83 @@ Object {
           class="fui-gc__legendsContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="Low Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Low Risk"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Low Risk
-                </div>
-              </button>
-              <button
-                aria-label="Medium Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Low Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="Medium Risk"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                  type="button"
                 >
-                  Medium Risk
-                </div>
-              </button>
-              <button
-                aria-label="High Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Medium Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="High Risk"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                  type="button"
                 >
-                  High Risk
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    High Risk
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3051,73 +3187,83 @@ Object {
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Low Risk"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Low Risk
+                </div>
+              </button>
+              <button
+                aria-label="Medium Risk"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Medium Risk
+                </div>
+              </button>
+              <button
+                aria-label="High Risk"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                High Risk
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  High Risk
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -3613,73 +3759,83 @@ Object {
           class="fui-gc__legendsContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="Low Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Low Risk"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Low Risk
-                </div>
-              </button>
-              <button
-                aria-label="Medium Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Low Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="Medium Risk"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                  type="button"
                 >
-                  Medium Risk
-                </div>
-              </button>
-              <button
-                aria-label="High Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Medium Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="High Risk"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                  type="button"
                 >
-                  High Risk
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    High Risk
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -3823,73 +3979,83 @@ Object {
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Low Risk"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Low Risk
+                </div>
+              </button>
+              <button
+                aria-label="Medium Risk"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Medium Risk
+                </div>
+              </button>
+              <button
+                aria-label="High Risk"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                High Risk
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  High Risk
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -4061,54 +4227,62 @@ Object {
           class="fui-gc__legendsContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="Used"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Used"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+                  type="button"
                 >
-                  Used
-                </div>
-              </button>
-              <button
-                aria-label="Unknown"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: neutralLight; --rect-borderColor: neutralLight;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, neutralLight, neutralLight);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Used
+                  </div>
+                </button>
+                <button
+                  aria-label="Unknown"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: neutralLight; --rect-borderColor: neutralLight;"
+                  type="button"
                 >
-                  Unknown
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, neutralLight, neutralLight);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Unknown
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -4240,54 +4414,62 @@ Object {
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Used"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Used"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="2"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+                type="button"
               >
-                Used
-              </div>
-            </button>
-            <button
-              aria-label="Unknown"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: neutralLight; --rect-borderColor: neutralLight;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, neutralLight, neutralLight);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Used
+                </div>
+              </button>
+              <button
+                aria-label="Unknown"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="2"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: neutralLight; --rect-borderColor: neutralLight;"
+                type="button"
               >
-                Unknown
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, neutralLight, neutralLight);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Unknown
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -4493,73 +4675,83 @@ Object {
           class="fui-gc__legendsContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="Low Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Low Risk"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Low Risk
-                </div>
-              </button>
-              <button
-                aria-label="Medium Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Low Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="Medium Risk"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                  type="button"
                 >
-                  Medium Risk
-                </div>
-              </button>
-              <button
-                aria-label="High Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Medium Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="High Risk"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                  type="button"
                 >
-                  High Risk
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    High Risk
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -4744,73 +4936,83 @@ Object {
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Low Risk"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Low Risk
+                </div>
+              </button>
+              <button
+                aria-label="Medium Risk"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Medium Risk
+                </div>
+              </button>
+              <button
+                aria-label="High Risk"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                High Risk
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  High Risk
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -4994,73 +5196,83 @@ Object {
           class="fui-gc__legendsContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="Low Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Low Risk"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Low Risk
-                </div>
-              </button>
-              <button
-                aria-label="Medium Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Low Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="Medium Risk"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                  type="button"
                 >
-                  Medium Risk
-                </div>
-              </button>
-              <button
-                aria-label="High Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Medium Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="High Risk"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                  type="button"
                 >
-                  High Risk
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    High Risk
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5204,73 +5416,83 @@ Object {
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Low Risk"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Low Risk
+                </div>
+              </button>
+              <button
+                aria-label="Medium Risk"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Medium Risk
+                </div>
+              </button>
+              <button
+                aria-label="High Risk"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                High Risk
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  High Risk
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -5468,73 +5690,83 @@ Object {
           class="fui-gc__legendsContainer"
         >
           <div
-            aria-label="Legends"
-            aria-multiselectable="false"
             class="fui-legend__root"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
           >
             <div
               class="fui-Overflow fui-legend__resizableArea"
               style="text-align: center;"
             >
-              <button
-                aria-label="Low Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="Low Risk"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                  type="button"
                 >
-                  Low Risk
-                </div>
-              </button>
-              <button
-                aria-label="Medium Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Low Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="Medium Risk"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                  type="button"
                 >
-                  Medium Risk
-                </div>
-              </button>
-              <button
-                aria-label="High Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    Medium Risk
+                  </div>
+                </button>
+                <button
+                  aria-label="High Risk"
+                  aria-posinset="3"
+                  aria-selected="false"
+                  aria-setsize="3"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                  type="button"
                 >
-                  High Risk
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    High Risk
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -5711,73 +5943,83 @@ Object {
         class="fui-gc__legendsContainer"
       >
         <div
-          aria-label="Legends"
-          aria-multiselectable="false"
           class="fui-legend__root"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
         >
           <div
             class="fui-Overflow fui-legend__resizableArea"
             style="text-align: center;"
           >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
+            <div
+              aria-label="Legends"
+              aria-multiselectable="false"
+              role="listbox"
+              style="display: contents;"
             >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
+              <button
+                aria-label="Low Risk"
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+                type="button"
               >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Low Risk
+                </div>
+              </button>
+              <button
+                aria-label="Medium Risk"
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+                type="button"
               >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  Medium Risk
+                </div>
+              </button>
+              <button
+                aria-label="High Risk"
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="3"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+                type="button"
               >
-                High Risk
-              </div>
-            </button>
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                />
+                <div
+                  class="fui-legend__text"
+                >
+                  High Risk
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -5956,73 +6198,83 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -6149,73 +6401,83 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       class="fui-gc__legendsContainer"
     >
       <div
-        aria-label="Legends"
-        aria-multiselectable="false"
         class="fui-legend__root"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
       >
         <div
           class="fui-Overflow fui-legend__resizableArea"
           style="text-align: center;"
         >
-          <button
-            aria-label="Low Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-            type="button"
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            role="listbox"
+            style="display: contents;"
           >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-            />
-            <div
-              class="fui-legend__text"
+            <button
+              aria-label="Low Risk"
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
+              type="button"
             >
-              Low Risk
-            </div>
-          </button>
-          <button
-            aria-label="Medium Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Low Risk
+              </div>
+            </button>
+            <button
+              aria-label="Medium Risk"
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
+              type="button"
             >
-              Medium Risk
-            </div>
-          </button>
-          <button
-            aria-label="High Risk"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-            />
-            <div
-              class="fui-legend__text"
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Medium Risk
+              </div>
+            </button>
+            <button
+              aria-label="High Risk"
+              aria-posinset="3"
+              aria-selected="false"
+              aria-setsize="3"
+              class="fui-Button fui-legend__legend"
+              data-overflow-item=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
+              type="button"
             >
-              High Risk
-            </div>
-          </button>
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                High Risk
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

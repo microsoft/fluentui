@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 29 Jun 2026 15:15:06 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jul 2026 14:10:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.74.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.4)
+
+Wed, 15 Jul 2026 14:10:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.3..@fluentui/react-components_v9.74.4)
+
+### Minor changes
+
+- `@fluentui/react-tag-picker`
+  - feat: export useTagPickerContextValues and TagPickerControlInternalSlots for headless composition ([PR #36353](https://github.com/microsoft/fluentui/pull/36353) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: avoid overflow snapshot updates after unmount ([PR #36401](https://github.com/microsoft/fluentui/pull/36401) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-charts`
+  - Accessibility bug fixes ([PR #36292](https://github.com/microsoft/fluentui/pull/36292) by 132879294+v-baambati@users.noreply.github.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: align @fluentui/fluent2-theme and @fluentui/react dependency ranges with republished v8 versions ([PR #36364](https://github.com/microsoft/fluentui/pull/36364) by martinhochel@microsoft.com)
 
 ## [9.74.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.3)
 

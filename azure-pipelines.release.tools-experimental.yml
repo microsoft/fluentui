@@ -79,7 +79,8 @@ extends:
                 displayName: Validate branch and extract feature name
 
               - script: |
-                  yarn install --frozen-lockfile
+                  corepack enable
+                  yarn install --immutable
                 displayName: Install dependencies
 
                 # Deletes all existing changefiles so that only bump that happens is for experimental

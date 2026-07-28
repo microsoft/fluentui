@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 15 Jul 2026 14:10:40 GMT",
+      "tag": "@fluentui/react-charts_v9.3.22",
+      "version": "9.3.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e75edae32b44d1733e392f420e5dd2d6fa8bfa0d",
+            "comment": "Accessibility bug fixes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.9.1",
+            "commit": "cbee28ba42d268404e9b9663a6a3a33e205c66d1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jun 2026 15:15:07 GMT",
       "tag": "@fluentui/react-charts_v9.3.21",
       "version": "9.3.21",

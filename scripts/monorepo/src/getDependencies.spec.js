@@ -15,6 +15,11 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
+          "name": "react-jsx-runtime",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
           "name": "react-shared-contexts",
         },
         Object {
@@ -26,11 +31,6 @@ describe(`#getDependencies`, () => {
           "dependencyType": "dependencies",
           "isTopLevel": true,
           "name": "react-utilities",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": true,
-          "name": "react-jsx-runtime",
         },
         Object {
           "dependencyType": "dependencies",

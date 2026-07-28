@@ -305,8 +305,10 @@ export function createOverflowManager(initialOptions: Partial<OverflowOptions> =
     removeOverflowMenu();
     sizeCache.clear();
 
-    // notify subscribers that the manager is no longer tracking anything
-    takeSnapshot(EMPTY_SNAPSHOT);
+    // Reset the snapshot during teardown, but do not broadcast a final update.
+    // Consumers unsubscribe as part of unmount, and a disconnect-time notification can race
+    // those cleanups and dispatch into already-unmounting React listeners.
+    snapshot = EMPTY_SNAPSHOT;
   };
 
   const addItem: OverflowManager['addItem'] = items => {
