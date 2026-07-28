@@ -144,13 +144,17 @@ Repeat until no `needs-conversion` remain:
 
 ### Queued (user-directed 2026-07-27, in order)
 
-1. Stroke-widths workflow DONE (VR 20/21 + family clean; tests green; build 196s/AOT 42).
-   OPEN: react-infolabel "sizes -- open" fails 238px deterministically. Bisection
-   EXONERATED each stroke file individually (utilities.css / storybook theme css /
-   theme regen / infolabel dir all reverted alone → still 238px). Diagnosis agent
-   running with DOM-ground-truth method (icon-swap layered-vs-unlayered vs webpack
-   cache theories). Do NOT convert more packages until root-caused.
-2. Phase 2 batch 3 — next 10 lowest-level from needs-conversion
+1. Stroke-widths workflow DONE; infolabel 238px RESOLVED (two root causes, see
+   DECISIONS.md D2 amendment 5 + postmortem): (A) react-icons bundleIcon glyph
+   toggles are UNLAYERED Griffel atomics — layered swap rules can never win;
+   InfoButton + Button fixed with unlayered blocks (commits b27bf13985, 0367fcc2a3).
+   (B) nx cache hole: build-storybook's hash excluded component sources → stale
+   bundles replayed → FALSE VR PASSES. Fixed: project.json inputs + capture.mjs
+   staleness guard. **Re-validation sweep 24/24 sets PASS, zero retries, on a
+   guaranteed-fresh build** (reports/revalidation-sweep-2026-07-27.md) — all
+   converted packages genuinely pixel-validated; conversion gate LIFTED.
+2. Phase 2 batch 3 — IN PROGRESS: accordion, breadcrumb, card, field, message-bar,
+   rating, spinbutton, tags, toolbar, tree
 3. **Client performance evaluation** — PERF_EVAL_SPEC.md (5 components incl. Button,
    plain vs multi-layer-overridden, 1 vs 100-instance matrix, vs Griffel predecessors)
 
