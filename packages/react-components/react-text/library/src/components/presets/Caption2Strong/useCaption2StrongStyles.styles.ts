@@ -17,6 +17,6 @@ export const caption2StrongClassNames: SlotClassNames<TextSlots> = {
  * applied over Text's own hook output — see that file's header). The class map is a static
  * object, so the returned shape is hoisted rather than rebuilt on every render.
  */
-const classes: Record<'root', string> = { root: styles.caption2Strong };
+const classes: Record<'root', string> = { root: styles['caption2-strong'] };
 
 export const useCaption2StrongStyles = (): Record<'root', string> => classes;

@@ -17,6 +17,6 @@ export const body1StrongClassNames: SlotClassNames<TextSlots> = {
  * applied over Text's own hook output — see that file's header). The class map is a static
  * object, so the returned shape is hoisted rather than rebuilt on every render.
  */
-const classes: Record<'root', string> = { root: styles.body1Strong };
+const classes: Record<'root', string> = { root: styles['body1-strong'] };
 
 export const useBody1StrongStyles = (): Record<'root', string> => classes;

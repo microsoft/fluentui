@@ -14,7 +14,7 @@ describe('Body1Stronger', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="fui-Body1Stronger fui-Text"
+          class="fui-Body1Stronger group/fui-text fui-Text"
           data-size="300"
         >
           Default Body1Stronger

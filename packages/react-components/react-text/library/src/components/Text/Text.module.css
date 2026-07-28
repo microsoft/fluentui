@@ -26,7 +26,7 @@
  *    6 italic && italic                   → fui.components.l1   .italic
  *    7 underline && underline             → fui.components.l1   .underline
  *    8 strikethrough && strikethrough     → fui.components.l1   .strikethrough
- *    9 underline && strikethrough && …    → fui.components.l1   .strikethroughUnderline
+ *    9 underline && strikethrough && …    → fui.components.l1   .strikethrough-underline
  *   10 size === 100  && base100           → fui.components.l1   .root[data-size='100']
  *   11 size === 200  && base200           → fui.components.l1   .root[data-size='200']
  *   12 size === 400  && base400           → fui.components.l1   .root[data-size='400']
@@ -120,8 +120,12 @@
    * from useStyles.strikethroughUnderline — applied only when BOTH flags are set, and
    * written after both single-decoration blocks so it wins `text-decoration-line`.
    * No Tailwind utility expresses the two-value form, so it is transcribed literally.
+   *
+   * The local is lowercase-kebab (`strikethrough-underline`), not the Griffel slice's
+   * camelCase name — the generated ident alphabet is all-lowercase, see
+   * scripts/css-modules/ident.js.
    */
-  .strikethroughUnderline {
+  .strikethrough-underline {
     text-decoration-line: line-through underline;
   }
 

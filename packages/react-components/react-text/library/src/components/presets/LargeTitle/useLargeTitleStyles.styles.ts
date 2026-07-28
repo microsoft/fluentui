@@ -17,6 +17,6 @@ export const largeTitleClassNames: SlotClassNames<TextSlots> = {
  * applied over Text's own hook output — see that file's header). The class map is a static
  * object, so the returned shape is hoisted rather than rebuilt on every render.
  */
-const classes: Record<'root', string> = { root: styles.largeTitle };
+const classes: Record<'root', string> = { root: styles['large-title'] };
 
 export const useLargeTitleStyles = (): Record<'root', string> => classes;

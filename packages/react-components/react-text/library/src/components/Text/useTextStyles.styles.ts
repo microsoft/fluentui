@@ -53,7 +53,17 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this Text's state, because `styles.root` is hashed and unaddressable from
+  // outside this file. No state mirror is needed: `data-size` is already stamped on this
+  // very element above (DECISIONS.md D15, Tier 0).
+  //
+  // The 17 typography presets get NO marker of their own: `createPreset` runs THIS hook and
+  // then adds its class to the same root, so every preset root already carries
+  // `group/fui-text` — which is correct, since a `<Body1>` IS a `<Text>`.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Text.module.css and by
   // block order within it, not by the order of these arguments — see that file's header
   // for the mapping back to the mergeClasses() argument order this replaces.
@@ -68,6 +78,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
   // dropped only because the rule no longer reports here, same as the react-divider /
   // react-button / react-image conversions.
   state.root.className = clsx(
+    'group/fui-text',
     textClassNames.root,
     styles.root,
     wrap === false && styles.nowrap,
@@ -76,7 +87,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
     italic && styles.italic,
     underline && styles.underline,
     strikethrough && styles.strikethrough,
-    underline && strikethrough && styles.strikethroughUnderline,
+    underline && strikethrough && styles['strikethrough-underline'],
     font !== 'base' && styles[font],
     weight !== 'regular' && styles[weight],
     align !== 'start' && styles[align],

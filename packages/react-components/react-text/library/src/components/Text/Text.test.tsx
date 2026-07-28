@@ -36,7 +36,7 @@ describe('Text', () => {
     expect(container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="fui-Text"
+          class="group/fui-text fui-Text"
           data-size="300"
         >
           Test
@@ -82,7 +82,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveClass(styles.underline);
-    expect(textElement).not.toHaveClass(styles.strikethroughUnderline);
+    expect(textElement).not.toHaveClass(styles['strikethrough-underline']);
   });
 
   it('applies the strikethrough style', () => {
@@ -90,7 +90,7 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveClass(styles.strikethrough);
-    expect(textElement).not.toHaveClass(styles.strikethroughUnderline);
+    expect(textElement).not.toHaveClass(styles['strikethrough-underline']);
   });
 
   it('applies both strikethrough and underline styles', () => {
@@ -104,7 +104,7 @@ describe('Text', () => {
     // the Griffel original did, and wins `text-decoration-line` by its later position in
     // `fui.components.l1`.
     const textElement = getByText('Test');
-    expect(textElement).toHaveClass(styles.underline, styles.strikethrough, styles.strikethroughUnderline);
+    expect(textElement).toHaveClass(styles.underline, styles.strikethrough, styles['strikethrough-underline']);
   });
 
   it.each([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000] as const)(

@@ -14,7 +14,7 @@ describe('LargeTitle', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="fui-LargeTitle fui-Text"
+          class="fui-LargeTitle group/fui-text fui-Text"
           data-size="300"
         >
           Default LargeTitle

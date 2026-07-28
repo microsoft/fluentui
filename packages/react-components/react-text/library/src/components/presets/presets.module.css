@@ -35,6 +35,13 @@
  * var(--fontSizeBase300)` and `.display`'s `var(--fontSizeHero1000)` would come down to
  * which file the aggregator emitted first — the exact nondeterminism l2 exists to remove.
  *
+ * ── Local names ────────────────────────────────────────────────────────────────────
+ * The locals are lowercase-kebab (`.body1-strong`, `.large-title`), not the camelCase
+ * `typographyStyles` key each one transcribes. The generated ident alphabet is
+ * all-lowercase, so a camelCase local would be silently down-cased on its way into the
+ * DOM — see scripts/css-modules/ident.js. The comment above each rule still names the
+ * Griffel slice it came from, which is what makes the mapping auditable.
+ *
  * Values reproduce the COMPILED atomics in
  * lib-commonjs/components/presets/<Preset>/use<Preset>Styles.styles.js — every preset is
  * `fk6fouc` (fontFamilyBase) plus one font-size / font-weight / line-height triple, and
@@ -51,7 +58,7 @@
   }
 
   /* from useBody1StrongStyles.root — typographyStyles.body1Strong */
-  .body1Strong {
+  .body1-strong {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);
     font-weight: var(--fontWeightSemibold);
@@ -59,7 +66,7 @@
   }
 
   /* from useBody1StrongerStyles.root — typographyStyles.body1Stronger */
-  .body1Stronger {
+  .body1-stronger {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);
     font-weight: var(--fontWeightBold);
@@ -83,7 +90,7 @@
   }
 
   /* from useCaption1StrongStyles.root — typographyStyles.caption1Strong */
-  .caption1Strong {
+  .caption1-strong {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase200);
     font-weight: var(--fontWeightSemibold);
@@ -91,7 +98,7 @@
   }
 
   /* from useCaption1StrongerStyles.root — typographyStyles.caption1Stronger */
-  .caption1Stronger {
+  .caption1-stronger {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase200);
     font-weight: var(--fontWeightBold);
@@ -107,7 +114,7 @@
   }
 
   /* from useCaption2StrongStyles.root — typographyStyles.caption2Strong */
-  .caption2Strong {
+  .caption2-strong {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase100);
     font-weight: var(--fontWeightSemibold);
@@ -123,7 +130,7 @@
   }
 
   /* from useLargeTitleStyles.root — typographyStyles.largeTitle */
-  .largeTitle {
+  .large-title {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeHero900);
     font-weight: var(--fontWeightSemibold);
@@ -147,7 +154,7 @@
   }
 
   /* from useSubtitle2StrongerStyles.root — typographyStyles.subtitle2Stronger */
-  .subtitle2Stronger {
+  .subtitle2-stronger {
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase400);
     font-weight: var(--fontWeightBold);
