@@ -105,41 +105,53 @@ export const customStyleHookCalled: BaseConformanceTest = testInfo => {
 
 async function renderWithReactDOM(element: ReactElement, container: HTMLElement) {
   const ReactModule = await import('react');
-  let act = ReactModule.act;
-
-  if (!act) {
-    // react-dom/test-utils is required for older React runtimes used in RIT.
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    act = (await import('react-dom/test-utils')).act;
-  }
+  const act = ReactModule.act;
 
   try {
     const ReactDOMClient = await import('react-dom/client');
     const root = ReactDOMClient.createRoot(container);
 
-    await act(async () => {
+    if (act) {
+      await act(async () => {
+        root.render(element);
+      });
+    } else {
       root.render(element);
-    });
+    }
 
     return {
-      unmount: () =>
-        act(() => {
-          root.unmount();
-        }),
+      unmount: () => {
+        if (act) {
+          return act(() => {
+            root.unmount();
+          });
+        }
+
+        root.unmount();
+      },
     };
   } catch {
     const ReactDOM = (await import('react-dom')) as unknown as ReactDOMLegacyModule;
     const legacyReactDOM = getLegacyReactDOM(ReactDOM);
 
-    await act(async () => {
+    if (act) {
+      await act(async () => {
+        legacyReactDOM.render(element, container);
+      });
+    } else {
       legacyReactDOM.render(element, container);
-    });
+    }
 
     return {
-      unmount: () =>
-        act(() => {
-          legacyReactDOM.unmountComponentAtNode(container);
-        }),
+      unmount: () => {
+        if (act) {
+          return act(() => {
+            legacyReactDOM.unmountComponentAtNode(container);
+          });
+        }
+
+        legacyReactDOM.unmountComponentAtNode(container);
+      },
     };
   }
 }
