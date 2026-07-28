@@ -250,7 +250,10 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
             y1="0"
             y2="300"
           />
-          <g>
+          <g
+            aria-label="Scatter chart with 2 regions"
+            role="listbox"
+          >
             <g
               aria-label="Region 2, series 2 of 2 with 5 data points."
               role="region"
@@ -264,7 +267,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__1_0"
                 opacity="1"
                 r="16"
-                role="img"
+                role="option"
                 stroke="#00bcf2"
                 tabindex="0"
               />
@@ -278,7 +281,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__1_1"
                 opacity="1"
                 r="10"
-                role="img"
+                role="option"
                 stroke="#00bcf2"
                 tabindex="0"
               />
@@ -292,7 +295,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__1_2"
                 opacity="1"
                 r="9"
-                role="img"
+                role="option"
                 stroke="#00bcf2"
                 tabindex="0"
               />
@@ -306,7 +309,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__1_3"
                 opacity="1"
                 r="7"
-                role="img"
+                role="option"
                 stroke="#00bcf2"
                 tabindex="0"
               />
@@ -320,7 +323,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__1_4"
                 opacity="1"
                 r="4"
-                role="img"
+                role="option"
                 stroke="#00bcf2"
                 tabindex="0"
               />
@@ -339,7 +342,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__0_0"
                 opacity="1"
                 r="13.5"
-                role="img"
+                role="option"
                 stroke="#0078d4"
                 tabindex="0"
               />
@@ -353,7 +356,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__0_1"
                 opacity="1"
                 r="11"
-                role="img"
+                role="option"
                 stroke="#0078d4"
                 tabindex="0"
               />
@@ -367,7 +370,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__0_2"
                 opacity="1"
                 r="8.5"
-                role="img"
+                role="option"
                 stroke="#0078d4"
                 tabindex="0"
               />
@@ -381,7 +384,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__0_3"
                 opacity="1"
                 r="6"
-                role="img"
+                role="option"
                 stroke="#0078d4"
                 tabindex="0"
               />
@@ -395,7 +398,7 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 id="circle_r_0__0_4"
                 opacity="1"
                 r="5"
-                role="img"
+                role="option"
                 stroke="#0078d4"
                 tabindex="0"
               />

@@ -21,6 +21,8 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -48)"
           >
             <text
@@ -51,7 +53,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -63,7 +65,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -75,7 +77,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -94,7 +96,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(80)"
               />
@@ -324,6 +326,8 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -354,7 +358,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -366,7 +370,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="0.1"
-            role="img"
+            role="option"
             stroke-width="0"
           />
           <path
@@ -377,7 +381,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="0.1"
-            role="img"
+            role="option"
             stroke-width="0"
           />
           <g
@@ -395,7 +399,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -527,6 +531,8 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -557,7 +563,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -569,7 +575,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="0.1"
-            role="img"
+            role="option"
             stroke-width="0"
           />
           <path
@@ -580,7 +586,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="0.1"
-            role="img"
+            role="option"
             stroke-width="0"
           />
           <g
@@ -598,7 +604,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -730,6 +736,8 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -760,7 +768,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -772,7 +780,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -784,7 +792,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -803,7 +811,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -1040,6 +1048,8 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -1070,7 +1080,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1082,7 +1092,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1094,7 +1104,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1113,7 +1123,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -1243,6 +1253,8 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -1273,7 +1285,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1285,7 +1297,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1297,7 +1309,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1316,7 +1328,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -1446,6 +1458,8 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -1476,7 +1490,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="2"
             tabindex="0"
           />
@@ -1488,7 +1502,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1500,7 +1514,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1519,7 +1533,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -1756,6 +1770,8 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -1786,7 +1802,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1798,7 +1814,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1810,7 +1826,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -1829,7 +1845,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -2066,6 +2082,8 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <rect
@@ -2118,7 +2136,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2130,7 +2148,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2142,7 +2160,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2161,7 +2179,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(105)"
             />
@@ -2291,6 +2309,8 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -2321,7 +2341,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2333,7 +2353,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2345,7 +2365,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2364,7 +2384,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -2494,6 +2514,8 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -2524,7 +2546,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2536,7 +2558,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2548,7 +2570,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2567,7 +2589,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -2697,6 +2719,8 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
         width="0"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(0, -48)"
         >
           <text
@@ -2727,7 +2751,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2739,7 +2763,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2751,7 +2775,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -2770,7 +2794,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(80)"
             />
@@ -2905,6 +2929,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 3 segments"
+              role="listbox"
               transform="translate(0, -48)"
             >
               <path
@@ -2915,7 +2941,7 @@ Object {
                 fill="#107c10"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -2927,7 +2953,7 @@ Object {
                 fill="#f7630c"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -2939,7 +2965,7 @@ Object {
                 fill="#c50f1f"
                 id="gauge-chart-arc-2"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -2958,7 +2984,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(80)"
                 />
@@ -3105,6 +3131,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -48)"
           >
             <path
@@ -3115,7 +3143,7 @@ Object {
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3127,7 +3155,7 @@ Object {
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3139,7 +3167,7 @@ Object {
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3158,7 +3186,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(80)"
               />
@@ -3345,6 +3373,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 3 segments"
+              role="listbox"
               transform="translate(0, -16)"
             >
               <text
@@ -3375,7 +3405,7 @@ Object {
                 fill="#107c10"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -3387,7 +3417,7 @@ Object {
                 fill="#f7630c"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -3399,7 +3429,7 @@ Object {
                 fill="#c50f1f"
                 id="gauge-chart-arc-2"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -3418,7 +3448,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(70)"
                 />
@@ -3481,6 +3511,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -16)"
           >
             <text
@@ -3511,7 +3543,7 @@ Object {
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3523,7 +3555,7 @@ Object {
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3535,7 +3567,7 @@ Object {
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3554,7 +3586,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(70)"
               />
@@ -3657,6 +3689,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 3 segments"
+              role="listbox"
               transform="translate(0, -48)"
             >
               <text
@@ -3687,7 +3721,7 @@ Object {
                 fill="#107c10"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -3699,7 +3733,7 @@ Object {
                 fill="#f7630c"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -3711,7 +3745,7 @@ Object {
                 fill="#c50f1f"
                 id="gauge-chart-arc-2"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -3730,7 +3764,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(80)"
                 />
@@ -3877,6 +3911,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -48)"
           >
             <text
@@ -3907,7 +3943,7 @@ Object {
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3919,7 +3955,7 @@ Object {
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3931,7 +3967,7 @@ Object {
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -3950,7 +3986,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(80)"
               />
@@ -4137,6 +4173,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 2 segments"
+              role="listbox"
               transform="translate(0, -48)"
             >
               <text
@@ -4167,7 +4205,7 @@ Object {
                 fill="blue"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -4179,7 +4217,7 @@ Object {
                 fill="neutralLight"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -4198,7 +4236,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(80)"
                 />
@@ -4324,6 +4362,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 2 segments"
+            role="listbox"
             transform="translate(0, -48)"
           >
             <text
@@ -4354,7 +4394,7 @@ Object {
               fill="blue"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -4366,7 +4406,7 @@ Object {
               fill="neutralLight"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -4385,7 +4425,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(80)"
               />
@@ -4551,6 +4591,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 3 segments"
+              role="listbox"
               transform="translate(0, -48)"
             >
               <rect
@@ -4603,7 +4645,7 @@ Object {
                 fill="#107c10"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -4615,7 +4657,7 @@ Object {
                 fill="#f7630c"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -4627,7 +4669,7 @@ Object {
                 fill="#c50f1f"
                 id="gauge-chart-arc-2"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -4646,7 +4688,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(105)"
                 />
@@ -4812,6 +4854,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -48)"
           >
             <rect
@@ -4864,7 +4908,7 @@ Object {
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -4876,7 +4920,7 @@ Object {
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -4888,7 +4932,7 @@ Object {
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -4907,7 +4951,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(105)"
               />
@@ -5094,6 +5138,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 3 segments"
+              role="listbox"
               transform="translate(0, -48)"
             >
               <text
@@ -5124,7 +5170,7 @@ Object {
                 fill="#107c10"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -5136,7 +5182,7 @@ Object {
                 fill="#f7630c"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -5148,7 +5194,7 @@ Object {
                 fill="#c50f1f"
                 id="gauge-chart-arc-2"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -5167,7 +5213,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(80)"
                 />
@@ -5314,6 +5360,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -48)"
           >
             <text
@@ -5344,7 +5392,7 @@ Object {
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -5356,7 +5404,7 @@ Object {
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -5368,7 +5416,7 @@ Object {
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -5387,7 +5435,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(80)"
               />
@@ -5574,6 +5622,8 @@ Object {
             width="0"
           >
             <g
+              aria-label="Gauge chart with 3 segments"
+              role="listbox"
               transform="translate(0, -68)"
             >
               <text
@@ -5604,7 +5654,7 @@ Object {
                 fill="#107c10"
                 id="gauge-chart-arc-0"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -5616,7 +5666,7 @@ Object {
                 fill="#f7630c"
                 id="gauge-chart-arc-1"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -5628,7 +5678,7 @@ Object {
                 fill="#c50f1f"
                 id="gauge-chart-arc-2"
                 opacity="1"
-                role="img"
+                role="option"
                 stroke-width="0"
                 tabindex="0"
               />
@@ -5647,7 +5697,7 @@ Object {
           "
                   data-is-focusable="true"
                   id="gauge-chart-needle"
-                  role="img"
+                  role="option"
                   stroke-width="2"
                   transform="translate(100)"
                 />
@@ -5827,6 +5877,8 @@ Object {
           width="0"
         >
           <g
+            aria-label="Gauge chart with 3 segments"
+            role="listbox"
             transform="translate(0, -68)"
           >
             <text
@@ -5857,7 +5909,7 @@ Object {
               fill="#107c10"
               id="gauge-chart-arc-0"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -5869,7 +5921,7 @@ Object {
               fill="#f7630c"
               id="gauge-chart-arc-1"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -5881,7 +5933,7 @@ Object {
               fill="#c50f1f"
               id="gauge-chart-arc-2"
               opacity="1"
-              role="img"
+              role="option"
               stroke-width="0"
               tabindex="0"
             />
@@ -5900,7 +5952,7 @@ Object {
           "
                 data-is-focusable="true"
                 id="gauge-chart-needle"
-                role="img"
+                role="option"
                 stroke-width="2"
                 transform="translate(100)"
               />
@@ -6096,6 +6148,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         width="300"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(150, 252)"
         >
           <text
@@ -6126,7 +6180,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -6138,7 +6192,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -6150,7 +6204,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -6169,7 +6223,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(-72)"
             />
@@ -6299,6 +6353,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         width="300"
       >
         <g
+          aria-label="Gauge chart with 3 segments"
+          role="listbox"
           transform="translate(150, 252)"
         >
           <text
@@ -6329,7 +6385,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             fill="#107c10"
             id="gauge-chart-arc-0"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -6341,7 +6397,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             fill="#f7630c"
             id="gauge-chart-arc-1"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -6353,7 +6409,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             fill="#c50f1f"
             id="gauge-chart-arc-2"
             opacity="1"
-            role="img"
+            role="option"
             stroke-width="0"
             tabindex="0"
           />
@@ -6372,7 +6428,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           "
               data-is-focusable="true"
               id="gauge-chart-needle"
-              role="img"
+              role="option"
               stroke-width="2"
               transform="translate(-72)"
             />

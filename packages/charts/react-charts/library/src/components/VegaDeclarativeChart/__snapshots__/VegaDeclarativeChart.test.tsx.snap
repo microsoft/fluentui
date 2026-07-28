@@ -2245,6 +2245,8 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
             width="0"
           >
             <g
+              aria-label="Donut chart with 2 slices"
+              role="listbox"
               transform="translate(0, 80)"
             >
               <g>
@@ -2254,7 +2256,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   d="M0.5,-49.998A50,50,0,0,1,42.748,25.935L0,0Z"
                   id="_Pie__r_2s_A28"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #637cef; cursor: default;"
                   tabindex="0"
                 />
@@ -2266,7 +2268,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   d="M42.22,26.785A50,50,0,1,1,-0.5,-49.998L0,0Z"
                   id="_Pie__r_2s_B55"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #e3008c; cursor: default;"
                   tabindex="0"
                 />
@@ -2703,12 +2705,14 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 2 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="A, Monday. , 10."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 25.78431372549022)"
               >
@@ -2730,7 +2734,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               <g
                 aria-label="B, Monday. , 20."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 25.78431372549022)"
               >
@@ -2929,12 +2933,14 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Company A, ROE. , 15.2."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
@@ -2956,7 +2962,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, ROE. , 12.7."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
@@ -2978,7 +2984,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, ROE. , 18.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
@@ -3000,7 +3006,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company A, Debt-to-Equity. , 0.8."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
@@ -3022,7 +3028,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, Debt-to-Equity. , 1.3."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
@@ -3044,7 +3050,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, Debt-to-Equity. , 0.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
@@ -3066,7 +3072,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company A, Quick Ratio. , 1.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
@@ -3088,7 +3094,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, Quick Ratio. , 1.2."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
@@ -3110,7 +3116,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, Quick Ratio. , 1.9."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
@@ -3132,7 +3138,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company A, Current Ratio. , 2.1."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
@@ -3154,7 +3160,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company B, Current Ratio. , 1.8."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
@@ -3176,7 +3182,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               <g
                 aria-label="Company C, Current Ratio. , 2.5."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
@@ -3308,12 +3314,14 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 2 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="A, Mon. , 10."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 25.78431372549022)"
               >
@@ -3335,7 +3343,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               <g
                 aria-label="B, Mon. , 20."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 25.78431372549022)"
               >
@@ -3954,12 +3962,14 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Morning, Houston. , 72."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
@@ -3981,7 +3991,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, Houston. , 88."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
@@ -4003,7 +4013,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, Houston. , 75."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
@@ -4025,7 +4035,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Morning, Chicago. , 52."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
@@ -4047,7 +4057,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, Chicago. , 68."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
@@ -4069,7 +4079,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, Chicago. , 61."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
@@ -4091,7 +4101,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Morning, Los Angeles. , 85."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
@@ -4113,7 +4123,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, Los Angeles. , 95."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
@@ -4135,7 +4145,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, Los Angeles. , 78."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
@@ -4157,7 +4167,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Morning, New York. , 45."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
@@ -4179,7 +4189,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Afternoon, New York. , 62."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
@@ -4201,7 +4211,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Evening, New York. , 58."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
@@ -4422,12 +4432,14 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Monday, Period 4. , 85."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 21.36815920398007)"
               >
@@ -4449,7 +4461,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 4. , 86."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 21.36815920398007)"
               >
@@ -4471,7 +4483,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 4. , 88."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 21.36815920398007)"
               >
@@ -4493,7 +4505,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Monday, Period 3. , 87."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 89.77611940298506)"
               >
@@ -4515,7 +4527,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 3. , 91."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 89.77611940298506)"
               >
@@ -4537,7 +4549,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 3. , 90."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 89.77611940298506)"
               >
@@ -4559,7 +4571,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Monday, Period 2. , 89."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 158.18407960199005)"
               >
@@ -4581,7 +4593,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 2. , 88."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 158.18407960199005)"
               >
@@ -4603,7 +4615,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 2. , 92."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 158.18407960199005)"
               >
@@ -4625,7 +4637,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Monday, Period 1. , 92."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(36.18543046357616, 226.59203980099502)"
               >
@@ -4647,7 +4659,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Tuesday, Period 1. , 90."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(8.370860927152322, 226.59203980099502)"
               >
@@ -4669,7 +4681,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               <g
                 aria-label="Wednesday, Period 1. , 94."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.443708609271518, 226.59203980099502)"
               >
@@ -4824,12 +4836,14 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="A, Tue. , 30."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 22.9207920792079)"
               >
@@ -4851,7 +4865,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               <g
                 aria-label="B, Tue. , 40."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 22.9207920792079)"
               >
@@ -4873,7 +4887,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               <g
                 aria-label="A, Mon. , 10."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(10.297029702970299, 168.96039603960395)"
               >
@@ -4895,7 +4909,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               <g
                 aria-label="B, Mon. , 20."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(-19.405940594059405, 168.96039603960395)"
               >
@@ -5164,7 +5178,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                 y1="0"
                 y2="NaN"
               />
-              <g>
+              <g
+                aria-label="Scatter chart with 3 regions"
+                role="listbox"
+              >
                 <g
                   aria-label="Underweight, series 3 of 3 with 2 data points."
                   role="region"
@@ -5523,7 +5540,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 y1="0"
                 y2="NaN"
               />
-              <g>
+              <g
+                aria-label="Scatter chart with 3 regions"
+                role="listbox"
+              >
                 <g
                   aria-label="C, series 3 of 3 with 1 data points."
                   role="region"
@@ -5879,7 +5899,10 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 y1="0"
                 y2="NaN"
               />
-              <g>
+              <g
+                aria-label="Scatter chart with 2 regions"
+                role="listbox"
+              >
                 <g
                   aria-label="Overweight, series 2 of 2 with 3 data points."
                   role="region"

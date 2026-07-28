@@ -38,6 +38,8 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           hidden=""
         />
         <g
+          aria-label="Donut chart with 3 slices"
+          role="listbox"
           transform="translate(0, 89)"
         >
           <g>
@@ -47,7 +49,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
               id="_Pie__r_0_first20000"
               opacity="1"
-              role="img"
+              role="option"
               style="fill: #E5E5E5; cursor: default;"
               tabindex="0"
             />
@@ -59,7 +61,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
               id="_Pie__r_0_second39000"
               opacity="1"
-              role="img"
+              role="option"
               style="fill: #0078D4; cursor: default;"
               tabindex="0"
             />
@@ -71,7 +73,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
               id="_Pie__r_0_third45000"
               opacity="1"
-              role="img"
+              role="option"
               style="fill: #DADADA; cursor: default;"
               tabindex="0"
             />
@@ -214,6 +216,8 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             hidden=""
           />
           <g
+            aria-label="Donut chart with 3 slices"
+            role="listbox"
             transform="translate(0, 89)"
           >
             <g>
@@ -223,7 +227,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_1i_first20000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #E5E5E5; cursor: default;"
                 tabindex="0"
               />
@@ -235,7 +239,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_1i_second39000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #0078D4; cursor: default;"
                 tabindex="0"
               />
@@ -247,7 +251,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_1i_third45000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #DADADA; cursor: default;"
                 tabindex="0"
               />
@@ -392,6 +396,8 @@ Object {
               hidden=""
             />
             <g
+              aria-label="Donut chart with 3 slices"
+              role="listbox"
               transform="translate(0, 89)"
             >
               <g>
@@ -401,7 +407,7 @@ Object {
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   id="_Pie__r_3u_first20000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #E5E5E5; cursor: default;"
                   tabindex="0"
                 />
@@ -413,7 +419,7 @@ Object {
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   id="_Pie__r_3u_second39000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #0078D4; cursor: default;"
                   tabindex="0"
                 />
@@ -425,7 +431,7 @@ Object {
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   id="_Pie__r_3u_third45000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #DADADA; cursor: default;"
                   tabindex="0"
                 />
@@ -622,6 +628,8 @@ Object {
             hidden=""
           />
           <g
+            aria-label="Donut chart with 3 slices"
+            role="listbox"
             transform="translate(0, 89)"
           >
             <g>
@@ -631,7 +639,7 @@ Object {
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_3u_first20000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #E5E5E5; cursor: default;"
                 tabindex="0"
               />
@@ -643,7 +651,7 @@ Object {
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_3u_second39000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #0078D4; cursor: default;"
                 tabindex="0"
               />
@@ -655,7 +663,7 @@ Object {
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_3u_third45000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #DADADA; cursor: default;"
                 tabindex="0"
               />
@@ -892,6 +900,8 @@ Object {
               hidden=""
             />
             <g
+              aria-label="Donut chart with 3 slices"
+              role="listbox"
               transform="translate(0, 89)"
             >
               <g>
@@ -901,7 +911,7 @@ Object {
                   d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                   id="_Pie__r_4b_first20000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #E5E5E5; cursor: default;"
                   tabindex="0"
                 />
@@ -913,7 +923,7 @@ Object {
                   d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                   id="_Pie__r_4b_second39000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #0078D4; cursor: default;"
                   tabindex="0"
                 />
@@ -925,7 +935,7 @@ Object {
                   d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                   id="_Pie__r_4b_third45000"
                   opacity="1"
-                  role="img"
+                  role="option"
                   style="fill: #DADADA; cursor: default;"
                   tabindex="0"
                 />
@@ -1122,6 +1132,8 @@ Object {
             hidden=""
           />
           <g
+            aria-label="Donut chart with 3 slices"
+            role="listbox"
             transform="translate(0, 89)"
           >
             <g>
@@ -1131,7 +1143,7 @@ Object {
                 d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
                 id="_Pie__r_4b_first20000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #E5E5E5; cursor: default;"
                 tabindex="0"
               />
@@ -1143,7 +1155,7 @@ Object {
                 d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
                 id="_Pie__r_4b_second39000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #0078D4; cursor: default;"
                 tabindex="0"
               />
@@ -1155,7 +1167,7 @@ Object {
                 d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
                 id="_Pie__r_4b_third45000"
                 opacity="1"
-                role="img"
+                role="option"
                 style="fill: #DADADA; cursor: default;"
                 tabindex="0"
               />
@@ -1386,6 +1398,8 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -1395,7 +1409,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             d="M0,0Z"
             id="_Pie__r_30_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -1407,7 +1421,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             d="M0,0Z"
             id="_Pie__r_30_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -1419,7 +1433,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             d="M0,0Z"
             id="_Pie__r_30_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1556,6 +1570,8 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -1565,7 +1581,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             d="M0,0Z"
             id="_Pie__r_2m_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -1587,7 +1603,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             d="M0,0Z"
             id="_Pie__r_2m_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -1609,7 +1625,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             d="M0,0Z"
             id="_Pie__r_2m_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1756,6 +1772,8 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -1765,7 +1783,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             d="M0,0Z"
             id="_Pie__r_2r_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -1787,7 +1805,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             d="M0,0Z"
             id="_Pie__r_2r_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -1809,7 +1827,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             d="M0,0Z"
             id="_Pie__r_2r_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -1956,6 +1974,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -1965,7 +1985,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             d="M0.55,-54.997A55,55,0,0,1,51.396,-19.582L0,0Z"
             id="_Pie__r_1s_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -1977,7 +1997,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             d="M51.777,-18.551A55,55,0,0,1,-22.37,50.245L0,0Z"
             id="_Pie__r_1s_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -1989,7 +2009,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             d="M-23.37,49.788A55,55,0,0,1,-0.55,-54.997L0,0Z"
             id="_Pie__r_1s_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2126,6 +2146,8 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -2135,7 +2157,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             d="M0,0Z"
             id="_Pie__r_21_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="cursor: default;"
             tabindex="0"
           />
@@ -2147,7 +2169,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             d="M0,0Z"
             id="_Pie__r_21_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="cursor: default;"
             tabindex="0"
           />
@@ -2159,7 +2181,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             d="M0,0Z"
             id="_Pie__r_21_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="cursor: default;"
             tabindex="0"
           />
@@ -2296,6 +2318,8 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -2305,7 +2329,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             d="M0,0Z"
             id="_Pie__r_2d_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -2317,7 +2341,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             d="M0,0Z"
             id="_Pie__r_2d_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -2329,7 +2353,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             d="M0,0Z"
             id="_Pie__r_2d_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2450,6 +2474,8 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
       width="0"
     >
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 91)"
       >
         <g>
@@ -2459,7 +2485,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             d="M0,0Z"
             id="_Pie__r_26_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -2471,7 +2497,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             d="M0,0Z"
             id="_Pie__r_26_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -2483,7 +2509,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             d="M0,0Z"
             id="_Pie__r_26_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2535,6 +2561,8 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -2544,7 +2572,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             d="M0,0Z"
             id="_Pie__r_28_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -2556,7 +2584,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             d="M0,0Z"
             id="_Pie__r_28_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -2568,7 +2596,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             d="M0,0Z"
             id="_Pie__r_28_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />
@@ -2705,6 +2733,8 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         hidden=""
       />
       <g
+        aria-label="Donut chart with 3 slices"
+        role="listbox"
         transform="translate(0, 89)"
       >
         <g>
@@ -2714,7 +2744,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             d="M0,0Z"
             id="_Pie__r_2h_first20000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #E5E5E5; cursor: default;"
             tabindex="0"
           />
@@ -2726,7 +2756,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             d="M0,0Z"
             id="_Pie__r_2h_second39000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #0078D4; cursor: default;"
             tabindex="0"
           />
@@ -2738,7 +2768,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             d="M0,0Z"
             id="_Pie__r_2h_third45000"
             opacity="1"
-            role="img"
+            role="option"
             style="fill: #DADADA; cursor: default;"
             tabindex="0"
           />

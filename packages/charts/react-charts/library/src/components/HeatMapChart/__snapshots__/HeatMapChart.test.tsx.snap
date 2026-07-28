@@ -127,12 +127,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
@@ -155,7 +157,7 @@ Object {
                 aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 22.42574257425744)"
               >
@@ -177,7 +179,7 @@ Object {
               <g
                 aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 143.71287128712873)"
               >
@@ -200,7 +202,7 @@ Object {
                 aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 143.71287128712873)"
               >
@@ -409,12 +411,14 @@ Object {
             </g>
           </g>
           <g
+            aria-label="Heat map chart with 4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            role="listbox"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 22.42574257425744)"
             >
@@ -437,7 +441,7 @@ Object {
               aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 22.42574257425744)"
             >
@@ -459,7 +463,7 @@ Object {
             <g
               aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 143.71287128712873)"
             >
@@ -482,7 +486,7 @@ Object {
               aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 143.71287128712873)"
             >
@@ -750,12 +754,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="p4, p1. Nasty, 50."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
@@ -777,7 +783,7 @@ Object {
               <g
                 aria-label="p3, p1. Excellent, 75."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 22.42574257425744)"
               >
@@ -799,7 +805,7 @@ Object {
               <g
                 aria-label="p4, p2. Excellent, 100."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 143.71287128712873)"
               >
@@ -821,7 +827,7 @@ Object {
               <g
                 aria-label="p3, p2. Nasty, 25."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 143.71287128712873)"
               >
@@ -1030,12 +1036,14 @@ Object {
             </g>
           </g>
           <g
+            aria-label="Heat map chart with 4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            role="listbox"
           >
             <g
               aria-label="p4, p1. Nasty, 50."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 22.42574257425744)"
             >
@@ -1057,7 +1065,7 @@ Object {
             <g
               aria-label="p3, p1. Excellent, 75."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 22.42574257425744)"
             >
@@ -1079,7 +1087,7 @@ Object {
             <g
               aria-label="p4, p2. Excellent, 100."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 143.71287128712873)"
             >
@@ -1101,7 +1109,7 @@ Object {
             <g
               aria-label="p3, p2. Nasty, 25."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 143.71287128712873)"
             >
@@ -1369,12 +1377,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 17.524752475247524)"
               >
@@ -1397,7 +1407,7 @@ Object {
                 aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 17.524752475247524)"
               >
@@ -1419,7 +1429,7 @@ Object {
               <g
                 aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 15.049504950495049)"
               >
@@ -1442,7 +1452,7 @@ Object {
                 aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 15.049504950495049)"
               >
@@ -1588,12 +1598,14 @@ Object {
             </g>
           </g>
           <g
+            aria-label="Heat map chart with 4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            role="listbox"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 17.524752475247524)"
             >
@@ -1616,7 +1628,7 @@ Object {
               aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 17.524752475247524)"
             >
@@ -1638,7 +1650,7 @@ Object {
             <g
               aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 15.049504950495049)"
             >
@@ -1661,7 +1673,7 @@ Object {
               aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 15.049504950495049)"
             >
@@ -1866,12 +1878,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
@@ -1894,7 +1908,7 @@ Object {
                 aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 22.42574257425744)"
               >
@@ -1916,7 +1930,7 @@ Object {
               <g
                 aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 143.71287128712873)"
               >
@@ -1939,7 +1953,7 @@ Object {
                 aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 143.71287128712873)"
               >
@@ -2148,12 +2162,14 @@ Object {
             </g>
           </g>
           <g
+            aria-label="Heat map chart with 4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            role="listbox"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 22.42574257425744)"
             >
@@ -2176,7 +2192,7 @@ Object {
               aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 22.42574257425744)"
             >
@@ -2198,7 +2214,7 @@ Object {
             <g
               aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 143.71287128712873)"
             >
@@ -2221,7 +2237,7 @@ Object {
               aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 143.71287128712873)"
             >
@@ -2489,12 +2505,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
@@ -2517,7 +2535,7 @@ Object {
                 aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 22.42574257425744)"
               >
@@ -2539,7 +2557,7 @@ Object {
               <g
                 aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 143.71287128712873)"
               >
@@ -2562,7 +2580,7 @@ Object {
                 aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 143.71287128712873)"
               >
@@ -2771,12 +2789,14 @@ Object {
             </g>
           </g>
           <g
+            aria-label="Heat map chart with 4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+            role="listbox"
           >
             <g
               aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 22.42574257425744)"
             >
@@ -2799,7 +2819,7 @@ Object {
               aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 22.42574257425744)"
             >
@@ -2821,7 +2841,7 @@ Object {
             <g
               aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(45.8415841584158, 143.71287128712873)"
             >
@@ -2844,7 +2864,7 @@ Object {
               aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
-              role="img"
+              role="option"
               tabindex="0"
               transform="translate(337.9207920792079, 143.71287128712873)"
             >
@@ -3116,12 +3136,14 @@ Object {
                 </g>
               </g>
               <g
+                aria-label="Heat map chart with 4 cells"
                 data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+                role="listbox"
               >
                 <g
                   aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(45.8415841584158, 22.42574257425744)"
                 >
@@ -3144,7 +3166,7 @@ Object {
                   aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(337.9207920792079, 22.42574257425744)"
                 >
@@ -3166,7 +3188,7 @@ Object {
                 <g
                   aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(45.8415841584158, 143.71287128712873)"
                 >
@@ -3189,7 +3211,7 @@ Object {
                   aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(337.9207920792079, 143.71287128712873)"
                 >
@@ -3403,12 +3425,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
@@ -3431,7 +3455,7 @@ Object {
                 aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 22.42574257425744)"
               >
@@ -3453,7 +3477,7 @@ Object {
               <g
                 aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 143.71287128712873)"
               >
@@ -3476,7 +3500,7 @@ Object {
                 aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 143.71287128712873)"
               >
@@ -3748,12 +3772,14 @@ Object {
                 </g>
               </g>
               <g
+                aria-label="Heat map chart with 4 cells"
                 data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+                role="listbox"
               >
                 <g
                   aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(45.8415841584158, 22.42574257425744)"
                 >
@@ -3776,7 +3802,7 @@ Object {
                   aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(337.9207920792079, 22.42574257425744)"
                 >
@@ -3798,7 +3824,7 @@ Object {
                 <g
                   aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(45.8415841584158, 143.71287128712873)"
                 >
@@ -3821,7 +3847,7 @@ Object {
                   aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
-                  role="img"
+                  role="option"
                   tabindex="0"
                   transform="translate(337.9207920792079, 143.71287128712873)"
                 >
@@ -4034,12 +4060,14 @@ Object {
               </g>
             </g>
             <g
+              aria-label="Heat map chart with 4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+              role="listbox"
             >
               <g
                 aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 22.42574257425744)"
               >
@@ -4062,7 +4090,7 @@ Object {
                 aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 22.42574257425744)"
               >
@@ -4084,7 +4112,7 @@ Object {
               <g
                 aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(45.8415841584158, 143.71287128712873)"
               >
@@ -4107,7 +4135,7 @@ Object {
                 aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
-                role="img"
+                role="option"
                 tabindex="0"
                 transform="translate(337.9207920792079, 143.71287128712873)"
               >
@@ -4371,12 +4399,14 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           </g>
         </g>
         <g
+          aria-label="Heat map chart with 4 cells"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g
             aria-label="Lorem ipsum dolor sit amet"
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(45.8415841584158, 22.42574257425744)"
           >
@@ -4396,7 +4426,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <g
             aria-label="ut labore et dolore magna aliqua"
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(337.9207920792079, 22.42574257425744)"
           >
@@ -4416,7 +4446,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <g
             aria-label="sed do eiusmod tempor incididunt"
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(45.8415841584158, 143.71287128712873)"
           >
@@ -4436,7 +4466,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <g
             aria-label="consectetur adipiscing elit"
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(337.9207920792079, 143.71287128712873)"
           >
@@ -4645,12 +4675,14 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </g>
         </g>
         <g
+          aria-label="Heat map chart with 4 cells"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+          role="listbox"
         >
           <g
             aria-label="xPoint p4, yPoint p1. Nasty, 50."
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(45.8415841584158, 22.42574257425744)"
           >
@@ -4672,7 +4704,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <g
             aria-label="xPoint p3, yPoint p1. Excellent, 75."
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(337.9207920792079, 22.42574257425744)"
           >
@@ -4694,7 +4726,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <g
             aria-label="xPoint p4, yPoint p2. Excellent, 100."
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(45.8415841584158, 143.71287128712873)"
           >
@@ -4716,7 +4748,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <g
             aria-label="xPoint p3, yPoint p2. Nasty, 25."
             fill-opacity="1"
-            role="img"
+            role="option"
             tabindex="0"
             transform="translate(337.9207920792079, 143.71287128712873)"
           >
