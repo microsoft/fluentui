@@ -76,11 +76,12 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   root['data-indeterminate'] = checked === 'mixed' || undefined;
   root['data-disabled'] = disabled || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this Checkbox's state, because `styles.root` is hashed and unaddressable from
-  // outside this file (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Checkbox's state, because `styles.root` is
+  // hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // Checkbox needs no state mirrors and is in fact D15's WORKED PRECEDENT for them: the
   // real checked/indeterminate/disabled state lives on the hidden `<input>`, and this hook
@@ -93,7 +94,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's own
   // hook output).
-  state.root.className = clsx('group/fui-checkbox', checkboxClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(checkboxClassNames.root, 'group/fui-checkbox', styles.root, state.root.className);
 
   state.input.className = clsx(checkboxClassNames.input, styles.input, state.input.className);
 

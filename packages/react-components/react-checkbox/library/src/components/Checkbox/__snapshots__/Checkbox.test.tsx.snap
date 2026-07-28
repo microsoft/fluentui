@@ -3,7 +3,7 @@
 exports[`Checkbox renders a custom indicator 1`] = `
 <div>
   <span
-    class="group/fui-checkbox fui-Checkbox"
+    class="fui-Checkbox group/fui-checkbox"
     data-label-position="after"
     data-size="medium"
   >
@@ -21,7 +21,7 @@ exports[`Checkbox renders a custom indicator 1`] = `
       />
     </div>
     <label
-      class="group/fui-label fui-Label fui-Checkbox__label"
+      class="fui-Label group/fui-label fui-Checkbox__label"
       data-size="medium"
       for="checkbox-_r_d_"
     >
@@ -34,7 +34,7 @@ exports[`Checkbox renders a custom indicator 1`] = `
 exports[`Checkbox renders a default state 1`] = `
 <div>
   <span
-    class="group/fui-checkbox fui-Checkbox"
+    class="fui-Checkbox group/fui-checkbox"
     data-label-position="after"
     data-size="medium"
   >
@@ -54,7 +54,7 @@ exports[`Checkbox renders a default state 1`] = `
 exports[`Checkbox renders checked 1`] = `
 <div>
   <span
-    class="group/fui-checkbox fui-Checkbox"
+    class="fui-Checkbox group/fui-checkbox"
     data-checked="true"
     data-label-position="after"
     data-size="medium"
@@ -85,7 +85,7 @@ exports[`Checkbox renders checked 1`] = `
       </svg>
     </div>
     <label
-      class="group/fui-label fui-Label fui-Checkbox__label"
+      class="fui-Label group/fui-label fui-Checkbox__label"
       data-size="medium"
       for="checkbox-_r_b_"
     >
@@ -98,7 +98,7 @@ exports[`Checkbox renders checked 1`] = `
 exports[`Checkbox renders mixed 1`] = `
 <div>
   <span
-    class="group/fui-checkbox fui-Checkbox"
+    class="fui-Checkbox group/fui-checkbox"
     data-indeterminate="true"
     data-label-position="after"
     data-size="medium"
@@ -128,7 +128,7 @@ exports[`Checkbox renders mixed 1`] = `
       </svg>
     </div>
     <label
-      class="group/fui-label fui-Label fui-Checkbox__label"
+      class="fui-Label group/fui-label fui-Checkbox__label"
       data-size="medium"
       for="checkbox-_r_c_"
     >
@@ -141,7 +141,7 @@ exports[`Checkbox renders mixed 1`] = `
 exports[`Checkbox renders with a label 1`] = `
 <div>
   <span
-    class="group/fui-checkbox fui-Checkbox"
+    class="fui-Checkbox group/fui-checkbox"
     data-label-position="after"
     data-size="medium"
   >
@@ -155,7 +155,7 @@ exports[`Checkbox renders with a label 1`] = `
       class="fui-Checkbox__indicator"
     />
     <label
-      class="group/fui-label fui-Label fui-Checkbox__label"
+      class="fui-Label group/fui-label fui-Checkbox__label"
       data-size="medium"
       for="checkbox-_r_a_"
     >
