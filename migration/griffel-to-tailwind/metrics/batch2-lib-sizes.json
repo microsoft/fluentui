@@ -1,0 +1,606 @@
+{
+  "perPackage": {
+    "babel-preset-global-context": {
+      "libJsBytes": 10380,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 3
+    },
+    "babel-preset-storybook-full-source": {
+      "libJsBytes": 26644,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 1021,
+      "files": 41
+    },
+    "component-selector-preview": {
+      "libJsBytes": 12,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 1
+    },
+    "eslint-plugin-react-components": {
+      "libJsBytes": 31618,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 4
+    },
+    "global-context": {
+      "libJsBytes": 4964,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 5
+    },
+    "keyboard-keys": {
+      "libJsBytes": 19455,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 3
+    },
+    "priority-overflow": {
+      "libJsBytes": 21103,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 7
+    },
+    "react-accordion": {
+      "libJsBytes": 40859,
+      "stylesJsBytes": 10352,
+      "stylesRawJsBytes": 5728,
+      "cssBytes": 0,
+      "files": 39
+    },
+    "react-aria": {
+      "libJsBytes": 34345,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 22
+    },
+    "react-avatar": {
+      "libJsBytes": 74576,
+      "stylesJsBytes": 23548,
+      "stylesRawJsBytes": 7142,
+      "cssBytes": 27820,
+      "files": 41
+    },
+    "react-badge": {
+      "libJsBytes": 30705,
+      "stylesJsBytes": 7879,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 18029,
+      "files": 24
+    },
+    "react-breadcrumb": {
+      "libJsBytes": 35650,
+      "stylesJsBytes": 9082,
+      "stylesRawJsBytes": 6361,
+      "cssBytes": 0,
+      "files": 38
+    },
+    "react-button": {
+      "libJsBytes": 101406,
+      "stylesJsBytes": 47889,
+      "stylesRawJsBytes": 29942,
+      "cssBytes": 20057,
+      "files": 45
+    },
+    "react-calendar-compat": {
+      "libJsBytes": 214522,
+      "stylesJsBytes": 61248,
+      "stylesRawJsBytes": 37155,
+      "cssBytes": 0,
+      "files": 62
+    },
+    "react-card": {
+      "libJsBytes": 84062,
+      "stylesJsBytes": 34725,
+      "stylesRawJsBytes": 21877,
+      "cssBytes": 0,
+      "files": 36
+    },
+    "react-carousel": {
+      "libJsBytes": 122019,
+      "stylesJsBytes": 23908,
+      "stylesRawJsBytes": 18067,
+      "cssBytes": 0,
+      "files": 92
+    },
+    "react-checkbox": {
+      "libJsBytes": 11167,
+      "stylesJsBytes": 2573,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 8421,
+      "files": 9
+    },
+    "react-color-picker": {
+      "libJsBytes": 70452,
+      "stylesJsBytes": 23757,
+      "stylesRawJsBytes": 14486,
+      "cssBytes": 0,
+      "files": 43
+    },
+    "react-colorpicker-compat": {
+      "libJsBytes": 47,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 1
+    },
+    "react-combobox": {
+      "libJsBytes": 158679,
+      "stylesJsBytes": 47822,
+      "stylesRawJsBytes": 27927,
+      "cssBytes": 0,
+      "files": 61
+    },
+    "react-components": {
+      "libJsBytes": 46672,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 2
+    },
+    "react-conformance-griffel": {
+      "libJsBytes": 7075,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 5
+    },
+    "react-context-selector": {
+      "libJsBytes": 4995,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 5
+    },
+    "react-datepicker-compat": {
+      "libJsBytes": 25116,
+      "stylesJsBytes": 2112,
+      "stylesRawJsBytes": 2157,
+      "cssBytes": 0,
+      "files": 11
+    },
+    "react-dialog": {
+      "libJsBytes": 62774,
+      "stylesJsBytes": 13932,
+      "stylesRawJsBytes": 9920,
+      "cssBytes": 0,
+      "files": 67
+    },
+    "react-divider": {
+      "libJsBytes": 6285,
+      "stylesJsBytes": 2017,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 6710,
+      "files": 9
+    },
+    "react-drawer": {
+      "libJsBytes": 76583,
+      "stylesJsBytes": 20416,
+      "stylesRawJsBytes": 14655,
+      "cssBytes": 0,
+      "files": 80
+    },
+    "react-field": {
+      "libJsBytes": 23560,
+      "stylesJsBytes": 6086,
+      "stylesRawJsBytes": 5903,
+      "cssBytes": 0,
+      "files": 14
+    },
+    "react-headless-components-preview": {
+      "libJsBytes": 316880,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 745
+    },
+    "react-icons-compat": {
+      "libJsBytes": 9345,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 4
+    },
+    "react-image": {
+      "libJsBytes": 6377,
+      "stylesJsBytes": 2516,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 2475,
+      "files": 9
+    },
+    "react-infolabel": {
+      "libJsBytes": 21675,
+      "stylesJsBytes": 6224,
+      "stylesRawJsBytes": 3599,
+      "cssBytes": 5507,
+      "files": 19
+    },
+    "react-input": {
+      "libJsBytes": 9916,
+      "stylesJsBytes": 3237,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 12011,
+      "files": 9
+    },
+    "react-jsx-runtime": {
+      "libJsBytes": 8260,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 16
+    },
+    "react-label": {
+      "libJsBytes": 5949,
+      "stylesJsBytes": 1994,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 2197,
+      "files": 9
+    },
+    "react-link": {
+      "libJsBytes": 10167,
+      "stylesJsBytes": 2254,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 4156,
+      "files": 12
+    },
+    "react-list": {
+      "libJsBytes": 28889,
+      "stylesJsBytes": 3691,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 2079,
+      "files": 29
+    },
+    "react-menu": {
+      "libJsBytes": 173859,
+      "stylesJsBytes": 36283,
+      "stylesRawJsBytes": 26173,
+      "cssBytes": 0,
+      "files": 123
+    },
+    "react-menu-grid-preview": {
+      "libJsBytes": 47931,
+      "stylesJsBytes": 10442,
+      "stylesRawJsBytes": 6581,
+      "cssBytes": 0,
+      "files": 57
+    },
+    "react-message-bar": {
+      "libJsBytes": 46279,
+      "stylesJsBytes": 10485,
+      "stylesRawJsBytes": 7454,
+      "cssBytes": 0,
+      "files": 50
+    },
+    "react-migration-v0-v9": {
+      "libJsBytes": 59473,
+      "stylesJsBytes": 14266,
+      "stylesRawJsBytes": 3755,
+      "cssBytes": 0,
+      "files": 66
+    },
+    "react-migration-v8-v9": {
+      "libJsBytes": 88434,
+      "stylesJsBytes": 6420,
+      "stylesRawJsBytes": 4668,
+      "cssBytes": 0,
+      "files": 32
+    },
+    "react-motion": {
+      "libJsBytes": 44415,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 24
+    },
+    "react-motion-components-preview": {
+      "libJsBytes": 64105,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 36
+    },
+    "react-nav": {
+      "libJsBytes": 123782,
+      "stylesJsBytes": 33730,
+      "stylesRawJsBytes": 26113,
+      "cssBytes": 0,
+      "files": 131
+    },
+    "react-overflow": {
+      "libJsBytes": 24352,
+      "stylesJsBytes": 846,
+      "stylesRawJsBytes": 856,
+      "cssBytes": 0,
+      "files": 28
+    },
+    "react-persona": {
+      "libJsBytes": 14410,
+      "stylesJsBytes": 6636,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 5387,
+      "files": 9
+    },
+    "react-popover": {
+      "libJsBytes": 37042,
+      "stylesJsBytes": 6196,
+      "stylesRawJsBytes": 2657,
+      "cssBytes": 0,
+      "files": 25
+    },
+    "react-portal": {
+      "libJsBytes": 14979,
+      "stylesJsBytes": 433,
+      "stylesRawJsBytes": 528,
+      "cssBytes": 0,
+      "files": 11
+    },
+    "react-portal-compat": {
+      "libJsBytes": 2602,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 2
+    },
+    "react-portal-compat-context": {
+      "libJsBytes": 616,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 3
+    },
+    "react-positioning": {
+      "libJsBytes": 84032,
+      "stylesJsBytes": 1144,
+      "stylesRawJsBytes": 768,
+      "cssBytes": 0,
+      "files": 51
+    },
+    "react-progress": {
+      "libJsBytes": 11896,
+      "stylesJsBytes": 2835,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 3131,
+      "files": 13
+    },
+    "react-provider": {
+      "libJsBytes": 21866,
+      "stylesJsBytes": 2245,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 1297,
+      "files": 12
+    },
+    "react-radio": {
+      "libJsBytes": 16685,
+      "stylesJsBytes": 4061,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 9903,
+      "files": 20
+    },
+    "react-rating": {
+      "libJsBytes": 40569,
+      "stylesJsBytes": 11985,
+      "stylesRawJsBytes": 7528,
+      "cssBytes": 0,
+      "files": 29
+    },
+    "react-search": {
+      "libJsBytes": 12706,
+      "stylesJsBytes": 4101,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 3578,
+      "files": 9
+    },
+    "react-select": {
+      "libJsBytes": 8417,
+      "stylesJsBytes": 2616,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 10777,
+      "files": 9
+    },
+    "react-shared-contexts": {
+      "libJsBytes": 7164,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 23
+    },
+    "react-skeleton": {
+      "libJsBytes": 15166,
+      "stylesJsBytes": 4665,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 11714,
+      "files": 20
+    },
+    "react-slider": {
+      "libJsBytes": 34947,
+      "stylesJsBytes": 17523,
+      "stylesRawJsBytes": 10459,
+      "cssBytes": 0,
+      "files": 11
+    },
+    "react-spinbutton": {
+      "libJsBytes": 50309,
+      "stylesJsBytes": 16678,
+      "stylesRawJsBytes": 14058,
+      "cssBytes": 0,
+      "files": 13
+    },
+    "react-spinner": {
+      "libJsBytes": 10729,
+      "stylesJsBytes": 2758,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 10770,
+      "files": 11
+    },
+    "react-storybook-addon": {
+      "libJsBytes": 52156,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 12729,
+      "files": 23
+    },
+    "react-storybook-addon-export-to-sandbox": {
+      "libJsBytes": 25976,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 1690,
+      "files": 12
+    },
+    "react-swatch-picker": {
+      "libJsBytes": 56786,
+      "stylesJsBytes": 19249,
+      "stylesRawJsBytes": 15832,
+      "cssBytes": 0,
+      "files": 45
+    },
+    "react-switch": {
+      "libJsBytes": 9805,
+      "stylesJsBytes": 2494,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 11519,
+      "files": 9
+    },
+    "react-table": {
+      "libJsBytes": 175880,
+      "stylesJsBytes": 34110,
+      "stylesRawJsBytes": 27520,
+      "cssBytes": 0,
+      "files": 160
+    },
+    "react-tabs": {
+      "libJsBytes": 89471,
+      "stylesJsBytes": 40296,
+      "stylesRawJsBytes": 32947,
+      "cssBytes": 0,
+      "files": 21
+    },
+    "react-tabster": {
+      "libJsBytes": 41006,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 30
+    },
+    "react-tag-picker": {
+      "libJsBytes": 108559,
+      "stylesJsBytes": 31804,
+      "stylesRawJsBytes": 19774,
+      "cssBytes": 0,
+      "files": 70
+    },
+    "react-tags": {
+      "libJsBytes": 119798,
+      "stylesJsBytes": 51330,
+      "stylesRawJsBytes": 33993,
+      "cssBytes": 0,
+      "files": 48
+    },
+    "react-teaching-popover": {
+      "libJsBytes": 129229,
+      "stylesJsBytes": 31518,
+      "stylesRawJsBytes": 21372,
+      "cssBytes": 0,
+      "files": 123
+    },
+    "react-text": {
+      "libJsBytes": 35138,
+      "stylesJsBytes": 15886,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 7664,
+      "files": 79
+    },
+    "react-textarea": {
+      "libJsBytes": 8712,
+      "stylesJsBytes": 2405,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 8886,
+      "files": 9
+    },
+    "react-theme": {
+      "libJsBytes": 289,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 1
+    },
+    "react-theme-sass": {
+      "libJsBytes": 138,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 1
+    },
+    "react-timepicker-compat": {
+      "libJsBytes": 22113,
+      "stylesJsBytes": 1590,
+      "stylesRawJsBytes": 1607,
+      "cssBytes": 0,
+      "files": 9
+    },
+    "react-toast": {
+      "libJsBytes": 94061,
+      "stylesJsBytes": 13127,
+      "stylesRawJsBytes": 12731,
+      "cssBytes": 0,
+      "files": 86
+    },
+    "react-toolbar": {
+      "libJsBytes": 37535,
+      "stylesJsBytes": 6798,
+      "stylesRawJsBytes": 5836,
+      "cssBytes": 0,
+      "files": 51
+    },
+    "react-tooltip": {
+      "libJsBytes": 21776,
+      "stylesJsBytes": 1738,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 3490,
+      "files": 12
+    },
+    "react-tree": {
+      "libJsBytes": 148445,
+      "stylesJsBytes": 21959,
+      "stylesRawJsBytes": 18409,
+      "cssBytes": 0,
+      "files": 77
+    },
+    "react-utilities": {
+      "libJsBytes": 85613,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 63
+    },
+    "react-utilities-compat": {
+      "libJsBytes": 12,
+      "stylesJsBytes": 0,
+      "stylesRawJsBytes": 0,
+      "cssBytes": 0,
+      "files": 1
+    },
+    "theme-designer": {
+      "libJsBytes": 158387,
+      "stylesJsBytes": 1916,
+      "stylesRawJsBytes": 704,
+      "cssBytes": 0,
+      "files": 41
+    }
+  },
+  "totals": {
+    "libJsBytes": 4240833,
+    "stylesJsBytes": 829830,
+    "stylesRawJsBytes": 507242,
+    "cssBytes": 213018,
+    "files": 3411
+  }
+}

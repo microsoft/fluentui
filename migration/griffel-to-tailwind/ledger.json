@@ -76,10 +76,10 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-avatar": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-badge": {
       "status": "validated",
@@ -118,10 +118,10 @@
       "notes": ""
     },
     "react-checkbox": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-color-picker": {
       "status": "special",
@@ -208,10 +208,10 @@
       "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted). Converted: Image.module.css + clsx hook. All 5 props are LOOK props -> module classes; ZERO data-attributes, ZERO new custom variants (bordered/shadow/block compose with nothing, so classes beat inventing catalog entries). Empty Griffel slices square/default deliberately unauthored -> styles.square/styles.default === undefined. One value-level RTL flip (fit=none object-position left top -> right top) under @variant rtl. Tests 20/20 (snapshot byte-identical, no data-* additions). Build green; dist/styles.css 2475B starts with canonical @layer stmt; zero dangling .module.css specifiers; styles.raw.js deleted. Fidelity audit: all 26 compiled Griffel atomics / 30 declarations reproduced. Matrix probe: 960/960 prop combos class-identical to mergeClasses arg order. VR NOT RUN (brief forbade storybook rebuild) -> not yet validated."
     },
     "react-infolabel": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 CONVERTED 2026-07-27 (VR NOT RUN - brief forbade storybook rebuild, so not yet 'validated'). Converted: InfoButton.module.css (root slot, fui.components.l1) + InfoLabel.module.css (label/infoButton slots, fui.components.l2 - InfoLabel styles NOTHING of its own; both styled slots are other components' hook output) + 2 clsx hooks. WHITELISTED @griffel/react IMPORT: InfoButton's `info` slot (PopoverSurface) stays on makeStyles/mergeClasses deliberately. PopoverSurface is unconverted and Griffel injects UNLAYERED, so a layered .info class would LOSE to its own typographyStyles.body1 and every small/medium popover would render at fontSizeBase300 instead of caption1's fontSizeBase200 - the reverse of the ToggleButton-over-Button case where unlayered winning is correct. Converts with react-popover. Data-attributes added: data-size + data-open (InfoButton root), data-size (InfoLabel root). Inversion 1 (Griffel source): `selected` declared 2nd but applied 4th and collides with `highContrast` on key B7iucu3 (forced-colors color CanvasText vs Canvas) -> selected block written after highContrast. Inversion 2 (introduced by the l2 altitude, corrected in-module): InfoLabel's `color: inherit` on the label would outrank react-label's `@media(forced-colors){color:GrayText}`, which Griffel's `m`-bucket order had winning -> that rule is restated inside InfoLabel's .label block. Block order follows Griffel BUCKET order (d/f/i/h/m), not plain argument order, because :where() flattening removes the specificity that separated :hover from base. FIRST consumer of the shared fui-focus-outline utility (react-tailwind-theme flagged it unexercised): validated 17/17 against this package's compiled AOT in Chromium - @apply does inline its nested &::after and @media blocks. Zero value-level RTL flips (all four [ltr,rtl] atomic pairs carry identical values). Tests 40/40, 0 snapshots (package has none). Build green; dist/styles.css 5507B starts with the canonical @layer statement; zero dangling .module.css specifiers; InfoLabel's styles.raw.js deleted, InfoButton's retained with its Griffel slice. Lint + type-check clean (tsconfig.spec.json and tsconfig.cy.json needed the `static-assets` type - react-link/react-list precedent - because both test programs import useInfoButtonStyles.styles directly). Probes in .scratch/infolabel: fidelity+matrix (54 declarations, 28 render cases) and Chromium computed-style (64 assertions incl. the VR blind spots: hover-over-OPEN, forced-colors x open, disabled InfoLabel in HC, LTR+RTL)."
     },
     "react-input": {
       "status": "validated",
@@ -238,10 +238,10 @@
       "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-list": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-menu": {
       "status": "needs-conversion",
@@ -298,10 +298,10 @@
       "notes": ""
     },
     "react-persona": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-popover": {
       "status": "needs-conversion",
@@ -346,10 +346,10 @@
       "notes": "PILOT #2b: root styles (base typography/color) converted+validated (Text 6/6, Menu ~30 portal stories clean, Divider regression 31/31; portal themeClassName + portal-compat regex empirically verified identical). Theme style tag / renderer / dir handling untouched - still special for Phase 2/3 remainder. Non-component styles inventory: reports/pilot-provider-inventory.md (makeStaticStyles: zero product usage)."
     },
     "react-radio": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-rating": {
       "status": "needs-conversion",
@@ -358,16 +358,16 @@
       "notes": ""
     },
     "react-search": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-select": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-shared-contexts": {
       "status": "no-styles",
@@ -460,10 +460,10 @@
       "notes": ""
     },
     "react-text": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 18,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-textarea": {
       "status": "validated",
@@ -502,10 +502,10 @@
       "notes": ""
     },
     "react-tooltip": {
-      "status": "converting",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-2 (2026-07-27)"
+      "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-tree": {
       "status": "needs-conversion",
