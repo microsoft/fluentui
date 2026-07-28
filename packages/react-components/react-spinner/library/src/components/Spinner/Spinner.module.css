@@ -26,7 +26,7 @@
  *   1  spinnerClassNames.spinner                     → static class (JS)
  *   2  useSpinnerBaseClassName         (makeReset)   → fui.base
  *   3  useSpinnerStyles[size]                        → fui.components.l1  (root data-size)
- *   4  useSpinnerStyles.inverted                     → fui.components.l1  (.spinnerInverted)
+ *   4  useSpinnerStyles.inverted                     → fui.components.l1  (.spinner-inverted)
  *   5  consumer className                            → unlayered
  *
  * `spinnerTail` slot:
@@ -38,7 +38,7 @@
  * `label` slot:
  *   1  spinnerClassNames.label                       → static class (JS)
  *   2  useLabelStyles[size]                          → fui.components.l2  (root data-size)
- *   3  useLabelStyles.inverted                       → fui.components.l2  (.labelInverted)
+ *   3  useLabelStyles.inverted                       → fui.components.l2  (.label-inverted)
  *   4  consumer className                            → unlayered
  *
  * ── Why the label slot is l2, not l1 (D2 amendment 2 / cookbook altitude rule) ───────
@@ -277,7 +277,7 @@
    * 30deg (min) to 255deg (max), and then back behind the mask again to shrink the arc.
    * The tail and spinner itself also have 360deg rotation animations for the spin.
    */
-  .spinnerTail {
+  .spinner-tail {
     @apply absolute block size-full;
 
     -webkit-mask-image: conic-gradient(transparent 105deg, white 105deg);
@@ -434,9 +434,9 @@
    * the flat 0-1-0 every other rule here carries.
    *
    * `appearance: 'primary'` has no slice at all in the Griffel source, so there is
-   * deliberately no `.spinnerPrimary` / `.labelPrimary` rule.
+   * deliberately no `.spinner-primary` / `.label-primary` rule.
    */
-  .spinnerInverted {
+  .spinner-inverted {
     background-color: var(--colorNeutralStrokeAlpha2);
     color: var(--colorNeutralStrokeOnBrand2);
   }
@@ -450,7 +450,7 @@
    * is exactly why the original branched in JS; `:dir(rtl)` replaces that branch and
    * additionally follows the COMPUTED direction of the DOM (DECISIONS.md D5).
    */
-  .spinnerTail {
+  .spinner-tail {
     @variant rtl {
       -webkit-mask-image: conic-gradient(white 255deg, transparent 255deg);
       mask-image: conic-gradient(white 255deg, transparent 255deg);
@@ -559,7 +559,7 @@
 
 @layer fui.components.l2 {
   /* from useLabelStyles.inverted — arg #3 on the label slot */
-  .labelInverted {
+  .label-inverted {
     color: var(--colorNeutralForegroundStaticInverted);
   }
 }

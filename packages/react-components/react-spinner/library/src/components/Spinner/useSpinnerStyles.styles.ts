@@ -64,18 +64,25 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   root['data-orientation'] = labelPosition === 'above' || labelPosition === 'below' ? 'vertical' : 'horizontal';
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Spinner's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. Spinner needs no state mirrors: `data-orientation` and `data-size` are already
+  // stamped on this very element above, so `@variant group-vertical/fui-spinner` and
+  // `group-size-small/fui-spinner` work as-is (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Spinner.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the label slot's rules
   // live in `fui.components.l2`.
-  state.root.className = clsx(spinnerClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-spinner', spinnerClassNames.root, styles.root, state.root.className);
 
   if (state.spinner) {
     state.spinner.className = clsx(
       spinnerClassNames.spinner,
       styles.spinner,
-      appearance === 'inverted' && styles.spinnerInverted,
+      appearance === 'inverted' && styles['spinner-inverted'],
       state.spinner.className,
     );
   }
@@ -84,14 +91,18 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     // The `dir === 'rtl' && spinnerStyles.rtlTail` branch this replaces is now the
     // `@variant rtl` block in the module — the conic-gradient mirrors are value-level RTL
     // flips, so they stay explicit CSS rather than logical properties (DECISIONS.md D5).
-    state.spinnerTail.className = clsx(spinnerClassNames.spinnerTail, styles.spinnerTail, state.spinnerTail.className);
+    state.spinnerTail.className = clsx(
+      spinnerClassNames.spinnerTail,
+      styles['spinner-tail'],
+      state.spinnerTail.className,
+    );
   }
 
   if (state.label) {
     state.label.className = clsx(
       spinnerClassNames.label,
       styles.label,
-      appearance === 'inverted' && styles.labelInverted,
+      appearance === 'inverted' && styles['label-inverted'],
       state.label.className,
     );
   }
