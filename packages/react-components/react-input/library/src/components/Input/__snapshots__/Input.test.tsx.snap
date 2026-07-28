@@ -3,7 +3,7 @@
 exports[`Input renders a default state 1`] = `
 <div>
   <span
-    class="fui-Input"
+    class="group/fui-input fui-Input"
     data-size="medium"
   >
     <input
