@@ -4,7 +4,7 @@
   "private": true,
   "description": "Fluent UI React v9 documentation",
   "scripts": {
-    "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs",
+    "build-storybook": "yarn run -T cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs && yarn postbuild-storybook",
     "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
     "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/react",
     "generate-llms-docs": "yarn run -T storybook-llms-extractor --config storybook-llms.config.js",
