@@ -1,11 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import type { GriffelResetStyle } from '@griffel/react';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TagSlots, TagState } from './Tag.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import type { TagSlots, TagState } from './Tag.types';
+
+import styles from './Tag.module.css';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
@@ -17,423 +29,141 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
 };
 
 /**
- * Inner horizontal space left and right of Tag
+ * Data attributes rendered on the Tag slots and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants
+ * (DECISIONS.md D3). It is stamped on the ROOT (for its own height/padding rules) and,
+ * separately, on every slot that has size-dependent rules of its own — `media`, `icon`,
+ * `primaryText` and `dismissIcon`. The slots carry their own stamp rather than being
+ * selected through the root because the first three blocks are SHARED with
+ * InteractionTagPrimary, whose root is a different CSS-module class; see the "SHARED
+ * SLOTS" note in Tag.module.css.
+ *
+ * Everything else the Griffel hook selected with a conditional `mergeClasses` argument
+ * (`appearance`, `shape`, `selected && !disabled`, `!media && !icon`, `!dismissIcon`)
+ * stays a conditional CLASS in the composition below — see Tag.module.css for why
+ * `selected` in particular must NOT ride the catalog's `selected` variant.
  */
-const tagSpacingMedium = '7px';
-const tagSpacingSmall = '5px';
-const tagSpacingExtraSmall = '5px';
-
-const mediumIconSize = '20px';
-const smallIconSize = '16px';
-const extraSmallIconSize = '12px';
-
-const baseStyles: GriffelResetStyle = {
-  // reset default button style:
-  fontFamily: 'inherit',
-  padding: '0px',
-  appearance: 'button',
-  textAlign: 'unset',
-
-  display: 'inline-grid',
-  alignItems: 'center',
-  gridTemplateAreas: `
-  "media primary   dismissIcon"
-  "media secondary dismissIcon"
-  `,
-  boxSizing: 'border-box',
-  width: 'fit-content',
-
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+type TagSizeDataAttributes = {
+  'data-size': TagState['size'];
 };
 
-const useRootRoundedBaseClassName = makeResetStyles({
-  ...baseStyles,
-
-  borderRadius: tokens.borderRadiusMedium,
-  ...createCustomFocusIndicatorStyle({
-    borderRadius: tokens.borderRadiusMedium,
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-  }),
-
-  /**
-   * Pseudo element to draw the border for windows high contrast mode -
-   * when Tag is with secondary text, primary text has negative margin that covers the border.
-   */
-  '@media (forced-colors: active)': {
-    position: 'relative',
-    '::before': {
-      content: '""',
-      borderTop: `${tokens.strokeWidthThin} solid`,
-      position: 'absolute',
-      inset: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusMedium,
-      borderTopRightRadius: tokens.borderRadiusMedium,
-    },
-  },
-});
-
-const useRootCircularBaseClassName = makeResetStyles({
-  ...baseStyles,
-
-  borderRadius: tokens.borderRadiusCircular,
-  ...createCustomFocusIndicatorStyle({
-    borderRadius: tokens.borderRadiusCircular,
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-  }),
-
-  /**
-   * Pseudo element to draw the border for windows high contrast mode -
-   * when Tag is with secondary text, primary text has negative margin that covers the border.
-   */
-  '@media (forced-colors: active)': {
-    position: 'relative',
-    '::before': {
-      content: '""',
-      borderTop: `${tokens.strokeWidthThin} solid`,
-      borderLeft: `${tokens.strokeWidthThin} solid`,
-      borderRight: `${tokens.strokeWidthThin} solid`,
-      position: 'absolute',
-      inset: '-1px',
-      borderRadius: tokens.borderRadiusCircular,
-    },
-  },
-});
-
-const useRootStyles = makeStyles({
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
-  },
-  outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-  },
-  brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-  },
-  selected: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorBrandStroke1),
-
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-      backgroundColor: 'Highlight',
-      color: 'HighlightText',
-    },
-  },
-  medium: {
-    height: '32px',
-  },
-  small: {
-    height: '24px',
-  },
-  'extra-small': {
-    position: 'relative',
-    height: '20px',
-
-    // Increase clickable area to meet WCAG 2.2 AA
-    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
-    '@media (forced-colors: none)': {
-      '&:before, &:after': {
-        content: '""',
-        position: 'absolute',
-        height: '2px',
-        left: '0',
-        width: '100%',
-      },
-      '&:before': {
-        bottom: '100%',
-      },
-      '&:after': {
-        top: '100%',
-      },
-    },
-  },
-});
-
-const useRootDisabledStyles = makeStyles({
-  filled: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-  },
-  outline: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-  },
-  brand: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-  },
-});
+/**
+ * Class names for the four slots Tag SHARES with InteractionTagPrimary, whose rules are
+ * defined once in Tag.module.css (see the "SHARED SLOTS" note there).
+ *
+ * This object is what InteractionTagPrimary consumes. It replaces the four Griffel hooks
+ * below as the live mechanism: those were hooks only because `makeStyles` had to be, and
+ * calling them from another styles hook now makes ESLint classify the caller as a React
+ * hook — which re-enables `react-hooks/immutability` on the state-mutation pattern every
+ * other converted package has shed (the pattern itself is removed repo-wide in Phase 3,
+ * DECISIONS.md D14, not per conversion).
+ *
+ * Each slot needs exactly ONE class now: the size steps ride the slot's own `data-size`
+ * attribute instead of a class per step. `primaryText` is the exception — its
+ * `with`/`withoutSecondaryText` slices are genuinely separate rules.
+ */
+export const tagSharedSlotStyles = {
+  media: styles.media,
+  icon: styles.icon,
+  primaryText: styles.primaryText,
+  primaryTextWithSecondaryText: styles.primaryTextWithSecondaryText,
+  primaryTextWithoutSecondaryText: styles.primaryTextWithoutSecondaryText,
+  secondaryText: styles.secondaryText,
+};
 
 /**
- * Styles for root slot when Tag is without leading media/icon
+ * The four Griffel hooks these replace are re-exported from `components/Tag/index.ts` and
+ * `src/Tag.ts`, so they are kept with their names and their `useX()` call shape — the
+ * cookbook's "delete no exports" rule. They now read from `tagSharedSlotStyles` above;
+ * `usePrimaryTextStyles` keeps returning a map because its slices really are separate.
  */
-const useRootWithoutMediaStyles = makeStyles({
-  medium: {
-    paddingLeft: tagSpacingMedium,
-  },
-  small: {
-    paddingLeft: tagSpacingSmall,
-  },
-  'extra-small': {
-    paddingLeft: tagSpacingExtraSmall,
-  },
-});
-/**
- * Styles for root slot when Tag is without dismiss icon
- */
-const useRootWithoutDismissStyles = makeStyles({
-  medium: {
-    paddingRight: tagSpacingMedium,
-  },
-  small: {
-    paddingRight: tagSpacingSmall,
-  },
-  'extra-small': {
-    paddingRight: tagSpacingExtraSmall,
-  },
-});
+const primaryTextStyles = {
+  base: tagSharedSlotStyles.primaryText,
+  withSecondaryText: tagSharedSlotStyles.primaryTextWithSecondaryText,
+  withoutSecondaryText: tagSharedSlotStyles.primaryTextWithoutSecondaryText,
+};
 
-export const useIconStyles = makeStyles({
-  base: {
-    gridArea: 'media',
-    display: 'flex',
-    boxSizing: 'content-box',
-  },
-  medium: {
-    paddingLeft: tagSpacingMedium,
-    paddingRight: tokens.spacingHorizontalXS,
-    width: mediumIconSize,
-    fontSize: mediumIconSize,
-  },
-  small: {
-    paddingLeft: tagSpacingSmall,
-    paddingRight: tokens.spacingHorizontalXXS,
-    width: smallIconSize,
-    fontSize: smallIconSize,
-  },
-  'extra-small': {
-    paddingLeft: tagSpacingExtraSmall,
-    paddingRight: tokens.spacingHorizontalXXS,
-    width: extraSmallIconSize,
-    fontSize: extraSmallIconSize,
-  },
-});
+export const useIconStyles = (): string => tagSharedSlotStyles.icon;
 
-export const useMediaStyles = makeStyles({
-  base: {
-    gridArea: 'media',
+export const useMediaStyles = (): string => tagSharedSlotStyles.media;
 
-    display: 'flex',
-    paddingLeft: '1px',
-  },
-  medium: {
-    paddingRight: tokens.spacingHorizontalS,
-  },
-  small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-  'extra-small': {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-});
+export const usePrimaryTextStyles = (): typeof primaryTextStyles => primaryTextStyles;
 
-const useDismissIconStyles = makeStyles({
-  base: {
-    gridArea: 'dismissIcon',
-
-    display: 'flex',
-
-    // windows high contrast:
-    '@media (forced-colors: active)': {
-      ':hover': {
-        color: 'Highlight',
-      },
-      ':active': {
-        color: 'Highlight',
-      },
-    },
-  },
-  medium: {
-    paddingLeft: tokens.spacingHorizontalXS,
-    paddingRight: tagSpacingMedium,
-    fontSize: mediumIconSize,
-  },
-  small: {
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tagSpacingSmall,
-    fontSize: smallIconSize,
-  },
-  'extra-small': {
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tagSpacingExtraSmall,
-    fontSize: extraSmallIconSize,
-  },
-
-  filled: {
-    ':hover': {
-      cursor: 'pointer',
-      color: tokens.colorCompoundBrandForeground1Hover,
-    },
-    ':active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
-    },
-  },
-  outline: {
-    ':hover': {
-      cursor: 'pointer',
-      color: tokens.colorCompoundBrandForeground1Hover,
-    },
-    ':active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
-    },
-  },
-  brand: {
-    ':hover': {
-      cursor: 'pointer',
-      color: tokens.colorCompoundBrandForeground1Hover,
-    },
-    ':active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
-    },
-  },
-  selected: {
-    ':hover': {
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-    ':active': {
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-  },
-});
-
-export const usePrimaryTextStyles = makeStyles({
-  base: {
-    whiteSpace: 'nowrap',
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalXXS,
-  },
-
-  medium: {
-    ...typographyStyles.body1,
-  },
-  small: {
-    ...typographyStyles.caption1,
-  },
-  'extra-small': {
-    ...typographyStyles.caption1,
-  },
-
-  withoutSecondaryText: {
-    gridColumnStart: 'primary',
-    gridRowStart: 'primary',
-    gridRowEnd: 'secondary',
-    paddingBottom: tokens.spacingHorizontalXXS,
-  },
-  withSecondaryText: {
-    gridArea: 'primary',
-
-    ...typographyStyles.caption1,
-    marginTop: '-2px',
-  },
-});
-
-export const useSecondaryTextBaseClassName = makeResetStyles({
-  gridArea: 'secondary',
-  paddingLeft: tokens.spacingHorizontalXXS,
-  paddingRight: tokens.spacingHorizontalXXS,
-  ...typographyStyles.caption2,
-  whiteSpace: 'nowrap',
-});
+export const useSecondaryTextBaseClassName = (): string => tagSharedSlotStyles.secondaryText;
 
 /**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  const rootRoundedBaseClassName = useRootRoundedBaseClassName();
-  const rootCircularBaseClassName = useRootCircularBaseClassName();
-
-  const rootStyles = useRootStyles();
-  const rootDisabledStyles = useRootDisabledStyles();
-  const rootWithoutMediaStyles = useRootWithoutMediaStyles();
-  const rootWithoutDismissStyles = useRootWithoutDismissStyles();
-
-  const iconStyles = useIconStyles();
-  const mediaStyles = useMediaStyles();
-  const dismissIconStyles = useDismissIconStyles();
-  const primaryTextStyles = usePrimaryTextStyles();
-  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
-
   const { disabled, shape, size, appearance, selected } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as TagState['root'] & TagSizeDataAttributes;
+
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Tag.module.css, not by the
+  // order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  state.root.className = clsx(
     tagClassNames.root,
 
-    shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
+    styles.root,
+    styles[shape],
 
-    disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
-    selected && !disabled && rootStyles.selected,
-    rootStyles[size],
+    disabled ? styles[`${appearance}Disabled`] : styles[appearance],
+    selected && !disabled && styles.selected,
 
-    !state.media && !state.icon && rootWithoutMediaStyles[size],
-    !state.dismissIcon && rootWithoutDismissStyles[size],
+    !state.media && !state.icon && styles.withoutMedia,
+    !state.dismissIcon && styles.withoutDismiss,
 
     state.root.className,
   );
 
   if (state.media) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.media.className = mergeClasses(
-      tagClassNames.media,
-      mediaStyles.base,
-      mediaStyles[size],
-      state.media.className,
-    );
+    const media = state.media as NonNullable<TagState['media']> & TagSizeDataAttributes;
+    media['data-size'] = size;
+
+    state.media.className = clsx(tagClassNames.media, styles.media, state.media.className);
   }
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(tagClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
+    const icon = state.icon as NonNullable<TagState['icon']> & TagSizeDataAttributes;
+    icon['data-size'] = size;
+
+    state.icon.className = clsx(tagClassNames.icon, styles.icon, state.icon.className);
   }
   if (state.primaryText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.primaryText.className = mergeClasses(
+    const primaryText = state.primaryText as NonNullable<TagState['primaryText']> & TagSizeDataAttributes;
+    primaryText['data-size'] = size;
+
+    state.primaryText.className = clsx(
       tagClassNames.primaryText,
 
-      primaryTextStyles.base,
-      primaryTextStyles[size],
+      styles.primaryText,
 
-      state.secondaryText ? primaryTextStyles.withSecondaryText : primaryTextStyles.withoutSecondaryText,
+      state.secondaryText ? styles.primaryTextWithSecondaryText : styles.primaryTextWithoutSecondaryText,
 
       state.primaryText.className,
     );
   }
   if (state.secondaryText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.secondaryText.className = mergeClasses(
+    state.secondaryText.className = clsx(
       tagClassNames.secondaryText,
-      secondaryTextBaseClassName,
+      styles.secondaryText,
       state.secondaryText.className,
     );
   }
   if (state.dismissIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.dismissIcon.className = mergeClasses(
+    const dismissIcon = state.dismissIcon as NonNullable<TagState['dismissIcon']> & TagSizeDataAttributes;
+    dismissIcon['data-size'] = size;
+
+    state.dismissIcon.className = clsx(
       tagClassNames.dismissIcon,
-      dismissIconStyles.base,
-      dismissIconStyles[size],
-      !disabled && dismissIconStyles[appearance],
-      selected && !disabled && dismissIconStyles.selected,
+      styles.dismissIcon,
+      !disabled && styles.dismissIconInteractive,
+      selected && !disabled && styles.dismissIconSelected,
       state.dismissIcon.className,
     );
   }

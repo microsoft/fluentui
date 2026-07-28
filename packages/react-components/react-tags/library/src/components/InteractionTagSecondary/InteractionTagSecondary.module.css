@@ -1,0 +1,339 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useInteractionTagSecondaryStyles_unstable, not source declaration order.
+ *
+ *   #  mergeClasses argument                      → target
+ *   ----------------------------------------------------------------------------------
+ *   1  interactionTagSecondaryClassNames.root     → static class (JS)
+ *   2  useRootBaseClassName        (makeReset)    → fui.base           .root
+ *   3  disabled ? useRootDisabledStyles[appearance]
+ *                : useRootStyles[appearance]      → fui.components.l1  .filled/.outline/…
+ *   4  useRootStyles[shape]                       → fui.components.l1  .rounded/.circular
+ *   5  useRootStyles[size]                        → fui.components.l1  (data-size)
+ *   6  selected && !disabled && useRootStyles.selected
+ *                                                 → fui.components.l1  .selected
+ *   7  consumer className                         → unlayered (always wins)
+ *
+ * This is the tag's dismiss half — a <button> of its own inside InteractionTag, rendering
+ * `@fluentui/react-icons`' <DismissRegular /> as its only child. It applies NO rule to that
+ * icon (no `.fui-Icon-*` selector anywhere in the compiled AOT output), so unlike
+ * InteractionTagPrimary this module needs no unlayered block, and it styles no other
+ * component's element, so `fui.components.l2` is unused.
+ *
+ * ── Which prop becomes what ─────────────────────────────────────────────────────────
+ * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
+ * `appearance`, `shape` and the `selected && !disabled` gate stay conditional CLASSES in
+ * the hook, exactly as they were conditional `mergeClasses` arguments (the react-button
+ * precedent). `disabled` is a BRANCH (`disabled ? disabledStyles[a] : styles[a]`), not an
+ * additive state, so each appearance has its own disabled class.
+ *
+ * ── Ordering ────────────────────────────────────────────────────────────────────────
+ * Selectors are `:where()`-flat, so within the layer file position decides.
+ * • #6 `.selected` re-sets #3's background/colour/border colours and its own forced-colors
+ *   half must beat #3's, so its block is written LAST.
+ * • #4 shape (corner radii) and #5 size (font-size + inline padding) are disjoint from
+ *   each other and from #3/#6; written in argument order anyway.
+ * • WITHIN each appearance rule the declarations run `d` → `h` → `a` → `m`, reproducing
+ *   Griffel's bucket order: `filled`'s forced-colors `border-*-width: strokeWidthThin`
+ *   must beat its own `d`-bucket `border-*-width: 0`, and its forced-colors `:hover`
+ *   background must beat its plain `:hover` background.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Verified against the compiled `[ltr, rtl]` pairs in
+ * lib-commonjs/components/InteractionTagSecondary/useInteractionTagSecondaryStyles.styles.js.
+ * Every pair is a pure PROPERTY flip with identical values on both sides — no value-level
+ * flip anywhere — so each becomes a logical property:
+ *   reset `border-left-color` (the divider) ↔ `border-right-color` → border-inline-start-color
+ *   reset `border-top/bottom-left-radius`   ↔ …-right-radius       → border-{start,end}-start-radius
+ *   rounded/circular `border-top/bottom-right-radius`              → border-{start,end}-end-radius
+ *   [size] `padding-left` / `padding-right`                        → padding-inline-{start,end}
+ *   brand / selected / disabled `border-left-color` dividers       → border-inline-start-color
+ *
+ * ── Spacing & stroke widths (DECISIONS.md D4 amendment + addendum) ──────────────────
+ * The 5px/3px inline paddings match no spacing step → numeric utilities (`ps-5`, `pe-3`),
+ * which ride `--base-scale` all the same. `tokens.strokeWidthThin` / `strokeWidthThick`
+ * are authored as `var(--spacing-thin)` / `var(--spacing-thick)`: border-width and
+ * outline-width do not consume the spacing namespace, and raw `var(--strokeWidth*)` is the
+ * one form that does not scale. Font sizes are not spacing-powered → `calc(<n>px *
+ * var(--base-scale))`.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — arg #2 */
+  .root {
+    /* reset default button style */
+    color: inherit;
+    font-family: inherit;
+    padding: 0;
+    border-style: none;
+    /* compiled: `-webkit-appearance:button;-moz-appearance:button;appearance:button`; the
+       `-moz-` alias is dropped (react-select precedent) */
+    -webkit-appearance: button;
+    appearance: button;
+    text-align: unset;
+    background-color: transparent;
+
+    @apply flex h-full items-center;
+
+    /* declaration order preserved from the compiled reset: the `border` shorthand comes
+       AFTER `border-style: none` and re-establishes `solid`, then the divider colour and
+       the two squared-off leading corners override single longhands. */
+    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+
+    /* divider between Primary and Secondary */
+    border-inline-start-color: var(--colorNeutralStroke1);
+    border-start-start-radius: var(--borderRadiusNone);
+    border-end-start-radius: var(--borderRadiusNone);
+
+    @variant focus-visible-fui {
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[appearance] — arg #3, the ENABLED branch */
+  .filled {
+    background-color: var(--colorNeutralBackground3);
+    color: var(--colorNeutralForeground2);
+    border-top-width: 0;
+    border-bottom-width: 0;
+
+    @variant hover {
+      cursor: pointer;
+      background-color: var(--colorNeutralBackground3Hover);
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+
+    @variant active {
+      background-color: var(--colorNeutralBackground3Pressed);
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+
+    @variant forced-colors {
+      border-top-width: var(--spacing-thin);
+      border-bottom-width: var(--spacing-thin);
+
+      @variant hover {
+        background-color: HighlightText;
+      }
+
+      @variant active {
+        background-color: HighlightText;
+      }
+    }
+  }
+
+  .outline {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+
+    /* shorthands.borderColor(...) → the four longhands the compiler emits, in its order */
+    border-top-color: var(--colorNeutralStroke1);
+    border-inline-end-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-inline-start-color: var(--colorNeutralStroke1);
+
+    @variant hover {
+      cursor: pointer;
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+
+    @variant active {
+      background-color: var(--colorSubtleBackgroundPressed);
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        background-color: HighlightText;
+      }
+
+      @variant active {
+        background-color: HighlightText;
+      }
+    }
+  }
+
+  .brand {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorBrandForeground2);
+    /* divider */
+    border-inline-start-color: var(--colorBrandStroke2);
+    border-top-width: 0;
+    border-bottom-width: 0;
+
+    @variant hover {
+      cursor: pointer;
+      background-color: var(--colorBrandBackground2Hover);
+      color: var(--colorCompoundBrandForeground1Hover);
+    }
+
+    @variant active {
+      background-color: var(--colorBrandBackground2Pressed);
+      color: var(--colorCompoundBrandForeground1Pressed);
+    }
+
+    @variant forced-colors {
+      border-top-width: var(--spacing-thin);
+      border-bottom-width: var(--spacing-thin);
+
+      @variant hover {
+        background-color: HighlightText;
+      }
+
+      @variant active {
+        background-color: HighlightText;
+      }
+    }
+  }
+
+  /*
+   * from useRootDisabledStyles[appearance] — arg #3, the DISABLED branch. `filled` and
+   * `brand` compile to the identical atomic set, so they share one rule.
+   */
+  .filledDisabled,
+  .brandDisabled {
+    cursor: not-allowed;
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+
+    border-top-color: var(--colorTransparentStrokeDisabled);
+    border-inline-end-color: var(--colorTransparentStrokeDisabled);
+    border-bottom-color: var(--colorTransparentStrokeDisabled);
+    /* divider — declared after the shorthand expansion in the Griffel source */
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+
+  .outlineDisabled {
+    cursor: not-allowed;
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForegroundDisabled);
+
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[shape] — arg #4; only the TRAILING corners, the leading pair is
+     squared off by the reset */
+  .rounded {
+    border-start-end-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--borderRadiusMedium);
+  }
+
+  .circular {
+    border-start-end-radius: var(--borderRadiusCircular);
+    border-end-end-radius: var(--borderRadiusCircular);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[size] — arg #5 */
+  .root {
+    @variant size-medium {
+      font-size: calc(20px * var(--base-scale));
+
+      @apply ps-5 pe-5;
+    }
+
+    @variant size-small {
+      font-size: calc(16px * var(--base-scale));
+
+      @apply ps-3 pe-3;
+    }
+
+    @variant size-extra-small {
+      font-size: calc(12px * var(--base-scale));
+
+      @apply ps-5 pe-5;
+
+      position: relative;
+
+      /*
+       * Increase clickable area to meet WCAG 2.2 AA
+       * https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+       */
+      @media (forced-colors: none) {
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+
+          /* 2px = the XXS step; block-axis size → the vertical token's utility */
+          @apply h-vertical-xxs w-full;
+
+          inset-inline-start: 0;
+        }
+
+        &::before {
+          bottom: 100%;
+        }
+
+        &::after {
+          top: 100%;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles.selected — arg #6, written last so it beats the appearance blocks
+     in both the plain and the forced-colors cascades */
+  .selected {
+    /* compiled as the `background` SHORTHAND (Griffel priority -2), not background-color */
+    background: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+
+    border-top-color: var(--colorBrandStroke1);
+    border-inline-end-color: var(--colorBrandStroke1);
+    border-bottom-color: var(--colorBrandStroke1);
+    /* divider — declared last in the Griffel source, after shorthands.borderColor */
+    border-inline-start-color: var(--colorNeutralStrokeOnBrand2);
+
+    @variant hover {
+      background-color: var(--colorBrandBackgroundHover);
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant active {
+      background-color: var(--colorBrandBackgroundPressed);
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant forced-colors {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+
+      @variant hover {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+
+      @variant active {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useInteractionTagStyles_unstable, not source declaration order.
+ *
+ *   #  mergeClasses argument              → target
+ *   ----------------------------------------------------------------------------------
+ *   1  interactionTagClassNames.root      → static class (JS)
+ *   2  useRootBaseClassName  (makeReset)  → fui.base           .root
+ *   3  useRootStyles[shape]               → fui.components.l1  .rounded / .circular
+ *   4  useRootStyles[size]                → fui.components.l1  (data-size)
+ *   5  consumer className                 → unlayered (always wins)
+ *
+ * InteractionTag is a pure layout wrapper: it renders a <div> and sets no rule on the
+ * Primary/Secondary buttons it contains (they carry their own hooks' classes), so
+ * `fui.components.l2` is unused.
+ *
+ * ── Which prop becomes what ─────────────────────────────────────────────────────────
+ * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
+ * `shape` stays a CLASS chosen in the hook, exactly as `rootStyles[shape]` was — the
+ * react-button precedent (`styles[shape]` for circular/square). Shape has no catalog
+ * variant and adding one for a two-value prop with a single consumer is what the
+ * catalog rule warns against.
+ *
+ * ── Ordering ────────────────────────────────────────────────────────────────────────
+ * #3 shape sets `border-radius` only and #4 size sets `height` only — disjoint, so the
+ * blocks could sit in either order. They are written in argument order regardless.
+ *
+ * ── RTL ─────────────────────────────────────────────────────────────────────────────
+ * Every compiled atomic is a single class with no `[ltr, rtl]` pair, and
+ * `useRootBaseClassName` compiles with a `null` rtl class
+ * (`__resetStyles("r1y684pp", null, …)`): nothing flips.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) — arg #2 */
+  .root {
+    @apply box-border inline-flex w-fit items-center;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles.rounded / .circular — arg #3. The compiled atomics carry Griffel
+   * priority -1 (`p: -1`), the shorthand marker: `border-radius` deletes any earlier
+   * corner longhand. Nothing in this component sets a corner longhand, so the shorthand
+   * is reproduced as-is.
+   */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[size] — arg #4. 32/24/20 px are literals, not spacing steps, so
+     they take the numeric height utilities (which ride `--base-scale` all the same). */
+  .root {
+    @variant size-medium {
+      @apply h-32;
+    }
+
+    @variant size-small {
+      @apply h-24;
+    }
+
+    @variant size-extra-small {
+      @apply h-20;
+    }
+  }
+}

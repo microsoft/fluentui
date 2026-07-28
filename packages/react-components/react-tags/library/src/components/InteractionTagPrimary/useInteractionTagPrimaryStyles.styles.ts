@@ -1,18 +1,24 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import type { GriffelResetStyle } from '@griffel/react';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import {
-  useIconStyles,
-  useMediaStyles,
-  usePrimaryTextStyles,
-  useSecondaryTextBaseClassName,
-} from '../Tag/useTagStyles.styles';
+import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
+import { tagSharedSlotStyles } from '../Tag/useTagStyles.styles';
+
+import styles from './InteractionTagPrimary.module.css';
 
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
   root: 'fui-InteractionTagPrimary',
@@ -22,371 +28,94 @@ export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrima
   secondaryText: 'fui-InteractionTagPrimary__secondaryText',
 };
 
-const baseStyles: GriffelResetStyle = {
-  // reset default button style:
-  color: 'inherit',
-  fontFamily: 'inherit',
-  padding: '0px',
-  borderStyle: 'none',
-  appearance: 'button',
-  textAlign: 'unset',
-  backgroundColor: 'transparent',
-
-  display: 'inline-grid',
-  height: '100%',
-  alignItems: 'center',
-  gridTemplateAreas: `
-  "media primary  "
-  "media secondary"
-  `,
-
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
-  ...createCustomFocusIndicatorStyle({
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-    zIndex: 1,
-  }),
+/**
+ * Data attributes rendered on the InteractionTagPrimary slots and matched by the shared
+ * `@custom-variant` catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `size` is a small ENUM scale, so it takes the catalog's `size-*` variants
+ * (DECISIONS.md D3). It is stamped on the ROOT and, separately, on the `media`, `icon` and
+ * `primaryText` slots: those three blocks are SHARED with Tag (they live in
+ * Tag.module.css) and so cannot be selected through a root class that only exists in this
+ * component's module.
+ *
+ * Everything else the Griffel hook selected with a conditional `mergeClasses` argument
+ * (`appearance`, `shape`, `selected && !disabled`, `!media && !icon`, `hasSecondaryAction`)
+ * stays a conditional CLASS in the composition below.
+ */
+type InteractionTagPrimarySizeDataAttributes = {
+  'data-size': InteractionTagPrimaryState['size'];
 };
-
-const useRootRoundedBaseClassName = makeResetStyles({
-  ...baseStyles,
-  borderRadius: tokens.borderRadiusMedium,
-
-  /**
-   * Pseudo element to draw the border for windows high contrast mode -
-   * when Tag is with secondary text, primary text has negative margin that covers the border.
-   */
-  '@media (forced-colors: active)': {
-    position: 'relative',
-    '::before': {
-      content: '""',
-      borderTop: `${tokens.strokeWidthThin} solid`,
-      position: 'absolute',
-      inset: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusMedium,
-      borderTopRightRadius: tokens.borderRadiusMedium,
-    },
-  },
-});
-
-const useRootCircularBaseClassName = makeResetStyles({
-  ...baseStyles,
-  borderRadius: tokens.borderRadiusCircular,
-
-  /**
-   * Pseudo element to draw the border for windows high contrast mode -
-   * when Tag is with secondary text, primary text has negative margin that covers the border.
-   */
-  '@media (forced-colors: active)': {
-    position: 'relative',
-    '::before': {
-      content: '""',
-      borderTop: `${tokens.strokeWidthThin} solid`,
-      borderLeft: `${tokens.strokeWidthThin} solid`,
-      position: 'absolute',
-      inset: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusCircular,
-      borderBottomLeftRadius: tokens.borderRadiusCircular,
-    },
-  },
-});
-
-/**
- * Style override for pseudo element that draws the border for windows high contrast mode
- */
-const useRootCircularContrastStyles = makeStyles({
-  withoutSecondaryAction: {
-    '@media (forced-colors: active)': {
-      position: 'relative',
-      '::before': {
-        borderRight: `${tokens.strokeWidthThin} solid transparent`,
-        borderTopRightRadius: tokens.borderRadiusCircular,
-        borderBottomRightRadius: tokens.borderRadiusCircular,
-      },
-    },
-  },
-});
-
-const useRootStyles = makeStyles({
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      backgroundColor: tokens.colorNeutralBackground3Hover,
-      color: tokens.colorNeutralForeground2Hover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorNeutralBackground3Pressed,
-      color: tokens.colorNeutralForeground2Pressed,
-    },
-    '@media (forced-colors: active)': {
-      ':hover': {
-        backgroundColor: 'HighlightText',
-      },
-      ':active': {
-        backgroundColor: 'HighlightText',
-      },
-    },
-  },
-  outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ':hover': {
-      cursor: 'pointer',
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      color: tokens.colorNeutralForeground2Hover,
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-        color: tokens.colorNeutralForeground2BrandHover,
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-    ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      color: tokens.colorNeutralForeground2Pressed,
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-        color: tokens.colorNeutralForeground2BrandPressed,
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-    '@media (forced-colors: active)': {
-      ':hover': {
-        backgroundColor: 'HighlightText',
-      },
-      ':active': {
-        backgroundColor: 'HighlightText',
-      },
-    },
-  },
-  brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorCompoundBrandForeground1Hover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorCompoundBrandForeground1Pressed,
-    },
-    '@media (forced-colors: active)': {
-      ':hover': {
-        backgroundColor: 'HighlightText',
-      },
-      ':active': {
-        backgroundColor: 'HighlightText',
-      },
-    },
-  },
-  selected: {
-    background: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorBrandStroke1),
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-      backgroundColor: 'Highlight',
-      color: 'HighlightText',
-    },
-
-    ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      color: tokens.colorNeutralForegroundOnBrand,
-      [`& .${iconFilledClassName}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
-      },
-      '@media (forced-colors: active)': {
-        backgroundColor: 'Highlight',
-        color: 'HighlightText',
-      },
-    },
-    ':active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
-      color: tokens.colorNeutralForegroundOnBrand,
-      [`& .${iconFilledClassName}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
-      },
-      '@media (forced-colors: active)': {
-        backgroundColor: 'Highlight',
-        color: 'HighlightText',
-      },
-    },
-  },
-  medium: {
-    paddingRight: '7px',
-  },
-  small: {
-    paddingRight: '5px',
-  },
-  'extra-small': {
-    paddingRight: '5px',
-    position: 'relative',
-
-    // Increase clickable area to meet WCAG 2.2 AA
-    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
-    '@media (forced-colors: none)': {
-      '&:before, &:after': {
-        content: '""',
-        position: 'absolute',
-        height: '2px',
-        left: '0',
-        width: '100%',
-      },
-      '&:before': {
-        bottom: '100%',
-      },
-      '&:after': {
-        top: '100%',
-      },
-    },
-  },
-});
-const useRootDisabledAppearances = makeStyles({
-  filled: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-  },
-  outline: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-  },
-  brand: {
-    cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
-    ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-  },
-});
-
-/**
- * Styles for InteractionTagPrimary without leading media/icon
- */
-const useRootWithoutMediaStyles = makeStyles({
-  medium: {
-    paddingLeft: '7px',
-  },
-  small: {
-    paddingLeft: '5px',
-  },
-  'extra-small': {
-    paddingLeft: '5px',
-  },
-});
-/**
- * Styles for InteractionTagPrimary when InteractionTag has a Secondary button
- */
-const useRootWithSecondaryActionStyles = makeStyles({
-  base: {
-    borderTopRightRadius: tokens.borderRadiusNone,
-    borderBottomRightRadius: tokens.borderRadiusNone,
-    borderRightStyle: 'none',
-    ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
-    }),
-    '@media (forced-colors: active)': {
-      '::before': {
-        borderTopRightRadius: '0',
-      },
-    },
-  },
-  medium: {
-    paddingRight: tokens.spacingHorizontalS,
-  },
-  small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-  'extra-small': {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-});
 
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
-  const rootRoundedBaseClassName = useRootRoundedBaseClassName();
-  const rootCircularBaseClassName = useRootCircularBaseClassName();
-  const rootStyles = useRootStyles();
-  const rootDisabledAppearances = useRootDisabledAppearances();
-  const rootWithoutMediaStyles = useRootWithoutMediaStyles();
-  const rootWithSecondaryActionStyles = useRootWithSecondaryActionStyles();
-
-  const iconStyles = useIconStyles();
-  const mediaStyles = useMediaStyles();
-  const primaryTextStyles = usePrimaryTextStyles();
-  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
-
-  const rootCircularContrastStyles = useRootCircularContrastStyles();
-
   const { disabled, shape, size, appearance, selected } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as InteractionTagPrimaryState['root'] & InteractionTagPrimarySizeDataAttributes;
+
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in
+  // InteractionTagPrimary.module.css, not by the order of these arguments — see that file's
+  // header for the mapping back to the mergeClasses() argument order this replaces,
+  // including why the `.fui-Icon-*` swaps sit in an UNLAYERED block.
+  state.root.className = clsx(
     interactionTagPrimaryClassNames.root,
 
-    shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
+    styles.root,
+    styles[shape],
 
-    shape === 'circular' && !state.hasSecondaryAction && rootCircularContrastStyles.withoutSecondaryAction,
+    shape === 'circular' && !state.hasSecondaryAction && styles.circularWithoutSecondaryAction,
 
-    disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
-    selected && !disabled && rootStyles.selected,
-    rootStyles[size],
+    disabled ? styles[`${appearance}Disabled`] : styles[appearance],
+    selected && !disabled && styles.selected,
 
-    !state.media && !state.icon && rootWithoutMediaStyles[size],
-    state.hasSecondaryAction && rootWithSecondaryActionStyles.base,
-    state.hasSecondaryAction && rootWithSecondaryActionStyles[size],
+    !state.media && !state.icon && styles.withoutMedia,
+    state.hasSecondaryAction && styles.withSecondaryAction,
 
     state.root.className,
   );
 
   if (state.media) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.media.className = mergeClasses(
+    const media = state.media as NonNullable<InteractionTagPrimaryState['media']> &
+      InteractionTagPrimarySizeDataAttributes;
+    media['data-size'] = size;
+
+    state.media.className = clsx(
       interactionTagPrimaryClassNames.media,
-      mediaStyles.base,
-      mediaStyles[size],
+      tagSharedSlotStyles.media,
       state.media.className,
     );
   }
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(
-      interactionTagPrimaryClassNames.icon,
-      iconStyles.base,
-      iconStyles[size],
-      state.icon.className,
-    );
+    const icon = state.icon as NonNullable<InteractionTagPrimaryState['icon']> &
+      InteractionTagPrimarySizeDataAttributes;
+    icon['data-size'] = size;
+
+    state.icon.className = clsx(interactionTagPrimaryClassNames.icon, tagSharedSlotStyles.icon, state.icon.className);
   }
   if (state.primaryText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.primaryText.className = mergeClasses(
+    const primaryText = state.primaryText as NonNullable<InteractionTagPrimaryState['primaryText']> &
+      InteractionTagPrimarySizeDataAttributes;
+    primaryText['data-size'] = size;
+
+    state.primaryText.className = clsx(
       interactionTagPrimaryClassNames.primaryText,
 
-      primaryTextStyles.base,
-      primaryTextStyles[size],
+      tagSharedSlotStyles.primaryText,
 
-      state.secondaryText ? primaryTextStyles.withSecondaryText : primaryTextStyles.withoutSecondaryText,
+      state.secondaryText
+        ? tagSharedSlotStyles.primaryTextWithSecondaryText
+        : tagSharedSlotStyles.primaryTextWithoutSecondaryText,
 
       state.primaryText.className,
     );
   }
   if (state.secondaryText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.secondaryText.className = mergeClasses(
+    state.secondaryText.className = clsx(
       interactionTagPrimaryClassNames.secondaryText,
-      secondaryTextBaseClassName,
+      tagSharedSlotStyles.secondaryText,
       state.secondaryText.className,
     );
   }

@@ -1,0 +1,534 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useInteractionTagPrimaryStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *   #  mergeClasses argument                                  → target
+ *   ----------------------------------------------------------------------------------
+ *   1  interactionTagPrimaryClassNames.root                   → static class (JS)
+ *   2  useRootRounded/CircularBaseClassName   (makeReset)     → fui.base  .root +
+ *                                                                        .rounded/.circular
+ *   3  shape === 'circular' && !hasSecondaryAction
+ *        && useRootCircularContrastStyles.withoutSecondaryAction
+ *                                                             → l1 .circularWithoutSecondaryAction
+ *   4  disabled ? useRootDisabledAppearances[appearance]
+ *                : useRootStyles[appearance]                  → l1 .filled/.outline/.brand
+ *                                                                  .filledDisabled/…
+ *   5  selected && !disabled && useRootStyles.selected        → l1 .selected
+ *   6  useRootStyles[size]                                    → l1 (data-size)
+ *   7  !media && !icon && useRootWithoutMediaStyles[size]     → l1 .withoutMedia
+ *   8  hasSecondaryAction && useRootWithSecondaryActionStyles.base
+ *                                                             → l1 .withSecondaryAction
+ *   9  hasSecondaryAction && useRootWithSecondaryActionStyles[size]
+ *                                                             → l1 .withSecondaryAction
+ *                                                                  (data-size)
+ *  10  consumer className                                     → unlayered (always wins)
+ *
+ * `media` / `icon` / `primaryText` / `secondaryText` slots reuse Tag's blocks verbatim —
+ * the styles hook imports `tagSharedSlotStyles` from ../Tag/useTagStyles.styles, which is
+ * where the four Griffel hooks it used to call (`useMediaStyles`, `useIconStyles`,
+ * `usePrimaryTextStyles`, `useSecondaryTextBaseClassName`) now read from too. Their rules
+ * live in Tag.module.css — one definition, selected through each slot's own `data-size`;
+ * nothing about them is re-declared here.
+ *
+ * EXCEPTION: the six `.fui-Icon-filled` / `.fui-Icon-regular` rules (from args #4
+ * `outline` and #5 `selected`) are NOT in a layer — they style `@fluentui/react-icons`'
+ * elements, which that unconverted package styles unlayered. They live in one block at the
+ * BOTTOM of this file; see "The icon swap must be UNLAYERED" there.
+ *
+ * ── Which prop becomes what ─────────────────────────────────────────────────────────
+ * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
+ * Everything else the Griffel hook selected with a CONDITIONAL argument (`appearance`,
+ * `shape`, `selected && !disabled`, `!media && !icon`, `hasSecondaryAction`, and the
+ * compound `shape === 'circular' && !hasSecondaryAction`) stays a conditional CLASS in the
+ * hook — the react-button precedent, and the only faithful way to express gates that read
+ * three state fields at once. `disabled` is a BRANCH here, not an additive state, so each
+ * appearance has its own disabled class.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * Selectors are `:where()`-flat (`@variant` compounds add 0 specificity), so within the
+ * layer file position decides.
+ * • #9 `.withSecondaryAction`'s `padding-inline-end` must beat #6's — its block is written
+ *   after the `.root` size block.
+ * • #8's `border-{start,end}-end-radius` must beat #2's `border-radius` shorthand (it does,
+ *   across layers: l1 over fui.base) and its forced-colors `::before` corner must beat #3's
+ *   (both l1 — #8 is written later; the two are mutually exclusive in practice anyway).
+ * • #5 `.selected` re-sets #4's background/colour/border colours → written after them.
+ * • WITHIN each appearance rule the declarations run `d` → `h` → `a` → `m`, reproducing
+ *   Griffel's bucket order (its `m` bucket outranks `h`/`a`, so the forced-colors `:hover`
+ *   background must come after the plain `:hover` background).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Verified against the compiled `[ltr, rtl]` pairs in
+ * lib-commonjs/components/InteractionTagPrimary/useInteractionTagPrimaryStyles.styles.js.
+ * Every pair is a pure PROPERTY flip carrying identical values on both sides — there is no
+ * value-level flip in this component — so each becomes a logical property:
+ *   circular reset `border-left` + top/bottom-left-radius  → border-inline-start,
+ *                                                            border-{start,end}-start-radius
+ *   circularContrast `border-right` + top/bottom-right-radius
+ *                                                          → border-inline-end,
+ *                                                            border-{start,end}-end-radius
+ *   outline / disabled `shorthands.borderColor` halves      → border-inline-{start,end}-color
+ *   [size] `padding-right`, withoutMedia `padding-left`     → padding-inline-{end,start}
+ *   withSecondaryAction top/bottom-right-radius + border-right-style
+ *                                                          → border-{start,end}-end-radius,
+ *                                                            border-inline-end-style
+ *   ['extra-small'] `left: 0`                               → inset-inline-start
+ *
+ * ── Spacing & stroke widths (DECISIONS.md D4 amendment + addendum) ──────────────────
+ * Values read from a `tokens.spacing*` take the NAMED utility (`pe-horizontal-s`,
+ * `pe-horizontal-s-nudge`); the tag's own 7px/5px inline nudges match no step and take the
+ * numeric utilities (`pe-7`, `ps-5`), which ride `--base-scale` all the same. `2px` DOES
+ * match the XXS step and takes the named utility. `strokeWidthThin`/`Thick` are authored as
+ * `var(--spacing-thin)` / `var(--spacing-thick)` — border-width and outline-width do not
+ * consume the spacing namespace, and raw `var(--strokeWidth*)` is the one form that does
+ * not scale with `--base-scale`.
+ */
+
+@layer fui.base {
+  /*
+   * from `baseStyles`, the object BOTH resets spread — useRootRoundedBaseClassName and
+   * useRootCircularBaseClassName (arg #2). The two differ only in corner radius and in the
+   * forced-colors `::before`; those halves are `.rounded` / `.circular` below.
+   */
+  .root {
+    /* reset default button style */
+    color: inherit;
+    font-family: inherit;
+    padding: 0;
+    border-style: none;
+    /* compiled: `-webkit-appearance:button;-moz-appearance:button;appearance:button`; the
+       `-moz-` alias is dropped (react-select precedent) */
+    -webkit-appearance: button;
+    appearance: button;
+    text-align: unset;
+    background-color: transparent;
+
+    @apply inline-grid h-full items-center;
+
+    grid-template-areas:
+      'media primary  '
+      'media secondary';
+
+    /* the `border` shorthand comes AFTER `border-style: none` in the compiled reset and
+       re-establishes `solid` — declaration order preserved */
+    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+
+    /* from createCustomFocusIndicatorStyle({ outline, zIndex }) — neither shared focus
+       utility applies: this call passes only those two options, so the compiled rule is
+       just `[data-fui-focus-visible]{outline:…;z-index:1}` (no border/box-shadow ring, no
+       ::after pseudo-element). Reproduced literally. */
+    @variant focus-visible-fui {
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+      z-index: 1;
+    }
+  }
+
+  /* from useRootRoundedBaseClassName — the rounded-only half of arg #2 */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+
+    /*
+     * Pseudo element to draw the border for windows high contrast mode — when the tag has
+     * secondary text, primary text has a negative margin that covers the border.
+     */
+    @media (forced-colors: active) {
+      position: relative;
+
+      &::before {
+        content: '';
+        border-top: var(--spacing-thin) solid;
+        position: absolute;
+        /* px literal → `--base-scale` (D4); exactly -1px at the default 16px root */
+        inset: calc(-1px * var(--base-scale));
+        border-start-start-radius: var(--borderRadiusMedium);
+        border-start-end-radius: var(--borderRadiusMedium);
+      }
+    }
+  }
+
+  /* from useRootCircularBaseClassName — the circular-only half of arg #2 */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+
+    @media (forced-colors: active) {
+      position: relative;
+
+      &::before {
+        content: '';
+        border-top: var(--spacing-thin) solid;
+        border-inline-start: var(--spacing-thin) solid;
+        position: absolute;
+        inset: calc(-1px * var(--base-scale));
+        border-start-start-radius: var(--borderRadiusCircular);
+        border-end-start-radius: var(--borderRadiusCircular);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootCircularContrastStyles.withoutSecondaryAction — arg #3. Closes the
+   * high-contrast `::before` outline on the trailing side when there is no Secondary
+   * button to draw it.
+   */
+  .circularWithoutSecondaryAction {
+    @media (forced-colors: active) {
+      position: relative;
+
+      &::before {
+        border-inline-end: var(--spacing-thin) solid transparent;
+        border-start-end-radius: var(--borderRadiusCircular);
+        border-end-end-radius: var(--borderRadiusCircular);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[appearance] — arg #4, the ENABLED branch. The `.fui-Icon-*` halves
+     of `outline`'s hover/active are NOT here — see the UNLAYERED block at the bottom. */
+  .filled {
+    background-color: var(--colorNeutralBackground3);
+    color: var(--colorNeutralForeground2);
+
+    @variant hover {
+      cursor: pointer;
+      background-color: var(--colorNeutralBackground3Hover);
+      color: var(--colorNeutralForeground2Hover);
+    }
+
+    @variant active {
+      background-color: var(--colorNeutralBackground3Pressed);
+      color: var(--colorNeutralForeground2Pressed);
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        background-color: HighlightText;
+      }
+
+      @variant active {
+        background-color: HighlightText;
+      }
+    }
+  }
+
+  .outline {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+
+    /* shorthands.borderColor(...) → the four longhands the compiler emits, in its order */
+    border-top-color: var(--colorNeutralStroke1);
+    border-inline-end-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-inline-start-color: var(--colorNeutralStroke1);
+
+    @variant hover {
+      cursor: pointer;
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground2Hover);
+      /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap is UNLAYERED, at the bottom */
+    }
+
+    @variant active {
+      background-color: var(--colorSubtleBackgroundPressed);
+      color: var(--colorNeutralForeground2Pressed);
+      /* idem */
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        background-color: HighlightText;
+      }
+
+      @variant active {
+        background-color: HighlightText;
+      }
+    }
+  }
+
+  .brand {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorBrandForeground2);
+
+    @variant hover {
+      cursor: pointer;
+      background-color: var(--colorBrandBackground2Hover);
+      color: var(--colorCompoundBrandForeground1Hover);
+    }
+
+    @variant active {
+      background-color: var(--colorBrandBackground2Pressed);
+      color: var(--colorCompoundBrandForeground1Pressed);
+    }
+
+    @variant forced-colors {
+      @variant hover {
+        background-color: HighlightText;
+      }
+
+      @variant active {
+        background-color: HighlightText;
+      }
+    }
+  }
+
+  /*
+   * from useRootDisabledAppearances[appearance] — arg #4, the DISABLED branch. `filled`
+   * and `brand` compile to the identical atomic set, so they share one rule.
+   */
+  .filledDisabled,
+  .brandDisabled {
+    cursor: not-allowed;
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+
+    border-top-color: var(--colorTransparentStrokeDisabled);
+    border-inline-end-color: var(--colorTransparentStrokeDisabled);
+    border-bottom-color: var(--colorTransparentStrokeDisabled);
+    border-inline-start-color: var(--colorTransparentStrokeDisabled);
+  }
+
+  .outlineDisabled {
+    cursor: not-allowed;
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForegroundDisabled);
+
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles.selected — arg #5, written after the appearance blocks. Its
+     `.fui-Icon-filled` colour halves are UNLAYERED, at the bottom of this file. */
+  .selected {
+    /* compiled as the `background` SHORTHAND (Griffel priority -2), not background-color */
+    background: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+
+    border-top-color: var(--colorBrandStroke1);
+    border-inline-end-color: var(--colorBrandStroke1);
+    border-bottom-color: var(--colorBrandStroke1);
+    border-inline-start-color: var(--colorBrandStroke1);
+
+    @variant hover {
+      background-color: var(--colorBrandBackgroundHover);
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant active {
+      background-color: var(--colorBrandBackgroundPressed);
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant forced-colors {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+
+      @variant hover {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+
+      @variant active {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[size] — arg #6 */
+  .root {
+    @variant size-medium {
+      @apply pe-7;
+    }
+
+    @variant size-small {
+      @apply pe-5;
+    }
+
+    @variant size-extra-small {
+      @apply pe-5;
+
+      position: relative;
+
+      /*
+       * Increase clickable area to meet WCAG 2.2 AA
+       * https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+       */
+      @media (forced-colors: none) {
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+
+          /* 2px = the XXS step; block-axis size → the vertical token's utility */
+          @apply h-vertical-xxs w-full;
+
+          inset-inline-start: 0;
+        }
+
+        &::before {
+          bottom: 100%;
+        }
+
+        &::after {
+          top: 100%;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootWithoutMediaStyles[size] — arg #7 */
+  .withoutMedia {
+    @variant size-medium {
+      @apply ps-7;
+    }
+
+    @variant size-small {
+      @apply ps-5;
+    }
+
+    @variant size-extra-small {
+      @apply ps-5;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootWithSecondaryActionStyles.base (arg #8) and [size] (arg #9). Written after
+   * the `.root` size block above because #9's `padding-inline-end` must beat #6's.
+   */
+  .withSecondaryAction {
+    /* the trailing side butts up against the Secondary button: square it off and drop the
+       shared edge */
+    border-start-end-radius: var(--borderRadiusNone);
+    border-end-end-radius: var(--borderRadiusNone);
+    border-inline-end-style: none;
+
+    @variant focus-visible-fui {
+      border-start-end-radius: var(--borderRadiusNone);
+      border-end-end-radius: var(--borderRadiusNone);
+    }
+
+    @media (forced-colors: active) {
+      &::before {
+        /* compiled `border-top-right-radius: 0` — a literal 0, not borderRadiusNone */
+        border-start-end-radius: 0;
+      }
+    }
+
+    @variant size-medium {
+      @apply pe-horizontal-s;
+    }
+
+    @variant size-small {
+      @apply pe-horizontal-s-nudge;
+    }
+
+    @variant size-extra-small {
+      @apply pe-horizontal-s-nudge;
+    }
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED (DECISIONS.md D2 amendment 5) ────────────────────
+ *
+ * These six rules style ANOTHER package's elements: the <svg>s that
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside this button. react-icons is
+ * unconverted (D11 keeps it on Griffel permanently), so it styles those same elements with
+ * Griffel atomics, and Griffel injects UNLAYERED:
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
+ *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
+ *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ *   bundleIcon.js gives the FILLED svg `root + (filled && visible)` and the REGULAR svg
+ *   `root + (!filled && visible)`.
+ *
+ * In the CSS cascade an UNLAYERED normal author declaration outranks EVERY `@layer` — the
+ * comparison happens before specificity is consulted. Left inside `@layer fui.components.l1`
+ * these rules could never beat `.fjseox`, no matter that they are 0-2-0 against its 0-1-0,
+ * and hovering an `outline` InteractionTagPrimary would keep rendering the OUTLINE glyph.
+ * Griffel's own compiled output for this component was unlayered at 0-2-0 and won on
+ * specificity (`.ft1hn21:hover .fui-Icon-filled{display:inline}`); reproducing that requires
+ * these rules to be unlayered too. Everything that styles THIS component's own root, and
+ * everything on its own `fui-InteractionTagPrimary__*` slots, stays layered above.
+ *
+ * The same DOM evidence collected for react-infolabel's InfoButton and react-button applies
+ * verbatim here — same two atomics, same element pair, same 0-2-0 vs 0-1-0 comparison; see
+ * DECISIONS.md D2 amendment 5 for the CDP matched-rules readout.
+ *
+ * Ordering is load-bearing and mirrors mergeClasses ARGUMENT order: `.outline` is arg #4,
+ * `.selected` is arg #5, so a hovered SELECTED outline tag resolves the filled glyph's
+ * colour to colorNeutralForegroundOnBrand — exactly what mergeClasses produced by keeping
+ * the later argument's `I6i3kg` atomic.
+ *
+ * `display: inline` is the compiled value, reproduced verbatim; the <svg>s are grid/flex
+ * items, so CSS Display 3 blockifies it — that is expected, not a wrong value.
+ */
+
+/* from useRootStyles.outline — arg #4, the `h` and `a` bucket halves */
+.outline {
+  @variant hover {
+    & :global(.fui-Icon-filled) {
+      display: inline;
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+  }
+
+  @variant active {
+    & :global(.fui-Icon-filled) {
+      display: inline;
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+  }
+}
+
+/* from useRootStyles.selected — arg #5, the `h` and `a` bucket halves */
+.selected {
+  @variant hover {
+    & :global(.fui-Icon-filled) {
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  @variant active {
+    & :global(.fui-Icon-filled) {
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+}

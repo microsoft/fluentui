@@ -1,0 +1,542 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTagStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   #  mergeClasses argument                                → target
+ *   ----------------------------------------------------------------------------------
+ *   1  tagClassNames.root                                   → static class (JS)
+ *   2  useRootRounded/CircularBaseClassName  (makeReset)    → fui.base  .root + .rounded
+ *                                                                      / .circular
+ *   3  disabled ? rootDisabledStyles[appearance]            → fui.components.l1
+ *                : rootStyles[appearance]                     .filled/.outline/.brand
+ *                                                             .filledDisabled/…
+ *   4  selected && !disabled && rootStyles.selected         → fui.components.l1  .selected
+ *   5  rootStyles[size]                                     → fui.components.l1  (data-size)
+ *   6  !media && !icon && rootWithoutMediaStyles[size]      → fui.components.l1  .withoutMedia
+ *   7  !dismissIcon && rootWithoutDismissStyles[size]       → fui.components.l1  .withoutDismiss
+ *   8  consumer className                                   → unlayered (always wins)
+ *
+ * `media` slot      1 static · 2 mediaStyles.base + 3 mediaStyles[size]        → l1 `.media`
+ * `icon` slot       1 static · 2 iconStyles.base  + 3 iconStyles[size]         → l1 `.icon`
+ * `primaryText`     1 static · 2 base + 3 [size] + 4 with/withoutSecondaryText → l1
+ * `secondaryText`   1 static · 2 useSecondaryTextBaseClassName (makeReset)     → fui.base
+ * `dismissIcon`     1 static · 2 base · 3 [size] · 4 !disabled && [appearance]
+ *                                     · 5 selected && !disabled && .selected   → l1
+ *
+ * ── The four SHARED slot blocks (`.media`, `.icon`, `.primaryText`, `.secondaryText`) ──
+ * `media`, `icon`, `primaryText` and `secondaryText` are rendered by InteractionTagPrimary
+ * as well as by Tag — in Griffel through the four hooks useTagStyles.styles.ts exports
+ * (`useIconStyles`, `useMediaStyles`, `usePrimaryTextStyles`,
+ * `useSecondaryTextBaseClassName`), now through the `tagSharedSlotStyles` object that
+ * replaced them. Their rules therefore live HERE, in one definition;
+ * InteractionTagPrimary.module.css re-declares none of them.
+ *
+ * That is also why the shared slots select their size from their OWN `data-size` rather
+ * than through a root descendant selector: the two consumers have two different root
+ * classes (`.root` here vs InteractionTagPrimary's), and a rule written in this file
+ * cannot name the other module's class. One `data-size` stamp per slot keeps a single
+ * definition valid under both roots. The root carries `data-size` too, for its own
+ * height/padding rules.
+ *
+ * ── Which prop becomes what ─────────────────────────────────────────────────────────
+ * `size` is a small ENUM scale → the catalog's `data-size` variants (DECISIONS.md D3).
+ * Everything else the Griffel hook selected with a CONDITIONAL mergeClasses argument
+ * (`appearance`, `shape`, `selected && !disabled`, `!media && !icon`, `!dismissIcon`)
+ * stays a conditional CLASS composed in the hook — the react-button precedent
+ * (`styles[appearance]`, `styles[shape]`). Each of those gates is a compound predicate
+ * over several state fields; reproducing them as attribute selectors would need a new
+ * attribute per gate with no headless precedent, and `selected` specifically must NOT
+ * ride the catalog's `selected` variant: that variant also matches `[aria-selected=true]`,
+ * which this root renders inside a `role="listbox"` TagGroup even when `disabled` — where
+ * Griffel deliberately withheld the slice (`selected && !disabled`).
+ *
+ * `disabled` is a BRANCH here, not an additive state (`disabled ? disabledStyles[a] :
+ * styles[a]`), so it gets its own class per appearance rather than a `@variant disabled`
+ * nested inside the appearance blocks (which is what react-button does, because Button
+ * applies both slices).
+ *
+ * ── Ordering ────────────────────────────────────────────────────────────────────────
+ * Every selector below is `:where()`-flat (`@variant` compounds add 0 specificity), so
+ * within a layer the winner is pure FILE POSITION.
+ *
+ * • #4 `.selected` re-sets #3's background/color/border colours → written after the
+ *   appearance blocks.
+ * • #5 size (height) and #6/#7 (padding-inline-start/end) are disjoint from each other
+ *   and from #3/#4; blocks are written in argument order regardless.
+ * • `.primaryTextWithSecondaryText` re-sets the font-size/line-height that
+ *   `.primaryText`'s `data-size` rules set (caption1 over body1 at `size="medium"`) →
+ *   written after them, matching arg #4 over arg #3.
+ * • `.dismissIcon`'s forced-colors `:hover`/`:active` colours are written LAST, after
+ *   `.dismissIconInteractive` and `.dismissIconSelected`. They are the `m` bucket of the
+ *   BASE slice (arg #2) while those two are `h`/`a` buckets of args #4/#5 — and Griffel's
+ *   `m` bucket outranks `h`/`a`, so a hovered dismiss icon in forced colors must resolve
+ *   to `Highlight`, not to colorCompoundBrandForeground1Hover. Block order is Griffel
+ *   BUCKET order here, the same call react-infolabel's InfoButton documents.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Verified against the compiled `[ltr, rtl]` pairs in
+ * lib-commonjs/components/Tag/useTagStyles.styles.js. There is NO value-level flip in
+ * this component — every pair is a pure PROPERTY flip and becomes a logical property:
+ *   rootWithoutMediaStyles   padding-left  ↔ padding-right   → padding-inline-start
+ *   rootWithoutDismissStyles padding-right ↔ padding-left    → padding-inline-end
+ *   iconStyles / mediaStyles / dismissIconStyles / primaryTextStyles: same two pairs
+ *   rootStyles['extra-small'] `left: 0`    ↔ `right: 0`      → inset-inline-start
+ *   shorthands.borderColor(...) right/left halves            → border-inline-*-color
+ * The two `makeResetStyles` ltr/rtl pairs differ only in the ORDER of their corner-radius
+ * / border-side longhands and carry identical values on both sides, so logical properties
+ * are byte-equivalent there. `useSecondaryTextBaseClassName`'s pair is the same case
+ * (padding-left/right, both spacingHorizontalXXS).
+ *
+ * ── Spacing & stroke widths (DECISIONS.md D4 amendment + addendum) ──────────────────
+ * Values the Griffel source read from a `tokens.spacing*` take the NAMED utility
+ * (`pe-horizontal-s`, `px-horizontal-xxs`, `-mt-vertical-xxs`, …). The tag's own inner
+ * spacing literals — 7px / 5px / 3px / 1px — match no step and take the NUMERIC utilities
+ * (`ps-7`, `pe-5`, `ps-1`), which ride `--base-scale` exactly the same way. `2px` DOES
+ * match the XXS step and takes the named utility. `tokens.strokeWidthThin` /
+ * `strokeWidthThick` are authored as `var(--spacing-thin)` / `var(--spacing-thick)`:
+ * border-width and outline-width do not consume the spacing namespace, and the raw
+ * `var(--strokeWidth*)` form is the one that does not scale with `--base-scale`.
+ * Font sizes are not spacing-powered, so the 20/16/12 px glyph sizes are written as
+ * `calc(<n>px * var(--base-scale))`.
+ */
+
+@layer fui.base {
+  /*
+   * from `baseStyles`, the object BOTH resets spread — useRootRoundedBaseClassName and
+   * useRootCircularBaseClassName (arg #2). The two resets differ only in corner radius and
+   * in the forced-colors `::before`; those halves are `.rounded` / `.circular` below.
+   */
+  .root {
+    /* reset default button style — the root is a <button> when `dismissible` */
+    font-family: inherit;
+    padding: 0;
+    /* compiled: `-webkit-appearance:button;-moz-appearance:button;appearance:button`. The
+       `-moz-` alias is dropped — Firefox has supported the unprefixed property since 80
+       (2020), well below this repo's baseline (same call as react-select's `.select`). */
+    -webkit-appearance: button;
+    appearance: button;
+    text-align: unset;
+
+    @apply box-border inline-grid w-fit items-center;
+
+    grid-template-areas:
+      'media primary   dismissIcon'
+      'media secondary dismissIcon';
+
+    border: var(--spacing-thin) solid var(--colorTransparentStroke);
+  }
+
+  /* from useRootRoundedBaseClassName — the rounded-only half of arg #2 */
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusMedium);
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+    }
+
+    /*
+     * Pseudo element to draw the border for windows high contrast mode — when Tag has
+     * secondary text, primary text has a negative margin that covers the border.
+     */
+    @media (forced-colors: active) {
+      position: relative;
+
+      &::before {
+        content: '';
+        border-top: var(--spacing-thin) solid;
+        position: absolute;
+        /* px literal → `--base-scale` (D4); exactly -1px at the default 16px root */
+        inset: calc(-1px * var(--base-scale));
+        border-start-start-radius: var(--borderRadiusMedium);
+        border-start-end-radius: var(--borderRadiusMedium);
+      }
+    }
+  }
+
+  /* from useRootCircularBaseClassName — the circular-only half of arg #2 */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+
+    @variant focus-visible-fui {
+      border-radius: var(--borderRadiusCircular);
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
+    }
+
+    @media (forced-colors: active) {
+      position: relative;
+
+      &::before {
+        content: '';
+        border-top: var(--spacing-thin) solid;
+        border-inline-start: var(--spacing-thin) solid;
+        border-inline-end: var(--spacing-thin) solid;
+        position: absolute;
+        inset: calc(-1px * var(--base-scale));
+        border-radius: var(--borderRadiusCircular);
+      }
+    }
+  }
+
+  /* from useSecondaryTextBaseClassName (makeResetStyles) — secondaryText arg #2 */
+  .secondaryText {
+    grid-area: secondary;
+
+    @apply whitespace-nowrap px-horizontal-xxs;
+
+    /* typographyStyles.caption2 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase100);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[appearance] — root arg #3, the ENABLED branch */
+  .filled {
+    background-color: var(--colorNeutralBackground3);
+    color: var(--colorNeutralForeground2);
+  }
+
+  .outline {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+
+    /* shorthands.borderColor(...) → the four longhands the compiler emits, in its order */
+    border-top-color: var(--colorNeutralStroke1);
+    border-inline-end-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-inline-start-color: var(--colorNeutralStroke1);
+  }
+
+  .brand {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorBrandForeground2);
+  }
+
+  /*
+   * from useRootDisabledStyles[appearance] — root arg #3, the DISABLED branch. `filled`
+   * and `brand` compile to the identical atomic set, so they share one rule rather than
+   * being duplicated.
+   */
+  .filledDisabled,
+  .brandDisabled {
+    cursor: not-allowed;
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+
+    border-top-color: var(--colorTransparentStrokeDisabled);
+    border-inline-end-color: var(--colorTransparentStrokeDisabled);
+    border-bottom-color: var(--colorTransparentStrokeDisabled);
+    border-inline-start-color: var(--colorTransparentStrokeDisabled);
+  }
+
+  .outlineDisabled {
+    cursor: not-allowed;
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForegroundDisabled);
+
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles.selected — root arg #4, written after the appearance blocks */
+  .selected {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+
+    border-top-color: var(--colorBrandStroke1);
+    border-inline-end-color: var(--colorBrandStroke1);
+    border-bottom-color: var(--colorBrandStroke1);
+    border-inline-start-color: var(--colorBrandStroke1);
+
+    @variant forced-colors {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useRootStyles[size] — root arg #5 */
+  .root {
+    @variant size-medium {
+      @apply h-32;
+    }
+
+    @variant size-small {
+      @apply h-24;
+    }
+
+    @variant size-extra-small {
+      @apply h-20;
+
+      position: relative;
+
+      /*
+       * Increase clickable area to meet WCAG 2.2 AA
+       * https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+       */
+      @media (forced-colors: none) {
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+
+          /* 2px = the XXS step; block-axis size → the vertical token's utility */
+          @apply h-vertical-xxs w-full;
+
+          inset-inline-start: 0;
+        }
+
+        &::before {
+          bottom: 100%;
+        }
+
+        &::after {
+          top: 100%;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useRootWithoutMediaStyles[size] — root arg #6, applied when the Tag has neither
+   * a media nor an icon slot.
+   */
+  .withoutMedia {
+    @variant size-medium {
+      @apply ps-7;
+    }
+
+    @variant size-small {
+      @apply ps-5;
+    }
+
+    @variant size-extra-small {
+      @apply ps-5;
+    }
+  }
+
+  /* from useRootWithoutDismissStyles[size] — root arg #7 */
+  .withoutDismiss {
+    @variant size-medium {
+      @apply pe-7;
+    }
+
+    @variant size-small {
+      @apply pe-5;
+    }
+
+    @variant size-extra-small {
+      @apply pe-5;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * SHARED SLOTS — also consumed by InteractionTagPrimary (see the file header). Their
+   * size rules read the SLOT's own `data-size`, not the root's.
+   */
+
+  /* from useMediaStyles.base (arg #2) + useMediaStyles[size] (arg #3) */
+  .media {
+    grid-area: media;
+
+    /* `padding-left: 1px` is an [ltr, rtl] pair (`f10xn8zz`/`f136y8j8`) → logical */
+    @apply flex ps-1;
+
+    @variant size-medium {
+      @apply pe-horizontal-s;
+    }
+
+    @variant size-small {
+      @apply pe-horizontal-s-nudge;
+    }
+
+    @variant size-extra-small {
+      @apply pe-horizontal-s-nudge;
+    }
+  }
+
+  /* from useIconStyles.base (arg #2) + useIconStyles[size] (arg #3) */
+  .icon {
+    grid-area: media;
+
+    @apply box-content flex;
+
+    @variant size-medium {
+      @apply w-20 ps-7 pe-horizontal-xs;
+
+      font-size: calc(20px * var(--base-scale));
+    }
+
+    @variant size-small {
+      @apply w-16 ps-5 pe-horizontal-xxs;
+
+      font-size: calc(16px * var(--base-scale));
+    }
+
+    @variant size-extra-small {
+      @apply w-12 ps-5 pe-horizontal-xxs;
+
+      font-size: calc(12px * var(--base-scale));
+    }
+  }
+
+  /* from usePrimaryTextStyles.base (arg #2) + usePrimaryTextStyles[size] (arg #3) */
+  .primaryText {
+    @apply whitespace-nowrap px-horizontal-xxs;
+
+    /* typographyStyles.body1 */
+    @variant size-medium {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase300);
+    }
+
+    /* typographyStyles.caption1 */
+    @variant size-small {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+
+    @variant size-extra-small {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightRegular);
+      line-height: var(--lineHeightBase200);
+    }
+  }
+
+  /*
+   * from usePrimaryTextStyles.withoutSecondaryText / .withSecondaryText — primaryText
+   * arg #4. Written after the `data-size` block above: `withSecondaryText` must re-set
+   * caption1 over `size-medium`'s body1.
+   */
+  .primaryTextWithoutSecondaryText {
+    grid-column-start: primary;
+    grid-row-start: primary;
+    grid-row-end: secondary;
+
+    /* compiled `padding-bottom: var(--spacingHorizontalXXS)` — the HORIZONTAL token on a
+       block-axis property. Reproduced verbatim rather than "fixed" to the vertical token;
+       both steps are 2px, so this is a naming faithfulness point, not a value difference. */
+    @apply pb-horizontal-xxs;
+  }
+
+  .primaryTextWithSecondaryText {
+    grid-area: primary;
+
+    /* typographyStyles.caption1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+
+    /* compiled `margin-top:-2px`; the literal matches the XXS step, and the block axis
+       takes the vertical token (react-persona precedent) */
+    @apply -mt-vertical-xxs;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useDismissIconStyles.base — dismissIcon arg #2, the `d` bucket half. The `m`
+     bucket half (forced colors) is split out at the BOTTOM of this layer; see the header. */
+  .dismissIcon {
+    grid-area: dismissIcon;
+
+    @apply flex;
+
+    /* from useDismissIconStyles[size] — dismissIcon arg #3 */
+    @variant size-medium {
+      @apply ps-horizontal-xs pe-7;
+
+      font-size: calc(20px * var(--base-scale));
+    }
+
+    @variant size-small {
+      @apply ps-horizontal-xxs pe-5;
+
+      font-size: calc(16px * var(--base-scale));
+    }
+
+    @variant size-extra-small {
+      @apply ps-horizontal-xxs pe-5;
+
+      font-size: calc(12px * var(--base-scale));
+    }
+  }
+
+  /*
+   * from useDismissIconStyles[appearance] — dismissIcon arg #4, gated on `!disabled`.
+   * The `filled`, `outline` and `brand` slices compile to the IDENTICAL atomic set
+   * (`f8491dx` / `f3ymbdj` / `fryz5bw`), so they collapse into one class that the hook
+   * applies for any appearance when the Tag is enabled.
+   */
+  .dismissIconInteractive {
+    @variant hover {
+      cursor: pointer;
+      color: var(--colorCompoundBrandForeground1Hover);
+    }
+
+    @variant active {
+      color: var(--colorCompoundBrandForeground1Pressed);
+    }
+  }
+
+  /* from useDismissIconStyles.selected — dismissIcon arg #5; beats the block above */
+  .dismissIconSelected {
+    @variant hover {
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    @variant active {
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  /*
+   * from useDismissIconStyles.base — the `m` bucket half of arg #2, written LAST.
+   * Griffel's `m` bucket outranks its `h`/`a` buckets, so these must beat both blocks
+   * above even though they come from an EARLIER mergeClasses argument.
+   */
+  .dismissIcon {
+    @variant forced-colors {
+      @variant hover {
+        color: Highlight;
+      }
+
+      @variant active {
+        color: Highlight;
+      }
+    }
+  }
+}
