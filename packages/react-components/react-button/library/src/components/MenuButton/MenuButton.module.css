@@ -1,0 +1,205 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated in every module on purpose — see
+ * Button.module.css for the full rationale.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── ALTITUDE ─────────────────────────────────────────────────────────────────────────
+ * `root` and `icon` are @fluentui/react-button's slots: `useMenuButtonStyles_unstable`
+ * writes onto them and THEN calls `useButtonStyles_unstable`, whose `clsx` puts the
+ * incoming className LAST. Before this conversion those slices were UNLAYERED Griffel
+ * atomics over Button's LAYERED rules, and unlayered beats every `@layer` before
+ * specificity is consulted (D2 amendment 5). `fui.components.l2` reproduces that winner
+ * deterministically (D2 amendment 2).
+ *
+ * `menuIcon` is MenuButton's OWN slot — Button's hook never sees it and no rule anywhere
+ * else targets it — so it is `fui.components.l1`, the base-component altitude.
+ *
+ * mergeClasses ARGUMENT order of useMenuButtonStyles_unstable — `root` slot:
+ *
+ *   #  mergeClasses argument                        → target
+ *   -------------------------------------------------------------------------------
+ *   1  menuButtonClassNames.root                    → static class (JS)
+ *   2  rootExpandedStyles.base        (expanded)    → UNLAYERED (react-icons swap)
+ *   3  rootExpandedStyles[appearance] (expanded)    → fui.components.l2
+ *   4  consumer className                           → unlayered (always wins)
+ *
+ * `icon`:     static, the forced-colors hover colour (see the hook for the guard that
+ *             Griffel's `a && b && c` expression actually produces), consumer className.
+ * `menuIcon`: static, `menuIconStyles.base`, `…[size]`, `…notIconOnly` (all l1), consumer.
+ *
+ * There is no `h` / `a` / `m` bucket ordering problem on the root here: arg #3's slices
+ * are mutually exclusive appearances and every one of them is flat (`d` bucket only), so
+ * file order carries no cascade meaning between them.
+ *
+ * Verified against node_modules/@fluentui/react-button/lib-commonjs/components/
+ * MenuButton/useMenuButtonStyles.styles.js (v9.10.1, pre-conversion AOT output).
+ * `shorthands.borderColor/borderWidth` expand to the four physical longhands the compiler
+ * emits; their `[ltr, rtl]` pairs only swap left↔right with the same value.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * NOTE for the statics-removal phase (statics-removal-design.md §4b): this root is a
+   * "Class B" site — every class below is conditional on `aria-expanded`, so
+   * `menuButtonClassNames.root` is the only thing keeping the `group/fui-menu-button`
+   * marker off `classList[0]` (DECISIONS.md D15.1).
+   *
+   * §4b's prescribed fix — an empty `.root {}` identity local — does NOT work in this
+   * build pipeline: a rule with no declarations is dropped before the class map is
+   * extracted, so `styles.root` comes back `undefined` and clsx silently omits it
+   * (measured: `lib/components/MenuButton/MenuButton.module.css.js` contained no `root`
+   * key). Whatever leading token that phase chooses has to carry at least one declaration.
+   */
+
+  /*
+   * Expanded appearance variations — arg #3. `secondary` DOES carry rules here (unlike
+   * most Button-family appearance sets); only the icon slot's `primary` slice is empty.
+   */
+
+  /* from useRootExpandedStyles.outline */
+  .expanded-outline {
+    border-top-color: var(--colorNeutralStroke1Selected);
+    border-right-color: var(--colorNeutralStroke1Selected);
+    border-bottom-color: var(--colorNeutralStroke1Selected);
+    border-left-color: var(--colorNeutralStroke1Selected);
+
+    /* Border widths are not spacing-powered utilities, so the D4 addendum's direct
+       `var(--spacing-*)` form (`strokeWidthThicker`). */
+    border-top-width: var(--spacing-thicker);
+    border-right-width: var(--spacing-thicker);
+    border-bottom-width: var(--spacing-thicker);
+    border-left-width: var(--spacing-thicker);
+
+    color: var(--colorNeutralForeground1Selected);
+  }
+
+  /* from useRootExpandedStyles.primary */
+  .expanded-primary {
+    background-color: var(--colorBrandBackgroundSelected);
+  }
+
+  /* from useRootExpandedStyles.secondary */
+  .expanded-secondary {
+    background-color: var(--colorNeutralBackground1Selected);
+    border-top-color: var(--colorNeutralStroke1Selected);
+    border-right-color: var(--colorNeutralStroke1Selected);
+    border-bottom-color: var(--colorNeutralStroke1Selected);
+    border-left-color: var(--colorNeutralStroke1Selected);
+    color: var(--colorNeutralForeground1Selected);
+  }
+
+  /* from useRootExpandedStyles.subtle */
+  .expanded-subtle {
+    background-color: var(--colorSubtleBackgroundSelected);
+    color: var(--colorNeutralForeground2Selected);
+  }
+
+  /* from useRootExpandedStyles.transparent */
+  .expanded-transparent {
+    background-color: var(--colorTransparentBackgroundSelected);
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * Icon slot — react-button's, so l2 (see ALTITUDE above).
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useIconExpandedStyles.highContrast */
+  .icon-expanded-high-contrast {
+    @variant forced-colors {
+      @variant hover {
+        color: Highlight;
+      }
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * `menuIcon` — MenuButton's own slot, so `fui.components.l1`.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l1 {
+  /* from useMenuIconStyles.base */
+  .menu-icon {
+    line-height: 0;
+  }
+
+  /*
+   * Size variations. `small` and `medium` are byte-identical in the Griffel source and
+   * are kept as two slices so the 1:1 mapping back to it survives review. The px literals
+   * ride `--base-scale` (D4), matching react-button's own icon sizing form.
+   */
+
+  /* from useMenuIconStyles.small */
+  .menu-icon-small {
+    @apply size-12;
+
+    font-size: calc(12px * var(--base-scale));
+    line-height: var(--lineHeightBase200);
+  }
+
+  /* from useMenuIconStyles.medium */
+  .menu-icon-medium {
+    @apply size-12;
+
+    font-size: calc(12px * var(--base-scale));
+    line-height: var(--lineHeightBase200);
+  }
+
+  /* from useMenuIconStyles.large */
+  .menu-icon-large {
+    @apply size-16;
+
+    font-size: calc(16px * var(--base-scale));
+    line-height: var(--lineHeightBase400);
+  }
+
+  /*
+   * from useMenuIconStyles.notIconOnly. `marginLeft` compiles to an [ltr, rtl] pair
+   * (`.fbyavb5` / `.fm0x6gh`) — a pure property flip, so the logical inline-start margin.
+   */
+  .menu-icon-not-icon-only {
+    @apply ms-horizontal-xs;
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED ──────────────────────────────────────────────────
+ *
+ * `useRootExpandedStyles.base` (arg #2) is NOTHING BUT this swap, so the whole slice
+ * lives here. Same defect, same fix and same evidence as react-button's own
+ * Button.module.css (bottom of that file): these two rules style ANOTHER package's
+ * elements — the two <svg>s `@fluentui/react-icons`' `bundleIcon()` renders inside the
+ * icon slot — and react-icons is not converted (D11 keeps it on Griffel), so it styles
+ * them with UNLAYERED atomics:
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
+ *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
+ *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ *
+ * An unlayered normal author declaration outranks EVERY `@layer` — that comparison
+ * happens before specificity is consulted — so a `display` rule left in
+ * `@layer fui.components.l2` could never beat `.fjseox`, and an expanded MenuButton would
+ * keep the OUTLINE glyph.
+ *
+ * Ordering against Button.module.css's own unlayered block: both are 0-2-0 and unlayered,
+ * so file position inside react-button's aggregated `dist/styles.css` is the only
+ * tiebreak, and this file follows Button's — reproducing the mixed-mode winner this
+ * conversion replaces (while this hook was still Griffel its runtime <style> was appended
+ * after the module bundle).
+ */
+
+/* from useRootExpandedStyles.base — arg #2 */
+.expanded {
+  & :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  & :global(.fui-Icon-regular) {
+    display: none;
+  }
+}

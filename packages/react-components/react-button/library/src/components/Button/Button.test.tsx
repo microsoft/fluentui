@@ -19,13 +19,10 @@ describe('Button', () => {
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
     //
-    // Deliberately NOT disabled for ToggleButton/CompoundButton/MenuButton/SplitButton:
-    // those still call mergeClasses with the consumer className last before delegating to
-    // useButtonStyles_unstable, so the test keeps observing a real call for them. For the
-    // same reason `classname-overrides-win` is enabled here per-component rather than in
-    // src/testing/isConformant.ts: mergeClasses emits its atomic classes AFTER the
-    // consumer's className, so `<ToggleButton checked className="x" />` renders 46 classes
-    // past `x` (a sequence hash + 45 atomics) and would fail this test by design.
+    // ToggleButton/CompoundButton/MenuButton/SplitButton are converted too now and carry
+    // the identical pair in their own test files. Both entries stay per-component rather
+    // than moving into src/testing/isConformant.ts, so that a future component added to
+    // this package has to opt in deliberately.
     disabledTests: ['make-styles-overrides-win'],
     extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {

@@ -1,0 +1,275 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2). Repeated in every module on purpose — see
+ * Button.module.css for the full rationale.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── ALTITUDE: split, and the split is the whole point ────────────────────────────────
+ * SplitButton is the one member of the family that renders an element of its OWN — a
+ * wrapper `<div>` that is not a Button — and then styles two CHILD components.
+ *
+ *   • the wrapper's own declarations (display / justify-content / position /
+ *     vertical-align) → `fui.components.l1`, the base-component altitude. Nothing else in
+ *     the tree styles that div.
+ *   • everything landing on the `primaryActionButton` (a Button) or the `menuButton`
+ *     (a MenuButton) → `fui.components.l2`. That covers both the root's descendant rules
+ *     and the two `createCustomFocusIndicatorStyle` slices this hook writes straight onto
+ *     the child slots' classNames. Those child hooks put the incoming className LAST, so
+ *     before this conversion they were UNLAYERED Griffel atomics over the children's
+ *     LAYERED rules, and unlayered beats every `@layer` before specificity is consulted
+ *     (D2 amendment 5). D2 amendment 2 names this exact case: "SplitButton over children".
+ *
+ * ── Own sub-slot selectors go LOCAL ──────────────────────────────────────────────────
+ * The Griffel source selected `& .${splitButtonClassNames.primaryActionButton}` and
+ * `…menuButton` — public BEM statics. Here both are the module locals this hook already
+ * writes onto those slots, which keeps the coupling private and survives the
+ * statics-removal phase unchanged (statics-removal-design.md §2.1 / D16.3). Same 0-2-0
+ * specificity, same winners. The locals double as the slots' own rule targets, so the two
+ * `useFocusStyles` slices are folded into them rather than adding a second class each.
+ *
+ * mergeClasses ARGUMENT order of useSplitButtonStyles_unstable — `root` slot:
+ *
+ *   #  mergeClasses argument                    → target
+ *   ---------------------------------------------------------------------------------
+ *   1  splitButtonClassNames.root               → static class (JS)
+ *   2  rootStyles.base                          → l1 (own div) + l2 (`d` block)
+ *   3  rootStyles[appearance]                   → l2 `d` / `h` / `a` / `m` blocks
+ *   4  rootStyles.disabled       (disabled-any) → l2 `d` / `h` / `a` blocks
+ *   5  rootStyles.disabledHighContrast (idem)   → l2 `m` block
+ *   6  consumer className                       → unlayered (always wins)
+ *
+ * `menuButton`:          static, `focusStyles.menuButton`          → `.menu-button` (l2)
+ * `primaryActionButton`: static, `focusStyles.primaryActionButton` → `.primary-action-button` (l2)
+ *
+ * `outline`, `secondary`, `circular`, `rounded` and `square` are `{}` in the Griffel
+ * source, so those `styles[...]` lookups are intentionally undefined and clsx drops them.
+ *
+ * Bucket-major ordering (`d` < `h` < `a` < `m`) is used for the same reason as the rest of
+ * the family: `@variant hover` compiles to `&:where(:hover)` (0-1-0), so Griffel's bucket
+ * priority has to be re-encoded as file order — e.g. arg #4's flat disabled border colour
+ * must not beat arg #3's hover one.
+ *
+ * ── RTL ──────────────────────────────────────────────────────────────────────────────
+ * EVERY declaration on the two children is an `[ltr, rtl]` pair in the compiled atomics
+ * (`.f14uur2j{border-top-right-radius:0}` / `.fc1btbj{border-top-left-radius:0}`, …) —
+ * pure property flips — so all of them are written as logical properties.
+ *
+ * Verified against node_modules/@fluentui/react-button/lib-commonjs/components/
+ * SplitButton/useSplitButtonStyles.styles.js (v9.10.1, pre-conversion AOT output).
+ */
+
+@layer fui.components.l1 {
+  /* from useRootStyles.base — arg #2, the wrapper's own declarations */
+  .root {
+    @apply relative inline-flex justify-stretch align-middle;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * `d` bucket — flat declarations on the two child buttons, in argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootStyles.base — arg #2 */
+  .root {
+    & .primary-action-button {
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    & .menu-button {
+      border-inline-start-width: 0;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+
+      /* WCAG minimum target size for pointer targets that are immediately adjacent to
+         other targets: https://w3c.github.io/wcag/guidelines/22/#target-size-minimum */
+      @apply min-w-24;
+    }
+  }
+
+  /* from useRootStyles.primary — arg #3 */
+  .primary {
+    & .primary-action-button {
+      border-inline-end-color: var(--colorNeutralStrokeOnBrand);
+    }
+  }
+
+  /* from useRootStyles.subtle — arg #3 */
+  .subtle {
+    & .primary-action-button {
+      border-inline-end-color: var(--colorTransparentBackground);
+    }
+  }
+
+  /* from useRootStyles.transparent — arg #3 */
+  .transparent {
+    & .primary-action-button {
+      border-inline-end-color: var(--colorTransparentBackground);
+    }
+  }
+
+  /* from useRootStyles.disabled — arg #4 */
+  .disabled {
+    & .primary-action-button {
+      border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * `h` bucket (`:hover`), in argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootStyles.primary — arg #3 */
+  .primary {
+    @variant hover {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorNeutralStrokeOnBrand);
+      }
+    }
+  }
+
+  /* from useRootStyles.subtle — arg #3 */
+  .subtle {
+    @variant hover {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorTransparentBackgroundHover);
+      }
+    }
+  }
+
+  /* from useRootStyles.transparent — arg #3 */
+  .transparent {
+    @variant hover {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorTransparentBackgroundHover);
+      }
+    }
+  }
+
+  /* from useRootStyles.disabled — arg #4 */
+  .disabled {
+    @variant hover {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorNeutralStrokeDisabled);
+      }
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * `a` bucket — Griffel's `':hover:active,:active:focus-visible'` compound.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootStyles.primary — arg #3 */
+  .primary {
+    @variant hover-active {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorNeutralStrokeOnBrand);
+      }
+    }
+  }
+
+  /* from useRootStyles.subtle — arg #3 */
+  .subtle {
+    @variant hover-active {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorTransparentBackgroundPressed);
+      }
+    }
+  }
+
+  /* from useRootStyles.transparent — arg #3 */
+  .transparent {
+    @variant hover-active {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorTransparentBackgroundPressed);
+      }
+    }
+  }
+
+  /* from useRootStyles.disabled — arg #4 */
+  .disabled {
+    @variant hover-active {
+      & .primary-action-button {
+        border-inline-end-color: var(--colorNeutralStrokeDisabled);
+      }
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * The two child slots' own classes — `useFocusStyles`, i.e.
+ * `createCustomFocusIndicatorStyle({...})` → `&[data-fui-focus-visible]`. They are the
+ * same locals the root's descendant rules above target, so each slot carries exactly one
+ * module class.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useFocusStyles.primaryActionButton */
+  .primary-action-button {
+    @variant focus-visible-fui {
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+  }
+
+  /* from useFocusStyles.menuButton */
+  .menu-button {
+    @variant focus-visible-fui {
+      border-inline-start-width: 0;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * `m` bucket (`@media (forced-colors: active)`), in argument order, LAST in the file:
+ * Griffel's `m` bucket outranks `d`, `h` and `a` regardless of argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootStyles.primary — arg #3 */
+  .primary {
+    @variant forced-colors {
+      & .primary-action-button {
+        border-inline-end-color: HighlightText;
+      }
+
+      @variant hover {
+        & .primary-action-button {
+          border-inline-end-color: Highlight;
+        }
+      }
+
+      @variant hover-active {
+        & .primary-action-button {
+          border-inline-end-color: Highlight;
+        }
+      }
+    }
+  }
+
+  /* from useRootStyles.disabledHighContrast — arg #5 */
+  .disabled-high-contrast {
+    @variant forced-colors {
+      & .primary-action-button {
+        border-inline-end-color: GrayText;
+      }
+
+      @variant hover {
+        & .primary-action-button {
+          border-inline-end-color: GrayText;
+        }
+      }
+
+      @variant hover-active {
+        & .primary-action-button {
+          border-inline-end-color: GrayText;
+        }
+      }
+    }
+  }
+}

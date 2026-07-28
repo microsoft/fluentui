@@ -1,0 +1,647 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── ALTITUDE: everything here is l2, nothing is l1 (DECISIONS.md D2 amendment 2) ──────
+ * ToggleButton owns no element of its own. `useToggleButtonStyles_unstable` writes onto
+ * `state.root` / `state.icon` and THEN calls `useButtonStyles_unstable`, whose `clsx`
+ * puts the incoming className LAST — so before this conversion every one of these slices
+ * was an UNLAYERED Griffel atomic sitting over react-button's LAYERED rules, and
+ * unlayered beats every `@layer` before specificity is even consulted (D2 amendment 5).
+ * `fui.components.l2` over Button's `fui.components.l1` / `fui.base` reproduces that
+ * winner exactly and deterministically — l1 would leave it to stylesheet load order.
+ *
+ * ── ORDERING: bucket-major, mergeClasses-argument-minor ──────────────────────────────
+ * Griffel resolved collisions BETWEEN THESE SLICES two ways: by mergeClasses argument
+ * order (its per-property atomic deletion) and by its style-BUCKET order, where a `:hover`
+ * atomic (`h`) always outranks a flat one (`d`) and a media atomic (`m`) outranks both —
+ * independently of argument order, and reinforced by real specificity (`.x:hover` is
+ * 0-2-0 against `.x`'s 0-1-0).
+ *
+ * `@variant hover` compiles to `&:where(:hover)` — 0-1-0, same as the flat rule — so the
+ * bucket order has to be re-encoded as FILE ORDER. Hence the five blocks below:
+ *
+ *   1. `d` bucket — flat declarations, in mergeClasses argument order
+ *   2. `[data-fui-focus-visible]` — Griffel's `d` bucket too, but at 0-2-0, so it beat
+ *      every flat rule; it is written after block 1 for the same effect
+ *   3. `h` bucket — `@variant hover`, in argument order
+ *   4. `a` bucket — `@variant hover-active` (Griffel's `:hover:active,:active:focus-visible`)
+ *   5. `m` bucket — `@variant forced-colors`, in argument order, LAST
+ *
+ * Authoring each slice's flat + hover + pressed together instead would let a LATER
+ * argument's flat rule beat an EARLIER argument's hover rule — e.g. arg #6
+ * `.checked-outline`'s flat `border-color` would win over arg #4 `.checked`'s hover
+ * `border-color`, which Griffel never allowed.
+ *
+ * mergeClasses ARGUMENT order of useToggleButtonStyles_unstable — `root` slot:
+ *
+ *   #  mergeClasses argument                                    → target
+ *   ------------------------------------------------------------------------------------
+ *   1  toggleButtonClassNames.root                              → static class (JS)
+ *   2  primaryHighContrastStyles.base        (appearance=primary)   → block 5
+ *   3  primaryHighContrastStyles.disabled    (+ disabled-any)       → block 5
+ *   4  rootCheckedStyles.base                (checked)              → blocks 1/3/4 + UNLAYERED
+ *   5  rootCheckedStyles.highContrast        (checked)              → block 5
+ *   6  rootCheckedStyles[appearance]         (checked)              → blocks 1/2/3/4
+ *   7  accessibleCheckedStyles.base          (isAccessible+checked) → blocks 1/3
+ *   8  accessibleCheckedStyles[appearance]   (isAccessible+checked) → blocks 1/2/3
+ *   9  rootDisabledStyles.base               (disabled-any)         → blocks 1/3/4
+ *  10  rootDisabledStyles[appearance]        (disabled-any)         → blocks 1/3/4
+ *  11  consumer className                                       → unlayered (always wins)
+ *
+ * `icon` slot:
+ *
+ *   1  toggleButtonClassNames.icon                              → static class (JS)
+ *   2  iconCheckedStyles.subtleOrTransparent                    → `.checked-icon`
+ *   3  iconCheckedStyles.highContrast       (UNCONDITIONAL)     → `.icon`
+ *   4  consumer className                                       → unlayered
+ *
+ * `secondary` (root, arg #6/#8/#10) and `transparent`/`secondary` (arg #8) are `{}` in the
+ * Griffel source, so `styles['checked-secondary']` & co. are intentionally undefined and
+ * clsx drops them — matching the empty class string Griffel produced.
+ *
+ * Verified against the compiled Griffel atomics in
+ * node_modules/@fluentui/react-button/lib-commonjs/components/ToggleButton/
+ * useToggleButtonStyles.styles.js (v9.10.1, the pre-conversion AOT output). Every
+ * `...shorthands.borderColor(x)` / `borderWidth(x)` is expanded to the four physical
+ * longhands the compiler emits; the `[ltr, rtl]` pairs only swap left↔right and carry the
+ * same value, so the flip is a visual no-op and physical longhands are exact.
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 1 — `d` bucket: flat declarations, in mergeClasses argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /*
+   * NOTE for the statics-removal phase (statics-removal-design.md §4b): this root is a
+   * "Class B" site — EVERY class below is conditional (`checked`, `disabled`,
+   * `appearance === 'primary'`), so `toggleButtonClassNames.root` is the only thing
+   * keeping the `group/fui-toggle-button` marker off `classList[0]` (DECISIONS.md D15.1).
+   *
+   * §4b's prescribed fix — an empty `.root {}` identity local — does NOT work in this
+   * build pipeline: a rule with no declarations is dropped before the class map is
+   * extracted, so `styles.root` comes back `undefined` and clsx silently omits it
+   * (measured on this file: `lib/components/ToggleButton/ToggleButton.module.css.js`
+   * contained no `root` key). Whatever leading token that phase chooses has to carry at
+   * least one declaration.
+   */
+
+  /* from useRootCheckedStyles.base — arg #4 */
+  .checked {
+    background-color: var(--colorNeutralBackground1Selected);
+    border-top-color: var(--colorNeutralStroke1);
+    border-right-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-left-color: var(--colorNeutralStroke1);
+    color: var(--colorNeutralForeground1Selected);
+
+    /* `shorthands.borderWidth(tokens.strokeWidthThin)`. Border widths are not
+       spacing-powered utilities, so the D4 addendum's direct `var(--spacing-*)` form. */
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
+
+    /* The `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
+       layer — it is UNLAYERED at the bottom of this file. See "The icon swap must be
+       UNLAYERED" there. */
+  }
+
+  /* from useRootCheckedStyles.outline — arg #6 */
+  .checked-outline {
+    background-color: var(--colorTransparentBackgroundSelected);
+    border-top-color: var(--colorNeutralStroke1);
+    border-right-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-left-color: var(--colorNeutralStroke1);
+    border-top-width: var(--spacing-thicker);
+    border-right-width: var(--spacing-thicker);
+    border-bottom-width: var(--spacing-thicker);
+    border-left-width: var(--spacing-thicker);
+  }
+
+  /* from useRootCheckedStyles.primary — arg #6 */
+  .checked-primary {
+    background-color: var(--colorBrandBackgroundSelected);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  /* from useRootCheckedStyles.subtle — arg #6 */
+  .checked-subtle {
+    background-color: var(--colorSubtleBackgroundSelected);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForeground2Selected);
+  }
+
+  /* from useRootCheckedStyles.transparent — arg #6 */
+  .checked-transparent {
+    background-color: var(--colorTransparentBackgroundSelected);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+
+  /* from useCheckedAccessibleStyles.base — arg #7 */
+  .accessible-checked {
+    background-color: var(--colorBrandBackground);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  /* from useCheckedAccessibleStyles.outline — arg #8
+     "There's no longer a reason to thicken the outline variant's border" */
+  .accessible-checked-outline {
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
+  }
+
+  /* from useCheckedAccessibleStyles.primary — arg #8; primary has an inner stroke when checked */
+  .accessible-checked-primary {
+    outline: var(--spacing-thin) solid var(--colorNeutralForegroundOnBrand);
+    outline-offset: calc(var(--spacing-thicker) * -1);
+  }
+
+  /* from useRootDisabledStyles.base — arg #9 */
+  .disabled {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-right-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-left-color: var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* from useRootDisabledStyles.primary — arg #10 */
+  .disabled-primary {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  /* from useRootDisabledStyles.subtle — arg #10 */
+  .disabled-subtle {
+    background-color: var(--colorTransparentBackground);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  /* from useRootDisabledStyles.transparent — arg #10 */
+  .disabled-transparent {
+    background-color: var(--colorTransparentBackground);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 2 — `[data-fui-focus-visible]`. Griffel put these in the `d` bucket as well
+ * (the selector carries no pseudo-class), but at 0-2-0 they outranked every flat rule
+ * above; written after block 1 so they still do.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootCheckedStyles.outline — arg #6, createCustomFocusIndicatorStyle({ borderColor }) */
+  .checked-outline {
+    @variant focus-visible-fui {
+      border-top-color: var(--colorNeutralStroke1);
+      border-right-color: var(--colorNeutralStroke1);
+      border-bottom-color: var(--colorNeutralStroke1);
+      border-left-color: var(--colorNeutralStroke1);
+    }
+  }
+
+  /*
+   * from useCheckedAccessibleStyles.primary — arg #8.
+   * "need to not have the default focus style that removes the outline".
+   */
+  .accessible-checked-primary {
+    @variant focus-visible-fui {
+      outline: var(--spacing-thin) solid var(--colorNeutralForegroundOnBrand);
+      outline-offset: calc(var(--spacing-thickest) * -1);
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 3 — `h` bucket (`:hover`), in mergeClasses argument order.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootCheckedStyles.base — arg #4 */
+  .checked {
+    @variant hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      border-top-color: var(--colorNeutralStroke1Hover);
+      border-right-color: var(--colorNeutralStroke1Hover);
+      border-bottom-color: var(--colorNeutralStroke1Hover);
+      border-left-color: var(--colorNeutralStroke1Hover);
+      color: var(--colorNeutralForeground1Hover);
+    }
+  }
+
+  /* from useRootCheckedStyles.outline — arg #6 */
+  .checked-outline {
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+    }
+  }
+
+  /* from useRootCheckedStyles.primary — arg #6 */
+  .checked-primary {
+    @variant hover {
+      background-color: var(--colorBrandBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  /* from useRootCheckedStyles.subtle — arg #6 */
+  .checked-subtle {
+    @variant hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2Hover);
+    }
+  }
+
+  /* from useRootCheckedStyles.transparent — arg #6 */
+  .checked-transparent {
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+  }
+
+  /* from useCheckedAccessibleStyles.base — arg #7 */
+  .accessible-checked {
+    @variant hover {
+      background-color: var(--colorBrandBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  /*
+   * from useCheckedAccessibleStyles.subtle — arg #8. Overrides the subtle-appearance icon
+   * colour on hover. `.icon` is THIS module's own local on the icon slot (the slot always
+   * carries it, arg #3 of the icon merge), so the coupling stays private — no
+   * `:global(.fui-ToggleButton__icon)` handle is needed or wanted (D15.7 / D16.3).
+   */
+  .accessible-checked-subtle {
+    @variant hover {
+      & .icon {
+        color: var(--colorNeutralForegroundOnBrand);
+      }
+    }
+  }
+
+  /* from useRootDisabledStyles.base — arg #9 */
+  .disabled {
+    @variant hover {
+      background-color: var(--colorNeutralBackgroundDisabled);
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+      color: var(--colorNeutralForegroundDisabled);
+    }
+  }
+
+  /* from useRootDisabledStyles.primary — arg #10 */
+  .disabled-primary {
+    @variant hover {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  /* from useRootDisabledStyles.subtle — arg #10 */
+  .disabled-subtle {
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  /* from useRootDisabledStyles.transparent — arg #10 */
+  .disabled-transparent {
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 4 — `a` bucket: Griffel's `':hover:active,:active:focus-visible'` compound,
+ * carried by the shared `hover-active` variant.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /* from useRootCheckedStyles.base — arg #4 */
+  .checked {
+    @variant hover-active {
+      background-color: var(--colorNeutralBackground1Pressed);
+      border-top-color: var(--colorNeutralStroke1Pressed);
+      border-right-color: var(--colorNeutralStroke1Pressed);
+      border-bottom-color: var(--colorNeutralStroke1Pressed);
+      border-left-color: var(--colorNeutralStroke1Pressed);
+      color: var(--colorNeutralForeground1Pressed);
+    }
+  }
+
+  /* from useRootCheckedStyles.outline — arg #6 */
+  .checked-outline {
+    @variant hover-active {
+      background-color: var(--colorTransparentBackgroundPressed);
+    }
+  }
+
+  /* from useRootCheckedStyles.primary — arg #6 */
+  .checked-primary {
+    @variant hover-active {
+      background-color: var(--colorBrandBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  /* from useRootCheckedStyles.subtle — arg #6 */
+  .checked-subtle {
+    @variant hover-active {
+      background-color: var(--colorSubtleBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2Pressed);
+    }
+  }
+
+  /* from useRootCheckedStyles.transparent — arg #6 */
+  .checked-transparent {
+    @variant hover-active {
+      background-color: var(--colorTransparentBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+  }
+
+  /* from useCheckedAccessibleStyles.base — arg #7 */
+  .accessible-checked {
+    @variant hover-active {
+      background-color: var(--colorBrandBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  /* from useRootDisabledStyles.base — arg #9 */
+  .disabled {
+    @variant hover-active {
+      background-color: var(--colorNeutralBackgroundDisabled);
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+      color: var(--colorNeutralForegroundDisabled);
+    }
+  }
+
+  /* from useRootDisabledStyles.primary — arg #10 */
+  .disabled-primary {
+    @variant hover-active {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  /* from useRootDisabledStyles.subtle — arg #10 */
+  .disabled-subtle {
+    @variant hover-active {
+      background-color: var(--colorTransparentBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  /* from useRootDisabledStyles.transparent — arg #10 */
+  .disabled-transparent {
+    @variant hover-active {
+      background-color: var(--colorTransparentBackgroundPressed);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * Icon slot. Both slices land on react-button's `icon` slot, so l2 for the same reason
+ * the root slices are (they arrived as the trailing className of Button's own icon merge
+ * and therefore beat every rule Button writes there, including its 0-2-0 root-anchored
+ * `:global(.fui-Button__icon)` colour rules).
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /*
+   * from useIconCheckedStyles.highContrast — icon arg #3, applied UNCONDITIONALLY, which
+   * is why this local doubles as the icon slot's stable handle for the
+   * `.accessible-checked-subtle` hover rule in block 3.
+   */
+  .icon {
+    @variant forced-colors {
+      forced-color-adjust: auto;
+    }
+  }
+
+  /* from useIconCheckedStyles.subtleOrTransparent — icon arg #2 */
+  .checked-icon {
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────
+ * BLOCK 5 — `m` bucket (`@media (forced-colors: active)`), in mergeClasses argument
+ * order, LAST in the file. Griffel's `m` bucket outranks `d`, `h` and `a` regardless of
+ * argument order, so every forced-colors rule has to come after every non-media rule —
+ * e.g. arg #5 `.checked-high-contrast`'s `background-color` must beat arg #6
+ * `.checked-primary`'s, even though #6 is the later argument.
+ * ───────────────────────────────────────────────────────────────────────────────────── */
+@layer fui.components.l2 {
+  /*
+   * from usePrimaryHighContrastStyles.base — arg #2.
+   * "Do not use primary variant high contrast styles for toggle buttons, otherwise there
+   * isn't enough difference between on/off states" — i.e. this exists to override
+   * react-button's own `.primary` forced-colors block, which l2 does deterministically.
+   */
+  .primary-high-contrast {
+    @variant forced-colors {
+      background-color: ButtonFace;
+      border-top-color: ButtonBorder;
+      border-right-color: ButtonBorder;
+      border-bottom-color: ButtonBorder;
+      border-left-color: ButtonBorder;
+      color: ButtonText;
+      forced-color-adjust: auto;
+    }
+  }
+
+  /* from usePrimaryHighContrastStyles.disabled — arg #3 */
+  .primary-high-contrast-disabled {
+    @variant forced-colors {
+      border-top-color: GrayText;
+      border-right-color: GrayText;
+      border-bottom-color: GrayText;
+      border-left-color: GrayText;
+      color: GrayText;
+
+      @variant focus {
+        border-top-color: GrayText;
+        border-right-color: GrayText;
+        border-bottom-color: GrayText;
+        border-left-color: GrayText;
+      }
+    }
+  }
+
+  /*
+   * from useRootCheckedStyles.highContrast — arg #5. Sub-order inside the media block is
+   * the slice's own declaration order (flat, hover, pressed, focus), which is what Griffel
+   * emitted into the `m` bucket; `:focus` last is load-bearing (it beat `:hover` there).
+   */
+  .checked-high-contrast {
+    @variant forced-colors {
+      background-color: Highlight;
+      border-top-color: Highlight;
+      border-right-color: Highlight;
+      border-bottom-color: Highlight;
+      border-left-color: Highlight;
+      color: HighlightText;
+      forced-color-adjust: none;
+
+      @variant hover {
+        background-color: HighlightText;
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+
+      @variant hover-active {
+        background-color: HighlightText;
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+
+      @variant focus {
+        /* Compiled literal: `border:1px solid HighlightText`. Kept as the `border`
+           shorthand the source wrote; `1px` becomes the scaling stroke-width variable per
+           D4's addendum (both are 1px at the default root). */
+        border: var(--spacing-thin) solid HighlightText;
+        outline-color: Highlight;
+      }
+    }
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED ──────────────────────────────────────────────────
+ *
+ * Same defect, same fix, same evidence as react-button's own Button.module.css (bottom of
+ * that file) and react-infolabel's InfoButton.module.css. These two rules style ANOTHER
+ * package's elements: the two <svg>s that `@fluentui/react-icons`' `bundleIcon()` renders
+ * inside the icon slot. react-icons is not converted (D11 keeps it on Griffel), and
+ * Griffel injects UNLAYERED:
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
+ *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
+ *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ *
+ * An unlayered normal author declaration outranks EVERY `@layer` — that comparison happens
+ * before specificity is consulted — so a `display` rule left in `@layer fui.components.l2`
+ * could never beat `.fjseox`, and a checked ToggleButton would keep the OUTLINE glyph.
+ *
+ * ── Order against Button.module.css's own unlayered block ────────────────────────────
+ * Both blocks are 0-2-0 and both are unlayered, so file position inside react-button's
+ * aggregated `dist/styles.css` is the only tiebreak, and this file follows Button's.
+ * That reproduces the mixed-mode winner this conversion replaces: while this hook was
+ * still Griffel its runtime <style> was appended after the module bundle, so the checked
+ * swap already beat Button's `disabled-any` swap-BACK.
+ */
+
+/* from useRootCheckedStyles.base — arg #4 */
+.checked {
+  & :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  & :global(.fui-Icon-regular) {
+    display: none;
+  }
+}

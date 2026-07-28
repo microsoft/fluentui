@@ -1,10 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
+
+import styles from './SplitButton.module.css';
 
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   root: 'fui-SplitButton',
@@ -12,197 +25,48 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
-// WCAG minimum target size for pointer targets that are immediately adjacent to other targets:
-// https://w3c.github.io/wcag/guidelines/22/#target-size-minimum
-const MIN_TARGET_SIZE = '24px';
-
-const useFocusStyles = makeStyles({
-  primaryActionButton: createCustomFocusIndicatorStyle({
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  }),
-
-  menuButton: createCustomFocusIndicatorStyle({
-    borderLeftWidth: 0,
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-  }),
-});
-
-const useRootStyles = makeStyles({
-  // Base styles
-  base: {
-    display: 'inline-flex',
-    justifyContent: 'stretch',
-    position: 'relative',
-    verticalAlign: 'middle',
-
-    [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    },
-
-    [`& .${splitButtonClassNames.menuButton}`]: {
-      borderLeftWidth: 0,
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-      minWidth: MIN_TARGET_SIZE,
-    },
-  },
-
-  // Appearance variations
-  outline: {
-    /* No styles */
-  },
-  primary: {
-    [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeOnBrand,
-    },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
-      },
-    },
-
-    '@media (forced-colors: active)': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: 'HighlightText',
-      },
-
-      ':hover': {
-        [`& .${splitButtonClassNames.primaryActionButton}`]: {
-          borderRightColor: 'Highlight',
-        },
-      },
-
-      ':hover:active,:active:focus-visible': {
-        [`& .${splitButtonClassNames.primaryActionButton}`]: {
-          borderRightColor: 'Highlight',
-        },
-      },
-    },
-  },
-  secondary: {
-    /* The secondary styles are exactly the same as the base styles. */
-  },
-  subtle: {
-    [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorTransparentBackground,
-    },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundHover,
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundPressed,
-      },
-    },
-  },
-  transparent: {
-    [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorTransparentBackground,
-    },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundHover,
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundPressed,
-      },
-    },
-  },
-
-  // Shape variations
-  circular: {},
-  rounded: {},
-  square: {},
-
-  // Disabled styles
-  disabled: {
-    [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeDisabled,
-    },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
-      },
-    },
-
-    ':hover:active,:active:focus-visible': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
-      },
-    },
-  },
-
-  // Disabled high contrast styles
-  disabledHighContrast: {
-    '@media (forced-colors: active)': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: 'GrayText',
-      },
-
-      ':hover': {
-        [`& .${splitButtonClassNames.primaryActionButton}`]: {
-          borderRightColor: 'GrayText',
-        },
-      },
-
-      ':hover:active,:active:focus-visible': {
-        [`& .${splitButtonClassNames.primaryActionButton}`]: {
-          borderRightColor: 'GrayText',
-        },
-      },
-    },
-  },
-});
-
 export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
-  const rootStyles = useRootStyles();
-  const focusStyles = useFocusStyles();
-
   const { appearance, disabled, disabledFocusable } = state;
+  const disabledAny = disabled || disabledFocusable;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. `styles.root` is
+  // unconditional, so it will keep a selector-safe token ahead of the marker once the
+  // statics are removed (statics-removal-design.md §4a).
+  //
+  // Unlike the rest of the family this root is SplitButton's own `<div>`, not a Button, so
+  // `group/fui-split-button` is the only marker on it; `group/fui-button` and
+  // `group/fui-menu-button` sit on the two children.
+  //
+  // Cascade priority is decided by the `@layer fui.*` order in SplitButton.module.css —
+  // the wrapper's own declarations are `fui.components.l1`, everything that lands on the
+  // two child buttons is `fui.components.l2`. See that file's header.
+  state.root.className = clsx(
     splitButtonClassNames.root,
-    rootStyles.base,
-    appearance && rootStyles[appearance],
-    (disabled || disabledFocusable) && rootStyles.disabled,
-    (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
+    'group/fui-split-button',
+    styles.root,
+    appearance && styles[appearance],
+    disabledAny && styles.disabled,
+    disabledAny && styles['disabled-high-contrast'],
     state.root.className,
   );
 
+  // The two child slots each carry exactly ONE module class: it is both the focus-indicator
+  // slice (`useFocusStyles.*`) and the handle the root's own rules select through, which is
+  // what replaces the `.fui-SplitButton__*` static-class selectors the Griffel source used.
   if (state.menuButton) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.menuButton.className = mergeClasses(
+    state.menuButton.className = clsx(
       splitButtonClassNames.menuButton,
-      focusStyles.menuButton,
+      styles['menu-button'],
       state.menuButton.className,
     );
   }
 
   if (state.primaryActionButton) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.primaryActionButton.className = mergeClasses(
+    state.primaryActionButton.className = clsx(
       splitButtonClassNames.primaryActionButton,
-      focusStyles.primaryActionButton,
+      styles['primary-action-button'],
       state.primaryActionButton.className,
     );
   }
