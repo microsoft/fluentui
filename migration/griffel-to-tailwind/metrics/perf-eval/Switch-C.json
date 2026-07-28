@@ -1,0 +1,299 @@
+{
+  "component": "Switch",
+  "scenario": "C",
+  "scenarioLabel": "Mount 100, plain",
+  "date": "2026-07-28T09:34:26.160Z",
+  "harness": ".scratch/perf-eval (vite, React 19.2.0, Chromium via Playwright 1.56.1, cross-origin isolated)",
+  "beforeCommit": "838ce80485 (parent of pilot ffd84a7b36)",
+  "afterCommit": "e6fa6e476b",
+  "results": [
+    {
+      "component": "Switch",
+      "side": "before",
+      "scenario": "C",
+      "scenarioLabel": "Mount 100, plain",
+      "date": "2026-07-28T09:34:26.160Z",
+      "runs": 31,
+      "warmupRuns": 5,
+      "unitsPerWindow": 100,
+      "overridden": false,
+      "overrideMechanism": null,
+      "toggleDescription": null,
+      "env": {
+        "leg": "before",
+        "profilingBuild": false,
+        "reactVersion": "19.2.0",
+        "crossOriginIsolated": true,
+        "timerResolutionMs": 0.004999995231628418
+      },
+      "medianMs": 3.43,
+      "p75Ms": 4.06,
+      "commitMs": {
+        "n": 31,
+        "min": 1.74,
+        "p25": 1.825,
+        "median": 1.945,
+        "p75": 2.5375,
+        "max": 4.945,
+        "mean": 2.2906,
+        "stdev": 0.7046,
+        "iqrPctOfMedian": 36.6324
+      },
+      "styleLayoutMs": {
+        "n": 31,
+        "min": 1.37,
+        "p25": 1.44,
+        "median": 1.47,
+        "p75": 1.57,
+        "max": 1.815,
+        "mean": 1.5247,
+        "stdev": 0.1366,
+        "iqrPctOfMedian": 8.8435
+      },
+      "totalMs": {
+        "n": 31,
+        "min": 3.11,
+        "p25": 3.28,
+        "median": 3.43,
+        "p75": 4.06,
+        "max": 6.415,
+        "mean": 3.8153,
+        "stdev": 0.7899,
+        "iqrPctOfMedian": 22.7405
+      },
+      "perUnitUs": {
+        "commit": 19.45,
+        "styleLayout": 14.7,
+        "total": 34.3
+      },
+      "coldFirstWindowMs": {
+        "commit": 1.905,
+        "styleLayout": 1.385,
+        "total": 3.29
+      },
+      "reactProfilerActualDurationMs": {
+        "median": 1.65,
+        "note": "react-dom/profiling build; render phase only (excludes commit-phase work such as Griffel useInsertionEffect callbacks)"
+      },
+      "cpuThrottled4x": {
+        "commitMs": 9.86,
+        "styleLayoutMs": 6.46,
+        "totalMs": 16.375
+      },
+      "memoryAfterBytes": {
+        "usedJSHeapSize": 12287608,
+        "totalJSHeapSize": 45278588
+      },
+      "traceSummary": {
+        "iterations": 10,
+        "styleRecalcElementCount": 6000,
+        "styleRecalc": {
+          "count": 20,
+          "countPerIteration": 2,
+          "totalMs": 8.159,
+          "msPerIteration": 0.8159
+        },
+        "layout": {
+          "count": 20,
+          "countPerIteration": 2,
+          "totalMs": 7.915,
+          "msPerIteration": 0.7915
+        },
+        "functionCall": {
+          "count": 2,
+          "countPerIteration": 0.2,
+          "totalMs": 0.272,
+          "msPerIteration": 0.0272
+        },
+        "paint": {
+          "count": 1,
+          "countPerIteration": 0.1,
+          "totalMs": 0.017,
+          "msPerIteration": 0.0017
+        }
+      },
+      "domStats": {
+        "total": {
+          "elements": 601,
+          "attributes": 1802,
+          "dataAttributes": 0,
+          "classNameChars": 25411,
+          "classNameTokens": 2510
+        },
+        "perInstance": {
+          "elements": 6,
+          "attributes": 18,
+          "dataAttributes": 0,
+          "classNameChars": 253,
+          "classNameTokens": 25
+        },
+        "css": {
+          "sheets": 10,
+          "chars": 68875,
+          "styleRules": 653,
+          "groupRules": 57,
+          "selectorChars": 12925,
+          "selectorCount": 716,
+          "dataAttributeSelectors": 26,
+          "whereSelectors": 0
+        },
+        "baseline": {
+          "elements": 1,
+          "attributes": 2,
+          "dataAttributes": 0,
+          "classNameChars": 111,
+          "classNameTokens": 10
+        }
+      }
+    },
+    {
+      "component": "Switch",
+      "side": "after",
+      "scenario": "C",
+      "scenarioLabel": "Mount 100, plain",
+      "date": "2026-07-28T09:34:26.160Z",
+      "runs": 31,
+      "warmupRuns": 5,
+      "unitsPerWindow": 100,
+      "overridden": false,
+      "overrideMechanism": null,
+      "toggleDescription": null,
+      "env": {
+        "leg": "after",
+        "profilingBuild": false,
+        "reactVersion": "19.2.0",
+        "crossOriginIsolated": true,
+        "timerResolutionMs": 0.004999995231628418
+      },
+      "medianMs": 3.295,
+      "p75Ms": 3.875,
+      "commitMs": {
+        "n": 31,
+        "min": 1.37,
+        "p25": 1.465,
+        "median": 1.56,
+        "p75": 1.9525,
+        "max": 2.675,
+        "mean": 1.7661,
+        "stdev": 0.4475,
+        "iqrPctOfMedian": 31.25
+      },
+      "styleLayoutMs": {
+        "n": 31,
+        "min": 1.6,
+        "p25": 1.6675,
+        "median": 1.74,
+        "p75": 1.905,
+        "max": 2.17,
+        "mean": 1.7863,
+        "stdev": 0.1618,
+        "iqrPctOfMedian": 13.6494
+      },
+      "totalMs": {
+        "n": 31,
+        "min": 3.025,
+        "p25": 3.105,
+        "median": 3.295,
+        "p75": 3.875,
+        "max": 4.77,
+        "mean": 3.5524,
+        "stdev": 0.5758,
+        "iqrPctOfMedian": 23.3687
+      },
+      "perUnitUs": {
+        "commit": 15.6,
+        "styleLayout": 17.4,
+        "total": 32.95
+      },
+      "coldFirstWindowMs": {
+        "commit": 1.55,
+        "styleLayout": 1.68,
+        "total": 3.23
+      },
+      "reactProfilerActualDurationMs": {
+        "median": 1.565,
+        "note": "react-dom/profiling build; render phase only (excludes commit-phase work such as Griffel useInsertionEffect callbacks)"
+      },
+      "cpuThrottled4x": {
+        "commitMs": 7.835,
+        "styleLayoutMs": 7.86,
+        "totalMs": 16.2
+      },
+      "memoryAfterBytes": {
+        "usedJSHeapSize": 10747278,
+        "totalJSHeapSize": 29149794
+      },
+      "traceSummary": {
+        "iterations": 10,
+        "styleRecalcElementCount": 6000,
+        "styleRecalc": {
+          "count": 20,
+          "countPerIteration": 2,
+          "totalMs": 10.392,
+          "msPerIteration": 1.0392
+        },
+        "layout": {
+          "count": 20,
+          "countPerIteration": 2,
+          "totalMs": 7.852,
+          "msPerIteration": 0.7852
+        },
+        "functionCall": {
+          "count": 2,
+          "countPerIteration": 0.2,
+          "totalMs": 0.216,
+          "msPerIteration": 0.0216
+        },
+        "paint": {
+          "count": 1,
+          "countPerIteration": 0.1,
+          "totalMs": 0.012,
+          "msPerIteration": 0.0012
+        }
+      },
+      "domStats": {
+        "total": {
+          "elements": 601,
+          "attributes": 2202,
+          "dataAttributes": 400,
+          "classNameChars": 27782,
+          "classNameTokens": 1403
+        },
+        "perInstance": {
+          "elements": 6,
+          "attributes": 22,
+          "dataAttributes": 4,
+          "classNameChars": 277,
+          "classNameTokens": 14
+        },
+        "css": {
+          "sheets": 5,
+          "chars": 93073,
+          "styleRules": 454,
+          "groupRules": 46,
+          "selectorChars": 22903,
+          "selectorCount": 637,
+          "dataAttributeSelectors": 128,
+          "whereSelectors": 205
+        },
+        "baseline": {
+          "elements": 1,
+          "attributes": 2,
+          "dataAttributes": 0,
+          "classNameChars": 82,
+          "classNameTokens": 3
+        }
+      }
+    }
+  ],
+  "deltas": {
+    "commitMedianPct": -19.7943,
+    "styleLayoutMedianPct": 18.3673,
+    "totalMedianPct": -3.9359,
+    "totalP75Pct": -4.5567,
+    "reactProfilerPct": -5.1515,
+    "throttled4xTotalPct": -1.0687,
+    "traceStyleRecalcPct": 27.3686,
+    "traceLayoutPct": -0.796
+  }
+}

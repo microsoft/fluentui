@@ -1,0 +1,181 @@
+{
+  "component": "Badge",
+  "scenario": "A",
+  "scenarioLabel": "Mount 1, plain",
+  "date": "2026-07-28T09:34:26.157Z",
+  "harness": ".scratch/perf-eval (vite, React 19.2.0, Chromium via Playwright 1.56.1, cross-origin isolated)",
+  "beforeCommit": "838ce80485 (parent of pilot ffd84a7b36)",
+  "afterCommit": "e6fa6e476b",
+  "results": [
+    {
+      "component": "Badge",
+      "side": "before",
+      "scenario": "A",
+      "scenarioLabel": "Mount 1, plain",
+      "date": "2026-07-28T09:34:26.157Z",
+      "runs": 31,
+      "warmupRuns": 5,
+      "unitsPerWindow": 25,
+      "overridden": false,
+      "overrideMechanism": null,
+      "toggleDescription": null,
+      "env": {
+        "leg": "before",
+        "profilingBuild": false,
+        "reactVersion": "19.2.0",
+        "crossOriginIsolated": true,
+        "timerResolutionMs": 0.004999995231628418
+      },
+      "medianMs": 0.765,
+      "p75Ms": 0.9475,
+      "commitMs": {
+        "n": 31,
+        "min": 0.285,
+        "p25": 0.3225,
+        "median": 0.37,
+        "p75": 0.495,
+        "max": 0.74,
+        "mean": 0.4165,
+        "stdev": 0.1187,
+        "iqrPctOfMedian": 46.6216
+      },
+      "styleLayoutMs": {
+        "n": 31,
+        "min": 0.335,
+        "p25": 0.38,
+        "median": 0.41,
+        "p75": 0.4575,
+        "max": 0.805,
+        "mean": 0.4289,
+        "stdev": 0.0895,
+        "iqrPctOfMedian": 18.9024
+      },
+      "totalMs": {
+        "n": 31,
+        "min": 0.63,
+        "p25": 0.7225,
+        "median": 0.765,
+        "p75": 0.9475,
+        "max": 1.28,
+        "mean": 0.8453,
+        "stdev": 0.1766,
+        "iqrPctOfMedian": 29.4118
+      },
+      "perUnitUs": {
+        "commit": 14.8,
+        "styleLayout": 16.4,
+        "total": 30.6
+      },
+      "coldFirstWindowMs": {
+        "commit": 1.035,
+        "styleLayout": 0.69,
+        "total": 1.725
+      },
+      "reactProfilerActualDurationMs": {
+        "median": 0.18,
+        "note": "react-dom/profiling build; render phase only (excludes commit-phase work such as Griffel useInsertionEffect callbacks)"
+      },
+      "cpuThrottled4x": {
+        "commitMs": 2.555,
+        "styleLayoutMs": 2.77,
+        "totalMs": 5.12
+      },
+      "memoryAfterBytes": {
+        "usedJSHeapSize": 4906999,
+        "totalJSHeapSize": 9889095
+      },
+      "traceSummary": null,
+      "domStats": null
+    },
+    {
+      "component": "Badge",
+      "side": "after",
+      "scenario": "A",
+      "scenarioLabel": "Mount 1, plain",
+      "date": "2026-07-28T09:34:26.157Z",
+      "runs": 31,
+      "warmupRuns": 5,
+      "unitsPerWindow": 25,
+      "overridden": false,
+      "overrideMechanism": null,
+      "toggleDescription": null,
+      "env": {
+        "leg": "after",
+        "profilingBuild": false,
+        "reactVersion": "19.2.0",
+        "crossOriginIsolated": true,
+        "timerResolutionMs": 0.004999995231628418
+      },
+      "medianMs": 0.63,
+      "p75Ms": 0.745,
+      "commitMs": {
+        "n": 31,
+        "min": 0.125,
+        "p25": 0.1575,
+        "median": 0.18,
+        "p75": 0.245,
+        "max": 0.41,
+        "mean": 0.2089,
+        "stdev": 0.0727,
+        "iqrPctOfMedian": 48.6111
+      },
+      "styleLayoutMs": {
+        "n": 31,
+        "min": 0.37,
+        "p25": 0.4125,
+        "median": 0.44,
+        "p75": 0.475,
+        "max": 0.545,
+        "mean": 0.4497,
+        "stdev": 0.0482,
+        "iqrPctOfMedian": 14.2046
+      },
+      "totalMs": {
+        "n": 31,
+        "min": 0.525,
+        "p25": 0.57,
+        "median": 0.63,
+        "p75": 0.745,
+        "max": 0.89,
+        "mean": 0.6585,
+        "stdev": 0.1078,
+        "iqrPctOfMedian": 27.7778
+      },
+      "perUnitUs": {
+        "commit": 7.2,
+        "styleLayout": 17.6,
+        "total": 25.2
+      },
+      "coldFirstWindowMs": {
+        "commit": 0.835,
+        "styleLayout": 0.755,
+        "total": 1.59
+      },
+      "reactProfilerActualDurationMs": {
+        "median": 0.16,
+        "note": "react-dom/profiling build; render phase only (excludes commit-phase work such as Griffel useInsertionEffect callbacks)"
+      },
+      "cpuThrottled4x": {
+        "commitMs": 1.545,
+        "styleLayoutMs": 2.65,
+        "totalMs": 4.175
+      },
+      "memoryAfterBytes": {
+        "usedJSHeapSize": 4093775,
+        "totalJSHeapSize": 8025871
+      },
+      "traceSummary": null,
+      "domStats": null
+    }
+  ],
+  "deltas": {
+    "commitMedianPct": -51.3514,
+    "styleLayoutMedianPct": 7.3171,
+    "totalMedianPct": -17.6471,
+    "totalP75Pct": -21.372,
+    "reactProfilerPct": -11.1111,
+    "throttled4xTotalPct": -18.457,
+    "traceStyleRecalcPct": null,
+    "traceLayoutPct": null
+  }
+}
