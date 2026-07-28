@@ -51,7 +51,10 @@ describe('FluentProvider (node)', () => {
     const html = renderToStaticMarkup(<FluentProvider theme={testTheme} />);
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
-      "<div dir="ltr" class="fui-FluentProvider fui-FluentProvider1">
+      "<div
+        dir="ltr"
+        class="group/fui-fluent-provider fui-FluentProvider fui-FluentProvider1"
+      >
         <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
@@ -75,7 +78,10 @@ describe('FluentProvider (node)', () => {
     );
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
-      "<div dir="ltr" class="fui-FluentProvider fui-FluentProvider1">
+      "<div
+        dir="ltr"
+        class="group/fui-fluent-provider fui-FluentProvider fui-FluentProvider1"
+      >
         <style nonce="random" id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;

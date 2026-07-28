@@ -30,6 +30,15 @@ export const useFluentProviderStyles_unstable = (state: FluentProviderState): Fl
    * is load-bearing beyond the cascade (which `@layer fui.*` in FluentProvider.module.css
    * now decides):
    *
+   * - `group/fui-fluent-provider` is the named group marker (DECISIONS.md D15): a literal,
+   *   unhashed, GLOBAL token, first so it reads the same as every other converted hook.
+   *   FluentProvider is a context boundary rather than a stateful component, so the marker
+   *   is INERT until some module references it — it is included because a theme- or
+   *   direction-scoped read (`@variant group-rtl/fui-fluent-provider { … }`) is the
+   *   plausible future need and this is the only element that spans a whole theme scope.
+   *   It is safe next to `themeClassName`: react-portal-compat's extraction regex is
+   *   case-sensitive and looks for `fui-FluentProvider` + `\w+`, which the all-lowercase,
+   *   slash-bearing marker cannot match.
    * - `state.themeClassName` is the runtime `fui-FluentProvider<useId>` class that hosts
    *   the 459 `--token` custom properties. It stays in the className string so that
    *   `useFluentProviderContextValues_unstable` can publish `root.className` verbatim to
@@ -41,7 +50,13 @@ export const useFluentProviderStyles_unstable = (state: FluentProviderState): Fl
    * Griffel's `useStyles()`. The renderer context itself is untouched: FluentProvider
    * still consumes it in useFluentProvider.ts for the theme <style> tag (nonce/SSR path).
    */
-  state.root.className = clsx(fluentProviderClassNames.root, state.themeClassName, styles.root, state.root.className);
+  state.root.className = clsx(
+    'group/fui-fluent-provider',
+    fluentProviderClassNames.root,
+    state.themeClassName,
+    styles.root,
+    state.root.className,
+  );
 
   return state;
 };
