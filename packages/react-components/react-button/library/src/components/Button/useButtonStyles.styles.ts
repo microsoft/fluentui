@@ -67,7 +67,18 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   root['data-disabled-focusable'] = disabledFocusable || undefined;
   root['data-empty'] = !state.root.children || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Button's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. Button needs no state mirrors: `data-disabled`, `data-icon-only`,
+  // `data-size` and the rest are already stamped on this very element above, so
+  // `@variant group-hover/fui-button`, `group-disabled/fui-button` etc. work as-is
+  // (DECISIONS.md D15, Tier 0).
+  //
+  // Only `Button` carries a marker for now. ToggleButton / CompoundButton / MenuButton /
+  // SplitButton are still Griffel and get theirs when they convert.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Button.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including the two shape-vs-size
@@ -79,6 +90,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   // the trailing argument and keep beating these layered rules — the same winner
   // mergeClasses produced when their string was its last argument.
   state.root.className = clsx(
+    'group/fui-button',
     buttonClassNames.root,
     styles.root,
     appearance && styles[appearance],

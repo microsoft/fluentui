@@ -99,7 +99,23 @@
     outline-style: none;
 
     transition-duration: var(--durationFaster);
-    transition-property: background, border, color;
+    /*
+     * Longhands only. The Griffel source declared `background, border, color`, which is not
+     * 3 properties: per CSS Transitions L1 a shorthand in `transition-property` expands to
+     * every longhand it covers, so that list is 21 (8 `background-*` + 12 `border-*` + 1).
+     * Only these 6 ever change — the base `border: <w> solid <c>` above is the file's ONLY
+     * border-width/style declaration and no state or appearance slice touches it, and no
+     * slice touches any non-color `background-*`. `cursor`, `outline-style` and
+     * `forced-color-adjust` do change on hover/active but were never in the list and are not
+     * added: the first two are not animatable/are discrete, and Griffel never transitioned
+     * them. See reports/transition-audit.md §2.2.
+     *
+     * Safe to expand here because `transition-duration` and `transition-timing-function` are
+     * SINGLE-valued, so they apply to every entry — no positional-list realignment (that is
+     * the Avatar trap, §2.1, which is why Avatar's `margin` deliberately stays a shorthand).
+     */
+    transition-property: background-color, border-top-color, border-right-color, border-bottom-color, border-left-color,
+      color;
     transition-timing-function: var(--curveEasyEase);
 
     @variant hover {
