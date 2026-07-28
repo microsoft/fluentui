@@ -76,15 +76,17 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
-  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
-  // only handle by which another module — in this package or any other — can style an
-  // element from this SpinButton's state, because `styles.root` is hashed and unaddressable
-  // from outside this file. No state mirrors are needed: `data-size`, `data-disabled` and
-  // `data-invalid` are already stamped on this very element above, so
-  // `@variant group-disabled/fui-spin-button { … }` works as-is (DECISIONS.md D15, Tier 0).
-  // `:focus-within` likewise needs no mirror — it is true of this root whenever it is true
-  // of the inner `<input>`, so `group-focus-within/fui-spin-button` costs zero JS.
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this SpinButton's state, because `styles.root`
+  // is hashed and unaddressable from outside this file. No state mirrors are needed:
+  // `data-size`, `data-disabled` and `data-invalid` are already stamped on this very
+  // element above, so `@variant group-disabled/fui-spin-button { … }` works as-is
+  // (DECISIONS.md D15, Tier 0). `:focus-within` likewise needs no mirror — it is true of
+  // this root whenever it is true of the inner `<input>`, so
+  // `group-focus-within/fui-spin-button` costs zero JS.
   //
   // Cascade priority is decided by the `@layer fui.*` order in SpinButton.module.css, not
   // by the order of these arguments — see that file's header for the mapping back to the
@@ -96,8 +98,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   // itself. `styles.medium` and (for the root) `styles.outline`'s rest state are the
   // compiled `{}` slices — nothing to apply, exactly as before.
   state.root.className = clsx(
-    'group/fui-spin-button',
     spinButtonClassNames.root,
+    'group/fui-spin-button',
     styles.root,
     styles[appearance],
     filled && styles.filled,
