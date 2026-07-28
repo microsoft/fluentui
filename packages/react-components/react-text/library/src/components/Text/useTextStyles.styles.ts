@@ -53,12 +53,13 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
 
   root['data-size'] = size;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
-  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
-  // only handle by which another module — in this package or any other — can style an
-  // element from this Text's state, because `styles.root` is hashed and unaddressable from
-  // outside this file. No state mirror is needed: `data-size` is already stamped on this
-  // very element above (DECISIONS.md D15, Tier 0).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Text's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. No state mirror is needed: `data-size`
+  // is already stamped on this very element above (DECISIONS.md D15, Tier 0).
   //
   // The 17 typography presets get NO marker of their own: `createPreset` runs THIS hook and
   // then adds its class to the same root, so every preset root already carries
@@ -78,8 +79,8 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
   // dropped only because the rule no longer reports here, same as the react-divider /
   // react-button / react-image conversions.
   state.root.className = clsx(
-    'group/fui-text',
     textClassNames.root,
+    'group/fui-text',
     styles.root,
     wrap === false && styles.nowrap,
     truncate && styles.truncate,

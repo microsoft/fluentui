@@ -14,7 +14,7 @@ describe('Caption2', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="fui-Caption2 group/fui-text fui-Text"
+          class="fui-Caption2 fui-Text group/fui-text"
           data-size="300"
         >
           Default Caption2
