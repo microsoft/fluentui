@@ -554,7 +554,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <button
             aria-label="metaData1"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -574,7 +574,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <button
             aria-label="metaData2"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -594,7 +594,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <button
             aria-label="metaData3"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1168,7 +1168,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <button
             aria-label="metaData1"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1199,7 +1199,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <button
             aria-label="metaData2"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1230,7 +1230,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <button
             aria-label="metaData3"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1820,7 +1820,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <button
             aria-label="metaData1"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1840,7 +1840,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <button
             aria-label="metaData2"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1860,7 +1860,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <button
             aria-label="metaData3"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2498,7 +2498,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <button
             aria-label="metaData1"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2518,7 +2518,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <button
             aria-label="metaData2"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2538,7 +2538,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <button
             aria-label="metaData3"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3148,7 +3148,7 @@ Object {
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3168,7 +3168,7 @@ Object {
               <button
                 aria-label="metaData2"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3188,7 +3188,7 @@ Object {
               <button
                 aria-label="metaData3"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3764,7 +3764,7 @@ Object {
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3784,7 +3784,7 @@ Object {
             <button
               aria-label="metaData2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -3804,7 +3804,7 @@ Object {
             <button
               aria-label="metaData3"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -4439,7 +4439,7 @@ Object {
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4459,7 +4459,7 @@ Object {
               <button
                 aria-label="metaData2"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4479,7 +4479,7 @@ Object {
               <button
                 aria-label="metaData3"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -5055,7 +5055,7 @@ Object {
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5075,7 +5075,7 @@ Object {
             <button
               aria-label="metaData2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5095,7 +5095,7 @@ Object {
             <button
               aria-label="metaData3"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -5734,7 +5734,7 @@ Object {
                 <button
                   aria-label="metaData1"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: red; --rect-borderColor: red;"
@@ -5757,7 +5757,7 @@ Object {
                 <button
                   aria-label="metaData2"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: green; --rect-borderColor: green;"
@@ -5780,7 +5780,7 @@ Object {
                 <button
                   aria-label="metaData3"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
@@ -6360,7 +6360,7 @@ Object {
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: red; --rect-borderColor: red;"
@@ -6383,7 +6383,7 @@ Object {
               <button
                 aria-label="metaData2"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: green; --rect-borderColor: green;"
@@ -6406,7 +6406,7 @@ Object {
               <button
                 aria-label="metaData3"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
@@ -8178,7 +8178,7 @@ Object {
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -8198,7 +8198,7 @@ Object {
               <button
                 aria-label="metaData2"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -8218,7 +8218,7 @@ Object {
               <button
                 aria-label="metaData3"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -8794,7 +8794,7 @@ Object {
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -8814,7 +8814,7 @@ Object {
             <button
               aria-label="metaData2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -8834,7 +8834,7 @@ Object {
             <button
               aria-label="metaData3"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -9546,7 +9546,7 @@ Object {
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -9566,7 +9566,7 @@ Object {
               <button
                 aria-label="metaData2"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -9586,7 +9586,7 @@ Object {
               <button
                 aria-label="metaData3"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -10244,7 +10244,7 @@ Object {
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -10264,7 +10264,7 @@ Object {
             <button
               aria-label="metaData2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -10284,7 +10284,7 @@ Object {
             <button
               aria-label="metaData3"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -10924,7 +10924,7 @@ Object {
               <button
                 aria-label="metaData1"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -10944,7 +10944,7 @@ Object {
               <button
                 aria-label="metaData2"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -10964,7 +10964,7 @@ Object {
               <button
                 aria-label="metaData3"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -11540,7 +11540,7 @@ Object {
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -11560,7 +11560,7 @@ Object {
             <button
               aria-label="metaData2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -11580,7 +11580,7 @@ Object {
             <button
               aria-label="metaData3"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -12115,7 +12115,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="metaData1"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -12135,7 +12135,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="metaData2"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -12155,7 +12155,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="metaData3"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -12638,7 +12638,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="metaData1"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -12658,7 +12658,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="metaData2"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -12678,7 +12678,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="metaData3"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -12705,7 +12705,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme and accessibility Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_5i_"
+    class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_5i_"
     dir="ltr"
   >
     <div
@@ -13260,7 +13260,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <button
               aria-label="metaData1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -13280,7 +13280,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <button
               aria-label="metaData2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -13300,7 +13300,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <button
               aria-label="metaData3"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"

@@ -413,7 +413,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_38_"
+    class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_38_"
     dir="ltr"
   >
     <div
@@ -926,7 +926,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             <button
               aria-label="Legend 1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
@@ -956,7 +956,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             <button
               aria-label="Legend 2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #5c2d91; --rect-borderColor: #5c2d91;"
@@ -1076,7 +1076,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             <button
               aria-label="Legend 1"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #a4262c; --rect-borderColor: #a4262c;"
@@ -1106,7 +1106,7 @@ exports[`Horizontal bar chart rendering Should render HorizontalBarChart for row
             <button
               aria-label="Legend 2"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: #5c2d91; --rect-borderColor: #5c2d91;"
@@ -1508,7 +1508,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_43_"
         role="tooltip"
       >
@@ -1524,7 +1524,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_44_"
         role="tooltip"
       >
@@ -1540,7 +1540,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_45_"
         role="tooltip"
       >
@@ -1952,7 +1952,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_3t_"
         role="tooltip"
       >
@@ -1968,7 +1968,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_3u_"
         role="tooltip"
       >
@@ -1984,7 +1984,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_3v_"
         role="tooltip"
       >

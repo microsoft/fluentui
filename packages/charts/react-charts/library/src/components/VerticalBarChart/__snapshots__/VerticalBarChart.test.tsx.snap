@@ -509,7 +509,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -529,7 +529,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -549,7 +549,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1082,7 +1082,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1102,7 +1102,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1122,7 +1122,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1149,7 +1149,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_5b_"
+    class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_5b_"
     dir="ltr"
   >
     <div
@@ -1659,7 +1659,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="First"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1679,7 +1679,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="Second"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1699,7 +1699,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <button
               aria-label="Third"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2244,7 +2244,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2264,7 +2264,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2284,7 +2284,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2817,7 +2817,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2837,7 +2837,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -2857,7 +2857,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3390,7 +3390,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3410,7 +3410,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3430,7 +3430,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3806,7 +3806,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <button
             aria-label="undefined"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4358,7 +4358,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4378,7 +4378,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4398,7 +4398,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4935,7 +4935,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <button
               aria-label="First"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -4958,7 +4958,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <button
               aria-label="Second"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
@@ -4981,7 +4981,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <button
               aria-label="Third"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -5564,7 +5564,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <button
               aria-label="First"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -5587,7 +5587,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <button
               aria-label="Second"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
@@ -5610,7 +5610,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <button
               aria-label="Third"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -6136,7 +6136,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6156,7 +6156,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6176,7 +6176,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6707,7 +6707,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6727,7 +6727,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -6747,7 +6747,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7278,7 +7278,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7298,7 +7298,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7318,7 +7318,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7849,7 +7849,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7869,7 +7869,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -7889,7 +7889,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -8424,7 +8424,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           <button
             aria-label="First"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
@@ -8447,7 +8447,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           <button
             aria-label="Second"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
@@ -8470,7 +8470,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           <button
             aria-label="Third"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
@@ -9492,7 +9492,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9512,7 +9512,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -9532,7 +9532,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10161,7 +10161,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10181,7 +10181,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10201,7 +10201,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10835,7 +10835,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10855,7 +10855,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -10875,7 +10875,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -11413,7 +11413,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <button
           aria-label="First"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -11433,7 +11433,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <button
           aria-label="Second"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -11453,7 +11453,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <button
           aria-label="Third"
           aria-selected="false"
-          class="group/fui-button fui-Button fui-legend__legend"
+          class="fui-Button group/fui-button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"

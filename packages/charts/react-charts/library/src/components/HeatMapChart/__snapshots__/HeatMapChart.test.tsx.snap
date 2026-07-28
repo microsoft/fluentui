@@ -239,7 +239,7 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -259,7 +259,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -515,7 +515,7 @@ Object {
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -535,7 +535,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -848,7 +848,7 @@ Object {
               <button
                 aria-label="Excellent"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -868,7 +868,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1122,7 +1122,7 @@ Object {
             <button
               aria-label="Excellent"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1142,7 +1142,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1954,7 +1954,7 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1974,7 +1974,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2230,7 +2230,7 @@ Object {
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2250,7 +2250,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2565,7 +2565,7 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2585,7 +2585,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2841,7 +2841,7 @@ Object {
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2861,7 +2861,7 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="group/fui-button fui-Button fui-legend__legend"
+              class="fui-Button group/fui-button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2945,7 +2945,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProvider_r_1e_"
+        class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_1e_"
         dir="ltr"
       >
         <div
@@ -3180,7 +3180,7 @@ Object {
                 <button
                   aria-label="Execllent (0-200)"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3200,7 +3200,7 @@ Object {
                 <button
                   aria-label="Nasty"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3226,7 +3226,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProvider_r_1e_"
+      class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_1e_"
       dir="ltr"
     >
       <div
@@ -3461,7 +3461,7 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3481,7 +3481,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3800,7 +3800,7 @@ Object {
                 <button
                   aria-label="Execllent (0-200)"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -3820,7 +3820,7 @@ Object {
                 <button
                   aria-label="Nasty"
                   aria-selected="false"
-                  class="group/fui-button fui-Button fui-legend__legend"
+                  class="fui-Button group/fui-button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -4080,7 +4080,7 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4100,7 +4100,7 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="group/fui-button fui-Button fui-legend__legend"
+                class="fui-Button group/fui-button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -4401,7 +4401,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <button
             aria-label="Excellent"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4421,7 +4421,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <button
             aria-label="Nasty"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4677,7 +4677,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <button
             aria-label="Excellent"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4697,7 +4697,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <button
             aria-label="Nasty"
             aria-selected="false"
-            class="group/fui-button fui-Button fui-legend__legend"
+            class="fui-Button group/fui-button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"

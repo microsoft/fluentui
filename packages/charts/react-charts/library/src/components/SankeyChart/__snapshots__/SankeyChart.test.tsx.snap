@@ -682,7 +682,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_32_"
         role="tooltip"
       >
@@ -1982,7 +1982,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_3a_"
         role="tooltip"
       >
@@ -3680,7 +3680,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_2a_"
         role="tooltip"
       >
@@ -5891,7 +5891,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_2i_"
         role="tooltip"
       >
@@ -7230,7 +7230,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_2q_"
         role="tooltip"
       >
@@ -7845,7 +7845,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_8_"
+    class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider_r_8_"
     dir="ltr"
   >
     <div
@@ -9119,7 +9119,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_56_"
         role="tooltip"
       >
@@ -10096,7 +10096,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_5e_"
         role="tooltip"
       >
@@ -12708,7 +12708,7 @@ Object {
       dir="ltr"
     >
       <div
-        class="group/fui-tooltip fui-Tooltip__content"
+        class="fui-Tooltip__content group/fui-tooltip"
         id="tooltip-_r_42_"
         role="tooltip"
       >
