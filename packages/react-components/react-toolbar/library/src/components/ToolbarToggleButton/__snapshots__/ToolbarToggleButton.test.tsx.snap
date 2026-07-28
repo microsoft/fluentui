@@ -4,7 +4,7 @@ exports[`ToolbarToggleButton renders a default state 1`] = `
 <div>
   <button
     aria-pressed="false"
-    class="fui-Button group/fui-button fui-ToggleButton"
+    class="fui-Button group/fui-button fui-ToggleButton group/fui-toggle-button group/fui-toolbar-toggle-button"
     data-size="medium"
     name="name"
     type="button"

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { ToolbarRadioButton } from './ToolbarRadioButton';
 import { isConformant } from '../../testing/isConformant';
 import type { ToggleButtonProps } from '@fluentui/react-button';
@@ -10,7 +11,12 @@ describe('ToolbarRadioButton', () => {
   isConformant({
     Component: ToolbarRadioButton as React.FunctionComponent<ToggleButtonProps>,
     displayName: 'ToolbarRadioButton',
-    disabledTests: ['component-has-static-classnames-object'],
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind) — same
+    // reasoning as ToolbarToggleButton.test.tsx: nothing in this component's delegation
+    // chain calls mergeClasses any more, so `make-styles-overrides-win` has nothing to
+    // observe and `classname-overrides-win` replaces it (DECISIONS.md D9).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
