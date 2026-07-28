@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,16 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+   * The `*.module.css` moduleNameMapper is repo-wide in `jest.preset.js`, but a
+   * project-level `snapshotSerializers` REPLACES the preset's array rather than merging
+   * it, so a converted package that declares its own has to list
+   * `cssModules.snapshotSerializer` itself (DECISIONS.md D9).
+   *
+   * `@griffel/jest-serializer` is kept alongside it: RatingItem renders the caller's
+   * `iconFilled` / `iconOutline` elements, which are `@fluentui/react-icons` <svg>s and
+   * still emit Griffel atomics into the same `class=` attribute.
+   */
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };

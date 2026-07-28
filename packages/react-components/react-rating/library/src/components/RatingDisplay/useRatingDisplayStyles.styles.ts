@@ -1,9 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+
+import styles from './RatingDisplay.module.css';
 
 export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
   root: 'fui-RatingDisplay',
@@ -12,72 +26,54 @@ export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
 };
 
 /**
- * Styles for the root slot
+ * Data attribute rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `size` is a scale prop, so it rides a data-attribute rather than a module class
+ * (DECISIONS.md D3), and it is stamped on the ROOT even though the rules it selects apply
+ * to the `valueText` / `countText` slots: those slots are the root's direct children
+ * (renderRatingDisplay), so one stamp drives both descendant rules — the same approach as
+ * react-switch's root-level `data-size`.
+ *
+ * It is written unconditionally. Only `large` and `extra-large` carry rules (the Griffel
+ * source has no `small` / `medium` slice — those values live in the `.label` reset), but
+ * the attribute names the whole value space and is inert for the other two.
  */
-
-const useRootClassName = makeResetStyles({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-});
-
-const useLabelClassName = makeResetStyles({
-  color: tokens.colorNeutralForeground1,
-  marginLeft: tokens.spacingHorizontalXS,
-  ...typographyStyles.caption1,
-});
-
-const useLabelStyles = makeStyles({
-  large: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    marginLeft: tokens.spacingHorizontalSNudge,
-  },
-  extraLarge: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    marginLeft: tokens.spacingHorizontalS,
-  },
-  strong: {
-    fontWeight: tokens.fontWeightSemibold,
-  },
-  divider: {
-    '::before': {
-      content: '"· "',
-    },
-  },
-});
+type RatingDisplayRootDataAttributes = {
+  'data-size': RatingDisplayState['size'];
+};
 
 /**
  * Apply styling to the RatingDisplay slots based on the state
  */
 export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
   const { size } = state;
-  const rootClassName = useRootClassName();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(ratingDisplayClassNames.root, rootClassName, state.root.className);
-  const labelClassName = useLabelClassName();
-  const labelStyles = useLabelStyles();
+
+  const root = state.root as RatingDisplayState['root'] & RatingDisplayRootDataAttributes;
+
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in RatingDisplay.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to
+  // the mergeClasses() argument order this replaces.
+  state.root.className = clsx(ratingDisplayClassNames.root, styles.root, state.root.className);
 
   if (state.valueText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.valueText.className = mergeClasses(
+    state.valueText.className = clsx(
       ratingDisplayClassNames.valueText,
-      labelClassName,
-      labelStyles.strong,
-      size === 'large' && labelStyles.large,
-      size === 'extra-large' && labelStyles.extraLarge,
+      styles.label,
+      styles.strong,
       state.valueText.className,
     );
   }
+
   if (state.countText) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.countText.className = mergeClasses(
+    state.countText.className = clsx(
       ratingDisplayClassNames.countText,
-      labelClassName,
-      size === 'large' && labelStyles.large,
-      size === 'extra-large' && labelStyles.extraLarge,
-      state.valueText && labelStyles.divider,
+      styles.label,
+      // The "· " separator is only drawn when a valueText precedes the count.
+      state.valueText && styles.divider,
       state.countText.className,
     );
   }

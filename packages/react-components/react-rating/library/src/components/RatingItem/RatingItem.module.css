@@ -1,0 +1,310 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useRatingItemStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 ratingItemClassNames.root                            → static class (JS)
+ *   2 useStyles.root            (makeStyles)               → fui.components.l1  .root
+ *   3 useStyles[size]           (makeStyles)               → fui.components.l1  (data-size)
+ *   4 consumer className                                   → unlayered (always wins)
+ *
+ * `halfValueInput` slot
+ *   1 ratingItemClassNames.halfValueInput                  → static class (JS)
+ *   2 useInputBaseClassName     (makeReset)                → fui.base           .input
+ *   3 useInputStyles.lowerHalf                             → fui.components.l1  .inputLowerHalf
+ *   4 consumer className                                   → unlayered
+ *
+ * `fullValueInput` slot
+ *   1 ratingItemClassNames.fullValueInput                  → static class (JS)
+ *   2 useInputBaseClassName     (makeReset)                → fui.base           .input
+ *   3 useInputStyles.upperHalf  (halfValueInput rendered)  → fui.components.l1  .inputUpperHalf
+ *   4 consumer className                                   → unlayered
+ *
+ * `unselectedIcon` slot
+ *   1 ratingItemClassNames.unselectedIcon                  → static class (JS)
+ *   2 useIndicatorBaseClassName (makeReset)                → fui.base           .icon
+ *   3 useIndicatorStyles.filled       (appearance)         → fui.components.l1  .filled
+ *   4 useIndicatorStyles.brand|brandFilled       (color)   → fui.components.l1
+ *   5 useIndicatorStyles.marigold|marigoldFilled (color)   → fui.components.l1
+ *   6 useIndicatorStyles.upperHalf (iconFillWidth === 0.5) → fui.components.l1  .iconUpperHalf
+ *   7 consumer className                                   → unlayered
+ *
+ * `selectedIcon` slot
+ *   1 ratingItemClassNames.selectedIcon                    → static class (JS)
+ *   2 useIndicatorBaseClassName (makeReset)                → fui.base           .icon
+ *   3 useIndicatorStyles.brand    (color === 'brand')      → fui.components.l1
+ *   4 useIndicatorStyles.marigold (color === 'marigold')   → fui.components.l1
+ *   5 useIndicatorStyles.lowerHalf (iconFillWidth === 0.5) → fui.components.l1  .iconLowerHalf
+ *   6 consumer className                                   → unlayered
+ *
+ * ── Altitude: everything is l1 (no l2) ──────────────────────────────────────────────
+ * Every element styled here is RatingItem's own: the root `<span>`, the two radio
+ * `<input>`s and the two icon `<div>`s are all created by `useRatingItemBase_unstable`
+ * via `slot.always`. Nothing here sits on top of another component's styles hook, so
+ * DECISIONS.md D2 amendment 2 does not apply and no block belongs in fui.components.l2.
+ *
+ * ── The `& > svg` rule and D2 amendment 5 ───────────────────────────────────────────
+ * `.iconLowerHalf > svg` is the one selector in this package whose SUBJECT element is
+ * owned by another package: the glyph inside the icon slot is
+ * `@fluentui/react-icons`' `<svg>` (the `iconFilled` / `iconOutline` context elements).
+ * It stays LAYERED, because the amendment's failure mode needs an unlayered Griffel
+ * atomic on the SAME PROPERTY and there is none — react-icons' only svg-root slice is
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/useIconStyles.styles.js
+ *   .f1w7gpdv{display:inline;}   .fez10in{line-height:0;}
+ *
+ * i.e. `display` and `line-height`, never `flex`. This package renders no `bundleIcon()`
+ * pair, so there is no `fui-Icon-filled` / `fui-Icon-regular` display swap to lift out
+ * (grepped: zero hits for either class anywhere under packages/react-components/
+ * react-rating). Same call as react-input's layered `.content > svg { font-size }`.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * • `.filled` sets `color: var(--colorNeutralBackground6)` and must LOSE to
+ *   `.brandFilled` / `.marigoldFilled` (unselectedIcon args #4/#5), so its block is
+ *   written first.
+ * • …but `.filled`'s forced-colors declarations must WIN over those same two. Griffel
+ *   put them in the `m` bucket, and `styleBucketOrdering`
+ *   (@griffel/core/renderer/getStyleSheetForBucket) is
+ *   ['r','d','l','v','w','f','i','h','a','s','k','t','m'] — `m` sorts after `d`, so the
+ *   compiled sheet emits `@media (forced-colors: active){.f1205bnn{color:Canvas}}` AFTER
+ *   `.f1kdv6iu{color:var(--colorBrandBackground2)}` at equal 0-1-0 specificity. CSS gives
+ *   a media block no priority of its own, so the ONLY way to reproduce that is file
+ *   position: `.filled`'s `@variant forced-colors` block is SPLIT off from its plain
+ *   declarations and re-stated after the colour blocks. Collapsing the two halves back
+ *   into one block would paint a brand/marigold RatingDisplay's unselected stars with
+ *   their brand colour in High Contrast instead of `Canvas`.
+ * • Everything else is conflict-free: `.inputLowerHalf`/`.inputUpperHalf` and
+ *   `.iconLowerHalf`/`.iconUpperHalf` are mutually exclusive per element, and the
+ *   `data-size` blocks touch only font-size/width/height.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Every compiled [ltr, rtl] pair here is a pure PROPERTY flip, so each becomes a logical
+ * property and this file needs no `@variant rtl` twin:
+ *   useInputBaseClassName      left/right: 0            → inset-inline-start/end
+ *   useIndicatorBaseClassName  left/right: 0            → inset-inline-start/end
+ *   useInputStyles.lowerHalf   ffenbu1 / f1ktbn1t       → inset-inline-end: 50%
+ *   useInputStyles.upperHalf   f1ktbn1t / ffenbu1       → inset-inline-start: 50%
+ *   useIndicatorStyles.lowerHalf  idem                  → inset-inline-end: 50%
+ *   useIndicatorStyles.upperHalf  idem + fbm7ezh/f3ev47i → inset-inline-start + margin-inline-start
+ * The focus-outline `::after` offsets stay physical: the compiled atomics
+ * (f1spmvte / fgp7k2s / f13pb23 / f1ihbrwi) are an all-four-sides inset with one value.
+ *
+ * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
+ * The four sizes (12/16/20/28 px) are pixel literals, not spacing tokens, so they ride
+ * `--base-scale`: Tailwind numeric utilities for width/height (which read the spacing
+ * namespace) and `calc(<n>px * var(--base-scale))` for font-size (which does not). At the
+ * default 16px root every one computes to the compiled pixel value. This component reads
+ * no `tokens.spacing*` at all, so no named spacing utility appears in this file.
+ */
+
+@layer fui.base {
+  /*
+   * from useInputBaseClassName (makeResetStyles) — the visually hidden radio input that
+   * covers the star (or half of it) and receives the click.
+   */
+  .input {
+    @apply absolute m-0 box-border h-full cursor-pointer;
+
+    inset-inline-start: 0;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+
+    /* literal, not `opacity-0`: that utility compiles to `opacity: 0%`, the compiled
+       Griffel atomic is `opacity:0`. Same computed value, fewer questions. */
+    opacity: 0;
+  }
+
+  /*
+   * from useIndicatorBaseClassName (makeResetStyles) — shared by the selectedIcon and
+   * unselectedIcon slots, both absolutely positioned over the root so the two glyphs
+   * stack and `overflow: hidden` can clip one of them to half width.
+   */
+  .icon {
+    @apply pointer-events-none absolute flex overflow-hidden;
+
+    color: var(--colorNeutralForeground1);
+    fill: currentColor;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    @apply relative;
+
+    /*
+     * from createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) — the same
+     * factory react-switch's root reset uses. `fui-focus-outline` carries the compiled
+     * declarations; the selector stays here. Byte-check against the AOT output
+     * (lib-commonjs/components/RatingItem/useRatingItemStyles.styles.js): the four
+     * `[data-fui-focus-within]:focus-within{border-*-color:transparent}` rules, the
+     * ::after content/position/pointer-events/z-index, `border:2px solid
+     * var(--colorStrokeFocus2)`, `border-radius:var(--borderRadiusMedium)`, the four
+     * `calc(2px * -1)` offsets (the utility's `calc(0px - 2px - 0px)` computes to the
+     * same) and the forced-colors `Highlight` border colours all match.
+     *
+     * `:focus`/`:focus-visible` sit OUTSIDE the factory's selector, so they stay with the
+     * caller. `:focus-visible` is a strict subset of `:focus`, so the second rule is
+     * redundant in the compiled output too — both are reproduced verbatim, not pruned.
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-within-fui {
+      @apply fui-focus-outline;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles[size] — root arg #3. `size` is a scale prop, so it rides `data-size`
+   * on this same root element (DECISIONS.md D3) and reuses the shared catalog's four
+   * t-shirt variants. Unlike RatingDisplay, EVERY value has a slice here, `medium`
+   * included — the Griffel source spells all four out.
+   *
+   * `width`/`height` read the spacing namespace, so the numeric utilities apply;
+   * `font-size` does not, so it is written as an explicit `--base-scale` product.
+   */
+  .root {
+    @variant size-small {
+      @apply h-12 w-12;
+
+      font-size: calc(12px * var(--base-scale));
+    }
+
+    @variant size-medium {
+      @apply h-16 w-16;
+
+      font-size: calc(16px * var(--base-scale));
+    }
+
+    @variant size-large {
+      @apply h-20 w-20;
+
+      font-size: calc(20px * var(--base-scale));
+    }
+
+    @variant size-extra-large {
+      @apply h-28 w-28;
+
+      font-size: calc(28px * var(--base-scale));
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useInputStyles.lowerHalf — halfValueInput arg #3. Clips the half-star input to
+   * the leading half of the item.
+   */
+  .inputLowerHalf {
+    inset-inline-end: 50%;
+  }
+
+  /*
+   * from useInputStyles.upperHalf — fullValueInput arg #3, applied only when a
+   * halfValueInput is also rendered (step === 0.5); otherwise the full-value input keeps
+   * the reset's full-width box.
+   */
+  .inputUpperHalf {
+    inset-inline-start: 50%;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useIndicatorStyles.filled — unselectedIcon arg #3, applied when
+   * `appearance === 'filled'` (i.e. the non-interactive RatingDisplay). Its forced-colors
+   * half is deliberately NOT here — see the ordering note in the file header.
+   *
+   * `appearance` and `color` are enum LOOK props, so they are module classes rather than
+   * data-attributes (DECISIONS.md D3).
+   */
+  .filled {
+    color: var(--colorNeutralBackground6);
+    stroke: var(--colorTransparentStroke);
+  }
+
+  /* from useIndicatorStyles.brand — unselectedIcon arg #4 / selectedIcon arg #3 */
+  .brand {
+    color: var(--colorBrandForeground1);
+  }
+
+  /* from useIndicatorStyles.brandFilled — unselectedIcon arg #4, filled branch */
+  .brandFilled {
+    color: var(--colorBrandBackground2);
+  }
+
+  /* from useIndicatorStyles.marigold — unselectedIcon arg #5 / selectedIcon arg #4 */
+  .marigold {
+    color: var(--colorPaletteMarigoldBorderActive);
+  }
+
+  /* from useIndicatorStyles.marigoldFilled — unselectedIcon arg #5, filled branch */
+  .marigoldFilled {
+    color: var(--colorPaletteMarigoldBackground2);
+  }
+
+  /*
+   * from useIndicatorStyles.filled, forced-colors half — SPLIT out of the block above and
+   * restated here so it keeps beating `.brandFilled` / `.marigoldFilled`, exactly as
+   * Griffel's `m` bucket did by sorting after `d`. See the ordering note in the header.
+   */
+  .filled {
+    @variant forced-colors {
+      color: Canvas;
+      stroke: CanvasText;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useIndicatorStyles.upperHalf — unselectedIcon arg #6. The unselected glyph is
+   * clipped to the trailing half and pulled back by its own half-width so the two halves
+   * line up into one star.
+   */
+  .iconUpperHalf {
+    inset-inline-start: 50%;
+    margin-inline-start: -50%;
+  }
+
+  /*
+   * from useIndicatorStyles.lowerHalf — selectedIcon arg #5. The selected glyph is clipped
+   * to the leading half; `flex: 0 0 auto` stops the `<svg>` shrinking to the clipped box
+   * (written as the compiled longhand triple rather than `flex-none`, which emits the
+   * `flex: none` keyword).
+   */
+  .iconLowerHalf {
+    inset-inline-end: 50%;
+
+    & > svg {
+      flex: 0 0 auto;
+    }
+  }
+}

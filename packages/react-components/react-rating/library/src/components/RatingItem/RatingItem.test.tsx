@@ -5,13 +5,25 @@ import { RatingItem } from './RatingItem';
 import { RatingItemProvider } from '../../contexts/RatingItemContext';
 import type { RatingItemContextValue } from './RatingItem.types';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 
 describe('RatingItem', () => {
   isConformant({
     Component: RatingItem,
     displayName: 'RatingItem',
-    // Need to disable this test because certain slots are not rendered without specific context values
-    disabledTests: ['component-has-static-classnames-object'],
+    disabledTests: [
+      // Need to disable this test because certain slots are not rendered without specific context values
+      'component-has-static-classnames-object',
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+      // it was called with the consumer className last; this component now composes with
+      // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+      // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
+      // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+      // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
+      'make-styles-overrides-win',
+    ],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
   it('does not render input elements when interactive is false', () => {
     const contextValues: RatingItemContextValue = {
