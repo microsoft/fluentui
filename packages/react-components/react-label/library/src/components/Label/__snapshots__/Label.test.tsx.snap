@@ -4,7 +4,7 @@ exports[`Label renders a custom asterisk 1`] = `
 <body>
   <div>
     <label
-      class="group/fui-label fui-Label"
+      class="fui-Label group/fui-label"
       data-size="medium"
       data-testid="label-id"
     >
@@ -23,7 +23,7 @@ exports[`Label renders a custom asterisk 1`] = `
 exports[`Label renders a default state 1`] = `
 <div>
   <label
-    class="group/fui-label fui-Label"
+    class="fui-Label group/fui-label"
     data-size="medium"
   >
     Default Label
