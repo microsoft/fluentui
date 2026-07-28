@@ -1,9 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
+
+import styles from './MessageBar.module.css';
 
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
@@ -11,126 +25,63 @@ export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   bottomReflowSpacer: 'fui-MessageBar__bottomReflowSpacer',
 };
 
-const useRootBaseStyles = makeResetStyles({
-  whiteSpace: 'nowrap',
-  display: 'grid',
-  gridTemplateColumns: 'auto 1fr auto auto',
-  gridTemplateRows: '1fr',
-  gridTemplateAreas: '"icon body secondaryActions actions"',
-  paddingLeft: tokens.spacingHorizontalM,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-  borderRadius: tokens.borderRadiusMedium,
-  alignItems: 'center',
-  minHeight: '36px',
-  boxSizing: 'border-box',
-  backgroundColor: tokens.colorNeutralBackground3,
-});
-
-const useIconBaseStyles = makeResetStyles({
-  gridArea: 'icon',
-  fontSize: tokens.fontSizeBase500,
-  marginRight: tokens.spacingHorizontalS,
-  color: tokens.colorNeutralForeground3,
-  display: 'flex',
-  alignItems: 'center',
-});
-
-const useReflowSpacerBaseStyles = makeResetStyles({
-  marginBottom: tokens.spacingVerticalS,
-  gridArea: 'secondaryActions',
-});
-
-const useStyles = makeStyles({
-  rootMultiline: {
-    whiteSpace: 'normal',
-    alignItems: 'start',
-    paddingTop: tokens.spacingVerticalMNudge,
-    gridTemplateColumns: 'auto 1fr auto',
-    gridTemplateAreas: `
-      "icon body actions"
-      "secondaryActions secondaryActions secondaryActions"
-    `,
-  },
-
-  secondaryActionsMultiline: {
-    justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
-    marginRight: '0px',
-  },
-
-  square: {
-    borderRadius: '0',
-  },
-});
-
-const useIconIntentStyles = makeStyles({
-  info: {
-    /** already in base reset styles */
-  },
-  error: {
-    color: tokens.colorStatusDangerForeground1,
-  },
-  warning: {
-    color: tokens.colorStatusWarningForeground3,
-  },
-  success: {
-    color: tokens.colorStatusSuccessForeground1,
-  },
-});
-
-const useRootIntentStyles = makeStyles({
-  info: {
-    /** already in base reset styles */
-  },
-  error: {
-    backgroundColor: tokens.colorStatusDangerBackground1,
-    ...shorthands.borderColor(tokens.colorStatusDangerBorder1),
-  },
-  warning: {
-    backgroundColor: tokens.colorStatusWarningBackground1,
-    ...shorthands.borderColor(tokens.colorStatusWarningBorder1),
-  },
-  success: {
-    backgroundColor: tokens.colorStatusSuccessBackground1,
-    ...shorthands.borderColor(tokens.colorStatusSuccessBorder1),
-  },
-});
+/**
+ * Data attributes rendered on the root slot and matched by `:where([data-…])` selectors in
+ * `MessageBar.module.css`.
+ *
+ * Both names are taken from the in-repo headless preview, which stamps exactly these two
+ * on ITS MessageBar root (`react-headless-components-preview/library/src/components/
+ * MessageBar/useMessageBar.ts`), and both are in the 25-name vocabulary
+ * (reports/headless-precedent.md).
+ *
+ * `data-intent` sits on the ROOT even though it also selects the icon slot's colour: the
+ * icon is the root's child, so one stamp drives every descendant rule (the react-button
+ * `data-size` → `.root … & .icon` precedent).
+ *
+ * `shape` is deliberately NOT an attribute — it is a look prop, so it keeps a module class
+ * lookup (`styles.square`) per DECISIONS.md D3.
+ *
+ * Neither flag is optional: `layout` and `intent` are both `Required<…>` on the state, so
+ * neither needs the `flag || undefined` form the presence attributes elsewhere use.
+ */
+type MessageBarRootDataAttributes = {
+  'data-layout': MessageBarState['layout'];
+  'data-intent': MessageBarState['intent'];
+};
 
 /**
  * Apply styling to the MessageBar slots based on the state
  */
 export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBarState => {
-  const rootBaseStyles = useRootBaseStyles();
-  const iconBaseStyles = useIconBaseStyles();
-  const iconIntentStyles = useIconIntentStyles();
-  const rootIntentStyles = useRootIntentStyles();
-  const reflowSpacerStyles = useReflowSpacerBaseStyles();
-  const styles = useStyles();
+  const { intent, layout, shape } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as MessageBarState['root'] & MessageBarRootDataAttributes;
+
+  root['data-layout'] = layout;
+  root['data-intent'] = intent;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in MessageBar.module.css, not
+  // by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  //
+  // The `info` intent has no class here because both of its Griffel slices are `{}`
+  // ("already in base reset styles"); the module emits no rule for it.
+  state.root.className = clsx(
     messageBarClassNames.root,
-    rootBaseStyles,
-    state.layout === 'multiline' && styles.rootMultiline,
-    state.shape === 'square' && styles.square,
-    rootIntentStyles[state.intent],
+    styles.root,
+    shape === 'square' && styles.square,
     state.root.className,
   );
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(
-      messageBarClassNames.icon,
-      iconBaseStyles,
-      iconIntentStyles[state.intent],
-      state.icon.className,
-    );
+    state.icon.className = clsx(messageBarClassNames.icon, styles.icon, state.icon.className);
   }
 
   if (state.bottomReflowSpacer) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.bottomReflowSpacer.className = mergeClasses(messageBarClassNames.bottomReflowSpacer, reflowSpacerStyles);
+    // No consumer className is merged here — reproduced verbatim from the Griffel hook,
+    // which also omitted it.
+    state.bottomReflowSpacer.className = clsx(messageBarClassNames.bottomReflowSpacer, styles.bottomReflowSpacer);
   }
 
   return state;

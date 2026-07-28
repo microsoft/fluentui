@@ -1,0 +1,51 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useMessageBarBodyStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *   1 messageBarBodyClassNames.root            → static class (JS)
+ *   2 useRootBaseStyles          (makeReset)   → fui.base   .root
+ *   3 consumer className                       → unlayered (always wins)
+ *
+ * The whole component is a single `makeResetStyles`, so `fui.components.l1` is empty and
+ * no data-attributes are needed — there is no conditional slice to select. Everything is
+ * MessageBarBody's own element, so nothing reaches l2, and the package has no
+ * `fui-Icon-filled` / `:global(` rule (grepped), so D2 amendment 5 does not apply.
+ *
+ * `...typographyStyles.body1` is spread into the reset by the Griffel source; the four
+ * declarations it contributes are written out literally here, matching the compiled
+ * atomic `.rtatq2b{font-family:…;font-size:…;font-weight:…;line-height:…}`.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * One [ltr, rtl] pair, a pure PROPERTY flip: `padding-right` → `padding-left`, so it
+ * becomes `padding-inline-end` (`pe-horizontal-m`, D4 amendment named spacing utility).
+ */
+
+@layer fui.base {
+  /* from useRootBaseStyles (makeResetStyles) */
+  .root {
+    @apply pe-horizontal-m;
+
+    /* from typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    grid-area: body;
+  }
+}

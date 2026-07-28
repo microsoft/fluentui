@@ -1,9 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 import type { MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions.types';
+
+import styles from './MessageBarActions.module.css';
 
 export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots> = {
   root: 'fui-MessageBarActions',
@@ -11,55 +25,45 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 };
 
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by `:where([data-…])` selectors in
+ * `MessageBarActions.module.css`.
+ *
+ * Both names are taken from the in-repo headless preview, which stamps exactly these two
+ * on ITS MessageBarActions root (`react-headless-components-preview/library/src/components/
+ * MessageBar/MessageBarActions/useMessageBarActions.ts`), and both are in the 25-name
+ * vocabulary (reports/headless-precedent.md).
+ *
+ * `data-has-actions` is a presence flag written `hasActions || undefined`: React omits an
+ * attribute whose value is `undefined`, whereas `false` would render
+ * `data-has-actions="false"` and still match `[data-has-actions]` — which would invert the
+ * `:not([data-has-actions])` rule that hides an empty actions slot.
  */
-const useRootBaseStyles = makeResetStyles({
-  gridArea: 'secondaryActions',
-  display: 'flex',
-  columnGap: tokens.spacingHorizontalM,
-  paddingRight: tokens.spacingHorizontalM,
-});
-
-const useContainerActionBaseStyles = makeResetStyles({
-  gridArea: 'actions',
-  paddingRight: tokens.spacingHorizontalM,
-});
-
-const useMultilineStyles = makeStyles({
-  root: {
-    justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
-    marginRight: '0px',
-    paddingRight: tokens.spacingVerticalM,
-  },
-
-  noActions: {
-    display: 'none',
-  },
-});
+type MessageBarActionsRootDataAttributes = {
+  'data-layout': MessageBarActionsState['layout'];
+  'data-has-actions'?: true;
+};
 
 /**
  * Apply styling to the MessageBarActions slots based on the state
  */
 export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsState): MessageBarActionsState => {
-  const rootBaseStyles = useRootBaseStyles();
-  const containerActionBaseStyles = useContainerActionBaseStyles();
-  const multilineStyles = useMultilineStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    messageBarActionsClassNames.root,
-    rootBaseStyles,
-    state.layout === 'multiline' && multilineStyles.root,
-    !state.hasActions && multilineStyles.noActions,
-    state.root.className,
-  );
+  const { hasActions, layout } = state;
+
+  const root = state.root as MessageBarActionsState['root'] & MessageBarActionsRootDataAttributes;
+
+  root['data-layout'] = layout;
+  root['data-has-actions'] = hasActions || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in MessageBarActions.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to
+  // the mergeClasses() argument order this replaces.
+  state.root.className = clsx(messageBarActionsClassNames.root, styles.root, state.root.className);
 
   if (state.containerAction) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.containerAction.className = mergeClasses(
+    state.containerAction.className = clsx(
       messageBarActionsClassNames.containerAction,
-      containerActionBaseStyles,
+      styles.containerAction,
       state.containerAction.className,
     );
   }

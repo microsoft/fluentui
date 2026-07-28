@@ -3,8 +3,10 @@
 exports[`MessageBar renders a default state 1`] = `
 <div>
   <div
-    aria-labelledby="fui-_r_7_"
+    aria-labelledby="fui-_r_8_"
     class="fui-MessageBar"
+    data-intent="info"
+    data-layout="singleline"
     role="group"
   >
     <div
