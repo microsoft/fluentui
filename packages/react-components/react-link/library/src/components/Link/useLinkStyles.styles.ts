@@ -59,7 +59,16 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   rootWithData['data-disabled'] = disabled || undefined;
   rootWithData['data-inline'] = inline || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this Link's state, because `styles.root` is hashed and unaddressable from
+  // outside this file. Link needs no state mirrors: `data-disabled` and `data-inline` are
+  // already stamped on this very element above, and `:hover` / `:active` /
+  // `:focus-visible` are pseudo-class states that are true of the root whenever they are
+  // true of its subtree — so `@variant group-hover/fui-link`,
+  // `group-disabled/fui-link` etc. work with no JS change (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order — and, within
   // `fui.components.l1`, by block order — in Link.module.css, not by the order of these
   // arguments. See that file's header for the mapping back to the mergeClasses()
@@ -70,6 +79,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   // lookup: the Griffel source has no `default` slice at all (the base styles ARE the
   // default appearance), so there is no class to look up for it.
   state.root.className = clsx(
+    'group/fui-link',
     linkClassNames.root,
     styles.root,
     root.as === 'a' && root.href && styles.href,
