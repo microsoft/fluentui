@@ -699,3 +699,232 @@ The conversion is **VR-neutral at the default 16px root** — the tokens are 1�
 the sweep validates against the existing zero-tolerance VR pass. Like the spacing backlog it is
 deliberately NOT bundled here; schedule it per package alongside the 176-declaration spacing
 sweep, which touches an overlapping file set.
+
+## D15 — Named groups + all-lowercase generated idents (settled with user 2026-07-28)
+
+Source analysis: `reports/named-groups-design.md`. **Naming below is the user's amendment and
+overrides that report wherever the two differ** — the report proposed PascalCase
+(`group/fui-Switch`, `fuicm-Switch-module__root--base64`); the settled scheme is all-lowercase.
+
+### D15.1 — Every converted component stamps `group/fui-<component-kebab>`
+
+**Decision.** The component's outermost slot carries an unhashed, global Tailwind group marker
+as the FIRST argument of its `clsx(…)`, immediately before the static `fui-*` class:
+
+```ts
+state.root.className = clsx(
+  'group/fui-switch', // named group marker — literal, unhashed, GLOBAL
+  switchClassNames.root, // static class (conformance contract)
+  styles.root, // hashed CSS-Modules class
+  state.root.className, // consumer override — always last
+);
+```
+
+**The name is the component's own name, lowercase-kebab, `fui-` namespaced.** Not the static
+class verbatim: `group/fui-switch`, `group/fui-message-bar`, `group/fui-accordion-header`,
+`group/fui-tooltip`. Lowercase-kebab is the same alphabet the generated idents (D15.2) and the
+module-local class names (D15.3) use, so the entire generated + generated-adjacent class
+surface is one case-insensitive namespace with no mixed-case exceptions to remember.
+
+The `fui-` namespace is mandatory rather than decorative. nyt-games' rule is "the group name is
+the component's own name" and it can stop there because it is an application; Fluent is a
+library shipping into consumer apps that may themselves use Tailwind, and Tailwind group names
+are a FLAT GLOBAL namespace — a bare `group/button` would be the same selector as a consumer's
+own `group/button` and Fluent's rules would fire on the consumer's element.
+
+**Why the feature exists.** A CSS-Modules class is hashed and therefore unaddressable from any
+other module. The group marker is the only global handle by which one component's module can
+style an element based on an ANCESTOR component's state. That is the capability nyt-games uses
+at `sidenav.module.css:285-311`, where Sidenav's `.bar` reads `group-hover/button` and
+`group-pressed/button` from a Button in a different package. Fluent has no equivalent today.
+Flatter authoring is a side effect; cross-component state reading is the point.
+
+**Not for performance.** `metrics/perf-eval/variants/SUMMARY.md` §7 measured the named-group
+shape at −0.2% against the current selectors (inside a 0.63 ms IQR) while recalculating 1,000
+more elements. A capability decision with a small, accepted invalidation cost.
+
+**One marker per component, on the outermost slot only.** Sub-components already have their own
+roots, so `fui-Accordion > fui-AccordionItem > fui-AccordionHeader` nests for free. A group
+cannot style itself — the compiled selector is `.child:is(:where(.group…) *)` and the descendant
+combinator excludes the group element — so a second marker on an inner slot buys nothing. The
+outermost slot is `root` for 32 of the 33 converted packages; `react-tooltip` declares no `root`
+at all (only `content: 'fui-Tooltip__content'`, because it portals and the content element IS
+its outermost node), so its marker rides `content` — but is still named for the component:
+`group/fui-tooltip`, not `group/fui-tooltip__content`.
+
+### D15.2 — Generated idents: `fuicm-<component-kebab>-<local>-<hex6>`, all lowercase
+
+```
+fuicm-switch-root-a3f2c1
+fuicm-message-bar-actions-container-action-09a1b4
+```
+
+Replaces `fuicm-[name]__[local]--[hash:base64:4]`. Point by point:
+
+- **`fuicm-` prefix — unchanged, a HARD CONTRACT.** `scripts/jest/src/css-modules/serializer.js`
+  strips every `fuicm-…` token from snapshots the way `@griffel/jest-serializer` strips atomics
+  (D9). Changing it silently reintroduces generated class names into every committed snapshot.
+- **No `-module__` infix, no `--` separator.** One separator style, not three; the `module`
+  token carried no information.
+- **No base64.** base64 is case-SENSITIVE, so it forced uppercase into names that are otherwise
+  lowercase, and its alphabet contains `+` and `/`, which had to be scrubbed anyway. 6 lowercase
+  hex characters (24 bits) replace it.
+- **Uppercase is forbidden anywhere in a generated name.** The component token and the local are
+  both kebab-cased on the way in, so the invariant holds even for a module that still declares a
+  camelCase local (D15.3).
+
+**One helper, three pipelines.** `scripts/css-modules/ident.js` is the single source of truth and
+is required BY RELATIVE PATH from all three, deliberately — it must stay free of workspace
+requires (jest.preset.js documents why) and be reachable from `tools/workspace-plugin`, which
+depends on no `scripts/*` package:
+
+| Pipeline      | Entry point                                                         | Uses                       |
+| ------------- | ------------------------------------------------------------------- | -------------------------- |
+| package build | `tools/workspace-plugin/.../lib/css-modules.ts` (`postcss-modules`) | `createGenerateScopedName` |
+| VR storybook  | `apps/vr-tests-react-components/.storybook/main.js` (`css-loader`)  | `getLocalIdent`            |
+| jest          | `scripts/jest/src/css-modules/proxy.js` (`moduleNameMapper`)        | `generateTestIdent`        |
+
+The storybook uses `getLocalIdent` rather than a `localIdentName` template because the scheme is
+not expressible as one (it kebab-cases both segments and hashes the package name + the
+source-relative path + the local, never the file's bytes). Hashing the NAME keeps shipped class
+names stable across content edits; the package name in the seed is what makes two packages that
+both declare `.root` in a same-named file differ.
+
+**Jest is the one incomplete case, by construction.** `moduleNameMapper` maps every
+`*.module.css` in the repo to ONE module and gives it no way to learn which file was imported,
+so the component and hash segments cannot be computed. They are dropped, not faked:
+`fuicm-non-zero-determinate`. Everything the toolchain keys on — the `fuicm-` prefix, the
+lowercase-kebab alphabet — is identical, and the serializer strips both shapes.
+
+### D15.3 — Module-local class names are lowercase-kebab
+
+`.non-zero-determinate`, not `.nonZeroDeterminate`; referenced as `styles['non-zero-determinate']`.
+Same alphabet as D15.1 and D15.2, so no name in the generated surface ever needs case-folding.
+
+`toKebabCase` in the shared helper enforces the ident half regardless, and the kebab-casing
+happens AFTER hashing, on the display text only — two locals that kebab to the same string still
+receive different digests and cannot collide.
+
+**Backlog, deliberately not bundled here: 117 camelCase locals across 26 modules in 22
+packages** (measured 2026-07-28, comments and `:global(…)` excluded). The four packages touched
+by this rollout — react-button, react-switch, react-radio, react-tooltip — contain **zero**, so
+the rollout itself needed no renames. Largest holders: `Persona` 13, `Tag` 12, `PresenceBadge`
+11, `AvatarGroupItem` 16, `Field` 8, `presets` 7, `CardHeader` 7. Schedule per package alongside
+the existing spacing / stroke-width sweeps, which touch an overlapping file set.
+
+### D15.4 — BUILD PREREQUISITE (blocking): `:global()`-wrap the marker
+
+**`postcss-modules` and `css-loader` both scope EVERY class selector in a `*.module.css` and
+cannot tell the marker apart from a real local.** Left alone, `.group\/fui-switch` compiles to
+`.fuicm-switch-group-fui-switch-dec2bf`, which the DOM never matches. There is no error and no
+warning: the rules simply never apply, VR passes because nothing changed visually, and the
+feature silently does not exist. Reproduced against the repo's real toolchain — that exact
+hashed selector is the measured baseline output.
+
+The fix is a local PostCSS plugin, `scripts/css-modules/globalize-group-markers.js`, that wraps
+`.group\/…` / `.peer\/…` selector segments in `:global(…)`, which both CSS-Modules
+implementations honour and strip. Verified output:
+
+```css
+.fuicm-switch-thumb-30ee69:is(:where(.group\/fui-switch):where([data-checked], :checked) *) { … }
+classMap: { root, thumb, … }        ← no group key: postcss-modules ignores :global
+```
+
+Position is load-bearing and there is only one that works: BETWEEN `tailwindcss()` and
+`postcssModules()` in the package build, and inside `postcssOptions.plugins` in the VR
+storybook (webpack runs loaders right-to-left, so postcss-loader is already ahead of
+css-loader). Tailwind must have emitted the selector before it can be rewritten; CSS Modules
+must see the `:global()` before it scopes. `peer/…` is covered by the same regex so the
+infrastructure never needs revisiting.
+
+**Rejected:** adopting `@accelint/postcss-tailwind-css-modules@1.1.0` (nyt-games' choice).
+Identical behaviour, but it adds a third-party runtime dependency to the build of a
+Microsoft-shipped library for ~15 lines of regex, and the storybook would need it wired
+separately anyway. Kept as documented prior art.
+
+**Two guardrails, because the failure is invisible.**
+
+1. The build THROWS if a `group/…` or `peer/…` key appears in the exported class map — the only
+   observable trace of a scoped marker (`assertGroupMarkersSurvived`).
+2. `tools/workspace-plugin/src/executors/build/lib/css-modules.spec.ts` compiles a real module
+   through the real plugin chain and asserts the compiled selector contains `.group\/fui-` and
+   no `fuicm-…group`, plus the four ident-shape invariants.
+
+### D15.5 — Variant catalog: no additions
+
+Tailwind v4 composes `group-*` with ANY `@custom-variant` written in the canonical `&:where(…)`
+shape, which D2 already mandates for zero-specificity reasons. Verified against tailwindcss
+4.3.3 for `checked`, `not-checked`, `size-small`, `disabled-control`, `hover`, `focus-within`,
+`rtl`. Intersections nest and compile to a chained `:is(… *):is(… *)`.
+
+**The sole exception is `forced-colors`**, an at-rule variant (`@media (forced-colors: active)`)
+with no element for `group-*` to scope. `group-forced-colors/x` is a hard build error
+(`Cannot use @variant with unknown variant`), and the required form is
+`@variant forced-colors { @variant group-checked/fui-switch { … } }`. Any future variant must
+keep the `&:where(…)` shape or it silently stops composing. `variants.css` carries a header note
+saying exactly this; no `@custom-variant` lines were added.
+
+### D15.6 — Mirroring: hoist state a child cannot otherwise see
+
+State a descendant must read has to be visible ON the group element. Where a component's primary
+state lives on a non-root element it is mirrored to the root as a PRESENCE `data-*` attribute
+written `value || undefined` — never `|| false`, because the catalog's variants are
+attribute-presence selectors and `data-checked="false"` still matches `[data-checked]`. Reference
+shape: `react-checkbox` (`useCheckboxStyles.styles.ts:73-77`).
+
+**Tier 1 (required, done here): `react-switch`, `react-radio` — `data-checked`, `data-disabled`
+on the root.** Both components anchor their entire checked/disabled rule set on `.input` and
+reach the indicator through SIBLING combinators, so the state is unreadable from any descendant:
+`.input` is a sibling of every descendant, not an ancestor.
+
+**Tier 2 (on request, not taken): `react-accordion` `data-open` on `AccordionItem`.** Tier 0
+(nothing to do) is everything already stamping its state on the root — Button, Card, Checkbox,
+Tree, Tooltip, MessageBar and the rest.
+
+Mirroring widens invalidation (the perf leg recalculated 12,000 elements against 11,000 for
+every other leg), so it is added only where a real state is otherwise unreadable, **never for
+symmetry**.
+
+**⚠ Known incompleteness, discovered during implementation and not present in the design
+report.** `data-checked` on Switch and Radio reflects the CONTROLLED value only. The report cites
+`react-checkbox` as the worked precedent, but Checkbox runs its value through
+`useControllableState` and therefore always knows it, whereas **Switch and Radio do not**: Switch
+hands `checked`/`defaultChecked` straight to the `<input>` (`useSwitch.tsx`) and Radio derives
+`checked` as `group.value === props.value`, which is `undefined` whenever the RadioGroup is
+uncontrolled. In both uncontrolled cases the DOM owns the state and React never learns it, so the
+attribute is absent and descendants see "not checked". `defaultChecked` is deliberately NOT used
+as a fallback — it is correct only until the first toggle, and a stale mirror is worse than an
+absent one. `data-disabled` has no such gap: `disabled` is always a prop. Closing the checked gap
+requires moving Switch/Radio to controllable state, which is a behaviour change and needs its own
+decision.
+
+### D15.7 — Published `fui-X__slot` statics: unchanged now, REMOVED later (user-confirmed)
+
+**This rollout does not touch a single static class.** Every `fui-Switch`, `fui-Switch__indicator`
+etc. stays exactly where it is, and the group marker is added ALONGSIDE it.
+
+The settled end-state contract, for the follow-on phase:
+
+> **The BEM statics will be REMOVED.** The public styling contract becomes: **slot `className`
+> props** (typed per-slot overrides) + **the group marker as the sole public identity class** +
+> **`data-*` state variants** + **the layer system**. There is no public class-name targeting of
+> component internals.
+
+Recorded here so the intermediate state is legible: during this phase a converted root carries
+BOTH `group/fui-switch` and `fui-Switch`, which is redundant by design and temporary.
+
+### D15.8 — Snapshots and VR
+
+The marker is deliberately NOT `fuicm-`-prefixed — that is the entire point — so the jest
+serializer does not strip it and it appears in snapshots beside `fui-*`:
+
+```
+class="group/fui-switch fui-Switch"
+```
+
+**Correct, and to be kept.** The marker is public DOM surface; hiding it would hide a public
+contract. Do not extend the serializer.
+
+Changes are pixel-inert by construction: a class no stylesheet selects yet, and attributes no
+current selector matches (every Switch checked rule is anchored on `.input`). **VR stays 34/34 at
+zero tolerance; any diff is a bug, not a baseline.**

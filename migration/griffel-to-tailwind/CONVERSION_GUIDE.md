@@ -258,6 +258,92 @@ state.slot.className)` — static class first, consumer className last. The
   Its removal is a committed, single Phase 3 sweep (DECISIONS D14); do NOT convert
   individual hooks to immutable returns.
 
+### 3b. Named groups (DECISIONS D15)
+
+#### Stamp the marker
+
+The component's OUTERMOST slot gets an unhashed group marker as the FIRST `clsx` argument:
+
+```ts
+state.root.className = clsx(
+  'group/fui-switch', // named group marker — literal, unhashed, GLOBAL
+  switchClassNames.root, // static class (conformance contract)
+  styles.root, // hashed CSS-Modules class
+  state.root.className, // consumer override — always last
+);
+```
+
+The name is `'group/fui-' + <the component's own name, lowercase-kebab>` —
+`group/fui-switch`, `group/fui-message-bar`, `group/fui-accordion-header`. Written as a
+LITERAL, not a template: greppable, sortable by `prettier-plugin-tailwindcss`, and asserted
+by conformance. Same alphabet as the generated idents and the module locals, so nothing in
+the generated class surface is mixed-case.
+
+That is the `root` slot for every converted package except `react-tooltip`, which declares
+no `root` at all (it portals; its `content` element is its outermost node). Its marker is
+still named for the component — `group/fui-tooltip`, not `group/fui-tooltip__content`.
+
+**No other slot gets a marker.** Sub-components already have their own roots, so the
+hierarchy nests for free, and a group cannot style itself: the compiled selector is
+`.child:is(:where(.group…) *)` and the descendant combinator excludes the group element.
+
+#### Read a parent's state
+
+Inside the CHILD's module, at altitude `fui.components.l2` or higher — you are styling over
+another component's output, same rule as D2 amendment 2:
+
+```css
+@layer fui.components.l2 {
+  .thumb {
+    @variant group-checked/fui-switch {
+      transform: translateX(calc(20px * var(--base-scale)));
+    }
+    @variant group-hover/fui-switch {
+      @variant group-disabled-control/fui-switch {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+  }
+}
+```
+
+Any catalog variant composes as `group-<variant>/<name>`, compiling to
+`.thumb:is(:where(.group\/fui-switch):where(<matcher>) *)`. Descendant depth is unlimited.
+
+#### Four rules that bite
+
+1. **Self-state uses the plain variant.** `@variant hover`, never `group-hover/self` — the
+   compiled `:is(… *)` excludes the group element itself.
+2. **`forced-colors` must be the OUTER wrapper.** `group-forced-colors/x` is a hard build
+   error (`Cannot use @variant with unknown variant`) because it is an at-rule variant with
+   no element to scope. Write `@variant forced-colors { @variant group-x/y { … } }`.
+3. **Pseudo-class state needs no mirroring.** `:hover`, `:active`, `:focus-within`,
+   `:focus-visible`, `:dir(rtl)` are true of the root whenever they are true of the subtree,
+   so `group-hover/…`, `group-focus-within/…`, `group-rtl/…` work with zero JS change.
+4. **React state on a NON-root element must be mirrored** to the root as a presence
+   attribute written `value || undefined` — never `|| false`, the variants are presence
+   selectors. Reference shape: `react-checkbox`. Mirror only what a child genuinely needs;
+   every mirrored attribute widens invalidation. Note the known gap for uncontrolled
+   Switch/Radio in D15.6 before relying on `data-checked`.
+
+#### New variants
+
+Add to `react-tailwind-theme/css/variants.css` only, in the canonical `&:where(…)` form.
+That shape is what makes a variant group-composable — an ancestor-form variant
+(`:where([x]) &`) or an at-rule variant will not compose.
+
+### 3c. Class-name casing (DECISIONS D15.2 / D15.3)
+
+Module-local class names are **lowercase-kebab**: `.non-zero-determinate`, referenced as
+`styles['non-zero-determinate']`. Generated idents are
+`fuicm-<component-kebab>-<local>-<hex6>`, all lowercase, produced by the one shared helper
+`scripts/css-modules/ident.js` for all three pipelines (package build, VR storybook, jest).
+Never hand-write a `localIdentName`/`generateScopedName` in a config — import the helper.
+
+The `fuicm-` prefix is a hard contract with the jest snapshot serializer. The `group/fui-*`
+marker is deliberately NOT prefixed and therefore NOT stripped: it is public DOM surface and
+belongs in the snapshot beside `fui-*`.
+
 ### 4. Package plumbing (once per package)
 
 - `package.json`: `"sideEffects": ["**/*.css"]` (was `false` — this is a BLOCKER-level

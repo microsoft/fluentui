@@ -6,6 +6,13 @@ const { registerTsPaths, registerRules, rules, loadWorkspaceAddon } = require('@
 const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 
 /**
+ * Shared with the package build (`postcss-modules` `generateScopedName`) and with jest — one
+ * scheme, three pipelines. Required by relative path for the reasons in that file's header.
+ */
+const { getLocalIdent } = require('../../../scripts/css-modules/ident');
+const globalizeGroupMarkers = require('../../../scripts/css-modules/globalize-group-markers');
+
+/**
  * The one non-module stylesheet that must go through Tailwind (see its header comment).
  * Everything else matching `/\.css$/` keeps storybook's plain style-loader/css-loader chain.
  */
@@ -23,15 +30,35 @@ const tailwindPostcssLoader = {
     postcssOptions: {
       // no postcss.config.* exists in this repo — skip cosmiconfig's upward search
       config: false,
-      plugins: [require('@tailwindcss/postcss')()],
+      plugins: [
+        require('@tailwindcss/postcss')(),
+        /**
+         * MUST come after Tailwind and before css-loader's CSS-Modules pass. webpack runs
+         * loaders right-to-left, so postcss-loader is already ahead of css-loader; within
+         * this list Tailwind has to have emitted `.group\/fui-switch` first.
+         *
+         * Without it css-loader hashes the marker and every named-group rule compiles to a
+         * selector the DOM never matches — silently, with VR still green. See
+         * scripts/css-modules/globalize-group-markers.js and DECISIONS.md D15.
+         */
+        globalizeGroupMarkers(),
+      ],
     },
   },
 };
 
 /**
  * Tailwind-flavoured CSS Modules for converted (Griffel-free) packages.
- * `localIdentName` is deterministic and prefixed so the jest snapshot serializer can
- * strip the classes exactly like `@griffel/jest-serializer` strips atomics
+ *
+ * Class names come from `getLocalIdent` rather than a `localIdentName` template, because the
+ * scheme (`fuicm-<component>-<local>-<hex6>`, all lowercase) is not expressible as one: it
+ * kebab-cases both the file token and the local, and it hashes the package name + the
+ * source-relative path + the local rather than the file's contents. The identical function
+ * drives `postcss-modules` in the package build, so the storybook and `dist/styles.css`
+ * produce byte-identical class names for the same module — see scripts/css-modules/ident.js.
+ *
+ * The `fuicm-` prefix is a hard contract with the jest snapshot serializer, which strips
+ * these exactly like `@griffel/jest-serializer` strips atomics
  * (migration/griffel-to-tailwind/reports/DECISIONS.md D9).
  *
  * @type {import("webpack").RuleSetRule}
@@ -46,7 +73,7 @@ const cssModulesRule = {
       options: {
         importLoaders: 1,
         modules: {
-          localIdentName: 'fuicm-[name]__[local]--[hash:base64:4]',
+          getLocalIdent,
           namedExport: false,
         },
       },

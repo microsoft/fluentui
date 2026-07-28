@@ -2,10 +2,17 @@
  * Jest snapshot serializer that strips generated CSS-Modules class names.
  *
  * Counterpart to `@griffel/jest-serializer`: converted components render
- * `class="fui-Divider fuicm-Divider__root--AbC1"`, and only the stable, public
- * `fui-*` classes belong in a snapshot. Generated names change whenever the CSS file
- * changes (webpack: `fuicm-[name]__[local]--[hash:base64:4]`; jest: `fuicm-<key>` from
- * ./proxy.js), so snapshots that kept them would churn on every style edit.
+ * `class="group/fui-divider fui-Divider fuicm-divider-root-a3f2c1"`, and only the stable,
+ * public tokens belong in a snapshot. Generated names carry a digest over the package name,
+ * the source-relative path and the local (webpack and the package build:
+ * `fuicm-<component>-<local>-<hex6>`; jest: `fuicm-<local>` from ./proxy.js — see
+ * scripts/css-modules/ident.js), so snapshots that kept them would churn whenever a module
+ * is renamed or moved.
+ *
+ * NOT stripped, deliberately: the `group/fui-*` named-group marker. It is unhashed by
+ * construction (that is the entire point — DECISIONS.md D15) and it is public DOM surface,
+ * so it belongs in the snapshot exactly the way `fui-Divider` does. Extending the match to
+ * hide it would hide a public contract.
  *
  * pretty-format hands each attribute value to the registered plugins as a string, which
  * is why `test`/`print` operate on strings rather than DOM nodes — same contract as

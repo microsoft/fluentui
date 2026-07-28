@@ -2,17 +2,26 @@
  * Jest `moduleNameMapper` target for `*.module.css` imports.
  *
  * Jest never runs webpack, so `import styles from './X.module.css'` has to resolve to
- * something. This returns a deterministic `fuicm-<key>` for any property read, matching
- * the prefix of the webpack `localIdentName`
- * (`fuicm-[name]__[local]--[hash:base64:4]`, see
- * apps/vr-tests-react-components/.storybook/main.js). The snapshot serializer in
- * ./serializer.js strips both shapes, so component snapshots stay free of generated
- * class names — the role `@griffel/jest-serializer` plays for Griffel atomics
- * (migration/griffel-to-tailwind/reports/DECISIONS.md D9).
+ * something. This returns a deterministic name for any property read, in the same
+ * lowercase-kebab, `fuicm-`-prefixed shape the two real pipelines emit
+ * (`fuicm-<component>-<local>-<hex6>` — see scripts/css-modules/ident.js). The snapshot
+ * serializer in ./serializer.js strips every `fuicm-…` token, so component snapshots stay
+ * free of generated class names — the role `@griffel/jest-serializer` plays for Griffel
+ * atomics (migration/griffel-to-tailwind/reports/DECISIONS.md D9).
+ *
+ * WHY THE NAME IS SHORTER HERE: `moduleNameMapper` maps every `*.module.css` in the repo to
+ * this ONE module and gives it no way to learn which file was imported, so the component and
+ * hash segments cannot be computed. They are dropped rather than faked — `fuicm-root` is
+ * honestly "the `root` local of some module", and everything the toolchain actually keys on
+ * (the `fuicm-` prefix, the lowercase-kebab alphabet) is identical. `generateTestIdent` owns
+ * that decision so the shape stays defined in one place.
  *
  * `__esModule: false` makes SWC/babel interop wrap this as the default export, which is
  * what `import styles from ...` reads.
  */
+
+const { generateTestIdent } = require('../../../css-modules/ident');
+
 module.exports = new Proxy(
   {},
   {
@@ -28,7 +37,7 @@ module.exports = new Proxy(
         return undefined;
       }
 
-      return `fuicm-${key}`;
+      return generateTestIdent(key);
     },
   },
 );
