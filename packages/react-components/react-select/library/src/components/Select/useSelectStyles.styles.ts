@@ -64,15 +64,17 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   root['data-disabled'] = disabled || undefined;
   root['data-invalid'] = invalid || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element from
-  // this Select's state, because `styles.root` is hashed and unaddressable from outside this
-  // file. Select needs no state mirrors: `data-size`, `data-disabled` and `data-invalid` are
-  // already stamped on this very element above, so `@variant group-invalid/fui-select`,
-  // `group-focus-within/fui-select` etc. work as-is (DECISIONS.md D15, Tier 0 — the optional
-  // Tier 2 `data-focused` is deliberately skipped: `:focus-within` on this root already
-  // reaches every descendant through the group).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
+  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Select's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Select needs no state mirrors:
+  // `data-size`, `data-disabled` and `data-invalid` are already stamped on this very element
+  // above, so `@variant group-invalid/fui-select`, `group-focus-within/fui-select` etc. work
+  // as-is (DECISIONS.md D15, Tier 0 — the optional Tier 2 `data-focused` is deliberately
+  // skipped: `:focus-within` on this root already reaches every descendant through the
+  // group).
   //
   // Cascade priority is decided by the `@layer fui.*` order and by block order inside
   // Select.module.css, not by the order of these arguments — see that file's header for
@@ -84,7 +86,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   // `invalidUnderline` are now `@variant enabled` blocks on the root, `disabled` /
   // `disabledUnderline` are `@variant disabled` blocks, and
   // `appearance === 'outline' | 'underline'` is the appearance class itself.
-  state.root.className = clsx('group/fui-select', selectClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(selectClassNames.root, 'group/fui-select', styles.root, state.root.className);
 
   state.select.className = clsx(selectClassNames.select, styles.select, styles[appearance], state.select.className);
 
