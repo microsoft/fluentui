@@ -49,10 +49,32 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
  * what the catalog variant's `:empty` fallback means for that exact element. It is a
  * *presence* selector, so it is written `|| undefined`: `false` would render
  * `data-empty="false"` and still match `[data-empty]`.
+ *
+ * ── `data-checked` / `data-disabled` are MIRRORS, not new state (DECISIONS.md D15) ────────
+ *
+ * Neither drives a rule in Radio.module.css: every checked/disabled rule there is anchored
+ * on `.input` and reaches the indicator and label through sibling combinators. They exist so
+ * that a DESCENDANT can read the Radio's primary state through the `group/fui-radio` marker
+ * on this same element — `.input` is a sibling of every such descendant, not an ancestor, so
+ * CSS alone cannot reach it. Identical shape and rationale to react-switch's pair; the
+ * worked reference for both is `react-checkbox` (useCheckboxStyles.styles.ts).
+ *
+ * Presence flags, written `value || undefined`: the catalog's `checked` /
+ * `disabled-control` variants are attribute-presence selectors, so `data-checked="false"`
+ * would falsely match `[data-checked]`.
+ *
+ * ⚠ `data-checked` reflects the CONTROLLED value only. useRadio.tsx derives it as
+ * `group.value === props.value`, which is `undefined` whenever the enclosing RadioGroup is
+ * uncontrolled (`defaultValue`), and the DOM then owns the state. For an uncontrolled group
+ * the attribute is absent and descendants see "not checked"; `defaultChecked` is
+ * deliberately not used as a fallback, because it is correct only until the first change and
+ * a stale mirror is worse than an absent one. Same limitation, same cause, as react-switch.
  */
 type RadioRootDataAttributes = {
   'data-orientation': 'horizontal' | 'vertical';
   'data-label-position'?: RadioState['labelPosition'];
+  'data-checked'?: true;
+  'data-disabled'?: true;
 };
 
 type RadioIndicatorDataAttributes = {
@@ -68,18 +90,28 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
   const root = state.root as RadioState['root'] & RadioRootDataAttributes;
   const indicator = state.indicator as RadioState['indicator'] & RadioIndicatorDataAttributes;
 
+  const ariaDisabled = state.input['aria-disabled'];
+
   root['data-orientation'] = labelPosition === 'below' ? 'vertical' : 'horizontal';
   root['data-label-position'] = label ? labelPosition : undefined;
+  root['data-checked'] = state.input.checked === true || undefined;
+  root['data-disabled'] =
+    state.input.disabled === true || ariaDisabled === true || ariaDisabled === 'true' || undefined;
 
   indicator['data-empty'] = !state.indicator.children || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Radio's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. Read it as `@variant group-checked/fui-radio { … }` (DECISIONS.md D15).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Radio.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
-  state.root.className = clsx(radioClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-radio', radioClassNames.root, styles.root, state.root.className);
 
   state.input.className = clsx(radioClassNames.input, styles.input, state.input.className);
 
