@@ -60,15 +60,16 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   root['data-layout'] = layout;
   root['data-intent'] = intent;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this MessageBar's state, because `styles.root` is hashed and unaddressable from
-  // outside this file. MessageBarBody / MessageBarTitle / MessageBarActions are separate
-  // components nested inside this root, so `@variant group-…/fui-message-bar { … }` in one
-  // of THEIR modules is exactly the cross-component read this exists for: `data-intent` and
-  // `data-layout` are already stamped here and are otherwise invisible to them
-  // (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this MessageBar's state, because `styles.root`
+  // is hashed and unaddressable from outside this file. MessageBarBody / MessageBarTitle /
+  // MessageBarActions are separate components nested inside this root, so
+  // `@variant group-…/fui-message-bar { … }` in one of THEIR modules is exactly the
+  // cross-component read this exists for: `data-intent` and `data-layout` are already
+  // stamped here and are otherwise invisible to them (DECISIONS.md D15).
   //
   // Cascade priority is decided by the `@layer fui.*` order in MessageBar.module.css, not
   // by the order of these arguments — see that file's header for the mapping back to the
@@ -77,8 +78,8 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   // The `info` intent has no class here because both of its Griffel slices are `{}`
   // ("already in base reset styles"); the module emits no rule for it.
   state.root.className = clsx(
-    'group/fui-message-bar',
     messageBarClassNames.root,
+    'group/fui-message-bar',
     styles.root,
     shape === 'square' && styles.square,
     state.root.className,

@@ -3,7 +3,7 @@
 exports[`MessageBarTitle renders a default state 1`] = `
 <div>
   <span
-    class="group/fui-message-bar-title fui-MessageBarTitle"
+    class="fui-MessageBarTitle group/fui-message-bar-title"
     id=""
   >
     Default MessageBarTitle
