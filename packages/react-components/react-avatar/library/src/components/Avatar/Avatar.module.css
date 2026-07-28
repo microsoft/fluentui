@@ -22,13 +22,13 @@
  *   1  avatarClassNames.root                           → static class (JS)
  *   2  useRootClassName (makeResetStyles)              → fui.base
  *   3  size !== 32 && useSizeStyles[size]              → fui.components.l1  `.size16`…
- *   4  styles.badgeAlign          (badge present)      → fui.components.l1  `.badgeAlign`
+ *   4  styles.badgeAlign          (badge present)      → fui.components.l1  `.badge-align`
  *   5  styles[badge.size ?? 'medium']                  → fui.components.l1  `.badge-*`
  *   6  styles.text*               (size bucket)        → fui.components.l1  data-size
  *   7  styles.square*             (shape + size bucket)→ fui.components.l1  `.square` + data-size
  *   8  styles.activeOrInactive                         → fui.components.l1  data-active
  *   9  styles.ring + ringColorStyles[color]            → fui.components.l1  data-active-appearance + `.ring-*`
- *  10  styles.ringBadgeCutout     (ring + badge)       → fui.components.l1  `.ringBadgeCutout`
+ *  10  styles.ringBadgeCutout     (ring + badge)       → fui.components.l1  `.ring-badge-cutout`
  *  11  styles.ringThick|Thicker|Thickest (size bucket) → fui.components.l1  data-size
  *  12  styles.shadow                                   → fui.components.l1  data-active-appearance
  *  13  styles.shadow4|8|16|28     (size bucket)        → fui.components.l1  data-size
@@ -131,7 +131,7 @@
    * from useIconInitialsClassName (makeResetStyles) — ONE reset class shared by the
    * initials and icon slots, exactly as the Griffel source shared it.
    */
-  .iconInitials {
+  .icon-initials {
     @apply absolute box-border flex h-full w-full select-none items-center justify-center text-center;
 
     inset-block-start: 0;
@@ -218,7 +218,7 @@
    * (compiled pair: `--fui-Avatar-badgeAlign:right` / `:left`). Same trick here, with the
    * flip expressed by the shared `rtl` variant instead.
    */
-  .badgeAlign {
+  .badge-align {
     --fui-Avatar-badgeAlign: right;
 
     @variant rtl {
@@ -553,10 +553,10 @@
 
   /*
    * arg 10 — from useStyles.ringBadgeCutout, applied when the ring is shown AND a badge
-   * exists. Same radial cut-out as `.badgeCutout` below, offset by the ring's own
+   * exists. Same radial cut-out as `.badge-cutout` below, offset by the ring's own
    * `2 * ringWidth` margin.
    */
-  .ringBadgeCutout::before {
+  .ring-badge-cutout::before {
     -webkit-mask-image: radial-gradient(
       circle at bottom calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth))
         var(--fui-Avatar-badgeAlign) calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth)),
@@ -595,7 +595,7 @@
 @layer fui.components.l1 {
   /*
    * from useColorStyles[color] — applied to the image, initials and icon slots (never the
-   * root). Written after each slot's reset (fui.base) and before `.badgeCutout`, matching
+   * root). Written after each slot's reset (fui.base) and before `.badge-cutout`, matching
    * the argument order on all three slots.
    */
   .neutral {
@@ -762,7 +762,7 @@
    * from useStyles.badgeCutout — last styling argument on the image / initials / icon
    * slots. Punches a transparent circle out of the artwork so the badge sits in a gap.
    */
-  .badgeCutout {
+  .badge-cutout {
     -webkit-mask-image: radial-gradient(
       circle at bottom var(--fui-Avatar-badgeRadius) var(--fui-Avatar-badgeAlign) var(--fui-Avatar-badgeRadius),
       transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),

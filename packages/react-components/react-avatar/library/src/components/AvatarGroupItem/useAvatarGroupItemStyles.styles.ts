@@ -52,7 +52,18 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   // eslint-disable-next-line react-hooks/immutability -- state-mutation builder, preserved per D14
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this AvatarGroupItem's state, because `styles.root` is hashed and unaddressable
+  // from outside this file (DECISIONS.md D15).
+  //
+  // AvatarGroupItem needs no state mirrors: `data-size` is stamped on this very element
+  // above, so `@variant group-*/fui-avatar-group-item` reads it as-is (D15.6, Tier 0). The
+  // marker nests under `group/fui-avatar-group` for free — each component root carries its
+  // own (D15.1) — and the `avatar` slot, which is an `<Avatar>` root, already carries
+  // `group/fui-avatar` from that component's own hook.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in AvatarGroupItem.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
@@ -63,21 +74,22 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
+    'group/fui-avatar-group-item',
     avatarGroupItemClassNames.root,
     styles.root,
-    !isOverflowItem && styles.nonOverflowItem,
+    !isOverflowItem && styles['non-overflow-item'],
     !isOverflowItem && groupChildClassName,
     !isOverflowItem && sizeStyles[size],
     !isOverflowItem && layout === 'pie' && styles.pie,
-    isOverflowItem && styles.overflowItem,
+    isOverflowItem && styles['overflow-item'],
     state.root.className,
   );
 
   // eslint-disable-next-line react-hooks/immutability
   state.avatar.className = clsx(
     avatarGroupItemClassNames.avatar,
-    !isOverflowItem && styles.avatarNonOverflowItem,
-    layout === 'pie' && styles.avatarPie,
+    !isOverflowItem && styles['avatar-non-overflow-item'],
+    layout === 'pie' && styles['avatar-pie'],
     state.avatar.className,
   );
 
@@ -85,7 +97,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
     // eslint-disable-next-line react-hooks/immutability
     state.overflowLabel.className = clsx(
       avatarGroupItemClassNames.overflowLabel,
-      styles.overflowLabel,
+      styles['overflow-label'],
       state.overflowLabel.className,
     );
   }
@@ -103,31 +115,31 @@ export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size:
   if (size) {
     if (layout === 'stack') {
       if (size < 56) {
-        layoutClasses.push(styles.stackThick);
+        layoutClasses.push(styles['stack-thick']);
       } else if (size < 72) {
-        layoutClasses.push(styles.stackThicker);
+        layoutClasses.push(styles['stack-thicker']);
       } else {
-        layoutClasses.push(styles.stackThickest);
+        layoutClasses.push(styles['stack-thickest']);
       }
 
       if (size < 24) {
-        layoutClasses.push(styles.stackXxs);
+        layoutClasses.push(styles['stack-xxs']);
       } else if (size < 48) {
-        layoutClasses.push(styles.stackXs);
+        layoutClasses.push(styles['stack-xs']);
       } else if (size < 96) {
-        layoutClasses.push(styles.stackS);
+        layoutClasses.push(styles['stack-s']);
       } else {
-        layoutClasses.push(styles.stackL);
+        layoutClasses.push(styles['stack-l']);
       }
     } else if (layout === 'spread') {
       if (size < 20) {
-        layoutClasses.push(styles.spreadS);
+        layoutClasses.push(styles['spread-s']);
       } else if (size < 32) {
-        layoutClasses.push(styles.spreadMNudge);
+        layoutClasses.push(styles['spread-m-nudge']);
       } else if (size < 64) {
-        layoutClasses.push(styles.spreadL);
+        layoutClasses.push(styles['spread-l']);
       } else {
-        layoutClasses.push(styles.spreadXl);
+        layoutClasses.push(styles['spread-xl']);
       }
     }
   }

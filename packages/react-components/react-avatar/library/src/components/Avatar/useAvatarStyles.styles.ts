@@ -91,7 +91,17 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   root['data-active-appearance'] = isActive ? activeAppearance : undefined;
   /* eslint-enable react-hooks/immutability */
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Avatar's state, because `styles.root` is hashed and unaddressable from outside
+  // this file (DECISIONS.md D15).
+  //
+  // Avatar needs no state mirrors: `data-size`, `data-active` and `data-active-appearance`
+  // are stamped on this very element above, so `@variant group-*/fui-avatar` reads them
+  // as-is (D15.6, Tier 0). AvatarGroupPopover is still Griffel and gets no marker until it
+  // converts (D15.1, unconverted siblings).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Avatar.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces. Every remaining condition below is
@@ -101,15 +111,16 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
+    'group/fui-avatar',
     avatarClassNames.root,
     styles.root,
     size !== 32 && sizeStyles[size],
-    state.badge && styles.badgeAlign,
+    state.badge && styles['badge-align'],
     // `||`, not `??` — byte-for-byte the Griffel condition (`styles[state.badge.size || 'medium']`)
     state.badge && styles[`badge-${state.badge.size || 'medium'}`],
     shape === 'square' && styles.square,
     hasRing && styles[`ring-${color}`],
-    hasRing && state.badge && styles.ringBadgeCutout,
+    hasRing && state.badge && styles['ring-badge-cutout'],
     state.root.className,
   );
 
@@ -124,7 +135,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       avatarClassNames.image,
       styles.image,
       styles[color],
-      state.badge && styles.badgeCutout,
+      state.badge && styles['badge-cutout'],
       state.image.className,
     );
   }
@@ -133,9 +144,9 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     // eslint-disable-next-line react-hooks/immutability
     state.initials.className = clsx(
       avatarClassNames.initials,
-      styles.iconInitials,
+      styles['icon-initials'],
       styles[color],
-      state.badge && styles.badgeCutout,
+      state.badge && styles['badge-cutout'],
       state.initials.className,
     );
   }
@@ -148,10 +159,10 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(
       avatarClassNames.icon,
-      styles.iconInitials,
+      styles['icon-initials'],
       styles.icon,
       styles[color],
-      state.badge && styles.badgeCutout,
+      state.badge && styles['badge-cutout'],
       state.icon.className,
     );
   }
