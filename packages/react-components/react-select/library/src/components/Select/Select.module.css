@@ -92,6 +92,13 @@
  *   - #3 (size) conflicts with nothing at all — height/padding-inline/typography are
  *     touched by no other slice — so its specificity carries no winner.
  *
+ * ── Spacing (DECISIONS.md D4 amendment) ──────────────────────────────────────────────
+ * Raw `var(--spacingHorizontal*)` is forbidden in modules — it is the one authoring form
+ * that does not ride `--base-scale`. The icon's three offsets take the named utility
+ * (`end-horizontal-s-nudge`, …); the six inline paddings are SUMS of tokens, which no
+ * single utility can express and which sit inside a calc() no utility can reach, so they
+ * are written as base-scale px literals with each token named in a comment.
+ *
  * ── RTL ──────────────────────────────────────────────────────────────────────────────
  * Every `[ltr, rtl]` pair in the compiled output is a pure PROPERTY flip carrying the
  * SAME value (`left/right: 0`, the paddings, the icon's `right`, the four border colors),
@@ -237,20 +244,24 @@
    * `paddingLeft`/`paddingRight` are a pure `[ltr, rtl]` property flip in the compiled
    * atomics (`uwmqm3: ["f1xile11","fqznh8f"]`) → logical inline properties.
    *
-   * The icon-width term is the only pixel literal in these expressions; it is scaled by
-   * `--base-scale` (D4) so it tracks the icon's own `w-16`/`w-20`/`w-24` exactly when the
-   * root font size is not 16px. At the default root the computed value is unchanged.
+   * EVERY term is a `--base-scale` literal, spacing tokens included (D4 amendment): a sum
+   * of tokens matches no single utility, and no utility can reach inside a calc() anyway,
+   * so each `tokens.spacingHorizontal*` is written as its canonical px and named in the
+   * comment above the declaration. Keeping the raw `var(--spacingHorizontal*)` here would
+   * leave the field padding as the one term that does NOT scale, so the text would drift
+   * out of alignment with the icon's own `w-16`/`w-20`/`w-24` at a non-default root font
+   * size. At the default 16px root every computed value is unchanged.
    */
   .root {
     @variant size-small {
       & .select {
         @apply h-24;
 
-        padding-inline-start: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
-        padding-inline-end: calc(
-          var(--spacingHorizontalSNudge) + 16px * var(--base-scale) + var(--spacingHorizontalXXS) +
-            var(--spacingHorizontalXXS)
-        );
+        /* spacingHorizontalSNudge (6px) + spacingHorizontalXXS (2px) */
+        padding-inline-start: calc((6px + 2px) * var(--base-scale));
+
+        /* spacingHorizontalSNudge (6px) + icon width (16px) + spacingHorizontalXXS (2px) ×2 */
+        padding-inline-end: calc((6px + 16px + 2px + 2px) * var(--base-scale));
 
         font-family: var(--fontFamilyBase);
         font-size: var(--fontSizeBase200);
@@ -263,11 +274,11 @@
       & .select {
         @apply h-32;
 
-        padding-inline-start: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
-        padding-inline-end: calc(
-          var(--spacingHorizontalMNudge) + 20px * var(--base-scale) + var(--spacingHorizontalXXS) +
-            var(--spacingHorizontalXXS)
-        );
+        /* spacingHorizontalMNudge (10px) + spacingHorizontalXXS (2px) */
+        padding-inline-start: calc((10px + 2px) * var(--base-scale));
+
+        /* spacingHorizontalMNudge (10px) + icon width (20px) + spacingHorizontalXXS (2px) ×2 */
+        padding-inline-end: calc((10px + 20px + 2px + 2px) * var(--base-scale));
 
         font-family: var(--fontFamilyBase);
         font-size: var(--fontSizeBase300);
@@ -280,11 +291,11 @@
       & .select {
         @apply h-40;
 
-        padding-inline-start: calc(var(--spacingHorizontalM) + var(--spacingHorizontalSNudge));
-        padding-inline-end: calc(
-          var(--spacingHorizontalM) + 24px * var(--base-scale) + var(--spacingHorizontalSNudge) +
-            var(--spacingHorizontalSNudge)
-        );
+        /* spacingHorizontalM (12px) + spacingHorizontalSNudge (6px) */
+        padding-inline-start: calc((12px + 6px) * var(--base-scale));
+
+        /* spacingHorizontalM (12px) + icon width (24px) + spacingHorizontalSNudge (6px) ×2 */
+        padding-inline-end: calc((12px + 24px + 6px + 6px) * var(--base-scale));
 
         font-family: var(--fontFamilyBase);
         font-size: var(--fontSizeBase400);
@@ -543,28 +554,25 @@
      */
     @variant size-small {
       & .icon {
-        @apply h-16 w-16;
+        @apply h-16 w-16 end-horizontal-s-nudge;
 
         font-size: calc(16px * var(--base-scale));
-        inset-inline-end: var(--spacingHorizontalSNudge);
       }
     }
 
     @variant size-medium {
       & .icon {
-        @apply h-20 w-20;
+        @apply h-20 w-20 end-horizontal-m-nudge;
 
         font-size: calc(20px * var(--base-scale));
-        inset-inline-end: var(--spacingHorizontalMNudge);
       }
     }
 
     @variant size-large {
       & .icon {
-        @apply h-24 w-24;
+        @apply h-24 w-24 end-horizontal-m;
 
         font-size: calc(24px * var(--base-scale));
-        inset-inline-end: var(--spacingHorizontalM);
       }
     }
   }

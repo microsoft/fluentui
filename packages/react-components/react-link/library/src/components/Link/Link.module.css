@@ -79,7 +79,8 @@
 @layer fui.components.l1 {
   /* from useStyles.root — arg #2 */
   .root {
-    @apply box-border m-0 p-0 select-text;
+    /* `margin: 0` / `padding: 0` px literals → the `none` spacing step (D4 amendment) */
+    @apply box-border m-horizontal-none p-horizontal-none select-text;
 
     /* `text-align: left` compiles to an [ltr, rtl] pair (`f1o700av` / `fes3tcz`,
        left ↔ right) — a pure flip, so the logical keyword is exact. */

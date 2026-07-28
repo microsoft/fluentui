@@ -47,10 +47,9 @@
     @apply size-6;
 
     min-width: auto;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-inline-start: 0;
-    padding-inline-end: 0;
+
+    /* `padding: '0'` — the 0 px literal is the `none` spacing step (D4 amendment) */
+    @apply pt-vertical-none pb-vertical-none ps-horizontal-none pe-horizontal-none;
   }
 
   /* from useStyles.hide — no children and not a dot, so there is nothing to show. */

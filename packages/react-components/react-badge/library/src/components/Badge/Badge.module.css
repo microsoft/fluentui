@@ -68,10 +68,13 @@
     font-weight: var(--fontWeightSemibold);
     line-height: var(--lineHeightBase200);
 
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
-    padding-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+    /*
+     * `padding: 0 calc(tokens.spacingHorizontalXS + textPadding)` where
+     * textPadding = tokens.spacingHorizontalXXS, i.e. 4px + 2px = 6px = the SNudge step.
+     * Written as ps/pe (not px-) so the four longhands the size slices override — and the
+     * `unset`s the tiny/extra-small slices set — keep landing on the same properties.
+     */
+    @apply pt-vertical-none pb-vertical-none ps-horizontal-s-nudge pe-horizontal-s-nudge;
 
     border-radius: var(--borderRadiusCircular);
 
@@ -111,10 +114,8 @@
 
     line-height: 1;
 
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-inline-start: calc(-1 * var(--spacingHorizontalXXS));
-    margin-inline-end: calc(-1 * var(--spacingHorizontalXXS));
+    /* `margin: 0 calc(-1 * textPadding)` — textPadding = tokens.spacingHorizontalXXS */
+    @apply mt-vertical-none mb-vertical-none -ms-horizontal-xxs -me-horizontal-xxs;
 
     /* px literal → `--base-scale` (D4); exactly 12px at the default 16px root. */
     font-size: calc(12px * var(--base-scale));
@@ -165,28 +166,22 @@
     @variant size-small {
       @apply h-16 min-w-16;
 
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-inline-start: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
-      padding-inline-end: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+      /* `0 calc(spacingHorizontalXXS + textPadding)` = 2px + 2px = 4px = the XS step */
+      @apply pt-vertical-none pb-vertical-none ps-horizontal-xs pe-horizontal-xs;
     }
 
     @variant size-large {
       @apply h-24 min-w-24;
 
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
-      padding-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+      /* `0 calc(spacingHorizontalXS + textPadding)` = 4px + 2px = 6px = the SNudge step */
+      @apply pt-vertical-none pb-vertical-none ps-horizontal-s-nudge pe-horizontal-s-nudge;
     }
 
     @variant size-extra-large {
       @apply h-32 min-w-32;
 
-      padding-top: 0;
-      padding-bottom: 0;
-      padding-inline-start: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
-      padding-inline-end: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+      /* `0 calc(spacingHorizontalSNudge + textPadding)` = 6px + 2px = 8px = the S step */
+      @apply pt-vertical-none pb-vertical-none ps-horizontal-s pe-horizontal-s;
     }
   }
 }
@@ -457,28 +452,30 @@
      * the same winner the mutually-exclusive Griffel branch produced.
      */
     @variant not-empty {
+      /* `calc(spacingHorizontalXXS + textPadding)` = 2px + 2px = 4px = the XS step */
       @variant icon-before {
         & .icon {
-          margin-inline-end: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+          @apply me-horizontal-xs;
         }
       }
 
       @variant icon-after {
         & .icon {
-          margin-inline-start: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+          @apply ms-horizontal-xs;
         }
       }
 
+      /* `calc(spacingHorizontalXS + textPadding)` = 4px + 2px = 6px = the SNudge step */
       @variant size-extra-large {
         @variant icon-before {
           & .icon {
-            margin-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+            @apply me-horizontal-s-nudge;
           }
         }
 
         @variant icon-after {
           & .icon {
-            margin-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+            @apply ms-horizontal-s-nudge;
           }
         }
       }

@@ -129,12 +129,15 @@
 
     /*
      * Griffel authored `margin: '4px'` inside a nested selector, compiled verbatim as
-     * `.f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}` — a real pixel literal, so it
-     * takes the Tailwind spacing utility (reads px, computes rem via `--base-scale`).
+     * `.f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}` — a real pixel literal.
+     * 4px is the XS spacing step, so under the D4 amendment it takes the NAMED utilities
+     * rather than numeric `m-4`: `mx-` (inline axis → horizontal token) plus `my-` (block
+     * axis → vertical token). Both steps are 4px and both compile through `--base-scale`,
+     * so `margin-inline`/`margin-block` compute exactly what `margin: 4px` did.
      * The four sides are equal and the compiled rule has no RTL twin, so nothing flips.
      */
     & :global(.fui-Checkbox__indicator) {
-      @apply m-4;
+      @apply mx-horizontal-xs my-vertical-xs;
     }
   }
 }

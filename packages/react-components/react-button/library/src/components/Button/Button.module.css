@@ -70,10 +70,14 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) */
   .root {
-    @apply box-border m-0 inline-flex items-center justify-center overflow-hidden no-underline align-middle;
-    @apply min-w-96 py-5;
+    @apply box-border m-horizontal-none inline-flex items-center justify-center overflow-hidden no-underline align-middle;
 
-    padding-inline: var(--spacingHorizontalM);
+    /*
+     * `padding: buttonSpacingMedium(5px) tokens.spacingHorizontalM` — the inline half is a
+     * spacing token (named utility), the block half is a 5px nudge that matches no step
+     * and stays numeric. `min-width: 96px` likewise matches no step.
+     */
+    @apply min-w-96 py-5 px-horizontal-m;
 
     background-color: var(--colorNeutralBackground1);
     color: var(--colorNeutralForeground1);
@@ -157,7 +161,12 @@
        default 16px root this is exactly `font-size: 20px`, the compiled value. */
     font-size: calc(20px * var(--base-scale));
 
-    --fui-Button__icon--spacing: var(--spacingHorizontalSNudge);
+    /*
+     * tokens.spacingHorizontalSNudge. No utility can set a custom property, so the D4
+     * literal form is used — `calc(6px * var(--base-scale))` is exactly what
+     * `*-horizontal-s-nudge` emits, so this scales with the rest of the spacing system.
+     */
+    --fui-Button__icon--spacing: calc(6px * var(--base-scale));
   }
 }
 
@@ -406,9 +415,9 @@
 
     /* from useRootStyles.small */
     @variant size-small {
-      @apply min-w-64 py-3;
+      /* `padding: buttonSpacingSmall(3px) tokens.spacingHorizontalS`; 3px and 64px match no step */
+      @apply min-w-64 py-3 px-horizontal-s;
 
-      padding-inline: var(--spacingHorizontalS);
       border-radius: var(--borderRadiusMedium);
 
       font-size: var(--fontSizeBase200);
@@ -418,9 +427,13 @@
 
     /* from useRootStyles.large */
     @variant size-large {
-      @apply min-w-96 py-8;
+      /*
+       * `padding: buttonSpacingLarge(8px) tokens.spacingHorizontalL` — the 8px block half is
+       * a px literal that DOES match the S step, so it takes the vertical named utility.
+       * `min-width: 96px` matches no step.
+       */
+      @apply min-w-96 py-vertical-s px-horizontal-l;
 
-      padding-inline: var(--spacingHorizontalL);
       border-radius: var(--borderRadiusMedium);
 
       font-size: var(--fontSizeBase400);
@@ -435,7 +448,8 @@
 
         font-size: calc(20px * var(--base-scale));
 
-        --fui-Button__icon--spacing: var(--spacingHorizontalXS);
+        /* tokens.spacingHorizontalXS — custom property, so D4's literal form (see the reset) */
+        --fui-Button__icon--spacing: calc(4px * var(--base-scale));
       }
     }
 
@@ -446,7 +460,8 @@
 
         font-size: calc(24px * var(--base-scale));
 
-        --fui-Button__icon--spacing: var(--spacingHorizontalSNudge);
+        /* tokens.spacingHorizontalSNudge — custom property, so D4's literal form (see the reset) */
+        --fui-Button__icon--spacing: calc(6px * var(--base-scale));
       }
     }
 

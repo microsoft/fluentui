@@ -104,17 +104,23 @@
     border-left-style: none;
     border-radius: var(--borderRadiusMedium);
 
-    /* `margin: '0'` expanded to longhands (cookbook §2 — no shorthand priority in CSS) */
+    /* `margin: '0'` expanded to longhands (cookbook §2 — no shorthand priority in CSS).
+       Left as literal `0`, NOT `mt-vertical-none` etc.: zero has nothing for `--base-scale`
+       to scale, so the utility would be pure indirection — the same call react-list's
+       reset blocks document. */
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
 
-    /* `padding: '<spacingVerticalXS> <spacingHorizontalXS>'` expanded to longhands */
-    padding-top: var(--spacingVerticalXS);
-    padding-bottom: var(--spacingVerticalXS);
-    padding-inline-start: var(--spacingHorizontalXS);
-    padding-inline-end: var(--spacingHorizontalXS);
+    /* `padding: '<spacingVerticalXS> <spacingHorizontalXS>'` — the four longhands the
+       shorthand expands to, each as its named spacing utility (D4 amendment: raw
+       `var(--spacingVertical*)` is forbidden because it alone does not scale with
+       `--base-scale`). `pt`/`pb` are the block axis → vertical tokens, `ps`/`pe` the inline
+       axis → horizontal tokens, matching the Griffel source's own axis choice. Kept as four
+       longhand utilities rather than `py-vertical-xs px-horizontal-xs` so the properties
+       stay byte-identical to the expanded shorthand the `size-large` block below overrides. */
+    @apply pt-vertical-xs pb-vertical-xs ps-horizontal-xs pe-horizontal-xs;
 
     /* `@fluentui/react-icons`' bundleIcon swaps these two at rest / hover / selected */
     & :global(.fui-Icon-filled) {
@@ -199,14 +205,13 @@
    * NOTE the compiled value is `padding:var(--spacingVerticalXXS) var(--spacingVerticalXXS)`
    * — spacingVERTICALXXS on BOTH axes. That is what the Griffel source says and what the
    * compiler emitted (atomic `f1kx978o`); reproduced verbatim rather than "fixed" to
-   * spacingHorizontalXXS.
+   * spacingHorizontalXXS. The named utilities keep that quirk visible: the inline-axis pair
+   * is `ps-/pe-VERTICAL-xxs`, not the horizontal token the axis rule would otherwise pick.
+   * (Both steps are 2px, so this is a naming faithfulness point, not a value difference.)
    */
   .root {
     @variant size-large {
-      padding-top: var(--spacingVerticalXXS);
-      padding-bottom: var(--spacingVerticalXXS);
-      padding-inline-start: var(--spacingVerticalXXS);
-      padding-inline-end: var(--spacingVerticalXXS);
+      @apply pt-vertical-xxs pb-vertical-xxs ps-vertical-xxs pe-vertical-xxs;
     }
   }
 }

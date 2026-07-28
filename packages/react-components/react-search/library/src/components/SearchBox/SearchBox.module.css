@@ -93,6 +93,14 @@
  *    overrides the `padding-inline-end: 0` arg #8 just set. Both are expressed as file
  *    order inside `fui.components.l2` — do not reorder those blocks.
  *
+ * ── Spacing (DECISIONS.md D4 amendment) ────────────────────────────────────────────────
+ * Every value the Griffel source read from a `tokens.spacingHorizontal*` is authored as the
+ * named spacing utility (`ps-horizontal-s-nudge`, `gap-x-horizontal-xs`, …). Raw
+ * `var(--spacingHorizontal*)` is forbidden in modules: it is the one authoring form that
+ * does not ride `--base-scale`, so the field padding would stop tracking the dismiss
+ * glyph's `--base-scale` font-size at a non-default root font size. The `0`s stay literal —
+ * they are collapse-to-nothing overrides Griffel authored as `0`, not spacing steps.
+ *
  * ── RTL ────────────────────────────────────────────────────────────────────────────────
  * Every `[ltr, rtl]` pair in the compiled output carries the SAME value on both sides
  * (`uwmqm3: ["fk8j09s","fdw0yi8"]` = padding-left:SNudge / padding-right:SNudge, …), i.e.
@@ -189,19 +197,21 @@
 
     column-gap: 0;
 
+    /*
+     * Kept as the two inline LONGHANDS rather than one `px-*`: arg #15 below zeroes only
+     * `padding-inline-end`, and the longhand pair keeps that override reading as the
+     * one-property replacement Griffel compiled it to.
+     */
     @variant size-small {
-      padding-inline-start: var(--spacingHorizontalSNudge);
-      padding-inline-end: var(--spacingHorizontalSNudge);
+      @apply ps-horizontal-s-nudge pe-horizontal-s-nudge;
     }
 
     @variant size-medium {
-      padding-inline-start: var(--spacingHorizontalS);
-      padding-inline-end: var(--spacingHorizontalS);
+      @apply ps-horizontal-s pe-horizontal-s;
     }
 
     @variant size-large {
-      padding-inline-start: var(--spacingHorizontalMNudge);
-      padding-inline-end: var(--spacingHorizontalMNudge);
+      @apply ps-horizontal-m-nudge pe-horizontal-m-nudge;
     }
   }
 
@@ -223,7 +233,8 @@
 
   /* from useRootStyles.input — arg #8 */
   .input {
-    padding-inline-start: var(--spacingHorizontalSNudge);
+    @apply ps-horizontal-s-nudge;
+
     padding-inline-end: 0;
 
     /*
@@ -253,19 +264,19 @@
     @variant not-focused {
       @variant size-small {
         & .input {
-          padding-inline-end: var(--spacingHorizontalSNudge);
+          @apply pe-horizontal-s-nudge;
         }
       }
 
       @variant size-medium {
         & .input {
-          padding-inline-end: var(--spacingHorizontalS);
+          @apply pe-horizontal-s;
         }
       }
 
       @variant size-large {
         & .input {
-          padding-inline-end: var(--spacingHorizontalMNudge);
+          @apply pe-horizontal-m-nudge;
         }
       }
     }
@@ -277,8 +288,7 @@
 
   /* from useContentAfterStyles.contentAfter — arg #6 */
   .contentAfter {
-    padding-inline-start: var(--spacingHorizontalM);
-    column-gap: var(--spacingHorizontalXS);
+    @apply ps-horizontal-m gap-x-horizontal-xs;
   }
 
   /*

@@ -30,6 +30,11 @@
  * reference DOES exist, emitting `background-color: var(--color-neutral-background-1)`
  * against a variable nothing defines — silently broken CSS. `inline` self-heals instead.
  *
+ * SPACING IS DIFFERENT — see SPACING_SCALE below. The 22 spacingHorizontal / spacingVertical
+ * tokens register under `--spacing-*` with LITERAL base-scale values, not var() references,
+ * so the named and numeric spacing scales are one system. Everything else registers as a
+ * var() reference exactly as described above.
+ *
  * Run:      node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js
  * Verify:   node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js --check
  */
@@ -43,6 +48,7 @@ const PACKAGE_ROOT = path.resolve(__dirname, '..');
 const REPO_ROOT = path.resolve(PACKAGE_ROOT, '..', '..', '..');
 const TOKENS_PACKAGE = path.join(REPO_ROOT, 'packages', 'tokens');
 const TOKENS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'tokens.ts');
+const SPACINGS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'global', 'spacings.ts');
 const DEFAULT_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'tokens.css');
 
 const GENERATOR_ID = 'packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js';
@@ -54,9 +60,11 @@ const THEME_MODIFIERS = 'inline';
  * camelCase → kebab-case, with digit runs and acronym runs as their own segments.
  *
  *   colorNeutralBackground1  → color-neutral-background-1
- *   spacingHorizontalXXS     → spacing-horizontal-xxs
+ *   fontSizeHero1000         → font-size-hero-1000
  *   borderRadius2XLarge      → border-radius-2-x-large
  *   shadow2Brand             → shadow-2-brand
+ *
+ * NOT used for the spacing namespace — those names come from SPACING_SCALE's pinned table.
  *
  * @param {string} name
  * @returns {string}
@@ -68,6 +76,110 @@ function kebabCase(name) {
     .replace(/([A-Za-z])([0-9])/g, '$1-$2') // letter → digit
     .replace(/([0-9])([A-Za-z])/g, '$1-$2') // digit → letter
     .toLowerCase();
+}
+
+/**
+ * Fluent's spacing scale — the ONE namespace whose registered values are NOT
+ * `var(--fluentToken)` references (dual spacing support, settled with user 2026-07-27).
+ *
+ * WHY LITERAL VALUES AND NOT `var(--spacingHorizontalM)`
+ * -----------------------------------------------------
+ * The numeric spacing utilities (`p-12`, `gap-8`) compute px→rem through `--base-scale`
+ * (D4). Registering the semantic tokens as runtime `var()` references would create two
+ * spacing systems that scale differently: `p-12` would follow the user's root font-size
+ * while `p-horizontal-m` stayed frozen at the provider's literal px. Registering the
+ * base-scale EQUIVALENT of each token's canonical px unifies them — `p-horizontal-m` and
+ * `p-12` emit the same computed length, and both scale together.
+ *
+ * COST, ACCEPTED: a FluentProvider `theme` override of `spacingHorizontalM` no longer
+ * reaches utility-sourced spacing (a literal `var(--spacingHorizontalM)` still honours it,
+ * but those are now FORBIDDEN in component modules — see CONVERSION_GUIDE). All 7 shipped
+ * themes carry byte-identical spacing values (asserted: every theme spreads the same
+ * `horizontalSpacings`/`verticalSpacings` objects), so no shipped theme changes behavior.
+ *
+ * ALSO ACCEPTED: `--spacing-*` is axis-agnostic, so `py-horizontal-m` compiles. The axis in
+ * the name is a convention, not a constraint — the same is already true of a literal
+ * `var(--spacingHorizontalM)` in a `padding-block` declaration.
+ *
+ * `utility` is the EXPLICIT suffix table (user-specified). It deliberately does NOT go
+ * through `kebabCase` — that would turn `SNudge` into `s-nudge` correctly but `XXS` into
+ * `xxs` only by accident of the acronym rule; pinning the table keeps these names stable
+ * and independent of the generic algorithm.
+ *
+ * `global` is the key in `packages/tokens/src/global/spacings.ts`; `px` is asserted against
+ * it at generation time so a scale change upstream trips the build instead of silently
+ * desyncing the utilities from the tokens.
+ *
+ * @type {{ suffix: string, utility: string, global: string, px: number }[]}
+ */
+const SPACING_SCALE = [
+  { suffix: 'None', utility: 'none', global: 'none', px: 0 },
+  { suffix: 'XXS', utility: 'xxs', global: 'xxs', px: 2 },
+  { suffix: 'XS', utility: 'xs', global: 'xs', px: 4 },
+  { suffix: 'SNudge', utility: 's-nudge', global: 'sNudge', px: 6 },
+  { suffix: 'S', utility: 's', global: 's', px: 8 },
+  { suffix: 'MNudge', utility: 'm-nudge', global: 'mNudge', px: 10 },
+  { suffix: 'M', utility: 'm', global: 'm', px: 12 },
+  { suffix: 'L', utility: 'l', global: 'l', px: 16 },
+  { suffix: 'XL', utility: 'xl', global: 'xl', px: 20 },
+  { suffix: 'XXL', utility: 'xxl', global: 'xxl', px: 24 },
+  { suffix: 'XXXL', utility: 'xxxl', global: 'xxxl', px: 32 },
+];
+
+/**
+ * The base-scale-equivalent CSS value for a spacing step. Zero stays a plain `0` — a
+ * `calc(0px * …)` would be valid but noisy, and `0` is unitless-safe everywhere.
+ *
+ * @param {number} px
+ * @returns {string}
+ */
+function spacingValue(px) {
+  return px === 0 ? '0' : `calc(${px}px * var(--base-scale))`;
+}
+
+/**
+ * Reads the private `spacings` literal out of `packages/tokens/src/global/spacings.ts` and
+ * asserts SPACING_SCALE still describes it. Text extraction for the same reason as
+ * `readTokens` — no build step, no dependency edge.
+ *
+ * @returns {Record<string, string>}
+ */
+function readSpacingScale() {
+  const source = fs.readFileSync(SPACINGS_SOURCE, 'utf8');
+
+  const declaration = /const spacings: SpacingTokens = \{([^}]*)\}/;
+  const match = declaration.exec(source);
+  if (!match) {
+    throw new Error(`${SPACINGS_SOURCE}: expected a \`const spacings: SpacingTokens = {\` declaration.`);
+  }
+
+  /** @type {Record<string, string>} */
+  const scale = {};
+  const entry = /^[ \t]*([A-Za-z][A-Za-z0-9_]*):[ \t]*'([^']*)',[ \t]*$/gm;
+  let entryMatch;
+  while ((entryMatch = entry.exec(match[1])) !== null) {
+    scale[entryMatch[1]] = entryMatch[2];
+  }
+
+  const keys = Object.keys(scale);
+  if (keys.length !== SPACING_SCALE.length) {
+    throw new Error(
+      `${SPACINGS_SOURCE}: parsed ${keys.length} spacing steps but SPACING_SCALE has ${SPACING_SCALE.length}. ` +
+        `Update SPACING_SCALE in ${GENERATOR_ID}.`,
+    );
+  }
+
+  for (const { global: key, px } of SPACING_SCALE) {
+    const expected = px === 0 ? '0' : `${px}px`;
+    if (scale[key] !== expected) {
+      throw new Error(
+        `${SPACINGS_SOURCE}: spacing step \`${key}\` is \`${scale[key]}\` but SPACING_SCALE says \`${expected}\`. ` +
+          `Update SPACING_SCALE in ${GENERATOR_ID}.`,
+      );
+    }
+  }
+
+  return scale;
 }
 
 /**
@@ -117,6 +229,20 @@ const NAMESPACES = [
     heading: 'Line heights',
   },
   {
+    prefix: 'spacingHorizontal',
+    namespace: 'spacing-horizontal',
+    utility: 'px-* ps-* pe-* mx-* gap-x-* …',
+    heading: 'Horizontal spacing, inline axis — base-scale VALUES, not token refs',
+    scale: true,
+  },
+  {
+    prefix: 'spacingVertical',
+    namespace: 'spacing-vertical',
+    utility: 'py-* pt-* pb-* my-* gap-y-* …',
+    heading: 'Vertical spacing, block axis — base-scale VALUES, not token refs',
+    scale: true,
+  },
+  {
     prefix: 'borderRadius',
     namespace: 'radius',
     utility: 'rounded-* rounded-s-* rounded-e-* …',
@@ -154,19 +280,6 @@ const NAMESPACES = [
  * here so the exclusion never has to be re-litigated from memory.
  */
 const EXCLUSIONS = [
-  {
-    prefix: 'spacingHorizontal',
-    reason:
-      "Tailwind's `--spacing-*` namespace is axis-agnostic: registering it would create " +
-      '`py-horizontal-m` alongside `px-horizontal-m` with no way to restrict either. ' +
-      'It is also the namespace `--spacing-*: initial` in index.css deliberately empties so ' +
-      'numeric utilities read px through --base-scale (D4). Author these as ' +
-      '`px-(--spacingHorizontalM)` (probe-verified) or a literal var().',
-  },
-  {
-    prefix: 'spacingVertical',
-    reason: 'Same as spacingHorizontal — author as `py-(--spacingVerticalM)` or a literal var().',
-  },
   {
     prefix: 'strokeWidth',
     reason:
@@ -245,7 +358,7 @@ function readTokens() {
 
 /**
  * @param {string} name
- * @returns {{ kind: 'register', group: typeof NAMESPACES[number], themeKey: string } | { kind: 'exclude', prefix: string, reason: string }}
+ * @returns {{ kind: 'register', group: typeof NAMESPACES[number], themeKey: string, value?: string } | { kind: 'exclude', prefix: string, reason: string }}
  */
 function classify(name) {
   for (const group of NAMESPACES) {
@@ -256,6 +369,24 @@ function classify(name) {
     if (remainder.length === 0) {
       throw new Error(`Token \`${name}\` is exactly its namespace prefix — no key left to name a utility.`);
     }
+
+    // Spacing is the one namespace with a pinned suffix table AND a substituted value.
+    if (group.scale) {
+      const step = SPACING_SCALE.find(entry => entry.suffix === remainder);
+      if (!step) {
+        throw new Error(
+          `Token \`${name}\` has spacing step \`${remainder}\`, which is not in SPACING_SCALE. ` +
+            `Add it (with its px value) in ${GENERATOR_ID}.`,
+        );
+      }
+      return {
+        kind: 'register',
+        group,
+        themeKey: `--${group.namespace}-${step.utility}`,
+        value: spacingValue(step.px),
+      };
+    }
+
     return { kind: 'register', group, themeKey: `--${group.namespace}-${kebabCase(remainder)}` };
   }
 
@@ -278,6 +409,7 @@ function render(options = {}) {
   const modifiers = options.modifiers === undefined ? THEME_MODIFIERS : options.modifiers;
   const tokensPackage = JSON.parse(fs.readFileSync(path.join(TOKENS_PACKAGE, 'package.json'), 'utf8'));
   const tokens = readTokens();
+  readSpacingScale(); // asserts SPACING_SCALE still matches packages/tokens; throws if not.
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
   const sections = new Map();
@@ -304,7 +436,7 @@ function render(options = {}) {
     seenThemeKeys.set(themeKey, name);
 
     const section = sections.get(group.prefix) || { group, lines: [] };
-    section.lines.push(`  ${themeKey}: ${value};`);
+    section.lines.push(`  ${themeKey}: ${classification.value === undefined ? value : classification.value};`);
     sections.set(group.prefix, section);
   }
 
@@ -336,8 +468,13 @@ function render(options = {}) {
   out.push(' * values resolve per-element against the nearest FluentProvider. A plain `@theme`');
   out.push(' * alias would freeze resolution at `:root`, where Fluent tokens do not exist.');
   out.push(' *');
+  out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* carry the');
+  out.push(" * base-scale EQUIVALENT of each token's canonical px, NOT var(--spacingHorizontalM).");
+  out.push(' * Named and numeric spacing are then ONE scaling system (p-horizontal-m === p-12).');
+  out.push(' * Provider spacing overrides do not reach these; all 7 shipped themes are identical.');
+  out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
-  out.push(' * `--color-*: initial` (and friends) clear whatever is registered before them.');
+  out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');
   out.push(' *');
   out.push(' * Rationale, namespace mapping, exclusion reasons: see the generator source.');
   out.push(' */');
@@ -431,4 +568,14 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { kebabCase, classify, readTokens, render, NAMESPACES, EXCLUSIONS };
+module.exports = {
+  kebabCase,
+  classify,
+  readTokens,
+  readSpacingScale,
+  render,
+  spacingValue,
+  NAMESPACES,
+  EXCLUSIONS,
+  SPACING_SCALE,
+};

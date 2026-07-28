@@ -2,7 +2,7 @@
   "name": "@fluentui/react-tailwind-theme",
   "version": "0.0.0",
   "private": true,
-  "description": "Shared Tailwind v4 theme layer for the CSS Modules styling migration: cascade layer order, custom variants, the base-scale spacing bridge, and the generated Fluent token registration (css/tokens.css). Fluent tokens stay runtime CSS custom properties written by FluentProvider; `@theme inline` only gives them utility names, so utilities compile to direct var(--token) references and per-provider theming is unchanged.",
+  "description": "Shared Tailwind v4 theme layer for the CSS Modules styling migration: cascade layer order, custom variants, the base-scale spacing bridge, and the generated Fluent token registration (css/tokens.css). Fluent tokens stay runtime CSS custom properties written by FluentProvider; `@theme inline` only gives them utility names, so utilities compile to direct var(--token) references and per-provider theming is unchanged. Spacing is the one exception: the 22 spacing tokens register as base-scale VALUES so the named (p-horizontal-m) and numeric (p-12) scales are one system.",
   "scripts": {
     "build": "node build.js",
     "generate-tokens-css": "node scripts/generate-tokens-css.js",

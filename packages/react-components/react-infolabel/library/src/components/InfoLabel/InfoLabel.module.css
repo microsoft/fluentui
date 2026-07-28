@@ -115,9 +115,11 @@
   .infoButton {
     vertical-align: top;
 
-    /* Negative margin to align with the text */
-    margin-top: calc(0px - var(--spacingVerticalXXS));
-    margin-bottom: calc(0px - var(--spacingVerticalXXS));
+    /* Negative margin to align with the text. Griffel wrote
+       `calc(0px - ${tokens.spacingVerticalXXS})`; the negated named utility is the D4-amendment
+       form (raw `var(--spacingVertical*)` alone does not scale with `--base-scale`) and
+       compiles to `calc(calc(2px * var(--base-scale)) * -1)` — same -2px at the default root. */
+    @apply -mt-vertical-xxs -mb-vertical-xxs;
   }
 }
 

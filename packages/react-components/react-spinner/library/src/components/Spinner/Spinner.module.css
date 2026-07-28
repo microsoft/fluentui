@@ -199,7 +199,17 @@
 @layer fui.base {
   /* from useRootBaseClassName (makeResetStyles) */
   .root {
-    @apply flex items-center justify-center gap-8;
+    /*
+     * `gap: '8px'` in the Griffel reset — a raw px literal that lands exactly on the S
+     * spacing step, so the named utility replaces `gap-8` (D4 amendment: Fluent spacing
+     * tokens first, numeric utilities only for values that match no step). Both forms
+     * compute through `--base-scale`, so this is pixel-identical.
+     *
+     * Horizontal axis: the root is a flex ROW by default and only becomes a column under
+     * the `vertical` variant below, so the inline-axis token is the matching one. Every
+     * step carries the same value on both axes, so the choice is naming, not pixels.
+     */
+    @apply flex items-center justify-center gap-horizontal-s;
 
     /* prevents height changes from rotating children */
     @apply overflow-hidden;

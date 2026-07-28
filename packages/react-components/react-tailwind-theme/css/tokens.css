@@ -6,14 +6,19 @@
  * Regenerate: node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js
  * Verify:     node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js --check
  *
- * 467 Fluent tokens: 441 registered, 26 excluded (4× strokeWidth*, 11× spacingHorizontal*, 11× spacingVertical*).
+ * 467 Fluent tokens: 463 registered, 4 excluded (4× strokeWidth*).
  *
  * `inline` is MANDATORY: it substitutes var(--fluentToken) into each utility, so
  * values resolve per-element against the nearest FluentProvider. A plain `@theme`
  * alias would freeze resolution at `:root`, where Fluent tokens do not exist.
  *
+ * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* carry the
+ * base-scale EQUIVALENT of each token's canonical px, NOT var(--spacingHorizontalM).
+ * Named and numeric spacing are then ONE scaling system (p-horizontal-m === p-12).
+ * Provider spacing overrides do not reach these; all 7 shipped themes are identical.
+ *
  * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
- * `--color-*: initial` (and friends) clear whatever is registered before them.
+ * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.
  *
  * Rationale, namespace mapping, exclusion reasons: see the generator source.
  */
@@ -448,6 +453,32 @@
   --shadow-16-brand: var(--shadow16Brand);
   --shadow-28-brand: var(--shadow28Brand);
   --shadow-64-brand: var(--shadow64Brand);
+
+  /* Horizontal spacing, inline axis — base-scale VALUES, not token refs — 11 tokens → --spacing-horizontal-* (px-* ps-* pe-* mx-* gap-x-* …) */
+  --spacing-horizontal-none: 0;
+  --spacing-horizontal-xxs: calc(2px * var(--base-scale));
+  --spacing-horizontal-xs: calc(4px * var(--base-scale));
+  --spacing-horizontal-s-nudge: calc(6px * var(--base-scale));
+  --spacing-horizontal-s: calc(8px * var(--base-scale));
+  --spacing-horizontal-m-nudge: calc(10px * var(--base-scale));
+  --spacing-horizontal-m: calc(12px * var(--base-scale));
+  --spacing-horizontal-l: calc(16px * var(--base-scale));
+  --spacing-horizontal-xl: calc(20px * var(--base-scale));
+  --spacing-horizontal-xxl: calc(24px * var(--base-scale));
+  --spacing-horizontal-xxxl: calc(32px * var(--base-scale));
+
+  /* Vertical spacing, block axis — base-scale VALUES, not token refs — 11 tokens → --spacing-vertical-* (py-* pt-* pb-* my-* gap-y-* …) */
+  --spacing-vertical-none: 0;
+  --spacing-vertical-xxs: calc(2px * var(--base-scale));
+  --spacing-vertical-xs: calc(4px * var(--base-scale));
+  --spacing-vertical-s-nudge: calc(6px * var(--base-scale));
+  --spacing-vertical-s: calc(8px * var(--base-scale));
+  --spacing-vertical-m-nudge: calc(10px * var(--base-scale));
+  --spacing-vertical-m: calc(12px * var(--base-scale));
+  --spacing-vertical-l: calc(16px * var(--base-scale));
+  --spacing-vertical-xl: calc(20px * var(--base-scale));
+  --spacing-vertical-xxl: calc(24px * var(--base-scale));
+  --spacing-vertical-xxxl: calc(32px * var(--base-scale));
 
   /* Transition durations — 8 tokens → --transition-duration-* (duration-*) */
   --transition-duration-ultra-fast: var(--durationUltraFast);

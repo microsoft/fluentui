@@ -50,9 +50,23 @@
   --base-scale: calc(1rem / 16px);
 
   /*
-   * Every numeric spacing/sizing utility (p-12, gap-8, w-64, …) reads as px but
-   * computes to rem via --base-scale: identical pixels at the default 16px root,
-   * scaling with user font-size preferences (intentional accessibility deviation).
+   * DUAL SPACING (settled with user 2026-07-27) — both halves are live:
+   *
+   * 1. NUMERIC. Every numeric spacing/sizing utility (p-12, gap-8, w-64, …) reads as px
+   *    but computes to rem via --base-scale: identical pixels at the default 16px root,
+   *    scaling with user font-size preferences (intentional accessibility deviation).
+   *    `--spacing-*: initial` drops Tailwind's own named spacing scale (px, 0.5, …) so
+   *    only the multiplier below survives.
+   * 2. NAMED. ./tokens.css re-populates the namespace with the 22 Fluent spacing steps
+   *    (p-horizontal-m, gap-vertical-s, …). `initial` clears only what is registered
+   *    BEFORE it, so the LATER import survives this reset — probe-verified, and the
+   *    reason ./tokens.css must stay imported after this block.
+   *
+   * Those 22 keys carry base-scale VALUES (`calc(12px * var(--base-scale))`), not
+   * `var(--spacingHorizontalM)`, so named and numeric spacing are one scaling system:
+   * p-horizontal-m and p-12 emit the same computed length. FluentProvider spacing
+   * overrides therefore do not reach utility-sourced spacing; all 7 shipped themes carry
+   * identical spacing values, so no shipped theme changes behavior.
    */
   --spacing-*: initial;
   --spacing: calc(1px * var(--base-scale));
@@ -87,6 +101,10 @@
  * `shadow-8`, `rounded-medium`, `leading-base-300`, `ease-easy-ease`, `duration-normal`,
  * `z-popup`, …) that compiles to a DIRECT `var(--fluentToken)` reference via
  * `@theme inline`. Literal `var(--tokenName)` authoring stays valid and unchanged.
+ *
+ * SPACING IS THE ONE EXCEPTION: `p-horizontal-m` / `gap-vertical-s` compile to the
+ * base-scale equivalent of the token's canonical px, NOT to `var(--spacingHorizontalM)`
+ * — see the dual-spacing note in the `@theme static` block above.
  *
  * ORDER IS LOAD-BEARING: this import must stay AFTER the `@theme static` block above.
  * Placed before it, `--color-*: initial` (and friends) wipe every registration and the

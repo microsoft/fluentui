@@ -83,14 +83,18 @@
 
   /*
    * arg 3' — from useRootStyles.overflowItem. Compiled as the `padding` shorthand
-   * (`var(--spacingVerticalXS) var(--spacingHorizontalXS)`); expanded to longhands per the
-   * cookbook, and to LOGICAL longhands so the horizontal pair cannot drift in RTL.
+   * (`var(--spacingVerticalXS) var(--spacingHorizontalXS)`).
+   *
+   * Now the two named axis utilities (D4 amendment — raw `var(--spacing*)` is the one form
+   * that does not scale with `--base-scale`): `py-vertical-xs` → `padding-block`,
+   * `px-horizontal-xs` → `padding-inline`. These are the two-value LOGICAL pairs, so the
+   * horizontal side still cannot drift in RTL, and the axis↔token pairing matches the
+   * Griffel shorthand's own vertical-then-horizontal order. This is the only rule in the
+   * file that sets padding on `.overflowItem`, so collapsing the four longhands into the
+   * two axis pairs cannot change a within-rule winner.
    */
   .overflowItem {
-    padding-block-start: var(--spacingVerticalXS);
-    padding-block-end: var(--spacingVerticalXS);
-    padding-inline-start: var(--spacingHorizontalXS);
-    padding-inline-end: var(--spacingHorizontalXS);
+    @apply py-vertical-xs px-horizontal-xs;
   }
 }
 
@@ -113,20 +117,26 @@
     box-shadow: 0 0 0 var(--strokeWidthThickest) var(--colorNeutralBackground2);
   }
 
+  /*
+   * The four stack offsets are Griffel's `calc(-1 * ${tokens.spacingHorizontal*})`, written
+   * as the NEGATED named utility (D4 amendment). `-ms-*` compiles to
+   * `margin-inline-start: calc(calc(<step>px * var(--base-scale)) * -1)` — the same negative
+   * inline-start offset, now on the one scaling system.
+   */
   .stackXxs:where(:not(:first-child)) {
-    margin-inline-start: calc(-1 * var(--spacingHorizontalXXS));
+    @apply -ms-horizontal-xxs;
   }
 
   .stackXs:where(:not(:first-child)) {
-    margin-inline-start: calc(-1 * var(--spacingHorizontalXS));
+    @apply -ms-horizontal-xs;
   }
 
   .stackS:where(:not(:first-child)) {
-    margin-inline-start: calc(-1 * var(--spacingHorizontalS));
+    @apply -ms-horizontal-s;
   }
 
   .stackL:where(:not(:first-child)) {
-    margin-inline-start: calc(-1 * var(--spacingHorizontalL));
+    @apply -ms-horizontal-l;
   }
 
   /*
@@ -136,19 +146,19 @@
    * not reproduced here.
    */
   .spreadS:where(:not(:first-child)) {
-    margin-inline-start: var(--spacingHorizontalS);
+    @apply ms-horizontal-s;
   }
 
   .spreadMNudge:where(:not(:first-child)) {
-    margin-inline-start: var(--spacingHorizontalMNudge);
+    @apply ms-horizontal-m-nudge;
   }
 
   .spreadL:where(:not(:first-child)) {
-    margin-inline-start: var(--spacingHorizontalL);
+    @apply ms-horizontal-l;
   }
 
   .spreadXl:where(:not(:first-child)) {
-    margin-inline-start: var(--spacingHorizontalXL);
+    @apply ms-horizontal-xl;
   }
 }
 
@@ -258,7 +268,8 @@
    * `margin-left` was an [ltr, rtl] pair → logical property.
    */
   .overflowLabel {
-    margin-inline-start: var(--spacingHorizontalS);
+    @apply ms-horizontal-s;
+
     color: var(--colorNeutralForeground1);
     font-family: var(--fontFamilyBase);
     font-size: var(--fontSizeBase300);

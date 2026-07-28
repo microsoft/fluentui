@@ -70,11 +70,15 @@
     @apply relative m-0 box-border inline-flex align-top;
 
     /* Padding so the focus indicator does not overlap the resize handle; matches the
-       focus indicator size. `padding: 0 0 <thick> 0` expanded to longhands. */
-    padding-block-start: 0;
+       focus indicator size. `padding: 0 0 <thick> 0` expanded to longhands.
+       The three zeros are the `None` spacing step, so they take named utilities (D4
+       amendment). Only the inline pair has a LOGICAL utility — Tailwind's `pt-*` is the
+       physical `padding-top` — so block-start stays a literal rather than give up the
+       logical property. `padding-block-end` is a stroke token, not spacing: untouched. */
+    @apply ps-horizontal-none pe-horizontal-none;
+
+    padding-block-start: 0; /* spacingVerticalNone */
     padding-block-end: var(--strokeWidthThick);
-    padding-inline-start: 0;
-    padding-inline-end: 0;
 
     border-radius: var(--borderRadiusMedium);
 
@@ -341,8 +345,11 @@
     @variant size-small {
       @apply min-h-40 max-h-200;
 
-      padding-block: var(--spacingVerticalXS);
-      padding-inline: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+      /* padding-block: spacingVerticalXS. padding-inline: the Griffel source sums
+         spacingHorizontalSNudge (6) + spacingHorizontalXXS (2) = 8px, which IS the S
+         step — the same collapse react-input documents on its own
+         `horizontalPadding.combined.small`. */
+      @apply py-vertical-xs px-horizontal-s;
 
       font-family: var(--fontFamilyBase);
       font-size: var(--fontSizeBase200);
@@ -354,8 +361,10 @@
     @variant size-medium {
       @apply min-h-52 max-h-260;
 
-      padding-block: var(--spacingVerticalSNudge);
-      padding-inline: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
+      /* padding-block: spacingVerticalSNudge. padding-inline: spacingHorizontalMNudge
+         (10) + spacingHorizontalXXS (2) = 12px = the M step (react-input's
+         `horizontalPadding.combined.medium` records the same identity). */
+      @apply py-vertical-s-nudge px-horizontal-m;
 
       font-family: var(--fontFamilyBase);
       font-size: var(--fontSizeBase300);
@@ -367,8 +376,11 @@
     @variant size-large {
       @apply min-h-64 max-h-320;
 
-      padding-block: var(--spacingVerticalS);
-      padding-inline: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+      /* padding-block: spacingVerticalS. padding-inline: spacingHorizontalM (12) +
+         spacingHorizontalXXS (2) = 14px, which matches NO spacing step, so the numeric
+         utility is the sanctioned fallback — same scale (`--spacing` is
+         `calc(1px * var(--base-scale))`, so px-14 === calc(14px * var(--base-scale))). */
+      @apply py-vertical-s px-14;
 
       font-family: var(--fontFamilyBase);
       font-size: var(--fontSizeBase400);

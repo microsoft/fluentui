@@ -54,8 +54,10 @@
 
   /* from useStyles.required — paddingLeft → padding-inline-start (the file's only RTL flip) */
   .required {
+    /* tokens.spacingHorizontalXS → named spacing utility (D4 amendment) */
+    @apply ps-horizontal-xs;
+
     color: var(--colorPaletteRedForeground3);
-    padding-inline-start: var(--spacingHorizontalXS);
   }
 }
 

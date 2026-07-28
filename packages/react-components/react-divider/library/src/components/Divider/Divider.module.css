@@ -92,13 +92,13 @@
         @apply text-start;
 
         &::before {
-          @apply me-12 max-w-8;
+          @apply me-horizontal-m max-w-8;
 
           content: '';
         }
 
         &::after {
-          @apply ms-12;
+          @apply ms-horizontal-m;
         }
       }
 
@@ -107,11 +107,11 @@
         @apply text-center;
 
         &::before {
-          @apply me-12;
+          @apply me-horizontal-m;
         }
 
         &::after {
-          @apply ms-12;
+          @apply ms-horizontal-m;
         }
       }
 
@@ -120,11 +120,11 @@
         @apply text-end;
 
         &::before {
-          @apply me-12;
+          @apply me-horizontal-m;
         }
 
         &::after {
-          @apply ms-12 max-w-8;
+          @apply ms-horizontal-m max-w-8;
 
           content: '';
         }
@@ -146,35 +146,35 @@
       /* from useVerticalStyles.start */
       @variant align-content-start {
         &::before {
-          @apply mb-12 max-h-8;
+          @apply mb-vertical-m max-h-8;
 
           content: '';
         }
 
         &::after {
-          @apply mt-12;
+          @apply mt-vertical-m;
         }
       }
 
       /* from useVerticalStyles.center */
       @variant align-content-center {
         &::before {
-          @apply mb-12;
+          @apply mb-vertical-m;
         }
 
         &::after {
-          @apply mt-12;
+          @apply mt-vertical-m;
         }
       }
 
       /* from useVerticalStyles.end */
       @variant align-content-end {
         &::before {
-          @apply mb-12;
+          @apply mb-vertical-m;
         }
 
         &::after {
-          @apply mt-12 max-h-8;
+          @apply mt-vertical-m max-h-8;
 
           content: '';
         }
@@ -244,17 +244,17 @@
 
 @layer fui.components.l1 {
   .root {
-    /* from useHorizontalStyles.inset — paddingLeft/Right → padding-inline */
+    /* from useHorizontalStyles.inset — paddingLeft/Right → padding-inline; 12px = spacingHorizontalM */
     @variant horizontal {
       @variant inset {
-        @apply px-12;
+        @apply px-horizontal-m;
       }
     }
 
-    /* from useVerticalStyles.inset — block-direction margins stay physical */
+    /* from useVerticalStyles.inset — block-direction margins stay physical; 12px = spacingVerticalM */
     @variant vertical {
       @variant inset {
-        @apply mt-12 mb-12;
+        @apply mt-vertical-m mb-vertical-m;
       }
     }
 
@@ -265,11 +265,11 @@
      */
     @variant empty {
       &::before {
-        @apply mb-0 me-0;
+        @apply mb-vertical-none me-horizontal-none;
       }
 
       &::after {
-        @apply ms-0 mt-0;
+        @apply ms-horizontal-none mt-vertical-none;
       }
     }
   }

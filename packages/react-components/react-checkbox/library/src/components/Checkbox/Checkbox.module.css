@@ -105,6 +105,14 @@
  * `w-20`, …) where one exists, `calc(<n>px * var(--base-scale))` inside calc() where none
  * does. At the default 16px root every one computes to the compiled pixel value.
  *
+ * ── Spacing (DECISIONS.md D4 amendment) ─────────────────────────────────────────────
+ * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
+ * spacing utility (`mt-vertical-s`, `ps-horizontal-xs`, …). Raw `var(--spacingVerticalS)`
+ * is forbidden in modules: it is the one authoring form that does not ride `--base-scale`,
+ * so it would drift from the indicator sizes above at a non-default root font size. The two
+ * spacing terms that sit INSIDE a calc() — where no utility can reach — are written as the
+ * token's canonical px times `--base-scale`, with the token named in a comment.
+ *
  * ── Internal custom properties ──────────────────────────────────────────────────────
  * `--fui-Checkbox__indicator--{color,borderColor,backgroundColor}` are Checkbox's own
  * private channel from the root's state rules down to the indicator. They are NOT
@@ -155,8 +163,10 @@
     top: 0;
 
     /* Width covers the indicator plus the padding around it so clicking the "empty space"
-       still toggles the checkbox. */
-    width: calc(16px * var(--base-scale) + 2 * var(--spacingHorizontalS));
+       still toggles the checkbox. The 8px term is spacingHorizontalS written as a
+       base-scale literal: no utility can express a term inside calc(), and the raw token
+       var() would be the one length here that does not scale (D4 amendment). */
+    width: calc(16px * var(--base-scale) + 2 * 8px * var(--base-scale));
   }
 
   /* from useIndicatorBaseClassName (makeResetStyles) */
@@ -170,12 +180,10 @@
     border-width: var(--strokeWidthThin);
     border-radius: var(--borderRadiusSmall);
 
-    /* `margin: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands;
-       no rtl class was compiled, so the inline sides stay physical. */
-    margin-top: var(--spacingVerticalS);
-    margin-right: var(--spacingHorizontalS);
-    margin-bottom: var(--spacingVerticalS);
-    margin-left: var(--spacingHorizontalS);
+    /* `margin: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands and
+       then to the named spacing utilities (D4 amendment); no rtl class was compiled, so the
+       inline sides stay physical. */
+    @apply mt-vertical-s mr-horizontal-s mb-vertical-s ml-horizontal-s;
 
     fill: currentColor;
     font-size: calc(12px * var(--base-scale));
@@ -277,7 +285,8 @@
      */
     @variant size-large {
       & .input {
-        width: calc(20px * var(--base-scale) + 2 * var(--spacingHorizontalS));
+        /* 8px = spacingHorizontalS as a base-scale literal (D4 amendment) */
+        width: calc(20px * var(--base-scale) + 2 * 8px * var(--base-scale));
       }
     }
 
@@ -337,11 +346,8 @@
        (CONVERSION_GUIDE §2): the position slices below override single inline sides inside
        this same layer, and Griffel's shorthand-loses-to-longhand priority (`p: -1`) has no
        CSS equivalent. Inline sides are logical because `before`/`after` compile to an
-       [ltr, rtl] padding pair. */
-    padding-top: var(--spacingVerticalS);
-    padding-bottom: var(--spacingVerticalS);
-    padding-inline-start: var(--spacingHorizontalS);
-    padding-inline-end: var(--spacingHorizontalS);
+       [ltr, rtl] padding pair. Longhands carry the named spacing utilities (D4 amendment). */
+    @apply pt-vertical-s pb-vertical-s ps-horizontal-s pe-horizontal-s;
   }
 
   .root {
@@ -367,13 +373,13 @@
     /* from useLabelStyles[labelPosition] — label arg #4 */
     @variant label-before {
       & .label {
-        padding-inline-end: var(--spacingHorizontalXS);
+        @apply pe-horizontal-xs;
       }
     }
 
     @variant label-after {
       & .label {
-        padding-inline-start: var(--spacingHorizontalXS);
+        @apply ps-horizontal-xs;
       }
     }
   }

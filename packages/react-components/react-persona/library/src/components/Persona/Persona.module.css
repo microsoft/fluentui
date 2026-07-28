@@ -173,30 +173,36 @@
    * `small` and `medium` share one token, as do `large` and `extra-large` — Griffel deduped
    * them into single atomics (`f18q9vkd`, `fx34bi6`); kept as separate blocks here so each
    * size reads back 1:1 against the source.
+   *
+   * SPACING FORM (D4 amendment): the payload is a custom property, and no spacing utility
+   * targets an arbitrary custom property, so these take the literal
+   * `calc(<step>px * var(--base-scale))` form the named utilities themselves compile to —
+   * NOT raw `var(--spacingHorizontal*)`, which is the one authoring form that does not scale
+   * with `--base-scale`. The source token is named in the trailing comment on each line.
    */
   .root {
     @variant size-extra-small {
-      --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+      --fui-Persona__avatar--spacing: calc(6px * var(--base-scale)); /* spacingHorizontalSNudge */
     }
 
     @variant size-small {
-      --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+      --fui-Persona__avatar--spacing: calc(8px * var(--base-scale)); /* spacingHorizontalS */
     }
 
     @variant size-medium {
-      --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+      --fui-Persona__avatar--spacing: calc(8px * var(--base-scale)); /* spacingHorizontalS */
     }
 
     @variant size-large {
-      --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+      --fui-Persona__avatar--spacing: calc(10px * var(--base-scale)); /* spacingHorizontalMNudge */
     }
 
     @variant size-extra-large {
-      --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+      --fui-Persona__avatar--spacing: calc(10px * var(--base-scale)); /* spacingHorizontalMNudge */
     }
 
     @variant size-huge {
-      --fui-Persona__avatar--spacing: var(--spacingHorizontalM);
+      --fui-Persona__avatar--spacing: calc(12px * var(--base-scale)); /* spacingHorizontalM */
     }
   }
 
@@ -257,9 +263,11 @@
   }
 
   /* from useStyles.secondLineSpacing (secondaryText arg 4) — compiled `margin-top:-2px`,
-     a block-direction margin Griffel did not flip. */
+     a block-direction margin Griffel did not flip. The -2px literal matches the XXS spacing
+     step, so it takes the named vertical utility (block axis) rather than numeric `-mt-2`;
+     both compile to `calc(2px * var(--base-scale)) * -1`. */
   .secondLineSpacing {
-    @apply -mt-2;
+    @apply -mt-vertical-xxs;
   }
 }
 
@@ -299,9 +307,12 @@
    * `extra-small`). It stays on the presence element rather than the root: a declaration on
    * the element itself wins over the inherited root value, which is exactly what the
    * `{ ...avatarSpacingStyles, ...usePresenceSpacingStyles() }` spread expressed.
+   *
+   * Literal `calc()` form for the same reason as the size block above — custom properties
+   * have no spacing utility.
    */
   .presenceSpacingSNudge {
-    --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+    --fui-Persona__avatar--spacing: calc(6px * var(--base-scale)); /* spacingHorizontalSNudge */
   }
 
   /*
