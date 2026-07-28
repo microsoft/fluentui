@@ -1,4 +1,5 @@
 export { clamp } from './clamp';
+export { fuiSelector } from './fuiSelector';
 export {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,

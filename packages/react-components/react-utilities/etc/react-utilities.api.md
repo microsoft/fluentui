@@ -66,6 +66,9 @@ export type FluentTriggerComponent = {
 export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
+export function fuiSelector(identityClass: string): string;
+
+// @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
     clientX: number;
     clientY: number;

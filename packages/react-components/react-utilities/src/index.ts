@@ -64,6 +64,7 @@ export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
   clamp,
+  fuiSelector,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
