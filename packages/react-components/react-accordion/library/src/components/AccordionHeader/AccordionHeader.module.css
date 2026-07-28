@@ -1,0 +1,325 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useAccordionHeaderStyles_unstable, not source declaration order.
+ *
+ * `root` slot
+ *   1 accordionHeaderClassNames.root                  → static class (JS)
+ *   2 useStyles.root                                  → fui.components.l1  .root
+ *   3 useStyles.rootInline      (inline)              → fui.components.l1  (data-inline)
+ *   4 useStyles.rootDisabled    (disabled)            → fui.components.l1  (data-disabled)
+ *   5 consumer className                              → unlayered (always wins)
+ *
+ * `button` slot
+ *   1 accordionHeaderClassNames.button                → static class (JS)
+ *   2 useStyles.resetButton                           → fui.components.l1  .button
+ *   3 useStyles.button                                → fui.components.l1  .button
+ *   4 useStyles.focusIndicator  (createFocusOutlineStyle())
+ *                                                     → fui.components.l1  .button
+ *   5 useStyles.buttonExpandIconEndNoIcon
+ *       (expandIconPosition === 'end' && !icon)       → fui.components.l1
+ *   6 useStyles.buttonExpandIconEnd
+ *       (expandIconPosition === 'end')                → fui.components.l1
+ *   7 useStyles.buttonInline    (inline)              → fui.components.l1
+ *   8 useStyles.buttonSmall     (size === 'small')    → fui.components.l1  (data-size)
+ *   9 useStyles.buttonLarge     (size === 'large')    → fui.components.l1  (data-size)
+ *  10 useStyles.buttonExtraLarge(size === 'extra-large') → fui.components.l1 (data-size)
+ *  11 useStyles.buttonDisabled  (disabled)            → fui.components.l1  (data-disabled)
+ *  12 consumer className                              → unlayered
+ *
+ * `expandIcon` slot
+ *   1 accordionHeaderClassNames.expandIcon            → static class (JS)
+ *   2 useStyles.expandIcon                            → fui.components.l1  .expandIcon
+ *   3 useStyles.expandIconStart (position === 'start')→ fui.components.l1
+ *   4 useStyles.expandIconEnd   (position === 'end')  → fui.components.l1
+ *   5 consumer className                              → unlayered
+ *
+ * `icon` slot
+ *   1 accordionHeaderClassNames.icon                  → static class (JS)
+ *   2 useStyles.icon                                  → fui.components.l1  .icon
+ *   3 consumer className                              → unlayered
+ *
+ * ── ALTITUDE: everything is l1 (DECISIONS.md D2 amendment 2) ────────────────────────
+ * Every element AccordionHeader styles is its own: the root `<div>`, the `<button>`
+ * (`elementType: 'button'` in useAccordionHeaderBase_unstable — react-aria's
+ * `useARIAButtonProps` contributes props, not styles), the expandIcon `<span>` and the
+ * icon `<div>`. No slot renders another component's hook output, so nothing belongs in
+ * `fui.components.l2`. The `<svg>` INSIDE the expandIcon span comes from
+ * `@fluentui/react-icons` (still Griffel, D11), but no rule here targets it — grepped
+ * for `fui-Icon-filled` / `fui-Icon-regular` / `:global(` across the package: zero hits,
+ * so the D2-amendment-5 unlayered block does not apply to this module.
+ *
+ * ── Specificity note (why the state blocks are written as `.root … & .button`) ──────
+ * The per-state blocks are nested under `.root`, so they compile to
+ * `.root:where([data-…]) .button` (0-2-0) and beat the plain `.button` block (0-1-0)
+ * regardless of file position — which is what mergeClasses did by argument order. Where
+ * two state blocks could collide the file order still mirrors argument order.
+ *
+ * ── Ordering that IS load-bearing ──────────────────────────────────────────────────
+ * • `.button` merges THREE slices into one block in argument order: resetButton (#2),
+ *   button (#3), focusIndicator (#4). Five properties are re-set by #3 over #2 —
+ *   font-family, font-size, line-height, box-sizing and the four padding longhands —
+ *   and Griffel resolved each by deleting the earlier atomic (same key). Both blocks
+ *   flatten to `.button`, so the later declaration must be written later. It is.
+ * • Griffel's `padding` SHORTHAND (`0 M 0 MNudge`, arg #3) is expanded to longhands
+ *   because args #5/#6 override single inline sides — Griffel's shorthand-loses-to-
+ *   longhand priority has no CSS equivalent (CONVERSION_GUIDE §2). resetButton's
+ *   `padding: 0` is expanded for the same reason.
+ *
+ * ── RTL (DECISIONS.md D5) ──────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` atomic pair in the compiled output is a pure PROPERTY flip, so all
+ * of them become logical properties and no `@variant rtl` twin is needed:
+ *   button       `padding: 0 M 0 MNudge` / `0 MNudge 0 M` → padding-inline-end: M,
+ *                                                           padding-inline-start: MNudge
+ *   buttonExpandIconEndNoIcon `padding-left: M`   → padding-inline-start
+ *   buttonExpandIconEnd       `padding-right: MNudge` → padding-inline-end
+ *   expandIconStart           `padding-right: S`  → padding-inline-end
+ *   expandIconEnd             `padding-left: S`   → padding-inline-start
+ *   icon                      `padding-right: S`  → padding-inline-end
+ *   focusIndicator            `::after` right/left offsets — both sides identical, and
+ *                             they live in the shared `fui-focus-outline` utility.
+ * `text-align: unset` (resetButton) is direction-agnostic and stays verbatim.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ─────────────────────────
+ * Every value the Griffel source read from a `tokens.spacing*` is authored as the NAMED
+ * spacing utility (`pe-horizontal-m`, `ps-horizontal-m-nudge`, `pe-horizontal-s`, …);
+ * raw `var(--spacingHorizontal*)` is forbidden in modules because it is the one form
+ * that does not ride `--base-scale`. The two button heights (44px / 32px) are pixel
+ * literals with no matching spacing step, so they use the NUMERIC utilities
+ * `min-h-44` / `min-h-32`, which compute through the same `--base-scale`.
+ */
+
+@layer fui.components.l1 {
+  .root {
+    /* from useStyles.root — root arg #2 */
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorTransparentBackground);
+
+    /* `margin: '0'` — nothing in this component overrides a single margin side, so the
+       compiled shorthand is kept (CONVERSION_GUIDE §2 expands shorthands only where a
+       longhand competes; the button's padding below is the case that does). */
+    @apply m-0;
+
+    border-radius: var(--borderRadiusMedium);
+
+    /*
+     * from useStyles.rootInline — root arg #3.
+     * `display` longhand rather than `@apply inline-block`: `inline` is simultaneously
+     * a catalog VARIANT name (`[data-inline]`, used here) and a Tailwind display
+     * utility, and react-link's module already settled on the longhand for clarity.
+     */
+    @variant inline {
+      display: inline-block;
+    }
+
+    /* from useStyles.rootDisabled — root arg #4; re-sets `color` from arg #2 above */
+    @variant disabled {
+      background-image: none;
+      color: var(--colorNeutralForegroundDisabled);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .button {
+    /*
+     * from useStyles.resetButton — button arg #2.
+     * TODO (upstream, unchanged): the Griffel source notes this should be extracted to
+     * another package.
+     */
+    box-sizing: content-box;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+    overflow: visible;
+
+    /* `padding: '0'` expanded to longhands — args #5/#6 override single inline sides */
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    -webkit-appearance: button;
+    text-align: unset;
+
+    /* from useStyles.button — button arg #3 */
+    @apply relative flex w-full items-center;
+
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+
+    /*
+     * `padding: 0 var(--spacingHorizontalM) 0 var(--spacingHorizontalMNudge)` expanded to
+     * longhands. The compiled `[ltr, rtl]` pair (`f1rmphuq` / `f26yw9j`) swaps only the
+     * two inline sides, i.e. a pure property flip → logical properties.
+     */
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @apply pe-horizontal-m ps-horizontal-m-nudge;
+
+    /* 44px matches no spacing step → numeric utility (D4) */
+    @apply min-h-44;
+
+    @apply cursor-pointer;
+
+    /* typographyStyles.body1 */
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    @apply box-border;
+
+    /*
+     * from useStyles.focusIndicator = createFocusOutlineStyle() — button arg #4.
+     * Default options, so the selector is keyborg's `[data-fui-focus-visible]` and the
+     * declarations are the shared `fui-focus-outline` utility, which was byte-compared
+     * against THIS component's compiled AOT output
+     * (lib-commonjs/…/useAccordionHeaderStyles.styles.js:245-268, 341-353) when it was
+     * written — see react-tailwind-theme/css/utilities.css. The `::after` ring is
+     * positioned against the `position: relative` set by arg #3 above.
+     *
+     * `createFocusOutlineStyle` also emits the two `outline-style: none` rules, which sit
+     * OUTSIDE the focus-visible selector and therefore stay here with the caller.
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+  }
+
+  .root {
+    /*
+     * `data-expand-icon-position` and `data-icon` are written as raw attribute selectors
+     * rather than `@custom-variant`s: the shared catalog lives in another package
+     * (@fluentui/react-tailwind-theme) and this conversion does not edit it. The cookbook
+     * bans variant DEFINITIONS in component modules, not attribute selectors
+     * (CONVERSION_GUIDE §2, scale-prop rule). Catalog entries are requested in the
+     * conversion report.
+     *
+     * `data-expand-icon-position` is one of the headless preview's 25 attribute names
+     * (reports/headless-precedent.md; its own AccordionHeader stamps exactly this).
+     * `data-icon` is a presence attribute carrying the `!state.icon` half of arg #5's
+     * condition — ONE presence attribute plus a `:not()` complement, per the cookbook's
+     * boolean-pair rule.
+     */
+    &:where([data-expand-icon-position='end']) {
+      /* from useStyles.buttonExpandIconEndNoIcon — button arg #5 */
+      &:where(:not([data-icon])) {
+        & .button {
+          @apply ps-horizontal-m;
+        }
+      }
+
+      /* from useStyles.buttonExpandIconEnd — button arg #6 */
+      & .button {
+        @apply pe-horizontal-m-nudge;
+      }
+    }
+
+    /* from useStyles.buttonInline — button arg #7 */
+    @variant inline {
+      & .button {
+        display: inline-flex;
+      }
+    }
+
+    /* from useStyles.buttonSmall — button arg #8 */
+    @variant size-small {
+      & .button {
+        /* 32px matches no spacing step → numeric utility (D4) */
+        @apply min-h-32;
+
+        font-size: var(--fontSizeBase200);
+      }
+    }
+
+    /* from useStyles.buttonLarge — button arg #9 */
+    @variant size-large {
+      & .button {
+        line-height: var(--lineHeightBase400);
+        font-size: var(--fontSizeBase400);
+      }
+    }
+
+    /* from useStyles.buttonExtraLarge — button arg #10 */
+    @variant size-extra-large {
+      & .button {
+        line-height: var(--lineHeightBase500);
+        font-size: var(--fontSizeBase500);
+      }
+    }
+
+    /* from useStyles.buttonDisabled — button arg #11 */
+    @variant disabled {
+      & .button {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.expandIcon — expandIcon arg #2 */
+  .expandIcon {
+    @apply flex h-full items-center;
+
+    line-height: var(--lineHeightBase500);
+    font-size: var(--fontSizeBase500);
+  }
+
+  .root {
+    /* from useStyles.expandIconStart — expandIcon arg #3 */
+    &:where([data-expand-icon-position='start']) {
+      & .expandIcon {
+        @apply pe-horizontal-s;
+      }
+    }
+
+    /* from useStyles.expandIconEnd — expandIcon arg #4 */
+    &:where([data-expand-icon-position='end']) {
+      & .expandIcon {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+
+        @apply flex justify-end ps-horizontal-s;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.icon — icon arg #2 */
+  .icon {
+    @apply flex h-full items-center pe-horizontal-s;
+
+    line-height: var(--lineHeightBase500);
+    font-size: var(--fontSizeBase500);
+  }
+}

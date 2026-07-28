@@ -1,10 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './AccordionHeader.module.css';
 
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
@@ -13,139 +26,67 @@ export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   icon: 'fui-AccordionHeader__icon',
 };
 
-const useStyles = makeStyles({
-  // TODO: this should be extracted to another package
-  resetButton: {
-    boxSizing: 'content-box',
-    backgroundColor: 'inherit',
-    color: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: 'inherit',
-    lineHeight: 'normal',
-    overflow: 'visible',
-    padding: '0',
-    WebkitAppearance: 'button',
-    textAlign: 'unset',
-  },
-  focusIndicator: createFocusOutlineStyle(),
-  root: {
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorTransparentBackground,
-    margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
-  },
-  rootDisabled: {
-    backgroundImage: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-  rootInline: {
-    display: 'inline-block',
-  },
-  button: {
-    position: 'relative',
-    width: '100%',
-    ...shorthands.borderWidth('0'),
-    padding: `0 ${tokens.spacingHorizontalM} 0 ${tokens.spacingHorizontalMNudge}`,
-    minHeight: '44px',
-    display: 'flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    ...typographyStyles.body1,
-    boxSizing: 'border-box',
-  },
-  buttonSmall: {
-    minHeight: '32px',
-    fontSize: tokens.fontSizeBase200,
-  },
-  buttonLarge: {
-    lineHeight: tokens.lineHeightBase400,
-    fontSize: tokens.fontSizeBase400,
-  },
-  buttonExtraLarge: {
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
-  },
-  buttonInline: {
-    display: 'inline-flex',
-  },
-  buttonExpandIconEndNoIcon: {
-    paddingLeft: tokens.spacingHorizontalM,
-  },
-  buttonExpandIconEnd: {
-    paddingRight: tokens.spacingHorizontalMNudge,
-  },
-  buttonDisabled: {
-    cursor: 'not-allowed',
-  },
-  expandIcon: {
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
-  },
-  expandIconStart: {
-    paddingRight: tokens.spacingHorizontalS,
-  },
-  expandIconEnd: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: '0%',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-  icon: {
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    paddingRight: tokens.spacingHorizontalS,
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
-  },
-});
+/**
+ * Data attributes rendered on the root slot.
+ *
+ * All five live on the ROOT even though most of them select styles for the `button` and
+ * `expandIcon` slots: those slots are the root's descendants, so one stamp drives every
+ * descendant rule (the same approach as react-button's `data-size` → `.root … & .icon`).
+ *
+ * `data-size` / `data-inline` / `data-disabled` are matched by the shared
+ * `@custom-variant` catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ * `data-expand-icon-position` and `data-icon` have no catalog entry yet, so
+ * `AccordionHeader.module.css` matches them with raw attribute selectors — the cookbook
+ * bans variant DEFINITIONS in modules, not attribute selectors.
+ * `data-expand-icon-position` is one of the headless preview's 25 attribute names
+ * (reports/headless-precedent.md); its own AccordionHeader stamps exactly this name and
+ * value space.
+ *
+ * `data-inline` / `data-disabled` / `data-icon` are *presence* selectors, so the flags
+ * are written as `flag || undefined` — React omits an attribute whose value is
+ * `undefined`, whereas `false` would render `data-inline="false"` and still match
+ * `[data-inline]`. `data-icon` carries the `!state.icon` half of the
+ * `buttonExpandIconEndNoIcon` condition; `data-disabled` carries `state.disabled`, which
+ * is NOT the same as the `<button>`'s own `disabled` attribute (react-aria drops that one
+ * for `disabledFocusable`).
+ */
+type AccordionHeaderRootDataAttributes = {
+  'data-size': AccordionHeaderState['size'];
+  'data-expand-icon-position': AccordionHeaderState['expandIconPosition'];
+  'data-inline'?: true;
+  'data-disabled'?: true;
+  'data-icon'?: true;
+};
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    accordionHeaderClassNames.root,
-    styles.root,
-    state.inline && styles.rootInline,
-    state.disabled && styles.rootDisabled,
-    state.root.className,
-  );
+  const { disabled, expandIconPosition, inline, size } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.button.className = mergeClasses(
-    accordionHeaderClassNames.button,
-    styles.resetButton,
-    styles.button,
-    styles.focusIndicator,
-    state.expandIconPosition === 'end' && !state.icon && styles.buttonExpandIconEndNoIcon,
-    state.expandIconPosition === 'end' && styles.buttonExpandIconEnd,
-    state.inline && styles.buttonInline,
-    state.size === 'small' && styles.buttonSmall,
-    state.size === 'large' && styles.buttonLarge,
-    state.size === 'extra-large' && styles.buttonExtraLarge,
-    state.disabled && styles.buttonDisabled,
-    state.button.className,
-  );
+  const root = state.root as AccordionHeaderState['root'] & AccordionHeaderRootDataAttributes;
+
+  root['data-size'] = size;
+  root['data-expand-icon-position'] = expandIconPosition;
+  root['data-inline'] = inline || undefined;
+  root['data-disabled'] = disabled || undefined;
+  root['data-icon'] = Boolean(state.icon) || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in AccordionHeader.module.css,
+  // not by the order of these arguments — see that file's header for the mapping back to
+  // the mergeClasses() argument order this replaces.
+  state.root.className = clsx(accordionHeaderClassNames.root, styles.root, state.root.className);
+
+  state.button.className = clsx(accordionHeaderClassNames.button, styles.button, state.button.className);
 
   if (state.expandIcon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.expandIcon.className = mergeClasses(
+    state.expandIcon.className = clsx(
       accordionHeaderClassNames.expandIcon,
       styles.expandIcon,
-      state.expandIconPosition === 'start' && styles.expandIconStart,
-      state.expandIconPosition === 'end' && styles.expandIconEnd,
       state.expandIcon.className,
     );
   }
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.icon.className = mergeClasses(accordionHeaderClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = clsx(accordionHeaderClassNames.icon, styles.icon, state.icon.className);
   }
   return state;
 };

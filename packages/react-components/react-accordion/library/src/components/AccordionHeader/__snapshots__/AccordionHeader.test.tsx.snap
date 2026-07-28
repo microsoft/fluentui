@@ -3,6 +3,8 @@
 exports[`AccordionHeader renders a default state 1`] = `
 <div
   class="fui-AccordionHeader"
+  data-expand-icon-position="start"
+  data-size="medium"
 >
   <button
     aria-expanded="false"
@@ -37,6 +39,8 @@ exports[`AccordionHeader renders a default state 1`] = `
 exports[`AccordionHeader renders when expandIcon is null 1`] = `
 <div
   class="fui-AccordionHeader"
+  data-expand-icon-position="start"
+  data-size="medium"
 >
   <button
     aria-expanded="false"
