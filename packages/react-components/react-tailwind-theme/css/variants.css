@@ -317,6 +317,26 @@
 @custom-variant hover-active (&:where(:hover:active, :active:focus-visible));
 
 /*
+ * Complement of the `hover` + `hover-active` PAIR above — "the element is at rest".
+ * `:hover:active` is a strict subset of `:hover`, so the union of the two variants is
+ * `:hover, :active:focus-visible` and this is its exact negation.
+ *
+ * Why it exists (react-toolbar's ToolbarToggleButton / ToolbarRadioButton): Griffel
+ * resolved a flat `d`-bucket atomic against a LATER slice's `:hover` atomic by
+ * SPECIFICITY (0-1-0 vs 0-2-0), so a wrapping component's flat override could beat the
+ * wrapped component's flat rules while still losing to its hover/pressed ones. Cascade
+ * layers cannot express that interleaving — a higher altitude wins in every state — and
+ * `:where()` flattens the specificity that used to arbitrate it. Restricting the wrapper's
+ * flat rule to the rest state reproduces the winner exactly, in every state, without
+ * either component having to know the other's values.
+ *
+ * Use it only for that shape. A component styling its OWN element never needs it: it
+ * writes its rest rule first and its `hover` / `hover-active` rules after, and file order
+ * decides.
+ */
+@custom-variant at-rest (&:where(:not(:hover, :active:focus-visible)));
+
+/*
  * `disabled || disabledFocusable` — the condition v9 components actually branch on.
  * A disabled-but-focusable control renders NO `disabled` attribute (react-aria's
  * `useARIAButtonProps` sets `disabled: disabled && !disabledFocusable` and
