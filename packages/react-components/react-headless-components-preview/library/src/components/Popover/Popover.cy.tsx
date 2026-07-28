@@ -515,81 +515,84 @@ describe('positioning observer', () => {
     });
   });
 
-  describe('Popover and Tooltip on same trigger (anchor-name sharing)', () => {
-    const PopoverWithTooltipExample = () => {
-      return (
-        <Popover>
-          <PopoverTrigger disableButtonEnhancement>
-            <Tooltip
-              hideDelay={0}
-              showDelay={0}
-              positioning="after"
-              content={{ id: 'tooltip-content', children: 'Click for options', style: { pointerEvents: 'none' } }}
-              relationship="label"
-            >
-              <button id="popover-tooltip-trigger">Trigger</button>
-            </Tooltip>
-          </PopoverTrigger>
-          <PopoverSurface>Popover content</PopoverSurface>
-        </Popover>
-      );
-    };
+  // CSS anchor positioning is only available in Chromium 125+; skip the entire suite on older browsers.
+  if (typeof window !== 'undefined' && window.CSS?.supports?.('anchor-name: --x')) {
+    describe('Popover and Tooltip on same trigger (anchor-name sharing)', () => {
+      const PopoverWithTooltipExample = () => {
+        return (
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <Tooltip
+                hideDelay={0}
+                showDelay={0}
+                positioning="after"
+                content={{ id: 'tooltip-content', children: 'Click for options', style: { pointerEvents: 'none' } }}
+                relationship="label"
+              >
+                <button id="popover-tooltip-trigger">Trigger</button>
+              </Tooltip>
+            </PopoverTrigger>
+            <PopoverSurface>Popover content</PopoverSurface>
+          </Popover>
+        );
+      };
 
-    it('should not clobber anchor-name when both Popover and Tooltip target the same trigger', () => {
-      mount(<PopoverWithTooltipExample />);
+      it('should not clobber anchor-name when both Popover and Tooltip target the same trigger', () => {
+        mount(<PopoverWithTooltipExample />);
 
-      // Show tooltip on hover
-      cy.get('#popover-tooltip-trigger').trigger('pointerover', { force: true });
-      cy.get('[role="tooltip"]').should('exist');
-      cy.get('[role="tooltip"]').should('contain.text', 'Click for options');
+        // Show tooltip on hover
+        cy.get('#popover-tooltip-trigger').trigger('pointerover', { force: true });
+        cy.get('[role="tooltip"]').should('exist');
+        cy.get('[role="tooltip"]').should('contain.text', 'Click for options');
 
-      // Clicking the popover trigger is allowed to dismiss the tooltip, but it must
-      // leave the popover's anchor-name wiring intact.
-      cy.get('#popover-tooltip-trigger').click();
-      cy.get(surfaceSelector).should('be.visible');
-      cy.get('[role="tooltip"]').should('not.exist');
+        // Clicking the popover trigger is allowed to dismiss the tooltip, but it must
+        // leave the popover's anchor-name wiring intact.
+        cy.get('#popover-tooltip-trigger').click();
+        cy.get(surfaceSelector).should('be.visible');
+        cy.get('[role="tooltip"]').should('not.exist');
 
-      cy.get('#popover-tooltip-trigger').should($trigger => {
-        const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
-        expect(anchorName).to.not.be.empty;
-      });
-    });
-
-    it('should show tooltip and open popover independently', () => {
-      mount(<PopoverWithTooltipExample />);
-
-      // Hover to show tooltip
-      cy.get('#popover-tooltip-trigger').trigger('pointerover', { force: true });
-      cy.get('[role="tooltip"]').should('exist');
-      cy.get('[role="tooltip"]').should('contain.text', 'Click for options');
-      cy.get(surfaceSelector).should('not.exist');
-
-      // Click to open popover
-      cy.get('#popover-tooltip-trigger').click();
-      cy.get(surfaceSelector).should('be.visible');
-      cy.get('[role="tooltip"]').should('not.exist');
-
-      // Close popover with Escape
-      cy.focused().realPress('Escape');
-      cy.get(surfaceSelector).should('not.exist');
-    });
-
-    it('should properly clean up anchor-name on unmount', () => {
-      mount(<PopoverWithTooltipExample />);
-
-      // Open popover to set anchor-name
-      cy.get('#popover-tooltip-trigger').click();
-      cy.get(surfaceSelector).should('be.visible');
-
-      // Verify anchor-name was set
-      cy.get('#popover-tooltip-trigger').should($trigger => {
-        const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
-        expect(anchorName).to.not.be.empty;
+        cy.get('#popover-tooltip-trigger').should($trigger => {
+          const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
+          expect(anchorName).to.not.be.empty;
+        });
       });
 
-      // Close popover
-      cy.focused().realPress('Escape');
-      cy.get(surfaceSelector).should('not.exist');
+      it('should show tooltip and open popover independently', () => {
+        mount(<PopoverWithTooltipExample />);
+
+        // Hover to show tooltip
+        cy.get('#popover-tooltip-trigger').trigger('pointerover', { force: true });
+        cy.get('[role="tooltip"]').should('exist');
+        cy.get('[role="tooltip"]').should('contain.text', 'Click for options');
+        cy.get(surfaceSelector).should('not.exist');
+
+        // Click to open popover
+        cy.get('#popover-tooltip-trigger').click();
+        cy.get(surfaceSelector).should('be.visible');
+        cy.get('[role="tooltip"]').should('not.exist');
+
+        // Close popover with Escape
+        cy.focused().realPress('Escape');
+        cy.get(surfaceSelector).should('not.exist');
+      });
+
+      it('should properly clean up anchor-name on unmount', () => {
+        mount(<PopoverWithTooltipExample />);
+
+        // Open popover to set anchor-name
+        cy.get('#popover-tooltip-trigger').click();
+        cy.get(surfaceSelector).should('be.visible');
+
+        // Verify anchor-name was set
+        cy.get('#popover-tooltip-trigger').should($trigger => {
+          const anchorName = $trigger[0].style.getPropertyValue('anchor-name');
+          expect(anchorName).to.not.be.empty;
+        });
+
+        // Close popover
+        cy.focused().realPress('Escape');
+        cy.get(surfaceSelector).should('not.exist');
+      });
     });
-  });
+  }
 });
