@@ -20,7 +20,7 @@
  *   1 fieldClassNames.root                             → static class (JS)
  *   2 rootStyles.base                                  → fui.components.l1  .root
  *   3 rootStyles.horizontal      (orientation)         → fui.components.l1  (data-orientation)
- *   4 rootStyles.horizontalNoLabel (horizontal && !label) → fui.components.l1  .horizontalNoLabel
+ *   4 rootStyles.horizontalNoLabel (horizontal && !label) → fui.components.l1  .horizontal-no-label
  *   5 consumer className                               → unlayered (always wins)
  *
  * `label` slot — @fluentui/react-label's <Label>
@@ -35,20 +35,20 @@
  *
  * `validationMessageIcon` slot — Field's own <span> (it WRAPS the react-icons glyph)
  *   1 fieldClassNames.validationMessageIcon            → static class (JS)
- *   2 useValidationMessageIconBaseClassName (makeReset)→ fui.base           .validationMessageIcon
- *   3 validationMessageIconStyles[validationState]     → fui.components.l1  (.validationMessageIcon<State>)
+ *   2 useValidationMessageIconBaseClassName (makeReset)→ fui.base           .validation-message-icon
+ *   3 validationMessageIconStyles[validationState]     → fui.components.l1  (.validation-message-icon<State>)
  *   4 consumer className                               → unlayered
  *
  * `validationMessage` slot — Field's own <div>
  *   1 fieldClassNames.validationMessage                → static class (JS)
- *   2 useSecondaryTextBaseClassName (makeReset)        → fui.base           .secondaryText
- *   3 secondaryTextStyles.error                        → fui.components.l1  .secondaryTextError
- *   4 secondaryTextStyles.withIcon                     → fui.components.l1  .secondaryTextWithIcon
+ *   2 useSecondaryTextBaseClassName (makeReset)        → fui.base           .secondary-text
+ *   3 secondaryTextStyles.error                        → fui.components.l1  .secondary-text-error
+ *   4 secondaryTextStyles.withIcon                     → fui.components.l1  .secondary-text-with-icon
  *   5 consumer className                               → unlayered
  *
  * `hint` slot — Field's own <div>
  *   1 fieldClassNames.hint                             → static class (JS)
- *   2 useSecondaryTextBaseClassName (makeReset)        → fui.base           .secondaryText
+ *   2 useSecondaryTextBaseClassName (makeReset)        → fui.base           .secondary-text
  *   3 consumer className                               → unlayered
  *
  * ── ALTITUDE: the label slot is l2, not l1 (DECISIONS.md D2 amendment 2) ─────────────
@@ -70,7 +70,7 @@
  *
  * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
  * • root arg #4 `horizontalNoLabel` re-sets `grid-template-columns` over arg #3
- *   `horizontal`. `.horizontalNoLabel` and `.root:where([data-orientation='horizontal'])`
+ *   `horizontal`. `.horizontal-no-label` and `.root:where([data-orientation='horizontal'])`
  *   both flatten to 0-1-0 on the SAME element, so file position is the only tiebreak —
  *   its block is written last inside its `fui.components.l1` group.
  * • label args #4/#5 re-set `padding-block-start/end` over arg #3, and arg #7 re-sets
@@ -121,7 +121,7 @@
    * one class here too and the hook puts it on both.
    * `...typographyStyles.caption1` is expanded to the four longhands it compiles to.
    */
-  .secondaryText {
+  .secondary-text {
     /* tokens.spacingVerticalXXS → named spacing utility (D4 amendment) */
     @apply mt-vertical-xxs;
 
@@ -133,7 +133,7 @@
   }
 
   /* from useValidationMessageIconBaseClassName (makeResetStyles) */
-  .validationMessageIcon {
+  .validation-message-icon {
     @apply inline-block;
 
     /* `iconSize` = 12px; font-size is not spacing-powered, so it is a base-scale literal */
@@ -141,7 +141,7 @@
 
     /*
      * Negative inline-start margin puts the icon in the gutter that
-     * `.secondaryTextWithIcon` opens on the validation message. Both terms are base-scale
+     * `.secondary-text-with-icon` opens on the validation message. Both terms are base-scale
      * literals because no utility can express a term inside calc(): 12px is `iconSize`,
      * 4px is tokens.spacingHorizontalXS (D4 amendment).
      */
@@ -189,7 +189,7 @@
    * the Griffel slice 1:1 and adds no vocabulary. Written after the `horizontal` block:
    * both are 0-1-0 on the same element and this one re-sets `grid-template-columns`.
    */
-  .horizontalNoLabel {
+  .horizontal-no-label {
     padding-inline-start: 33%;
     grid-template-columns: 1fr;
   }
@@ -201,22 +201,22 @@
    * `validationState` selects a colour and nothing else, exactly like ProgressBar's
    * `color` prop, so it rides module classes rather than a data-attribute (D3).
    */
-  .validationMessageIconError {
+  .validation-message-icon-error {
     color: var(--colorPaletteRedForeground1);
   }
 
-  .validationMessageIconWarning {
+  .validation-message-icon-warning {
     color: var(--colorPaletteDarkOrangeForeground1);
   }
 
-  .validationMessageIconSuccess {
+  .validation-message-icon-success {
     color: var(--colorPaletteGreenForeground1);
   }
 }
 
 @layer fui.components.l1 {
   /* from useSecondaryTextStyles.error — validationMessage arg #3 */
-  .secondaryTextError {
+  .secondary-text-error {
     color: var(--colorPaletteRedForeground1);
   }
 
@@ -226,7 +226,7 @@
    * 12px is `iconSize`, 4px is tokens.spacingHorizontalXS; both are base-scale literals
    * because the sum sits inside a calc() (D4 amendment).
    */
-  .secondaryTextWithIcon {
+  .secondary-text-with-icon {
     padding-inline-start: calc(12px * var(--base-scale) + 4px * var(--base-scale));
   }
 }

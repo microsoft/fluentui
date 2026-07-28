@@ -55,9 +55,9 @@ type FieldRootDataAttributes = {
  * lookup, including the `none` branch that resolves to no class at all.
  */
 const validationMessageIconStyles = {
-  error: styles.validationMessageIconError,
-  warning: styles.validationMessageIconWarning,
-  success: styles.validationMessageIconSuccess,
+  error: styles['validation-message-icon-error'],
+  warning: styles['validation-message-icon-warning'],
+  success: styles['validation-message-icon-success'],
   none: undefined,
 } as const;
 
@@ -73,16 +73,25 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   root['data-orientation'] = state.orientation;
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Field's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. Field is the natural consumer of this capability: it wraps an ARBITRARY
+  // control from another package, and that control's own module can now read Field's
+  // `data-orientation` / `data-size` as `@variant group-size-small/fui-field { … }` rather
+  // than needing the value threaded through props (DECISIONS.md D15).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Field.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
   state.root.className = clsx(
+    'group/fui-field',
     fieldClassNames.root,
     styles.root,
-    horizontal && !state.label && styles.horizontalNoLabel,
+    horizontal && !state.label && styles['horizontal-no-label'],
     state.root.className,
   );
 
@@ -93,7 +102,7 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = clsx(
       fieldClassNames.validationMessageIcon,
-      styles.validationMessageIcon,
+      styles['validation-message-icon'],
       validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
     );
@@ -102,15 +111,15 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   if (state.validationMessage) {
     state.validationMessage.className = clsx(
       fieldClassNames.validationMessage,
-      styles.secondaryText,
-      validationState === 'error' && styles.secondaryTextError,
-      !!state.validationMessageIcon && styles.secondaryTextWithIcon,
+      styles['secondary-text'],
+      validationState === 'error' && styles['secondary-text-error'],
+      !!state.validationMessageIcon && styles['secondary-text-with-icon'],
       state.validationMessage.className,
     );
   }
 
   if (state.hint) {
-    state.hint.className = clsx(fieldClassNames.hint, styles.secondaryText, state.hint.className);
+    state.hint.className = clsx(fieldClassNames.hint, styles['secondary-text'], state.hint.className);
   }
 
   return state;
