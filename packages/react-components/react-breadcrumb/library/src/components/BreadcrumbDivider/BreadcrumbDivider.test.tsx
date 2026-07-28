@@ -25,7 +25,7 @@ describe('BreadcrumbDivider', () => {
       <div>
         <li
           aria-hidden="true"
-          class="fui-BreadcrumbDivider"
+          class="group/fui-breadcrumb-divider fui-BreadcrumbDivider"
           data-size="medium"
         >
           <svg

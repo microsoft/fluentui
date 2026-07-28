@@ -37,7 +37,7 @@ describe('BreadcrumbButton', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
-          class="fui-Button fui-BreadcrumbButton"
+          class="group/fui-button fui-Button group/fui-breadcrumb-button fui-BreadcrumbButton"
           data-size="medium"
         >
           Default BreadcrumbButton
@@ -53,7 +53,7 @@ describe('BreadcrumbButton', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
-          class="fui-Button fui-BreadcrumbButton"
+          class="group/fui-button fui-Button group/fui-breadcrumb-button fui-BreadcrumbButton"
           data-icon-position="before"
           data-size="medium"
         >

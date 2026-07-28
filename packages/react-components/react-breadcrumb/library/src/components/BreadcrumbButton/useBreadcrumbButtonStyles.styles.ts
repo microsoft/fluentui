@@ -80,7 +80,19 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // eslint-disable-next-line react-hooks/immutability
   root['data-current'] = current || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this button's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. Read it as `@variant group-current/fui-breadcrumb-button { … }`
+  // (DECISIONS.md D15).
+  //
+  // This root ends up carrying TWO markers, which is correct and not a duplication:
+  // `useButtonStyles_unstable` below stamps its own `group/fui-button` on the same element,
+  // because the element genuinely IS both a Button and a BreadcrumbButton. A module reading
+  // either name resolves to this element; `data-current` is only visible under the
+  // breadcrumb name, since react-button never stamps it.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbButton.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why EVERY block sits at altitude
@@ -91,7 +103,12 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // argument below, so this string still arrives after react-button's classes — exactly as
   // it did under mergeClasses.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(breadcrumbButtonClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(
+    'group/fui-breadcrumb-button',
+    breadcrumbButtonClassNames.root,
+    styles.root,
+    state.root.className,
+  );
 
   if (state.icon) {
     // NOTE: `breadcrumbButtonClassNames.icon` is intentionally not applied — the Griffel
