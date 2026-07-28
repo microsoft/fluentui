@@ -6,7 +6,9 @@
   "tags": ["vNext"],
   "targets": {
     "build-storybook": {
-      "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }]
+      "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }],
+      "//inputs": "^production is REQUIRED: storybook compiles every story's component package from SOURCE (registerTsPaths -> packages/**/src), but dependsOn above is narrowed to react-storybook-addon, so without it only that closure was hashed and editing any other package's src (e.g. a *.module.css) left the hash unchanged -> nx replayed a stale dist/storybook and VR captures silently compared the PREVIOUS build against the baseline. See migration/griffel-to-tailwind/validation/README.md.",
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"]
     }
   }
 }

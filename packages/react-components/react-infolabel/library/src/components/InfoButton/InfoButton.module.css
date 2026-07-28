@@ -28,6 +28,11 @@
  *   6  size === 'large' && .large         → fui.components.l1  (data-size)
  *   7  consumer className                 → unlayered (always wins)
  *
+ * EXCEPTION: the three `.fui-Icon-filled` / `.fui-Icon-regular` display swaps (from args
+ * #2, #5 and #2's hover half) are NOT in a layer — they style `@fluentui/react-icons`'
+ * elements, which that unconverted package styles unlayered. They live in one block at the
+ * BOTTOM of this file; see "The icon swap must be UNLAYERED" there for the DOM evidence.
+ *
  * InfoButton has no `makeResetStyles`, so `fui.base` is unused. Its root `<button>` is its
  * own element — `PopoverTrigger` clones aria/ref/handlers onto it and contributes no
  * className — so nothing here sits over another component's hook output and
@@ -122,14 +127,8 @@
        stay byte-identical to the expanded shorthand the `size-large` block below overrides. */
     @apply pt-vertical-xs pb-vertical-xs ps-horizontal-xs pe-horizontal-xs;
 
-    /* `@fluentui/react-icons`' bundleIcon swaps these two at rest / hover / selected */
-    & :global(.fui-Icon-filled) {
-      display: none;
-    }
-
-    & :global(.fui-Icon-regular) {
-      display: inline-flex;
-    }
+    /* The `.fui-Icon-filled` / `.fui-Icon-regular` display swap is NOT here — it is
+       UNLAYERED at the bottom of this file. See "The icon swap must be unlayered". */
   }
 }
 
@@ -185,14 +184,6 @@
     @variant open {
       background-color: var(--colorTransparentBackgroundSelected);
       color: var(--colorNeutralForeground2BrandSelected);
-
-      & :global(.fui-Icon-filled) {
-        display: inline-flex;
-      }
-
-      & :global(.fui-Icon-regular) {
-        display: none;
-      }
     }
   }
 }
@@ -230,14 +221,6 @@
       background-color: var(--colorTransparentBackgroundHover);
       color: var(--colorNeutralForeground2BrandHover);
       cursor: pointer;
-
-      & :global(.fui-Icon-filled) {
-        display: inline-flex;
-      }
-
-      & :global(.fui-Icon-regular) {
-        display: none;
-      }
 
       @variant active {
         background-color: var(--colorTransparentBackgroundPressed);
@@ -286,6 +269,82 @@
         background-color: Highlight;
         color: Canvas;
       }
+    }
+  }
+}
+
+/*
+ * ── The icon swap must be UNLAYERED (VR fix, 2026-07-28) ─────────────────────────────
+ *
+ * These six rules style ANOTHER package's elements: the two <svg>s that
+ * `@fluentui/react-icons`' `bundleIcon()` renders inside this button. react-icons is
+ * unconverted, so it styles those same two elements with Griffel atomics, and Griffel
+ * injects UNLAYERED:
+ *
+ *   node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js
+ *     root:    { mc9l5x: 'fjseox'   }  →  .fjseox   { display: none   }
+ *     visible: { mc9l5x: 'f1w7gpdv' }  →  .f1w7gpdv { display: inline }
+ *   bundleIcon.js gives the FILLED svg `root + (filled && visible)` and the REGULAR svg
+ *   `root + (!filled && visible)`. `filled` is undefined here, so at rest the filled svg
+ *   carries `.fjseox` (display:none) and the regular svg `.f1w7gpdv` (display:inline).
+ *
+ * In the CSS cascade, UNLAYERED normal author declarations outrank EVERY `@layer` — the
+ * comparison happens before specificity is consulted. So while these rules lived in
+ * `@layer fui.components.l1` they could never beat `.fjseox`, no matter that they are
+ * 0-2-0 against its 0-1-0. The open InfoButton kept rendering the OUTLINE glyph.
+ *
+ * DOM evidence (built VR storybook, story `infolabel--sizes-open`, Playwright + CDP
+ * `CSS.getMatchedStylesForNode` on `.fui-InfoButton .fui-Icon-filled`):
+ *
+ *   root attrs        … data-open="true" data-size="small"   ← the variant DOES match
+ *   matched, in cascade order (last = winner):
+ *     {selector: '.fuicm-InfoButton-module__root--kOrV .fui-Icon-filled',
+ *      layers: ['fui.components.l1'], specificity: {a:0,b:2,c:0}, display: 'none'}
+ *     {selector: '….fuicm-…:where([open],[data-open],:open) .fui-Icon-filled',
+ *      layers: ['fui.components.l1'], specificity: {a:0,b:2,c:0}, display: 'inline-flex'}
+ *     {selector: '.fjseox', layers: [], specificity: {a:0,b:1,c:0}, display: 'none'}  ← WON
+ *   getComputedStyle(.fui-Icon-filled).display === 'none'   (VR diff: 238 px, 3 glyphs)
+ *
+ * This is the SAME asymmetry the header already documents for the `info` slot, seen from
+ * the other side: DECISIONS.md D2's "unlayered beats layered" is correct when an
+ * unconverted component styles a converted one, and inverts when a converted component
+ * styles an unconverted one's elements. Griffel's own compiled output for this component
+ * was unlayered at 0-2-0 and won on specificity — reproducing that requires these rules to
+ * be unlayered too. Everything that styles THIS component's own root stays layered above.
+ *
+ * Order matters and is preserved from the layered version: base (`d`) → open (`d`) →
+ * hover (`h`), all three 0-2-0, so file position decides and hovering an OPEN button still
+ * resolves to hover — the same outcome Griffel's `h`-over-`d` bucket order produced.
+ *
+ * `@variant`, not a hand-written `[data-open]`, so the shared catalog stays the single
+ * definition of the selector; `:where()` still flattens it to 0-2-0 total.
+ */
+.root {
+  & :global(.fui-Icon-filled) {
+    display: none;
+  }
+
+  & :global(.fui-Icon-regular) {
+    display: inline-flex;
+  }
+
+  @variant open {
+    & :global(.fui-Icon-filled) {
+      display: inline-flex;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+  }
+
+  @variant hover {
+    & :global(.fui-Icon-filled) {
+      display: inline-flex;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
     }
   }
 }

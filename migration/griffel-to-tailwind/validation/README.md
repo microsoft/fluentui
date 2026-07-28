@@ -34,6 +34,20 @@ kinds in `apps/vr-tests-react-components/src/stories/<Component>/`.
 - **Same machine, same code-state discipline**: baseline must be captured from the
   storybook built at the pre-conversion commit; candidate from post-conversion. Never mix
   local and CI captures (font/GPU rendering differs).
+- **The storybook rebuild must actually run.** Read the build log and confirm the line is
+  `> nx run vr-tests-react-components:build-storybook` with **nothing** after it. If it
+  reads `[existing outputs match the cache, left as is]` or `[local cache]`, nx replayed a
+  previous `dist/storybook` and your capture is the PREVIOUS build's pixels — which match
+  the baseline no matter what your code renders, producing a **false PASS**. Re-run with
+  `--skip-nx-cache` and investigate why the hash did not move. (Fixed 2026-07-28 by adding
+  `^production` to the target's `inputs` in `apps/vr-tests-react-components/project.json`;
+  before that, only `react-storybook-addon`'s dependency closure was hashed, so editing any
+  other package's `src/` — including every converted `*.module.css` — left the hash
+  unchanged. This is what made react-infolabel report VR 10/10 in batch 2 and in the
+  spacing workflow while the converted CSS had never been compiled into the bundle — and
+  what made a correct fix attempt look like it had no effect. The bug it hid is written up
+  in `react-infolabel/…/InfoButton/InfoButton.module.css`, §"The icon swap must be
+  UNLAYERED".)
 - **Tolerance starts at zero** (`--maxDiffPixels 0`): same browser + same machine +
   deterministic viewport (1920×964, animations frozen) means CSS-identical ⇒
   pixel-identical. If a diff is pure antialiasing noise, the adjudicating agent may pass
