@@ -1,0 +1,57 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useToolbarGroupStyles_unstable, not source declaration order.
+ *
+ *   #  mergeClasses argument            → target
+ *   ---------------------------------------------------------------------------------
+ *   1  toolbarGroupClassNames.root      → static class (JS)
+ *   2  useStyles.root                   → fui.components.l1
+ *   3  vertical && useStyles.vertical   → fui.components.l1  (data-orientation)
+ *   4  consumer className               → unlayered (always wins)
+ *
+ * ToolbarGroup's root is its OWN element, so both blocks are l1. No makeResetStyles
+ * (`fui.base` unused) and nothing sits over another component's hook output
+ * (`fui.components.l2` unused).
+ *
+ * The two slices touch disjoint properties (`display`/`align-items` vs
+ * `flex-direction`/`width`), so nothing here depends on block order — it is written in
+ * argument order anyway, per the cookbook's "never reorder blocks" rule.
+ *
+ * `vertical` is optional on ToolbarGroupState (it is injected from ToolbarContext, so it
+ * is `undefined` outside a Toolbar); `undefined` is falsy in the Griffel source and maps
+ * to `data-orientation="horizontal"` here — same branch, same outcome.
+ *
+ * RTL: the compiled atomics contain no `[ltr, rtl]` pairs — nothing is direction
+ * sensitive. Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToolbarGroup/useToolbarGroupStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — arg #2 */
+  .root {
+    @apply flex items-center;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.vertical — arg #3 */
+  .root {
+    @variant vertical {
+      @apply w-fit flex-col;
+    }
+  }
+}

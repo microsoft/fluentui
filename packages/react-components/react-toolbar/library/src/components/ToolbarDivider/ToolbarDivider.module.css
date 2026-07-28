@@ -1,0 +1,127 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useToolbarDividerStyles_unstable, not source declaration order.
+ *
+ *   #  mergeClasses argument                    → target
+ *   ---------------------------------------------------------------------------------
+ *   1  useBaseStyles.root                       → fui.components.l2  ← altitude, below
+ *      …except its `display`                    → fui.base           ← INVERTED, below
+ *   2  !vertical && useBaseStyles.vertical      → fui.components.l2   (data-orientation)
+ *   3  Divider's own classes (already on the    → fui.components.l1 / fui.base
+ *      slot when this hook runs)                  — see the inversion note
+ *   4  consumer className                       → unlayered (always wins)
+ *
+ * ── ALTITUDE: l2, because the root is @fluentui/react-divider's element ───────────────
+ * ToolbarDivider owns no element: it renders <Divider> and restyles Divider's root.
+ * Everything applied over another component's hook output belongs in
+ * `fui.components.l2`, never l1 — in l1 the winner between Divider.module.css and this
+ * file would be decided by stylesheet load order. react-divider is CONVERTED, so its
+ * rules are layered (l1) and l2 cleanly outranks them; D2 amendment 5's unlayered rule
+ * does not apply here (it is for elements owned by external/UNCONVERTED Griffel packages).
+ *
+ * ── The one INVERSION: `display` is arg #1 but has to LOSE (fui.base) ────────────────
+ * Unlike ToolbarButton — which writes its classes and then calls
+ * `useButtonStyles_unstable`, landing them LAST in the merge — this hook calls
+ * `useDividerStyles_unstable` FIRST and then merges its own classes BEFORE the resulting
+ * string:
+ *
+ *     useDividerStyles_unstable(state);                       // state.root.className = Divider's
+ *     state.root.className = mergeClasses(toolbarRoot, toolbarVertical, state.root.className);
+ *
+ * `mergeClasses` keeps the LAST argument on a property collision, so DIVIDER wins every
+ * tie, not ToolbarDivider. There is exactly one collision — Griffel property key
+ * `mc9l5x`, `display` — where this slice's `inline-flex` (`ftuwxu6`) lost to
+ * `useBaseStyles.base`'s `display: flex` (`f22iagw`) in the pre-migration baseline
+ * (git d2375b2452, react-divider's Griffel source, `useBaseStyles.base`). The atomic was
+ * DELETED at merge time and never reached the DOM.
+ *
+ * Reproducing that means the declaration must rank BELOW Divider's l1, so it is authored
+ * in `fui.base` — the levelless layer that loses to every component level. It is kept
+ * rather than dropped so the source slice stays visible and so behaviour tracks
+ * react-divider if its own `display` ever moves.
+ *
+ * (Note this also repairs a live regression: while ToolbarDivider was still on Griffel,
+ * its UNLAYERED `ftuwxu6` beat converted Divider's layered `display: flex`, silently
+ * flipping the rendered value to `inline-flex`. mergeClasses cannot dedupe against a
+ * clsx-composed className, so nothing deleted the atomic any more. Visually inert — a
+ * ToolbarDivider is always a flex item of Toolbar/ToolbarGroup and CSS Display 3
+ * blockifies `inline-flex` to `flex` there — but wrong, and fixed by this file.)
+ *
+ * Every OTHER property this file sets — `max-width`, the four padding longhands — has no
+ * counterpart on Divider's root, so l2 vs l1 is unobservable for them and l2 is simply the
+ * correct altitude. The nearest neighbour is Divider's `inset` slice
+ * (`@variant inset { @apply px-horizontal-m }`), which carries the SAME 12px value and is
+ * gated on a prop ToolbarDivider never sets.
+ *
+ * ── `data-orientation` ───────────────────────────────────────────────────────────────
+ * Re-stamped by this hook even though `useDividerStyles_unstable` (called first) already
+ * wrote the identical value from the same `state.vertical`: the assignment is idempotent
+ * and it keeps this module's selectors from depending on another package's stamping.
+ * The Griffel slice is confusingly named `vertical` but is applied when `!vertical`, so it
+ * maps to `@variant horizontal`.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ───────────────────────────
+ * `padding: '0 12px'` → four longhands; 12px matches the M step → `ps-/pe-horizontal-m`.
+ * The zero halves stay literal `0` (nothing for `--base-scale` to scale). `maxWidth: '1px'`
+ * is a raw px literal matching NO spacing step, so it takes the numeric fallback
+ * `max-w-1` = `calc(1px * var(--base-scale))`; it is a collapsed-width literal, not a
+ * `strokeWidth*` token, so the stroke-width utilities do not apply.
+ *
+ * ── RTL ──────────────────────────────────────────────────────────────────────────────
+ * The compiled atomics contain no `[ltr, rtl]` pairs; the padding is symmetric across the
+ * inline axis. Logical `ps-`/`pe-` is used anyway, per the cookbook default.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToolbarDivider/useToolbarDividerStyles.styles.js.
+ */
+
+@layer fui.base {
+  /*
+   * from useBaseStyles.root — the `display` half only. In `fui.base`, NOT l2: it is
+   * outranked by react-divider's own `display: flex` (fui.components.l1), which is the
+   * winner mergeClasses produced. See "The one INVERSION" in the header.
+   */
+  .root {
+    display: inline-flex;
+  }
+}
+
+@layer fui.components.l2 {
+  /* from useBaseStyles.root — everything except `display` (arg #1) */
+  .root {
+    @apply max-w-1;
+
+    /* `padding: '0 12px'` → four longhands; 12px = spacingHorizontalM */
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @apply ps-horizontal-m pe-horizontal-m;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useBaseStyles.vertical — arg #2. Named `vertical` in the source but applied when
+   * `!vertical`, hence `@variant horizontal`. Written after `.root` so it re-sets the
+   * `max-width` above, matching the later mergeClasses argument.
+   */
+  .root {
+    @variant horizontal {
+      max-width: initial;
+    }
+  }
+}

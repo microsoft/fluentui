@@ -1,0 +1,91 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useToolbarButtonStyles_unstable, not source declaration order.
+ *
+ * `root` slot (= @fluentui/react-button's Button root)
+ *   1  vertical && useBaseStyles.vertical      → fui.components.l2  ← altitude, below
+ *   2  consumer className                      → unlayered (always wins)
+ *
+ * `icon` slot (= Button's `fui-Button__icon` span)
+ *   1  vertical && useBaseStyles.verticalIcon  → fui.components.l2  ← altitude, below
+ *   2  consumer className                      → unlayered
+ *
+ * ── ALTITUDE: everything here is l2, nothing is l1 (DECISIONS.md D2 amendment 2) ──────
+ * ToolbarButton owns no element of its own: it renders @fluentui/react-button's <Button>
+ * and both slices land on slots whose base rules come from `useButtonStyles_unstable`
+ * (converted, `fui.components.l1` + `fui.base`). Everything a component applies over
+ * another component's hook output belongs in `fui.components.l2`, never l1 — in l1 the
+ * winner would be decided by stylesheet load order between Button.module.css and this
+ * file.
+ *
+ * This is load-bearing, not bookkeeping. `useToolbarButtonStyles_unstable` writes its
+ * classes onto `state.root` / `state.icon` and THEN calls `useButtonStyles_unstable`,
+ * whose own `clsx(...)` puts the incoming className LAST — so Griffel's mergeClasses
+ * resolved every collision in ToolbarButton's favour. Both collisions are real:
+ *   • root  `flex-direction: column` over Button's row default (its reset is `inline-flex`).
+ *   • icon  `font-size: 24px` over the icon reset's `calc(20px * var(--base-scale))`, and
+ *           `margin: 0` over `useIconStyles.before/after`'s `margin-inline-*` gap.
+ * l2 over l1/fui.base reproduces both deterministically.
+ *
+ * ── Reaching the icon slot ───────────────────────────────────────────────────────────
+ * The icon rules hang off the root's `data-orientation` and select the icon by its OWNER's
+ * static class, `:global(.fui-Button__icon)` — the same shape react-button itself uses for
+ * its size-scoped icon rules. That keeps the whole conversion to ONE module class and ONE
+ * data attribute, and needs no class of ours on the icon slot at all.
+ *
+ * `.fui-Button__icon` is another package's static class, but the rule stays LAYERED: D2
+ * amendment 5's unlayered rule applies to elements owned by an EXTERNAL or UNCONVERTED
+ * Griffel package, and react-button is converted (its icon slot is styled from
+ * `fui.base`/`fui.components.l1`, both of which l2 outranks). There is no
+ * `fui-Icon-filled` / `fui-Icon-regular` rule anywhere in react-toolbar — grep-verified —
+ * so no unlayered block is needed in this package.
+ *
+ * ── Pixel literal (DECISIONS.md D4) ──────────────────────────────────────────────────
+ * `fontSize: '24px'` is a px literal, so it rides `--base-scale` as
+ * `calc(24px * var(--base-scale))` — byte-identical in form to the value react-button's
+ * own `size-large` icon rule uses, and exactly `24px` at the default 16px root.
+ *
+ * ── RTL ──────────────────────────────────────────────────────────────────────────────
+ * The compiled atomics contain no `[ltr, rtl]` pairs. `margin: 0` compiles to the physical
+ * shorthand (`.f1s184ao{margin:0}`) and is reproduced as the four physical longhands: they
+ * must beat Button's LOGICAL `margin-inline-start/end`, which they do because logical and
+ * physical declarations cascade together and l2 outranks l1.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/ToolbarButton/useToolbarButtonStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  .root {
+    @variant vertical {
+      /* from useBaseStyles.vertical — root arg #1 */
+      @apply flex-col;
+
+      /* from useBaseStyles.verticalIcon — icon arg #1 */
+      & :global(.fui-Button__icon) {
+        font-size: calc(24px * var(--base-scale));
+
+        /* `margin: '0'` expanded to longhands (cookbook §2). Literal `0`, not
+           `mt-vertical-none`: zero has nothing for `--base-scale` to scale. */
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+      }
+    }
+  }
+}

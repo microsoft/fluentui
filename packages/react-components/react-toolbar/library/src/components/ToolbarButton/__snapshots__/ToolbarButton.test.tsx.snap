@@ -4,6 +4,8 @@ exports[`ToolbarButton renders a default state 1`] = `
 <div>
   <button
     class="fui-Button"
+    data-orientation="horizontal"
+    data-size="medium"
     type="button"
   >
     Default ToolbarButton

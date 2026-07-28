@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { ToolbarDivider } from './ToolbarDivider';
 import { isConformant } from '../../testing/isConformant';
 
@@ -7,7 +8,14 @@ describe('ToolbarDivider', () => {
   isConformant({
     Component: ToolbarDivider,
     displayName: 'ToolbarDivider',
-    disabledTests: ['component-has-static-classnames-object'],
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // Neither this component's styles hook nor @fluentui/react-divider (converted first,
+    // as the pilot) calls mergeClasses any more, so `make-styles-overrides-win` has
+    // nothing to observe — it was already failing on this component before this
+    // conversion, from the react-divider side alone. `classname-overrides-win` is its
+    // cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

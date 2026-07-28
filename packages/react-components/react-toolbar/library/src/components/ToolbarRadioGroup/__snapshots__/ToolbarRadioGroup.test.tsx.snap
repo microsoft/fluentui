@@ -4,6 +4,7 @@ exports[`ToolbarRadioGroup renders a default state 1`] = `
 <div>
   <div
     class="fui-ToolbarGroup"
+    data-orientation="horizontal"
     role="radiogroup"
   >
     Default ToolbarRadioGroup

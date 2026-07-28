@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,17 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (Phase 2, BATCH-3).
+   * `moduleNameMapper` for `*.module.css` already comes from the repo-wide `jest.preset.js`
+   * (jest MERGES that key from a preset), but `snapshotSerializers` REPLACES the preset's
+   * array — so a package that declares its own has to list `cssModules.snapshotSerializer`
+   * itself or every generated class name leaks into its snapshots (DECISIONS.md D9).
+   *
+   * `@griffel/jest-serializer` stays alongside it, and not only for this package's own
+   * remaining Griffel: ToolbarToggleButton / ToolbarRadioButton keep `makeStyles` (see
+   * their styles hooks) AND every Toolbar suite renders @fluentui/react-button's
+   * still-Griffel ToggleButton, which emits atomics into the same `class=` attribute.
+   */
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };
