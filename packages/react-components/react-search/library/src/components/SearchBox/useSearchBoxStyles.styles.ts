@@ -70,11 +70,12 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // eslint-disable-next-line react-hooks/immutability
   root['data-focused'] = focused || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this SearchBox's state, because `styles.root` is hashed and unaddressable from
-  // outside this file (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
+  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this SearchBox's state, because `styles.root` is
+  // hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // SearchBox needs no state mirrors: `data-focused` is stamped on this very element above,
   // and `data-size` / `data-disabled` land on it too when `useInputStyles_unstable` runs at
@@ -96,7 +97,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // keyed off the `data-size` Input's hook stamps.
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-search-box', searchBoxClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(searchBoxClassNames.root, 'group/fui-search-box', styles.root, state.root.className);
 
   // eslint-disable-next-line react-hooks/immutability
   state.input.className = clsx(searchBoxClassNames.input, styles.input, state.input.className);

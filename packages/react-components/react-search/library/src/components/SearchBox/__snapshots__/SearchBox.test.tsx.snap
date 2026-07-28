@@ -3,7 +3,7 @@
 exports[`SearchBox renders a default state 1`] = `
 <div>
   <span
-    class="group/fui-input fui-Input group/fui-search-box fui-SearchBox"
+    class="fui-Input group/fui-input fui-SearchBox group/fui-search-box"
     data-content-after="true"
     data-content-before="true"
     data-size="medium"
