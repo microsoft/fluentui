@@ -15,6 +15,7 @@ describe('Body1Stronger', () => {
       <div>
         <span
           class="fui-Body1Stronger fui-Text"
+          data-size="300"
         >
           Default Body1Stronger
         </span>

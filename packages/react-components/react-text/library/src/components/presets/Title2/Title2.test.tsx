@@ -15,6 +15,7 @@ describe('Title2', () => {
       <div>
         <span
           class="fui-Title2 fui-Text"
+          data-size="300"
         >
           Default Title2
         </span>

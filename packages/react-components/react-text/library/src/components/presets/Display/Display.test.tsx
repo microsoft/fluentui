@@ -15,6 +15,7 @@ describe('Display', () => {
       <div>
         <span
           class="fui-Display fui-Text"
+          data-size="300"
         >
           Default Display
         </span>

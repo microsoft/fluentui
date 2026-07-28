@@ -4,17 +4,30 @@ import { Text } from './Text';
 import { isConformant } from '../../testing/isConformant';
 import type { TextProps } from './Text.types';
 
+import styles from './Text.module.css';
+
+/*
+ * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+ *
+ * These tests used to assert computed styles (`toHaveStyle('white-space: nowrap')`), which
+ * worked only because Griffel injected its atomic CSS into jsdom at runtime. A converted
+ * component ships static CSS compiled at BUILD time, and jest maps `*.module.css` to a
+ * class-name proxy (jest.config.js) — no stylesheet reaches jsdom, so `getComputedStyle`
+ * has nothing to resolve and a `toHaveStyle` assertion would pass vacuously at best.
+ *
+ * The contract therefore splits in two, and both halves are checked:
+ *   - WHICH class / data-attribute the hook applies for a prop → asserted here, against
+ *     the same `Text.module.css` key the hook uses, so a renamed or dropped slice fails.
+ *   - WHAT declarations that class carries → asserted against the build-emitted
+ *     `dist/styles.css` by the computed-style probe described in the conversion report;
+ *     the values are pinned to the compiled Griffel atomics in
+ *     lib-commonjs/components/Text/useTextStyles.styles.js.
+ */
+
 describe('Text', () => {
   isConformant<TextProps>({
     Component: Text,
     displayName: 'Text',
-    testOptions: {
-      'make-styles-overrides-win': {
-        callCount: 1,
-      },
-      // TODO: https://github.com/microsoft/fluentui/issues/19618
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } as any,
   });
 
   it('renders a default state', () => {
@@ -24,6 +37,7 @@ describe('Text', () => {
       <div>
         <span
           class="fui-Text"
+          data-size="300"
         >
           Test
         </span>
@@ -32,72 +46,51 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement.nodeName).toBe('SPAN');
-    expect(textElement).toHaveStyle(`
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
-      display: inline;
-      text-align: start;
-      white-space: normal;
-      overflow: visible;
-      text-overflow: clip;
-    `);
+    expect(textElement).toHaveClass(styles.root);
+    // Rule-free defaults: font "base", weight "regular" and align "start" have no slice.
+    expect(textElement).not.toHaveClass(styles.monospace);
+    expect(textElement).not.toHaveClass(styles.semibold);
+    expect(textElement).not.toHaveClass(styles.center);
   });
 
   it('applies the no wrap styles', () => {
     const { getByText } = render(<Text wrap={false}>Test</Text>);
 
-    const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      white-space: nowrap;
-      overflow: hidden;
-    `);
+    expect(getByText('Test')).toHaveClass(styles.nowrap);
   });
 
   it('applies the truncate style', () => {
     const { getByText } = render(<Text truncate>Test</Text>);
 
-    const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      text-overflow: ellipsis;
-    `);
+    expect(getByText('Test')).toHaveClass(styles.truncate);
   });
 
   it('applies the block style', () => {
     const { getByText } = render(<Text block>Test</Text>);
 
-    const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      display: block;
-    `);
+    expect(getByText('Test')).toHaveClass(styles.block);
   });
 
   it('applies the italic style', () => {
     const { getByText } = render(<Text italic>Test</Text>);
 
-    const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      font-style: italic;
-    `);
+    expect(getByText('Test')).toHaveClass(styles.italic);
   });
 
   it('applies the underline style', () => {
     const { getByText } = render(<Text underline>Test</Text>);
 
     const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      text-decoration-line: underline;
-    `);
+    expect(textElement).toHaveClass(styles.underline);
+    expect(textElement).not.toHaveClass(styles.strikethroughUnderline);
   });
 
   it('applies the strikethrough style', () => {
     const { getByText } = render(<Text strikethrough>Test</Text>);
 
     const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      text-decoration-line: line-through;
-    `);
+    expect(textElement).toHaveClass(styles.strikethrough);
+    expect(textElement).not.toHaveClass(styles.strikethroughUnderline);
   });
 
   it('applies both strikethrough and underline styles', () => {
@@ -107,71 +100,60 @@ describe('Text', () => {
       </Text>,
     );
 
+    // The combined slice is applied ON TOP of the two single-decoration ones, exactly as
+    // the Griffel original did, and wins `text-decoration-line` by its later position in
+    // `fui.components.l1`.
     const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      text-decoration-line: line-through underline;
-    `);
+    expect(textElement).toHaveClass(styles.underline, styles.strikethrough, styles.strikethroughUnderline);
   });
 
-  it.each([
-    [100, 'Base', '100'],
-    [200, 'Base', '200'],
-    [300, 'Base', '300'],
-    [400, 'Base', '400'],
-    [500, 'Base', '500'],
-    [600, 'Base', '600'],
-    [700, 'Hero', '700'],
-    [800, 'Hero', '800'],
-    [900, 'Hero', '900'],
-    [1000, 'Hero', '1000'],
-  ] as const)('applies the %s token sizing styles', (sizeToken, expectedPrefix, expectedValue) => {
-    const { getByText } = render(<Text size={sizeToken}>Test</Text>);
+  it.each([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000] as const)(
+    'applies the %s token sizing styles',
+    sizeToken => {
+      const { getByText } = render(<Text size={sizeToken}>Test</Text>);
 
-    const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      font-size: var(--fontSize${expectedPrefix}${expectedValue});
-      line-height: var(--lineHeight${expectedPrefix}${expectedValue});
-    `);
-  });
+      // `size` is a dense numeric scale, so it rides `data-size` and the module targets it
+      // with attribute selectors (cookbook scale-prop rule). 300 is the default and
+      // deliberately has no rule — the attribute is still stamped for every value.
+      expect(getByText('Test')).toHaveAttribute('data-size', String(sizeToken));
+    },
+  );
 
-  it.each([
-    ['base', 'Base'],
-    ['monospace', 'Monospace'],
-    ['numeric', 'Numeric'],
-  ] as const)('applies %s font', (input, expectedValue) => {
+  it.each(['base', 'monospace', 'numeric'] as const)('applies %s font', input => {
     const { getByText } = render(<Text font={input}>Test</Text>);
-
     const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      font-family: var(--fontFamily${expectedValue});
-    `);
+
+    if (input === 'base') {
+      expect(textElement).not.toHaveClass(styles.monospace);
+      expect(textElement).not.toHaveClass(styles.numeric);
+    } else {
+      expect(textElement).toHaveClass(styles[input]);
+    }
   });
 
-  it.each([
-    ['regular', 'Regular'],
-    ['medium', 'Medium'],
-    ['semibold', 'Semibold'],
-    ['bold', 'Bold'],
-  ] as const)('applies %s weight', (input, expectedValue) => {
+  it.each(['regular', 'medium', 'semibold', 'bold'] as const)('applies %s weight', input => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
-
     const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      font-weight: var(--fontWeight${expectedValue});
-    `);
+
+    if (input === 'regular') {
+      expect(textElement).not.toHaveClass(styles.medium);
+      expect(textElement).not.toHaveClass(styles.semibold);
+      expect(textElement).not.toHaveClass(styles.bold);
+    } else {
+      expect(textElement).toHaveClass(styles[input]);
+    }
   });
 
-  it.each([
-    ['start', 'start'],
-    ['center', 'center'],
-    ['end', 'end'],
-    ['justify', 'justify'],
-  ] as const)('applies a %s alignment', (input, expectedValue) => {
+  it.each(['start', 'center', 'end', 'justify'] as const)('applies a %s alignment', input => {
     const { getByText } = render(<Text align={input}>Test</Text>);
-
     const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-      text-align: ${expectedValue};
-    `);
+
+    if (input === 'start') {
+      expect(textElement).not.toHaveClass(styles.center);
+      expect(textElement).not.toHaveClass(styles.end);
+      expect(textElement).not.toHaveClass(styles.justify);
+    } else {
+      expect(textElement).toHaveClass(styles[input]);
+    }
   });
 });

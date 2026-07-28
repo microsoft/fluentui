@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,21 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
+   * as `@griffel/jest-serializer` does for Griffel atomics (DECISIONS.md D9).
+   *
+   * `@griffel/jest-serializer` is KEPT alongside it, for two independent reasons:
+   *   1. Avatar's default icon is a `@fluentui/react-icons` glyph, and that package is an
+   *      external Griffel consumer explicitly out of scope for this migration (D11);
+   *   2. `useAvatarGroupPopoverStyles.styles.ts` is still Griffel on purpose — its
+   *      `popoverSurface` slice overrides the unconverted `PopoverSurface`, whose own
+   *      styles are unlayered Griffel and would beat a layered replacement.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };

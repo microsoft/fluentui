@@ -1,0 +1,280 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of
+ * useAvatarGroupItemStyles_unstable, not source declaration order.
+ *
+ * ROOT slot
+ *   1  avatarGroupItemClassNames.root                    → static class (JS)
+ *   2  useRootStyles.base                                → fui.components.l1  `.root`
+ *   3a useRootStyles.nonOverflowItem   (!isOverflowItem) → fui.components.l1  `.nonOverflowItem`
+ *   3b useGroupChildClassName(layout, size)              → fui.components.l1  `.stack*` / `.spread*`
+ *   3c useSizeStyles[size]                               → fui.components.l1  (Avatar.module.css)
+ *   3d usePieStyles.base + .thick|thicker|thickest
+ *      + .slices (+ .rtlSlices)        (layout === 'pie')→ fui.components.l1  `.pie`
+ *   3' useRootStyles.overflowItem      (isOverflowItem)  → fui.components.l1  `.overflowItem`
+ *   4  consumer className                                → unlayered (always wins)
+ *
+ * AVATAR slot
+ *   1  avatarGroupItemClassNames.avatar                  → static class (JS)
+ *   2  useAvatarStyles.nonOverflowItem                   → fui.components.l2
+ *   3  useAvatarStyles.pie                               → fui.components.l2
+ *   4  consumer className                                → unlayered
+ *
+ * OVERFLOWLABEL slot
+ *   1  avatarGroupItemClassNames.overflowLabel           → static class (JS)
+ *   2  useOverflowLabelStyles.base                       → fui.components.l1
+ *   3  consumer className                                → unlayered
+ *
+ * ── ALTITUDE: why the avatar slot is l2 ───────────────────────────────────────────────
+ * The `avatar` slot's elementType is `Avatar`, so its className arrives at Avatar's own
+ * hook as the CONSUMER className. Both declarations exist to beat Avatar's own base:
+ * `position: absolute` over Avatar's reset `position: relative`, and `border-radius: 0`
+ * over Avatar's reset `borderRadiusCircular` (and, for a square avatar, over its l1
+ * radius). Under mergeClasses the later argument won by property deletion; the altitude
+ * rule (D2 amendment 2) makes `fui.components.l2` the guaranteed winner over everything
+ * Avatar writes, independent of stylesheet load order.
+ *
+ * ── ORDER that is load-bearing ────────────────────────────────────────────────────────
+ * `.pie`'s `position: absolute` (arg 3d) must beat `.root`'s `position: relative`
+ * (arg 2) — `.pie` is written after `.root`. Inside `.pie`, the `rtl` blocks are written
+ * after the LTR ones because `rtlSlices` was a later mergeClasses argument than `slices`.
+ * Everything else in this file is disjoint by property.
+ *
+ * ── RTL ───────────────────────────────────────────────────────────────────────────────
+ * Two different kinds of flip, per D5:
+ *   • property-level (`margin-left`, `left`) → logical properties. The compiled atomics
+ *     carry these as [ltr, rtl] pairs, e.g. `jhia2w: ['f1cjco14','f13dxjc9']`
+ *     (margin-left/right) and `Be2twx7: ['f1o4hhgz','fb4gjrz']` (left/right).
+ *   • value-level (`clip-path: inset(…)`, whose four values are physical) → the shared
+ *     `rtl` variant. The Griffel source could not express this either, which is why it
+ *     hand-wrote a `rtlSlices` slice and gated it on `useFluent().dir`. That JS branch is
+ *     gone: `:dir(rtl)` resolves the COMPUTED direction, which FluentProvider writes as a
+ *     real `dir` attribute, so the CSS now decides. Documented semantics change (D5).
+ *   `transform-origin: 0 0` is NOT flipped — the compiled atomics emit a single class for
+ *   it (`do7bja: 'fzpvk6c'`), so it stays identical in both directions.
+ *
+ * Values reproduced from the compiled AOT output in
+ * lib-commonjs/components/AvatarGroupItem/useAvatarGroupItemStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* arg 2 — from useRootStyles.base */
+  .root {
+    @apply relative inline-flex shrink-0 items-center;
+  }
+
+  /* arg 3a — from useRootStyles.nonOverflowItem */
+  .nonOverflowItem {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  /*
+   * arg 3' — from useRootStyles.overflowItem. Compiled as the `padding` shorthand
+   * (`var(--spacingVerticalXS) var(--spacingHorizontalXS)`); expanded to longhands per the
+   * cookbook, and to LOGICAL longhands so the horizontal pair cannot drift in RTL.
+   */
+  .overflowItem {
+    padding-block-start: var(--spacingVerticalXS);
+    padding-block-end: var(--spacingVerticalXS);
+    padding-inline-start: var(--spacingHorizontalXS);
+    padding-inline-end: var(--spacingHorizontalXS);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 3b — from useStackStyles, applied through the exported `useGroupChildClassName`
+   * helper. That helper is ALSO called by AvatarGroupPopover, which is still a Griffel
+   * file, so these have to stay resolved class names rather than moving onto `data-size`:
+   * the Griffel trigger button stamps no attributes.
+   */
+  .stackThick {
+    box-shadow: 0 0 0 var(--strokeWidthThick) var(--colorNeutralBackground2);
+  }
+
+  .stackThicker {
+    box-shadow: 0 0 0 var(--strokeWidthThicker) var(--colorNeutralBackground2);
+  }
+
+  .stackThickest {
+    box-shadow: 0 0 0 var(--strokeWidthThickest) var(--colorNeutralBackground2);
+  }
+
+  .stackXxs:where(:not(:first-child)) {
+    margin-inline-start: calc(-1 * var(--spacingHorizontalXXS));
+  }
+
+  .stackXs:where(:not(:first-child)) {
+    margin-inline-start: calc(-1 * var(--spacingHorizontalXS));
+  }
+
+  .stackS:where(:not(:first-child)) {
+    margin-inline-start: calc(-1 * var(--spacingHorizontalS));
+  }
+
+  .stackL:where(:not(:first-child)) {
+    margin-inline-start: calc(-1 * var(--spacingHorizontalL));
+  }
+
+  /*
+   * arg 3b — from useSpreadStyles. The Griffel source also declares a `m`
+   * (`spacingHorizontalM`) slice, but no branch of `useGroupChildClassName` can ever push
+   * it (`size < 32` takes `mNudge`, everything below 64 takes `l`), so it is dead and is
+   * not reproduced here.
+   */
+  .spreadS:where(:not(:first-child)) {
+    margin-inline-start: var(--spacingHorizontalS);
+  }
+
+  .spreadMNudge:where(:not(:first-child)) {
+    margin-inline-start: var(--spacingHorizontalMNudge);
+  }
+
+  .spreadL:where(:not(:first-child)) {
+    margin-inline-start: var(--spacingHorizontalL);
+  }
+
+  .spreadXl:where(:not(:first-child)) {
+    margin-inline-start: var(--spacingHorizontalXL);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 3d — usePieStyles.base + .thick|.thicker|.thickest + .slices (+ .rtlSlices),
+   * collapsed into one class: the Griffel branch pushes all of them together and in this
+   * order, so a single rule reproduces the same winners with the same file order.
+   *
+   * The divider width is the only size-derived bucket on this element, so it rides
+   * `data-size` with in-module attribute selectors (cookbook scale-prop rule); nothing is
+   * added to the shared variant catalog.
+   */
+  .pie {
+    @apply absolute;
+
+    /* from usePieStyles.thick / .thicker / .thickest */
+    &:where(
+        [data-size='16'],
+        [data-size='20'],
+        [data-size='24'],
+        [data-size='28'],
+        [data-size='32'],
+        [data-size='36'],
+        [data-size='40'],
+        [data-size='48']
+      ) {
+      --fuiAvatarGroupItem__divider--width: var(--strokeWidthThick);
+    }
+
+    &:where([data-size='56'], [data-size='64']) {
+      --fuiAvatarGroupItem__divider--width: var(--strokeWidthThicker);
+    }
+
+    &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128']) {
+      --fuiAvatarGroupItem__divider--width: var(--strokeWidthThickest);
+    }
+
+    /* from usePieStyles.slices — two slices */
+    &:where(:nth-of-type(1):nth-last-of-type(2)) {
+      clip-path: inset(0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)) 0 25%);
+      inset-inline-start: -25%;
+    }
+
+    &:where(:nth-of-type(2):nth-last-of-type(1)) {
+      clip-path: inset(0 25% 0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)));
+      inset-inline-start: 25%;
+    }
+
+    /* from usePieStyles.slices — three slices */
+    &:where(:nth-of-type(1):nth-last-of-type(3)) {
+      clip-path: inset(0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)) 0 25%);
+      inset-inline-start: -25%;
+    }
+
+    /* the two right-hand slices are scaled by 0.5, so the divider width is not halved */
+    &:where(:nth-of-type(2):nth-last-of-type(2)) {
+      clip-path: inset(0 0 var(--fuiAvatarGroupItem__divider--width) var(--fuiAvatarGroupItem__divider--width));
+      inset-inline-start: 50%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+
+    &:where(:nth-of-type(3):nth-last-of-type(1)) {
+      clip-path: inset(var(--fuiAvatarGroupItem__divider--width) 0 0 var(--fuiAvatarGroupItem__divider--width));
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+
+    /*
+     * from usePieStyles.rtlSlices — the value-level mirror of every `inset()` above, plus
+     * the two `left: 0` resets. Written after the blocks it overrides, matching the
+     * mergeClasses argument order it replaces.
+     */
+    @variant rtl {
+      &:where(:nth-of-type(1):nth-last-of-type(2)) {
+        clip-path: inset(0 25% 0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)));
+      }
+
+      &:where(:nth-of-type(2):nth-last-of-type(1)) {
+        clip-path: inset(0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)) 0 25%);
+      }
+
+      &:where(:nth-of-type(1):nth-last-of-type(3)) {
+        clip-path: inset(0 25% 0 calc(25% + (var(--fuiAvatarGroupItem__divider--width) / 2)));
+      }
+
+      &:where(:nth-of-type(2):nth-last-of-type(2)) {
+        clip-path: inset(0 var(--fuiAvatarGroupItem__divider--width) var(--fuiAvatarGroupItem__divider--width) 0);
+        inset-inline-start: 0;
+      }
+
+      &:where(:nth-of-type(3):nth-last-of-type(1)) {
+        clip-path: inset(var(--fuiAvatarGroupItem__divider--width) var(--fuiAvatarGroupItem__divider--width) 0 0);
+        inset-inline-start: 0;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * overflowLabel arg 2 — from useOverflowLabelStyles.base. `typographyStyles.body1`
+   * expands to the four compiled atomics `fk6fouc` / `fkhj508` / `figsok6` / `f1i3iumi`;
+   * `margin-left` was an [ltr, rtl] pair → logical property.
+   */
+  .overflowLabel {
+    margin-inline-start: var(--spacingHorizontalS);
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}
+
+@layer fui.components.l2 {
+  /* avatar arg 2 — from useAvatarStyles.nonOverflowItem (over Avatar's own reset) */
+  .avatarNonOverflowItem {
+    @apply absolute;
+  }
+
+  /* avatar arg 3 — from useAvatarStyles.pie (over Avatar's own border radius) */
+  .avatarPie {
+    border-radius: 0;
+  }
+}

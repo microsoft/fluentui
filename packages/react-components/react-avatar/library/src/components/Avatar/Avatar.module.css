@@ -1,0 +1,792 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useAvatarStyles_unstable
+ * (the imperative `rootClasses` builder), not source declaration order.
+ *
+ * ROOT slot
+ *   #  argument                                        → target
+ *   ------------------------------------------------------------------------------------
+ *   1  avatarClassNames.root                           → static class (JS)
+ *   2  useRootClassName (makeResetStyles)              → fui.base
+ *   3  size !== 32 && useSizeStyles[size]              → fui.components.l1  `.size16`…
+ *   4  styles.badgeAlign          (badge present)      → fui.components.l1  `.badgeAlign`
+ *   5  styles[badge.size ?? 'medium']                  → fui.components.l1  `.badge-*`
+ *   6  styles.text*               (size bucket)        → fui.components.l1  data-size
+ *   7  styles.square*             (shape + size bucket)→ fui.components.l1  `.square` + data-size
+ *   8  styles.activeOrInactive                         → fui.components.l1  data-active
+ *   9  styles.ring + ringColorStyles[color]            → fui.components.l1  data-active-appearance + `.ring-*`
+ *  10  styles.ringBadgeCutout     (ring + badge)       → fui.components.l1  `.ringBadgeCutout`
+ *  11  styles.ringThick|Thicker|Thickest (size bucket) → fui.components.l1  data-size
+ *  12  styles.shadow                                   → fui.components.l1  data-active-appearance
+ *  13  styles.shadow4|8|16|28     (size bucket)        → fui.components.l1  data-size
+ *  14  styles.inactive            (active==='inactive')→ fui.components.l1  data-active
+ *  15  consumer className                              → unlayered (always wins)
+ *
+ * IMAGE slot        1 static / 2 useImageClassName → fui.base / 3 colorStyles[color] /
+ *                   4 styles.badgeCutout / 5 consumer className
+ * INITIALS slot     1 static / 2 useIconInitialsClassName → fui.base / 3 colorStyles[color] /
+ *                   4 styles.badgeCutout / 5 consumer className
+ * ICON slot         1 static / 2 useIconInitialsClassName → fui.base / 3 iconSizeClass /
+ *                   4 colorStyles[color] / 5 styles.badgeCutout / 6 consumer className
+ * BADGE slot        1 static / 2 styles.badge → fui.components.l2 / 3 consumer className
+ *
+ * ── ALTITUDE: why the badge slot is l2 ────────────────────────────────────────────────
+ * `badge` renders a `<PresenceBadge>`, i.e. an element whose base styles come from ANOTHER
+ * component's hook (react-badge, already converted). Per the D2 amendment-2 altitude rule
+ * anything applied over another component's hook output goes to `fui.components.l2`, where
+ * it beats every l1/fui.base rule regardless of stylesheet load order.
+ *
+ * ── ORDER that is load-bearing ────────────────────────────────────────────────────────
+ * arg 14 `inactive` overrides arg 8 `activeOrInactive`'s `transform` and
+ * `transition-timing-function` (source comment: "must be applied after them"), so its
+ * block is written last. Everything else in 3–13 is disjoint by property.
+ *
+ * ── The `size` scale vs the size BUCKETS ──────────────────────────────────────────────
+ * Two different mechanisms, deliberately:
+ *   • The flat 14-entry width/height scale is `useSizeStyles`, an EXPORTED hook shared by
+ *     Avatar, AvatarGroup, AvatarGroupItem and AvatarGroupPopover (the last is still
+ *     Griffel — see its styles file). It has to hand out real class names, so it stays a
+ *     record of module classes `.size16`…`.size128`, defined once here.
+ *   • Every size-DERIVED bucket (typography, square radius, ring width, shadow depth, icon
+ *     glyph size) rides `data-size` with in-module attribute selectors, per the cookbook's
+ *     SCALE-PROP rule. Nothing is added to the shared variant catalog.
+ *
+ * ── px literals ───────────────────────────────────────────────────────────────────────
+ * Raw pixel values go through `--base-scale` (D4): Tailwind numeric utilities (`size-16`)
+ * already do, and the hand-written ones (`--fui-Avatar-badgeRadius`, the icon font sizes)
+ * are written `calc(Npx * var(--base-scale))` so they stay in lockstep. Identical pixels at
+ * the default 16px root. The ±0.25px antialiasing offsets inside the badge mask are NOT
+ * scaled — they are a sub-pixel fade, not a design dimension.
+ *
+ * Values reproduced from the compiled AOT output in
+ * lib-commonjs/components/Avatar/useAvatarStyles.styles.js, not from the Griffel source.
+ */
+
+@layer fui.base {
+  /*
+   * from useRootClassName (makeResetStyles).
+   * `::before` is the ring and `::after` is the shadow. Neither is displayed by default —
+   * the ring/shadow rules in l1 set `content: ''` to reveal them.
+   */
+  .root {
+    @apply relative inline-block shrink-0 align-middle size-32;
+
+    border-radius: var(--borderRadiusCircular);
+    font-family: var(--fontFamilyBase);
+    font-weight: var(--fontWeightSemibold);
+    font-size: var(--fontSizeBase300);
+
+    &::before,
+    &::after {
+      @apply absolute;
+
+      /* compiled as top/left/bottom/right, all `0`; logical so RTL cannot drift */
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inset-block-end: 0;
+      inset-inline-end: 0;
+
+      z-index: -1;
+      margin: calc(-2 * var(--fui-Avatar-ringWidth, 0px));
+      border-radius: inherit;
+      transition-property: margin, opacity;
+      transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+      transition-duration: var(--durationUltraSlow), var(--durationSlower);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    &::before {
+      /* no fallback on the var(): the ring is invisible until a ring width is set */
+      border-style: solid;
+      border-width: var(--fui-Avatar-ringWidth);
+    }
+  }
+
+  /* from useImageClassName (makeResetStyles) */
+  .image {
+    @apply absolute h-full w-full object-cover align-top;
+
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    border-radius: inherit;
+  }
+
+  /*
+   * from useIconInitialsClassName (makeResetStyles) — ONE reset class shared by the
+   * initials and icon slots, exactly as the Griffel source shared it.
+   */
+  .iconInitials {
+    @apply absolute box-border flex h-full w-full select-none items-center justify-center text-center;
+
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    line-height: 1;
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    border-radius: inherit;
+
+    /* `vertical-align: center` is not a valid value and is dropped by every browser.
+       Reproduced because the compiled atomic contains it verbatim. */
+    vertical-align: center;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSizeStyles — arg 3 on the Avatar root, and the same slice on AvatarGroup's
+   * root (pie), AvatarGroupItem's root and AvatarGroupPopover's triggerButton. Exported
+   * through `useSizeStyles()`; nothing else in the package sets width/height on those
+   * elements, so the file position of this block is free.
+   */
+  .size16 {
+    @apply size-16;
+  }
+
+  .size20 {
+    @apply size-20;
+  }
+
+  .size24 {
+    @apply size-24;
+  }
+
+  .size28 {
+    @apply size-28;
+  }
+
+  .size32 {
+    @apply size-32;
+  }
+
+  .size36 {
+    @apply size-36;
+  }
+
+  .size40 {
+    @apply size-40;
+  }
+
+  .size48 {
+    @apply size-48;
+  }
+
+  .size56 {
+    @apply size-56;
+  }
+
+  .size64 {
+    @apply size-64;
+  }
+
+  .size72 {
+    @apply size-72;
+  }
+
+  .size96 {
+    @apply size-96;
+  }
+
+  .size120 {
+    @apply size-120;
+  }
+
+  .size128 {
+    @apply size-128;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 4 — from useStyles.badgeAlign.
+   * Griffel could not auto-flip a `right` keyword buried inside the mask-image value, so
+   * the source hoisted it into a custom property that rtl-css-js *could* flip
+   * (compiled pair: `--fui-Avatar-badgeAlign:right` / `:left`). Same trick here, with the
+   * flip expressed by the shared `rtl` variant instead.
+   */
+  .badgeAlign {
+    --fui-Avatar-badgeAlign: right;
+
+    @variant rtl {
+      --fui-Avatar-badgeAlign: left;
+    }
+  }
+
+  /*
+   * arg 5 — from useStyles.tiny … ['extra-large'], keyed by the BADGE's size (a
+   * PresenceBadge scale), not the Avatar's. They stay module classes because the Avatar
+   * root's `data-size` already carries the Avatar's own numeric scale; a second
+   * `data-badge-size` attribute would exist for one component only.
+   */
+  .badge-tiny {
+    --fui-Avatar-badgeRadius: calc(3px * var(--base-scale));
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+
+  .badge-extra-small {
+    --fui-Avatar-badgeRadius: calc(5px * var(--base-scale));
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+
+  .badge-small {
+    --fui-Avatar-badgeRadius: calc(6px * var(--base-scale));
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+
+  .badge-medium {
+    --fui-Avatar-badgeRadius: calc(8px * var(--base-scale));
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+
+  .badge-large {
+    --fui-Avatar-badgeRadius: calc(10px * var(--base-scale));
+    --fui-Avatar-badgeGap: var(--strokeWidthThick);
+  }
+
+  .badge-extra-large {
+    --fui-Avatar-badgeRadius: calc(14px * var(--base-scale));
+    --fui-Avatar-badgeGap: var(--strokeWidthThick);
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * arg 6 — from the `size <= N` typography chain. `size <= 40` deliberately has no
+     * rule: 32/36/40 keep `fontSizeBase300` from the reset.
+     */
+    &:where([data-size='16'], [data-size='20'], [data-size='24']) {
+      font-size: var(--fontSizeBase100);
+    }
+
+    &:where([data-size='28']) {
+      font-size: var(--fontSizeBase200);
+    }
+
+    &:where([data-size='48'], [data-size='56']) {
+      font-size: var(--fontSizeBase400);
+    }
+
+    &:where([data-size='64'], [data-size='72'], [data-size='96']) {
+      font-size: var(--fontSizeBase500);
+    }
+
+    &:where([data-size='120'], [data-size='128']) {
+      font-size: var(--fontSizeBase600);
+    }
+
+    /*
+     * arg 3 (icon slot) — from the `iconSizeClass` chain. The bucket is decided by the
+     * AVATAR's size, so it is selected from the root and the icon slot carries no
+     * attributes of its own (react-button / react-badge precedent).
+     */
+    &:where([data-size='16']) :where(.icon) {
+      font-size: calc(12px * var(--base-scale));
+    }
+
+    &:where([data-size='20'], [data-size='24']) :where(.icon) {
+      font-size: calc(16px * var(--base-scale));
+    }
+
+    &:where([data-size='28'], [data-size='32'], [data-size='36'], [data-size='40']) :where(.icon) {
+      font-size: calc(20px * var(--base-scale));
+    }
+
+    &:where([data-size='48']) :where(.icon) {
+      font-size: calc(24px * var(--base-scale));
+    }
+
+    &:where([data-size='56']) :where(.icon) {
+      font-size: calc(28px * var(--base-scale));
+    }
+
+    &:where([data-size='64'], [data-size='72']) :where(.icon) {
+      font-size: calc(32px * var(--base-scale));
+    }
+
+    &:where([data-size='96'], [data-size='120'], [data-size='128']) :where(.icon) {
+      font-size: calc(48px * var(--base-scale));
+    }
+  }
+
+  /*
+   * arg 7 — from useStyles.squareSmall … .squareXLarge, applied only when
+   * `shape === 'square'`. `shape` is a look prop (D3) so it is a module class; the size
+   * bucket inside it is the scale prop. Beats the reset's `borderRadiusCircular` by layer.
+   */
+  .square {
+    &:where([data-size='16'], [data-size='20'], [data-size='24']) {
+      border-radius: var(--borderRadiusSmall);
+    }
+
+    &:where([data-size='28'], [data-size='32'], [data-size='36'], [data-size='40'], [data-size='48']) {
+      border-radius: var(--borderRadiusMedium);
+    }
+
+    &:where([data-size='56'], [data-size='64'], [data-size='72']) {
+      border-radius: var(--borderRadiusLarge);
+    }
+
+    &:where([data-size='96'], [data-size='120'], [data-size='128']) {
+      border-radius: var(--borderRadiusXLarge);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * arg 8 — from useStyles.activeOrInactive. `data-active` is stamped only for
+     * `active === 'active' | 'inactive'`, reproducing the JS guard exactly; `unset`
+     * renders no attribute at all.
+     */
+    &:where([data-active]) {
+      /* work-around for text pixel snapping at the end of the animation */
+      transform: perspective(1px);
+      transition-property: transform, opacity;
+      transition-duration: var(--durationUltraSlow), var(--durationFaster);
+      transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    /* arg 9 — from useStyles.ring: reveal the ring pseudo-element. */
+    &:where([data-active-appearance='ring'], [data-active-appearance='ring-shadow'])::before {
+      content: '';
+    }
+
+    /* arg 11 — from useStyles.ringThick / .ringThicker / .ringThickest. */
+    &:where([data-active-appearance='ring'], [data-active-appearance='ring-shadow']) {
+      &:where(
+          [data-size='16'],
+          [data-size='20'],
+          [data-size='24'],
+          [data-size='28'],
+          [data-size='32'],
+          [data-size='36'],
+          [data-size='40'],
+          [data-size='48']
+        ) {
+        --fui-Avatar-ringWidth: var(--strokeWidthThick);
+      }
+
+      &:where([data-size='56'], [data-size='64']) {
+        --fui-Avatar-ringWidth: var(--strokeWidthThicker);
+      }
+
+      &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128']) {
+        --fui-Avatar-ringWidth: var(--strokeWidthThickest);
+      }
+    }
+
+    /* arg 12 — from useStyles.shadow: reveal the shadow pseudo-element. */
+    &:where([data-active-appearance='shadow'], [data-active-appearance='ring-shadow'])::after {
+      content: '';
+    }
+
+    /* arg 13 — from useStyles.shadow4 / .shadow8 / .shadow16 / .shadow28. */
+    &:where([data-active-appearance='shadow'], [data-active-appearance='ring-shadow']) {
+      &:where([data-size='16'], [data-size='20'], [data-size='24'], [data-size='28'])::after {
+        box-shadow: var(--shadow4);
+      }
+
+      &:where([data-size='32'], [data-size='36'], [data-size='40'], [data-size='48'])::after {
+        box-shadow: var(--shadow8);
+      }
+
+      &:where([data-size='56'], [data-size='64'])::after {
+        box-shadow: var(--shadow16);
+      }
+
+      &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128'])::after {
+        box-shadow: var(--shadow28);
+      }
+    }
+  }
+
+  /*
+   * arg 9 — from useRingColorStyles[color]. Applied to the ROOT (it colours the ring
+   * pseudo-element), so it cannot share class names with the colorStyles block below,
+   * which colours the image/initials/icon slots. `neutral` and `brand` both resolve to
+   * `colorBrandStroke1` in the source — reproduced, not deduplicated.
+   */
+  .ring-neutral::before,
+  .ring-brand::before {
+    color: var(--colorBrandStroke1);
+  }
+
+  .ring-dark-red::before {
+    color: var(--colorPaletteDarkRedBorderActive);
+  }
+
+  .ring-cranberry::before {
+    color: var(--colorPaletteCranberryBorderActive);
+  }
+
+  .ring-red::before {
+    color: var(--colorPaletteRedBorderActive);
+  }
+
+  .ring-pumpkin::before {
+    color: var(--colorPalettePumpkinBorderActive);
+  }
+
+  .ring-peach::before {
+    color: var(--colorPalettePeachBorderActive);
+  }
+
+  .ring-marigold::before {
+    color: var(--colorPaletteMarigoldBorderActive);
+  }
+
+  .ring-gold::before {
+    color: var(--colorPaletteGoldBorderActive);
+  }
+
+  .ring-brass::before {
+    color: var(--colorPaletteBrassBorderActive);
+  }
+
+  .ring-brown::before {
+    color: var(--colorPaletteBrownBorderActive);
+  }
+
+  .ring-forest::before {
+    color: var(--colorPaletteForestBorderActive);
+  }
+
+  .ring-seafoam::before {
+    color: var(--colorPaletteSeafoamBorderActive);
+  }
+
+  .ring-dark-green::before {
+    color: var(--colorPaletteDarkGreenBorderActive);
+  }
+
+  .ring-light-teal::before {
+    color: var(--colorPaletteLightTealBorderActive);
+  }
+
+  .ring-teal::before {
+    color: var(--colorPaletteTealBorderActive);
+  }
+
+  .ring-steel::before {
+    color: var(--colorPaletteSteelBorderActive);
+  }
+
+  .ring-blue::before {
+    color: var(--colorPaletteBlueBorderActive);
+  }
+
+  .ring-royal-blue::before {
+    color: var(--colorPaletteRoyalBlueBorderActive);
+  }
+
+  .ring-cornflower::before {
+    color: var(--colorPaletteCornflowerBorderActive);
+  }
+
+  .ring-navy::before {
+    color: var(--colorPaletteNavyBorderActive);
+  }
+
+  .ring-lavender::before {
+    color: var(--colorPaletteLavenderBorderActive);
+  }
+
+  .ring-purple::before {
+    color: var(--colorPalettePurpleBorderActive);
+  }
+
+  .ring-grape::before {
+    color: var(--colorPaletteGrapeBorderActive);
+  }
+
+  .ring-lilac::before {
+    color: var(--colorPaletteLilacBorderActive);
+  }
+
+  .ring-pink::before {
+    color: var(--colorPalettePinkBorderActive);
+  }
+
+  .ring-magenta::before {
+    color: var(--colorPaletteMagentaBorderActive);
+  }
+
+  .ring-plum::before {
+    color: var(--colorPalettePlumBorderActive);
+  }
+
+  .ring-beige::before {
+    color: var(--colorPaletteBeigeBorderActive);
+  }
+
+  .ring-mink::before {
+    color: var(--colorPaletteMinkBorderActive);
+  }
+
+  .ring-platinum::before {
+    color: var(--colorPalettePlatinumBorderActive);
+  }
+
+  .ring-anchor::before {
+    color: var(--colorPaletteAnchorBorderActive);
+  }
+
+  /*
+   * arg 10 — from useStyles.ringBadgeCutout, applied when the ring is shown AND a badge
+   * exists. Same radial cut-out as `.badgeCutout` below, offset by the ring's own
+   * `2 * ringWidth` margin.
+   */
+  .ringBadgeCutout::before {
+    -webkit-mask-image: radial-gradient(
+      circle at bottom calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth))
+        var(--fui-Avatar-badgeAlign) calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth)),
+      transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+      white calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+    );
+    mask-image: radial-gradient(
+      circle at bottom calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth))
+        var(--fui-Avatar-badgeAlign) calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth)),
+      transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+      white calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+    );
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * arg 14 — from useStyles.inactive. Written LAST because the Griffel source applies it
+   * after the activeAppearance slices on purpose: it overrides arg 8's `transform` and
+   * `transition-timing-function`, and zeroes the reset's ring/shadow margin.
+   */
+  .root:where([data-active='inactive']) {
+    opacity: 0.8;
+    transform: scale(0.875);
+    transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+
+    &::before,
+    &::after {
+      margin: 0;
+      opacity: 0;
+      transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useColorStyles[color] — applied to the image, initials and icon slots (never the
+   * root). Written after each slot's reset (fui.base) and before `.badgeCutout`, matching
+   * the argument order on all three slots.
+   */
+  .neutral {
+    color: var(--colorNeutralForeground3);
+    background-color: var(--colorNeutralBackground6);
+  }
+
+  .brand {
+    color: var(--colorNeutralForegroundStaticInverted);
+    background-color: var(--colorBrandBackgroundStatic);
+  }
+
+  .dark-red {
+    color: var(--colorPaletteDarkRedForeground2);
+    background-color: var(--colorPaletteDarkRedBackground2);
+  }
+
+  .cranberry {
+    color: var(--colorPaletteCranberryForeground2);
+    background-color: var(--colorPaletteCranberryBackground2);
+  }
+
+  .red {
+    color: var(--colorPaletteRedForeground2);
+    background-color: var(--colorPaletteRedBackground2);
+  }
+
+  .pumpkin {
+    color: var(--colorPalettePumpkinForeground2);
+    background-color: var(--colorPalettePumpkinBackground2);
+  }
+
+  .peach {
+    color: var(--colorPalettePeachForeground2);
+    background-color: var(--colorPalettePeachBackground2);
+  }
+
+  .marigold {
+    color: var(--colorPaletteMarigoldForeground2);
+    background-color: var(--colorPaletteMarigoldBackground2);
+  }
+
+  .gold {
+    color: var(--colorPaletteGoldForeground2);
+    background-color: var(--colorPaletteGoldBackground2);
+  }
+
+  .brass {
+    color: var(--colorPaletteBrassForeground2);
+    background-color: var(--colorPaletteBrassBackground2);
+  }
+
+  .brown {
+    color: var(--colorPaletteBrownForeground2);
+    background-color: var(--colorPaletteBrownBackground2);
+  }
+
+  .forest {
+    color: var(--colorPaletteForestForeground2);
+    background-color: var(--colorPaletteForestBackground2);
+  }
+
+  .seafoam {
+    color: var(--colorPaletteSeafoamForeground2);
+    background-color: var(--colorPaletteSeafoamBackground2);
+  }
+
+  .dark-green {
+    color: var(--colorPaletteDarkGreenForeground2);
+    background-color: var(--colorPaletteDarkGreenBackground2);
+  }
+
+  .light-teal {
+    color: var(--colorPaletteLightTealForeground2);
+    background-color: var(--colorPaletteLightTealBackground2);
+  }
+
+  .teal {
+    color: var(--colorPaletteTealForeground2);
+    background-color: var(--colorPaletteTealBackground2);
+  }
+
+  .steel {
+    color: var(--colorPaletteSteelForeground2);
+    background-color: var(--colorPaletteSteelBackground2);
+  }
+
+  .blue {
+    color: var(--colorPaletteBlueForeground2);
+    background-color: var(--colorPaletteBlueBackground2);
+  }
+
+  .royal-blue {
+    color: var(--colorPaletteRoyalBlueForeground2);
+    background-color: var(--colorPaletteRoyalBlueBackground2);
+  }
+
+  .cornflower {
+    color: var(--colorPaletteCornflowerForeground2);
+    background-color: var(--colorPaletteCornflowerBackground2);
+  }
+
+  .navy {
+    color: var(--colorPaletteNavyForeground2);
+    background-color: var(--colorPaletteNavyBackground2);
+  }
+
+  .lavender {
+    color: var(--colorPaletteLavenderForeground2);
+    background-color: var(--colorPaletteLavenderBackground2);
+  }
+
+  .purple {
+    color: var(--colorPalettePurpleForeground2);
+    background-color: var(--colorPalettePurpleBackground2);
+  }
+
+  .grape {
+    color: var(--colorPaletteGrapeForeground2);
+    background-color: var(--colorPaletteGrapeBackground2);
+  }
+
+  .lilac {
+    color: var(--colorPaletteLilacForeground2);
+    background-color: var(--colorPaletteLilacBackground2);
+  }
+
+  .pink {
+    color: var(--colorPalettePinkForeground2);
+    background-color: var(--colorPalettePinkBackground2);
+  }
+
+  .magenta {
+    color: var(--colorPaletteMagentaForeground2);
+    background-color: var(--colorPaletteMagentaBackground2);
+  }
+
+  .plum {
+    color: var(--colorPalettePlumForeground2);
+    background-color: var(--colorPalettePlumBackground2);
+  }
+
+  .beige {
+    color: var(--colorPaletteBeigeForeground2);
+    background-color: var(--colorPaletteBeigeBackground2);
+  }
+
+  .mink {
+    color: var(--colorPaletteMinkForeground2);
+    background-color: var(--colorPaletteMinkBackground2);
+  }
+
+  .platinum {
+    color: var(--colorPalettePlatinumForeground2);
+    background-color: var(--colorPalettePlatinumBackground2);
+  }
+
+  .anchor {
+    color: var(--colorPaletteAnchorForeground2);
+    background-color: var(--colorPaletteAnchorBackground2);
+  }
+
+  /*
+   * from useStyles.badgeCutout — last styling argument on the image / initials / icon
+   * slots. Punches a transparent circle out of the artwork so the badge sits in a gap.
+   */
+  .badgeCutout {
+    -webkit-mask-image: radial-gradient(
+      circle at bottom var(--fui-Avatar-badgeRadius) var(--fui-Avatar-badgeAlign) var(--fui-Avatar-badgeRadius),
+      transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+      white calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+    );
+    mask-image: radial-gradient(
+      circle at bottom var(--fui-Avatar-badgeRadius) var(--fui-Avatar-badgeAlign) var(--fui-Avatar-badgeRadius),
+      transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+      white calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+    );
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useStyles.badge — the ONLY rule Avatar applies to an element owned by another
+   * component's hook (`<PresenceBadge>`), hence `fui.components.l2` (altitude rule, D2
+   * amendment 2). `right: 0` was an [ltr, rtl] pair in the compiled atomics
+   * (`.f1e31b4d{right:0}` / `.f1vgc2s3{left:0}`) → logical property.
+   */
+  .badge {
+    @apply absolute;
+
+    inset-block-end: 0;
+    inset-inline-end: 0;
+  }
+}

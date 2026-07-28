@@ -1,147 +1,85 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { TextSlots, TextState } from './Text.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './Text.module.css';
 
 export const textClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Text',
 };
 
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot.
+ *
+ * `size` is a dense NUMERIC scale (100…1000), so per the cookbook's scale-prop rule it
+ * rides `data-size` and is targeted by attribute selectors written directly in
+ * `Text.module.css` — no variant definitions are added to the shared catalog for it.
+ * The attribute is stamped for every value, including the rule-free default `300`.
+ *
+ * The remaining props stay module classes rather than attributes: `wrap`/`truncate`/
+ * `block`/`italic`/`underline`/`strikethrough` are standalone look modifiers whose rules
+ * never nest inside another selector (react-image precedent), and `font`/`weight`/`align`
+ * are enums whose default value carries no Griffel slice at all, which a class lookup
+ * expresses for free (react-label precedent). Neither would have a name in the
+ * nyt-games catalog or the headless preview's vocabulary, and the cookbook ranks
+ * inventing catalog entries last.
  */
-const useStyles = makeStyles({
-  root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
-    textAlign: 'start',
-    display: 'inline',
-    whiteSpace: 'normal',
-    overflow: 'visible',
-    textOverflow: 'clip',
-  },
-  nowrap: {
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-  },
-  truncate: {
-    textOverflow: 'ellipsis',
-  },
-  block: {
-    display: 'block',
-  },
-  italic: {
-    fontStyle: 'italic',
-  },
-  underline: {
-    textDecorationLine: 'underline',
-  },
-  strikethrough: {
-    textDecorationLine: 'line-through',
-  },
-  strikethroughUnderline: {
-    textDecorationLine: 'line-through underline',
-  },
-  base100: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
-  },
-  base200: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
-  base400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-  base500: {
-    fontSize: tokens.fontSizeBase500,
-    lineHeight: tokens.lineHeightBase500,
-  },
-  base600: {
-    fontSize: tokens.fontSizeBase600,
-    lineHeight: tokens.lineHeightBase600,
-  },
-  hero700: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: tokens.lineHeightHero700,
-  },
-  hero800: {
-    fontSize: tokens.fontSizeHero800,
-    lineHeight: tokens.lineHeightHero800,
-  },
-  hero900: {
-    fontSize: tokens.fontSizeHero900,
-    lineHeight: tokens.lineHeightHero900,
-  },
-  hero1000: {
-    fontSize: tokens.fontSizeHero1000,
-    lineHeight: tokens.lineHeightHero1000,
-  },
-  monospace: {
-    fontFamily: tokens.fontFamilyMonospace,
-  },
-  numeric: {
-    fontFamily: tokens.fontFamilyNumeric,
-  },
-  weightMedium: {
-    fontWeight: tokens.fontWeightMedium,
-  },
-  weightSemibold: {
-    fontWeight: tokens.fontWeightSemibold,
-  },
-  weightBold: {
-    fontWeight: tokens.fontWeightBold,
-  },
-  alignCenter: {
-    textAlign: 'center',
-  },
-  alignEnd: {
-    textAlign: 'end',
-  },
-  alignJustify: {
-    textAlign: 'justify',
-  },
-});
+type TextRootDataAttributes = {
+  'data-size': TextState['size'];
+};
 
 /**
  * Apply styling to the Text slots based on the state
  */
 export const useTextStyles_unstable = (state: TextState): TextState => {
-  const styles = useStyles();
+  const { align, block, font, italic, size, strikethrough, truncate, underline, weight, wrap } = state;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  const root = state.root as TextState['root'] & TextRootDataAttributes;
+
+  root['data-size'] = size;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Text.module.css and by
+  // block order within it, not by the order of these arguments — see that file's header
+  // for the mapping back to the mergeClasses() argument order this replaces.
+  //
+  // `font === 'base'`, `weight === 'regular'` and `align === 'start'` are the defaults and
+  // have no Griffel slice, so they are guarded out rather than looked up: the module
+  // declares no class for them.
+  //
+  // The state mutation below (and the `data-size` assignment above) is preserved
+  // deliberately — DECISIONS.md D14 defers the pure-builder rewrite to a single Phase 3
+  // sweep. The Griffel original's `eslint-disable-next-line react-hooks/immutability` is
+  // dropped only because the rule no longer reports here, same as the react-divider /
+  // react-button / react-image conversions.
+  state.root.className = clsx(
     textClassNames.root,
     styles.root,
-    state.wrap === false && styles.nowrap,
-    state.truncate && styles.truncate,
-    state.block && styles.block,
-    state.italic && styles.italic,
-    state.underline && styles.underline,
-    state.strikethrough && styles.strikethrough,
-    state.underline && state.strikethrough && styles.strikethroughUnderline,
-    state.size === 100 && styles.base100,
-    state.size === 200 && styles.base200,
-    state.size === 400 && styles.base400,
-    state.size === 500 && styles.base500,
-    state.size === 600 && styles.base600,
-    state.size === 700 && styles.hero700,
-    state.size === 800 && styles.hero800,
-    state.size === 900 && styles.hero900,
-    state.size === 1000 && styles.hero1000,
-    state.font === 'monospace' && styles.monospace,
-    state.font === 'numeric' && styles.numeric,
-    state.weight === 'medium' && styles.weightMedium,
-    state.weight === 'semibold' && styles.weightSemibold,
-    state.weight === 'bold' && styles.weightBold,
-    state.align === 'center' && styles.alignCenter,
-    state.align === 'end' && styles.alignEnd,
-    state.align === 'justify' && styles.alignJustify,
+    wrap === false && styles.nowrap,
+    truncate && styles.truncate,
+    block && styles.block,
+    italic && styles.italic,
+    underline && styles.underline,
+    strikethrough && styles.strikethrough,
+    underline && strikethrough && styles.strikethroughUnderline,
+    font !== 'base' && styles[font],
+    weight !== 'regular' && styles[weight],
+    align !== 'start' && styles[align],
     state.root.className,
   );
 

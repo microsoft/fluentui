@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { render, screen } from '@testing-library/react';
 import { AvatarGroupItem } from './AvatarGroupItem';
 import { AvatarGroupContext } from '../../contexts';
@@ -14,7 +15,14 @@ describe('AvatarGroupItem', () => {
   isConformant({
     Component: AvatarGroupItem,
     displayName: 'AvatarGroupItem',
+    // `make-styles-overrides-win` was already disabled here before the Griffel → Tailwind +
+    // CSS Modules migration (migration/griffel-to-tailwind). It is now doubly inapplicable:
+    // the hook composes with clsx and never calls mergeClasses, so the mock the test
+    // installs is never hit. `classname-overrides-win` is its cascade-native replacement —
+    // consumer `className` last on the root, with unlayered consumer CSS beating the
+    // `@layer fui.*` rules (DECISIONS.md D2/D9).
     disabledTests: ['make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     primarySlot: 'avatar',
     renderOptions: {
       wrapper: ContextWrapper,

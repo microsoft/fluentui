@@ -1,9 +1,9 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- kept per CONVERSION_GUIDE §3; see ../../Text/useTextStyles.styles.ts for the full note
 
-import { makeStyles } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TextSlots } from '../../Text/Text.types';
-import { typographyStyles } from '@fluentui/react-theme';
+
+import styles from '../presets.module.css';
 
 export const body1StrongClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Body1Strong',
@@ -11,7 +11,12 @@ export const body1StrongClassNames: SlotClassNames<TextSlots> = {
 
 /**
  * Styles for the root slot
+ *
+ * Griffel → Tailwind + CSS Modules migration: the four `typographyStyles.body1Strong`
+ * declarations now live in `../presets.module.css` at `fui.components.l2` (the preset is
+ * applied over Text's own hook output — see that file's header). The class map is a static
+ * object, so the returned shape is hoisted rather than rebuilt on every render.
  */
-export const useBody1StrongStyles = makeStyles({
-  root: typographyStyles.body1Strong,
-});
+const classes: Record<'root', string> = { root: styles.body1Strong };
+
+export const useBody1StrongStyles = (): Record<'root', string> => classes;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
@@ -9,6 +10,15 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
+    // was called with the consumer className last; Avatar now composes with clsx and never
+    // calls mergeClasses, so the test can no longer observe the contract. The guarantee
+    // itself is unchanged — clsx puts `state.root.className` last and the `@layer fui.*`
+    // sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
+    // `classname-overrides-win` below is its cascade-native replacement.
+    disabledTests: ['make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
     testOptions: {
       'has-static-classnames': [
         {

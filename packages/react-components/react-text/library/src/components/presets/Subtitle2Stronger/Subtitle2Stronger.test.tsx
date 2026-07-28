@@ -15,6 +15,7 @@ describe('Subtitle2Stronger', () => {
       <div>
         <span
           class="fui-Subtitle2Stronger fui-Text"
+          data-size="300"
         >
           Default Subtitle2Stronger
         </span>

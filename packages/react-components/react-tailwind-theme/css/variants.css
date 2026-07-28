@@ -37,6 +37,15 @@
 @custom-variant indeterminate (&:where([data-indeterminate], :indeterminate));
 
 /*
+ * Complement of `indeterminate` above. Needed by tri-state controls: Checkbox's `checked`
+ * prop is `true | false | 'mixed'`, which rides TWO independent presence attributes
+ * (`data-checked` + `data-indeterminate`), so its "plain unchecked" branch is the
+ * intersection `not-checked` ∩ `not-indeterminate` — `not-checked` alone would also match
+ * the mixed state. Radio/Switch, being genuinely boolean, never need this one.
+ */
+@custom-variant not-indeterminate (&:where(:not([data-indeterminate], :indeterminate)));
+
+/*
  * scale (Button, Badge, Avatar, Spinner, …) — `size` is a scale prop, not a look prop,
  * so it rides a data-attribute rather than a module class (DECISIONS.md D3).
  */
@@ -108,23 +117,79 @@
 /*
  * label slot presence/placement (Switch, Checkbox, Radio, …) — the same shape as the icon
  * block above. `data-label-position` is one of the headless preview's 25 attribute names
- * (reports/headless-precedent.md) and is stamped ONLY when the label slot exists, so its
- * presence doubles as the "has a label" signal every one of these slices is gated on
- * (`label && labelStyles[labelPosition]`). A component whose layout also depends on
- * `labelPosition` WITHOUT that gate (react-switch's root flex-direction) uses
- * `data-orientation` / `@variant vertical` instead, which is always stamped.
+ * (reports/headless-precedent.md). Whether it is stamped conditionally is the CONVERTING
+ * COMPONENT's call, and the two converted so far differ:
+ *   • react-switch stamps it ONLY when the label slot exists, because every slice that
+ *     reads it is gated on `label && …` — its presence then doubles as the "has a label"
+ *     signal (`with-label` below). A Switch rule that depends on `labelPosition` WITHOUT
+ *     that gate (its root flex-direction) uses `data-orientation` / `@variant vertical`
+ *     instead, which is always stamped.
+ *   • react-checkbox stamps it UNCONDITIONALLY, because `inputStyles[labelPosition]`
+ *     positions the hidden `<input>` with no `label &&` gate. Its label-slot rules read
+ *     the same attribute and are simply inert with no `.label` element to match.
+ * So `with-label` means "has a label" only for components in the first group; do not read
+ * it as a general presence signal.
  *
  * The three values here are react-switch's union (`'above' | 'after' | 'before'`). The
- * rest of the family uses subsets plus one more value: Checkbox is `'before' | 'after'`,
- * Radio is `'after' | 'below'` — so converting Radio adds a `label-below` entry here.
+ * rest of the family uses subsets plus one more value: Checkbox is `'before' | 'after'`
+ * (both already covered), Radio is `'after' | 'below'` — `label-below` was added by the
+ * Radio conversion. Radio belongs to the FIRST group: `labelStyles[labelPosition]` is the
+ * only slice that reads the attribute and it is gated on `label &&`, while its two
+ * ungated `labelPosition === 'below'` slices (root flex-direction, hidden-input box) use
+ * `data-orientation` exactly as Switch does.
  */
 @custom-variant with-label (&:where([data-label-position]));
 @custom-variant label-above (&:where([data-label-position='above']));
 @custom-variant label-after (&:where([data-label-position='after']));
 @custom-variant label-before (&:where([data-label-position='before']));
+@custom-variant label-below (&:where([data-label-position='below']));
+
+/*
+ * RadioGroup's `layout` prop. `data-layout` is one of the headless preview's 25 attribute
+ * names (reports/headless-precedent.md) and is deliberately NOT folded into
+ * `data-orientation` above: the union includes `horizontal-stacked`, which is a layout mode
+ * rather than an axis, and `layout` is the public prop's own name.
+ *
+ * The three values are RadioGroup's complete union. Only `layout-vertical` carries rules
+ * today (the Griffel source styled `layout === 'vertical'` alone, leaving both horizontal
+ * modes on the base `flex-direction: row`); the other two name the rest of the attribute's
+ * value space and emit nothing until a module references them.
+ */
+@custom-variant layout-vertical (&:where([data-layout='vertical']));
+@custom-variant layout-horizontal (&:where([data-layout='horizontal']));
+@custom-variant layout-horizontal-stacked (&:where([data-layout='horizontal-stacked']));
+
+/*
+ * Where a Persona's text sits relative to its avatar/presence coin. Persona's public prop
+ * is `textPosition: 'after' | 'before' | 'below'` and it drives the root's whole grid
+ * template, so the attribute is named from the prop (the ProgressBar `data-thickness`
+ * precedent): neither nyt-games nor the headless preview has a name for it, and the
+ * preview's generic `data-position` would be ambiguous here because Persona ALSO has a
+ * `textAlignment` prop. `text-position-after` is currently unreferenced — Persona's `after`
+ * slice is empty — and is listed for completeness; an unreferenced variant emits nothing.
+ */
+@custom-variant text-position-after (&:where([data-text-position='after']));
+@custom-variant text-position-before (&:where([data-text-position='before']));
+@custom-variant text-position-below (&:where([data-text-position='below']));
 
 /* spacing opt-ins (Divider inset, …) — presence attributes, written as `|| undefined` */
 @custom-variant inset (&:where([data-inset]));
+
+/*
+ * "This element responds to pointer/keyboard interaction" — ListItem's
+ * `selectable || navigable` union, which its Griffel hook spells as the single slice
+ * `rootClickableOrSelectable` (display + cursor). Both halves gate exactly one slice and
+ * neither is used alone, so per the cookbook's boolean-pair rule the union rides ONE
+ * presence attribute instead of two attributes plus a union variant.
+ *
+ * The name is invented: neither the nyt-games catalog (reports/nyt-games-conventions.md,
+ * 95 variants) nor the headless preview's 25 data-attribute names
+ * (reports/headless-precedent.md) has an entry for it — the closest headless names,
+ * `data-has-actions` / `data-selected`, mean different things. Generalises to the rest of
+ * the row/option family (MenuItem, TreeItem, TableRow) whose Griffel sources gate the
+ * same `cursor: pointer` on the same "is this row actionable" condition.
+ */
+@custom-variant interactive (&:where([data-interactive]));
 
 /*
  * Link's `inline` boolean — "this link sits inside a run of text", which underlines it at
@@ -150,6 +215,27 @@
 @custom-variant hover (&:where(:hover));
 @custom-variant focus (&:where(:focus));
 @custom-variant focus-within (&:where(:focus-within));
+
+/*
+ * SearchBox's `focused` — a React state flag, NOT a pseudo-class, and deliberately not a
+ * union with one. `useSearchBoxBase_unstable` sets it from `onFocus`/`onBlur` handlers on
+ * the root plus a `relatedTarget` containment check, so it stays true while focus moves
+ * between the `<input>` and the dismiss button, and it is what the Griffel hook branched on
+ * (`!focused && …`). `:focus-within` is a near-neighbour, not an equal: it is live where the
+ * React flag is a render behind, and it would fire on elements whose hook never set the
+ * state. Folding either into the other is the "half-applying dual-source variant" trap
+ * reports/nyt-games-conventions.md flags.
+ *
+ * Name from the headless preview's `data-focused` (one of its 25 attribute names —
+ * reports/headless-precedent.md; `react-headless-components-preview`'s own SearchBox stamps
+ * exactly this on the root). nyt-games spells the same attribute `focus`, a name this
+ * catalog already binds to the native `:focus` pseudo-class.
+ *
+ * Boolean-ish pair per the cookbook: ONE presence attribute plus a `:not()` complement —
+ * every v9 slice that reads it reads the complement.
+ */
+@custom-variant focused (&:where([data-focused]));
+@custom-variant not-focused (&:where(:not([data-focused])));
 
 /*
  * UNION compounds — the `-or-` in the name is load-bearing. `hover-active` below is an
