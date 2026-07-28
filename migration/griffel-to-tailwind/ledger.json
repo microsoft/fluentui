@@ -76,10 +76,10 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-avatar": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-badge": {
       "status": "validated",
@@ -118,10 +118,10 @@
       "notes": ""
     },
     "react-checkbox": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-color-picker": {
       "status": "special",
@@ -208,10 +208,10 @@
       "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted). Converted: Image.module.css + clsx hook. All 5 props are LOOK props -> module classes; ZERO data-attributes, ZERO new custom variants (bordered/shadow/block compose with nothing, so classes beat inventing catalog entries). Empty Griffel slices square/default deliberately unauthored -> styles.square/styles.default === undefined. One value-level RTL flip (fit=none object-position left top -> right top) under @variant rtl. Tests 20/20 (snapshot byte-identical, no data-* additions). Build green; dist/styles.css 2475B starts with canonical @layer stmt; zero dangling .module.css specifiers; styles.raw.js deleted. Fidelity audit: all 26 compiled Griffel atomics / 30 declarations reproduced. Matrix probe: 960/960 prop combos class-identical to mergeClasses arg order. VR NOT RUN (brief forbade storybook rebuild) -> not yet validated."
     },
     "react-infolabel": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-input": {
       "status": "validated",
@@ -238,10 +238,10 @@
       "notes": "BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-list": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-menu": {
       "status": "needs-conversion",
@@ -298,10 +298,10 @@
       "notes": ""
     },
     "react-persona": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-popover": {
       "status": "needs-conversion",
@@ -346,10 +346,10 @@
       "notes": "PILOT #2b: root styles (base typography/color) converted+validated (Text 6/6, Menu ~30 portal stories clean, Divider regression 31/31; portal themeClassName + portal-compat regex empirically verified identical). Theme style tag / renderer / dir handling untouched - still special for Phase 2/3 remainder. Non-component styles inventory: reports/pilot-provider-inventory.md (makeStaticStyles: zero product usage)."
     },
     "react-radio": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-rating": {
       "status": "needs-conversion",
@@ -358,16 +358,16 @@
       "notes": ""
     },
     "react-search": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-select": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-shared-contexts": {
       "status": "no-styles",
@@ -460,10 +460,10 @@
       "notes": ""
     },
     "react-text": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 18,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-textarea": {
       "status": "validated",
@@ -502,10 +502,10 @@
       "notes": ""
     },
     "react-tooltip": {
-      "status": "needs-conversion",
+      "status": "converting",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "BATCH-2 (2026-07-27)"
     },
     "react-tree": {
       "status": "needs-conversion",
