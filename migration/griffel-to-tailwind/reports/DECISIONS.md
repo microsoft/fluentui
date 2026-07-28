@@ -928,3 +928,25 @@ contract. Do not extend the serializer.
 Changes are pixel-inert by construction: a class no stylesheet selects yet, and attributes no
 current selector matches (every Switch checked rule is anchored on `.input`). **VR stays 34/34 at
 zero tolerance; any diff is a bug, not a baseline.**
+
+### D15.6 — RESOLVED (user-settled 2026-07-28): data attributes are a FALLBACK, not a requirement
+
+The uncontrolled Switch/Radio `data-checked` gap is **not a problem and needs no
+fix**. Policy, in the user's framing: data attributes exist as a fallback for
+when native selectors aren't possible or available. When a component runs
+uncontrolled, the DOM owns the state and CSS is the driver of state styling —
+native `:checked`/`:disabled` cover it, and the absent mirror is by design.
+
+Concretely:
+
+- No controllable-state migration for Switch/Radio. The mirrors stay as
+  implemented — best-effort: present when React knows the state (controlled),
+  absent otherwise.
+- The dual selector form `:where([data-checked], :checked)` is the correct
+  general shape: native wins wherever it exists; the data alternative carries
+  the cases native can't express (non-native components, and group-element
+  consumption where the native state lives on an inner element). The variant
+  matrix measured this form at zero perf cost.
+- General authoring rule: do NOT add `data-*` mirrors where a native selector
+  already expresses the state at the element that needs it. Mirror only where
+  the styling target (e.g. the group element) cannot reach the native state.
