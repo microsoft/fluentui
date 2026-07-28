@@ -27,12 +27,20 @@ export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token — the only handle by which another module can style an element
-  // from this CounterBadge's state, because the module classes are hashed and unaddressable
-  // from outside this file (DECISIONS.md D15).
+  // Identity-only module class FIRST, then the static `fui-*` class (conformance contract),
+  // then the named group marker — the marker must never be `classList[0]` (nwsapi's `:scope`
+  // polyfill throws on it under jsdom; DECISIONS.md D15.1) — with the consumer className
+  // last. The marker is a literal, unhashed, GLOBAL token — the only handle by which another
+  // module can style an element from this CounterBadge's state, because the module classes
+  // are hashed and unaddressable from outside this file (DECISIONS.md D15).
+  //
+  // `styles.root` carries no declarations; it exists so this root always emits a hashed,
+  // selector-safe token ahead of the markers. It is needed because BOTH of this hook's own
+  // slices are conditional — the default render (children, not a dot) emits neither — so
+  // nothing else here is guaranteed to be present. Badge's delegation below does prepend its
+  // own unconditional classes, but relying on that would make this root's D15.1 safety a
+  // property of another component's hook. See CounterBadge.module.css for why the local
+  // carries an inert custom property rather than an empty body (statics-removal design §4b).
   //
   // This root ends up carrying TWO markers, `group/fui-badge` and `group/fui-counter-badge`,
   // exactly as it already carries both `fui-Badge` and `fui-CounterBadge`: the delegation
@@ -52,6 +60,7 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
+    styles.root,
     counterBadgeClassNames.root,
     'group/fui-counter-badge',
     state.dot && styles.dot,

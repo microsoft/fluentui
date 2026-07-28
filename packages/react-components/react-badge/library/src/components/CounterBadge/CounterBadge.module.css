@@ -20,10 +20,11 @@
  * accumulated string. The effective mergeClasses argument order is therefore:
  *
  *   1 badgeClassNames.root, Badge reset, Badge size/shape/appearance slices   (Badge hook)
- *   2 counterBadgeClassNames.root                        → static class (JS)
- *   3 useStyles.dot                                      → fui.components.l2
- *   4 useStyles.hide                                     → fui.components.l2
- *   5 consumer className                                 → unlayered (always wins)
+ *   2 useStyles.root (identity-only)                     → fui.components.l1
+ *   3 counterBadgeClassNames.root                        → static class (JS)
+ *   4 useStyles.dot                                      → fui.components.l2
+ *   5 useStyles.hide                                     → fui.components.l2
+ *   6 consumer className                                 → unlayered (always wins)
  *
  * i.e. these two slices are applied OVER another component's hook output — the
  * ToggleButton-over-Button case — so they belong to the composition altitude. This is
@@ -36,6 +37,38 @@
  * Within l2 the two blocks stay in argument order, though they never collide: `dot` sets
  * sizing/padding and `hide` sets `display`.
  */
+
+/*
+ * IDENTITY-ONLY local (DECISIONS.md D15.1; statics-removal design §4b). Both of
+ * CounterBadge's own slices below are CONDITIONAL — the default render (`<CounterBadge>`
+ * with children, not a dot) emits neither — so without this class the root's own
+ * contribution is just the static `fui-CounterBadge` and the group markers.
+ * `useCounterBadgeStyles_unstable` leads its `clsx()` with it so the root ALWAYS carries a
+ * hashed, selector-safe token: nwsapi's `:scope` polyfill builds its anchor from
+ * `escape(element.classList[0])`, and the `/` in `group/fui-counter-badge` survives that
+ * escaping, yielding an invalid selector and a render-time AggregateError under jsdom.
+ * Do not delete it because it looks like it does nothing.
+ *
+ * ALTITUDE IS IRRELEVANT HERE, and l1 is deliberate. This rule declares nothing that can
+ * compete with anything, so unlike `.dot` / `.hide` below it has no reason to sit at the
+ * composition altitude; keeping it out of l2 stops a reader from inferring that it is part
+ * of the over-Badge override set.
+ *
+ * WHY IT IS NOT A LITERALLY EMPTY RULE. The design specified `.root {}` on the premise that
+ * `postcss-modules` exports the name even with an empty body. It does not survive this
+ * pipeline: `@tailwindcss/postcss` runs BEFORE `postcss-modules`
+ * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and Tailwind v4 prunes
+ * every declaration-less rule — layered, unlayered or comment-only — so the class would
+ * never reach the class map and `styles.root` would be `undefined`, silently putting the
+ * marker at index 0. Measured on Tailwind v4.3.3. `--fui-counter-badge-identity: initial` is the minimal
+ * body that survives: a custom property set to `initial` is guaranteed-invalid, so it
+ * renders nothing and any `var(--fui-counter-badge-identity, X)` still resolves to `X`.
+ */
+@layer fui.components.l1 {
+  .root {
+    --fui-counter-badge-identity: initial;
+  }
+}
 
 @layer fui.components.l2 {
   /*
