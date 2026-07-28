@@ -26,6 +26,12 @@ conversation memory).
   access) — the overseer reads the ledger, picks the batch, passes it as `args`, and
   writes results back to the ledger when the workflow returns.
 - Batch size: 3–6 packages per workflow run so a crash loses at most one batch.
+- Windows commit limit: nano-staged passes all staged filenames to ONE prettier
+  invocation — above ~70 staged JS/TS files the command line overflows and husky
+  rolls the commit back (leaving the INDEX staged — git reset before retrying).
+  Commit batches in per-package chunks; never bypass hooks.
+- The button-family VR set (342 shots, ~4min) reliably outlives sonnet verify
+  agents — it is an OVERSEER-owned step, not a workflow agent step.
 - Note: the ECC GateGuard hook fact-gates the first Bash call and every new-file Write in
   each session, including worker sessions. For mass-conversion sessions consider launching
   with `ECC_GATEGUARD=off` (user's call — ask once per session if unclear).

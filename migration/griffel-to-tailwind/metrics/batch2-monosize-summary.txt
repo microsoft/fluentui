@@ -1,0 +1,6 @@
+date: 2026-07-27 (post batch-2; gz, monosize js+css combined per D10)
+Suite Button+Provider+theme: 19002 -> 15765 (-17.0%)
+Suite 6-component:           68049 -> 65980 (-3.0%)
+Suite Provider+theme:        13112 -> 12760 (-2.7%)
+Suite ENTIRE LIBRARY:       326152 -> 314949 (-3.4%) at 23/87 converted
+trajectory: baseline 0 -> batch1 -2.1% -> batch2 -3.4%
