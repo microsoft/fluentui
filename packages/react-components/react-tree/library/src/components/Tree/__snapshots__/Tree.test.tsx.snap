@@ -3,7 +3,7 @@
 exports[`Tree renders a default state 1`] = `
 <div>
   <div
-    class="group/fui-tree fui-Tree"
+    class="fui-Tree group/fui-tree"
     role="tree"
   >
     Default Tree

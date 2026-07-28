@@ -3,7 +3,7 @@
 exports[`TreeItemLayout renders a default state 1`] = `
 <div>
   <div
-    class="group/fui-tree-item-layout fui-TreeItemLayout"
+    class="fui-TreeItemLayout group/fui-tree-item-layout"
     data-size="medium"
   >
     <div

@@ -26,14 +26,15 @@ export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>> =
 export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   const isSubTree = state.level > 1;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
-  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
-  // only handle by which another module — in this package or any other — can style an
-  // element from this Tree's state, because `styles.root` is hashed and unaddressable from
-  // outside this file. Tree is the outermost of the package's four nested markers
-  // (Tree > TreeItem > TreeItemLayout / TreeItemPersonaLayout), so a layout deep in the
-  // subtree can read `@variant group-rtl/fui-tree { … }` without Tree exporting anything
-  // (DECISIONS.md D15, Tier 0 — no state mirrors needed).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Tree's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Tree is the outermost of the package's
+  // four nested markers (Tree > TreeItem > TreeItemLayout / TreeItemPersonaLayout), so a
+  // layout deep in the subtree can read `@variant group-rtl/fui-tree { … }` without Tree
+  // exporting anything (DECISIONS.md D15, Tier 0 — no state mirrors needed).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Tree.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
@@ -45,8 +46,8 @@ export const useTreeStyles_unstable = (state: TreeState): TreeState => {
   // the mixed-mode sibling seam and the customStyleHooks contract depend on the shared
   // object, and its removal is a single Phase 3 sweep (DECISIONS.md D14).
   state.root.className = clsx(
-    'group/fui-tree',
     treeClassNames.root,
+    'group/fui-tree',
     styles.root,
     isSubTree && styles.subtree,
     state.root.className,
