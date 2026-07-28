@@ -54,7 +54,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/01
+                  Feb/29
                 </text>
               </g>
               <g
@@ -73,7 +73,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/02
+                  Mar/01
                 </text>
               </g>
             </g>
@@ -130,7 +130,7 @@ Object {
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -152,7 +152,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -175,7 +175,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -197,7 +197,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -239,8 +239,9 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                 type="button"
@@ -258,8 +259,9 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                 type="button"
@@ -328,7 +330,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/01
+                Feb/29
               </text>
             </g>
             <g
@@ -347,7 +349,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/02
+                Mar/01
               </text>
             </g>
           </g>
@@ -404,7 +406,7 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -426,7 +428,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -449,7 +451,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -471,7 +473,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -513,8 +515,9 @@ Object {
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
               type="button"
@@ -532,8 +535,9 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
               type="button"
@@ -844,8 +848,9 @@ Object {
               <button
                 aria-label="Excellent"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 203, 169); --rect-borderColor: rgb(255, 203, 169);"
                 type="button"
@@ -863,8 +868,9 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 213, 135); --rect-borderColor: rgb(255, 213, 135);"
                 type="button"
@@ -1116,8 +1122,9 @@ Object {
             <button
               aria-label="Excellent"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 203, 169); --rect-borderColor: rgb(255, 203, 169);"
               type="button"
@@ -1135,8 +1142,9 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(255, 213, 135); --rect-borderColor: rgb(255, 213, 135);"
               type="button"
@@ -1264,7 +1272,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/01
+                  Feb/29
                 </text>
               </g>
               <g
@@ -1283,7 +1291,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/02
+                  Mar/01
                 </text>
               </g>
             </g>
@@ -1340,7 +1348,7 @@ Object {
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -1362,7 +1370,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -1385,7 +1393,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -1407,7 +1415,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -1483,7 +1491,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/01
+                Feb/29
               </text>
             </g>
             <g
@@ -1502,7 +1510,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/02
+                Mar/01
               </text>
             </g>
           </g>
@@ -1559,7 +1567,7 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -1581,7 +1589,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -1604,7 +1612,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -1626,7 +1634,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -1761,7 +1769,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/01
+                  Feb/29
                 </text>
               </g>
               <g
@@ -1780,7 +1788,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/02
+                  Mar/01
                 </text>
               </g>
             </g>
@@ -1837,7 +1845,7 @@ Object {
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -1859,7 +1867,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -1882,7 +1890,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -1904,7 +1912,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -1946,8 +1954,9 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                 type="button"
@@ -1965,8 +1974,9 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                 type="button"
@@ -2035,7 +2045,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/01
+                Feb/29
               </text>
             </g>
             <g
@@ -2054,7 +2064,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/02
+                Mar/01
               </text>
             </g>
           </g>
@@ -2111,7 +2121,7 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -2133,7 +2143,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -2156,7 +2166,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -2178,7 +2188,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -2220,8 +2230,9 @@ Object {
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
               type="button"
@@ -2239,8 +2250,9 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
               type="button"
@@ -2368,7 +2380,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/01
+                  Feb/29
                 </text>
               </g>
               <g
@@ -2387,7 +2399,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/02
+                  Mar/01
                 </text>
               </g>
             </g>
@@ -2444,7 +2456,7 @@ Object {
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -2466,7 +2478,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -2489,7 +2501,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -2511,7 +2523,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -2553,8 +2565,9 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                 type="button"
@@ -2572,8 +2585,9 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                 type="button"
@@ -2642,7 +2656,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/01
+                Feb/29
               </text>
             </g>
             <g
@@ -2661,7 +2675,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
-                Mar/02
+                Mar/01
               </text>
             </g>
           </g>
@@ -2718,7 +2732,7 @@ Object {
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           >
             <g
-              aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -2740,7 +2754,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -2763,7 +2777,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+              aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
               fill-opacity="1"
               role="img"
               tabindex="0"
@@ -2785,7 +2799,7 @@ Object {
               </text>
             </g>
             <g
-              aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+              aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
               fill-opacity="1"
               role="img"
@@ -2827,8 +2841,9 @@ Object {
             <button
               aria-label="Execllent (0-200)"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
               type="button"
@@ -2846,8 +2861,9 @@ Object {
             <button
               aria-label="Nasty"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
+              data-size="small"
               role="option"
               style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
               type="button"
@@ -2979,7 +2995,7 @@ Object {
                     style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
-                    Mar/01
+                    Feb/29
                   </text>
                 </g>
                 <g
@@ -2998,7 +3014,7 @@ Object {
                     style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
-                    Mar/02
+                    Mar/01
                   </text>
                 </g>
               </g>
@@ -3055,7 +3071,7 @@ Object {
                 data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               >
                 <g
-                  aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                  aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
                   role="img"
                   tabindex="0"
@@ -3077,7 +3093,7 @@ Object {
                   </text>
                 </g>
                 <g
-                  aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
                   role="img"
@@ -3100,7 +3116,7 @@ Object {
                   </text>
                 </g>
                 <g
-                  aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                  aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
                   role="img"
                   tabindex="0"
@@ -3122,7 +3138,7 @@ Object {
                   </text>
                 </g>
                 <g
-                  aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
                   role="img"
@@ -3164,8 +3180,9 @@ Object {
                 <button
                   aria-label="Execllent (0-200)"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
+                  data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                   type="button"
@@ -3183,8 +3200,9 @@ Object {
                 <button
                   aria-label="Nasty"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
+                  data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                   type="button"
@@ -3258,7 +3276,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/01
+                  Feb/29
                 </text>
               </g>
               <g
@@ -3277,7 +3295,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/02
+                  Mar/01
                 </text>
               </g>
             </g>
@@ -3334,7 +3352,7 @@ Object {
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -3356,7 +3374,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -3379,7 +3397,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -3401,7 +3419,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -3443,8 +3461,9 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                 type="button"
@@ -3462,8 +3481,9 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                 type="button"
@@ -3595,7 +3615,7 @@ Object {
                     style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
-                    Mar/01
+                    Feb/29
                   </text>
                 </g>
                 <g
@@ -3614,7 +3634,7 @@ Object {
                     style="direction: ltr; unicode-bidi: isolate;"
                     y="10"
                   >
-                    Mar/02
+                    Mar/01
                   </text>
                 </g>
               </g>
@@ -3671,7 +3691,7 @@ Object {
                 data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               >
                 <g
-                  aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                  aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
                   role="img"
                   tabindex="0"
@@ -3693,7 +3713,7 @@ Object {
                   </text>
                 </g>
                 <g
-                  aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
                   role="img"
@@ -3716,7 +3736,7 @@ Object {
                   </text>
                 </g>
                 <g
-                  aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                  aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                   fill-opacity="1"
                   role="img"
                   tabindex="0"
@@ -3738,7 +3758,7 @@ Object {
                   </text>
                 </g>
                 <g
-                  aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                  aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                   fill-opacity="1"
                   role="img"
@@ -3780,8 +3800,9 @@ Object {
                 <button
                   aria-label="Execllent (0-200)"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
+                  data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                   type="button"
@@ -3799,8 +3820,9 @@ Object {
                 <button
                   aria-label="Nasty"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
+                  data-size="small"
                   role="option"
                   style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                   type="button"
@@ -3873,7 +3895,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/01
+                  Feb/29
                 </text>
               </g>
               <g
@@ -3892,7 +3914,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
-                  Mar/02
+                  Mar/01
                 </text>
               </g>
             </g>
@@ -3949,7 +3971,7 @@ Object {
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             >
               <g
-                aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -3971,7 +3993,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
         off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -3994,7 +4016,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/01, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
+                aria-label="Feb/29, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
@@ -4016,7 +4038,7 @@ Object {
                 </text>
               </g>
               <g
-                aria-label="Mar/02, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+                aria-label="Mar/01, p1. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
                 fill-opacity="1"
                 role="img"
@@ -4058,8 +4080,9 @@ Object {
               <button
                 aria-label="Execllent (0-200)"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
                 type="button"
@@ -4077,8 +4100,9 @@ Object {
               <button
                 aria-label="Nasty"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
+                data-size="small"
                 role="option"
                 style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
                 type="button"
@@ -4377,8 +4401,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <button
             aria-label="Excellent"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
+            data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
             type="button"
@@ -4396,8 +4421,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <button
             aria-label="Nasty"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
+            data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
             type="button"
@@ -4651,8 +4677,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <button
             aria-label="Excellent"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
+            data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: rgb(144, 180, 215); --rect-borderColor: rgb(144, 180, 215);"
             type="button"
@@ -4670,8 +4697,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <button
             aria-label="Nasty"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
+            data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: rgb(115, 144, 200); --rect-borderColor: rgb(115, 144, 200);"
             type="button"

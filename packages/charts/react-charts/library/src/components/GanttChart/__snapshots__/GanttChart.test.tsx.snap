@@ -360,7 +360,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <button
             aria-label="Complete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -380,7 +380,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <button
             aria-label="Incomplete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -400,7 +400,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <button
             aria-label="Not Started"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1027,7 +1027,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <button
             aria-label="No"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1047,7 +1047,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <button
             aria-label="Yes (Phase 1)"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1067,7 +1067,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <button
             aria-label="Yes (Phase 2)"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1451,7 +1451,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Complete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1471,7 +1471,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Incomplete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1491,7 +1491,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Not Started"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -1879,7 +1879,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <button
               aria-label="Complete"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1899,7 +1899,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <button
               aria-label="Incomplete"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1919,7 +1919,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <button
               aria-label="Not Started"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -2310,7 +2310,7 @@ Object {
                 <button
                   aria-label="Complete"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -2330,7 +2330,7 @@ Object {
                 <button
                   aria-label="Incomplete"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -2350,7 +2350,7 @@ Object {
                 <button
                   aria-label="Not Started"
                   aria-selected="false"
-                  class="fui-Button fui-legend__legend"
+                  class="group/fui-button fui-Button fui-legend__legend"
                   data-overflow-item=""
                   data-size="small"
                   role="option"
@@ -2736,7 +2736,7 @@ Object {
               <button
                 aria-label="Complete"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2756,7 +2756,7 @@ Object {
               <button
                 aria-label="Incomplete"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -2776,7 +2776,7 @@ Object {
               <button
                 aria-label="Not Started"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -3355,7 +3355,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="HR"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3375,7 +3375,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Finance"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3395,7 +3395,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="IT"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3415,7 +3415,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Operations"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3435,7 +3435,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Customer Support"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3455,7 +3455,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <button
             aria-label="Legal"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3877,7 +3877,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <button
             aria-label="Complete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3897,7 +3897,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <button
             aria-label="Incomplete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -3917,7 +3917,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <button
             aria-label="Not Started"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4301,7 +4301,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <button
             aria-label="Complete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4321,7 +4321,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <button
             aria-label="Incomplete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4341,7 +4341,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <button
             aria-label="Not Started"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4725,7 +4725,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <button
             aria-label="Complete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4745,7 +4745,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <button
             aria-label="Incomplete"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -4765,7 +4765,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <button
             aria-label="Not Started"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -5440,7 +5440,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <button
             aria-label="No"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -5460,7 +5460,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <button
             aria-label="Yes (Phase 1)"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -5480,7 +5480,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <button
             aria-label="Yes (Phase 2)"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"

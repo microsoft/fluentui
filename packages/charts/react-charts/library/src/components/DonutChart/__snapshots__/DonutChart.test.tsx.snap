@@ -101,7 +101,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="first"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -121,7 +121,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="second"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -141,7 +141,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           <button
             aria-label="third"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-overflow-item=""
             data-size="small"
             role="option"
@@ -270,7 +270,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <button
               aria-label="first"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -290,7 +290,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <button
               aria-label="second"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -310,7 +310,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             <button
               aria-label="third"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -482,7 +482,7 @@ Object {
               <button
                 aria-label="first"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -502,7 +502,7 @@ Object {
               <button
                 aria-label="second"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -522,7 +522,7 @@ Object {
               <button
                 aria-label="third"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -550,13 +550,11 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content"
+        class="group/fui-tooltip fui-Tooltip__content"
         id="tooltip-_r_40_"
         role="tooltip"
       >
-        <div
-          class=""
-        />
+        <div />
         Donut chart example
       </div>
       <span
@@ -705,7 +703,7 @@ Object {
             <button
               aria-label="first"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -725,7 +723,7 @@ Object {
             <button
               aria-label="second"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -745,7 +743,7 @@ Object {
             <button
               aria-label="third"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -968,7 +966,7 @@ Object {
               <button
                 aria-label="first"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -988,7 +986,7 @@ Object {
               <button
                 aria-label="second"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1008,7 +1006,7 @@ Object {
               <button
                 aria-label="third"
                 aria-selected="false"
-                class="fui-Button fui-legend__legend"
+                class="group/fui-button fui-Button fui-legend__legend"
                 data-overflow-item=""
                 data-size="small"
                 role="option"
@@ -1036,13 +1034,11 @@ Object {
       dir="ltr"
     >
       <div
-        class="fui-Tooltip__content"
+        class="group/fui-tooltip fui-Tooltip__content"
         id="tooltip-_r_4d_"
         role="tooltip"
       >
-        <div
-          class=""
-        />
+        <div />
         Donut chart example
       </div>
       <span
@@ -1191,7 +1187,7 @@ Object {
             <button
               aria-label="first"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1211,7 +1207,7 @@ Object {
             <button
               aria-label="second"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1231,7 +1227,7 @@ Object {
             <button
               aria-label="third"
               aria-selected="false"
-              class="fui-Button fui-legend__legend"
+              class="group/fui-button fui-Button fui-legend__legend"
               data-overflow-item=""
               data-size="small"
               role="option"
@@ -1407,7 +1403,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1427,7 +1423,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1447,7 +1443,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1600,7 +1596,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1620,7 +1616,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1640,7 +1636,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1793,7 +1789,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1813,7 +1809,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1833,7 +1829,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1956,7 +1952,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1976,7 +1972,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -1996,7 +1992,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2119,7 +2115,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2139,7 +2135,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2159,7 +2155,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2286,7 +2282,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           <button
             aria-label="first"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
@@ -2309,7 +2305,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           <button
             aria-label="second"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
@@ -2332,7 +2328,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           <button
             aria-label="third"
             aria-selected="false"
-            class="fui-Button fui-legend__legend"
+            class="group/fui-button fui-Button fui-legend__legend"
             data-size="small"
             role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
@@ -2518,7 +2514,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2538,7 +2534,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2558,7 +2554,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2681,7 +2677,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <button
           aria-label="first"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2701,7 +2697,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <button
           aria-label="second"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
@@ -2721,7 +2717,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         <button
           aria-label="third"
           aria-selected="false"
-          class="fui-Button fui-legend__legend"
+          class="group/fui-button fui-Button fui-legend__legend"
           data-overflow-item=""
           data-size="small"
           role="option"
