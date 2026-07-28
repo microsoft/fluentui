@@ -1,0 +1,54 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * IDENTITY-ONLY MODULE. AccordionItem has no styles of its own — its Griffel hook never
+ * declared a `makeStyles` slice, it only ran `mergeClasses` over the static class name and
+ * the consumer className. There is therefore nothing to map from mergeClasses argument
+ * order to a layer, and this file declares exactly one empty local.
+ *
+ * WHY IT EXISTS (statics-removal design §4b, DECISIONS.md D15.1 / D16.2). AccordionItem's
+ * root is one of the six "Class B" slots: it carries the `group/fui-accordion-item` marker
+ * but has NO unconditional module class, so today only the `fui-AccordionItem` static keeps
+ * the marker off `classList[0]`. That position is load-bearing: jsdom polyfills `:scope`
+ * through nwsapi, whose `makeref()` builds its anchor from `escape(element.classList[0])`,
+ * and the `/` in `group/fui-accordion-item` survives that escaping and produces an invalid
+ * selector — a render-time `AggregateError` for any test or app that evaluates a `:scope`
+ * selector against a converted component. When the statics are removed the marker would
+ * become `classList[0]` here unless something selector-safe already leads.
+ *
+ * This local is that leading token. It is minted NOW, while the static is still present, so
+ * the statics-removal sweep is a pure deletion in this file's hook rather than a change that
+ * has to add a class and delete one in the same step.
+ *
+ * DO NOT DELETE BECAUSE IT LOOKS EMPTY. If AccordionItem's root ever gains a declaration, it
+ * belongs in this block — and the placeholder declaration below goes away with it.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * The declaration below is load-bearing and is NOT a style. A literally empty `.root {}`
+   * DOES NOT SURVIVE this pipeline — `@tailwindcss/postcss` runs before `postcss-modules`
+   * (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and drops empty rules,
+   * comments included, so the generated class map comes out `{}` and `styles.root` is
+   * `undefined` at runtime. See the long-form note in
+   * ../Accordion/Accordion.module.css for the measurements and for why jest cannot catch it.
+   *
+   * `initial` changes nothing: a custom property set to `initial` takes the
+   * guaranteed-invalid initial value, exactly equivalent to never having been declared.
+   */
+  .root {
+    --fui-accordion-item-identity: initial;
+  }
+}
