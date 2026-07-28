@@ -18,17 +18,21 @@
  *
  *   1  presenceBadgeClassNames.root         → static class (JS)
  *   2  useRootClassName (makeResetStyles)   → fui.base
- *   3  useStyles.statusBusy                 → fui.components.l1
- *   4  useStyles.statusAway                 → fui.components.l1
- *   5  useStyles.statusAvailable            → fui.components.l1
- *   6  useStyles.statusOffline              → fui.components.l1
- *   7  useStyles.statusOutOfOffice          → fui.components.l1
- *   8  useStyles.statusUnknown              → fui.components.l1
- *   9  useStyles.outOfOffice                → fui.components.l1
- *   10 useStyles.outOfOfficeAvailable       → fui.components.l1
- *   11 useStyles.outOfOfficeBusy            → fui.components.l1
+ *   3  useStyles.statusBusy                 → fui.components.l1  (.status-busy)
+ *   4  useStyles.statusAway                 → fui.components.l1  (.status-away)
+ *   5  useStyles.statusAvailable            → fui.components.l1  (.status-available)
+ *   6  useStyles.statusOffline              → fui.components.l1  (.status-offline)
+ *   7  useStyles.statusOutOfOffice          → fui.components.l1  (.status-out-of-office)
+ *   8  useStyles.statusUnknown              → fui.components.l1  (.status-unknown)
+ *   9  useStyles.outOfOffice                → fui.components.l1  (.out-of-office)
+ *   10 useStyles.outOfOfficeAvailable       → fui.components.l1  (.out-of-office-available)
+ *   11 useStyles.outOfOfficeBusy            → fui.components.l1  (.out-of-office-busy)
  *   12 useStyles.statusOutOfOffice AGAIN    → fui.components.l1 (see INVERSION below)
- *   13 useStyles.outOfOfficeUnknown         → fui.components.l1
+ *   13 useStyles.outOfOfficeUnknown         → fui.components.l1  (.out-of-office-unknown)
+ *
+ * The left column names the GRIFFEL slice (camelCase, as the original source spelled it);
+ * the parenthesised name is this module's local, which is lowercase-kebab because the
+ * generated ident alphabet is all-lowercase (scripts/css-modules/ident.js).
  *   14 useStyles.tiny                       → fui.components.l1 (data-size)
  *   15 useStyles.large                      → fui.components.l1 (data-size)
  *   16 useStyles.extraLarge                 → fui.components.l1 (data-size)
@@ -44,7 +48,7 @@
  * 'out-of-office') and again at arg 12 (outOfOffice is set AND status is one of
  * 'out-of-office' | 'away' | 'offline'). mergeClasses re-ranks the atom to the later
  * argument's position, so at arg 12 it beats `outOfOffice` (arg 9). A CSS class can only
- * occupy ONE file position, so the re-application gets its own rule, `.outOfOfficeStatus`,
+ * occupy ONE file position, so the re-application gets its own rule, `.out-of-office-status`,
  * placed at the argument-12 position. Same declaration, different rank — that is the whole
  * reason it exists.
  *
@@ -54,7 +58,7 @@
  *                         available                   → arg 10 (light green)
  *                         away/offline/out-of-office  → arg 12 (berry)
  *                         unknown                     → arg 13 (neutral fg 3)
- * `.outOfOffice` (arg 9) is consequently overridden in every one of the 16 combinations —
+ * `.out-of-office` (arg 9) is consequently overridden in every one of the 16 combinations —
  * it is dead in the Griffel source too. Reproduced verbatim rather than dropped, so the
  * slice mapping stays 1:1 and any future status addition inherits the same fallback.
  *
@@ -116,60 +120,60 @@
   /* args 3–13 — from useStyles; strictly in mergeClasses argument order (see header). */
 
   /* arg 3 — busy | do-not-disturb | blocked */
-  .statusBusy {
+  .status-busy {
     color: var(--colorPaletteRedBackground3);
   }
 
   /* arg 4 */
-  .statusAway {
+  .status-away {
     color: var(--colorPaletteMarigoldBackground3);
   }
 
   /* arg 5 */
-  .statusAvailable {
+  .status-available {
     color: var(--colorPaletteLightGreenForeground3);
   }
 
   /* arg 6 */
-  .statusOffline {
+  .status-offline {
     color: var(--colorNeutralForeground3);
   }
 
   /* arg 7 */
-  .statusOutOfOffice {
+  .status-out-of-office {
     color: var(--colorPaletteBerryForeground3);
   }
 
   /* arg 8 */
-  .statusUnknown {
+  .status-unknown {
     color: var(--colorNeutralForeground3);
   }
 
   /* arg 9 — overridden by args 10–13 in every reachable combination (see header) */
-  .outOfOffice {
+  .out-of-office {
     color: var(--colorNeutralBackground1);
   }
 
   /* arg 10 */
-  .outOfOfficeAvailable {
+  .out-of-office-available {
     color: var(--colorPaletteLightGreenForeground3);
   }
 
   /* arg 11 */
-  .outOfOfficeBusy {
+  .out-of-office-busy {
     color: var(--colorPaletteRedBackground3);
   }
 
   /*
    * arg 12 — the re-application of the arg-7 slice at a higher rank (see INVERSION in the
-   * header). Identical declaration to `.statusOutOfOffice`; only its file position differs.
+   * header). Identical declaration to `.status-out-of-office`; only its file position differs.
    */
-  .outOfOfficeStatus {
+  .out-of-office-status {
     color: var(--colorPaletteBerryForeground3);
   }
 
   /* arg 13 */
-  .outOfOfficeUnknown {
+  .out-of-office-unknown {
     color: var(--colorNeutralForeground3);
   }
 }

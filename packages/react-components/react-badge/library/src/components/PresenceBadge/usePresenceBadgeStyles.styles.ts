@@ -60,7 +60,13 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this PresenceBadge's state, because `styles.root` is hashed and
+  // unaddressable from outside this file. No state mirror is needed: `data-size` is already
+  // stamped on this very element above (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in PresenceBadge.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces, the arg-12 inversion, and the
@@ -68,22 +74,26 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   //
   // The conditions below are byte-for-byte the ones Griffel used; only `styles.tiny` /
   // `.large` / `.extraLarge` moved out of JS and onto the `data-size` attribute above.
+  // The module locals are lowercase-kebab (`status-busy`, not `statusBusy`) — the generated
+  // ident alphabet is all-lowercase, see scripts/css-modules/ident.js — so they are read
+  // with bracket access rather than dot access.
   state.root.className = clsx(
+    'group/fui-presence-badge',
     presenceBadgeClassNames.root,
     styles.root,
-    isBusy && styles.statusBusy,
-    status === 'away' && styles.statusAway,
-    status === 'available' && styles.statusAvailable,
-    status === 'offline' && styles.statusOffline,
-    status === 'out-of-office' && styles.statusOutOfOffice,
-    status === 'unknown' && styles.statusUnknown,
-    outOfOffice && styles.outOfOffice,
-    outOfOffice && status === 'available' && styles.outOfOfficeAvailable,
-    outOfOffice && isBusy && styles.outOfOfficeBusy,
+    isBusy && styles['status-busy'],
+    status === 'away' && styles['status-away'],
+    status === 'available' && styles['status-available'],
+    status === 'offline' && styles['status-offline'],
+    status === 'out-of-office' && styles['status-out-of-office'],
+    status === 'unknown' && styles['status-unknown'],
+    outOfOffice && styles['out-of-office'],
+    outOfOffice && status === 'available' && styles['out-of-office-available'],
+    outOfOffice && isBusy && styles['out-of-office-busy'],
     outOfOffice &&
       (status === 'out-of-office' || status === 'away' || status === 'offline') &&
-      styles.outOfOfficeStatus,
-    outOfOffice && status === 'unknown' && styles.outOfOfficeUnknown,
+      styles['out-of-office-status'],
+    outOfOffice && status === 'unknown' && styles['out-of-office-unknown'],
     state.root.className,
   );
 

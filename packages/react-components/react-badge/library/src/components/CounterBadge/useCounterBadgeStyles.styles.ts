@@ -27,13 +27,23 @@ export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token — the only
+  // handle by which another module can style an element from this CounterBadge's state,
+  // because the module classes are hashed and unaddressable from outside this file
+  // (DECISIONS.md D15).
   //
-  // This composition is deliberately unchanged: these classes are set BEFORE delegating to
-  // `useBadgeStyles_unstable`, which prepends its own and carries this whole string through
-  // as its trailing argument — so the consumer's className stays last overall. The two
-  // slices below live in `@layer fui.components.l2` precisely so they keep beating Badge's
-  // l1 rules without depending on that ordering; see CounterBadge.module.css.
+  // This root ends up carrying TWO markers, `group/fui-badge` and `group/fui-counter-badge`,
+  // exactly as it already carries both `fui-Badge` and `fui-CounterBadge`: the delegation
+  // below prepends Badge's whole composition to this same element. That is the intended
+  // shape — a rule written against `group/fui-badge` should match a CounterBadge, since a
+  // CounterBadge IS one, and `group/fui-counter-badge` narrows to this subtype.
+  //
+  // This composition is otherwise deliberately unchanged: these classes are set BEFORE
+  // delegating to `useBadgeStyles_unstable`, which prepends its own and carries this whole
+  // string through as its trailing argument — so the consumer's className stays last
+  // overall. The two slices below live in `@layer fui.components.l2` precisely so they keep
+  // beating Badge's l1 rules without depending on that ordering; see CounterBadge.module.css.
   //
   // No data attributes are needed here: `dot`/`hide` are plain boolean branches with no
   // descendant selectors, and Badge's own hook stamps `data-size` / `data-icon-position` /
@@ -41,6 +51,7 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
+    'group/fui-counter-badge',
     counterBadgeClassNames.root,
     state.dot && styles.dot,
     !state.root.children && !state.dot && styles.hide,

@@ -23,7 +23,7 @@
  *   4 useRootStyles[size]                  → fui.components.l1   (data-size)
  *   5 useRootStyles[shape]                 → fui.components.l1   (.square / .rounded)
  *   6 useRootStyles.roundedSmallToTiny     → fui.components.l1   (nested in .rounded)
- *   7 useRootStyles.borderGhost            → fui.components.l1   (.borderGhost)
+ *   7 useRootStyles.borderGhost            → fui.components.l1   (.border-ghost)
  *   8 useRootStyles[appearance]            → fui.components.l1   (.outline)
  *   9 useRootStyles[`${appearance}-${color}`] → fui.components.l1
  *  10 consumer className                   → unlayered (always wins)
@@ -212,9 +212,10 @@
   /*
    * arg #7 — from useRootStyles.borderGhost (`appearance === 'ghost'`). Kept as its own
    * class instead of folded into `.ghost` so the empty `ghost` slice stays undefined and
-   * the argument mapping above stays 1:1.
+   * the argument mapping above stays 1:1. The local is lowercase-kebab (`border-ghost`),
+   * not the Griffel slice's camelCase name — see scripts/css-modules/ident.js.
    */
-  .borderGhost {
+  .border-ghost {
     &::after {
       @apply hidden;
     }
