@@ -6,16 +6,18 @@ exports[`TableSelectionCell renders a default state 1`] = `
     class="fui-TableSelectionCell"
   >
     <span
-      class="fui-Checkbox fui-TableSelectionCell__checkboxIndicator"
+      class="fui-Checkbox group/fui-checkbox fuicm-root fui-TableSelectionCell__checkboxIndicator"
+      data-label-position="after"
+      data-size="medium"
     >
       <input
-        class="fui-Checkbox__input"
+        class="fui-Checkbox__input fuicm-input"
         id="checkbox-_r_g_"
         type="checkbox"
       />
       <div
         aria-hidden="true"
-        class="fui-Checkbox__indicator"
+        class="fui-Checkbox__indicator fuicm-indicator"
       />
     </span>
   </td>
