@@ -3,12 +3,12 @@
 exports[`List rendering render as div and div doesn't throw 1`] = `
 <div>
   <div
-    class="group/fui-list fui-List"
+    class="fui-List group/fui-list"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     role="list"
   >
     <div
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="listitem"
@@ -16,7 +16,7 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
       First ListItem
     </div>
     <div
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="listitem"
@@ -30,12 +30,12 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
 exports[`List rendering render as div by default when navigationMode is 'composite' 1`] = `
 <div>
   <div
-    class="fui-List"
+    class="fui-List group/fui-list"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div
-      class="fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
@@ -45,7 +45,7 @@ exports[`List rendering render as div by default when navigationMode is 'composi
       First ListItem
     </div>
     <div
-      class="fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
@@ -61,12 +61,12 @@ exports[`List rendering render as div by default when navigationMode is 'composi
 exports[`List rendering renders a default state 1`] = `
 <div>
   <ul
-    class="group/fui-list fui-List"
+    class="fui-List group/fui-list"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     role="list"
   >
     <li
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="listitem"
@@ -75,7 +75,7 @@ exports[`List rendering renders a default state 1`] = `
       First ListItem
     </li>
     <li
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="listitem"
@@ -91,13 +91,13 @@ exports[`List selection multiselect items are properly rendered with all attribu
 <div>
   <ul
     aria-multiselectable="true"
-    class="group/fui-list fui-List"
+    class="fui-List group/fui-list"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     role="listbox"
   >
     <li
       aria-selected="false"
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
@@ -106,7 +106,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
       value="test-value-1"
     >
       <span
-        class="group/fui-checkbox fui-Checkbox fui-ListItem__checkmark"
+        class="fui-Checkbox group/fui-checkbox fui-ListItem__checkmark"
         data-label-position="after"
         data-size="medium"
       >
@@ -125,7 +125,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
     </li>
     <li
       aria-selected="false"
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
@@ -134,7 +134,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
       value="test-value-2"
     >
       <span
-        class="group/fui-checkbox fui-Checkbox fui-ListItem__checkmark"
+        class="fui-Checkbox group/fui-checkbox fui-ListItem__checkmark"
         data-label-position="after"
         data-size="medium"
       >
@@ -158,13 +158,13 @@ exports[`List selection multiselect items are properly rendered with all attribu
 exports[`List selection single select items are properly rendered with all attributes 1`] = `
 <div>
   <ul
-    class="group/fui-list fui-List"
+    class="fui-List group/fui-list"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
     role="listbox"
   >
     <li
       aria-selected="false"
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
@@ -173,7 +173,7 @@ exports[`List selection single select items are properly rendered with all attri
       value="test-value-1"
     >
       <span
-        class="group/fui-checkbox fui-Checkbox fui-ListItem__checkmark"
+        class="fui-Checkbox group/fui-checkbox fui-ListItem__checkmark"
         data-label-position="after"
         data-size="medium"
       >
@@ -192,7 +192,7 @@ exports[`List selection single select items are properly rendered with all attri
     </li>
     <li
       aria-selected="false"
-      class="group/fui-list-item fui-ListItem"
+      class="fui-ListItem group/fui-list-item"
       data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
@@ -201,7 +201,7 @@ exports[`List selection single select items are properly rendered with all attri
       value="test-value-2"
     >
       <span
-        class="group/fui-checkbox fui-Checkbox fui-ListItem__checkmark"
+        class="fui-Checkbox group/fui-checkbox fui-ListItem__checkmark"
         data-label-position="after"
         data-size="medium"
       >

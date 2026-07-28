@@ -31,11 +31,12 @@ export const listClassNames: SlotClassNames<ListSlots> = {
  * stamped here.
  */
 export const useListStyles_unstable = (state: ListState): ListState => {
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this List's state, because `styles.root` is hashed and unaddressable from outside
-  // this file (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this List's state, because `styles.root` is
+  // hashed and unaddressable from outside this file (DECISIONS.md D15).
   //
   // List stamps no attributes of its own, so the marker's value here is structural rather
   // than stateful: it gives a ListItem — or a consumer's cell — an ancestor handle for the
@@ -45,7 +46,7 @@ export const useListStyles_unstable = (state: ListState): ListState => {
   // Cascade priority is decided by the `@layer fui.*` order in List.module.css, not by the
   // order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
-  state.root.className = clsx('group/fui-list', listClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(listClassNames.root, 'group/fui-list', styles.root, state.root.className);
 
   return state;
 };
