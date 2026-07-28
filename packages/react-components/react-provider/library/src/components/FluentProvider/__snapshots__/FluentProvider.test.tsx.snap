@@ -2,7 +2,7 @@
 
 exports[`FluentProvider renders a default state 1`] = `
 <div
-  class="group/fui-fluent-provider fui-FluentProvider fui-FluentProvider1"
+  class="fui-FluentProvider group/fui-fluent-provider fui-FluentProvider1"
   dir="ltr"
 >
   Default FluentProvider

@@ -51,8 +51,8 @@ export const useFluentProviderStyles_unstable = (state: FluentProviderState): Fl
    * still consumes it in useFluentProvider.ts for the theme <style> tag (nonce/SSR path).
    */
   state.root.className = clsx(
-    'group/fui-fluent-provider',
     fluentProviderClassNames.root,
+    'group/fui-fluent-provider',
     state.themeClassName,
     styles.root,
     state.root.className,
