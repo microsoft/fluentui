@@ -1,0 +1,77 @@
+{
+  "measuredAt": "2026-07-28T19:25:01.976Z",
+  "finishedAt": "2026-07-28T19:25:09.462Z",
+  "scenario": "E",
+  "scenarioDescription": "toggle a state prop across 100 mounted instances (scenario E)",
+  "components": ["Switch", "Button", "Divider"],
+  "legs": [
+    {
+      "id": "before",
+      "dir": "before",
+      "expectLeg": "before"
+    },
+    {
+      "id": "after1",
+      "dir": "after1",
+      "expectLeg": "after"
+    },
+    {
+      "id": "after2",
+      "dir": "after2",
+      "expectLeg": "after"
+    }
+  ],
+  "iterationsPerCell": 31,
+  "warmupsPerCell": 5,
+  "repetitions": 3,
+  "pooledSamplesPerCell": 93,
+  "seed": 20260728,
+  "legOrders": [
+    {
+      "rep": 0,
+      "component": "Switch",
+      "order": ["before", "after1", "after2"]
+    },
+    {
+      "rep": 0,
+      "component": "Button",
+      "order": ["before", "after2", "after1"]
+    },
+    {
+      "rep": 0,
+      "component": "Divider",
+      "order": ["after2", "after1", "before"]
+    },
+    {
+      "rep": 1,
+      "component": "Switch",
+      "order": ["after2", "before", "after1"]
+    },
+    {
+      "rep": 1,
+      "component": "Button",
+      "order": ["after2", "before", "after1"]
+    },
+    {
+      "rep": 1,
+      "component": "Divider",
+      "order": ["after1", "after2", "before"]
+    },
+    {
+      "rep": 2,
+      "component": "Switch",
+      "order": ["before", "after2", "after1"]
+    },
+    {
+      "rep": 2,
+      "component": "Button",
+      "order": ["before", "after1", "after2"]
+    },
+    {
+      "rep": 2,
+      "component": "Divider",
+      "order": ["after1", "before", "after2"]
+    }
+  ],
+  "note": "AFTER-1 is the migrated bundle as built 2026-07-28 02:33 (pre named-group rollout, pre transition tightening). AFTER-2 is freshly built from HEAD 80d12b596f. BEFORE is the retained original Griffel bundle. All three share one harness source; only the 9 leg packages differ."
+}

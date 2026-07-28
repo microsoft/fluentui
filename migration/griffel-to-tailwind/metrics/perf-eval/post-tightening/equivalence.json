@@ -1,0 +1,656 @@
+{
+  "comparisons": {
+    "after2-vs-after1": {
+      "Switch": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 2,
+        "transitionChanges": [
+          {
+            "state": "base",
+            "index": 2,
+            "tagName": "DIV",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          },
+          {
+            "state": "toggled",
+            "index": 2,
+            "tagName": "DIV",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          }
+        ]
+      },
+      "Button": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 2,
+        "transitionChanges": [
+          {
+            "state": "base",
+            "index": 0,
+            "tagName": "BUTTON",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          },
+          {
+            "state": "toggled",
+            "index": 0,
+            "tagName": "BUTTON",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          }
+        ]
+      },
+      "Divider": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 0,
+        "transitionChanges": []
+      }
+    },
+    "after2-vs-before": {
+      "Switch": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 2,
+        "transitionChanges": [
+          {
+            "state": "base",
+            "index": 2,
+            "tagName": "DIV",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          },
+          {
+            "state": "toggled",
+            "index": 2,
+            "tagName": "DIV",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          }
+        ]
+      },
+      "Button": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 2,
+        "transitionChanges": [
+          {
+            "state": "base",
+            "index": 0,
+            "tagName": "BUTTON",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          },
+          {
+            "state": "toggled",
+            "index": 0,
+            "tagName": "BUTTON",
+            "prop": "transition-property",
+            "ref": "background, border, color",
+            "cmp": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color"
+          }
+        ]
+      },
+      "Divider": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 0,
+        "transitionChanges": []
+      }
+    },
+    "after1-vs-before": {
+      "Switch": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 0,
+        "transitionChanges": []
+      },
+      "Button": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 0,
+        "transitionChanges": []
+      },
+      "Divider": {
+        "structuralMismatch": null,
+        "renderMismatchCount": 0,
+        "renderMismatches": [],
+        "transitionChangeCount": 0,
+        "transitionChanges": []
+      }
+    }
+  },
+  "transitionComputedValues": {
+    "before": {
+      "Switch": [
+        {
+          "state": "base",
+          "index": 2,
+          "tagName": "DIV",
+          "classList": ["fui-Switch__indicator", "r1c3hft5"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "base",
+          "index": 3,
+          "tagName": "svg",
+          "classList": ["___9ctc0p0", "f1w7gpdv", "fez10in", "f1dd5bof"],
+          "transitionProperty": "transform",
+          "declaredLonghands": 1,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 2,
+          "tagName": "DIV",
+          "classList": ["fui-Switch__indicator", "r1c3hft5"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 3,
+          "tagName": "svg",
+          "classList": ["___9ctc0p0", "f1w7gpdv", "fez10in", "f1dd5bof"],
+          "transitionProperty": "transform",
+          "declaredLonghands": 1,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        }
+      ],
+      "Button": [
+        {
+          "state": "base",
+          "index": 0,
+          "tagName": "BUTTON",
+          "classList": ["fui-Button", "r1f29ykk"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.1s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 0,
+          "tagName": "BUTTON",
+          "classList": [
+            "fui-Button",
+            "r1f29ykk",
+            "___kf30qf0",
+            "f1bg9a2p",
+            "f1jj8ep1",
+            "f15xbau",
+            "f4ikngz",
+            "fy0fskl",
+            "f1s2aq7o",
+            "fdrzuqr",
+            "f15x8b5r",
+            "f1falr9n",
+            "f12mpcsy",
+            "f1gwvigk",
+            "f1jnshp0",
+            "f18rmfxp",
+            "fvgxktp",
+            "fphbwmw",
+            "f19vpps7",
+            "fv5swzo",
+            "f1al02dq",
+            "f1jct5ie",
+            "f13txml0",
+            "f1ncddno",
+            "f1z04ada",
+            "f1axfvow",
+            "f1uhomfy",
+            "fy9mucy",
+            "f1g9va8i",
+            "fwgvudy",
+            "fom6jww",
+            "f14ptb23",
+            "f9dbb4x",
+            "f3qs60o",
+            "fwd1oij",
+            "f5u9ap2",
+            "f1cyfu5x",
+            "f127ot8j",
+            "f19etb0b",
+            "f4f984j",
+            "f3d22hf",
+            "fw441p0",
+            "fj8k9ua",
+            "fifrq0d",
+            "f196mwp7",
+            "f1l6uprw",
+            "fnekfq",
+            "fa9u7a5",
+            "f1m71e0y",
+            "fw24f3",
+            "f1nznrny",
+            "fq8nxuu",
+            "ftoixeo",
+            "f1ao3jkc",
+            "fpmuzpx",
+            "f168odog"
+          ],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.1s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        }
+      ],
+      "Divider": []
+    },
+    "after1": {
+      "Switch": [
+        {
+          "state": "base",
+          "index": 2,
+          "tagName": "DIV",
+          "classList": ["fui-Switch__indicator", "fuicm-Switch-module__indicator--ivKK"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "base",
+          "index": 3,
+          "tagName": "svg",
+          "classList": ["___9ctc0p0", "f1w7gpdv", "fez10in", "f1dd5bof"],
+          "transitionProperty": "transform",
+          "declaredLonghands": 1,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 2,
+          "tagName": "DIV",
+          "classList": ["fui-Switch__indicator", "fuicm-Switch-module__indicator--ivKK"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 3,
+          "tagName": "svg",
+          "classList": ["___9ctc0p0", "f1w7gpdv", "fez10in", "f1dd5bof"],
+          "transitionProperty": "transform",
+          "declaredLonghands": 1,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        }
+      ],
+      "Button": [
+        {
+          "state": "base",
+          "index": 0,
+          "tagName": "BUTTON",
+          "classList": ["fui-Button", "fuicm-Button-module__root--p9Rg"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.1s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 0,
+          "tagName": "BUTTON",
+          "classList": ["fui-Button", "fuicm-Button-module__root--p9Rg"],
+          "transitionProperty": "background, border, color",
+          "declaredLonghands": 3,
+          "transitionDuration": "0.1s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        }
+      ],
+      "Divider": []
+    },
+    "after2": {
+      "Switch": [
+        {
+          "state": "base",
+          "index": 2,
+          "tagName": "DIV",
+          "classList": ["fui-Switch__indicator", "fuicm-switch-indicator-541abe"],
+          "transitionProperty": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color",
+          "declaredLonghands": 6,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "base",
+          "index": 3,
+          "tagName": "svg",
+          "classList": ["___9ctc0p0", "f1w7gpdv", "fez10in", "f1dd5bof"],
+          "transitionProperty": "transform",
+          "declaredLonghands": 1,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 2,
+          "tagName": "DIV",
+          "classList": ["fui-Switch__indicator", "fuicm-switch-indicator-541abe"],
+          "transitionProperty": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color",
+          "declaredLonghands": 6,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 3,
+          "tagName": "svg",
+          "classList": ["___9ctc0p0", "f1w7gpdv", "fez10in", "f1dd5bof"],
+          "transitionProperty": "transform",
+          "declaredLonghands": 1,
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        }
+      ],
+      "Button": [
+        {
+          "state": "base",
+          "index": 0,
+          "tagName": "BUTTON",
+          "classList": ["fui-Button", "group/fui-button", "fuicm-button-root-605c69"],
+          "transitionProperty": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color",
+          "declaredLonghands": 6,
+          "transitionDuration": "0.1s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        },
+        {
+          "state": "toggled",
+          "index": 0,
+          "tagName": "BUTTON",
+          "classList": ["fui-Button", "group/fui-button", "fuicm-button-root-605c69"],
+          "transitionProperty": "background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color",
+          "declaredLonghands": 6,
+          "transitionDuration": "0.1s",
+          "transitionTimingFunction": "cubic-bezier(0.33, 0, 0.67, 1)"
+        }
+      ],
+      "Divider": []
+    }
+  },
+  "domWritesOnToggle": {
+    "before": {
+      "Switch": [
+        {
+          "index": 1,
+          "tagName": "INPUT",
+          "attributesBase": {
+            "id": "switch-_r_7_",
+            "role": "switch",
+            "type": "checkbox"
+          },
+          "attributesToggled": {
+            "id": "switch-_r_3b_",
+            "role": "switch",
+            "type": "checkbox",
+            "checked": ""
+          },
+          "classChanged": false
+        },
+        {
+          "index": 5,
+          "tagName": "LABEL",
+          "attributesBase": {
+            "for": "switch-_r_7_"
+          },
+          "attributesToggled": {
+            "for": "switch-_r_3b_"
+          },
+          "classChanged": false
+        }
+      ],
+      "Button": [
+        {
+          "index": 0,
+          "tagName": "BUTTON",
+          "attributesBase": {
+            "type": "button"
+          },
+          "attributesToggled": {
+            "type": "button",
+            "disabled": ""
+          },
+          "classChanged": true
+        }
+      ],
+      "Divider": [
+        {
+          "index": 0,
+          "tagName": "DIV",
+          "attributesBase": {
+            "role": "separator",
+            "aria-orientation": "horizontal",
+            "aria-labelledby": "divider-_r_6f_"
+          },
+          "attributesToggled": {
+            "role": "separator",
+            "aria-orientation": "horizontal",
+            "aria-labelledby": "divider-_r_9j_"
+          },
+          "classChanged": true
+        },
+        {
+          "index": 1,
+          "tagName": "DIV",
+          "attributesBase": {
+            "id": "divider-_r_6f_"
+          },
+          "attributesToggled": {
+            "id": "divider-_r_9j_"
+          },
+          "classChanged": false
+        }
+      ]
+    },
+    "after1": {
+      "Switch": [
+        {
+          "index": 1,
+          "tagName": "INPUT",
+          "attributesBase": {
+            "id": "switch-_r_7_",
+            "role": "switch",
+            "type": "checkbox"
+          },
+          "attributesToggled": {
+            "id": "switch-_r_3b_",
+            "role": "switch",
+            "type": "checkbox",
+            "checked": ""
+          },
+          "classChanged": false
+        },
+        {
+          "index": 5,
+          "tagName": "LABEL",
+          "attributesBase": {
+            "for": "switch-_r_7_",
+            "data-size": "medium"
+          },
+          "attributesToggled": {
+            "for": "switch-_r_3b_",
+            "data-size": "medium"
+          },
+          "classChanged": false
+        }
+      ],
+      "Button": [
+        {
+          "index": 0,
+          "tagName": "BUTTON",
+          "attributesBase": {
+            "type": "button",
+            "data-size": "medium"
+          },
+          "attributesToggled": {
+            "type": "button",
+            "disabled": "",
+            "data-size": "medium",
+            "data-disabled": "true"
+          },
+          "classChanged": false
+        }
+      ],
+      "Divider": [
+        {
+          "index": 0,
+          "tagName": "DIV",
+          "attributesBase": {
+            "role": "separator",
+            "aria-orientation": "horizontal",
+            "aria-labelledby": "divider-_r_6f_",
+            "data-orientation": "horizontal",
+            "data-align-content": "center"
+          },
+          "attributesToggled": {
+            "role": "separator",
+            "aria-orientation": "horizontal",
+            "aria-labelledby": "divider-_r_9j_",
+            "data-orientation": "horizontal",
+            "data-align-content": "center"
+          },
+          "classChanged": true
+        },
+        {
+          "index": 1,
+          "tagName": "DIV",
+          "attributesBase": {
+            "id": "divider-_r_6f_"
+          },
+          "attributesToggled": {
+            "id": "divider-_r_9j_"
+          },
+          "classChanged": false
+        }
+      ]
+    },
+    "after2": {
+      "Switch": [
+        {
+          "index": 0,
+          "tagName": "DIV",
+          "attributesBase": {
+            "data-orientation": "horizontal",
+            "data-size": "medium",
+            "data-label-position": "after"
+          },
+          "attributesToggled": {
+            "data-orientation": "horizontal",
+            "data-size": "medium",
+            "data-label-position": "after",
+            "data-checked": "true"
+          },
+          "classChanged": false
+        },
+        {
+          "index": 1,
+          "tagName": "INPUT",
+          "attributesBase": {
+            "id": "switch-_r_7_",
+            "role": "switch",
+            "type": "checkbox"
+          },
+          "attributesToggled": {
+            "id": "switch-_r_3b_",
+            "role": "switch",
+            "type": "checkbox",
+            "checked": ""
+          },
+          "classChanged": false
+        },
+        {
+          "index": 5,
+          "tagName": "LABEL",
+          "attributesBase": {
+            "for": "switch-_r_7_",
+            "data-size": "medium"
+          },
+          "attributesToggled": {
+            "for": "switch-_r_3b_",
+            "data-size": "medium"
+          },
+          "classChanged": false
+        }
+      ],
+      "Button": [
+        {
+          "index": 0,
+          "tagName": "BUTTON",
+          "attributesBase": {
+            "type": "button",
+            "data-size": "medium"
+          },
+          "attributesToggled": {
+            "type": "button",
+            "disabled": "",
+            "data-size": "medium",
+            "data-disabled": "true"
+          },
+          "classChanged": false
+        }
+      ],
+      "Divider": [
+        {
+          "index": 0,
+          "tagName": "DIV",
+          "attributesBase": {
+            "role": "separator",
+            "aria-orientation": "horizontal",
+            "aria-labelledby": "divider-_r_6f_",
+            "data-orientation": "horizontal",
+            "data-align-content": "center"
+          },
+          "attributesToggled": {
+            "role": "separator",
+            "aria-orientation": "horizontal",
+            "aria-labelledby": "divider-_r_9j_",
+            "data-orientation": "horizontal",
+            "data-align-content": "center"
+          },
+          "classChanged": true
+        },
+        {
+          "index": 1,
+          "tagName": "DIV",
+          "attributesBase": {
+            "id": "divider-_r_6f_"
+          },
+          "attributesToggled": {
+            "id": "divider-_r_9j_"
+          },
+          "classChanged": false
+        }
+      ]
+    }
+  }
+}

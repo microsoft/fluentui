@@ -1,0 +1,143 @@
+{
+  "Switch": {
+    "after2-vs-after1": {
+      "from": "after1",
+      "to": "after2",
+      "totalMedianFrom": 11.67,
+      "totalMedianTo": 11.895,
+      "totalDeltaMs": 0.225,
+      "totalDeltaPct": 1.928,
+      "commitDeltaPct": 9.8361,
+      "styleLayoutDeltaPct": 1.1225,
+      "traceRecalcFrom": 10.6895,
+      "traceRecalcTo": 10.8732,
+      "traceRecalcDeltaPct": 1.7185,
+      "elementsRecalculatedFrom": 11000,
+      "elementsRecalculatedTo": 12000
+    },
+    "after2-vs-before": {
+      "from": "before",
+      "to": "after2",
+      "totalMedianFrom": 4.48,
+      "totalMedianTo": 11.895,
+      "totalDeltaMs": 7.415,
+      "totalDeltaPct": 165.5134,
+      "commitDeltaPct": 3.6082,
+      "styleLayoutDeltaPct": 214.2442,
+      "traceRecalcFrom": 3.2176,
+      "traceRecalcTo": 10.8732,
+      "traceRecalcDeltaPct": 237.9289,
+      "elementsRecalculatedFrom": 11000,
+      "elementsRecalculatedTo": 12000
+    },
+    "after1-vs-before": {
+      "from": "before",
+      "to": "after1",
+      "totalMedianFrom": 4.48,
+      "totalMedianTo": 11.67,
+      "totalDeltaMs": 7.19,
+      "totalDeltaPct": 160.4911,
+      "commitDeltaPct": -5.6701,
+      "styleLayoutDeltaPct": 210.7558,
+      "traceRecalcFrom": 3.2176,
+      "traceRecalcTo": 10.6895,
+      "traceRecalcDeltaPct": 232.2197,
+      "elementsRecalculatedFrom": 11000,
+      "elementsRecalculatedTo": 11000
+    }
+  },
+  "Button": {
+    "after2-vs-after1": {
+      "from": "after1",
+      "to": "after2",
+      "totalMedianFrom": 8.325,
+      "totalMedianTo": 8.365,
+      "totalDeltaMs": 0.04,
+      "totalDeltaPct": 0.4805,
+      "commitDeltaPct": 2.7397,
+      "styleLayoutDeltaPct": -0.3788,
+      "traceRecalcFrom": 7.6127,
+      "traceRecalcTo": 7.4256,
+      "traceRecalcDeltaPct": -2.4577,
+      "elementsRecalculatedFrom": 2000,
+      "elementsRecalculatedTo": 2000
+    },
+    "after2-vs-before": {
+      "from": "before",
+      "to": "after2",
+      "totalMedianFrom": 3.41,
+      "totalMedianTo": 8.365,
+      "totalDeltaMs": 4.955,
+      "totalDeltaPct": 145.3079,
+      "commitDeltaPct": -22.6804,
+      "styleLayoutDeltaPct": 171.134,
+      "traceRecalcFrom": 2.744,
+      "traceRecalcTo": 7.4256,
+      "traceRecalcDeltaPct": 170.6122,
+      "elementsRecalculatedFrom": 2000,
+      "elementsRecalculatedTo": 2000
+    },
+    "after1-vs-before": {
+      "from": "before",
+      "to": "after1",
+      "totalMedianFrom": 3.41,
+      "totalMedianTo": 8.325,
+      "totalDeltaMs": 4.915,
+      "totalDeltaPct": 144.1349,
+      "commitDeltaPct": -24.7423,
+      "styleLayoutDeltaPct": 172.1649,
+      "traceRecalcFrom": 2.744,
+      "traceRecalcTo": 7.6127,
+      "traceRecalcDeltaPct": 177.4308,
+      "elementsRecalculatedFrom": 2000,
+      "elementsRecalculatedTo": 2000
+    }
+  },
+  "Divider": {
+    "after2-vs-after1": {
+      "from": "after1",
+      "to": "after2",
+      "totalMedianFrom": 1.295,
+      "totalMedianTo": 1.31,
+      "totalDeltaMs": 0.015,
+      "totalDeltaPct": 1.1583,
+      "commitDeltaPct": 0,
+      "styleLayoutDeltaPct": 1.4778,
+      "traceRecalcFrom": 1.9138,
+      "traceRecalcTo": 1.9409,
+      "traceRecalcDeltaPct": 1.416,
+      "elementsRecalculatedFrom": 7000,
+      "elementsRecalculatedTo": 7000
+    },
+    "after2-vs-before": {
+      "from": "before",
+      "to": "after2",
+      "totalMedianFrom": 1.25,
+      "totalMedianTo": 1.31,
+      "totalDeltaMs": 0.06,
+      "totalDeltaPct": 4.8,
+      "commitDeltaPct": -38.8889,
+      "styleLayoutDeltaPct": 29.5597,
+      "traceRecalcFrom": 1.4937,
+      "traceRecalcTo": 1.9409,
+      "traceRecalcDeltaPct": 29.9391,
+      "elementsRecalculatedFrom": 7000,
+      "elementsRecalculatedTo": 7000
+    },
+    "after1-vs-before": {
+      "from": "before",
+      "to": "after1",
+      "totalMedianFrom": 1.25,
+      "totalMedianTo": 1.295,
+      "totalDeltaMs": 0.045,
+      "totalDeltaPct": 3.6,
+      "commitDeltaPct": -38.8889,
+      "styleLayoutDeltaPct": 27.673,
+      "traceRecalcFrom": 1.4937,
+      "traceRecalcTo": 1.9138,
+      "traceRecalcDeltaPct": 28.1248,
+      "elementsRecalculatedFrom": 7000,
+      "elementsRecalculatedTo": 7000
+    }
+  }
+}

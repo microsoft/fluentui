@@ -1,0 +1,560 @@
+{
+  "Switch|before": {
+    "component": "Switch",
+    "leg": "before",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 4.005,
+      "p25": 4.295,
+      "median": 4.48,
+      "p75": 4.72,
+      "max": 10.49,
+      "mean": 4.7941,
+      "iqr": 0.425,
+      "iqrPctOfMedian": 9.4866
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.84,
+      "p25": 0.915,
+      "median": 0.97,
+      "p75": 1.08,
+      "max": 1.705,
+      "mean": 1.0356,
+      "iqr": 0.165,
+      "iqrPctOfMedian": 17.0103
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 3.1,
+      "p25": 3.345,
+      "median": 3.44,
+      "p75": 3.61,
+      "max": 9.59,
+      "mean": 3.7584,
+      "iqr": 0.265,
+      "iqrPctOfMedian": 7.7035
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 0,
+        "medianTotalMs": 4.52
+      },
+      {
+        "rep": 1,
+        "orderIndex": 1,
+        "medianTotalMs": 4.32
+      },
+      {
+        "rep": 2,
+        "orderIndex": 0,
+        "medianTotalMs": 4.495
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 3.2176,
+      "layoutMsPerIteration": 1.3607,
+      "paintMsPerIteration": null,
+      "elementsRecalculated": 11000
+    }
+  },
+  "Switch|after1": {
+    "component": "Switch",
+    "leg": "after1",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 10.895,
+      "p25": 11.465,
+      "median": 11.67,
+      "p75": 11.905,
+      "max": 15.755,
+      "mean": 11.8973,
+      "iqr": 0.44,
+      "iqrPctOfMedian": 3.7704
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.775,
+      "p25": 0.875,
+      "median": 0.915,
+      "p75": 1.025,
+      "max": 1.91,
+      "mean": 1.0064,
+      "iqr": 0.15,
+      "iqrPctOfMedian": 16.3934
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 10.1,
+      "p25": 10.475,
+      "median": 10.69,
+      "p75": 10.925,
+      "max": 14.795,
+      "mean": 10.8909,
+      "iqr": 0.45,
+      "iqrPctOfMedian": 4.2095
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 1,
+        "medianTotalMs": 11.63
+      },
+      {
+        "rep": 1,
+        "orderIndex": 2,
+        "medianTotalMs": 11.81
+      },
+      {
+        "rep": 2,
+        "orderIndex": 2,
+        "medianTotalMs": 11.56
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 10.6895,
+      "layoutMsPerIteration": 1.3732,
+      "paintMsPerIteration": null,
+      "elementsRecalculated": 11000
+    }
+  },
+  "Switch|after2": {
+    "component": "Switch",
+    "leg": "after2",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 10.85,
+      "p25": 11.645,
+      "median": 11.895,
+      "p75": 12.17,
+      "max": 16.315,
+      "mean": 12.0911,
+      "iqr": 0.525,
+      "iqrPctOfMedian": 4.4136
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.835,
+      "p25": 0.94,
+      "median": 1.005,
+      "p75": 1.155,
+      "max": 2.375,
+      "mean": 1.1341,
+      "iqr": 0.215,
+      "iqrPctOfMedian": 21.393
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 9.95,
+      "p25": 10.635,
+      "median": 10.81,
+      "p75": 11.055,
+      "max": 14.135,
+      "mean": 10.957,
+      "iqr": 0.42,
+      "iqrPctOfMedian": 3.8853
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 2,
+        "medianTotalMs": 11.895
+      },
+      {
+        "rep": 1,
+        "orderIndex": 0,
+        "medianTotalMs": 11.935
+      },
+      {
+        "rep": 2,
+        "orderIndex": 1,
+        "medianTotalMs": 11.83
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 10.8732,
+      "layoutMsPerIteration": 1.3785,
+      "paintMsPerIteration": null,
+      "elementsRecalculated": 12000
+    }
+  },
+  "Button|before": {
+    "component": "Button",
+    "leg": "before",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 3.15,
+      "p25": 3.295,
+      "median": 3.41,
+      "p75": 3.59,
+      "max": 5.545,
+      "mean": 3.5016,
+      "iqr": 0.295,
+      "iqrPctOfMedian": 8.651
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.445,
+      "p25": 0.47,
+      "median": 0.485,
+      "p75": 0.505,
+      "max": 0.59,
+      "mean": 0.4941,
+      "iqr": 0.035,
+      "iqrPctOfMedian": 7.2165
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 2.65,
+      "p25": 2.8,
+      "median": 2.91,
+      "p75": 3.08,
+      "max": 5.065,
+      "mean": 3.0075,
+      "iqr": 0.28,
+      "iqrPctOfMedian": 9.622
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 0,
+        "medianTotalMs": 3.41
+      },
+      {
+        "rep": 1,
+        "orderIndex": 1,
+        "medianTotalMs": 3.405
+      },
+      {
+        "rep": 2,
+        "orderIndex": 0,
+        "medianTotalMs": 3.41
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 2.744,
+      "layoutMsPerIteration": 0.3819,
+      "paintMsPerIteration": null,
+      "elementsRecalculated": 2000
+    }
+  },
+  "Button|after1": {
+    "component": "Button",
+    "leg": "after1",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 7.52,
+      "p25": 8.035,
+      "median": 8.325,
+      "p75": 8.725,
+      "max": 13.595,
+      "mean": 8.527,
+      "iqr": 0.69,
+      "iqrPctOfMedian": 8.2883
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.325,
+      "p25": 0.35,
+      "median": 0.365,
+      "p75": 0.39,
+      "max": 2.295,
+      "mean": 0.4146,
+      "iqr": 0.04,
+      "iqrPctOfMedian": 10.9589
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 7.16,
+      "p25": 7.67,
+      "median": 7.92,
+      "p75": 8.34,
+      "max": 12.755,
+      "mean": 8.1125,
+      "iqr": 0.67,
+      "iqrPctOfMedian": 8.4596
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 2,
+        "medianTotalMs": 8.295
+      },
+      {
+        "rep": 1,
+        "orderIndex": 2,
+        "medianTotalMs": 8.345
+      },
+      {
+        "rep": 2,
+        "orderIndex": 1,
+        "medianTotalMs": 8.345
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 7.6127,
+      "layoutMsPerIteration": 0.397,
+      "paintMsPerIteration": null,
+      "elementsRecalculated": 2000
+    }
+  },
+  "Button|after2": {
+    "component": "Button",
+    "leg": "after2",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 7.565,
+      "p25": 8.115,
+      "median": 8.365,
+      "p75": 8.695,
+      "max": 13.01,
+      "mean": 8.6133,
+      "iqr": 0.58,
+      "iqrPctOfMedian": 6.9337
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.335,
+      "p25": 0.355,
+      "median": 0.375,
+      "p75": 0.415,
+      "max": 3.8,
+      "mean": 0.462,
+      "iqr": 0.06,
+      "iqrPctOfMedian": 16
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 7.22,
+      "p25": 7.72,
+      "median": 7.89,
+      "p75": 8.285,
+      "max": 12.595,
+      "mean": 8.1512,
+      "iqr": 0.565,
+      "iqrPctOfMedian": 7.161
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 1,
+        "medianTotalMs": 8.375
+      },
+      {
+        "rep": 1,
+        "orderIndex": 0,
+        "medianTotalMs": 8.48
+      },
+      {
+        "rep": 2,
+        "orderIndex": 2,
+        "medianTotalMs": 8.335
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 7.4256,
+      "layoutMsPerIteration": 0.3932,
+      "paintMsPerIteration": null,
+      "elementsRecalculated": 2000
+    }
+  },
+  "Divider|before": {
+    "component": "Divider",
+    "leg": "before",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 1.19,
+      "p25": 1.23,
+      "median": 1.25,
+      "p75": 1.285,
+      "max": 2,
+      "mean": 1.2818,
+      "iqr": 0.055,
+      "iqrPctOfMedian": 4.4
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.41,
+      "p25": 0.435,
+      "median": 0.45,
+      "p75": 0.475,
+      "max": 1.17,
+      "mean": 0.4718,
+      "iqr": 0.04,
+      "iqrPctOfMedian": 8.8889
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 0.77,
+      "p25": 0.79,
+      "median": 0.795,
+      "p75": 0.815,
+      "max": 0.985,
+      "mean": 0.8099,
+      "iqr": 0.025,
+      "iqrPctOfMedian": 3.1447
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 2,
+        "medianTotalMs": 1.235
+      },
+      {
+        "rep": 1,
+        "orderIndex": 2,
+        "medianTotalMs": 1.26
+      },
+      {
+        "rep": 2,
+        "orderIndex": 1,
+        "medianTotalMs": 1.26
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 1.4937,
+      "layoutMsPerIteration": 0.5858,
+      "paintMsPerIteration": 0.0018,
+      "elementsRecalculated": 7000
+    }
+  },
+  "Divider|after1": {
+    "component": "Divider",
+    "leg": "after1",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 1.235,
+      "p25": 1.27,
+      "median": 1.295,
+      "p75": 1.335,
+      "max": 2.22,
+      "mean": 1.3376,
+      "iqr": 0.065,
+      "iqrPctOfMedian": 5.0193
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.245,
+      "p25": 0.26,
+      "median": 0.275,
+      "p75": 0.295,
+      "max": 1.165,
+      "mean": 0.3076,
+      "iqr": 0.035,
+      "iqrPctOfMedian": 12.7273
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 0.99,
+      "p25": 1.005,
+      "median": 1.015,
+      "p75": 1.045,
+      "max": 1.375,
+      "mean": 1.03,
+      "iqr": 0.04,
+      "iqrPctOfMedian": 3.9409
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 1,
+        "medianTotalMs": 1.285
+      },
+      {
+        "rep": 1,
+        "orderIndex": 0,
+        "medianTotalMs": 1.295
+      },
+      {
+        "rep": 2,
+        "orderIndex": 0,
+        "medianTotalMs": 1.3
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 1.9138,
+      "layoutMsPerIteration": 0.5939,
+      "paintMsPerIteration": 0.0017,
+      "elementsRecalculated": 7000
+    }
+  },
+  "Divider|after2": {
+    "component": "Divider",
+    "leg": "after2",
+    "scenario": "E",
+    "total": {
+      "n": 93,
+      "min": 1.26,
+      "p25": 1.29,
+      "median": 1.31,
+      "p75": 1.34,
+      "max": 1.75,
+      "mean": 1.331,
+      "iqr": 0.05,
+      "iqrPctOfMedian": 3.8168
+    },
+    "commit": {
+      "n": 93,
+      "min": 0.255,
+      "p25": 0.265,
+      "median": 0.275,
+      "p75": 0.295,
+      "max": 0.65,
+      "mean": 0.296,
+      "iqr": 0.03,
+      "iqrPctOfMedian": 10.9091
+    },
+    "styleAndLayout": {
+      "n": 93,
+      "min": 0.995,
+      "p25": 1.015,
+      "median": 1.03,
+      "p75": 1.04,
+      "max": 1.165,
+      "mean": 1.035,
+      "iqr": 0.025,
+      "iqrPctOfMedian": 2.4272
+    },
+    "perRepetition": [
+      {
+        "rep": 0,
+        "orderIndex": 0,
+        "medianTotalMs": 1.315
+      },
+      {
+        "rep": 1,
+        "orderIndex": 1,
+        "medianTotalMs": 1.315
+      },
+      {
+        "rep": 2,
+        "orderIndex": 2,
+        "medianTotalMs": 1.295
+      }
+    ],
+    "trace": {
+      "iterations": 10,
+      "styleRecalcMsPerIteration": 1.9409,
+      "layoutMsPerIteration": 0.5874,
+      "paintMsPerIteration": 0.0017,
+      "elementsRecalculated": 7000
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "method": "Scenario E re-run with `*, *::before, *::after { transition-property: none !important; }` injected after load — identical suppression stylesheet to variants/before-check.mjs. Not a shippable configuration; it exists only to bracket the transition-attributable share of each leg.",
+  "repetitions": 3,
+  "iterationsPerCell": 31,
+  "byComponent": {
+    "Switch": {
+      "before": {
+        "asShippedMedianMs": 4.48,
+        "suppressedMedianMs": 2.345,
+        "suppressedIqrPctOfMedian": 11.9403,
+        "attributableToTransitionsMs": 2.135,
+        "attributableToTransitionsPctOfShipped": 47.6563,
+        "n": 93
+      },
+      "after1": {
+        "asShippedMedianMs": 11.67,
+        "suppressedMedianMs": 2.55,
+        "suppressedIqrPctOfMedian": 8.0392,
+        "attributableToTransitionsMs": 9.12,
+        "attributableToTransitionsPctOfShipped": 78.1491,
+        "n": 93
+      },
+      "after2": {
+        "asShippedMedianMs": 11.895,
+        "suppressedMedianMs": 2.705,
+        "suppressedIqrPctOfMedian": 5.3604,
+        "attributableToTransitionsMs": 9.19,
+        "attributableToTransitionsPctOfShipped": 77.2594,
+        "n": 93
+      }
+    },
+    "Button": {
+      "before": {
+        "asShippedMedianMs": 3.41,
+        "suppressedMedianMs": 1.255,
+        "suppressedIqrPctOfMedian": 5.9761,
+        "attributableToTransitionsMs": 2.155,
+        "attributableToTransitionsPctOfShipped": 63.1965,
+        "n": 93
+      },
+      "after1": {
+        "asShippedMedianMs": 8.325,
+        "suppressedMedianMs": 0.735,
+        "suppressedIqrPctOfMedian": 10.2041,
+        "attributableToTransitionsMs": 7.59,
+        "attributableToTransitionsPctOfShipped": 91.1712,
+        "n": 93
+      },
+      "after2": {
+        "asShippedMedianMs": 8.365,
+        "suppressedMedianMs": 0.73,
+        "suppressedIqrPctOfMedian": 4.7945,
+        "attributableToTransitionsMs": 7.635,
+        "attributableToTransitionsPctOfShipped": 91.2732,
+        "n": 93
+      }
+    },
+    "Divider": {
+      "before": {
+        "asShippedMedianMs": 1.25,
+        "suppressedMedianMs": 1.41,
+        "suppressedIqrPctOfMedian": 4.2553,
+        "attributableToTransitionsMs": -0.16,
+        "attributableToTransitionsPctOfShipped": -12.8,
+        "n": 93
+      },
+      "after1": {
+        "asShippedMedianMs": 1.295,
+        "suppressedMedianMs": 1.44,
+        "suppressedIqrPctOfMedian": 3.8194,
+        "attributableToTransitionsMs": -0.145,
+        "attributableToTransitionsPctOfShipped": -11.1969,
+        "n": 93
+      },
+      "after2": {
+        "asShippedMedianMs": 1.31,
+        "suppressedMedianMs": 1.46,
+        "suppressedIqrPctOfMedian": 5.137,
+        "attributableToTransitionsMs": -0.15,
+        "attributableToTransitionsPctOfShipped": -11.4504,
+        "n": 93
+      }
+    }
+  }
+}

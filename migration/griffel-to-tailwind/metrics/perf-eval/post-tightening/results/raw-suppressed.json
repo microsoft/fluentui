@@ -1,0 +1,6341 @@
+{
+  "killTransitionsCss": "*, *::before, *::after { transition-property: none !important; }",
+  "cells": {
+    "Switch|after2": [
+      {
+        "rep": 0,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.1999999284744263,
+            "layoutMs": 1.940000057220459,
+            "totalMs": 4.139999985694885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3199999332427979,
+            "layoutMs": 1.8600000143051147,
+            "totalMs": 3.1799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.4199999570846558,
+            "layoutMs": 1.8350000381469727,
+            "totalMs": 3.2549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0699999332427979,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 2.8049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3100000619888306,
+            "layoutMs": 1.8049999475479126,
+            "totalMs": 3.115000009536743,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.7450000047683716,
+            "totalMs": 2.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.6050000190734863,
+            "layoutMs": 1.815000057220459,
+            "totalMs": 4.420000076293945,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0049999952316284,
+            "layoutMs": 1.6899999380111694,
+            "totalMs": 2.694999933242798,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9950000047683716,
+            "layoutMs": 1.725000023841858,
+            "totalMs": 2.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9550000429153442,
+            "layoutMs": 1.715000033378601,
+            "totalMs": 2.6700000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0699999332427979,
+            "layoutMs": 1.8100000619888306,
+            "totalMs": 2.8799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0299999713897705,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 2.7649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.7050000429153442,
+            "totalMs": 2.665000081062317,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.75,
+            "totalMs": 2.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9750000238418579,
+            "layoutMs": 1.715000033378601,
+            "totalMs": 2.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.200000047683716,
+            "layoutMs": 1.9550000429153442,
+            "totalMs": 4.15500009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9350000619888306,
+            "layoutMs": 1.715000033378601,
+            "totalMs": 2.6500000953674316,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9050000905990601,
+            "layoutMs": 1.7249999046325684,
+            "totalMs": 2.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0199999809265137,
+            "layoutMs": 1.8300000429153442,
+            "totalMs": 2.850000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9750000238418579,
+            "layoutMs": 1.6899999380111694,
+            "totalMs": 2.6649999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9300000667572021,
+            "layoutMs": 1.7450000047683716,
+            "totalMs": 2.6750000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8849999904632568,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 2.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0149999856948853,
+            "layoutMs": 1.690000057220459,
+            "totalMs": 2.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0450000762939453,
+            "layoutMs": 1.7049999237060547,
+            "totalMs": 2.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.8700000047683716,
+            "layoutMs": 1.90500009059906,
+            "totalMs": 3.7750000953674316,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9249999523162842,
+            "layoutMs": 1.8250000476837158,
+            "totalMs": 2.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.190000057220459,
+            "layoutMs": 2.0749999284744263,
+            "totalMs": 4.264999985694885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.7349998950958252,
+            "totalMs": 2.7049999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.809999942779541,
+            "layoutMs": 1.790000081062317,
+            "totalMs": 2.600000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9199999570846558,
+            "layoutMs": 1.9200000762939453,
+            "totalMs": 2.840000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8449999094009399,
+            "layoutMs": 1.6800000667572021,
+            "totalMs": 2.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2950000762939453,
+            "layoutMs": 1.684999942779541,
+            "totalMs": 2.9800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9950000047683716,
+            "layoutMs": 1.784999966621399,
+            "totalMs": 2.7799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8849999904632568,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 2.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.7000000476837158,
+            "totalMs": 2.5600000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5399999618530273,
+            "layoutMs": 1.7000000476837158,
+            "totalMs": 3.240000009536743,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.159999966621399,
+            "layoutMs": 1.8950001001358032,
+            "totalMs": 4.055000066757202,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.4199999570846558,
+            "layoutMs": 1.8050000667572021,
+            "totalMs": 3.225000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.375,
+            "layoutMs": 2.0049999952316284,
+            "totalMs": 3.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3550000190734863,
+            "layoutMs": 1.7549999952316284,
+            "totalMs": 3.1100000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1100000143051147,
+            "layoutMs": 1.7699999809265137,
+            "totalMs": 2.8799999952316284,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 1.0049999952316284,
+            "layoutMs": 1.7899999618530273,
+            "totalMs": 2.7949999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9699999094009399,
+            "layoutMs": 2.2050000429153442,
+            "totalMs": 3.174999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0750000476837158,
+            "layoutMs": 1.7649999856948853,
+            "totalMs": 2.840000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0099999904632568,
+            "layoutMs": 1.7000000476837158,
+            "totalMs": 2.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9699999094009399,
+            "layoutMs": 1.7200000286102295,
+            "totalMs": 2.6899999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1100000143051147,
+            "layoutMs": 1.7699999809265137,
+            "totalMs": 2.8799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1,
+            "layoutMs": 1.7700001001358032,
+            "totalMs": 2.7700001001358032,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.709999918937683,
+            "totalMs": 2.6699999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.059999942779541,
+            "layoutMs": 1.7450000047683716,
+            "totalMs": 2.8049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0250000953674316,
+            "layoutMs": 1.7649999856948853,
+            "totalMs": 2.790000081062317,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9150000810623169,
+            "layoutMs": 1.7899999618530273,
+            "totalMs": 2.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9499999284744263,
+            "layoutMs": 1.8050000667572021,
+            "totalMs": 2.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9149999618530273,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 2.6549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9200000762939453,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 2.6600000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9599999189376831,
+            "layoutMs": 1.6800000667572021,
+            "totalMs": 2.6399999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9450000524520874,
+            "layoutMs": 1.7000000476837158,
+            "totalMs": 2.6450001001358032,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9250000715255737,
+            "layoutMs": 1.7300000190734863,
+            "totalMs": 2.65500009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9899998903274536,
+            "layoutMs": 1.715000033378601,
+            "totalMs": 2.7049999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9799998998641968,
+            "layoutMs": 1.690000057220459,
+            "totalMs": 2.6699999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.6699999570846558,
+            "totalMs": 2.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 2.284999966621399,
+            "totalMs": 3.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9200000762939453,
+            "layoutMs": 1.7149999141693115,
+            "totalMs": 2.634999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9699999094009399,
+            "layoutMs": 1.8450000286102295,
+            "totalMs": 2.8149999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8550000190734863,
+            "layoutMs": 1.684999942779541,
+            "totalMs": 2.5399999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8700000047683716,
+            "layoutMs": 1.6549999713897705,
+            "totalMs": 2.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8650000095367432,
+            "layoutMs": 1.6649999618530273,
+            "totalMs": 2.5299999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8350000381469727,
+            "layoutMs": 1.6549999713897705,
+            "totalMs": 2.490000009536743,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9699999094009399,
+            "layoutMs": 1.8250000476837158,
+            "totalMs": 2.7949999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.7200000286102295,
+            "totalMs": 2.5800000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8799999952316284,
+            "layoutMs": 1.7699999809265137,
+            "totalMs": 2.649999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.8049999475479126,
+            "totalMs": 2.694999933242798,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.075000047683716,
+            "layoutMs": 1.8650000095367432,
+            "totalMs": 3.940000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3100000619888306,
+            "layoutMs": 1.774999976158142,
+            "totalMs": 3.0850000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.350000023841858,
+            "layoutMs": 1.909999966621399,
+            "totalMs": 3.259999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9950000047683716,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 2.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0800000429153442,
+            "layoutMs": 1.8799999952316284,
+            "totalMs": 2.9600000381469727,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.7750000953674316,
+            "totalMs": 2.765000104904175,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9449999332427979,
+            "layoutMs": 2.315000057220459,
+            "totalMs": 3.259999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0699999332427979,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 2.8049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0350000858306885,
+            "layoutMs": 1.75,
+            "totalMs": 2.7850000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9549999237060547,
+            "layoutMs": 1.774999976158142,
+            "totalMs": 2.7299998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.100000023841858,
+            "layoutMs": 1.7349998950958252,
+            "totalMs": 2.834999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9950000047683716,
+            "layoutMs": 1.809999942779541,
+            "totalMs": 2.8049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9449999332427979,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 2.684999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0099999904632568,
+            "layoutMs": 1.75,
+            "totalMs": 2.759999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0149999856948853,
+            "layoutMs": 1.7599999904632568,
+            "totalMs": 2.774999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9249999523162842,
+            "layoutMs": 1.784999966621399,
+            "totalMs": 2.709999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1050000190734863,
+            "layoutMs": 1.959999918937683,
+            "totalMs": 3.0649999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.7100000381469727,
+            "totalMs": 2.700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0049999952316284,
+            "layoutMs": 1.7050000429153442,
+            "totalMs": 2.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.684999942779541,
+            "totalMs": 2.6449999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9599999189376831,
+            "layoutMs": 1.725000023841858,
+            "totalMs": 2.684999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.7000000476837158,
+            "totalMs": 2.590000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9350000619888306,
+            "layoutMs": 1.7450000047683716,
+            "totalMs": 2.680000066757202,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0600000619888306,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 2.7950000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.659999966621399,
+            "totalMs": 2.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8949999809265137,
+            "layoutMs": 1.8050000667572021,
+            "totalMs": 2.700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9049999713897705,
+            "layoutMs": 1.725000023841858,
+            "totalMs": 2.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.9800000190734863,
+            "layoutMs": 2.0800000429153442,
+            "totalMs": 4.060000061988831,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9300000667572021,
+            "layoutMs": 1.8949999809265137,
+            "totalMs": 2.825000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9350000619888306,
+            "layoutMs": 1.684999942779541,
+            "totalMs": 2.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9050000905990601,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 2.6450001001358032,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.65500009059906,
+            "totalMs": 2.515000104904175,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.46999990940094,
+            "layoutMs": 1.7100000381469727,
+            "totalMs": 3.1799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8550000190734863,
+            "layoutMs": 1.6949999332427979,
+            "totalMs": 2.549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9149999618530273,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 2.6549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9399999380111694,
+            "layoutMs": 1.8300000429153442,
+            "totalMs": 2.7699999809265137,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Switch|before": [
+      {
+        "rep": 0,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.0500000715255737,
+            "layoutMs": 1.434999942779541,
+            "totalMs": 3.4850000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2599999904632568,
+            "layoutMs": 1.4350000619888306,
+            "totalMs": 2.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.7599999904632568,
+            "layoutMs": 1.684999942779541,
+            "totalMs": 3.444999933242798,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.459999918937683,
+            "layoutMs": 1.4100000858306885,
+            "totalMs": 2.8700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.934999942779541,
+            "layoutMs": 1.475000023841858,
+            "totalMs": 4.409999966621399,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 1.2050000429153442,
+            "layoutMs": 1.4199999570846558,
+            "totalMs": 2.625,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0049999952316284,
+            "layoutMs": 1.340000033378601,
+            "totalMs": 2.3450000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0699999332427979,
+            "layoutMs": 1.4950000047683716,
+            "totalMs": 2.5649999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2899999618530273,
+            "layoutMs": 1.399999976158142,
+            "totalMs": 2.6899999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.065000057220459,
+            "layoutMs": 1.3650000095367432,
+            "totalMs": 2.430000066757202,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.21999990940094,
+            "layoutMs": 1.4300000667572021,
+            "totalMs": 2.649999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0699999332427979,
+            "layoutMs": 1.4100000858306885,
+            "totalMs": 2.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1100000143051147,
+            "layoutMs": 1.409999966621399,
+            "totalMs": 2.5199999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1799999475479126,
+            "layoutMs": 1.4049999713897705,
+            "totalMs": 2.584999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.1449999809265137,
+            "layoutMs": 1.6799999475479126,
+            "totalMs": 3.8249999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9350000619888306,
+            "layoutMs": 1.3149999380111694,
+            "totalMs": 2.25,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.350000023841858,
+            "totalMs": 2.340000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3149999380111694,
+            "layoutMs": 1.3700000047683716,
+            "totalMs": 2.684999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8999999761581421,
+            "layoutMs": 1.375,
+            "totalMs": 2.274999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9449999332427979,
+            "layoutMs": 1.3350000381469727,
+            "totalMs": 2.2799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8949999809265137,
+            "layoutMs": 1.4049999713897705,
+            "totalMs": 2.299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.3300000429153442,
+            "totalMs": 2.290000081062317,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9099999666213989,
+            "layoutMs": 1.3250000476837158,
+            "totalMs": 2.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.399999976158142,
+            "totalMs": 2.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8900001049041748,
+            "layoutMs": 1.3700000047683716,
+            "totalMs": 2.2600001096725464,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3799999952316284,
+            "layoutMs": 1.3849999904632568,
+            "totalMs": 2.7649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9850000143051147,
+            "layoutMs": 1.6699999570846558,
+            "totalMs": 2.6549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.4149999618530273,
+            "totalMs": 2.365000009536743,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8999999761581421,
+            "layoutMs": 1.3199999332427979,
+            "totalMs": 2.21999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.3799999952316284,
+            "totalMs": 2.350000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0200001001358032,
+            "layoutMs": 1.3399999141693115,
+            "totalMs": 2.3600000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9550000429153442,
+            "layoutMs": 1.3149999380111694,
+            "totalMs": 2.2699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.6850000619888306,
+            "layoutMs": 1.350000023841858,
+            "totalMs": 3.0350000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8349999189376831,
+            "layoutMs": 1.3050000667572021,
+            "totalMs": 2.1399999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8550000190734863,
+            "layoutMs": 1.3200000524520874,
+            "totalMs": 2.1750000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9799998998641968,
+            "layoutMs": 1.40500009059906,
+            "totalMs": 2.384999990463257,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.090000033378601,
+            "layoutMs": 1.4449999332427979,
+            "totalMs": 3.534999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2649999856948853,
+            "layoutMs": 1.3949999809265137,
+            "totalMs": 2.659999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.6649999618530273,
+            "layoutMs": 1.6150000095367432,
+            "totalMs": 3.2799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5099999904632568,
+            "layoutMs": 1.375,
+            "totalMs": 2.884999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.990000009536743,
+            "layoutMs": 1.4950000047683716,
+            "totalMs": 4.485000014305115,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 1.209999918937683,
+            "layoutMs": 1.315000057220459,
+            "totalMs": 2.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0299999713897705,
+            "layoutMs": 1.3550000190734863,
+            "totalMs": 2.384999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1150000095367432,
+            "layoutMs": 1.3899999856948853,
+            "totalMs": 2.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3499999046325684,
+            "layoutMs": 1.4100000858306885,
+            "totalMs": 2.759999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.024999976158142,
+            "layoutMs": 1.3700000047683716,
+            "totalMs": 2.3949999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1100000143051147,
+            "layoutMs": 1.4350000619888306,
+            "totalMs": 2.5450000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.034999966621399,
+            "layoutMs": 1.399999976158142,
+            "totalMs": 2.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0649999380111694,
+            "layoutMs": 1.375,
+            "totalMs": 2.4399999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1600000858306885,
+            "layoutMs": 1.3899999856948853,
+            "totalMs": 2.5500000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.40500009059906,
+            "layoutMs": 1.5999999046325684,
+            "totalMs": 4.004999995231628,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9950000047683716,
+            "layoutMs": 1.34499990940094,
+            "totalMs": 2.3399999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.3249999284744263,
+            "totalMs": 2.274999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3299999237060547,
+            "layoutMs": 1.3600000143051147,
+            "totalMs": 2.6899999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8999999761581421,
+            "layoutMs": 1.3200000524520874,
+            "totalMs": 2.2200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8799999952316284,
+            "layoutMs": 1.2950000762939453,
+            "totalMs": 2.1750000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9649999141693115,
+            "layoutMs": 1.3700000047683716,
+            "totalMs": 2.334999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9050000905990601,
+            "layoutMs": 1.3299999237060547,
+            "totalMs": 2.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.34499990940094,
+            "totalMs": 2.3149999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9849998950958252,
+            "layoutMs": 1.3450000286102295,
+            "totalMs": 2.3299999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8450000286102295,
+            "layoutMs": 1.3700000047683716,
+            "totalMs": 2.215000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8650000095367432,
+            "layoutMs": 1.465000033378601,
+            "totalMs": 2.3300000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.225000023841858,
+            "layoutMs": 1.4199999570846558,
+            "totalMs": 3.6449999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.940000057220459,
+            "layoutMs": 1.4850000143051147,
+            "totalMs": 2.4250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8799999952316284,
+            "layoutMs": 1.3050000667572021,
+            "totalMs": 2.1850000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9650000333786011,
+            "layoutMs": 1.3399999141693115,
+            "totalMs": 2.3049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.2899999618530273,
+            "totalMs": 2.240000009536743,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.284999966621399,
+            "totalMs": 2.2549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0550000667572021,
+            "layoutMs": 1.3799999952316284,
+            "totalMs": 2.4350000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8500000238418579,
+            "layoutMs": 1.375,
+            "totalMs": 2.225000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.3300000429153442,
+            "totalMs": 2.2200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9499999284744263,
+            "layoutMs": 1.350000023841858,
+            "totalMs": 2.299999952316284,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.069999933242798,
+            "layoutMs": 1.4450000524520874,
+            "totalMs": 3.5149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2599999904632568,
+            "layoutMs": 1.375,
+            "totalMs": 2.634999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.7400000095367432,
+            "layoutMs": 1.6200000047683716,
+            "totalMs": 3.3600000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5199999809265137,
+            "layoutMs": 1.3600000143051147,
+            "totalMs": 2.8799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.100000023841858,
+            "layoutMs": 1.7899999618530273,
+            "totalMs": 2.8899999856948853,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 1.1749999523162842,
+            "layoutMs": 1.3250000476837158,
+            "totalMs": 2.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0299999713897705,
+            "layoutMs": 1.3450000286102295,
+            "totalMs": 2.375,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.46999990940094,
+            "layoutMs": 1.3200000524520874,
+            "totalMs": 2.7899999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0199999809265137,
+            "layoutMs": 1.3550000190734863,
+            "totalMs": 2.375,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0850000381469727,
+            "layoutMs": 1.334999918937683,
+            "totalMs": 2.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.034999966621399,
+            "layoutMs": 1.4299999475479126,
+            "totalMs": 2.4649999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1399999856948853,
+            "layoutMs": 1.40500009059906,
+            "totalMs": 2.5450000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0600000619888306,
+            "layoutMs": 1.375,
+            "totalMs": 2.4350000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0950000286102295,
+            "layoutMs": 1.4200000762939453,
+            "totalMs": 2.515000104904175,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9800000190734863,
+            "layoutMs": 1.3650000095367432,
+            "totalMs": 2.3450000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.3949999809265137,
+            "layoutMs": 1.5450000762939453,
+            "totalMs": 3.940000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9550000429153442,
+            "layoutMs": 1.3199999332427979,
+            "totalMs": 2.274999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8999999761581421,
+            "layoutMs": 1.3199999332427979,
+            "totalMs": 2.21999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3849999904632568,
+            "layoutMs": 1.3899999856948853,
+            "totalMs": 2.774999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8849999904632568,
+            "layoutMs": 1.2799999713897705,
+            "totalMs": 2.1649999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.2799999713897705,
+            "totalMs": 2.1699999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8900001049041748,
+            "layoutMs": 1.3049999475479126,
+            "totalMs": 2.1950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.3050000667572021,
+            "totalMs": 2.1950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9049999713897705,
+            "layoutMs": 1.3249999284744263,
+            "totalMs": 2.2299998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8700000047683716,
+            "layoutMs": 1.3650000095367432,
+            "totalMs": 2.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.3299999237060547,
+            "totalMs": 2.1899999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8649998903274536,
+            "layoutMs": 1.3000000715255737,
+            "totalMs": 2.1649999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.5299999713897705,
+            "layoutMs": 1.399999976158142,
+            "totalMs": 3.9299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9300000667572021,
+            "layoutMs": 1.334999918937683,
+            "totalMs": 2.2649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9549999237060547,
+            "layoutMs": 1.3650000095367432,
+            "totalMs": 2.319999933242798,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.875,
+            "layoutMs": 1.3049999475479126,
+            "totalMs": 2.1799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.284999966621399,
+            "totalMs": 2.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0750000476837158,
+            "layoutMs": 1.3049999475479126,
+            "totalMs": 2.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9450000524520874,
+            "layoutMs": 1.2999999523162842,
+            "totalMs": 2.2450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8249999284744263,
+            "layoutMs": 1.3550000190734863,
+            "totalMs": 2.1799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8400000333786011,
+            "layoutMs": 1.2999999523162842,
+            "totalMs": 2.1399999856948853,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Switch|after1": [
+      {
+        "rep": 0,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.1850000619888306,
+            "layoutMs": 1.7400000095367432,
+            "totalMs": 3.9250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.274999976158142,
+            "layoutMs": 1.6549999713897705,
+            "totalMs": 2.9299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5450000762939453,
+            "layoutMs": 1.8149999380111694,
+            "totalMs": 3.3600000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9750000238418579,
+            "layoutMs": 1.6299999952316284,
+            "totalMs": 2.6050000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1399999856948853,
+            "layoutMs": 1.6399999856948853,
+            "totalMs": 2.7799999713897705,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.6050000190734863,
+            "totalMs": 2.555000066757202,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0649999380111694,
+            "layoutMs": 1.6950000524520874,
+            "totalMs": 2.759999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.5600000619888306,
+            "totalMs": 2.53000009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0299999713897705,
+            "layoutMs": 1.6449999809265137,
+            "totalMs": 2.674999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9450000524520874,
+            "layoutMs": 1.5649999380111694,
+            "totalMs": 2.509999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0099999904632568,
+            "layoutMs": 1.649999976158142,
+            "totalMs": 2.659999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9250000715255737,
+            "layoutMs": 1.6999999284744263,
+            "totalMs": 2.625,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9049999713897705,
+            "layoutMs": 1.6649999618530273,
+            "totalMs": 2.569999933242798,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.6800000667572021,
+            "totalMs": 2.6700000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.934999942779541,
+            "layoutMs": 1.6950000524520874,
+            "totalMs": 2.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9300000667572021,
+            "layoutMs": 1.8299999237060547,
+            "totalMs": 2.759999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.6200000047683716,
+            "totalMs": 2.509999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8500000238418579,
+            "layoutMs": 1.6299999952316284,
+            "totalMs": 2.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.940000057220459,
+            "layoutMs": 1.590000033378601,
+            "totalMs": 2.53000009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8650000095367432,
+            "layoutMs": 1.5850000381469727,
+            "totalMs": 2.450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8300000429153442,
+            "layoutMs": 1.6049998998641968,
+            "totalMs": 2.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8949999809265137,
+            "layoutMs": 1.6399999856948853,
+            "totalMs": 2.534999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9049999713897705,
+            "layoutMs": 1.625,
+            "totalMs": 2.5299999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9149999618530273,
+            "layoutMs": 1.5750000476837158,
+            "totalMs": 2.490000009536743,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5850000381469727,
+            "layoutMs": 1.6349999904632568,
+            "totalMs": 3.2200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8200000524520874,
+            "layoutMs": 1.5999999046325684,
+            "totalMs": 2.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.055000066757202,
+            "layoutMs": 1.850000023841858,
+            "totalMs": 3.90500009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.869999885559082,
+            "layoutMs": 1.5800000429153442,
+            "totalMs": 2.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8250000476837158,
+            "layoutMs": 1.6349999904632568,
+            "totalMs": 2.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.600000023841858,
+            "totalMs": 2.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8349999189376831,
+            "layoutMs": 1.6200000047683716,
+            "totalMs": 2.4549999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2950000762939453,
+            "layoutMs": 1.590000033378601,
+            "totalMs": 2.8850001096725464,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9150000810623169,
+            "layoutMs": 1.649999976158142,
+            "totalMs": 2.565000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7949999570846558,
+            "layoutMs": 1.6050000190734863,
+            "totalMs": 2.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7850000858306885,
+            "layoutMs": 1.625,
+            "totalMs": 2.4100000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7899999618530273,
+            "layoutMs": 1.590000033378601,
+            "totalMs": 2.3799999952316284,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.0199999809265137,
+            "layoutMs": 1.8100000619888306,
+            "totalMs": 3.8300000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2950000762939453,
+            "layoutMs": 1.7350000143051147,
+            "totalMs": 3.03000009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.25,
+            "layoutMs": 1.815000057220459,
+            "totalMs": 3.065000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9650000333786011,
+            "layoutMs": 1.6649999618530273,
+            "totalMs": 2.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0649999380111694,
+            "layoutMs": 1.6649999618530273,
+            "totalMs": 2.7299998998641968,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.9549999237060547,
+            "layoutMs": 1.6449999809265137,
+            "totalMs": 2.5999999046325684,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.4199999570846558,
+            "layoutMs": 1.7549999952316284,
+            "totalMs": 4.174999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9850000143051147,
+            "layoutMs": 1.5749999284744263,
+            "totalMs": 2.559999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9599999189376831,
+            "layoutMs": 1.5550000667572021,
+            "totalMs": 2.5149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9350000619888306,
+            "layoutMs": 1.6100000143051147,
+            "totalMs": 2.5450000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.149999976158142,
+            "layoutMs": 1.6200000047683716,
+            "totalMs": 2.7699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9199999570846558,
+            "layoutMs": 1.8450000286102295,
+            "totalMs": 2.7649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.6299999952316284,
+            "totalMs": 2.600000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9199999570846558,
+            "layoutMs": 1.6100000143051147,
+            "totalMs": 2.5299999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9700000286102295,
+            "layoutMs": 1.6150000095367432,
+            "totalMs": 2.5850000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.0199999809265137,
+            "layoutMs": 1.84499990940094,
+            "totalMs": 3.8649998903274536,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9750000238418579,
+            "layoutMs": 1.6150000095367432,
+            "totalMs": 2.590000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.875,
+            "layoutMs": 1.5799999237060547,
+            "totalMs": 2.4549999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9199999570846558,
+            "layoutMs": 1.6400001049041748,
+            "totalMs": 2.5600000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9099999666213989,
+            "layoutMs": 1.5600000619888306,
+            "totalMs": 2.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.375,
+            "layoutMs": 1.5950000286102295,
+            "totalMs": 2.9700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8400000333786011,
+            "layoutMs": 1.5899999141693115,
+            "totalMs": 2.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9250000715255737,
+            "layoutMs": 1.6399999856948853,
+            "totalMs": 2.565000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0099999904632568,
+            "layoutMs": 1.600000023841858,
+            "totalMs": 2.6100000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5549999475479126,
+            "layoutMs": 1.600000023841858,
+            "totalMs": 3.1549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8550000190734863,
+            "layoutMs": 1.6049998998641968,
+            "totalMs": 2.459999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8400000333786011,
+            "layoutMs": 1.600000023841858,
+            "totalMs": 2.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.4550000429153442,
+            "layoutMs": 1.9749999046325684,
+            "totalMs": 4.429999947547913,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.5399999618530273,
+            "totalMs": 2.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.875,
+            "layoutMs": 1.5649999380111694,
+            "totalMs": 2.4399999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.875,
+            "layoutMs": 1.6750000715255737,
+            "totalMs": 2.5500000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9099999666213989,
+            "layoutMs": 1.5500000715255737,
+            "totalMs": 2.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.7649999856948853,
+            "totalMs": 2.725000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8300000429153442,
+            "layoutMs": 1.6150000095367432,
+            "totalMs": 2.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8400000333786011,
+            "layoutMs": 1.659999966621399,
+            "totalMs": 2.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.875,
+            "layoutMs": 1.6050000190734863,
+            "totalMs": 2.4800000190734863,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Switch",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "checked: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 2.1050000190734863,
+            "layoutMs": 1.8299999237060547,
+            "totalMs": 3.934999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.3000000715255737,
+            "layoutMs": 1.6649999618530273,
+            "totalMs": 2.965000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.2750000953674316,
+            "layoutMs": 1.7450000047683716,
+            "totalMs": 3.0200001001358032,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.659999966621399,
+            "totalMs": 2.6100000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9950000047683716,
+            "layoutMs": 1.6600000858306885,
+            "totalMs": 2.65500009059906,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.9599999189376831,
+            "layoutMs": 1.7100000381469727,
+            "totalMs": 2.6699999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1,
+            "layoutMs": 2.0299999713897705,
+            "totalMs": 3.0299999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9600000381469727,
+            "layoutMs": 1.6649999618530273,
+            "totalMs": 2.625,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0299999713897705,
+            "layoutMs": 1.6349999904632568,
+            "totalMs": 2.6649999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9099999666213989,
+            "layoutMs": 1.559999942779541,
+            "totalMs": 2.46999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9449999332427979,
+            "layoutMs": 1.600000023841858,
+            "totalMs": 2.5449999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9800000190734863,
+            "layoutMs": 1.5850000381469727,
+            "totalMs": 2.565000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9500000476837158,
+            "layoutMs": 1.6999999284744263,
+            "totalMs": 2.649999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9900000095367432,
+            "layoutMs": 1.649999976158142,
+            "totalMs": 2.6399999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9449999332427979,
+            "layoutMs": 1.6299999952316284,
+            "totalMs": 2.5749999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8850001096725464,
+            "layoutMs": 1.659999966621399,
+            "totalMs": 2.5450000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.7799999713897705,
+            "layoutMs": 1.915000081062317,
+            "totalMs": 3.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0049999952316284,
+            "layoutMs": 1.7549999952316284,
+            "totalMs": 2.759999990463257,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8599998950958252,
+            "layoutMs": 1.5950000286102295,
+            "totalMs": 2.4549999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.934999942779541,
+            "layoutMs": 1.6100000143051147,
+            "totalMs": 2.5449999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9399999380111694,
+            "layoutMs": 1.5850000381469727,
+            "totalMs": 2.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.4049999713897705,
+            "layoutMs": 1.725000023841858,
+            "totalMs": 3.1299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9850000143051147,
+            "layoutMs": 1.6449999809265137,
+            "totalMs": 2.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.5600000619888306,
+            "totalMs": 2.450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8899999856948853,
+            "layoutMs": 1.534999966621399,
+            "totalMs": 2.424999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5950000286102295,
+            "layoutMs": 1.6299999952316284,
+            "totalMs": 3.225000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8600000143051147,
+            "layoutMs": 1.625,
+            "totalMs": 2.4850000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 2.4499999284744263,
+            "layoutMs": 1.7050000429153442,
+            "totalMs": 4.1549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.875,
+            "layoutMs": 1.5850000381469727,
+            "totalMs": 2.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.880000114440918,
+            "layoutMs": 1.5799999237060547,
+            "totalMs": 2.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8549998998641968,
+            "layoutMs": 1.725000023841858,
+            "totalMs": 2.5799999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8650000095367432,
+            "layoutMs": 1.5800000429153442,
+            "totalMs": 2.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.9800000190734863,
+            "layoutMs": 1.6700000762939453,
+            "totalMs": 2.6500000953674316,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8399999141693115,
+            "layoutMs": 1.5700000524520874,
+            "totalMs": 2.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8149999380111694,
+            "layoutMs": 1.5500000715255737,
+            "totalMs": 2.365000009536743,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8300000429153442,
+            "layoutMs": 1.9249999523162842,
+            "totalMs": 2.7549999952316284,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Button|after1": [
+      {
+        "rep": 0,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.4800000190734863,
+            "layoutMs": 0.46000003814697266,
+            "totalMs": 1.940000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7400000095367432,
+            "layoutMs": 0.375,
+            "totalMs": 1.1150000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5799999237060547,
+            "layoutMs": 0.4200000762939453,
+            "totalMs": 1,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.625,
+            "layoutMs": 0.375,
+            "totalMs": 1,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.8050000667572021,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7999999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.559999942779541,
+            "layoutMs": 0.375,
+            "totalMs": 0.934999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.375,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34999990463256836,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7299998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.625,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 1.0049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.375,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5799999237060547,
+            "layoutMs": 0.375,
+            "totalMs": 0.9549999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.375,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34999990463256836,
+            "layoutMs": 0.375,
+            "totalMs": 0.7249999046325684,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5499999523162842,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.934999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.375,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5549999475479126,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.934999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34999990463256836,
+            "layoutMs": 0.46000003814697266,
+            "totalMs": 0.809999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3799999952316284,
+            "layoutMs": 0.375,
+            "totalMs": 0.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3799999952316284,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8049999475479126,
+            "layoutMs": 0.48500001430511475,
+            "totalMs": 1.2899999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4099999666213989,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7899999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.4049999713897705,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.36999988555908203,
+            "totalMs": 0.7099999189376831,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34999990463256836,
+            "layoutMs": 0.375,
+            "totalMs": 0.7249999046325684,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3799999952316284,
+            "layoutMs": 0.375,
+            "totalMs": 0.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.3649998903274536,
+            "totalMs": 0.6899999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.375,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3399999141693115,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7099999189376831,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.4300000667572021,
+            "layoutMs": 0.43999993801116943,
+            "totalMs": 1.8700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7450000047683716,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 1.1299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5950000286102295,
+            "layoutMs": 0.41499996185302734,
+            "totalMs": 1.0099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.39499998092651367,
+            "layoutMs": 0.375,
+            "totalMs": 0.7699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7899999618530273,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.40000009536743164,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7800000905990601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34499990940093994,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7099999189376831,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7749999761581421,
+            "layoutMs": 0.375,
+            "totalMs": 1.149999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5700000524520874,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.9500000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.375,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5950000286102295,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.9800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3999999761581421,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5649999380111694,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.9499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38999998569488525,
+            "layoutMs": 0.38999998569488525,
+            "totalMs": 0.7799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3399999141693115,
+            "layoutMs": 0.375,
+            "totalMs": 0.7149999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5199999809265137,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.8999999761581421,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.40500009059906006,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7750000953674316,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7250000238418579,
+            "layoutMs": 0.4049999713897705,
+            "totalMs": 1.1299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38999998569488525,
+            "layoutMs": 0.4150000810623169,
+            "totalMs": 0.8050000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.41999995708465576,
+            "totalMs": 0.7799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.375,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.434999942779541,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.8049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.3799999952316284,
+            "layoutMs": 0.46000003814697266,
+            "totalMs": 1.840000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.690000057220459,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 1.0750000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5750000476837158,
+            "layoutMs": 0.46000003814697266,
+            "totalMs": 1.0350000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38999998569488525,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7749999761581421,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.42500007152557373,
+            "totalMs": 0.8450000286102295,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.3999999761581421,
+            "layoutMs": 0.38999998569488525,
+            "totalMs": 0.7899999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34499990940093994,
+            "layoutMs": 0.3950001001358032,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.38999998569488525,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.375,
+            "totalMs": 0.8849999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.375,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5700000524520874,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.9500000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5400000810623169,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.9250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.375,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5499999523162842,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.934999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3799999952316284,
+            "layoutMs": 0.38999998569488525,
+            "totalMs": 0.7699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34999990463256836,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7149999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.375,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8000000715255737,
+            "layoutMs": 0.48000001907348633,
+            "totalMs": 1.28000009059906,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3399999141693115,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.6999999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38499999046325684,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.38999998569488525,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.35500001907348633,
+            "totalMs": 0.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.8000000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.375,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33000004291534424,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3200000524520874,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.6800000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.375,
+            "totalMs": 0.7000000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.32499992847442627,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7099999189376831,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.32499992847442627,
+            "layoutMs": 0.375,
+            "totalMs": 0.6999999284744263,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Button|before": [
+      {
+        "rep": 0,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.3350000381469727,
+            "layoutMs": 0.8799999952316284,
+            "totalMs": 2.215000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8349999189376831,
+            "layoutMs": 0.7850000858306885,
+            "totalMs": 1.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7250000238418579,
+            "layoutMs": 0.7849999666213989,
+            "totalMs": 1.5099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5750000476837158,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.3550000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5550000667572021,
+            "layoutMs": 0.7749999761581421,
+            "totalMs": 1.3300000429153442,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.6200000047683716,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.8250000476837158,
+            "totalMs": 1.3200000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5249999761581421,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.2899999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5699999332427979,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.3249999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.2549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5449999570846558,
+            "layoutMs": 0.7650001049041748,
+            "totalMs": 1.3100000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5149999856948853,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.2699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.2599999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.2549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8550000190734863,
+            "layoutMs": 0.8400000333786011,
+            "totalMs": 1.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.2699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.755000114440918,
+            "totalMs": 1.2650001049041748,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 0.7750000953674316,
+            "totalMs": 1.2400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.7899999618530273,
+            "totalMs": 1.2450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4599999189376831,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.21999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.2450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4700000286102295,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4450000524520874,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.2100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5149999856948853,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.2799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4750000238418579,
+            "layoutMs": 0.7400000095367432,
+            "totalMs": 1.215000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46999990940093994,
+            "layoutMs": 0.8850001096725464,
+            "totalMs": 1.3550000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.8350000381469727,
+            "totalMs": 1.2950000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.8350000381469727,
+            "totalMs": 1.284999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.440000057220459,
+            "layoutMs": 0.7999999523162842,
+            "totalMs": 1.2400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.2100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.1750000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.7400000095367432,
+            "totalMs": 1.190000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.434999942779541,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.1799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.2299998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.8249999284744263,
+            "totalMs": 1.2799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.2050000429153442,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.3299999237060547,
+            "layoutMs": 0.8300000429153442,
+            "totalMs": 2.159999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7699999809265137,
+            "layoutMs": 0.8250000476837158,
+            "totalMs": 1.5950000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7249999046325684,
+            "layoutMs": 0.7900000810623169,
+            "totalMs": 1.5149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5549999475479126,
+            "layoutMs": 0.7850000858306885,
+            "totalMs": 1.340000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5550000667572021,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.3000000715255737,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.5699999332427979,
+            "layoutMs": 0.7350000143051147,
+            "totalMs": 1.3049999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5449999570846558,
+            "layoutMs": 0.8049999475479126,
+            "totalMs": 1.3499999046325684,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5,
+            "layoutMs": 0.75,
+            "totalMs": 1.25,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 0.8350000381469727,
+            "totalMs": 1.2999999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.7400000095367432,
+            "totalMs": 1.25,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.2799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5350000858306885,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.290000081062317,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5850000381469727,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.350000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5049999952316284,
+            "layoutMs": 0.8550000190734863,
+            "totalMs": 1.3600000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 0.8200000524520874,
+            "totalMs": 1.3000000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.2599999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5249999761581421,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.2699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.2100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.225000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4700000286102295,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4799998998641968,
+            "layoutMs": 0.8050000667572021,
+            "totalMs": 1.284999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4549999237060547,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.1999999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4750000238418579,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.2549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.2300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4599999189376831,
+            "layoutMs": 0.755000114440918,
+            "totalMs": 1.215000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4700000286102295,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.215000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 0.7700001001358032,
+            "totalMs": 1.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.75,
+            "totalMs": 1.1999999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.8449999094009399,
+            "totalMs": 1.3399999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.25,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.75,
+            "totalMs": 1.2100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.7300000190734863,
+            "totalMs": 1.1950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.8249999284744263,
+            "totalMs": 1.3199999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.8250000476837158,
+            "totalMs": 1.3200000524520874,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.3550000190734863,
+            "layoutMs": 0.875,
+            "totalMs": 2.2300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8799999952316284,
+            "layoutMs": 0.7749999761581421,
+            "totalMs": 1.6549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7400000095367432,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5699999332427979,
+            "layoutMs": 0.8350000381469727,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5700000524520874,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.350000023841858,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.5750000476837158,
+            "layoutMs": 0.8249999284744263,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.2649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5350000858306885,
+            "layoutMs": 0.8349999189376831,
+            "totalMs": 1.3700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.2699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48500001430511475,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.2450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.505000114440918,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.2650001049041748,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.2649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5199999809265137,
+            "layoutMs": 0.7749999761581421,
+            "totalMs": 1.2949999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5,
+            "layoutMs": 0.8799999952316284,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.8550000190734863,
+            "layoutMs": 0.8499999046325684,
+            "totalMs": 1.7049999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5049999952316284,
+            "layoutMs": 0.7749999761581421,
+            "totalMs": 1.2799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.2699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5950000286102295,
+            "layoutMs": 0.8050000667572021,
+            "totalMs": 1.4000000953674316,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5349999666213989,
+            "layoutMs": 0.7850000858306885,
+            "totalMs": 1.3200000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.7599999904632568,
+            "totalMs": 1.2200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4750000238418579,
+            "layoutMs": 0.8250000476837158,
+            "totalMs": 1.3000000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.2050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4450000524520874,
+            "layoutMs": 0.7899999618530273,
+            "totalMs": 1.2350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.7949999570846558,
+            "totalMs": 1.2599999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.7999999523162842,
+            "totalMs": 1.25,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 0.75,
+            "totalMs": 1.2149999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.7450000047683716,
+            "totalMs": 1.2000000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4899998903274536,
+            "layoutMs": 0.7400000095367432,
+            "totalMs": 1.2299998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.21999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5300000905990601,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.3000000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.7749999761581421,
+            "totalMs": 1.2300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.7649999856948853,
+            "totalMs": 1.215000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.7699999809265137,
+            "totalMs": 1.2200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.7549999952316284,
+            "totalMs": 1.2200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.8199999332427979,
+            "totalMs": 1.274999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.7799999713897705,
+            "totalMs": 1.215000033378601,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Button|after2": [
+      {
+        "rep": 0,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.3600000143051147,
+            "layoutMs": 0.4450000524520874,
+            "totalMs": 1.8050000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7199999094009399,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 1.0899999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6000000238418579,
+            "layoutMs": 0.46000003814697266,
+            "totalMs": 1.0600000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.8450000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.8300000429153442,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7999999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3549998998641968,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7199999094009399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34499990940093994,
+            "layoutMs": 0.375,
+            "totalMs": 0.7199999094009399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3549998998641968,
+            "layoutMs": 0.375,
+            "totalMs": 0.7299998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4549999237060547,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.8399999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.375,
+            "layoutMs": 0.375,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.38999998569488525,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3399999141693115,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7199999094009399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.39499998092651367,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.375,
+            "totalMs": 0.7949999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3649998903274536,
+            "totalMs": 0.7149999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38999998569488525,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7599999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5700000524520874,
+            "layoutMs": 0.4099999666213989,
+            "totalMs": 1.9800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.42500007152557373,
+            "totalMs": 0.7900000810623169,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3799999952316284,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6100000143051147,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.9750000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.32499992847442627,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.6949999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.3849999904632568,
+            "layoutMs": 0.43000006675720215,
+            "totalMs": 1.815000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7250000238418579,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 1.1100000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5950000286102295,
+            "layoutMs": 0.4450000524520874,
+            "totalMs": 1.040000081062317,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3999999761581421,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.434999942779541,
+            "layoutMs": 0.375,
+            "totalMs": 0.809999942779541,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.4200000762939453,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.8000000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.375,
+            "layoutMs": 0.375,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34999990463256836,
+            "layoutMs": 0.40500009059906006,
+            "totalMs": 0.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.375,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.375,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.375,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.34499990940093994,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7149999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3399999141693115,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7199999094009399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.375,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.4249999523162842,
+            "totalMs": 0.7649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3649998903274536,
+            "totalMs": 0.7099999189376831,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3349999189376831,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7049999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6650000810623169,
+            "layoutMs": 0.3999999761581421,
+            "totalMs": 1.065000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3250000476837158,
+            "layoutMs": 0.41999995708465576,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.375,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7450000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.35500001907348633,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3700000047683716,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5949999094009399,
+            "layoutMs": 0.3850001096725464,
+            "totalMs": 0.9800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33000004291534424,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7000000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33000004291534424,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3649998903274536,
+            "totalMs": 0.7249999046325684,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.375,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Button",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "disabled: false -> true",
+        "warmupSamples": [
+          {
+            "commitMs": 1.350000023841858,
+            "layoutMs": 0.4249999523162842,
+            "totalMs": 1.774999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6850000619888306,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 1.065000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5950000286102295,
+            "layoutMs": 0.5449999570846558,
+            "totalMs": 1.1399999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4150000810623169,
+            "layoutMs": 0.375,
+            "totalMs": 0.7900000810623169,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7899999618530273,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.434999942779541,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.8149999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.4049999713897705,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7300000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.375,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33000004291534424,
+            "layoutMs": 0.3799999952316284,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.43000006675720215,
+            "totalMs": 0.7650001049041748,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3450000286102295,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7150000333786011,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3799999952316284,
+            "layoutMs": 0.375,
+            "totalMs": 0.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.75,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38499999046325684,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.375,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.3649998903274536,
+            "totalMs": 0.6999999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.39499998092651367,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7250000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.39499998092651367,
+            "layoutMs": 0.375,
+            "totalMs": 0.7699999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33500003814697266,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7000000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5850000381469727,
+            "layoutMs": 0.41499996185302734,
+            "totalMs": 2,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3400000333786011,
+            "layoutMs": 0.36500000953674316,
+            "totalMs": 0.7050000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3200000524520874,
+            "layoutMs": 0.375,
+            "totalMs": 0.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 0.375,
+            "totalMs": 0.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38499999046325684,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 0.36000001430511475,
+            "totalMs": 0.7100000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3549998998641968,
+            "layoutMs": 0.38000011444091797,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6050000190734863,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.9750000238418579,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3200000524520874,
+            "layoutMs": 0.375,
+            "totalMs": 0.6950000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.32499992847442627,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.6949999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 0.38499999046325684,
+            "totalMs": 0.7400000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7350000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38999998569488525,
+            "layoutMs": 0.3700000047683716,
+            "totalMs": 0.7599999904632568,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Divider|after1": [
+      {
+        "rep": 0,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 0.75,
+            "layoutMs": 1.2149999141693115,
+            "totalMs": 1.9649999141693115,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.6399999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.38000011444091797,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.5500000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31000006198883057,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.31999993324279785,
+            "layoutMs": 1.1700000762939453,
+            "totalMs": 1.4900000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.27500009536743164,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.4500000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 1.340000033378601,
+            "totalMs": 1.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.4850000143051147,
+            "totalMs": 1.7549999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.15500009059906,
+            "totalMs": 1.4250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.30000007152557373,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2900000810623169,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31000006198883057,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1800000667572021,
+            "totalMs": 1.4500000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.29499995708465576,
+            "layoutMs": 1.1800000667572021,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.375,
+            "layoutMs": 1.3199999332427979,
+            "totalMs": 2.694999933242798,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.29499995708465576,
+            "layoutMs": 1.1600000858306885,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1800000667572021,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1349999904632568,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1449999809265137,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1399999856948853,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31499993801116943,
+            "layoutMs": 1.1950000524520874,
+            "totalMs": 1.5099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.4249999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.190000057220459,
+            "totalMs": 1.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24500000476837158,
+            "layoutMs": 1.1449999809265137,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24500000476837158,
+            "layoutMs": 1.125,
+            "totalMs": 1.3700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.440000057220459,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.6349999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1299999952316284,
+            "totalMs": 1.3849999904632568,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 0.7700001001358032,
+            "layoutMs": 1.21999990940094,
+            "totalMs": 1.9900000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 1.1800000667572021,
+            "totalMs": 1.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36500000953674316,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.534999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33000004291534424,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4900000095367432,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4449999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28999996185302734,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.2000000476837158,
+            "totalMs": 1.465000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31000006198883057,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.29499995708465576,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.459999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.29499995708465576,
+            "layoutMs": 1.2000000476837158,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1700000762939453,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.2400000095367432,
+            "totalMs": 1.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31000006198883057,
+            "layoutMs": 1.1899999380111694,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1700000762939453,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1899999380111694,
+            "layoutMs": 1.3100000619888306,
+            "totalMs": 2.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1449999809265137,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1500000953674316,
+            "totalMs": 1.4100000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28000009059906006,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1400001049041748,
+            "totalMs": 1.3950001001358032,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1349999904632568,
+            "totalMs": 1.3949999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1400001049041748,
+            "totalMs": 1.4100000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.459999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3049999475479126,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.46999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1349999904632568,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.190000057220459,
+            "totalMs": 1.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4599999189376831,
+            "layoutMs": 1.2000000476837158,
+            "totalMs": 1.659999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 0.7599999904632568,
+            "layoutMs": 1.2549999952316284,
+            "totalMs": 2.0149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4750000238418579,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.6449999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.5199999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4850000143051147,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4850000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3049999475479126,
+            "layoutMs": 1.1600000858306885,
+            "totalMs": 1.465000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2849999666213989,
+            "layoutMs": 1.1700000762939453,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2849999666213989,
+            "layoutMs": 1.1750000715255737,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.27500009536743164,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4350000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2950000762939453,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28999996185302734,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31000006198883057,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.30500006675720215,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1700000762939453,
+            "totalMs": 1.4350000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.2050000429153442,
+            "totalMs": 1.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4750000238418579,
+            "layoutMs": 1.3049999475479126,
+            "totalMs": 1.7799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28999996185302734,
+            "layoutMs": 1.1399999856948853,
+            "totalMs": 1.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1449999809265137,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1349999904632568,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24500000476837158,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.6200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1449999809265137,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.5199999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24500000476837158,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2600001096725464,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4300000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.255000114440918,
+            "totalMs": 1.505000114440918,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.9249999523162842,
+            "totalMs": 2.1899999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Divider|before": [
+      {
+        "rep": 0,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 1.0750000476837158,
+            "layoutMs": 1.0099999904632568,
+            "totalMs": 2.0850000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6499999761581421,
+            "layoutMs": 1.0149999856948853,
+            "totalMs": 1.6649999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5349999666213989,
+            "layoutMs": 0.9750000238418579,
+            "totalMs": 1.5099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 0.9700000286102295,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5,
+            "layoutMs": 0.9700000286102295,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 0.9750000238418579,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.9599999189376831,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4450000524520874,
+            "layoutMs": 0.9499999284744263,
+            "totalMs": 1.3949999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46999990940093994,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4249999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9549999237060547,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44499993324279785,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.5550000667572021,
+            "layoutMs": 1.0449999570846558,
+            "totalMs": 2.600000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4549999237060547,
+            "layoutMs": 0.9600000381469727,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.934999942779541,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5349999666213989,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4900000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4700000286102295,
+            "layoutMs": 0.9500000476837158,
+            "totalMs": 1.4200000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 1.024999976158142,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.9399999380111694,
+            "totalMs": 1.3949999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.9800000190734863,
+            "totalMs": 1.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43999993801116943,
+            "layoutMs": 0.9350000619888306,
+            "totalMs": 1.375,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9299999475479126,
+            "totalMs": 1.3650000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.934999942779541,
+            "totalMs": 1.3849999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44499993324279785,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5,
+            "layoutMs": 0.9699999094009399,
+            "totalMs": 1.46999990940094,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9549999237060547,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.7299998998641968,
+            "layoutMs": 0.9700000286102295,
+            "totalMs": 1.6999999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 1.0099999904632568,
+            "totalMs": 1.459999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6399999856948853,
+            "layoutMs": 1.0149999856948853,
+            "totalMs": 1.6549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.9549999237060547,
+            "totalMs": 1.3849999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4200000762939453,
+            "layoutMs": 0.934999942779541,
+            "totalMs": 1.3550000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4249999523162842,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4299999475479126,
+            "layoutMs": 0.934999942779541,
+            "totalMs": 1.3649998903274536,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43999993801116943,
+            "layoutMs": 0.9450000524520874,
+            "totalMs": 1.3849999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.9300000667572021,
+            "totalMs": 1.350000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41499996185302734,
+            "layoutMs": 0.940000057220459,
+            "totalMs": 1.3550000190734863,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 1.1449999809265137,
+            "layoutMs": 1.0550000667572021,
+            "totalMs": 2.200000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6499999761581421,
+            "layoutMs": 0.9800000190734863,
+            "totalMs": 1.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5500000715255737,
+            "layoutMs": 0.9749999046325684,
+            "totalMs": 1.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48500001430511475,
+            "layoutMs": 0.9749999046325684,
+            "totalMs": 1.459999918937683,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.6599999666213989,
+            "layoutMs": 0.9750000238418579,
+            "totalMs": 1.6349999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 1,
+            "totalMs": 1.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4599999189376831,
+            "layoutMs": 0.9450000524520874,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4549999237060547,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46999990940093994,
+            "layoutMs": 0.9700000286102295,
+            "totalMs": 1.4399999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5200001001358032,
+            "layoutMs": 1.0749999284744263,
+            "totalMs": 1.5950000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.9750000238418579,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.934999942779541,
+            "totalMs": 1.3949999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4100000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5099999904632568,
+            "layoutMs": 0.9600000381469727,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 1.03000009059906,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4799998998641968,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4449999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4599999189376831,
+            "layoutMs": 0.9450000524520874,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9799998998641968,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.440000057220459,
+            "layoutMs": 0.9399999380111694,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.9449999332427979,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 1.0049999952316284,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4500000476837158,
+            "layoutMs": 0.9299999475479126,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.9399999380111694,
+            "totalMs": 1.3700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9950000047683716,
+            "totalMs": 1.4300000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.9499999284744263,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5950000286102295,
+            "layoutMs": 1.0199999809265137,
+            "totalMs": 1.6150000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44499993324279785,
+            "layoutMs": 0.9450000524520874,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4299999475479126,
+            "layoutMs": 0.9199999570846558,
+            "totalMs": 1.3499999046325684,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4099999666213989,
+            "layoutMs": 0.9449999332427979,
+            "totalMs": 1.3549998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4299999475479126,
+            "layoutMs": 0.9800000190734863,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 1.0200001001358032,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9449999332427979,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 0.9500000476837158,
+            "totalMs": 1.3700000047683716,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "before",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 1.2299998998641968,
+            "layoutMs": 1.0350000858306885,
+            "totalMs": 2.2649999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6399999856948853,
+            "layoutMs": 0.9699999094009399,
+            "totalMs": 1.6099998950958252,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5399999618530273,
+            "layoutMs": 0.9800000190734863,
+            "totalMs": 1.5199999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 0.9850000143051147,
+            "totalMs": 1.465000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 0.9600000381469727,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.5250000953674316,
+            "layoutMs": 0.9749999046325684,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44499993324279785,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.9649999141693115,
+            "totalMs": 1.4249999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4200000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4450000524520874,
+            "layoutMs": 0.9599999189376831,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.440000057220459,
+            "layoutMs": 0.9499999284744263,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 1.0600000619888306,
+            "totalMs": 1.5550000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 0.9850000143051147,
+            "totalMs": 1.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44499993324279785,
+            "layoutMs": 0.9800000190734863,
+            "totalMs": 1.4249999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43999993801116943,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4649999141693115,
+            "layoutMs": 1.03000009059906,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6349999904632568,
+            "layoutMs": 0.9500000476837158,
+            "totalMs": 1.5850000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9299999475479126,
+            "totalMs": 1.3650000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4599999189376831,
+            "layoutMs": 0.9450000524520874,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 0.9449999332427979,
+            "totalMs": 1.399999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.9199999570846558,
+            "totalMs": 1.350000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.9650000333786011,
+            "totalMs": 1.4300000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 0.9500000476837158,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4650000333786011,
+            "layoutMs": 0.9399999380111694,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43000006675720215,
+            "layoutMs": 0.9499999284744263,
+            "totalMs": 1.3799999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6200000047683716,
+            "layoutMs": 0.9500000476837158,
+            "totalMs": 1.5700000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.46000003814697266,
+            "layoutMs": 1.0499999523162842,
+            "totalMs": 1.5099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.6549999713897705,
+            "layoutMs": 1.024999976158142,
+            "totalMs": 1.6799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43999993801116943,
+            "layoutMs": 0.9300000667572021,
+            "totalMs": 1.3700000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9399999380111694,
+            "totalMs": 1.375,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41499996185302734,
+            "layoutMs": 0.9350000619888306,
+            "totalMs": 1.350000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43500006198883057,
+            "layoutMs": 0.9499999284744263,
+            "totalMs": 1.3849999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4249999523162842,
+            "layoutMs": 0.934999942779541,
+            "totalMs": 1.3599998950958252,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.48000001907348633,
+            "layoutMs": 0.9550000429153442,
+            "totalMs": 1.4350000619888306,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.43999993801116943,
+            "layoutMs": 0.9500000476837158,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ],
+    "Divider|after2": [
+      {
+        "rep": 0,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 0.7400000095367432,
+            "layoutMs": 1.215000033378601,
+            "totalMs": 1.9550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4750000238418579,
+            "layoutMs": 1.2049999237060547,
+            "totalMs": 1.6799999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3999999761581421,
+            "layoutMs": 1.2000000476837158,
+            "totalMs": 1.600000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3200000524520874,
+            "layoutMs": 1.184999942779541,
+            "totalMs": 1.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.35500001907348633,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.5299999713897705,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.3200000524520874,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.5149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2950000762939453,
+            "layoutMs": 1.184999942779541,
+            "totalMs": 1.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3049999475479126,
+            "layoutMs": 1.1950000524520874,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.215000033378601,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3349999189376831,
+            "layoutMs": 1.165000081062317,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.31499993801116943,
+            "layoutMs": 1.1750000715255737,
+            "totalMs": 1.4900000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28999996185302734,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4549999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2999999523162842,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4799998998641968,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.2599999904632568,
+            "totalMs": 1.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25500011444091797,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.41999995708465576,
+            "layoutMs": 1.215000033378601,
+            "totalMs": 1.6349999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.090000033378601,
+            "totalMs": 1.3450000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24000000953674316,
+            "layoutMs": 1.0699999332427979,
+            "totalMs": 1.309999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1100000143051147,
+            "totalMs": 1.3600000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.225000023841858,
+            "totalMs": 1.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1100000143051147,
+            "totalMs": 1.375,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24500000476837158,
+            "layoutMs": 1.100000023841858,
+            "totalMs": 1.3450000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.32499992847442627,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.5099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.4049999713897705,
+            "totalMs": 1.6649999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.190000057220459,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.24500000476837158,
+            "layoutMs": 1.2049999237060547,
+            "totalMs": 1.4499999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.2300000190734863,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.8200000524520874,
+            "totalMs": 2.0850000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.309999942779541,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4799998998641968,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 1,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 0.7950000762939453,
+            "layoutMs": 1.274999976158142,
+            "totalMs": 2.0700000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.45500004291534424,
+            "layoutMs": 1.184999942779541,
+            "totalMs": 1.6399999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.36000001430511475,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.5450000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44499993324279785,
+            "layoutMs": 1.2100000381469727,
+            "totalMs": 1.6549999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.30500006675720215,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4950000047683716,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.29499995708465576,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.309999942779541,
+            "layoutMs": 1.2200000286102295,
+            "totalMs": 1.5299999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.4600000381469727,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1700000762939453,
+            "totalMs": 1.4300000667572021,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2999999523162842,
+            "layoutMs": 1.215000033378601,
+            "totalMs": 1.5149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28999996185302734,
+            "layoutMs": 1.2850000858306885,
+            "totalMs": 1.5750000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.30500006675720215,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.1750000715255737,
+            "totalMs": 1.4550000429153442,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.2649999856948853,
+            "totalMs": 1.5399999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4449999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4399999380111694,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.49000000953674316,
+            "layoutMs": 1.3350000381469727,
+            "totalMs": 1.8250000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.15500009059906,
+            "totalMs": 1.4250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26999998092651367,
+            "layoutMs": 1.1950000524520874,
+            "totalMs": 1.465000033378601,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.434999942779541,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4049999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.1400001049041748,
+            "totalMs": 1.4200000762939453,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1449999809265137,
+            "totalMs": 1.3949999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.159999966621399,
+            "totalMs": 1.4199999570846558,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1750000715255737,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.4549999237060547,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4249999523162842,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1750000715255737,
+            "totalMs": 1.4250000715255737,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3999999761581421,
+            "layoutMs": 1.290000081062317,
+            "totalMs": 1.690000057220459,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4449999332427979,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.0299999713897705,
+            "layoutMs": 1.2949999570846558,
+            "totalMs": 2.3249999284744263,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2849999666213989,
+            "layoutMs": 1.15500009059906,
+            "totalMs": 1.440000057220459,
+            "profilerMs": 0
+          }
+        ]
+      },
+      {
+        "rep": 2,
+        "component": "Divider",
+        "scenario": "E",
+        "scenarioLabel": "Re-render 100 (toggle state prop)",
+        "leg": "after",
+        "profilingBuild": false,
+        "instancesPerWindow": 100,
+        "repeats": 1,
+        "mode": "update",
+        "overridden": false,
+        "overrideMechanism": null,
+        "toggleDescription": "appearance: undefined -> 'brand'",
+        "warmupSamples": [
+          {
+            "commitMs": 0.7899999618530273,
+            "layoutMs": 1.2300000190734863,
+            "totalMs": 2.0199999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4799998998641968,
+            "layoutMs": 1.1800000667572021,
+            "totalMs": 1.659999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3999999761581421,
+            "layoutMs": 1.2300000190734863,
+            "totalMs": 1.6299999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3200000524520874,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.5149999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3349999189376831,
+            "layoutMs": 1.2300000190734863,
+            "totalMs": 1.5649999380111694,
+            "profilerMs": 0
+          }
+        ],
+        "samples": [
+          {
+            "commitMs": 0.3500000238418579,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.524999976158142,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2849999666213989,
+            "layoutMs": 1.3600000143051147,
+            "totalMs": 1.6449999809265137,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.3049999475479126,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.4900000095367432,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28000009059906006,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2749999761581421,
+            "layoutMs": 1.1750000715255737,
+            "totalMs": 1.4500000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2900000810623169,
+            "layoutMs": 1.209999918937683,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.33000004291534424,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.5,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2849999666213989,
+            "layoutMs": 1.1850000619888306,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.27500009536743164,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.215000033378601,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2799999713897705,
+            "layoutMs": 1.190000057220459,
+            "totalMs": 1.4700000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2650001049041748,
+            "layoutMs": 1.1799999475479126,
+            "totalMs": 1.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 1.1699999570846558,
+            "layoutMs": 1.3350000381469727,
+            "totalMs": 2.5049999952316284,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.315000057220459,
+            "layoutMs": 1.1649999618530273,
+            "totalMs": 1.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.4149999618530273,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.165000081062317,
+            "totalMs": 1.415000081062317,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25,
+            "layoutMs": 1.1399999856948853,
+            "totalMs": 1.3899999856948853,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.28000009059906006,
+            "layoutMs": 1.1699999570846558,
+            "totalMs": 1.4500000476837158,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1549999713897705,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1450001001358032,
+            "totalMs": 1.4100000858306885,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.25,
+            "totalMs": 1.5099999904632568,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.5850000381469727,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.7799999713897705,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.1800000667572021,
+            "totalMs": 1.4450000524520874,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2549999952316284,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.4299999475479126,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.30500006675720215,
+            "layoutMs": 1.1749999523162842,
+            "totalMs": 1.4800000190734863,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.26499998569488525,
+            "layoutMs": 1.2100000381469727,
+            "totalMs": 1.475000023841858,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.44999992847442627,
+            "layoutMs": 1.1600000858306885,
+            "totalMs": 1.6100000143051147,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.4950000047683716,
+            "layoutMs": 1.225000023841858,
+            "totalMs": 1.7200000286102295,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.25999999046325684,
+            "layoutMs": 1.149999976158142,
+            "totalMs": 1.409999966621399,
+            "profilerMs": 0
+          },
+          {
+            "commitMs": 0.2950000762939453,
+            "layoutMs": 1.1949999332427979,
+            "totalMs": 1.4900000095367432,
+            "profilerMs": 0
+          }
+        ]
+      }
+    ]
+  }
+}

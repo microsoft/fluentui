@@ -581,3 +581,248 @@ is demoted — `[data-checked]` alternatives on Switch are still dead code by
 inspection, but removing them is hygiene, not performance. The open perf
 question is now entirely about transition/var() indirection in transitioned
 properties.
+
+---
+
+## Post-tightening re-measurement (2026-07-28, `metrics/perf-eval/post-tightening/`)
+
+Answers the user's question: _"once you have implemented those two changes, let's see what
+the perf difference is again and whether we actually need to make any changes beyond that."_
+
+**Neither change bought anything measurable. The scenario-E gap is exactly where it was.**
+
+### What was measured
+
+Scenario E only (toggle a state prop across 100 mounted instances), three legs, measured back
+to back in one machine-exclusive browser session:
+
+| Leg         | Bundle                 | What it is                                                                                                                                                                                |
+| ----------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BEFORE**  | retained `dist/before` | original Griffel bundle from the main evaluation                                                                                                                                          |
+| **AFTER-1** | retained `dist/after1` | migrated bundle as built 02:33 — **before** the named-group rollout and the transition tightening. Drift control: the exact artifact the main evaluation and the variant matrix measured. |
+| **AFTER-2** | fresh `dist/after2`    | migrated bundle built from HEAD `80d12b596f` — group markers in second position, `transition-property` tightened                                                                          |
+
+Components: **Switch** and **Button** (the two tightened sites) plus **Divider as a control** —
+Divider declares no transitions at all (`transition-property: all`, `transition-duration: 0s`,
+verified in-page on every leg), so it received the named-group rollout without the tightening
+and isolates the rollout's own cost.
+
+All three bundles are built from the **same harness source**; only the 9 leg packages differ.
+5 discarded warm-ups + 31 measured windows per cell, **3 repetitions** with the leg order
+reshuffled per component from seed `20260728`, so drift cannot align with one leg. Pooled
+n = 93 per cell.
+
+### Both changes verified present before timing
+
+- **Transition tightening.** Computed `transition-property` on the Switch indicator and the
+  Button root reads exactly the audited 6 longhands on AFTER-2 —
+  `background-color, border-top-color, border-right-color, border-bottom-color, border-left-color, color`
+  — against `background, border, color` (21 longhands per CSS Transitions L1) on AFTER-1 **and
+  on BEFORE**. `transition-duration` (0.2 s Switch / 0.1 s Button) and
+  `transition-timing-function` are unchanged, so the 6 kept longhands still animate; the Switch
+  thumb's `transition-property: transform` is untouched on all three legs, as the audit
+  intended. Declared longhands per instance: Switch **22 → 7**, Button **21 → 6**.
+- **Marker repositioning.** Root `classList` on AFTER-2 is
+  `["fui-Switch", "group/fui-switch", "fuicm-switch-root-292ad4"]` (and the same shape for
+  Button and Divider) — static `fui-*` class first, marker second. AFTER-1 carries no group
+  marker at all.
+
+### Equivalence — the tightening does not change what renders
+
+Every element of one instance's whole subtree was fingerprinted in **both** toggle states
+(40 computed properties + `getBoundingClientRect`), on all three legs.
+
+**Zero render mismatches** in all 9 leg-pairs × components × both states. The only computed
+differences between AFTER-2 and AFTER-1 are the 2 intended `transition-property` values per
+component on Switch and Button, and 0 on Divider. AFTER-1 vs BEFORE shows **0** transition
+differences, independently re-confirming the CORRECTION's finding that Griffel declared
+byte-identical transitions to the pre-tightening migration.
+
+### 1. Leg-by-leg medians — scenario E total (commit + forced style/layout)
+
+| Component | Leg     | Median (ms) |    p25 |    p75 |   IQR | IQR/median |
+| --------- | ------- | ----------: | -----: | -----: | ----: | ---------: |
+| Switch    | before  |       4.480 |  4.295 |  4.720 | 0.425 |      9.49% |
+| Switch    | after-1 |      11.670 | 11.465 | 11.905 | 0.440 |      3.77% |
+| Switch    | after-2 |  **11.895** | 11.645 | 12.170 | 0.525 |      4.41% |
+| Button    | before  |       3.410 |  3.295 |  3.590 | 0.295 |      8.65% |
+| Button    | after-1 |       8.325 |  8.035 |  8.725 | 0.690 |      8.29% |
+| Button    | after-2 |   **8.365** |  8.115 |  8.695 | 0.580 |      6.93% |
+| Divider   | before  |       1.250 |  1.230 |  1.285 | 0.055 |      4.40% |
+| Divider   | after-1 |       1.295 |  1.270 |  1.335 | 0.065 |      5.02% |
+| Divider   | after-2 |   **1.310** |  1.290 |  1.340 | 0.050 |      3.82% |
+
+Per-repetition medians, to show the ordering is drift and not signal:
+
+| Component | Leg     |  rep 1 |  rep 2 |  rep 3 |
+| --------- | ------- | -----: | -----: | -----: |
+| Switch    | before  |  4.520 |  4.320 |  4.495 |
+| Switch    | after-1 | 11.630 | 11.810 | 11.560 |
+| Switch    | after-2 | 11.895 | 11.935 | 11.830 |
+| Button    | before  |  3.410 |  3.405 |  3.410 |
+| Button    | after-1 |  8.295 |  8.345 |  8.345 |
+| Button    | after-2 |  8.375 |  8.480 |  8.335 |
+| Divider   | before  |  1.235 |  1.260 |  1.260 |
+| Divider   | after-1 |  1.285 |  1.295 |  1.300 |
+| Divider   | after-2 |  1.315 |  1.315 |  1.295 |
+
+### 2. Explicit deltas
+
+| Component           | **AFTER-2 vs AFTER-1**<br>_(what the two changes bought)_ | **AFTER-2 vs BEFORE**<br>_(remaining gap)_ | AFTER-1 vs BEFORE<br>_(reproduces the main eval)_ |
+| ------------------- | --------------------------------------------------------: | -----------------------------------------: | ------------------------------------------------: |
+| Switch              |                                    **+1.93%** (+0.225 ms) |                                **+165.5%** |                                           +160.5% |
+| Button              |                                    **+0.48%** (+0.040 ms) |                                **+145.3%** |                                           +144.1% |
+| Divider _(control)_ |                                    **+1.16%** (+0.015 ms) |                                      +4.8% |                                             +3.6% |
+
+Read the first column against two things. First the **control**: Divider, which has no
+transitions to tighten, moved **+1.16%** — so Switch's +1.93% and Button's +0.48% straddle it.
+Second the **within-leg spread**: Switch's +0.225 ms delta is half its own IQR (0.44–0.53 ms),
+and Button's +0.04 ms is a fifteenth of its IQR (0.58–0.69 ms). Nothing here is signal.
+
+The AFTER-1 vs BEFORE column reproduces the main evaluation (+157.3% Switch, +147.9% Button
+there) within the ±50-point Button stability band that report declared, on retained bundles —
+confirming the machine has not drifted enough to invalidate the comparison.
+
+### 3. Trace — style-recalculation attribution
+
+| Component | Leg     | Recalc (ms/iter) | Layout (ms/iter) | Elements recalculated |
+| --------- | ------- | ---------------: | ---------------: | --------------------: |
+| Switch    | before  |            3.218 |            1.361 |                11,000 |
+| Switch    | after-1 |           10.690 |            1.373 |                11,000 |
+| Switch    | after-2 |       **10.873** |            1.379 |            **12,000** |
+| Button    | before  |            2.744 |            0.382 |                 2,000 |
+| Button    | after-1 |            7.613 |            0.397 |                 2,000 |
+| Button    | after-2 |        **7.426** |            0.393 |                 2,000 |
+| Divider   | before  |            1.494 |            0.586 |                 7,000 |
+| Divider   | after-1 |            1.914 |            0.594 |                 7,000 |
+| Divider   | after-2 |        **1.941** |            0.587 |                 7,000 |
+
+Layout is a non-event again. Recalculation moves ±2% between AFTER-1 and AFTER-2 — down on
+Button, up on Switch and Divider — i.e. noise.
+
+**One real, non-noise finding: Switch's AFTER-2 leg recalculates 12,000 elements against
+AFTER-1's 11,000.** The named-group rollout made Switch write `data-checked` on the **root**
+(AFTER-1 wrote nothing on toggle — only the native `checked` on the `<input>` changed). That
+is precisely the `named-group` leg of the variant matrix, which predicted 12,000 vs 11,000 for
+exactly this reason. The prediction reproduced on the shipped code.
+
+### 4. Is it still transitions? Yes — and the longhand count is not what costs
+
+Scenario E re-run with `*, *::before, *::after { transition-property: none !important; }`
+injected after load (the same suppression stylesheet as `variants/before-check.mjs`),
+3 repetitions, same 31+5 protocol. Not shippable — it exists only to bracket the cost.
+
+| Component | Leg     | As shipped (ms) | Suppressed (ms) | Attributable to transitions |
+| --------- | ------- | --------------: | --------------: | --------------------------: |
+| Switch    | before  |           4.480 |           2.345 |          2.135 ms _(47.7%)_ |
+| Switch    | after-1 |          11.670 |           2.550 |          9.120 ms _(78.1%)_ |
+| Switch    | after-2 |          11.895 |           2.705 |      **9.190 ms** _(77.3%)_ |
+| Button    | before  |           3.410 |           1.255 |          2.155 ms _(63.2%)_ |
+| Button    | after-1 |           8.325 |           0.735 |          7.590 ms _(91.2%)_ |
+| Button    | after-2 |           8.365 |           0.730 |      **7.635 ms** _(91.3%)_ |
+| Divider   | before  |           1.250 |           1.410 |                   −0.160 ms |
+| Divider   | after-1 |           1.295 |           1.440 |                   −0.145 ms |
+| Divider   | after-2 |           1.310 |           1.460 |                   −0.150 ms |
+
+**This is the decisive result.** Cutting the declared longhand list by 71% (Switch 22 → 7,
+Button 21 → 6) changed the transition-attributable cost by **+0.070 ms on Switch (+0.8%)** and
+**+0.045 ms on Button (+0.6%)** — both upward, both inside noise. The cost of transition
+processing is **not proportional to the number of declared transition longhands.** The audit's
+premise was sound as hygiene and wrong as a performance hypothesis, and this is now measured
+rather than assumed.
+
+Two side observations from the same table:
+
+- **Divider's negative attribution is a validity check on the method.** Divider declares no
+  transitions, so suppression should be a no-op; instead it costs ~0.15 ms, because the
+  injected `*, *::before, *::after` rule is itself an extra universal selector in the cascade.
+  Every "attributable" figure above is therefore an **under**-estimate by roughly that much.
+- **With transitions out of the picture, the migration is not slower on the update path — it
+  is faster on Button.** Suppressed, AFTER-2 vs BEFORE is **+15.4%** on Switch and
+  **−41.8% on Button** (0.730 ms vs 1.255 ms). The entire Button scenario-E regression, and
+  ~92% of Switch's, is transition processing.
+
+### 5. Secondary — what the changes did buy
+
+| Metric                            |   AFTER-1 |   AFTER-2 |      Δ |
+| --------------------------------- | --------: | --------: | -----: |
+| Harness CSS bundle (bytes)        |    71,646 |    69,538 | −2.94% |
+| Harness JS bundle (bytes)         |   275,693 |   275,039 | −0.24% |
+| Total selector characters         |    22,903 |    20,649 | −9.84% |
+| Style rules / selectors           | 454 / 637 | 454 / 637 |      0 |
+| `[data-*]` / `:where()` selectors | 128 / 205 | 128 / 205 |      0 |
+
+Smaller text, identical selector structure, identical rendering. Real but not performance.
+
+### Recommendation — do we need to make any changes beyond these two?
+
+**No, not on this evidence — and specifically, do not attempt another fix by inference.**
+
+Three candidate levers have now been tested against the same scenario and all three failed:
+
+1. **Selector policy** (variant matrix, 6 legs): −0.2% to −3.8%, inside noise. Removing every
+   `[data-*]` alternative, every sibling combinator and 36% of selector text moved nothing.
+2. **Named groups** (this run): no gain, and a small real cost — Switch's root-anchored
+   `data-checked` widens invalidation from 11,000 to 12,000 elements, exactly as the variant
+   matrix predicted. Keep or revert the markers on API-design grounds; the perf case for them
+   is now measured at zero-to-slightly-negative.
+3. **Transition-property tightening** (this run): 71% fewer declared longhands, 0.6–0.8% change
+   in transition-attributable cost. Keep it — it is correct, it shrinks the stylesheet, and it
+   removes 15 longhands that never change — but book it as hygiene, not as a performance fix.
+
+That leaves **one** lever with a measured positive, and it is the one already identified:
+collapsing the `calc(20px * var(--base-scale))` / `--spacing` indirection inside transitioned
+values. The variant matrix measured `diag-literal-geometry` at **−9.1%** (11.605 → 10.550 ms)
+and `diag-literal-transform` at −1.0%, both equivalence-verified. That is roughly **1 ms of the
+~9 ms**. Spending it would move Switch scenario E from +165% to about +143% against Griffel —
+worth doing on its own terms, but it does not close the gap and should not be sold as doing so.
+
+**The remaining ~8 ms is still unexplained, and this experiment narrowed it by elimination
+rather than explaining it.** We now know the cost is not the declared longhand count, not the
+selector shape, not the attribute writes, and not layout. The next step is a **diagnostic
+experiment to identify the mechanism, not another code change** — anything else would be
+guessing. Concretely: both legs declare the same transitions with the same durations on the
+same elements, and one costs 4.3× the other; the open question is what Blink does differently
+per transitioned property between a Griffel-injected flat atomic rule and a layered
+CSS-Modules rule. Until that is answered, further edits to the converted CSS should be
+justified by correctness or size, not by predicted scenario-E gains.
+
+Two things worth doing regardless of the above, both flagged rather than assumed:
+
+- **Add an update-path scenario to the perf gate** (follow-up 3 from the original evaluation,
+  still unaddressed). Every regression in this whole evaluation is on the update path, and
+  every mount scenario would have passed a mount-only gate.
+- **Decide whether Switch's root `data-checked` write is wanted.** It is a new DOM write that
+  buys no measured performance and demonstrably widens invalidation by 1,000 elements per
+  100 instances. If it exists only to serve the group marker, it is paying a small cost for an
+  API affordance — a product decision, not a perf one.
+
+### Reproduction
+
+```sh
+cd .scratch/perf-eval/post-tightening
+node run.mjs --pass=equivalence           # validates the legs before any timing
+node run.mjs --pass=timing,trace --reps=3
+node run.mjs --pass=suppressed --reps=3
+node analyze.mjs                          # writes metrics/perf-eval/post-tightening/*.json
+```
+
+AFTER-2 is rebuilt with the harness's own method: `npx nx run-many -t build -p react-avatar,react-badge,react-button,react-divider,react-field,react-label,react-provider,react-switch,react-tooltip`
+followed by `cd harness && PERF_LEG=after node ../../../node_modules/vite/bin/vite.js build`.
+
+### Caveats
+
+- **AFTER-2 vs AFTER-1 spans 18 commits, not 2.** The whole named-groups rollout landed in
+  between: 9 `named group markers + lowercase idents/locals` refactors and 9
+  `marker repositioned after static class` fixes across the leg packages. The lowercase-ident
+  rename also shortened hashed class names (`fuicm-Switch-module__indicator--ivKK` →
+  `fuicm-switch-indicator-541abe`), which is where most of the −9.8% selector-character drop
+  comes from. Divider is the control that separates "rollout" from "tightening"; it cannot
+  separate "marker repositioning" from "ident rename", and nothing here needed it to.
+- **Single machine, single session, headless Chromium.** Only paired deltas are portable.
+- **Divider is a control for the tightening, not a second data point for it.** It has no
+  transitions; its +1.16% is the rollout's own cost plus drift.
+- **The suppression pass is diagnostic and not equivalence-verified** — suppressing transitions
+  changes what renders mid-animation by construction. Its numbers bracket cost; they are not a
+  shippable configuration.
+- **`transition-delay` was not varied.** All sites use the default 0s, verified in-page.
