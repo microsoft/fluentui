@@ -34,7 +34,7 @@
  *   6  isSelectableOrInteractive && interactive             → fui.components.l2 (subject is .fui-Text)
  *   7  isSelectableOrInteractive && interactiveMap[…]       → fui.components.l1 (.appearance + interactive)
  *   8  selected && selectedMap[appearance]                  → fui.components.l1 (.appearance + selected)
- *   9  focusedClassName                                     → fui.components.l1 (.focused/.selectableFocused)
+ *   9  focusedClassName                                     → fui.components.l1 (.focused/.selectable-focused)
  *  10  isSelectableOrInteractive && highContrastInteractive → fui.components.l1 (+ l2 fragment)
  *  11  selected && highContrastSelected                     → fui.components.l1 (+ l2 fragment)
  *  12  disabled && disabled                                 → fui.components.l1 (disabled)
@@ -43,7 +43,7 @@
  *
  * `floatingAction` slot:
  *   1 cardClassNames.floatingAction → static class (JS)
- *   2 useCardStyles.select          → fui.components.l1  .floatingAction
+ *   2 useCardStyles.select          → fui.components.l1  .floating-action
  *   3 consumer className            → unlayered
  *
  * `checkbox` slot:
@@ -234,7 +234,7 @@
     }
   }
 
-  .filledAlternative {
+  .filled-alternative {
     background-color: var(--colorNeutralBackground2);
     box-shadow: var(--shadow4);
 
@@ -308,7 +308,7 @@
     }
   }
 
-  .filledAlternative {
+  .filled-alternative {
     @variant interactive {
       @apply cursor-pointer;
 
@@ -424,7 +424,7 @@
     }
   }
 
-  .filledAlternative {
+  .filled-alternative {
     @variant selected {
       background-color: var(--colorNeutralBackground2Selected);
 
@@ -537,7 +537,7 @@
     }
   }
 
-  .selectableFocused {
+  .selectable-focused {
     @variant focus {
       outline-style: none;
     }
@@ -760,7 +760,7 @@
 
 @layer fui.components.l1 {
   /* from useCardStyles.select — floatingAction slot arg #2 */
-  .floatingAction {
+  .floating-action {
     @apply absolute top-4 end-4;
 
     z-index: var(--zIndexContent, 1);

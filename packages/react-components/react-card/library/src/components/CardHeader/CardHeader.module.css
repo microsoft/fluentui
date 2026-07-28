@@ -20,7 +20,7 @@
  *   2 useStyles[slot]                   → fui.components.l1  .root/.image/.header/…
  *                                         …EXCEPT the action slot's forced-colors
  *                                         Button/Link rules → fui.components.l2
- *   3 boxModelStyles[slot]              → fui.components.l1  .gridRoot… / .flexRoot…
+ *   3 boxModelStyles[slot]              → fui.components.l1  .grid-root… / .flex-root…
  *                                         (written AFTER the arg #2 blocks)
  *   4 state[slot].className             → unlayered (always wins)
  *
@@ -35,7 +35,7 @@
  * hook picks between, exactly as `useStylesGrid` / `useStylesFlex` did. Precedent for
  * boolean-gated module classes: react-text's `.nowrap` / `.truncate` / `.block`.
  *
- * Class names carry the map they come from (`gridRoot`, `flexHeader`, …) so a reviewer
+ * Class names carry the map they come from (`grid-root`, `flex-header`, …) so a reviewer
  * can diff them 1:1 against the Griffel slices. `useStylesFlex.image`, `.description` and
  * `.action` are EMPTY slices — they compile to no class at all, so this module declares
  * none and the hook looks up nothing for them.
@@ -114,28 +114,28 @@
    * from useStylesGrid — every slot's arg #3 when the `description` slot is present.
    * Three columns: image | header + description | action.
    */
-  .gridRoot {
+  .grid-root {
     @apply grid;
 
     grid-auto-columns: min-content 1fr min-content;
   }
 
-  .gridImage {
+  .grid-image {
     grid-column-start: 1;
     grid-row-start: span 2;
   }
 
-  .gridHeader {
+  .grid-header {
     grid-column-start: 2;
     grid-row-start: 1;
   }
 
-  .gridDescription {
+  .grid-description {
     grid-column-start: 2;
     grid-row-start: 2;
   }
 
-  .gridAction {
+  .grid-action {
     grid-column-start: 3;
     grid-row-start: span 2;
   }
@@ -147,11 +147,11 @@
    * `image`, `description` and `action` are empty slices in the Griffel source and are
    * therefore absent here.
    */
-  .flexRoot {
+  .flex-root {
     @apply flex;
   }
 
-  .flexHeader {
+  .flex-header {
     @apply grow;
   }
 }

@@ -49,7 +49,7 @@ export const cardCSSVars = {
  */
 const appearanceClassNames: Record<CardState['appearance'], string> = {
   filled: styles.filled,
-  'filled-alternative': styles.filledAlternative,
+  'filled-alternative': styles['filled-alternative'],
   outline: styles.outline,
   subtle: styles.subtle,
 };
@@ -100,7 +100,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   let focusedClassName = '';
   if (!state.disabled) {
     if (state.selectable) {
-      focusedClassName = state.selectFocused ? styles.selectableFocused : '';
+      focusedClassName = state.selectFocused ? styles['selectable-focused'] : '';
     } else {
       focusedClassName = styles.focused;
     }
@@ -114,7 +114,15 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   root['data-selected'] = state.selected || undefined;
   root['data-disabled'] = state.disabled || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Card's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. Card is the best zero-cost demonstration of the capability: its full state
+  // (`data-selected`, `data-disabled`, `data-interactive`, `data-orientation`, `data-size`)
+  // is already stamped on this very element, so a descendant can read all of it today as
+  // `@variant group-selected/fui-card { … }` with no mirroring (DECISIONS.md D15).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Card.module.css and by
   // block order within it, not by the order of these arguments — see that file's header
   // for the mapping back to the 13 mergeClasses() arguments this replaces, including why
@@ -125,6 +133,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   // deliberately: DECISIONS.md D14 defers the pure-builder rewrite to a single Phase 3
   // sweep.
   state.root.className = clsx(
+    'group/fui-card',
     cardClassNames.root,
     styles.root,
     appearanceClassNames[state.appearance],
@@ -135,7 +144,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   if (state.floatingAction) {
     state.floatingAction.className = clsx(
       cardClassNames.floatingAction,
-      styles.floatingAction,
+      styles['floating-action'],
       state.floatingAction.className,
     );
   }

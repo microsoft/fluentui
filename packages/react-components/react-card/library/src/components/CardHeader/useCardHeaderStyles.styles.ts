@@ -48,16 +48,16 @@ export const cardHeaderCSSVars = {
  */
 const boxModelClassNames: Record<'grid' | 'flex', Record<keyof CardHeaderSlots, string | undefined>> = {
   grid: {
-    root: styles.gridRoot,
-    image: styles.gridImage,
-    header: styles.gridHeader,
-    description: styles.gridDescription,
-    action: styles.gridAction,
+    root: styles['grid-root'],
+    image: styles['grid-image'],
+    header: styles['grid-header'],
+    description: styles['grid-description'],
+    action: styles['grid-action'],
   },
   flex: {
-    root: styles.flexRoot,
+    root: styles['flex-root'],
     image: undefined,
-    header: styles.flexHeader,
+    header: styles['flex-header'],
     description: undefined,
     action: undefined,
   },
@@ -79,7 +79,16 @@ export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeader
 
   // The state mutations below are preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
-  state.root.className = getSlotStyles('root');
+  //
+  // The named group marker is prepended to the ROOT slot only, so it lands FIRST in the
+  // emitted class string exactly as it does in every other converted hook. It is written
+  // outside `getSlotStyles` rather than as a branch inside it because only this one slot
+  // gets a marker: a group cannot style itself, so a marker on `image` / `header` /
+  // `description` / `action` would serve nothing but those slots' own descendants. The
+  // marker is a literal, unhashed, GLOBAL token — the only handle by which another module
+  // can style an element from this header's state, since `styles.*` is hashed and
+  // unaddressable from outside this file (DECISIONS.md D15).
+  state.root.className = clsx('group/fui-card-header', getSlotStyles('root'));
 
   if (state.image) {
     state.image.className = getSlotStyles('image');
