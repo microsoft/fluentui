@@ -3,7 +3,7 @@
 exports[`TeachingPopoverCarouselFooterButton renders a default state 1`] = `
 <div>
   <button
-    class="fui-TeachingPopoverCarouselFooterButton group/fui-button fui-Button fuicm-root fuicm-primary fuicm-rounded"
+    class="fui-TeachingPopoverCarouselFooterButton fui-Button group/fui-button fuicm-root fuicm-primary fuicm-rounded"
     data-size="medium"
   >
     Default TeachingPopoverCarouselFooterButton
