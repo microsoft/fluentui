@@ -73,14 +73,16 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   root['data-orientation'] = state.orientation;
   root['data-size'] = size;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this Field's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. Field is the natural consumer of this capability: it wraps an ARBITRARY
-  // control from another package, and that control's own module can now read Field's
-  // `data-orientation` / `data-size` as `@variant group-size-small/fui-field { … }` rather
-  // than needing the value threaded through props (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Field's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Field is the natural consumer of this
+  // capability: it wraps an ARBITRARY control from another package, and that control's own
+  // module can now read Field's `data-orientation` / `data-size` as
+  // `@variant group-size-small/fui-field { … }` rather than needing the value threaded
+  // through props (DECISIONS.md D15).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Field.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
@@ -88,8 +90,8 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
   state.root.className = clsx(
-    'group/fui-field',
     fieldClassNames.root,
+    'group/fui-field',
     styles.root,
     horizontal && !state.label && styles['horizontal-no-label'],
     state.root.className,
