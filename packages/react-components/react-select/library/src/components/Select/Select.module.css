@@ -1,0 +1,571 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useSelectStyles_unstable,
+ * not source declaration order. Select has NO `makeResetStyles` slice, so `fui.base`
+ * stays empty for this component and everything lands in `fui.components.l1`.
+ *
+ * `root` slot (a <span> wrapper — it exists only to host the focus underline):
+ *
+ *   #  mergeClasses argument                bucket  → target
+ *   ---------------------------------------------------------------------------------
+ *   1  selectClassNames.root                —       → static class (JS)
+ *   2  useRootStyles.base                   d/w/m   → .root
+ *   3  consumer className                   —       → unlayered (always wins)
+ *
+ * `select` slot (the native <select>):
+ *
+ *   #  mergeClasses argument                                    bucket  → target
+ *   ---------------------------------------------------------------------------------
+ *   1  selectClassNames.select                                  —       → static class
+ *   2  useSelectStyles.base                                     d + f   → .select
+ *   3  useSelectStyles[size]                                    d       → data-size
+ *   4  useSelectStyles[appearance]                              d       → .outline / …
+ *   5  outlineInteractive  (!disabled && outline)               h + a   → .outline, 2nd
+ *   6  invalid             (!disabled && invalid && !underline) d       → data-invalid
+ *   7  invalidUnderline    (!disabled && invalid && underline)  d       → data-invalid
+ *   8  disabled            (disabled)                           d + m   → data-disabled
+ *   9  disabledUnderline   (disabled && underline)              d       → data-disabled
+ *  10  consumer className                                       —       → unlayered
+ *
+ * `icon` slot (a <span> holding the chevron glyph):
+ *
+ *   1  selectClassNames.icon                                    —       → static class
+ *   2  useIconStyles.icon                                       d       → .icon
+ *   3  useIconStyles.disabled  (disabled)                       d + m   → data-disabled
+ *   4  useIconStyles[size]                                      d       → data-size
+ *   5  consumer className                                       —       → unlayered
+ *
+ * ── The ORDER RULE for the `select` slot is Griffel's BUCKET order ───────────────────
+ * mergeClasses argument order only decides conflicts between atomics that share a
+ * property KEY (it deletes the earlier class). Conflicts between DIFFERENT keys — the
+ * same property reached through a different selector — are resolved by STYLE BUCKET
+ * (`d` default < `f` focus < `h` hover < `a` active < `m` media;
+ * node_modules/@griffel/core/renderer/getStyleSheetForBucket.cjs.js), which no argument
+ * order can express. Verified against the compiled atomics in
+ * lib-commonjs/components/Select/useSelectStyles.styles.js, whose `d`/`f`/`h`/`a`/`m`
+ * arrays are the emission order.
+ *
+ * INVERSION 1 (bucket order): #5 `outlineInteractive` (buckets `h`/`a`) is an EARLIER
+ * mergeClasses argument than #6–#9, yet Griffel emits it LATER. Its two blocks are
+ * therefore written after the `invalid`/`disabled` sections below. (#8/#9 are gated on
+ * `disabled` and #5 on `!disabled`, so those two never coexist — but #6 does coexist
+ * with #5, and that pairing is INVERSION 2.)
+ *
+ * INVERSION 2 (specificity): #6 `invalid` is authored with TWO selector branches,
+ * `':not(:focus-within),:hover:not(:focus-within)'`. The second is a strict subset of the
+ * first and adds nothing to MATCHING — it is a SPECIFICITY HACK. Griffel's atomics are
+ * not `:where()`-wrapped, so `.fs4k3qj:hover:not(:focus-within)` scores (0,3,0) and beats
+ * the hover-bucket `.fvcxoqz:hover` at (0,2,0), while the plain
+ * `.fs4k3qj:not(:focus-within)` scores only (0,2,0) and correctly LOSES to
+ * `.fvs00aa:active` at (0,2,0) on bucket order. `:where()` flattens all of them, so the
+ * slice is SPLIT: the plain branch sits BEFORE the interactive section, the hover branch
+ * AFTER it. Collapsing them into one block hands the hovered-invalid-outline case to the
+ * interactive border and the pressed-invalid case to the red one — both wrong.
+ * Same trap as react-input; documented on the `not-focus-within` catalog entry.
+ *
+ * ── Uniform selector shape (why every stateful `select`/`icon` rule is a descendant) ──
+ * All three data attributes live on the ROOT (the headless preview's convention —
+ * reports/headless-precedent.md), so args #3/#5–#9 reach the inner slots as
+ * `.root:where(…) .select` at (0,2,0) while args #2/#4 are plain `.select` / `.outline`
+ * at (0,1,0). That split is deliberate and load-bearing:
+ *
+ *   - Args #5–#9 all have to beat #2/#4, which the higher specificity guarantees.
+ *   - #5 vs #6 must be decided by FILE ORDER (inversion 2), which only works because
+ *     both are (0,2,0). Moving `data-invalid` onto the `<select>` itself would make
+ *     #6 (0,1,0)-flat against #5 — but it would also let the shared `invalid` variant's
+ *     `:invalid` term match a `required` <select> whose selected option has an empty
+ *     value, painting a red border Griffel never painted (`aria-invalid` was the only
+ *     condition). The root is a <span>: `:invalid` can never match it.
+ *   - #3 (size) conflicts with nothing at all — height/padding-inline/typography are
+ *     touched by no other slice — so its specificity carries no winner.
+ *
+ * ── RTL ──────────────────────────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` pair in the compiled output is a pure PROPERTY flip carrying the
+ * SAME value (`left/right: 0`, the paddings, the icon's `right`, the four border colors),
+ * so logical properties are exact and no `@variant rtl` value-flip is needed. The root's
+ * `linear-gradient(0deg, …)` and `transform: scaleX(0)` compile to single classes — no
+ * RTL twin — because rtl-css-js leaves a vertical gradient and scaleX untouched.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * from useRootStyles.base — root slot arg #2.
+   *
+   * The whole focus affordance is this `::after` bar: a gradient-filled block, as tall as
+   * the field's corner radius, that scales in on focus. It is NOT a react-tabster focus
+   * indicator — this package imports no tabster helper and the compiled atomics contain
+   * no `[data-fui-focus-visible]` selector, so the shared `fui-focus-ring` /
+   * `fui-focus-outline` utilities (D6) do not apply here.
+   */
+  .root {
+    @apply relative box-border flex flex-nowrap items-center;
+
+    font-family: var(--fontFamilyBase);
+
+    &::after {
+      @apply absolute box-border;
+
+      content: '';
+
+      background-image: linear-gradient(
+        0deg,
+        var(--colorCompoundBrandStroke) 0%,
+        var(--colorCompoundBrandStroke) 50%,
+        transparent 50%,
+        transparent 100%
+      );
+
+      /* `border-radius: 0 0 <r> <r>` expanded to the four logical corners. The compiled
+         atomic has no RTL twin (rtl-css-js's 4-value swap is a no-op on a value that is
+         already symmetric), so the logical corners are exact. */
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+      border-end-end-radius: var(--borderRadiusMedium);
+      border-end-start-radius: var(--borderRadiusMedium);
+
+      /* the corner radius doubles as the bar height */
+      height: var(--borderRadiusMedium);
+
+      bottom: 0;
+
+      /* compiled: ltr `left:0`, rtl `right:0` — equal values, so `inset-inline` is exact */
+      inset-inline: 0;
+
+      /* Animation for focus OUT. `transition-delay: var(--curveAccelerateMid)` is a curve
+         token used as a delay — reproduced from the compiled output verbatim. */
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--durationUltraFast);
+      transition-delay: var(--curveAccelerateMid);
+
+      @media screen and (prefers-reduced-motion: reduce) {
+        transition-duration: 0.01ms;
+        transition-delay: 0.01ms;
+      }
+    }
+
+    @variant focus-within {
+      /* Animation for focus IN */
+      &::after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--durationNormal);
+        transition-delay: var(--curveDecelerateMid);
+
+        /* Repeated rather than inherited from the block above: Griffel's `m` bucket sorts
+           last, so BOTH reduced-motion atomics outrank the focus-in durations. In file
+           order that only holds if this media block comes after them. */
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition-duration: 0.01ms;
+          transition-delay: 0.01ms;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSelectStyles.base — select slot arg #2.
+   *
+   * `border: 1px solid transparent` is expanded to longhands because args #4/#6–#9 each
+   * override a subset of the colors, and because the appearance slices replace the whole
+   * shorthand (Griffel deletes the base class outright — same property key).
+   */
+  .select {
+    @apply box-border grow max-w-full cursor-pointer;
+
+    /* compiled: `-webkit-appearance:none;-moz-appearance:none;appearance:none`. The
+       `-moz-` alias is dropped — Firefox has supported the unprefixed property since 80
+       (2020), well below this repo's baseline; `-webkit-` is kept because Safari needed
+       it for <select> until 15.4. */
+    -webkit-appearance: none;
+    appearance: none;
+
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+
+    border-radius: var(--borderRadiusMedium);
+    box-shadow: none;
+    color: var(--colorNeutralForeground1);
+
+    /* `padding-bottom: 0` + `padding-top: 0`; the size slices own the inline axis */
+    padding-block: 0;
+
+    /* bucket `f` — hides the UA focus ring, the root's `::after` bar replaces it */
+    @variant focus {
+      outline-width: 2px;
+      outline-style: solid;
+      outline-color: transparent;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSelectStyles.small / .medium / .large — select slot arg #3, plus
+   * typographyStyles.caption1 / .body1 / .body2. `size` is a scale prop, so it rides
+   * `data-size` on the root rather than a module class (D3).
+   *
+   * Since <select> cannot have children or a custom inner layout, the inline padding is
+   * computed rather than composed:
+   *   start = field padding + content inner padding
+   *   end   = field padding + icon width + content-icon spacing + content inner padding
+   * `paddingLeft`/`paddingRight` are a pure `[ltr, rtl]` property flip in the compiled
+   * atomics (`uwmqm3: ["f1xile11","fqznh8f"]`) → logical inline properties.
+   *
+   * The icon-width term is the only pixel literal in these expressions; it is scaled by
+   * `--base-scale` (D4) so it tracks the icon's own `w-16`/`w-20`/`w-24` exactly when the
+   * root font size is not 16px. At the default root the computed value is unchanged.
+   */
+  .root {
+    @variant size-small {
+      & .select {
+        @apply h-24;
+
+        padding-inline-start: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+        padding-inline-end: calc(
+          var(--spacingHorizontalSNudge) + 16px * var(--base-scale) + var(--spacingHorizontalXXS) +
+            var(--spacingHorizontalXXS)
+        );
+
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase200);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase200);
+      }
+    }
+
+    @variant size-medium {
+      & .select {
+        @apply h-32;
+
+        padding-inline-start: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
+        padding-inline-end: calc(
+          var(--spacingHorizontalMNudge) + 20px * var(--base-scale) + var(--spacingHorizontalXXS) +
+            var(--spacingHorizontalXXS)
+        );
+
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase300);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase300);
+      }
+    }
+
+    @variant size-large {
+      & .select {
+        @apply h-40;
+
+        padding-inline-start: calc(var(--spacingHorizontalM) + var(--spacingHorizontalSNudge));
+        padding-inline-end: calc(
+          var(--spacingHorizontalM) + 24px * var(--base-scale) + var(--spacingHorizontalSNudge) +
+            var(--spacingHorizontalSNudge)
+        );
+
+        font-family: var(--fontFamilyBase);
+        font-size: var(--fontSizeBase400);
+        font-weight: var(--fontWeightRegular);
+        line-height: var(--lineHeightBase400);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* Appearance look classes — select slot arg #4, all bucket `d`. */
+
+  /*
+   * from useSelectStyles.outline. Griffel replaces the base `border` shorthand outright
+   * here (same property key), so all twelve longhands are restated.
+   */
+  .outline {
+    background-color: var(--colorNeutralBackground1);
+
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: var(--colorNeutralStroke1);
+    border-right-color: var(--colorNeutralStroke1);
+    border-left-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  /*
+   * from useSelectStyles.underline. The base's transparent border is NOT removed — only
+   * the bottom edge is redrawn — so the top/inline edges stay `1px solid transparent`.
+   */
+  .underline {
+    background-color: var(--colorTransparentBackground);
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+
+    /* corners look strange if rounded */
+    border-radius: 0;
+
+    /* The transparent select background means the option background must be set so the
+       text stays visible in dark themes. */
+    & option {
+      background-color: var(--colorNeutralBackground1);
+    }
+  }
+
+  /* from useSelectStyles['filled-lighter'] */
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  /* from useSelectStyles['filled-darker'] */
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSelectStyles.invalid — select slot arg #6, FIRST of its two selector branches
+   * (`:not(:focus-within)`), and useSelectStyles.invalidUnderline — arg #7. Both are
+   * bucket `d`, so they are written BEFORE the interactive section further down; see
+   * INVERSION 2 in the header for why this branch must lose to `:active`.
+   *
+   * The `!disabled &&` half of each guard becomes `@variant enabled` on the root, which
+   * carries `data-disabled` whenever the inner <select> is disabled.
+   *
+   * `appearance !== 'underline'` is spelled `:where(:not(.underline))` rather than a bare
+   * `:not(...)`: the `:where()` keeps the rule at (0,2,0), level with the interactive
+   * rules it must trade file-order places with. Without the gate an invalid underline
+   * Select would show red top/inline borders that Griffel left transparent.
+   */
+  .root {
+    @variant enabled {
+      @variant invalid {
+        & .select:where(:not(.underline)) {
+          @variant not-focus-within {
+            border-top-color: var(--colorPaletteRedBorder2);
+            border-right-color: var(--colorPaletteRedBorder2);
+            border-bottom-color: var(--colorPaletteRedBorder2);
+            border-left-color: var(--colorPaletteRedBorder2);
+          }
+        }
+
+        /*
+         * arg #7. No hover restatement is needed for this one: `outlineInteractive` is
+         * gated on `appearance === 'outline'`, so no hover- or active-bucket rule ever
+         * applies to an underline Select and the plain branch has nothing to outrank.
+         */
+        & .underline {
+          @variant not-focus-within {
+            border-bottom-color: var(--colorPaletteRedBorder2);
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSelectStyles.disabled — select slot arg #8 — and .disabledUnderline, arg #9.
+   * Both bucket `d`; #9 reuses #8's property keys outright, so file order reproduces
+   * mergeClasses' later-argument-wins in one step.
+   *
+   * The `@media (forced-colors: active)` half of #8 is bucket `m` and therefore lives in
+   * its own block AFTER #9 — see the last section of this file.
+   *
+   * These blocks sit before the interactive section only for readability: args #5/#6 are
+   * gated on `!disabled` and these on `disabled`, so the two can never coexist.
+   */
+  .root {
+    @variant disabled {
+      & .select {
+        background-color: var(--colorTransparentBackground);
+
+        /* shorthands.borderColor(x) expanded to the four longhands the compiler emits;
+           the `[ltr, rtl]` pair only swaps left↔right and carries the same value. */
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+
+        color: var(--colorNeutralForegroundDisabled);
+        cursor: not-allowed;
+      }
+
+      /* from useSelectStyles.disabledUnderline — the 3-argument
+         shorthands.borderColor(top, inline, bottom) form. */
+      & .underline {
+        border-top-color: var(--colorTransparentStrokeDisabled);
+        border-right-color: var(--colorTransparentStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorTransparentStrokeDisabled);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSelectStyles.outlineInteractive — select slot arg #5, Griffel buckets `h` and
+   * `a`. An EARLIER mergeClasses argument than everything above, but emitted LATER
+   * (INVERSION 1), so it is written here. Blocks are in bucket order `h` then `a`.
+   */
+  .root {
+    @variant enabled {
+      & .outline {
+        @variant hover {
+          border-top-color: var(--colorNeutralStroke1Hover);
+          border-right-color: var(--colorNeutralStroke1Hover);
+          border-left-color: var(--colorNeutralStroke1Hover);
+          border-bottom-color: var(--colorNeutralStrokeAccessible);
+        }
+
+        @variant active {
+          border-top-color: var(--colorNeutralStroke1Pressed);
+          border-right-color: var(--colorNeutralStroke1Pressed);
+          border-left-color: var(--colorNeutralStroke1Pressed);
+          border-bottom-color: var(--colorNeutralStrokeAccessible);
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── useSelectStyles.invalid, SECOND branch — arg #6, split from the block above ──────
+   * `:hover:not(:focus-within)` restated after the interactive section. In raw Griffel
+   * this branch carries (0,3,0) and outranks the hover bucket; `:where()` erases that, so
+   * file position has to reproduce the winner instead. See INVERSION 2 in the header.
+   *
+   * Only `.outline` actually needs it (the filled appearances have no interactive slice),
+   * but the selector is kept identical to the first branch so the two read as one slice.
+   */
+  .root {
+    @variant enabled {
+      @variant invalid {
+        & .select:where(:not(.underline)) {
+          @variant hover {
+            @variant not-focus-within {
+              border-top-color: var(--colorPaletteRedBorder2);
+              border-right-color: var(--colorPaletteRedBorder2);
+              border-bottom-color: var(--colorPaletteRedBorder2);
+              border-left-color: var(--colorPaletteRedBorder2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useSelectStyles.disabled, `@media (forced-colors: active)` half — bucket `m`,
+   * which Griffel sorts LAST. It therefore has to come after arg #9's plain border
+   * colors (a media query adds no specificity), otherwise a disabled underline Select
+   * would keep its token borders in high contrast.
+   */
+  .root {
+    @variant disabled {
+      @variant forced-colors {
+        & .select {
+          border-top-color: GrayText;
+          border-right-color: GrayText;
+          border-bottom-color: GrayText;
+          border-left-color: GrayText;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useIconStyles.icon — icon slot arg #2 */
+  .icon {
+    @apply absolute block box-border pointer-events-none;
+
+    color: var(--colorNeutralStrokeAccessible);
+
+    /* the SVG must have display: block for accurate positioning, otherwise an extra
+       inline space is inserted after the svg element */
+    & svg {
+      @apply block;
+    }
+  }
+
+  .root {
+    /* from useIconStyles.disabled — arg #3 */
+    @variant disabled {
+      & .icon {
+        color: var(--colorNeutralForegroundDisabled);
+
+        @variant forced-colors {
+          color: GrayText;
+        }
+      }
+    }
+
+    /*
+     * from useIconStyles.small / .medium / .large — arg #4. A LATER argument than #3, but
+     * the two are disjoint (`color` vs the glyph box and its offset), so the inversion
+     * carries no winner. `right` is a `[ltr, rtl]` property flip with equal values
+     * (`j35jbq: ["f13lnp83","f1i5nn0v"]`) → `inset-inline-end`.
+     */
+    @variant size-small {
+      & .icon {
+        @apply h-16 w-16;
+
+        font-size: calc(16px * var(--base-scale));
+        inset-inline-end: var(--spacingHorizontalSNudge);
+      }
+    }
+
+    @variant size-medium {
+      & .icon {
+        @apply h-20 w-20;
+
+        font-size: calc(20px * var(--base-scale));
+        inset-inline-end: var(--spacingHorizontalMNudge);
+      }
+    }
+
+    @variant size-large {
+      & .icon {
+        @apply h-24 w-24;
+
+        font-size: calc(24px * var(--base-scale));
+        inset-inline-end: var(--spacingHorizontalM);
+      }
+    }
+  }
+}

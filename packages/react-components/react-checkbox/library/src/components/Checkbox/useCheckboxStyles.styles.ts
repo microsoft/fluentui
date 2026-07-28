@@ -1,10 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import type { CheckboxSlots, CheckboxState } from './Checkbox.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { CheckboxSlots, CheckboxState } from './Checkbox.types';
+
+import styles from './Checkbox.module.css';
 
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',
@@ -13,175 +26,41 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   indicator: 'fui-Checkbox__indicator',
 };
 
-// CSS variables used internally in Checkbox's styles
-const vars = {
-  indicatorColor: '--fui-Checkbox__indicator--color',
-  indicatorBorderColor: '--fui-Checkbox__indicator--borderColor',
-  indicatorBackgroundColor: '--fui-Checkbox__indicator--backgroundColor',
-} as const;
-
-// The indicator size is used by the indicator and label styles
-const indicatorSizeMedium = '16px';
-const indicatorSizeLarge = '20px';
-
-const useRootBaseClassName = makeResetStyles({
-  position: 'relative',
-  display: 'inline-flex',
-  cursor: 'pointer',
-  maxWidth: 'fit-content',
-  verticalAlign: 'middle',
-  color: tokens.colorNeutralForeground3,
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
-});
-
-const useRootStyles = makeStyles({
-  unchecked: {
-    ':hover': {
-      color: tokens.colorNeutralForeground2,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
-    },
-
-    ':active': {
-      color: tokens.colorNeutralForeground1,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-  },
-
-  checked: {
-    color: tokens.colorNeutralForeground1,
-    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
-
-    ':hover': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
-    },
-
-    ':active': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
-    },
-  },
-
-  mixed: {
-    color: tokens.colorNeutralForeground1,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
-    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
-
-    ':hover': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
-    },
-
-    ':active': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
-    },
-  },
-
-  disabled: {
-    cursor: 'default',
-
-    color: tokens.colorNeutralForegroundDisabled,
-    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
-
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-      [vars.indicatorColor]: 'GrayText',
-    },
-  },
-});
-
-const useInputBaseClassName = makeResetStyles({
-  boxSizing: 'border-box',
-  cursor: 'inherit',
-  height: '100%',
-  margin: 0,
-  opacity: 0,
-  position: 'absolute',
-  top: 0,
-  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
-  // This is done so that clicking on that "empty space" still toggles the checkbox.
-  width: `calc(${indicatorSizeMedium} + 2 * ${tokens.spacingHorizontalS})`,
-});
-
-const useInputStyles = makeStyles({
-  before: {
-    right: 0,
-  },
-  after: {
-    left: 0,
-  },
-
-  large: {
-    width: `calc(${indicatorSizeLarge} + 2 * ${tokens.spacingHorizontalS})`,
-  },
-});
-
-const useIndicatorBaseClassName = makeResetStyles({
-  alignSelf: 'flex-start',
-  boxSizing: 'border-box',
-  flexShrink: 0,
-
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  overflow: 'hidden',
-
-  color: `var(${vars.indicatorColor})`,
-  backgroundColor: `var(${vars.indicatorBackgroundColor})`,
-  borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
-  borderStyle: 'solid',
-  borderWidth: tokens.strokeWidthThin,
-  borderRadius: tokens.borderRadiusSmall,
-  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
-  fill: 'currentColor',
-  pointerEvents: 'none',
-
-  fontSize: '12px',
-  height: indicatorSizeMedium,
-  width: indicatorSizeMedium,
-});
-
-const useIndicatorStyles = makeStyles({
-  large: {
-    fontSize: '16px',
-    height: indicatorSizeLarge,
-    width: indicatorSizeLarge,
-  },
-
-  circular: { borderRadius: tokens.borderRadiusCircular },
-});
-
-// Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
-const useLabelStyles = makeStyles({
-  base: {
-    alignSelf: 'center',
-    color: 'inherit',
-    cursor: 'inherit',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-  },
-
-  before: {
-    paddingRight: tokens.spacingHorizontalXS,
-  },
-  after: {
-    paddingLeft: tokens.spacingHorizontalXS,
-  },
-
-  // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
-  // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
-  medium: {
-    marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
-  },
-  large: {
-    marginTop: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
-  },
-});
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Every name comes from
+ * the existing catalog vocabulary (reports/headless-precedent.md for `data-size` /
+ * `data-label-position` / `data-disabled`; `data-checked` and `data-indeterminate` are the
+ * catalog's generic state pair).
+ *
+ * All of them live on the ROOT even though they select styles for the input, indicator and
+ * label slots: those slots are the root's children, so one stamp drives every descendant
+ * rule (same approach as react-button's `data-size` → `.root … & .icon`).
+ *
+ * `checked` is TRI-state (`true | false | 'mixed'`), so it needs two presence attributes
+ * rather than one: `data-checked` for the boolean-true branch and `data-indeterminate` for
+ * `'mixed'`. Presence flags are written `flag || undefined` — React omits an attribute
+ * whose value is `undefined`, whereas `false` would render `data-checked="false"` and still
+ * match `[data-checked]`. The unchecked branch is therefore the `not-checked` AND
+ * `not-indeterminate` complement in the module, not a third attribute.
+ *
+ * Both flags reflect the CHECKED state alone and are stamped even while disabled; the
+ * module gates the checked/mixed/unchecked rule blocks on `enabled` instead, which is what
+ * reproduces the Griffel hook's `disabled ? … : mixed ? … : checked ? … : unchecked`
+ * ternary chain (see Checkbox.module.css's header for why that gate is load-bearing).
+ *
+ * `data-label-position` is stamped UNCONDITIONALLY here, unlike react-switch's. Checkbox's
+ * `inputStyles[labelPosition]` slice is applied with no `label &&` gate, so the attribute
+ * has to be present even on a label-less Checkbox; the label-slot rules that also read it
+ * are inert without a `.label` element to match.
+ */
+type CheckboxRootDataAttributes = {
+  'data-size': CheckboxState['size'];
+  'data-label-position': CheckboxState['labelPosition'];
+  'data-checked'?: true;
+  'data-indeterminate'?: true;
+  'data-disabled'?: true;
+};
 
 /**
  * Apply styling to the Checkbox slots based on the state
@@ -189,56 +68,35 @@ const useLabelStyles = makeStyles({
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
   const { checked, disabled, labelPosition, shape, size } = state;
 
-  const rootBaseClassName = useRootBaseClassName();
-  const rootStyles = useRootStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    checkboxClassNames.root,
-    rootBaseClassName,
-    disabled
-      ? rootStyles.disabled
-      : checked === 'mixed'
-      ? rootStyles.mixed
-      : checked
-      ? rootStyles.checked
-      : rootStyles.unchecked,
-    state.root.className,
-  );
+  const root = state.root as CheckboxState['root'] & CheckboxRootDataAttributes;
 
-  const inputBaseClassName = useInputBaseClassName();
-  const inputStyles = useInputStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = mergeClasses(
-    checkboxClassNames.input,
-    inputBaseClassName,
-    size === 'large' && inputStyles.large,
-    inputStyles[labelPosition],
-    state.input.className,
-  );
+  root['data-size'] = size;
+  root['data-label-position'] = labelPosition;
+  root['data-checked'] = checked === true || undefined;
+  root['data-indeterminate'] = checked === 'mixed' || undefined;
+  root['data-disabled'] = disabled || undefined;
 
-  const indicatorBaseClassName = useIndicatorBaseClassName();
-  const indicatorStyles = useIndicatorStyles();
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Checkbox.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including why the `label` slot's rules
+  // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's own
+  // hook output).
+  state.root.className = clsx(checkboxClassNames.root, styles.root, state.root.className);
+
+  state.input.className = clsx(checkboxClassNames.input, styles.input, state.input.className);
+
   if (state.indicator) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.indicator.className = mergeClasses(
+    state.indicator.className = clsx(
       checkboxClassNames.indicator,
-      indicatorBaseClassName,
-      size === 'large' && indicatorStyles.large,
-      shape === 'circular' && indicatorStyles.circular,
+      styles.indicator,
+      shape === 'circular' && styles.circular,
       state.indicator.className,
     );
   }
 
-  const labelStyles = useLabelStyles();
   if (state.label) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.label.className = mergeClasses(
-      checkboxClassNames.label,
-      labelStyles.base,
-      labelStyles[size],
-      labelStyles[labelPosition],
-      state.label.className,
-    );
+    state.label.className = clsx(checkboxClassNames.label, styles.label, state.label.className);
   }
 
   return state;

@@ -1,0 +1,380 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useCheckboxStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 checkboxClassNames.root                        → static class (JS)
+ *   2 useRootBaseClassName          (makeReset)      → fui.base           .root
+ *   3 rootStyles.disabled | .mixed | .checked        → fui.components.l1  (data-disabled /
+ *     | .unchecked  — a JS ternary CHAIN, exactly                          data-indeterminate /
+ *     one of the four                                                      data-checked)
+ *   4 consumer className                             → unlayered (always wins)
+ *
+ * `input` slot
+ *   1 checkboxClassNames.input                       → static class (JS)
+ *   2 useInputBaseClassName         (makeReset)      → fui.base           .input
+ *   3 inputStyles.large (size === 'large')           → fui.components.l1  (data-size)
+ *   4 inputStyles[labelPosition]                     → fui.components.l1  (data-label-position)
+ *   5 consumer className                             → unlayered
+ *
+ * `indicator` slot
+ *   1 checkboxClassNames.indicator                   → static class (JS)
+ *   2 useIndicatorBaseClassName     (makeReset)      → fui.base           .indicator
+ *   3 indicatorStyles.large                          → fui.components.l1  (data-size)
+ *   4 indicatorStyles.circular (shape === 'circular')→ fui.components.l1  .circular class
+ *   5 consumer className                             → unlayered
+ *
+ * `label` slot
+ *   1 checkboxClassNames.label                       → static class (JS)
+ *   2 labelStyles.base                               → fui.components.l2  ← altitude, below
+ *   3 labelStyles[size]                              → fui.components.l2  (data-size)
+ *   4 labelStyles[labelPosition]                     → fui.components.l2  (data-label-position)
+ *   5 consumer className                             → unlayered
+ *
+ * ── ALTITUDE: the label slot is l2, not l1 (DECISIONS.md D2 amendment 2) ─────────────
+ * `useCheckbox_unstable` sets `components.label = Label` and builds the slot with
+ * `elementType: Label`, so the label element's base rules come from
+ * `@fluentui/react-label`'s OWN styles hook. Everything Checkbox applies on top of another
+ * component's hook output belongs in `fui.components.l2`, never l1 — in l1 the winner
+ * between Checkbox and Label would be decided by stylesheet load order.
+ *
+ * Load-bearing, not bookkeeping: Label's own rules set `color: var(--colorNeutralForeground1)`
+ * while `labelStyles.base` must win with `color: inherit` (the root's state colour is what
+ * the label shows, including the disabled grey). mergeClasses produced that winner because
+ * Checkbox's classes arrive as `className` on <Label>, which `useLabelStyles_unstable`
+ * merges LAST; l2 over l1 reproduces it deterministically.
+ *
+ * ── Mutual exclusion IS load-bearing (root arg #3) ──────────────────────────────────
+ * The four root slices are a ternary chain — `disabled ? … : mixed ? … : checked ? … :
+ * unchecked` — so at most one was ever applied. The `enabled` gate on the unchecked/
+ * checked/mixed blocks reproduces that and cannot be dropped: `rootStyles.disabled` sets
+ * only cursor/color/borderColor/indicatorColor and NEVER
+ * `--fui-Checkbox__indicator--backgroundColor`, so an ungated `checked` block would leave a
+ * disabled+checked indicator painted `--colorCompoundBrandBackground` instead of falling
+ * back to transparent (the var resolves invalid-at-computed-value-time when unset, exactly
+ * as in the compiled sheet).
+ *
+ * The unchecked branch needs BOTH complements (`not-checked` AND `not-indeterminate`):
+ * `data-checked` and `data-indeterminate` are two independent presence attributes, so
+ * `not-checked` alone would also match the mixed state.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * • Inside each root state block the compiled bucket order is d → h → a (base, `:hover`,
+ *   `:active`). Griffel resolved hover-vs-active by bucket order at equal specificity;
+ *   `:where()` flattens both to (0,1,0), so `active` must be written AFTER `hover`.
+ *   Source order already does that.
+ * • label arg #2 `base` authors `padding` as a SHORTHAND (compiled with `p: -1`, i.e.
+ *   always loses to a longhand); args #4 `before`/`after` re-set one inline side. The
+ *   shorthand is expanded to longhands here and the position blocks are written after it —
+ *   they additionally carry `.root … & .label` (0,2,0) vs `.label` (0,1,0).
+ * • input arg #3 `large` (width) and arg #4 `[labelPosition]` (inset) are disjoint; the
+ *   blocks are still written in argument order.
+ * • indicator arg #3 `large` (font-size/height/width) and arg #4 `circular` (border-radius)
+ *   are disjoint likewise.
+ *
+ * ── RTL (DECISIONS.md D5) — no value-level flips in this component ───────────────────
+ * `useInputBaseClassName` and `useIndicatorBaseClassName` both compile with a `null` rtl
+ * class: nothing to flip, so the indicator's `margin` longhands stay physical.
+ * `useRootBaseClassName`'s ltr/rtl pair (`r1nzur1d` / `r128arqq`) differs only in the
+ * ORDER of the border-color and top/right/bottom/left longhands — identical values — so it
+ * needs no rtl twin either. The four remaining `[ltr, rtl]` atomic pairs are pure PROPERTY
+ * flips and become logical properties:
+ *   inputStyles.before `right:0`→`left:0`             → inset-inline-end
+ *   inputStyles.after  `left:0`→`right:0`             → inset-inline-start
+ *   labelStyles.before `padding-right`→`padding-left` → padding-inline-end
+ *   labelStyles.after  `padding-left`→`padding-right` → padding-inline-start
+ * Hence this module contains no `@variant rtl` block at all.
+ *
+ * ── Pixel literals (DECISIONS.md D4) ────────────────────────────────────────────────
+ * The indicator sizes (16px medium / 20px large) and the two icon font-sizes (12px/16px)
+ * are pixel literals, so they ride `--base-scale`: Tailwind numeric utilities (`h-16`,
+ * `w-20`, …) where one exists, `calc(<n>px * var(--base-scale))` inside calc() where none
+ * does. At the default 16px root every one computes to the compiled pixel value.
+ *
+ * ── Internal custom properties ──────────────────────────────────────────────────────
+ * `--fui-Checkbox__indicator--{color,borderColor,backgroundColor}` are Checkbox's own
+ * private channel from the root's state rules down to the indicator. They are NOT
+ * registered with `@property` (matching Griffel), so an unset one makes its consuming
+ * declaration invalid at computed-value time — which is precisely how the unchecked
+ * indicator ends up with a transparent background and an inherited colour.
+ */
+
+@layer fui.base {
+  /* from useRootBaseClassName (makeResetStyles) */
+  .root {
+    @apply relative inline-flex max-w-fit cursor-pointer align-middle;
+
+    color: var(--colorNeutralForeground3);
+
+    /*
+     * from createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) — same factory
+     * and same option object react-switch converted. `fui-focus-outline` carries the
+     * compiled declarations; the selector stays here.
+     * Byte-check against `.r1nzur1d[data-fui-focus-within]:focus-within::after`:
+     * content/position/pointer-events/z-index/border/border-radius identical, and the
+     * utility's `calc(0px - 2px - 0px)` offsets compute to the compiled `calc(2px * -1)`.
+     * `:focus-visible` is a strict subset of `:focus`, so the second rule is redundant in
+     * the compiled output too — both are reproduced verbatim rather than pruned.
+     */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-within-fui {
+      @apply fui-focus-outline;
+    }
+  }
+
+  /* from useInputBaseClassName (makeResetStyles) */
+  .input {
+    @apply absolute m-0 box-border h-full;
+
+    cursor: inherit;
+
+    /* literal, not `opacity-0`: that utility compiles to `opacity: 0%`, the compiled
+       Griffel atomic is `opacity:0`. Same computed value, fewer questions. */
+    opacity: 0;
+    top: 0;
+
+    /* Width covers the indicator plus the padding around it so clicking the "empty space"
+       still toggles the checkbox. */
+    width: calc(16px * var(--base-scale) + 2 * var(--spacingHorizontalS));
+  }
+
+  /* from useIndicatorBaseClassName (makeResetStyles) */
+  .indicator {
+    @apply pointer-events-none box-border flex h-16 w-16 shrink-0 items-center justify-center self-start overflow-hidden;
+
+    color: var(--fui-Checkbox__indicator--color);
+    background-color: var(--fui-Checkbox__indicator--backgroundColor);
+    border-color: var(--fui-Checkbox__indicator--borderColor, var(--colorNeutralStrokeAccessible));
+    border-style: solid;
+    border-width: var(--strokeWidthThin);
+    border-radius: var(--borderRadiusSmall);
+
+    /* `margin: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands;
+       no rtl class was compiled, so the inline sides stay physical. */
+    margin-top: var(--spacingVerticalS);
+    margin-right: var(--spacingHorizontalS);
+    margin-bottom: var(--spacingVerticalS);
+    margin-left: var(--spacingHorizontalS);
+
+    fill: currentColor;
+    font-size: calc(12px * var(--base-scale));
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * root arg #3 — the ternary chain, written in Griffel source-declaration order. Every
+   * branch is mutually exclusive by construction; see the header for why the `enabled`
+   * gate is required rather than cosmetic.
+   */
+  .root {
+    /* from useRootStyles.unchecked */
+    @variant enabled {
+      @variant not-checked {
+        @variant not-indeterminate {
+          @variant hover {
+            color: var(--colorNeutralForeground2);
+
+            --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeAccessibleHover);
+          }
+
+          @variant active {
+            color: var(--colorNeutralForeground1);
+
+            --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeAccessiblePressed);
+          }
+        }
+      }
+    }
+
+    /* from useRootStyles.checked */
+    @variant enabled {
+      @variant checked {
+        color: var(--colorNeutralForeground1);
+
+        --fui-Checkbox__indicator--backgroundColor: var(--colorCompoundBrandBackground);
+        --fui-Checkbox__indicator--color: var(--colorNeutralForegroundInverted);
+        --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandBackground);
+
+        @variant hover {
+          --fui-Checkbox__indicator--backgroundColor: var(--colorCompoundBrandBackgroundHover);
+          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandBackgroundHover);
+        }
+
+        @variant active {
+          --fui-Checkbox__indicator--backgroundColor: var(--colorCompoundBrandBackgroundPressed);
+          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandBackgroundPressed);
+        }
+      }
+    }
+
+    /* from useRootStyles.mixed */
+    @variant enabled {
+      @variant indeterminate {
+        color: var(--colorNeutralForeground1);
+
+        --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandStroke);
+        --fui-Checkbox__indicator--color: var(--colorCompoundBrandForeground1);
+
+        @variant hover {
+          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandStrokeHover);
+          --fui-Checkbox__indicator--color: var(--colorCompoundBrandForeground1Hover);
+        }
+
+        @variant active {
+          --fui-Checkbox__indicator--borderColor: var(--colorCompoundBrandStrokePressed);
+          --fui-Checkbox__indicator--color: var(--colorCompoundBrandForeground1Pressed);
+        }
+      }
+    }
+
+    /* from useRootStyles.disabled */
+    @variant disabled {
+      @apply cursor-default;
+
+      color: var(--colorNeutralForegroundDisabled);
+
+      --fui-Checkbox__indicator--borderColor: var(--colorNeutralStrokeDisabled);
+      --fui-Checkbox__indicator--color: var(--colorNeutralForegroundDisabled);
+
+      @variant forced-colors {
+        color: GrayText;
+
+        --fui-Checkbox__indicator--color: GrayText;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * from useInputStyles.large — input arg #3. Selected from the root's `data-size`
+     * rather than a stamp on the input itself: the input is the root's child, so one
+     * attribute drives every descendant rule (same approach as react-button's
+     * `data-size` → `.root … & .icon`).
+     */
+    @variant size-large {
+      & .input {
+        width: calc(20px * var(--base-scale) + 2 * var(--spacingHorizontalS));
+      }
+    }
+
+    /*
+     * from useInputStyles[labelPosition] — input arg #4. Unlike react-switch's equivalent
+     * slice this is NOT gated on the label slot existing, which is why Checkbox stamps
+     * `data-label-position` unconditionally. `right`/`left` are an [ltr, rtl] atomic pair
+     * (`j35jbq` / `oyh7mz`), i.e. a pure property flip → `inset-inline-*`.
+     */
+    @variant label-before {
+      & .input {
+        inset-inline-end: 0;
+      }
+    }
+
+    @variant label-after {
+      & .input {
+        inset-inline-start: 0;
+      }
+    }
+
+    /* from useIndicatorStyles.large — indicator arg #3 */
+    @variant size-large {
+      & .indicator {
+        @apply h-20 w-20;
+
+        font-size: calc(16px * var(--base-scale));
+      }
+    }
+  }
+
+  /*
+   * from useIndicatorStyles.circular — indicator arg #4. `shape` is a LOOK prop, so it is
+   * a module class on the indicator slot rather than a data-attribute (DECISIONS.md D3);
+   * `styles.square` is intentionally absent because the Griffel source has no `square`
+   * slice (the square radius comes from the base reset).
+   */
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * The `label` slot renders @fluentui/react-label's <Label>, so everything Checkbox
+   * layers on top of it lives at altitude l2 — see the ALTITUDE note in the file header.
+   */
+
+  /* from useLabelStyles.base — label arg #2 */
+  .label {
+    @apply self-center;
+
+    color: inherit;
+    cursor: inherit;
+
+    /* `padding: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands
+       (CONVERSION_GUIDE §2): the position slices below override single inline sides inside
+       this same layer, and Griffel's shorthand-loses-to-longhand priority (`p: -1`) has no
+       CSS equivalent. Inline sides are logical because `before`/`after` compile to an
+       [ltr, rtl] padding pair. */
+    padding-top: var(--spacingVerticalS);
+    padding-bottom: var(--spacingVerticalS);
+    padding-inline-start: var(--spacingHorizontalS);
+    padding-inline-end: var(--spacingHorizontalS);
+  }
+
+  .root {
+    /*
+     * from useLabelStyles[size] — label arg #3. A (negative) margin absorbs the difference
+     * between the indicator's height and the label's line height: the label must not grow
+     * the checkbox, but a wrapped label keeps its line height.
+     */
+    @variant size-medium {
+      & .label {
+        margin-top: calc((16px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+        margin-bottom: calc((16px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+      }
+    }
+
+    @variant size-large {
+      & .label {
+        margin-top: calc((20px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+        margin-bottom: calc((20px * var(--base-scale) - var(--lineHeightBase300)) / 2);
+      }
+    }
+
+    /* from useLabelStyles[labelPosition] — label arg #4 */
+    @variant label-before {
+      & .label {
+        padding-inline-end: var(--spacingHorizontalXS);
+      }
+    }
+
+    @variant label-after {
+      & .label {
+        padding-inline-start: var(--spacingHorizontalXS);
+      }
+    }
+  }
+}

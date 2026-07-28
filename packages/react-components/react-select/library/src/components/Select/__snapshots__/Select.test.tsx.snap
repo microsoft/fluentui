@@ -4,6 +4,7 @@ exports[`Select renders a custom icon slot 1`] = `
 <div>
   <span
     class="fui-Select"
+    data-size="medium"
   >
     <select
       class="fui-Select__select"
@@ -21,6 +22,7 @@ exports[`Select renders option children 1`] = `
 <div>
   <span
     class="fui-Select"
+    data-size="medium"
   >
     <select
       class="fui-Select__select"
@@ -61,6 +63,7 @@ exports[`Select renders the default state 1`] = `
 <div>
   <span
     class="fui-Select"
+    data-size="medium"
   >
     <select
       class="fui-Select__select"

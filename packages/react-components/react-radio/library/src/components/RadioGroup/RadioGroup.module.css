@@ -1,0 +1,55 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useRadioGroupStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 radioGroupClassNames.root                    → static class (JS)
+ *   2 useStyles.root                               → fui.components.l1  .root
+ *   3 useStyles.vertical (layout === 'vertical')   → fui.components.l1  (data-layout)
+ *   4 consumer className                           → unlayered (always wins)
+ *
+ * There is no makeResetStyles here, so nothing lands in `fui.base`. Both slices belong to
+ * RadioGroup's own root element, so both stay at altitude l1 — the child <Radio>s style
+ * themselves through their own hook and RadioGroup writes no rule that reaches them.
+ *
+ * `layout` is a three-value union (`vertical | horizontal | horizontal-stacked`) and rides
+ * `data-layout`, one of the headless preview's 25 attribute names
+ * (reports/headless-precedent.md). It is deliberately NOT `data-orientation`:
+ * `horizontal-stacked` is a layout mode rather than an axis, and `layout` is the public
+ * prop's own name. Only the `vertical` value carries rules — the Griffel source styled
+ * `layout === 'vertical'` alone; `horizontal` and `horizontal-stacked` both keep the base
+ * `flex-direction: row`.
+ *
+ * `layout` also feeds Radio: `useRadioBase_unstable` defaults `labelPosition` to `'below'`
+ * when the surrounding group is `horizontal-stacked`, which is plumbed through React
+ * context, not CSS. Nothing here depends on that.
+ *
+ * No RTL flips: the compiled atomics (`.f22iagw`, `.f6jr5hl`, `.f1vx9l62`) carry no
+ * [ltr, rtl] pairs, and `flex`/`align-items`/`flex-direction` are all direction-agnostic.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    @apply flex items-start;
+
+    /* from useStyles.vertical — root arg #3 */
+    @variant layout-vertical {
+      @apply flex-col;
+    }
+  }
+}

@@ -1,0 +1,302 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * ── ALTITUDE: the first converted-over-converted composition ────────────────────────────
+ *
+ * SearchBox does not render slots of its own except `dismiss`. Its `root`, `input`,
+ * `contentBefore` and `contentAfter` slots ARE Input's slots: `useSearchBoxBase_unstable`
+ * builds its state by calling `useInput_unstable`, `renderSearchBox_unstable` renders that
+ * state, and `useSearchBoxStyles_unstable` ends by delegating to `useInputStyles_unstable`.
+ * Every style SearchBox puts on those four elements therefore lands on top of ANOTHER
+ * converted component's hook output — the l2 case in DECISIONS.md D2 amendment 2:
+ *
+ *   own slot     (`dismiss`)                          → fui.base (reset) + fui.components.l1
+ *   Input's slots (`root`, `input`, `contentAfter`)   → fui.components.l2
+ *
+ * Both react-search and react-input ship a `dist/styles.css`; nothing guarantees which one
+ * a consumer's bundler loads first. Putting SearchBox's additions in `l2` makes them beat
+ * every `fui.components.l1` rule of Input's regardless of that load order, which is exactly
+ * the winner Griffel produced (see the argument order below). Authoring them in `l1`
+ * alongside Input's would hand the decision to stylesheet order — the nondeterminism l2
+ * exists to remove.
+ *
+ * ── mergeClasses ARGUMENT order, per slot ───────────────────────────────────────────────
+ *
+ * `useSearchBoxStyles_unstable` writes each slot's className FIRST and calls
+ * `useInputStyles_unstable(state)` LAST, so Input's classes are PREPENDED and SearchBox's
+ * sit between them and the consumer's className. Verified against the committed snapshot
+ * (`class="fui-Input fui-SearchBox"`, `class="fui-Input__input fui-SearchBox__input"`).
+ *
+ * `root` slot:
+ *    1  inputClassNames.root                       → static class (JS)
+ *    2  Input useRootClassName        (makeReset)  → fui.base            (react-input)
+ *   3–12 Input rootStyles.*                        → fui.components.l1   (react-input)
+ *   13  searchBoxClassNames.root                   → static class (JS)
+ *   14  useRootStyles[size]                        → fui.components.l2   (data-size)
+ *   15  useRootStyles.unfocusedNoContentAfter      → fui.components.l2   (not-focused)
+ *   16  consumer className                         → unlayered (always wins)
+ *
+ * `input` slot:
+ *    1  inputClassNames.input                      → static class (JS)
+ *    2  Input useInputClassName       (makeReset)  → fui.base            (react-input)
+ *   3–6 Input useInputElementStyles.*              → fui.components.l1   (react-input)
+ *    7  searchBoxClassNames.input                  → static class (JS)
+ *    8  useRootStyles.input                        → fui.components.l2
+ *    9  useInputStyles[size]                       → fui.components.l2   (not-focused)
+ *   10  consumer className                         → unlayered
+ *
+ * `contentAfter` slot:
+ *    1  inputClassNames.contentAfter               → static class (JS)
+ *    2  Input useContentClassName     (makeReset)  → fui.base            (react-input)
+ *   3–4 Input useContentStyles.*                   → fui.components.l1   (react-input)
+ *    5  searchBoxClassNames.contentAfter           → static class (JS)
+ *    6  useContentAfterStyles.contentAfter         → fui.components.l2
+ *    7  useContentAfterStyles.rest                 → fui.components.l2   (not-focused)
+ *    8  consumer className                         → unlayered
+ *
+ * `contentBefore` slot: static class only — SearchBox adds no styles to it.
+ *
+ * `dismiss` slot (SearchBox's own; Input never sees it):
+ *    1  searchBoxClassNames.dismiss                → static class (JS)
+ *    2  useDismissClassName           (makeReset)  → fui.base
+ *    3  useDismissStyles.disabled                  → fui.components.l1   (data-disabled)
+ *    4  useDismissStyles[size]                     → fui.components.l1   (data-size)
+ *    5  consumer className                         → unlayered
+ *
+ * ── Property conflicts this ordering decides (verified against the compiled atomics in
+ *    lib-commonjs/components/SearchBox/useSearchBoxStyles.styles.js) ──────────────────────
+ *
+ * 1. `column-gap: 0` (arg #14) vs Input's `gap` (its reset, and its `large` slice). Griffel
+ *    compiles `gap: X` to THREE keys — `i8kkvl: 0` (columnGap), `Belr9w4: 0` (rowGap) and
+ *    `rmohyg` (the shorthand rule, emitted with `{p: -1}`) — and SearchBox's `columnGap: 0`
+ *    is that same `i8kkvl` key, so mergeClasses deletes Input's from the later argument's
+ *    perspective and the shorthand's negative priority puts its rule first in the bucket
+ *    besides. BOTH Griffel mechanisms make `column-gap: 0` win; `l2` over `l1` reproduces it
+ *    (probe: `resolveStyleRules({gap})` vs `resolveStyleRules({columnGap})`).
+ * 2. Root `padding-left/right` (arg #14, keys `uwmqm3`/`z189sj`) vs Input's
+ *    `…WithContentBefore` / `…WithContentAfter` paddings (same keys) — SearchBox wins.
+ * 3. Input `padding-inline` (its `.input` reset + size slices) vs SearchBox's
+ *    `useRootStyles.input` / `useInputStyles[size]` — SearchBox wins.
+ * 4. Within SearchBox, arg #15 zeroes the `padding-inline-end` arg #14 just set, and arg #9
+ *    overrides the `padding-inline-end: 0` arg #8 just set. Both are expressed as file
+ *    order inside `fui.components.l2` — do not reorder those blocks.
+ *
+ * ── RTL ────────────────────────────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` pair in the compiled output carries the SAME value on both sides
+ * (`uwmqm3: ["fk8j09s","fdw0yi8"]` = padding-left:SNudge / padding-right:SNudge, …), i.e.
+ * every flip is a pure PROPERTY flip. Logical properties are exact and this module needs no
+ * `@variant rtl` block and no keyframes.
+ */
+
+@layer fui.base {
+  /*
+   * from useDismissClassName (makeResetStyles) —
+   * `.r1pvzcuu{box-sizing:border-box;color:var(--colorNeutralForeground3);display:flex;
+   *   cursor:pointer;}` + `.r1pvzcuu>svg{font-size:20px;}`
+   */
+  .dismiss {
+    @apply box-border flex;
+
+    color: var(--colorNeutralForeground3); /* "icon color" in the design spec */
+    cursor: pointer;
+
+    /*
+     * Special case for icons (the common case) so they centre vertically. size: medium.
+     * `--base-scale` keeps the glyph scaling with the root font size (D4); at the default
+     * 16px root this is exactly `font-size: 20px`, the compiled value. Same treatment as
+     * Input's `.content > svg`.
+     */
+    & > svg {
+      font-size: calc(20px * var(--base-scale));
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * ── `dismiss` slot — SearchBox's OWN slot, so `l1`, not `l2` ────────────────────────
+   * Input's hook never touches this element; its only other rules are the reset above.
+   */
+
+  /*
+   * from useDismissStyles.disabled — arg #3.
+   *
+   * Keyed off a `data-disabled` stamped on the DISMISS itself rather than the root's.
+   * The root's `data-disabled` is written by Input's hook from `state.input.disabled`,
+   * while this slice branches on SearchBox's `state.disabled`. The two are the same value
+   * for every normal render (`useSearchBoxBase_unstable` passes `disabled` straight into
+   * `useInput_unstable`), but they diverge if a consumer disables the inner control
+   * directly — `<SearchBox input={{ disabled: true }} />` leaves `state.disabled` false, so
+   * Griffel left the dismiss glyph at its rest colour. Reading the root's attribute would
+   * grey it out instead.
+   */
+  .dismiss {
+    @variant disabled {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+  }
+
+  /*
+   * from useDismissStyles.small / .large — arg #4, keeping resizable icons at the right
+   * size. `medium` is the compiled `{}` slice; its 20px lives in the reset above.
+   *
+   * `data-size` is read from the ROOT (Input's hook stamps it) instead of being duplicated
+   * onto the dismiss: both hooks read the very same `state.size`, so unlike `data-disabled`
+   * there is no value that can diverge. Selector shape matches Input's own `& .content > svg`
+   * rules. Arg #3 (`color`) and arg #4 (`font-size`) are disjoint, so their relative order
+   * carries no winner.
+   */
+  .root {
+    @variant size-small {
+      & .dismiss > svg {
+        font-size: calc(16px * var(--base-scale));
+      }
+    }
+
+    @variant size-large {
+      & .dismiss > svg {
+        font-size: calc(24px * var(--base-scale));
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * ── `root` slot — Input's <span>, so `l2` ───────────────────────────────────────────
+   */
+  .root {
+    /*
+     * from useRootStyles.small / .medium / .large — arg #14.
+     *
+     * `columnGap: 0` and `maxWidth: '468px'` are byte-identical in all three slices and
+     * `size` is always one of them (`SearchBoxState` makes it Required), so they are
+     * hoisted out of the `@variant size-*` blocks. Only the padding differs per size.
+     */
+    @apply max-w-468;
+
+    column-gap: 0;
+
+    @variant size-small {
+      padding-inline-start: var(--spacingHorizontalSNudge);
+      padding-inline-end: var(--spacingHorizontalSNudge);
+    }
+
+    @variant size-medium {
+      padding-inline-start: var(--spacingHorizontalS);
+      padding-inline-end: var(--spacingHorizontalS);
+    }
+
+    @variant size-large {
+      padding-inline-start: var(--spacingHorizontalMNudge);
+      padding-inline-end: var(--spacingHorizontalMNudge);
+    }
+  }
+
+  /*
+   * from useRootStyles.unfocusedNoContentAfter — arg #15. Zeroes the `padding-inline-end`
+   * the size block above just set (Griffel: the same `z189sj` key, deleted from the earlier
+   * argument), so it MUST stay after it. The slice name mentions contentAfter but the hook
+   * gates it on `!focused` alone.
+   */
+  .root {
+    @variant not-focused {
+      padding-inline-end: 0;
+    }
+  }
+
+  /*
+   * ── `input` slot — Input's <input>, so `l2` ─────────────────────────────────────────
+   */
+
+  /* from useRootStyles.input — arg #8 */
+  .input {
+    padding-inline-start: var(--spacingHorizontalSNudge);
+    padding-inline-end: 0;
+
+    /*
+     * Removes the WebKit pseudo-element styling. Kept as two separate rules, exactly as
+     * Griffel emitted them (`.f18izjht::-webkit-search-decoration{…}`,
+     * `.fcoa6sg::-webkit-search-cancel-button{…}`): merging them into one selector list
+     * would let a browser that does not know one pseudo-element drop the other with it.
+     */
+    &::-webkit-search-decoration {
+      display: none;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  /*
+   * from useInputStyles.small / .medium / .large — arg #9. Gives the text room back on the
+   * end side while the contentAfter box is collapsed (see `rest` below), overriding the
+   * `padding-inline-end: 0` arg #8 set — hence written after it.
+   *
+   * `data-size` and `data-focused` both live on the ROOT, so these reach the input the same
+   * way Input's own size paddings do: a descendant selector.
+   */
+  .root {
+    @variant not-focused {
+      @variant size-small {
+        & .input {
+          padding-inline-end: var(--spacingHorizontalSNudge);
+        }
+      }
+
+      @variant size-medium {
+        & .input {
+          padding-inline-end: var(--spacingHorizontalS);
+        }
+      }
+
+      @variant size-large {
+        & .input {
+          padding-inline-end: var(--spacingHorizontalMNudge);
+        }
+      }
+    }
+  }
+
+  /*
+   * ── `contentAfter` slot — Input's <span>, so `l2` ───────────────────────────────────
+   */
+
+  /* from useContentAfterStyles.contentAfter — arg #6 */
+  .contentAfter {
+    padding-inline-start: var(--spacingHorizontalM);
+    column-gap: var(--spacingHorizontalXS);
+  }
+
+  /*
+   * from useContentAfterStyles.rest — arg #7. Collapses the whole contentAfter box (which
+   * holds the dismiss button) to nothing while the SearchBox is unfocused.
+   *
+   * Griffel compiled `overflow: 'hidden'` as the SHORTHAND rule `.f1a3p1vp{overflow:hidden;}`
+   * carrying `{p: -1}` — the marker that sorts shorthands before longhands within a bucket.
+   * It is inert here: no rule in this module, in Input's, or in Input's reset sets
+   * `overflow-x`/`overflow-y`, so the shorthand has nothing to lose to and is emitted as-is.
+   */
+  .root {
+    @variant not-focused {
+      & .contentAfter {
+        @apply h-0 w-0 overflow-hidden;
+
+        padding-inline-start: 0;
+      }
+    }
+  }
+}

@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,22 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
+   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * `jest.preset.js` once more packages convert (DECISIONS.md D9).
+   *
+   * Like react-badge and react-button — and unlike react-input — this package keeps
+   * `@griffel/jest-serializer` as well: no react-select source imports Griffel any more,
+   * but the default `icon` slot renders `@fluentui/react-icons`' `ChevronDownRegular`,
+   * and that package is an external Griffel consumer explicitly out of scope for this
+   * migration (DECISIONS.md D11). Without it the glyph `<svg>` renders its atomic +
+   * sequence-hash classes into every snapshot.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };

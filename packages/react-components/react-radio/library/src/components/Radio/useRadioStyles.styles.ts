@@ -1,10 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { RadioSlots, RadioState } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './Radio.module.css';
 
 export const radioClassNames: SlotClassNames<RadioSlots> = {
   root: 'fui-Radio',
@@ -13,243 +26,67 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
   label: 'fui-Radio__label',
 };
 
-// The indicator size is used by the indicator and label styles
-const indicatorSize = '16px';
+/**
+ * Data attributes rendered on the Radio slots and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Both names come from
+ * the headless preview's vocabulary (reports/headless-precedent.md).
+ *
+ * `data-orientation` vs `data-label-position` — the two are NOT redundant, they encode the
+ * two different gates the Griffel hook used (identical split to react-switch):
+ *   • `rootStyles.vertical` and `inputStyles.below` are applied for
+ *     `labelPosition === 'below'` with NO label gate, so their selectors must match even
+ *     when the Radio has no label → `data-orientation`, always stamped, reusing the
+ *     catalog's existing `vertical` / `horizontal` pair.
+ *   • `labelStyles[labelPosition]` is applied inside `if (state.label)`, so it rides
+ *     `data-label-position`, written ONLY when the label slot exists. Its presence carries
+ *     the `label &&` half of the condition and its value carries the position.
+ * Hence `data-label-position` is optional and written `label ? labelPosition : undefined`:
+ * React omits an attribute whose value is `undefined`.
+ *
+ * `data-empty` lives on the INDICATOR, not the root. It replaces the Griffel hook's
+ * `state.indicator.children ? inputStyles.customIndicator : inputStyles.defaultIndicator`
+ * branch, whose condition is literally "the indicator slot has no children" — which is also
+ * what the catalog variant's `:empty` fallback means for that exact element. It is a
+ * *presence* selector, so it is written `|| undefined`: `false` would render
+ * `data-empty="false"` and still match `[data-empty]`.
+ */
+type RadioRootDataAttributes = {
+  'data-orientation': 'horizontal' | 'vertical';
+  'data-label-position'?: RadioState['labelPosition'];
+};
 
-const useRootBaseClassName = makeResetStyles({
-  display: 'inline-flex',
-  position: 'relative',
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
-});
-
-const useRootStyles = makeStyles({
-  vertical: {
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-});
-
-const useInputBaseClassName = makeResetStyles({
-  position: 'absolute',
-  left: 0,
-  top: 0,
-  width: `calc(${indicatorSize} + 2 * ${tokens.spacingHorizontalS})`,
-  height: '100%',
-  boxSizing: 'border-box',
-  margin: 0,
-  opacity: 0,
-
-  ':enabled': {
-    cursor: 'pointer',
-    [`& ~ .${radioClassNames.label}`]: {
-      cursor: 'pointer',
-    },
-  },
-
-  // Colors for the unchecked state
-  ':enabled:not(:checked)': {
-    [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground3,
-    },
-    [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
-      '@media (forced-colors: active)': {
-        borderColor: 'ButtonBorder',
-      },
-    },
-
-    ':hover': {
-      [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground2,
-      },
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
-    },
-
-    ':hover:active': {
-      [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
-      },
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
-      },
-    },
-  },
-
-  // Colors for the checked state
-  ':enabled:checked': {
-    [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
-    },
-    [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
-      color: tokens.colorCompoundBrandForeground1,
-      '@media (forced-colors: active)': {
-        borderColor: 'Highlight',
-        color: 'Highlight',
-        '::after': {
-          backgroundColor: 'Highlight',
-        },
-      },
-    },
-
-    ':hover': {
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-
-    ':hover:active': {
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
-  },
-
-  // Colors for the disabled state
-  ':disabled': {
-    [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-      cursor: 'default',
-      '@media (forced-colors: active)': {
-        color: 'GrayText',
-      },
-    },
-    [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
-      '@media (forced-colors: active)': {
-        borderColor: 'GrayText',
-        color: 'GrayText',
-        '::after': {
-          backgroundColor: 'GrayText',
-        },
-      },
-    },
-  },
-});
-
-const useInputStyles = makeStyles({
-  below: {
-    width: '100%',
-    height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
-  },
-
-  // If the indicator has no children, use the ::after pseudo-element for the checked state
-  defaultIndicator: {
-    [`:checked ~ .${radioClassNames.indicator}::after`]: {
-      content: '""',
-    },
-  },
-
-  // If the indicator has a child, hide it until the radio is checked
-  customIndicator: {
-    [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
-      opacity: '0',
-    },
-  },
-});
-
-const useIndicatorBaseClassName = makeResetStyles({
-  position: 'relative',
-  width: indicatorSize,
-  height: indicatorSize,
-  fontSize: '12px',
-  boxSizing: 'border-box',
-  flexShrink: 0,
-
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  overflow: 'hidden',
-
-  border: tokens.strokeWidthThin + ' solid',
-  borderRadius: tokens.borderRadiusCircular,
-  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
-  fill: 'currentColor',
-  pointerEvents: 'none',
-
-  '::after': {
-    position: 'absolute',
-    width: indicatorSize,
-    height: indicatorSize,
-    borderRadius: tokens.borderRadiusCircular,
-    // Use a transform to avoid pixel rounding errors at 125% DPI
-    // https://github.com/microsoft/fluentui/issues/30025
-    transform: 'scale(0.625)',
-    backgroundColor: 'currentColor',
-  },
-});
-
-// Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
-const useLabelStyles = makeStyles({
-  base: {
-    alignSelf: 'center',
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
-  },
-
-  after: {
-    paddingLeft: tokens.spacingHorizontalXS,
-
-    // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
-    // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
-    marginTop: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
-    marginBottom: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
-  },
-
-  below: {
-    paddingTop: tokens.spacingVerticalXS,
-    textAlign: 'center',
-  },
-});
+type RadioIndicatorDataAttributes = {
+  'data-empty'?: true;
+};
 
 /**
  * Apply styling to the Radio slots based on the state
  */
 export const useRadioStyles_unstable = (state: RadioState): RadioState => {
-  const { labelPosition } = state;
+  const { label, labelPosition } = state;
 
-  const rootBaseClassName = useRootBaseClassName();
-  const rootStyles = useRootStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    radioClassNames.root,
-    rootBaseClassName,
-    labelPosition === 'below' && rootStyles.vertical,
-    state.root.className,
-  );
+  const root = state.root as RadioState['root'] & RadioRootDataAttributes;
+  const indicator = state.indicator as RadioState['indicator'] & RadioIndicatorDataAttributes;
 
-  const inputBaseClassName = useInputBaseClassName();
-  const inputStyles = useInputStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.input.className = mergeClasses(
-    radioClassNames.input,
-    inputBaseClassName,
-    labelPosition === 'below' && inputStyles.below,
-    state.indicator.children ? inputStyles.customIndicator : inputStyles.defaultIndicator,
-    state.input.className,
-  );
+  root['data-orientation'] = labelPosition === 'below' ? 'vertical' : 'horizontal';
+  root['data-label-position'] = label ? labelPosition : undefined;
 
-  const indicatorBaseClassName = useIndicatorBaseClassName();
-  // eslint-disable-next-line react-hooks/immutability
-  state.indicator.className = mergeClasses(
-    radioClassNames.indicator,
-    indicatorBaseClassName,
-    state.indicator.className,
-  );
+  indicator['data-empty'] = !state.indicator.children || undefined;
 
-  const labelStyles = useLabelStyles();
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Radio.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including why the `label` slot's rules
+  // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
+  // own hook output).
+  state.root.className = clsx(radioClassNames.root, styles.root, state.root.className);
+
+  state.input.className = clsx(radioClassNames.input, styles.input, state.input.className);
+
+  state.indicator.className = clsx(radioClassNames.indicator, styles.indicator, state.indicator.className);
+
   if (state.label) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.label.className = mergeClasses(
-      radioClassNames.label,
-      labelStyles.base,
-      labelStyles[labelPosition],
-      state.label.className,
-    );
+    state.label.className = clsx(radioClassNames.label, styles.label, state.label.className);
   }
 
   return state;

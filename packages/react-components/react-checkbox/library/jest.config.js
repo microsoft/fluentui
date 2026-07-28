@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,22 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (Phase 2, BATCH-2).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
+   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * `jest.preset.js` once more packages convert (DECISIONS.md D9).
+   *
+   * Like react-badge and unlike react-divider, this package keeps
+   * `@griffel/jest-serializer` as well: no react-checkbox source imports Griffel any more,
+   * but the indicator renders `@fluentui/react-icons` glyphs (Checkmark12/16Filled,
+   * Square12/16Filled, CircleFilled), and that package is an external Griffel consumer
+   * explicitly out of scope for this migration (DECISIONS.md D11). Without it the icon
+   * `<svg>` renders its atomic + sequence-hash classes into every checked/mixed snapshot.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };

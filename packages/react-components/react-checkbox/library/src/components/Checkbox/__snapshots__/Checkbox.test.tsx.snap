@@ -4,10 +4,12 @@ exports[`Checkbox renders a custom indicator 1`] = `
 <div>
   <span
     class="fui-Checkbox"
+    data-label-position="after"
+    data-size="medium"
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-_r_c_"
+      id="checkbox-_r_d_"
       type="checkbox"
     />
     <div
@@ -20,7 +22,8 @@ exports[`Checkbox renders a custom indicator 1`] = `
     </div>
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-_r_c_"
+      data-size="medium"
+      for="checkbox-_r_d_"
     >
       Custom indicator
     </label>
@@ -32,10 +35,12 @@ exports[`Checkbox renders a default state 1`] = `
 <div>
   <span
     class="fui-Checkbox"
+    data-label-position="after"
+    data-size="medium"
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-_r_8_"
+      id="checkbox-_r_9_"
       type="checkbox"
     />
     <div
@@ -50,11 +55,14 @@ exports[`Checkbox renders checked 1`] = `
 <div>
   <span
     class="fui-Checkbox"
+    data-checked="true"
+    data-label-position="after"
+    data-size="medium"
   >
     <input
       checked=""
       class="fui-Checkbox__input"
-      id="checkbox-_r_a_"
+      id="checkbox-_r_b_"
       type="checkbox"
     />
     <div
@@ -78,7 +86,8 @@ exports[`Checkbox renders checked 1`] = `
     </div>
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-_r_a_"
+      data-size="medium"
+      for="checkbox-_r_b_"
     >
       Checked Checkbox
     </label>
@@ -90,10 +99,13 @@ exports[`Checkbox renders mixed 1`] = `
 <div>
   <span
     class="fui-Checkbox"
+    data-indeterminate="true"
+    data-label-position="after"
+    data-size="medium"
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-_r_b_"
+      id="checkbox-_r_c_"
       type="checkbox"
     />
     <div
@@ -117,7 +129,8 @@ exports[`Checkbox renders mixed 1`] = `
     </div>
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-_r_b_"
+      data-size="medium"
+      for="checkbox-_r_c_"
     >
       Mixed Checkbox
     </label>
@@ -129,10 +142,12 @@ exports[`Checkbox renders with a label 1`] = `
 <div>
   <span
     class="fui-Checkbox"
+    data-label-position="after"
+    data-size="medium"
   >
     <input
       class="fui-Checkbox__input"
-      id="checkbox-_r_9_"
+      id="checkbox-_r_a_"
       type="checkbox"
     />
     <div
@@ -141,7 +156,8 @@ exports[`Checkbox renders with a label 1`] = `
     />
     <label
       class="fui-Label fui-Checkbox__label"
-      for="checkbox-_r_9_"
+      data-size="medium"
+      for="checkbox-_r_a_"
     >
       Unchecked Checkbox
     </label>

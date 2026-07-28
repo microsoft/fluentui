@@ -4,6 +4,9 @@ exports[`SearchBox renders a default state 1`] = `
 <div>
   <span
     class="fui-Input fui-SearchBox"
+    data-content-after="true"
+    data-content-before="true"
+    data-size="medium"
   >
     <span
       class="fui-Input__contentBefore fui-SearchBox__contentBefore"
