@@ -142,6 +142,13 @@ Repeat until no `needs-conversion` remain:
   level usage washes this out; single-component micro-bundles pay. Decide before or
   during Phase 3; requires only emission-step changes, no authoring changes.
 
+### Queued (user-directed 2026-07-27, in order)
+
+1. Stroke-widths-into-spacing workflow (running: wf_258f062e-ed2) — commit on completion
+2. Phase 2 batch 3 — next 10 lowest-level from needs-conversion
+3. **Client performance evaluation** — PERF_EVAL_SPEC.md (5 components incl. Button,
+   plain vs multi-layer-overridden, 1 vs 100-instance matrix, vs Griffel predecessors)
+
 ### Phase 3 — Integration
 
 - [ ] `react-components` suite package builds; storybook (public-docsite-v9) builds
