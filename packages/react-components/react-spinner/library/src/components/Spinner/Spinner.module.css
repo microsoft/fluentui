@@ -355,7 +355,7 @@
       & .spinner {
         @apply size-16;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+        --fui-Spinner--strokeWidth: var(--spacing-thick);
       }
     }
 
@@ -364,7 +364,7 @@
       & .spinner {
         @apply size-20;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+        --fui-Spinner--strokeWidth: var(--spacing-thick);
       }
     }
 
@@ -373,7 +373,7 @@
       & .spinner {
         @apply size-24;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+        --fui-Spinner--strokeWidth: var(--spacing-thick);
       }
     }
 
@@ -382,7 +382,7 @@
       & .spinner {
         @apply size-28;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+        --fui-Spinner--strokeWidth: var(--spacing-thick);
       }
     }
 
@@ -391,7 +391,7 @@
       & .spinner {
         @apply size-32;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThicker);
+        --fui-Spinner--strokeWidth: var(--spacing-thicker);
       }
     }
 
@@ -400,7 +400,7 @@
       & .spinner {
         @apply size-36;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThicker);
+        --fui-Spinner--strokeWidth: var(--spacing-thicker);
       }
     }
 
@@ -409,7 +409,7 @@
       & .spinner {
         @apply size-40;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThicker);
+        --fui-Spinner--strokeWidth: var(--spacing-thicker);
       }
     }
 
@@ -418,7 +418,7 @@
       & .spinner {
         @apply size-44;
 
-        --fui-Spinner--strokeWidth: var(--strokeWidthThickest);
+        --fui-Spinner--strokeWidth: var(--spacing-thickest);
       }
     }
   }

@@ -92,7 +92,7 @@
     list-style-type: none;
 
     @variant focus-visible-fui {
-      outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      outline: var(--spacing-thick) solid var(--colorStrokeFocus2);
       border-radius: var(--borderRadiusMedium);
     }
   }

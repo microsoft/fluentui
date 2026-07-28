@@ -81,7 +81,7 @@
 
     background-color: var(--colorNeutralBackground1);
     color: var(--colorNeutralForeground1);
-    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border: var(--spacing-thin) solid var(--colorNeutralStroke1);
     border-radius: var(--borderRadiusMedium);
 
     font-family: var(--fontFamilyBase);
@@ -148,7 +148,7 @@
     /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
     @supports (-moz-appearance: button) {
       @variant focus-visible-fui {
-        box-shadow: 0 0 0 calc(var(--strokeWidthThin) + 0.25px) var(--colorStrokeFocus2) inset;
+        box-shadow: 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--colorStrokeFocus2) inset;
       }
     }
   }
@@ -643,26 +643,26 @@
       border-right-color: var(--colorStrokeFocus2);
       border-bottom-color: var(--colorStrokeFocus2);
       border-left-color: var(--colorStrokeFocus2);
-      box-shadow: var(--shadow2), 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset,
-        0 0 0 var(--strokeWidthThick) var(--colorNeutralForegroundOnBrand) inset;
+      box-shadow: var(--shadow2), 0 0 0 var(--spacing-thin) var(--colorStrokeFocus2) inset,
+        0 0 0 var(--spacing-thick) var(--colorNeutralForegroundOnBrand) inset;
 
       @variant hover {
         border-top-color: var(--colorStrokeFocus2);
         border-right-color: var(--colorStrokeFocus2);
         border-bottom-color: var(--colorStrokeFocus2);
         border-left-color: var(--colorStrokeFocus2);
-        box-shadow: var(--shadow2), 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset;
+        box-shadow: var(--shadow2), 0 0 0 var(--spacing-thin) var(--colorStrokeFocus2) inset;
       }
     }
 
     /* BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642) */
     @supports (-moz-appearance: button) {
       @variant focus-visible-fui {
-        box-shadow: var(--shadow2), 0 0 0 calc(var(--strokeWidthThin) + 0.25px) var(--colorStrokeFocus2) inset,
-          0 0 0 var(--strokeWidthThick) var(--colorNeutralForegroundOnBrand) inset;
+        box-shadow: var(--shadow2), 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--colorStrokeFocus2) inset,
+          0 0 0 var(--spacing-thick) var(--colorNeutralForegroundOnBrand) inset;
 
         @variant hover {
-          box-shadow: var(--shadow2), 0 0 0 calc(var(--strokeWidthThin) + 0.25px) var(--colorStrokeFocus2) inset;
+          box-shadow: var(--shadow2), 0 0 0 calc(var(--spacing-thin) + 0.25px) var(--colorStrokeFocus2) inset;
         }
       }
     }

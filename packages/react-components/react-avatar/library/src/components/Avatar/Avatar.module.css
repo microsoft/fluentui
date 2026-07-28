@@ -137,7 +137,7 @@
     inset-block-start: 0;
     inset-inline-start: 0;
     line-height: 1;
-    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    border: var(--spacing-thin) solid var(--colorTransparentStroke);
     border-radius: inherit;
 
     /* `vertical-align: center` is not a valid value and is dropped by every browser.
@@ -234,32 +234,32 @@
    */
   .badge-tiny {
     --fui-Avatar-badgeRadius: calc(3px * var(--base-scale));
-    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+    --fui-Avatar-badgeGap: var(--spacing-thin);
   }
 
   .badge-extra-small {
     --fui-Avatar-badgeRadius: calc(5px * var(--base-scale));
-    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+    --fui-Avatar-badgeGap: var(--spacing-thin);
   }
 
   .badge-small {
     --fui-Avatar-badgeRadius: calc(6px * var(--base-scale));
-    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+    --fui-Avatar-badgeGap: var(--spacing-thin);
   }
 
   .badge-medium {
     --fui-Avatar-badgeRadius: calc(8px * var(--base-scale));
-    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+    --fui-Avatar-badgeGap: var(--spacing-thin);
   }
 
   .badge-large {
     --fui-Avatar-badgeRadius: calc(10px * var(--base-scale));
-    --fui-Avatar-badgeGap: var(--strokeWidthThick);
+    --fui-Avatar-badgeGap: var(--spacing-thick);
   }
 
   .badge-extra-large {
     --fui-Avatar-badgeRadius: calc(14px * var(--base-scale));
-    --fui-Avatar-badgeGap: var(--strokeWidthThick);
+    --fui-Avatar-badgeGap: var(--spacing-thick);
   }
 }
 
@@ -383,15 +383,15 @@
           [data-size='40'],
           [data-size='48']
         ) {
-        --fui-Avatar-ringWidth: var(--strokeWidthThick);
+        --fui-Avatar-ringWidth: var(--spacing-thick);
       }
 
       &:where([data-size='56'], [data-size='64']) {
-        --fui-Avatar-ringWidth: var(--strokeWidthThicker);
+        --fui-Avatar-ringWidth: var(--spacing-thicker);
       }
 
       &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128']) {
-        --fui-Avatar-ringWidth: var(--strokeWidthThickest);
+        --fui-Avatar-ringWidth: var(--spacing-thickest);
       }
     }
 

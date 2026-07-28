@@ -104,10 +104,10 @@
     border-bottom-style: solid;
     border-left-style: solid;
 
-    border-top-width: var(--strokeWidthThin);
-    border-right-width: var(--strokeWidthThin);
-    border-bottom-width: var(--strokeWidthThin);
-    border-left-width: var(--strokeWidthThin);
+    border-top-width: var(--spacing-thin);
+    border-right-width: var(--spacing-thin);
+    border-bottom-width: var(--spacing-thin);
+    border-left-width: var(--spacing-thin);
   }
 
   /* from useStyles.shadow */

@@ -99,7 +99,7 @@
       inset-inline-end: 0;
       border-style: solid;
       border-color: inherit;
-      border-width: var(--strokeWidthThin);
+      border-width: var(--spacing-thin);
       border-radius: inherit;
     }
   }

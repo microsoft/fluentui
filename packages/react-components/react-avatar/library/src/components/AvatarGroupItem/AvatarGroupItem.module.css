@@ -106,15 +106,15 @@
    * the Griffel trigger button stamps no attributes.
    */
   .stackThick {
-    box-shadow: 0 0 0 var(--strokeWidthThick) var(--colorNeutralBackground2);
+    box-shadow: 0 0 0 var(--spacing-thick) var(--colorNeutralBackground2);
   }
 
   .stackThicker {
-    box-shadow: 0 0 0 var(--strokeWidthThicker) var(--colorNeutralBackground2);
+    box-shadow: 0 0 0 var(--spacing-thicker) var(--colorNeutralBackground2);
   }
 
   .stackThickest {
-    box-shadow: 0 0 0 var(--strokeWidthThickest) var(--colorNeutralBackground2);
+    box-shadow: 0 0 0 var(--spacing-thickest) var(--colorNeutralBackground2);
   }
 
   /*
@@ -186,15 +186,15 @@
         [data-size='40'],
         [data-size='48']
       ) {
-      --fuiAvatarGroupItem__divider--width: var(--strokeWidthThick);
+      --fuiAvatarGroupItem__divider--width: var(--spacing-thick);
     }
 
     &:where([data-size='56'], [data-size='64']) {
-      --fuiAvatarGroupItem__divider--width: var(--strokeWidthThicker);
+      --fuiAvatarGroupItem__divider--width: var(--spacing-thicker);
     }
 
     &:where([data-size='72'], [data-size='96'], [data-size='120'], [data-size='128']) {
-      --fuiAvatarGroupItem__divider--width: var(--strokeWidthThickest);
+      --fuiAvatarGroupItem__divider--width: var(--spacing-thickest);
     }
 
     /* from usePieStyles.slices — two slices */

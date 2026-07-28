@@ -74,11 +74,13 @@
        The three zeros are the `None` spacing step, so they take named utilities (D4
        amendment). Only the inline pair has a LOGICAL utility — Tailwind's `pt-*` is the
        physical `padding-top` — so block-start stays a literal rather than give up the
-       logical property. `padding-block-end` is a stroke token, not spacing: untouched. */
+       logical property. `padding-block-end` is a stroke width; it lives in the same
+       `--spacing-*` namespace (D4 addendum) but has no LOGICAL utility either, so it also
+       stays a direct var reference. */
     @apply ps-horizontal-none pe-horizontal-none;
 
     padding-block-start: 0; /* spacingVerticalNone */
-    padding-block-end: var(--strokeWidthThick);
+    padding-block-end: var(--spacing-thick);
 
     border-radius: var(--borderRadiusMedium);
 
@@ -86,7 +88,7 @@
     @variant disabled {
       background-color: var(--colorTransparentBackground);
 
-      border-width: var(--strokeWidthThin);
+      border-width: var(--spacing-thin);
       border-style: solid;
       border-color: var(--colorNeutralStrokeDisabled);
 
@@ -113,7 +115,7 @@
    * identical declarations are exactly equivalent and use only catalog variants.
    */
   .filled {
-    border-width: var(--strokeWidthThin);
+    border-width: var(--spacing-thin);
     border-style: solid;
     border-color: var(--colorTransparentStroke);
 
@@ -150,7 +152,7 @@
   .filled-darker-shadow {
     background-color: var(--colorNeutralBackground3);
 
-    border-width: var(--strokeWidthThin);
+    border-width: var(--spacing-thin);
     border-style: solid;
     border-color: var(--colorTransparentStrokeInteractive);
 
@@ -161,7 +163,7 @@
   .filled-lighter-shadow {
     background-color: var(--colorNeutralBackground1);
 
-    border-width: var(--strokeWidthThin);
+    border-width: var(--spacing-thin);
     border-style: solid;
     border-color: var(--colorTransparentStrokeInteractive);
 
@@ -172,7 +174,7 @@
   .outline {
     background-color: var(--colorNeutralBackground1);
 
-    border-width: var(--strokeWidthThin);
+    border-width: var(--spacing-thin);
     border-style: solid;
     border-color: var(--colorNeutralStroke1);
     border-bottom-color: var(--colorNeutralStrokeAccessible);
@@ -203,7 +205,7 @@
         /* Maintaining the correct corner radius: the whole border-radius is used as the
            height and only the bottom corners get radii, so the radius is not reduced to
            fit. max() keeps the bar visible even at --borderRadiusMedium: 0. */
-        height: max(var(--strokeWidthThick), var(--borderRadiusMedium));
+        height: max(var(--spacing-thick), var(--borderRadiusMedium));
 
         /* borderBottomLeft/RightRadius → logical block-end corners (compiled [ltr, rtl]
            pair, same value both ways). */
@@ -212,10 +214,10 @@
 
         /* Flat 2px border: borderBottom alone would leave little "horns" on the ends;
            the clipPath trims them. `inset()` right/left are both 0 → no RTL flip. */
-        border-bottom-width: var(--strokeWidthThick);
+        border-bottom-width: var(--spacing-thick);
         border-bottom-style: solid;
         border-bottom-color: var(--colorCompoundBrandStroke);
-        clip-path: inset(calc(100% - var(--strokeWidthThick)) 0 0 0);
+        clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
 
         /* Animation for focus OUT. `transition-delay: var(--curveAccelerateMid)` is a
            curve token used as a delay — reproduced verbatim from the compiled output. */
@@ -231,7 +233,7 @@
       }
 
       @variant focus-within {
-        outline-width: var(--strokeWidthThick);
+        outline-width: var(--spacing-thick);
         outline-style: solid;
         outline-color: transparent;
 
@@ -271,21 +273,21 @@
    */
   .outline {
     @variant focus-within {
-      border-width: var(--strokeWidthThin);
+      border-width: var(--spacing-thin);
       border-style: solid;
       border-color: var(--colorNeutralStroke1Pressed);
       border-bottom-color: var(--colorCompoundBrandStroke);
     }
 
     @variant hover {
-      border-width: var(--strokeWidthThin);
+      border-width: var(--spacing-thin);
       border-style: solid;
       border-color: var(--colorNeutralStroke1Hover);
       border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
     }
 
     @variant active {
-      border-width: var(--strokeWidthThin);
+      border-width: var(--spacing-thin);
       border-style: solid;
       border-color: var(--colorNeutralStroke1Pressed);
       border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);

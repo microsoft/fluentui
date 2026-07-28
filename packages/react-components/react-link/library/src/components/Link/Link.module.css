@@ -102,7 +102,7 @@
     font-weight: var(--fontWeightRegular);
 
     text-decoration-line: none;
-    text-decoration-thickness: var(--strokeWidthThin);
+    text-decoration-thickness: var(--spacing-thin);
 
     /* the NATIVE pseudo-class, as compiled (`.f2hkw1w:focus-visible`) — distinct from
        keyborg's `[data-fui-focus-visible]` used by the focus indicator below */

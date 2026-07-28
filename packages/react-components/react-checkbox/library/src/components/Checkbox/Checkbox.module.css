@@ -177,7 +177,7 @@
     background-color: var(--fui-Checkbox__indicator--backgroundColor);
     border-color: var(--fui-Checkbox__indicator--borderColor, var(--colorNeutralStrokeAccessible));
     border-style: solid;
-    border-width: var(--strokeWidthThin);
+    border-width: var(--spacing-thin);
     border-radius: var(--borderRadiusSmall);
 
     /* `margin: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands and

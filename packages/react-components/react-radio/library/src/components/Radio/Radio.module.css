@@ -143,10 +143,10 @@
 
     font-size: calc(12px * var(--base-scale));
 
-    /* `border: var(--strokeWidthThin) solid` — kept as the compiled shorthand; its implied
+    /* `border: var(--spacing-thin) solid` — kept as the compiled shorthand; its implied
        `border-color: currentcolor` is what the `.input ~ .indicator` colour rules below
        replace (they outrank it on specificity inside this same layer). */
-    border: var(--strokeWidthThin) solid;
+    border: var(--spacing-thin) solid;
     border-radius: var(--borderRadiusCircular);
 
     /* `margin: var(--spacingVerticalS) var(--spacingHorizontalS)` expanded to longhands and
