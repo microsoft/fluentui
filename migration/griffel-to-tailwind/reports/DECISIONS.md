@@ -361,6 +361,108 @@ reproducing Griffel's reset-bucket subordination — and is the sanctioned prefl
 for apps. This is a name-for-name structural mirror of the nyt-games family
 (`theme, base, components, components.l1–l5, utilities`) under the `fui` root.
 
+## D2 amendment 5 — rules styling EXTERNAL/unconverted Griffel elements must be UNLAYERED (2026-07-28)
+
+D2 records that unlayered CSS (including consumer Griffel atomics) beats layered Fluent CSS,
+and treats that as the _desirable_ half of the contract. It is also true in the direction D2
+did not consider, and there it is a bug: **when a converted component styles an element owned
+by a package that is still on Griffel, the converted rule is the one that loses.** The
+cascade compares layer origin BEFORE specificity, so no amount of specificity rescues a rule
+inside `@layer fui.components.l1`.
+
+**Authoring rule (now in CONVERSION_GUIDE §2 dialect):** any rule whose subject element is
+owned by an external or unconverted Griffel package goes in an UNLAYERED block at the bottom
+of the module, ordered by mergeClasses argument order (file position is the only tiebreak
+there, since `@variant` compounds are all `:where()`-flat). Rules on the component's own
+elements — including its own `:global(.fui-X__slot)` static classes — stay layered.
+
+**Scope.** Permanent for `@fluentui/react-icons` (D11 keeps it on Griffel, so nothing will
+ever move those atomics into a layer). Transitional for in-repo packages awaiting conversion
+under D12 (e.g. react-popover's `PopoverSurface` as consumed by InfoButton); when the owner
+converts, the rules return to the layer that mirrors their mergeClasses argument.
+
+**The dominant instance is `bundleIcon()`.** `node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js`
+compiles to `.fjseox{display:none}` / `.f1w7gpdv{display:inline}`, and `bundleIcon.js` hands
+the filled `<svg>` `root + (filled && visible)` and the regular one `root + (!filled && visible)`.
+Every converted `display` rule on `:global(.fui-Icon-filled)` / `:global(.fui-Icon-regular)`
+is therefore in direct contention with an unlayered 0-1-0 atomic.
+
+Found and fixed so far:
+
+| package                                   | rules | slices                                                                                                  |
+| ----------------------------------------- | ----- | ------------------------------------------------------------------------------------------------------- |
+| react-infolabel (`InfoButton.module.css`) | 6     | base, `open`, base-hover                                                                                |
+| react-button (`Button.module.css`)        | 12    | `subtle` hover/pressed, `transparent` hover/pressed, `rootDisabledStyles.base` hover/pressed swap-backs |
+
+`react-button` was found by grepping the converted modules for `fui-Icon-filled` after the
+InfoButton root-cause; it was broken at runtime and had never been caught (see the postmortem
+below for why VR did not flag it). **Grep every module for `fui-Icon-filled` on conversion.**
+
+**CDP evidence, react-button** (fresh `vr-tests-react-components:build-storybook --skip-nx-cache`,
+story `button-converged--with-icon-before-content`, `subtle` module token read out of the live
+CSSOM and applied, `:hover` forced with `CSS.forcePseudoState`, `CSS.getMatchedStylesForNode`
+on both `<svg>`s):
+
+```
+unlayered (fixed)   .fjseox                                                   layers: []                  0-1-0  display:none
+                    .fuicm-Button-module__subtle--Fp5L:where(:hover)          layers: []                  0-2-0  display:inline   ← WINS
+                      .fui-Icon-filled
+                    getComputedStyle(.fui-Icon-filled).display  = block   (filled glyph rendered)
+                    getComputedStyle(.fui-Icon-regular).display = none
+
+layered (the bug)   .fuicm-Button-module__subtle--Fp5L:where(:hover)          layers: [fui.components.l1]  0-2-0  display:inline
+                      .fui-Icon-filled
+                    .fjseox                                                   layers: []                   0-1-0  display:none    ← WINS
+                    getComputedStyle(.fui-Icon-filled).display  = none    (outline glyph, unchanged on hover)
+                    getComputedStyle(.fui-Icon-regular).display = block
+```
+
+The two runs are the same page, same build: the layered row is an A/B counterfactual — the
+identical selector re-declared inside `@layer fui.components.l1` and appended LAST in the
+document, with the shipped unlayered copies deleted from the CSSOM. Appending last and still
+losing is the whole point: file position cannot beat layer origin.
+
+Two reading notes for anyone re-running this. (1) The `<svg>`s are flex items of
+`.fui-Button__icon` (`inline-flex`), so CSS Display 3 **blockifies** `display:inline` to
+`block` — `block` means rendered, not "wrong value"; InfoButton's `inline-flex` blockifies to
+`flex` the same way. (2) Chrome exposes an empty `cssRules` on every `CSSStyleRule` (nested
+CSS), so a CSSOM walker that tests `if (r.cssRules)` before `r.selectorText` silently reports
+zero matches. Record `selectorText` first, then recurse.
+
+Ordering was verified too, not assumed: with `disabled` set on the same subtle button and
+`:hover` still forced, the matched chain ends
+`…__root--GuFc:where([disabled], …):where(:hover) .fui-Icon-filled {display:none}` and the
+filled glyph stays hidden — i.e. arg #8 beats arg #3 purely because its block is written last.
+
+### Postmortem — how a runtime-broken swap passed VR (stale-bundle false pass)
+
+`vr-tests-react-components:build-storybook` declared nx `inputs` that did not include the
+component package sources. A rebuild whose only changes were inside `packages/**` therefore
+hit the nx cache and **replayed a previously built storybook bundle**, and the capture step
+screenshotted that stale bundle. Every VR round that touched only component CSS compared new
+baselines against old rendering, so a real regression could not produce a diff — the runs were
+green because they were not exercising the change at all. InfoButton's swap only surfaced when
+a cache-miss build finally shipped the real CSS and produced a 238 px / 3-glyph diff; the same
+masking is why react-button's 12 rules sat broken with a clean VR history.
+
+Fixed in **b27bf13985** (`fix(react-infolabel): unlayered icon-swap …; fix VR storybook nx
+inputs + staleness guard`), two independent layers:
+
+1. **Correct the hash inputs** — `apps/vr-tests-react-components/project.json` `build-storybook`
+   now takes `default`, `^production` and the `.storybook` globs, so any component source edit
+   invalidates the bundle.
+2. **Refuse to trust it anyway** — `migration/griffel-to-tailwind/validation/capture.mjs`
+   compares component source mtimes against the built bundle and aborts the capture when
+   sources are newer, so a future inputs regression fails loudly instead of passing silently.
+
+Generalisable lesson, and the reason this is recorded as a decision rather than a bug note: a
+cache key that omits an input turns the cache into a **correctness** hazard, not a performance
+one, and a validation suite that reads from a cached artifact must independently verify the
+artifact's freshness. Fixing the inputs alone would have restored correctness while leaving the
+failure mode silent; the guard is what makes the next occurrence visible. Both were required.
+Any VR-green claim made before b27bf13985 for a change confined to `packages/**` should be
+treated as unverified and re-run on a cache-miss build.
+
 ## D14 — State-mutation builder pattern is REMOVED in Phase 3 (settled with user 2026-07-27)
 
 **Committed, not a candidate.** The v9 pipeline's in-place mutation of the render-local

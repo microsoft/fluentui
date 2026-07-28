@@ -177,6 +177,42 @@ Dialect rules (from nyt-games + Fluent adaptations):
   (`shorthands.borderColor(x)` → four `border-*-color` longhands; `padding: '3px 8px'` →
   four longhands) — Griffel's shorthand/longhand priority machinery has no CSS equivalent.
 - Selectors on other components' static classes: `:global(.fui-Xxx)`.
+- **Rules that style elements owned by an EXTERNAL or unconverted Griffel package must be
+  UNLAYERED** (D2 amendment). Griffel injects its atomics with no `@layer`, and in the CSS
+  cascade an unlayered normal author declaration beats **every** `@layer` — that comparison
+  happens BEFORE specificity is consulted. So a converted rule sitting in
+  `@layer fui.components.l1` can never override a Griffel atomic on the same property, no
+  matter how much more specific it is. D2's "unlayered beats layered" holds when an
+  unconverted component styles a converted one; it INVERTS the moment a converted component
+  reaches into an unconverted one's elements, and that direction is a silent runtime bug.
+
+  **`@fluentui/react-icons` above all.** `bundleIcon()` renders two `<svg>`s and toggles
+  them with unlayered atomics — `.fjseox{display:none}` / `.f1w7gpdv{display:inline}`
+  (`node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js`). Any converted
+  `:global(.fui-Icon-filled)` / `:global(.fui-Icon-regular)` `display` rule left inside a
+  layer loses at 0-2-0 to `.fjseox`'s 0-1-0 and the glyph never swaps. **Grep every module
+  you convert for `fui-Icon-filled`.**
+
+  Scope: this is **permanent** for `@fluentui/react-icons` (D11 keeps it on Griffel — it is
+  not in the conversion scope), and **transitional** for in-repo packages that simply have
+  not converted yet (react-popover's `PopoverSurface`, etc.); when the owning package
+  converts, the rule can move back into the layer that mirrors its mergeClasses argument.
+  Rules that style the component's OWN elements — including its own `:global(.fui-X__slot)`
+  static classes — stay layered; nothing unlayered competes for those.
+
+  **Template:** `packages/react-components/react-infolabel/library/src/components/InfoButton/InfoButton.module.css`
+  — one unlayered block at the BOTTOM of the file under the heading comment "The icon swap
+  must be UNLAYERED", with the CDP matched-rules evidence written into that comment, and a
+  pointer comment left in each layered block the rules were lifted out of.
+  `packages/react-components/react-button/library/src/components/Button/Button.module.css`
+  is the same pattern at larger scale (6 pairs across 3 slices).
+
+  **Ordering inside the unlayered block is load-bearing.** Everything there flattens to the
+  same specificity (`@variant` compounds are `:where()`), and the classes involved sit on the
+  same element, so file position is the only tiebreak — lay the blocks out in mergeClasses
+  ARGUMENT order (Button: appearance swaps `#3` first, `rootDisabledStyles` swap-backs `#8`
+  last), exactly as you would inside a layer.
+
 - Pseudo-states: use the shared custom variants (`@variant hover`, `@variant disabled`,
   `@variant focus-visible-fui` …) — never raw `[data-fui-focus-visible]` selectors in
   component files.
