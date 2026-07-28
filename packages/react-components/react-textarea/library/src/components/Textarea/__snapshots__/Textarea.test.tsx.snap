@@ -3,7 +3,7 @@
 exports[`Textarea renders a default state 1`] = `
 <div>
   <span
-    class="fui-Textarea"
+    class="group/fui-textarea fui-Textarea"
   >
     <textarea
       class="fui-Textarea__textarea"
