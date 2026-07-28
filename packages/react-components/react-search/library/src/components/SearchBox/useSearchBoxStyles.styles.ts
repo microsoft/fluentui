@@ -70,7 +70,19 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // eslint-disable-next-line react-hooks/immutability
   root['data-focused'] = focused || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this SearchBox's state, because `styles.root` is hashed and unaddressable from
+  // outside this file (DECISIONS.md D15).
+  //
+  // SearchBox needs no state mirrors: `data-focused` is stamped on this very element above,
+  // and `data-size` / `data-disabled` land on it too when `useInputStyles_unstable` runs at
+  // the end of this hook, so `@variant group-focused/fui-search-box`,
+  // `group-disabled/fui-search-box` and the size variants all work as-is (D15.6, Tier 0).
+  //
+  // The name is the COMPONENT's, kebab-cased — `fui-search-box`, not the root static class
+  // `fui-SearchBox` (D15.1).
   //
   // Cascade priority is decided by the `@layer fui.*` order in SearchBox.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
@@ -84,7 +96,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   // keyed off the `data-size` Input's hook stamps.
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(searchBoxClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-search-box', searchBoxClassNames.root, styles.root, state.root.className);
 
   // eslint-disable-next-line react-hooks/immutability
   state.input.className = clsx(searchBoxClassNames.input, styles.input, state.input.className);
@@ -108,7 +120,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     // eslint-disable-next-line react-hooks/immutability
     state.contentAfter.className = clsx(
       searchBoxClassNames.contentAfter,
-      styles.contentAfter,
+      styles['content-after'],
       state.contentAfter.className,
     );
   } else if (state.dismiss) {
@@ -118,7 +130,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     // conversion changes nothing about the state object a customStyleHook or a custom render
     // function would observe.
     // eslint-disable-next-line react-hooks/immutability
-    state.dismiss.className = clsx(state.dismiss.className, styles.contentAfter);
+    state.dismiss.className = clsx(state.dismiss.className, styles['content-after']);
   }
 
   useInputStyles_unstable(state);

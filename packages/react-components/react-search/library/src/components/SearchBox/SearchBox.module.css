@@ -287,7 +287,7 @@
    */
 
   /* from useContentAfterStyles.contentAfter — arg #6 */
-  .contentAfter {
+  .content-after {
     @apply ps-horizontal-m gap-x-horizontal-xs;
   }
 
@@ -302,7 +302,7 @@
    */
   .root {
     @variant not-focused {
-      & .contentAfter {
+      & .content-after {
         @apply h-0 w-0 overflow-hidden;
 
         padding-inline-start: 0;
