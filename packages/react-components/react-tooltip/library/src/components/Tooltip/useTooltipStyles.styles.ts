@@ -49,10 +49,12 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
 
   content['data-open'] = state.visible || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token — the only
-  // handle by which another module can style an element from this Tooltip's state, because
-  // `styles.content` is hashed and unaddressable from outside this file (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token — the only handle by which another module can style an element
+  // from this Tooltip's state, because `styles.content` is hashed and unaddressable from
+  // outside this file (DECISIONS.md D15).
   //
   // It goes on `content` rather than a root because Tooltip HAS no root slot:
   // `tooltipClassNames` declares `content` alone, the tooltip renders into a portal, and the
@@ -64,8 +66,8 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
   state.content.className = clsx(
-    'group/fui-tooltip',
     tooltipClassNames.content,
+    'group/fui-tooltip',
     styles.content,
     state.appearance === 'inverted' && styles.inverted,
     state.content.className,
