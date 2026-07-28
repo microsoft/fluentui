@@ -4,7 +4,7 @@ exports[`CarouselButton renders a default state 1`] = `
 <div>
   <button
     aria-disabled="false"
-    class="fui-CarouselButton group/fui-button fui-Button fuicm-root fuicm-subtle fuicm-rounded"
+    class="fui-CarouselButton fui-Button group/fui-button fuicm-root fuicm-subtle fuicm-rounded"
     data-icon-position="before"
     data-size="medium"
     tabindex="0"

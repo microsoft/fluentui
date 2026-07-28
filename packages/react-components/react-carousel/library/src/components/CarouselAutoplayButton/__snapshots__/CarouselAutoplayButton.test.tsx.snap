@@ -4,7 +4,7 @@ exports[`CarouselAutoplayButton renders a default state 1`] = `
 <div>
   <button
     aria-pressed="false"
-    class="fui-CarouselAutoplayButton group/fui-button fui-Button fuicm-root fuicm-secondary fuicm-rounded fui-ToggleButton"
+    class="fui-CarouselAutoplayButton fui-Button group/fui-button fuicm-root fuicm-secondary fuicm-rounded fui-ToggleButton"
     data-empty="true"
     data-icon-only="true"
     data-icon-position="before"
