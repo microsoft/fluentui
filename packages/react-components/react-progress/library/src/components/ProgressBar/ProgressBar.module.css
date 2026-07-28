@@ -34,7 +34,7 @@
  *   2  useBarStyles.base                → fui.components.l1
  *   3  useBarStyles.brand               → fui.components.l1  (see "color" note below)
  *   4  useBarStyles.indeterminate       → fui.components.l1  (data-indeterminate)
- *   5  useBarStyles.nonZeroDeterminate  → fui.components.l1  (.nonZeroDeterminate)
+ *   5  useBarStyles.nonZeroDeterminate  → fui.components.l1  (.non-zero-determinate)
  *   6  useBarStyles[color]              → fui.components.l1  (.brand/.error/…)
  *   7  consumer className               → unlayered (always wins)
  *
@@ -143,7 +143,7 @@
   }
 
   /* from useBarStyles.nonZeroDeterminate — a near-zero value must not animate its reset */
-  .nonZeroDeterminate {
+  .non-zero-determinate {
     transition-property: width;
     transition-duration: 0.3s;
     transition-timing-function: ease;

@@ -62,12 +62,27 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
 
   root['data-thickness'] = thickness;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this ProgressBar's state, because `styles.root` is hashed and unaddressable from
+  // outside this file. ProgressBar needs no state mirrors: `data-thickness` is already on
+  // this element, so `@variant group-thickness-large/fui-progress-bar` works as-is
+  // (DECISIONS.md D15, Tier 0). `data-indeterminate` deliberately stays on the `bar` slot —
+  // that is the element Griffel styled, and the bar is a descendant of this marker, so a
+  // child that needs it reads it there rather than through the group.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in ProgressBar.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces, including the forced-colors
   // inversion on the bar.
-  state.root.className = clsx(progressBarClassNames.root, styles.root, styles[shape], state.root.className);
+  state.root.className = clsx(
+    'group/fui-progress-bar',
+    progressBarClassNames.root,
+    styles.root,
+    styles[shape],
+    state.root.className,
+  );
 
   if (state.bar) {
     const bar = state.bar as NonNullable<ProgressBarState['bar']> & ProgressBarBarDataAttributes;
@@ -82,7 +97,7 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
     state.bar.className = clsx(
       progressBarClassNames.bar,
       styles.bar,
-      !isIndeterminate && value > ZERO_THRESHOLD && styles.nonZeroDeterminate,
+      !isIndeterminate && value > ZERO_THRESHOLD && styles['non-zero-determinate'],
       styles[barColor],
       state.bar.className,
     );
