@@ -87,7 +87,7 @@ Dialect rules (from nyt-games + Fluent adaptations):
 - Non-spacing tokens: literal `var(--tokenName)` in modules — never re-declare their VALUES.
   (They ARE registered as `@theme inline` REFERENCES in react-tailwind-theme/css/tokens.css
   for consumer utility names — that registration is generated, not hand-authored, and does
-  not change the module authoring rule. Spacing follows its own rule above.)
+  not change the module authoring rule. Spacing and stroke widths follow their own rule below.)
 - **Spacing — Fluent tokens FIRST, numeric only as fallback** (D4 amendment, dual spacing).
   Two scales are registered and they are ONE scaling system (both compute through
   `--base-scale`, so `p-horizontal-m` and `p-12` emit the same length):
@@ -116,9 +116,55 @@ Dialect rules (from nyt-games + Fluent adaptations):
   **Raw `var(--spacingHorizontal*)` / `var(--spacingVertical*)` is FORBIDDEN in component
   modules** (including the `px-(--spacingHorizontalM)` arbitrary form). It still compiles,
   but it is the one authoring form that does NOT scale with `--base-scale`, so it silently
-  diverges from every other spacing value on the page. Spacing is the ONLY namespace with
-  this prohibition — literal `var(--tokenName)` stays correct for colors, radii, shadows,
-  type, curves, durations and z-index.
+  diverges from every other spacing value on the page.
+
+- **Stroke widths — same namespace, same prohibition** (D4 amendment addendum). The 4
+  `strokeWidth*` tokens are registered under `--spacing-*` too, as `thin` / `thick` /
+  `thicker` / `thickest` (1/2/3/4px through `--base-scale`), so they are part of the ONE
+  spacing system described above.
+
+  | Token                 | utility suffix | variable             | px  |
+  | --------------------- | -------------- | -------------------- | --- |
+  | `strokeWidthThin`     | `thin`         | `--spacing-thin`     | 1   |
+  | `strokeWidthThick`    | `thick`        | `--spacing-thick`    | 2   |
+  | `strokeWidthThicker`  | `thicker`      | `--spacing-thicker`  | 3   |
+  | `strokeWidthThickest` | `thickest`     | `--spacing-thickest` | 4   |
+
+  **Which form to use depends on the property**, because only some Tailwind families read the
+  spacing namespace. This is probe-measured (DECISIONS D4 addendum has the full table), not a
+  judgement call:
+
+  1. **Spacing-powered properties → the utility.** `padding-*`, `margin-*`, `gap`, `width`,
+     `height`, `min/max-w`, `size`, `inset-*`, `flex-basis`, `translate-*`, `scroll-m/p-*`,
+     `text-indent`, `line-height`. Write `pb-thin`, `h-thick`, `gap-thicker`, `w-thickest`.
+  2. **NOT spacing-powered → direct `var(--spacing-thin …)`.** `border-*-width`,
+     `outline-width`, `outline-offset`, ring/`divide-*` widths, `text-underline-offset`,
+     `text-decoration-thickness`, `box-shadow` spread values, `clip-path`, and any
+     `--fui-*` custom-property assignment. **`border-thin` does not exist and never will** —
+     v4 border widths are a fixed bare-number px progression (`border-2` compiles to a literal
+     `border-width: 2px`), not a theme lookup, and the only width namespace that exists,
+     `--stroke-width-*`, drives SVG `stroke-width`.
+
+     These four are the ONLY token registrations that also emit a real custom property
+     (`@layer fui.theme { :root, :host { --spacing-thin: … } }` in the generated tokens.css,
+     shipped once per document via the theme's `dist/styles.css`), which is exactly what makes
+     the direct reference legal. Do NOT try this with any other token's `--spacing-*`-style
+     name — nothing else is emitted.
+
+  3. **Utility wanted on a non-consuming property** → the by-name arbitrary form against the
+     emitted variable: `border-(length:--spacing-thin)`, `outline-(length:--spacing-thick)`,
+     `decoration-(length:--spacing-thicker)`, `underline-offset-(length:--spacing-thin)`.
+
+  **Raw `var(--strokeWidth*)` is FORBIDDEN in component modules**, including
+  `border-(length:--strokeWidthThin)` (the form earlier notes recommended). Same reason as
+  spacing: it is the one form that does not scale with `--base-scale`.
+
+  Spacing and stroke widths are the ONLY namespaces with this prohibition — literal
+  `var(--tokenName)` stays correct for colors, radii, shadows, type, curves, durations and
+  z-index.
+
+  > Exception, unchanged: the focus-ring CSS keeps its hardcoded `2px` (D6 — a known upstream
+  > FIXME; "fixing" it to a stroke width changes rendering).
 
 - **Logical properties only** for anything Griffel would RTL-flip: `paddingLeft` →
   `padding-inline-start`, `marginRight` → `margin-inline-end`, `left` →

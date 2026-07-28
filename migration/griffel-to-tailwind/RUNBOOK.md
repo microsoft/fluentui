@@ -144,7 +144,12 @@ Repeat until no `needs-conversion` remain:
 
 ### Queued (user-directed 2026-07-27, in order)
 
-1. Stroke-widths-into-spacing workflow (running: wf_258f062e-ed2) — commit on completion
+1. Stroke-widths workflow DONE (VR 20/21 + family clean; tests green; build 196s/AOT 42).
+   OPEN: react-infolabel "sizes -- open" fails 238px deterministically. Bisection
+   EXONERATED each stroke file individually (utilities.css / storybook theme css /
+   theme regen / infolabel dir all reverted alone → still 238px). Diagnosis agent
+   running with DOM-ground-truth method (icon-swap layered-vs-unlayered vs webpack
+   cache theories). Do NOT convert more packages until root-caused.
 2. Phase 2 batch 3 — next 10 lowest-level from needs-conversion
 3. **Client performance evaluation** — PERF_EVAL_SPEC.md (5 components incl. Button,
    plain vs multi-layer-overridden, 1 vs 100-instance matrix, vs Griffel predecessors)

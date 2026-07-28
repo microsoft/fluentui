@@ -461,3 +461,139 @@ Converting them to named utilities is **VR-neutral at the default 16px root** �
 a 12px literal and `p-horizontal-m` computes to `0.75rem` = 12px there — so the sweep can be
 validated with the existing zero-tolerance VR pass. It is deliberately NOT bundled into this
 amendment; schedule it as its own change so the diff is reviewable per package.
+
+## D4 amendment addendum — stroke widths join the spacing namespace (settled with user 2026-07-27)
+
+**The 4 `strokeWidth*` tokens are now registered under `--spacing-*` as `thin` / `thick` /
+`thicker` / `thickest`, on exactly the same literal-base-scale terms as the 22 spacing steps.**
+This removes the last generator exclusion: **467 registered / 0 excluded** (was 463/4).
+
+```css
+--spacing-thin: calc(1px * var(--base-scale));
+--spacing-thick: calc(2px * var(--base-scale));
+--spacing-thicker: calc(3px * var(--base-scale));
+--spacing-thickest: calc(4px * var(--base-scale));
+```
+
+### The measurement that shaped the design — which utility families read `--spacing-*`
+
+The working assumption going in was that Tailwind spacing powers dimensional values generally,
+including border widths. **It does not.** Probed by registering a `--spacing-thin` on the real
+`css/index.css` and compiling a candidate list through `@tailwindcss/postcss`
+(`.scratch/layer-probe/check-stroke-namespace.mjs`); the compiled output is the evidence, no
+part of this table is reasoned:
+
+| Family                               | `-thin` compiles? | Compiled output                                              |
+| ------------------------------------ | ----------------- | ------------------------------------------------------------ |
+| `p-` `px-` `py-` `ps-` `pt-`         | **YES**           | `padding-inline: calc(1px * var(--base-scale))`              |
+| `m-` `mx-` `mt-` `-mt-`              | **YES**           | `margin-top: calc(1px * var(--base-scale))`                  |
+| `gap-` `gap-x-`                      | **YES**           | `gap: calc(1px * var(--base-scale))`                         |
+| `space-x-`                           | **YES**           | `margin-inline-end: calc(calc(1px * var(--base-scale)) * …)` |
+| `w-` `h-` `min-w-` `max-w-` `size-`  | **YES**           | `width: calc(1px * var(--base-scale))`                       |
+| `inset-` `top-` `start-`             | **YES**           | `inset: calc(1px * var(--base-scale))`                       |
+| `basis-`                             | **YES**           | `flex-basis: calc(1px * var(--base-scale))`                  |
+| `translate-` `translate-x-`          | **YES**           | `--tw-translate-x: calc(1px * var(--base-scale))`            |
+| `scroll-m-` `scroll-p-`              | **YES**           | `scroll-margin: calc(1px * var(--base-scale))`               |
+| `indent-`                            | **YES**           | `text-indent: calc(1px * var(--base-scale))`                 |
+| `leading-`                           | **YES**           | `line-height: calc(1px * var(--base-scale))`                 |
+| `border-` `border-t/b/s/x-`          | **NO**            | not generated                                                |
+| `divide-x-`                          | **NO**            | not generated                                                |
+| `outline-` `outline-offset-`         | **NO**            | not generated                                                |
+| `ring-` `ring-offset-` `inset-ring-` | **NO**            | not generated                                                |
+| `underline-offset-`                  | **NO**            | not generated                                                |
+| `decoration-`                        | **NO**            | not generated                                                |
+| `stroke-`                            | **NO**            | not generated                                                |
+
+The non-consuming families take a **fixed bare-number px progression** that is not a theme
+lookup at all — `border-2` → `border-width: 2px`, `outline-2` → `outline-width: 2px`,
+`underline-offset-2` → `text-underline-offset: 2px`, `decoration-2` →
+`text-decoration-thickness: 2px` (all compiled, all literal). The only width namespace that
+exists is `--stroke-width-*`, and it drives **SVG** `stroke-width` (`stroke-<name>` →
+`stroke-width: 9px` from a registered `--stroke-width-probe: 9px`) — the wrong property. There
+is no `--border-width-*` namespace to register against.
+
+So registration buys genuine utilities for the dimensional uses (`w-thin`, `h-thick`,
+`p-thin`, `gap-thicker`, `pb-thin` — Fluent components do use stroke widths this way) and
+**cannot** give `border-thin` a meaning, no matter which namespace the tokens are put in.
+
+### CONSEQUENCE — the 4 are the only registrations that ALSO emit a real variable
+
+`@theme inline` emits **no** custom property (that is the whole point of D4's inline choice).
+For the non-consuming properties the sanctioned authoring form is therefore a **direct
+`var(--spacing-thin …)` reference**, which needs a variable that actually exists. The generator
+appends one plain-CSS block to `css/tokens.css`:
+
+```css
+@layer fui.theme {
+  :root, :host {
+    --spacing-thin: calc(1px * var(--base-scale));
+    …
+  }
+}
+```
+
+`:root, :host` matches the selector Tailwind emits its own `@theme` block on, so shadow-DOM
+consumers see the same variable set as `--base-scale`.
+
+Verified end to end, not reasoned (`.scratch/layer-probe/check-stroke-emission.mjs`):
+
+- **Emitted once per document.** `css/emit.css` → `build.js` → `dist/styles.css` declares all
+  four (artifact grew 1,763 → 1,770 bytes; the two `@layer fui.theme` variable blocks are 377
+  bytes of it). The VR storybook's `source(none)` path
+  (`apps/vr-tests-react-components/.storybook/tailwind-theme.css`) compiles to a byte-identical
+  1,770-byte emission.
+- **Absent from component packages.** A module compiled through `@reference '#theme'` emits
+  **zero** of the four declarations while still emitting `border-block-end-width:
+var(--spacing-thin)` and `padding: calc(1px * var(--base-scale))` — D13 holds unchanged.
+- **Resolves in a browser.** Loaded `dist/styles.css` in Chrome: `var(--spacing-thin)` used on
+  `border-block-end-width` and `var(--spacing-thick)` on `outline-width` produce computed
+  values **identical to a literal `1px`/`2px`** (both read `0.8px`/`1.6px` — Chrome snapping
+  border widths to device pixels at DPR 1.25; `padding-top` shows the unsnapped `1px`/`2px`/
+  `3px`/`4px`). Scaling confirmed: `--spacing-thick` computes 2px at a 16px root, 2.5px at
+  20px, 4px at 32px — the same `--base-scale` behavior as every other spacing entry.
+
+### 7-theme identity — asserted, zero divergence
+
+Same bar the spacing amendment had to clear, same method
+(`.scratch/layer-probe/assert-theme-stroke-width.js`): all 7 shipped themes (webLight, webDark,
+teamsLight, teamsLightV21, teamsDark, teamsDarkV21, teamsHighContrast) carry **byte-identical**
+`strokeWidthThin/Thick/Thicker/Thickest` = `1px`/`2px`/`3px`/`4px`. **No divergence to report.**
+Every theme factory spreads the same `strokeWidths` object. The generator re-asserts the table
+against `packages/tokens/src/global/strokeWidths.ts` on every run (`readStrokeWidthScale`,
+mirroring `readSpacingScale`), so an upstream change throws instead of shipping a stale literal.
+
+The priced-in cost is identical to spacing's and accepted on the same terms: a FluentProvider
+`theme` override of `strokeWidthThick` no longer reaches utility- or `--spacing-thick`-sourced
+widths. No shipped theme is affected.
+
+### AUTHORING RULE — raw `var(--strokeWidth*)` is now FORBIDDEN in component modules
+
+Stroke widths join spacing as the second (and last) namespace with this prohibition, for the
+same reason: `var(--strokeWidthThin)` is the one form that does **not** scale with
+`--base-scale`, so it silently diverges from every other length on the page under user zoom.
+
+| Property                                                                                                                                                | Sanctioned form                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `padding-*` `margin-*` `gap` `width` `height` `inset-*` `flex-basis` `text-indent`                                                                      | the utility: `pb-thin`, `h-thick`, `gap-thicker`, `w-thickest`                                                                                           |
+| `border-*-width`, `outline-width`, `text-decoration-thickness`, `text-underline-offset`, `box-shadow` spreads, `clip-path`, custom-property assignments | direct `var(--spacing-thin …)`                                                                                                                           |
+| a Tailwind utility is wanted on a non-consuming property                                                                                                | `border-(length:--spacing-thin)`, `outline-(length:--spacing-thick)`, `decoration-(length:--spacing-thicker)` — all compile against the emitted variable |
+
+`border-(length:--strokeWidthThin)` — the form D4-era notes and the old exclusion comment
+recommended — is now non-conformant: it compiles, but resolves the unscaled token.
+
+### Backlog opened by this addendum
+
+Measured at addendum time: **58 raw `var(--strokeWidth*)` declarations across 12 already-
+converted `*.module.css` files** — textarea 13, avatar 10, button 8, spinner 8,
+avatarGroupItem 6, image 4, divider 2, list 2, radio 2, badge 1, checkbox 1, link 1. By
+property: ~20 border-width-family, 8 `box-shadow`, ~14 custom-property assignments
+(`--fui-Spinner--strokeWidth`, `--fui-Avatar-ringWidth`, `--fui-Avatar-badgeGap`,
+`--fuiAvatarGroupItem__divider--width`), 2 outline, and one each of
+`text-decoration-thickness`, `padding-block-end`, `height`, `clip-path`. Only the last three
+convert to utilities (`pb-thin`, `h-thick`); the rest become `var(--spacing-*)` references.
+
+The conversion is **VR-neutral at the default 16px root** — the tokens are 1–4px literals and
+`calc(Npx * var(--base-scale))` computes to the same N px there, browser-confirmed above — so
+the sweep validates against the existing zero-tolerance VR pass. Like the spacing backlog it is
+deliberately NOT bundled here; schedule it per package alongside the 176-declaration spacing
+sweep, which touches an overlapping file set.
