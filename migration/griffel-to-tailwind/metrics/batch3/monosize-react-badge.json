@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Badge",
+    "path": "bundle-size/Badge.fixture.js",
+    "minifiedSize": 26069,
+    "gzippedSize": 5662,
+    "assets": {
+      "css": { "minifiedSize": 17623, "gzippedSize": 2517 },
+      "js": { "minifiedSize": 8446, "gzippedSize": 3145 }
+    }
+  },
+  {
+    "name": "CounterBadge",
+    "path": "bundle-size/CounterBadge.fixture.js",
+    "minifiedSize": 26572,
+    "gzippedSize": 5860,
+    "assets": {
+      "css": { "minifiedSize": 17623, "gzippedSize": 2517 },
+      "js": { "minifiedSize": 8949, "gzippedSize": 3343 }
+    }
+  },
+  {
+    "name": "PresenceBadge",
+    "path": "bundle-size/PresenseBadge.fixture.js",
+    "minifiedSize": 39668,
+    "gzippedSize": 10456,
+    "assets": {
+      "css": { "minifiedSize": 17623, "gzippedSize": 2517 },
+      "js": { "minifiedSize": 22045, "gzippedSize": 7939 }
+    }
+  }
+]

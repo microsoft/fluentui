@@ -64,10 +64,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-accordion": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "@griffel/react retained for useAccordion.test.tsx consumer-simulation mergeClasses import — swap to clsx in Phase 3.",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-aria": {
       "status": "no-styles",
@@ -88,10 +89,11 @@
       "notes": "usePresenceBadgeStyles uses !important x7 - semantics invert under @layer; pilot #2 | BATCH-1 VALIDATED 2026-07-27: VR clean at zero tolerance, 0 fix rounds, tests+build green (dist/styles.css emitted)"
     },
     "react-breadcrumb": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-button": {
       "status": "validated",
@@ -106,10 +108,11 @@
       "notes": ""
     },
     "react-card": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 4,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-carousel": {
       "status": "needs-conversion",
@@ -184,10 +187,11 @@
       "notes": ""
     },
     "react-field": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-headless-components-preview": {
       "status": "no-styles",
@@ -256,10 +260,11 @@
       "notes": ""
     },
     "react-message-bar": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 5,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-migration-v0-v9": {
       "status": "special",
@@ -352,10 +357,11 @@
       "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-rating": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-search": {
       "status": "validated",
@@ -388,10 +394,11 @@
       "notes": "Runtime CSS vars (--fui-Slider--progress/direction) port unchanged; static parts convert"
     },
     "react-spinbutton": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-spinner": {
       "status": "validated",
@@ -448,10 +455,11 @@
       "notes": "ResizeObserver-driven widths port unchanged"
     },
     "react-tags": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 5,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "Delegation consumer react-tag-picker repaired in 6cad216c17 (column-gap ownership + conformance). tag-picker jest.config needs css-modules serializer when tags classes reach its snapshots.",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-teaching-popover": {
       "status": "needs-conversion",
@@ -496,10 +504,11 @@
       "notes": ""
     },
     "react-toolbar": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 6,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "PARTIAL: useToolbarToggleButtonStyles/useToolbarRadioButtonStyles stay Griffel (restyle still-Griffel react-button ToggleButton); finish when button family converts. ToolbarDivider display authored in fui.base (repaired live mixed-mode regression).",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-tooltip": {
       "status": "validated",
@@ -508,10 +517,11 @@
       "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-tree": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 5,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-utilities": {
       "status": "no-styles",
@@ -550,5 +560,10 @@
     "build": "0367fcc2a3",
     "result": "24/24 sets PASS, zero retries",
     "report": "reports/revalidation-sweep-2026-07-27.md"
+  },
+  "batch3Sweep": {
+    "date": "2026-07-28",
+    "result": "34/34 sets PASS zero retries (845 new + 24 collateral)",
+    "report": "reports/phase2-batch3.md"
   }
 }

@@ -153,10 +153,19 @@ Repeat until no `needs-conversion` remain:
    staleness guard. **Re-validation sweep 24/24 sets PASS, zero retries, on a
    guaranteed-fresh build** (reports/revalidation-sweep-2026-07-27.md) — all
    converted packages genuinely pixel-validated; conversion gate LIFTED.
-2. Phase 2 batch 3 — IN PROGRESS: accordion, breadcrumb, card, field, message-bar,
-   rating, spinbutton, tags, toolbar, tree
-3. **Client performance evaluation** — PERF_EVAL_SPEC.md (5 components incl. Button,
-   plain vs multi-layer-overridden, 1 vs 100-instance matrix, vs Griffel predecessors)
+2. Phase 2 batch 3 DONE (reports/phase2-batch3.md): accordion, breadcrumb, card,
+   field, message-bar, rating, spinbutton, tags, toolbar, tree. VR 34/34 sets zero
+   retries (845 new baselines + 24 collateral); build 174s (first leg below the 182s
+   baseline); AOT 42→33; entire-library gz 304,432 (−6.7% vs baseline). Two D12
+   mixed-mode inversions found+fixed (ToolbarDivider display; TagPickerGroup
+   column-gap, 6cad216c17). timepicker-compat DST test excluded as pre-existing env
+   failure (evidence in report). Follow-ups recorded in the report: toolbar
+   toggle/radio hooks gated on button family; accordion @griffel test import
+   (Phase 3); tag-picker jest serializer; variants.css catalog additions
+   (one consolidated pass).
+3. **Client performance evaluation — IN PROGRESS** — PERF_EVAL_SPEC.md (5 components
+   incl. Button, plain vs multi-layer-overridden, 1 vs 100-instance matrix, vs
+   Griffel predecessors)
 
 ### Phase 3 — Integration
 
