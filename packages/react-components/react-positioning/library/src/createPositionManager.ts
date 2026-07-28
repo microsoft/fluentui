@@ -44,6 +44,9 @@ interface PositionManagerOptions {
   disableUpdateOnResize?: boolean;
   /**
    * Continuously updates position on animation frames while mounted.
+   * Useful when the positioned element's target moves during animations that don't trigger
+   * standard observers (e.g., Web Animations API). Use sparingly as it has performance cost.
+   * See https://github.com/microsoft/fluentui/issues/35968 for context.
    */
   updatePositionOnAnimationFrame?: boolean;
 }

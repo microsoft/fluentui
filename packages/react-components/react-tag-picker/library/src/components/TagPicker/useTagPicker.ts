@@ -128,6 +128,11 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     offset: { crossAxis: 0, mainAxis: 2 },
     fallbackPositions,
     matchTargetSize: 'width' as const,
+    // Enable per-frame position updates during animations.
+    // Necessary when TagPicker is used inside Dialog, which animates via the Web Animations API
+    // (useAnimateAtoms in react-motion). Standard DOM observers don't detect Web Animations API
+    // state changes, so we must continuously refresh positioning to keep the dropdown aligned
+    // during the Dialog's entry animation. See https://github.com/microsoft/fluentui/issues/35968
     updatePositionOnAnimationFrame: true,
     ...resolvePositioningShorthand(positioning),
   });
