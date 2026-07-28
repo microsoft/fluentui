@@ -3,7 +3,7 @@
 exports[`MessageBarBody renders a default state 1`] = `
 <div>
   <div
-    class="fui-MessageBarBody"
+    class="group/fui-message-bar-body fui-MessageBarBody"
   >
     Default MessageBarBody
   </div>

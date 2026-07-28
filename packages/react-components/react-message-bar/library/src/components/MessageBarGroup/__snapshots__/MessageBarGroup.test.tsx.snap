@@ -3,7 +3,7 @@
 exports[`MessageBarGroup renders a default state 1`] = `
 <div>
   <div
-    class="fui-MessageBarGroup"
+    class="group/fui-message-bar-group fui-MessageBarGroup"
   >
     <span>
       Default MessageBarGroup

@@ -27,10 +27,20 @@ export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots> = {
  * Apply styling to the MessageBarTitle slots based on the state
  */
 export const useMessageBarTitleStyles_unstable = (state: MessageBarTitleState): MessageBarTitleState => {
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this title's state, because `styles.root` is hashed and unaddressable from outside
+  // this file (DECISIONS.md D15).
+  //
   // The component has a single unconditional slice, so it needs no data-attributes — see
   // MessageBarTitle.module.css for the mapping back to the mergeClasses() argument order.
-  state.root.className = clsx(messageBarTitleClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(
+    'group/fui-message-bar-title',
+    messageBarTitleClassNames.root,
+    styles.root,
+    state.root.className,
+  );
 
   return state;
 };

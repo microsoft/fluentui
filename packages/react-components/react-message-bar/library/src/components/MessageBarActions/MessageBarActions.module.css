@@ -25,7 +25,7 @@
  *
  * `containerAction` slot
  *   1 messageBarActionsClassNames.containerAction         → static class (JS)
- *   2 useContainerActionBaseStyles   (makeReset)          → fui.base           .containerAction
+ *   2 useContainerActionBaseStyles   (makeReset)          → fui.base           .container-action
  *   3 consumer className                                  → unlayered
  *
  * ── ALTITUDE: everything here is l1 ─────────────────────────────────────────────────
@@ -82,7 +82,7 @@
   }
 
   /* from useContainerActionBaseStyles (makeResetStyles) */
-  .containerAction {
+  .container-action {
     @apply pe-horizontal-m;
 
     grid-area: actions;

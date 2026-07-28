@@ -54,16 +54,27 @@ export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsStat
   root['data-layout'] = layout;
   root['data-has-actions'] = hasActions || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from these actions' state, because `styles.root` is hashed and unaddressable from
+  // outside this file. Read it as `@variant group-has-actions/fui-message-bar-actions { … }`
+  // (DECISIONS.md D15). Only the root slot carries a marker; `containerAction` does not.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in MessageBarActions.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(messageBarActionsClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(
+    'group/fui-message-bar-actions',
+    messageBarActionsClassNames.root,
+    styles.root,
+    state.root.className,
+  );
 
   if (state.containerAction) {
     state.containerAction.className = clsx(
       messageBarActionsClassNames.containerAction,
-      styles.containerAction,
+      styles['container-action'],
       state.containerAction.className,
     );
   }

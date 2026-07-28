@@ -60,7 +60,16 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   root['data-layout'] = layout;
   root['data-intent'] = intent;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this MessageBar's state, because `styles.root` is hashed and unaddressable from
+  // outside this file. MessageBarBody / MessageBarTitle / MessageBarActions are separate
+  // components nested inside this root, so `@variant group-…/fui-message-bar { … }` in one
+  // of THEIR modules is exactly the cross-component read this exists for: `data-intent` and
+  // `data-layout` are already stamped here and are otherwise invisible to them
+  // (DECISIONS.md D15).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in MessageBar.module.css, not
   // by the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces.
@@ -68,6 +77,7 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   // The `info` intent has no class here because both of its Griffel slices are `{}`
   // ("already in base reset styles"); the module emits no rule for it.
   state.root.className = clsx(
+    'group/fui-message-bar',
     messageBarClassNames.root,
     styles.root,
     shape === 'square' && styles.square,
@@ -81,7 +91,7 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   if (state.bottomReflowSpacer) {
     // No consumer className is merged here — reproduced verbatim from the Griffel hook,
     // which also omitted it.
-    state.bottomReflowSpacer.className = clsx(messageBarClassNames.bottomReflowSpacer, styles.bottomReflowSpacer);
+    state.bottomReflowSpacer.className = clsx(messageBarClassNames.bottomReflowSpacer, styles['bottom-reflow-spacer']);
   }
 
   return state;

@@ -32,7 +32,7 @@
  *
  * `bottomReflowSpacer` slot
  *   1 messageBarClassNames.bottomReflowSpacer        → static class (JS)
- *   2 useReflowSpacerBaseStyles  (makeReset)         → fui.base           .bottomReflowSpacer
+ *   2 useReflowSpacerBaseStyles  (makeReset)         → fui.base           .bottom-reflow-spacer
  *   (the Griffel hook merges NO consumer className on this slot — reproduced verbatim
  *    in the rewritten hook rather than "fixed")
  *
@@ -126,7 +126,7 @@
   }
 
   /* from useReflowSpacerBaseStyles (makeResetStyles) */
-  .bottomReflowSpacer {
+  .bottom-reflow-spacer {
     @apply mb-vertical-s;
 
     grid-area: secondaryActions;

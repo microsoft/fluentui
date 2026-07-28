@@ -22,7 +22,10 @@ export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots> = {
  * Apply styling to the MessageBarGroup slots based on the state
  */
 export const useMessageBarGroupStyles_unstable = (state: MessageBarGroupState): MessageBarGroupState => {
-  // Static `fui-*` class first (conformance contract), consumer className last.
-  state.root.className = clsx(messageBarGroupClassNames.root, state.root.className);
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token — the handle by
+  // which a descendant module can style itself from this group's state (DECISIONS.md D15).
+  // MessageBarGroup has no module of its own, so the marker is its only non-static class.
+  state.root.className = clsx('group/fui-message-bar-group', messageBarGroupClassNames.root, state.root.className);
   return state;
 };

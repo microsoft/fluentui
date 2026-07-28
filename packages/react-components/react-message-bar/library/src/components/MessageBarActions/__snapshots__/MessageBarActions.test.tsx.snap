@@ -3,7 +3,7 @@
 exports[`MessageBarActions renders a default state 1`] = `
 <div>
   <div
-    class="fui-MessageBarActions"
+    class="group/fui-message-bar-actions fui-MessageBarActions"
     data-has-actions="true"
     data-layout="singleline"
   >
