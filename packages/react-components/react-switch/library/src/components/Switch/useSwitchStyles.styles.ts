@@ -108,18 +108,20 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   root['data-disabled'] =
     state.input.disabled === true || ariaDisabled === true || ariaDisabled === 'true' || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this Switch's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. Read it as `@variant group-checked/fui-switch { … }` (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this Switch's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Read it as
+  // `@variant group-checked/fui-switch { … }` (DECISIONS.md D15).
   //
   // Cascade priority is decided by the `@layer fui.*` order in Switch.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's
   // own hook output).
-  state.root.className = clsx('group/fui-switch', switchClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(switchClassNames.root, 'group/fui-switch', styles.root, state.root.className);
 
   state.indicator.className = clsx(switchClassNames.indicator, styles.indicator, state.indicator.className);
 
