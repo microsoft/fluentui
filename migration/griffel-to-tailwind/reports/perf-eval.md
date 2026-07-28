@@ -535,3 +535,49 @@ The BEFORE worktree needed one unrelated fix to build: `packages/react-conforman
 `chalk` types. `react-conformance` is a devDependency of every component package and its
 failure blocks nx's `^build`; adding `esModuleInterop: true` in the worktree copy only is
 sufficient and touches nothing in the runtime dependency closure.
+
+---
+
+## CORRECTION (2026-07-28, variant-matrix follow-up — metrics/perf-eval/variants/)
+
+The selector-matching attribution above is **refuted by direct experiment**. A
+six-leg CSS-variant matrix on Switch scenario E (pooled n=93/leg, all legs
+verified computed-style + geometry equivalent, within-leg IQR 0.625–0.830ms
+vs 0.440ms total between-leg spread):
+
+| Leg                                                 | Median (ms) | Δ vs current |
+| --------------------------------------------------- | ----------: | -----------: |
+| current (dual `[data-*], :native` alternatives)     |      11.605 |            — |
+| native-only (no `[data-*]` alternatives)            |      11.165 |        −3.8% |
+| data-only + attribute write                         |      11.310 |        −2.5% |
+| named-group compiled shape (root class + root attr) |      11.585 |        −0.2% |
+| self-scoped ceiling (attr on styled element)        |      11.270 |        −2.9% |
+
+**Selector policy is not the lever.** Removing every `[data-*]` alternative,
+every sibling combinator, and 36% of selector text moves nothing outside noise.
+The named-group shape (nyt-games pattern) is equal-at-best — and worst on trace
+attribution, recalculating 12,000 elements vs 11,000 (root-stamped class +
+attribute widens invalidation) while reintroducing an un-hashed global class.
+
+**The scenario-E cliff is transition processing.** Diagnostic legs: stripping
+`transition-*` declarations drops the after leg 11.605 → 2.110ms. Re-running
+BOTH original bundles with `transition-property: none` forced:
+
+| Leg              | As shipped | Transitions suppressed | Attributable to transitions |
+| ---------------- | ---------: | ---------------------: | --------------------------: |
+| before (Griffel) |      4.380 |                  2.353 |                 2.027 (46%) |
+| after (migrated) |     11.535 |                  2.545 |                 8.990 (78%) |
+
+With transitions suppressed the migration's re-render penalty is **+8.2%** — the
+ordinary mount-path selector cost. The declared transitions are byte-identical
+across legs, yet cost 4.4× more in the migrated CSS. One contributor is
+isolated: Griffel emitted literal `translateX(20px)`; the migration emits
+`translateX(calc(20px * var(--base-scale)))` — collapsing that indirection
+(equivalence-verified) recovers ~1ms of the ~9ms. **The remaining ~8ms is
+unexplained** and is the next experiment; it is flagged, not guessed at.
+
+Consequences for the follow-ups listed above: the "dead selector weight" sweep
+is demoted — `[data-checked]` alternatives on Switch are still dead code by
+inspection, but removing them is hygiene, not performance. The open perf
+question is now entirely about transition/var() indirection in transitioned
+properties.

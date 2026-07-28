@@ -1,0 +1,221 @@
+{
+  "diag-literal-transform": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 99.207,
+      "msPerIteration": 9.9207
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 13.574,
+      "msPerIteration": 1.3574
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.224,
+      "msPerIteration": 0.0224
+    }
+  },
+  "diag-no-transition": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 14.739,
+      "msPerIteration": 1.4739
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 12.127,
+      "msPerIteration": 1.2127
+    },
+    "functionCall": {
+      "count": 2,
+      "totalMs": 0.231,
+      "msPerIteration": 0.0231
+    },
+    "paint": {
+      "count": 1,
+      "totalMs": 0.017,
+      "msPerIteration": 0.0017
+    }
+  },
+  "diag-no-state": {
+    "iterations": 10,
+    "styleRecalcElementCount": 7000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 8.25,
+      "msPerIteration": 0.825
+    },
+    "layout": {
+      "count": 20,
+      "totalMs": 7.31,
+      "msPerIteration": 0.731
+    },
+    "functionCall": {
+      "count": 2,
+      "totalMs": 0.238,
+      "msPerIteration": 0.0238
+    },
+    "paint": {
+      "count": 1,
+      "totalMs": 0.014,
+      "msPerIteration": 0.0014
+    }
+  },
+  "native-only": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 101.669,
+      "msPerIteration": 10.1669
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 13.684,
+      "msPerIteration": 1.3684
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.223,
+      "msPerIteration": 0.0223
+    }
+  },
+  "current": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 107.323,
+      "msPerIteration": 10.7323
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 13.73,
+      "msPerIteration": 1.373
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.235,
+      "msPerIteration": 0.0235
+    }
+  },
+  "current-flat": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 101.959,
+      "msPerIteration": 10.1959
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 13.856,
+      "msPerIteration": 1.3856
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.202,
+      "msPerIteration": 0.0202
+    }
+  },
+  "data-write": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 101.02,
+      "msPerIteration": 10.102
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 13.612,
+      "msPerIteration": 1.3612
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.27,
+      "msPerIteration": 0.027
+    }
+  },
+  "self-scoped": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 98.277,
+      "msPerIteration": 9.8277
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 13.445,
+      "msPerIteration": 1.3445
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.202,
+      "msPerIteration": 0.0202
+    }
+  },
+  "diag-literal-geometry": {
+    "iterations": 10,
+    "styleRecalcElementCount": 11000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 96.14,
+      "msPerIteration": 9.614
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 14.61,
+      "msPerIteration": 1.461
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.211,
+      "msPerIteration": 0.0211
+    }
+  },
+  "diag-no-universal": {
+    "iterations": 10,
+    "styleRecalcElementCount": 10000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 100.848,
+      "msPerIteration": 10.0848
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 14.441,
+      "msPerIteration": 1.4441
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.215,
+      "msPerIteration": 0.0215
+    }
+  },
+  "named-group": {
+    "iterations": 10,
+    "styleRecalcElementCount": 12000,
+    "styleRecalc": {
+      "count": 30,
+      "totalMs": 103.888,
+      "msPerIteration": 10.3888
+    },
+    "layout": {
+      "count": 30,
+      "totalMs": 14.312,
+      "msPerIteration": 1.4312
+    },
+    "functionCall": {
+      "count": 1,
+      "totalMs": 0.202,
+      "msPerIteration": 0.0202
+    }
+  }
+}

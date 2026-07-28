@@ -171,12 +171,22 @@ Repeat until no `needs-conversion` remain:
    end-to-end, entirely recalc — Switch writes NO data-\* on toggle, so the cost
    is MATCHING the alternatives, not writing attributes). Validity: identical
    recalc element counts both legs; zero computed-style/bbox mismatches.
-   FOLLOW-UPS (perf, awaiting user direction before batch 4):
-   - Dead selector weight: react-switch never writes `data-checked`, yet 30 rules
-     carry `:where([data-checked], :checked)` — strip dead `[data-*]` alternatives
-     (audit all converted packages: emit an alternative only when the hook writes it).
-   - Optional isolation test: republish Button CSS without `[data-disabled]`
-     alternatives to separate write-cost from match-cost (Switch already isolates).
+   **CORRECTED by variant matrix 2026-07-28** (metrics/perf-eval/variants/,
+   correction section appended to reports/perf-eval.md): selector policy is NOT
+   the lever — six equivalence-verified CSS legs (dual alternatives, native-only,
+   data-only+write, named-group shape, self-scoped) all tie within noise
+   (0.44ms between-leg spread vs 0.63–0.83ms within-leg IQR). Named-group
+   pattern validated equal-at-best (user's expectation confirmed; widens
+   invalidation 11k→12k elements, reintroduces un-hashed global class — do not
+   adopt for perf). **The E cliff is TRANSITION PROCESSING**: transitions
+   suppressed → +8.2% residual; byte-identical declared transitions cost 4.4×
+   in migrated CSS (8.990ms vs 2.027ms per 100 toggles); ~1ms attributed to
+   `calc(Npx * var(--base-scale))` indirection in transitioned transform.
+   FOLLOW-UPS (awaiting user direction before batch 4):
+   - NEXT EXPERIMENT: isolate the remaining ~8ms of transition cost (var()/calc
+     indirection in transitioned properties is the prime suspect after the
+     literal-geometry leg recovered ~1ms; flagged, not guessed).
+   - Dead `[data-checked]` alternatives on Switch: hygiene only, no perf effect.
    - Harness + BEFORE worktree retained at .scratch/perf-eval/ for re-runs
      (git worktree remove .scratch/perf-eval/before-tree when done).
 

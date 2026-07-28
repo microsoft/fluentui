@@ -1,0 +1,74 @@
+{
+  "runs": {
+    "before|as-shipped": [
+      {
+        "total": 4.365,
+        "commit": 0.985,
+        "styleLayout": 3.375
+      },
+      {
+        "total": 4.395,
+        "commit": 0.99,
+        "styleLayout": 3.41
+      }
+    ],
+    "before|no-transitions": [
+      {
+        "total": 2.33,
+        "commit": 0.975,
+        "styleLayout": 1.345
+      },
+      {
+        "total": 2.375,
+        "commit": 1.01,
+        "styleLayout": 1.365
+      }
+    ],
+    "after|as-shipped": [
+      {
+        "total": 11.475,
+        "commit": 0.91,
+        "styleLayout": 10.545
+      },
+      {
+        "total": 11.595,
+        "commit": 0.9,
+        "styleLayout": 10.625
+      }
+    ],
+    "after|no-transitions": [
+      {
+        "total": 2.545,
+        "commit": 0.915,
+        "styleLayout": 1.625
+      },
+      {
+        "total": 2.545,
+        "commit": 0.935,
+        "styleLayout": 1.61
+      }
+    ]
+  },
+  "summary": {
+    "before|as-shipped": {
+      "total": 4.38,
+      "commit": 0.988,
+      "styleLayout": 3.393
+    },
+    "before|no-transitions": {
+      "total": 2.353,
+      "commit": 0.992,
+      "styleLayout": 1.355
+    },
+    "after|as-shipped": {
+      "total": 11.535,
+      "commit": 0.905,
+      "styleLayout": 10.585
+    },
+    "after|no-transitions": {
+      "total": 2.545,
+      "commit": 0.925,
+      "styleLayout": 1.618
+    }
+  }
+}
