@@ -163,9 +163,22 @@ Repeat until no `needs-conversion` remain:
    toggle/radio hooks gated on button family; accordion @griffel test import
    (Phase 3); tag-picker jest serializer; variants.css catalog additions
    (one consolidated pass).
-3. **Client performance evaluation — IN PROGRESS** — PERF_EVAL_SPEC.md (5 components
-   incl. Button, plain vs multi-layer-overridden, 1 vs 100-instance matrix, vs
-   Griffel predecessors)
+3. Client performance evaluation DONE (reports/perf-eval.md, commit 1d672266a8).
+   Verdict: commit time faster in ALL 25 cells (median −45.1%); style recalc
+   costlier in every traced cell (median +28.7% mount); net faster on mount
+   (18/25 faster, 3 flat), re-render cliff in scenario E on components whose
+   state selectors carry `[data-*]` alternatives (Button +148%, Switch +157%
+   end-to-end, entirely recalc — Switch writes NO data-\* on toggle, so the cost
+   is MATCHING the alternatives, not writing attributes). Validity: identical
+   recalc element counts both legs; zero computed-style/bbox mismatches.
+   FOLLOW-UPS (perf, awaiting user direction before batch 4):
+   - Dead selector weight: react-switch never writes `data-checked`, yet 30 rules
+     carry `:where([data-checked], :checked)` — strip dead `[data-*]` alternatives
+     (audit all converted packages: emit an alternative only when the hook writes it).
+   - Optional isolation test: republish Button CSS without `[data-disabled]`
+     alternatives to separate write-cost from match-cost (Switch already isolates).
+   - Harness + BEFORE worktree retained at .scratch/perf-eval/ for re-runs
+     (git worktree remove .scratch/perf-eval/before-tree when done).
 
 ### Phase 3 — Integration
 
