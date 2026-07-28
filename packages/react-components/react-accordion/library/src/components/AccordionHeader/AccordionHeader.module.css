@@ -42,7 +42,7 @@
  *
  * `expandIcon` slot
  *   1 accordionHeaderClassNames.expandIcon            → static class (JS)
- *   2 useStyles.expandIcon                            → fui.components.l1  .expandIcon
+ *   2 useStyles.expandIcon                            → fui.components.l1  .expand-icon
  *   3 useStyles.expandIconStart (position === 'start')→ fui.components.l1
  *   4 useStyles.expandIconEnd   (position === 'end')  → fui.components.l1
  *   5 consumer className                              → unlayered
@@ -286,7 +286,7 @@
 
 @layer fui.components.l1 {
   /* from useStyles.expandIcon — expandIcon arg #2 */
-  .expandIcon {
+  .expand-icon {
     @apply flex h-full items-center;
 
     line-height: var(--lineHeightBase500);
@@ -296,14 +296,14 @@
   .root {
     /* from useStyles.expandIconStart — expandIcon arg #3 */
     &:where([data-expand-icon-position='start']) {
-      & .expandIcon {
+      & .expand-icon {
         @apply pe-horizontal-s;
       }
     }
 
     /* from useStyles.expandIconEnd — expandIcon arg #4 */
     &:where([data-expand-icon-position='end']) {
-      & .expandIcon {
+      & .expand-icon {
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 0%;
