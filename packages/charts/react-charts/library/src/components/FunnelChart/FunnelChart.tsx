@@ -252,7 +252,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     const eventHandlers = _getEventHandlerProps(data, opacity, segmentId);
     const textColor = getContrastTextColor(fill);
     return (
-      <g key={key}>
+      <g key={key} role="presentation">
         <path
           id={segmentId}
           d={pathD}
@@ -263,7 +263,11 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           role="option"
           aria-label={_getAriaLabel(data)}
         />
-        {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
+        {textProps && (
+          <g {...eventHandlers} aria-hidden={true}>
+            {_renderSegmentText({ ...textProps, textColor, opacity })}
+          </g>
+        )}
       </g>
     );
   }

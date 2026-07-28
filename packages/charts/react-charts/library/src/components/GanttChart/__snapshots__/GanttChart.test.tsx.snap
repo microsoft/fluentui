@@ -184,6 +184,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -201,6 +202,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -218,6 +220,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -235,6 +238,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -244,7 +248,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <rect
@@ -793,6 +797,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -810,6 +815,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -827,6 +833,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -844,6 +851,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -861,6 +869,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -878,6 +887,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -895,6 +905,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -912,6 +923,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -921,7 +933,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <rect
@@ -1295,6 +1307,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1312,6 +1325,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1329,6 +1343,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1346,6 +1361,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -1355,7 +1371,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <rect
@@ -1733,6 +1749,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1750,6 +1767,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1767,6 +1785,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1784,6 +1803,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 x2="-6"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
@@ -1793,7 +1813,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             </g>
           </g>
           <g
-            aria-label="Gantt chart with 8 bars"
+            aria-label="8 bars"
             role="listbox"
           >
             <rect
@@ -2174,6 +2194,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2191,6 +2212,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2208,6 +2230,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2225,6 +2248,7 @@ Object {
                     x2="-6"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-16"
@@ -2234,7 +2258,7 @@ Object {
                 </g>
               </g>
               <g
-                aria-label="Gantt chart with 8 bars"
+                aria-label="8 bars"
                 role="listbox"
               >
                 <rect
@@ -2610,6 +2634,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2627,6 +2652,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2644,6 +2670,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2661,6 +2688,7 @@ Object {
                   x2="-6"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
@@ -2670,7 +2698,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Gantt chart with 8 bars"
+              aria-label="8 bars"
               role="listbox"
             >
               <rect
@@ -3323,7 +3351,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 6 bars"
+          aria-label="6 bars"
           role="listbox"
         >
           <rect
@@ -3736,6 +3764,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3753,6 +3782,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3770,6 +3800,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3787,6 +3818,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -3796,7 +3828,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <defs>
@@ -4208,6 +4240,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4225,6 +4258,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4242,6 +4276,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4259,6 +4294,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4268,7 +4304,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <rect
@@ -4642,6 +4678,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4659,6 +4696,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4676,6 +4714,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4693,6 +4732,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               x2="-6"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-16"
@@ -4702,7 +4742,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <rect
@@ -5251,6 +5291,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Final Inspections"
               dy="0.32em"
               fill="currentColor"
@@ -5274,6 +5315,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Interior Finishing"
               dy="0.32em"
               fill="currentColor"
@@ -5297,6 +5339,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Exterior Finishing"
               dy="0.32em"
               fill="currentColor"
@@ -5320,6 +5363,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Plumbing/Electrical"
               dy="0.32em"
               fill="currentColor"
@@ -5343,6 +5387,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Roof Installation"
               dy="0.32em"
               fill="currentColor"
@@ -5366,6 +5411,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Framing"
               dy="0.32em"
               fill="currentColor"
@@ -5389,6 +5435,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Foundation Work"
               dy="0.32em"
               fill="currentColor"
@@ -5412,6 +5459,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              aria-hidden="true"
               data-full="Site Preparation"
               dy="0.32em"
               fill="currentColor"
@@ -5427,7 +5475,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           </g>
         </g>
         <g
-          aria-label="Gantt chart with 8 bars"
+          aria-label="8 bars"
           role="listbox"
         >
           <rect

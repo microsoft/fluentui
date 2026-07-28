@@ -42,7 +42,9 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
           role="listbox"
           transform="translate(0, 89)"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <path
               aria-label="2020/04/30, 20000."
               class="fui-donut-arc__root"
@@ -54,7 +56,9 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               tabindex="0"
             />
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <path
               aria-label="2020/04/20, 39000."
               class="fui-donut-arc__root"
@@ -66,7 +70,9 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               tabindex="0"
             />
           </g>
-          <g>
+          <g
+            role="presentation"
+          >
             <path
               aria-label="2020/04/25, 45000."
               class="fui-donut-arc__root"
@@ -220,7 +226,9 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
             role="listbox"
             transform="translate(0, 89)"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/30, 20000."
                 class="fui-donut-arc__root"
@@ -232,7 +240,9 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/20, 39000."
                 class="fui-donut-arc__root"
@@ -244,7 +254,9 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/25, 45000."
                 class="fui-donut-arc__root"
@@ -400,7 +412,9 @@ Object {
               role="listbox"
               transform="translate(0, 89)"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
@@ -412,7 +426,9 @@ Object {
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
@@ -424,7 +440,9 @@ Object {
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
@@ -632,7 +650,9 @@ Object {
             role="listbox"
             transform="translate(0, 89)"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/30, 20000."
                 class="fui-donut-arc__root"
@@ -644,7 +664,9 @@ Object {
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/20, 39000."
                 class="fui-donut-arc__root"
@@ -656,7 +678,9 @@ Object {
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/25, 45000."
                 class="fui-donut-arc__root"
@@ -904,7 +928,9 @@ Object {
               role="listbox"
               transform="translate(0, 89)"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/30, 20000."
                   class="fui-donut-arc__root"
@@ -916,7 +942,9 @@ Object {
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/20, 39000."
                   class="fui-donut-arc__root"
@@ -928,7 +956,9 @@ Object {
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="2020/04/25, 45000."
                   class="fui-donut-arc__root"
@@ -1136,7 +1166,9 @@ Object {
             role="listbox"
             transform="translate(0, 89)"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/30, 20000."
                 class="fui-donut-arc__root"
@@ -1148,7 +1180,9 @@ Object {
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/20, 39000."
                 class="fui-donut-arc__root"
@@ -1160,7 +1194,9 @@ Object {
                 tabindex="0"
               />
             </g>
-            <g>
+            <g
+              role="presentation"
+            >
               <path
                 aria-label="2020/04/25, 45000."
                 class="fui-donut-arc__root"
@@ -1402,7 +1438,9 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -1414,7 +1452,9 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -1426,7 +1466,9 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -1574,7 +1616,9 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -1596,7 +1640,9 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             20k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -1618,7 +1664,9 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             39k
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -1776,7 +1824,9 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -1798,7 +1848,9 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             19%
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -1820,7 +1872,9 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             38%
           </text>
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -1978,7 +2032,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -1990,7 +2046,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -2002,7 +2060,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -2150,7 +2210,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -2162,7 +2224,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -2174,7 +2238,9 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -2322,7 +2388,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -2334,7 +2402,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -2346,7 +2416,9 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -2478,7 +2550,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         role="listbox"
         transform="translate(0, 91)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -2490,7 +2564,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -2502,7 +2578,9 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -2565,7 +2643,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -2577,7 +2657,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -2589,7 +2671,9 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"
@@ -2737,7 +2821,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         role="listbox"
         transform="translate(0, 89)"
       >
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/30, 20000."
             class="fui-donut-arc__root"
@@ -2749,7 +2835,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/20, 39000."
             class="fui-donut-arc__root"
@@ -2761,7 +2849,9 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             tabindex="0"
           />
         </g>
-        <g>
+        <g
+          role="presentation"
+        >
           <path
             aria-label="2020/04/25, 45000."
             class="fui-donut-arc__root"

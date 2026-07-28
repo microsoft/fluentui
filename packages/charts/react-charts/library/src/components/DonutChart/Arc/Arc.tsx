@@ -114,7 +114,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
     return (
-      <g ref={currentRef}>
+      <g ref={currentRef} role="presentation">
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path

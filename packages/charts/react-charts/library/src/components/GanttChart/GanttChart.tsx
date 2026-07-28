@@ -431,7 +431,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
           );
         });
         return (
-          <g role="listbox" aria-label={`Gantt chart with ${points.length} bars`}>
+          <g role="listbox" aria-label={`${points.length} ${points.length === 1 ? 'bar' : 'bars'}`}>
             {gradientDefs.length > 0 ? <defs>{gradientDefs}</defs> : null}
             {bars}
           </g>

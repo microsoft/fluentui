@@ -44,7 +44,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               100
             </text>
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -83,26 +83,26 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(54, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 30%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(54, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 30%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(80)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(80)"
+              />
             </g>
             <g>
               <text
@@ -352,7 +352,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -389,26 +389,26 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               role="option"
               stroke-width="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -560,7 +560,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -597,26 +597,26 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               role="option"
               stroke-width="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -768,7 +768,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -807,26 +807,26 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -1083,7 +1083,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -1122,26 +1122,26 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -1291,7 +1291,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -1330,26 +1330,26 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -1499,7 +1499,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -1538,26 +1538,26 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -1814,7 +1814,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -1853,26 +1853,26 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -2151,7 +2151,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -2190,26 +2190,26 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(105)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(105)"
+            />
           </g>
           <g>
             <text
@@ -2359,7 +2359,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -2398,26 +2398,26 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -2567,7 +2567,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -2606,26 +2606,26 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -2775,7 +2775,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -2814,26 +2814,26 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(NaN, 0, 0)"
-            >
-              <path
-                aria-label="Current value: NaN%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(NaN, 0, 0)"
+          >
+            <path
+              aria-label="Current value: NaN%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(80)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(80)"
+            />
           </g>
           <g>
             <text
@@ -2968,7 +2968,7 @@ Object {
               transform="translate(0, -48)"
             >
               <g
-                aria-label="Gauge chart with 3 segments"
+                aria-label="3 segments"
                 role="listbox"
               >
                 <path
@@ -3007,26 +3007,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(45, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 25%"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(45, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 25%"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(80)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(80)"
+                />
               </g>
               <g>
                 <text
@@ -3173,7 +3173,7 @@ Object {
             transform="translate(0, -48)"
           >
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -3212,26 +3212,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(45, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 25%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(45, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 25%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(80)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(80)"
+              />
             </g>
             <g>
               <text
@@ -3438,7 +3438,7 @@ Object {
                 100
               </text>
               <g
-                aria-label="Gauge chart with 3 segments"
+                aria-label="3 segments"
                 role="listbox"
               >
                 <path
@@ -3477,26 +3477,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(45, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 25%"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(45, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 25%"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(70)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(70)"
+                />
               </g>
               <g>
                 <text
@@ -3579,7 +3579,7 @@ Object {
               100
             </text>
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -3618,26 +3618,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(45, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 25%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(45, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 25%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(70)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(70)"
+              />
             </g>
             <g>
               <text
@@ -3760,7 +3760,7 @@ Object {
                 100
               </text>
               <g
-                aria-label="Gauge chart with 3 segments"
+                aria-label="3 segments"
                 role="listbox"
               >
                 <path
@@ -3799,26 +3799,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(45, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 25%"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(45, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 25%"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(80)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(80)"
+                />
               </g>
               <g>
                 <text
@@ -3985,7 +3985,7 @@ Object {
               100
             </text>
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -4024,26 +4024,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(45, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 25%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(45, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 25%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(80)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(80)"
+              />
             </g>
             <g>
               <text
@@ -4250,7 +4250,7 @@ Object {
                 100
               </text>
               <g
-                aria-label="Gauge chart with 2 segments"
+                aria-label="2 segments"
                 role="listbox"
               >
                 <path
@@ -4277,26 +4277,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(108, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 60%"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(108, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 60%"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(80)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(80)"
+                />
               </g>
               <g>
                 <text
@@ -4442,7 +4442,7 @@ Object {
               100
             </text>
             <g
-              aria-label="Gauge chart with 2 segments"
+              aria-label="2 segments"
               role="listbox"
             >
               <path
@@ -4469,26 +4469,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(108, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 60%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(108, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 60%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(80)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(80)"
+              />
             </g>
             <g>
               <text
@@ -4696,7 +4696,7 @@ Object {
                 100
               </text>
               <g
-                aria-label="Gauge chart with 3 segments"
+                aria-label="3 segments"
                 role="listbox"
               >
                 <path
@@ -4735,26 +4735,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(45, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 25%"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(45, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 25%"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(105)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(105)"
+                />
               </g>
               <g>
                 <text
@@ -4962,7 +4962,7 @@ Object {
               100
             </text>
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -5001,26 +5001,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(45, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 25%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(45, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 25%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(105)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(105)"
+              />
             </g>
             <g>
               <text
@@ -5227,7 +5227,7 @@ Object {
                 100
               </text>
               <g
-                aria-label="Gauge chart with 3 segments"
+                aria-label="3 segments"
                 role="listbox"
               >
                 <path
@@ -5266,26 +5266,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(45, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 25/100"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(45, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 25/100"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(80)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(80)"
+                />
               </g>
               <g>
                 <text
@@ -5452,7 +5452,7 @@ Object {
               100
             </text>
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -5491,26 +5491,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(45, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 25/100"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(45, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 25/100"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(80)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(80)"
+              />
             </g>
             <g>
               <text
@@ -5717,7 +5717,7 @@ Object {
                 100
               </text>
               <g
-                aria-label="Gauge chart with 3 segments"
+                aria-label="3 segments"
                 role="listbox"
               >
                 <path
@@ -5756,26 +5756,26 @@ Object {
                   stroke-width="0"
                   tabindex="0"
                 />
-                <g
-                  transform="rotate(45, 0, 0)"
-                >
-                  <path
-                    aria-label="Current value: 25%"
-                    class="fui-gc__needle"
-                    d="
+              </g>
+              <g
+                transform="rotate(45, 0, 0)"
+              >
+                <path
+                  aria-label="Current value: 25%"
+                  class="fui-gc__needle"
+                  d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                    data-is-focusable="true"
-                    id="gauge-chart-needle"
-                    role="option"
-                    stroke-width="2"
-                    transform="translate(100)"
-                  />
-                </g>
+                  data-is-focusable="true"
+                  id="gauge-chart-needle"
+                  role="img"
+                  stroke-width="2"
+                  transform="translate(100)"
+                />
               </g>
               <g>
                 <text
@@ -5975,7 +5975,7 @@ Object {
               100
             </text>
             <g
-              aria-label="Gauge chart with 3 segments"
+              aria-label="3 segments"
               role="listbox"
             >
               <path
@@ -6014,26 +6014,26 @@ Object {
                 stroke-width="0"
                 tabindex="0"
               />
-              <g
-                transform="rotate(45, 0, 0)"
-              >
-                <path
-                  aria-label="Current value: 25%"
-                  class="fui-gc__needle"
-                  d="
+            </g>
+            <g
+              transform="rotate(45, 0, 0)"
+            >
+              <path
+                aria-label="Current value: 25%"
+                class="fui-gc__needle"
+                d="
             M 0,-4
             L -16,-2
             A 2,2,0,0,0,-16,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                  data-is-focusable="true"
-                  id="gauge-chart-needle"
-                  role="option"
-                  stroke-width="2"
-                  transform="translate(100)"
-                />
-              </g>
+                data-is-focusable="true"
+                id="gauge-chart-needle"
+                role="img"
+                stroke-width="2"
+                transform="translate(100)"
+              />
             </g>
             <g>
               <text
@@ -6249,7 +6249,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -6288,26 +6288,26 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -24,-2
             A 2,2,0,0,0,-24,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(-72)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(-72)"
+            />
           </g>
           <g>
             <text
@@ -6457,7 +6457,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             100
           </text>
           <g
-            aria-label="Gauge chart with 3 segments"
+            aria-label="3 segments"
             role="listbox"
           >
             <path
@@ -6496,26 +6496,26 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               stroke-width="0"
               tabindex="0"
             />
-            <g
-              transform="rotate(54, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 30%"
-                class="fui-gc__needle"
-                d="
+          </g>
+          <g
+            transform="rotate(54, 0, 0)"
+          >
+            <path
+              aria-label="Current value: 30%"
+              class="fui-gc__needle"
+              d="
             M 0,-4
             L -24,-2
             A 2,2,0,0,0,-24,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
-                data-is-focusable="true"
-                id="gauge-chart-needle"
-                role="option"
-                stroke-width="2"
-                transform="translate(-72)"
-              />
-            </g>
+              data-is-focusable="true"
+              id="gauge-chart-needle"
+              role="img"
+              stroke-width="2"
+              transform="translate(-72)"
+            />
           </g>
           <g>
             <text

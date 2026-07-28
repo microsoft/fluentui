@@ -236,6 +236,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
                   dominantBaseline={'middle'}
                   textAnchor={'middle'}
                   className={classes.text}
+                  aria-hidden={true}
                   transform={`translate(${_xAxisScale.current.bandwidth() / 2}, ${
                     _yAxisScale.current.bandwidth() / 2
                   })`}
@@ -280,7 +281,11 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         });
       });
       return (
-        <g role="listbox" aria-label={`Heat map chart with ${rectangles.length} cells`} {...arrowNavigationAttributes}>
+        <g
+          role="listbox"
+          aria-label={`${rectangles.length} ${rectangles.length === 1 ? 'cell' : 'cells'}`}
+          {...arrowNavigationAttributes}
+        >
           {rectangles}
         </g>
       );

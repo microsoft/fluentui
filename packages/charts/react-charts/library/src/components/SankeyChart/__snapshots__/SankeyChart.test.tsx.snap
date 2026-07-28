@@ -46,9 +46,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="element First with size 1.33B"
@@ -103,10 +105,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-0"
@@ -140,10 +145,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-1"
@@ -177,10 +185,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-2"
@@ -214,10 +225,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-3"
@@ -251,9 +265,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="element Second with size 1.23B"
@@ -308,9 +324,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="element Third with size 100M"
@@ -365,10 +383,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-4"
@@ -402,10 +423,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-5"
@@ -439,10 +463,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-6"
@@ -476,10 +503,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2r_-7"
@@ -513,9 +543,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="element Fourth with size 1B"
@@ -570,9 +602,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-4"
+                role="presentation"
               >
                 <rect
                   aria-label="element Five with size 244.57M"
@@ -627,9 +661,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-5"
+                role="presentation"
               >
                 <rect
                   aria-label="element Six with size 1.23K"
@@ -649,9 +685,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_30_-6"
+                role="presentation"
               >
                 <rect
                   aria-label="element Seven with size 100"
@@ -738,9 +776,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-0"
+              role="presentation"
             >
               <rect
                 aria-label="element First with size 1.33B"
@@ -795,10 +835,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-0"
@@ -832,10 +875,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-1"
@@ -869,10 +915,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-2"
@@ -906,10 +955,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-3"
@@ -943,9 +995,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-1"
+              role="presentation"
             >
               <rect
                 aria-label="element Second with size 1.23B"
@@ -1000,9 +1054,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-2"
+              role="presentation"
             >
               <rect
                 aria-label="element Third with size 100M"
@@ -1057,10 +1113,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-4"
@@ -1094,10 +1153,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-5"
@@ -1131,10 +1193,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-6"
@@ -1168,10 +1233,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2r_-7"
@@ -1205,9 +1273,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-3"
+              role="presentation"
             >
               <rect
                 aria-label="element Fourth with size 1B"
@@ -1262,9 +1332,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-4"
+              role="presentation"
             >
               <rect
                 aria-label="element Five with size 244.57M"
@@ -1319,9 +1391,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-5"
+              role="presentation"
             >
               <rect
                 aria-label="element Six with size 1.23K"
@@ -1341,9 +1415,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_30_-6"
+              role="presentation"
             >
               <rect
                 aria-label="element Seven with size 100"
@@ -1470,9 +1546,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_38_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="element First with size 100%"
@@ -1527,10 +1605,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_33_-0"
@@ -1564,10 +1645,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_33_-1"
@@ -1601,9 +1685,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_38_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="element Second with size 60%"
@@ -1658,9 +1744,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_38_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="element Third with size 40%"
@@ -1715,10 +1803,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_33_-2"
@@ -1752,10 +1843,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_33_-3"
@@ -1789,10 +1883,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_33_-4"
@@ -1826,10 +1923,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_33_-5"
@@ -1863,9 +1963,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_38_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="element Fourth with size 40%"
@@ -1920,9 +2022,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_38_-4"
+                role="presentation"
               >
                 <rect
                   aria-label="element Five with size 60%"
@@ -2044,9 +2148,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_38_-0"
+              role="presentation"
             >
               <rect
                 aria-label="element First with size 100%"
@@ -2101,10 +2207,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_33_-0"
@@ -2138,10 +2247,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_33_-1"
@@ -2175,9 +2287,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_38_-1"
+              role="presentation"
             >
               <rect
                 aria-label="element Second with size 60%"
@@ -2232,9 +2346,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_38_-2"
+              role="presentation"
             >
               <rect
                 aria-label="element Third with size 40%"
@@ -2289,10 +2405,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_33_-2"
@@ -2326,10 +2445,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_33_-3"
@@ -2363,10 +2485,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_33_-4"
@@ -2400,10 +2525,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_33_-5"
@@ -2437,9 +2565,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_38_-3"
+              role="presentation"
             >
               <rect
                 aria-label="element Fourth with size 40%"
@@ -2494,9 +2624,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_38_-4"
+              role="presentation"
             >
               <rect
                 aria-label="element Five with size 60%"
@@ -2658,9 +2790,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="node 192.168.42.72 with weight 80"
@@ -2715,9 +2849,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="node 172.152.48.13 with weight 78"
@@ -2772,9 +2908,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="node 124.360.55.1 with weight 14"
@@ -2794,9 +2932,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-4"
+                role="presentation"
               >
                 <rect
                   aria-label="node 124.124.50.1 with weight 10"
@@ -2816,9 +2956,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="node 192.564.10.2 with weight 27"
@@ -2873,9 +3015,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-5"
+                role="presentation"
               >
                 <rect
                   aria-label="node 172.630.89.4 with weight 10"
@@ -2895,10 +3039,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-0"
@@ -2932,10 +3079,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-1"
@@ -2969,10 +3119,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-2"
@@ -3006,10 +3159,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-3"
@@ -3043,10 +3199,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-4"
@@ -3080,10 +3239,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-5"
@@ -3117,10 +3279,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-6"
@@ -3154,10 +3319,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-7"
@@ -3191,9 +3359,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-6"
+                role="presentation"
               >
                 <rect
                   aria-label="node inbox with weight 130"
@@ -3248,9 +3418,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-7"
+                role="presentation"
               >
                 <rect
                   aria-label="node Junk Folder with weight 69"
@@ -3305,9 +3477,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-8"
+                role="presentation"
               >
                 <rect
                   aria-label="node Deleted Folder with weight 20"
@@ -3362,10 +3536,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-8"
@@ -3399,10 +3576,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-9"
@@ -3436,10 +3616,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-10"
@@ -3473,10 +3656,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_23_-11"
@@ -3510,9 +3696,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-9"
+                role="presentation"
               >
                 <rect
                   aria-label="node Clicked with weight 30"
@@ -3567,9 +3755,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-10"
+                role="presentation"
               >
                 <rect
                   aria-label="node Opened with weight 55"
@@ -3624,9 +3814,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_28_-11"
+                role="presentation"
               >
                 <rect
                   aria-label="node  No further action  required with weight 62"
@@ -3748,9 +3940,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-0"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.168.42.72 with weight 80"
@@ -3805,9 +3999,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-1"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.152.48.13 with weight 78"
@@ -3862,9 +4058,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-2"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.360.55.1 with weight 14"
@@ -3884,9 +4082,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-4"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.124.50.1 with weight 10"
@@ -3906,9 +4106,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-3"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.564.10.2 with weight 27"
@@ -3963,9 +4165,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-5"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.630.89.4 with weight 10"
@@ -3985,10 +4189,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-0"
@@ -4022,10 +4229,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-1"
@@ -4059,10 +4269,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-2"
@@ -4096,10 +4309,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-3"
@@ -4133,10 +4349,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-4"
@@ -4170,10 +4389,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-5"
@@ -4207,10 +4429,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-6"
@@ -4244,10 +4469,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-7"
@@ -4281,9 +4509,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-6"
+              role="presentation"
             >
               <rect
                 aria-label="node inbox with weight 130"
@@ -4338,9 +4568,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-7"
+              role="presentation"
             >
               <rect
                 aria-label="node Junk Folder with weight 69"
@@ -4395,9 +4627,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-8"
+              role="presentation"
             >
               <rect
                 aria-label="node Deleted Folder with weight 20"
@@ -4452,10 +4686,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-8"
@@ -4489,10 +4726,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-9"
@@ -4526,10 +4766,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-10"
@@ -4563,10 +4806,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_23_-11"
@@ -4600,9 +4846,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-9"
+              role="presentation"
             >
               <rect
                 aria-label="node Clicked with weight 30"
@@ -4657,9 +4905,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-10"
+              role="presentation"
             >
               <rect
                 aria-label="node Opened with weight 55"
@@ -4714,9 +4964,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_28_-11"
+              role="presentation"
             >
               <rect
                 aria-label="node  No further action  required with weight 62"
@@ -4878,9 +5130,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="node 192.168.42.72 with weight 80"
@@ -4935,9 +5189,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="node 172.152.48.13 with weight 78"
@@ -4992,9 +5248,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="node 124.360.55.1 with weight 14"
@@ -5014,9 +5272,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-4"
+                role="presentation"
               >
                 <rect
                   aria-label="node 124.124.50.1 with weight 10"
@@ -5036,9 +5296,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="node 192.564.10.2 with weight 27"
@@ -5092,9 +5354,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-5"
+                role="presentation"
               >
                 <rect
                   aria-label="node 172.630.89.4 with weight 10"
@@ -5114,10 +5378,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-0"
@@ -5151,10 +5418,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-1"
@@ -5188,10 +5458,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-2"
@@ -5225,10 +5498,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-3"
@@ -5262,10 +5538,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-4"
@@ -5299,10 +5578,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-5"
@@ -5336,10 +5618,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-6"
@@ -5373,10 +5658,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-7"
@@ -5410,9 +5698,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-6"
+                role="presentation"
               >
                 <rect
                   aria-label="node inbox with weight 130"
@@ -5467,9 +5757,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-7"
+                role="presentation"
               >
                 <rect
                   aria-label="node Junk Folder with weight 69"
@@ -5523,9 +5815,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-8"
+                role="presentation"
               >
                 <rect
                   aria-label="node Deleted Folder with weight 20"
@@ -5580,10 +5874,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-8"
@@ -5617,10 +5914,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-9"
@@ -5654,10 +5954,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-10"
@@ -5691,10 +5994,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2b_-11"
@@ -5728,9 +6034,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-9"
+                role="presentation"
               >
                 <rect
                   aria-label="node Clicked with weight 30"
@@ -5785,9 +6093,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-10"
+                role="presentation"
               >
                 <rect
                   aria-label="node Opened with weight 55"
@@ -5842,9 +6152,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2g_-11"
+                role="presentation"
               >
                 <rect
                   aria-label="node  No further action  required with weight 62"
@@ -5965,9 +6277,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-0"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.168.42.72 with weight 80"
@@ -6022,9 +6336,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-1"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.152.48.13 with weight 78"
@@ -6079,9 +6395,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-2"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.360.55.1 with weight 14"
@@ -6101,9 +6419,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-4"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.124.50.1 with weight 10"
@@ -6123,9 +6443,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-3"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.564.10.2 with weight 27"
@@ -6179,9 +6501,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-5"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.630.89.4 with weight 10"
@@ -6201,10 +6525,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-0"
@@ -6238,10 +6565,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-1"
@@ -6275,10 +6605,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-2"
@@ -6312,10 +6645,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-3"
@@ -6349,10 +6685,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-4"
@@ -6386,10 +6725,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-5"
@@ -6423,10 +6765,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-6"
@@ -6460,10 +6805,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-7"
@@ -6497,9 +6845,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-6"
+              role="presentation"
             >
               <rect
                 aria-label="node inbox with weight 130"
@@ -6554,9 +6904,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-7"
+              role="presentation"
             >
               <rect
                 aria-label="node Junk Folder with weight 69"
@@ -6610,9 +6962,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-8"
+              role="presentation"
             >
               <rect
                 aria-label="node Deleted Folder with weight 20"
@@ -6667,10 +7021,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-8"
@@ -6704,10 +7061,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-9"
@@ -6741,10 +7101,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-10"
@@ -6778,10 +7141,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2b_-11"
@@ -6815,9 +7181,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-9"
+              role="presentation"
             >
               <rect
                 aria-label="node Clicked with weight 30"
@@ -6872,9 +7240,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-10"
+              role="presentation"
             >
               <rect
                 aria-label="node Opened with weight 55"
@@ -6929,9 +7299,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2g_-11"
+              role="presentation"
             >
               <rect
                 aria-label="node  No further action  required with weight 62"
@@ -7092,9 +7464,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2o_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="element First with size 10"
@@ -7149,10 +7523,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_2j_-0"
@@ -7186,9 +7563,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_2o_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="element Second with size 10"
@@ -7310,9 +7689,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2o_-0"
+              role="presentation"
             >
               <rect
                 aria-label="element First with size 10"
@@ -7367,10 +7748,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_2j_-0"
@@ -7404,9 +7788,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_2o_-1"
+              role="presentation"
             >
               <rect
                 aria-label="element Second with size 10"
@@ -7563,9 +7949,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         />
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_5_-0"
+            role="presentation"
           >
             <rect
               aria-label="node 192.168.42.72 with weight 80"
@@ -7620,9 +8008,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_5_-1"
+            role="presentation"
           >
             <rect
               aria-label="node 172.152.48.13 with weight 50"
@@ -7677,10 +8067,13 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_0_-0"
@@ -7714,10 +8107,13 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_0_-1"
@@ -7751,9 +8147,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_5_-2"
+            role="presentation"
           >
             <rect
               aria-label="node 124.360.55.1 with weight 80"
@@ -7808,9 +8206,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_5_-3"
+            role="presentation"
           >
             <rect
               aria-label="node 192.564.10.2 with weight 50"
@@ -7919,9 +8319,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_e_-0"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.168.42.72 with weight 80"
@@ -7976,9 +8378,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_e_-1"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.152.48.13 with weight 50"
@@ -8033,10 +8437,13 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_9_-0"
@@ -8070,10 +8477,13 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_9_-1"
@@ -8107,9 +8517,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_e_-2"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.360.55.1 with weight 80"
@@ -8164,9 +8576,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_e_-3"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.564.10.2 with weight 50"
@@ -8284,9 +8698,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         />
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_1o_-0"
+            role="presentation"
           >
             <rect
               aria-label="node 192.168.42.72 with weight 80"
@@ -8341,9 +8757,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_1o_-1"
+            role="presentation"
           >
             <rect
               aria-label="node 172.152.48.13 with weight 50"
@@ -8398,10 +8816,13 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_1j_-0"
@@ -8435,10 +8856,13 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_1j_-1"
@@ -8472,9 +8896,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_1o_-2"
+            role="presentation"
           >
             <rect
               aria-label="node 124.360.55.1 with weight 80"
@@ -8529,9 +8955,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_1o_-3"
+            role="presentation"
           >
             <rect
               aria-label="node 192.564.10.2 with weight 50"
@@ -8641,9 +9069,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="node node0 with weight 5"
@@ -8663,9 +9093,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="node node1 with weight 5"
@@ -8685,9 +9117,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="node node2 with weight 5"
@@ -8707,9 +9141,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="node node3 with weight 5"
@@ -8729,9 +9165,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-4"
+                role="presentation"
               >
                 <rect
                   aria-label="node node4 with weight 900"
@@ -8786,9 +9224,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-5"
+                role="presentation"
               >
                 <rect
                   aria-label="node node5 with weight 80"
@@ -8843,10 +9283,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_4v_-0"
@@ -8880,10 +9323,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_4v_-1"
@@ -8917,10 +9363,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_4v_-2"
@@ -8954,10 +9403,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_4v_-3"
@@ -8991,10 +9443,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_4v_-4"
@@ -9028,10 +9483,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_4v_-5"
@@ -9065,9 +9523,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-6"
+                role="presentation"
               >
                 <rect
                   aria-label="node node6 with weight 20"
@@ -9087,9 +9547,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_54_-7"
+                role="presentation"
               >
                 <rect
                   aria-label="node node7 with weight 980"
@@ -9211,9 +9673,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-0"
+              role="presentation"
             >
               <rect
                 aria-label="node node0 with weight 5"
@@ -9233,9 +9697,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-1"
+              role="presentation"
             >
               <rect
                 aria-label="node node1 with weight 5"
@@ -9255,9 +9721,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-2"
+              role="presentation"
             >
               <rect
                 aria-label="node node2 with weight 5"
@@ -9277,9 +9745,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-3"
+              role="presentation"
             >
               <rect
                 aria-label="node node3 with weight 5"
@@ -9299,9 +9769,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-4"
+              role="presentation"
             >
               <rect
                 aria-label="node node4 with weight 900"
@@ -9356,9 +9828,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-5"
+              role="presentation"
             >
               <rect
                 aria-label="node node5 with weight 80"
@@ -9413,10 +9887,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_4v_-0"
@@ -9450,10 +9927,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_4v_-1"
@@ -9487,10 +9967,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_4v_-2"
@@ -9524,10 +10007,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_4v_-3"
@@ -9561,10 +10047,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_4v_-4"
@@ -9598,10 +10087,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_4v_-5"
@@ -9635,9 +10127,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-6"
+              role="presentation"
             >
               <rect
                 aria-label="node node6 with weight 20"
@@ -9657,9 +10151,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_54_-7"
+              role="presentation"
             >
               <rect
                 aria-label="node node7 with weight 980"
@@ -9821,9 +10317,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_5c_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="node Large Source with weight 10001"
@@ -9878,9 +10376,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_5c_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="node Tiny Source with weight 2"
@@ -9900,10 +10400,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_57_-0"
@@ -9937,10 +10440,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_57_-1"
@@ -9974,10 +10480,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_57_-2"
@@ -10011,10 +10520,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_57_-3"
@@ -10048,9 +10560,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_5c_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="node Large Target with weight 10001"
@@ -10105,9 +10619,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_5c_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="node Tiny Target with weight 2"
@@ -10194,9 +10710,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_5c_-0"
+              role="presentation"
             >
               <rect
                 aria-label="node Large Source with weight 10001"
@@ -10251,9 +10769,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_5c_-1"
+              role="presentation"
             >
               <rect
                 aria-label="node Tiny Source with weight 2"
@@ -10273,10 +10793,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_57_-0"
@@ -10310,10 +10833,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_57_-1"
@@ -10347,10 +10873,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_57_-2"
@@ -10384,10 +10913,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_57_-3"
@@ -10421,9 +10953,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_5c_-2"
+              role="presentation"
             >
               <rect
                 aria-label="node Large Target with weight 10001"
@@ -10478,9 +11012,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_5c_-3"
+              role="presentation"
             >
               <rect
                 aria-label="node Tiny Target with weight 2"
@@ -10602,9 +11138,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         />
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-0"
+            role="presentation"
           >
             <rect
               aria-label="node 192.168.42.72 with weight 80"
@@ -10659,9 +11197,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-1"
+            role="presentation"
           >
             <rect
               aria-label="node 172.152.48.13 with weight 78"
@@ -10716,9 +11256,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-2"
+            role="presentation"
           >
             <rect
               aria-label="node 124.360.55.1 with weight 14"
@@ -10738,9 +11280,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-4"
+            role="presentation"
           >
             <rect
               aria-label="node 124.124.50.1 with weight 10"
@@ -10760,9 +11304,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-3"
+            role="presentation"
           >
             <rect
               aria-label="node 192.564.10.2 with weight 27"
@@ -10817,9 +11363,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-5"
+            role="presentation"
           >
             <rect
               aria-label="node 172.630.89.4 with weight 10"
@@ -10839,10 +11387,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-0"
@@ -10876,10 +11427,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-1"
@@ -10913,10 +11467,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-2"
@@ -10950,10 +11507,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-3"
@@ -10987,10 +11547,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-4"
@@ -11024,10 +11587,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-5"
@@ -11061,10 +11627,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-6"
@@ -11098,10 +11667,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-7"
@@ -11135,9 +11707,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-6"
+            role="presentation"
           >
             <rect
               aria-label="node inbox with weight 130"
@@ -11192,9 +11766,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-7"
+            role="presentation"
           >
             <rect
               aria-label="node Junk Folder with weight 69"
@@ -11249,9 +11825,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-8"
+            role="presentation"
           >
             <rect
               aria-label="node Deleted Folder with weight 20"
@@ -11306,10 +11884,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-8"
@@ -11343,10 +11924,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-9"
@@ -11380,10 +11964,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-10"
@@ -11417,10 +12004,13 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_43_-11"
@@ -11454,9 +12044,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-9"
+            role="presentation"
           >
             <rect
               aria-label="node Clicked with weight 30"
@@ -11511,9 +12103,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-10"
+            role="presentation"
           >
             <rect
               aria-label="node Opened with weight 55"
@@ -11568,9 +12162,11 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_48_-11"
+            role="presentation"
           >
             <rect
               aria-label="node  No further action  required with weight 62"
@@ -11724,9 +12320,11 @@ Object {
             />
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-0"
+                role="presentation"
               >
                 <rect
                   aria-label="node 192.168.42.72 with weight 80"
@@ -11781,9 +12379,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-1"
+                role="presentation"
               >
                 <rect
                   aria-label="node 172.152.48.13 with weight 78"
@@ -11838,9 +12438,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-2"
+                role="presentation"
               >
                 <rect
                   aria-label="node 124.360.55.1 with weight 14"
@@ -11860,9 +12462,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-4"
+                role="presentation"
               >
                 <rect
                   aria-label="node 124.124.50.1 with weight 10"
@@ -11882,9 +12486,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-3"
+                role="presentation"
               >
                 <rect
                   aria-label="node 192.564.10.2 with weight 27"
@@ -11939,9 +12545,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-5"
+                role="presentation"
               >
                 <rect
                   aria-label="node 172.630.89.4 with weight 10"
@@ -11961,10 +12569,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-0"
@@ -11998,10 +12609,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-1"
@@ -12035,10 +12649,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-2"
@@ -12072,10 +12689,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-3"
@@ -12109,10 +12729,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-4"
@@ -12146,10 +12769,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-5"
@@ -12183,10 +12809,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-6"
@@ -12220,10 +12849,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-7"
@@ -12257,9 +12889,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-6"
+                role="presentation"
               >
                 <rect
                   aria-label="node inbox with weight 130"
@@ -12314,9 +12948,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-7"
+                role="presentation"
               >
                 <rect
                   aria-label="node Junk Folder with weight 69"
@@ -12371,9 +13007,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-8"
+                role="presentation"
               >
                 <rect
                   aria-label="node Deleted Folder with weight 20"
@@ -12428,10 +13066,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-8"
@@ -12465,10 +13106,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-9"
@@ -12502,10 +13146,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-10"
@@ -12539,10 +13186,13 @@ Object {
             </g>
             <g
               class="fui-sc__links"
+              role="presentation"
               stroke="var(--colorStrokeFocus2)"
               stroke-opacity="1"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <defs>
                   <lineargradient
                     id="gradient-link_r_3r_-11"
@@ -12576,9 +13226,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-9"
+                role="presentation"
               >
                 <rect
                   aria-label="node Clicked with weight 30"
@@ -12633,9 +13285,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-10"
+                role="presentation"
               >
                 <rect
                   aria-label="node Opened with weight 55"
@@ -12690,9 +13344,11 @@ Object {
             </g>
             <g
               class="fui-sc__nodes"
+              role="presentation"
             >
               <g
                 id="nodeGElement_r_40_-11"
+                role="presentation"
               >
                 <rect
                   aria-label="node  No further action  required with weight 62"
@@ -12814,9 +13470,11 @@ Object {
           />
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-0"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.168.42.72 with weight 80"
@@ -12871,9 +13529,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-1"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.152.48.13 with weight 78"
@@ -12928,9 +13588,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-2"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.360.55.1 with weight 14"
@@ -12950,9 +13612,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-4"
+              role="presentation"
             >
               <rect
                 aria-label="node 124.124.50.1 with weight 10"
@@ -12972,9 +13636,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-3"
+              role="presentation"
             >
               <rect
                 aria-label="node 192.564.10.2 with weight 27"
@@ -13029,9 +13695,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-5"
+              role="presentation"
             >
               <rect
                 aria-label="node 172.630.89.4 with weight 10"
@@ -13051,10 +13719,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-0"
@@ -13088,10 +13759,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-1"
@@ -13125,10 +13799,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-2"
@@ -13162,10 +13839,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-3"
@@ -13199,10 +13879,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-4"
@@ -13236,10 +13919,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-5"
@@ -13273,10 +13959,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-6"
@@ -13310,10 +13999,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-7"
@@ -13347,9 +14039,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-6"
+              role="presentation"
             >
               <rect
                 aria-label="node inbox with weight 130"
@@ -13404,9 +14098,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-7"
+              role="presentation"
             >
               <rect
                 aria-label="node Junk Folder with weight 69"
@@ -13461,9 +14157,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-8"
+              role="presentation"
             >
               <rect
                 aria-label="node Deleted Folder with weight 20"
@@ -13518,10 +14216,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-8"
@@ -13555,10 +14256,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-9"
@@ -13592,10 +14296,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-10"
@@ -13629,10 +14336,13 @@ Object {
           </g>
           <g
             class="fui-sc__links"
+            role="presentation"
             stroke="var(--colorStrokeFocus2)"
             stroke-opacity="1"
           >
-            <g>
+            <g
+              role="presentation"
+            >
               <defs>
                 <lineargradient
                   id="gradient-link_r_3r_-11"
@@ -13666,9 +14376,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-9"
+              role="presentation"
             >
               <rect
                 aria-label="node Clicked with weight 30"
@@ -13723,9 +14435,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-10"
+              role="presentation"
             >
               <rect
                 aria-label="node Opened with weight 55"
@@ -13780,9 +14494,11 @@ Object {
           </g>
           <g
             class="fui-sc__nodes"
+            role="presentation"
           >
             <g
               id="nodeGElement_r_40_-11"
+              role="presentation"
             >
               <rect
                 aria-label="node  No further action  required with weight 62"
@@ -13939,9 +14655,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         />
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-0"
+            role="presentation"
           >
             <rect
               aria-label="node 192.168.42.72 with weight 80"
@@ -13996,9 +14714,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-1"
+            role="presentation"
           >
             <rect
               aria-label="node 172.152.48.13 with weight 78"
@@ -14053,9 +14773,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-2"
+            role="presentation"
           >
             <rect
               aria-label="node 124.360.55.1 with weight 14"
@@ -14075,9 +14797,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-4"
+            role="presentation"
           >
             <rect
               aria-label="node 124.124.50.1 with weight 10"
@@ -14097,9 +14821,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-3"
+            role="presentation"
           >
             <rect
               aria-label="node 192.564.10.2 with weight 27"
@@ -14154,9 +14880,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-5"
+            role="presentation"
           >
             <rect
               aria-label="node 172.630.89.4 with weight 10"
@@ -14176,10 +14904,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-0"
@@ -14213,10 +14944,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-1"
@@ -14250,10 +14984,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-2"
@@ -14287,10 +15024,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-3"
@@ -14324,10 +15064,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-4"
@@ -14361,10 +15104,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-5"
@@ -14398,10 +15144,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-6"
@@ -14435,10 +15184,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-7"
@@ -14472,9 +15224,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-6"
+            role="presentation"
           >
             <rect
               aria-label="node inbox with weight 130"
@@ -14529,9 +15283,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-7"
+            role="presentation"
           >
             <rect
               aria-label="node Junk Folder with weight 69"
@@ -14586,9 +15342,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-8"
+            role="presentation"
           >
             <rect
               aria-label="node Deleted Folder with weight 20"
@@ -14643,10 +15401,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-8"
@@ -14680,10 +15441,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-9"
@@ -14717,10 +15481,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-10"
@@ -14754,10 +15521,13 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__links"
+          role="presentation"
           stroke="var(--colorStrokeFocus2)"
           stroke-opacity="1"
         >
-          <g>
+          <g
+            role="presentation"
+          >
             <defs>
               <lineargradient
                 id="gradient-link_r_4d_-11"
@@ -14791,9 +15561,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-9"
+            role="presentation"
           >
             <rect
               aria-label="node Clicked with weight 30"
@@ -14848,9 +15620,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-10"
+            role="presentation"
           >
             <rect
               aria-label="node Opened with weight 55"
@@ -14905,9 +15679,11 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         </g>
         <g
           class="fui-sc__nodes"
+          role="presentation"
         >
           <g
             id="nodeGElement_r_4i_-11"
+            role="presentation"
           >
             <rect
               aria-label="node  No further action  required with weight 62"

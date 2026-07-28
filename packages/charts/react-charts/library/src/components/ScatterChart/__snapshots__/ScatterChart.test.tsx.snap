@@ -250,13 +250,10 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
             y1="0"
             y2="300"
           />
-          <g
-            aria-label="Scatter chart with 2 regions"
-            role="listbox"
-          >
+          <g>
             <g
               aria-label="Region 2, series 2 of 2 with 5 data points."
-              role="region"
+              role="listbox"
             >
               <circle
                 aria-label="Electronics. Region 2, 60000."
@@ -271,7 +268,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#00bcf2"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Furniture. Region 2, 25000."
                 cx="219.31372549019608"
@@ -285,7 +281,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#00bcf2"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Clothing. Region 2, 22000."
                 cx="334.99999999999994"
@@ -299,7 +294,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#00bcf2"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Toys. Region 2, 12000."
                 cx="450.68627450980387"
@@ -313,7 +307,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#00bcf2"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Books. Region 2, 8000."
                 cx="566.3725490196077"
@@ -327,11 +320,10 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#00bcf2"
                 tabindex="0"
               />
-              ,
             </g>
             <g
               aria-label="Region 1, series 1 of 2 with 5 data points."
-              role="region"
+              role="listbox"
             >
               <circle
                 aria-label="Electronics. Region 1, 50000."
@@ -346,7 +338,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#0078d4"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Furniture. Region 1, 30000."
                 cx="219.31372549019608"
@@ -360,7 +351,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#0078d4"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Clothing. Region 1, 20000."
                 cx="334.99999999999994"
@@ -374,7 +364,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#0078d4"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Toys. Region 1, 15000."
                 cx="450.68627450980387"
@@ -388,7 +377,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#0078d4"
                 tabindex="0"
               />
-              ,
               <circle
                 aria-label="Books. Region 1, 10000."
                 cx="566.3725490196077"
@@ -402,7 +390,6 @@ exports[`Scatter chart rendering Should render the Scatter chart properly 1`] = 
                 stroke="#0078d4"
                 tabindex="0"
               />
-              ,
             </g>
           </g>
         </g>

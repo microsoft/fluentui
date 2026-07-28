@@ -477,7 +477,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                 aria-label={_getAriaLabel(i, j)}
                 tabIndex={isLegendSelected ? 0 : undefined}
               />
-              ,
               {text && (
                 <text
                   key={`${circleId}-label`}
@@ -507,7 +506,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       series.push(
         <g
           key={`series_${i}`}
-          role="region"
+          role="listbox"
           aria-label={`${legendVal}, series ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
         >
           {pointsForSeries}
@@ -759,9 +758,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                 visibility={'hidden'}
                 strokeDasharray={'5,5'}
               />
-              <g role="listbox" aria-label={`Scatter chart with ${renderSeries.length} regions`}>
-                {renderSeries}
-              </g>
+              <g>{renderSeries}</g>
             </g>
           </>
         );

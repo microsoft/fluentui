@@ -101,6 +101,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -118,6 +119,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -127,7 +129,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -144,6 +146,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -167,6 +170,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -189,6 +193,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -212,6 +217,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -385,6 +391,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -402,6 +409,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -411,7 +419,7 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Heat map chart with 4 cells"
+            aria-label="4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
@@ -428,6 +436,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -451,6 +460,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -473,6 +483,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -496,6 +507,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -728,6 +740,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -745,6 +758,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -754,7 +768,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -771,6 +785,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -793,6 +808,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -815,6 +831,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -837,6 +854,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1010,6 +1028,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -1027,6 +1046,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -1036,7 +1056,7 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Heat map chart with 4 cells"
+            aria-label="4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
@@ -1053,6 +1073,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1075,6 +1096,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1097,6 +1119,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1119,6 +1142,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1351,6 +1375,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -1368,6 +1393,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -1377,7 +1403,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -1394,6 +1420,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1417,6 +1444,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1439,6 +1467,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1462,6 +1491,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1572,6 +1602,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -1589,6 +1620,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -1598,7 +1630,7 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Heat map chart with 4 cells"
+            aria-label="4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
@@ -1615,6 +1647,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1638,6 +1671,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1660,6 +1694,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1683,6 +1718,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -1852,6 +1888,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -1869,6 +1906,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -1878,7 +1916,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -1895,6 +1933,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1918,6 +1957,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1940,6 +1980,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -1963,6 +2004,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2136,6 +2178,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -2153,6 +2196,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -2162,7 +2206,7 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Heat map chart with 4 cells"
+            aria-label="4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
@@ -2179,6 +2223,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2202,6 +2247,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2224,6 +2270,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2247,6 +2294,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2479,6 +2527,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -2496,6 +2545,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -2505,7 +2555,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -2522,6 +2572,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2545,6 +2596,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2567,6 +2619,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2590,6 +2643,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2763,6 +2817,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -2780,6 +2835,7 @@ Object {
                 x2="0"
               />
               <text
+                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 x="-10"
@@ -2789,7 +2845,7 @@ Object {
             </g>
           </g>
           <g
-            aria-label="Heat map chart with 4 cells"
+            aria-label="4 cells"
             data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
             role="listbox"
           >
@@ -2806,6 +2862,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2829,6 +2886,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2851,6 +2909,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -2874,6 +2933,7 @@ Object {
                 width="286.23762376237624"
               />
               <text
+                aria-hidden="true"
                 class="fui-hmc__text"
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
@@ -3110,6 +3170,7 @@ Object {
                     x2="0"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-10"
@@ -3127,6 +3188,7 @@ Object {
                     x2="0"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-10"
@@ -3136,7 +3198,7 @@ Object {
                 </g>
               </g>
               <g
-                aria-label="Heat map chart with 4 cells"
+                aria-label="4 cells"
                 data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
                 role="listbox"
               >
@@ -3153,6 +3215,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3176,6 +3239,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3198,6 +3262,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3221,6 +3286,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3399,6 +3465,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -3416,6 +3483,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -3425,7 +3493,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -3442,6 +3510,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3465,6 +3534,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3487,6 +3557,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3510,6 +3581,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3746,6 +3818,7 @@ Object {
                     x2="0"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-10"
@@ -3763,6 +3836,7 @@ Object {
                     x2="0"
                   />
                   <text
+                    aria-hidden="true"
                     dy="0.32em"
                     fill="currentColor"
                     x="-10"
@@ -3772,7 +3846,7 @@ Object {
                 </g>
               </g>
               <g
-                aria-label="Heat map chart with 4 cells"
+                aria-label="4 cells"
                 data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
                 role="listbox"
               >
@@ -3789,6 +3863,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3812,6 +3887,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3834,6 +3910,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -3857,6 +3934,7 @@ Object {
                     width="286.23762376237624"
                   />
                   <text
+                    aria-hidden="true"
                     class="fui-hmc__text"
                     dominant-baseline="middle"
                     fill="var(--colorNeutralForeground1)"
@@ -4034,6 +4112,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -4051,6 +4130,7 @@ Object {
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
                   x="-10"
@@ -4060,7 +4140,7 @@ Object {
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -4077,6 +4157,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4100,6 +4181,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4122,6 +4204,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4145,6 +4228,7 @@ Object {
                   width="286.23762376237624"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4373,6 +4457,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               x2="0"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-10"
@@ -4390,6 +4475,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               x2="0"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-10"
@@ -4399,7 +4485,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           </g>
         </g>
         <g
-          aria-label="Heat map chart with 4 cells"
+          aria-label="4 cells"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
@@ -4416,6 +4502,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4436,6 +4523,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4456,6 +4544,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4476,6 +4565,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4649,6 +4739,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               x2="0"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-10"
@@ -4666,6 +4757,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               x2="0"
             />
             <text
+              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               x="-10"
@@ -4675,7 +4767,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </g>
         </g>
         <g
-          aria-label="Heat map chart with 4 cells"
+          aria-label="4 cells"
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
           role="listbox"
         >
@@ -4692,6 +4784,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4714,6 +4807,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4736,6 +4830,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
@@ -4758,6 +4853,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               width="286.23762376237624"
             />
             <text
+              aria-hidden="true"
               class="fui-hmc__text"
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"

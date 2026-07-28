@@ -2249,7 +2249,9 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               role="listbox"
               transform="translate(0, 80)"
             >
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="A, 28."
                   class="fui-donut-arc__root"
@@ -2261,7 +2263,9 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   tabindex="0"
                 />
               </g>
-              <g>
+              <g
+                role="presentation"
+              >
                 <path
                   aria-label="B, 55."
                   class="fui-donut-arc__root"
@@ -2690,6 +2694,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Monday"
                   dy="0.32em"
                   fill="currentColor"
@@ -2705,7 +2710,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 2 cells"
+              aria-label="2 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -2722,6 +2727,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2744,6 +2750,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2849,6 +2856,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Current Ratio"
                   dy="0.32em"
                   fill="currentColor"
@@ -2872,6 +2880,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Quick Ratio"
                   dy="0.32em"
                   fill="currentColor"
@@ -2895,6 +2904,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Debt-to-Equity"
                   dy="0.32em"
                   fill="currentColor"
@@ -2918,6 +2928,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="ROE"
                   dy="0.32em"
                   fill="currentColor"
@@ -2933,7 +2944,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 12 cells"
+              aria-label="12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -2950,6 +2961,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2972,6 +2984,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -2994,6 +3007,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3016,6 +3030,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3038,6 +3053,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3060,6 +3076,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3082,6 +3099,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3104,6 +3122,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3126,6 +3145,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3148,6 +3168,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3170,6 +3191,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3192,6 +3214,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3299,6 +3322,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Mon"
                   dy="0.32em"
                   fill="currentColor"
@@ -3314,7 +3338,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 2 cells"
+              aria-label="2 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -3331,6 +3355,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3353,6 +3378,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -3878,6 +3904,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="New York"
                   dy="0.32em"
                   fill="currentColor"
@@ -3901,6 +3928,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Los Angeles"
                   dy="0.32em"
                   fill="currentColor"
@@ -3924,6 +3952,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Chicago"
                   dy="0.32em"
                   fill="currentColor"
@@ -3947,6 +3976,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Houston"
                   dy="0.32em"
                   fill="currentColor"
@@ -3962,7 +3992,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 12 cells"
+              aria-label="12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -3979,6 +4009,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4001,6 +4032,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4023,6 +4055,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4045,6 +4078,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4067,6 +4101,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4089,6 +4124,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4111,6 +4147,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4133,6 +4170,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4155,6 +4193,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4177,6 +4216,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4199,6 +4239,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4221,6 +4262,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4348,6 +4390,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 1"
                   dy="0.32em"
                   fill="currentColor"
@@ -4371,6 +4414,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 2"
                   dy="0.32em"
                   fill="currentColor"
@@ -4394,6 +4438,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 3"
                   dy="0.32em"
                   fill="currentColor"
@@ -4417,6 +4462,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Period 4"
                   dy="0.32em"
                   fill="currentColor"
@@ -4432,7 +4478,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 12 cells"
+              aria-label="12 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -4449,6 +4495,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4471,6 +4518,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4493,6 +4541,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4515,6 +4564,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4537,6 +4587,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4559,6 +4610,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4581,6 +4633,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4603,6 +4656,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4625,6 +4679,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4647,6 +4702,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4669,6 +4725,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4691,6 +4748,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                   width="27.25827814569536"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4798,6 +4856,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Mon"
                   dy="0.32em"
                   fill="currentColor"
@@ -4821,6 +4880,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   x2="0"
                 />
                 <text
+                  aria-hidden="true"
                   data-full="Tue"
                   dy="0.32em"
                   fill="currentColor"
@@ -4836,7 +4896,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
               </g>
             </g>
             <g
-              aria-label="Heat map chart with 4 cells"
+              aria-label="4 cells"
               data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
               role="listbox"
             >
@@ -4853,6 +4913,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4875,6 +4936,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4897,6 +4959,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -4919,6 +4982,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
                   width="29.10891089108911"
                 />
                 <text
+                  aria-hidden="true"
                   class="fui-hmc__text"
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
@@ -5178,21 +5242,18 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
                 y1="0"
                 y2="NaN"
               />
-              <g
-                aria-label="Scatter chart with 3 regions"
-                role="listbox"
-              >
+              <g>
                 <g
                   aria-label="Underweight, series 3 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 />
                 <g
                   aria-label="Overweight, series 2 of 3 with 5 data points."
-                  role="region"
+                  role="listbox"
                 />
                 <g
                   aria-label="Normal, series 1 of 3 with 3 data points."
-                  role="region"
+                  role="listbox"
                 />
               </g>
             </g>
@@ -5540,21 +5601,18 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 y1="0"
                 y2="NaN"
               />
-              <g
-                aria-label="Scatter chart with 3 regions"
-                role="listbox"
-              >
+              <g>
                 <g
                   aria-label="C, series 3 of 3 with 1 data points."
-                  role="region"
+                  role="listbox"
                 />
                 <g
                   aria-label="B, series 2 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 />
                 <g
                   aria-label="A, series 1 of 3 with 2 data points."
-                  role="region"
+                  role="listbox"
                 />
               </g>
             </g>
@@ -5899,17 +5957,14 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
                 y1="0"
                 y2="NaN"
               />
-              <g
-                aria-label="Scatter chart with 2 regions"
-                role="listbox"
-              >
+              <g>
                 <g
                   aria-label="Overweight, series 2 of 2 with 3 data points."
-                  role="region"
+                  role="listbox"
                 />
                 <g
                   aria-label="Normal, series 1 of 2 with 2 data points."
-                  role="region"
+                  role="listbox"
                 />
               </g>
             </g>
