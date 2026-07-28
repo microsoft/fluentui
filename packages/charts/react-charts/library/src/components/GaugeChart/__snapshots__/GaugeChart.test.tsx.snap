@@ -269,7 +269,7 @@ Array [
   <button
     aria-expanded="false"
     aria-haspopup="menu"
-    class="fui-Button group/fui-button fui-MenuButton"
+    class="fui-Button group/fui-button fui-MenuButton group/fui-menu-button"
     data-overflow-menu=""
     data-size="medium"
     id="menu_r_23_"
