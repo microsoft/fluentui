@@ -31,7 +31,16 @@ export const useImageStyles_unstable = (state: ImageState): ImageState => {
   const hasExplicitSize = height != null || width != null;
   const shouldApplyFitFill = fit !== 'default' && !hasExplicitSize;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this Image, because `styles.root` is hashed and unaddressable from outside
+  // this file. Image stamps NO data attributes by design (every prop it styles is a look
+  // prop expressed as a module class — see Image.module.css's header), so the marker is
+  // inert until a descendant reads a pseudo-class state such as
+  // `@variant group-hover/fui-image`. It is added anyway: markers are per-component
+  // identity, not per-state (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Image.module.css and by
   // block order within it, not by the order of these arguments — see that file's header
   // for the mapping back to the mergeClasses() argument order this replaces.
@@ -45,13 +54,14 @@ export const useImageStyles_unstable = (state: ImageState): ImageState => {
   // `eslint-disable-next-line react-hooks/immutability` is dropped because the rule no
   // longer reports here — same as the react-divider and react-button conversions.
   state.root.className = clsx(
+    'group/fui-image',
     imageClassNames.root,
     styles.root,
     block && styles.block,
     bordered && styles.bordered,
     shadow && styles.shadow,
     styles[fit],
-    shouldApplyFitFill && styles.fitFill,
+    shouldApplyFitFill && styles['fit-fill'],
     styles[shape],
     state.root.className,
   );

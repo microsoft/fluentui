@@ -24,7 +24,7 @@
  *   4  styles.bordered     (state.bordered)   → fui.components.l1  (.bordered)
  *   5  styles.shadow       (state.shadow)     → fui.components.l1  (.shadow)
  *   6  styles[state.fit]                      → fui.components.l1  (.center/.contain/.cover/.none)
- *   7  styles.fitFill      (computed)         → fui.components.l1  (.fitFill)
+ *   7  styles.fitFill      (computed)         → fui.components.l1  (.fit-fill)
  *   8  styles[state.shape]                    → fui.components.l1  (.circular/.rounded)
  *   9  consumer className                     → unlayered (always wins)
  *
@@ -142,8 +142,12 @@
     }
   }
 
-  /* from useStyles.fitFill — applied when `fit` is set but no explicit height/width is */
-  .fitFill {
+  /*
+   * from useStyles.fitFill — applied when `fit` is set but no explicit height/width is.
+   * The local is lowercase-kebab (`fit-fill`), not the Griffel slice's camelCase name —
+   * the generated ident alphabet is all-lowercase, see scripts/css-modules/ident.js.
+   */
+  .fit-fill {
     @apply h-full w-full;
   }
 
