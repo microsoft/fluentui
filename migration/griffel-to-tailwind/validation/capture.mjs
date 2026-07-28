@@ -65,7 +65,12 @@ if (bundleMtime && fs.existsSync(componentsRoot)) {
         // rewritten by its own build) and is always newer than the bundles it produced.
         if (['node_modules', 'dist', 'lib', 'lib-commonjs', 'temp'].includes(entry.name)) continue;
         walk(full);
-      } else if (/\.(module\.css|tsx?)$/.test(entry.name) && fs.statSync(full).mtimeMs > bundleMtime) {
+      } else if (
+        /\.(module\.css|tsx?)$/.test(entry.name) &&
+        // Test files never enter the storybook bundle — editing one must not block capture.
+        !/\.(test|spec|cy)\.tsx?$/.test(entry.name) &&
+        fs.statSync(full).mtimeMs > bundleMtime
+      ) {
         newerSources.push(full);
       }
     }

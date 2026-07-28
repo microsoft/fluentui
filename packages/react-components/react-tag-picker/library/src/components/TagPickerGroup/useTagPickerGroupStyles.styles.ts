@@ -21,17 +21,25 @@ const useStyles = makeStyles({
     cursor: 'text',
   },
   // size variants
+  //
+  // `rowGap`, not `gap`: the column axis has always belonged to TagGroup. Under Griffel,
+  // `useTagGroupStyles_unstable`'s output was the last mergeClasses argument below, so its
+  // columnGap atomic beat the columnGap half of a `gap` shorthand on every size — only the
+  // row axis from here ever rendered. Now that react-tags is converted (cascade layers),
+  // an unlayered columnGap atomic here would steal the column axis back (mixed-mode
+  // inversion, DECISIONS.md D12). Setting only rowGap keeps the computed styles identical
+  // in both worlds.
   medium: {
     padding: `${tokens.spacingVerticalSNudge} 0 ${tokens.spacingVerticalSNudge} 0`,
-    gap: tokens.spacingHorizontalXS,
+    rowGap: tokens.spacingHorizontalXS,
   },
   large: {
     padding: `${tokens.spacingVerticalS} 0 ${tokens.spacingVerticalS} 0`,
-    gap: tokens.spacingHorizontalSNudge,
+    rowGap: tokens.spacingHorizontalSNudge,
   },
   'extra-large': {
     padding: `${tokens.spacingVerticalS} 0 ${tokens.spacingVerticalS} 0`,
-    gap: tokens.spacingHorizontalSNudge,
+    rowGap: tokens.spacingHorizontalSNudge,
   },
 });
 

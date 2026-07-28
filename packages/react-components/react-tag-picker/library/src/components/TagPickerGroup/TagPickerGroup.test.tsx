@@ -20,6 +20,14 @@ describe('TagPickerGroup', () => {
     Component: TagPickerGroup,
     renderOptions: { wrapper: Wrapper },
     displayName: 'TagPickerGroup',
+    // useTagPickerGroupStyles_unstable delegates to react-tags' converted (clsx-based)
+    // useTagGroupStyles_unstable, so the mocked mergeClasses never receives the consumer
+    // className as its exact last argument — the Griffel-era test cannot pass. The
+    // cascade-native replacement (classname-overrides-win) does not fit either: this
+    // component still composes with mergeClasses, which appends its atomics after the
+    // consumer's className by design. Re-enable the replacement when react-tag-picker
+    // itself converts.
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
