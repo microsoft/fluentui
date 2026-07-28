@@ -5,6 +5,36 @@
  * data-attribute vocabulary where one exists (reports/headless-precedent.md).
  *
  * Grow this catalog as packages convert; never define variants in component modules.
+ *
+ * ── COMPOSITION WITH NAMED GROUPS (DECISIONS.md D15) ──────────────────────────────────
+ *
+ * (Careful editing this block: a CSS comment ends at the first `*` immediately followed by a
+ * slash, so the group syntax is spelled `group-<variant>/<name>` throughout rather than with
+ * an asterisk wildcard, which would terminate the comment and spill the prose into the
+ * stylesheet as invalid declarations.)
+ *
+ * Every SELECTOR variant below already composes as `group-<variant>/<name>` for free —
+ * Tailwind v4 rewrites any `&:where(…)` variant into the group form, so a child module writes
+ * `@variant group-checked/fui-switch { … }` and get
+ * `.child:is(:where(.group\/fui-switch):where([data-checked], :checked) *)`. Verified
+ * against tailwindcss 4.3.3 for `checked`, `not-checked`, `size-small`, `disabled-control`,
+ * `hover`, `focus-within` and `rtl`. **This catalog needs NO additions to support named
+ * groups**, and a new entry becomes group-composable the moment it is added here.
+ *
+ * Two consequences that bite:
+ *
+ *   1. The `&:where(…)` shape is what makes composition work. An ancestor-form variant
+ *      (`:where([x]) &`) still compiles on its own but SILENTLY stops composing under
+ *      `group-*`. Keep every new entry in the canonical form.
+ *
+ *   2. `forced-colors` (below) is the ONE exception, because it is an AT-RULE variant —
+ *      `@media (forced-colors: active)` has no element for `group-*` to scope.
+ *      `group-forced-colors/fui-switch` is a hard build error
+ *      (`Cannot use @variant with unknown variant`). Nest it the other way instead:
+ *
+ *          @variant forced-colors { @variant group-checked/fui-switch { … } }
+ *
+ *      Any future at-rule variant inherits the same restriction.
  */
 
 /* direction — computed direction, correct under nesting (DECISIONS.md D5) */
