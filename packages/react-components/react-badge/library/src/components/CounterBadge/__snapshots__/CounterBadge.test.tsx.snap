@@ -2,7 +2,7 @@
 
 exports[`CounterBadge renders a default state 1`] = `
 <div
-  class="group/fui-badge fui-Badge group/fui-counter-badge fui-CounterBadge"
+  class="fui-Badge group/fui-badge fui-CounterBadge group/fui-counter-badge"
   data-empty="true"
   data-size="medium"
 />

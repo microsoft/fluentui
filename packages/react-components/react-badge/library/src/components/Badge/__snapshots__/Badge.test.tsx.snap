@@ -2,7 +2,7 @@
 
 exports[`Badge renders a default state 1`] = `
 <div
-  class="group/fui-badge fui-Badge"
+  class="fui-Badge group/fui-badge"
   data-size="medium"
 >
   Default Badge

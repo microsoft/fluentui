@@ -27,11 +27,12 @@ export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
-  // the consumer className last. The marker is a literal, unhashed, GLOBAL token — the only
-  // handle by which another module can style an element from this CounterBadge's state,
-  // because the module classes are hashed and unaddressable from outside this file
-  // (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
+  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token — the only handle by which another module can style an element
+  // from this CounterBadge's state, because the module classes are hashed and unaddressable
+  // from outside this file (DECISIONS.md D15).
   //
   // This root ends up carrying TWO markers, `group/fui-badge` and `group/fui-counter-badge`,
   // exactly as it already carries both `fui-Badge` and `fui-CounterBadge`: the delegation
@@ -51,8 +52,8 @@ export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): Counte
   //
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    'group/fui-counter-badge',
     counterBadgeClassNames.root,
+    'group/fui-counter-badge',
     state.dot && styles.dot,
     !state.root.children && !state.dot && styles.hide,
     state.root.className,
