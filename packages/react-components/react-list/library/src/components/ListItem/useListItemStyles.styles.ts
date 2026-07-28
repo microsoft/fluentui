@@ -52,12 +52,22 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   root['data-interactive'] = state.selectable || state.navigable || undefined;
   root['data-disabled'] = state.disabled || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this ListItem's state, because `styles.root` is hashed and unaddressable from
+  // outside this file (DECISIONS.md D15).
+  //
+  // ListItem needs no state mirrors: `data-interactive` and `data-disabled` are stamped on
+  // this very element above, so `@variant group-interactive/fui-list-item` /
+  // `group-disabled/fui-list-item` work as-is (D15.6, Tier 0). The marker nests under
+  // `group/fui-list` for free — each component root carries its own (D15.1).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in ListItem.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the checkmark slot's rules
   // live in `fui.components.l2` rather than l1.
-  state.root.className = clsx(listItemClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-list-item', listItemClassNames.root, styles.root, state.root.className);
 
   if (state.checkmark) {
     state.checkmark.className = clsx(listItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
