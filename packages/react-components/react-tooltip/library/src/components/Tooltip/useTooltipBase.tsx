@@ -43,7 +43,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   const { targetDocument } = useFluent();
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
-  const [positioningHidden, setPositioningHidden] = React.useState(false);
+  const [hidden, setHidden] = React.useState(false);
 
   const {
     children,
@@ -64,7 +64,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     hideDelay,
     relationship,
     visible,
-    positioningHidden,
+    hidden,
     shouldRenderTooltip: visible,
     mountNode,
     // Slots
@@ -85,7 +85,7 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   const onPositioningEnd = useEventCallback((event: OnPositioningEndEvent) => {
     const { escaped, referenceHidden } = event.detail;
 
-    setPositioningHidden(escaped || referenceHidden);
+    setHidden(escaped || referenceHidden);
     resolvedPositioning.onPositioningEnd?.(event);
   });
 

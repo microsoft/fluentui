@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     display: 'block',
   },
 
-  positioningHidden: {
+  hidden: {
     visibility: 'hidden',
     pointerEvents: 'none',
   },
@@ -65,7 +65,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
-    state.positioningHidden && styles.positioningHidden,
+    state.hidden && styles.hidden,
     state.content.className,
   );
 
