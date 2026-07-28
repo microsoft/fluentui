@@ -596,11 +596,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             aria-label={_getChartTitle()}
             onMouseLeave={_handleMouseOut}
           >
-            <g
-              transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}
-              role="listbox"
-              aria-label={`Gauge chart with ${_segments.length} segments`}
-            >
+            <g transform={`translate(${_width / 2}, ${_height - (_margins.bottom + _legendsHeight)})`}>
               {props.chartTitle && (
                 <ChartTitle
                   title={props.chartTitle}
@@ -635,37 +631,39 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   </text>
                 </>
               )}
-              {arcs.map((arc, index) => {
-                const segment = _segments[arc.segmentIndex];
-                const arcId = `gauge-chart-arc-${index}`;
-                return (
-                  <React.Fragment key={index}>
-                    <path
-                      d={arc.d}
-                      id={arcId}
-                      strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
-                      className={classes.segment}
-                      fill={segment.color}
-                      opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
-                      {...getAccessibleDataObject(
-                        {
-                          ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
-                          ...segment.accessibilityData,
-                        },
-                        'option',
-                        true,
-                      )}
-                      onFocus={e => _handleFocus(e, segment.legend, arcId)}
-                      onBlur={_handleBlur}
-                      onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
-                      onMouseLeave={e => _handleCalloutDismiss()}
-                      onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
-                      tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
-                    />
-                  </React.Fragment>
-                );
-              })}
-              {_renderNeedle()}
+              <g role="listbox" aria-label={`Gauge chart with ${_segments.length} segments`}>
+                {arcs.map((arc, index) => {
+                  const segment = _segments[arc.segmentIndex];
+                  const arcId = `gauge-chart-arc-${index}`;
+                  return (
+                    <React.Fragment key={index}>
+                      <path
+                        d={arc.d}
+                        id={arcId}
+                        strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
+                        className={classes.segment}
+                        fill={segment.color}
+                        opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
+                        {...getAccessibleDataObject(
+                          {
+                            ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
+                            ...segment.accessibilityData,
+                          },
+                          'option',
+                          true,
+                        )}
+                        onFocus={e => _handleFocus(e, segment.legend, arcId)}
+                        onBlur={_handleBlur}
+                        onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
+                        onMouseLeave={e => _handleCalloutDismiss()}
+                        onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
+                        tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
+                      />
+                    </React.Fragment>
+                  );
+                })}
+                {_renderNeedle()}
+              </g>
               <g
                 onMouseEnter={e => _handleMouseOver(e, 'Chart value')}
                 onMouseMove={e => _handleMouseOver(e, 'Chart value')}
