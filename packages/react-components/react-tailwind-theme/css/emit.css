@@ -12,6 +12,13 @@
  * (`dist/styles.css`) which the consuming document imports exactly once — never bundled
  * into a component package.
  *
+ * What it emits: `--base-scale`, `--spacing`, the focus-knob `@property` registrations, and
+ * the 4 stroke widths `--spacing-thin/thick/thicker/thickest`. Those four come from the
+ * generated `css/tokens.css` and are the ONLY token registrations that also emit a variable
+ * — border/outline/ring/decoration widths do not consume the `--spacing-*` namespace, so
+ * modules author them as a direct `var(--spacing-thin)`, which needs a real variable. Every
+ * other Fluent token stays an `@theme inline` name that emits nothing.
+ *
  * `source(none)` is mandatory. Without it Tailwind auto-detects content, scans this
  * package, and dumps its findings into the utilities layer, which outranks every
  * `fui.components.*` layer (CONVERSION_GUIDE.md "Toolchain traps").

@@ -6,21 +6,22 @@
  * Regenerate: node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js
  * Verify:     node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js --check
  *
- * 467 Fluent tokens: 463 registered, 4 excluded (4× strokeWidth*).
+ * 467 Fluent tokens: 467 registered, none excluded.
  *
  * `inline` is MANDATORY: it substitutes var(--fluentToken) into each utility, so
  * values resolve per-element against the nearest FluentProvider. A plain `@theme`
  * alias would freeze resolution at `:root`, where Fluent tokens do not exist.
  *
- * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* carry the
- * base-scale EQUIVALENT of each token's canonical px, NOT var(--spacingHorizontalM).
- * Named and numeric spacing are then ONE scaling system (p-horizontal-m === p-12).
- * Provider spacing overrides do not reach these; all 7 shipped themes are identical.
+ * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* and the
+ * 4 --spacing-thin/thick/thicker/thickest carry the base-scale EQUIVALENT of each
+ * token's canonical px, NOT var(--spacingHorizontalM) / var(--strokeWidthThin). Named
+ * and numeric spacing are then ONE scaling system (p-horizontal-m === p-12). Provider
+ * overrides do not reach these; all 7 shipped themes carry identical values.
  *
  * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose
  * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.
  *
- * Rationale, namespace mapping, exclusion reasons: see the generator source.
+ * Rationale, namespace mapping, emission reasons: see the generator source.
  */
 
 @theme inline {
@@ -454,6 +455,12 @@
   --shadow-28-brand: var(--shadow28Brand);
   --shadow-64-brand: var(--shadow64Brand);
 
+  /* Stroke widths — base-scale VALUES, and the ONLY entries also EMITTED as variables — 4 tokens → --spacing-* (w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths) */
+  --spacing-thin: calc(1px * var(--base-scale));
+  --spacing-thick: calc(2px * var(--base-scale));
+  --spacing-thicker: calc(3px * var(--base-scale));
+  --spacing-thickest: calc(4px * var(--base-scale));
+
   /* Horizontal spacing, inline axis — base-scale VALUES, not token refs — 11 tokens → --spacing-horizontal-* (px-* ps-* pe-* mx-* gap-x-* …) */
   --spacing-horizontal-none: 0;
   --spacing-horizontal-xxs: calc(2px * var(--base-scale));
@@ -510,4 +517,33 @@
   --z-index-floating: var(--zIndexFloating, 4000);
   --z-index-priority: var(--zIndexPriority, 5000);
   --z-index-debug: var(--zIndexDebug, 6000);
+}
+
+/*
+ * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.
+ *
+ * `@theme inline` above registers utility NAMES and emits no variables, which is
+ * correct for every other namespace. These four are different: border-width,
+ * outline-width, ring-width, divide-*, underline-offset and text-decoration-thickness
+ * do NOT consume the --spacing-* namespace (v4 border widths are a fixed bare-number
+ * px progression), so modules author those properties as a direct var(--spacing-thin).
+ * That reference needs a variable that actually exists.
+ *
+ * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component
+ * `*.module.css` output stays free of theme declarations; css/emit.css compiles it
+ * into dist/styles.css alongside --base-scale and --spacing, which utility-sourced
+ * spacing already depends on identically.
+ *
+ * `:root, :host` — not bare `:root` — matches the selector Tailwind emits its own
+ * `@theme` block on, so a shadow-DOM consumer that sees --base-scale/--spacing sees
+ * these too (verified in the compiled dist/styles.css).
+ */
+@layer fui.theme {
+  :root,
+  :host {
+    --spacing-thin: calc(1px * var(--base-scale));
+    --spacing-thick: calc(2px * var(--base-scale));
+    --spacing-thicker: calc(3px * var(--base-scale));
+    --spacing-thickest: calc(4px * var(--base-scale));
+  }
 }

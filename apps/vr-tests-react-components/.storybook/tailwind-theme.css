@@ -9,8 +9,16 @@
  * 0px without it, 8px with it).
  *
  * `source(none)` disables Tailwind's automatic content detection, so this emits only
- * the `@theme` custom properties (~271 bytes) — no preflight, no utility classes, and
- * therefore zero rendering impact on unconverted packages' VR baselines.
+ * the theme custom properties + focus-knob `@property` registrations (1,770 bytes total,
+ * of which 377 are the two `@layer fui.theme` variable blocks) — no preflight, no utility
+ * classes, and therefore zero rendering impact on unconverted packages' VR baselines.
+ *
+ * The SECOND variable block holds `--spacing-thin/thick/thicker/thickest` (the Fluent
+ * stroke widths). Those four are the one part of the token registration that must exist as
+ * real variables rather than `@theme inline` names: border/outline/ring/decoration widths do
+ * not consume the `--spacing-*` namespace, so modules reference `var(--spacing-thin)`
+ * directly. Byte-identical to the theme package's own `dist/styles.css` emission — verified
+ * by compiling both (.scratch/layer-probe/check-stroke-emission.mjs).
  *
  * Phase 1.5 note: when packages start shipping `dist/styles.css`, this emission moves
  * into the published theme/suite stylesheet and this file goes away.

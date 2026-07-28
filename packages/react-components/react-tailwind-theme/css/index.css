@@ -58,15 +58,18 @@
    *    `--spacing-*: initial` drops Tailwind's own named spacing scale (px, 0.5, …) so
    *    only the multiplier below survives.
    * 2. NAMED. ./tokens.css re-populates the namespace with the 22 Fluent spacing steps
-   *    (p-horizontal-m, gap-vertical-s, …). `initial` clears only what is registered
-   *    BEFORE it, so the LATER import survives this reset — probe-verified, and the
-   *    reason ./tokens.css must stay imported after this block.
+   *    (p-horizontal-m, gap-vertical-s, …) PLUS the 4 stroke widths (p-thin, w-thick,
+   *    gap-thicker, h-thickest). `initial` clears only what is registered BEFORE it, so
+   *    the LATER import survives this reset — probe-verified, and the reason ./tokens.css
+   *    must stay imported after this block.
    *
-   * Those 22 keys carry base-scale VALUES (`calc(12px * var(--base-scale))`), not
-   * `var(--spacingHorizontalM)`, so named and numeric spacing are one scaling system:
-   * p-horizontal-m and p-12 emit the same computed length. FluentProvider spacing
-   * overrides therefore do not reach utility-sourced spacing; all 7 shipped themes carry
-   * identical spacing values, so no shipped theme changes behavior.
+   * All 26 keys carry base-scale VALUES (`calc(12px * var(--base-scale))`), not
+   * `var(--spacingHorizontalM)` / `var(--strokeWidthThin)`, so named and numeric spacing
+   * are one scaling system: p-horizontal-m and p-12 emit the same computed length.
+   * FluentProvider spacing/strokeWidth overrides therefore do not reach utility-sourced
+   * spacing; all 7 shipped themes carry identical values for both sets (asserted:
+   * .scratch/layer-probe/assert-theme-spacing.js and assert-theme-stroke-width.js), so no
+   * shipped theme changes behavior.
    */
   --spacing-*: initial;
   --spacing: calc(1px * var(--base-scale));
@@ -102,9 +105,20 @@
  * `z-popup`, …) that compiles to a DIRECT `var(--fluentToken)` reference via
  * `@theme inline`. Literal `var(--tokenName)` authoring stays valid and unchanged.
  *
- * SPACING IS THE ONE EXCEPTION: `p-horizontal-m` / `gap-vertical-s` compile to the
- * base-scale equivalent of the token's canonical px, NOT to `var(--spacingHorizontalM)`
- * — see the dual-spacing note in the `@theme static` block above.
+ * SPACING IS THE ONE EXCEPTION: `p-horizontal-m` / `gap-vertical-s` / `w-thin` compile to
+ * the base-scale equivalent of the token's canonical px, NOT to `var(--spacingHorizontalM)`
+ * or `var(--strokeWidthThin)` — see the dual-spacing note in the `@theme static` block above.
+ *
+ * THE 4 STROKE WIDTHS ARE ALSO EMITTED as real `--spacing-thin/thick/thicker/thickest`
+ * custom properties (a `@layer fui.theme { :root, :host { … } }` block at the end of the
+ * generated file — the only declarations it contains). Border, outline, ring, divide,
+ * underline-offset and decoration widths do NOT consume the `--spacing-*` namespace in v4
+ * (`border-thin` does not exist; `border-2` is a hardcoded px literal, not a theme lookup),
+ * so modules author those properties as a direct `var(--spacing-thin)`, which needs a
+ * variable that exists. Emitted once per document via ./emit.css exactly like `--base-scale`;
+ * `@reference` keeps it out of every component module. Probe:
+ * .scratch/layer-probe/check-stroke-namespace.mjs (consumes/does-not table) and
+ * check-stroke-emission.mjs (emission end to end).
  *
  * ORDER IS LOAD-BEARING: this import must stay AFTER the `@theme static` block above.
  * Placed before it, `--color-*: initial` (and friends) wipe every registration and the

@@ -30,10 +30,19 @@
  * reference DOES exist, emitting `background-color: var(--color-neutral-background-1)`
  * against a variable nothing defines — silently broken CSS. `inline` self-heals instead.
  *
- * SPACING IS DIFFERENT — see SPACING_SCALE below. The 22 spacingHorizontal / spacingVertical
- * tokens register under `--spacing-*` with LITERAL base-scale values, not var() references,
- * so the named and numeric spacing scales are one system. Everything else registers as a
- * var() reference exactly as described above.
+ * SPACING IS DIFFERENT — see SPACING_SCALE / STROKE_WIDTH_SCALE below. The 22
+ * spacingHorizontal / spacingVertical tokens AND the 4 strokeWidth tokens register under
+ * `--spacing-*` with LITERAL base-scale values, not var() references, so every named and
+ * numeric spacing scale is one system. Everything else registers as a var() reference
+ * exactly as described above.
+ *
+ * THE 4 STROKE-WIDTH ENTRIES ARE ALSO EMITTED AS REAL CUSTOM PROPERTIES (`emit: true`).
+ * `@theme inline` registers a utility name but emits NO variable, and border/outline/ring/
+ * decoration widths do NOT consume the spacing namespace (probe-measured — see
+ * `.scratch/layer-probe/check-stroke-namespace.mjs`), so those properties must be authored as
+ * a direct `var(--spacing-thin)` reference. A registration alone would leave that var
+ * undefined. The emission rides the once-per-document artifact (css/emit.css -> dist/styles.css)
+ * and is suppressed in component modules by `@reference`, exactly like `--base-scale`.
  *
  * Run:      node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js
  * Verify:   node packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js --check
@@ -49,6 +58,7 @@ const REPO_ROOT = path.resolve(PACKAGE_ROOT, '..', '..', '..');
 const TOKENS_PACKAGE = path.join(REPO_ROOT, 'packages', 'tokens');
 const TOKENS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'tokens.ts');
 const SPACINGS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'global', 'spacings.ts');
+const STROKE_WIDTHS_SOURCE = path.join(TOKENS_PACKAGE, 'src', 'global', 'strokeWidths.ts');
 const DEFAULT_OUTPUT = path.join(PACKAGE_ROOT, 'css', 'tokens.css');
 
 const GENERATOR_ID = 'packages/react-components/react-tailwind-theme/scripts/generate-tokens-css.js';
@@ -127,6 +137,47 @@ const SPACING_SCALE = [
 ];
 
 /**
+ * Fluent's stroke widths — border/outline/divider thickness — joining the SAME `--spacing-*`
+ * namespace as SPACING_SCALE, on the same literal-value terms (settled with user 2026-07-27).
+ *
+ * WHY THE SPACING NAMESPACE AND NOT A `--border-width-*` NAMESPACE
+ * ---------------------------------------------------------------
+ * There is no `--border-width-*` namespace in Tailwind v4 — border widths are a fixed bare-
+ * number progression (`border-2` → `border-width: 2px`, a hardcoded px literal, NOT a theme
+ * lookup). The only width namespace that exists, `--stroke-width-*`, drives SVG `stroke-width`
+ * (`stroke-2` → `stroke-width: 2`), which is the wrong property. So there is nothing to
+ * register these against that would give `border-thin` a meaning.
+ *
+ * PROBE-MEASURED, not reasoned (`.scratch/layer-probe/check-stroke-namespace.mjs` registers a
+ * `--spacing-thin` on the real css/index.css and compiles a candidate list):
+ *   CONSUMES `--spacing-*`  p m gap space-x w h min-w max-w size inset top start basis
+ *                           translate scroll-m scroll-p indent leading (+ every axis/side form)
+ *   DOES NOT               border border-t/b/s/x divide-x outline outline-offset ring
+ *                           ring-offset inset-ring underline-offset decoration stroke
+ *
+ * So registration buys real utilities (`w-thin`, `h-thick`, `p-thin`, `gap-thin` — dimensional
+ * uses of a stroke width, which Fluent components do have) but CANNOT give `border-thin` a
+ * meaning. Border-ish properties are authored as a direct `var(--spacing-thin)` — which is why
+ * these four, alone in the namespace, are ALSO emitted as real custom properties (`emit: true`
+ * on the NAMESPACES entry). `@theme inline` emits no variables.
+ *
+ * Values are literal base-scale equivalents for the same reason spacing is: one scaling system.
+ * All 7 shipped themes carry byte-identical strokeWidth values — asserted before shipping in
+ * `.scratch/layer-probe/assert-theme-stroke-width.js` (1/2/3/4px, zero divergence).
+ *
+ * `global` is the key in `packages/tokens/src/global/strokeWidths.ts`; `px` is asserted against
+ * it at generation time, exactly like SPACING_SCALE.
+ *
+ * @type {{ suffix: string, utility: string, global: string, px: number }[]}
+ */
+const STROKE_WIDTH_SCALE = [
+  { suffix: 'Thin', utility: 'thin', global: 'strokeWidthThin', px: 1 },
+  { suffix: 'Thick', utility: 'thick', global: 'strokeWidthThick', px: 2 },
+  { suffix: 'Thicker', utility: 'thicker', global: 'strokeWidthThicker', px: 3 },
+  { suffix: 'Thickest', utility: 'thickest', global: 'strokeWidthThickest', px: 4 },
+];
+
+/**
  * The base-scale-equivalent CSS value for a spacing step. Zero stays a plain `0` — a
  * `calc(0px * …)` would be valid but noisy, and `0` is unitless-safe everywhere.
  *
@@ -138,19 +189,25 @@ function spacingValue(px) {
 }
 
 /**
- * Reads the private `spacings` literal out of `packages/tokens/src/global/spacings.ts` and
- * asserts SPACING_SCALE still describes it. Text extraction for the same reason as
- * `readTokens` — no build step, no dependency edge.
+ * Reads an object literal out of a `packages/tokens/src/global/*.ts` module and asserts the
+ * pinned table above still describes it — so an upstream scale change trips the build instead
+ * of silently desyncing the utilities from the tokens. Text extraction for the same reason as
+ * `readTokens`: no build step, no dependency edge on @fluentui/tokens.
  *
+ * @param {object} options
+ * @param {string} options.source          absolute path of the module to read
+ * @param {RegExp} options.declaration     must capture the object body in group 1
+ * @param {string} options.declarationText human-readable form of `declaration`, for errors
+ * @param {{ global: string, px: number }[]} options.table the pinned table to assert
+ * @param {string} options.tableName       the table's identifier, for errors
  * @returns {Record<string, string>}
  */
-function readSpacingScale() {
-  const source = fs.readFileSync(SPACINGS_SOURCE, 'utf8');
+function readGlobalScale({ source, declaration, declarationText, table, tableName }) {
+  const text = fs.readFileSync(source, 'utf8');
 
-  const declaration = /const spacings: SpacingTokens = \{([^}]*)\}/;
-  const match = declaration.exec(source);
+  const match = declaration.exec(text);
   if (!match) {
-    throw new Error(`${SPACINGS_SOURCE}: expected a \`const spacings: SpacingTokens = {\` declaration.`);
+    throw new Error(`${source}: expected a \`${declarationText}\` declaration.`);
   }
 
   /** @type {Record<string, string>} */
@@ -162,24 +219,56 @@ function readSpacingScale() {
   }
 
   const keys = Object.keys(scale);
-  if (keys.length !== SPACING_SCALE.length) {
+  if (keys.length !== table.length) {
     throw new Error(
-      `${SPACINGS_SOURCE}: parsed ${keys.length} spacing steps but SPACING_SCALE has ${SPACING_SCALE.length}. ` +
-        `Update SPACING_SCALE in ${GENERATOR_ID}.`,
+      `${source}: parsed ${keys.length} steps but ${tableName} has ${table.length}. ` +
+        `Update ${tableName} in ${GENERATOR_ID}.`,
     );
   }
 
-  for (const { global: key, px } of SPACING_SCALE) {
+  for (const { global: key, px } of table) {
     const expected = px === 0 ? '0' : `${px}px`;
     if (scale[key] !== expected) {
       throw new Error(
-        `${SPACINGS_SOURCE}: spacing step \`${key}\` is \`${scale[key]}\` but SPACING_SCALE says \`${expected}\`. ` +
-          `Update SPACING_SCALE in ${GENERATOR_ID}.`,
+        `${source}: step \`${key}\` is \`${scale[key]}\` but ${tableName} says \`${expected}\`. ` +
+          `Update ${tableName} in ${GENERATOR_ID}.`,
       );
     }
   }
 
   return scale;
+}
+
+/**
+ * Asserts SPACING_SCALE still matches the private `spacings` literal in packages/tokens.
+ *
+ * @returns {Record<string, string>}
+ */
+function readSpacingScale() {
+  return readGlobalScale({
+    source: SPACINGS_SOURCE,
+    declaration: /const spacings: SpacingTokens = \{([^}]*)\}/,
+    declarationText: 'const spacings: SpacingTokens = {',
+    table: SPACING_SCALE,
+    tableName: 'SPACING_SCALE',
+  });
+}
+
+/**
+ * Asserts STROKE_WIDTH_SCALE still matches the `strokeWidths` literal in packages/tokens.
+ * Same guarantee as `readSpacingScale`: these four values are hardcoded into the generated CSS,
+ * so an upstream change to 1/2/3/4px MUST throw rather than ship a silent divergence.
+ *
+ * @returns {Record<string, string>}
+ */
+function readStrokeWidthScale() {
+  return readGlobalScale({
+    source: STROKE_WIDTHS_SOURCE,
+    declaration: /export const strokeWidths: StrokeWidthTokens = \{([^}]*)\}/,
+    declarationText: 'export const strokeWidths: StrokeWidthTokens = {',
+    table: STROKE_WIDTH_SCALE,
+    tableName: 'STROKE_WIDTH_SCALE',
+  });
 }
 
 /**
@@ -233,14 +322,22 @@ const NAMESPACES = [
     namespace: 'spacing-horizontal',
     utility: 'px-* ps-* pe-* mx-* gap-x-* …',
     heading: 'Horizontal spacing, inline axis — base-scale VALUES, not token refs',
-    scale: true,
+    scale: SPACING_SCALE,
   },
   {
     prefix: 'spacingVertical',
     namespace: 'spacing-vertical',
     utility: 'py-* pt-* pb-* my-* gap-y-* …',
     heading: 'Vertical spacing, block axis — base-scale VALUES, not token refs',
-    scale: true,
+    scale: SPACING_SCALE,
+  },
+  {
+    prefix: 'strokeWidth',
+    namespace: 'spacing',
+    utility: 'w-thin h-thick p-thin gap-thin … AND var(--spacing-thin) for border/outline widths',
+    heading: 'Stroke widths — base-scale VALUES, and the ONLY entries also EMITTED as variables',
+    scale: STROKE_WIDTH_SCALE,
+    emit: true,
   },
   {
     prefix: 'borderRadius',
@@ -275,20 +372,19 @@ const NAMESPACES = [
 ];
 
 /**
- * Prefixes deliberately NOT registered. The generated file carries only a one-line count
- * summary (it ships inside the theme's root artifact, so it stays small); the reasons live
- * here so the exclusion never has to be re-litigated from memory.
+ * Prefixes deliberately NOT registered — currently EMPTY: every Fluent token has a Tailwind
+ * theme name. The mechanism stays because `classify` throws on an unclassified token, and a
+ * future token family may genuinely have no namespace; this is where its reason would live.
+ *
+ * HISTORY: `strokeWidth*` was the last exclusion, on the grounds that no namespace fits (still
+ * true — see STROKE_WIDTH_SCALE). It was removed 2026-07-27 when the four joined `--spacing-*`:
+ * a stroke width IS a length on the same base-scale system, the spacing-powered families give
+ * it real utilities, and the accompanying `emit: true` variable covers the border/outline/ring/
+ * decoration properties that provably do NOT consume the namespace.
+ *
+ * @type {{ prefix: string, reason: string }[]}
  */
-const EXCLUSIONS = [
-  {
-    prefix: 'strokeWidth',
-    reason:
-      'No Tailwind namespace fits. Border widths are bare numbers in v4 (`border-2`) with no ' +
-      '`--border-width-*` namespace, and the only width namespace that exists, `--stroke-width-*`, ' +
-      "drives SVG `stroke-width` — the wrong property for Fluent's border-width tokens. " +
-      'Author as `border-(length:--strokeWidthThin)` or a literal var().',
-  },
-];
+const EXCLUSIONS = [];
 
 /*
  * COLLISIONS WITH TAILWIND STATIC UTILITIES — probe-verified, no action needed.
@@ -370,13 +466,14 @@ function classify(name) {
       throw new Error(`Token \`${name}\` is exactly its namespace prefix — no key left to name a utility.`);
     }
 
-    // Spacing is the one namespace with a pinned suffix table AND a substituted value.
+    // Spacing (incl. stroke widths) is the one namespace with a pinned suffix table AND a
+    // substituted value. `group.scale` IS that table.
     if (group.scale) {
-      const step = SPACING_SCALE.find(entry => entry.suffix === remainder);
+      const step = group.scale.find(entry => entry.suffix === remainder);
       if (!step) {
         throw new Error(
-          `Token \`${name}\` has spacing step \`${remainder}\`, which is not in SPACING_SCALE. ` +
-            `Add it (with its px value) in ${GENERATOR_ID}.`,
+          `Token \`${name}\` has step \`${remainder}\`, which is not in the pinned table for ` +
+            `\`${group.prefix}\`. Add it (with its px value) in ${GENERATOR_ID}.`,
         );
       }
       return {
@@ -409,10 +506,15 @@ function render(options = {}) {
   const modifiers = options.modifiers === undefined ? THEME_MODIFIERS : options.modifiers;
   const tokensPackage = JSON.parse(fs.readFileSync(path.join(TOKENS_PACKAGE, 'package.json'), 'utf8'));
   const tokens = readTokens();
-  readSpacingScale(); // asserts SPACING_SCALE still matches packages/tokens; throws if not.
+  // Both pinned tables are asserted against packages/tokens before anything is rendered; an
+  // upstream scale change throws here instead of silently shipping a stale hardcoded value.
+  readSpacingScale();
+  readStrokeWidthScale();
 
   /** @type {Map<string, { group: typeof NAMESPACES[number], lines: string[] }>} */
   const sections = new Map();
+  /** Keys that must ALSO be emitted as real custom properties. @type {string[]} */
+  const emittedVariables = [];
   /** Excluded token names, keyed by the EXCLUSIONS prefix that matched. @type {Map<string, string[]>} */
   const excluded = new Map();
   /** @type {Map<string, string>} */
@@ -435,15 +537,21 @@ function render(options = {}) {
     }
     seenThemeKeys.set(themeKey, name);
 
+    const resolved = classification.value === undefined ? value : classification.value;
     const section = sections.get(group.prefix) || { group, lines: [] };
-    section.lines.push(`  ${themeKey}: ${classification.value === undefined ? value : classification.value};`);
+    section.lines.push(`  ${themeKey}: ${resolved};`);
     sections.set(group.prefix, section);
+
+    if (group.emit) {
+      emittedVariables.push(`    ${themeKey}: ${resolved};`);
+    }
   }
 
   const registered = seenThemeKeys.size;
   const excludedCount = tokens.length - registered;
 
   const excludedSummary = [...excluded].map(([prefix, names]) => `${names.length}× ${prefix}*`).join(', ');
+  const excludedNote = excludedCount === 0 ? 'none excluded' : `${excludedCount} excluded (${excludedSummary})`;
 
   // NOTE: a plain `/*` comment, NOT `/*!`. This file is inlined into the theme package's
   // emitted root artifact (css/emit.css -> dist/styles.css, shipped once per document), and
@@ -460,23 +568,22 @@ function render(options = {}) {
   out.push(` * Regenerate: node ${GENERATOR_ID}`);
   out.push(` * Verify:     node ${GENERATOR_ID} --check`);
   out.push(' *');
-  out.push(
-    ` * ${tokens.length} Fluent tokens: ${registered} registered, ${excludedCount} excluded (${excludedSummary}).`,
-  );
+  out.push(` * ${tokens.length} Fluent tokens: ${registered} registered, ${excludedNote}.`);
   out.push(' *');
   out.push(' * `inline` is MANDATORY: it substitutes var(--fluentToken) into each utility, so');
   out.push(' * values resolve per-element against the nearest FluentProvider. A plain `@theme`');
   out.push(' * alias would freeze resolution at `:root`, where Fluent tokens do not exist.');
   out.push(' *');
-  out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* carry the');
-  out.push(" * base-scale EQUIVALENT of each token's canonical px, NOT var(--spacingHorizontalM).");
-  out.push(' * Named and numeric spacing are then ONE scaling system (p-horizontal-m === p-12).');
-  out.push(' * Provider spacing overrides do not reach these; all 7 shipped themes are identical.');
+  out.push(' * SPACING IS THE ONE EXCEPTION: --spacing-horizontal-* / --spacing-vertical-* and the');
+  out.push(' * 4 --spacing-thin/thick/thicker/thickest carry the base-scale EQUIVALENT of each');
+  out.push(" * token's canonical px, NOT var(--spacingHorizontalM) / var(--strokeWidthThin). Named");
+  out.push(' * and numeric spacing are then ONE scaling system (p-horizontal-m === p-12). Provider');
+  out.push(' * overrides do not reach these; all 7 shipped themes carry identical values.');
   out.push(' *');
   out.push(' * ORDER MATTERS: index.css imports this AFTER its `@theme static` block, whose');
   out.push(' * `--color-*: initial` / `--spacing-*: initial` clear only what precedes them.');
   out.push(' *');
-  out.push(' * Rationale, namespace mapping, exclusion reasons: see the generator source.');
+  out.push(' * Rationale, namespace mapping, emission reasons: see the generator source.');
   out.push(' */');
   out.push('');
   out.push(`@theme ${modifiers} {`.replace(/\s+\{$/, ' {').replace('@theme  {', '@theme {'));
@@ -492,6 +599,39 @@ function render(options = {}) {
   }
 
   out.push('}');
+
+  if (emittedVariables.length > 0) {
+    out.push('');
+    out.push('/*');
+    out.push(' * REAL CUSTOM PROPERTIES — the one block in this file that emits declarations.');
+    out.push(' *');
+    out.push(' * `@theme inline` above registers utility NAMES and emits no variables, which is');
+    out.push(' * correct for every other namespace. These four are different: border-width,');
+    out.push(' * outline-width, ring-width, divide-*, underline-offset and text-decoration-thickness');
+    out.push(' * do NOT consume the --spacing-* namespace (v4 border widths are a fixed bare-number');
+    out.push(' * px progression), so modules author those properties as a direct var(--spacing-thin).');
+    out.push(' * That reference needs a variable that actually exists.');
+    out.push(' *');
+    out.push(' * Emitted ONCE PER DOCUMENT (D13): `@reference` drops this block, so component');
+    out.push(' * `*.module.css` output stays free of theme declarations; css/emit.css compiles it');
+    out.push(' * into dist/styles.css alongside --base-scale and --spacing, which utility-sourced');
+    out.push(' * spacing already depends on identically.');
+    out.push(' *');
+    out.push(' * `:root, :host` — not bare `:root` — matches the selector Tailwind emits its own');
+    out.push(' * `@theme` block on, so a shadow-DOM consumer that sees --base-scale/--spacing sees');
+    out.push(' * these too (verified in the compiled dist/styles.css).');
+    out.push(' */');
+    out.push('@layer fui.theme {');
+    // Selector split across two lines: prettier formats `:root, :host {` that way, and this
+    // file is prettier-checked in CI — a single-line form makes the generator's `--check`
+    // and the formatter disagree forever.
+    out.push('  :root,');
+    out.push('  :host {');
+    out.push(...emittedVariables);
+    out.push('  }');
+    out.push('}');
+  }
+
   out.push('');
 
   const contents = out.join('\n');
@@ -573,9 +713,11 @@ module.exports = {
   classify,
   readTokens,
   readSpacingScale,
+  readStrokeWidthScale,
   render,
   spacingValue,
   NAMESPACES,
   EXCLUSIONS,
   SPACING_SCALE,
+  STROKE_WIDTH_SCALE,
 };

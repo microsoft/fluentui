@@ -4,8 +4,11 @@
  * DECISIONS.md D13 — the document imports the theme stylesheet EXACTLY ONCE; component
  * packages' `dist/styles.css` contain component rules only and never embed this emission.
  * The output holds the `@layer` order statement, the `@theme` custom properties
- * (`--base-scale`, `--spacing`) and the focus-knob `@property` registrations. Everything a
- * component sheet references, nothing a component sheet duplicates.
+ * (`--base-scale`, `--spacing`), the 4 stroke widths (`--spacing-thin` … `--spacing-thickest`,
+ * the only token registrations that emit a variable — border/outline widths do not consume
+ * the `--spacing-*` namespace, so modules reference them directly) and the focus-knob
+ * `@property` registrations. Everything a component sheet references, nothing a component
+ * sheet duplicates.
  *
  * NOT wired into nx on purpose (Phase 1.5). The workspace plugin creates its nodes from
  * `project.json` files, so adding one here would newly infer lint / format / type-check /
