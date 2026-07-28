@@ -76,13 +76,24 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   root['data-indeterminate'] = checked === 'mixed' || undefined;
   root['data-disabled'] = disabled || undefined;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element
+  // from this Checkbox's state, because `styles.root` is hashed and unaddressable from
+  // outside this file (DECISIONS.md D15).
+  //
+  // Checkbox needs no state mirrors and is in fact D15's WORKED PRECEDENT for them: the
+  // real checked/indeterminate/disabled state lives on the hidden `<input>`, and this hook
+  // has always hoisted it onto the root as presence attributes (above), which is exactly
+  // what a descendant needs in order to read it. `@variant group-checked/fui-checkbox`,
+  // `group-disabled/fui-checkbox` and friends therefore work as-is (D15.6, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in Checkbox.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the `label` slot's rules
   // sit at altitude `fui.components.l2` (they are applied over @fluentui/react-label's own
   // hook output).
-  state.root.className = clsx(checkboxClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx('group/fui-checkbox', checkboxClassNames.root, styles.root, state.root.className);
 
   state.input.className = clsx(checkboxClassNames.input, styles.input, state.input.className);
 
