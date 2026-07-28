@@ -84,9 +84,42 @@ Dialect rules (from nyt-games + Fluent adaptations):
   nothing, so without it first-appearance order decides layer ranking per-document —
   a load-order hazard. Re-declaring an identical order is a no-op (CSS Cascade 5),
   so repetition is safe and makes each module self-sufficient.
-- Tokens: literal `var(--tokenName)` — never re-declare them, never put them in `@theme`.
-- Numeric px values from Griffel: use Tailwind spacing utilities (`p-12` = 12px-reading,
-  rem-computed) **only** for pixel literals; token-derived values stay `var()`.
+- Non-spacing tokens: literal `var(--tokenName)` in modules — never re-declare their VALUES.
+  (They ARE registered as `@theme inline` REFERENCES in react-tailwind-theme/css/tokens.css
+  for consumer utility names — that registration is generated, not hand-authored, and does
+  not change the module authoring rule. Spacing follows its own rule above.)
+- **Spacing — Fluent tokens FIRST, numeric only as fallback** (D4 amendment, dual spacing).
+  Two scales are registered and they are ONE scaling system (both compute through
+  `--base-scale`, so `p-horizontal-m` and `p-12` emit the same length):
+
+  1. **Named (default).** Every `spacingHorizontal*` / `spacingVertical*` token has a
+     utility: `p-horizontal-m`, `px-horizontal-m`, `ps-horizontal-s-nudge`,
+     `py-vertical-s`, `gap-vertical-s`, `mt-vertical-xxs`, … Use these whenever the
+     Griffel source read a spacing token **or** its px literal matches a step below.
+  2. **Numeric (fallback).** `p-12`, `gap-8`, `w-64` — reserved for px values that match
+     **no** spacing step (`p-3`, `w-320`, …).
+
+  `--spacing-*` is axis-agnostic, so `py-horizontal-m` compiles. Pick the axis that matches
+  the property: **horizontal** tokens for inline-axis properties (`padding-inline*`,
+  `margin-inline*`, `column-gap`, `inset-inline*`, `width`), **vertical** for block-axis
+  (`padding-block*`, `margin-block*`, `row-gap`, `inset-block*`, `height`).
+
+  | Step   | utility suffix | px  | Step | utility suffix | px  |
+  | ------ | -------------- | --- | ---- | -------------- | --- |
+  | None   | `none`         | 0   | M    | `m`            | 12  |
+  | XXS    | `xxs`          | 2   | L    | `l`            | 16  |
+  | XS     | `xs`           | 4   | XL   | `xl`           | 20  |
+  | SNudge | `s-nudge`      | 6   | XXL  | `xxl`          | 24  |
+  | S      | `s`            | 8   | XXXL | `xxxl`         | 32  |
+  | MNudge | `m-nudge`      | 10  |      |                |     |
+
+  **Raw `var(--spacingHorizontal*)` / `var(--spacingVertical*)` is FORBIDDEN in component
+  modules** (including the `px-(--spacingHorizontalM)` arbitrary form). It still compiles,
+  but it is the one authoring form that does NOT scale with `--base-scale`, so it silently
+  diverges from every other spacing value on the page. Spacing is the ONLY namespace with
+  this prohibition — literal `var(--tokenName)` stays correct for colors, radii, shadows,
+  type, curves, durations and z-index.
+
 - **Logical properties only** for anything Griffel would RTL-flip: `paddingLeft` →
   `padding-inline-start`, `marginRight` → `margin-inline-end`, `left` →
   `inset-inline-start`, `textAlign: left` → `text-align: start`,

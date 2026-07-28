@@ -46,6 +46,11 @@ kinds in `apps/vr-tests-react-components/src/stories/<Component>/`.
 
 ## Known caveats (from reports/storybook-vr-infra.md)
 
+- 'ProgressBar converged / Indeterminate + thickness - High Contrast' is occasionally
+  flaky (~1 anomalous capture observed in 4 runs, 95px at the animated-gradient tail;
+  double-capture comparison proves nondeterminism). On failure: recapture before
+  investigating CSS.
+
 - Chromium for Playwright must be installed (`npx playwright install chromium`) — a
   missing browser produces zero screenshots with exit 0; `--expect` catches this.
 - The public docsite storybooks do not build on Windows (POSIX-path regex bug in

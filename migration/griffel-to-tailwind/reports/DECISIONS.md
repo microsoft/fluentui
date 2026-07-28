@@ -389,3 +389,75 @@ styles hooks + render pipeline, redesign customStyleHooks, turn `react-hooks/imm
 enforcement ON repo-wide (zero disables — the lint rule becomes the regression guard),
 full VR re-validation. Verify slot-object spread preserves the compose machinery's
 symbol-keyed metadata at implementation time.
+
+## D4 amendment — dual spacing support (settled with user 2026-07-27)
+
+**Both spacing scales ship, and they are ONE scaling system.**
+
+1. The numeric `--base-scale` scale stays exactly as D4 defined it:
+   `--spacing: calc(1px * var(--base-scale))`, so `p-12` reads as 12px and computes to rem.
+2. All 22 `spacingHorizontal*` / `spacingVertical*` tokens are now REGISTERED under the
+   Tailwind `--spacing-*` namespace (`--spacing-horizontal-m`, `--spacing-vertical-s`, …),
+   giving `p-horizontal-m`, `px-horizontal-m`, `py-vertical-s`, `gap-vertical-s`, and every
+   other spacing/sizing utility a named form. This reverses the D4-era exclusion of the two
+   spacing prefixes from the generator.
+3. **Component default is Fluent spacing tokens** — the named utility, or a literal `var()`
+   where a utility does not fit. Numeric utilities (`p-12`, `gap-8`) are the FALLBACK, used
+   only for px values that match no spacing step.
+4. Raw `var(--spacing…)`-style authoring against the Tailwind multiplier
+   (`padding: calc(var(--spacing) * 12)` by hand) is forbidden in modules — use the utility.
+5. **Raw `var(--spacingHorizontal*)` / `var(--spacingVertical*)` is now FORBIDDEN in
+   component modules**, including the `px-(--spacingHorizontalM)` arbitrary form that D4 and
+   the generator's old exclusion note recommended. It compiles, but it is the one form that
+   does not scale with `--base-scale`.
+
+### RECORD — the semantic utilities carry VALUES, not token references
+
+`--spacing-horizontal-m` is registered as `calc(12px * var(--base-scale))`, **not** as
+`var(--spacingHorizontalM)`. This is the load-bearing detail of the amendment and the reason
+the two scales are one system rather than two: `--spacing` is `calc(1px * var(--base-scale))`,
+so `p-12` → `calc(var(--spacing) * 12)` and `p-horizontal-m` → `calc(12px * var(--base-scale))`
+are the same computed length and respond identically to a root font-size change. Registering
+the runtime token reference instead would have frozen named spacing at the provider's literal
+px while numeric spacing scaled — two spacing systems drifting apart under user zoom.
+
+Canonical step values (verified against `packages/tokens/src/global/spacings.ts`, and
+re-asserted by the generator on every run so an upstream scale change throws instead of
+silently desyncing): None 0 · XXS 2 · XS 4 · SNudge 6 · S 8 · MNudge 10 · M 12 · L 16 ·
+XL 20 · XXL 24 · XXXL 32 (px). Zero registers as a plain `0`. Utility suffixes come from an
+explicit table (`none, xxs, xs, s-nudge, s, m-nudge, m, l, xl, xxl, xxxl`), NOT from the
+generic kebab algorithm — so the other 441 generated names cannot churn when spacing changes.
+
+**CONSEQUENCE, accepted:** a FluentProvider `theme` override of `spacingHorizontalM` no
+longer flows into utility-sourced spacing. Measured before committing
+(`.scratch/layer-probe/assert-theme-spacing.js`): all 7 shipped themes carry **byte-identical**
+values for all 22 spacing tokens — every factory spreads the same `horizontalSpacings` /
+`verticalSpacings` objects — so there is no behavior change in practice. A custom theme that
+overrides spacing would see utilities ignore the override; that is the priced-in cost of one
+unified scale, and literal `var(--spacingHorizontalM)` (forbidden in library modules, still
+available to consumers) remains the escape hatch.
+
+**COEXISTENCE, probe-verified not reasoned** (`.scratch/layer-probe/check-dual-spacing.mjs`,
+compiling the real `css/index.css` through `@tailwindcss/postcss`): `index.css`'s
+`@theme static { --spacing-*: initial; --spacing: … }` clears only registrations that
+PRECEDE it, so the later `./tokens.css` import survives. No import reorder and no scoped
+reset were needed. Both scales compile side by side, the palette guardrail still holds
+(`p-4` works, `text-red-500` does not exist), and dead-alias emission stays at **0 of 463**
+registered keys — the emitted `@layer fui.theme` block is still 124 bytes holding only
+`--base-scale` and `--spacing`.
+
+Generator counts move from 441 registered / 26 excluded to **463 registered / 4 excluded**
+(only `strokeWidth*` remains excluded). `p-px` / `m-px` still emit a literal `1px` — that is
+a hardcoded v4 keyword in the spacing utility handler, not a theme lookup, and is unchanged
+from before this amendment (baseline-compared in the same probe).
+
+### Backlog opened by this amendment
+
+Measured at amendment time: **176 raw `var(--spacingHorizontal*)` / `var(--spacingVertical*)`
+declarations across 14 already-converted `*.module.css` files** (avatar, badge, button,
+checkbox, infobutton, infolabel, input, label, persona, radio, searchbox, select, switch,
+textarea) are now non-conformant. Zero use the `px-(--spacingHorizontalM)` arbitrary form.
+Converting them to named utilities is **VR-neutral at the default 16px root** — the token is
+a 12px literal and `p-horizontal-m` computes to `0.75rem` = 12px there — so the sweep can be
+validated with the existing zero-tolerance VR pass. It is deliberately NOT bundled into this
+amendment; schedule it as its own change so the diff is reviewable per package.
