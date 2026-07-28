@@ -6,13 +6,15 @@ exports[`TeachingPopoverCarouselFooter renders a default state 1`] = `
     class="fui-TeachingPopoverCarouselFooter"
   >
     <button
-      class="fui-TeachingPopoverCarouselFooterButton fui-Button fui-TeachingPopoverCarouselFooter__previous"
+      class="fui-TeachingPopoverCarouselFooterButton group/fui-button fui-Button fuicm-root fuicm-secondary fuicm-rounded fui-TeachingPopoverCarouselFooter__previous"
+      data-size="medium"
     >
       Previous
     </button>
     Default TeachingPopoverCarouselFooter
     <button
-      class="fui-TeachingPopoverCarouselFooterButton fui-Button fui-TeachingPopoverCarouselFooter__next"
+      class="fui-TeachingPopoverCarouselFooterButton group/fui-button fui-Button fuicm-root fuicm-primary fuicm-rounded fui-TeachingPopoverCarouselFooter__next"
+      data-size="medium"
     >
       Next
     </button>
