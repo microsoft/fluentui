@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node"]
+    // "static-assets" declares `*.module.css` (typings/static-assets/index.d.ts) — the
+    // spec program compiles the styles hook transitively via the component under test.
+    "types": ["jest", "node", "static-assets"]
   },
   "include": [
     "**/*.spec.ts",
