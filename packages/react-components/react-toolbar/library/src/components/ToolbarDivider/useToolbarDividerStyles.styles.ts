@@ -43,8 +43,10 @@ export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): To
   // eslint-disable-next-line react-hooks/immutability
   root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
 
-  // Named group marker FIRST, consumer className last (the consumer's string is already the
-  // tail of `state.root.className` after useDividerStyles_unstable ran). The marker is a
+  // Module class first, then the named group marker, consumer className last (the
+  // consumer's string is already the tail of `state.root.className` after
+  // useDividerStyles_unstable ran). The marker must never be `classList[0]` (nwsapi's
+  // `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1). The marker is a
   // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
   // this package or any other — can style an element from this ToolbarDivider's state,
   // because `styles.root` is hashed and unaddressable from outside this file.
@@ -61,7 +63,7 @@ export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): To
   // it. See that file's header for the mapping back to the mergeClasses() argument order
   // this replaces, including why that single inversion exists.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx('group/fui-toolbar-divider', styles.root, state.root.className);
+  state.root.className = clsx(styles.root, 'group/fui-toolbar-divider', state.root.className);
 
   return state;
 };
