@@ -34,6 +34,26 @@ describe('Tooltip', () => {
     displayName: 'Tooltip',
     requiredProps: { content: 'Example', children: <button />, visible: true },
     getTargetElement: getTooltipElement,
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    //
+    // Neither half of the usual conformance swap applies to this package, both verified by
+    // running the suite rather than by inspection:
+    //
+    // 1. `make-styles-overrides-win` is NOT disabled because it never ran here.
+    //    `src/testing/isConformant.ts` does not pass `@fluentui/react-conformance-griffel`'s
+    //    `griffelTests` as `extraTests` (react-divider's wrapper does), so the Griffel
+    //    conformance tests are not registered for react-tooltip at all — the baseline suite
+    //    printed 21 tests and none of them was `make-styles-overrides-win`.
+    //
+    // 2. `classname-overrides-win` is NOT wired because Tooltip cannot satisfy it, for the
+    //    same reason `component-handles-classname` is disabled below: `TooltipSlots` declares
+    //    only a `content` slot and no `root`, so `className` is not part of `TooltipProps`
+    //    and never reaches the DOM. Wiring it produced
+    //    `does not apply the consumer's "className" to its root slot` against the rendered
+    //    `class="fui-Tooltip__content …"`. The cascade contract it exists to pin is
+    //    unaffected: `clsx` still puts `state.content.className` (the `content` slot's own
+    //    consumer className) last, and unlayered consumer CSS still beats every `fui.*`
+    //    layer (DECISIONS.md D2/D9).
     disabledTests: [
       // Tooltip renders into a Portal, which confuses these tests
       'component-handles-ref',

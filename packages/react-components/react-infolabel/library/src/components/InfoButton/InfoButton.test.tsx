@@ -1,3 +1,4 @@
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles.styles';
@@ -45,6 +46,18 @@ describe('InfoButton', () => {
     },
     // InfoButton is not to be exported by the package nor added to react-components, therefore these tests
     // need to be disabled.
-    disabledTests: ['component-has-static-classnames-object', 'exported-top-level'],
+    //
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind):
+    // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts it
+    // was called with the consumer className last. The root slot now composes with clsx, so
+    // the consumer className never reaches a mergeClasses call and the test can no longer
+    // observe the contract — even though this file still calls mergeClasses for the `info`
+    // slot, which deliberately stays on Griffel until react-popover converts (see
+    // useInfoButtonStyles.styles.ts). The guarantee itself is unchanged: clsx puts
+    // `state.root.className` last and the `@layer fui.*` sublayers keep unlayered consumer
+    // CSS winning (DECISIONS.md D2/D9). `classname-overrides-win` below is its
+    // cascade-native replacement (DECISIONS.md D9).
+    disabledTests: ['component-has-static-classnames-object', 'exported-top-level', 'make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 });

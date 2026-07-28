@@ -1,0 +1,286 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useInfoButtonStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot — the ONLY slot converted (see "the info slot stays Griffel" below):
+ *
+ *   #  mergeClasses argument              → target
+ *   ---------------------------------------------------------------------------------
+ *   1  infoButtonClassNames.root          → static class (JS)
+ *   2  useButtonStyles.base               → fui.components.l1
+ *   3  useButtonStyles.highContrast       → fui.components.l1  (forced-colors)
+ *   4  useButtonStyles.focusIndicator     → fui.components.l1  (focus-visible-fui)
+ *   5  open && useButtonStyles.selected   → fui.components.l1  (data-open)
+ *   6  size === 'large' && .large         → fui.components.l1  (data-size)
+ *   7  consumer className                 → unlayered (always wins)
+ *
+ * InfoButton has no `makeResetStyles`, so `fui.base` is unused. Its root `<button>` is its
+ * own element — `PopoverTrigger` clones aria/ref/handlers onto it and contributes no
+ * className — so nothing here sits over another component's hook output and
+ * `fui.components.l2` is unused too.
+ *
+ * ── The `info` slot stays Griffel, deliberately (mixed-mode seam) ────────────────────
+ * `state.info` renders `@fluentui/react-popover`'s `PopoverSurface`, which is NOT converted
+ * (DECISIONS.md D12 orders compound components later). Griffel injects its atomics
+ * UNLAYERED, so they beat every `@layer fui.*` rule (reports/pilot-button.md §"The
+ * reliance"). That asymmetry is harmless in the ToggleButton-over-Button direction — the
+ * unconverted parent's classes were mergeClasses' LAST argument and unlayered reproduces
+ * that winner — but it INVERTS here, where the converted component is the one styling the
+ * unconverted child:
+ *
+ *   PopoverSurface's own `root` slice applies `typographyStyles.body1`
+ *   (font-size: var(--fontSizeBase300); line-height: var(--lineHeightBase300)),
+ *   while InfoButton's `smallMedium` slice applies `caption1`
+ *   (var(--fontSizeBase200) / var(--lineHeightBase200), atomics `fy9rknc` / `fwrc4pm`).
+ *
+ * Today InfoButton wins because its string is PopoverSurface's last mergeClasses argument
+ * and Griffel DELETES the losing atomics. A layered `.info` rule would lose to the
+ * surviving unlayered atomic and every small/medium InfoButton popover would silently
+ * render at body1. So `usePopoverSurfaceStyles` keeps `makeStyles` + `mergeClasses` in
+ * useInfoButtonStyles.styles.ts and is converted when react-popover converts. This is the
+ * package's whitelisted `@griffel/react` import (cookbook "Definition of done").
+ *
+ * ── Block order is Griffel BUCKET order, not plain argument order ────────────────────
+ * Every selector below is `:where()`-flat (0-1-0), so — unlike Griffel, where specificity
+ * still separated `:hover` (0-2-0) from a plain class — the winner is pure file position.
+ * The blocks are therefore laid out in Griffel's stylesheet bucket order
+ * (`d` → `f` → `i` → `h` → `m`), with argument order deciding WITHIN a bucket:
+ *
+ *   1. `d`  base (#2) → focusIndicator (#4) → selected (#5) → large (#6)
+ *   2. `f`/`i` focusIndicator's `:focus` / `:focus-visible` outline reset (#4)
+ *   3. `h`  base's `:hover` / `:hover:active` (#2) — must come AFTER `selected`, because
+ *           Griffel's `h` bucket outranks the `d` bucket: hovering an OPEN InfoButton
+ *           renders colorNeutralForeground2BrandHover, not …BrandSelected.
+ *   4. `m`  highContrast (#3) then selected's forced-colors half (#5).
+ *
+ * ── Inversions ──────────────────────────────────────────────────────────────────────
+ * 1. `selected` is DECLARED second in the Griffel source but APPLIED fourth, and it
+ *    collides with `highContrast` on the Griffel property key `B7iucu3`
+ *    (`@media (forced-colors: active) { color }`): `fslfhp6` = CanvasText vs `f1205bnn` =
+ *    Canvas. mergeClasses keeps the later argument, so an OPEN button in forced colors is
+ *    `Canvas`. Its block is written after highContrast's to reproduce that.
+ * 2. `large` (#6) overrides `base`'s padding (#2) and is written last in the `d` group.
+ *
+ * ── RTL ─────────────────────────────────────────────────────────────────────────────
+ * The compiled atomics contain four `[ltr, rtl]` pairs (`vrafjx`/`wvpqe5` border-style,
+ * `Bci5o5g`/`Bdrgwmp` focus border-color, `Bwxa6fj`/`B7zbvrb` forced-colors border-color,
+ * `Bule8hv`/`Ghsupd` the `::after` right/left offset) and EVERY one carries the same value
+ * on both sides — pure property flips with symmetric values, i.e. visual no-ops. Physical
+ * longhands are therefore byte-exact and no `@variant rtl` block is needed anywhere.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/InfoButton/useInfoButtonStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.base — the `d` bucket half (arg #2). The `h` bucket half
+   * (`:hover` / `:hover:active`) is split out further down; see the header.
+   */
+  .root {
+    @apply relative box-border inline-flex items-center justify-center align-middle no-underline;
+
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground2);
+
+    /* shorthands.borderStyle('none') → the four physical longhands the compiler emits */
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-radius: var(--borderRadiusMedium);
+
+    /* `margin: '0'` expanded to longhands (cookbook §2 — no shorthand priority in CSS) */
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+
+    /* `padding: '<spacingVerticalXS> <spacingHorizontalXS>'` expanded to longhands */
+    padding-top: var(--spacingVerticalXS);
+    padding-bottom: var(--spacingVerticalXS);
+    padding-inline-start: var(--spacingHorizontalXS);
+    padding-inline-end: var(--spacingHorizontalXS);
+
+    /* `@fluentui/react-icons`' bundleIcon swaps these two at rest / hover / selected */
+    & :global(.fui-Icon-filled) {
+      display: none;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: inline-flex;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.focusIndicator = createFocusOutlineStyle() — arg #4.
+   *
+   * FIRST consumer of the shared `fui-focus-outline` utility (react-tailwind-theme
+   * css/utilities.css flagged it "NOT exercised by any converted package yet"). Validated
+   * declaration-by-declaration against this component's compiled AOT output:
+   *
+   *   .f8hki3x/.f1d2448m/.ffh67wi/.f1bjia2o[data-fui-focus-visible]{border-*-color:transparent}
+   *   .f15bsgw9[data-fui-focus-visible]::after{content:""}
+   *   .f14e48fq …::after{position:absolute}   .f18yb2kv …::after{pointer-events:none}
+   *   .fd6o370  …::after{z-index:1}
+   *   .ffwy5si  …::after{border:2px solid var(--colorStrokeFocus2)}
+   *   .f3znvyf  …::after{border-radius:var(--borderRadiusMedium)}
+   *   .f57olzd/.f4stah7/.fs1por5/.f480a47 …::after{top|right|left|bottom:calc(2px * -1)}
+   *   @media (forced-colors: active){…::after{border-*-color:Highlight}}
+   *
+   * with every knob unset. The utility writes the offsets as
+   * `calc(0px - <width> - <offset>)`, which computes to the same -2px as `calc(2px * -1)`.
+   *
+   * `:focus` / `:focus-visible { outline-style: none }` sit outside the focus-visible
+   * selector, so react-tabster's factory emits them separately (buckets `f` and `i`) and
+   * they stay with the caller. Nothing else in this component sets `outline-style`, so
+   * their position relative to the `d` bucket is inert.
+   */
+  .root {
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.selected — arg #5, `d` bucket half. Gated on `state.popover.open`,
+   * stamped as the presence attribute `data-open` (catalog `@variant open`) rather than read
+   * off PopoverTrigger's `aria-expanded`: that attribute is documented as consumer
+   * overridable (react-popover PopoverTrigger.test.tsx "should allow user to override
+   * aria-expanded"), while `open` is exactly the boolean the Griffel hook branched on.
+   */
+  .root {
+    @variant open {
+      background-color: var(--colorTransparentBackgroundSelected);
+      color: var(--colorNeutralForeground2BrandSelected);
+
+      & :global(.fui-Icon-filled) {
+        display: inline-flex;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.large — arg #6, and the last `d` bucket rule, so it beats the
+   * base padding above. `size` is a scale prop → `data-size` (DECISIONS.md D3).
+   *
+   * NOTE the compiled value is `padding:var(--spacingVerticalXXS) var(--spacingVerticalXXS)`
+   * — spacingVERTICALXXS on BOTH axes. That is what the Griffel source says and what the
+   * compiler emitted (atomic `f1kx978o`); reproduced verbatim rather than "fixed" to
+   * spacingHorizontalXXS.
+   */
+  .root {
+    @variant size-large {
+      padding-top: var(--spacingVerticalXXS);
+      padding-bottom: var(--spacingVerticalXXS);
+      padding-inline-start: var(--spacingVerticalXXS);
+      padding-inline-end: var(--spacingVerticalXXS);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.base — the `h` bucket half (arg #2), written after `selected`
+   * above because Griffel's `h` bucket outranks its `d` bucket (see the header).
+   * `:hover:active` is authored as a nested `@variant active` so the emitted selector is
+   * `:where(:hover):where(:active)` — matching the compiled `.f1fg1p5m:hover:active`.
+   * The shared `hover-active` catalog variant is deliberately NOT used: it also matches
+   * `:active:focus-visible`, which Griffel never emitted here.
+   */
+  .root {
+    @variant hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      color: var(--colorNeutralForeground2BrandHover);
+      cursor: pointer;
+
+      & :global(.fui-Icon-filled) {
+        display: inline-flex;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+
+      @variant active {
+        background-color: var(--colorTransparentBackgroundPressed);
+        color: var(--colorNeutralForeground2BrandPressed);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.highContrast — arg #3, `m` bucket, written after the `h` bucket
+   * block above.
+   *
+   * The Griffel source spells the inner selector `':hover,:hover:active'`. The second term
+   * is a strict subset of the first and both branches carry IDENTICAL declarations, so it
+   * adds nothing to matching — it existed only as a specificity hack (0-3-0 so the media
+   * rule could still beat base's `.fwiml72:hover:active` at 0-3-0 in the earlier `h`
+   * bucket). `:where()` flattens everything to 0-1-0 and file position takes over, so a
+   * single `@variant hover` placed after the base hover block reproduces both branches.
+   * (Compare the `not-focus-within` trap in variants.css, where the two branches carried
+   * DIFFERENT declarations and the slice had to be split.)
+   */
+  .root {
+    @variant forced-colors {
+      color: CanvasText;
+
+      @variant hover {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color: Canvas;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useButtonStyles.selected — arg #5, `m` bucket half. Written after highContrast's
+   * forced-colors block: this is inversion #1 from the header (`B7iucu3`, CanvasText vs
+   * Canvas), the one place where declaration order and argument order disagree on a value.
+   */
+  .root {
+    @variant open {
+      @variant forced-colors {
+        background-color: Highlight;
+        color: Canvas;
+      }
+    }
+  }
+}

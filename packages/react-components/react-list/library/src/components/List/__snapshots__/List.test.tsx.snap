@@ -36,6 +36,7 @@ exports[`List rendering render as div by default when navigationMode is 'composi
   >
     <div
       class="fui-ListItem"
+      data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="row"
@@ -45,6 +46,7 @@ exports[`List rendering render as div by default when navigationMode is 'composi
     </div>
     <div
       class="fui-ListItem"
+      data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="row"
@@ -96,6 +98,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
     <li
       aria-selected="false"
       class="fui-ListItem"
+      data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="option"
@@ -104,6 +107,8 @@ exports[`List selection multiselect items are properly rendered with all attribu
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
+        data-label-position="after"
+        data-size="medium"
       >
         <input
           class="fui-Checkbox__input"
@@ -121,6 +126,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
     <li
       aria-selected="false"
       class="fui-ListItem"
+      data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="option"
@@ -129,6 +135,8 @@ exports[`List selection multiselect items are properly rendered with all attribu
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
+        data-label-position="after"
+        data-size="medium"
       >
         <input
           class="fui-Checkbox__input"
@@ -157,6 +165,7 @@ exports[`List selection single select items are properly rendered with all attri
     <li
       aria-selected="false"
       class="fui-ListItem"
+      data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-1"
       role="option"
@@ -165,6 +174,8 @@ exports[`List selection single select items are properly rendered with all attri
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
+        data-label-position="after"
+        data-size="medium"
       >
         <input
           class="fui-Checkbox__input"
@@ -182,6 +193,7 @@ exports[`List selection single select items are properly rendered with all attri
     <li
       aria-selected="false"
       class="fui-ListItem"
+      data-interactive="true"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
       id="test-value-2"
       role="option"
@@ -190,6 +202,8 @@ exports[`List selection single select items are properly rendered with all attri
     >
       <span
         class="fui-Checkbox fui-ListItem__checkmark"
+        data-label-position="after"
+        data-size="medium"
       >
         <input
           class="fui-Checkbox__input"

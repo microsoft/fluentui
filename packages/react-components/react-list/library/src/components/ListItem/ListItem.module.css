@@ -1,0 +1,140 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useListItemStyles_unstable,
+ * not source declaration order.
+ *
+ * root slot:
+ *   1 listItemClassNames.root              → static class (JS)
+ *   2 useRootBaseStyles                    → fui.base           (makeResetStyles)
+ *   3 useStyles.rootClickableOrSelectable  → fui.components.l1  (data-interactive)
+ *   4 useStyles.disabled                   → fui.components.l1  (data-disabled)
+ *   5 consumer className                   → unlayered (always wins)
+ *
+ * checkmark slot:
+ *   1 listItemClassNames.checkmark         → static class (JS)
+ *   2 useCheckmarkBaseStyles.root          → fui.components.l2  ← ALTITUDE, see below
+ *   3 consumer className                   → unlayered
+ *
+ * Args 3 and 4 are the one ordered pair in this component: `disabled` overrides
+ * `rootClickableOrSelectable`'s `cursor: pointer` with `cursor: default`, and both are
+ * `:where()`-flat, so the disabled block MUST stay after the interactive one in this
+ * file. (Not one of the 23 inversions in reports/risk-analysis.md — argument order and
+ * declaration order agree here.)
+ *
+ * ALTITUDE (DECISIONS.md D2 amendment 2). The `checkmark` slot IS a `<Checkbox>`
+ * (`slot.optional(props.checkmark, { elementType: Checkbox })` in useListItem.tsx), so
+ * `align-self` lands on an element whose base styles come from useCheckboxStyles_unstable,
+ * and the nested rule reaches further into Checkbox's own indicator slot — whose `margin`
+ * comes from react-checkbox's `useIndicatorBaseClassName` reset. Both are "styles applied
+ * over ANOTHER component's hook output", so the whole block is `fui.components.l2`, never
+ * l1. Same shape as react-switch's and react-spinner's label blocks.
+ *
+ * Which of the two actually DEPENDS on the altitude was measured, not assumed
+ * (.scratch/list-probe/falsification.js demotes this block to l1 and re-measures):
+ *   - `align-self` DOES. ListItem's `.checkmark` and Checkbox's root class are both
+ *     (0,1,0) — a genuine tie that only the layer order breaks. Demoted to l1, whichever
+ *     stylesheet loads last wins, which is exactly the nondeterminism l2 exists to remove.
+ *   - the indicator `margin` does NOT. ListItem emits `.checkmark .fui-Checkbox__indicator`
+ *     at (0,2,0) against Checkbox's single indicator class at (0,1,0), so specificity
+ *     settles it at any equal altitude. It stays here because the block is one slice, not
+ *     because it needs the lift.
+ *
+ * Compiled AOT reference
+ * (lib-commonjs/components/ListItem/useListItemStyles.styles.js:25-65):
+ *   .rikgcmv{padding:0;margin:0;text-indent:0;list-style-type:none;}
+ *   .rikgcmv[data-fui-focus-visible]{outline:var(--strokeWidthThick) solid
+ *     var(--colorStrokeFocus2);border-radius:var(--borderRadiusMedium);}
+ *   .f7nlbp4{align-self:center;}
+ *   .f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}
+ *   .f22iagw{display:flex;}
+ *   .f1k6fduh{cursor:pointer;}
+ *   .f158kwzp{cursor:default;}
+ * Every one of those is a single class, NOT an [ltr, rtl] pair — Griffel found nothing to
+ * flip, so this module needs neither logical properties nor an `@variant rtl` twin.
+ */
+
+@layer fui.base {
+  /*
+   * from useRootBaseStyles (makeResetStyles).
+   *
+   * The four reset declarations are literal rather than `@apply p-0 m-0 indent-0
+   * list-none`: every value is zero or a keyword, so there is no pixel literal for
+   * `--base-scale` to scale.
+   *
+   * The focus indicator is `createCustomFocusIndicatorStyle({ outline, borderRadius },
+   * { selector: 'focus' })` — a bespoke two-declaration payload, not a ring — so neither
+   * `fui-focus-outline` nor `fui-focus-ring` (DECISIONS.md D6) applies and the two
+   * declarations are transcribed directly, same call as react-link's indicator. The
+   * `focus-visible-fui` variant supplies the `[data-fui-focus-visible]` selector keyborg
+   * still writes; those shared utilities carry declarations only, never the selector.
+   *
+   * `outline` stays a shorthand because the compiled reset emits it as one — nothing else
+   * in this component sets any outline longhand, so there is no Griffel shorthand/longhand
+   * priority to unwind.
+   */
+  .root {
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+    list-style-type: none;
+
+    @variant focus-visible-fui {
+      outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  .root {
+    /*
+     * arg 3 — from useStyles.rootClickableOrSelectable.
+     * Griffel gates this on `state.selectable || state.navigable`; that union rides one
+     * presence attribute (`data-interactive`) rather than two, per the cookbook's
+     * boolean-pair rule.
+     */
+    @variant interactive {
+      display: flex;
+      cursor: pointer;
+    }
+
+    /*
+     * arg 4 — from useStyles.disabled. Applied whenever `state.disabled`, independent of
+     * the interactive flag, and authored AFTER it so `cursor: default` wins the tie the
+     * way the later mergeClasses argument did.
+     */
+    @variant disabled {
+      cursor: default;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* from useCheckmarkBaseStyles.root — see the ALTITUDE note in the header. */
+  .checkmark {
+    align-self: center;
+
+    /*
+     * Griffel authored `margin: '4px'` inside a nested selector, compiled verbatim as
+     * `.f1bgo3o3 .fui-Checkbox__indicator{margin:4px;}` — a real pixel literal, so it
+     * takes the Tailwind spacing utility (reads px, computes rem via `--base-scale`).
+     * The four sides are equal and the compiled rule has no RTL twin, so nothing flips.
+     */
+    & :global(.fui-Checkbox__indicator) {
+      @apply m-4;
+    }
+  }
+}

@@ -4,6 +4,8 @@
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
+const { cssModules } = require('@fluentui/scripts-jest');
+
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
 const { exclude: _, ...swcJestConfig } = JSON.parse(readFileSync(join(__dirname, '.swcrc'), 'utf-8'));
@@ -30,5 +32,22 @@ module.exports = {
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
-  snapshotSerializers: ['@griffel/jest-serializer'],
+  /**
+   * Griffel → Tailwind + CSS Modules migration (Phase 2, batch 2).
+   * The mapper resolves `*.module.css` imports to a deterministic class-name proxy and
+   * `cssModules.snapshotSerializer` strips those generated names from snapshots, exactly
+   * as `@griffel/jest-serializer` does for Griffel atomics. Both move into the repo-wide
+   * `jest.preset.js` once more packages convert (DECISIONS.md D9).
+   *
+   * Like react-badge and react-button — and unlike react-divider — this package KEEPS
+   * `@griffel/jest-serializer`, here for two reasons: InfoButton renders
+   * `@fluentui/react-icons` glyphs (an external Griffel consumer, explicitly out of scope —
+   * DECISIONS.md D11), and its `info` slot deliberately stays on Griffel until
+   * react-popover converts (see useInfoButtonStyles.styles.ts). Without it, both would
+   * write atomic + sequence-hash classes into every snapshot.
+   */
+  moduleNameMapper: {
+    '\\.module\\.css$': cssModules.moduleNameMapperTarget,
+  },
+  snapshotSerializers: ['@griffel/jest-serializer', cssModules.snapshotSerializer],
 };

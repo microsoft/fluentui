@@ -1,0 +1,341 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of usePersonaStyles_unstable,
+ * not source declaration order. Persona has seven slots; three of them are its own DOM
+ * (root <div>, the four text <span>s) and two are ANOTHER component's root — `avatar` is
+ * an <Avatar> and `presence` is a <PresenceBadge>, so everything Persona applies to them
+ * is composition and lands in `fui.components.l2` (DECISIONS.md D2 amendment 2, the
+ * ToggleButton-over-Button case). They are mutually exclusive: usePersona_unstable builds
+ * `avatar` only when `!presenceOnly` and `presence` only when `presenceOnly`.
+ *
+ * root slot
+ *   1 personaClassNames.root                             → static class (JS)
+ *   2 useRootClassName (makeResetStyles)                 → fui.base            `.root`
+ *   3 alignBeforeAfterCenter && useStyles.beforeAfterCenter → fui.components.l1 `.beforeAfterCenter`
+ *   4 useStyles[textPosition]                            → fui.components.l1   `.root` @variant text-position-*
+ *   5 consumer className                                 → unlayered (always wins)
+ *
+ * avatar slot (l2 — over Avatar's own hook output)
+ *   1 personaClassNames.avatar                           → static class (JS)
+ *   2 textPosition !== 'below' && useStyles.media        → l2 `.media`
+ *   3 alignBeforeAfterCenter && useStyles.mediaBeforeAfterCenter → l2 `.mediaBeforeAfterCenter`
+ *   4 useStyles[textAlignment]                           → l2 `.start` / `.center`
+ *   5 useAvatarSpacingStyles[size]                       → HOISTED to the root, see below
+ *   6 useAvatarSpacingStyles[textPosition]               → l2 `.spacingAfter/Below/Before`
+ *   7 consumer className                                 → unlayered
+ *
+ * presence slot (l2 — over PresenceBadge's own hook output)
+ *   1 personaClassNames.presence                         → static class (JS)
+ *   2–4 as avatar
+ *   5 usePresenceSpacingStyles[size]                     → root hoist + l2 `.presenceSpacingSNudge`
+ *   6 usePresenceSpacingStyles[textPosition]             → l2 `.spacingAfter/Below/Before`
+ *   7 textPosition === 'after'  && alignToPrimary && useStyles.afterAlignToPrimary
+ *                                                        → l2 `.presenceAfterAlignToPrimary`
+ *   8 textPosition === 'before' && alignToPrimary && useStyles.beforeAlignToPrimary
+ *                                                        → l2 `.presenceBeforeAlignToPrimary`
+ *   9 consumer className                                 → unlayered
+ *
+ * primaryText slot
+ *   1 personaClassNames.primaryText                      → static class (JS)
+ *   2 alignBeforeAfterCenter && useStyles.primary        → fui.components.l1 `.primary`
+ *   3 primaryTextClassName = usePrimaryTextBaseClassName (makeResetStyles → fui.base
+ *     `.primaryTextBase`) + useTextStyles.caption1|.subtitle2 (l1) +
+ *     useTextStyles.before|afterAlignToPrimary (l1 `.textBefore|AfterAlignToPrimary`)
+ *   4 consumer className                                 → unlayered
+ *
+ * secondaryText slot
+ *   1 personaClassNames.secondaryText                    → static class (JS)
+ *   2 alignBeforeAfterCenter && useStyles.secondary      → l1 `.secondary`
+ *   3 optionalTextClassName = useOptionalTextBaseClassName (makeResetStyles → fui.base
+ *     `.optionalTextBase`) + useTextStyles.body1 (l1) + alignToPrimary (l1)
+ *   4 useStyles.secondLineSpacing                        → l1 `.secondLineSpacing`
+ *   5 consumer className                                 → unlayered
+ *
+ * tertiaryText / quaternaryText slots — as secondaryText without arg 4.
+ *
+ * INVERSIONS: none. Every cross-slice property conflict in this component is resolved by
+ * the same ordering both before and after conversion, and each one was checked against the
+ * compiled atomics in lib-commonjs/components/Persona/usePersonaStyles.styles.js:
+ *   • root reset (`justify-items`, `grid-template-columns`, `grid-auto-flow`) loses to the
+ *     `before`/`below` slices — reset bucket `r` loses to bucket `d` in Griffel, and
+ *     `fui.base` loses to `fui.components.l1` here.
+ *   • `.media` (`grid-row-start: span 5`) loses to `.mediaBeforeAfterCenter` (`span 6`) and
+ *     both lose to `.presence*AlignToPrimary` (`unset`) — argument order == file order.
+ *   • `.start`/`.center` (`align-self`) lose to `.presence*AlignToPrimary`
+ *     (`align-self: center`) — argument order == file order.
+ *   • the two text resets carry body1/caption1 typography and lose to the l1 typography
+ *     slices (`.caption1`/`.subtitle2`/`.body1`) — same base-vs-level relationship.
+ * `.beforeAfterCenter` (grid-template-rows) is disjoint from the textPosition slices, and
+ * `.secondLineSpacing` (margin-top) is disjoint from everything on its slot; both are
+ * nevertheless written in argument order.
+ *
+ * RTL: the compiled output contains exactly two `[ltr, rtl]` pairs — `margin-right` ↔
+ * `margin-left` (`t21cq0`) and `margin-left` ↔ `margin-right` (`Frg6f3`) — i.e. purely
+ * property-level flips, written here as `margin-inline-end` / `margin-inline-start`.
+ * `margin-bottom` (`jrapky`) and `margin-top` (`B6of3ja`) were not flipped by Griffel and
+ * stay physical. No value-level flip exists anywhere in this component, so there is no
+ * `@variant rtl` block. The grid track lists are direction-relative by definition and
+ * Griffel emitted them unflipped.
+ */
+
+@layer fui.base {
+  /* from useRootClassName (makeResetStyles) — compiled `.rlroi9i` */
+  .root {
+    @apply inline-grid;
+
+    grid-auto-rows: max-content;
+    grid-auto-flow: column;
+    justify-items: start;
+    grid-template-columns: max-content [middle] auto;
+  }
+
+  /* from usePrimaryTextBaseClassName (makeResetStyles) — compiled `.rvj41k9`,
+     `...typographyStyles.body1` expanded to the four longhands it compiles to */
+  .primaryTextBase {
+    @apply block;
+
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /* from useOptionalTextBaseClassName (makeResetStyles) — compiled `.rp1pf9e`,
+     `...typographyStyles.caption1` expanded */
+  .optionalTextBase {
+    @apply block;
+
+    color: var(--colorNeutralForeground2);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.beforeAfterCenter (root arg 3) — the named-line template that keeps the
+   * coin centred when it is taller than the stack of text lines.
+   */
+  .beforeAfterCenter {
+    grid-template-rows: 1fr [primary] max-content [secondary] max-content [tertiary] max-content [quaternary] max-content 1fr;
+  }
+
+  /*
+   * from useStyles[textPosition] (root arg 4). The `after` slice is marked "Intentionally
+   * empty" in the Griffel source and compiles to no atomic at all, so it authors no rule
+   * here — `data-text-position="after"` is still stamped, as a state hook for consumers.
+   */
+  .root {
+    /* from useStyles.before */
+    @variant text-position-before {
+      justify-items: end;
+      grid-template-columns: auto [middle] max-content;
+    }
+
+    /* from useStyles.below */
+    @variant text-position-below {
+      grid-auto-flow: unset;
+      justify-items: center;
+      grid-template-columns: unset;
+    }
+  }
+
+  /*
+   * from useAvatarSpacingStyles' six size slices (avatar/presence arg 5), HOISTED from the
+   * coin onto Persona's own root.
+   *
+   * Why the hoist: `size` is a small enum scale, so the cookbook's scale-prop rule routes
+   * it to the shared `data-size` catalog variants — but the element those slices sat on is
+   * another component's root, and that component stamps its own `data-size` there
+   * (react-badge's usePresenceBadgeStyles.styles.ts writes `root['data-size'] = size`, and
+   * Avatar uses the catalog's numeric `size-20`…`size-56` for the pixel sizes Persona
+   * passes it). Persona's value would simply be overwritten. The slices declare nothing but
+   * the inherited custom property `--fui-Persona__avatar--spacing`, which the coin's margin
+   * below reads, so declaring it on the root resolves to the identical computed value while
+   * keeping every Persona data-attribute on Persona's own DOM.
+   *
+   * `small` and `medium` share one token, as do `large` and `extra-large` — Griffel deduped
+   * them into single atomics (`f18q9vkd`, `fx34bi6`); kept as separate blocks here so each
+   * size reads back 1:1 against the source.
+   */
+  .root {
+    @variant size-extra-small {
+      --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+    }
+
+    @variant size-small {
+      --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+    }
+
+    @variant size-medium {
+      --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+    }
+
+    @variant size-large {
+      --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+    }
+
+    @variant size-extra-large {
+      --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+    }
+
+    @variant size-huge {
+      --fui-Persona__avatar--spacing: var(--spacingHorizontalM);
+    }
+  }
+
+  /*
+   * from useStyles.primary/.secondary/.tertiary/.quaternary (text slots arg 2) — the named
+   * rows of `.beforeAfterCenter`'s template. Only applied when that template is active.
+   */
+  .primary {
+    grid-row-start: primary;
+  }
+
+  .secondary {
+    grid-row-start: secondary;
+  }
+
+  .tertiary {
+    grid-row-start: tertiary;
+  }
+
+  .quaternary {
+    grid-row-start: quaternary;
+  }
+
+  /* from useTextStyles.caption1/.subtitle2/.body1 — typographyStyles expanded to longhands.
+     These beat the two `fui.base` text resets, reproducing Griffel's d-beats-r buckets. */
+  .caption1 {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .subtitle2 {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .body1 {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /*
+   * from useTextStyles.beforeAlignToPrimary/.afterAlignToPrimary — the text half of the
+   * `alignToPrimary` pair. Prefixed `text` because useStyles carries two same-named slices
+   * for the presence slot with the OPPOSITE grid edge (see `.presence*AlignToPrimary`).
+   */
+  .textBeforeAlignToPrimary {
+    grid-column-end: middle;
+  }
+
+  .textAfterAlignToPrimary {
+    grid-column-start: middle;
+  }
+
+  /* from useStyles.secondLineSpacing (secondaryText arg 4) — compiled `margin-top:-2px`,
+     a block-direction margin Griffel did not flip. */
+  .secondLineSpacing {
+    @apply -mt-2;
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * Everything below is applied to the `avatar` (<Avatar>) or `presence` (<PresenceBadge>)
+   * slot — another component's root — so it belongs to the composition altitude, where it
+   * beats those components' own `fui.components.l1` rules regardless of stylesheet load
+   * order. Persona positions the coin inside its own grid; it never restyles the coin's
+   * internals.
+   */
+
+  /* from useStyles.media (arg 2) — the coin spans all four text rows plus one. */
+  .media {
+    grid-row-start: span 5;
+  }
+
+  /* from useStyles.mediaBeforeAfterCenter (arg 3) — one more row for the centring template.
+     Must beat `.media` above; argument order == file order. */
+  .mediaBeforeAfterCenter {
+    grid-row-start: span 6;
+  }
+
+  /* from useStyles.start / .center (arg 4) — `styles[textAlignment]`. */
+  .start {
+    align-self: start;
+  }
+
+  .center {
+    align-self: center;
+  }
+
+  /*
+   * from usePresenceSpacingStyles.small (presence arg 5) — the ONE size at which a presence
+   * coin spaces differently from an avatar (`spacingHorizontalSNudge` instead of
+   * `spacingHorizontalS`; Griffel compiled it to the same atomic `f1e48tse` as
+   * `extra-small`). It stays on the presence element rather than the root: a declaration on
+   * the element itself wins over the inherited root value, which is exactly what the
+   * `{ ...avatarSpacingStyles, ...usePresenceSpacingStyles() }` spread expressed.
+   */
+  .presenceSpacingSNudge {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+  }
+
+  /*
+   * from useAvatarSpacingStyles.after/.below/.before (arg 6) — the gap between the coin and
+   * the text, in whichever direction the text sits. `margin-right`/`margin-left` are the
+   * component's only RTL-flipped properties, so they become logical.
+   */
+  .spacingAfter {
+    margin-inline-end: var(--fui-Persona__avatar--spacing);
+  }
+
+  .spacingBelow {
+    margin-bottom: var(--fui-Persona__avatar--spacing);
+  }
+
+  .spacingBefore {
+    margin-inline-start: var(--fui-Persona__avatar--spacing);
+  }
+
+  /*
+   * from useStyles.afterAlignToPrimary/.beforeAlignToPrimary (presence args 7/8) — a small
+   * presence coin aligns to the primary line instead of spanning the whole stack, so it
+   * cancels `.media`'s row span and `.start`'s `align-self`. Written last inside l2 for
+   * exactly that reason.
+   */
+  .presenceAfterAlignToPrimary {
+    align-self: center;
+    grid-row-start: unset;
+    grid-column-end: middle;
+  }
+
+  .presenceBeforeAlignToPrimary {
+    align-self: center;
+    grid-row-start: unset;
+    grid-column-start: middle;
+  }
+}

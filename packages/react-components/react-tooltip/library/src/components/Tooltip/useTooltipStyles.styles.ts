@@ -1,69 +1,65 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { createArrowStyles } from '@fluentui/react-positioning';
-import { tokens } from '@fluentui/react-theme';
-import { arrowHeight } from './private/constants';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './Tooltip.module.css';
 
 export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
   content: 'fui-Tooltip__content',
 };
 
 /**
- * Styles for the tooltip
+ * Data attributes rendered on the content slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `data-open` is the headless preview's name for "this surface is showing"
+ * (reports/headless-precedent.md) and its `open` variant already exists in the catalog, so
+ * converting Tooltip's `visible` state adds no new vocabulary. It is a *presence* selector,
+ * so the flag is written `visible || undefined` — React omits an attribute whose value is
+ * `undefined`, whereas `false` would render `data-open="false"` and still match `[data-open]`.
+ *
+ * The attribute is required rather than cosmetic: `shouldRenderTooltip` is forced true for
+ * `relationship="description"` and for label tooltips with non-string content, so a hidden
+ * tooltip is still in the DOM and has to keep Griffel's `display: none`.
  */
-const useStyles = makeStyles({
-  root: {
-    display: 'none',
-    boxSizing: 'border-box',
-    maxWidth: '240px',
-    cursor: 'default',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    overflowWrap: 'break-word',
-    borderRadius: tokens.borderRadiusMedium,
-    border: `1px solid ${tokens.colorTransparentStroke}`,
-    padding: '4px 11px 6px 11px', // '5px 12px 7px 12px' minus the border width '1px'
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
-
-    // TODO need to add versions of tokens.alias.shadow.shadow8, etc. that work with filter
-    filter:
-      `drop-shadow(0 0 2px ${tokens.colorNeutralShadowAmbient}) ` +
-      `drop-shadow(0 4px 8px ${tokens.colorNeutralShadowKey})`,
-  },
-
-  visible: {
-    display: 'block',
-  },
-
-  inverted: {
-    backgroundColor: tokens.colorNeutralBackgroundStatic,
-    color: tokens.colorNeutralForegroundStaticInverted,
-  },
-
-  arrow: createArrowStyles({ arrowHeight }),
-});
+type TooltipContentDataAttributes = {
+  'data-open'?: true;
+};
 
 /**
  * Apply styling to the Tooltip slots based on the state
  */
 export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
-  const styles = useStyles();
+  const content = state.content as TooltipState['content'] & TooltipContentDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.content.className = mergeClasses(
+  content['data-open'] = state.visible || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Tooltip.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
+  state.content.className = clsx(
     tooltipClassNames.content,
-    styles.root,
+    styles.content,
     state.appearance === 'inverted' && styles.inverted,
-    state.visible && styles.visible,
     state.content.className,
   );
 
-  // eslint-disable-next-line react-hooks/immutability
   state.arrowClassName = styles.arrow;
 
   return state;

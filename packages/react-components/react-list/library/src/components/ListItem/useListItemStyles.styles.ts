@@ -1,75 +1,66 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
-import { tokens } from '@fluentui/react-theme';
+
+import styles from './ListItem.module.css';
 
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
   checkmark: 'fui-ListItem__checkmark',
 };
 
-const useRootBaseStyles = makeResetStyles({
-  padding: 0,
-  margin: 0,
-  textIndent: 0,
-  listStyleType: 'none',
-  ...createCustomFocusIndicatorStyle(
-    {
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
-    },
-    { selector: 'focus' },
-  ),
-});
-
-const useCheckmarkBaseStyles = makeStyles({
-  root: {
-    alignSelf: 'center',
-
-    '& .fui-Checkbox__indicator': { margin: '4px' },
-  },
-});
 /**
- * Styles for the root slot
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `data-interactive` carries the `selectable || navigable` union that gated Griffel's
+ * `rootClickableOrSelectable` slice. It is ONE attribute rather than two because neither
+ * half gates anything on its own (cookbook: "prefer ONE presence attribute over two").
+ *
+ * Both are *presence* selectors, so the flags are written `flag || undefined` — React
+ * omits an attribute whose value is `undefined`, whereas `false` would render
+ * `data-interactive="false"` and still match `[data-interactive]`.
+ *
+ * The checkmark slot carries no data attributes: its only slice is unconditional.
  */
-const useStyles = makeStyles({
-  rootClickableOrSelectable: {
-    display: 'flex',
-    cursor: 'pointer',
-  },
-
-  disabled: {
-    cursor: 'default',
-  },
-});
+type ListItemRootDataAttributes = {
+  'data-interactive'?: true;
+  'data-disabled'?: true;
+};
 
 /**
  * Apply styling to the ListItem slots based on the state
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
-  const rootBaseStyles = useRootBaseStyles();
-  const checkmarkBaseStyles = useCheckmarkBaseStyles();
-  const styles = useStyles();
+  const root = state.root as ListItemState['root'] & ListItemRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    listItemClassNames.root,
-    rootBaseStyles,
-    (state.selectable || state.navigable) && styles.rootClickableOrSelectable,
-    state.disabled && styles.disabled,
-    state.root.className,
-  );
+  root['data-interactive'] = state.selectable || state.navigable || undefined;
+  root['data-disabled'] = state.disabled || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in ListItem.module.css, not by
+  // the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces, including why the checkmark slot's rules
+  // live in `fui.components.l2` rather than l1.
+  state.root.className = clsx(listItemClassNames.root, styles.root, state.root.className);
 
   if (state.checkmark) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.checkmark.className = mergeClasses(
-      listItemClassNames.checkmark,
-      checkmarkBaseStyles.root,
-      state.checkmark.className,
-    );
+    state.checkmark.className = clsx(listItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   return state;

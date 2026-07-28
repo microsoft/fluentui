@@ -1,0 +1,188 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useTooltipStyles_unstable,
+ * not source declaration order.
+ *
+ * `content` slot — Tooltip declares no `root` slot, `content` is its only one:
+ *
+ *   #  mergeClasses argument                             → target
+ *   --------------------------------------------------------------------------------
+ *   1  tooltipClassNames.content                         → static class (JS)
+ *   2  useStyles.root                                    → fui.components.l1, block 1
+ *   3  appearance === 'inverted' && useStyles.inverted   → fui.components.l1, block 2
+ *   4  visible && useStyles.visible                      → fui.components.l1, block 3
+ *   5  consumer className                                → unlayered (always wins)
+ *
+ * `state.arrowClassName = styles.arrow` is a bare assignment, NOT a mergeClasses call, so
+ * the arrow element carries exactly one class and has no argument order to preserve. It
+ * styles an element Tooltip renders itself (renderTooltip's `<div ref={state.arrowRef}>`),
+ * so it belongs in fui.components.l1 — not l2, which is reserved for styles applied over
+ * ANOTHER component's hook output (DECISIONS.md D2 amendment 2).
+ *
+ * Load-bearing order inside l1, checked against the compiled atomics in
+ * lib-commonjs/components/Tooltip/useTooltipStyles.styles.js:
+ *   - `inverted` overrides block 1's `background-color` + `color`  → written after it.
+ *   - `visible`  overrides block 1's `display: none`               → written after it.
+ * `inverted` and `visible` set disjoint properties, so their relative order is free; they
+ * are written in argument order regardless. This component has NO inversions.
+ *
+ * No `makeResetStyles` slice → `fui.base` is unused by this package.
+ *
+ * RTL: the compiled AOT output contains not one `[ltr, rtl]` class pair — every atomic is
+ * a single class string and the only Griffel bucket emitted is `d`. Nothing here is
+ * direction-dependent, so there is no `@variant rtl` block. The physical
+ * `border-bottom-left-radius` / `left` / `right` in `.arrow` are `@noflip` at their
+ * source and MUST stay physical; see that block's header.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root */
+  .content {
+    @apply hidden box-border max-w-240 cursor-default break-words;
+
+    /* Griffel `padding: '4px 11px 6px 11px'` — the inline pair is symmetric (11px both
+       sides, which is why Griffel emitted a single unflipped atomic), so `px-11`
+       (padding-inline) reproduces it exactly in both directions. */
+    @apply pt-4 pb-6 px-11;
+
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+
+    /* Kept as the compiled shorthands (`.ft85np5{border-radius:…}`, `.f9ggezi{border:1px
+       solid …}`): no rule in this module sets any of their longhands, so there is no
+       Griffel shorthand-vs-longhand priority left for the cascade to get wrong. */
+    border-radius: var(--borderRadiusMedium);
+    border: 1px solid var(--colorTransparentStroke);
+
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+
+    /* TODO carried verbatim from the Griffel source: need versions of
+       tokens.alias.shadow.shadow8 etc. that work with filter. */
+    filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey));
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useStyles.inverted — `appearance` is a LOOK prop, so it rides a module class (D3) */
+  .inverted {
+    background-color: var(--colorNeutralBackgroundStatic);
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.visible — `visible` is STATE, so it rides a data-attribute (D3). The
+   * name is the headless preview's `data-open` (one of its 25, reports/headless-precedent.md)
+   * and the `open` variant already exists in the shared catalog, so nothing is invented and
+   * the catalog does not grow.
+   */
+  .content {
+    @variant open {
+      @apply block;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStyles.arrow = createArrowStyles({ arrowHeight }) — @fluentui/react-positioning's
+   * GriffelStyle factory, resolved here to the CONCRETE rules it compiled to for
+   * `arrowHeight === 6` (private/constants.ts). react-positioning keeps exporting the factory
+   * for its still-Griffel consumers; this module no longer calls it.
+   *
+   * createArrowHeightStyles(6): edge = 1.414 * 6 = 8.484px, offset = -(edge / 2) = -4.242px.
+   * These stay literal px on purpose — react-positioning's `mergeArrowOffset(offset,
+   * arrowHeight)` does the matching arithmetic in JS pixels (useTooltipBase.tsx), so they
+   * must NOT be rescaled through --base-scale.
+   *
+   * `@noflip` markers in the factory, each verified unpaired in the compiled AOT output (a
+   * flipped declaration would appear there as an `[ltr, rtl]` array): the two
+   * `border-bottom-left-radius` declarations, `transform: rotate(...)`, and the
+   * `left`/`right` offsets under the right/left placements. They stay PHYSICAL —
+   * rewriting them as logical properties would mirror the arrow in RTL, which is exactly
+   * what `@noflip` forbids.
+   */
+  .arrow {
+    @apply absolute box-border;
+
+    z-index: -1;
+
+    --fui-positioning-arrow-height: 8.484px;
+    --fui-positioning-arrow-offset: -4.242px;
+
+    background-color: inherit;
+    background-clip: content-box;
+
+    border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+    transform: rotate(var(--fui-positioning-arrow-angle)); /* @noflip */
+
+    height: var(--fui-positioning-arrow-height);
+    width: var(--fui-positioning-arrow-height);
+
+    &::before {
+      @apply block h-full w-full;
+
+      content: '';
+      background-color: inherit;
+
+      /* The factory writes `margin: -${borderWidth}`, i.e. the margin and the border width
+         are the SAME length by construction (it is what hides the seam between the arrow
+         and the tooltip's own border). Tailwind's border-width utilities are literal px
+         while its spacing utilities are --base-scale rem, so both are written literally
+         here to keep them from drifting apart at a non-default root font size. */
+      margin: -1px;
+      border: 1px solid var(--colorTransparentStroke);
+
+      border-bottom-left-radius: var(--borderRadiusSmall); /* @noflip */
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    }
+
+    /*
+     * The positioning layer writes `data-popper-placement` on the POSITIONED container —
+     * the content slot — so Griffel compiled `:global([data-popper-placement^="top"])` to
+     * the DESCENDANT selector `[data-popper-placement^="top"] .arrow`. Reproduced here with
+     * the ancestor in `:where()` so the rule stays specificity-flat like every other
+     * converted selector (Griffel's own was 0-2-0; the four blocks are mutually exclusive
+     * and nothing else in the module sets these properties, so the change is inert).
+     */
+    :where(:global([data-popper-placement^='top'])) & {
+      bottom: var(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: -45deg;
+    }
+
+    :where(:global([data-popper-placement^='right'])) & {
+      left: var(--fui-positioning-arrow-offset); /* @noflip */
+
+      --fui-positioning-arrow-angle: 45deg;
+    }
+
+    :where(:global([data-popper-placement^='bottom'])) & {
+      top: var(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: 135deg;
+    }
+
+    :where(:global([data-popper-placement^='left'])) & {
+      right: var(--fui-positioning-arrow-offset); /* @noflip */
+
+      --fui-positioning-arrow-angle: 225deg;
+    }
+  }
+}

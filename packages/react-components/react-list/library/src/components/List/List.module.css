@@ -1,0 +1,47 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useListStyles_unstable:
+ *
+ *   1 listClassNames.root  → static class (JS)
+ *   2 useRootBaseStyles    → fui.base   (makeResetStyles → levelless, loses to all levels)
+ *   3 consumer className   → unlayered (always wins)
+ *
+ * List is the simplest possible conversion: one slot, no variant/state/enum slices, so
+ * there is no `fui.components.l1` block at all and nothing whose winner depends on
+ * in-file order. Every styling decision the component makes lives in the reset below.
+ *
+ * Compiled AOT reference (lib-commonjs/components/List/useListStyles.styles.js:24-26):
+ *   .r1m6yby2{padding:0;margin:0;text-indent:0;list-style-type:none;}
+ * A single class, NOT an [ltr, rtl] pair — Griffel found nothing to flip here, so this
+ * module needs neither logical properties nor an `@variant rtl` twin.
+ */
+
+@layer fui.base {
+  /*
+   * from useRootBaseStyles (makeResetStyles).
+   *
+   * Written as literal declarations rather than `@apply p-0 m-0 indent-0 list-none`:
+   * every value is either zero or a keyword, so there is no pixel literal for
+   * `--base-scale` to scale and the utilities would only add indirection. The rule is a
+   * byte-for-byte transcription of the compiled reset above.
+   */
+  .root {
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+    list-style-type: none;
+  }
+}

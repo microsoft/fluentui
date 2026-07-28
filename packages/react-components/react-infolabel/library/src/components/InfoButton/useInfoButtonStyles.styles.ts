@@ -1,11 +1,21 @@
 'use client';
 
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+/*
+ * NOTE (Griffel → Tailwind + CSS Modules migration, migration/griffel-to-tailwind):
+ * unlike react-divider/react-label, this file needs NO `enforce-use-client` suppression and
+ * KEEPS its `react-hooks/immutability` disables — it still calls a React hook
+ * (`usePopoverSurfaceStyles`, see below), so both rules still apply to it exactly as before.
+ * Same split as react-button (Button lost both, ToggleButton kept them) and react-badge
+ * (Badge lost both, CounterBadge kept them).
+ */
+
+import { clsx } from 'clsx';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { typographyStyles } from '@fluentui/react-theme';
 import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import styles from './InfoButton.module.css';
 
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
   root: 'fui-InfoButton',
@@ -15,87 +25,25 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
 };
 
 /**
- * Styles for the root slot
+ * Styles for the info slot — deliberately still Griffel.
+ *
+ * `state.info` renders `@fluentui/react-popover`'s `PopoverSurface`, which has not been
+ * converted yet (DECISIONS.md D12 schedules compound components later). Griffel injects its
+ * atomics UNLAYERED, so they beat every `@layer fui.*` rule this package could emit
+ * (migration/griffel-to-tailwind/reports/pilot-button.md §"The reliance").
+ *
+ * That is the correct outcome when an UNCONVERTED component styles a converted one — its
+ * classes were mergeClasses' last argument, and unlayered reproduces that winner — but it
+ * inverts in this direction. PopoverSurface's own `root` slice applies
+ * `typographyStyles.body1`; the `smallMedium` slice below applies `caption1`. Today
+ * mergeClasses deletes PopoverSurface's losing atomics because this string is its last
+ * argument; a layered `.info` module class would instead LOSE to the surviving unlayered
+ * atomic, and every small/medium InfoButton popover would silently render at body1
+ * (fontSizeBase300/lineHeightBase300) instead of caption1 (fontSizeBase200/lineHeightBase200).
+ *
+ * So this slot keeps `makeStyles` + `mergeClasses` verbatim and converts together with
+ * react-popover. It is the package's whitelisted `@griffel/react` import.
  */
-const useButtonStyles = makeStyles({
-  base: {
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    textDecorationLine: 'none',
-    verticalAlign: 'middle',
-    position: 'relative',
-
-    backgroundColor: tokens.colorTransparentBackground,
-    color: tokens.colorNeutralForeground2,
-
-    ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
-    margin: '0',
-    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'none',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'inline-flex',
-    },
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      color: tokens.colorNeutralForeground2BrandHover,
-      cursor: 'pointer',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline-flex',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-    ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      color: tokens.colorNeutralForeground2BrandPressed,
-    },
-  },
-
-  selected: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline-flex',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
-
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-      color: 'Canvas',
-    },
-  },
-
-  highContrast: {
-    '@media (forced-colors: active)': {
-      color: 'CanvasText',
-
-      ':hover,:hover:active': {
-        forcedColorAdjust: 'none',
-        backgroundColor: 'Highlight',
-        color: 'Canvas',
-      },
-    },
-  },
-
-  focusIndicator: createFocusOutlineStyle(),
-
-  large: {
-    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingVerticalXXS}`,
-  },
-});
-
 const usePopoverSurfaceStyles = makeStyles({
   base: {
     maxWidth: '264px',
@@ -105,13 +53,38 @@ const usePopoverSurfaceStyles = makeStyles({
 });
 
 /**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`).
+ *
+ * `size` is a scale prop, so it rides `data-size` rather than a module class
+ * (DECISIONS.md D3). `data-open` is a *presence* selector, so the flag is written
+ * `open || undefined` — React omits an attribute whose value is `undefined`, whereas
+ * `false` would render `data-open="false"` and still match `[data-open]`.
+ *
+ * `data-open` is stamped rather than reusing the `aria-expanded` PopoverTrigger already
+ * writes on this same button: that attribute is explicitly consumer-overridable
+ * (react-popover's PopoverTrigger.test.tsx "should allow user to override aria-expanded"),
+ * while `state.popover.open` is exactly the boolean the Griffel hook branched on.
+ */
+type InfoButtonRootDataAttributes = {
+  'data-size': InfoButtonState['size'];
+  'data-open'?: true;
+};
+
+/**
  * Apply styling to the InfoButton slots based on the state
  */
 export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButtonState => {
   const { size } = state;
   const { open } = state.popover;
-  const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
+
+  const root = state.root as InfoButtonState['root'] & InfoButtonRootDataAttributes;
+
+  // eslint-disable-next-line react-hooks/immutability
+  root['data-size'] = size;
+  // eslint-disable-next-line react-hooks/immutability
+  root['data-open'] = open || undefined;
 
   // eslint-disable-next-line react-hooks/immutability
   state.info.className = mergeClasses(
@@ -121,16 +94,12 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
     state.info.className,
   );
 
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in InfoButton.module.css, not
+  // by the order of these arguments — see that file's header for the mapping back to the
+  // mergeClasses() argument order this replaces.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    infoButtonClassNames.root,
-    buttonStyles.base,
-    buttonStyles.highContrast,
-    buttonStyles.focusIndicator,
-    open && buttonStyles.selected,
-    size === 'large' && buttonStyles.large,
-    state.root.className,
-  );
+  state.root.className = clsx(infoButtonClassNames.root, styles.root, state.root.className);
 
   return state;
 };
