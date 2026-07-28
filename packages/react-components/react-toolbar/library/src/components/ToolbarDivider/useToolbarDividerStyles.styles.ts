@@ -43,14 +43,25 @@ export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): To
   // eslint-disable-next-line react-hooks/immutability
   root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
 
-  // Consumer className last (it is already the tail of `state.root.className` after
-  // useDividerStyles_unstable ran). Cascade priority is decided by the `@layer fui.*`
+  // Named group marker FIRST, consumer className last (the consumer's string is already the
+  // tail of `state.root.className` after useDividerStyles_unstable ran). The marker is a
+  // literal, unhashed, GLOBAL token: it is the only handle by which another module — in
+  // this package or any other — can style an element from this ToolbarDivider's state,
+  // because `styles.root` is hashed and unaddressable from outside this file.
+  // `data-orientation` is already stamped on this very element above (DECISIONS.md D15,
+  // Tier 0 — no state mirrors needed).
+  //
+  // Unlike the converted leaf hooks there is no static `fui-ToolbarDivider` class to sit
+  // beside: this root IS react-divider's root, so the element carries both this marker and
+  // react-divider's `group/fui-divider`. That is correct — it genuinely is both.
+  //
+  // Cascade priority is decided by the `@layer fui.*`
   // order in ToolbarDivider.module.css — `fui.components.l2` for the rules that must beat
   // react-divider's own, `fui.base` for the one `display` declaration that has to lose to
   // it. See that file's header for the mapping back to the mergeClasses() argument order
   // this replaces, including why that single inversion exists.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(styles.root, state.root.className);
+  state.root.className = clsx('group/fui-toolbar-divider', styles.root, state.root.className);
 
   return state;
 };

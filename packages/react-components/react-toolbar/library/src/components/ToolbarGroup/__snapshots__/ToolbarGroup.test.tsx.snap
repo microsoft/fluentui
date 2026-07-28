@@ -3,7 +3,7 @@
 exports[`ToolbarGroup renders a default state 1`] = `
 <div>
   <div
-    class="fui-ToolbarGroup"
+    class="group/fui-toolbar-group fui-ToolbarGroup"
     data-orientation="horizontal"
     role="presentation"
   >

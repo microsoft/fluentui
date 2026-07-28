@@ -46,11 +46,24 @@ export const useToolbarGroupStyles_unstable = (state: ToolbarGroupState): Toolba
 
   root['data-orientation'] = vertical ? 'vertical' : 'horizontal';
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this ToolbarGroup's state, because `styles.root` is hashed and
+  // unaddressable from outside this file. `data-orientation` is already stamped on this
+  // very element above, so a descendant ToolbarButton can read
+  // `@variant group-orientation-vertical/fui-toolbar-group { … }` and distinguish it from
+  // the enclosing Toolbar's own orientation (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in ToolbarGroup.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces.
-  state.root.className = clsx(toolbarGroupClassNames.root, styles.root, state.root.className);
+  state.root.className = clsx(
+    'group/fui-toolbar-group',
+    toolbarGroupClassNames.root,
+    styles.root,
+    state.root.className,
+  );
 
   return state;
 };
