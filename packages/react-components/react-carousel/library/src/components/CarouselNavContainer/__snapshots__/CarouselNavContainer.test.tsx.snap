@@ -7,11 +7,15 @@ exports[`CarouselNavContainer renders a default state 1`] = `
   >
     <button
       aria-pressed="false"
-      class="fui-CarouselAutoplayButton fui-Button fui-ToggleButton fui-CarouselNavContainer__autoplay"
+      class="fui-CarouselAutoplayButton group/fui-button fui-Button fuicm-root fuicm-secondary fuicm-rounded fui-ToggleButton fui-CarouselNavContainer__autoplay"
+      data-empty="true"
+      data-icon-only="true"
+      data-icon-position="before"
+      data-size="medium"
       type="button"
     >
       <span
-        class="fui-CarouselAutoplayButton__icon fui-Button__icon fui-ToggleButton__icon"
+        class="fui-CarouselAutoplayButton__icon fui-Button__icon fuicm-icon fui-ToggleButton__icon"
       >
         <svg
           aria-hidden="true"
@@ -31,13 +35,18 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     </button>
     <button
       aria-disabled="true"
-      class="fui-CarouselButton fui-Button fui-CarouselNavContainer__prev"
+      class="fui-CarouselButton group/fui-button fui-Button fuicm-root fuicm-subtle fuicm-rounded fui-CarouselNavContainer__prev"
+      data-disabled="true"
+      data-empty="true"
+      data-icon-only="true"
+      data-icon-position="before"
+      data-size="medium"
       disabled=""
       tabindex="-1"
       type="button"
     >
       <span
-        class="fui-CarouselButton__icon fui-Button__icon"
+        class="fui-CarouselButton__icon fui-Button__icon fuicm-icon"
       >
         <svg
           aria-hidden="true"
@@ -58,12 +67,16 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     Default CarouselNavContainer
     <button
       aria-disabled="false"
-      class="fui-CarouselButton fui-Button fui-CarouselNavContainer__next"
+      class="fui-CarouselButton group/fui-button fui-Button fuicm-root fuicm-subtle fuicm-rounded fui-CarouselNavContainer__next"
+      data-empty="true"
+      data-icon-only="true"
+      data-icon-position="before"
+      data-size="medium"
       tabindex="0"
       type="button"
     >
       <span
-        class="fui-CarouselButton__icon fui-Button__icon"
+        class="fui-CarouselButton__icon fui-Button__icon fuicm-icon"
       >
         <svg
           aria-hidden="true"
