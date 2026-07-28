@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "refactor: optimize usePositioning anchor-name handling and add e2e tests for Menu+Tooltip scenario",
+  "comment": "fix: fix multiple anchors support on the same element",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
