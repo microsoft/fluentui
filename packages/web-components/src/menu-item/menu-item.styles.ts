@@ -37,7 +37,7 @@ export const styles = css`
     cursor: pointer;
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     gap: 4px;
-    height: 32px;
+    min-block-size: 32px;
     overflow: visible;
     padding-inline: 10px;
   }
@@ -80,13 +80,6 @@ export const styles = css`
     outline: 2px solid ${colorStrokeFocus2};
   }
 
-  .content {
-    white-space: nowrap;
-    flex-grow: 1;
-    grid-column: auto / span 2;
-    padding: 0 2px;
-  }
-
   :host(:not(${checkedState})) .indicator,
   :host(:not(${checkedState})) ::slotted([slot='indicator']),
   :host(:not(${submenuState})) .submenu-glyph,
@@ -112,7 +105,10 @@ export const styles = css`
   }
 
   .content {
+    flex-grow: 1;
     grid-column: 4 / span 1;
+    padding: 0 2px;
+    white-space: nowrap;
   }
 
   ::slotted([slot='end']) {
@@ -139,7 +135,7 @@ export const styles = css`
 
     ::slotted([popover]) {
       margin: 0;
-      max-height: var(--menu-max-height, auto);
+      max-block-size: var(--menu-max-height, auto);
       position: fixed;
       position-anchor: --menu-trigger;
       inset: unset;

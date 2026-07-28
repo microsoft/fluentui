@@ -21,10 +21,10 @@ export const styles = css`
     --col-submenu-width: 0px;
 
     contain: content;
-    height: fit-content;
-    max-width: 300px;
-    min-width: 160px;
-    width: auto;
+    block-size: fit-content;
+    max-inline-size: 300px;
+    min-inline-size: 160px;
+    inline-size: auto;
     background-color: ${colorNeutralBackground1};
     border: 1px solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
