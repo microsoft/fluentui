@@ -36,7 +36,7 @@ describe('BreadcrumbItem', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <li
-          class="group/fui-breadcrumb-item fui-BreadcrumbItem"
+          class="fui-BreadcrumbItem group/fui-breadcrumb-item"
         >
           Default BreadcrumbItem
         </li>

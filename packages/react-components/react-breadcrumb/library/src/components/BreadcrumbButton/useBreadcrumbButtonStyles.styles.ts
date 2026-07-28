@@ -80,12 +80,13 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // eslint-disable-next-line react-hooks/immutability
   root['data-current'] = current || undefined;
 
-  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
-  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
-  // handle by which another module — in this package or any other — can style an element
-  // from this button's state, because `styles.root` is hashed and unaddressable from outside
-  // this file. Read it as `@variant group-current/fui-breadcrumb-button { … }`
-  // (DECISIONS.md D15).
+  // Static `fui-*` class first (conformance contract), then the named group marker — the
+  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
+  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
+  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // or any other — can style an element from this button's state, because `styles.root` is
+  // hashed and unaddressable from outside this file. Read it as
+  // `@variant group-current/fui-breadcrumb-button { … }` (DECISIONS.md D15).
   //
   // This root ends up carrying TWO markers, which is correct and not a duplication:
   // `useButtonStyles_unstable` below stamps its own `group/fui-button` on the same element,
@@ -104,8 +105,8 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // it did under mergeClasses.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
-    'group/fui-breadcrumb-button',
     breadcrumbButtonClassNames.root,
+    'group/fui-breadcrumb-button',
     styles.root,
     state.root.className,
   );

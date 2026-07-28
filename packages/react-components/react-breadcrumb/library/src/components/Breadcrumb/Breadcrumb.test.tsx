@@ -33,17 +33,17 @@ describe('Breadcrumb', () => {
       <div>
         <nav
           aria-label="breadcrumb"
-          class="group/fui-breadcrumb fui-Breadcrumb"
+          class="fui-Breadcrumb group/fui-breadcrumb"
         >
           <ol
             class="fui-Breadcrumb__list"
             role="list"
           >
             <li
-              class="group/fui-breadcrumb-item fui-BreadcrumbItem"
+              class="fui-BreadcrumbItem group/fui-breadcrumb-item"
             >
               <button
-                class="group/fui-button fui-Button group/fui-breadcrumb-button fui-BreadcrumbButton"
+                class="fui-Button group/fui-button fui-BreadcrumbButton group/fui-breadcrumb-button"
                 data-size="medium"
               >
                 Item 1
@@ -67,17 +67,17 @@ describe('Breadcrumb', () => {
       <div>
         <nav
           aria-label="breadcrumb"
-          class="group/fui-breadcrumb fui-Breadcrumb"
+          class="fui-Breadcrumb group/fui-breadcrumb"
         >
           <ol
             class="fui-Breadcrumb__list"
             role="list"
           >
             <li
-              class="group/fui-breadcrumb-item fui-BreadcrumbItem"
+              class="fui-BreadcrumbItem group/fui-breadcrumb-item"
             >
               <a
-                class="group/fui-button fui-Button group/fui-breadcrumb-button fui-BreadcrumbButton"
+                class="fui-Button group/fui-button fui-BreadcrumbButton group/fui-breadcrumb-button"
                 data-size="medium"
                 tabindex="0"
               >
