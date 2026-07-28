@@ -1,0 +1,180 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useCardHeaderStyles_unstable.
+ * All five slots share one composer, `getSlotStyles(slotName)`:
+ *
+ *   1 cardHeaderClassNames[slot]        → static class (JS)
+ *   2 useStyles[slot]                   → fui.components.l1  .root/.image/.header/…
+ *                                         …EXCEPT the action slot's forced-colors
+ *                                         Button/Link rules → fui.components.l2
+ *   3 boxModelStyles[slot]              → fui.components.l1  .gridRoot… / .flexRoot…
+ *                                         (written AFTER the arg #2 blocks)
+ *   4 state[slot].className             → unlayered (always wins)
+ *
+ * where `boxModelStyles = state.description ? useStylesGrid : useStylesFlex`.
+ *
+ * ── Why the box model is a module CLASS pair, not a data attribute ──────────────────
+ * The gate is "does the `description` slot exist", which has no entry in the shared
+ * `@custom-variant` catalog (react-tailwind-theme/css/variants.css) and no name in the
+ * headless preview's vocabulary; `empty` / `not-empty` mean "no JSX children", which is a
+ * different question. Adding a catalog entry is a cross-package change, so the two
+ * mutually exclusive Griffel maps stay what they already were — two sets of classes the
+ * hook picks between, exactly as `useStylesGrid` / `useStylesFlex` did. Precedent for
+ * boolean-gated module classes: react-text's `.nowrap` / `.truncate` / `.block`.
+ *
+ * Class names carry the map they come from (`gridRoot`, `flexHeader`, …) so a reviewer
+ * can diff them 1:1 against the Griffel slices. `useStylesFlex.image`, `.description` and
+ * `.action` are EMPTY slices — they compile to no class at all, so this module declares
+ * none and the hook looks up nothing for them.
+ *
+ * ── No inversion between arg #2 and arg #3 ──────────────────────────────────────────
+ * The two arguments are disjoint on every slot (verified against the compiled atomics):
+ * arg #2 sets `--fui-CardHeader--gap` / `align-items` / `display` / `margin-inline-*`,
+ * arg #3 sets `display` on the ROOT only plus grid placement and `flex-grow`. The one
+ * property both touch is `display`, and only on the root — where arg #2 declares none.
+ * The arg #3 blocks are still written last so the argument order is encoded in file
+ * position, per the cookbook order rule.
+ *
+ * ── ALTITUDE: the action slot's forced-colors rules are l2 (D2 amendment 2) ─────────
+ * `@media (forced-colors: active) { & .fui-Button, & .fui-Link { … } }` styles elements
+ * owned by @fluentui/react-button and @fluentui/react-link, whose own hooks write their
+ * base rules in `fui.components.l1`; CardHeader reaching into them is a library
+ * composition. Griffel won this on specificity (`.fs9eatd .fui-Button` 0-2-0 vs Button's
+ * 0-1-0 atomics) — `:where()` flattens that to 0-1-0, so the altitude carries the win
+ * now. The action slot's own `margin-inline-start` stays in l1.
+ *
+ * D2 amendment 5 (UNLAYERED) is deliberately NOT applied: both owners are CONVERTED
+ * (`react-button` / `react-link` are `validated` in migration/griffel-to-tailwind/
+ * ledger.json), so no unlayered Griffel atomic competes. Grepped this package for
+ * `fui-Icon-filled` / `fui-Icon-regular`: zero hits.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Three `[ltr, rtl]` pairs, all pure PROPERTY flips:
+ *   image  `.fql5097{margin-right}` / `.f6yss9k{margin-left}` → margin-inline-end
+ *   action `.f6yss9k{margin-left}`  / `.fql5097{margin-right}` → margin-inline-start
+ *   action `.fxoo9ru…{border-right-color}` / `.f1g0ekvh…{border-left-color}` — the same
+ *          `currentColor` on both sides, so these stay physical longhands.
+ * No `@variant rtl` twin is needed.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/CardHeader/useCardHeaderStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useStyles.root — root arg #2 */
+  .root {
+    @apply items-center;
+
+    /*
+     * tokens-free px literal on a custom PROPERTY: no utility can set one, so this takes
+     * the D4 literal form. `calc(12px * var(--base-scale))` is byte-identical to what
+     * `gap-horizontal-m` emits, so the gap scales with the rest of the spacing system.
+     */
+    --fui-CardHeader--gap: calc(12px * var(--base-scale));
+  }
+
+  /* from useStyles.image — image arg #2 */
+  .image {
+    @apply inline-flex;
+
+    margin-inline-end: var(--fui-CardHeader--gap);
+  }
+
+  /* from useStyles.header — header arg #2 */
+  .header {
+    @apply flex;
+  }
+
+  /* from useStyles.description — description arg #2 */
+  .description {
+    @apply flex;
+  }
+
+  /* from useStyles.action — action arg #2, the part CardHeader owns */
+  .action {
+    margin-inline-start: var(--fui-CardHeader--gap);
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStylesGrid — every slot's arg #3 when the `description` slot is present.
+   * Three columns: image | header + description | action.
+   */
+  .gridRoot {
+    @apply grid;
+
+    grid-auto-columns: min-content 1fr min-content;
+  }
+
+  .gridImage {
+    grid-column-start: 1;
+    grid-row-start: span 2;
+  }
+
+  .gridHeader {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+  .gridDescription {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+
+  .gridAction {
+    grid-column-start: 3;
+    grid-row-start: span 2;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useStylesFlex — every slot's arg #3 when there is no `description` slot.
+   * `image`, `description` and `action` are empty slices in the Griffel source and are
+   * therefore absent here.
+   */
+  .flexRoot {
+    @apply flex;
+  }
+
+  .flexHeader {
+    @apply grow;
+  }
+}
+
+/*
+ * ── COMPOSITION ALTITUDE (fui.components.l2) ────────────────────────────────────────
+ * When the surrounding Card is selected or hovered it takes custom forced-colors
+ * background/foreground, so the action's Button/Link must adopt `currentColor` to stay
+ * visible. Subject is another package's element — see the ALTITUDE note in the header.
+ */
+@layer fui.components.l2 {
+  /* from useStyles.action — action arg #2, forced-colors half */
+  .action {
+    @variant forced-colors {
+      & :global(.fui-Button),
+      & :global(.fui-Link) {
+        border-top-color: currentColor;
+        border-right-color: currentColor;
+        border-bottom-color: currentColor;
+        border-left-color: currentColor;
+        color: currentColor;
+        outline-color: currentColor;
+      }
+    }
+  }
+}

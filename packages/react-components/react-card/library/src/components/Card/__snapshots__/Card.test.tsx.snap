@@ -4,6 +4,8 @@ exports[`Card renders a default state 1`] = `
 <div>
   <div
     class="fui-Card"
+    data-orientation="vertical"
+    data-size="medium"
     role="group"
   >
     Default Card

@@ -1,18 +1,23 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import * as React from 'react';
-import type { GriffelStyle } from '@griffel/react';
-import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
+
+import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { textClassNames } from '@fluentui/react-text';
-import type { FocusOutlineStyleOptions } from '@fluentui/react-tabster';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-
-import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
-import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
-import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles.styles';
 import type { CardSlots, CardState } from './Card.types';
+
+import styles from './Card.module.css';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -25,475 +30,118 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
 
 /**
  * CSS variable names used internally for uniform styling in Card.
+ *
+ * The two names are now written literally in Card.module.css (CSS cannot read a JS
+ * constant); this object stays exported because it is public API — consumers set
+ * `--fui-Card--size` / `--fui-Card--border-radius` through it.
  */
 export const cardCSSVars = {
   cardSizeVar: '--fui-Card--size',
   cardBorderRadiusVar: '--fui-Card--border-radius',
 };
 
-const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
-  outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-  outlineWidth: tokens.strokeWidthThick,
-  outlineOffset: '-2px', // FIXME: tokens.strokeWidthThick causes some weird bugs
+/**
+ * `appearance` is a "look" enum, so it stays a module class lookup rather than a
+ * data-attribute variant (DECISIONS.md D3 — the same call react-button made). One class
+ * per value carries FOUR mergeClasses arguments, each in its own block inside
+ * Card.module.css: the base appearance (#5), the interactive variant (#7), the selected
+ * variant (#8) and — for `outline` only — the disabled override (#13).
+ */
+const appearanceClassNames: Record<CardState['appearance'], string> = {
+  filled: styles.filled,
+  'filled-alternative': styles.filledAlternative,
+  outline: styles.outline,
+  subtle: styles.subtle,
 };
 
-const useCardResetStyles = makeResetStyles({
-  overflow: 'hidden',
-  borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-  padding: `var(${cardCSSVars.cardSizeVar})`,
-  gap: `var(${cardCSSVars.cardSizeVar})`,
-
-  display: 'flex',
-  position: 'relative',
-  boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground1,
-
-  // Border setting using after pseudo element to allow CardPreview to render behind it.
-  '::after': {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    content: '""',
-    pointerEvents: 'none',
-
-    ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
-    borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-  },
-
-  // Prevents CardHeader and CardFooter from shrinking.
-  [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
-    flexShrink: 0,
-  },
-});
-
-const disabledStyles: GriffelStyle = {
-  cursor: 'not-allowed',
-  userSelect: 'none',
-  color: tokens.colorNeutralForegroundDisabled,
-  backgroundColor: tokens.colorNeutralBackgroundDisabled,
-  boxShadow: tokens.shadow2,
-  ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-
-  '::before': {
-    content: '""',
-    position: 'absolute',
-    inset: 0,
-    zIndex: `calc(${tokens.zIndexContent} + 1)`,
-  },
-
-  '::after': {
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-  },
+/**
+ * Data attributes rendered on the root slot and matched by the shared `@custom-variant`
+ * catalog in `@fluentui/react-tailwind-theme` (`css/variants.css`). Every name already
+ * exists there; this conversion adds none.
+ *
+ * `data-orientation` and `data-size` are the two design props (always stamped). The other
+ * three are PRESENCE flags written `flag || undefined` so React omits them entirely —
+ * `false` would render `data-x="false"` and still match `[data-x]`.
+ *
+ * `data-interactive` carries the `!disabled && (interactive || selectable)` union the
+ * Griffel hook computed as `isSelectableOrInteractive`. Per the cookbook's boolean-pair
+ * rule it rides ONE attribute rather than two: neither half of the union gates a slice on
+ * its own, exactly the shape ListItem introduced the `interactive` variant for.
+ *
+ * `data-disabled` rather than the `aria-disabled` Card already renders: the catalog's
+ * `disabled` variant deliberately does not match `[aria-disabled='true']` (that widening
+ * is `disabled-control`, for hidden form controls), so the explicit attribute is what
+ * keeps the gate 1:1 with the Griffel `state.disabled &&`.
+ */
+type CardRootDataAttributes = {
+  'data-orientation': CardState['orientation'];
+  'data-size': CardState['size'];
+  'data-interactive'?: true;
+  'data-selected'?: true;
+  'data-disabled'?: true;
 };
-
-const useCardStyles = makeStyles({
-  focused: {
-    ...createFocusOutlineStyle({
-      style: focusOutlineStyle,
-      selector: 'focus',
-    }),
-  },
-
-  selectableFocused: createFocusOutlineStyle({
-    style: focusOutlineStyle,
-    selector: 'focus-within',
-  }),
-
-  orientationHorizontal: {
-    flexDirection: 'row',
-    alignItems: 'center',
-
-    // Remove vertical padding to keep CardPreview content flush with Card's borders.
-    [`> .${cardPreviewClassNames.root}`]: {
-      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
-    // As such, the code below targets a CardPreview, when it's the first element.
-    // Since this is on horizontal cards, the left padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
-      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
-    // As such, the code below targets a CardPreview, when it's the last element.
-    // Since this is on horizontal cards, the right padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
-      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-
-    // If the last child is a CardHeader or CardFooter, allow it to grow to fill the available space.
-    [`> .${cardHeaderClassNames.root}:last-of-type, > .${cardFooterClassNames.root}:last-of-type`]: {
-      flexGrow: 1,
-    },
-  },
-  orientationVertical: {
-    flexDirection: 'column',
-
-    // Remove lateral padding to keep CardPreview content flush with Card's borders.
-    [`> .${cardPreviewClassNames.root}`]: {
-      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-
-    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
-    // As such, the code below targets a CardPreview, when it's the first element.
-    // Since this is on vertical cards, the top padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
-      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-    [`> .${cardClassNames.floatingAction} + .${cardPreviewClassNames.root}`]: {
-      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-
-    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
-    // As such, the code below targets a CardPreview, when it's the first element.
-    // Since this is on vertical cards, the bottom padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
-      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-    },
-  },
-
-  sizeSmall: {
-    [cardCSSVars.cardSizeVar]: '8px',
-    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusSmall,
-  },
-  sizeMedium: {
-    [cardCSSVars.cardSizeVar]: '12px',
-    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusMedium,
-  },
-  sizeLarge: {
-    [cardCSSVars.cardSizeVar]: '16px',
-    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
-  },
-
-  interactive: {
-    [`& .${textClassNames.root}`]: {
-      color: 'currentColor',
-    },
-  },
-
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow4,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-    },
-  },
-  filledInteractive: {
-    cursor: 'pointer',
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow4,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      boxShadow: tokens.shadow8,
-    },
-    ':active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-    },
-  },
-  filledInteractiveSelected: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorNeutralBackground1Selected,
-    },
-  },
-
-  filledAlternative: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-    },
-  },
-  filledAlternativeInteractive: {
-    cursor: 'pointer',
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground2Hover,
-      backgroundColor: tokens.colorNeutralBackground2Hover,
-      boxShadow: tokens.shadow8,
-    },
-    ':active': {
-      backgroundColor: tokens.colorNeutralBackground2Pressed,
-    },
-  },
-  filledAlternativeInteractiveSelected: {
-    backgroundColor: tokens.colorNeutralBackground2Selected,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground2Selected,
-      backgroundColor: tokens.colorNeutralBackground2Selected,
-    },
-  },
-
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
-    boxShadow: 'none',
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    },
-  },
-  outlineInteractive: {
-    cursor: 'pointer',
-    backgroundColor: tokens.colorTransparentBackground,
-    boxShadow: 'none',
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      },
-    },
-    ':active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-
-      '::after': {
-        ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      },
-    },
-  },
-  outlineInteractiveSelected: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorTransparentBackgroundSelected,
-    },
-  },
-  outlineDisabled: {
-    backgroundColor: tokens.colorTransparentBackground,
-    boxShadow: 'none',
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-
-    '&:hover, &:active': {
-      backgroundColor: tokens.colorTransparentBackground,
-      boxShadow: 'none',
-    },
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    },
-  },
-
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    boxShadow: 'none',
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-    },
-  },
-  subtleInteractive: {
-    cursor: 'pointer',
-    backgroundColor: tokens.colorSubtleBackground,
-    boxShadow: 'none',
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-    },
-  },
-  subtleInteractiveSelected: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
-
-    '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    },
-
-    ':hover': {
-      color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
-    },
-  },
-
-  highContrastSelected: {
-    '@media (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-      backgroundColor: 'Highlight',
-      color: 'HighlightText',
-
-      [`& .${cardPreviewClassNames.root}, & .${cardFooterClassNames.root}`]: {
-        forcedColorAdjust: 'auto',
-      },
-
-      '::after': {
-        ...shorthands.borderColor('Highlight'),
-      },
-    },
-  },
-
-  highContrastInteractive: {
-    '@media (forced-colors: active)': {
-      ':hover, :active': {
-        forcedColorAdjust: 'none',
-        backgroundColor: 'Highlight',
-        color: 'HighlightText',
-
-        [`& .${cardPreviewClassNames.root}, & .${cardFooterClassNames.root}`]: {
-          forcedColorAdjust: 'auto',
-        },
-      },
-
-      '::after': {
-        ...shorthands.borderColor('Highlight'),
-      },
-    },
-  },
-
-  select: {
-    position: 'absolute',
-    top: '4px',
-    right: '4px',
-    zIndex: tokens.zIndexContent,
-  },
-
-  hiddenCheckbox: {
-    overflow: 'hidden',
-    width: '1px',
-    height: '1px',
-    position: 'absolute',
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    whiteSpace: 'nowrap',
-  },
-
-  disabled: {
-    ...disabledStyles,
-    '&:hover, &:active': disabledStyles,
-  },
-});
 
 /**
  * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
-  const resetStyles = useCardResetStyles();
-  const styles = useCardStyles();
-
-  const orientationMap = {
-    horizontal: styles.orientationHorizontal,
-    vertical: styles.orientationVertical,
-  };
-
-  const sizeMap = {
-    small: styles.sizeSmall,
-    medium: styles.sizeMedium,
-    large: styles.sizeLarge,
-  };
-
-  const appearanceMap = {
-    filled: styles.filled,
-    'filled-alternative': styles.filledAlternative,
-    outline: styles.outline,
-    subtle: styles.subtle,
-  };
-
-  const selectedMap = {
-    filled: styles.filledInteractiveSelected,
-    'filled-alternative': styles.filledAlternativeInteractiveSelected,
-    outline: styles.outlineInteractiveSelected,
-    subtle: styles.subtleInteractiveSelected,
-  };
-  const interactiveMap = {
-    filled: styles.filledInteractive,
-    'filled-alternative': styles.filledAlternativeInteractive,
-    outline: styles.outlineInteractive,
-    subtle: styles.subtleInteractive,
-  };
-
   const isSelectableOrInteractive = !state.disabled && (state.interactive || state.selectable);
 
-  const focusedClassName = React.useMemo(() => {
-    if (state.disabled) {
-      return '';
-    }
-
+  /*
+   * The focus ring is a THREE-way choice, not a boolean, so it stays a module class
+   * lookup (react-text's `.nowrap` / `.truncate` precedent) instead of an attribute:
+   *   disabled                    → no ring at all
+   *   selectable && selectFocused → the `focus-within` ring (the checkbox holds focus)
+   *   selectable && !selectFocused→ no ring
+   *   otherwise                   → the `focus` ring
+   * Identical branch order to the Griffel hook's `React.useMemo`, which is dropped
+   * because the result is now a plain string constant lookup with nothing to memoise.
+   */
+  let focusedClassName = '';
+  if (!state.disabled) {
     if (state.selectable) {
-      if (state.selectFocused) {
-        return styles.selectableFocused;
-      }
-
-      return '';
+      focusedClassName = state.selectFocused ? styles.selectableFocused : '';
+    } else {
+      focusedClassName = styles.focused;
     }
+  }
 
-    return styles.focused;
-  }, [state.disabled, state.selectFocused, state.selectable, styles.focused, styles.selectableFocused]);
+  const root = state.root as CardState['root'] & CardRootDataAttributes;
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
+  root['data-orientation'] = state.orientation;
+  root['data-size'] = state.size;
+  root['data-interactive'] = isSelectableOrInteractive || undefined;
+  root['data-selected'] = state.selected || undefined;
+  root['data-disabled'] = state.disabled || undefined;
+
+  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Cascade priority is decided by the `@layer fui.*` order in Card.module.css and by
+  // block order within it, not by the order of these arguments — see that file's header
+  // for the mapping back to the 13 mergeClasses() arguments this replaces, including why
+  // everything Card writes onto CardPreview / CardHeader / CardFooter / Text sits at
+  // `fui.components.l2`.
+  //
+  // The state mutations here (and the data-attribute assignments above) are preserved
+  // deliberately: DECISIONS.md D14 defers the pure-builder rewrite to a single Phase 3
+  // sweep.
+  state.root.className = clsx(
     cardClassNames.root,
-    resetStyles,
-    orientationMap[state.orientation],
-    sizeMap[state.size],
-    appearanceMap[state.appearance],
-    isSelectableOrInteractive && styles.interactive,
-    isSelectableOrInteractive && interactiveMap[state.appearance],
-    state.selected && selectedMap[state.appearance],
+    styles.root,
+    appearanceClassNames[state.appearance],
     focusedClassName,
-    isSelectableOrInteractive && styles.highContrastInteractive,
-    state.selected && styles.highContrastSelected,
-    state.disabled && styles.disabled,
-    state.disabled && state.appearance === 'outline' && styles.outlineDisabled,
     state.root.className,
   );
 
   if (state.floatingAction) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.floatingAction.className = mergeClasses(
+    state.floatingAction.className = clsx(
       cardClassNames.floatingAction,
-      styles.select,
+      styles.floatingAction,
       state.floatingAction.className,
     );
   }
 
   if (state.checkbox) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.checkbox.className = mergeClasses(cardClassNames.checkbox, styles.hiddenCheckbox, state.checkbox.className);
+    state.checkbox.className = clsx(cardClassNames.checkbox, styles.checkbox, state.checkbox.className);
   }
 
   return state;

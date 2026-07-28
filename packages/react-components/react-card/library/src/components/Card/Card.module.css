@@ -1,0 +1,898 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useCardStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot:
+ *
+ *   #  mergeClasses argument                                → target
+ *   ---------------------------------------------------------------------------------
+ *   1  cardClassNames.root                                  → static class (JS)
+ *   2  useCardResetStyles              (makeReset)          → fui.base          .root
+ *                                                             …EXCEPT its
+ *                                                             `> .fui-CardHeader/.fui-CardFooter`
+ *                                                             rule → fui.components.l2
+ *   3  orientationMap[orientation]                          → fui.components.l1 (data-orientation)
+ *                                                             …EXCEPT every
+ *                                                             `> .fui-CardPreview/.fui-CardHeader/
+ *                                                             .fui-CardFooter` rule → l2
+ *   4  sizeMap[size]                                        → fui.components.l1 (data-size)
+ *   5  appearanceMap[appearance]                            → fui.components.l1 (.filled/.outline/…)
+ *   6  isSelectableOrInteractive && interactive             → fui.components.l2 (subject is .fui-Text)
+ *   7  isSelectableOrInteractive && interactiveMap[…]       → fui.components.l1 (.appearance + interactive)
+ *   8  selected && selectedMap[appearance]                  → fui.components.l1 (.appearance + selected)
+ *   9  focusedClassName                                     → fui.components.l1 (.focused/.selectableFocused)
+ *  10  isSelectableOrInteractive && highContrastInteractive → fui.components.l1 (+ l2 fragment)
+ *  11  selected && highContrastSelected                     → fui.components.l1 (+ l2 fragment)
+ *  12  disabled && disabled                                 → fui.components.l1 (disabled)
+ *  13  disabled && appearance==='outline' && outlineDisabled→ fui.components.l1 (.outline + disabled)
+ *  14  consumer className                                   → unlayered (always wins)
+ *
+ * `floatingAction` slot:
+ *   1 cardClassNames.floatingAction → static class (JS)
+ *   2 useCardStyles.select          → fui.components.l1  .floatingAction
+ *   3 consumer className            → unlayered
+ *
+ * `checkbox` slot:
+ *   1 cardClassNames.checkbox       → static class (JS)
+ *   2 useCardStyles.hiddenCheckbox  → fui.components.l1  .checkbox
+ *   3 consumer className            → unlayered
+ *
+ * ── ALTITUDE: everything Card writes onto CardPreview / CardHeader / CardFooter / Text
+ *    is l2, not l1 or fui.base (D2 amendment 2, cookbook altitude rule) ───────────────
+ * Those four elements' base styles come from ANOTHER hook — the three sibling components
+ * in this package (`useCardPreviewStyles_unstable`, `useCardHeaderStyles_unstable`,
+ * `useCardFooterStyles_unstable`, all `fui.components.l1`) and `@fluentui/react-text`'s
+ * `useTextStyles_unstable` (also l1). Card restyling them is a library COMPOSITION.
+ *
+ * This is load-bearing for the reset's `> .fui-CardHeader, > .fui-CardFooter
+ * { flex-shrink: 0 }` in particular. In Griffel that rule is `.rfxo2k2 > .fui-CardHeader`
+ * — 0-2-0 — and it beat CardHeader's own 0-1-0 atomics on SPECIFICITY, regardless of the
+ * reset bucket sorting first. Under `:where()`-flat selectors specificity no longer
+ * decides, so leaving it in `fui.base` (the reset-bucket mirror) would put it BELOW
+ * CardHeader's own `fui.components.l1` rules and invert the Griffel winner. l2 restores
+ * it. Same reasoning as react-switch's `& ~ .label` rules being hoisted out of fui.base.
+ * (No property actually collides today — CardHeader/CardFooter never set `flex-shrink`,
+ * `flex-grow`, `margin-*` or `forced-color-adjust` on their roots — so this is a
+ * correctness guard, not a repair.)
+ *
+ * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────
+ * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero
+ * pre-existing hits. Every `:global()` selector introduced by this conversion targets an
+ * element owned by a CONVERTED package — `.fui-CardPreview` / `.fui-CardHeader` /
+ * `.fui-CardFooter` (this package, converted in the same change), `.fui-Text`
+ * (react-text, `validated`), plus Card's OWN `.fui-Card__floatingAction` static class.
+ * No Griffel atomics compete for any of them, so nothing is lifted out of a layer.
+ *
+ * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
+ * Argument order and source-declaration order agree throughout `useCardStyles`, so the
+ * blocks below are written straight down the argument list. Four ties are decided purely
+ * by that file position (all selectors flatten to 0-1-0 under `:where()`):
+ *   • #7 interactive re-states #5 appearance's `background-color` / `box-shadow` /
+ *     `::after` border colours with the same values, and adds `:hover` / `:active`.
+ *   • #8 selected must beat #7's base AND `:hover` background/border colours.
+ *   • #9 focus's `::after { border: … }` shorthand must beat #5/#7/#8's `::after`
+ *     `border-*-color` longhands. Griffel won this on specificity
+ *     (`.fpqizxz[data-fui-focus-visible]::after` 0-2-0 vs `.f16gxe2i::after` 0-1-0);
+ *     `:where()` erases that, so the focus block is written after all three.
+ *   • #12 disabled (and #13 outlineDisabled after it) must beat #5's background/shadow
+ *     and #7's `:hover`/`:active` — in Griffel the `h` bucket resolved this by the same
+ *     `&:hover, &:active` selector being emitted later.
+ * #10/#11 sit between #9 and #12 and are forced-colors-only; their `::after` border
+ * colours are `Highlight`, identical to the value the focus ring's own forced-colors
+ * branch sets, so their relative order to #9 is not observable.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * Every `[ltr, rtl]` pair in the compiled atomics is a pure PROPERTY flip, never a value
+ * flip, so all of them become logical properties and no `@variant rtl` twin is needed:
+ *   orientationHorizontal `margin-left/right` on the first/last CardPreview
+ *                                                    → margin-inline-start / -end
+ *   orientationVertical   `margin-left/right` on CardPreview
+ *                                                    → margin-inline-start / -end
+ *   select                `right: 4px` / `left: 4px` → inset-inline-end (`end-4`)
+ * The reset's ltr/rtl pair differs only in the ORDER of the `::after` top/right/bottom/
+ * left and border longhands — identical values — so it needs no twin either, and the
+ * `shorthands.borderColor()` [ltr, rtl] pairs (`border-right-color`/`border-left-color`)
+ * always carry the SAME colour on both sides, so they stay physical longhands.
+ *
+ * ── Pixel literals and tokens (DECISIONS.md D4) ─────────────────────────────────────
+ * `--fui-Card--size` (8/12/16px) and `--fui-CardHeader--gap`-style knobs are custom
+ * PROPERTIES: no utility can set one, so they take the D4 literal form
+ * `calc(<n>px * var(--base-scale))` — byte-identical to what `p-horizontal-s`,
+ * `p-horizontal-m` and `p-horizontal-l` emit, so they scale with everything else.
+ * `strokeWidthThin` / `strokeWidthThick` are authored as `var(--spacing-thin)` /
+ * `var(--spacing-thick)` (D4 addendum: `border-*-width` and `--fui-*` custom-property
+ * assignments are not spacing-powered, so they take the direct variable, never
+ * `var(--strokeWidth*)`).
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/Card/useCardStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useCardResetStyles (makeResetStyles) */
+  .root {
+    @apply relative box-border flex overflow-hidden;
+
+    border-radius: var(--fui-Card--border-radius);
+
+    /* makeResetStyles output is a single non-atomised rule, so the `padding` / `gap`
+       shorthands are kept exactly as compiled — nothing in this module competes for
+       either longhand set, so there is no Griffel priority machinery to expand away. */
+    padding: var(--fui-Card--size);
+    gap: var(--fui-Card--size);
+
+    color: var(--colorNeutralForeground1);
+
+    /* Border set on an ::after pseudo-element so CardPreview can render behind it. */
+    &::after {
+      @apply absolute;
+
+      content: '';
+      pointer-events: none;
+
+      /* physical, matching the compiled output: the rtl class carries the same values
+         in a different declaration order */
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      border-top-style: solid;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-left-style: solid;
+
+      /* tokens.strokeWidthThin — `border-*-width` does not read the spacing namespace,
+         so the emitted variable is referenced directly (D4 addendum §2). */
+      border-top-width: var(--spacing-thin);
+      border-right-width: var(--spacing-thin);
+      border-bottom-width: var(--spacing-thin);
+      border-left-width: var(--spacing-thin);
+
+      border-radius: var(--fui-Card--border-radius);
+    }
+
+    /* The reset's third rule — `> .fui-CardHeader, > .fui-CardFooter { flex-shrink: 0 }`
+       — is NOT here: its subject is another component's element, so it is authored in
+       fui.components.l2 at the bottom of this file (see the ALTITUDE note). */
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.orientationHorizontal / .orientationVertical — root arg #3.
+   * Only the declarations whose subject is Card's OWN root are here; the CardPreview /
+   * CardHeader / CardFooter margin and flex-grow rules are in l2 below.
+   */
+  .root {
+    @variant horizontal {
+      @apply flex-row items-center;
+    }
+
+    @variant vertical {
+      @apply flex-col;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.sizeSmall / .sizeMedium / .sizeLarge — root arg #4.
+   * `size` is a small ENUM scale, so it rides the catalog's `data-size` variants
+   * (cookbook scale-prop rule). Both declarations are custom properties, hence the D4
+   * literal `calc(<n>px * var(--base-scale))` form — 8/12/16px are spacingS/M/L, and this
+   * is exactly what `*-horizontal-s` / `-m` / `-l` emit.
+   */
+  .root {
+    @variant size-small {
+      --fui-Card--size: calc(8px * var(--base-scale));
+      --fui-Card--border-radius: var(--borderRadiusSmall);
+    }
+
+    @variant size-medium {
+      --fui-Card--size: calc(12px * var(--base-scale));
+      --fui-Card--border-radius: var(--borderRadiusMedium);
+    }
+
+    @variant size-large {
+      --fui-Card--size: calc(16px * var(--base-scale));
+      --fui-Card--border-radius: var(--borderRadiusLarge);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.filled / .filledAlternative / .outline / .subtle — root arg #5.
+   * `appearance` is a "look" enum, so it stays a module class lookup (DECISIONS.md D3,
+   * same call react-button made for its own `appearance`).
+   * `shorthands.borderColor()` expanded to four physical longhands (cookbook §2).
+   */
+  .filled {
+    background-color: var(--colorNeutralBackground1);
+    box-shadow: var(--shadow4);
+
+    &::after {
+      border-top-color: var(--colorTransparentStroke);
+      border-right-color: var(--colorTransparentStroke);
+      border-bottom-color: var(--colorTransparentStroke);
+      border-left-color: var(--colorTransparentStroke);
+    }
+  }
+
+  .filledAlternative {
+    background-color: var(--colorNeutralBackground2);
+    box-shadow: var(--shadow4);
+
+    &::after {
+      border-top-color: var(--colorTransparentStroke);
+      border-right-color: var(--colorTransparentStroke);
+      border-bottom-color: var(--colorTransparentStroke);
+      border-left-color: var(--colorTransparentStroke);
+    }
+  }
+
+  .outline {
+    background-color: var(--colorTransparentBackground);
+    box-shadow: none;
+
+    &::after {
+      border-top-color: var(--colorNeutralStroke1);
+      border-right-color: var(--colorNeutralStroke1);
+      border-bottom-color: var(--colorNeutralStroke1);
+      border-left-color: var(--colorNeutralStroke1);
+    }
+  }
+
+  .subtle {
+    background-color: var(--colorSubtleBackground);
+    box-shadow: none;
+
+    &::after {
+      border-top-color: var(--colorTransparentStroke);
+      border-right-color: var(--colorTransparentStroke);
+      border-bottom-color: var(--colorTransparentStroke);
+      border-left-color: var(--colorTransparentStroke);
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.filledInteractive / .filledAlternativeInteractive /
+   * .outlineInteractive / .subtleInteractive — root arg #7, gated on
+   * `!disabled && (interactive || selectable)`.
+   *
+   * That union rides ONE presence attribute (`data-interactive`, the catalog's
+   * `interactive` variant introduced by ListItem for the identical
+   * `selectable || navigable` shape) rather than two attributes, per the cookbook's
+   * boolean-pair rule — neither half of the union gates anything on its own here.
+   */
+  .filled {
+    @variant interactive {
+      @apply cursor-pointer;
+
+      background-color: var(--colorNeutralBackground1);
+      box-shadow: var(--shadow4);
+
+      &::after {
+        border-top-color: var(--colorTransparentStroke);
+        border-right-color: var(--colorTransparentStroke);
+        border-bottom-color: var(--colorTransparentStroke);
+        border-left-color: var(--colorTransparentStroke);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground1Hover);
+        background-color: var(--colorNeutralBackground1Hover);
+        box-shadow: var(--shadow8);
+      }
+
+      @variant active {
+        background-color: var(--colorNeutralBackground1Pressed);
+      }
+    }
+  }
+
+  .filledAlternative {
+    @variant interactive {
+      @apply cursor-pointer;
+
+      background-color: var(--colorNeutralBackground2);
+      box-shadow: var(--shadow4);
+
+      &::after {
+        border-top-color: var(--colorTransparentStroke);
+        border-right-color: var(--colorTransparentStroke);
+        border-bottom-color: var(--colorTransparentStroke);
+        border-left-color: var(--colorTransparentStroke);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground2Hover);
+        background-color: var(--colorNeutralBackground2Hover);
+        box-shadow: var(--shadow8);
+      }
+
+      @variant active {
+        background-color: var(--colorNeutralBackground2Pressed);
+      }
+    }
+  }
+
+  .outline {
+    @variant interactive {
+      @apply cursor-pointer;
+
+      background-color: var(--colorTransparentBackground);
+      box-shadow: none;
+
+      &::after {
+        border-top-color: var(--colorNeutralStroke1);
+        border-right-color: var(--colorNeutralStroke1);
+        border-bottom-color: var(--colorNeutralStroke1);
+        border-left-color: var(--colorNeutralStroke1);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground1Hover);
+        background-color: var(--colorTransparentBackgroundHover);
+
+        &::after {
+          border-top-color: var(--colorNeutralStroke1Hover);
+          border-right-color: var(--colorNeutralStroke1Hover);
+          border-bottom-color: var(--colorNeutralStroke1Hover);
+          border-left-color: var(--colorNeutralStroke1Hover);
+        }
+      }
+
+      @variant active {
+        background-color: var(--colorTransparentBackgroundPressed);
+
+        &::after {
+          border-top-color: var(--colorNeutralStroke1Pressed);
+          border-right-color: var(--colorNeutralStroke1Pressed);
+          border-bottom-color: var(--colorNeutralStroke1Pressed);
+          border-left-color: var(--colorNeutralStroke1Pressed);
+        }
+      }
+    }
+  }
+
+  .subtle {
+    @variant interactive {
+      @apply cursor-pointer;
+
+      background-color: var(--colorSubtleBackground);
+      box-shadow: none;
+
+      &::after {
+        border-top-color: var(--colorTransparentStroke);
+        border-right-color: var(--colorTransparentStroke);
+        border-bottom-color: var(--colorTransparentStroke);
+        border-left-color: var(--colorTransparentStroke);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground1Hover);
+        background-color: var(--colorSubtleBackgroundHover);
+      }
+
+      @variant active {
+        background-color: var(--colorSubtleBackgroundPressed);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.*InteractiveSelected — root arg #8. Despite the slice names, the
+   * Griffel gate is `state.selected` ALONE (no interactive half), so these ride
+   * `data-selected` on its own. Written after arg #7 because they re-set the same
+   * `background-color`, `::after` border colours and `:hover` pair.
+   */
+  .filled {
+    @variant selected {
+      background-color: var(--colorNeutralBackground1Selected);
+
+      &::after {
+        border-top-color: var(--colorNeutralStroke1Selected);
+        border-right-color: var(--colorNeutralStroke1Selected);
+        border-bottom-color: var(--colorNeutralStroke1Selected);
+        border-left-color: var(--colorNeutralStroke1Selected);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground1Selected);
+        background-color: var(--colorNeutralBackground1Selected);
+      }
+    }
+  }
+
+  .filledAlternative {
+    @variant selected {
+      background-color: var(--colorNeutralBackground2Selected);
+
+      &::after {
+        border-top-color: var(--colorNeutralStroke1Selected);
+        border-right-color: var(--colorNeutralStroke1Selected);
+        border-bottom-color: var(--colorNeutralStroke1Selected);
+        border-left-color: var(--colorNeutralStroke1Selected);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground2Selected);
+        background-color: var(--colorNeutralBackground2Selected);
+      }
+    }
+  }
+
+  .outline {
+    @variant selected {
+      background-color: var(--colorTransparentBackgroundSelected);
+
+      &::after {
+        border-top-color: var(--colorNeutralStroke1Selected);
+        border-right-color: var(--colorNeutralStroke1Selected);
+        border-bottom-color: var(--colorNeutralStroke1Selected);
+        border-left-color: var(--colorNeutralStroke1Selected);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground1Selected);
+        background-color: var(--colorTransparentBackgroundSelected);
+      }
+    }
+  }
+
+  .subtle {
+    @variant selected {
+      background-color: var(--colorSubtleBackgroundSelected);
+
+      &::after {
+        border-top-color: var(--colorNeutralStroke1Selected);
+        border-right-color: var(--colorNeutralStroke1Selected);
+        border-bottom-color: var(--colorNeutralStroke1Selected);
+        border-left-color: var(--colorNeutralStroke1Selected);
+      }
+
+      @variant hover {
+        color: var(--colorNeutralForeground1Selected);
+        background-color: var(--colorSubtleBackgroundSelected);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.focused / .selectableFocused — root arg #9, the output of
+   * `createFocusOutlineStyle({ style: focusOutlineStyle, selector: 'focus' | 'focus-within' })`.
+   *
+   * The ring itself comes from the shared `fui-focus-outline` utility (cookbook: never
+   * hand-copy the ring CSS); only the three values Card overrides are written here, via
+   * the utility's knobs.
+   *
+   *   outlineWidth : tokens.strokeWidthThick     → var(--spacing-thick)   (D4 addendum)
+   *   outlineRadius: var(--fui-Card--border-radius)
+   *   outlineOffset: -2px  — upstream's own FIXME literal ("tokens.strokeWidthThick
+   *                          causes some weird bugs"), reproduced verbatim, NOT
+   *                          "fixed" to a stroke width (DECISIONS.md D6).
+   *
+   * The knobs are set on `&::after`, not on the element: they are registered with
+   * `@property … inherits: false` (react-tailwind-theme/css/utilities.css) so that a knob
+   * on one component can never leak into a nested one — and a pseudo-element takes the
+   * INITIAL value of every non-inherited property, so a knob set on the root would not
+   * reach `::after`, where all three are consumed. Custom properties resolve at
+   * computed-value time, so declaring them in a second `::after` rule works regardless of
+   * which rule is written first.
+   *
+   * `--fui-Card--border-radius` itself is an UNregistered custom property, so it inherits
+   * into `::after` normally — the reset above already relies on that.
+   *
+   * Byte-check against the compiled atomics:
+   *   .fpqizxz[…]::after{border:var(--strokeWidthThick) solid var(--colorStrokeFocus2)}
+   *   .fnd8nzh[…]::after{border-radius:var(--fui-Card--border-radius)}
+   *   .f15fr7a0[…]::after{top:calc(0px - var(--strokeWidthThick) - -2px)}   (×4 sides)
+   * The utility's `calc(0px - var(--fui-focus-outline-width, 2px) -
+   * var(--fui-focus-outline-offset, 0px))` substitutes to exactly that.
+   *
+   * The two `outline-style: none` rules are emitted OUTSIDE the focus-visible selector by
+   * `createFocusOutlineStyle`, so they stay with the caller; `:focus-visible` is a strict
+   * subset of `:focus`, and the redundant second rule is reproduced rather than pruned
+   * because the compiled output contains it (`.ftqa4ok:focus` / `.f2hkw1w:focus-visible`).
+   */
+  .focused {
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+
+      &::after {
+        --fui-focus-outline-width: var(--spacing-thick);
+        --fui-focus-outline-radius: var(--fui-Card--border-radius);
+        --fui-focus-outline-offset: -2px;
+      }
+    }
+  }
+
+  .selectableFocused {
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-within-fui {
+      @apply fui-focus-outline;
+
+      &::after {
+        --fui-focus-outline-width: var(--spacing-thick);
+        --fui-focus-outline-radius: var(--fui-Card--border-radius);
+        --fui-focus-outline-offset: -2px;
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.highContrastInteractive — root arg #10.
+   *
+   * ⚠ The state selector is `&:hover, & :active` — a DESCENDANT combinator on the second
+   * branch, not `:hover:active` and not `&:active`. The Griffel source writes
+   * `':hover, :active'` WITH a space after the comma, which make-styles turns into a
+   * descendant selector; the compiled atomics prove it:
+   *     .f1quqgnd:hover, .f1quqgnd :active { forced-color-adjust: none }
+   * The cookbook's rule is to reproduce the COMPILED selector, not the authored intent,
+   * so this is written raw rather than via `@variant hover` / `@variant active` (which
+   * would silently narrow the second branch to the element itself). Both branches are
+   * `:where()`-flattened to keep the module's 0-1-0 uniformity.
+   *
+   * The `::after` border colours are NOT under the state selector — in the source they
+   * are a sibling of `':hover, :active'` inside the media query, and the compiled
+   * `.fyj59f4::after` carries no state.
+   */
+  .root {
+    @variant interactive {
+      @variant forced-colors {
+        &:where(:hover),
+        & :where(:active) {
+          forced-color-adjust: none;
+          background-color: Highlight;
+          color: HighlightText;
+        }
+
+        &::after {
+          border-top-color: Highlight;
+          border-right-color: Highlight;
+          border-bottom-color: Highlight;
+          border-left-color: Highlight;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useCardStyles.highContrastSelected — root arg #11 */
+  .root {
+    @variant selected {
+      @variant forced-colors {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color: HighlightText;
+
+        &::after {
+          border-top-color: Highlight;
+          border-right-color: Highlight;
+          border-bottom-color: Highlight;
+          border-left-color: Highlight;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.disabled — root arg #12. The Griffel slice is
+   * `{ ...disabledStyles, '&:hover, &:active': disabledStyles }`, i.e. the identical
+   * declaration set restated under a state selector so it beats arg #7's `:hover` /
+   * `:active` rules (`h` bucket, same selector shape). Here the same job is done by file
+   * position, so both copies are kept verbatim.
+   *
+   * Note this selector list has NO space (`.f11og98d:hover,.f11og98d:active` in the
+   * compiled output), unlike arg #10's — so the catalog variants are used.
+   *
+   * `data-disabled` is stamped from `state.disabled`; Card also renders `aria-disabled`
+   * for the same condition, but the catalog's `disabled` variant deliberately does not
+   * match `[aria-disabled='true']` (that widening belongs to `disabled-control`), so the
+   * gate stays 1:1 with the Griffel one.
+   */
+  .root {
+    @variant disabled {
+      @apply cursor-not-allowed select-none;
+
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorNeutralBackgroundDisabled);
+      box-shadow: var(--shadow2);
+
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+
+      &::before {
+        @apply absolute;
+
+        content: '';
+        inset: 0;
+        z-index: calc(var(--zIndexContent, 1) + 1);
+      }
+
+      &::after {
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+      }
+
+      /* the `'&:hover, &:active': disabledStyles` restatement */
+      @variant hover {
+        @apply cursor-not-allowed select-none;
+
+        color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--colorNeutralBackgroundDisabled);
+        box-shadow: var(--shadow2);
+
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+
+        &::before {
+          @apply absolute;
+
+          content: '';
+          inset: 0;
+          z-index: calc(var(--zIndexContent, 1) + 1);
+        }
+
+        &::after {
+          border-top-color: var(--colorNeutralStrokeDisabled);
+          border-right-color: var(--colorNeutralStrokeDisabled);
+          border-bottom-color: var(--colorNeutralStrokeDisabled);
+          border-left-color: var(--colorNeutralStrokeDisabled);
+        }
+      }
+
+      @variant active {
+        @apply cursor-not-allowed select-none;
+
+        color: var(--colorNeutralForegroundDisabled);
+        background-color: var(--colorNeutralBackgroundDisabled);
+        box-shadow: var(--shadow2);
+
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+
+        &::before {
+          @apply absolute;
+
+          content: '';
+          inset: 0;
+          z-index: calc(var(--zIndexContent, 1) + 1);
+        }
+
+        &::after {
+          border-top-color: var(--colorNeutralStrokeDisabled);
+          border-right-color: var(--colorNeutralStrokeDisabled);
+          border-bottom-color: var(--colorNeutralStrokeDisabled);
+          border-left-color: var(--colorNeutralStrokeDisabled);
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useCardStyles.outlineDisabled — root arg #13, gated on
+   * `disabled && appearance === 'outline'`. Written after arg #12 so its transparent
+   * background and `box-shadow: none` (base and `:hover`/`:active`) beat the generic
+   * disabled block's opaque pair.
+   */
+  .outline {
+    @variant disabled {
+      background-color: var(--colorTransparentBackground);
+      box-shadow: none;
+
+      border-top-color: var(--colorNeutralStrokeDisabled);
+      border-right-color: var(--colorNeutralStrokeDisabled);
+      border-bottom-color: var(--colorNeutralStrokeDisabled);
+      border-left-color: var(--colorNeutralStrokeDisabled);
+
+      @variant hover {
+        background-color: var(--colorTransparentBackground);
+        box-shadow: none;
+      }
+
+      @variant active {
+        background-color: var(--colorTransparentBackground);
+        box-shadow: none;
+      }
+
+      &::after {
+        border-top-color: var(--colorNeutralStrokeDisabled);
+        border-right-color: var(--colorNeutralStrokeDisabled);
+        border-bottom-color: var(--colorNeutralStrokeDisabled);
+        border-left-color: var(--colorNeutralStrokeDisabled);
+      }
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useCardStyles.select — floatingAction slot arg #2 */
+  .floatingAction {
+    @apply absolute top-4 end-4;
+
+    z-index: var(--zIndexContent, 1);
+  }
+
+  /* from useCardStyles.hiddenCheckbox — checkbox slot arg #2 */
+  .checkbox {
+    @apply absolute h-1 w-1 overflow-hidden whitespace-nowrap;
+
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+}
+
+/*
+ * ── COMPOSITION ALTITUDE (fui.components.l2) ────────────────────────────────────────
+ * Everything below has another component's element as its SUBJECT: this package's
+ * CardPreview / CardHeader / CardFooter, or @fluentui/react-text's Text. All four are
+ * styled by their own hooks in `fui.components.l1`, so Card's rules over them belong one
+ * altitude up (D2 amendment 2). Blocks are laid out in mergeClasses ARGUMENT order, same
+ * as the l1 section — file position is the only tiebreak inside a layer.
+ */
+
+@layer fui.components.l2 {
+  /* from useCardResetStyles — root arg #2, the reset's third rule */
+  .root {
+    & > :global(.fui-CardHeader),
+    & > :global(.fui-CardFooter) {
+      flex-shrink: 0;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* from useCardStyles.orientationHorizontal — root arg #3 */
+  .root {
+    @variant horizontal {
+      /* Remove vertical padding so CardPreview content sits flush with Card's borders. */
+      & > :global(.fui-CardPreview) {
+        margin-top: calc(var(--fui-Card--size) * -1);
+        margin-bottom: calc(var(--fui-Card--size) * -1);
+      }
+
+      /* Tabster's "Groupper" injects hidden elements before and after Card's content, so
+         these two target the CardPreview that is *visually* first / last. */
+      & > :global(:not([aria-hidden='true']).fui-CardPreview:first-of-type) {
+        margin-inline-start: calc(var(--fui-Card--size) * -1);
+      }
+
+      & > :global(:not([aria-hidden='true']).fui-CardPreview:last-of-type) {
+        margin-inline-end: calc(var(--fui-Card--size) * -1);
+      }
+
+      /* A trailing CardHeader/CardFooter grows to fill the remaining space. */
+      & > :global(.fui-CardHeader:last-of-type),
+      & > :global(.fui-CardFooter:last-of-type) {
+        flex-grow: 1;
+      }
+    }
+
+    /* from useCardStyles.orientationVertical — root arg #3 */
+    @variant vertical {
+      /* Remove lateral padding so CardPreview content sits flush with Card's borders. */
+      & > :global(.fui-CardPreview) {
+        margin-inline-start: calc(var(--fui-Card--size) * -1);
+        margin-inline-end: calc(var(--fui-Card--size) * -1);
+      }
+
+      & > :global(:not([aria-hidden='true']).fui-CardPreview:first-of-type) {
+        margin-top: calc(var(--fui-Card--size) * -1);
+      }
+
+      /* `.fui-Card__floatingAction` is Card's OWN static class; the SUBJECT is still
+         CardPreview, which is why the rule sits at this altitude. */
+      & > :global(.fui-Card__floatingAction + .fui-CardPreview) {
+        margin-top: calc(var(--fui-Card--size) * -1);
+      }
+
+      & > :global(:not([aria-hidden='true']).fui-CardPreview:last-of-type) {
+        margin-bottom: calc(var(--fui-Card--size) * -1);
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useCardStyles.interactive — root arg #6. The whole slice is one descendant rule
+   * over @fluentui/react-text's element (`.f1epqm3e .fui-Text{color:currentColor}`), so
+   * the entire argument lives at l2. Text's own module never sets `color`, so nothing is
+   * inverted by the promotion — it only makes the win independent of load order.
+   */
+  .root {
+    @variant interactive {
+      & :global(.fui-Text) {
+        color: currentColor;
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /*
+   * from useCardStyles.highContrastInteractive — root arg #10, the fragment whose subject
+   * is CardPreview / CardFooter. Same `&:hover, & :active` descendant quirk as the l1
+   * half; compiled selector:
+   *   .f3n01jk:hover .fui-CardPreview, .f3n01jk :active .fui-CardPreview, …
+   */
+  .root {
+    @variant interactive {
+      @variant forced-colors {
+        &:where(:hover) :global(.fui-CardPreview),
+        & :where(:active) :global(.fui-CardPreview),
+        &:where(:hover) :global(.fui-CardFooter),
+        & :where(:active) :global(.fui-CardFooter) {
+          forced-color-adjust: auto;
+        }
+      }
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  /* from useCardStyles.highContrastSelected — root arg #11, CardPreview/CardFooter half */
+  .root {
+    @variant selected {
+      @variant forced-colors {
+        & :global(.fui-CardPreview),
+        & :global(.fui-CardFooter) {
+          forced-color-adjust: auto;
+        }
+      }
+    }
+  }
+}
