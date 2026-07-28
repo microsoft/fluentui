@@ -30,7 +30,7 @@
    * when `as="span"`; this restores block layout for the inline element. Compiled atomic:
    * `.ftgm304{display:block;}` (lib-commonjs/components/Skeleton/useSkeletonStyles.styles.js).
    */
-  .blockStyling {
+  .block-styling {
     @apply block;
   }
 }

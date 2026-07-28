@@ -129,7 +129,7 @@
    * `.ftgm304{display:block;}`) as Skeleton's; the root renders a `span` under
    * `as="span"` and needs block layout back.
    */
-  .blockStyling {
+  .block-styling {
     @apply block;
   }
 }
@@ -237,7 +237,7 @@
    * `transparent` is the initial value of `background-color`, so it renders exactly what
    * Griffel rendered while being a declaration the cascade actually applies.
    */
-  .translucentPulse {
+  .translucent-pulse {
     background-color: transparent;
 
     &::after {

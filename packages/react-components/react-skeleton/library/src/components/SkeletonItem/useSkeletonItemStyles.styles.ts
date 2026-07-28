@@ -50,7 +50,14 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with the
+  // consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the only
+  // handle by which another module — in this package or any other — can style an element from
+  // this SkeletonItem's state, because `styles.root` is hashed and unaddressable from outside
+  // this file. No state mirrors are needed: `data-size` is already stamped on this very
+  // element above, and `animation` / `appearance` / `shape` are look props carried as module
+  // classes, which a group variant cannot read anyway (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in SkeletonItem.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces, including the media-query bucket
@@ -65,12 +72,13 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
   // no longer reports here, and the state-mutation pattern itself stays until the Phase 3
   // sweep (DECISIONS.md D14) — only the now-unused directives were dropped.
   state.root.className = clsx(
+    'group/fui-skeleton-item',
     skeletonItemClassNames.root,
     styles.root,
-    state.root.as === 'span' && styles.blockStyling,
+    state.root.as === 'span' && styles['block-styling'],
     styles[animation],
     styles[appearance],
-    animation === 'pulse' && appearance === 'translucent' && styles.translucentPulse,
+    animation === 'pulse' && appearance === 'translucent' && styles['translucent-pulse'],
     styles[shape],
     state.root.className,
   );
