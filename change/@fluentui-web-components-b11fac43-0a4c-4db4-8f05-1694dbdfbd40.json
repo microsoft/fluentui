@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: select a tab when click() is called on it",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
