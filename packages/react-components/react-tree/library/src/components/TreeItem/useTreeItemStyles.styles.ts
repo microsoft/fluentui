@@ -33,7 +33,19 @@ type StaticLevelProperty = `level${StaticLevel}`;
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
   const { level } = state;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this TreeItem's state, because `styles.root` is hashed and unaddressable
+  // from outside this file. This is the package's strongest nesting case: TreeItemLayout
+  // and TreeItemPersonaLayout are separate components rendered inside this root, and they
+  // can now read the item's expansion directly as
+  // `@variant group-expanded/fui-tree-item { … }`.
+  //
+  // No state mirror is needed. `aria-expanded` is already on this root and the catalog's
+  // `expanded` variant matches `[aria-expanded='true']`, so the state a child most wants is
+  // readable as-is (DECISIONS.md D15, Tier 0).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in TreeItem.module.css, not by
   // the order of these arguments — see that file's header for the mapping back to the
   // mergeClasses() argument order this replaces, including why the focus indicator sits at
@@ -51,6 +63,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   // depend on the shared object, and its removal is a single Phase 3 sweep
   // (DECISIONS.md D14).
   state.root.className = clsx(
+    'group/fui-tree-item',
     treeItemClassNames.root,
     styles.root,
     isStaticallyDefinedLevel(level) && styles[`level${level}` as StaticLevelProperty],

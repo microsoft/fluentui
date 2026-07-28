@@ -25,7 +25,7 @@
  *   6 consumer className                    → unlayered (always wins)
  *
  * `main` slot          1 static · 2 useMainBaseStyles      (makeReset) → fui.base .main
- * `expandIcon` slot    1 static · 2 useExpandIconBaseStyles(makeReset) → fui.base .expandIcon
+ * `expandIcon` slot    1 static · 2 useExpandIconBaseStyles(makeReset) → fui.base .expand-icon
  * `actions` slot       1 static · 2 useActionsBaseStyles   (makeReset) → fui.base .actions
  * `aside` slot         1 static · 2 useAsideBaseStyles     (makeReset) → fui.base .aside
  * `selector` slot      1 static only — the hook applies no styles to it (it renders
@@ -112,7 +112,7 @@
       color: var(--colorNeutralForeground2Hover);
       background-color: var(--colorSubtleBackgroundHover);
 
-      & .expandIcon {
+      & .expand-icon {
         color: var(--colorNeutralForeground3Hover);
       }
     }
@@ -121,7 +121,7 @@
       color: var(--colorNeutralForeground2Pressed);
       background-color: var(--colorSubtleBackgroundPressed);
 
-      & .expandIcon {
+      & .expand-icon {
         color: var(--colorNeutralForeground3Pressed);
       }
     }
@@ -137,7 +137,7 @@
   }
 
   /* from useExpandIconBaseStyles (makeResetStyles) — expandIcon arg #2 */
-  .expandIcon {
+  .expand-icon {
     @apply box-border flex min-w-24 items-center justify-center;
 
     color: var(--colorNeutralForeground3);
@@ -293,21 +293,21 @@
    */
   .root {
     @variant size-medium {
-      & .iconBefore {
+      & .icon-before {
         @apply pe-horizontal-xs;
       }
 
-      & .iconAfter {
+      & .icon-after {
         @apply ps-horizontal-xs;
       }
     }
 
     @variant size-small {
-      & .iconBefore {
+      & .icon-before {
         @apply pe-horizontal-xxs;
       }
 
-      & .iconAfter {
+      & .icon-after {
         @apply ps-horizontal-xxs;
       }
     }

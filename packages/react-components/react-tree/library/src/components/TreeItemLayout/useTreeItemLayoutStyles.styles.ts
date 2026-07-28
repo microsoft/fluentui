@@ -66,7 +66,13 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   // eslint-disable-next-line react-hooks/immutability
   rootDataAttributes['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this TreeItemLayout's state, because `styles.root` is hashed and
+  // unaddressable from outside this file. `data-size` is already stamped on this very
+  // element above (DECISIONS.md D15, Tier 0 — no state mirrors needed).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in TreeItemLayout.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to
   // the mergeClasses() argument order this replaces (appearance → size → itemType, which
@@ -76,6 +82,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
   // clsx drops the resulting `undefined`, matching the empty class string Griffel produces.
   // eslint-disable-next-line react-hooks/immutability
   root.className = clsx(
+    'group/fui-tree-item-layout',
     treeItemLayoutClassNames.root,
     styles.root,
     styles[appearance],
@@ -88,7 +95,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
 
   if (expandIcon) {
     // eslint-disable-next-line react-hooks/immutability
-    expandIcon.className = clsx(treeItemLayoutClassNames.expandIcon, styles.expandIcon, expandIcon.className);
+    expandIcon.className = clsx(treeItemLayoutClassNames.expandIcon, styles['expand-icon'], expandIcon.className);
   }
 
   if (iconBefore) {
@@ -96,14 +103,19 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     iconBefore.className = clsx(
       treeItemLayoutClassNames.iconBefore,
       styles.icon,
-      styles.iconBefore,
+      styles['icon-before'],
       iconBefore.className,
     );
   }
 
   if (iconAfter) {
     // eslint-disable-next-line react-hooks/immutability
-    iconAfter.className = clsx(treeItemLayoutClassNames.iconAfter, styles.icon, styles.iconAfter, iconAfter.className);
+    iconAfter.className = clsx(
+      treeItemLayoutClassNames.iconAfter,
+      styles.icon,
+      styles['icon-after'],
+      iconAfter.className,
+    );
   }
 
   if (actions) {

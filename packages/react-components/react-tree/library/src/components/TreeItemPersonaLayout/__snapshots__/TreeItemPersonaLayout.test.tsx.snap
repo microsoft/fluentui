@@ -3,7 +3,7 @@
 exports[`TreeItemPersonaLayout renders a default state 1`] = `
 <div>
   <div
-    class="fui-TreeItemPersonaLayout"
+    class="group/fui-tree-item-persona-layout fui-TreeItemPersonaLayout"
     data-size="medium"
   >
     <div

@@ -63,7 +63,13 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   // eslint-disable-next-line react-hooks/immutability
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Named group marker FIRST, then the static `fui-*` class (conformance contract), with
+  // the consumer className last. The marker is a literal, unhashed, GLOBAL token: it is the
+  // only handle by which another module — in this package or any other — can style an
+  // element from this TreeItemPersonaLayout's state, because `styles.root` is hashed and
+  // unaddressable from outside this file (DECISIONS.md D15, Tier 0 — no state mirrors
+  // needed).
+  //
   // Cascade priority is decided by the `@layer fui.*` order in
   // TreeItemPersonaLayout.module.css, not by the order of these arguments — see that
   // file's header for the mapping back to the mergeClasses() argument order this replaces
@@ -74,6 +80,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   // clsx drops the resulting `undefined`, matching the empty class string Griffel produces.
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
+    'group/fui-tree-item-persona-layout',
     treeItemPersonaLayoutClassNames.root,
     styles.root,
     styles[itemType],
@@ -89,7 +96,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     state.main.className = clsx(
       treeItemPersonaLayoutClassNames.main,
       styles.main,
-      state.description && styles.mainWithDescription,
+      state.description && styles['main-with-description'],
       state.main.className,
     );
   }
@@ -113,7 +120,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
     // eslint-disable-next-line react-hooks/immutability
     state.expandIcon.className = clsx(
       treeItemPersonaLayoutClassNames.expandIcon,
-      styles.expandIcon,
+      styles['expand-icon'],
       state.expandIcon.className,
     );
   }
