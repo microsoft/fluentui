@@ -7,6 +7,19 @@ import { applyFocusVisiblePolyfill } from '@fluentui/react-tabster';
 
 import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
 
+/**
+ * Extracts the RUNTIME theme classes — `fui-FluentProvider<useId>` — out of the
+ * `themeClassName` context value, so they can be re-applied to v8 portal elements.
+ *
+ * Unaffected by the BEM statics removal
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md` D16.1), and the `\w+` is why: the
+ * pattern requires at least one word character AFTER the seed, so it only ever matched the
+ * `useId`-suffixed runtime class and never the bare `fui-FluentProvider` static that D16.1
+ * stopped rendering. `fluentProviderClassNames.root` is retained precisely as this seed
+ * (see its JSDoc in react-provider) — do not "modernise" it to the group marker, which is
+ * lowercase and slash-bearing and would make this pattern match nothing.
+ */
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- the deprecation is about STYLING use. This is the constant's retained non-styling role: it seeds the runtime `fui-FluentProvider<useId>` theme class (DECISIONS.md D16.1/D16.5).
 const CLASS_NAME_REGEX = new RegExp(`([^\\s]*${fluentProviderClassNames.root}\\w+)`, 'g');
 
 export function useProviderThemeClasses(): string[] {
