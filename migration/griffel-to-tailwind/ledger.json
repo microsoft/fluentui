@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-07-28",
-  "phase": "2-mass-conversion",
+  "phase": "2-mass-conversion-complete",
   "branch": "styling/tailwind-css-modules",
   "statusValues": [
     "pending-triage",
@@ -102,10 +102,11 @@
       "notes": "PILOT #2: Button component converted+validated (VR 129/129 zero-tolerance incl hover/pressed; mixed-mode net ToggleButton/CompoundButton/MenuButton/SplitButton 342/342 clean; tests 202/202). Siblings still Griffel by design - convert in Phase 2. Shared focus-ring utilities landed in react-tailwind-theme. Charts snapshots: +593 additive data-* lines, verified zero removals. Icon-swap rules unlayered in 0367fcc2a3 (latent runtime bug, VR-invisible)."
     },
     "react-calendar-compat": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 7,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-card": {
       "status": "validated",
@@ -140,10 +141,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-combobox": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 5,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-components": {
       "status": "special",
@@ -164,10 +166,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-datepicker-compat": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-dialog": {
       "status": "validated",
@@ -258,10 +261,11 @@
       "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-menu-grid-preview": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 6,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No VR stories — validated via tests + seam audit.",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-message-bar": {
       "status": "validated",
@@ -295,10 +299,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-nav": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 16,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No VR stories — validated via tests + seam audit.",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-overflow": {
       "status": "validated",
@@ -472,10 +477,11 @@
       "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-teaching-popover": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 12,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No VR stories — validated via tests + seam audit.",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-text": {
       "status": "validated",
@@ -502,10 +508,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-timepicker-compat": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch5 (full contract; scoped gate 48/48)"
     },
     "react-toast": {
       "status": "validated",
