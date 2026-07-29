@@ -6,14 +6,14 @@ Object {
   "baseElement": <body>
     <div>
       <span
-        class="fui-Input group/fui-input fuicm-root fuicm-outline fui-DatePicker"
+        class="fuicm-root group/fui-input fuicm-outline fui-DatePicker"
         data-content-after="true"
         data-size="medium"
       >
         <input
           aria-expanded="false"
           aria-haspopup="dialog"
-          class="fui-Input__input fuicm-input"
+          class="fuicm-input"
           id="datePicker-input_r_m_"
           readonly=""
           role="combobox"
@@ -23,7 +23,7 @@ Object {
         <span
           aria-expanded="false"
           aria-labelledby="datePicker-input_r_m_"
-          class="fui-Input__contentAfter fuicm-content"
+          class="fuicm-content"
           role="button"
         >
           <svg
@@ -46,14 +46,14 @@ Object {
   </body>,
   "container": <div>
     <span
-      class="fui-Input group/fui-input fuicm-root fuicm-outline fui-DatePicker"
+      class="fuicm-root group/fui-input fuicm-outline fui-DatePicker"
       data-content-after="true"
       data-size="medium"
     >
       <input
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="fui-Input__input fuicm-input"
+        class="fuicm-input"
         id="datePicker-input_r_m_"
         readonly=""
         role="combobox"
@@ -63,7 +63,7 @@ Object {
       <span
         aria-expanded="false"
         aria-labelledby="datePicker-input_r_m_"
-        class="fui-Input__contentAfter fuicm-content"
+        class="fuicm-content"
         role="button"
       >
         <svg
