@@ -6,6 +6,9 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import type { MenuContextValue } from '@fluentui/react-menu';
 import { useMenuContext_unstable } from '@fluentui/react-menu';
 
+import { menuGridClassNames } from '../components/MenuGrid/useMenuGridStyles.styles';
+import { menuGridRowClassNames } from '../components/MenuGridRow/useMenuGridRowStyles.styles';
+
 type NestingComponentName = 'MenuGrid' | 'MenuGridCell' | 'MenuGridItem' | 'MenuGridRow';
 type MenuItemRoles = 'menuitem' | 'menuitemcheckbox' | 'menuitemradio';
 
@@ -32,7 +35,14 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
       do {
         ancestor = ancestor?.parentElement ?? null;
         ancestorRole = ancestor?.getAttribute('role');
-        if (ancestor?.classList.contains('fui-MenuGrid')) {
+        // `menuGridClassNames.root` / `menuGridRowClassNames.root` are the group markers after
+        // DECISIONS.md D16.1/D16.5 — the BEM statics these two checks used to hard-code
+        // (`fui-MenuGrid`, `fui-MenuGridRow`) no longer exist. `classList.contains` takes a
+        // class TOKEN, so the `/` needs no escaping (only a SELECTOR would — that is what
+        // `fuiSelector()` is for). The markers are distinct tokens, so `group/fui-menu-grid`
+        // does NOT match a `group/fui-menu-grid-row` element the way a prefix test would.
+        // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+        if (ancestor?.classList.contains(menuGridClassNames.root)) {
           if (componentName === 'MenuGridCell') {
             throw new Error(
               'MenuGridCell is incorrectly nested within MenuGrid. You probably want to wrap it in a MenuGridRow.',
@@ -40,7 +50,11 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
           }
           break;
         }
-        if (ancestor?.classList.contains('fui-MenuGridRow') && componentName === 'MenuGridCell') {
+        if (
+          // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained identity constant (D16.5)
+          ancestor?.classList.contains(menuGridRowClassNames.root) &&
+          componentName === 'MenuGridCell'
+        ) {
           break;
         }
         if (['menuitem', 'menuitemcheckbox', 'menuitemradio'].includes(ancestorRole ?? '')) {

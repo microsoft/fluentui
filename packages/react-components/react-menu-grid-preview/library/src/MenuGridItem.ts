@@ -1,7 +1,7 @@
 export type { MenuGridItemProps, MenuGridItemSlots, MenuGridItemState } from './components/MenuGridItem/index';
 export {
   MenuGridItem,
-  menuGridItemClassNames,
+  menuGridItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridItem_unstable,
   useMenuGridItemStyles_unstable,
   useMenuGridItem_unstable,

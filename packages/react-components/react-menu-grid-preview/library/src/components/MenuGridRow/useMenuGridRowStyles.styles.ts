@@ -1,68 +1,53 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { mergeClasses, makeResetStyles } from '@griffel/react';
-import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import type { MenuGridRowSlots, MenuGridRowState } from './MenuGridRow.types';
-import { tokens } from '@fluentui/react-theme';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeResetStyles`
+ * is gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const menuGridRowClassNames: SlotClassNames<MenuGridRowSlots> = {
-  root: 'fui-MenuGridRow',
+import { clsx } from 'clsx';
+import type { MenuGridRowState } from './MenuGridRow.types';
+
+import styles from './MenuGridRow.module.css';
+
+/**
+ * Public identity class for MenuGridRow.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. `useValidateNesting` (this package's and react-menu's) reads it
+ * with `classList.contains`, which takes a TOKEN and needs no escaping.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + menuGridRowClassNames.root` is an invalid selector. Use
+ * `fuiSelector(menuGridRowClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const menuGridRowClassNames: { root: string } = {
+  root: 'group/fui-menu-grid-row',
 };
 
-// Base styles similar to regular menu item
-// Right now ecludes icon color, hover active style for secondary text
-const useRootBaseStyles = makeResetStyles({
-  borderRadius: tokens.borderRadiusMedium,
-  position: 'relative',
-  color: tokens.colorNeutralForeground2,
-  backgroundColor: tokens.colorNeutralBackground1,
-  padding: `${tokens.spacingVerticalXS} ${tokens.spacingVerticalSNudge}`,
-  boxSizing: 'border-box',
-  maxWidth: '290px',
-  minHeight: '32px',
-  flexShrink: 0,
-  display: 'flex',
-  alignItems: 'start',
-  fontSize: tokens.fontSizeBase300,
-  cursor: 'pointer',
-  gap: '4px',
-  userSelect: 'none',
-  ...createFocusOutlineStyle(),
-
-  ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    color: tokens.colorNeutralForeground2Hover,
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
-  },
-
-  ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    color: tokens.colorNeutralForeground2Pressed,
-  },
-
-  // High contrast styles
-  '@media (forced-colors: active)': {
-    ':hover': {
-      backgroundColor: 'Canvas',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-    },
-    ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
-  },
-});
-
 export const useMenuGridRowStyles_unstable = (state: MenuGridRowState): MenuGridRowState => {
-  const rootBaseStyles = useRootBaseStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(menuGridRowClassNames.root, rootBaseStyles, state.root.className);
+  // Unconditional module class FIRST, then the named group marker, with the consumer
+  // className last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
+  // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
+  // the token that guarantees it. The BEM static that used to hold that position is gone
+  // (DECISIONS.md D16.1).
+  //
+  // When `MenuGridItem` renders a MenuGridRow as its root, the string that component
+  // composed (its own identity local + `group/fui-menu-grid-item`) arrives here as
+  // `state.root.className`, so the element carries BOTH markers — the D16.3 shape, declared
+  // to react-conformance via `testOptions['has-group-marker'].markers` in
+  // MenuGridItem.test.tsx.
+  state.root.className = clsx(styles.root, 'group/fui-menu-grid-row', state.root.className);
 
   return state;
 };

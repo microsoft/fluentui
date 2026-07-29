@@ -4,7 +4,7 @@ export { MenuGridGroupContextProvider, useMenuGridGroupContext_unstable } from '
 export type { MenuGridGroupContextValue } from './contexts/menuGridGroupContext';
 export {
   MenuGrid,
-  menuGridClassNames,
+  menuGridClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGrid_unstable,
   useMenuGridContextValues_unstable,
   useMenuGridStyles_unstable,
@@ -13,7 +13,7 @@ export {
 export type { MenuGridContextValues, MenuGridProps, MenuGridSlots, MenuGridState } from './MenuGrid';
 export {
   MenuGridCell,
-  menuGridCellClassNames,
+  menuGridCellClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridCell_unstable,
   useMenuGridCellStyles_unstable,
   useMenuGridCell_unstable,
@@ -21,7 +21,7 @@ export {
 export type { MenuGridCellProps, MenuGridCellSlots, MenuGridCellState } from './MenuGridCell';
 export {
   MenuGridItem,
-  menuGridItemClassNames,
+  menuGridItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridItem_unstable,
   useMenuGridItemStyles_unstable,
   useMenuGridItem_unstable,
@@ -29,7 +29,7 @@ export {
 export type { MenuGridItemProps, MenuGridItemSlots, MenuGridItemState } from './MenuGridItem';
 export {
   MenuGridRow,
-  menuGridRowClassNames,
+  menuGridRowClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridRow_unstable,
   useMenuGridRowStyles_unstable,
   useMenuGridRow_unstable,
@@ -37,7 +37,7 @@ export {
 export type { MenuGridRowProps, MenuGridRowSlots, MenuGridRowState } from './MenuGridRow';
 export {
   MenuGridGroup,
-  menuGridGroupClassNames,
+  menuGridGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridGroup_unstable,
   useMenuGridGroupContextValues_unstable,
   useMenuGridGroupStyles_unstable,
@@ -51,7 +51,7 @@ export type {
 } from './MenuGridGroup';
 export {
   MenuGridGroupHeader,
-  menuGridGroupHeaderClassNames,
+  menuGridGroupHeaderClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridGroupHeader_unstable,
   useMenuGridGroupHeaderStyles_unstable,
   useMenuGridGroupHeader_unstable,

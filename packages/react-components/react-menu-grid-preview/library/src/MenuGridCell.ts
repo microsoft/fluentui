@@ -1,7 +1,7 @@
 export type { MenuGridCellProps, MenuGridCellSlots, MenuGridCellState } from './components/MenuGridCell/index';
 export {
   MenuGridCell,
-  menuGridCellClassNames,
+  menuGridCellClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridCell_unstable,
   useMenuGridCellStyles_unstable,
   useMenuGridCell_unstable,

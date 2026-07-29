@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MenuGridGroupHeader } from './MenuGridGroupHeader';
 import { render } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { isConformant } from '../../testing/isConformant';
 import { MenuGridGroupContextProvider } from '../../contexts/menuGridGroupContext';
 
@@ -8,6 +9,10 @@ describe('MenuGridGroupHeader', () => {
   isConformant({
     Component: MenuGridGroupHeader,
     displayName: 'MenuGridGroupHeader',
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // See MenuGrid.test.tsx for the rationale behind this pair of adjustments.
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
   });
 
   /**

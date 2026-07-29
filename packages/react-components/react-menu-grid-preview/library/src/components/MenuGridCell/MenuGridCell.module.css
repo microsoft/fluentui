@@ -1,0 +1,67 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuGridCellStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 menuGridCellClassNames.root                   → REMOVED (D16.1); `.root` is now the
+ *                                                     leading token, followed by the
+ *                                                     `group/fui-menu-grid-cell` marker
+ *   2 useRootStyles.root                            → fui.components.l1  .root
+ *   3 visuallyHidden && useRootStyles.visuallyHidden → fui.components.l1  .visually-hidden
+ *   4 consumer className                            → unlayered (always wins)
+ *
+ * Both slices are plain `makeStyles` (no `makeResetStyles`), so nothing lands in `fui.base`.
+ * They share no property, so their relative file position is inert; source order is kept.
+ *
+ * ── State stays on a module CLASS, no `data-*` mirror was added (D15.6) ──────────────
+ * `visuallyHidden` gates a slice applied to the very element that needs it, so a data
+ * attribute would only restate what the class already says. Data attributes are a
+ * FALLBACK, never added for symmetry.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * l1: MenuGridCell styles only its own root. `MenuGridItem` renders MenuGridCell for four
+ * of its slots and decorates the SAME root; those additions are authored at l2 in
+ * MenuGridItem.module.css (D2 amendment 2).
+ *
+ * ── No unlayered block ──────────────────────────────────────────────────────────────
+ * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here, so nothing contends
+ * with @fluentui/react-icons' unlayered atomics (D2 amendment 5).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled atomics carry no `[ltr, rtl]` pair — nothing in these slices is flippable.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 amendment) ────────────────────────────
+ * `min-height: 24px` is a HEIGHT, not spacing: it rides the numeric utility `min-h-24`,
+ * which computes through the same `--base-scale`. Same treatment react-menu's `MenuItem`
+ * gave `min-height: 32px` / `max-width: 290px`.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuGridCell/useMenuGridCellStyles.styles.js.
+ */
+
+@layer fui.components.l1 {
+  /* from useRootStyles.root — arg #2 */
+  .root {
+    /* `min-h-24` ← min-height: 24px, to match small button size */
+    @apply box-border flex min-h-24 items-center;
+  }
+
+  /* from useRootStyles.visuallyHidden — arg #3 */
+  .visually-hidden {
+    @apply absolute;
+  }
+}

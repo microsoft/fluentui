@@ -3,7 +3,7 @@
 exports[`MenuGridGroupHeader renders a default state 1`] = `
 <div
   aria-hidden="true"
-  class="fui-MenuGridGroupHeader"
+  class="group/fui-menu-grid-group-header"
   id=""
   role="presentation"
 >

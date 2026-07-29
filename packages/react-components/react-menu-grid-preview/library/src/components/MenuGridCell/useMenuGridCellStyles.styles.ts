@@ -1,33 +1,55 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { MenuGridCellSlots, MenuGridCellState } from './MenuGridCell.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const menuGridCellClassNames: SlotClassNames<MenuGridCellSlots> = {
-  root: 'fui-MenuGridCell',
+import { clsx } from 'clsx';
+import type { MenuGridCellState } from './MenuGridCell.types';
+
+import styles from './MenuGridCell.module.css';
+
+/**
+ * Public identity class for MenuGridCell.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. `useValidateNesting` (this package's and react-menu's) reads it
+ * with `classList.contains`, which takes a TOKEN and needs no escaping.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + menuGridCellClassNames.root` is an invalid selector. Use
+ * `fuiSelector(menuGridCellClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const menuGridCellClassNames: { root: string } = {
+  root: 'group/fui-menu-grid-cell',
 };
 
-const useRootStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-
-    boxSizing: 'border-box',
-    minHeight: '24px', // To match small button size
-  },
-  visuallyHidden: {
-    position: 'absolute',
-  },
-});
-
 export const useMenuGridCellStyles_unstable = (state: MenuGridCellState): MenuGridCellState => {
-  const rootStyles = useRootStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    menuGridCellClassNames.root,
-    rootStyles.root,
-    state.visuallyHidden && rootStyles.visuallyHidden,
+  // Unconditional module class FIRST, then the named group marker, then the conditional
+  // module class, with the consumer className last (DECISIONS.md D16.2). The marker must
+  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
+  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
+  // never drops an unconditional argument. The BEM static that used to hold that position
+  // is gone (DECISIONS.md D16.1).
+  //
+  // When MenuGridItem renders this component for one of its four cell slots, the string it
+  // composed arrives as `state.root.className` and therefore lands AFTER these tokens —
+  // exactly the order the Griffel version produced.
+  state.root.className = clsx(
+    styles.root,
+    'group/fui-menu-grid-cell',
+    state.visuallyHidden && styles['visually-hidden'],
     state.root.className,
   );
 

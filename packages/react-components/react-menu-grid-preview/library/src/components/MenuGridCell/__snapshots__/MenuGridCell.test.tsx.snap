@@ -2,7 +2,7 @@
 
 exports[`MenuGridCell renders a default state 1`] = `
 <div
-  class="fui-MenuGridCell"
+  class="group/fui-menu-grid-cell"
   role="gridcell"
 >
   Default MenuGridCell

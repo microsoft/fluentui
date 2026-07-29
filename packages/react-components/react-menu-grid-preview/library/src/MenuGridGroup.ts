@@ -6,7 +6,7 @@ export type {
 } from './components/MenuGridGroup/index';
 export {
   MenuGridGroup,
-  menuGridGroupClassNames,
+  menuGridGroupClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderMenuGridGroup_unstable,
   useMenuGridGroupContextValues_unstable,
   useMenuGridGroupStyles_unstable,

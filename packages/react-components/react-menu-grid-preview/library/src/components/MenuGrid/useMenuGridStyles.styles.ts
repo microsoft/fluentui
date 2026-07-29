@@ -1,30 +1,49 @@
-'use client';
+'use client'; // eslint-disable-line @fluentui/react-components/enforce-use-client -- see NOTE below
 
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { mergeClasses, makeStyles } from '@griffel/react';
-import type { MenuGridSlots, MenuGridState } from './MenuGrid.types';
+/*
+ * NOTE on the directive above (Griffel → Tailwind + CSS Modules migration):
+ * a converted styles file calls no React hook and no RSC-unsafe function (`makeStyles` is
+ * gone), so `enforce-use-client` is right that `'use client'` is now unnecessary. It is
+ * kept because migration/griffel-to-tailwind/CONVERSION_GUIDE.md §3 makes a conversion a
+ * pure styling change; dropping directives is a Phase 3 sweep across all 180 style hooks.
+ *
+ * The suppression is a trailing `eslint-disable-line` rather than a leading
+ * `eslint-disable` block because a leading block comment pushes `'use client'` off the
+ * first line of the emitted lib/lib-commonjs output — every other v9 source file in the
+ * repo has the directive at line 1.
+ */
 
-export const menuGridClassNames: SlotClassNames<MenuGridSlots> = {
-  root: 'fui-MenuGrid',
+import { clsx } from 'clsx';
+import type { MenuGridState } from './MenuGrid.types';
+
+import styles from './MenuGrid.module.css';
+
+/**
+ * Public identity class for MenuGrid.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. `useValidateNesting` (this package's and react-menu's) reads it
+ * with `classList.contains`, which takes a TOKEN and needs no escaping.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + menuGridClassNames.root` is an invalid selector. Use
+ * `fuiSelector(menuGridClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ */
+export const menuGridClassNames: { root: string } = {
+  root: 'group/fui-menu-grid',
 };
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '2px',
-  },
-  hasMenuContext: {
-    height: '100%',
-  },
-});
 
 /**
  * Apply styling to the Menu slots based on the state
  */
 export const useMenuGridStyles_unstable = (state: MenuGridState): MenuGridState => {
-  const styles = useStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(menuGridClassNames.root, styles.root, state.root.className);
+  // Unconditional module class FIRST, then the named group marker, with the consumer
+  // className last (DECISIONS.md D16.2). The marker must never be `classList[0]` — nwsapi's
+  // `:scope` polyfill throws on it under jsdom (DECISIONS.md D15.1) — and `styles.root` is
+  // the token that guarantees it. The BEM static that used to hold that position is gone
+  // (DECISIONS.md D16.1).
+  state.root.className = clsx(styles.root, 'group/fui-menu-grid', state.root.className);
   return state;
 };

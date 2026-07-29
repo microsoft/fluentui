@@ -11,7 +11,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuListContextValue } from '@fluentui/react-menu';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
@@ -20,8 +19,10 @@ export const MenuGrid: ForwardRefComponent<MenuGridProps>;
 // @public
 export const MenuGridCell: ForwardRefComponent<MenuGridCellProps>;
 
-// @public (undocumented)
-export const menuGridCellClassNames: SlotClassNames<MenuGridCellSlots>;
+// @public @deprecated
+export const menuGridCellClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuGridCellProps = ComponentProps<MenuGridCellSlots> & {
@@ -36,8 +37,10 @@ export type MenuGridCellSlots = {
 // @public (undocumented)
 export type MenuGridCellState = ComponentState<MenuGridCellSlots> & Pick<MenuGridCellProps, 'visuallyHidden'>;
 
-// @public (undocumented)
-export const menuGridClassNames: SlotClassNames<MenuGridSlots>;
+// @public @deprecated
+export const menuGridClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const MenuGridContextProvider: React_2.Provider<MenuGridContextValue>;
@@ -57,8 +60,10 @@ export type MenuGridContextValues = {
 // @public
 export const MenuGridGroup: ForwardRefComponent<MenuGridGroupProps>;
 
-// @public (undocumented)
-export const menuGridGroupClassNames: SlotClassNames<MenuGridGroupSlots>;
+// @public @deprecated
+export const menuGridGroupClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const MenuGridGroupContextProvider: React_2.Provider<MenuGridGroupContextValue>;
@@ -76,8 +81,10 @@ export type MenuGridGroupContextValues = {
 // @public
 export const MenuGridGroupHeader: ForwardRefComponent<MenuGridGroupHeaderProps>;
 
-// @public (undocumented)
-export const menuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots>;
+// @public @deprecated
+export const menuGridGroupHeaderClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuGridGroupHeaderProps = ComponentProps<MenuGridGroupHeaderSlots>;
@@ -106,8 +113,10 @@ export type MenuGridGroupState = ComponentState<MenuGridGroupSlots> & {
 // @public
 export const MenuGridItem: ForwardRefComponent<MenuGridItemProps>;
 
-// @public (undocumented)
-export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots>;
+// @public @deprecated
+export const menuGridItemClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuGridItemProps = Omit<ComponentProps<Partial<MenuGridItemSlots>>, 'content'> & Pick<Partial<MenuGridItemSlots>, 'content'>;
@@ -133,8 +142,10 @@ export type MenuGridProps = ComponentProps<MenuGridSlots> & {
 // @public
 export const MenuGridRow: ForwardRefComponent<MenuGridRowProps>;
 
-// @public (undocumented)
-export const menuGridRowClassNames: SlotClassNames<MenuGridRowSlots>;
+// @public @deprecated
+export const menuGridRowClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type MenuGridRowProps = ComponentProps<Partial<MenuGridRowSlots>>;

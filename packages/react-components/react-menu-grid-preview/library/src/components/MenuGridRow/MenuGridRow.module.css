@@ -1,0 +1,196 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuGridRowStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot
+ *   1 menuGridRowClassNames.root      → REMOVED (D16.1); `.root` is now the leading token,
+ *                                       followed by the `group/fui-menu-grid-row` marker
+ *   2 useRootBaseStyles (makeReset)   → fui.base           .root
+ *   3 consumer className              → unlayered (always wins)
+ *
+ * `makeResetStyles` → `fui.base`, the levelless layer that loses to every `fui.components.*`
+ * level. That is what lets `MenuGridItem`'s l2 additions — and any consumer's unlayered
+ * className — win over this base without a specificity fight.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * fui.base only: MenuGridRow owns the element it styles. `MenuGridItem` renders a
+ * MenuGridRow as ITS root and decorates the same element; that component authors its
+ * additions at l2 (D2 amendment 2) — see MenuGridItem.module.css.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * `useRootBaseStyles` compiles to an `[ltr, rtl]` pair (`r1j5mkl8` / `ro8804w`), but every
+ * difference between the two is inside `createFocusOutlineStyle`'s `::after`
+ * (`right`/`left` inset ordering) with IDENTICAL values on both sides, plus the
+ * `border-*-color: transparent` reset in a different property order. `fui-focus-outline`
+ * emits all four insets from one expression, so logical properties cover the whole pair and
+ * no `@variant rtl` twin is needed. The declarations authored in this file directly
+ * (padding, gap, colours) are already symmetric.
+ *
+ * ── Spacing / pixel literals (DECISIONS.md D4 + amendment) ──────────────────────────
+ * `padding: ${spacingVerticalXS} ${spacingVerticalSNudge}` reads VERTICAL tokens for both
+ * axes in the Griffel source. Both spacing scales register XS as `calc(4px * --base-scale)`
+ * and SNudge as `calc(6px * --base-scale)`, so the axis-correct pair
+ * `py-vertical-xs` / `px-horizontal-s-nudge` is byte-identical to what the source asked for
+ * while following the cookbook's axis rule (identical situation to react-menu's `MenuItem`,
+ * whose four paddings all read `spacingVerticalSNudge`).
+ * `gap: 4px` is a px literal matching the XS step on a ROW-direction flex container, hence
+ * `gap-horizontal-xs`. `max-width: 290px` / `min-height: 32px` match no spacing intent and
+ * ride the numeric utilities, which compute through the same `--base-scale`.
+ * Raw `var(--spacingVertical*)` is FORBIDDEN in modules — it is the one form that does not
+ * scale with `--base-scale`.
+ *
+ * ── UNLAYERED: the react-icons glyph swap (DECISIONS.md D2 amendment 5) ─────────────
+ * The `:hover` slice also toggles `:global(.fui-Icon-filled)` / `:global(.fui-Icon-regular)`.
+ * Those elements belong to `@fluentui/react-icons`, which stays on Griffel PERMANENTLY
+ * (D11) and injects `.fjseox{display:none}` / `.f1w7gpdv{display:inline}` UNLAYERED. An
+ * unlayered declaration beats every `@layer` before specificity is even consulted, so a swap
+ * rule left inside `fui.base` could never win and the glyph would never change. It is lifted
+ * into the unlayered block at the BOTTOM of this file; a pointer comment marks the block it
+ * came out of.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuGridRow/useMenuGridRowStyles.styles.js.
+ */
+
+@layer fui.base {
+  /* from useRootBaseStyles (makeResetStyles) — arg #2.
+     "Base styles similar to regular menu item. Right now excludes icon color, hover active
+     style for secondary text." (source comment) */
+  .root {
+    @apply relative box-border flex max-w-290 min-h-32 shrink-0 cursor-pointer select-none;
+    @apply px-horizontal-s-nudge py-vertical-xs gap-horizontal-xs;
+
+    /* the compiled atomic is `align-items:start`, NOT `flex-start` — `items-start` would
+       emit the latter. Identical rendering for a flex container, written longhand so the
+       byte comparison against the compiled output stays exact. */
+    align-items: start;
+
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground2);
+    background-color: var(--colorNeutralBackground1);
+    font-size: var(--fontSizeBase300);
+
+    /* from createFocusOutlineStyle() — the default ring. `fui-focus-outline` carries the
+       compiled declarations; the selector stays here (D6, including its hardcoded 2px). */
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+    }
+
+    @variant hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      color: var(--colorNeutralForeground2Hover);
+
+      /* the `.fui-Icon-filled` / `.fui-Icon-regular` swap that belongs here is NOT in this
+         block — see the UNLAYERED section at the bottom of this file. */
+    }
+
+    /*
+     * `:hover:active` — the selector the Griffel source authored verbatim. NOT the shared
+     * `hover-active` variant, which is Button's `:hover:active, :active:focus-visible`
+     * compound and would newly match a keyboard-activated row.
+     *
+     * Written AFTER the `hover` block above: `:where()` flattens both to the same
+     * specificity, so file position is the only tiebreak and the narrower condition has to
+     * come later (Griffel resolved it by specificity instead).
+     */
+    @variant hover {
+      @variant active {
+        background-color: var(--colorNeutralBackground1Pressed);
+        color: var(--colorNeutralForeground2Pressed);
+      }
+    }
+
+    /*
+     * High contrast. The compiled `s` bucket holds, in this order: the `:hover` colours,
+     * then `createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } })`'s
+     * `:focus`/`:focus-visible`/`[data-fui-focus-visible]` rules. That second factory call
+     * is REDUNDANT in the compiled sheet — `fui-focus-outline` already re-colours its
+     * `::after` border to `Highlight` inside its own `@media (forced-colors: active)` block
+     * — but it is reproduced rather than pruned, because the compiled output is the
+     * contract. Same shape as react-menu's `MenuItem`.
+     */
+    @variant forced-colors {
+      @variant hover {
+        background-color: Canvas;
+        /* compiled as the `border-color` shorthand; expanded to longhands per cookbook §2 */
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+        color: Highlight;
+      }
+
+      @variant focus {
+        outline-style: none;
+      }
+
+      @variant focus-visible {
+        outline-style: none;
+      }
+
+      @variant focus-visible-fui {
+        @apply fui-focus-outline;
+      }
+    }
+  }
+}
+
+/*
+ * ─────────────────────────────────────────────────────────────────────────────────────
+ * The icon swap must be UNLAYERED (DECISIONS.md D2 amendment 5).
+ *
+ * `bundleIcon()` renders both glyphs and toggles them with Griffel atomics that carry NO
+ * cascade layer — `node_modules/@fluentui/react-icons/lib/utils/bundleIcon.styles.js`
+ * compiles to `.fjseox{display:none}` / `.f1w7gpdv{display:inline}`, and `bundleIcon.js`
+ * hands the filled `<svg>` `root + (filled && visible)` and the regular one
+ * `root + (!filled && visible)`.
+ *
+ * In the CSS cascade an unlayered normal author declaration beats EVERY `@layer`, and that
+ * comparison happens before specificity — so this rule at 0-2-0 inside `@layer fui.base`
+ * would lose to `.fjseox` at 0-1-0 and the glyph would never swap. Unlayered it wins at
+ * 0-2-0, exactly as the compiled Griffel atomic
+ * (`.r1j5mkl8:hover .fui-Icon-filled{display:inline}`) did.
+ * `@fluentui/react-icons` is out of conversion scope permanently (D11), so this is
+ * permanent, not transitional.
+ *
+ * Only ONE block lives here — the single `:hover` swap from `useRootBaseStyles` (arg #2) —
+ * so there is no intra-block ordering to preserve. MenuGridRow itself renders no glyph; the
+ * rule exists for the `bundleIcon()` icons consumers place inside a row (the package's own
+ * stories do exactly that).
+ * ─────────────────────────────────────────────────────────────────────────────────────
+ */
+
+/* from useRootBaseStyles — root arg #2, the `:hover` half */
+.root {
+  @variant hover {
+    & :global(.fui-Icon-filled) {
+      display: inline;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+  }
+}

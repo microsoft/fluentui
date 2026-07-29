@@ -1,0 +1,132 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useMenuGridItemStyles_unstable,
+ * not source declaration order.
+ *
+ * `root` slot (= a MenuGridRow root — this component renders `<MenuGridRow>`)
+ *   1 menuGridItemClassNames.root      → REMOVED (D16.1); `.root` (identity-only, below) is
+ *                                        now the leading token, followed by the
+ *                                        `group/fui-menu-grid-item` marker
+ *   2 consumer className               → unlayered (always wins)
+ *
+ * `icon` slot (= a MenuGridCell root)
+ *   1 menuGridItemClassNames.icon      → REMOVED (D16.1)
+ *   2 useStyles.icon                   → fui.components.l2  .icon
+ *   3 consumer className               → unlayered
+ *
+ * `content` slot (= a MenuGridCell root)
+ *   1 menuGridItemClassNames.content   → REMOVED (D16.1)
+ *   2 useStyles.content                → fui.components.l2  .content
+ *   3 consumer className               → unlayered
+ *
+ * `subText` slot (`<span>`)
+ *   1 menuGridItemClassNames.subText   → REMOVED (D16.1) — the assignment is GONE, see below
+ *   2 consumer className               → unlayered
+ *
+ * `firstSubAction` slot (= a MenuGridCell root)
+ *   1 …ClassNames.firstSubAction       → REMOVED (D16.1)
+ *   2 useStyles.firstSubAction         → fui.components.l2  .first-sub-action
+ *   3 consumer className               → unlayered
+ *
+ * `secondSubAction` slot (= a MenuGridCell root)
+ *   1 …ClassNames.secondSubAction      → REMOVED (D16.1)
+ *   2 useStyles.secondSubAction        → fui.components.l2  .second-sub-action
+ *   3 consumer className               → unlayered
+ *
+ * The `subText` assignment is DELETED along with its enclosing `if (state.subText)`: that
+ * slot's only library token was the BEM static, so after D16.1 what was left was
+ * `clsx(state.subText.className)` — an identity on the consumer's own string, i.e. dead code
+ * implying the hook styles a slot it does not (CONVERSION_GUIDE, "known special cases").
+ *
+ * ── ALTITUDE: l2 throughout, not l1 (DECISIONS.md D2 amendment 2) ───────────────────
+ * MenuGridItem owns NO element of its own. `useMenuGridItem_unstable` builds every slot out
+ * of this package's other components — `root: MenuGridRow`, and `icon` / `content` /
+ * `firstSubAction` / `secondSubAction` all `MenuGridCell` — so each class below is applied
+ * over another component's hook output, whose base rules live in `fui.base`
+ * (MenuGridRow.module.css) and `fui.components.l1` (MenuGridCell.module.css). Anything a
+ * component applies over another component's output belongs in `fui.components.l2`; in l1
+ * the winner between `.content { height: 100% }` and MenuGridCell's `.root { min-height }`
+ * family would be decided by stylesheet load order. Same shape as react-menu's
+ * `MenuItemLink` over `MenuItem`, and react-button's `ToggleButton` over `Button`.
+ *
+ * This is the D16.3 **M2** mechanism (JS slot-className composition): the hook holds each
+ * MenuGridCell slot object, so it composes a hashed module class onto it directly — no
+ * public class-name handle, no data attribute.
+ *
+ * The three `height: 100%` slices (`icon`, `firstSubAction`, `secondSubAction`) are kept as
+ * three separate locals rather than folded into one, so the 1:1 mapping back to the Griffel
+ * slices survives — exactly what react-menu's `MenuItem` did with `.icon` /
+ * `.submenu-indicator`. Griffel deduped them to one atomic (`.f1l02sjl`); three identical
+ * rules render identically.
+ *
+ * ── No unlayered block ──────────────────────────────────────────────────────────────
+ * grep-verified: no `fui-Icon-filled` / `fui-Icon-regular` rule here, so nothing contends
+ * with @fluentui/react-icons' unlayered atomics (D2 amendment 5). The glyph swap this
+ * component inherits lives in MenuGridRow.module.css, already unlayered there.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * The compiled atomics carry no `[ltr, rtl]` pair — nothing in these slices is flippable.
+ *
+ * Verified against the compiled Griffel atomics in
+ * lib-commonjs/components/MenuGridItem/useMenuGridItemStyles.styles.js.
+ */
+
+@layer fui.components.l2 {
+  /*
+   * Identity-only local (CONVERSION_GUIDE §3b, DECISIONS.md D16.2). MenuGridItem's root has
+   * no declarations of its own — its Griffel hook applied only the BEM static — so this
+   * class exists so the root always emits a selector-safe leading token ahead of the
+   * `group/fui-menu-grid-item` marker. Do not delete because it looks empty.
+   *
+   * WHY IT IS NOT A LITERALLY EMPTY RULE. `@tailwindcss/postcss` runs BEFORE
+   * `postcss-modules` (tools/workspace-plugin/src/executors/build/lib/css-modules.ts) and
+   * Tailwind v4 prunes every declaration-less rule, so `.root {}` would never reach the
+   * class map and `styles.root` would be `undefined` — silently putting the marker back at
+   * index 0. `--fui-menu-grid-item-identity: initial` is the minimal body that survives: a
+   * custom property set to `initial` is guaranteed-invalid, so it renders nothing and any
+   * `var(--fui-menu-grid-item-identity, X)` still resolves to `X`. Same shape as
+   * react-menu's MenuGroup identity local.
+   *
+   * (In the rendered DOM `classList[0]` is actually MenuGridRow's own `.root`, because that
+   * hook PREPENDS to the string this one composed. This local guarantees the invariant for
+   * the string this hook produces, independently of who consumes it.)
+   */
+  .root {
+    --fui-menu-grid-item-identity: initial;
+  }
+
+  /* from useStyles.icon — `icon` arg #2 */
+  .icon {
+    @apply h-full;
+  }
+
+  /* from useStyles.content — `content` arg #2.
+     `height: 100%` ensures content stays centered vertically when the menu item's height is
+     overridden (source comment). */
+  .content {
+    @apply h-full min-w-0 grow;
+  }
+
+  /* from useStyles.firstSubAction — `firstSubAction` arg #2 */
+  .first-sub-action {
+    @apply h-full;
+  }
+
+  /* from useStyles.secondSubAction — `secondSubAction` arg #2 */
+  .second-sub-action {
+    @apply h-full;
+  }
+}

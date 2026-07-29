@@ -2,4 +2,4 @@ export type { MenuGridRowProps, MenuGridRowSlots, MenuGridRowState } from './Men
 export { MenuGridRow } from './MenuGridRow';
 export { renderMenuGridRow_unstable } from './renderMenuGridRow';
 export { useMenuGridRow_unstable } from './useMenuGridRow';
-export { menuGridRowClassNames, useMenuGridRowStyles_unstable } from './useMenuGridRowStyles.styles';
+export { menuGridRowClassNames, useMenuGridRowStyles_unstable } from './useMenuGridRowStyles.styles'; // eslint-disable-line @typescript-eslint/no-deprecated
