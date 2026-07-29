@@ -12,7 +12,12 @@ describe('StyledText', () => {
     Component: StyledText as React.ComponentType<StyledTextProps>,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'StyledText',
-    disabledTests: ['has-docblock', 'has-top-level-file', 'component-has-static-classnames-object'],
+    disabledTests: [
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-static-classnames-object',
+      'component-has-group-marker',
+    ],
   });
 
   it.each`

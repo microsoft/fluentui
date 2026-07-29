@@ -20,7 +20,9 @@ describe('SpinnerMigration.mixins', () => {
 
   describe('v0 spinner label style', () => {
     const styles = {
-      '& .fui-Label': {
+      // react-label's BEM static `fui-Label` was removed; its public identity class is the
+      // named-group marker, with the `/` escaped for use inside a selector (DECISIONS.md D16.1/D16.5).
+      '& .group\\/fui-label': {
         fontSize: '14px',
         fontWeight: tokens.fontWeightMedium,
       },

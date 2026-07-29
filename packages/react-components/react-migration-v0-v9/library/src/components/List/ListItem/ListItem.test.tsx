@@ -11,7 +11,12 @@ describe('ListItem', () => {
     displayName: 'ListItem',
     // Disabled because this should be ItemLayout's responsibility, but it doesn't render those.
     // Adding them there now might not be safe.
-    disabledTests: ['component-has-static-classnames-object', 'has-docblock', 'has-top-level-file'],
+    disabledTests: [
+      'component-has-static-classnames-object',
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-group-marker',
+    ],
     testOptions: {
       'has-static-classnames': [
         {

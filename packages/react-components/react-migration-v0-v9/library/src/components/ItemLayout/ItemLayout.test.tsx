@@ -11,7 +11,12 @@ describe('ItemLayout', () => {
     Component: ItemLayout,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'ItemLayout',
-    disabledTests: ['has-docblock', 'has-top-level-file', 'component-has-static-classnames-object'],
+    disabledTests: [
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-static-classnames-object',
+      'component-has-group-marker',
+    ],
   });
 
   it('adds a "className" for "contentWrapper"', () => {

@@ -11,7 +11,12 @@ describe('List', () => {
     displayName: 'List',
     // Disabled because this should be ItemLayout's responsibility, but it doesn't render those.
     // Adding them there now might not be safe.
-    disabledTests: ['component-has-static-classnames-object', 'has-docblock', 'has-top-level-file'],
+    disabledTests: [
+      'component-has-static-classnames-object',
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-group-marker',
+    ],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

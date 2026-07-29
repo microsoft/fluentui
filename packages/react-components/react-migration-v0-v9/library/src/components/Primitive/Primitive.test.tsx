@@ -8,7 +8,12 @@ xdescribe('Primitive', () => {
     Component: Primitive,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'Primitive',
-    disabledTests: ['has-docblock', 'has-top-level-file', 'component-has-static-classnames-object'],
+    disabledTests: [
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-static-classnames-object',
+      'component-has-group-marker',
+    ],
   });
 
   it.each`

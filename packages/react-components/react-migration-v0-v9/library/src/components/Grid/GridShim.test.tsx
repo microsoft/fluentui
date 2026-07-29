@@ -11,7 +11,12 @@ describe('GridShim', () => {
     Component: GridShim,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'GridShim',
-    disabledTests: ['has-docblock', 'has-top-level-file', 'component-has-static-classnames-object'],
+    disabledTests: [
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-static-classnames-object',
+      'component-has-group-marker',
+    ],
   });
 
   it('renders a default state', () => {

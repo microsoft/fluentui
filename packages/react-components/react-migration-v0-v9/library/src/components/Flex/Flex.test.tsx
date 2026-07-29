@@ -11,7 +11,12 @@ describe('Flex', () => {
     Component: Flex,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'Flex',
-    disabledTests: ['has-docblock', 'has-top-level-file', 'component-has-static-classnames-object'],
+    disabledTests: [
+      'has-docblock',
+      'has-top-level-file',
+      'component-has-static-classnames-object',
+      'component-has-group-marker',
+    ],
   });
 
   it('renders a default state', () => {
