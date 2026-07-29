@@ -6,6 +6,11 @@ export {
   useBreadcrumbA11yBehavior_unstable,
   useBreadcrumbStyles_unstable,
   useBreadcrumbContextValues_unstable,
+  // The four `*ClassNames` constants below are `@deprecated for styling` (DECISIONS.md
+  // D16.5) but are RETAINED public exports: the deprecation is addressed to consumers, and
+  // this is the package entry point they import from. Re-exporting them is the intended
+  // behaviour, not a deprecated usage.
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   breadcrumbClassNames,
 } from './Breadcrumb';
 export type {
@@ -17,6 +22,7 @@ export type {
 } from './Breadcrumb';
 export {
   BreadcrumbDivider,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public export, see above
   breadcrumbDividerClassNames,
   renderBreadcrumbDivider_unstable,
   useBreadcrumbDividerStyles_unstable,
@@ -32,6 +38,7 @@ export type {
 } from './BreadcrumbDivider';
 export {
   BreadcrumbItem,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public export, see above
   breadcrumbItemClassNames,
   renderBreadcrumbItem_unstable,
   useBreadcrumbItemStyles_unstable,
@@ -54,6 +61,7 @@ export {
 export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from './utils/index';
 export {
   BreadcrumbButton,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- retained public export, see above
   breadcrumbButtonClassNames,
   renderBreadcrumbButton_unstable,
   useBreadcrumbButtonStyles_unstable,

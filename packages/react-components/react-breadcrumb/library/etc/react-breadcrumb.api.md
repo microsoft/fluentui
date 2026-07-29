@@ -13,7 +13,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public
@@ -34,8 +33,10 @@ export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
 // @public (undocumented)
 export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'appearance' | 'size' | 'shape'>;
 
-// @public
-export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
+// @public @deprecated
+export const breadcrumbButtonClassNames: {
+    root: string;
+};
 
 // @public
 export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'size'> & Pick<ButtonProps, 'disabled' | 'disabledFocusable'> & {
@@ -48,8 +49,10 @@ export type BreadcrumbButtonSlots = ButtonSlots;
 // @public
 export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'> & Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>>;
 
-// @public (undocumented)
-export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;
+// @public @deprecated
+export const breadcrumbClassNames: {
+    root: string;
+};
 
 // @public
 export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'size'>>;
@@ -63,8 +66,10 @@ export type BreadcrumbDividerBaseProps = BreadcrumbDividerProps;
 // @public
 export type BreadcrumbDividerBaseState = Omit<BreadcrumbDividerState, 'size'>;
 
-// @public (undocumented)
-export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>;
+// @public @deprecated
+export const breadcrumbDividerClassNames: {
+    root: string;
+};
 
 // @public
 export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {};
@@ -86,8 +91,10 @@ export type BreadcrumbItemBaseProps = Omit<BreadcrumbItemProps, 'size'>;
 // @public
 export type BreadcrumbItemBaseState = Omit<BreadcrumbItemState, 'size'>;
 
-// @public (undocumented)
-export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots>;
+// @public @deprecated
+export const breadcrumbItemClassNames: {
+    root: string;
+};
 
 // @public
 export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<BreadcrumbProps, 'size'>;

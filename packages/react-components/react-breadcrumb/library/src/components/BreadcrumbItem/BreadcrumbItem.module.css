@@ -17,9 +17,13 @@
  * useBreadcrumbItemStyles_unstable, not source declaration order.
  *
  * `root` slot
- *   1 breadcrumbItemClassNames.root                  → static class (JS)
- *   2 useBreadcrumbItemResetStyles (makeResetStyles) → fui.base           .root
+ *   1 useBreadcrumbItemResetStyles (makeResetStyles) → fui.base           .root
+ *   2 group/fui-breadcrumb-item                      → identity marker (JS, unstyled)
  *   3 consumer className                             → unlayered (always wins)
+ *
+ * The BEM static (`fui-BreadcrumbItem`) was removed in the D16 sweep. It carried no
+ * declarations, so its removal changes the emitted `class=` string only, not the cascade;
+ * the reset local now leads, which is what keeps the marker off `classList[0]` (D16.2).
  *
  * The root `<li>` is this component's own element (its children — a BreadcrumbButton or a
  * BreadcrumbDivider — style themselves), so nothing here sits at altitude and

@@ -4,7 +4,6 @@ import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluen
 import { BreadcrumbItem } from './BreadcrumbItem';
 import type { BreadcrumbItemProps } from './BreadcrumbItem.types';
 import { isConformant } from '../../testing/isConformant';
-import { breadcrumbItemClassNames } from './useBreadcrumbItemStyles.styles';
 
 describe('BreadcrumbItem', () => {
   isConformant({
@@ -17,17 +16,16 @@ describe('BreadcrumbItem', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {},
-          expectedClassNames: {
-            root: breadcrumbItemClassNames.root,
-          },
-        },
-      ],
+    //
+    // `component-has-static-classnames-object` asserts the exact `fui-<Component>` format,
+    // which the D16 statics-removal sweep retired for converted packages:
+    // `breadcrumbItemClassNames.root` is now the group marker (DECISIONS.md D16.5/D16.6).
+    // Its `has-static-classnames` testOptions went with it. `component-has-group-marker`
+    // (now a default test) is the replacement — it asserts the marker is stamped AND never lands at
+    // `classList[0]`, the machine-checkable form of the D15.1/D16.2 invariant.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 
@@ -36,7 +34,7 @@ describe('BreadcrumbItem', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <li
-          class="fui-BreadcrumbItem group/fui-breadcrumb-item"
+          class="group/fui-breadcrumb-item"
         >
           Default BreadcrumbItem
         </li>

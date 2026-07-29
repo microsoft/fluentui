@@ -17,8 +17,17 @@ describe('Breadcrumb', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the exact `fui-<Component>` /
+    // `fui-<Component>__<slot>` format, which the D16 statics-removal sweep retired for
+    // converted packages: `breadcrumbClassNames.root` is now the group marker and the `list`
+    // key is gone (DECISIONS.md D16.5/D16.6). `component-has-group-marker` (now a default test) is its
+    // replacement — it asserts the marker is stamped AND never lands at `classList[0]`,
+    // which is the machine-checkable form of the D15.1/D16.2 invariant.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders a default state with BreadcrumbButton', () => {
@@ -33,17 +42,17 @@ describe('Breadcrumb', () => {
       <div>
         <nav
           aria-label="breadcrumb"
-          class="fui-Breadcrumb group/fui-breadcrumb"
+          class="group/fui-breadcrumb"
         >
           <ol
-            class="fui-Breadcrumb__list"
+            class=""
             role="list"
           >
             <li
-              class="fui-BreadcrumbItem group/fui-breadcrumb-item"
+              class="group/fui-breadcrumb-item"
             >
               <button
-                class="fui-Button group/fui-button fui-BreadcrumbButton group/fui-breadcrumb-button"
+                class="group/fui-button group/fui-breadcrumb-button"
                 data-size="medium"
               >
                 Item 1
@@ -67,17 +76,17 @@ describe('Breadcrumb', () => {
       <div>
         <nav
           aria-label="breadcrumb"
-          class="fui-Breadcrumb group/fui-breadcrumb"
+          class="group/fui-breadcrumb"
         >
           <ol
-            class="fui-Breadcrumb__list"
+            class=""
             role="list"
           >
             <li
-              class="fui-BreadcrumbItem group/fui-breadcrumb-item"
+              class="group/fui-breadcrumb-item"
             >
               <a
-                class="fui-Button group/fui-button fui-BreadcrumbButton group/fui-breadcrumb-button"
+                class="group/fui-button group/fui-breadcrumb-button"
                 data-size="medium"
                 tabindex="0"
               >

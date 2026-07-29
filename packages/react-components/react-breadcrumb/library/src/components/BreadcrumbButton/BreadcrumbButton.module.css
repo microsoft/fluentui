@@ -20,7 +20,10 @@
  *
  *   #  mergeClasses argument                          → target
  *   ------------------------------------------------------------------------------------
- *   1  breadcrumbButtonClassNames.root                → static class (JS)
+ *   1  group/fui-breadcrumb-button                    → identity marker (JS); carries no
+ *                                                       declarations of its own, but IS
+ *                                                       compounded by the unlayered block
+ *                                                       at the bottom of this file (D16.4)
  *   2  styles[size]                                   → fui.components.l2  (data-size)
  *   3  styles.root                                    → fui.components.l2
  *   4  current && currentSizeMap[size]                → fui.components.l2  (data-current + data-size)
@@ -34,9 +37,12 @@
  *   2  iconStyles[size]                               → fui.components.l2  (data-size, read off the root)
  *   3  state.icon.className                           → unlayered
  *
- * (`breadcrumbButtonClassNames.icon` is exported but NEVER applied by the Griffel hook —
- * the icon slot renders with `fui-Button__icon` only. Reproduced as-is; adding it would
- * change the public DOM.)
+ * (The Griffel hook exported a `breadcrumbButtonClassNames.icon` static but NEVER applied
+ * it, so the icon slot rendered with react-button's `fui-Button__icon` alone. The D16 sweep
+ * deleted that unused key. The `.icon` local above is this module's own hashed class on the
+ * same element — the D16.3 "M2" handle every icon rule in this file now selects, in place of
+ * `:global(.fui-Button__icon)`. Composed in JS by the styles hook, so no global class name
+ * on another package's internals survives.)
  *
  * ── ALTITUDE: every block here is l2, none is l1 (DECISIONS.md D2 amendment 2) ────────
  * BreadcrumbButton has no elements of its own. `useBreadcrumbButtonStyles_unstable` ends by
@@ -208,11 +214,18 @@
    *     applies are the `current` look either way; accepted deliberately rather than
    *     hand-writing a bare `:disabled` selector against the catalog rule.
    *
-   * `:global(.fui-Button__icon)` is react-button's OWN slot class on react-button's own
-   * element — converted, so it stays LAYERED, and l2 is what makes it beat that package's
-   * `subtle` hover/pressed icon colours in l1. The `.fui-Icon-filled` / `.fui-Icon-regular`
-   * halves of this same slice are a different story entirely: see the UNLAYERED block at the
-   * bottom of this file.
+   * The icon element is react-button's own `icon` slot. Before the D16 sweep this rule
+   * reached it through that package's `:global(.fui-Button__icon)` static; it now selects
+   * `.icon`, this module's own hashed local, which the styles hook composes onto the same
+   * slot in JS (D16.3 "M2"). Same element, same descendant-selector shape, same 0-2-0
+   * specificity — a class-for-class substitution that removes the coupling to react-button's
+   * public class names rather than renaming it. It stays LAYERED, and l2 is what makes it
+   * beat that package's `subtle` hover/pressed icon colours in l1.
+   *
+   * The `.fui-Icon-filled` / `.fui-Icon-regular` halves of this same slice are a different
+   * story entirely — those classes belong to `@fluentui/react-icons`, which is NOT converted
+   * (D11) and is therefore untouched by D16: see the UNLAYERED block at the bottom of this
+   * file.
    */
   .root {
     @variant current {
@@ -221,7 +234,7 @@
         color: var(--colorNeutralForeground2);
         cursor: auto;
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: unset;
         }
       }
@@ -231,7 +244,7 @@
         color: var(--colorNeutralForeground2);
         cursor: auto;
 
-        & :global(.fui-Button__icon) {
+        & .icon {
           color: unset;
         }
       }
@@ -326,20 +339,39 @@
  * Both are unlayered, so `@layer` cannot arbitrate, and in the flat `:where()` form both
  * score 0-2-0 — leaving CROSS-STYLESHEET load order as the only tiebreak, i.e. an
  * undefined winner. Griffel had a definite winner: BreadcrumbButton's classes are Button's
- * LAST mergeClasses argument, so its atomic survived the dedupe. Compounding this
- * component's own static class (`:global(.fui-BreadcrumbButton)`, which the styles hook
- * always writes) onto the module class restores that winner deterministically at 0-3-0 vs
- * Button's 0-2-0 — no matter which package's `dist/styles.css` the document loads first.
+ * LAST mergeClasses argument, so its atomic survived the dedupe. Compounding a second class
+ * this component always writes onto its own root restores that winner deterministically at
+ * 0-3-0 vs Button's 0-2-0 — no matter which package's `dist/styles.css` the document loads
+ * first.
+ *
+ * ── The compounded class is the MARKER, not the old static (D16.4) ───────────────────
+ * That second class used to be `:global(.fui-BreadcrumbButton)`. The D16 sweep removed the
+ * BEM statics, and this is the ONE site in the phase where deleting one would have changed
+ * rendered pixels rather than just the `class=` string: dropping it outright takes the rule
+ * to 0-2-0, a TIE with react-button, decided by stylesheet load order — i.e. undefined. So
+ * it compounds `:global(.group\/fui-breadcrumb-button)` instead, the named-group marker the
+ * styles hook writes unconditionally on this same element. Identical 0-3-0, identical
+ * winner, and the marker is now the component's sole public identity class (D16.1).
+ *
+ * The `\/` escape is required: `/` is legal inside a class TOKEN but terminates a class
+ * NAME inside a selector, so the unescaped form would silently select `.group` instead.
+ *
+ * Two properties of the marker make it a sound replacement for the static here, and both
+ * must hold for any future edit: it is written by EVERY render of this component (it is a
+ * literal in the hook's `clsx`, not conditional), and it is unhashed and global, so
+ * `:global()` reaches it from a CSS-Modules file. If either ever stops being true, this rule
+ * silently drops to a tie again — which VR would catch only in the icon-swap states.
  *
  * Everything that styles this component's own state on react-button's OWN elements stays
- * layered above, including `:global(.fui-Button__icon)`: nothing unlayered competes for it,
- * so l2-over-l1 already decides that one.
+ * layered above, including the `.icon` rules: nothing unlayered competes for that slot, so
+ * l2-over-l1 already decides those. Only the react-icons `<svg>` swap has to come down here,
+ * because react-icons is unconverted and injects unlayered (D11).
  *
  * Ordering inside this block: the three Griffel states (`:hover`, `:hover:active`,
  * `:disabled`) carry IDENTICAL declarations, so file position is inert here — `:hover:active`
  * is collapsed into `@variant hover` for the same reason as the layered block above.
  */
-.root:global(.fui-BreadcrumbButton) {
+.root:global(.group\/fui-breadcrumb-button) {
   @variant current {
     @variant hover {
       & :global(.fui-Icon-filled) {

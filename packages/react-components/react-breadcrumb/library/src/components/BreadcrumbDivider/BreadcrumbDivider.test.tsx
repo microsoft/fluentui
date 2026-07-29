@@ -15,8 +15,17 @@ describe('BreadcrumbDivider', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the exact `fui-<Component>` format,
+    // which the D16 statics-removal sweep retired for converted packages:
+    // `breadcrumbDividerClassNames.root` is now the group marker (DECISIONS.md D16.5/D16.6).
+    // `component-has-group-marker` (now a default test) is the replacement — it asserts the marker is
+    // stamped AND never lands at `classList[0]`, the machine-checkable form of the
+    // D15.1/D16.2 invariant.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders a default state', () => {
@@ -25,7 +34,7 @@ describe('BreadcrumbDivider', () => {
       <div>
         <li
           aria-hidden="true"
-          class="fui-BreadcrumbDivider group/fui-breadcrumb-divider"
+          class="group/fui-breadcrumb-divider"
           data-size="medium"
         >
           <svg

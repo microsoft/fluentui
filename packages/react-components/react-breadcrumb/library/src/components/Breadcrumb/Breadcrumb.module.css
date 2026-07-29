@@ -18,18 +18,17 @@
  *
  * `root` slot — carries NO declarations; only the identity-only local below:
  *   1 .root (identity-only)                          → fui.components.l1
- *   2 breadcrumbClassNames.root                      → static class (JS)
+ *   2 group/fui-breadcrumb                           → identity marker (JS, unstyled)
  *   3 consumer className                             → unlayered (always wins)
  *
  * `list` slot
  *   1 useListClassName            (makeResetStyles)  → fui.base           .list
- *   2 breadcrumbClassNames.list                      → static class (JS)
- *   3 consumer className                             → unlayered
+ *   2 consumer className                             → unlayered
  *
- * The static class was the SECOND mergeClasses argument here; the converted hook writes it
- * first, per the cookbook's `clsx(xClassNames.slot, styles.slot, …)` composition rule.
- * That reorders the emitted `class=` string only — neither class carries declarations that
- * compete (`fui-Breadcrumb__list` is a naming contract, not a styled selector).
+ * The BEM statics (`fui-Breadcrumb`, `fui-Breadcrumb__list`) were removed in the D16 sweep.
+ * Neither carried declarations — `fui-Breadcrumb__list` was a naming contract, never a
+ * styled selector — so their removal changes the emitted `class=` string only, not the
+ * cascade. The `list` slot is now marker-free and holds nothing but its hashed local.
  *
  * Nothing here sits over another component's hook output (`<nav>` and `<ol>` are this
  * component's own elements), so `fui.components.l2` is unused; `fui.components.l1` carries
@@ -41,14 +40,15 @@
  */
 
 /*
- * IDENTITY-ONLY local (DECISIONS.md D15.1; statics-removal design §4b). Breadcrumb's root
- * has no declarations of its own, so without this class it emits only the static
- * `fui-Breadcrumb` and the group marker. `useBreadcrumbStyles_unstable` leads its `clsx()`
- * with it so the root ALWAYS carries a hashed, selector-safe token at `classList[0]`:
- * nwsapi's `:scope` polyfill builds its anchor from `escape(element.classList[0])`, and the
- * `/` in `group/fui-breadcrumb` survives that escaping, yielding an invalid selector and a
- * render-time AggregateError under jsdom. The static class is what keeps the marker off
- * index 0 today; this local is what keeps the invariant true once the statics are removed.
+ * IDENTITY-ONLY local (DECISIONS.md D15.1 / D16.2; statics-removal design §4b). Breadcrumb's
+ * root has no declarations of its own, so without this class it would emit the group marker
+ * ALONE — Breadcrumb is one of the six "Class B" roots D16.2 names.
+ * `useBreadcrumbStyles_unstable` leads its `clsx()` with it so the root ALWAYS carries a
+ * hashed, selector-safe token at `classList[0]`: nwsapi's `:scope` polyfill builds its anchor
+ * from `escape(element.classList[0])`, and the `/` in `group/fui-breadcrumb` survives that
+ * escaping, yielding an invalid selector and a render-time AggregateError under jsdom. The
+ * `fui-Breadcrumb` static used to keep the marker off index 0 incidentally; now that the
+ * statics are gone (D16.1) this local is the ONLY thing holding the invariant.
  * Do not delete it because it looks like it does nothing.
  *
  * WHY IT IS NOT A LITERALLY EMPTY RULE. The design specified `.root {}` on the premise that

@@ -11,9 +11,8 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
-import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
+import type { BreadcrumbButtonState } from './BreadcrumbButton.types';
 
 /*
  * `@fluentui/react-button` is imported ABOVE this module, deliberately. The generated ESM
@@ -26,11 +25,23 @@ import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbB
 import styles from './BreadcrumbButton.module.css';
 
 /**
- * Static CSS class names used internally for the component slots.
+ * Public identity class for BreadcrumbButton.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1 / D16.5) — usable both as a selector
+ * and as a `group-*` variant target. The per-slot `icon` key was removed: there is no public
+ * class-name handle on component internals any more (DECISIONS.md D16.1). It had never been
+ * applied to the DOM by either the Griffel or the converted hook, so nothing stops matching
+ * that used to match — reads of it are now a compile error instead of silently `undefined`.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + breadcrumbButtonClassNames.root` is a `SyntaxError`. Build selectors with
+ * `fuiSelector(breadcrumbButtonClassNames.root)` from `@fluentui/react-utilities` (D16.5);
+ * token-taking DOM APIs (`classList.contains`, `getElementsByClassName`) need no escaping.
  */
-export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> = {
-  root: 'fui-BreadcrumbButton',
-  icon: 'fui-BreadcrumbButton__icon',
+export const breadcrumbButtonClassNames: { root: string } = {
+  root: 'group/fui-breadcrumb-button',
 };
 
 /**
@@ -80,19 +91,27 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // eslint-disable-next-line react-hooks/immutability
   root['data-current'] = current || undefined;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this button's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. Read it as
-  // `@variant group-current/fui-breadcrumb-button { … }` (DECISIONS.md D15).
+  // Module class FIRST, then the named group marker — which must never be `classList[0]`
+  // (nwsapi's `:scope` polyfill throws on it under jsdom; DECISIONS.md D15.1/D16.2) — with
+  // the consumer className last. `styles.root` is unconditional, so it is always the
+  // selector-safe token at index 0 that the invariant requires; the `fui-BreadcrumbButton`
+  // static that used to hold that position was removed in the D16 sweep.
+  //
+  // The marker is a literal, unhashed, GLOBAL token, and is now this component's SOLE public
+  // identity class (D16.1): the only handle by which a consumer, or another module in this
+  // package or any other, can select or style an element from this button's state, because
+  // `styles.root` is hashed and unaddressable from outside this file. Read it as
+  // `@variant group-current/fui-breadcrumb-button { … }` (DECISIONS.md D15). It is also what
+  // the UNLAYERED icon-swap rule at the bottom of BreadcrumbButton.module.css now compounds
+  // for its specificity bump, in place of the deleted static (D16.4) — so this literal is
+  // load-bearing for rendered pixels, not just for identity.
   //
   // This root ends up carrying TWO markers, which is correct and not a duplication:
   // `useButtonStyles_unstable` below stamps its own `group/fui-button` on the same element,
   // because the element genuinely IS both a Button and a BreadcrumbButton. A module reading
   // either name resolves to this element; `data-current` is only visible under the
-  // breadcrumb name, since react-button never stamps it.
+  // breadcrumb name, since react-button never stamps it. (This is why the component opts out
+  // of `component-has-group-marker` — see BreadcrumbButton.test.tsx.)
   //
   // Cascade priority is decided by the `@layer fui.*` order in BreadcrumbButton.module.css,
   // not by the order of these arguments — see that file's header for the mapping back to the
@@ -104,17 +123,18 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
   // argument below, so this string still arrives after react-button's classes — exactly as
   // it did under mergeClasses.
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = clsx(
-    breadcrumbButtonClassNames.root,
-    'group/fui-breadcrumb-button',
-    styles.root,
-    state.root.className,
-  );
+  state.root.className = clsx(styles.root, 'group/fui-breadcrumb-button', state.root.className);
 
   if (state.icon) {
-    // NOTE: `breadcrumbButtonClassNames.icon` is intentionally not applied — the Griffel
-    // hook never merged it either, so the icon slot renders with react-button's
-    // `fui-Button__icon` alone. The export stays part of the package's public API.
+    // `styles.icon` is this module's own hashed local on react-button's `icon` element. It is
+    // the D16.3 "M2" handle: every rule in BreadcrumbButton.module.css that used to reach
+    // that element through react-button's `:global(.fui-Button__icon)` static now selects
+    // this local instead, so the cross-package coupling is composed in JS here rather than
+    // published as a global class name. Same element, same descendant-selector shape, same
+    // specificity — a class-for-class substitution.
+    //
+    // The slot carries no marker, so D15.1 does not apply to it; the hashed class is
+    // `classList[0]` and react-button appends its own classes after this string.
     // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(styles.icon, state.icon.className);
   }

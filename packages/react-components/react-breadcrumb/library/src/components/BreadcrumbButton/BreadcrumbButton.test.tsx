@@ -4,7 +4,6 @@ import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluen
 import { BreadcrumbButton } from './BreadcrumbButton';
 import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import { isConformant } from '../../testing/isConformant';
-import { breadcrumbButtonClassNames } from './useBreadcrumbButtonStyles.styles';
 import { ArrowRight16Filled } from '@fluentui/react-icons';
 
 describe('BreadcrumbButton', () => {
@@ -18,18 +17,70 @@ describe('BreadcrumbButton', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the exact `fui-<Component>` /
+    // `fui-<Component>__<slot>` format, which the D16 statics-removal sweep retired for
+    // converted packages: `breadcrumbButtonClassNames.root` is now the group marker and the
+    // never-applied `icon` key is gone (DECISIONS.md D16.5/D16.6). Its `has-static-classnames`
+    // testOptions went with it.
+    //
+    // `component-has-group-marker` runs here with a declared marker SET, unlike Breadcrumb / BreadcrumbItem
+    // / BreadcrumbDivider. Its first assertion requires EXACTLY ONE `group/` marker on the
+    // outermost slot, and a BreadcrumbButton root legitimately carries two: this hook stamps
+    // `group/fui-breadcrumb-button` and then calls `useButtonStyles_unstable`, which stamps
+    // `group/fui-button` on the same element — the element genuinely IS both. react-button
+    // documents the same by-design duplication for ToggleButton / CompoundButton / MenuButton
+    // (see useButtonStyles.styles.ts), so this is a property of every composing component, not
+    // a breadcrumb quirk. `testOptions['has-group-marker']` only overrides the EXPECTED marker
+    // name; it has no "this root composes another component's marker" escape hatch, so the
+    // shared test cannot express this shape today.
+    //
+    // The valuable half of that test — the D15.1/D16.2 `classList[0]` invariant, which guards
+    // a jsdom-only render-time throw that neither the build nor VR can see — is asserted
+    // locally instead, immediately below. Move back to the shared test if it ever grows an
+    // allowance for composed markers.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {},
-          expectedClassNames: {
-            root: breadcrumbButtonClassNames.root,
-          },
-        },
-      ],
+      // renders react-button’s Button, whose hook stamps its marker on this same element, so this root
+      // legitimately carries every marker below (DECISIONS.md D16.3). Declaring the whole set
+      // keeps `component-has-group-marker` running: it is an exact set comparison, so an
+      // undeclared marker still fails, and its `classList[0]` half — the D16.2 invariant that
+      // nwsapi's jsdom `:scope` polyfill depends on — is asserted here rather than locally.
+      'has-group-marker': {
+        markers: ['group/fui-button', 'group/fui-breadcrumb-button'],
+      },
     },
+    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+  });
+
+  // Local stand-in for `component-has-group-marker` — see the note above for why the shared
+  // test cannot run on a composing component.
+  describe('named group marker (DECISIONS.md D15.1 / D16.2)', () => {
+    const renderRoot = (props: BreadcrumbButtonProps = {}): HTMLElement =>
+      render(<BreadcrumbButton {...props}>Item</BreadcrumbButton>).container.firstElementChild as HTMLElement;
+
+    it('stamps its own marker alongside the Button marker it composes', () => {
+      const classNames = Array.from(renderRoot().classList);
+
+      expect(classNames).toContain('group/fui-breadcrumb-button');
+      // Asserted, not merely tolerated: react-toolbar-style descendants address whichever
+      // identity they mean, so losing either name is a public contract break.
+      expect(classNames).toContain('group/fui-button');
+    });
+
+    it('never emits a marker as classList[0]', () => {
+      // nwsapi (jsdom's `:scope` polyfill) builds its selector anchor from
+      // `escape(element.classList[0])`. The `/` survives that escaping, so a leading marker
+      // splices an invalid production into the selector and every `:scope` query under jsdom
+      // throws an AggregateError at render time. Real browsers are unaffected, which is why
+      // this is invisible to VR and has to be asserted here.
+      //
+      // The token that holds index 0 is react-button's unconditional `styles.root`: this hook
+      // leads with its OWN `styles.root`, and `useButtonStyles_unstable` then prepends
+      // Button's. Both are unconditional, so no prop combination can expose the marker.
+      expect(renderRoot().classList[0]).not.toMatch(/^(group|peer)\//);
+      expect(renderRoot({ current: true, size: 'large' }).classList[0]).not.toMatch(/^(group|peer)\//);
+    });
   });
 
   it('renders a default state', () => {
@@ -37,7 +88,7 @@ describe('BreadcrumbButton', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
-          class="fui-Button group/fui-button fui-BreadcrumbButton group/fui-breadcrumb-button"
+          class="group/fui-button group/fui-breadcrumb-button"
           data-size="medium"
         >
           Default BreadcrumbButton
@@ -53,12 +104,12 @@ describe('BreadcrumbButton', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
-          class="fui-Button group/fui-button fui-BreadcrumbButton group/fui-breadcrumb-button"
+          class="group/fui-button group/fui-breadcrumb-button"
           data-icon-position="before"
           data-size="medium"
         >
           <span
-            class="fui-Button__icon"
+            class=""
           >
             <svg
               aria-hidden="true"
