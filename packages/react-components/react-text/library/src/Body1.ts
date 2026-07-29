@@ -1,1 +1,1 @@
-export { Body1, body1ClassNames } from './components/presets/Body1/index';
+export { Body1 } from './components/presets/Body1/index';

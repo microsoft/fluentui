@@ -2,7 +2,7 @@ export type { TextPresetProps, TextProps, TextSlots, TextState } from './compone
 export {
   Text,
   renderText_unstable,
-  textClassNames,
+  textClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useTextStyles_unstable,
   useText_unstable,
 } from './components/Text/index';

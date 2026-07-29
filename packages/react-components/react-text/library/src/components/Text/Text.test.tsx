@@ -36,7 +36,7 @@ describe('Text', () => {
     expect(container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="fui-Text group/fui-text"
+          class="group/fui-text"
           data-size="300"
         >
           Test

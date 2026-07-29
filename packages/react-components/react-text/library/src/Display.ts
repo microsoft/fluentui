@@ -1,1 +1,1 @@
-export { Display, displayClassNames } from './components/presets/Display/index';
+export { Display } from './components/presets/Display/index';

@@ -10,73 +10,39 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Body1: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const body1ClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Body1Strong: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const body1StrongClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Body1Stronger: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const body1StrongerClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Body2: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const body2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Caption1: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const caption1ClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Caption1Strong: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption1StrongClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Caption1Stronger: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const caption1StrongerClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Caption2: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const caption2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Caption2Strong: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const caption2StrongClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Display: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const displayClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const LargeTitle: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const largeTitleClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const renderText_unstable: (state: TextState) => JSXElement;
@@ -84,27 +50,20 @@ export const renderText_unstable: (state: TextState) => JSXElement;
 // @public
 export const Subtitle1: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const subtitle1ClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Subtitle2: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const subtitle2ClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Subtitle2Stronger: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const subtitle2StrongerClassNames: SlotClassNames<TextSlots>;
 
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
 export { Text_2 as Text }
 
-// @public (undocumented)
-export const textClassNames: SlotClassNames<TextSlots>;
+// @public @deprecated
+export const textClassNames: {
+    root: string;
+};
 
 // @public
 export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
@@ -134,20 +93,11 @@ export type TextState = ComponentState<TextSlots> & Required<Pick<TextProps, 'al
 // @public
 export const Title1: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const title1ClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Title2: React_2.FunctionComponent<TextPresetProps>;
 
-// @public (undocumented)
-export const title2ClassNames: SlotClassNames<TextSlots>;
-
 // @public
 export const Title3: React_2.FunctionComponent<TextPresetProps>;
-
-// @public (undocumented)
-export const title3ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const useText_unstable: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;

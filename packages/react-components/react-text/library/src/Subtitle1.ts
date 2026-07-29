@@ -1,1 +1,1 @@
-export { Subtitle1, subtitle1ClassNames } from './components/presets/Subtitle1/index';
+export { Subtitle1 } from './components/presets/Subtitle1/index';

@@ -1,1 +1,1 @@
-export { LargeTitle, largeTitleClassNames } from './components/presets/LargeTitle/index';
+export { LargeTitle } from './components/presets/LargeTitle/index';

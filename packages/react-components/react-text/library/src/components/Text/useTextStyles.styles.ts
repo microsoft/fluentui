@@ -14,13 +14,31 @@
  */
 
 import { clsx } from 'clsx';
-import type { TextSlots, TextState } from './Text.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TextState } from './Text.types';
 
 import styles from './Text.module.css';
 
-export const textClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-Text',
+/**
+ * Public identity class for Text — and, deliberately, for all 17 typography presets, which
+ * share it because a `<Body1>` IS a `<Text>` (DECISIONS.md D16.7).
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The BEM static it used to hold is gone (DECISIONS.md D16.1 /
+ * D16.5): there is no public class-name handle on component internals.
+ *
+ * The per-preset constants (`body1ClassNames` … `title3ClassNames`) were REMOVED rather than
+ * re-pointed. Presets stamp no marker of their own, so there was nothing to re-point `root`
+ * to, and D16.7 accepts the loss of preset-level public identity explicitly: presets are a
+ * shorthand for `<Text font size weight>` and hold no state a descendant could read.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + textClassNames.root` is an invalid selector. Use `fuiSelector(textClassNames.root)`
+ * from `@fluentui/react-utilities` at every selector site (DECISIONS.md D16.5).
+ */
+export const textClassNames: { root: string } = {
+  root: 'group/fui-text',
 };
 
 /**
@@ -53,17 +71,25 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under
-  // jsdom; DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
-  // or any other — can style an element from this Text's state, because `styles.root` is
-  // hashed and unaddressable from outside this file. No state mirror is needed: `data-size`
-  // is already stamped on this very element above (DECISIONS.md D15, Tier 0).
+  // Unconditional module class FIRST, then the named group marker, then the conditional
+  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
+  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
+  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
+  // never drops an unconditional argument. The BEM static that used to hold that position
+  // is gone (DECISIONS.md D16.1).
+  //
+  // The marker is a literal, unhashed, GLOBAL token and now the component's SOLE public
+  // identity class: it is the only handle by which another module — in this package or any
+  // other — can style an element from this Text's state, because `styles.root` is hashed and
+  // unaddressable from outside this file. No state mirror is needed: `data-size` is already
+  // stamped on this very element above (DECISIONS.md D15, Tier 0).
   //
   // The 17 typography presets get NO marker of their own: `createPreset` runs THIS hook and
-  // then adds its class to the same root, so every preset root already carries
-  // `group/fui-text` — which is correct, since a `<Body1>` IS a `<Text>`.
+  // then prepends its own hashed preset class to the same root, so every preset root already
+  // carries `group/fui-text` — which is correct, since a `<Body1>` IS a `<Text>`. With the
+  // `fui-Body1` … `fui-Title3` statics removed that marker is ALSO all a preset has: D16.7
+  // accepts that loss of preset-level public identity deliberately rather than mint 17 new
+  // markers into Tailwind's flat global group namespace.
   //
   // Cascade priority is decided by the `@layer fui.*` order in Text.module.css and by
   // block order within it, not by the order of these arguments — see that file's header
@@ -79,9 +105,8 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
   // dropped only because the rule no longer reports here, same as the react-divider /
   // react-button / react-image conversions.
   state.root.className = clsx(
-    textClassNames.root,
-    'group/fui-text',
     styles.root,
+    'group/fui-text',
     wrap === false && styles.nowrap,
     truncate && styles.truncate,
     block && styles.block,
