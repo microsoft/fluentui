@@ -16,7 +16,9 @@
  * Layer assignment mirrors the mergeClasses ARGUMENT order of
  * useDividerStyles_unstable, not source declaration order:
  *
- *   1 dividerClassNames.root      → static class (JS)
+ *   1 dividerClassNames.root      → static class (JS) — REMOVED in the statics sweep
+ *                                   (DECISIONS.md D16.1); the root now leads with
+ *                                   `.root` below and carries `group/fui-divider` second
  *   2 useBaseStyles.base          → fui.components.l1
  *   3 useBaseStyles[alignContent] → fui.components.l1   (data-align-content)
  *   4 useBaseStyles[appearance]   → fui.components.l1

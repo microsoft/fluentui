@@ -2,16 +2,15 @@
 
 exports[`Divider renders a brand appearance 1`] = `
 <div
-  aria-labelledby="divider-_r_c_"
+  aria-labelledby="divider-_r_d_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_c_"
+    id="divider-_r_d_"
   >
     Brand
   </div>
@@ -21,7 +20,7 @@ exports[`Divider renders a brand appearance 1`] = `
 exports[`Divider renders a default divider 1`] = `
 <div
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-empty="true"
   data-orientation="horizontal"
@@ -32,7 +31,7 @@ exports[`Divider renders a default divider 1`] = `
 exports[`Divider renders a divider with a different color 1`] = `
 <div
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   color="#FF00FF"
   data-align-content="center"
   data-empty="true"
@@ -43,16 +42,15 @@ exports[`Divider renders a divider with a different color 1`] = `
 
 exports[`Divider renders a divider with content 1`] = `
 <div
-  aria-labelledby="divider-_r_9_"
+  aria-labelledby="divider-_r_a_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_9_"
+    id="divider-_r_a_"
   >
     Default Divider
   </div>
@@ -61,17 +59,16 @@ exports[`Divider renders a divider with content 1`] = `
 
 exports[`Divider renders a divider with inset 1`] = `
 <div
-  aria-labelledby="divider-_r_a_"
+  aria-labelledby="divider-_r_b_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-inset="true"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_a_"
+    id="divider-_r_b_"
   >
     Inset
   </div>
@@ -80,17 +77,16 @@ exports[`Divider renders a divider with inset 1`] = `
 
 exports[`Divider renders a horizontal divider with a fixed width 1`] = `
 <div
-  aria-labelledby="divider-_r_l_"
+  aria-labelledby="divider-_r_m_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="horizontal"
   role="separator"
   style="width: 100px;"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_l_"
+    id="divider-_r_m_"
   >
     fixed 100px width
   </div>
@@ -99,16 +95,15 @@ exports[`Divider renders a horizontal divider with a fixed width 1`] = `
 
 exports[`Divider renders a strong appearance 1`] = `
 <div
-  aria-labelledby="divider-_r_d_"
+  aria-labelledby="divider-_r_e_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_d_"
+    id="divider-_r_e_"
   >
     Strong
   </div>
@@ -117,16 +112,15 @@ exports[`Divider renders a strong appearance 1`] = `
 
 exports[`Divider renders a subtle appearance 1`] = `
 <div
-  aria-labelledby="divider-_r_b_"
+  aria-labelledby="divider-_r_c_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_b_"
+    id="divider-_r_c_"
   >
     Subtle
   </div>
@@ -136,7 +130,7 @@ exports[`Divider renders a subtle appearance 1`] = `
 exports[`Divider renders a vertical divider 1`] = `
 <div
   aria-orientation="vertical"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-empty="true"
   data-orientation="vertical"
@@ -146,17 +140,16 @@ exports[`Divider renders a vertical divider 1`] = `
 
 exports[`Divider renders a vertical divider with a fixed height 1`] = `
 <div
-  aria-labelledby="divider-_r_k_"
+  aria-labelledby="divider-_r_l_"
   aria-orientation="vertical"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="vertical"
   role="separator"
   style="height: 100px;"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_k_"
+    id="divider-_r_l_"
   >
     fixed 100px height
   </div>
@@ -165,16 +158,15 @@ exports[`Divider renders a vertical divider with a fixed height 1`] = `
 
 exports[`Divider renders a vertical divider with content 1`] = `
 <div
-  aria-labelledby="divider-_r_j_"
+  aria-labelledby="divider-_r_k_"
   aria-orientation="vertical"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="vertical"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_j_"
+    id="divider-_r_k_"
   >
     Vertical
   </div>
@@ -183,16 +175,15 @@ exports[`Divider renders a vertical divider with content 1`] = `
 
 exports[`Divider renders content center aligned 1`] = `
 <div
-  aria-labelledby="divider-_r_f_"
+  aria-labelledby="divider-_r_g_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="center"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_f_"
+    id="divider-_r_g_"
   >
     Center
   </div>
@@ -201,16 +192,15 @@ exports[`Divider renders content center aligned 1`] = `
 
 exports[`Divider renders content end aligned 1`] = `
 <div
-  aria-labelledby="divider-_r_g_"
+  aria-labelledby="divider-_r_h_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="end"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_g_"
+    id="divider-_r_h_"
   >
     End
   </div>
@@ -219,16 +209,15 @@ exports[`Divider renders content end aligned 1`] = `
 
 exports[`Divider renders content start aligned 1`] = `
 <div
-  aria-labelledby="divider-_r_e_"
+  aria-labelledby="divider-_r_f_"
   aria-orientation="horizontal"
-  class="fui-Divider group/fui-divider"
+  class="group/fui-divider"
   data-align-content="start"
   data-orientation="horizontal"
   role="separator"
 >
   <div
-    class="fui-Divider__wrapper"
-    id="divider-_r_e_"
+    id="divider-_r_f_"
   >
     Start
   </div>

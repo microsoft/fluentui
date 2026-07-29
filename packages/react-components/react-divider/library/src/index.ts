@@ -1,6 +1,6 @@
 export {
   Divider,
-  dividerClassNames,
+  dividerClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   renderDivider_unstable,
   useDividerStyles_unstable,
   useDivider_unstable,

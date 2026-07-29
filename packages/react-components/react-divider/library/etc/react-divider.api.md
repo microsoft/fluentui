@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
@@ -21,8 +20,10 @@ export type DividerBaseProps = Omit<DividerProps, 'alignContent' | 'appearance' 
 // @public (undocumented)
 export type DividerBaseState = Omit<DividerState, 'alignContent' | 'appearance' | 'inset'>;
 
-// @public (undocumented)
-export const dividerClassNames: SlotClassNames<DividerSlots>;
+// @public @deprecated
+export const dividerClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type DividerProps = ComponentProps<Partial<DividerSlots>> & {
