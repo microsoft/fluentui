@@ -1,0 +1,210 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useCalendarDayStyles_unstable:
+ *
+ *   root slot
+ *     1 calendarDayClassNames.root      → static class (JS) — REMOVED in the statics sweep
+ *                                         (D16.1); the root now leads with `.normalize` and
+ *                                         carries `group/fui-calendar-day` second
+ *     2 useRootStyles.normalize         → fui.components.l1
+ *     3 useRootStyles.base              → fui.components.l1
+ *     4 useRootStyles.showWeekNumbers   → fui.components.l1   (showWeekNumbers)
+ *     5 consumer className              → unlayered (always wins)
+ *
+ *   header / monthComponents / headerIconButton / disabledStyle
+ *     1 calendarDayClassNames.<slot>    → REMOVED (D16.1); no marker (only the ROOT gets one)
+ *     2 use<Slot>Styles.base            → fui.components.l1
+ *
+ *   monthAndYear
+ *     1 calendarDayClassNames.monthAndYear         → REMOVED (D16.1)
+ *     2 useMonthAndYearStyles.base                 → fui.components.l1
+ *     3 useMonthAndYearStyles.headerIsClickable    → fui.components.l1   (headerIsClickable)
+ *
+ * ⚠ KNOWN INVERSION (reports/risk-analysis.md, `useRootStyles`): the makeStyles slices are
+ * DECLARED `base` then `normalize`, but mergeClasses passes `normalize` FIRST — so `base`
+ * wins on the two properties they share, `box-sizing` and `padding`. The rendered root is
+ * therefore `box-sizing: content-box` + `padding: 12px`, NOT border-box/0. `.normalize` is
+ * written before `.root` below so file order reproduces that; do not reorder these two
+ * blocks. (react-calendar-compat's CalendarPicker root carries the identical inversion.)
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Every subject is an element CalendarDay renders itself → `fui.components.l1`; nothing
+ * qualifies for l2 (D2 amendment 2). No `:global(…)` selector, and the package uses no
+ * `bundleIcon()` — grepped for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — so D2
+ * amendment 5 (UNLAYERED) does not apply.
+ *
+ * ── SPACING / SIZING (DECISIONS.md D4 amendment) ────────────────────────────────────
+ * Named steps for SPACING properties whose px literal matches a step (`p-horizontal-m` =
+ * 12px, `ps-horizontal-m-nudge` = 10px, `pe-horizontal-xs` = 4px); numeric utilities for
+ * pure SIZING literals (`w-196`, `h-28`). `line-height` is TYPOGRAPHY, so it takes
+ * `calc(<px> * var(--base-scale))` (react-toast precedent), as do the `1px` outline widths,
+ * which are literals in the Griffel source rather than `strokeWidthThin`.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * rtl-css-js flips the 2nd/4th values of a `padding` shorthand and `textAlign: left`, so
+ * `padding: '0 4px 0 10px'` becomes `py-0 ps-… pe-…` and `text-align: left` becomes
+ * `text-align: start`. Nothing else in this module is direction-sensitive.
+ */
+
+@layer fui.components.l1 {
+  /* from useRootStyles.normalize — root arg #2 (see the INVERSION note above) */
+  .normalize {
+    box-shadow: none;
+
+    @apply box-border m-0 p-0;
+  }
+
+  /* from useRootStyles.base — root arg #3; re-sets `box-sizing` and `padding` from above */
+  .root {
+    @apply box-content p-horizontal-m w-196;
+  }
+
+  /* from useRootStyles.showWeekNumbers — root arg #4 (showWeekNumbers) */
+  .show-week-numbers {
+    @apply w-226;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useHeaderStyles.base */
+  .header {
+    @apply inline-flex relative h-28 w-full;
+
+    line-height: calc(44px * var(--base-scale));
+  }
+
+  /* from useMonthAndYearStyles.base — monthAndYear arg #2 */
+  .month-and-year {
+    @apply items-center inline-block grow overflow-hidden text-ellipsis whitespace-nowrap;
+
+    background-color: var(--colorTransparentBackground);
+
+    /* `shorthands.borderStyle('none')` — the four style longhands, i.e. `border-style` */
+    border-style: none;
+
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    font-family: inherit;
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: calc(28px * var(--base-scale));
+
+    /* `padding: '0 4px 0 10px'` → block 0, inline-start 10px (MNudge), inline-end 4px (XS).
+       rtl-css-js swaps the 2nd/4th values, which the logical utilities express directly. */
+    @apply py-0 ps-horizontal-m-nudge pe-horizontal-xs;
+
+    /* `textAlign: 'left'` → logical `start` */
+    @apply text-start;
+  }
+
+  /*
+   * from useMonthAndYearStyles.headerIsClickable — monthAndYear arg #3.
+   * Kept byte-identical to useCalendarPickerStyles' `hasHeaderClickCallback`, per the
+   * upstream comment on that slice ("If this is updated, make sure to update
+   * headerIsClickable in useCalendarDayStyles as well").
+   */
+  .header-is-clickable {
+    @variant hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+
+      @apply cursor-pointer;
+
+      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+    }
+
+    /* `&:hover:active` — an INTERSECTION, written as nested variants so the compiled
+       selector is `:where(:hover):where(:active)`. The catalog's `hover-active` entry is
+       deliberately NOT used: it additionally matches `:active:focus-visible`, which this
+       component's Griffel source never emitted. */
+    @variant hover {
+      @variant active {
+        background-color: var(--colorBrandBackgroundInvertedPressed);
+        color: var(--colorBrandForegroundOnLightPressed);
+
+        @apply cursor-pointer;
+
+        outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+      }
+    }
+  }
+
+  /* from useMonthComponentsStyles.base */
+  .month-components {
+    @apply self-end inline-flex;
+  }
+
+  /* from useHeaderIconButtonStyles.base */
+  .header-icon-button {
+    background-color: var(--colorTransparentBackground);
+
+    /* `shorthands.borderStyle('none')` — the four style longhands */
+    border-style: none;
+
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground3);
+
+    @apply block overflow-visible relative text-center h-28 w-28 p-0;
+
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    line-height: calc(28px * var(--base-scale));
+
+    @variant hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+
+      @apply cursor-pointer;
+
+      outline: calc(1px * var(--base-scale)) solid var(--colorTransparentStroke);
+    }
+
+    @variant hover {
+      @variant active {
+        background-color: var(--colorBrandBackgroundInvertedPressed);
+        color: var(--colorBrandForegroundOnLightPressed);
+      }
+    }
+  }
+
+  /*
+   * from useDisabledStyleStyles.base.
+   *
+   * The Griffel key is the selector LIST `'&, &:disabled, & button'`, so the three branches
+   * cannot each take a catalog variant — a variant wraps a whole rule, not one branch of a
+   * list. `:where(:disabled)` reproduces `&:disabled` exactly (and keeps this module's
+   * uniform 0-1-0 specificity) rather than widening to the catalog `disabled` variant's
+   * `[disabled], [data-disabled], :disabled`. In practice only the bare `&` branch ever
+   * matches: CalendarDay's navigation buttons are `aria-disabled`, never `disabled`, and
+   * they contain an icon `<svg>`, never a nested `<button>`. Both extra branches are
+   * reproduced because the compiled atomics contain them.
+   */
+  .disabled-style {
+    &,
+    &:where(:disabled),
+    & button {
+      color: var(--colorNeutralForegroundDisabled);
+
+      @apply pointer-events-none;
+
+      /* explicit for aria-disabled buttons, which get no default forced-colors disabled
+         styling (comment carried over from the Griffel source) */
+      @variant forced-colors {
+        color: GrayText;
+      }
+    }
+  }
+}

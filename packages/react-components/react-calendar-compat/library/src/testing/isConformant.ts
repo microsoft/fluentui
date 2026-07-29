@@ -1,9 +1,4 @@
-import {
-  COMPONENT_HAS_GROUP_MARKER_TEST_NAME,
-  HAS_STATIC_CLASSNAMES_TEST_NAME,
-  hasStaticClassNames,
-  isConformant as baseIsConformant,
-} from '@fluentui/react-conformance';
+import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions, TestObject } from '@fluentui/react-conformance';
 import griffelTests from '@fluentui/react-conformance-griffel';
 
@@ -13,15 +8,18 @@ export function isConformant<TProps = {}>(
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
-    // This package still publishes BEM statics and stamps no Tailwind named-group marker,
-    // so it opts out of `component-has-group-marker` (a default test since DECISIONS.md
-    // D16.6) and takes `hasStaticClassNames` — the test that moved out of the default set
-    // to make room for it — explicitly, so its coverage is preserved.
-    disabledTests: [COMPONENT_HAS_GROUP_MARKER_TEST_NAME],
-    extraTests: {
-      ...griffelTests,
-      [HAS_STATIC_CLASSNAMES_TEST_NAME]: hasStaticClassNames,
-    } as TestObject<TProps>,
+    // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+    // The package-wide opt-out of `component-has-group-marker` (DECISIONS.md D16.6) is gone:
+    // every component here now stamps its own `group/fui-…` marker and takes the default
+    // test, and `hasStaticClassNames` goes with the BEM statics it asserted (D16.1) — the
+    // per-component `disabledTests` entries for `component-has-static-classnames-object`
+    // predate the migration and are kept where they already were.
+    //
+    // `griffelTests` stays registered (react-divider's shape): removing it would silently
+    // turn each component's `make-styles-overrides-win` entry in `disabledTests` into a
+    // no-op name, and the entry is what documents that the contract moved to
+    // `classname-overrides-win`.
+    extraTests: griffelTests as TestObject<TProps>,
   };
 
   baseIsConformant(defaultOptions, testInfo);

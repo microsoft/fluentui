@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
 import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import type {
@@ -86,7 +86,7 @@ const CalendarYearGridCell: React.FunctionComponent<CalendarYearGridCellProps> =
 
   return (
     <button
-      className={mergeClasses(classNames.itemButton, selected && classNames.selected, disabled && classNames.disabled)}
+      className={clsx(classNames.itemButton, selected && classNames.selected, disabled && classNames.disabled)}
       type="button"
       role="gridcell"
       onClick={!disabled ? onClick : undefined}
@@ -244,7 +244,7 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
 
   return (
     <button
-      className={mergeClasses(classNames.navigationButton, disabled && classNames.disabled)}
+      className={clsx(classNames.navigationButton, disabled && classNames.disabled)}
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : undefined}
       onClick={!disabled ? onNavigate : undefined}

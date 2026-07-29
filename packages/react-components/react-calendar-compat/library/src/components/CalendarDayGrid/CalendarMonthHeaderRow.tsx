@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { motionTokens } from '@fluentui/react-motion';
 import { Fade } from '@fluentui/react-motion-components-preview';
 import { DAYS_IN_WEEK } from '../../utils';
@@ -48,7 +48,7 @@ export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHea
           // for a short month name.
           <Fade.In key={dayLabels[i] + ' ' + index} duration={motionTokens.durationGentle}>
             <th
-              className={mergeClasses(classNames.dayCell, classNames.weekDayLabelCell)}
+              className={clsx(classNames.dayCell, classNames.weekDayLabelCell)}
               scope="col"
               title={label}
               aria-label={label}

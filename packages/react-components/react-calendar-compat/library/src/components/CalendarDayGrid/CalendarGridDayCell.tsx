@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
 import { getRTLSafeKey } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { addDays, addWeeks, compareDates, findAvailableDate, DateRangeType } from '../../utils';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles.styles';
@@ -216,7 +216,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
 
   return (
     <td
-      className={mergeClasses(
+      className={clsx(
         classNames.dayCell,
         weekCorners && cornerStyle,
         day.isSelected && !day.isSingleSelected && classNames.daySelected,
@@ -243,14 +243,14 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
     >
       <button
         key={day.key + 'button'}
-        className={mergeClasses(classNames.dayButton, day.isToday && classNames.dayIsToday)}
+        className={clsx(classNames.dayButton, day.isToday && classNames.dayIsToday)}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
         disabled={!ariaHidden && !day.isInBounds}
         type="button"
         tabIndex={-1}
       >
-        <span className={day.isToday ? mergeClasses(classNames.dayTodayMarker) : undefined}>
+        <span className={day.isToday ? classNames.dayTodayMarker : undefined}>
           {dateTimeFormatter.formatDay(day.originalDate)}
         </span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}

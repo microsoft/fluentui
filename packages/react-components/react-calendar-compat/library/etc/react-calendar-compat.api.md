@@ -6,7 +6,6 @@
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -29,22 +28,28 @@ export enum AnimationDirection {
 // @internal (undocumented)
 export const Calendar: React_2.FunctionComponent<CalendarProps>;
 
-// @internal (undocumented)
-export const calendarClassNames: SlotClassNames<CalendarStyles>;
+// @internal
+export const calendarClassNames: {
+    root: string;
+};
 
 // @internal (undocumented)
 export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
 
-// @internal (undocumented)
-export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
+// @internal
+export const calendarDayClassNames: {
+    root: string;
+};
 
 // Warning: (ae-incompatible-release-tags) The symbol "CalendarDayGrid" is marked as @public, but its signature references "CalendarDayGridProps" which is marked as @internal
 //
 // @public (undocumented)
 export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
 
-// @internal (undocumented)
-export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles>;
+// @internal
+export const calendarDayGridClassNames: {
+    root: string;
+};
 
 // @internal (undocumented)
 export interface CalendarDayGridProps extends DayGridOptions {
@@ -180,8 +185,10 @@ export interface CalendarMonthStyleProps extends CalendarPickerStyleProps {
 export interface CalendarMonthStyles extends CalendarPickerStyles {
 }
 
-// @internal (undocumented)
-export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles>;
+// @internal
+export const calendarPickerClassNames: {
+    root: string;
+};
 
 // @internal (undocumented)
 export interface CalendarPickerStyleProps {
@@ -435,7 +442,7 @@ export const DEFAULT_DATE_GRID_STRINGS: DateGridStrings;
 // @public (undocumented)
 export const defaultCalendarStrings: CalendarStrings;
 
-// @internal (undocumented)
+// @internal
 export const extraCalendarDayGridClassNames: {
     hoverStyle: string;
     pressedStyle: string;

@@ -10,7 +10,7 @@ import { CalendarGridRow } from './CalendarGridRow';
 import { useWeeks } from './useWeeks';
 import type { WeekCorners } from './useWeekCornerStyles.styles';
 import { useWeekCornerStyles } from './useWeekCornerStyles.styles';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import type { Day, DayOfWeek } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 import { DirectionalSlideIn, DirectionalSlideOut } from '../../utils/calendarMotions';
@@ -172,7 +172,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   return (
     <table
-      className={mergeClasses(classNames.table, props.className)}
+      className={clsx(classNames.table, props.className)}
       aria-multiselectable="false"
       aria-label={gridLabel}
       aria-labelledby={labelledBy}

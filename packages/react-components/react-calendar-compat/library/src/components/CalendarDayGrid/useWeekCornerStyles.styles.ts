@@ -1,20 +1,36 @@
 'use client';
 
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { DateRangeType } from '../../utils/constants';
 import { getDateRangeArray } from '../../utils/index';
 import type { DayInfo } from './CalendarDayGrid';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
+import styles from './CalendarDayGrid.module.css';
+
 /**
+ * The four rounded-corner class names a day cell can carry.
+ *
+ * Griffel → Tailwind + CSS Modules migration: the shape is unchanged, only the values moved
+ * from `fui-CalendarDayGrid__…CornerDate` statics to the hashed module classes that back them
+ * (DECISIONS.md D16.1). They are package-internal — never exported from the package index —
+ * and are added and removed IMPERATIVELY by `CalendarGridDayCell` alongside the hover
+ * highlight, so they must stay plain class TOKENS (`classList.add`/`.remove`, no escaping).
+ *
+ * ⚠ The names are physical but the behaviour is LOGICAL, and that is load-bearing:
+ * `calculateRoundedStyles` below swaps the pair by `dir`, and Griffel's RTL twin then swapped
+ * the property as well (`borderTopLeftRadius` ↔ `borderTopRightRadius`). The module reproduces
+ * that compiled pair with `border-start-start-radius` / `border-start-end-radius` etc., so
+ * this `dir` branch stays exactly as it was.
+ *
  * @internal
  */
 export const weekCornersClassNames = {
-  topRightCornerDate: 'fui-CalendarDayGrid__topRightCornerDate',
-  topLeftCornerDate: 'fui-CalendarDayGrid__topLeftCornerDate',
-  bottomRightCornerDate: 'fui-CalendarDayGrid__bottomRightCornerDate',
-  bottomLeftCornerDate: 'fui-CalendarDayGrid__bottomLeftCornerDate',
+  topRightCornerDate: styles['top-right-corner-date'],
+  topLeftCornerDate: styles['top-left-corner-date'],
+  bottomRightCornerDate: styles['bottom-right-corner-date'],
+  bottomLeftCornerDate: styles['bottom-left-corner-date'],
 };
 
 /**
@@ -131,7 +147,7 @@ export function useWeekCornerStyles(
       );
     }
 
-    return mergeClasses(...style);
+    return clsx(...style);
   };
 
   const isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {

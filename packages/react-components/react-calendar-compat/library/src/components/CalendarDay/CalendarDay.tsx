@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import { addMonths, compareDatePart, getMonthEnd, getMonthStart } from '../../utils';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { useCalendarDayStyles_unstable } from './useCalendarDayStyles.styles';
@@ -130,7 +130,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
   return (
     <div className={classNames.monthComponents}>
       <button
-        className={mergeClasses(classNames.headerIconButton, !prevMonthInBounds && classNames.disabledStyle)}
+        className={clsx(classNames.headerIconButton, !prevMonthInBounds && classNames.disabledStyle)}
         tabIndex={prevMonthInBounds ? undefined : allFocusable ? 0 : -1}
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
@@ -145,7 +145,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
         {navigationIcons.upNavigation}
       </button>
       <button
-        className={mergeClasses(classNames.headerIconButton, !nextMonthInBounds && classNames.disabledStyle)}
+        className={clsx(classNames.headerIconButton, !nextMonthInBounds && classNames.disabledStyle)}
         tabIndex={nextMonthInBounds ? undefined : allFocusable ? 0 : -1}
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}

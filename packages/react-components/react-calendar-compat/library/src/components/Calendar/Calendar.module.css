@@ -1,0 +1,206 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment mirrors the mergeClasses ARGUMENT order of useCalendarStyles_unstable,
+ * which for every slot here is also the makeStyles hook-CALL order (= Griffel's stylesheet
+ * insertion order), so one file order satisfies both:
+ *
+ *   root slot
+ *     1 calendarClassNames.root                            → static class (JS) — REMOVED in
+ *                                                            the statics sweep (D16.1); the
+ *                                                            root now leads with `.root` and
+ *                                                            carries `group/fui-calendar` second
+ *     2 useRootStyles.base                                 → fui.components.l1
+ *     3 useRootStyles.normalize                            → fui.components.l1
+ *     4 useRootStyles.monthPickerNotVisible                → fui.components.l1
+ *     5 useRootStyles.dayAndMonthPickersVisible            → fui.components.l1
+ *     6 useRootStyles.dayPickerVisibleAndWeekNumbersShown  → fui.components.l1
+ *     7 useRootStyles.dayAndMonthPickersVisibleAndWeekNumbersShown → fui.components.l1
+ *     8 consumer className                                 → unlayered (always wins)
+ *
+ *   divider / monthPickerWrapper / goTodayButton / liveRegion
+ *     1 calendarClassNames.<slot>  → REMOVED (D16.1); no marker (only the ROOT gets one)
+ *     2 use<Slot>Styles.base       → fui.components.l1
+ *
+ * NOTE the root inversion is NOT one: `base` sets `display`/`width`, `normalize` sets
+ * `box-shadow`/`box-sizing`/`margin`/`padding` — disjoint property sets — while args 5-7
+ * re-set `width` and are written after `base`, as their argument position requires.
+ * (reports/risk-analysis.md lists CalendarDay/CalendarPicker as the two roots in this
+ * package whose `normalize`→`base` order IS load-bearing; Calendar's is not.)
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Every subject below is an element Calendar renders itself, so everything is
+ * `fui.components.l1`; nothing qualifies for l2 (D2 amendment 2). No `:global(…)` selector
+ * appears in this module and the package uses no `bundleIcon()` — grepped for
+ * `fui-Icon-filled` / `fui-Icon-regular`: zero hits — so D2 amendment 5 (UNLAYERED) does
+ * not apply either.
+ *
+ * ── SPACING / SIZING (DECISIONS.md D4 amendment) ────────────────────────────────────
+ * Named steps for the SPACING properties whose px literal matches a step
+ * (`me-horizontal-l` = 16px, `px-horizontal-xs` = 4px); numeric utilities for pure SIZING
+ * literals (`w-220`, `h-30`) and for spacing literals that match no step (`mt-3`). Same
+ * split the react-divider pilot used (`min-h-20` numeric alongside `me-horizontal-m`).
+ * `line-height` is TYPOGRAPHY, not spacing, so it takes the react-toast form
+ * `calc(<px> * var(--base-scale))`.
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * rtl-css-js flips `borderRight*` and `marginRight` and the 2nd/4th values of a `padding`
+ * shorthand, so those are rewritten to logical properties/utilities. `top` / `bottom` are
+ * block-axis and pass through unchanged.
+ */
+
+@layer fui.components.l1 {
+  /* from useRootStyles.base — root arg #2 */
+  .root {
+    @apply flex w-220;
+  }
+
+  /* from useRootStyles.normalize — root arg #3 */
+  .normalize {
+    box-shadow: none;
+
+    @apply box-border m-0 p-0;
+  }
+
+  /* from useRootStyles.monthPickerNotVisible — root arg #4 (!isMonthPickerVisible) */
+  .month-picker-not-visible {
+    @apply flex-col;
+  }
+
+  /*
+   * Args #5-#7 all re-set `width` from `.root` above; they are mutually exclusive in the
+   * hook, but their file position is what makes each of them beat `.root`.
+   */
+
+  /* from useRootStyles.dayAndMonthPickersVisible — root arg #5 */
+  .day-and-month-pickers-visible {
+    @apply w-440;
+  }
+
+  /* from useRootStyles.dayPickerVisibleAndWeekNumbersShown — root arg #6 */
+  .day-picker-visible-and-week-numbers-shown {
+    @apply w-250;
+  }
+
+  /* from useRootStyles.dayAndMonthPickersVisibleAndWeekNumbersShown — root arg #7 */
+  .day-and-month-pickers-visible-and-week-numbers-shown {
+    @apply w-470;
+  }
+}
+
+@layer fui.components.l1 {
+  /*
+   * from useDividerStyles.base.
+   * `borderRight: '1px solid <token>'` — rtl-css-js swaps borderRight↔borderLeft, i.e. a
+   * pure PROPERTY flip, so it becomes the `border-inline-end-*` longhands. The `1px` is a
+   * literal in the Griffel source (not `strokeWidthThin`), so it takes the
+   * `calc(1px * var(--base-scale))` form the react-dialog conversion settled on rather than
+   * `var(--spacing-thin)`.
+   */
+  .divider {
+    border-inline-end-width: calc(1px * var(--base-scale));
+    border-inline-end-style: solid;
+    border-inline-end-color: var(--colorNeutralStroke2);
+
+    /* inert on a statically-positioned element, reproduced from the compiled atomic */
+    top: 0;
+  }
+
+  /* from useMonthPickerWrapperStyles.base */
+  .month-picker-wrapper {
+    @apply flex flex-col;
+  }
+
+  /* from useGoTodayButtonStyles.base */
+  .go-today-button {
+    @apply self-end box-content overflow-visible;
+
+    background-color: var(--colorTransparentBackground);
+
+    /* `shorthands.borderStyle('none')` — the four style longhands, i.e. `border-style` */
+    border-style: none;
+
+    bottom: 0;
+    color: var(--colorNeutralForeground1);
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+
+    @apply h-30;
+
+    line-height: calc(30px * var(--base-scale));
+
+    /* `marginRight` flips in RTL → margin-inline-end; 16px is the L spacing step */
+    @apply me-horizontal-l;
+
+    /* 3px matches no spacing step → numeric fallback (D4) */
+    @apply mt-3;
+
+    /* `padding: '0 4px'` → block 0 / inline 4px (the XS step); `px-*` is padding-inline in
+       Tailwind v4, so the RTL flip of the shorthand's 2nd/4th values is free */
+    @apply py-0 px-horizontal-xs;
+
+    & div {
+      font-size: var(--fontSizeBase200);
+    }
+
+    @variant hover {
+      background-color: var(--colorTransparentBackground);
+      color: var(--colorBrandForeground1);
+
+      @apply cursor-pointer;
+
+      @variant forced-colors {
+        /* `outline: tokens.strokeWidthThin` — a bare width in the `outline` shorthand,
+           reproduced verbatim. `outline-width` is NOT spacing-powered, so the stroke width
+           is referenced directly as `var(--spacing-thin)` (D4 addendum, case 2). */
+        outline: var(--spacing-thin);
+        border-radius: var(--borderRadiusSmall);
+      }
+    }
+
+    /* `&:hover:active` — an INTERSECTION, written as nested variants so the compiled
+       selector is `:where(:hover):where(:active)`. The catalog's `hover-active` entry is
+       deliberately NOT used: it additionally matches `:active:focus-visible`, which this
+       component's Griffel source never emitted. */
+    @variant hover {
+      @variant active {
+        color: var(--colorBrandForeground2);
+      }
+    }
+
+    @variant disabled {
+      color: var(--colorNeutralForegroundDisabled);
+
+      @apply pointer-events-none;
+    }
+  }
+
+  /*
+   * from useLiveRegionStyles.base — the visually-hidden idiom, same shape as
+   * react-toast's AriaLive and react-card's `.checkbox`. The 1px/-1px values are a
+   * hiding geometry rather than a spacing or stroke measurement, so they take numeric
+   * utilities and literals, not the named steps.
+   */
+  .live-region {
+    @apply absolute h-1 w-1 overflow-hidden;
+
+    /* `border: 'none'` — the style longhands are the half that carries it for layout and
+       paint (react-drawer/InlineDrawer precedent) */
+    border-style: none;
+
+    margin: -1px;
+    padding: 0px;
+  }
+}

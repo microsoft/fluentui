@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { mergeClasses } from '@griffel/react';
+import { clsx } from 'clsx';
 import {
   addYears,
   compareDatePart,
@@ -220,7 +220,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
         </button>
         <div className={classNames.navigationButtonsContainer}>
           <button
-            className={mergeClasses(classNames.navigationButton, !isPrevYearInBounds && classNames.disabled)}
+            className={clsx(classNames.navigationButton, !isPrevYearInBounds && classNames.disabled)}
             aria-disabled={!isPrevYearInBounds}
             tabIndex={isPrevYearInBounds ? undefined : allFocusable ? 0 : -1}
             onClick={isPrevYearInBounds ? onSelectPrevYear : undefined}
@@ -235,7 +235,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             {navigationIcons.upNavigation}
           </button>
           <button
-            className={mergeClasses(classNames.navigationButton, !isNextYearInBounds && classNames.disabled)}
+            className={clsx(classNames.navigationButton, !isNextYearInBounds && classNames.disabled)}
             aria-disabled={!isNextYearInBounds}
             tabIndex={isNextYearInBounds ? undefined : allFocusable ? 0 : -1}
             onClick={isNextYearInBounds ? onSelectNextYear : undefined}
@@ -276,7 +276,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
                     <button
                       ref={isNavigatedMonth ? navigatedMonthRef : undefined}
                       role={'gridcell'}
-                      className={mergeClasses(
+                      className={clsx(
                         classNames.itemButton,
                         highlightCurrentMonth &&
                           isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today) &&

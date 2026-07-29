@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { CLASSNAME_OVERRIDES_WIN_TEST_NAME, classNameOverridesWin } from '@fluentui/react-conformance';
 import { CalendarDayGrid } from './CalendarDayGrid';
 import { isConformant } from '../../testing/isConformant';
 import { DEFAULT_CALENDAR_STRINGS, DayOfWeek, DateRangeType, FirstWeekOfYear } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
+
+// Griffel → Tailwind + CSS Modules migration: the `fui-CalendarDayGrid__weekRow` static this
+// suite used to select on is gone (DECISIONS.md D16.1) and the week row carries no public
+// identity class — only CalendarDayGrid's ROOT (the `<table>`) does. Importing the module
+// gives the test the same hashed local the component renders; jest maps `*.module.css`
+// through the shared class-name proxy (`jest.preset.js`), so this resolves without a build.
+import styles from './CalendarDayGrid.module.css';
 
 const defaultProps: CalendarDayGridProps = {
   strings: DEFAULT_CALENDAR_STRINGS,
@@ -47,7 +55,21 @@ describe('CalendarDayGrid', () => {
       'consistent-callback-args',
       // Some classnames are applied conditionally
       'component-has-static-classnames-object',
+      // Griffel → Tailwind + CSS Modules migration (migration/griffel-to-tailwind).
+      // `make-styles-overrides-win` jest-mocks `@griffel/react`'s mergeClasses and asserts
+      // it was called with the consumer className last; this component now composes with
+      // clsx and never calls mergeClasses, so the test can no longer observe the contract.
+      // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9);
+      // it is enabled even though `component-handles-classname` is not, because the `<table>`
+      // does take `props.className` as its last clsx argument.
+      'make-styles-overrides-win',
     ],
+    // `component-has-group-marker` is a default test (DECISIONS.md D16.6) and asserts the
+    // `group/fui-calendar-day-grid` marker the `<table>` — this component's outermost node —
+    // now stamps, plus the D15.1 `classList[0]` invariant.
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   describe('arrow key navigation', () => {
@@ -169,7 +191,7 @@ describe('CalendarDayGrid', () => {
       // replays against on navigation. The first/last transition (filler) rows are intentionally
       // remounted when they start or stop animating (their `DirectionalSlideOut` wrapper mounts
       // only for the matching navigation direction), so they are excluded here.
-      const getWeekRows = () => Array.from(tbody.querySelectorAll('tr.fui-CalendarDayGrid__weekRow'));
+      const getWeekRows = () => Array.from(tbody.querySelectorAll(`tr.${styles['week-row']}`));
       const rowsBefore = getWeekRows();
       expect(rowsBefore.length).toBeGreaterThan(0);
 

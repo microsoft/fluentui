@@ -1,0 +1,495 @@
+@reference '#theme';
+
+/*
+ * Cascade layer order (DECISIONS.md D2).
+ *
+ * Repeated here on purpose: `@reference` emits nothing, so a component module that is
+ * loaded before any other Fluent stylesheet would otherwise let *first-appearance*
+ * order decide the layer ranking — which differs per component. Re-declaring the full,
+ * identical order is a no-op for every module after the first (CSS Cascade 5: a layer
+ * statement never re-orders an already-created layer), so this is safe to repeat and
+ * makes each module self-sufficient.
+ */
+@layer fui.theme, fui.base, fui.components, fui.components.l1, fui.components.l2, fui.components.l3, fui.components.l4, fui.components.l5, fui.utilities;
+
+/*
+ * Layer assignment: every block below is `fui.components.l1`, written in the makeStyles
+ * hook-CALL order of useCalendarDayGridStyles_unstable — which is Griffel's stylesheet
+ * INSERTION order and, for every element in this grid, also the mergeClasses ARGUMENT
+ * order. One file order therefore satisfies all of them:
+ *
+ *   <table>  : table → table-show-week-numbers            (+ consumer className, unlayered)
+ *   <td>     : day-cell → day-cell-focus-indicator → corners → <corner class>
+ *              → day-selected → day-single-selected → day-outside-bounds
+ *              → lighten-days-outside-navigated-month
+ *   <button> : day-button → day-is-today
+ *   <tr>     : week-row | first-transition-week | last-transition-week
+ *   <th>     : day-cell (+ week-day-label-cell) | week-number-cell
+ *
+ *   1 calendarDayGridClassNames.<slot> → static classes (JS) — REMOVED in the statics sweep
+ *                                        (D16.1). The `<table>` is CalendarDayGrid's
+ *                                        outermost node, so it leads with `.table` and
+ *                                        carries `group/fui-calendar-day-grid` second.
+ *
+ * ⚠ ORDERING CONSTRAINT, do not "tidy": `.day-button` must stay AFTER `.day-single-selected`.
+ * See the note on `.day-single-selected > .day-button` below.
+ *
+ * ── ALTITUDE ────────────────────────────────────────────────────────────────────────
+ * Every subject is an element CalendarDayGrid renders itself → `fui.components.l1`; nothing
+ * qualifies for l2 (D2 amendment 2). No `:global(…)` selector, and the package uses no
+ * `bundleIcon()` — grepped for `fui-Icon-filled` / `fui-Icon-regular`: zero hits — so D2
+ * amendment 5 (UNLAYERED) does not apply.
+ *
+ * ── SPACING / SIZING (DECISIONS.md D4 amendment) ────────────────────────────────────
+ * Named steps for SPACING properties whose px literal matches a step
+ * (`pb-vertical-m-nudge` = 10px, `mt-vertical-xs` = 4px, `p-horizontal-xxs` = 2px);
+ * numeric utilities for pure SIZING literals (`w-196`, `h-28`, `w-4`, `-mt-28`).
+ * `line-height` is TYPOGRAPHY → `calc(<px> * var(--base-scale))` (react-toast precedent),
+ * as are the `1px` outline/border literals, which are raw px in the Griffel source rather
+ * than `strokeWidthThin`. The one real stroke-width token in this file —
+ * `createFocusOutlineStyle`'s `outlineWidth: tokens.strokeWidthThick` — takes
+ * `var(--spacing-thick)` (D4 addendum, case 2: `outline-width` is not spacing-powered).
+ *
+ * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
+ * rtl-css-js flips `borderRight*`, `left`/`right`, and `borderTopLeftRadius` ↔
+ * `borderTopRightRadius` / `borderBottomLeftRadius` ↔ `borderBottomRightRadius`. All are
+ * rewritten to logical properties here, so no `@variant rtl` twin is needed. The corner
+ * radii are the interesting case — see the `.corners` block.
+ */
+
+@layer fui.components.l1 {
+  /*
+   * Identity-only locals for the two class names `CalendarGridDayCell` adds and removes
+   * imperatively (`dayRef.classList.add(extraCalendarDayGridClassNames.hoverStyle)` — the
+   * grid highlights arbitrary blobs of days, which no CSS `:hover` can express). They are
+   * declared here so the module always exports them, even though every rule that uses them
+   * is a COMPOUND further down (`&.hover-style`). `useCalendarDayGridStyles.styles.ts`
+   * re-exports them as `extraCalendarDayGridClassNames`, whose shape is unchanged — only
+   * the values moved from `fui-…` statics to hashed module classes (DECISIONS.md D16.1).
+   * Do not delete because they look empty.
+   */
+  .hover-style {
+  }
+
+  .pressed-style {
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useWrapperStyles.base — 10px is the MNudge step on the block axis */
+  .wrapper {
+    @apply pb-vertical-m-nudge;
+  }
+
+  /* from useTableStyles.base — table arg #2 */
+  .table {
+    @apply border-collapse relative table-fixed text-center w-196;
+
+    border-spacing: 0;
+    font-size: inherit;
+
+    @apply mt-vertical-xs pb-vertical-m-nudge;
+  }
+
+  /* from useTableStyles.showWeekNumbers — table arg #3 (showWeekNumbers) */
+  .table-show-week-numbers {
+    @apply w-226;
+  }
+}
+
+@layer fui.components.l1 {
+  /* from useDayCellStyles.base — dayCell arg #2 */
+  .day-cell {
+    color: var(--colorNeutralForeground1);
+
+    @apply cursor-pointer relative m-0 p-horizontal-xxs;
+
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+
+    @variant forced-colors {
+      background-color: Window;
+      color: WindowText;
+    }
+
+    &.hover-style {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedHover);
+
+      @variant forced-colors {
+        outline: calc(1px * var(--base-scale)) solid Highlight;
+        z-index: 3;
+
+        & .day-today-marker {
+          background-color: Highlight;
+        }
+      }
+    }
+
+    &.pressed-style {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+
+      @variant forced-colors {
+        background-color: Window;
+
+        /* `shorthands.borderColor('Highlight')` → four longhands */
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+
+        color: Highlight;
+      }
+    }
+  }
+
+  /*
+   * from useDayCellStyles.focusIndicator — dayCell arg #3, the output of
+   * `createFocusOutlineStyle({ style: { outlineWidth: tokens.strokeWidthThick, …borderWidth } })`.
+   *
+   * Only `outlineWidth` reaches the ring: `getFocusOutlineStyles` reads exactly
+   * `outlineRadius` / `outlineColor` / `outlineWidth` from the option object, so the
+   * `shorthands.borderWidth(tokens.strokeWidthThick)` spread in the Griffel source is
+   * inert and is NOT reproduced (react-tabster/src/focus/createFocusOutlineStyle.ts:55-80).
+   * Radius and color therefore stay at the utility's defaults (`--borderRadiusMedium`,
+   * `--colorStrokeFocus2`), and with no `outlineOffset` the utility's
+   * `calc(0px - <width> - 0px)` reproduces `calc(<width> * -1)` exactly.
+   *
+   * The knob is set on `&::after`, not on the element: it is registered with
+   * `@property … inherits: false`, and a pseudo-element takes the INITIAL value of every
+   * non-inherited property, so a knob set on the `<td>` would never reach `::after`
+   * (react-card precedent). The ring is positioned against the `position: relative` that
+   * `.day-cell` sets above, as `createFocusOutlineStyle` requires.
+   *
+   * The two `outline-style: none` rules are emitted OUTSIDE the focus-visible selector by
+   * `createFocusOutlineStyle`, so they stay here with the caller.
+   */
+  .day-cell-focus-indicator {
+    @variant focus {
+      outline-style: none;
+    }
+
+    @variant focus-visible {
+      outline-style: none;
+    }
+
+    @variant focus-visible-fui {
+      @apply fui-focus-outline;
+
+      &::after {
+        --fui-focus-outline-width: var(--spacing-thick);
+      }
+    }
+  }
+
+  /* from useDaySelectedStyles.base — dayCell arg #5 */
+  .day-selected {
+    background-color: var(--colorBrandBackgroundInvertedSelected);
+    color: var(--colorNeutralForeground1Static);
+
+    @variant forced-colors {
+      background-color: Highlight;
+
+      /* `shorthands.borderColor('Highlight')` → four longhands */
+      border-top-color: Highlight;
+      border-right-color: Highlight;
+      border-bottom-color: Highlight;
+      border-left-color: Highlight;
+
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+
+    /* Griffel key `'&:hover, &.hoverStyle, &.pressedStyle'` — one slice, three branches,
+       reproduced as a nested selector list so the declarations stay a single rule */
+    &:where(:hover),
+    &.hover-style,
+    &.pressed-style {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+
+      @variant forced-colors {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+    }
+
+    & > .day-marker {
+      @variant forced-colors {
+        background-color: Window;
+      }
+    }
+  }
+
+  /* from useDaySingleSelectedStyles.base — dayCell arg #6 */
+  .day-single-selected {
+    color: var(--colorNeutralForeground1Static);
+
+    & > .day-marker {
+      @variant forced-colors {
+        background-color: Window;
+      }
+    }
+
+    & > .day-button {
+      border-radius: var(--borderRadiusMedium);
+
+      /* `border: '1px solid <token>'` expanded to longhands: `.day-button` below resets
+         `border-style` and the forced-colors block re-sets all four colors, so the
+         shorthand has competing longhands on two of its three sub-properties */
+      border-top-width: calc(1px * var(--base-scale));
+      border-right-width: calc(1px * var(--base-scale));
+      border-bottom-width: calc(1px * var(--base-scale));
+      border-left-width: calc(1px * var(--base-scale));
+      border-top-style: solid;
+      border-right-style: solid;
+      border-bottom-style: solid;
+      border-left-style: solid;
+      border-top-color: var(--colorBrandStroke1);
+      border-right-color: var(--colorBrandStroke1);
+      border-bottom-color: var(--colorBrandStroke1);
+      border-left-color: var(--colorBrandStroke1);
+
+      /*
+       * ⚠ REST-STATE RESTRICTION — the one place in this package where `:where()`
+       * flattening would invert a winner.
+       *
+       * Griffel resolves this child-combinator atomic (0-2-0, bucket `d`) against
+       * `.dayButton:hover` (0-2-0, bucket `h`) and `.dayButton:active` (bucket `a`) by
+       * INSERTION ORDER: `h` and `a` come after `d`, so hover/active win and the
+       * single-selected day's button turns the hover/pressed colour like every other day.
+       * Here the child rule keeps its natural 0-2-0 while `@variant hover` compiles to a
+       * `:where()`-flat 0-1-0, so the child rule would win in every state and the button
+       * would stay `…InvertedSelected` under the cursor.
+       *
+       * Restricting the declaration to the rest state reproduces the Griffel winner in all
+       * three states without either rule having to know the other's values — the shape the
+       * catalog's `at-rest` variant exists for. `at-rest` itself is NOT used: it negates
+       * `:hover, :active:focus-visible` (Griffel's authored `pressed` compound), whereas
+       * this component's competitors are plain `:hover` and plain `:active`.
+       */
+      &:where(:not(:hover, :active)) {
+        background-color: var(--colorBrandBackgroundInvertedSelected);
+      }
+
+      /* forced-colors is Griffel bucket `m`, which is inserted after `h`/`a`, so this half
+         legitimately outranks the hover/active rules — 0-2-0 vs 0-1-0 reproduces that. */
+      @variant forced-colors {
+        background-color: Highlight;
+
+        /* `shorthands.borderColor('Highlight')` → four longhands */
+        border-top-color: Highlight;
+        border-right-color: Highlight;
+        border-bottom-color: Highlight;
+        border-left-color: Highlight;
+
+        color: HighlightText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  /* from useWeekRowStyles.base */
+  .week-row {
+    @apply relative;
+
+    @variant focus-within {
+      z-index: 1;
+    }
+  }
+
+  /* from useWeekDayLabelCellStyles.base */
+  .week-day-label-cell {
+    @apply select-none;
+  }
+
+  /* from useWeekNumberCellStyles.base */
+  .week-number-cell {
+    background-color: var(--colorTransparentBackground);
+
+    /* `borderRight: '1px solid <token>'` — rtl-css-js swaps borderRight↔borderLeft, a pure
+       PROPERTY flip, so it becomes the `border-inline-end-*` longhands */
+    border-inline-end-width: calc(1px * var(--base-scale));
+    border-inline-end-style: solid;
+    border-inline-end-color: var(--colorNeutralStroke2);
+
+    @apply box-border h-28 w-28 m-0 p-0;
+
+    color: var(--colorNeutralForeground4);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+  }
+
+  /*
+   * from useDayOutsideBoundsStyles.base — dayCell arg #7.
+   *
+   * Two separate Griffel keys with different scopes: the selector LIST carries the
+   * background/color/pointer-events triple, while the `@media (forced-colors: active)`
+   * block sits at the slice's TOP level and applies to the element only.
+   * `:where(:disabled)` reproduces `&:disabled` exactly inside the list (a variant wraps a
+   * whole rule, not one branch of a list) and keeps this module's uniform flat specificity.
+   */
+  .day-outside-bounds {
+    &,
+    &:where(:disabled),
+    & button,
+    &.hover-style,
+    &.pressed-style {
+      background-color: var(--colorTransparentBackground);
+      color: var(--colorNeutralForegroundDisabled);
+
+      @apply pointer-events-none;
+    }
+
+    @variant forced-colors {
+      color: GrayText;
+    }
+  }
+
+  /*
+   * from useDayOutsideNavigatedMonthStyles.lightenDaysOutsideNavigatedMonth — dayCell arg #8.
+   * The slice is the ONLY thing this slot ever contributed besides its static, so when
+   * `lightenDaysOutsideNavigatedMonth` is false the slot's class string is now empty
+   * (it used to be the bare `fui-CalendarDayGrid__dayOutsideNavigatedMonth` static).
+   */
+  .lighten-days-outside-navigated-month {
+    color: var(--colorNeutralForeground4);
+    font-weight: var(--fontWeightRegular);
+
+    @variant forced-colors {
+      color: GrayText;
+    }
+  }
+
+  /*
+   * from useDayButtonStyles.base — dayButton arg #2. MUST stay after `.day-single-selected`
+   * (see the REST-STATE RESTRICTION note there).
+   *
+   * The Griffel source's `'&span'` key is NOT reproduced: `&` is substituted with the
+   * atomic's own class selector, so the compiled selector is `.f1xxxxxxspan` — a single
+   * class token that matches no element. Its two declarations (`height: inherit`,
+   * `line-height: inherit`) never applied to anything.
+   */
+  .day-button {
+    background-color: var(--colorTransparentBackground);
+
+    /* `border: 'none'` — the style longhands are the half that carries it for layout and
+       paint (react-drawer/InlineDrawer precedent) */
+    border-style: none;
+
+    color: inherit;
+
+    @apply cursor-pointer overflow-visible h-24 w-24 p-0;
+
+    font-size: var(--fontSizeBase200);
+    font-weight: inherit;
+    line-height: calc(24px * var(--base-scale));
+
+    @variant hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      border-radius: var(--borderRadiusMedium);
+    }
+
+    @variant active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+    }
+  }
+
+  /* from useDayIsTodayStyles.base — dayButton arg #3 (day.isToday) */
+  .day-is-today {
+    @apply flex justify-center items-center;
+
+    color: var(--colorNeutralForegroundOnBrand);
+    font-weight: var(--fontWeightSemibold);
+
+    & > .day-marker {
+      background-color: var(--colorNeutralForegroundOnBrand);
+
+      @variant forced-colors {
+        background-color: Window;
+      }
+    }
+  }
+
+  /*
+   * from useFirstTransitionWeekStyles.base.
+   * Overlaid out of flow and transparent at rest; `pointer-events: none` stops the invisible
+   * overlay from intercepting clicks. `TransitionRowSlideOut` fades opacity 1 → 0, ending here.
+   */
+  .first-transition-week {
+    @apply opacity-0 overflow-hidden pointer-events-none absolute;
+  }
+
+  /* from useLastTransitionWeekStyles.base */
+  .last-transition-week {
+    @apply -mt-28 opacity-0 overflow-hidden pointer-events-none absolute;
+  }
+
+  /* from useDayMarkerStyles.base */
+  .day-marker {
+    background-color: var(--colorBrandForeground2);
+    border-radius: 100%;
+
+    @apply absolute bottom-1 h-4 w-4 m-auto;
+
+    /* `left: 0` + `right: 0` — rtl-css-js swaps them, a no-op at 0; written logically */
+    inset-inline: 0;
+
+    @variant forced-colors {
+      background-color: WindowText;
+      forced-color-adjust: none;
+    }
+  }
+
+  /*
+   * from useCornerBorderAndRadiusStyles.corners — dayCell arg #4, compounded with whichever
+   * corner class `useWeekCornerStyles.calculateRoundedStyles` put on the cell.
+   *
+   * The four corner classes are LOGICAL, not physical, even though their names are physical:
+   * `calculateRoundedStyles` already swaps them by `dir`, and Griffel's RTL twin then swapped
+   * the property (`borderTopLeftRadius` ↔ `borderTopRightRadius`). Reproducing the COMPILED
+   * pair — LTR `border-top-right-radius`, RTL `border-top-left-radius` for
+   * `.top-right-corner-date` — is exactly what the logical `border-start-end-radius` emits,
+   * so the JS half stays untouched and no `@variant rtl` twin is needed.
+   */
+  .corners {
+    &.top-left-corner-date {
+      border-start-start-radius: var(--borderRadiusMedium);
+    }
+
+    &.top-right-corner-date {
+      border-start-end-radius: var(--borderRadiusMedium);
+    }
+
+    &.bottom-left-corner-date {
+      border-end-start-radius: var(--borderRadiusMedium);
+    }
+
+    &.bottom-right-corner-date {
+      border-end-end-radius: var(--borderRadiusMedium);
+    }
+  }
+
+  /* from useDayTodayMarkerStyles.base */
+  .day-today-marker {
+    @apply flex justify-center items-center h-20 w-20;
+
+    background-color: var(--colorBrandBackground);
+    border-radius: 100%;
+    line-height: calc(20px * var(--base-scale));
+
+    @variant forced-colors {
+      background-color: WindowText;
+
+      /* `shorthands.borderColor('WindowText')` → four longhands */
+      border-top-color: WindowText;
+      border-right-color: WindowText;
+      border-bottom-color: WindowText;
+      border-left-color: WindowText;
+
+      color: Window;
+      forced-color-adjust: none;
+    }
+  }
+}
