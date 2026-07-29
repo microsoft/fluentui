@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 const Image_2: ForwardRefComponent<ImageProps>;
@@ -22,8 +21,10 @@ export type ImageBaseProps = ComponentProps<ImageSlots>;
 // @public
 export type ImageBaseState = ComponentState<ImageSlots>;
 
-// @public (undocumented)
-export const imageClassNames: SlotClassNames<ImageSlots>;
+// @public @deprecated
+export const imageClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export type ImageProps = ComponentProps<ImageSlots> & {
