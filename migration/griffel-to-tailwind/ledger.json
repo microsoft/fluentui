@@ -115,11 +115,11 @@
       "validated": "2026-07-28 batch3 (34/34-set sweep, zero retries)"
     },
     "react-carousel": {
-      "status": "converted",
+      "status": "validated",
       "stylesFiles": 10,
       "storiesCovered": null,
-      "notes": "BATCH-4: 10 modules, full D15/D16 contract (no statics, markers from day one). No VR stories exist in apps/vr-tests-react-components, so VR validation was NOT possible — fidelity established from the compiled Griffel atomics plus two mergeClasses probes (.scratch/carousel-probe). Three adjudications recorded in the module headers: (1) CarouselNavButton splits its forced-colors rules mid-file to reproduce Griffel media-bucket-vs-specificity; (2) CarouselButton/CarouselAutoplayButton call the wrapped react-button hook FIRST (inverse of BreadcrumbButton/ToolbarButton), so Button won every collision — CarouselButton drops its dead color/background/hover-cursor declarations and CarouselAutoplayButton gates its colors on at-rest + a JS override gate; (3) CarouselNavContainer.autoplayExpanded bottom was invalid CSS (-var(...)) and is dropped. Added not-selected to the shared variant catalog. Seam: 10 new no-deprecated errors in @fluentui/react-components/src/index.ts (66 already there from batches 1-3).",
-      "validated": null
+      "notes": "BATCH-4: 10 modules, full D15/D16 contract (no statics, markers from day one). No VR stories exist in apps/vr-tests-react-components, so VR validation was NOT possible — fidelity established from the compiled Griffel atomics plus two mergeClasses probes (.scratch/carousel-probe). Three adjudications recorded in the module headers: (1) CarouselNavButton splits its forced-colors rules mid-file to reproduce Griffel media-bucket-vs-specificity; (2) CarouselButton/CarouselAutoplayButton call the wrapped react-button hook FIRST (inverse of BreadcrumbButton/ToolbarButton), so Button won every collision — CarouselButton drops its dead color/background/hover-cursor declarations and CarouselAutoplayButton gates its colors on at-rest + a JS override gate; (3) CarouselNavContainer.autoplayExpanded bottom was invalid CSS (-var(...)) and is dropped. Added not-selected to the shared variant catalog. Seam: 10 new no-deprecated errors in @fluentui/react-components/src/index.ts (66 already there from batches 1-3). No capturable VR stories — tests + seams only.",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-checkbox": {
       "status": "validated",
@@ -170,10 +170,11 @@
       "notes": ""
     },
     "react-dialog": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 6,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-divider": {
       "status": "validated",
@@ -182,10 +183,11 @@
       "notes": "PILOT #1: VR 31/31 pixel-identical (zero tolerance, re-verified), tests 32/32, lint+type-check clean. Awaiting user sign-off. Build probe: lib build exits 0 but ships dangling css imports - Phase 1.5."
     },
     "react-drawer": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 10,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-field": {
       "status": "validated",
@@ -249,10 +251,11 @@
       "notes": "BATCH-2 VALIDATED 2026-07-27: VR/probe clean, 0 fix rounds, tests+build green"
     },
     "react-menu": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 12,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "useValidateNesting fui-MenuGrid* literals must re-point when menu-grid-preview converts (batch 5).",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-menu-grid-preview": {
       "status": "needs-conversion",
@@ -298,10 +301,11 @@
       "notes": ""
     },
     "react-overflow": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "No VR stories — validated via tests + seams + charts Legend-Overflow jest coverage.",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-persona": {
       "status": "validated",
@@ -313,13 +317,15 @@
       "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": "BATCH-4 CONVERTED 2026-07-28 (VR NOT RUN - brief forbade a storybook rebuild). Converted: PopoverSurface.module.css (root + arrow, all fui.components.l1) + the clsx hook. Popover and PopoverTrigger have NO styles hook and render no DOM of their own, so PopoverSurface is the only marker-bearing component; both opt out of `component-has-group-marker` per component alongside the DOM-dependent defaults they already disabled. popoverSurfaceClassNames narrowed to { root: 'group/fui-popover-surface' } (D16.1/D16.5); `arrowHeights` unchanged (it is a JS number map read by usePopover's mergeArrowOffset, not a class). Data attributes added: data-size (small|medium|large) + data-inline (presence) on the root. No mirrors: nothing on a descendant needs to read root state - the arrow gets its geometry class directly from the hook. ARROW / react-positioning seam: `createArrowStyles({ arrowHeight: undefined })` + `createArrowHeightStyles(6|8)` were TRANSCRIBED into the module (identical treatment to react-tooltip, which converted the same factory first). react-positioning keeps exporting both for apps/vr-tests-react-components/src/stories/Positioning/utils.tsx. The rules stay LAYERED (l1), not unlayered: react-positioning injects no CSS for the arrow - it only writes the data-popper-placement ATTRIBUTE from JS - so D2 amendment 5 does not apply. `--fui-positioning-arrow-height/offset` stay literal px (8.484/-4.242, 11.312/-5.656) because usePopover.ts does the matching offset arithmetic in JS pixels; rescaling through --base-scale would desync CSS from JS at a non-default root font size. Griffel `:global([data-popper-placement^=\"x\"])` compiled to a DESCENDANT selector; reproduced as `:where(:global([data-popper-placement^='x'])) &` (0-1-0 instead of Griffel 0-2-0 - inert, the four blocks are mutually exclusive and nothing else sets those properties). ZERO inversions: mergeClasses argument order and source-declaration order agree throughout. ZERO [ltr,rtl] atomic pairs in the compiled AOT, so no @variant rtl block; the four @noflip declarations (2x border-bottom-left-radius, transform:rotate, left/right offsets) stay PHYSICAL. Shorthands: `border-radius` and `border: 1px solid ...` kept as compiled shorthands (react-tooltip precedent) - no rule in the module sets any of their longhands, so no Griffel priority machinery survives to get wrong. `padding: 12/16/20px` -> p-horizontal-m/-l/-xl (px literals landing exactly on spacing steps M/L/XL). `filter: drop-shadow(...)` px stay literal: it is a hand-rolled stand-in for the --shadow16 TOKEN, and tokens never ride --base-scale. Zero fui-Icon-* / :global(.fui-*) hits in this package; the only :global() is the data-popper-placement attribute on the component OWN root. Tests 63/63, 1 snapshot updated (fui-PopoverSurface -> group/fui-popover-surface, + data-size=\"medium\"), which is the only expected shape. Build green; dist/styles.css 3708 B starting with the canonical @layer statement; zero .fui-[A-Z] statics; 6 fuicm-* idents. Lint + type-check clean (tsconfig.spec.json and tsconfig.cy.json needed the `static-assets` type). jest.config.js: @griffel/jest-serializer DROPPED for cssModules.snapshotSerializer (react-tooltip precedent) - no src file imports @griffel/react any more, the package renders no react-icons glyphs, and nothing it mounts emits Griffel atomics. Probes in .scratch/popover: fidelity.js compares all 47 compiled Griffel declarations across 10 slices against dist/styles.css - ALL MATCH; a throwaway render-matrix test covered 36 cases (size x appearance x inline x withArrow), asserting classList[0] is always the hashed module class, exactly one group marker, consumer className last, and correct data-* / arrow geometry class. OPEN SEAM (reported, not edited): packages/charts/react-charts/library/src/components/HeatMapChart/HeatMapChart.test.tsx:317,320,326,329 still query `.fui-PopoverSurface` - 1 test now fails and is NOT -u-regenerable (needs fuiSelector(popoverSurfaceClassNames.root) or a role/attribute selector). 8 charts snapshot files carry the static and need -u: DonutChart, GanttChart, GaugeChart, GroupedVerticalBarChart, LineChart, SankeyChart, VerticalBarChart, VerticalStackedBarChart. NOTE on the measured baseline: react-charts:test was ALREADY red in this working tree when the popover conversion started, but from a CONCURRENT sibling batch-4 change (react-overflow, uncommitted here: 14 charts snapshot files still say fui-Overflow while react-overflow now emits group/fui-overflow), not from anything on the committed branch - so the charts snapshot sweep has to cover both conversions at once. OPEN SEAM (reported, not edited): react-infolabel`s whitelisted @griffel/react import (useInfoButtonStyles.styles.ts `info` slot) is now UNBLOCKED - PopoverSurface is layered, so a fui.components.l2 `.info` module class would win. Behaviour-neutral either way (Griffel unlayered still beats the layer today), so it is a cleanup, not a fix."
+      "notes": "BATCH-4 CONVERTED 2026-07-28 (VR NOT RUN - brief forbade a storybook rebuild). Converted: PopoverSurface.module.css (root + arrow, all fui.components.l1) + the clsx hook. Popover and PopoverTrigger have NO styles hook and render no DOM of their own, so PopoverSurface is the only marker-bearing component; both opt out of `component-has-group-marker` per component alongside the DOM-dependent defaults they already disabled. popoverSurfaceClassNames narrowed to { root: 'group/fui-popover-surface' } (D16.1/D16.5); `arrowHeights` unchanged (it is a JS number map read by usePopover's mergeArrowOffset, not a class). Data attributes added: data-size (small|medium|large) + data-inline (presence) on the root. No mirrors: nothing on a descendant needs to read root state - the arrow gets its geometry class directly from the hook. ARROW / react-positioning seam: `createArrowStyles({ arrowHeight: undefined })` + `createArrowHeightStyles(6|8)` were TRANSCRIBED into the module (identical treatment to react-tooltip, which converted the same factory first). react-positioning keeps exporting both for apps/vr-tests-react-components/src/stories/Positioning/utils.tsx. The rules stay LAYERED (l1), not unlayered: react-positioning injects no CSS for the arrow - it only writes the data-popper-placement ATTRIBUTE from JS - so D2 amendment 5 does not apply. `--fui-positioning-arrow-height/offset` stay literal px (8.484/-4.242, 11.312/-5.656) because usePopover.ts does the matching offset arithmetic in JS pixels; rescaling through --base-scale would desync CSS from JS at a non-default root font size. Griffel `:global([data-popper-placement^=\"x\"])` compiled to a DESCENDANT selector; reproduced as `:where(:global([data-popper-placement^='x'])) &` (0-1-0 instead of Griffel 0-2-0 - inert, the four blocks are mutually exclusive and nothing else sets those properties). ZERO inversions: mergeClasses argument order and source-declaration order agree throughout. ZERO [ltr,rtl] atomic pairs in the compiled AOT, so no @variant rtl block; the four @noflip declarations (2x border-bottom-left-radius, transform:rotate, left/right offsets) stay PHYSICAL. Shorthands: `border-radius` and `border: 1px solid ...` kept as compiled shorthands (react-tooltip precedent) - no rule in the module sets any of their longhands, so no Griffel priority machinery survives to get wrong. `padding: 12/16/20px` -> p-horizontal-m/-l/-xl (px literals landing exactly on spacing steps M/L/XL). `filter: drop-shadow(...)` px stay literal: it is a hand-rolled stand-in for the --shadow16 TOKEN, and tokens never ride --base-scale. Zero fui-Icon-* / :global(.fui-*) hits in this package; the only :global() is the data-popper-placement attribute on the component OWN root. Tests 63/63, 1 snapshot updated (fui-PopoverSurface -> group/fui-popover-surface, + data-size=\"medium\"), which is the only expected shape. Build green; dist/styles.css 3708 B starting with the canonical @layer statement; zero .fui-[A-Z] statics; 6 fuicm-* idents. Lint + type-check clean (tsconfig.spec.json and tsconfig.cy.json needed the `static-assets` type). jest.config.js: @griffel/jest-serializer DROPPED for cssModules.snapshotSerializer (react-tooltip precedent) - no src file imports @griffel/react any more, the package renders no react-icons glyphs, and nothing it mounts emits Griffel atomics. Probes in .scratch/popover: fidelity.js compares all 47 compiled Griffel declarations across 10 slices against dist/styles.css - ALL MATCH; a throwaway render-matrix test covered 36 cases (size x appearance x inline x withArrow), asserting classList[0] is always the hashed module class, exactly one group marker, consumer className last, and correct data-* / arrow geometry class. OPEN SEAM (reported, not edited): packages/charts/react-charts/library/src/components/HeatMapChart/HeatMapChart.test.tsx:317,320,326,329 still query `.fui-PopoverSurface` - 1 test now fails and is NOT -u-regenerable (needs fuiSelector(popoverSurfaceClassNames.root) or a role/attribute selector). 8 charts snapshot files carry the static and need -u: DonutChart, GanttChart, GaugeChart, GroupedVerticalBarChart, LineChart, SankeyChart, VerticalBarChart, VerticalStackedBarChart. NOTE on the measured baseline: react-charts:test was ALREADY red in this working tree when the popover conversion started, but from a CONCURRENT sibling batch-4 change (react-overflow, uncommitted here: 14 charts snapshot files still say fui-Overflow while react-overflow now emits group/fui-overflow), not from anything on the committed branch - so the charts snapshot sweep has to cover both conversions at once. OPEN SEAM (reported, not edited): react-infolabel`s whitelisted @griffel/react import (useInfoButtonStyles.styles.ts `info` slot) is now UNBLOCKED - PopoverSurface is layered, so a fui.components.l2 `.info` module class would win. Behaviour-neutral either way (Griffel unlayered still beats the layer today), so it is a cleanup, not a fix.",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-portal": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 1,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-portal-compat": {
       "status": "special",
@@ -420,10 +426,11 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "react-swatch-picker": {
-      "status": "converted",
+      "status": "validated",
       "stylesFiles": 5,
       "storiesCovered": null,
-      "notes": "BATCH-4 (full D15/D16 contract from day one): 5 style files, 0 statics, 5 group markers, data-size only. Griffel BUCKET inversion handled: makeResetStyles at-rules land in bucket s (after d/h/a, before m), so the reset forced-colors block is HOISTED out of fui.base into a late fui.components.l1 block in ColorSwatch/ImageSwatch - documented in both module headers. build+test(104)+lint green; dist/styles.css 15059 B, zero .fui-[A-Z]. VR NOT run (storybook rebuild out of scope for this task)."
+      "notes": "BATCH-4 (full D15/D16 contract from day one): 5 style files, 0 statics, 5 group markers, data-size only. Griffel BUCKET inversion handled: makeResetStyles at-rules land in bucket s (after d/h/a, before m), so the reset forced-colors block is HOISTED out of fui.base into a late fui.components.l1 block in ColorSwatch/ImageSwatch - documented in both module headers. build+test(104)+lint green; dist/styles.css 15059 B, zero .fui-[A-Z]. VR NOT run (storybook rebuild out of scope for this task).",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-switch": {
       "status": "validated",
@@ -432,11 +439,12 @@
       "notes": "BATCH-1 (2026-07-27). build+test+lint green, dist/styles.css emitted, no snapshots in package. VR NOT run (out of worker scope) -> 'converted', not 'validated'. First createFocusOutlineStyle conversion: validated the shared fui-focus-outline utility and FIXED focus-within-fui, which was missing the ':focus-within' half of react-tabster's compiled selector. label slot + the input's '~ label' rules are at fui.components.l2 (styles applied over @fluentui/react-label's hook output); pixel-correct only once react-label's own conversion lands, since unlayered Griffel currently beats l2. Added catalog: not-checked, with-label/label-above/label-after/label-before, disabled-control/enabled-control. Deliberately did NOT widen shared disabled/enabled with [aria-disabled='true'] - would have restyled every disabledFocusable Link."
     },
     "react-table": {
-      "status": "converted",
+      "status": "validated",
       "stylesFiles": 17,
       "storiesCovered": null,
       "notes": "BATCH-4 CONVERTED 2026-07-28 to the full settled contract (no BEM statics from day one; xClassNames = {root: marker}). 11 CSS modules; TableRow/TableSelectionCell/TableHeaderCell authored bucket-major. build+test+lint+type-check green, 17 snapshots regenerated (statics -> markers only). NOT \"validated\": brief forbade rebuilding the VR storybook, so no pixel run — VR + computed-style probes still owed. Seam: apps/vr-tests-react-components Table/DataGrid StoryWright selectors need fuiSelector()/marker literals (reported, not edited).",
-      "converted": "2026-07-28 batch4"
+      "converted": "2026-07-28 batch4",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-tabs": {
       "status": "special",
@@ -500,10 +508,11 @@
       "notes": ""
     },
     "react-toast": {
-      "status": "needs-conversion",
+      "status": "validated",
       "stylesFiles": 8,
       "storiesCovered": null,
-      "notes": ""
+      "notes": "",
+      "validated": "2026-07-29 batch4 (full contract from birth; scoped gate 44/44)"
     },
     "react-toolbar": {
       "status": "validated",
