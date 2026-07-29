@@ -18,25 +18,30 @@
  * intra-slot property collision, so the blocks are written straight down the list:
  *
  *   `root` slot
- *     1 cardPreviewClassNames.root → static class (JS)
+ *     1 cardPreviewClassNames.root → REMOVED (D16.1). The root's identity is now the
+ *                                    `group/fui-card-preview` marker, which the hook writes
+ *                                    as clsx argument 2; `styles.root` leads. The EXPORT is
+ *                                    retained, re-pointed to the marker and narrowed to
+ *                                    `{ root: string }` (D16.5).
  *     2 useStyles.root             → fui.components.l1  .root
  *     3 consumer className         → unlayered (always wins)
  *
  *   `logo` slot
- *     1 cardPreviewClassNames.logo → static class (JS)
+ *     1 cardPreviewClassNames.logo → REMOVED (D16.1) — sub-slots have no public handle
  *     2 useStyles.logo             → fui.components.l1  .logo
  *     3 consumer className         → unlayered
  *
  * ── Altitude: everything stays l1 ───────────────────────────────────────────────────
- * The one selector that reaches past CardPreview's own slots is
- * `> :not(.fui-CardPreview__logo)`, whose subject is the consumer's preview content (an
- * `<img>` in every story). Consumer elements have no owning styles hook, and the excluded
- * class is CardPreview's OWN static class, so nothing here is a library composition
- * (cookbook: "rules that style the component's own elements — including its own
- * `:global(.fui-X__slot)` static classes — stay layered").
+ * The one selector that reaches past CardPreview's own slots is `> :not(.logo)`, whose
+ * subject is the consumer's preview content (an `<img>` in every story). Consumer elements
+ * have no owning styles hook, and the excluded class is CardPreview's OWN `logo` slot —
+ * now a LOCAL rather than a global static — so nothing here is a library composition
+ * (cookbook: "rules that style the component's own elements stay layered").
  *
  * D2 amendment 5 does not apply: no `fui-Icon-filled` / `fui-Icon-regular` anywhere in
- * this package, and every `:global()` below names a class this package owns.
+ * this package, and after the D16 sweep this module contains no `:global()` at all — the
+ * one it had named a static this package owned, which is exactly the case that resolves to
+ * a hashed local instead of a renamed global.
  *
  * ── RTL (DECISIONS.md D5) ───────────────────────────────────────────────────────────
  * One `[ltr, rtl]` pair, and it is a pure PROPERTY flip:
@@ -62,8 +67,11 @@
     @apply relative;
 
     /* Everything the consumer puts in the preview (but not the logo overlay) fills the
-       preview box. */
-    & > :global(:not(.fui-CardPreview__logo)) {
+       preview box. The exclusion is CardPreview's OWN `logo` slot, which this module
+       writes itself, so it is addressed as a LOCAL (hashed) class rather than a global
+       static — D16.3: own elements go local, never renamed to another global token.
+       `:not(.class)` scores 0-1-0 either way, so the rule stays 0-2-0. */
+    & > :not(.logo) {
       @apply block h-full w-full;
     }
   }

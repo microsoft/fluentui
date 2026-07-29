@@ -3,11 +3,11 @@
 exports[`CardFooter renders a default state 1`] = `
 <div>
   <div
-    class="fui-CardFooter group/fui-card-footer"
+    class="group/fui-card-footer"
   >
     Default CardFooter
     <div
-      class="fui-CardFooter__action"
+      class=""
     >
       Action slot
     </div>

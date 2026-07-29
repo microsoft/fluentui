@@ -16,10 +16,19 @@
  * Layer assignment mirrors the mergeClasses ARGUMENT order of useCardHeaderStyles_unstable.
  * All five slots share one composer, `getSlotStyles(slotName)`:
  *
- *   1 cardHeaderClassNames[slot]        → static class (JS)
+ *   1 cardHeaderClassNames[slot]        → REMOVED (D16.1). Only the root has a public
+ *                                         identity now, the `group/fui-card-header` marker,
+ *                                         which the hook threads in as clsx argument 2 so it
+ *                                         is never `classList[0]` (D16.2). The EXPORT is
+ *                                         retained, re-pointed to the marker and narrowed to
+ *                                         `{ root: string }` (D16.5); the four sub-slot keys
+ *                                         are gone.
  *   2 useStyles[slot]                   → fui.components.l1  .root/.image/.header/…
  *                                         …EXCEPT the action slot's forced-colors
  *                                         Button/Link rules → fui.components.l2
+ *                                         This is now argument #1, and on the root it is the
+ *                                         unconditional token that keeps the marker off
+ *                                         index 0.
  *   3 boxModelStyles[slot]              → fui.components.l1  .grid-root… / .flex-root…
  *                                         (written AFTER the arg #2 blocks)
  *   4 state[slot].className             → unlayered (always wins)
@@ -49,12 +58,17 @@
  * position, per the cookbook order rule.
  *
  * ── ALTITUDE: the action slot's forced-colors rules are l2 (D2 amendment 2) ─────────
- * `@media (forced-colors: active) { & .fui-Button, & .fui-Link { … } }` styles elements
- * owned by @fluentui/react-button and @fluentui/react-link, whose own hooks write their
- * base rules in `fui.components.l1`; CardHeader reaching into them is a library
+ * `@media (forced-colors: active) { & .group\/fui-button, & .group\/fui-link { … } }` styles
+ * elements owned by @fluentui/react-button and @fluentui/react-link, whose own hooks write
+ * their base rules in `fui.components.l1`; CardHeader reaching into them is a library
  * composition. Griffel won this on specificity (`.fs9eatd .fui-Button` 0-2-0 vs Button's
  * 0-1-0 atomics) — `:where()` flattens that to 0-1-0, so the altitude carries the win
  * now. The action slot's own `margin-inline-start` stays in l1.
+ *
+ * Those two Button/Link elements are consumer-supplied CHILDREN — CardHeader never holds
+ * their slot objects — so JS slot composition (D16.3, M2) is structurally unavailable and
+ * the group marker (M1) is the correct and sufficient mechanism. Marker-for-static is
+ * class-for-class, so the flattened 0-1-0 is unchanged.
  *
  * D2 amendment 5 (UNLAYERED) is deliberately NOT applied: both owners are CONVERTED
  * (`react-button` / `react-link` are `validated` in migration/griffel-to-tailwind/
@@ -166,8 +180,8 @@
   /* from useStyles.action — action arg #2, forced-colors half */
   .action {
     @variant forced-colors {
-      & :global(.fui-Button),
-      & :global(.fui-Link) {
+      & :global(.group\/fui-button),
+      & :global(.group\/fui-link) {
         border-top-color: currentColor;
         border-right-color: currentColor;
         border-bottom-color: currentColor;

@@ -14,20 +14,33 @@
  */
 
 import { clsx } from 'clsx';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
 import styles from './CardHeader.module.css';
 
 /**
- * Static CSS class names used internally for the component slots.
+ * CardHeader's public identity class — the Tailwind named-group marker
+ * (`migration/griffel-to-tailwind/reports/DECISIONS.md`, D15.1 / D16.5).
+ *
+ * DEPRECATED FOR STYLING INTERNALS. The only supported way to style a Fluent component's
+ * internals is the per-slot `className` props. `root` is retained because it is still the
+ * component's public identity: it is a usable selector and a `group-*` variant target. The
+ * `fui-CardHeader` / `fui-CardHeader__<slot>` BEM statics are gone (D16.1), and the type has
+ * narrowed from `SlotClassNames<CardHeaderSlots>` to `{ root: string }` so that a read of
+ * `image`, `header`, `description` or `action` is a compile error on the exact line that would
+ * otherwise have silently stopped matching.
+ *
+ * The value is a class TOKEN, not a selector: `/` is legal inside a class name but terminates
+ * it in selector position, so `'.' + cardHeaderClassNames.root` is invalid CSS. Use
+ * `fuiSelector(cardHeaderClassNames.root)` from `@fluentui/react-utilities` (D16.5).
+ *
+ * Deliberately NOT tagged `@deprecated`: the tag propagates to every barrel that re-exports
+ * this symbol — this package's three, plus the `@fluentui/react-components` umbrella — and
+ * `@typescript-eslint/no-deprecated` then errors on each of those re-export specifiers. The
+ * narrowed type is what enforces D16.5; the tag would only buy lint noise.
  */
-export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
-  root: 'fui-CardHeader',
-  image: 'fui-CardHeader__image',
-  header: 'fui-CardHeader__header',
-  description: 'fui-CardHeader__description',
-  action: 'fui-CardHeader__action',
+export const cardHeaderClassNames: { root: string } = {
+  root: 'group/fui-card-header',
 };
 
 /**
@@ -69,26 +82,24 @@ const boxModelClassNames: Record<'grid' | 'flex', Record<keyof CardHeaderSlots, 
 export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
   const boxModelStyles = state.description ? boxModelClassNames.grid : boxModelClassNames.flex;
 
-  // Static `fui-*` class first (conformance contract), consumer className last.
+  // Module class first, consumer className last. On the root slot the marker is threaded in
+  // as argument 2 so it is never `classList[0]` (DECISIONS.md D15.1 / D16.2); `styles.root`
+  // is unconditional, so index 0 is always the hashed, selector-safe class. The sub-slots
+  // pass no marker, so `styles[slotName]` simply leads there.
+  //
   // Cascade priority is decided by the `@layer fui.*` order in CardHeader.module.css and
   // by block order within it, not by the order of these arguments — see that file's header
   // for the mapping back to the mergeClasses() argument order this replaces, including why
   // the action slot's forced-colors Button/Link rules sit at `fui.components.l2`.
   const getSlotStyles = (slotName: keyof CardHeaderSlots, groupMarker?: string): string =>
-    clsx(
-      cardHeaderClassNames[slotName],
-      groupMarker,
-      styles[slotName],
-      boxModelStyles[slotName],
-      state[slotName]?.className,
-    );
+    clsx(styles[slotName], groupMarker, boxModelStyles[slotName], state[slotName]?.className);
 
   // The state mutations below are preserved deliberately: DECISIONS.md D14 defers the
   // pure-builder rewrite to a single Phase 3 sweep.
   //
   // The named group marker is passed for the ROOT slot only, so it lands directly after
-  // the static `fui-*` class — never at `classList[0]` — exactly as it does in every
-  // other converted hook (DECISIONS.md D15.1). It is written outside `getSlotStyles`
+  // the unconditional module class — never at `classList[0]` — exactly as it does in every
+  // other converted hook (DECISIONS.md D15.1 / D16.2). It is written outside `getSlotStyles`
   // rather than as a branch inside it because only this one slot gets a marker: a group
   // cannot style itself, so a marker on `image` / `header` / `description` / `action`
   // would serve nothing but those slots' own descendants. The marker is a literal,

@@ -8,33 +8,12 @@ import { isConformant } from '../../testing/isConformant';
 
 import { Card } from './Card';
 import type { CardProps } from './Card.types';
-import { cardClassNames } from './useCardStyles.styles';
 
 describe('Card', () => {
   isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
     testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            floatingAction: '<button>Button</button>',
-          },
-          expectedClassNames: {
-            root: cardClassNames.root,
-            floatingAction: cardClassNames.floatingAction,
-          },
-        },
-        {
-          props: {
-            selected: true,
-          },
-          expectedClassNames: {
-            root: cardClassNames.root,
-            checkbox: cardClassNames.checkbox,
-          },
-        },
-      ],
       'consistent-callback-args': {
         legacyCallbacks: ['onSelectionChange'],
       },
@@ -46,8 +25,23 @@ describe('Card', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['component-has-static-classname-exported', 'make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` asserts the exact `fui-<Component>` /
+    // `fui-<Component>__<slot>` format and that every value appears in the rendered DOM.
+    // D16.1 removes those statics: `cardClassNames` is retained but re-pointed to the
+    // `group/fui-card` marker and narrowed to `{ root: string }` (D16.5), so all three of
+    // its sub-assertions are now false by construction. The rule is retired from the
+    // default set repo-wide as the sweep completes (D16.6); until then converted packages
+    // opt out here. `component-has-group-marker` (now a default test) is its replacement — it asserts the
+    // marker IS stamped and, critically, that it is never `classList[0]` (D15.1 / D16.2).
+    disabledTests: [
+      'component-has-static-classname-exported',
+      'component-has-static-classnames-object',
+      'make-styles-overrides-win',
+    ],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   it('renders a default state', () => {

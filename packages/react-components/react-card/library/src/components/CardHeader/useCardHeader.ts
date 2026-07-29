@@ -76,6 +76,12 @@ export const useCardHeaderBase_unstable = (
   const headerRef = React.useRef<HTMLDivElement>(null);
 
   const hasChildId = React.useRef(false);
+  // NOT a BEM static, and deliberately out of scope for the D16 statics removal: this is a
+  // `useId` SEED, so what reaches the DOM is an `id` attribute (`fui-CardHeader__header<n>`),
+  // never a class. It is the same second, non-styling role D16.5 preserves for
+  // `fluentProviderClassNames.root` in react-provider. A grep-driven sweep on `'fui-` will
+  // flag this line; leave it — renaming the seed changes generated element ids, which
+  // `aria-labelledby` consumers and snapshots depend on, and buys nothing D16 asks for.
   const generatedId = useId('fui-CardHeader__header', referenceId);
 
   // eslint-disable-next-line react-hooks/refs

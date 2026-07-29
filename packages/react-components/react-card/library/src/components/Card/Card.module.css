@@ -20,18 +20,23 @@
  *
  *   #  mergeClasses argument                                → target
  *   ---------------------------------------------------------------------------------
- *   1  cardClassNames.root                                  → static class (JS)
+ *   1  cardClassNames.root                                  → REMOVED (D16.1); the root's
+ *                                                             identity is now the
+ *                                                             `group/fui-card` marker, and
+ *                                                             `styles.root` leads the clsx
  *   2  useCardResetStyles              (makeReset)          → fui.base          .root
  *                                                             …EXCEPT its
- *                                                             `> .fui-CardHeader/.fui-CardFooter`
+ *                                                             `> .group\/fui-card-header/
+ *                                                             .group\/fui-card-footer`
  *                                                             rule → fui.components.l2
  *   3  orientationMap[orientation]                          → fui.components.l1 (data-orientation)
  *                                                             …EXCEPT every
- *                                                             `> .fui-CardPreview/.fui-CardHeader/
- *                                                             .fui-CardFooter` rule → l2
+ *                                                             `> .group\/fui-card-preview/
+ *                                                             -header/-footer` rule → l2
  *   4  sizeMap[size]                                        → fui.components.l1 (data-size)
  *   5  appearanceMap[appearance]                            → fui.components.l1 (.filled/.outline/…)
- *   6  isSelectableOrInteractive && interactive             → fui.components.l2 (subject is .fui-Text)
+ *   6  isSelectableOrInteractive && interactive             → fui.components.l2 (subject is
+ *                                                             .group\/fui-text)
  *   7  isSelectableOrInteractive && interactiveMap[…]       → fui.components.l1 (.appearance + interactive)
  *   8  selected && selectedMap[appearance]                  → fui.components.l1 (.appearance + selected)
  *   9  focusedClassName                                     → fui.components.l1 (.focused/.selectable-focused)
@@ -42,14 +47,17 @@
  *  14  consumer className                                   → unlayered (always wins)
  *
  * `floatingAction` slot:
- *   1 cardClassNames.floatingAction → static class (JS)
+ *   1 cardClassNames.floatingAction → REMOVED (D16.1) — sub-slots have no public handle
  *   2 useCardStyles.select          → fui.components.l1  .floating-action
  *   3 consumer className            → unlayered
  *
  * `checkbox` slot:
- *   1 cardClassNames.checkbox       → static class (JS)
+ *   1 cardClassNames.checkbox       → REMOVED (D16.1) — sub-slots have no public handle
  *   2 useCardStyles.hiddenCheckbox  → fui.components.l1  .checkbox
  *   3 consumer className            → unlayered
+ *
+ * (`cardClassNames.root` above is retained as an EXPORT, re-pointed to `group/fui-card`
+ * and narrowed to `{ root: string }` — D16.5. It is no longer a rendered BEM static.)
  *
  * ── ALTITUDE: everything Card writes onto CardPreview / CardHeader / CardFooter / Text
  *    is l2, not l1 or fui.base (D2 amendment 2, cookbook altitude rule) ───────────────
@@ -58,7 +66,7 @@
  * `useCardFooterStyles_unstable`, all `fui.components.l1`) and `@fluentui/react-text`'s
  * `useTextStyles_unstable` (also l1). Card restyling them is a library COMPOSITION.
  *
- * This is load-bearing for the reset's `> .fui-CardHeader, > .fui-CardFooter
+ * This is load-bearing for the reset's `> .group\/fui-card-header, > .group\/fui-card-footer
  * { flex-shrink: 0 }` in particular. In Griffel that rule is `.rfxo2k2 > .fui-CardHeader`
  * — 0-2-0 — and it beat CardHeader's own 0-1-0 atomics on SPECIFICITY, regardless of the
  * reset bucket sorting first. Under `:where()`-flat selectors specificity no longer
@@ -71,10 +79,13 @@
  *
  * ── D2 amendment 5 (UNLAYERED rules) does NOT apply here ────────────────────────────
  * Grepped this package for `fui-Icon-filled` / `fui-Icon-regular` / `:global(`: zero
- * pre-existing hits. Every `:global()` selector introduced by this conversion targets an
- * element owned by a CONVERTED package — `.fui-CardPreview` / `.fui-CardHeader` /
- * `.fui-CardFooter` (this package, converted in the same change), `.fui-Text`
- * (react-text, `validated`), plus Card's OWN `.fui-Card__floatingAction` static class.
+ * pre-existing hits. Every `:global()` selector here targets the public identity marker of
+ * a CONVERTED component — `.group\/fui-card-preview` / `.group\/fui-card-header` /
+ * `.group\/fui-card-footer` (this package) and `.group\/fui-text` (react-text). All four
+ * are component ROOTS that Card does not render — a consumer composes them as children —
+ * so the marker is the correct mechanism (D16.3, M1). Card's own `floatingAction` slot is
+ * the one exception and takes the opposite treatment: it is addressed as a LOCAL,
+ * `.floating-action`, in the one rule that compounds it (D16.3, M2 in miniature).
  * No Griffel atomics compete for any of them, so nothing is lifted out of a layer.
  *
  * ── Ordering that IS load-bearing ───────────────────────────────────────────────────
@@ -787,8 +798,8 @@
 @layer fui.components.l2 {
   /* from useCardResetStyles — root arg #2, the reset's third rule */
   .root {
-    & > :global(.fui-CardHeader),
-    & > :global(.fui-CardFooter) {
+    & > :global(.group\/fui-card-header),
+    & > :global(.group\/fui-card-footer) {
       flex-shrink: 0;
     }
   }
@@ -799,24 +810,33 @@
   .root {
     @variant horizontal {
       /* Remove vertical padding so CardPreview content sits flush with Card's borders. */
-      & > :global(.fui-CardPreview) {
+      & > :global(.group\/fui-card-preview) {
         margin-top: calc(var(--fui-Card--size) * -1);
         margin-bottom: calc(var(--fui-Card--size) * -1);
       }
 
       /* Tabster's "Groupper" injects hidden elements before and after Card's content, so
-         these two target the CardPreview that is *visually* first / last. */
-      & > :global(:not([aria-hidden='true']).fui-CardPreview:first-of-type) {
+         these two target the CardPreview that is *visually* first / last.
+
+         The marker leads the compound — `.group\/…:not(…)` rather than the `:not(…).group\/…`
+         the static version used — and that ordering is load-bearing, not style. The build's
+         `globalize-group-markers` PostCSS pass wraps any bare `.group\/x` it finds, and
+         skips a marker only when `:global(` sits IMMEDIATELY to its left. A marker parked
+         mid-compound is therefore rewritten to `:global(…:global(.group\/x)…)`, which
+         postcss-modules rejects outright: "A :global is not allowed inside of a :global(...)".
+         Compounds are order-independent (no type selector here), so this is the same
+         0-3-0 selector matching the same elements. */
+      & > :global(.group\/fui-card-preview:not([aria-hidden='true']):first-of-type) {
         margin-inline-start: calc(var(--fui-Card--size) * -1);
       }
 
-      & > :global(:not([aria-hidden='true']).fui-CardPreview:last-of-type) {
+      & > :global(.group\/fui-card-preview:not([aria-hidden='true']):last-of-type) {
         margin-inline-end: calc(var(--fui-Card--size) * -1);
       }
 
       /* A trailing CardHeader/CardFooter grows to fill the remaining space. */
-      & > :global(.fui-CardHeader:last-of-type),
-      & > :global(.fui-CardFooter:last-of-type) {
+      & > :global(.group\/fui-card-header:last-of-type),
+      & > :global(.group\/fui-card-footer:last-of-type) {
         flex-grow: 1;
       }
     }
@@ -824,22 +844,28 @@
     /* from useCardStyles.orientationVertical — root arg #3 */
     @variant vertical {
       /* Remove lateral padding so CardPreview content sits flush with Card's borders. */
-      & > :global(.fui-CardPreview) {
+      & > :global(.group\/fui-card-preview) {
         margin-inline-start: calc(var(--fui-Card--size) * -1);
         margin-inline-end: calc(var(--fui-Card--size) * -1);
       }
 
-      & > :global(:not([aria-hidden='true']).fui-CardPreview:first-of-type) {
+      /* Marker-first compound — see the note in the `horizontal` block above. */
+      & > :global(.group\/fui-card-preview:not([aria-hidden='true']):first-of-type) {
         margin-top: calc(var(--fui-Card--size) * -1);
       }
 
-      /* `.fui-Card__floatingAction` is Card's OWN static class; the SUBJECT is still
-         CardPreview, which is why the rule sits at this altitude. */
-      & > :global(.fui-Card__floatingAction + .fui-CardPreview) {
+      /* The mixed case (D16.3, statics-removal design §2.1): the left half of the sibling
+         combinator is Card's OWN floatingAction slot, so it goes LOCAL (hashed) rather than
+         being renamed to another global token — the coupling is removed, not relabelled.
+         The right half is CardPreview's ROOT, which Card does not render, so it stays a
+         global and becomes the marker. One local + one global, same 0-3-0 as the
+         `.fui-Card__floatingAction + .fui-CardPreview` compound it replaces. The SUBJECT is
+         still CardPreview, which is why the rule sits at this altitude. */
+      & > .floating-action + :global(.group\/fui-card-preview) {
         margin-top: calc(var(--fui-Card--size) * -1);
       }
 
-      & > :global(:not([aria-hidden='true']).fui-CardPreview:last-of-type) {
+      & > :global(.group\/fui-card-preview:not([aria-hidden='true']):last-of-type) {
         margin-bottom: calc(var(--fui-Card--size) * -1);
       }
     }
@@ -852,10 +878,14 @@
    * over @fluentui/react-text's element (`.f1epqm3e .fui-Text{color:currentColor}`), so
    * the entire argument lives at l2. Text's own module never sets `color`, so nothing is
    * inverted by the promotion — it only makes the win independent of load order.
+   *
+   * The marker also picks up every Text PRESET (`<Body1>`, `<Title2>`, …), because presets
+   * deliberately share `group/fui-text` — "a `<Body1>` IS a `<Text>`". That is the same set
+   * `.fui-Text` matched, since `useTextStyles_unstable` runs for presets too (D16.7).
    */
   .root {
     @variant interactive {
-      & :global(.fui-Text) {
+      & :global(.group\/fui-text) {
         color: currentColor;
       }
     }
@@ -872,10 +902,10 @@
   .root {
     @variant interactive {
       @variant forced-colors {
-        &:where(:hover) :global(.fui-CardPreview),
-        & :where(:active) :global(.fui-CardPreview),
-        &:where(:hover) :global(.fui-CardFooter),
-        & :where(:active) :global(.fui-CardFooter) {
+        &:where(:hover) :global(.group\/fui-card-preview),
+        & :where(:active) :global(.group\/fui-card-preview),
+        &:where(:hover) :global(.group\/fui-card-footer),
+        & :where(:active) :global(.group\/fui-card-footer) {
           forced-color-adjust: auto;
         }
       }
@@ -888,8 +918,8 @@
   .root {
     @variant selected {
       @variant forced-colors {
-        & :global(.fui-CardPreview),
-        & :global(.fui-CardFooter) {
+        & :global(.group\/fui-card-preview),
+        & :global(.group\/fui-card-footer) {
           forced-color-adjust: auto;
         }
       }

@@ -13,16 +13,14 @@ describe('CardFooter', () => {
     // it was called with the consumer className last; this component now composes with
     // clsx and never calls mergeClasses, so the test can no longer observe the contract.
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            action: 'Test Action',
-          },
-        },
-      ],
+    //
+    // `component-has-static-classnames-object` is retired by D16.1/D16.6: the statics it
+    // asserts are no longer rendered, and `cardFooterClassNames` is now the retained,
+    // marker-valued `{ root: string }` of D16.5. `component-has-group-marker` replaces it —
+    // the marker is stamped, and never at `classList[0]` (D15.1 / D16.2).
+    disabledTests: ['component-has-static-classnames-object', 'make-styles-overrides-win'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
     },
   });
 

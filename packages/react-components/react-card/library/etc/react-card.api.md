@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Card: ForwardRefComponent<CardProps>;
@@ -24,7 +23,9 @@ export type CardBaseProps = Omit<CardProps, 'appearance' | 'orientation' | 'size
 export type CardBaseState = Omit<CardState, 'appearance' | 'orientation' | 'size'>;
 
 // @public
-export const cardClassNames: SlotClassNames<CardSlots>;
+export const cardClassNames: {
+    root: string;
+};
 
 // @public
 export interface CardContextValue {
@@ -53,7 +54,9 @@ export type CardFooterBaseProps = CardFooterProps;
 export type CardFooterBaseState = CardFooterState;
 
 // @public
-export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
+export const cardFooterClassNames: {
+    root: string;
+};
 
 // @public
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
@@ -77,7 +80,9 @@ export type CardHeaderBaseProps = CardHeaderProps;
 export type CardHeaderBaseState = CardHeaderState;
 
 // @public
-export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
+export const cardHeaderClassNames: {
+    root: string;
+};
 
 // @public
 export const cardHeaderCSSVars: {
@@ -112,7 +117,9 @@ export type CardPreviewBaseProps = CardPreviewProps;
 export type CardPreviewBaseState = CardPreviewState;
 
 // @public
-export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
+export const cardPreviewClassNames: {
+    root: string;
+};
 
 // @public
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
