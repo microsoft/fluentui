@@ -283,10 +283,11 @@
       "validated": "2026-07-29 specials S3 (full contract; no VR coverage — tests 230/230 + seams + probes)"
     },
     "react-migration-v8-v9": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 3,
       "storiesCovered": null,
-      "notes": "Mixes v8 IStyle + Griffel; v8 merge-styles layering seam (D11)"
+      "notes": "Mixes v8 IStyle + Griffel; v8 merge-styles layering seam (D11)",
+      "validated": "2026-07-29 specials S4/S5 (per adjudication docs; no VR coverage — tests/probes/CDP)"
     },
     "react-motion": {
       "status": "no-styles",
@@ -560,16 +561,18 @@
       "notes": "No *.styles.ts files; verify no stray @griffel imports during Phase 3 sweep"
     },
     "recipes": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "Reclassified from needs-conversion (batch 5): type:stories docs project, no library/ root, no build target — dist/styles.css impossible. Docsite storybook lacks CSS-modules/Tailwind wiring (migration-wide item, Phase 3/specials)."
+      "notes": "Reclassified from needs-conversion (batch 5): type:stories docs project, no library/ root, no build target — dist/styles.css impossible. Docsite storybook lacks CSS-modules/Tailwind wiring (migration-wide item, Phase 3/specials).",
+      "validated": "2026-07-29 specials S4/S5 (per adjudication docs; no VR coverage — tests/probes/CDP)"
     },
     "theme-designer": {
-      "status": "special",
+      "status": "validated",
       "stylesFiles": 2,
       "storiesCovered": null,
-      "notes": "Reclassified from needs-conversion (batch 5): legacy shape, no library/ subfolder; app-like. Handle with specials."
+      "notes": "Reclassified from needs-conversion (batch 5): legacy shape, no library/ subfolder; app-like. Handle with specials. INFRA-1d: storybook DOCS-VIEW emotion reset (unlayered div-margin) beats layered module CSS — presentation-only, migration-wide in docs mode; sanctioned unlayered fix fails on document order (style-loader before emotion); candidate fix = sb-unstyled (carved out of the reset selector) in shared storybook infra — Phase 3. Evidence in TokenList.module.css header. Also: its 3 story files never matched the storybook glob (pre-existing).",
+      "validated": "2026-07-29 specials S4/S5 (per adjudication docs; no VR coverage — tests/probes/CDP)"
     },
     "react-tailwind-theme": {
       "status": "validated",
