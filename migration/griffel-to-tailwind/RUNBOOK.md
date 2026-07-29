@@ -250,3 +250,22 @@ package as they convert). Remaining work proceeds under BATCH-SCOPED
 validation (process rule above): 19 needs-conversion + 11 specials get the
 full contract in one pass each, batch+seam validation only; next full sweep =
 final PR gate.
+
+### Phase 3 addendum (user-directed 2026-07-29): prettier-plugin-tailwindcss
+
+Repo uses Prettier (nano-staged runs `prettier --write` on every commit —
+confirmed). Phase 3 task: install/configure `prettier-plugin-tailwindcss` so
+Tailwind class sorting applies to all authored `*.module.css` files (its CSS
+effect is sorting `@apply` lists; Tailwind v4 needs the `tailwindStylesheet`
+option pointed at the react-tailwind-theme entry). GUARDS (mandatory):
+
+1. Do NOT configure `tailwindFunctions: ["clsx"]` unless verified it never
+   reorders ACROSS arguments — clsx argument order is semantic (D15.1: module
+   class first, marker second, consumer className last).
+2. `@apply` sorting can flip intra-declaration conflicts: after the format
+   pass, rebuild every converted package and DIFF the emitted dist/styles.css
+   against pre-sort — must be declaration-order-identical (or prove no
+   same-property conflicts within any single @apply). Scoped VR gate after.
+3. Check the repo's prettier major first — current plugin needs prettier 3;
+   if the repo is on 2.x and cannot move, SKIP the whole task and tell the
+   user (their explicit instruction).
