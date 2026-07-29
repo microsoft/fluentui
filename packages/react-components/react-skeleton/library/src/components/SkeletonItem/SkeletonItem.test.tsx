@@ -15,8 +15,17 @@ describe('SkeletonItem', () => {
     // The guarantee itself is unchanged — clsx puts `state.root.className` last and the
     // `@layer fui.*` sublayers keep unlayered consumer CSS winning (DECISIONS.md D2/D9).
     // `classname-overrides-win` below is its cascade-native replacement (DECISIONS.md D9).
-    disabledTests: ['make-styles-overrides-win'],
-    extraTests: { [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin },
+    //
+    // `component-has-static-classnames-object` is disabled because this package no longer
+    // publishes BEM statics (DECISIONS.md D16.1): the test hard-codes the
+    // `fui-<Component>` / `fui-<Component>__<slot>` format and asserts those classes are
+    // rendered, both of which are exactly what D16 retires. `component-has-group-marker`
+    // (now a default test) replaces it — it asserts the group marker IS stamped and, per D16.2, is never
+    // `classList[0]`.
+    disabledTests: ['make-styles-overrides-win', 'component-has-static-classnames-object'],
+    extraTests: {
+      [CLASSNAME_OVERRIDES_WIN_TEST_NAME]: classNameOverridesWin,
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

@@ -14,13 +14,26 @@
  */
 
 import { clsx } from 'clsx';
-import type { SkeletonItemSlots, SkeletonItemState } from './SkeletonItem.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { SkeletonItemState } from './SkeletonItem.types';
 
 import styles from './SkeletonItem.module.css';
 
-export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
-  root: 'fui-SkeletonItem',
+/**
+ * Public identity class for SkeletonItem.
+ *
+ * @deprecated for styling. The only supported way to style a Fluent component's internals is
+ * the per-slot `className` props. `root` is retained as the component's public identity class
+ * — the Tailwind named-group marker (DECISIONS.md D15.1) — usable as a selector and as a
+ * `group-*` variant target. The BEM static it used to hold is gone (DECISIONS.md D16.1 /
+ * D16.5): there is no public class-name handle on component internals.
+ *
+ * The `/` in the marker is legal in a class TOKEN but not in a class SELECTOR, so
+ * `'.' + skeletonItemClassNames.root` is an invalid selector. Use
+ * `fuiSelector(skeletonItemClassNames.root)` from `@fluentui/react-utilities` at every
+ * selector site (DECISIONS.md D16.5).
+ */
+export const skeletonItemClassNames: { root: string } = {
+  root: 'group/fui-skeleton-item',
 };
 
 /**
@@ -50,10 +63,15 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
 
   root['data-size'] = size;
 
-  // Static `fui-*` class first (conformance contract), then the named group marker — the
-  // marker must never be `classList[0]` (nwsapi's `:scope` polyfill throws on it under jsdom;
-  // DECISIONS.md D15.1) — with the consumer className last. The marker is a literal,
-  // unhashed, GLOBAL token: it is the only handle by which another module — in this package
+  // Unconditional module class FIRST, then the named group marker, then the conditional
+  // module classes, with the consumer className last (DECISIONS.md D16.2). The marker must
+  // never be `classList[0]` — nwsapi's `:scope` polyfill throws on it under jsdom
+  // (DECISIONS.md D15.1) — and `styles.root` is the token that guarantees it, since clsx
+  // never drops an unconditional argument. The BEM static that used to hold that position
+  // is gone (DECISIONS.md D16.1).
+  //
+  // The marker is a literal, unhashed, GLOBAL token and now the component's SOLE public
+  // identity class: it is the only handle by which another module — in this package
   // or any other — can style an element from this SkeletonItem's state, because `styles.root`
   // is hashed and unaddressable from outside this file. No state mirrors are needed:
   // `data-size` is already stamped on this very element above, and `animation` / `appearance`
@@ -74,9 +92,8 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
   // no longer reports here, and the state-mutation pattern itself stays until the Phase 3
   // sweep (DECISIONS.md D14) — only the now-unused directives were dropped.
   state.root.className = clsx(
-    skeletonItemClassNames.root,
-    'group/fui-skeleton-item',
     styles.root,
+    'group/fui-skeleton-item',
     state.root.as === 'span' && styles['block-styling'],
     styles[animation],
     styles[appearance],

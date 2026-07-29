@@ -8,7 +8,7 @@ export type {
 export {
   SkeletonItem,
   renderSkeletonItem_unstable,
-  skeletonItemClassNames,
+  skeletonItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSkeletonItemStyles_unstable,
   useSkeletonItem_unstable,
   useSkeletonItemBase_unstable,

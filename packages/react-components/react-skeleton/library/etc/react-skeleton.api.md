@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSkeleton_unstable: (state: SkeletonBaseState, contextValues: SkeletonContextValues) => JSXElement;
@@ -27,8 +26,10 @@ export type SkeletonBaseProps = Omit<SkeletonProps, 'animation' | 'appearance'>;
 // @public
 export type SkeletonBaseState = Omit<SkeletonState, 'animation' | 'appearance' | 'size' | 'shape'>;
 
-// @public (undocumented)
-export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
+// @public @deprecated
+export const skeletonClassNames: {
+    root: string;
+};
 
 // @public (undocumented)
 export const SkeletonContextProvider: React_2.Provider<SkeletonContextValue | undefined>;
@@ -59,8 +60,10 @@ export type SkeletonItemBaseProps = Omit<SkeletonItemProps, 'animation' | 'appea
 // @public
 export type SkeletonItemBaseState = Omit<SkeletonItemState, 'animation' | 'appearance' | 'size' | 'shape'>;
 
-// @public (undocumented)
-export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
+// @public @deprecated
+export const skeletonItemClassNames: {
+    root: string;
+};
 
 // @public
 export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & Pick<SkeletonProps, 'size' | 'shape'> & {

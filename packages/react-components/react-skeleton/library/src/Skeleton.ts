@@ -10,7 +10,7 @@ export type {
 export {
   Skeleton,
   renderSkeleton_unstable,
-  skeletonClassNames,
+  skeletonClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
   useSkeletonContextValues,
   useSkeletonStyles_unstable,
   useSkeleton_unstable,

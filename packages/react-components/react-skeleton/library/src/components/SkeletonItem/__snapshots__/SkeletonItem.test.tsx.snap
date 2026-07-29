@@ -3,7 +3,7 @@
 exports[`SkeletonItem renders a default state 1`] = `
 <div>
   <div
-    class="fui-SkeletonItem group/fui-skeleton-item"
+    class="group/fui-skeleton-item"
     data-size="16"
   >
     Default SkeletonItem
